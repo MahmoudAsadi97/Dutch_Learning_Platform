@@ -52,4 +52,4 @@ While Gate 1 is open the only permitted work is independent cleanup; no M2 featu
 
 | Date | Session | Elapsed | Work |
 |---|---|---|---|
-| 2026-09-17 | 1 | ~1 h 45 min | M1 built and verified in the build workspace; pushed to `main`; Gate 1 handed over |
+| 2026-09-17 | 1 | ~2 h 05 min | M1 built and verified in the build workspace; pushed to `main`; Gate 1 handed over |
