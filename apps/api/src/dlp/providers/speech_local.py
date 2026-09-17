@@ -59,7 +59,13 @@ class FasterWhisperSpeechToText(SpeechToText):
                     if self.cache_dir is not None:
                         self.cache_dir.mkdir(parents=True, exist_ok=True)
                         kwargs["download_root"] = str(self.cache_dir)
-                    self._model = WhisperModel(self.model, **kwargs)
+                    try:
+                        self._model = WhisperModel(self.model, **kwargs)
+                    except Exception as exc:  # noqa: BLE001 - network or disk problems while fetching the model
+                        raise ProviderUnavailable(
+                            f"faster-whisper model {self.model!r} could not be loaded ({exc.__class__.__name__}); "
+                            "the first run downloads it from Hugging Face, so check the network or the cache directory"
+                        ) from exc
         return self._model
 
     def transcribe(self, wav_path: Path, *, language: str = "nl", request_id: str = "") -> Transcript:

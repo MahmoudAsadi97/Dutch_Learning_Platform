@@ -70,7 +70,8 @@ def check_a01(session: Session, mission_id: str = "appointment-change") -> Check
     report.add("stored_in_database", True, f"version {stored.version}")
 
     disk_hash = content_hash(on_disk)
-    report.add("content_hash_matches", stored.content_hash == disk_hash, f"stored {stored.content_hash[:12]}… disk {disk_hash[:12]}…")
+    report.add("content_hash_matches", stored.content_hash == disk_hash,
+               f"stored {stored.content_hash[:12]}… disk {disk_hash[:12]}…")
 
     stored_doc = mission_document(stored)
     report.add("stored_document_validates", content_hash(stored_doc) == disk_hash)
@@ -84,7 +85,8 @@ def check_a01(session: Session, mission_id: str = "appointment-change") -> Check
     report.add("pack_within_word_limit", words <= limit, f"{words} of {limit} Dutch words")
 
     summary = review_summary(on_disk)
-    report.add("every_text_has_review_status", summary.total_texts > 0, f"{summary.total_texts} texts, {summary.unreviewed} unreviewed")
+    report.add("every_text_has_review_status", summary.total_texts > 0,
+               f"{summary.total_texts} texts, {summary.unreviewed} unreviewed")
     report.add("unreviewed_content_is_labelled", stored.review_status == "unreviewed" or summary.unreviewed == 0,
                "mission.review_status reflects the texts")
 

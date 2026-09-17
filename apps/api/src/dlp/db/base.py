@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from sqlalchemy import MetaData
 from sqlalchemy.orm import DeclarativeBase
@@ -24,4 +24,4 @@ def new_id() -> uuid.UUID:
 
 
 def utcnow() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)

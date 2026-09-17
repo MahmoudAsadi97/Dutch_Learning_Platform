@@ -41,10 +41,12 @@ export function HelpLadder({ rungs, idPrefix, disabled = false }: Props) {
             <div className="muted" style={{ fontSize: "0.8rem" }}>
               {KIND_LABEL[rung.kind].nl} · <span className="fa" lang="fa" style={{ display: "inline" }}>{KIND_LABEL[rung.kind].fa}</span>
             </div>
+            {/* Glosses mix "Dutch = Persian" pairs: dir=auto keeps the pair order readable while each Persian run stays RTL. */}
             <div
               className={`rung ${rung.direction === "rtl" ? "fa" : "nl"}`}
               lang={rung.direction === "rtl" ? "fa" : "nl"}
-              dir={rung.direction}
+              dir={rung.kind === "gloss_fa" ? "auto" : rung.direction}
+              style={rung.kind === "gloss_fa" ? { textAlign: "start" } : undefined}
             >
               {rung.text}
             </div>

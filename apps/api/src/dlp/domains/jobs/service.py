@@ -10,7 +10,7 @@ import time
 import traceback
 import uuid
 from collections.abc import Callable
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from sqlalchemy import text
@@ -75,7 +75,7 @@ def enqueue(session: Session, kind: str, payload: dict[str, Any], *, idempotency
         assert job is not None
         return job
     job = Job(kind=kind, payload=payload, idempotency_key=idempotency_key,
-              run_after=run_after or datetime.now(timezone.utc),
+              run_after=run_after or datetime.now(UTC),
               max_attempts=max_attempts if max_attempts is not None else 5)
     session.add(job)
     session.flush()
@@ -84,7 +84,7 @@ def enqueue(session: Session, kind: str, payload: dict[str, Any], *, idempotency
 
 def claim_next(session: Session, worker_id: str, lease_seconds: int) -> Job | None:
     """Claim one runnable job (queued and due, or leased but expired) with SKIP LOCKED."""
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     row = session.execute(
         text(
             """
@@ -123,7 +123,7 @@ def run_job(session: Session, job: Job, settings: Settings) -> None:
         result = handler(session, payload)
     except Exception as exc:  # noqa: BLE001 - every failure is recorded on the job row
         job.last_error = f"{exc.__class__.__name__}: {exc}\n{traceback.format_exc()[-2000:]}"
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         if job.attempts >= job.max_attempts:
             job.status = "dead"
             job.finished_at = now
@@ -136,7 +136,7 @@ def run_job(session: Session, job: Job, settings: Settings) -> None:
         return
     job.status = "done"
     job.result = result or {}
-    job.finished_at = datetime.now(timezone.utc)
+    job.finished_at = datetime.now(UTC)
     job.lease_owner = ""
     job.lease_expires_at = None
 

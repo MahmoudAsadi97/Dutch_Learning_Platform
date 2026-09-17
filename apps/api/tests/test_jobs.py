@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import select
 
@@ -34,13 +34,13 @@ def test_failed_jobs_retry_with_backoff_then_succeed(database, settings):
         job = session.scalar(select(Job).where(Job.idempotency_key == "flaky"))
         assert job.status == "queued" and job.attempts == 1
         assert "injected failure" in job.last_error
-        assert job.run_after > datetime.now(timezone.utc) - timedelta(seconds=1)
-        job.run_after = datetime.now(timezone.utc)  # skip the wait in tests
+        assert job.run_after > datetime.now(UTC) - timedelta(seconds=1)
+        job.run_after = datetime.now(UTC)  # skip the wait in tests
     assert process_one(settings, "t1") is True
     with session_scope() as session:
         job = session.scalar(select(Job).where(Job.idempotency_key == "flaky"))
         assert job.status == "queued" and job.attempts == 2
-        job.run_after = datetime.now(timezone.utc)
+        job.run_after = datetime.now(UTC)
     assert process_one(settings, "t1") is True
     with session_scope() as session:
         job = session.scalar(select(Job).where(Job.idempotency_key == "flaky"))
@@ -54,7 +54,7 @@ def test_jobs_die_after_max_attempts(database, settings):
     for _ in range(2):
         with session_scope() as session:
             job = session.scalar(select(Job).where(Job.idempotency_key == "doomed"))
-            job.run_after = datetime.now(timezone.utc)
+            job.run_after = datetime.now(UTC)
         assert process_one(settings, "t1") is True
     with session_scope() as session:
         job = session.scalar(select(Job).where(Job.idempotency_key == "doomed"))
@@ -69,7 +69,7 @@ def test_expired_lease_is_recovered_by_another_worker(database, settings):
         job = claim_next(session, "crashed-worker", lease_seconds=60)
         assert job is not None and job.status == "leased"
         # simulate a worker that died: the lease expired without a result
-        job.lease_expires_at = datetime.now(timezone.utc) - timedelta(seconds=1)
+        job.lease_expires_at = datetime.now(UTC) - timedelta(seconds=1)
     assert process_one(settings, "healthy-worker") is True
     with session_scope() as session:
         job = session.scalar(select(Job).where(Job.idempotency_key == "crashed"))

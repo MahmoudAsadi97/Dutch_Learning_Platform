@@ -75,6 +75,7 @@ yarn-error.log*
 # Only the small recorded fixtures under apps/api/tests/fixtures are tracked
 *.wav
 !/apps/api/tests/fixtures/**/*.wav
+!/apps/web/tests/e2e/fixtures/*.wav
 !/content/**/*.wav
 
 # Azurite (local blob emulator) state

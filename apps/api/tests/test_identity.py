@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import jwt
 import pytest
@@ -37,7 +37,7 @@ def test_valid_assertion_yields_principal():
 
 def test_expired_assertion_is_refused():
     settings = _settings()
-    old = datetime.now(timezone.utc) - timedelta(minutes=5)
+    old = datetime.now(UTC) - timedelta(minutes=5)
     token = _token(settings, now=old)
     with pytest.raises(AssertionError_, match="expired"):
         validate_assertion(settings, token)
@@ -78,8 +78,8 @@ def test_alg_none_is_refused():
     settings = _settings()
     claims = {"iss": settings.assertion_issuer, "aud": settings.assertion_audience, "sub": "x",
               "email": "owner@example.com", "idp": "fixture",
-              "iat": int(datetime.now(timezone.utc).timestamp()),
-              "exp": int((datetime.now(timezone.utc) + timedelta(seconds=30)).timestamp())}
+              "iat": int(datetime.now(UTC).timestamp()),
+              "exp": int((datetime.now(UTC) + timedelta(seconds=30)).timestamp())}
     token = jwt.encode(claims, key="", algorithm="none")
     with pytest.raises(AssertionError_):
         validate_assertion(settings, token)

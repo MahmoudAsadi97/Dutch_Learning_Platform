@@ -144,7 +144,8 @@ class OpenAICompatibleChatModel(ChatModel):
                             # Ask the model to repair its own output once per attempt.
                             body["messages"] = payload_messages + [
                                 {"role": "assistant", "content": text},
-                                {"role": "user", "content": f"That was not valid. Error: {exc}. Reply again with only the JSON object."},
+                                {"role": "user",
+                                 "content": f"That was not valid. Error: {exc}. Reply again with only the JSON object."},
                             ]
                             raise _Retryable(f"schema validation failed: {exc.__class__.__name__}") from exc
                     usage = data.get("usage") or {}

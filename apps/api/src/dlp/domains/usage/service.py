@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import uuid
 from dataclasses import dataclass
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from decimal import Decimal
 
 from sqlalchemy import select, text
@@ -52,7 +52,7 @@ def limits_for(settings: Settings, metric: str) -> tuple[float, float]:
 
 
 def _today() -> date:
-    return datetime.now(timezone.utc).date()
+    return datetime.now(UTC).date()
 
 
 def _ensure_counter(session: Session, learner_id: uuid.UUID, scope: str, period_key: date, metric: str,

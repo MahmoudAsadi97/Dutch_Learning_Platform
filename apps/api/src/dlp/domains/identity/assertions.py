@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import jwt
 
@@ -43,7 +43,7 @@ def issue_assertion(settings: Settings, *, subject: str, email: str, name: str,
                     identity_provider: str, request_id: str, ttl_seconds: int | None = None,
                     now: datetime | None = None) -> str:
     """Used by tests and tooling; the production issuer is the web server."""
-    now = now or datetime.now(timezone.utc)
+    now = now or datetime.now(UTC)
     ttl = ttl_seconds if ttl_seconds is not None else settings.assertion_ttl_seconds
     claims = {
         "iss": settings.assertion_issuer,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
 
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
 
@@ -26,13 +26,19 @@ export function pickMimeType(): string | null {
   return "";
 }
 
+const noSubscription = () => () => {};
+/** Browser capability, read once on the client; the server renders "unknown" until hydration. */
+function useMimeType(): string | null | undefined {
+  return useSyncExternalStore(noSubscription, pickMimeType, () => undefined);
+}
+
 /**
  * Push-to-talk microphone check: MediaRecorder → upload → ffmpeg → transcription, plus synthetic playback.
  * Hold the button (mouse, touch or the space bar) while speaking a Dutch sentence.
  */
 export function SpeechCheck() {
+  const mimeType = useMimeType();
   const [phase, setPhase] = useState<Phase>("idle");
-  const [mimeType, setMimeType] = useState<string | null>(null);
   const [result, setResult] = useState<TranscriptResponse | null>(null);
   const [error, setError] = useState<string>("");
   const [ttsText, setTtsText] = useState("Goeiedag, u spreekt met Tandartspraktijk Molenstraat.");
@@ -42,12 +48,6 @@ export function SpeechCheck() {
   const chunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    const picked = pickMimeType();
-    setMimeType(picked);
-    if (picked === null) setPhase("unsupported");
-  }, []);
 
   async function startRecording() {
     if (phase === "recording" || phase === "uploading") return;
@@ -124,7 +124,8 @@ export function SpeechCheck() {
     }
   }
 
-  const recording = phase === "recording";
+  const effectivePhase: Phase = mimeType === null ? "unsupported" : phase;
+  const recording = effectivePhase === "recording";
 
   return (
     <div className="grid two">
@@ -134,13 +135,13 @@ export function SpeechCheck() {
           Houd de knop ingedrukt en zeg een Nederlandse zin, bijvoorbeeld: <em lang="nl">Ik wil mijn afspraak verzetten.</em>
         </p>
         <p className="mono" data-testid="mime-type">
-          MediaRecorder: {mimeType === null ? "niet ondersteund" : mimeType || "standaardformaat van de browser"}
+          MediaRecorder: {mimeType === undefined ? "controleren…" : mimeType === null ? "niet ondersteund" : mimeType || "standaardformaat van de browser"}
         </p>
         <button
           type="button"
           className="button talk"
           aria-pressed={recording}
-          disabled={phase === "unsupported" || phase === "uploading"}
+          disabled={effectivePhase === "unsupported" || effectivePhase === "uploading"}
           onPointerDown={(event) => {
             event.preventDefault();
             void startRecording();
@@ -162,15 +163,15 @@ export function SpeechCheck() {
           }}
           data-testid="talk-button"
         >
-          {recording ? "Opname loopt… laat los om te stoppen" : phase === "uploading" ? "Verwerken…" : "Houd ingedrukt om te spreken"}
+          {recording ? "Opname loopt… laat los om te stoppen" : effectivePhase === "uploading" ? "Verwerken…" : "Houd ingedrukt om te spreken"}
         </button>
         <p role="status" aria-live="polite" data-testid="phase">
-          {phase === "idle" && "Klaar om op te nemen."}
-          {phase === "recording" && "Opname loopt."}
-          {phase === "uploading" && "Uploaden, converteren en transcriberen…"}
-          {phase === "done" && "Klaar."}
-          {phase === "unsupported" && "Deze browser ondersteunt MediaRecorder niet."}
-          {phase === "error" && "Er ging iets mis."}
+          {effectivePhase === "idle" && "Klaar om op te nemen."}
+          {effectivePhase === "recording" && "Opname loopt."}
+          {effectivePhase === "uploading" && "Uploaden, converteren en transcriberen…"}
+          {effectivePhase === "done" && "Klaar."}
+          {effectivePhase === "unsupported" && "Deze browser ondersteunt MediaRecorder niet."}
+          {effectivePhase === "error" && "Er ging iets mis."}
         </p>
         {error && (
           <p className="error" role="alert">

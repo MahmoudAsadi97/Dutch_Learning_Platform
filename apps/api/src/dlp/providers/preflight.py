@@ -38,11 +38,12 @@ def run_preflight(settings: Settings | None = None, *, check_network: bool = Tru
     items: list[PreflightItem] = []
     summary = settings.redacted_summary()
 
+    dev_auth = "on" if settings.dev_auth_enabled else "off"
     items.append(PreflightItem("environment", settings.app_env, "ok",
-                               f"dev_auth={'on' if settings.dev_auth_enabled else 'off'}, allowlist entries={summary['owner_allowlist_size']}"))
-    items.append(PreflightItem("assertion key", "shared-secret",
-                               "ok" if summary["assertion_key_configured"] else "missing",
-                               "at least 32 characters" if summary["assertion_key_configured"] else "ASSERTION_SIGNING_KEY too short"))
+                               f"dev_auth={dev_auth}, allowlist entries={summary['owner_allowlist_size']}"))
+    key_ok = bool(summary["assertion_key_configured"])
+    items.append(PreflightItem("assertion key", "shared-secret", "ok" if key_ok else "missing",
+                               "at least 32 characters" if key_ok else "ASSERTION_SIGNING_KEY too short"))
 
     # Database
     try:

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ContentLabel } from "@/components/ContentLabel";
 import { ReadingStep } from "@/components/ReadingStep";
@@ -23,6 +23,19 @@ type LoadState =
   | { kind: "error"; message: string; requestId: string }
   | { kind: "ready"; mission: MissionResponse };
 
+async function loadMission(missionId: string): Promise<{ mission: MissionResponse; records: SkillRecordView[] }> {
+  const mission = await apiJson<MissionResponse>(`missions/${missionId}`);
+  const progress = await apiJson<{ skill_records: SkillRecordView[] }>("progress");
+  return { mission, records: progress.skill_records.filter((r) => r.mission_id === missionId) };
+}
+
+function describeError(error: unknown): { message: string; requestId: string } {
+  return {
+    message: error instanceof ApiError ? error.detail : "De API is niet bereikbaar.",
+    requestId: error instanceof ApiError ? error.requestId : "",
+  };
+}
+
 export function LessonShell({ missionId }: Props) {
   const [state, setState] = useState<LoadState>({ kind: "loading" });
   const [activeKey, setActiveKey] = useState<string | null>(null);
@@ -31,25 +44,24 @@ export function LessonShell({ missionId }: Props) {
   const [records, setRecords] = useState<SkillRecordView[]>([]);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string>("");
-
-  const load = useCallback(async () => {
-    setState({ kind: "loading" });
-    try {
-      const mission = await apiJson<MissionResponse>(`missions/${missionId}`);
-      setState({ kind: "ready", mission });
-      setActiveKey((current) => current ?? mission.document.steps[0]?.key ?? null);
-      const progress = await apiJson<{ skill_records: SkillRecordView[] }>("progress");
-      setRecords(progress.skill_records.filter((r) => r.mission_id === missionId));
-    } catch (error) {
-      const message = error instanceof ApiError ? error.detail : "De API is niet bereikbaar.";
-      const requestId = error instanceof ApiError ? error.requestId : "";
-      setState({ kind: "error", message, requestId });
-    }
-  }, [missionId]);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
-    void load();
-  }, [load]);
+    let cancelled = false;
+    loadMission(missionId)
+      .then(({ mission, records: loaded }) => {
+        if (cancelled) return;
+        setState({ kind: "ready", mission });
+        setActiveKey((current) => current ?? mission.document.steps[0]?.key ?? null);
+        setRecords(loaded);
+      })
+      .catch((error: unknown) => {
+        if (!cancelled) setState({ kind: "error", ...describeError(error) });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [missionId, attempt]);
 
   async function startSession() {
     setBusy(true);
@@ -82,7 +94,14 @@ export function LessonShell({ missionId }: Props) {
       <div className="card" role="alert">
         <p className="error">{state.message}</p>
         {state.requestId && <p className="mono">request {state.requestId}</p>}
-        <button type="button" className="button" onClick={() => void load()}>
+        <button
+          type="button"
+          className="button"
+          onClick={() => {
+            setState({ kind: "loading" });
+            setAttempt((n) => n + 1);
+          }}
+        >
           Opnieuw proberen
         </button>
       </div>
