@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dlp-api"
+version = "0.1.0"
+description = "API for the Dutch learning platform, release 0.1"
+requires-python = ">=3.11"
+readme = "README.md"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn[standard]>=0.30,<1",
+  "pydantic>=2.9,<3",
+  "pydantic-settings>=2.5,<3",
+  "sqlalchemy>=2.0.36,<2.1",
+  "alembic>=1.14,<2",
+  "psycopg[binary]>=3.2,<4",
+  "PyJWT>=2.9,<3",
+  "httpx>=0.27,<1",
+  "python-multipart>=0.0.12",
+  "azure-storage-blob>=12.24,<13",
+  "langgraph>=1.0,<2",
+]
+
+[project.optional-dependencies]
+# Real local speech providers (Phase A on the laptop). Not needed for CI.
+speech-local = [
+  "faster-whisper>=1.1,<2",
+  "piper-tts>=1.2",
+]
+dev = [
+  "pytest>=8.3",
+  "pytest-timeout>=2.3",
+  "ruff>=0.6",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+timeout = 120
+filterwarnings = ["ignore::DeprecationWarning"]
+markers = [
+  "db: needs the test database (TEST_DATABASE_URL)",
+  "ffmpeg: needs ffmpeg and ffprobe on the PATH",
+  "azurite: needs a running Azurite blob emulator",
+  "speech_local: needs faster-whisper / piper models on this machine",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B008"]

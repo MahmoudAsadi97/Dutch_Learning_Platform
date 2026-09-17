@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "id": "appointment-change",
+  "version": 1,
+  "cefr_target": "A2",
+  "title": {
+    "nl": "Een afspraak verzetten",
+    "fa": "جابه‌جا کردن یک قرار",
+    "review_status": "unreviewed"
+  },
+  "description": {
+    "nl": "U leert een afspraak verzetten: een bericht lezen, een boodschap beluisteren, bellen en een kort bericht schrijven.",
+    "fa": "یاد می‌گیرید یک قرار را جابه‌جا کنید: خواندن یک پیام، شنیدن یک پیغام، تلفن زدن و نوشتن یک پیام کوتاه.",
+    "review_status": "unreviewed"
+  },
+  "language_targets": [
+    {
+      "id": "lt-reading",
+      "cefr": "A2",
+      "skill": "reading",
+      "can_do": {
+        "nl": "Ik kan een korte herinnering over een afspraak begrijpen.",
+        "fa": "می‌توانم یک یادآوری کوتاه دربارهٔ یک قرار را بفهمم.",
+        "review_status": "unreviewed"
+      }
+    },
+    {
+      "id": "lt-listening",
+      "cefr": "A2",
+      "skill": "listening",
+      "can_do": {
+        "nl": "Ik kan een korte telefonische boodschap over een afspraak begrijpen.",
+        "fa": "می‌توانم یک پیغام تلفنی کوتاه دربارهٔ یک قرار را بفهمم.",
+        "review_status": "unreviewed"
+      }
+    },
+    {
+      "id": "lt-speaking",
+      "cefr": "A2",
+      "skill": "speaking",
+      "can_do": {
+        "nl": "Ik kan telefonisch een afspraak verzetten: de reden zeggen, een voorstel begrijpen en bevestigen.",
+        "fa": "می‌توانم تلفنی یک قرار را جابه‌جا کنم: دلیل را بگویم، پیشنهاد را بفهمم و تأیید کنم.",
+        "review_status": "unreviewed"
+      }
+    },
+    {
+      "id": "lt-writing",
+      "cefr": "A2",
+      "skill": "writing",
+      "can_do": {
+        "nl": "Ik kan een kort bericht schrijven om een afspraak te verzetten.",
+        "fa": "می‌توانم یک پیام کوتاه بنویسم تا یک قرار را جابه‌جا کنم.",
+        "review_status": "unreviewed"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "key": "read-reminder",
+      "skill": "reading",
+      "variant": "base",
+      "title": { "nl": "Lezen: de herinnering", "fa": "خواندن: یادآوری قرار", "review_status": "unreviewed" },
+      "instructions": {
+        "nl": "Lees het bericht van de tandartspraktijk en beantwoord de vragen.",
+        "fa": "پیام مطب دندان‌پزشکی را بخوانید و به پرسش‌ها پاسخ دهید.",
+        "review_status": "unreviewed"
+      },
+      "payload": {
+        "type": "reading",
+        "text": {
+          "nl": "Beste patiënt,\n\nU hebt een afspraak bij tandarts De Smet op woensdag 23 september om 14.00 uur. Kunt u niet komen? Bel ons dan ten laatste één dag op voorhand op 056 12 34 56. Zo zoeken we een nieuw moment.\n\nTot dan!\n\nMet vriendelijke groeten,\nhet team van Tandartspraktijk Molenstraat",
+          "fa": "بیمار گرامی،\n\nشما روز چهارشنبه ۲۳ سپتامبر ساعت ۱۴:۰۰ نزد دندان‌پزشک دِ اسمِت قرار دارید. نمی‌توانید بیایید؟ در این صورت حداکثر یک روز قبل با شمارهٔ ۰۵۶ ۱۲ ۳۴ ۵۶ با ما تماس بگیرید. این‌طور زمان تازه‌ای پیدا می‌کنیم.\n\nتا آن روز!\n\nبا احترام،\nتیم مطب دندان‌پزشکی مولن‌استرات",
+          "review_status": "unreviewed"
+        },
+        "vocabulary": [
+          { "nl": "de afspraak", "fa": "قرار (ملاقات)", "note_nl": "een afspraak maken / verzetten" },
+          { "nl": "verzetten", "fa": "جابه‌جا کردن (به زمان دیگری بردن)", "note_nl": "" },
+          { "nl": "op voorhand", "fa": "از قبل، پیشاپیش", "note_nl": "Belgisch-Nederlands; ook: van tevoren" },
+          { "nl": "ten laatste", "fa": "حداکثر تا", "note_nl": "Belgisch-Nederlands; ook: uiterlijk" },
+          { "nl": "de tandarts", "fa": "دندان‌پزشک", "note_nl": "" }
+        ],
+        "questions": [
+          {
+            "id": "q-when",
+            "prompt": { "nl": "Wanneer is de afspraak?", "fa": "قرار چه زمانی است؟", "review_status": "unreviewed" },
+            "options": [
+              { "nl": "Woensdag om 14.00 uur", "fa": "چهارشنبه ساعت ۱۴:۰۰", "review_status": "unreviewed" },
+              { "nl": "Donderdag om 14.00 uur", "fa": "پنجشنبه ساعت ۱۴:۰۰", "review_status": "unreviewed" },
+              { "nl": "Woensdag om 16.00 uur", "fa": "چهارشنبه ساعت ۱۶:۰۰", "review_status": "unreviewed" }
+            ],
+            "answer_index": 0,
+            "help": [
+              { "level": 1, "kind": "hint_nl", "text": "Zoek de dag en het uur in de eerste zin.", "direction": "ltr" },
+              { "level": 2, "kind": "gloss_fa", "text": "woensdag = چهارشنبه، om 14.00 uur = ساعت ۱۴:۰۰", "direction": "rtl" },
+              { "level": 3, "kind": "translation_fa", "text": "پرسش: قرار چه زمانی است؟ پاسخ در جملهٔ اول است: چهارشنبه ساعت ۱۴:۰۰.", "direction": "rtl" }
+            ]
+          },
+          {
+            "id": "q-cannot-come",
+            "prompt": { "nl": "Wat doet u als u niet kunt komen?", "fa": "اگر نتوانید بیایید چه می‌کنید؟", "review_status": "unreviewed" },
+            "options": [
+              { "nl": "Een e-mail sturen", "fa": "یک ایمیل می‌فرستید", "review_status": "unreviewed" },
+              { "nl": "Eén dag op voorhand bellen", "fa": "یک روز قبل تلفن می‌زنید", "review_status": "unreviewed" },
+              { "nl": "Naar de praktijk gaan", "fa": "به مطب می‌روید", "review_status": "unreviewed" }
+            ],
+            "answer_index": 1,
+            "help": [
+              { "level": 1, "kind": "hint_nl", "text": "Lees de zin die begint met 'Bel ons'.", "direction": "ltr" },
+              { "level": 2, "kind": "gloss_fa", "text": "bel ons = به ما زنگ بزنید، ten laatste = حداکثر تا، op voorhand = از قبل", "direction": "rtl" },
+              { "level": 3, "kind": "translation_fa", "text": "اگر نمی‌توانید بیایید، باید حداکثر یک روز قبل تلفن بزنید.", "direction": "rtl" }
+            ]
+          }
+        ],
+        "help": [
+          { "level": 1, "kind": "hint_nl", "text": "Het bericht komt van de tandarts. Het gaat over een afspraak en over bellen.", "direction": "ltr" },
+          { "level": 2, "kind": "gloss_fa", "text": "afspraak = قرار، bellen = تلفن زدن، nieuw moment = زمان تازه", "direction": "rtl" },
+          { "level": 3, "kind": "translation_fa", "text": "ترجمهٔ کامل پیام در کنار متن هلندی نمایش داده می‌شود.", "direction": "rtl" }
+        ]
+      }
+    },
+    {
+      "key": "listen-voicemail",
+      "skill": "listening",
+      "variant": "base",
+      "title": { "nl": "Luisteren: de voicemail", "fa": "شنیدن: پیغام صوتی", "review_status": "unreviewed" },
+      "instructions": {
+        "nl": "Beluister de boodschap en beantwoord de vraag.",
+        "fa": "پیغام را گوش کنید و به پرسش پاسخ دهید.",
+        "review_status": "unreviewed"
+      },
+      "payload": {
+        "type": "listening",
+        "audio_key": "fixed/appointment-change/voicemail-base.wav",
+        "transcript": {
+          "nl": "Goeiedag, u spreekt met Tandartspraktijk Molenstraat. Tandarts De Smet is woensdag ziek. Kunt u ons terugbellen om een nieuwe afspraak te maken? Bedankt en tot ziens.",
+          "fa": "روز بخیر، مطب دندان‌پزشکی مولن‌استرات هستیم. دندان‌پزشک دِ اسمِت چهارشنبه بیمار است. می‌توانید با ما تماس بگیرید تا قرار تازه‌ای بگذاریم؟ ممنون و خدانگهدار.",
+          "review_status": "unreviewed"
+        },
+        "questions": [
+          {
+            "id": "q-why-call",
+            "prompt": { "nl": "Waarom belt de praktijk?", "fa": "چرا مطب تماس می‌گیرد؟", "review_status": "unreviewed" },
+            "options": [
+              { "nl": "De tandarts is ziek", "fa": "دندان‌پزشک بیمار است", "review_status": "unreviewed" },
+              { "nl": "De praktijk is gesloten", "fa": "مطب تعطیل است", "review_status": "unreviewed" },
+              { "nl": "U bent te laat", "fa": "شما دیر کرده‌اید", "review_status": "unreviewed" }
+            ],
+            "answer_index": 0,
+            "help": [
+              { "level": 1, "kind": "hint_nl", "text": "Luister naar de tweede zin.", "direction": "ltr" },
+              { "level": 2, "kind": "gloss_fa", "text": "ziek = بیمار، terugbellen = دوباره تماس گرفتن", "direction": "rtl" },
+              { "level": 3, "kind": "translation_fa", "text": "دندان‌پزشک چهارشنبه بیمار است؛ به همین دلیل مطب تماس می‌گیرد.", "direction": "rtl" }
+            ]
+          }
+        ],
+        "help": [
+          { "level": 1, "kind": "hint_nl", "text": "Luister twee keer. Wie belt en waarom?", "direction": "ltr" },
+          { "level": 2, "kind": "gloss_fa", "text": "u spreekt met = شما صحبت می‌کنید با، nieuwe afspraak = قرار تازه", "direction": "rtl" },
+          { "level": 3, "kind": "translation_fa", "text": "متن کامل پیغام و ترجمهٔ آن پس از دو بار گوش دادن نمایش داده می‌شود.", "direction": "rtl" }
+        ]
+      }
+    },
+    {
+      "key": "speak-call",
+      "skill": "speaking",
+      "variant": "base",
+      "title": { "nl": "Spreken: het telefoongesprek", "fa": "گفتن: مکالمهٔ تلفنی", "review_status": "unreviewed" },
+      "instructions": {
+        "nl": "Druk op de knop, spreek, en laat de knop los. De receptioniste antwoordt.",
+        "fa": "دکمه را فشار دهید، صحبت کنید و دکمه را رها کنید. منشی پاسخ می‌دهد.",
+        "review_status": "unreviewed"
+      },
+      "payload": {
+        "type": "speaking",
+        "scenario_id": "dentist-base",
+        "goal": { "nl": "Bel de praktijk en verzet uw afspraak.", "fa": "با مطب تماس بگیرید و قرارتان را جابه‌جا کنید.", "review_status": "unreviewed" },
+        "required_actions": ["state_reason", "accept_slot", "confirm"],
+        "max_turns": 12,
+        "modality": "push_to_talk",
+        "typed_fallback_allowed": true,
+        "help": [
+          { "level": 1, "kind": "hint_nl", "text": "Zeg eerst wie u bent, dan waarom u belt.", "direction": "ltr" },
+          { "level": 2, "kind": "gloss_fa", "text": "Ik wil mijn afspraak verzetten = می‌خواهم قرارم را جابه‌جا کنم؛ Past dat? = مناسب است؟", "direction": "rtl" },
+          { "level": 3, "kind": "translation_fa", "text": "جملهٔ نمونه: «Goeiedag, ik heb woensdag een afspraak, maar ik kan niet komen. Kan ik die verzetten?»", "direction": "rtl" }
+        ]
+      }
+    },
+    {
+      "key": "write-message",
+      "skill": "writing",
+      "variant": "base",
+      "title": { "nl": "Schrijven: het bericht", "fa": "نوشتن: پیام", "review_status": "unreviewed" },
+      "instructions": {
+        "nl": "Schrijf in het Nederlands. Uw tekst wordt automatisch bewaard.",
+        "fa": "به هلندی بنویسید. متن شما خودکار ذخیره می‌شود.",
+        "review_status": "unreviewed"
+      },
+      "payload": {
+        "type": "writing",
+        "prompt": {
+          "nl": "Schrijf een kort bericht: u kunt woensdag niet komen en vraagt een nieuwe afspraak.",
+          "fa": "پیام کوتاهی بنویسید: چهارشنبه نمی‌توانید بیایید و قرار تازه‌ای می‌خواهید.",
+          "review_status": "unreviewed"
+        },
+        "min_words": 25,
+        "max_words": 80,
+        "must_include": ["afspraak", "woensdag"],
+        "help": [
+          { "level": 1, "kind": "hint_nl", "text": "Begin met 'Beste' en eindig met 'Met vriendelijke groeten'.", "direction": "ltr" },
+          { "level": 2, "kind": "gloss_fa", "text": "helaas = متأسفانه، een andere dag = روز دیگری، bedankt = ممنون", "direction": "rtl" },
+          { "level": 3, "kind": "translation_fa", "text": "ساختار پیشنهادی: سلام، قرار من چهارشنبه است؛ متأسفانه نمی‌توانم بیایم؛ آیا روز دیگری ممکن است؟ ممنون.", "direction": "rtl" }
+        ]
+      }
+    },
+    {
+      "key": "checkpoint-transfer",
+      "skill": "speaking",
+      "variant": "transfer",
+      "title": { "nl": "Controle: de kapper", "fa": "آزمون مستقل: آرایشگاه", "review_status": "unreviewed" },
+      "instructions": {
+        "nl": "Dit is de controle. Er is geen hulp en geen herkansing.",
+        "fa": "این بخش آزمون است. کمکی در کار نیست و تکرار ممکن نیست.",
+        "review_status": "unreviewed"
+      },
+      "payload": {
+        "type": "checkpoint",
+        "scenario_id": "hairdresser-transfer",
+        "goal": { "nl": "Bel de kapper en verzet uw afspraak zonder hulp.", "fa": "با آرایشگاه تماس بگیرید و بدون کمک قرارتان را جابه‌جا کنید.", "review_status": "unreviewed" },
+        "required_actions": ["state_reason", "accept_slot", "confirm"],
+        "max_turns": 12,
+        "independent": true,
+        "restrictions": { "help_ladder": false, "retry": false, "typed_fallback": false, "tools": [] }
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "dentist-base",
+      "variant": "base",
+      "reference_date": "2026-09-21",
+      "setting": {
+        "nl": "U belt de tandartspraktijk om uw afspraak te verzetten.",
+        "fa": "شما به مطب دندان‌پزشکی زنگ می‌زنید تا قرارتان را جابه‌جا کنید.",
+        "review_status": "unreviewed"
+      },
+      "learner_role": { "nl": "de patiënt", "fa": "بیمار", "review_status": "unreviewed" },
+      "character": {
+        "name": "Els",
+        "role": { "nl": "receptioniste van de tandartspraktijk", "fa": "منشی مطب دندان‌پزشکی", "review_status": "unreviewed" },
+        "register_style": "formal",
+        "voice_hint": "female, calm, Flemish"
+      },
+      "appointment": {
+        "what": { "nl": "controle bij de tandarts", "fa": "معاینهٔ دندان‌پزشکی", "review_status": "unreviewed" },
+        "with_whom": { "nl": "tandarts De Smet", "fa": "دندان‌پزشک دِ اسمِت", "review_status": "unreviewed" },
+        "location": { "nl": "Tandartspraktijk Molenstraat, Kortrijk", "fa": "مطب دندان‌پزشکی مولن‌استرات، کورترایک", "review_status": "unreviewed" },
+        "day": "2026-09-23",
+        "start": "14:00:00"
+      },
+      "reason_options": [
+        { "nl": "Ik moet werken.", "fa": "باید کار کنم.", "review_status": "unreviewed" },
+        { "nl": "Ik ben ziek.", "fa": "بیمارم.", "review_status": "unreviewed" },
+        { "nl": "Ik heb een examen.", "fa": "امتحان دارم.", "review_status": "unreviewed" }
+      ],
+      "available_slots": [
+        { "id": "thu-1000", "day": "2026-09-24", "start": "10:00:00", "end": "10:30:00" },
+        { "id": "fri-1630", "day": "2026-09-25", "start": "16:30:00", "end": "17:00:00" },
+        { "id": "tue-0900", "day": "2026-09-29", "start": "09:00:00", "end": "09:30:00" }
+      ],
+      "allowed_actions": ["state_reason", "propose_slot", "accept_slot", "ask_repeat", "confirm", "cancel"],
+      "fixed_lines": [
+        { "key": "opening", "when": "opening", "text": { "nl": "Goeiedag, Tandartspraktijk Molenstraat, met Els. Waarmee kan ik u helpen?", "fa": "روز بخیر، مطب دندان‌پزشکی مولن‌استرات، اِلس هستم. چه کمکی می‌توانم بکنم؟", "review_status": "unreviewed" } },
+        { "key": "ask-reason", "when": "ask_reason", "text": { "nl": "Geen probleem. Mag ik vragen waarom u niet kunt komen?", "fa": "مشکلی نیست. می‌توانم بپرسم چرا نمی‌توانید بیایید؟", "review_status": "unreviewed" } },
+        { "key": "offer-slots", "when": "offer_slots", "text": { "nl": "Ik heb nog plaats op donderdag om 10 uur, vrijdag om 16.30 uur of dinsdag om 9 uur.", "fa": "پنجشنبه ساعت ۱۰، جمعه ساعت ۱۶:۳۰ یا سه‌شنبه ساعت ۹ هنوز جا دارم.", "review_status": "unreviewed" } },
+        { "key": "confirm", "when": "confirm", "text": { "nl": "Genoteerd. Uw nieuwe afspraak is op {slot}. Past dat?", "fa": "یادداشت شد. قرار تازهٔ شما {slot} است. مناسب است؟", "review_status": "unreviewed" } },
+        { "key": "closing", "when": "closing", "text": { "nl": "Prima, tot dan. Nog een fijne dag!", "fa": "عالی، تا آن روز. روز خوبی داشته باشید!", "review_status": "unreviewed" } },
+        { "key": "repeat", "when": "repeat", "text": { "nl": "Natuurlijk, ik herhaal het even.", "fa": "حتماً، دوباره تکرار می‌کنم.", "review_status": "unreviewed" } },
+        { "key": "clarify", "when": "clarify", "text": { "nl": "Sorry, dat begrijp ik niet. Kunt u dat anders zeggen?", "fa": "ببخشید، متوجه نشدم. می‌توانید طور دیگری بگویید؟", "review_status": "unreviewed" } }
+      ],
+      "success_criteria": [
+        { "nl": "De reden is gezegd.", "fa": "دلیل گفته شده است.", "review_status": "unreviewed" },
+        { "nl": "Een aangeboden moment is aanvaard.", "fa": "یکی از زمان‌های پیشنهادی پذیرفته شده است.", "review_status": "unreviewed" },
+        { "nl": "De nieuwe afspraak is bevestigd.", "fa": "قرار تازه تأیید شده است.", "review_status": "unreviewed" }
+      ]
+    },
+    {
+      "id": "hairdresser-transfer",
+      "variant": "transfer",
+      "reference_date": "2026-09-21",
+      "setting": {
+        "nl": "U belt het kapsalon om uw afspraak te verzetten.",
+        "fa": "شما به آرایشگاه زنگ می‌زنید تا قرارتان را جابه‌جا کنید.",
+        "review_status": "unreviewed"
+      },
+      "learner_role": { "nl": "de klant", "fa": "مشتری", "review_status": "unreviewed" },
+      "character": {
+        "name": "Lies",
+        "role": { "nl": "kapster en eigenaar van het kapsalon", "fa": "آرایشگر و صاحب آرایشگاه", "review_status": "unreviewed" },
+        "register_style": "informal",
+        "voice_hint": "female, quick, friendly"
+      },
+      "appointment": {
+        "what": { "nl": "knipbeurt", "fa": "کوتاه کردن مو", "review_status": "unreviewed" },
+        "with_whom": { "nl": "Lies", "fa": "لیس", "review_status": "unreviewed" },
+        "location": { "nl": "Kapsalon Lies, Kortrijk", "fa": "آرایشگاه لیس، کورترایک", "review_status": "unreviewed" },
+        "day": "2026-09-24",
+        "start": "18:00:00"
+      },
+      "reason_options": [
+        { "nl": "Ik moet werken.", "fa": "باید کار کنم.", "review_status": "unreviewed" }
+      ],
+      "available_slots": [
+        { "id": "sat-1100", "day": "2026-09-26", "start": "11:00:00", "end": "11:45:00" },
+        { "id": "mon-1700", "day": "2026-09-28", "start": "17:00:00", "end": "17:45:00" }
+      ],
+      "allowed_actions": ["state_reason", "propose_slot", "accept_slot", "ask_repeat", "confirm", "cancel"],
+      "fixed_lines": [
+        { "key": "opening", "when": "opening", "text": { "nl": "Hallo, Kapsalon Lies, met Lies.", "fa": "سلام، آرایشگاه لیس، لیس هستم.", "review_status": "unreviewed" } },
+        { "key": "ask-reason", "when": "ask_reason", "text": { "nl": "Ah, jammer. Wat is er aan de hand?", "fa": "آه، حیف شد. چه اتفاقی افتاده؟", "review_status": "unreviewed" } },
+        { "key": "offer-slots", "when": "offer_slots", "text": { "nl": "Ik kan je nog inplannen op zaterdag om 11 uur of maandag om 17 uur.", "fa": "می‌توانم شنبه ساعت ۱۱ یا دوشنبه ساعت ۱۷ برایت وقت بگذارم.", "review_status": "unreviewed" } },
+        { "key": "confirm", "when": "confirm", "text": { "nl": "Oké, ik zet je op {slot}. Is dat goed?", "fa": "باشه، تو را برای {slot} می‌نویسم. خوب است؟", "review_status": "unreviewed" } },
+        { "key": "closing", "when": "closing", "text": { "nl": "Top, tot dan!", "fa": "عالی، تا آن روز!", "review_status": "unreviewed" } },
+        { "key": "repeat", "when": "repeat", "text": { "nl": "Ja hoor, ik zeg het nog eens.", "fa": "حتماً، دوباره می‌گویم.", "review_status": "unreviewed" } },
+        { "key": "clarify", "when": "clarify", "text": { "nl": "Sorry, ik versta je niet. Kun je dat herhalen?", "fa": "ببخشید، متوجه نمی‌شوم. می‌توانی تکرار کنی؟", "review_status": "unreviewed" } }
+      ],
+      "success_criteria": [
+        { "nl": "De reden is gezegd.", "fa": "دلیل گفته شده است.", "review_status": "unreviewed" },
+        { "nl": "Een aangeboden moment is aanvaard.", "fa": "یکی از زمان‌های پیشنهادی پذیرفته شده است.", "review_status": "unreviewed" },
+        { "nl": "De nieuwe afspraak is bevestigd.", "fa": "قرار تازه تأیید شده است.", "review_status": "unreviewed" }
+      ]
+    }
+  ],
+  "evidence_expectations": [
+    { "skill": "reading", "kinds": ["answer"], "minimum_items": 2, "requires_code_validated_action": false, "note": "one answer record per question" },
+    { "skill": "listening", "kinds": ["answer"], "minimum_items": 1, "requires_code_validated_action": false, "note": "" },
+    { "skill": "speaking", "kinds": ["transcript", "typed_text", "action_result"], "minimum_items": 3, "requires_code_validated_action": true, "note": "typed turns are labelled typed evidence and never count as speaking practice" },
+    { "skill": "writing", "kinds": ["typed_text"], "minimum_items": 1, "requires_code_validated_action": false, "note": "the submitted message with its word count" }
+  ],
+  "help_policy": { "language": "fa", "direction": "rtl", "max_level": 3, "unavailable_in_checkpoint": true },
+  "content_pack": {
+    "word_limit": 300,
+    "description": "Fixed Dutch the learner reads or hears: reading text, transcript, questions, goals, prompts, character lines, reason options. Interface texts (titles, instructions, roles, settings) are counted separately."
+  },
+  "completion": {
+    "required_step_keys": ["read-reminder", "listen-voicemail", "speak-call", "write-message"],
+    "checkpoint_step_key": "checkpoint-transfer"
+  }
+}
