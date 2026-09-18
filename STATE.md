@@ -55,4 +55,4 @@ tests, microphone check) and opened M2 with "start M2"; the decisions stand as w
 | 2026-09-17 | 1 | ~2 h 05 min | M1 built and verified in the build workspace; pushed to `main`; Gate 1 handed over |
 | 2026-09-18 | 2 | ~1 h 30 min | Laptop checkout, conda environment, WSL fixes (Docker integration, PYTHONPATH, ffmpeg cap, sudo PATH, e2e isolation), M1 verified on the laptop |
 | 2026-09-18 | 3 | ~1 h 55 min | M2 speaking loop: turn workflow, turn endpoints, fixture conversation rules, speaking step and checkpoint UI, recorder hook, 91 API tests and 21 browser tests pass; docs and decisions D-12/D-13 |
-| 2026-09-18 | 3b | ~0 h 30 min | Owner's first M2 run: Ollama not running → turn now fails clearly instead of pretending (502, budget untouched), refused connections fail fast; playback rewritten to avoid the media-load abort; 94 API tests |
+| 2026-09-18 | 3b | ~0 h 45 min | Owner's first M2 run: Ollama not running → turn now fails clearly instead of pretending (502, budget untouched), refused connections fail fast; playback rewritten to avoid the media-load abort; whisper `small` vs `medium` compared on the laptop, recorder keeps a 400 ms tail; 94 API tests |

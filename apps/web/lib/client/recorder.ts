@@ -6,6 +6,9 @@ const MIME_CANDIDATES = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;code
 
 export type RecorderPhase = "idle" | "recording" | "unsupported";
 
+/** People release the button on the last syllable; this tail keeps the final word from being cut. */
+export const STOP_TAIL_MS = 400;
+
 export interface Recording {
   blob: Blob;
   mimeType: string;
@@ -44,6 +47,7 @@ export function useRecorder(onRecording: (recording: Recording) => void) {
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
+  const stopTimerRef = useRef<number | null>(null);
   const callbackRef = useRef(onRecording);
 
   useEffect(() => {
@@ -52,6 +56,7 @@ export function useRecorder(onRecording: (recording: Recording) => void) {
 
   useEffect(() => {
     return () => {
+      if (stopTimerRef.current !== null) window.clearTimeout(stopTimerRef.current);
       const recorder = recorderRef.current;
       if (recorder && recorder.state !== "inactive") {
         recorder.onstop = null;
@@ -91,10 +96,13 @@ export function useRecorder(onRecording: (recording: Recording) => void) {
 
   const stop = useCallback(() => {
     const recorder = recorderRef.current;
-    if (!recorder || recorder.state !== "recording") return;
-    recorder.stop();
-    streamRef.current?.getTracks().forEach((track) => track.stop());
-    streamRef.current = null;
+    if (!recorder || recorder.state !== "recording" || stopTimerRef.current !== null) return;
+    stopTimerRef.current = window.setTimeout(() => {
+      stopTimerRef.current = null;
+      if (recorder.state === "recording") recorder.stop();
+      streamRef.current?.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
+    }, STOP_TAIL_MS);
   }, []);
 
   const effectivePhase: RecorderPhase = mimeType === null ? "unsupported" : phase;
