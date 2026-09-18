@@ -141,7 +141,7 @@ reclaimable after a crash, one idempotency key per job. The in-process loop star
 ## 9. Configuration contract
 
 Every variable lives in `.env.example` with a comment. Secrets: `ASSERTION_SIGNING_KEY`,
-`DATABASE_URL` (Phase B), `AZURE_CHAT_API_KEY`, `AZURE_SPEECH_KEY`,
+`DATABASE_URL` (Phase B), `HF_TOKEN` (optional), `AZURE_CHAT_API_KEY`, `AZURE_SPEECH_KEY`,
 `AZURE_STORAGE_CONNECTION_STRING` (the published Azurite string is not a secret). The web tier
 reads `APP_ENV`, `DEV_AUTH_ENABLED`, `DEV_OWNER_EMAIL`, `DEV_OWNER_NAME`, `API_INTERNAL_URL` and the
 `ASSERTION_*` variables; the API reads the rest. `scripts/run.py` passes the root `.env` to both.
