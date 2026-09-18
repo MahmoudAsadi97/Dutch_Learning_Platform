@@ -93,6 +93,26 @@ def test_non_retryable_error_fails_immediately():
     assert calls == 1
 
 
+def test_a_truncated_reply_is_retried_with_a_larger_budget():
+    budgets: list[int] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.content)
+        budgets.append(body["max_tokens"])
+        if len(budgets) == 1:
+            payload = {"id": "x", "model": "test-model",
+                       "choices": [{"message": {"role": "assistant", "content": '{"answer": "cut off, no closing'},
+                                    "finish_reason": "length"}],
+                       "usage": {"prompt_tokens": 12, "completion_tokens": 200}}
+            return httpx.Response(200, json=payload)
+        return _reply(json.dumps({"answer": "complete"}))
+
+    result = _model(handler).complete([ChatMessage("user", "x")], schema=Answer, max_output_tokens=200)
+    assert isinstance(result.parsed, Answer) and result.parsed.answer == "complete"
+    assert budgets == [200, 400], "the second attempt doubles the output budget instead of asking for a repair"
+    assert result.attempts == 2
+
+
 def test_a_refused_connection_fails_at_once_as_unavailable():
     calls = 0
 

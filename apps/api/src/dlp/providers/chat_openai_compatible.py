@@ -137,6 +137,13 @@ class OpenAICompatibleChatModel(ChatModel):
                     data = self._post(body)
                     text = _first_content(data)
                     parsed = None
+                    if schema is not None and _finish_reason(data) == "length":
+                        # The reply was cut off at max_tokens: repairing a fragment is pointless, so the next
+                        # attempt gets a larger budget (bounded) and the same prompt.
+                        used = int(body["max_tokens"])
+                        body["max_tokens"] = min(used * 2, int(max_output_tokens) * 4)
+                        body["messages"] = payload_messages
+                        raise _Retryable(f"reply truncated at {used} output tokens; retrying with {body['max_tokens']}")
                     if schema is not None:
                         try:
                             parsed = schema.model_validate(extract_json_object(text))
@@ -147,7 +154,7 @@ class OpenAICompatibleChatModel(ChatModel):
                                 {"role": "user",
                                  "content": f"That was not valid. Error: {exc}. Reply again with only the JSON object."},
                             ]
-                            raise _Retryable(f"schema validation failed: {exc.__class__.__name__}") from exc
+                            raise _Retryable(f"schema validation failed: {str(exc)[:160]}") from exc
                     usage = data.get("usage") or {}
                     return ChatResult(
                         text=text,

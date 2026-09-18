@@ -109,7 +109,7 @@ def _task_description(step: Step) -> str:
 
 
 def feedback_messages(step: Step, handles: list[tuple[str, EvidenceRecord]], task_completed: bool) -> list[ChatMessage]:
-    lines = "\n".join(f"- {handle}: {describe_evidence(record)}" for handle, record in handles)
+    lines = "\n".join(f"- {handle}: {describe_evidence(record)[:240]}" for handle, record in handles)
     system = (
         "Je bent een vriendelijke taalcoach Nederlands (Belgisch Standaardnederlands) voor een volwassen leerder op niveau A2 "
         "met Perzisch als moedertaal. Je geeft korte, concrete feedback op één oefening. Je mag ALLEEN spreken over de "
@@ -118,10 +118,11 @@ def feedback_messages(step: Step, handles: list[tuple[str, EvidenceRecord]], tas
         f"{_task_description(step)}\n"
         f"Opdracht volbracht volgens de toepassing: {'ja' if task_completed else 'nee'}.\n\n"
         f"Bewijsstukken:\n{lines}\n\n"
-        "Antwoord als JSON met: summary_nl (twee korte zinnen), summary_fa (dezelfde samenvatting in het Perzisch), "
-        "task_completed (true/false), points (maximaal vier), elk met kind (strength, error of suggestion), "
-        "text_nl (één korte zin), text_fa (dezelfde zin in het Perzisch), quote (de woorden van de leerder waar het over gaat, "
-        "letterlijk, of leeg), correction (de verbeterde vorm, of leeg) en evidence (lijst met codes zoals [\"E1\"])."
+        "Antwoord kort, als JSON met: summary_nl (twee korte zinnen), summary_fa (dezelfde samenvatting in het Perzisch), "
+        "task_completed (true/false), points (maximaal drie), elk met kind (strength, error of suggestion), "
+        "text_nl (één korte zin van hoogstens 15 woorden), text_fa (dezelfde zin in het Perzisch), quote (de woorden van de "
+        "leerder waar het over gaat, letterlijk, of leeg), correction (de verbeterde vorm, of leeg) en evidence "
+        "(lijst met codes zoals [\"E1\"]). Geen andere velden, geen tekst buiten de JSON."
     )
     return [ChatMessage("system", system), ChatMessage("user", "Geef nu de feedback als JSON.")]
 
@@ -146,7 +147,7 @@ def generate_feedback(session: Session, settings: Settings, providers: Providers
         raise PracticeError(f"not enough evidence for feedback yet: {shortfall}", status_code=409)
     progress = (practice.state.get("step_progress") or {}).get(step_key, {})
     task_completed = bool(progress.get("completed"))
-    handles = [(f"E{i + 1}", record) for i, record in enumerate(records[-40:])]
+    handles = [(f"E{i + 1}", record) for i, record in enumerate(records[-24:])]
     by_handle = {handle: record for handle, record in handles}
 
     calls_reservation = usage.reserve(session, settings, practice.learner_id, "model_calls", 1, f"{request_id}-fb")
@@ -154,7 +155,7 @@ def generate_feedback(session: Session, settings: Settings, providers: Providers
     try:
         result = providers.chat.complete(
             feedback_messages(step, handles, task_completed), schema=FeedbackModelReply,
-            max_output_tokens=min(settings.chat_max_output_tokens, 600), temperature=0.2,
+            max_output_tokens=settings.feedback_max_output_tokens, temperature=0.2,
             prompt_version=FEEDBACK_VERSION, request_id=request_id,
         )
     except ProviderError:

@@ -60,6 +60,8 @@ class Settings(BaseSettings):
     local_chat_model_strong: str = ""
     chat_timeout_seconds: float = 120.0
     chat_max_output_tokens: int = 600
+    # Feedback answers in Dutch and Persian; Persian costs several tokens per word with Llama tokenisers.
+    feedback_max_output_tokens: int = 1000
     chat_max_attempts: int = 3
     max_concurrent_model_calls: int = 2
     azure_chat_endpoint: str = ""
