@@ -94,7 +94,7 @@ class Settings(BaseSettings):
     max_upload_bytes: int = 5 * 1024 * 1024
     max_audio_seconds: float = 30.0
     ffmpeg_timeout_seconds: float = 20.0
-    ffmpeg_memory_limit_mb: int = 512
+    ffmpeg_memory_limit_mb: int = 2048
 
     # Usage limits
     usage_daily_model_calls: int = 200

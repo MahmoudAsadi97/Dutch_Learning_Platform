@@ -54,8 +54,12 @@ fixture providers), `python scripts/run.py benchmark` (plumbing dry runs),
   work in; otherwise `docker` does not exist inside WSL and `services` fails.
 - The task runner strips other Python installations (for example a ROS 2 `python3.10` tree) from
   `PYTHONPATH` before it starts anything, so their pytest plugins cannot break the test run.
-- Before the first `e2e`, run `sudo npx playwright install-deps chromium` once inside `apps/web`
-  (headless Chromium needs a few system libraries).
+- Before the first `e2e`, headless Chromium needs a few system libraries. Inside `apps/web` run
+  `sudo env "PATH=$PATH" npx playwright install-deps chromium` once (plain `sudo npx` resets PATH
+  and picks up an old system Node, which fails with a syntax error).
+- `FFMPEG_MEMORY_LIMIT_MB` caps ffmpeg's virtual address space. The conda-forge ffmpeg build needs
+  more than 1 GB of address space; the default is 2048. "audio conversion failed" with
+  "failed to map segment" in the API log means the cap is too small.
 - `dev` binds the web app on port 3000; open <http://localhost:3000> in the Windows browser.
 
 ## Documents

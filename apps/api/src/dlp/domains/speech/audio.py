@@ -8,11 +8,14 @@ bounded before ffmpeg runs.
 from __future__ import annotations
 
 import json
+import logging
 import shutil
 import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+
+log = logging.getLogger(__name__)
 
 ALLOWED_CONTAINERS = {"matroska", "webm", "ogg", "mov", "mp4", "m4a", "3gp", "wav", "flac", "mp3", "aac", "mpeg"}
 ALLOWED_CODECS = {"opus", "vorbis", "aac", "pcm_s16le", "pcm_f32le", "flac", "mp3", "pcm_u8", "pcm_s24le", "pcm_s32le"}
@@ -41,7 +44,12 @@ def tools_available() -> bool:
 
 
 def _limit_memory(limit_mb: int):
-    """Return a preexec function that caps the child's address space (POSIX only)."""
+    """Return a preexec function that caps the child's *virtual address space* (POSIX only; 0 disables).
+
+    The cap must leave room for every shared library ffmpeg maps and for its thread stacks: full-featured
+    builds (conda-forge, distribution packages with many codecs) need well over 1 GB of address space even
+    though they use little real memory. A cap that is too small shows up as "failed to map segment".
+    """
     if sys.platform.startswith("win") or limit_mb <= 0:
         return None
     import resource
@@ -68,7 +76,7 @@ def _run(command: list[str], *, timeout: float, memory_limit_mb: int) -> subproc
         raise AudioError(f"cannot start {command[0]}", status_code=500) from exc
 
 
-def probe(path: Path, *, timeout: float = 20.0, memory_limit_mb: int = 512) -> AudioInfo:
+def probe(path: Path, *, timeout: float = 20.0, memory_limit_mb: int = 2048) -> AudioInfo:
     if not tools_available():
         raise AudioError("ffmpeg/ffprobe are not installed", status_code=500)
     command = [
@@ -77,6 +85,7 @@ def probe(path: Path, *, timeout: float = 20.0, memory_limit_mb: int = 512) -> A
     ]
     completed = _run(command, timeout=timeout, memory_limit_mb=memory_limit_mb)
     if completed.returncode != 0:
+        _log_tool_failure("ffprobe", completed, memory_limit_mb)
         raise AudioError("the upload is not a readable audio file")
     try:
         data = json.loads(completed.stdout.decode("utf-8", "replace"))
@@ -98,7 +107,7 @@ def probe(path: Path, *, timeout: float = 20.0, memory_limit_mb: int = 512) -> A
 
 
 def canonicalise(source: Path, target: Path, *, max_seconds: float, timeout: float = 20.0,
-                 memory_limit_mb: int = 512) -> AudioInfo:
+                 memory_limit_mb: int = 2048) -> AudioInfo:
     """Validate `source` and write the canonical WAV to `target`. Returns the canonical file's info."""
     info = probe(source, timeout=timeout, memory_limit_mb=memory_limit_mb)
     if info.container not in ALLOWED_CONTAINERS:
@@ -108,7 +117,7 @@ def canonicalise(source: Path, target: Path, *, max_seconds: float, timeout: flo
     if info.duration_seconds > max_seconds + 0.5:
         raise AudioError(f"recording is longer than {max_seconds:.0f} seconds", status_code=413)
     command = [
-        "ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error", "-y",
+        "ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error", "-y", "-threads", "1",
         "-t", f"{max_seconds:.2f}",
         "-i", str(source),
         "-vn", "-ac", "1", "-ar", str(CANONICAL_SAMPLE_RATE), "-acodec", "pcm_s16le", "-f", "wav",
@@ -116,8 +125,18 @@ def canonicalise(source: Path, target: Path, *, max_seconds: float, timeout: flo
     ]
     completed = _run(command, timeout=timeout, memory_limit_mb=memory_limit_mb)
     if completed.returncode != 0 or not target.exists() or target.stat().st_size < 100:
+        _log_tool_failure("ffmpeg", completed, memory_limit_mb)
         raise AudioError("audio conversion failed", status_code=422)
     canonical = probe(target, timeout=timeout, memory_limit_mb=memory_limit_mb)
     if canonical.duration_seconds <= 0.05:
         raise AudioError("recording is empty")
     return canonical
+
+
+def _log_tool_failure(tool: str, completed: subprocess.CompletedProcess[bytes], memory_limit_mb: int) -> None:
+    """Keep the diagnosis server-side: the client only learns that conversion failed."""
+    stderr = completed.stderr.decode("utf-8", "replace").strip()
+    hint = ""
+    if "failed to map segment" in stderr or "cannot allocate memory" in stderr.lower():
+        hint = f" (address-space cap FFMPEG_MEMORY_LIMIT_MB={memory_limit_mb} is too small for this {tool} build)"
+    log.warning("%s exited with %s%s: %s", tool, completed.returncode, hint, stderr[-400:] or "(no stderr)")
