@@ -3,8 +3,12 @@
     propose_action (model, structured)  →  validate_action (code, authoritative)  →  compose_reply (model, structured)
 
 The model only proposes; `apply_action` decides. The reply is anchored on the scenario's fixed
-line for the current phase, and the fixed line itself is used when the model fails or contradicts
+line for the current phase, and the fixed line itself is used when the reply call fails or contradicts
 the decision, so the character never announces something the code did not accept.
+
+A failure of the *first* call is not softened: without the model's reading of the utterance no action
+can be recognised, so a fixed-line answer would only simulate a conversation and, in the checkpoint,
+burn the learner's single attempt. The error propagates and the turn is recorded as failed.
 """
 
 from __future__ import annotations
@@ -57,12 +61,9 @@ def build_graph(chat: ChatModel):
         appointment = AppointmentState.from_dict(state.get("appointment"))
         messages = [ChatMessage(role, text) for role, text in  # type: ignore[arg-type]
                     propose_action_messages(scenario, appointment, state.get("history", []), state["learner_text"])]
-        try:
-            result = chat.complete(messages, schema=ProposedActionReply, max_output_tokens=state.get("max_output_tokens", 200),
-                                   temperature=0.0, prompt_version=PROPOSE_ACTION_VERSION, request_id=state.get("request_id", ""))
-        except ProviderError as exc:
-            return {"proposed": ProposedAction(action="none").model_dump(mode="json"),
-                    "errors": [*state.get("errors", []), f"propose_action: {exc}"]}
+        # A ProviderError here propagates: see the module docstring.
+        result = chat.complete(messages, schema=ProposedActionReply, max_output_tokens=state.get("max_output_tokens", 200),
+                               temperature=0.0, prompt_version=PROPOSE_ACTION_VERSION, request_id=state.get("request_id", ""))
         parsed = result.parsed if isinstance(result.parsed, ProposedActionReply) else ProposedActionReply(action="none")
         proposed = ProposedAction(action=parsed.action, reason_text=parsed.reason_text, slot_id=parsed.slot_id,
                                   confidence=parsed.confidence)

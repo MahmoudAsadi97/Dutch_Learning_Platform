@@ -24,7 +24,8 @@ Things only the owner can do. Each item is listed once; tick it when done.
 
 ## Now (M2)
 
-7. [ ] **Have the first real conversation.** `git pull`, `python scripts/run.py dev`, open the mission,
+7. [ ] **Have the first real conversation.** Start Ollama first (a second WSL terminal: `ollama serve`;
+   the preflight row *chat model* must say `ok`), then `git pull`, `python scripts/run.py dev`, open the mission,
    step 3 *Spreken: het telefoongesprek*, "Start het gesprek", hold the button and say why you cannot
    come (for example *Ik moet werken.*), then choose one of the offered moments and confirm. The
    receptionist's line comes from `llama3.1:8b`; her offer and confirmation lines are fixed

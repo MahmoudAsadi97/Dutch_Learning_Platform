@@ -57,14 +57,24 @@ def test_workflow_refuses_an_invented_slot_and_never_announces_it(document):
     assert "zondag" not in state["reply_nl"].lower()
 
 
-def test_workflow_survives_a_model_failure_with_the_fixed_line(document):
+def test_workflow_uses_the_fixed_line_when_the_reply_call_fails(document):
     scenario = document.scenario("dentist-base")
-    chat = FixtureChatModel(fail_first=2)
-    state = run_turn(chat, scenario=scenario, appointment={}, history=[], learner_text="Goeiedag.", request_id="w3")
-    assert state["proposed"]["action"] == "none"
+    chat = FixtureChatModel(fail_calls=(2,))
+    state = run_turn(chat, scenario=scenario, appointment={}, history=[], learner_text="Ik moet werken.", request_id="w3")
+    assert state["action_result"]["accepted"] is True, "the proposal was read and validated"
     assert state["reply_source"] == "fixed_line"
-    assert state["reply_nl"] == "Geen probleem. Mag ik vragen waarom u niet kunt komen?"
-    assert len(state["errors"]) == 2
+    assert "donderdag om 10 uur" in state["reply_nl"]
+    assert state["errors"] == ["compose_reply: injected fixture failure"]
+
+
+def test_workflow_fails_when_the_model_cannot_read_the_utterance(document):
+    """No fixed-line answer without the model's reading: that would simulate a conversation and burn turns."""
+    from dlp.providers.base import ProviderError
+
+    scenario = document.scenario("dentist-base")
+    with pytest.raises(ProviderError):
+        run_turn(FixtureChatModel(fail_first=1), scenario=scenario, appointment={}, history=[],
+                 learner_text="Ik moet werken.", request_id="w4")
 
 
 # --- endpoints ------------------------------------------------------------------------------------------------------
@@ -155,6 +165,7 @@ def test_a_model_failure_keeps_the_failed_turn_and_releases_usage(client, monkey
     monkeypatch.setattr("dlp.domains.practice.workflow.build_graph", lambda chat: _Exploding())
     response = _say(client, session_id, "fail-0001", "Ik moet werken.")
     assert response.status_code == 502
+    assert "model endpoint unreachable" in response.json()["detail"]
     assert response.json()["turn"]["status"] == "failed"
     assert response.json()["turn"]["error"].startswith("RuntimeError")
     view = client.get(f"/practice/sessions/{session_id}", headers=auth_headers("fail-view")).json()
@@ -166,7 +177,21 @@ def test_a_model_failure_keeps_the_failed_turn_and_releases_usage(client, monkey
     # the same request id repeats the failure; a new one starts a new turn
     assert _say(client, session_id, "fail-0001", "Ik moet werken.").status_code == 502
     monkeypatch.undo()
-    assert _say(client, session_id, "fail-0002", "Ik moet werken.").status_code == 200
+    ok = _say(client, session_id, "fail-0002", "Ik moet werken.").json()
+    assert ok["turn"]["turn_index"] == 2
+    assert ok["session"]["step_progress"]["speak-call"]["turns"] == 1, "a failed turn does not use up the budget"
+
+
+def test_an_unreachable_model_fails_the_turn_instead_of_pretending(client, monkeypatch):
+    session_id = _start(client)
+    providers = get_providers()
+    monkeypatch.setattr(providers, "chat", FixtureChatModel(fail_first=1))
+    response = _say(client, session_id, "down-0001", "Ik moet werken.")
+    assert response.status_code == 502
+    assert "injected fixture failure" in response.json()["detail"]
+    view = client.get(f"/practice/sessions/{session_id}", headers=auth_headers("down-view")).json()
+    assert view["turns"][0]["status"] == "failed" and view["evidence"] == []
+    assert view["session"]["appointment"] == {}
 
 
 class _Exploding:

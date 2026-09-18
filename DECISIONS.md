@@ -96,9 +96,13 @@ The conversation turn is one small LangGraph graph with typed state (`domains/pr
 `propose_action` (model, structured output `ProposedActionReply`) → `validate_action` (code,
 `apply_action` against the scenario's authoritative slots) → `compose_reply` (model, structured
 output `CharacterReply`, anchored on the scenario's fixed line for the current phase). The model
-interprets and phrases; it never decides. If the model fails, or if its reply announces a booking the
-code did not accept, the fixed line is used and the turn records `reply_source = fixed_line` plus the
-error text. Two model calls per turn (`MODEL_CALLS_PER_TURN`) and 1 800 tokens are reserved before
+interprets and phrases; it never decides. If the *reply* call fails, or if the reply announces a booking
+the code did not accept, the fixed line is used and the turn records `reply_source = fixed_line` plus
+the error text. If the *first* call fails (model unreachable, timeout) the turn fails with 502: without
+the model's reading no action can be recognised, so a fixed-line answer would only simulate a
+conversation and, in the checkpoint, burn the single attempt. Failed turns do not count against the
+step's turn limit. A refused connection to the chat endpoint is reported at once as unavailable, without
+the retry backoff meant for transient errors. Two model calls per turn (`MODEL_CALLS_PER_TURN`) and 1 800 tokens are reserved before
 the call, the measured usage is committed after it, and a failure releases both reservations.
 Prompt templates carry version tags (`propose-action-v1`, `character-reply-v1`) that are stored with
 every turn. Alternative considered: one call that both decides and replies; rejected because the

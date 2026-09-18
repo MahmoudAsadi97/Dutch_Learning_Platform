@@ -20,6 +20,14 @@ browser against `http://localhost:3000`).
 | Status panel | first `/api/health/preflight` took 20 s (Next.js dev compile on `/mnt/c`), then 200; panel now shows a hint after 8 s and times out at 45 s with a retry |
 | Findings fixed during the run | Docker WSL integration off (owner setting); ROS 2 `python3.10` entries on `PYTHONPATH` broke pytest (runner now strips foreign interpreters); `sudo npx` picked an old Node (documented `sudo env "PATH=$PATH"`); ffmpeg address-space cap; browser tests depended on the developer `.env` (now isolated); `next start` with standalone output (now opt-in); unhandled media-load abort on the microphone page (handled) |
 
+## Owner laptop, first M2 run, 2026-09-18 (evening)
+
+| Check | Result |
+|---|---|
+| `python scripts/run.py dev` after the pull | preflight: everything `ok` except **chat model unreachable** (Ollama was not running in WSL) — the conversation cannot start without it; whisper `small` on cpu/int8 and Piper present |
+| Microphone page | transcription 18.4 s on the first call (model load), 2.2 s on the next; synthesis 1.6 s |
+| Finding | a media-load `AbortError` surfaced once in the dev overlay while playing synthesis a second time; playback now runs each clip on its own `Audio` object whose `play()` promise is always observed (`lib/client/playback.ts`) |
+
 ## Status vocabulary
 
 | Status | Meaning |
@@ -65,7 +73,7 @@ over the appointment, not the model's language behaviour; the first real convers
 
 | Item | Status | Evidence |
 |---|---|---|
-| Turn workflow (propose → validate → compose, fixed-line fallback, versioned prompts) | `verified_workspace` (fixture model) / `implemented_local` (Ollama) | `tests/test_turns.py::test_workflow_*`: the fixture proposal is validated in code; an invented slot is refused and the model's "genoteerd" reply is replaced by the fixed line; two provider failures still yield the phase's fixed line with both errors recorded |
+| Turn workflow (propose → validate → compose, fixed-line fallback, versioned prompts) | `verified_workspace` (fixture model) / `implemented_local` (Ollama) | `tests/test_turns.py::test_workflow_*`: the fixture proposal is validated in code; an invented slot is refused and the model's "genoteerd" reply is replaced by the fixed line; a failing reply call yields the phase's fixed line with the error recorded; a failing first call fails the turn (`test_an_unreachable_model_fails_the_turn_instead_of_pretending`, 502, no evidence, no state change, turn budget untouched) |
 | Typed turn endpoint, evidence, skill record, usage | `verified_workspace` | `test_typed_turns_complete_the_speaking_step_with_evidence_and_usage`: reason → slot → confirm through the HTTP layer; 3 `typed_text` + 3 `action_result` evidence rows, speaking record `practised` with 6 evidence ids, `model_calls` used 6 / reserved 0, tokens and audio seconds counted |
 | Spoken turn endpoint (upload → WAV → transcript → turn) | `verified_workspace` (fixture STT) | `test_a_spoken_turn_records_the_transcript_as_evidence`: `transcript` evidence with the STT metadata and the recording asset; the recording is in the blob store; a repeated upload with the same request id is answered from the stored turn |
 | Character audio per turn | `verified_workspace` (fixture TTS) | `test_character_audio_is_served_and_labelled`: `audio/wav`, 16 kHz, `X-Audio-Label: synthetic-development`; another learner gets 404 |
@@ -78,7 +86,7 @@ over the appointment, not the model's language behaviour; the first real convers
 
 ## Test runs (final)
 
-- API, laptop: `pytest` → 80 passed (session 2). Workspace after session 3: **91 passed** (11 new turn tests, one practice test rewritten for the resume semantics).
+- API, laptop: `pytest` → 80 passed (session 2). Workspace after session 3: **94 passed** (14 new tests: turns, chat client fail-fast; one practice test rewritten for the resume semantics).
 - Browser, workspace after session 3: `python scripts/run.py e2e` → **21 passed** (desktop 13, tablet 4, phone-width 4); session 2 on the laptop: 18 passed.
 - Benchmark dry runs: 40/40 and 0/40.
 

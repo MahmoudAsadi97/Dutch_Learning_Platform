@@ -41,6 +41,10 @@ python scripts/run.py preflight    # what is configured and reachable; never pri
 python scripts/run.py dev          # API on 127.0.0.1:8000, web on http://localhost:3000
 ```
 
+Ollama must be running for the conversation (`ollama serve` in another terminal under WSL, or the
+Ollama app on Windows with `LOCAL_CHAT_BASE_URL` pointing at it); the preflight row *chat model*
+says whether it is reachable. Without it a turn fails with a clear message instead of a fake reply.
+
 Then open <http://localhost:3000>: the mission page renders the reading step and the speaking
 step (hold the button, speak, release; the receptionist answers through the local chat model and
 Piper; typed input is accepted in the practice step and stored as typed evidence), the checkpoint

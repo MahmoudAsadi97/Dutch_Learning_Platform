@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ContentLabel } from "@/components/ContentLabel";
 import { HelpLadder } from "@/components/HelpLadder";
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
+import { usePlayback } from "@/lib/client/playback";
 import { type Recording, talkButtonHandlers, useRecorder } from "@/lib/client/recorder";
 import type {
   CheckpointPayload,
@@ -81,15 +82,13 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
   const [audioLabel, setAudioLabel] = useState<string>("");
   const [audioNotice, setAudioNotice] = useState<string>("");
   const [playingTurnId, setPlayingTurnId] = useState<string>("");
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const objectUrlRef = useRef<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
   const listRef = useRef<HTMLOListElement | null>(null);
+  const playback = usePlayback();
 
   useEffect(() => {
     return () => {
       abortRef.current?.abort();
-      if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
     };
   }, []);
 
@@ -140,7 +139,8 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
         // 502: the model did not answer and the turn is recorded as failed; a retry needs a new request id.
         // Anything else that is not retryable (403, 409, 422) is shown; the learner changes the input.
         const retryWithSameId = cause.status >= 500 && cause.status !== 502;
-        setSend({ kind: "failed", pending, message: `${cause.detail} (request ${cause.requestId || pending.requestId})`, sameRequestId: retryWithSameId });
+        const lead = cause.status === 502 ? "Het taalmodel antwoordde niet. Probeer opnieuw. " : "";
+        setSend({ kind: "failed", pending, message: `${lead}${cause.detail} (request ${cause.requestId || pending.requestId})`, sameRequestId: retryWithSameId });
         if (cause.status === 502) await reload();
       } else {
         setSend({ kind: "failed", pending, message: "Geen verbinding met de server.", sameRequestId: true });
@@ -180,8 +180,7 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
   }
 
   async function playCharacterAudio(turn: TurnView) {
-    const audio = audioRef.current;
-    if (!session || !audio || !turn.character_audio_asset_id) {
+    if (!session || !turn.character_audio_asset_id) {
       if (turn.audio_error) setAudioNotice("Geen audio voor dit antwoord; lees de tekst.");
       return;
     }
@@ -191,20 +190,17 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
       if (!response.ok) throw new Error(`audio ${response.status}`);
       setAudioLabel(response.headers.get("x-audio-label") ?? "unknown");
       const wav = await response.blob();
-      audio.pause();
-      if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
-      const url = URL.createObjectURL(wav);
-      objectUrlRef.current = url;
-      audio.src = url;
       setPlayingTurnId(turn.id);
-      try {
-        await audio.play();
-      } catch (cause) {
-        const name = cause instanceof DOMException ? cause.name : "";
-        if (name !== "AbortError" && name !== "NotAllowedError") throw cause;
-        if (name === "NotAllowedError") setAudioNotice("Automatisch afspelen is geblokkeerd; gebruik de afspeelknop.");
+      const outcome = await playback.play(wav, () => setPlayingTurnId((current) => (current === turn.id ? "" : current)));
+      if (outcome.failed) {
+        setPlayingTurnId("");
+        setAudioNotice("Afspelen mislukt; lees de tekst van het antwoord.");
+      } else if (outcome.blocked) {
+        setPlayingTurnId("");
+        setAudioNotice("Automatisch afspelen is geblokkeerd; druk op \u201cspeel af\u201d bij het antwoord.");
       }
     } catch {
+      setPlayingTurnId("");
       setAudioNotice("Afspelen mislukt; lees de tekst van het antwoord.");
     }
   }
@@ -311,7 +307,6 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
             <p role="status" className="status-line" data-testid="step-status">
               {stepStatus}
             </p>
-            <audio ref={audioRef} controls data-testid="character-audio" style={{ width: "100%" }} />
             {audioLabel && (
               <p>
                 <span className="label warn" data-testid="character-audio-label">
@@ -435,6 +430,11 @@ function TurnBubbles({ turn, characterName, playing, onPlay }: { turn: TurnView;
           <span className="muted" style={{ display: "block", fontSize: "0.8rem" }}>
             {turn.reply_source === "fixed_line" ? "vaste zin" : "antwoord van het model"}
             {modelSeconds(turn) && ` · ${modelSeconds(turn)}`}
+            {turn.errors.length > 0 && (
+              <span className="label warn" data-testid="turn-model-error" title={turn.errors.join("; ")} style={{ marginInlineStart: "0.4rem" }}>
+                model antwoordde niet; vaste zin gebruikt
+              </span>
+            )}
             {turn.character_audio_asset_id && (
               <>
                 {" · "}

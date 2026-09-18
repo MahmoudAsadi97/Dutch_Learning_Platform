@@ -36,15 +36,18 @@ class FixtureChatModel(ChatModel):
     An entry may be a plain reply, or a rule table `{"rules": [{"any": [..substrings..], "reply": {...}}], "default": {...}}`
     that picks the reply by keywords in the last message (or in the whole prompt with `"match": "all"`), so a
     conversation can be driven deterministically through its phases without a model.
-    `fail_first` makes the first N calls raise, so retry and usage-release paths can be tested.
+    `fail_first` makes the first N calls raise and `fail_calls` names 1-based call numbers that raise,
+    so retry, fallback and usage-release paths can be tested.
     """
 
     name = "fixture"
     model = "fixture-chat-v1"
 
-    def __init__(self, replies: dict[str, Any] | None = None, *, fail_first: int = 0) -> None:
+    def __init__(self, replies: dict[str, Any] | None = None, *, fail_first: int = 0,
+                 fail_calls: tuple[int, ...] = ()) -> None:
         self.replies = replies or _load_json(FIXTURES_DIR / "chat_replies.json")
         self.fail_first = fail_first
+        self.fail_calls = set(fail_calls)
         self.calls: list[dict[str, Any]] = []
 
     def complete(
@@ -60,6 +63,8 @@ class FixtureChatModel(ChatModel):
         self.calls.append({"prompt_version": prompt_version, "messages": [m.content for m in messages]})
         if self.fail_first > 0:
             self.fail_first -= 1
+            raise ProviderError("injected fixture failure")
+        if len(self.calls) in self.fail_calls:
             raise ProviderError("injected fixture failure")
         reply = _select_reply(self.replies.get(prompt_version), messages)
         parsed: BaseModel | None = None

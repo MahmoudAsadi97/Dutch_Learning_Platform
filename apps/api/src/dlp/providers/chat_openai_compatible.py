@@ -18,7 +18,7 @@ from typing import Any, Literal
 import httpx
 from pydantic import BaseModel, ValidationError
 
-from dlp.providers.base import ChatMessage, ChatModel, ChatResult, ProviderError, SchemaT
+from dlp.providers.base import ChatMessage, ChatModel, ChatResult, ProviderError, ProviderUnavailable, SchemaT
 
 log = logging.getLogger(__name__)
 
@@ -161,6 +161,9 @@ class OpenAICompatibleChatModel(ChatModel):
                         attempts=attempt,
                         raw={"id": data.get("id"), "finish_reason": _finish_reason(data), "request_id": request_id},
                     )
+                except httpx.ConnectError as exc:
+                    # Nothing listens at the endpoint: retrying only delays the answer the learner needs.
+                    raise ProviderUnavailable(f"chat endpoint {self.endpoint.base_url} unreachable: {exc}") from exc
                 except (_Retryable, httpx.TimeoutException, httpx.TransportError) as exc:
                     last_error = exc
                     log.warning("chat attempt %s/%s failed (%s): %s", attempt, self.max_attempts, self.name, exc)

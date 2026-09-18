@@ -4,7 +4,7 @@ import httpx
 import pytest
 from pydantic import BaseModel
 
-from dlp.providers.base import ChatMessage, ProviderError
+from dlp.providers.base import ChatMessage, ProviderError, ProviderUnavailable
 from dlp.providers.chat_openai_compatible import ChatEndpoint, OpenAICompatibleChatModel, extract_json_object
 
 
@@ -91,6 +91,19 @@ def test_non_retryable_error_fails_immediately():
     with pytest.raises(ProviderError, match="HTTP 400"):
         _model(handler).complete([ChatMessage("user", "x")])
     assert calls == 1
+
+
+def test_a_refused_connection_fails_at_once_as_unavailable():
+    calls = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        raise httpx.ConnectError("[Errno 111] Connection refused", request=request)
+
+    with pytest.raises(ProviderUnavailable, match="unreachable"):
+        _model(handler).complete([ChatMessage("user", "x")])
+    assert calls == 1, "no retries against an endpoint that is not listening"
 
 
 def test_azure_endpoint_shape_and_key_header():

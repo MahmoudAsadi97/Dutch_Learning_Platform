@@ -40,8 +40,11 @@ class TurnOutcome:
 class TurnFailed(PracticeError):
     """The model did not answer. The failed turn row is kept so the failure is visible and countable."""
 
-    def __init__(self, turn: PracticeTurn | None) -> None:
-        super().__init__("the conversation model did not answer; try again", status_code=502)
+    def __init__(self, turn: PracticeTurn | None, cause: str = "") -> None:
+        detail = "the conversation model did not answer; try again"
+        if cause:
+            detail = f"{detail} ({cause})"
+        super().__init__(detail, status_code=502)
         self.turn = turn
 
 
@@ -69,9 +72,11 @@ def existing_turn(session: Session, practice: PracticeSession, request_id: str) 
 
 
 def turn_count_for(session: Session, practice: PracticeSession, step_key: str) -> int:
+    """Turns that count against the step's limit: failed turns (no model answer) do not use up the budget."""
     return session.scalar(
         select(func.count()).select_from(PracticeTurn)
-        .where(PracticeTurn.session_id == practice.id, PracticeTurn.step_key == step_key)
+        .where(PracticeTurn.session_id == practice.id, PracticeTurn.step_key == step_key,
+               PracticeTurn.status != "failed")
     ) or 0
 
 
@@ -106,7 +111,7 @@ def _history(practice: PracticeSession, step_key: str) -> list[tuple[str, str]]:
 
 def _deduplicated(practice: PracticeSession, turn: PracticeTurn, required_actions: list[str]) -> TurnOutcome:
     if turn.status == "failed":
-        raise TurnFailed(turn)
+        raise TurnFailed(turn, str(turn.model_meta.get("error", "")))
     state = AppointmentState.from_dict(practice.state.get("appointment"))
     return TurnOutcome(turn, True, required_actions_completed(state, required_actions), state.as_dict(),
                        str(turn.model_meta.get("reply_source", "")))
@@ -169,9 +174,10 @@ def submit_turn(
         usage.release(session, calls_reservation.id)
         usage.release(session, tokens_reservation.id)
         turn.status = "failed"
-        turn.model_meta = {**turn.model_meta, "error": f"{exc.__class__.__name__}: {exc}"[:300]}
+        error = f"{exc.__class__.__name__}: {exc}"[:300]
+        turn.model_meta = {**turn.model_meta, "error": error}
         session.flush()
-        raise TurnFailed(turn) from exc
+        raise TurnFailed(turn, error) from exc
 
     calls = result.get("model_calls", [])
     usage.commit(session, calls_reservation.id, float(len(calls)))

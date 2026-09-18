@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
+import { usePlayback } from "@/lib/client/playback";
 import { type Recording, talkButtonHandlers, useRecorder } from "@/lib/client/recorder";
 
 interface TranscriptResponse {
@@ -29,17 +30,7 @@ export function SpeechCheck() {
   const [ttsLabel, setTtsLabel] = useState<string>("");
   const [ttsBusy, setTtsBusy] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const objectUrlRef = useRef<string | null>(null);
-
-  // Release the playback buffer when the page goes away (navigation, hot reload).
-  useEffect(() => {
-    return () => {
-      if (objectUrlRef.current) {
-        URL.revokeObjectURL(objectUrlRef.current);
-        objectUrlRef.current = null;
-      }
-    };
-  }, []);
+  const playback = usePlayback();
 
   async function upload(recording: Recording) {
     setUploadPhase("uploading");
@@ -76,23 +67,10 @@ export function SpeechCheck() {
       }
       setTtsLabel(response.headers.get("x-audio-label") ?? "unknown");
       const wav = await response.blob();
-      const audio = audioRef.current;
-      if (audio) {
-        // Replacing the source while a previous load is pending makes the browser abort that load;
-        // pause first and drop the old buffer so the abort is expected and never surfaces as an error.
-        audio.pause();
-        if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
-        const url = URL.createObjectURL(wav);
-        objectUrlRef.current = url;
-        audio.src = url;
-        try {
-          await audio.play();
-        } catch (cause) {
-          const name = cause instanceof DOMException ? cause.name : "";
-          // AbortError: load interrupted (new source, page change). NotAllowedError: autoplay policy; the controls still work.
-          if (name !== "AbortError" && name !== "NotAllowedError") throw cause;
-        }
-      }
+      const outcome = await playback.play(wav);
+      if (audioRef.current) audioRef.current.src = outcome.url;
+      if (outcome.failed) setError("Afspelen mislukt; gebruik de afspeelknop van de speler.");
+      else if (outcome.blocked) setError("Automatisch afspelen is geblokkeerd; gebruik de afspeelknop van de speler.");
     } catch (cause) {
       setError(cause instanceof ApiError ? `Synthese mislukt: ${cause.detail}` : "Afspelen mislukt; gebruik de afspeelknop van de speler.");
     } finally {
