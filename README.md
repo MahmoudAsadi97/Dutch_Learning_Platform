@@ -45,7 +45,7 @@ Then open <http://localhost:3000>: the mission page renders the reading step, th
 microphone check page runs microphone → upload → ffmpeg → local transcription and synthetic playback.
 
 Checks: `python scripts/run.py test` (API), `python scripts/run.py e2e` (browser tests with
-fixture providers), `python scripts/run.py benchmark` (plumbing dry runs),
+fixture providers, a fixed fixture identity and the test database, independent of your `.env`), `python scripts/run.py benchmark` (plumbing dry runs),
 `python scripts/run.py acceptance` (check A01). `make <task>` wraps the same commands.
 
 ## Notes for WSL 2

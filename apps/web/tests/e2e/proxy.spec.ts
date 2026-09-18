@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+const OWNER = process.env.E2E_OWNER_EMAIL ?? "owner@example.com";
+
 /** The proxy is the trust boundary: these checks talk to it directly, without the UI. */
 test.describe("api proxy", () => {
   test("issues an assertion for the fixture principal and echoes request ids", async ({ request }) => {
@@ -7,7 +9,7 @@ test.describe("api proxy", () => {
     expect(response.status()).toBe(200);
     expect(response.headers()["x-request-id"]).toBe("e2e-preflight-0001");
     const body = await response.json();
-    expect(body.principal).toEqual({ email: "owner@example.com", identity_provider: "fixture" });
+    expect(body.principal).toEqual({ email: OWNER, identity_provider: "fixture" });
     expect(JSON.stringify(body)).not.toContain("ASSERTION");
   });
 
@@ -31,7 +33,7 @@ test.describe("api proxy", () => {
       headers: { Authorization: "Bearer forged", "X-MS-CLIENT-PRINCIPAL-ID": "someone" },
     });
     expect(spoofed.status()).toBe(200);
-    expect((await spoofed.json()).learner.email).toBe("owner@example.com");
+    expect((await spoofed.json()).learner.email).toBe(OWNER);
 
     const wrongHost = await request.get("/api/health", { headers: { Host: "example.com" } });
     expect(wrongHost.status()).toBe(403);

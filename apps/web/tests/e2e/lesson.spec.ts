@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+const OWNER = process.env.E2E_OWNER_EMAIL ?? "owner@example.com";
+
 test.describe("lesson shell: reading step", () => {
   test("renders the fixture reading step through the proxy with labels, help and questions", async ({ page }, testInfo) => {
     await page.goto("/missions/appointment-change");
@@ -62,7 +64,7 @@ test.describe("lesson shell: reading step", () => {
 test.describe("home", () => {
   test("shows the fixture principal and the preflight table", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByTestId("principal")).toContainText("owner@example.com");
+    await expect(page.getByTestId("principal")).toContainText(OWNER);
     await expect(page.getByTestId("principal")).toContainText("fixture");
     const rows = page.getByTestId("preflight").locator("tbody tr");
     await expect(rows).toHaveCount(10);

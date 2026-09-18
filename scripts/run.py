@@ -258,11 +258,21 @@ def task_dev() -> None:
         _stop(api, "api")
 
 
+E2E_OWNER_EMAIL = "owner@example.com"
+
+
 def task_e2e() -> None:
+    """Browser tests run against the test database with fixture providers and a fixed fixture identity,
+    so the developer's own `.env` (owner email, local models, dev database) never influences them."""
     env = load_env()
-    env.update({"APP_ENV": "development", "DEV_AUTH_ENABLED": "true", "CHAT_PROVIDER": "fixture",
-                "STT_PROVIDER": "fixture", "TTS_PROVIDER": "fixture", "BLOB_PROVIDER": "memory",
-                "JOB_LOOP_ENABLED": "false"})
+    env.update({
+        "APP_ENV": "development", "DEV_AUTH_ENABLED": "true",
+        "DEV_OWNER_EMAIL": E2E_OWNER_EMAIL, "DEV_OWNER_NAME": "Owner", "OWNER_ALLOWLIST": E2E_OWNER_EMAIL,
+        "E2E_OWNER_EMAIL": E2E_OWNER_EMAIL,
+        "DATABASE_URL": env.get("TEST_DATABASE_URL", "postgresql+psycopg://dlp:dlp@localhost:5432/dlp_test"),
+        "CHAT_PROVIDER": "fixture", "STT_PROVIDER": "fixture", "TTS_PROVIDER": "fixture", "BLOB_PROVIDER": "memory",
+        "JOB_LOOP_ENABLED": "false",
+    })
     sh([str(venv_python()), "-m", "alembic", "upgrade", "head"], cwd=API, env=env)
     sh([str(venv_python()), "-m", "dlp.cli", "load-fixture"], cwd=API, env=env)
     _require_free_ports(int(env.get("API_PORT", "8000")), int(env.get("WEB_PORT", "3000")))
