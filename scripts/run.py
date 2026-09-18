@@ -53,8 +53,29 @@ def venv_python() -> Path:
     return API / ".venv" / ("Scripts/python.exe" if WINDOWS else "bin/python")
 
 
+def _sanitised_pythonpath(value: str) -> str:
+    """Drop PYTHONPATH entries that belong to another Python (for example a ROS 2 installation's
+    python3.10 site-packages): they leak incompatible pytest plugins and packages into this environment."""
+    import re
+
+    current = f"python{sys.version_info.major}.{sys.version_info.minor}"
+    kept: list[str] = []
+    for entry in value.split(os.pathsep):
+        if not entry:
+            continue
+        versions = set(re.findall(r"python3\.\d+", entry.lower()))
+        if "/opt/ros/" in entry or (versions and current not in versions):
+            continue
+        kept.append(entry)
+    return os.pathsep.join(kept)
+
+
 def load_env() -> dict[str, str]:
     env = dict(os.environ)
+    if env.get("PYTHONPATH"):
+        env["PYTHONPATH"] = _sanitised_pythonpath(env["PYTHONPATH"])
+        if not env["PYTHONPATH"]:
+            del env["PYTHONPATH"]
     dotenv = ROOT / ".env"
     if dotenv.exists():
         for line in dotenv.read_text(encoding="utf-8").splitlines():
@@ -172,22 +193,28 @@ def _spawn(command: list[str], cwd: Path, env: dict[str, str]) -> subprocess.Pop
     return subprocess.Popen(command, cwd=cwd, env=env, **kwargs)
 
 
-def _stop(process: subprocess.Popen) -> None:
+def _stop(process: subprocess.Popen, name: str = "process") -> None:
+    """Terminate a child and its process group; escalate to SIGKILL on timeout or a second Ctrl+C."""
     if process.poll() is not None:
         return
+    print(f"stopping {name}…")
     try:
         if WINDOWS:
             subprocess.run(["taskkill", "/PID", str(process.pid), "/T", "/F"], capture_output=True, check=False)
         else:
             os.killpg(process.pid, signal.SIGTERM)
         process.wait(timeout=15)
-    except Exception:  # noqa: BLE001
+    except (Exception, KeyboardInterrupt):  # noqa: BLE001 - whatever happens, the child must die
         try:
             if not WINDOWS:
                 os.killpg(process.pid, signal.SIGKILL)
         except Exception:  # noqa: BLE001
             pass
         process.kill()
+        try:
+            process.wait(timeout=5)
+        except Exception:  # noqa: BLE001
+            pass
 
 
 def _wait_http(url: str, timeout: float = 60.0) -> None:
@@ -205,9 +232,19 @@ def _wait_http(url: str, timeout: float = 60.0) -> None:
     raise SystemExit(f"timed out waiting for {url}")
 
 
+def _warn_if_database_down(env: dict[str, str]) -> None:
+    from urllib.parse import urlparse
+
+    parsed = urlparse(env.get("DATABASE_URL", ""))
+    host, port = parsed.hostname or "127.0.0.1", parsed.port or 5432
+    if host in ("127.0.0.1", "localhost") and _port_free(port):
+        print(f"warning: no database is listening on {host}:{port}; run `python scripts/run.py services` first")
+
+
 def task_dev() -> None:
     env = load_env()
     _require_free_ports(int(env.get("API_PORT", "8000")), int(env.get("WEB_PORT", "3000")))
+    _warn_if_database_down(env)
     api = _spawn(api_command(env), API, env)
     web = _spawn([npm(), "run", "dev"], WEB, env)
     print("api on http://127.0.0.1:8000, web on http://localhost:3000 — Ctrl+C stops both")
@@ -215,10 +252,10 @@ def task_dev() -> None:
         while api.poll() is None and web.poll() is None:
             time.sleep(1)
     except KeyboardInterrupt:
-        pass
+        print()
     finally:
-        _stop(web)
-        _stop(api)
+        _stop(web, "web")
+        _stop(api, "api")
 
 
 def task_e2e() -> None:
@@ -237,8 +274,8 @@ def task_e2e() -> None:
         _wait_http(f"http://localhost:{env.get('WEB_PORT', '3000')}/")
         code = sh([npx(), "playwright", "test"], cwd=WEB, env=env, check=False)
     finally:
-        _stop(web)
-        _stop(api)
+        _stop(web, "web")
+        _stop(api, "api")
     sys.exit(code)
 
 

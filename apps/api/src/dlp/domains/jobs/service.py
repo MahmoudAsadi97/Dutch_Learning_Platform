@@ -6,7 +6,6 @@ import logging
 import random
 import socket
 import threading
-import time
 import traceback
 import uuid
 from collections.abc import Callable
@@ -194,9 +193,9 @@ class JobLoop:
                 if process_one(self.settings, self.worker_id):
                     self.processed += 1
                     continue
-            except Exception:  # noqa: BLE001 - the loop must survive database hiccups
-                log.exception("job loop iteration failed")
-                time.sleep(min(self.settings.job_poll_interval_seconds * 5, 30))
+            except Exception as exc:  # noqa: BLE001 - the loop must survive database hiccups
+                log.warning("job loop iteration failed (%s); retrying later", exc.__class__.__name__)
+                self._stop.wait(min(self.settings.job_poll_interval_seconds * 5, 30))
                 continue
             self._stop.wait(self.settings.job_poll_interval_seconds)
         log.info("job loop stopped after %s jobs", self.processed)

@@ -27,6 +27,8 @@ log = logging.getLogger("dlp")
 def _configure_logging(settings: Settings) -> None:
     logging.basicConfig(level=getattr(logging, settings.log_level.upper(), logging.INFO),
                         format="%(asctime)s %(levelname)s %(name)s %(message)s")
+    for noisy in ("azure", "azure.core.pipeline.policies.http_logging_policy", "httpx", "httpcore"):
+        logging.getLogger(noisy).setLevel(logging.WARNING)
 
 
 @asynccontextmanager

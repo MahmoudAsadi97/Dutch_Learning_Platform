@@ -48,6 +48,16 @@ Checks: `python scripts/run.py test` (API), `python scripts/run.py e2e` (browser
 fixture providers), `python scripts/run.py benchmark` (plumbing dry runs),
 `python scripts/run.py acceptance` (check A01). `make <task>` wraps the same commands.
 
+## Notes for WSL 2
+
+- Docker Desktop must have **Settings → Resources → WSL integration** switched on for the distro you
+  work in; otherwise `docker` does not exist inside WSL and `services` fails.
+- The task runner strips other Python installations (for example a ROS 2 `python3.10` tree) from
+  `PYTHONPATH` before it starts anything, so their pytest plugins cannot break the test run.
+- Before the first `e2e`, run `sudo npx playwright install-deps chromium` once inside `apps/web`
+  (headless Chromium needs a few system libraries).
+- `dev` binds the web app on port 3000; open <http://localhost:3000> in the Windows browser.
+
 ## Documents
 
 - `docs/ENGINEERING.md` — architecture, conventions, provider abstraction, trust boundaries, tests.
