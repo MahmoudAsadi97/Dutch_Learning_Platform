@@ -26,7 +26,7 @@ browser against `http://localhost:3000`).
 |---|---|
 | `python scripts/run.py dev` after the pull | preflight: everything `ok` except **chat model unreachable** (Ollama was not running in WSL) — the conversation cannot start without it; whisper `small` on cpu/int8 and Piper present |
 | Microphone page | transcription 18.4 s on the first call (model load), 2.2 s on the next; synthesis 1.6 s |
-| Whisper `small` vs `medium`, same sentence, same speaker | `small`: 7.2 s of speech → 1.9 s, two words wrong (*wendig*, a dropped last word). `medium`: 5.6 s → 5.1 s, *vandaag* now right, the last word still missing — consistent with the button being released on the last syllable; the recorder now keeps a 400 ms tail. The owner's laptop runs `medium` (`LOCAL_STT_MODEL=medium` in his `.env`); about 1 s of recognition per second of speech on this CPU |
+| Whisper `small` vs `medium`, same sentence (*Sorry, ik moet werken vandaag. Tot volgende.*), same speaker | `small`: 7.2 s of speech → 1.9 s, one word wrong (*wendig* for *vandaag*). `medium`: 5.6 s → 5.1 s, **transcript fully correct** (the owner confirmed the sentence ends with *volgende*; an earlier reading of it as a dropped word was wrong). The owner's laptop runs `medium` (`LOCAL_STT_MODEL=medium` in his `.env`); about 1 s of recognition per second of speech on this CPU. The recorder keeps a 400 ms tail after the button is released as a general precaution, not as a fix for this sentence |
 | Finding | a media-load `AbortError` surfaced once in the dev overlay while playing synthesis a second time; playback now runs each clip on its own `Audio` object whose `play()` promise is always observed (`lib/client/playback.ts`) |
 
 ## Status vocabulary
