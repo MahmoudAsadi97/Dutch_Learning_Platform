@@ -144,6 +144,17 @@ the client needs no scenario logic of its own. The fixture chat model (`provider
 resolves keyword rules from `tests/fixtures/chat_replies.json`, which is how the browser tests run
 the whole loop without a model.
 
+### 6.2 Evidence for the other steps, feedback, export
+
+`domains/practice/steps.py` judges reading and listening answers against the mission document and stores
+`answer` evidence; records help-ladder use (`help_used`); keeps the writing draft in `state.drafts` and
+stores the submitted message as `typed_text` evidence. `GET /missions/{id}/audio/{key}` synthesises a
+listening clip once and serves it from the blob store. `domains/feedback/service.py` produces one
+`feedback_reports` row per request: the model sees the step's evidence as handles and every point it
+returns must cite handles that resolve; the rest is dropped and counted (`dropped_points`). `GET /export`
+returns everything about the learner as one JSON document. Database connections run in UTC
+(`db/session.py`) so timestamps compare the same in the browser regardless of where they came from.
+
 ## 7. Usage counters and jobs
 
 `usage/service.py` reserves before every external call (`reserve` → `commit`/`release`), per

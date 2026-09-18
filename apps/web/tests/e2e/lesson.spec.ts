@@ -32,11 +32,13 @@ test.describe("lesson shell: reading step", () => {
     await ladder.getByRole("button", { name: /Hulp niveau 3/ }).click();
     await expect(ladder.locator(".rung").nth(2)).toHaveAttribute("dir", "rtl");
 
-    // questions can be answered and checked locally
+    // questions are judged by the API (a session is started on first use) and stored as evidence
     await page.getByLabel(/Woensdag om 14.00 uur/).check();
     await page.getByLabel(/Eén dag op voorhand bellen/).check();
     await page.getByRole("button", { name: /Controleer/ }).click();
     await expect(page.getByTestId("score")).toHaveText("2 van 2 juist");
+    await expect(page.getByTestId("read-reminder-done")).toBeVisible();
+    await expect(page.getByTestId("session-id")).toContainText(/[0-9a-f-]{36}/);
 
     // four skill records exist for the learner and mission
     await expect(page.getByTestId("skill-records").locator("li")).toHaveCount(4);
@@ -54,12 +56,17 @@ test.describe("lesson shell: reading step", () => {
     await expect(id).toContainText(/stap: (read-reminder|speak-call)/);
   });
 
-  test("steps that are not built yet show their loaded content and an M2 notice", async ({ page }) => {
+  test("the reading step offers feedback grounded in the recorded answers", async ({ page }) => {
     await page.goto("/missions/appointment-change");
-    await page.getByRole("button", { name: /Schrijven: het bericht/ }).click();
-    const step = page.locator('[data-step="write-message"]');
-    await expect(step).toContainText("automatisch bewaard");
-    await expect(step).toContainText("milestone M2");
+    const panel = page.getByTestId("read-reminder-feedback");
+    await panel.getByTestId("read-reminder-feedback-ask").click();
+    const report = panel.getByTestId("read-reminder-feedback-report");
+    await expect(report).toBeVisible({ timeout: 20_000 });
+    await expect(report.locator(".feedback-points li")).toHaveCount(2);
+    await expect(report.locator('[data-kind="strength"]')).toBeVisible();
+    await expect(report).toContainText("1 punt(en) weggelaten zonder geldig bewijs");
+    await expect(report).toContainText("fixture · fixture-chat-v1 · feedback-v1");
+    await expect(report.locator('[lang="fa"]').first()).toBeVisible();
   });
 });
 

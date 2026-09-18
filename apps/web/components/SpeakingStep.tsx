@@ -3,13 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 
 import { ContentLabel } from "@/components/ContentLabel";
+import { FeedbackPanel } from "@/components/FeedbackPanel";
 import { HelpLadder } from "@/components/HelpLadder";
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
 import { usePlayback } from "@/lib/client/playback";
+import { recordHelp } from "@/lib/client/practice";
 import { type Recording, talkButtonHandlers, useRecorder } from "@/lib/client/recorder";
 import type {
   CheckpointPayload,
   ConversationStepInfo,
+  HelpRung,
   SessionDetail,
   SpeakingPayload,
   Step,
@@ -177,6 +180,15 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
 
   function cancel() {
     abortRef.current?.abort();
+  }
+
+  async function recordHelpUse(rung: HelpRung) {
+    if (!detail) return;
+    try {
+      onDetail(await recordHelp(detail, step.key, rung));
+    } catch {
+      // the rung is shown regardless; the evidence is best effort
+    }
   }
 
   async function playCharacterAudio(turn: TurnView) {
@@ -388,8 +400,11 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
             </section>
             <section className="card" aria-labelledby="help-heading">
               <h3 id="help-heading">Hulp</h3>
-              <HelpLadder rungs={helpRungs} idPrefix={step.key} disabled={!helpAllowed} />
+              <HelpLadder rungs={helpRungs} idPrefix={step.key} disabled={!helpAllowed} onReveal={(rung) => void recordHelpUse(rung)} />
             </section>
+            {(!checkpoint || !sessionOpen) && (
+              <FeedbackPanel stepKey={step.key} detail={detail} onDetail={onDetail} onProgressChanged={onProgressChanged} />
+            )}
           </aside>
         </div>
       )}

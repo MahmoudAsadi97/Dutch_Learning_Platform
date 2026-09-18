@@ -1,13 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ContentLabel } from "@/components/ContentLabel";
+import { ListeningStep } from "@/components/ListeningStep";
 import { ReadingStep } from "@/components/ReadingStep";
 import { SpeakingStep } from "@/components/SpeakingStep";
+import { WritingStep } from "@/components/WritingStep";
 import { ApiError, apiJson, newRequestId } from "@/lib/client/api";
 import type {
   CheckpointPayload,
+  ListeningPayload,
   MissionResponse,
   PracticeSessionView,
   ReadingPayload,
@@ -15,6 +18,7 @@ import type {
   SkillRecordView,
   SpeakingPayload,
   Step,
+  WritingPayload,
 } from "@/lib/types";
 
 const SKILL_LABEL: Record<string, { nl: string; fa: string }> = {
@@ -48,6 +52,33 @@ async function loadMission(missionId: string): Promise<{ mission: MissionRespons
   return { mission, records: progress.skill_records.filter((r) => r.mission_id === missionId), sessions };
 }
 
+/**
+ * Updates arrive from independent calls (an answer, a help rung, an autosave) that each carry the detail they
+ * started from; merging by id keeps the newest of everything instead of letting the last reply win.
+ */
+function mergeDetail(current: SessionDetail | null, incoming: SessionDetail): SessionDetail {
+  if (!current || current.session.id !== incoming.session.id) return incoming;
+  const byId = <T extends { id: string }>(a: T[], b: T[]) => {
+    const map = new Map(a.map((item) => [item.id, item]));
+    for (const item of b) map.set(item.id, item);
+    return [...map.values()];
+  };
+  const at = (value: string) => Date.parse(value) || 0;
+  const newerSession = at(incoming.session.updated_at) >= at(current.session.updated_at) ? incoming.session : current.session;
+  const drafts = { ...current.drafts };
+  for (const [key, draft] of Object.entries(incoming.drafts ?? {})) {
+    if (!drafts[key] || at(draft.saved_at) >= at(drafts[key].saved_at)) drafts[key] = draft;
+  }
+  return {
+    ...incoming,
+    session: newerSession,
+    turns: byId(current.turns, incoming.turns).sort((a, b) => a.turn_index - b.turn_index),
+    evidence: byId(current.evidence, incoming.evidence).sort((a, b) => at(a.created_at) - at(b.created_at)),
+    feedback: byId(current.feedback, incoming.feedback),
+    drafts,
+  };
+}
+
 function describeError(error: unknown): { message: string; requestId: string } {
   return {
     message: error instanceof ApiError ? error.detail : "De API is niet bereikbaar.",
@@ -64,6 +95,12 @@ export function LessonShell({ missionId }: Props) {
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string>("");
   const [attempt, setAttempt] = useState(0);
+  const sessionsRef = useRef(sessions);
+  const pendingStartRef = useRef<Partial<Record<Variant, Promise<SessionDetail>>>>({});
+
+  useEffect(() => {
+    sessionsRef.current = sessions;
+  }, [sessions]);
 
   useEffect(() => {
     let cancelled = false;
@@ -91,19 +128,40 @@ export function LessonShell({ missionId }: Props) {
       });
   }, [missionId]);
 
+  /** The active session of a variant, started on first use. Concurrent callers share one request. */
+  const ensureSession = useCallback(
+    async (variant: Variant): Promise<SessionDetail> => {
+      const known = sessionsRef.current[variant];
+      if (known) return known;
+      const pending = pendingStartRef.current[variant];
+      if (pending) return pending;
+      // The same request id is reused on retry, so a double click cannot create two sessions;
+      // the server also resumes an active session of the same variant.
+      const request = apiJson<SessionDetail>("practice/sessions", {
+        method: "POST",
+        body: { mission_id: missionId, variant },
+        requestId: startRequestIds[variant],
+      })
+        .then((detail) => {
+          setSessions((current) => ({ ...current, [variant]: detail }));
+          sessionsRef.current = { ...sessionsRef.current, [variant]: detail };
+          return detail;
+        })
+        .finally(() => {
+          delete pendingStartRef.current[variant];
+        });
+      pendingStartRef.current[variant] = request;
+      return request;
+    },
+    [missionId, startRequestIds],
+  );
+
   async function startSession(variant: Variant) {
     setBusy(true);
     setNotice("");
     try {
-      // The same request id is reused on retry, so a double click cannot create two sessions;
-      // the server also resumes an active session of the same variant.
-      const detail = await apiJson<SessionDetail>("practice/sessions", {
-        method: "POST",
-        body: { mission_id: missionId, variant },
-        requestId: startRequestIds[variant],
-      });
-      setSessions((current) => ({ ...current, [variant]: detail }));
-      setNotice(detail.turns.length > 0 ? "Sessie hervat." : "Sessie gestart.");
+      const detail = await ensureSession(variant);
+      setNotice(detail.turns.length > 0 || detail.evidence.length > 0 ? "Sessie hervat." : "Sessie gestart.");
     } catch (error) {
       setNotice(error instanceof ApiError ? `Kon geen sessie starten: ${error.detail}` : "Kon geen sessie starten.");
     } finally {
@@ -112,7 +170,9 @@ export function LessonShell({ missionId }: Props) {
   }
 
   function setDetail(variant: Variant, detail: SessionDetail) {
-    setSessions((current) => ({ ...current, [variant]: detail }));
+    const merged = mergeDetail(sessionsRef.current[variant], detail);
+    sessionsRef.current = { ...sessionsRef.current, [variant]: merged };
+    setSessions((current) => ({ ...current, [variant]: merged }));
   }
 
   if (state.kind === "loading") {
@@ -216,7 +276,36 @@ export function LessonShell({ missionId }: Props) {
 
       <section>
         {active?.payload.type === "reading" ? (
-          <ReadingStep step={active as Step & { payload: ReadingPayload }} labels={mission.labels} />
+          <ReadingStep
+            key={active.key}
+            step={active as Step & { payload: ReadingPayload }}
+            labels={mission.labels}
+            detail={sessions[active.variant]}
+            ensureSession={() => ensureSession(active.variant)}
+            onDetail={(detail) => setDetail(active.variant, detail)}
+            onProgressChanged={refreshRecords}
+          />
+        ) : active?.payload.type === "listening" ? (
+          <ListeningStep
+            key={active.key}
+            missionId={missionId}
+            step={active as Step & { payload: ListeningPayload }}
+            labels={mission.labels}
+            detail={sessions[active.variant]}
+            ensureSession={() => ensureSession(active.variant)}
+            onDetail={(detail) => setDetail(active.variant, detail)}
+            onProgressChanged={refreshRecords}
+          />
+        ) : active?.payload.type === "writing" ? (
+          <WritingStep
+            key={`${active.key}-${sessions[active.variant]?.session.id ?? "none"}`}
+            step={active as Step & { payload: WritingPayload }}
+            labels={mission.labels}
+            detail={sessions[active.variant]}
+            ensureSession={() => ensureSession(active.variant)}
+            onDetail={(detail) => setDetail(active.variant, detail)}
+            onProgressChanged={refreshRecords}
+          />
         ) : active && (active.payload.type === "speaking" || active.payload.type === "checkpoint") ? (
           <SpeakingStep
             key={active.key}
@@ -243,10 +332,7 @@ export function LessonShell({ missionId }: Props) {
             <p className="fa" lang="fa">
               {active.instructions.fa}
             </p>
-            <p className="muted">
-              Deze stap ({active.payload.type}) wordt in milestone M2 gebouwd. De inhoud staat al in het missiebestand en is
-              geladen.
-            </p>
+            <p className="muted">Deze stap ({active.payload.type}) heeft nog geen weergave.</p>
           </article>
         ) : null}
       </section>

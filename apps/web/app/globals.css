@@ -374,3 +374,13 @@ table.plain td {
 .linklike[aria-pressed="true"] {
   font-weight: 600;
 }
+
+.feedback-points {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+.feedback-points li {
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--line);
+}

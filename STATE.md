@@ -1,8 +1,8 @@
 # State
 
-**Release 0.1, Phase A.** Updated 2026-09-18 (session 3; implementation day 2). Gate 1 passed on the owner's word ("start M2"); M2 is in progress.
-Next action (owner): pull, `python scripts/run.py dev`, have the first real conversation with the receptionist and report (OWNER_ACTIONS 7).
-Next action (build): session 4 — reading/listening/writing evidence, help-ladder evidence, feedback with cited evidence, JSON export.
+**Release 0.1, Phase A.** Updated 2026-09-18 (session 4; implementation day 2). M2 is functionally complete in the build workspace; Gate 2 opens once the owner has run the loop on the laptop.
+Next action (owner): pull, `python scripts/run.py dev`, walk the four steps and the checkpoint with the real providers, ask for feedback on each, and report (OWNER_ACTIONS 7–9).
+Next action (build): Gate 2 review; then M3.
 
 ## M1 — Validate the foundation (local)
 
@@ -32,12 +32,20 @@ tests, microphone check) and opened M2 with "start M2"; the decisions stand as w
 - [x] Turn endpoints: typed turn, spoken turn (upload → canonical WAV → transcript → same workflow), character audio, session resume, abandon, one-attempt checkpoint — `api/routes_practice.py`, 16 tests in `tests/test_turns.py` + `test_practice_api.py`
 - [x] Push-to-talk turn in the web app: record → send → learner bubble → character bubble → play, appointment panel, resume after reload, retry/cancel — `components/SpeakingStep.tsx`, `lib/client/recorder.ts`, `tests/e2e/conversation.spec.ts` (3 tests)
 - [x] Typed conversation labelled as typed evidence (API and web); refused in the checkpoint
-- [ ] Reading, listening, writing steps record evidence; autosave
-- [ ] Persian text-help ladder usage recorded as evidence
-- [ ] Feedback with cited evidence (`domains/feedback`)
+- [x] Reading, listening, writing steps record evidence (server-judged answers, typed message with word count); writing autosave — `domains/practice/steps.py`, `components/{QuestionList,ListeningStep,WritingStep}.tsx`
+- [x] Persian text-help ladder usage recorded as evidence (refused in the checkpoint)
+- [x] Feedback with cited evidence (`domains/feedback/service.py`, `feedback_reports`, `components/FeedbackPanel.tsx`): points without a real citation are dropped and counted
 - [x] Transfer variant; independent checkpoint with API-level restrictions (speech only, no help, one attempt, `ended` when the turns run out) and the matching UI; tool-level restrictions are moot until tools exist
-- [ ] Owner-only JSON export
+- [x] Owner-only JSON export (`GET /export`)
 - [x] Turn and request ids, retry recovery (same request id → same turn, failed turns kept), cancellation (abort + reconcile), code-validated appointment actions in the turn loop
+
+## Gate 2 (opens after the owner's laptop run)
+
+To present: the whole learning loop with real providers (reading → listening → speaking → writing →
+checkpoint), the evidence behind every skill record (`GET /export`), feedback with its citations and
+its dropped-point count, the decisions D-12 to D-14, `docs/GATE2_DEMO.md` for the language reviewer.
+Owner exercise: write one feedback-grounding test case (a point that quotes words the learner never
+said must be dropped) or run the demo script with a second person.
 
 ## M3 — Make it complete and hand over
 
@@ -56,3 +64,4 @@ tests, microphone check) and opened M2 with "start M2"; the decisions stand as w
 | 2026-09-18 | 2 | ~1 h 30 min | Laptop checkout, conda environment, WSL fixes (Docker integration, PYTHONPATH, ffmpeg cap, sudo PATH, e2e isolation), M1 verified on the laptop |
 | 2026-09-18 | 3 | ~1 h 55 min | M2 speaking loop: turn workflow, turn endpoints, fixture conversation rules, speaking step and checkpoint UI, recorder hook, 91 API tests and 21 browser tests pass; docs and decisions D-12/D-13 |
 | 2026-09-18 | 3b | ~0 h 45 min | Owner's first M2 run: Ollama not running → turn now fails clearly instead of pretending (502, budget untouched), refused connections fail fast; playback rewritten to avoid the media-load abort; whisper `small` vs `medium` compared on the laptop, recorder keeps a 400 ms tail; 94 API tests |
+| 2026-09-18 | 4 | ~1 h 40 min | M2 completed: answer, help and writing evidence, listening clip, feedback grounded in evidence (migration 0002), export; listening/writing/feedback UI; UTC fix; 101 API tests, 24 browser tests; Gate 2 demo notes |

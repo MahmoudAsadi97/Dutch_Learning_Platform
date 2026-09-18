@@ -126,3 +126,28 @@ A retry with the same request id returns the stored turn (or repeats its 502 whe
 and never runs the model twice; a failed turn is kept as a row with its error so the failure is
 visible and countable, and the response is returned rather than raised so the transaction commits.
 The browser client reuses the request id after a network failure and mints a new one after a 502.
+
+## D-14 · Evidence for the other three skills, feedback that can only cite evidence, the export
+
+Reading and listening answers are judged on the server against the mission document (`practice/steps.py`)
+and stored as `answer` evidence with the attempt number; the browser only collects choices. Every help
+rung opened is `help_used` evidence (refused in the checkpoint, capped by `help_policy.max_level`). The
+writing draft autosaves into the session state (`state.drafts`, not evidence); the submitted message is
+`typed_text` evidence with its word count and the required words found or missing, refused outside the
+word bounds. The listening clip is synthesised once from the transcript with the local voice, stored
+under the step's `audio_key` in the blob store with a sidecar that carries its label, and served from
+there afterwards; Phase B overwrites that object with the Azure `nl-BE` voice.
+
+Feedback (`domains/feedback/service.py`, one model call, `feedback-v1`) is only produced when the
+mission's `evidence_expectations` for the skill are met, including at least one code-validated action
+for speaking. The model sees the step's evidence as numbered handles (E1, E2, …) and must cite them per
+point; the code resolves handles to evidence ids and drops every point without a valid citation or with
+a quote that does not occur in the cited evidence. Dropped points are stored and counted, never shown.
+Reports live in `feedback_reports` (migration 0002); the skill record notes the report id. This is
+feedback on a step, never an assessment of the skill. The export (`GET /export`, owner allowlist) is one
+JSON document with the learner, the four skill records, every session with turns, evidence and feedback,
+and the usage snapshot.
+
+Every database connection is pinned to UTC (`options=-c timezone=UTC`): the API's ISO timestamps must
+compare the same whether a value was just written or loaded from PostgreSQL (whose server time zone is
+Europe/Brussels on the owner's Docker image), and the browser merges concurrent updates by instant.

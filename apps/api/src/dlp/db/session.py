@@ -17,7 +17,10 @@ def get_engine() -> Engine:
     global _engine, _session_factory
     if _engine is None:
         settings = get_settings()
-        _engine = create_engine(settings.database_url, pool_pre_ping=True, future=True)
+        # Every connection reports timestamps in UTC, whatever the server's own time zone is, so the
+        # ISO strings the API sends compare and sort the same way wherever they were loaded from.
+        _engine = create_engine(settings.database_url, pool_pre_ping=True, future=True,
+                                connect_args={"options": "-c timezone=UTC"})
         _session_factory = sessionmaker(bind=_engine, expire_on_commit=False, class_=Session)
     return _engine
 

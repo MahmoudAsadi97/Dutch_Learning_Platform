@@ -8,6 +8,8 @@ interface Props {
   rungs: HelpRung[];
   idPrefix: string;
   disabled?: boolean;
+  /** Called when a rung is opened; the parent records it as help-usage evidence. */
+  onReveal?: (rung: HelpRung) => void;
 }
 
 const KIND_LABEL: Record<HelpRung["kind"], { nl: string; fa: string }> = {
@@ -18,9 +20,9 @@ const KIND_LABEL: Record<HelpRung["kind"], { nl: string; fa: string }> = {
 
 /**
  * Persian text-help ladder: the learner reveals one rung at a time, lightest help first.
- * The number of rungs opened is reported to the parent later (M2) as help-usage evidence.
+ * Every rung opened is reported to the parent, which records it as help-usage evidence.
  */
-export function HelpLadder({ rungs, idPrefix, disabled = false }: Props) {
+export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Props) {
   const [revealed, setRevealed] = useState(0);
   const ordered = [...rungs].sort((a, b) => a.level - b.level);
   const next = ordered[revealed];
@@ -54,7 +56,14 @@ export function HelpLadder({ rungs, idPrefix, disabled = false }: Props) {
         ))}
       </ol>
       {next ? (
-        <button type="button" className="button secondary" onClick={() => setRevealed(revealed + 1)}>
+        <button
+          type="button"
+          className="button secondary"
+          onClick={() => {
+            setRevealed(revealed + 1);
+            onReveal?.(next);
+          }}
+        >
           Hulp niveau {next.level} · <span className="fa" lang="fa" style={{ display: "inline" }}>کمک سطح {next.level}</span>
         </button>
       ) : (

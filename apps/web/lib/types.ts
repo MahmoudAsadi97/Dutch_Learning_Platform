@@ -60,13 +60,24 @@ export interface CheckpointPayload {
   restrictions: { help_ladder: boolean; retry: boolean; typed_fallback: boolean; tools: string[] };
 }
 
-export interface OtherPayload {
-  type: "listening" | "writing";
-  help?: HelpRung[];
-  [key: string]: unknown;
+export interface ListeningPayload {
+  type: "listening";
+  audio_key: string;
+  transcript: LocalizedText;
+  questions: Question[];
+  help: HelpRung[];
 }
 
-export type StepPayload = ReadingPayload | SpeakingPayload | CheckpointPayload | OtherPayload;
+export interface WritingPayload {
+  type: "writing";
+  prompt: LocalizedText;
+  min_words: number;
+  max_words: number;
+  must_include: string[];
+  help: HelpRung[];
+}
+
+export type StepPayload = ReadingPayload | ListeningPayload | SpeakingPayload | CheckpointPayload | WritingPayload;
 
 export interface Step {
   key: string;
@@ -104,9 +115,17 @@ export interface AppointmentStateView {
 }
 
 export interface StepProgress {
-  turns: number;
-  completed: boolean;
-  modalities: string[];
+  completed?: boolean;
+  turns?: number;
+  modalities?: string[];
+  answered?: Record<string, boolean>;
+  attempts?: Record<string, number>;
+  correct?: number;
+  total?: number;
+  help_levels?: number[];
+  submissions?: number;
+  word_count?: number;
+  missing?: string[];
 }
 
 export interface PracticeSessionView {
@@ -174,11 +193,67 @@ export interface EvidenceView {
   created_at: string;
 }
 
+export interface DraftView {
+  text: string;
+  word_count: number;
+  saved_at: string;
+  submitted?: boolean;
+}
+
+export interface FeedbackPoint {
+  kind: "strength" | "error" | "suggestion";
+  skill: Skill;
+  text_nl: string;
+  text_fa: string;
+  quote: string;
+  correction: string;
+  evidence_ids: string[];
+}
+
+export interface FeedbackReportView {
+  id: string;
+  session_id: string;
+  step_key: string;
+  skill: Skill;
+  request_id: string;
+  task_completed: boolean;
+  summary_nl: string;
+  summary_fa: string;
+  points: FeedbackPoint[];
+  evidence_ids: string[];
+  dropped_points: number;
+  model_provider: string;
+  model_name: string;
+  prompt_version: string;
+  created_at: string;
+}
+
 export interface SessionDetail {
   session: PracticeSessionView;
   conversation: ConversationStepInfo[];
   turns: TurnView[];
   evidence: EvidenceView[];
+  drafts: Record<string, DraftView>;
+  feedback: FeedbackReportView[];
+  request_id: string;
+}
+
+export interface AnswerResponse {
+  evidence: EvidenceView;
+  correct: boolean;
+  answer_index: number;
+  step_completed: boolean;
+  answered: Record<string, boolean>;
+  session: PracticeSessionView;
+  request_id: string;
+}
+
+export interface WritingResponse {
+  evidence: EvidenceView;
+  word_count: number;
+  missing: string[];
+  step_completed: boolean;
+  session: PracticeSessionView;
   request_id: string;
 }
 

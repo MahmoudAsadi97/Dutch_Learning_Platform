@@ -83,12 +83,17 @@ over the appointment, not the model's language behaviour; the first real convers
 | Restrictions | `verified_workspace` | `test_turn_restrictions`: reading step 400, unknown step 404, other variant 409, empty text 422, typed input in the checkpoint 403; `test_max_turns_closes_the_step`: 409 at the limit |
 | One attempt at the transfer checkpoint; resume; abandon | `verified_workspace` | `test_the_transfer_checkpoint_allows_exactly_one_attempt`, `test_start_session_is_idempotent_and_resumes_the_active_session` |
 | Speaking step in the browser (push-to-talk, typed input labelled, bubbles, appointment panel, character audio, resume) | `verified_workspace` | `tests/e2e/conversation.spec.ts`: fake microphone → spoken turn labelled `gesproken · transcriptie`; typed turns to "Doel bereikt"; the audio label `synthetic-development`; skill record `practised`; a reload shows the four turns; the checkpoint shows no typed input, disabled help and its one-attempt rule. Screenshots inspected at 1440 px |
-| Reading/listening/writing evidence, help-ladder evidence, feedback, export | `not_started` | next M2 sessions |
+| Reading and listening answers as evidence (server-judged), skill records | `verified_workspace` | `tests/test_steps.py::test_reading_answers_are_judged_on_the_server_and_recorded`; browser: `lesson.spec.ts` (2/2 through the API, "stap voltooid"), `steps.spec.ts` (listening 1/1, `Luisteren: practised`) |
+| Listening clip synthesised once, labelled, served from the blob store | `verified_workspace` (fixture TTS) | `test_listening_audio_is_synthesised_once_and_labelled` (second request costs no audio seconds); browser: clip label `synthetic-development`, transcript toggle |
+| Help-ladder use as evidence; refused in the checkpoint | `verified_workspace` | `test_help_use_is_evidence_and_refused_in_the_checkpoint`; browser: a rung opened appears as `help_used` in the export |
+| Writing draft autosave; submission as typed evidence with word count | `verified_workspace` | `test_writing_draft_autosaves_and_the_submission_is_typed_evidence` (draft is not evidence; 422 under 25 words); browser: autosave shown as "bewaard hh:mm", submit → `Schrijven: practised`, draft restored after a reload |
+| Feedback grounded in evidence | `verified_workspace` (fixture model) | `test_feedback_cites_only_real_evidence`: 409 before the expectations are met; the fixture's third point cites E99 and is dropped (`dropped_points: 1`); every shown point cites real evidence ids; same request id → same report; `test_speaking_feedback_needs_a_code_validated_action`. Browser: the reading step shows two points, the dropped count and the model line |
+| Owner-only JSON export | `verified_workspace` | `test_export_is_complete_and_owner_only`; browser: `/api/export` through the proxy carries `Content-Disposition` and every evidence kind |
 
 ## Test runs (final)
 
-- API, laptop: `pytest` → 80 passed (session 2). Workspace after session 3: **94 passed** (14 new tests: turns, chat client fail-fast; one practice test rewritten for the resume semantics).
-- Browser, workspace after session 3: `python scripts/run.py e2e` → **21 passed** (desktop 13, tablet 4, phone-width 4); session 2 on the laptop: 18 passed.
+- API, laptop: `pytest` → 80 passed (session 2). Workspace after session 4: **101 passed** (turns, chat client fail-fast, steps, feedback, export).
+- Browser, workspace after session 4: `python scripts/run.py e2e` → **24 passed** (desktop 16, tablet 4, phone-width 4); session 2 on the laptop: 18 passed.
 - Benchmark dry runs: 40/40 and 0/40.
 
 ## Known gaps and honest limits
@@ -101,4 +106,5 @@ over the appointment, not the model's language behaviour; the first real convers
 6. The source duration of a MediaRecorder WebM upload reads 0.00 s (the container carries no duration); the canonical WAV's duration is what bounds and usage use. Showing "unknown" instead of 0.00 s is an M3 polish item.
 7. In development mode the first request to a route takes 10–20 s on `/mnt/c` (Next.js compiles on demand); production builds do not have this.
 8. The fixture chat model follows keyword rules, so the browser tests cannot show how `llama3.1:8b` phrases replies or reads a learner's Dutch; they show that whatever it proposes is validated in code and that a refused proposal never reaches the learner as a confirmation.
-9. Help-ladder use, reading/listening answers and the writing step are not yet recorded as evidence (next M2 sessions); the speaking skill record is the only one that moves.
+9. Feedback quality is unknown until the owner runs it against `llama3.1:8b`; what is verified is the grounding: a point without a real citation never reaches the learner. The Persian renderings in feedback come from the same model and are labelled as unreviewed.
+10. A bug found by the browser tests and fixed: PostgreSQL on the owner's stack reports `Europe/Brussels`, so loaded timestamps carried `+02:00` while fresh ones carried `+00:00`, and the browser's merge of concurrent updates kept the stale session. Connections are now pinned to UTC and the browser compares instants.

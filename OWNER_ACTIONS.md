@@ -34,6 +34,10 @@ Things only the owner can do. Each item is listed once; tick it when done.
    That report moves the turn loop from `verified_workspace` to `verified_local`.
 8. [ ] **Try the checkpoint once** (step 5 *Controle: de kapper*, speech only, no help, one attempt),
    or leave it for Gate 2 if you prefer to keep your single attempt for the demo.
+9. [ ] **Walk the other steps with the real providers** after `git pull`: reading (answers are now judged
+   by the API), listening (the clip is Piper's voice, synthesised once), writing (autosave, then submit),
+   and press *Vraag feedback* on each step. Report whether `llama3.1:8b` produces usable Dutch and
+   Persian in the feedback and how many points were dropped. Then Gate 2 can open (`docs/GATE2_DEMO.md`).
 
 ## Later (Phase B, after M3)
 
