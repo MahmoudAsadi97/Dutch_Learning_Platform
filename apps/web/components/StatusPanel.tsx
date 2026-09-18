@@ -20,27 +20,67 @@ const STATUS_CLASS: Record<string, string> = {
   pending_m3: "warn",
 };
 
+const TIMEOUT_MS = 45_000;
+
 export function StatusPanel() {
   const [data, setData] = useState<Preflight | null>(null);
   const [error, setError] = useState("");
+  const [attempt, setAttempt] = useState(0);
+  const [slow, setSlow] = useState(false);
 
   useEffect(() => {
-    apiJson<Preflight>("health/preflight")
-      .then(setData)
-      .catch((cause) => setError(cause instanceof ApiError ? `${cause.detail} (${cause.status})` : "De API is niet bereikbaar."));
-  }, []);
+    const controller = new AbortController();
+    let timedOut = false;
+    const slowTimer = window.setTimeout(() => setSlow(true), 8_000);
+    const abortTimer = window.setTimeout(() => {
+      timedOut = true;
+      controller.abort();
+    }, TIMEOUT_MS);
+    apiJson<Preflight>("health/preflight", { signal: controller.signal })
+      .then((payload) => {
+        setData(payload);
+        setError("");
+      })
+      .catch((cause: unknown) => {
+        if (cause instanceof ApiError) setError(`${cause.detail} (${cause.status})`);
+        else if (cause instanceof DOMException && cause.name === "AbortError") {
+          // An abort from the cleanup (navigation, strict-mode remount) is not an error; only the timeout is.
+          if (timedOut) setError(`Geen antwoord van de API binnen ${TIMEOUT_MS / 1000} seconden.`);
+        } else setError("De API is niet bereikbaar.");
+      })
+      .finally(() => {
+        window.clearTimeout(slowTimer);
+        window.clearTimeout(abortTimer);
+        setSlow(false);
+      });
+    return () => {
+      controller.abort();
+      window.clearTimeout(slowTimer);
+      window.clearTimeout(abortTimer);
+    };
+  }, [attempt]);
 
   if (error) {
     return (
-      <p className="error" role="alert">
-        {error}
-      </p>
+      <div role="alert">
+        <p className="error">{error}</p>
+        <button
+          type="button"
+          className="button secondary"
+          onClick={() => {
+            setError("");
+            setAttempt((n) => n + 1);
+          }}
+        >
+          Opnieuw proberen
+        </button>
+      </div>
     );
   }
   if (!data) {
     return (
       <p role="status" aria-live="polite">
-        Status laden…
+        Status laden…{slow && " De eerste aanvraag kan even duren (routes worden gecompileerd, providers worden gecontroleerd)."}
       </p>
     );
   }
