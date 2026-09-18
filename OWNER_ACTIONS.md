@@ -9,8 +9,7 @@ Things only the owner can do. Each item is listed once; tick it when done.
    were not available in session 1, so the mission content, the language targets and acceptance check
    A01 are provisional (see `DECISIONS.md` D-01). Fill the desktop OS/browser field in the profile.
 2. [x] **Run the foundation on the laptop.** Done 2026-09-18 in WSL 2 with the conda env `dlp`:
-   preflight all ok, e2e 18 passed. Still open: run `python scripts/run.py test` once more after the
-   ffmpeg fix and report the last line (expected `79 passed`).
+   preflight all ok, API tests 80 passed, browser tests 18 passed.
 3. [x] **Microphone check with the real local providers.** Done 2026-09-18: `local-faster-whisper`
    transcript correct, `local-piper` playback labelled `synthetic-development`.
 4. [ ] **Keep one real recording as a fixture.** Record a neutral sentence on the microphone page

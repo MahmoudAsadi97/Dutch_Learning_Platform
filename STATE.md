@@ -16,7 +16,7 @@ Next action: **Gate 1 review by the owner** (see the Gate 1 section). Nothing fr
 - [x] Fixed Dutch pack under 300 words (297), every text labelled unreviewed
 - [x] Usage counters (atomic reserve/commit/release, deduplication, concurrency test) and the durable job loop
 - [x] `STATE.md`, `OWNER_ACTIONS.md`, `DECISIONS.md`, `VALIDATION_REPORT.md`, `docs/ENGINEERING.md`
-- [x] Owner has run `preflight` (all ok), `e2e` (18 passed) and the microphone check on the laptop → statuses moved to `verified_local`; the final `test` count after the ffmpeg fix is still to be reported
+- [x] Owner has run `preflight` (all ok), `test` (80 passed), `e2e` (18 passed) and the microphone check on the laptop → statuses moved to `verified_local`
 - [ ] `PRODUCT_BRIEF.md` and `LEARNER_PROFILE.md` reconciled with the provisional content and A01 (they were not available in session 1; see DECISIONS D-01)
 
 ## Gate 1 (open)

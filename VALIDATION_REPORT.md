@@ -13,7 +13,7 @@ browser against `http://localhost:3000`).
 |---|---|
 | `python scripts/run.py preflight` | all ten rows `ok`: PostgreSQL 16.15, ffmpeg/ffprobe (conda), Ollama reachable with the configured model found, faster-whisper `small` on cpu/int8, Piper voice present, Azurite container reachable, job loop configured |
 | Migrations, fixture, A01 | `alembic upgrade head` → 0001; fixture loaded (297 Dutch words, 5 steps); A01 exercised by the API suite |
-| `python scripts/run.py test` | 73 passed / 6 failed on the first run; all six were `ffmpeg` refusing to start under the 512 MB address-space cap with the conda-forge build (fixed: cap 2048, single-threaded conversion, stderr logged). Re-run after the fix: **owner to confirm the final count** |
+| `python scripts/run.py test` | first run 73 passed / 6 failed, all six being `ffmpeg` refusing to start under the 512 MB address-space cap with the conda-forge build (fixed: cap 2048, single-threaded conversion, stderr logged); re-run after the fix: **80 passed in 13.06 s** (including the Gate 1 test) |
 | `python scripts/run.py e2e` | **18 passed** in headless Chromium on the laptop (desktop, tablet, phone widths; fixed fixture identity; test database) |
 | Microphone check, real providers, Windows browser | MediaRecorder `audio/webm;codecs=opus` → upload (matroska/opus, 48 kHz, 2 channels) → canonical WAV (pcm_s16le, 16 kHz, 1 channel, 7.35 s) → `local-faster-whisper · small · 4088 ms` → a correct transcript of a two-clause Dutch sentence; API log shows the whisper model download on first use and the VAD filter working |
 | Synthetic playback | `POST /speech/synthesize` 200 in 3.8 s → 3 s WAV from `local-piper` played in the browser with the `synthetic-development` label |
@@ -36,7 +36,7 @@ browser against `http://localhost:3000`).
 
 | Item | Status | Evidence |
 |---|---|---|
-| Docker Compose (PostgreSQL, Azurite) | `implemented_local` | file present; not started here (no Docker daemon in the workspace); the same PostgreSQL 16 and Azurite versions were run natively instead |
+| Docker Compose (PostgreSQL, Azurite) | `verified_local` | laptop: `python scripts/run.py services` started `dlp-postgres` (16.15) and `dlp-azurite`; the workspace ran the same services natively |
 | Alembic migration `0001` | `verified_local` | workspace: `alembic upgrade head` on `dlp` and `dlp_test`, 13 tables; laptop: applied to the Docker PostgreSQL 16.15 |
 | Mission schemas + fixture + A01 | `verified_local` | `python -m dlp.cli load-fixture` (297/300 words, 69 texts all unreviewed); `python -m dlp.cli acceptance --check A01` → 12/12 PASS; `tests/test_content.py` (10 rejection cases) |
 | Fixture identity → proxy → assertion → API | `verified_local` | `tests/e2e/proxy.spec.ts` (4 tests) and curl: 401 without assertion, 403 without anti-CSRF header, 403 cross-site origin, 403 non-localhost `Host`, forged `Authorization`/`X-MS-CLIENT-PRINCIPAL-ID` ignored; `tests/test_identity.py` (10 tests: expiry, audience, key, allowlist, alg=none, lifetime, production refusal) |
@@ -56,15 +56,15 @@ browser against `http://localhost:3000`).
 | Azure speech adapters | `not_started` | declared in `providers/speech_azure.py`, scheduled for M3 |
 | Web lint / type-check, API lint | pass | `npm run lint`, `npm run typecheck`, `ruff check src tests` |
 
-## Test runs (final, this session)
+## Test runs (final)
 
-- API: `pytest` → 78 passed, 1 skipped (the Azurite test skips when Azurite is down; it passed with Azurite running).
+- API, laptop: `pytest` → 80 passed. Workspace: 79 passed (80 with the Gate 1 test), the Azurite test skipping when Azurite is down.
 - Browser: `python scripts/run.py e2e` → 18 passed (desktop 10, tablet 4, phone-width 4).
 - Benchmark dry runs: 40/40 and 0/40.
 
 ## Known gaps and honest limits
 
-1. The API suite's re-run on the laptop after the ffmpeg fix has not been reported yet (73/79 before the fix, the six failures explained above).
+1. Docker Compose itself was only exercised on the laptop (`services` started `dlp-postgres` and `dlp-azurite`); the build workspace ran the same services natively.
 2. No real chat completion against Ollama has run yet; the client is unit-tested against a mock and Ollama is reachable. `benchmarks/language/harness.py --provider local` is the cheapest real exercise.
 3. `tone_1s.wav` and `speech-input.wav` are generated tones, not speech. `python -m dlp.cli export-recording <request id>` turns a laptop recording into `tests/fixtures/dutch_sentence.wav` (OWNER_ACTIONS 4); the recording made on 2026-09-18 contains personal data, so a neutral sentence is recommended for the committed fixture.
 4. The CI workflow is written but its first run on GitHub has not been observed from here.
