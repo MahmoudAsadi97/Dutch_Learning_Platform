@@ -51,6 +51,41 @@ def cmd_acceptance(args: argparse.Namespace) -> int:
     return 0 if report.passed else 1
 
 
+def cmd_export_recording(args: argparse.Namespace) -> int:
+    """Copy a stored learner recording (canonical WAV) plus a transcript sidecar out of the blob store."""
+    from pathlib import Path
+
+    from sqlalchemy import select
+
+    from dlp.db.session import session_scope
+    from dlp.domains.speech.models import AudioAsset
+    from dlp.providers.registry import get_providers
+
+    with session_scope() as session:
+        asset = session.scalar(
+            select(AudioAsset).where(AudioAsset.request_id == args.request_id, AudioAsset.kind == "recording")
+        )
+        if asset is None:
+            print(f"no recording with request id {args.request_id}", file=sys.stderr)
+            return 1
+        payload = {
+            "text": asset.meta.get("transcript", ""),
+            "provider": asset.provider,
+            "model": asset.meta.get("stt_model", ""),
+            "duration_seconds": asset.duration_seconds,
+            "recorded_at": asset.created_at.isoformat(),
+            "note": "recorded on the owner's laptop through the microphone check page; may contain personal data",
+        }
+        wav = get_providers().blob.get(asset.blob_key)
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_bytes(wav)
+    out.with_suffix(".json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"wrote {out} ({len(wav)} bytes, {asset.duration_seconds:.2f} s) and {out.with_suffix('.json').name}")
+    print("transcript:", payload["text"])
+    return 0
+
+
 def cmd_run_jobs(args: argparse.Namespace) -> int:
     from dlp.domains.jobs.service import drain
 
@@ -76,6 +111,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--mission", default="appointment-change")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_acceptance)
+
+    p = sub.add_parser("export-recording", help="write a stored recording and its transcript sidecar to disk")
+    p.add_argument("request_id", help="the request id shown on the microphone check page")
+    p.add_argument("--out", default="tests/fixtures/dutch_sentence.wav")
+    p.set_defaults(func=cmd_export_recording)
 
     p = sub.add_parser("run-jobs", help="drain runnable background jobs once")
     p.add_argument("--limit", type=int, default=100)
