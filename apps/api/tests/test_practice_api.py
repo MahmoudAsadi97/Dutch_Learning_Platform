@@ -22,22 +22,36 @@ def test_opening_a_mission_creates_four_skill_records(client, headers):
     assert all(r["status"] == "not_started" for r in records)
 
 
-def test_start_session_is_idempotent_per_request_id(client):
+def test_start_session_is_idempotent_and_resumes_the_active_session(client):
     body = {"mission_id": "appointment-change", "variant": "base"}
     first = client.post("/practice/sessions", headers=auth_headers("start-0001"), json=body)
     assert first.status_code == 201
     again = client.post("/practice/sessions", headers=auth_headers("start-0001"), json=body)
     assert again.json()["session"]["id"] == first.json()["session"]["id"]
+    # a new request while a session of this variant is active resumes it instead of opening a second one
     other = client.post("/practice/sessions", headers=auth_headers("start-0002"), json=body)
-    assert other.json()["session"]["id"] != first.json()["session"]["id"]
+    assert other.json()["session"]["id"] == first.json()["session"]["id"]
     assert first.json()["session"]["current_step_key"] == "read-reminder"
+    assert [c["step_key"] for c in first.json()["conversation"]] == ["speak-call"]
+    assert first.json()["conversation"][0]["opening_line"].startswith("Goeiedag, Tandartspraktijk")
 
     transfer = client.post("/practice/sessions", headers=auth_headers("start-0003"),
                            json={"mission_id": "appointment-change", "variant": "transfer"})
     assert transfer.json()["session"]["current_step_key"] == "checkpoint-transfer"
+    assert transfer.json()["conversation"][0]["typed_allowed"] is False
+    assert transfer.json()["conversation"][0]["help_allowed"] is False
 
     listing = client.get("/practice/sessions", headers=auth_headers("start-0004")).json()["sessions"]
-    assert len(listing) == 3
+    assert len(listing) == 2
+    only_base = client.get("/practice/sessions", params={"variant": "base", "status": "active"},
+                           headers=auth_headers("start-0005")).json()["sessions"]
+    assert [s["id"] for s in only_base] == [first.json()["session"]["id"]]
+
+    # after the base session is abandoned a fresh one can be started; the abandoned one keeps its record
+    closed = client.post(f"/practice/sessions/{first.json()['session']['id']}/abandon", headers=auth_headers("start-0006"))
+    assert closed.status_code == 200 and closed.json()["session"]["status"] == "abandoned"
+    fresh = client.post("/practice/sessions", headers=auth_headers("start-0007"), json=body)
+    assert fresh.status_code == 201 and fresh.json()["session"]["id"] != first.json()["session"]["id"]
 
 
 def test_sessions_are_private_to_their_learner(client):

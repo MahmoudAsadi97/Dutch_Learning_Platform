@@ -33,6 +33,9 @@ FIXTURES_DIR = Path(__file__).resolve().parents[3] / "tests" / "fixtures"
 class FixtureChatModel(ChatModel):
     """Answers from a canned table keyed by prompt version, or a generic JSON reply that fits the schema.
 
+    An entry may be a plain reply, or a rule table `{"rules": [{"any": [..substrings..], "reply": {...}}], "default": {...}}`
+    that picks the reply by keywords in the last message (or in the whole prompt with `"match": "all"`), so a
+    conversation can be driven deterministically through its phases without a model.
     `fail_first` makes the first N calls raise, so retry and usage-release paths can be tested.
     """
 
@@ -58,7 +61,7 @@ class FixtureChatModel(ChatModel):
         if self.fail_first > 0:
             self.fail_first -= 1
             raise ProviderError("injected fixture failure")
-        reply = self.replies.get(prompt_version)
+        reply = _select_reply(self.replies.get(prompt_version), messages)
         parsed: BaseModel | None = None
         if schema is not None:
             if isinstance(reply, dict):
@@ -160,6 +163,27 @@ def tone_wav(seconds: float, frequency: float = 440.0, sample_rate: int = 16000)
 def wav_duration_seconds(path: Path) -> float:
     with wave.open(str(path), "rb") as handle:
         return handle.getnframes() / float(handle.getframerate() or 16000)
+
+
+def _select_reply(entry: Any, messages: list[ChatMessage]) -> Any:
+    """Resolve a rule table against the messages; anything that is not a rule table is returned as is."""
+    if not isinstance(entry, dict) or "rules" not in entry:
+        return entry
+    last_raw = messages[-1].content if messages else ""
+    last = last_raw.lower()
+    everything = "\n".join(m.content for m in messages).lower()
+    chosen = entry.get("default")
+    for rule in entry.get("rules", []):
+        haystack = everything if rule.get("match") == "all" else last
+        needles = [str(n).lower() for n in rule.get("any", [])]
+        if needles and any(n in haystack for n in needles):
+            chosen = rule.get("reply")
+            break
+    if isinstance(chosen, dict):
+        quoted = last_raw.split('"')
+        utterance = quoted[1] if len(quoted) >= 3 else last_raw
+        chosen = {k: (utterance if v == "$last" else v) for k, v in chosen.items()}
+    return chosen
 
 
 def _load_json(path: Path) -> dict[str, Any]:

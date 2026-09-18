@@ -1,7 +1,7 @@
 # State
 
-**Release 0.1, Phase A.** Updated 2026-09-18 (session 2; implementation day 2). The repository is checked out on the owner's laptop and M1 is verified there.
-Next action: **Gate 1 review by the owner** (see the Gate 1 section). Nothing from M2 has been started.
+**Release 0.1, Phase A.** Updated 2026-09-18 (session 3; implementation day 2). Gate 1 passed on the owner's word ("start M2"); M2 is in progress.
+Next action: finish the speaking loop in the web app (session 3), then the remaining M2 steps.
 
 ## M1 — Validate the foundation (local)
 
@@ -19,25 +19,24 @@ Next action: **Gate 1 review by the owner** (see the Gate 1 section). Nothing fr
 - [x] Owner has run `preflight` (all ok), `test` (80 passed), `e2e` (18 passed) and the microphone check on the laptop → statuses moved to `verified_local`
 - [ ] `PRODUCT_BRIEF.md` and `LEARNER_PROFILE.md` reconciled with the provisional content and A01 (they were not available in session 1; see DECISIONS D-01)
 
-## Gate 1 (open)
+## Gate 1 (passed 2026-09-18)
 
-Presented: the running example (`python scripts/run.py dev`), one concrete data record (the `missions`
-row and its `mission_steps`, or a `practice_sessions` row created from the lesson page), the
-schema/auth/policy decisions in `DECISIONS.md`, the evidence in `VALIDATION_REPORT.md`, trade-offs
-in D-03/D-05/D-08. Owner exercise: `OWNER_ACTIONS.md` item 5 (write one test yourself).
-
-While Gate 1 is open the only permitted work is independent cleanup; no M2 features.
+Presented: the running example, the data records, the decisions D-01 to D-11, the evidence in
+`VALIDATION_REPORT.md`. The owner ran the foundation on the laptop (preflight, 80 API tests, 18 browser
+tests, microphone check) and opened M2 with "start M2"; the decisions stand as written (D-12).
 
 ## M2 — Complete the learning loop (local, speaking first)
 
-- [ ] Push-to-talk turn: record → transcribe → character reply (LangGraph workflow, typed state, structured output) → play → persist
-- [ ] Typed conversation labelled as typed evidence
+- [x] Turn workflow: LangGraph graph `propose_action` (model) → `validate_action` (code) → `compose_reply` (model), fixed-line fallback, versioned prompts — `domains/practice/{prompts,workflow,turns}.py`
+- [x] Turn endpoints: typed turn, spoken turn (upload → canonical WAV → transcript → same workflow), character audio, session resume, abandon, one-attempt checkpoint — `api/routes_practice.py`, 16 tests in `tests/test_turns.py` + `test_practice_api.py`
+- [ ] Push-to-talk turn in the web app: record → send → reply bubble → play (in progress)
+- [x] Typed conversation labelled as typed evidence (API); web input pending
 - [ ] Reading, listening, writing steps record evidence; autosave
 - [ ] Persian text-help ladder usage recorded as evidence
 - [ ] Feedback with cited evidence (`domains/feedback`)
 - [ ] Transfer variant; independent checkpoint with API- and tool-level restrictions
 - [ ] Owner-only JSON export
-- [ ] Turn and request ids, cancellation, retry recovery, code-validated appointment actions in the turn loop
+- [x] Turn and request ids, retry recovery (same request id → same turn, failed turns kept), code-validated appointment actions in the turn loop; cancellation in the web app pending
 
 ## M3 — Make it complete and hand over
 
@@ -54,3 +53,4 @@ While Gate 1 is open the only permitted work is independent cleanup; no M2 featu
 |---|---|---|---|
 | 2026-09-17 | 1 | ~2 h 05 min | M1 built and verified in the build workspace; pushed to `main`; Gate 1 handed over |
 | 2026-09-18 | 2 | ~1 h 30 min | Laptop checkout, conda environment, WSL fixes (Docker integration, PYTHONPATH, ffmpeg cap, sudo PATH, e2e isolation), M1 verified on the laptop |
+| 2026-09-18 | 3 | ~0 h 40 min so far | M2: turn workflow, turn endpoints, fixture conversation rules, 16 tests (91 API tests pass) |
