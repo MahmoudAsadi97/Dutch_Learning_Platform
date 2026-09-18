@@ -87,8 +87,8 @@ def cmd_export_recording(args: argparse.Namespace) -> int:
 
 
 LEARNER_DATA_TABLES = [
-    "usage_reservations", "usage_counters", "evidence_records", "practice_turns", "practice_sessions",
-    "skill_records", "audio_assets", "jobs", "learners",
+    "feedback_reports", "usage_reservations", "usage_counters", "evidence_records", "practice_turns",
+    "practice_sessions", "skill_records", "audio_assets", "jobs", "learners",
 ]
 
 

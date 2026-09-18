@@ -6,31 +6,216 @@
   "propose-action-v1": {
     "notes": "keyword rules on the learner's last utterance; the application validates every proposal in code",
     "rules": [
-      {"any": ["tot dan", "dat is goed", "akkoord", "in orde", "prima", "dat past"],
-       "reply": {"action": "confirm", "understood_nl": "De leerder bevestigt.", "confidence": 0.9}},
-      {"any": ["herhalen", "nog eens", "begrijp het niet", "versta u niet", "wat zegt u"],
-       "reply": {"action": "ask_repeat", "understood_nl": "De leerder vraagt om te herhalen.", "confidence": 0.9}},
-      {"any": ["annuleren", "afzeggen"],
-       "reply": {"action": "cancel", "understood_nl": "De leerder wil annuleren.", "confidence": 0.8}},
-      {"any": ["donderdag"], "reply": {"action": "accept_slot", "slot_id": "thu-1000", "understood_nl": "De leerder kiest donderdag.", "confidence": 0.9}},
-      {"any": ["vrijdag"], "reply": {"action": "accept_slot", "slot_id": "fri-1630", "understood_nl": "De leerder kiest vrijdag.", "confidence": 0.9}},
-      {"any": ["dinsdag"], "reply": {"action": "accept_slot", "slot_id": "tue-0900", "understood_nl": "De leerder kiest dinsdag.", "confidence": 0.9}},
-      {"any": ["zaterdag"], "reply": {"action": "accept_slot", "slot_id": "sat-1100", "understood_nl": "De leerder kiest zaterdag.", "confidence": 0.9}},
-      {"any": ["maandag"], "reply": {"action": "accept_slot", "slot_id": "mon-1700", "understood_nl": "De leerder kiest maandag.", "confidence": 0.9}},
-      {"any": ["zondag"], "reply": {"action": "accept_slot", "slot_id": "sun-0300", "understood_nl": "De leerder noemt een moment dat er niet is.", "confidence": 0.6}},
-      {"any": ["werken", "werk", "ziek", "examen", "kan niet", "omdat"],
-       "reply": {"action": "state_reason", "reason_text": "$last", "understood_nl": "De leerder geeft een reden.", "confidence": 0.9}}
+      {
+        "any": [
+          "tot dan",
+          "dat is goed",
+          "akkoord",
+          "in orde",
+          "prima",
+          "dat past"
+        ],
+        "reply": {
+          "action": "confirm",
+          "understood_nl": "De leerder bevestigt.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "any": [
+          "herhalen",
+          "nog eens",
+          "begrijp het niet",
+          "versta u niet",
+          "wat zegt u"
+        ],
+        "reply": {
+          "action": "ask_repeat",
+          "understood_nl": "De leerder vraagt om te herhalen.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "any": [
+          "annuleren",
+          "afzeggen"
+        ],
+        "reply": {
+          "action": "cancel",
+          "understood_nl": "De leerder wil annuleren.",
+          "confidence": 0.8
+        }
+      },
+      {
+        "any": [
+          "donderdag"
+        ],
+        "reply": {
+          "action": "accept_slot",
+          "slot_id": "thu-1000",
+          "understood_nl": "De leerder kiest donderdag.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "any": [
+          "vrijdag"
+        ],
+        "reply": {
+          "action": "accept_slot",
+          "slot_id": "fri-1630",
+          "understood_nl": "De leerder kiest vrijdag.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "any": [
+          "dinsdag"
+        ],
+        "reply": {
+          "action": "accept_slot",
+          "slot_id": "tue-0900",
+          "understood_nl": "De leerder kiest dinsdag.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "any": [
+          "zaterdag"
+        ],
+        "reply": {
+          "action": "accept_slot",
+          "slot_id": "sat-1100",
+          "understood_nl": "De leerder kiest zaterdag.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "any": [
+          "maandag"
+        ],
+        "reply": {
+          "action": "accept_slot",
+          "slot_id": "mon-1700",
+          "understood_nl": "De leerder kiest maandag.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "any": [
+          "zondag"
+        ],
+        "reply": {
+          "action": "accept_slot",
+          "slot_id": "sun-0300",
+          "understood_nl": "De leerder noemt een moment dat er niet is.",
+          "confidence": 0.6
+        }
+      },
+      {
+        "any": [
+          "werken",
+          "werk",
+          "ziek",
+          "examen",
+          "kan niet",
+          "omdat"
+        ],
+        "reply": {
+          "action": "state_reason",
+          "reason_text": "$last",
+          "understood_nl": "De leerder geeft een reden.",
+          "confidence": 0.9
+        }
+      }
     ],
-    "default": {"action": "none", "understood_nl": "Onduidelijk.", "confidence": 0.3}
+    "default": {
+      "action": "none",
+      "understood_nl": "Onduidelijk.",
+      "confidence": 0.3
+    }
   },
   "character-reply-v1": {
     "notes": "phase-based replies; an empty reply makes the application fall back to the scenario's fixed line",
     "rules": [
-      {"match": "all", "any": ["fase van het gesprek: closing"], "reply": {"reply_nl": "Prima, tot dan. Nog een fijne dag!"}},
-      {"match": "all", "any": ["fase van het gesprek: confirm"], "reply": {"reply_nl": ""}},
-      {"match": "all", "any": ["fase van het gesprek: offer_slots"], "reply": {"reply_nl": ""}},
-      {"match": "all", "any": ["fase van het gesprek: ask_reason"], "reply": {"reply_nl": "Dat is jammer. Waarom kunt u niet komen?"}}
+      {
+        "match": "all",
+        "any": [
+          "fase van het gesprek: closing"
+        ],
+        "reply": {
+          "reply_nl": "Prima, tot dan. Nog een fijne dag!"
+        }
+      },
+      {
+        "match": "all",
+        "any": [
+          "fase van het gesprek: confirm"
+        ],
+        "reply": {
+          "reply_nl": ""
+        }
+      },
+      {
+        "match": "all",
+        "any": [
+          "fase van het gesprek: offer_slots"
+        ],
+        "reply": {
+          "reply_nl": ""
+        }
+      },
+      {
+        "match": "all",
+        "any": [
+          "fase van het gesprek: ask_reason"
+        ],
+        "reply": {
+          "reply_nl": "Dat is jammer. Waarom kunt u niet komen?"
+        }
+      }
     ],
-    "default": {"reply_nl": "Sorry, kunt u dat herhalen?"}
+    "default": {
+      "reply_nl": "Sorry, kunt u dat herhalen?"
+    }
+  },
+  "feedback-v1": {
+    "notes": "one point per kind; the third cites a handle that does not exist and must be dropped by the application",
+    "summary_nl": "U hebt de opdracht gedaan. Uw zinnen zijn kort en duidelijk.",
+    "summary_fa": "شما تمرین را انجام دادید. جمله‌های شما کوتاه و روشن هستند.",
+    "task_completed": true,
+    "points": [
+      {
+        "kind": "strength",
+        "text_nl": "U gaf uw reden meteen.",
+        "text_fa": "شما بلافاصله دلیل خود را گفتید.",
+        "quote": "",
+        "correction": "",
+        "evidence": [
+          "E1"
+        ]
+      },
+      {
+        "kind": "suggestion",
+        "text_nl": "Zeg ook dag en uur van de nieuwe afspraak.",
+        "text_fa": "روز و ساعت قرار جدید را هم بگویید.",
+        "quote": "",
+        "correction": "",
+        "evidence": [
+          "E1",
+          "E2"
+        ]
+      },
+      {
+        "kind": "error",
+        "text_nl": "Dit punt verwijst naar bewijs dat niet bestaat.",
+        "text_fa": "",
+        "quote": "",
+        "correction": "",
+        "evidence": [
+          "E99"
+        ]
+      }
+    ]
   }
 }

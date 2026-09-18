@@ -13,6 +13,7 @@ from dlp.config import Settings
 from dlp.db.session import get_session
 from dlp.domains.content.schemas import CheckpointPayload, MissionDocument, SpeakingPayload
 from dlp.domains.content.service import get_mission, mission_document
+from dlp.domains.feedback.service import generate_feedback, report_view, reports_for
 from dlp.domains.practice.models import PracticeSession, PracticeTurn
 from dlp.domains.practice.service import (
     PracticeError,
@@ -21,6 +22,7 @@ from dlp.domains.practice.service import (
     list_sessions,
     start_session,
 )
+from dlp.domains.practice.steps import record_help_use, save_draft, submit_answer, submit_writing
 from dlp.domains.practice.turns import (
     TurnFailed,
     TurnOutcome,
@@ -50,6 +52,32 @@ class StartSessionRequest(BaseModel):
 class TypedTurnRequest(BaseModel):
     step_key: str = Field(pattern=r"^[a-z0-9_-]+$")
     text: str = Field(min_length=1, max_length=600)
+
+
+class AnswerRequest(BaseModel):
+    step_key: str = Field(pattern=r"^[a-z0-9_-]+$")
+    question_id: str = Field(pattern=r"^[a-z0-9_-]+$")
+    chosen_index: int = Field(ge=0, le=10)
+
+
+class HelpUseRequest(BaseModel):
+    step_key: str = Field(pattern=r"^[a-z0-9_-]+$")
+    level: int = Field(ge=1, le=3)
+    kind: str = Field(pattern=r"^(hint_nl|gloss_fa|translation_fa)$")
+    question_id: str = Field(default="", pattern=r"^[a-z0-9_-]*$")
+
+
+class DraftRequest(BaseModel):
+    text: str = Field(max_length=4000)
+
+
+class WritingRequest(BaseModel):
+    step_key: str = Field(pattern=r"^[a-z0-9_-]+$")
+    text: str = Field(min_length=1, max_length=4000)
+
+
+class FeedbackRequest(BaseModel):
+    step_key: str = Field(pattern=r"^[a-z0-9_-]+$")
 
 
 def _session_view(practice: PracticeSession) -> dict[str, Any]:
@@ -107,6 +135,8 @@ def _full_view(session: Session, practice: PracticeSession, request_id: str) -> 
         "conversation": _conversation_steps(document, practice),
         "turns": [turn_view(t) for t in practice.turns],
         "evidence": [evidence_view(e) for e in practice.evidence],
+        "drafts": practice.state.get("drafts") or {},
+        "feedback": [report_view(r) for r in reports_for(session, practice)],
         "request_id": request_id,
     }
 
@@ -300,3 +330,92 @@ def character_audio(
         "Cache-Control": "private, max-age=3600",
     }
     return Response(content=wav_bytes, media_type="audio/wav", headers=headers)
+
+
+@router.post("/sessions/{session_id}/answers")
+def answer(session_id: uuid.UUID, body: AnswerRequest, ctx: RequestContext = Depends(context_dep),
+           session: Session = Depends(get_session)) -> dict:
+    """An answer to a reading or listening question; correctness is decided here and stored as evidence."""
+    practice = _load(session, ctx, session_id)
+    try:
+        outcome = submit_answer(session, practice, step_key=body.step_key, question_id=body.question_id,
+                                chosen_index=body.chosen_index)
+    except PracticeError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    return {
+        "evidence": evidence_view(outcome.evidence), "correct": outcome.correct, "answer_index": outcome.answer_index,
+        "step_completed": outcome.step_completed, "answered": outcome.answered,
+        "session": _session_view(practice), "request_id": ctx.request_id,
+    }
+
+
+@router.post("/sessions/{session_id}/help")
+def help_used(session_id: uuid.UUID, body: HelpUseRequest, ctx: RequestContext = Depends(context_dep),
+              session: Session = Depends(get_session)) -> dict:
+    """One rung of the Persian help ladder was opened; recorded as evidence so feedback can see it."""
+    practice = _load(session, ctx, session_id)
+    try:
+        evidence = record_help_use(session, practice, step_key=body.step_key, level=body.level, kind=body.kind,
+                                   question_id=body.question_id)
+    except PracticeError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    return {"evidence": evidence_view(evidence), "session": _session_view(practice), "request_id": ctx.request_id}
+
+
+@router.put("/sessions/{session_id}/drafts/{step_key}")
+def draft(session_id: uuid.UUID, step_key: str, body: DraftRequest, ctx: RequestContext = Depends(context_dep),
+          session: Session = Depends(get_session)) -> dict:
+    """Autosave of the writing step; not evidence until the message is submitted."""
+    practice = _load(session, ctx, session_id)
+    try:
+        entry = save_draft(session, practice, step_key=step_key, text=body.text)
+    except PracticeError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    return {"draft": entry, "request_id": ctx.request_id}
+
+
+@router.post("/sessions/{session_id}/writing")
+def writing(session_id: uuid.UUID, body: WritingRequest, ctx: RequestContext = Depends(context_dep),
+            session: Session = Depends(get_session)) -> dict:
+    """The submitted message of the writing step, stored as typed evidence with its word count."""
+    practice = _load(session, ctx, session_id)
+    try:
+        outcome = submit_writing(session, practice, step_key=body.step_key, text=body.text)
+    except PracticeError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    return {
+        "evidence": evidence_view(outcome.evidence), "word_count": outcome.word_count, "missing": outcome.missing,
+        "step_completed": outcome.step_completed, "session": _session_view(practice), "request_id": ctx.request_id,
+    }
+
+
+@router.post("/sessions/{session_id}/feedback")
+def feedback(
+    session_id: uuid.UUID,
+    body: FeedbackRequest,
+    ctx: RequestContext = Depends(context_dep),
+    settings: Settings = Depends(settings_dep),
+    providers: Providers = Depends(providers_dep),
+    session: Session = Depends(get_session),
+) -> dict:
+    """Feedback on one step, every point tied to evidence ids that were verified before storing."""
+    practice = _load(session, ctx, session_id)
+    try:
+        report = generate_feedback(session, settings, providers, practice=practice, step_key=body.step_key,
+                                   request_id=ctx.request_id)
+    except UsageLimitExceeded as exc:
+        raise HTTPException(status_code=429, detail=str(exc)) from exc
+    except PracticeError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    except ProviderUnavailable as exc:
+        raise HTTPException(status_code=503, detail=f"feedback model unavailable: {exc}") from exc
+    except ProviderError as exc:
+        raise HTTPException(status_code=502, detail=f"feedback model failed: {exc}") from exc
+    return {"report": report_view(report), "request_id": ctx.request_id}
+
+
+@router.get("/sessions/{session_id}/feedback")
+def feedback_index(session_id: uuid.UUID, ctx: RequestContext = Depends(context_dep),
+                   session: Session = Depends(get_session)) -> dict:
+    practice = _load(session, ctx, session_id)
+    return {"reports": [report_view(r) for r in reports_for(session, practice)], "request_id": ctx.request_id}
