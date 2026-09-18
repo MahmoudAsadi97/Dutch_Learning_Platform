@@ -8,19 +8,16 @@ Things only the owner can do. Each item is listed once; tick it when done.
    (ignored by Git) and drop `PRODUCT_BRIEF.md`, `LEARNER_PROFILE.md` and the build prompt in it. They
    were not available in session 1, so the mission content, the language targets and acceptance check
    A01 are provisional (see `DECISIONS.md` D-01). Fill the desktop OS/browser field in the profile.
-2. [ ] **Run the foundation on the laptop.** `python scripts/run.py setup`, edit `.env`
-   (`DEV_OWNER_EMAIL`, `OWNER_ALLOWLIST`, a random 32+ character `ASSERTION_SIGNING_KEY`,
-   `LOCAL_CHAT_MODEL` = a model that `ollama list` shows), then `services`, `migrate`, `fixture`,
-   `python scripts/fetch_piper_voice.py`, `preflight`, `test`, `e2e`, `dev`.
-3. [ ] **Microphone check with the real local providers.** Open <http://localhost:3000/speech-check>
-   in the desktop browser named in the profile, hold the button, say a Dutch sentence, confirm the
-   transcript comes from `local-faster-whisper`, and play the synthetic sample (`local-piper`). The first
-   transcription downloads the whisper model (about 500 MB for `small`). Report the result; the
-   statuses in `VALIDATION_REPORT.md` then move from `verified_workspace` to `verified_local`.
-4. [ ] **Keep one real recording as a fixture.** After item 3, copy the canonical WAV of one sentence
-   (the API stores it under `recordings/…` in Azurite; the request id is shown on the page) to
-   `apps/api/tests/fixtures/dutch_sentence.wav` with a `dutch_sentence.json` sidecar holding the
-   transcript. Until then the tests use a generated tone.
+2. [x] **Run the foundation on the laptop.** Done 2026-09-18 in WSL 2 with the conda env `dlp`:
+   preflight all ok, e2e 18 passed. Still open: run `python scripts/run.py test` once more after the
+   ffmpeg fix and report the last line (expected `79 passed`).
+3. [x] **Microphone check with the real local providers.** Done 2026-09-18: `local-faster-whisper`
+   transcript correct, `local-piper` playback labelled `synthetic-development`.
+4. [ ] **Keep one real recording as a fixture.** Record a neutral sentence on the microphone page
+   (for example *Ik wil mijn afspraak verzetten.*), note the request id shown in the result table, then
+   run `cd apps/api && python -m dlp.cli export-recording <request id>`. That writes
+   `tests/fixtures/dutch_sentence.wav` and `dutch_sentence.json`. Commit them only if you are happy for
+   your voice to be in the repository; the recording from 2026-09-18 contains your name, so prefer a fresh neutral one.
 5. [ ] **Gate 1 exercise (write one test yourself).** In `apps/api/tests/test_actions.py` add a test
    that a learner cannot accept the slot `mon-1700` in the `dentist-base` scenario (it belongs to the
    hairdresser scenario). Skeleton: load the scenario like the other tests, build `ProposedAction(action="accept_slot", slot_id="mon-1700")`,

@@ -1,6 +1,6 @@
 # State
 
-**Release 0.1, Phase A.** Updated 2026-09-17 (session 1 of the six-week time-box; implementation day 1).
+**Release 0.1, Phase A.** Updated 2026-09-18 (session 2; implementation day 2). The repository is checked out on the owner's laptop and M1 is verified there.
 Next action: **Gate 1 review by the owner** (see the Gate 1 section). Nothing from M2 has been started.
 
 ## M1 — Validate the foundation (local)
@@ -11,12 +11,12 @@ Next action: **Gate 1 review by the owner** (see the Gate 1 section). Nothing fr
 - [x] Provider interfaces with local implementations (Ollama client, faster-whisper, Piper, Azurite) and fixture implementations
 - [x] Fixture identity through the proxy path (web proxy → signed assertion → API validation, allowlist, CSRF)
 - [x] Language-benchmark harness with 40 cases; dry runs labelled as a plumbing test (100 % / 0 %)
-- [x] Desktop smoke path microphone → upload → ffmpeg → transcription, plus synthetic playback — **verified in the build workspace with a fake microphone and the fixture transcriber; the owner's laptop run with faster-whisper and Piper is still to do** (OWNER_ACTIONS 1–3)
+- [x] Desktop smoke path microphone → upload → ffmpeg → transcription, plus synthetic playback — **verified on the owner's laptop on 2026-09-18 with faster-whisper and Piper in the Windows browser** (see VALIDATION_REPORT)
 - [x] Lesson shell rendering the reading step (labels, Persian toggle, vocabulary, questions, help ladder) at 1440 / 768 / 390 px
 - [x] Fixed Dutch pack under 300 words (297), every text labelled unreviewed
 - [x] Usage counters (atomic reserve/commit/release, deduplication, concurrency test) and the durable job loop
 - [x] `STATE.md`, `OWNER_ACTIONS.md`, `DECISIONS.md`, `VALIDATION_REPORT.md`, `docs/ENGINEERING.md`
-- [ ] Owner has run `python scripts/run.py preflight`, `test`, `e2e` and the microphone check on the laptop → statuses move from `verified_workspace` to `verified_local`
+- [x] Owner has run `preflight` (all ok), `e2e` (18 passed) and the microphone check on the laptop → statuses moved to `verified_local`; the final `test` count after the ffmpeg fix is still to be reported
 - [ ] `PRODUCT_BRIEF.md` and `LEARNER_PROFILE.md` reconciled with the provisional content and A01 (they were not available in session 1; see DECISIONS D-01)
 
 ## Gate 1 (open)
@@ -53,3 +53,4 @@ While Gate 1 is open the only permitted work is independent cleanup; no M2 featu
 | Date | Session | Elapsed | Work |
 |---|---|---|---|
 | 2026-09-17 | 1 | ~2 h 05 min | M1 built and verified in the build workspace; pushed to `main`; Gate 1 handed over |
+| 2026-09-18 | 2 | ~1 h 30 min | Laptop checkout, conda environment, WSL fixes (Docker integration, PYTHONPATH, ffmpeg cap, sudo PATH, e2e isolation), M1 verified on the laptop |
