@@ -20,7 +20,19 @@ Things only the owner can do. Each item is listed once; tick it when done.
 5. [x] **Gate 1 exercise.** `test_slot_from_another_scenario_is_refused` in `apps/api/tests/test_actions.py`
    was written at the owner's request on 2026-09-18 rather than by the owner; the owner runs it
    (`python scripts/run.py test`) as part of the review. A hands-on exercise is offered again at Gate 2.
-6. [ ] **Review and accept the Gate 1 decisions** in `DECISIONS.md` (D-01 to D-10), or say which to change.
+6. [x] **Review and accept the Gate 1 decisions.** Accepted implicitly on 2026-09-18 ("start M2"); recorded as D-12.
+
+## Now (M2)
+
+7. [ ] **Have the first real conversation.** `git pull`, `python scripts/run.py dev`, open the mission,
+   step 3 *Spreken: het telefoongesprek*, "Start het gesprek", hold the button and say why you cannot
+   come (for example *Ik moet werken.*), then choose one of the offered moments and confirm. The
+   receptionist's line comes from `llama3.1:8b`; her offer and confirmation lines are fixed
+   sentences the model may not change. Please note: whether the transcript was right, whether the
+   reply made sense, the time per turn (shown under each reply, with the model name), and anything odd.
+   That report moves the turn loop from `verified_workspace` to `verified_local`.
+8. [ ] **Try the checkpoint once** (step 5 *Controle: de kapper*, speech only, no help, one attempt),
+   or leave it for Gate 2 if you prefer to keep your single attempt for the demo.
 
 ## Later (Phase B, after M3)
 

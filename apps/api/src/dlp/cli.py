@@ -86,6 +86,32 @@ def cmd_export_recording(args: argparse.Namespace) -> int:
     return 0
 
 
+LEARNER_DATA_TABLES = [
+    "usage_reservations", "usage_counters", "evidence_records", "practice_turns", "practice_sessions",
+    "skill_records", "audio_assets", "jobs", "learners",
+]
+
+
+def cmd_reset_learner_data(args: argparse.Namespace) -> int:
+    """Empty every learner-generated table. Only for the test database: the name must end in `_test`."""
+    from sqlalchemy import text
+
+    from dlp.db.session import get_engine
+
+    settings = get_settings()
+    database = settings.database_url.rsplit("/", 1)[-1].split("?")[0]
+    if not database.endswith("_test") and not args.force:
+        print(f"refusing to reset {database!r}: the database name must end in _test (or pass --force)", file=sys.stderr)
+        return 2
+    if settings.app_env == "production":
+        print("refusing to reset learner data in production", file=sys.stderr)
+        return 2
+    with get_engine().begin() as connection:
+        connection.execute(text("TRUNCATE " + ", ".join(LEARNER_DATA_TABLES) + " CASCADE"))
+    print(f"learner data reset in {database}")
+    return 0
+
+
 def cmd_run_jobs(args: argparse.Namespace) -> int:
     from dlp.domains.jobs.service import drain
 
@@ -116,6 +142,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("request_id", help="the request id shown on the microphone check page")
     p.add_argument("--out", default="tests/fixtures/dutch_sentence.wav")
     p.set_defaults(func=cmd_export_recording)
+
+    p = sub.add_parser("reset-learner-data", help="empty the learner-generated tables of the test database")
+    p.add_argument("--force", action="store_true", help="allow a database whose name does not end in _test")
+    p.set_defaults(func=cmd_reset_learner_data)
 
     p = sub.add_parser("run-jobs", help="drain runnable background jobs once")
     p.add_argument("--limit", type=int, default=100)

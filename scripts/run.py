@@ -275,6 +275,8 @@ def task_e2e() -> None:
     })
     sh([str(venv_python()), "-m", "alembic", "upgrade", "head"], cwd=API, env=env)
     sh([str(venv_python()), "-m", "dlp.cli", "load-fixture"], cwd=API, env=env)
+    # every run starts from an empty learner history, so the conversation tests are repeatable
+    sh([str(venv_python()), "-m", "dlp.cli", "reset-learner-data"], cwd=API, env=env)
     _require_free_ports(int(env.get("API_PORT", "8000")), int(env.get("WEB_PORT", "3000")))
     sh([npm(), "run", "build"], cwd=WEB, env=env)
     api = _spawn(api_command(env), API, env)

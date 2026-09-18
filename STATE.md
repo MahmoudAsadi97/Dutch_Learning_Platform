@@ -1,7 +1,8 @@
 # State
 
 **Release 0.1, Phase A.** Updated 2026-09-18 (session 3; implementation day 2). Gate 1 passed on the owner's word ("start M2"); M2 is in progress.
-Next action: finish the speaking loop in the web app (session 3), then the remaining M2 steps.
+Next action (owner): pull, `python scripts/run.py dev`, have the first real conversation with the receptionist and report (OWNER_ACTIONS 7).
+Next action (build): session 4 — reading/listening/writing evidence, help-ladder evidence, feedback with cited evidence, JSON export.
 
 ## M1 — Validate the foundation (local)
 
@@ -29,14 +30,14 @@ tests, microphone check) and opened M2 with "start M2"; the decisions stand as w
 
 - [x] Turn workflow: LangGraph graph `propose_action` (model) → `validate_action` (code) → `compose_reply` (model), fixed-line fallback, versioned prompts — `domains/practice/{prompts,workflow,turns}.py`
 - [x] Turn endpoints: typed turn, spoken turn (upload → canonical WAV → transcript → same workflow), character audio, session resume, abandon, one-attempt checkpoint — `api/routes_practice.py`, 16 tests in `tests/test_turns.py` + `test_practice_api.py`
-- [ ] Push-to-talk turn in the web app: record → send → reply bubble → play (in progress)
-- [x] Typed conversation labelled as typed evidence (API); web input pending
+- [x] Push-to-talk turn in the web app: record → send → learner bubble → character bubble → play, appointment panel, resume after reload, retry/cancel — `components/SpeakingStep.tsx`, `lib/client/recorder.ts`, `tests/e2e/conversation.spec.ts` (3 tests)
+- [x] Typed conversation labelled as typed evidence (API and web); refused in the checkpoint
 - [ ] Reading, listening, writing steps record evidence; autosave
 - [ ] Persian text-help ladder usage recorded as evidence
 - [ ] Feedback with cited evidence (`domains/feedback`)
-- [ ] Transfer variant; independent checkpoint with API- and tool-level restrictions
+- [x] Transfer variant; independent checkpoint with API-level restrictions (speech only, no help, one attempt, `ended` when the turns run out) and the matching UI; tool-level restrictions are moot until tools exist
 - [ ] Owner-only JSON export
-- [x] Turn and request ids, retry recovery (same request id → same turn, failed turns kept), code-validated appointment actions in the turn loop; cancellation in the web app pending
+- [x] Turn and request ids, retry recovery (same request id → same turn, failed turns kept), cancellation (abort + reconcile), code-validated appointment actions in the turn loop
 
 ## M3 — Make it complete and hand over
 
@@ -53,4 +54,4 @@ tests, microphone check) and opened M2 with "start M2"; the decisions stand as w
 |---|---|---|---|
 | 2026-09-17 | 1 | ~2 h 05 min | M1 built and verified in the build workspace; pushed to `main`; Gate 1 handed over |
 | 2026-09-18 | 2 | ~1 h 30 min | Laptop checkout, conda environment, WSL fixes (Docker integration, PYTHONPATH, ffmpeg cap, sudo PATH, e2e isolation), M1 verified on the laptop |
-| 2026-09-18 | 3 | ~0 h 40 min so far | M2: turn workflow, turn endpoints, fixture conversation rules, 16 tests (91 API tests pass) |
+| 2026-09-18 | 3 | ~1 h 55 min | M2 speaking loop: turn workflow, turn endpoints, fixture conversation rules, speaking step and checkpoint UI, recorder hook, 91 API tests and 21 browser tests pass; docs and decisions D-12/D-13 |

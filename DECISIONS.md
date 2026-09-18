@@ -85,3 +85,40 @@ and keeps `verified_local` for the owner's laptop. Nothing is claimed as verifie
 
 The owner works on Windows with Docker Desktop and WSL 2. `scripts/run.py` (plain Python) runs
 every routine task on Windows, WSL, macOS and Linux; the `Makefile` only delegates to it.
+
+## D-12 · Gate 1 outcome and the shape of the turn loop
+
+Gate 1 closed on 2026-09-18: the owner ran the foundation on the laptop (VALIDATION_REPORT, owner
+laptop run) and opened M2 with "start M2"; D-01 to D-11 stand unchanged. The instruction files are
+still absent, so the mission content and A01 remain provisional (D-01).
+
+The conversation turn is one small LangGraph graph with typed state (`domains/practice/workflow.py`):
+`propose_action` (model, structured output `ProposedActionReply`) → `validate_action` (code,
+`apply_action` against the scenario's authoritative slots) → `compose_reply` (model, structured
+output `CharacterReply`, anchored on the scenario's fixed line for the current phase). The model
+interprets and phrases; it never decides. If the model fails, or if its reply announces a booking the
+code did not accept, the fixed line is used and the turn records `reply_source = fixed_line` plus the
+error text. Two model calls per turn (`MODEL_CALLS_PER_TURN`) and 1 800 tokens are reserved before
+the call, the measured usage is committed after it, and a failure releases both reservations.
+Prompt templates carry version tags (`propose-action-v1`, `character-reply-v1`) that are stored with
+every turn. Alternative considered: one call that both decides and replies; rejected because the
+reply would then have to be parsed to find out what the model "did", and the code could no longer
+be the authority on the appointment.
+
+Typed and spoken turns share `submit_turn`; the spoken path only adds upload → canonical WAV →
+transcript in front of it. Evidence is written per turn: `transcript` (speech) or `typed_text`
+(typed, labelled as such) plus `action_result`; the skill record for speaking moves to
+`in_progress` on the first turn and to `practised` (speaking step) or `checkpoint_passed`
+(checkpoint) when the required actions are done.
+
+## D-13 · Session semantics: resume, one attempt at the checkpoint, failed turns kept
+
+One active practice session per learner, mission and variant: `POST /practice/sessions` resumes the
+active session of that variant instead of opening a second one, and the lesson page loads active
+sessions on every visit, so a reload never loses a conversation. `POST …/abandon` closes a session
+without completing it. A variant whose checkpoint declares `retry: false` gets exactly one session:
+once it is `completed`, `ended` (turns exhausted) or `abandoned`, a new one is refused with 409.
+A retry with the same request id returns the stored turn (or repeats its 502 when that turn failed)
+and never runs the model twice; a failed turn is kept as a row with its error so the failure is
+visible and countable, and the response is returned rather than raised so the transaction commits.
+The browser client reuses the request id after a network failure and mints a new one after a 502.

@@ -41,8 +41,11 @@ python scripts/run.py preflight    # what is configured and reachable; never pri
 python scripts/run.py dev          # API on 127.0.0.1:8000, web on http://localhost:3000
 ```
 
-Then open <http://localhost:3000>: the mission page renders the reading step, the
-microphone check page runs microphone → upload → ffmpeg → local transcription and synthetic playback.
+Then open <http://localhost:3000>: the mission page renders the reading step and the speaking
+step (hold the button, speak, release; the receptionist answers through the local chat model and
+Piper; typed input is accepted in the practice step and stored as typed evidence), the checkpoint
+step (speech only, no help, one attempt), and the microphone check page runs
+microphone → upload → ffmpeg → local transcription and synthetic playback.
 
 Checks: `python scripts/run.py test` (API), `python scripts/run.py e2e` (browser tests with
 fixture providers, a fixed fixture identity and the test database, independent of your `.env`), `python scripts/run.py benchmark` (plumbing dry runs),

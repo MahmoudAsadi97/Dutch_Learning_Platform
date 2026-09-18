@@ -44,19 +44,21 @@ test.describe("lesson shell: reading step", () => {
     await page.screenshot({ path: testInfo.outputPath(`lesson-${testInfo.project.name}.png`), fullPage: true });
   });
 
-  test("starting a session goes through the CSRF-protected proxy path and is idempotent", async ({ page }) => {
+  test("the session card starts a session through the CSRF-protected proxy path or shows the resumed one", async ({ page }) => {
     await page.goto("/missions/appointment-change");
-    await page.getByRole("button", { name: "Start een oefensessie" }).click();
+    const start = page.getByRole("button", { name: "Start een oefensessie" });
     const id = page.getByTestId("session-id");
+    await expect(start.or(id)).toBeVisible();
+    if (await start.isVisible()) await start.click();
     await expect(id).toContainText(/[0-9a-f-]{36}/);
-    await expect(id).toContainText("stap: read-reminder");
+    await expect(id).toContainText(/stap: (read-reminder|speak-call)/);
   });
 
-  test("other steps show their loaded content and an M2 notice", async ({ page }) => {
+  test("steps that are not built yet show their loaded content and an M2 notice", async ({ page }) => {
     await page.goto("/missions/appointment-change");
-    await page.getByRole("button", { name: /Controle: de kapper/ }).click();
-    const step = page.locator('[data-step="checkpoint-transfer"]');
-    await expect(step).toContainText("geen hulp en geen herkansing");
+    await page.getByRole("button", { name: /Schrijven: het bericht/ }).click();
+    const step = page.locator('[data-step="write-message"]');
+    await expect(step).toContainText("automatisch bewaard");
     await expect(step).toContainText("milestone M2");
   });
 });

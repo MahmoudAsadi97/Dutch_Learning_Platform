@@ -39,11 +39,34 @@ export interface ReadingPayload {
   help: HelpRung[];
 }
 
+export interface SpeakingPayload {
+  type: "speaking";
+  scenario_id: string;
+  goal: LocalizedText;
+  required_actions: string[];
+  max_turns: number;
+  modality: "push_to_talk";
+  typed_fallback_allowed: boolean;
+  help: HelpRung[];
+}
+
+export interface CheckpointPayload {
+  type: "checkpoint";
+  scenario_id: string;
+  goal: LocalizedText;
+  required_actions: string[];
+  max_turns: number;
+  independent: true;
+  restrictions: { help_ladder: boolean; retry: boolean; typed_fallback: boolean; tools: string[] };
+}
+
 export interface OtherPayload {
-  type: "listening" | "speaking" | "writing" | "checkpoint";
+  type: "listening" | "writing";
   help?: HelpRung[];
   [key: string]: unknown;
 }
+
+export type StepPayload = ReadingPayload | SpeakingPayload | CheckpointPayload | OtherPayload;
 
 export interface Step {
   key: string;
@@ -51,7 +74,7 @@ export interface Step {
   title: LocalizedText;
   instructions: LocalizedText;
   variant: "base" | "transfer";
-  payload: ReadingPayload | OtherPayload;
+  payload: StepPayload;
 }
 
 export interface MissionResponse {
@@ -71,14 +94,102 @@ export interface MissionResponse {
   request_id: string;
 }
 
+export interface AppointmentStateView {
+  reason_stated?: boolean;
+  offered_slot_ids?: string[];
+  accepted_slot_id?: string;
+  confirmed?: boolean;
+  cancelled?: boolean;
+  actions?: string[];
+}
+
+export interface StepProgress {
+  turns: number;
+  completed: boolean;
+  modalities: string[];
+}
+
 export interface PracticeSessionView {
   id: string;
   mission_id: string;
-  variant: string;
-  status: string;
+  variant: "base" | "transfer";
+  status: "active" | "completed" | "ended" | "abandoned";
   current_step_key: string;
   request_id: string;
+  appointment: AppointmentStateView;
+  step_progress: Record<string, StepProgress>;
   started_at: string;
+  updated_at: string;
+  completed_at: string | null;
+  turn_count: number;
+  evidence_count: number;
+}
+
+export interface ConversationStepInfo {
+  step_key: string;
+  type: "speaking" | "checkpoint";
+  opening_line: string;
+  character: { name: string; role: LocalizedText; register: "formal" | "informal" };
+  goal: LocalizedText;
+  required_actions: string[];
+  max_turns: number;
+  typed_allowed: boolean;
+  help_allowed: boolean;
+  retry_allowed: boolean;
+  slots: { id: string; day: string; start: string }[];
+}
+
+export interface TurnView {
+  id: string;
+  turn_index: number;
+  step_key: string;
+  request_id: string;
+  modality: "speech" | "typed";
+  learner_text: string;
+  learner_audio_asset_id: string | null;
+  character_text: string;
+  character_audio_asset_id: string | null;
+  proposed_action: { action: string; reason_text?: string; slot_id?: string; confidence?: number } | null;
+  action_result: { accepted: boolean; action: string; reason: string; slot_id?: string } | null;
+  phase: string | null;
+  reply_source: "model" | "fixed_line" | null;
+  understood_nl: string;
+  model_calls: { step: string; prompt_version: string; provider: string; model: string; latency_ms: number }[];
+  errors: string[];
+  error: string | null;
+  audio_error: string | null;
+  status: "pending" | "completed" | "failed";
+  created_at: string;
+}
+
+export interface EvidenceView {
+  id: string;
+  turn_id: string | null;
+  step_key: string;
+  skill: Skill;
+  kind: string;
+  modality: string;
+  payload: Record<string, unknown>;
+  source: string;
+  created_at: string;
+}
+
+export interface SessionDetail {
+  session: PracticeSessionView;
+  conversation: ConversationStepInfo[];
+  turns: TurnView[];
+  evidence: EvidenceView[];
+  request_id: string;
+}
+
+export interface TurnResponse {
+  turn: TurnView;
+  deduplicated: boolean;
+  step_completed: boolean;
+  appointment: AppointmentStateView;
+  reply_source: string;
+  session: PracticeSessionView;
+  request_id: string;
 }
 
 export interface SkillRecordView {

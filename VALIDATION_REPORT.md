@@ -56,18 +56,40 @@ browser against `http://localhost:3000`).
 | Azure speech adapters | `not_started` | declared in `providers/speech_azure.py`, scheduled for M3 |
 | Web lint / type-check, API lint | pass | `npm run lint`, `npm run typecheck`, `ruff check src tests` |
 
+## M2 items (session 3, 2026-09-18, build workspace)
+
+The workspace has no Ollama, so the model-backed loop ran with the fixture chat model (keyword
+rules, `tests/fixtures/chat_replies.json`). What that proves is the plumbing and the code's authority
+over the appointment, not the model's language behaviour; the first real conversation is the owner's
+(OWNER_ACTIONS 7) and moves the loop to `verified_local`.
+
+| Item | Status | Evidence |
+|---|---|---|
+| Turn workflow (propose → validate → compose, fixed-line fallback, versioned prompts) | `verified_workspace` (fixture model) / `implemented_local` (Ollama) | `tests/test_turns.py::test_workflow_*`: the fixture proposal is validated in code; an invented slot is refused and the model's "genoteerd" reply is replaced by the fixed line; two provider failures still yield the phase's fixed line with both errors recorded |
+| Typed turn endpoint, evidence, skill record, usage | `verified_workspace` | `test_typed_turns_complete_the_speaking_step_with_evidence_and_usage`: reason → slot → confirm through the HTTP layer; 3 `typed_text` + 3 `action_result` evidence rows, speaking record `practised` with 6 evidence ids, `model_calls` used 6 / reserved 0, tokens and audio seconds counted |
+| Spoken turn endpoint (upload → WAV → transcript → turn) | `verified_workspace` (fixture STT) | `test_a_spoken_turn_records_the_transcript_as_evidence`: `transcript` evidence with the STT metadata and the recording asset; the recording is in the blob store; a repeated upload with the same request id is answered from the stored turn |
+| Character audio per turn | `verified_workspace` (fixture TTS) | `test_character_audio_is_served_and_labelled`: `audio/wav`, 16 kHz, `X-Audio-Label: synthetic-development`; another learner gets 404 |
+| Retry with the same request id | `verified_workspace` | `test_a_retry_with_the_same_request_id_returns_the_same_turn`: one turn row, `deduplicated: true`, 2 model calls counted once |
+| Model failure path | `verified_workspace` | `test_a_model_failure_keeps_the_failed_turn_and_releases_usage`: 502 with the failed turn in the body, row kept, no evidence, reservations released; same id → 502 again, new id → 200 |
+| Restrictions | `verified_workspace` | `test_turn_restrictions`: reading step 400, unknown step 404, other variant 409, empty text 422, typed input in the checkpoint 403; `test_max_turns_closes_the_step`: 409 at the limit |
+| One attempt at the transfer checkpoint; resume; abandon | `verified_workspace` | `test_the_transfer_checkpoint_allows_exactly_one_attempt`, `test_start_session_is_idempotent_and_resumes_the_active_session` |
+| Speaking step in the browser (push-to-talk, typed input labelled, bubbles, appointment panel, character audio, resume) | `verified_workspace` | `tests/e2e/conversation.spec.ts`: fake microphone → spoken turn labelled `gesproken · transcriptie`; typed turns to "Doel bereikt"; the audio label `synthetic-development`; skill record `practised`; a reload shows the four turns; the checkpoint shows no typed input, disabled help and its one-attempt rule. Screenshots inspected at 1440 px |
+| Reading/listening/writing evidence, help-ladder evidence, feedback, export | `not_started` | next M2 sessions |
+
 ## Test runs (final)
 
-- API, laptop: `pytest` → 80 passed. Workspace: 79 passed (80 with the Gate 1 test), the Azurite test skipping when Azurite is down.
-- Browser: `python scripts/run.py e2e` → 18 passed (desktop 10, tablet 4, phone-width 4).
+- API, laptop: `pytest` → 80 passed (session 2). Workspace after session 3: **91 passed** (11 new turn tests, one practice test rewritten for the resume semantics).
+- Browser, workspace after session 3: `python scripts/run.py e2e` → **21 passed** (desktop 13, tablet 4, phone-width 4); session 2 on the laptop: 18 passed.
 - Benchmark dry runs: 40/40 and 0/40.
 
 ## Known gaps and honest limits
 
 1. Docker Compose itself was only exercised on the laptop (`services` started `dlp-postgres` and `dlp-azurite`); the build workspace ran the same services natively.
-2. No real chat completion against Ollama has run yet; the client is unit-tested against a mock and Ollama is reachable. `benchmarks/language/harness.py --provider local` is the cheapest real exercise.
+2. No real chat completion against Ollama has run yet; the client is unit-tested against a mock and Ollama is reachable. The turn loop is verified with the fixture model only; the owner's first conversation on the laptop (OWNER_ACTIONS 7) is the real exercise, and `benchmarks/language/harness.py --provider local` the cheapest one.
 3. `tone_1s.wav` and `speech-input.wav` are generated tones, not speech. `python -m dlp.cli export-recording <request id>` turns a laptop recording into `tests/fixtures/dutch_sentence.wav` (OWNER_ACTIONS 4); the recording made on 2026-09-18 contains personal data, so a neutral sentence is recommended for the committed fixture.
 4. The CI workflow is written but its first run on GitHub has not been observed from here.
 5. `PRODUCT_BRIEF.md` / `LEARNER_PROFILE.md` were unavailable; content and A01 are provisional (D-01).
 6. The source duration of a MediaRecorder WebM upload reads 0.00 s (the container carries no duration); the canonical WAV's duration is what bounds and usage use. Showing "unknown" instead of 0.00 s is an M3 polish item.
 7. In development mode the first request to a route takes 10–20 s on `/mnt/c` (Next.js compiles on demand); production builds do not have this.
+8. The fixture chat model follows keyword rules, so the browser tests cannot show how `llama3.1:8b` phrases replies or reads a learner's Dutch; they show that whatever it proposes is validated in code and that a refused proposal never reaches the learner as a confirmation.
+9. Help-ladder use, reading/listening answers and the writing step are not yet recorded as evidence (next M2 sessions); the speaking skill record is the only one that moves.

@@ -117,6 +117,33 @@ multipart upload → canonical WAV → `SpeechToText` → transcript stored as e
 Replies are synthesised to WAV and always carry `X-Audio-Label` (`synthetic-development` for
 local voices). Streaming is not part of 0.1.
 
+### 6.1 The conversation turn
+
+`domains/practice/turns.py::submit_turn` is the one entry point for a learner turn, typed or
+spoken (`api/routes_practice.py`: `POST /practice/sessions/{id}/turns` with `{step_key, text}`,
+`POST …/turns/speech` with multipart `audio` + `step_key`). Order of work:
+
+1. request-id deduplication (a stored turn is returned; a stored failure is repeated as 502);
+2. `ensure_turn_allowed`: session active, step is a conversation step of this variant, modality
+   allowed (the checkpoint refuses typed input), turn limit not reached — all before any provider call;
+3. for speech: upload → `canonicalise` → `SpeechToText` → transcript (422 when empty);
+4. reserve `model_calls` (2) and `tokens` (1 800) for the request id;
+5. `workflow.run_turn` — the LangGraph graph `propose_action` → `validate_action` → `compose_reply`
+   (`domains/practice/workflow.py`, prompts and versions in `prompts.py`);
+6. commit the measured usage, store the turn (`proposed_action`, `action_result`, `character_text`,
+   `model_meta` with phase, reply source, model calls, errors), write the evidence rows, update the
+   session state (`appointment`, `step_progress`), the skill record and the session status
+   (checkpoint: `completed` when the required actions are done, `ended` when the turns run out);
+7. synthesise the reply (`_attach_character_audio`); a synthesis failure is recorded on the turn and
+   never fails it.
+
+A model failure marks the turn `failed`, releases the reservations and is *returned* as a 502 body
+(not raised) so the transaction commits. `GET …/turns/{turn_id}/audio` serves the character line.
+The session view carries `conversation[]` (opening line, character, limits, restrictions, slots) so
+the client needs no scenario logic of its own. The fixture chat model (`providers/fixtures.py`)
+resolves keyword rules from `tests/fixtures/chat_replies.json`, which is how the browser tests run
+the whole loop without a model.
+
 ## 7. Usage counters and jobs
 
 `usage/service.py` reserves before every external call (`reserve` → `commit`/`release`), per

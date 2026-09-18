@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
-
-const MIME_CANDIDATES = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/mp4", "audio/mpeg"];
+import { type Recording, talkButtonHandlers, useRecorder } from "@/lib/client/recorder";
 
 interface TranscriptResponse {
   request_id: string;
@@ -18,48 +17,23 @@ interface TranscriptResponse {
 
 type Phase = "idle" | "recording" | "uploading" | "done" | "error" | "unsupported";
 
-export function pickMimeType(): string | null {
-  if (typeof MediaRecorder === "undefined") return null;
-  for (const candidate of MIME_CANDIDATES) {
-    if (MediaRecorder.isTypeSupported(candidate)) return candidate;
-  }
-  return "";
-}
-
-const noSubscription = () => () => {};
-/** Browser capability, read once on the client; the server renders "unknown" until hydration. */
-function useMimeType(): string | null | undefined {
-  return useSyncExternalStore(noSubscription, pickMimeType, () => undefined);
-}
-
 /**
  * Push-to-talk microphone check: MediaRecorder → upload → ffmpeg → transcription, plus synthetic playback.
  * Hold the button (mouse, touch or the space bar) while speaking a Dutch sentence.
  */
 export function SpeechCheck() {
-  const mimeType = useMimeType();
-  const [phase, setPhase] = useState<Phase>("idle");
+  const [uploadPhase, setUploadPhase] = useState<"idle" | "uploading" | "done" | "error">("idle");
   const [result, setResult] = useState<TranscriptResponse | null>(null);
   const [error, setError] = useState<string>("");
   const [ttsText, setTtsText] = useState("Goeiedag, u spreekt met Tandartspraktijk Molenstraat.");
   const [ttsLabel, setTtsLabel] = useState<string>("");
   const [ttsBusy, setTtsBusy] = useState(false);
-  const recorderRef = useRef<MediaRecorder | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
-  const streamRef = useRef<MediaStream | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const objectUrlRef = useRef<string | null>(null);
 
-  // Release the microphone and the playback buffer when the page goes away (navigation, hot reload).
+  // Release the playback buffer when the page goes away (navigation, hot reload).
   useEffect(() => {
     return () => {
-      const recorder = recorderRef.current;
-      if (recorder && recorder.state !== "inactive") {
-        recorder.onstop = null;
-        recorder.stop();
-      }
-      streamRef.current?.getTracks().forEach((track) => track.stop());
-      streamRef.current = null;
       if (objectUrlRef.current) {
         URL.revokeObjectURL(objectUrlRef.current);
         objectUrlRef.current = null;
@@ -67,42 +41,12 @@ export function SpeechCheck() {
     };
   }, []);
 
-  async function startRecording() {
-    if (phase === "recording" || phase === "uploading") return;
+  async function upload(recording: Recording) {
+    setUploadPhase("uploading");
     setError("");
     setResult(null);
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      streamRef.current = stream;
-      const recorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
-      chunksRef.current = [];
-      recorder.ondataavailable = (event) => {
-        if (event.data.size > 0) chunksRef.current.push(event.data);
-      };
-      recorder.onstop = () => void upload(recorder.mimeType);
-      recorder.start(250);
-      recorderRef.current = recorder;
-      setPhase("recording");
-    } catch (cause) {
-      setPhase("error");
-      setError(cause instanceof Error ? `Microfoon niet beschikbaar: ${cause.message}` : "Microfoon niet beschikbaar.");
-    }
-  }
-
-  function stopRecording() {
-    const recorder = recorderRef.current;
-    if (!recorder || recorder.state !== "recording") return;
-    recorder.stop();
-    streamRef.current?.getTracks().forEach((track) => track.stop());
-    streamRef.current = null;
-  }
-
-  async function upload(actualMime: string) {
-    setPhase("uploading");
-    const blob = new Blob(chunksRef.current, { type: actualMime || "application/octet-stream" });
-    const extension = actualMime.includes("webm") ? "webm" : actualMime.includes("ogg") ? "ogg" : actualMime.includes("mp4") ? "m4a" : "bin";
     const form = new FormData();
-    form.append("audio", blob, `recording.${extension}`);
+    form.append("audio", recording.blob, recording.fileName);
     form.append("keep_recording", "true");
     try {
       const response = await apiJson<TranscriptResponse>("speech/transcribe", {
@@ -111,12 +55,14 @@ export function SpeechCheck() {
         requestId: newRequestId(),
       });
       setResult(response);
-      setPhase("done");
+      setUploadPhase("done");
     } catch (cause) {
-      setPhase("error");
+      setUploadPhase("error");
       setError(cause instanceof ApiError ? `${cause.detail} (request ${cause.requestId})` : "Upload mislukt.");
     }
   }
+
+  const recorder = useRecorder((recording) => void upload(recording));
 
   async function playSynthesis() {
     setTtsBusy(true);
@@ -154,8 +100,11 @@ export function SpeechCheck() {
     }
   }
 
-  const effectivePhase: Phase = mimeType === null ? "unsupported" : phase;
+  const mimeType = recorder.mimeType;
+  const effectivePhase: Phase =
+    recorder.phase === "unsupported" ? "unsupported" : recorder.phase === "recording" ? "recording" : uploadPhase;
   const recording = effectivePhase === "recording";
+  const shownError = error || recorder.error;
 
   return (
     <div className="grid two">
@@ -172,25 +121,7 @@ export function SpeechCheck() {
           className="button talk"
           aria-pressed={recording}
           disabled={effectivePhase === "unsupported" || effectivePhase === "uploading"}
-          onPointerDown={(event) => {
-            event.preventDefault();
-            void startRecording();
-          }}
-          onPointerUp={stopRecording}
-          onPointerLeave={stopRecording}
-          onPointerCancel={stopRecording}
-          onKeyDown={(event) => {
-            if (event.key === " " && !event.repeat) {
-              event.preventDefault();
-              void startRecording();
-            }
-          }}
-          onKeyUp={(event) => {
-            if (event.key === " ") {
-              event.preventDefault();
-              stopRecording();
-            }
-          }}
+          {...talkButtonHandlers(() => void recorder.start(), recorder.stop)}
           data-testid="talk-button"
         >
           {recording ? "Opname loopt… laat los om te stoppen" : effectivePhase === "uploading" ? "Verwerken…" : "Houd ingedrukt om te spreken"}
@@ -203,9 +134,9 @@ export function SpeechCheck() {
           {effectivePhase === "unsupported" && "Deze browser ondersteunt MediaRecorder niet."}
           {effectivePhase === "error" && "Er ging iets mis."}
         </p>
-        {error && (
+        {shownError && (
           <p className="error" role="alert">
-            {error}
+            {shownError}
           </p>
         )}
         {result && (
