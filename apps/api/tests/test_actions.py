@@ -62,3 +62,12 @@ def test_state_round_trips_through_json(scenario):
     apply_action(scenario, state, ProposedAction(action="state_reason", reason_text="ziek"))
     restored = AppointmentState.from_dict(state.as_dict())
     assert restored == state
+
+
+def test_slot_from_another_scenario_is_refused(scenario):
+    """`mon-1700` exists only in the hairdresser scenario; the dentist scenario must not accept it."""
+    state = AppointmentState()
+    result = apply_action(scenario, state, ProposedAction(action="accept_slot", slot_id="mon-1700"))
+    assert result.accepted is False
+    assert "not an available slot" in result.reason
+    assert state.accepted_slot_id == ""

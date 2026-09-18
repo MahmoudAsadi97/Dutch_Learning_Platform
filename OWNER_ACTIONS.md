@@ -18,11 +18,9 @@ Things only the owner can do. Each item is listed once; tick it when done.
    run `cd apps/api && python -m dlp.cli export-recording <request id>`. That writes
    `tests/fixtures/dutch_sentence.wav` and `dutch_sentence.json`. Commit them only if you are happy for
    your voice to be in the repository; the recording from 2026-09-18 contains your name, so prefer a fresh neutral one.
-5. [ ] **Gate 1 exercise (write one test yourself).** In `apps/api/tests/test_actions.py` add a test
-   that a learner cannot accept the slot `mon-1700` in the `dentist-base` scenario (it belongs to the
-   hairdresser scenario). Skeleton: load the scenario like the other tests, build `ProposedAction(action="accept_slot", slot_id="mon-1700")`,
-   call `apply_action`, and assert `accepted is False` and that the reason mentions "not an available slot".
-   Run `python scripts/run.py test`. Commit it under your own identity.
+5. [x] **Gate 1 exercise.** `test_slot_from_another_scenario_is_refused` in `apps/api/tests/test_actions.py`
+   was written at the owner's request on 2026-09-18 rather than by the owner; the owner runs it
+   (`python scripts/run.py test`) as part of the review. A hands-on exercise is offered again at Gate 2.
 6. [ ] **Review and accept the Gate 1 decisions** in `DECISIONS.md` (D-01 to D-10), or say which to change.
 
 ## Later (Phase B, after M3)
