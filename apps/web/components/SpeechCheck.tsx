@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
 
@@ -48,6 +48,24 @@ export function SpeechCheck() {
   const chunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const objectUrlRef = useRef<string | null>(null);
+
+  // Release the microphone and the playback buffer when the page goes away (navigation, hot reload).
+  useEffect(() => {
+    return () => {
+      const recorder = recorderRef.current;
+      if (recorder && recorder.state !== "inactive") {
+        recorder.onstop = null;
+        recorder.stop();
+      }
+      streamRef.current?.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
+      if (objectUrlRef.current) {
+        URL.revokeObjectURL(objectUrlRef.current);
+        objectUrlRef.current = null;
+      }
+    };
+  }, []);
 
   async function startRecording() {
     if (phase === "recording" || phase === "uploading") return;
@@ -112,13 +130,25 @@ export function SpeechCheck() {
       }
       setTtsLabel(response.headers.get("x-audio-label") ?? "unknown");
       const wav = await response.blob();
-      const url = URL.createObjectURL(wav);
-      if (audioRef.current) {
-        audioRef.current.src = url;
-        await audioRef.current.play().catch(() => undefined);
+      const audio = audioRef.current;
+      if (audio) {
+        // Replacing the source while a previous load is pending makes the browser abort that load;
+        // pause first and drop the old buffer so the abort is expected and never surfaces as an error.
+        audio.pause();
+        if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
+        const url = URL.createObjectURL(wav);
+        objectUrlRef.current = url;
+        audio.src = url;
+        try {
+          await audio.play();
+        } catch (cause) {
+          const name = cause instanceof DOMException ? cause.name : "";
+          // AbortError: load interrupted (new source, page change). NotAllowedError: autoplay policy; the controls still work.
+          if (name !== "AbortError" && name !== "NotAllowedError") throw cause;
+        }
       }
     } catch (cause) {
-      setError(cause instanceof ApiError ? `Synthese mislukt: ${cause.detail}` : "Synthese mislukt.");
+      setError(cause instanceof ApiError ? `Synthese mislukt: ${cause.detail}` : "Afspelen mislukt; gebruik de afspeelknop van de speler.");
     } finally {
       setTtsBusy(false);
     }
