@@ -131,7 +131,7 @@ reclaimable after a crash, one idempotency key per job. The in-process loop star
 
 ## 8. Startup, tests, deployment
 
-- `python scripts/run.py setup|services|migrate|fixture|preflight|dev|test|e2e|benchmark|acceptance`.
+- `python scripts/run.py setup|services|migrate|fixture|preflight|dev|test|e2e|benchmark|acceptance`. Started from an activated conda env (`environment.yml`, name `dlp`) or virtualenv the runner uses that interpreter; otherwise it creates `apps/api/.venv`.
 - API tests: `pytest` in `apps/api` (needs `dlp_test` and ffmpeg; Azurite tests skip when it is down).
 - Browser tests: `python scripts/run.py e2e` builds the web app, starts both tiers with fixture
   providers and runs Playwright with a fake microphone (`tests/e2e/fixtures/speech-input.wav`).

@@ -17,11 +17,21 @@ without rewriting application code.
 
 ## Run it on the laptop
 
-Prerequisites: Docker Desktop, Python 3.11+, Node 22 LTS, `ffmpeg` on the PATH, Ollama with an
-instruction-tuned model installed.
+Prerequisites: Docker Desktop, Ollama with an instruction-tuned model installed, and either
+conda (recommended, gives Python, Node and ffmpeg in one environment) or Python 3.11+, Node 22 LTS
+and `ffmpeg` on the PATH.
+
+With conda:
 
 ```
-python scripts/run.py setup        # virtualenv, pip, npm, creates .env from .env.example
+conda env create -f environment.yml
+conda activate dlp
+```
+
+Then, in that environment (or with plain Python, which creates `apps/api/.venv` instead):
+
+```
+python scripts/run.py setup        # pip (API), npm (web), Playwright browser, creates .env from .env.example
 # edit .env: DEV_OWNER_EMAIL, OWNER_ALLOWLIST, ASSERTION_SIGNING_KEY (32+ random characters), LOCAL_CHAT_MODEL
 python scripts/run.py services     # PostgreSQL + Azurite
 python scripts/run.py migrate

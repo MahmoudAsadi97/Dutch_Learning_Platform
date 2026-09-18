@@ -34,7 +34,22 @@ WEB = ROOT / "apps" / "web"
 WINDOWS = platform.system() == "Windows"
 
 
+def using_active_environment() -> bool:
+    """True when the runner is started from an activated conda env (other than base) or virtualenv.
+
+    Then that interpreter runs the project and no `.venv` is created. `DLP_USE_ACTIVE_PYTHON=1` forces it.
+    """
+    if os.environ.get("DLP_USE_ACTIVE_PYTHON") == "1":
+        return True
+    conda_env = os.environ.get("CONDA_DEFAULT_ENV", "")
+    if conda_env and conda_env != "base" and os.environ.get("CONDA_PREFIX"):
+        return True
+    return bool(os.environ.get("VIRTUAL_ENV"))
+
+
 def venv_python() -> Path:
+    if using_active_environment():
+        return Path(sys.executable)
     return API / ".venv" / ("Scripts/python.exe" if WINDOWS else "bin/python")
 
 
@@ -70,15 +85,24 @@ def npx() -> str:
 
 
 def task_setup() -> None:
-    if not venv_python().exists():
+    if using_active_environment():
+        print(f"using the active environment: {sys.executable}")
+    elif not venv_python().exists():
         sh([sys.executable, "-m", "venv", str(API / ".venv")])
-    sh([str(venv_python()), "-m", "pip", "install", "--upgrade", "pip"], cwd=API)
-    extras = ".[dev,speech-local]" if os.environ.get("SPEECH_LOCAL", "1") == "1" else ".[dev]"
-    sh([str(venv_python()), "-m", "pip", "install", "-e", extras], cwd=API)
+    python = str(venv_python())
+    sh([python, "-m", "pip", "install", "--upgrade", "pip"], cwd=API)
+    sh([python, "-m", "pip", "install", "-e", ".[dev]"], cwd=API)
+    if os.environ.get("SPEECH_LOCAL", "1") == "1":
+        # Real local speech (faster-whisper, Piper) is optional: the API runs with fixture providers without it.
+        if sh([python, "-m", "pip", "install", "-e", ".[speech-local]"], cwd=API, check=False) != 0:
+            print("warning: the local speech packages did not install; preflight will report them as missing")
     sh([npm(), "install", "--no-audit", "--no-fund"], cwd=WEB)
+    if sh([npx(), "playwright", "install", "chromium"], cwd=WEB, check=False) != 0:
+        print("warning: the Playwright browser did not install; `e2e` needs it, everything else works without it")
     if not (ROOT / ".env").exists():
         shutil.copy(ROOT / ".env.example", ROOT / ".env")
         print("created .env from .env.example; edit DEV_OWNER_EMAIL, OWNER_ALLOWLIST and ASSERTION_SIGNING_KEY")
+    print("setup finished; next: services, migrate, fixture, preflight")
 
 
 def task_services() -> None:

@@ -1,0 +1,17 @@
+# Conda environment for developing and reviewing release 0.1 on a laptop.
+#
+#   conda env create -f environment.yml
+#   conda activate dlp
+#   python scripts/run.py setup      # installs the API (pip) and the web app (npm) into this environment
+#
+# Python, Node and ffmpeg come from conda-forge so nothing else has to be installed system-wide.
+# PostgreSQL and Azurite still run in Docker Desktop (`python scripts/run.py services`);
+# Ollama is installed separately (https://ollama.com) and must be running with a model pulled.
+name: dlp
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip>=24
+  - nodejs=22
+  - ffmpeg>=6
