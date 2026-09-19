@@ -90,7 +90,7 @@ def run_preflight(settings: Settings | None = None, *, check_network: bool = Tru
         items.append(PreflightItem("speech to text", "local (faster-whisper)", "ok" if ok else "missing", detail))
     elif settings.stt_provider == "azure":
         ok, detail = providers.stt.available()  # type: ignore[attr-defined]
-        items.append(PreflightItem("speech to text", "azure", "pending_m3", detail))
+        items.append(PreflightItem("speech to text", "azure", "integration_pending" if ok else "not_configured", detail))
     else:
         items.append(PreflightItem("speech to text", "fixture", "ok", "sidecar transcripts; not a verification"))
 
@@ -100,7 +100,7 @@ def run_preflight(settings: Settings | None = None, *, check_network: bool = Tru
         items.append(PreflightItem("text to speech", "local (Piper)", "ok" if ok else "missing", detail))
     elif settings.tts_provider == "azure":
         ok, detail = providers.tts.available()  # type: ignore[attr-defined]
-        items.append(PreflightItem("text to speech", "azure", "pending_m3", detail))
+        items.append(PreflightItem("text to speech", "azure", "integration_pending" if ok else "not_configured", detail))
     else:
         items.append(PreflightItem("text to speech", "fixture", "ok", "tone generator; not a verification"))
 

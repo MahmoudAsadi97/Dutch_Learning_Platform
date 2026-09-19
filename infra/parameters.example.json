@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "value": "dlp"
+    },
+    "authClientId": {
+      "value": "<application (client) id of the web app registration>"
+    },
+    "allowedPrincipalObjectIds": {
+      "value": [
+        "<object id of the owner's Entra user>"
+      ]
+    },
+    "ownerAllowlist": {
+      "value": "asadiherism@gmail.com"
+    },
+    "postgresAdminLogin": {
+      "value": "dlpadmin"
+    },
+    "postgresAdminPassword": {
+      "value": "<set on the command line: --parameters postgresAdminPassword=...>"
+    },
+    "assertionSigningKey": {
+      "value": "<set on the command line; 32+ random characters>"
+    },
+    "deployChat": {
+      "value": false
+    }
+  }
+}

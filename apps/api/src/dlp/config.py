@@ -7,6 +7,7 @@ here prints them: see `redacted_summary()` for what preflight is allowed to show
 
 from __future__ import annotations
 
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -15,7 +16,8 @@ from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
-CONTENT_DIR = REPO_ROOT / "content"
+# The mission files live next to the applications in the repository; a container image may put them elsewhere.
+CONTENT_DIR = Path(os.environ.get("DLP_CONTENT_DIR") or (REPO_ROOT / "content")).resolve()
 
 AppEnv = Literal["development", "test", "production"]
 ChatProviderName = Literal["local", "azure", "fixture"]
@@ -78,6 +80,7 @@ class Settings(BaseSettings):
     local_stt_cache_dir: str = "./.local/whisper"
     azure_speech_key: str = Field(default="", repr=False)
     azure_speech_region: str = ""
+    azure_speech_resource_id: str = ""  # set with managed identity instead of a key (Phase B)
     azure_stt_locale: str = "nl-BE"
 
     # Text to speech

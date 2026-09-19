@@ -53,11 +53,24 @@ def build_chat(settings: Settings, tier: str = "small") -> ChatModel:
                                      max_concurrent=settings.max_concurrent_model_calls)
 
 
+def _speech_token_provider(settings: Settings):
+    """Managed identity (or developer login) tokens when no key is configured; None otherwise."""
+    if settings.azure_speech_key or not settings.azure_speech_resource_id:
+        return None
+    from dlp.providers.speech_azure import managed_identity_token_provider
+
+    try:
+        return managed_identity_token_provider()
+    except Exception:  # noqa: BLE001 - reported by preflight as not configured
+        return None
+
+
 def build_stt(settings: Settings) -> SpeechToText:
     if settings.stt_provider == "fixture":
         return FixtureSpeechToText()
     if settings.stt_provider == "azure":
-        return AzureSpeechToText(settings.azure_speech_key, settings.azure_speech_region, settings.azure_stt_locale)
+        return AzureSpeechToText(settings.azure_speech_key, settings.azure_speech_region, settings.azure_stt_locale,
+                                 token_provider=_speech_token_provider(settings), resource_id=settings.azure_speech_resource_id)
     return FasterWhisperSpeechToText(
         model_size=settings.local_stt_model, device=settings.local_stt_device,
         compute_type=settings.local_stt_compute_type, cache_dir=settings.resolve_path(settings.local_stt_cache_dir),
@@ -68,7 +81,8 @@ def build_tts(settings: Settings) -> TextToSpeech:
     if settings.tts_provider == "fixture":
         return FixtureTextToSpeech()
     if settings.tts_provider == "azure":
-        return AzureTextToSpeech(settings.azure_speech_key, settings.azure_speech_region, settings.azure_tts_voice)
+        return AzureTextToSpeech(settings.azure_speech_key, settings.azure_speech_region, settings.azure_tts_voice,
+                                 token_provider=_speech_token_provider(settings), resource_id=settings.azure_speech_resource_id)
     return PiperTextToSpeech(voice=settings.local_tts_voice, voices_dir=settings.resolve_path(settings.local_tts_voices_dir))
 
 

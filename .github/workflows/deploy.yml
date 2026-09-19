@@ -1,0 +1,66 @@
+# Phase B deployment to Azure Container Apps. Manual only (workflow_dispatch); nothing here runs on push.
+# Authentication is OpenID Connect: the repository's federated credential on the deployment app registration,
+# no long-lived cloud secret in GitHub. Required repository secrets: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+# AZURE_SUBSCRIPTION_ID. Required repository variables: AZURE_RESOURCE_GROUP, AZURE_ACR_NAME.
+# The infrastructure itself is created once by the owner with `az deployment group create` (docs/GO_LIVE.md);
+# this workflow only builds the images, updates the two container apps and runs the live verification.
+
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Image tag to build and deploy (defaults to the commit sha)
+        required: false
+        default: ""
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sign in to Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Resolve tag
+        id: tag
+        run: echo "tag=${{ github.event.inputs.tag || github.sha }}" >> "$GITHUB_OUTPUT"
+
+      - name: Build the API image in the registry
+        run: |
+          az acr build --registry "${{ vars.AZURE_ACR_NAME }}" \
+            --image "dlp-api:${{ steps.tag.outputs.tag }}" --file apps/api/Dockerfile .
+
+      - name: Build the web image in the registry
+        run: |
+          az acr build --registry "${{ vars.AZURE_ACR_NAME }}" \
+            --image "dlp-web:${{ steps.tag.outputs.tag }}" --file apps/web/Dockerfile .
+
+      - name: Update the container apps
+        run: |
+          server="${{ vars.AZURE_ACR_NAME }}.azurecr.io"
+          az containerapp update --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" --name dlp-api \
+            --image "$server/dlp-api:${{ steps.tag.outputs.tag }}"
+          az containerapp update --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" --name dlp-web \
+            --image "$server/dlp-web:${{ steps.tag.outputs.tag }}"
+
+      - name: Verify the public entry
+        run: |
+          url="https://$(az containerapp show --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" --name dlp-web \
+            --query properties.configuration.ingress.fqdn -o tsv)"
+          python3 scripts/verify_live.py --url "$url"
