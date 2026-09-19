@@ -246,10 +246,14 @@ def _update_skill_record(session: Session, practice: PracticeSession, step: Step
     if record.status == "not_started":
         record.status = "in_progress"
         record.attempts = record.attempts + 1
-    if completed:
+    # Typed turns are labelled typed evidence and never count as speaking practice: the goal can be reached
+    # with typed text, but the speaking record only moves on when at least one turn of the step was spoken.
+    spoken = any(e.kind == "transcript" and e.step_key == step.key for e in practice.evidence)
+    if completed and spoken:
         record.status = "checkpoint_passed" if step.payload.type == "checkpoint" else "practised"
     assessment = dict(record.latest_assessment or {})
-    assessment[step.key] = {"completed": completed, "last_modality": modality, "session_id": str(practice.id)}
+    assessment[step.key] = {"completed": completed, "last_modality": modality, "session_id": str(practice.id),
+                            "spoken": spoken, "typed_only": completed and not spoken}
     record.latest_assessment = assessment
     record.evidence_ids = [str(e.id) for e in practice.evidence if e.skill == step.skill][-50:]
 

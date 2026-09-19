@@ -125,7 +125,9 @@ def test_typed_turns_complete_the_speaking_step_with_evidence_and_usage(client):
 
     records = client.get("/progress", headers=auth_headers("turn-progress")).json()["skill_records"]
     speaking = next(r for r in records if r["skill"] == "speaking")
-    assert speaking["status"] == "practised" and speaking["attempts"] == 1
+    assert speaking["status"] == "in_progress" and speaking["attempts"] == 1, "typed turns never count as speaking practice"
+    assert speaking["latest_assessment"]["speak-call"] == {**speaking["latest_assessment"]["speak-call"],
+                                                           "completed": True, "typed_only": True, "spoken": False}
     assert len(speaking["evidence_ids"]) == 6
 
     usage = client.get("/usage", headers=auth_headers("turn-usage")).json()["counters"]
@@ -251,6 +253,13 @@ def test_a_spoken_turn_records_the_transcript_as_evidence(client):
     assert transcript["modality"] == "speech" and transcript["source"] == "fixture"
     assert transcript["payload"]["stt"]["provider"] == "fixture"
     assert transcript["payload"]["audio_asset_id"] == body["turn"]["learner_audio_asset_id"]
+    # a spoken turn makes the step count as speaking practice once the goal is reached
+    for request_id, text in (("speech-typed-1", "Ik moet werken."), ("speech-typed-2", "Donderdag om tien uur is goed."),
+                             ("speech-typed-3", "Ja, dat past. Tot dan!")):
+        assert _say(client, session_id, request_id, text).status_code == 200
+    records = client.get("/progress", headers=auth_headers("speech-progress")).json()["skill_records"]
+    speaking = next(r for r in records if r["skill"] == "speaking")
+    assert speaking["status"] == "practised" and speaking["latest_assessment"]["speak-call"]["spoken"] is True
     providers = get_providers()
     assert providers.blob.exists(f"recordings/{_learner_id(client)}/speech-turn-0001.wav")
 
@@ -260,7 +269,8 @@ def test_a_spoken_turn_records_the_transcript_as_evidence(client):
         files={"audio": ("turn.wav", wav, "audio/wav")}, data={"step_key": "speak-call"},
     )
     assert again.status_code == 200 and again.json()["deduplicated"] is True
-    assert len(client.get(f"/practice/sessions/{session_id}", headers=auth_headers("speech-view-2")).json()["turns"]) == 1
+    turns = client.get(f"/practice/sessions/{session_id}", headers=auth_headers("speech-view-2")).json()["turns"]
+    assert len(turns) == 4, "the repeated upload added no turn"
 
 
 def _learner_id(client) -> str:

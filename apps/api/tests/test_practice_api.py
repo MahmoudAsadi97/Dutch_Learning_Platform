@@ -71,3 +71,23 @@ def test_preflight_endpoint_never_exposes_secrets(client, headers, settings):
     assert settings.assertion_signing_key not in text
     assert "dlp:dlp@" not in text
     assert {item["component"] for item in response.json()["items"]} >= {"database", "chat model", "blob store"}
+
+
+def test_acceptance_checks_run_over_learner_data(client, headers):
+    from tests.test_steps import _answer, _start
+
+    session_id = _start(client, "acc-start-0001")
+    _answer(client, session_id, "acc-answer-01", "read-reminder", "q-when", 0)
+    _answer(client, session_id, "acc-answer-02", "read-reminder", "q-cannot-come", 1)
+    client.post(f"/practice/sessions/{session_id}/feedback", headers=auth_headers("acc-feedback-01"),
+                json={"step_key": "read-reminder"})
+    for turn_id, text in (("acc-turn-01", "Ik moet werken."), ("acc-turn-02", "Donderdag om tien uur is goed."),
+                          ("acc-turn-03", "Ja, dat past. Tot dan!")):
+        client.post(f"/practice/sessions/{session_id}/turns", headers=auth_headers(turn_id),
+                    json={"step_key": "speak-call", "text": text})
+    everything = client.get("/missions/appointment-change/acceptance/all", headers=auth_headers("acc-all-0001")).json()
+    assert everything["passed"] is True, everything
+    assert [c["check_id"] for c in everything["checks"]] == ["A01", "A02", "A03", "A04", "A05", "A06"]
+    a03 = next(c for c in everything["checks"] if c["check_id"] == "A03")
+    assert any("typed-only" in item["detail"] for item in a03["items"])
+    assert client.get("/missions/appointment-change/acceptance/A09", headers=auth_headers("acc-nope-001")).status_code == 404

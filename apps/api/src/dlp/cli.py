@@ -35,20 +35,26 @@ def cmd_load_fixture(args: argparse.Namespace) -> int:
 def cmd_acceptance(args: argparse.Namespace) -> int:
     from dlp.db.session import session_scope
     from dlp.domains.content.acceptance import check_a01
+    from dlp.domains.practice.acceptance import CHECKS
 
-    checks = {"A01": check_a01}
-    if args.check not in checks:
-        print(f"unknown check {args.check}; available: {', '.join(checks)}", file=sys.stderr)
+    checks = {"A01": check_a01, **CHECKS}
+    wanted = list(checks) if args.check.lower() == "all" else [args.check.upper()]
+    unknown = [c for c in wanted if c not in checks]
+    if unknown:
+        print(f"unknown check {', '.join(unknown)}; available: all, {', '.join(checks)}", file=sys.stderr)
         return 2
+    reports = []
     with session_scope() as session:
-        report = checks[args.check](session, args.mission)
+        for check_id in wanted:
+            reports.append(checks[check_id](session, args.mission))
     if args.json:
-        print(json.dumps(report.as_dict(), indent=2))
+        print(json.dumps([r.as_dict() for r in reports] if len(reports) > 1 else reports[0].as_dict(), indent=2))
     else:
-        for item in report.items:
-            print(f"[{'PASS' if item.passed else 'FAIL'}] {item.name}  {item.detail}")
-        print(f"{report.check_id}: {'PASS' if report.passed else 'FAIL'}")
-    return 0 if report.passed else 1
+        for report in reports:
+            for item in report.items:
+                print(f"[{'PASS' if item.passed else 'FAIL'}] {report.check_id} {item.name}  {item.detail}")
+            print(f"{report.check_id}: {'PASS' if report.passed else 'FAIL'}")
+    return 0 if all(r.passed for r in reports) else 1
 
 
 def cmd_export_recording(args: argparse.Namespace) -> int:

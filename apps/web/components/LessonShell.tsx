@@ -90,7 +90,8 @@ export function LessonShell({ missionId }: Props) {
   const [state, setState] = useState<LoadState>({ kind: "loading" });
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [sessions, setSessions] = useState<Record<Variant, SessionDetail | null>>({ base: null, transfer: null });
-  const [startRequestIds] = useState<Record<Variant, string>>(() => ({ base: newRequestId(), transfer: newRequestId() }));
+  // One request id per variant for starting a session: reused on retry, replaced only after a deliberate restart.
+  const startRequestIdsRef = useRef<Record<Variant, string>>({ base: newRequestId(), transfer: newRequestId() });
   const [records, setRecords] = useState<SkillRecordView[]>([]);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string>("");
@@ -140,7 +141,7 @@ export function LessonShell({ missionId }: Props) {
       const request = apiJson<SessionDetail>("practice/sessions", {
         method: "POST",
         body: { mission_id: missionId, variant },
-        requestId: startRequestIds[variant],
+        requestId: startRequestIdsRef.current[variant],
       })
         .then((detail) => {
           setSessions((current) => ({ ...current, [variant]: detail }));
@@ -153,7 +154,7 @@ export function LessonShell({ missionId }: Props) {
       pendingStartRef.current[variant] = request;
       return request;
     },
-    [missionId, startRequestIds],
+    [missionId],
   );
 
   async function startSession(variant: Variant) {
@@ -164,6 +165,27 @@ export function LessonShell({ missionId }: Props) {
       setNotice(detail.turns.length > 0 || detail.evidence.length > 0 ? "Sessie hervat." : "Sessie gestart.");
     } catch (error) {
       setNotice(error instanceof ApiError ? `Kon geen sessie starten: ${error.detail}` : "Kon geen sessie starten.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  /** Close the active session of a variant and open a fresh one; the old session keeps its turns and evidence. */
+  async function restartSession(variant: Variant) {
+    const current = sessionsRef.current[variant];
+    setBusy(true);
+    setNotice("");
+    try {
+      if (current && current.session.status === "active") {
+        await apiJson(`practice/sessions/${current.session.id}/abandon`, { method: "POST", body: {} });
+      }
+      sessionsRef.current = { ...sessionsRef.current, [variant]: null };
+      setSessions((state) => ({ ...state, [variant]: null }));
+      startRequestIdsRef.current = { ...startRequestIdsRef.current, [variant]: newRequestId() };
+      const detail = await ensureSession(variant);
+      setNotice(detail.session.id !== current?.session.id ? "Nieuwe sessie gestart." : "Sessie hervat.");
+    } catch (error) {
+      setNotice(error instanceof ApiError ? `Kon geen nieuwe sessie starten: ${error.detail}` : "Kon geen nieuwe sessie starten.");
     } finally {
       setBusy(false);
     }
@@ -314,6 +336,7 @@ export function LessonShell({ missionId }: Props) {
             detail={sessions[active.variant]}
             starting={busy}
             onStart={() => void startSession(active.variant)}
+            onRestart={() => void restartSession(active.variant)}
             onDetail={(detail) => setDetail(active.variant, detail)}
             onProgressChanged={refreshRecords}
           />

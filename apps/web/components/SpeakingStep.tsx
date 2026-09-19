@@ -26,6 +26,8 @@ interface Props {
   detail: SessionDetail | null;
   starting: boolean;
   onStart: () => void;
+  /** Closes the current session of this variant and starts a fresh one (practice steps only). */
+  onRestart?: () => void;
   onDetail: (detail: SessionDetail) => void;
   onProgressChanged: () => void;
 }
@@ -64,7 +66,7 @@ const ACTION_LABEL: Record<string, string> = {
  * Every learner turn is sent with its own request id; a retry after a network failure reuses that id,
  * so the server answers from the stored turn instead of running the model twice.
  */
-export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail, onProgressChanged }: Props) {
+export function SpeakingStep({ step, labels, detail, starting, onStart, onRestart, onDetail, onProgressChanged }: Props) {
   const payload = step.payload;
   const checkpoint = payload.type === "checkpoint";
   const info = detail?.conversation.find((c) => c.step_key === step.key);
@@ -77,6 +79,7 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
   const helpRungs = checkpoint ? [] : payload.help;
   const maxTurns = info?.max_turns ?? payload.max_turns;
   const completed = progress?.completed ?? false;
+  const typedOnly = completed && !(progress?.modalities ?? []).includes("speech");
   const sessionOpen = session?.status === "active";
   const turnsLeft = Math.max(0, maxTurns - (progress?.turns ?? 0));
 
@@ -226,7 +229,9 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
         : session.status === "abandoned"
           ? "Deze sessie is afgebroken."
           : completed
-            ? "Doel bereikt. U kunt verder naar de volgende stap."
+            ? typedOnly
+              ? "Doel bereikt met getypte tekst. Dat telt niet als spreekoefening: start een nieuwe oefensessie en spreek de beurten in."
+              : "Doel bereikt. U kunt verder naar de volgende stap."
             : `${turnsLeft} van ${maxTurns} beurten over.`;
 
   return (
@@ -319,6 +324,13 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onDetail
             <p role="status" className="status-line" data-testid="step-status">
               {stepStatus}
             </p>
+            {!checkpoint && onRestart && (completed || !sessionOpen) && (
+              <p>
+                <button type="button" className="button secondary" onClick={onRestart} disabled={starting} data-testid="restart-session">
+                  Nieuwe oefensessie (de huidige wordt afgesloten)
+                </button>
+              </p>
+            )}
             {audioLabel && (
               <p>
                 <span className="label warn" data-testid="character-audio-label">

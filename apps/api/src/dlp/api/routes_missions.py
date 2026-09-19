@@ -11,6 +11,7 @@ from dlp.db.session import get_session
 from dlp.domains.content.acceptance import check_a01
 from dlp.domains.content.schemas import UNREVIEWED_LABEL_FA, UNREVIEWED_LABEL_NL, ListeningPayload, review_summary
 from dlp.domains.content.service import get_mission, list_missions, mission_document
+from dlp.domains.practice.acceptance import CHECKS as PRACTICE_CHECKS
 from dlp.domains.progress.service import ensure_skill_records
 from dlp.domains.speech.audio import AudioError
 from dlp.domains.speech.service import synthesize_text
@@ -78,10 +79,19 @@ def step(mission_id: str, step_key: str, ctx: RequestContext = Depends(context_d
             "request_id": ctx.request_id}
 
 
-@router.get("/{mission_id}/acceptance/A01")
-def acceptance_a01(mission_id: str, ctx: RequestContext = Depends(context_dep),
-                   session: Session = Depends(get_session)) -> dict:
-    return {**check_a01(session, mission_id).as_dict(), "request_id": ctx.request_id}
+@router.get("/{mission_id}/acceptance/{check_id}")
+def acceptance(mission_id: str, check_id: str, ctx: RequestContext = Depends(context_dep),
+               session: Session = Depends(get_session)) -> dict:
+    """One acceptance check (A01–A06) or `all`; read-only, so it may be run at any time."""
+    checks = {"A01": check_a01, **PRACTICE_CHECKS}
+    if check_id.lower() == "all":
+        reports = [check(session, mission_id) for check in checks.values()]
+        return {"passed": all(r.passed for r in reports), "checks": [r.as_dict() for r in reports],
+                "request_id": ctx.request_id}
+    check = checks.get(check_id.upper())
+    if check is None:
+        raise HTTPException(status_code=404, detail=f"unknown check; available: all, {', '.join(checks)}")
+    return {**check(session, mission_id).as_dict(), "request_id": ctx.request_id}
 
 
 @router.get("/{mission_id}/audio/{audio_key:path}")
