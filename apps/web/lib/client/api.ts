@@ -28,6 +28,14 @@ export interface ApiOptions {
   signal?: AbortSignal;
 }
 
+/** Name of the DOM event fired on `window` when a call could not reach the server or reached it again. */
+export const CONNECTIVITY_EVENT = "dlp:connectivity";
+
+function announce(reachable: boolean) {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent(CONNECTIVITY_EVENT, { detail: { reachable } }));
+}
+
 export async function apiFetch(path: string, options: ApiOptions = {}): Promise<Response> {
   const headers: Record<string, string> = {
     "X-Requested-With": "fetch",
@@ -41,14 +49,23 @@ export async function apiFetch(path: string, options: ApiOptions = {}): Promise<
     headers["Content-Type"] = "application/json";
     body = JSON.stringify(options.body);
   }
-  return fetch(`/api/${path.replace(/^\/+/, "")}`, {
-    method: options.method ?? "GET",
-    headers,
-    body,
-    signal: options.signal,
-    cache: "no-store",
-    credentials: "same-origin",
-  });
+  let response: Response;
+  try {
+    response = await fetch(`/api/${path.replace(/^\/+/, "")}`, {
+      method: options.method ?? "GET",
+      headers,
+      body,
+      signal: options.signal,
+      cache: "no-store",
+      credentials: "same-origin",
+    });
+  } catch (cause) {
+    if (!(cause instanceof DOMException && cause.name === "AbortError")) announce(false);
+    throw cause;
+  }
+  // 502 from the proxy means the web tier is up but the API is not; anything else proves the path works.
+  announce(response.status !== 502);
+  return response;
 }
 
 export async function apiJson<T>(path: string, options: ApiOptions = {}): Promise<T> {

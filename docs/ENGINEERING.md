@@ -174,7 +174,14 @@ reclaimable after a crash, one idempotency key per job. The in-process loop star
 - Browser tests: `python scripts/run.py e2e` builds the web app, starts both tiers with fixture
   providers and runs Playwright with a fake microphone (`tests/e2e/fixtures/speech-input.wav`).
 - CI (`.github/workflows/ci.yml`) runs lint, the API suite, the benchmark dry runs, the web build and the browser tests.
-- Deployment: Phase B only. Bicep, the OIDC workflow, `docs/GO_LIVE.md` and `scripts/verify_live.py` are M3 deliverables.
+- Acceptance: `python scripts/run.py acceptance` runs A01 (content integrity) and A02–A06 (data integrity:
+  `domains/practice/acceptance.py`); the same checks answer at `GET /missions/{id}/acceptance/all`.
+- Deployment (Phase B, not executed): `infra/main.bicep` (validated with the Bicep CLI) describes one
+  Container Apps environment — public web app with built-in Entra sign-in, internal API, PostgreSQL,
+  Storage, Speech, optional Azure OpenAI, Key Vault, managed identities; `apps/*/Dockerfile` build from the
+  repository root; `.github/workflows/deploy.yml` is a manual OIDC workflow; `docs/GO_LIVE.md` is the
+  owner's runbook and `scripts/verify_live.py` the black-box check that moves the Azure adapters from
+  `integration_pending` to `verified_live`.
 
 ## 9. Configuration contract
 

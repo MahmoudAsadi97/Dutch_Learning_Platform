@@ -18,6 +18,7 @@ const STATUS_CLASS: Record<string, string> = {
   unreachable: "bad",
   not_configured: "warn",
   pending_m3: "warn",
+  integration_pending: "warn",
 };
 
 const TIMEOUT_MS = 45_000;

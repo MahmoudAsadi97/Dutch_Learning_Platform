@@ -39,10 +39,17 @@ Things only the owner can do. Each item is listed once; tick it when done.
    and press *Vraag feedback* on each step. Report whether `llama3.1:8b` produces usable Dutch and
    Persian in the feedback and how many points were dropped. Then Gate 2 can open (`docs/GATE2_DEMO.md`).
 
-## Later (Phase B, after M3)
+10. [ ] **Final exercise (M3 hand-over).** Run `python scripts/run.py acceptance` — it now runs A01–A06 over
+    your own data — and read one failing item if any. Then, with a fresh session, complete the speaking
+    step with typed text only and confirm in the sidebar that *Spreken* stays `in_progress` (D-16); then
+    redo it with spoken turns and see it move to `practised`. That is the whole evidence model in two runs.
 
-7. [ ] Create the Azure resources following `docs/GO_LIVE.md` (written in M3), record the authorised
-   allowance, SKUs and free/credit assumptions in `DECISIONS.md` before the first paid call.
-8. [ ] Regenerate the fixed audio with the Azure `nl-BE` voice; run the full journey on the phone.
-9. [ ] Arrange the language reviewer using the Gate 2 demo (what to show is written at Gate 2);
-   record the outcome; only then remove the "unreviewed content" labels for approved items.
+## Later (Phase B, when you decide the project is ready for production testing)
+
+11. [ ] Create the Azure resources following `docs/GO_LIVE.md`; record the authorised allowance, SKUs and
+    free/credit assumptions in `DECISIONS.md` before the first paid call (GO_LIVE step 0).
+12. [ ] Run `scripts/verify_live.py` with your signed-in session; paste its output into
+    `VALIDATION_REPORT.md` — that moves the Azure adapters to `verified_live`.
+13. [ ] Regenerate the fixed audio with the Azure `nl-BE` voice (GO_LIVE step 8); run the full journey on the phone.
+14. [ ] Arrange the language reviewer using `docs/GATE2_DEMO.md`; record the outcome; only then set
+    `review_status: reviewed` on approved texts and reload the fixture.

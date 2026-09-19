@@ -91,10 +91,26 @@ over the appointment, not the model's language behaviour; the first real convers
 | Feedback grounded in evidence | `verified_workspace` (fixture model) | `test_feedback_cites_only_real_evidence`: 409 before the expectations are met; the fixture's third point cites E99 and is dropped (`dropped_points: 1`); every shown point cites real evidence ids; same request id → same report; `test_speaking_feedback_needs_a_code_validated_action`. Browser: the reading step shows two points, the dropped count and the model line |
 | Owner-only JSON export | `verified_workspace` | `test_export_is_complete_and_owner_only`; browser: `/api/export` through the proxy carries `Content-Disposition` and every evidence kind |
 
+## M3 items (session 5, 2026-09-19, build workspace)
+
+| Item | Status | Evidence |
+|---|---|---|
+| Disconnected state and recovery | `verified_workspace` | `tests/e2e/resilience.spec.ts`: every `/api` call aborted → banner "De server antwoordt niet" with a retry; retry reaches `/api/health` → banner gone. Retry of a turn with the same request id (session 3) |
+| Responsive and keyboard operation | `verified_workspace` | the lesson and step specs run at 1440, 768 and 390 px (tablet and phone-width projects now include the listening/writing steps); the talk button works with the space bar; skip link; focus styles |
+| Budget counters with an empty pricing table | `verified_workspace` | `components/UsagePanel.tsx` on the home page; `resilience.spec.ts` checks the counters and the "Prijstabel leeg" note |
+| Typed input never counts as speaking practice | `verified_workspace` | `test_typed_turns_complete_the_speaking_step_with_evidence_and_usage` (record stays `in_progress`, `typed_only: true`); `test_a_spoken_turn_records_the_transcript_as_evidence` (record moves after a spoken turn); A03 |
+| Acceptance checks A01–A06 | `verified_workspace` | `python -m dlp.cli acceptance --check all`; `GET /missions/appointment-change/acceptance/all`; `test_acceptance_checks_run_over_learner_data` |
+| Azure Speech adapters (recognition, synthesis; key or managed identity) | `integration_pending` | `tests/test_speech_azure.py` (6 tests) against recorded reply shapes in `tests/fixtures/azure/`; preflight reports `integration_pending`/`not_configured`; no credentials used |
+| Azure Blob with managed identity | `integration_pending` | `AzureBlobStore(account_url=…)` path with `DefaultAzureCredential`; the connection-string path is `verified_local` through Azurite |
+| Bicep, Dockerfiles, OIDC deployment workflow | `implemented_local` (validated, not executed) | `infra/main.bicep` builds with Bicep CLI 0.47 without errors; `deploy.yml` is `workflow_dispatch` only; Dockerfiles not built here (no Docker in the workspace) |
+| `docs/GO_LIVE.md`, `scripts/verify_live.py` | `implemented_local` | the script runs (exit 1 against an unreachable host, as intended); its signed-in checks are exercised in Phase B only |
+| Architecture walkthrough, final owner exercise | written | `docs/ARCHITECTURE_WALKTHROUGH.md`; OWNER_ACTIONS 10 |
+
 ## Test runs (final)
 
-- API, laptop: `pytest` → 80 passed (session 2). Workspace after session 4: **101 passed** (turns, chat client fail-fast, steps, feedback, export).
-- Browser, workspace after session 4: `python scripts/run.py e2e` → **24 passed** (desktop 16, tablet 4, phone-width 4); session 2 on the laptop: 18 passed.
+- API, laptop: `pytest` → 80 passed (session 2). Workspace after session 5: **109 passed** (turns, chat client, steps, feedback, export, Azure adapters, acceptance).
+- Browser, workspace after session 5: `python scripts/run.py e2e` → **32 passed** (desktop 18, tablet 7, phone-width 7); session 2 on the laptop: 18 passed.
+- Acceptance: A01–A06 PASS over the test data (`test_acceptance_checks_run_over_learner_data`).
 - Benchmark dry runs: 40/40 and 0/40.
 
 ## Known gaps and honest limits
@@ -108,4 +124,5 @@ over the appointment, not the model's language behaviour; the first real convers
 7. In development mode the first request to a route takes 10–20 s on `/mnt/c` (Next.js compiles on demand); production builds do not have this.
 8. The fixture chat model follows keyword rules, so the browser tests cannot show how `llama3.1:8b` phrases replies or reads a learner's Dutch; they show that whatever it proposes is validated in code and that a refused proposal never reaches the learner as a confirmation.
 9. Feedback quality is unknown until the owner runs it against `llama3.1:8b`; what is verified is the grounding: a point without a real citation never reaches the learner. The Persian renderings in feedback come from the same model and are labelled as unreviewed.
-10. A bug found by the browser tests and fixed: PostgreSQL on the owner's stack reports `Europe/Brussels`, so loaded timestamps carried `+02:00` while fresh ones carried `+00:00`, and the browser's merge of concurrent updates kept the stale session. Connections are now pinned to UTC and the browser compares instants.
+10. The owner's laptop could not be driven from the build workspace (its services are not reachable from here), so the M2–M3 web work carries `verified_workspace`; the owner's own runs (sessions 2, 3b, 4b) are what earned `verified_local` for the microphone path, the whisper models and the reading step with real providers. The remaining `verified_local` runs are OWNER_ACTIONS 7–9.
+11. A bug found by the browser tests and fixed: PostgreSQL on the owner's stack reports `Europe/Brussels`, so loaded timestamps carried `+02:00` while fresh ones carried `+00:00`, and the browser's merge of concurrent updates kept the stale session. Connections are now pinned to UTC and the browser compares instants.

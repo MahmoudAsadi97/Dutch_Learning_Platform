@@ -151,3 +151,33 @@ and the usage snapshot.
 Every database connection is pinned to UTC (`options=-c timezone=UTC`): the API's ISO timestamps must
 compare the same whether a value was just written or loaded from PostgreSQL (whose server time zone is
 Europe/Brussels on the owner's Docker image), and the browser merges concurrent updates by instant.
+
+## D-15 · Azure shape for Phase B (written, validated, not executed)
+
+One resource group, one Container Apps environment (consumption, scale to zero): `dlp-web` with external
+ingress and the platform's built-in Microsoft Entra authentication (the proxy already reads the
+`X-MS-CLIENT-PRINCIPAL-*` headers and applies the allowlist), `dlp-api` with internal ingress only, so the
+web app stays the single public entry. PostgreSQL Flexible Server `Standard_B1ms`, Storage `Standard_LRS`
+with shared-key access disabled, Azure AI Speech `S0` with local authentication disabled and a custom
+subdomain, Key Vault (RBAC) for the signing key and the database password, Container Registry `Basic`,
+Log Analytics. The API's user-assigned identity holds `AcrPull`, `Storage Blob Data Contributor`,
+`Cognitive Services Speech User` and `Key Vault Secrets User`; the web identity holds `AcrPull` and
+`Key Vault Secrets User`. Azure OpenAI is optional (`deployChat`) and off by default; Ollama has no
+Azure equivalent, so the chat provider in Azure is either Azure OpenAI or the fixture model, and the
+status panel says which. The Speech adapters use the REST endpoints for short audio with a key or an
+Entra token (`aad#<resource id>#<token>`), because every turn is at most 30 s and the streaming SDK
+would add a native dependency for nothing. Compromise accepted for 0.1: PostgreSQL public access
+limited to the "Azure services" firewall rule plus TLS, instead of a private endpoint, which needs a
+VNet-integrated environment and a larger allowance. Deployment is a manual GitHub Actions workflow
+authenticated with OpenID Connect (federated credential; no cloud secret stored in GitHub).
+`infra/main.bicep` builds cleanly with the Bicep CLI 0.47; nothing has been deployed.
+
+## D-16 · Typed input never counts as speaking practice; acceptance checks over the data
+
+The goal of the speaking step can be reached with typed text (the practice step allows the typed
+fallback), but the speaking skill record only moves to `practised`/`checkpoint_passed` when the step has
+at least one spoken (`transcript`) evidence record; a typed-only completion is recorded as such and the
+page offers a fresh practice session. Checks A02–A06 (`domains/practice/acceptance.py`) are read-only
+queries over the stored data — separate skill records, no typed credit, feedback citations resolve to
+the step's evidence, checkpoint independence, settled usage — runnable at any time from the CLI, the
+API and `scripts/verify_live.py`, so the claims in the validation report can be re-checked by anyone.

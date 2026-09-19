@@ -143,7 +143,7 @@ def task_preflight() -> None:
 
 
 def task_acceptance() -> None:
-    sh([str(venv_python()), "-m", "dlp.cli", "acceptance", "--check", "A01"], cwd=API)
+    sh([str(venv_python()), "-m", "dlp.cli", "acceptance", "--check", "all"], cwd=API)
 
 
 def task_test() -> None:

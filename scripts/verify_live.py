@@ -46,11 +46,15 @@ def request(url: str, *, method: str = "GET", headers: dict[str, str] | None = N
             return response.status, {k.lower(): v for k, v in response.headers.items()}, response.read()
     except urllib.error.HTTPError as exc:
         return exc.code, {k.lower(): v for k, v in exc.headers.items()}, exc.read()
+    except (urllib.error.URLError, OSError) as exc:
+        return 0, {"x-error": str(exc)}, b""
 
 
 def anonymous_checks(base: str) -> list[Result]:
     results: list[Result] = []
     status, headers, _ = request(base + "/")
+    if status == 0:
+        return [Result("public entry reachable", False, headers.get("x-error", "unreachable"))]
     results.append(Result("sign-in wall on the page", status in (301, 302, 401, 403),
                           f"HTTP {status}" + (f" → {headers.get('location', '')[:80]}" if "location" in headers else "")))
     status, _, _ = request(base + "/api/health")

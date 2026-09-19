@@ -1,8 +1,8 @@
 # State
 
-**Release 0.1, Phase A.** Updated 2026-09-18 (session 4; implementation day 2). M2 is functionally complete in the build workspace; Gate 2 opens once the owner has run the loop on the laptop.
-Next action (owner): pull, `python scripts/run.py dev`, walk the four steps and the checkpoint with the real providers, ask for feedback on each, and report (OWNER_ACTIONS 7–9).
-Next action (build): Gate 2 review; then M3.
+**Release 0.1, Phase A complete in the build workspace.** Updated 2026-09-19 (session 5; implementation day 3). M1–M3 are built; Phase B (Azure) is written and validated but not executed, by the owner's instruction that accounts are created only when the whole project is ready for production testing.
+Next action (owner): pull, `python scripts/run.py migrate`, `python scripts/run.py dev`, walk every step with the real providers (OWNER_ACTIONS 7–10), then Gate 2 with the language reviewer (`docs/GATE2_DEMO.md`); when ready for production, `docs/GO_LIVE.md`.
+Next action (build): none until the owner reports; the build stops here as agreed.
 
 ## M1 — Validate the foundation (local)
 
@@ -49,12 +49,19 @@ said must be dropped) or run the demo script with a second person.
 
 ## M3 — Make it complete and hand over
 
-- [ ] Responsive hardening, keyboard operation, RTL help, loading/error/disconnected states, failure recovery
-- [ ] Budget counters with a pricing table that stays empty until Phase B
-- [ ] Azure adapters (speech, blob with managed identity) implemented and unit-tested with recorded fixtures → `integration_pending`
-- [ ] Bicep and the GitHub Actions OIDC workflow (not executed)
-- [ ] `docs/GO_LIVE.md`, `scripts/verify_live.py`
-- [ ] Every 0.1 acceptance check run; architecture walkthrough; final owner exercise
+- [x] Responsive hardening (steps at 768/390 px), keyboard operation, RTL help, loading/error/disconnected states (connection banner), failure recovery (same-request-id retry, restart of a practice session)
+- [x] Budget counters with a pricing table that stays empty until Phase B (`UsagePanel` on the home page)
+- [x] Azure adapters (speech REST with key or managed identity, blob with managed identity) implemented and unit-tested with recorded fixtures → `integration_pending`
+- [x] Bicep (validated with the Bicep CLI) and the GitHub Actions OIDC workflow (manual, not executed); Dockerfiles
+- [x] `docs/GO_LIVE.md`, `scripts/verify_live.py`
+- [x] Acceptance checks A01–A06 run (CLI, API, tests); `docs/ARCHITECTURE_WALKTHROUGH.md`; final owner exercise (OWNER_ACTIONS 10)
+- [ ] Owner verification on the laptop of M2/M3 (OWNER_ACTIONS 7–10) → `verified_local`; Gate 2 with the reviewer
+
+## Gate 3 / handover (open)
+
+Everything the owner needs is in the repository: the running example, the decisions D-01 to D-16, the
+validation report with honest statuses, the go-live runbook, the demo script for the reviewer. Phase B
+starts when the owner creates the Azure accounts (D-15, GO_LIVE step 0).
 
 ## Time log
 
@@ -64,5 +71,6 @@ said must be dropped) or run the demo script with a second person.
 | 2026-09-18 | 2 | ~1 h 30 min | Laptop checkout, conda environment, WSL fixes (Docker integration, PYTHONPATH, ffmpeg cap, sudo PATH, e2e isolation), M1 verified on the laptop |
 | 2026-09-18 | 3 | ~1 h 55 min | M2 speaking loop: turn workflow, turn endpoints, fixture conversation rules, speaking step and checkpoint UI, recorder hook, 91 API tests and 21 browser tests pass; docs and decisions D-12/D-13 |
 | 2026-09-18 | 3b | ~0 h 45 min | Owner's first M2 run: Ollama not running → turn now fails clearly instead of pretending (502, budget untouched), refused connections fail fast; playback rewritten to avoid the media-load abort; whisper `small` vs `medium` compared on the laptop, recorder keeps a 400 ms tail; 94 API tests |
+| 2026-09-19 | 5 | ~2 h 30 min | M3 (owner asked to finish without pause, which sets the weekly session limit aside): typed-only rule, acceptance checks, Azure adapters, Bicep + workflow + Dockerfiles, go-live runbook, verify_live, connection banner, usage panel, phone/tablet coverage, walkthrough; 109 API tests, 32 browser tests |
 | 2026-09-18 | 4b | ~0 h 20 min | Owner's reading-step run with Ollama: feedback truncated at 600 tokens → budget 1000, truncation retried with double, tighter prompt |
 | 2026-09-18 | 4 | ~1 h 40 min | M2 completed: answer, help and writing evidence, listening clip, feedback grounded in evidence (migration 0002), export; listening/writing/feedback UI; UTC fix; 101 API tests, 24 browser tests; Gate 2 demo notes |

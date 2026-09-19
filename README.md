@@ -72,6 +72,12 @@ fixture providers, a fixed fixture identity and the test database, independent o
   "failed to map segment" in the API log means the cap is too small.
 - `dev` binds the web app on port 3000; open <http://localhost:3000> in the Windows browser.
 
+## Going live
+
+Phase B is written, validated and not executed: `docs/GO_LIVE.md` is the ordered runbook (allowance first,
+app registration, `az deployment group create` with `infra/main.bicep`, images, `scripts/verify_live.py`).
+The owner starts it when the project is ready for production testing.
+
 ## Documents
 
 - `docs/ENGINEERING.md` — architecture, conventions, provider abstraction, trust boundaries, tests.

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { StatusPanel } from "@/components/StatusPanel";
+import { UsagePanel } from "@/components/UsagePanel";
 
 export default function HomePage() {
   return (
@@ -27,6 +28,10 @@ export default function HomePage() {
         <section className="card">
           <h2>Systeemstatus</h2>
           <StatusPanel />
+        </section>
+        <section className="card">
+          <h2>Verbruik en budget</h2>
+          <UsagePanel />
         </section>
       </div>
     </>

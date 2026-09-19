@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { ConnectionBanner } from "@/components/ConnectionBanner";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -36,6 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </ul>
           </nav>
         </header>
+        <ConnectionBanner />
         <main id="main" className="site-main">
           {children}
         </main>
