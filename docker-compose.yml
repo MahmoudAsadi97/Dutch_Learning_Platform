@@ -2,6 +2,7 @@ services:
   postgres:
     image: postgres:16-alpine
     container_name: dlp-postgres
+    restart: unless-stopped
     environment:
       POSTGRES_USER: dlp
       POSTGRES_PASSWORD: dlp
@@ -20,6 +21,7 @@ services:
   azurite:
     image: mcr.microsoft.com/azure-storage/azurite:latest
     container_name: dlp-azurite
+    restart: unless-stopped
     command: ["azurite-blob", "--blobHost", "0.0.0.0", "--blobPort", "10000", "--location", "/data", "--skipApiVersionCheck"]
     ports:
       - "127.0.0.1:10000:10000"

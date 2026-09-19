@@ -8,7 +8,7 @@
   preflight   report configured providers (no secrets)
   api         run the API on 127.0.0.1:8000
   web         run the web app on localhost:3000 (development server)
-  dev         run api and web together
+  dev         one command after a reboot: services, migrations, content, Ollama, then api + web
   test        run the API test suite
   e2e         build the web app, start api + web with fixture providers, run the browser tests
   benchmark   run the language-benchmark plumbing dry runs
@@ -130,23 +130,55 @@ def task_services() -> None:
     sh(["docker", "compose", "up", "-d"])
 
 
+def _database_port(env: dict[str, str]) -> tuple[str, int]:
+    from urllib.parse import urlparse
+
+    parsed = urlparse(env.get("DATABASE_URL", ""))
+    return parsed.hostname or "127.0.0.1", parsed.port or 5432
+
+
+def _ensure_services(env: dict[str, str] | None = None) -> None:
+    """Start the Docker services when nothing listens on the database port (after a reboot, typically)."""
+    env = env or load_env()
+    host, port = _database_port(env)
+    if host not in ("127.0.0.1", "localhost") or not _port_free(port):
+        return
+    if shutil.which("docker") is None:
+        raise SystemExit(f"no database on {host}:{port} and Docker is not on the PATH; start PostgreSQL and Azurite first")
+    print(f"no database on {host}:{port}; starting the Docker services")
+    if sh(["docker", "compose", "up", "-d"], check=False) != 0:
+        raise SystemExit("docker compose failed; is Docker Desktop running (with WSL integration on)?")
+    deadline = time.monotonic() + 90
+    while time.monotonic() < deadline:
+        if not _port_free(port):
+            time.sleep(2)  # the server accepts connections a moment after the port opens
+            return
+        time.sleep(1)
+    raise SystemExit(f"the database did not come up on {host}:{port} within 90 s; check `docker compose logs postgres`")
+
+
 def task_migrate() -> None:
+    _ensure_services()
     sh([str(venv_python()), "-m", "alembic", "upgrade", "head"], cwd=API)
 
 
 def task_fixture() -> None:
+    _ensure_services()
     sh([str(venv_python()), "-m", "dlp.cli", "load-fixture"], cwd=API)
 
 
 def task_preflight() -> None:
+    _ensure_services()
     sh([str(venv_python()), "-m", "dlp.cli", "preflight"], cwd=API)
 
 
 def task_acceptance() -> None:
+    _ensure_services()
     sh([str(venv_python()), "-m", "dlp.cli", "acceptance", "--check", "all"], cwd=API)
 
 
 def task_test() -> None:
+    _ensure_services()
     sh([str(venv_python()), "-m", "pytest", "-q"], cwd=API)
 
 
@@ -232,19 +264,51 @@ def _wait_http(url: str, timeout: float = 60.0) -> None:
     raise SystemExit(f"timed out waiting for {url}")
 
 
-def _warn_if_database_down(env: dict[str, str]) -> None:
-    from urllib.parse import urlparse
+def _ollama_reachable(base_url: str) -> bool:
+    import urllib.error
+    import urllib.request
 
-    parsed = urlparse(env.get("DATABASE_URL", ""))
-    host, port = parsed.hostname or "127.0.0.1", parsed.port or 5432
-    if host in ("127.0.0.1", "localhost") and _port_free(port):
-        print(f"warning: no database is listening on {host}:{port}; run `python scripts/run.py services` first")
+    try:
+        with urllib.request.urlopen(base_url.rstrip("/") + "/models", timeout=2) as response:  # noqa: S310 - local URL
+            return response.status < 500
+    except (urllib.error.URLError, ConnectionError, TimeoutError, OSError):
+        return False
+
+
+def _ensure_ollama(env: dict[str, str]) -> subprocess.Popen | None:
+    """Start `ollama serve` when the chat provider is local and nothing answers at its endpoint.
+    Returns the child when this runner started it (it is stopped with the rest), None otherwise."""
+    if env.get("CHAT_PROVIDER", "local") != "local":
+        return None
+    base_url = env.get("LOCAL_CHAT_BASE_URL", "http://localhost:11434/v1")
+    if _ollama_reachable(base_url):
+        return None
+    if shutil.which("ollama") is None:
+        print(f"warning: nothing answers at {base_url} and `ollama` is not on the PATH; the conversation needs it")
+        return None
+    log_dir = ROOT / ".local"
+    log_dir.mkdir(exist_ok=True)
+    log = open(log_dir / "ollama.log", "ab")  # noqa: SIM115 - handed to the child process
+    print(f"nothing answers at {base_url}; starting `ollama serve` (log: .local/ollama.log)")
+    group: dict = {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP} if WINDOWS else {"start_new_session": True}  # type: ignore[attr-defined]
+    child = subprocess.Popen(["ollama", "serve"], cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, **group)
+    deadline = time.monotonic() + 45
+    while time.monotonic() < deadline and child.poll() is None:
+        if _ollama_reachable(base_url):
+            return child
+        time.sleep(1)
+    print("warning: ollama did not answer within 45 s; the conversation will report the model as unavailable")
+    return child
 
 
 def task_dev() -> None:
+    """Everything a laptop needs after a reboot, in order, then the two servers."""
     env = load_env()
     _require_free_ports(int(env.get("API_PORT", "8000")), int(env.get("WEB_PORT", "3000")))
-    _warn_if_database_down(env)
+    _ensure_services(env)
+    sh([str(venv_python()), "-m", "alembic", "upgrade", "head"], cwd=API, env=env)
+    sh([str(venv_python()), "-m", "dlp.cli", "load-fixture"], cwd=API, env=env)
+    ollama = _ensure_ollama(env)
     api = _spawn(api_command(env), API, env)
     web = _spawn([npm(), "run", "dev"], WEB, env)
     print("api on http://127.0.0.1:8000, web on http://localhost:3000 — Ctrl+C stops both")
@@ -256,6 +320,8 @@ def task_dev() -> None:
     finally:
         _stop(web, "web")
         _stop(api, "api")
+        if ollama is not None:
+            _stop(ollama, "ollama")
 
 
 E2E_OWNER_EMAIL = "owner@example.com"
@@ -273,6 +339,7 @@ def task_e2e() -> None:
         "CHAT_PROVIDER": "fixture", "STT_PROVIDER": "fixture", "TTS_PROVIDER": "fixture", "BLOB_PROVIDER": "memory",
         "JOB_LOOP_ENABLED": "false",
     })
+    _ensure_services(env)
     sh([str(venv_python()), "-m", "alembic", "upgrade", "head"], cwd=API, env=env)
     sh([str(venv_python()), "-m", "dlp.cli", "load-fixture"], cwd=API, env=env)
     # every run starts from an empty learner history, so the conversation tests are repeatable

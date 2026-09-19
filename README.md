@@ -33,7 +33,7 @@ Then, in that environment (or with plain Python, which creates `apps/api/.venv` 
 ```
 python scripts/run.py setup        # pip (API), npm (web), Playwright browser, creates .env from .env.example
 # edit .env: DEV_OWNER_EMAIL, OWNER_ALLOWLIST, ASSERTION_SIGNING_KEY (32+ random characters), LOCAL_CHAT_MODEL
-python scripts/run.py services     # PostgreSQL + Azurite
+python scripts/run.py services     # PostgreSQL + Azurite (dev does this by itself when they are down)
 python scripts/run.py migrate
 python scripts/run.py fixture      # validates and loads content/missions/*/mission.json
 python scripts/fetch_piper_voice.py
@@ -41,9 +41,11 @@ python scripts/run.py preflight    # what is configured and reachable; never pri
 python scripts/run.py dev          # API on 127.0.0.1:8000, web on http://localhost:3000
 ```
 
-Ollama must be running for the conversation (`ollama serve` in another terminal under WSL, or the
-Ollama app on Windows with `LOCAL_CHAT_BASE_URL` pointing at it); the preflight row *chat model*
-says whether it is reachable. Without it a turn fails with a clear message instead of a fake reply.
+After a reboot, `python scripts/run.py dev` is the only command needed: it starts the Docker services
+when the database is down, applies migrations, loads the content, starts `ollama serve` when nothing
+answers at `LOCAL_CHAT_BASE_URL` (and stops it again with Ctrl+C), then runs the API and the web app.
+The preflight row *chat model* says whether Ollama is reachable; without it a turn fails with a clear
+message instead of a fake reply.
 Speech recognition uses faster-whisper `small` by default; `LOCAL_STT_MODEL=medium` in `.env` is
 clearly better on non-native Dutch at about three times the recognition time (roughly one second
 per second of speech on a laptop CPU).
