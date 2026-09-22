@@ -71,3 +71,15 @@ def test_slot_from_another_scenario_is_refused(scenario):
     assert result.accepted is False
     assert "not an available slot" in result.reason
     assert state.accepted_slot_id == ""
+
+
+def test_naming_an_available_moment_takes_it_pending_confirmation(scenario):
+    """The model may label "donderdag om tien uur is goed" as propose_slot; the code still takes the slot."""
+    state = AppointmentState()
+    apply_action(scenario, state, ProposedAction(action="state_reason", reason_text="Ik moet werken."))
+    result = apply_action(scenario, state, ProposedAction(action="propose_slot", slot_id="thu-1000"))
+    assert result.accepted and result.slot_id == "thu-1000"
+    assert state.accepted_slot_id == "thu-1000" and not state.confirmed
+    assert "accept_slot" in state.actions
+    assert apply_action(scenario, state, ProposedAction(action="confirm")).accepted
+    assert required_actions_completed(state, ["state_reason", "accept_slot", "confirm"])

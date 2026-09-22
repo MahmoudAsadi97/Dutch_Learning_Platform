@@ -30,6 +30,26 @@ browser against `http://localhost:3000`).
 | Finding | a media-load `AbortError` surfaced once in the dev overlay while playing synthesis a second time; playback now runs each clip on its own `Audio` object whose `play()` promise is always observed (`lib/client/playback.ts`) |
 | Reading step with real providers (later that evening) | answers judged and recorded (2/2), all help rungs recorded (11 evidence items). **Feedback failed**: `llama3.1:8b` produced 600 output tokens three times and was cut off each time (`finish_reason=length`, ~12 s per attempt, 104 s in total) — Persian text costs several tokens per word and the cap was 600. Fixed: a truncated reply is retried with double the budget instead of a repair round, feedback gets its own budget (`FEEDBACK_MAX_OUTPUT_TOKENS=1000`), the prompt asks for at most three short points and the evidence list is capped |
 
+## Owner laptop, full loop with the real providers, 2026-09-22
+
+Run by the build through the desktop app's browser on the owner's laptop (`python scripts/run.py dev`;
+preflight all `ok`: PostgreSQL 16.15, Ollama `llama3.1:8b`, faster-whisper `medium`, Piper
+`nl_BE-nathalie-medium`, Azurite). The spoken turns and the checkpoint were not exercised (microphone).
+
+| Step | Result |
+|---|---|
+| Reading | answers judged by the API, 2/2, help rungs recorded; **feedback**: Dutch and Persian summaries arrived in ~25 s, all three points dropped — the model's citations did not resolve (see the fix below) |
+| Listening | Piper clip synthesised on first play and labelled `synthetic-development`; 1/1 judged; feedback: one point with a valid citation and a matching quote, no Persian summary that time |
+| Writing | autosave shown (`bewaard 14:36`), 32 words, required words found, submitted as typed evidence, `Schrijven: practised`; feedback: two grounded points (one mislabelled *fout* for a help-use observation), one dropped, Persian present |
+| Speaking, typed turns | turn 1 *Ik moet dan werken* → `state_reason` accepted, model reply offering only real slots, 3.1 s. Turn 2 *Donderdag om tien uur is goed voor mij* → the model labelled it `propose_slot`, the code recorded no acceptance, and the model reply announced *Uw afspraak is dan verzet naar donderdag om tien uur. Ik zie u dan morgen* — a booking the code had not made, plus an invented *morgen*. Turn 3 *Ja, dat is goed. Tot dan!* → `confirm` refused (nothing accepted) while the reply closed with *Tot dan! Tot donderdag om tien uur dan.* |
+
+Fixes from this run (all with tests): naming one of the available moments now takes it as chosen with
+confirmation pending, whatever label the model chose (`apply_action`); the reply guard also catches
+closings and rescheduling phrases (*verzet naar*, *tot dan*, *zie u dan*) before the code accepted or
+confirmed; the prompts carry today's date and forbid *morgen* and closings before confirmation;
+feedback citations are resolved leniently (`E1`, `e1`, `[E1]`, `1`, `bewijs 1`) and a quote alone can
+identify its evidence; dropped points are shown under the report for inspection.
+
 ## Status vocabulary
 
 | Status | Meaning |

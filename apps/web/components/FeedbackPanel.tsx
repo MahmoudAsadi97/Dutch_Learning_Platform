@@ -84,7 +84,7 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
               {latest.summary_fa}
             </p>
           )}
-          <ul className="feedback-points">
+          <ul className="feedback-points" data-testid={`${stepKey}-feedback-points`}>
             {latest.points.map((point, index) => {
               const label = KIND_LABEL[point.kind] ?? KIND_LABEL.suggestion;
               return (
@@ -114,6 +114,24 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
             {latest.model_provider} · {latest.model_name} · {latest.prompt_version} · {latest.evidence_ids.length} bewijsstukken
             {latest.dropped_points > 0 && ` · ${latest.dropped_points} punt(en) weggelaten zonder geldig bewijs`}
           </p>
+          {latest.dropped_points > 0 && (latest.dropped ?? []).length > 0 && (
+            <details data-testid={`${stepKey}-feedback-dropped`}>
+              <summary className="muted" style={{ fontSize: "0.85rem", cursor: "pointer" }}>
+                Weggelaten punten (niet aan bewijs te koppelen; alleen ter controle)
+              </summary>
+              <ul className="feedback-points">
+                {(latest.dropped ?? []).map((point, index) => (
+                  <li key={`${latest.id}-dropped-${index}`} className="muted">
+                    <span lang="nl">{point.text_nl}</span>
+                    <span className="mono" style={{ display: "block", fontSize: "0.75rem" }}>
+                      {point.kind} · verwijzing: {point.evidence.join(", ") || "geen"} · {point.reason}
+                      {point.quote && ` · „${point.quote}”`}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
         </div>
       )}
     </section>

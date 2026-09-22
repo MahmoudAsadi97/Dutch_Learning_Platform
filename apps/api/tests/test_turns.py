@@ -57,6 +57,31 @@ def test_workflow_refuses_an_invented_slot_and_never_announces_it(document):
     assert "zondag" not in state["reply_nl"].lower()
 
 
+def test_workflow_never_closes_the_call_before_the_code_did(document):
+    """Seen on the laptop: the model said "Tot dan! Tot donderdag om tien uur dan." while nothing was accepted."""
+    scenario = document.scenario("dentist-base")
+    chat = FixtureChatModel(replies={
+        "propose-action-v1": {"action": "confirm", "confidence": 0.9},
+        "character-reply-v1": {"reply_nl": "Tot dan! Tot donderdag om tien uur dan."},
+    })
+    appointment = {"reason_stated": True, "actions": ["state_reason"]}
+    state = run_turn(chat, scenario=scenario, appointment=appointment, history=[], learner_text="Ja, dat is goed. Tot dan!",
+                     request_id="w5")
+    assert state["action_result"]["accepted"] is False
+    assert state["reply_source"] == "fixed_line"
+    assert "donderdag om 10 uur" in state["reply_nl"], "the phase's fixed line offers the slots again"
+
+    # accepted but not confirmed: a closing line is replaced by the confirmation question
+    chat = FixtureChatModel(replies={
+        "propose-action-v1": {"action": "accept_slot", "slot_id": "thu-1000", "confidence": 0.9},
+        "character-reply-v1": {"reply_nl": "Prima, tot dan!"},
+    })
+    state = run_turn(chat, scenario=scenario, appointment=appointment, history=[], learner_text="Donderdag om tien uur.",
+                     request_id="w6")
+    assert state["appointment"]["accepted_slot_id"] == "thu-1000"
+    assert state["reply_source"] == "fixed_line" and "Past dat?" in state["reply_nl"]
+
+
 def test_workflow_uses_the_fixed_line_when_the_reply_call_fails(document):
     scenario = document.scenario("dentist-base")
     chat = FixtureChatModel(fail_calls=(2,))

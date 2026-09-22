@@ -62,7 +62,8 @@ test.describe("lesson shell: reading step", () => {
     await panel.getByTestId("read-reminder-feedback-ask").click();
     const report = panel.getByTestId("read-reminder-feedback-report");
     await expect(report).toBeVisible({ timeout: 20_000 });
-    await expect(report.locator(".feedback-points li")).toHaveCount(2);
+    await expect(page.getByTestId("read-reminder-feedback-points").locator("li")).toHaveCount(2);
+    await expect(page.getByTestId("read-reminder-feedback-dropped")).toContainText("E99");
     await expect(report.locator('[data-kind="strength"]')).toBeVisible();
     await expect(report).toContainText("1 punt(en) weggelaten zonder geldig bewijs");
     await expect(report).toContainText("fixture · fixture-chat-v1 · feedback-v1");

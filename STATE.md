@@ -54,7 +54,8 @@ said must be dropped) or run the demo script with a second person.
 - [x] Bicep (validated with the Bicep CLI) and the GitHub Actions OIDC workflow (manual, not executed); Dockerfiles
 - [x] `docs/GO_LIVE.md`, `scripts/verify_live.py`
 - [x] Acceptance checks A01–A06 run (CLI, API, tests); `docs/ARCHITECTURE_WALKTHROUGH.md`; final owner exercise (OWNER_ACTIONS 10)
-- [ ] Owner verification on the laptop of M2/M3 (OWNER_ACTIONS 7–10) → `verified_local`; Gate 2 with the reviewer
+- [x] Laptop verification with the real providers of reading, listening, writing, feedback and the typed conversation (2026-09-22, VALIDATION_REPORT "full loop") → `verified_local` for those; spoken turns and the checkpoint still the owner's (OWNER_ACTIONS 7–8)
+- [ ] Gate 2 with the reviewer
 
 ## Gate 3 / handover (open)
 
@@ -71,6 +72,7 @@ starts when the owner creates the Azure accounts (D-15, GO_LIVE step 0).
 | 2026-09-18 | 3 | ~1 h 55 min | M2 speaking loop: turn workflow, turn endpoints, fixture conversation rules, speaking step and checkpoint UI, recorder hook, 91 API tests and 21 browser tests pass; docs and decisions D-12/D-13 |
 | 2026-09-18 | 3b | ~0 h 45 min | Owner's first M2 run: Ollama not running → turn now fails clearly instead of pretending (502, budget untouched), refused connections fail fast; playback rewritten to avoid the media-load abort; whisper `small` vs `medium` compared on the laptop, recorder keeps a 400 ms tail; 94 API tests |
 | 2026-09-19 | 6 | ~0 h 15 min | Laptop after a reboot: migrate failed with the database down → `dev` now brings up Docker, migrations, content and Ollama itself; containers restart with Docker Desktop |
+| 2026-09-22 | 7 | ~1 h 10 min | Full loop on the laptop with the real providers through the desktop app's browser (reading, listening, writing, feedback, typed conversation); two real defects found and fixed with tests (a named slot not taken as chosen; replies closing or announcing a booking the code had not made); lenient feedback citations; 112 API tests, 32 browser tests |
 | 2026-09-19 | 5 | ~2 h 30 min | M3 (owner asked to finish without pause, which sets the weekly session limit aside): typed-only rule, acceptance checks, Azure adapters, Bicep + workflow + Dockerfiles, go-live runbook, verify_live, connection banner, usage panel, phone/tablet coverage, walkthrough; 109 API tests, 32 browser tests |
 | 2026-09-18 | 4b | ~0 h 20 min | Owner's reading-step run with Ollama: feedback truncated at 600 tokens → budget 1000, truncation retried with double, tighter prompt |
 | 2026-09-18 | 4 | ~1 h 40 min | M2 completed: answer, help and writing evidence, listening clip, feedback grounded in evidence (migration 0002), export; listening/writing/feedback UI; UTC fix; 101 API tests, 24 browser tests; Gate 2 demo notes |

@@ -113,7 +113,17 @@ def apply_action(scenario: Scenario, state: AppointmentState, proposed: Proposed
         if slot_id not in state.offered_slot_ids:
             state.offered_slot_ids.append(slot_id)
         state.actions.append(action)
-        return ActionResult(True, action, "slot is available", state.as_dict(), slot_id=slot_id)
+        # A learner who names one of the available moments has chosen it: the model may label that
+        # "propose" or "accept", the outcome is the same — the slot is taken, confirmation pending.
+        slot = next(s for s in scenario.available_slots if s.id == slot_id)
+        reference = (now or datetime.combine(scenario.reference_date, time(0, 0))).date()
+        if slot.day < reference:
+            return ActionResult(False, action, "the slot lies in the past", state.as_dict())
+        state.accepted_slot_id = slot_id
+        state.confirmed = False
+        state.actions.append("accept_slot")
+        return ActionResult(True, action, "slot is available and taken, confirmation pending", state.as_dict(),
+                            slot_id=slot_id)
 
     if action == "accept_slot":
         slot_id = _slot_matches(scenario, proposed)

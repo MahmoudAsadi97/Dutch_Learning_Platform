@@ -222,6 +222,7 @@ export interface FeedbackReportView {
   points: FeedbackPoint[];
   evidence_ids: string[];
   dropped_points: number;
+  dropped: { kind: string; text_nl: string; text_fa: string; quote: string; correction: string; evidence: string[]; reason: string }[];
   model_provider: string;
   model_name: string;
   prompt_version: string;

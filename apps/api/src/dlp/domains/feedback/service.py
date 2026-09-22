@@ -4,6 +4,7 @@ and recorded, never shown. Nothing here counts as an assessment: it is feedback 
 
 from __future__ import annotations
 
+import re
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field
@@ -172,16 +173,20 @@ def generate_feedback(session: Session, settings: Settings, providers: Providers
     points: list[dict[str, Any]] = []
     dropped: list[dict[str, Any]] = []
     for point in reply.points:
-        cited = [str(by_handle[h].id) for h in point.evidence if h in by_handle]
-        if not cited:
+        handles_cited = resolve_handles(point.evidence, by_handle)
+        quote = point.quote.strip()
+        if not handles_cited and quote:
+            # No usable citation, but the quote may identify the evidence on its own.
+            handles_cited = [h for h, record in handles if quote.lower() in describe_evidence(record).lower()]
+        if not handles_cited:
             dropped.append({**point.model_dump(), "reason": "no valid evidence citation"})
             continue
-        quote = point.quote.strip()
-        if quote and not any(quote.lower() in describe_evidence(by_handle[h]).lower() for h in point.evidence if h in by_handle):
+        if quote and not any(quote.lower() in describe_evidence(by_handle[h]).lower() for h in handles_cited):
             dropped.append({**point.model_dump(), "reason": "quote not found in the cited evidence"})
             continue
         points.append({"kind": point.kind, "skill": step.skill, "text_nl": point.text_nl, "text_fa": point.text_fa,
-                       "quote": quote, "correction": point.correction, "evidence_ids": cited})
+                       "quote": quote, "correction": point.correction,
+                       "evidence_ids": [str(by_handle[h].id) for h in handles_cited]})
 
     report = FeedbackReport(
         session_id=practice.id, learner_id=practice.learner_id, step_key=step_key, skill=step.skill, request_id=request_id,
@@ -195,6 +200,18 @@ def generate_feedback(session: Session, settings: Settings, providers: Providers
     session.flush()
     _note_on_skill_record(session, practice, step, report)
     return report
+
+
+def resolve_handles(cited: list[str], by_handle: dict[str, EvidenceRecord]) -> list[str]:
+    """Accept the handle in the shapes a small model produces: "E1", "e1", "E1: ...", "[E1]", "1", "bewijs 1"."""
+    found: list[str] = []
+    for item in cited:
+        text = str(item)
+        for match in re.findall(r"[Ee]\s*(\d+)", text) or re.findall(r"\b(\d+)\b", text):
+            handle = f"E{int(match)}"
+            if handle in by_handle and handle not in found:
+                found.append(handle)
+    return found
 
 
 def _note_on_skill_record(session: Session, practice: PracticeSession, step: Step, report: FeedbackReport) -> None:
@@ -226,7 +243,8 @@ def report_view(report: FeedbackReport) -> dict[str, Any]:
         "request_id": report.request_id, "task_completed": report.task_completed,
         "summary_nl": report.report.get("summary_nl", ""), "summary_fa": report.report.get("summary_fa", ""),
         "points": report.report.get("points", []), "evidence_ids": report.evidence_ids,
-        "dropped_points": len(report.dropped_points), "model_provider": report.model_provider,
+        "dropped_points": len(report.dropped_points), "dropped": report.dropped_points,
+        "model_provider": report.model_provider,
         "model_name": report.model_name, "prompt_version": report.prompt_version,
         "created_at": report.created_at.isoformat(),
     }

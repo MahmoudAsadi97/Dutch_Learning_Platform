@@ -133,6 +133,19 @@ def test_feedback_cites_only_real_evidence(client):
     assert usage["used"] == 1 and usage["reserved"] == 0
 
 
+def test_feedback_handles_are_resolved_leniently():
+    from dlp.domains.feedback.service import resolve_handles
+
+    class Record:
+        pass
+
+    by_handle = {"E1": Record(), "E2": Record()}
+    assert resolve_handles(["E1"], by_handle) == ["E1"]
+    assert resolve_handles(["e2", "[E1]", "E1: antwoord"], by_handle) == ["E2", "E1"]
+    assert resolve_handles(["1", "bewijs 2"], by_handle) == ["E1", "E2"]
+    assert resolve_handles(["E9", "nothing"], by_handle) == []
+
+
 def test_speaking_feedback_needs_a_code_validated_action(client):
     session_id = _start(client)
     client.post(f"/practice/sessions/{session_id}/turns", headers=auth_headers("fb-turn-1"),

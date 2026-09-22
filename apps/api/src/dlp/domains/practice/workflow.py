@@ -121,14 +121,20 @@ def build_graph(chat: ChatModel):
 
 
 CONFIRMATION_WORDS = ("genoteerd", "staat vast", "is bevestigd", "ik zet u op", "ik zet je op",
-                      "uw nieuwe afspraak", "je nieuwe afspraak")
+                      "uw nieuwe afspraak", "je nieuwe afspraak", "verzet naar", "verplaatst naar", "ingepland",
+                      "staat nu op", "zie u dan", "zie je dan", "tot dan", "tot donderdag", "tot vrijdag",
+                      "tot maandag", "tot dinsdag", "tot woensdag", "tot zaterdag", "tot zondag")
 
 
 def _contradicts_decision(reply: str, state: TurnState, appointment: AppointmentState) -> bool:
-    """A reply that announces a booking while nothing was accepted contradicts the code's decision."""
+    """A reply that announces or closes a booking while nothing was accepted contradicts the code's decision,
+    and so does a closing line while the accepted slot is not confirmed yet."""
     lowered = reply.lower()
     announces = any(word in lowered for word in CONFIRMATION_WORDS)
-    return announces and not appointment.accepted_slot_id
+    if not appointment.accepted_slot_id:
+        return announces
+    closes = any(word in lowered for word in ("tot dan", "zie u dan", "zie je dan", "fijne dag"))
+    return closes and not appointment.confirmed
 
 
 def run_turn(chat: ChatModel, *, scenario: Scenario, appointment: dict[str, Any], history: list[tuple[str, str]],
