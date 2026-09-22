@@ -1,14 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { ConnectionBanner } from "@/components/ConnectionBanner";
+import { AppShell } from "@/components/AppShell";
+
+import "@fontsource-variable/dm-sans";
+import "@fontsource-variable/vazirmatn";
 
 import "./globals.css";
+import "./design.css";
 
 export const metadata: Metadata = {
-  title: "Nederlands oefenen",
-  description: "Dutch learning platform, release 0.1",
+  title: {
+    default: "Taalstudio · Jouw Nederlands, elke dag",
+    template: "%s · Taalstudio",
+  },
+  description:
+    "Een persoonlijke leeromgeving voor Nederlands in België. Lees, luister, spreek en schrijf in situaties uit het echte leven.",
+  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
@@ -23,28 +31,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a className="skip-link" href="#main">
           Naar de inhoud
         </a>
-        <header className="site-header">
-          <nav aria-label="Hoofdmenu" className="site-nav">
-            <Link href="/" className="brand">
-              Nederlands oefenen
-            </Link>
-            <ul>
-              <li>
-                <Link href="/missions/appointment-change">Missie</Link>
-              </li>
-              <li>
-                <Link href="/speech-check">Microfoontest</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <ConnectionBanner />
-        <main id="main" className="site-main">
+        <AppShell environment={process.env.APP_ENV ?? "development"}>
           {children}
-        </main>
-        <footer className="site-footer">
-          <span>Release 0.1 · Phase A · lokale ontwikkelomgeving</span>
-        </footer>
+        </AppShell>
       </body>
     </html>
   );

@@ -10,7 +10,7 @@ interface Props {
 /** Title, review label and bilingual instructions, shared by every step. */
 export function StepHeader({ step, labels, children }: Props) {
   return (
-    <header>
+    <header className="step-header">
       <h2 id="step-title">
         {step.title.nl}
         <span className="fa" lang="fa" style={{ display: "block", fontSize: "1rem", fontWeight: 400 }}>

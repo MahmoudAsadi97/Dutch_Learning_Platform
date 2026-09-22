@@ -18,7 +18,7 @@ test.describe("listening and writing steps", () => {
     await step.getByTestId("listen-voicemail-check").click();
     await expect(step.getByTestId("score")).toHaveText("1 van 1 juist");
     await expect(step.getByTestId("listen-voicemail-done")).toBeVisible();
-    await expect(page.getByTestId("skill-records")).toContainText("Luisteren: practised");
+    await expect(page.getByTestId("skill-records")).toContainText("Luisteren: Geoefend");
   });
 
   test("the writing step autosaves the draft and submits typed evidence", async ({ page }) => {
@@ -40,7 +40,7 @@ test.describe("listening and writing steps", () => {
     await step.getByTestId("writing-submit").click();
     await expect(step.getByTestId("writing-done")).toBeVisible();
     await expect(step.getByTestId("writing-notice")).toContainText("Alle vereiste woorden staan erin");
-    await expect(page.getByTestId("skill-records")).toContainText("Schrijven: practised");
+    await expect(page.getByTestId("skill-records")).toContainText("Schrijven: Geoefend");
 
     // a reload shows the submitted draft again
     await page.reload();

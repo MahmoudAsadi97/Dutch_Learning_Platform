@@ -71,9 +71,9 @@ test.describe("lesson shell: reading step", () => {
   });
 });
 
-test.describe("home", () => {
+test.describe("settings", () => {
   test("shows the fixture principal and the preflight table", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/settings");
     await expect(page.getByTestId("principal")).toContainText(OWNER);
     await expect(page.getByTestId("principal")).toContainText("fixture");
     const rows = page.getByTestId("preflight").locator("tbody tr");
