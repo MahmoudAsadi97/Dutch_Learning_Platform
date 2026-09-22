@@ -68,6 +68,18 @@ screenshots or public documentation. Prefer Key Vault parameter references for a
   `strongModelVersion` together, or leave both empty.
 - Leave `deployApplications`, `deployMigrationJob` and `publicWeb` false initially.
 
+Run the offline configuration check **before** creating resources:
+
+```bash
+python scripts/check_azure_config.py --parameters infra/parameters.local.json --bootstrap
+```
+
+It rejects placeholders, malformed identity IDs, reused/short secrets, wrong types, missing paired model
+settings, a stale bootstrap budget month and premature public exposure. Messages name fields, never
+their values. It makes no network calls. Key Vault references are syntax-checked only; secret access,
+model availability, resource policies and quotas still need Azure validation. A pass is not permission
+to spend. The foundation incurs hosting/storage costs even with `paidUsageApproved=false`.
+
 The examples below run in Bash/WSL, **not Windows Command Prompt**. Use a real Windows path in cmd;
 use `/mnt/c/...` only after entering WSL. A trailing `$` is a shell prompt symbol, not part of the folder name.
 
@@ -81,6 +93,8 @@ export DLP_RG="dlp-production"
 export DLP_PREFIX="dlp"
 az group create --name "$DLP_RG" --location westeurope
 az bicep build --file infra/main.bicep --outfile /tmp/dlp-template.json
+az deployment group validate --resource-group "$DLP_RG" --template-file infra/main.bicep \
+  --parameters @infra/parameters.local.json --only-show-errors --output none
 az deployment group what-if --resource-group "$DLP_RG" --template-file infra/main.bicep \
   --parameters @infra/parameters.local.json
 ```
@@ -208,6 +222,14 @@ does not promise zero downtime or high availability.
   recordings can be retained. Agree retention and deletion before inviting anyone else; soft delete
   retains deleted blobs for 14 days and backups retain older database records for 7 days. JSON export
   is an export of progress/evidence, not a database backup. No general multi-user deletion SLA is claimed.
+- **Speech recovery:** a storage outage preserves a successful transcript and shows that its recording
+  was not saved. Listening audio can still play when caching fails. Cache keys include content, provider
+  and voice, so switching from local speech to Azure does not replay the old voice. Older fixed-audio cache
+  objects are not reused; remove them only after checking they are unused. Raw transcription/synthesis
+  requests execute on each call and consume allowance each time, even with a repeated tracing ID.
+  Retrying an already persisted conversation turn returns the saved result without new provider calls.
+  A slow speech call does not block API health checks. These counters remain application usage estimates,
+  not a billing ledger: provider-side timeout charges and process crashes require reconciliation with Azure.
 - **Dependency updates:** API production dependencies are hash-locked; web dependencies use npm's lock.
   Regenerate, inspect and run CI before updating. Rebuild images for base-image security patches.
 

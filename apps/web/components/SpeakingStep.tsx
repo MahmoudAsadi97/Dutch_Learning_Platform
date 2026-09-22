@@ -445,6 +445,9 @@ function TurnBubbles({ turn, characterName, playing, onPlay }: { turn: TurnView;
           {actionText && ` · ${actionText}`}
           {turn.status === "failed" && " · mislukt"}
         </span>
+        {turn.recording_warning && (
+          <span className="muted" role="status">Uw tekst is bewaard. De geluidsopname kon niet worden opgeslagen.</span>
+        )}
       </li>
       {turn.status === "completed" && (
         <li className="bubble character" data-testid="turn-character" data-source={turn.reply_source ?? ""}>

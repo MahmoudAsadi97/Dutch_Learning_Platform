@@ -177,6 +177,8 @@ export interface TurnView {
   errors: string[];
   error: string | null;
   audio_error: string | null;
+  recording_stored?: boolean | null;
+  recording_warning?: string | null;
   status: "pending" | "completed" | "failed";
   created_at: string;
 }

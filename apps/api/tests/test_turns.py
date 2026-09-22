@@ -286,7 +286,15 @@ def test_a_spoken_turn_records_the_transcript_as_evidence(client):
     speaking = next(r for r in records if r["skill"] == "speaking")
     assert speaking["status"] == "practised" and speaking["latest_assessment"]["speak-call"]["spoken"] is True
     providers = get_providers()
-    assert providers.blob.exists(f"recordings/{_learner_id(client)}/speech-turn-0001.wav")
+    import uuid
+
+    from dlp.db.session import session_scope
+    from dlp.domains.speech.models import AudioAsset
+
+    with session_scope() as db:
+        asset = db.get(AudioAsset, uuid.UUID(body["turn"]["learner_audio_asset_id"]))
+        assert asset.learner_id == uuid.UUID(_learner_id(client))
+        assert providers.blob.exists(asset.blob_key)
 
     # the checkpoint refuses no spoken turn, and a repeated upload with the same request id is answered from the stored turn
     again = client.post(

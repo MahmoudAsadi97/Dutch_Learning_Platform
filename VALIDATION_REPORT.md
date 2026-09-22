@@ -1,5 +1,18 @@
 # Validation report
 
+## Speech recovery and Azure configuration checks — 2026-09-22
+
+Baseline: merged release `26ff27d`, whose [main CI run](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/35741018022)
+completed successfully. Follow-up checks target repeated tracing IDs, slow speech requests, storage
+outages, rejected turns after successful transcription, changed listening voices/content, and unsafe
+Azure parameter files. No schema migration or new paid service is required by this change.
+
+The local API run passes all runnable tests; PostgreSQL/Azurite cases skip when those services are
+unavailable. Full database and browser validation is required in the follow-up PR before merging.
+Web lint, TypeScript and all five client unit tests pass locally. Fixture tests are not live Azure or
+physical-phone evidence. The offline parameter checker is not an Azure permission, quota, price or
+model-availability check. Content review status stays unchanged.
+
 ## Learner interface and Azure release preparation — 2026-09-22
 
 Baseline: `3228049`. [Green full validation run at `acb8e5d`](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/35739440156).

@@ -10,12 +10,17 @@ The older milestone notes below are historical. Use [GO_LIVE](docs/GO_LIVE.md) f
 2. Approve the actual region/currency cost estimate and allowance. Confirm subscription quotas and
    supported model versions; the budget amount is an alert, not a guaranteed monthly price.
 3. Fill the ignored Azure parameter file and create the Entra registration/secret and resource group.
+   Before resource creation, run `python scripts/check_azure_config.py --bootstrap` to catch invalid
+   settings without printing their values or calling Azure; then follow Azure validation in the runbook.
    The template creates the services; the runbook builds images and runs migrations before the apps.
 4. Configure the callback URI, allowlist, GitHub OIDC and protected production environment.
 5. Complete the live Azure conversation/speech/sign-in checks, physical phone journey and separate
    database/blob recovery drill. Record evidence per service; configuration checks do not validate all adapters.
 6. Arrange qualified Belgian Dutch review. Content stays labelled unreviewed until approved.
 7. Keep use owner-only until retention, deletion and external-user support are agreed.
+
+The current microphone check deliberately does not retain recordings in Blob Storage. The old
+`export-recording` instruction below is historical and does not apply to that page in release 0.2.
 
 ## Now (before or at Gate 1)
 

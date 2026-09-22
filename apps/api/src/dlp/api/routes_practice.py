@@ -239,7 +239,7 @@ def typed_turn(
 
 
 @router.post("/sessions/{session_id}/turns/speech")
-async def speech_turn(
+def speech_turn(
     session_id: uuid.UUID,
     audio: UploadFile = File(...),
     step_key: str = Form(pattern=r"^[a-z0-9_-]+$"),
@@ -260,7 +260,7 @@ async def speech_turn(
     except PracticeError as exc:
         raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
 
-    data = await audio.read(settings.max_upload_bytes + 1)
+    data = audio.file.read(settings.max_upload_bytes + 1)
     transcript_meta: dict[str, Any] = {}
     asset_id: uuid.UUID | None = None
     learner_text = ""
@@ -280,13 +280,15 @@ async def speech_turn(
             raise HTTPException(status_code=502, detail=f"speech-to-text failed: {exc}") from exc
         learner_text = transcription.transcript.text.strip()
         if not learner_text:
-            raise HTTPException(status_code=422, detail="nothing was recognised in the recording; try again")
+            return _speech_error(422, "nothing was recognised in the recording; try again", ctx.request_id)
         asset_id = transcription.asset.id
         transcript_meta = {
             "provider": transcription.transcript.provider, "model": transcription.transcript.model,
             "language": transcription.transcript.language, "latency_ms": transcription.transcript.latency_ms,
             "duration_seconds": transcription.canonical.duration_seconds,
             "segments": [s.__dict__ for s in transcription.transcript.segments],
+            "recording_stored": bool(transcription.asset.meta.get("stored")),
+            "storage_warning": transcription.asset.meta.get("storage_warning"),
         }
     try:
         outcome = submit_turn(session, settings, providers, practice=practice, step_key=step_key, modality="speech",
@@ -295,10 +297,16 @@ async def speech_turn(
     except TurnFailed as exc:
         return _failed_turn_response(exc, practice, ctx.request_id)
     except UsageLimitExceeded as exc:
-        raise HTTPException(status_code=429, detail=str(exc)) from exc
+        return _speech_error(429, str(exc), ctx.request_id)
     except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+        return _speech_error(exc.status_code, exc.reason, ctx.request_id)
     return _turn_response(practice, outcome, ctx.request_id)
+
+
+def _speech_error(status: int, detail: str, request_id: str) -> JSONResponse:
+    # A successful STT call has already consumed audio allowance. Return an error response
+    # without rolling that transaction back when the later model step cannot start.
+    return JSONResponse(status_code=status, content={"detail": detail, "request_id": request_id})
 
 
 @router.get("/sessions/{session_id}/turns/{turn_id}/audio")

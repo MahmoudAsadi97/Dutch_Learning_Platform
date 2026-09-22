@@ -17,7 +17,7 @@ router = APIRouter(prefix="/speech", tags=["speech"])
 
 
 @router.post("/transcribe")
-async def transcribe(
+def transcribe(
     audio: UploadFile = File(...),
     keep_recording: bool = Form(default=True),
     ctx: RequestContext = Depends(context_dep),
@@ -25,8 +25,8 @@ async def transcribe(
     providers: Providers = Depends(providers_dep),
     session: Session = Depends(get_session),
 ) -> dict:
-    """Upload → inspect → ffmpeg canonicalise → local transcription. Returns the transcript and evidence metadata."""
-    data = await audio.read(settings.max_upload_bytes + 1)
+    """Run blocking audio, database and provider work in FastAPI's worker pool."""
+    data = audio.file.read(settings.max_upload_bytes + 1)
     try:
         outcome = transcribe_upload(
             session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id, upload_bytes=data,
@@ -52,7 +52,9 @@ async def transcribe(
         },
         "audio": {
             "asset_id": str(outcome.asset.id),
-            "blob_key": outcome.asset.blob_key if keep_recording else None,
+            "blob_key": outcome.asset.blob_key if outcome.asset.meta.get("stored") else None,
+            "stored": bool(outcome.asset.meta.get("stored")),
+            "storage_warning": outcome.asset.meta.get("storage_warning"),
             "source": outcome.source.__dict__,
             "canonical": outcome.canonical.__dict__,
         },
@@ -93,5 +95,8 @@ def synthesize(
         "Cache-Control": "no-store",
     }
     if asset is not None:
-        headers["X-Audio-Asset-Id"] = str(asset.id)
+        if asset.meta.get("stored"):
+            headers["X-Audio-Asset-Id"] = str(asset.id)
+        else:
+            headers["X-Audio-Storage-Warning"] = "audio_not_saved"
     return Response(content=wav_bytes, media_type="audio/wav", headers=headers)

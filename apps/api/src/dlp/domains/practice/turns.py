@@ -151,8 +151,12 @@ def submit_turn(
     turn_count = turn_count_for(session, practice, step_key)
 
     # Reserve before the model is called; commit the measured usage afterwards, release on failure.
-    calls_reservation = usage.reserve(session, settings, practice.learner_id, "model_calls", MODEL_CALLS_PER_TURN, request_id)
-    tokens_reservation = usage.reserve(session, settings, practice.learner_id, "tokens", TOKENS_PER_TURN_ESTIMATE, request_id)
+    # Both allowances must be available. A token refusal must not leave a call reservation
+    # behind when a spoken turn keeps its earlier transcription usage.
+    with session.begin_nested():
+        call_id = uuid.uuid4().hex
+        calls_reservation = usage.reserve(session, settings, practice.learner_id, "model_calls", MODEL_CALLS_PER_TURN, call_id)
+        tokens_reservation = usage.reserve(session, settings, practice.learner_id, "tokens", TOKENS_PER_TURN_ESTIMATE, call_id)
 
     last_index = session.scalar(select(func.max(PracticeTurn.turn_index)).where(PracticeTurn.session_id == practice.id))
     next_index = (last_index or 0) + 1
@@ -265,12 +269,13 @@ def _attach_character_audio(session: Session, settings: Settings, providers: Pro
         return
     reservation = None
     try:
+        call_id = uuid.uuid4().hex
         reservation = usage.reserve(session, settings, practice.learner_id, "audio_seconds",
-                                    max(1.0, len(turn.character_text) / 14.0), f"{request_id}-tts")
+                                    max(1.0, len(turn.character_text) / 14.0), call_id)
         audio = providers.tts.synthesize(turn.character_text, request_id=request_id)
         seconds = _wav_seconds(audio.wav_bytes, audio.sample_rate)
         usage.commit(session, reservation.id, seconds)
-        blob_key = f"synthesis/{practice.learner_id}/{request_id}.wav"
+        blob_key = f"synthesis/{practice.learner_id}/{call_id}.wav"
         providers.blob.put(blob_key, audio.wav_bytes, content_type="audio/wav")
         asset = AudioAsset(
             learner_id=practice.learner_id, kind="synthesis", blob_key=blob_key, container=settings.blob_container,
@@ -319,6 +324,8 @@ def turn_view(turn: PracticeTurn) -> dict[str, Any]:
         "errors": meta.get("errors", []),
         "error": meta.get("error"),
         "audio_error": meta.get("audio_error"),
+        "recording_stored": (meta.get("transcript") or {}).get("recording_stored"),
+        "recording_warning": (meta.get("transcript") or {}).get("storage_warning"),
         "status": turn.status,
         "created_at": turn.created_at.isoformat(),
     }

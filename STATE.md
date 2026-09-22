@@ -1,5 +1,14 @@
 # State
 
+## Speech recovery and deployment preflight — 2026-09-22
+
+Follow-up to the green merged release `26ff27d`: speech handlers use the worker pool; actual provider
+invocations receive separate accounting IDs; completed turn retries still reuse the saved result.
+Storage failure preserves successful transcription/playback, and a later model-limit refusal retains
+consumed speech usage. Listening cache identity includes lesson content and voice. The offline Azure
+parameter checker rejects incomplete bootstrap configuration without network calls or secret output.
+Regression evidence is in the latest `VALIDATION_REPORT.md` entry. Azure live checks remain pending.
+
 ## Release 0.2 preparation — 2026-09-22
 
 The learner UI is redesigned around dashboard, mission, progress, speech and settings. The Azure
