@@ -169,7 +169,7 @@ export function LearningOverview() {
           </span>
           <p className="eyebrow">JE HOEFT HET NIET ALLEEN TE DOEN</p>
           <h2>
-            Even vast?
+            Even vast?{" "}
             <br />
             Begin met een hint.
           </h2>
@@ -292,7 +292,7 @@ export function LearningOverview() {
           <div>
             <p className="eyebrow">KLAAR OM TE SPREKEN?</p>
             <h2>
-              Geef je Nederlands
+              Geef je Nederlands{" "}
               <br />
               een stem.
             </h2>

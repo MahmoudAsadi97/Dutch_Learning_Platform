@@ -16,6 +16,19 @@ const screens = [
   },
 ];
 
+test("page scripts use a fresh CSP nonce and private caching", async ({ request }) => {
+  const first = await request.get("/");
+  const second = await request.get("/");
+  const policy = first.headers()["content-security-policy"];
+  expect(policy).toContain("frame-ancestors 'none'");
+  expect(policy).not.toContain("script-src 'self' 'unsafe-inline'");
+  const nonce = policy.match(/'nonce-([^']+)'/)?.[1];
+  expect(nonce).toBeTruthy();
+  expect(second.headers()["content-security-policy"]).not.toEqual(policy);
+  expect(await first.text()).toContain(`nonce="${nonce}"`);
+  expect(first.headers()["cache-control"]).toContain("no-store");
+});
+
 for (const screen of screens) {
   test(`${screen.name} is usable at desktop and phone width`, async ({
     page,

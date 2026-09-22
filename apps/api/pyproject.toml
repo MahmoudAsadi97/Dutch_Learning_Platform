@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dlp-api"
-version = "0.1.0"
-description = "API for the Dutch learning platform, release 0.1"
+version = "0.2.0"
+description = "API for the Dutch learning platform"
 requires-python = ">=3.11"
 readme = "README.md"
 dependencies = [
@@ -32,6 +32,7 @@ speech-local = [
 # Managed identity for blob storage and Speech in Azure (Phase B); not needed locally.
 azure = [
   "azure-identity>=1.19,<2",
+  "azure-monitor-opentelemetry>=1.8.10,<2",
 ]
 dev = [
   "pytest>=8.3",

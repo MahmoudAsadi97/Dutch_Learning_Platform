@@ -24,6 +24,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+// Environment labels must reflect the running container, not the image builder's environment.
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="nl">

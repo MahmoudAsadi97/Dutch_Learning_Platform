@@ -78,9 +78,10 @@ def run_preflight(settings: Settings | None = None, *, check_network: bool = Tru
             status = "unreachable"
         items.append(PreflightItem("chat model", "local (Ollama)", status, detail))
     elif settings.chat_provider == "azure":
-        configured = bool(settings.azure_chat_endpoint and settings.azure_chat_api_key and settings.azure_chat_deployment_small)
-        items.append(PreflightItem("chat model", "azure", "ok" if configured else "not_configured",
-                                   "endpoint, key and deployments set" if configured else "AZURE_CHAT_* incomplete"))
+        configured = bool(settings.azure_chat_endpoint and settings.azure_chat_deployment_small)
+        items.append(PreflightItem("chat model", "azure", "integration_pending" if configured else "not_configured",
+                                   "endpoint and deployment configured; inference not tested" if configured
+                                   else "AZURE_CHAT_* incomplete"))
     else:
         items.append(PreflightItem("chat model", "fixture", "ok", "canned replies; not a verification"))
 

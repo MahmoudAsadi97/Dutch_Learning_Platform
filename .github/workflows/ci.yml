@@ -13,6 +13,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  infrastructure:
+    name: Infrastructure and container builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile infrastructure (no Azure sign-in or deployment)
+        run: az bicep build --file infra/main.bicep --outfile /tmp/dlp-infrastructure.json
+      - name: Build API production image
+        run: docker build --tag dlp-api:check --file apps/api/Dockerfile .
+      - name: Check release command and Azure dependencies
+        run: docker run --rm dlp-api:check python -m dlp.release --help
+      - name: Build web production image
+        run: docker build --tag dlp-web:check --file apps/web/Dockerfile .
+
   api:
     name: API tests
     runs-on: ubuntu-latest

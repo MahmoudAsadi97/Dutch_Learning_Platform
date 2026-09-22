@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from functools import lru_cache
 
 from dlp.config import Settings, get_settings
-from dlp.providers.base import BlobStore, ChatModel, SpeechToText, TextToSpeech
+from dlp.providers.base import BlobStore, ChatModel, ProviderUnavailable, SpeechToText, TextToSpeech
 from dlp.providers.blob_azure import AzureBlobStore
 from dlp.providers.chat_openai_compatible import ChatEndpoint, OpenAICompatibleChatModel
 from dlp.providers.fixtures import FixtureChatModel, FixtureSpeechToText, FixtureTextToSpeech, MemoryBlobStore
@@ -32,15 +32,33 @@ class Providers:
         }
 
 
+def _chat_token_provider(scope: str):
+    """Lazy SDK construction: configured is not the same as a verified cloud connection."""
+    provider = None
+
+    def token() -> str:
+        nonlocal provider
+        try:
+            if provider is None:
+                from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+                provider = get_bearer_token_provider(DefaultAzureCredential(), scope)
+            return provider()
+        except Exception as exc:
+            raise ProviderUnavailable("Azure chat identity could not obtain an access token") from exc
+    return token
+
+
 def build_chat(settings: Settings, tier: str = "small") -> ChatModel:
     if settings.chat_provider == "fixture":
         return FixtureChatModel()
     if settings.chat_provider == "azure":
-        deployment = settings.azure_chat_deployment_strong if tier == "strong" else settings.azure_chat_deployment_small
+        deployment = (settings.azure_chat_deployment_strong or settings.azure_chat_deployment_small
+                      if tier == "strong" else settings.azure_chat_deployment_small)
         endpoint = ChatEndpoint(
             kind="azure_openai", base_url=settings.azure_chat_endpoint, model=deployment or "",
             api_key=settings.azure_chat_api_key, api_version=settings.azure_chat_api_version,
             timeout_seconds=settings.chat_timeout_seconds,
+            token_provider=None if settings.azure_chat_api_key else _chat_token_provider(settings.azure_chat_token_scope),
         )
         return OpenAICompatibleChatModel(endpoint, name=f"azure-{tier}", max_attempts=settings.chat_max_attempts,
                                          max_concurrent=settings.max_concurrent_model_calls)
