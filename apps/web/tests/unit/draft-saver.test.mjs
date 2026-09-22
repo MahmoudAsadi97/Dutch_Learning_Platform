@@ -28,6 +28,24 @@ test("clearing a saved draft persists the empty text", async () => {
   assert.equal(saver.isSaved(""), true);
 });
 
+test("returning to the original text is still unsaved while an older write is pending", async () => {
+  const writes = [];
+  let release;
+  const blocked = new Promise((resolve) => { release = resolve; });
+  const saver = new DraftSaver("", async (text) => {
+    if (text === "temporary") await blocked;
+    writes.push(text);
+  });
+  const first = saver.save("temporary");
+  await Promise.resolve();
+  assert.equal(saver.isSaved(""), false);
+  const cleared = saver.save("");
+  release();
+  await Promise.all([first, cleared]);
+  assert.deepEqual(writes, ["temporary", ""]);
+  assert.equal(saver.isSaved(""), true);
+});
+
 test("duplicate queued autosaves are written only once", async () => {
   let count = 0;
   const saver = new DraftSaver("", async () => { count++; });
