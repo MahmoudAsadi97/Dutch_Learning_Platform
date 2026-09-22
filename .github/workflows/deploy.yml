@@ -39,7 +39,14 @@ jobs:
 
       - name: Resolve tag
         id: tag
-        run: echo "tag=${{ github.event.inputs.tag || github.sha }}" >> "$GITHUB_OUTPUT"
+        env:
+          DEPLOY_IMAGE_TAG: ${{ inputs.tag || github.sha }}
+        run: |
+          if [[ ! "$DEPLOY_IMAGE_TAG" =~ ^[A-Za-z0-9_][A-Za-z0-9_.-]{0,127}$ ]]; then
+            echo "Invalid image tag" >&2
+            exit 1
+          fi
+          echo "tag=$DEPLOY_IMAGE_TAG" >> "$GITHUB_OUTPUT"
 
       - name: Build the API image in the registry
         run: |

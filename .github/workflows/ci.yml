@@ -8,6 +8,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   api:
     name: API tests
@@ -41,6 +45,7 @@ jobs:
         working-directory: apps/api
         env:
           TEST_DATABASE_URL: postgresql+psycopg://dlp:dlp@localhost:5432/dlp_test
+          REQUIRE_TEST_DATABASE: "true"
         run: pytest -q
       - name: Benchmark plumbing dry runs
         run: |
@@ -57,10 +62,10 @@ jobs:
         env:
           POSTGRES_USER: dlp
           POSTGRES_PASSWORD: dlp
-          POSTGRES_DB: dlp
+          POSTGRES_DB: dlp_test
         ports: ["5432:5432"]
         options: >-
-          --health-cmd "pg_isready -U dlp -d dlp" --health-interval 5s --health-timeout 3s --health-retries 20
+          --health-cmd "pg_isready -U dlp -d dlp_test" --health-interval 5s --health-timeout 3s --health-retries 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -83,6 +88,9 @@ jobs:
       - name: Lint and type-check
         working-directory: apps/web
         run: npm run lint && npm run typecheck
+      - name: Client regression tests
+        working-directory: apps/web
+        run: npm run test:unit
       - name: Install Playwright browser
         working-directory: apps/web
         run: npx playwright install --with-deps chromium
@@ -93,7 +101,7 @@ jobs:
           DEV_OWNER_EMAIL: owner@example.com
           OWNER_ALLOWLIST: owner@example.com
           ASSERTION_SIGNING_KEY: ci-only-signing-key-with-more-than-thirty-two-characters
-          DATABASE_URL: postgresql+psycopg://dlp:dlp@localhost:5432/dlp
+          TEST_DATABASE_URL: postgresql+psycopg://dlp:dlp@localhost:5432/dlp_test
           API_INTERNAL_URL: http://127.0.0.1:8000
         run: python scripts/run.py e2e
       - uses: actions/upload-artifact@v4

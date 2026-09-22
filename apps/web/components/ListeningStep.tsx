@@ -29,6 +29,8 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
   const [playing, setPlaying] = useState(false);
   const [plays, setPlays] = useState(0);
   const [showTranscript, setShowTranscript] = useState(false);
+  const [transcriptBusy, setTranscriptBusy] = useState(false);
+  const [transcriptError, setTranscriptError] = useState("");
   const playback = usePlayback();
   const progress = detail?.session.step_progress[step.key];
 
@@ -66,15 +68,24 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
     return { correct: result.correct, answer_index: result.answer_index };
   }
 
-  function help(rung: HelpRung, questionId = "") {
-    void (async () => {
-      try {
-        const current = detail ?? (await ensureSession());
-        onDetail(await recordHelp(current, step.key, rung, questionId));
-      } catch {
-        // the rung is shown regardless; the evidence is best effort
-      }
-    })();
+  async function help(rung: HelpRung, questionId = "") {
+    const current = detail ?? (await ensureSession());
+    onDetail(await recordHelp(current, step.key, rung, questionId));
+  }
+
+  async function toggleTranscript() {
+    if (showTranscript) { setShowTranscript(false); return; }
+    setTranscriptBusy(true);
+    setTranscriptError("");
+    try {
+      const current = detail ?? (await ensureSession());
+      onDetail(await recordHelp(current, step.key, { level: 3, kind: "listening_transcript" }));
+      setShowTranscript(true);
+    } catch {
+      setTranscriptError("De tekst is nog niet getoond: hulp kon niet worden opgeslagen. Probeer opnieuw.");
+    } finally {
+      setTranscriptBusy(false);
+    }
   }
 
   return (
@@ -109,10 +120,11 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
           </p>
         )}
         <p>
-          <button type="button" className="button secondary" aria-expanded={showTranscript} onClick={() => setShowTranscript(!showTranscript)} data-testid="toggle-transcript">
+          <button type="button" className="button secondary" aria-expanded={showTranscript} disabled={transcriptBusy} onClick={() => void toggleTranscript()} data-testid="toggle-transcript">
             {showTranscript ? "Verberg de tekst" : "Toon de tekst"}
           </button>
         </p>
+        {transcriptError && <p className="error" role="alert">{transcriptError}</p>}
         {showTranscript && (
           <>
             <p>

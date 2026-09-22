@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import type { HelpRung } from "@/lib/types";
 
@@ -9,7 +9,7 @@ interface Props {
   idPrefix: string;
   disabled?: boolean;
   /** Called when a rung is opened; the parent records it as help-usage evidence. */
-  onReveal?: (rung: HelpRung) => void;
+  onReveal: (rung: HelpRung) => Promise<void>;
 }
 
 const KIND_LABEL: Record<HelpRung["kind"], { nl: string; fa: string }> = {
@@ -24,8 +24,27 @@ const KIND_LABEL: Record<HelpRung["kind"], { nl: string; fa: string }> = {
  */
 export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Props) {
   const [revealed, setRevealed] = useState(0);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const pending = useRef(false);
   const ordered = [...rungs].sort((a, b) => a.level - b.level);
   const next = ordered[revealed];
+
+  async function reveal() {
+    if (!next || pending.current) return;
+    pending.current = true;
+    setBusy(true);
+    setError("");
+    try {
+      await onReveal(next);
+      setRevealed((value) => value + 1);
+    } catch {
+      setError("Hulp kon niet worden opgeslagen. Probeer opnieuw; de tip is nog niet getoond.");
+    } finally {
+      pending.current = false;
+      setBusy(false);
+    }
+  }
 
   if (disabled) {
     return (
@@ -59,16 +78,16 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
         <button
           type="button"
           className="button secondary"
-          onClick={() => {
-            setRevealed(revealed + 1);
-            onReveal?.(next);
-          }}
+          disabled={busy}
+          aria-busy={busy}
+          onClick={() => void reveal()}
         >
           Hulp niveau {next.level} · <span className="fa" lang="fa" style={{ display: "inline" }}>کمک سطح {next.level}</span>
         </button>
       ) : (
         <p className="muted">Alle hulp is getoond.</p>
       )}
+      {error && <p className="error" role="alert">{error}</p>}
     </div>
   );
 }

@@ -63,7 +63,7 @@ class AnswerRequest(BaseModel):
 class HelpUseRequest(BaseModel):
     step_key: str = Field(pattern=r"^[a-z0-9_-]+$")
     level: int = Field(ge=1, le=3)
-    kind: str = Field(pattern=r"^(hint_nl|gloss_fa|translation_fa)$")
+    kind: str = Field(pattern=r"^(hint_nl|gloss_fa|translation_fa|reading_translation|listening_transcript)$")
     question_id: str = Field(default="", pattern=r"^[a-z0-9_-]*$")
 
 
@@ -163,9 +163,9 @@ def _failed_turn_response(exc: TurnFailed, practice: PracticeSession, request_id
     )
 
 
-def _load(session: Session, ctx: RequestContext, session_id: uuid.UUID) -> PracticeSession:
+def _load(session: Session, ctx: RequestContext, session_id: uuid.UUID, *, for_update: bool = True) -> PracticeSession:
     try:
-        return get_session_for_learner(session, ctx.learner.id, session_id)
+        return get_session_for_learner(session, ctx.learner.id, session_id, for_update=for_update)
     except PracticeError as exc:
         raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
 
@@ -200,7 +200,7 @@ def index(
 @router.get("/sessions/{session_id}")
 def show(session_id: uuid.UUID, ctx: RequestContext = Depends(context_dep),
          session: Session = Depends(get_session)) -> dict:
-    practice = _load(session, ctx, session_id)
+    practice = _load(session, ctx, session_id, for_update=False)
     return _full_view(session, practice, ctx.request_id)
 
 
@@ -417,5 +417,5 @@ def feedback(
 @router.get("/sessions/{session_id}/feedback")
 def feedback_index(session_id: uuid.UUID, ctx: RequestContext = Depends(context_dep),
                    session: Session = Depends(get_session)) -> dict:
-    practice = _load(session, ctx, session_id)
+    practice = _load(session, ctx, session_id, for_update=False)
     return {"reports": [report_view(r) for r in reports_for(session, practice)], "request_id": ctx.request_id}

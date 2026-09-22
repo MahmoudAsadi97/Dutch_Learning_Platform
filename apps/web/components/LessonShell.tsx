@@ -98,6 +98,22 @@ export function LessonShell({ missionId }: Props) {
   const [attempt, setAttempt] = useState(0);
   const sessionsRef = useRef(sessions);
   const pendingStartRef = useRef<Partial<Record<Variant, Promise<SessionDetail>>>>({});
+  const beforeLeaveRef = useRef<(() => Promise<boolean>) | null>(null);
+  const [navigating, setNavigating] = useState(false);
+  const registerBeforeLeave = useCallback((guard: (() => Promise<boolean>) | null) => {
+    beforeLeaveRef.current = guard;
+  }, []);
+
+  async function selectStep(key: string) {
+    if (key === activeKey || navigating) return;
+    setNavigating(true);
+    try {
+      if (beforeLeaveRef.current && !(await beforeLeaveRef.current())) return;
+      setActiveKey(key);
+    } finally {
+      setNavigating(false);
+    }
+  }
 
   useEffect(() => {
     sessionsRef.current = sessions;
@@ -192,6 +208,9 @@ export function LessonShell({ missionId }: Props) {
   }
 
   function setDetail(variant: Variant, detail: SessionDetail) {
+    // An old in-flight reply must never replace a deliberately restarted session.
+    const known = sessionsRef.current[variant];
+    if (known && known.session.id !== detail.session.id) return;
     const merged = mergeDetail(sessionsRef.current[variant], detail);
     sessionsRef.current = { ...sessionsRef.current, [variant]: merged };
     setSessions((current) => ({ ...current, [variant]: merged }));
@@ -252,7 +271,7 @@ export function LessonShell({ missionId }: Props) {
               const progress = sessions[step.variant]?.session.step_progress[step.key];
               return (
                 <li key={step.key}>
-                  <button type="button" aria-current={active?.key === step.key ? "step" : undefined} onClick={() => setActiveKey(step.key)}>
+                  <button type="button" disabled={navigating} aria-current={active?.key === step.key ? "step" : undefined} onClick={() => void selectStep(step.key)}>
                     <span className="step-skill">
                       {index + 1} · {SKILL_LABEL[step.skill]?.nl ?? step.skill} · {step.variant}
                       {progress?.completed ? " · ✓" : ""}
@@ -320,13 +339,14 @@ export function LessonShell({ missionId }: Props) {
           />
         ) : active?.payload.type === "writing" ? (
           <WritingStep
-            key={`${active.key}-${sessions[active.variant]?.session.id ?? "none"}`}
+            key={active.key}
             step={active as Step & { payload: WritingPayload }}
             labels={mission.labels}
             detail={sessions[active.variant]}
             ensureSession={() => ensureSession(active.variant)}
             onDetail={(detail) => setDetail(active.variant, detail)}
             onProgressChanged={refreshRecords}
+            registerBeforeLeave={registerBeforeLeave}
           />
         ) : active && (active.payload.type === "speaking" || active.payload.type === "checkpoint") ? (
           <SpeakingStep

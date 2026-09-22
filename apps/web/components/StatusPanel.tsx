@@ -90,6 +90,7 @@ export function StatusPanel() {
       <p data-testid="principal">
         Aangemeld als <strong>{data.principal.email}</strong> via <code>{data.principal.identity_provider}</code>
       </p>
+      <div className="table-scroll" role="region" aria-label="Systeemdetails" tabIndex={0}>
       <table className="plain" data-testid="preflight">
         <thead>
           <tr>
@@ -112,6 +113,7 @@ export function StatusPanel() {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

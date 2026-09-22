@@ -186,12 +186,8 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
   }
 
   async function recordHelpUse(rung: HelpRung) {
-    if (!detail) return;
-    try {
-      onDetail(await recordHelp(detail, step.key, rung));
-    } catch {
-      // the rung is shown regardless; the evidence is best effort
-    }
+    if (!detail) throw new Error("Start a session before requesting help.");
+    onDetail(await recordHelp(detail, step.key, rung));
   }
 
   async function playCharacterAudio(turn: TurnView) {
@@ -412,7 +408,7 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
             </section>
             <section className="card" aria-labelledby="help-heading">
               <h3 id="help-heading">Hulp</h3>
-              <HelpLadder rungs={helpRungs} idPrefix={step.key} disabled={!helpAllowed} onReveal={(rung) => void recordHelpUse(rung)} />
+              <HelpLadder rungs={helpRungs} idPrefix={step.key} disabled={!helpAllowed || send.kind === "sending"} onReveal={recordHelpUse} />
             </section>
             {(!checkpoint || !sessionOpen) && (
               <FeedbackPanel stepKey={step.key} detail={detail} onDetail={onDetail} onProgressChanged={onProgressChanged} />

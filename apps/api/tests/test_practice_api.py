@@ -64,6 +64,16 @@ def test_sessions_are_private_to_their_learner(client):
     assert someone_else.status_code == 404
 
 
+def test_session_request_id_cannot_be_reused_for_another_variant(client):
+    headers = auth_headers("same-id-other-variant")
+    first = client.post("/practice/sessions", headers=headers,
+                        json={"mission_id": "appointment-change", "variant": "base"})
+    assert first.status_code == 201
+    other = client.post("/practice/sessions", headers=headers,
+                        json={"mission_id": "appointment-change", "variant": "transfer"})
+    assert other.status_code == 409
+
+
 def test_preflight_endpoint_never_exposes_secrets(client, headers, settings):
     response = client.get("/health/preflight", headers=headers)
     assert response.status_code == 200

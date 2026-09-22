@@ -17,6 +17,7 @@ export interface StepProps {
   ensureSession: () => Promise<SessionDetail>;
   onDetail: (detail: SessionDetail) => void;
   onProgressChanged: () => void;
+  registerBeforeLeave?: (guard: (() => Promise<boolean>) | null) => void;
 }
 
 interface Props extends StepProps {
@@ -31,6 +32,8 @@ interface Props extends StepProps {
 export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onProgressChanged }: Props) {
   const { payload } = step;
   const [showPersian, setShowPersian] = useState(false);
+  const [translationBusy, setTranslationBusy] = useState(false);
+  const [translationError, setTranslationError] = useState("");
   const progress = detail?.session.step_progress[step.key];
 
   async function answer(questionId: string, chosenIndex: number) {
@@ -41,15 +44,24 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
     return { correct: result.correct, answer_index: result.answer_index };
   }
 
-  function help(rung: HelpRung, questionId = "") {
-    void (async () => {
-      try {
-        const current = detail ?? (await ensureSession());
-        onDetail(await recordHelp(current, step.key, rung, questionId));
-      } catch {
-        // the rung is shown regardless; the evidence is best effort
-      }
-    })();
+  async function help(rung: HelpRung, questionId = "") {
+    const current = detail ?? (await ensureSession());
+    onDetail(await recordHelp(current, step.key, rung, questionId));
+  }
+
+  async function toggleTranslation() {
+    if (showPersian) { setShowPersian(false); return; }
+    setTranslationBusy(true);
+    setTranslationError("");
+    try {
+      const current = detail ?? (await ensureSession());
+      onDetail(await recordHelp(current, step.key, { level: 3, kind: "reading_translation" }));
+      setShowPersian(true);
+    } catch {
+      setTranslationError("De vertaling is nog niet getoond: hulp kon niet worden opgeslagen. Probeer opnieuw.");
+    } finally {
+      setTranslationBusy(false);
+    }
   }
 
   return (
@@ -70,7 +82,8 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
             className="button secondary"
             aria-expanded={showPersian}
             aria-controls="reading-text-fa"
-            onClick={() => setShowPersian(!showPersian)}
+            disabled={translationBusy}
+            onClick={() => void toggleTranslation()}
           >
             {showPersian ? "Verberg de Perzische vertaling" : "Toon de Perzische vertaling"} ·{" "}
             <span className="fa" lang="fa" style={{ display: "inline" }}>
@@ -78,6 +91,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
             </span>
           </button>
         </p>
+        {translationError && <p className="error" role="alert">{translationError}</p>}
         {showPersian && (
           <div id="reading-text-fa" className="dutch-text fa" lang="fa" dir="rtl" data-testid="reading-text-fa">
             {payload.text.fa}

@@ -22,7 +22,11 @@ export async function submitAnswer(
   return { detail: withEvidence(detail, response.evidence, response.session), correct: response.correct, answer_index: response.answer_index };
 }
 
-export async function recordHelp(detail: SessionDetail, stepKey: string, rung: HelpRung, questionId = ""): Promise<SessionDetail> {
+export async function recordHelp(
+  detail: SessionDetail, stepKey: string,
+  rung: Pick<HelpRung, "level"> & { kind: HelpRung["kind"] | "reading_translation" | "listening_transcript" },
+  questionId = "",
+): Promise<SessionDetail> {
   const response = await apiJson<{ evidence: EvidenceView; session: SessionDetail["session"] }>(`practice/sessions/${detail.session.id}/help`, {
     method: "POST",
     body: { step_key: stepKey, level: rung.level, kind: rung.kind, question_id: questionId },

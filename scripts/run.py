@@ -327,6 +327,15 @@ def task_dev() -> None:
 E2E_OWNER_EMAIL = "owner@example.com"
 
 
+def require_test_database(url: str) -> None:
+    """E2E resets learner history: never run it against the development or production database."""
+    from urllib.parse import unquote, urlparse
+
+    name = unquote(urlparse(url).path.lstrip("/"))
+    if not name.endswith("_test"):
+        raise SystemExit("E2E refuses to reset learner data: TEST_DATABASE_URL must name a database ending in _test")
+
+
 def task_e2e() -> None:
     """Browser tests run against the test database with fixture providers and a fixed fixture identity,
     so the developer's own `.env` (owner email, local models, dev database) never influences them."""
@@ -339,6 +348,7 @@ def task_e2e() -> None:
         "CHAT_PROVIDER": "fixture", "STT_PROVIDER": "fixture", "TTS_PROVIDER": "fixture", "BLOB_PROVIDER": "memory",
         "JOB_LOOP_ENABLED": "false",
     })
+    require_test_database(env["DATABASE_URL"])
     _ensure_services(env)
     sh([str(venv_python()), "-m", "alembic", "upgrade", "head"], cwd=API, env=env)
     sh([str(venv_python()), "-m", "dlp.cli", "load-fixture"], cwd=API, env=env)

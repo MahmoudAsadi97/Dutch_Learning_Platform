@@ -1,5 +1,36 @@
 # Validation report
 
+## Reliability review — 2026-09-22
+
+Baseline: `47e293d`. The previous GitHub browser job failed before tests because it created `dlp`
+while the isolated runner targeted `dlp_test` (run `35729643136`). The workflow now consistently uses
+`dlp_test`; API CI refuses to report success by skipping an unavailable required database.
+
+| Check | Result and boundary |
+|---|---|
+| GitHub API suite with PostgreSQL 16 | **123 passed, 1 skipped**; the optional Azurite integration test is skipped because the emulator is not running. Database tests are required, not skipped. |
+| GitHub browser suite | **37 passed**; fixture providers, desktop Chromium plus tablet/phone-width lesson checks. New regressions exercise hint failure/retry, empty drafts, delayed saves and navigation blocked by save failure. |
+| Draft-save unit tests | **5 passed locally**, including a reproduced-then-fixed case where returning to the original text while an earlier write is pending incorrectly appeared saved. |
+| Static and production checks | Python lint, web lint, TypeScript and Next.js production build pass. |
+| Benchmark plumbing | Expected provider **40/40**, deliberately wrong provider **0/40**. This is not a real-model benchmark. |
+| Visual inspection | GitHub report screenshots of the home page inspected at desktop and 390 px: four separate skill records, mission entry, RTL help and contained diagnostic-table scrolling. |
+
+The first updated browser run caught a 390 px horizontal-overflow regression (**36 passed, 1 failed**).
+The diagnostic table now scrolls within its card, and the rerun passed all 37 checks.
+[Successful API/browser run at `bbc17e4`](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/35732505560).
+The later pending-write regression adds the fifth client test; the same workflow reruns on every PR
+update. [Commit-specific checks](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/pull/1/checks).
+
+Local API execution reports **75 passed, 49 skipped** because PostgreSQL and Azurite are unavailable
+in this workspace. Local browser launch is restricted. Those limitations are not counted as success:
+database and browser results above come from GitHub's runner with PostgreSQL and Chromium.
+
+New regressions cover ordered/empty/retried draft saves, guarded lesson navigation, hint failure and
+retry, translation/transcript evidence, concurrent first visits/session starts/state changes,
+request-ID mismatch, test-database reset safeguards, and side-effect-free rejected appointment actions.
+
+No new real-model, real-Azure, physical-phone, microphone or native-language review is claimed.
+
 Session 1 (2026-09-17) ran in the Linux build workspace (PostgreSQL 16.13, Azurite 3.37 via npm,
 ffmpeg 6, headless Chromium 1194 with a fake microphone, Python 3.11, Node 22). Session 2
 (2026-09-18) repeated the checks on the owner's laptop (Windows 11, WSL 2 Ubuntu 22.04, conda env

@@ -9,7 +9,8 @@
     "start": "next start -p 3000",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:unit": "node --experimental-strip-types --test tests/unit/*.test.mjs"
   },
   "dependencies": {
     "jose": "^6.0.0",
@@ -27,6 +28,6 @@
     "typescript": "~5.9.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.6.0"
   }
 }
