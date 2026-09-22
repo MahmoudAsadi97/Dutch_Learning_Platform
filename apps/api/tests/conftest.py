@@ -75,8 +75,14 @@ def _database_available() -> bool:
 
 @pytest.fixture(scope="session")
 def database() -> Iterator[None]:
+    from sqlalchemy.engine import make_url
+
+    if not (make_url(TEST_DATABASE_URL).database or "").endswith("_test"):
+        pytest.fail("refusing destructive test cleanup: TEST_DATABASE_URL must name a database ending in _test")
     if not _database_available():
-        pytest.skip(f"test database not reachable at {TEST_DATABASE_URL}")
+        if os.environ.get("REQUIRE_TEST_DATABASE", "").lower() == "true":
+            pytest.fail("required test database is not reachable; integration checks must not silently skip")
+        pytest.skip("test database not reachable (configure TEST_DATABASE_URL)")
     env = {**os.environ, "ALEMBIC_DATABASE_URL": TEST_DATABASE_URL}
     subprocess.run([sys.executable, "-m", "alembic", "upgrade", "head"], cwd=API_DIR, env=env, check=True,
                    capture_output=True)

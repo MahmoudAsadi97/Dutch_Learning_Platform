@@ -1,5 +1,12 @@
 # State
 
+## Maintenance review — 2026-09-22
+
+The scoped reliability and learner-experience update is described in `docs/IMPROVEMENT_REVIEW.md`.
+Local lint, TypeScript, production build and non-database regressions have been checked; database and
+browser validation runs through GitHub CI. See the newest entry in `VALIDATION_REPORT.md` for the
+verified status. This work does not close Gate 2, approve Dutch content, or execute Phase B.
+
 **Release 0.1, Phase A complete in the build workspace.** Updated 2026-09-19 (session 5; implementation day 3). M1–M3 are built; Phase B (Azure) is written and validated but not executed, by the owner's instruction that accounts are created only when the whole project is ready for production testing.
 Next action (owner): `python scripts/run.py dev` (one command after a reboot: Docker services, migrations, content, Ollama, servers); the build then walks every step with the real providers through the desktop app's browser (OWNER_ACTIONS 7–10), the owner does the spoken parts; then Gate 2 with the language reviewer (`docs/GATE2_DEMO.md`); when ready for production, `docs/GO_LIVE.md`.
 

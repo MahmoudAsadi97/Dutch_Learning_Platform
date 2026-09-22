@@ -11,7 +11,7 @@ interface Props {
   progress: StepProgress | undefined;
   /** Sends one answer to the server, which decides whether it is correct. Rejects when it could not be recorded. */
   onAnswer: (questionId: string, chosenIndex: number) => Promise<{ correct: boolean; answer_index: number }>;
-  onHelp?: (rung: HelpRung, questionId: string) => void;
+  onHelp: (rung: HelpRung, questionId: string) => Promise<void>;
 }
 
 type Verdict = { correct: boolean; answer_index: number };
@@ -56,7 +56,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
         const verdict = verdicts[question.id];
         return (
           <div className="question" key={question.id}>
-            <fieldset>
+            <fieldset disabled={busy}>
               <legend>
                 <span lang="nl">
                   {qIndex + 1}. {question.prompt.nl}
@@ -104,7 +104,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
                 </p>
               )}
               {question.help.length > 0 && (
-                <HelpLadder rungs={question.help} idPrefix={`${stepKey}-${question.id}`} onReveal={(rung) => onHelp?.(rung, question.id)} />
+                <HelpLadder rungs={question.help} idPrefix={`${stepKey}-${question.id}`} onReveal={(rung) => onHelp(rung, question.id)} />
               )}
             </fieldset>
           </div>

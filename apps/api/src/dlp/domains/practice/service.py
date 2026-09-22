@@ -9,6 +9,7 @@ from dlp.db.base import utcnow
 from dlp.domains.content.models import Mission
 from dlp.domains.content.schemas import CheckpointPayload, MissionDocument
 from dlp.domains.content.service import mission_document
+from dlp.domains.identity.models import Learner
 from dlp.domains.practice.models import EvidenceRecord, PracticeSession
 
 
@@ -33,10 +34,14 @@ def start_session(session: Session, *, learner_id: uuid.UUID, mission: Mission, 
 
     A variant whose checkpoint has `retry: false` cannot be started again once its only session is over.
     """
+    # Serialize starts for this learner, including when there is no session row to lock yet.
+    session.execute(select(Learner.id).where(Learner.id == learner_id).with_for_update()).one()
     existing = session.scalar(
         select(PracticeSession).where(PracticeSession.learner_id == learner_id, PracticeSession.request_id == request_id)
     )
     if existing is not None:
+        if existing.mission_id != mission.id or existing.variant != variant:
+            raise PracticeError("request id already used for a different mission or variant", status_code=409)
         return existing
     document = mission_document(mission)
     if variant not in {scenario.variant for scenario in document.scenarios}:
@@ -74,9 +79,14 @@ def abandon_session(session: Session, practice: PracticeSession) -> PracticeSess
     return practice
 
 
-def get_session_for_learner(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID) -> PracticeSession:
-    practice = session.get(PracticeSession, session_id)
-    if practice is None or practice.learner_id != learner_id:
+def get_session_for_learner(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID,
+                            *, for_update: bool = False) -> PracticeSession:
+    query = select(PracticeSession).where(PracticeSession.id == session_id, PracticeSession.learner_id == learner_id)
+    if for_update:
+        # JSON state is read/modify/write. A transaction must read the latest state after acquiring the lock.
+        query = query.with_for_update().execution_options(populate_existing=True)
+    practice = session.scalar(query)
+    if practice is None:
         raise PracticeError("session not found", status_code=404)
     return practice
 

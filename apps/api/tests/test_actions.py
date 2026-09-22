@@ -1,4 +1,4 @@
-from datetime import date, time
+from datetime import date, datetime, time
 
 import pytest
 
@@ -83,3 +83,12 @@ def test_naming_an_available_moment_takes_it_pending_confirmation(scenario):
     assert "accept_slot" in state.actions
     assert apply_action(scenario, state, ProposedAction(action="confirm")).accepted
     assert required_actions_completed(state, ["state_reason", "accept_slot", "confirm"])
+
+
+def test_rejected_past_proposal_has_no_side_effects(scenario):
+    state = AppointmentState(reason_stated=True, actions=["state_reason"])
+    before = state.as_dict()
+    result = apply_action(scenario, state, ProposedAction(action="propose_slot", slot_id="thu-1000"),
+                          now=datetime(2026, 10, 1))
+    assert not result.accepted and "past" in result.reason
+    assert state.as_dict() == result.state == before

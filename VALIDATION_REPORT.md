@@ -1,5 +1,22 @@
 # Validation report
 
+## Reliability review — 2026-09-22
+
+Baseline: `47e293d`. The previous GitHub browser job failed before tests because it created `dlp`
+while the isolated runner targeted `dlp_test` (run `35729643136`). The workflow now consistently uses
+`dlp_test`; API CI refuses to report success by skipping an unavailable required database.
+
+Workspace validation: Python lint passes; non-database API tests pass; client draft-queue unit tests
+pass; web lint, TypeScript and the production build pass. Database-backed tests are not locally
+verified: PostgreSQL is unavailable in this workspace and installation is restricted. The existing
+GitHub workflow supplies PostgreSQL for those tests. CI results will be recorded after execution.
+
+New regressions cover ordered/empty/retried draft saves, guarded lesson navigation, hint failure and
+retry, translation/transcript evidence, concurrent first visits/session starts/state changes,
+request-ID mismatch, test-database reset safeguards, and side-effect-free rejected appointment actions.
+
+No new real-model, real-Azure, physical-phone, microphone or native-language review is claimed.
+
 Session 1 (2026-09-17) ran in the Linux build workspace (PostgreSQL 16.13, Azurite 3.37 via npm,
 ffmpeg 6, headless Chromium 1194 with a fake microphone, Python 3.11, Node 22). Session 2
 (2026-09-18) repeated the checks on the owner's laptop (Windows 11, WSL 2 Ubuntu 22.04, conda env

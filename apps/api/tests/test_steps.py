@@ -174,3 +174,38 @@ def test_export_is_complete_and_owner_only(client):
     exported = next(s for s in body["sessions"] if s["id"] == session_id)
     assert [e["kind"] for e in exported["evidence"]] == ["answer"] and exported["feedback"] == []
     assert "counters" in body["usage"]
+
+
+def test_support_reopens_are_deduplicated_and_invalid_rungs_are_rejected(client):
+    session_id = _start(client, "support-start-1")
+    endpoint = f"/practice/sessions/{session_id}/help"
+    payload = {"step_key": "read-reminder", "level": 3, "kind": "reading_translation"}
+    first = client.post(endpoint, headers=auth_headers("support-first-1"), json=payload)
+    again = client.post(endpoint, headers=auth_headers("support-retry-1"), json=payload)
+    assert first.status_code == again.status_code == 200
+    assert first.json()["evidence"]["id"] == again.json()["evidence"]["id"]
+    assert first.json()["session"]["step_progress"]["read-reminder"]["help_levels"] == [3]
+    for change in ({"level": 1}, {"kind": "listening_transcript"}, {"question_id": "q-when"}):
+        assert client.post(endpoint, headers=auth_headers("support-invalid-1"),
+                           json={**payload, **change}).status_code == 422
+    assert client.post(endpoint, headers=auth_headers("support-invalid-2"),
+                       json={"step_key": "read-reminder", "level": 1, "kind": "translation_fa"}).status_code == 422
+    assert client.post(endpoint, headers=auth_headers("support-invalid-3"),
+                       json={"step_key": "read-reminder", "level": 1, "kind": "hint_nl",
+                             "question_id": "missing"}).status_code == 404
+    transcript = client.post(endpoint, headers=auth_headers("support-transcript"),
+                             json={"step_key": "listen-voicemail", "level": 3, "kind": "listening_transcript"})
+    assert transcript.status_code == 200
+    evidence = client.get(f"/practice/sessions/{session_id}", headers=auth_headers("support-view")).json()["evidence"]
+    assert len(evidence) == 2
+
+
+def test_clearing_a_draft_does_not_restore_the_previous_text(client):
+    session_id = _start(client, "clear-draft-start")
+    endpoint = f"/practice/sessions/{session_id}/drafts/write-message"
+    assert client.put(endpoint, headers=auth_headers("draft-save-old"), json={"text": "Bewaar deze tekst"}).status_code == 200
+    cleared = client.put(endpoint, headers=auth_headers("draft-save-empty"), json={"text": ""})
+    assert cleared.status_code == 200 and cleared.json()["draft"]["word_count"] == 0
+    view = client.get(f"/practice/sessions/{session_id}", headers=auth_headers("draft-after-clear")).json()
+    assert view["drafts"]["write-message"]["text"] == ""
+    assert view["evidence"] == []

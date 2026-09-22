@@ -89,3 +89,15 @@ The owner starts it when the project is ready for production testing.
 - `OWNER_ACTIONS.md` — the short list of things only the owner can do.
 
 All fixed Dutch content is provisional and labelled *unreviewed* until a language reviewer approves it.
+
+## Reliability update — September 2026
+
+The home page now shows four separate skill records alongside the mission entry point. Hints,
+reading translations and listening transcripts are logged before display. Writing drafts save in order,
+including erased text; moving between lesson steps waits for a successful save and offers retry if offline.
+Session mutations are serialized to preserve concurrent progress updates.
+
+Additional checks: `cd apps/web && npm run test:unit` (Node 22.6+). API and browser test databases must
+end in `_test`: test cleanup intentionally refuses the normal learner database. CI requires the test
+database instead of silently skipping its tests. See [the review](docs/IMPROVEMENT_REVIEW.md) for findings,
+limitations and the next priorities. This update does not deploy Azure or certify language quality.

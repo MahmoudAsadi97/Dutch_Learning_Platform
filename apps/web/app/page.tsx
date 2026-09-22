@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { LearningOverview } from "@/components/LearningOverview";
 import { StatusPanel } from "@/components/StatusPanel";
 import { UsagePanel } from "@/components/UsagePanel";
 
@@ -11,20 +10,8 @@ export default function HomePage() {
         Release 0.1: één missie, <em>Een afspraak verzetten</em>, met lezen, luisteren, spreken en schrijven. Hulp in het
         Perzisch.
       </p>
+      <LearningOverview />
       <div className="grid two">
-        <section className="card">
-          <h2>Aan de slag</h2>
-          <p>
-            <Link className="button" href="/missions/appointment-change">
-              Open de missie
-            </Link>
-          </p>
-          <p>
-            <Link className="button secondary" href="/speech-check">
-              Test de microfoon
-            </Link>
-          </p>
-        </section>
         <section className="card">
           <h2>Systeemstatus</h2>
           <StatusPanel />

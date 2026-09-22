@@ -8,6 +8,7 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from dlp.db.base import utcnow
@@ -139,6 +140,29 @@ def record_help_use(session: Session, practice: PracticeSession, *, step_key: st
         raise PracticeError("help is not available in the checkpoint", status_code=403)
     if not 1 <= level <= document.help_policy.max_level:
         raise PracticeError(f"help level must be between 1 and {document.help_policy.max_level}", status_code=422)
+    if kind in {"reading_translation", "listening_transcript"}:
+        expected = ReadingPayload if kind == "reading_translation" else ListeningPayload
+        if not isinstance(step.payload, expected) or question_id or level != 3:
+            raise PracticeError("this support is not available for this step", status_code=422)
+    else:
+        rungs = getattr(step.payload, "help", [])
+        if question_id:
+            question = next((q for q in getattr(step.payload, "questions", []) if q.id == question_id), None)
+            if question is None:
+                raise PracticeError("question not found", status_code=404)
+            rungs = question.help
+        if not any(rung.level == level and rung.kind == kind for rung in rungs):
+            raise PracticeError("help rung is not part of this lesson", status_code=422)
+    # Record the first exposure once. Reopening or retrying after a lost response must not invent extra assistance.
+    prior = session.scalars(select(EvidenceRecord).where(
+        EvidenceRecord.session_id == practice.id, EvidenceRecord.step_key == step_key,
+        EvidenceRecord.kind == "help_used",
+    ))
+    for item in prior:
+        if (item.payload.get("level"), item.payload.get("kind"), item.payload.get("question_id") or "") == (
+            level, kind, question_id,
+        ):
+            return item
     evidence = record_evidence(
         session, practice, step_key=step_key, skill=step.skill, kind="help_used", modality="none",
         payload={"level": level, "kind": kind, "question_id": question_id or None}, source="learner",
