@@ -178,8 +178,19 @@ returns everything about the learner as one JSON document. Database connections 
 
 `usage/service.py` reserves before every external call (`reserve` → `commit`/`release`), per
 metric (`model_calls`, `tokens`, `audio_seconds`), per scope (`daily`, `total`), with the limit
-enforced inside the SQL `UPDATE` so concurrent requests cannot overshoot; the same request id
-returns the existing reservation. The pricing table stays empty until Phase B.
+enforced inside the SQL `UPDATE` for the reserved amount; the same reservation key returns the existing
+reservation. Measured usage may exceed the initial estimate and is recorded. Provider invocation keys
+are generated on the server, distinct from browser tracing IDs. Conversation/report idempotency is
+handled before provider execution; raw STT/TTS calls execute and consume allowance on every request.
+Counters are not an exact Azure invoice or a process-crash-proof billing ledger. The pricing table
+stays empty until Phase B.
+
+Upload handlers use synchronous FastAPI endpoints so blocking ffmpeg, SQL and SDK calls run in the
+worker pool. Anticipated refusals after successful STT return an error response without rolling back
+its recorded usage. Model call/token reservations are grouped in a savepoint to avoid partial holds.
+Recording storage errors preserve the transcript with an explicit warning. Fixed listening clips are
+cached by content hash, exact text, provider and voice; the browser must revalidate through the API.
+The old unversioned clip path is no longer the storage key.
 
 `jobs/service.py` keeps durable jobs in PostgreSQL: claim with `FOR UPDATE SKIP LOCKED` and a
 lease, exponential backoff with full jitter, `max_attempts` then `dead`, expired leases are

@@ -1,8 +1,10 @@
 import socket
 import uuid
+from types import SimpleNamespace
 
 import pytest
 
+from dlp.providers.base import ProviderError
 from dlp.providers.blob_azure import AzureBlobStore, validate_key
 from dlp.providers.fixtures import MemoryBlobStore
 
@@ -33,6 +35,20 @@ def test_memory_store_round_trip():
 def test_blob_keys_are_validated(bad):
     with pytest.raises(ValueError):
         validate_key(bad)
+
+
+@pytest.mark.parametrize("method", ["exists", "delete"])
+def test_storage_failures_are_normalized_without_provider_details(monkeypatch, method):
+    def fail():
+        raise RuntimeError("private provider diagnostics")
+
+    store = AzureBlobStore(container="test", name="azure")
+    blob = SimpleNamespace(exists=fail)
+    monkeypatch.setattr(store, "_container", lambda: SimpleNamespace(get_blob_client=lambda key: blob))
+    with pytest.raises(ProviderError) as exc:
+        getattr(store, method)("recordings/test.wav")
+    assert "private provider diagnostics" not in str(exc.value)
+    assert "RuntimeError" in str(exc.value)
 
 
 @pytest.mark.azurite

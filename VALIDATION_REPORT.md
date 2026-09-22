@@ -1,5 +1,28 @@
 # Validation report
 
+## Speech recovery and Azure configuration checks — 2026-09-22
+
+Baseline: merged release `26ff27d`, whose [main CI run](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/35741018022)
+completed successfully. Follow-up checks target repeated tracing IDs, slow speech requests, storage
+outages, rejected turns after successful transcription, changed listening voices/content, and unsafe
+Azure parameter files. No schema migration or new paid service is required by this change.
+
+[Full green CI run at `c9b902a`](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/35799196255):
+
+| Check | Result |
+|---|---|
+| API with PostgreSQL 16 | **188 passed, 1 skipped** (optional Azurite integration). The 41 added regressions include blocked-provider health responsiveness and recovery/accounting failures. |
+| Browser regression | **45 passed**, using fixture providers and Chromium. |
+| Client unit tests | **5 passed**. |
+| Static checks | Python lint, ESLint and TypeScript pass. |
+| Infrastructure and production containers | Bicep compiles; API and web images build; the migration CLI runs in the API image. |
+| Local API check | **123 passed, 66 skipped** because database/storage services are unavailable. These skips are not integration evidence. |
+
+The final documentation-only commit reruns the same gates; use [PR #3 checks](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/pull/3/checks)
+for the exact merged head. Fixture tests are not live Azure or physical-phone evidence. The offline
+parameter checker is not an Azure permission, quota, price or model-availability check. Content review
+status stays unchanged. No paid resources were created or model/speech calls made by these checks.
+
 ## Learner interface and Azure release preparation — 2026-09-22
 
 Baseline: `3228049`. [Green full validation run at `acb8e5d`](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/35739440156).

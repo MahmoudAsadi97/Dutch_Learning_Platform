@@ -65,12 +65,19 @@ class AzureBlobStore(BlobStore):
             raise ProviderError(f"blob download failed: {exc.__class__.__name__}") from exc
 
     def exists(self, key: str) -> bool:
-        return bool(self._container().get_blob_client(validate_key(key)).exists())
+        key = validate_key(key)
+        try:
+            return bool(self._container().get_blob_client(key).exists())
+        except Exception as exc:  # noqa: BLE001
+            raise ProviderError(f"blob lookup failed: {exc.__class__.__name__}") from exc
 
     def delete(self, key: str) -> None:
         blob = self._container().get_blob_client(validate_key(key))
-        if blob.exists():
-            blob.delete_blob()
+        try:
+            if blob.exists():
+                blob.delete_blob()
+        except Exception as exc:  # noqa: BLE001
+            raise ProviderError(f"blob deletion failed: {exc.__class__.__name__}") from exc
 
     def ping(self) -> tuple[bool, str]:
         try:

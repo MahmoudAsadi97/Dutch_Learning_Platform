@@ -25,6 +25,7 @@ const FORWARDED_RESPONSE_HEADERS = [
   "x-audio-label",
   "x-audio-voice",
   "x-audio-asset-id",
+  "x-audio-storage-warning",
   "content-disposition",
   "cache-control",
   "www-authenticate",

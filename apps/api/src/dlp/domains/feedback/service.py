@@ -5,6 +5,7 @@ and recorded, never shown. Nothing here counts as an assessment: it is feedback 
 from __future__ import annotations
 
 import re
+import uuid
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field
@@ -151,8 +152,9 @@ def generate_feedback(session: Session, settings: Settings, providers: Providers
     handles = [(f"E{i + 1}", record) for i, record in enumerate(records[-24:])]
     by_handle = {handle: record for handle, record in handles}
 
-    calls_reservation = usage.reserve(session, settings, practice.learner_id, "model_calls", 1, f"{request_id}-fb")
-    tokens_reservation = usage.reserve(session, settings, practice.learner_id, "tokens", TOKENS_ESTIMATE, f"{request_id}-fb")
+    call_id = uuid.uuid4().hex
+    calls_reservation = usage.reserve(session, settings, practice.learner_id, "model_calls", 1, call_id)
+    tokens_reservation = usage.reserve(session, settings, practice.learner_id, "tokens", TOKENS_ESTIMATE, call_id)
     try:
         result = providers.chat.complete(
             feedback_messages(step, handles, task_completed), schema=FeedbackModelReply,
@@ -248,4 +250,3 @@ def report_view(report: FeedbackReport) -> dict[str, Any]:
         "model_name": report.model_name, "prompt_version": report.prompt_version,
         "created_at": report.created_at.isoformat(),
     }
-
