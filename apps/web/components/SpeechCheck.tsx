@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Icon } from "@/components/Icon";
 
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
 import { usePlayback } from "@/lib/client/playback";
@@ -30,6 +31,9 @@ export function SpeechCheck() {
   const [ttsLabel, setTtsLabel] = useState<string>("");
   const [ttsBusy, setTtsBusy] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const recordingUrlRef = useRef("");
+  const [recordingUrl, setRecordingUrl] = useState("");
+  useEffect(() => () => { if (recordingUrlRef.current) URL.revokeObjectURL(recordingUrlRef.current); }, []);
   const playback = usePlayback();
 
   async function upload(recording: Recording) {
@@ -38,7 +42,8 @@ export function SpeechCheck() {
     setResult(null);
     const form = new FormData();
     form.append("audio", recording.blob, recording.fileName);
-    form.append("keep_recording", "true");
+    // A microphone check is not a practice attempt. Keep playback only in this browser tab.
+    form.append("keep_recording", "false");
     try {
       const response = await apiJson<TranscriptResponse>("speech/transcribe", {
         method: "POST",
@@ -53,7 +58,12 @@ export function SpeechCheck() {
     }
   }
 
-  const recorder = useRecorder((recording) => void upload(recording));
+  const recorder = useRecorder((recording) => {
+    if (recordingUrlRef.current) URL.revokeObjectURL(recordingUrlRef.current);
+    recordingUrlRef.current = URL.createObjectURL(recording.blob);
+    setRecordingUrl(recordingUrlRef.current);
+    void upload(recording);
+  });
 
   async function playSynthesis() {
     setTtsBusy(true);
@@ -85,15 +95,17 @@ export function SpeechCheck() {
   const shownError = error || recorder.error;
 
   return (
-    <div className="grid two">
+    <div className="grid two speech-studio">
       <section className="card" aria-labelledby="record-heading">
+        <span className="eyebrow">01 · JOUW STEM</span>
         <h2 id="record-heading">Opnemen en transcriberen</h2>
         <p className="muted">
           Houd de knop ingedrukt en zeg een Nederlandse zin, bijvoorbeeld: <em lang="nl">Ik wil mijn afspraak verzetten.</em>
         </p>
-        <p className="mono" data-testid="mime-type">
+        <div className={`mic-orbit ${recording ? "recording" : ""}`} aria-hidden="true"><Icon name="mic" size={32} /></div>
+        <details className="lesson-details"><summary>Opnameformaat</summary><p className="mono" data-testid="mime-type">
           MediaRecorder: {mimeType === undefined ? "controleren…" : mimeType === null ? "niet ondersteund" : mimeType || "standaardformaat van de browser"}
-        </p>
+        </p></details>
         <button
           type="button"
           className="button talk"
@@ -112,6 +124,7 @@ export function SpeechCheck() {
           {effectivePhase === "unsupported" && "Deze browser ondersteunt MediaRecorder niet."}
           {effectivePhase === "error" && "Er ging iets mis."}
         </p>
+        {recordingUrl && <div className="record-playback"><h3>Jouw opname</h3><audio controls src={recordingUrl} aria-label="Luister naar je eigen opname" style={{ width: "100%" }} /><p className="small-text muted">Alleen in dit tabblad beschikbaar. De opname wordt voor deze microfoontest niet in de opslag bewaard.</p></div>}
         {shownError && (
           <p className="error" role="alert">
             {shownError}
@@ -123,7 +136,7 @@ export function SpeechCheck() {
             <p className="dutch-text" lang="nl" data-testid="transcript-text">
               {result.transcript.text || "(leeg)"}
             </p>
-            <table className="plain">
+            <details className="lesson-details"><summary>Technische details</summary><table className="plain">
               <tbody>
                 <tr>
                   <th scope="row">Provider</th>
@@ -150,14 +163,15 @@ export function SpeechCheck() {
                   <td className="mono">{result.request_id}</td>
                 </tr>
               </tbody>
-            </table>
+            </table></details>
           </div>
         )}
       </section>
 
       <section className="card" aria-labelledby="tts-heading">
+        <span className="eyebrow">02 · LUISTER EN VERGELIJK</span>
         <h2 id="tts-heading">Synthetische stem</h2>
-        <p className="muted">Ontwikkelaudio, altijd gelabeld. Geen menselijke opname.</p>
+        <p className="muted">Een kunstmatige stem als luistervoorbeeld, altijd gelabeld. Geen menselijke opname of uitspraakbeoordeling.</p>
         <label htmlFor="tts-text" className="visually-hidden">
           Tekst om uit te spreken
         </label>

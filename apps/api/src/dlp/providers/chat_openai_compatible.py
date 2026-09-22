@@ -12,7 +12,8 @@ import random
 import re
 import threading
 import time
-from dataclasses import dataclass
+from collections.abc import Callable
+from dataclasses import dataclass, field
 from typing import Any, Literal
 
 import httpx
@@ -33,20 +34,28 @@ class ChatEndpoint:
     kind: Literal["ollama", "azure_openai"]
     base_url: str
     model: str
-    api_key: str = ""
+    api_key: str = field(default="", repr=False)
     api_version: str = ""
     timeout_seconds: float = 120.0
+    token_provider: Callable[[], str] | None = field(default=None, repr=False, compare=False)
 
     def url(self) -> str:
         base = self.base_url.rstrip("/")
         if self.kind == "azure_openai":
+            if self.api_version == "v1":
+                return f"{base}/openai/v1/chat/completions"
             return f"{base}/openai/deployments/{self.model}/chat/completions?api-version={self.api_version}"
         return f"{base}/chat/completions"
 
     def headers(self) -> dict[str, str]:
         headers = {"Content-Type": "application/json"}
         if self.kind == "azure_openai":
-            headers["api-key"] = self.api_key
+            if self.api_key:
+                headers["api-key"] = self.api_key
+            elif self.token_provider is not None:
+                headers["Authorization"] = f"Bearer {self.token_provider()}"
+            else:
+                raise ProviderUnavailable("Azure chat authentication is not configured")
         elif self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"
         return headers
@@ -104,7 +113,8 @@ class OpenAICompatibleChatModel(ChatModel):
         if response.status_code in RETRYABLE_STATUS:
             raise _Retryable(f"HTTP {response.status_code}")
         if response.status_code >= 400:
-            raise ProviderError(f"chat backend returned HTTP {response.status_code}: {response.text[:300]}")
+            # Provider error bodies can contain prompt fragments or credentials. Never forward them to logs/UI.
+            raise ProviderError(f"chat backend returned HTTP {response.status_code}")
         return response.json()
 
     def complete(
@@ -173,7 +183,8 @@ class OpenAICompatibleChatModel(ChatModel):
                     raise ProviderUnavailable(f"chat endpoint {self.endpoint.base_url} unreachable: {exc}") from exc
                 except (_Retryable, httpx.TimeoutException, httpx.TransportError) as exc:
                     last_error = exc
-                    log.warning("chat attempt %s/%s failed (%s): %s", attempt, self.max_attempts, self.name, exc)
+                    log.warning("chat attempt %s/%s failed (%s): %s", attempt, self.max_attempts,
+                                self.name, type(exc).__name__)
                     if attempt < self.max_attempts:
                         time.sleep(random.uniform(0, min(8.0, 0.5 * (2**attempt))))
         raise ProviderError(f"chat call failed after {self.max_attempts} attempts: {last_error}")

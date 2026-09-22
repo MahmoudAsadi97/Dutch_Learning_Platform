@@ -1,7 +1,26 @@
 # Engineering guide
 
-This is the collaborator-facing description of release 0.1. It is deliberately short: the
+This is the collaborator-facing description of the scoped learner release. It is deliberately short: the
 code is the reference, this explains why it is shaped the way it is.
+
+### Release 0.2 conventions
+
+- `AppShell` provides desktop and mobile navigation; `design.css` contains the shared visual system.
+  Fonts are self-hosted. Dashboard/progress read persisted evidence only; technical diagnostics live
+  in Settings. A shared navigation guard waits for writing autosave before app-link navigation.
+- The web layout is dynamically rendered so runtime environment labels and per-response CSP nonces
+  are correct. Script execution is nonce-based; inline styles remain allowed for React layout styles.
+- `dlp.release migrate` is the only cloud schema-update path. The server starts Uvicorn directly with
+  a DML-only role. `/health` is liveness; `/health/ready` requires the exact packaged migration head.
+- Azure model calls use managed identity and the v1 endpoint; explicit keys remain supported for
+  owner-controlled integration tests. The main runtime cannot read the migration or auth-client secret.
+- Application Insights exports route templates, status and duration, not request bodies or identities.
+  Provider auto-instrumentation is disabled. Cloud access logs are disabled at Uvicorn.
+- The API production lock is `apps/api/requirements-azure.lock`; regenerate using `uv pip compile
+  apps/api/pyproject.toml --extra azure --generate-hashes --output-file apps/api/requirements-azure.lock`.
+  CI compiles Bicep and builds both actual Dockerfiles without creating any Azure resources.
+- [GO_LIVE](GO_LIVE.md) is authoritative for deployment. Never infer real provider validation from
+  a fixture, a model benchmark dry run, a configured endpoint or a compiled infrastructure template.
 
 ## 1. Architecture
 

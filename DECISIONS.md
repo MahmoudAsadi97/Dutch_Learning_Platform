@@ -152,7 +152,10 @@ Every database connection is pinned to UTC (`options=-c timezone=UTC`): the API'
 compare the same whether a value was just written or loaded from PostgreSQL (whose server time zone is
 Europe/Brussels on the owner's Docker image), and the browser merges concurrent updates by instant.
 
-## D-15 · Azure shape for Phase B (written, validated, not executed)
+## D-15 · Original Azure shape for Phase B (superseded by D-17)
+
+Historical decision only. D-17 and `docs/GO_LIVE.md` replace the public database, optional cloud model,
+startup migrations and API scale-to-zero choices below. No Azure execution is implied.
 
 One resource group, one Container Apps environment (consumption, scale to zero): `dlp-web` with external
 ingress and the platform's built-in Microsoft Entra authentication (the proxy already reads the
@@ -181,3 +184,21 @@ page offers a fresh practice session. Checks A02–A06 (`domains/practice/accept
 queries over the stored data — separate skill records, no typed credit, feedback citations resolve to
 the step's evidence, checkpoint independence, settled usage — runnable at any time from the CLI, the
 API and `scripts/verify_live.py`, so the claims in the validation report can be re-checked by anyone.
+
+## D-17 · Learner experience and controlled Azure release — 2026-09-22
+
+Keep the single-learner appointment mission scope. The product label is Taalstudio, with one desktop/mobile
+shell, separated learning and technical settings, four evidence-based skill records and local recording
+replay. No fictitious scores, certificates or reviewed-content claims are added. Primary app navigation
+waits for writing autosave; automated accessibility checks supplement, not replace, manual review.
+
+The cloud profile uses a warm 0.25-vCPU API for its existing PostgreSQL job loop; the web can scale to
+zero. PostgreSQL is VNet-private. An explicit, bounded migration job uses a separate identity and
+administrator connection, while the API uses a DML-only role. Azure chat is required in production,
+authenticated through managed identity, with a pinned, region-supported deployment chosen by the owner.
+Separate per-secret Key Vault grants prevent the web/API from reading migration credentials.
+
+Create foundation, images and migration job first; run migrations; deploy the apps privately; configure
+and verify sign-in; publish explicitly. The release workflow requires exact-commit main CI and protected
+OIDC deployment approval. A budget alert is not a hard currency cap. Paid use remains an owner-approved
+decision, and live model/speech, phone, recovery and Dutch-review gates remain open until evidenced.

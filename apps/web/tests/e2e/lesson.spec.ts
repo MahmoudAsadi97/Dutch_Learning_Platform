@@ -50,7 +50,9 @@ test.describe("lesson shell: reading step", () => {
     await page.goto("/missions/appointment-change");
     const start = page.getByRole("button", { name: "Start een oefensessie" });
     const id = page.getByTestId("session-id");
-    await expect(start.or(id)).toBeVisible();
+    await expect(page.getByTestId("reading-text")).toBeVisible();
+    // The UUID is intentionally inside collapsed technical details, not the primary learning UI.
+    await expect(start.or(id)).toBeAttached();
     if (await start.isVisible()) await start.click();
     await expect(id).toContainText(/[0-9a-f-]{36}/);
     await expect(id).toContainText(/stap: (read-reminder|speak-call)/);
@@ -71,9 +73,9 @@ test.describe("lesson shell: reading step", () => {
   });
 });
 
-test.describe("home", () => {
+test.describe("settings", () => {
   test("shows the fixture principal and the preflight table", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/settings");
     await expect(page.getByTestId("principal")).toContainText(OWNER);
     await expect(page.getByTestId("principal")).toContainText("fixture");
     const rows = page.getByTestId("preflight").locator("tbody tr");

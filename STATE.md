@@ -1,5 +1,16 @@
 # State
 
+## Release 0.2 preparation — 2026-09-22
+
+The learner UI is redesigned around dashboard, mission, progress, speech and settings. The Azure
+template now separates foundation, migration job and runtime; the API is internal, PostgreSQL private,
+runtime identities narrowly scoped, and startup does not migrate the database. Production refuses
+fixtures, development identity, missing providers and unapproved paid usage. Browser regression,
+accessibility and container/infrastructure checks run in CI. Follow the latest validation entry;
+no live Azure deployment, phone certification or language approval is implied.
+
+Current handoff: `docs/GO_LIVE.md`. Historical milestone notes follow and do not supersede that runbook.
+
 ## Maintenance review — 2026-09-22
 
 The scoped reliability and learner-experience update is described in `docs/IMPROVEMENT_REVIEW.md`.

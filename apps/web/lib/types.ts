@@ -269,6 +269,7 @@ export interface TurnResponse {
 }
 
 export interface SkillRecordView {
+  updated_at: string;
   id: string;
   mission_id: string;
   skill: Skill;

@@ -8,6 +8,8 @@ import { ReadingStep } from "@/components/ReadingStep";
 import { SpeakingStep } from "@/components/SpeakingStep";
 import { WritingStep } from "@/components/WritingStep";
 import { ApiError, apiJson, newRequestId } from "@/lib/client/api";
+import { useNavigationGuard } from "@/lib/client/navigation";
+import { recordStatus } from "@/lib/client/learning";
 import type {
   CheckpointPayload,
   ListeningPayload,
@@ -99,10 +101,12 @@ export function LessonShell({ missionId }: Props) {
   const sessionsRef = useRef(sessions);
   const pendingStartRef = useRef<Partial<Record<Variant, Promise<SessionDetail>>>>({});
   const beforeLeaveRef = useRef<(() => Promise<boolean>) | null>(null);
+  const registerNavigationGuard = useNavigationGuard();
   const [navigating, setNavigating] = useState(false);
   const registerBeforeLeave = useCallback((guard: (() => Promise<boolean>) | null) => {
     beforeLeaveRef.current = guard;
-  }, []);
+    registerNavigationGuard(guard);
+  }, [registerNavigationGuard]);
 
   async function selectStep(key: string) {
     if (key === activeKey || navigating) return;
@@ -257,12 +261,12 @@ export function LessonShell({ missionId }: Props) {
               {mission.title.fa}
             </span>
           </h1>
-          <p className="muted" style={{ fontSize: "0.85rem" }}>
-            {mission.cefr_target} · versie {mission.version} · {mission.fixed_word_count}/{mission.word_limit} woorden
+          <p className="muted lesson-title-meta" style={{ fontSize: "0.85rem" }}>
+            {mission.cefr_target}-oefendoelen · {steps.length} stappen
           </p>
           <p>
             <ContentLabel status={mission.review.unreviewed === 0 ? "reviewed" : "unreviewed"} labelNl={mission.labels.unreviewed_nl} labelFa={mission.labels.unreviewed_fa} />
-            <span className="muted" style={{ fontSize: "0.85rem" }}>
+            <span className="muted review-count" style={{ fontSize: "0.75rem" }}>
               {mission.review.unreviewed} van {mission.review.total_texts} teksten nog niet nagekeken
             </span>
           </p>
@@ -272,11 +276,8 @@ export function LessonShell({ missionId }: Props) {
               return (
                 <li key={step.key}>
                   <button type="button" disabled={navigating} aria-current={active?.key === step.key ? "step" : undefined} onClick={() => void selectStep(step.key)}>
-                    <span className="step-skill">
-                      {index + 1} · {SKILL_LABEL[step.skill]?.nl ?? step.skill} · {step.variant}
-                      {progress?.completed ? " · ✓" : ""}
-                    </span>
-                    {step.title.nl}
+                    <span className="step-number" aria-hidden="true">{progress?.completed ? "✓" : index + 1}</span>
+                    <span><span className="step-skill">{step.variant === "transfer" ? "Zelfstandig" : SKILL_LABEL[step.skill]?.nl ?? step.skill}</span>{step.title.nl}</span>
                   </button>
                 </li>
               );
@@ -286,11 +287,7 @@ export function LessonShell({ missionId }: Props) {
         <div className="card">
           <h2 style={{ fontSize: "1rem" }}>Sessie</h2>
           {baseSession ? (
-            <p className="mono" data-testid="session-id">
-              {baseSession.id}
-              <br />
-              stap: {baseSession.current_step_key}
-            </p>
+            <><p className="small-text muted">Je werk wordt tijdens het oefenen bewaard.</p><details className="lesson-details"><summary>Sessiegegevens</summary><p className="mono" data-testid="session-id">{baseSession.id}<br />stap: {baseSession.current_step_key}</p></details></>
           ) : (
             <button type="button" className="button" onClick={() => void startSession("base")} disabled={busy}>
               Start een oefensessie
@@ -307,7 +304,7 @@ export function LessonShell({ missionId }: Props) {
           <ul style={{ paddingInlineStart: "1.1rem", margin: 0 }} data-testid="skill-records">
             {records.map((record) => (
               <li key={record.id}>
-                {SKILL_LABEL[record.skill]?.nl ?? record.skill}: <span className="muted">{record.status}</span>
+                {SKILL_LABEL[record.skill]?.nl ?? record.skill}: <span className="muted">{recordStatus[record.status] ?? record.status}</span>
               </li>
             ))}
             {records.length === 0 && <li className="muted">nog geen records</li>}

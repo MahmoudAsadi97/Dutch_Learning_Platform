@@ -61,7 +61,7 @@ test.describe("speaking step", () => {
     await expect(step.getByTestId("typed-send")).toBeDisabled();
 
     // the speaking skill record moved on
-    await expect(page.getByTestId("skill-records")).toContainText("Spreken: practised");
+    await expect(page.getByTestId("skill-records")).toContainText("Spreken: Geoefend");
     // the sidebar marks the step as completed
     await expect(page.getByRole("button", { name: /Spreken: het telefoongesprek/ })).toContainText("✓");
   });

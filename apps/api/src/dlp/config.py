@@ -14,6 +14,7 @@ from typing import Literal
 
 from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from sqlalchemy.engine import make_url
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 # The mission files live next to the applications in the repository; a container image may put them elsewhere.
@@ -31,11 +32,14 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         extra="ignore",
         case_sensitive=False,
+        hide_input_in_errors=True,
     )
 
     # Application
     app_env: AppEnv = "development"
     log_level: str = "INFO"
+    paid_usage_enabled: bool = False
+    applicationinsights_connection_string: str = Field(default="", repr=False)
 
     # Identity
     dev_auth_enabled: bool = False
@@ -68,7 +72,8 @@ class Settings(BaseSettings):
     max_concurrent_model_calls: int = 2
     azure_chat_endpoint: str = ""
     azure_chat_api_key: str = Field(default="", repr=False)
-    azure_chat_api_version: str = "2024-10-21"
+    azure_chat_api_version: str = "v1"
+    azure_chat_token_scope: str = "https://ai.azure.com/.default"
     azure_chat_deployment_small: str = ""
     azure_chat_deployment_strong: str = ""
 
@@ -129,6 +134,25 @@ class Settings(BaseSettings):
                 raise ValueError("fixture providers are not allowed when APP_ENV=production")
             if self.blob_provider == "memory":
                 raise ValueError("BLOB_PROVIDER=memory is not allowed when APP_ENV=production")
+            if (self.chat_provider, self.stt_provider, self.tts_provider, self.blob_provider) != (
+                "azure", "azure", "azure", "azure",
+            ):
+                raise ValueError("production requires Azure chat, speech and blob providers")
+            if not self.paid_usage_enabled:
+                raise ValueError("PAID_USAGE_ENABLED must be explicitly approved for production")
+            if not self.allowlist or "owner@example.com" in self.allowlist:
+                raise ValueError("production requires a real, non-empty OWNER_ALLOWLIST")
+            if not (self.azure_chat_endpoint.startswith("https://") and self.azure_chat_deployment_small):
+                raise ValueError("Azure chat HTTPS endpoint and small deployment are required")
+            if not self.azure_speech_region or not (self.azure_speech_key or self.azure_speech_resource_id):
+                raise ValueError("Azure Speech region and key or resource id are required")
+            if not self.azure_storage_account_url.startswith("https://"):
+                raise ValueError("Azure Storage HTTPS account URL is required")
+            database = make_url(self.database_url)
+            if database.get_backend_name() != "postgresql" or database.query.get("sslmode") not in (
+                "require", "verify-ca", "verify-full",
+            ):
+                raise ValueError("production PostgreSQL must use TLS")
         if len(self.assertion_signing_key) < 32 and self.app_env == "production":
             raise ValueError("ASSERTION_SIGNING_KEY must be at least 32 characters in production")
         if self.dev_auth_enabled and self.dev_owner_email.lower() not in self.allowlist:
@@ -161,12 +185,16 @@ class Settings(BaseSettings):
             "assertion_key_configured": len(self.assertion_signing_key) >= 32,
             "chat_provider": self.chat_provider,
             "local_chat_model": self.local_chat_model,
-            "azure_chat_configured": bool(self.azure_chat_endpoint and self.azure_chat_api_key),
+            "azure_chat_configured": bool(self.azure_chat_endpoint and self.azure_chat_deployment_small),
+            "azure_chat_auth": "key" if self.azure_chat_api_key else "managed_identity",
             "stt_provider": self.stt_provider,
-            "azure_speech_configured": bool(self.azure_speech_key and self.azure_speech_region),
+            "azure_speech_configured": bool(
+                self.azure_speech_region and (self.azure_speech_key or self.azure_speech_resource_id)
+            ),
             "tts_provider": self.tts_provider,
             "blob_provider": self.blob_provider,
             "job_loop_enabled": self.job_loop_enabled,
+            "paid_usage_enabled": self.paid_usage_enabled,
         }
 
 

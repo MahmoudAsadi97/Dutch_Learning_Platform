@@ -86,7 +86,7 @@ class AzureSpeechToText(SpeechToText):
         if response.status_code in (401, 403):
             raise ProviderUnavailable(f"Azure Speech refused the credentials (HTTP {response.status_code})")
         if response.status_code >= 400:
-            raise ProviderError(f"Azure Speech returned HTTP {response.status_code}: {response.text[:200]}")
+            raise ProviderError(f"Azure Speech returned HTTP {response.status_code}")
         data = response.json()
         return parse_recognition(data, language=language, provider=self.name, model=self.model,
                                  latency_ms=int((time.monotonic() - started) * 1000))
@@ -96,7 +96,7 @@ def parse_recognition(data: dict[str, Any], *, language: str, provider: str, mod
     """Turn the detailed-format reply into a Transcript; an empty result is a valid, empty transcript."""
     status = str(data.get("RecognitionStatus", ""))
     if status == "Error":
-        raise ProviderError(f"Azure Speech recognition error: {data}")
+        raise ProviderError("Azure Speech returned a recognition error")
     duration = float(data.get("Duration", 0)) / TICKS_PER_SECOND
     offset = float(data.get("Offset", 0)) / TICKS_PER_SECOND
     if status != "Success":
@@ -159,7 +159,7 @@ class AzureTextToSpeech(TextToSpeech):
         if response.status_code in (401, 403):
             raise ProviderUnavailable(f"Azure Speech refused the credentials (HTTP {response.status_code})")
         if response.status_code >= 400:
-            raise ProviderError(f"Azure Speech returned HTTP {response.status_code}: {response.text[:200]}")
+            raise ProviderError(f"Azure Speech returned HTTP {response.status_code}")
         wav_bytes = response.content
         if not wav_bytes.startswith(b"RIFF"):
             raise ProviderError("Azure Speech synthesis did not return RIFF/WAV audio")
