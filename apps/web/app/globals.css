@@ -99,6 +99,7 @@ p {
 }
 
 .card {
+  min-width: 0;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -281,6 +282,8 @@ table.plain {
   border-collapse: collapse;
   font-size: 0.95rem;
 }
+.table-scroll { max-width: 100%; overflow-x: auto; }
+.table-scroll:focus-visible { outline: 3px solid #f2b233; outline-offset: 2px; }
 table.plain th,
 table.plain td {
   text-align: left;

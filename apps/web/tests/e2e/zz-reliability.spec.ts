@@ -59,12 +59,15 @@ test("a failed draft save keeps the learner on the writing step", async ({ page 
   await expect(page.getByTestId("autosave-status")).toHaveText(/^bewaard /);
 });
 
-test("home shows four separate skill records without a fabricated score", async ({ page }) => {
+test("home shows four separate skill records without a fabricated score", async ({ page }, testInfo) => {
   await page.goto("/");
   const overview = page.getByTestId("learning-overview");
   await expect(overview.getByRole("article")).toHaveCount(4);
   await expect(overview).not.toContainText("Laden…");
   await expect(page.getByRole("link", { name: "Open de missie" })).toBeVisible();
+  await expect(page.getByTestId("preflight")).toBeVisible();
+  await testInfo.attach("home-desktop", { body: await page.screenshot({ fullPage: true }), contentType: "image/png" });
   await page.setViewportSize({ width: 390, height: 844 });
+  await testInfo.attach("home-phone-width", { body: await page.screenshot({ fullPage: true }), contentType: "image/png" });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
