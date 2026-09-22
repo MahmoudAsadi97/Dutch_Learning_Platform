@@ -1,8 +1,20 @@
-# Dutch learning platform — release 0.1
+# Taalstudio — Dutch learning platform 0.2
 
 One learner, one mission (*Een afspraak verzetten*, A2), four skills, Persian text help.
 Phase A runs entirely on a laptop with local providers; Phase B connects Azure later
 without rewriting application code.
+
+The learner interface now has a focused dashboard, a five-step appointment mission, four separate
+skill records, a speech studio and account/settings pages. Desktop navigation and a mobile bottom bar
+share the same routes. Persian help is right-to-left; recordings and speech synthesis remain clearly
+labelled. Progress comes from saved attempts, not invented scores, streaks or certificates.
+
+For Azure setup, start with **[the release guide](docs/GO_LIVE.md)**. It lists every service, the
+creation sequence, identity configuration and live acceptance checks. The release includes private
+PostgreSQL, managed-identity providers, an isolated migration job, runtime health probes, dependency
+locks, CI container builds and a manual OIDC deployment workflow. No Azure resources are created on push.
+This is a release candidate for the scoped single-learner product, not a claim that the full future
+A1–C2 curriculum or institutional product is complete.
 
 | Part | Technology | Where |
 |---|---|---|
@@ -76,9 +88,11 @@ fixture providers, a fixed fixture identity and the test database, independent o
 
 ## Going live
 
-Phase B is written, validated and not executed: `docs/GO_LIVE.md` is the ordered runbook (allowance first,
-app registration, `az deployment group create` with `infra/main.bicep`, images, `scripts/verify_live.py`).
-The owner starts it when the project is ready for production testing.
+Azure resources have not been deployed by this update. [GO_LIVE](docs/GO_LIVE.md) covers allowance,
+app registration, foundation, immutable images, the migration job, private deployment, sign-in and
+publication. [VALIDATION_REPORT](VALIDATION_REPORT.md) distinguishes local/CI evidence from pending
+live checks. Creation/configuration and real service, phone, language-review and recovery checks are
+still required; a successful container build cannot establish those results.
 
 ## Documents
 

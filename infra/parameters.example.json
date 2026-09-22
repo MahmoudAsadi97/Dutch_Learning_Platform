@@ -2,31 +2,27 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "name": {
-      "value": "dlp"
-    },
-    "authClientId": {
-      "value": "<application (client) id of the web app registration>"
-    },
-    "allowedPrincipalObjectIds": {
-      "value": [
-        "<object id of the owner's Entra user>"
-      ]
-    },
-    "ownerAllowlist": {
-      "value": "asadiherism@gmail.com"
-    },
-    "postgresAdminLogin": {
-      "value": "dlpadmin"
-    },
-    "postgresAdminPassword": {
-      "value": "<set on the command line: --parameters postgresAdminPassword=...>"
-    },
-    "assertionSigningKey": {
-      "value": "<set on the command line; 32+ random characters>"
-    },
-    "deployChat": {
-      "value": false
-    }
+    "name": {"value": "dlp"},
+    "location": {"value": "westeurope"},
+    "authClientId": {"value": "REPLACE_WITH_APP_CLIENT_ID"},
+    "authClientSecret": {"value": "REPLACE_IN_IGNORED_LOCAL_FILE"},
+    "allowedPrincipalObjectIds": {"value": ["REPLACE_WITH_ENTRA_USER_OBJECT_ID"]},
+    "ownerAllowlist": {"value": "REPLACE_WITH_SIGNED_IN_EMAIL_CLAIM"},
+    "postgresAdminPassword": {"value": "REPLACE_WITH_RANDOM_PASSWORD_AT_LEAST_24_CHARACTERS"},
+    "postgresAppPassword": {"value": "REPLACE_WITH_DIFFERENT_RANDOM_PASSWORD_AT_LEAST_24_CHARACTERS"},
+    "assertionSigningKey": {"value": "REPLACE_WITH_RANDOM_SIGNING_SECRET_AT_LEAST_32_CHARACTERS"},
+    "chatModelName": {"value": "REPLACE_WITH_REGION_SUPPORTED_CHAT_MODEL"},
+    "chatModelVersion": {"value": "REPLACE_WITH_SUPPORTED_MODEL_VERSION"},
+    "chatDeploymentSku": {"value": "Standard"},
+    "chatCapacity": {"value": 1},
+    "strongModelName": {"value": ""},
+    "strongModelVersion": {"value": ""},
+    "paidUsageApproved": {"value": false},
+    "monthlyBudget": {"value": 50},
+    "budgetStartDate": {"value": "REPLACE_WITH_FIRST_DAY_OF_CURRENT_MONTH_YYYY-MM-01T00:00:00Z"},
+    "budgetAlertEmails": {"value": ["REPLACE_WITH_YOUR_ALERT_EMAIL"]},
+    "deployMigrationJob": {"value": false},
+    "deployApplications": {"value": false},
+    "publicWeb": {"value": false}
   }
 }

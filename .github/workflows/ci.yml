@@ -51,10 +51,12 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - name: Install the API
         working-directory: apps/api
-        run: pip install -e ".[dev]"
+        run: |
+          pip install --require-hashes -r requirements-azure.lock
+          pip install -e ".[dev]"
       - name: Lint
         working-directory: apps/api
-        run: ruff check src tests
+        run: ruff check src tests ../../scripts/azure_release.py ../../scripts/verify_live.py
       - name: Test
         working-directory: apps/api
         env:

@@ -2,6 +2,21 @@
 
 Things only the owner can do. Each item is listed once; tick it when done.
 
+## Current release checklist — 0.2
+
+The older milestone notes below are historical. Use [GO_LIVE](docs/GO_LIVE.md) for the current sequence.
+
+1. Revoke the GitHub token exposed in conversation; no replacement token belongs in project files.
+2. Approve the actual region/currency cost estimate and allowance. Confirm subscription quotas and
+   supported model versions; the budget amount is an alert, not a guaranteed monthly price.
+3. Fill the ignored Azure parameter file and create the Entra registration/secret and resource group.
+   The template creates the services; the runbook builds images and runs migrations before the apps.
+4. Configure the callback URI, allowlist, GitHub OIDC and protected production environment.
+5. Complete the live Azure conversation/speech/sign-in checks, physical phone journey and separate
+   database/blob recovery drill. Record evidence per service; configuration checks do not validate all adapters.
+6. Arrange qualified Belgian Dutch review. Content stays labelled unreviewed until approved.
+7. Keep use owner-only until retention, deletion and external-user support are agreed.
+
 ## Now (before or at Gate 1)
 
 1. [ ] **Put the private instruction files in place.** Create `instructions/` at the repository root
@@ -48,8 +63,8 @@ Things only the owner can do. Each item is listed once; tick it when done.
 
 11. [ ] Create the Azure resources following `docs/GO_LIVE.md`; record the authorised allowance, SKUs and
     free/credit assumptions in `DECISIONS.md` before the first paid call (GO_LIVE step 0).
-12. [ ] Run `scripts/verify_live.py` with your signed-in session; paste its output into
-    `VALIDATION_REPORT.md` — that moves the Azure adapters to `verified_live`.
+12. [ ] Run `scripts/verify_live.py` with authenticated mode as described in GO_LIVE, then complete
+    the separate model/STT/phone checks. Record evidence for each adapter actually tested.
 13. [ ] Regenerate the fixed audio with the Azure `nl-BE` voice (GO_LIVE step 8); run the full journey on the phone.
 14. [ ] Arrange the language reviewer using `docs/GATE2_DEMO.md`; record the outcome; only then set
     `review_status: reviewed` on approved texts and reload the fixture.

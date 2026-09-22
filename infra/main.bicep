@@ -159,17 +159,18 @@ resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
     softDeleteRetentionInDays: 14
   }
 }
-var secretDefinitions = [
-  { name: 'assertion-signing-key', value: assertionSigningKey }
-  { name: 'database-url', value: 'postgresql+psycopg://dlp_app:${uriComponent(postgresAppPassword)}@${postgres.properties.fullyQualifiedDomainName}:5432/dlp?sslmode=verify-full' }
-  { name: 'migration-database-url', value: 'postgresql+psycopg://${postgresAdminLogin}:${uriComponent(postgresAdminPassword)}@${postgres.properties.fullyQualifiedDomainName}:5432/dlp?sslmode=verify-full' }
-  { name: 'database-app-password', value: postgresAppPassword }
-  { name: 'auth-client-secret', value: authClientSecret }
+var secretNames = ['assertion-signing-key', 'database-url', 'migration-database-url', 'database-app-password', 'auth-client-secret']
+var secretValues = [
+  assertionSigningKey
+  'postgresql+psycopg://dlp_app:${uriComponent(postgresAppPassword)}@${postgres.properties.fullyQualifiedDomainName}:5432/dlp?sslmode=verify-full'
+  'postgresql+psycopg://${postgresAdminLogin}:${uriComponent(postgresAdminPassword)}@${postgres.properties.fullyQualifiedDomainName}:5432/dlp?sslmode=verify-full'
+  postgresAppPassword
+  authClientSecret
 ]
-resource secrets 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = [for definition in secretDefinitions: {
+resource secrets 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = [for i in range(0, length(secretNames)): {
   parent: vault
-  name: definition.name
-  properties: { value: definition.value }
+  name: secretNames[i]
+  properties: { value: secretValues[i] }
 }]
 var grants = [
   { secret: 0, identity: 0 }
@@ -436,4 +437,3 @@ output postgresHost string = postgres.properties.fullyQualifiedDomainName
 output webUrl string = deployApplications ? 'https://${web!.properties.configuration.ingress.fqdn}' : ''
 output apiInternalFqdn string = deployApplications ? api!.properties.configuration.ingress.fqdn : ''
 output migrationJobName string = '${name}-migrate'
-

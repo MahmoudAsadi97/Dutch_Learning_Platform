@@ -1,11 +1,10 @@
-#!/usr/bin/env python3
 """Verify a deployed environment from the outside (Phase B). Standard library only.
 
     python scripts/verify_live.py --url https://dlp-web.<region>.azurecontainerapps.io
-    python scripts/verify_live.py --url ... --session-cookie "AppServiceAuthSession=..."   # signed-in checks
+    DLP_SESSION_COOKIE=... python scripts/verify_live.py --url ... --mode authenticated --allow-paid-smoke
 
 Without a cookie it checks what an anonymous visitor may see: the sign-in wall on the page and on the
-API path, and that the API is not reachable directly. With the cookie of a signed-in session (copied
+API path. API ingress isolation is checked separately by azure_release.py. With a signed-in cookie (copied
 from the browser after logging in) it also runs the authenticated checks: preflight reports the Azure
 providers, one synthesis carries the `azure-neural` label, usage counters answer, and the acceptance
 checks pass. Exit code 0 only when every check passed. Nothing here writes to the environment except
@@ -16,11 +15,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import urllib.error
 import urllib.request
 import uuid
 from dataclasses import dataclass
+from urllib.parse import urlparse
 
 TIMEOUT = 30
 
@@ -37,7 +38,7 @@ def request(url: str, *, method: str = "GET", headers: dict[str, str] | None = N
     req = urllib.request.Request(url, method=method, data=body, headers=headers or {})
 
     class NoRedirect(urllib.request.HTTPRedirectHandler):
-        def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
             return None
 
     opener = urllib.request.build_opener(NoRedirect)
@@ -74,12 +75,17 @@ def signed_in_checks(base: str, cookie: str) -> list[Result]:
     detail = f"HTTP {status}"
     azure_rows: list[str] = []
     if ok:
-        items = json.loads(body).get("items", [])
+        data = json.loads(body)
+        items = data.get("items", [])
         for item in items:
             if item.get("mode", "").startswith("azure"):
                 azure_rows.append(f"{item['component']}={item['status']}")
-        failing = [i for i in items if i.get("status") not in ("ok", "integration_pending", "not_configured")]
-        ok = not failing
+        required = {"chat model", "speech to text", "text to speech", "blob store"}
+        configured = {i.get("component") for i in items if i.get("mode") == "azure"}
+        failing = [i for i in items if i.get("status") not in ("ok", "integration_pending")]
+        config = data.get("configuration", {})
+        ok = (not failing and required <= configured and config.get("app_env") == "production"
+              and config.get("dev_auth_enabled") is False and config.get("paid_usage_enabled") is True)
         detail = ", ".join(azure_rows) or "no azure provider rows"
         if failing:
             detail += "; failing: " + ", ".join(f"{i['component']}={i['status']}" for i in failing)
@@ -113,21 +119,30 @@ def signed_in_checks(base: str, cookie: str) -> list[Result]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--url", required=True, help="public URL of the web app, without a trailing slash")
-    parser.add_argument("--session-cookie", default="", help="Cookie header value of a signed-in browser session")
+    parser.add_argument("--mode", choices=["anonymous", "authenticated"], default="anonymous")
+    parser.add_argument("--allow-paid-smoke", action="store_true", help="authorise one budgeted short synthesis")
     args = parser.parse_args()
     base = args.url.rstrip("/")
+    parsed = urlparse(base)
+    if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password or parsed.query or parsed.fragment:
+        parser.error("--url must be an HTTPS origin without credentials, query or fragment")
+    cookie = os.environ.get("DLP_SESSION_COOKIE", "")
+    if args.mode == "authenticated" and (not cookie or not args.allow_paid_smoke):
+        parser.error("authenticated mode requires DLP_SESSION_COOKIE and --allow-paid-smoke")
 
     results = anonymous_checks(base)
-    if args.session_cookie:
-        results.extend(signed_in_checks(base, args.session_cookie))
-    else:
-        results.append(Result("signed-in checks", False, "skipped: pass --session-cookie to run them"))
+    if args.mode == "authenticated":
+        try:
+            results.extend(signed_in_checks(base, cookie))
+        except (ValueError, TypeError, KeyError):
+            results.append(Result("authenticated response format", False, "unexpected JSON response"))
 
     width = max(len(r.name) for r in results)
     for r in results:
         print(f"[{'PASS' if r.passed else 'FAIL'}] {r.name.ljust(width)}  {r.detail}")
     passed = all(r.passed for r in results)
-    print("verify_live:", "PASS" if passed else "FAIL")
+    print(f"verify_live ({args.mode} scope only):", "PASS" if passed else "FAIL")
+    print("Model conversation, microphone STT, physical phone, content review and recovery drill require the GO_LIVE checklist.")
     return 0 if passed else 1
 
 
