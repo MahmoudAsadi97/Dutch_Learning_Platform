@@ -46,8 +46,8 @@ for (const screen of screens) {
     if (screen.name === "settings")
       await expect(page.getByTestId("preflight")).toBeVisible();
     await page.evaluate(() => document.fonts.ready.then(() => undefined));
-    for (const width of [1440, 390]) {
-      await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
       await testInfo.attach(`${screen.name}-${width}`, {
         body: await page.screenshot({ fullPage: true }),
         contentType: "image/png",

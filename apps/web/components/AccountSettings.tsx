@@ -104,9 +104,9 @@ export function AccountSettings() {
           </p>
         )}
         <p className="muted small-text">
-          Opnamen worden niet in dit JSON-bestand opgenomen. Verwijderen en
-          bewaartermijnen worden door de beheerder uitgevoerd volgens het
-          beheerplan.
+          Opnamen staan niet in dit JSON-bestand. Spreek verwijderen en
+          bewaartermijnen af met de beheerder. Deze privéversie heeft nog geen
+          knop om je account zelf te verwijderen.
         </p>
       </section>
     </div>

@@ -53,17 +53,28 @@ def request(url: str, *, method: str = "GET", headers: dict[str, str] | None = N
 
 def anonymous_checks(base: str) -> list[Result]:
     results: list[Result] = []
+    status, _, body = request(base + "/health")
+    results.append(Result("public web liveness", status == 200 and b'"ok"' in body, f"HTTP {status}"))
     status, headers, _ = request(base + "/")
     if status == 0:
         return [Result("public entry reachable", False, headers.get("x-error", "unreachable"))]
-    results.append(Result("sign-in wall on the page", status in (301, 302, 401, 403),
+    results.append(Result("sign-in wall on the page", is_sign_in_wall(status, headers),
                           f"HTTP {status}" + (f" → {headers.get('location', '')[:80]}" if "location" in headers else "")))
-    status, _, _ = request(base + "/api/health")
-    results.append(Result("sign-in wall on the API path", status in (301, 302, 401, 403), f"HTTP {status}"))
+    status, headers, _ = request(base + "/api/health")
+    results.append(Result("sign-in wall on the API path", is_sign_in_wall(status, headers), f"HTTP {status}"))
     status, headers, _ = request(base + "/api/practice/sessions", method="POST", body=b"{}",
                                  headers={"Content-Type": "application/json"})
-    results.append(Result("state change refused anonymously", status in (301, 302, 401, 403), f"HTTP {status}"))
+    results.append(Result("state change refused anonymously", is_sign_in_wall(status, headers), f"HTTP {status}"))
     return results
+
+
+def is_sign_in_wall(status: int, headers: dict[str, str]) -> bool:
+    if status in (401, 403):
+        return True
+    target = urlparse(headers.get("location", ""))
+    return status in (302, 303, 307) and (
+        target.path.startswith("/.auth/login/") or target.hostname == "login.microsoftonline.com"
+    )
 
 
 def signed_in_checks(base: str, cookie: str) -> list[Result]:
@@ -90,6 +101,9 @@ def signed_in_checks(base: str, cookie: str) -> list[Result]:
         if failing:
             detail += "; failing: " + ", ".join(f"{i['component']}={i['status']}" for i in failing)
     results.append(Result("preflight with the Azure providers", ok, detail))
+
+    status, _, body = request(base + "/api/health/ready", headers=common)
+    results.append(Result("database and migration readiness", status == 200 and b'"ready"' in body, f"HTTP {status}"))
 
     request_id = uuid.uuid4().hex
     status, headers, body = request(

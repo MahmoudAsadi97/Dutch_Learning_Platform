@@ -66,3 +66,10 @@ def test_authenticated_mode_requires_explicit_paid_permission(monkeypatch):
     with pytest.raises(SystemExit) as exc:
         verify.main()
     assert exc.value.code == 2
+
+
+def test_unrelated_redirect_is_not_a_sign_in_wall():
+    verify = module("verify_live")
+    assert not verify.is_sign_in_wall(302, {"location": "/dashboard"})
+    assert verify.is_sign_in_wall(302, {"location": "/.auth/login/aad"})
+    assert verify.is_sign_in_wall(403, {})

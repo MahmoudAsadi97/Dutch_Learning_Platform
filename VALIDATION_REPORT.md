@@ -1,5 +1,37 @@
 # Validation report
 
+## Learner interface and Azure release preparation — 2026-09-22
+
+Baseline: `3228049`. [Green full validation run at `acb8e5d`](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/35739440156).
+Later hardening and documentation commits rerun the same checks; use the
+[release PR checks](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/pull/2/checks) for the final head.
+
+| Check | Evidence and boundary |
+|---|---|
+| API + PostgreSQL 16 | **146 passed, 1 optional Azurite skip** in the linked run. Includes repeatable release migration, runtime role permissions, production configuration, authentication guards and readiness. A later redirect-boundary regression adds one test. |
+| Browser | **45 passed**, including CSP nonces, draft-preserving app navigation, hint failures, reading/listening/writing/conversation journeys and mobile lesson checks. Uses fixture providers, not Azure. |
+| Accessibility | Axe WCAG 2 A/AA and 2.1 A/AA checks report no violations on dashboard, progress, settings and speech at 1440/390 px and the sampled writing workspace. This is not a complete WCAG 2.2 AA certification. |
+| Client unit tests | **5 passed**, covering serial writes, erased drafts, superseded writes and retry after failure. |
+| Infrastructure | Bicep compiles in GitHub CI without cloud credentials; no Azure deployment or subscription-specific validation performed. |
+| Production images | Both actual Dockerfiles build in CI. The API image successfully runs `python -m dlp.release --help` with hash-locked Azure dependencies. |
+| Static checks | Python lint, TypeScript, ESLint and Next.js production build pass. |
+| Dependency scans | `npm audit --omit=dev --audit-level=high`: zero vulnerabilities; `pip-audit --disable-pip -r apps/api/requirements-azure.lock`: no known vulnerabilities on this date. This is a point-in-time advisory check, not a security guarantee. |
+| Visual review | Actual CI screenshots inspected: desktop/mobile dashboard, progress, settings and speech; desktop conversation and writing steps. [Saved previews](docs/DESIGN_PREVIEW.md) contain test data only. |
+
+The first iteration exposed faint text, old navigation selectors and a collapsed-session test
+assumption. All were corrected. The first infrastructure compilation caught an ARM deployment-time
+loop dependency; secret names and runtime secret values are now separated and compilation passes.
+
+Latest local API run: **97 passed, 51 skipped**. The local database/browser restrictions were not
+bypassed; full PostgreSQL and Chromium checks ran on GitHub. The skip count is not presented as proof
+of integration. One extra redirect test has been added since the linked full run and must pass final CI.
+
+Azure adapter status remains **integration_pending**. Service creation/configuration, Entra sign-in,
+real model/STT/TTS calls, actual-phone microphone behaviour, budget observations, restore drill and
+qualified Belgian Dutch review remain owner-dependent. Scripts distinguish anonymous boundary checks
+from authenticated smoke checks and refuse to accept fixture preflight as Azure success. No paid cloud
+service was created or invoked, and no content was relabelled as reviewed.
+
 ## Reliability review — 2026-09-22
 
 Baseline: `47e293d`. The previous GitHub browser job failed before tests because it created `dlp`

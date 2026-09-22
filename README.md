@@ -9,6 +9,8 @@ skill records, a speech studio and account/settings pages. Desktop navigation an
 share the same routes. Persian help is right-to-left; recordings and speech synthesis remain clearly
 labelled. Progress comes from saved attempts, not invented scores, streaks or certificates.
 
+[View the desktop and mobile interface](docs/DESIGN_PREVIEW.md).
+
 For Azure setup, start with **[the release guide](docs/GO_LIVE.md)**. It lists every service, the
 creation sequence, identity configuration and live acceptance checks. The release includes private
 PostgreSQL, managed-identity providers, an isolated migration job, runtime health probes, dependency

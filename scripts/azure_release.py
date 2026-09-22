@@ -70,8 +70,10 @@ def wait_for_revision(group: str, name: str) -> None:
         revision = props.get("latestRevisionName")
         if revision:
             state = az("containerapp", "revision", "show", "-g", group, "-n", name, "--revision", revision)["properties"]
-            if (props.get("latestReadyRevisionName") == revision and state.get("healthState") == "Healthy"):
-                print(f"{name}: revision ready and healthy.")
+            scaled_down = state.get("runningState") == "Stopped" and state.get("healthState") in (None, "None")
+            if (props.get("latestReadyRevisionName") == revision
+                    and (state.get("healthState") == "Healthy" or scaled_down)):
+                print(f"{name}: latest revision ready" + (" (currently scaled to zero)." if scaled_down else " and healthy."))
                 return
             if state.get("provisioningState") in ("Failed", "Deprovisioned"):
                 raise RuntimeError(f"{name}: new revision failed; inspect before continuing")
