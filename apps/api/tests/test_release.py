@@ -41,3 +41,20 @@ def test_job_requires_explicit_credentials():
     import pytest
     with pytest.raises(ValueError, match="required"):
         migrate("", "")
+
+
+def test_release_refuses_invalid_libraries_before_opening_database(monkeypatch):
+    import pytest
+
+    from dlp import release
+
+    sequence = []
+    monkeypatch.setattr(release, "curriculum", lambda: sequence.append("curriculum"))
+    def invalid_library():
+        sequence.append("libraries")
+        raise ValueError("library coverage is incomplete")
+    monkeypatch.setattr(release, "validate_all_libraries", invalid_library)
+    monkeypatch.setattr(release, "create_engine", lambda *args, **kwargs: sequence.append("database"))
+    with pytest.raises(ValueError, match="coverage is incomplete"):
+        release.migrate("postgresql+psycopg://dlp:dlp@localhost/dlp_test", "x" * 32)
+    assert sequence == ["curriculum", "libraries"]

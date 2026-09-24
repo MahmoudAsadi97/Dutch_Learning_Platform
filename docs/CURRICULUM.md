@@ -33,11 +33,10 @@ Each stage contains:
 8. A final check with a new reading text, new listening text and new productive
    tasks. The check reuses the learned functions in a different situation.
 
-The next stage is unlocked only after the server records the required passing
-results for all four skills. There is no aggregate score that can conceal an
-unpassed skill. A configured administrator/tester may preview all stages without
-creating a false learner pass. The backend, rather than the menu's appearance,
-enforces access and progression.
+All stages are open to every authenticated, admitted learner. The recommended order remains visible,
+but a previous pass is no longer required to open a stage. A stage's final check still requires its own
+four practice skills. There is no aggregate score that can conceal an unpassed skill. Tester previews
+remain separate from student results. Identity and ownership checks are unchanged.
 
 Practice may show translations, explanations and sample responses. Assessment
 responses must not include answer indices, answer explanations or model
@@ -45,6 +44,13 @@ responses before submission. A learner sees meaningful feedback and skill
 results, not model identifiers, prompt versions or internal evidence IDs.
 
 ## Content coverage in this release
+
+The extended vocabulary and Story Time banks live separately in `content/library/`, with paginated
+API access. Every stage has at least 500 cards and 100 short stories of at least two paragraphs.
+Cards include Dutch definitions, English/Persian meanings and contextual examples. Stories reuse
+target words, add comprehension questions and support sentence replay. Adjacent stages deliberately
+reuse some word families and story situations as graded retellings. These counts do not imply
+6,000 different lexical roots or 1,200 unrelated plots. See `PRACTICE_LIBRARY.md`.
 
 The current bundle contains 54 grammar activities with 55 practice questions,
 326 vocabulary entries, twelve original story or scenario texts, twelve separate

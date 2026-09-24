@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { PhraseAudio } from "@/components/PhraseAudio";
 import { Icon } from "@/components/Icon";
 import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
 import { apiFetch, apiJson, ApiError } from "@/lib/client/api";
@@ -8,7 +9,12 @@ import { friendlyError, type CurriculumQuestion } from "@/lib/client/curriculum"
 import { useRecorder, type Recording } from "@/lib/client/recorder";
 
 export function CurriculumQuestions({ questions, answers, onAnswer, exam = false, checked = false, disabled = false }: { questions: CurriculumQuestion[]; answers: Record<string, number>; onAnswer: (id: string, index: number) => void; exam?: boolean; checked?: boolean; disabled?: boolean }) {
-  return <div className="curriculum-questions">{questions.map((question, number) => <fieldset key={question.id} className="curriculum-question" disabled={disabled}><legend><span className="question-number">{number + 1}</span>{exam ? question.prompt.nl : <LearningText text={question.prompt}/>}</legend><div className="answer-options">{question.options.map((option, index) => <label key={index} className={answers[question.id] === index ? "selected" : ""}><input type="radio" name={`q-${question.id}`} checked={answers[question.id] === index} onChange={() => onAnswer(question.id, index)}/>{exam ? <span lang="nl">{option.nl}</span> : <LearningText text={option}/>}</label>)}</div>{checked && question.answer_index !== undefined && <div className={answers[question.id] === question.answer_index ? "practice-correct" : "practice-hint"} role="status"><strong>{answers[question.id] === question.answer_index ? "Goed gedaan." : "Bekijk de uitleg en probeer opnieuw."}</strong>{question.explanation && <LearningText text={question.explanation}/>}</div>}</fieldset>)}</div>;
+  return <div className="curriculum-questions">{questions.map((question, number) => <fieldset key={question.id} className="curriculum-question" disabled={disabled}>
+    <legend><span className="question-number">{number + 1}</span>{exam ? question.prompt.nl : <LearningText text={question.prompt}/>}</legend>
+    {!exam && <PhraseAudio text={question.prompt.nl} disabled={disabled}/>}
+    <div className="answer-options">{question.options.map((option, index) => <div className="answer-option-shell" key={index}><label className={answers[question.id] === index ? "selected" : ""}><input type="radio" name={`q-${question.id}`} checked={answers[question.id] === index} onChange={() => onAnswer(question.id, index)}/>{exam ? <span lang="nl">{option.nl}</span> : <LearningText text={option}/>}</label>{!exam && <PhraseAudio text={option.nl} disabled={disabled}/>}</div>)}</div>
+    {checked && question.answer_index !== undefined && <div className={answers[question.id] === question.answer_index ? "practice-correct" : "practice-hint"} role="status"><strong>{answers[question.id] === question.answer_index ? "Goed gedaan." : "Bekijk de uitleg en probeer opnieuw."}</strong>{question.explanation && <LearningText text={question.explanation}/>}</div>}
+  </fieldset>)}</div>;
 }
 
 export function CurriculumAudio({ endpoint, parts = 1, transcript, disabled = false }: { endpoint: string; parts?: number; transcript?: LearningCopy; disabled?: boolean }) {

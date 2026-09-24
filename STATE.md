@@ -1,10 +1,19 @@
 # State
 
+## Open practice library — 2026-09-24
+
+Implemented open stage access, phrase replay, alphabet practice, actionable writing corrections,
+500-card/100-story banks per stage, search, small recall rounds and Story Time. Editorial repairs and the 68-browser/309-API software run passed on PR #6. The final content
+and reproducibility sources rerun the same CI gates before merge. Validation is recorded in
+`VALIDATION_REPORT.md`; content stays unreviewed. No Azure deployment is performed
+by this update. Earlier state entries below describe their historical releases.
+
 ## Learning path expansion — 2026-09-24
 
 Implemented a twelve-stage course path from pre-A1 through C2, with an A2 → pre-B1 → B1 bridge,
 original stories and four-skill practice, multilingual support, and four-part internal final checks.
-Students are gated by their own persisted results; explicit tester accounts can preview all stages.
+Superseded access rule: the later open-library update opens every stage to admitted learners.
+The four-skill results and within-stage final-check readiness remain separate.
 The UI uses a calmer navy/blue design and removes system identifiers from learning feedback.
 
 This is an authored starter curriculum, not complete coverage of every level or every scanned word.

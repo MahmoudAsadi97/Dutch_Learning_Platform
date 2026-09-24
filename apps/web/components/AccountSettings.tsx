@@ -16,7 +16,7 @@ export function AccountSettings() {
       try {
         const storage = window[name];
         for (const key of Object.keys(storage)) {
-          if (key.startsWith("taalstudio.draft.") || key.startsWith("taalstudio.test.")) storage.removeItem(key);
+          if (key.startsWith("taalstudio.draft.") || key.startsWith("taalstudio.test.") || key.startsWith("taalstudio.stories.")) storage.removeItem(key);
         }
       } catch { /* Disabled storage must not prevent signing out. */ }
     }

@@ -271,12 +271,15 @@ Do not paste credentials or private parameter files into issues, commits or chat
 Live acceptance after deployment:
 
 1. Sign in as the configured tester: all twelve stages open and show a preview badge.
-2. Use a separate explicitly admitted student test account: only pre-A1 opens; a direct A1 URL is refused.
+2. Use a separate explicitly admitted student test account: every stage opens, including a direct C2 URL.
+   Verify that merely opening a stage does not create a passing result.
 3. Switch all three language modes in a lesson and confirm the choice survives navigation.
 4. Complete reading, listening, a microphone response and writing. Try a denied microphone and a
    temporary network loss; the UI must offer a useful recovery without a fabricated success.
-5. Submit a final check with one deliberately unsuccessful skill. The next stage must remain locked.
-6. Complete a successful four-part check under the student account and verify the next stage opens.
+5. Submit a final check with one deliberately unsuccessful skill. Its result must remain unsuccessful;
+   the next stage stays accessible because level access is now open.
+6. Complete a successful four-part check and verify that all four results are recorded separately.
+   Check vocabulary pagination, topic filters, Story Time, phrase replay and writing corrections.
 7. Confirm exam listening has audio without a transcript and that answers/model samples are absent.
 8. Verify recording and playback on the actual phone; automated Chromium coverage is not an iOS test.
 

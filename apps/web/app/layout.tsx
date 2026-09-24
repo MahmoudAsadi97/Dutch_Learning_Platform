@@ -11,6 +11,8 @@ import "./globals.css";
 import "./design.css";
 import "./learning.css";
 import "./learning-tools.css";
+import "./library.css";
+import "./phrase-audio.css";
 
 export const metadata: Metadata = {
   title: {

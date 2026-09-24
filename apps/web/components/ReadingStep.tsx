@@ -8,6 +8,7 @@ import { FeedbackPanel } from "@/components/FeedbackPanel";
 import { HelpLadder } from "@/components/HelpLadder";
 import { QuestionList } from "@/components/QuestionList";
 import { StepHeader } from "@/components/StepHeader";
+import { PhraseAudio } from "@/components/PhraseAudio";
 import { recordHelp, submitAnswer } from "@/lib/client/practice";
 import type { HelpRung, ReadingPayload, SessionDetail, Step } from "@/lib/types";
 
@@ -71,7 +72,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
       <StepHeader step={step} labels={labels} />
 
       <section className="card" aria-labelledby="reading-text-heading">
-        <h3 id="reading-text-heading">Tekst</h3>
+        <h3 id="reading-text-heading">Tekst <PhraseAudio text={payload.text.nl} label="De leestekst"/></h3>
         <p>
           <ContentLabel status={payload.text.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
         </p>
@@ -113,7 +114,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
             <tbody>
               {payload.vocabulary.map((item) => (
                 <tr key={item.nl}>
-                  <td lang="nl">{item.nl}</td>
+                  <td lang="nl">{item.nl} <PhraseAudio text={item.nl}/></td>
                   <td><LearningText text={item} supportOnly /></td>
                   <td className="muted" lang="nl">
                     {item.note_nl}

@@ -1,5 +1,47 @@
 # Validation report
 
+## Open practice library — 2026-09-24
+
+This update opens every stage to admitted learners and adds phrase replay, pre-A1 letters and
+sounds, contextual vocabulary cards, Story Time and inspectable writing corrections. Four-skill
+practice and final-check records remain separate; browsing a later stage never awards a pass.
+
+Software validation passed at [`3b618e4`](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/35997171635):
+**309 PostgreSQL API tests passed, 1 optional Azurite check skipped; 68 browser tests passed;
+27 client tests passed; 4 source-import checks passed; Bicep and both production images built.**
+The final content/source commit reruns these gates on [PR #6](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/pull/6).
+Local checks: **225 API tests passed, 85 skipped** because local database/storage integration is not
+available; **27 client tests passed**; Python lint, web lint, TypeScript and production build pass.
+The first browser run exposed selectors matching both answers and their new playback controls,
+an outdated error-message assertion, and an order-dependent feedback test. The selectors and setup
+were corrected without weakening the behaviour checks; the rerun passed all 68 browser tests.
+
+The final content has exactly 500 distinct terms and 100 distinct two-paragraph stories per stage,
+with Dutch, English and Persian text and vocabulary-to-story references. Adjacent stages deliberately
+revisit words and incidents. These are per-stage material counts, not independent lexical roots,
+a frequency ranking or 1,200 unrelated plots. The existing skill lessons remain intact. All four source builders regenerate byte-identical banks;
+all twelve final banks pass the shared runtime schema, with 6,000 cards and 1,200 story entries.
+
+Editorial checks found and repaired unsupported questions in simpler story versions, generic
+advanced examples, unrelated story terms, incorrect noun articles and several translation errors.
+The advanced repair uses individually authored contextual examples and coherent narratives.
+Automated schema checks and bounded editorial checks do not replace qualified native language
+review or CEFR calibration; every new bank remains marked unreviewed.
+
+Regression coverage includes all-stage access without assessment credit, private library routes,
+strict content boundaries, pagination/search, optional translations, draft-preserving corrections,
+stale responses, explicit/cached audio, microphone cancellation and alphabet recognition. Release
+validation refuses incomplete banks before database migration. No new Azure resources or schema
+migration is needed for this update, and no Azure deployment is performed here.
+
+Saved browser captures of the word bank and translated Story Time reader were visually inspected;
+the 320/390 px checks report no horizontal overflow and no violations in the scoped axe checks.
+These captures use test content and do not validate authored translations or physical-phone audio.
+
+Actual Azure model feedback, Belgian voice quality, physical-phone behaviour and language review
+still require the corresponding live checks. Fixtures establish software behaviour, not speech
+accuracy, assessment validity or learning outcomes.
+
 ## Twelve-stage learning release — 2026-09-24
 
 Five focused improvement/review passes cover curriculum, learning interaction, interface,

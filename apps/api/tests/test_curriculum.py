@@ -1,4 +1,4 @@
-"""Progression belongs to authenticated server state, never to browser flags or model claims."""
+"""Open learning access and independent checks belong to authenticated server state."""
 from __future__ import annotations
 
 import json
@@ -201,18 +201,23 @@ def install_assessor(monkeypatch, *, fail_on=None, fail_writing=False):
     return calls
 
 
-def test_student_cannot_skip_stages_or_begin_test_without_four_skills(client, headers):
+def test_every_authenticated_student_can_explore_all_stages_but_tests_need_four_skills(client, headers):
     catalog = client.get("/curriculum", headers=headers).json()
-    assert catalog["stages"][0]["unlocked"]
-    assert not any(stage["unlocked"] for stage in catalog["stages"][1:])
-    for method, path, body in (
-        ("get", "/curriculum/a1", None),
-        ("post", "/curriculum/a1/practice", {"skill": "writing", "text": "Ik ben Sam."}),
-        ("post", "/curriculum/a1/test", {"request_id": "no-skip-allowed"}),
-        ("post", "/curriculum/a1/listening", None),
-    ):
-        response = getattr(client, method)(path, headers=headers, **({"json": body} if body else {}))
-        assert response.status_code == 403, response.text
+    assert all(stage["unlocked"] for stage in catalog["stages"])
+    assert not any(stage["passed"] for stage in catalog["stages"])
+    assert catalog["policy"]["open_stage_access"]
+    assert not catalog["policy"]["previous_stage_pass_required"]
+    for stage_id in STAGE_IDS:
+        assert client.get(f"/curriculum/{stage_id}", headers=headers).status_code == 200
+        assert client.get(f"/curriculum/{stage_id}").status_code == 401
+        assert client.post(f"/curriculum/{stage_id}/test", headers=headers,
+                           json={"request_id": f"practice-needed-{stage_id}"}).status_code == 409
+    advanced = service.stage_for("c2")
+    practiced = client.post("/curriculum/c2/practice", headers=headers,
+                           json={"skill": "reading", "answers": answers(advanced.lesson.reading_questions)})
+    assert practiced.status_code == 200
+    assert client.post("/curriculum/c2/listening", headers=headers).status_code == 200
+    assert client.get("/curriculum/unknown-stage", headers=headers).status_code == 404
     assert client.post("/curriculum/pre-a1/test", headers=headers,
                        json={"request_id": "premature-check"}).status_code == 409
     assert client.post("/curriculum/pre-a1/practice", headers=headers,
@@ -228,7 +233,8 @@ def test_explicit_admin_can_preview_all_without_creating_student_passes(client, 
     assert started.status_code == 200
     assert started.json()["admin_preview"] is True
     monkeypatch.setattr(settings, "curriculum_admin_emails", "")
-    assert client.get("/curriculum/c2", headers=headers).status_code == 403
+    assert client.get("/curriculum/c2", headers=headers).status_code == 200
+    assert not any(stage["passed"] for stage in client.get("/curriculum", headers=headers).json()["stages"])
 
 
 def test_receptive_practice_progress_is_saved_and_can_be_resumed(client, headers):
@@ -270,7 +276,7 @@ def test_fresh_owned_audio_is_required_before_any_model_call(client, headers, mo
     assert calls == []
 
 
-def test_all_four_skills_pass_then_next_stage_unlocks_and_repeat_is_free(client, headers, monkeypatch):
+def test_all_four_skills_record_a_pass_and_repeat_is_free_without_locking_other_stages(client, headers, monkeypatch):
     attempt = prepare_check(client, headers)
     stage = first_stage()
     asset = new_recording(stage.test.speaking.sample.nl)
@@ -289,7 +295,7 @@ def test_all_four_skills_pass_then_next_stage_unlocks_and_repeat_is_free(client,
     assert latest["status"] == "passed"
     assert set(latest["results"]) == set(SKILLS)
     assert "test_snapshot" not in latest and "submission" not in latest
-    assert client.get("/curriculum/pre-a2", headers=headers).status_code == 403
+    assert client.get("/curriculum/pre-a2", headers=headers).status_code == 200
     changed = {**body, "writing_text": body["writing_text"] + " Nog een zin."}
     assert client.post(path, headers=headers, json=changed).status_code == 409
 
@@ -305,7 +311,8 @@ def test_one_failed_skill_cannot_be_compensated_by_other_skills(client, headers,
     assert response.json()["status"] == "needs_practice"
     assert response.json()["results"]["reading"]["passed"]
     assert not response.json()["results"]["writing"]["passed"]
-    assert client.get("/curriculum/a1", headers=headers).status_code == 403
+    assert client.get("/curriculum/a1", headers=headers).status_code == 200
+    assert not client.get("/curriculum/pre-a1", headers=headers).json()["progress"]["passed"]
 
 
 def test_assessor_outage_preserves_paid_skill_and_retry_does_not_duplicate_it(client, headers, monkeypatch):
@@ -317,7 +324,7 @@ def test_assessor_outage_preserves_paid_skill_and_retry_does_not_duplicate_it(cl
     path = f'/curriculum/attempts/{attempt["id"]}/submit'
     response = client.post(path, headers=headers, json=body)
     assert response.status_code == 503
-    assert client.get("/curriculum/a1", headers=headers).status_code == 403
+    assert client.get("/curriculum/a1", headers=headers).status_code == 200
     saved = client.get(f'/curriculum/attempts/{attempt["id"]}', headers=headers).json()
     assert saved["status"] == "in_progress"
     assert "speaking" in saved["results"] and "writing" not in saved["results"]
@@ -344,12 +351,14 @@ def test_default_fixture_assessor_is_valid_but_never_awards_a_pass():
     assert all(not criterion.met for criterion in reply.parsed.criteria)
 
 
-def test_revoked_admin_cannot_read_or_submit_advanced_preview(client, headers, monkeypatch, settings):
+def test_revoked_admin_keeps_own_preview_label_without_converting_to_student_pass(client, headers, monkeypatch, settings):
     monkeypatch.setattr(settings, "curriculum_admin_emails", "owner@example.com")
     started = client.post("/curriculum/c2/test", headers=headers, json={"request_id": "revoked-admin-c2"}).json()
     monkeypatch.setattr(settings, "curriculum_admin_emails", "")
-    assert client.get(f'/curriculum/attempts/{started["id"]}', headers=headers).status_code == 403
-    assert client.post(f'/curriculum/attempts/{started["id"]}/listening', headers=headers).status_code == 403
+    owned = client.get(f'/curriculum/attempts/{started["id"]}', headers=headers)
+    assert owned.status_code == 200 and owned.json()["admin_preview"] is True
+    assert client.post(f'/curriculum/attempts/{started["id"]}/listening', headers=headers).status_code == 200
+    assert not any(stage["passed"] for stage in client.get("/curriculum", headers=headers).json()["stages"])
 
 
 def test_export_contains_only_own_work_not_final_answer_keys(client, headers):

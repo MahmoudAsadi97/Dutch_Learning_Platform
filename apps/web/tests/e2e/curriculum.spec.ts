@@ -1,16 +1,16 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-test("learner path has twelve stages, no A3 and a real prerequisite gate", async ({ page }) => {
+test("learner path has twelve open stages without awarding test passes", async ({ page }) => {
   await page.goto("/");
   const path = page.getByTestId("curriculum-path");
   await expect(path.locator("li")).toHaveCount(12);
   await expect(path).not.toContainText(/A3/);
   await expect(path.getByRole("link", { name: /Open pre-A1:/ })).toBeVisible();
-  await expect(path.locator('.stage-locked')).toHaveCount(11);
-  await expect(path.getByRole("link", { name: /Open A1:/ })).toHaveCount(0);
+  await expect(path.locator('.stage-locked')).toHaveCount(0);
+  await expect(path.getByRole("link", { name: /Open A1:/ })).toBeVisible();
   await page.goto("/learn/a1");
-  await expect(page.getByRole("main").getByRole("alert")).toContainText("Rond eerst het vorige niveau af");
+  await expect(page.getByRole("heading", {name: /Woorden die je kunt gebruiken/})).toBeVisible();
   await expect(page.getByRole("button", { name: "Start de eindtoets" })).toHaveCount(0);
 });
 
@@ -71,7 +71,7 @@ test("new level retains writing within the tab and stays usable at phone widths"
 test("a blocked final test cannot be started from a direct link", async ({ page }) => {
   await page.goto("/learn/a1/test");
   await page.getByRole("button", { name: "Start de eindtoets" }).click();
-  await expect(page.getByRole("main").getByRole("alert")).toContainText("Rond eerst het vorige niveau af");
+  await expect(page.getByRole("main").getByRole("alert")).toContainText("Oefen eerst lezen, luisteren, spreken en schrijven");
   await expect(page.getByRole("button", { name: "Dien de eindtoets in" })).toHaveCount(0);
 });
 
