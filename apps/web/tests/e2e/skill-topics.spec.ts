@@ -95,7 +95,7 @@ test("reading feedback is earned by submitting this topic and never completes li
   await page.getByRole("button", {name: "Rond lezen af", exact: true}).click();
   await expect(page.locator(".practice-feedback")).toContainText("2 van 2 juist");
   await expect(page.locator(".practice-correct")).toHaveCount(2);
-  expect(requests).toEqual([{id: "pre-a1-t001", body: {skill: "reading", answers: {"pre-a1-t001-q1": 1, "pre-a1-t001-q2": 0}}}]);
+  expect(requests).toEqual([{id: "pre-a1-t001", body: {request_id: expect.any(String), skill: "reading", answers: {"pre-a1-t001-q1": 1, "pre-a1-t001-q2": 0}}}]);
   // A later mistake remains useful evidence without erasing completed practice.
   await page.locator('input[name="q-pre-a1-t001-q1"]').first().check();
   await page.getByRole("button", {name: "Rond lezen af", exact: true}).click();
@@ -136,7 +136,7 @@ test("writing drafts and corrections stay with their own topic and survive a fai
   await openTopic(page); await expect(draft).toHaveValue("Ik ben aan de halte.");
   await page.getByRole("button", {name: "Rond schrijven af", exact: true}).click();
   await expect(page.locator(".practice-feedback")).toBeVisible();
-  expect(requests[0]).toEqual({id: "pre-a1-t001", body: {skill: "writing", text: "Ik ben aan de halte."}});
+  expect(requests[0]).toEqual({id: "pre-a1-t001", body: {request_id: expect.any(String), skill: "writing", text: "Ik ben aan de halte."}});
   await page.reload(); await selectSkill(page, "writing"); await openTopic(page, 2);
   await expect(draft).toHaveValue("Ik ga met Sam naar Brugge.");
 });
@@ -186,7 +186,7 @@ test("speaking protects pending recordings and sends the asset to the selected t
     await expect(page.getByRole("button", {name: "Rond spreken af", exact: true})).toBeEnabled();
     await page.getByRole("button", {name: "Rond spreken af", exact: true}).click();
     await expect(page.locator(".practice-feedback")).toBeVisible();
-    expect(requests).toEqual([{id: "pre-a1-t003", body: {skill: "speaking", audio_asset_id: "cc91846f-27fc-4bc8-86cc-e879055c75ea"}}]);
+    expect(requests).toEqual([{id: "pre-a1-t003", body: {request_id: expect.any(String), skill: "speaking", audio_asset_id: "cc91846f-27fc-4bc8-86cc-e879055c75ea"}}]);
   } finally {release();}
 });
 

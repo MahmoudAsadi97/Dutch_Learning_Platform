@@ -1,5 +1,11 @@
 # Taalstudio — Dutch learning platform
 
+Three focused learning helpers now extend the topic banks: **ten turn-by-turn conversations**,
+**a short practice plan from saved attempts**, and an **admin-only content editing queue**.
+They reuse the existing model, speech and PostgreSQL services. Browse the A1 station topic or
+neighbour topic and select **Oefen dit gesprek**; find **Jouw volgende oefening** on the home page.
+See [learning support](docs/LEARNING_AGENTS.md) for the ten supported conversations and limits.
+
 A guided Belgian Standard Dutch learning path with original stories, vocabulary, grammar drills,
 and separate reading, listening, speaking and writing practice.
 

@@ -1,0 +1,1936 @@
+{
+  "schema_version": 1,
+  "review_status": "unreviewed",
+  "conversations": [
+    {
+      "id": "a1-t004-conversation",
+      "stage_id": "a1",
+      "topic_id": "a1-t004",
+      "title": {
+        "nl": "Op bezoek bij de buur",
+        "en": "Visiting your neighbour",
+        "fa": "دیدار با همسایه"
+      },
+      "role": {
+        "nl": "Amir, uw nieuwe buur",
+        "en": "Amir, your new neighbour",
+        "fa": "امیر، همسایهٔ جدید شما"
+      },
+      "setup": {
+        "nl": "U ontmoet Amir aan de deur. Stel u voor en spreek een kort bezoek af. In dit oefengesprek woont Amir op nummer acht. Hij is zaterdag om drie uur thuis, maar niet om twee uur.",
+        "en": "You meet Amir at the door. Introduce yourself and arrange a short visit. In this rehearsal, Amir lives at number eight. He is home on Saturday at three, but not at two.",
+        "fa": "امیر را دم در می‌بینید. خودتان را معرفی کنید و برای یک دیدار کوتاه قرار بگذارید. در این تمرین، امیر در پلاک هشت زندگی می‌کند. شنبه ساعت سه خانه است، اما ساعت دو نیست."
+      },
+      "opening": {
+        "nl": "Dag, ik ben Amir, uw nieuwe buur. Hoe heet u?",
+        "en": "Hello, I'm Amir, your new neighbour. What's your name?",
+        "fa": "سلام، من امیر هستم، همسایهٔ جدید شما. اسم شما چیست؟"
+      },
+      "success": {
+        "nl": "Tot zaterdag om drie uur, op nummer acht!",
+        "en": "See you on Saturday at three, at number eight!",
+        "fa": "تا شنبه ساعت سه، در پلاک هشت!"
+      },
+      "steps": [
+        {
+          "id": "introduce",
+          "goal": {
+            "nl": "Begroet Amir en stel uzelf voor.",
+            "en": "Greet Amir and introduce yourself.",
+            "fa": "به امیر سلام کنید و خودتان را معرفی کنید."
+          },
+          "cue": {
+            "nl": "Dag, ik ben Amir. Hoe heet u?",
+            "en": "Hello, I'm Amir. What's your name?",
+            "fa": "سلام، من امیر هستم. اسم شما چیست؟"
+          },
+          "hint": {
+            "nl": "Begin met ‘Dag’ of ‘Hallo’. Zeg daarna uw naam.",
+            "en": "Start with ‘Dag’ or ‘Hallo’, then say your name.",
+            "fa": "با «Dag» یا «Hallo» شروع کنید، سپس نامتان را بگویید."
+          },
+          "accepted": {
+            "nl": "Aangenaam! Welkom in de straat.",
+            "en": "Nice to meet you! Welcome to the street.",
+            "fa": "خوشوقتم! به محله خوش آمدید."
+          },
+          "required_groups": [
+            [
+              "dag",
+              "hallo",
+              "goeiemorgen",
+              "goedemorgen",
+              "goeienavond",
+              "goedenavond"
+            ],
+            [
+              "ik ben",
+              "mijn naam is",
+              "ik heet"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Dag, ik ben Noor.",
+            "en": "Hello, I'm Noor.",
+            "fa": "سلام، من نور هستم."
+          }
+        },
+        {
+          "id": "visit-day",
+          "goal": {
+            "nl": "Vraag of u zaterdag op bezoek mag komen.",
+            "en": "Ask whether you may visit on Saturday.",
+            "fa": "بپرسید آیا می‌توانید شنبه به دیدنش بروید."
+          },
+          "cue": {
+            "nl": "Kom gerust eens langs. Op welke dag wilt u komen?",
+            "en": "You're welcome to visit. Which day would you like to come?",
+            "fa": "خوشحال می‌شوم سر بزنید. چه روزی می‌خواهید بیایید؟"
+          },
+          "hint": {
+            "nl": "U kunt vragen: ‘Mag ik … komen?’",
+            "en": "You can ask: ‘Mag ik … komen?’",
+            "fa": "می‌توانید بپرسید: «Mag ik … komen?»"
+          },
+          "accepted": {
+            "nl": "Zaterdag past.",
+            "en": "Saturday works.",
+            "fa": "شنبه مناسب است."
+          },
+          "required_groups": [
+            [
+              "komen",
+              "kom",
+              "langs",
+              "bezoek"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "saturday",
+              "label": {
+                "nl": "Zaterdag",
+                "en": "Saturday",
+                "fa": "شنبه"
+              },
+              "aliases": [
+                "zaterdag"
+              ],
+              "valid": true
+            },
+            {
+              "id": "sunday",
+              "label": {
+                "nl": "Zondag",
+                "en": "Sunday",
+                "fa": "یکشنبه"
+              },
+              "aliases": [
+                "zondag"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Mag ik zaterdag komen?",
+            "en": "May I come on Saturday?",
+            "fa": "می‌توانم شنبه بیایم؟"
+          }
+        },
+        {
+          "id": "confirm-visit",
+          "goal": {
+            "nl": "Bevestig het juiste uur en huisnummer.",
+            "en": "Confirm the correct time and house number.",
+            "fa": "ساعت و پلاک درست را تأیید کنید."
+          },
+          "cue": {
+            "nl": "Om twee uur ben ik weg. Om drie uur ben ik thuis, op nummer acht. Wanneer komt u en waar?",
+            "en": "I'm out at two. I'm home at three, at number eight. When and where will you come?",
+            "fa": "ساعت دو بیرون هستم. ساعت سه در خانه، پلاک هشت، هستم. چه ساعتی و کجا می‌آیید؟"
+          },
+          "hint": {
+            "nl": "Zeg: ‘Dan kom ik om … naar nummer …’",
+            "en": "Say: ‘Dan kom ik om … naar nummer …’",
+            "fa": "بگویید: «Dan kom ik om … naar nummer …»"
+          },
+          "accepted": {
+            "nl": "Dat klopt. Het bezoek is afgesproken.",
+            "en": "That's right. The visit is arranged.",
+            "fa": "درست است. قرار دیدار مشخص شد."
+          },
+          "required_groups": [
+            [
+              "nummer acht",
+              "nummer 8",
+              "huisnummer acht",
+              "huisnummer 8"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "three",
+              "label": {
+                "nl": "Drie uur",
+                "en": "Three o'clock",
+                "fa": "ساعت سه"
+              },
+              "aliases": [
+                "drie uur",
+                "om drie",
+                "15 uur",
+                "15.00"
+              ],
+              "valid": true
+            },
+            {
+              "id": "two",
+              "label": {
+                "nl": "Twee uur",
+                "en": "Two o'clock",
+                "fa": "ساعت دو"
+              },
+              "aliases": [
+                "twee uur",
+                "om twee",
+                "14 uur",
+                "14.00"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Dan kom ik zaterdag om drie uur naar nummer acht.",
+            "en": "Then I'll come on Saturday at three to number eight.",
+            "fa": "پس شنبه ساعت سه به پلاک هشت می‌آیم."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-t019-conversation",
+      "stage_id": "a1",
+      "topic_id": "a1-t019",
+      "title": {
+        "nl": "Het juiste spoor vragen",
+        "en": "Asking for the right platform",
+        "fa": "پرسیدن سکوی درست"
+      },
+      "role": {
+        "nl": "Een medewerker in het station",
+        "en": "A station employee",
+        "fa": "کارمند ایستگاه"
+      },
+      "setup": {
+        "nl": "U wilt met de trein naar Gent. Vraag waar u moet zijn. Oefen ook hoe u om herhaling vraagt. De trein in dit verzonnen gesprek vertrekt van spoor drie en heeft tien minuten vertraging.",
+        "en": "You want to take a train to Ghent. Ask where to go and practise asking for repetition. The train in this fictional conversation leaves from platform three and is ten minutes late.",
+        "fa": "می‌خواهید با قطار به خنت بروید. بپرسید کجا باید بروید و درخواست تکرار را هم تمرین کنید. قطار این گفت‌وگوی خیالی از سکوی سه حرکت می‌کند و ده دقیقه تأخیر دارد."
+      },
+      "opening": {
+        "nl": "Goedemorgen. Kan ik u helpen?",
+        "en": "Good morning. Can I help you?",
+        "fa": "صبح بخیر. می‌توانم کمکتان کنم؟"
+      },
+      "success": {
+        "nl": "Juist, spoor drie. Goede reis!",
+        "en": "That's right, platform three. Have a good journey!",
+        "fa": "درست است، سکوی سه. سفر خوبی داشته باشید!"
+      },
+      "steps": [
+        {
+          "id": "ask-platform",
+          "goal": {
+            "nl": "Noem Gent en vraag naar het spoor.",
+            "en": "Mention Ghent and ask for the platform.",
+            "fa": "نام خنت را بگویید و سکو را بپرسید."
+          },
+          "cue": {
+            "nl": "Waar wilt u naartoe?",
+            "en": "Where would you like to go?",
+            "fa": "می‌خواهید کجا بروید؟"
+          },
+          "hint": {
+            "nl": "U kunt beginnen: ‘Ik wil naar Gent. Waar …?’",
+            "en": "You can start: ‘Ik wil naar Gent. Waar …?’",
+            "fa": "می‌توانید شروع کنید: «Ik wil naar Gent. Waar …?»"
+          },
+          "accepted": {
+            "nl": "De trein naar Gent vertrekt van spoor drie.",
+            "en": "The train to Ghent leaves from platform three.",
+            "fa": "قطار خنت از سکوی سه حرکت می‌کند."
+          },
+          "required_groups": [
+            [
+              "gent"
+            ],
+            [
+              "waar",
+              "welk",
+              "welke"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Ik wil naar Gent. Van welk spoor vertrekt de trein?",
+            "en": "I want to go to Ghent. Which platform does the train leave from?",
+            "fa": "می‌خواهم به خنت بروم. قطار از کدام سکو حرکت می‌کند؟"
+          }
+        },
+        {
+          "id": "ask-repeat",
+          "goal": {
+            "nl": "Vraag om herhaling of om trager te spreken.",
+            "en": "Ask for repetition or slower speech.",
+            "fa": "درخواست تکرار کنید یا بخواهید آهسته‌تر صحبت کند."
+          },
+          "cue": {
+            "nl": "Er is ook tien minuten vertraging. Ik sprak wat snel. Wat kunt u vragen als u het niet begrijpt?",
+            "en": "There is also a ten-minute delay. I spoke rather quickly. What can you ask if you don't understand?",
+            "fa": "ده دقیقه تأخیر هم دارد. کمی سریع صحبت کردم. اگر متوجه نشدید، چه می‌توانید بپرسید؟"
+          },
+          "hint": {
+            "nl": "Probeer: ‘Kunt u dat …?’",
+            "en": "Try: ‘Kunt u dat …?’",
+            "fa": "امتحان کنید: «Kunt u dat …?»"
+          },
+          "accepted": {
+            "nl": "Natuurlijk. Ik zeg het nog eens.",
+            "en": "Of course. I'll say it again.",
+            "fa": "البته. دوباره می‌گویم."
+          },
+          "required_groups": [
+            [
+              "herhalen",
+              "nog eens",
+              "opnieuw",
+              "trager",
+              "langzamer",
+              "langzaam"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Kunt u dat even herhalen, alstublieft?",
+            "en": "Could you repeat that, please?",
+            "fa": "ممکن است لطفاً آن را تکرار کنید؟"
+          }
+        },
+        {
+          "id": "confirm-platform",
+          "goal": {
+            "nl": "Zeg naar welk spoor u gaat.",
+            "en": "Say which platform you will go to.",
+            "fa": "بگویید به کدام سکو می‌روید."
+          },
+          "cue": {
+            "nl": "Spoor drie. Tien minuten vertraging. Naar welk spoor gaat u nu?",
+            "en": "Platform three. Ten minutes late. Which platform will you go to now?",
+            "fa": "سکوی سه. ده دقیقه تأخیر. حالا به کدام سکو می‌روید؟"
+          },
+          "hint": {
+            "nl": "Zeg: ‘Ik ga naar spoor …’",
+            "en": "Say: ‘Ik ga naar spoor …’",
+            "fa": "بگویید: «Ik ga naar spoor …»"
+          },
+          "accepted": {
+            "nl": "U hebt het juiste spoor begrepen.",
+            "en": "You understood the correct platform.",
+            "fa": "سکوی درست را فهمیدید."
+          },
+          "required_groups": [
+            [
+              "spoor",
+              "perron"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "platform-three",
+              "label": {
+                "nl": "Spoor drie",
+                "en": "Platform three",
+                "fa": "سکوی سه"
+              },
+              "aliases": [
+                "spoor drie",
+                "spoor 3",
+                "perron drie",
+                "perron 3"
+              ],
+              "valid": true
+            },
+            {
+              "id": "platform-one",
+              "label": {
+                "nl": "Spoor één",
+                "en": "Platform one",
+                "fa": "سکوی یک"
+              },
+              "aliases": [
+                "spoor een",
+                "spoor één",
+                "spoor 1",
+                "perron een",
+                "perron één",
+                "perron 1"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Ik ga naar spoor drie.",
+            "en": "I'll go to platform three.",
+            "fa": "به سکوی سه می‌روم."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-t026-conversation",
+      "stage_id": "a1",
+      "topic_id": "a1-t026",
+      "title": {
+        "nl": "Een vraag in de les",
+        "en": "Asking a question in class",
+        "fa": "پرسیدن سؤال در کلاس"
+      },
+      "role": {
+        "nl": "Uw leerkracht",
+        "en": "Your teacher",
+        "fa": "معلم شما"
+      },
+      "setup": {
+        "nl": "U zit in de les. U werkt op bladzijde zes en hebt een potlood nodig. In dit nieuwe oefengesprek leent de leerkracht u een potlood. U geeft het na de les terug.",
+        "en": "You are in class, working on page six, and need a pencil. In this new rehearsal, the teacher lends you a pencil. You return it after class.",
+        "fa": "در کلاس هستید، روی صفحهٔ شش کار می‌کنید و به مداد نیاز دارید. در این تمرین جدید، معلم به شما مداد قرض می‌دهد. پس از کلاس آن را پس می‌دهید."
+      },
+      "opening": {
+        "nl": "Welkom. Open uw boek op bladzijde zes.",
+        "en": "Welcome. Open your book at page six.",
+        "fa": "خوش آمدید. کتابتان را در صفحهٔ شش باز کنید."
+      },
+      "success": {
+        "nl": "Goed afgesproken. Veel succes met de oefening!",
+        "en": "Agreed. Good luck with the exercise!",
+        "fa": "قرارمان مشخص شد. در تمرین موفق باشید!"
+      },
+      "steps": [
+        {
+          "id": "check-page",
+          "goal": {
+            "nl": "Vraag of bladzijde zes juist is.",
+            "en": "Check whether page six is correct.",
+            "fa": "بپرسید آیا صفحهٔ شش درست است."
+          },
+          "cue": {
+            "nl": "Op welke bladzijde begint u? Controleer het even bij mij.",
+            "en": "Which page will you start on? Check with me.",
+            "fa": "از کدام صفحه شروع می‌کنید؟ از من بپرسید تا مطمئن شوید."
+          },
+          "hint": {
+            "nl": "U kunt vragen: ‘Is bladzijde … juist?’",
+            "en": "You can ask: ‘Is bladzijde … juist?’",
+            "fa": "می‌توانید بپرسید: «Is bladzijde … juist?»"
+          },
+          "accepted": {
+            "nl": "Ja, bladzijde zes is juist.",
+            "en": "Yes, page six is correct.",
+            "fa": "بله، صفحهٔ شش درست است."
+          },
+          "required_groups": [
+            [
+              "juist",
+              "klopt",
+              "bedoelt",
+              "bedoel",
+              "zes?",
+              "6?"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "six",
+              "label": {
+                "nl": "Bladzijde zes",
+                "en": "Page six",
+                "fa": "صفحهٔ شش"
+              },
+              "aliases": [
+                "bladzijde zes",
+                "bladzijde 6",
+                "pagina zes",
+                "pagina 6"
+              ],
+              "valid": true
+            },
+            {
+              "id": "seven",
+              "label": {
+                "nl": "Bladzijde zeven",
+                "en": "Page seven",
+                "fa": "صفحهٔ هفت"
+              },
+              "aliases": [
+                "bladzijde zeven",
+                "bladzijde 7",
+                "pagina zeven",
+                "pagina 7"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Is bladzijde zes juist?",
+            "en": "Is page six correct?",
+            "fa": "آیا صفحهٔ شش درست است؟"
+          }
+        },
+        {
+          "id": "borrow-pencil",
+          "goal": {
+            "nl": "Vraag beleefd om een potlood.",
+            "en": "Politely ask for a pencil.",
+            "fa": "مؤدبانه مداد بخواهید."
+          },
+          "cue": {
+            "nl": "Vandaag schrijven we met potlood. U hebt geen potlood bij. Wat vraagt u?",
+            "en": "Today we write in pencil. You haven't brought one. What do you ask?",
+            "fa": "امروز با مداد می‌نویسیم. شما مداد همراه ندارید. چه می‌پرسید؟"
+          },
+          "hint": {
+            "nl": "Begin met ‘Mag ik’ of ‘Kan ik’.",
+            "en": "Start with ‘Mag ik’ or ‘Kan ik’.",
+            "fa": "با «Mag ik» یا «Kan ik» شروع کنید."
+          },
+          "accepted": {
+            "nl": "Natuurlijk, u mag dit potlood lenen.",
+            "en": "Of course, you may borrow this pencil.",
+            "fa": "البته، می‌توانید این مداد را قرض بگیرید."
+          },
+          "required_groups": [
+            [
+              "potlood"
+            ],
+            [
+              "mag ik",
+              "kan ik",
+              "kunt u",
+              "alstublieft",
+              "graag"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Mag ik een potlood lenen, alstublieft?",
+            "en": "May I borrow a pencil, please?",
+            "fa": "می‌توانم لطفاً یک مداد قرض بگیرم؟"
+          }
+        },
+        {
+          "id": "return-pencil",
+          "goal": {
+            "nl": "Bedank de leerkracht en zeg wanneer u het teruggeeft.",
+            "en": "Thank the teacher and say when you will return it.",
+            "fa": "از معلم تشکر کنید و بگویید چه وقت مداد را پس می‌دهید."
+          },
+          "cue": {
+            "nl": "Ik heb het potlood na de les weer nodig. Wat spreken we af?",
+            "en": "I need the pencil back after class. What shall we agree?",
+            "fa": "بعد از کلاس دوباره به مداد نیاز دارم. چه قراری می‌گذاریم؟"
+          },
+          "hint": {
+            "nl": "‘Dank u. Ik geef het … terug.’",
+            "en": "‘Dank u. Ik geef het … terug.’",
+            "fa": "«Dank u. Ik geef het … terug.»"
+          },
+          "accepted": {
+            "nl": "Dank u, dan krijg ik het na de les terug.",
+            "en": "Thank you, then I'll get it back after class.",
+            "fa": "متشکرم، پس بعد از کلاس آن را پس می‌گیرم."
+          },
+          "required_groups": [
+            [
+              "dank",
+              "bedankt",
+              "merci"
+            ],
+            [
+              "terug"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "after-class",
+              "label": {
+                "nl": "Na de les",
+                "en": "After class",
+                "fa": "بعد از کلاس"
+              },
+              "aliases": [
+                "na de les",
+                "na deze les"
+              ],
+              "valid": true
+            },
+            {
+              "id": "tomorrow",
+              "label": {
+                "nl": "Morgen",
+                "en": "Tomorrow",
+                "fa": "فردا"
+              },
+              "aliases": [
+                "morgen"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Dank u. Ik geef het na de les terug.",
+            "en": "Thank you. I'll return it after class.",
+            "fa": "متشکرم. بعد از کلاس آن را پس می‌دهم."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-t002-conversation",
+      "stage_id": "a2",
+      "topic_id": "a2-t002",
+      "title": {
+        "nl": "De datum controleren",
+        "en": "Checking the date",
+        "fa": "بررسی تاریخ"
+      },
+      "role": {
+        "nl": "De onthaalmedewerker voor een gesprek",
+        "en": "The receptionist arranging a meeting",
+        "fa": "مسئول پذیرش برای هماهنگی جلسه"
+      },
+      "setup": {
+        "nl": "In uw uitnodiging staat donderdag, in de bevestiging vrijdag. Bel om de datum te controleren. Voor deze fictieve afspraak neemt u uw contract en een kopie van uw diploma mee. De kopie moet u vooraf maken; de kopieermachine ter plaatse is stuk.",
+        "en": "Your invitation says Thursday, but the confirmation says Friday. Call to check the date. For this fictional meeting, bring your contract and a copy of your diploma. Make the copy beforehand: the copier at the meeting location is broken.",
+        "fa": "در دعوت‌نامه پنجشنبه نوشته شده، اما تأییدیه جمعه را نشان می‌دهد. برای بررسی تاریخ تماس بگیرید. برای این قرار خیالی، قرارداد و کپی مدرکتان را ببرید. کپی را از قبل آماده کنید؛ دستگاه کپی محل جلسه خراب است."
+      },
+      "opening": {
+        "nl": "Goedendag, waarmee kan ik u helpen?",
+        "en": "Hello, how can I help you?",
+        "fa": "سلام، چطور می‌توانم کمکتان کنم؟"
+      },
+      "success": {
+        "nl": "Dan verwachten we u vrijdag, met uw contract en de vooraf gemaakte kopie. Tot dan!",
+        "en": "Then we expect you on Friday, with your contract and the copy made beforehand. See you then!",
+        "fa": "پس جمعه با قرارداد و کپی‌ای که از قبل آماده کرده‌اید منتظرتان هستیم. تا آن روز!"
+      },
+      "steps": [
+        {
+          "id": "check-dates",
+          "goal": {
+            "nl": "Leg uit dat u twee verschillende dagen hebt gekregen en vraag welke juist is.",
+            "en": "Explain that you received two different days and ask which is correct.",
+            "fa": "توضیح دهید دو روز متفاوت به شما اعلام شده و بپرسید کدام درست است."
+          },
+          "cue": {
+            "nl": "Welke informatie wilt u controleren?",
+            "en": "Which information would you like to check?",
+            "fa": "می‌خواهید کدام اطلاعات را بررسی کنید؟"
+          },
+          "hint": {
+            "nl": "Noem donderdag én vrijdag. Vraag: ‘Welke dag is juist?’",
+            "en": "Mention both Thursday and Friday. Ask: ‘Welke dag is juist?’",
+            "fa": "هم پنجشنبه و هم جمعه را نام ببرید. بپرسید: «Welke dag is juist?»"
+          },
+          "accepted": {
+            "nl": "Vrijdag is juist. De uitnodiging bevatte een fout.",
+            "en": "Friday is correct. The invitation contained a mistake.",
+            "fa": "جمعه درست است. در دعوت‌نامه اشتباه شده بود."
+          },
+          "required_groups": [
+            [
+              "donderdag"
+            ],
+            [
+              "vrijdag"
+            ],
+            [
+              "welke",
+              "juist",
+              "klopt"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "De uitnodiging zegt donderdag en de bevestiging vrijdag. Welke dag is juist?",
+            "en": "The invitation says Thursday and the confirmation says Friday. Which day is correct?",
+            "fa": "در دعوت‌نامه پنجشنبه و در تأییدیه جمعه نوشته شده. کدام روز درست است؟"
+          }
+        },
+        {
+          "id": "confirm-documents",
+          "goal": {
+            "nl": "Bevestig vrijdag en noem beide documenten die u meebrengt.",
+            "en": "Confirm Friday and name both documents you will bring.",
+            "fa": "جمعه را تأیید کنید و هر دو مدرکی را که می‌برید نام ببرید."
+          },
+          "cue": {
+            "nl": "Het gesprek is vrijdag. Breng uw contract en een kopie van uw diploma mee. Kunt u dat bevestigen?",
+            "en": "The meeting is Friday. Bring your contract and a copy of your diploma. Can you confirm that?",
+            "fa": "جلسه جمعه است. قرارداد و کپی مدرکتان را بیاورید. می‌توانید تأیید کنید؟"
+          },
+          "hint": {
+            "nl": "‘Ik kom vrijdag en breng … mee.’ Vergeet de kopie niet.",
+            "en": "‘Ik kom vrijdag en breng … mee.’ Don't forget the copy.",
+            "fa": "«Ik kom vrijdag en breng … mee.» کپی را فراموش نکنید."
+          },
+          "accepted": {
+            "nl": "Goed, u hebt de dag en de documenten bevestigd.",
+            "en": "Good, you confirmed the day and the documents.",
+            "fa": "خوب است، روز و مدارک را تأیید کردید."
+          },
+          "required_groups": [
+            [
+              "vrijdag"
+            ],
+            [
+              "contract"
+            ],
+            [
+              "diploma",
+              "diplomakopie"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Ik kom vrijdag en breng mijn contract en een kopie van mijn diploma mee.",
+            "en": "I'll come on Friday and bring my contract and a copy of my diploma.",
+            "fa": "جمعه می‌آیم و قرارداد و کپی مدرکم را می‌آورم."
+          }
+        },
+        {
+          "id": "copy-beforehand",
+          "goal": {
+            "nl": "Zeg dat u de kopie vooraf maakt.",
+            "en": "Say that you will make the copy beforehand.",
+            "fa": "بگویید کپی را از قبل آماده می‌کنید."
+          },
+          "cue": {
+            "nl": "Nog iets: onze kopieermachine is stuk. Wanneer maakt u de kopie?",
+            "en": "One more thing: our copier is broken. When will you make the copy?",
+            "fa": "یک نکتهٔ دیگر: دستگاه کپی ما خراب است. چه وقت کپی را آماده می‌کنید؟"
+          },
+          "hint": {
+            "nl": "Gebruik ‘vooraf’ of ‘op voorhand’.",
+            "en": "Use ‘vooraf’ or ‘op voorhand’.",
+            "fa": "از «vooraf» یا «op voorhand» استفاده کنید."
+          },
+          "accepted": {
+            "nl": "Prima, zo is alles klaar voor u vertrekt.",
+            "en": "Good, then everything will be ready before you leave.",
+            "fa": "خوب است، پس پیش از حرکت همه‌چیز آماده خواهد بود."
+          },
+          "required_groups": [
+            [
+              "kopie",
+              "kopiëren",
+              "kopieer"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "beforehand",
+              "label": {
+                "nl": "Vooraf",
+                "en": "Beforehand",
+                "fa": "از قبل"
+              },
+              "aliases": [
+                "vooraf",
+                "op voorhand",
+                "van tevoren",
+                "voor ik kom",
+                "vóór ik kom",
+                "thuis"
+              ],
+              "valid": true
+            },
+            {
+              "id": "on-site",
+              "label": {
+                "nl": "Ter plaatse",
+                "en": "At the meeting location",
+                "fa": "در محل جلسه"
+              },
+              "aliases": [
+                "ter plaatse",
+                "bij u",
+                "tijdens het gesprek"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Ik maak de kopie vooraf en breng ze vrijdag mee.",
+            "en": "I'll make the copy beforehand and bring it on Friday.",
+            "fa": "کپی را از قبل آماده می‌کنم و جمعه با خودم می‌آورم."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-t016-conversation",
+      "stage_id": "a2",
+      "topic_id": "a2-t016",
+      "title": {
+        "nl": "Een afspraak in de keuken",
+        "en": "Agreeing where things belong",
+        "fa": "هماهنگی در آشپزخانه"
+      },
+      "role": {
+        "nl": "Uw huisgenoot",
+        "en": "Your housemate",
+        "fa": "هم‌خانهٔ شما"
+      },
+      "setup": {
+        "nl": "U wilt pasta koken, maar vindt het vergiet niet. Uw huisgenoot weet waar het ligt. Spreek af waar u het na het koken zet en hoe u de anderen verwittigt.",
+        "en": "You want to cook pasta but cannot find the colander. Your housemate knows where it is. Agree where to put it after cooking and how to let the others know.",
+        "fa": "می‌خواهید پاستا بپزید، اما آبکش را پیدا نمی‌کنید. هم‌خانه‌تان می‌داند کجاست. هماهنگ کنید بعد از آشپزی کجا قرارش دهید و چطور به دیگران اطلاع دهید."
+      },
+      "opening": {
+        "nl": "Dag! Zoek je iets in de keuken?",
+        "en": "Hi! Are you looking for something in the kitchen?",
+        "fa": "سلام! در آشپزخانه دنبال چیزی می‌گردی؟"
+      },
+      "success": {
+        "nl": "Afgesproken: het vergiet komt vooraan en de anderen krijgen bericht.",
+        "en": "Agreed: the colander goes at the front and the others will be told.",
+        "fa": "قرار شد: آبکش جلو قرار می‌گیرد و به بقیه اطلاع می‌دهید."
+      },
+      "steps": [
+        {
+          "id": "ask-location",
+          "goal": {
+            "nl": "Vraag waar het vergiet is.",
+            "en": "Ask where the colander is.",
+            "fa": "بپرسید آبکش کجاست."
+          },
+          "cue": {
+            "nl": "Wat zoek je precies?",
+            "en": "What exactly are you looking for?",
+            "fa": "دقیقاً دنبال چه چیزی می‌گردی؟"
+          },
+          "hint": {
+            "nl": "‘Weet je waar …?’",
+            "en": "‘Weet je waar …?’",
+            "fa": "«Weet je waar …?»"
+          },
+          "accepted": {
+            "nl": "Het vergiet ligt in de onderste kast, achter de kommen.",
+            "en": "The colander is in the bottom cupboard, behind the bowls.",
+            "fa": "آبکش در کابینت پایینی، پشت کاسه‌هاست."
+          },
+          "required_groups": [
+            [
+              "vergiet"
+            ],
+            [
+              "waar"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Weet je waar het vergiet is?",
+            "en": "Do you know where the colander is?",
+            "fa": "می‌دانی آبکش کجاست؟"
+          }
+        },
+        {
+          "id": "check-location",
+          "goal": {
+            "nl": "Herhaal waar het vergiet nu ligt.",
+            "en": "Repeat where the colander is now.",
+            "fa": "تکرار کنید آبکش الان کجاست."
+          },
+          "cue": {
+            "nl": "Kon je me verstaan? In welke kast en achter wat moet je zoeken?",
+            "en": "Could you hear me? Which cupboard, and behind what, should you look?",
+            "fa": "صدایم را شنیدی؟ در کدام کابینت و پشت چه چیزی باید بگردی؟"
+          },
+          "hint": {
+            "nl": "Noem ‘de onderste kast’ en ‘de kommen’.",
+            "en": "Mention ‘de onderste kast’ and ‘de kommen’.",
+            "fa": "از «de onderste kast» و «de kommen» استفاده کنید."
+          },
+          "accepted": {
+            "nl": "Juist, daar ligt het.",
+            "en": "That's right, it's there.",
+            "fa": "درست است، همان‌جاست."
+          },
+          "required_groups": [
+            [
+              "onderste kast",
+              "kast onderaan"
+            ],
+            [
+              "achter de kommen",
+              "achter die kommen"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Het ligt in de onderste kast, achter de kommen.",
+            "en": "It's in the bottom cupboard, behind the bowls.",
+            "fa": "در کابینت پایینی، پشت کاسه‌هاست."
+          }
+        },
+        {
+          "id": "new-location",
+          "goal": {
+            "nl": "Beloof het vooraan te zetten en de anderen te verwittigen.",
+            "en": "Promise to put it at the front and tell the others.",
+            "fa": "قول دهید آن را جلو بگذارید و به بقیه خبر بدهید."
+          },
+          "cue": {
+            "nl": "Achteraan ziet niemand het. Zet het na het koken vooraan in dezelfde kast. Hoe weten de anderen dat?",
+            "en": "Nobody sees it at the back. Put it at the front of the same cupboard after cooking. How will the others know?",
+            "fa": "عقب باشد کسی آن را نمی‌بیند. بعد از آشپزی آن را جلوی همان کابینت بگذار. دیگران چطور باخبر شوند؟"
+          },
+          "hint": {
+            "nl": "‘Ik zet het … en vertel aan de anderen …’",
+            "en": "‘Ik zet het … en vertel aan de anderen …’",
+            "fa": "«Ik zet het … en vertel aan de anderen …»"
+          },
+          "accepted": {
+            "nl": "Dat is een duidelijke afspraak.",
+            "en": "That's a clear agreement.",
+            "fa": "توافق روشنی است."
+          },
+          "required_groups": [
+            [
+              "vertel",
+              "zeg",
+              "bericht",
+              "laat weten",
+              "verwittig"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "front",
+              "label": {
+                "nl": "Vooraan",
+                "en": "At the front",
+                "fa": "جلو"
+              },
+              "aliases": [
+                "vooraan",
+                "voor in de kast"
+              ],
+              "valid": true
+            },
+            {
+              "id": "back",
+              "label": {
+                "nl": "Achteraan",
+                "en": "At the back",
+                "fa": "عقب"
+              },
+              "aliases": [
+                "achteraan",
+                "achter de kommen",
+                "achter in de kast"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Ik zet het vooraan en vertel aan de anderen waar het staat.",
+            "en": "I'll put it at the front and tell the others where it is.",
+            "fa": "آن را جلو می‌گذارم و به بقیه می‌گویم کجاست."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-t027-conversation",
+      "stage_id": "a2",
+      "topic_id": "a2-t027",
+      "title": {
+        "nl": "Eerst een vraag stellen",
+        "en": "Asking before starting",
+        "fa": "پرسیدن پیش از شروع"
+      },
+      "role": {
+        "nl": "Een collega op uw eerste werkdag",
+        "en": "A colleague on your first day",
+        "fa": "همکار شما در اولین روز کاری"
+      },
+      "setup": {
+        "nl": "U ziet materiaal dat u nog niet kent, waaronder een veiligheidsgordel. Oefen hoe u om uitleg vraagt en afspreekt om te wachten. Dit gesprek oefent taal; het geeft geen instructies om het materiaal te gebruiken.",
+        "en": "You see unfamiliar equipment, including a safety harness. Practise asking for an explanation and agreeing to wait. This conversation practises language; it does not instruct you how to use the equipment.",
+        "fa": "وسایلی می‌بینید که هنوز با آن‌ها آشنا نیستید، از جمله یک کمربند ایمنی. درخواست توضیح و توافق برای منتظر ماندن را تمرین کنید. این گفت‌وگو برای تمرین زبان است و روش استفاده از وسایل را آموزش نمی‌دهد."
+      },
+      "opening": {
+        "nl": "Welkom, Amir. Hebt u een vraag voor u begint?",
+        "en": "Welcome, Amir. Do you have a question before starting?",
+        "fa": "خوش آمدید، امیر. پیش از شروع سؤالی دارید؟"
+      },
+      "success": {
+        "nl": "Afgesproken, u wacht op uitleg. Daarna bespreken we samen wat u mag doen.",
+        "en": "Agreed, you'll wait for an explanation. Then we'll discuss together what you may do.",
+        "fa": "قرار شد منتظر توضیح بمانید. بعد با هم دربارهٔ کارهایی که می‌توانید انجام دهید صحبت می‌کنیم."
+      },
+      "steps": [
+        {
+          "id": "ask-explanation",
+          "goal": {
+            "nl": "Zeg welk materiaal u niet kent en vraag om uitleg.",
+            "en": "Say which equipment is unfamiliar and ask for an explanation.",
+            "fa": "بگویید با کدام وسیله آشنا نیستید و توضیح بخواهید."
+          },
+          "cue": {
+            "nl": "Welk materiaal kent u nog niet?",
+            "en": "Which equipment is unfamiliar to you?",
+            "fa": "هنوز با کدام وسیله آشنا نیستید؟"
+          },
+          "hint": {
+            "nl": "‘Ik ken deze veiligheidsgordel niet. Kunt u …?’",
+            "en": "‘Ik ken deze veiligheidsgordel niet. Kunt u …?’",
+            "fa": "«Ik ken deze veiligheidsgordel niet. Kunt u …?»"
+          },
+          "accepted": {
+            "nl": "Goed dat u het vraagt. We bekijken dat samen.",
+            "en": "Good that you asked. We'll look at it together.",
+            "fa": "خوب شد پرسیدید. با هم بررسی‌اش می‌کنیم."
+          },
+          "required_groups": [
+            [
+              "veiligheidsgordel",
+              "gordel"
+            ],
+            [
+              "uitleg",
+              "uitleggen",
+              "tonen",
+              "helpen"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Ik ken deze veiligheidsgordel niet. Kunt u uitleg geven?",
+            "en": "I'm not familiar with this safety harness. Can you explain it?",
+            "fa": "با این کمربند ایمنی آشنا نیستم. می‌توانید توضیح بدهید؟"
+          }
+        },
+        {
+          "id": "ask-limits",
+          "goal": {
+            "nl": "Vraag welke taken u voorlopig niet alleen mag doen.",
+            "en": "Ask which tasks you may not yet do alone.",
+            "fa": "بپرسید فعلاً کدام کارها را نباید به‌تنهایی انجام دهید."
+          },
+          "cue": {
+            "nl": "Sommige taken doet u eerst samen met een collega. Welke vraag helpt u om dat te controleren?",
+            "en": "Some tasks must first be done together with a colleague. What question helps you check this?",
+            "fa": "بعضی کارها را ابتدا همراه همکار انجام می‌دهید. چه سؤالی به شما کمک می‌کند این موضوع را روشن کنید؟"
+          },
+          "hint": {
+            "nl": "Vraag naar ‘welke taken’ en ‘alleen’.",
+            "en": "Ask about ‘welke taken’ and ‘alleen’.",
+            "fa": "دربارهٔ «welke taken» و «alleen» بپرسید."
+          },
+          "accepted": {
+            "nl": "We zullen de taken samen overlopen voor u begint.",
+            "en": "We'll go through the tasks together before you start.",
+            "fa": "پیش از شروع، کارها را با هم مرور می‌کنیم."
+          },
+          "required_groups": [
+            [
+              "welke taken",
+              "welke taak",
+              "wat mag",
+              "welke klussen"
+            ],
+            [
+              "alleen",
+              "zelfstandig"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Welke taken mag ik voorlopig niet alleen doen?",
+            "en": "Which tasks may I not yet do alone?",
+            "fa": "فعلاً کدام کارها را نباید به‌تنهایی انجام دهم؟"
+          }
+        },
+        {
+          "id": "wait-for-help",
+          "goal": {
+            "nl": "Spreek af dat u op uitleg wacht.",
+            "en": "Agree to wait for an explanation.",
+            "fa": "توافق کنید منتظر توضیح بمانید."
+          },
+          "cue": {
+            "nl": "Ik moet even telefoneren. Ik kom zo terug voor de uitleg. Wat doet u intussen met het onbekende materiaal?",
+            "en": "I need to make a quick call. I'll return shortly to explain. What will you do meanwhile with the unfamiliar equipment?",
+            "fa": "باید یک تماس کوتاه بگیرم. زود برمی‌گردم تا توضیح بدهم. تا آن وقت با وسیله‌ای که نمی‌شناسید چه می‌کنید؟"
+          },
+          "hint": {
+            "nl": "Begin met ‘Ik wacht …’.",
+            "en": "Start with ‘Ik wacht …’.",
+            "fa": "با «Ik wacht …» شروع کنید."
+          },
+          "accepted": {
+            "nl": "Dank u, we beginnen samen na de uitleg.",
+            "en": "Thank you, we'll start together after the explanation.",
+            "fa": "متشکرم، بعد از توضیح با هم شروع می‌کنیم."
+          },
+          "required_groups": [
+            [
+              "uitleg",
+              "terug",
+              "helpt",
+              "collega"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "wait",
+              "label": {
+                "nl": "Wachten op uitleg",
+                "en": "Wait for an explanation",
+                "fa": "منتظر توضیح ماندن"
+              },
+              "aliases": [
+                "ik wacht",
+                "wachten op",
+                "wacht tot"
+              ],
+              "valid": true
+            },
+            {
+              "id": "start-alone",
+              "label": {
+                "nl": "Zelf beginnen",
+                "en": "Start alone",
+                "fa": "به‌تنهایی شروع کردن"
+              },
+              "aliases": [
+                "ik begin zelf",
+                "ik probeer zelf",
+                "ik gebruik het alvast",
+                "zonder uitleg beginnen"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Ik wacht op uw uitleg.",
+            "en": "I'll wait for your explanation.",
+            "fa": "منتظر توضیح شما می‌مانم."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-t034-conversation",
+      "stage_id": "b1",
+      "topic_id": "b1-t034",
+      "title": {
+        "nl": "De juiste bijlage opsturen",
+        "en": "Sending the correct attachment",
+        "fa": "فرستادن پیوست درست"
+      },
+      "role": {
+        "nl": "Een collega die uw verslag nodig heeft",
+        "en": "A colleague who needs your report",
+        "fa": "همکاری که به گزارش شما نیاز دارد"
+      },
+      "setup": {
+        "nl": "U hebt een lege bijlage verstuurd. In deze nieuwe oefensituatie hebt u twee bestanden: versie één is leeg, versie twee hebt u geopend en gecontroleerd. Los de vergissing op en vraag of uw collega het verslag kan lezen. De collega gebruikt nu een telefoon en later een laptop.",
+        "en": "You sent an empty attachment. In this new rehearsal, version one is empty; you have opened and checked version two. Resolve the mistake and ask whether your colleague can read the report. They are using a phone now and a laptop later.",
+        "fa": "پیوست خالی فرستاده‌اید. در این تمرین جدید دو فایل دارید: نسخهٔ یک خالی است؛ نسخهٔ دو را باز و بررسی کرده‌اید. اشتباه را برطرف کنید و بپرسید آیا همکارتان می‌تواند گزارش را بخواند. او اکنون از تلفن و بعداً از لپ‌تاپ استفاده می‌کند."
+      },
+      "opening": {
+        "nl": "Dag Sara, ik heb uw mail ontvangen, maar de bijlage is leeg.",
+        "en": "Hi Sara, I received your email, but the attachment is empty.",
+        "fa": "سلام سارا، ایمیلت را دریافت کردم، اما پیوست خالی است."
+      },
+      "success": {
+        "nl": "Afgesproken. Ik controleer straks op mijn laptop of het nieuwe verslag leesbaar is en laat het weten.",
+        "en": "Agreed. I'll check on my laptop later whether the new report is readable and let you know.",
+        "fa": "قرار شد. بعداً روی لپ‌تاپ بررسی می‌کنم آیا گزارش جدید خواندنی است و به شما خبر می‌دهم."
+      },
+      "steps": [
+        {
+          "id": "acknowledge-error",
+          "goal": {
+            "nl": "Erken dat de bijlage leeg was en bied uw excuses aan.",
+            "en": "Acknowledge the empty attachment and apologise.",
+            "fa": "خالی بودن پیوست را بپذیرید و عذرخواهی کنید."
+          },
+          "cue": {
+            "nl": "Kunt u uitleggen wat er met de bijlage gebeurd is?",
+            "en": "Can you explain what happened to the attachment?",
+            "fa": "می‌توانید توضیح دهید چه اتفاقی برای پیوست افتاده است؟"
+          },
+          "hint": {
+            "nl": "‘Sorry, de bijlage was …’",
+            "en": "‘Sorry, de bijlage was …’",
+            "fa": "«Sorry, de bijlage was …»"
+          },
+          "accepted": {
+            "nl": "Dank u voor de verduidelijking.",
+            "en": "Thank you for explaining the mistake.",
+            "fa": "ممنون که اشتباه را توضیح دادید."
+          },
+          "required_groups": [
+            [
+              "bijlage",
+              "bestand"
+            ],
+            [
+              "leeg",
+              "lege"
+            ],
+            [
+              "sorry",
+              "excuses",
+              "spijt",
+              "verontschuldig"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Sorry, ik heb een lege bijlage verstuurd.",
+            "en": "Sorry, I sent an empty attachment.",
+            "fa": "ببخشید، یک پیوست خالی فرستادم."
+          }
+        },
+        {
+          "id": "choose-version",
+          "goal": {
+            "nl": "Zeg welke gecontroleerde versie u nu verstuurt.",
+            "en": "Say which checked version you will now send.",
+            "fa": "بگویید اکنون کدام نسخهٔ بررسی‌شده را می‌فرستید."
+          },
+          "cue": {
+            "nl": "Er zijn twee versies. Versie één was leeg. Welke stuurt u nu en hebt u die gecontroleerd?",
+            "en": "There are two versions. Version one was empty. Which will you send now, and have you checked it?",
+            "fa": "دو نسخه وجود دارد. نسخهٔ یک خالی بود. اکنون کدام را می‌فرستید و آیا بررسی‌اش کرده‌اید؟"
+          },
+          "hint": {
+            "nl": "Noem de versie en de controle die u al gedaan hebt.",
+            "en": "Name the version and the check you have already made.",
+            "fa": "نسخه و بررسی‌ای را که انجام داده‌اید نام ببرید."
+          },
+          "accepted": {
+            "nl": "Goed, ik verwacht de gecontroleerde versie.",
+            "en": "Good, I'll look out for the checked version.",
+            "fa": "خوب است، منتظر نسخهٔ بررسی‌شده هستم."
+          },
+          "required_groups": [
+            [
+              "gecontroleerd",
+              "nagekeken",
+              "geopend"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "version-two",
+              "label": {
+                "nl": "Versie twee",
+                "en": "Version two",
+                "fa": "نسخهٔ دو"
+              },
+              "aliases": [
+                "versie twee",
+                "versie 2",
+                "tweede versie"
+              ],
+              "valid": true
+            },
+            {
+              "id": "version-one",
+              "label": {
+                "nl": "Versie één",
+                "en": "Version one",
+                "fa": "نسخهٔ یک"
+              },
+              "aliases": [
+                "versie een",
+                "versie één",
+                "versie 1",
+                "eerste versie"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Ik stuur versie twee. Ik heb die geopend en gecontroleerd.",
+            "en": "I'll send version two. I have opened and checked it.",
+            "fa": "نسخهٔ دو را می‌فرستم. آن را باز و بررسی کرده‌ام."
+          }
+        },
+        {
+          "id": "request-confirmation",
+          "goal": {
+            "nl": "Vraag om een bevestiging zodra de collega het verslag op de laptop kan controleren.",
+            "en": "Ask for confirmation once your colleague can check the report on their laptop.",
+            "fa": "بخواهید وقتی همکار توانست گزارش را روی لپ‌تاپ بررسی کند، تأیید بدهد."
+          },
+          "cue": {
+            "nl": "Ik gebruik nu mijn telefoon en kan het nog niet goed controleren. Straks heb ik mijn laptop. Welke bevestiging wilt u dan?",
+            "en": "I'm on my phone and cannot properly check it yet. I'll have my laptop later. What would you like me to confirm then?",
+            "fa": "الان با تلفن هستم و هنوز نمی‌توانم خوب بررسی کنم. بعداً لپ‌تاپم را دارم. آن وقت چه چیزی را برایتان تأیید کنم؟"
+          },
+          "hint": {
+            "nl": "Vraag of het verslag leesbaar is zodra de laptop beschikbaar is.",
+            "en": "Ask whether the report is readable once the laptop is available.",
+            "fa": "بپرسید وقتی لپ‌تاپ در دسترس بود، آیا گزارش خواندنی است."
+          },
+          "accepted": {
+            "nl": "Duidelijk, ik geef u na die controle een antwoord.",
+            "en": "Understood, I'll reply after checking.",
+            "fa": "متوجه شدم، پس از بررسی پاسخ می‌دهم."
+          },
+          "required_groups": [
+            [
+              "bevestigen",
+              "laten weten",
+              "controleren",
+              "nakijken"
+            ],
+            [
+              "leesbaar",
+              "lezen",
+              "openen",
+              "opent"
+            ],
+            [
+              "laptop"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Kunt u straks op uw laptop controleren of het verslag leesbaar is en mij dat laten weten?",
+            "en": "Could you check later on your laptop whether the report is readable and let me know?",
+            "fa": "ممکن است بعداً روی لپ‌تاپ بررسی کنید آیا گزارش خواندنی است و به من خبر بدهید؟"
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-t049-conversation",
+      "stage_id": "b1",
+      "topic_id": "b1-t049",
+      "title": {
+        "nl": "Een hemd vergelijken",
+        "en": "Comparing shirts",
+        "fa": "مقایسهٔ پیراهن‌ها"
+      },
+      "role": {
+        "nl": "Een winkelmedewerker",
+        "en": "A shop assistant",
+        "fa": "فروشنده"
+      },
+      "setup": {
+        "nl": "U past een hemd dat kleiner valt dan u verwachtte. Vraag hulp om de pasvorm te vergelijken. In deze oefensituatie noemt de medewerker de hemden A en B. A knelt aan de schouders; B zit goed en is beschikbaar. Er wordt niets gekocht zonder uw keuze.",
+        "en": "You try on a shirt that fits smaller than expected. Ask for help comparing the fit. In this rehearsal, the assistant calls the shirts A and B. A is tight at the shoulders; B fits well and is available. Nothing is bought without your choice.",
+        "fa": "پیراهنی را امتحان می‌کنید که از انتظار شما کوچک‌تر است. برای مقایسهٔ اندازه کمک بخواهید. در این تمرین، فروشنده پیراهن‌ها را A و B می‌نامد. A در شانه‌ها تنگ است؛ B خوب می‌نشیند و موجود است. بدون انتخاب شما خریدی انجام نمی‌شود."
+      },
+      "opening": {
+        "nl": "Goedendag. Past het hemd zoals u verwacht had?",
+        "en": "Hello. Does the shirt fit as you expected?",
+        "fa": "سلام. پیراهن همان‌طور که انتظار داشتید اندازه است؟"
+      },
+      "success": {
+        "nl": "Duidelijk: u kiest hemd B omdat de pasvorm goed is.",
+        "en": "Understood: you choose shirt B because it fits well.",
+        "fa": "مشخص شد: پیراهن B را انتخاب می‌کنید چون اندازه‌اش مناسب است."
+      },
+      "steps": [
+        {
+          "id": "explain-fit",
+          "goal": {
+            "nl": "Leg uit dat de pasvorm niet bij uw verwachting van de maat past.",
+            "en": "Explain that the fit does not match what you expected from the size.",
+            "fa": "توضیح دهید اندازهٔ پیراهن با انتظارتان از سایز آن مطابقت ندارد."
+          },
+          "cue": {
+            "nl": "Wat is er precies anders dan u verwachtte?",
+            "en": "What exactly is different from what you expected?",
+            "fa": "دقیقاً چه چیزی با انتظارتان فرق دارد؟"
+          },
+          "hint": {
+            "nl": "Verbind ‘de maat op het kaartje’ met ‘te klein’ of ‘te strak’.",
+            "en": "Connect ‘de maat op het kaartje’ with ‘te klein’ or ‘te strak’.",
+            "fa": "«de maat op het kaartje» را به «te klein» یا «te strak» ربط دهید."
+          },
+          "accepted": {
+            "nl": "Dan vergelijken we de pasvorm in plaats van alleen het kaartje.",
+            "en": "Then let's compare the fit rather than just the label.",
+            "fa": "پس تناسب لباس را بررسی می‌کنیم و فقط به برچسب نگاه نمی‌کنیم."
+          },
+          "required_groups": [
+            [
+              "maat",
+              "kaartje"
+            ],
+            [
+              "klein",
+              "strak",
+              "krap",
+              "knelt"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "De maat op het kaartje lijkt juist, maar het hemd zit te strak.",
+            "en": "The size on the label seems right, but the shirt is too tight.",
+            "fa": "سایز روی برچسب درست به نظر می‌رسد، اما پیراهن خیلی تنگ است."
+          }
+        },
+        {
+          "id": "request-comparison",
+          "goal": {
+            "nl": "Vraag om de hemden na te meten of hun pasvorm te vergelijken.",
+            "en": "Ask to measure the shirts or compare their fit.",
+            "fa": "بخواهید پیراهن‌ها را اندازه بگیرند یا تناسبشان را مقایسه کنند."
+          },
+          "cue": {
+            "nl": "De kaartjes tonen dezelfde maat. Hoe kunnen we toch vergelijken wat voor u past?",
+            "en": "The labels show the same size. How can we still compare what fits you?",
+            "fa": "برچسب‌ها یک سایز را نشان می‌دهند. چطور می‌توانیم ببینیم کدام اندازهٔ شماست؟"
+          },
+          "hint": {
+            "nl": "U kunt vragen: ‘Kunt u … nameten?’",
+            "en": "You can ask: ‘Kunt u … nameten?’",
+            "fa": "می‌توانید بپرسید: «Kunt u … nameten?»"
+          },
+          "accepted": {
+            "nl": "Goed, we bekijken de afmetingen en de pasvorm van beide hemden.",
+            "en": "Good, we'll look at the measurements and fit of both shirts.",
+            "fa": "خوب است، اندازه‌ها و تناسب هر دو پیراهن را بررسی می‌کنیم."
+          },
+          "required_groups": [
+            [
+              "nameten",
+              "meten",
+              "afmetingen",
+              "vergelijken",
+              "vergelijk"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Kunt u de hemden nameten en de pasvorm vergelijken?",
+            "en": "Could you measure the shirts and compare their fit?",
+            "fa": "می‌توانید پیراهن‌ها را اندازه بگیرید و تناسبشان را مقایسه کنید؟"
+          }
+        },
+        {
+          "id": "choose-fit",
+          "goal": {
+            "nl": "Kies het passende hemd en geef de reden.",
+            "en": "Choose the shirt that fits and give your reason.",
+            "fa": "پیراهن مناسب را انتخاب کنید و دلیل بیاورید."
+          },
+          "cue": {
+            "nl": "Na het passen blijkt: hemd A knelt aan de schouders, hemd B zit goed. B is beschikbaar. Welk hemd kiest u en waarom?",
+            "en": "After trying them on: shirt A is tight at the shoulders, shirt B fits well. B is available. Which do you choose, and why?",
+            "fa": "پس از امتحان: پیراهن A در شانه‌ها تنگ است، پیراهن B خوب اندازه است. B موجود است. کدام را انتخاب می‌کنید و چرا؟"
+          },
+          "hint": {
+            "nl": "‘Ik kies hemd …, want …’",
+            "en": "‘Ik kies hemd …, want …’",
+            "fa": "«Ik kies hemd …, want …»"
+          },
+          "accepted": {
+            "nl": "U hebt uw keuze met de pasvorm verbonden.",
+            "en": "You linked your choice to the fit.",
+            "fa": "انتخابتان را به تناسب لباس مرتبط کردید."
+          },
+          "required_groups": [
+            [
+              "past",
+              "goed",
+              "comfortabel",
+              "ruim"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "shirt-b",
+              "label": {
+                "nl": "Hemd B",
+                "en": "Shirt B",
+                "fa": "پیراهن B"
+              },
+              "aliases": [
+                "hemd b",
+                "shirt b",
+                "hemd bee"
+              ],
+              "valid": true
+            },
+            {
+              "id": "shirt-a",
+              "label": {
+                "nl": "Hemd A",
+                "en": "Shirt A",
+                "fa": "پیراهن A"
+              },
+              "aliases": [
+                "hemd a",
+                "shirt a"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Ik kies hemd B, want dat zit goed.",
+            "en": "I'll choose shirt B because it fits well.",
+            "fa": "پیراهن B را انتخاب می‌کنم چون خوب اندازه است."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-t003-conversation",
+      "stage_id": "b2",
+      "topic_id": "b2-t003",
+      "title": {
+        "nl": "Een werkbare beurtrol",
+        "en": "A workable rota",
+        "fa": "برنامهٔ نوبتی عملی"
+      },
+      "role": {
+        "nl": "Een collega die het rooster mee opstelt",
+        "en": "A colleague helping prepare the rota",
+        "fa": "همکاری که در تنظیم برنامه کمک می‌کند"
+      },
+      "setup": {
+        "nl": "Het team wil late diensten eerlijker verdelen. Bespreek een nieuwe proefregeling. Iedereen meldt vóór vrijdag echte beperkingen. Voor de proef is Noor dinsdag beschikbaar, maar maandag niet. Privédetails zijn niet nodig. Evalueer de verdeling na twee weken met het team.",
+        "en": "The team wants to share late shifts more fairly. Discuss a new trial. Everyone reports genuine availability constraints before Friday. For the trial, Noor is available on Tuesday but not Monday. Private details are unnecessary. Review the distribution with the team after two weeks.",
+        "fa": "گروه می‌خواهد شیفت‌های دیرهنگام عادلانه‌تر تقسیم شوند. دربارهٔ یک برنامهٔ آزمایشی جدید صحبت کنید. همه پیش از جمعه محدودیت‌های واقعی زمانی‌شان را اعلام می‌کنند. در این آزمایش، نور سه‌شنبه در دسترس است، اما دوشنبه نیست. جزئیات شخصی لازم نیست. پس از دو هفته تقسیم کار را با گروه ارزیابی کنید."
+      },
+      "opening": {
+        "nl": "We willen een eerlijker rooster. Hoe verzamelen we de beperkingen zonder dat iedereen zijn privéleven moet uitleggen?",
+        "en": "We want a fairer rota. How can we collect constraints without making everyone explain their private lives?",
+        "fa": "برنامهٔ عادلانه‌تری می‌خواهیم. چطور محدودیت‌ها را جمع کنیم بدون اینکه همه مجبور شوند زندگی خصوصی‌شان را توضیح دهند؟"
+      },
+      "success": {
+        "nl": "We proberen de beurtrol met Noor op dinsdag en bekijken na twee weken samen of de verdeling werkt.",
+        "en": "We'll try the rota with Noor on Tuesday and review together after two weeks whether the distribution works.",
+        "fa": "برنامه را با نوبت سه‌شنبهٔ نور امتحان می‌کنیم و پس از دو هفته با هم بررسی می‌کنیم آیا تقسیم کار مناسب است."
+      },
+      "steps": [
+        {
+          "id": "gather-constraints",
+          "goal": {
+            "nl": "Stel voor om beperkingen vóór vrijdag te verzamelen, zonder privédetails te vragen.",
+            "en": "Propose gathering constraints before Friday without asking for private details.",
+            "fa": "پیشنهاد دهید محدودیت‌ها پیش از جمعه جمع شوند، بدون درخواست جزئیات خصوصی."
+          },
+          "cue": {
+            "nl": "Wat vragen we aan het team en tegen wanneer?",
+            "en": "What should we ask the team, and by when?",
+            "fa": "از گروه چه می‌خواهیم و تا چه زمانی؟"
+          },
+          "hint": {
+            "nl": "Noem de deadline en beperk de vraag tot beschikbaarheid.",
+            "en": "State the deadline and limit the request to availability.",
+            "fa": "مهلت را مشخص کنید و درخواست را به زمان در دسترس بودن محدود کنید."
+          },
+          "accepted": {
+            "nl": "Zo weten we wie wanneer beschikbaar is zonder meer informatie dan nodig te vragen.",
+            "en": "That tells us who is available when without asking for more information than needed.",
+            "fa": "این‌طور می‌فهمیم چه کسی چه وقت در دسترس است، بدون درخواست اطلاعات اضافی."
+          },
+          "required_groups": [
+            [
+              "voor vrijdag",
+              "vóór vrijdag"
+            ],
+            [
+              "beschikbaar",
+              "beschikbaarheid",
+              "beperkingen",
+              "onmogelijk"
+            ],
+            [
+              "privé",
+              "privaat",
+              "privédetails",
+              "persoonlijke details"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Laat iedereen vóór vrijdag zijn beschikbaarheid doorgeven. Privédetails zijn niet nodig om de beperkingen te bespreken.",
+            "en": "Let everyone report availability before Friday. Private details are unnecessary when discussing constraints.",
+            "fa": "بگذاریم همه پیش از جمعه زمان در دسترس بودنشان را اعلام کنند. برای صحبت دربارهٔ محدودیت‌ها به جزئیات خصوصی نیازی نیست."
+          }
+        },
+        {
+          "id": "respect-constraint",
+          "goal": {
+            "nl": "Plan Noor op de beschikbare dag en motiveer uw keuze.",
+            "en": "Schedule Noor on the available day and explain your choice.",
+            "fa": "نور را در روزی که در دسترس است برنامه‌ریزی کنید و دلیل بیاورید."
+          },
+          "cue": {
+            "nl": "Noor kan maandag niet, maar dinsdag wel. Beide dagen hebben een late dienst. Welke dag kiest u voor Noor en waarom?",
+            "en": "Noor is unavailable on Monday but available on Tuesday. Both days have a late shift. Which day do you choose for Noor, and why?",
+            "fa": "نور دوشنبه نمی‌تواند، اما سه‌شنبه می‌تواند. هر دو روز شیفت دیرهنگام دارند. کدام روز را برای نور انتخاب می‌کنید و چرا؟"
+          },
+          "hint": {
+            "nl": "Verbind de gekozen dag aan de opgegeven beschikbaarheid.",
+            "en": "Connect the chosen day to the stated availability.",
+            "fa": "روز انتخابی را به زمان در دسترس بودن اعلام‌شده ربط دهید."
+          },
+          "accepted": {
+            "nl": "Dat respecteert de beperking van Noor.",
+            "en": "That respects Noor's constraint.",
+            "fa": "این انتخاب محدودیت نور را رعایت می‌کند."
+          },
+          "required_groups": [
+            [
+              "kan",
+              "beschikbaar",
+              "mogelijk",
+              "past"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "tuesday",
+              "label": {
+                "nl": "Dinsdag",
+                "en": "Tuesday",
+                "fa": "سه‌شنبه"
+              },
+              "aliases": [
+                "dinsdag"
+              ],
+              "valid": true
+            },
+            {
+              "id": "monday",
+              "label": {
+                "nl": "Maandag",
+                "en": "Monday",
+                "fa": "دوشنبه"
+              },
+              "aliases": [
+                "maandag"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Ik kies dinsdag voor Noor, omdat ze dan beschikbaar is.",
+            "en": "I choose Tuesday for Noor because she is available then.",
+            "fa": "سه‌شنبه را برای نور انتخاب می‌کنم، چون آن روز در دسترس است."
+          }
+        },
+        {
+          "id": "review-trial",
+          "goal": {
+            "nl": "Stel voor om na twee weken met het team te beoordelen of de verdeling eerlijk en haalbaar is.",
+            "en": "Propose reviewing with the team after two weeks whether the distribution is fair and workable.",
+            "fa": "پیشنهاد دهید پس از دو هفته با گروه بررسی کنید آیا تقسیم کار عادلانه و عملی است."
+          },
+          "cue": {
+            "nl": "Een collega vindt een rooster op papier niet genoeg. Wanneer vragen we het team of de proef echt werkt?",
+            "en": "A colleague says a rota on paper is not enough. When should we ask the team whether the trial really works?",
+            "fa": "یکی از همکاران می‌گوید برنامهٔ روی کاغذ کافی نیست. چه وقت از گروه بپرسیم آیا آزمایش واقعاً جواب می‌دهد؟"
+          },
+          "hint": {
+            "nl": "Noem ‘na twee weken’, het team en wat u samen controleert.",
+            "en": "Mention ‘na twee weken’, the team and what you will check together.",
+            "fa": "«na twee weken»، گروه و چیزی را که با هم بررسی می‌کنید ذکر کنید."
+          },
+          "accepted": {
+            "nl": "Goed, de proef krijgt een concreet evaluatiemoment.",
+            "en": "Good, the trial has a specific review point.",
+            "fa": "خوب است، برای آزمایش زمان مشخصی جهت ارزیابی تعیین شد."
+          },
+          "required_groups": [
+            [
+              "team",
+              "collega's",
+              "collega’s",
+              "collega"
+            ],
+            [
+              "eerlijk",
+              "haalbaar",
+              "werkt",
+              "werkbaar",
+              "verdeling"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "two-weeks",
+              "label": {
+                "nl": "Na twee weken",
+                "en": "After two weeks",
+                "fa": "پس از دو هفته"
+              },
+              "aliases": [
+                "na twee weken",
+                "na 2 weken",
+                "over twee weken",
+                "over 2 weken"
+              ],
+              "valid": true
+            },
+            {
+              "id": "no-review",
+              "label": {
+                "nl": "Zonder evaluatie",
+                "en": "Without a review",
+                "fa": "بدون ارزیابی"
+              },
+              "aliases": [
+                "geen evaluatie",
+                "zonder evaluatie",
+                "nooit evalueren"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Na twee weken vragen we het team of de verdeling eerlijk en haalbaar is.",
+            "en": "After two weeks, we'll ask the team whether the distribution is fair and workable.",
+            "fa": "پس از دو هفته از گروه می‌پرسیم آیا تقسیم کار عادلانه و عملی است."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-t014-conversation",
+      "stage_id": "b2",
+      "topic_id": "b2-t014",
+      "title": {
+        "nl": "Een zaalregeling uitproberen",
+        "en": "Trying a room-sharing arrangement",
+        "fa": "آزمایش برنامهٔ استفادهٔ مشترک از سالن"
+      },
+      "role": {
+        "nl": "De beheerder van twee oefenruimtes",
+        "en": "The manager of two rehearsal rooms",
+        "fa": "مسئول دو فضای تمرین"
+      },
+      "setup": {
+        "nl": "Twee verenigingen vragen dezelfde zaal op donderdag. Dit is een nieuwe oefensituatie bij het onderwerp: een dansgroep heeft de grote zaal nodig om te bewegen; een leesgroep kan in de kleine zaal terecht. De kleine zaal is beschikbaar. Probeer de regeling en vraag na drie weken beide groepen of ze werkt.",
+        "en": "Two associations request the same hall on Thursday. This is a new rehearsal for this topic: a dance group needs the large hall for movement; a reading group can use the small room, which is available. Try the arrangement and ask both groups after three weeks whether it works.",
+        "fa": "دو انجمن برای پنجشنبه یک سالن را می‌خواهند. این موقعیت تمرینی جدیدی برای این موضوع است: گروه رقص برای حرکت به سالن بزرگ نیاز دارد؛ گروه مطالعه می‌تواند از اتاق کوچک استفاده کند که خالی است. برنامه را امتحان کنید و پس از سه هفته از هر دو گروه بپرسید آیا مناسب است."
+      },
+      "opening": {
+        "nl": "Beide groepen willen donderdag de grote zaal. Hoe achterhalen we wat ze echt nodig hebben?",
+        "en": "Both groups want the large hall on Thursday. How can we find out what they actually need?",
+        "fa": "هر دو گروه پنجشنبه سالن بزرگ را می‌خواهند. چطور بفهمیم واقعاً به چه نیاز دارند؟"
+      },
+      "success": {
+        "nl": "De dansgroep gebruikt de grote zaal, de leesgroep probeert de kleine. Na drie weken vragen we beide groepen of de regeling werkt.",
+        "en": "The dance group uses the large hall; the reading group tries the small room. After three weeks, we'll ask both groups whether the arrangement works.",
+        "fa": "گروه رقص از سالن بزرگ استفاده می‌کند؛ گروه مطالعه اتاق کوچک را امتحان می‌کند. پس از سه هفته از هر دو گروه می‌پرسیم آیا برنامه مناسب است."
+      },
+      "steps": [
+        {
+          "id": "ask-needs",
+          "goal": {
+            "nl": "Stel voor om eerst de activiteit en de ruimtebehoefte van beide groepen te vragen.",
+            "en": "Propose first asking both groups about their activities and space needs.",
+            "fa": "پیشنهاد دهید ابتدا دربارهٔ فعالیت و فضای مورد نیاز هر دو گروه سؤال کنید."
+          },
+          "cue": {
+            "nl": "Welke informatie hebben we nodig voor we een zaal toewijzen?",
+            "en": "What information do we need before assigning a room?",
+            "fa": "پیش از اختصاص اتاق به چه اطلاعاتی نیاز داریم؟"
+          },
+          "hint": {
+            "nl": "Vraag wat beide groepen doen en hoeveel ruimte daarvoor nodig is.",
+            "en": "Ask what both groups do and how much space they need.",
+            "fa": "بپرسید هر دو گروه چه کاری انجام می‌دهند و برای آن چقدر فضا لازم دارند."
+          },
+          "accepted": {
+            "nl": "De dansgroep heeft bewegingsruimte nodig. De leesgroep bespreekt boeken rond een tafel.",
+            "en": "The dance group needs space to move. The reading group discusses books around a table.",
+            "fa": "گروه رقص به فضای حرکت نیاز دارد. گروه مطالعه دور میز دربارهٔ کتاب‌ها صحبت می‌کند."
+          },
+          "required_groups": [
+            [
+              "beide",
+              "allebei",
+              "elke groep",
+              "iedere groep"
+            ],
+            [
+              "activiteit",
+              "activiteiten",
+              "doen"
+            ],
+            [
+              "ruimte",
+              "zaal"
+            ]
+          ],
+          "choices": [],
+          "example": {
+            "nl": "Laten we beide groepen vragen welke activiteit ze doen en hoeveel ruimte ze nodig hebben.",
+            "en": "Let's ask both groups what activity they do and how much space they need.",
+            "fa": "بیایید از هر دو گروه بپرسیم چه فعالیتی انجام می‌دهند و چقدر فضا لازم دارند."
+          }
+        },
+        {
+          "id": "allocate-rooms",
+          "goal": {
+            "nl": "Kies de kleine zaal voor de leesgroep en verklaar waarom.",
+            "en": "Choose the small room for the reading group and explain why.",
+            "fa": "اتاق کوچک را برای گروه مطالعه انتخاب کنید و دلیل بیاورید."
+          },
+          "cue": {
+            "nl": "De kleine zaal is beschikbaar. Alleen de dansgroep heeft veel bewegingsruimte nodig. Welke zaal kiest u voor de leesgroep en waarom?",
+            "en": "The small room is available. Only the dance group needs lots of movement space. Which room do you choose for the reading group, and why?",
+            "fa": "اتاق کوچک خالی است. فقط گروه رقص به فضای زیادی برای حرکت نیاز دارد. کدام اتاق را برای گروه مطالعه انتخاب می‌کنید و چرا؟"
+          },
+          "hint": {
+            "nl": "Verbind ‘de kleine zaal’ aan het gesprek rond een tafel.",
+            "en": "Connect ‘de kleine zaal’ to discussion around a table.",
+            "fa": "«de kleine zaal» را به گفت‌وگو دور میز ربط دهید."
+          },
+          "accepted": {
+            "nl": "Dan blijft de grote zaal voor de dansgroep beschikbaar.",
+            "en": "Then the large hall remains available for the dance group.",
+            "fa": "پس سالن بزرگ برای گروه رقص در دسترس می‌ماند."
+          },
+          "required_groups": [
+            [
+              "leesgroep"
+            ],
+            [
+              "tafel",
+              "boeken",
+              "bespreken",
+              "bespreekt",
+              "lezen"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "small-room",
+              "label": {
+                "nl": "De kleine zaal",
+                "en": "The small room",
+                "fa": "اتاق کوچک"
+              },
+              "aliases": [
+                "kleine zaal",
+                "kleine ruimte"
+              ],
+              "valid": true
+            },
+            {
+              "id": "large-room",
+              "label": {
+                "nl": "De grote zaal",
+                "en": "The large hall",
+                "fa": "سالن بزرگ"
+              },
+              "aliases": [
+                "grote zaal",
+                "grote ruimte"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "Ik kies de kleine zaal voor de leesgroep, want daar kunnen de leden rond een tafel boeken bespreken.",
+            "en": "I choose the small room for the reading group because its members can discuss books around a table there.",
+            "fa": "اتاق کوچک را برای گروه مطالعه انتخاب می‌کنم، چون اعضا می‌توانند آنجا دور میز دربارهٔ کتاب‌ها صحبت کنند."
+          }
+        },
+        {
+          "id": "check-experience",
+          "goal": {
+            "nl": "Stel een proef voor en vraag na drie weken beide groepen of de regeling werkt.",
+            "en": "Propose a trial and ask both groups after three weeks whether the arrangement works.",
+            "fa": "یک دورهٔ آزمایشی پیشنهاد دهید و پس از سه هفته از هر دو گروه بپرسید آیا برنامه مناسب است."
+          },
+          "cue": {
+            "nl": "De leesgroep wil eerst ervaren of de kleinere zaal prettig werkt. Wanneer en bij wie vragen we dat na?",
+            "en": "The reading group wants to try the smaller room first. When, and with whom, should we check how it went?",
+            "fa": "گروه مطالعه می‌خواهد ابتدا استفاده از اتاق کوچک‌تر را تجربه کند. چه وقت و از چه کسانی نتیجه را بپرسیم؟"
+          },
+          "hint": {
+            "nl": "Noem de proef, drie weken en beide groepen.",
+            "en": "Mention the trial, three weeks and both groups.",
+            "fa": "به آزمایش، سه هفته و هر دو گروه اشاره کنید."
+          },
+          "accepted": {
+            "nl": "Goed, we beoordelen de ervaring van allebei.",
+            "en": "Good, we'll review both groups' experiences.",
+            "fa": "خوب است، تجربهٔ هر دو گروه را بررسی می‌کنیم."
+          },
+          "required_groups": [
+            [
+              "beide groepen",
+              "beide verenigingen",
+              "allebei",
+              "elke groep"
+            ],
+            [
+              "werkt",
+              "ervaring",
+              "bevalt",
+              "past",
+              "tevreden"
+            ]
+          ],
+          "choices": [
+            {
+              "id": "three-weeks",
+              "label": {
+                "nl": "Na drie weken",
+                "en": "After three weeks",
+                "fa": "پس از سه هفته"
+              },
+              "aliases": [
+                "na drie weken",
+                "na 3 weken",
+                "over drie weken",
+                "over 3 weken"
+              ],
+              "valid": true
+            },
+            {
+              "id": "no-review",
+              "label": {
+                "nl": "Zonder overleg",
+                "en": "Without consultation",
+                "fa": "بدون مشورت"
+              },
+              "aliases": [
+                "niet meer vragen",
+                "geen evaluatie",
+                "zonder overleg"
+              ],
+              "valid": false
+            }
+          ],
+          "example": {
+            "nl": "We proberen dit. Na drie weken vragen we beide groepen of de regeling werkt.",
+            "en": "We'll try this. After three weeks, we'll ask both groups whether the arrangement works.",
+            "fa": "این روش را امتحان می‌کنیم. پس از سه هفته از هر دو گروه می‌پرسیم آیا برنامه مناسب است."
+          }
+        }
+      ]
+    }
+  ]
+}

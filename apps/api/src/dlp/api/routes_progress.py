@@ -9,11 +9,16 @@ from dlp.api.deps import RequestContext, context_dep, settings_dep
 from dlp.config import Settings
 from dlp.db.base import utcnow
 from dlp.db.session import get_session
+from dlp.domains.coaching.models import CoachPlanRequest
+from dlp.domains.coaching.service import export_observations
+from dlp.domains.content_review.models import ContentReview
 from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice, TopicPractice
 from dlp.domains.feedback.service import report_view, reports_for
 from dlp.domains.practice.service import list_sessions
 from dlp.domains.practice.turns import evidence_view, turn_view
 from dlp.domains.progress.service import skill_records_for
+from dlp.domains.topic_conversations.models import TopicConversation
+from dlp.domains.topic_conversations.service import view as conversation_view
 from dlp.domains.usage.service import snapshot
 
 router = APIRouter(tags=["progress"])
@@ -67,6 +72,7 @@ def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depe
             for p in sessions
         ],
         "curriculum": {
+            "observations": export_observations(session, ctx.learner.id),
             "practice": [
                 {"stage_id": p.stage_id, "skill": p.skill, "completed": p.completed,
                  "evidence": p.evidence, "updated_at": p.updated_at.isoformat()}
@@ -85,6 +91,20 @@ def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depe
                 for a in session.scalars(select(CurriculumAttempt).where(CurriculumAttempt.learner_id == ctx.learner.id))
             ],
         },
+        "topic_conversations": [
+            {**conversation_view(row, settings), "created_at": row.created_at.isoformat(),
+             "updated_at": row.updated_at.isoformat()}
+            for row in session.scalars(select(TopicConversation).where(TopicConversation.learner_id == ctx.learner.id))
+        ],
+        "practice_plans": [
+            {"stage_id": row.stage_id, "plan": row.response, "created_at": row.created_at.isoformat()}
+            for row in session.scalars(select(CoachPlanRequest).where(CoachPlanRequest.learner_id == ctx.learner.id))
+        ],
+        "requested_content_reviews": [
+            {"stage_id": row.stage_id, "topic_id": row.topic_id, "status": row.status,
+             "suggestions": row.result, "created_at": row.created_at.isoformat(), "updated_at": row.updated_at.isoformat()}
+            for row in session.scalars(select(ContentReview).where(ContentReview.requester_id == ctx.learner.id))
+        ],
         "usage": snapshot(session, settings, ctx.learner.id),
         "request_id": ctx.request_id,
     }

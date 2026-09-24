@@ -1,5 +1,19 @@
 # Current release actions — learning path
 
+## Learning support update — 2026-09-24
+
+- Pull the verified main release, stop the old local process and run `python scripts/run.py dev`.
+  The launcher applies migration `0005_learning_support` before opening the new workflows.
+- Home → **Jouw volgende oefening** gives free recommendations. A1/A2/B1/B2 → Spreken → one
+  of the [ten pilot topics](docs/LEARNING_AGENTS.md) → **Oefen dit gesprek** opens turn practice.
+- Admin accounts listed in `CURRICULUM_ADMIN_EMAILS` can request a small content-review batch in
+  Settings. The existing background job loop must be enabled. Zero findings does not approve content.
+- Deploy both rebuilt images with the existing migration-first script after exact-commit CI is green.
+  No new Azure resource or credential is required; these roles run in the existing application deployment.
+- Verify one real typed conversation, one phone recording, one model-ordered coach plan after a saved
+  attempt and one editorial job. Check model usage and the named Belgian Dutch topics with a qualified
+  reviewer. Keep known fixture/automated output distinct from those live and editorial checks.
+
 ## Topic practice update — 2026-09-24
 
 After pulling this release, stop the old development process and run `python scripts/run.py dev`

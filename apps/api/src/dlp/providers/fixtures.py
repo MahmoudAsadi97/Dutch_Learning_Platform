@@ -69,6 +69,9 @@ class FixtureChatModel(ChatModel):
         reply = _select_reply(self.replies.get(prompt_version), messages)
         if reply is None and prompt_version == "curriculum-rubric-v1":
             reply = _curriculum_fixture(messages)
+        if reply is None and prompt_version == "topic-conversation-intent-v1":
+            reply = {"intent": "other", "goal_id": "unverified", "met": False,
+                     "language_is_dutch": False, "quote": "", "choice_id": ""}
         parsed: BaseModel | None = None
         if schema is not None:
             if isinstance(reply, dict):

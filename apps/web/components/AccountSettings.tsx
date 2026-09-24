@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ContentReviewQueue } from "@/components/ContentReviewQueue";
 import { Icon } from "@/components/Icon";
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { apiFetch } from "@/lib/client/api";
@@ -119,6 +120,7 @@ export function AccountSettings() {
           knop om je account zelf te verwijderen.
         </p>
       </section>
+      <ContentReviewQueue />
     </div>
   );
 }
