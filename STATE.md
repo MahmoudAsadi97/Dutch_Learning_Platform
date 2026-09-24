@@ -11,8 +11,8 @@ This is an authored starter curriculum, not complete coverage of every level or 
 All nine source PDFs (884 pages) have been indexed; raw OCR and candidate words remain private and
 unverified. See `docs/SOURCE_COVERAGE.md` and `docs/CURRICULUM.md` for scope and review requirements.
 
-Validation and GitHub release are in progress. Azure publication is pending an authenticated
-deployment session; the existing resources are sufficient. `scripts/deploy_current.sh` performs the
+The five review passes and full GitHub CI succeeded at `1cee6ff` (PR #5). Final release documentation reruns the same required checks before merge. The owner will deploy the update to Azure
+after the GitHub release; the existing resources are sufficient. `scripts/deploy_current.sh` performs the
 migration-first release and supports an explicit tester email without broadening sign-in access.
 
 
