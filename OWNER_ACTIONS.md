@@ -1,5 +1,23 @@
 # Current release actions — learning path
 
+## Topic practice update — 2026-09-24
+
+After pulling this release, stop the old development process and run `python scripts/run.py dev`
+again. The launcher applies migration `0004_topic_practice`. Each stage now opens a topic browser
+inside Lezen, Luisteren, Spreken and Schrijven; Startles still opens the original core lesson.
+For Azure, use the existing migration-first deployment script only after exact-commit CI passes.
+The API image must include the new `content/practice` banks and the migration must complete before
+traffic reaches the new API. No additional Azure resource is required.
+
+Review the expanded topic banks in Dutch and both support languages before treating automated
+practice results as calibrated level evidence. Check one listening and recorded-speaking activity
+on the actual phone with live Azure providers; fixture tones are explicitly labelled test tones.
+
+Known accounting follow-up: the shared chat adapter may make additional requests when a structured
+reply is truncated, while its reported token usage covers only the successful final response.
+App usage estimates therefore do not constitute a hard provider-spending ceiling. Monitor the
+provider account during testing; correcting retry accounting is separate from this content release.
+
 For local tester access, add `CURRICULUM_ADMIN_EMAILS=YOUR_EXISTING_SIGN_IN_EMAIL` to your ignored
 `.env`, using the same email already admitted by `OWNER_ALLOWLIST`. Restart the local API afterward.
 All stages now open for normal admitted learners too. Tester mode only bypasses final-check practice

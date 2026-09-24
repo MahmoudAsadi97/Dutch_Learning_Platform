@@ -1,5 +1,15 @@
 # State
 
+## Four-skill topic practice — 2026-09-24
+
+Implemented searchable topic practice inside each skill tab, preserving the original Startles.
+The release target is 100 situations per stage, each with reading, listening, speaking and writing
+activities: 4,800 activities across twelve stages. Per-topic, per-skill evidence persists separately
+from internal final checks. Shared situations across skills and adjacent stages are intentional.
+The additive migration is `0004_topic_practice`; deploy migration-first. Validation is recorded
+in `VALIDATION_REPORT.md`. All new teaching content remains unreviewed. No Azure deployment
+is performed by this update.
+
 ## Open practice library — 2026-09-24
 
 Implemented open stage access, phrase replay, alphabet practice, actionable writing corrections,

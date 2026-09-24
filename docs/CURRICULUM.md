@@ -146,3 +146,12 @@ contract: approved script, intended vocabulary and grammar, captions, transcript
 audio description where needed, comprehension activity and production-review
 status. A video should not introduce new assessment facts that are missing from
 the lesson data. Creating video infrastructure is not required for this release.
+
+
+## Four-skill topic expansion
+
+The four skill tabs now default to [topic practice](TOPIC_PRACTICE.md). Each stage has at least
+100 distinct situations for reading, listening, speaking and writing, with a separate activity for
+each skill. Topic browsing replaces the single introductory task as the default entry point;
+Startles preserves that task. Existing final checks stay separate. Adjacent stages may revisit
+related situations with different language demands; counts are per stage and skill.

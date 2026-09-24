@@ -18,6 +18,10 @@ def test_release_job_is_repeatable_and_runtime_cannot_migrate(database, settings
         with app.connect() as connection:
             assert connection.execute(text("select count(*) from missions")).scalar_one() >= 1
             assert connection.execute(text("select has_table_privilege('learners', 'INSERT')")).scalar_one()
+            for privilege in ("SELECT", "INSERT", "UPDATE", "DELETE"):
+                assert connection.execute(
+                    text("select has_table_privilege('topic_practice', :privilege)"), {"privilege": privilege},
+                ).scalar_one()
             assert not connection.execute(text("select has_table_privilege('alembic_version', 'UPDATE')")).scalar_one()
             assert not connection.execute(text("select has_schema_privilege('public', 'CREATE')")).scalar_one()
     finally:

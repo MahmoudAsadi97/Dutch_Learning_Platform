@@ -16,6 +16,7 @@ from sqlalchemy.orm import Session
 from dlp.domains.content.service import load_all_missions
 from dlp.domains.curriculum.library import validate_all_libraries
 from dlp.domains.curriculum.service import curriculum
+from dlp.domains.curriculum.topics import validate_all_topics
 
 API_DIR = Path(os.environ.get("DLP_API_DIR", str(Path(__file__).resolve().parents[2]))).resolve()
 LOCK_ID = 742031902
@@ -29,6 +30,7 @@ def migrate(admin_url: str, app_password: str) -> None:
     # Validate the complete versioned path before changing the database or any runtime image.
     curriculum()
     validate_all_libraries()
+    validate_all_topics()
     engine = create_engine(admin_url, hide_parameters=True, connect_args={"connect_timeout": 10})
     try:
         with engine.connect() as lock:

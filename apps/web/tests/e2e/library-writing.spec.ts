@@ -49,6 +49,7 @@ async function writingSection(page: Page) {
   await page.goto("/learn/pre-a1");
   await page.getByRole("navigation", { name: "Onderdelen van dit niveau" })
     .getByRole("button", { name: "Schrijven", exact: true }).click();
+    await page.getByRole("button", { name: "Startles", exact: true }).click();
   return page.getByLabel("Jouw tekst", { exact: true });
 }
 
@@ -182,6 +183,7 @@ test("writing corrections explain real fragments and require choosing the revise
   await page.reload();
   await page.getByRole("navigation", { name: "Onderdelen van dit niveau" })
     .getByRole("button", { name: "Schrijven", exact: true }).click();
+    await page.getByRole("button", { name: "Startles", exact: true }).click();
   await expect(draft).toHaveValue("Ik ben Noor. Ik woon in België.");
 });
 

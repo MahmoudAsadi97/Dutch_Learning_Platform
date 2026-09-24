@@ -113,7 +113,9 @@ def _audio(text: str, part: int, ctx: RequestContext, settings: Settings, provid
         session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id,
         text=parts[part], tts=providers.tts, blob=providers.blob,
     )
-    return Response(content=data, media_type="audio/wav", headers={"X-Audio-Label": label, "Cache-Control": "no-store"})
+    return Response(content=data, media_type="audio/wav", headers={
+        "X-Audio-Label": label, "X-Audio-Voice": providers.tts.voice, "Cache-Control": "no-store",
+    })
 
 
 @router.post("/attempts/{attempt_id}/listening")
