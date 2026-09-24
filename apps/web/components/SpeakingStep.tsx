@@ -52,6 +52,8 @@ export function describeSlot(info: ConversationStepInfo | undefined, slotId: str
 }
 
 const ACTION_LABEL: Record<string, string> = {
+  state_need: "vraag uitgelegd",
+  choose_option: "keuze gemaakt",
   state_reason: "reden gegeven",
   accept_slot: "nieuw moment gekozen",
   confirm: "bevestigd",
@@ -145,8 +147,8 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
         // 502: the model did not answer and the turn is recorded as failed; a retry needs a new request id.
         // Anything else that is not retryable (403, 409, 422) is shown; the learner changes the input.
         const retryWithSameId = cause.status >= 500 && cause.status !== 502;
-        const lead = cause.status === 502 ? "Het taalmodel antwoordde niet. Probeer opnieuw. " : "";
-        setSend({ kind: "failed", pending, message: `${lead}${cause.detail} (request ${cause.requestId || pending.requestId})`, sameRequestId: retryWithSameId });
+        const message = cause.status === 429 ? "Uw oefenlimiet is bereikt. Bekijk uw gebruik in Instellingen." : cause.status === 401 || cause.status === 403 ? "Meld u opnieuw aan om verder te oefenen." : "Uw antwoord kon niet worden verwerkt. Probeer opnieuw.";
+        setSend({ kind: "failed", pending, message, sameRequestId: retryWithSameId });
         if (cause.status === 502) await reload();
       } else {
         setSend({ kind: "failed", pending, message: "Geen verbinding met de server.", sameRequestId: true });
@@ -388,22 +390,28 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
 
           <aside>
             <section className="card" aria-labelledby="appointment-heading" data-testid="appointment-panel">
-              <h3 id="appointment-heading">Afspraak</h3>
+              <h3 id="appointment-heading">{info?.scenario_kind === "service" ? "Uw gesprek" : "Afspraak"}</h3>
               <ul className="checklist">
                 <li data-done={Boolean(appointment.reason_stated)}>
-                  {appointment.reason_stated ? "✓" : "○"} reden gegeven
+                  {appointment.reason_stated ? "✓" : "○"} {info?.scenario_kind === "service" ? "vraag uitgelegd" : "reden gegeven"}
                 </li>
-                <li data-done={Boolean(appointment.accepted_slot_id)}>
-                  {appointment.accepted_slot_id ? "✓" : "○"} nieuw moment: {appointment.accepted_slot_id ? describeSlot(info, appointment.accepted_slot_id) : "—"}
-                </li>
+                {info?.scenario_kind === "service" ? (
+                  <li data-done={Boolean(appointment.selected_choice_id)}>
+                    {appointment.selected_choice_id ? "✓" : "○"} keuze: {info.choices?.find(c => c.id === appointment.selected_choice_id)?.label.nl || "—"}
+                  </li>
+                ) : (
+                  <li data-done={Boolean(appointment.accepted_slot_id)}>
+                    {appointment.accepted_slot_id ? "✓" : "○"} nieuw moment: {appointment.accepted_slot_id ? describeSlot(info, appointment.accepted_slot_id) : "—"}
+                  </li>
+                )}
                 <li data-done={Boolean(appointment.confirmed)}>{appointment.confirmed ? "✓" : "○"} bevestigd</li>
-                {appointment.cancelled && <li>✗ afspraak geannuleerd</li>}
+                {appointment.cancelled && <li>✗ gesprek geannuleerd</li>}
               </ul>
               <p className="muted" style={{ fontSize: "0.85rem" }}>
-                Beschikbare momenten: {info?.slots.map((s) => describeSlot(info, s.id)).join("; ")}
+                {info?.scenario_kind === "service" ? "Keuzes: " + info.choices?.map(c => c.label.nl).join("; ") : "Beschikbare momenten: " + info?.slots.map((s) => describeSlot(info, s.id)).join("; ")}
               </p>
               <p className="mono" style={{ fontSize: "0.8rem" }}>
-                sessie {session.id.slice(0, 8)} · {session.status} · beurten {progress?.turns ?? 0}/{maxTurns}
+                Gespreksbeurten {progress?.turns ?? 0}/{maxTurns}
               </p>
             </section>
             <section className="card" aria-labelledby="help-heading">
@@ -418,12 +426,6 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
       )}
     </article>
   );
-}
-
-function modelSeconds(turn: TurnView): string {
-  const total = (turn.model_calls ?? []).reduce((sum, call) => sum + (call.latency_ms || 0), 0);
-  const model = turn.model_calls?.[0]?.model;
-  return total > 0 ? `${(total / 1000).toFixed(1)} s${model ? ` · ${model}` : ""}` : "";
 }
 
 function TurnBubbles({ turn, characterName, playing, onPlay }: { turn: TurnView; characterName: string; playing: boolean; onPlay: () => void }) {
@@ -454,13 +456,6 @@ function TurnBubbles({ turn, characterName, playing, onPlay }: { turn: TurnView;
           <span className="who">{characterName}</span>
           <span lang="nl">{turn.character_text}</span>
           <span className="muted" style={{ display: "block", fontSize: "0.8rem" }}>
-            {turn.reply_source === "fixed_line" ? "vaste zin" : "antwoord van het model"}
-            {modelSeconds(turn) && ` · ${modelSeconds(turn)}`}
-            {turn.errors.length > 0 && (
-              <span className="label warn" data-testid="turn-model-error" title={turn.errors.join("; ")} style={{ marginInlineStart: "0.4rem" }}>
-                model antwoordde niet; vaste zin gebruikt
-              </span>
-            )}
             {turn.character_audio_asset_id && (
               <>
                 {" · "}

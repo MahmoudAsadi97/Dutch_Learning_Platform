@@ -3,7 +3,9 @@ from tests.conftest import auth_headers
 
 def test_mission_endpoints(client, headers):
     listing = client.get("/missions", headers=headers).json()
-    assert [m["id"] for m in listing["missions"]] == ["appointment-change"]
+    assert [m["id"] for m in listing["missions"]] == [
+        "appointment-change", "course-message", "lunch-order", "shop-return",
+    ]
     mission = client.get("/missions/appointment-change", headers=headers).json()
     assert mission["fixed_word_count"] < mission["word_limit"]
     assert mission["review"]["unreviewed"] == mission["review"]["total_texts"]

@@ -68,7 +68,7 @@ test.describe("speaking step", () => {
 
   test("a reload resumes the session with its turns", async ({ page }) => {
     await page.goto("/missions/appointment-change");
-    await expect(page.getByTestId("session-id")).toContainText(/[0-9a-f-]{36}/);
+    await expect(page.getByTestId("session-saved")).toContainText("bewaard");
     await page.getByRole("button", { name: /Spreken: het telefoongesprek/ }).click();
     const step = page.locator('[data-step="speak-call"]');
     await expect(step.getByTestId("turn-learner")).toHaveCount(4);

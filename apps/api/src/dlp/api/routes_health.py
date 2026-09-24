@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from alembic.script import ScriptDirectory
@@ -25,7 +26,8 @@ def health(settings: Settings = Depends(settings_dep)) -> dict:
 def ready() -> JSONResponse:
     """Internal readiness: bounded database connection and exact packaged migration head. No provider billing."""
     try:
-        scripts = ScriptDirectory(str(Path(__file__).resolve().parents[3] / "migrations"))
+        api_dir = Path(os.environ.get("DLP_API_DIR", str(Path(__file__).resolve().parents[3]))).resolve()
+        scripts = ScriptDirectory(str(api_dir / "migrations"))
         expected = scripts.get_current_head()
         with get_engine().connect() as connection:
             actual = connection.execute(text("select version_num from alembic_version")).scalar_one()

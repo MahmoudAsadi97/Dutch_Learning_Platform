@@ -1,0 +1,737 @@
+{
+  "schema_version": 1,
+  "id": "lunch-order",
+  "version": 1,
+  "cefr_target": "A2",
+  "title": {
+    "nl": "Lunch bestellen",
+    "fa": "سفارش ناهار",
+    "review_status": "unreviewed"
+  },
+  "description": {
+    "nl": "Lees een menu, luister naar een wijziging en bestel uw lunch.",
+    "fa": "منو را بخوانید، تغییر را بشنوید و ناهار سفارش دهید.",
+    "review_status": "unreviewed"
+  },
+  "language_targets": [
+    {
+      "id": "read",
+      "cefr": "A2",
+      "skill": "reading",
+      "can_do": {
+        "nl": "Ik kan prijzen en bestelregels op een menu vinden.",
+        "fa": "می‌توانم قیمت‌ها و روش سفارش را در منو پیدا کنم.",
+        "review_status": "unreviewed"
+      }
+    },
+    {
+      "id": "listen",
+      "cefr": "A2",
+      "skill": "listening",
+      "can_do": {
+        "nl": "Ik kan horen wat nog beschikbaar is.",
+        "fa": "می‌توانم بفهمم چه چیزی هنوز موجود است.",
+        "review_status": "unreviewed"
+      }
+    },
+    {
+      "id": "speak",
+      "cefr": "A2",
+      "skill": "speaking",
+      "can_do": {
+        "nl": "Ik kan beleefd lunch bestellen en mijn keuze bevestigen.",
+        "fa": "می‌توانم مؤدبانه ناهار سفارش دهم و انتخابم را تأیید کنم.",
+        "review_status": "unreviewed"
+      }
+    },
+    {
+      "id": "write",
+      "cefr": "A2",
+      "skill": "writing",
+      "can_do": {
+        "nl": "Ik kan een vriend vertellen wat ik bestel en waar ik eet.",
+        "fa": "می‌توانم به دوستی بگویم چه سفارش می‌دهم و کجا غذا می‌خورم.",
+        "review_status": "unreviewed"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "key": "read",
+      "skill": "reading",
+      "title": {
+        "nl": "Lezen",
+        "fa": "خواندن",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Lees het bericht en beantwoord de vragen.",
+        "fa": "پیام را بخوانید و به سؤال‌ها پاسخ دهید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "base",
+      "payload": {
+        "type": "reading",
+        "text": {
+          "nl": "Lunchbar Linden. Soep: € 4. Broodje kaas: € 5. Broodje kip: € 6. Water: € 2. Open van 11 tot 15 uur. Bestel aan de toonbank.",
+          "fa": "ناهارخوری لیندن. سوپ: ۴ یورو. ساندویچ پنیر: ۵ یورو. ساندویچ مرغ: ۶ یورو. آب: ۲ یورو. از ساعت ۱۱ تا ۱۵ باز است. پشت پیشخوان سفارش دهید.",
+          "review_status": "unreviewed"
+        },
+        "vocabulary": [
+          {
+            "nl": "de toonbank",
+            "fa": "پیشخوان"
+          },
+          {
+            "nl": "meenemen",
+            "fa": "با خود بردن"
+          },
+          {
+            "nl": "op zijn",
+            "fa": "تمام شدن"
+          }
+        ],
+        "questions": [
+          {
+            "id": "read-1",
+            "prompt": {
+              "nl": "Hoeveel kost soep met water?",
+              "fa": "سوپ و آب چند است؟",
+              "review_status": "unreviewed"
+            },
+            "options": [
+              {
+                "nl": "€ 4",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "€ 6",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "€ 7",
+                "fa": "",
+                "review_status": "unreviewed"
+              }
+            ],
+            "answer_index": 1,
+            "help": [
+              {
+                "level": 1,
+                "kind": "hint_nl",
+                "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
+                "direction": "ltr"
+              },
+              {
+                "level": 2,
+                "kind": "gloss_fa",
+                "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
+                "direction": "rtl"
+              }
+            ]
+          },
+          {
+            "id": "read-2",
+            "prompt": {
+              "nl": "Waar bestelt u?",
+              "fa": "کجا سفارش می‌دهید؟",
+              "review_status": "unreviewed"
+            },
+            "options": [
+              {
+                "nl": "Aan tafel",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Aan de toonbank",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Buiten",
+                "fa": "",
+                "review_status": "unreviewed"
+              }
+            ],
+            "answer_index": 1,
+            "help": [
+              {
+                "level": 1,
+                "kind": "hint_nl",
+                "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
+                "direction": "ltr"
+              },
+              {
+                "level": 2,
+                "kind": "gloss_fa",
+                "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
+                "direction": "rtl"
+              }
+            ]
+          }
+        ],
+        "help": [
+          {
+            "level": 1,
+            "kind": "hint_nl",
+            "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
+            "direction": "ltr"
+          },
+          {
+            "level": 2,
+            "kind": "gloss_fa",
+            "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
+            "direction": "rtl"
+          }
+        ]
+      }
+    },
+    {
+      "key": "listen",
+      "skill": "listening",
+      "title": {
+        "nl": "Luisteren",
+        "fa": "شنیدن",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Luister eerst. Beantwoord daarna de vragen. U kunt opnieuw luisteren.",
+        "fa": "اول گوش کنید و سپس پاسخ دهید. می‌توانید دوباره گوش کنید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "base",
+      "payload": {
+        "type": "listening",
+        "audio_key": "lunch-order/message",
+        "transcript": {
+          "nl": "Goeiemiddag. De soep is op. Een broodje kaas of kip kan wel. U kunt hier eten of uw lunch meenemen.",
+          "fa": "عصر بخیر. سوپ تمام شده است. ساندویچ پنیر یا مرغ موجود است. می‌توانید اینجا بخورید یا ناهار را ببرید.",
+          "review_status": "unreviewed"
+        },
+        "questions": [
+          {
+            "id": "listen-1",
+            "prompt": {
+              "nl": "Wat is op?",
+              "fa": "چه چیزی تمام شده؟",
+              "review_status": "unreviewed"
+            },
+            "options": [
+              {
+                "nl": "Soep",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Kaas",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Water",
+                "fa": "",
+                "review_status": "unreviewed"
+              }
+            ],
+            "answer_index": 0,
+            "help": [
+              {
+                "level": 1,
+                "kind": "hint_nl",
+                "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
+                "direction": "ltr"
+              },
+              {
+                "level": 2,
+                "kind": "gloss_fa",
+                "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
+                "direction": "rtl"
+              }
+            ]
+          },
+          {
+            "id": "listen-2",
+            "prompt": {
+              "nl": "Kunt u eten meenemen?",
+              "fa": "می‌توانید غذا را ببرید؟",
+              "review_status": "unreviewed"
+            },
+            "options": [
+              {
+                "nl": "Ja",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Nee",
+                "fa": "",
+                "review_status": "unreviewed"
+              }
+            ],
+            "answer_index": 0,
+            "help": [
+              {
+                "level": 1,
+                "kind": "hint_nl",
+                "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
+                "direction": "ltr"
+              },
+              {
+                "level": 2,
+                "kind": "gloss_fa",
+                "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
+                "direction": "rtl"
+              }
+            ]
+          }
+        ],
+        "help": [
+          {
+            "level": 1,
+            "kind": "hint_nl",
+            "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
+            "direction": "ltr"
+          },
+          {
+            "level": 2,
+            "kind": "gloss_fa",
+            "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
+            "direction": "rtl"
+          }
+        ]
+      }
+    },
+    {
+      "key": "speak",
+      "skill": "speaking",
+      "title": {
+        "nl": "Spreken",
+        "fa": "صحبت کردن",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Leg uw behoefte uit, maak een keuze en bevestig. Vraag om herhaling als dat nodig is.",
+        "fa": "نیاز خود را توضیح دهید، انتخاب کنید و تأیید کنید. اگر لازم بود درخواست تکرار کنید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "base",
+      "payload": {
+        "type": "speaking",
+        "scenario_id": "base",
+        "goal": {
+          "nl": "Bestel lunch. Kies kaas of kip en bevestig.",
+          "fa": "ناهار سفارش دهید. پنیر یا مرغ را انتخاب و تأیید کنید.",
+          "review_status": "unreviewed"
+        },
+        "required_actions": [
+          "state_need",
+          "choose_option",
+          "confirm"
+        ],
+        "max_turns": 12,
+        "help": [
+          {
+            "level": 1,
+            "kind": "hint_nl",
+            "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
+            "direction": "ltr"
+          },
+          {
+            "level": 2,
+            "kind": "gloss_fa",
+            "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
+            "direction": "rtl"
+          }
+        ]
+      }
+    },
+    {
+      "key": "write",
+      "skill": "writing",
+      "title": {
+        "nl": "Schrijven",
+        "fa": "نوشتن",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Schrijf een kort bericht voor de juiste persoon. Lees het na voor u het verstuurt.",
+        "fa": "پیام کوتاهی برای فرد مناسب بنویسید و قبل از ارسال بازخوانی کنید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "base",
+      "payload": {
+        "type": "writing",
+        "prompt": {
+          "nl": "Schrijf een bericht aan een vriend: wat bestelt u, hoeveel kost het en waar eet u?",
+          "fa": "به دوستی پیام بدهید: چه سفارش می‌دهید، قیمتش چقدر است و کجا می‌خورید؟",
+          "review_status": "unreviewed"
+        },
+        "min_words": 15,
+        "max_words": 70,
+        "must_include": [],
+        "help": [
+          {
+            "level": 1,
+            "kind": "hint_nl",
+            "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
+            "direction": "ltr"
+          },
+          {
+            "level": 2,
+            "kind": "gloss_fa",
+            "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
+            "direction": "rtl"
+          }
+        ]
+      }
+    },
+    {
+      "key": "transfer",
+      "skill": "speaking",
+      "title": {
+        "nl": "Zelf proberen",
+        "fa": "تلاش مستقل",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Probeer een nieuwe situatie zonder hints. Spreek uw antwoorden in.",
+        "fa": "موقعیت جدیدی را بدون راهنمایی امتحان کنید. پاسخ‌ها را با صدا بگویید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "transfer",
+      "payload": {
+        "type": "checkpoint",
+        "scenario_id": "transfer",
+        "goal": {
+          "nl": "Bestel iets in een ander café. Kies thee of koffie.",
+          "fa": "در کافه‌ای دیگر چای یا قهوه سفارش دهید.",
+          "review_status": "unreviewed"
+        },
+        "required_actions": [
+          "state_need",
+          "choose_option",
+          "confirm"
+        ],
+        "max_turns": 10
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "base",
+      "kind": "service",
+      "variant": "base",
+      "reference_date": "2026-09-21",
+      "setting": {
+        "nl": "U bestelt lunch. Soep is op; kaas kost 5 euro, kip 6 euro. Beide broodjes zijn beschikbaar.",
+        "fa": "",
+        "review_status": "unreviewed"
+      },
+      "learner_role": {
+        "nl": "de klant of cursist",
+        "fa": "مشتری یا زبان‌آموز",
+        "review_status": "unreviewed"
+      },
+      "character": {
+        "name": "Noor",
+        "role": {
+          "nl": "medewerker",
+          "fa": "کارمند",
+          "review_status": "unreviewed"
+        },
+        "register_style": "formal"
+      },
+      "reason_options": [
+        {
+          "nl": "Ik heb een vraag.",
+          "fa": "سؤالی دارم.",
+          "review_status": "unreviewed"
+        }
+      ],
+      "choices": [
+        {
+          "id": "cheese",
+          "label": {
+            "nl": "een broodje kaas voor vijf euro",
+            "fa": "ساندویچ پنیر به قیمت پنج یورو",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "id": "chicken",
+          "label": {
+            "nl": "een broodje kip voor zes euro",
+            "fa": "ساندویچ مرغ به قیمت شش یورو",
+            "review_status": "unreviewed"
+          }
+        }
+      ],
+      "allowed_actions": [
+        "state_need",
+        "choose_option",
+        "ask_repeat",
+        "confirm",
+        "cancel"
+      ],
+      "fixed_lines": [
+        {
+          "key": "opening",
+          "when": "opening",
+          "text": {
+            "nl": "Goeiemiddag, wat wilt u eten?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "ask_reason",
+          "when": "ask_reason",
+          "text": {
+            "nl": "Wat wilt u bestellen?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "offer_slots",
+          "when": "offer_slots",
+          "text": {
+            "nl": "Wilt u kaas voor vijf euro of kip voor zes euro?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "confirm",
+          "when": "confirm",
+          "text": {
+            "nl": "U kiest {choice}. Klopt dat?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "closing",
+          "when": "closing",
+          "text": {
+            "nl": "Uw keuze is bevestigd. Bedankt!",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "repeat",
+          "when": "repeat",
+          "text": {
+            "nl": "Ik herhaal het.",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "clarify",
+          "when": "clarify",
+          "text": {
+            "nl": "Dat kan niet. Kies uit het aanbod.",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        }
+      ],
+      "success_criteria": [
+        {
+          "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
+          "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
+          "review_status": "unreviewed"
+        }
+      ]
+    },
+    {
+      "id": "transfer",
+      "kind": "service",
+      "variant": "transfer",
+      "reference_date": "2026-09-21",
+      "setting": {
+        "nl": "U bestelt een warme drank. Thee en koffie kosten elk drie euro.",
+        "fa": "",
+        "review_status": "unreviewed"
+      },
+      "learner_role": {
+        "nl": "de klant of cursist",
+        "fa": "مشتری یا زبان‌آموز",
+        "review_status": "unreviewed"
+      },
+      "character": {
+        "name": "Sam",
+        "role": {
+          "nl": "medewerker",
+          "fa": "کارمند",
+          "review_status": "unreviewed"
+        },
+        "register_style": "formal"
+      },
+      "reason_options": [
+        {
+          "nl": "Ik heb een vraag.",
+          "fa": "سؤالی دارم.",
+          "review_status": "unreviewed"
+        }
+      ],
+      "choices": [
+        {
+          "id": "tea",
+          "label": {
+            "nl": "thee voor drie euro",
+            "fa": "چای به قیمت سه یورو",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "id": "coffee",
+          "label": {
+            "nl": "koffie voor drie euro",
+            "fa": "قهوه به قیمت سه یورو",
+            "review_status": "unreviewed"
+          }
+        }
+      ],
+      "allowed_actions": [
+        "state_need",
+        "choose_option",
+        "ask_repeat",
+        "confirm",
+        "cancel"
+      ],
+      "fixed_lines": [
+        {
+          "key": "opening",
+          "when": "opening",
+          "text": {
+            "nl": "Welkom. Wat wilt u drinken?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "ask_reason",
+          "when": "ask_reason",
+          "text": {
+            "nl": "Welke drank wilt u?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "offer_slots",
+          "when": "offer_slots",
+          "text": {
+            "nl": "Thee of koffie? Beide kosten drie euro.",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "confirm",
+          "when": "confirm",
+          "text": {
+            "nl": "U kiest {choice}. Klopt dat?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "closing",
+          "when": "closing",
+          "text": {
+            "nl": "Uw keuze is bevestigd. Bedankt!",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "repeat",
+          "when": "repeat",
+          "text": {
+            "nl": "Ik herhaal het.",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "clarify",
+          "when": "clarify",
+          "text": {
+            "nl": "Dat kan niet. Kies uit het aanbod.",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        }
+      ],
+      "success_criteria": [
+        {
+          "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
+          "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
+          "review_status": "unreviewed"
+        }
+      ]
+    }
+  ],
+  "evidence_expectations": [
+    {
+      "skill": "reading",
+      "kinds": [
+        "answer"
+      ],
+      "minimum_items": 2,
+      "requires_code_validated_action": false
+    },
+    {
+      "skill": "listening",
+      "kinds": [
+        "answer"
+      ],
+      "minimum_items": 2,
+      "requires_code_validated_action": false
+    },
+    {
+      "skill": "speaking",
+      "kinds": [
+        "transcript",
+        "typed_text",
+        "action_result"
+      ],
+      "minimum_items": 3,
+      "requires_code_validated_action": true
+    },
+    {
+      "skill": "writing",
+      "kinds": [
+        "typed_text"
+      ],
+      "minimum_items": 1,
+      "requires_code_validated_action": false
+    }
+  ],
+  "help_policy": {
+    "language": "fa",
+    "direction": "rtl",
+    "max_level": 2,
+    "unavailable_in_checkpoint": true
+  },
+  "content_pack": {
+    "word_limit": 300,
+    "description": "Original practice material inspired by task patterns; synthetic listening audio; language review pending."
+  },
+  "completion": {
+    "required_step_keys": [
+      "read",
+      "listen",
+      "speak",
+      "write"
+    ],
+    "checkpoint_step_key": "transfer"
+  }
+}

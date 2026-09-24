@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { MissionCatalog } from "@/components/MissionCatalog";
 import { Icon, type IconName } from "@/components/Icon";
 import {
   localDate,
@@ -88,7 +89,7 @@ export function LearningOverview() {
   const records = data?.skill_records.filter(
     (record) => record.mission_id === "appointment-change",
   );
-  const latest = data?.sessions.find((session) => session.variant === "base");
+  const latest = data?.sessions.find((session) => session.variant === "base" && session.mission_id === "appointment-change");
   const stepCount =
     data?.mission.steps.filter((step) => step.variant === "base").length ?? 4;
   const completed = latest
@@ -116,6 +117,7 @@ export function LearningOverview() {
           </button>
         </div>
       )}
+      <MissionCatalog />
       <div className="dashboard-top">
         <section className="mission-hero" aria-labelledby="mission-title">
           <div className="mission-copy">
@@ -224,11 +226,6 @@ export function LearningOverview() {
                           "Oefenrecord")}
                   </span>
                 </div>
-                {record && (
-                  <small>
-                    {record.evidence_ids.length} gekoppelde bewijsstukken
-                  </small>
-                )}
               </article>
             );
           })}
@@ -270,11 +267,10 @@ export function LearningOverview() {
                     <strong>
                       {session.variant === "transfer"
                         ? "Zelfstandig toepassen"
-                        : "Een afspraak verzetten"}
+                        : data?.missions.find(m => m.id === session.mission_id)?.title.nl ?? "Oefenmissie"}
                     </strong>
                     <span>
-                      {localDate(session.updated_at)} · {session.evidence_count}{" "}
-                      bewijsstukken
+                      {localDate(session.updated_at)}
                     </span>
                   </div>
                   <span className="activity-status">

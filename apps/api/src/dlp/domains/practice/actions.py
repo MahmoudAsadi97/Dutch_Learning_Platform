@@ -16,7 +16,8 @@ from pydantic import BaseModel, Field
 
 from dlp.domains.content.schemas import Scenario
 
-ActionType = Literal["state_reason", "propose_slot", "accept_slot", "ask_repeat", "confirm", "cancel", "none"]
+ActionType = Literal["state_reason", "propose_slot", "accept_slot", "ask_repeat", "confirm", "cancel", "none",
+                     "state_need", "choose_option"]
 
 
 class ProposedAction(BaseModel):
@@ -25,6 +26,7 @@ class ProposedAction(BaseModel):
     action: ActionType = "none"
     reason_text: str = ""
     slot_id: str = ""
+    choice_id: str = ""
     proposed_day: date | None = None
     proposed_time: time | None = None
     confidence: float = Field(default=0.0, ge=0.0, le=1.0)
@@ -33,6 +35,7 @@ class ProposedAction(BaseModel):
 @dataclass
 class AppointmentState:
     reason_stated: bool = False
+    selected_choice_id: str = ""
     offered_slot_ids: list[str] = field(default_factory=list)
     accepted_slot_id: str = ""
     confirmed: bool = False
@@ -42,6 +45,7 @@ class AppointmentState:
     def as_dict(self) -> dict[str, Any]:
         return {
             "reason_stated": self.reason_stated,
+            "selected_choice_id": self.selected_choice_id,
             "offered_slot_ids": list(self.offered_slot_ids),
             "accepted_slot_id": self.accepted_slot_id,
             "confirmed": self.confirmed,
@@ -54,6 +58,7 @@ class AppointmentState:
         data = data or {}
         return cls(
             reason_stated=bool(data.get("reason_stated", False)),
+            selected_choice_id=str(data.get("selected_choice_id", "")),
             offered_slot_ids=list(data.get("offered_slot_ids", [])),
             accepted_slot_id=str(data.get("accepted_slot_id", "")),
             confirmed=bool(data.get("confirmed", False)),
@@ -95,12 +100,22 @@ def apply_action(scenario: Scenario, state: AppointmentState, proposed: Proposed
     if state.cancelled:
         return ActionResult(False, action, "the appointment was cancelled; nothing further can be done", state.as_dict())
 
-    if action == "state_reason":
+    if action in {"state_reason", "state_need"}:
         if not proposed.reason_text.strip():
             return ActionResult(False, action, "no reason text", state.as_dict())
         state.reason_stated = True
         state.actions.append(action)
         return ActionResult(True, action, "reason recorded", state.as_dict())
+
+    if action == "choose_option":
+        if not state.reason_stated:
+            return ActionResult(False, action, "explain the need first", state.as_dict())
+        if proposed.choice_id not in {choice.id for choice in scenario.choices}:
+            return ActionResult(False, action, "option is not available", state.as_dict())
+        state.selected_choice_id = proposed.choice_id
+        state.confirmed = False
+        state.actions.append(action)
+        return ActionResult(True, action, "option selected, confirmation pending", state.as_dict())
 
     if action == "ask_repeat":
         state.actions.append(action)
@@ -141,6 +156,12 @@ def apply_action(scenario: Scenario, state: AppointmentState, proposed: Proposed
         return ActionResult(True, action, "slot accepted, confirmation pending", state.as_dict(), slot_id=slot_id)
 
     if action == "confirm":
+        if scenario.kind == "service":
+            if not state.selected_choice_id or not state.reason_stated:
+                return ActionResult(False, action, "nothing to confirm", state.as_dict())
+            state.confirmed = True
+            state.actions.append(action)
+            return ActionResult(True, action, "choice confirmed", state.as_dict())
         if not state.accepted_slot_id:
             return ActionResult(False, action, "nothing to confirm: no slot accepted yet", state.as_dict())
         state.confirmed = True
@@ -156,6 +177,8 @@ def apply_action(scenario: Scenario, state: AppointmentState, proposed: Proposed
 
 
 def required_actions_completed(state: AppointmentState, required: list[str]) -> bool:
+    if state.cancelled:
+        return False
     done = set(state.actions)
     if "confirm" in required and not state.confirmed:
         return False

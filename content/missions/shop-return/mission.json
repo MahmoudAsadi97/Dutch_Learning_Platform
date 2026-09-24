@@ -1,0 +1,742 @@
+{
+  "schema_version": 1,
+  "id": "shop-return",
+  "version": 1,
+  "cefr_target": "A2",
+  "title": {
+    "nl": "Een aankoop terugbrengen",
+    "fa": "پس دادن خرید",
+    "review_status": "unreviewed"
+  },
+  "description": {
+    "nl": "Begrijp een winkelbericht, leg een probleem uit en vraag een oplossing.",
+    "fa": "اطلاعیهٔ فروشگاه را بفهمید، مشکل را توضیح دهید و راه‌حل بخواهید.",
+    "review_status": "unreviewed"
+  },
+  "language_targets": [
+    {
+      "id": "read",
+      "cefr": "A2",
+      "skill": "reading",
+      "can_do": {
+        "nl": "Ik kan eenvoudige ruilvoorwaarden begrijpen.",
+        "fa": "می‌توانم شرایط سادهٔ تعویض را بفهمم.",
+        "review_status": "unreviewed"
+      }
+    },
+    {
+      "id": "listen",
+      "cefr": "A2",
+      "skill": "listening",
+      "can_do": {
+        "nl": "Ik kan het probleem en de beschikbare oplossing herkennen.",
+        "fa": "می‌توانم مشکل و راه‌حل موجود را تشخیص دهم.",
+        "review_status": "unreviewed"
+      }
+    },
+    {
+      "id": "speak",
+      "cefr": "A2",
+      "skill": "speaking",
+      "can_do": {
+        "nl": "Ik kan een probleem met een aankoop uitleggen en een oplossing kiezen.",
+        "fa": "می‌توانم مشکل خرید را توضیح دهم و راه‌حلی انتخاب کنم.",
+        "review_status": "unreviewed"
+      }
+    },
+    {
+      "id": "write",
+      "cefr": "A2",
+      "skill": "writing",
+      "can_do": {
+        "nl": "Ik kan een beleefd verzoek aan een winkel schrijven.",
+        "fa": "می‌توانم درخواست مؤدبانه‌ای به فروشگاه بنویسم.",
+        "review_status": "unreviewed"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "key": "read",
+      "skill": "reading",
+      "title": {
+        "nl": "Lezen",
+        "fa": "خواندن",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Lees het bericht en beantwoord de vragen.",
+        "fa": "پیام را بخوانید و به سؤال‌ها پاسخ دهید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "base",
+      "payload": {
+        "type": "reading",
+        "text": {
+          "nl": "Winkel Wilg. Een ongebruikte trui ruilen? Breng hem binnen veertien dagen terug, met het kasticket. Vandaag sluiten we om 18 uur.",
+          "fa": "فروشگاه ویلخ. تعویض پلیور استفاده‌نشده؟ آن را ظرف چهارده روز با رسید بیاورید. امروز ساعت ۱۸ می‌بندیم.",
+          "review_status": "unreviewed"
+        },
+        "vocabulary": [
+          {
+            "nl": "het kasticket",
+            "fa": "رسید خرید"
+          },
+          {
+            "nl": "ruilen",
+            "fa": "تعویض کردن"
+          },
+          {
+            "nl": "de tegoedbon",
+            "fa": "بن خرید"
+          }
+        ],
+        "questions": [
+          {
+            "id": "read-1",
+            "prompt": {
+              "nl": "Wat neemt u mee?",
+              "fa": "چه همراه می‌برید؟",
+              "review_status": "unreviewed"
+            },
+            "options": [
+              {
+                "nl": "Het kasticket",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Een foto",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Een brief",
+                "fa": "",
+                "review_status": "unreviewed"
+              }
+            ],
+            "answer_index": 0,
+            "help": [
+              {
+                "level": 1,
+                "kind": "hint_nl",
+                "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
+                "direction": "ltr"
+              },
+              {
+                "level": 2,
+                "kind": "gloss_fa",
+                "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
+                "direction": "rtl"
+              }
+            ]
+          },
+          {
+            "id": "read-2",
+            "prompt": {
+              "nl": "Wanneer sluit de winkel?",
+              "fa": "فروشگاه کی بسته می‌شود؟",
+              "review_status": "unreviewed"
+            },
+            "options": [
+              {
+                "nl": "Om 14 uur",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Om 18 uur",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Om 19 uur",
+                "fa": "",
+                "review_status": "unreviewed"
+              }
+            ],
+            "answer_index": 1,
+            "help": [
+              {
+                "level": 1,
+                "kind": "hint_nl",
+                "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
+                "direction": "ltr"
+              },
+              {
+                "level": 2,
+                "kind": "gloss_fa",
+                "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
+                "direction": "rtl"
+              }
+            ]
+          }
+        ],
+        "help": [
+          {
+            "level": 1,
+            "kind": "hint_nl",
+            "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
+            "direction": "ltr"
+          },
+          {
+            "level": 2,
+            "kind": "gloss_fa",
+            "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
+            "direction": "rtl"
+          }
+        ]
+      }
+    },
+    {
+      "key": "listen",
+      "skill": "listening",
+      "title": {
+        "nl": "Luisteren",
+        "fa": "شنیدن",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Luister eerst. Beantwoord daarna de vragen. U kunt opnieuw luisteren.",
+        "fa": "اول گوش کنید و سپس پاسخ دهید. می‌توانید دوباره گوش کنید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "base",
+      "payload": {
+        "type": "listening",
+        "audio_key": "shop-return/message",
+        "transcript": {
+          "nl": "Uw blauwe trui is te klein. Blauw in maat L is op. We hebben groen in maat L. U kunt ook een tegoedbon krijgen.",
+          "fa": "پلیور آبی شما کوچک است. آبی سایز ال تمام شده. سبز سایز ال داریم. می‌توانید بن خرید هم بگیرید.",
+          "review_status": "unreviewed"
+        },
+        "questions": [
+          {
+            "id": "listen-1",
+            "prompt": {
+              "nl": "Wat is het probleem?",
+              "fa": "مشکل چیست؟",
+              "review_status": "unreviewed"
+            },
+            "options": [
+              {
+                "nl": "Te groot",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Te klein",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Vuil",
+                "fa": "",
+                "review_status": "unreviewed"
+              }
+            ],
+            "answer_index": 1,
+            "help": [
+              {
+                "level": 1,
+                "kind": "hint_nl",
+                "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
+                "direction": "ltr"
+              },
+              {
+                "level": 2,
+                "kind": "gloss_fa",
+                "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
+                "direction": "rtl"
+              }
+            ]
+          },
+          {
+            "id": "listen-2",
+            "prompt": {
+              "nl": "Welke kleur is beschikbaar in L?",
+              "fa": "چه رنگی در سایز ال موجود است؟",
+              "review_status": "unreviewed"
+            },
+            "options": [
+              {
+                "nl": "Blauw",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Groen",
+                "fa": "",
+                "review_status": "unreviewed"
+              },
+              {
+                "nl": "Rood",
+                "fa": "",
+                "review_status": "unreviewed"
+              }
+            ],
+            "answer_index": 1,
+            "help": [
+              {
+                "level": 1,
+                "kind": "hint_nl",
+                "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
+                "direction": "ltr"
+              },
+              {
+                "level": 2,
+                "kind": "gloss_fa",
+                "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
+                "direction": "rtl"
+              }
+            ]
+          }
+        ],
+        "help": [
+          {
+            "level": 1,
+            "kind": "hint_nl",
+            "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
+            "direction": "ltr"
+          },
+          {
+            "level": 2,
+            "kind": "gloss_fa",
+            "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
+            "direction": "rtl"
+          }
+        ]
+      }
+    },
+    {
+      "key": "speak",
+      "skill": "speaking",
+      "title": {
+        "nl": "Spreken",
+        "fa": "صحبت کردن",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Leg uw behoefte uit, maak een keuze en bevestig. Vraag om herhaling als dat nodig is.",
+        "fa": "نیاز خود را توضیح دهید، انتخاب کنید و تأیید کنید. اگر لازم بود درخواست تکرار کنید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "base",
+      "payload": {
+        "type": "speaking",
+        "scenario_id": "base",
+        "goal": {
+          "nl": "Leg het probleem uit. Kies een groene trui of een tegoedbon.",
+          "fa": "مشکل را توضیح دهید. پلیور سبز یا بن خرید انتخاب کنید.",
+          "review_status": "unreviewed"
+        },
+        "required_actions": [
+          "state_need",
+          "choose_option",
+          "confirm"
+        ],
+        "max_turns": 12,
+        "help": [
+          {
+            "level": 1,
+            "kind": "hint_nl",
+            "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
+            "direction": "ltr"
+          },
+          {
+            "level": 2,
+            "kind": "gloss_fa",
+            "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
+            "direction": "rtl"
+          }
+        ]
+      }
+    },
+    {
+      "key": "write",
+      "skill": "writing",
+      "title": {
+        "nl": "Schrijven",
+        "fa": "نوشتن",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Schrijf een kort bericht voor de juiste persoon. Lees het na voor u het verstuurt.",
+        "fa": "پیام کوتاهی برای فرد مناسب بنویسید و قبل از ارسال بازخوانی کنید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "base",
+      "payload": {
+        "type": "writing",
+        "prompt": {
+          "nl": "Schrijf aan de winkel: wat kocht u, wat is het probleem en welke oplossing wilt u?",
+          "fa": "به فروشگاه بنویسید: چه خریدید، مشکل چیست و چه راه‌حلی می‌خواهید؟",
+          "review_status": "unreviewed"
+        },
+        "min_words": 15,
+        "max_words": 70,
+        "must_include": [],
+        "help": [
+          {
+            "level": 1,
+            "kind": "hint_nl",
+            "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
+            "direction": "ltr"
+          },
+          {
+            "level": 2,
+            "kind": "gloss_fa",
+            "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
+            "direction": "rtl"
+          }
+        ]
+      }
+    },
+    {
+      "key": "transfer",
+      "skill": "speaking",
+      "title": {
+        "nl": "Zelf proberen",
+        "fa": "تلاش مستقل",
+        "review_status": "unreviewed"
+      },
+      "instructions": {
+        "nl": "Probeer een nieuwe situatie zonder hints. Spreek uw antwoorden in.",
+        "fa": "موقعیت جدیدی را بدون راهنمایی امتحان کنید. پاسخ‌ها را با صدا بگویید.",
+        "review_status": "unreviewed"
+      },
+      "variant": "transfer",
+      "payload": {
+        "type": "checkpoint",
+        "scenario_id": "transfer",
+        "goal": {
+          "nl": "Een jas is te groot. Kies maat M of een tegoedbon.",
+          "fa": "کاپشن بزرگ است. سایز ام یا بن خرید انتخاب کنید.",
+          "review_status": "unreviewed"
+        },
+        "required_actions": [
+          "state_need",
+          "choose_option",
+          "confirm"
+        ],
+        "max_turns": 10
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "base",
+      "kind": "service",
+      "variant": "base",
+      "reference_date": "2026-09-21",
+      "setting": {
+        "nl": "Een ongebruikte blauwe trui is te klein. Het kasticket is aanwezig en de aankoop was gisteren. Groen in L of een tegoedbon zijn beschikbaar; blauw in L niet.",
+        "fa": "",
+        "review_status": "unreviewed"
+      },
+      "learner_role": {
+        "nl": "de klant of cursist",
+        "fa": "مشتری یا زبان‌آموز",
+        "review_status": "unreviewed"
+      },
+      "character": {
+        "name": "Noor",
+        "role": {
+          "nl": "medewerker",
+          "fa": "کارمند",
+          "review_status": "unreviewed"
+        },
+        "register_style": "formal"
+      },
+      "reason_options": [
+        {
+          "nl": "Ik heb een vraag.",
+          "fa": "سؤالی دارم.",
+          "review_status": "unreviewed"
+        }
+      ],
+      "choices": [
+        {
+          "id": "green",
+          "label": {
+            "nl": "de groene trui in maat L",
+            "fa": "پلیور سبز سایز ال",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "id": "voucher",
+          "label": {
+            "nl": "een tegoedbon",
+            "fa": "بن خرید",
+            "review_status": "unreviewed"
+          }
+        }
+      ],
+      "allowed_actions": [
+        "state_need",
+        "choose_option",
+        "ask_repeat",
+        "confirm",
+        "cancel"
+      ],
+      "fixed_lines": [
+        {
+          "key": "opening",
+          "when": "opening",
+          "text": {
+            "nl": "Goeiedag, hoe kan ik helpen?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "ask_reason",
+          "when": "ask_reason",
+          "text": {
+            "nl": "Wat is het probleem?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "offer_slots",
+          "when": "offer_slots",
+          "text": {
+            "nl": "Groen in L of een tegoedbon?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "confirm",
+          "when": "confirm",
+          "text": {
+            "nl": "U kiest {choice}. Klopt dat?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "closing",
+          "when": "closing",
+          "text": {
+            "nl": "Uw keuze is bevestigd. Bedankt!",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "repeat",
+          "when": "repeat",
+          "text": {
+            "nl": "Ik herhaal het.",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "clarify",
+          "when": "clarify",
+          "text": {
+            "nl": "Dat kan niet. Kies uit het aanbod.",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        }
+      ],
+      "success_criteria": [
+        {
+          "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
+          "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
+          "review_status": "unreviewed"
+        }
+      ]
+    },
+    {
+      "id": "transfer",
+      "kind": "service",
+      "variant": "transfer",
+      "reference_date": "2026-09-21",
+      "setting": {
+        "nl": "Uw ongebruikte jas is te groot. U hebt een geldig kasticket. Maat M en een tegoedbon zijn beschikbaar.",
+        "fa": "",
+        "review_status": "unreviewed"
+      },
+      "learner_role": {
+        "nl": "de klant of cursist",
+        "fa": "مشتری یا زبان‌آموز",
+        "review_status": "unreviewed"
+      },
+      "character": {
+        "name": "Sam",
+        "role": {
+          "nl": "medewerker",
+          "fa": "کارمند",
+          "review_status": "unreviewed"
+        },
+        "register_style": "formal"
+      },
+      "reason_options": [
+        {
+          "nl": "Ik heb een vraag.",
+          "fa": "سؤالی دارم.",
+          "review_status": "unreviewed"
+        }
+      ],
+      "choices": [
+        {
+          "id": "medium",
+          "label": {
+            "nl": "de jas in maat M",
+            "fa": "کاپشن سایز ام",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "id": "voucher",
+          "label": {
+            "nl": "een tegoedbon",
+            "fa": "بن خرید",
+            "review_status": "unreviewed"
+          }
+        }
+      ],
+      "allowed_actions": [
+        "state_need",
+        "choose_option",
+        "ask_repeat",
+        "confirm",
+        "cancel"
+      ],
+      "fixed_lines": [
+        {
+          "key": "opening",
+          "when": "opening",
+          "text": {
+            "nl": "Goeiedag, wat scheelt er?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "ask_reason",
+          "when": "ask_reason",
+          "text": {
+            "nl": "Wat is het probleem met uw jas?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "offer_slots",
+          "when": "offer_slots",
+          "text": {
+            "nl": "Wilt u maat M of een tegoedbon?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "confirm",
+          "when": "confirm",
+          "text": {
+            "nl": "U kiest {choice}. Klopt dat?",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "closing",
+          "when": "closing",
+          "text": {
+            "nl": "Uw keuze is bevestigd. Bedankt!",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "repeat",
+          "when": "repeat",
+          "text": {
+            "nl": "Ik herhaal het.",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        },
+        {
+          "key": "clarify",
+          "when": "clarify",
+          "text": {
+            "nl": "Dat kan niet. Kies uit het aanbod.",
+            "fa": "",
+            "review_status": "unreviewed"
+          }
+        }
+      ],
+      "success_criteria": [
+        {
+          "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
+          "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
+          "review_status": "unreviewed"
+        }
+      ]
+    }
+  ],
+  "evidence_expectations": [
+    {
+      "skill": "reading",
+      "kinds": [
+        "answer"
+      ],
+      "minimum_items": 2,
+      "requires_code_validated_action": false
+    },
+    {
+      "skill": "listening",
+      "kinds": [
+        "answer"
+      ],
+      "minimum_items": 2,
+      "requires_code_validated_action": false
+    },
+    {
+      "skill": "speaking",
+      "kinds": [
+        "transcript",
+        "typed_text",
+        "action_result"
+      ],
+      "minimum_items": 3,
+      "requires_code_validated_action": true
+    },
+    {
+      "skill": "writing",
+      "kinds": [
+        "typed_text"
+      ],
+      "minimum_items": 1,
+      "requires_code_validated_action": false
+    }
+  ],
+  "help_policy": {
+    "language": "fa",
+    "direction": "rtl",
+    "max_level": 2,
+    "unavailable_in_checkpoint": true
+  },
+  "content_pack": {
+    "word_limit": 300,
+    "description": "Original practice material inspired by task patterns; synthetic listening audio; language review pending."
+  },
+  "completion": {
+    "required_step_keys": [
+      "read",
+      "listen",
+      "speak",
+      "write"
+    ],
+    "checkpoint_step_key": "transfer"
+  }
+}

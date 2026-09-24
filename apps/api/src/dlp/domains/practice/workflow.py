@@ -66,7 +66,7 @@ def build_graph(chat: ChatModel):
                                temperature=0.0, prompt_version=PROPOSE_ACTION_VERSION, request_id=state.get("request_id", ""))
         parsed = result.parsed if isinstance(result.parsed, ProposedActionReply) else ProposedActionReply(action="none")
         proposed = ProposedAction(action=parsed.action, reason_text=parsed.reason_text, slot_id=parsed.slot_id,
-                                  confidence=parsed.confidence)
+                                  choice_id=parsed.choice_id, confidence=parsed.confidence)
         call = {"step": "propose_action", "prompt_version": result.prompt_version, "provider": result.provider,
                 "model": result.model, "input_tokens": result.input_tokens, "output_tokens": result.output_tokens,
                 "latency_ms": result.latency_ms, "attempts": result.attempts, "understood_nl": parsed.understood_nl}
@@ -86,6 +86,15 @@ def build_graph(chat: ChatModel):
         appointment = AppointmentState.from_dict(state.get("appointment"))
         result = state["action_result"]
         anchor = state["anchor"]
+        if scenario.kind == "service":
+            # Prices, routes and remedies must come from authored facts, not generated promises.
+            if appointment.cancelled:
+                return {"reply_nl": "Het gesprek is geannuleerd. Er is niets afgesproken.", "reply_source": "fixed_line"}
+            if result["action"] == "ask_repeat":
+                anchor = fixed_line(scenario, "repeat", appointment) + " " + anchor
+            elif not result["accepted"] and result["action"] != "none":
+                anchor = fixed_line(scenario, "clarify", appointment) + " " + anchor
+            return {"reply_nl": anchor, "reply_source": "fixed_line"}
         if result["accepted"]:
             note = f"actie {result['action']} aanvaard ({result['reason']})"
         else:

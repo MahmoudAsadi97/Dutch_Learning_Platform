@@ -18,6 +18,7 @@ export interface LearningData {
   skill_records: SkillRecordView[];
   sessions: PracticeSessionView[];
   mission: MissionResponse;
+  missions: MissionResponse[];
 }
 
 export function useLearningData() {
@@ -31,15 +32,16 @@ export function useLearningData() {
         signal: controller.signal,
       }),
       apiJson<{ sessions: PracticeSessionView[] }>(
-        "practice/sessions?mission_id=appointment-change",
+        "practice/sessions",
         { signal: controller.signal },
       ),
       apiJson<MissionResponse>("missions/appointment-change", {
         signal: controller.signal,
       }),
+      apiJson<{ missions: MissionResponse[] }>("missions", { signal: controller.signal }),
     ])
-      .then(([progress, sessions, mission]) => {
-        setData({ ...progress, ...sessions, mission });
+      .then(([progress, sessions, mission, catalog]) => {
+        setData({ ...progress, ...sessions, mission, ...catalog });
         setError(false);
       })
       .catch(() => {

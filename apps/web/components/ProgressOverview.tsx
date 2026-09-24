@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { Icon } from "@/components/Icon";
 import { skills } from "@/components/LearningOverview";
 import {
@@ -12,6 +13,7 @@ import {
 
 export function ProgressOverview() {
   const { data, error, retry } = useLearningData();
+  const [missionId, setMissionId] = useState("appointment-change");
   return (
     <>
       <header className="page-heading">
@@ -22,7 +24,7 @@ export function ProgressOverview() {
             Vier vaardigheden. Je eigen tempo. Geen cijfer dat alles samenvat.
           </p>
         </div>
-        <Link className="button secondary" href="/missions/appointment-change">
+        <Link className="button secondary" href={`/missions/${missionId}`}>
           Verder oefenen <Icon name="arrow" size={17} />
         </Link>
       </header>
@@ -39,12 +41,18 @@ export function ProgressOverview() {
         </div>
       ) : (
         <>
+          <label className="card" style={{ display: "block", marginBottom: "1rem" }}>
+            Voortgang per oefenmissie{" "}
+            <select aria-label="Oefenmissie" value={missionId} onChange={event => setMissionId(event.target.value)}>
+              {data.missions.map(mission => <option key={mission.id} value={mission.id}>{mission.title.nl}</option>)}
+            </select>
+          </label>
           <div className="progress-grid">
             {skills.map(({ key, label, icon, color, description }) => {
               const record = data.skill_records.find(
                 (item) =>
                   item.skill === key &&
-                  item.mission_id === "appointment-change",
+                  item.mission_id === missionId,
               );
               return (
                 <section className="progress-card" key={key} aria-label={label}>
@@ -64,10 +72,6 @@ export function ProgressOverview() {
                     <div>
                       <dt>Oefenpogingen</dt>
                       <dd>{record?.attempts ?? 0}</dd>
-                    </div>
-                    <div>
-                      <dt>Bewijsstukken</dt>
-                      <dd>{record?.evidence_ids.length ?? 0}</dd>
                     </div>
                     <div>
                       <dt>Laatst bijgewerkt</dt>
@@ -114,11 +118,11 @@ export function ProgressOverview() {
                       <strong>
                         {session.variant === "transfer"
                           ? "Zelfstandig toepassen"
-                          : "Een afspraak verzetten"}
+                          : data.missions.find(m => m.id === session.mission_id)?.title.nl ?? "Oefenmissie"}
                       </strong>
                       <span>
                         {localDate(session.updated_at)} · {session.turn_count}{" "}
-                        gespreksbeurten · {session.evidence_count} bewijsstukken
+                        gespreksbeurten
                       </span>
                     </div>
                     <span className="activity-status">

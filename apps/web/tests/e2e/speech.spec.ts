@@ -14,13 +14,15 @@ test.describe("microphone check", () => {
     await page.mouse.down();
     await expect(button).toHaveAttribute("aria-pressed", "true");
     await page.waitForTimeout(1500);
+    const transcription = page.waitForResponse(response => response.url().includes("/api/speech/transcribe") && response.request().method() === "POST");
     await page.mouse.up();
 
     await expect(page.getByTestId("phase")).toHaveText("Klaar.", { timeout: 30_000 });
     const result = page.getByTestId("transcript-result");
-    await expect(result).toContainText("fixture");
-    await expect(result).toContainText(/opus|pcm/);
-    await expect(result).toContainText("16000 Hz");
+    const audio = (await (await transcription).json()).audio;
+    expect(audio.canonical.sample_rate).toBe(16000);
+    await expect(result).not.toContainText("fixture-stt");
+    await expect(result).not.toContainText("Provider");
     await expect(page.getByTestId("transcript-text")).not.toHaveText("(leeg)");
   });
 

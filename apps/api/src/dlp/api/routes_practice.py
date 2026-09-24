@@ -110,6 +110,8 @@ def _conversation_steps(document: MissionDocument, practice: PracticeSession) ->
         restrictions = step.payload.restrictions if checkpoint else None
         items.append({
             "step_key": step.key,
+            "scenario_kind": scenario.kind,
+            "choices": [{"id": c.id, "label": c.label.model_dump()} for c in scenario.choices],
             "type": step.payload.type,
             "opening_line": opening_line(document, step),
             "character": {"name": scenario.character.name, "role": scenario.character.role.model_dump(),

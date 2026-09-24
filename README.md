@@ -1,13 +1,18 @@
 # Taalstudio — Dutch learning platform 0.2
 
-One learner, one mission (*Een afspraak verzetten*, A2), four skills, Persian text help.
+One learner, four everyday missions, four skills, Persian text help.
 Phase A runs entirely on a laptop with local providers; Phase B connects Azure later
 without rewriting application code.
 
-The learner interface now has a focused dashboard, a five-step appointment mission, four separate
-skill records, a speech studio and account/settings pages. Desktop navigation and a mobile bottom bar
+The learner interface has a lesson library covering appointments, lunch orders, purchase returns and
+course messages, with four separate skill records per mission, a speech studio and account/settings pages. Desktop navigation and a mobile bottom bar
 share the same routes. Persian help is right-to-left; recordings and speech synthesis remain clearly
 labelled. Progress comes from saved attempts, not invented scores, streaks or certificates.
+
+Open `/missions` to choose a lesson. Each mission includes reading, listening, speaking, writing and
+an independent transfer task. [Content design, source-use notes and rollout checks](docs/FOUR_SKILL_CONTENT.md)
+describe the new original packs, their provisional A2 targets and the outstanding human language review.
+Learning feedback shows corrections and next steps; technical provider names and evidence identifiers stay out of the lesson interface.
 
 [View the desktop and mobile interface](docs/DESIGN_PREVIEW.md).
 
@@ -26,7 +31,7 @@ A1–C2 curriculum or institutional product is complete.
 | Blob storage | Azurite (Phase A), Azure Blob Storage (Phase B) | Docker Compose |
 | Chat model | Ollama (Phase A), Azure AI Foundry (Phase B) | `apps/api/src/dlp/providers` |
 | Speech | faster-whisper + Piper (Phase A), Azure Speech nl-BE (Phase B) | `apps/api/src/dlp/providers` |
-| Content | one mission file with contract, scenarios and evidence expectations | `content/missions` |
+| Content | four original mission packs with contracts, scenarios and evidence expectations | `content/missions` |
 | Benchmark | 40 language cases, provider-tagged results | `benchmarks/language` |
 
 ## Run it on the laptop

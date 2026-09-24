@@ -21,7 +21,7 @@ const KIND_LABEL: Record<string, { nl: string; fa: string; className: string }> 
 /**
  * Feedback on one step. The report comes from the model, but every point carries the ids of the
  * evidence it was checked against; points the model could not tie to real evidence were dropped by
- * the server and are only counted here.
+ * the server and are never shown as learning advice.
  */
 export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: Props) {
   const [busy, setBusy] = useState(false);
@@ -29,7 +29,6 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
   const [requestId, setRequestId] = useState(() => newRequestId());
   const reports = (detail?.feedback ?? []).filter((r) => r.step_key === stepKey);
   const latest: FeedbackReportView | undefined = reports[reports.length - 1];
-  const evidenceCount = (detail?.evidence ?? []).filter((e) => e.step_key === stepKey).length;
 
   async function ask() {
     if (!detail) return;
@@ -47,7 +46,7 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
       setRequestId(newRequestId());
     } catch (cause) {
       if (cause instanceof ApiError) {
-        setError(cause.status === 409 ? `Nog niet genoeg bewijs voor feedback. (${cause.detail})` : `${cause.detail} (request ${cause.requestId})`);
+        setError(cause.status === 409 ? "Maak eerst deze oefening om feedback te krijgen." : "Feedback is tijdelijk niet beschikbaar. Probeer opnieuw.");
         if (cause.status >= 500) setRequestId(newRequestId());
       } else {
         setError("Geen verbinding met de server.");
@@ -63,8 +62,7 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
         Feedback · <span className="fa" lang="fa" style={{ display: "inline" }}>بازخورد</span>
       </h3>
       <p className="muted" style={{ fontSize: "0.85rem" }}>
-        Feedback van het taalmodel over uw bewijsstukken van deze stap ({evidenceCount}); elk punt verwijst naar het bewijs
-        waarop het steunt. Niet nagekeken door een mens.
+        Wat gaat goed en wat kunt u verder oefenen? Automatische feedback, nog niet nagekeken.
       </p>
       <p>
         <button type="button" className="button secondary" onClick={() => void ask()} disabled={busy || !detail} data-testid={`${stepKey}-feedback-ask`}>
@@ -103,35 +101,10 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
                       „{point.quote}”{point.correction && ` → ${point.correction}`}
                     </span>
                   )}
-                  <span className="muted mono" style={{ display: "block", fontSize: "0.75rem" }}>
-                    bewijs: {point.evidence_ids.map((id) => id.slice(0, 8)).join(", ")}
-                  </span>
                 </li>
               );
             })}
           </ul>
-          <p className="muted mono" style={{ fontSize: "0.75rem" }}>
-            {latest.model_provider} · {latest.model_name} · {latest.prompt_version} · {latest.evidence_ids.length} bewijsstukken
-            {latest.dropped_points > 0 && ` · ${latest.dropped_points} punt(en) weggelaten zonder geldig bewijs`}
-          </p>
-          {latest.dropped_points > 0 && (latest.dropped ?? []).length > 0 && (
-            <details data-testid={`${stepKey}-feedback-dropped`}>
-              <summary className="muted" style={{ fontSize: "0.85rem", cursor: "pointer" }}>
-                Weggelaten punten (niet aan bewijs te koppelen; alleen ter controle)
-              </summary>
-              <ul className="feedback-points">
-                {(latest.dropped ?? []).map((point, index) => (
-                  <li key={`${latest.id}-dropped-${index}`} className="muted">
-                    <span lang="nl">{point.text_nl}</span>
-                    <span className="mono" style={{ display: "block", fontSize: "0.75rem" }}>
-                      {point.kind} · verwijzing: {point.evidence.join(", ") || "geen"} · {point.reason}
-                      {point.quote && ` · „${point.quote}”`}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          )}
         </div>
       )}
     </section>

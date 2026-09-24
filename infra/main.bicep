@@ -395,6 +395,7 @@ resource web 'Microsoft.App/containerApps@2024-03-01' = if (deployApplications) 
           { name: 'OWNER_ALLOWLIST', value: ownerAllowlist }
           { name: 'ASSERTION_SIGNING_KEY', secretRef: 'assertion-signing-key' }
           { name: 'API_INTERNAL_URL', value: 'https://${api!.properties.configuration.ingress.fqdn}' }
+          { name: 'PUBLIC_ORIGIN', value: 'https://${name}-web.${environment.properties.defaultDomain}' }
         ]
         probes: [
           { type: 'Startup', httpGet: { path: '/health', port: 3000 }, periodSeconds: 10, failureThreshold: 30 }

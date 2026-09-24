@@ -52,14 +52,23 @@ function csrfViolation(request: Request): string | null {
   }
   const origin = request.headers.get("origin");
   if (origin) {
-    const own = new URL(request.url);
+    const configuredOrigin = process.env.PUBLIC_ORIGIN;
+    if (process.env.APP_ENV === "production" && !configuredOrigin) {
+      return "site Origin is not configured";
+    }
+    let own: URL;
+    try {
+      own = new URL(configuredOrigin || request.url);
+    } catch {
+      return "site Origin is not configured";
+    }
     let sent: URL;
     try {
       sent = new URL(origin);
     } catch {
       return "malformed Origin";
     }
-    if (sent.host !== own.host) {
+    if (sent.origin !== own.origin) {
       return "Origin does not match this site";
     }
   }
