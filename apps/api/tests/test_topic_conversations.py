@@ -301,6 +301,9 @@ def test_recorded_mode_requires_owned_fresh_bounded_recordings_and_server_transc
     assert response.status_code == 200, response.text
     row = response.json()
     assert row["history"][0]["learner_text"] == "Ik wil een ticket." and len(calls) == 1
+    with session_scope() as session:
+        stored = session.get(TopicConversation, uuid.UUID(row["id"]))
+        assert stored.history[0]["assessed"] is False  # A real interpreter cannot validate a fixture transcript.
     assert submit(client, headers, row, "", audio_asset_id=own).status_code == 422
     long_asset = new_recording("Twaalf uur past voor mij.")
     with session_scope() as session:
@@ -421,3 +424,35 @@ def test_six_fixture_responses_never_create_a_diagnosed_weakness(client, headers
         assert all(turn["assessed"] is False for turn in saved.history)
         episode = session.scalar(select(PracticeObservation))
         assert episode.passed is None and episode.summary["assessed"] is False and episode.failed_refs == []
+
+
+def test_azure_respond_without_paid_approval_stops_before_any_provider_or_reservation(blueprint, monkeypatch):
+    from types import SimpleNamespace
+    calls = []
+    monkeypatch.setattr(service, "run_turn", lambda *args, **kwargs: calls.append("model"))
+    monkeypatch.setattr(service.usage, "reserve", lambda *args, **kwargs: calls.append("reserve"))
+    row = TopicConversation(id=uuid.uuid4(), learner_id=uuid.uuid4(), blueprint_id=blueprint.id,
+                            stage_id=blueprint.stage_id, topic_id=blueprint.topic_id, mode="typed", status="active",
+                            blueprint=blueprint.model_dump(), history=[], assisted_steps=[], step_index=0,
+                            topic_content_version="a" * 64)
+    settings = SimpleNamespace(chat_provider="azure", paid_usage_enabled=False)
+    with pytest.raises(service.CurriculumError) as exc:
+        service.turn(None, settings, None, row, client_turn_id="unapproved-turn", expected_turn=0,
+                     action="respond", text="Ik wil een ticket.", audio_asset_id=None, request_id="request-one")
+    assert exc.value.status_code == 403 and not calls and row.history == []
+
+
+def test_azure_paid_flag_off_keeps_start_and_help_free_but_blocks_response(
+        client, headers, blueprint, monkeypatch, settings):
+    calls = install_interpreter(monkeypatch, blueprint)
+    monkeypatch.setattr(settings, "chat_provider", "azure")
+    monkeypatch.setattr(settings, "paid_usage_enabled", False)
+    row = start(client, headers, blueprint)
+    hint = submit(client, headers, row, "", action="hint")
+    assert hint.status_code == 200 and hint.json()["turn_count"] == 1
+    row = hint.json()
+    response = submit(client, headers, row)
+    assert response.status_code == 403 and calls == []
+    assert client.get(f"/topic-conversations/{row['id']}", headers=headers).json()["turn_count"] == 1
+    with session_scope() as session:
+        assert session.scalar(select(func.count()).select_from(UsageReservation)) == 0

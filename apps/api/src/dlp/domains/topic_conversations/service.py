@@ -204,6 +204,9 @@ def turn(session: Session, settings: Settings, providers: Providers, row: TopicC
             learner_text = text.strip()
         if len(learner_text) > 2000 or not 1 <= word_count(learner_text) <= 100:
             raise CurriculumError("use between 1 and 100 words, at most 2000 characters, for this turn", 422)
+        if settings.chat_provider == "azure" and not settings.paid_usage_enabled:
+            raise CurriculumError("Paid conversation practice is not enabled. "
+                                  "Ask the owner to enable the practice allowance.", 403)
         from dlp.domains.coaching.service import paid_model_guard
         paid_model_guard(session, row.learner_id)
         estimate = reservation_tokens(messages_for(item, step, learner_text, row.history))
@@ -225,7 +228,7 @@ def turn(session: Session, settings: Settings, providers: Providers, row: TopicC
             raise
         usage.commit(session, calls.id, 1)
         usage.commit(session, tokens.id, outcome["tokens"])
-        assessed = providers.chat.name != "fixture"
+        assessed = providers.chat.name != "fixture" and (row.mode == "typed" or asset.provider not in ("", "fixture"))
         accepted, reply = outcome["accepted"], outcome["reply"]
         assisted = bool(outcome["help_kind"])
     if assisted:

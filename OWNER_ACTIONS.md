@@ -9,7 +9,7 @@
 - Admin accounts listed in `CURRICULUM_ADMIN_EMAILS` can request a small content-review batch in
   Settings. The existing background job loop must be enabled. Zero findings does not approve content.
 - Deploy both rebuilt images with the existing migration-first script after exact-commit CI is green.
-  No new Azure resource, credential or deployment is required for these three logical roles.
+  No new Azure resource or credential is required; these roles run in the existing application deployment.
 - Verify one real typed conversation, one phone recording, one model-ordered coach plan after a saved
   attempt and one editorial job. Check model usage and the named Belgian Dutch topics with a qualified
   reviewer. Keep known fixture/automated output distinct from those live and editorial checks.

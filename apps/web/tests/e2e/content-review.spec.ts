@@ -5,11 +5,23 @@ const topic = (index: number, status = "not_requested") => ({id: `a2-t${String(i
 test("ordinary learners do not fetch or see the private editing queue", async ({page}) => {
   const requests: string[] = [];
   page.on("request", request => {if (request.url().includes("/content-review/")) requests.push(request.url());});
+  // Prepare the catalogue before navigation: the negative assertion must not close
+  // the page while an intercepted upstream request is still in flight.
+  const catalogueResponse = await page.request.get("/api/curriculum");
+  expect(catalogueResponse.ok()).toBeTruthy();
+  const catalogue = {...await catalogueResponse.json(), admin_bypass: false};
+  let catalogueHandled!: () => void;
+  const handled = new Promise<void>(resolve => {catalogueHandled = resolve;});
   await page.route(/\/api\/curriculum$/, async route => {
-    const response = await route.fetch();
-    await route.fulfill({json: {...await response.json(), admin_bypass: false}});
+    await route.fulfill({json: catalogue});
+    catalogueHandled();
   });
+  const catalogueLoaded = page.waitForResponse(/\/api\/curriculum$/);
   await page.goto("/settings");
+  const loaded = await catalogueLoaded;
+  expect((await loaded.json()).admin_bypass).toBe(false);
+  await loaded.finished();
+  await handled;
   await expect(page.getByRole("heading", {name: "Mijn leerprofiel"})).toBeVisible();
   await expect(page.getByRole("heading", {name: "Redactiewachtrij"})).toHaveCount(0);
   expect(requests).toEqual([]);

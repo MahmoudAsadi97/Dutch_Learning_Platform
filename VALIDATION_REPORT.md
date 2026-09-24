@@ -3,14 +3,28 @@
 ## Learning support — 2026-09-24
 
 Implemented ten topic conversations, attempt history, a three-activity coach and an admin editing
-queue. Local checks: **324 API tests passed, 129 database/storage tests skipped**; Python lint,
-web lint, TypeScript and **27 client unit tests** pass. Full PostgreSQL/browser/container validation
-is required in the release PR before merging. These local skips are not integration successes.
+queue. Local checks: **328 API tests passed, 131 database/storage tests skipped**; Python lint,
+web lint, TypeScript, production Next.js build and **27 client unit tests** pass.
+
+The [first PR integration run](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/36022744810)
+passed **456 PostgreSQL API tests, with 1 optional storage skip**, four source-import tests, Bicep
+compilation and both production container builds. **84 of 85 browser checks passed**; the remaining
+non-admin test closed its page before the role-catalogue response finished. It now explicitly awaits
+the response and route completion, without suppressing errors or weakening the permission assertions.
+The final commit also adds two paid-approval regressions and refuses to turn fixture speech results
+into learner diagnoses. All required checks rerun on [PR #8](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/pull/8/checks)
+and on the merged main commit. Local skips are not integration successes.
 
 Checks cover one-provider-attempt boundaries, source-grounded feedback, task facts, history versioning,
-replay IDs, allowance failures, privacy and migration 0005. The original ten scripts resolve to existing
-topics and all thirty sample responses pass their deterministic constraints. Content remains unreviewed.
-The existing Azure services are reused; no cloud deployment or live provider check is performed here.
+replay IDs, allowance failures, privacy and migration 0005. The ten scripts resolve to existing topics
+and all thirty sample responses pass deterministic constraints. Actual CI screenshots of the desktop
+coach and 320-pixel conversation with Persian support were inspected; layout and keyboard/a11y checks
+are bounded software evidence, not a complete accessibility certification.
+
+The browser scenarios include typed/spoken retries, lost-response recovery, explicit repeat practice,
+coach links, an unmocked authored-conversation journey with fixture providers and the admin queue.
+All teaching content remains unreviewed. Existing Azure services are reused; no cloud deployment,
+live provider validation, real-device microphone check or human language review is claimed here.
 
 ## Four-skill topic practice — 2026-09-24
 
