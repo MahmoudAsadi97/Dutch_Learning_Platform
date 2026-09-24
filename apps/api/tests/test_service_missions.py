@@ -88,9 +88,21 @@ def test_catalog_and_reading_progress_are_scoped_to_mission(client, mission_id):
     assert set(PACKS) <= {m["id"] for m in catalog["missions"]}
     response = client.post("/practice/sessions", headers=auth_headers(f"start-{mission_id}"),
                            json={"mission_id": mission_id, "variant": "base"})
-    assert response.status_code == 200, response.text
+    assert response.status_code == 201, response.text
     detail = response.json()
     assert detail["session"]["mission_id"] == mission_id
     assert detail["conversation"][0]["scenario_kind"] == "service"
     assert len(detail["conversation"][0]["choices"]) == 2
     assert detail["conversation"][0]["slots"] == []
+    session_id = detail["session"]["id"]
+    document = read_mission_file(MISSIONS_DIR / mission_id / "mission.json")
+    for question in document.steps[0].payload.questions:
+        answered = client.post(f"/practice/sessions/{session_id}/answers",
+                               headers=auth_headers(f"answer-{mission_id}-{question.id}"),
+                               json={"step_key": "read", "question_id": question.id,
+                                     "chosen_index": question.answer_index})
+        assert answered.status_code == 200, answered.text
+    client.get("/missions/appointment-change", headers=auth_headers())
+    records = client.get("/progress", headers=auth_headers()).json()["skill_records"]
+    assert next(r for r in records if r["mission_id"] == mission_id and r["skill"] == "reading")["status"] == "practised"
+    assert all(r["status"] == "not_started" for r in records if r["mission_id"] == "appointment-change")

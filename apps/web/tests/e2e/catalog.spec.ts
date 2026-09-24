@@ -30,7 +30,8 @@ test("lunch practice saves answers, a choice-based conversation and a message", 
   await expect(page.getByTestId("score")).toHaveText("2 van 2 juist");
 
   await page.locator(".step-list button").nth(2).click();
-  await page.getByTestId("start-conversation").click();
+  // Reading already started this mission's shared practice session.
+  await expect(page.getByTestId("conversation")).toBeVisible();
   const input = page.getByTestId("typed-input");
   for (const [index, text] of ["Ik wil lunchen.", "Een broodje kaas, alstublieft.", "Ja, dat is goed."].entries()) {
     await input.fill(text);
