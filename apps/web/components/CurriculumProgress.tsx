@@ -29,7 +29,7 @@ export function CurriculumProgress() {
       : !data ? <p role="status">Je voortgang laden…</p>
       : <div className="course-progress-list">{data.stages.map(stage => <article className="card course-progress-row" key={stage.id}>
         <div className="section-heading"><div><span className="stage-level">{stageLabel(stage.id)}</span><h2><LearningText text={stage.title}/></h2></div>
-          {stage.passed ? <span className="label ok">Eindtoets afgerond</span> : stage.unlocked ? <Link href={`/learn/${stage.id}`} className="linklike">Verder oefenen</Link> : <span className="label neutral">Nog gesloten</span>}</div>
+          {stage.passed ? <span className="label ok">Eindtoets afgerond</span> : <Link href={`/learn/${stage.id}`} className="linklike">Verder oefenen</Link>}</div>
         <dl className="course-skill-status">{skillOrder.map(skill => {
           const result = stage.latest_check?.results[skill];
           return <div key={skill}><dt>{skillNames[skill]}</dt><dd>{result ? result.passed ? "Toets: geslaagd" : "Toets: verder oefenen" : stage.practice_completed.includes(skill) ? "Geoefend · nog niet getoetst" : "Nog niet geoefend"}</dd></div>;

@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 
 const copy = (nl: string, en = `English: ${nl}`, fa = `فارسی: ${nl}`) => ({ nl, en, fa });
@@ -261,4 +262,101 @@ test("pre-A1 alphabet has 26 selectable letters, letter names and an independent
   await page.goto("/learn/a1");
   await expect(page.getByRole("navigation", { name: "Onderdelen van dit niveau" })
     .getByRole("button", { name: "Alfabet", exact: true })).toHaveCount(0);
+});
+
+test("delayed word searches never pair an updated pager with stale cards or restore an older result", async ({ page }) => {
+  await mockLibrary(page);
+  let release = () => {};
+  let started = () => {};
+  let finished = () => {};
+  const waitForRelease = new Promise<void>(resolve => { release = resolve; });
+  const requestStarted = new Promise<void>(resolve => { started = resolve; });
+  const requestFinished = new Promise<void>(resolve => { finished = resolve; });
+  await page.route(/\/api\/library\/pre-a1\/vocabulary\?/, async route => {
+    if (new URL(route.request().url()).searchParams.get("q") !== "woord500") {
+      await route.fallback();
+      return;
+    }
+    started();
+    await waitForRelease;
+    try {
+      await route.fulfill({ json: { total: 1, offset: 0, limit: 20, items: [fixtureWords[499]] } });
+    } finally { finished(); }
+  });
+  try {
+    await page.goto("/learn/pre-a1");
+    const bank = page.locator(".word-library");
+    const pager = bank.getByRole("navigation", { name: "Pagina’s in de bibliotheek" });
+    await pager.getByRole("button", { name: "Volgende", exact: true }).click();
+    await expect(bank.locator(".vocabulary-card h3").first()).toHaveText("woord21");
+    await expect(pager.getByRole("status")).toHaveText("21–40 van 500");
+    await bank.getByLabel("Zoeken", { exact: true }).fill("woord500");
+
+    // Observe one DOM snapshot without retrying past the debounce: the previous
+    // page must disappear as soon as the query changes, before a response exists.
+    expect(await bank.evaluate(element => ({
+      cards: element.querySelectorAll(".vocabulary-card").length,
+      pagers: element.querySelectorAll(".library-pagination").length,
+      loading: element.textContent?.includes("Woordkaarten laden…"),
+    }))).toEqual({ cards: 0, pagers: 0, loading: true });
+    await requestStarted;
+    await expect(bank.getByRole("status")).toHaveText("Woordkaarten laden…");
+    await expect(pager).toHaveCount(0);
+
+    // A newer search completes first; releasing the older request cannot
+    // replace its card, search value, or page range.
+    await bank.getByLabel("Zoeken", { exact: true }).fill("woord499");
+    await expect(bank.locator(".vocabulary-card h3")).toHaveText(["woord499"]);
+    release();
+    await requestFinished;
+    await expect(bank.getByLabel("Zoeken", { exact: true })).toHaveValue("woord499");
+    await expect(bank.locator(".vocabulary-card h3")).toHaveText(["woord499"]);
+    await expect(pager.getByRole("status")).toHaveText("1–1 van 1");
+    await expect(pager.getByRole("button", { name: "Volgende", exact: true })).toBeDisabled();
+  } finally { release(); }
+});
+
+test("word cards and translated Story Time remain accessible and fit 320 and 390 pixel screens without autoplay", async ({ page }, testInfo) => {
+  await mockLibrary(page);
+  const wav = await readFile(path.resolve(__dirname, "../../../api/tests/fixtures/tone_1s.wav"));
+  const spoken: string[] = [];
+  await page.route("**/api/speech/synthesize", async route => {
+    spoken.push(route.request().postDataJSON().text);
+    await route.fulfill({ body: wav, contentType: "audio/wav", headers: { "x-audio-voice": "fixture-tone" } });
+  });
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/learn/pre-a1");
+    await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
+    const bank = page.locator(".word-library");
+    await bank.getByRole("button", { name: "Toon de betekenis", exact: true }).first().click();
+    await expect(bank.locator(".word-answer [lang=en]").first()).toBeVisible();
+    await expect(bank.locator(".word-answer [lang=fa]").first()).toHaveAttribute("dir", "rtl");
+    await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    const wordsAudit = await new AxeBuilder({ page }).include(".word-library")
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
+    await testInfo.attach(`word-cards-rtl-${width}`, {
+      body: await page.screenshot({ fullPage: true }), contentType: "image/png",
+    });
+    expect(wordsAudit.violations).toEqual([]);
+
+    await page.getByRole("navigation", { name: "Onderdelen van dit niveau" })
+      .getByRole("button", { name: "Story Time", exact: true }).click();
+    await page.getByRole("button", { name: "Lees Een dag 1", exact: true }).click();
+    const reader = page.locator(".story-reader");
+    await reader.getByRole("button", { name: "Vertaling tonen", exact: true }).click();
+    await expect(reader.locator(".story-paper [lang=fa]").first()).toHaveAttribute("dir", "rtl");
+    await expect(reader.locator(".story-paper [lang=en]").first()).toBeVisible();
+    await reader.locator(".story-word-strip summary").first().click();
+    await expect(reader.locator(".story-word-strip details[open] [lang=fa]").first()).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    const storyAudit = await new AxeBuilder({ page }).include(".story-reader")
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
+    await testInfo.attach(`story-reader-rtl-${width}`, {
+      body: await page.screenshot({ fullPage: true }), contentType: "image/png",
+    });
+    expect(storyAudit.violations).toEqual([]);
+    expect(spoken).toEqual([]);
+  }
 });

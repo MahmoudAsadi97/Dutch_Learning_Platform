@@ -14,7 +14,7 @@ test.describe("listening and writing steps", () => {
     await step.getByTestId("toggle-transcript").click();
     await expect(step.getByTestId("transcript")).toContainText("Tandarts De Smet is woensdag ziek");
 
-    await step.getByLabel(/De tandarts is ziek/).check();
+    await step.getByRole("radio", { name: /De tandarts is ziek/ }).check();
     await step.getByTestId("listen-voicemail-check").click();
     await expect(step.getByTestId("score")).toHaveText("1 van 1 juist");
     await expect(step.getByTestId("listen-voicemail-done")).toBeVisible();

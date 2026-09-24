@@ -71,7 +71,7 @@ test("new level retains writing within the tab and stays usable at phone widths"
 test("a blocked final test cannot be started from a direct link", async ({ page }) => {
   await page.goto("/learn/a1/test");
   await page.getByRole("button", { name: "Start de eindtoets" }).click();
-  await expect(page.getByRole("main").getByRole("alert")).toContainText("Oefen voor een eindtoets eerst de vier vaardigheden");
+  await expect(page.getByRole("main").getByRole("alert")).toContainText("Oefen eerst lezen, luisteren, spreken en schrijven");
   await expect(page.getByRole("button", { name: "Dien de eindtoets in" })).toHaveCount(0);
 });
 

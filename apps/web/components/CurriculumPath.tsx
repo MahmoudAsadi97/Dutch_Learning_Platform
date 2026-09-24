@@ -16,7 +16,7 @@ export function CurriculumPath() {
     apiJson<CurriculumCatalog>("curriculum", { signal: controller.signal }).then(value => { setData(value); setError(false); }).catch(cause => { if (cause?.name !== "AbortError") setError(true); });
     return () => controller.abort();
   }, [retry]);
-  const next = data?.stages.find(stage => stage.unlocked && !stage.passed) ?? data?.stages.at(-1);
+  const next = data?.stages.find(stage => !stage.passed) ?? data?.stages.at(-1);
   const finished = data?.stages.filter(stage => stage.passed).length ?? 0;
   return <div className="learning-path" data-testid="learning-overview">
     <header className="path-heading">
@@ -29,11 +29,11 @@ export function CurriculumPath() {
         <div className="continue-overview"><span className="continue-count">{String(finished).padStart(2, "0")}<span> / {data.stages.length}</span></span><p>niveaus afgerond</p><div className="path-progress" role="progressbar" aria-label="Afgeronde niveaus" aria-valuenow={finished} aria-valuemin={0} aria-valuemax={data.stages.length}><span style={{ width: `${finished / data.stages.length * 100}%` }}/></div><div className="continue-skill-icons" role="group" aria-label="Lezen, luisteren, spreken en schrijven"><Icon name="book"/><Icon name="headphones"/><Icon name="mic"/><Icon name="pen"/></div></div>
       </section>}
       <section aria-labelledby="path-title"><div className="section-heading"><div><h2 id="path-title">Een helder pad vooruit</h2><p className="muted">Alle niveaus zijn open. Kies je startpunt, oefen en meet je vooruitgang.</p></div><span className="quiet-badge">pre-A1 → C2</span></div>
-        <ol className="stage-grid" data-testid="curriculum-path">{data.stages.map((stage, index) => <li key={stage.id} className={`stage-card ${!stage.unlocked ? "stage-locked" : ""} ${stage.passed ? "stage-passed" : ""} ${stage.id === next?.id ? "stage-current" : ""}`}>
-          <div className="stage-card-top"><span className="stage-level">{stageLabel(stage.id)}</span><span className="stage-status">{stage.passed ? <><Icon name="check" size={15}/>Afgerond</> : !stage.unlocked ? <><Icon name="shield" size={15}/>Nog gesloten</> : stage.id === next?.id ? "Jouw volgende stap" : "Beschikbaar"}</span></div>
+        <ol className="stage-grid" data-testid="curriculum-path">{data.stages.map((stage) => <li key={stage.id} className={`stage-card ${stage.passed ? "stage-passed" : ""} ${stage.id === next?.id ? "stage-current" : ""}`}>
+          <div className="stage-card-top"><span className="stage-level">{stageLabel(stage.id)}</span><span className="stage-status">{stage.passed ? <><Icon name="check" size={15}/>Afgerond</> : stage.id === next?.id ? "Jouw volgende stap" : "Beschikbaar"}</span></div>
           <h3><LearningText text={stage.title}/></h3><p><LearningText text={stage.description}/></p>
           <div className="stage-practice-status"><span>{stage.practice_completed.length} / 4 vaardigheden</span><span>Eindtoets</span></div>
-          {stage.unlocked ? <Link className="stage-link" href={`/learn/${stage.id}`} aria-label={`Open ${stageLabel(stage.id)}: ${stage.title.nl}`}>{stage.passed ? "Opnieuw oefenen" : "Open dit niveau"}<Icon name="arrow" size={17}/></Link> : <p className="stage-lock-reason">Rond {stageLabel(data.stages[index - 1]?.id ?? "pre-a1")} eerst af.</p>}
+          {<Link className="stage-link" href={`/learn/${stage.id}`} aria-label={`Open ${stageLabel(stage.id)}: ${stage.title.nl}`}>{stage.passed ? "Opnieuw oefenen" : "Open dit niveau"}<Icon name="arrow" size={17}/></Link>}
         </li>)}</ol>
       </section>
       <div className="path-bottom-links"><Link href="/missions"><Icon name="book"/><span><strong>Praktijkgesprekken</strong><small>Pas je Nederlands toe in het dagelijkse leven.</small></span><Icon name="arrow"/></Link><Link href="/speech-check"><Icon name="mic"/><span><strong>Even je stem opwarmen</strong><small>Neem op, luister terug en vergelijk.</small></span><Icon name="arrow"/></Link></div>
