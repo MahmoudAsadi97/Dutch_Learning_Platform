@@ -21,7 +21,7 @@ const KIND_LABEL: Record<string, { nl: string; fa: string; className: string }> 
 /**
  * Feedback on one step. The report comes from the model, but every point carries the ids of the
  * evidence it was checked against; points the model could not tie to real evidence were dropped by
- * the server and are only counted here.
+ * the server and are never shown as learning advice.
  */
 export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: Props) {
   const [busy, setBusy] = useState(false);

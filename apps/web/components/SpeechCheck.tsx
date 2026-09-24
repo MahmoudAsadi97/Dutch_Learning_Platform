@@ -27,7 +27,7 @@ export function SpeechCheck() {
   const [uploadPhase, setUploadPhase] = useState<"idle" | "uploading" | "done" | "error">("idle");
   const [result, setResult] = useState<TranscriptResponse | null>(null);
   const [error, setError] = useState<string>("");
-  const [ttsText, setTtsText] = useState("Goeiedag, u spreekt met Tandartspraktijk Molenstraat.");
+  const [ttsText, setTtsText] = useState("Goeiedag, ik wil graag Nederlands oefenen.");
   const [ttsLabel, setTtsLabel] = useState<string>("");
   const [ttsBusy, setTtsBusy] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -54,7 +54,7 @@ export function SpeechCheck() {
       setUploadPhase("done");
     } catch (cause) {
       setUploadPhase("error");
-      setError(cause instanceof ApiError ? `${cause.detail} (request ${cause.requestId})` : "Upload mislukt.");
+      setError(cause instanceof ApiError ? "Uw opname kon niet worden verwerkt. Probeer opnieuw." : "Upload mislukt.");
     }
   }
 
@@ -136,34 +136,7 @@ export function SpeechCheck() {
             <p className="dutch-text" lang="nl" data-testid="transcript-text">
               {result.transcript.text || "(leeg)"}
             </p>
-            <details className="lesson-details"><summary>Technische details</summary><table className="plain">
-              <tbody>
-                <tr>
-                  <th scope="row">Provider</th>
-                  <td>
-                    {result.transcript.provider} · {result.transcript.model} · {result.transcript.latency_ms} ms
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Upload</th>
-                  <td>
-                    {result.audio.source.container} / {result.audio.source.codec} · {result.audio.source.sample_rate} Hz ·{" "}
-                    {result.audio.source.channels} kanaal/kanalen · {result.audio.source.duration_seconds.toFixed(2)} s
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Canoniek</th>
-                  <td>
-                    {result.audio.canonical.container} / {result.audio.canonical.codec} · {result.audio.canonical.sample_rate} Hz ·{" "}
-                    {result.audio.canonical.channels} kanaal · {result.audio.canonical.duration_seconds.toFixed(2)} s
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Request</th>
-                  <td className="mono">{result.request_id}</td>
-                </tr>
-              </tbody>
-            </table></details>
+            <p className="muted">Vergelijk de tekst met wat u zei. Een transcriptie kan fouten bevatten.</p>
           </div>
         )}
       </section>

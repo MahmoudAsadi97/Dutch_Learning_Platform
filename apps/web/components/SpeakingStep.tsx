@@ -147,8 +147,8 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
         // 502: the model did not answer and the turn is recorded as failed; a retry needs a new request id.
         // Anything else that is not retryable (403, 409, 422) is shown; the learner changes the input.
         const retryWithSameId = cause.status >= 500 && cause.status !== 502;
-        const lead = cause.status === 502 ? "Het taalmodel antwoordde niet. Probeer opnieuw. " : "";
-        setSend({ kind: "failed", pending, message: `${lead}${cause.detail} (request ${cause.requestId || pending.requestId})`, sameRequestId: retryWithSameId });
+        const message = cause.status === 429 ? "Uw oefenlimiet is bereikt. Bekijk uw gebruik in Instellingen." : cause.status === 401 || cause.status === 403 ? "Meld u opnieuw aan om verder te oefenen." : "Uw antwoord kon niet worden verwerkt. Probeer opnieuw.";
+        setSend({ kind: "failed", pending, message, sameRequestId: retryWithSameId });
         if (cause.status === 502) await reload();
       } else {
         setSend({ kind: "failed", pending, message: "Geen verbinding met de server.", sameRequestId: true });
