@@ -38,7 +38,7 @@ test.describe("lesson shell: reading step", () => {
     await page.getByRole("button", { name: /Controleer/ }).click();
     await expect(page.getByTestId("score")).toHaveText("2 van 2 juist");
     await expect(page.getByTestId("read-reminder-done")).toBeVisible();
-    await expect(page.getByTestId("session-saved")).toBeVisible();
+    await expect(page.getByTestId("session-saved")).toContainText("bewaard");
 
     // four skill records exist for the learner and mission
     await expect(page.getByTestId("skill-records").locator("li")).toHaveCount(4);
