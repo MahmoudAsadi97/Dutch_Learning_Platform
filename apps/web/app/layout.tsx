@@ -13,6 +13,7 @@ import "./learning.css";
 import "./learning-tools.css";
 import "./library.css";
 import "./phrase-audio.css";
+import "./topics.css";
 
 export const metadata: Metadata = {
   title: {

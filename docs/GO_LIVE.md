@@ -1,5 +1,9 @@
 # Azure release guide — Taalstudio 0.2
 
+The topic-practice release adds database migration `0004_topic_practice` and packaged
+`content/practice` banks. Use the migration-first image release below; do not update the web
+image alone. See [Topic practice](TOPIC_PRACTICE.md) for scope and content-review limits.
+
 This is a controlled, owner-only release of the appointment mission, not the entire future A1–C2
 platform. Infrastructure and containers are checked in CI. They have **not** been deployed to Azure
 by this update. Only actual authenticated provider calls can establish `verified_live`.

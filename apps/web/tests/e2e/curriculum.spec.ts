@@ -42,6 +42,7 @@ test("grammar answers do not pollute the submitted reading answers", async ({ pa
   await page.getByRole("button", { name: "Controleer je zin" }).first().click();
   await expect(page.locator(".practice-correct").first()).toBeVisible();
   await nav.getByRole("button", { name: "Lezen", exact: true }).click();
+  await page.getByRole("button", { name: "Startles", exact: true }).click();
   for (const question of stage.lesson.reading_questions) {
     await page.locator(`input[name="q-${question.id}"]`).nth(question.answer_index).check();
   }
@@ -55,9 +56,11 @@ test("new level retains writing within the tab and stays usable at phone widths"
   await page.goto("/learn/pre-a1");
   const nav = page.getByRole("navigation", { name: "Onderdelen van dit niveau" });
   await nav.getByRole("button", { name: "Schrijven", exact: true }).click();
+  await page.getByRole("button", { name: "Startles", exact: true }).click();
   await page.getByLabel("Jouw tekst", { exact: true }).fill("Ik heet Noor. Ik woon in Gent.");
   await page.reload();
   await nav.getByRole("button", { name: "Schrijven", exact: true }).click();
+  await page.getByRole("button", { name: "Startles", exact: true }).click();
   await expect(page.getByLabel("Jouw tekst", { exact: true })).toHaveValue("Ik heet Noor. Ik woon in Gent.");
   await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
   for (const width of [1440, 390, 320]) {
@@ -98,6 +101,7 @@ test("completed practice protects a replacement recording and submission before 
     await page.goto("/learn/pre-a1");
     const nav = page.getByRole("navigation", { name: "Onderdelen van dit niveau" });
     await nav.getByRole("button", { name: "Spreken", exact: true }).click();
+    await page.getByRole("button", { name: "Startles", exact: true }).click();
     await page.getByRole("button", { name: "Start de opname", exact: true }).click();
     await page.getByRole("button", { name: "Stop de opname", exact: true }).click();
     const submit = page.getByRole("button", { name: "Rond spreken af", exact: true });

@@ -279,3 +279,24 @@ Correction requests consume the existing model allowance; cached phrase replay d
 Read marks are keyed by learner and stage in browser storage, cleared at logout and never written to
 assessment records. Practice questions expose their answers for self-check; final-test answer boundaries
 remain unchanged. Fixture audio is a labelled tone and fixture writing does not pretend to correct text.
+
+
+## Topic practice
+
+Versioned topic banks live in `content/practice`; each stage has at least 100 distinct situation
+IDs and all four activities. `/curriculum/{stage}/topics` exposes paginated authenticated summaries
+and on-demand task detail. Answer keys remain server-side until an attempt is submitted.
+`topic_practice` stores learner/stage/topic/skill evidence with a content hash and sticky completion;
+the existing curriculum aggregate continues to control within-stage final-check readiness.
+A new migration is required before the API release. The release job validates every bank first.
+The learner export includes topic evidence and deleting a learner cascades to these records.
+Draft keys include learner, stage, skill and topic; stale network replies cannot replace another
+topic. Listening players and recording uploads are cancelled when their activity unmounts.
+
+Topic practice POSTs do not automatically retry and do not deduplicate productive feedback by
+request ID. An explicit resubmission can consume another model call. Concurrent responses for the
+same learner/topic/skill use a unique database upsert: the last stored response supplies the latest
+evidence and result, while a previously earned completion stays true. This is separate from final
+checks, whose saved partial assessments support identical-submission retries. A transport failure
+after submission can leave the browser unsure whether a topic response was saved; refresh topic
+progress before deliberately resubmitting.

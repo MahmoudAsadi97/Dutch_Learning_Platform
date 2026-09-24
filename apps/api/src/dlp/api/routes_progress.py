@@ -9,7 +9,7 @@ from dlp.api.deps import RequestContext, context_dep, settings_dep
 from dlp.config import Settings
 from dlp.db.base import utcnow
 from dlp.db.session import get_session
-from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice
+from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice, TopicPractice
 from dlp.domains.feedback.service import report_view, reports_for
 from dlp.domains.practice.service import list_sessions
 from dlp.domains.practice.turns import evidence_view, turn_view
@@ -71,6 +71,12 @@ def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depe
                 {"stage_id": p.stage_id, "skill": p.skill, "completed": p.completed,
                  "evidence": p.evidence, "updated_at": p.updated_at.isoformat()}
                 for p in session.scalars(select(CurriculumPractice).where(CurriculumPractice.learner_id == ctx.learner.id))
+            ],
+            "topics": [
+                {"stage_id": p.stage_id, "topic_id": p.topic_id, "skill": p.skill, "completed": p.completed,
+                 "latest_passed": p.latest_passed, "content_version": p.content_version,
+                 "evidence": p.evidence, "updated_at": p.updated_at.isoformat()}
+                for p in session.scalars(select(TopicPractice).where(TopicPractice.learner_id == ctx.learner.id))
             ],
             "checks": [
                 {"id": str(a.id), "stage_id": a.stage_id, "status": a.status, "admin_preview": a.admin_preview,

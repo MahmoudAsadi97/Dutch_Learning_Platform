@@ -14,13 +14,15 @@ Dutch remains the target language. A restrained navy/blue interface puts the cur
 useful feedback and the next action first. Each stage also has a searchable vocabulary-card bank and **Story Time**, with explicit word/sentence
 replay, short recall rounds and comprehension checks. Pre-A1 includes Dutch letter names and common
 letter combinations. Writing help shows inspectable corrections and explanations without overwriting
-the draft. Four additional everyday role-play missions remain under
+the draft. Each of the four skill tabs opens a searchable topic browser: **100 situations per skill
+per stage**, with independent answers, feedback and practice progress. The original introductory
+lesson remains available through **Startles**. Four additional everyday role-play missions remain under
 `/missions`: appointments, lunch, returning a purchase and course messages.
 
 **Coverage is a growing authored course, not a completed or externally validated A1–C2 syllabus.**
 The supplied scans are indexed separately, with uncertain OCR kept out of lessons. Every original
 unit remains labelled as awaiting language review. Internal course checks do not award recognised
-CEFR certificates or pronunciation scores. See [the extended practice library](docs/PRACTICE_LIBRARY.md), [curriculum coverage](docs/CURRICULUM.md) and
+CEFR certificates or pronunciation scores. See [topic-based skill practice](docs/TOPIC_PRACTICE.md), [the extended practice library](docs/PRACTICE_LIBRARY.md), [curriculum coverage](docs/CURRICULUM.md) and
 [source coverage](docs/SOURCE_COVERAGE.md) for what is included and what still needs review.
 
 The existing Azure architecture is retained: a public authenticated Next.js web app, internal FastAPI
@@ -36,7 +38,7 @@ for this learning-path release. [GO_LIVE](docs/GO_LIVE.md) covers the migration 
 | Blob storage | Azurite (Phase A), Azure Blob Storage (Phase B) | Docker Compose |
 | Chat model | Ollama (Phase A), Azure AI Foundry (Phase B) | `apps/api/src/dlp/providers` |
 | Speech | faster-whisper + Piper (Phase A), Azure Speech nl-BE (Phase B) | `apps/api/src/dlp/providers` |
-| Content | 12-stage original learning path plus four scenario missions | `content/curriculum`, `content/missions` |
+| Content | 12-stage path, topic-based skill practice, word/story libraries and four scenario missions | `content/curriculum`, `content/practice`, `content/library`, `content/missions` |
 | Benchmark | 40 language cases, provider-tagged results | `benchmarks/language` |
 
 ## Run it on the laptop

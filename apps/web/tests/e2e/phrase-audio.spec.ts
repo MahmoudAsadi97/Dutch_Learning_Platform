@@ -50,6 +50,7 @@ test("starting the microphone stops pronunciation and disables replay until capt
   await page.route("**/api/speech/transcribe", route => route.fulfill({ json: { audio: { asset_id: "58bd4ab4-f0b2-4b1a-87aa-d16d8c51d5fb" }, transcript: { text: "Hallo. Ik heet Noor. Ik woon in Gent." } } }));
   await page.goto("/learn/pre-a1");
   await page.getByRole("navigation", { name: "Onderdelen van dit niveau" }).getByRole("button", { name: "Spreken", exact: true }).click();
+  await page.getByRole("button", { name: "Startles", exact: true }).click();
   await page.locator(".communication-coach summary").click();
   const pronunciation = page.locator(".communication-coach .phrase-audio-button").first();
   await pronunciation.click();

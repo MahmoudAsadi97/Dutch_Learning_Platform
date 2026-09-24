@@ -1,5 +1,40 @@
 # Validation report
 
+## Four-skill topic practice — 2026-09-24
+
+The release contains exactly 100 topic packs in each of twelve stages. Each pack has separate
+reading, listening, speaking and writing activities: **1,200 stage-topic packs / 4,800 activities**.
+Categories support filtering within each stage. Topics intentionally connect skills and recur at adjacent
+stages; this is not a count of globally unrelated domains or a validated CEFR coverage claim.
+
+Local validation: **258 API tests passed; 94 database/storage-dependent tests skipped**. Python
+lint, web lint, TypeScript, production Next.js build and **27 client tests** passed. All twelve banks
+pass shared runtime schemas, vocabulary-reference checks, distinct within-stage title/activity
+checks, translated-copy completeness and question/sample constraints. Each authoring band verifies
+byte-identical rebuilds. Standalone loading of all banks and their libraries peaked at approximately
+152 MiB; this is a bounded content-loading check, not a production load test.
+
+The required CI suite runs PostgreSQL-backed API tests, **76 browser scenarios**, Bicep compilation
+and both production container builds. Consult the exact commit's GitHub checks for final CI status;
+local skips are not integration successes. The browser additions cover all four topic lists,
+search/pagination, separate skill progress, drafts, feedback failures, audio cancellation, recording
+navigation, 320 px optional Persian content and an unmocked A2 topic submission with fixture speech.
+
+Editorial checks repaired ambiguous beginner listening references, mismatched excerpt evidence,
+several translations, unidiomatic comparative definitions, recipient/pronoun problems and follow-up
+messages that conflicted with completed reading events. Advanced tasks include concrete proposals,
+source-based inference and qualified responses. These are bounded editorial checks; **all banks
+remain unreviewed** pending competent Belgian Standard Dutch and translation review. Advanced
+writing openings are explicitly labelled excerpts, and advanced speaking remains a short practice
+segment rather than a complete proficiency interview.
+
+Migration `0004_topic_practice` stores per-learner, per-stage, per-topic and per-skill evidence.
+Read-only browsing awards nothing; practice completion and final-check results remain separate.
+Existing services, authentication and allowance controls are retained. Development fixture tones
+are labelled as test tones, not spoken Dutch. Real Azure inference/voice quality, physical-phone
+microphone behavior and language calibration are not established by CI. No Azure deployment is
+performed in this change.
+
 ## Open practice library — 2026-09-24
 
 This update opens every stage to admitted learners and adds phrase replay, pre-A1 letters and
