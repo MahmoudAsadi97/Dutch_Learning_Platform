@@ -5,18 +5,22 @@ and separate reading, listening, speaking and writing practice.
 
 The path follows **pre-A1 → A1 → pre-A2 → A2 → pre-B1 → B1 → pre-B2 → B2 → pre-C1 → C1 → pre-C2 → C2**.
 Preparation stages are internal bridges; there is no A3. Each stage has a distinct four-part final
-course check. Students practise all four skills and pass all four test sections before progressing.
-An explicitly configured tester can preview every stage without manufacturing a student pass.
+course check. **Every stage is open to every admitted learner**; choose the right starting point.
+Practise all four skills within a stage before its final check. Passing remains a separate four-skill
+record, not a condition for opening the next stage. Tester previews never manufacture student passes.
 
 The top bar switches Dutch–English, Dutch–Persian and Dutch–Persian–English support at any time.
 Dutch remains the target language. A restrained navy/blue interface puts the current learning step,
-useful feedback and the next action first. Four additional everyday role-play missions remain under
+useful feedback and the next action first. Each stage also has a searchable vocabulary-card bank and **Story Time**, with explicit word/sentence
+replay, short recall rounds and comprehension checks. Pre-A1 includes Dutch letter names and common
+letter combinations. Writing help shows inspectable corrections and explanations without overwriting
+the draft. Four additional everyday role-play missions remain under
 `/missions`: appointments, lunch, returning a purchase and course messages.
 
 **Coverage is a growing authored course, not a completed or externally validated A1–C2 syllabus.**
 The supplied scans are indexed separately, with uncertain OCR kept out of lessons. Every original
 unit remains labelled as awaiting language review. Internal course checks do not award recognised
-CEFR certificates or pronunciation scores. See [curriculum coverage](docs/CURRICULUM.md) and
+CEFR certificates or pronunciation scores. See [the extended practice library](docs/PRACTICE_LIBRARY.md), [curriculum coverage](docs/CURRICULUM.md) and
 [source coverage](docs/SOURCE_COVERAGE.md) for what is included and what still needs review.
 
 The existing Azure architecture is retained: a public authenticated Next.js web app, internal FastAPI

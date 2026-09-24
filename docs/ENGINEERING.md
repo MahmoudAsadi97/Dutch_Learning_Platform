@@ -225,7 +225,7 @@ reads `APP_ENV`, `DEV_AUTH_ENABLED`, `DEV_OWNER_EMAIL`, `DEV_OWNER_NAME`, `API_I
 
 `content/curriculum/path.json` contains original lesson units and separate final checks. It is validated
 before release migrations. `domains/curriculum` owns schema validation, practice records, versioned
-assessment snapshots and prerequisite decisions. `api/routes_curriculum.py` uses the same verified
+assessment snapshots and within-stage final-check readiness. `api/routes_curriculum.py` uses the same verified
 identity and budget controls as other API routes. The browser never chooses a learner identity or a pass.
 
 - Twelve ordered stages; pre-stages provide transition practice, including A2 → pre-B1 → B1.
@@ -235,7 +235,7 @@ identity and budget controls as other API routes. The browser never chooses a le
 - Speaking requires a fresh, owned recording with recognised speech. The rubric reviews the transcript;
   it cannot assess accent, prosody or authenticate who spoke. The recorder stays within the short-audio
   service limit. Longer interactive oral examinations need a future speech workflow.
-- Model failure never unlocks a stage. Completed skill evaluations can be reused on an identical retry.
+- All stages are open; model failure never awards a passing result. Completed skill evaluations can be reused on an identical retry.
 - `CURRICULUM_ADMIN_EMAILS` is a separate, explicit account list for tester previews. Empty means no
   bypass. Preview attempts are stored separately and do not become student progression evidence.
 - Assessment API responses omit answer keys, listening scripts and sample responses. Authored items
@@ -257,3 +257,25 @@ claim of certification: <https://www.w3.org/WAI/standards-guidelines/wcag/new-in
 
 Future practice videos belong to approved lesson assets with a transcript, captions and four-skill
 activities. No video-generation provider, cost or empty video tab is introduced in this release.
+
+
+## Extended practice library
+
+`domains/curriculum/library.py` validates the twelve original content banks in `content/library/`.
+`api/routes_library.py` requires the same authenticated identity as all other learner routes. Pagination
+is bounded (50 vocabulary items or 30 story summaries maximum); opening a story fetches its paragraphs
+and practice question. Search is literal, Unicode-normalised and includes the three supported languages.
+Release validates all banks before database migration. Structural constraints include 500 unique terms,
+100 distinct Dutch stories, two paragraphs, complete translations and valid vocabulary links per stage.
+These checks are not linguistic certification. Raw OCR is never used as the serving library.
+
+`PhraseAudio` uses the existing speech route, explicit clicks, a single active player and a bounded
+32-entry/8MB tab-only cache. It observes cancellation and revokes object URLs. Microphone and other
+players share audio focus. Drafts are not sent for writing review on each keystroke. The writing-feedback
+endpoint applies model-proposed edits only if they identify exact, unique, nonoverlapping source spans;
+it reconstructs the corrected draft in code. The client requires an explicit choice to adopt it.
+Correction requests consume the existing model allowance; cached phrase replay does not call TTS again.
+
+Read marks are keyed by learner and stage in browser storage, cleared at logout and never written to
+assessment records. Practice questions expose their answers for self-check; final-test answer boundaries
+remain unchanged. Fixture audio is a labelled tone and fixture writing does not pretend to correct text.
