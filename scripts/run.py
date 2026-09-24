@@ -344,6 +344,7 @@ def task_e2e() -> None:
         "APP_ENV": "development", "DEV_AUTH_ENABLED": "true",
         "DEV_OWNER_EMAIL": E2E_OWNER_EMAIL, "DEV_OWNER_NAME": "Owner", "OWNER_ALLOWLIST": E2E_OWNER_EMAIL,
         "E2E_OWNER_EMAIL": E2E_OWNER_EMAIL,
+        "CURRICULUM_ADMIN_EMAILS": "",
         "DATABASE_URL": env.get("TEST_DATABASE_URL", "postgresql+psycopg://dlp:dlp@localhost:5432/dlp_test"),
         "CHAT_PROVIDER": "fixture", "STT_PROVIDER": "fixture", "TTS_PROVIDER": "fixture", "BLOB_PROVIDER": "memory",
         "JOB_LOOP_ENABLED": "false",

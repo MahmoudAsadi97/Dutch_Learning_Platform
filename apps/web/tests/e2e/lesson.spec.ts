@@ -14,14 +14,27 @@ test.describe("lesson shell: reading step", () => {
     await expect(page.locator('[data-review="unreviewed"]').first()).toBeVisible();
     await expect(page.locator('[data-review="reviewed"]')).toHaveCount(0);
 
-    await page.getByLabel(/Taalhulp/).selectOption("nl-fa");
-    // Persian rendering is right-to-left and hidden until asked for
+    // Translations follow the selected support language without clearing an answer.
+    const answer = page.getByLabel(/Woensdag om 14.00 uur/);
+    await answer.check();
+    await expect(page.getByTestId("reading-translation")).toHaveCount(0);
     await expect(page.getByTestId("reading-text-fa")).toHaveCount(0);
     await page.getByRole("button", { name: /Toon de vertaling/ }).click();
+    const translation = page.getByTestId("reading-translation");
+    await expect(translation.locator('[lang="en"]')).toBeVisible();
+    await expect(page.getByTestId("reading-text-fa")).toHaveCount(0);
+    await page.getByLabel(/Taalhulp/).selectOption("nl-fa");
     const persian = page.getByTestId("reading-text-fa");
     await expect(persian).toBeVisible();
     await expect(persian).toHaveAttribute("dir", "rtl");
     await expect(persian).toHaveAttribute("lang", "fa");
+    await expect(translation.locator('[lang="en"]')).toHaveCount(0);
+    await expect(answer).toBeChecked();
+    await page.getByLabel(/Taalhulp/).selectOption("nl-fa-en");
+    await expect(translation.locator('[lang="en"]')).toBeVisible();
+    await expect(persian).toBeVisible();
+    await expect(answer).toBeChecked();
+    await page.getByLabel(/Taalhulp/).selectOption("nl-fa");
 
     // help ladder reveals rungs one at a time
     const ladder = page.locator('[data-step="read-reminder"] .help-ladder').last();
@@ -34,7 +47,6 @@ test.describe("lesson shell: reading step", () => {
     await expect(ladder.locator(".rung").nth(2)).toHaveAttribute("dir", "rtl");
 
     // questions are judged by the API (a session is started on first use) and stored as evidence
-    await page.getByLabel(/Woensdag om 14.00 uur/).check();
     await page.getByLabel(/Eén dag op voorhand bellen/).check();
     await page.getByRole("button", { name: /Controleer/ }).click();
     await expect(page.getByTestId("score")).toHaveText("2 van 2 juist");

@@ -75,6 +75,61 @@ test("a blocked final test cannot be started from a direct link", async ({ page 
   await expect(page.getByRole("button", { name: "Dien de eindtoets in" })).toHaveCount(0);
 });
 
+test("completed practice protects a replacement recording and submission before moving on", async ({ page }) => {
+  let recordings = 0;
+  let submissions = 0;
+  let releaseTranscription = () => {};
+  let releasePractice = () => {};
+  const transcriptionReady = new Promise<void>(resolve => { releaseTranscription = resolve; });
+  const practiceReady = new Promise<void>(resolve => { releasePractice = resolve; });
+  const assets = ["d3479e43-457b-4ab5-80c9-c2488db2b474", "53dc63d6-ab51-476b-9e60-cf2c36309016"];
+  await page.route("**/api/speech/transcribe", async route => {
+    const index = recordings++;
+    if (index === 1) await transcriptionReady;
+    await route.fulfill({ json: { audio: { asset_id: assets[index] }, transcript: { text: "Dag Sam. Ik heet Noor. Ik woon in Gent." } } });
+  });
+  await page.route("**/api/curriculum/pre-a1/practice", async route => {
+    const index = submissions++;
+    expect(route.request().postDataJSON()).toEqual({ skill: "speaking", audio_asset_id: assets[index] });
+    if (index === 1) await practiceReady;
+    await route.fulfill({ json: { completed: true, feedback: { nl: "Je hebt jezelf voorgesteld.", en: "", fa: "" } } });
+  });
+  try {
+    await page.goto("/learn/pre-a1");
+    const nav = page.getByRole("navigation", { name: "Onderdelen van dit niveau" });
+    await nav.getByRole("button", { name: "Spreken", exact: true }).click();
+    await page.getByRole("button", { name: "Start de opname", exact: true }).click();
+    await page.getByRole("button", { name: "Stop de opname", exact: true }).click();
+    const submit = page.getByRole("button", { name: "Rond spreken af", exact: true });
+    await expect(submit).toBeEnabled();
+    await submit.click();
+    const next = page.getByRole("button", { name: "Volgende vaardigheid", exact: true });
+    await expect(next).toBeEnabled();
+
+    await page.getByRole("button", { name: "Opnieuw opnemen", exact: true }).click();
+    await expect(page.getByRole("button", { name: "Stop de opname", exact: true })).toBeVisible();
+    await expect(next).toBeDisabled();
+    await expect(nav.getByRole("button", { name: "Schrijven", exact: true })).toBeDisabled();
+    await page.getByRole("button", { name: "Stop de opname", exact: true }).click();
+    await expect(page.getByRole("button", { name: "Je opname verwerken…", exact: true })).toBeVisible();
+    await expect(next).toBeDisabled();
+    releaseTranscription();
+    await expect(submit).toBeEnabled();
+    await submit.click();
+    await expect(page.getByRole("button", { name: "Even nakijken…", exact: true })).toBeVisible();
+    await expect(next).toBeDisabled();
+    releasePractice();
+    await expect(next).toBeEnabled();
+    await next.click();
+    await expect(page.getByLabel("Jouw tekst", { exact: true })).toBeVisible();
+    expect(recordings).toBe(2);
+    expect(submissions).toBe(2);
+  } finally {
+    releaseTranscription();
+    releasePractice();
+  }
+});
+
 test("test interface protects a recording and retries an unchanged submitted snapshot after reload", async ({ page }) => {
   const copy = (nl: string) => ({ nl, en: "", fa: "" });
   const task = { prompt: copy("Vertel wie je bent."), criteria: [copy("Stel jezelf voor.")], min_words: 1, max_words: 30 };

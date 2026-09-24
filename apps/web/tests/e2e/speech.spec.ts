@@ -30,7 +30,6 @@ test.describe("microphone check", () => {
     await page.goto("/speech-check");
     await page.getByTestId("tts-button").click();
     await expect(page.getByTestId("tts-label")).toContainText("synthetic-development");
-    const src = await page.getByTestId("tts-audio").getAttribute("src");
-    expect(src).toMatch(/^blob:/);
+    await expect(page.getByTestId("tts-audio")).toHaveAttribute("src", /^blob:/);
   });
 });
