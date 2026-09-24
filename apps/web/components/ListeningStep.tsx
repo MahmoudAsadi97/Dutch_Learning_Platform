@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { LearningText } from "@/components/LanguageSupport";
 import { ContentLabel } from "@/components/ContentLabel";
 import { FeedbackPanel } from "@/components/FeedbackPanel";
 import { HelpLadder } from "@/components/HelpLadder";
@@ -107,10 +108,10 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
         {audioLabel && (
           <p>
             <span className="label warn" data-testid="clip-label">
-              audio: {audioLabel}
+              Synthetische luisterstem
             </span>
             <span className="muted" style={{ fontSize: "0.85rem" }}>
-              synthetische stem; wordt in fase B vervangen door de Azure nl-BE-stem
+              Luister opnieuw wanneer u dat nodig hebt.
             </span>
           </p>
         )}
@@ -133,9 +134,7 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
             <div className="dutch-text nl" lang="nl" data-testid="transcript">
               {payload.transcript.nl}
             </div>
-            <div className="dutch-text fa" lang="fa" dir="rtl">
-              {payload.transcript.fa}
-            </div>
+            <div className="dutch-text"><LearningText text={payload.transcript} supportOnly /></div>
           </>
         )}
       </section>
@@ -144,7 +143,7 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">
-          Hulp · <span className="fa" lang="fa" style={{ display: "inline" }}>کمک</span>
+          <LearningText text={{nl: "Hulp", en: "Help", fa: "کمک"}} />
         </h3>
         <HelpLadder rungs={payload.help} idPrefix={step.key} onReveal={(rung) => help(rung)} />
       </section>

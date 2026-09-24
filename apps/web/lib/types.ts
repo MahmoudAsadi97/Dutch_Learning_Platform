@@ -5,6 +5,7 @@ export type Skill = "reading" | "listening" | "speaking" | "writing";
 
 export interface LocalizedText {
   nl: string;
+  en?: string;
   fa: string;
   review_status: ReviewStatus;
   reviewer_note: string;
@@ -14,11 +15,13 @@ export interface HelpRung {
   level: 1 | 2 | 3;
   kind: "hint_nl" | "gloss_fa" | "translation_fa";
   text: string;
+  en?: string;
   direction: "ltr" | "rtl";
 }
 
 export interface VocabularyItem {
   nl: string;
+  en?: string;
   fa: string;
   note_nl: string;
 }
@@ -210,6 +213,7 @@ export interface FeedbackPoint {
   skill: Skill;
   text_nl: string;
   text_fa: string;
+  text_en?: string;
   quote: string;
   correction: string;
   evidence_ids: string[];
@@ -224,6 +228,7 @@ export interface FeedbackReportView {
   task_completed: boolean;
   summary_nl: string;
   summary_fa: string;
+  summary_en?: string;
   points: FeedbackPoint[];
   evidence_ids: string[];
   dropped_points: number;

@@ -17,6 +17,7 @@ class FeedbackPoint(BaseModel):
     skill: Skill
     text_nl: str = Field(min_length=1)
     text_fa: str = ""
+    text_en: str = ""
     quote: str = Field(default="", description="the learner's words the point is about, verbatim")
     correction: str = ""
     evidence_ids: list[str] = Field(min_length=1, description="evidence record ids that support this point")
@@ -28,6 +29,7 @@ class FeedbackReport(BaseModel):
     skill: Skill
     summary_nl: str
     summary_fa: str = ""
+    summary_en: str = ""
     points: list[FeedbackPoint]
     task_completed: bool
     evidence_ids: list[str] = Field(min_length=1)

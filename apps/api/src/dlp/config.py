@@ -46,6 +46,7 @@ class Settings(BaseSettings):
     dev_owner_email: str = "owner@example.com"
     dev_owner_name: str = "Owner"
     owner_allowlist: str = "owner@example.com"
+    curriculum_admin_emails: str = ""
     assertion_signing_key: str = Field(default="", repr=False)
     assertion_issuer: str = "dlp-web"
     assertion_audience: str = "dlp-api"
@@ -102,7 +103,7 @@ class Settings(BaseSettings):
 
     # Audio bounds
     max_upload_bytes: int = 5 * 1024 * 1024
-    max_audio_seconds: float = 30.0
+    max_audio_seconds: float = Field(default=60.0, gt=0)
     ffmpeg_timeout_seconds: float = 20.0
     ffmpeg_memory_limit_mb: int = 2048
 
@@ -120,13 +121,15 @@ class Settings(BaseSettings):
     job_lease_seconds: int = 60
     job_max_attempts: int = 5
 
-    @field_validator("owner_allowlist")
+    @field_validator("owner_allowlist", "curriculum_admin_emails")
     @classmethod
     def _normalise_allowlist(cls, value: str) -> str:
         return ",".join(sorted({item.strip().lower() for item in value.split(",") if item.strip()}))
 
     @model_validator(mode="after")
     def _enforce_environment_rules(self) -> Settings:
+        if self.stt_provider == "azure" and self.max_audio_seconds > 60:
+            raise ValueError("Azure short-audio recognition requires MAX_AUDIO_SECONDS at most 60")
         if self.app_env == "production":
             if self.dev_auth_enabled:
                 raise ValueError("DEV_AUTH_ENABLED must be false when APP_ENV=production")
@@ -162,6 +165,10 @@ class Settings(BaseSettings):
     @property
     def allowlist(self) -> set[str]:
         return {item for item in self.owner_allowlist.split(",") if item}
+
+    @property
+    def curriculum_admins(self) -> set[str]:
+        return {item for item in self.curriculum_admin_emails.split(",") if item}
 
     @property
     def is_development(self) -> bool:

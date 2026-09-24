@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { LearningText, useLanguageSupport } from "@/components/LanguageSupport";
 import { ContentLabel } from "@/components/ContentLabel";
 import { FeedbackPanel } from "@/components/FeedbackPanel";
 import { HelpLadder } from "@/components/HelpLadder";
@@ -31,6 +32,7 @@ interface Props extends StepProps {
  */
 export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onProgressChanged }: Props) {
   const { payload } = step;
+  const { showEnglish, showPersian: supportPersian } = useLanguageSupport();
   const [showPersian, setShowPersian] = useState(false);
   const [translationBusy, setTranslationBusy] = useState(false);
   const [translationError, setTranslationError] = useState("");
@@ -85,16 +87,14 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
             disabled={translationBusy}
             onClick={() => void toggleTranslation()}
           >
-            {showPersian ? "Verberg de Perzische vertaling" : "Toon de Perzische vertaling"} ·{" "}
-            <span className="fa" lang="fa" style={{ display: "inline" }}>
-              {showPersian ? "پنهان کردن ترجمه" : "نمایش ترجمهٔ فارسی"}
-            </span>
+            <LearningText text={{nl: showPersian ? "Verberg de vertaling" : "Toon de vertaling", en: showPersian ? "Hide translation" : "Show translation", fa: showPersian ? "پنهان کردن ترجمه" : "نمایش ترجمه"}} />
           </button>
         </p>
         {translationError && <p className="error" role="alert">{translationError}</p>}
         {showPersian && (
-          <div id="reading-text-fa" className="dutch-text fa" lang="fa" dir="rtl" data-testid="reading-text-fa">
-            {payload.text.fa}
+          <div id="reading-text-fa" className="dutch-text" data-testid="reading-translation">
+            {showEnglish && payload.text.en && <p lang="en">{payload.text.en}</p>}
+            {supportPersian && <p lang="fa" dir="rtl" className="fa" data-testid="reading-text-fa">{payload.text.fa}</p>}
           </div>
         )}
       </section>
@@ -106,9 +106,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
             <thead>
               <tr>
                 <th scope="col">Nederlands</th>
-                <th scope="col" className="fa" lang="fa">
-                  فارسی
-                </th>
+                <th scope="col">Betekenis</th>
                 <th scope="col">Opmerking</th>
               </tr>
             </thead>
@@ -116,9 +114,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
               {payload.vocabulary.map((item) => (
                 <tr key={item.nl}>
                   <td lang="nl">{item.nl}</td>
-                  <td className="fa" lang="fa">
-                    {item.fa}
-                  </td>
+                  <td><LearningText text={item} supportOnly /></td>
                   <td className="muted" lang="nl">
                     {item.note_nl}
                   </td>
@@ -133,7 +129,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">
-          Hulp · <span className="fa" lang="fa" style={{ display: "inline" }}>کمک</span>
+          <LearningText text={{nl: "Hulp", en: "Help", fa: "کمک"}} />
         </h3>
         <HelpLadder rungs={payload.help} idPrefix={step.key} onReveal={(rung) => help(rung)} />
       </section>

@@ -11,7 +11,7 @@ import {
   useLearningData,
 } from "@/lib/client/learning";
 
-export function ProgressOverview() {
+export function ProgressOverview({ nested = false }: { nested?: boolean }) {
   const { data, error, retry } = useLearningData();
   const [missionId, setMissionId] = useState("appointment-change");
   return (
@@ -19,7 +19,7 @@ export function ProgressOverview() {
       <header className="page-heading">
         <div>
           <p className="eyebrow">ZICHT OP JE LEERPROCES</p>
-          <h1>Elke stap vertelt iets.</h1>
+          {nested ? <h2>Praktijkgesprekken</h2> : <h1>Elke stap vertelt iets.</h1>}
           <p>
             Vier vaardigheden. Je eigen tempo. Geen cijfer dat alles samenvat.
           </p>

@@ -1,3 +1,6 @@
+"use client";
+
+import { LearningText } from "@/components/LanguageSupport";
 import type { ReviewStatus } from "@/lib/types";
 
 interface Props {
@@ -17,7 +20,7 @@ export function ContentLabel({ status, labelNl = "Niet-nagekeken inhoud", labelF
   }
   return (
     <span className="label warn" data-review={status} title={labelFa}>
-      {labelNl} · <span className="fa" lang="fa" style={{ display: "inline" }}>{labelFa}</span>
+      <LearningText text={{nl: labelNl, en: "Content awaiting review", fa: labelFa}} />
     </span>
   );
 }

@@ -30,7 +30,7 @@ from dlp.domains.usage import service as usage
 from dlp.providers.base import ChatMessage, ProviderError
 from dlp.providers.registry import Providers
 
-FEEDBACK_VERSION = "feedback-v1"
+FEEDBACK_VERSION = "feedback-v2"
 TOKENS_ESTIMATE = 2500
 
 
@@ -38,6 +38,7 @@ class FeedbackModelPoint(BaseModel):
     kind: Literal["strength", "error", "suggestion"]
     text_nl: str = Field(min_length=1)
     text_fa: str = ""
+    text_en: str = ""
     quote: str = ""
     correction: str = ""
     evidence: list[str] = Field(default_factory=list, description="handles such as E1, E2 of the evidence this point is about")
@@ -46,6 +47,7 @@ class FeedbackModelPoint(BaseModel):
 class FeedbackModelReply(BaseModel):
     summary_nl: str = Field(min_length=1)
     summary_fa: str = ""
+    summary_en: str = ""
     task_completed: bool = False
     points: list[FeedbackModelPoint] = Field(default_factory=list)
 
@@ -114,15 +116,18 @@ def feedback_messages(step: Step, handles: list[tuple[str, EvidenceRecord]], tas
     lines = "\n".join(f"- {handle}: {describe_evidence(record)[:240]}" for handle, record in handles)
     system = (
         "Je bent een vriendelijke taalcoach Nederlands (Belgisch Standaardnederlands) voor een volwassen leerder op niveau A2 "
-        "met Perzisch als moedertaal. Je geeft korte, concrete feedback op één oefening. Je mag ALLEEN spreken over de "
+        "met ondersteuning in het Engels en Perzisch. Je geeft korte, concrete feedback op één oefening. "
+        "Je mag ALLEEN spreken over de "
         "bewijsstukken hieronder en je verwijst bij elk punt naar de codes (E1, E2, ...) van de bewijsstukken waarover het gaat. "
         "Verzin niets wat niet in de bewijsstukken staat. Geen cijfer, geen niveau-oordeel.\n\n"
         f"{_task_description(step)}\n"
         f"Opdracht volbracht volgens de toepassing: {'ja' if task_completed else 'nee'}.\n\n"
         f"Bewijsstukken:\n{lines}\n\n"
         "Antwoord kort, als JSON met: summary_nl (twee korte zinnen), summary_fa (dezelfde samenvatting in het Perzisch), "
-        "task_completed (true/false), points (maximaal drie), elk met kind (strength, error of suggestion), "
-        "text_nl (één korte zin van hoogstens 15 woorden), text_fa (dezelfde zin in het Perzisch), quote (de woorden van de "
+        "summary_en (dezelfde samenvatting in het Engels), task_completed (true/false), "
+        "points (maximaal drie), elk met kind (strength, error of suggestion), "
+        "text_nl (één korte zin van hoogstens 15 woorden), text_fa (dezelfde zin in het Perzisch), "
+        "text_en (dezelfde zin in het Engels), quote (de woorden van de "
         "leerder waar het over gaat, letterlijk, of leeg), correction (de verbeterde vorm, of leeg) en evidence "
         "(lijst met codes zoals [\"E1\"]). Geen andere velden, geen tekst buiten de JSON."
     )
@@ -187,13 +192,14 @@ def generate_feedback(session: Session, settings: Settings, providers: Providers
             dropped.append({**point.model_dump(), "reason": "quote not found in the cited evidence"})
             continue
         points.append({"kind": point.kind, "skill": step.skill, "text_nl": point.text_nl, "text_fa": point.text_fa,
-                       "quote": quote, "correction": point.correction,
+                       "text_en": point.text_en, "quote": quote, "correction": point.correction,
                        "evidence_ids": [str(by_handle[h].id) for h in handles_cited]})
 
     report = FeedbackReport(
         session_id=practice.id, learner_id=practice.learner_id, step_key=step_key, skill=step.skill, request_id=request_id,
         task_completed=task_completed,
-        report={"summary_nl": reply.summary_nl, "summary_fa": reply.summary_fa, "points": points,
+        report={"summary_nl": reply.summary_nl, "summary_fa": reply.summary_fa,
+                "summary_en": reply.summary_en, "points": points,
                 "model_task_completed": reply.task_completed},
         evidence_ids=[str(r.id) for _, r in handles], dropped_points=dropped,
         model_provider=result.provider, model_name=result.model, prompt_version=result.prompt_version,
@@ -244,6 +250,7 @@ def report_view(report: FeedbackReport) -> dict[str, Any]:
         "id": str(report.id), "session_id": str(report.session_id), "step_key": report.step_key, "skill": report.skill,
         "request_id": report.request_id, "task_completed": report.task_completed,
         "summary_nl": report.report.get("summary_nl", ""), "summary_fa": report.report.get("summary_fa", ""),
+        "summary_en": report.report.get("summary_en", ""),
         "points": report.report.get("points", []), "evidence_ids": report.evidence_ids,
         "dropped_points": len(report.dropped_points), "dropped": report.dropped_points,
         "model_provider": report.model_provider,

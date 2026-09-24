@@ -1,27 +1,28 @@
-# Taalstudio — Dutch learning platform 0.2
+# Taalstudio — Dutch learning platform
 
-One learner, four everyday missions, four skills, Persian text help.
-Phase A runs entirely on a laptop with local providers; Phase B connects Azure later
-without rewriting application code.
+A guided Belgian Standard Dutch learning path with original stories, vocabulary, grammar drills,
+and separate reading, listening, speaking and writing practice.
 
-The learner interface has a lesson library covering appointments, lunch orders, purchase returns and
-course messages, with four separate skill records per mission, a speech studio and account/settings pages. Desktop navigation and a mobile bottom bar
-share the same routes. Persian help is right-to-left; recordings and speech synthesis remain clearly
-labelled. Progress comes from saved attempts, not invented scores, streaks or certificates.
+The path follows **pre-A1 → A1 → pre-A2 → A2 → pre-B1 → B1 → pre-B2 → B2 → pre-C1 → C1 → pre-C2 → C2**.
+Preparation stages are internal bridges; there is no A3. Each stage has a distinct four-part final
+course check. Students practise all four skills and pass all four test sections before progressing.
+An explicitly configured tester can preview every stage without manufacturing a student pass.
 
-Open `/missions` to choose a lesson. Each mission includes reading, listening, speaking, writing and
-an independent transfer task. [Content design, source-use notes and rollout checks](docs/FOUR_SKILL_CONTENT.md)
-describe the new original packs, their provisional A2 targets and the outstanding human language review.
-Learning feedback shows corrections and next steps; technical provider names and evidence identifiers stay out of the lesson interface.
+The top bar switches Dutch–English, Dutch–Persian and Dutch–Persian–English support at any time.
+Dutch remains the target language. A restrained navy/blue interface puts the current learning step,
+useful feedback and the next action first. Four additional everyday role-play missions remain under
+`/missions`: appointments, lunch, returning a purchase and course messages.
 
-[View the desktop and mobile interface](docs/DESIGN_PREVIEW.md).
+**Coverage is a growing authored course, not a completed or externally validated A1–C2 syllabus.**
+The supplied scans are indexed separately, with uncertain OCR kept out of lessons. Every original
+unit remains labelled as awaiting language review. Internal course checks do not award recognised
+CEFR certificates or pronunciation scores. See [curriculum coverage](docs/CURRICULUM.md) and
+[source coverage](docs/SOURCE_COVERAGE.md) for what is included and what still needs review.
 
-For Azure setup, start with **[the release guide](docs/GO_LIVE.md)**. It lists every service, the
-creation sequence, identity configuration and live acceptance checks. The release includes private
-PostgreSQL, managed-identity providers, an isolated migration job, runtime health probes, dependency
-locks, CI container builds and a manual OIDC deployment workflow. No Azure resources are created on push.
-This is a release candidate for the scoped single-learner product, not a claim that the full future
-A1–C2 curriculum or institutional product is complete.
+The existing Azure architecture is retained: a public authenticated Next.js web app, internal FastAPI
+API, PostgreSQL, Blob Storage and managed model/speech services. No additional paid service is required
+for this learning-path release. [GO_LIVE](docs/GO_LIVE.md) covers the migration and deployment gate;
+[VALIDATION_REPORT](VALIDATION_REPORT.md) separates tested code from verified live behavior.
 
 | Part | Technology | Where |
 |---|---|---|
@@ -31,7 +32,7 @@ A1–C2 curriculum or institutional product is complete.
 | Blob storage | Azurite (Phase A), Azure Blob Storage (Phase B) | Docker Compose |
 | Chat model | Ollama (Phase A), Azure AI Foundry (Phase B) | `apps/api/src/dlp/providers` |
 | Speech | faster-whisper + Piper (Phase A), Azure Speech nl-BE (Phase B) | `apps/api/src/dlp/providers` |
-| Content | four original mission packs with contracts, scenarios and evidence expectations | `content/missions` |
+| Content | 12-stage original learning path plus four scenario missions | `content/curriculum`, `content/missions` |
 | Benchmark | 40 language cases, provider-tagged results | `benchmarks/language` |
 
 ## Run it on the laptop
@@ -69,8 +70,8 @@ Speech recognition uses faster-whisper `small` by default; `LOCAL_STT_MODEL=medi
 clearly better on non-native Dutch at about three times the recognition time (roughly one second
 per second of speech on a laptop CPU).
 
-Then open <http://localhost:3000>: the mission page renders the reading step and the speaking
-step (hold the button, speak, release; the receptionist answers through the local chat model and
+Then open <http://localhost:3000> for the learning path; `/missions` opens additional role-play practice.
+The mission page renders the reading step and the speaking step (hold the button, speak, release; the receptionist answers through the local chat model and
 Piper; typed input is accepted in the practice step and stored as typed evidence), the checkpoint
 step (speech only, no help, one attempt), and the microphone check page runs
 microphone → upload → ffmpeg → local transcription and synthetic playback.

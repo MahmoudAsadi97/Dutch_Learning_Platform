@@ -9,7 +9,7 @@ test.describe("listening and writing steps", () => {
     await page.getByRole("button", { name: /Luisteren: de voicemail/ }).click();
     const step = page.locator('[data-step="listen-voicemail"]');
     await step.getByTestId("play-clip").click();
-    await expect(step.getByTestId("clip-label")).toContainText("synthetic-development");
+    await expect(step.getByTestId("clip-label")).toContainText("Synthetische luisterstem");
     await expect(step.getByTestId("play-count")).toContainText("1× beluisterd");
     await step.getByTestId("toggle-transcript").click();
     await expect(step.getByTestId("transcript")).toContainText("Tandarts De Smet is woensdag ziek");

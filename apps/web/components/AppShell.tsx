@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useRef, type MouseEvent, type ReactNode } from "react";
+import { LanguageSwitcher } from "@/components/LanguageSupport";
 import { ConnectionBanner } from "@/components/ConnectionBanner";
 import { Icon, type IconName } from "@/components/Icon";
 import {
@@ -12,10 +13,10 @@ import {
 
 const links: { href: string; label: string; short: string; icon: IconName }[] =
   [
-    { href: "/", label: "Mijn leerplek", short: "Vandaag", icon: "home" },
+    { href: "/", label: "Mijn leerpad", short: "Leerpad", icon: "home" },
     {
       href: "/missions",
-      label: "Oefenmissies",
+      label: "Praktijkgesprekken",
       short: "Oefenen",
       icon: "book",
     },
@@ -86,7 +87,7 @@ export function AppShell({
         leaving.current = false;
       });
   }
-  const current = links.find((link) => link.href === path) ?? links[1];
+  const current = path.startsWith("/learn/") ? links[0] : links.find((link) => link.href === path) ?? links[1];
   return (
     <NavigationGuardContext.Provider value={registerGuard}>
       <div className="app-frame" onClickCapture={navigate}>
@@ -112,7 +113,7 @@ export function AppShell({
               <Link
                 key={link.href}
                 href={link.href}
-                aria-current={(path === link.href || (link.href === "/missions" && path.startsWith("/missions/"))) ? "page" : undefined}
+                aria-current={(path === link.href || (link.href === "/" && path.startsWith("/learn/")) || (link.href === "/missions" && path.startsWith("/missions/"))) ? "page" : undefined}
               >
                 <Icon name={link.icon} />
                 <span>{link.label}</span>
@@ -121,24 +122,6 @@ export function AppShell({
             ))}
           </nav>
           <div className="sidebar-bottom">
-            <div className="sidebar-note">
-              <span className="little-orbit" aria-hidden="true">
-                <Icon name="globe" size={25} />
-              </span>
-              <h3>
-                Een taal leer je door
-                <br />
-                haar te gebruiken.
-              </h3>
-              <p>
-                Oefen op jouw tempo.
-                <br />
-                Eén gesprek tegelijk.
-              </p>
-              <Link href="/missions">
-                Verder oefenen <Icon name="arrow" size={16} />
-              </Link>
-            </div>
             <div className="sidebar-locale">
               <span className="belgian-flag" aria-hidden="true" />
               <span>
@@ -167,10 +150,7 @@ export function AppShell({
               <strong>{current.label}</strong>
             </div>
             <div className="header-actions">
-              <span className="language-pill">
-                <span className="belgian-flag" aria-hidden="true" /> Nederlands{" "}
-                <span className="muted">BE</span>
-              </span>
+              <LanguageSwitcher />
               <Link
                 href="/settings"
                 className="profile-button"
@@ -193,7 +173,7 @@ export function AppShell({
               {environment === "production"
                 ? "Persoonlijke leeromgeving"
                 : "Lokale leeromgeving"}{" "}
-              <span className="footer-dot">·</span> v0.2
+              <span className="footer-dot">·</span> Standaardnederlands in België
             </span>
           </footer>
         </div>
@@ -202,7 +182,7 @@ export function AppShell({
             <Link
               key={link.href}
               href={link.href}
-              aria-current={(path === link.href || (link.href === "/missions" && path.startsWith("/missions/"))) ? "page" : undefined}
+              aria-current={(path === link.href || (link.href === "/" && path.startsWith("/learn/")) || (link.href === "/missions" && path.startsWith("/missions/"))) ? "page" : undefined}
             >
               <Icon name={link.icon} size={21} />
               <span>{link.short}</span>

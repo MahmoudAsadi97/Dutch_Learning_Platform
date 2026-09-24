@@ -1,0 +1,19 @@
+.recall-tool { border: 1px solid #b9cce8; border-radius: 14px; background: #f0f5fc; padding: clamp(20px, 3vw, 28px); margin-block: 24px; }
+.recall-tool .section-heading { align-items: start; gap: 12px; }
+.recall-tool h3 { margin: 7px 0 0; }
+.recall-tool label { display: block; font-size: 14px; margin: 18px 0 8px; }
+.recall-tool input { display: block; width: 100%; max-width: 480px; padding: 12px; border: 1px solid #8eabcF; border-radius: 8px; font: inherit; margin-bottom: 18px; background: #fff; color: var(--ink); }
+.recall-cue { padding: 20px; background: #fff; border-radius: 10px; border: 1px solid var(--line); }
+.recall-counter { font-size: 13px; color: var(--muted); margin-block: 20px 12px; }
+.recall-reveal { border-top: 1px solid #c5d5ec; padding-top: 20px; }
+.recall-reveal h4 { font-size: 24px; margin-bottom: 12px; }
+.recall-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 18px 0; }
+.communication-coach { border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 18px 23px; margin-block: 22px; }
+.communication-coach summary { cursor: pointer; color: #284e85; font-size: 14px; padding: 5px 0; }
+.communication-coach summary .learning-copy { display: inline-block; vertical-align: top; max-width: calc(100% - 24px); }
+.communication-steps { padding-left: 22px; margin: 24px 0; }
+.communication-steps li { padding-left: 8px; margin-bottom: 18px; }
+.communication-phrases { list-style: none; padding: 0; display: grid; gap: 12px; }
+.communication-phrases li { background: #f5f7fb; border-left: 3px solid #9cb9e5; padding: 13px 17px; }
+.communication-coach h4 { margin-top: 26px; }
+@media (max-width: 480px) { .recall-actions { flex-direction: column; align-items: stretch; } .recall-tool .section-heading { flex-direction: column; } }

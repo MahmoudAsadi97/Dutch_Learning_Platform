@@ -38,11 +38,15 @@ for (const screen of screens) {
       page.getByRole("heading", { name: screen.heading }),
     ).toBeVisible();
     if (screen.name === "dashboard")
-      await expect(page.getByTestId("learning-overview")).not.toContainText(
-        "Laden…",
-      );
-    if (screen.name === "progress")
-      await expect(page.locator(".progress-card")).toHaveCount(4);
+      await expect(page.getByTestId("curriculum-path").locator("li")).toHaveCount(12);
+    if (screen.name === "progress") {
+      const stages = page.locator(".course-progress-row");
+      await expect(stages).toHaveCount(12);
+      await expect(stages.first()).toBeVisible();
+      await expect(stages.first().locator("dt")).toHaveText([
+        "Lezen", "Luisteren", "Spreken", "Schrijven",
+      ]);
+    }
     if (screen.name === "settings")
       await expect(page.getByText("Technische ondersteuning", { exact: true })).toBeVisible();
     await page.evaluate(() => document.fonts.ready.then(() => undefined));

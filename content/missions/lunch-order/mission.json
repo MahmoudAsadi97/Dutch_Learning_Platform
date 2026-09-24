@@ -1,17 +1,19 @@
 {
   "schema_version": 1,
   "id": "lunch-order",
-  "version": 1,
+  "version": 2,
   "cefr_target": "A2",
   "title": {
     "nl": "Lunch bestellen",
     "fa": "سفارش ناهار",
-    "review_status": "unreviewed"
+    "review_status": "unreviewed",
+    "en": "Order lunch"
   },
   "description": {
     "nl": "Lees een menu, luister naar een wijziging en bestel uw lunch.",
     "fa": "منو را بخوانید، تغییر را بشنوید و ناهار سفارش دهید.",
-    "review_status": "unreviewed"
+    "review_status": "unreviewed",
+    "en": "Read a menu, listen to a change and order your lunch."
   },
   "language_targets": [
     {
@@ -21,7 +23,8 @@
       "can_do": {
         "nl": "Ik kan prijzen en bestelregels op een menu vinden.",
         "fa": "می‌توانم قیمت‌ها و روش سفارش را در منو پیدا کنم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can find prices and ordering instructions on a menu."
       }
     },
     {
@@ -31,7 +34,8 @@
       "can_do": {
         "nl": "Ik kan horen wat nog beschikbaar is.",
         "fa": "می‌توانم بفهمم چه چیزی هنوز موجود است.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can understand what is still available."
       }
     },
     {
@@ -41,7 +45,8 @@
       "can_do": {
         "nl": "Ik kan beleefd lunch bestellen en mijn keuze bevestigen.",
         "fa": "می‌توانم مؤدبانه ناهار سفارش دهم و انتخابم را تأیید کنم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can order lunch politely and confirm my choice."
       }
     },
     {
@@ -51,7 +56,8 @@
       "can_do": {
         "nl": "Ik kan een vriend vertellen wat ik bestel en waar ik eet.",
         "fa": "می‌توانم به دوستی بگویم چه سفارش می‌دهم و کجا غذا می‌خورم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can tell a friend what I am ordering and where I am eating."
       }
     }
   ],
@@ -62,12 +68,14 @@
       "title": {
         "nl": "Lezen",
         "fa": "خواندن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Reading"
       },
       "instructions": {
         "nl": "Lees het bericht en beantwoord de vragen.",
         "fa": "پیام را بخوانید و به سؤال‌ها پاسخ دهید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Read the message and answer the questions."
       },
       "variant": "base",
       "payload": {
@@ -75,20 +83,24 @@
         "text": {
           "nl": "Lunchbar Linden. Soep: € 4. Broodje kaas: € 5. Broodje kip: € 6. Water: € 2. Open van 11 tot 15 uur. Bestel aan de toonbank.",
           "fa": "ناهارخوری لیندن. سوپ: ۴ یورو. ساندویچ پنیر: ۵ یورو. ساندویچ مرغ: ۶ یورو. آب: ۲ یورو. از ساعت ۱۱ تا ۱۵ باز است. پشت پیشخوان سفارش دهید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Linden Lunch Bar. Soup: €4. Cheese sandwich: €5. Chicken sandwich: €6. Water: €2. Open from 11:00 to 15:00. Order at the counter."
         },
         "vocabulary": [
           {
             "nl": "de toonbank",
-            "fa": "پیشخوان"
+            "fa": "پیشخوان",
+            "en": "the counter"
           },
           {
             "nl": "meenemen",
-            "fa": "با خود بردن"
+            "fa": "با خود بردن",
+            "en": "to take away"
           },
           {
             "nl": "op zijn",
-            "fa": "تمام شدن"
+            "fa": "تمام شدن",
+            "en": "to be sold out"
           }
         ],
         "questions": [
@@ -97,23 +109,27 @@
             "prompt": {
               "nl": "Hoeveel kost soep met water?",
               "fa": "سوپ و آب چند است؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "How much do soup and water cost?"
             },
             "options": [
               {
                 "nl": "€ 4",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "€4"
               },
               {
                 "nl": "€ 6",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "€6"
               },
               {
                 "nl": "€ 7",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "€7"
               }
             ],
             "answer_index": 1,
@@ -122,13 +138,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Read the prices. Listen for what is still available."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Read the prices and listen for the items that are still available."
               }
             ]
           },
@@ -137,23 +155,27 @@
             "prompt": {
               "nl": "Waar bestelt u?",
               "fa": "کجا سفارش می‌دهید؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "Where do you order?"
             },
             "options": [
               {
                 "nl": "Aan tafel",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "At the table"
               },
               {
                 "nl": "Aan de toonbank",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "At the counter"
               },
               {
                 "nl": "Buiten",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Outside"
               }
             ],
             "answer_index": 1,
@@ -162,13 +184,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Read the prices. Listen for what is still available."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Read the prices and listen for the items that are still available."
               }
             ]
           }
@@ -178,13 +202,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Read the prices. Listen for what is still available."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Read the prices and listen for the items that are still available."
           }
         ]
       }
@@ -195,12 +221,14 @@
       "title": {
         "nl": "Luisteren",
         "fa": "شنیدن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Listening"
       },
       "instructions": {
         "nl": "Luister eerst. Beantwoord daarna de vragen. U kunt opnieuw luisteren.",
         "fa": "اول گوش کنید و سپس پاسخ دهید. می‌توانید دوباره گوش کنید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Listen first, then answer the questions. You can listen again."
       },
       "variant": "base",
       "payload": {
@@ -209,7 +237,8 @@
         "transcript": {
           "nl": "Goeiemiddag. De soep is op. Een broodje kaas of kip kan wel. U kunt hier eten of uw lunch meenemen.",
           "fa": "عصر بخیر. سوپ تمام شده است. ساندویچ پنیر یا مرغ موجود است. می‌توانید اینجا بخورید یا ناهار را ببرید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Good afternoon. The soup is sold out. A cheese or chicken sandwich is available. You can eat here or take your lunch away."
         },
         "questions": [
           {
@@ -217,23 +246,27 @@
             "prompt": {
               "nl": "Wat is op?",
               "fa": "چه چیزی تمام شده؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "What is sold out?"
             },
             "options": [
               {
                 "nl": "Soep",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Soup"
               },
               {
                 "nl": "Kaas",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Cheese"
               },
               {
                 "nl": "Water",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Water"
               }
             ],
             "answer_index": 0,
@@ -242,13 +275,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Read the prices. Listen for what is still available."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Read the prices and listen for the items that are still available."
               }
             ]
           },
@@ -257,18 +292,21 @@
             "prompt": {
               "nl": "Kunt u eten meenemen?",
               "fa": "می‌توانید غذا را ببرید؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "Can you take food away?"
             },
             "options": [
               {
                 "nl": "Ja",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Yes"
               },
               {
                 "nl": "Nee",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "No"
               }
             ],
             "answer_index": 0,
@@ -277,13 +315,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Read the prices. Listen for what is still available."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Read the prices and listen for the items that are still available."
               }
             ]
           }
@@ -293,13 +333,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Read the prices. Listen for what is still available."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Read the prices and listen for the items that are still available."
           }
         ]
       }
@@ -310,12 +352,14 @@
       "title": {
         "nl": "Spreken",
         "fa": "صحبت کردن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Speaking"
       },
       "instructions": {
         "nl": "Leg uw behoefte uit, maak een keuze en bevestig. Vraag om herhaling als dat nodig is.",
         "fa": "نیاز خود را توضیح دهید، انتخاب کنید و تأیید کنید. اگر لازم بود درخواست تکرار کنید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Explain what you need, make a choice and confirm. Ask for repetition if needed."
       },
       "variant": "base",
       "payload": {
@@ -324,7 +368,8 @@
         "goal": {
           "nl": "Bestel lunch. Kies kaas of kip en bevestig.",
           "fa": "ناهار سفارش دهید. پنیر یا مرغ را انتخاب و تأیید کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Order lunch. Choose cheese or chicken and confirm."
         },
         "required_actions": [
           "state_need",
@@ -337,13 +382,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Read the prices. Listen for what is still available."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Read the prices and listen for the items that are still available."
           }
         ]
       }
@@ -354,12 +401,14 @@
       "title": {
         "nl": "Schrijven",
         "fa": "نوشتن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Writing"
       },
       "instructions": {
         "nl": "Schrijf een kort bericht voor de juiste persoon. Lees het na voor u het verstuurt.",
         "fa": "پیام کوتاهی برای فرد مناسب بنویسید و قبل از ارسال بازخوانی کنید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Write a short message for the intended recipient. Check it before sending."
       },
       "variant": "base",
       "payload": {
@@ -367,7 +416,8 @@
         "prompt": {
           "nl": "Schrijf een bericht aan een vriend: wat bestelt u, hoeveel kost het en waar eet u?",
           "fa": "به دوستی پیام بدهید: چه سفارش می‌دهید، قیمتش چقدر است و کجا می‌خورید؟",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Write a message to a friend: what are you ordering, how much does it cost and where are you eating?"
         },
         "min_words": 15,
         "max_words": 70,
@@ -377,13 +427,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Lees de prijzen. Luister naar wat nog beschikbaar is.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Read the prices. Listen for what is still available."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "قیمت‌ها را بخوانید و به چیزهایی که هنوز موجودند گوش کنید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Read the prices and listen for the items that are still available."
           }
         ]
       }
@@ -394,12 +446,14 @@
       "title": {
         "nl": "Zelf proberen",
         "fa": "تلاش مستقل",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Try it yourself"
       },
       "instructions": {
         "nl": "Probeer een nieuwe situatie zonder hints. Spreek uw antwoorden in.",
         "fa": "موقعیت جدیدی را بدون راهنمایی امتحان کنید. پاسخ‌ها را با صدا بگویید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Try a new situation without hints. Speak your answers aloud."
       },
       "variant": "transfer",
       "payload": {
@@ -408,7 +462,8 @@
         "goal": {
           "nl": "Bestel iets in een ander café. Kies thee of koffie.",
           "fa": "در کافه‌ای دیگر چای یا قهوه سفارش دهید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Order something in another café. Choose tea or coffee."
         },
         "required_actions": [
           "state_need",
@@ -428,19 +483,22 @@
       "setting": {
         "nl": "U bestelt lunch. Soep is op; kaas kost 5 euro, kip 6 euro. Beide broodjes zijn beschikbaar.",
         "fa": "",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "You are ordering lunch. Soup is sold out; cheese costs five euros and chicken costs six euros. Both sandwiches are available."
       },
       "learner_role": {
         "nl": "de klant of cursist",
         "fa": "مشتری یا زبان‌آموز",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "the customer or learner"
       },
       "character": {
         "name": "Noor",
         "role": {
           "nl": "medewerker",
           "fa": "کارمند",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "staff member"
         },
         "register_style": "formal"
       },
@@ -448,7 +506,8 @@
         {
           "nl": "Ik heb een vraag.",
           "fa": "سؤالی دارم.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "I have a question."
         }
       ],
       "choices": [
@@ -457,7 +516,8 @@
           "label": {
             "nl": "een broodje kaas voor vijf euro",
             "fa": "ساندویچ پنیر به قیمت پنج یورو",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "a cheese sandwich for five euros"
           }
         },
         {
@@ -465,7 +525,8 @@
           "label": {
             "nl": "een broodje kip voor zes euro",
             "fa": "ساندویچ مرغ به قیمت شش یورو",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "a chicken sandwich for six euros"
           }
         }
       ],
@@ -483,7 +544,8 @@
           "text": {
             "nl": "Goeiemiddag, wat wilt u eten?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Good afternoon, what would you like to eat?"
           }
         },
         {
@@ -492,7 +554,8 @@
           "text": {
             "nl": "Wat wilt u bestellen?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "What would you like to order?"
           }
         },
         {
@@ -501,7 +564,8 @@
           "text": {
             "nl": "Wilt u kaas voor vijf euro of kip voor zes euro?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Would you like cheese for five euros or chicken for six euros?"
           }
         },
         {
@@ -510,7 +574,8 @@
           "text": {
             "nl": "U kiest {choice}. Klopt dat?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "You have chosen {choice}. Is that correct?"
           }
         },
         {
@@ -519,7 +584,8 @@
           "text": {
             "nl": "Uw keuze is bevestigd. Bedankt!",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Your choice is confirmed. Thank you!"
           }
         },
         {
@@ -528,7 +594,8 @@
           "text": {
             "nl": "Ik herhaal het.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "I will repeat that."
           }
         },
         {
@@ -537,7 +604,8 @@
           "text": {
             "nl": "Dat kan niet. Kies uit het aanbod.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "That is not available. Please choose from the options."
           }
         }
       ],
@@ -545,7 +613,8 @@
         {
           "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
           "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "You explain what you need, choose an available option and confirm."
         }
       ]
     },
@@ -557,19 +626,22 @@
       "setting": {
         "nl": "U bestelt een warme drank. Thee en koffie kosten elk drie euro.",
         "fa": "",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "You are ordering a hot drink. Tea and coffee each cost three euros."
       },
       "learner_role": {
         "nl": "de klant of cursist",
         "fa": "مشتری یا زبان‌آموز",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "the customer or learner"
       },
       "character": {
         "name": "Sam",
         "role": {
           "nl": "medewerker",
           "fa": "کارمند",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "staff member"
         },
         "register_style": "formal"
       },
@@ -577,7 +649,8 @@
         {
           "nl": "Ik heb een vraag.",
           "fa": "سؤالی دارم.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "I have a question."
         }
       ],
       "choices": [
@@ -586,7 +659,8 @@
           "label": {
             "nl": "thee voor drie euro",
             "fa": "چای به قیمت سه یورو",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "tea for three euros"
           }
         },
         {
@@ -594,7 +668,8 @@
           "label": {
             "nl": "koffie voor drie euro",
             "fa": "قهوه به قیمت سه یورو",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "coffee for three euros"
           }
         }
       ],
@@ -612,7 +687,8 @@
           "text": {
             "nl": "Welkom. Wat wilt u drinken?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Welcome. What would you like to drink?"
           }
         },
         {
@@ -621,7 +697,8 @@
           "text": {
             "nl": "Welke drank wilt u?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Which drink would you like?"
           }
         },
         {
@@ -630,7 +707,8 @@
           "text": {
             "nl": "Thee of koffie? Beide kosten drie euro.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Tea or coffee? Both cost three euros."
           }
         },
         {
@@ -639,7 +717,8 @@
           "text": {
             "nl": "U kiest {choice}. Klopt dat?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "You have chosen {choice}. Is that correct?"
           }
         },
         {
@@ -648,7 +727,8 @@
           "text": {
             "nl": "Uw keuze is bevestigd. Bedankt!",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Your choice is confirmed. Thank you!"
           }
         },
         {
@@ -657,7 +737,8 @@
           "text": {
             "nl": "Ik herhaal het.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "I will repeat that."
           }
         },
         {
@@ -666,7 +747,8 @@
           "text": {
             "nl": "Dat kan niet. Kies uit het aanbod.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "That is not available. Please choose from the options."
           }
         }
       ],
@@ -674,7 +756,8 @@
         {
           "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
           "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "You explain what you need, choose an available option and confirm."
         }
       ]
     }

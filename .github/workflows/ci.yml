@@ -68,6 +68,10 @@ jobs:
           python benchmarks/language/harness.py --provider expected | tee expected.txt
           python benchmarks/language/harness.py --provider wrong | tee wrong.txt
           grep -q "score=100.00%" expected.txt && grep -q "score=0.00%" wrong.txt
+      - name: Check private source-import boundaries
+        run: |
+          pip install -r scripts/source-requirements.txt
+          python -m unittest scripts/test_index_teaching_sources.py
 
   web:
     name: Web build and browser tests

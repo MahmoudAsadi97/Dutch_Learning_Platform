@@ -2,12 +2,14 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import JSONResponse
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from dlp.api.deps import RequestContext, context_dep, settings_dep
 from dlp.config import Settings
 from dlp.db.base import utcnow
 from dlp.db.session import get_session
+from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice
 from dlp.domains.feedback.service import report_view, reports_for
 from dlp.domains.practice.service import list_sessions
 from dlp.domains.practice.turns import evidence_view, turn_view
@@ -64,6 +66,19 @@ def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depe
             }
             for p in sessions
         ],
+        "curriculum": {
+            "practice": [
+                {"stage_id": p.stage_id, "skill": p.skill, "completed": p.completed,
+                 "evidence": p.evidence, "updated_at": p.updated_at.isoformat()}
+                for p in session.scalars(select(CurriculumPractice).where(CurriculumPractice.learner_id == ctx.learner.id))
+            ],
+            "checks": [
+                {"id": str(a.id), "stage_id": a.stage_id, "status": a.status, "admin_preview": a.admin_preview,
+                 "submission": a.submission, "results": a.results, "created_at": a.created_at.isoformat(),
+                 "completed_at": a.completed_at.isoformat() if a.completed_at else None}
+                for a in session.scalars(select(CurriculumAttempt).where(CurriculumAttempt.learner_id == ctx.learner.id))
+            ],
+        },
         "usage": snapshot(session, settings, ctx.learner.id),
         "request_id": ctx.request_id,
     }

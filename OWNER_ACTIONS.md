@@ -1,3 +1,25 @@
+# Current release actions — learning path
+
+For local tester access, add `CURRICULUM_ADMIN_EMAILS=YOUR_EXISTING_SIGN_IN_EMAIL` to your ignored
+`.env`, using the same email already admitted by `OWNER_ALLOWLIST`. Restart the local API afterward.
+The browser test runner deliberately clears this setting so it can verify normal student gates.
+
+1. After the exact release commit has green CI, run the existing-Azure release from your signed-in WSL
+   terminal: `bash scripts/deploy_current.sh 'YOUR_EXISTING_SIGN_IN_EMAIL'`. This grants only that
+   already-admitted account tester previews. Keep `curriculumAdminEmails` in private Bicep parameters
+   consistent on later full infrastructure deployments.
+2. Complete the signed-in microphone/model check on your phone and a separate student test account.
+   CI uses explicit fixtures; it does not verify Azure inference, actual mobile audio, or native language quality.
+3. Review the original Dutch/English/Persian lesson content and final-task rubrics with a qualified
+   language reviewer before treating stage results as evidence beyond internal course progress.
+4. Continue importing the private OCR candidate queue only after checking source meaning, spelling,
+   provenance and allowed use. The public lesson packs are original; raw scans/OCR are not in GitHub.
+
+No new Azure service is needed for this update. Automatic practice feedback does not confer a recognised
+CEFR certificate or an accent score. Videos remain a future content feature, without a paid provider added.
+
+---
+
 # Owner actions
 
 Things only the owner can do. Each item is listed once; tick it when done.

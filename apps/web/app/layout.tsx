@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
+import { LanguageProvider } from "@/components/LanguageSupport";
 import { AppShell } from "@/components/AppShell";
 
 import "@fontsource-variable/dm-sans";
@@ -8,6 +9,8 @@ import "@fontsource-variable/vazirmatn";
 
 import "./globals.css";
 import "./design.css";
+import "./learning.css";
+import "./learning-tools.css";
 
 export const metadata: Metadata = {
   title: {
@@ -34,9 +37,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a className="skip-link" href="#main">
           Naar de inhoud
         </a>
+        <LanguageProvider>
         <AppShell environment={process.env.APP_ENV ?? "development"}>
           {children}
         </AppShell>
+        </LanguageProvider>
       </body>
     </html>
   );

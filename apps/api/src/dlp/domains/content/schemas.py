@@ -37,9 +37,10 @@ class StrictModel(BaseModel):
 
 
 class LocalizedText(StrictModel):
-    """A fixed text in Dutch with an optional Persian rendering and its review state."""
+    """A Dutch learning text with optional support translations and review state."""
 
     nl: str = Field(min_length=1)
+    en: str = ""
     fa: str = ""
     review_status: ReviewStatus = "unreviewed"
     reviewer_note: str = ""
@@ -60,6 +61,7 @@ class LanguageTarget(StrictModel):
 
 class VocabularyItem(StrictModel):
     nl: str
+    en: str = ""
     fa: str
     note_nl: str = ""
 
@@ -70,6 +72,7 @@ class HelpRung(StrictModel):
     level: int = Field(ge=1, le=3)
     kind: Literal["hint_nl", "gloss_fa", "translation_fa"]
     text: str = Field(min_length=1)
+    en: str = ""
     direction: Literal["ltr", "rtl"]
 
     @model_validator(mode="after")

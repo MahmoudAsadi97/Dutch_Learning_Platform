@@ -1,17 +1,19 @@
 {
   "schema_version": 1,
   "id": "shop-return",
-  "version": 1,
+  "version": 2,
   "cefr_target": "A2",
   "title": {
     "nl": "Een aankoop terugbrengen",
     "fa": "پس دادن خرید",
-    "review_status": "unreviewed"
+    "review_status": "unreviewed",
+    "en": "Return a purchase"
   },
   "description": {
     "nl": "Begrijp een winkelbericht, leg een probleem uit en vraag een oplossing.",
     "fa": "اطلاعیهٔ فروشگاه را بفهمید، مشکل را توضیح دهید و راه‌حل بخواهید.",
-    "review_status": "unreviewed"
+    "review_status": "unreviewed",
+    "en": "Understand a shop notice, explain a problem and ask for a solution."
   },
   "language_targets": [
     {
@@ -21,7 +23,8 @@
       "can_do": {
         "nl": "Ik kan eenvoudige ruilvoorwaarden begrijpen.",
         "fa": "می‌توانم شرایط سادهٔ تعویض را بفهمم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can understand simple exchange conditions."
       }
     },
     {
@@ -31,7 +34,8 @@
       "can_do": {
         "nl": "Ik kan het probleem en de beschikbare oplossing herkennen.",
         "fa": "می‌توانم مشکل و راه‌حل موجود را تشخیص دهم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can identify the problem and the available solution."
       }
     },
     {
@@ -41,7 +45,8 @@
       "can_do": {
         "nl": "Ik kan een probleem met een aankoop uitleggen en een oplossing kiezen.",
         "fa": "می‌توانم مشکل خرید را توضیح دهم و راه‌حلی انتخاب کنم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can explain a problem with a purchase and choose a solution."
       }
     },
     {
@@ -51,7 +56,8 @@
       "can_do": {
         "nl": "Ik kan een beleefd verzoek aan een winkel schrijven.",
         "fa": "می‌توانم درخواست مؤدبانه‌ای به فروشگاه بنویسم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can write a polite request to a shop."
       }
     }
   ],
@@ -62,12 +68,14 @@
       "title": {
         "nl": "Lezen",
         "fa": "خواندن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Reading"
       },
       "instructions": {
         "nl": "Lees het bericht en beantwoord de vragen.",
         "fa": "پیام را بخوانید و به سؤال‌ها پاسخ دهید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Read the message and answer the questions."
       },
       "variant": "base",
       "payload": {
@@ -75,20 +83,24 @@
         "text": {
           "nl": "Winkel Wilg. Een ongebruikte trui ruilen? Breng hem binnen veertien dagen terug, met het kasticket. Vandaag sluiten we om 18 uur.",
           "fa": "فروشگاه ویلخ. تعویض پلیور استفاده‌نشده؟ آن را ظرف چهارده روز با رسید بیاورید. امروز ساعت ۱۸ می‌بندیم.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Wilg Shop. Want to exchange an unused jumper? Return it within fourteen days with the receipt. We close at 18:00 today."
         },
         "vocabulary": [
           {
             "nl": "het kasticket",
-            "fa": "رسید خرید"
+            "fa": "رسید خرید",
+            "en": "the receipt"
           },
           {
             "nl": "ruilen",
-            "fa": "تعویض کردن"
+            "fa": "تعویض کردن",
+            "en": "to exchange"
           },
           {
             "nl": "de tegoedbon",
-            "fa": "بن خرید"
+            "fa": "بن خرید",
+            "en": "the credit voucher"
           }
         ],
         "questions": [
@@ -97,23 +109,27 @@
             "prompt": {
               "nl": "Wat neemt u mee?",
               "fa": "چه همراه می‌برید؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "What do you bring with you?"
             },
             "options": [
               {
                 "nl": "Het kasticket",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "The receipt"
               },
               {
                 "nl": "Een foto",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "A photo"
               },
               {
                 "nl": "Een brief",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "A letter"
               }
             ],
             "answer_index": 0,
@@ -122,13 +138,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Find the conditions. Explain the problem and the solution you would like."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Find the conditions. State the problem and your preferred solution."
               }
             ]
           },
@@ -137,23 +155,27 @@
             "prompt": {
               "nl": "Wanneer sluit de winkel?",
               "fa": "فروشگاه کی بسته می‌شود؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "When does the shop close?"
             },
             "options": [
               {
                 "nl": "Om 14 uur",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "At 14:00"
               },
               {
                 "nl": "Om 18 uur",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "At 18:00"
               },
               {
                 "nl": "Om 19 uur",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "At 19:00"
               }
             ],
             "answer_index": 1,
@@ -162,13 +184,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Find the conditions. Explain the problem and the solution you would like."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Find the conditions. State the problem and your preferred solution."
               }
             ]
           }
@@ -178,13 +202,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Find the conditions. Explain the problem and the solution you would like."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Find the conditions. State the problem and your preferred solution."
           }
         ]
       }
@@ -195,12 +221,14 @@
       "title": {
         "nl": "Luisteren",
         "fa": "شنیدن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Listening"
       },
       "instructions": {
         "nl": "Luister eerst. Beantwoord daarna de vragen. U kunt opnieuw luisteren.",
         "fa": "اول گوش کنید و سپس پاسخ دهید. می‌توانید دوباره گوش کنید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Listen first, then answer the questions. You can listen again."
       },
       "variant": "base",
       "payload": {
@@ -209,7 +237,8 @@
         "transcript": {
           "nl": "Uw blauwe trui is te klein. Blauw in maat L is op. We hebben groen in maat L. U kunt ook een tegoedbon krijgen.",
           "fa": "پلیور آبی شما کوچک است. آبی سایز ال تمام شده. سبز سایز ال داریم. می‌توانید بن خرید هم بگیرید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Your blue jumper is too small. Blue in size L is sold out. We have green in size L. You can also get a credit voucher."
         },
         "questions": [
           {
@@ -217,23 +246,27 @@
             "prompt": {
               "nl": "Wat is het probleem?",
               "fa": "مشکل چیست؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "What is the problem?"
             },
             "options": [
               {
                 "nl": "Te groot",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Too large"
               },
               {
                 "nl": "Te klein",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Too small"
               },
               {
                 "nl": "Vuil",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Dirty"
               }
             ],
             "answer_index": 1,
@@ -242,13 +275,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Find the conditions. Explain the problem and the solution you would like."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Find the conditions. State the problem and your preferred solution."
               }
             ]
           },
@@ -257,23 +292,27 @@
             "prompt": {
               "nl": "Welke kleur is beschikbaar in L?",
               "fa": "چه رنگی در سایز ال موجود است؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "Which colour is available in L?"
             },
             "options": [
               {
                 "nl": "Blauw",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Blue"
               },
               {
                 "nl": "Groen",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Green"
               },
               {
                 "nl": "Rood",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Red"
               }
             ],
             "answer_index": 1,
@@ -282,13 +321,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Find the conditions. Explain the problem and the solution you would like."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Find the conditions. State the problem and your preferred solution."
               }
             ]
           }
@@ -298,13 +339,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Find the conditions. Explain the problem and the solution you would like."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Find the conditions. State the problem and your preferred solution."
           }
         ]
       }
@@ -315,12 +358,14 @@
       "title": {
         "nl": "Spreken",
         "fa": "صحبت کردن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Speaking"
       },
       "instructions": {
         "nl": "Leg uw behoefte uit, maak een keuze en bevestig. Vraag om herhaling als dat nodig is.",
         "fa": "نیاز خود را توضیح دهید، انتخاب کنید و تأیید کنید. اگر لازم بود درخواست تکرار کنید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Explain what you need, make a choice and confirm. Ask for repetition if needed."
       },
       "variant": "base",
       "payload": {
@@ -329,7 +374,8 @@
         "goal": {
           "nl": "Leg het probleem uit. Kies een groene trui of een tegoedbon.",
           "fa": "مشکل را توضیح دهید. پلیور سبز یا بن خرید انتخاب کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Explain the problem. Choose a green jumper or a credit voucher."
         },
         "required_actions": [
           "state_need",
@@ -342,13 +388,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Find the conditions. Explain the problem and the solution you would like."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Find the conditions. State the problem and your preferred solution."
           }
         ]
       }
@@ -359,12 +407,14 @@
       "title": {
         "nl": "Schrijven",
         "fa": "نوشتن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Writing"
       },
       "instructions": {
         "nl": "Schrijf een kort bericht voor de juiste persoon. Lees het na voor u het verstuurt.",
         "fa": "پیام کوتاهی برای فرد مناسب بنویسید و قبل از ارسال بازخوانی کنید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Write a short message for the intended recipient. Check it before sending."
       },
       "variant": "base",
       "payload": {
@@ -372,7 +422,8 @@
         "prompt": {
           "nl": "Schrijf aan de winkel: wat kocht u, wat is het probleem en welke oplossing wilt u?",
           "fa": "به فروشگاه بنویسید: چه خریدید، مشکل چیست و چه راه‌حلی می‌خواهید؟",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Write to the shop: what did you buy, what is the problem and which solution would you like?"
         },
         "min_words": 15,
         "max_words": 70,
@@ -382,13 +433,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Zoek de voorwaarden. Noem het probleem en uw gewenste oplossing.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Find the conditions. Explain the problem and the solution you would like."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "شرایط را پیدا کنید. مشکل و راه‌حل مورد نظرتان را بگویید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Find the conditions. State the problem and your preferred solution."
           }
         ]
       }
@@ -399,12 +452,14 @@
       "title": {
         "nl": "Zelf proberen",
         "fa": "تلاش مستقل",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Try it yourself"
       },
       "instructions": {
         "nl": "Probeer een nieuwe situatie zonder hints. Spreek uw antwoorden in.",
         "fa": "موقعیت جدیدی را بدون راهنمایی امتحان کنید. پاسخ‌ها را با صدا بگویید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Try a new situation without hints. Speak your answers aloud."
       },
       "variant": "transfer",
       "payload": {
@@ -413,7 +468,8 @@
         "goal": {
           "nl": "Een jas is te groot. Kies maat M of een tegoedbon.",
           "fa": "کاپشن بزرگ است. سایز ام یا بن خرید انتخاب کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "A jacket is too large. Choose size M or a credit voucher."
         },
         "required_actions": [
           "state_need",
@@ -433,19 +489,22 @@
       "setting": {
         "nl": "Een ongebruikte blauwe trui is te klein. Het kasticket is aanwezig en de aankoop was gisteren. Groen in L of een tegoedbon zijn beschikbaar; blauw in L niet.",
         "fa": "",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "An unused blue jumper is too small. You have the receipt and bought it yesterday. Green in L or a credit voucher is available; blue in L is not."
       },
       "learner_role": {
         "nl": "de klant of cursist",
         "fa": "مشتری یا زبان‌آموز",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "the customer or learner"
       },
       "character": {
         "name": "Noor",
         "role": {
           "nl": "medewerker",
           "fa": "کارمند",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "staff member"
         },
         "register_style": "formal"
       },
@@ -453,7 +512,8 @@
         {
           "nl": "Ik heb een vraag.",
           "fa": "سؤالی دارم.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "I have a question."
         }
       ],
       "choices": [
@@ -462,7 +522,8 @@
           "label": {
             "nl": "de groene trui in maat L",
             "fa": "پلیور سبز سایز ال",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "the green jumper in size L"
           }
         },
         {
@@ -470,7 +531,8 @@
           "label": {
             "nl": "een tegoedbon",
             "fa": "بن خرید",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "a credit voucher"
           }
         }
       ],
@@ -488,7 +550,8 @@
           "text": {
             "nl": "Goeiedag, hoe kan ik helpen?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Hello, how can I help?"
           }
         },
         {
@@ -497,7 +560,8 @@
           "text": {
             "nl": "Wat is het probleem?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "What is the problem?"
           }
         },
         {
@@ -506,7 +570,8 @@
           "text": {
             "nl": "Groen in L of een tegoedbon?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Green in L or a credit voucher?"
           }
         },
         {
@@ -515,7 +580,8 @@
           "text": {
             "nl": "U kiest {choice}. Klopt dat?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "You have chosen {choice}. Is that correct?"
           }
         },
         {
@@ -524,7 +590,8 @@
           "text": {
             "nl": "Uw keuze is bevestigd. Bedankt!",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Your choice is confirmed. Thank you!"
           }
         },
         {
@@ -533,7 +600,8 @@
           "text": {
             "nl": "Ik herhaal het.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "I will repeat that."
           }
         },
         {
@@ -542,7 +610,8 @@
           "text": {
             "nl": "Dat kan niet. Kies uit het aanbod.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "That is not available. Please choose from the options."
           }
         }
       ],
@@ -550,7 +619,8 @@
         {
           "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
           "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "You explain what you need, choose an available option and confirm."
         }
       ]
     },
@@ -562,19 +632,22 @@
       "setting": {
         "nl": "Uw ongebruikte jas is te groot. U hebt een geldig kasticket. Maat M en een tegoedbon zijn beschikbaar.",
         "fa": "",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Your unused jacket is too large. You have a valid receipt. Size M and a credit voucher are available."
       },
       "learner_role": {
         "nl": "de klant of cursist",
         "fa": "مشتری یا زبان‌آموز",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "the customer or learner"
       },
       "character": {
         "name": "Sam",
         "role": {
           "nl": "medewerker",
           "fa": "کارمند",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "staff member"
         },
         "register_style": "formal"
       },
@@ -582,7 +655,8 @@
         {
           "nl": "Ik heb een vraag.",
           "fa": "سؤالی دارم.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "I have a question."
         }
       ],
       "choices": [
@@ -591,7 +665,8 @@
           "label": {
             "nl": "de jas in maat M",
             "fa": "کاپشن سایز ام",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "the jacket in size M"
           }
         },
         {
@@ -599,7 +674,8 @@
           "label": {
             "nl": "een tegoedbon",
             "fa": "بن خرید",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "a credit voucher"
           }
         }
       ],
@@ -617,7 +693,8 @@
           "text": {
             "nl": "Goeiedag, wat scheelt er?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Hello, what is the matter?"
           }
         },
         {
@@ -626,7 +703,8 @@
           "text": {
             "nl": "Wat is het probleem met uw jas?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "What is the problem with your jacket?"
           }
         },
         {
@@ -635,7 +713,8 @@
           "text": {
             "nl": "Wilt u maat M of een tegoedbon?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Would you like size M or a credit voucher?"
           }
         },
         {
@@ -644,7 +723,8 @@
           "text": {
             "nl": "U kiest {choice}. Klopt dat?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "You have chosen {choice}. Is that correct?"
           }
         },
         {
@@ -653,7 +733,8 @@
           "text": {
             "nl": "Uw keuze is bevestigd. Bedankt!",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Your choice is confirmed. Thank you!"
           }
         },
         {
@@ -662,7 +743,8 @@
           "text": {
             "nl": "Ik herhaal het.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "I will repeat that."
           }
         },
         {
@@ -671,7 +753,8 @@
           "text": {
             "nl": "Dat kan niet. Kies uit het aanbod.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "That is not available. Please choose from the options."
           }
         }
       ],
@@ -679,7 +762,8 @@
         {
           "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
           "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "You explain what you need, choose an available option and confirm."
         }
       ]
     }

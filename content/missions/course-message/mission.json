@@ -1,17 +1,19 @@
 {
   "schema_version": 1,
   "id": "course-message",
-  "version": 1,
+  "version": 2,
   "cefr_target": "A2",
   "title": {
     "nl": "Een bericht voor de les",
     "fa": "پیامی دربارهٔ کلاس",
-    "review_status": "unreviewed"
+    "review_status": "unreviewed",
+    "en": "A message about the lesson"
   },
   "description": {
     "nl": "Lees een wijziging, begrijp een instructie en schrijf een beleefde e-mail.",
     "fa": "تغییر برنامه را بخوانید، دستور را بفهمید و ایمیلی مؤدبانه بنویسید.",
-    "review_status": "unreviewed"
+    "review_status": "unreviewed",
+    "en": "Read about a change, understand an instruction and write a polite email."
   },
   "language_targets": [
     {
@@ -21,7 +23,8 @@
       "can_do": {
         "nl": "Ik kan een verandering van lokaal en tijd begrijpen.",
         "fa": "می‌توانم تغییر اتاق و زمان کلاس را بفهمم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can understand a change of room and time."
       }
     },
     {
@@ -31,7 +34,8 @@
       "can_do": {
         "nl": "Ik kan een gesproken instructie over lesmateriaal begrijpen.",
         "fa": "می‌توانم دستور گفتاری دربارهٔ مطالب کلاس را بفهمم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can understand a spoken instruction about lesson materials."
       }
     },
     {
@@ -41,7 +45,8 @@
       "can_do": {
         "nl": "Ik kan uitleggen wat ik mis en om oefeningen vragen.",
         "fa": "می‌توانم توضیح دهم چه چیزی را از دست داده‌ام و تمرین بخواهم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can explain what I missed and ask for exercises."
       }
     },
     {
@@ -51,7 +56,8 @@
       "can_do": {
         "nl": "Ik kan een informeel bericht tot een beleefde e-mail omwerken.",
         "fa": "می‌توانم پیامی غیررسمی را به ایمیلی مؤدبانه تبدیل کنم.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "I can turn an informal message into a polite email."
       }
     }
   ],
@@ -62,12 +68,14 @@
       "title": {
         "nl": "Lezen",
         "fa": "خواندن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Reading"
       },
       "instructions": {
         "nl": "Lees het bericht en beantwoord de vragen.",
         "fa": "پیام را بخوانید و به سؤال‌ها پاسخ دهید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Read the message and answer the questions."
       },
       "variant": "base",
       "payload": {
@@ -75,20 +83,24 @@
         "text": {
           "nl": "Beste cursist, de les begint woensdag om 10 uur in lokaal 4, niet in lokaal 2. Neem uw schrift mee. Kunt u niet komen? Mail het secretariaat.",
           "fa": "زبان‌آموز عزیز، کلاس چهارشنبه ساعت ۱۰ در اتاق ۴ شروع می‌شود، نه اتاق ۲. دفتر خود را بیاورید. نمی‌توانید بیایید؟ به دفتر آموزش ایمیل بزنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Dear learner, the lesson starts on Wednesday at 10:00 in room 4, not room 2. Bring your notebook. Unable to attend? Email the office."
         },
         "vocabulary": [
           {
             "nl": "het lokaal",
-            "fa": "اتاق کلاس"
+            "fa": "اتاق کلاس",
+            "en": "the classroom"
           },
           {
             "nl": "ophalen",
-            "fa": "رفتن و گرفتن"
+            "fa": "رفتن و گرفتن",
+            "en": "to collect"
           },
           {
             "nl": "het secretariaat",
-            "fa": "دفتر آموزش"
+            "fa": "دفتر آموزش",
+            "en": "the administrative office"
           }
         ],
         "questions": [
@@ -97,23 +109,27 @@
             "prompt": {
               "nl": "Waar is de les?",
               "fa": "کلاس کجاست؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "Where is the lesson?"
             },
             "options": [
               {
                 "nl": "Lokaal 2",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Room 2"
               },
               {
                 "nl": "Lokaal 4",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Room 4"
               },
               {
                 "nl": "Thuis",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "At home"
               }
             ],
             "answer_index": 1,
@@ -122,13 +138,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Let op plaats en tijd. Gebruik een beleefde vraag.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Pay attention to the place and time. Use a polite question."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "به مکان و زمان توجه کنید و مؤدبانه درخواست کنید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Notice the place and time, and make a polite request."
               }
             ]
           },
@@ -137,23 +155,27 @@
             "prompt": {
               "nl": "Wat doet u als u niet kunt komen?",
               "fa": "اگر نمی‌توانید بیایید چه می‌کنید؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "What do you do if you cannot attend?"
             },
             "options": [
               {
                 "nl": "Mailen",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Send an email"
               },
               {
                 "nl": "Niets",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Nothing"
               },
               {
                 "nl": "Een boek kopen",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "Buy a book"
               }
             ],
             "answer_index": 0,
@@ -162,13 +184,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Let op plaats en tijd. Gebruik een beleefde vraag.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Pay attention to the place and time. Use a polite question."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "به مکان و زمان توجه کنید و مؤدبانه درخواست کنید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Notice the place and time, and make a polite request."
               }
             ]
           }
@@ -178,13 +202,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Let op plaats en tijd. Gebruik een beleefde vraag.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Pay attention to the place and time. Use a polite question."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "به مکان و زمان توجه کنید و مؤدبانه درخواست کنید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Notice the place and time, and make a polite request."
           }
         ]
       }
@@ -195,12 +221,14 @@
       "title": {
         "nl": "Luisteren",
         "fa": "شنیدن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Listening"
       },
       "instructions": {
         "nl": "Luister eerst. Beantwoord daarna de vragen. U kunt opnieuw luisteren.",
         "fa": "اول گوش کنید و سپس پاسخ دهید. می‌توانید دوباره گوش کنید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Listen first, then answer the questions. You can listen again."
       },
       "variant": "base",
       "payload": {
@@ -209,7 +237,8 @@
         "transcript": {
           "nl": "Dag, u hebt de les gemist. U kunt de oefeningen per e-mail krijgen of een papieren exemplaar ophalen. Het secretariaat sluit vandaag om vier uur.",
           "fa": "سلام، شما کلاس را از دست داده‌اید. می‌توانید تمرین‌ها را با ایمیل دریافت کنید یا نسخهٔ کاغذی بگیرید. دفتر امروز ساعت چهار بسته می‌شود.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Hello, you missed the lesson. You can receive the exercises by email or collect a paper copy. The office closes at four o'clock today."
         },
         "questions": [
           {
@@ -217,23 +246,27 @@
             "prompt": {
               "nl": "Wat kunt u per e-mail krijgen?",
               "fa": "چه چیزی را می‌توانید با ایمیل بگیرید؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "What can you receive by email?"
             },
             "options": [
               {
                 "nl": "Een kasticket",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "A receipt"
               },
               {
                 "nl": "De oefeningen",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "The exercises"
               },
               {
                 "nl": "Een sleutel",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "A key"
               }
             ],
             "answer_index": 1,
@@ -242,13 +275,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Let op plaats en tijd. Gebruik een beleefde vraag.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Pay attention to the place and time. Use a polite question."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "به مکان و زمان توجه کنید و مؤدبانه درخواست کنید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Notice the place and time, and make a polite request."
               }
             ]
           },
@@ -257,23 +292,27 @@
             "prompt": {
               "nl": "Wanneer sluit het secretariaat?",
               "fa": "دفتر کی بسته می‌شود؟",
-              "review_status": "unreviewed"
+              "review_status": "unreviewed",
+              "en": "When does the office close?"
             },
             "options": [
               {
                 "nl": "Om 10 uur",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "At 10:00"
               },
               {
                 "nl": "Om 16 uur",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "At 16:00"
               },
               {
                 "nl": "Om 18 uur",
                 "fa": "",
-                "review_status": "unreviewed"
+                "review_status": "unreviewed",
+                "en": "At 18:00"
               }
             ],
             "answer_index": 1,
@@ -282,13 +321,15 @@
                 "level": 1,
                 "kind": "hint_nl",
                 "text": "Let op plaats en tijd. Gebruik een beleefde vraag.",
-                "direction": "ltr"
+                "direction": "ltr",
+                "en": "Pay attention to the place and time. Use a polite question."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
                 "text": "به مکان و زمان توجه کنید و مؤدبانه درخواست کنید.",
-                "direction": "rtl"
+                "direction": "rtl",
+                "en": "Notice the place and time, and make a polite request."
               }
             ]
           }
@@ -298,13 +339,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Let op plaats en tijd. Gebruik een beleefde vraag.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Pay attention to the place and time. Use a polite question."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "به مکان و زمان توجه کنید و مؤدبانه درخواست کنید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Notice the place and time, and make a polite request."
           }
         ]
       }
@@ -315,12 +358,14 @@
       "title": {
         "nl": "Spreken",
         "fa": "صحبت کردن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Speaking"
       },
       "instructions": {
         "nl": "Leg uw behoefte uit, maak een keuze en bevestig. Vraag om herhaling als dat nodig is.",
         "fa": "نیاز خود را توضیح دهید، انتخاب کنید و تأیید کنید. اگر لازم بود درخواست تکرار کنید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Explain what you need, make a choice and confirm. Ask for repetition if needed."
       },
       "variant": "base",
       "payload": {
@@ -329,7 +374,8 @@
         "goal": {
           "nl": "Leg uit dat u de les miste. Vraag oefeningen per e-mail of op papier.",
           "fa": "بگویید کلاس را از دست داده‌اید. تمرین‌ها را با ایمیل یا روی کاغذ بخواهید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Explain that you missed the lesson. Ask for the exercises by email or on paper."
         },
         "required_actions": [
           "state_need",
@@ -342,13 +388,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Let op plaats en tijd. Gebruik een beleefde vraag.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Pay attention to the place and time. Use a polite question."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "به مکان و زمان توجه کنید و مؤدبانه درخواست کنید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Notice the place and time, and make a polite request."
           }
         ]
       }
@@ -359,12 +407,14 @@
       "title": {
         "nl": "Schrijven",
         "fa": "نوشتن",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Writing"
       },
       "instructions": {
         "nl": "Schrijf een kort bericht voor de juiste persoon. Lees het na voor u het verstuurt.",
         "fa": "پیام کوتاهی برای فرد مناسب بنویسید و قبل از ارسال بازخوانی کنید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Write a short message for the intended recipient. Check it before sending."
       },
       "variant": "base",
       "payload": {
@@ -372,7 +422,8 @@
         "prompt": {
           "nl": "Maak hiervan een beleefde e-mail: ‘Ik was er niet. Stuur de oefeningen.’ Voeg een begroeting, reden en afsluiting toe.",
           "fa": "این پیام را به ایمیلی مؤدبانه تبدیل کنید: «نبودم. تمرین‌ها را بفرست.» سلام، دلیل و پایان مناسب اضافه کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Turn this into a polite email: 'I was not there. Send the exercises.' Add a greeting, a reason and a closing."
         },
         "min_words": 15,
         "max_words": 70,
@@ -382,13 +433,15 @@
             "level": 1,
             "kind": "hint_nl",
             "text": "Let op plaats en tijd. Gebruik een beleefde vraag.",
-            "direction": "ltr"
+            "direction": "ltr",
+            "en": "Pay attention to the place and time. Use a polite question."
           },
           {
             "level": 2,
             "kind": "gloss_fa",
             "text": "به مکان و زمان توجه کنید و مؤدبانه درخواست کنید.",
-            "direction": "rtl"
+            "direction": "rtl",
+            "en": "Notice the place and time, and make a polite request."
           }
         ]
       }
@@ -399,12 +452,14 @@
       "title": {
         "nl": "Zelf proberen",
         "fa": "تلاش مستقل",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Try it yourself"
       },
       "instructions": {
         "nl": "Probeer een nieuwe situatie zonder hints. Spreek uw antwoorden in.",
         "fa": "موقعیت جدیدی را بدون راهنمایی امتحان کنید. پاسخ‌ها را با صدا بگویید.",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "Try a new situation without hints. Speak your answers aloud."
       },
       "variant": "transfer",
       "payload": {
@@ -413,7 +468,8 @@
         "goal": {
           "nl": "Vraag bij de bibliotheek de leeslijst per e-mail of op papier.",
           "fa": "از کتابخانه فهرست مطالعه را با ایمیل یا روی کاغذ بخواهید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "Ask the library for the reading list by email or on paper."
         },
         "required_actions": [
           "state_need",
@@ -433,19 +489,22 @@
       "setting": {
         "nl": "U hebt de les gemist. U vraagt de oefeningen bij het secretariaat. Ze zijn per e-mail en op papier beschikbaar.",
         "fa": "",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "You missed the lesson. You are asking the office for the exercises. They are available by email and on paper."
       },
       "learner_role": {
         "nl": "de klant of cursist",
         "fa": "مشتری یا زبان‌آموز",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "the customer or learner"
       },
       "character": {
         "name": "Noor",
         "role": {
           "nl": "medewerker",
           "fa": "کارمند",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "staff member"
         },
         "register_style": "formal"
       },
@@ -453,7 +512,8 @@
         {
           "nl": "Ik heb een vraag.",
           "fa": "سؤالی دارم.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "I have a question."
         }
       ],
       "choices": [
@@ -462,7 +522,8 @@
           "label": {
             "nl": "de oefeningen per e-mail",
             "fa": "تمرین‌ها با ایمیل",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "the exercises by email"
           }
         },
         {
@@ -470,7 +531,8 @@
           "label": {
             "nl": "de oefeningen op papier",
             "fa": "تمرین‌ها روی کاغذ",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "the exercises on paper"
           }
         }
       ],
@@ -488,7 +550,8 @@
           "text": {
             "nl": "Goeiedag, waarmee kan ik helpen?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Hello, how can I help you?"
           }
         },
         {
@@ -497,7 +560,8 @@
           "text": {
             "nl": "Wat hebt u nodig?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "What do you need?"
           }
         },
         {
@@ -506,7 +570,8 @@
           "text": {
             "nl": "Wilt u de oefeningen per e-mail of op papier?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Would you like the exercises by email or on paper?"
           }
         },
         {
@@ -515,7 +580,8 @@
           "text": {
             "nl": "U kiest {choice}. Klopt dat?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "You have chosen {choice}. Is that correct?"
           }
         },
         {
@@ -524,7 +590,8 @@
           "text": {
             "nl": "Uw keuze is bevestigd. Bedankt!",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Your choice is confirmed. Thank you!"
           }
         },
         {
@@ -533,7 +600,8 @@
           "text": {
             "nl": "Ik herhaal het.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "I will repeat that."
           }
         },
         {
@@ -542,7 +610,8 @@
           "text": {
             "nl": "Dat kan niet. Kies uit het aanbod.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "That is not available. Please choose from the options."
           }
         }
       ],
@@ -550,7 +619,8 @@
         {
           "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
           "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "You explain what you need, choose an available option and confirm."
         }
       ]
     },
@@ -562,19 +632,22 @@
       "setting": {
         "nl": "U hebt de leeslijst voor de leesgroep nodig. De bibliotheek biedt e-mail of papier aan.",
         "fa": "",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "You need the reading group's reading list. The library offers it by email or on paper."
       },
       "learner_role": {
         "nl": "de klant of cursist",
         "fa": "مشتری یا زبان‌آموز",
-        "review_status": "unreviewed"
+        "review_status": "unreviewed",
+        "en": "the customer or learner"
       },
       "character": {
         "name": "Sam",
         "role": {
           "nl": "medewerker",
           "fa": "کارمند",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "staff member"
         },
         "register_style": "formal"
       },
@@ -582,7 +655,8 @@
         {
           "nl": "Ik heb een vraag.",
           "fa": "سؤالی دارم.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "I have a question."
         }
       ],
       "choices": [
@@ -591,7 +665,8 @@
           "label": {
             "nl": "de leeslijst per e-mail",
             "fa": "فهرست مطالعه با ایمیل",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "the reading list by email"
           }
         },
         {
@@ -599,7 +674,8 @@
           "label": {
             "nl": "de leeslijst op papier",
             "fa": "فهرست مطالعه روی کاغذ",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "the reading list on paper"
           }
         }
       ],
@@ -617,7 +693,8 @@
           "text": {
             "nl": "Welkom in de bibliotheek.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Welcome to the library."
           }
         },
         {
@@ -626,7 +703,8 @@
           "text": {
             "nl": "Wat zoekt u?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "What are you looking for?"
           }
         },
         {
@@ -635,7 +713,8 @@
           "text": {
             "nl": "Wilt u de leeslijst per e-mail of op papier?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Would you like the reading list by email or on paper?"
           }
         },
         {
@@ -644,7 +723,8 @@
           "text": {
             "nl": "U kiest {choice}. Klopt dat?",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "You have chosen {choice}. Is that correct?"
           }
         },
         {
@@ -653,7 +733,8 @@
           "text": {
             "nl": "Uw keuze is bevestigd. Bedankt!",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "Your choice is confirmed. Thank you!"
           }
         },
         {
@@ -662,7 +743,8 @@
           "text": {
             "nl": "Ik herhaal het.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "I will repeat that."
           }
         },
         {
@@ -671,7 +753,8 @@
           "text": {
             "nl": "Dat kan niet. Kies uit het aanbod.",
             "fa": "",
-            "review_status": "unreviewed"
+            "review_status": "unreviewed",
+            "en": "That is not available. Please choose from the options."
           }
         }
       ],
@@ -679,7 +762,8 @@
         {
           "nl": "U legt uit wat u nodig hebt, kiest een beschikbare optie en bevestigt.",
           "fa": "نیاز خود را توضیح می‌دهید، گزینه‌ای موجود را انتخاب و تأیید می‌کنید.",
-          "review_status": "unreviewed"
+          "review_status": "unreviewed",
+          "en": "You explain what you need, choose an available option and confirm."
         }
       ]
     }

@@ -242,3 +242,43 @@ Configuration follows [Container Apps Entra authentication](https://learn.micros
 [Azure OpenAI managed identity](https://learn.microsoft.com/en-us/azure/foundry-classic/openai/how-to/managed-identity?view=foundry-classic),
 and [Next.js nonce-based CSP](https://nextjs.org/docs/app/guides/content-security-policy).
 Compile success is not a substitute for subscription-specific Azure validation and a real deployment.
+
+## Deploy the learning-path update to the existing environment
+
+No new Azure service is needed. The release adds migration `0003` and a new content bundle; build both
+images, run the migration job first, then update healthy runtime revisions. Existing account and
+private API restrictions remain in effect.
+
+From a clean, current `main` checkout in the owner's WSL terminal, with Azure CLI already signed in:
+
+```bash
+git pull --ff-only origin main
+bash scripts/deploy_current.sh 'YOUR_EXISTING_SIGN_IN_EMAIL'
+```
+
+The optional first argument gives that already-allowed account tester access to every curriculum stage.
+It cannot add an account to the sign-in allowlist. Omit it to preserve current tester configuration.
+The script uses existing `dlp-production` resources and ACR, builds immutable images, migrates, waits
+for health and runs the anonymous sign-in-wall checks. Override `DLP_RELEASE_GROUP`, `DLP_RELEASE_ACR`
+and `DLP_RELEASE_PREFIX` only when targeting a different existing environment. Builds and live provider
+use consume the existing subscription allowance; no quota increase is performed.
+
+To preserve this role on future full Bicep deployments, put the same explicit email list in the private
+`curriculumAdminEmails` parameter. The default is empty. With GitHub OIDC already configured, the manual
+`deploy` workflow accepts the non-secret `CURRICULUM_ADMIN_EMAILS` repository/environment variable.
+Do not paste credentials or private parameter files into issues, commits or chat.
+
+Live acceptance after deployment:
+
+1. Sign in as the configured tester: all twelve stages open and show a preview badge.
+2. Use a separate explicitly admitted student test account: only pre-A1 opens; a direct A1 URL is refused.
+3. Switch all three language modes in a lesson and confirm the choice survives navigation.
+4. Complete reading, listening, a microphone response and writing. Try a denied microphone and a
+   temporary network loss; the UI must offer a useful recovery without a fabricated success.
+5. Submit a final check with one deliberately unsuccessful skill. The next stage must remain locked.
+6. Complete a successful four-part check under the student account and verify the next stage opens.
+7. Confirm exam listening has audio without a transcript and that answers/model samples are absent.
+8. Verify recording and playback on the actual phone; automated Chromium coverage is not an iOS test.
+
+Native Belgian Dutch review, advanced task calibration and live speech/model behavior remain separate
+acceptance evidence. A successful CI run or container health probe does not establish these results.

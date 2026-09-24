@@ -8,7 +8,7 @@ test.describe("resilience", () => {
     await expect(page.getByTestId("connection-banner")).toHaveCount(0);
 
     await page.route("**/api/**", (route) => route.abort("connectionrefused"));
-    await page.getByRole("navigation", { name: "Hoofdmenu", exact: true }).getByRole("link", { name: "Oefenmissie" }).click();
+    await page.getByRole("navigation", { name: "Hoofdmenu", exact: true }).getByRole("link", { name: "Praktijkgesprekken" }).click();
     const banner = page.getByTestId("connection-banner");
     await expect(banner).toBeVisible();
     await expect(banner).toHaveAttribute("data-state", "api-down");

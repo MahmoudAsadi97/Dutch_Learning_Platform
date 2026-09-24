@@ -1,4 +1,4 @@
-"""Azure AI Speech adapters over the REST endpoints for short audio (push-to-talk turns are ≤ 30 s).
+"""Azure AI Speech adapters over the REST endpoints for short audio (at most 60 seconds).
 
 Status: `integration_pending` — written and unit-tested against recorded response shapes
 (`tests/fixtures/azure/`), never yet called with credentials. Phase B runs `scripts/verify_live.py`
@@ -49,7 +49,7 @@ class AzureSpeechToText(SpeechToText):
 
     def __init__(self, key: str, region: str, locale: str = "nl-BE", *, endpoint: str = "",
                  token_provider: Callable[[], str] | None = None, resource_id: str = "",
-                 transport: httpx.BaseTransport | None = None, timeout_seconds: float = 30.0) -> None:
+                 transport: httpx.BaseTransport | None = None, timeout_seconds: float = 60.0) -> None:
         self.key = key
         self.region = region
         self.locale = locale

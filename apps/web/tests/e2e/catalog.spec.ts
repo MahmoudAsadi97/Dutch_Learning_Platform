@@ -16,16 +16,16 @@ test("the library opens three different four-skill lessons on a phone width", as
 
 test("lunch practice saves answers, a choice-based conversation and a message", async ({ page }) => {
   await page.goto("/missions/lunch-order");
-  await page.getByLabel("€ 6", { exact: true }).check();
-  await page.getByLabel("Aan de toonbank", { exact: true }).check();
+  await page.getByLabel(/^€ 6/).check();
+  await page.getByLabel(/^Aan de toonbank/).check();
   await page.getByTestId("read-check").click();
   await expect(page.getByTestId("score")).toHaveText("2 van 2 juist");
 
   await page.locator(".step-list button").nth(1).click();
   await page.getByTestId("play-clip").click();
   await expect(page.getByTestId("play-count")).toContainText("1× beluisterd");
-  await page.getByLabel("Soep", { exact: true }).check();
-  await page.getByLabel("Ja", { exact: true }).check();
+  await page.getByLabel(/^Soep/).check();
+  await page.getByLabel(/^Ja\b/).check();
   await page.getByTestId("listen-check").click();
   await expect(page.getByTestId("score")).toHaveText("2 van 2 juist");
 
@@ -47,6 +47,7 @@ test("lunch practice saves answers, a choice-based conversation and a message", 
   await page.getByTestId("writing-submit").click();
   await expect(page.getByTestId("writing-done")).toBeVisible();
   await page.goto("/progress");
+  await page.getByText("Voortgang in praktijkgesprekken", { exact: true }).click();
   await page.getByLabel("Oefenmissie", { exact: true }).selectOption("lunch-order");
   await expect(page.locator(".progress-card")).toHaveCount(4);
 });

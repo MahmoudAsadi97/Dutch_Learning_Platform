@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { apiJson } from "@/lib/client/api";
+import { LearningText } from "@/components/LanguageSupport";
 import { Icon } from "@/components/Icon";
 import type { MissionResponse } from "@/lib/types";
 
@@ -33,9 +34,8 @@ export function MissionCatalog() {
           {missions.map(mission => (
             <article className="card catalog-card" key={mission.id}>
               <span className="quiet-badge">{mission.cefr_target}-oefendoelen · 4 vaardigheden</span>
-              <h3>{mission.title.nl}</h3>
-              {mission.title.fa && <p lang="fa" dir="rtl" className="fa">{mission.title.fa}</p>}
-              <p>{mission.description.nl}</p>
+              <h3><LearningText text={mission.title} /></h3>
+              <p><LearningText text={mission.description} /></p>
               <Link className="button secondary" href={`/missions/${mission.id}`}>Oefen {mission.title.nl.toLowerCase()} <Icon name="arrow" size={16} /></Link>
             </article>
           ))}

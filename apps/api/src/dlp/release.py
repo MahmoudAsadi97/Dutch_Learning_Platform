@@ -14,6 +14,7 @@ from sqlalchemy.engine import make_url
 from sqlalchemy.orm import Session
 
 from dlp.domains.content.service import load_all_missions
+from dlp.domains.curriculum.service import curriculum
 
 API_DIR = Path(os.environ.get("DLP_API_DIR", str(Path(__file__).resolve().parents[2]))).resolve()
 LOCK_ID = 742031902
@@ -24,6 +25,8 @@ def migrate(admin_url: str, app_password: str) -> None:
         raise ValueError("Migration database URL and an application password of at least 24 characters are required")
     if make_url(admin_url).get_backend_name() != "postgresql":
         raise ValueError("Migration job requires PostgreSQL")
+    # Validate the complete versioned path before changing the database or any runtime image.
+    curriculum()
     engine = create_engine(admin_url, hide_parameters=True, connect_args={"connect_timeout": 10})
     try:
         with engine.connect() as lock:

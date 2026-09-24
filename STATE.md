@@ -1,5 +1,21 @@
 # State
 
+## Learning path expansion — 2026-09-24
+
+Implemented a twelve-stage course path from pre-A1 through C2, with an A2 → pre-B1 → B1 bridge,
+original stories and four-skill practice, multilingual support, and four-part internal final checks.
+Students are gated by their own persisted results; explicit tester accounts can preview all stages.
+The UI uses a calmer navy/blue design and removes system identifiers from learning feedback.
+
+This is an authored starter curriculum, not complete coverage of every level or every scanned word.
+All nine source PDFs (884 pages) have been indexed; raw OCR and candidate words remain private and
+unverified. See `docs/SOURCE_COVERAGE.md` and `docs/CURRICULUM.md` for scope and review requirements.
+
+The five review passes and full GitHub CI succeeded at `1cee6ff` (PR #5). Final release documentation reruns the same required checks before merge. The owner will deploy the update to Azure
+after the GitHub release; the existing resources are sufficient. `scripts/deploy_current.sh` performs the
+migration-first release and supports an explicit tester email without broadening sign-in access.
+
+
 ## Speech recovery and deployment preflight — 2026-09-22
 
 Follow-up to the green merged release `26ff27d`: speech handlers use the worker pool; actual provider

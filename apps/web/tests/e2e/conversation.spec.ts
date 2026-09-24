@@ -22,13 +22,16 @@ test.describe("speaking step", () => {
 
     // spoken turn: the fake microphone plays the fixture wav, the fixture STT returns a fixed sentence
     const talk = step.getByTestId("talk-button");
-    const box = await talk.boundingBox();
-    if (!box) throw new Error("talk button not visible");
-    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    // Locator hover scrolls the control into view and checks that it receives pointer events.
+    await expect(talk).toBeEnabled();
+    await talk.hover();
     await page.mouse.down();
-    await expect(talk).toHaveAttribute("aria-pressed", "true");
-    await page.waitForTimeout(1200);
-    await page.mouse.up();
+    try {
+      await expect(talk).toHaveAttribute("aria-pressed", "true");
+      await page.waitForTimeout(1200);
+    } finally {
+      await page.mouse.up();
+    }
     const spoken = conversation.getByTestId("turn-learner").first();
     await expect(spoken).toHaveAttribute("data-modality", "speech", { timeout: 30_000 });
     await expect(spoken).toContainText("Ik wil mijn afspraak verzetten.");
