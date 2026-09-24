@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { WritingCoach } from "@/components/WritingCoach";
 import { LearningText } from "@/components/LanguageSupport";
 import { ContentLabel } from "@/components/ContentLabel";
 import { FeedbackPanel } from "@/components/FeedbackPanel";
@@ -226,6 +227,8 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
           </p>
         )}
       </section>
+
+      <WritingCoach stageId="a2" text={text} disabled={busy} onApply={value => {textRef.current = value; setText(value); scheduleSave(value);}}/>
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">

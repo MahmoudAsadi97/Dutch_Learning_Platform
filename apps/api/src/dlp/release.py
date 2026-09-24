@@ -14,6 +14,7 @@ from sqlalchemy.engine import make_url
 from sqlalchemy.orm import Session
 
 from dlp.domains.content.service import load_all_missions
+from dlp.domains.curriculum.library import validate_all_libraries
 from dlp.domains.curriculum.service import curriculum
 
 API_DIR = Path(os.environ.get("DLP_API_DIR", str(Path(__file__).resolve().parents[2]))).resolve()
@@ -27,6 +28,7 @@ def migrate(admin_url: str, app_password: str) -> None:
         raise ValueError("Migration job requires PostgreSQL")
     # Validate the complete versioned path before changing the database or any runtime image.
     curriculum()
+    validate_all_libraries()
     engine = create_engine(admin_url, hide_parameters=True, connect_args={"connect_timeout": 10})
     try:
         with engine.connect() as lock:

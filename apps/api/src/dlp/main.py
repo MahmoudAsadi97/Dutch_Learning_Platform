@@ -16,7 +16,15 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from dlp.api import routes_curriculum, routes_health, routes_missions, routes_practice, routes_progress, routes_speech
+from dlp.api import (
+    routes_curriculum,
+    routes_health,
+    routes_library,
+    routes_missions,
+    routes_practice,
+    routes_progress,
+    routes_speech,
+)
 from dlp.config import Settings, get_settings
 from dlp.domains.jobs.service import JobLoop
 from dlp.observability import configure_telemetry, finish_request, request_span
@@ -100,6 +108,7 @@ def create_app() -> FastAPI:
     app.include_router(routes_progress.router)
     app.include_router(routes_speech.router)
     app.include_router(routes_curriculum.router)
+    app.include_router(routes_library.router)
     return app
 
 

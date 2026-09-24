@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
+import { PhraseAudio } from "@/components/PhraseAudio";
 
 const phrases: { basic: LearningCopy; intermediate: LearningCopy; advanced: LearningCopy }[] = [
   { basic: { nl: "Kunt u dat herhalen?", en: "Could you repeat that?", fa: "می‌توانید آن را تکرار کنید؟" }, intermediate: { nl: "Bedoelt u dat we op een ander moment afspreken?", en: "Do you mean that we should meet at a different time?", fa: "منظورتان این است که در زمان دیگری قرار بگذاریم؟" }, advanced: { nl: "Als ik u goed begrijp, geldt dit voorstel alleen onder bepaalde voorwaarden.", en: "If I understand correctly, this proposal applies only under certain conditions.", fa: "اگر درست متوجه شده باشم، این پیشنهاد فقط تحت شرایط خاصی صدق می‌کند." } },
@@ -18,8 +19,8 @@ export function CommunicationCoach({ stageId }: { stageId: string }) {
       <li><LearningText text={{ nl: "Spreek met de opdracht in beeld en het voorbeeld dicht. Geef een concrete uitleg en stel een passende vervolgvraag.", en: "Keep the task visible and the sample closed. Explain something concrete and ask a relevant follow-up question.", fa: "دستور تمرین را ببین و نمونه را ببند. توضیح مشخصی بده و یک پرسش مرتبط برای ادامهٔ گفت‌وگو بپرس." }}/></li>
       <li><LearningText text={{ nl: "Luister naar je opname. Is je bedoeling duidelijk? Probeer opnieuw met één gerichte verbetering. Een transcript kan fouten bevatten; het is geen uitspraakscore.", en: "Listen back. Is your intention clear? Try again with one focused improvement. A transcript can contain errors; it is not a pronunciation score.", fa: "به ضبطت گوش بده. آیا منظورت روشن است؟ با یک بهبود مشخص دوباره تلاش کن. متن پیاده‌شده ممکن است خطا داشته باشد و نمرهٔ تلفظ نیست." }}/></li>
     </ol>
-    <h4>Het gesprek op gang houden</h4><ul className="communication-phrases">{phrases.map((item, index) => <li key={index}><LearningText text={item[band]}/></li>)}</ul>
+    <h4>Het gesprek op gang houden</h4><ul className="communication-phrases">{phrases.map((item, index) => <li className="phrase-line" key={index}><LearningText text={item[band]}/><PhraseAudio text={item[band].nl}/></li>)}</ul>
     <p><LearningText text={{ nl: "Probeer daarna dezelfde vaardigheid met andere personen, tijden of redenen. Zo oefen je flexibel antwoorden.", en: "Then try the same skill with different people, times or reasons to practise responding flexibly.", fa: "سپس همان مهارت را با افراد، زمان‌ها یا دلایل متفاوت تمرین کن تا پاسخ دادن انعطاف‌پذیر را تمرین کنی." }}/></p>
-    <Link className="button secondary" href="/missions"><LearningText text={{ nl: "Oefen ook een praktisch gesprek", en: "Practise a practical conversation too", fa: "یک گفت‌وگوی کاربردی هم تمرین کن" }}/></Link><p className="course-note"><LearningText text={{ nl: "Extra rollenspellen hebben hun eigen moeilijkheid en openen geen volgend niveau.", en: "Extra role-plays have their own difficulty and do not unlock the next stage.", fa: "گفت‌وگوهای تکمیلی سطح دشواری خودشان را دارند و مرحلهٔ بعد را باز نمی‌کنند." }}/></p>
+    <Link className="button secondary" href="/missions"><LearningText text={{ nl: "Oefen ook een praktisch gesprek", en: "Practise a practical conversation too", fa: "یک گفت‌وگوی کاربردی هم تمرین کن" }}/></Link><p className="course-note"><LearningText text={{ nl: "Kies een rollenspel dat past bij wat je wilt oefenen.", en: "Choose a role-play that matches what you want to practise.", fa: "گفت‌وگویی را انتخاب کن که با هدف تمرینت هماهنگ باشد." }}/></p>
   </details>;
 }

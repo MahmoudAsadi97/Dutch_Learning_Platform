@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { observeNativeAudioFocus, suspendAudioForRecording } from "@/lib/client/audio-focus";
+import { MicrophoneRequestGate } from "@/lib/client/microphone-request";
 
 const MIME_CANDIDATES = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/mp4", "audio/mpeg"];
 
@@ -41,21 +43,28 @@ export function useMimeType(): string | null | undefined {
  * hands the blob to `onRecording`. The microphone is released after every recording and on unmount.
  */
 export function useRecorder(onRecording: (recording: Recording) => void) {
+  useEffect(observeNativeAudioFocus, []);
   const mimeType = useMimeType();
   const [phase, setPhase] = useState<RecorderPhase>("idle");
   const [error, setError] = useState<string>("");
   const recorderRef = useRef<MediaRecorder | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
   const stopTimerRef = useRef<number | null>(null);
   const callbackRef = useRef(onRecording);
+  const requestGate = useRef(new MicrophoneRequestGate());
+  const releaseAudioRef = useRef<(() => void) | null>(null);
+  const mounted = useRef(false);
 
   useEffect(() => {
     callbackRef.current = onRecording;
   });
 
   useEffect(() => {
+    mounted.current = true;
+    const gate = requestGate.current;
     return () => {
+      mounted.current = false;
+      gate.cancel();
       if (stopTimerRef.current !== null) window.clearTimeout(stopTimerRef.current);
       const recorder = recorderRef.current;
       if (recorder && recorder.state !== "inactive") {
@@ -64,24 +73,33 @@ export function useRecorder(onRecording: (recording: Recording) => void) {
       }
       streamRef.current?.getTracks().forEach((track) => track.stop());
       streamRef.current = null;
+      releaseAudioRef.current?.(); releaseAudioRef.current = null;
     };
   }, []);
 
   const start = useCallback(async () => {
-    if (recorderRef.current && recorderRef.current.state === "recording") return;
+    if (requestGate.current.isPending() || (recorderRef.current && recorderRef.current.state === "recording")) return;
     setError("");
+    const releaseAudio = suspendAudioForRecording();
+    releaseAudioRef.current = releaseAudio;
+    const release = () => { releaseAudio(); if (releaseAudioRef.current === releaseAudio) releaseAudioRef.current = null; };
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await requestGate.current.open(() => navigator.mediaDevices.getUserMedia({ audio: true }));
+      if (!stream) { release(); return; }
+      if (!mounted.current) { stream.getTracks().forEach(track => track.stop()); release(); return; }
       streamRef.current = stream;
       const recorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
-      chunksRef.current = [];
+      const chunks: Blob[] = [];
       recorder.ondataavailable = (event) => {
-        if (event.data.size > 0) chunksRef.current.push(event.data);
+        if (event.data.size > 0) chunks.push(event.data);
       };
       recorder.onstop = () => {
+        stream.getTracks().forEach(track => track.stop());
+        if (streamRef.current === stream) streamRef.current = null;
+        release();
+        if (!mounted.current || recorderRef.current !== recorder) return;
         const actualMime = recorder.mimeType || mimeType || "application/octet-stream";
-        const blob = new Blob(chunksRef.current, { type: actualMime });
-        chunksRef.current = [];
+        const blob = new Blob(chunks, { type: actualMime });
         setPhase("idle");
         callbackRef.current({ blob, mimeType: actualMime, fileName: fileNameFor(actualMime) });
       };
@@ -89,12 +107,20 @@ export function useRecorder(onRecording: (recording: Recording) => void) {
       recorderRef.current = recorder;
       setPhase("recording");
     } catch (cause) {
+      streamRef.current?.getTracks().forEach(track => track.stop()); streamRef.current = null;
+      release();
+      if (!mounted.current) return;
       setPhase("idle");
       setError(cause instanceof Error ? `Microfoon niet beschikbaar: ${cause.message}` : "Microfoon niet beschikbaar.");
     }
   }, [mimeType]);
 
   const stop = useCallback(() => {
+    if (requestGate.current.isPending()) {
+      requestGate.current.cancel();
+      releaseAudioRef.current?.(); releaseAudioRef.current = null;
+      return;
+    }
     const recorder = recorderRef.current;
     if (!recorder || recorder.state !== "recording" || stopTimerRef.current !== null) return;
     stopTimerRef.current = window.setTimeout(() => {

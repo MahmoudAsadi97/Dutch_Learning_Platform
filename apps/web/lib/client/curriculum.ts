@@ -35,7 +35,7 @@ export const skillOrder: Skill[] = ["reading", "listening", "speaking", "writing
 export function stageLabel(id: string) { return id.replace(/^pre-/, "pre-").replace(/([abc])([12])$/, (_, letter: string, number: string) => `${letter.toUpperCase()}${number}`); }
 export function friendlyError(status?: number): string {
   if (status === 401) return "Je sessie is verlopen. Meld je opnieuw aan en probeer verder te gaan.";
-  if (status === 403) return "Rond eerst het vorige niveau af. Je voortgang wordt op de server gecontroleerd.";
+  if (status === 403) return "Je hebt nog geen toegang tot deze actie. Oefen voor een eindtoets eerst de vier vaardigheden van dit niveau.";
   if (status === 429) return "Je oefenlimiet is bereikt. Je werk blijft bewaard; probeer later opnieuw.";
   if (status === 422) return "Controleer of je alle onderdelen hebt ingevuld en een nieuwe opname hebt gemaakt.";
   return "Dit lukte even niet. Je invoer blijft staan. Probeer het opnieuw.";

@@ -1,7 +1,7 @@
-"""Course-unit checks with independent skill outcomes, never external CEFR certification.
+"""Open course units with independent skill outcomes, never external CEFR certification.
 
-All progression decisions use authenticated learner data. Models may propose language judgements,
-but cannot select a learner, bypass a gate, replace an audio transcript or change objective marks.
+Any authenticated learner may explore every stage. Models may propose language judgements,
+but cannot select a learner, replace an audio transcript or change objective marks.
 """
 from __future__ import annotations
 
@@ -31,9 +31,10 @@ from dlp.providers.registry import Providers
 
 PROMPT_VERSION = "curriculum-rubric-v1"
 POLICY = {
-    "kind": "internal_course_progression", "receptive_minimum_percent": 75,
+    "kind": "internal_course_checks", "receptive_minimum_percent": 75,
     "all_four_skills_required": True, "productive_all_criteria_required": True,
     "pronunciation_scored": False, "recognized_certificate": False,
+    "open_stage_access": True, "previous_stage_pass_required": False,
 }
 
 
@@ -77,12 +78,9 @@ def passed_stages(session: Session, learner_id: uuid.UUID) -> set[str]:
 
 
 def require_access(session: Session, learner_id: uuid.UUID, stage_id: str, *, admin: bool) -> Stage:
-    stage = stage_for(stage_id)
-    index = next(i for i, item in enumerate(curriculum().stages) if item.id == stage.id)
-    required = {item.id for item in curriculum().stages[:index]}
-    if not admin and not required.issubset(passed_stages(session, learner_id)):
-        raise CurriculumError("complete the previous stage checks before opening this stage", 403)
-    return stage
+    # Identity is enforced by context_dep on every route. Stage access is independent of
+    # assessment history; learner-owned attempts and recordings still have their own checks.
+    return stage_for(stage_id)
 
 
 def practice_completed(session: Session, learner_id: uuid.UUID, stage_id: str) -> list[str]:
@@ -95,7 +93,6 @@ def practice_completed(session: Session, learner_id: uuid.UUID, stage_id: str) -
 
 def catalogue(session: Session, learner_id: uuid.UUID, *, admin: bool, recording_max_seconds: float = 60) -> dict:
     passed = passed_stages(session, learner_id)
-    required: set[str] = set()
     stages = []
     latest_checks = {}
     for attempt in session.scalars(select(CurriculumAttempt).where(
@@ -107,15 +104,13 @@ def catalogue(session: Session, learner_id: uuid.UUID, *, admin: bool, recording
             "status": attempt.status, "results": attempt.results, "admin_preview": False,
         })
     for stage in curriculum().stages:
-        unlocked = admin or required.issubset(passed)
         completed = practice_completed(session, learner_id, stage.id)
         stages.append({
             "id": stage.id, "title": stage.title.model_dump(), "description": stage.description.model_dump(),
-            "cefr_reference": stage.cefr_reference, "unlocked": unlocked, "passed": stage.id in passed,
-            "practice_completed": completed, "test_available": unlocked and (admin or len(completed) == 4),
+            "cefr_reference": stage.cefr_reference, "unlocked": True, "passed": stage.id in passed,
+            "practice_completed": completed, "test_available": admin or len(completed) == 4,
             "content_status": "unreviewed", "latest_check": latest_checks.get(stage.id),
         })
-        required.add(stage.id)
     return {"stages": stages, "admin_bypass": admin, "learner_key": str(learner_id),
             "policy": {**POLICY, "recording_max_seconds": min(60, recording_max_seconds)}}
 
@@ -366,7 +361,7 @@ def submit_attempt(session: Session, settings: Settings, providers: Providers, *
     for task, response in ((test.writing, writing), (test.speaking, transcript)):
         if not task.min_words <= word_count(response) <= task.max_words:
             raise CurriculumError(f"the response must contain {task.min_words}-{task.max_words} words", 422)
-    # Preserve successfully paid-for skill assessments if the second provider call fails. No partial pass unlocks a level.
+    # Preserve paid-for skill assessments if the second call fails. Partial results never award a course-check pass.
     previous = deepcopy(attempt.results or {}) if attempt.submission == submission else {}
     attempt.submission = submission
     attempt.speaking_asset_id = asset.id

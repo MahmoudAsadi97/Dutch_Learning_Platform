@@ -14,6 +14,7 @@ from dlp.config import Settings
 from dlp.db.session import get_session
 from dlp.domains.curriculum import service
 from dlp.domains.curriculum.schemas import Skill, Test
+from dlp.domains.curriculum.writing import writing_feedback
 from dlp.domains.speech.audio import AudioError
 from dlp.domains.speech.service import synthesize_text
 from dlp.domains.usage.service import UsageLimitExceeded
@@ -44,7 +45,12 @@ class SubmitBody(BaseModel):
     speaking_asset_id: uuid.UUID
 
 
-def _run(operation: Callable):
+class WritingFeedbackBody(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    text: str = Field(min_length=1, max_length=12000)
+
+
+def _run(operation: Callable, *, provider_detail: str | None = None):
     try:
         return operation()
     except service.CurriculumError as exc:
@@ -56,7 +62,8 @@ def _run(operation: Callable):
         return JSONResponse(status_code=429, content={"detail": "Your practice allowance is used up. Try again later."})
     except ProviderError:
         return JSONResponse(status_code=503, content={
-            "detail": "The language service is temporarily unavailable. Your check has not been passed; please retry.",
+            "detail": provider_detail or "The language service is temporarily unavailable. "
+            "Your check has not been passed; please retry.",
         })
     except OperationalError as exc:
         if getattr(exc.orig, "sqlstate", "") == "55P03":
@@ -143,6 +150,18 @@ def practice(stage_id: str, body: PracticeBody, ctx: RequestContext = Depends(co
             answers=body.answers, text=body.text, asset_id=body.audio_asset_id, request_id=ctx.request_id,
         )
     return _run(operation)
+
+
+@router.post("/{stage_id}/writing-feedback")
+def lesson_writing_feedback(stage_id: str, body: WritingFeedbackBody, ctx: RequestContext = Depends(context_dep),
+                            settings: Settings = Depends(settings_dep), providers: Providers = Depends(providers_dep),
+                            session: Session = Depends(get_session)):
+    def operation():
+        stage = service.require_access(session, ctx.learner.id, stage_id,
+                                       admin=service.is_admin(settings, ctx.principal.email))
+        return writing_feedback(session, settings, providers, learner_id=ctx.learner.id,
+                                stage_id=stage.id, text=body.text, request_id=ctx.request_id)
+    return _run(operation, provider_detail="Writing feedback is temporarily unavailable. Your draft has not been changed.")
 
 
 @router.post("/{stage_id}/test")

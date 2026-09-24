@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { LearningText } from "@/components/LanguageSupport";
 import { HelpLadder } from "@/components/HelpLadder";
+import { PhraseAudio } from "@/components/PhraseAudio";
 import type { HelpRung, Question, StepProgress } from "@/lib/types";
 
 interface Props {
@@ -59,12 +60,12 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
           <div className="question" key={question.id}>
             <fieldset disabled={busy}>
               <legend>
-                {qIndex + 1}. <LearningText text={question.prompt} />
+                {qIndex + 1}. <LearningText text={question.prompt} /> <PhraseAudio text={question.prompt.nl}/>
               </legend>
               {question.options.map((option, index) => {
                 const id = `${stepKey}-${question.id}-${index}`;
                 return (
-                  <label key={id} htmlFor={id}>
+                  <div key={id} className="question-option-audio"><label htmlFor={id}>
                     <input
                       id={id}
                       type="radio"
@@ -83,7 +84,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
                     <span>
                       <LearningText text={option} />
                     </span>
-                  </label>
+                  </label><PhraseAudio text={option.nl}/></div>
                 );
               })}
               {verdict && (
