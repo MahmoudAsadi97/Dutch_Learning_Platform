@@ -10,18 +10,18 @@ export default function SettingsPage() {
         <div>
           <p className="eyebrow">ALLES OP ZIJN PLEK</p>
           <h1>Jouw leeromgeving.</h1>
-          <p>Je account, je gegevens en de techniek achter je oefeningen.</p>
+          <p>Je account, je gegevens en je gebruikslimieten.</p>
         </div>
       </header>
       <AccountSettings />
       <div className="grid two settings-diagnostics">
-        <section className="card">
-          <h2>Systeemstatus</h2>
+        <details className="card">
+          <summary>Technische ondersteuning</summary>
           <p className="muted small-text">
             Technische controles voor verbinding en ondersteuning.
           </p>
           <StatusPanel />
-        </section>
+        </details>
         <section className="card">
           <h2>Verbruik en budget</h2>
           <p className="muted small-text">

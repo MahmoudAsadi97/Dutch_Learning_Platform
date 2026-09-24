@@ -44,7 +44,7 @@ for (const screen of screens) {
     if (screen.name === "progress")
       await expect(page.locator(".progress-card")).toHaveCount(4);
     if (screen.name === "settings")
-      await expect(page.getByTestId("preflight")).toBeVisible();
+      await expect(page.getByText("Technische ondersteuning", { exact: true })).toBeVisible();
     await page.evaluate(() => document.fonts.ready.then(() => undefined));
     for (const width of [1440, 390, 320]) {
       await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });

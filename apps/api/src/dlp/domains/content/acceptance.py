@@ -109,7 +109,8 @@ def check_a01(session: Session, mission_id: str = "appointment-change") -> Check
     report.add("help_ladder_is_persian_rtl_and_absent_in_checkpoint", help_ok)
 
     slots_ok = all(
-        slot.day >= scenario.reference_date and scenario.appointment.day >= scenario.reference_date
+        slot.day >= scenario.reference_date and
+        (scenario.appointment is None or scenario.appointment.day >= scenario.reference_date)
         for scenario in on_disk.scenarios
         for slot in scenario.available_slots
     )

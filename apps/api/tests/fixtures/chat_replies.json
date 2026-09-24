@@ -3,9 +3,29 @@
     "answer": "fixture",
     "notes": "canned reply; the benchmark harness substitutes per-case models in its dry run"
   },
-  "propose-action-v1": {
+  "propose-action-v2": {
     "notes": "keyword rules on the learner's last utterance; the application validates every proposal in code",
     "rules": [
+      {
+        "any": [
+          "ik wil lunchen"
+        ],
+        "reply": {
+          "action": "state_need",
+          "reason_text": "Ik wil lunchen.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "any": [
+          "een broodje kaas"
+        ],
+        "reply": {
+          "action": "choose_option",
+          "choice_id": "cheese",
+          "confidence": 0.9
+        }
+      },
       {
         "any": [
           "tot dan",

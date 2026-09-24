@@ -44,7 +44,7 @@ def test_workflow_lets_the_code_decide_and_anchors_the_reply(document):
 def test_workflow_refuses_an_invented_slot_and_never_announces_it(document):
     scenario = document.scenario("dentist-base")
     chat = FixtureChatModel(replies={
-        "propose-action-v1": {"action": "accept_slot", "slot_id": "sun-0300", "confidence": 0.9},
+        "propose-action-v2": {"action": "accept_slot", "slot_id": "sun-0300", "confidence": 0.9},
         "character-reply-v1": {"reply_nl": "Genoteerd, uw nieuwe afspraak staat vast op zondag om 3 uur."},
     })
     appointment = {"reason_stated": True, "actions": ["state_reason"]}
@@ -61,7 +61,7 @@ def test_workflow_never_closes_the_call_before_the_code_did(document):
     """Seen on the laptop: the model said "Tot dan! Tot donderdag om tien uur dan." while nothing was accepted."""
     scenario = document.scenario("dentist-base")
     chat = FixtureChatModel(replies={
-        "propose-action-v1": {"action": "confirm", "confidence": 0.9},
+        "propose-action-v2": {"action": "confirm", "confidence": 0.9},
         "character-reply-v1": {"reply_nl": "Tot dan! Tot donderdag om tien uur dan."},
     })
     appointment = {"reason_stated": True, "actions": ["state_reason"]}
@@ -73,7 +73,7 @@ def test_workflow_never_closes_the_call_before_the_code_did(document):
 
     # accepted but not confirmed: a closing line is replaced by the confirmation question
     chat = FixtureChatModel(replies={
-        "propose-action-v1": {"action": "accept_slot", "slot_id": "thu-1000", "confidence": 0.9},
+        "propose-action-v2": {"action": "accept_slot", "slot_id": "thu-1000", "confidence": 0.9},
         "character-reply-v1": {"reply_nl": "Prima, tot dan!"},
     })
     state = run_turn(chat, scenario=scenario, appointment=appointment, history=[], learner_text="Donderdag om tien uur.",
@@ -128,7 +128,7 @@ def test_typed_turns_complete_the_speaking_step_with_evidence_and_usage(client):
     assert body["appointment"]["reason_stated"] is True and body["step_completed"] is False
     assert body["turn"]["character_text"]
     assert body["turn"]["character_audio_asset_id"], "the reply is synthesised"
-    assert body["turn"]["model_calls"][0]["prompt_version"] == "propose-action-v1"
+    assert body["turn"]["model_calls"][0]["prompt_version"] == "propose-action-v2"
 
     second = _say(client, session_id, "turn-0002", "Donderdag om tien uur is goed.").json()
     assert second["appointment"]["accepted_slot_id"] == "thu-1000"

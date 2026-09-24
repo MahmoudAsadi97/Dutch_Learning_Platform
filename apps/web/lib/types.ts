@@ -107,6 +107,7 @@ export interface MissionResponse {
 
 export interface AppointmentStateView {
   reason_stated?: boolean;
+  selected_choice_id?: string;
   offered_slot_ids?: string[];
   accepted_slot_id?: string;
   confirmed?: boolean;
@@ -145,6 +146,8 @@ export interface PracticeSessionView {
 }
 
 export interface ConversationStepInfo {
+  scenario_kind?: "appointment" | "service";
+  choices?: { id: string; label: LocalizedText }[];
   step_key: string;
   type: "speaking" | "checkpoint";
   opening_line: string;

@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session
 
 from dlp.domains.content.service import load_all_missions
 
-API_DIR = Path(__file__).resolve().parents[2]
+API_DIR = Path(os.environ.get("DLP_API_DIR", str(Path(__file__).resolve().parents[2]))).resolve()
 LOCK_ID = 742031902
 
 

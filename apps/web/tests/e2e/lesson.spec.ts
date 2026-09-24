@@ -38,7 +38,7 @@ test.describe("lesson shell: reading step", () => {
     await page.getByRole("button", { name: /Controleer/ }).click();
     await expect(page.getByTestId("score")).toHaveText("2 van 2 juist");
     await expect(page.getByTestId("read-reminder-done")).toBeVisible();
-    await expect(page.getByTestId("session-id")).toContainText(/[0-9a-f-]{36}/);
+    await expect(page.getByTestId("session-saved")).toBeVisible();
 
     // four skill records exist for the learner and mission
     await expect(page.getByTestId("skill-records").locator("li")).toHaveCount(4);
@@ -49,13 +49,12 @@ test.describe("lesson shell: reading step", () => {
   test("the session card starts a session through the CSRF-protected proxy path or shows the resumed one", async ({ page }) => {
     await page.goto("/missions/appointment-change");
     const start = page.getByRole("button", { name: "Start een oefensessie" });
-    const id = page.getByTestId("session-id");
+    const id = page.getByTestId("session-saved");
     await expect(page.getByTestId("reading-text")).toBeVisible();
-    // The UUID is intentionally inside collapsed technical details, not the primary learning UI.
+    // Show a useful saved-state message rather than an internal identifier.
     await expect(start.or(id)).toBeAttached();
     if (await start.isVisible()) await start.click();
-    await expect(id).toContainText(/[0-9a-f-]{36}/);
-    await expect(id).toContainText(/stap: (read-reminder|speak-call)/);
+    await expect(id).toContainText("bewaard");
   });
 
   test("the reading step offers feedback grounded in the recorded answers", async ({ page }) => {
@@ -65,10 +64,11 @@ test.describe("lesson shell: reading step", () => {
     const report = panel.getByTestId("read-reminder-feedback-report");
     await expect(report).toBeVisible({ timeout: 20_000 });
     await expect(page.getByTestId("read-reminder-feedback-points").locator("li")).toHaveCount(2);
-    await expect(page.getByTestId("read-reminder-feedback-dropped")).toContainText("E99");
+    await expect(page.getByTestId("read-reminder-feedback-dropped")).toHaveCount(0);
     await expect(report.locator('[data-kind="strength"]')).toBeVisible();
-    await expect(report).toContainText("1 punt(en) weggelaten zonder geldig bewijs");
-    await expect(report).toContainText("fixture · fixture-chat-v1 · feedback-v1");
+    await expect(report).not.toContainText("feedback-v1");
+    await expect(report).not.toContainText("fixture-chat-v1");
+    await expect(report).not.toContainText("bewijs:");
     await expect(report.locator('[lang="fa"]').first()).toBeVisible();
   });
 });
@@ -76,6 +76,7 @@ test.describe("lesson shell: reading step", () => {
 test.describe("settings", () => {
   test("shows the fixture principal and the preflight table", async ({ page }) => {
     await page.goto("/settings");
+    await page.getByText("Technische ondersteuning", { exact: true }).click();
     await expect(page.getByTestId("principal")).toContainText(OWNER);
     await expect(page.getByTestId("principal")).toContainText("fixture");
     const rows = page.getByTestId("preflight").locator("tbody tr");

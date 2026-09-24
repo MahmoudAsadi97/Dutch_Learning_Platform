@@ -17,7 +17,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 # Dotted paths (see `MissionDocument.iter_localized`) that belong to the fixed Dutch pack.
 PACK_PATH = re.compile(
     r"^(steps\[\d+\]\.payload\.(text|transcript|goal|prompt|questions\[\d+\]\.(prompt|options\[\d+\]))"
-    r"|scenarios\[\d+\]\.(fixed_lines\[\d+\]\.text|reason_options\[\d+\]|available_slots\[\d+\]\.note))$"
+    r"|scenarios\[\d+\]\.(fixed_lines\[\d+\]\.text|reason_options\[\d+\]|available_slots\[\d+\]\.note|choices\[\d+\]\.label))$"
 )
 
 Skill = Literal["reading", "listening", "speaking", "writing"]
@@ -216,6 +216,11 @@ class FixedLine(StrictModel):
     text: LocalizedText
 
 
+class ServiceChoice(StrictModel):
+    id: str = Field(pattern=r"^[a-z0-9_-]+$")
+    label: LocalizedText
+
+
 class Scenario(StrictModel):
     """The situation the character and the learner are in. Slots and rules are authoritative."""
 
@@ -225,15 +230,29 @@ class Scenario(StrictModel):
     setting: LocalizedText
     learner_role: LocalizedText
     character: Character
-    appointment: Appointment
+    kind: Literal["appointment", "service"] = "appointment"
+    appointment: Appointment | None = None
+    choices: list[ServiceChoice] = Field(default_factory=list)
     reason_options: list[LocalizedText] = Field(min_length=1)
-    available_slots: list[Slot] = Field(min_length=2)
+    available_slots: list[Slot] = Field(default_factory=list)
     allowed_actions: list[str] = Field(min_length=1)
     fixed_lines: list[FixedLine] = Field(min_length=3)
     success_criteria: list[LocalizedText] = Field(min_length=1)
 
     @model_validator(mode="after")
     def _slots_after_reference(self) -> Scenario:
+        if self.kind == "appointment" and (self.appointment is None or len(self.available_slots) < 2):
+            raise ValueError("appointment scenarios need an appointment and at least two slots")
+        if self.kind == "service":
+            if self.appointment is not None or self.available_slots or len(self.choices) < 2:
+                raise ValueError("service scenarios need at least two choices and no appointment slots")
+            if len({choice.id for choice in self.choices}) != len(self.choices):
+                raise ValueError("service choice ids must be unique")
+            if set(self.allowed_actions) - {"state_need", "choose_option", "ask_repeat", "confirm", "cancel"}:
+                raise ValueError("unsupported service action")
+            phases = {line.when for line in self.fixed_lines}
+            if not {"opening", "ask_reason", "offer_slots", "confirm", "closing", "repeat", "clarify"} <= phases:
+                raise ValueError("service scenarios need a reply for every conversation phase")
         seen: set[str] = set()
         for slot in self.available_slots:
             if slot.id in seen:
@@ -241,7 +260,7 @@ class Scenario(StrictModel):
             seen.add(slot.id)
             if slot.day < self.reference_date:
                 raise ValueError(f"slot {slot.id} lies before the scenario reference date")
-        if self.appointment.day < self.reference_date:
+        if self.appointment and self.appointment.day < self.reference_date:
             raise ValueError("the current appointment lies before the scenario reference date")
         return self
 

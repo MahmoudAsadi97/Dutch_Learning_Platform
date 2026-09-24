@@ -416,3 +416,10 @@ table.plain td {
   border-bottom: 1px solid var(--line);
   padding: 0.6rem 1rem;
 }
+
+/* Exercise library: cards wrap without horizontal scrolling on phones. */
+.mission-catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.catalog-card { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; margin: 0; }
+.catalog-card h3, .catalog-card p { margin: 0; }
+.catalog-card .button { margin-top: auto; white-space: normal; }
+.settings-diagnostics details > summary { cursor: pointer; font-weight: 600; }

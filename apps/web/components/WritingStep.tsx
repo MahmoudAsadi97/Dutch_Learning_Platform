@@ -128,7 +128,7 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
       onProgressChanged();
       setNotice(
         `Ingediend: ${result.word_count} woorden.` +
-          (result.missing.length > 0 ? ` Ontbreekt nog: ${result.missing.join(", ")}.` : " Alle vereiste woorden staan erin."),
+          (result.missing.length > 0 ? ` Ontbreekt nog: ${result.missing.join(", ")}.` : payload.must_include.length ? " Alle vereiste woorden staan erin." : " Lees uw bericht na en vraag feedback."),
       );
     } catch (cause) {
       setError(cause instanceof ApiError ? cause.detail : "Indienen mislukt: geen verbinding.");
@@ -156,7 +156,7 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
           {payload.prompt.fa}
         </p>
         <p className="muted" style={{ fontSize: "0.85rem" }}>
-          {payload.min_words}–{payload.max_words} woorden · gebruik: {payload.must_include.join(", ")}
+          {payload.min_words}–{payload.max_words} woorden{payload.must_include.length > 0 && ` · gebruik: ${payload.must_include.join(", ")}`}
         </p>
       </section>
 
@@ -213,7 +213,7 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
           </button>
           {progress?.completed && (
             <span className="label ok" style={{ marginInlineStart: "0.75rem" }} data-testid="writing-done">
-              ingediend als getypt bewijs
+              bericht opgeslagen
             </span>
           )}
         </p>

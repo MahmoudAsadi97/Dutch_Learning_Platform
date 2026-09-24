@@ -6,7 +6,8 @@ FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
-    DLP_CONTENT_DIR=/app/content
+    DLP_CONTENT_DIR=/app/content \
+    DLP_API_DIR=/app/apps/api
 
 # ffmpeg/ffprobe canonicalise the uploads; the Azure providers need nothing else from apt.
 RUN apt-get update \

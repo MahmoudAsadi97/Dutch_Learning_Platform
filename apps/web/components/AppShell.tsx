@@ -14,8 +14,8 @@ const links: { href: string; label: string; short: string; icon: IconName }[] =
   [
     { href: "/", label: "Mijn leerplek", short: "Vandaag", icon: "home" },
     {
-      href: "/missions/appointment-change",
-      label: "Oefenmissie",
+      href: "/missions",
+      label: "Oefenmissies",
       short: "Oefenen",
       icon: "book",
     },
@@ -112,7 +112,7 @@ export function AppShell({
               <Link
                 key={link.href}
                 href={link.href}
-                aria-current={path === link.href ? "page" : undefined}
+                aria-current={(path === link.href || (link.href === "/missions" && path.startsWith("/missions/"))) ? "page" : undefined}
               >
                 <Icon name={link.icon} />
                 <span>{link.label}</span>
@@ -135,7 +135,7 @@ export function AppShell({
                 <br />
                 Eén gesprek tegelijk.
               </p>
-              <Link href="/missions/appointment-change">
+              <Link href="/missions">
                 Verder oefenen <Icon name="arrow" size={16} />
               </Link>
             </div>
@@ -202,7 +202,7 @@ export function AppShell({
             <Link
               key={link.href}
               href={link.href}
-              aria-current={path === link.href ? "page" : undefined}
+              aria-current={(path === link.href || (link.href === "/missions" && path.startsWith("/missions/"))) ? "page" : undefined}
             >
               <Icon name={link.icon} size={21} />
               <span>{link.short}</span>

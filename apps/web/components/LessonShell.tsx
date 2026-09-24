@@ -231,7 +231,7 @@ export function LessonShell({ missionId }: Props) {
     return (
       <div className="card" role="alert">
         <p className="error">{state.message}</p>
-        {state.requestId && <p className="mono">request {state.requestId}</p>}
+
         <button
           type="button"
           className="button"
@@ -266,9 +266,7 @@ export function LessonShell({ missionId }: Props) {
           </p>
           <p>
             <ContentLabel status={mission.review.unreviewed === 0 ? "reviewed" : "unreviewed"} labelNl={mission.labels.unreviewed_nl} labelFa={mission.labels.unreviewed_fa} />
-            <span className="muted review-count" style={{ fontSize: "0.75rem" }}>
-              {mission.review.unreviewed} van {mission.review.total_texts} teksten nog niet nagekeken
-            </span>
+
           </p>
           <ol className="step-list">
             {steps.map((step, index) => {
@@ -287,7 +285,7 @@ export function LessonShell({ missionId }: Props) {
         <div className="card">
           <h2 style={{ fontSize: "1rem" }}>Sessie</h2>
           {baseSession ? (
-            <><p className="small-text muted">Je werk wordt tijdens het oefenen bewaard.</p><details className="lesson-details"><summary>Sessiegegevens</summary><p className="mono" data-testid="session-id">{baseSession.id}<br />stap: {baseSession.current_step_key}</p></details></>
+            <p className="small-text muted" data-testid="session-saved">Je werk wordt tijdens het oefenen bewaard.</p>
           ) : (
             <button type="button" className="button" onClick={() => void startSession("base")} disabled={busy}>
               Start een oefensessie
