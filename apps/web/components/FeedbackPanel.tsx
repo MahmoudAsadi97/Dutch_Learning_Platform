@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { LearningText } from "@/components/LanguageSupport";
 import { ApiError, apiJson, newRequestId } from "@/lib/client/api";
 import type { FeedbackReportView, SessionDetail } from "@/lib/types";
 
@@ -59,7 +60,7 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
   return (
     <section className="card" aria-labelledby={`${stepKey}-feedback-heading`} data-testid={`${stepKey}-feedback`}>
       <h3 id={`${stepKey}-feedback-heading`}>
-        Feedback · <span className="fa" lang="fa" style={{ display: "inline" }}>بازخورد</span>
+        <LearningText text={{nl: "Feedback", en: "Feedback", fa: "بازخورد"}} />
       </h3>
       <p className="muted" style={{ fontSize: "0.85rem" }}>
         Wat gaat goed en wat kunt u verder oefenen? Automatische feedback, nog niet nagekeken.
@@ -76,26 +77,16 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
       )}
       {latest && (
         <div data-testid={`${stepKey}-feedback-report`}>
-          <p lang="nl">{latest.summary_nl}</p>
-          {latest.summary_fa && (
-            <p className="fa" lang="fa" dir="rtl">
-              {latest.summary_fa}
-            </p>
-          )}
+          <p><LearningText text={{nl: latest.summary_nl, en: latest.summary_en, fa: latest.summary_fa}} /></p>
           <ul className="feedback-points" data-testid={`${stepKey}-feedback-points`}>
             {latest.points.map((point, index) => {
               const label = KIND_LABEL[point.kind] ?? KIND_LABEL.suggestion;
               return (
                 <li key={`${latest.id}-${index}`} data-kind={point.kind}>
                   <span className={`label ${label.className}`}>
-                    {label.nl} · <span className="fa" lang="fa" style={{ display: "inline" }}>{label.fa}</span>
+                    <LearningText text={label} />
                   </span>
-                  <span lang="nl">{point.text_nl}</span>
-                  {point.text_fa && (
-                    <span className="fa" lang="fa" dir="rtl" style={{ display: "block" }}>
-                      {point.text_fa}
-                    </span>
-                  )}
+                  <LearningText text={{nl: point.text_nl, en: point.text_en, fa: point.text_fa}} />
                   {point.quote && (
                     <span className="muted" style={{ display: "block", fontSize: "0.9rem" }} lang="nl">
                       „{point.quote}”{point.correction && ` → ${point.correction}`}

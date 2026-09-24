@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { LearningText } from "@/components/LanguageSupport";
 import { HelpLadder } from "@/components/HelpLadder";
 import type { HelpRung, Question, StepProgress } from "@/lib/types";
 
@@ -58,12 +59,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
           <div className="question" key={question.id}>
             <fieldset disabled={busy}>
               <legend>
-                <span lang="nl">
-                  {qIndex + 1}. {question.prompt.nl}
-                </span>
-                <span className="fa" lang="fa" style={{ display: "block" }}>
-                  {question.prompt.fa}
-                </span>
+                {qIndex + 1}. <LearningText text={question.prompt} />
               </legend>
               {question.options.map((option, index) => {
                 const id = `${stepKey}-${question.id}-${index}`;
@@ -85,10 +81,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
                       }}
                     />
                     <span>
-                      <span lang="nl">{option.nl}</span>
-                      <span className="fa muted" lang="fa" style={{ display: "block", fontSize: "0.9rem" }}>
-                        {option.fa}
-                      </span>
+                      <LearningText text={option} />
                     </span>
                   </label>
                 );
@@ -112,7 +105,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
       })}
       <div className="status-line">
         <button type="button" className="button" onClick={() => void check()} disabled={!allChosen || busy} data-testid={`${stepKey}-check`}>
-          {busy ? "Bezig…" : "Controleer"} · <span className="fa" lang="fa" style={{ display: "inline" }}>بررسی</span>
+          <LearningText text={{nl: busy ? "Bezig…" : "Controleer", en: busy ? "Checking…" : "Check", fa: busy ? "در حال بررسی…" : "بررسی"}} />
         </button>
         {checked && (
           <span data-testid="score" aria-live="polite">

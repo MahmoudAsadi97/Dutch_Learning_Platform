@@ -1,3 +1,6 @@
+"use client";
+
+import { LearningText } from "@/components/LanguageSupport";
 import { ContentLabel } from "@/components/ContentLabel";
 import type { Step } from "@/lib/types";
 
@@ -12,18 +15,12 @@ export function StepHeader({ step, labels, children }: Props) {
   return (
     <header className="step-header">
       <h2 id="step-title">
-        {step.title.nl}
-        <span className="fa" lang="fa" style={{ display: "block", fontSize: "1rem", fontWeight: 400 }}>
-          {step.title.fa}
-        </span>
+        <LearningText text={step.title} />
       </h2>
       <p>
         <ContentLabel status={step.instructions.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
       </p>
-      <p lang="nl">{step.instructions.nl}</p>
-      <p className="fa" lang="fa">
-        {step.instructions.fa}
-      </p>
+      <p><LearningText text={step.instructions} /></p>
       {children}
     </header>
   );

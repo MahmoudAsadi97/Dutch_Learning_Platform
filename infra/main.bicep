@@ -15,6 +15,8 @@ param webImage string = ''
 param authClientId string = ''
 param allowedPrincipalObjectIds array = []
 param ownerAllowlist string = ''
+@description('Verified account emails allowed to preview locked curriculum stages. Empty grants no tester bypass.')
+param curriculumAdminEmails string = ''
 @secure()
 param authClientSecret string
 @secure()
@@ -327,6 +329,7 @@ resource api 'Microsoft.App/containerApps@2024-03-01' = if (deployApplications) 
           { name: 'APP_ENV', value: 'production' }
           { name: 'DEV_AUTH_ENABLED', value: 'false' }
           { name: 'OWNER_ALLOWLIST', value: ownerAllowlist }
+          { name: 'CURRICULUM_ADMIN_EMAILS', value: curriculumAdminEmails }
           { name: 'ASSERTION_SIGNING_KEY', secretRef: 'assertion-signing-key' }
           { name: 'DATABASE_URL', secretRef: 'database-url' }
           { name: 'PGSSLROOTCERT', value: '/etc/ssl/certs/ca-certificates.crt' }
@@ -337,6 +340,7 @@ resource api 'Microsoft.App/containerApps@2024-03-01' = if (deployApplications) 
           { name: 'AZURE_CHAT_DEPLOYMENT_SMALL', value: 'chat-small' }
           { name: 'AZURE_CHAT_DEPLOYMENT_STRONG', value: empty(strongModelName) ? 'chat-small' : 'chat-strong' }
           { name: 'STT_PROVIDER', value: 'azure' }
+          { name: 'MAX_AUDIO_SECONDS', value: '60' }
           { name: 'TTS_PROVIDER', value: 'azure' }
           { name: 'AZURE_SPEECH_REGION', value: location }
           { name: 'AZURE_SPEECH_RESOURCE_ID', value: speech.id }

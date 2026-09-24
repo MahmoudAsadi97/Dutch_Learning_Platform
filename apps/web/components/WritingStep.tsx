@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { LearningText } from "@/components/LanguageSupport";
 import { ContentLabel } from "@/components/ContentLabel";
 import { FeedbackPanel } from "@/components/FeedbackPanel";
 import { HelpLadder } from "@/components/HelpLadder";
@@ -151,10 +152,7 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
         <p>
           <ContentLabel status={payload.prompt.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
         </p>
-        <p lang="nl">{payload.prompt.nl}</p>
-        <p className="fa" lang="fa">
-          {payload.prompt.fa}
-        </p>
+        <p><LearningText text={payload.prompt} /></p>
         <p className="muted" style={{ fontSize: "0.85rem" }}>
           {payload.min_words}–{payload.max_words} woorden{payload.must_include.length > 0 && ` · gebruik: ${payload.must_include.join(", ")}`}
         </p>
@@ -231,7 +229,7 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">
-          Hulp · <span className="fa" lang="fa" style={{ display: "inline" }}>کمک</span>
+          <LearningText text={{nl: "Hulp", en: "Help", fa: "کمک"}} />
         </h3>
         <HelpLadder rungs={payload.help} idPrefix={step.key} onReveal={help} />
       </section>

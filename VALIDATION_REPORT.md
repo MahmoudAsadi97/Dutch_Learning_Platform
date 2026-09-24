@@ -1,5 +1,30 @@
 # Validation report
 
+## Twelve-stage learning release — 2026-09-24
+
+Five focused improvement/review passes cover curriculum, learning interaction, interface,
+server reliability and release validation. This entry describes the current release;
+older entries below are historical evidence for their named versions.
+
+| Pass | Concrete improvements | Verification |
+|---|---|---|
+| 1 — Curriculum | Twelve ordered stages; explicit A2-to-B1 bridge; four independent skills and separate final tasks; original stories and trilingual content; source grammar mappings. | Strict schemas, complete translations, valid answer indexes, unique activity IDs, sample length/excerpt checks. |
+| 2 — Learning interaction | Five-word active recall rounds, learner-selected retries, original example sentences, a goal/record/reflect speaking scaffold and links to practical role-play. | Browser regressions cover delayed answer reveal, targeted retry, language switching without lost input and no assessment credit from self-rating. |
+| 3 — UX | Navy/blue design, stage map, separate skill progress, three support modes, one audio player, protected recording navigation, duration/word guidance and recoverable drafts. | TypeScript, ESLint and production build pass locally. Responsive Chromium and accessibility checks run in CI. |
+| 4 — Reliability | Server progression gates, explicit admin preview, private assessment materials, owned fresh audio, immutable submission retry, account-isolated export and release safeguards. | Local API: **166 passed, 83 skipped** (database/storage unavailable here). Release checks: **26 passed**. Source-import checks: **4 passed**. Required PostgreSQL checks run in CI. |
+| 5 — Release | Migration-first immutable images, exact-commit main CI gate, preserved authentication and existing Azure services. | Full GitHub CI pending for this release; this row will be updated with its result. Azure deployment is deliberately left to the owner. |
+
+Client regression suite: **5 passed**. Local skips are not evidence of working integrations.
+Browser fixture tests and mocked failure tests establish software behavior, not model quality,
+pronunciation accuracy, CEFR certification or improved learning outcomes. No new live Azure
+model/speech call, actual-phone microphone check or qualified language review is claimed.
+
+The OCR checkpoint covers 884 pages; 22,138 deduplicated surface tokens are unverified candidates,
+not approved vocabulary lessons. New original teaching content remains marked unreviewed.
+Some advanced writing models are explicitly labelled opening excerpts; their full-response
+word targets have not been reduced to fit those excerpts.
+
+
 ## Speech recovery and Azure configuration checks — 2026-09-22
 
 Baseline: merged release `26ff27d`, whose [main CI run](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/35741018022)

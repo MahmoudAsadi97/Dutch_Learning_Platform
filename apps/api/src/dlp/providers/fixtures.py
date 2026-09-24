@@ -67,6 +67,8 @@ class FixtureChatModel(ChatModel):
         if len(self.calls) in self.fail_calls:
             raise ProviderError("injected fixture failure")
         reply = _select_reply(self.replies.get(prompt_version), messages)
+        if reply is None and prompt_version == "curriculum-rubric-v1":
+            reply = _curriculum_fixture(messages)
         parsed: BaseModel | None = None
         if schema is not None:
             if isinstance(reply, dict):
@@ -222,3 +224,22 @@ def _example_for(schema: type[BaseModel]) -> BaseModel:
         else:
             values[name] = None
     return schema.model_validate(values)
+
+
+def _curriculum_fixture(messages: list[ChatMessage]) -> dict[str, Any]:
+    """Exercise the interface in CI without pretending a fixture validated somebody's language."""
+    criteria: list = []
+    for message in messages:
+        if message.role == "system" and "Criteria: " in message.content:
+            criteria = json.loads(message.content.split("Criteria: ", 1)[1].split("\n", 1)[0])
+    feedback = {
+        "nl": "Testweergave: uw antwoord is opgeslagen, maar uw taal is niet beoordeeld.",
+        "en": "Test preview: your answer was saved, but your language was not assessed.",
+        "fa": "نمایش آزمایشی: پاسخ ذخیره شد، اما زبان شما ارزیابی نشده است.",
+    }
+    return {
+        "language_is_dutch": False,
+        "criteria": [{"criterion_index": index, "met": False, "quote": "", "feedback": feedback}
+                     for index in range(len(criteria))],
+        "feedback": feedback,
+    }

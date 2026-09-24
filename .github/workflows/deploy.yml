@@ -23,6 +23,7 @@ jobs:
       RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
       ACR_NAME: ${{ vars.AZURE_ACR_NAME }}
       APP_PREFIX: ${{ vars.AZURE_APP_PREFIX || 'dlp' }}
+      CURRICULUM_ADMIN_EMAILS: ${{ vars.CURRICULUM_ADMIN_EMAILS }}
       RELEASE_SHA: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
@@ -49,8 +50,12 @@ jobs:
           server="$(az acr show --name "$ACR_NAME" --query loginServer -o tsv)"
           api_digest="$(az acr repository show --name "$ACR_NAME" --image "dlp-api:$RELEASE_SHA" --query digest -o tsv)"
           web_digest="$(az acr repository show --name "$ACR_NAME" --image "dlp-web:$RELEASE_SHA" --query digest -o tsv)"
+          admin_args=()
+          if [ -n "$CURRICULUM_ADMIN_EMAILS" ]; then
+            admin_args=(--curriculum-admin-emails "$CURRICULUM_ADMIN_EMAILS")
+          fi
           python3 scripts/azure_release.py deploy --resource-group "$RESOURCE_GROUP" --prefix "$APP_PREFIX" \
-            --api-image "$server/dlp-api@$api_digest" --web-image "$server/dlp-web@$web_digest"
+            --api-image "$server/dlp-api@$api_digest" --web-image "$server/dlp-web@$web_digest" "${admin_args[@]}"
       - name: Verify the public sign-in boundary without paid provider calls
         run: |
           host="$(az containerapp show -g "$RESOURCE_GROUP" -n "$APP_PREFIX-web" --query properties.configuration.ingress.fqdn -o tsv)"

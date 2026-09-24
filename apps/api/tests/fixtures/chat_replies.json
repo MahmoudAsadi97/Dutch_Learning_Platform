@@ -199,7 +199,7 @@
       "reply_nl": "Sorry, kunt u dat herhalen?"
     }
   },
-  "feedback-v1": {
+  "feedback-v2": {
     "notes": "one point per kind; the third cites a handle that does not exist and must be dropped by the application",
     "summary_nl": "U hebt de opdracht gedaan. Uw zinnen zijn kort en duidelijk.",
     "summary_fa": "شما تمرین را انجام دادید. جمله‌های شما کوتاه و روشن هستند.",
@@ -213,7 +213,8 @@
         "correction": "",
         "evidence": [
           "E1"
-        ]
+        ],
+        "text_en": "You gave your reason straight away."
       },
       {
         "kind": "suggestion",
@@ -224,7 +225,8 @@
         "evidence": [
           "E1",
           "E2"
-        ]
+        ],
+        "text_en": "Also state the day and time of the new appointment."
       },
       {
         "kind": "error",
@@ -234,8 +236,10 @@
         "correction": "",
         "evidence": [
           "E99"
-        ]
+        ],
+        "text_en": "This point refers to evidence that does not exist."
       }
-    ]
+    ],
+    "summary_en": "You completed the task. Your sentences are short and clear."
   }
 }

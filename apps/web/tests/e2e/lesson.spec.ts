@@ -14,9 +14,10 @@ test.describe("lesson shell: reading step", () => {
     await expect(page.locator('[data-review="unreviewed"]').first()).toBeVisible();
     await expect(page.locator('[data-review="reviewed"]')).toHaveCount(0);
 
+    await page.getByLabel(/Taalhulp/).selectOption("nl-fa");
     // Persian rendering is right-to-left and hidden until asked for
     await expect(page.getByTestId("reading-text-fa")).toHaveCount(0);
-    await page.getByRole("button", { name: /Perzische vertaling/ }).click();
+    await page.getByRole("button", { name: /Toon de vertaling/ }).click();
     const persian = page.getByTestId("reading-text-fa");
     await expect(persian).toBeVisible();
     await expect(persian).toHaveAttribute("dir", "rtl");
@@ -59,6 +60,7 @@ test.describe("lesson shell: reading step", () => {
 
   test("the reading step offers feedback grounded in the recorded answers", async ({ page }) => {
     await page.goto("/missions/appointment-change");
+    await page.getByLabel(/Taalhulp/).selectOption("nl-fa");
     const panel = page.getByTestId("read-reminder-feedback");
     await panel.getByTestId("read-reminder-feedback-ask").click();
     const report = panel.getByTestId("read-reminder-feedback-report");

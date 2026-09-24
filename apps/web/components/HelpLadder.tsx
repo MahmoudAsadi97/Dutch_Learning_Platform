@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 
+import { LearningText, useLanguageSupport } from "@/components/LanguageSupport";
 import type { HelpRung } from "@/lib/types";
 
 interface Props {
@@ -23,6 +24,7 @@ const KIND_LABEL: Record<HelpRung["kind"], { nl: string; fa: string }> = {
  * Every rung opened is reported to the parent, which records it as help-usage evidence.
  */
 export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Props) {
+  const { showEnglish, showPersian } = useLanguageSupport();
   const [revealed, setRevealed] = useState(0);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -49,7 +51,7 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
   if (disabled) {
     return (
       <p className="muted" data-help="disabled">
-        Geen hulp beschikbaar in deze stap. <span className="fa" lang="fa" style={{ display: "inline" }}>در این بخش کمکی در دسترس نیست.</span>
+        <LearningText text={{nl: "Geen hulp beschikbaar in deze stap.", en: "Help is not available in this independent step.", fa: "در این بخش کمکی در دسترس نیست."}} />
       </p>
     );
   }
@@ -60,17 +62,18 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
         {ordered.slice(0, revealed).map((rung) => (
           <li key={`${idPrefix}-${rung.level}`}>
             <div className="muted" style={{ fontSize: "0.8rem" }}>
-              {KIND_LABEL[rung.kind].nl} · <span className="fa" lang="fa" style={{ display: "inline" }}>{KIND_LABEL[rung.kind].fa}</span>
+              <LearningText text={KIND_LABEL[rung.kind]} />
             </div>
             {/* Glosses mix "Dutch = Persian" pairs: dir=auto keeps the pair order readable while each Persian run stays RTL. */}
-            <div
+            {(rung.direction === "ltr" || showPersian) && <div
               className={`rung ${rung.direction === "rtl" ? "fa" : "nl"}`}
               lang={rung.direction === "rtl" ? "fa" : "nl"}
               dir={rung.kind === "gloss_fa" ? "auto" : rung.direction}
               style={rung.kind === "gloss_fa" ? { textAlign: "start" } : undefined}
             >
               {rung.text}
-            </div>
+            </div>}
+            {showEnglish && rung.en && <div className="rung" lang="en">{rung.en}</div>}
           </li>
         ))}
       </ol>
@@ -82,7 +85,7 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
           aria-busy={busy}
           onClick={() => void reveal()}
         >
-          Hulp niveau {next.level} · <span className="fa" lang="fa" style={{ display: "inline" }}>کمک سطح {next.level}</span>
+          <LearningText text={{nl: `Hulp niveau ${next.level}`, en: `Hint ${next.level}`, fa: `کمک سطح ${next.level}`}} />
         </button>
       ) : (
         <p className="muted">Alle hulp is getoond.</p>

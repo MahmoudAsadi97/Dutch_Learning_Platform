@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { LearningText } from "@/components/LanguageSupport";
 import { ContentLabel } from "@/components/ContentLabel";
 import { FeedbackPanel } from "@/components/FeedbackPanel";
 import { HelpLadder } from "@/components/HelpLadder";
@@ -236,18 +237,12 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
     <article aria-labelledby="step-title" data-step={step.key} data-step-type={payload.type}>
       <header>
         <h2 id="step-title">
-          {step.title.nl}
-          <span className="fa" lang="fa" style={{ display: "block", fontSize: "1rem", fontWeight: 400 }}>
-            {step.title.fa}
-          </span>
+          <LearningText text={step.title} />
         </h2>
         <p>
           <ContentLabel status={step.instructions.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
         </p>
-        <p lang="nl">{step.instructions.nl}</p>
-        <p className="fa" lang="fa">
-          {step.instructions.fa}
-        </p>
+        <p><LearningText text={step.instructions} /></p>
         {checkpoint && (
           <p>
             <span className="label warn" data-testid="checkpoint-rules">
@@ -262,10 +257,7 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
         <p>
           <ContentLabel status={payload.goal.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
         </p>
-        <p lang="nl">{payload.goal.nl}</p>
-        <p className="fa" lang="fa">
-          {payload.goal.fa}
-        </p>
+        <p><LearningText text={payload.goal} /></p>
       </section>
 
       {!session ? (

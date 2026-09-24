@@ -114,7 +114,7 @@ def test_feedback_cites_only_real_evidence(client):
                            json={"step_key": "read-reminder"})
     assert response.status_code == 200, response.text
     report = response.json()["report"]
-    assert report["skill"] == "reading" and report["prompt_version"] == "feedback-v1"
+    assert report["skill"] == "reading" and report["prompt_version"] == "feedback-v2"
     assert report["summary_nl"] and report["summary_fa"]
     assert [p["kind"] for p in report["points"]] == ["strength", "suggestion"], "the point citing E99 was dropped"
     assert report["dropped_points"] == 1

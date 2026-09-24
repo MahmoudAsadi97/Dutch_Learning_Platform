@@ -2,13 +2,25 @@
 
 import { useState } from "react";
 import { Icon } from "@/components/Icon";
+import { useLanguageSupport } from "@/components/LanguageSupport";
 import { apiFetch } from "@/lib/client/api";
 import { useLearningData } from "@/lib/client/learning";
 
 export function AccountSettings() {
+  const { mode } = useLanguageSupport();
   const { data, error, retry } = useLearningData();
   const [exporting, setExporting] = useState(false);
   const [notice, setNotice] = useState("");
+  function clearDrafts() {
+    for (const name of ["sessionStorage", "localStorage"] as const) {
+      try {
+        const storage = window[name];
+        for (const key of Object.keys(storage)) {
+          if (key.startsWith("taalstudio.draft.") || key.startsWith("taalstudio.test.")) storage.removeItem(key);
+        }
+      } catch { /* Disabled storage must not prevent signing out. */ }
+    }
+  }
   async function download() {
     setExporting(true);
     setNotice("");
@@ -65,10 +77,7 @@ export function AccountSettings() {
             <div>
               <dt>Taal voor hulp</dt>
               <dd>
-                Perzisch{" "}
-                <span lang="fa" dir="rtl">
-                  · فارسی
-                </span>
+                {mode === "nl-en" ? "English" : mode === "nl-fa" ? "فارسی" : "فارسی · English"}
               </dd>
             </div>
           </dl>
@@ -77,6 +86,7 @@ export function AccountSettings() {
           Accountgegevens komen uit je aanmelding. Je studiegegevens blijven aan
           dit account gekoppeld.
         </p>
+        <a className="button secondary" href="/.auth/logout?post_logout_redirect_uri=/" onClick={clearDrafts}>Afmelden</a>
       </section>
       <section className="card">
         <div className="section-heading">

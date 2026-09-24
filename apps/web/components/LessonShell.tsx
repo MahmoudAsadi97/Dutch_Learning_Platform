@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { LearningText } from "@/components/LanguageSupport";
 import { ContentLabel } from "@/components/ContentLabel";
 import { ListeningStep } from "@/components/ListeningStep";
 import { ReadingStep } from "@/components/ReadingStep";
@@ -256,10 +257,7 @@ export function LessonShell({ missionId }: Props) {
       <aside aria-label="Stappen">
         <div className="card">
           <h1 style={{ fontSize: "1.25rem" }}>
-            {mission.title.nl}
-            <span className="fa" lang="fa" style={{ display: "block", fontSize: "1rem", fontWeight: 400 }}>
-              {mission.title.fa}
-            </span>
+            <LearningText text={mission.title} />
           </h1>
           <p className="muted lesson-title-meta" style={{ fontSize: "0.85rem" }}>
             {mission.cefr_target}-oefendoelen · {steps.length} stappen
@@ -358,18 +356,12 @@ export function LessonShell({ missionId }: Props) {
         ) : active ? (
           <article className="card" data-step={active.key}>
             <h2>
-              {active.title.nl}
-              <span className="fa" lang="fa" style={{ display: "block", fontSize: "1rem", fontWeight: 400 }}>
-                {active.title.fa}
-              </span>
+              <LearningText text={active.title} />
             </h2>
             <p>
               <ContentLabel status={active.instructions.review_status} labelNl={mission.labels.unreviewed_nl} labelFa={mission.labels.unreviewed_fa} />
             </p>
-            <p lang="nl">{active.instructions.nl}</p>
-            <p className="fa" lang="fa">
-              {active.instructions.fa}
-            </p>
+            <p><LearningText text={active.instructions} /></p>
             <p className="muted">Deze stap ({active.payload.type}) heeft nog geen weergave.</p>
           </article>
         ) : null}

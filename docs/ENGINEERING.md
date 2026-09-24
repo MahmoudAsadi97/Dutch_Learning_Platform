@@ -220,3 +220,40 @@ Every variable lives in `.env.example` with a comment. Secrets: `ASSERTION_SIGNI
 `AZURE_STORAGE_CONNECTION_STRING` (the published Azurite string is not a secret). The web tier
 reads `APP_ENV`, `DEV_AUTH_ENABLED`, `DEV_OWNER_EMAIL`, `DEV_OWNER_NAME`, `API_INTERNAL_URL` and the
 `ASSERTION_*` variables; the API reads the rest. `scripts/run.py` passes the root `.env` to both.
+
+## Learning-path boundary
+
+`content/curriculum/path.json` contains original lesson units and separate final checks. It is validated
+before release migrations. `domains/curriculum` owns schema validation, practice records, versioned
+assessment snapshots and prerequisite decisions. `api/routes_curriculum.py` uses the same verified
+identity and budget controls as other API routes. The browser never chooses a learner identity or a pass.
+
+- Twelve ordered stages; pre-stages provide transition practice, including A2 → pre-B1 → B1.
+- Each of the four practice skills must be attempted before a student's final check opens.
+- Reading and listening require 75% each; writing and speaking require their explicit task criteria.
+  These are internal course rules, not CEFR cut scores. There is no aggregate score.
+- Speaking requires a fresh, owned recording with recognised speech. The rubric reviews the transcript;
+  it cannot assess accent, prosody or authenticate who spoke. The recorder stays within the short-audio
+  service limit. Longer interactive oral examinations need a future speech workflow.
+- Model failure never unlocks a stage. Completed skill evaluations can be reused on an identical retry.
+- `CURRICULUM_ADMIN_EMAILS` is a separate, explicit account list for tester previews. Empty means no
+  bypass. Preview attempts are stored separately and do not become student progression evidence.
+- Assessment API responses omit answer keys, listening scripts and sample responses. Authored items
+  remain in the repository, so this is a practice platform, not a secure standardised examination system.
+- Productive feedback includes observable evidence; model/provider identifiers stay in operational data.
+
+The web components are grouped into path, lesson, final check and shared audio/question controls.
+`LanguageSupport` owns the three support-language modes. The lesson always retains Dutch; Persian
+uses RTL. On-device writing drafts are scoped to the verified learner and stage, and are cleared on
+sign-out. Assessment answers are not displayed in browser storage as correct-answer keys.
+
+Source extraction is a separate local workflow. `scripts/index_teaching_sources.py` produces a public
+metadata inventory and private unverified OCR/review candidates. `.local/source-import` is ignored;
+scans, full textbook text and handwriting must not be included in commits. See `SOURCE_COVERAGE.md`.
+
+The design uses restrained navy and blue, readable content widths, visible keyboard focus, large
+interactive controls and responsive layouts. Accessibility checks use WCAG criteria, not a visual
+claim of certification: <https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/>.
+
+Future practice videos belong to approved lesson assets with a transcript, captions and four-skill
+activities. No video-generation provider, cost or empty video tab is introduced in this release.

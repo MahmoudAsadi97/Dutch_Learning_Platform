@@ -38,9 +38,7 @@ for (const screen of screens) {
       page.getByRole("heading", { name: screen.heading }),
     ).toBeVisible();
     if (screen.name === "dashboard")
-      await expect(page.getByTestId("learning-overview")).not.toContainText(
-        "Laden…",
-      );
+      await expect(page.getByTestId("curriculum-path").locator("li")).toHaveCount(12);
     if (screen.name === "progress")
       await expect(page.locator(".progress-card")).toHaveCount(4);
     if (screen.name === "settings")

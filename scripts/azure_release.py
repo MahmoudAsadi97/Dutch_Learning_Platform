@@ -3,9 +3,46 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import time
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
+
+
+def verify_commit_ci(repository: str, commit: str, *, token: str = "") -> None:
+    """Require the latest main-push CI run for this exact commit to have succeeded."""
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*", repository):
+        raise RuntimeError("CI verification requires a GitHub owner/repository")
+    if not re.fullmatch(r"[0-9a-f]{40}", commit):
+        raise RuntimeError("CI verification requires a full commit SHA")
+    headers = {"Accept": "application/vnd.github+json", "User-Agent": "dlp-release",
+               "X-GitHub-Api-Version": "2022-11-28"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    request = Request(
+        f"https://api.github.com/repos/{repository}/actions/workflows/ci.yml/runs"
+        f"?head_sha={commit}&event=push&branch=main&per_page=100", headers=headers,
+    )
+    try:
+        with urlopen(request, timeout=30) as response:
+            payload = json.load(response)
+        runs = [run for run in payload["workflow_runs"]
+                if run.get("head_sha") == commit and run.get("event") == "push" and run.get("head_branch") == "main"]
+        latest = max(runs, key=lambda run: (run["created_at"], run["id"])) if runs else None
+    except (HTTPError, URLError, TimeoutError, ValueError, KeyError, TypeError, AttributeError) as exc:
+        # Do not echo HTTP request details: an optional token may be present.
+        raise RuntimeError("Could not verify GitHub CI; no release was started") from exc
+    if latest is None or latest.get("status") != "completed" or latest.get("conclusion") != "success":
+        raise RuntimeError("This exact commit's latest main CI run has not succeeded; no release was started")
+    print(f"Successful main CI verified for {commit}.")
+
+
+def validate_image(image: str) -> str:
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.:-]*(?:/[A-Za-z0-9][A-Za-z0-9._-]*)+@sha256:[0-9a-f]{64}", image):
+        raise RuntimeError("Release images must be full registry/repository@sha256:<64 lowercase hex digits> references")
+    return image
 
 
 def az(*args: str):
@@ -46,6 +83,7 @@ def verify_topology(group: str, prefix: str) -> dict:
 def run_migration(group: str, prefix: str, image: str | None = None) -> None:
     job = f"{prefix}-migrate"
     if image:
+        validate_image(image)
         az("containerapp", "job", "update", "-g", group, "-n", job, "--image", image)
     execution = az("containerapp", "job", "start", "-g", group, "-n", job)
     execution_name = execution["name"]
@@ -81,33 +119,69 @@ def wait_for_revision(group: str, name: str) -> None:
     raise RuntimeError(f"{name}: readiness timeout; inspect the revision, do not claim deployment success")
 
 
+def validated_admin_emails(value: str, api: dict) -> str:
+    """Tester access is explicit and restricted to accounts already allowed into the API."""
+    requested = {email.strip().lower() for email in value.split(",") if email.strip()}
+    env = {item["name"]: item.get("value", "")
+           for item in api["properties"]["template"]["containers"][0].get("env", [])}
+    allowed = {email.strip().lower() for email in env.get("OWNER_ALLOWLIST", "").split(",") if email.strip()}
+    if not requested <= allowed:
+        raise RuntimeError("Tester emails must already be in the verified account allowlist")
+    return ",".join(sorted(requested))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["migrate", "verify", "deploy", "publish"])
-    parser.add_argument("--resource-group", required=True)
+    parser.add_argument("action", choices=["verify-ci", "migrate", "verify", "deploy", "publish"])
+    parser.add_argument("--resource-group")
     parser.add_argument("--prefix", default="dlp")
+    parser.add_argument("--repository", help="GitHub owner/repository for verify-ci")
+    parser.add_argument("--commit", help="Full commit SHA for verify-ci")
     parser.add_argument("--api-image")
     parser.add_argument("--web-image")
+    parser.add_argument("--curriculum-admin-emails", default=None,
+                        help="Tester emails for locked-stage previews; omitted preserves current access")
     args = parser.parse_args()
+    if args.action == "verify-ci" and not (args.repository and args.commit):
+        parser.error("verify-ci needs --repository and --commit")
+    if args.action != "verify-ci" and not args.resource_group:
+        parser.error("--resource-group is required for Azure operations")
     if not re.fullmatch(r"[a-z][a-z0-9]{2,11}", args.prefix):
         parser.error("prefix must be 3–12 lowercase letters/digits, starting with a letter")
     if args.action == "deploy" and not (args.api_image and args.web_image):
         parser.error("deploy needs both immutable image references")
     try:
+        if args.action == "verify-ci":
+            verify_commit_ci(args.repository, args.commit, token=os.environ.get("GH_TOKEN", ""))
+            return 0
+        for image in (args.api_image, args.web_image):
+            if image:
+                validate_image(image)
         if args.action == "migrate":
             run_migration(args.resource_group, args.prefix, args.api_image)
             return 0
         web = verify_topology(args.resource_group, args.prefix)
         if args.action == "deploy":
+            admin_emails = None
+            if args.curriculum_admin_emails is not None:
+                api = az("containerapp", "show", "-g", args.resource_group, "-n", f"{args.prefix}-api")
+                admin_emails = validated_admin_emails(args.curriculum_admin_emails, api)
             run_migration(args.resource_group, args.prefix, args.api_image)
             for role, image in (("api", args.api_image), ("web", args.web_image)):
-                az("containerapp", "update", "-g", args.resource_group, "-n", f"{args.prefix}-{role}", "--image", image)
+                env_args = ()
+                if role == "api":
+                    env_args = ("--set-env-vars", "MAX_AUDIO_SECONDS=60")
+                    if admin_emails is not None:
+                        env_args += (f"CURRICULUM_ADMIN_EMAILS={admin_emails}",)
+                az("containerapp", "update", "-g", args.resource_group, "-n", f"{args.prefix}-{role}",
+                   "--image", image, *env_args)
                 wait_for_revision(args.resource_group, f"{args.prefix}-{role}")
         if args.action == "publish":
             for role in ("api", "web"):
                 wait_for_revision(args.resource_group, f"{args.prefix}-{role}")
             az("containerapp", "ingress", "enable", "-g", args.resource_group, "-n", f"{args.prefix}-web",
                "--type", "external", "--target-port", "3000", "--transport", "http")
+            web = verify_topology(args.resource_group, args.prefix)
         print("Ingress and sign-in configuration verified. Browser sign-in still requires a real account test.")
         print("Web:", "https://" + web["properties"]["configuration"]["ingress"]["fqdn"])
         return 0
