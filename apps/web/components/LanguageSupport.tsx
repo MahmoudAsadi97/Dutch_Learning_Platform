@@ -37,8 +37,8 @@ export function LearningText({ text, className = "", supportOnly = false }: { te
   if (!text) return null;
   return <span className={`learning-copy ${className}`}>
     {!supportOnly && <span lang="nl" className="copy-dutch">{text.nl}</span>}
-    {showEnglish && text.en && <span lang="en" className="copy-support">{text.en}</span>}
-    {showPersian && text.fa && <span lang="fa" dir="rtl" className="copy-support fa">{text.fa}</span>}
+    {showEnglish && text.en && <> <span lang="en" className="copy-support">{text.en}</span></>}
+    {showPersian && text.fa && <> <span lang="fa" dir="rtl" className="copy-support fa">{text.fa}</span></>}
   </span>;
 }
 

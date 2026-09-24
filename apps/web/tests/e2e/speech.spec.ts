@@ -8,9 +8,8 @@ test.describe("microphone check", () => {
     await expect(page.getByTestId("mime-type")).toContainText(/audio\/(webm|ogg|mp4)|standaardformaat/);
 
     const button = page.getByTestId("talk-button");
-    const box = await button.boundingBox();
-    if (!box) throw new Error("talk button not visible");
-    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await expect(button).toBeEnabled();
+    await button.hover();
     await page.mouse.down();
     await expect(button).toHaveAttribute("aria-pressed", "true");
     await page.waitForTimeout(1500);

@@ -1,5 +1,9 @@
 # Current release actions — learning path
 
+For local tester access, add `CURRICULUM_ADMIN_EMAILS=YOUR_EXISTING_SIGN_IN_EMAIL` to your ignored
+`.env`, using the same email already admitted by `OWNER_ALLOWLIST`. Restart the local API afterward.
+The browser test runner deliberately clears this setting so it can verify normal student gates.
+
 1. After the exact release commit has green CI, run the existing-Azure release from your signed-in WSL
    terminal: `bash scripts/deploy_current.sh 'YOUR_EXISTING_SIGN_IN_EMAIL'`. This grants only that
    already-admitted account tester previews. Keep `curriculumAdminEmails` in private Bicep parameters

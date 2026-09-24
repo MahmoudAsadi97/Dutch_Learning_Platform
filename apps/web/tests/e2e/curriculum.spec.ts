@@ -10,7 +10,7 @@ test("learner path has twelve stages, no A3 and a real prerequisite gate", async
   await expect(path.locator('.stage-locked')).toHaveCount(11);
   await expect(path.getByRole("link", { name: /Open A1:/ })).toHaveCount(0);
   await page.goto("/learn/a1");
-  await expect(page.getByRole("alert")).toContainText("Rond eerst het vorige niveau af");
+  await expect(page.getByRole("main").getByRole("alert")).toContainText("Rond eerst het vorige niveau af");
   await expect(page.getByRole("button", { name: "Start de eindtoets" })).toHaveCount(0);
 });
 
@@ -71,7 +71,7 @@ test("new level retains writing within the tab and stays usable at phone widths"
 test("a blocked final test cannot be started from a direct link", async ({ page }) => {
   await page.goto("/learn/a1/test");
   await page.getByRole("button", { name: "Start de eindtoets" }).click();
-  await expect(page.getByRole("alert")).toContainText("Rond eerst het vorige niveau af");
+  await expect(page.getByRole("main").getByRole("alert")).toContainText("Rond eerst het vorige niveau af");
   await expect(page.getByRole("button", { name: "Dien de eindtoets in" })).toHaveCount(0);
 });
 
