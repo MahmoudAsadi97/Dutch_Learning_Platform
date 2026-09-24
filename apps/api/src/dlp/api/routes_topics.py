@@ -46,6 +46,7 @@ def topic_practice(stage_id: str, topic_id: str, body: PracticeBody,
         return topics.save_topic_practice(
             session, settings, providers, learner_id=ctx.learner.id, bank=bank, topic=topic,
             skill=body.skill, answers=body.answers, text=body.text, asset_id=body.audio_asset_id, request_id=ctx.request_id,
+            observation_request_id=body.request_id,
         )
     return _run(operation, provider_detail=(
         "Practice feedback is temporarily unavailable. Your response was not completed; retry."

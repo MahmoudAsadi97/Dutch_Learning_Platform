@@ -1,5 +1,14 @@
 # State
 
+## Learning support — 2026-09-24
+
+Implemented ten bounded topic conversations, append-only attempt observations, an evidence-based
+three-activity coach and an admin editing queue. LangGraph interprets each conversation response;
+application code checks facts and selects the authored follow-up. No additional cloud service is
+required. Migration `0005_learning_support` must precede the API image. Automated/fixture results
+are not live provider or human language review. Current verification is in `VALIDATION_REPORT.md`.
+No Azure deployment is performed in this update.
+
 ## Four-skill topic practice — 2026-09-24
 
 Implemented searchable topic practice inside each skill tab, preserving the original Startles.

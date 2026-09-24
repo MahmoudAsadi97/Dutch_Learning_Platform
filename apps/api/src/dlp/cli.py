@@ -93,6 +93,7 @@ def cmd_export_recording(args: argparse.Namespace) -> int:
 
 
 LEARNER_DATA_TABLES = [
+    "content_reviews", "coach_plan_requests", "practice_observations", "topic_conversations",
     "topic_practice", "curriculum_attempts", "curriculum_practice",
     "feedback_reports", "usage_reservations", "usage_counters", "evidence_records", "practice_turns",
     "practice_sessions", "skill_records", "audio_assets", "jobs", "learners",
@@ -120,6 +121,7 @@ def cmd_reset_learner_data(args: argparse.Namespace) -> int:
 
 
 def cmd_run_jobs(args: argparse.Namespace) -> int:
+    from dlp.domains.content_review import service as content_review_service  # noqa: F401
     from dlp.domains.jobs.service import drain
 
     processed = drain(get_settings(), worker_id="cli", limit=args.limit)

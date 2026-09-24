@@ -62,6 +62,32 @@ class ChatModel(ABC):
     ) -> ChatResult:
         """Return the model's reply; when `schema` is given the reply must be JSON that validates against it."""
 
+    def complete_once(
+        self,
+        messages: list[ChatMessage],
+        *,
+        schema: type[SchemaT] | None = None,
+        max_output_tokens: int = 400,
+        temperature: float = 0.2,
+        prompt_version: str = "v0",
+        request_id: str = "",
+    ) -> ChatResult:
+        """Make one completion without hidden repair, transport or truncation retries.
+
+        Fixture/custom providers may use this fallback only if ``complete`` is
+        already a single invocation. Retrying production providers must override
+        it with an enforced single-request path. A failure may still be billable;
+        callers must retain their conservative usage reservation when uncertain.
+        """
+        return self.complete(
+            messages,
+            schema=schema,
+            max_output_tokens=max_output_tokens,
+            temperature=temperature,
+            prompt_version=prompt_version,
+            request_id=request_id,
+        )
+
     def describe(self) -> dict[str, Any]:
         return {"provider": self.name, "model": self.model}
 

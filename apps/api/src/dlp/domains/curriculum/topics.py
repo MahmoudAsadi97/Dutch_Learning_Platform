@@ -197,7 +197,18 @@ def topic_detail(session: Session, learner_id: uuid.UUID, bank: TopicBank, topic
 
 def save_topic_practice(session: Session, settings: Settings, providers: Providers, *, learner_id: uuid.UUID,
                         bank: TopicBank, topic: PracticeTopic, skill: Skill, answers: dict[str, int], text: str,
-                        asset_id: uuid.UUID | None, request_id: str) -> dict:
+                        asset_id: uuid.UUID | None, request_id: str, observation_request_id: str | None = None) -> dict:
+    from dlp.domains.coaching.service import observation_for_request, record_observation
+
+    # Transport tracing ids are not attempt ids. Old clients get a fresh episode;
+    # clients with an explicit attempt id can safely retry without paying twice.
+    episode_id = observation_request_id or uuid.uuid4().hex
+    payload = {"stage_id": bank.stage_id, "topic_id": topic.id, "skill": skill, "answers": answers,
+               "text": text if skill != "speaking" else "", "audio_asset_id": str(asset_id) if asset_id else None}
+    previous = observation_for_request(session, learner_id=learner_id, source="topic_practice",
+                                       request_id=episode_id, payload=payload)
+    if previous is not None:
+        return dict(previous.response)
     if skill in ("reading", "listening"):
         if text or asset_id:
             raise service.CurriculumError("this skill accepts answers to its own questions only", 422)
@@ -246,4 +257,18 @@ def save_topic_practice(session: Session, settings: Settings, providers: Provide
     ).on_conflict_do_update(index_elements=["learner_id", "stage_id", "skill"], set_={
         "completed": CurriculumPractice.completed | completed, "evidence": aggregate, "updated_at": utcnow(),
     }))
-    return {**result, "completed": sticky_completed, "skill": skill}
+    response = {**result, "completed": sticky_completed, "skill": skill}
+    assessed = skill in ("reading", "listening") or providers.chat_strong.name != "fixture"
+    if skill in ("reading", "listening"):
+        failed_refs = [q.id for q in getattr(topic, skill).questions if answers[q.id] != q.answer_index]
+        summary = {"correct": result["correct"], "total": result["total"], "assessed": True}
+    else:
+        failed_refs = [f"{topic.id}-{skill}-criterion-{index}" for index, item in enumerate(result["criteria"])
+                       if not item["met"]] if assessed else []
+        summary = {"word_count": result["word_count"], "criteria_met": sum(item["met"] for item in result["criteria"]),
+                   "criteria_total": len(result["criteria"]), "assessed": assessed}
+    record_observation(session, learner_id=learner_id, stage_id=bank.stage_id, topic_id=topic.id, skill=skill,
+                       source="topic_practice", request_id=episode_id, content_version=version,
+                       passed=result["passed"] if assessed else None, summary=summary, failed_refs=failed_refs,
+                       payload=payload, response=response)
+    return response

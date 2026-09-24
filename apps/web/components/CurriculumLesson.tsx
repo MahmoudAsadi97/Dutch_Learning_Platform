@@ -25,11 +25,12 @@ const sections: { id: Section; label: string; icon: IconName }[] = [
 ];
 interface PracticeResponse { completed: boolean; correct?: number; total?: number; feedback: LearningCopy }
 
-export function CurriculumLesson({ stageId }: { stageId: string }) {
+export function CurriculumLesson({ stageId, initialSkill, initialTopic }: { stageId: string; initialSkill?: Skill; initialTopic?: string }) {
   const lessonSections = stageId === "pre-a1" ? [{id: "alphabet" as Section, label: "Alfabet", icon: "volume" as IconName}, ...sections] : sections;
   const [stage, setStage] = useState<CurriculumStage | null>(null);
-  const [section, setSection] = useState<Section>("words");
+  const [section, setSection] = useState<Section>(initialSkill ?? "words");
   const [showCore, setShowCore] = useState(false);
+  const [linkedTopic, setLinkedTopic] = useState(initialTopic);
   const [error, setError] = useState("");
   const [retry, setRetry] = useState(0);
   const [busy, setBusy] = useState(false);
@@ -54,7 +55,7 @@ export function CurriculumLesson({ stageId }: { stageId: string }) {
   }, [stageId, retry]);
   function changeSection(next: Section) {
     if (busy || recordingBusy) return;
-    setSection(next); setShowCore(false); setFeedback(null); setError("");
+    setSection(next); setLinkedTopic(undefined); setShowCore(false); setFeedback(null); setError("");
   }
   function answer(id: string, index: number) { setAnswers(current => ({ ...current, [id]: index })); setFeedback(null); }
   async function submit() {
@@ -80,7 +81,7 @@ export function CurriculumLesson({ stageId }: { stageId: string }) {
     <div className="learning-workspace"><aside className="unit-sidebar"><p className="eyebrow">STAP VOOR STAP</p><nav aria-label="Onderdelen van dit niveau">{lessonSections.map(item => <button key={item.id} disabled={busy || recordingBusy} aria-current={section === item.id ? "step" : undefined} onClick={() => changeSection(item.id)}><Icon name={item.icon}/><span>{item.label}</span>{completed.includes(item.id as Skill) && <Icon name="check" size={15}/>}</button>)}</nav><div className="unit-test-card"><strong>{completed.length} van 4 vaardigheden geoefend</strong><p>Laat daarna zelfstandig zien wat je kunt.</p>{progress.test_available || stage.admin_bypass ? <Link className="button" href={`/learn/${stageId}/test`}>Naar de eindtoets<Icon name="arrow" size={16}/></Link> : <span className="test-unavailable"><Icon name="shield" size={16}/>Eindtoets opent na vier vaardigheden</span>}</div></aside>
       <div className="unit-content" key={section}><div className="unit-section-title"><p className="eyebrow">{stageLabel(stageId)} · {lessonSections.find(item => item.id === section)?.label}</p><h2>{section === "alphabet" ? "Letters horen, herkennen en gebruiken" : section === "stories" ? "Story Time" : section === "words" ? "Woorden die je kunt gebruiken" : section === "grammar" ? "Zo bouw je een zin" : section === "reading" ? "Een verhaal om te ontdekken" : section === "listening" ? "Luister naar de situatie" : section === "speaking" ? "Breng het gesprek op gang" : "Schrijf je eigen boodschap"}</h2></div>
         {isSkill && <div className="practice-source-switch" role="group" aria-label="Kies je oefenmateriaal"><button className="button secondary" aria-pressed={!showCore} disabled={busy || recordingBusy} onClick={() => {setShowCore(false); setFeedback(null); setError("");}}>Onderwerpen</button><button className="button secondary" aria-pressed={showCore} disabled={busy || recordingBusy} onClick={() => {setShowCore(true); setFeedback(null); setError("");}}>Startles</button></div>}
-        {isSkill && !showCore && <SkillTopicPractice key={`${stage.learner_key}.${stageId}.${section}`} stageId={stageId} skill={section as Skill} learnerKey={stage.learner_key} maxSeconds={stage.policy?.recording_max_seconds} onActivityChange={setRecordingBusy} onCompleted={() => setRetry(value => value + 1)}/>}
+        {isSkill && !showCore && <SkillTopicPractice key={`${stage.learner_key}.${stageId}.${section}`} stageId={stageId} skill={section as Skill} learnerKey={stage.learner_key} initialTopic={linkedTopic} maxSeconds={stage.policy?.recording_max_seconds} onActivityChange={setRecordingBusy} onCompleted={() => setRetry(value => value + 1)}/>}
         {section === "alphabet" && <AlphabetPractice/>}
         {section === "stories" && <StoryTime stageId={stageId}/>}
         {section === "words" && <><WordLibrary stageId={stageId}/><details className="core-word-list"><summary>Woorden bij de vier vaardigheidsopdrachten</summary><p>Deze leswoorden sluiten direct aan bij de lees-, luister-, spreek- en schrijfopdrachten.</p><div className="vocabulary-cards">{stage.vocabulary.map(word => <article className="core-word-card" key={word.id}><div className="word-card-heading"><h3 lang="nl">{word.term}</h3><PhraseAudio text={word.term}/></div><LearningText text={word.meaning}/><p><LearningText text={word.example}/><PhraseAudio text={word.example.nl}/></p></article>)}</div></details><button className="button" onClick={() => changeSection("grammar")}>Verder met grammatica<Icon name="arrow"/></button></>}

@@ -17,6 +17,8 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from dlp.api import (
+    routes_coach,
+    routes_content_review,
     routes_curriculum,
     routes_health,
     routes_library,
@@ -24,6 +26,7 @@ from dlp.api import (
     routes_practice,
     routes_progress,
     routes_speech,
+    routes_topic_conversations,
     routes_topics,
 )
 from dlp.config import Settings, get_settings
@@ -111,6 +114,9 @@ def create_app() -> FastAPI:
     app.include_router(routes_curriculum.router)
     app.include_router(routes_library.router)
     app.include_router(routes_topics.router)
+    app.include_router(routes_topic_conversations.router)
+    app.include_router(routes_coach.router)
+    app.include_router(routes_content_review.router)
     return app
 
 

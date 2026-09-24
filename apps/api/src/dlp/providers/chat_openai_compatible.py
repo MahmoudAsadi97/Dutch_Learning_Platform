@@ -115,7 +115,13 @@ class OpenAICompatibleChatModel(ChatModel):
         if response.status_code >= 400:
             # Provider error bodies can contain prompt fragments or credentials. Never forward them to logs/UI.
             raise ProviderError(f"chat backend returned HTTP {response.status_code}")
-        return response.json()
+        try:
+            data = response.json()
+        except ValueError:
+            raise ProviderError("chat backend returned malformed JSON") from None
+        if not isinstance(data, dict):
+            raise ProviderError("chat backend reply is not an object")
+        return data
 
     def complete(
         self,
@@ -126,6 +132,44 @@ class OpenAICompatibleChatModel(ChatModel):
         temperature: float = 0.2,
         prompt_version: str = "v0",
         request_id: str = "",
+    ) -> ChatResult:
+        return self._complete(
+            messages, schema=schema, max_output_tokens=max_output_tokens,
+            temperature=temperature, prompt_version=prompt_version,
+            request_id=request_id, max_attempts=self.max_attempts,
+        )
+
+    def complete_once(
+        self,
+        messages: list[ChatMessage],
+        *,
+        schema: type[SchemaT] | None = None,
+        max_output_tokens: int = 400,
+        temperature: float = 0.2,
+        prompt_version: str = "v0",
+        request_id: str = "",
+    ) -> ChatResult:
+        """Send at most one HTTP request, keeping the caller's output-token limit.
+
+        No transport or response-repair retry is performed, and no shared retry
+        configuration is changed. The caller accounts for uncertain failures.
+        """
+        return self._complete(
+            messages, schema=schema, max_output_tokens=max_output_tokens,
+            temperature=temperature, prompt_version=prompt_version,
+            request_id=request_id, max_attempts=1,
+        )
+
+    def _complete(
+        self,
+        messages: list[ChatMessage],
+        *,
+        schema: type[SchemaT] | None,
+        max_output_tokens: int,
+        temperature: float,
+        prompt_version: str,
+        request_id: str,
+        max_attempts: int,
     ) -> ChatResult:
         payload_messages = [{"role": m.role, "content": m.content} for m in messages]
         if schema is not None:
@@ -140,9 +184,9 @@ class OpenAICompatibleChatModel(ChatModel):
             body["response_format"] = {"type": "json_object"}
 
         started = time.monotonic()
-        last_error: Exception | None = None
+        last_error_kind = "unknown"
         with self._semaphore:
-            for attempt in range(1, self.max_attempts + 1):
+            for attempt in range(1, max_attempts + 1):
                 try:
                     data = self._post(body)
                     text = _first_content(data)
@@ -150,44 +194,53 @@ class OpenAICompatibleChatModel(ChatModel):
                     if schema is not None and _finish_reason(data) == "length":
                         # The reply was cut off at max_tokens: repairing a fragment is pointless, so the next
                         # attempt gets a larger budget (bounded) and the same prompt.
-                        used = int(body["max_tokens"])
-                        body["max_tokens"] = min(used * 2, int(max_output_tokens) * 4)
-                        body["messages"] = payload_messages
-                        raise _Retryable(f"reply truncated at {used} output tokens; retrying with {body['max_tokens']}")
+                        if attempt < max_attempts:
+                            used = int(body["max_tokens"])
+                            body["max_tokens"] = min(used * 2, int(max_output_tokens) * 4)
+                            body["messages"] = payload_messages
+                        raise _Retryable("reply truncated")
                     if schema is not None:
                         try:
                             parsed = schema.model_validate(extract_json_object(text))
                         except (ValueError, ValidationError) as exc:
-                            # Ask the model to repair its own output once per attempt.
-                            body["messages"] = payload_messages + [
-                                {"role": "assistant", "content": text},
-                                {"role": "user",
-                                 "content": f"That was not valid. Error: {exc}. Reply again with only the JSON object."},
-                            ]
-                            raise _Retryable(f"schema validation failed: {str(exc)[:160]}") from exc
+                            if attempt < max_attempts:
+                                # Legacy callers retain their bounded repair loop.
+                                body["messages"] = payload_messages + [
+                                    {"role": "assistant", "content": text},
+                                    {"role": "user",
+                                     "content": f"That was not valid. Error: {exc}. Reply again with only the JSON object."},
+                                ]
+                            # Validation errors can include learner text. Never expose
+                            # the model payload in the eventual exception or logs.
+                            raise _Retryable("schema validation failed") from None
                     usage = data.get("usage") or {}
+                    try:
+                        input_tokens = int(usage.get("prompt_tokens") or _estimate_tokens(payload_messages))
+                        output_tokens = int(usage.get("completion_tokens") or max(1, len(text) // 4))
+                    except (AttributeError, TypeError, ValueError, OverflowError):
+                        raise ProviderError("chat backend returned invalid usage metadata") from None
                     return ChatResult(
                         text=text,
                         parsed=parsed,
                         provider=self.name,
                         model=str(data.get("model") or self.endpoint.model),
                         prompt_version=prompt_version,
-                        input_tokens=int(usage.get("prompt_tokens") or _estimate_tokens(payload_messages)),
-                        output_tokens=int(usage.get("completion_tokens") or max(1, len(text) // 4)),
+                        input_tokens=input_tokens,
+                        output_tokens=output_tokens,
                         latency_ms=int((time.monotonic() - started) * 1000),
                         attempts=attempt,
                         raw={"id": data.get("id"), "finish_reason": _finish_reason(data), "request_id": request_id},
                     )
-                except httpx.ConnectError as exc:
+                except httpx.ConnectError:
                     # Nothing listens at the endpoint: retrying only delays the answer the learner needs.
-                    raise ProviderUnavailable(f"chat endpoint {self.endpoint.base_url} unreachable: {exc}") from exc
+                    raise ProviderUnavailable("chat endpoint unreachable") from None
                 except (_Retryable, httpx.TimeoutException, httpx.TransportError) as exc:
-                    last_error = exc
-                    log.warning("chat attempt %s/%s failed (%s): %s", attempt, self.max_attempts,
+                    last_error_kind = str(exc) if isinstance(exc, _Retryable) else type(exc).__name__
+                    log.warning("chat attempt %s/%s failed (%s): %s", attempt, max_attempts,
                                 self.name, type(exc).__name__)
-                    if attempt < self.max_attempts:
+                    if attempt < max_attempts:
                         time.sleep(random.uniform(0, min(8.0, 0.5 * (2**attempt))))
-        raise ProviderError(f"chat call failed after {self.max_attempts} attempts: {last_error}")
+        raise ProviderError(f"chat call failed after {max_attempts} attempts: {last_error_kind}")
 
 
 class _Retryable(Exception):

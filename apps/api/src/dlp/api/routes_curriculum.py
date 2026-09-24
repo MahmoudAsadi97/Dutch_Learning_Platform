@@ -30,6 +30,7 @@ class PracticeBody(BaseModel):
     answers: dict[str, StrictInt] = Field(default_factory=dict, max_length=30)
     text: str = Field(default="", max_length=12000)
     audio_asset_id: uuid.UUID | None = None
+    request_id: str | None = Field(default=None, min_length=8, max_length=80, pattern=r"^[a-zA-Z0-9_-]+$")
 
 
 class StartBody(BaseModel):

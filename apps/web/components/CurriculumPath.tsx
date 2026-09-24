@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { PracticeCoach } from "@/components/PracticeCoach";
 import { Icon } from "@/components/Icon";
 import { LearningText } from "@/components/LanguageSupport";
 import { apiJson } from "@/lib/client/api";
@@ -28,6 +29,7 @@ export function CurriculumPath() {
         <div className="continue-copy"><p className="eyebrow">VOORGESTELD STARTPUNT <span>{stageLabel(next.id)}</span></p><h2 id="continue-title">{next.title.nl}</h2><p><LearningText text={next.description} /></p><Link className="button" href={`/learn/${next.id}`}>{next.practice_completed.length ? "Verder leren" : "Begin met leren"}<Icon name="arrow" size={18}/></Link></div>
         <div className="continue-overview"><span className="continue-count">{String(finished).padStart(2, "0")}<span> / {data.stages.length}</span></span><p>niveaus afgerond</p><div className="path-progress" role="progressbar" aria-label="Afgeronde niveaus" aria-valuenow={finished} aria-valuemin={0} aria-valuemax={data.stages.length}><span style={{ width: `${finished / data.stages.length * 100}%` }}/></div><div className="continue-skill-icons" role="group" aria-label="Lezen, luisteren, spreken en schrijven"><Icon name="book"/><Icon name="headphones"/><Icon name="mic"/><Icon name="pen"/></div></div>
       </section>}
+      <PracticeCoach key={data.learner_key} learnerKey={data.learner_key}/>
       <section aria-labelledby="path-title"><div className="section-heading"><div><h2 id="path-title">Een helder pad vooruit</h2><p className="muted">Alle niveaus zijn open. Kies je startpunt, oefen en meet je vooruitgang.</p></div><span className="quiet-badge">pre-A1 → C2</span></div>
         <ol className="stage-grid" data-testid="curriculum-path">{data.stages.map((stage) => <li key={stage.id} className={`stage-card ${stage.passed ? "stage-passed" : ""} ${stage.id === next?.id ? "stage-current" : ""}`}>
           <div className="stage-card-top"><span className="stage-level">{stageLabel(stage.id)}</span><span className="stage-status">{stage.passed ? <><Icon name="check" size={15}/>Afgerond</> : stage.id === next?.id ? "Jouw volgende stap" : "Beschikbaar"}</span></div>

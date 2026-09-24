@@ -50,6 +50,7 @@ from dlp.domains.identity.assertions import issue_assertion  # noqa: E402
 from dlp.providers.registry import reset_providers  # noqa: E402
 
 TABLES_TO_CLEAR = [
+    "content_reviews", "coach_plan_requests", "practice_observations", "topic_conversations",
     "topic_practice",
     "curriculum_attempts",
     "curriculum_practice",

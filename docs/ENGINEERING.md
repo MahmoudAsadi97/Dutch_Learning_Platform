@@ -1,5 +1,22 @@
 # Engineering guide
 
+### Learning support workflows
+
+`domains/topic_conversations` uses a three-node LangGraph: interpret, validate, compose. The model
+proposes meaning; code checks quoted learner evidence and fixed choices; authored content supplies
+partner replies. PostgreSQL stores at most six turns per conversation, a content snapshot and stable
+client turn identifiers. `domains/coaching` records append-only successful submissions (including
+assessed attempts that need another try), filters obsolete content versions and returns three existing
+activity links. Optional model ordering cannot alter their IDs or code-authored reasons.
+
+`domains/content_review` runs explicit admin batches through the existing job loop. A durable claim,
+version/model cache and one provider attempt per generation prevent automatic paid replay. Findings
+reference exact authored text locations and never publish or mark content approved. Its API routes
+register the worker; the standalone job CLI imports the same handler. Migration 0005 adds four tables
+with learner-deletion cascades; self-export includes observations, conversations, plans and owned reviews.
+All three roles use `complete_once`; legacy `complete` retry semantics remain unchanged.
+See [LEARNING_AGENTS](LEARNING_AGENTS.md) for operational boundaries and targeted checks.
+
 This is the collaborator-facing description of the scoped learner release. It is deliberately short: the
 code is the reference, this explains why it is shaped the way it is.
 
