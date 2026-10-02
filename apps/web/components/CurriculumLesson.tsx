@@ -67,7 +67,7 @@ export function CurriculumLesson({ stageId, initialSkill, initialTopic }: { stag
     } catch (cause) { setError(friendlyError(cause instanceof ApiError ? cause.status : undefined)); }
     finally { setBusy(false); }
   }
-  if (!stage) return <div className="card">{error ? <><p role="alert">{error}</p><button className="button secondary" onClick={() => setRetry(value => value + 1)}>Opnieuw proberen</button><p><Link href="/">Terug naar je leerpad</Link></p></> : <p role="status">Je les laden…</p>}</div>;
+  if (!stage) return <div className="card">{error ? <><p role="alert">{error}</p><button className="button secondary" onClick={() => setRetry(value => value + 1)}>Opnieuw proberen</button><p><Link href="/leerpad">Terug naar je leerpad</Link></p></> : <p role="status">Je les laden…</p>}</div>;
   const progress = stage.progress ?? stage;
   const completed = progress.practice_completed ?? [];
   const isSkill = ["reading", "listening", "speaking", "writing"].includes(section);
@@ -76,7 +76,7 @@ export function CurriculumLesson({ stageId, initialSkill, initialTopic }: { stag
   const wordCount = countWords(writing);
   const allAnswered = questions.every(question => answers[question.id] !== undefined);
   return <div className="curriculum-lesson">
-    <Link href="/" className="back-link">← Terug naar je leerpad</Link>
+    <Link href="/leerpad" className="back-link">← Terug naar je leerpad</Link>
     <header className="lesson-heading"><span className="stage-level">{stageLabel(stageId)}</span><div><h1><LearningText text={stage.title}/></h1><p><LearningText text={stage.description}/></p></div></header>
     <div className="learning-workspace"><aside className="unit-sidebar"><p className="eyebrow">STAP VOOR STAP</p><nav aria-label="Onderdelen van dit niveau">{lessonSections.map(item => <button key={item.id} disabled={busy || recordingBusy} aria-current={section === item.id ? "step" : undefined} onClick={() => changeSection(item.id)}><Icon name={item.icon}/><span>{item.label}</span>{completed.includes(item.id as Skill) && <Icon name="check" size={15}/>}</button>)}</nav><div className="unit-test-card"><strong>{completed.length} van 4 vaardigheden geoefend</strong><p>Laat daarna zelfstandig zien wat je kunt.</p>{progress.test_available || stage.admin_bypass ? <Link className="button" href={`/learn/${stageId}/test`}>Naar de eindtoets<Icon name="arrow" size={16}/></Link> : <span className="test-unavailable"><Icon name="shield" size={16}/>Eindtoets opent na vier vaardigheden</span>}</div></aside>
       <div className="unit-content" key={section}><div className="unit-section-title"><p className="eyebrow">{stageLabel(stageId)} · {lessonSections.find(item => item.id === section)?.label}</p><h2>{section === "alphabet" ? "Letters horen, herkennen en gebruiken" : section === "stories" ? "Story Time" : section === "words" ? "Woorden die je kunt gebruiken" : section === "grammar" ? "Zo bouw je een zin" : section === "reading" ? "Een verhaal om te ontdekken" : section === "listening" ? "Luister naar de situatie" : section === "speaking" ? "Breng het gesprek op gang" : "Schrijf je eigen boodschap"}</h2></div>

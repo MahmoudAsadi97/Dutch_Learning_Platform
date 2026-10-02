@@ -3,8 +3,13 @@ import { expect, test } from "@playwright/test";
 
 const screens = [
   {
-    name: "dashboard",
+    name: "today",
     path: "/",
+    heading: /aflevering|woorden wachten|Kies waar je vandaag mee begint/,
+  },
+  {
+    name: "dashboard",
+    path: "/leerpad",
     heading: "Kleine stappen. Echte gesprekken.",
   },
   { name: "progress", path: "/progress", heading: "Elke stap vertelt iets." },
@@ -39,6 +44,8 @@ for (const screen of screens) {
     ).toBeVisible();
     if (screen.name === "dashboard")
       await expect(page.getByTestId("curriculum-path").locator("li")).toHaveCount(12);
+    if (screen.name === "today")
+      await expect(page.getByRole("img", { name: /dag(en)? op rij/ })).toBeVisible();
     if (screen.name === "progress") {
       const stages = page.locator(".course-progress-row");
       await expect(stages).toHaveCount(12);

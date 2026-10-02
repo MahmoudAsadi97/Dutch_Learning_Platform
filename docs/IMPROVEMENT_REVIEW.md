@@ -27,7 +27,7 @@ No linguistic review status or certification claim has been upgraded.
 
 ## Validation
 
-See the dated entry in `VALIDATION_REPORT.md` for actual results. Tests with fixture providers verify
+See `docs/VERIFICATION.md` for actual results. Tests with fixture providers verify
 software behaviour, not Belgian Dutch quality, pronunciation accuracy, or learning effectiveness.
 Desktop Chromium at phone width is not a physical-phone Safari or microphone test.
 

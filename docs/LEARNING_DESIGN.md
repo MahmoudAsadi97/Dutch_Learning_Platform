@@ -60,7 +60,7 @@ back. Language-model feedback remains provisional and source content awaits qual
 
 Before making effectiveness claims, evaluate independent transfer to new scenarios, delayed recall,
 help used, correction accuracy and actual learner experience. Completion and app usage alone do not
-demonstrate learning. See CURRICULUM.md for content coverage and VALIDATION_REPORT.md for software evidence.
+demonstrate learning. See CURRICULUM.md for content coverage and docs/VERIFICATION.md for software evidence.
 
 Generated video remains a future reviewed asset type, with captions and transcripts. No video
 provider, empty video navigation or extra cloud bill is introduced by this release.

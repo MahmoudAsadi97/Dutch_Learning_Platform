@@ -2,7 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 test("learner path has twelve open stages without awarding test passes", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/leerpad");
   const path = page.getByTestId("curriculum-path");
   await expect(path.locator("li")).toHaveCount(12);
   await expect(path).not.toContainText(/A3/);

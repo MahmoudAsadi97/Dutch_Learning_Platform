@@ -26,6 +26,7 @@ from dlp.api import (
     routes_practice,
     routes_progress,
     routes_speech,
+    routes_stories,
     routes_topic_conversations,
     routes_topics,
 )
@@ -117,6 +118,7 @@ def create_app() -> FastAPI:
     app.include_router(routes_topic_conversations.router)
     app.include_router(routes_coach.router)
     app.include_router(routes_content_review.router)
+    app.include_router(routes_stories.router)
     return app
 
 

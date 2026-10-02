@@ -60,7 +60,7 @@ test("a failed draft save keeps the learner on the writing step", async ({ page 
 });
 
 test("home shows the staged learning path without a fabricated aggregate score", async ({ page }, testInfo) => {
-  await page.goto("/");
+  await page.goto("/leerpad");
   const overview = page.getByTestId("learning-overview");
   await expect(overview.getByTestId("curriculum-path").locator("li")).toHaveCount(12);
   await expect(overview).not.toContainText("Laden…");

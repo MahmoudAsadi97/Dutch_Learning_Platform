@@ -2,7 +2,7 @@
 
 Read this once, top to bottom, with the repository open; every path is real and every claim has a test
 or a report row behind it. It is the hand-over narrative that `docs/ENGINEERING.md` (reference) and
-`DECISIONS.md` (why) do not give.
+`docs/DECISIONS.md` (why) do not give.
 
 ## 1. One request, end to end
 

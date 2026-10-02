@@ -30,7 +30,7 @@ code is the reference, this explains why it is shaped the way it is.
 - `dlp.release migrate` is the only cloud schema-update path. The server starts Uvicorn directly with
   a DML-only role. `/health` is liveness; `/health/ready` requires the exact packaged migration head.
 - Azure model calls use managed identity and the v1 endpoint; explicit keys remain supported for
-  owner-controlled integration tests. The main runtime cannot read the migration or auth-client secret.
+  deliberately run integration tests. The main runtime cannot read the migration or auth-client secret.
 - Application Insights exports route templates, status and duration, not request bodies or identities.
   Provider auto-instrumentation is disabled. Cloud access logs are disabled at Uvicorn.
 - The API production lock is `apps/api/requirements-azure.lock`; regenerate using `uv pip compile
@@ -102,9 +102,9 @@ scripts/               run.py task runner, fetch_piper_voice.py, sql/
 - Fixed Dutch text is a `LocalizedText` (`nl`, `fa`, `review_status`). The UI labels anything that
   is not `reviewed`. The fixed pack (texts the learner reads or hears) must stay under
   `content_pack.word_limit`, counted by `MissionDocument.fixed_dutch_word_count()`.
-- Statuses in `VALIDATION_REPORT.md` follow the fixed vocabulary: `implemented_local`,
-  `verified_local`, `integration_pending`, `verified_live`, `review_pending`, plus
-  `verified_workspace` for things proven end to end in the build workspace but not yet on the owner's laptop.
+- Statuses in `docs/VERIFICATION.md` follow a fixed vocabulary: `verified_local` (real local providers on
+  the laptop), `verified_ci` (fixture providers in the automated suites), `integration_pending` (Azure
+  adapters, never run live), `review_pending` (needs a human reviewer).
 
 ## 4. Provider abstraction
 
@@ -227,7 +227,7 @@ reclaimable after a crash, one idempotency key per job. The in-process loop star
   Container Apps environment — public web app with built-in Entra sign-in, internal API, PostgreSQL,
   Storage, Speech, optional Azure OpenAI, Key Vault, managed identities; `apps/*/Dockerfile` build from the
   repository root; `.github/workflows/deploy.yml` is a manual OIDC workflow; `docs/GO_LIVE.md` is the
-  owner's runbook and `scripts/verify_live.py` the black-box check that moves the Azure adapters from
+  go-live runbook and `scripts/verify_live.py` the black-box check that moves the Azure adapters from
   `integration_pending` to `verified_live`.
 
 ## 9. Configuration contract
@@ -317,3 +317,23 @@ evidence and result, while a previously earned completion stays true. This is se
 checks, whose saved partial assessments support identical-submission retries. A transport failure
 after submission can leave the browser unsure whether a topic response was saved; refresh topic
 progress before deliberately resubmitting.
+
+
+## Story serial, word bank and daily plan
+
+`domains/stories` adds four tables (migration `0006`): `story_series` (one per learner: level, bible,
+rolling memory), `story_episodes` (status `queued` → `generating` → `ready` | `failed`, the text, glossary,
+questions, choices, validator findings, provider/model/prompt version, the learner's answers and
+choice), `vocab_items` (the word bank with SM-2 fields) and `learning_days` (points per Europe/Brussels
+day). Routes are in `api/routes_stories.py`: `GET /today`, `GET/POST /stories…`, `GET/POST/DELETE
+/words…`. The writer runs as the `story_episode` job in the existing job loop; `GET /today` queues the
+first episode and keeps one unread episode ahead, holding back while the reader still owes a choice
+(twelve-hour grace). `docs/STORY_ENGINE.md` describes the prompt, the validator and the cost rules.
+
+Rules that hold throughout: answers to the comprehension questions are graded on the server once per
+episode (a retried request id replays the stored result; a new id is refused); points are awarded by
+code for actions, never by the model; a learner can only see and act on their own series; the fixture
+chat model returns one validated A1 episode so every path is exercised in CI; the real text quality is
+judged on the laptop with `python -m dlp.cli write-episode`. The web pages (`/`, `/verhalen`,
+`/verhalen/[id]`, `/woorden`) live in `components/TodayHome.tsx`, `StoryLibrary.tsx`,
+`EpisodeReader.tsx` and `WordReview.tsx`; the learning path moved to `/leerpad`.

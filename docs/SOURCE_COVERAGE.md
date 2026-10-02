@@ -1,10 +1,10 @@
 # Teaching source coverage and import workflow
 
-The owner supplied nine scanned PDFs containing **884 PDF pages**. The two latest files add 201 pages. None has an embedded searchable text layer, and no companion recordings were supplied.
+Nine scanned PDFs were supplied, containing **884 PDF pages**. The two latest files add 201 pages. None has an embedded searchable text layer, and no companion recordings were supplied.
 
 This is a source inventory and review queue. It is **not** a claim that every source word has been verified, licensed for redistribution, or incorporated into the live curriculum. A lesson can have correct software behaviour while its Dutch, translations, level suitability and feedback still need expert review.
 
-| Source ID | Owner filename | PDF pages |
+| Source ID | File | PDF pages |
 |---|---|---:|
 | source-01 | Dutch pdf 1.pdf | 120 |
 | source-02 | Dutch pdf2.pdf | 86 |

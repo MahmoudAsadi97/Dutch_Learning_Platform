@@ -241,5 +241,109 @@
       }
     ],
     "summary_en": "You completed the task. Your sentences are short and clear."
+  },
+  "story-episode-v1": {
+    "notes": "one validated A1 episode of the serial; the API tests drive failure cases with their own tables",
+    "rules": [],
+    "default": {
+      "title": "De sleutel van Sami",
+      "paragraphs": [
+        "Het is maandag. Sami gaat naar zijn werk. Hij werkt in de fietsenwinkel. Maar waar is zijn sleutel? De sleutel is niet in zijn jas.",
+        "Sami gaat naar de bakkerij op de hoek. Ayşe staat achter de toonbank. \"Goeiemorgen, Sami. Wil je brood?\" vraagt ze. \"Nee, dank u. Ik zoek mijn sleutel,\" zegt Sami. Ayşe kijkt. \"Hier is geen sleutel.\"",
+        "Baas, de oude hond, ligt bij de deur. Hij heeft iets in zijn mond. Het is een sleutel! \"Baas, geef hier,\" zegt Ayşe. Baas geeft de sleutel niet. Hij wil een koekje.",
+        "Sami lacht. Hij koopt een koekje voor Baas. Baas laat de sleutel los. \"Dank je wel, Baas,\" zegt Sami. Nu kan hij naar de fietsenwinkel. Tom de postbode komt binnen. \"Amai, Sami, jij bent laat!\""
+      ],
+      "paragraphs_en": [
+        "It is Monday. Sami goes to work. He works in the bicycle shop. But where is his key? The key is not in his coat.",
+        "Sami goes to the bakery on the corner. Ayşe stands behind the counter. \"Good morning, Sami. Do you want bread?\" she asks. \"No, thank you. I am looking for my key,\" says Sami. Ayşe looks. \"There is no key here.\"",
+        "Baas, the old dog, is lying by the door. He has something in his mouth. It is a key! \"Baas, give it here,\" says Ayşe. Baas does not give the key. He wants a biscuit.",
+        "Sami laughs. He buys a biscuit for Baas. Baas lets go of the key. \"Thank you, Baas,\" says Sami. Now he can go to the bicycle shop. Tom the postman comes in. \"Wow, Sami, you are late!\""
+      ],
+      "glossary": [
+        {
+          "term": "de toonbank",
+          "meaning_en": "the counter (in a shop)",
+          "meaning_fa": "پیشخوان",
+          "example": "Ayşe staat achter de toonbank."
+        },
+        {
+          "term": "zoeken",
+          "meaning_en": "to look for",
+          "meaning_fa": "جست‌وجو کردن",
+          "example": "Ik zoek mijn sleutel."
+        },
+        {
+          "term": "de mond",
+          "meaning_en": "the mouth",
+          "meaning_fa": "دهان",
+          "example": "Hij heeft iets in zijn mond."
+        },
+        {
+          "term": "het koekje",
+          "meaning_en": "the biscuit",
+          "meaning_fa": "بیسکویت",
+          "example": "Hij wil een koekje."
+        },
+        {
+          "term": "lachen",
+          "meaning_en": "to laugh",
+          "meaning_fa": "خندیدن",
+          "example": "Sami lacht."
+        },
+        {
+          "term": "de postbode",
+          "meaning_en": "the postman",
+          "meaning_fa": "پستچی",
+          "example": "Tom de postbode komt binnen."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "Waar werkt Sami?",
+          "options": [
+            "In de bakkerij.",
+            "In de fietsenwinkel.",
+            "Op het station."
+          ],
+          "answer_index": 1,
+          "evidence": "Hij werkt in de fietsenwinkel."
+        },
+        {
+          "prompt": "Wie heeft de sleutel?",
+          "options": [
+            "Ayşe.",
+            "Tom.",
+            "Baas."
+          ],
+          "answer_index": 2,
+          "evidence": "Hij heeft iets in zijn mond."
+        },
+        {
+          "prompt": "Wat wil Baas?",
+          "options": [
+            "Een koekje.",
+            "Water.",
+            "Brood."
+          ],
+          "answer_index": 0,
+          "evidence": "Hij wil een koekje."
+        }
+      ],
+      "recap": "Sami zoekt zijn sleutel. Baas, de hond van de bakkerij, heeft hem in zijn mond. Sami koopt een koekje voor Baas en krijgt zijn sleutel terug. Tom zegt dat Sami laat is.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "Sami vraagt Tom om hulp in de fietsenwinkel."
+        },
+        {
+          "id": "b",
+          "label": "Sami gaat eerst even bij mevrouw De Clercq langs."
+        }
+      ],
+      "mood": "light"
+    }
+  },
+  "story-translate-v1": {
+    "translation": "ترجمهٔ آزمایشی این بند."
   }
 }

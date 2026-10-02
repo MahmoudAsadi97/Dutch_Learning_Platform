@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import uuid
 
 from dlp.config import get_settings
 
@@ -93,6 +94,7 @@ def cmd_export_recording(args: argparse.Namespace) -> int:
 
 
 LEARNER_DATA_TABLES = [
+    "learning_days", "vocab_items", "story_episodes", "story_series",
     "content_reviews", "coach_plan_requests", "practice_observations", "topic_conversations",
     "topic_practice", "curriculum_attempts", "curriculum_practice",
     "feedback_reports", "usage_reservations", "usage_counters", "evidence_records", "practice_turns",
@@ -120,9 +122,52 @@ def cmd_reset_learner_data(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_write_episode(args: argparse.Namespace) -> int:
+    """Write one episode for the development owner with the configured providers and print the checks.
+
+    The quickest way to judge a local model: `python -m dlp.cli write-episode --stage a1 --theme "op de markt"`.
+    """
+    from dlp.db.session import session_scope
+    from dlp.domains.identity.assertions import Principal
+    from dlp.domains.identity.service import get_or_create_learner
+    from dlp.domains.jobs.service import drain
+    from dlp.domains.stories import service as stories
+
+    settings = get_settings()
+    principal = Principal(subject=f"fixture:{settings.dev_owner_email}", email=settings.dev_owner_email,
+                          name=settings.dev_owner_name, identity_provider="fixture", request_id="cli")
+    with session_scope() as session:
+        learner = get_or_create_learner(session, principal)
+        if args.stage:
+            stories.set_level(session, learner, args.stage)
+        episode = stories.queue_episode(session, learner, theme=args.theme or "", theme_source="learner",
+                                        request_id=f"cli-{uuid.uuid4().hex[:12]}")
+        episode_id = episode.id
+    drain(settings, worker_id="cli", limit=5)
+    with session_scope() as session:
+        learner = get_or_create_learner(session, principal)
+        view = stories.episode_view(stories.get_episode(session, learner, episode_id))
+    if args.json:
+        print(json.dumps(view, ensure_ascii=False, indent=2))
+        return 0 if view["status"] == "ready" else 1
+    print(f"episode {view['number']} · {view['stage_id']} · {view['status']} {view['error_code']}".strip())
+    if view["status"] == "ready":
+        print(f"\n{view['title']}\n")
+        for paragraph in view["paragraphs"]:
+            print(paragraph["nl"] + "\n")
+        print("new words:", ", ".join(item["term"] for item in view["glossary"]))
+        print("questions:", len(view["questions"]), "· choices:", " / ".join(c["label"] for c in view["choices"]))
+        print("checks:", "ok" if not view["warnings"] else "; ".join(view["warnings"]))
+        print(f"provider: {view['provider']} {view['model']} · attempts: {view['attempts']} · words: {view['word_count']}")
+        return 0
+    print("the writer did not produce a usable episode; see the checks on the episode row and the job's last_error")
+    return 1
+
+
 def cmd_run_jobs(args: argparse.Namespace) -> int:
     from dlp.domains.content_review import service as content_review_service  # noqa: F401
     from dlp.domains.jobs.service import drain
+    from dlp.domains.stories import service as story_service  # noqa: F401
 
     processed = drain(get_settings(), worker_id="cli", limit=args.limit)
     print(f"processed {processed} job(s)")
@@ -155,6 +200,12 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("reset-learner-data", help="empty the learner-generated tables of the test database")
     p.add_argument("--force", action="store_true", help="allow a database whose name does not end in _test")
     p.set_defaults(func=cmd_reset_learner_data)
+
+    p = sub.add_parser("write-episode", help="write one story episode with the configured providers and print it")
+    p.add_argument("--stage", default="", help="set the serial's level first, e.g. a1")
+    p.add_argument("--theme", default="", help="an optional wish for the episode")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_write_episode)
 
     p = sub.add_parser("run-jobs", help="drain runnable background jobs once")
     p.add_argument("--limit", type=int, default=100)

@@ -136,7 +136,7 @@ test("the practice coach loads free suggestions and deep-links to the requested 
     const stageId = new URL(route.request().url()).searchParams.get("stage_id") ?? "a1";
     await route.fulfill({json: {stage_id: stageId, history_version: "test", mode: "suggested", notice: copy("Kies zelf welke stap je eerst wilt zetten."), history_count: 0, can_personalise: false, items: ["reading", "writing", "listening"].map((skill, index) => ({id: `${stageId}-t001:${skill}`, stage_id: stageId, topic_id: `${stageId}-t001`, skill, title: copy(`Oefenstap ${index + 1}`), category: copy("Dagelijks leven"), reason: copy("Probeer dezelfde situatie met een andere vaardigheid."), basis: "start", evidence_count: 0}))}});
   });
-  await page.goto("/");
+  await page.goto("/leerpad");
   const coach = page.locator(".practice-coach");
   await expect(coach.getByRole("heading", {name: "Jouw volgende oefening"})).toBeVisible();
   await expect(coach.locator(".practice-recommendations li")).toHaveCount(3);
@@ -146,7 +146,7 @@ test("the practice coach loads free suggestions and deep-links to the requested 
   await expect(page).toHaveURL(/\/learn\/a2\?skill=writing&topic=a2-t001$/);
   await expect(page.getByLabel("Jouw tekst bij dit onderwerp", {exact: true})).toBeVisible();
   expect(calls.every(method => method === "GET")).toBe(true);
-  await page.goto("/"); await expect(page.getByLabel("Mijn oefenniveau", {exact: true})).toHaveValue("a2");
+  await page.goto("/leerpad"); await expect(page.getByLabel("Mijn oefenniveau", {exact: true})).toHaveValue("a2");
 });
 
 test("explicit coaching retries keep the same id and a failed request leaves suggestions usable", async ({page}) => {
@@ -156,7 +156,7 @@ test("explicit coaching retries keep the same id and a failed request leaves sug
     if (route.request().method() === "POST") {calls.push(route.request().postDataJSON()); if (fail) {fail = false; await route.fulfill({status: 503, json: {detail: "unavailable"}}); return;}}
     await route.fulfill({json: plan});
   });
-  await page.goto("/"); const coach = page.locator(".practice-coach");
+  await page.goto("/leerpad"); const coach = page.locator(".practice-coach");
   await coach.getByRole("button", {name: "Stem de volgorde op mij af", exact: true}).click();
   await expect(coach.getByRole("alert")).toBeVisible();
   await expect(coach.getByRole("link", {name: "Open deze oefening"})).toHaveCount(3);

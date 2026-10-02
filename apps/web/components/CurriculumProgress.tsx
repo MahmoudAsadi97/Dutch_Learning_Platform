@@ -24,7 +24,7 @@ export function CurriculumProgress() {
   return <section className="course-progress" aria-labelledby="course-progress-title">
     <header className="page-heading"><div><p className="eyebrow">JOUW LEERPAD</p><h1 id="course-progress-title">Elke stap vertelt iets.</h1>
       <p><LearningText text={{ nl: "Volg elke vaardigheid apart. Oefenen en slagen voor een toets zijn verschillende stappen.", en: "Track each skill separately. Practising and passing a check are different steps.", fa: "هر مهارت را جداگانه دنبال کن. تمرین کردن و قبولی در آزمون دو مرحلهٔ متفاوت‌اند." }}/></p>
-    </div><Link className="button secondary" href="/">Terug naar je leerpad</Link></header>
+    </div><Link className="button secondary" href="/leerpad">Terug naar je leerpad</Link></header>
     {error ? <p role="alert">Je voortgang kon niet worden geladen. <button className="linklike" onClick={() => setRetry(value => value + 1)}>Opnieuw proberen</button></p>
       : !data ? <p role="status">Je voortgang laden…</p>
       : <div className="course-progress-list">{data.stages.map(stage => <article className="card course-progress-row" key={stage.id}>

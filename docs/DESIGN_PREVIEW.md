@@ -1,18 +1,20 @@
-# Taalstudio interface preview
+# Interface preview
 
-Actual Chromium renders from the automated suite, 22 September 2026. These show **test fixture data**,
-not a real learner's progress and not a deployed Azure service. The desktop screenshot is 1440 px wide;
-the mobile screenshot is 390 px wide with a fixed bottom navigation bar. A full-page screenshot includes
-that bar at the viewport's bottom even though the page continues below it.
+Chromium renders from the automated suite, 2 October 2026, with **fixture data** (a fixture-written
+episode, no real learner history, no deployed service). Desktop is 1440 px wide; the phone render is
+390 px wide with the fixed bottom navigation, which a full-page screenshot shows mid-page.
 
-## Desktop
+## Vandaag (home)
 
-![Desktop learning dashboard](previews/dashboard-desktop.png)
+![Today, desktop](previews/today-desktop.png)
 
-## Mobile
+![Today, phone width](previews/today-phone.png)
 
-![Mobile learning dashboard](previews/dashboard-mobile.png)
+## An episode of De Lindestraat
 
-The same design system covers the mission workspace, progress, speech studio and settings.
-The CI report includes their screenshots and automated contrast/landmark/control checks.
-Browser emulation does not establish physical iOS/Android microphone behaviour.
+![Episode reader, desktop](previews/episode-desktop.png)
+
+The same design system covers the learning path, the topic practice, the missions, the word review,
+the speech studio and settings. The CI report attaches screenshots of every screen at 1440, 390 and
+320 px together with automated contrast, landmark and control checks. Browser emulation does not
+establish physical iOS/Android microphone behaviour.

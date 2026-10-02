@@ -11,20 +11,24 @@ import {
   type LeaveGuard,
 } from "@/lib/client/navigation";
 
-const links: { href: string; label: string; short: string; icon: IconName }[] =
+const links: { href: string; label: string; short: string; icon: IconName; mobile?: boolean }[] =
   [
-    { href: "/", label: "Mijn leerpad", short: "Leerpad", icon: "home" },
+    { href: "/", label: "Vandaag", short: "Vandaag", icon: "calendar", mobile: true },
+    { href: "/verhalen", label: "Verhalen", short: "Verhalen", icon: "book", mobile: true },
+    { href: "/woorden", label: "Woorden", short: "Woorden", icon: "check", mobile: true },
+    { href: "/leerpad", label: "Mijn leerpad", short: "Leerpad", icon: "home", mobile: true },
     {
       href: "/missions",
       label: "Praktijkgesprekken",
       short: "Oefenen",
-      icon: "book",
+      icon: "globe",
     },
     {
       href: "/progress",
       label: "Mijn voortgang",
       short: "Voortgang",
       icon: "chart",
+      mobile: true,
     },
     {
       href: "/speech-check",
@@ -39,6 +43,14 @@ const links: { href: string; label: string; short: string; icon: IconName }[] =
       icon: "settings",
     },
   ];
+
+/** The section a path belongs to, for the current-page marker and the breadcrumb. */
+function sectionFor(path: string): string {
+  if (path.startsWith("/learn/")) return "/leerpad";
+  if (path.startsWith("/verhalen/")) return "/verhalen";
+  if (path.startsWith("/missions/")) return "/missions";
+  return path;
+}
 
 export function AppShell({
   children,
@@ -87,7 +99,8 @@ export function AppShell({
         leaving.current = false;
       });
   }
-  const current = path.startsWith("/learn/") ? links[0] : links.find((link) => link.href === path) ?? links[1];
+  const section = sectionFor(path);
+  const current = links.find((link) => link.href === section) ?? links[0];
   return (
     <NavigationGuardContext.Provider value={registerGuard}>
       <div className="app-frame" onClickCapture={navigate}>
@@ -95,7 +108,7 @@ export function AppShell({
           <Link
             href="/"
             className="brand"
-            aria-label="Taalstudio, naar mijn leerplek"
+            aria-label="Taalstudio, naar vandaag"
           >
             <span className="brand-mark">
               t<span>.</span>
@@ -113,7 +126,7 @@ export function AppShell({
               <Link
                 key={link.href}
                 href={link.href}
-                aria-current={(path === link.href || (link.href === "/" && path.startsWith("/learn/")) || (link.href === "/missions" && path.startsWith("/missions/"))) ? "page" : undefined}
+                aria-current={section === link.href ? "page" : undefined}
               >
                 <Icon name={link.icon} />
                 <span>{link.label}</span>
@@ -178,11 +191,11 @@ export function AppShell({
           </footer>
         </div>
         <nav className="mobile-nav" aria-label="Mobiel hoofdmenu">
-          {links.map((link) => (
+          {links.filter((link) => link.mobile).map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              aria-current={(path === link.href || (link.href === "/" && path.startsWith("/learn/")) || (link.href === "/missions" && path.startsWith("/missions/"))) ? "page" : undefined}
+              aria-current={section === link.href ? "page" : undefined}
             >
               <Icon name={link.icon} size={21} />
               <span>{link.short}</span>

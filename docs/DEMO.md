@@ -1,7 +1,7 @@
-# Gate 2 demo — what to show the language reviewer
+# Demo script for a language reviewer
 
 The reviewer is a Dutch speaker (ideally Flemish) who judges the *language*, not the software.
-Twenty minutes, on the owner's laptop, real local providers (`python scripts/run.py dev`, Ollama running).
+Twenty minutes on the development laptop with the real local providers (`python scripts/run.py dev`, Ollama running).
 
 ## Before the demo
 
@@ -19,15 +19,23 @@ Twenty minutes, on the owner's laptop, real local providers (`python scripts/run
 | 3 Spreken | Hold the button, say a reason, choose a slot, confirm. Point at the labels: *vaste zin* vs *antwoord van het model*, the seconds, the appointment panel | Are the receptionist's fixed lines right (register, *u*, Flemish phrasing)? Are the model's free replies acceptable? Did the transcript read the learner correctly? |
 | 4 Schrijven | Type a short message, show the autosave time, submit, show the word count and required words | Is the prompt clear? Are 25–80 words reasonable for A2? |
 | Feedback | On each step, *Vraag feedback*. Show a point with its evidence ids and, if present, the dropped-point count | Is the feedback correct Dutch and correct *about* the learner's Dutch? Is the Persian rendering usable? |
-| 5 Controle | Explain only (one attempt): speech only, no help, no typed input, one session; the owner may keep the attempt for later | Is the hairdresser scenario a fair transfer of the dentist one? |
+| 5 Controle | Explain only (one attempt): speech only, no help, no typed input, one session; the attempt can be kept for later | Is the hairdresser scenario a fair transfer of the dentist one? |
 
 ## What the reviewer decides
 
-- Which fixed texts may go from `unreviewed` to `reviewed` (per text; the owner records this in the
+- Which fixed texts may go from `unreviewed` to `reviewed` (per text; record this in the
   mission file's `review_status` and reloads with `python scripts/run.py fixture`).
 - Whether the fixed lines of the two scenarios need rewording (they are content, not code).
 - Whether the model's free replies and feedback are good enough to keep, or should be reduced to
   fixed lines until a better local model is chosen (benchmark harness: `python scripts/run.py benchmark`).
+
+## The serial
+
+After the mission, open **Vandaag** and read the current episode of *De Lindestraat* together. Ask the
+reviewer the same three questions about the generated text: is it Belgian Standard Dutch, is it at the
+stated level, are the glossary meanings right? Rate the episode with the thumbs; the rating and the
+validator's findings are stored on the episode (`story_episodes.checks`) for later comparison between
+models. See `docs/STORY_ENGINE.md`.
 
 ## What not to claim
 

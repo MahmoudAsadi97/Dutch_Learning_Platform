@@ -11,6 +11,7 @@ from dlp.domains.jobs import models as jobs_models
 from dlp.domains.practice import models as practice_models
 from dlp.domains.progress import models as progress_models
 from dlp.domains.speech import models as speech_models
+from dlp.domains.stories import models as story_models
 from dlp.domains.topic_conversations import models as topic_conversation_models
 from dlp.domains.usage import models as usage_models
 
@@ -26,6 +27,7 @@ __all__ = [
     "practice_models",
     "progress_models",
     "speech_models",
+    "story_models",
     "topic_conversation_models",
     "usage_models",
 ]

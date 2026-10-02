@@ -1,68 +1,73 @@
-# Taalstudio — Dutch learning platform
+# Taalstudio — Belgian Dutch, one episode a day
 
-Three focused learning helpers now extend the topic banks: **ten turn-by-turn conversations**,
-**a short practice plan from saved attempts**, and an **admin-only content editing queue**.
-They reuse the existing model, speech and PostgreSQL services. Browse the A1 station topic or
-neighbour topic and select **Oefen dit gesprek**; find **Jouw volgende oefening** on the home page.
-See [learning support](docs/LEARNING_AGENTS.md) for the ten supported conversations and limits.
+A personal learning environment for Belgian Standard Dutch. Each day it offers one new episode of a
+continuing story written at your level, a handful of saved words that are due for review, and one
+conversation to practise — with the twelve-stage course, topic practice and role-play missions behind it.
 
-A guided Belgian Standard Dutch learning path with original stories, vocabulary, grammar drills,
-and separate reading, listening, speaking and writing practice.
+![Today page](docs/previews/today-desktop.png)
 
-The path follows **pre-A1 → A1 → pre-A2 → A2 → pre-B1 → B1 → pre-B2 → B2 → pre-C1 → C1 → pre-C2 → C2**.
-Preparation stages are internal bridges; there is no A3. Each stage has a distinct four-part final
-course check. **Every stage is open to every admitted learner**; choose the right starting point.
-Practise all four skills within a stage before its final check. Passing remains a separate four-skill
-record, not a condition for opening the next stage. Tester previews never manufacture student passes.
+## What it does
 
-The top bar switches Dutch–English, Dutch–Persian and Dutch–Persian–English support at any time.
-Dutch remains the target language. A restrained navy/blue interface puts the current learning step,
-useful feedback and the next action first. Each stage also has a searchable vocabulary-card bank and **Story Time**, with explicit word/sentence
-replay, short recall rounds and comprehension checks. Pre-A1 includes Dutch letter names and common
-letter combinations. Writing help shows inspectable corrections and explanations without overwriting
-the draft. Each of the four skill tabs opens a searchable topic browser: **100 situations per skill
-per stage**, with independent answers, feedback and practice progress. The original introductory
-lesson remains available through **Startles**. Four additional everyday role-play missions remain under
-`/missions`: appointments, lunch, returning a purchase and course messages.
+**Vandaag** (`/`) — the daily plan: your streak, today's points against a goal of twenty, the episode that
+is ready, the words that are due, and one obvious next step.
 
-**Coverage is a growing authored course, not a completed or externally validated A1–C2 syllabus.**
-The supplied scans are indexed separately, with uncertain OCR kept out of lessons. Every original
-unit remains labelled as awaiting language review. Internal course checks do not award recognised
-CEFR certificates or pronunciation scores. See [topic-based skill practice](docs/TOPIC_PRACTICE.md), [the extended practice library](docs/PRACTICE_LIBRARY.md), [curriculum coverage](docs/CURRICULUM.md) and
-[source coverage](docs/SOURCE_COVERAGE.md) for what is included and what still needs review.
+**De Lindestraat** (`/verhalen`) — a serial about a street in an invented Flemish town. Episodes are
+written by the configured chat model from a fixed cast, your level and the words you have saved, then
+checked by code before you see them: Dutch, length and sentence complexity per level, vocabulary
+coverage, comprehension questions that are provably answerable from the text, Belgian forms. Each episode
+ends with a choice that shapes the next one. You can read along with synthetic audio, read a paragraph
+aloud and see which words were recognised, ask for a Persian translation of any paragraph, save any new
+word, answer three questions and rate the episode. See [the story engine](docs/STORY_ENGINE.md).
 
-The existing Azure architecture is retained: a public authenticated Next.js web app, internal FastAPI
-API, PostgreSQL, Blob Storage and managed model/speech services. No additional paid service is required
-for this learning-path release. [GO_LIVE](docs/GO_LIVE.md) covers the migration and deployment gate;
-[VALIDATION_REPORT](VALIDATION_REPORT.md) separates tested code from verified live behavior.
+**Woorden** (`/woorden`) — your word bank. Words you save from stories (or add yourself) come back for
+review with spaced repetition; a word you forget returns ten minutes later, a word you know returns in
+days, then weeks.
+
+**Mijn leerpad** (`/leerpad`) — the structured course: pre-A1 → A1 → pre-A2 → A2 → pre-B1 → B1 → pre-B2
+→ B2 → pre-C1 → C1 → pre-C2 → C2, each stage with vocabulary cards, grammar drills, a story, listening,
+speaking and writing tasks, 100 practice situations per skill and a four-skill final check. Every stage is
+open; passing a check is recorded per skill and never pretends to be a CEFR certificate.
+
+**Praktijkgesprekken** (`/missions`) — role-play with a character whose calendar is enforced by code:
+rescheduling an appointment, ordering lunch, returning a purchase, writing to a course. Push-to-talk
+speaking, typed fallback (labelled as typed), feedback that must cite your own words.
+
+Support languages are English and Persian (shown under the Dutch, switchable in the header); Dutch
+stays the practice language. The interface is in Dutch.
+
+**Honesty rules built in.** No pronunciation scores, no aggregate level, no certificate. Everything the
+model writes is labelled as generated; all fixed Dutch is labelled as unreviewed until a Belgian Dutch
+reviewer has checked it. Usage counters cap model and speech calls per day and in total.
+
+## Architecture
 
 | Part | Technology | Where |
 |---|---|---|
 | Web app (only public entry) | Next.js / React / TypeScript | `apps/web` |
-| API (never public) | FastAPI / Pydantic / SQLAlchemy / Alembic | `apps/api` |
-| Database | PostgreSQL 16 | Docker Compose |
-| Blob storage | Azurite (Phase A), Azure Blob Storage (Phase B) | Docker Compose |
-| Chat model | Ollama (Phase A), Azure AI Foundry (Phase B) | `apps/api/src/dlp/providers` |
-| Speech | faster-whisper + Piper (Phase A), Azure Speech nl-BE (Phase B) | `apps/api/src/dlp/providers` |
-| Content | 12-stage path, topic-based skill practice, word/story libraries and four scenario missions | `content/curriculum`, `content/practice`, `content/library`, `content/missions` |
-| Benchmark | 40 language cases, provider-tagged results | `benchmarks/language` |
+| API (never public; reached through the web proxy with a signed assertion) | FastAPI / Pydantic / SQLAlchemy / Alembic | `apps/api` |
+| Database | PostgreSQL 16 | Docker Compose locally; Flexible Server in Azure |
+| Blob storage | Azurite locally; Azure Blob Storage | `apps/api/src/dlp/providers` |
+| Chat model | Ollama locally (`llama3.1:8b` by default); Azure-hosted deployments | `apps/api/src/dlp/providers` |
+| Speech | faster-whisper + Piper locally; Azure Speech `nl-BE` | `apps/api/src/dlp/providers` |
+| Background work | PostgreSQL job table with leases, run by an in-process loop | `apps/api/src/dlp/domains/jobs` |
+| Content | 12-stage path, topic practice, word/story libraries, four missions | `content/` |
+| Story engine | serial bible, stage profiles, validator, SM-2 word bank, daily points | `apps/api/src/dlp/domains/stories` |
+| Infrastructure | Bicep, GitHub Actions (CI + manual OIDC deploy) | `infra/`, `.github/workflows` |
 
-## Run it on the laptop
+Every external service sits behind a narrow interface with a local, a fixture and an Azure
+implementation; the provider is chosen in `.env`. Dates, availability, bookings, task completion, usage
+limits and submissions are decided in application code — models propose, code validates.
+Details: [engineering notes](docs/ENGINEERING.md), [decisions](docs/DECISIONS.md).
 
-Prerequisites: Docker Desktop, Ollama with an instruction-tuned model installed, and either
-conda (recommended, gives Python, Node and ffmpeg in one environment) or Python 3.11+, Node 22 LTS
-and `ffmpeg` on the PATH.
+## Run it on a laptop
 
-With conda:
+Prerequisites: Docker Desktop, [Ollama](https://ollama.com) with an instruction-tuned model pulled
+(`ollama pull llama3.1:8b`), and either conda (recommended: Python, Node and ffmpeg in one environment)
+or Python 3.11+, Node 22 LTS and `ffmpeg` on the PATH.
 
 ```
 conda env create -f environment.yml
 conda activate dlp
-```
-
-Then, in that environment (or with plain Python, which creates `apps/api/.venv` instead):
-
-```
 python scripts/run.py setup        # pip (API), npm (web), Playwright browser, creates .env from .env.example
 # edit .env: DEV_OWNER_EMAIL, OWNER_ALLOWLIST, ASSERTION_SIGNING_KEY (32+ random characters), LOCAL_CHAT_MODEL
 python scripts/run.py services     # PostgreSQL + Azurite (dev does this by itself when they are down)
@@ -75,24 +80,20 @@ python scripts/run.py dev          # API on 127.0.0.1:8000, web on http://localh
 
 After a reboot, `python scripts/run.py dev` is the only command needed: it starts the Docker services
 when the database is down, applies migrations, loads the content, starts `ollama serve` when nothing
-answers at `LOCAL_CHAT_BASE_URL` (and stops it again with Ctrl+C), then runs the API and the web app.
-The preflight row *chat model* says whether Ollama is reachable; without it a turn fails with a clear
-message instead of a fake reply.
-Speech recognition uses faster-whisper `small` by default; `LOCAL_STT_MODEL=medium` in `.env` is
-clearly better on non-native Dutch at about three times the recognition time (roughly one second
-per second of speech on a laptop CPU).
+answers at `LOCAL_CHAT_BASE_URL`, then runs the API and the web app. Open <http://localhost:3000>; the
+first episode is queued on the first visit and takes one to three minutes with a local 8B model on a
+laptop CPU. To watch the writer work directly:
 
-Then open <http://localhost:3000> for the learning path; `/missions` opens additional role-play practice.
-The mission page renders the reading step and the speaking step (hold the button, speak, release; the receptionist answers through the local chat model and
-Piper; typed input is accepted in the practice step and stored as typed evidence), the checkpoint
-step (speech only, no help, one attempt), and the microphone check page runs
-microphone → upload → ffmpeg → local transcription and synthetic playback.
+```
+cd apps/api && python -m dlp.cli write-episode --stage a1 --theme "op de markt"
+```
 
-Checks: `python scripts/run.py test` (API), `python scripts/run.py e2e` (browser tests with
-fixture providers, a fixed fixture identity and the test database, independent of your `.env`), `python scripts/run.py benchmark` (plumbing dry runs),
-`python scripts/run.py acceptance` (check A01). `make <task>` wraps the same commands.
+Speech recognition uses faster-whisper `small` by default; `LOCAL_STT_MODEL=medium` is clearly better on
+non-native Dutch at about three times the recognition time.
 
-## Notes for WSL 2
+Keep comments on their own lines in `.env`: a line such as `KEY= # note` is read as the value `# note`.
+
+### Notes for WSL 2
 
 - Docker Desktop must have **Settings → Resources → WSL integration** switched on for the distro you
   work in; otherwise `docker` does not exist inside WSL and `services` fails.
@@ -102,36 +103,39 @@ fixture providers, a fixed fixture identity and the test database, independent o
   `sudo env "PATH=$PATH" npx playwright install-deps chromium` once (plain `sudo npx` resets PATH
   and picks up an old system Node, which fails with a syntax error).
 - `FFMPEG_MEMORY_LIMIT_MB` caps ffmpeg's virtual address space. The conda-forge ffmpeg build needs
-  more than 1 GB of address space; the default is 2048. "audio conversion failed" with
-  "failed to map segment" in the API log means the cap is too small.
-- `dev` binds the web app on port 3000; open <http://localhost:3000> in the Windows browser.
+  more than 1 GB; the default is 2048. "audio conversion failed" with "failed to map segment" in the
+  API log means the cap is too small.
+- In development mode the first request to a route takes 10–20 s on `/mnt/c` (Next.js compiles on
+  demand); production builds do not.
+
+## Checks
+
+```
+python scripts/run.py test         # API suite (needs the *_test database; see docs/VERIFICATION.md)
+python scripts/run.py e2e          # builds the web app, starts api + web with fixture providers, runs Playwright
+cd apps/web && npm run test:unit   # browser-side unit tests
+python scripts/run.py benchmark    # language-benchmark plumbing dry runs
+python scripts/run.py acceptance   # check A01
+make lint                          # ruff, eslint, tsc
+```
+
+API and browser test databases must end in `_test`; test cleanup refuses the normal learner database.
+CI runs all of this on every push to `main`.
 
 ## Going live
 
-Azure resources have not been deployed by this update. [GO_LIVE](docs/GO_LIVE.md) covers allowance,
-app registration, foundation, immutable images, the migration job, private deployment, sign-in and
-publication. [VALIDATION_REPORT](VALIDATION_REPORT.md) distinguishes local/CI evidence from pending
-live checks. Creation/configuration and real service, phone, language-review and recovery checks are
-still required; a successful container build cannot establish those results.
+Nothing is deployed yet. [GO_LIVE](docs/GO_LIVE.md) is the runbook (allowance, app registration,
+foundation, images, migration job, private deployment, sign-in, publication); `scripts/verify_live.py`
+checks each live service and moves the Azure adapters from `integration_pending` to `verified_live`.
+Paid use is switched on deliberately with `PAID_USAGE_ENABLED`, never by the presence of credentials.
 
 ## Documents
 
-- `docs/ENGINEERING.md` — architecture, conventions, provider abstraction, trust boundaries, tests.
-- `STATE.md` — milestone checkboxes and what is next.
-- `VALIDATION_REPORT.md` — what was verified, how, and with which status.
-- `DECISIONS.md` — decisions with their reasons.
-- `OWNER_ACTIONS.md` — the short list of things only the owner can do.
-
-All fixed Dutch content is provisional and labelled *unreviewed* until a language reviewer approves it.
-
-## Reliability update — September 2026
-
-The home page now shows four separate skill records alongside the mission entry point. Hints,
-reading translations and listening transcripts are logged before display. Writing drafts save in order,
-including erased text; moving between lesson steps waits for a successful save and offers retry if offline.
-Session mutations are serialized to preserve concurrent progress updates.
-
-Additional checks: `cd apps/web && npm run test:unit` (Node 22.6+). API and browser test databases must
-end in `_test`: test cleanup intentionally refuses the normal learner database. CI requires the test
-database instead of silently skipping its tests. See [the review](docs/IMPROVEMENT_REVIEW.md) for findings,
-limitations and the next priorities. This update does not deploy Azure or certify language quality.
+- [STATUS](docs/STATUS.md) — what works, known limits, the next steps.
+- [VERIFICATION](docs/VERIFICATION.md) — what was checked, where, with which status.
+- [STORY_ENGINE](docs/STORY_ENGINE.md) — how episodes are written, validated and scheduled.
+- [ENGINEERING](docs/ENGINEERING.md) — architecture, conventions, trust boundaries, tests.
+- [DECISIONS](docs/DECISIONS.md) — decisions with their reasons.
+- [DEMO](docs/DEMO.md) — a twenty-minute walkthrough for a language reviewer.
+- [CURRICULUM](docs/CURRICULUM.md), [TOPIC_PRACTICE](docs/TOPIC_PRACTICE.md), [PRACTICE_LIBRARY](docs/PRACTICE_LIBRARY.md), [SOURCE_COVERAGE](docs/SOURCE_COVERAGE.md) — the static content and what it was built from.
+- [LEARNING_AGENTS](docs/LEARNING_AGENTS.md), [LEARNING_DESIGN](docs/LEARNING_DESIGN.md) — the conversation partner, the coach, the editing queue, and the learning loop behind the course.
