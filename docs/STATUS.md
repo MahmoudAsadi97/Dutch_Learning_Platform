@@ -39,7 +39,7 @@ Statuses in detail: `docs/VERIFICATION.md`.
 2. Phone run on the live site (GO_LIVE §6): microphone, read-aloud, playback, layout at 390 px.
 3. Arrange a Belgian Dutch reviewer for the fixed A1–A2 pack and a sample of generated episodes
    (`docs/DEMO.md` is the walkthrough to show them).
-4. Configure the `production` environment for `deploy.yml` so a release is one click from GitHub.
+4. Run `scripts/setup_github_deploy.sh` once so a release is one click from GitHub (`deploy.yml`).
 5. Only then: more content, more missions.
 
 ## Live checklist

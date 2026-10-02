@@ -210,10 +210,14 @@ Images built before the `RELEASE_SHA` build argument existed report `unknown`.
 
 ## 7. Subsequent releases
 
-Create GitHub environment `production`, require owner approval, and restrict deployments to `main`.
-Configure OIDC federation for subject `repo:MahmoudAsadi97/Dutch_Learning_Platform:environment:production`.
-Store `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID` as environment secrets; set variables
-`AZURE_RESOURCE_GROUP`, `AZURE_ACR_NAME`, `AZURE_APP_PREFIX`.
+`scripts/setup_github_deploy.sh` does the one-time setup from a signed-in `az` session and a GitHub
+token that may administer the repository (`export GITHUB_TOKEN=...`): it registers the Entra
+application `dlp-github-deploy` with a federated credential for subject
+`repo:MahmoudAsadi97/Dutch_Learning_Platform:environment:production`, grants it Contributor on the
+resource group, creates the GitHub environment `production` (owner approval, deployments from `main`
+only) and stores `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID` as its secrets and
+`AZURE_RESOURCE_GROUP`, `AZURE_ACR_NAME`, `AZURE_APP_PREFIX` as its variables. It is safe to re-run.
+Until it has run, releases go through `scripts/deploy_current.sh` from the laptop.
 
 The deployment identity needs ACR build/push and Container Apps/job update/execute rights scoped to this
 group. It does not need Key Vault secret-read rights or Owner. Job execution is privileged because it
