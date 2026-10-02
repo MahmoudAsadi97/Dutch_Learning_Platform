@@ -345,5 +345,90 @@
   },
   "story-translate-v1": {
     "translation": "ترجمهٔ آزمایشی این بند."
+  },
+  "video-script-v1": {
+    "notes": "one validated A1 presenter script; the API tests drive failure cases with their own tables",
+    "rules": [],
+    "default": {
+      "title": "Op de markt",
+      "paragraphs": [
+        "Goeiemorgen! Vandaag gaan we naar de markt. De markt is op zaterdag. Het is druk en gezellig.",
+        "Op de markt koop ik groenten en fruit. Ik wil appels en een brood. De appels zijn lekker en niet duur.",
+        "Ik zeg: Goeiemorgen, mag ik een kilo appels? De verkoper zegt: Dat is drie euro. Ik betaal en zeg dank u.",
+        "Tot morgen! Probeer het zelf: ga naar de markt en koop iets lekkers."
+      ],
+      "paragraphs_en": [
+        "Good morning! Today we go to the market. The market is on Saturday. It is busy and pleasant.",
+        "At the market I buy vegetables and fruit. I want apples and a loaf of bread. The apples are tasty and not expensive.",
+        "I say: Good morning, may I have a kilo of apples? The seller says: That is three euros. I pay and say thank you.",
+        "See you tomorrow! Try it yourself: go to the market and buy something tasty."
+      ],
+      "paragraphs_fa": [
+        "صبح بخیر! امروز به بازار می‌رویم. بازار روز شنبه است. شلوغ و دلپذیر است.",
+        "در بازار سبزی و میوه می‌خرم. سیب و یک نان می‌خواهم. سیب‌ها خوشمزه و ارزان هستند.",
+        "می‌گویم: صبح بخیر، یک کیلو سیب می‌شود؟ فروشنده می‌گوید: سه یورو. پرداخت می‌کنم و تشکر می‌کنم.",
+        "تا فردا! خودت امتحان کن: به بازار برو و چیزی خوشمزه بخر."
+      ],
+      "keywords": [
+        "de markt",
+        "groenten en fruit",
+        "een kilo appels",
+        "tot morgen"
+      ],
+      "glossary": [
+        {
+          "term": "de markt",
+          "meaning_en": "the market",
+          "meaning_fa": "بازار",
+          "example": "Vandaag gaan we naar de markt."
+        },
+        {
+          "term": "de verkoper",
+          "meaning_en": "the seller",
+          "meaning_fa": "فروشنده",
+          "example": "De verkoper zegt: Dat is drie euro."
+        },
+        {
+          "term": "gezellig",
+          "meaning_en": "pleasant, cosy",
+          "meaning_fa": "دلپذیر",
+          "example": "Het is druk en gezellig."
+        },
+        {
+          "term": "betalen",
+          "meaning_en": "to pay",
+          "meaning_fa": "پرداخت کردن",
+          "example": "Ik betaal en zeg dank u."
+        },
+        {
+          "term": "duur",
+          "meaning_en": "expensive",
+          "meaning_fa": "گران",
+          "example": "De appels zijn lekker en niet duur."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "Wanneer is de markt?",
+          "options": [
+            "Op maandag.",
+            "Op zaterdag.",
+            "Op zondag."
+          ],
+          "answer_index": 1,
+          "evidence": "De markt is op zaterdag."
+        },
+        {
+          "prompt": "Hoeveel kosten de appels?",
+          "options": [
+            "Twee euro.",
+            "Drie euro.",
+            "Vier euro."
+          ],
+          "answer_index": 1,
+          "evidence": "Dat is drie euro."
+        }
+      ]
+    }
   }
 }

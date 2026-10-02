@@ -115,6 +115,15 @@ export function TodayHome() {
           <span><strong>{words.due_count === 1 ? "woord om te herhalen" : "woorden om te herhalen"}</strong><small>{words.total} bewaard · {words.learned_count} stevig onthouden</small></span>
           <Icon name="arrow" />
         </Link>
+        <Link href={plan.videos?.ready ? `/videos/${plan.videos.ready.id}` : "/videos"} className={`words-card video-card ${plan.videos?.ready ? "has-due" : ""}`} data-testid="today-video">
+          <span className="words-count"><Icon name="play" size={22} /></span>
+          <span>{plan.videos?.ready
+            ? <><strong>Een video staat klaar</strong><small>{plan.videos.ready.title || plan.videos.ready.topic} · {plan.videos.ready.kind_label}</small></>
+            : plan.videos?.pending
+              ? <><strong>Je video wordt gemaakt</strong><small>Dat duurt een paar minuten.</small></>
+              : <><strong>Vraag een video</strong><small>Op jouw niveau, over wat jij kiest.</small></>}</span>
+          <Icon name="arrow" />
+        </Link>
       </aside>
     </div>
 

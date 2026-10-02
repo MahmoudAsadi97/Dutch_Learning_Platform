@@ -14,6 +14,14 @@ episode, no real learner history, no deployed service). Desktop is 1440 px wide;
 
 ![Episode reader, desktop](previews/episode-desktop.png)
 
+## Video lessons
+
+![Video library, desktop](previews/videos-desktop.png)
+
+![A video lesson with its transcript, desktop](previews/video-desktop.png)
+
+![A video lesson, phone width](previews/video-phone.png)
+
 The same design system covers the learning path, the topic practice, the missions, the word review,
 the speech studio and settings. The CI report attaches screenshots of every screen at 1440, 390 and
 320 px together with automated contrast, landmark and control checks. Browser emulation does not

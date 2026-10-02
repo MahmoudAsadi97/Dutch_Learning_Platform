@@ -12,9 +12,9 @@ ENV RELEASE_SHA=${RELEASE_SHA} \
     DLP_CONTENT_DIR=/app/content \
     DLP_API_DIR=/app/apps/api
 
-# ffmpeg/ffprobe canonicalise the uploads; the Azure providers need nothing else from apt.
+# ffmpeg/ffprobe canonicalise the uploads and finish the videos; one font family draws the scene cards.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ffmpeg ca-certificates \
+    && apt-get install -y --no-install-recommends ffmpeg ca-certificates fonts-dejavu-core \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

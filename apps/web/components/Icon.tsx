@@ -19,7 +19,8 @@ export type IconName =
   | "calendar"
   | "help"
   | "close"
-  | "volume";
+  | "volume"
+  | "play";
 const paths: Record<IconName, ReactNode> = {
   home: <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z" />,
   book: (
@@ -48,6 +49,7 @@ const paths: Record<IconName, ReactNode> = {
     </>
   ),
   arrow: <path d="M4 12h16m-6-6 6 6-6 6" />,
+  play: <path d="M7 4.5v15a1 1 0 0 0 1.5.87l13-7.5a1 1 0 0 0 0-1.74l-13-7.5A1 1 0 0 0 7 4.5Z" />,
   check: <path d="m5 12 4 4L19 6" />,
   chevron: <path d="m9 5 7 7-7 7" />,
   globe: (

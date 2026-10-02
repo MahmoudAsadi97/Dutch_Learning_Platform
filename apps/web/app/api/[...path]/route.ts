@@ -16,7 +16,7 @@ export const dynamic = "force-dynamic";
 
 const UNSAFE = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 const REQUEST_ID = /^[A-Za-z0-9._-]{8,64}$/;
-const FORWARDED_REQUEST_HEADERS = ["content-type", "accept", "x-requested-with", "accept-language"];
+const FORWARDED_REQUEST_HEADERS = ["content-type", "accept", "x-requested-with", "accept-language", "range"];
 const FORWARDED_RESPONSE_HEADERS = [
   "content-type",
   "content-length",
@@ -29,6 +29,8 @@ const FORWARDED_RESPONSE_HEADERS = [
   "content-disposition",
   "cache-control",
   "www-authenticate",
+  "accept-ranges",
+  "content-range",
 ];
 const MAX_BODY_BYTES = 6 * 1024 * 1024;
 

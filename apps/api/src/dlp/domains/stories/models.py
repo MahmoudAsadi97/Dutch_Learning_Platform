@@ -116,6 +116,7 @@ class LearningDay(Base):
     words_reviewed: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     questions_correct: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     read_aloud: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    videos_watched: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
     goal_met: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=utcnow,
                                                  onupdate=utcnow)

@@ -227,3 +227,15 @@ confirmation next. A scenario can set `reason_before_choice` (the shop return do
 the option is kept but the character asks what the problem is before anything can be confirmed. And the
 "not on offer" line is only used for an option that is not on offer; a premature "yes" simply gets the
 question of the current phase. The interpretation prompt is `propose-action-v3`.
+
+## D-22 · Video lessons are rendered by the Azure avatar, written by the same gate — 2026-10-02
+
+The learner wanted short videos on a chosen level and topic. Generative video models were considered
+and set aside: they are English-first, produce clips of seconds without Dutch narration, cost
+$0.10–0.50 per second and are not offered in the region used here. Azure's text-to-speech avatar (batch
+synthesis) speaks the Belgian Dutch voice the platform already uses, times its own subtitles, runs in
+West Europe on the existing Speech resource with the managed identity, and costs a known $1 per minute
+of video. The script goes through the story validator plus a minimum of twenty seconds of speech, so a
+video is a checked lesson, not a clip. Seconds of video are a usage counter like model calls; a failed
+render gives them back. On a laptop the same script renders as drawn scene cards with the local voice,
+so the feature works without any paid service.

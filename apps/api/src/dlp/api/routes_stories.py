@@ -27,6 +27,7 @@ from dlp.domains.stories.schemas import (
     TranslateBody,
 )
 from dlp.domains.usage.service import UsageLimitExceeded
+from dlp.domains.videos import service as videos
 from dlp.providers.base import ProviderError
 from dlp.providers.registry import Providers
 
@@ -83,6 +84,7 @@ def today_plan(ctx: RequestContext = Depends(context_dep), session: Session = De
                       "new_count": words["new_count"], "preview": words["items"][:3]},
             "next_step": next_step, "recent_days": today.recent_days(session, ctx.learner.id),
             "levels": [{"id": p.stage_id, "label": p.label} for p in PROFILES.values()],
+            "videos": videos.today_summary(session, ctx.learner.id),
         }
     return _run(build)
 

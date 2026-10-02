@@ -51,6 +51,11 @@ param totalTokens int = 2000000
 param dailyAudioSeconds int = 1200
 @minValue(1)
 param totalAudioSeconds int = 18000
+// Seconds of avatar video per day and in total: the batch avatar is billed per second of video.
+@minValue(1)
+param dailyVideoSeconds int = 300
+@minValue(1)
+param totalVideoSeconds int = 7200
 @minValue(1)
 param monthlyBudget int = 50
 param budgetStartDate string
@@ -358,6 +363,8 @@ resource api 'Microsoft.App/containerApps@2024-03-01' = if (deployApplications) 
           { name: 'USAGE_TOTAL_TOKENS', value: string(totalTokens) }
           { name: 'USAGE_DAILY_AUDIO_SECONDS', value: string(dailyAudioSeconds) }
           { name: 'USAGE_TOTAL_AUDIO_SECONDS', value: string(totalAudioSeconds) }
+          { name: 'USAGE_DAILY_VIDEO_SECONDS', value: string(dailyVideoSeconds) }
+          { name: 'USAGE_TOTAL_VIDEO_SECONDS', value: string(totalVideoSeconds) }
         ]
         probes: [
           { type: 'Startup', httpGet: { path: '/health', port: 8000 }, periodSeconds: 10, failureThreshold: 30 }

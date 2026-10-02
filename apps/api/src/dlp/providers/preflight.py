@@ -44,6 +44,7 @@ _EVIDENCE_SQL = {
         )""",
     "speech to text": "select max(created_at) from audio_assets where kind = 'recording' and provider like 'azure%'",
     "text to speech": "select max(created_at) from audio_assets where kind = 'synthesis' and provider like 'azure%'",
+    "video renderer": "select max(ready_at) from video_lessons where status = 'ready' and renderer like 'azure%'",
 }
 
 
@@ -147,6 +148,14 @@ def run_preflight(settings: Settings | None = None, *, check_network: bool = Tru
             items.append(PreflightItem("blob store", mode, "ok" if ok else "unreachable", detail))
         else:
             items.append(PreflightItem("blob store", mode, "ok", "network check skipped"))
+
+    # Video renderer
+    ok, detail = providers.video.available()
+    if providers.video.name.startswith("azure"):
+        items.append(_azure_item("video renderer", ok, detail))
+    else:
+        mode = "fixture" if providers.video.name == "fixture" else "local (scene cards)"
+        items.append(PreflightItem("video renderer", mode, "ok" if ok else "missing", detail))
 
     items.append(PreflightItem("job loop", "in-process", "ok" if settings.job_loop_enabled else "not_configured",
                                f"poll {settings.job_poll_interval_seconds}s, lease {settings.job_lease_seconds}s"))

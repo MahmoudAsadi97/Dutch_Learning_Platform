@@ -19,6 +19,12 @@ ends with a choice that shapes the next one. You can read along with synthetic a
 aloud and see which words were recognised, ask for a Persian translation of any paragraph, save any new
 word, answer three questions and rate the episode. See [the story engine](docs/STORY_ENGINE.md).
 
+**Video's** (`/videos`) — a short presenter video at the level you choose, about the topic you choose
+(an explanation or a short story): the model writes a scene script, the same checks as the stories apply
+plus a twenty-second minimum, and Azure's text-to-speech avatar speaks it in Belgian Dutch with subtitles
+(drawn scene cards with the local voice on a laptop). Transcript with English and Persian per scene, words
+to save, questions. See [video lessons](docs/VIDEO_LESSONS.md).
+
 **Woorden** (`/woorden`) — your word bank. Words you save from stories (or add yourself) come back for
 review with spaced repetition; a word you forget returns ten minutes later, a word you know returns in
 days, then weeks.
@@ -37,7 +43,7 @@ stays the practice language. The interface is in Dutch.
 
 **Honesty rules built in.** No pronunciation scores, no aggregate level, no certificate. Everything the
 model writes is labelled as generated; all fixed Dutch is labelled as unreviewed until a Belgian Dutch
-reviewer has checked it. Usage counters cap model and speech calls per day and in total.
+reviewer has checked it. Usage counters cap model calls, speech and seconds of video per day and in total.
 
 ## Architecture
 
@@ -49,9 +55,11 @@ reviewer has checked it. Usage counters cap model and speech calls per day and i
 | Blob storage | Azurite locally; Azure Blob Storage | `apps/api/src/dlp/providers` |
 | Chat model | Ollama locally (`llama3.1:8b` by default); Azure-hosted deployments | `apps/api/src/dlp/providers` |
 | Speech | faster-whisper + Piper locally; Azure Speech `nl-BE` | `apps/api/src/dlp/providers` |
+| Video | drawn scene cards with the local voice; Azure text-to-speech avatar (batch) | `apps/api/src/dlp/providers` |
 | Background work | PostgreSQL job table with leases, run by an in-process loop | `apps/api/src/dlp/domains/jobs` |
 | Content | 12-stage path, topic practice, word/story libraries, four missions | `content/` |
 | Story engine | serial bible, stage profiles, validator, SM-2 word bank, daily points | `apps/api/src/dlp/domains/stories` |
+| Video lessons | script writer, length rule, renderers (Azure avatar, scene cards), subtitles, byte-range playback | `apps/api/src/dlp/domains/videos`, `apps/api/src/dlp/providers/video_*.py` |
 | Infrastructure | Bicep, GitHub Actions (CI + manual OIDC deploy) | `infra/`, `.github/workflows` |
 
 Every external service sits behind a narrow interface with a local, a fixture and an Azure
@@ -138,6 +146,7 @@ switched on deliberately with `PAID_USAGE_ENABLED`, never by the presence of cre
 - [STATUS](docs/STATUS.md) — what works, known limits, the next steps.
 - [VERIFICATION](docs/VERIFICATION.md) — what was checked, where, with which status.
 - [STORY_ENGINE](docs/STORY_ENGINE.md) — how episodes are written, validated and scheduled.
+- [VIDEO_LESSONS](docs/VIDEO_LESSONS.md) — how a chosen topic becomes a checked, subtitled presenter video.
 - [ENGINEERING](docs/ENGINEERING.md) — architecture, conventions, trust boundaries, tests.
 - [DECISIONS](docs/DECISIONS.md) — decisions with their reasons.
 - [DEMO](docs/DEMO.md) — a twenty-minute walkthrough for a language reviewer.

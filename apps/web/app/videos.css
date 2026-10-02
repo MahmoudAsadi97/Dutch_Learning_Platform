@@ -1,0 +1,53 @@
+/* --- video lessons: library ------------------------------------------------------------------------------ */
+.video-library { max-width: 1040px; }
+.video-request form { display: grid; gap: 10px; margin-top: 12px; }
+.video-request-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+.video-request-row label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
+.video-request-row select { min-height: 45px; padding: 8px 12px; border: 1px solid #cfd9e6; border-radius: 10px; font: inherit; font-size: 14px; background: #fff; color: inherit; }
+.video-request input { width: 100%; box-sizing: border-box; }
+.video-request .button { justify-self: start; }
+.video-request .small-text { margin: 10px 0 0; }
+
+.video-grid { list-style: none; padding: 0; margin: 0 0 26px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.video-tile { display: grid; gap: 12px; padding: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; }
+.video-tile h3 { margin: 4px 0 4px; font-size: 17px; }
+.video-tile-body .small-text { margin: 0 0 8px; }
+.video-tile.is-watched .video-poster { filter: saturate(.55); }
+.video-poster { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 9; border-radius: 14px; color: #fff; overflow: hidden; isolation: isolate; background: linear-gradient(140deg, var(--tone-3-a), var(--tone-3-b)); }
+.video-poster.kind-verhaal { background: linear-gradient(140deg, var(--tone-5-a), var(--tone-5-b)); }
+.video-poster::before { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 90% at 100% 0%, #ffffff55, transparent 60%); z-index: -1; }
+.poster-badge { position: absolute; top: 10px; left: 12px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 650; opacity: .9; }
+.poster-clock { position: absolute; right: 10px; bottom: 8px; font-size: 12px; font-variant-numeric: tabular-nums; background: #00000055; padding: 2px 7px; border-radius: 8px; }
+.poster-play { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #ffffffdd; color: var(--tone-3-b); }
+.poster-mark { font-size: 32px; font-weight: 700; opacity: .85; }
+.status-failed .video-poster { background: linear-gradient(140deg, #7a5c1e, #4a3f6b); }
+
+/* --- video lessons: player -------------------------------------------------------------------------------- */
+.video-lesson { max-width: 860px; }
+.video-lesson-header { margin-bottom: 16px; }
+.video-lesson-header h1 { margin: 6px 0 4px; }
+.video-stage { background: #0f1b2b; border-radius: 20px; overflow: hidden; margin-bottom: 22px; }
+.video-element { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.video-element::cue { font-size: clamp(16px, 2.6vw, 24px); line-height: 1.35; background: #0b1420cc; }
+.video-controls-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 10px 16px; color: #d7e0ea; background: #0f1b2b; }
+.video-controls-row .muted { color: #a9b6c6; }
+.toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
+.toggle input { width: 18px; height: 18px; accent-color: var(--accent); }
+
+.video-transcript { margin-bottom: 26px; }
+.scene-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 10px; }
+.scene { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; transition: border-color .2s, background .2s; }
+.scene.is-active { border-color: var(--accent); background: #f3f7fd; }
+.scene-jump { display: grid; place-items: center; min-height: 64px; padding: 10px; border-radius: 12px; border: 1px solid var(--line); background: #fff; font: inherit; cursor: pointer; text-align: center; }
+.scene-jump:hover, .scene-jump:focus-visible { border-color: var(--accent); }
+.scene.is-active .scene-jump { background: var(--accent); color: #fff; border-color: var(--accent); }
+.scene-keyword { font-weight: 650; font-size: 15px; letter-spacing: -.01em; }
+.scene-text .story-copy { margin: 0; font-size: 18px; line-height: 1.55; }
+.scene-text .copy-support { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
+
+@media (max-width: 640px) {
+  .scene { grid-template-columns: minmax(0, 1fr); }
+  .scene-jump { min-height: 44px; justify-self: start; padding: 8px 14px; }
+  .scene-text .story-copy { font-size: 17px; }
+  .video-stage { border-radius: 14px; }
+}

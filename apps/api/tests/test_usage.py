@@ -88,4 +88,4 @@ def test_usage_endpoint_reports_empty_pricing_table(client, headers):
     payload = client.get("/usage", headers=headers).json()
     assert payload["pricing_table_entries"] == 0
     assert payload["estimated_cost"] is None
-    assert set(payload["counters"]) == {"model_calls", "tokens", "audio_seconds"}
+    assert set(payload["counters"]) == {"model_calls", "tokens", "audio_seconds", "video_seconds"}

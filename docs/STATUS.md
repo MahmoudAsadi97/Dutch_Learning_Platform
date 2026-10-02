@@ -8,6 +8,7 @@ Updated 2 October 2026.
 |---|---|
 | Daily plan (`/`): streak, daily goal, today's episode, due words | implemented; browser and API tests |
 | Story serial (`/verhalen`): generated episodes, questions, choices, glossary, Persian on request, read-aloud | implemented; first live episodes written by `gpt-4.1-mini` in Azure on 2 October; stage profiles and the rewrite feedback tuned from them |
+| Video lessons (`/videos`): level + topic + form → checked script → Azure avatar video with subtitles, transcript, words, questions | implemented; engine verified with the fixture renderer (API and browser suites); first live avatar render is the next check |
 | Word bank with spaced repetition (`/woorden`) | implemented; a live review cycle checked in Azure (2 October) |
 | Twelve-stage learning path (`/leerpad`, `/learn/<stage>`): words, grammar, reading, listening, speaking, writing, final check | implemented; verified on the laptop with the real local providers (22 September) |
 | Topic practice: 100 situations × 4 skills × 12 stages | implemented; static content, unreviewed |
@@ -30,12 +31,16 @@ Statuses in detail: `docs/VERIFICATION.md`.
 * Phone acceptance (real device, HTTPS) has not been done.
 * The GitHub deploy workflow (`deploy.yml`) has no `production` environment yet; releases run from the
   owner's laptop with `scripts/deploy_current.sh`.
+* The avatar video has not been rendered live yet; the Bicep parameters `dailyVideoSeconds` and
+  `totalVideoSeconds` only reach the container app on the next template deployment (the code defaults
+  of 300 s per day and 7200 s in total apply until then).
 
 ## Next steps, in order
 
-1. Read the live serial daily for two weeks; rate episodes; keep tuning the stage profiles and the
-   writer prompt from the failure reasons stored on `story_episodes.checks` (visible on a failed card
-   under "Wat er niet klopte").
+1. Request the first live video (A1, *uitleg*) and check the avatar render end to end: duration and
+   cost on the Speech resource, subtitles against the speech, the transcript following the playhead on
+   the phone. Then read the live serial daily for two weeks; rate episodes; keep tuning the stage
+   profiles and the writer prompt from the failure reasons stored on `story_episodes.checks`.
 2. Phone run on the live site (GO_LIVE §6): microphone, read-aloud, playback, layout at 390 px.
 3. Arrange a Belgian Dutch reviewer for the fixed A1–A2 pack and a sample of generated episodes
    (`docs/DEMO.md` is the walkthrough to show them).

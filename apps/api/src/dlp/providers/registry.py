@@ -2,16 +2,20 @@
 
 from __future__ import annotations
 
+import tempfile
 from dataclasses import dataclass
 from functools import lru_cache
+from pathlib import Path
 
 from dlp.config import Settings, get_settings
-from dlp.providers.base import BlobStore, ChatModel, ProviderUnavailable, SpeechToText, TextToSpeech
+from dlp.providers.base import BlobStore, ChatModel, ProviderUnavailable, SpeechToText, TextToSpeech, VideoRenderer
 from dlp.providers.blob_azure import AzureBlobStore
 from dlp.providers.chat_openai_compatible import ChatEndpoint, OpenAICompatibleChatModel
 from dlp.providers.fixtures import FixtureChatModel, FixtureSpeechToText, FixtureTextToSpeech, MemoryBlobStore
 from dlp.providers.speech_azure import AzureSpeechToText, AzureTextToSpeech
 from dlp.providers.speech_local import FasterWhisperSpeechToText, PiperTextToSpeech
+from dlp.providers.video_azure import AzureAvatarRenderer, endpoint_for
+from dlp.providers.video_local import SceneCardRenderer
 
 
 @dataclass
@@ -21,6 +25,7 @@ class Providers:
     stt: SpeechToText
     tts: TextToSpeech
     blob: BlobStore
+    video: VideoRenderer
 
     def describe(self) -> dict[str, dict]:
         return {
@@ -29,6 +34,7 @@ class Providers:
             "stt": self.stt.describe(),
             "tts": self.tts.describe(),
             "blob": self.blob.describe(),
+            "video": self.video.describe(),
         }
 
 
@@ -114,14 +120,48 @@ def build_blob(settings: Settings) -> BlobStore:
                           connection_string=settings.azure_storage_connection_string, name="azurite")
 
 
+def video_mode(settings: Settings) -> str:
+    """Which renderer `video_provider` resolves to: avatar | cards | fixture."""
+    if settings.video_provider != "auto":
+        return settings.video_provider
+    if settings.tts_provider == "fixture":
+        return "fixture"
+    if settings.tts_provider == "azure":
+        return "avatar"
+    return "cards"
+
+
+def build_video(settings: Settings, tts: TextToSpeech) -> VideoRenderer:
+    mode = video_mode(settings)
+    work_dir = (settings.resolve_path(settings.video_work_dir) if settings.video_work_dir
+                else Path(tempfile.gettempdir()) / "dlp-video")
+    if mode == "fixture":
+        return SceneCardRenderer(FixtureTextToSpeech(), work_dir=work_dir, name="fixture", fast=True,
+                                 timeout_seconds=settings.ffmpeg_timeout_seconds * 6,
+                                 memory_limit_mb=settings.ffmpeg_memory_limit_mb)
+    if mode == "avatar":
+        return AzureAvatarRenderer(
+            key=settings.azure_speech_key,
+            endpoint=endpoint_for(endpoint=settings.azure_speech_endpoint, resource_id=settings.azure_speech_resource_id,
+                                  region=settings.azure_speech_region),
+            voice=settings.azure_tts_voice, character=settings.video_avatar_character, style=settings.video_avatar_style,
+            background=settings.video_avatar_background, token_provider=_speech_token_provider(settings),
+        )
+    return SceneCardRenderer(tts, work_dir=work_dir, name="scene-cards", font=settings.video_font,
+                             timeout_seconds=settings.ffmpeg_timeout_seconds * 9,
+                             memory_limit_mb=settings.ffmpeg_memory_limit_mb)
+
+
 def build_providers(settings: Settings | None = None) -> Providers:
     settings = settings or get_settings()
+    tts = build_tts(settings)
     return Providers(
         chat=build_chat(settings, "small"),
         chat_strong=build_chat(settings, "strong"),
         stt=build_stt(settings),
-        tts=build_tts(settings),
+        tts=tts,
         blob=build_blob(settings),
+        video=build_video(settings, tts),
     )
 
 

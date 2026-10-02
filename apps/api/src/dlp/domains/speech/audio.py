@@ -76,6 +76,23 @@ def _run(command: list[str], *, timeout: float, memory_limit_mb: int) -> subproc
         raise AudioError(f"cannot start {command[0]}", status_code=500) from exc
 
 
+def run_tool(command: list[str], *, timeout: float, memory_limit_mb: int = 2048) -> subprocess.CompletedProcess[bytes]:
+    """Run ffmpeg/ffprobe with the same bounds the uploads get (argument list, timeout, address-space cap)."""
+    return _run(command, timeout=timeout, memory_limit_mb=memory_limit_mb)
+
+
+def media_duration(path: Path, *, timeout: float = 20.0, memory_limit_mb: int = 2048) -> float:
+    """Container duration in seconds of any media file ffprobe can read; 0.0 when it cannot."""
+    if not tools_available():
+        raise AudioError("ffmpeg/ffprobe are not installed", status_code=500)
+    completed = _run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+                     timeout=timeout, memory_limit_mb=memory_limit_mb)
+    try:
+        return float(completed.stdout.decode("utf-8", "replace").strip() or 0.0)
+    except ValueError:
+        return 0.0
+
+
 def probe(path: Path, *, timeout: float = 20.0, memory_limit_mb: int = 2048) -> AudioInfo:
     if not tools_available():
         raise AudioError("ffmpeg/ffprobe are not installed", status_code=500)

@@ -188,6 +188,12 @@ will deliberately make the web private again. Never set `publicWeb=true` for ini
   certificates are issued by this release.
 - Lower a daily usage limit temporarily to check the stop/recovery UI; restore the approved value.
   Check Application Insights for route/status/duration only, not prompts or recordings.
+- Request one video (A1, *uitleg*) on **Video's** and wait for it: the script job and the avatar render
+  take a few minutes. Check the duration against `video_seconds` on Settings, the subtitles against the
+  speech, the transcript following the playhead, and the cost line of the Speech resource afterwards
+  (the standard avatar is billed per second of video, $1 per minute in West Europe, plus the
+  characters synthesised). The Bicep parameters `dailyVideoSeconds` (300) and `totalVideoSeconds`
+  (7200) set the counters; until the template is redeployed the code defaults of the same values apply.
 - Perform a PostgreSQL point-in-time restore to a **separate server**, validate row counts and sample
   evidence, then document the measured recovery time and recovery point. Never test by deleting the
   only database. Test blob recovery separately; database backup does not back up Blob Storage.

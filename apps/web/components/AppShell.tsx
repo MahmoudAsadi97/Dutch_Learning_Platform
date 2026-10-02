@@ -15,6 +15,7 @@ const links: { href: string; label: string; short: string; icon: IconName; mobil
   [
     { href: "/", label: "Vandaag", short: "Vandaag", icon: "calendar", mobile: true },
     { href: "/verhalen", label: "Verhalen", short: "Verhalen", icon: "book", mobile: true },
+    { href: "/videos", label: "Video's", short: "Video's", icon: "play", mobile: true },
     { href: "/woorden", label: "Woorden", short: "Woorden", icon: "check", mobile: true },
     { href: "/leerpad", label: "Mijn leerpad", short: "Leerpad", icon: "home", mobile: true },
     {
@@ -48,6 +49,7 @@ const links: { href: string; label: string; short: string; icon: IconName; mobil
 function sectionFor(path: string): string {
   if (path.startsWith("/learn/")) return "/leerpad";
   if (path.startsWith("/verhalen/")) return "/verhalen";
+  if (path.startsWith("/videos/")) return "/videos";
   if (path.startsWith("/missions/")) return "/missions";
   return path;
 }

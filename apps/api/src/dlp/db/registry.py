@@ -14,6 +14,7 @@ from dlp.domains.speech import models as speech_models
 from dlp.domains.stories import models as story_models
 from dlp.domains.topic_conversations import models as topic_conversation_models
 from dlp.domains.usage import models as usage_models
+from dlp.domains.videos import models as video_models
 
 __all__ = [
     "Base",
@@ -30,4 +31,5 @@ __all__ = [
     "story_models",
     "topic_conversation_models",
     "usage_models",
+    "video_models",
 ]

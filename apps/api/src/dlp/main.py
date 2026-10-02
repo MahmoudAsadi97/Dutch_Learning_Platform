@@ -29,6 +29,7 @@ from dlp.api import (
     routes_stories,
     routes_topic_conversations,
     routes_topics,
+    routes_videos,
 )
 from dlp.config import Settings, get_settings
 from dlp.domains.jobs.service import JobLoop
@@ -119,6 +120,7 @@ def create_app() -> FastAPI:
     app.include_router(routes_coach.router)
     app.include_router(routes_content_review.router)
     app.include_router(routes_stories.router)
+    app.include_router(routes_videos.router)
     return app
 
 

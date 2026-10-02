@@ -161,5 +161,65 @@ class BlobStore(ABC):
     @abstractmethod
     def delete(self, key: str) -> None: ...
 
+    def size(self, key: str) -> int:
+        return len(self.get(key))
+
+    def get_range(self, key: str, start: int, length: int) -> bytes:
+        """Bytes [start, start + length) of the blob; stores that can read ranges override this."""
+        return self.get(key)[start:start + length]
+
     def describe(self) -> dict[str, Any]:
         return {"provider": self.name}
+
+
+# --- video rendering ---------------------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class VideoScene:
+    text: str      # what the presenter says, in Dutch
+    keyword: str   # the word or short phrase shown on screen
+
+
+@dataclass(frozen=True)
+class VideoRequest:
+    scenes: list[VideoScene]
+    title: str
+    voice: str = ""          # a renderer may ignore it (local voices are fixed)
+    language: str = "nl-BE"
+
+
+@dataclass(frozen=True)
+class VideoJobStatus:
+    state: Literal["pending", "running", "succeeded", "failed"]
+    detail: str = ""
+    duration_ms: int = 0
+
+
+class VideoRenderer(ABC):
+    """Turns a script into an MP4 with the narration and a soft-embedded Dutch subtitle track.
+
+    Rendering is asynchronous from the caller's point of view: `start` returns a job id, `status` is polled by a
+    background job, and `fetch` writes the finished file. Renderers that work synchronously keep the finished
+    file until it is fetched."""
+
+    name: str = "video"
+    label: str = "presenter"   # what the interface says about the picture: avatar | scene-cards
+    voice: str = ""
+
+    @abstractmethod
+    def start(self, request: VideoRequest, *, request_id: str = "") -> str: ...
+
+    @abstractmethod
+    def status(self, job_id: str) -> VideoJobStatus: ...
+
+    @abstractmethod
+    def fetch(self, job_id: str, destination: Path) -> None: ...
+
+    def cleanup(self, job_id: str) -> None:  # noqa: B027 - keeping nothing is a valid default
+        """Release anything the renderer still holds for the job; never raises."""
+
+    def available(self) -> tuple[bool, str]:
+        return True, self.name
+
+    def describe(self) -> dict[str, Any]:
+        return {"provider": self.name, "label": self.label, "voice": self.voice}

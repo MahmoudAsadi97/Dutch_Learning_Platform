@@ -24,6 +24,7 @@ AppEnv = Literal["development", "test", "production"]
 ChatProviderName = Literal["local", "azure", "fixture"]
 SpeechProviderName = Literal["local", "azure", "fixture"]
 BlobProviderName = Literal["azurite", "azure", "memory"]
+VideoProviderName = Literal["auto", "avatar", "cards", "fixture"]
 
 
 class Settings(BaseSettings):
@@ -87,6 +88,7 @@ class Settings(BaseSettings):
     azure_speech_key: str = Field(default="", repr=False)
     azure_speech_region: str = ""
     azure_speech_resource_id: str = ""  # set with managed identity instead of a key (Phase B)
+    azure_speech_endpoint: str = ""  # the resource's custom domain; derived from the resource id when empty
     azure_stt_locale: str = "nl-BE"
 
     # Text to speech
@@ -94,6 +96,18 @@ class Settings(BaseSettings):
     local_tts_voice: str = "nl_BE-nathalie-medium"
     local_tts_voices_dir: str = "./.local/piper-voices"
     azure_tts_voice: str = "nl-BE-DenaNeural"
+
+    # Video lessons. "auto" renders with the Azure avatar when speech is Azure, scene cards with the local
+    # voice otherwise, and the fixture renderer when the voice is a fixture.
+    video_provider: VideoProviderName = "auto"
+    video_avatar_character: str = "lisa"
+    video_avatar_style: str = "graceful-sitting"
+    video_avatar_background: str = "#F4EFE6FF"
+    video_work_dir: str = ""  # scratch space for the scene-card renderer; the system temp dir when empty
+    video_font: str = ""  # a TrueType file for the scene cards; fontconfig's default when empty
+    video_min_seconds: int = 20
+    video_max_seconds: int = 150
+    video_render_timeout_seconds: int = 1200
 
     # Blob storage
     blob_provider: BlobProviderName = "azurite"
@@ -114,6 +128,8 @@ class Settings(BaseSettings):
     usage_total_tokens: int = 5_000_000
     usage_daily_audio_seconds: int = 1800
     usage_total_audio_seconds: int = 36000
+    usage_daily_video_seconds: int = 300
+    usage_total_video_seconds: int = 7200
 
     # Jobs
     job_loop_enabled: bool = True
@@ -135,6 +151,8 @@ class Settings(BaseSettings):
                 raise ValueError("DEV_AUTH_ENABLED must be false when APP_ENV=production")
             if self.chat_provider == "fixture" or self.stt_provider == "fixture" or self.tts_provider == "fixture":
                 raise ValueError("fixture providers are not allowed when APP_ENV=production")
+            if self.video_provider == "fixture":
+                raise ValueError("the fixture video renderer is not allowed when APP_ENV=production")
             if self.blob_provider == "memory":
                 raise ValueError("BLOB_PROVIDER=memory is not allowed when APP_ENV=production")
             if (self.chat_provider, self.stt_provider, self.tts_provider, self.blob_provider) != (
@@ -202,6 +220,7 @@ class Settings(BaseSettings):
             "blob_provider": self.blob_provider,
             "job_loop_enabled": self.job_loop_enabled,
             "paid_usage_enabled": self.paid_usage_enabled,
+            "video_provider": self.video_provider,
         }
 
 

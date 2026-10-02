@@ -45,6 +45,7 @@ def limits_for(settings: Settings, metric: str) -> tuple[float, float]:
         "model_calls": (settings.usage_daily_model_calls, settings.usage_total_model_calls),
         "tokens": (settings.usage_daily_tokens, settings.usage_total_tokens),
         "audio_seconds": (settings.usage_daily_audio_seconds, settings.usage_total_audio_seconds),
+        "video_seconds": (settings.usage_daily_video_seconds, settings.usage_total_video_seconds),
     }
     if metric not in mapping:
         raise ValueError(f"unknown metric {metric}")

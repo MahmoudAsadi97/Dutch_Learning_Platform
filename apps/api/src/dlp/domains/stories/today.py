@@ -21,13 +21,13 @@ def local_today(now: datetime | None = None) -> date:
 
 
 def add_points(session: Session, learner_id: uuid.UUID, *, points: int, episodes_read: int = 0,
-               words_reviewed: int = 0, questions_correct: int = 0, read_aloud: int = 0,
+               words_reviewed: int = 0, questions_correct: int = 0, read_aloud: int = 0, videos_watched: int = 0,
                day: date | None = None) -> LearningDay:
     day = day or local_today()
     statement = insert(LearningDay).values(
         id=uuid.uuid4(), learner_id=learner_id, day=day, points=points, episodes_read=episodes_read,
         words_reviewed=words_reviewed, questions_correct=questions_correct, read_aloud=read_aloud,
-        goal_met=points >= DAILY_GOAL, updated_at=utcnow(),
+        videos_watched=videos_watched, goal_met=points >= DAILY_GOAL, updated_at=utcnow(),
     ).on_conflict_do_update(
         index_elements=["learner_id", "day"],
         set_={
@@ -36,6 +36,7 @@ def add_points(session: Session, learner_id: uuid.UUID, *, points: int, episodes
             "words_reviewed": LearningDay.words_reviewed + words_reviewed,
             "questions_correct": LearningDay.questions_correct + questions_correct,
             "read_aloud": LearningDay.read_aloud + read_aloud,
+            "videos_watched": LearningDay.videos_watched + videos_watched,
             "goal_met": (LearningDay.points + points) >= DAILY_GOAL,
             "updated_at": utcnow(),
         },

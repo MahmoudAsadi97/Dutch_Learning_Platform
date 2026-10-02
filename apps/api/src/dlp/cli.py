@@ -94,7 +94,7 @@ def cmd_export_recording(args: argparse.Namespace) -> int:
 
 
 LEARNER_DATA_TABLES = [
-    "learning_days", "vocab_items", "story_episodes", "story_series",
+    "video_lessons", "learning_days", "vocab_items", "story_episodes", "story_series",
     "content_reviews", "coach_plan_requests", "practice_observations", "topic_conversations",
     "topic_practice", "curriculum_attempts", "curriculum_practice",
     "feedback_reports", "usage_reservations", "usage_counters", "evidence_records", "practice_turns",

@@ -23,6 +23,7 @@ const METRIC_LABEL: Record<string, string> = {
   model_calls: "modeloproepen",
   tokens: "tokens",
   audio_seconds: "seconden audio",
+  video_seconds: "seconden video",
 };
 
 function format(value: number): string {

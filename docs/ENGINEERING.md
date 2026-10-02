@@ -115,6 +115,7 @@ scripts/               run.py task runner, fetch_piper_voice.py, sql/
 | `SpeechToText` | `FasterWhisperSpeechToText` (`nl`) | `FixtureSpeechToText` (sidecar transcript) | `AzureSpeechToText` (M3) |
 | `TextToSpeech` | `PiperTextToSpeech` (`nl_BE` voice, label `synthetic-development`) | `FixtureTextToSpeech` (tone) | `AzureTextToSpeech` (M3) |
 | `BlobStore` | `AzureBlobStore` against Azurite | `MemoryBlobStore` | `AzureBlobStore` against a private container |
+| `VideoRenderer` | `SceneCardRenderer` (drawn cards, the local voice, ffmpeg) | `SceneCardRenderer` with the tone voice, small and fast | `AzureAvatarRenderer` (batch text-to-speech avatar) |
 | Identity | fixture principal in the web tier | same | Container Apps built-in auth headers |
 
 `providers/registry.py` builds them from `CHAT_PROVIDER`, `STT_PROVIDER`, `TTS_PROVIDER`,

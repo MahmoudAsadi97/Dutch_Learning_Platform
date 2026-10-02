@@ -17,9 +17,9 @@ ran in.
 
 | Suite | Command | Size | Last run |
 |---|---|---|---|
-| API | `python scripts/run.py test` | 498 tests, 1 skipped (Azurite round-trip needs the emulator) | 2 October 2026, green |
+| API | `python scripts/run.py test` | 514 tests, 1 skipped (Azurite round-trip needs the emulator) | 2 October 2026, green |
 | Web unit | `cd apps/web && npm run test:unit` | 27 tests | 2 October 2026, green |
-| Browser | `python scripts/run.py e2e` | 91 checks across desktop, tablet and phone-width projects, including axe accessibility scans | 2 October 2026, green |
+| Browser | `python scripts/run.py e2e` | 96 checks across desktop, tablet and phone-width projects, including axe accessibility scans | 2 October 2026, green |
 | Lint and types | `make lint` | ruff, eslint, tsc | 2 October 2026, clean |
 | Benchmark plumbing | `python scripts/run.py benchmark` | 40 cases; `expected` 40/40, `wrong` 0/40 | CI |
 
@@ -57,6 +57,8 @@ Not yet run with the real providers: spoken conversation turns and the checkpoin
 | Word bank and SM-2, streak and daily goal | `verified_ci` + `verified_live` | `tests/test_stories.py`; 2 October live run |
 | Read-aloud word comparison | `verified_ci` + `verified_live` | `tests/test_stories.py::test_read_aloud_compares_words_without_inventing_a_score`; 2 October round trip |
 | Service conversations (direct order, reason first, phase lines) | `verified_ci` + `verified_live` (one typed turn) | `tests/test_service_missions.py`; 2 October live turn |
+| Video lessons: script gate, twenty-second minimum, seconds budget, render jobs, subtitles from the file, byte-range playback, points | `verified_ci` (fixture renderer; the Azure avatar adapter against recorded replies) | `tests/test_videos.py` (16 tests), `tests/e2e/videos.spec.ts` (4 checks) |
+| Azure avatar render | `integration_pending` | not yet rendered live |
 | Azure chat, speech and blob adapters | `verified_live` (chat, synthesis, recognition, blob writes) | `tests/test_speech_azure.py`, `tests/test_azure_config.py`, `tests/test_blob_store.py`; preflight shows the last live use per adapter (`tests/test_preflight.py`) |
 | Bicep, release script, `scripts/verify_live.py` | `verified_live` (anonymous scope); authenticated scope not run | `az bicep build` in CI; 2 October release |
 | All fixed Dutch content; generated episodes | `review_pending` | labels in the interface |

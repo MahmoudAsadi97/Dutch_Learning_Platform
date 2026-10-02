@@ -38,6 +38,7 @@ export interface TodayPlan {
   next_step: "read" | "choose" | "review" | "wait" | "explore";
   recent_days: { day: string; points: number; goal_met: boolean }[];
   levels: { id: string; label: string }[];
+  videos?: { ready: { id: string; title: string; topic: string; kind_label: string; duration_seconds: number } | null; pending: number };
 }
 export type Grade = "again" | "hard" | "good" | "easy";
 

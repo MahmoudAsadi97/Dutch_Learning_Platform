@@ -10,7 +10,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from dlp.db.base import Base, new_id, utcnow
 
-METRICS: tuple[str, ...] = ("model_calls", "tokens", "audio_seconds")
+METRICS: tuple[str, ...] = ("model_calls", "tokens", "audio_seconds", "video_seconds")
 SCOPES: tuple[str, ...] = ("daily", "total")
 
 

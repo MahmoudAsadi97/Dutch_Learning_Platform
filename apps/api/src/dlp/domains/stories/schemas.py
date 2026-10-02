@@ -163,7 +163,7 @@ class SaveWordBody(BaseModel):
     meaning_en: str = Field(default="", max_length=300)
     meaning_fa: str = Field(default="", max_length=300)
     example: str = Field(default="", max_length=400)
-    source_kind: Literal["story", "library", "manual"] = "manual"
+    source_kind: Literal["story", "library", "manual", "video"] = "manual"
     source_id: str = Field(default="", max_length=80)
 
 

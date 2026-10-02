@@ -64,6 +64,23 @@ class AzureBlobStore(BlobStore):
         except Exception as exc:  # noqa: BLE001
             raise ProviderError(f"blob download failed: {exc.__class__.__name__}") from exc
 
+    def size(self, key: str) -> int:
+        blob = self._container().get_blob_client(validate_key(key))
+        try:
+            return int(blob.get_blob_properties().size)
+        except Exception as exc:  # noqa: BLE001
+            raise ProviderError(f"blob lookup failed: {exc.__class__.__name__}") from exc
+
+    def get_range(self, key: str, start: int, length: int) -> bytes:
+        """One ranged download, so a video seek does not fetch the whole file."""
+        if length <= 0:
+            return b""
+        blob = self._container().get_blob_client(validate_key(key))
+        try:
+            return blob.download_blob(offset=start, length=length).readall()
+        except Exception as exc:  # noqa: BLE001
+            raise ProviderError(f"blob download failed: {exc.__class__.__name__}") from exc
+
     def exists(self, key: str) -> bool:
         key = validate_key(key)
         try:
