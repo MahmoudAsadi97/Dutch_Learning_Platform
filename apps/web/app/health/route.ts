@@ -1,3 +1,4 @@
 export function GET() {
-  return Response.json({ status: "ok", service: "web" }, { headers: { "Cache-Control": "no-store" } });
+  const commit = (process.env.RELEASE_SHA ?? "").trim().slice(0, 12) || "unknown";
+  return Response.json({ status: "ok", service: "web", commit }, { headers: { "Cache-Control": "no-store" } });
 }

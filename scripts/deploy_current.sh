@@ -18,8 +18,10 @@ python3 scripts/azure_release.py verify-ci --repository "$DLP_RELEASE_REPOSITORY
 az account show --query '{subscription:name,id:id}' --output table
 az group show --name "$DLP_RELEASE_GROUP" --query '{name:name,location:location}' --output table
 python3 scripts/azure_release.py verify --resource-group "$DLP_RELEASE_GROUP" --prefix "$DLP_RELEASE_PREFIX"
-az acr build --registry "$DLP_RELEASE_ACR" --image "dlp-api:$DLP_RELEASE_SHA" --file apps/api/Dockerfile .
-az acr build --registry "$DLP_RELEASE_ACR" --image "dlp-web:$DLP_RELEASE_SHA" --file apps/web/Dockerfile .
+az acr build --registry "$DLP_RELEASE_ACR" --image "dlp-api:$DLP_RELEASE_SHA" --file apps/api/Dockerfile \
+  --build-arg "RELEASE_SHA=$DLP_RELEASE_SHA" .
+az acr build --registry "$DLP_RELEASE_ACR" --image "dlp-web:$DLP_RELEASE_SHA" --file apps/web/Dockerfile \
+  --build-arg "RELEASE_SHA=$DLP_RELEASE_SHA" .
 DLP_RELEASE_SERVER="$(az acr show --name "$DLP_RELEASE_ACR" --query loginServer --output tsv)"
 DLP_RELEASE_API_DIGEST="$(az acr repository show --name "$DLP_RELEASE_ACR" --image "dlp-api:$DLP_RELEASE_SHA" --query digest --output tsv)"
 DLP_RELEASE_WEB_DIGEST="$(az acr repository show --name "$DLP_RELEASE_ACR" --image "dlp-web:$DLP_RELEASE_SHA" --query digest --output tsv)"
@@ -33,3 +35,6 @@ python3 scripts/azure_release.py deploy --resource-group "$DLP_RELEASE_GROUP" --
 DLP_RELEASE_HOST="$(az containerapp show --name "$DLP_RELEASE_PREFIX-web" --resource-group "$DLP_RELEASE_GROUP" --query properties.configuration.ingress.fqdn --output tsv)"
 python3 scripts/verify_live.py --url "https://$DLP_RELEASE_HOST" --mode anonymous
 printf 'Published revision: %s\nOpen https://%s and complete the signed-in checks in docs/GO_LIVE.md.\n' "$DLP_RELEASE_SHA" "$DLP_RELEASE_HOST"
+printf 'Deployed commit as reported by the running web app: '
+curl -s "https://$DLP_RELEASE_HOST/health" || true
+echo

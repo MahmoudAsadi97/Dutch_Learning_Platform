@@ -22,7 +22,7 @@ from dlp.domains.stories import service, today, vocab
 from dlp.domains.stories.bible import DEFAULT_BIBLE, PROFILES, profile_for
 from dlp.domains.stories.models import LearningDay, StoryEpisode, StorySeries, VocabItem
 from dlp.domains.stories.schemas import EpisodeDraft
-from dlp.domains.stories.validator import coverage, lemma_key, tokens, validate_draft
+from dlp.domains.stories.validator import coverage, feedback_text, lemma_key, tokens, validate_draft
 from dlp.domains.usage.models import UsageCounter
 from dlp.providers.fixtures import FixtureChatModel, FixtureSpeechToText
 from dlp.providers.registry import get_providers
@@ -70,6 +70,15 @@ def test_question_evidence_must_be_copied_from_the_story():
     questions[1]["evidence"] = "Baas heeft de sleutel in zijn bed verstopt."
     result = validate_draft(draft(questions=questions), A1, allowed_vocabulary=allowed_a1(), cast_names=CAST)
     assert "question_1_evidence_missing" in result.hard
+
+
+def test_a_draft_far_below_the_length_floor_is_rewritten_with_an_instruction():
+    short = draft(paragraphs=["Sami zoekt zijn sleutel.", "Baas heeft de sleutel.", "Sami lacht."],
+                  paragraphs_en=["Sami looks for his key.", "Baas has the key.", "Sami laughs."])
+    result = validate_draft(short, A1, allowed_vocabulary=allowed_a1(), cast_names=CAST)
+    assert any(item.startswith("word_count") for item in result.hard)
+    text = feedback_text(result, A1)
+    assert "minstens 60" in text and "dialoog" in text and "FAILED CHECKS" in text
 
 
 def test_vocabulary_far_above_level_and_long_sentences_are_hard_failures():

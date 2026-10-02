@@ -299,7 +299,7 @@ def generate_episode(session: Session, payload: dict, settings: Settings, provid
         messages = writer_messages(profile=profile, bible=series.bible, memory=series.memory, known_words=known,
                                    candidate_words=candidates[:40], theme=episode.theme,
                                    previous_choice=episode.previous_choice, episode_number=episode.number,
-                                   feedback=feedback_text(check))
+                                   feedback=feedback_text(check, profile))
     if outcome == "ok" and best is not None:
         _store_draft(episode, best[0], best[1], chat.name, chat.model)
         episode.status, episode.error_code = "ready", ""
@@ -344,6 +344,7 @@ def episode_view(episode: StoryEpisode, *, full: bool = True) -> dict:
         "rating": episode.rating, "chosen_choice": episode.chosen_choice, "created_at": episode.created_at.isoformat(),
         "content_status": "generated", "attempts": episode.attempts,
         "warnings": list((episode.checks or {}).get("warnings", [])),
+        "failure_reasons": list((episode.checks or {}).get("hard", [])) if episode.status == "failed" else [],
     }
     if full and episode.status == "ready":
         view.update({

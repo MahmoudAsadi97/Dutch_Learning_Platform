@@ -43,8 +43,8 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - name: Build immutable release images
         run: |
-          az acr build --registry "$ACR_NAME" --image "dlp-api:$RELEASE_SHA" --file apps/api/Dockerfile .
-          az acr build --registry "$ACR_NAME" --image "dlp-web:$RELEASE_SHA" --file apps/web/Dockerfile .
+          az acr build --registry "$ACR_NAME" --image "dlp-api:$RELEASE_SHA" --file apps/api/Dockerfile --build-arg "RELEASE_SHA=$RELEASE_SHA" .
+          az acr build --registry "$ACR_NAME" --image "dlp-web:$RELEASE_SHA" --file apps/web/Dockerfile --build-arg "RELEASE_SHA=$RELEASE_SHA" .
       - name: Migrate first, roll out, and require healthy revisions
         run: |
           server="$(az acr show --name "$ACR_NAME" --query loginServer -o tsv)"

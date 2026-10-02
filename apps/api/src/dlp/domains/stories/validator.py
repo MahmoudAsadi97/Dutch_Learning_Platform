@@ -180,7 +180,7 @@ def validate_draft(draft: EpisodeDraft, profile: StageProfile, *, allowed_vocabu
     if not profile.min_paragraphs <= len(draft.paragraphs) <= profile.max_paragraphs:
         (hard if len(draft.paragraphs) < 2 or len(draft.paragraphs) > profile.max_paragraphs + 2 else warnings).append(
             f"paragraph_count: {len(draft.paragraphs)} (wanted {profile.min_paragraphs}-{profile.max_paragraphs})")
-    if word_count < profile.min_words * 0.6 or word_count > profile.max_words * 1.5:
+    if word_count < profile.min_words * 0.8 or word_count > profile.max_words * 1.5:
         hard.append(f"word_count: {word_count} (wanted {profile.min_words}-{profile.max_words})")
     elif not profile.min_words <= word_count <= profile.max_words:
         warnings.append(f"word_count: {word_count} (wanted {profile.min_words}-{profile.max_words})")
@@ -235,8 +235,29 @@ def validate_draft(draft: EpisodeDraft, profile: StageProfile, *, allowed_vocabu
     return ValidationResult(ok=not hard, hard=hard, warnings=warnings, metrics=metrics)
 
 
-def feedback_text(result: ValidationResult) -> str:
-    lines = ["FAILED CHECKS (fix every one, keep the same characters and plot):"]
-    lines += [f"- {item}" for item in result.hard]
-    lines += [f"- (improve) {item}" for item in result.warnings]
+def _instruction(item: str, profile: StageProfile) -> str:
+    """Turn a check into something a writer can act on; the raw check stays for the record."""
+    key = item.split(":", 1)[0]
+    if key == "word_count":
+        target = (profile.min_words + profile.max_words) // 2
+        return (f"{item}. Schrijf ongeveer {target} woorden: minstens {profile.min_words}, hoogstens "
+                f"{profile.max_words}. Te kort? Voeg een alinea met dialoog toe. Te lang? Schrap een zijpad.")
+    if key in ("sentence_too_long", "sentences_too_complex"):
+        return (f"{item}. Hoogstens {profile.max_sentence_words} woorden per zin, gemiddeld ongeveer "
+                f"{profile.mean_sentence_words:.0f}: splits lange zinnen in twee korte zinnen.")
+    if key in ("vocabulary_too_hard", "vocabulary_above_level"):
+        return f"{item}. Vervang de onbekende woorden door woorden uit de lijst, of zet ze in de woordenlijst."
+    if key.startswith("question_"):
+        return f"{item}. Kopieer bij elke vraag één zin letterlijk uit het verhaal als evidence."
+    if key == "glossary_not_in_text":
+        return f"{item}. Elk woord in de woordenlijst moet letterlijk in het verhaal voorkomen."
+    if key == "not_dutch":
+        return f"{item}. Schrijf het verhaal volledig in het Nederlands."
+    return item
+
+
+def feedback_text(result: ValidationResult, profile: StageProfile | None = None) -> str:
+    lines = ["FAILED CHECKS (los elk punt op; behoud dezelfde personages en dezelfde verhaallijn):"]
+    lines += [f"- {_instruction(item, profile) if profile else item}" for item in result.hard]
+    lines += [f"- (verbeter) {_instruction(item, profile) if profile else item}" for item in result.warnings]
     return "\n".join(lines)

@@ -193,6 +193,19 @@ will deliberately make the web private again. Never set `publicWeb=true` for ini
 Record date, commit/image digests, region, provider versions, physical device, results and unresolved
 items privately. Only evidence from the corresponding real service changes its status to `verified_live`.
 
+## Which version is deployed?
+
+Three ways, from cheapest to most authoritative:
+
+- `https://<DLP_HOST>/health` (public, no sign-in) returns `{"status":"ok","service":"web","commit":"<12 hex>"}`
+  for the web image; the signed-in Settings page shows the API's commit under *Technische ondersteuning*.
+- `az containerapp show -g dlp-production -n dlp-api --query properties.template.containers[0].image -o tsv`
+  gives the image reference by digest; `az acr repository show-tags -n <acr> --repository dlp-api --orderby time_desc --top 3`
+  lists the commit-tagged images that exist.
+- `az containerapp revision list -g dlp-production -n dlp-api -o table` shows every revision, its health and traffic.
+
+Images built before the `RELEASE_SHA` build argument existed report `unknown`.
+
 ## 7. Subsequent releases
 
 Create GitHub environment `production`, require owner approval, and restrict deployments to `main`.

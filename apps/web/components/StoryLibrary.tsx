@@ -51,6 +51,7 @@ export function StoryLibrary() {
         <p className="eyebrow">AFLEVERING {item.number} · {stageLabels[item.stage_id] ?? item.stage_id}</p>
         <h3>{item.status === "ready" ? item.title : item.theme}</h3>
         <p className="small-text muted">{item.status === "ready" ? `${item.word_count} woorden · ${item.read_at ? "gelezen" : "nog niet gelezen"}${item.rating === 1 ? " · 👍" : item.rating === -1 ? " · 👎" : ""}` : statusCopy[item.status]}</p>
+        {item.status === "failed" && item.failure_reasons?.length > 0 && <details className="failure-details"><summary>Wat er niet klopte</summary><ul>{item.failure_reasons.map(reason => <li key={reason}><code>{reason}</code></li>)}</ul></details>}
         {item.status === "ready" ? <Link className="stage-link" href={episodeHref(item.id)}>{item.read_at ? "Lees opnieuw" : "Lees"}<Icon name="arrow" size={17} /></Link>
           : item.status === "failed" ? <button className="linklike" onClick={() => void stories.retry(item.id).then(() => stories.library()).then(setData).catch(() => setNotice("Opnieuw proberen lukte niet."))}>Opnieuw laten schrijven</button>
           : <span className="writing-dots" aria-hidden="true"><span /><span /><span /></span>}

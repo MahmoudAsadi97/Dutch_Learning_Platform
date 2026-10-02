@@ -175,3 +175,8 @@ a.episode-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px #1c3
   .episode-paragraph { padding: 16px 18px; }
   .episode-paragraph .story-copy { font-size: 17px; }
 }
+
+.failure-details { margin-top: 10px; font-size: 13px; }
+.failure-details summary { cursor: pointer; color: var(--muted); }
+.failure-details ul { margin: 6px 0 0; padding-left: 18px; }
+.failure-details code { font-size: 12px; word-break: break-word; }

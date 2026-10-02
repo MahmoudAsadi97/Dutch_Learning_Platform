@@ -55,7 +55,7 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
 
     <Glossary episodeId={episode.id} items={episode.glossary} />
 
-    {!finished && <div className="finish-row"><button className="button" data-testid="finish-reading" onClick={() => { setFinished(true); void stories.read(episode.id).then(setEpisode).catch(() => undefined); }}>Klaar met lezen<Icon name="arrow" size={18} /></button><span className="small-text muted">Daarna volgen drie vragen en jouw keuze voor de volgende aflevering.</span></div>}
+    {!finished && <div className="finish-row"><button className="button" data-testid="finish-reading" onClick={() => { setFinished(true); void stories.read(episode.id).then(setEpisode).catch(() => undefined); }}>Klaar met lezen<Icon name="arrow" size={18} /></button><span className="small-text muted">Daarna volgen een paar vragen en jouw keuze voor de volgende aflevering.</span></div>}
 
     {finished && <>
       <Questions episode={episode} onUpdate={setEpisode} />
@@ -152,7 +152,7 @@ function Questions({ episode, onUpdate }: { episode: Episode; onUpdate: (episode
   const complete = episode.questions.every(question => answers[String(question.index)] !== undefined);
   const correct = episode.answered ? episode.questions.filter(question => question.correct).length : 0;
   return <section className="episode-questions" aria-labelledby="questions-title">
-    <div className="section-heading"><div><p className="eyebrow">BEGRIP</p><h2 id="questions-title">{episode.answered ? `${correct} van ${episode.questions.length} juist` : "Drie vragen over het verhaal"}</h2></div></div>
+    <div className="section-heading"><div><p className="eyebrow">BEGRIP</p><h2 id="questions-title">{episode.answered ? `${correct} van ${episode.questions.length} juist` : `${episode.questions.length === 2 ? "Twee" : "Drie"} vragen over het verhaal`}</h2></div></div>
     <form onSubmit={event => { event.preventDefault(); if (!complete || busy) return; setBusy(true); setMessage(""); void stories.answer(episode.id, answers, requestId.current).then(onUpdate).catch(cause => setMessage(friendly(cause, "Je antwoorden konden niet worden bewaard."))).finally(() => setBusy(false)); }}>
       <ol className="question-list">{episode.questions.map(question => <li key={question.index} className={`episode-question ${episode.answered ? (question.correct ? "is-correct" : "is-wrong") : ""}`}>
         <p lang="nl" className="question-prompt">{question.prompt}</p>

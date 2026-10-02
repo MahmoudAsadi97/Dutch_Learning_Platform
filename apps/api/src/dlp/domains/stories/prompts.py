@@ -38,8 +38,9 @@ def writer_messages(*, profile: StageProfile, bible: dict, memory: list[dict], k
     brief = {
         "aflevering": episode_number,
         "niveau": profile.label,
-        "lengte": (f"{profile.min_paragraphs}-{profile.max_paragraphs} alinea's, "
-                   f"{profile.min_words}-{profile.max_words} woorden in totaal"),
+        "lengte": (f"{profile.min_paragraphs}-{profile.max_paragraphs} alinea's; ongeveer "
+                   f"{(profile.min_words + profile.max_words) // 2} woorden in totaal, minstens {profile.min_words} "
+                   f"en hoogstens {profile.max_words}"),
         "zinnen": f"hoogstens {profile.max_sentence_words} woorden per zin, gemiddeld ongeveer {profile.mean_sentence_words:.0f}",
         "grammatica": profile.grammar,
         "aanwijzingen": profile.guidance,

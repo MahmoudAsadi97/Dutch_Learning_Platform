@@ -3,7 +3,10 @@
 # Local development uses the virtual environment, not this image.
 FROM python:3.12-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
+# The commit this image was built from; the deploy script and workflow pass it as a build argument.
+ARG RELEASE_SHA=unknown
+ENV RELEASE_SHA=${RELEASE_SHA} \
+    PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
     DLP_CONTENT_DIR=/app/content \

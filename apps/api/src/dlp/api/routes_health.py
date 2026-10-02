@@ -19,7 +19,14 @@ router = APIRouter(tags=["health"])
 @router.get("/health")
 def health(settings: Settings = Depends(settings_dep)) -> dict:
     """Liveness only; no authentication, no secrets, no provider calls."""
-    return {"status": "ok", "release": "0.2", "phase": "B" if settings.app_env == "production" else "A"}
+    return {"status": "ok", "release": "0.2", "phase": "B" if settings.app_env == "production" else "A",
+            "commit": release_commit()}
+
+
+def release_commit() -> str:
+    """The commit the running image was built from (`RELEASE_SHA` build argument), or 'unknown'."""
+    value = os.environ.get("RELEASE_SHA", "").strip()
+    return value[:12] if value else "unknown"
 
 
 @router.get("/health/ready")
@@ -40,7 +47,7 @@ def ready() -> JSONResponse:
 @router.get("/health/preflight")
 def preflight(ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep)) -> dict:
     return {
-        "configuration": settings.redacted_summary(),
+        "configuration": {**settings.redacted_summary(), "release_commit": release_commit()},
         "items": preflight_as_dicts(settings, check_network=True),
         "principal": {"email": ctx.principal.email, "identity_provider": ctx.principal.identity_provider},
         "request_id": ctx.request_id,

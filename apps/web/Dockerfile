@@ -10,8 +10,10 @@ ENV NEXT_OUTPUT=standalone \
 RUN npm run build
 
 FROM node:22-alpine
+ARG RELEASE_SHA=unknown
 WORKDIR /app
-ENV NODE_ENV=production \
+ENV RELEASE_SHA=${RELEASE_SHA} \
+    NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
     PORT=3000 \
     HOSTNAME=0.0.0.0

@@ -25,7 +25,7 @@ const series = { id: "s1", title: "De Lindestraat", stage_id: "a1", episode_coun
 function episode(overrides: Record<string, unknown> = {}) {
   return { id: episodeId, number: 3, stage_id: "a1", status: "ready", error_code: "", title: "De sleutel van Sami", theme: "Een sleutel kwijt",
     theme_source: "auto", topic_id: "a1-t004", mood: "light", word_count: 127, read_at: null, rating: 0, chosen_choice: "", created_at: "2026-10-02T07:00:00Z",
-    content_status: "generated", attempts: 1, warnings: [], paragraphs, glossary, choices, questions, answered: false, previous_choice: "", read_aloud: {},
+    content_status: "generated", attempts: 1, warnings: [], failure_reasons: [], paragraphs, glossary, choices, questions, answered: false, previous_choice: "", read_aloud: {},
     provider: "local-ollama-strong", model: "llama3.1:8b", ...overrides };
 }
 function plan(overrides: Record<string, unknown> = {}) {
@@ -84,9 +84,11 @@ test("today reports a writer at work and a failed episode honestly", async ({ pa
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Je volgende aflevering wordt geschreven.");
   await expect(page.getByText("De schrijver is bezig…")).toBeVisible();
   await page.unroute(/\/api\/today(?:\?|$)/);
-  await page.route(/\/api\/today(?:\?|$)/, route => route.fulfill({ json: plan({ next_step: "review", episode: null, failed: episode({ status: "failed", error_code: "quality", title: "" }) }) }));
+  await page.route(/\/api\/today(?:\?|$)/, route => route.fulfill({ json: plan({ next_step: "review", episode: null, failed: episode({ status: "failed", error_code: "quality", title: "", failure_reasons: ["sentence_too_long: 19 words (limit 12)"] }) }) }));
   await page.goto("/");
   await expect(page.getByText("Deze aflevering haalde de controle niet.")).toBeVisible();
+  await page.getByText("Wat er niet klopte").click();
+  await expect(page.getByText("sentence_too_long: 19 words (limit 12)")).toBeVisible();
   await expect(page.getByRole("button", { name: "Opnieuw laten schrijven" })).toBeVisible();
 });
 
@@ -97,11 +99,11 @@ test("reading an episode: finish, answer, save a word, choose how it continues",
   await expect(reader.getByRole("heading", { level: 1 })).toHaveText("De sleutel van Sami");
   await expect(reader.getByTestId("episode-paragraph")).toHaveCount(3);
   await expect(reader.getByText("It is Monday. Sami goes to work.")).toBeVisible();
-  await expect(reader.getByRole("heading", { name: "Drie vragen over het verhaal" })).toHaveCount(0);
+  await expect(reader.getByRole("heading", { name: "Twee vragen over het verhaal" })).toHaveCount(0);
   await reader.getByRole("button", { name: "Bewaar", exact: true }).first().click();
   await expect(reader.getByText('"de toonbank" staat in je woordenlijst en komt terug op het juiste moment.')).toBeVisible();
   await reader.getByTestId("finish-reading").click();
-  await expect(reader.getByRole("heading", { name: "Drie vragen over het verhaal" })).toBeVisible();
+  await expect(reader.getByRole("heading", { name: "Twee vragen over het verhaal" })).toBeVisible();
   const check = reader.getByRole("button", { name: "Controleer mijn antwoorden" });
   await expect(check).toBeDisabled();
   await reader.getByRole("radiogroup", { name: "Waar werkt Sami?" }).getByLabel("In de fietsenwinkel.").check();

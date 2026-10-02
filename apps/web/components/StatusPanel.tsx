@@ -90,6 +90,10 @@ export function StatusPanel() {
       <p data-testid="principal">
         Aangemeld als <strong>{data.principal.email}</strong> via <code>{data.principal.identity_provider}</code>
       </p>
+      <p className="small-text muted" data-testid="release-commit">
+        Versie van de API: <code>{String(data.configuration.release_commit ?? "unknown")}</code>
+        {" · "}omgeving <code>{String(data.configuration.app_env ?? "")}</code>
+      </p>
       <div className="table-scroll" role="region" aria-label="Systeemdetails" tabIndex={0}>
       <table className="plain" data-testid="preflight">
         <thead>

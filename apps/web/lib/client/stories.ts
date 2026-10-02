@@ -12,6 +12,7 @@ export interface EpisodeSummary {
   id: string; number: number; stage_id: string; status: EpisodeStatus; error_code: string; title: string; theme: string;
   theme_source: string; topic_id: string; mood: string; word_count: number; read_at: string | null; rating: number;
   chosen_choice: string; created_at: string; content_status: string; attempts: number; warnings: string[];
+  failure_reasons: string[];
 }
 export interface Episode extends EpisodeSummary {
   paragraphs: StoryParagraph[]; glossary: GlossaryItem[]; choices: EpisodeChoice[]; questions: EpisodeQuestion[];
