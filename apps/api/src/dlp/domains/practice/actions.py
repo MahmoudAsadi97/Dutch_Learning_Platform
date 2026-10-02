@@ -105,16 +105,28 @@ def apply_action(scenario: Scenario, state: AppointmentState, proposed: Proposed
             return ActionResult(False, action, "no reason text", state.as_dict())
         state.reason_stated = True
         state.actions.append(action)
+        # "Ik wil graag een broodje kip" explains the need and names the option in one breath. When the
+        # model reports both, the option is selected now; nobody should have to say a choice twice.
+        if scenario.kind == "service" and proposed.choice_id in {choice.id for choice in scenario.choices}:
+            state.selected_choice_id = proposed.choice_id
+            state.confirmed = False
+            state.actions.append("choose_option")
+            return ActionResult(True, action, "reason recorded and option selected, confirmation pending", state.as_dict())
         return ActionResult(True, action, "reason recorded", state.as_dict())
 
     if action == "choose_option":
-        if not state.reason_stated:
-            return ActionResult(False, action, "explain the need first", state.as_dict())
         if proposed.choice_id not in {choice.id for choice in scenario.choices}:
             return ActionResult(False, action, "option is not available", state.as_dict())
+        if not state.reason_stated and not scenario.reason_before_choice:
+            # Naming an available option straight away says what the learner needs. Only a scenario that
+            # asks for the reason first (a return without the problem explained) keeps the need open.
+            state.reason_stated = True
+            state.actions.append("state_need")
         state.selected_choice_id = proposed.choice_id
         state.confirmed = False
         state.actions.append(action)
+        if not state.reason_stated:
+            return ActionResult(True, action, "option kept, the reason is still needed", state.as_dict())
         return ActionResult(True, action, "option selected, confirmation pending", state.as_dict())
 
     if action == "ask_repeat":

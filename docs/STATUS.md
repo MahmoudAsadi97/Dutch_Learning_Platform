@@ -7,14 +7,14 @@ Updated 2 October 2026.
 | Area | State |
 |---|---|
 | Daily plan (`/`): streak, daily goal, today's episode, due words | implemented; browser and API tests |
-| Story serial (`/verhalen`): generated episodes, questions, choices, glossary, Persian on request, read-aloud | implemented; verified with fixture providers in CI; real-model runs happen on the laptop |
-| Word bank with spaced repetition (`/woorden`) | implemented; API tests |
+| Story serial (`/verhalen`): generated episodes, questions, choices, glossary, Persian on request, read-aloud | implemented; first live episodes written by `gpt-4.1-mini` in Azure on 2 October; stage profiles and the rewrite feedback tuned from them |
+| Word bank with spaced repetition (`/woorden`) | implemented; a live review cycle checked in Azure (2 October) |
 | Twelve-stage learning path (`/leerpad`, `/learn/<stage>`): words, grammar, reading, listening, speaking, writing, final check | implemented; verified on the laptop with the real local providers (22 September) |
 | Topic practice: 100 situations × 4 skills × 12 stages | implemented; static content, unreviewed |
 | Guided conversations, practice coach, admin editing queue | implemented; fixture-tested |
-| Role-play missions (`/missions`): appointment, lunch, return, course message | implemented; the appointment mission verified end to end on the laptop |
+| Role-play missions (`/missions`): appointment, lunch, return, course message | implemented; the appointment mission verified end to end on the laptop; a live lunch turn in Azure exposed the "direct order" rule, fixed as D-21 |
 | Speech: push-to-talk recording → ffmpeg → faster-whisper; Piper playback | verified on the laptop |
-| Azure adapters (chat, speech, blob), Bicep, release workflow | written and unit-tested against fixtures; nothing deployed |
+| Azure: Container Apps, Azure OpenAI, Speech `nl-BE`, Blob, Bicep, release script | deployed to `dlp-production` (West Europe) on 2 October; synthesis (`nl-BE-DenaNeural`) and a recognition round trip, episodes and a mission turn checked signed in |
 
 Statuses in detail: `docs/VERIFICATION.md`.
 
@@ -28,23 +28,25 @@ Statuses in detail: `docs/VERIFICATION.md`.
   prompt and the validator only as far as word lists go.
 * No pronunciation scoring exists anywhere, by design.
 * Phone acceptance (real device, HTTPS) has not been done.
+* The GitHub deploy workflow (`deploy.yml`) has no `production` environment yet; releases run from the
+  owner's laptop with `scripts/deploy_current.sh`.
 
 ## Next steps, in order
 
-1. Run the serial on the laptop for two weeks with `llama3.1:8b`; rate episodes; tune the stage
-   profiles and the prompt from the failure reasons stored on `story_episodes.checks`.
-2. Arrange a Belgian Dutch reviewer for the fixed A1–A2 pack and a sample of generated episodes
+1. Read the live serial daily for two weeks; rate episodes; keep tuning the stage profiles and the
+   writer prompt from the failure reasons stored on `story_episodes.checks` (visible on a failed card
+   under "Wat er niet klopte").
+2. Phone run on the live site (GO_LIVE §6): microphone, read-aloud, playback, layout at 390 px.
+3. Arrange a Belgian Dutch reviewer for the fixed A1–A2 pack and a sample of generated episodes
    (`docs/DEMO.md` is the walkthrough to show them).
-3. Compare a stronger local model for the writer (`LOCAL_CHAT_MODEL_STRONG`) against the 8B model on
-   the same themes.
-4. Azure: create the resources described in `docs/GO_LIVE.md`, record the allowance, run
-   `scripts/verify_live.py`, regenerate the fixed audio with the `nl-BE` voice, test on the phone.
+4. Configure the `production` environment for `deploy.yml` so a release is one click from GitHub.
 5. Only then: more content, more missions.
 
-## Before going live (owner checklist)
+## Live checklist
 
-* Azure subscription, resource group and budget alert; two chat deployments; Speech `F0` or `S0`;
-  storage account; PostgreSQL Flexible Server; Container Apps via `infra/main.bicep`.
-* Built-in authentication registered with the real account; `OWNER_ALLOWLIST` set to it.
-* `PAID_USAGE_ENABLED=true` set deliberately after the allowance is recorded in `docs/DECISIONS.md`.
-* `scripts/verify_live.py` green; the fixed audio regenerated; the phone run done.
+Done: resource group, budget alert, Azure OpenAI deployment, Speech, Storage, PostgreSQL, Container Apps
+from `infra/main.bicep`; built-in authentication with the owner's account; `PAID_USAGE_ENABLED=true`;
+`scripts/verify_live.py` (anonymous scope) green; signed-in checks of episodes, grading, saving, choice,
+points and streak, word review, synthesis and recognition, a mission turn.
+Remaining: the phone run; `verify_live.py --mode authenticated` with a session cookie; the recovery
+drill (PostgreSQL point-in-time restore to a separate server).

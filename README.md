@@ -124,10 +124,14 @@ CI runs all of this on every push to `main`.
 
 ## Going live
 
-Nothing is deployed yet. [GO_LIVE](docs/GO_LIVE.md) is the runbook (allowance, app registration,
-foundation, images, migration job, private deployment, sign-in, publication); `scripts/verify_live.py`
-checks each live service and moves the Azure adapters from `integration_pending` to `verified_live`.
-Paid use is switched on deliberately with `PAID_USAGE_ENABLED`, never by the presence of credentials.
+The owner's deployment runs in Azure Container Apps (West Europe) behind built-in Entra sign-in, with
+Azure OpenAI for the writer and the conversations, Azure Speech `nl-BE` and Blob Storage.
+[GO_LIVE](docs/GO_LIVE.md) is the runbook (allowance, app registration, foundation, images, migration
+job, private deployment, sign-in, publication, and how to tell which commit is live);
+`scripts/deploy_current.sh` releases the checked-out commit once CI is green, and
+`scripts/verify_live.py` checks the live site from outside. The settings page reports each Azure
+adapter as `ok` only once a stored episode, recording or synthesis proves it has worked. Paid use is
+switched on deliberately with `PAID_USAGE_ENABLED`, never by the presence of credentials.
 
 ## Documents
 

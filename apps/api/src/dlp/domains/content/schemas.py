@@ -236,6 +236,10 @@ class Scenario(StrictModel):
     kind: Literal["appointment", "service"] = "appointment"
     appointment: Appointment | None = None
     choices: list[ServiceChoice] = Field(default_factory=list)
+    # Service scenarios only. False: a learner who names an available option straight away has said what
+    # they need, and the character asks for confirmation. True: the option is kept but the character asks
+    # for the reason (the problem, the need) before anything can be confirmed.
+    reason_before_choice: bool = False
     reason_options: list[LocalizedText] = Field(min_length=1)
     available_slots: list[Slot] = Field(default_factory=list)
     allowed_actions: list[str] = Field(min_length=1)
@@ -246,6 +250,8 @@ class Scenario(StrictModel):
     def _slots_after_reference(self) -> Scenario:
         if self.kind == "appointment" and (self.appointment is None or len(self.available_slots) < 2):
             raise ValueError("appointment scenarios need an appointment and at least two slots")
+        if self.kind == "appointment" and self.reason_before_choice:
+            raise ValueError("reason_before_choice applies to service scenarios only")
         if self.kind == "service":
             if self.appointment is not None or self.available_slots or len(self.choices) < 2:
                 raise ValueError("service scenarios need at least two choices and no appointment slots")

@@ -19,7 +19,7 @@ from dlp.providers.registry import build_providers
 class PreflightItem:
     component: str
     mode: str  # local | azure | fixture | none
-    status: str  # ok | missing | unreachable | not_configured | pending_m3
+    status: str  # ok | missing | unreachable | not_configured | integration_pending
     detail: str
 
 
@@ -31,6 +31,39 @@ def _tcp_open(url: str, timeout: float = 1.5) -> bool:
             return True
     except OSError:
         return False
+
+
+_EVIDENCE_SQL = {
+    # Work the cloud components have demonstrably done, newest first. Preflight never calls a paid
+    # service itself; these rows are the proof that the configured adapter has worked for real.
+    "chat model": """
+        select greatest(
+            (select max(created_at) from story_episodes where status = 'ready' and provider like 'azure%'),
+            (select max(created_at) from practice_turns where status = 'completed'
+               and jsonb_path_exists(model_meta, '$.model_calls[*] ? (@.provider starts with "azure")'))
+        )""",
+    "speech to text": "select max(created_at) from audio_assets where kind = 'recording' and provider like 'azure%'",
+    "text to speech": "select max(created_at) from audio_assets where kind = 'synthesis' and provider like 'azure%'",
+}
+
+
+def _azure_evidence(component: str) -> str:
+    """When the Azure adapter for this component has done real work, the moment it last did; else empty."""
+    try:
+        with get_engine().connect() as connection:
+            last = connection.execute(text(_EVIDENCE_SQL[component])).scalar_one_or_none()
+    except Exception:  # noqa: BLE001 - the database row above already reports an unreachable database
+        return ""
+    return last.strftime("%Y-%m-%d %H:%M UTC") if last else ""
+
+
+def _azure_item(component: str, configured: bool, detail: str) -> PreflightItem:
+    if not configured:
+        return PreflightItem(component, "azure", "not_configured", detail)
+    last_used = _azure_evidence(component)
+    if last_used:
+        return PreflightItem(component, "azure", "ok", f"{detail}; last live use {last_used}")
+    return PreflightItem(component, "azure", "integration_pending", f"{detail}; no live use recorded yet")
 
 
 def run_preflight(settings: Settings | None = None, *, check_network: bool = True) -> list[PreflightItem]:
@@ -79,9 +112,8 @@ def run_preflight(settings: Settings | None = None, *, check_network: bool = Tru
         items.append(PreflightItem("chat model", "local (Ollama)", status, detail))
     elif settings.chat_provider == "azure":
         configured = bool(settings.azure_chat_endpoint and settings.azure_chat_deployment_small)
-        items.append(PreflightItem("chat model", "azure", "integration_pending" if configured else "not_configured",
-                                   "endpoint and deployment configured; inference not tested" if configured
-                                   else "AZURE_CHAT_* incomplete"))
+        items.append(_azure_item("chat model", configured,
+                                 "endpoint and deployments configured" if configured else "AZURE_CHAT_* incomplete"))
     else:
         items.append(PreflightItem("chat model", "fixture", "ok", "canned replies; not a verification"))
 
@@ -91,7 +123,7 @@ def run_preflight(settings: Settings | None = None, *, check_network: bool = Tru
         items.append(PreflightItem("speech to text", "local (faster-whisper)", "ok" if ok else "missing", detail))
     elif settings.stt_provider == "azure":
         ok, detail = providers.stt.available()  # type: ignore[attr-defined]
-        items.append(PreflightItem("speech to text", "azure", "integration_pending" if ok else "not_configured", detail))
+        items.append(_azure_item("speech to text", ok, detail))
     else:
         items.append(PreflightItem("speech to text", "fixture", "ok", "sidecar transcripts; not a verification"))
 
@@ -101,7 +133,7 @@ def run_preflight(settings: Settings | None = None, *, check_network: bool = Tru
         items.append(PreflightItem("text to speech", "local (Piper)", "ok" if ok else "missing", detail))
     elif settings.tts_provider == "azure":
         ok, detail = providers.tts.available()  # type: ignore[attr-defined]
-        items.append(PreflightItem("text to speech", "azure", "integration_pending" if ok else "not_configured", detail))
+        items.append(_azure_item("text to speech", ok, detail))
     else:
         items.append(PreflightItem("text to speech", "fixture", "ok", "tone generator; not a verification"))
 

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "shop-return",
-  "version": 2,
+  "version": 3,
   "cefr_target": "A2",
   "title": {
     "nl": "Een aankoop terugbrengen",
@@ -484,6 +484,7 @@
     {
       "id": "base",
       "kind": "service",
+      "reason_before_choice": true,
       "variant": "base",
       "reference_date": "2026-09-21",
       "setting": {
@@ -627,6 +628,7 @@
     {
       "id": "transfer",
       "kind": "service",
+      "reason_before_choice": true,
       "variant": "transfer",
       "reference_date": "2026-09-21",
       "setting": {

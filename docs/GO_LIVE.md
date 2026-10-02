@@ -5,8 +5,10 @@ packaged `content/practice` and `content/conversations` banks. Use the migration
 image alone. See [Topic practice](TOPIC_PRACTICE.md) for scope and content-review limits.
 
 This is a controlled learner release of the authored course and practice workflows; it is not a
-validated A1–C2 curriculum. Infrastructure and containers are checked in CI. They have **not** been deployed to Azure
-by this update. Only actual authenticated provider calls can establish `verified_live`.
+validated A1–C2 curriculum. Infrastructure and containers are checked in CI. The owner's deployment has
+run in resource group `dlp-production` (West Europe) since 2 October 2026; the signed-in checks of
+section 6 that have been done are listed in `docs/VERIFICATION.md`. Only actual authenticated provider
+calls establish `verified_live`.
 
 ## 1. What to create
 

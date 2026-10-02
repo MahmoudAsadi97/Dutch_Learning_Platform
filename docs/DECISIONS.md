@@ -215,3 +215,15 @@ Reading a paragraph aloud sends the recording through the normal transcription p
 reports which target words the transcriber recognised and which it did not. Points are awarded once
 per paragraph when at least half the words are recognised. No accent or pronunciation score is
 computed or shown, because a transcript cannot carry one.
+
+## D-21 · A direct order is not a mistake — 2026-10-02
+
+The first live lunch conversation answered *"Ik wil graag een broodje kip en een water"* with *"Dat kan
+niet. Kies uit het aanbod."*: the rules required the need to be stated before an option could be chosen,
+the model had labelled the sentence a choice, and the refusal borrowed the line meant for an option that
+is not on offer. Three changes. A valid option named straight away now counts as stating the need, and
+a stated need that names an option selects it, so nobody repeats themselves and the character asks for
+confirmation next. A scenario can set `reason_before_choice` (the shop return does, in both variants):
+the option is kept but the character asks what the problem is before anything can be confirmed. And the
+"not on offer" line is only used for an option that is not on offer; a premature "yes" simply gets the
+question of the current phase. The interpretation prompt is `propose-action-v3`.

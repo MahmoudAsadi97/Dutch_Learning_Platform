@@ -5,7 +5,7 @@ from pydantic import ValidationError
 from dlp.domains.content.schemas import MissionDocument
 from dlp.domains.content.service import MISSIONS_DIR, read_mission_file
 from dlp.domains.practice.actions import AppointmentState, ProposedAction, apply_action, required_actions_completed
-from dlp.domains.practice.prompts import PROPOSE_ACTION_VERSION
+from dlp.domains.practice.prompts import PROPOSE_ACTION_VERSION, fixed_line, phase_for
 from dlp.domains.practice.workflow import run_turn
 from dlp.providers.fixtures import FixtureChatModel
 from tests.conftest import auth_headers
@@ -36,10 +36,81 @@ def test_unavailable_choices_and_early_confirmation_cannot_complete(pack):
     scenario = pack.scenario("base")
     state = AppointmentState()
     assert not apply_action(scenario, state, ProposedAction(action="confirm")).accepted
-    assert not apply_action(scenario, state, ProposedAction(action="choose_option", choice_id=scenario.choices[0].id)).accepted
+    assert not apply_action(scenario, state, ProposedAction(action="choose_option", choice_id="invented")).accepted
     assert apply_action(scenario, state, ProposedAction(action="state_need", reason_text="Ik heb een vraag.")).accepted
     assert not apply_action(scenario, state, ProposedAction(action="choose_option", choice_id="invented")).accepted
+    assert not state.selected_choice_id
     assert not required_actions_completed(state, ["state_need", "choose_option", "confirm"])
+
+
+def test_a_direct_order_counts_as_the_need_unless_the_scenario_asks_for_the_reason_first(pack):
+    """"Ik wil graag een broodje kip" is the need and the choice at once. Only the shop return keeps asking
+    what the problem is before the remedy can be confirmed."""
+    scenario = pack.scenario("base")
+    choice = scenario.choices[1]
+    state = AppointmentState()
+    result = apply_action(scenario, state, ProposedAction(action="choose_option", choice_id=choice.id))
+    assert result.accepted
+    assert state.selected_choice_id == choice.id
+    if pack.id == "shop-return":
+        assert scenario.reason_before_choice
+        assert not state.reason_stated and "state_need" not in state.actions
+        assert phase_for(state, scenario) == "ask_reason"
+        assert not apply_action(scenario, state, ProposedAction(action="confirm")).accepted
+        assert apply_action(scenario, state, ProposedAction(action="state_need", reason_text="De trui is te klein.")).accepted
+        assert state.selected_choice_id == choice.id, "the choice made before the explanation is kept"
+    else:
+        assert not scenario.reason_before_choice
+        assert state.reason_stated and state.actions == ["state_need", "choose_option"]
+    assert phase_for(state, scenario) == "confirm"
+    assert choice.label.nl in fixed_line(scenario, "confirm", state)
+    assert apply_action(scenario, state, ProposedAction(action="confirm")).accepted
+    assert required_actions_completed(state, ["state_need", "choose_option", "confirm"])
+
+
+def test_a_need_that_names_the_option_selects_it(pack):
+    scenario = pack.scenario("base")
+    choice = scenario.choices[0]
+    state = AppointmentState()
+    result = apply_action(scenario, state, ProposedAction(action="state_need", reason_text="Ik wil graag lunch.",
+                                                          choice_id=choice.id))
+    assert result.accepted and "option selected" in result.reason
+    assert state.actions == ["state_need", "choose_option"]
+    assert phase_for(state, scenario) == "confirm"
+    state = AppointmentState()
+    assert apply_action(scenario, state, ProposedAction(action="state_need", reason_text="Ik heb een vraag.",
+                                                        choice_id="invented")).accepted
+    assert not state.selected_choice_id and phase_for(state, scenario) == "offer_slots"
+
+
+def test_the_shop_asks_for_the_problem_before_confirming_a_remedy_named_first():
+    pack = read_mission_file(MISSIONS_DIR / "shop-return" / "mission.json")
+    scenario = pack.scenario("base")
+    voucher = next(c for c in scenario.choices if c.id == "voucher")
+    chat = FixtureChatModel(replies={PROPOSE_ACTION_VERSION: {"action": "choose_option", "choice_id": "voucher"}})
+    outcome = run_turn(chat, scenario=scenario, appointment={}, history=[], learner_text="Ik wil een tegoedbon.",
+                       request_id="remedy-first")
+    assert outcome["action_result"]["accepted"]
+    assert outcome["appointment"]["selected_choice_id"] == "voucher"
+    assert outcome["reply_nl"] == "Wat is het probleem?"
+    assert "Dat kan niet" not in outcome["reply_nl"]
+    chat = FixtureChatModel(replies={PROPOSE_ACTION_VERSION: {"action": "state_need", "reason_text": "De trui is te klein."}})
+    outcome = run_turn(chat, scenario=scenario, appointment=outcome["appointment"], history=[],
+                       learner_text="De trui is te klein.", request_id="problem-second")
+    assert outcome["phase"] == "confirm"
+    assert voucher.label.nl in outcome["reply_nl"] and "Klopt dat?" in outcome["reply_nl"]
+
+
+def test_a_premature_yes_gets_the_question_of_the_phase_not_a_refusal(pack):
+    scenario = pack.scenario("base")
+    chat = FixtureChatModel(replies={PROPOSE_ACTION_VERSION: {"action": "confirm", "confidence": 0.9}})
+    outcome = run_turn(chat, scenario=scenario, appointment={}, history=[], learner_text="Ja.", request_id="early-yes")
+    assert not outcome["action_result"]["accepted"]
+    assert outcome["reply_nl"] == fixed_line(scenario, "ask_reason", AppointmentState())
+    chat = FixtureChatModel(replies={PROPOSE_ACTION_VERSION: {"action": "choose_option", "choice_id": "invented"}})
+    outcome = run_turn(chat, scenario=scenario, appointment={"reason_stated": True, "actions": ["state_need"]},
+                       history=[], learner_text="Ik wil soep.", request_id="not-on-offer")
+    assert outcome["reply_nl"].startswith("Dat kan niet. Kies uit het aanbod.")
 
 
 def test_service_selection_confirmation_change_and_cancel(pack):
@@ -69,6 +140,13 @@ def test_service_workflow_uses_validated_choices_and_only_one_model_call(pack):
     assert "Klopt dat?" in outcome["reply_nl"]
     assert len(chat.calls) == 1
     assert not outcome["appointment"]["confirmed"]
+
+
+def test_schema_keeps_reason_before_choice_to_service_scenarios():
+    raw = read_mission_file(MISSIONS_DIR / "appointment-change" / "mission.json").model_dump(mode="json")
+    raw["scenarios"][0]["reason_before_choice"] = True
+    with pytest.raises(ValidationError, match="service scenarios only"):
+        MissionDocument.model_validate(raw)
 
 
 def test_schema_rejects_duplicate_choices_and_missing_phase(pack):

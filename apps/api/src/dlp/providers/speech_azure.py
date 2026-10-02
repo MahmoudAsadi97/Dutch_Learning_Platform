@@ -1,8 +1,9 @@
 """Azure AI Speech adapters over the REST endpoints for short audio (at most 60 seconds).
 
-Status: `integration_pending` — written and unit-tested against recorded response shapes
-(`tests/fixtures/azure/`), never yet called with credentials. Phase B runs `scripts/verify_live.py`
-against a real resource and only then may they be called `verified_live`.
+Unit-tested against recorded response shapes (`tests/fixtures/azure/`); verified live on 2 October 2026
+(`nl-BE-DenaNeural` synthesis and a recognition round trip through the production deployment). Preflight
+reports each adapter as `ok` once a stored recording or synthesis proves it has worked, and as
+`integration_pending` until then.
 
 Authentication: a subscription key (`AZURE_SPEECH_KEY`) for the first live run, or an Entra ID token
 from a callable (managed identity in Azure) in the documented `aad#<resource id>#<token>` form when
@@ -65,7 +66,7 @@ class AzureSpeechToText(SpeechToText):
             return False, "AZURE_SPEECH_REGION not set"
         if not (self.key or self.token_provider):
             return False, "AZURE_SPEECH_KEY not set and no managed identity token provider (integration_pending)"
-        return True, f"REST short-audio recognition, {self.locale} in {self.region} (integration_pending until verified live)"
+        return True, f"REST short-audio recognition, {self.locale} in {self.region}"
 
     def transcribe(self, wav_path: Path, *, language: str = "nl", request_id: str = "") -> Transcript:
         started = time.monotonic()
@@ -134,7 +135,7 @@ class AzureTextToSpeech(TextToSpeech):
             return False, "AZURE_SPEECH_REGION not set"
         if not (self.key or self.token_provider):
             return False, "AZURE_SPEECH_KEY not set and no managed identity token provider (integration_pending)"
-        return True, f"REST synthesis, voice {self.voice} in {self.region} (integration_pending until verified live)"
+        return True, f"REST synthesis, voice {self.voice} in {self.region}"
 
     def ssml(self, text: str) -> str:
         lang = "-".join(self.voice.split("-")[:2]) or "nl-BE"

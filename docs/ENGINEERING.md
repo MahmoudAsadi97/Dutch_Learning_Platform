@@ -103,8 +103,9 @@ scripts/               run.py task runner, fetch_piper_voice.py, sql/
   is not `reviewed`. The fixed pack (texts the learner reads or hears) must stay under
   `content_pack.word_limit`, counted by `MissionDocument.fixed_dutch_word_count()`.
 - Statuses in `docs/VERIFICATION.md` follow a fixed vocabulary: `verified_local` (real local providers on
-  the laptop), `verified_ci` (fixture providers in the automated suites), `integration_pending` (Azure
-  adapters, never run live), `review_pending` (needs a human reviewer).
+  the laptop), `verified_ci` (fixture providers in the automated suites), `verified_live` (the production
+  deployment in Azure, signed in), `integration_pending` (configured, no live use recorded yet),
+  `review_pending` (needs a human reviewer).
 
 ## 4. Provider abstraction
 
@@ -223,12 +224,15 @@ reclaimable after a crash, one idempotency key per job. The in-process loop star
 - CI (`.github/workflows/ci.yml`) runs lint, the API suite, the benchmark dry runs, the web build and the browser tests.
 - Acceptance: `python scripts/run.py acceptance` runs A01 (content integrity) and A02–A06 (data integrity:
   `domains/practice/acceptance.py`); the same checks answer at `GET /missions/{id}/acceptance/all`.
-- Deployment (Phase B, not executed): `infra/main.bicep` (validated with the Bicep CLI) describes one
+- Deployment (live since 2 October 2026): `infra/main.bicep` (validated with the Bicep CLI) describes one
   Container Apps environment — public web app with built-in Entra sign-in, internal API, PostgreSQL,
   Storage, Speech, optional Azure OpenAI, Key Vault, managed identities; `apps/*/Dockerfile` build from the
-  repository root; `.github/workflows/deploy.yml` is a manual OIDC workflow; `docs/GO_LIVE.md` is the
-  go-live runbook and `scripts/verify_live.py` the black-box check that moves the Azure adapters from
-  `integration_pending` to `verified_live`.
+  repository root; `scripts/deploy_current.sh` releases the checked-out commit from a signed-in `az`
+  session once CI is green for it (`.github/workflows/deploy.yml` is the same release as a manual OIDC
+  workflow, not yet configured); `docs/GO_LIVE.md` is the runbook and `scripts/verify_live.py` the
+  black-box check. Preflight reports an Azure adapter as `ok` from stored evidence (a ready episode or a
+  completed turn written by an `azure-*` provider, a stored recording or synthesis), never by calling
+  the paid service itself.
 
 ## 9. Configuration contract
 

@@ -92,7 +92,9 @@ def build_graph(chat: ChatModel):
                 return {"reply_nl": "Het gesprek is geannuleerd. Er is niets afgesproken.", "reply_source": "fixed_line"}
             if result["action"] == "ask_repeat":
                 anchor = fixed_line(scenario, "repeat", appointment) + " " + anchor
-            elif not result["accepted"] and result["action"] != "none":
+            elif not result["accepted"] and result["action"] == "choose_option":
+                # "Dat kan niet, kies uit het aanbod" is the answer to an option that is not on offer. Any
+                # other refused action (a "yes" with nothing selected yet) just gets the question of the phase.
                 anchor = fixed_line(scenario, "clarify", appointment) + " " + anchor
             return {"reply_nl": anchor, "reply_source": "fixed_line"}
         if result["accepted"]:
