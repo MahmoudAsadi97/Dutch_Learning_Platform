@@ -106,6 +106,7 @@ function TopicReader({stageId, skill, learnerKey, maxSeconds, topicId, onActivit
   const completedRef = useRef(onCompleted);
   const submitRef = useRef<AbortController | null>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const focusTitle = useRef(false);
   const busy = submitBusy || recordingBusy || coachBusy || conversationBusy;
   const endpoint = `curriculum/${stageId}/topics/${encodeURIComponent(topicId)}`;
   useEffect(() => {activityRef.current = onActivityChange; completedRef.current = onCompleted;});
@@ -114,10 +115,13 @@ function TopicReader({stageId, skill, learnerKey, maxSeconds, topicId, onActivit
   useEffect(() => {
     const controller = new AbortController();
     apiJson<TopicDetail>(`${endpoint}?skill=${skill}`, {signal: controller.signal}).then(value => {
-      if (!controller.signal.aborted) {setTopic(value); setLoadError(""); window.requestAnimationFrame(() => titleRef.current?.focus());}
+      if (!controller.signal.aborted) {focusTitle.current = true; setTopic(value); setLoadError("");}
     }).catch(cause => {if (!controller.signal.aborted) setLoadError(friendlyError(cause instanceof ApiError ? cause.status : undefined));});
     return () => controller.abort();
   }, [endpoint, skill, retry]);
+  // Keyboard focus moves to the topic title once the loaded topic is on the page. An animation frame
+  // scheduled from the fetch callback could run before React had committed the heading.
+  useEffect(() => {if (focusTitle.current && titleRef.current) {focusTitle.current = false; titleRef.current.focus();}}, [topic]);
   function updateDraft(next: Draft) {
     setDraft(next); setFeedback(null); setError("");
     try {sessionStorage.setItem(draftKey, JSON.stringify(next)); setStorageError(false);} catch {setStorageError(true);}

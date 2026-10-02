@@ -75,6 +75,7 @@ function ConversationPractice({choice, learnerKey, onActivityChange, onRestart, 
   const draftRef = useRef(draft);
   const activity = useRef(onActivityChange);
   const latest = useRef<HTMLDivElement>(null);
+  const focusLatest = useRef(false);
   const stateBusy = busy || recording || restoring;
   const responseWords = countWords(draft);
   const resumeAvailable = !resumeMissing && Boolean(saved.sessionId || choice.active_session_id);
@@ -94,8 +95,11 @@ function ConversationPractice({choice, learnerKey, onActivityChange, onRestart, 
       setAudioId(pending.current.audio_asset_id);
     }
     save(value);
-    window.requestAnimationFrame(() => latest.current?.focus({preventScroll: true}));
+    focusLatest.current = true;
   }
+  // Focus moves to the next step once the updated conversation is on the page, not on an animation
+  // frame that may run before React has committed it.
+  useEffect(() => {if (focusLatest.current && latest.current) {focusLatest.current = false; latest.current.focus({preventScroll: true});}}, [session]);
   useEffect(() => {
     const id = sessionRef.current?.id ?? saved.sessionId ?? choice.active_session_id;
     if (!id) return;
