@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[3]
 
 
 def first_stage() -> Stage:
-    data = json.loads((ROOT / "content/curriculum/path.json").read_text())
+    data = json.loads((ROOT / "content/curriculum/path.json").read_text(encoding="utf-8"))
     return Stage.model_validate(data["stages"][0])
 
 

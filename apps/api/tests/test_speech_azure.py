@@ -30,7 +30,7 @@ def test_recognition_request_shape_and_parsing(tmp_path):
         seen["url"] = str(request.url)
         seen["headers"] = dict(request.headers)
         seen["body"] = request.content
-        return httpx.Response(200, json=json.loads((AZURE / "stt_success.json").read_text()))
+        return httpx.Response(200, json=json.loads((AZURE / "stt_success.json").read_text(encoding="utf-8")))
 
     wav = tmp_path / "turn.wav"
     wav.write_bytes(tone_wav(1.0))
@@ -49,7 +49,7 @@ def test_recognition_request_shape_and_parsing(tmp_path):
 
 
 def test_no_match_is_an_empty_transcript_not_an_error():
-    transcript = parse_recognition(json.loads((AZURE / "stt_nomatch.json").read_text()), language="nl",
+    transcript = parse_recognition(json.loads((AZURE / "stt_nomatch.json").read_text(encoding="utf-8")), language="nl",
                                    provider="azure-speech", model="m", latency_ms=1)
     assert transcript.text == "" and transcript.segments == [] and transcript.duration_seconds == pytest.approx(1.2)
     with pytest.raises(ProviderError):
@@ -71,7 +71,7 @@ def test_managed_identity_token_header_shape(tmp_path):
 
     def handler(request: httpx.Request) -> httpx.Response:
         seen["auth"] = request.headers.get("authorization")
-        return httpx.Response(200, json=json.loads((AZURE / "stt_success.json").read_text()))
+        return httpx.Response(200, json=json.loads((AZURE / "stt_success.json").read_text(encoding="utf-8")))
 
     wav = tmp_path / "turn.wav"
     wav.write_bytes(tone_wav(0.5))
