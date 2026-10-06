@@ -7,11 +7,16 @@ import path from "node:path";
  * Chromium is launched with a fake microphone that plays `tests/e2e/fixtures/speech-input.wav`.
  */
 const fakeAudio = path.resolve(__dirname, "tests/e2e/fixtures/speech-input.wav");
+/** Set by `scripts/run.py e2e-visual`: inside the Playwright container "localhost" must mean the host that
+ * runs the servers, and the fixture identity accepts only that host name. */
+const hostResolverRules = process.env.E2E_HOST_RESOLVER_RULES;
 
 export default defineConfig({
   testDir: "./tests/e2e",
   timeout: 60_000,
   expect: { timeout: 10_000 },
+  // Baselines carry no platform suffix: they are rendered on Linux only (CI, or the pinned container).
+  snapshotPathTemplate: "{testDir}/__screenshots__/{arg}{ext}",
   fullyParallel: false,
   workers: 1,
   retries: 0,
@@ -27,6 +32,7 @@ export default defineConfig({
         "--use-fake-ui-for-media-stream",
         `--use-file-for-fake-audio-capture=${fakeAudio}`,
         "--autoplay-policy=no-user-gesture-required",
+        ...(hostResolverRules ? [`--host-resolver-rules=${hostResolverRules}`] : []),
       ],
     },
   },

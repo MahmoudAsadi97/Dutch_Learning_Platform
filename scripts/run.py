@@ -11,6 +11,9 @@
   dev         one command after a reboot: services, migrations, content, Ollama, then api + web
   test        run the API test suite
   e2e         build the web app, start api + web with fixture providers, run the browser tests
+              (E2E_ARGS="tests/e2e/stories.spec.ts --headed" passes extra arguments to Playwright)
+  e2e-visual  like e2e, but runs the screenshot baselines inside the pinned Playwright Linux container
+              (E2E_ARGS="--update-snapshots" regenerates apps/web/tests/e2e/__screenshots__)
   benchmark   run the language-benchmark plumbing dry runs
   acceptance  run acceptance check A01
 
@@ -336,7 +339,7 @@ def require_test_database(url: str) -> None:
         raise SystemExit("E2E refuses to reset learner data: TEST_DATABASE_URL must name a database ending in _test")
 
 
-def task_e2e() -> None:
+def _e2e_env() -> dict[str, str]:
     """Browser tests run against the test database with fixture providers and a fixed fixture identity,
     so the developer's own `.env` (owner email, local models, dev database) never influences them."""
     env = load_env()
@@ -350,6 +353,11 @@ def task_e2e() -> None:
         "JOB_LOOP_ENABLED": "false",
     })
     require_test_database(env["DATABASE_URL"])
+    return env
+
+
+def _e2e_run(env: dict[str, str], playwright: list[str]) -> None:
+    """Prepare the test database, build and start both tiers, run `playwright` (a full command), stop them."""
     _ensure_services(env)
     sh([str(venv_python()), "-m", "alembic", "upgrade", "head"], cwd=API, env=env)
     sh([str(venv_python()), "-m", "dlp.cli", "load-fixture"], cwd=API, env=env)
@@ -362,14 +370,48 @@ def task_e2e() -> None:
     try:
         _wait_http("http://127.0.0.1:8000/health")
         _wait_http(f"http://localhost:{env.get('WEB_PORT', '3000')}/")
-        code = sh([npx(), "playwright", "test"], cwd=WEB, env=env, check=False)
+        code = sh(playwright, cwd=WEB, env=env, check=False)
     finally:
         _stop(web, "web")
         _stop(api, "api")
     sys.exit(code)
 
 
-TASKS = {name[5:]: func for name, func in globals().items() if name.startswith("task_")}
+def _e2e_args(env: dict[str, str]) -> list[str]:
+    return env.get("E2E_ARGS", "").split()
+
+
+def task_e2e() -> None:
+    env = _e2e_env()
+    _e2e_run(env, [npx(), "playwright", "test", *_e2e_args(env)])
+
+
+PLAYWRIGHT_IMAGE = "mcr.microsoft.com/playwright:v1.56.0-noble"  # keep in step with @playwright/test
+
+
+def task_e2e_visual() -> None:
+    """Screenshot baselines are rendered on Linux so that they compare on CI and on every developer machine.
+    This runs only `tests/e2e/aa-visual.spec.ts`, inside the pinned Playwright image, against the servers
+    started on this machine; `E2E_ARGS="--update-snapshots"` regenerates the baselines."""
+    env = _e2e_env()
+    if shutil.which("docker") is None:
+        raise SystemExit("e2e-visual needs Docker (the Playwright Linux image renders the baselines)")
+    web_port = env.get("WEB_PORT", "3000")
+    docker = [
+        "docker", "run", "--rm", "--init",
+        "--add-host=host.docker.internal:host-gateway",
+        "--volume", f"{WEB}:/work", "--workdir", "/work",
+        "--env", "VISUAL_LOCAL=1", "--env", "CI=1",
+        "--env", f"E2E_BASE_URL=http://localhost:{web_port}",
+        # the fixture identity accepts only "localhost", so Chromium maps that name to the host machine
+        "--env", "E2E_HOST_RESOLVER_RULES=MAP localhost host.docker.internal",
+        PLAYWRIGHT_IMAGE,
+        "npx", "playwright", "test", "tests/e2e/aa-visual.spec.ts", "--project=desktop", *_e2e_args(env),
+    ]
+    _e2e_run(env, docker)
+
+
+TASKS = {name[5:].replace("_", "-"): func for name, func in globals().items() if name.startswith("task_")}
 
 
 def main() -> None:

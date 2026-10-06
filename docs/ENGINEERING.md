@@ -222,6 +222,16 @@ reclaimable after a crash, one idempotency key per job. The in-process loop star
 - API tests: `pytest` in `apps/api` (needs `dlp_test` and ffmpeg; Azurite tests skip when it is down).
 - Browser tests: `python scripts/run.py e2e` builds the web app, starts both tiers with fixture
   providers and runs Playwright with a fake microphone (`tests/e2e/fixtures/speech-input.wav`).
+  `E2E_ARGS` passes extra arguments to Playwright (a single spec, `--headed`, `--update-snapshots`).
+- Screenshot baselines: `apps/web/tests/e2e/aa-visual.spec.ts` compares eight learner screens at
+  1440, 390 and 320 px with the PNGs in `tests/e2e/__screenshots__` (0.2 % pixel tolerance). They are
+  rendered on Linux only, so the spec is skipped on a developer machine; `python scripts/run.py e2e-visual`
+  runs it inside the pinned Playwright container against the servers on this machine, and
+  `E2E_ARGS="--update-snapshots"` regenerates the baselines (commit them with the change that moved the
+  pixels). The manual CI workflow `update_baselines` renders them on the runner and uploads an artifact.
+- CSS ratchet: `tests/unit/css-guard.test.mjs` holds each legacy stylesheet in `app/*.css` to the colour
+  literal, small-font, outline and `!important` counts in `tests/unit/css-budget.json`; lower a budget in
+  the same change that removes the rules, never raise one.
 - CI (`.github/workflows/ci.yml`) runs lint, the API suite, the benchmark dry runs, the web build and the browser tests.
 - Acceptance: `python scripts/run.py acceptance` runs A01 (content integrity) and A02–A06 (data integrity:
   `domains/practice/acceptance.py`); the same checks answer at `GET /missions/{id}/acceptance/all`.
