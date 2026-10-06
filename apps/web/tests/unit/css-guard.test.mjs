@@ -4,11 +4,11 @@ import path from "node:path";
 import { test } from "node:test";
 
 /**
- * A ratchet over the legacy stylesheets in app/*.css: the number of colour literals, font sizes under
- * 12 px, outline rules and !important declarations per file may only go down. The budgets in
- * css-budget.json equal the counts measured when the guard was introduced; lower them in the same change
- * that removes the rules. A stylesheet without a budget entry is held to zero on every metric, so new
- * styles go into app/styles (token-driven) rather than into a new legacy file.
+ * A ratchet over every global stylesheet: the number of colour literals, font sizes under 12 px, outline
+ * rules and !important declarations per file may only go down. The budgets in css-budget.json equal the
+ * counts measured when the guard was introduced; lower them in the same change that removes the rules.
+ * A stylesheet without a budget entry is held to zero on every metric, so new styles are token-driven.
+ * app/styles/tokens.css is the one place colour literals belong and is exempt from the hex metric only.
  */
 
 const web = path.resolve(import.meta.dirname, "..", "..");
@@ -21,23 +21,42 @@ export const METRICS = {
   important: (css) => (css.match(/!important/g) ?? []).length,
 };
 
+const TOKEN_SOURCE = "styles/tokens.css";
+
 export function measure(css) {
   return Object.fromEntries(Object.entries(METRICS).map(([name, count]) => [name, count(css)]));
 }
 
-const files = readdirSync(path.join(web, "app")).filter((name) => name.endsWith(".css"));
+function stylesheets(dir) {
+  return readdirSync(path.join(web, "app", dir))
+    .filter((name) => name.endsWith(".css"))
+    .map((name) => (dir ? `${dir}/${name}` : name));
+}
 
-test("every legacy stylesheet stays within its budget", () => {
+const files = [...stylesheets(""), ...stylesheets("styles")];
+
+test("every stylesheet stays within its budget", () => {
   for (const file of files) {
     const actual = measure(readFileSync(path.join(web, "app", file), "utf8"));
     const budget = budgets[file] ?? { hex: 0, smallFont: 0, outline: 0, important: 0 };
     for (const metric of Object.keys(METRICS)) {
+      if (file === TOKEN_SOURCE && metric === "hex") continue;
       assert.ok(
         actual[metric] <= budget[metric],
         `${file}: ${metric} is ${actual[metric]}, budget ${budget[metric]} (lower the budget in css-budget.json when you remove rules; never raise it)`,
       );
     }
   }
+});
+
+test("colour literals outside the token source only shrink", () => {
+  const outside = files.filter((file) => file !== TOKEN_SOURCE);
+  const literals = outside.map((file) => METRICS.hex(readFileSync(path.join(web, "app", file), "utf8")));
+  const budgeted = outside.map((file) => budgets[file]?.hex ?? 0);
+  assert.ok(
+    literals.reduce((a, b) => a + b, 0) <= budgeted.reduce((a, b) => a + b, 0),
+    "colour literals belong in app/styles/tokens.css",
+  );
 });
 
 test("budgets do not list stylesheets that no longer exist", () => {

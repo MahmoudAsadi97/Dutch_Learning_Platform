@@ -1,22 +1,4 @@
-:root {
-  --bg: #f7f6f2;
-  --surface: #ffffff;
-  --ink: #1d1d1b;
-  --muted: #5c5b57;
-  --line: #d9d6cc;
-  --accent: #0b5d4b;
-  --accent-ink: #ffffff;
-  --warn-bg: #fff4d6;
-  --warn-ink: #6b4b00;
-  --ok-bg: #e4f4ec;
-  --ok-ink: #0b5d4b;
-  --bad-bg: #fbe6e3;
-  --bad-ink: #8a2a1c;
-  --radius: 10px;
-  --font-latin: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-persian: "Vazirmatn", "Segoe UI", Tahoma, "Noto Naskh Arabic", "Iranian Sans", sans-serif;
-}
-
+@layer legacy {
 * {
   box-sizing: border-box;
 }
@@ -387,3 +369,4 @@ table.plain td {
 .catalog-card h3, .catalog-card p { margin: 0; }
 .catalog-card .button { margin-top: auto; white-space: normal; }
 .settings-diagnostics details > summary { cursor: pointer; font-weight: 600; }
+}

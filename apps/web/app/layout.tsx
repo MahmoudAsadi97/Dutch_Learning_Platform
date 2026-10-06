@@ -8,6 +8,9 @@ import { Providers } from "./providers";
 import "@fontsource-variable/dm-sans";
 import "@fontsource-variable/vazirmatn";
 
+import "./styles/layers.css";
+import "./styles/tokens.css";
+import "./styles/reset.css";
 import "./globals.css";
 import "./design.css";
 import "./learning.css";

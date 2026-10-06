@@ -1,20 +1,5 @@
+@layer legacy {
 /* Taalstudio design system. Functional base styles live in globals.css. */
-:root {
-  --bg: #f7f8fa;
-  --surface: #fff;
-  --ink: #223a35;
-  --muted: #52665b;
-  --line: #e5ebe7;
-  --accent: #225b49;
-  --accent-ink: #fff;
-  --radius: 18px;
-  --ok-bg: #eaf2ed;
-  --ok-ink: #285b45;
-  --warn-bg: #faf1d9;
-  --warn-ink: #735218;
-  --font-latin: "DM Sans Variable", "Segoe UI", system-ui, sans-serif;
-  --font-persian: "Vazirmatn Variable", Tahoma, sans-serif;
-}
 body {
   font-size: 14px;
   letter-spacing: -0.015em;
@@ -1076,31 +1061,4 @@ table.plain td {
     text-align: center;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-}
-@media print {
-  .app-sidebar,
-  .workspace-header,
-  .mobile-nav,
-  .site-footer,
-  .button {
-    display: none !important;
-  }
-  .app-workspace {
-    margin: 0;
-  }
-  .site-main {
-    padding: 0;
-  }
-  .card {
-    break-inside: avoid;
-  }
 }

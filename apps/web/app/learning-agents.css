@@ -1,3 +1,4 @@
+@layer legacy {
 .practice-coach { margin:2rem 0; padding:1.5rem; border:1px solid #cad9eb; border-radius:20px; background:#f0f5fc; }
 .practice-coach-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:1.5rem; }
 .practice-coach-heading h2 { margin:.4rem 0; }.practice-coach-heading p { margin:.5rem 0 1.25rem; }
@@ -23,3 +24,4 @@
 .conversation-summary ul { list-style:none; padding:0; }.conversation-summary li { padding:1rem 0; border-bottom:1px solid #cad8e9; }.conversation-summary li > .quiet-badge { margin-bottom:.5rem; }.conversation-summary li > .learning-copy { display:block; }
 @media(max-width:1050px) { .practice-recommendations { grid-template-columns:1fr; }.conversation-invitation,.practice-coach-footer { flex-direction:column; align-items:stretch; }.practice-recommendations .button { align-self:flex-start; } }
 @media(max-width:600px) { .practice-coach,.topic-conversation { padding:1rem; }.practice-coach-heading { flex-direction:column; gap:.5rem; }.practice-coach-heading > div:last-child,.practice-coach-heading select { width:100%; }.practice-recommendations { margin-top:1rem; }.conversation-toolbar { align-items:flex-start; flex-direction:column; }.conversation-learner { margin-left:5%; }.conversation-status { flex-wrap:wrap; }.conversation-practice .button { white-space:normal; }.conversation-mode label { width:100%; } }
+}

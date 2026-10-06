@@ -23,7 +23,12 @@ code is the reference, this explains why it is shaped the way it is.
 
 ### Release 0.2 conventions
 
-- `AppShell` provides desktop and mobile navigation; `design.css` contains the shared visual system.
+- `AppShell` provides desktop and mobile navigation. Styles are global CSS in cascade layers
+  (`app/styles/layers.css` fixes the order `reset, tokens, base, components, legacy, features, utilities`):
+  `tokens.css` is the only stylesheet with colour literals (primitive ramps, semantic tokens, one accent
+  set per section or skill selected by `data-accent` on a container, and compatibility aliases for the
+  legacy layer), `reset.css` holds the reduced-motion and print rules, and the ten pre-existing
+  stylesheets are wrapped in `@layer legacy` and shrink as screens move onto the primitives.
   Fonts are self-hosted. Dashboard/progress read persisted evidence only; technical diagnostics live
   in Settings. A shared navigation guard waits for writing autosave before app-link navigation.
 - The web layout is dynamically rendered so runtime environment labels and per-response CSP nonces
@@ -248,9 +253,12 @@ reclaimable after a crash, one idempotency key per job. The in-process loop star
   runs it inside the pinned Playwright container against the servers on this machine, and
   `E2E_ARGS="--update-snapshots"` regenerates the baselines (commit them with the change that moved the
   pixels). The manual CI workflow `update_baselines` renders them on the runner and uploads an artifact.
-- CSS ratchet: `tests/unit/css-guard.test.mjs` holds each legacy stylesheet in `app/*.css` to the colour
-  literal, small-font, outline and `!important` counts in `tests/unit/css-budget.json`; lower a budget in
-  the same change that removes the rules, never raise one.
+- CSS ratchets: `tests/unit/css-guard.test.mjs` holds every stylesheet in `app/*.css` and `app/styles/*.css`
+  to the colour literal, small-font, outline and `!important` counts in `tests/unit/css-budget.json`
+  (`styles/tokens.css` is exempt from the colour count only); lower a budget in the same change that
+  removes the rules, never raise one. `tests/unit/css-usage.test.mjs` fails on a selector no component
+  uses, and `tests/unit/design-tokens.test.mjs` checks every promised text pair for 4.5:1 and every
+  graphic pair for 3:1 in `:root` and in each `[data-accent]` block.
 - CI (`.github/workflows/ci.yml`) runs lint, the API suite, the benchmark dry runs, the web build and the browser tests.
 - Acceptance: `python scripts/run.py acceptance` runs A01 (content integrity) and A02–A06 (data integrity:
   `domains/practice/acceptance.py`); the same checks answer at `GET /missions/{id}/acceptance/all`.

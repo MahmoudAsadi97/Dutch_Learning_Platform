@@ -1,0 +1,349 @@
+/*
+ * Design tokens: the only stylesheet that may contain colour literals (tests/unit/css-guard.test.mjs).
+ *
+ * Three tiers. Primitive ramps (--slate-500, --blue-600, ...) are raw material and are never used by
+ * components. Semantic tokens (--surface-*, --text-*, --border*, --action-*, --success-* ...) are what
+ * components use. Accent roles (--accent-*) are set per section or skill by a [data-accent] attribute on
+ * a container, so one primitive can be tinted by where it lives.
+ *
+ * The compatibility aliases at the end (--bg, --ink, --accent, --tone-*, ...) carry the values the legacy
+ * stylesheets had before this file existed; they are repointed to semantic tokens in the palette step and
+ * deleted once the legacy layer is gone. Every text/surface pair here is checked for WCAG AA contrast by
+ * tests/unit/design-tokens.test.mjs.
+ */
+@layer tokens {
+  :root {
+    color-scheme: light;
+
+    /* --- primitive ramps ------------------------------------------------------------------------ */
+    --slate-0: #ffffff;
+    --slate-25: #f6f8fc;
+    --slate-50: #eef2f8;
+    --slate-100: #e3e9f2;
+    --slate-200: #d3dbe7;
+    --slate-300: #b6c2d2;
+    --slate-400: #76859b;
+    --slate-500: #5d6c82;
+    --slate-600: #4f5d73;
+    --slate-700: #364559;
+    --slate-800: #223349;
+    --slate-900: #14243b;
+    --navy: #1c3558;
+
+    --blue-50: #eef4ff;
+    --blue-100: #dce8ff;
+    --blue-200: #b9d0ff;
+    --blue-300: #8fb1f7;
+    --blue-500: #3b6fd9;
+    --blue-600: #2455b5;
+    --blue-700: #1b448f;
+    --blue-800: #163872;
+
+    --teal-50: #e6f6f7;
+    --teal-100: #c9ecee;
+    --teal-200: #9fdbdf;
+    --teal-300: #6cc3c9;
+    --teal-500: #1f8f98;
+    --teal-600: #16737a;
+    --teal-700: #125c62;
+    --teal-800: #0f494e;
+
+    --violet-50: #f3effb;
+    --violet-100: #e6ddf6;
+    --violet-200: #cfbdec;
+    --violet-300: #b398df;
+    --violet-500: #7c54c4;
+    --violet-600: #6442a6;
+    --violet-700: #513587;
+    --violet-800: #412b6c;
+
+    --orange-50: #fdf1e8;
+    --orange-100: #fbe0cc;
+    --orange-200: #f6c39f;
+    --orange-300: #f0a46f;
+    --orange-500: #d9672b;
+    --orange-600: #b8521f;
+    --orange-700: #944018;
+    --orange-800: #743212;
+
+    --amber-50: #fdf6e3;
+    --amber-100: #fae9bd;
+    --amber-200: #f3d58a;
+    --amber-300: #e9bd55;
+    --amber-500: #bd891a;
+    --amber-600: #946a12;
+    --amber-700: #7d5a13;
+    --amber-800: #61460f;
+
+    --rose-50: #fdeef2;
+    --rose-100: #fadbe3;
+    --rose-200: #f3b4c4;
+    --rose-300: #e98aa3;
+    --rose-500: #cf4e74;
+    --rose-600: #b03b5e;
+    --rose-700: #8d2f4b;
+    --rose-800: #6f253b;
+
+    --green-50: #eaf4ef;
+    --green-100: #d3e9dc;
+    --green-200: #a7d7b8;
+    --green-300: #7cc498;
+    --green-500: #2f7a5a;
+    --green-600: #216045;
+    --green-700: #1a4d37;
+    --green-800: #143d2c;
+
+    --red-50: #fbe6e3;
+    --red-100: #f7cfc9;
+    --red-200: #efa49a;
+    --red-300: #e47c6e;
+    --red-500: #c2402d;
+    --red-600: #a53324;
+    --red-700: #8a2a1c;
+    --red-800: #6e2116;
+
+    /* --- semantic: surfaces, text, borders, actions --------------------------------------------- */
+    --surface-canvas: var(--slate-25);
+    --surface-raised: var(--slate-0);
+    --surface-sunken: var(--slate-50);
+    --surface-inverse: var(--navy);
+    --surface-disabled: var(--slate-100);
+
+    --text: var(--slate-900);
+    --text-muted: var(--slate-600);
+    --text-subtle: var(--slate-500);
+    --text-disabled: var(--slate-400);
+    --text-on-solid: var(--slate-0);
+    --text-on-inverse: var(--slate-0);
+    --text-muted-on-inverse: #c2d1e8;
+    --text-link: var(--blue-600);
+
+    --border: var(--slate-200);
+    --border-strong: var(--slate-400);
+    --focus-ring: var(--blue-600);
+
+    --action-solid: var(--blue-600);
+    --action-solid-hover: var(--blue-700);
+    --action-edge: var(--blue-800);
+    --action-subtle: var(--blue-50);
+    --action-ink: var(--blue-700);
+
+    /* --- semantic: feedback ---------------------------------------------------------------------- */
+    --success-bg: var(--green-50);
+    --success-ink: var(--green-700);
+    --success-border: var(--green-200);
+    --success-solid: var(--green-600);
+    --success-vivid: var(--green-500);
+
+    --warning-bg: var(--amber-50);
+    --warning-ink: var(--amber-700);
+    --warning-border: var(--amber-200);
+    --warning-solid: var(--amber-600);
+    --warning-vivid: var(--amber-500);
+
+    --danger-bg: var(--red-50);
+    --danger-ink: var(--red-700);
+    --danger-border: var(--red-200);
+    --danger-solid: var(--red-600);
+    --danger-vivid: var(--red-500);
+
+    --info-bg: var(--blue-50);
+    --info-ink: var(--blue-700);
+    --info-border: var(--blue-200);
+    --info-solid: var(--blue-600);
+    --info-vivid: var(--blue-500);
+
+    --recording-bg: var(--red-50);
+    --recording-ink: var(--red-700);
+    --recording-pulse: var(--red-500);
+
+    /* --- type, space, radius, elevation, motion, layers ------------------------------------------ */
+    --font-sans: "DM Sans Variable", "Segoe UI", system-ui, sans-serif;
+    --font-persian-ui: "Vazirmatn Variable", Tahoma, sans-serif;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-md: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: clamp(1.75rem, 1.35rem + 1.7vw, 2.375rem);
+    --text-display: clamp(2.2rem, 1.6rem + 2.4vw, 3.25rem);
+    --weight-regular: 450;
+    --weight-medium: 550;
+    --weight-semibold: 650;
+    --leading-tight: 1.15;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.65;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 22px;
+    --radius-pill: 999px;
+
+    --shadow-rgb: 20 36 59;
+    --shadow-1: 0 1px 2px rgb(var(--shadow-rgb) / 0.06);
+    --shadow-2: 0 4px 12px rgb(var(--shadow-rgb) / 0.08);
+    --shadow-3: 0 10px 28px rgb(var(--shadow-rgb) / 0.12);
+    --shadow-4: 0 20px 48px rgb(var(--shadow-rgb) / 0.16);
+
+    --dur-1: 120ms;
+    --dur-2: 200ms;
+    --dur-3: 320ms;
+    --dur-4: 600ms;
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --z-skip: 60;
+    --z-toast: 50;
+    --z-dialog: 40;
+    --z-sidebar: 20;
+    --z-header: 18;
+    --z-raised: 1;
+
+    /* --- accent roles: the default section is the brand blue ------------------------------------- */
+    --accent-solid: var(--blue-600);
+    --accent-solid-hover: var(--blue-700);
+    --accent-ink: var(--blue-700);
+    --accent-ink-strong: var(--blue-800);
+    --accent-subtle: var(--blue-50);
+    --accent-muted: var(--blue-100);
+    --accent-border: var(--blue-200);
+    --accent-vivid: var(--blue-500);
+
+    /* --- compatibility aliases: today's effective values, consumed by the legacy layer ------------ */
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --ink: #182c47;
+    --muted: #58667a;
+    --line: #dfe5ed;
+    --accent: #2455b5;
+    --accent-ink-legacy: #fff;
+    --radius: 16px;
+    --ok-bg: #eaf4ef;
+    --ok-ink: #216045;
+    --warn-bg: #faf1d9;
+    --warn-ink: #735218;
+    --bad-bg: #fbe6e3;
+    --bad-ink: #8a2a1c;
+    --font-latin: "DM Sans Variable", "Segoe UI", system-ui, sans-serif;
+    --font-persian: "Vazirmatn Variable", Tahoma, sans-serif;
+    --warm: #d9672b;
+    --warm-ink: #8a3a0f;
+    --warm-bg: #fdf1e8;
+    --tone-1-a: #f6b26b;
+    --tone-1-b: #d9672b;
+    --tone-2-a: #a7d7b8;
+    --tone-2-b: #2f7a5a;
+    --tone-3-a: #a9cbf2;
+    --tone-3-b: #2455b5;
+    --tone-4-a: #d8b4e8;
+    --tone-4-b: #6b3fa0;
+    --tone-5-a: #ead7a6;
+    --tone-5-b: #a7762e;
+    --tone-6-a: #f3b4c4;
+    --tone-6-b: #b03b5e;
+  }
+
+  /* The legacy stylesheets use --accent-ink for "text on the accent", which the new semantic set calls
+   * --text-on-solid. The alias keeps that meaning inside the legacy layer. */
+  :root {
+    --accent-ink: #fff;
+  }
+
+  /* --- accent roles per section and skill; applied with data-accent on a container ---------------- */
+  [data-accent="reading"],
+  [data-accent="path"],
+  [data-accent="today"] {
+    --accent-solid: var(--blue-600);
+    --accent-solid-hover: var(--blue-700);
+    --accent-ink: var(--blue-700);
+    --accent-ink-strong: var(--blue-800);
+    --accent-subtle: var(--blue-50);
+    --accent-muted: var(--blue-100);
+    --accent-border: var(--blue-200);
+    --accent-vivid: var(--blue-500);
+  }
+  [data-accent="listening"],
+  [data-accent="videos"] {
+    --accent-solid: var(--teal-600);
+    --accent-solid-hover: var(--teal-700);
+    --accent-ink: var(--teal-700);
+    --accent-ink-strong: var(--teal-800);
+    --accent-subtle: var(--teal-50);
+    --accent-muted: var(--teal-100);
+    --accent-border: var(--teal-200);
+    --accent-vivid: var(--teal-500);
+  }
+  [data-accent="speaking"],
+  [data-accent="conversations"] {
+    --accent-solid: var(--violet-600);
+    --accent-solid-hover: var(--violet-700);
+    --accent-ink: var(--violet-700);
+    --accent-ink-strong: var(--violet-800);
+    --accent-subtle: var(--violet-50);
+    --accent-muted: var(--violet-100);
+    --accent-border: var(--violet-200);
+    --accent-vivid: var(--violet-500);
+  }
+  [data-accent="writing"] {
+    --accent-solid: var(--orange-600);
+    --accent-solid-hover: var(--orange-700);
+    --accent-ink: var(--orange-700);
+    --accent-ink-strong: var(--orange-800);
+    --accent-subtle: var(--orange-50);
+    --accent-muted: var(--orange-100);
+    --accent-border: var(--orange-200);
+    --accent-vivid: var(--orange-500);
+  }
+  [data-accent="words"] {
+    --accent-solid: var(--amber-600);
+    --accent-solid-hover: var(--amber-700);
+    --accent-ink: var(--amber-700);
+    --accent-ink-strong: var(--amber-800);
+    --accent-subtle: var(--amber-50);
+    --accent-muted: var(--amber-100);
+    --accent-border: var(--amber-200);
+    --accent-vivid: var(--amber-500);
+  }
+  [data-accent="stories"] {
+    --accent-solid: var(--rose-600);
+    --accent-solid-hover: var(--rose-700);
+    --accent-ink: var(--rose-700);
+    --accent-ink-strong: var(--rose-800);
+    --accent-subtle: var(--rose-50);
+    --accent-muted: var(--rose-100);
+    --accent-border: var(--rose-200);
+    --accent-vivid: var(--rose-500);
+  }
+  [data-accent="progress"] {
+    --accent-solid: var(--green-600);
+    --accent-solid-hover: var(--green-700);
+    --accent-ink: var(--green-700);
+    --accent-ink-strong: var(--green-800);
+    --accent-subtle: var(--green-50);
+    --accent-muted: var(--green-100);
+    --accent-border: var(--green-200);
+    --accent-vivid: var(--green-500);
+  }
+  [data-accent="neutral"] {
+    --accent-solid: var(--slate-600);
+    --accent-solid-hover: var(--slate-700);
+    --accent-ink: var(--slate-700);
+    --accent-ink-strong: var(--slate-800);
+    --accent-subtle: var(--slate-50);
+    --accent-muted: var(--slate-100);
+    --accent-border: var(--slate-200);
+    --accent-vivid: var(--slate-500);
+  }
+}

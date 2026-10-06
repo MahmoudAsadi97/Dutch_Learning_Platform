@@ -1,3 +1,4 @@
+@layer legacy {
 .practice-source-switch { display:flex; gap:.4rem; padding:.3rem; border:1px solid #d6e1f0; background:#edf2f8; border-radius:12px; width:fit-content; max-width:100%; margin:0 0 1.5rem; }
 .practice-source-switch .button { border:0; background:transparent; color:#425d7d; min-height:42px; padding:.65rem 1rem; }
 .practice-source-switch .button[aria-pressed="true"] { background:white; color:#163961; box-shadow:0 2px 6px #233e6112; }
@@ -34,3 +35,4 @@
 .topic-feedback-criteria { list-style:none; padding:0; }.topic-feedback-criteria li { border-top:1px solid #c6d9cc; padding:1rem 0; }.topic-feedback-criteria li > strong,.topic-feedback-criteria li > .learning-copy { display:block; }.topic-feedback-criteria .quiet-badge { margin:.5rem 0; }
 @media(max-width:850px) { .topic-filters { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }.topic-filters > div:first-child { grid-column:1/-1; }.topic-library-intro { grid-template-columns:1fr; }.topic-progress-summary { gap:.2rem; } }
 @media(max-width:600px) { .topic-grid,.topic-filters,.topic-vocabulary > div { grid-template-columns:1fr; }.topic-tile { padding:1rem; }.topic-filters { padding:.8rem; }.topic-detail-heading h3 { font-size:1.45rem; }.topic-reader .productive-task,.topic-reader .story-panel,.topic-goals,.topic-vocabulary { padding:1rem; }.topic-library-intro h3 { font-size:1.25rem; }.topic-reader .button { white-space:normal; } }
+}

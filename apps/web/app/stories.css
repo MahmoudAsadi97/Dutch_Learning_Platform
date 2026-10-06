@@ -1,15 +1,5 @@
+@layer legacy {
 /* Vandaag, the serial, the word bank. Warm covers and a living streak on top of the calm workspace. */
-:root {
-  --warm: #d9672b;
-  --warm-ink: #8a3a0f;
-  --warm-bg: #fdf1e8;
-  --tone-1-a: #f6b26b; --tone-1-b: #d9672b;
-  --tone-2-a: #a7d7b8; --tone-2-b: #2f7a5a;
-  --tone-3-a: #a9cbf2; --tone-3-b: #2455b5;
-  --tone-4-a: #d8b4e8; --tone-4-b: #6b3fa0;
-  --tone-5-a: #ead7a6; --tone-5-b: #a7762e;
-  --tone-6-a: #f3b4c4; --tone-6-b: #b03b5e;
-}
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* --- covers --------------------------------------------------------------------------------------------- */
@@ -180,3 +170,4 @@ a.episode-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px #1c3
 .failure-details summary { cursor: pointer; color: var(--muted); }
 .failure-details ul { margin: 6px 0 0; padding-left: 18px; }
 .failure-details code { font-size: 12px; word-break: break-word; }
+}

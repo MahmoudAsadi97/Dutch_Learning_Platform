@@ -1,3 +1,4 @@
+@layer legacy {
 /* --- video lessons: library ------------------------------------------------------------------------------ */
 .video-library { max-width: 1040px; }
 .video-request form { display: grid; gap: 10px; margin-top: 12px; }
@@ -50,4 +51,5 @@
   .scene-jump { min-height: 44px; justify-self: start; padding: 8px 14px; }
   .scene-text .story-copy { font-size: 17px; }
   .video-stage { border-radius: 14px; }
+}
 }

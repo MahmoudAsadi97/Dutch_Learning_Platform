@@ -1,0 +1,12 @@
+/*
+ * Cascade order for the whole app. Imported first in app/layout.tsx so that the order below, not the import
+ * order of the stylesheets, decides which rule wins:
+ *   reset      reduced-motion and print behaviour
+ *   tokens     design tokens (colour, type, space, motion); no rules on elements
+ *   base       element defaults, focus ring, type scale
+ *   components shared primitives (components/ui), one global class each
+ *   legacy     the pre-October-2026 stylesheets, wrapped unchanged; shrinks as screens move to primitives
+ *   features   screen-private layout of new features
+ *   utilities  single-purpose helpers
+ */
+@layer reset, tokens, base, components, legacy, features, utilities;

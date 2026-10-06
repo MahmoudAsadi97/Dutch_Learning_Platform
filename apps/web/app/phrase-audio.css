@@ -1,3 +1,4 @@
+@layer legacy {
 .phrase-audio { display: inline-flex; align-items: center; gap: .4rem; max-width: 100%; vertical-align: middle; flex-wrap: wrap; }
 .phrase-audio-button { display: inline-flex; width: 2.4rem; height: 2.4rem; min-width: 2.4rem; align-items: center; justify-content: center; padding: .45rem; border: 1px solid #cbd8e7; border-radius: 50%; background: #f3f7fc; color: #244d79; cursor: pointer; vertical-align: middle; }
 .phrase-audio-button:hover:not(:disabled) { background: #e6eef9; border-color: #6b8db5; }
@@ -34,3 +35,4 @@
 .alphabet-pair-grid strong { font-size: 1.3rem; color: #29517e; min-width: 2.2rem; }
 .alphabet-pair-grid .learning-copy { flex: 1; }
 @media (max-width: 480px) { .alphabet-focus { gap: .8rem; padding: 1rem; align-items: flex-start; } .alphabet-glyph { font-size: 3.1rem; } .phrase-audio-button { width: 2.75rem; height: 2.75rem; min-width: 2.75rem; } }
+}

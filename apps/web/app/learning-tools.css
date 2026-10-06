@@ -1,3 +1,4 @@
+@layer legacy {
 .recall-tool { border: 1px solid #b9cce8; border-radius: 14px; background: #f0f5fc; padding: clamp(20px, 3vw, 28px); margin-block: 24px; }
 .recall-tool .section-heading { align-items: start; gap: 12px; }
 .recall-tool h3 { margin: 7px 0 0; }
@@ -17,3 +18,4 @@
 .communication-phrases li { background: #f5f7fb; border-left: 3px solid #9cb9e5; padding: 13px 17px; }
 .communication-coach h4 { margin-top: 26px; }
 @media (max-width: 480px) { .recall-actions { flex-direction: column; align-items: stretch; } .recall-tool .section-heading { flex-direction: column; } }
+}

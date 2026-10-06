@@ -1,15 +1,5 @@
+@layer legacy {
 /* Learning workspace: restrained colour, generous reading measure and a clear next action. */
-:root {
-  --bg: #f5f6f8;
-  --surface: #ffffff;
-  --ink: #182c47;
-  --muted: #58667a;
-  --line: #dfe5ed;
-  --accent: #2455b5;
-  --ok-bg: #eaf4ef;
-  --ok-ink: #216045;
-  --radius: 16px;
-}
 body { font-size: 15px; letter-spacing: -.01em; }
 .app-sidebar { width: 224px; padding: 30px 18px 22px; }
 .app-workspace { margin-left: 224px; }
@@ -312,3 +302,4 @@ h2 { font-size: 23px; }
 .language-control select { font-size: 12px; }
 .curriculum-question:disabled label { cursor: default; }
 .unit-sidebar nav button:disabled, .test-tabs button:disabled { cursor: not-allowed; }
+}
