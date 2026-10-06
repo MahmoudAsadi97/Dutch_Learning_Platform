@@ -52,8 +52,6 @@ export interface SkillInfo {
   description: string;
   /** Name in components/Icon.tsx. */
   icon: "book" | "headphones" | "mic" | "pen";
-  /** Legacy colour class on `.icon-tile` until the token-driven accents land (roadmap P1). */
-  tone: "sage" | "sand" | "lilac" | "peach";
 }
 
 export const skills: Record<Skill, SkillInfo> = {
@@ -62,28 +60,24 @@ export const skills: Record<Skill, SkillInfo> = {
     label: { nl: "Lezen", en: "Reading", fa: "خواندن" },
     description: "Begrijp wat er staat.",
     icon: "book",
-    tone: "sage",
   },
   listening: {
     key: "listening",
     label: { nl: "Luisteren", en: "Listening", fa: "شنیدن" },
     description: "Hoor wat ertoe doet.",
     icon: "headphones",
-    tone: "sand",
   },
   speaking: {
     key: "speaking",
     label: { nl: "Spreken", en: "Speaking", fa: "گفتن" },
     description: "Vind de juiste woorden.",
     icon: "mic",
-    tone: "lilac",
   },
   writing: {
     key: "writing",
     label: { nl: "Schrijven", en: "Writing", fa: "نوشتن" },
     description: "Maak je boodschap duidelijk.",
     icon: "pen",
-    tone: "peach",
   },
 };
 

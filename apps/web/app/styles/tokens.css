@@ -221,44 +221,65 @@
     --accent-border: var(--blue-200);
     --accent-vivid: var(--blue-500);
 
-    /* --- compatibility aliases: today's effective values, consumed by the legacy layer ------------ */
-    --bg: #f5f6f8;
-    --surface: #ffffff;
-    --ink: #182c47;
-    --muted: #58667a;
-    --line: #dfe5ed;
-    --accent: #2455b5;
-    --accent-ink-legacy: #fff;
-    --radius: 16px;
-    --ok-bg: #eaf4ef;
-    --ok-ink: #216045;
-    --warn-bg: #faf1d9;
-    --warn-ink: #735218;
-    --bad-bg: #fbe6e3;
-    --bad-ink: #8a2a1c;
-    --font-latin: "DM Sans Variable", "Segoe UI", system-ui, sans-serif;
-    --font-persian: "Vazirmatn Variable", Tahoma, sans-serif;
-    --warm: #d9672b;
-    --warm-ink: #8a3a0f;
-    --warm-bg: #fdf1e8;
-    --tone-1-a: #f6b26b;
-    --tone-1-b: #d9672b;
-    --tone-2-a: #a7d7b8;
-    --tone-2-b: #2f7a5a;
-    --tone-3-a: #a9cbf2;
-    --tone-3-b: #2455b5;
-    --tone-4-a: #d8b4e8;
-    --tone-4-b: #6b3fa0;
-    --tone-5-a: #ead7a6;
-    --tone-5-b: #a7762e;
-    --tone-6-a: #f3b4c4;
-    --tone-6-b: #b03b5e;
-  }
+    /* --- media, overlays, glass, flag ---------------------------------------------------------- */
+    --surface-media: #0f1b2b;
+    --surface-black: #000000;
+    --glass-strong: rgb(255 255 255 / 0.95);
+    --glass-soft: rgb(255 255 255 / 0.65);
+    --overlay-light: rgb(255 255 255 / 0.2);
+    --overlay-dark-faint: rgb(0 0 0 / 0.06);
+    --overlay-dark-soft: rgb(0 0 0 / 0.15);
+    --overlay-dark: rgb(0 0 0 / 0.35);
+    --overlay-dark-strong: rgb(11 20 32 / 0.8);
+    --flag-black: #232626;
+    --flag-yellow: #f1d379;
+    --flag-red: #c46961;
 
-  /* The legacy stylesheets use --accent-ink for "text on the accent", which the new semantic set calls
-   * --text-on-solid. The alias keeps that meaning inside the legacy layer. */
-  :root {
-    --accent-ink: #fff;
+    /* --- episode and video covers: six pairs, light to deep ------------------------------------- */
+    --cover-1-a: var(--orange-200);
+    --cover-1-b: var(--orange-500);
+    --cover-2-a: var(--green-200);
+    --cover-2-b: var(--green-500);
+    --cover-3-a: var(--blue-200);
+    --cover-3-b: var(--blue-600);
+    --cover-4-a: var(--violet-200);
+    --cover-4-b: var(--violet-500);
+    --cover-5-a: var(--amber-200);
+    --cover-5-b: var(--amber-500);
+    --cover-6-a: var(--rose-200);
+    --cover-6-b: var(--rose-500);
+
+    /* --- compatibility aliases: the names the legacy layer still uses, now pointing at tokens ----- */
+    --bg: var(--surface-canvas);
+    --surface: var(--surface-raised);
+    --ink: var(--text);
+    --muted: var(--text-muted);
+    --line: var(--border);
+    --accent: var(--action-solid);
+    --radius: var(--radius-lg);
+    --ok-bg: var(--success-bg);
+    --ok-ink: var(--success-ink);
+    --warn-bg: var(--warning-bg);
+    --warn-ink: var(--warning-ink);
+    --bad-bg: var(--danger-bg);
+    --bad-ink: var(--danger-ink);
+    --font-latin: var(--font-sans);
+    --font-persian: var(--font-persian-ui);
+    --warm: var(--orange-500);
+    --warm-ink: var(--orange-700);
+    --warm-bg: var(--orange-50);
+    --tone-1-a: var(--cover-1-a);
+    --tone-1-b: var(--cover-1-b);
+    --tone-2-a: var(--cover-2-a);
+    --tone-2-b: var(--cover-2-b);
+    --tone-3-a: var(--cover-3-a);
+    --tone-3-b: var(--cover-3-b);
+    --tone-4-a: var(--cover-4-a);
+    --tone-4-b: var(--cover-4-b);
+    --tone-5-a: var(--cover-5-a);
+    --tone-5-b: var(--cover-5-b);
+    --tone-6-a: var(--cover-6-a);
+    --tone-6-b: var(--cover-6-b);
   }
 
   /* --- accent roles per section and skill; applied with data-accent on a container ---------------- */

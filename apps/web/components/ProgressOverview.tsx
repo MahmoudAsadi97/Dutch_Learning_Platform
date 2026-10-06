@@ -49,14 +49,14 @@ export function ProgressOverview({ nested = false }: { nested?: boolean }) {
             </select>
           </label>
           <div className="progress-grid">
-            {skills.map(({ key, label, icon, color, description }) => {
+            {skills.map(({ key, label, icon, accent, description }) => {
               const record = data.skill_records.find(
                 (item) => item.skill === key && item.mission_id === missionId,
               );
               return (
                 <section className="progress-card" key={key} aria-label={label}>
                   <div className="section-heading">
-                    <span className={`icon-tile ${color}`}>
+                    <span className="icon-tile" data-accent={accent}>
                       <Icon name={icon} size={25} />
                     </span>
                     <span className={`label ${record?.status === "practised" ? "ok" : "neutral"}`}>
@@ -95,7 +95,7 @@ export function ProgressOverview({ nested = false }: { nested?: boolean }) {
               <ul className="activity-list">
                 {data.sessions.map((session) => (
                   <li key={session.id}>
-                    <span className="icon-tile small sage">
+                    <span className="icon-tile small" data-accent="progress">
                       <Icon name={session.variant === "transfer" ? "shield" : "calendar"} size={18} />
                     </span>
                     <div>

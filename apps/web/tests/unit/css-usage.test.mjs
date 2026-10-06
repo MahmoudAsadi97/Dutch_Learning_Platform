@@ -11,15 +11,7 @@ import { test } from "node:test";
 
 const web = path.resolve(import.meta.dirname, "..", "..");
 
-const DYNAMIC = [
-  /^tone-\d+$/,
-  /^grade-/,
-  /^status-/,
-  /^kind-/,
-  /^is-/,
-  /^cover-/,
-  /^(sage|sand|lilac|peach)$/,
-];
+const DYNAMIC = [/^tone-\d+$/, /^grade-/, /^status-/, /^kind-/, /^is-/, /^cover-/];
 
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {

@@ -56,7 +56,7 @@ body {
   appearance: none;
   border: 1px solid var(--accent);
   background: var(--accent);
-  color: var(--accent-ink);
+  color: var(--text-on-solid);
   border-radius: var(--radius);
   padding: 0.6rem 1rem;
   font: inherit;
@@ -79,8 +79,8 @@ body {
   user-select: none;
 }
 .button.talk[aria-pressed="true"] {
-  background: #b3261e;
-  border-color: #b3261e;
+  background: var(--danger-solid);
+  border-color: var(--danger-solid);
 }
 
 .label {
@@ -118,7 +118,7 @@ body {
 .dutch-text {
   white-space: pre-wrap;
   font-size: 1.1rem;
-  background: #fbfaf6;
+  background: var(--surface-canvas);
   border-left: 4px solid var(--accent);
   padding: 0.75rem 1rem;
   border-radius: 4px;
@@ -177,7 +177,7 @@ body {
 }
 .help-ladder .rung {
   padding: 0.5rem 0.75rem;
-  background: #fbfaf6;
+  background: var(--surface-canvas);
   border-radius: 6px;
 }
 
@@ -223,7 +223,7 @@ table.plain td {
   padding: 0.5rem;
   max-height: 24rem;
   overflow-y: auto;
-  background: #fbfaf6;
+  background: var(--surface-canvas);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   display: flex;

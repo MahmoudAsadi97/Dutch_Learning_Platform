@@ -41,7 +41,8 @@ back. Language-model feedback remains provisional and source content awaits qual
 ## Design choices
 
 - One visible next step, separate four-skill progress, and a clear prerequisite explanation.
-- A restrained navy/blue palette; high-contrast text; generous reading width; fewer technical labels.
+- One colour system (D-24): brand blue for actions, one hue per skill and section, green and red
+  only for feedback; high-contrast text; generous reading width; fewer technical labels.
 - Support tools live inside the relevant practice section rather than adding more main navigation.
 - A single native audio player prevents overlapping playback and exposes pause/replay controls.
 - Recording and submission protect navigation; drafts and submitted payloads support recovery.

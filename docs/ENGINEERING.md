@@ -29,7 +29,9 @@ code is the reference, this explains why it is shaped the way it is.
   set per section or skill selected by `data-accent` on a container, and compatibility aliases for the
   legacy layer), `reset.css` holds the reduced-motion and print rules, `base.css` the element defaults, type scale,
   focus ring, skip link and `.visually-hidden`, and the ten pre-existing
-  stylesheets are wrapped in `@layer legacy` and shrink as screens move onto the primitives.
+  stylesheets are wrapped in `@layer legacy` and shrink as screens move onto the primitives. No stylesheet
+  outside `tokens.css` holds a colour literal; `lib/design/identity.ts` maps skills and sections to the
+  accent a container sets with `data-accent` (D-24).
   Fonts are self-hosted. Dashboard/progress read persisted evidence only; technical diagnostics live
   in Settings. A shared navigation guard waits for writing autosave before app-link navigation.
 - The web layout is dynamically rendered so runtime environment labels and per-response CSP nonces

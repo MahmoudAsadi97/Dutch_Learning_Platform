@@ -41,7 +41,7 @@ export function AccountSettings() {
       <section className="card">
         <div className="section-heading">
           <h2>Mijn leerprofiel</h2>
-          <span className="icon-tile small sage">
+          <span className="icon-tile small" data-accent="progress">
             <Icon name="user" size={20} />
           </span>
         </div>
@@ -84,7 +84,7 @@ export function AccountSettings() {
       <section className="card">
         <div className="section-heading">
           <h2>Jouw gegevens</h2>
-          <span className="icon-tile small sand">
+          <span className="icon-tile small" data-accent="neutral">
             <Icon name="shield" size={20} />
           </span>
         </div>

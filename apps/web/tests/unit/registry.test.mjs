@@ -23,7 +23,7 @@ test("twelve stages in course order with display labels", () => {
   assert.ok(isStageId("a1") && !isStageId("a3"));
 });
 
-test("four skills with trilingual labels, an icon and a tone", () => {
+test("four skills with trilingual labels, an icon and a description", () => {
   assert.deepEqual([...SKILLS], ["reading", "listening", "speaking", "writing"]);
   assert.deepEqual(skillOrder, [...SKILLS]);
   for (const key of SKILLS) {
@@ -31,7 +31,7 @@ test("four skills with trilingual labels, an icon and a tone", () => {
     assert.equal(info.key, key);
     for (const language of ["nl", "en", "fa"])
       assert.ok(info.label[language].length > 0, `${key} ${language}`);
-    assert.ok(info.icon && info.tone && info.description);
+    assert.ok(info.icon && info.description);
   }
   assert.deepEqual(skillNames, {
     reading: "Lezen",

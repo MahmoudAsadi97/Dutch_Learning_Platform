@@ -21,8 +21,16 @@ import { friendlyError, skillNames, stageLabel, type CurriculumStage } from "@/l
 import { useNavigationGuard } from "@/lib/client/navigation";
 import type { Skill } from "@/lib/types";
 import { storageKeys } from "@/lib/client/storage";
+import { skillAccent, type Accent } from "@/lib/design/identity";
 
 type Section = "words" | "grammar" | "stories" | "alphabet" | Skill;
+const sectionAccents: Record<Section, Accent> = {
+  words: "words",
+  grammar: "path",
+  stories: "stories",
+  alphabet: "words",
+  ...skillAccent,
+};
 const sections: { id: Section; label: string; icon: IconName }[] = [
   { id: "words", label: "Woorden", icon: "book" },
   { id: "grammar", label: "Grammatica", icon: "pen" },
@@ -204,7 +212,7 @@ export function CurriculumLesson({
             )}
           </div>
         </aside>
-        <div className="unit-content" key={section}>
+        <div className="unit-content" key={section} data-accent={sectionAccents[section]}>
           <div className="unit-section-title">
             <p className="eyebrow">
               {stageLabel(stageId)} · {lessonSections.find((item) => item.id === section)?.label}
