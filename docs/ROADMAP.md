@@ -309,3 +309,5 @@ changed. Phase acceptance checks are listed with each phase in the approved plan
 | 0.5 | done | `register_all()`, dead-lettered unknown kinds, lease sweep, bounded read-aloud upload, complete export, model lifecycle check (release + preflight), D-23 read-aloud points |
 | 0.6 | done | `DomainError` base with stable `code`, one set of handlers, `code` in every error body; status codes unchanged |
 | 0.7 | done | `lib/domain/registry.ts` (stages, skills), `lib/client/storage.ts` (keys + sign-out sweep), proxy forwards aborts and bounds time-to-headers (504 `upstream_timeout`), `x-proxy-error` marks proxy-made answers |
+| 0.8 | done | TanStack Query provider, typed keys, `useUsage` and `useCurriculumCatalog`; UsagePanel and CurriculumProgress read through the cache |
+| 0.9 | done | `test_practice_contracts.py`, `test_content_exercise_pool.py` (recorded per-stage facts incl. frame collisions at A2–B1); `_persist_topic_result`, `_persist_core_practice` extracted |

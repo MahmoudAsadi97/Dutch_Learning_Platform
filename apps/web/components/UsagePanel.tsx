@@ -1,23 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-import { ApiError, apiJson } from "@/lib/client/api";
-
-interface Counter {
-  used: number;
-  reserved: number;
-  limit: number;
-  remaining: number;
-}
-
-interface Usage {
-  period: string;
-  counters: Record<string, { daily: Counter; total: Counter }>;
-  pricing_table_entries: number;
-  estimated_cost: { currency?: string; amount?: number } | null;
-  note: string;
-}
+import { ApiError } from "@/lib/client/api";
+import { useUsage } from "@/lib/client/queries/usage";
 
 const METRIC_LABEL: Record<string, string> = {
   model_calls: "modeloproepen",
@@ -32,16 +16,8 @@ function format(value: number): string {
 
 /** Budget counters of the signed-in learner: what today's and the total budget allow and what is used. */
 export function UsagePanel() {
-  const [usage, setUsage] = useState<Usage | null>(null);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    apiJson<Usage>("usage")
-      .then(setUsage)
-      .catch((cause: unknown) =>
-        setError(cause instanceof ApiError ? cause.detail : "De API is niet bereikbaar."),
-      );
-  }, []);
+  const { data: usage, error: cause } = useUsage();
+  const error = cause ? (cause instanceof ApiError ? cause.detail : "De API is niet bereikbaar.") : "";
 
   if (error) {
     return (

@@ -117,6 +117,15 @@ one JSON body, `{"detail", "code", "request_id"}` plus any parameters, so the we
 failure no route handled becomes 503 instead of 500. Routes that must commit work before answering
 (usage rows, a failed turn) still return a `JSONResponse` themselves and include the same `code`.
 
+### Server state in the browser
+
+Data from the API is read through TanStack Query hooks (`lib/client/queries/*`, keys in
+`lib/client/query-keys.ts`, client settings in `lib/client/query-client.ts`): the cache is the single copy,
+sibling components share one request, a mutation invalidates the keys it changed, and server data is never
+mirrored into `useState`. The query functions call the existing `apiJson`/typed client objects, so request
+ids and the connectivity event are unchanged. Older components still fetch in effects; they move over as
+they are touched.
+
 ## 4. Provider abstraction
 
 | Interface | Local (Phase A) | Fixture (CI) | Azure (Phase B) |

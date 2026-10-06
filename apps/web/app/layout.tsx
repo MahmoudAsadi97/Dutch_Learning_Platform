@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { LanguageProvider } from "@/components/LanguageSupport";
 import { AppShell } from "@/components/AppShell";
+import { Providers } from "./providers";
 
 import "@fontsource-variable/dm-sans";
 import "@fontsource-variable/vazirmatn";
@@ -43,9 +44,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a className="skip-link" href="#main">
           Naar de inhoud
         </a>
-        <LanguageProvider>
-          <AppShell environment={process.env.APP_ENV ?? "development"}>{children}</AppShell>
-        </LanguageProvider>
+        <Providers>
+          <LanguageProvider>
+            <AppShell environment={process.env.APP_ENV ?? "development"}>{children}</AppShell>
+          </LanguageProvider>
+        </Providers>
       </body>
     </html>
   );

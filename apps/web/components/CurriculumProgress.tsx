@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { LearningText } from "@/components/LanguageSupport";
-import { apiJson } from "@/lib/client/api";
+import { useCurriculumCatalog } from "@/lib/client/queries/curriculum";
 import {
   skillNames,
   skillOrder,
@@ -20,21 +19,8 @@ type ProgressStage = StageSummary & {
 type PathProgress = Omit<CurriculumCatalog, "stages"> & { stages: ProgressStage[] };
 
 export function CurriculumProgress() {
-  const [data, setData] = useState<PathProgress | null>(null);
-  const [error, setError] = useState(false);
-  const [retry, setRetry] = useState(0);
-  useEffect(() => {
-    const controller = new AbortController();
-    apiJson<PathProgress>("curriculum", { signal: controller.signal })
-      .then((value) => {
-        setData(value);
-        setError(false);
-      })
-      .catch(() => {
-        if (!controller.signal.aborted) setError(true);
-      });
-    return () => controller.abort();
-  }, [retry]);
+  const { data, error: failure, refetch } = useCurriculumCatalog<PathProgress>();
+  const error = Boolean(failure);
   return (
     <section className="course-progress" aria-labelledby="course-progress-title">
       <header className="page-heading">
@@ -58,7 +44,7 @@ export function CurriculumProgress() {
       {error ? (
         <p role="alert">
           Je voortgang kon niet worden geladen.{" "}
-          <button className="linklike" onClick={() => setRetry((value) => value + 1)}>
+          <button className="linklike" onClick={() => void refetch()}>
             Opnieuw proberen
           </button>
         </p>
