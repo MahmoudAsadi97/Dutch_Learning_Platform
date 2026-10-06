@@ -69,6 +69,11 @@ jobs:
           TEST_DATABASE_URL: postgresql+psycopg://dlp:dlp@localhost:5432/dlp_test
           REQUIRE_TEST_DATABASE: "true"
         run: pytest -q
+      - name: Check that the ORM models and the migrations agree
+        working-directory: apps/api
+        env:
+          ALEMBIC_DATABASE_URL: postgresql+psycopg://dlp:dlp@localhost:5432/dlp_test
+        run: alembic upgrade head && alembic check
       - name: Benchmark plumbing dry runs
         run: |
           python benchmarks/language/harness.py --provider expected | tee expected.txt

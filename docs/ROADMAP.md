@@ -301,4 +301,8 @@ changed. Phase acceptance checks are listed with each phase in the approved plan
 
 | Step | State | Notes |
 |---|---|---|
+| 0.0 | done | `docs/plan/CHECKS.md`; the Windows-only UTF-8 test failure fixed on the way |
 | 0.1 | done | `docs/plan/*.json`, `CODE_REVIEW.md`, this file |
+| 0.2 | done | Format commit + tooling commit; 96 e2e, 27 unit, 1 component test green |
+| 0.3 | done | 24 baselines rendered in the Playwright container (`run.py e2e-visual`), deterministic on re-run; CSS ratchet; shared story fixtures |
+| 0.4 | done | Ratchets: 61 untyped operations frozen, import-boundary allowlists exact, `alembic check` in CI |
