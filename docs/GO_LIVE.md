@@ -314,3 +314,12 @@ Live acceptance after deployment:
 
 Native Belgian Dutch review, advanced task calibration and live speech/model behavior remain separate
 acceptance evidence. A successful CI run or container health probe does not establish these results.
+
+## 9. Model retirement
+
+Deployments are pinned (`NoAutoUpgrade`), so a retired model version stops serving without any change
+on our side. `scripts/azure_release.py deploy` now runs `scripts/check_model_lifecycle.py` against every
+OpenAI account in the resource group before touching the apps: a deployment whose model is retired (or
+whose retirement date has passed) stops the release; one that retires within 90 days or is marked
+deprecating prints a warning. Copy the retirement date into `AZURE_CHAT_RETIRES_ON` so that
+`python -m dlp.cli preflight` and the settings page report it without a network call.

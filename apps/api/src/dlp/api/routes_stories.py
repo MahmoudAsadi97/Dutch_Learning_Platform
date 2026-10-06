@@ -177,7 +177,8 @@ def episode_read_aloud(episode_id: str, paragraph_index: int = Form(ge=0, le=7),
         if paragraph_index >= len(episode.paragraphs):
             raise CurriculumError("paragraph not found", 404)
         outcome = transcribe_upload(session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id,
-                                    upload_bytes=audio.file.read(), upload_filename=audio.filename or "recording",
+                                    upload_bytes=audio.file.read(settings.max_upload_bytes + 1),
+                                    upload_filename=audio.filename or "recording",
                                     stt=providers.stt, blob=providers.blob, keep_recording=False)
         result = service.read_aloud_result(episode, paragraph_index=paragraph_index, transcript=outcome.transcript.text)
         return service.record_read_aloud(session, ctx.learner, episode, result)

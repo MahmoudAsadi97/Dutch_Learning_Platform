@@ -6,7 +6,8 @@ Flow
 2. The `story_episode` job calls the writer with the series memory, the learner's saved words and the stage
    vocabulary, validates the draft deterministically, retries once with the validator's feedback, and stores
    the episode as `ready` (or `failed`, with a reason the learner can act on).
-3. Reading, answering, choosing and rating are ordinary code paths that award points for the day.
+3. Reading, answering, choosing and reading aloud are ordinary code paths that award points for the day;
+   rating, translating and saving words award none.
 """
 from __future__ import annotations
 
@@ -509,17 +510,21 @@ def read_aloud_result(episode: StoryEpisode, *, paragraph_index: int, transcript
 
 
 def record_read_aloud(session: Session, learner: Learner, episode: StoryEpisode, result: dict) -> dict:
+    """Points reward the attempt (D-23): the first attempt per paragraph in which any word was recognised earns
+    them, whichever attempt that is. The recognised-word count is shown, never a score."""
     state = dict(episode.answers or {})
     aloud = dict(state.get("read_aloud", {}))
     key = str(result["paragraph_index"])
     previous = aloud.get(key, {})
-    share = result["matched_words"] / max(result["target_words"], 1)
+    awarded = bool(previous.get("awarded", False))
     points = 0
-    if not previous and share >= 0.5:
+    if not awarded and result["matched_words"] > 0:
         points = POINTS["read_aloud"]
+        awarded = True
         today.add_points(session, learner.id, points=points, read_aloud=1)
     aloud[key] = {"matched_words": max(result["matched_words"], previous.get("matched_words", 0)),
-                  "target_words": result["target_words"], "attempts": previous.get("attempts", 0) + 1}
+                  "target_words": result["target_words"], "attempts": previous.get("attempts", 0) + 1,
+                  "awarded": awarded}
     state["read_aloud"] = aloud
     episode.answers = state
     return {**result, "points": points}

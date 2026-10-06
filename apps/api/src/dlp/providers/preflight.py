@@ -5,6 +5,7 @@ from __future__ import annotations
 import shutil
 import socket
 from dataclasses import asdict, dataclass
+from datetime import UTC, date, datetime
 from urllib.parse import urlparse
 
 import httpx
@@ -19,7 +20,7 @@ from dlp.providers.registry import build_providers
 class PreflightItem:
     component: str
     mode: str  # local | azure | fixture | none
-    status: str  # ok | missing | unreachable | not_configured | integration_pending
+    status: str  # ok | missing | unreachable | not_configured | integration_pending | warning | retired
     detail: str
 
 
@@ -65,6 +66,31 @@ def _azure_item(component: str, configured: bool, detail: str) -> PreflightItem:
     if last_used:
         return PreflightItem(component, "azure", "ok", f"{detail}; last live use {last_used}")
     return PreflightItem(component, "azure", "integration_pending", f"{detail}; no live use recorded yet")
+
+
+RETIREMENT_WARNING_DAYS = 90
+
+
+def _retirement_item(retires_on: str, today: date | None = None) -> PreflightItem:
+    """The pinned Azure model version stops serving on its retirement date; say so well before.
+
+    Statuses: ok (more than 90 days left), warning (90 days or fewer), retired (date passed),
+    not_configured (AZURE_CHAT_RETIRES_ON unset: run scripts/check_model_lifecycle.py and set it)."""
+    if not retires_on:
+        return PreflightItem("chat model retirement", "azure", "not_configured",
+                             "AZURE_CHAT_RETIRES_ON unset; run scripts/check_model_lifecycle.py")
+    try:
+        when = date.fromisoformat(retires_on)
+    except ValueError:
+        return PreflightItem("chat model retirement", "azure", "warning", f"AZURE_CHAT_RETIRES_ON={retires_on!r} is not a date")
+    today = today or datetime.now(UTC).date()
+    left = (when - today).days
+    if left < 0:
+        return PreflightItem("chat model retirement", "azure", "retired",
+                             f"retired on {when.isoformat()}; deploy a current model")
+    if left <= RETIREMENT_WARNING_DAYS:
+        return PreflightItem("chat model retirement", "azure", "warning", f"retires on {when.isoformat()} ({left} days)")
+    return PreflightItem("chat model retirement", "azure", "ok", f"retires on {when.isoformat()} ({left} days)")
 
 
 def run_preflight(settings: Settings | None = None, *, check_network: bool = True) -> list[PreflightItem]:
@@ -115,6 +141,7 @@ def run_preflight(settings: Settings | None = None, *, check_network: bool = Tru
         configured = bool(settings.azure_chat_endpoint and settings.azure_chat_deployment_small)
         items.append(_azure_item("chat model", configured,
                                  "endpoint and deployments configured" if configured else "AZURE_CHAT_* incomplete"))
+        items.append(_retirement_item(settings.azure_chat_retires_on))
     else:
         items.append(PreflightItem("chat model", "fixture", "ok", "canned replies; not a verification"))
 

@@ -15,7 +15,7 @@ from typing import Any
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-from dlp.config import Settings
+from dlp.config import Settings, get_settings
 from dlp.db.session import session_scope
 from dlp.domains.jobs.models import Job
 
@@ -75,14 +75,31 @@ def enqueue(session: Session, kind: str, payload: dict[str, Any], *, idempotency
         return job
     job = Job(kind=kind, payload=payload, idempotency_key=idempotency_key,
               run_after=run_after or datetime.now(UTC),
-              max_attempts=max_attempts if max_attempts is not None else 5)
+              max_attempts=max_attempts if max_attempts is not None else get_settings().job_max_attempts)
     session.add(job)
     session.flush()
     return job
 
 
+def sweep_expired(session: Session) -> int:
+    """A job whose lease expired on its last allowed attempt is dead; it must not run once more."""
+    now = datetime.now(UTC)
+    result = session.execute(
+        text(
+            """
+            UPDATE jobs
+               SET status = 'dead', finished_at = :now, updated_at = :now, lease_owner = '', lease_expires_at = NULL,
+                   last_error = coalesce(last_error, '') || :note
+             WHERE status = 'leased' AND lease_expires_at < :now AND attempts >= max_attempts
+            """
+        ),
+        {"now": now, "note": "\nlease expired on the last allowed attempt"},
+    )
+    return result.rowcount or 0
+
+
 def claim_next(session: Session, worker_id: str, lease_seconds: int) -> Job | None:
-    """Claim one runnable job (queued and due, or leased but expired) with SKIP LOCKED."""
+    """Claim one runnable job (queued and due, or leased but expired with attempts left) with SKIP LOCKED."""
     now = datetime.now(UTC)
     row = session.execute(
         text(
@@ -93,7 +110,7 @@ def claim_next(session: Session, worker_id: str, lease_seconds: int) -> Job | No
              WHERE id = (
                    SELECT id FROM jobs
                     WHERE (status = 'queued' AND run_after <= :now)
-                       OR (status = 'leased' AND lease_expires_at < :now)
+                       OR (status = 'leased' AND lease_expires_at < :now AND attempts < max_attempts)
                     ORDER BY run_after
                     FOR UPDATE SKIP LOCKED
                     LIMIT 1)
@@ -115,9 +132,19 @@ def backoff_delay(attempt: int, base: float = 2.0, cap: float = 300.0) -> float:
 
 
 def run_job(session: Session, job: Job, settings: Settings) -> None:
-    handler = registry.get(job.kind)
     payload = dict(job.payload)
     payload["_attempt"] = job.attempts
+    try:
+        handler = registry.get(job.kind)
+    except KeyError as exc:
+        # A kind nobody handles will never succeed on retry: dead-letter it so the queue keeps moving.
+        job.last_error = f"{exc.__class__.__name__}: {exc}"
+        job.status = "dead"
+        job.finished_at = datetime.now(UTC)
+        job.lease_owner = ""
+        job.lease_expires_at = None
+        log.warning("job %s has unknown kind %r; marked dead", job.id, job.kind)
+        return
     try:
         result = handler(session, payload)
     except Exception as exc:  # noqa: BLE001 - every failure is recorded on the job row
@@ -143,6 +170,7 @@ def run_job(session: Session, job: Job, settings: Settings) -> None:
 def process_one(settings: Settings, worker_id: str) -> bool:
     """Claim and run one job in its own transaction. Returns True when a job was processed."""
     with session_scope() as session:
+        sweep_expired(session)
         job = claim_next(session, worker_id, settings.job_lease_seconds)
         if job is None:
             return False

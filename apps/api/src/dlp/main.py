@@ -32,6 +32,7 @@ from dlp.api import (
     routes_videos,
 )
 from dlp.config import Settings, get_settings
+from dlp.domains.jobs.handlers import register_all
 from dlp.domains.jobs.service import JobLoop
 from dlp.observability import configure_telemetry, finish_request, request_span
 from dlp.providers.preflight import format_table, run_preflight
@@ -57,6 +58,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     log.info("preflight\n%s", format_table(items))
     loop: JobLoop | None = None
     if settings.job_loop_enabled and settings.app_env != "test":
+        log.info("job handlers: %s", ", ".join(register_all()))
         loop = JobLoop(settings)
         loop.start()
     app.state.job_loop = loop

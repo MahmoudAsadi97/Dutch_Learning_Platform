@@ -306,3 +306,4 @@ changed. Phase acceptance checks are listed with each phase in the approved plan
 | 0.2 | done | Format commit + tooling commit; 96 e2e, 27 unit, 1 component test green |
 | 0.3 | done | 24 baselines rendered in the Playwright container (`run.py e2e-visual`), deterministic on re-run; CSS ratchet; shared story fixtures |
 | 0.4 | done | Ratchets: 61 untyped operations frozen, import-boundary allowlists exact, `alembic check` in CI |
+| 0.5 | done | `register_all()`, dead-lettered unknown kinds, lease sweep, bounded read-aloud upload, complete export, model lifecycle check (release + preflight), D-23 read-aloud points |

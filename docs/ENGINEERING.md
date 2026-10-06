@@ -12,7 +12,8 @@ activity links. Optional model ordering cannot alter their IDs or code-authored 
 `domains/content_review` runs explicit admin batches through the existing job loop. A durable claim,
 version/model cache and one provider attempt per generation prevent automatic paid replay. Findings
 reference exact authored text locations and never publish or mark content approved. Its API routes
-register the worker; the standalone job CLI imports the same handler. Migration 0005 adds four tables
+register the worker; `domains/jobs/handlers.py::register_all()` imports every handler module for the API's
+job loop and for the standalone job CLI alike. Migration 0005 adds four tables
 with learner-deletion cascades; self-export includes observations, conversations, plans and owned reviews.
 All three roles use `complete_once`; legacy `complete` retry semantics remain unchanged.
 See [LEARNING_AGENTS](LEARNING_AGENTS.md) for operational boundaries and targeted checks.

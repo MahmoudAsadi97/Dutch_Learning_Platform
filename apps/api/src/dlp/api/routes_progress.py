@@ -17,9 +17,14 @@ from dlp.domains.feedback.service import report_view, reports_for
 from dlp.domains.practice.service import list_sessions
 from dlp.domains.practice.turns import evidence_view, turn_view
 from dlp.domains.progress.service import skill_records_for
+from dlp.domains.stories import service as stories_service
+from dlp.domains.stories import vocab
+from dlp.domains.stories.models import LearningDay
 from dlp.domains.topic_conversations.models import TopicConversation
 from dlp.domains.topic_conversations.service import view as conversation_view
 from dlp.domains.usage.service import snapshot
+from dlp.domains.videos import service as videos_service
+from dlp.domains.videos.models import VideoLesson
 
 router = APIRouter(tags=["progress"])
 
@@ -104,6 +109,20 @@ def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depe
             {"stage_id": row.stage_id, "topic_id": row.topic_id, "status": row.status,
              "suggestions": row.result, "created_at": row.created_at.isoformat(), "updated_at": row.updated_at.isoformat()}
             for row in session.scalars(select(ContentReview).where(ContentReview.requester_id == ctx.learner.id))
+        ],
+        "stories": stories_service.export(session, ctx.learner.id),
+        "words": vocab.all_items(session, ctx.learner)["items"],
+        "learning_days": [
+            {"day": row.day.isoformat(), "points": row.points, "episodes_read": row.episodes_read,
+             "words_reviewed": row.words_reviewed, "questions_correct": row.questions_correct,
+             "read_aloud": row.read_aloud, "videos_watched": row.videos_watched, "goal_met": row.goal_met}
+            for row in session.scalars(select(LearningDay).where(LearningDay.learner_id == ctx.learner.id)
+                                       .order_by(LearningDay.day))
+        ],
+        "videos": [
+            videos_service.video_view(row)
+            for row in session.scalars(select(VideoLesson).where(VideoLesson.learner_id == ctx.learner.id)
+                                       .order_by(VideoLesson.created_at))
         ],
         "usage": snapshot(session, settings, ctx.learner.id),
         "request_id": ctx.request_id,

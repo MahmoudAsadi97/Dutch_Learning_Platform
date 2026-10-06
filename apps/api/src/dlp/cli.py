@@ -165,10 +165,10 @@ def cmd_write_episode(args: argparse.Namespace) -> int:
 
 
 def cmd_run_jobs(args: argparse.Namespace) -> int:
-    from dlp.domains.content_review import service as content_review_service  # noqa: F401
+    from dlp.domains.jobs.handlers import register_all
     from dlp.domains.jobs.service import drain
-    from dlp.domains.stories import service as story_service  # noqa: F401
 
+    print("handlers:", ", ".join(register_all()))
     processed = drain(get_settings(), worker_id="cli", limit=args.limit)
     print(f"processed {processed} job(s)")
     return 0

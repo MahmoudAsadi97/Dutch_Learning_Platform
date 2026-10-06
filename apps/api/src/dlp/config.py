@@ -78,6 +78,9 @@ class Settings(BaseSettings):
     azure_chat_token_scope: str = "https://ai.azure.com/.default"
     azure_chat_deployment_small: str = ""
     azure_chat_deployment_strong: str = ""
+    # Retirement date (YYYY-MM-DD) of the pinned chat model version, copied from Azure's model lifecycle page or
+    # `scripts/check_model_lifecycle.py`; preflight warns from 90 days before it, without any network call.
+    azure_chat_retires_on: str = ""
 
     # Speech to text
     stt_provider: SpeechProviderName = "local"

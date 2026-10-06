@@ -239,3 +239,13 @@ of video. The script goes through the story validator plus a minimum of twenty s
 video is a checked lesson, not a clip. Seconds of video are a usage counter like model calls; a failed
 render gives them back. On a laptop the same script renders as drawn scene cards with the local voice,
 so the feature works without any paid service.
+
+## D-23 · Read-aloud points reward the attempt, not a recognition rate — 2026-10-06
+
+D-20 awarded the read-aloud points only when the first attempt at a paragraph reached half the words,
+and never afterwards: a learner who improved on a second try earned nothing, and a learner whose speech
+the transcriber recognises poorly earned nothing at all, which made the threshold act as an accent proxy.
+Points are now given once per paragraph on the first attempt in which any word was recognised,
+whichever attempt that is; the recognised-word count is still shown and still is not a score. This is
+the first application of the October 2026 rule that points reward effort and never judge the learner's
+Dutch (owner decision O1 in `docs/ROADMAP.md`).

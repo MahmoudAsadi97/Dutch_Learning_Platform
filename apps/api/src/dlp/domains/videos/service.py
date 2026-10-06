@@ -8,7 +8,8 @@ Flow
    the validator's feedback, then hands the scenes to the configured renderer and queues `video_render`.
 3. `video_render` polls the renderer; when the file is ready it pulls the subtitle track out as timed cues,
    remuxes for progressive playback, stores the file in blob storage and marks the lesson `ready`.
-4. Watching, answering and saving words are ordinary code paths that award points for the day.
+4. Watching and answering are ordinary code paths that award points for the day; rating and saving words
+   award none.
 
 Every paid step is reserved against the usage counters before it runs and settled afterwards: model calls
 and tokens for the writer, seconds of video for the renderer (billed per second by the avatar service).

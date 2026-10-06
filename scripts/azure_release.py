@@ -80,6 +80,27 @@ def verify_topology(group: str, prefix: str) -> dict:
     return web
 
 
+def check_model_lifecycle(group: str, location: str = "westeurope") -> None:
+    """Refuse to release onto a retired chat model; warn when one retires within 90 days (see check_model_lifecycle.py)."""
+    import importlib.util
+    from pathlib import Path
+
+    path = Path(__file__).with_name("check_model_lifecycle.py")
+    spec = importlib.util.spec_from_file_location("check_model_lifecycle", path)
+    lifecycle = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(lifecycle)
+    accounts = [a for a in (az("cognitiveservices", "account", "list", "-g", group) or []) if a.get("kind") == "OpenAI"]
+    today = lifecycle.datetime.now(lifecycle.UTC).date()
+    for account in accounts:
+        for row in lifecycle.lookup(group, account["name"], location):
+            status, detail = lifecycle.classify(lifecycle=row["lifecycle"], retires_on=lifecycle.parse_date(row["retires_on"]),
+                                                today=today, days=90)
+            line = f"{account['name']}/{row['deployment']} ({row['model']} {row['version']}): {status} - {detail}"
+            if status == "retired":
+                raise RuntimeError(f"{line}; deploy a current model before releasing")
+            print(("WARNING " if status == "warning" else "") + line)
+
+
 def run_migration(group: str, prefix: str, image: str | None = None) -> None:
     job = f"{prefix}-migrate"
     if image:
@@ -162,6 +183,7 @@ def main() -> int:
             return 0
         web = verify_topology(args.resource_group, args.prefix)
         if args.action == "deploy":
+            check_model_lifecycle(args.resource_group)
             admin_emails = None
             if args.curriculum_admin_emails is not None:
                 api = az("containerapp", "show", "-g", args.resource_group, "-n", f"{args.prefix}-api")
