@@ -19,13 +19,18 @@ from sqlalchemy.orm import Session
 from dlp.config import Settings
 from dlp.db.base import utcnow
 from dlp.domains.usage.models import METRICS, PricingEntry, UsageCounter, UsageReservation
+from dlp.errors import DomainError
 
 TOTAL_PERIOD_KEY = date(1970, 1, 1)
 
 
-class UsageLimitExceeded(Exception):
+class UsageLimitExceeded(DomainError):
+    status_code = 429
+    code = "usage_limit"
+
     def __init__(self, metric: str, scope: str, requested: float, remaining: float) -> None:
-        super().__init__(f"{scope} limit for {metric} exceeded: requested {requested}, remaining {remaining}")
+        super().__init__(f"{scope} limit for {metric} exceeded: requested {requested}, remaining {remaining}",
+                         params={"metric": metric, "scope": scope}, persist=True)
         self.metric = metric
         self.scope = scope
         self.requested = requested

@@ -15,6 +15,8 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+from dlp.errors import DomainError
+
 log = logging.getLogger(__name__)
 
 ALLOWED_CONTAINERS = {"matroska", "webm", "ogg", "mov", "mp4", "m4a", "3gp", "wav", "flac", "mp3", "aac", "mpeg"}
@@ -22,11 +24,11 @@ ALLOWED_CODECS = {"opus", "vorbis", "aac", "pcm_s16le", "pcm_f32le", "flac", "mp
 CANONICAL_SAMPLE_RATE = 16000
 
 
-class AudioError(Exception):
-    def __init__(self, reason: str, *, status_code: int = 400) -> None:
-        super().__init__(reason)
-        self.reason = reason
-        self.status_code = status_code
+class AudioError(DomainError):
+    code = "audio"
+
+    def __init__(self, reason: str, *, status_code: int = 400, **kwargs) -> None:
+        super().__init__(reason, status_code, **kwargs)
 
 
 @dataclass(frozen=True)

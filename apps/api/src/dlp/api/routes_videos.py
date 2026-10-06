@@ -12,8 +12,6 @@ from sqlalchemy.orm import Session
 from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
 from dlp.config import Settings
 from dlp.db.session import get_session
-from dlp.domains.curriculum.service import CurriculumError
-from dlp.domains.stories import vocab
 from dlp.domains.usage.service import UsageLimitExceeded
 from dlp.domains.videos import service
 from dlp.domains.videos.schemas import RequestVideoBody, VideoAnswerBody, VideoRateBody, VideoWordBody
@@ -29,13 +27,13 @@ RANGE = re.compile(r"^bytes=(\d*)-(\d*)$")
 def _run(operation: Callable):
     try:
         return operation()
-    except (CurriculumError, vocab.VocabError) as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.detail) from exc
     except UsageLimitExceeded:
-        return JSONResponse(status_code=429, content={"detail": "Your practice allowance is used up. Try again later."})
+        return JSONResponse(status_code=429, content={"detail": "Your practice allowance is used up. Try again later.",
+                                                      "code": "usage_limit"})
     except ProviderError:
         return JSONResponse(status_code=503, content={"detail": "The language service is temporarily unavailable. "
-                                                                 "Your progress is saved; try again in a moment."})
+                                                                 "Your progress is saved; try again in a moment.",
+                                                      "code": "provider_unavailable"})
 
 
 def _uuid(value: str) -> uuid.UUID:

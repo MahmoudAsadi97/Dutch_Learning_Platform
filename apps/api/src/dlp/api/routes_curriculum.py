@@ -15,7 +15,6 @@ from dlp.db.session import get_session
 from dlp.domains.curriculum import service
 from dlp.domains.curriculum.schemas import Skill, Test
 from dlp.domains.curriculum.writing import writing_feedback
-from dlp.domains.speech.audio import AudioError
 from dlp.domains.speech.service import synthesize_text
 from dlp.domains.usage.service import UsageLimitExceeded
 from dlp.providers.base import ProviderError
@@ -54,17 +53,15 @@ class WritingFeedbackBody(BaseModel):
 def _run(operation: Callable, *, provider_detail: str | None = None):
     try:
         return operation()
-    except service.CurriculumError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.detail) from exc
-    except AudioError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
     except UsageLimitExceeded:
         # Returning a response commits already completed billable work; it does not award a partial pass.
-        return JSONResponse(status_code=429, content={"detail": "Your practice allowance is used up. Try again later."})
+        return JSONResponse(status_code=429, content={"detail": "Your practice allowance is used up. Try again later.",
+                                                      "code": "usage_limit"})
     except ProviderError:
         return JSONResponse(status_code=503, content={
             "detail": provider_detail or "The language service is temporarily unavailable. "
             "Your check has not been passed; please retry.",
+            "code": "provider_unavailable",
         })
     except OperationalError as exc:
         if getattr(exc.orig, "sqlstate", "") == "55P03":

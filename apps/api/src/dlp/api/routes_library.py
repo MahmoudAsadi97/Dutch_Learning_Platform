@@ -1,18 +1,14 @@
 """Authenticated, paginated content; no changes to learner scores or test evidence."""
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Query
 
 from dlp.api.deps import RequestContext, context_dep
 from dlp.domains.curriculum import library
-from dlp.domains.curriculum.service import CurriculumError
 
 router = APIRouter(prefix="/library", tags=["library"])
 
 
 def _bank(stage_id: str):
-    try:
-        return library.library_for(stage_id)
-    except CurriculumError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.detail) from exc
+    return library.library_for(stage_id)
 
 
 @router.get("/{stage_id}")
@@ -36,7 +32,4 @@ def stories(stage_id: str, q: str = Query(default="", max_length=120), topic: st
 
 @router.get("/{stage_id}/stories/{story_id}")
 def story(stage_id: str, story_id: str, ctx: RequestContext = Depends(context_dep)):
-    try:
-        return library.story_detail(_bank(stage_id), story_id)
-    except CurriculumError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.detail) from exc
+    return library.story_detail(_bank(stage_id), story_id)

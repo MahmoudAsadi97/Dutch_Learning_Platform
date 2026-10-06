@@ -307,3 +307,4 @@ changed. Phase acceptance checks are listed with each phase in the approved plan
 | 0.3 | done | 24 baselines rendered in the Playwright container (`run.py e2e-visual`), deterministic on re-run; CSS ratchet; shared story fixtures |
 | 0.4 | done | Ratchets: 61 untyped operations frozen, import-boundary allowlists exact, `alembic check` in CI |
 | 0.5 | done | `register_all()`, dead-lettered unknown kinds, lease sweep, bounded read-aloud upload, complete export, model lifecycle check (release + preflight), D-23 read-aloud points |
+| 0.6 | done | `DomainError` base with stable `code`, one set of handlers, `code` in every error body; status codes unchanged |

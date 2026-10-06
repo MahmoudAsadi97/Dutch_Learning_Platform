@@ -11,13 +11,14 @@ from dlp.domains.content.schemas import CheckpointPayload, MissionDocument
 from dlp.domains.content.service import mission_document
 from dlp.domains.identity.models import Learner
 from dlp.domains.practice.models import EvidenceRecord, PracticeSession
+from dlp.errors import DomainError
 
 
-class PracticeError(Exception):
-    def __init__(self, reason: str, status_code: int = 400) -> None:
-        super().__init__(reason)
-        self.reason = reason
-        self.status_code = status_code
+class PracticeError(DomainError):
+    code = "practice"
+
+    def __init__(self, reason: str, status_code: int = 400, **kwargs) -> None:
+        super().__init__(reason, status_code, **kwargs)
 
 
 def variant_allows_retry(document: MissionDocument, variant: str) -> bool:

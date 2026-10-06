@@ -108,6 +108,15 @@ scripts/               run.py task runner, fetch_piper_voice.py, sql/
   deployment in Azure, signed in), `integration_pending` (configured, no live use recorded yet),
   `review_pending` (needs a human reviewer).
 
+### Errors
+
+Every expected failure is a subclass of `dlp.errors.DomainError` (`CurriculumError`, `PracticeError`,
+`AudioError`, `VocabError`, `UsageLimitExceeded`, ...). Routes raise them; `dlp/api/errors.py` turns them into
+one JSON body, `{"detail", "code", "request_id"}` plus any parameters, so the web app can map the stable
+`code` (`usage_limit`, `provider_unavailable`, `story`, ...) to copy in the learner's languages. A provider
+failure no route handled becomes 503 instead of 500. Routes that must commit work before answering
+(usage rows, a failed turn) still return a `JSONResponse` themselves and include the same `code`.
+
 ## 4. Provider abstraction
 
 | Interface | Local (Phase A) | Fixture (CI) | Azure (Phase B) |

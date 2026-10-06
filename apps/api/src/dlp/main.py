@@ -31,6 +31,7 @@ from dlp.api import (
     routes_topics,
     routes_videos,
 )
+from dlp.api.errors import install_handlers
 from dlp.config import Settings, get_settings
 from dlp.domains.jobs.handlers import register_all
 from dlp.domains.jobs.service import JobLoop
@@ -110,6 +111,7 @@ def create_app() -> FastAPI:
         request_id = getattr(request.state, "request_id", "")
         return JSONResponse(status_code=500, content={"detail": "internal error", "request_id": request_id})
 
+    install_handlers(app)
     app.include_router(routes_health.router)
     app.include_router(routes_missions.router)
     app.include_router(routes_practice.router)

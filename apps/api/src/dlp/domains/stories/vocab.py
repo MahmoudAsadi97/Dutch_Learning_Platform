@@ -17,17 +17,18 @@ from dlp.domains.identity.models import Learner
 from dlp.domains.stories import today
 from dlp.domains.stories.models import StoryEpisode, VocabItem
 from dlp.domains.stories.validator import lemma_key, normalise
+from dlp.errors import DomainError
 
 GRADES = {"again": 1, "hard": 3, "good": 4, "easy": 5}
 LEARNED_INTERVAL_DAYS = 21
 REVIEW_POINTS = 1
 
 
-class VocabError(Exception):
-    def __init__(self, detail: str, status_code: int = 400) -> None:
-        super().__init__(detail)
-        self.detail = detail
-        self.status_code = status_code
+class VocabError(DomainError):
+    code = "vocabulary"
+
+    def __init__(self, detail: str, status_code: int = 400, **kwargs) -> None:
+        super().__init__(detail, status_code, **kwargs)
 
 
 def key_for(term: str) -> str:

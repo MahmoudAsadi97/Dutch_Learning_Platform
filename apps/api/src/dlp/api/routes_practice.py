@@ -34,7 +34,6 @@ from dlp.domains.practice.turns import (
     turn_view,
 )
 from dlp.domains.progress.service import ensure_skill_records
-from dlp.domains.speech.audio import AudioError
 from dlp.domains.speech.models import AudioAsset
 from dlp.domains.speech.service import transcribe_upload
 from dlp.domains.usage.service import UsageLimitExceeded
@@ -166,10 +165,7 @@ def _failed_turn_response(exc: TurnFailed, practice: PracticeSession, request_id
 
 
 def _load(session: Session, ctx: RequestContext, session_id: uuid.UUID, *, for_update: bool = True) -> PracticeSession:
-    try:
-        return get_session_for_learner(session, ctx.learner.id, session_id, for_update=for_update)
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    return get_session_for_learner(session, ctx.learner.id, session_id, for_update=for_update)
 
 
 @router.post("/sessions", status_code=201)
@@ -179,11 +175,8 @@ def create(body: StartSessionRequest, ctx: RequestContext = Depends(context_dep)
     if mission is None:
         raise HTTPException(status_code=404, detail="mission not found")
     ensure_skill_records(session, ctx.learner.id, mission.id)
-    try:
-        practice = start_session(session, learner_id=ctx.learner.id, mission=mission, variant=body.variant,
-                                 request_id=ctx.request_id)
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    practice = start_session(session, learner_id=ctx.learner.id, mission=mission, variant=body.variant,
+                             request_id=ctx.request_id)
     return _full_view(session, practice, ctx.request_id)
 
 
@@ -210,10 +203,7 @@ def show(session_id: uuid.UUID, ctx: RequestContext = Depends(context_dep),
 def abandon(session_id: uuid.UUID, ctx: RequestContext = Depends(context_dep),
             session: Session = Depends(get_session)) -> dict:
     practice = _load(session, ctx, session_id)
-    try:
-        abandon_session(session, practice)
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    abandon_session(session, practice)
     return {"session": _session_view(practice), "request_id": ctx.request_id}
 
 
@@ -233,10 +223,6 @@ def typed_turn(
                               learner_text=body.text, request_id=ctx.request_id)
     except TurnFailed as exc:
         return _failed_turn_response(exc, practice, ctx.request_id)
-    except UsageLimitExceeded as exc:
-        raise HTTPException(status_code=429, detail=str(exc)) from exc
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
     return _turn_response(practice, outcome, ctx.request_id)
 
 
@@ -256,11 +242,8 @@ def speech_turn(
     assert mission is not None
     document = mission_document(mission)
     repeated = existing_turn(session, practice, ctx.request_id) is not None
-    try:
-        if not repeated:
-            ensure_turn_allowed(session, document, practice, step_key, "speech")
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    if not repeated:
+        ensure_turn_allowed(session, document, practice, step_key, "speech")
 
     data = audio.file.read(settings.max_upload_bytes + 1)
     transcript_meta: dict[str, Any] = {}
@@ -272,10 +255,6 @@ def speech_turn(
                 session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id, upload_bytes=data,
                 upload_filename=audio.filename or "", stt=providers.stt, blob=providers.blob, keep_recording=True,
             )
-        except AudioError as exc:
-            raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
-        except UsageLimitExceeded as exc:
-            raise HTTPException(status_code=429, detail=str(exc)) from exc
         except ProviderUnavailable as exc:
             raise HTTPException(status_code=503, detail=f"speech-to-text unavailable: {exc}") from exc
         except ProviderError as exc:
@@ -347,11 +326,8 @@ def answer(session_id: uuid.UUID, body: AnswerRequest, ctx: RequestContext = Dep
            session: Session = Depends(get_session)) -> dict:
     """An answer to a reading or listening question; correctness is decided here and stored as evidence."""
     practice = _load(session, ctx, session_id)
-    try:
-        outcome = submit_answer(session, practice, step_key=body.step_key, question_id=body.question_id,
-                                chosen_index=body.chosen_index)
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    outcome = submit_answer(session, practice, step_key=body.step_key, question_id=body.question_id,
+                            chosen_index=body.chosen_index)
     return {
         "evidence": evidence_view(outcome.evidence), "correct": outcome.correct, "answer_index": outcome.answer_index,
         "step_completed": outcome.step_completed, "answered": outcome.answered,
@@ -364,11 +340,8 @@ def help_used(session_id: uuid.UUID, body: HelpUseRequest, ctx: RequestContext =
               session: Session = Depends(get_session)) -> dict:
     """One rung of the Persian help ladder was opened; recorded as evidence so feedback can see it."""
     practice = _load(session, ctx, session_id)
-    try:
-        evidence = record_help_use(session, practice, step_key=body.step_key, level=body.level, kind=body.kind,
-                                   question_id=body.question_id)
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    evidence = record_help_use(session, practice, step_key=body.step_key, level=body.level, kind=body.kind,
+                               question_id=body.question_id)
     return {"evidence": evidence_view(evidence), "session": _session_view(practice), "request_id": ctx.request_id}
 
 
@@ -377,10 +350,7 @@ def draft(session_id: uuid.UUID, step_key: str, body: DraftRequest, ctx: Request
           session: Session = Depends(get_session)) -> dict:
     """Autosave of the writing step; not evidence until the message is submitted."""
     practice = _load(session, ctx, session_id)
-    try:
-        entry = save_draft(session, practice, step_key=step_key, text=body.text)
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    entry = save_draft(session, practice, step_key=step_key, text=body.text)
     return {"draft": entry, "request_id": ctx.request_id}
 
 
@@ -389,10 +359,7 @@ def writing(session_id: uuid.UUID, body: WritingRequest, ctx: RequestContext = D
             session: Session = Depends(get_session)) -> dict:
     """The submitted message of the writing step, stored as typed evidence with its word count."""
     practice = _load(session, ctx, session_id)
-    try:
-        outcome = submit_writing(session, practice, step_key=body.step_key, text=body.text)
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
+    outcome = submit_writing(session, practice, step_key=body.step_key, text=body.text)
     return {
         "evidence": evidence_view(outcome.evidence), "word_count": outcome.word_count, "missing": outcome.missing,
         "step_completed": outcome.step_completed, "session": _session_view(practice), "request_id": ctx.request_id,
@@ -413,10 +380,6 @@ def feedback(
     try:
         report = generate_feedback(session, settings, providers, practice=practice, step_key=body.step_key,
                                    request_id=ctx.request_id)
-    except UsageLimitExceeded as exc:
-        raise HTTPException(status_code=429, detail=str(exc)) from exc
-    except PracticeError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
     except ProviderUnavailable as exc:
         raise HTTPException(status_code=503, detail=f"feedback model unavailable: {exc}") from exc
     except ProviderError as exc:

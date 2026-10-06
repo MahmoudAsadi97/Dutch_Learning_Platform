@@ -7,9 +7,7 @@ from sqlalchemy.orm import Session
 from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
 from dlp.config import Settings
 from dlp.db.session import get_session
-from dlp.domains.speech.audio import AudioError
 from dlp.domains.speech.service import synthesize_text, transcribe_upload
-from dlp.domains.usage.service import UsageLimitExceeded
 from dlp.providers.base import ProviderError, ProviderUnavailable
 from dlp.providers.registry import Providers
 
@@ -32,10 +30,6 @@ def transcribe(
             session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id, upload_bytes=data,
             upload_filename=audio.filename or "", stt=providers.stt, blob=providers.blob, keep_recording=keep_recording,
         )
-    except AudioError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
-    except UsageLimitExceeded as exc:
-        raise HTTPException(status_code=429, detail=str(exc)) from exc
     except ProviderUnavailable as exc:
         raise HTTPException(status_code=503, detail=f"speech-to-text unavailable: {exc}") from exc
     except ProviderError as exc:
@@ -80,10 +74,6 @@ def synthesize(
             session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id, text=body.text,
             tts=providers.tts, blob=providers.blob, store=body.store,
         )
-    except AudioError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
-    except UsageLimitExceeded as exc:
-        raise HTTPException(status_code=429, detail=str(exc)) from exc
     except ProviderUnavailable as exc:
         raise HTTPException(status_code=503, detail=f"text-to-speech unavailable: {exc}") from exc
     except ProviderError as exc:

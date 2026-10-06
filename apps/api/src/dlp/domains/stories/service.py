@@ -50,6 +50,8 @@ POINTS = {"read": 10, "answer": 3, "choose": 2, "read_aloud": 5}
 class StoryError(curriculum.CurriculumError):
     """Same shape as the curriculum error so the routes can share one handler."""
 
+    code = "story"
+
 
 # --- series ----------------------------------------------------------------------------------------------
 

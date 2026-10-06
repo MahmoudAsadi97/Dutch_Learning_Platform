@@ -8,6 +8,8 @@ export class ApiError extends Error {
     public readonly status: number,
     public readonly detail: string,
     public readonly requestId: string,
+    /** Stable identifier from the API (`usage_limit`, `provider_unavailable`, `story`, ...); empty for older bodies. */
+    public readonly code: string = "",
   ) {
     super(`${status}: ${detail}`);
   }
@@ -78,11 +80,11 @@ export async function apiJson<T>(path: string, options: ApiOptions = {}): Promis
     payload = null;
   }
   if (!response.ok) {
-    const detail =
-      payload && typeof payload === "object" && "detail" in payload
-        ? String((payload as { detail: unknown }).detail)
-        : response.statusText;
-    throw new ApiError(response.status, detail, requestId);
+    const body =
+      payload && typeof payload === "object" ? (payload as { detail?: unknown; code?: unknown }) : {};
+    const detail = "detail" in body ? String(body.detail) : response.statusText;
+    const code = typeof body.code === "string" ? body.code : "";
+    throw new ApiError(response.status, detail, requestId, code);
   }
   return payload as T;
 }

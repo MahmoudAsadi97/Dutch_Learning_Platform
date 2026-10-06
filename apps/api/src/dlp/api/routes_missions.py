@@ -16,7 +16,6 @@ from dlp.domains.practice.acceptance import CHECKS as PRACTICE_CHECKS
 from dlp.domains.progress.service import ensure_skill_records
 from dlp.domains.speech.audio import AudioError
 from dlp.domains.speech.service import synthesize_text
-from dlp.domains.usage.service import UsageLimitExceeded
 from dlp.providers.base import ProviderError, ProviderUnavailable
 from dlp.providers.registry import Providers
 
@@ -131,8 +130,6 @@ def fixed_audio(
                 session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id,
                 text=step.payload.transcript.nl, tts=providers.tts, blob=providers.blob, store=False,  # type: ignore[union-attr]
             )
-        except UsageLimitExceeded as exc:
-            raise HTTPException(status_code=429, detail=str(exc)) from exc
         except ProviderUnavailable as exc:
             raise HTTPException(status_code=503, detail=f"text-to-speech unavailable: {exc}") from exc
         except (ProviderError, AudioError) as exc:

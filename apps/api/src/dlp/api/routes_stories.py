@@ -12,7 +12,6 @@ from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_de
 from dlp.config import Settings
 from dlp.db.session import get_session
 from dlp.domains.curriculum.service import CurriculumError
-from dlp.domains.speech.audio import AudioError
 from dlp.domains.speech.service import transcribe_upload
 from dlp.domains.stories import service, today, vocab
 from dlp.domains.stories.bible import PROFILES
@@ -37,15 +36,13 @@ router = APIRouter(tags=["stories"])
 def _run(operation: Callable):
     try:
         return operation()
-    except (CurriculumError, vocab.VocabError) as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.detail) from exc
-    except AudioError as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.reason) from exc
     except UsageLimitExceeded:
-        return JSONResponse(status_code=429, content={"detail": "Your practice allowance is used up. Try again later."})
+        return JSONResponse(status_code=429, content={"detail": "Your practice allowance is used up. Try again later.",
+                                                      "code": "usage_limit"})
     except ProviderError:
         return JSONResponse(status_code=503, content={"detail": "The language service is temporarily unavailable. "
-                                                                 "Your progress is saved; try again in a moment."})
+                                                                 "Your progress is saved; try again in a moment.",
+                                                      "code": "provider_unavailable"})
 
 
 def _uuid(value: str) -> uuid.UUID:

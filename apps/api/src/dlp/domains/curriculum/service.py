@@ -26,6 +26,7 @@ from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice
 from dlp.domains.curriculum.schemas import SKILLS, Curriculum, ProductiveReply, Question, Stage, Task, Test
 from dlp.domains.speech.models import AudioAsset
 from dlp.domains.usage import service as usage
+from dlp.errors import DomainError
 from dlp.providers.base import ChatMessage, ProviderError
 from dlp.providers.registry import Providers
 
@@ -38,11 +39,11 @@ POLICY = {
 }
 
 
-class CurriculumError(Exception):
-    def __init__(self, detail: str, status_code: int = 400):
-        super().__init__(detail)
-        self.detail = detail
-        self.status_code = status_code
+class CurriculumError(DomainError):
+    code = "curriculum"
+
+    def __init__(self, detail: str, status_code: int = 400, **kwargs):
+        super().__init__(detail, status_code, **kwargs)
 
 
 def localized(nl: str, en: str, fa: str) -> dict[str, str]:

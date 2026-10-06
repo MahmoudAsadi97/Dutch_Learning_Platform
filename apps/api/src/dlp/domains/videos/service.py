@@ -60,6 +60,8 @@ RENDER_POLL_SECONDS = {"azure-avatar": 20.0}  # others finish at once; the job l
 class VideoError(CurriculumError):
     """Same shape as the curriculum error so the routes share one handler."""
 
+    code = "video"
+
 
 # --- profile and estimates --------------------------------------------------------------------------------
 
