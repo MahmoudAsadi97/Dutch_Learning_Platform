@@ -112,20 +112,7 @@ export interface TodayPlan {
 }
 export type Grade = "again" | "hard" | "good" | "easy";
 
-export const stageLabels: Record<string, string> = {
-  "pre-a1": "pre-A1",
-  a1: "A1",
-  "pre-a2": "pre-A2",
-  a2: "A2",
-  "pre-b1": "pre-B1",
-  b1: "B1",
-  "pre-b2": "pre-B2",
-  b2: "B2",
-  "pre-c1": "pre-C1",
-  c1: "C1",
-  "pre-c2": "pre-C2",
-  c2: "C2",
-};
+export { stageLabels } from "../domain/registry";
 
 export const stories = {
   today: (signal?: AbortSignal) => apiJson<TodayPlan>("today", { signal }),

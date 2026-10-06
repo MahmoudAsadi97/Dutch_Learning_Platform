@@ -1,5 +1,6 @@
 import type { LearningCopy } from "@/components/LanguageSupport";
 import type { Skill } from "@/lib/types";
+import { STAGE_IDS, isSkill } from "../domain/registry";
 
 export interface ConversationChoice {
   id: string;
@@ -70,26 +71,13 @@ export interface PracticePlan {
     evidence_count: number;
   }[];
 }
-export const practiceStages = [
-  "pre-a1",
-  "a1",
-  "pre-a2",
-  "a2",
-  "pre-b1",
-  "b1",
-  "pre-b2",
-  "b2",
-  "pre-c1",
-  "c1",
-  "pre-c2",
-  "c2",
-];
+export const practiceStages: readonly string[] = STAGE_IDS;
 
 /** Only generated stage/topic identifiers can become learner navigation targets. */
 export function topicHref(stageId: string, skill: string, topicId: string): string | null {
   if (
     !practiceStages.includes(stageId) ||
-    !["reading", "listening", "speaking", "writing"].includes(skill) ||
+    !isSkill(skill) ||
     !new RegExp(`^${stageId}-t\\d{3}$`).test(topicId)
   )
     return null;

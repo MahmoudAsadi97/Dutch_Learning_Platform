@@ -52,12 +52,7 @@ export function useLearningData() {
   };
 }
 
-export const skillNames = {
-  reading: "Lezen",
-  listening: "Luisteren",
-  speaking: "Spreken",
-  writing: "Schrijven",
-};
+export { skillNames } from "../domain/registry";
 export const recordStatus: Record<string, string> = {
   not_started: "Nog te ontdekken",
   in_progress: "Aan het oefenen",

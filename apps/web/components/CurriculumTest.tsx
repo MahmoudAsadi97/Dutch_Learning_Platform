@@ -21,6 +21,7 @@ import {
 } from "@/lib/client/curriculum";
 import { useNavigationGuard } from "@/lib/client/navigation";
 import type { Skill } from "@/lib/types";
+import { storageKeys } from "@/lib/client/storage";
 
 const skillIcons: Record<Skill, IconName> = {
   reading: "book",
@@ -58,7 +59,7 @@ export function CurriculumTest({ stageId }: { stageId: string }) {
   const [restoring, setRestoring] = useState(true);
   const requestId = useRef("");
   const [learnerKey, setLearnerKey] = useState("");
-  const storageKey = `taalstudio.test.${learnerKey}.${stageId}`;
+  const storageKey = storageKeys.test(learnerKey, stageId);
   useEffect(() => {
     const controller = new AbortController();
     let restoredKey = "";
@@ -66,7 +67,7 @@ export function CurriculumTest({ stageId }: { stageId: string }) {
       try {
         const catalog = await apiJson<CurriculumCatalog>("curriculum", { signal: controller.signal });
         setLearnerKey(catalog.learner_key);
-        restoredKey = `taalstudio.test.${catalog.learner_key}.${stageId}`;
+        restoredKey = storageKeys.test(catalog.learner_key, stageId);
         const saved = sessionStorage.getItem(restoredKey);
         if (saved) {
           const value = JSON.parse(saved) as {

@@ -5,6 +5,7 @@ import { ContentReviewQueue } from "@/components/ContentReviewQueue";
 import { Icon } from "@/components/Icon";
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { apiFetch } from "@/lib/client/api";
+import { browserStorages, clearLearnerStorage } from "@/lib/client/storage";
 import { useLearningData } from "@/lib/client/learning";
 
 export function AccountSettings() {
@@ -13,21 +14,8 @@ export function AccountSettings() {
   const [exporting, setExporting] = useState(false);
   const [notice, setNotice] = useState("");
   function clearDrafts() {
-    for (const name of ["sessionStorage", "localStorage"] as const) {
-      try {
-        const storage = window[name];
-        for (const key of Object.keys(storage)) {
-          if (
-            key.startsWith("taalstudio.draft.") ||
-            key.startsWith("taalstudio.test.") ||
-            key.startsWith("taalstudio.stories.")
-          )
-            storage.removeItem(key);
-        }
-      } catch {
-        /* Disabled storage must not prevent signing out. */
-      }
-    }
+    // Every learner-scoped key goes; the language preference stays (lib/client/storage.ts).
+    clearLearnerStorage(browserStorages());
   }
   async function download() {
     setExporting(true);

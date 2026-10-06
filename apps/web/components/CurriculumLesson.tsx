@@ -20,6 +20,7 @@ import { apiJson, ApiError } from "@/lib/client/api";
 import { friendlyError, skillNames, stageLabel, type CurriculumStage } from "@/lib/client/curriculum";
 import { useNavigationGuard } from "@/lib/client/navigation";
 import type { Skill } from "@/lib/types";
+import { storageKeys } from "@/lib/client/storage";
 
 type Section = "words" | "grammar" | "stories" | "alphabet" | Skill;
 const sections: { id: Section; label: string; icon: IconName }[] = [
@@ -82,7 +83,7 @@ export function CurriculumLesson({
         setStage(data);
         setError("");
         try {
-          setWriting(sessionStorage.getItem(`taalstudio.draft.${data.learner_key}.${stageId}`) ?? "");
+          setWriting(sessionStorage.getItem(storageKeys.draft(data.learner_key, stageId)) ?? "");
         } catch {}
       })
       .catch((cause) => {
@@ -410,7 +411,7 @@ export function CurriculumLesson({
                       setFeedback(null);
                       try {
                         sessionStorage.setItem(
-                          `taalstudio.draft.${stage.learner_key}.${stageId}`,
+                          storageKeys.draft(stage.learner_key, stageId),
                           event.target.value,
                         );
                       } catch {}
@@ -457,7 +458,7 @@ export function CurriculumLesson({
                 setWriting(value);
                 setFeedback(null);
                 try {
-                  sessionStorage.setItem(`taalstudio.draft.${stage.learner_key}.${stageId}`, value);
+                  sessionStorage.setItem(storageKeys.draft(stage.learner_key, stageId), value);
                 } catch {}
               }}
             />

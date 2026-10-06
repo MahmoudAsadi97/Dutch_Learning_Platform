@@ -17,6 +17,7 @@ import { apiJson, ApiError, newRequestId } from "@/lib/client/api";
 import { friendlyError, skillNames } from "@/lib/client/curriculum";
 import type { TopicDetail, TopicFeedback, TopicPage } from "@/lib/client/topics";
 import type { Skill } from "@/lib/types";
+import { storageKeys } from "@/lib/client/storage";
 
 const icons: Record<Skill, IconName> = {
   reading: "book",
@@ -305,7 +306,7 @@ function TopicReader({
   onCompleted,
   onBack,
 }: Props & { topicId: string; onBack: () => void }) {
-  const draftKey = `taalstudio.topic-draft.${learnerKey}.${stageId}.${skill}.${topicId}`;
+  const draftKey = storageKeys.topicDraft(learnerKey, stageId, skill, topicId);
   const [initialDraft] = useState(() => {
     try {
       return { draft: loadDraft(draftKey), failed: false };

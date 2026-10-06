@@ -1,10 +1,11 @@
 "use client";
 
 import { createContext, useContext, useSyncExternalStore, type ReactNode } from "react";
+import { storageKeys } from "@/lib/client/storage";
 
 export type SupportMode = "nl-en" | "nl-fa" | "nl-fa-en";
 export type LearningCopy = { nl: string; en?: string; fa?: string };
-const key = "taalstudio.language-support";
+const key = storageKeys.languageSupport;
 const changeEvent = "taalstudio:language-support";
 let volatileMode: SupportMode = "nl-en";
 const LanguageContext = createContext({

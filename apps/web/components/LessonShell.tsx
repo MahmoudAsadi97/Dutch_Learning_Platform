@@ -23,13 +23,11 @@ import type {
   Step,
   WritingPayload,
 } from "@/lib/types";
+import { skillList } from "@/lib/domain/registry";
 
-const SKILL_LABEL: Record<string, { nl: string; fa: string }> = {
-  reading: { nl: "Lezen", fa: "خواندن" },
-  listening: { nl: "Luisteren", fa: "شنیدن" },
-  speaking: { nl: "Spreken", fa: "گفتن" },
-  writing: { nl: "Schrijven", fa: "نوشتن" },
-};
+const SKILL_LABEL: Record<string, { nl: string; fa: string }> = Object.fromEntries(
+  skillList.map((skill) => [skill.key, { nl: skill.label.nl, fa: skill.label.fa }]),
+);
 
 type Variant = "base" | "transfer";
 

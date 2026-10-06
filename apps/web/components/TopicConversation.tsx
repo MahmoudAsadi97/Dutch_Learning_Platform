@@ -15,6 +15,7 @@ import type {
   ConversationSession,
   ConversationTurnRequest,
 } from "@/lib/client/learning-agents";
+import { storageKeys } from "@/lib/client/storage";
 
 type Props = {
   stageId: string;
@@ -156,7 +157,7 @@ function ConversationPractice({
   onRestart: () => void;
   onClose: () => void;
 }) {
-  const storageKey = `taalstudio.conversation.${learnerKey}.${choice.stage_id}.${choice.topic_id}`;
+  const storageKey = storageKeys.conversation(learnerKey, choice.stage_id, choice.topic_id);
   const [saved] = useState<Saved>(() => {
     try {
       const raw: unknown = JSON.parse(sessionStorage.getItem(storageKey) ?? "{}");

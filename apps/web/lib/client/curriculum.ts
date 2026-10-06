@@ -83,18 +83,7 @@ export interface CurriculumAttempt {
   results: Record<Skill, SkillResult> | null;
 }
 
-export const skillNames: Record<Skill, string> = {
-  reading: "Lezen",
-  listening: "Luisteren",
-  speaking: "Spreken",
-  writing: "Schrijven",
-};
-export const skillOrder: Skill[] = ["reading", "listening", "speaking", "writing"];
-export function stageLabel(id: string) {
-  return id
-    .replace(/^pre-/, "pre-")
-    .replace(/([abc])([12])$/, (_, letter: string, number: string) => `${letter.toUpperCase()}${number}`);
-}
+export { skillNames, skillOrder, stageLabel } from "../domain/registry";
 export function friendlyError(status?: number): string {
   if (status === 401) return "Je sessie is verlopen. Meld je opnieuw aan en probeer verder te gaan.";
   if (status === 403)

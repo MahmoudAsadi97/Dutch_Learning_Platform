@@ -8,6 +8,7 @@ import { CurriculumQuestions } from "@/components/CurriculumControls";
 import { dutchSentences } from "@/lib/client/sentences";
 import { apiJson, ApiError } from "@/lib/client/api";
 import { friendlyError, type CurriculumQuestion } from "@/lib/client/curriculum";
+import { storageKeys } from "@/lib/client/storage";
 
 type Word = { id: string; term: string; topic: LearningCopy; meaning: LearningCopy; example: LearningCopy };
 type StorySummary = {
@@ -324,7 +325,7 @@ export function StoryTime({ stageId }: { stageId: string }) {
   const [checked, setChecked] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
   const [readError, setReadError] = useState(false);
-  const readKey = `taalstudio.stories.${overview?.learner_key ?? "pending"}.${stageId}`;
+  const readKey = storageKeys.stories(overview?.learner_key ?? "pending", stageId);
   const readRaw = useSyncExternalStore(
     subscribeReads,
     () => readSnapshot(readKey),
@@ -379,7 +380,7 @@ export function StoryTime({ stageId }: { stageId: string }) {
     if (!overview || !story) return;
     const values = [...new Set([...read, story.id])].slice(-500);
     try {
-      localStorage.setItem(`taalstudio.stories.${overview.learner_key}.${stageId}`, JSON.stringify(values));
+      localStorage.setItem(storageKeys.stories(overview.learner_key, stageId), JSON.stringify(values));
       window.dispatchEvent(new Event("taalstudio:reading"));
       setReadError(false);
     } catch {

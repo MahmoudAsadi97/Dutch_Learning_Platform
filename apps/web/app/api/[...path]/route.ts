@@ -33,14 +33,20 @@ const FORWARDED_RESPONSE_HEADERS = [
   "content-range",
 ];
 const MAX_BODY_BYTES = 6 * 1024 * 1024;
+// How long the API may take to start answering (headers). A streamed body is not bound by this.
+const UPSTREAM_HEADER_TIMEOUT_MS = 230_000;
 
 type RouteContext = { params: Promise<{ path: string[] }> };
 
-function json(status: number, body: Record<string, unknown>, requestId: string): Response {
-  return new Response(JSON.stringify({ ...body, request_id: requestId }), {
-    status,
-    headers: { "content-type": "application/json", "x-request-id": requestId, "cache-control": "no-store" },
-  });
+function json(status: number, body: Record<string, unknown>, requestId: string, proxyError = ""): Response {
+  const headers: Record<string, string> = {
+    "content-type": "application/json",
+    "x-request-id": requestId,
+    "cache-control": "no-store",
+  };
+  // Marks answers the proxy produced itself (the API never saw the request), for the connection banner.
+  if (proxyError) headers["x-proxy-error"] = proxyError;
+  return new Response(JSON.stringify({ ...body, request_id: requestId }), { status, headers });
 }
 
 function csrfViolation(request: Request): string | null {
@@ -111,6 +117,15 @@ async function handle(request: Request, context: RouteContext): Promise<Response
     }
   }
 
+  // The browser's abort reaches the API (a cancelled request stops its work), and the API must start
+  // answering within the header timeout; once headers are in, the body streams for as long as it takes.
+  const controller = new AbortController();
+  const abortUpstream = () => controller.abort();
+  request.signal.addEventListener("abort", abortUpstream);
+  const headerTimer = setTimeout(
+    () => controller.abort(new Error("upstream_timeout")),
+    UPSTREAM_HEADER_TIMEOUT_MS,
+  );
   let upstream: Response;
   try {
     upstream = await fetch(target, {
@@ -119,9 +134,27 @@ async function handle(request: Request, context: RouteContext): Promise<Response
       body,
       cache: "no-store",
       redirect: "manual",
+      signal: controller.signal,
     });
   } catch {
-    return json(502, { detail: "the API is not reachable" }, requestId);
+    request.signal.removeEventListener("abort", abortUpstream);
+    if (request.signal.aborted) return new Response(null, { status: 499 });
+    if (controller.signal.aborted) {
+      return json(
+        504,
+        { detail: "the API did not answer in time", code: "upstream_timeout" },
+        requestId,
+        "timeout",
+      );
+    }
+    return json(
+      502,
+      { detail: "the API is not reachable", code: "api_unreachable" },
+      requestId,
+      "unreachable",
+    );
+  } finally {
+    clearTimeout(headerTimer);
   }
 
   const responseHeaders = new Headers();

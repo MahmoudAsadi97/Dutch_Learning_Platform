@@ -65,8 +65,8 @@ export async function apiFetch(path: string, options: ApiOptions = {}): Promise<
     if (!(cause instanceof DOMException && cause.name === "AbortError")) announce(false);
     throw cause;
   }
-  // 502 from the proxy means the web tier is up but the API is not; anything else proves the path works.
-  announce(response.status !== 502);
+  // The proxy marks answers it produced because the API was unreachable; anything else proves the path works.
+  announce(response.headers.get("x-proxy-error") !== "unreachable");
   return response;
 }
 

@@ -7,6 +7,7 @@ import { Icon } from "@/components/Icon";
 import { apiJson, ApiError, newRequestId } from "@/lib/client/api";
 import { friendlyError, skillNames, stageLabel } from "@/lib/client/curriculum";
 import { practiceStages, topicHref, type PracticePlan } from "@/lib/client/learning-agents";
+import { storageKeys } from "@/lib/client/storage";
 
 export function PracticeCoach({
   learnerKey,
@@ -15,7 +16,7 @@ export function PracticeCoach({
   learnerKey: string;
   initialStage?: string;
 }) {
-  const preferenceKey = `taalstudio.practice-stage.${learnerKey}`;
+  const preferenceKey = storageKeys.practiceStage(learnerKey);
   const [stage, setStage] = useState(() => {
     try {
       const saved = localStorage.getItem(preferenceKey);
