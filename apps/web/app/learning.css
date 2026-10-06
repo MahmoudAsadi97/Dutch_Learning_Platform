@@ -76,10 +76,7 @@ h2 { font-size: 23px; }
 .stage-card h3 .copy-support { font-size: 12px; }
 .stage-card > p { font-size: 13px; line-height: 1.65; color: var(--muted); }
 .stage-practice-status { display: flex; justify-content: space-between; font-size: 10px; color: #5d6e83; padding-top: 18px; margin-top: auto; gap: 12px; }
-.stage-link, .stage-lock-reason { display: flex; align-items: center; justify-content: space-between; text-decoration: none; border-top: 1px solid var(--line); margin-top: 13px; padding-top: 14px; font-size: 12px; font-weight: 550; }
-.stage-card > .stage-lock-reason { margin-bottom: 0; font-size: 12px; }
-.stage-locked { background: #f9fafc; }
-.stage-locked .stage-level { background: #f0f2f5; border-color: #e1e5eb; color: #58677c; }
+.stage-link { display: flex; align-items: center; justify-content: space-between; text-decoration: none; border-top: 1px solid var(--line); margin-top: 13px; padding-top: 14px; font-size: 12px; font-weight: 550; }
 .path-bottom-links { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
 .path-bottom-links > a { display: flex; align-items: center; gap: 16px; padding: 22px; background: #fff; border: 1px solid var(--line); border-radius: 13px; text-decoration: none; color: var(--ink); }
 .path-bottom-links > a > .icon:last-child { margin-left: auto; color: var(--accent); }

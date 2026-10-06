@@ -311,3 +311,4 @@ changed. Phase acceptance checks are listed with each phase in the approved plan
 | 0.7 | done | `lib/domain/registry.ts` (stages, skills), `lib/client/storage.ts` (keys + sign-out sweep), proxy forwards aborts and bounds time-to-headers (504 `upstream_timeout`), `x-proxy-error` marks proxy-made answers |
 | 0.8 | done | TanStack Query provider, typed keys, `useUsage` and `useCurriculumCatalog`; UsagePanel and CurriculumProgress read through the cache |
 | 0.9 | done | `test_practice_contracts.py`, `test_content_exercise_pool.py` (recorded per-stage facts incl. frame collisions at A2–B1); `_persist_topic_result`, `_persist_core_practice` extracted |
+| 1.1 | done | 646 dead lines removed from design.css, globals.css and learning.css under `css-usage.test.mjs` (every selector must appear in a component or a dynamic class pattern); the 24 screenshot baselines compare pixel-identical |
