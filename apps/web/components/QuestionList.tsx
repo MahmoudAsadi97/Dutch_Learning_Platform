@@ -60,36 +60,44 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
           <div className="question" key={question.id}>
             <fieldset disabled={busy}>
               <legend>
-                {qIndex + 1}. <LearningText text={question.prompt} /> <PhraseAudio text={question.prompt.nl}/>
+                {qIndex + 1}. <LearningText text={question.prompt} />{" "}
+                <PhraseAudio text={question.prompt.nl} />
               </legend>
               {question.options.map((option, index) => {
                 const id = `${stepKey}-${question.id}-${index}`;
                 return (
-                  <div key={id} className="question-option-audio"><label htmlFor={id}>
-                    <input
-                      id={id}
-                      type="radio"
-                      name={`${stepKey}-${question.id}`}
-                      value={index}
-                      checked={answers[question.id] === index}
-                      onChange={() => {
-                        setVerdicts((current) => {
-                          const rest = { ...current };
-                          delete rest[question.id];
-                          return rest;
-                        });
-                        setAnswers({ ...answers, [question.id]: index });
-                      }}
-                    />
-                    <span>
-                      <LearningText text={option} />
-                    </span>
-                  </label><PhraseAudio text={option.nl}/></div>
+                  <div key={id} className="question-option-audio">
+                    <label htmlFor={id}>
+                      <input
+                        id={id}
+                        type="radio"
+                        name={`${stepKey}-${question.id}`}
+                        value={index}
+                        checked={answers[question.id] === index}
+                        onChange={() => {
+                          setVerdicts((current) => {
+                            const rest = { ...current };
+                            delete rest[question.id];
+                            return rest;
+                          });
+                          setAnswers({ ...answers, [question.id]: index });
+                        }}
+                      />
+                      <span>
+                        <LearningText text={option} />
+                      </span>
+                    </label>
+                    <PhraseAudio text={option.nl} />
+                  </div>
                 );
               })}
               {verdict && (
                 <p role="status" data-testid={`result-${question.id}`}>
-                  {verdict.correct ? <span className="label ok">Juist</span> : <span className="label bad">Nog niet juist</span>}
+                  {verdict.correct ? (
+                    <span className="label ok">Juist</span>
+                  ) : (
+                    <span className="label bad">Nog niet juist</span>
+                  )}
                 </p>
               )}
               {!verdict && answered[question.id] !== undefined && (
@@ -98,15 +106,31 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
                 </p>
               )}
               {question.help.length > 0 && (
-                <HelpLadder rungs={question.help} idPrefix={`${stepKey}-${question.id}`} onReveal={(rung) => onHelp(rung, question.id)} />
+                <HelpLadder
+                  rungs={question.help}
+                  idPrefix={`${stepKey}-${question.id}`}
+                  onReveal={(rung) => onHelp(rung, question.id)}
+                />
               )}
             </fieldset>
           </div>
         );
       })}
       <div className="status-line">
-        <button type="button" className="button" onClick={() => void check()} disabled={!allChosen || busy} data-testid={`${stepKey}-check`}>
-          <LearningText text={{nl: busy ? "Bezig…" : "Controleer", en: busy ? "Checking…" : "Check", fa: busy ? "در حال بررسی…" : "بررسی"}} />
+        <button
+          type="button"
+          className="button"
+          onClick={() => void check()}
+          disabled={!allChosen || busy}
+          data-testid={`${stepKey}-check`}
+        >
+          <LearningText
+            text={{
+              nl: busy ? "Bezig…" : "Controleer",
+              en: busy ? "Checking…" : "Check",
+              fa: busy ? "در حال بررسی…" : "بررسی",
+            }}
+          />
         </button>
         {checked && (
           <span data-testid="score" aria-live="polite">

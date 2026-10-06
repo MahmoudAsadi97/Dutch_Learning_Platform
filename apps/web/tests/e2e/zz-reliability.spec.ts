@@ -59,7 +59,9 @@ test("a failed draft save keeps the learner on the writing step", async ({ page 
   await expect(page.getByTestId("autosave-status")).toHaveText(/^bewaard /);
 });
 
-test("home shows the staged learning path without a fabricated aggregate score", async ({ page }, testInfo) => {
+test("home shows the staged learning path without a fabricated aggregate score", async ({
+  page,
+}, testInfo) => {
   await page.goto("/leerpad");
   const overview = page.getByTestId("learning-overview");
   await expect(overview.getByTestId("curriculum-path").locator("li")).toHaveCount(12);
@@ -67,8 +69,14 @@ test("home shows the staged learning path without a fabricated aggregate score",
   await expect(page.getByRole("link", { name: /Open pre-A1:/ })).toBeVisible();
   await expect(overview).not.toContainText(/A3|totaalscore|azure-small|feedback-v1/);
   await expect(page.getByRole("heading", { name: "Kleine stappen. Echte gesprekken." })).toBeVisible();
-  await testInfo.attach("home-desktop", { body: await page.screenshot({ fullPage: true }), contentType: "image/png" });
+  await testInfo.attach("home-desktop", {
+    body: await page.screenshot({ fullPage: true }),
+    contentType: "image/png",
+  });
   await page.setViewportSize({ width: 390, height: 844 });
-  await testInfo.attach("home-phone-width", { body: await page.screenshot({ fullPage: true }), contentType: "image/png" });
+  await testInfo.attach("home-phone-width", {
+    body: await page.screenshot({ fullPage: true }),
+    contentType: "image/png",
+  });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });

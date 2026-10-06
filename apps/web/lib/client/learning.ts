@@ -2,11 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { apiJson } from "./api";
-import type {
-  MissionResponse,
-  PracticeSessionView,
-  SkillRecordView,
-} from "@/lib/types";
+import type { MissionResponse, PracticeSessionView, SkillRecordView } from "@/lib/types";
 
 export interface LearningData {
   learner: {
@@ -31,10 +27,7 @@ export function useLearningData() {
       apiJson<Pick<LearningData, "learner" | "skill_records">>("progress", {
         signal: controller.signal,
       }),
-      apiJson<{ sessions: PracticeSessionView[] }>(
-        "practice/sessions",
-        { signal: controller.signal },
-      ),
+      apiJson<{ sessions: PracticeSessionView[] }>("practice/sessions", { signal: controller.signal }),
       apiJson<MissionResponse>("missions/appointment-change", {
         signal: controller.signal,
       }),

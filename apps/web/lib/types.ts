@@ -80,7 +80,8 @@ export interface WritingPayload {
   help: HelpRung[];
 }
 
-export type StepPayload = ReadingPayload | ListeningPayload | SpeakingPayload | CheckpointPayload | WritingPayload;
+export type StepPayload =
+  ReadingPayload | ListeningPayload | SpeakingPayload | CheckpointPayload | WritingPayload;
 
 export interface Step {
   key: string;
@@ -103,7 +104,10 @@ export interface MissionResponse {
   word_limit: number;
   review: { total_texts: number; unreviewed: number; reviewed: number; rejected: number };
   steps: { key: string; skill: Skill; type: string; variant: string; title: LocalizedText }[];
-  document: { steps: Step[]; language_targets: { id: string; cefr: string; skill: Skill; can_do: LocalizedText }[] };
+  document: {
+    steps: Step[];
+    language_targets: { id: string; cefr: string; skill: Skill; can_do: LocalizedText }[];
+  };
   labels: { unreviewed_nl: string; unreviewed_fa: string };
   request_id: string;
 }
@@ -179,7 +183,13 @@ export interface TurnView {
   phase: string | null;
   reply_source: "model" | "fixed_line" | null;
   understood_nl: string;
-  model_calls: { step: string; prompt_version: string; provider: string; model: string; latency_ms: number }[];
+  model_calls: {
+    step: string;
+    prompt_version: string;
+    provider: string;
+    model: string;
+    latency_ms: number;
+  }[];
   errors: string[];
   error: string | null;
   audio_error: string | null;
@@ -232,7 +242,15 @@ export interface FeedbackReportView {
   points: FeedbackPoint[];
   evidence_ids: string[];
   dropped_points: number;
-  dropped: { kind: string; text_nl: string; text_fa: string; quote: string; correction: string; evidence: string[]; reason: string }[];
+  dropped: {
+    kind: string;
+    text_nl: string;
+    text_fa: string;
+    quote: string;
+    correction: string;
+    evidence: string[];
+    reason: string;
+  }[];
   model_provider: string;
   model_name: string;
   prompt_version: string;

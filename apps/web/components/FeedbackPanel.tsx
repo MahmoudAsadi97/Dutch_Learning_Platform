@@ -36,18 +36,25 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
     setBusy(true);
     setError("");
     try {
-      const response = await apiJson<{ report: FeedbackReportView }>(`practice/sessions/${detail.session.id}/feedback`, {
-        method: "POST",
-        body: { step_key: stepKey },
-        requestId,
-      });
+      const response = await apiJson<{ report: FeedbackReportView }>(
+        `practice/sessions/${detail.session.id}/feedback`,
+        {
+          method: "POST",
+          body: { step_key: stepKey },
+          requestId,
+        },
+      );
       const others = detail.feedback.filter((r) => r.id !== response.report.id);
       onDetail({ ...detail, feedback: [...others, response.report] });
       onProgressChanged?.();
       setRequestId(newRequestId());
     } catch (cause) {
       if (cause instanceof ApiError) {
-        setError(cause.status === 409 ? "Maak eerst deze oefening om feedback te krijgen." : "Feedback is tijdelijk niet beschikbaar. Probeer opnieuw.");
+        setError(
+          cause.status === 409
+            ? "Maak eerst deze oefening om feedback te krijgen."
+            : "Feedback is tijdelijk niet beschikbaar. Probeer opnieuw.",
+        );
         if (cause.status >= 500) setRequestId(newRequestId());
       } else {
         setError("Geen verbinding met de server.");
@@ -58,15 +65,25 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
   }
 
   return (
-    <section className="card" aria-labelledby={`${stepKey}-feedback-heading`} data-testid={`${stepKey}-feedback`}>
+    <section
+      className="card"
+      aria-labelledby={`${stepKey}-feedback-heading`}
+      data-testid={`${stepKey}-feedback`}
+    >
       <h3 id={`${stepKey}-feedback-heading`}>
-        <LearningText text={{nl: "Feedback", en: "Feedback", fa: "بازخورد"}} />
+        <LearningText text={{ nl: "Feedback", en: "Feedback", fa: "بازخورد" }} />
       </h3>
       <p className="muted" style={{ fontSize: "0.85rem" }}>
         Wat gaat goed en wat kunt u verder oefenen? Automatische feedback, nog niet nagekeken.
       </p>
       <p>
-        <button type="button" className="button secondary" onClick={() => void ask()} disabled={busy || !detail} data-testid={`${stepKey}-feedback-ask`}>
+        <button
+          type="button"
+          className="button secondary"
+          onClick={() => void ask()}
+          disabled={busy || !detail}
+          data-testid={`${stepKey}-feedback-ask`}
+        >
           {busy ? "Feedback wordt opgesteld…" : latest ? "Vraag nieuwe feedback" : "Vraag feedback"}
         </button>
       </p>
@@ -77,7 +94,9 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
       )}
       {latest && (
         <div data-testid={`${stepKey}-feedback-report`}>
-          <p><LearningText text={{nl: latest.summary_nl, en: latest.summary_en, fa: latest.summary_fa}} /></p>
+          <p>
+            <LearningText text={{ nl: latest.summary_nl, en: latest.summary_en, fa: latest.summary_fa }} />
+          </p>
           <ul className="feedback-points" data-testid={`${stepKey}-feedback-points`}>
             {latest.points.map((point, index) => {
               const label = KIND_LABEL[point.kind] ?? KIND_LABEL.suggestion;
@@ -86,7 +105,7 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
                   <span className={`label ${label.className}`}>
                     <LearningText text={label} />
                   </span>
-                  <LearningText text={{nl: point.text_nl, en: point.text_en, fa: point.text_fa}} />
+                  <LearningText text={{ nl: point.text_nl, en: point.text_en, fa: point.text_fa }} />
                   {point.quote && (
                     <span className="muted" style={{ display: "block", fontSize: "0.9rem" }} lang="nl">
                       „{point.quote}”{point.correction && ` → ${point.correction}`}

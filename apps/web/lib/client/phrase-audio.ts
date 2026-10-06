@@ -27,7 +27,10 @@ export function splitSpeechText(text: string, limit = 600): string[] {
   for (const word of remaining.split(" ")) {
     // Never split a letter pair, surrogate pair or an unusually long unbroken token.
     if (word.length > limit) throw new Error("Speech token is too long");
-    if (part && part.length + 1 + word.length > limit) { chunks.push(part); part = ""; }
+    if (part && part.length + 1 + word.length > limit) {
+      chunks.push(part);
+      part = "";
+    }
     part = part ? `${part} ${word}` : word;
   }
   if (part) chunks.push(part);
@@ -53,8 +56,14 @@ export class PhraseAudioController {
   }
 
   getSnapshot = (): PhraseAudioState => this.state;
-  subscribe = (listener: () => void): (() => void) => { this.listeners.add(listener); return () => this.listeners.delete(listener); };
-  private publish(state: PhraseAudioState) { this.state = state; this.listeners.forEach(listener => listener()); }
+  subscribe = (listener: () => void): (() => void) => {
+    this.listeners.add(listener);
+    return () => this.listeners.delete(listener);
+  };
+  private publish(state: PhraseAudioState) {
+    this.state = state;
+    this.listeners.forEach((listener) => listener());
+  }
 
   stop(owner?: string) {
     if (owner !== undefined && this.state.owner !== owner) return;
@@ -66,7 +75,11 @@ export class PhraseAudioController {
     this.publish(IDLE_PHRASE_AUDIO);
   }
 
-  clear() { this.stop(); this.cache.clear(); this.cachedBytes = 0; }
+  clear() {
+    this.stop();
+    this.cache.clear();
+    this.cachedBytes = 0;
+  }
 
   private remember(text: string, clip: PhraseClip) {
     if (clip.blob.size > this.maxBytes || this.maxEntries < 1) return;
@@ -83,7 +96,8 @@ export class PhraseAudioController {
   private async clip(text: string, signal: AbortSignal): Promise<PhraseClip> {
     const cached = this.cache.get(text);
     if (cached) {
-      this.cache.delete(text); this.cache.set(text, cached);
+      this.cache.delete(text);
+      this.cache.set(text, cached);
       return cached;
     }
     const result = await this.dependencies.synthesize(text, signal);
@@ -95,8 +109,12 @@ export class PhraseAudioController {
     this.stop();
     const generation = this.generation;
     let chunks: string[];
-    try { chunks = splitSpeechText(text); }
-    catch { this.publish({ owner, phase: "error", error: "too-long" }); return; }
+    try {
+      chunks = splitSpeechText(text);
+    } catch {
+      this.publish({ owner, phase: "error", error: "too-long" });
+      return;
+    }
     if (!chunks.length) return;
     const request = new AbortController();
     this.request = request;
@@ -117,28 +135,46 @@ export class PhraseAudioController {
       if (!current()) return;
       const code = cause instanceof Error ? cause.message : "unavailable";
       const allowed: PhraseAudioError[] = ["signin", "limit", "blocked", "too-long"];
-      this.publish({ owner, phase: "error", error: allowed.includes(code as PhraseAudioError) ? code as PhraseAudioError : "unavailable" });
+      this.publish({
+        owner,
+        phase: "error",
+        error: allowed.includes(code as PhraseAudioError) ? (code as PhraseAudioError) : "unavailable",
+      });
     } finally {
-      if (current()) { this.request = null; this.disposePlayer?.(); this.disposePlayer = null; }
+      if (current()) {
+        this.request = null;
+        this.disposePlayer?.();
+        this.disposePlayer = null;
+      }
     }
   }
 
   private playClip(owner: string, clip: PhraseClip, current: () => boolean): Promise<boolean> {
     const url = this.dependencies.createUrl(clip.blob);
     let player: Player;
-    try { player = this.dependencies.player(url); }
-    catch (cause) { this.dependencies.revokeUrl(url); return Promise.reject(cause); }
+    try {
+      player = this.dependencies.player(url);
+    } catch (cause) {
+      this.dependencies.revokeUrl(url);
+      return Promise.reject(cause);
+    }
     return new Promise<boolean>((resolve, reject) => {
       let completed = false;
       const clean = () => {
-        player.onended = null; player.onerror = null;
-        player.pause(); player.removeAttribute("src"); player.load();
+        player.onended = null;
+        player.onerror = null;
+        player.pause();
+        player.removeAttribute("src");
+        player.load();
         this.dependencies.revokeUrl(url);
       };
       const finish = (value: boolean, error?: string) => {
         if (completed) return;
-        completed = true; clean(); this.disposePlayer = null;
-        if (error) reject(new Error(error)); else resolve(value);
+        completed = true;
+        clean();
+        this.disposePlayer = null;
+        if (error) reject(new Error(error));
+        else resolve(value);
       };
       this.disposePlayer = () => finish(false);
       player.onended = () => finish(true);
@@ -147,14 +183,19 @@ export class PhraseAudioController {
         // The user clicked this control. Browser gesture policies may still require a second tap
         // after the first network response; that retry reuses the cached clip.
         const playing = player.play();
-        void playing.then(() => {
-          if (completed || !current()) return;
-          this.publish({ owner, phase: "playing", developmentTone: clip.developmentTone });
-        }, (cause: unknown) => {
-          const blocked = cause instanceof Error && cause.name === "NotAllowedError";
-          finish(false, blocked ? "blocked" : "unavailable");
-        });
-      } catch { finish(false, "unavailable"); }
+        void playing.then(
+          () => {
+            if (completed || !current()) return;
+            this.publish({ owner, phase: "playing", developmentTone: clip.developmentTone });
+          },
+          (cause: unknown) => {
+            const blocked = cause instanceof Error && cause.name === "NotAllowedError";
+            finish(false, blocked ? "blocked" : "unavailable");
+          },
+        );
+      } catch {
+        finish(false, "unavailable");
+      }
     });
   }
 }

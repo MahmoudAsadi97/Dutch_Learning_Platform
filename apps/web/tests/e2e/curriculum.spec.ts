@@ -7,10 +7,10 @@ test("learner path has twelve open stages without awarding test passes", async (
   await expect(path.locator("li")).toHaveCount(12);
   await expect(path).not.toContainText(/A3/);
   await expect(path.getByRole("link", { name: /Open pre-A1:/ })).toBeVisible();
-  await expect(path.locator('.stage-locked')).toHaveCount(0);
+  await expect(path.locator(".stage-locked")).toHaveCount(0);
   await expect(path.getByRole("link", { name: /Open A1:/ })).toBeVisible();
   await page.goto("/learn/a1");
-  await expect(page.getByRole("heading", {name: /Woorden die je kunt gebruiken/})).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Woorden die je kunt gebruiken/ })).toBeVisible();
   await expect(page.getByRole("button", { name: "Start de eindtoets" })).toHaveCount(0);
 });
 
@@ -66,7 +66,9 @@ test("new level retains writing within the tab and stays usable at phone widths"
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
+    const results = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+      .analyze();
     expect(results.violations).toEqual([]);
   }
 });
@@ -74,28 +76,43 @@ test("new level retains writing within the tab and stays usable at phone widths"
 test("a blocked final test cannot be started from a direct link", async ({ page }) => {
   await page.goto("/learn/a1/test");
   await page.getByRole("button", { name: "Start de eindtoets" }).click();
-  await expect(page.getByRole("main").getByRole("alert")).toContainText("Oefen eerst lezen, luisteren, spreken en schrijven");
+  await expect(page.getByRole("main").getByRole("alert")).toContainText(
+    "Oefen eerst lezen, luisteren, spreken en schrijven",
+  );
   await expect(page.getByRole("button", { name: "Dien de eindtoets in" })).toHaveCount(0);
 });
 
-test("completed practice protects a replacement recording and submission before moving on", async ({ page }) => {
+test("completed practice protects a replacement recording and submission before moving on", async ({
+  page,
+}) => {
   let recordings = 0;
   let submissions = 0;
   let releaseTranscription = () => {};
   let releasePractice = () => {};
-  const transcriptionReady = new Promise<void>(resolve => { releaseTranscription = resolve; });
-  const practiceReady = new Promise<void>(resolve => { releasePractice = resolve; });
+  const transcriptionReady = new Promise<void>((resolve) => {
+    releaseTranscription = resolve;
+  });
+  const practiceReady = new Promise<void>((resolve) => {
+    releasePractice = resolve;
+  });
   const assets = ["d3479e43-457b-4ab5-80c9-c2488db2b474", "53dc63d6-ab51-476b-9e60-cf2c36309016"];
-  await page.route("**/api/speech/transcribe", async route => {
+  await page.route("**/api/speech/transcribe", async (route) => {
     const index = recordings++;
     if (index === 1) await transcriptionReady;
-    await route.fulfill({ json: { audio: { asset_id: assets[index] }, transcript: { text: "Dag Sam. Ik heet Noor. Ik woon in Gent." } } });
+    await route.fulfill({
+      json: {
+        audio: { asset_id: assets[index] },
+        transcript: { text: "Dag Sam. Ik heet Noor. Ik woon in Gent." },
+      },
+    });
   });
-  await page.route("**/api/curriculum/pre-a1/practice", async route => {
+  await page.route("**/api/curriculum/pre-a1/practice", async (route) => {
     const index = submissions++;
     expect(route.request().postDataJSON()).toEqual({ skill: "speaking", audio_asset_id: assets[index] });
     if (index === 1) await practiceReady;
-    await route.fulfill({ json: { completed: true, feedback: { nl: "Je hebt jezelf voorgesteld.", en: "", fa: "" } } });
+    await route.fulfill({
+      json: { completed: true, feedback: { nl: "Je hebt jezelf voorgesteld.", en: "", fa: "" } },
+    });
   });
   try {
     await page.goto("/learn/pre-a1");
@@ -134,33 +151,72 @@ test("completed practice protects a replacement recording and submission before 
   }
 });
 
-test("test interface protects a recording and retries an unchanged submitted snapshot after reload", async ({ page }) => {
+test("test interface protects a recording and retries an unchanged submitted snapshot after reload", async ({
+  page,
+}) => {
   const copy = (nl: string) => ({ nl, en: "", fa: "" });
-  const task = { prompt: copy("Vertel wie je bent."), criteria: [copy("Stel jezelf voor.")], min_words: 1, max_words: 30 };
+  const task = {
+    prompt: copy("Vertel wie je bent."),
+    criteria: [copy("Stel jezelf voor.")],
+    min_words: 1,
+    max_words: 30,
+  };
   const attempt = {
-    id: "b1b03f44-d38d-47eb-9f32-8c593420f6bb", stage_id: "pre-a1", status: "in_progress", admin_preview: false,
+    id: "b1b03f44-d38d-47eb-9f32-8c593420f6bb",
+    stage_id: "pre-a1",
+    status: "in_progress",
+    admin_preview: false,
     test: {
-      reading: { text: copy("Noor woont in Gent."), questions: [{ id: "r1", prompt: copy("Waar woont Noor?"), options: [copy("Gent"), copy("Brugge")] }] },
-      listening: { audio_parts: 1, questions: [{ id: "l1", prompt: copy("Wat hoor je?"), options: [copy("Hallo"), copy("Tot morgen")] }] },
-      speaking: task, writing: task,
-    }, results: null,
+      reading: {
+        text: copy("Noor woont in Gent."),
+        questions: [{ id: "r1", prompt: copy("Waar woont Noor?"), options: [copy("Gent"), copy("Brugge")] }],
+      },
+      listening: {
+        audio_parts: 1,
+        questions: [{ id: "l1", prompt: copy("Wat hoor je?"), options: [copy("Hallo"), copy("Tot morgen")] }],
+      },
+      speaking: task,
+      writing: task,
+    },
+    results: null,
   };
   let submitted: Record<string, unknown> | null = null;
   let submissions = 0;
-  await page.route("**/api/curriculum/pre-a1/test", route => route.fulfill({ json: attempt }));
-  await page.route(`**/api/curriculum/attempts/${attempt.id}`, route => route.fulfill({ json: { ...attempt, submission: submitted } }));
-  await page.route("**/api/speech/transcribe", async route => {
-    await new Promise(resolve => setTimeout(resolve, 200));
-    await route.fulfill({ json: { audio: { asset_id: "d3479e43-457b-4ab5-80c9-c2488db2b474" }, transcript: { text: "Ik heet Noor en ik woon in Gent." } } });
+  await page.route("**/api/curriculum/pre-a1/test", (route) => route.fulfill({ json: attempt }));
+  await page.route(`**/api/curriculum/attempts/${attempt.id}`, (route) =>
+    route.fulfill({ json: { ...attempt, submission: submitted } }),
+  );
+  await page.route("**/api/speech/transcribe", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 200));
+    await route.fulfill({
+      json: {
+        audio: { asset_id: "d3479e43-457b-4ab5-80c9-c2488db2b474" },
+        transcript: { text: "Ik heet Noor en ik woon in Gent." },
+      },
+    });
   });
-  await page.route(`**/api/curriculum/attempts/${attempt.id}/submit`, async route => {
+  await page.route(`**/api/curriculum/attempts/${attempt.id}/submit`, async (route) => {
     const body = route.request().postDataJSON();
     submissions++;
     if (submitted) expect(body).toEqual(submitted);
     submitted = body;
-    await new Promise(resolve => setTimeout(resolve, 200));
-    if (submissions === 1) await route.fulfill({ status: 503, json: { detail: "temporary service failure" } });
-    else await route.fulfill({ json: { ...attempt, status: "needs_practice", submission: submitted, results: Object.fromEntries(["reading", "listening", "speaking", "writing"].map(skill => [skill, { passed: false, feedback: copy("Oefen nog eens met een nieuwe situatie.") }])) } });
+    await new Promise((resolve) => setTimeout(resolve, 200));
+    if (submissions === 1)
+      await route.fulfill({ status: 503, json: { detail: "temporary service failure" } });
+    else
+      await route.fulfill({
+        json: {
+          ...attempt,
+          status: "needs_practice",
+          submission: submitted,
+          results: Object.fromEntries(
+            ["reading", "listening", "speaking", "writing"].map((skill) => [
+              skill,
+              { passed: false, feedback: copy("Oefen nog eens met een nieuwe situatie.") },
+            ]),
+          ),
+        },
+      });
   });
   await page.goto("/learn/pre-a1/test");
   await page.getByRole("button", { name: "Start de eindtoets" }).click();

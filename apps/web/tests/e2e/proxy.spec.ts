@@ -5,7 +5,9 @@ const OWNER = process.env.E2E_OWNER_EMAIL ?? "owner@example.com";
 /** The proxy is the trust boundary: these checks talk to it directly, without the UI. */
 test.describe("api proxy", () => {
   test("issues an assertion for the fixture principal and echoes request ids", async ({ request }) => {
-    const response = await request.get("/api/health/preflight", { headers: { "X-Request-Id": "e2e-preflight-0001" } });
+    const response = await request.get("/api/health/preflight", {
+      headers: { "X-Request-Id": "e2e-preflight-0001" },
+    });
     expect(response.status()).toBe(200);
     expect(response.headers()["x-request-id"]).toBe("e2e-preflight-0001");
     const body = await response.json();
@@ -13,8 +15,12 @@ test.describe("api proxy", () => {
     expect(JSON.stringify(body)).not.toContain("ASSERTION");
   });
 
-  test("refuses state-changing requests without the anti-CSRF header or from another origin", async ({ request }) => {
-    const missing = await request.post("/api/practice/sessions", { data: { mission_id: "appointment-change" } });
+  test("refuses state-changing requests without the anti-CSRF header or from another origin", async ({
+    request,
+  }) => {
+    const missing = await request.post("/api/practice/sessions", {
+      data: { mission_id: "appointment-change" },
+    });
     expect(missing.status()).toBe(403);
     const crossSite = await request.post("/api/practice/sessions", {
       data: { mission_id: "appointment-change" },

@@ -35,13 +35,9 @@ test("page scripts use a fresh CSP nonce and private caching", async ({ request 
 });
 
 for (const screen of screens) {
-  test(`${screen.name} is usable at desktop and phone width`, async ({
-    page,
-  }, testInfo) => {
+  test(`${screen.name} is usable at desktop and phone width`, async ({ page }, testInfo) => {
     await page.goto(screen.path);
-    await expect(
-      page.getByRole("heading", { name: screen.heading }),
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: screen.heading })).toBeVisible();
     if (screen.name === "dashboard")
       await expect(page.getByTestId("curriculum-path").locator("li")).toHaveCount(12);
     if (screen.name === "today")
@@ -50,9 +46,7 @@ for (const screen of screens) {
       const stages = page.locator(".course-progress-row");
       await expect(stages).toHaveCount(12);
       await expect(stages.first()).toBeVisible();
-      await expect(stages.first().locator("dt")).toHaveText([
-        "Lezen", "Luisteren", "Spreken", "Schrijven",
-      ]);
+      await expect(stages.first().locator("dt")).toHaveText(["Lezen", "Luisteren", "Spreken", "Schrijven"]);
     }
     if (screen.name === "settings")
       await expect(page.getByText("Technische ondersteuning", { exact: true })).toBeVisible();
@@ -63,11 +57,7 @@ for (const screen of screens) {
         body: await page.screenshot({ fullPage: true }),
         contentType: "image/png",
       });
-      expect(
-        await page.evaluate(
-          () => document.documentElement.scrollWidth <= window.innerWidth,
-        ),
-      ).toBe(true);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
       const results = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
         .analyze();
@@ -80,25 +70,17 @@ for (const screen of screens) {
   });
 }
 
-test("primary navigation waits for a writing draft to be saved", async ({
-  page,
-}) => {
+test("primary navigation waits for a writing draft to be saved", async ({ page }) => {
   await page.goto("/missions/appointment-change");
   await page.getByRole("button", { name: /Schrijven: het bericht/ }).click();
-  await page.route("**/api/practice/sessions/*/drafts/write-message", (route) =>
-    route.abort(),
-  );
-  await page
-    .getByTestId("writing-input")
-    .fill("Mijn bericht blijft bewaard als ik de pagina verlaat.");
+  await page.route("**/api/practice/sessions/*/drafts/write-message", (route) => route.abort());
+  await page.getByTestId("writing-input").fill("Mijn bericht blijft bewaard als ik de pagina verlaat.");
   await page
     .getByRole("navigation", { name: "Hoofdmenu", exact: true })
     .getByRole("link", { name: "Mijn voortgang" })
     .click();
   await expect(page.getByTestId("writing-input")).toBeVisible();
-  await expect(
-    page.getByRole("button", { name: "Opnieuw bewaren" }),
-  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "Opnieuw bewaren" })).toBeVisible();
   await page.unroute("**/api/practice/sessions/*/drafts/write-message");
   await page
     .getByRole("navigation", { name: "Hoofdmenu", exact: true })
@@ -115,24 +97,15 @@ test("primary navigation waits for a writing draft to be saved", async ({
 test("keyboard skip link reaches the page content", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Tab");
-  await expect(
-    page.getByRole("link", { name: "Naar de inhoud" }),
-  ).toBeFocused();
+  await expect(page.getByRole("link", { name: "Naar de inhoud" })).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("#main")).toBeFocused();
 });
 
-test("lesson screenshots and accessible controls", async ({
-  page,
-}, testInfo) => {
+test("lesson screenshots and accessible controls", async ({ page }, testInfo) => {
   await page.goto("/missions/appointment-change");
   await expect(page.getByTestId("reading-text")).toBeVisible();
-  for (const step of [
-    /Lezen: de herinnering/,
-    /Luisteren:/,
-    /Spreken:/,
-    /Schrijven: het bericht/,
-  ]) {
+  for (const step of [/Lezen: de herinnering/, /Luisteren:/, /Spreken:/, /Schrijven: het bericht/]) {
     await page.getByRole("button", { name: step }).first().click();
     await testInfo.attach(`lesson-${String(step).replace(/\W/g, "")}`, {
       body: await page.screenshot({ fullPage: true }),

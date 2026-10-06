@@ -53,7 +53,10 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
   }
 
   async function toggleTranslation() {
-    if (showPersian) { setShowPersian(false); return; }
+    if (showPersian) {
+      setShowPersian(false);
+      return;
+    }
     setTranslationBusy(true);
     setTranslationError("");
     try {
@@ -61,7 +64,9 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
       onDetail(await recordHelp(current, step.key, { level: 3, kind: "reading_translation" }));
       setShowPersian(true);
     } catch {
-      setTranslationError("De vertaling is nog niet getoond: hulp kon niet worden opgeslagen. Probeer opnieuw.");
+      setTranslationError(
+        "De vertaling is nog niet getoond: hulp kon niet worden opgeslagen. Probeer opnieuw.",
+      );
     } finally {
       setTranslationBusy(false);
     }
@@ -72,9 +77,15 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
       <StepHeader step={step} labels={labels} />
 
       <section className="card" aria-labelledby="reading-text-heading">
-        <h3 id="reading-text-heading">Tekst <PhraseAudio text={payload.text.nl} label="De leestekst"/></h3>
+        <h3 id="reading-text-heading">
+          Tekst <PhraseAudio text={payload.text.nl} label="De leestekst" />
+        </h3>
         <p>
-          <ContentLabel status={payload.text.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
+          <ContentLabel
+            status={payload.text.review_status}
+            labelNl={labels.unreviewed_nl}
+            labelFa={labels.unreviewed_fa}
+          />
         </p>
         <div className="dutch-text nl" lang="nl" data-testid="reading-text">
           {payload.text.nl}
@@ -88,14 +99,28 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
             disabled={translationBusy}
             onClick={() => void toggleTranslation()}
           >
-            <LearningText text={{nl: showPersian ? "Verberg de vertaling" : "Toon de vertaling", en: showPersian ? "Hide translation" : "Show translation", fa: showPersian ? "پنهان کردن ترجمه" : "نمایش ترجمه"}} />
+            <LearningText
+              text={{
+                nl: showPersian ? "Verberg de vertaling" : "Toon de vertaling",
+                en: showPersian ? "Hide translation" : "Show translation",
+                fa: showPersian ? "پنهان کردن ترجمه" : "نمایش ترجمه",
+              }}
+            />
           </button>
         </p>
-        {translationError && <p className="error" role="alert">{translationError}</p>}
+        {translationError && (
+          <p className="error" role="alert">
+            {translationError}
+          </p>
+        )}
         {showPersian && (
           <div id="reading-text-fa" className="dutch-text" data-testid="reading-translation">
             {showEnglish && payload.text.en && <p lang="en">{payload.text.en}</p>}
-            {supportPersian && <p lang="fa" dir="rtl" className="fa" data-testid="reading-text-fa">{payload.text.fa}</p>}
+            {supportPersian && (
+              <p lang="fa" dir="rtl" className="fa" data-testid="reading-text-fa">
+                {payload.text.fa}
+              </p>
+            )}
           </div>
         )}
       </section>
@@ -114,8 +139,12 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
             <tbody>
               {payload.vocabulary.map((item) => (
                 <tr key={item.nl}>
-                  <td lang="nl">{item.nl} <PhraseAudio text={item.nl}/></td>
-                  <td><LearningText text={item} supportOnly /></td>
+                  <td lang="nl">
+                    {item.nl} <PhraseAudio text={item.nl} />
+                  </td>
+                  <td>
+                    <LearningText text={item} supportOnly />
+                  </td>
                   <td className="muted" lang="nl">
                     {item.note_nl}
                   </td>
@@ -126,16 +155,27 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
         </section>
       )}
 
-      <QuestionList stepKey={step.key} questions={payload.questions} progress={progress} onAnswer={answer} onHelp={help} />
+      <QuestionList
+        stepKey={step.key}
+        questions={payload.questions}
+        progress={progress}
+        onAnswer={answer}
+        onHelp={help}
+      />
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">
-          <LearningText text={{nl: "Hulp", en: "Help", fa: "کمک"}} />
+          <LearningText text={{ nl: "Hulp", en: "Help", fa: "کمک" }} />
         </h3>
         <HelpLadder rungs={payload.help} idPrefix={step.key} onReveal={(rung) => help(rung)} />
       </section>
 
-      <FeedbackPanel stepKey={step.key} detail={detail} onDetail={onDetail} onProgressChanged={onProgressChanged} />
+      <FeedbackPanel
+        stepKey={step.key}
+        detail={detail}
+        onDetail={onDetail}
+        onProgressChanged={onProgressChanged}
+      />
     </article>
   );
 }

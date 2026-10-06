@@ -17,7 +17,9 @@ test.describe("speaking step", () => {
 
     await step.getByTestId("start-conversation").click();
     const conversation = step.getByTestId("conversation");
-    await expect(conversation.getByTestId("turn-character").first()).toContainText("Goeiedag, Tandartspraktijk Molenstraat");
+    await expect(conversation.getByTestId("turn-character").first()).toContainText(
+      "Goeiedag, Tandartspraktijk Molenstraat",
+    );
     await expect(step.getByTestId("step-status")).toHaveText("12 van 12 beurten over.");
 
     // spoken turn: the fake microphone plays the fixture wav, the fixture STT returns a fixed sentence
@@ -48,14 +50,19 @@ test.describe("speaking step", () => {
     await expect(typed).toHaveAttribute("data-modality", "typed");
     await expect(typed).toContainText("getypt · als getypte tekst opgeslagen · reden gegeven");
     await expect(conversation.getByTestId("turn-character").nth(2)).toContainText("donderdag om 10 uur");
-    await expect(conversation.getByTestId("turn-character").nth(2)).toHaveAttribute("data-source", "fixed_line");
+    await expect(conversation.getByTestId("turn-character").nth(2)).toHaveAttribute(
+      "data-source",
+      "fixed_line",
+    );
     const panel = step.getByTestId("appointment-panel");
     await expect(panel).toContainText("✓ reden gegeven");
 
     await input.fill("Donderdag om tien uur is goed.");
     await step.getByTestId("typed-send").click();
     await expect(panel).toContainText("✓ nieuw moment: donderdag 24 september om 10 uur");
-    await expect(conversation.getByTestId("turn-character").nth(3)).toContainText("Uw nieuwe afspraak is op donderdag 24 september om 10 uur");
+    await expect(conversation.getByTestId("turn-character").nth(3)).toContainText(
+      "Uw nieuwe afspraak is op donderdag 24 september om 10 uur",
+    );
 
     await input.fill("Ja, dat past. Tot dan!");
     await step.getByTestId("typed-send").click();
@@ -86,7 +93,9 @@ test.describe("speaking step", () => {
     await expect(step).toHaveAttribute("data-step-type", "checkpoint");
     await expect(step.getByTestId("checkpoint-rules")).toContainText("één poging");
     await step.getByTestId("start-conversation").click();
-    await expect(step.getByTestId("conversation").getByTestId("turn-character").first()).toContainText("Kapsalon Lies");
+    await expect(step.getByTestId("conversation").getByTestId("turn-character").first()).toContainText(
+      "Kapsalon Lies",
+    );
     await expect(step.getByTestId("typed-disabled")).toBeVisible();
     await expect(step.getByTestId("typed-input")).toHaveCount(0);
     await expect(step.locator('[data-help="disabled"]')).toBeVisible();

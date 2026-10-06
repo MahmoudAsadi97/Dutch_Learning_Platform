@@ -41,7 +41,12 @@ const letterRows = [
   ["Y", "ypsilon", "yoghurt", "yoghurt", "ماست"],
   ["Z", "zet", "zon", "sun", "خورشید"],
 ] as const;
-export const DUTCH_ALPHABET: AlphabetLetter[] = letterRows.map(([letter, name, nl, en, fa]) => ({ letter, name, speech: name, example: { nl, en, fa } }));
+export const DUTCH_ALPHABET: AlphabetLetter[] = letterRows.map(([letter, name, nl, en, fa]) => ({
+  letter,
+  name,
+  speech: name,
+  example: { nl, en, fa },
+}));
 
 export const DUTCH_LETTER_PAIRS = [
   { letters: "aa", example: { nl: "maan", en: "moon", fa: "ماه" } },
@@ -62,9 +67,9 @@ export const DUTCH_LETTER_PAIRS = [
 
 /** Every letter is visited once in 26 rounds; four distinct options include the answer. */
 export function letterQuestion(round: number): { target: AlphabetLetter; options: AlphabetLetter[] } {
-  const index = ((Math.max(0, Math.floor(round)) * 7 + 3) % DUTCH_ALPHABET.length);
+  const index = (Math.max(0, Math.floor(round)) * 7 + 3) % DUTCH_ALPHABET.length;
   const offsets = [0, 5, 11, 17];
-  const options = offsets.map(offset => DUTCH_ALPHABET[(index + offset) % DUTCH_ALPHABET.length]);
+  const options = offsets.map((offset) => DUTCH_ALPHABET[(index + offset) % DUTCH_ALPHABET.length]);
   const shift = round % options.length;
   return { target: DUTCH_ALPHABET[index], options: [...options.slice(shift), ...options.slice(0, shift)] };
 }

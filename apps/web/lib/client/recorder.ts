@@ -4,7 +4,13 @@ import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "
 import { observeNativeAudioFocus, suspendAudioForRecording } from "@/lib/client/audio-focus";
 import { MicrophoneRequestGate } from "@/lib/client/microphone-request";
 
-const MIME_CANDIDATES = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/mp4", "audio/mpeg"];
+const MIME_CANDIDATES = [
+  "audio/webm;codecs=opus",
+  "audio/webm",
+  "audio/ogg;codecs=opus",
+  "audio/mp4",
+  "audio/mpeg",
+];
 
 export type RecorderPhase = "idle" | "recording" | "unsupported";
 
@@ -28,7 +34,13 @@ export function pickMimeType(): string | null {
 }
 
 export function fileNameFor(mimeType: string): string {
-  const extension = mimeType.includes("webm") ? "webm" : mimeType.includes("ogg") ? "ogg" : mimeType.includes("mp4") ? "m4a" : "bin";
+  const extension = mimeType.includes("webm")
+    ? "webm"
+    : mimeType.includes("ogg")
+      ? "ogg"
+      : mimeType.includes("mp4")
+        ? "m4a"
+        : "bin";
   return `recording.${extension}`;
 }
 
@@ -73,20 +85,34 @@ export function useRecorder(onRecording: (recording: Recording) => void) {
       }
       streamRef.current?.getTracks().forEach((track) => track.stop());
       streamRef.current = null;
-      releaseAudioRef.current?.(); releaseAudioRef.current = null;
+      releaseAudioRef.current?.();
+      releaseAudioRef.current = null;
     };
   }, []);
 
   const start = useCallback(async () => {
-    if (requestGate.current.isPending() || (recorderRef.current && recorderRef.current.state === "recording")) return;
+    if (requestGate.current.isPending() || (recorderRef.current && recorderRef.current.state === "recording"))
+      return;
     setError("");
     const releaseAudio = suspendAudioForRecording();
     releaseAudioRef.current = releaseAudio;
-    const release = () => { releaseAudio(); if (releaseAudioRef.current === releaseAudio) releaseAudioRef.current = null; };
+    const release = () => {
+      releaseAudio();
+      if (releaseAudioRef.current === releaseAudio) releaseAudioRef.current = null;
+    };
     try {
-      const stream = await requestGate.current.open(() => navigator.mediaDevices.getUserMedia({ audio: true }));
-      if (!stream) { release(); return; }
-      if (!mounted.current) { stream.getTracks().forEach(track => track.stop()); release(); return; }
+      const stream = await requestGate.current.open(() =>
+        navigator.mediaDevices.getUserMedia({ audio: true }),
+      );
+      if (!stream) {
+        release();
+        return;
+      }
+      if (!mounted.current) {
+        stream.getTracks().forEach((track) => track.stop());
+        release();
+        return;
+      }
       streamRef.current = stream;
       const recorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
       const chunks: Blob[] = [];
@@ -94,7 +120,7 @@ export function useRecorder(onRecording: (recording: Recording) => void) {
         if (event.data.size > 0) chunks.push(event.data);
       };
       recorder.onstop = () => {
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
         if (streamRef.current === stream) streamRef.current = null;
         release();
         if (!mounted.current || recorderRef.current !== recorder) return;
@@ -107,18 +133,24 @@ export function useRecorder(onRecording: (recording: Recording) => void) {
       recorderRef.current = recorder;
       setPhase("recording");
     } catch (cause) {
-      streamRef.current?.getTracks().forEach(track => track.stop()); streamRef.current = null;
+      streamRef.current?.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
       release();
       if (!mounted.current) return;
       setPhase("idle");
-      setError(cause instanceof Error ? `Microfoon niet beschikbaar: ${cause.message}` : "Microfoon niet beschikbaar.");
+      setError(
+        cause instanceof Error
+          ? `Microfoon niet beschikbaar: ${cause.message}`
+          : "Microfoon niet beschikbaar.",
+      );
     }
   }, [mimeType]);
 
   const stop = useCallback(() => {
     if (requestGate.current.isPending()) {
       requestGate.current.cancel();
-      releaseAudioRef.current?.(); releaseAudioRef.current = null;
+      releaseAudioRef.current?.();
+      releaseAudioRef.current = null;
       return;
     }
     const recorder = recorderRef.current;

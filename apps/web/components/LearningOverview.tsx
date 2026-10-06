@@ -41,5 +41,6 @@ export const skills: {
   },
 ];
 
-
-export function LearningOverview() { return <CurriculumPath />; }
+export function LearningOverview() {
+  return <CurriculumPath />;
+}

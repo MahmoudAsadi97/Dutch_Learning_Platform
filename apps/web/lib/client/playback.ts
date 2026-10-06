@@ -49,10 +49,18 @@ export function usePlayback() {
   const play = useCallback(
     async (wav: Blob, onEnded?: () => void): Promise<PlaybackResult> => {
       await stop();
-      if (!claimAudioFocus(owner.current, () => { void stop(); })) return { blocked: true, failed: false, url: "" };
+      if (
+        !claimAudioFocus(owner.current, () => {
+          void stop();
+        })
+      )
+        return { blocked: true, failed: false, url: "" };
       const url = URL.createObjectURL(wav);
       const player = new Audio(url);
-      player.onended = () => { releaseAudioFocus(owner.current); onEnded?.(); };
+      player.onended = () => {
+        releaseAudioFocus(owner.current);
+        onEnded?.();
+      };
       const result: PlaybackResult = { blocked: false, failed: false, url };
       const settled = player.play().then(
         () => undefined,

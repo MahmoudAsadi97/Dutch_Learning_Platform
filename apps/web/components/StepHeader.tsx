@@ -18,9 +18,15 @@ export function StepHeader({ step, labels, children }: Props) {
         <LearningText text={step.title} />
       </h2>
       <p>
-        <ContentLabel status={step.instructions.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
+        <ContentLabel
+          status={step.instructions.review_status}
+          labelNl={labels.unreviewed_nl}
+          labelFa={labels.unreviewed_fa}
+        />
       </p>
-      <p><LearningText text={step.instructions} /></p>
+      <p>
+        <LearningText text={step.instructions} />
+      </p>
       {children}
     </header>
   );

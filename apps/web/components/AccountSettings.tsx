@@ -17,9 +17,16 @@ export function AccountSettings() {
       try {
         const storage = window[name];
         for (const key of Object.keys(storage)) {
-          if (key.startsWith("taalstudio.draft.") || key.startsWith("taalstudio.test.") || key.startsWith("taalstudio.stories.")) storage.removeItem(key);
+          if (
+            key.startsWith("taalstudio.draft.") ||
+            key.startsWith("taalstudio.test.") ||
+            key.startsWith("taalstudio.stories.")
+          )
+            storage.removeItem(key);
         }
-      } catch { /* Disabled storage must not prevent signing out. */ }
+      } catch {
+        /* Disabled storage must not prevent signing out. */
+      }
     }
   }
   async function download() {
@@ -36,9 +43,7 @@ export function AccountSettings() {
       window.setTimeout(() => URL.revokeObjectURL(url), 1000);
       setNotice("Je gegevensbestand is klaargezet voor download.");
     } catch {
-      setNotice(
-        "Download mislukt. Probeer het opnieuw; je gegevens blijven bewaard.",
-      );
+      setNotice("Download mislukt. Probeer het opnieuw; je gegevens blijven bewaard.");
     } finally {
       setExporting(false);
     }
@@ -77,17 +82,16 @@ export function AccountSettings() {
             </div>
             <div>
               <dt>Taal voor hulp</dt>
-              <dd>
-                {mode === "nl-en" ? "English" : mode === "nl-fa" ? "فارسی" : "فارسی · English"}
-              </dd>
+              <dd>{mode === "nl-en" ? "English" : mode === "nl-fa" ? "فارسی" : "فارسی · English"}</dd>
             </div>
           </dl>
         )}
         <p className="muted small-text">
-          Accountgegevens komen uit je aanmelding. Je studiegegevens blijven aan
-          dit account gekoppeld.
+          Accountgegevens komen uit je aanmelding. Je studiegegevens blijven aan dit account gekoppeld.
         </p>
-        <a className="button secondary" href="/.auth/logout?post_logout_redirect_uri=/" onClick={clearDrafts}>Afmelden</a>
+        <a className="button secondary" href="/.auth/logout?post_logout_redirect_uri=/" onClick={clearDrafts}>
+          Afmelden
+        </a>
       </section>
       <section className="card">
         <div className="section-heading">
@@ -97,15 +101,10 @@ export function AccountSettings() {
           </span>
         </div>
         <p>
-          Download je oefenpogingen, feedback en vaardigheidsrecords als
-          JSON-bestand. Het bestand bevat persoonlijke gegevens: bewaar het
-          privé.
+          Download je oefenpogingen, feedback en vaardigheidsrecords als JSON-bestand. Het bestand bevat
+          persoonlijke gegevens: bewaar het privé.
         </p>
-        <button
-          className="button secondary"
-          onClick={() => void download()}
-          disabled={exporting}
-        >
+        <button className="button secondary" onClick={() => void download()} disabled={exporting}>
           <Icon name="download" size={18} />
           {exporting ? "Download voorbereiden…" : "Download mijn gegevens"}
         </button>
@@ -115,9 +114,8 @@ export function AccountSettings() {
           </p>
         )}
         <p className="muted small-text">
-          Opnamen staan niet in dit JSON-bestand. Spreek verwijderen en
-          bewaartermijnen af met de beheerder. Deze privéversie heeft nog geen
-          knop om je account zelf te verwijderen.
+          Opnamen staan niet in dit JSON-bestand. Spreek verwijderen en bewaartermijnen af met de beheerder.
+          Deze privéversie heeft nog geen knop om je account zelf te verwijderen.
         </p>
       </section>
       <ContentReviewQueue />

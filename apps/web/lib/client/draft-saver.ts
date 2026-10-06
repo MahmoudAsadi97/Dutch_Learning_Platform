@@ -17,11 +17,15 @@ export class DraftSaver {
 
   save(text: string): Promise<void> {
     this.pending++;
-    const operation = this.tail.then(async () => {
-      if (text === this.saved) return;
-      await this.write(text);
-      this.saved = text;
-    }).finally(() => { this.pending--; });
+    const operation = this.tail
+      .then(async () => {
+        if (text === this.saved) return;
+        await this.write(text);
+        this.saved = text;
+      })
+      .finally(() => {
+        this.pending--;
+      });
     this.tail = operation.catch(() => undefined);
     return operation;
   }

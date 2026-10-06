@@ -14,8 +14,10 @@ export function MissionCatalog() {
   useEffect(() => {
     const controller = new AbortController();
     apiJson<{ missions: MissionResponse[] }>("missions", { signal: controller.signal })
-      .then(result => setMissions(result.missions))
-      .catch(() => { if (!controller.signal.aborted) setFailed(true); });
+      .then((result) => setMissions(result.missions))
+      .catch(() => {
+        if (!controller.signal.aborted) setFailed(true);
+      });
     return () => controller.abort();
   }, [attempt]);
   return (
@@ -27,19 +29,41 @@ export function MissionCatalog() {
           <p className="muted">Elke missie combineert lezen, luisteren, spreken en schrijven.</p>
         </div>
       </div>
-      {failed ? <p role="alert">De oefeningen konden niet worden geladen. <button className="linklike" onClick={() => { setFailed(false); setAttempt(n => n + 1); }}>Opnieuw proberen</button></p>
-        : missions === null ? <p role="status">Oefeningen laden…</p>
-        : missions.length === 0 ? <p>Er zijn nog geen oefeningen beschikbaar.</p>
-        : <div className="mission-catalog" data-testid="mission-catalog">
-          {missions.map(mission => (
+      {failed ? (
+        <p role="alert">
+          De oefeningen konden niet worden geladen.{" "}
+          <button
+            className="linklike"
+            onClick={() => {
+              setFailed(false);
+              setAttempt((n) => n + 1);
+            }}
+          >
+            Opnieuw proberen
+          </button>
+        </p>
+      ) : missions === null ? (
+        <p role="status">Oefeningen laden…</p>
+      ) : missions.length === 0 ? (
+        <p>Er zijn nog geen oefeningen beschikbaar.</p>
+      ) : (
+        <div className="mission-catalog" data-testid="mission-catalog">
+          {missions.map((mission) => (
             <article className="card catalog-card" key={mission.id}>
               <span className="quiet-badge">{mission.cefr_target}-oefendoelen · 4 vaardigheden</span>
-              <h3><LearningText text={mission.title} /></h3>
-              <p><LearningText text={mission.description} /></p>
-              <Link className="button secondary" href={`/missions/${mission.id}`}>Oefen {mission.title.nl.toLowerCase()} <Icon name="arrow" size={16} /></Link>
+              <h3>
+                <LearningText text={mission.title} />
+              </h3>
+              <p>
+                <LearningText text={mission.description} />
+              </p>
+              <Link className="button secondary" href={`/missions/${mission.id}`}>
+                Oefen {mission.title.nl.toLowerCase()} <Icon name="arrow" size={16} />
+              </Link>
             </article>
           ))}
-        </div>}
+        </div>
+      )}
     </section>
   );
 }

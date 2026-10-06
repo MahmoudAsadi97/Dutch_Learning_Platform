@@ -1,12 +1,22 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { claimAudioFocus, isAudioRecording, releaseAudioFocus, stopFocusedAudio, subscribeAudioRecording, suspendAudioForRecording } from "../../lib/client/audio-focus.ts";
+import {
+  claimAudioFocus,
+  isAudioRecording,
+  releaseAudioFocus,
+  stopFocusedAudio,
+  subscribeAudioRecording,
+  suspendAudioForRecording,
+} from "../../lib/client/audio-focus.ts";
 
 test("a phrase and a legacy player cannot both own audio focus", () => {
   const first = Symbol("first");
   const next = Symbol("next");
   const stopped = [];
-  claimAudioFocus(first, () => { stopped.push("first"); releaseAudioFocus(first); });
+  claimAudioFocus(first, () => {
+    stopped.push("first");
+    releaseAudioFocus(first);
+  });
   claimAudioFocus(next, () => stopped.push("next"));
   assert.deepEqual(stopped, ["first"]);
   releaseAudioFocus(first);
@@ -34,13 +44,20 @@ test("microphone permission and recording stop examples and block playback until
   const second = suspendAudioForRecording();
   assert.equal(stops, 1);
   assert.equal(isAudioRecording(), true);
-  assert.equal(claimAudioFocus(Symbol("accidental click"), () => {}), false);
-  first(); first();
+  assert.equal(
+    claimAudioFocus(Symbol("accidental click"), () => {}),
+    false,
+  );
+  first();
+  first();
   assert.equal(isAudioRecording(), true);
   second();
   assert.equal(isAudioRecording(), false);
   const owner = Symbol("after recording");
-  assert.equal(claimAudioFocus(owner, () => {}), true);
+  assert.equal(
+    claimAudioFocus(owner, () => {}),
+    true,
+  );
   releaseAudioFocus(owner);
   unsubscribe();
   assert.deepEqual(states, [true, true, true, false]);

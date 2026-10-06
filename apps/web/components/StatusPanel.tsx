@@ -81,42 +81,45 @@ export function StatusPanel() {
   if (!data) {
     return (
       <p role="status" aria-live="polite">
-        Status laden…{slow && " De eerste aanvraag kan even duren (routes worden gecompileerd, providers worden gecontroleerd)."}
+        Status laden…
+        {slow &&
+          " De eerste aanvraag kan even duren (routes worden gecompileerd, providers worden gecontroleerd)."}
       </p>
     );
   }
   return (
     <div>
       <p data-testid="principal">
-        Aangemeld als <strong>{data.principal.email}</strong> via <code>{data.principal.identity_provider}</code>
+        Aangemeld als <strong>{data.principal.email}</strong> via{" "}
+        <code>{data.principal.identity_provider}</code>
       </p>
       <p className="small-text muted" data-testid="release-commit">
         Versie van de API: <code>{String(data.configuration.release_commit ?? "unknown")}</code>
         {" · "}omgeving <code>{String(data.configuration.app_env ?? "")}</code>
       </p>
       <div className="table-scroll" role="region" aria-label="Systeemdetails" tabIndex={0}>
-      <table className="plain" data-testid="preflight">
-        <thead>
-          <tr>
-            <th scope="col">Onderdeel</th>
-            <th scope="col">Modus</th>
-            <th scope="col">Status</th>
-            <th scope="col">Detail</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.items.map((item) => (
-            <tr key={item.component}>
-              <td>{item.component}</td>
-              <td>{item.mode}</td>
-              <td>
-                <span className={`label ${STATUS_CLASS[item.status] ?? "warn"}`}>{item.status}</span>
-              </td>
-              <td className="muted">{item.detail}</td>
+        <table className="plain" data-testid="preflight">
+          <thead>
+            <tr>
+              <th scope="col">Onderdeel</th>
+              <th scope="col">Modus</th>
+              <th scope="col">Status</th>
+              <th scope="col">Detail</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.items.map((item) => (
+              <tr key={item.component}>
+                <td>{item.component}</td>
+                <td>{item.mode}</td>
+                <td>
+                  <span className={`label ${STATUS_CLASS[item.status] ?? "warn"}`}>{item.status}</span>
+                </td>
+                <td className="muted">{item.detail}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

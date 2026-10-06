@@ -3,7 +3,9 @@ import { expect, test } from "@playwright/test";
 const OWNER = process.env.E2E_OWNER_EMAIL ?? "owner@example.com";
 
 test.describe("lesson shell: reading step", () => {
-  test("renders the fixture reading step through the proxy with labels, help and questions", async ({ page }, testInfo) => {
+  test("renders the fixture reading step through the proxy with labels, help and questions", async ({
+    page,
+  }, testInfo) => {
     await page.goto("/missions/appointment-change");
 
     const text = page.getByTestId("reading-text");
@@ -56,10 +58,15 @@ test.describe("lesson shell: reading step", () => {
     // four skill records exist for the learner and mission
     await expect(page.getByTestId("skill-records").locator("li")).toHaveCount(4);
 
-    await page.screenshot({ path: testInfo.outputPath(`lesson-${testInfo.project.name}.png`), fullPage: true });
+    await page.screenshot({
+      path: testInfo.outputPath(`lesson-${testInfo.project.name}.png`),
+      fullPage: true,
+    });
   });
 
-  test("the session card starts a session through the CSRF-protected proxy path or shows the resumed one", async ({ page }) => {
+  test("the session card starts a session through the CSRF-protected proxy path or shows the resumed one", async ({
+    page,
+  }) => {
     await page.goto("/missions/appointment-change");
     const start = page.getByRole("button", { name: "Start een oefensessie" });
     const id = page.getByTestId("session-saved");

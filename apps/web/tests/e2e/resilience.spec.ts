@@ -2,13 +2,18 @@ import { expect, test } from "@playwright/test";
 
 /** Disconnected state and recovery: the banner appears when the API stops answering and clears on retry. */
 test.describe("resilience", () => {
-  test("the connection banner appears when calls fail and clears after a successful retry", async ({ page }) => {
+  test("the connection banner appears when calls fail and clears after a successful retry", async ({
+    page,
+  }) => {
     await page.goto("/settings");
     await expect(page.getByTestId("usage-panel")).toBeVisible();
     await expect(page.getByTestId("connection-banner")).toHaveCount(0);
 
     await page.route("**/api/**", (route) => route.abort("connectionrefused"));
-    await page.getByRole("navigation", { name: "Hoofdmenu", exact: true }).getByRole("link", { name: "Praktijkgesprekken" }).click();
+    await page
+      .getByRole("navigation", { name: "Hoofdmenu", exact: true })
+      .getByRole("link", { name: "Praktijkgesprekken" })
+      .click();
     const banner = page.getByTestId("connection-banner");
     await expect(banner).toBeVisible();
     await expect(banner).toHaveAttribute("data-state", "api-down");

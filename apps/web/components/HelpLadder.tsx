@@ -51,7 +51,13 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
   if (disabled) {
     return (
       <p className="muted" data-help="disabled">
-        <LearningText text={{nl: "Geen hulp beschikbaar in deze stap.", en: "Help is not available in this independent step.", fa: "در این بخش کمکی در دسترس نیست."}} />
+        <LearningText
+          text={{
+            nl: "Geen hulp beschikbaar in deze stap.",
+            en: "Help is not available in this independent step.",
+            fa: "در این بخش کمکی در دسترس نیست.",
+          }}
+        />
       </p>
     );
   }
@@ -65,15 +71,21 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
               <LearningText text={KIND_LABEL[rung.kind]} />
             </div>
             {/* Glosses mix "Dutch = Persian" pairs: dir=auto keeps the pair order readable while each Persian run stays RTL. */}
-            {(rung.direction === "ltr" || showPersian) && <div
-              className={`rung ${rung.direction === "rtl" ? "fa" : "nl"}`}
-              lang={rung.direction === "rtl" ? "fa" : "nl"}
-              dir={rung.kind === "gloss_fa" ? "auto" : rung.direction}
-              style={rung.kind === "gloss_fa" ? { textAlign: "start" } : undefined}
-            >
-              {rung.text}
-            </div>}
-            {showEnglish && rung.en && <div className="rung" lang="en">{rung.en}</div>}
+            {(rung.direction === "ltr" || showPersian) && (
+              <div
+                className={`rung ${rung.direction === "rtl" ? "fa" : "nl"}`}
+                lang={rung.direction === "rtl" ? "fa" : "nl"}
+                dir={rung.kind === "gloss_fa" ? "auto" : rung.direction}
+                style={rung.kind === "gloss_fa" ? { textAlign: "start" } : undefined}
+              >
+                {rung.text}
+              </div>
+            )}
+            {showEnglish && rung.en && (
+              <div className="rung" lang="en">
+                {rung.en}
+              </div>
+            )}
           </li>
         ))}
       </ol>
@@ -85,12 +97,18 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
           aria-busy={busy}
           onClick={() => void reveal()}
         >
-          <LearningText text={{nl: `Hulp niveau ${next.level}`, en: `Hint ${next.level}`, fa: `کمک سطح ${next.level}`}} />
+          <LearningText
+            text={{ nl: `Hulp niveau ${next.level}`, en: `Hint ${next.level}`, fa: `کمک سطح ${next.level}` }}
+          />
         </button>
       ) : (
         <p className="muted">Alle hulp is getoond.</p>
       )}
-      {error && <p className="error" role="alert">{error}</p>}
+      {error && (
+        <p className="error" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

@@ -23,9 +23,7 @@ export type IconName =
   | "play";
 const paths: Record<IconName, ReactNode> = {
   home: <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z" />,
-  book: (
-    <path d="M12 5v16M12 5C8 2 3 3 3 3v16s5-1 9 2c4-3 9-2 9-2V3s-5-1-9 2Z" />
-  ),
+  book: <path d="M12 5v16M12 5C8 2 3 3 3 3v16s5-1 9 2c4-3 9-2 9-2V3s-5-1-9 2Z" />,
   headphones: (
     <>
       <path d="M4 14v-3a8 8 0 0 1 16 0v3" />
@@ -91,9 +89,7 @@ const paths: Record<IconName, ReactNode> = {
     </>
   ),
   close: <path d="m6 6 12 12M6 18 18 6" />,
-  volume: (
-    <path d="m11 4-6 5H2v6h3l6 5ZM16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" />
-  ),
+  volume: <path d="m11 4-6 5H2v6h3l6 5ZM16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" />,
 };
 export function Icon({
   name,

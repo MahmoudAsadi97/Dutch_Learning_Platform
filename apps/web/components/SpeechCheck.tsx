@@ -12,8 +12,20 @@ interface TranscriptResponse {
   transcript: { text: string; language: string; provider: string; model: string; latency_ms: number };
   audio: {
     asset_id: string;
-    source: { container: string; codec: string; duration_seconds: number; sample_rate: number; channels: number };
-    canonical: { container: string; codec: string; duration_seconds: number; sample_rate: number; channels: number };
+    source: {
+      container: string;
+      codec: string;
+      duration_seconds: number;
+      sample_rate: number;
+      channels: number;
+    };
+    canonical: {
+      container: string;
+      codec: string;
+      duration_seconds: number;
+      sample_rate: number;
+      channels: number;
+    };
   };
 }
 
@@ -33,7 +45,12 @@ export function SpeechCheck() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const recordingUrlRef = useRef("");
   const [recordingUrl, setRecordingUrl] = useState("");
-  useEffect(() => () => { if (recordingUrlRef.current) URL.revokeObjectURL(recordingUrlRef.current); }, []);
+  useEffect(
+    () => () => {
+      if (recordingUrlRef.current) URL.revokeObjectURL(recordingUrlRef.current);
+    },
+    [],
+  );
   const playback = usePlayback();
 
   async function upload(recording: Recording) {
@@ -54,7 +71,11 @@ export function SpeechCheck() {
       setUploadPhase("done");
     } catch (cause) {
       setUploadPhase("error");
-      setError(cause instanceof ApiError ? "Uw opname kon niet worden verwerkt. Probeer opnieuw." : "Upload mislukt.");
+      setError(
+        cause instanceof ApiError
+          ? "Uw opname kon niet worden verwerkt. Probeer opnieuw."
+          : "Upload mislukt.",
+      );
     }
   }
 
@@ -73,16 +94,25 @@ export function SpeechCheck() {
       const response = await apiFetch("speech/synthesize", { method: "POST", body: { text: ttsText } });
       if (!response.ok) {
         const payload = (await response.json().catch(() => ({}))) as { detail?: string };
-        throw new ApiError(response.status, payload.detail ?? response.statusText, response.headers.get("x-request-id") ?? "");
+        throw new ApiError(
+          response.status,
+          payload.detail ?? response.statusText,
+          response.headers.get("x-request-id") ?? "",
+        );
       }
       setTtsLabel(response.headers.get("x-audio-label") ?? "unknown");
       const wav = await response.blob();
       const outcome = await playback.play(wav);
       if (audioRef.current) audioRef.current.src = outcome.url;
       if (outcome.failed) setError("Afspelen mislukt; gebruik de afspeelknop van de speler.");
-      else if (outcome.blocked) setError("Automatisch afspelen is geblokkeerd; gebruik de afspeelknop van de speler.");
+      else if (outcome.blocked)
+        setError("Automatisch afspelen is geblokkeerd; gebruik de afspeelknop van de speler.");
     } catch (cause) {
-      setError(cause instanceof ApiError ? `Synthese mislukt: ${cause.detail}` : "Afspelen mislukt; gebruik de afspeelknop van de speler.");
+      setError(
+        cause instanceof ApiError
+          ? `Synthese mislukt: ${cause.detail}`
+          : "Afspelen mislukt; gebruik de afspeelknop van de speler.",
+      );
     } finally {
       setTtsBusy(false);
     }
@@ -90,7 +120,11 @@ export function SpeechCheck() {
 
   const mimeType = recorder.mimeType;
   const effectivePhase: Phase =
-    recorder.phase === "unsupported" ? "unsupported" : recorder.phase === "recording" ? "recording" : uploadPhase;
+    recorder.phase === "unsupported"
+      ? "unsupported"
+      : recorder.phase === "recording"
+        ? "recording"
+        : uploadPhase;
   const recording = effectivePhase === "recording";
   const shownError = error || recorder.error;
 
@@ -100,12 +134,23 @@ export function SpeechCheck() {
         <span className="eyebrow">01 · JOUW STEM</span>
         <h2 id="record-heading">Opnemen en transcriberen</h2>
         <p className="muted">
-          Houd de knop ingedrukt en zeg een Nederlandse zin, bijvoorbeeld: <em lang="nl">Ik wil mijn afspraak verzetten.</em>
+          Houd de knop ingedrukt en zeg een Nederlandse zin, bijvoorbeeld:{" "}
+          <em lang="nl">Ik wil mijn afspraak verzetten.</em>
         </p>
-        <div className={`mic-orbit ${recording ? "recording" : ""}`} aria-hidden="true"><Icon name="mic" size={32} /></div>
-        <details className="lesson-details"><summary>Opnameformaat</summary><p className="mono" data-testid="mime-type">
-          MediaRecorder: {mimeType === undefined ? "controleren…" : mimeType === null ? "niet ondersteund" : mimeType || "standaardformaat van de browser"}
-        </p></details>
+        <div className={`mic-orbit ${recording ? "recording" : ""}`} aria-hidden="true">
+          <Icon name="mic" size={32} />
+        </div>
+        <details className="lesson-details">
+          <summary>Opnameformaat</summary>
+          <p className="mono" data-testid="mime-type">
+            MediaRecorder:{" "}
+            {mimeType === undefined
+              ? "controleren…"
+              : mimeType === null
+                ? "niet ondersteund"
+                : mimeType || "standaardformaat van de browser"}
+          </p>
+        </details>
         <button
           type="button"
           className="button talk"
@@ -114,7 +159,11 @@ export function SpeechCheck() {
           {...talkButtonHandlers(() => void recorder.start(), recorder.stop)}
           data-testid="talk-button"
         >
-          {recording ? "Opname loopt… laat los om te stoppen" : effectivePhase === "uploading" ? "Verwerken…" : "Houd ingedrukt om te spreken"}
+          {recording
+            ? "Opname loopt… laat los om te stoppen"
+            : effectivePhase === "uploading"
+              ? "Verwerken…"
+              : "Houd ingedrukt om te spreken"}
         </button>
         <p role="status" aria-live="polite" data-testid="phase">
           {effectivePhase === "idle" && "Klaar om op te nemen."}
@@ -124,7 +173,21 @@ export function SpeechCheck() {
           {effectivePhase === "unsupported" && "Deze browser ondersteunt MediaRecorder niet."}
           {effectivePhase === "error" && "Er ging iets mis."}
         </p>
-        {recordingUrl && <div className="record-playback"><h3>Jouw opname</h3><audio controls src={recordingUrl} aria-label="Luister naar je eigen opname" style={{ width: "100%" }} /><p className="small-text muted">Alleen in dit tabblad beschikbaar. De opname wordt voor deze microfoontest niet in de opslag bewaard.</p></div>}
+        {recordingUrl && (
+          <div className="record-playback">
+            <h3>Jouw opname</h3>
+            <audio
+              controls
+              src={recordingUrl}
+              aria-label="Luister naar je eigen opname"
+              style={{ width: "100%" }}
+            />
+            <p className="small-text muted">
+              Alleen in dit tabblad beschikbaar. De opname wordt voor deze microfoontest niet in de opslag
+              bewaard.
+            </p>
+          </div>
+        )}
         {shownError && (
           <p className="error" role="alert">
             {shownError}
@@ -144,7 +207,10 @@ export function SpeechCheck() {
       <section className="card" aria-labelledby="tts-heading">
         <span className="eyebrow">02 · LUISTER EN VERGELIJK</span>
         <h2 id="tts-heading">Synthetische stem</h2>
-        <p className="muted">Een kunstmatige stem als luistervoorbeeld, altijd gelabeld. Geen menselijke opname of uitspraakbeoordeling.</p>
+        <p className="muted">
+          Een kunstmatige stem als luistervoorbeeld, altijd gelabeld. Geen menselijke opname of
+          uitspraakbeoordeling.
+        </p>
         <label htmlFor="tts-text" className="visually-hidden">
           Tekst om uit te spreken
         </label>
@@ -157,7 +223,13 @@ export function SpeechCheck() {
           maxLength={600}
         />
         <p>
-          <button type="button" className="button" onClick={() => void playSynthesis()} disabled={ttsBusy} data-testid="tts-button">
+          <button
+            type="button"
+            className="button"
+            onClick={() => void playSynthesis()}
+            disabled={ttsBusy}
+            data-testid="tts-button"
+          >
             {ttsBusy ? "Bezig…" : "Speel af"}
           </button>
         </p>

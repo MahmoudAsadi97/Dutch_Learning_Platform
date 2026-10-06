@@ -13,7 +13,10 @@ test.describe("microphone check", () => {
     await page.mouse.down();
     await expect(button).toHaveAttribute("aria-pressed", "true");
     await page.waitForTimeout(1500);
-    const transcription = page.waitForResponse(response => response.url().includes("/api/speech/transcribe") && response.request().method() === "POST");
+    const transcription = page.waitForResponse(
+      (response) =>
+        response.url().includes("/api/speech/transcribe") && response.request().method() === "POST",
+    );
     await page.mouse.up();
 
     await expect(page.getByTestId("phase")).toHaveText("Klaar.", { timeout: 30_000 });

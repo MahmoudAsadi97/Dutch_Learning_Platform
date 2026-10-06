@@ -42,11 +42,17 @@ type LoadState =
   | { kind: "error"; message: string; requestId: string }
   | { kind: "ready"; mission: MissionResponse };
 
-async function loadMission(missionId: string): Promise<{ mission: MissionResponse; records: SkillRecordView[]; sessions: Record<Variant, SessionDetail | null> }> {
+async function loadMission(missionId: string): Promise<{
+  mission: MissionResponse;
+  records: SkillRecordView[];
+  sessions: Record<Variant, SessionDetail | null>;
+}> {
   const mission = await apiJson<MissionResponse>(`missions/${missionId}`);
   const progress = await apiJson<{ skill_records: SkillRecordView[] }>("progress");
   // An active session per variant is resumed, so a reload never loses the conversation.
-  const active = await apiJson<{ sessions: PracticeSessionView[] }>(`practice/sessions?mission_id=${missionId}&status=active`);
+  const active = await apiJson<{ sessions: PracticeSessionView[] }>(
+    `practice/sessions?mission_id=${missionId}&status=active`,
+  );
   const sessions: Record<Variant, SessionDetail | null> = { base: null, transfer: null };
   for (const variant of ["base", "transfer"] as const) {
     const found = active.sessions.find((s) => s.variant === variant);
@@ -67,7 +73,8 @@ function mergeDetail(current: SessionDetail | null, incoming: SessionDetail): Se
     return [...map.values()];
   };
   const at = (value: string) => Date.parse(value) || 0;
-  const newerSession = at(incoming.session.updated_at) >= at(current.session.updated_at) ? incoming.session : current.session;
+  const newerSession =
+    at(incoming.session.updated_at) >= at(current.session.updated_at) ? incoming.session : current.session;
   const drafts = { ...current.drafts };
   for (const [key, draft] of Object.entries(incoming.drafts ?? {})) {
     if (!drafts[key] || at(draft.saved_at) >= at(drafts[key].saved_at)) drafts[key] = draft;
@@ -92,9 +99,15 @@ function describeError(error: unknown): { message: string; requestId: string } {
 export function LessonShell({ missionId }: Props) {
   const [state, setState] = useState<LoadState>({ kind: "loading" });
   const [activeKey, setActiveKey] = useState<string | null>(null);
-  const [sessions, setSessions] = useState<Record<Variant, SessionDetail | null>>({ base: null, transfer: null });
+  const [sessions, setSessions] = useState<Record<Variant, SessionDetail | null>>({
+    base: null,
+    transfer: null,
+  });
   // One request id per variant for starting a session: reused on retry, replaced only after a deliberate restart.
-  const startRequestIdsRef = useRef<Record<Variant, string>>({ base: newRequestId(), transfer: newRequestId() });
+  const startRequestIdsRef = useRef<Record<Variant, string>>({
+    base: newRequestId(),
+    transfer: newRequestId(),
+  });
   const [records, setRecords] = useState<SkillRecordView[]>([]);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string>("");
@@ -104,10 +117,13 @@ export function LessonShell({ missionId }: Props) {
   const beforeLeaveRef = useRef<(() => Promise<boolean>) | null>(null);
   const registerNavigationGuard = useNavigationGuard();
   const [navigating, setNavigating] = useState(false);
-  const registerBeforeLeave = useCallback((guard: (() => Promise<boolean>) | null) => {
-    beforeLeaveRef.current = guard;
-    registerNavigationGuard(guard);
-  }, [registerNavigationGuard]);
+  const registerBeforeLeave = useCallback(
+    (guard: (() => Promise<boolean>) | null) => {
+      beforeLeaveRef.current = guard;
+      registerNavigationGuard(guard);
+    },
+    [registerNavigationGuard],
+  );
 
   async function selectStep(key: string) {
     if (key === activeKey || navigating) return;
@@ -185,7 +201,9 @@ export function LessonShell({ missionId }: Props) {
       const detail = await ensureSession(variant);
       setNotice(detail.turns.length > 0 || detail.evidence.length > 0 ? "Sessie hervat." : "Sessie gestart.");
     } catch (error) {
-      setNotice(error instanceof ApiError ? `Kon geen sessie starten: ${error.detail}` : "Kon geen sessie starten.");
+      setNotice(
+        error instanceof ApiError ? `Kon geen sessie starten: ${error.detail}` : "Kon geen sessie starten.",
+      );
     } finally {
       setBusy(false);
     }
@@ -206,7 +224,11 @@ export function LessonShell({ missionId }: Props) {
       const detail = await ensureSession(variant);
       setNotice(detail.session.id !== current?.session.id ? "Nieuwe sessie gestart." : "Sessie hervat.");
     } catch (error) {
-      setNotice(error instanceof ApiError ? `Kon geen nieuwe sessie starten: ${error.detail}` : "Kon geen nieuwe sessie starten.");
+      setNotice(
+        error instanceof ApiError
+          ? `Kon geen nieuwe sessie starten: ${error.detail}`
+          : "Kon geen nieuwe sessie starten.",
+      );
     } finally {
       setBusy(false);
     }
@@ -263,17 +285,34 @@ export function LessonShell({ missionId }: Props) {
             {mission.cefr_target}-oefendoelen · {steps.length} stappen
           </p>
           <p>
-            <ContentLabel status={mission.review.unreviewed === 0 ? "reviewed" : "unreviewed"} labelNl={mission.labels.unreviewed_nl} labelFa={mission.labels.unreviewed_fa} />
-
+            <ContentLabel
+              status={mission.review.unreviewed === 0 ? "reviewed" : "unreviewed"}
+              labelNl={mission.labels.unreviewed_nl}
+              labelFa={mission.labels.unreviewed_fa}
+            />
           </p>
           <ol className="step-list">
             {steps.map((step, index) => {
               const progress = sessions[step.variant]?.session.step_progress[step.key];
               return (
                 <li key={step.key}>
-                  <button type="button" disabled={navigating} aria-current={active?.key === step.key ? "step" : undefined} onClick={() => void selectStep(step.key)}>
-                    <span className="step-number" aria-hidden="true">{progress?.completed ? "✓" : index + 1}</span>
-                    <span><span className="step-skill">{step.variant === "transfer" ? "Zelfstandig" : SKILL_LABEL[step.skill]?.nl ?? step.skill}</span>{step.title.nl}</span>
+                  <button
+                    type="button"
+                    disabled={navigating}
+                    aria-current={active?.key === step.key ? "step" : undefined}
+                    onClick={() => void selectStep(step.key)}
+                  >
+                    <span className="step-number" aria-hidden="true">
+                      {progress?.completed ? "✓" : index + 1}
+                    </span>
+                    <span>
+                      <span className="step-skill">
+                        {step.variant === "transfer"
+                          ? "Zelfstandig"
+                          : (SKILL_LABEL[step.skill]?.nl ?? step.skill)}
+                      </span>
+                      {step.title.nl}
+                    </span>
                   </button>
                 </li>
               );
@@ -283,9 +322,16 @@ export function LessonShell({ missionId }: Props) {
         <div className="card">
           <h2 style={{ fontSize: "1rem" }}>Sessie</h2>
           {baseSession ? (
-            <p className="small-text muted" data-testid="session-saved">Je werk wordt tijdens het oefenen bewaard.</p>
+            <p className="small-text muted" data-testid="session-saved">
+              Je werk wordt tijdens het oefenen bewaard.
+            </p>
           ) : (
-            <button type="button" className="button" onClick={() => void startSession("base")} disabled={busy}>
+            <button
+              type="button"
+              className="button"
+              onClick={() => void startSession("base")}
+              disabled={busy}
+            >
               Start een oefensessie
             </button>
           )}
@@ -300,7 +346,8 @@ export function LessonShell({ missionId }: Props) {
           <ul style={{ paddingInlineStart: "1.1rem", margin: 0 }} data-testid="skill-records">
             {records.map((record) => (
               <li key={record.id}>
-                {SKILL_LABEL[record.skill]?.nl ?? record.skill}: <span className="muted">{recordStatus[record.status] ?? record.status}</span>
+                {SKILL_LABEL[record.skill]?.nl ?? record.skill}:{" "}
+                <span className="muted">{recordStatus[record.status] ?? record.status}</span>
               </li>
             ))}
             {records.length === 0 && <li className="muted">nog geen records</li>}
@@ -359,9 +406,15 @@ export function LessonShell({ missionId }: Props) {
               <LearningText text={active.title} />
             </h2>
             <p>
-              <ContentLabel status={active.instructions.review_status} labelNl={mission.labels.unreviewed_nl} labelFa={mission.labels.unreviewed_fa} />
+              <ContentLabel
+                status={active.instructions.review_status}
+                labelNl={mission.labels.unreviewed_nl}
+                labelFa={mission.labels.unreviewed_fa}
+              />
             </p>
-            <p><LearningText text={active.instructions} /></p>
+            <p>
+              <LearningText text={active.instructions} />
+            </p>
             <p className="muted">Deze stap ({active.payload.type}) heeft nog geen weergave.</p>
           </article>
         ) : null}

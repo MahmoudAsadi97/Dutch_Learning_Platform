@@ -45,7 +45,9 @@ test.describe("listening and writing steps", () => {
     // a reload shows the submitted draft again
     await page.reload();
     await page.getByRole("button", { name: /Schrijven: het bericht/ }).click();
-    await expect(page.locator('[data-step="write-message"]').getByTestId("writing-input")).toHaveValue(message);
+    await expect(page.locator('[data-step="write-message"]').getByTestId("writing-input")).toHaveValue(
+      message,
+    );
     await expect(page.locator('[data-step="write-message"]').getByTestId("writing-done")).toBeVisible();
   });
 
@@ -59,7 +61,12 @@ test.describe("listening and writing steps", () => {
     expect(response.status()).toBe(200);
     expect(response.headers()["content-disposition"]).toContain("learner-export-");
     const body = (await response.json()) as {
-      sessions: { mission_id: string; variant: string; evidence: { kind: string; step_key: string }[]; feedback: unknown[] }[];
+      sessions: {
+        mission_id: string;
+        variant: string;
+        evidence: { kind: string; step_key: string }[];
+        feedback: unknown[];
+      }[];
       skill_records: { mission_id: string; skill: string; status: string }[];
     };
     const base = body.sessions.find((s) => s.variant === "base" && s.mission_id === "appointment-change");
@@ -69,6 +76,11 @@ test.describe("listening and writing steps", () => {
     expect(kinds.has("typed_text")).toBe(true);
     expect(base!.evidence.some((e) => e.kind === "help_used" && e.step_key === "read-reminder")).toBe(true);
     expect(base!.feedback.length).toBeGreaterThanOrEqual(1);
-    expect(body.skill_records.filter((r) => r.status === "practised" && r.mission_id === "appointment-change").map((r) => r.skill).sort()).toEqual(["listening", "reading", "speaking", "writing"]);
+    expect(
+      body.skill_records
+        .filter((r) => r.status === "practised" && r.mission_id === "appointment-change")
+        .map((r) => r.skill)
+        .sort(),
+    ).toEqual(["listening", "reading", "speaking", "writing"]);
   });
 });

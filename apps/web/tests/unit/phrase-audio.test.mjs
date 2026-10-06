@@ -2,21 +2,51 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { PhraseAudioController, splitSpeechText } from "../../lib/client/phrase-audio.ts";
 
-const flush = () => new Promise(resolve => setImmediate(resolve));
+const flush = () => new Promise((resolve) => setImmediate(resolve));
 function fixture(synthesize = async () => ({ blob: new Blob(["wav"]) }), limits) {
   const players = [];
   const created = [];
   const revoked = [];
   const calls = [];
-  const controller = new PhraseAudioController({
-    async synthesize(text, signal) { calls.push({ text, signal }); return synthesize(text, signal); },
-    createUrl(blob) { const url = `blob:${created.length}`; created.push({ url, blob }); return url; },
-    revokeUrl(url) { revoked.push(url); },
-    player(url) {
-      const item = { url, onended: null, onerror: null, pauses: 0, loads: 0, removed: [], play: () => Promise.resolve(), pause() { this.pauses++; }, load() { this.loads++; }, removeAttribute(value) { this.removed.push(value); } };
-      players.push(item); return item;
+  const controller = new PhraseAudioController(
+    {
+      async synthesize(text, signal) {
+        calls.push({ text, signal });
+        return synthesize(text, signal);
+      },
+      createUrl(blob) {
+        const url = `blob:${created.length}`;
+        created.push({ url, blob });
+        return url;
+      },
+      revokeUrl(url) {
+        revoked.push(url);
+      },
+      player(url) {
+        const item = {
+          url,
+          onended: null,
+          onerror: null,
+          pauses: 0,
+          loads: 0,
+          removed: [],
+          play: () => Promise.resolve(),
+          pause() {
+            this.pauses++;
+          },
+          load() {
+            this.loads++;
+          },
+          removeAttribute(value) {
+            this.removed.push(value);
+          },
+        };
+        players.push(item);
+        return item;
+      },
     },
-  }, limits);
+    limits,
+  );
   return { controller, players, created, revoked, calls };
 }
 async function finish(f, owner, text) {
@@ -35,7 +65,12 @@ test("audio is never fetched or played until explicitly requested", () => {
 
 test("a stopped pending request cannot start stale speech even when the provider ignores cancellation", async () => {
   let release;
-  const f = fixture(() => new Promise(resolve => { release = resolve; }));
+  const f = fixture(
+    () =>
+      new Promise((resolve) => {
+        release = resolve;
+      }),
+  );
   const attempt = f.controller.play("first", "Dag.");
   await flush();
   f.controller.stop("first");
@@ -84,10 +119,12 @@ test("oversize clips are playable but not retained in the replay cache", async (
 });
 
 test("long passages preserve text and respect the speech endpoint length limit", () => {
-  const original = Array.from({ length: 400 }, (_, index) => index % 3 ? "goedemorgen" : "  dag\n").join(" ");
+  const original = Array.from({ length: 400 }, (_, index) => (index % 3 ? "goedemorgen" : "  dag\n")).join(
+    " ",
+  );
   const chunks = splitSpeechText(original);
   assert.ok(chunks.length > 1);
-  assert.ok(chunks.every(chunk => chunk.length <= 600 && chunk.length > 0));
+  assert.ok(chunks.every((chunk) => chunk.length <= 600 && chunk.length > 0));
   assert.equal(chunks.join(" "), original.trim().replace(/\s+/g, " "));
   assert.deepEqual(splitSpeechText(" \n "), []);
   assert.throws(() => splitSpeechText("x".repeat(601)), /too long/);
@@ -115,7 +152,9 @@ test("playback errors are observed and release the audio element", async () => {
 });
 
 test("provider internals are replaced by a safe error state", async () => {
-  const f = fixture(async () => { throw new Error("secret-provider-diagnostics"); });
+  const f = fixture(async () => {
+    throw new Error("secret-provider-diagnostics");
+  });
   await f.controller.play("first", "Dag.");
   assert.equal(f.controller.getSnapshot().error, "unavailable");
   assert.equal(f.players.length, 0);
@@ -129,8 +168,19 @@ test("late rejection of an interrupted play promise is observed and cannot overw
     createUrl: () => "blob:late",
     revokeUrl: () => {},
     player: () => {
-      const value = { onended: null, onerror: null, pause() {}, load() {}, removeAttribute() {}, play: () => new Promise((_, reject) => { rejectPlay = reject; }) };
-      players.push(value); return value;
+      const value = {
+        onended: null,
+        onerror: null,
+        pause() {},
+        load() {},
+        removeAttribute() {},
+        play: () =>
+          new Promise((_, reject) => {
+            rejectPlay = reject;
+          }),
+      };
+      players.push(value);
+      return value;
     },
   });
   const result = controller.play("old", "Dag.");

@@ -28,7 +28,15 @@ export function countWords(text: string): number {
  * The writing step: a message typed in Dutch. The draft autosaves into the session (not evidence);
  * the submitted message is stored as typed evidence with its word count and the required words found.
  */
-export function WritingStep({ step, labels, detail, ensureSession, onDetail, onProgressChanged, registerBeforeLeave }: Props) {
+export function WritingStep({
+  step,
+  labels,
+  detail,
+  ensureSession,
+  onDetail,
+  onProgressChanged,
+  registerBeforeLeave,
+}: Props) {
   const { payload } = step;
   const draft = detail?.drafts[step.key];
   const progress = detail?.session.step_progress[step.key];
@@ -104,14 +112,19 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
     try {
       await saverRef.current!.save(next);
     } catch (cause) {
-      if (mountedRef.current) setSaveError(cause instanceof ApiError ? `Niet bewaard: ${cause.detail}` : "Niet bewaard: geen verbinding.");
+      if (mountedRef.current)
+        setSaveError(
+          cause instanceof ApiError ? `Niet bewaard: ${cause.detail}` : "Niet bewaard: geen verbinding.",
+        );
       throw cause;
     } finally {
       if (mountedRef.current) setSaving(false);
     }
   }
 
-  useEffect(() => { persistRef.current = persist; });
+  useEffect(() => {
+    persistRef.current = persist;
+  });
 
   async function submit() {
     if (timerRef.current !== null) {
@@ -130,7 +143,11 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
       onProgressChanged();
       setNotice(
         `Ingediend: ${result.word_count} woorden.` +
-          (result.missing.length > 0 ? ` Ontbreekt nog: ${result.missing.join(", ")}.` : payload.must_include.length ? " Alle vereiste woorden staan erin." : " Lees uw bericht na en vraag feedback."),
+          (result.missing.length > 0
+            ? ` Ontbreekt nog: ${result.missing.join(", ")}.`
+            : payload.must_include.length
+              ? " Alle vereiste woorden staan erin."
+              : " Lees uw bericht na en vraag feedback."),
       );
     } catch (cause) {
       setError(cause instanceof ApiError ? cause.detail : "Indienen mislukt: geen verbinding.");
@@ -151,11 +168,18 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
       <section className="card" aria-labelledby="prompt-heading">
         <h3 id="prompt-heading">Opdracht</h3>
         <p>
-          <ContentLabel status={payload.prompt.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
+          <ContentLabel
+            status={payload.prompt.review_status}
+            labelNl={labels.unreviewed_nl}
+            labelFa={labels.unreviewed_fa}
+          />
         </p>
-        <p><LearningText text={payload.prompt} /></p>
+        <p>
+          <LearningText text={payload.prompt} />
+        </p>
         <p className="muted" style={{ fontSize: "0.85rem" }}>
-          {payload.min_words}–{payload.max_words} woorden{payload.must_include.length > 0 && ` · gebruik: ${payload.must_include.join(", ")}`}
+          {payload.min_words}–{payload.max_words} woorden
+          {payload.must_include.length > 0 && ` · gebruik: ${payload.must_include.join(", ")}`}
         </p>
       </section>
 
@@ -195,19 +219,36 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
             <span className="label ok">alle vereiste woorden</span>
           )}
           <span className="muted" data-testid="autosave-status">
-            {saveError ? saveError : saving || !saverRef.current?.isSaved(text) ? "wijzigingen bewaren…" : savedAt ? `bewaard ${new Date(savedAt).toLocaleTimeString("nl-BE", { hour: "2-digit", minute: "2-digit" })}` : "nog niet bewaard"}
+            {saveError
+              ? saveError
+              : saving || !saverRef.current?.isSaved(text)
+                ? "wijzigingen bewaren…"
+                : savedAt
+                  ? `bewaard ${new Date(savedAt).toLocaleTimeString("nl-BE", { hour: "2-digit", minute: "2-digit" })}`
+                  : "nog niet bewaard"}
           </span>
         </p>
         {saveError && (
           <p role="alert">
-            <button type="button" className="button secondary" onClick={() => void persist(text).catch(() => undefined)} disabled={saving}>
+            <button
+              type="button"
+              className="button secondary"
+              onClick={() => void persist(text).catch(() => undefined)}
+              disabled={saving}
+            >
               Opnieuw bewaren
             </button>
             <span className="muted"> Uw tekst blijft hier staan. Bewaar voordat u verdergaat.</span>
           </p>
         )}
         <p>
-          <button type="button" className="button" onClick={() => void submit()} disabled={busy || !withinBounds} data-testid="writing-submit">
+          <button
+            type="button"
+            className="button"
+            onClick={() => void submit()}
+            disabled={busy || !withinBounds}
+            data-testid="writing-submit"
+          >
             {busy ? "Indienen…" : progress?.completed ? "Opnieuw indienen" : "Dien in"}
           </button>
           {progress?.completed && (
@@ -228,16 +269,30 @@ export function WritingStep({ step, labels, detail, ensureSession, onDetail, onP
         )}
       </section>
 
-      <WritingCoach stageId="a2" text={text} disabled={busy} onApply={value => {textRef.current = value; setText(value); scheduleSave(value);}}/>
+      <WritingCoach
+        stageId="a2"
+        text={text}
+        disabled={busy}
+        onApply={(value) => {
+          textRef.current = value;
+          setText(value);
+          scheduleSave(value);
+        }}
+      />
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">
-          <LearningText text={{nl: "Hulp", en: "Help", fa: "کمک"}} />
+          <LearningText text={{ nl: "Hulp", en: "Help", fa: "کمک" }} />
         </h3>
         <HelpLadder rungs={payload.help} idPrefix={step.key} onReveal={help} />
       </section>
 
-      <FeedbackPanel stepKey={step.key} detail={detail} onDetail={onDetail} onProgressChanged={onProgressChanged} />
+      <FeedbackPanel
+        stepKey={step.key}
+        detail={detail}
+        onDetail={onDetail}
+        onProgressChanged={onProgressChanged}
+      />
     </article>
   );
 }

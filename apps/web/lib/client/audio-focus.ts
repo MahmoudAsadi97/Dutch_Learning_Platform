@@ -4,34 +4,42 @@ let nativeObservers = 0;
 let recordingLocks = 0;
 const recordingListeners = new Set<() => void>();
 
-export function isAudioRecording() { return recordingLocks > 0; }
-export function subscribeAudioRecording(listener: () => void): () => void { recordingListeners.add(listener); return () => recordingListeners.delete(listener); }
+export function isAudioRecording() {
+  return recordingLocks > 0;
+}
+export function subscribeAudioRecording(listener: () => void): () => void {
+  recordingListeners.add(listener);
+  return () => recordingListeners.delete(listener);
+}
 
 /** Pause all playback before microphone permission/recording, then hold focus through the recording tail. */
 export function suspendAudioForRecording(): () => void {
   recordingLocks++;
   stopFocusedAudio();
   pauseNativePlayers();
-  recordingListeners.forEach(listener => listener());
+  recordingListeners.forEach((listener) => listener());
   let released = false;
   return () => {
     if (released) return;
     released = true;
     recordingLocks = Math.max(0, recordingLocks - 1);
-    recordingListeners.forEach(listener => listener());
+    recordingListeners.forEach((listener) => listener());
   };
 }
 
 function pauseNativePlayers(except?: EventTarget | null) {
   if (typeof document === "undefined") return;
-  document.querySelectorAll("audio, video").forEach(element => {
+  document.querySelectorAll("audio, video").forEach((element) => {
     if (element !== except && element instanceof HTMLMediaElement && !element.paused) element.pause();
   });
 }
 
 function nativeStarted(event: Event) {
   if (!(event.target instanceof HTMLMediaElement)) return;
-  if (isAudioRecording()) { event.target.pause(); return; }
+  if (isAudioRecording()) {
+    event.target.pause();
+    return;
+  }
   stopFocusedAudio();
   pauseNativePlayers(event.target);
 }

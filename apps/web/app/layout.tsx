@@ -44,9 +44,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Naar de inhoud
         </a>
         <LanguageProvider>
-        <AppShell environment={process.env.APP_ENV ?? "development"}>
-          {children}
-        </AppShell>
+          <AppShell environment={process.env.APP_ENV ?? "development"}>{children}</AppShell>
         </LanguageProvider>
       </body>
     </html>

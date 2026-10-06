@@ -23,7 +23,15 @@ interface Props extends StepProps {
  * The listening step: the fixed clip (synthesised once by the API and labelled as such), the questions
  * judged by the API, the transcript on request, and the help ladder.
  */
-export function ListeningStep({ missionId, step, labels, detail, ensureSession, onDetail, onProgressChanged }: Props) {
+export function ListeningStep({
+  missionId,
+  step,
+  labels,
+  detail,
+  ensureSession,
+  onDetail,
+  onProgressChanged,
+}: Props) {
   const { payload } = step;
   const [audioLabel, setAudioLabel] = useState("");
   const [audioNotice, setAudioNotice] = useState("");
@@ -41,7 +49,11 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
       const response = await apiFetch(`missions/${missionId}/audio/${payload.audio_key}`);
       if (!response.ok) {
         const body = (await response.json().catch(() => ({}))) as { detail?: string };
-        throw new ApiError(response.status, body.detail ?? response.statusText, response.headers.get("x-request-id") ?? "");
+        throw new ApiError(
+          response.status,
+          body.detail ?? response.statusText,
+          response.headers.get("x-request-id") ?? "",
+        );
       }
       setAudioLabel(response.headers.get("x-audio-label") ?? "unknown");
       const wav = await response.blob();
@@ -57,7 +69,9 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
       }
     } catch (cause) {
       setPlaying(false);
-      setAudioNotice(cause instanceof ApiError ? `Audio niet beschikbaar: ${cause.detail}` : "Audio niet beschikbaar.");
+      setAudioNotice(
+        cause instanceof ApiError ? `Audio niet beschikbaar: ${cause.detail}` : "Audio niet beschikbaar.",
+      );
     }
   }
 
@@ -75,7 +89,10 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
   }
 
   async function toggleTranscript() {
-    if (showTranscript) { setShowTranscript(false); return; }
+    if (showTranscript) {
+      setShowTranscript(false);
+      return;
+    }
     setTranscriptBusy(true);
     setTranscriptError("");
     try {
@@ -96,7 +113,13 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
       <section className="card" aria-labelledby="clip-heading">
         <h3 id="clip-heading">Beluister de boodschap</h3>
         <p>
-          <button type="button" className="button" onClick={() => void play()} disabled={playing} data-testid="play-clip">
+          <button
+            type="button"
+            className="button"
+            onClick={() => void play()}
+            disabled={playing}
+            data-testid="play-clip"
+          >
             {playing ? "Speelt…" : plays > 0 ? "Nog eens beluisteren" : "Beluister"}
           </button>
           {plays > 0 && (
@@ -121,34 +144,62 @@ export function ListeningStep({ missionId, step, labels, detail, ensureSession, 
           </p>
         )}
         <p>
-          <button type="button" className="button secondary" aria-expanded={showTranscript} disabled={transcriptBusy} onClick={() => void toggleTranscript()} data-testid="toggle-transcript">
+          <button
+            type="button"
+            className="button secondary"
+            aria-expanded={showTranscript}
+            disabled={transcriptBusy}
+            onClick={() => void toggleTranscript()}
+            data-testid="toggle-transcript"
+          >
             {showTranscript ? "Verberg de tekst" : "Toon de tekst"}
           </button>
         </p>
-        {transcriptError && <p className="error" role="alert">{transcriptError}</p>}
+        {transcriptError && (
+          <p className="error" role="alert">
+            {transcriptError}
+          </p>
+        )}
         {showTranscript && (
           <>
             <p>
-              <ContentLabel status={payload.transcript.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
+              <ContentLabel
+                status={payload.transcript.review_status}
+                labelNl={labels.unreviewed_nl}
+                labelFa={labels.unreviewed_fa}
+              />
             </p>
             <div className="dutch-text nl" lang="nl" data-testid="transcript">
               {payload.transcript.nl}
             </div>
-            <div className="dutch-text"><LearningText text={payload.transcript} supportOnly /></div>
+            <div className="dutch-text">
+              <LearningText text={payload.transcript} supportOnly />
+            </div>
           </>
         )}
       </section>
 
-      <QuestionList stepKey={step.key} questions={payload.questions} progress={progress} onAnswer={answer} onHelp={help} />
+      <QuestionList
+        stepKey={step.key}
+        questions={payload.questions}
+        progress={progress}
+        onAnswer={answer}
+        onHelp={help}
+      />
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">
-          <LearningText text={{nl: "Hulp", en: "Help", fa: "کمک"}} />
+          <LearningText text={{ nl: "Hulp", en: "Help", fa: "کمک" }} />
         </h3>
         <HelpLadder rungs={payload.help} idPrefix={step.key} onReveal={(rung) => help(rung)} />
       </section>
 
-      <FeedbackPanel stepKey={step.key} detail={detail} onDetail={onDetail} onProgressChanged={onProgressChanged} />
+      <FeedbackPanel
+        stepKey={step.key}
+        detail={detail}
+        onDetail={onDetail}
+        onProgressChanged={onProgressChanged}
+      />
     </article>
   );
 }

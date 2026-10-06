@@ -1,9 +1,20 @@
 /** Calls for the non-conversation steps. Each returns the updated session detail so the caller can store it. */
 
 import { apiJson, newRequestId } from "@/lib/client/api";
-import type { AnswerResponse, DraftView, EvidenceView, HelpRung, SessionDetail, WritingResponse } from "@/lib/types";
+import type {
+  AnswerResponse,
+  DraftView,
+  EvidenceView,
+  HelpRung,
+  SessionDetail,
+  WritingResponse,
+} from "@/lib/types";
 
-function withEvidence(detail: SessionDetail, evidence: EvidenceView, session = detail.session): SessionDetail {
+function withEvidence(
+  detail: SessionDetail,
+  evidence: EvidenceView,
+  session = detail.session,
+): SessionDetail {
   const others = detail.evidence.filter((e) => e.id !== evidence.id);
   return { ...detail, session, evidence: [...others, evidence] };
 }
@@ -19,19 +30,27 @@ export async function submitAnswer(
     body: { step_key: stepKey, question_id: questionId, chosen_index: chosenIndex },
     requestId: newRequestId(),
   });
-  return { detail: withEvidence(detail, response.evidence, response.session), correct: response.correct, answer_index: response.answer_index };
+  return {
+    detail: withEvidence(detail, response.evidence, response.session),
+    correct: response.correct,
+    answer_index: response.answer_index,
+  };
 }
 
 export async function recordHelp(
-  detail: SessionDetail, stepKey: string,
+  detail: SessionDetail,
+  stepKey: string,
   rung: Pick<HelpRung, "level"> & { kind: HelpRung["kind"] | "reading_translation" | "listening_transcript" },
   questionId = "",
 ): Promise<SessionDetail> {
-  const response = await apiJson<{ evidence: EvidenceView; session: SessionDetail["session"] }>(`practice/sessions/${detail.session.id}/help`, {
-    method: "POST",
-    body: { step_key: stepKey, level: rung.level, kind: rung.kind, question_id: questionId },
-    requestId: newRequestId(),
-  });
+  const response = await apiJson<{ evidence: EvidenceView; session: SessionDetail["session"] }>(
+    `practice/sessions/${detail.session.id}/help`,
+    {
+      method: "POST",
+      body: { step_key: stepKey, level: rung.level, kind: rung.kind, question_id: questionId },
+      requestId: newRequestId(),
+    },
+  );
   return withEvidence(detail, response.evidence, response.session);
 }
 
@@ -56,7 +75,18 @@ export async function submitWriting(
   });
   const next = withEvidence(detail, response.evidence, response.session);
   return {
-    detail: { ...next, drafts: { ...next.drafts, [stepKey]: { text, word_count: response.word_count, saved_at: new Date().toISOString(), submitted: true } } },
+    detail: {
+      ...next,
+      drafts: {
+        ...next.drafts,
+        [stepKey]: {
+          text,
+          word_count: response.word_count,
+          saved_at: new Date().toISOString(),
+          submitted: true,
+        },
+      },
+    },
     word_count: response.word_count,
     missing: response.missing,
   };

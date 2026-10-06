@@ -4,10 +4,16 @@ import { MicrophoneRequestGate } from "../../lib/client/microphone-request.ts";
 
 function deferred() {
   let resolve, reject;
-  const promise = new Promise((yes, no) => { resolve = yes; reject = no; });
+  const promise = new Promise((yes, no) => {
+    resolve = yes;
+    reject = no;
+  });
   return { promise, resolve, reject };
 }
-function stream() { let stops = 0; return { value: { getTracks: () => [{ stop: () => stops++ }] }, stops: () => stops }; }
+function stream() {
+  let stops = 0;
+  return { value: { getTracks: () => [{ stop: () => stops++ }] }, stops: () => stops };
+}
 
 test("releasing the talk button before permission is granted closes a late microphone stream", async () => {
   const gate = new MicrophoneRequestGate();
@@ -23,8 +29,10 @@ test("releasing the talk button before permission is granted closes a late micro
 
 test("an old permission response cannot replace or clear a newer pending request", async () => {
   const gate = new MicrophoneRequestGate();
-  const old = deferred(); const current = deferred();
-  const oldMic = stream(); const nextMic = stream();
+  const old = deferred();
+  const current = deferred();
+  const oldMic = stream();
+  const nextMic = stream();
   const first = gate.open(() => old.promise);
   gate.cancel();
   const second = gate.open(() => current.promise);
@@ -38,10 +46,17 @@ test("an old permission response cannot replace or clear a newer pending request
 
 test("repeated pointer events cannot open two microphone permission requests", async () => {
   const gate = new MicrophoneRequestGate();
-  const permission = deferred(); const microphone = stream();
+  const permission = deferred();
+  const microphone = stream();
   const first = gate.open(() => permission.promise);
   let calls = 0;
-  assert.equal(await gate.open(async () => { calls++; return microphone.value; }), null);
+  assert.equal(
+    await gate.open(async () => {
+      calls++;
+      return microphone.value;
+    }),
+    null,
+  );
   assert.equal(calls, 0);
   permission.resolve(microphone.value);
   assert.equal(await first, microphone.value);
@@ -49,7 +64,12 @@ test("repeated pointer events cannot open two microphone permission requests", a
 
 test("a current denial is surfaced, while a denial after cancellation cannot affect a new request", async () => {
   const gate = new MicrophoneRequestGate();
-  await assert.rejects(gate.open(async () => { throw new Error("permission denied"); }), /permission denied/);
+  await assert.rejects(
+    gate.open(async () => {
+      throw new Error("permission denied");
+    }),
+    /permission denied/,
+  );
   assert.equal(gate.isPending(), false);
   const permission = deferred();
   const pending = gate.open(() => permission.promise);

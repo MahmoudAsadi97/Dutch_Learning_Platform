@@ -40,7 +40,20 @@ type SendState =
   | { kind: "failed"; pending: Pending; message: string; sameRequestId: boolean };
 
 const DAY_NAMES_NL = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
-const MONTH_NAMES_NL = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
+const MONTH_NAMES_NL = [
+  "januari",
+  "februari",
+  "maart",
+  "april",
+  "mei",
+  "juni",
+  "juli",
+  "augustus",
+  "september",
+  "oktober",
+  "november",
+  "december",
+];
 
 export function describeSlot(info: ConversationStepInfo | undefined, slotId: string | undefined): string {
   const slot = info?.slots.find((s) => s.id === slotId);
@@ -69,7 +82,16 @@ const ACTION_LABEL: Record<string, string> = {
  * Every learner turn is sent with its own request id; a retry after a network failure reuses that id,
  * so the server answers from the stored turn instead of running the model twice.
  */
-export function SpeakingStep({ step, labels, detail, starting, onStart, onRestart, onDetail, onProgressChanged }: Props) {
+export function SpeakingStep({
+  step,
+  labels,
+  detail,
+  starting,
+  onStart,
+  onRestart,
+  onDetail,
+  onProgressChanged,
+}: Props) {
   const payload = step.payload;
   const checkpoint = payload.type === "checkpoint";
   const info = detail?.conversation.find((c) => c.step_key === step.key);
@@ -106,7 +128,9 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
     if (list) list.scrollTop = list.scrollHeight;
   }, [turns.length, send.kind]);
 
-  const canSend = Boolean(session && sessionOpen && info && !completed && send.kind !== "sending" && turnsLeft > 0);
+  const canSend = Boolean(
+    session && sessionOpen && info && !completed && send.kind !== "sending" && turnsLeft > 0,
+  );
 
   async function submit(pending: Pending) {
     if (!session) return;
@@ -148,7 +172,12 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
         // 502: the model did not answer and the turn is recorded as failed; a retry needs a new request id.
         // Anything else that is not retryable (403, 409, 422) is shown; the learner changes the input.
         const retryWithSameId = cause.status >= 500 && cause.status !== 502;
-        const message = cause.status === 429 ? "Uw oefenlimiet is bereikt. Bekijk uw gebruik in Instellingen." : cause.status === 401 || cause.status === 403 ? "Meld u opnieuw aan om verder te oefenen." : "Uw antwoord kon niet worden verwerkt. Probeer opnieuw.";
+        const message =
+          cause.status === 429
+            ? "Uw oefenlimiet is bereikt. Bekijk uw gebruik in Instellingen."
+            : cause.status === 401 || cause.status === 403
+              ? "Meld u opnieuw aan om verder te oefenen."
+              : "Uw antwoord kon niet worden verwerkt. Probeer opnieuw.";
         setSend({ kind: "failed", pending, message, sameRequestId: retryWithSameId });
         if (cause.status === 502) await reload();
       } else {
@@ -162,7 +191,11 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
   function applyTurn(response: TurnResponse) {
     if (!detail) return;
     const others = detail.turns.filter((t) => t.id !== response.turn.id);
-    onDetail({ ...detail, session: response.session, turns: [...others, response.turn].sort((a, b) => a.turn_index - b.turn_index) });
+    onDetail({
+      ...detail,
+      session: response.session,
+      turns: [...others, response.turn].sort((a, b) => a.turn_index - b.turn_index),
+    });
     onProgressChanged();
   }
 
@@ -176,7 +209,9 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
     }
   }
 
-  const recorder = useRecorder((recording) => void submit({ requestId: newRequestId(), modality: "speech", recording }));
+  const recorder = useRecorder(
+    (recording) => void submit({ requestId: newRequestId(), modality: "speech", recording }),
+  );
 
   function retry() {
     if (send.kind !== "failed") return;
@@ -205,7 +240,9 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
       setAudioLabel(response.headers.get("x-audio-label") ?? "unknown");
       const wav = await response.blob();
       setPlayingTurnId(turn.id);
-      const outcome = await playback.play(wav, () => setPlayingTurnId((current) => (current === turn.id ? "" : current)));
+      const outcome = await playback.play(wav, () =>
+        setPlayingTurnId((current) => (current === turn.id ? "" : current)),
+      );
       if (outcome.failed) {
         setPlayingTurnId("");
         setAudioNotice("Afspelen mislukt; lees de tekst van het antwoord.");
@@ -240,9 +277,15 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
           <LearningText text={step.title} />
         </h2>
         <p>
-          <ContentLabel status={step.instructions.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
+          <ContentLabel
+            status={step.instructions.review_status}
+            labelNl={labels.unreviewed_nl}
+            labelFa={labels.unreviewed_fa}
+          />
         </p>
-        <p><LearningText text={step.instructions} /></p>
+        <p>
+          <LearningText text={step.instructions} />
+        </p>
         {checkpoint && (
           <p>
             <span className="label warn" data-testid="checkpoint-rules">
@@ -255,15 +298,27 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
       <section className="card" aria-labelledby="goal-heading">
         <h3 id="goal-heading">Doel</h3>
         <p>
-          <ContentLabel status={payload.goal.review_status} labelNl={labels.unreviewed_nl} labelFa={labels.unreviewed_fa} />
+          <ContentLabel
+            status={payload.goal.review_status}
+            labelNl={labels.unreviewed_nl}
+            labelFa={labels.unreviewed_fa}
+          />
         </p>
-        <p><LearningText text={payload.goal} /></p>
+        <p>
+          <LearningText text={payload.goal} />
+        </p>
       </section>
 
       {!session ? (
         <section className="card">
           <p>Start een sessie om met {info?.character.name ?? "de medewerker"} te bellen.</p>
-          <button type="button" className="button" onClick={onStart} disabled={starting} data-testid="start-conversation">
+          <button
+            type="button"
+            className="button"
+            onClick={onStart}
+            disabled={starting}
+            data-testid="start-conversation"
+          >
             {starting ? "Bezig…" : checkpoint ? "Start de controle (één poging)" : "Start het gesprek"}
           </button>
         </section>
@@ -274,7 +329,8 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
               Gesprek met {info?.character.name}
               {info && (
                 <span className="muted" style={{ fontWeight: 400, fontSize: "0.85rem" }}>
-                  {" "}· {info.character.role.nl}
+                  {" "}
+                  · {info.character.role.nl}
                 </span>
               )}
             </h3>
@@ -284,14 +340,22 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
                 <span lang="nl">{info?.opening_line}</span>
               </li>
               {turns.map((turn) => (
-                <TurnBubbles key={turn.id} turn={turn} characterName={info?.character.name ?? ""} playing={playingTurnId === turn.id} onPlay={() => void playCharacterAudio(turn)} />
+                <TurnBubbles
+                  key={turn.id}
+                  turn={turn}
+                  characterName={info?.character.name ?? ""}
+                  playing={playingTurnId === turn.id}
+                  onPlay={() => void playCharacterAudio(turn)}
+                />
               ))}
               {send.kind === "sending" && (
                 <li className="bubble learner pending" data-testid="turn-pending">
                   <span className="who">U</span>
                   <span lang="nl">{send.pending.text ?? "(opname)"}</span>
                   <span className="muted" style={{ display: "block", fontSize: "0.8rem" }}>
-                    {send.pending.modality === "speech" ? "Uploaden, herkennen en antwoord opstellen…" : "Antwoord opstellen…"}
+                    {send.pending.modality === "speech"
+                      ? "Uploaden, herkennen en antwoord opstellen…"
+                      : "Antwoord opstellen…"}
                   </span>
                 </li>
               )}
@@ -316,7 +380,13 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
             </p>
             {!checkpoint && onRestart && (completed || !sessionOpen) && (
               <p>
-                <button type="button" className="button secondary" onClick={onRestart} disabled={starting} data-testid="restart-session">
+                <button
+                  type="button"
+                  className="button secondary"
+                  onClick={onRestart}
+                  disabled={starting}
+                  data-testid="restart-session"
+                >
                   Nieuwe oefensessie (de huidige wordt afgesloten)
                 </button>
               </p>
@@ -339,9 +409,13 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
                 {...talkButtonHandlers(() => void recorder.start(), recorder.stop)}
                 data-testid="talk-button"
               >
-                {recorder.phase === "recording" ? "Opname loopt… laat los om te versturen" : "Houd ingedrukt om te spreken"}
+                {recorder.phase === "recording"
+                  ? "Opname loopt… laat los om te versturen"
+                  : "Houd ingedrukt om te spreken"}
               </button>
-              {recorder.phase === "unsupported" && <p className="error">Deze browser ondersteunt geen opname.</p>}
+              {recorder.phase === "unsupported" && (
+                <p className="error">Deze browser ondersteunt geen opname.</p>
+              )}
               {recorder.error && <p className="error">{recorder.error}</p>}
             </div>
 
@@ -355,7 +429,11 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
                   void submit({ requestId: newRequestId(), modality: "typed", text });
                 }}
               >
-                <label htmlFor={`typed-${step.key}`} className="muted" style={{ display: "block", fontSize: "0.85rem" }}>
+                <label
+                  htmlFor={`typed-${step.key}`}
+                  className="muted"
+                  style={{ display: "block", fontSize: "0.85rem" }}
+                >
                   Of typ uw zin (wordt als getypte tekst opgeslagen, niet als spraak)
                 </label>
                 <textarea
@@ -369,7 +447,12 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
                   data-testid="typed-input"
                   style={{ width: "100%", font: "inherit", padding: "0.5rem" }}
                 />
-                <button type="submit" className="button secondary" disabled={!canSend || !typedText.trim()} data-testid="typed-send">
+                <button
+                  type="submit"
+                  className="button secondary"
+                  disabled={!canSend || !typedText.trim()}
+                  data-testid="typed-send"
+                >
                   Verstuur getypt
                 </button>
               </form>
@@ -382,25 +465,34 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
 
           <aside>
             <section className="card" aria-labelledby="appointment-heading" data-testid="appointment-panel">
-              <h3 id="appointment-heading">{info?.scenario_kind === "service" ? "Uw gesprek" : "Afspraak"}</h3>
+              <h3 id="appointment-heading">
+                {info?.scenario_kind === "service" ? "Uw gesprek" : "Afspraak"}
+              </h3>
               <ul className="checklist">
                 <li data-done={Boolean(appointment.reason_stated)}>
-                  {appointment.reason_stated ? "✓" : "○"} {info?.scenario_kind === "service" ? "vraag uitgelegd" : "reden gegeven"}
+                  {appointment.reason_stated ? "✓" : "○"}{" "}
+                  {info?.scenario_kind === "service" ? "vraag uitgelegd" : "reden gegeven"}
                 </li>
                 {info?.scenario_kind === "service" ? (
                   <li data-done={Boolean(appointment.selected_choice_id)}>
-                    {appointment.selected_choice_id ? "✓" : "○"} keuze: {info.choices?.find(c => c.id === appointment.selected_choice_id)?.label.nl || "—"}
+                    {appointment.selected_choice_id ? "✓" : "○"} keuze:{" "}
+                    {info.choices?.find((c) => c.id === appointment.selected_choice_id)?.label.nl || "—"}
                   </li>
                 ) : (
                   <li data-done={Boolean(appointment.accepted_slot_id)}>
-                    {appointment.accepted_slot_id ? "✓" : "○"} nieuw moment: {appointment.accepted_slot_id ? describeSlot(info, appointment.accepted_slot_id) : "—"}
+                    {appointment.accepted_slot_id ? "✓" : "○"} nieuw moment:{" "}
+                    {appointment.accepted_slot_id ? describeSlot(info, appointment.accepted_slot_id) : "—"}
                   </li>
                 )}
-                <li data-done={Boolean(appointment.confirmed)}>{appointment.confirmed ? "✓" : "○"} bevestigd</li>
+                <li data-done={Boolean(appointment.confirmed)}>
+                  {appointment.confirmed ? "✓" : "○"} bevestigd
+                </li>
                 {appointment.cancelled && <li>✗ gesprek geannuleerd</li>}
               </ul>
               <p className="muted" style={{ fontSize: "0.85rem" }}>
-                {info?.scenario_kind === "service" ? "Keuzes: " + info.choices?.map(c => c.label.nl).join("; ") : "Beschikbare momenten: " + info?.slots.map((s) => describeSlot(info, s.id)).join("; ")}
+                {info?.scenario_kind === "service"
+                  ? "Keuzes: " + info.choices?.map((c) => c.label.nl).join("; ")
+                  : "Beschikbare momenten: " + info?.slots.map((s) => describeSlot(info, s.id)).join("; ")}
               </p>
               <p className="mono" style={{ fontSize: "0.8rem" }}>
                 Gespreksbeurten {progress?.turns ?? 0}/{maxTurns}
@@ -408,10 +500,20 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
             </section>
             <section className="card" aria-labelledby="help-heading">
               <h3 id="help-heading">Hulp</h3>
-              <HelpLadder rungs={helpRungs} idPrefix={step.key} disabled={!helpAllowed || send.kind === "sending"} onReveal={recordHelpUse} />
+              <HelpLadder
+                rungs={helpRungs}
+                idPrefix={step.key}
+                disabled={!helpAllowed || send.kind === "sending"}
+                onReveal={recordHelpUse}
+              />
             </section>
             {(!checkpoint || !sessionOpen) && (
-              <FeedbackPanel stepKey={step.key} detail={detail} onDetail={onDetail} onProgressChanged={onProgressChanged} />
+              <FeedbackPanel
+                stepKey={step.key}
+                detail={detail}
+                onDetail={onDetail}
+                onProgressChanged={onProgressChanged}
+              />
             )}
           </aside>
         </div>
@@ -420,7 +522,17 @@ export function SpeakingStep({ step, labels, detail, starting, onStart, onRestar
   );
 }
 
-function TurnBubbles({ turn, characterName, playing, onPlay }: { turn: TurnView; characterName: string; playing: boolean; onPlay: () => void }) {
+function TurnBubbles({
+  turn,
+  characterName,
+  playing,
+  onPlay,
+}: {
+  turn: TurnView;
+  characterName: string;
+  playing: boolean;
+  onPlay: () => void;
+}) {
   const result = turn.action_result;
   const actionText = result
     ? result.accepted
@@ -431,7 +543,12 @@ function TurnBubbles({ turn, characterName, playing, onPlay }: { turn: TurnView;
     : "";
   return (
     <>
-      <li className={`bubble learner ${turn.status}`} data-testid="turn-learner" data-modality={turn.modality} data-turn-status={turn.status}>
+      <li
+        className={`bubble learner ${turn.status}`}
+        data-testid="turn-learner"
+        data-modality={turn.modality}
+        data-turn-status={turn.status}
+      >
         <span className="who">U</span>
         <span lang="nl">{turn.learner_text}</span>
         <span className="muted" style={{ display: "block", fontSize: "0.8rem" }}>
@@ -440,7 +557,9 @@ function TurnBubbles({ turn, characterName, playing, onPlay }: { turn: TurnView;
           {turn.status === "failed" && " · mislukt"}
         </span>
         {turn.recording_warning && (
-          <span className="muted" role="status">Uw tekst is bewaard. De geluidsopname kon niet worden opgeslagen.</span>
+          <span className="muted" role="status">
+            Uw tekst is bewaard. De geluidsopname kon niet worden opgeslagen.
+          </span>
         )}
       </li>
       {turn.status === "completed" && (
@@ -451,7 +570,13 @@ function TurnBubbles({ turn, characterName, playing, onPlay }: { turn: TurnView;
             {turn.character_audio_asset_id && (
               <>
                 {" · "}
-                <button type="button" className="linklike" onClick={onPlay} aria-pressed={playing} data-testid="play-turn">
+                <button
+                  type="button"
+                  className="linklike"
+                  onClick={onPlay}
+                  aria-pressed={playing}
+                  data-testid="play-turn"
+                >
                   {playing ? "speelt" : "speel af"}
                 </button>
               </>

@@ -38,7 +38,9 @@ export function UsagePanel() {
   useEffect(() => {
     apiJson<Usage>("usage")
       .then(setUsage)
-      .catch((cause: unknown) => setError(cause instanceof ApiError ? cause.detail : "De API is niet bereikbaar."));
+      .catch((cause: unknown) =>
+        setError(cause instanceof ApiError ? cause.detail : "De API is niet bereikbaar."),
+      );
   }, []);
 
   if (error) {
@@ -71,7 +73,9 @@ export function UsagePanel() {
               <th scope="row">{METRIC_LABEL[metric] ?? metric}</th>
               <td>
                 {format(scopes.daily.used)} van {format(scopes.daily.limit)}
-                {scopes.daily.reserved > 0 && <span className="muted"> (+{format(scopes.daily.reserved)} gereserveerd)</span>}
+                {scopes.daily.reserved > 0 && (
+                  <span className="muted"> (+{format(scopes.daily.reserved)} gereserveerd)</span>
+                )}
               </td>
               <td>
                 {format(scopes.total.used)} van {format(scopes.total.limit)}

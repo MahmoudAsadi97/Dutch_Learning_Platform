@@ -23,9 +23,7 @@ export interface Principal {
   identityProvider: IdentityProvider;
 }
 
-export type Resolution =
-  | { ok: true; principal: Principal }
-  | { ok: false; status: number; reason: string };
+export type Resolution = { ok: true; principal: Principal } | { ok: false; status: number; reason: string };
 
 const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "[::1]"]);
 

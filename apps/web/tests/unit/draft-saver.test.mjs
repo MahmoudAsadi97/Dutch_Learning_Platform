@@ -5,7 +5,9 @@ import { DraftSaver } from "../../lib/client/draft-saver.ts";
 test("writes are serial and an older write cannot win over newer text", async () => {
   const writes = [];
   let release;
-  const firstWrite = new Promise((resolve) => { release = resolve; });
+  const firstWrite = new Promise((resolve) => {
+    release = resolve;
+  });
   const saver = new DraftSaver("", async (text) => {
     if (text === "first") await firstWrite;
     writes.push(text);
@@ -22,7 +24,9 @@ test("writes are serial and an older write cannot win over newer text", async ()
 
 test("clearing a saved draft persists the empty text", async () => {
   const writes = [];
-  const saver = new DraftSaver("old draft", async (text) => { writes.push(text); });
+  const saver = new DraftSaver("old draft", async (text) => {
+    writes.push(text);
+  });
   await saver.save("");
   assert.deepEqual(writes, [""]);
   assert.equal(saver.isSaved(""), true);
@@ -31,7 +35,9 @@ test("clearing a saved draft persists the empty text", async () => {
 test("returning to the original text is still unsaved while an older write is pending", async () => {
   const writes = [];
   let release;
-  const blocked = new Promise((resolve) => { release = resolve; });
+  const blocked = new Promise((resolve) => {
+    release = resolve;
+  });
   const saver = new DraftSaver("", async (text) => {
     if (text === "temporary") await blocked;
     writes.push(text);
@@ -48,7 +54,9 @@ test("returning to the original text is still unsaved while an older write is pe
 
 test("duplicate queued autosaves are written only once", async () => {
   let count = 0;
-  const saver = new DraftSaver("", async () => { count++; });
+  const saver = new DraftSaver("", async () => {
+    count++;
+  });
   await Promise.all([saver.save("draft"), saver.save("draft")]);
   assert.equal(count, 1);
 });

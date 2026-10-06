@@ -6,7 +6,11 @@ test("the library opens three different four-skill lessons on a phone width", as
   const catalog = page.getByTestId("mission-catalog");
   await expect(catalog.locator("article")).toHaveCount(4);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  for (const [id, text] of [["lunch-order", "Lunchbar Linden"], ["shop-return", "Winkel Wilg"], ["course-message", "Beste cursist"]]) {
+  for (const [id, text] of [
+    ["lunch-order", "Lunchbar Linden"],
+    ["shop-return", "Winkel Wilg"],
+    ["course-message", "Beste cursist"],
+  ]) {
     await page.goto("/missions");
     await catalog.locator(`a[href="/missions/${id}"]`).click();
     await expect(page.getByTestId("reading-text")).toContainText(text);
@@ -33,7 +37,11 @@ test("lunch practice saves answers, a choice-based conversation and a message", 
   // Reading already started this mission's shared practice session.
   await expect(page.getByTestId("conversation")).toBeVisible();
   const input = page.getByTestId("typed-input");
-  for (const [index, text] of ["Ik wil lunchen.", "Een broodje kaas, alstublieft.", "Ja, dat is goed."].entries()) {
+  for (const [index, text] of [
+    "Ik wil lunchen.",
+    "Een broodje kaas, alstublieft.",
+    "Ja, dat is goed.",
+  ].entries()) {
     await input.fill(text);
     await page.getByTestId("typed-send").click();
     await expect(page.getByTestId("turn-character")).toHaveCount(index + 2);
@@ -43,7 +51,11 @@ test("lunch practice saves answers, a choice-based conversation and a message", 
   await expect(page.getByTestId("conversation")).not.toContainText("fixture-chat");
 
   await page.locator(".step-list button").nth(3).click();
-  await page.getByTestId("writing-input").fill("Dag Sara, ik bestel vandaag een broodje kaas voor vijf euro. Ik eet hier in de lunchbar. Kom je ook?");
+  await page
+    .getByTestId("writing-input")
+    .fill(
+      "Dag Sara, ik bestel vandaag een broodje kaas voor vijf euro. Ik eet hier in de lunchbar. Kom je ook?",
+    );
   await page.getByTestId("writing-submit").click();
   await expect(page.getByTestId("writing-done")).toBeVisible();
   await page.goto("/progress");

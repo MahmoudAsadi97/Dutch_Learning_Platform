@@ -113,7 +113,13 @@ async function handle(request: Request, context: RouteContext): Promise<Response
 
   let upstream: Response;
   try {
-    upstream = await fetch(target, { method: request.method, headers, body, cache: "no-store", redirect: "manual" });
+    upstream = await fetch(target, {
+      method: request.method,
+      headers,
+      body,
+      cache: "no-store",
+      redirect: "manual",
+    });
   } catch {
     return json(502, { detail: "the API is not reachable" }, requestId);
   }

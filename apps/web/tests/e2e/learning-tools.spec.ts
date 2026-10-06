@@ -28,9 +28,14 @@ test("recall reveals only on request and repeats the words the learner found dif
   expect(after.progress.practice_completed).toEqual(before.progress.practice_completed);
 });
 
-test("speaking support explains a communication goal and connects to the real role-play library", async ({ page }) => {
+test("speaking support explains a communication goal and connects to the real role-play library", async ({
+  page,
+}) => {
   await page.goto("/learn/pre-a1");
-  await page.getByRole("navigation", { name: "Onderdelen van dit niveau" }).getByRole("button", { name: "Spreken", exact: true }).click();
+  await page
+    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
+    .getByRole("button", { name: "Spreken", exact: true })
+    .click();
   await page.getByRole("button", { name: "Startles", exact: true }).click();
   const coach = page.locator(".communication-coach");
   await coach.locator("summary").click();

@@ -10,7 +10,11 @@ interface Props {
 }
 
 /** Every fixed text carries its review state; unreviewed content is labelled in both languages. */
-export function ContentLabel({ status, labelNl = "Niet-nagekeken inhoud", labelFa = "محتوای بازبینی‌نشده" }: Props) {
+export function ContentLabel({
+  status,
+  labelNl = "Niet-nagekeken inhoud",
+  labelFa = "محتوای بازبینی‌نشده",
+}: Props) {
   if (status === "reviewed") {
     return (
       <span className="label ok" data-review="reviewed">
@@ -20,7 +24,7 @@ export function ContentLabel({ status, labelNl = "Niet-nagekeken inhoud", labelF
   }
   return (
     <span className="label warn" data-review={status} title={labelFa}>
-      <LearningText text={{nl: labelNl, en: "Content awaiting review", fa: labelFa}} />
+      <LearningText text={{ nl: labelNl, en: "Content awaiting review", fa: labelFa }} />
     </span>
   );
 }
