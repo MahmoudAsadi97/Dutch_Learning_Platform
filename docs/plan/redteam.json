@@ -1,0 +1,388 @@
+{
+  "critics": [
+    {
+      "key": "sequencing",
+      "angle": "sequencing and cross-track integration",
+      "verdict": "Not sound as written. The phase order is broadly right (engine before agents, partner before voice), but six independently written designs were merged without reconciling their shared seams, so several steps contradict each other's tests or depend on design steps the plan dropped (structure S09 and S12, exercise X02). The single most important change is a seam ledger written in step 0.1 — one owner and one contract each for GET /today (with S08 moved to the start of P3), record_activity, the gateway and claims, learner_mistakes, the shared screens, baselines and migration numbers — with the affected steps reworded against it.",
+      "findings": [
+        {
+          "severity": "major",
+          "where": "P3 steps 3.3–3.6; P4 4.10 [X12]; P6 6.3–6.4 [A-S13, A-S14]",
+          "problem": "GET /today is defined four ways and the step that changes it (S08, 3.6) runs after the planner and Today page are built on the old behaviour. J12, X12 and A-S13 each pin 'GET /today still queues the first episode'; A-S14 asserts 'page load uses GET only'. S08's targets (TodayHome.tsx, the GET in routes_stories.py) are gone by 3.6. Step 3.4's header chip and celebration read GET /progress/day, which 3.5 creates. Today ends with three payload blocks: session, practice, guide.",
+          "evidence": "apps/api/src/dlp/domains/stories/service.py:370-372 (today_episode calls ensure_buffer); apps/api/tests/test_stories.py:164. J API5 'It still calls ensure_buffer'; X API12 'Still queues the first episode'; A API5 'pinned first-episode side effect ... untouched'; A-S14 test 'page load uses GET only'. S08 files_changed lists TodayHome.tsx and routes_stories.py; J12 moves GET /today to routes_today.py; J13 lists 'TodayHome.tsx (removed)'. J API8 (GET /progress/day, 'for the header chip and celebrations') is delivered by J14.",
+          "fix": "Move S08 to the first step of P3 (it depends only on S04 and S06) and build 3.3–3.4 on today_view plus POST /today/prepare. Put the API half of 3.5 (GET /progress/day and /progress/summary) before 3.4. Add to 4.10 and 6.3–6.4: design tests asserting GET-side queueing are superseded, and warm-up and guide feed J12's session contract (candidates; source 'study_guide') instead of separate practice and guide blocks. State whether S08's commit-before-response change is kept."
+        },
+        {
+          "severity": "major",
+          "where": "P5 5.1–5.2, 5.8, 5.10, 5.11; P8 [S10], [S14]",
+          "problem": "The plan adopts the agents gateway (A-S01) and never schedules structure S09 or S12, yet schedules S10, S11, S13 and S14, which depend on them. The two gateway designs contradict each other (caller's transaction in domains/llm versus own session in dlp/llm). S10's claim-call-settle needs S09's call_claims table and lands in P8, after every new paid endpoint in P6–P7 has been written holding row locks across provider calls. 5.8 [S13] precedes its prerequisites: job metrics (5.11) and the ASGI middleware (5.10).",
+          "evidence": "Structure depends_on: S10←S09; S11←S03,S09; S13←S05,S09,S11,S12; S14←S02,S09,S10. Agents KD7 'no savepoint, no session access by the gateway' vs structure KD2 'own short session_scope ... never the request session' and KD5 'for all new paid endpoints'. S09 data model: call_claims 'same migration as llm_calls'. A-S15 risk: 'conversation row lock now spans two provider calls'. Verified facts (jobs-transactions): usage.reserve keeps usage_counters rows locked across chat calls (apps/api/src/dlp/domains/usage/service.py:75-88).",
+          "fix": "Add under Key technical choices: 'S09 and S12 are superseded by A-S01 and A-S10', listing what survives from them (call_claims plus the claims helper, ProviderRejected, no total proxy timeout on streams). Split S10: claims helper and database timeouts become a P5 step right after 5.2 so P6–P7 endpoints use them from the start; legacy-site migration and the single status code stay in P8. Reorder the P5 tail to 5.10, 5.11, then the S13 half of 5.8."
+        },
+        {
+          "severity": "major",
+          "where": "P3 3.1–3.3; P2 2.6; P4 4.2, 4.7–4.12",
+          "problem": "X02, the engine's slice of the activity service, is dropped, and no P4 step re-points P2–P3 surfaces at the engine. Unreconciled: the uniqueness key and columns of activity_events; shadow's 2 points against J10's clamp to the rule maximum; whether a topic finished through a session pays topic_practice, exercise points or both; the planner's lesson step link and done-ness; and 4.12 deletes VocabularyRecall and the alphabet quiz that onboarding's first activity (2.6) is built from.",
+          "evidence": "X02: 'UNIQUE learner_id+request_id', counters exercise_items/exercise_sessions; J data model: 'UNIQUE (learner_id, kind, dedupe_key)', 'No per-kind columns are added'. J KD9 'clamps caller values to the rule maximum' vs X KD6 '2 for a shadow attempt'. J11 awards inside save_topic_practice; X KD3 finishes through _persist_topic_result extracted from it. J open risk 12: 'the planner's lesson rule and its tests will be rewritten in P4'. J06 'AlphabetPractice ... StarterWords + VocabularyRecall'; X14 'Delete VocabularyRecall ... and the alphabet quiz'.",
+          "fix": "In 3.1 name J10 as the only activity seam and add X02's residue: skill 'grammar', a shadow rule, the counters decision, and one line saying which rule pays when a topic or lesson is completed through a session. Add a step after 4.10, 'Re-point Today planner and onboarding at the engine': lesson, warm-up and mistakes candidates open sessions, done-ness reads exercise_session events, onboarding's first activity runs a session. Make 4.12 depend on it."
+        },
+        {
+          "severity": "major",
+          "where": "Verification ('after every step'); 0.3; 2.2; 2.5–2.9; 3.4–3.5; 4.5–4.12; Owner actions",
+          "problem": "'Green after every step' cannot hold for web steps as written. Baselines exist only on the Linux CI runner (the spec is skipped on Windows) and pushes need the owner, yet only five design-system steps regenerate them; 2.5 alone changes the shell on all 24 screenshots. Separately, 2.2 merges S07's server-side prefetch of /me, which bypasses page.route, while the P2 specs mock /api/me and PATCH /me cannot clear onboarded_at. S07's second visual project is dropped without saying so.",
+          "evidence": "DS-01: 'The spec is skipped on Windows', 'Baselines must be generated by the workflow_dispatch run and committed'. __screenshots__ appears only in DS-04, DS-05, DS-08, DS-11, DS-13 file lists. .github/workflows/ci.yml:126 runs e2e on every push. S07: 'server prefetch bypasses browser mocks', visual.spec.ts at 1440/390. J06 test: '/api/me mocked to onboarded_at null'; J API2: 'Cannot set onboarded_at'. scripts/run.py:357 resets learner data once per run, so aa-visual's 'reset learner' is un-onboarded after 2.6.",
+          "fix": "Add a rule: a step that changes a baselined screen ends with a workflow_dispatch baseline run whose PNGs are committed in the same push, listed under owner actions for P1–P6 (or narrow the visual spec to the /dev/ui gallery plus two stable screens after P1). Put aa-visual on J02's profile fixture. In 2.2 forbid /api/me mocks in new specs and add a fixture-mode-only profile reset, or switch the prefetch off under e2e. Record that S07's visual.spec.ts is not built."
+        },
+        {
+          "severity": "major",
+          "where": "2.1, 4.2, 4.9, 5.6–5.8, 6.2–6.8",
+          "problem": "Two contracts are fixed in early steps without what later phases consume. GET /me (2.1) has no features map: flags reach config in 5.8 but the web only in 6.8, although the tutor, guide and partner UIs (6.2–6.6) must be hidden when off. learner_mistakes (4.2) has a different category list and columns from what the tutor, conversation feedback and categories.json (5.7, 6.1, 6.6) expect, and release validates equality. Agent migrations are numbered 0011–0015 although 4.9 adds one first.",
+          "evidence": "J API1 response has no features key; agents KD18 'exposed through GET /me features'; A-S12 'Hidden when the flag is off'; A-S18 'Expose feature switches through GET /me ... the e2e job runs once more with all flags on'. X data model: categories vocabulary_form, grammar_form, missing_word, listening_discrimination; agents DM9: grammar, punctuation, word_choice, verb_form, preposition plus quote and assessed. A-S07 risk: 'must equal the P4 learner_mistakes enum; release validates it'. X11 '00NN_word_suggestions.py' vs A-S06 '0011_agent_runs.py'.",
+          "fix": "Add 'features: {}' to GET /me in 2.1; populate it and add the flags-on e2e run in 5.8, leaving 6.8 for run visibility, export and docs. In 4.2 fix one category list and the superset columns (source, quote, assessed, request_id) agreed with the agents design; 5.7 validates categories.json against that module. Add a migration ledger to docs/ROADMAP.md in 0.1 and remove hard-coded revision numbers from step texts."
+        },
+        {
+          "severity": "major",
+          "where": "1.7, 1.8, 2.4, 2.5, 2.8, 3.4, 4.12",
+          "problem": "Shell, path and Today are each re-skinned by the design-system track and restructured by the journey track in an order that guarantees rework. 1.7 re-skins the nine-link shell that 2.5 replaces. DS-10 sits at 2.4, before the navigation (2.5) and onboarding (2.6) it styles, and specifies a 'Meer' sheet the plan does not use. 2.8 deletes CurriculumPath and builds a rail; 4.12 restyles CurriculumPath as a connected map. 3.4 merges two different Today component sets and two toast mechanisms.",
+          "evidence": "apps/web/components/AppShell.tsx:14-41 (nine links). DS-08 'Move shell rules out of design.css and learning.css into app/styles/shell.css'; J05 lists 'AppShell.tsx (removed)' and still targets design.css:1333 and learning.css:220. DS-10 'Bottom tabs reduced to five with a Meer Sheet' vs J KD8 (profile link at every width). J08 'CurriculumPath.tsx (removed)', StageRail; DS-13 'CurriculumPath keeps ol ... zig-zag'. J13 SessionHero/GoalRing vs DS-11 TodayHero/GoalCard; DS API2 response envelope vs J API8 'no existing response body has to change'.",
+          "fix": "Name the journey track as structural owner of shell, path, stage and Today, and make DS-10, DS-11 and DS-13 style-only passes that follow it: gloss CSS with 2.4, navigation CSS inside 2.5, onboarding CSS inside 2.6. Limit 1.7 to accents and target sizes; lay the shell out once in 2.5. Decide rail or map once and build it in 2.8. In 3.4 name the surviving components and state that toasts come from GET /progress/day."
+        },
+        {
+          "severity": "minor",
+          "where": "0.1, 0.2; every later web step (first hit: 1.1–1.2 [DS-02, DS-03])",
+          "problem": "The one-off Prettier commit (0.2) reformats legacy CSS and long JSX before any design is implemented, so the web path:line anchors in the designs, which 0.1 copies into the repo as the durable reference, are wrong from 0.3 onward. DS-03 deletes and moves rules by line range. Reformatting 2,845 lines of legacy CSS is also churn that P1 immediately deletes, wraps in a layer and moves.",
+          "evidence": "S01: 'run it once over apps/web (ts, tsx, css, mjs)', 're-wraps the 1,000-3,300 character JSX lines'. The designs hold 169 line-pinned web references (design-system 107, journey 32, structure 22, exercise 8), for example DS-03 'design.css:1684-1711', 'globals.css:1-18'; J05 'design.css:1333', 'learning.css:220'. apps/web/app/learning.css:218-222 is one rule per line; 204 CSS lines exceed 110 characters.",
+          "fix": "In 0.2 exclude app/*.css from the one-off pass (format new app/styles files as they are created and the legacy remainder in DS-15). Add one sentence to 0.1: web line numbers refer to the pre-format commit 795697b; locate by selector, test title or quoted string. Or re-anchor docs/ROADMAP.md once, immediately after 0.2."
+        },
+        {
+          "severity": "minor",
+          "where": "P7 intro and 7.0; 6.8 [A-S18]; Key technical choices (live voice)",
+          "problem": "7.0 has no code dependency yet runs after all of P6, while 6.8 writes 'voice hooks' that the voice design does not use. The plan also disagrees with itself on a failed spike: 'nothing else in P7 is built' versus 'a ticketed relay container app is plan B'. Plan B runs the API image behind external ingress, which touches the rule 'the API is never public' and has no owner decision listed.",
+          "evidence": "Live-voice P7.0 depends_on is empty. A-S18: 'begin_run with an audio_seconds budget and agent kind voice_session'; voice KD8: 'New metrics voice_seconds and voice_tokens ... POST /voice/sessions reserves', with its own voice_sessions table. Voice KD3: relay app 'running the same image ... external ingress, WebSocket only'. Plan lines 38, 139 and 177.",
+          "fix": "Move 7.0 into P5 after 5.10: its duplex probe needs only the SSE path and the owner's Azure sign-in, already required for 5.5 and 5.9. Reword the P7 intro to three outcomes: go, plan B (owner decision on a public relay, recorded in DECISIONS), no-go. Reduce 6.8's voice hooks to the functions the P7 design names (validate_goal, check_sentence)."
+        }
+      ]
+    },
+    {
+      "key": "tests-and-rules",
+      "angle": "Pinned tests and rules that must stay",
+      "verdict": "The step designs are unusually test-aware, but the merged plan drops several couplings they carry: P7 as designed breaks two rules the plan lists as untouched, the P6 flag-off gate cannot be met because the coach reorder is retired unconditionally, the visual and accessibility gates do not run on the owner's machine or in the owner's default (gloss-on) configuration, and the \"Rules consciously revised\" table misses at least five documented rules. The single most important change: make every rule change explicit in that table (with the step that writes its DECISIONS entry) and fix 7.4 so no unvalidated partner audio reaches the learner.",
+      "findings": [
+        {
+          "severity": "blocker",
+          "where": "7.4–7.5 (live-voice P7.4/P7.5), Key technical choices 'Live voice', 'Rules that stay untouched'",
+          "problem": "P7 as designed breaks two rules the plan lists as untouched. The partner's spoken reply streams to the learner before the guard: the guard reads audio-transcript deltas and cancels after a trip, so the character can announce what code has not accepted. Plan B, the ticketed relay app, is a second public ingress running the API image with database credentials, so the API would be public.",
+          "evidence": "live-voice design: 'guard scans response.audio_transcript.delta; on a trip it cancels, flushes playback'; P7.4 risk 'Guard is best-effort on already-streamed audio'; P7.10 risk 'Captions lag audio slightly because of the guard'; docs/ENGINEERING.md:61 'validates it ... before the character may announce it'; D-12. Plan B decision: 'external ingress ... a public surface holding database credentials ... CSP revision' vs ENGINEERING.md:54 and plan line 177.",
+          "fix": "Reword 7.4: the reply pass produces text, the guard gates each sentence, then approved text is spoken through the TTS port (as the tutor stream gates sentences); measure 'first audio after gate' in 7.0's latency criterion. Replace 'plan B' with 'no-go unless the owner records a decision revising the single-public-entry rule' and add it to Owner actions."
+        },
+        {
+          "severity": "major",
+          "where": "6.3–6.4 [A-S14], 6.7 [A-S17], Verification P6",
+          "problem": "The P6 gate 'with every agent flag off, all earlier specs pass unchanged' cannot be met: 6.3–6.4 removes POST /coach/plan, the reorder button, one e2e test and six coaching tests regardless of any flag, and 6.7 edits two '== 10' assertions. Meanwhile the learner loses the existing paid ordering while its replacement ships switched off.",
+          "evidence": "A-S14 tests: delete learning-agents.spec.ts:152 (button 'Stem de volgorde op mij af' gone); remove test_coaching.py:104, :121, :248, :272, :293 and move :301; A-S17: test_topic_conversations.py:147 and :380 rewritten from ==10; plan line 216 (gate) and line 184 ('ships switched off behind a flag').",
+          "fix": "Keep POST /coach/plan and the button until AGENT_STUDY_GUIDE_ENABLED is on in production, then retire both in one commit; reword the P6 gate to 'all earlier specs pass except these listed deletions' and list them per step."
+        },
+        {
+          "severity": "major",
+          "where": "0.2 [S01], 0.3 [DS-01], 1.1–1.4, 1.7–1.8, 4.12; Verification 'After every step' and 'P1'",
+          "problem": "The zero-pixel proof for 1.1–1.2 and the baseline regenerations in 1.3, 1.4, 1.7 and 4.12 cannot run in the per-step loop: the visual spec is skipped on Windows, baselines come only from a manual CI workflow plus committed PNGs, while commits and pushes wait for the owner each time; Owner actions lists one P0 run. 0.2's JSX re-wrap also lands before any baseline exists.",
+          "evidence": "DS-01 risk: 'The spec is skipped on Windows, so the owner sees visual failures only in CI'; 'Baselines must be generated by the workflow_dispatch run and committed'; DS-04, DS-05, DS-08, DS-13: 'baselines regenerated'; plan lines 42, 181, 202-207, 211; S01 risk: 'only the full e2e run proves it'; D-11 (Windows with Docker Desktop).",
+          "fix": "Add `run.py e2e-visual` running aa-visual.spec.ts in the Playwright 1.56.0 Linux image through Docker Desktop, so baselines are generated and compared locally before each commit (CI stays the second check); swap 0.2 and 0.3 so the format commit is proven pixel-identical; add baseline regeneration to Owner actions for every visible step."
+        },
+        {
+          "severity": "major",
+          "where": "2.2 [J02, S07], 2.4 [J04], 2.6 [J06], Verification P2",
+          "problem": "The automated gates miss the two headline P2 changes. The 2.2 fixture forces every existing spec to gloss off, so the five-screen axe/overflow gate never sees the beginner default (glosses on, Persian RTL, two-line buttons at 320 px). 2.2's server prefetch of /me bypasses page.route, so 2.6's onboarding spec (mocked /api/me, onboarded_at null) cannot run, and the API has no way to un-onboard the e2e learner.",
+          "evidence": "J02: 'resets the profile (nl-en, a1, goal 20, gloss off) before every test; all 18 specs import'; J04: 'No e2e change in this step'; DS-10 risk: 'Two-line buttons and tabs grow'; design.spec.ts:38-81; S07 risk: 'Server-side fetches bypass Playwright page.route mocks'; J06 tests: 'onboarding.spec.ts with /api/me mocked to onboarded_at null'; J01: 'sets onboarded_at once'.",
+          "fix": "In 2.4 add a second pass of the design.spec screens with gloss on and nl-fa-en at 1440/390/320 (axe and overflow) and say so in Verification P2. In 2.1 add a development/test-only profile reset that clears onboarded_at, used by the fixture and by onboarding.spec instead of page.route."
+        },
+        {
+          "severity": "major",
+          "where": "P8 [S10] 'provider failures unified on one status code'; 0.6 [S04]; 'Rules consciously revised'",
+          "problem": "Unifying provider failures on 503 revises D-12/D-13 (a failed turn is 502; the browser mints a new request id only after 502) and flips four pinned assertions, yet the plan lists neither the revision nor the coupled web change. Shipping the API side alone makes SpeakingStep retry a failed turn with the same id, which only repeats the stored failure.",
+          "evidence": "test_turns.py:194, :205, :217 and test_speech_api.py:65 assert 502; SpeakingStep.tsx:148-153 `retryWithSameId = cause.status >= 500 && cause.status !== 502`; DECISIONS.md:120 (D-13); structure S04 risk: 'shipping one without the other breaks mission retries'; plan line 155 and table lines 167-175.",
+          "fix": "Add a table row 'D-12/D-13: failed turn 502 → 503 with code turn_failed'; write the P8 row as one commit covering api/errors.py, SpeakingStep.tsx (branch on code, not status), the four assertions and ENGINEERING §5/§6.1; note that 502 then means proxy only."
+        },
+        {
+          "severity": "major",
+          "where": "'Rules consciously revised' table (plan lines 163-177); 0.5 [S03]",
+          "problem": "The table is incomplete, so no DECISIONS entry will be written for: LEARNING_AGENTS ten pilots, six actions, three goals (becomes 1–400 and max_turns 12); D-19's fixed 20-point goal and streak reset (becomes 10/20/30 and one rest day in seven); 'reading this plan is free of model calls' (automatic guide run); ENGINEERING §6 'Streaming is not part of 0.1' and transcript-only speaking evidence (P7). Row 6 ('every paid call') contradicts D-22's refund of failed renders, pinned by three tests.",
+          "evidence": "LEARNING_AGENTS.md:4, :11, :16; test_topic_conversations.py:147, :380 (==10); routes_topic_conversations.py:32 (le=6); DECISIONS.md:207 (D-19), :240 (D-22); test_videos.py:217-266 (`_counter() == (0.0, 0.0)`); J10 WHAT (goal frozen per day, rest day); A-S13 risk; ENGINEERING.md:156; live-voice constraints_revised rows 3-4.",
+          "fix": "Add the missing rows, each naming the step that writes its entry. Reword row 6 to 'one policy for every paid chat call; audio and video seconds keep D-22 and ENGINEERING §7'. Name 0.5's jti replay check and usage-day shift (S03) or drop them; plan Risks cites 'the replay cache' that no step introduces."
+        },
+        {
+          "severity": "minor",
+          "where": "4.9 [X11] vs 4.12 [DS-13]",
+          "problem": "Two P4 steps disagree on WordReview and the same pinned e2e test: 4.9 replaces the flashcard-plus-grade-buttons review with code-checked typed recall and rewrites the word-review spec; 4.12 then builds flip cards 'with four tinted grade buttons' and lists that spec's reveal-word, .flashcard-term and Nog eens/Moeilijk/Goed/Makkelijk as 'must still match'.",
+          "evidence": "X11 tests: 'stories.spec.ts word-review test (reveal-word, .flashcard-term) rewritten for typed recall'; DS-13: 'Must still match: stories.spec.ts:152-162 (... buttons Nog eens/Moeilijk/Goed/Makkelijk, .flashcard-term, testids word-review, reveal-word)'; stories.spec.ts:135-166 asserts learner-chosen grades ['w1:again','w2:good','w1:easy']; D-19 SM-2.",
+          "fix": "Decide in 4.9: the engine's word kinds keep the four grade buttons as the visible override after the code check (SM-2 input stays learner-correctable), and 4.12 styles that renderer; rewrite the spec once in 4.9 and remove it from 4.12's unchanged list."
+        },
+        {
+          "severity": "minor",
+          "where": "3.2 [J11]",
+          "problem": "Awarding points inside topic_conversations._record_episode breaks a pinned unit test that calls it with session=None and only patches coaching.record_observation; record_activity would hit the database through None. Neither the plan nor J11's test list mentions it.",
+          "evidence": "test_topic_conversations.py:396-408 `service._record_episode(None, row)` (three parametrisations); topic_conversations/service.py:134-151; J11 WHAT: 'Call record_activity from ... topic_conversations._record_episode'.",
+          "fix": "Reword 3.2: award in finish()/turn() after _record_episode returns (same transaction), or skip record_activity when session is None; keep the three parametrisations green."
+        }
+      ]
+    },
+    {
+      "key": "owner-complaints",
+      "angle": "Owner value and learning design: are the three complaints (confusing start, boring practice, flat UI) fixed early enough, and is the practice redesign pedagogically sound, non-punitive, and workable for a Persian-speaking beginner on a phone.",
+      "verdict": "Partly sound. The plan addresses all three complaints, but colour first appears at the 13th commit, onboarding at the 23rd and the first redesigned topic practice at about the 41st of roughly 85, and the engine as specified would grade valid Dutch as wrong in cloze items at A2, pre-B1 and B1. The single most important change is to fix the cloze distractor rule in step 4.2, then start P1 right after 0.3 and pull the engine core (3.1, 4.1-4.8) ahead of the rest of P3. Nothing was run; findings come from reading the plan, the designs, the code and the content files.",
+      "findings": [
+        {
+          "severity": "blocker",
+          "where": "P4 steps 4.2-4.3 [X04, X05]; P0 step 0.9 [X01]",
+          "problem": "Cloze items built from library examples are unanswerable at A2, pre-B1 and B1. The design draws three distractors from same-topic, same-article terms, but at those stages every sibling's example is the identical sentence with the sibling swapped in, so all options are correct Dutch. One is graded right; the others write a mistake row, feed 'repeat your mistakes' and the tutor's memory, and override is refused on choice kinds.",
+          "evidence": "Measured on content/library: for 465 of 500 words (a2), 455 of 498 (pre-b1) and 458 of 497 (b1), every eligible distractor fits the blank. Example: 'Ik leg de ___ klaar voor mijn afspraak.' is the example for identiteitskaart, verblijfskaart, uitnodiging, bevestiging and kopie. X key decision 'Kind: cloze_choice'; X04 test checks 'one correct option' by id only; X05 test 'override refused on choice kinds'.",
+          "fix": "Add to 4.2: a distractor is illegal when its own example equals the target sentence with it filled in. If fewer than three legal distractors remain, show the sentence's support-language translation as the cue, or drop cloze from that blueprint. Apply the same cue rule to typed cloze in 4.3. Add the frame-collision check to the 0.9 pool-invariant test and to the 200-seed generator test."
+        },
+        {
+          "severity": "major",
+          "where": "Phase order P0-P4; steps 0.4-0.9, 2.6, 3.1, 4.1-4.8, 4.10, 4.12",
+          "problem": "Visible value is buried. The first pixel change is the 13th commit (1.4), onboarding the 23rd (2.6) and the first redesigned topic practice about the 41st (4.7-4.8), behind tooling the design system does not need and a Today rebuild that P4 partly redoes. Onboarding's 'first activity' is the old unchecked, zero-point VocabularyRecall, which 4.12 deletes with no step re-pointing /welkom.",
+          "evidence": "Design depends_on lists: DS-02 to DS-09 need only DS-01; X04 needs only X01, X02 and X03 (X02 is the activity slice, no dependencies). J06 'what': AlphabetPractice, or StarterWords plus VocabularyRecall. X14 deletes VocabularyRecall; FirstActivity.tsx is not in its file list. J open risk: the planner's lesson rule 'will be rewritten in P4'. VocabularyRecall.tsx: the typed input is never compared.",
+          "fix": "Reorder without breaking dependencies: 0.1-0.3, P1, 0.4-0.9, P2, 3.1, 4.1-4.8, 3.2-3.7 (4.10 folded into 3.3-3.4), then 4.9 and 4.11-4.12. Colour lands at commit 7 and new practice six commits sooner. If practice outranks onboarding, also move 2.3 and 2.5-2.9 after 4.8 (the engine needs only 2.1, 2.2, 2.4). Add to 4.10: re-point /welkom's first activity to a while_you_wait session."
+        },
+        {
+          "severity": "major",
+          "where": "Steps 0.5, 3.1, 4.5-4.6 [DS-12], 4.7 [X09]; the 'Owner actions' list",
+          "problem": "The effort-based, non-punitive rule is not applied everywhere. Episode and video questions keep 3 points per correct answer. Read-aloud points stay behind a 50% recognition threshold that step 0.5 re-implements. The engine's 'almost' and 'not heard' outcomes have no visual state, so they fall to red 'incorrect'. After a ten-item topic session, one first-try slip on a two-option question means 'not completed' and a full redo.",
+          "evidence": "stories/service.py:419 and videos/service.py:516 (POINTS['answer'] * correct); stories/service.py:518 (share >= 0.5). J open risks 5 and 6 flag both for the owner, yet the plan's owner-action list omits them; X decision 'shadow' calls a recognition threshold 'a score by another name'. DS-12 defines only correct, incorrect and reveal states; the X answer API also returns almost and not_heard. X09 test: 'wrong then right on retry does not' complete; all 400 questions per stage from pre-A1 to B1 have two options.",
+          "fix": "Add owner decisions before 3.1: pay episode and video questions per answered, and in 0.5 replace the threshold with 'any attempt with recognised speech' (the rule X already uses for shadow). Add non-red 'bijna' and 'niet gehoord' states to DS-12 in 4.5-4.6. In 4.7 let a missed authored question be retried in a short new session (passage plus the two questions, reshuffled) instead of all ten items."
+        },
+        {
+          "severity": "major",
+          "where": "Steps 4.2-4.3 [X04, X05], 4.9 [X11], 4.10 [X12], 3.5 [J14]",
+          "problem": "The engine tests but never teaches or spaces. A topic session opens with a graded match-pairs board on five words the learner has never seen, glosses withheld; each miss is stored as a mistake and later shown to the tutor as a recurring error. A mistake is resolved by one correct answer in any later session, even minutes later. Spaced review exists only for words the learner saves by hand, so the word-strength tile stays empty for exercise-only learners.",
+          "evidence": "X key decisions: session blueprints ('topic+reading: match_pairs on the 5 topic words' comes first); match_pairs ('each missed word becomes its own retry item and mistake row'); mistakes ('resolved when the same ref is answered correctly first time in a later session'); word bank ('suggest, do not auto-enrol'). X12 warm-up holds only open mistakes, due words and fresh items. J14 word buckets are built from vocab_items.",
+          "fix": "In 4.2 add an ungraded 'nieuwe woorden' intro card (term, audio, support-language meaning, example) before first exposure, and write no mistake row for refs the learner has not met before. In 4.10 resolve a mistake only on a later Brussels day, and add to the warm-up two previously correct refs whose last answer is older than an expanding interval (1, 3, 7, 21 days) derived from exercise_items. The word bank is untouched, so D-19 holds."
+        },
+        {
+          "severity": "major",
+          "where": "P4 as a whole; P8 [X16]; step 4.10 [X12]",
+          "problem": "'Limited' is only half fixed. Twelve mechanics run over the same thin bank: the same 500 words and listening texts serve three consecutive stages, so a learner moving pre-A1, A1, pre-A2 gets the same material relabelled 'Herhaling'. New exercise content (X16) sits in the last phase, after fourteen live-voice steps. The app's one source of fresh, level-matched Dutch, the generated episodes, is not an exercise source.",
+          "evidence": "Review practice-experience finding 3: 399 unique titles over 1,200 topic slots; listening texts identical across pre-a1/a1/pre-a2 and a2/pre-b1/b1. Checked: a1-v001 and pre-a1-v001 are both 'de ochtend'; a2-v001 and b1-v001 are both 'de identiteitskaart'. X16 depends only on X15 (step 6.9). The POST /exercises/sessions source enum has no episode value; EpisodeReader.tsx:137 shows the glossary already carries meaning_en and meaning_fa.",
+          "fix": "Move X16 from P8 to directly after 6.9, before P7. Add to 4.10 a source 'episode' limited to mechanical kinds that need no invented key: match pairs and listen-and-choose from the episode glossary, dictation and sentence builder from its validated sentences, offered as 'Oefen met deze aflevering' after reading. Label it generated, as the standing rule requires."
+        },
+        {
+          "severity": "major",
+          "where": "Steps 2.4 [J04, DS-10], 2.5 [J05], 2.7 [J07], 4.5-4.6 [X07, X08]",
+          "problem": "The gloss decision is contradictory and incomplete on phones. Step 2.4 merges two designs that disagree: one shows a gloss line on tabs and keeps five tabs; the other says the gloss is 'never shown in the bottom tab bar' and uses four tabs plus 'Meer'. No step is assigned to gloss the buttons of the daily-loop screens (episode reader, videos, word review, missions, speech). Typed exercises set no mobile keyboard attributes, so phone autocorrect will rewrite Dutch answers.",
+          "evidence": "J key decisions 'Gloss layer' (chrome tier includes tabs) and 'Navigation regrouped' (rejects a More menu; Verhalen gloss 'داستان و ویدیو') versus DS-10 'what' and risk. J04: 'No screen adopts it yet'; UiText appears only in J05, J06, J07, J08 and J13. EpisodeReader.tsx:95 hard-codes 'Vertaal naar het Perzisch'. No autoCapitalize, autoCorrect or spellCheck anywhere in apps/web or the X design. playwright.config.ts:36 runs phone width on Desktop Chrome for two specs only.",
+          "fix": "In 2.5 record one rule: five tabs; Dutch label plus a short gloss (a 'short' catalogue key) from 360 px, none at 320; test nl-fa at 320 and 390. Add step 2.7b: adopt UiText in EpisodeReader, VideoPlayer, WordReview, missions and speech, with a ratchet test on hard-coded Dutch JSX strings. In 4.6 set lang=nl, autocapitalize=off, autocorrect=off and spellcheck=false on typed items, and run exercises.spec with glosses on in nl-fa-en."
+        },
+        {
+          "severity": "minor",
+          "where": "Steps 1.4 [DS-05], 1.6 [DS-07], 4.2; P8 [DS-14]",
+          "problem": "Colour and interactivity miss the screens the owner was looking at. The palette flip works through tokens, but the topic browser, word library and audio buttons use literal colours only, so they stay navy until P8. No design mentions sound. Every exercise tap is a proxied server round trip on a 0.25 vCPU replica, while the P4 check only says 'instant'.",
+          "evidence": "Counted in apps/web/app: topics.css 31 hex colours and 0 var(), library.css 35 and 0, phrase-audio.css 27 and 0, learning-agents.css 28 and 0. DS-05 risk and DS-14 'what' (P8) confirm these are tokenised last. Zero matches for sound, chime or haptic across the six designs. X open risk 4 (one call per tap, p95 unknown); infra/main.bicep:301 and 376.",
+          "fix": "Move tokenising those four files (about 140 lines) from DS-14 into 1.4. Add optional answer and goal sounds to 1.6 (Web Audio tones, no asset files so the CSP holds; a setting, off under reduced motion). Add a measured p95 answer round trip of 300 ms or less to the 4.2 and Azure checks, and submit match-pairs and de/het boards whole by default."
+        },
+        {
+          "severity": "minor",
+          "where": "Step 2.6 [J06] goal choice; 3.1 rules table; 3.3-3.4 Today session; 4.7",
+          "problem": "The daily goal and the Today session contradict each other. The learner picks 10, 20 or 30 points at onboarding, but one episode already gives 19-21 and one topic session 15 (21 if the topic-practice award also fires), while the planner turns a 20-point goal into a 15-minute session of 2-5 steps. The ring and celebration fire after step one, and later re-pricing changes what past 'goal met' days meant.",
+          "evidence": "J key decisions: point values ('a 20-point goal is about ten minutes') and plan contract (minutes budget 10 to 8, 20 to 15, 30 to 25); J open risk 4. X key decision 'Points for exercise work' (ten items give 15). J11 awards topic_practice 6 in save_topic_practice while X09 completes through the extracted _persist_topic_result; whether both fire is unspecified. The plan's 'Point inflation' risk defers tuning to after release.",
+          "fix": "Add an owner decision before 2.6: either state the goal as the day's session ('kort, gewoon, stevig' for 8, 15, 25 minutes, with the ring filling against session.target_points), or scale the point options to match the planner (about 30, 50, 80). Specify in 4.7 whether a topic completed through a session also earns topic_practice."
+        }
+      ]
+    },
+    {
+      "key": "agents-azure",
+      "angle": "Agents and Azure: plan sections \"Key technical choices\", P5, P6, P7 and \"Owner actions\", checked against Microsoft Learn pages fetched 2026-10-06 and the code. Paths are relative to C:\\Users\\Nima\\Desktop\\MINE\\My_projects\\Dutch Learning Platform\\Final_Project_v1",
+      "verdict": "The Azure facts mostly hold: Responses API in West Europe, Data Zone versus regional availability, retirement dates, FastAPI SSE in the locked 0.141.1 with plain generators, and cascaded-only Voice Live in West Europe all check out; no blockers. The problems are ordering and honesty: the model migration has a hard 2027-04-14 stop but sits behind about 50 steps, and \"agents\" is one shallow tool loop plus pipelines, with a partner that is not free conversation. Most important change: move the adapter, eval harness and migration to directly after P0.",
+      "findings": [
+        {
+          "severity": "major",
+          "where": "P5 steps 5.5 and 5.9 [A-S05, A-S09] ordering; Owner actions P5",
+          "problem": "Production already runs gpt-4.1-mini with NoAutoUpgrade, so it stops serving on 2027-04-14. The plan puts the adapter and migration at 5.5/5.9, behind roughly 50 earlier steps, with no date. If P0-P4 run long, stories, conversations and feedback go dark.",
+          "evidence": "infra/main.bicep:248 (versionUpgradeOption 'NoAutoUpgrade'); docs/STATUS.md:18 (live since 2 October). learn.microsoft.com/azure/foundry/openai/concepts/model-retirement-schedule: gpt-4.1-mini Deprecated, retires 2027-04-14; .../model-retirements: NoAutoUpgrade 'stops working at retirement'. Agents design deps: S09 needs S05,S08; those need S01,S04,S06; none needs P1-P4.",
+          "fix": "Move 5.1, 5.4, 5.5, the eval harness from 5.8 and 5.9 to directly after P0, or add a dated gate: cut over by 2027-01-31. Put scripts/check_model_lifecycle.py into step 0.5 so every release warns from now on."
+        },
+        {
+          "severity": "major",
+          "where": "Decisions table (agent features, hosting); P6 steps 6.3-6.6; P7 step 7.4",
+          "problem": "Only the tutor is a tool loop (at most 3 steps). The guide is one ranking call shaped as a propose tool; the partner is a fixed two-request pipeline with no tools; voice is a forced tool call. That suits 'code decides', but the partner is not the 'free conversation partner' the owner chose: 2-3 scripted goals, 6 turns, one 120-character reaction with no question.",
+          "evidence": "Agents design key decision 13 and step S15; apps/api/src/dlp/domains/topic_conversations/schemas.py:71 (steps max_length=3); apps/api/src/dlp/domains/topic_conversations/service.py:23 (MAX_TURNS = 6); plan rows 6.3-6.6.",
+          "fix": "Say this plainly in the decisions table. Add a P6 owner decision: accept reaction-only, or add step 6.6b, a flagged open-turn mode where the model proposes the next question through a propose tool and code validates vocabulary, facts and goals with authored fallback, gated on the reply_guard eval."
+        },
+        {
+          "severity": "major",
+          "where": "P5 steps 5.5, 5.6 and the 5.9 eval gate",
+          "problem": "Run budgets were never measured and look too small for any second step: tutor 3 steps in 3,500 total tokens, while each step resends prompt, tool schemas, encrypted reasoning items and tool results of up to 4,000 characters (my estimate: 4,500+ for two steps). Runs will stop on tokens, not the step ceiling, and fall back after paying. The 5.5 probe on gpt-4.1-mini cannot exercise reasoning replay.",
+          "evidence": "Agents design decisions 9 and 16; its open risk 'the study guide can approach its 7000-token ceiling'. learn.microsoft.com/azure/foundry/openai/how-to/reasoning: max_output_tokens covers reasoning tokens; incomplete responses are billed; all_turns 'increases the tokens billed'.",
+          "fix": "Add to 5.9 a paid probe on the new deployment recording a two-step tool run with reasoning replay; set budgets from measured tokens as configuration; add an eval-gate line 'stop_reason max_tokens under 5%'. Until then ship tutor and guide as single-call."
+        },
+        {
+          "severity": "major",
+          "where": "Key technical choices, Azure bullet; step 5.9; Owner actions P5",
+          "problem": "'Current generation' and the fallback contradict Microsoft's pages. gpt-6-luna and gpt-6-sol are already Data Zone Standard in West Europe with no quota-request note; gpt-5.6-* carries one. The stated fallback (gpt-5.4-mini, gpt-5.4) retires in September 2027, five months after the model being replaced, so a refused quota forces a second migration within a year.",
+          "evidence": "learn.microsoft.com/azure/foundry/openai/how-to/reasoning (availability table); .../foundry-models/concepts/models-sold-directly-by-azure-region-availability (Data Zone Standard, Europe); retirement schedule: gpt-5.4 2027-09-02, gpt-5.4-mini 2027-09-21. Agents design decision 5 rejects gpt-6 for 'quota requests'.",
+          "fix": "Reword: target gpt-5.6-luna/terra; first fallback gpt-6-luna/gpt-6-sol; gpt-5.4 pair last resort. Run the eval gate on both candidate pairs and probe temperature on gpt-6, where Microsoft's table and text disagree."
+        },
+        {
+          "severity": "major",
+          "where": "P0 step 0.7 [S05] against P5 step 5.10 [A-S10] and P7 steps 7.5 and verification",
+          "problem": "Step 0.7 adds a 230-second total timeout to every proxied request; 5.10 does not lift it for streams; P7 needs a 300-second event stream through the same proxy. The designs also disagree on whether the Container Apps 240-second limit is total or idle, and Microsoft's pages differ. The P7 'five-minute session' check fails as written.",
+          "evidence": "Structure design S05 ('AbortSignal.timeout(230 s)') and S12 ('Streams must end within the 240 s ingress limit'); voice design decision 1 ('idle timeout'), voice_max_session_seconds 300. learn.microsoft.com/azure/container-apps/ingress-overview: 'Request time out is 240 seconds'; .../ingress-environment-configuration: 'Idle request timeout', default 4 minutes.",
+          "fix": "In 0.7 limit the timeout to time-to-response-headers. In 7.5 have the client roll the event stream over about every 200 s using the designed ?after= resume, so nothing depends on ingress semantics. Add 'stream over 300 s through both ingress hops and sign-in' to 7.0."
+        },
+        {
+          "severity": "major",
+          "where": "P7 intro, step 7.0 exit criteria, step 7.6",
+          "problem": "The plan names three spike criteria; the design has ten. The missing ones decide whether P7 is buildable: forced per-response tool choice on cascaded models, push-to-talk without server turn detection, and Entra sign-in on the existing Speech-kind account, where keys are disabled. The latency criterion can pass on gpt-5-mini or gpt-4.1-mini, which retire in February and April 2027.",
+          "evidence": "Voice design verification S1, S4, S5, S8; infra/main.bicep:226 (disableLocalAuth true). learn.microsoft.com/azure/ai-services/speech-service/voice-live-how-to: roles 'Cognitive Services User and Foundry User', token auth 'for a Microsoft Foundry resource'. Retirement schedule: gpt-5-mini 2027-02-09, gpt-5.6-luna 2028-01-11.",
+          "fix": "Reword the P7 intro: go only if all ten design criteria are recorded and latency passes on gpt-5.6-luna specifically. Add two criteria: push-to-talk commit works, and whether reasoning effort can be lowered in Voice Live (I found neither in the 2026-04-10 API reference)."
+        },
+        {
+          "severity": "minor",
+          "where": "Owner actions P5 (caps); step 5.9",
+          "problem": "The caps fit a normal day: my count is 60-80 calls and 80-95k tokens, about 110 calls with two voice sessions and caption glosses. What is missing: the owner approves only daily caps and sees no cost figure. The lifetime totals in Bicep (2,000 calls, 2M tokens) would be exhausted in about a week at the new daily cap.",
+          "evidence": "infra/main.bicep:43-49; infra/parameters.example.json (monthlyBudget 50); agents design decision 16 ('Prices were not verified'; totals 40,000 and 40M); plan 'Owner actions' P5 lists daily caps only.",
+          "fix": "Extend the P5 owner action: approve daily and total caps together, with a worst-case monthly cost for both tiers and voice computed from the Azure retail prices API in step 5.9 and shown beside the budget alert amount."
+        },
+        {
+          "severity": "minor",
+          "where": "Step 5.11 [S11]; P7 steps 7.5 and 7.12; P8 [S16]; Risks 'Single replica'",
+          "problem": "0.25 vCPU is enough for agent runs and event streams for one learner, because those threads wait on I/O. It is unproven for voice: the same container runs ffmpeg in video jobs, and CPU throttling stalls every thread. The spike measures lag 'while a story job runs', which is network-bound, and sizing plus the optional worker arrive in P8, after voice.",
+          "evidence": "infra/main.bicep:332 (0.25 vCPU, 0.5Gi) and :376 (one replica); apps/api/src/dlp/domains/videos/media.py:83-93 and videos/service.py:389 (ffmpeg, 120 s timeout); structure design S11 risk and S16; voice design S8.",
+          "fix": "Move the API size parameters from [S16] into 5.11. In 5.11 let the job loop defer video claims while a stream or voice session is live. Change spike criterion S8 to measure against a video finalize job."
+        }
+      ]
+    },
+    {
+      "key": "scope-feasibility",
+      "angle": "Scope, effort and delivery risk for a solo owner. Sizes come from the design steps (S=1, M=2, L=4). File paths are relative to the worktree root; step ids such as J05 or A-S11 refer to the design tracks.",
+      "verdict": "The plan is complete but back-loaded and under-sized for one person: about 91 design steps (8 S, 55 M, 28 L; roughly 230 weighted units, split P0 7%, P1 8%, P2 12%, P3 11%, P4 15%, P5 13%, P6 10%, P7 13%, P8 11%) sit in 86 numbered steps, the first new practice screen arrives at about 44% of the effort and the first agent at about 68%, and about a quarter has no visible result. The claim of one reviewable commit per step is not supported by the designs. The most important change is to move the exercise-engine core (4.1-4.8 with the small X02 activity seam) directly after a slimmed P0 and P1, ahead of P2 and P3, and to defer tooling that nothing early depends on.",
+      "findings": [
+        {
+          "severity": "major",
+          "where": "Phase order P2 -> P3 -> P4; step 3.1; missing design step X02",
+          "problem": "The owner's main complaint, boring and limited practice, is not touched until 4.5-4.8, after about 44-48% of the weighted effort. The first agent arrives at about 68%. The engine does not need P2 or P3: the plan dropped the design's small activity seam (X02) and so made all of P2 and P3 (about 53 units) a prerequisite for it.",
+          "evidence": "Exercise design: X04 depends only on X01, X02, X03. X02: 'If the motivation track has already landed the service, this step only adds the two counters'. X07 risk: 'If design tokens (P1) are not in yet, exercise.css uses local variables'. Exercise open risk 9: sessions work before GET /me exists. The plan has no X02 row.",
+          "fix": "Reorder to: slim P0; P1 up to 1.6; X02 plus 4.1-4.8 (engine core and topic sessions); P2; P3 (3.1 extends the X02 module instead of creating it); 4.9-4.12. If onboarding matters more to the owner, put P2 ahead of the engine core; P3 need not precede either. Renumber the migrations to match."
+        },
+        {
+          "severity": "major",
+          "where": "2.4-2.8, 4.5-4.6, P2 owner action, P2 verification",
+          "problem": "The owner's choice of English or Persian under the Dutch interface is delivered only on new screens. Step 2.4 puts the gloss on no screen, and only navigation, onboarding, the honesty chip, the path and Today add catalogue entries. No step glosses the existing lesson, mission, speech, video, word and settings screens, and nothing sizes the writing and Persian review of those strings. Exercise feedback wording is assigned to the catalogue but 4.5-4.6 do not list it.",
+          "evidence": "J04: 'No screen adopts it yet'. Only J05, J06, J07, J08 and J13 list lib/ui-copy.ts. Repository count (rough grep): about 430 JSX text nodes and 42 aria-label or placeholder attributes across 59 TSX files in apps/web. The J02 fixture sets gloss off for all 18 existing specs. Journey open risk 0: Persian should be checked 'before glosses default to on'. Exercise key decision 9.",
+          "fix": "State the gloss scope in the plan. Either limit it to first-week surfaces (navigation, onboarding, Today, path, exercise kit) and say so, or add one sized step per legacy screen group. Add a ratchet test that counts Dutch text outside the catalogue. Keep Persian glosses off by default until the owner has reviewed each batch. Add lib/ui-copy.ts to 4.5-4.6."
+        },
+        {
+          "severity": "major",
+          "where": "4.2, 4.7-4.8, 4.12, P8 [X16]; the 'no new authoring' choice",
+          "problem": "The engine changes the mechanics, not the material. The questions that decide topic completion stay two-option at the lower stages, and three stages draw every generated item from fewer than 90 sentence frames, so practice can still feel repetitive after fourteen steps. The remedies (a report control, validated generated items) sit in P8, and 4.12 removes Story Time at ten of twelve stages.",
+          "evidence": "My count: content/practice/pre-a1, a1, a2, pre-b1 and b1 each have 400 of 400 reading and listening questions with two options; content/library a2, pre-b1 and b1 have 500 examples in 82-87 frames. Exercise open risks 0, 1 and 13. Plan 4.2 reads 'choice (3-4 shuffled options)'.",
+          "fix": "Add a content gate to 4.2: generate sessions for all twelve stages, record distinct frames and available kinds per stage, and enable only stages above a stated variety threshold. Move the 'report this exercise' control into 4.5. Say in 4.2 that authored questions stay two-option. Pull a small validated pass that adds third and fourth options (part of X16) to directly after 4.8."
+        },
+        {
+          "severity": "major",
+          "where": "0.3, 1.1-1.8, P1 verification, owner action for P0",
+          "problem": "Step 0.3 cannot be completed as written. The baseline run is a manual workflow, which GitHub offers only when the workflow file is already on the default branch. The spec is skipped on Windows, so the zero-diff proof for 1.1-1.2 cannot be seen locally. Every later step that changes a baselined screen needs a push, a CI run, an artifact download and a PNG commit; the plan lists this once, under P0.",
+          "evidence": ".github/workflows/ci.yml has no workflow_dispatch trigger. docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows: 'will only trigger a workflow run if the workflow file exists on the default branch'. DS-01 risk: 'The spec is skipped on Windows'. Six DS steps list __screenshots__; J05, J07, J08, J09, J14 and X10-X14 change the same screens and list none. Structure S07 risk: baselines before the re-skin 'would churn all of them'.",
+          "fix": "For 1.1-1.3 use a local before-and-after comparison (VISUAL_LOCAL=1 with git-ignored snapshots: capture on the previous commit, compare on the new one). Commit CI baselines once at the end of P1, with CI and local runs in the same pinned Playwright container image. Add 'regenerate baselines' to each later step that changes a baselined screen, and list it as a recurring owner action."
+        },
+        {
+          "severity": "major",
+          "where": "0.8, 1.7, 1.8, 2.2, 2.6, 2.8-2.9, 4.8-4.12",
+          "problem": "Early steps polish components that later steps delete, two tracks design the same page differently, and the same spec files are edited in P2 and rewritten in P4. The merged step 2.2 also prefetches /me on the server, which bypasses the browser mocks that the onboarding and Today specs are designed around.",
+          "evidence": "TodayHome.tsx is edited in 0.6, 1.8, 2.3, 2.6 and 2.7, then removed in 3.4. AppShell.tsx is re-skinned in 1.7 and removed in 2.5. CurriculumPath.tsx is edited in 0.8, 1.8 and 2.3, then removed in 2.8. J08 builds a linear rail and DS-13 a zig-zag map of the same page. J09 edits six specs that X10, X13 and X14 rewrite. S07: 'server prefetch bypasses browser mocks'; the J06 spec mocks /api/me.",
+          "fix": "Make 1.8 primitives and gallery only, with icon tiles instead of the eight hand-drawn SVG illustrations; apply them in 2.8, 3.4, 3.5 and 4.8. Do the five-destination shell split at 1.7 with plain labels, so the shell is re-skinned once. Choose one path design. Move the 2.9 stage-page restructure next to 4.8 and 4.11. Add a development-only profile reset to 2.1 and write P2 and P3 specs against the real /me."
+        },
+        {
+          "severity": "major",
+          "where": "0.4, 0.6, 0.8, 5.2, 5.3, 5.9-5.11, 6.3-6.4, P8",
+          "problem": "About a quarter of the weighted effort has no visible result, and part of it is placed ahead of what the owner asked for although nothing early depends on it. Generated types have no consumer before P8 but add a regenerate-or-fail gate to every new route. The error refactor writes trilingual copy before the copy catalogue exists. Streaming sits on the tutor's path although each stream has a JSON twin.",
+          "evidence": "Only S02 and S14 mention schema.d.ts. S02 risk: alembic check 'may report pre-existing drift'. S04 changes 34 files and its errors.ts precedes ui-copy.ts (2.4). Outside the structure track only J02, A-S12 and P7.10 mention the query layer. A-S11 does not depend on A-S02, A-S03 or A-S09. A-S13 risk: 'nothing else depends on it'. Dependency chain: J01, J10, J12, X04, A-S01, A-S04, A-S06, A-S07, A-S11, A-S15, A-S16, P7.3, P7.5, P7.10.",
+          "fix": "Keep in P0: 0.2, 0.5, 0.9, the two ratchet tests from 0.4, and the query provider without migrating readers. Move the rest of 0.4 and 0.6 to just before 5.1; move web error copy after 2.4. Ship the tutor on its JSON route after 5.1 and 5.4-5.8, with the cap raise from 5.9; then 5.2, 5.3, 5.10 and the partner. Build 6.3-6.4 last. Optional: S14, S15, S16, dark-token dry run, X16, 6.7, 6.9, 7.11."
+        },
+        {
+          "severity": "major",
+          "where": "Phases intro ('one reviewable commit each'); 0.1, 0.2, 0.5, 0.6, 3.4, 3.6, 4.5-4.6, P8 [DS-14]",
+          "problem": "The one-commit-per-step claim does not hold. The designs average about 13 files a step, several are multi-commit by their own text, and the plan merges two or three design steps into one row. The P8 row for legacy screens covers fourteen screen groups and about 250 colour literals, so missions, speech studio, videos and settings keep the old look until the end. Step 0.2 also reflows the files whose line numbers the 0.1 roadmap cites.",
+          "evidence": "38 of 94 design steps touch 15 or more files (S04: 39, DS-06: 29). S04 and S08 specify 'Commit 1' and 'Commit 2'; S01 needs an isolated format commit plus a later one recording its hash. Row 3.4 is J13 plus DS-11 (two L, 40 files). S03 bundles eleven fixes; the plan names five. DS-14 says 'screen by screen'; design-system open risk 8. The designs hold 153 web path:line anchors.",
+          "fix": "Reword to 'one reviewable pull request per step, one to four commits' and list the split for 0.2, 0.5, 0.6, 3.4, 3.6 and 4.5-4.6. Split DS-14 by screen group and move the groups no other track rewrites (missions, speech studio, videos, settings) to the end of P4. Add an owner decision: local commits per step pre-approved on a phase branch, pushes on say-so. Write roadmap anchors as selectors and test names."
+        },
+        {
+          "severity": "minor",
+          "where": "Owner actions; 7.0; 5.5; 6.7; P8 [S16, X16]",
+          "problem": "The owner-action list leaves out recurring and skilled tasks that the designs give to the owner. Some need fluent Dutch, which a learner cannot supply. The voice spike decides whether about 13% of the effort is built at all, has no dependencies and needs the owner's Azure sign-in, yet it waits until P7.",
+          "evidence": "Agents open risk 8: 'review about 50 live outputs per feature before widening a flag'. A-S17: review queue for about 120 scenarios. Exercise key decision 16: owner approval of generated comprehension items. A-S05: a paid probe call before merging. Structure open risk 12: the first declarative apply 'can revert imperative settings'. Journey open risks 8 and 13: live pre-A1 episode and a real-device check. P7.0 depends_on is empty.",
+          "fix": "Extend 'Owner actions' with these items per phase, and name who judges Dutch correctness (a fluent reviewer, or the flag stays off). Run 7.0 during P0 or P1 and re-check cost before 7.1. Require what-if output and an owner check before S16."
+        }
+      ]
+    },
+    {
+      "key": "completeness",
+      "angle": "completeness critic",
+      "verdict": "The plan has a step for every part of the owner's request, but it is not yet executable or self-contained: P0 cannot produce its screenshot baselines in the stated order, the step detail lives only in session files, and several cross-track contracts and owner decisions flagged by the designs were lost in the merge. The single most important change is a new first step that commits the three result JSON files into the repo and runs first-day checks (baseline procedure, cascade-layer build, commit timing, alembic check, installs) before 0.2.",
+      "findings": [
+        {
+          "severity": "blocker",
+          "where": "P0.3 [DS-01]; P1 verification; Owner actions (P0)",
+          "problem": "Baselines cannot be produced in the order the plan gives. DS-01 relies on a manual workflow_dispatch run 'committed before the PR', but ci.yml has no such trigger and GitHub only dispatches workflows that exist on the default branch. The spec is skipped on Windows, so the owner cannot see 'zero diff through 1.1–1.2' locally, and every intended-diff step in P1–P4 needs another CI round trip that Owner actions lists once. Structure S07 also says baselines must wait until after the P1 re-skin.",
+          "evidence": ".github/workflows/ci.yml:3-6 (push to main and pull_request only). GitHub docs: 'This event will only trigger a workflow run if the workflow file exists on the default branch' (https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows). DS-01 tests and risk; structure S07 risk and open risk 13; design-system open risk 1; DECISIONS D-09 lists committed files without binary baselines.",
+          "fix": "Split 0.3: first a small PR to main that adds the regeneration job, or generate inside the pinned Playwright 1.56.0 Linux container against host servers through E2E_BASE_URL (apps/web/playwright.config.ts:20; D-11 confirms Docker Desktop). Then land the spec. Add 'regenerate and review baselines' to Owner actions for every step with intended diffs, drop S07's second baseline set, and record a D-09 revision for committed PNGs."
+        },
+        {
+          "severity": "major",
+          "where": "Step 0.1; Reference material; P0 and P1 tables",
+          "problem": "P0 and P1 cannot be started from the plan alone. Each row is one line; file lists, test names, allowlists and selector lists exist only in session files. Step 0.1 reduces about 1.5 MB of structured designs to two prose documents, and the review file still holds 23 partly wrong and one refuted claim. The 'durable copies' path points at raw working notes; the clean results are in a sibling folder, and both are temporary local storage that can be cleaned up.",
+          "evidence": "Plan lines 48 and 223-226. Clean copies verified at a local working folder (review), wf_deadf64e-274.json (verification), wf_159b6a05-74c.json (designs: 6 tracks, 94 steps). Verification tally: confirmed 46, partly 23, refuted 1. Structure S03 has ten sub-items (jti replay check, story retry key, usage day moved to Brussels time); plan 0.5 names five. a local working folder sets no cleanupPeriodDays.",
+          "fix": "In the plan: cite the three workflows\\wf_*.json files; make 0.1 commit them verbatim under docs/plan/ before anything else, and say CODE_REVIEW.md applies the verification corrections and the judge's factual errors. For every P0 and P1 row, inline the design's files_new, tests and risk; at minimum S03's full list, DS-01's eight screens at three widths with tolerance, DS-02's delete and keep selector lists, and DS-03's layer order."
+        },
+        {
+          "severity": "major",
+          "where": "P0 before 0.2; steps 0.4, 0.6, 0.8, 1.2, 3.6, 5.10; Verification",
+          "problem": "Nothing was executed, yet key choices rest on untested assumptions with no early check: @layer wrapping under Next 16 Turbopack (first tried at 1.2); FastAPI committing after the response by default, which 0.6's persist-on-error and every mutate-then-refetch flow rely on (the spike sits in 3.6, whose plan text drops the scope switch); alembic check drift (0.4); the set-state-in-effect lint rule (0.8); SSE through next start and Easy Auth (5.10). 'make lint' cannot run on the owner's Windows setup.",
+          "evidence": "Design-system open risk 0; structure open risks 0, 1, 6; verification web-data-layer risk 12, jobs-transactions risk 5. FastAPI docs: default scope 'request' ends 'after the response is sent' (https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/); apps/api/src/dlp/db/session.py:57-60. Next docs: 'CSS ordering can behave differently in development' (https://nextjs.org/docs/app/getting-started/css). Lockfile: eslint-plugin-react-hooks 7.1.1. Makefile:18-20 uses .venv/bin/ruff; scripts/run.py has no lint task; DECISIONS D-11.",
+          "fix": "Add step 0.0 'first-day checks' on a throwaway branch, each with a recorded result and fallback: setup plus install of the new packages and lint; one stylesheet wrapped in @layer and built with next build; a pytest proving commit timing on fastapi 0.141.1 with and without scope='function'; alembic check on a fresh database; /health/stream through next start, then through Azure by the owner. Move the scope decision into 0.6. Add lint, format and component tasks to scripts/run.py."
+        },
+        {
+          "severity": "major",
+          "where": "Key technical choices; steps 3.1, 4.2, 5.1–5.2, 5.7, 5.8, 5.11, P8 [S10]",
+          "problem": "The merge left shared contracts undecided. activity_events has two incompatible schemas (unique learner plus request_id with new learning_days counters, versus kind plus dedupe_key with none). learner_mistakes has two column sets and two category lists, although the tutor's authored notes must equal the P4 enum. The gateway exists in two designs with different tables, and 5.11, 5.8 and P8 [S10] were written against the one the plan did not pick. Migration numbers stop at 0010; the agents design hard-codes 0011–0014.",
+          "evidence": "Designs data_model: exercise-engine activity_events, learning_days, learner_mistakes; learner-journey activity_events and learning_days ('No per-kind columns are added'); agents learner_mistakes contract and migrations 0011–0014; structure llm_calls and call_claims versus agents 'no schema change'. Agents S07 risk: categories.json 'must equal the P4 learner_mistakes enum; release validates it'. Exercise-engine key decision 6. Open risks: exercise-engine 8, learner-journey 3, agents 14, structure 9.",
+          "fix": "Add a 'Shared contracts' section to the plan: one activity_events definition and record_activity signature (with skill and meta); one mistake taxonomy file read by both 4.2 and 5.7, with one column set; LlmGateway owned by A-S01, with a note of what S10, S11 and S13 use in place of S09's claims and llm_calls tables; and a migration and DECISIONS numbering table covering every step that adds one."
+        },
+        {
+          "severity": "major",
+          "where": "P4 (4.2, 4.12); P8 [X16]",
+          "problem": "The owner's main complaint is only half addressed until the last phase. P4 builds new mechanics on the same bank: reading and listening texts and the two authored questions per activity stay templated and reused across stages, and comprehension questions keep two options up to B1, so a topic still passes by guessing about one time in four. Plan 4.2's '3–4 shuffled options' is true for vocabulary items only. The content fix, X16, sits in P8 after live voice.",
+          "evidence": "Review high findings: api-learning-domains 'Static practice banks are heavily templated'; practice-experience 'MCQ is trivially guessable' (2 options for all 400 questions at pre-a1 to b1) and 'Massive templating' (399 unique titles across 1,200 topics). Exercise-engine open risks 0 and 1, key decision 17. Plan lines 101 and 160. In the design X16 depends only on X15.",
+          "fix": "Move X16 into P6 directly after 6.9 (its only dependency), before P7. Reword 4.2: 'vocabulary choice has four options; authored comprehension keeps its options, shuffled'. Add an owner action to approve generated comprehension items in the review queue, and state under Risks that topic completion stays guessable until then."
+        },
+        {
+          "severity": "major",
+          "where": "Owner actions; Rules consciously revised; steps 0.5, 3.1, 5.9, P8 [S16]",
+          "problem": "Decisions the designs hand to the owner are missing. Two touch the confirmed effort-based choice: read-aloud keeps a recognition threshold (an accent proxy) and episode and video answers still pay per correct answer. Others: lifetime caps of 2,000 calls and 2M tokens, which 250 calls a day would use up in about eight days; unverified prices against a budget of 50 a month; the existing owner being sent through /welkom; a first pre-A1 episode check; reviewing about 50 live outputs per agent; a real-phone check.",
+          "evidence": "Learner-journey open risks 5, 6, 7, 8, 13; agents open risks 8 and 12, S09 risk ('Prices were not verified'); structure open risk 12 and S16 risk (what-if, blob lifecycle). infra/main.bicep:45, 49, 60. Plan 0.5 ('first attempt that reaches the threshold'). J10 adds a streak rest day and S03 moves the usage day to Brussels time; neither is in the rules table. docs/STATUS.md:31.",
+          "fix": "Extend 'Owner actions' per phase with these items, each as a yes/no decision with the default the plan will take, including what-if and blob-lifecycle approval for S16. Add lifetime caps and a priced monthly envelope to the P5 approval. Add rows to 'Rules consciously revised' for the streak rest day, the usage-day boundary, and whichever read-aloud and per-correct rule the owner chooses."
+        },
+        {
+          "severity": "major",
+          "where": "Verification; phases P2–P4; P8 [S16]",
+          "problem": "The plan has no release procedure although production is live on Azure. At least eight migrations ship, two with backfills over real learner rows, and an older image fails readiness once the migration head moves, so each such release is one-way. Only agent features have switches; the re-skin, onboarding redirect, new Today and exercise engine go live unflagged. Deploys run only from main after green CI, yet no merge cadence or pre-release rehearsal is stated, and delivery hardening waits until P8.",
+          "evidence": "docs/GO_LIVE.md:242 ('An older image fails readiness against a newer migration head by design'); verification learner-profile risk 3; learner-journey verification asks for an upgrade 'on a copy with an existing learner', absent from the plan's Verification; .github/workflows/deploy.yml:18 and ci.yml:3-6; agents S08 (flags for agents only); learner-journey open risk 7; docs/IMPROVEMENT_REVIEW.md:41 (restore exercise).",
+          "fix": "Add a 'Release gate' block applied at the end of each phase: one PR to main; rehearse the migrations on a restored copy of production; take a database backup and record current image digests; release migration-first; run verify_live; note that rollback is forward-only. Put the first-run gate and the new Today behind an environment switch for their first release."
+        },
+        {
+          "severity": "minor",
+          "where": "Steps 4.2, 6.1–6.2, 6.5–6.6, 7.8; P8; Rules consciously revised",
+          "problem": "At least five new stores hold learner text (full writing submissions, tutor messages, mistake rows with what was typed, exercise attempt responses, conversation and voice transcripts) with no retention or deletion short of deleting the whole learner, and no production delete route or command exists. Storing writing text is new behaviour and is not in the rules table. Two items the exercise design deferred to P8, session retention and retiring the old receptive endpoint, are missing from P8. Child tables without learner_id escape the planned export test.",
+          "evidence": "Agents data_model: writing_reviews.original_text, tutor_messages (thread_id only). Exercise-engine data_model: learner_mistakes.given, exercise_items.attempts; open risks 10, 11, 14. apps/api/src/dlp/domains/curriculum/writing.py:132-148 (only usage rows today). apps/api/src/dlp/cli.py:116 (reset refuses production); apps/api/src/dlp/api/routes_stories.py:212 is the only DELETE route. docs/GO_LIVE.md:251. Structure S03 test_every_table_with_learner_id_is_exported_or_explicitly_excluded.",
+          "fix": "Add a P8 row: a retention job (abandoned sessions, old tutor threads and writing reviews), a learner-facing delete for those items, and retirement of the classic receptive practice branch. Add 'writing submissions and tutor threads are stored' to the rules table and to GO_LIVE's data paragraph. Extend the export test to follow foreign keys to learner-owned parents."
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "tally": {
+    "major": 35,
+    "minor": 10,
+    "blocker": 3
+  }
+}
