@@ -1,0 +1,17 @@
+# Build output and dependencies
+.next/
+node_modules/
+playwright-report/
+test-results/
+blob-report/
+next-env.d.ts
+package-lock.json
+
+# The legacy stylesheets are rewritten file by file during the design-system work (roadmap P1);
+# formatting them first would churn every line those steps delete.
+app/*.css
+
+# Binary and recorded fixtures
+tests/e2e/fixtures/*.wav
+tests/e2e/fixtures/*.webm
+tests/e2e/__screenshots__/

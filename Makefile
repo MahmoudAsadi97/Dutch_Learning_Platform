@@ -17,4 +17,4 @@ benchmark:  ; $(PY) scripts/run.py benchmark
 acceptance: ; $(PY) scripts/run.py acceptance
 lint:
 	cd apps/api && .venv/bin/ruff check src tests
-	cd apps/web && npm run lint && npm run typecheck
+	cd apps/web && npm run lint && npm run format:check && npm run typecheck && npm run typecheck:tests

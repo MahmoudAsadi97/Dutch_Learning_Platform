@@ -112,7 +112,7 @@ const vtt =
   "WEBVTT\n\n1\n00:00:00.000 --> 00:00:01.000\nGoeiemorgen! Vandaag gaan we naar de markt.\n\n2\n00:00:01.000 --> 00:00:01.600\nDe markt is op zaterdag.\n\n3\n00:00:01.600 --> 00:00:02.400\nOp de markt koop ik groenten en fruit.\n\n4\n00:00:02.400 --> 00:00:03.000\nTot morgen! Probeer het zelf.\n";
 
 async function videoFixture(page: Page) {
-  let state = video();
+  let state: Record<string, unknown> = video();
   const posts: string[] = [];
   await page.route(/\/api\/videos\/[^/]+\/media(?:\?|$)/, (route) =>
     route.fulfill({

@@ -111,7 +111,7 @@ function plan(overrides: Record<string, unknown> = {}) {
 }
 
 async function storyFixture(page: Page) {
-  let state = episode();
+  let state: Record<string, unknown> = episode();
   const posts: string[] = [];
   await page.route(/\/api\/today(?:\?|$)/, (route) => route.fulfill({ json: plan({ episode: state }) }));
   await page.route(/\/api\/stories\/episodes\/[^/]+(?:\/.*)?$/, async (route) => {
