@@ -195,6 +195,32 @@ def topic_detail(session: Session, learner_id: uuid.UUID, bank: TopicBank, topic
     }
 
 
+def _persist_topic_result(session: Session, *, learner_id: uuid.UUID, bank: TopicBank, topic: PracticeTopic, skill: Skill,
+                          completed: bool, passed: bool, evidence: dict) -> tuple[str, bool]:
+    """Record one topic attempt: the sticky per-topic completion and the per-skill aggregate.
+
+    Returns the content version and whether the topic counts as completed (once completed, always). Shared by
+    the classic practice form and, later, by exercise sessions that end on the same authored questions."""
+    version = hashlib.sha256(topic.model_dump_json().encode()).hexdigest()
+    statement = insert(TopicPractice).values(
+        id=uuid.uuid4(), learner_id=learner_id, stage_id=bank.stage_id, topic_id=topic.id, skill=skill,
+        completed=completed, latest_passed=passed, content_version=version, evidence=evidence, updated_at=utcnow(),
+    ).on_conflict_do_update(index_elements=["learner_id", "stage_id", "topic_id", "skill"], set_={
+        "completed": TopicPractice.completed | completed, "latest_passed": passed,
+        "content_version": version, "evidence": evidence, "updated_at": utcnow(),
+    }).returning(TopicPractice.completed)
+    sticky_completed = session.execute(statement).scalar_one()
+    # Aggregate readiness remains skill-specific. Topic IDs retained for evidence, never sent as UI marks.
+    aggregate = {**evidence, "topic_id": topic.id, "content_version": version}
+    session.execute(insert(CurriculumPractice).values(
+        id=uuid.uuid4(), learner_id=learner_id, stage_id=bank.stage_id, skill=skill,
+        completed=completed, evidence=aggregate, updated_at=utcnow(),
+    ).on_conflict_do_update(index_elements=["learner_id", "stage_id", "skill"], set_={
+        "completed": CurriculumPractice.completed | completed, "evidence": aggregate, "updated_at": utcnow(),
+    }))
+    return version, sticky_completed
+
+
 def save_topic_practice(session: Session, settings: Settings, providers: Providers, *, learner_id: uuid.UUID,
                         bank: TopicBank, topic: PracticeTopic, skill: Skill, answers: dict[str, int], text: str,
                         asset_id: uuid.UUID | None, request_id: str, observation_request_id: str | None = None) -> dict:
@@ -240,23 +266,8 @@ def save_topic_practice(session: Session, settings: Settings, providers: Provide
         )
         completed = True  # A substantive practice attempt may still need improvement.
         evidence = {"text": text, "audio_asset_id": str(asset_id) if asset_id else None, "result": result.copy()}
-    version = hashlib.sha256(topic.model_dump_json().encode()).hexdigest()
-    statement = insert(TopicPractice).values(
-        id=uuid.uuid4(), learner_id=learner_id, stage_id=bank.stage_id, topic_id=topic.id, skill=skill,
-        completed=completed, latest_passed=result["passed"], content_version=version, evidence=evidence, updated_at=utcnow(),
-    ).on_conflict_do_update(index_elements=["learner_id", "stage_id", "topic_id", "skill"], set_={
-        "completed": TopicPractice.completed | completed, "latest_passed": result["passed"],
-        "content_version": version, "evidence": evidence, "updated_at": utcnow(),
-    }).returning(TopicPractice.completed)
-    sticky_completed = session.execute(statement).scalar_one()
-    # Aggregate readiness remains skill-specific. Topic IDs retained for evidence, never sent as UI marks.
-    aggregate = {**evidence, "topic_id": topic.id, "content_version": version}
-    session.execute(insert(CurriculumPractice).values(
-        id=uuid.uuid4(), learner_id=learner_id, stage_id=bank.stage_id, skill=skill,
-        completed=completed, evidence=aggregate, updated_at=utcnow(),
-    ).on_conflict_do_update(index_elements=["learner_id", "stage_id", "skill"], set_={
-        "completed": CurriculumPractice.completed | completed, "evidence": aggregate, "updated_at": utcnow(),
-    }))
+    version, sticky_completed = _persist_topic_result(session, learner_id=learner_id, bank=bank, topic=topic, skill=skill,
+                                                      completed=completed, passed=result["passed"], evidence=evidence)
     response = {**result, "completed": sticky_completed, "skill": skill}
     assessed = skill in ("reading", "listening") or providers.chat_strong.name != "fixture"
     if skill in ("reading", "listening"):

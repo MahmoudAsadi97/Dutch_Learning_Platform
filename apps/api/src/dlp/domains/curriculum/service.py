@@ -271,14 +271,21 @@ def save_practice(session: Session, settings: Settings, providers: Providers, *,
         # Completing practice means making a substantive attempt, not already passing the final rubric.
         completed = True
         evidence = {"text": text, "audio_asset_id": str(asset_id) if asset_id else None, "result": result}
+    _persist_core_practice(session, learner_id=learner_id, stage_id=stage.id, skill=skill, completed=completed,
+                           evidence=evidence)
+    return {**result, "completed": completed, "skill": skill}
+
+
+def _persist_core_practice(session: Session, *, learner_id: uuid.UUID, stage_id: str, skill: str, completed: bool,
+                           evidence: dict) -> None:
+    """Record a core-lesson practice attempt for one skill; completion is sticky once reached."""
     statement = insert(CurriculumPractice).values(
-        id=uuid.uuid4(), learner_id=learner_id, stage_id=stage.id, skill=skill,
+        id=uuid.uuid4(), learner_id=learner_id, stage_id=stage_id, skill=skill,
         completed=completed, evidence=evidence, updated_at=utcnow(),
     ).on_conflict_do_update(index_elements=["learner_id", "stage_id", "skill"], set_={
         "completed": CurriculumPractice.completed | completed, "evidence": evidence, "updated_at": utcnow(),
     })
     session.execute(statement)
-    return {**result, "completed": completed, "skill": skill}
 
 
 def public_test(test: Test) -> dict:
