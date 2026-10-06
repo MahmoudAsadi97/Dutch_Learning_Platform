@@ -1,0 +1,126 @@
+/*
+ * Element defaults and the few helpers every screen needs: the type scale, one focus ring, the skip link
+ * and the visually-hidden utility. Everything here is token-driven. The legacy layer still overrides
+ * these rules screen by screen until each screen moves onto the primitives.
+ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--surface-canvas);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: var(--text-md);
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0 0 var(--space-2);
+    font-weight: var(--weight-semibold);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: var(--text-3xl);
+  }
+  h2 {
+    font-size: var(--text-2xl);
+  }
+  h3 {
+    font-size: var(--text-lg);
+  }
+  h4 {
+    font-size: var(--text-md);
+  }
+  p {
+    margin: 0 0 var(--space-3);
+  }
+  small {
+    font-size: var(--text-sm);
+  }
+  a {
+    color: var(--text-link);
+    text-underline-offset: 0.2em;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  textarea,
+  select,
+  input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])) {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-raised);
+    color: var(--text);
+  }
+  input[type="checkbox"],
+  input[type="radio"],
+  progress {
+    accent-color: var(--action-solid);
+  }
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+  .skip-link {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    z-index: var(--z-skip);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    background: var(--action-solid);
+    color: var(--text-on-solid);
+    font-weight: var(--weight-medium);
+    transform: translateY(-200%);
+    transition: transform var(--dur-1) var(--ease-standard);
+  }
+  .skip-link:focus-visible {
+    transform: none;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+}

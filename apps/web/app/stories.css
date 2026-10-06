@@ -1,6 +1,5 @@
 @layer legacy {
 /* Vandaag, the serial, the word bank. Warm covers and a living streak on top of the calm workspace. */
-.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* --- covers --------------------------------------------------------------------------------------------- */
 .episode-cover { position: relative; display: flex; align-items: flex-end; justify-content: space-between; min-height: 150px; padding: 16px 18px; border-radius: 18px; color: #fff; overflow: hidden; isolation: isolate; }
@@ -13,7 +12,7 @@
 .tone-5 { background: linear-gradient(140deg, var(--tone-5-a), var(--tone-5-b)); }
 .tone-6 { background: linear-gradient(140deg, var(--tone-6-a), var(--tone-6-b)); }
 .cover-number { font-size: 64px; font-weight: 650; line-height: .9; letter-spacing: -.05em; text-shadow: 0 2px 12px #00000026; }
-.cover-town { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .9; }
+.cover-town { font-size: var(--text-xs); letter-spacing: .12em; text-transform: uppercase; opacity: .9; }
 
 /* --- today ------------------------------------------------------------------------------------------------ */
 .today-heading { margin-bottom: 26px; }
@@ -43,7 +42,7 @@ a.episode-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px #1c3
 .streak-label { font-size: 12px; color: var(--muted); }
 .streak-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; margin: 0; }
 .streak-facts div { text-align: center; }
-.streak-facts dt { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.streak-facts dt { font-size: var(--text-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .streak-facts dd { margin: 2px 0 0; font-weight: 650; font-size: 14px; }
 .goal-bar { width: 100%; height: 10px; border-radius: 6px; background: #e6ebf2; overflow: hidden; }
 .goal-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--warm), #f6b26b); border-radius: 6px; transition: width .4s ease; }
@@ -67,7 +66,7 @@ a.episode-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px #1c3
 .wish-card.inline { margin: 18px 0 22px; }
 .level-row { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
 .level-row label { font-size: 13px; color: var(--muted); }
-.level-row select { min-height: 38px; border: 1px solid #cfd9e6; border-radius: 8px; padding: 6px 10px; font: inherit; background: #fff; }
+.level-row select { min-height: 44px; border: 1px solid #cfd9e6; border-radius: 8px; padding: 6px 10px; font: inherit; background: #fff; }
 .cast-card ul { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 8px; }
 .cast-card li { font-size: 14px; line-height: 1.5; }
 .cast-card details { margin-top: 14px; }
@@ -96,7 +95,7 @@ a.episode-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px #1c3
 .glossary-term { display: flex; align-items: center; gap: 8px; font-size: 17px; }
 .glossary-meaning { font-size: 14px; }
 .glossary-example { font-size: 13.5px; margin: 0; }
-.button.small { min-height: 36px; padding: 6px 12px; font-size: 12.5px; justify-self: start; }
+.button.small { min-height: 44px; padding: 6px 12px; font-size: 12.5px; justify-self: start; }
 .finish-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 10px 0 34px; }
 .episode-questions { margin-bottom: 30px; }
 .question-list { list-style: none; padding: 0; margin: 14px 0 18px; display: grid; gap: 14px; }
@@ -139,13 +138,13 @@ a.episode-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px #1c3
 .flashcard-meaning { font-size: 19px; margin: 0 0 6px; }
 .grade-buttons { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
 .grade-button { display: grid; gap: 2px; padding: 12px 8px; border-radius: 12px; border: 1px solid var(--line); background: #fff; font: inherit; cursor: pointer; text-align: center; }
-.grade-button small { color: var(--muted); font-size: 11px; }
+.grade-button small { color: var(--muted); font-size: var(--text-xs); }
 .grade-button:hover { border-color: var(--accent); }
 .grade-again { background: #fff3ee; } .grade-hard { background: #fff9ec; } .grade-good { background: #eef7f1; } .grade-easy { background: #eaf1fb; }
 .review-done { display: grid; gap: 14px; justify-items: start; }
 .word-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; align-items: end; margin-top: 12px; }
 .word-form label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
-.word-form input { min-height: 42px; padding: 8px 12px; border: 1px solid #cfd9e6; border-radius: 10px; font: inherit; font-size: 14px; }
+.word-form input { min-height: 44px; padding: 8px 12px; border: 1px solid #cfd9e6; border-radius: 10px; font: inherit; font-size: 14px; }
 .word-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; }
 .word-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 12px; align-items: center; padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; font-size: 14px; }
 

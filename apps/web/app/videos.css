@@ -17,7 +17,7 @@
 .video-poster { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 9; border-radius: 14px; color: #fff; overflow: hidden; isolation: isolate; background: linear-gradient(140deg, var(--tone-3-a), var(--tone-3-b)); }
 .video-poster.kind-verhaal { background: linear-gradient(140deg, var(--tone-5-a), var(--tone-5-b)); }
 .video-poster::before { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 90% at 100% 0%, #ffffff55, transparent 60%); z-index: -1; }
-.poster-badge { position: absolute; top: 10px; left: 12px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 650; opacity: .9; }
+.poster-badge { position: absolute; top: 10px; left: 12px; font-size: var(--text-xs); letter-spacing: .08em; text-transform: uppercase; font-weight: 650; opacity: .9; }
 .poster-clock { position: absolute; right: 10px; bottom: 8px; font-size: 12px; font-variant-numeric: tabular-nums; background: #00000055; padding: 2px 7px; border-radius: 8px; }
 .poster-play { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #ffffffdd; color: var(--tone-3-b); }
 .poster-mark { font-size: 32px; font-weight: 700; opacity: .85; }

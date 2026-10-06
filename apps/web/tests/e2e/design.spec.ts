@@ -97,9 +97,38 @@ test("primary navigation waits for a writing draft to be saved", async ({ page }
 test("keyboard skip link reaches the page content", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Tab");
-  await expect(page.getByRole("link", { name: "Naar de inhoud" })).toBeFocused();
+  const link = page.getByRole("link", { name: "Naar de inhoud" });
+  await expect(link).toBeFocused();
+  // the link is painted above the sidebar and the header, not behind them
+  const onTop = await link.evaluate((el) => {
+    const box = el.getBoundingClientRect();
+    return document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2) === el;
+  });
+  expect(onTop).toBe(true);
   await page.keyboard.press("Enter");
   await expect(page.locator("#main")).toBeFocused();
+});
+
+test("one focus ring on buttons, links and text fields", async ({ page }) => {
+  await page.goto("/missions/appointment-change");
+  await expect(page.getByTestId("reading-text")).toBeVisible();
+  const ring = () =>
+    page.evaluate(() => {
+      const style = getComputedStyle(document.activeElement as Element);
+      return `${style.outlineStyle} ${style.outlineWidth} ${style.outlineColor}`;
+    });
+  const expected = "solid 3px rgb(36, 85, 181)";
+  // no pointer interaction yet, so script focus shows the ring on buttons and links too
+  await page.getByRole("button").first().focus();
+  expect(await ring()).toBe(expected);
+  await page.getByRole("link").first().focus();
+  expect(await ring()).toBe(expected);
+  await page
+    .getByRole("button", { name: /Schrijven: het bericht/ })
+    .first()
+    .click();
+  await page.locator("textarea").first().click();
+  expect(await ring()).toBe(expected);
 });
 
 test("lesson screenshots and accessible controls", async ({ page }, testInfo) => {

@@ -11,6 +11,7 @@ import "@fontsource-variable/vazirmatn";
 import "./styles/layers.css";
 import "./styles/tokens.css";
 import "./styles/reset.css";
+import "./styles/base.css";
 import "./globals.css";
 import "./design.css";
 import "./learning.css";

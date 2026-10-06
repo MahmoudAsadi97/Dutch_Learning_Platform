@@ -27,7 +27,8 @@ code is the reference, this explains why it is shaped the way it is.
   (`app/styles/layers.css` fixes the order `reset, tokens, base, components, legacy, features, utilities`):
   `tokens.css` is the only stylesheet with colour literals (primitive ramps, semantic tokens, one accent
   set per section or skill selected by `data-accent` on a container, and compatibility aliases for the
-  legacy layer), `reset.css` holds the reduced-motion and print rules, and the ten pre-existing
+  legacy layer), `reset.css` holds the reduced-motion and print rules, `base.css` the element defaults, type scale,
+  focus ring, skip link and `.visually-hidden`, and the ten pre-existing
   stylesheets are wrapped in `@layer legacy` and shrink as screens move onto the primitives.
   Fonts are self-hosted. Dashboard/progress read persisted evidence only; technical diagnostics live
   in Settings. A shared navigation guard waits for writing autosave before app-link navigation.

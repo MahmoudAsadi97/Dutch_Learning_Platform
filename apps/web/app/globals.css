@@ -1,35 +1,9 @@
 @layer legacy {
-* {
-  box-sizing: border-box;
-}
-
-html,
 body {
-  margin: 0;
-  padding: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-latin);
-  line-height: 1.5;
 }
 
-a {
-  color: var(--accent);
-}
-
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: 0;
-  background: var(--accent);
-  color: var(--accent-ink);
-  padding: 0.5rem 1rem;
-}
-.skip-link:focus {
-  left: 0.5rem;
-  top: 0.5rem;
-  z-index: 10;
-}
 .brand {
   font-weight: 700;
   text-decoration: none;
@@ -48,15 +22,6 @@ a {
   font-size: 0.85rem;
 }
 
-h1,
-h2,
-h3 {
-  line-height: 1.25;
-  margin: 0 0 0.5rem;
-}
-p {
-  margin: 0 0 0.75rem;
-}
 
 .card {
   min-width: 0;
@@ -105,13 +70,6 @@ p {
 .button:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-}
-.button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid #f2b233;
-  outline-offset: 2px;
 }
 .button.talk {
   width: 100%;
@@ -229,7 +187,6 @@ table.plain {
   font-size: 0.95rem;
 }
 .table-scroll { max-width: 100%; overflow-x: auto; }
-.table-scroll:focus-visible { outline: 3px solid #f2b233; outline-offset: 2px; }
 table.plain th,
 table.plain td {
   text-align: left;
@@ -257,14 +214,6 @@ table.plain td {
   color: var(--bad-ink);
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
-}
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
 }
 
 /* conversation (speaking step and checkpoint) */

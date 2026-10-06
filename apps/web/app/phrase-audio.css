@@ -3,7 +3,6 @@
 .phrase-audio-button { display: inline-flex; width: 2.4rem; height: 2.4rem; min-width: 2.4rem; align-items: center; justify-content: center; padding: .45rem; border: 1px solid #cbd8e7; border-radius: 50%; background: #f3f7fc; color: #244d79; cursor: pointer; vertical-align: middle; }
 .phrase-audio-button:hover:not(:disabled) { background: #e6eef9; border-color: #6b8db5; }
 .phrase-audio-button.is-playing { color: white; border-color: #295ca0; background: #295ca0; }
-.phrase-audio-button:focus-visible, .alphabet-picker button:focus-visible, .alphabet-options button:focus-visible { outline: 3px solid #527baa; outline-offset: 3px; }
 .phrase-audio-button:disabled { cursor: not-allowed; opacity: .5; }
 .phrase-audio-message { display: block; max-width: 25rem; font-size: .78rem; font-weight: 400; line-height: 1.5; color: #8a351b; }
 .phrase-line { display: flex; align-items: flex-start; gap: .6rem; }
