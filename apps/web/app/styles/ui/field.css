@@ -1,0 +1,54 @@
+/* A labelled form control with an optional hint and error line. Borders hold 3:1 against the surface. */
+@layer components {
+  .field {
+    display: grid;
+    gap: var(--space-1);
+    min-width: 0;
+  }
+  .field-label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--text);
+  }
+  .field-hint {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+  .field-error {
+    font-size: var(--text-xs);
+    color: var(--danger-ink);
+  }
+  .field-control {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-raised);
+    color: var(--text);
+    font: inherit;
+    font-size: var(--text-md);
+  }
+  textarea.field-control {
+    min-height: 120px;
+    resize: vertical;
+    line-height: var(--leading-relaxed);
+  }
+  select.field-control {
+    cursor: pointer;
+  }
+  .field-control::placeholder {
+    color: var(--text-subtle);
+  }
+  .field-control:disabled {
+    background: var(--surface-disabled);
+    color: var(--text-disabled);
+    cursor: not-allowed;
+  }
+  .field.invalid .field-control {
+    border-color: var(--danger-vivid);
+  }
+  .field.invalid .field-control:focus-visible {
+    outline-color: var(--danger-vivid);
+  }
+}

@@ -262,3 +262,13 @@ tinted section never reads as right or wrong. Every text pair the tokens promise
 every graphic pair to 3:1 by `tests/unit/design-tokens.test.mjs`, in `:root` and in each accent. The
 "restrained navy palette" rule in LEARNING_DESIGN is replaced by this one; high-contrast text, the
 generous reading measure and few technical labels stay.
+
+## D-25 · Shared primitives own the common classes; one icon package behind `Icon` — 2026-10-07
+
+`.button`, `.card`, `.label`, `.error` and the lesson feedback blocks were each defined in two or three
+legacy stylesheets, so the winner depended on import order. From this change each primitive has one
+definition in `app/styles/ui` (layer `components`) with a typed wrapper in `components/ui`; legacy
+stylesheets may add contextual rules but never a bare one, which `tests/unit/css-usage.test.mjs`
+enforces. The hand-drawn icon set is replaced by `lucide-react`, the first runtime UI dependency of the
+web app: pinned to an exact version, imported by name so only the used glyphs ship, and kept behind
+`components/Icon.tsx` so call sites never depend on the package.

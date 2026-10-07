@@ -1,0 +1,55 @@
+/* Layout of the developer gallery at /dev/ui. */
+@layer features {
+  .ui-gallery h2 {
+    margin-bottom: var(--space-4);
+  }
+  .ui-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .ui-row + .ui-row {
+    margin-top: var(--space-3);
+  }
+  .ui-stack {
+    display: grid;
+    gap: var(--space-3);
+    max-width: 36rem;
+  }
+  .ui-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-3);
+  }
+  .ui-swatch {
+    padding: var(--space-3);
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius-md);
+    background: var(--accent-subtle);
+    color: var(--accent-ink);
+    font-size: var(--text-sm);
+  }
+  .ui-swatch strong {
+    display: block;
+    margin-top: var(--space-2);
+    padding: 6px;
+    border-radius: var(--radius-sm);
+    background: var(--accent-solid);
+    color: var(--text-on-solid);
+    text-align: center;
+  }
+  .ui-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: var(--space-2);
+  }
+  .ui-icons > div {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+}

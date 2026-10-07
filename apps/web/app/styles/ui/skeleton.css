@@ -1,0 +1,30 @@
+/* Placeholder shapes while data loads. The shimmer arrives with the motion system. */
+@layer components {
+  .skeleton {
+    display: block;
+    min-height: 1em;
+    border-radius: var(--radius-sm);
+    background: var(--surface-sunken);
+    color: transparent;
+  }
+  .skeleton.text {
+    width: 60%;
+    height: 0.9em;
+    margin-block: 0.3em;
+  }
+  .skeleton.block {
+    min-height: 120px;
+  }
+  .skeleton.circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+  .skeleton-panel,
+  .path-loading {
+    padding: var(--space-7) var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+  }
+}

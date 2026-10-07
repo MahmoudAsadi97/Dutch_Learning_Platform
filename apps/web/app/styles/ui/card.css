@@ -1,0 +1,45 @@
+/* A raised surface. `.practice-feedback` is the tinted variant the lesson screens already use. */
+@layer components {
+  .card {
+    min-width: 0;
+    margin-bottom: var(--space-5);
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-1);
+  }
+  .card.flat {
+    box-shadow: none;
+  }
+  .card.tinted,
+  .practice-feedback {
+    background: var(--accent-subtle);
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius-lg);
+    box-shadow: none;
+  }
+  .card > .button {
+    max-width: 100%;
+  }
+  .practice-feedback {
+    margin-top: var(--space-5);
+    padding: var(--space-5);
+  }
+  .practice-feedback h3 {
+    margin-bottom: var(--space-3);
+    font-size: var(--text-xl);
+  }
+  .practice-feedback > p {
+    margin-top: var(--space-3);
+  }
+  .practice-feedback .button {
+    margin-top: var(--space-4);
+  }
+  @media (max-width: 767px) {
+    .card,
+    .practice-feedback {
+      padding: var(--space-4);
+    }
+  }
+}

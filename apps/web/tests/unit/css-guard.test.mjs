@@ -28,12 +28,16 @@ export function measure(css) {
 }
 
 function stylesheets(dir) {
-  return readdirSync(path.join(web, "app", dir))
-    .filter((name) => name.endsWith(".css"))
-    .map((name) => (dir ? `${dir}/${name}` : name));
+  const out = [];
+  for (const entry of readdirSync(path.join(web, "app", dir), { withFileTypes: true })) {
+    const rel = dir ? `${dir}/${entry.name}` : entry.name;
+    if (entry.isDirectory() && (rel === "styles" || rel.startsWith("styles/"))) out.push(...stylesheets(rel));
+    else if (entry.isFile() && entry.name.endsWith(".css")) out.push(rel);
+  }
+  return out;
 }
 
-const files = [...stylesheets(""), ...stylesheets("styles")];
+const files = stylesheets("");
 
 test("every stylesheet stays within its budget", () => {
   for (const file of files) {

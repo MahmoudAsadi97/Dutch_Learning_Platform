@@ -1,0 +1,24 @@
+/* Nothing here yet: an icon, one line of why, and one action. */
+@layer components {
+  .empty-state {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-6) 0;
+  }
+  .empty-state-copy {
+    min-width: 0;
+  }
+  .empty-state h3 {
+    margin: 0 0 var(--space-1);
+    font-size: var(--text-md);
+  }
+  .empty-state p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+  .empty-state .button {
+    margin-top: var(--space-3);
+  }
+}

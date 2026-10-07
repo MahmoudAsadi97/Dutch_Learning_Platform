@@ -22,16 +22,6 @@ body {
   font-size: 0.85rem;
 }
 
-
-.card {
-  min-width: 0;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
 .grid {
   display: grid;
   gap: 1rem;
@@ -50,58 +40,6 @@ body {
     gap: 1rem;
     align-items: start;
   }
-}
-
-.button {
-  appearance: none;
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  color: var(--text-on-solid);
-  border-radius: var(--radius);
-  padding: 0.6rem 1rem;
-  font: inherit;
-  cursor: pointer;
-  min-height: 44px;
-}
-.button.secondary {
-  background: var(--surface);
-  color: var(--accent);
-}
-.button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-.button.talk {
-  width: 100%;
-  min-height: 72px;
-  font-size: 1.1rem;
-  touch-action: none;
-  user-select: none;
-}
-.button.talk[aria-pressed="true"] {
-  background: var(--danger-solid);
-  border-color: var(--danger-solid);
-}
-
-.label {
-  display: inline-block;
-  border-radius: 999px;
-  padding: 0.1rem 0.6rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-inline-end: 0.5rem;
-}
-.label.warn {
-  background: var(--warn-bg);
-  color: var(--warn-ink);
-}
-.label.ok {
-  background: var(--ok-bg);
-  color: var(--ok-ink);
-}
-.label.bad {
-  background: var(--bad-bg);
-  color: var(--bad-ink);
 }
 
 .fa {
@@ -208,12 +146,6 @@ table.plain td {
   gap: 0.5rem;
   align-items: center;
   flex-wrap: wrap;
-}
-.error {
-  background: var(--bad-bg);
-  color: var(--bad-ink);
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
 }
 
 /* conversation (speaking step and checkpoint) */

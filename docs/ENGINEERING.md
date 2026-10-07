@@ -32,6 +32,10 @@ code is the reference, this explains why it is shaped the way it is.
   stylesheets are wrapped in `@layer legacy` and shrink as screens move onto the primitives. No stylesheet
   outside `tokens.css` holds a colour literal; `lib/design/identity.ts` maps skills and sections to the
   accent a container sets with `data-accent` (D-24).
+  Shared primitives live in `components/ui` (typed wrappers over one global class each, styled in
+  `app/styles/ui/*.css` inside `@layer components`); icons come from `lucide-react` (pinned exactly) behind
+  `components/Icon.tsx`, whose `IconName` union is the app's icon vocabulary. `/dev/ui` shows every primitive
+  in every state outside production and is covered by `tests/e2e/ui-gallery.spec.ts` and a screenshot baseline.
   Fonts are self-hosted. Dashboard/progress read persisted evidence only; technical diagnostics live
   in Settings. A shared navigation guard waits for writing autosave before app-link navigation.
 - The web layout is dynamically rendered so runtime environment labels and per-response CSP nonces
