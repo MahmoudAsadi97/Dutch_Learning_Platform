@@ -3,7 +3,8 @@ import type { Skill } from "@/lib/types";
 /**
  * One hue per skill and per section, applied as `data-accent` on a container. The tokens behind each
  * name live in app/styles/tokens.css; tests/unit/design-tokens.test.mjs proves every accent keeps its
- * ink readable. Green and red are never accents: they are reserved for feedback.
+ * ink readable. Green, amber, red and orange are never accents: they are reserved for feedback.
+ * Writing is indigo, words plum, progress neutral slate; reading and the path share the brand blue.
  */
 export const ACCENTS = [
   "today",

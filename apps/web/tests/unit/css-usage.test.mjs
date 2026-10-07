@@ -11,7 +11,8 @@ import { test } from "node:test";
 
 const web = path.resolve(import.meta.dirname, "..", "..");
 
-const DYNAMIC = [/^tone-\d+$/, /^grade-/, /^status-/, /^kind-/, /^is-/, /^cover-/];
+/** Class families built from template strings; a member passes only when its prefix is built somewhere. */
+const DYNAMIC = [/^tone-\d+$/, /^grade-/, /^status-/, /^kind-/, /^cover-/];
 
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -52,7 +53,8 @@ export function unreferenced(stylesheets, sources) {
   for (const [file, css] of Object.entries(stylesheets)) {
     const dead = [];
     for (const name of classesIn(css)) {
-      if (DYNAMIC.some((pattern) => pattern.test(name))) continue;
+      const prefix = name.match(/^([a-z]+-)/)?.[1] ?? "";
+      if (DYNAMIC.some((pattern) => pattern.test(name)) && sources.includes(`${prefix}$\{`)) continue;
       const word = new RegExp(`(?<![\\w-])${name.replace(/-/g, "\\-")}(?![\\w-])`);
       if (!word.test(sources)) dead.push(name);
     }
@@ -67,7 +69,11 @@ test("every stylesheet class is referenced by a source file", () => {
     ...walk(path.join(web, "app")),
     ...walk(path.join(web, "lib")),
   ]
-    .map((file) => readFileSync(file, "utf8"))
+    .map((file) =>
+      readFileSync(file, "utf8")
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/^\s*\/\/.*$/gm, ""),
+    )
     .join("\n");
   const stylesheets = Object.fromEntries(
     stylesheetFiles().map((file) => [path.relative(path.join(web, "app"), file), readFileSync(file, "utf8")]),
@@ -77,7 +83,10 @@ test("every stylesheet class is referenced by a source file", () => {
 });
 
 test("the scan sees template-string families as live", () => {
-  const dead = unreferenced({ "x.css": ".tone-3 {} .grade-again {} .brand-new {}" }, 'className="brand"');
+  const dead = unreferenced(
+    { "x.css": ".tone-3 {} .grade-again {} .brand-new {}" },
+    'className="brand" tone-${n} grade-${g}',
+  );
   assert.deepEqual(dead, { "x.css": ["brand-new"] });
 });
 

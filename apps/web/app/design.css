@@ -48,7 +48,7 @@ p {
   padding-bottom: 5px;
 }
 .brand-mark > span {
-  color: var(--text-on-solid);
+  color: var(--blue-200);
 }
 .brand-caption {
   display: block;
@@ -156,7 +156,7 @@ p {
 }
 .breadcrumb strong {
   font-weight: 500;
-  color: var(--accent-ink-strong);
+  color: var(--text);
 }
 .header-actions {
   display: flex;
@@ -170,7 +170,7 @@ p {
   border-radius: 50%;
   width: 44px;
   height: 44px;
-  border: 4px solid white;
+  border: 4px solid var(--surface-raised);
   background: var(--surface-sunken);
   box-shadow: 0 0 0 1px var(--border);
 }
@@ -254,15 +254,6 @@ p {
   font-size: var(--text-xs);
   margin-bottom: 5px;
 }
-.status-dot {
-  height: 5px;
-  width: 5px;
-  background: var(--slate-300);
-  border-radius: 50%;
-}
-.status-dot.done {
-  background: var(--success-vivid);
-}
 .activity-list {
   list-style: none;
   margin: 0;
@@ -318,7 +309,7 @@ p {
 }
 .progress-card {
   border: 1px solid var(--line);
-  background: white;
+  background: var(--surface-raised);
   border-radius: 16px;
   padding: 25px;
 }
@@ -439,7 +430,7 @@ p {
 }
 .step-list button[aria-current="step"] .step-number {
   background: var(--accent-solid);
-  color: white;
+  color: var(--text-on-solid);
   border-color: var(--accent-solid);
 }
 .step-skill {
@@ -506,7 +497,7 @@ p {
 .question fieldset {
   padding: 20px;
   border: 1px solid var(--line);
-  background: white;
+  background: var(--surface-raised);
   border-radius: 13px;
 }
 .question legend {
@@ -556,7 +547,7 @@ p {
 textarea,
 input[type="text"] {
   background: var(--surface-canvas);
-  border: 1px solid var(--accent-border);
+  border: 1px solid var(--border-strong);
   border-radius: 9px;
   color: var(--ink);
   caret-color: var(--accent);
@@ -639,9 +630,9 @@ table.plain td {
   margin: 30px auto;
 }
 .mic-orbit.recording {
-  background: var(--danger-bg);
-  color: var(--danger-ink);
-  border-color: var(--danger-bg);
+  background: var(--recording-bg);
+  color: var(--recording-ink);
+  border-color: var(--surface-raised);
 }
 .speech-studio [data-testid="phase"] {
   font-size: var(--text-xs);

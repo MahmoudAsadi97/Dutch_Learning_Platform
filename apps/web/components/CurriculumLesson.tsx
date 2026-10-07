@@ -26,7 +26,7 @@ import { skillAccent, type Accent } from "@/lib/design/identity";
 type Section = "words" | "grammar" | "stories" | "alphabet" | Skill;
 const sectionAccents: Record<Section, Accent> = {
   words: "words",
-  grammar: "path",
+  grammar: "neutral",
   stories: "stories",
   alphabet: "words",
   ...skillAccent,

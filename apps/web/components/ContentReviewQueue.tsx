@@ -191,7 +191,7 @@ function ReviewPanel({ stages }: { stages: StageSummary[] }) {
                 key={item.id}
                 className="review-topic"
                 style={{
-                  borderTop: "1px solid var(--border, #dce4df)",
+                  borderTop: "1px solid var(--border)",
                   paddingBlock: "1rem",
                   overflowWrap: "anywhere",
                 }}

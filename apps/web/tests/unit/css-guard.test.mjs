@@ -14,10 +14,25 @@ import { test } from "node:test";
 const web = path.resolve(import.meta.dirname, "..", "..");
 const budgets = JSON.parse(readFileSync(path.join(import.meta.dirname, "css-budget.json"), "utf8"));
 
+const NAMED =
+  "white|black|red|green|blue|yellow|orange|purple|pink|gray|grey|silver|navy|teal|maroon|olive|lime|aqua|fuchsia";
+
 export const METRICS = {
-  hex: (css) => (css.match(/#[0-9a-fA-F]{3,8}\b/g) ?? []).length,
-  smallFont: (css) => (css.match(/font-size:\s*(?:[0-9]|1[01])(?:\.[0-9]+)?px/g) ?? []).length,
-  outline: (css) => (css.match(/(?:^|[^-])outline\s*:/g) ?? []).length,
+  /** Colour literals in every form: hex, rgb()/hsl(), and the CSS keyword colours. */
+  hex: (css) =>
+    (
+      css.match(
+        new RegExp(`#[0-9a-fA-F]{3,8}\\b|\\b(?:rgba?|hsla?)\\(|(?<=[:\\s,(])(?:${NAMED})(?![-\\w])`, "g"),
+      ) ?? []
+    ).length,
+  /** Sizes under the 12px floor, whether written in px, rem or em. */
+  smallFont: (css) =>
+    (
+      css.match(
+        /font-size:\s*(?:(?:[0-9]|1[01])(?:\.[0-9]+)?px|0?\.(?:[0-6][0-9]*|7(?:[0-4][0-9]*)?)r?em)(?![\w.])/g,
+      ) ?? []
+    ).length,
+  outline: (css) => (css.match(/(?:^|[^-\w])outline(?:-style|-width|-color)?\s*:/g) ?? []).length,
   important: (css) => (css.match(/!important/g) ?? []).length,
 };
 

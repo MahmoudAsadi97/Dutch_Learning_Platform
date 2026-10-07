@@ -46,6 +46,7 @@
   }
   p {
     margin: 0 0 var(--space-3);
+    line-height: var(--leading-relaxed);
   }
   small {
     font-size: var(--text-sm);
@@ -92,6 +93,42 @@
     outline: 3px solid var(--focus-ring);
     outline-offset: 2px;
   }
+  /* dark panels swap the ring for one that shows on navy and on the video stage */
+  .continue-panel,
+  .episode-choice,
+  .video-stage,
+  .video-controls-row,
+  [data-inverse] {
+    --focus-ring: var(--focus-ring-on-inverse);
+  }
+  ::placeholder {
+    color: var(--text-subtle);
+    opacity: 1;
+  }
+  /* dark panels swap the ring for one that shows on navy and on the video stage */
+  .continue-panel,
+  .episode-choice,
+  .video-stage,
+  .video-controls-row,
+  [data-inverse] {
+    --focus-ring: var(--focus-ring-on-inverse);
+  }
+  ::placeholder {
+    color: var(--text-subtle);
+    opacity: 1;
+  }
+  /* dark panels swap the ring for one that shows on navy and on the video stage */
+  .continue-panel,
+  .episode-choice,
+  .video-stage,
+  .video-controls-row,
+  [data-inverse] {
+    --focus-ring: var(--focus-ring-on-inverse);
+  }
+  ::placeholder {
+    color: var(--text-subtle);
+    opacity: 1;
+  }
   :focus:not(:focus-visible) {
     outline: none;
   }
@@ -110,6 +147,7 @@
   }
   .skip-link:focus-visible {
     transform: none;
+    transition: none;
   }
   .visually-hidden {
     position: absolute;

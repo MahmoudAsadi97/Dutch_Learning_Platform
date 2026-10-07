@@ -2,7 +2,8 @@
  * The twelve stages and the four skills, in one place.
  *
  * Pure data: no React or Next imports, so the node:test suite can load it directly. Components and
- * client modules import labels, order and tones from here instead of keeping their own copies.
+ * client modules import labels, order and icons from here instead of keeping their own copies; the
+ * accent of a skill lives in lib/design/identity.ts.
  */
 
 export const STAGE_IDS = [

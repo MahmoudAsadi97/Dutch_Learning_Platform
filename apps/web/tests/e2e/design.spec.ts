@@ -112,11 +112,19 @@ test("keyboard skip link reaches the page content", async ({ page }) => {
 test("one focus ring on buttons, links and text fields", async ({ page }) => {
   await page.goto("/missions/appointment-change");
   await expect(page.getByTestId("reading-text")).toBeVisible();
+  // under reduced motion every property change is a 0.01ms transition, so read after the next frame
   const ring = () =>
-    page.evaluate(() => {
-      const style = getComputedStyle(document.activeElement as Element);
-      return `${style.outlineStyle} ${style.outlineWidth} ${style.outlineColor}`;
-    });
+    page.evaluate(
+      () =>
+        new Promise<string>((resolve) =>
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => {
+              const style = getComputedStyle(document.activeElement as Element);
+              resolve(`${style.outlineStyle} ${style.outlineWidth} ${style.outlineColor}`);
+            }),
+          ),
+        ),
+    );
   const expected = "solid 3px rgb(36, 85, 181)";
   // no pointer interaction yet, so script focus shows the ring on buttons and links too
   await page.getByRole("button").first().focus();

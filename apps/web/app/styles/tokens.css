@@ -57,6 +57,42 @@
     --violet-700: #513587;
     --violet-800: #412b6c;
 
+    --indigo-50: #eeefff;
+    --indigo-100: #dfe1ff;
+    --indigo-200: #c3c7fb;
+    --indigo-300: #9fa5f2;
+    --indigo-500: #5b5fd6;
+    --indigo-600: #4546b8;
+    --indigo-700: #363896;
+    --indigo-800: #2b2d78;
+
+    --plum-50: #fbeef8;
+    --plum-100: #f5dcef;
+    --plum-200: #ebbbdf;
+    --plum-300: #dd93c9;
+    --plum-500: #b4489a;
+    --plum-600: #97377f;
+    --plum-700: #792b66;
+    --plum-800: #5f2250;
+
+    --indigo-50: #eeefff;
+    --indigo-100: #dfe1ff;
+    --indigo-200: #c3c7fb;
+    --indigo-300: #9fa5f2;
+    --indigo-500: #5b5fd6;
+    --indigo-600: #4546b8;
+    --indigo-700: #363896;
+    --indigo-800: #2b2d78;
+
+    --plum-50: #fbeef8;
+    --plum-100: #f5dcef;
+    --plum-200: #ebbbdf;
+    --plum-300: #dd93c9;
+    --plum-500: #b4489a;
+    --plum-600: #97377f;
+    --plum-700: #792b66;
+    --plum-800: #5f2250;
+
     --orange-50: #fdf1e8;
     --orange-100: #fbe0cc;
     --orange-200: #f6c39f;
@@ -120,7 +156,12 @@
 
     --border: var(--slate-200);
     --border-strong: var(--slate-400);
+    --border-on-inverse: var(--slate-400);
+    --border-on-inverse: var(--slate-400);
     --focus-ring: var(--blue-600);
+    --focus-ring-on-inverse: var(--blue-200);
+    --focus-ring-on-inverse: var(--blue-200);
+    --focus-ring-on-inverse: var(--blue-200);
 
     --action-solid: var(--blue-600);
     --action-solid-hover: var(--blue-700);
@@ -237,17 +278,17 @@
 
     /* --- episode and video covers: six pairs, light to deep ------------------------------------- */
     --cover-1-a: var(--orange-200);
-    --cover-1-b: var(--orange-500);
+    --cover-1-b: var(--orange-600);
     --cover-2-a: var(--green-200);
-    --cover-2-b: var(--green-500);
+    --cover-2-b: var(--green-600);
     --cover-3-a: var(--blue-200);
     --cover-3-b: var(--blue-600);
     --cover-4-a: var(--violet-200);
-    --cover-4-b: var(--violet-500);
+    --cover-4-b: var(--violet-600);
     --cover-5-a: var(--amber-200);
-    --cover-5-b: var(--amber-500);
+    --cover-5-b: var(--amber-600);
     --cover-6-a: var(--rose-200);
-    --cover-6-b: var(--rose-500);
+    --cover-6-b: var(--rose-600);
 
     /* --- compatibility aliases: the names the legacy layer still uses, now pointing at tokens ----- */
     --bg: var(--surface-canvas);
@@ -282,7 +323,9 @@
     --tone-6-b: var(--cover-6-b);
   }
 
-  /* --- accent roles per section and skill; applied with data-accent on a container ---------------- */
+  /* --- accent roles per section and skill; applied with data-accent on a container.
+   * Accents never borrow a feedback ramp (green, amber, red, orange), so a tinted section can never
+   * read as right, wrong or warned; tests/unit/design-tokens.test.mjs holds that line. ------------ */
   [data-accent="reading"],
   [data-accent="path"],
   [data-accent="today"] {
@@ -318,24 +361,24 @@
     --accent-vivid: var(--violet-500);
   }
   [data-accent="writing"] {
-    --accent-solid: var(--orange-600);
-    --accent-solid-hover: var(--orange-700);
-    --accent-ink: var(--orange-700);
-    --accent-ink-strong: var(--orange-800);
-    --accent-subtle: var(--orange-50);
-    --accent-muted: var(--orange-100);
-    --accent-border: var(--orange-200);
-    --accent-vivid: var(--orange-500);
+    --accent-solid: var(--indigo-600);
+    --accent-solid-hover: var(--indigo-700);
+    --accent-ink: var(--indigo-700);
+    --accent-ink-strong: var(--indigo-800);
+    --accent-subtle: var(--indigo-50);
+    --accent-muted: var(--indigo-100);
+    --accent-border: var(--indigo-200);
+    --accent-vivid: var(--indigo-500);
   }
   [data-accent="words"] {
-    --accent-solid: var(--amber-600);
-    --accent-solid-hover: var(--amber-700);
-    --accent-ink: var(--amber-700);
-    --accent-ink-strong: var(--amber-800);
-    --accent-subtle: var(--amber-50);
-    --accent-muted: var(--amber-100);
-    --accent-border: var(--amber-200);
-    --accent-vivid: var(--amber-500);
+    --accent-solid: var(--plum-600);
+    --accent-solid-hover: var(--plum-700);
+    --accent-ink: var(--plum-700);
+    --accent-ink-strong: var(--plum-800);
+    --accent-subtle: var(--plum-50);
+    --accent-muted: var(--plum-100);
+    --accent-border: var(--plum-200);
+    --accent-vivid: var(--plum-500);
   }
   [data-accent="stories"] {
     --accent-solid: var(--rose-600);
@@ -348,14 +391,14 @@
     --accent-vivid: var(--rose-500);
   }
   [data-accent="progress"] {
-    --accent-solid: var(--green-600);
-    --accent-solid-hover: var(--green-700);
-    --accent-ink: var(--green-700);
-    --accent-ink-strong: var(--green-800);
-    --accent-subtle: var(--green-50);
-    --accent-muted: var(--green-100);
-    --accent-border: var(--green-200);
-    --accent-vivid: var(--green-500);
+    --accent-solid: var(--slate-600);
+    --accent-solid-hover: var(--slate-700);
+    --accent-ink: var(--slate-700);
+    --accent-ink-strong: var(--slate-800);
+    --accent-subtle: var(--slate-50);
+    --accent-muted: var(--slate-100);
+    --accent-border: var(--slate-200);
+    --accent-vivid: var(--slate-500);
   }
   [data-accent="neutral"] {
     --accent-solid: var(--slate-600);

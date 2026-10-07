@@ -23,7 +23,11 @@ export function fetchUsage(signal?: AbortSignal): Promise<Usage> {
   return apiJson<Usage>("usage", { signal });
 }
 
-/** The learner's allowance counters; invalidate `queryKeys.usage()` after any paid action. */
+/**
+ * The learner's allowance counters, cached for the client's stale time (30 s). Nothing invalidates them
+ * yet: the paid-action call sites move onto the cache with the gateway work (roadmap P6), and until
+ * then the panel can lag a paid action by at most that long.
+ */
 export function useUsage() {
   return useQuery({ queryKey: queryKeys.usage(), queryFn: ({ signal }) => fetchUsage(signal) });
 }

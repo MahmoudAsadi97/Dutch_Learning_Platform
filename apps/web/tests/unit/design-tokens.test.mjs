@@ -4,9 +4,10 @@ import path from "node:path";
 import { test } from "node:test";
 
 /**
- * Every colour pairing the system promises is checked against WCAG AA: 4.5:1 for text, 3:1 for borders,
- * focus rings and solid controls. The check runs over :root and over every [data-accent] block, so a new
- * accent (or a later dark theme block) is validated the moment it is written.
+ * Every colour pairing the system promises is checked against WCAG AA: 4.5:1 for text, 3:1 for the
+ * borders of controls (--border-strong, --border-on-inverse), focus rings and solid controls. Decorative
+ * borders (--border, --accent-border) make no contrast promise. The check runs over :root and over every
+ * [data-accent] block (one light scheme today), and no accent may borrow a feedback ramp.
  */
 
 const tokensPath = path.resolve(import.meta.dirname, "..", "..", "app", "styles", "tokens.css");
@@ -57,6 +58,8 @@ const TEXT_PAIRS = [
   ["--text-muted", "--surface-raised"],
   ["--text-muted", "--surface-sunken"],
   ["--text-subtle", "--surface-raised"],
+  ["--text-subtle", "--surface-canvas"],
+  ["--text-subtle", "--surface-canvas"],
   ["--text-link", "--surface-raised"],
   ["--text-on-inverse", "--surface-inverse"],
   ["--text-muted-on-inverse", "--surface-inverse"],
@@ -72,9 +75,21 @@ const TEXT_PAIRS = [
   ["--text-on-solid", "--warning-solid"],
   ["--text-on-solid", "--danger-solid"],
   ["--text-on-solid", "--info-solid"],
+  ["--text-on-solid", "--cover-1-b"],
+  ["--text-on-solid", "--cover-2-b"],
+  ["--text-on-solid", "--cover-3-b"],
+  ["--text-on-solid", "--cover-4-b"],
+  ["--text-on-solid", "--cover-5-b"],
+  ["--text-on-solid", "--cover-6-b"],
 ];
 const GRAPHIC_PAIRS = [
   ["--border-strong", "--surface-raised"],
+  ["--border-strong", "--surface-canvas"],
+  ["--border-on-inverse", "--surface-inverse"],
+  ["--focus-ring-on-inverse", "--surface-inverse"],
+  ["--focus-ring-on-inverse", "--surface-media"],
+  ["--focus-ring-on-inverse", "--surface-inverse"],
+  ["--focus-ring-on-inverse", "--surface-media"],
   ["--focus-ring", "--surface-raised"],
   ["--focus-ring", "--surface-canvas"],
   ["--action-solid", "--surface-raised"],
@@ -127,4 +142,18 @@ test("every accent block keeps its ink readable and its solid visible", () => {
 test("the contrast formula matches the WCAG reference values", () => {
   assert.equal(contrast("#000000", "#ffffff"), 21);
   assert.ok(Math.abs(contrast("#777777", "#ffffff") - 4.48) < 0.01);
+});
+
+test("no accent borrows a feedback ramp", () => {
+  const feedback = new Set(
+    Object.entries(root)
+      .filter(([name]) => /^--(green|amber|red|orange)-\d+$/.test(name))
+      .map(([, value]) => value.toLowerCase()),
+  );
+  for (const selector of Object.keys(blocks).filter((s) => s.startsWith("[data-accent"))) {
+    for (const name of Object.keys(blocks[selector])) {
+      const value = resolve(name, blocks[selector], root)?.toLowerCase();
+      assert.ok(!feedback.has(value), `${selector} ${name} resolves to a feedback colour ${value}`);
+    }
+  }
 });

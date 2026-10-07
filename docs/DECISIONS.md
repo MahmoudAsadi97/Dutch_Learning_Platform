@@ -255,10 +255,12 @@ Dutch (owner decision O1 in `docs/ROADMAP.md`).
 The interface had three stacked stylesheets with 356 colour literals and colour only on the episode
 covers; the rest was sage and navy chosen file by file. From this change every colour is a token in
 `apps/web/app/styles/tokens.css`: brand blue is the colour of every action, each skill and each section
-has one hue (reading blue, listening teal, speaking violet, writing orange, words amber, stories rose,
-videos teal, conversations violet, progress green, Today and the path blue), set with `data-accent` on a
-container and resolved by `lib/design/identity.ts`, and green and red are reserved for feedback so a
-tinted section never reads as right or wrong. Every text pair the tokens promise is held to 4.5:1 and
+has one hue (reading blue, listening teal, speaking violet, writing indigo, words plum, stories rose,
+videos teal, conversations violet, progress neutral slate, Today and the path blue), set with
+`data-accent` on a container and resolved by `lib/design/identity.ts`. Green, amber, red and the warm
+orange are reserved for feedback so a tinted section never reads as right, wrong or warned; the token
+test refuses an accent that borrows one of those ramps. (The first cut gave writing orange, words amber
+and progress green; the adversarial review of 7 October 2026 caught the collision before release.) Every text pair the tokens promise is held to 4.5:1 and
 every graphic pair to 3:1 by `tests/unit/design-tokens.test.mjs`, in `:root` and in each accent. The
 "restrained navy palette" rule in LEARNING_DESIGN is replaced by this one; high-contrast text, the
 generous reading measure and few technical labels stay.
