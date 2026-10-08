@@ -19,6 +19,7 @@ const screens = [
     path: "/speech-check",
     heading: "Jouw stem. Jouw Nederlands.",
   },
+  { name: "speak", path: "/spreken", heading: "Zeg het in het Nederlands." },
 ];
 
 test("page scripts use a fresh CSP nonce and private caching", async ({ request }) => {
@@ -48,6 +49,7 @@ for (const screen of screens) {
       await expect(stages.first()).toBeVisible();
       await expect(stages.first().locator("dt")).toHaveText(["Lezen", "Luisteren", "Spreken", "Schrijven"]);
     }
+    if (screen.name === "speak") await expect(page.locator(".speak-choices a").first()).toBeVisible();
     if (screen.name === "settings")
       await expect(page.getByText("Technische ondersteuning", { exact: true })).toBeVisible();
     await page.evaluate(() => document.fonts.ready.then(() => undefined));

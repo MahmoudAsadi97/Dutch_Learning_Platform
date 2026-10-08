@@ -1,4 +1,4 @@
-/* Short messages stacked above the content; the region is a polite live region. */
+/* Short messages stacked above the content; the announcement lives in a separate hidden live region. */
 @layer components {
   .toast-region {
     position: fixed;
@@ -34,9 +34,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    margin: -6px -6px -6px 0;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    margin: -12px -12px -12px 0;
     border: 0;
     border-radius: var(--radius-sm);
     background: transparent;
@@ -57,6 +58,12 @@
   .toast.danger {
     border-color: var(--danger-border);
     color: var(--danger-ink);
+  }
+  /* the bottom tabs show up to 1050px (shell.css); the stack sits above them */
+  @media (max-width: 1050px) {
+    .toast-region {
+      bottom: calc(76px + env(safe-area-inset-bottom));
+    }
   }
   @media (max-width: 767px) {
     .toast-region {

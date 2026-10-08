@@ -38,7 +38,29 @@ test("the dialog keeps focus inside, closes on Escape, and a toast is announced"
   await expect(dialog).toBeHidden();
   await expect(page.getByTestId("ui-open-dialog")).toBeFocused();
   await page.getByTestId("ui-notify").click();
-  await expect(page.getByRole("status").filter({ hasText: "Opgeslagen" })).toBeVisible();
+  const toast = page.locator(".toast").filter({ hasText: "Opgeslagen" });
+  await expect(toast).toBeVisible();
+  // the announcement is the message alone, in one status region
+  await expect(page.getByRole("status").filter({ hasText: "Opgeslagen" })).toHaveCount(1);
+  const close = toast.getByRole("button", { name: "Melding sluiten" });
+  const box = await close.boundingBox();
+  expect(box?.width ?? 0).toBeGreaterThanOrEqual(44);
+  expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
+  await close.click();
+  await expect(toast).toHaveCount(0);
+});
+
+test("segmented choices are 44px targets and the chosen one is a solid fill", async ({ page }) => {
+  await page.goto("/dev/ui");
+  const segments = page.locator(".segment");
+  expect(await segments.count()).toBeGreaterThan(1);
+  for (const segment of await segments.all()) {
+    const box = await segment.boundingBox();
+    expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
+  }
+  const chosen = page.locator('.segment[aria-pressed="true"]').first();
+  const fill = await chosen.evaluate((element) => getComputedStyle(element).backgroundColor);
+  expect(fill).not.toBe("rgba(0, 0, 0, 0)");
 });
 
 test("animations are off when the system asks for less motion", async ({ page }) => {

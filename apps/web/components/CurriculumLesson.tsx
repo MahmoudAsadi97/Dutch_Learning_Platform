@@ -43,6 +43,8 @@ const sections: { id: Section; label: string; icon: IconName }[] = [
 ];
 interface PracticeResponse {
   completed: boolean;
+  /** Writing and speaking complete on any real attempt; `passed` says whether the criteria were met. */
+  passed?: boolean;
   correct?: number;
   total?: number;
   feedback: LearningCopy;
@@ -131,7 +133,7 @@ export function CurriculumLesson({
         },
       });
       setFeedback(result);
-      playTone(result.completed ? "correct" : "almost");
+      playTone((result.passed ?? result.completed) ? "correct" : "almost");
       setChecked((current) => ({ ...current, [section]: true }));
       if (result.completed) setStage(await apiJson<CurriculumStage>(`curriculum/${stageId}`));
     } catch (cause) {

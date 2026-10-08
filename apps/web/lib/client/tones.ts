@@ -19,22 +19,24 @@ const NOTES: Record<Tone, { frequencies: number[]; step: number; gain: number }>
 };
 
 const changeEvent = "taalstudio:tones";
-let volatile = false;
+/** The choice made on this page when storage refused to keep it (disabled, or full). */
+let override: boolean | null = null;
 
 export function readTonesEnabled(): boolean {
+  if (override !== null) return override;
   try {
     return localStorage.getItem(storageKeys.tones) === "on";
   } catch {
-    return volatile;
+    return false;
   }
 }
 
 export function setTonesEnabled(enabled: boolean): void {
-  volatile = enabled;
   try {
     localStorage.setItem(storageKeys.tones, enabled ? "on" : "off");
+    override = null;
   } catch {
-    /* Storage may be disabled. */
+    override = enabled;
   }
   window.dispatchEvent(new Event(changeEvent));
 }
@@ -68,13 +70,57 @@ function reducedMotion(): boolean {
   return typeof window !== "undefined" && !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 }
 
+/**
+ * Creates or resumes the audio context. Safari only starts audio inside a user gesture, and the answer
+ * tones play after a network round trip, so the first click, key or tap on the page does this early.
+ */
+export function unlockTones(): void {
+  if (!readTonesEnabled() || reducedMotion()) return;
+  try {
+    const ctx = audioContext();
+    if (ctx && ctx.state !== "running") ctx.resume().catch(() => undefined);
+  } catch {
+    /* Audio is optional. */
+  }
+}
+
+if (typeof window !== "undefined") {
+  const gestures = ["click", "keydown", "touchend"] as const;
+  const onGesture = () => {
+    unlockTones();
+    if (context?.state === "running")
+      for (const name of gestures) window.removeEventListener(name, onGesture, true);
+  };
+  for (const name of gestures) window.addEventListener(name, onGesture, true);
+}
+
+/** A context that cannot start within this window drops the tone, so late notes never pile up. */
+const RESUME_WINDOW_MS = 400;
+
 /** Plays a tone when tones are on and motion is not reduced; never throws. */
 export function playTone(tone: Tone): void {
   if (!readTonesEnabled() || reducedMotion()) return;
   try {
     const ctx = audioContext();
     if (!ctx) return;
-    if (ctx.state === "suspended") void ctx.resume();
+    if (ctx.state === "running") {
+      schedule(ctx, tone);
+      return;
+    }
+    const asked = Date.now();
+    ctx
+      .resume()
+      .then(() => {
+        if (Date.now() - asked <= RESUME_WINDOW_MS) schedule(ctx, tone);
+      })
+      .catch(() => undefined);
+  } catch {
+    /* Audio is optional. */
+  }
+}
+
+function schedule(ctx: AudioContext, tone: Tone): void {
+  try {
     const { frequencies, step, gain } = NOTES[tone];
     const start = ctx.currentTime + 0.01;
     frequencies.forEach((frequency, index) => {

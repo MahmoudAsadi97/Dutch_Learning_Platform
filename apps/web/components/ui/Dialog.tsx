@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useId, useRef, type ReactNode } from "react";
+import { useEffect, useId, useRef, type PointerEvent, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { usePrefersReducedMotion } from "@/lib/client/motion";
 
 interface Props {
   open: boolean;
-  /** Called when the person closes the dialog (Escape, the close button, the backdrop). */
+  /**
+   * Called once when the person asks to close (Escape, the close button, the backdrop). The dialog stays
+   * open until the parent sets `open` to false; closes the parent starts never call back.
+   */
   onClose: () => void;
   title: ReactNode;
   description?: ReactNode;
@@ -34,6 +37,8 @@ export function Dialog({
   closeLabel = "Sluiten",
 }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
+  const pressedOutside = useRef(false);
   const titleId = useId();
   const descriptionId = useId();
   const reducedMotion = usePrefersReducedMotion();
@@ -45,18 +50,44 @@ export function Dialog({
     else if (!open && element.open) element.close();
   }, [open]);
 
+  function outsidePanel(event: { clientX: number; clientY: number }) {
+    const box = panel.current?.getBoundingClientRect();
+    if (!box) return false;
+    return (
+      event.clientX < box.left ||
+      event.clientX > box.right ||
+      event.clientY < box.top ||
+      event.clientY > box.bottom
+    );
+  }
+
   return (
     <dialog
       ref={ref}
       className={`dialog ${size}`}
       aria-labelledby={titleId}
       aria-describedby={description ? descriptionId : undefined}
-      onClose={onClose}
+      // the panel scrolls inside the dialog; animating the dialog itself adds no scrollable overflow
+      data-anim={open && !reducedMotion ? "pop" : undefined}
+      onCancel={(event) => {
+        // Escape asks the parent; the browser may still force a close, which onClose below reports
+        event.preventDefault();
+        onClose();
+      }}
+      onClose={() => {
+        // a close the parent started (open is already false) must not call back
+        if (open) onClose();
+      }}
+      onPointerDown={(event: PointerEvent<HTMLDialogElement>) => {
+        pressedOutside.current = event.target === ref.current && outsidePanel(event);
+      }}
       onClick={(event) => {
-        if (event.target === ref.current) onClose();
+        // only a press that starts and ends on the backdrop closes; a text selection dragged out does not
+        if (pressedOutside.current && event.target === ref.current && outsidePanel(event)) onClose();
+        pressedOutside.current = false;
       }}
     >
-      <div className="dialog-panel" data-anim={open && !reducedMotion ? "pop" : undefined}>
+      <div className="dialog-panel" ref={panel}>
         <header className="dialog-header">
           <h2 id={titleId}>{title}</h2>
           <Button variant="ghost" size="small" icon="close" aria-label={closeLabel} onClick={onClose} />

@@ -13,7 +13,6 @@ import {
   type VideoLibrary as Library,
   type VideoSummary,
 } from "@/lib/client/videos";
-import { MediaTabs } from "@/components/shell/SectionTabs";
 import { EmptyState, Skeleton, SkeletonPanel } from "@/components/ui";
 
 const POLL_MS = 6000;
@@ -216,7 +215,6 @@ export function VideoLibrary() {
 
   return (
     <div className="video-library" data-testid="video-library">
-      <MediaTabs />
       <header className="path-heading">
         <div>
           <p className="eyebrow">VIDEO&apos;S</p>

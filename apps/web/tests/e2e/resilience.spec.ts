@@ -17,10 +17,18 @@ test.describe("resilience", () => {
     const banner = page.getByTestId("connection-banner");
     await expect(banner).toBeVisible();
     await expect(banner).toHaveAttribute("data-state", "api-down");
+    // the Spreken hub says the conversations failed to load instead of pretending there are none
+    const conversations = page.locator("section", {
+      has: page.getByRole("heading", { name: "Om de beurt antwoorden en vragen" }),
+    });
+    await expect(conversations.getByRole("alert")).toContainText("De gesprekken konden niet worden geladen.");
+    await expect(page.getByText(/nog geen korte gesprekken/i)).toHaveCount(0);
 
     await page.unroute("**/api/**");
     await banner.getByRole("button", { name: "Opnieuw proberen" }).click();
     await expect(page.getByTestId("connection-banner")).toHaveCount(0);
+    await conversations.getByRole("button", { name: "Opnieuw proberen" }).click();
+    await expect(conversations.locator(".speak-choices a").first()).toBeVisible();
   });
 
   test("settings shows the budget counters and the empty pricing table", async ({ page }) => {

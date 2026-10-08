@@ -14,7 +14,12 @@ import { NavigationGuardContext, type LeaveGuard } from "@/lib/client/navigation
 
 function NavLink({ item, section }: { item: NavItem; section: string | null }) {
   return (
-    <Link href={item.href} className="nav-link" aria-current={section === item.href ? "page" : undefined}>
+    <Link
+      href={item.href}
+      className="nav-link"
+      data-accent={item.accent}
+      aria-current={section === item.href ? "page" : undefined}
+    >
       <IconTile name={item.icon} size="small" accent={item.accent} iconSize={19} />
       <span>{item.label}</span>
     </Link>

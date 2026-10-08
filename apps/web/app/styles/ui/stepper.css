@@ -10,13 +10,14 @@
   .stepper li {
     position: relative;
   }
-  .stepper li + li::before {
+  /* the connector runs from the bottom of one mark (8px padding + 28px) to the top of the next */
+  .stepper li:not(:last-child)::after {
     content: "";
     position: absolute;
-    top: -6px;
-    left: 19px;
+    top: 36px;
+    bottom: calc(-1 * (var(--space-1) + 8px));
+    left: 23px;
     width: 2px;
-    height: 10px;
     background: var(--border);
   }
   .step {

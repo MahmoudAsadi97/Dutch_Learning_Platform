@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { LearningText } from "@/components/LanguageSupport";
 import { ApiError } from "@/lib/client/api";
@@ -13,7 +13,6 @@ import {
   type EpisodeSummary,
   type TodayPlan,
 } from "@/lib/client/stories";
-import { playTone } from "@/lib/client/tones";
 import { Cover, ProgressBar, ProgressRing, Skeleton, SkeletonPanel } from "@/components/ui";
 
 const POLL_MS = 5000;
@@ -26,13 +25,6 @@ function dayLabel(iso: string) {
 
 export function TodayHome() {
   const [plan, setPlan] = useState<TodayPlan | null>(null);
-  const goalMet = useRef<boolean | null>(null);
-  useEffect(() => {
-    const met = plan?.goal.met;
-    if (met === undefined) return;
-    if (goalMet.current === false && met) playTone("goal");
-    goalMet.current = met;
-  }, [plan?.goal.met]);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState("");
   const [wish, setWish] = useState("");

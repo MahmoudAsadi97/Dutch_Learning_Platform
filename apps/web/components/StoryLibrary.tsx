@@ -13,7 +13,6 @@ import {
   type EpisodeSummary,
   type SeriesView,
 } from "@/lib/client/stories";
-import { MediaTabs } from "@/components/shell/SectionTabs";
 
 const statusCopy: Record<string, string> = {
   queued: "wordt geschreven",
@@ -76,7 +75,6 @@ export function StoryLibrary() {
   const read = data.items.filter((item) => item.read_at).length;
   return (
     <div className="story-library" data-testid="story-library">
-      <MediaTabs />
       <header className="path-heading">
         <div>
           <p className="eyebrow">VERHALEN</p>

@@ -14,6 +14,8 @@ import { stageLabel } from "@/lib/domain/registry";
 /** The short conversations the learner can start, grouped by stage; the catalogue itself is free. */
 function ConversationStarters() {
   const [choices, setChoices] = useState<ConversationChoice[] | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     const controller = new AbortController();
     apiJson<ConversationCatalog>("topic-conversations", { signal: controller.signal })
@@ -21,10 +23,11 @@ function ConversationStarters() {
         if (!controller.signal.aborted) setChoices(catalog.items);
       })
       .catch(() => {
-        if (!controller.signal.aborted) setChoices([]);
+        // a failed request is not an empty catalogue: say so and offer a retry
+        if (!controller.signal.aborted) setFailed(true);
       });
     return () => controller.abort();
-  }, []);
+  }, [attempt]);
   const stages = new Map<string, ConversationChoice[]>();
   for (const choice of choices ?? []) {
     const list = stages.get(choice.stage_id) ?? [];
@@ -49,7 +52,22 @@ function ConversationStarters() {
         </div>
         <IconTile name="message" accent="conversations" />
       </div>
-      {choices === null ? (
+      {failed ? (
+        <p role="alert">
+          De gesprekken konden niet worden geladen.{" "}
+          <button
+            type="button"
+            className="linklike"
+            onClick={() => {
+              setFailed(false);
+              setChoices(null);
+              setAttempt((n) => n + 1);
+            }}
+          >
+            Opnieuw proberen
+          </button>
+        </p>
+      ) : choices === null ? (
         <p className="muted" role="status">
           Gesprekken ophalen…
         </p>
@@ -57,9 +75,9 @@ function ConversationStarters() {
         <p className="muted">
           <LearningText
             text={{
-              nl: "Nog geen korte gesprekken. Oefen eerst een spreekonderwerp in je leerpad.",
-              en: "No short conversations yet. Practise a speaking topic in your path first.",
-              fa: "هنوز گفت‌وگوی کوتاهی نیست. اول یک موضوع گفتاری در مسیرت تمرین کن.",
+              nl: "Er zijn nog geen korte gesprekken beschikbaar.",
+              en: "There are no short conversations available yet.",
+              fa: "هنوز گفت‌وگوی کوتاهی در دسترس نیست.",
             }}
           />
         </p>

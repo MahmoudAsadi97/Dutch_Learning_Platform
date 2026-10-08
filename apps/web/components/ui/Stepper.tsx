@@ -44,6 +44,7 @@ export function Stepper<T extends string>({
             <span className="step-copy">
               {step.meta && <span className="step-meta">{step.meta}</span>}
               <span className="step-title">{step.title}</span>
+              {step.done && <span className="visually-hidden">, afgerond</span>}
             </span>
           </>
         );

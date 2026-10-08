@@ -4,7 +4,8 @@
     display: flex;
     gap: var(--space-1);
     overflow-x: auto;
-    border-bottom: 1px solid var(--border);
+    /* an inset line instead of a border: the scroller clips nothing that the tabs paint */
+    box-shadow: inset 0 -1px 0 var(--border);
     scrollbar-width: none;
   }
   .tab {
@@ -15,7 +16,6 @@
     padding: 8px 14px;
     border: 0;
     border-bottom: 3px solid transparent;
-    margin-bottom: -1px;
     background: transparent;
     color: var(--text-muted);
     font: inherit;
@@ -23,6 +23,10 @@
     font-weight: var(--weight-medium);
     white-space: nowrap;
     cursor: pointer;
+  }
+  /* the strip scrolls sideways, so the ring is drawn inside the tab where the scroller cannot clip it */
+  .tab:focus-visible {
+    outline-offset: -3px;
   }
   .tab:hover:not(:disabled) {
     color: var(--text);
