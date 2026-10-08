@@ -59,7 +59,6 @@ const TEXT_PAIRS = [
   ["--text-muted", "--surface-sunken"],
   ["--text-subtle", "--surface-raised"],
   ["--text-subtle", "--surface-canvas"],
-  ["--text-subtle", "--surface-canvas"],
   ["--text-link", "--surface-raised"],
   ["--text-on-inverse", "--surface-inverse"],
   ["--text-muted-on-inverse", "--surface-inverse"],
@@ -86,8 +85,6 @@ const GRAPHIC_PAIRS = [
   ["--border-strong", "--surface-raised"],
   ["--border-strong", "--surface-canvas"],
   ["--border-on-inverse", "--surface-inverse"],
-  ["--focus-ring-on-inverse", "--surface-inverse"],
-  ["--focus-ring-on-inverse", "--surface-media"],
   ["--focus-ring-on-inverse", "--surface-inverse"],
   ["--focus-ring-on-inverse", "--surface-media"],
   ["--focus-ring", "--surface-raised"],
@@ -155,5 +152,24 @@ test("no accent borrows a feedback ramp", () => {
       const value = resolve(name, blocks[selector], root)?.toLowerCase();
       assert.ok(!feedback.has(value), `${selector} ${name} resolves to a feedback colour ${value}`);
     }
+  }
+});
+
+test("each block declares a token once and every contrast pair is listed once", () => {
+  const css = readFileSync(tokensPath, "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+  for (const match of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    const names = [...match[2].matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1]);
+    const repeated = names.filter((name, index) => names.indexOf(name) !== index);
+    assert.deepEqual(repeated, [], `${match[1].trim()} declares ${repeated.join(", ")} more than once`);
+  }
+  for (const [label, pairs] of Object.entries({
+    TEXT_PAIRS,
+    GRAPHIC_PAIRS,
+    ACCENT_TEXT_PAIRS,
+    ACCENT_GRAPHIC_PAIRS,
+  })) {
+    const keys = pairs.map((pair) => pair.join(" on "));
+    const repeated = keys.filter((key, index) => keys.indexOf(key) !== index);
+    assert.deepEqual(repeated, [], `${label} lists ${repeated.join(", ")} twice`);
   }
 });
