@@ -105,30 +105,6 @@
     color: var(--text-subtle);
     opacity: 1;
   }
-  /* dark panels swap the ring for one that shows on navy and on the video stage */
-  .continue-panel,
-  .episode-choice,
-  .video-stage,
-  .video-controls-row,
-  [data-inverse] {
-    --focus-ring: var(--focus-ring-on-inverse);
-  }
-  ::placeholder {
-    color: var(--text-subtle);
-    opacity: 1;
-  }
-  /* dark panels swap the ring for one that shows on navy and on the video stage */
-  .continue-panel,
-  .episode-choice,
-  .video-stage,
-  .video-controls-row,
-  [data-inverse] {
-    --focus-ring: var(--focus-ring-on-inverse);
-  }
-  ::placeholder {
-    color: var(--text-subtle);
-    opacity: 1;
-  }
   :focus:not(:focus-visible) {
     outline: none;
   }
