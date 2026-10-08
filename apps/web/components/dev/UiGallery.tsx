@@ -1,23 +1,45 @@
+"use client";
+
+import { useState } from "react";
+
 import { Icon, ICON_NAMES } from "@/components/Icon";
 import {
   Badge,
   Button,
   ButtonLink,
   Card,
+  Dialog,
   EmptyState,
   Field,
   IconTile,
   Input,
   Notice,
+  Segmented,
   Select,
   Skeleton,
   SkeletonPanel,
+  Stepper,
+  Tabs,
   Textarea,
+  useToast,
 } from "@/components/ui";
 import { ACCENTS } from "@/lib/design/identity";
+import { playTone, setTonesEnabled, useTonesEnabled } from "@/lib/client/tones";
+
+type Lens = "lezen" | "luisteren" | "spreken";
+type Source = "onderwerpen" | "startles";
+type Step = "lezen" | "luisteren" | "spreken" | "schrijven";
 
 /** Every primitive in every state. Served outside production only (app/dev/ui/page.tsx). */
 export function UiGallery() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [tab, setTab] = useState<Lens>("lezen");
+  const [source, setSource] = useState<Source>("onderwerpen");
+  const [step, setStep] = useState<Step>("luisteren");
+  const [shakeKey, setShakeKey] = useState(0);
+  const { notify } = useToast();
+  const tones = useTonesEnabled();
+
   return (
     <div className="ui-gallery" data-testid="ui-gallery">
       <header className="page-heading">
@@ -68,6 +90,137 @@ export function UiGallery() {
         </div>
       </Card>
 
+      <Card aria-labelledby="gallery-overlays">
+        <h2 id="gallery-overlays">Dialoog en meldingen</h2>
+        <div className="ui-row">
+          <Button variant="secondary" data-testid="ui-open-dialog" onClick={() => setDialogOpen(true)}>
+            Open een dialoog
+          </Button>
+          <Button
+            variant="secondary"
+            data-testid="ui-notify"
+            onClick={() => notify("Opgeslagen. Je kunt verder.", { tone: "success" })}
+          >
+            Toon een melding
+          </Button>
+          <Button variant="ghost" onClick={() => notify("De verbinding is traag.", { tone: "warning" })}>
+            Waarschuwing
+          </Button>
+        </div>
+        <Dialog
+          open={dialogOpen}
+          onClose={() => setDialogOpen(false)}
+          title="Voorbeelddialoog"
+          description="Een korte vraag met twee keuzes. Escape sluit, de rest van de pagina is even inert."
+          actions={
+            <>
+              <Button variant="secondary" onClick={() => setDialogOpen(false)}>
+                Annuleren
+              </Button>
+              <Button onClick={() => setDialogOpen(false)}>Ga verder</Button>
+            </>
+          }
+        >
+          <p>De tekst van de dialoog. Links erin blijven onder de navigatiebewaking vallen.</p>
+        </Dialog>
+      </Card>
+
+      <Card aria-labelledby="gallery-navigation">
+        <h2 id="gallery-navigation">Tabs, keuzes en stappen</h2>
+        <Tabs
+          label="Voorbeeldtabs"
+          value={tab}
+          onChange={setTab}
+          tabs={[
+            { id: "lezen", label: "Lezen", icon: "book", badge: 3 },
+            { id: "luisteren", label: "Luisteren", icon: "headphones" },
+            { id: "spreken", label: "Spreken", icon: "mic", disabled: true },
+          ]}
+        />
+        <div className="ui-row">
+          <Segmented
+            label="Oefenmateriaal"
+            value={source}
+            onChange={setSource}
+            options={[
+              { value: "onderwerpen", label: "Onderwerpen" },
+              { value: "startles", label: "Startles" },
+            ]}
+          />
+        </div>
+        <div className="ui-stack">
+          <Stepper
+            label="Voorbeeldstappen"
+            current={step}
+            onSelect={setStep}
+            steps={[
+              { key: "lezen", meta: "Lezen", title: "De herinnering", done: true },
+              { key: "luisteren", meta: "Luisteren", title: "De voicemail" },
+              { key: "spreken", meta: "Spreken", title: "Het telefoongesprek" },
+              { key: "schrijven", meta: "Schrijven", title: "Het bericht" },
+            ]}
+          />
+        </div>
+      </Card>
+
+      <Card aria-labelledby="gallery-motion">
+        <h2 id="gallery-motion">Beweging</h2>
+        <div className="ui-row">
+          <div className="ui-swatch" data-accent="progress" data-anim="pop">
+            pop
+          </div>
+          <div className="ui-swatch" data-accent="today" data-anim="rise">
+            rise
+          </div>
+          <div className="ui-swatch" data-accent="stories" data-anim="burst">
+            burst
+          </div>
+          <div className="ui-swatch" data-accent="writing" data-anim="shake" key={shakeKey}>
+            shake
+          </div>
+          <Button variant="secondary" size="small" onClick={() => setShakeKey((value) => value + 1)}>
+            Schud opnieuw
+          </Button>
+        </div>
+        <div className="ui-row">
+          <IconTile name="mic" accent="speaking" data-anim="pulse" aria-label="opname" role="img" />
+          <span className="writing-dots" data-anim="dots" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+          <Button variant="secondary" size="small" data-press>
+            Drukgedrag
+          </Button>
+          <div className="ui-swatch" data-accent="neutral" data-lift>
+            lift
+          </div>
+        </div>
+      </Card>
+
+      <Card aria-labelledby="gallery-sound">
+        <h2 id="gallery-sound">Geluid</h2>
+        <label className="toggle-row">
+          <input
+            type="checkbox"
+            checked={tones}
+            onChange={(event) => setTonesEnabled(event.target.checked)}
+          />
+          <span>Korte geluidjes bij een antwoord en bij je dagdoel</span>
+        </label>
+        <div className="ui-row">
+          <Button variant="secondary" size="small" onClick={() => playTone("correct")}>
+            Juist
+          </Button>
+          <Button variant="secondary" size="small" onClick={() => playTone("almost")}>
+            Bijna
+          </Button>
+          <Button variant="secondary" size="small" onClick={() => playTone("goal")}>
+            Dagdoel
+          </Button>
+        </div>
+      </Card>
+
       <Card aria-labelledby="gallery-badges">
         <h2 id="gallery-badges">Labels</h2>
         <div className="ui-row">
@@ -81,7 +234,7 @@ export function UiGallery() {
       </Card>
 
       <Card aria-labelledby="gallery-notices">
-        <h2 id="gallery-notices">Meldingen</h2>
+        <h2 id="gallery-notices">Meldingen in de pagina</h2>
         <div className="ui-stack">
           <Notice title="Zonder toon">Een rustige mededeling zonder pictogram.</Notice>
           <Notice tone="info" title="Goed om te weten">

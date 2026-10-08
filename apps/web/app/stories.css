@@ -27,11 +27,9 @@ a.episode-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-3);
 .episode-pending .button { margin-top: 10px; }
 .episode-failed .episode-cover { filter: saturate(.3); }
 .writing-dots { display: inline-flex; gap: 6px; margin-top: 12px; }
-.writing-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); animation: dots 1.2s infinite ease-in-out; }
+.writing-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
 .writing-dots span:nth-child(2) { animation-delay: .2s; }
 .writing-dots span:nth-child(3) { animation-delay: .4s; }
-@keyframes dots { 0%, 80%, 100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-4px); } }
-@media (prefers-reduced-motion: reduce) { .writing-dots span { animation: none; opacity: .7; } }
 
 .today-side { display: grid; gap: 16px; }
 .streak-card { padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; display: grid; gap: 14px; justify-items: center; }

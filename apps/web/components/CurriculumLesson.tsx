@@ -22,6 +22,7 @@ import { useNavigationGuard } from "@/lib/client/navigation";
 import type { Skill } from "@/lib/types";
 import { storageKeys } from "@/lib/client/storage";
 import { skillAccent, type Accent } from "@/lib/design/identity";
+import { playTone } from "@/lib/client/tones";
 
 type Section = "words" | "grammar" | "stories" | "alphabet" | Skill;
 const sectionAccents: Record<Section, Accent> = {
@@ -130,6 +131,7 @@ export function CurriculumLesson({
         },
       });
       setFeedback(result);
+      playTone(result.completed ? "correct" : "almost");
       setChecked((current) => ({ ...current, [section]: true }));
       if (result.completed) setStage(await apiJson<CurriculumStage>(`curriculum/${stageId}`));
     } catch (cause) {

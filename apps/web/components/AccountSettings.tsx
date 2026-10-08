@@ -7,9 +7,11 @@ import { useLanguageSupport } from "@/components/LanguageSupport";
 import { apiFetch } from "@/lib/client/api";
 import { browserStorages, clearLearnerStorage } from "@/lib/client/storage";
 import { useLearningData } from "@/lib/client/learning";
+import { playTone, setTonesEnabled, useTonesEnabled } from "@/lib/client/tones";
 
 export function AccountSettings() {
   const { mode } = useLanguageSupport();
+  const tones = useTonesEnabled();
   const { data, error, retry } = useLearningData();
   const [exporting, setExporting] = useState(false);
   const [notice, setNotice] = useState("");
@@ -80,6 +82,28 @@ export function AccountSettings() {
         <a className="button secondary" href="/.auth/logout?post_logout_redirect_uri=/" onClick={clearDrafts}>
           Afmelden
         </a>
+      </section>
+      <section className="card">
+        <div className="section-heading">
+          <h2>Geluid</h2>
+          <span className="icon-tile small" data-accent="speaking">
+            <Icon name="volume" size={20} />
+          </span>
+        </div>
+        <label className="toggle-row">
+          <input
+            type="checkbox"
+            checked={tones}
+            onChange={(event) => {
+              setTonesEnabled(event.target.checked);
+              if (event.target.checked) playTone("correct");
+            }}
+          />
+          <span>
+            Korte geluidjes bij een antwoord en bij je dagdoel
+            <span className="muted small-text">Staat uit als je systeem minder beweging vraagt.</span>
+          </span>
+        </label>
       </section>
       <section className="card">
         <div className="section-heading">

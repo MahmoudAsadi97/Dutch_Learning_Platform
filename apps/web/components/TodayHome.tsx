@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { LearningText } from "@/components/LanguageSupport";
 import { ApiError } from "@/lib/client/api";
@@ -13,6 +13,7 @@ import {
   type EpisodeSummary,
   type TodayPlan,
 } from "@/lib/client/stories";
+import { playTone } from "@/lib/client/tones";
 
 const POLL_MS = 5000;
 const POLL_LIMIT = 48; // four minutes: a local model writes an episode in one to three minutes
@@ -28,6 +29,13 @@ function dayLabel(iso: string) {
 
 export function TodayHome() {
   const [plan, setPlan] = useState<TodayPlan | null>(null);
+  const goalMet = useRef<boolean | null>(null);
+  useEffect(() => {
+    const met = plan?.goal.met;
+    if (met === undefined) return;
+    if (goalMet.current === false && met) playTone("goal");
+    goalMet.current = met;
+  }, [plan?.goal.met]);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState("");
   const [wish, setWish] = useState("");
@@ -148,7 +156,7 @@ export function TodayHome() {
                   Thema: {episode.theme}. Een nieuwe aflevering van <strong>{plan.series.title}</strong> wordt
                   nu geschreven en gecontroleerd. Dit duurt meestal één tot drie minuten.
                 </p>
-                <span className="writing-dots" aria-hidden="true">
+                <span className="writing-dots" data-anim="dots" aria-hidden="true">
                   <span />
                   <span />
                   <span />

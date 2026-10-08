@@ -8,6 +8,8 @@ const PREFIX = "taalstudio.";
 export const storageKeys = {
   /** Support-language mode; a preference, kept across sign-out. */
   languageSupport: `${PREFIX}language-support`,
+  /** Answer and goal tones on or off; a preference, kept across sign-out. */
+  tones: `${PREFIX}tones`,
   /** Writing draft of the core lesson (sessionStorage). */
   draft: (learnerKey: string, stageId: string) => `${PREFIX}draft.${learnerKey}.${stageId}`,
   /** Final-check attempt in progress (sessionStorage). */

@@ -363,7 +363,7 @@ export function CurriculumRecorder({
   const withinBounds = words >= minWords && words <= maxWords;
   return (
     <div className={`curriculum-recorder ${recording ? "is-recording" : ""}`}>
-      <span className="record-symbol" aria-hidden="true">
+      <span className="record-symbol" data-anim={recording ? "pulse" : undefined} aria-hidden="true">
         <Icon name="mic" size={28} />
       </span>
       <button

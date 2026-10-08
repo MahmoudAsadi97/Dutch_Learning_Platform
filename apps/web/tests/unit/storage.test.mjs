@@ -21,6 +21,7 @@ function fakeStorage(entries) {
 
 test("key builders produce the established names", () => {
   assert.equal(storageKeys.languageSupport, "taalstudio.language-support");
+  assert.equal(storageKeys.tones, "taalstudio.tones");
   assert.equal(storageKeys.draft("L1", "a1"), "taalstudio.draft.L1.a1");
   assert.equal(storageKeys.test("L1", "a1"), "taalstudio.test.L1.a1");
   assert.equal(storageKeys.stories("L1", "a1"), "taalstudio.stories.L1.a1");

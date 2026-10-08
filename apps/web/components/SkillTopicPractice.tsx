@@ -18,6 +18,7 @@ import { friendlyError, skillNames } from "@/lib/client/curriculum";
 import type { TopicDetail, TopicFeedback, TopicPage } from "@/lib/client/topics";
 import type { Skill } from "@/lib/types";
 import { storageKeys } from "@/lib/client/storage";
+import { playTone } from "@/lib/client/tones";
 
 const icons: Record<Skill, IconName> = {
   reading: "book",
@@ -416,6 +417,7 @@ function TopicReader({
       if (!controller.signal.aborted) {
         submitKey.current = null;
         setFeedback(response);
+        playTone(response.passed ? "correct" : "almost");
         setTopic(
           (current) =>
             current && {

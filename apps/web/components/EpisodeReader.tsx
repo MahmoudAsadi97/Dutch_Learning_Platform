@@ -9,6 +9,7 @@ import { coverClass } from "@/components/TodayHome";
 import { ApiError, newRequestId } from "@/lib/client/api";
 import { useRecorder } from "@/lib/client/recorder";
 import { stageLabels, stories, type Episode, type GlossaryItem } from "@/lib/client/stories";
+import { playTone } from "@/lib/client/tones";
 
 function friendly(cause: unknown, fallback: string) {
   if (cause instanceof ApiError) {
@@ -507,7 +508,11 @@ function Questions({ episode, onUpdate }: { episode: Episode; onUpdate: (episode
           setMessage("");
           void stories
             .answer(episode.id, answers, requestId.current)
-            .then(onUpdate)
+            .then((updated) => {
+              onUpdate(updated);
+              const right = updated.questions.filter((question) => question.correct).length;
+              playTone(right === updated.questions.length ? "correct" : "almost");
+            })
             .catch((cause) => setMessage(friendly(cause, "Je antwoorden konden niet worden bewaard.")))
             .finally(() => setBusy(false));
         }}

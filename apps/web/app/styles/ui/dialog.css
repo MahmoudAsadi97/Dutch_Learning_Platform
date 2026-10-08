@@ -1,0 +1,65 @@
+/* A native modal dialog; on narrow screens the `sheet` size rises from the bottom edge. */
+@layer components {
+  .dialog {
+    width: min(100% - 2 * var(--space-4), 32rem);
+    max-height: calc(100dvh - 2 * var(--space-4));
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-xl);
+    background: var(--surface-raised);
+    color: var(--text);
+    box-shadow: var(--shadow-4);
+    overflow: auto;
+  }
+  .dialog.lg {
+    width: min(100% - 2 * var(--space-4), 44rem);
+  }
+  .dialog::backdrop {
+    background: var(--overlay-dark);
+  }
+  .dialog-panel {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5);
+  }
+  .dialog-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+  .dialog-header h2 {
+    margin: 0;
+    font-size: var(--text-xl);
+  }
+  .dialog-description {
+    margin: 0;
+    color: var(--text-muted);
+  }
+  .dialog-body {
+    min-width: 0;
+  }
+  .dialog-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+  @media (max-width: 767px) {
+    .dialog.sheet {
+      width: 100%;
+      max-width: none;
+      max-height: calc(100dvh - var(--space-6));
+      margin: auto 0 0;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+    .dialog-actions {
+      flex-direction: column-reverse;
+    }
+    .dialog-actions .button {
+      width: 100%;
+    }
+  }
+}

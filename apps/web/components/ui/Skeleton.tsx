@@ -20,6 +20,7 @@ export function Skeleton({ kind = "text", lines = 1, width, height, className = 
           className={`skeleton ${kind} ${className}`.trim()}
           style={{ width: index === count - 1 && kind === "text" && count > 1 ? "40%" : width, height }}
           aria-hidden="true"
+          data-anim="shimmer"
         />
       ))}
     </>

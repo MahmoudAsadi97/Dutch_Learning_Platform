@@ -137,7 +137,11 @@ export function SpeechCheck() {
           Houd de knop ingedrukt en zeg een Nederlandse zin, bijvoorbeeld:{" "}
           <em lang="nl">Ik wil mijn afspraak verzetten.</em>
         </p>
-        <div className={`mic-orbit ${recording ? "recording" : ""}`} aria-hidden="true">
+        <div
+          className={`mic-orbit ${recording ? "recording" : ""}`}
+          data-anim={recording ? "pulse" : undefined}
+          aria-hidden="true"
+        >
           <Icon name="mic" size={32} />
         </div>
         <details className="lesson-details">

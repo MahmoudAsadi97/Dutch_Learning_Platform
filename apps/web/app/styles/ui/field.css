@@ -51,4 +51,20 @@
   .field.invalid .field-control:focus-visible {
     outline-color: var(--danger-vivid);
   }
+  .toggle-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    cursor: pointer;
+  }
+  .toggle-row input {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+  }
+  .toggle-row .small-text {
+    display: block;
+    margin-top: 2px;
+  }
 }

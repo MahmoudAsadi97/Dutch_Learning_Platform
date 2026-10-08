@@ -1,0 +1,40 @@
+/* A pill of mutually exclusive choices. */
+@layer components {
+  .segmented {
+    display: inline-flex;
+    gap: 4px;
+    max-width: 100%;
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--surface-sunken);
+  }
+  .segment {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 36px;
+    padding: 6px 14px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .segment:hover:not(:disabled) {
+    color: var(--text);
+  }
+  .segment[aria-pressed="true"] {
+    background: var(--surface-raised);
+    color: var(--accent-ink);
+    box-shadow: var(--shadow-1);
+  }
+  .segment:disabled {
+    color: var(--text-disabled);
+    cursor: not-allowed;
+  }
+}

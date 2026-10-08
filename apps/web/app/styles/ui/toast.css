@@ -1,0 +1,67 @@
+/* Short messages stacked above the content; the region is a polite live region. */
+@layer components {
+  .toast-region {
+    position: fixed;
+    inset: auto var(--space-4) calc(var(--space-4) + env(safe-area-inset-bottom)) auto;
+    z-index: var(--z-toast);
+    display: grid;
+    gap: var(--space-2);
+    width: min(100% - 2 * var(--space-4), 24rem);
+    pointer-events: none;
+  }
+  .toast {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-raised);
+    color: var(--text);
+    box-shadow: var(--shadow-3);
+    font-size: var(--text-sm);
+    pointer-events: auto;
+  }
+  .toast > .icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .toast-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .toast-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: -6px -6px -6px 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .toast-close:hover {
+    background: var(--surface-sunken);
+  }
+  .toast.success {
+    border-color: var(--success-border);
+    color: var(--success-ink);
+  }
+  .toast.warning {
+    border-color: var(--warning-border);
+    color: var(--warning-ink);
+  }
+  .toast.danger {
+    border-color: var(--danger-border);
+    color: var(--danger-ink);
+  }
+  @media (max-width: 767px) {
+    .toast-region {
+      inset: auto var(--space-4) calc(76px + env(safe-area-inset-bottom)) var(--space-4);
+      width: auto;
+    }
+  }
+}

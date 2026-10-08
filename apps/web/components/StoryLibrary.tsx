@@ -162,7 +162,7 @@ export function StoryLibrary() {
                   Opnieuw laten schrijven
                 </button>
               ) : (
-                <span className="writing-dots" aria-hidden="true">
+                <span className="writing-dots" data-anim="dots" aria-hidden="true">
                   <span />
                   <span />
                   <span />

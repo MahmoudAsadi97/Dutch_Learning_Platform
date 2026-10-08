@@ -36,6 +36,11 @@ code is the reference, this explains why it is shaped the way it is.
   `app/styles/ui/*.css` inside `@layer components`); icons come from `lucide-react` (pinned exactly) behind
   `components/Icon.tsx`, whose `IconName` union is the app's icon vocabulary. `/dev/ui` shows every primitive
   in every state outside production and is covered by `tests/e2e/ui-gallery.spec.ts` and a screenshot baseline.
+  Motion is CSS only: `app/styles/motion.css` names every animation once and screens apply it with
+  `data-anim`; each has a static reduced-motion state, and `lib/client/motion.ts` picks the attribute for an
+  answer state. Toasts come from `useToast()` (the provider sits inside `.app-frame`); dialogs are native
+  `<dialog>` elements rendered in place. Answer and goal tones (`lib/client/tones.ts`) are synthesised with Web
+  Audio, off by default, stored under one key in `lib/client/storage.ts`.
   Fonts are self-hosted. Dashboard/progress read persisted evidence only; technical diagnostics live
   in Settings. A shared navigation guard waits for writing autosave before app-link navigation.
 - The web layout is dynamically rendered so runtime environment labels and per-response CSP nonces

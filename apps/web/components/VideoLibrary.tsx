@@ -65,7 +65,7 @@ export function VideoTile({
             <Icon name="play" size={22} />
           </span>
         ) : pending ? (
-          <span className="writing-dots">
+          <span className="writing-dots" data-anim="dots">
             <span />
             <span />
             <span />
