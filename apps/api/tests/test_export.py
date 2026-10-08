@@ -11,6 +11,7 @@ from dlp.db.registry import Base
 # table -> top-level key of GET /export that carries its rows
 EXPORTED = {
     "learners": "learner",
+    "learner_profiles": "profile",
     "skill_records": "skill_records",
     "practice_sessions": "sessions",  # turns and evidence hang off the session rows
     "feedback_reports": "sessions",

@@ -16,6 +16,7 @@ from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice,
 from dlp.domains.feedback.service import report_view, reports_for
 from dlp.domains.practice.service import list_sessions
 from dlp.domains.practice.turns import evidence_view, turn_view
+from dlp.domains.profile import service as profile_service
 from dlp.domains.progress.service import skill_records_for
 from dlp.domains.stories import service as stories_service
 from dlp.domains.stories import vocab
@@ -60,6 +61,7 @@ def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depe
         "exported_at": utcnow().isoformat(),
         "learner": {"id": str(ctx.learner.id), "email": ctx.learner.email, "display_name": ctx.learner.display_name,
                     "support_language": ctx.learner.support_language, "target_language": ctx.learner.target_language},
+        "profile": profile_service.view(session, ctx.learner, profile_service.ensure(session, ctx.learner))["profile"],
         "skill_records": [
             {"id": str(r.id), "mission_id": r.mission_id, "skill": r.skill, "status": r.status, "attempts": r.attempts,
              "latest_assessment": r.latest_assessment, "evidence_ids": r.evidence_ids, "updated_at": r.updated_at.isoformat()}

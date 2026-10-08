@@ -98,7 +98,7 @@ LEARNER_DATA_TABLES = [
     "content_reviews", "coach_plan_requests", "practice_observations", "topic_conversations",
     "topic_practice", "curriculum_attempts", "curriculum_practice",
     "feedback_reports", "usage_reservations", "usage_counters", "evidence_records", "practice_turns",
-    "practice_sessions", "skill_records", "audio_assets", "jobs", "learners",
+    "practice_sessions", "skill_records", "audio_assets", "jobs", "learner_profiles", "learners",
 ]
 
 

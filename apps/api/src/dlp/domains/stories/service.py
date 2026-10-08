@@ -29,6 +29,7 @@ from dlp.domains.curriculum.library import library_for
 from dlp.domains.curriculum.schemas import STAGE_IDS
 from dlp.domains.identity.models import Learner
 from dlp.domains.jobs import service as jobs
+from dlp.domains.profile import service as profile_service
 from dlp.domains.stories import today
 from dlp.domains.stories.bible import DEFAULT_BIBLE, SERIES_TITLE, profile_for, stages_up_to
 from dlp.domains.stories.models import StoryEpisode, StorySeries, VocabItem
@@ -56,9 +57,11 @@ class StoryError(curriculum.CurriculumError):
 # --- series ----------------------------------------------------------------------------------------------
 
 def default_stage(session: Session, learner_id: uuid.UUID) -> str:
-    passed = curriculum.passed_stages(session, learner_id)
-    first_open = next((stage for stage in STAGE_IDS if stage not in passed), STAGE_IDS[-1])
-    return "a1" if first_open == "pre-a1" else first_open
+    """The learner profile is the one source of the level; without a row, the first open stage."""
+    profile = profile_service.get(session, learner_id)
+    if profile is not None:
+        return profile.stage_id
+    return profile_service.starting_stage(session, learner_id)
 
 
 def ensure_series(session: Session, learner: Learner) -> StorySeries:
@@ -77,6 +80,7 @@ def set_level(session: Session, learner: Learner, stage_id: str) -> dict:
     series = ensure_series(session, learner)
     series.stage_id = stage_id
     series.updated_at = utcnow()
+    profile_service.set_stage(session, learner, stage_id)
     session.flush()
     return series_view(series)
 

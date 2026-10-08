@@ -174,6 +174,7 @@ def test_export_is_complete_and_owner_only(client):
     exported = next(s for s in body["sessions"] if s["id"] == session_id)
     assert [e["kind"] for e in exported["evidence"]] == ["answer"] and exported["feedback"] == []
     assert "counters" in body["usage"]
+    assert body["profile"]["stage_id"] == "a1"
 
 
 def test_support_reopens_are_deduplicated_and_invalid_rungs_are_rejected(client):

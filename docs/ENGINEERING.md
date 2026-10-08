@@ -48,6 +48,8 @@ code is the reference, this explains why it is shaped the way it is.
   in Settings. A shared navigation guard waits for writing autosave before app-link navigation.
 - The web layout is dynamically rendered so runtime environment labels and per-response CSP nonces
   are correct. Script execution is nonce-based; inline styles remain allowed for React layout styles.
+- `GET /me` is the one source of the learner's level, daily goal and support language (`learner_profiles`);
+  every screen that chooses a level reads it, and `POST /me/onboarding` runs once per learner.
 - `dlp.release migrate` is the only cloud schema-update path. The server starts Uvicorn directly with
   a DML-only role. `/health` is liveness; `/health/ready` requires the exact packaged migration head.
 - Azure model calls use managed identity and the v1 endpoint; explicit keys remain supported for

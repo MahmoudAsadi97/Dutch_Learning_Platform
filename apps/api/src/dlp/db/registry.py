@@ -9,6 +9,7 @@ from dlp.domains.feedback import models as feedback_models
 from dlp.domains.identity import models as identity_models
 from dlp.domains.jobs import models as jobs_models
 from dlp.domains.practice import models as practice_models
+from dlp.domains.profile import models as profile_models
 from dlp.domains.progress import models as progress_models
 from dlp.domains.speech import models as speech_models
 from dlp.domains.stories import models as story_models
@@ -26,6 +27,7 @@ __all__ = [
     "identity_models",
     "jobs_models",
     "practice_models",
+    "profile_models",
     "progress_models",
     "speech_models",
     "story_models",

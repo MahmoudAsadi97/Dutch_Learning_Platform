@@ -1,0 +1,41 @@
+"""First-run onboarding: store the choices once, sync the serial's level, and queue episode one so the
+first visit to Vandaag does not wait for the writer."""
+from __future__ import annotations
+
+from sqlalchemy.orm import Session
+
+from dlp.db.base import utcnow
+from dlp.domains.identity.models import Learner
+from dlp.domains.profile import service
+from dlp.domains.profile.models import LearnerProfile
+from dlp.domains.profile.schemas import OnboardingBody, ProfileUpdate
+from dlp.domains.stories import service as stories
+
+
+def update(session: Session, learner: Learner, body: ProfileUpdate) -> LearnerProfile:
+    """A profile change; a new level also moves the serial, so the next episode is written at it."""
+    profile = service.update(session, learner, body)
+    if "stage_id" in body.model_fields_set and body.stage_id is not None:
+        stories.set_level(session, learner, body.stage_id)
+    return profile
+
+
+def complete(session: Session, learner: Learner, body: OnboardingBody) -> dict:
+    profile = service.ensure(session, learner)
+    if profile.onboarded_at is not None:
+        return {"already_onboarded": True, **service.view(session, learner, profile), "episode": None}
+    profile.support_mode = body.support_mode
+    profile.stage_id = body.stage_id
+    profile.daily_goal_points = body.daily_goal_points
+    profile.stated_goal = body.stated_goal
+    profile.onboarded_at = utcnow()
+    profile.updated_at = utcnow()
+    learner.support_language = "fa" if "fa" in body.support_mode else "en"
+    session.flush()
+    stories.set_level(session, learner, body.stage_id)
+    episode = stories.ensure_buffer(session, learner)
+    return {
+        "already_onboarded": False,
+        **service.view(session, learner, profile),
+        "episode": stories.episode_view(episode, full=False) if episode is not None else None,
+    }
