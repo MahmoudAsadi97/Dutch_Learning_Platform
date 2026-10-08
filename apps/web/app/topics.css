@@ -8,8 +8,7 @@
 .topic-progress-summary { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:1.25rem; background:var(--accent-subtle); border:1px solid var(--accent-border); border-radius:16px; color:var(--accent-ink); gap:.25rem; }
 .topic-progress-number { font-size:2rem; font-weight:700; letter-spacing:-.06em; }
 .topic-progress-number > span { font-size:1.05rem; font-weight:450; letter-spacing:normal; }
-.topic-progress-summary progress { display:block; height:7px; width:100%; accent-color:var(--accent-solid); margin:.6rem 0; border:0; border-radius:8px; overflow:hidden; }
-.topic-progress-summary progress::-webkit-progress-bar { background:var(--accent-muted); }.topic-progress-summary progress::-webkit-progress-value { background:var(--accent-solid); }
+.topic-progress-summary .progress-bar { margin:.6rem 0; }
 .topic-filters { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,.8fr); gap:.8rem; padding:1rem; background:var(--surface-raised); border:1px solid var(--accent-border); border-radius:14px; margin:1.4rem 0; }
 .topic-filters > div { display:flex; flex-direction:column; gap:.45rem; min-width:0; }
 .topic-filters label { font-size:.8rem; font-weight:650; color:var(--text-muted); }

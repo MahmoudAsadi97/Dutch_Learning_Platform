@@ -94,6 +94,10 @@ const GRAPHIC_PAIRS = [
   ["--warning-vivid", "--surface-raised"],
   ["--danger-vivid", "--surface-raised"],
   ["--recording-pulse", "--surface-raised"],
+  ["--streak-solid", "--streak-track"],
+  ["--streak-solid", "--surface-raised"],
+  ["--success-solid", "--surface-raised"],
+  ["--text-on-inverse", "--border-on-inverse"],
 ];
 const ACCENT_TEXT_PAIRS = [
   ["--accent-ink", "--accent-subtle"],
@@ -104,6 +108,7 @@ const ACCENT_TEXT_PAIRS = [
 ];
 const ACCENT_GRAPHIC_PAIRS = [
   ["--accent-solid", "--surface-raised"],
+  ["--border-strong", "--accent-subtle"],
   ["--accent-vivid", "--surface-raised"],
 ];
 

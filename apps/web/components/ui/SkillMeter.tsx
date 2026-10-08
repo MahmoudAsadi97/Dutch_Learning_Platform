@@ -1,3 +1,4 @@
+import { Icon } from "@/components/Icon";
 import { skillAccent } from "@/lib/design/identity";
 import { skillOrder, skills } from "@/lib/domain/registry";
 import type { Skill } from "@/lib/types";
@@ -24,6 +25,7 @@ export function SkillMeter({ done, label = "Vaardigheden", className = "" }: Pro
             data-accent={skillAccent[skill]}
           >
             <span className="skill-meter-bar" aria-hidden="true" />
+            <Icon name={skills[skill].icon} size={14} />
             <span className="visually-hidden">
               {skills[skill].label.nl}: {practised ? "geoefend" : "nog niet geoefend"}
             </span>

@@ -12,8 +12,8 @@
     text-align: center;
   }
   .progress-ring.warm {
-    --ring-track: var(--orange-100);
-    --ring-fill: var(--orange-500);
+    --ring-track: var(--streak-track);
+    --ring-fill: var(--streak-solid);
   }
   .progress-ring.success {
     --ring-track: var(--success-bg);
@@ -26,9 +26,9 @@
     height: 100%;
     transform: rotate(-90deg);
   }
+  /* the fill's cap is an SVG attribute (round, or butt when empty); CSS would override it */
   .progress-ring circle {
     fill: none;
-    stroke-linecap: round;
   }
   .progress-ring-track {
     stroke: var(--ring-track);
@@ -44,24 +44,24 @@
     padding: 0 var(--space-4);
   }
 
+  /* a hollow, outlined track: the maximum stays visible on plain cards and on tinted panels alike */
   .progress-bar {
-    --bar-track: var(--accent-subtle);
+    --bar-track: var(--surface-raised);
     --bar-fill: var(--accent-solid);
     width: 100%;
     height: 10px;
     border-radius: var(--radius-pill);
     background: var(--bar-track);
+    box-shadow: inset 0 0 0 1px var(--border-strong);
     overflow: hidden;
   }
   .progress-bar.thin {
     height: 5px;
   }
   .progress-bar.warm {
-    --bar-track: var(--orange-50);
-    --bar-fill: var(--orange-500);
+    --bar-fill: var(--streak-solid);
   }
   .progress-bar.success {
-    --bar-track: var(--success-bg);
     --bar-fill: var(--success-solid);
   }
   .progress-bar > span {
@@ -77,13 +77,29 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 4px;
   }
+  .skill-meter-item {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    min-width: 0;
+  }
+  /* an open slot is outlined, a practised one is filled: the state is shape as well as colour */
   .skill-meter-bar {
     display: block;
+    width: 100%;
     height: 6px;
     border-radius: 3px;
-    background: var(--surface-sunken);
+    background: var(--surface-raised);
+    box-shadow: inset 0 0 0 1px var(--border-strong);
+  }
+  .skill-meter-item > .icon {
+    color: var(--text-muted);
+  }
+  .skill-meter-item.is-done > .icon {
+    color: var(--accent-ink);
   }
   .skill-meter-item.is-done > .skill-meter-bar {
+    box-shadow: none;
     background: var(--accent-solid);
   }
 

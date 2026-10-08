@@ -247,7 +247,7 @@ export function TodayHome() {
               className={`streak-ring ${streak.today_active ? "is-active" : ""}`}
               value={goal.points}
               max={goal.target}
-              label={`${streak.current} dagen op rij`}
+              label={`${streak.current} ${streak.current === 1 ? "dag" : "dagen"} op rij, ${goal.points} van ${goal.target} punten vandaag`}
               tone={streak.today_active ? "warm" : "accent"}
             >
               <span className="streak-number">{streak.current}</span>

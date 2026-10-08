@@ -237,8 +237,16 @@ test("reading feedback is earned by submitting this topic and never completes li
   );
   await page.getByRole("button", { name: "Kies een ander onderwerp", exact: true }).click();
   await expect(page.locator(".topic-progress-number")).toHaveText("1 / 100");
+  await expect(page.getByRole("progressbar", { name: "Voortgang lezen" })).toHaveAttribute(
+    "aria-valuenow",
+    "1",
+  );
   await selectSkill(page, "listening");
   await expect(page.locator(".topic-progress-number")).toHaveText("0 / 100");
+  await expect(page.getByRole("progressbar", { name: "Voortgang luisteren" })).toHaveAttribute(
+    "aria-valuenow",
+    "0",
+  );
 });
 
 test("writing drafts and corrections stay with their own topic and survive a failed submission", async ({

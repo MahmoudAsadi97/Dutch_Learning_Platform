@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 
-import { dashOffset, percent } from "@/lib/design/progress";
+import { dashOffset, fraction, percent } from "@/lib/design/progress";
 
 interface Props {
   value: number;
@@ -61,6 +61,8 @@ export function ProgressRing({
           pathLength={100}
           strokeDasharray="100"
           strokeDashoffset={dashOffset(value, max)}
+          // a round cap on an empty dash can still paint a dot at twelve o'clock
+          strokeLinecap={fraction(value, max) > 0 ? "round" : "butt"}
         />
       </svg>
       <div className="progress-ring-content">{children}</div>
