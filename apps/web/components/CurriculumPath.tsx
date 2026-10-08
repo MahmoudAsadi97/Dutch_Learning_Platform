@@ -7,6 +7,7 @@ import { Icon } from "@/components/Icon";
 import { LearningText } from "@/components/LanguageSupport";
 import { apiJson } from "@/lib/client/api";
 import { stageLabel, type CurriculumCatalog } from "@/lib/client/curriculum";
+import { ProgressBar, Skeleton, SkeletonPanel, SkillMeter } from "@/components/ui";
 
 export function CurriculumPath() {
   const [data, setData] = useState<CurriculumCatalog | null>(null);
@@ -52,9 +53,9 @@ export function CurriculumPath() {
           </button>
         </div>
       ) : !data ? (
-        <div className="path-loading" role="status">
-          Je leerpad laden…
-        </div>
+        <SkeletonPanel label="Je leerpad laden…">
+          <Skeleton lines={3} />
+        </SkeletonPanel>
       ) : (
         <>
           {next && (
@@ -78,16 +79,13 @@ export function CurriculumPath() {
                   <span> / {data.stages.length}</span>
                 </span>
                 <p>niveaus afgerond</p>
-                <div
+                <ProgressBar
                   className="path-progress"
-                  role="progressbar"
-                  aria-label="Afgeronde niveaus"
-                  aria-valuenow={finished}
-                  aria-valuemin={0}
-                  aria-valuemax={data.stages.length}
-                >
-                  <span style={{ width: `${(finished / data.stages.length) * 100}%` }} />
-                </div>
+                  size="thin"
+                  value={finished}
+                  max={data.stages.length}
+                  label="Afgeronde niveaus"
+                />
                 <div
                   className="continue-skill-icons"
                   role="group"
@@ -139,6 +137,10 @@ export function CurriculumPath() {
                   <p>
                     <LearningText text={stage.description} />
                   </p>
+                  <SkillMeter
+                    done={Object.fromEntries(stage.practice_completed.map((skill) => [skill, true]))}
+                    label={`Vaardigheden van ${stageLabel(stage.id)}`}
+                  />
                   <div className="stage-practice-status">
                     <span>{stage.practice_completed.length} / 4 vaardigheden</span>
                     <span>Eindtoets</span>

@@ -1,4 +1,4 @@
-/* Placeholder shapes while data loads. The shimmer arrives with the motion system. */
+/* Placeholder shapes while data loads; the shimmer comes from motion.css through data-anim. */
 @layer components {
   .skeleton {
     display: block;
@@ -15,16 +15,15 @@
   .skeleton.block {
     min-height: 120px;
   }
-  .skeleton.circle {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-  }
-  .skeleton-panel,
-  .path-loading {
+  .skeleton-panel {
     padding: var(--space-7) var(--space-5);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     background: var(--surface-raised);
+  }
+  .skeleton.circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
   }
 }

@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
-import { EpisodeCard, coverClass } from "@/components/TodayHome";
+import { EpisodeCard } from "@/components/TodayHome";
+import { Cover, EmptyState, Skeleton, SkeletonPanel } from "@/components/ui";
 import { ApiError } from "@/lib/client/api";
 import {
   episodeHref,
@@ -67,9 +68,9 @@ export function StoryLibrary() {
     );
   if (!data)
     return (
-      <div className="path-loading" role="status">
-        Verhalen laden…
-      </div>
+      <SkeletonPanel label="Verhalen laden…">
+        <Skeleton lines={3} />
+      </SkeletonPanel>
     );
   const next = data.items.find((item) => item.status === "ready" && !item.read_at);
   const read = data.items.filter((item) => item.read_at).length;
@@ -120,9 +121,7 @@ export function StoryLibrary() {
       <ol className="episode-grid">
         {data.items.map((item) => (
           <li key={item.id} className={`episode-tile status-${item.status} ${item.read_at ? "is-read" : ""}`}>
-            <div className={coverClass(item.number)} aria-hidden="true">
-              <span className="cover-number">{item.number}</span>
-            </div>
+            <Cover number={item.number} />
             <div className="episode-tile-body">
               <p className="eyebrow">
                 AFLEVERING {item.number} · {stageLabels[item.stage_id] ?? item.stage_id}
@@ -175,9 +174,11 @@ export function StoryLibrary() {
         ))}
       </ol>
       {data.items.length === 0 && (
-        <p className="muted">
-          Nog geen afleveringen. Ga naar <Link href="/">Vandaag</Link>; daar start de eerste.
-        </p>
+        <EmptyState icon="book" accent="stories" title="Nog geen afleveringen">
+          <p>
+            Ga naar <Link href="/">Vandaag</Link>; daar start de eerste.
+          </p>
+        </EmptyState>
       )}
       <section className="cast-card" aria-labelledby="cast-title">
         <h2 id="cast-title">De personages</h2>

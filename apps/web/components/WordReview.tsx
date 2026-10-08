@@ -7,6 +7,7 @@ import { useLanguageSupport } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import { ApiError } from "@/lib/client/api";
 import { words, type Grade, type WordItem, type WordStats } from "@/lib/client/stories";
+import { Skeleton, SkeletonPanel } from "@/components/ui";
 
 const gradeCopy: { grade: Grade; label: string; hint: string }[] = [
   { grade: "again", label: "Nog eens", hint: "straks opnieuw" },
@@ -103,9 +104,9 @@ export function WordReview() {
     );
   if (!queue || !stats)
     return (
-      <div className="path-loading" role="status">
-        Woorden laden…
-      </div>
+      <SkeletonPanel label="Woorden laden…">
+        <Skeleton lines={3} />
+      </SkeletonPanel>
     );
   const current = queue[0];
   return (

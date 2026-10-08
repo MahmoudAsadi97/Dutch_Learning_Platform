@@ -42,6 +42,8 @@ code is the reference, this explains why it is shaped the way it is.
   answer state. Toasts come from `useToast()` (the provider sits inside `.app-frame`); dialogs are native
   `<dialog>` elements rendered in place. Answer and goal tones (`lib/client/tones.ts`) are synthesised with Web
   Audio, off by default, stored under one key in `lib/client/storage.ts`.
+  Progress visuals (`ProgressRing`, `ProgressBar`, `SkillMeter`) draw one measured value against one maximum
+  and never an overall level; `lib/design/progress.ts` holds their arithmetic.
   Fonts are self-hosted. Dashboard/progress read persisted evidence only; technical diagnostics live
   in Settings. A shared navigation guard waits for writing autosave before app-link navigation.
 - The web layout is dynamically rendered so runtime environment labels and per-response CSP nonces

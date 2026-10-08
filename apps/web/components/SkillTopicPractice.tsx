@@ -19,6 +19,7 @@ import type { TopicDetail, TopicFeedback, TopicPage } from "@/lib/client/topics"
 import type { Skill } from "@/lib/types";
 import { storageKeys } from "@/lib/client/storage";
 import { playTone } from "@/lib/client/tones";
+import { ProgressBar } from "@/components/ui";
 
 const icons: Record<Skill, IconName> = {
   reading: "book",
@@ -133,10 +134,11 @@ export function SkillTopicPractice(props: Props) {
               <span> / {metadata.total_topics}</span>
             </span>
             <span>onderwerpen geoefend</span>
-            <progress
-              aria-label={`Voortgang ${skillNames[skill].toLowerCase()}`}
-              max={metadata.total_topics || 1}
+            <ProgressBar
+              size="thin"
               value={metadata.completed_count}
+              max={metadata.total_topics || 1}
+              label={`Voortgang ${skillNames[skill].toLowerCase()}`}
             />
             <span className="small-text">Alleen deze vaardigheid</span>
           </div>

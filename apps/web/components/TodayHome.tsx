@@ -14,13 +14,10 @@ import {
   type TodayPlan,
 } from "@/lib/client/stories";
 import { playTone } from "@/lib/client/tones";
+import { Cover, ProgressBar, ProgressRing, Skeleton, SkeletonPanel } from "@/components/ui";
 
 const POLL_MS = 5000;
 const POLL_LIMIT = 48; // four minutes: a local model writes an episode in one to three minutes
-
-export function coverClass(number: number) {
-  return `episode-cover tone-${((number - 1) % 6) + 1}`;
-}
 
 function dayLabel(iso: string) {
   const date = new Date(`${iso}T12:00:00`);
@@ -102,12 +99,11 @@ export function TodayHome() {
     );
   if (!plan)
     return (
-      <div className="path-loading" role="status">
-        Je dag voorbereiden…
-      </div>
+      <SkeletonPanel label="Je dag voorbereiden…">
+        <Skeleton lines={3} />
+      </SkeletonPanel>
     );
   const { streak, goal, episode, failed, awaiting_choice: awaiting, words } = plan;
-  const progress = Math.min(100, Math.round((goal.points / goal.target) * 100));
   const headline =
     plan.next_step === "read"
       ? "Er ligt een nieuwe aflevering klaar."
@@ -144,9 +140,7 @@ export function TodayHome() {
           )}
           {episode && pending && (
             <div className="episode-pending" role="status">
-              <div className={coverClass(episode.number)} aria-hidden="true">
-                <span className="cover-number">{episode.number}</span>
-              </div>
+              <Cover number={episode.number} />
               <div>
                 <p className="eyebrow">
                   AFLEVERING {episode.number} · {stageLabels[episode.stage_id] ?? episode.stage_id}
@@ -180,9 +174,7 @@ export function TodayHome() {
           )}
           {!episode && awaiting && (
             <div className="episode-pending choose-next">
-              <div className={coverClass(awaiting.number)} aria-hidden="true">
-                <span className="cover-number">{awaiting.number}</span>
-              </div>
+              <Cover number={awaiting.number} />
               <div>
                 <p className="eyebrow">AFLEVERING {awaiting.number} · KEUZE</p>
                 <h2 id="today-episode-title">Jij beslist hoe het verdergaat.</h2>
@@ -199,9 +191,7 @@ export function TodayHome() {
           )}
           {!episode && !awaiting && failed && (
             <div className="episode-pending episode-failed" role="status">
-              <div className={coverClass(failed.number)} aria-hidden="true">
-                <span className="cover-number">{failed.number}</span>
-              </div>
+              <Cover number={failed.number} />
               <div>
                 <p className="eyebrow">AFLEVERING {failed.number}</p>
                 <h2 id="today-episode-title">
@@ -261,14 +251,16 @@ export function TodayHome() {
 
         <aside className="today-side">
           <div className="streak-card">
-            <div
+            <ProgressRing
               className={`streak-ring ${streak.today_active ? "is-active" : ""}`}
-              role="img"
-              aria-label={`${streak.current} dagen op rij`}
+              value={goal.points}
+              max={goal.target}
+              label={`${streak.current} dagen op rij`}
+              tone={streak.today_active ? "warm" : "accent"}
             >
               <span className="streak-number">{streak.current}</span>
               <span className="streak-label">{streak.current === 1 ? "dag op rij" : "dagen op rij"}</span>
-            </div>
+            </ProgressRing>
             <dl className="streak-facts">
               <div>
                 <dt>Vandaag</dt>
@@ -287,16 +279,13 @@ export function TodayHome() {
                 <dd>{streak.active_days}</dd>
               </div>
             </dl>
-            <div
+            <ProgressBar
               className="goal-bar"
-              role="progressbar"
-              aria-label="Dagdoel"
-              aria-valuenow={goal.points}
-              aria-valuemin={0}
-              aria-valuemax={goal.target}
-            >
-              <span style={{ width: `${progress}%` }} />
-            </div>
+              value={goal.points}
+              max={goal.target}
+              label="Dagdoel"
+              tone="warm"
+            />
             <p className="small-text muted">
               {goal.met
                 ? "Dagdoel gehaald. Alles wat je nu nog doet, is extra."
@@ -479,10 +468,7 @@ export function TodayHome() {
 export function EpisodeCard({ episode, cta }: { episode: EpisodeSummary; cta: string }) {
   return (
     <Link href={episodeHref(episode.id)} className="episode-card" data-testid="episode-card">
-      <div className={coverClass(episode.number)} aria-hidden="true">
-        <span className="cover-number">{episode.number}</span>
-        <span className="cover-town">De Lindestraat</span>
-      </div>
+      <Cover number={episode.number} caption="De Lindestraat" />
       <div className="episode-card-body">
         <p className="eyebrow">
           AFLEVERING {episode.number} · {stageLabels[episode.stage_id] ?? episode.stage_id} ·{" "}

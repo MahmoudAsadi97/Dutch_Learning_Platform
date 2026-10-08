@@ -9,6 +9,7 @@ import { failureCopy } from "@/components/VideoLibrary";
 import { ApiError, newRequestId } from "@/lib/client/api";
 import { stageLabels, type GlossaryItem } from "@/lib/client/stories";
 import { clock, sceneAt, videos, type Video } from "@/lib/client/videos";
+import { Skeleton, SkeletonPanel } from "@/components/ui";
 
 function friendly(cause: unknown, fallback: string) {
   if (cause instanceof ApiError) {
@@ -64,9 +65,9 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
     );
   if (!video)
     return (
-      <div className="path-loading" role="status">
-        Video laden…
-      </div>
+      <SkeletonPanel label="Video laden…">
+        <Skeleton lines={3} />
+      </SkeletonPanel>
     );
   if (video.status !== "ready")
     return (

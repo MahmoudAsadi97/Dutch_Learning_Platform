@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Icon } from "@/components/Icon";
 import { skills } from "@/components/LearningOverview";
 import { localDate, recordStatus, sessionStatus, useLearningData } from "@/lib/client/learning";
+import { EmptyState } from "@/components/ui";
 
 export function ProgressOverview({ nested = false }: { nested?: boolean }) {
   const { data, error, retry } = useLearningData();
@@ -90,7 +91,12 @@ export function ProgressOverview({ nested = false }: { nested?: boolean }) {
               <span className="quiet-badge">{data.sessions.length} sessies</span>
             </div>
             {data.sessions.length === 0 ? (
-              <p className="muted">Je geschiedenis verschijnt zodra je een oefensessie start.</p>
+              <EmptyState
+                icon="calendar"
+                accent="progress"
+                title="Nog geen oefensessies"
+                description="Je geschiedenis verschijnt zodra je een oefensessie start."
+              />
             ) : (
               <ul className="activity-list">
                 {data.sessions.map((session) => (

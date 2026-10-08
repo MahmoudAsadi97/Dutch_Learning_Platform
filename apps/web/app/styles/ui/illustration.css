@@ -1,0 +1,27 @@
+/* Inline illustrations take the accent of the section they sit in. */
+@layer components {
+  .illustration {
+    display: block;
+    flex-shrink: 0;
+  }
+  .ill-paper {
+    fill: var(--surface-raised);
+    stroke: var(--border-strong);
+    stroke-width: 2;
+  }
+  .ill-line {
+    fill: var(--accent-border);
+  }
+  .ill-accent {
+    fill: var(--accent-solid);
+  }
+  .ill-accent-soft {
+    fill: var(--accent-muted);
+  }
+  .ill-stroke {
+    fill: none;
+    stroke: var(--accent-solid);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+}

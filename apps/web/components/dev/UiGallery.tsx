@@ -8,21 +8,26 @@ import {
   Button,
   ButtonLink,
   Card,
+  Cover,
   Dialog,
   EmptyState,
   Field,
   IconTile,
   Input,
   Notice,
+  ProgressBar,
+  ProgressRing,
   Segmented,
   Select,
   Skeleton,
   SkeletonPanel,
+  SkillMeter,
   Stepper,
   Tabs,
   Textarea,
   useToast,
 } from "@/components/ui";
+import { Illustration } from "@/components/illustrations";
 import { ACCENTS } from "@/lib/design/identity";
 import { playTone, setTonesEnabled, useTonesEnabled } from "@/lib/client/tones";
 
@@ -286,6 +291,37 @@ export function UiGallery() {
           <Field label="Niet beschikbaar">
             {(control) => <Input {...control} disabled defaultValue="Later" />}
           </Field>
+        </div>
+      </Card>
+
+      <Card aria-labelledby="gallery-progress">
+        <h2 id="gallery-progress">Voortgang</h2>
+        <div className="ui-row">
+          <ProgressRing value={0} max={20} label="0 van 20 punten" tone="warm">
+            <span className="streak-number">0</span>
+            <span className="streak-label">dagen op rij</span>
+          </ProgressRing>
+          <ProgressRing value={12} max={20} label="12 van 20 punten" tone="warm" size={110}>
+            <span className="streak-number">4</span>
+            <span className="streak-label">dagen op rij</span>
+          </ProgressRing>
+          <ProgressRing value={20} max={20} label="20 van 20 punten" tone="success" size={90} progressbar>
+            <span className="streak-number">9</span>
+          </ProgressRing>
+        </div>
+        <div className="ui-stack">
+          <ProgressBar value={7} max={12} label="Afgeronde niveaus" />
+          <ProgressBar value={3} max={5} label="Onderwerpen" size="thin" tone="warm" />
+          <SkillMeter done={{ reading: true, listening: true }} />
+        </div>
+        <div className="ui-row">
+          <Cover number={3} caption="De Lindestraat" className="ui-cover" />
+          <Cover number={6} className="ui-cover" />
+          {(["writer", "stories", "goal", "words", "quiet"] as const).map((name) => (
+            <span key={name} data-accent="stories">
+              <Illustration name={name} size={64} />
+            </span>
+          ))}
         </div>
       </Card>
 

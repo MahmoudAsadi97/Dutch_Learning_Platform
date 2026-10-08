@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
-import { coverClass } from "@/components/TodayHome";
+import { Cover, Skeleton, SkeletonPanel } from "@/components/ui";
 import { ApiError, newRequestId } from "@/lib/client/api";
 import { useRecorder } from "@/lib/client/recorder";
 import { stageLabels, stories, type Episode, type GlossaryItem } from "@/lib/client/stories";
@@ -57,9 +57,9 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
     );
   if (!episode)
     return (
-      <div className="path-loading" role="status">
-        Aflevering laden…
-      </div>
+      <SkeletonPanel label="Aflevering laden…">
+        <Skeleton lines={3} />
+      </SkeletonPanel>
     );
   if (episode.status !== "ready")
     return (
@@ -79,10 +79,7 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
   return (
     <article className="episode-reader" data-testid="episode-reader">
       <header className="episode-header">
-        <div className={coverClass(episode.number)} aria-hidden="true">
-          <span className="cover-number">{episode.number}</span>
-          <span className="cover-town">De Lindestraat</span>
-        </div>
+        <Cover number={episode.number} caption="De Lindestraat" />
         <div>
           <p className="eyebrow">
             AFLEVERING {episode.number} · {stageLabels[episode.stage_id] ?? episode.stage_id} ·{" "}

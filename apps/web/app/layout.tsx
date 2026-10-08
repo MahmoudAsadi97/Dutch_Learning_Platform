@@ -25,6 +25,8 @@ import "./styles/ui/toast.css";
 import "./styles/ui/tabs.css";
 import "./styles/ui/segmented.css";
 import "./styles/ui/stepper.css";
+import "./styles/ui/progress.css";
+import "./styles/ui/illustration.css";
 import "./styles/shell.css";
 import "./styles/features/gallery.css";
 import "./styles/features/speak.css";

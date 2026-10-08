@@ -14,6 +14,7 @@ import {
   type VideoSummary,
 } from "@/lib/client/videos";
 import { MediaTabs } from "@/components/shell/SectionTabs";
+import { EmptyState, Skeleton, SkeletonPanel } from "@/components/ui";
 
 const POLL_MS = 6000;
 const POLL_LIMIT = 150; // fifteen minutes: the avatar service renders a minute of video in a few minutes
@@ -206,9 +207,9 @@ export function VideoLibrary() {
     );
   if (!data)
     return (
-      <div className="path-loading" role="status">
-        Video&apos;s laden…
-      </div>
+      <SkeletonPanel label="Video's laden…">
+        <Skeleton lines={3} />
+      </SkeletonPanel>
     );
   const ready = data.items.filter((item) => item.status === "ready").length;
   const presenter = data.renderer.label === "avatar" ? "een virtuele presentator" : "gesproken scènekaarten";
@@ -314,7 +315,12 @@ export function VideoLibrary() {
       </section>
 
       {data.items.length === 0 ? (
-        <p className="muted">Nog geen video&apos;s. Vraag hierboven je eerste.</p>
+        <EmptyState
+          icon="play"
+          accent="videos"
+          title="Nog geen video's"
+          description="Vraag hierboven je eerste."
+        />
       ) : (
         <ol className="video-grid">
           {data.items.map((item) => (

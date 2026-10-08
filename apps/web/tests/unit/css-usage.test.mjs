@@ -105,7 +105,6 @@ const PRIMITIVES = [
   "practice-correct",
   "practice-hint",
   "practice-feedback",
-  "path-loading",
 ];
 
 function insideMedia(css, index) {
