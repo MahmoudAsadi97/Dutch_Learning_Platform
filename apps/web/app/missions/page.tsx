@@ -7,8 +7,9 @@ export default function MissionsPage() {
     <div className="dashboard">
       <header className="page-heading">
         <div>
-          <h1>Uw oefenbibliotheek</h1>
-          <p>Kies een situatie en oefen op uw eigen tempo.</p>
+          <p className="eyebrow">SPREKEN</p>
+          <h1>Praktijkgesprekken</h1>
+          <p>Kies een situatie en oefen op je eigen tempo.</p>
         </div>
       </header>
       <MissionCatalog />

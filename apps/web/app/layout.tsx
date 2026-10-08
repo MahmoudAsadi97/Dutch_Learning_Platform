@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
 import { LanguageProvider } from "@/components/LanguageSupport";
-import { AppShell } from "@/components/AppShell";
+import { AppShell } from "@/components/shell/AppShell";
 import { Providers } from "./providers";
 
 import "@fontsource-variable/dm-sans";
@@ -25,7 +25,9 @@ import "./styles/ui/toast.css";
 import "./styles/ui/tabs.css";
 import "./styles/ui/segmented.css";
 import "./styles/ui/stepper.css";
+import "./styles/shell.css";
 import "./styles/features/gallery.css";
+import "./styles/features/speak.css";
 import "./styles/motion.css";
 import "./globals.css";
 import "./design.css";

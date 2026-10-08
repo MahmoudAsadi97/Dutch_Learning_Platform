@@ -301,7 +301,10 @@ test("a video that is still being made or failed is explained, also on a phone",
   await expect(page.getByTestId("video-tile")).toHaveCount(1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await expect(
-    page.getByRole("navigation", { name: "Mobiel hoofdmenu" }).getByRole("link", { name: "Video's" }),
+    page.getByRole("navigation", { name: "Mobiel hoofdmenu" }).getByRole("link", { name: "Verhalen" }),
+  ).toHaveAttribute("aria-current", "page");
+  await expect(
+    page.getByRole("navigation", { name: "Verhalen en video's" }).getByRole("link", { name: "Video's" }),
   ).toBeVisible();
 });
 

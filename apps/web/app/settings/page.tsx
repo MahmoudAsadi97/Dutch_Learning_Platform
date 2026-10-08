@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { AccountSettings } from "@/components/AccountSettings";
 import { StatusPanel } from "@/components/StatusPanel";
 import { UsagePanel } from "@/components/UsagePanel";
+import { AccountTabs } from "@/components/shell/SectionTabs";
 export const metadata: Metadata = { title: "Instellingen" };
 export default function SettingsPage() {
   return (
     <>
+      <AccountTabs />
       <header className="page-heading">
         <div>
           <p className="eyebrow">ALLES OP ZIJN PLEK</p>

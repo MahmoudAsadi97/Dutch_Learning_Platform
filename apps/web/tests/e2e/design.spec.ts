@@ -77,14 +77,14 @@ test("primary navigation waits for a writing draft to be saved", async ({ page }
   await page.getByTestId("writing-input").fill("Mijn bericht blijft bewaard als ik de pagina verlaat.");
   await page
     .getByRole("navigation", { name: "Hoofdmenu", exact: true })
-    .getByRole("link", { name: "Mijn voortgang" })
+    .getByRole("link", { name: "Voortgang" })
     .click();
   await expect(page.getByTestId("writing-input")).toBeVisible();
   await expect(page.getByRole("button", { name: "Opnieuw bewaren" })).toBeVisible();
   await page.unroute("**/api/practice/sessions/*/drafts/write-message");
   await page
     .getByRole("navigation", { name: "Hoofdmenu", exact: true })
-    .getByRole("link", { name: "Mijn voortgang" })
+    .getByRole("link", { name: "Voortgang" })
     .click();
   await expect(page).toHaveURL(/\/progress$/);
   await page.goto("/missions/appointment-change");

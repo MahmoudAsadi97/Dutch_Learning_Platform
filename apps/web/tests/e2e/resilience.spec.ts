@@ -12,7 +12,7 @@ test.describe("resilience", () => {
     await page.route("**/api/**", (route) => route.abort("connectionrefused"));
     await page
       .getByRole("navigation", { name: "Hoofdmenu", exact: true })
-      .getByRole("link", { name: "Praktijkgesprekken" })
+      .getByRole("link", { name: "Spreken" })
       .click();
     const banner = page.getByTestId("connection-banner");
     await expect(banner).toBeVisible();

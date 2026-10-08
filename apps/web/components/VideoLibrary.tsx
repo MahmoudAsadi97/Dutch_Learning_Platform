@@ -13,6 +13,7 @@ import {
   type VideoLibrary as Library,
   type VideoSummary,
 } from "@/lib/client/videos";
+import { MediaTabs } from "@/components/shell/SectionTabs";
 
 const POLL_MS = 6000;
 const POLL_LIMIT = 150; // fifteen minutes: the avatar service renders a minute of video in a few minutes
@@ -214,6 +215,7 @@ export function VideoLibrary() {
 
   return (
     <div className="video-library" data-testid="video-library">
+      <MediaTabs />
       <header className="path-heading">
         <div>
           <p className="eyebrow">VIDEO&apos;S</p>

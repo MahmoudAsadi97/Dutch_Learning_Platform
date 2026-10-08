@@ -23,7 +23,8 @@ code is the reference, this explains why it is shaped the way it is.
 
 ### Release 0.2 conventions
 
-- `AppShell` provides desktop and mobile navigation. Styles are global CSS in cascade layers
+- `components/shell` provides the frame: five destinations (`nav.ts`), the sidebar, header and bottom
+  tabs, and `SectionTabs` for the second level; `app/styles/shell.css` styles it. Styles are global CSS in cascade layers
   (`app/styles/layers.css` fixes the order `reset, tokens, base, components, legacy, features, utilities`):
   `tokens.css` is the only stylesheet with colour literals (primitive ramps, semantic tokens, one accent
   set per section or skill selected by `data-accent` on a container, and compatibility aliases for the
