@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import type { Page } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 const copy = (nl: string) => ({ nl, en: `English: ${nl}`, fa: `فارسی: ${nl}` });
 const sessionId = "6bfde106-907c-4fe9-9575-d2e983376cd1";
@@ -358,6 +359,10 @@ test("the conversation is readable and accessible at 320px with Persian support"
   page,
 }, testInfo) => {
   await page.setViewportSize({ width: 320, height: 850 });
+  await page.request.patch("/api/me", {
+    headers: { "X-Requested-With": "fetch" },
+    data: { support_mode: "nl-fa-en" },
+  });
   await page.addInitScript(() => localStorage.setItem("taalstudio.language-support", "nl-fa-en"));
   await conversationFixture(page);
   await openConversation(page);

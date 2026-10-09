@@ -264,6 +264,10 @@ reclaimable after a crash, one idempotency key per job. The in-process loop star
 - Browser tests: `python scripts/run.py e2e` builds the web app, starts both tiers with fixture
   providers and runs Playwright with a fake microphone (`tests/e2e/fixtures/speech-input.wav`).
   `E2E_ARGS` passes extra arguments to Playwright (a single spec, `--headed`, `--update-snapshots`).
+- Every browser spec imports `test` from `tests/e2e/fixtures/test.ts`, which resets the learner profile
+  (`POST /api/me/reset`) and onboards it at A1 with Dutch and English before each test, through the page
+  so the same fixture works inside the pinned Linux container. The root layout prefetches `/me` on the
+  server (`lib/server/me.ts`) and seeds the query cache; a failure there only means the client fetches it.
 - Screenshot baselines: `apps/web/tests/e2e/aa-visual.spec.ts` compares eight learner screens at
   1440, 390 and 320 px with the PNGs in `tests/e2e/__screenshots__` (0.2 % pixel tolerance). They are
   rendered on Linux only, so the spec is skipped on a developer machine; `python scripts/run.py e2e-visual`

@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 /** The five destinations: bottom tabs on a phone, sidebar on a desktop, one current item at a time. */
 

@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 const OWNER = process.env.E2E_OWNER_EMAIL ?? "owner@example.com";
 

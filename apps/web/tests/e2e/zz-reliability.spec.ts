@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 test("a failed hint request reveals nothing and offers a safe retry", async ({ page }) => {
   await page.goto("/missions/appointment-change");

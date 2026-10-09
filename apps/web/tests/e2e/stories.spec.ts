@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 /** Browser checks for the serial, the word bank and the daily plan. Route fixtures drive the states a
  * learner meets; the API suite proves the engine itself. One unmocked check proves the real path. */

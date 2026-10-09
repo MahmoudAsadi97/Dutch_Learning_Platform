@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 /** Disconnected state and recovery: the banner appears when the API stops answering and clears on retry. */
 test.describe("resilience", () => {

@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 test("recall reveals only on request and repeats the words the learner found difficult", async ({ page }) => {
   await page.goto("/learn/pre-a1");

@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 test("the library opens three different four-skill lessons on a phone width", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });

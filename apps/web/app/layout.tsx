@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { LanguageProvider } from "@/components/LanguageSupport";
 import { AppShell } from "@/components/shell/AppShell";
+import { prefetchMe } from "@/lib/server/me";
 import { Providers } from "./providers";
 
 import "@fontsource-variable/dm-sans";
@@ -60,14 +61,15 @@ export const viewport: Viewport = {
 // Environment labels must reflect the running container, not the image builder's environment.
 export const dynamic = "force-dynamic";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const me = await prefetchMe();
   return (
     <html lang="nl">
       <body>
         <a className="skip-link" href="#main">
           Naar de inhoud
         </a>
-        <Providers>
+        <Providers initialMe={me}>
           <LanguageProvider>
             <AppShell environment={process.env.APP_ENV ?? "development"}>{children}</AppShell>
           </LanguageProvider>

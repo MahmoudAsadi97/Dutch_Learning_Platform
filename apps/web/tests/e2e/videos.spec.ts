@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import type { Page } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 import path from "node:path";
 
 /** Browser checks for the video lessons. Route fixtures drive the states a learner meets and serve a

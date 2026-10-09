@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 /** The gallery shows every primitive in every state; it is the accessibility and overflow gate for them. */
 for (const width of [1440, 390, 320]) {

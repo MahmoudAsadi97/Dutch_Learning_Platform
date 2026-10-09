@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 test("learner path has twelve open stages without awarding test passes", async ({ page }) => {
   await page.goto("/leerpad");
@@ -28,6 +28,8 @@ test("support languages switch without losing the exercise and persist after rel
   await expect(page.locator(".word-answer [lang=fa]").first()).toHaveAttribute("dir", "rtl");
   await page.reload();
   await expect(page.getByLabel("Taalhulp / language")).toHaveValue("nl-fa-en");
+  const me = await page.request.get("/api/me", { headers: { "X-Requested-With": "fetch" } });
+  expect((await me.json()).profile.support_mode).toBe("nl-fa-en");
 });
 
 test("grammar answers do not pollute the submitted reading answers", async ({ page }) => {

@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 const topic = (index: number, status = "not_requested") => ({
   id: `a2-t${String(index).padStart(3, "0")}`,

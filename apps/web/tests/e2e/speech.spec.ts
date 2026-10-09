@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures/test";
 
 test.describe("microphone check", () => {
   test("push-to-talk records, uploads, canonicalises and transcribes", async ({ page, browserName }) => {
