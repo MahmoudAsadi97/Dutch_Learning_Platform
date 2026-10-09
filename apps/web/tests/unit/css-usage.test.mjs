@@ -12,7 +12,7 @@ import { test } from "node:test";
 const web = path.resolve(import.meta.dirname, "..", "..");
 
 /** Class families built from template strings; a member passes only when its prefix is built somewhere. */
-const DYNAMIC = [/^tone-\d+$/, /^grade-/, /^status-/, /^kind-/, /^cover-/];
+const DYNAMIC = [/^tone-\d+$/, /^grade-/, /^status-/, /^kind-/, /^cover-/, /^columns-\d$/];
 
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {

@@ -32,6 +32,7 @@ import "./styles/ui/illustration.css";
 import "./styles/shell.css";
 import "./styles/features/gallery.css";
 import "./styles/features/preferences.css";
+import "./styles/features/welcome.css";
 import "./styles/features/speak.css";
 import "./styles/motion.css";
 import "./globals.css";
@@ -63,6 +64,17 @@ export const viewport: Viewport = {
 // Environment labels must reflect the running container, not the image builder's environment.
 export const dynamic = "force-dynamic";
 
+/**
+ * The first-run redirect to /welkom ships behind a switch: on by default outside production, and in
+ * production only once FIRST_RUN_GATE=on, so the owner can look at the flow live before turning it on.
+ */
+function firstRunGateEnabled(): boolean {
+  const flag = process.env.FIRST_RUN_GATE;
+  if (flag === "on") return true;
+  if (flag === "off") return false;
+  return (process.env.APP_ENV ?? "development") !== "production";
+}
+
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const me = await prefetchMe();
   return (
@@ -73,7 +85,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         </a>
         <Providers initialMe={me}>
           <LanguageProvider>
-            <AppShell environment={process.env.APP_ENV ?? "development"}>{children}</AppShell>
+            <AppShell environment={process.env.APP_ENV ?? "development"} firstRunGate={firstRunGateEnabled()}>
+              {children}
+            </AppShell>
           </LanguageProvider>
         </Providers>
       </body>

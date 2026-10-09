@@ -1,6 +1,7 @@
 "use client";
 
 import { apiJson, newRequestId } from "./api";
+import type { LibraryWord } from "./library";
 
 export interface StoryParagraph {
   nl: string;
@@ -174,6 +175,19 @@ export const words = {
     apiJson<{ item: WordItem; created: boolean }>("words", {
       method: "POST",
       body: { term, meaning_en, meaning_fa, example, source_kind: "manual" },
+    }),
+  /** A word chosen from a stage library; the word list keeps where it came from. */
+  saveLibrary: (item: LibraryWord) =>
+    apiJson<{ item: WordItem; created: boolean }>("words", {
+      method: "POST",
+      body: {
+        term: item.term,
+        meaning_en: item.meaning.en ?? "",
+        meaning_fa: item.meaning.fa ?? "",
+        example: item.example.nl,
+        source_kind: "library",
+        source_id: item.id,
+      },
     }),
   review: (id: string, grade: Grade, requestId = newRequestId()) =>
     apiJson<WordItem>(`words/${id}/review`, {

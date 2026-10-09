@@ -7,6 +7,7 @@ import { useCallback, useRef, type MouseEvent, type ReactNode } from "react";
 import { ConnectionBanner } from "@/components/ConnectionBanner";
 import { Icon } from "@/components/Icon";
 import { LanguageSwitcher } from "@/components/LanguageSupport";
+import { FirstRunGate } from "@/components/shell/FirstRunGate";
 import { destinations, navItemFor, navSection, rooms, type NavItem } from "@/components/shell/nav";
 import { IconTile } from "@/components/ui/IconTile";
 import { ToastProvider } from "@/components/ui/Toast";
@@ -113,7 +114,16 @@ function MobileTabs({ section }: { section: string | null }) {
  * element is a link inside `.app-frame`, where the click capture below lets a screen with unsaved work
  * (a writing draft) finish saving before the route changes.
  */
-export function AppShell({ children, environment }: { children: ReactNode; environment: string }) {
+export function AppShell({
+  children,
+  environment,
+  firstRunGate = false,
+}: {
+  children: ReactNode;
+  environment: string;
+  /** Send learners who have not finished the welcome to /welkom (an environment switch, see layout). */
+  firstRunGate?: boolean;
+}) {
   const path = usePathname();
   const router = useRouter();
   const guard = useRef<LeaveGuard>(null);
@@ -153,16 +163,18 @@ export function AppShell({ children, environment }: { children: ReactNode; envir
   }
   const section = navSection(path);
   const current = navItemFor(path);
+  // the welcome stands on its own: no sidebar and no bottom tabs until the learner has a starting point
+  const bare = path === "/welkom" || path.startsWith("/welkom/");
   return (
     <NavigationGuardContext.Provider value={registerGuard}>
-      <div className="app-frame" onClickCapture={navigate}>
+      <div className={bare ? "app-frame is-bare" : "app-frame"} onClickCapture={navigate}>
         <ToastProvider>
-          <Sidebar section={section} />
+          {!bare && <Sidebar section={section} />}
           <div className="app-workspace" data-accent={current.accent}>
             <Header current={current} />
             <ConnectionBanner />
             <main id="main" className="site-main" tabIndex={-1}>
-              {children}
+              <FirstRunGate enabled={firstRunGate}>{children}</FirstRunGate>
             </main>
             <footer className="site-footer">
               <span>
@@ -174,7 +186,7 @@ export function AppShell({ children, environment }: { children: ReactNode; envir
               </span>
             </footer>
           </div>
-          <MobileTabs section={section} />
+          {!bare && <MobileTabs section={section} />}
         </ToastProvider>
       </div>
     </NavigationGuardContext.Provider>

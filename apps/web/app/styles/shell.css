@@ -254,6 +254,27 @@
     color: var(--text-disabled);
   }
 
+  /* --- the bare frame of /welkom: no sidebar, no bottom tabs, the brand in the header ---------- */
+  .app-frame.is-bare .app-workspace {
+    margin-left: 0;
+    padding-bottom: 0;
+  }
+  .app-frame.is-bare .header-title {
+    display: none;
+  }
+  .app-frame.is-bare .mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 44px;
+    min-height: 44px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+  }
+
   /* --- second-level tabs inside a destination ------------------------------------------------- */
   .section-tabs {
     display: flex;

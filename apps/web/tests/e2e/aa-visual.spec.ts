@@ -34,6 +34,7 @@ const screens: { name: string; path: string; ready: string }[] = [
   { name: "episode", path: `/verhalen/${episodeId}`, ready: '[data-testid="episode-paragraph"]' },
   { name: "woorden", path: "/woorden", ready: '[data-testid="word-review"] [data-testid="reveal-word"]' },
   { name: "gallery", path: "/dev/ui", ready: '[data-testid="ui-gallery"]' },
+  { name: "welkom", path: "/welkom?stap=uitleg", ready: '[data-testid="how-it-works"]' },
 ];
 
 for (const screen of screens) {

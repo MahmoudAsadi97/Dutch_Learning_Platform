@@ -235,6 +235,10 @@ anonymous access. It never creates the foundation or publishes a private initial
 Deployments are serialized. Use additive/backward-compatible migrations; the tiny single-replica setup
 does not promise zero downtime or high availability.
 
+The first-run welcome at `/welkom` is always reachable, but the redirect that sends a learner without a
+finished welcome there is off in production. Look at the flow live, then set `FIRST_RUN_GATE=on` on the web
+container app (a new revision) to turn the redirect on; `off` turns it back off.
+
 ## 8. Operations and recovery
 
 - **Rollback:** record the previous image digests before a release. If only code changed and schema is

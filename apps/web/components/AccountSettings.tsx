@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { ContentReviewQueue } from "@/components/ContentReviewQueue";
 import { Icon } from "@/components/Icon";
@@ -78,6 +79,9 @@ export function AccountSettings() {
           </dl>
         )}
         <LearningPreferences />
+        <p>
+          <Link href="/welkom?stap=uitleg">Hoe werkt Taalstudio?</Link>
+        </p>
         <p className="muted small-text">
           Accountgegevens komen uit je aanmelding. Je studiegegevens blijven aan dit account gekoppeld.
         </p>
