@@ -10,6 +10,8 @@ import { LanguageSwitcher } from "@/components/LanguageSupport";
 import { destinations, navItemFor, navSection, rooms, type NavItem } from "@/components/shell/nav";
 import { IconTile } from "@/components/ui/IconTile";
 import { ToastProvider } from "@/components/ui/Toast";
+import { UiText } from "@/components/ui/UiText";
+import { uiCopy } from "@/lib/ui-copy";
 import { NavigationGuardContext, type LeaveGuard } from "@/lib/client/navigation";
 
 function NavLink({ item, section }: { item: NavItem; section: string | null }) {
@@ -21,7 +23,7 @@ function NavLink({ item, section }: { item: NavItem; section: string | null }) {
       aria-current={section === item.href ? "page" : undefined}
     >
       <IconTile name={item.icon} size="small" accent={item.accent} iconSize={19} />
-      <span>{item.label}</span>
+      <UiText text={uiCopy.nav[item.copy]} />
     </Link>
   );
 }
@@ -99,7 +101,7 @@ function MobileTabs({ section }: { section: string | null }) {
           aria-current={section === item.href ? "page" : undefined}
         >
           <Icon name={item.icon} size={22} />
-          <span>{item.short}</span>
+          <UiText text={uiCopy.nav[item.copy]} />
         </Link>
       ))}
     </nav>

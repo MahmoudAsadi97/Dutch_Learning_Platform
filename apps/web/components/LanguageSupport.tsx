@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useRef, useSyncExternalStore, typ
 import { useQueryClient } from "@tanstack/react-query";
 
 import { useProfile, updateProfile, type Me } from "@/lib/client/profile";
+import { glossLevelFor, type GlossLevel } from "@/lib/client/gloss";
 import { reconcileMode, type SupportMode } from "@/lib/client/profile-sync";
 import { queryKeys } from "@/lib/client/query-keys";
 import { storageKeys } from "@/lib/client/storage";
@@ -19,6 +20,7 @@ const LanguageContext = createContext({
   setMode: (() => {}) as (mode: SupportMode) => void,
   showEnglish: true,
   showPersian: false,
+  glossLevel: "chrome" as GlossLevel,
 });
 
 function readMode(): SupportMode {
@@ -74,9 +76,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     writeMode(value);
     updateProfile({ support_mode: value }).then(remember, () => undefined);
   }
+  const glossLevel = glossLevelFor(
+    profile.data?.profile.stage_id,
+    profile.data?.profile.gloss_mode ?? "auto",
+  );
   return (
     <LanguageContext.Provider
-      value={{ mode, setMode, showEnglish: mode !== "nl-fa", showPersian: mode !== "nl-en" }}
+      value={{ mode, setMode, showEnglish: mode !== "nl-fa", showPersian: mode !== "nl-en", glossLevel }}
     >
       {children}
     </LanguageContext.Provider>

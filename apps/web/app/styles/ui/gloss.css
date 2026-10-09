@@ -1,0 +1,35 @@
+/* A Dutch label with one short translation under it; the gloss never drops under the 12px floor. */
+@layer components {
+  .ui-text {
+    display: inline-grid;
+    gap: 1px;
+    min-width: 0;
+    line-height: 1.25;
+  }
+  .ui-text.is-inline {
+    display: inline;
+  }
+  .ui-text.is-inline .ui-gloss {
+    margin-inline-start: 0.4em;
+  }
+  .ui-gloss {
+    display: block;
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-regular);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .ui-text.is-inline .ui-gloss {
+    display: inline;
+  }
+  .ui-gloss.fa {
+    font-family: var(--font-persian-ui);
+    text-align: start;
+  }
+  [aria-current="page"] .ui-gloss,
+  .button:not(.secondary):not(.ghost) .ui-gloss {
+    color: inherit;
+    opacity: 0.85;
+  }
+}

@@ -394,6 +394,15 @@
       max-width: 44vw;
     }
   }
+  /* a gloss line makes the bottom bar about 80px tall; the content and the toasts keep clear of it */
+  @media (min-width: 360px) and (max-width: 1050px) {
+    .app-frame:has(.mobile-nav .ui-gloss) .app-workspace {
+      padding-bottom: calc(88px + env(safe-area-inset-bottom));
+    }
+    .app-frame:has(.mobile-nav .ui-gloss) .toast-region {
+      bottom: calc(92px + env(safe-area-inset-bottom));
+    }
+  }
   /* on a phone the mark stands alone so the language choice and the profile keep their room */
   @media (max-width: 520px) {
     .workspace-header {
@@ -425,9 +434,21 @@
     }
   }
   /* five labels share 320px at the 12px floor; a hair of tracking keeps Verhalen on one line */
+  .mobile-nav .ui-text {
+    justify-items: center;
+    text-align: center;
+  }
+  .mobile-nav .ui-gloss {
+    font-size: var(--text-xs);
+    line-height: 1.1;
+  }
   @media (max-width: 359px) {
     .mobile-nav a {
       letter-spacing: -0.01em;
+    }
+    /* at 320px five Dutch labels fill the bar; the gloss returns from 360px */
+    .mobile-nav .ui-gloss {
+      display: none;
     }
   }
 }

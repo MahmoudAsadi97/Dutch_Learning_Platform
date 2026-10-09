@@ -3,6 +3,7 @@ export { Dialog } from "./Dialog";
 export { Segmented, type SegmentOption } from "./Segmented";
 export { Stepper, type StepItem } from "./Stepper";
 export { Tabs, type TabItem } from "./Tabs";
+export { UiText } from "./UiText";
 export { ToastProvider, useToast, type ToastTone } from "./Toast";
 export { Button, ButtonLink, buttonClass, type ButtonSize, type ButtonVariant } from "./Button";
 export { Card } from "./Card";
