@@ -136,7 +136,6 @@ a.episode-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-3);
 .grade-button small { color: var(--muted); font-size: var(--text-xs); }
 .grade-button:hover { border-color: var(--accent); }
 .grade-again { background: var(--orange-50); } .grade-hard { background: var(--warning-bg); } .grade-good { background: var(--success-bg); } .grade-easy { background: var(--accent-subtle); }
-.review-done { display: grid; gap: 14px; justify-items: start; }
 .word-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; align-items: end; margin-top: 12px; }
 .word-form label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
 .word-form input { min-height: 44px; padding: 8px 12px; border: 1px solid var(--border-strong); border-radius: 10px; font: inherit; font-size: 14px; }

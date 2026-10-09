@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { apiFetch, CONNECTIVITY_EVENT } from "@/lib/client/api";
+import { useDeveloperDetails } from "@/components/shell/EnvContext";
 
 type State = "online" | "offline" | "api-down" | "checking";
 
@@ -11,6 +12,7 @@ type State = "online" | "offline" | "api-down" | "checking";
  * It clears itself as soon as any call succeeds again, or when the retry button reaches /api/health.
  */
 export function ConnectionBanner() {
+  const developer = useDeveloperDetails();
   const [state, setState] = useState<State>("online");
 
   useEffect(() => {
@@ -42,10 +44,12 @@ export function ConnectionBanner() {
     <div className="connection-banner" role="alert" data-testid="connection-banner" data-state={state}>
       <span>
         {state === "offline"
-          ? "Geen internetverbinding. Uw werk blijft staan; opnames en antwoorden worden pas verstuurd als de verbinding terug is."
+          ? "Geen internetverbinding. Je werk blijft staan; opnames en antwoorden worden pas verstuurd als de verbinding terug is."
           : state === "checking"
             ? "Verbinding controleren…"
-            : "De server antwoordt niet. Draait `python scripts/run.py dev`? Uw laatste actie kunt u opnieuw proberen."}
+            : developer
+              ? "De server antwoordt niet. Draait `python scripts/run.py dev`? Je laatste actie kun je opnieuw proberen."
+              : "De server antwoordt even niet. Je laatste actie kun je zo opnieuw proberen."}
       </span>
       {state !== "checking" && (
         <button type="button" className="button secondary" onClick={() => setState("checking")}>

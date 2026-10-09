@@ -147,7 +147,7 @@ export function WritingStep({
             ? ` Ontbreekt nog: ${result.missing.join(", ")}.`
             : payload.must_include.length
               ? " Alle vereiste woorden staan erin."
-              : " Lees uw bericht na en vraag feedback."),
+              : " Lees je bericht na en vraag feedback."),
       );
     } catch (cause) {
       setError(cause instanceof ApiError ? cause.detail : "Indienen mislukt: geen verbinding.");
@@ -184,9 +184,9 @@ export function WritingStep({
       </section>
 
       <section className="card" aria-labelledby="message-heading">
-        <h3 id="message-heading">Uw bericht</h3>
+        <h3 id="message-heading">Je bericht</h3>
         <label htmlFor={`writing-${step.key}`} className="visually-hidden">
-          Uw bericht in het Nederlands
+          Je bericht in het Nederlands
         </label>
         <textarea
           id={`writing-${step.key}`}
@@ -238,7 +238,7 @@ export function WritingStep({
             >
               Opnieuw bewaren
             </button>
-            <span className="muted"> Uw tekst blijft hier staan. Bewaar voordat u verdergaat.</span>
+            <span className="muted"> Je tekst blijft hier staan. Bewaar voordat je verdergaat.</span>
           </p>
         )}
         <p>

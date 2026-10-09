@@ -174,10 +174,10 @@ export function SpeakingStep({
         const retryWithSameId = cause.status >= 500 && cause.status !== 502;
         const message =
           cause.status === 429
-            ? "Uw oefenlimiet is bereikt. Bekijk uw gebruik in Instellingen."
+            ? "Je oefenlimiet is bereikt. Bekijk je gebruik in Instellingen."
             : cause.status === 401 || cause.status === 403
-              ? "Meld u opnieuw aan om verder te oefenen."
-              : "Uw antwoord kon niet worden verwerkt. Probeer opnieuw.";
+              ? "Meld je opnieuw aan om verder te oefenen."
+              : "Je antwoord kon niet worden verwerkt. Probeer opnieuw.";
         setSend({ kind: "failed", pending, message, sameRequestId: retryWithSameId });
         if (cause.status === 502) await reload();
       } else {
@@ -267,7 +267,7 @@ export function SpeakingStep({
           : completed
             ? typedOnly
               ? "Doel bereikt met getypte tekst. Dat telt niet als spreekoefening: start een nieuwe oefensessie en spreek de beurten in."
-              : "Doel bereikt. U kunt verder naar de volgende stap."
+              : "Doel bereikt. Je kunt verder naar de volgende stap."
             : `${turnsLeft} van ${maxTurns} beurten over.`;
 
   return (
@@ -434,7 +434,7 @@ export function SpeakingStep({
                   className="muted"
                   style={{ display: "block", fontSize: "0.85rem" }}
                 >
-                  Of typ uw zin (wordt als getypte tekst opgeslagen, niet als spraak)
+                  Of typ je zin (wordt als getypte tekst opgeslagen, niet als spraak)
                 </label>
                 <textarea
                   id={`typed-${step.key}`}
@@ -466,7 +466,7 @@ export function SpeakingStep({
           <aside>
             <section className="card" aria-labelledby="appointment-heading" data-testid="appointment-panel">
               <h3 id="appointment-heading">
-                {info?.scenario_kind === "service" ? "Uw gesprek" : "Afspraak"}
+                {info?.scenario_kind === "service" ? "Je gesprek" : "Afspraak"}
               </h3>
               <ul className="checklist">
                 <li data-done={Boolean(appointment.reason_stated)}>
@@ -558,7 +558,7 @@ function TurnBubbles({
         </span>
         {turn.recording_warning && (
           <span className="muted" role="status">
-            Uw tekst is bewaard. De geluidsopname kon niet worden opgeslagen.
+            Je tekst is bewaard. De geluidsopname kon niet worden opgeslagen.
           </span>
         )}
       </li>

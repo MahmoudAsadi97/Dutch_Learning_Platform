@@ -24,6 +24,7 @@ import { useNavigationGuard } from "@/lib/client/navigation";
 import { queryKeys } from "@/lib/client/query-keys";
 import type { Skill } from "@/lib/types";
 import { storageKeys } from "@/lib/client/storage";
+import { HonestyChip } from "@/components/ui/HonestyChip";
 
 const skillIcons: Record<Skill, IconName> = {
   reading: "book",
@@ -242,9 +243,9 @@ export function CurriculumTest({ stageId }: { stageId: string }) {
             <li>De antwoorden en luistertekst krijg je niet vooraf te zien.</li>
             <li>Na de toets krijg je per vaardigheid een volgende oefenstap.</li>
           </ul>
-          <p className="course-note">
-            Dit is een interne voortgangstoets. Het resultaat is geen erkend CEFR-certificaat.
-          </p>
+          <div className="honesty-row">
+            <HonestyChip kind="check" />
+          </div>
           <button className="button" onClick={() => void start()} disabled={busy}>
             {busy ? "Toets klaarzetten…" : "Start de eindtoets"}
             <Icon name="arrow" />

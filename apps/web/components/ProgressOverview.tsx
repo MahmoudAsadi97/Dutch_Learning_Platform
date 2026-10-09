@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Icon } from "@/components/Icon";
 import { skills } from "@/components/LearningOverview";
 import { localDate, recordStatus, sessionStatus, useLearningData } from "@/lib/client/learning";
-import { EmptyState } from "@/components/ui";
+import { ButtonLink, EmptyState } from "@/components/ui";
 
 export function ProgressOverview({ nested = false }: { nested?: boolean }) {
   const { data, error, retry } = useLearningData();
@@ -95,8 +95,12 @@ export function ProgressOverview({ nested = false }: { nested?: boolean }) {
                 icon="calendar"
                 accent="progress"
                 title="Nog geen oefensessies"
-                description="Je geschiedenis verschijnt zodra je een oefensessie start."
-              />
+                description="Je geschiedenis verschijnt zodra je een praktijkgesprek start."
+              >
+                <ButtonLink href="/spreken" variant="secondary" icon="arrow" iconEnd>
+                  Start een praktijkgesprek
+                </ButtonLink>
+              </EmptyState>
             ) : (
               <ul className="activity-list">
                 {data.sessions.map((session) => (

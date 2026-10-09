@@ -4,6 +4,7 @@ import { useId, useState } from "react";
 import { LearningText } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import { DUTCH_ALPHABET, DUTCH_LETTER_PAIRS, letterQuestion } from "@/lib/alphabet";
+import { HonestyChip } from "@/components/ui/HonestyChip";
 
 /** Adult beginner spelling and listening practice; no microphone grading or proficiency score. */
 export function AlphabetPractice() {
@@ -26,11 +27,7 @@ export function AlphabetPractice() {
             <LearningText text={{ nl: "Letters en klanken", en: "Letters and sounds", fa: "حروف و آواها" }} />
           </h2>
         </div>
-        <span className="label warn">
-          <LearningText
-            text={{ nl: "Nog niet nagekeken", en: "Not yet reviewed", fa: "هنوز بازبینی نشده" }}
-          />
-        </span>
+        <HonestyChip kind="unreviewed" />
       </div>
       <p>
         <LearningText
@@ -205,15 +202,9 @@ export function AlphabetPractice() {
           ))}
         </div>
       </details>
-      <p className="course-note">
-        <LearningText
-          text={{
-            nl: "Synthetische luistervoorbeelden. Zeg de letters en woorden daarna zelf. Dit is oefening, geen beoordeling van je uitspraak.",
-            en: "Synthetic listening examples. Say the letters and words yourself afterwards. This is practice, not a pronunciation assessment.",
-            fa: "نمونه‌های شنیداری با صدای مصنوعی هستند. سپس حروف و واژه‌ها را خودت بگو. این تمرین است، نه ارزیابی تلفظ.",
-          }}
-        />
-      </p>
+      <div className="honesty-row">
+        <HonestyChip kind="voice" />
+      </div>
     </section>
   );
 }

@@ -10,6 +10,7 @@ import { ApiError, newRequestId } from "@/lib/client/api";
 import { stageLabels, type GlossaryItem } from "@/lib/client/stories";
 import { clock, sceneAt, videos, type Video } from "@/lib/client/videos";
 import { Skeleton, SkeletonPanel } from "@/components/ui";
+import { HonestyChip } from "@/components/ui/HonestyChip";
 
 function friendly(cause: unknown, fallback: string) {
   if (cause instanceof ApiError) {
@@ -206,11 +207,12 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
               Vraag nog een video
               <Icon name="arrow" size={17} />
             </Link>
-            <p className="small-text muted">
-              Script van het taalmodel ({video.model || video.provider}), automatisch gecontroleerd
-              {video.warnings.length ? `; aandachtspunten: ${video.warnings.length}` : ""}. Nog niet nagekeken
-              door een taaldocent.
-            </p>
+            <div className="honesty-row">
+              <HonestyChip
+                kind="video"
+                detail={`${video.model || video.provider}; automatische controle: ${video.warnings.length} aandachtspunten`}
+              />
+            </div>
             {notice && (
               <p className="error" role="alert">
                 {notice}

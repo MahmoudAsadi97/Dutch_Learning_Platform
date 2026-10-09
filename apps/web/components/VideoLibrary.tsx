@@ -13,7 +13,8 @@ import {
   type VideoLibrary as Library,
   type VideoSummary,
 } from "@/lib/client/videos";
-import { EmptyState, Skeleton, SkeletonPanel } from "@/components/ui";
+import { ButtonLink, EmptyState, Skeleton, SkeletonPanel } from "@/components/ui";
+import { HonestyChip } from "@/components/ui/HonestyChip";
 
 const POLL_MS = 6000;
 const POLL_LIMIT = 150; // fifteen minutes: the avatar service renders a minute of video in a few minutes
@@ -317,8 +318,12 @@ export function VideoLibrary() {
           icon="play"
           accent="videos"
           title="Nog geen video's"
-          description="Vraag hierboven je eerste."
-        />
+          description="Kies hierboven een niveau en een onderwerp."
+        >
+          <ButtonLink href="#video-request-title" variant="secondary" icon="arrow" iconEnd>
+            Vraag je eerste video
+          </ButtonLink>
+        </EmptyState>
       ) : (
         <ol className="video-grid">
           {data.items.map((item) => (
@@ -327,32 +332,12 @@ export function VideoLibrary() {
         </ol>
       )}
 
-      <section className="cast-card" aria-labelledby="video-honesty">
-        <h2 id="video-honesty">Wat je ziet</h2>
-        <ul>
-          <li>
-            <strong>Script</strong>{" "}
-            <span className="muted">
-              geschreven door het taalmodel, automatisch gecontroleerd op niveau en woordenschat; nog niet
-              nagekeken door een taaldocent.
-            </span>
-          </li>
-          <li>
-            <strong>Stem en beeld</strong>{" "}
-            <span className="muted">
-              {data.renderer.label === "avatar"
-                ? `synthetische stem (${data.renderer.voice}) en een virtuele presentator; het is geen echte persoon.`
-                : `synthetische stem (${data.renderer.voice || "lokaal"}) over getekende scènekaarten.`}
-            </span>
-          </li>
-          <li>
-            <strong>Ondertitels</strong>{" "}
-            <span className="muted">
-              komen uit de gesproken tekst zelf; de vertalingen onder het transcript komen van het taalmodel.
-            </span>
-          </li>
-        </ul>
-      </section>
+      <div className="honesty-row">
+        <HonestyChip
+          kind="video"
+          detail={`stem ${data.renderer.voice || "lokaal"}, weergave ${data.renderer.label}`}
+        />
+      </div>
     </div>
   );
 }

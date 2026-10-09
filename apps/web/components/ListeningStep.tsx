@@ -134,7 +134,7 @@ export function ListeningStep({
               Synthetische luisterstem
             </span>
             <span className="muted" style={{ fontSize: "0.85rem" }}>
-              Luister opnieuw wanneer u dat nodig hebt.
+              Luister opnieuw wanneer je dat nodig hebt.
             </span>
           </p>
         )}

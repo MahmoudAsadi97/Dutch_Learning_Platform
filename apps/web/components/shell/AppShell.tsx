@@ -7,6 +7,7 @@ import { useCallback, useRef, type MouseEvent, type ReactNode } from "react";
 import { ConnectionBanner } from "@/components/ConnectionBanner";
 import { Icon } from "@/components/Icon";
 import { LanguageSwitcher } from "@/components/LanguageSupport";
+import { DeveloperDetailsProvider } from "@/components/shell/EnvContext";
 import { FirstRunGate } from "@/components/shell/FirstRunGate";
 import { destinations, navItemFor, navSection, rooms, type NavItem } from "@/components/shell/nav";
 import { IconTile } from "@/components/ui/IconTile";
@@ -167,28 +168,30 @@ export function AppShell({
   const bare = path === "/welkom" || path.startsWith("/welkom/");
   return (
     <NavigationGuardContext.Provider value={registerGuard}>
-      <div className={bare ? "app-frame is-bare" : "app-frame"} onClickCapture={navigate}>
-        <ToastProvider>
-          {!bare && <Sidebar section={section} />}
-          <div className="app-workspace" data-accent={current.accent}>
-            <Header current={current} />
-            <ConnectionBanner />
-            <main id="main" className="site-main" tabIndex={-1}>
-              <FirstRunGate enabled={firstRunGate}>{children}</FirstRunGate>
-            </main>
-            <footer className="site-footer">
-              <span>
-                taalstudio <span className="footer-dot">·</span> Nederlands, stap voor stap.
-              </span>
-              <span>
-                {environment === "production" ? "Persoonlijke leeromgeving" : "Lokale leeromgeving"}{" "}
-                <span className="footer-dot">·</span> Standaardnederlands in België
-              </span>
-            </footer>
-          </div>
-          {!bare && <MobileTabs section={section} />}
-        </ToastProvider>
-      </div>
+      <DeveloperDetailsProvider show={environment !== "production"}>
+        <div className={bare ? "app-frame is-bare" : "app-frame"} onClickCapture={navigate}>
+          <ToastProvider>
+            {!bare && <Sidebar section={section} />}
+            <div className="app-workspace" data-accent={current.accent}>
+              <Header current={current} />
+              <ConnectionBanner />
+              <main id="main" className="site-main" tabIndex={-1}>
+                <FirstRunGate enabled={firstRunGate}>{children}</FirstRunGate>
+              </main>
+              <footer className="site-footer">
+                <span>
+                  taalstudio <span className="footer-dot">·</span> Nederlands, stap voor stap.
+                </span>
+                <span>
+                  {environment === "production" ? "Persoonlijke leeromgeving" : "Lokale leeromgeving"}{" "}
+                  <span className="footer-dot">·</span> Standaardnederlands in België
+                </span>
+              </footer>
+            </div>
+            {!bare && <MobileTabs section={section} />}
+          </ToastProvider>
+        </div>
+      </DeveloperDetailsProvider>
     </NavigationGuardContext.Provider>
   );
 }

@@ -274,3 +274,15 @@ stylesheets may add contextual rules but never a bare one, which `tests/unit/css
 enforces. The hand-drawn icon set is replaced by `lucide-react`, the first runtime UI dependency of the
 web app: pinned to an exact version, imported by name so only the used glyphs ship, and kept behind
 `components/Icon.tsx` so call sites never depend on the package.
+
+## D-26 · The interface says "je"; honesty is one chip per surface and a page — 2026-10-09
+
+The interface addressed the learner as "u" on some screens and "je" on others. From this change every
+interface sentence uses "je", the register Belgian Dutch courses use with adult learners, and a unit
+test refuses "u" and "uw" outside practice content. Practice phrases keep their own register: "Kunt u
+dat herhalen?" is what a learner says to a stranger. The repeated notes saying that content was written
+by a language model or not yet reviewed are replaced by one `HonestyChip` per generated or unreviewed
+surface, which opens a short explanation in the learner's languages and links to `/over`; no surface
+lost its label. Model names, check counts, the local run command and the recording format help whoever
+runs the app and now show only outside production.
+

@@ -6,6 +6,7 @@ import { Icon } from "@/components/Icon";
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
 import { usePlayback } from "@/lib/client/playback";
 import { type Recording, talkButtonHandlers, useRecorder } from "@/lib/client/recorder";
+import { useDeveloperDetails } from "@/components/shell/EnvContext";
 
 interface TranscriptResponse {
   request_id: string;
@@ -36,6 +37,7 @@ type Phase = "idle" | "recording" | "uploading" | "done" | "error" | "unsupporte
  * Hold the button (mouse, touch or the space bar) while speaking a Dutch sentence.
  */
 export function SpeechCheck() {
+  const developer = useDeveloperDetails();
   const [uploadPhase, setUploadPhase] = useState<"idle" | "uploading" | "done" | "error">("idle");
   const [result, setResult] = useState<TranscriptResponse | null>(null);
   const [error, setError] = useState<string>("");
@@ -73,7 +75,7 @@ export function SpeechCheck() {
       setUploadPhase("error");
       setError(
         cause instanceof ApiError
-          ? "Uw opname kon niet worden verwerkt. Probeer opnieuw."
+          ? "Je opname kon niet worden verwerkt. Probeer opnieuw."
           : "Upload mislukt.",
       );
     }
@@ -144,17 +146,19 @@ export function SpeechCheck() {
         >
           <Icon name="mic" size={32} />
         </div>
-        <details className="lesson-details">
-          <summary>Opnameformaat</summary>
-          <p className="mono" data-testid="mime-type">
-            MediaRecorder:{" "}
-            {mimeType === undefined
-              ? "controleren…"
-              : mimeType === null
-                ? "niet ondersteund"
-                : mimeType || "standaardformaat van de browser"}
-          </p>
-        </details>
+        {developer && (
+          <details className="lesson-details">
+            <summary>Opnameformaat</summary>
+            <p className="mono" data-testid="mime-type">
+              MediaRecorder:{" "}
+              {mimeType === undefined
+                ? "controleren…"
+                : mimeType === null
+                  ? "niet ondersteund"
+                  : mimeType || "standaardformaat van de browser"}
+            </p>
+          </details>
+        )}
         <button
           type="button"
           className="button talk"
@@ -203,7 +207,7 @@ export function SpeechCheck() {
             <p className="dutch-text" lang="nl" data-testid="transcript-text">
               {result.transcript.text || "(leeg)"}
             </p>
-            <p className="muted">Vergelijk de tekst met wat u zei. Een transcriptie kan fouten bevatten.</p>
+            <p className="muted">Vergelijk de tekst met wat je zei. Een transcriptie kan fouten bevatten.</p>
           </div>
         )}
       </section>

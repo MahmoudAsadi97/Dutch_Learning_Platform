@@ -9,6 +9,7 @@ import { apiJson } from "@/lib/client/api";
 import { stageLabel, type CurriculumCatalog } from "@/lib/client/curriculum";
 import { ProgressBar, Skeleton, SkeletonPanel, SkillMeter } from "@/components/ui";
 import { useProfile } from "@/lib/client/profile";
+import { HonestyChip } from "@/components/ui/HonestyChip";
 
 export function CurriculumPath() {
   const [data, setData] = useState<CurriculumCatalog | null>(null);
@@ -186,10 +187,9 @@ export function CurriculumPath() {
               <Icon name="arrow" />
             </Link>
           </div>
-          <p className="course-note">
-            Dit is een oefenleerpad met interne voortgangstoetsen, geen officieel taalcertificaat. De nieuwe
-            lessen wachten op taalreview.
-          </p>
+          <div className="honesty-row">
+            <HonestyChip kind="check" />
+          </div>
         </>
       )}
     </div>

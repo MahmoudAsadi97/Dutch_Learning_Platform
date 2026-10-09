@@ -137,7 +137,7 @@ def _reason(basis: str, skill: str) -> dict:
               "speaking": ("spreken", "speaking", "صحبت کردن"), "writing": ("schrijven", "writing", "نوشتن")}
     nl, en, fa = labels[skill]
     if basis == "recent_attempt":
-        return loc(f"Uw recente oefening voor {nl} kon nog beter. Probeer het opnieuw met de feedback.",
+        return loc(f"Je recente oefening voor {nl} kon nog beter. Probeer het opnieuw met de feedback.",
                    f"Your recent {en} attempt needed another try. Revisit it using the feedback.",
                    f"تمرین اخیر {fa} شما به تلاش دوباره نیاز داشت. این بار از بازخورد استفاده کنید.")
     if basis == "repeated_attempts":
@@ -145,14 +145,14 @@ def _reason(basis: str, skill: str) -> dict:
                    f"At least two recent {en} attempts needed more work. Practise this task again.",
                    f"حداقل دو تمرین اخیر {fa} به کار بیشتری نیاز داشتند. این فعالیت را دوباره تمرین کنید.")
     if basis == "transfer":
-        return loc("Gebruik wat u al geoefend hebt in een andere situatie.",
+        return loc("Gebruik wat je al geoefend hebt in een andere situatie.",
                    "Use what you have practised in a different situation.",
                    "آنچه را تمرین کرده‌اید در موقعیتی دیگر به کار ببرید.")
     if basis == "unpractised_skill":
-        return loc(f"Er staat nog geen recente oefening voor {nl} in uw oefengeschiedenis.",
+        return loc(f"Er staat nog geen recente oefening voor {nl} in je oefengeschiedenis.",
                    f"There is no recent {en} attempt in your practice history yet.",
                    f"هنوز تمرین اخیری برای مهارت {fa} در سابقه شما ثبت نشده است.")
-    return loc("Begin met deze korte activiteit. U mag altijd een ander onderwerp kiezen.",
+    return loc("Begin met deze korte activiteit. Je mag altijd een ander onderwerp kiezen.",
                "Start with this short activity. You can always choose another topic.",
                "با این فعالیت کوتاه شروع کنید. همیشه می‌توانید موضوع دیگری انتخاب کنید.")
 
@@ -211,11 +211,11 @@ def candidate_plan(bank: topics.TopicBank, history: list[PracticeObservation], c
                            "content": hashlib.sha256(bank.model_dump_json().encode()).hexdigest()})
     plan = {"stage_id": bank.stage_id, "history_version": version, "history_count": count,
             "mode": "suggested", "can_personalise": bool(current), "items": items,
-            "notice": loc("Drie suggesties op basis van uw recente oefeningen. Alle onderwerpen blijven vrij toegankelijk.",
+            "notice": loc("Drie suggesties op basis van je recente oefeningen. Alle onderwerpen blijven vrij toegankelijk.",
                           "Three suggestions from your recent practice. Every topic remains freely available.",
                           "سه پیشنهاد بر اساس تمرین‌های اخیر شما. همه موضوع‌ها همچنان آزادانه در دسترس هستند.")}
     if not current:
-        plan["notice"] = loc("Begin met drie korte oefeningen. Uw volgende suggesties volgen uit uw oefengeschiedenis.",
+        plan["notice"] = loc("Begin met drie korte oefeningen. Je volgende suggesties volgen uit je oefengeschiedenis.",
                              "Start with three short activities. Future suggestions will use your practice history.",
                              "با سه فعالیت کوتاه شروع کنید. پیشنهادهای بعدی از سابقه تمرین شما استفاده خواهند کرد.")
     return plan, evidence
@@ -246,10 +246,10 @@ def validate_ranking(reply: PlanRanking, plan: dict, evidence: dict[str, list[st
 def _fallback(plan: dict, *, allowance: bool = False) -> dict:
     plan["mode"] = "fallback"
     plan["can_personalise"] = False
-    plan["notice"] = (loc("Uw oefenlimiet is bereikt. Deze suggesties blijven zonder extra gesprek beschikbaar.",
+    plan["notice"] = (loc("Je oefenlimiet is bereikt. Deze suggesties blijven zonder extra gesprek beschikbaar.",
                           "Your practice allowance is reached. These suggestions remain available without another model call.",
                           "سهمیه تمرین شما به پایان رسیده است. این پیشنهادها بدون درخواست اضافی همچنان در دسترس‌اند.")
-                      if allowance else loc("Een andere volgorde is nu niet beschikbaar. Uw suggesties blijven bruikbaar.",
+                      if allowance else loc("Een andere volgorde is nu niet beschikbaar. Je suggesties blijven bruikbaar.",
                                             "Personal ordering is unavailable. Your practice suggestions are still ready.",
                                             "مرتب‌سازی شخصی اکنون در دسترس نیست. پیشنهادهای تمرین شما همچنان آماده‌اند."))
     return plan
@@ -325,7 +325,7 @@ def _rank_once(session: Session, settings: Settings, providers: Providers, learn
         return _fallback(plan)
     plan["mode"] = "personalised"
     plan["can_personalise"] = False
-    plan["notice"] = loc("Uw oefenroute staat klaar. Een nieuwe oefening vernieuwt uw suggesties. U kiest zelf de volgorde.",
+    plan["notice"] = loc("Je oefenroute staat klaar. Een nieuwe oefening vernieuwt je suggesties. Je kiest zelf de volgorde.",
                          "Your sequence is ready. New practice refreshes your suggestions. You can choose any order.",
                          "مسیر شما آماده است. تمرین تازه پیشنهادها را به‌روز می‌کند. ترتیب را خودتان انتخاب کنید.")
     return plan

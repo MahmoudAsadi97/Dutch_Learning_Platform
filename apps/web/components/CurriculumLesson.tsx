@@ -23,6 +23,7 @@ import type { Skill } from "@/lib/types";
 import { storageKeys } from "@/lib/client/storage";
 import { skillAccent, type Accent } from "@/lib/design/identity";
 import { playTone } from "@/lib/client/tones";
+import { HonestyChip } from "@/components/ui/HonestyChip";
 
 type Section = "words" | "grammar" | "stories" | "alphabet" | Skill;
 const sectionAccents: Record<Section, Accent> = {
@@ -528,7 +529,9 @@ export function CurriculumLesson({
               )}
             </div>
           )}
-          <p className="course-note">Nieuwe les · taalreview nog niet afgerond.</p>
+          <div className="honesty-row">
+            <HonestyChip kind="unreviewed" />
+          </div>
         </div>
       </div>
     </div>

@@ -282,6 +282,100 @@ export const uiCopy = {
     back: { nl: "Vorige stap", en: "Previous step", fa: "مرحله‌ی قبل" },
     next: { nl: "Volgende stap", en: "Next step", fa: "مرحله‌ی بعد" },
   },
+  chip: {
+    generatedLabel: {
+      nl: "Taalmodel · niet nagekeken",
+      en: "Language model · not reviewed",
+      fa: "مدل زبانی · بازبینی‌نشده",
+    },
+    generated: {
+      nl: "Een taalmodel schreef deze tekst. De computer controleerde lengte, niveau en samenhang, maar een taaldocent heeft hem nog niet nagekeken. Kleine fouten zijn mogelijk.",
+      en: "A language model wrote this text. The computer checked its length, level and coherence, but a language teacher has not reviewed it yet. Small mistakes are possible.",
+      fa: "یک مدل زبانی این متن را نوشته است. رایانه طول، سطح و انسجام آن را بررسی کرده، اما هنوز یک معلم زبان آن را بازبینی نکرده است. اشتباه‌های کوچک ممکن است.",
+    },
+    videoLabel: {
+      nl: "Taalmodel en computerstem",
+      en: "Language model and computer voice",
+      fa: "مدل زبانی و صدای رایانه‌ای",
+    },
+    video: {
+      nl: "Een taalmodel schrijft het script; de stem en de presentator maakt de computer, het is geen echte persoon. De ondertitels komen uit de gesproken tekst. Een taaldocent heeft het script nog niet nagekeken.",
+      en: "A language model writes the script; the computer makes the voice and the presenter, it is not a real person. The subtitles come from the spoken text. A language teacher has not reviewed the script yet.",
+      fa: "یک مدل زبانی متن را می‌نویسد؛ صدا و مجری را رایانه می‌سازد و شخص واقعی نیست. زیرنویس‌ها از متن گفته‌شده می‌آیند. هنوز یک معلم زبان متن را بازبینی نکرده است.",
+    },
+    unreviewedLabel: { nl: "Nog niet nagekeken", en: "Not reviewed yet", fa: "هنوز بازبینی نشده" },
+    unreviewed: {
+      nl: "Deze les is voor Taalstudio geschreven, maar een taaldocent heeft ze nog niet nagekeken.",
+      en: "This lesson was written for Taalstudio, but a language teacher has not reviewed it yet.",
+      fa: "این درس برای Taalstudio نوشته شده، اما هنوز یک معلم زبان آن را بازبینی نکرده است.",
+    },
+    feedbackLabel: { nl: "Automatische feedback", en: "Automatic feedback", fa: "بازخورد خودکار" },
+    feedback: {
+      nl: "Deze feedback komt van een taalmodel en is niet door een docent nagekeken. Ze gaat over wat je schreef of zei, nooit over je uitspraak, en geeft geen score.",
+      en: "This feedback comes from a language model and has not been checked by a teacher. It is about what you wrote or said, never about your pronunciation, and gives no score.",
+      fa: "این بازخورد از یک مدل زبانی می‌آید و معلمی آن را بررسی نکرده است. درباره‌ی چیزی است که نوشتی یا گفتی، هرگز درباره‌ی تلفظت، و نمره‌ای نمی‌دهد.",
+    },
+    voiceLabel: { nl: "Computerstem", en: "Computer voice", fa: "صدای رایانه‌ای" },
+    voice: {
+      nl: "De luistervoorbeelden spreekt de computer uit. Zeg de woorden daarna zelf: dit is oefening, geen beoordeling van je uitspraak.",
+      en: "The computer speaks the listening examples. Say the words yourself afterwards: this is practice, not an assessment of your pronunciation.",
+      fa: "نمونه‌های شنیداری را رایانه می‌گوید. بعد خودت واژه‌ها را بگو: این تمرین است، نه ارزیابی تلفظ تو.",
+    },
+    checkLabel: {
+      nl: "Oefenleerpad · geen certificaat",
+      en: "Practice path · no certificate",
+      fa: "مسیر تمرینی · بدون گواهی",
+    },
+    check: {
+      nl: "Taalstudio is een oefenleerpad. De toetsen meten je voortgang hier en geven geen erkend certificaat. De lessen wachten nog op een review door een taaldocent.",
+      en: "Taalstudio is a practice path. The checks measure your progress here and give no recognised certificate. The lessons are still waiting for a review by a language teacher.",
+      fa: "Taalstudio یک مسیر تمرینی است. آزمون‌ها پیشرفتت را در همین‌جا می‌سنجند و گواهی رسمی نمی‌دهند. درس‌ها هنوز منتظر بازبینی یک معلم زبان هستند.",
+    },
+    more: { nl: "Meer over de inhoud", en: "More about the content", fa: "بیشتر درباره‌ی محتوا" },
+    details: { nl: "Voor ontwikkelaars", en: "For developers", fa: "برای توسعه‌دهندگان" },
+  },
+  about: {
+    title: { nl: "Over de inhoud", en: "About the content", fa: "درباره‌ی محتوا" },
+    intro: {
+      nl: "Zo ontstaat wat je in Taalstudio leest, hoort en oefent, en wat het wel en niet zegt.",
+      en: "How what you read, hear and practise in Taalstudio is made, and what it does and does not say.",
+      fa: "آنچه در Taalstudio می‌خوانی، می‌شنوی و تمرین می‌کنی چگونه ساخته می‌شود، و چه می‌گوید و چه نمی‌گوید.",
+    },
+    lessonsTitle: { nl: "Lessen en onderwerpen", en: "Lessons and topics", fa: "درس‌ها و موضوع‌ها" },
+    lessons: {
+      nl: "De lessen, onderwerpen en toetsen zijn voor Taalstudio geschreven in Standaardnederlands met een Belgische context. Een taaldocent heeft ze nog niet nagekeken.",
+      en: "The lessons, topics and checks were written for Taalstudio in standard Dutch with a Belgian context. A language teacher has not reviewed them yet.",
+      fa: "درس‌ها، موضوع‌ها و آزمون‌ها برای Taalstudio به هلندی معیار با زمینه‌ی بلژیکی نوشته شده‌اند. هنوز یک معلم زبان آن‌ها را بازبینی نکرده است.",
+    },
+    modelTitle: {
+      nl: "Wat een taalmodel schrijft",
+      en: "What a language model writes",
+      fa: "آنچه یک مدل زبانی می‌نویسد",
+    },
+    model: {
+      nl: "Je verhalen, de scripts van je video's en de feedback op je teksten komen van een taalmodel. De computer controleert lengte, niveau en woordenschat; een docent kijkt ze niet na. Kleine fouten zijn mogelijk.",
+      en: "Your stories, the scripts of your videos and the feedback on your texts come from a language model. The computer checks length, level and vocabulary; a teacher does not review them. Small mistakes are possible.",
+      fa: "داستان‌هایت، متن ویدیوهایت و بازخورد نوشته‌هایت از یک مدل زبانی می‌آیند. رایانه طول، سطح و واژگان را بررسی می‌کند؛ معلمی آن‌ها را بازبینی نمی‌کند. اشتباه‌های کوچک ممکن است.",
+    },
+    voiceTitle: { nl: "Stemmen", en: "Voices", fa: "صداها" },
+    voices: {
+      nl: "Wat je hoort, spreekt de computer uit met een Belgische stem. De presentator in een video is geen echte persoon.",
+      en: "What you hear is spoken by the computer with a Belgian voice. The presenter in a video is not a real person.",
+      fa: "آنچه می‌شنوی را رایانه با صدایی بلژیکی می‌گوید. مجری ویدیو شخص واقعی نیست.",
+    },
+    measureTitle: { nl: "Wat we niet meten", en: "What we do not measure", fa: "آنچه نمی‌سنجیم" },
+    measure: {
+      nl: "Taalstudio geeft geen score voor je uitspraak en geen totaalniveau. Punten belonen oefenen, nooit je Nederlands. De toetsen meten je voortgang hier en geven geen erkend certificaat.",
+      en: "Taalstudio gives no score for your pronunciation and no overall level. Points reward practice, never your Dutch. The checks measure your progress here and give no recognised certificate.",
+      fa: "Taalstudio برای تلفظت نمره نمی‌دهد و سطح کلی تعیین نمی‌کند. امتیازها به تمرین پاداش می‌دهند، نه به هلندی‌ات. آزمون‌ها پیشرفتت را در همین‌جا می‌سنجند و گواهی رسمی نمی‌دهند.",
+    },
+    dataTitle: { nl: "Wat we bewaren", en: "What we keep", fa: "آنچه نگه می‌داریم" },
+    data: {
+      nl: "We bewaren je antwoorden, je teksten en opnames, je bewaarde woorden en je voortgang, zodat je verder kunt waar je stopte.",
+      en: "We keep your answers, your texts and recordings, your saved words and your progress, so you can continue where you stopped.",
+      fa: "پاسخ‌ها، نوشته‌ها و ضبط‌های صدایت، واژه‌های ذخیره‌شده و پیشرفتت را نگه می‌داریم تا از همان‌جا که ماندی ادامه بدهی.",
+    },
+  },
 } as const satisfies Record<string, Record<string, Copy>>;
 
 export type UiCopyGroup = keyof typeof uiCopy;

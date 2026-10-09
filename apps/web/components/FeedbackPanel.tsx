@@ -5,6 +5,7 @@ import { useState } from "react";
 import { LearningText } from "@/components/LanguageSupport";
 import { ApiError, apiJson, newRequestId } from "@/lib/client/api";
 import type { FeedbackReportView, SessionDetail } from "@/lib/types";
+import { HonestyChip } from "@/components/ui/HonestyChip";
 
 interface Props {
   stepKey: string;
@@ -73,9 +74,10 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
       <h3 id={`${stepKey}-feedback-heading`}>
         <LearningText text={{ nl: "Feedback", en: "Feedback", fa: "بازخورد" }} />
       </h3>
-      <p className="muted" style={{ fontSize: "0.85rem" }}>
-        Wat gaat goed en wat kunt u verder oefenen? Automatische feedback, nog niet nagekeken.
-      </p>
+      <div className="honesty-row">
+        <p className="muted">Wat gaat goed en wat kun je verder oefenen?</p>
+        <HonestyChip kind="feedback" />
+      </div>
       <p>
         <button
           type="button"

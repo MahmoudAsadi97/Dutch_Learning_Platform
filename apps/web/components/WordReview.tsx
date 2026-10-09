@@ -8,6 +8,7 @@ import { PhraseAudio } from "@/components/PhraseAudio";
 import { ApiError } from "@/lib/client/api";
 import { words, type Grade, type WordItem, type WordStats } from "@/lib/client/stories";
 import { Skeleton, SkeletonPanel } from "@/components/ui";
+import { ButtonLink, EmptyState } from "@/components/ui";
 
 const gradeCopy: { grade: Grade; label: string; hint: string }[] = [
   { grade: "again", label: "Nog eens", hint: "straks opnieuw" },
@@ -185,17 +186,20 @@ export function WordReview() {
           </p>
         </section>
       ) : (
-        <section className="card review-done">
-          <p>
-            {done
-              ? "Alle kaarten van vandaag zijn gedaan. Lees een aflevering en bewaar nieuwe woorden; ze komen hier terug."
-              : "Bewaar woorden uit de verhalen met de knop Bewaar, of voeg hieronder zelf een woord toe."}
-          </p>
-          <Link className="button" href="/verhalen">
+        <EmptyState
+          icon={done ? "check" : "star"}
+          accent="words"
+          title={done ? "Alles herhaald voor vandaag" : "Nog niets te herhalen"}
+          description={
+            done
+              ? "Lees een aflevering en bewaar nieuwe woorden; ze komen hier terug."
+              : "Bewaar woorden uit de verhalen met de knop Bewaar, of voeg hieronder zelf een woord toe."
+          }
+        >
+          <ButtonLink href="/verhalen" icon="arrow" iconEnd>
             Naar de verhalen
-            <Icon name="arrow" size={16} />
-          </Link>
-        </section>
+          </ButtonLink>
+        </EmptyState>
       )}
 
       <section className="wish-card inline" aria-labelledby="add-word">

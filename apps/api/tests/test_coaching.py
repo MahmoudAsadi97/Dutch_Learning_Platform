@@ -333,3 +333,25 @@ def test_history_window_is_bounded_and_export_and_deletion_stay_learner_owned(cl
     with session_scope() as db:
         assert db.scalar(select(func.count()).select_from(PracticeObservation)) == 0
         assert db.scalar(select(func.count()).select_from(CoachPlanRequest)) == 0
+
+
+def test_the_coach_speaks_to_the_learner_with_je(client, headers):
+    """Interface Dutch is informal; practice content may stay formal, the coach's own words do not."""
+    import re
+
+    formal = re.compile(r"(?<![\w-])(u|uw|uzelf)(?![\w-])", re.IGNORECASE)
+    plan = client.get("/coach/plan?stage_id=a1", headers=headers).json()
+
+    def dutch(value):
+        if isinstance(value, dict):
+            if isinstance(value.get("nl"), str):
+                yield value["nl"]
+            for item in value.values():
+                yield from dutch(item)
+        elif isinstance(value, list):
+            for item in value:
+                yield from dutch(item)
+
+    texts = list(dutch(plan))
+    assert texts, "the plan carries Dutch text"
+    assert [text for text in texts if formal.search(text)] == []

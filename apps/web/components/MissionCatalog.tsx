@@ -25,7 +25,7 @@ export function MissionCatalog() {
       <div className="section-heading">
         <div>
           <p className="eyebrow">NEDERLANDS IN HET DAGELIJKS LEVEN</p>
-          <h2 id="catalog-title">Wat wilt u vandaag oefenen?</h2>
+          <h2 id="catalog-title">Wat wil je vandaag oefenen?</h2>
           <p className="muted">Elke missie combineert lezen, luisteren, spreken en schrijven.</p>
         </div>
       </div>

@@ -14,6 +14,8 @@ import {
   type TodayPlan,
 } from "@/lib/client/stories";
 import { Cover, ProgressBar, ProgressRing, Skeleton, SkeletonPanel } from "@/components/ui";
+import { useDeveloperDetails } from "@/components/shell/EnvContext";
+import { HonestyChip } from "@/components/ui/HonestyChip";
 
 const POLL_MS = 5000;
 const POLL_LIMIT = 48; // four minutes: a local model writes an episode in one to three minutes
@@ -24,6 +26,7 @@ function dayLabel(iso: string) {
 }
 
 export function TodayHome() {
+  const developer = useDeveloperDetails();
   const [plan, setPlan] = useState<TodayPlan | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState("");
@@ -200,7 +203,9 @@ export function TodayHome() {
                       ? "Je dagelijkse limiet voor modelgebruik is bereikt. Probeer het morgen opnieuw of herhaal vandaag je woorden."
                       : failed.error_code === "paid_not_approved"
                         ? "Betaald modelgebruik is in deze omgeving niet ingeschakeld."
-                        : "Controleer of het taalmodel draait (Instellingen › Technische ondersteuning) en probeer opnieuw."}
+                        : developer
+                          ? "Controleer of het taalmodel draait (Instellingen › Technische ondersteuning) en probeer opnieuw."
+                          : "De schrijver was even niet bereikbaar. Probeer het opnieuw."}
                 </p>
                 {failed.failure_reasons?.length > 0 && (
                   <details className="failure-details">
@@ -428,10 +433,9 @@ export function TodayHome() {
           <Icon name="arrow" />
         </Link>
       </div>
-      <p className="course-note">
-        De verhalen worden door een taalmodel geschreven en automatisch gecontroleerd op lengte, moeilijkheid
-        en samenhang. Ze zijn nog niet door een taaldocent nagekeken.
-      </p>
+      <div className="honesty-row">
+        <HonestyChip kind="generated" />
+      </div>
     </div>
   );
 }

@@ -10,6 +10,7 @@ import { ApiError, newRequestId } from "@/lib/client/api";
 import { useRecorder } from "@/lib/client/recorder";
 import { stageLabels, stories, type Episode, type GlossaryItem } from "@/lib/client/stories";
 import { playTone } from "@/lib/client/tones";
+import { HonestyChip } from "@/components/ui/HonestyChip";
 
 function friendly(cause: unknown, fallback: string) {
   if (cause instanceof ApiError) {
@@ -237,11 +238,12 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
                 <Icon name="arrow" size={17} />
               </Link>
             )}
-            <p className="small-text muted">
-              Geschreven door het taalmodel ({episode.model || episode.provider}) en automatisch gecontroleerd
-              {episode.warnings.length ? `; aandachtspunten: ${episode.warnings.length}` : ""}. Nog niet
-              nagekeken door een taaldocent.
-            </p>
+            <div className="honesty-row">
+              <HonestyChip
+                kind="generated"
+                detail={`${episode.model || episode.provider}; automatische controle: ${episode.warnings.length} aandachtspunten`}
+              />
+            </div>
           </footer>
         </>
       )}
