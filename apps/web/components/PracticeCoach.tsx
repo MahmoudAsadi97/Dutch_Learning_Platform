@@ -13,8 +13,10 @@ import { useProfile } from "@/lib/client/profile";
 export function PracticeCoach({ initialStage = "a1" }: { initialStage?: string }) {
   const profile = useProfile();
   const profileStage = profile.data?.profile.stage_id;
-  const stage =
-    profileStage && practiceStages.includes(profileStage)
+  // wait for the profile, so the first plan is already at the learner's level; without one, the fallback
+  const stage = profile.isPending
+    ? null
+    : profileStage && practiceStages.includes(profileStage)
       ? profileStage
       : practiceStages.includes(initialStage)
         ? initialStage
@@ -27,6 +29,7 @@ export function PracticeCoach({ initialStage = "a1" }: { initialStage?: string }
   const pending = useRef<AbortController | null>(null);
   const requestId = useRef("");
   useEffect(() => {
+    if (!stage) return;
     const controller = new AbortController();
     apiJson<PracticePlan>(`coach/plan?stage_id=${stage}`, { signal: controller.signal })
       .then((value) => {
@@ -84,9 +87,9 @@ export function PracticeCoach({ initialStage = "a1" }: { initialStage?: string }
           <p>
             <LearningText
               text={{
-                nl: "Kies je niveau. Deze suggesties helpen je om verschillende vaardigheden te gebruiken.",
-                en: "Choose your level. These suggestions help you practise different skills.",
-                fa: "سطحت را انتخاب کن. این پیشنهادها به تمرین مهارت‌های مختلف کمک می‌کنند.",
+                nl: "Deze suggesties op jouw niveau helpen je om verschillende vaardigheden te gebruiken. Je niveau pas je aan in Instellingen.",
+                en: "These suggestions at your level help you practise different skills. You change your level in Settings.",
+                fa: "این پیشنهادها در سطح خودت به تمرین مهارت‌های مختلف کمک می‌کنند. سطحت را در تنظیمات تغییر می‌دهی.",
               }}
             />
           </p>

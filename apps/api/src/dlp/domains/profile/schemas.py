@@ -4,13 +4,15 @@ from __future__ import annotations
 
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, field_validator, model_validator
 
 from dlp.domains.curriculum.schemas import STAGE_IDS
 
 SupportMode = Literal["nl-en", "nl-fa", "nl-fa-en"]
 GlossMode = Literal["auto", "on", "off"]
 DailyGoal = Literal[10, 20, 30]
+# Why the learner studies, chosen in the welcome; "" is no answer. A closed list keeps free text out of the profile.
+StatedGoal = Literal["", "werk", "studie", "dagelijks leven", "inburgering", "voor mezelf"]
 
 
 def _stage(value: str) -> str:
@@ -25,7 +27,7 @@ class ProfileUpdate(BaseModel):
     daily_goal_points: DailyGoal | None = None
     support_mode: SupportMode | None = None
     gloss_mode: GlossMode | None = None
-    stated_goal: str | None = Field(default=None, max_length=200)
+    stated_goal: StatedGoal | None = None
 
     @field_validator("stage_id")
     @classmethod
@@ -46,7 +48,7 @@ class OnboardingBody(BaseModel):
     support_mode: SupportMode
     stage_id: str
     daily_goal_points: DailyGoal = 20
-    stated_goal: str = Field(default="", max_length=200)
+    stated_goal: StatedGoal = ""
 
     @field_validator("stage_id")
     @classmethod
@@ -66,6 +68,7 @@ class ProfileView(BaseModel):
     gloss_mode: GlossMode
     stated_goal: str
     onboarded_at: str | None
+    earned_stage_id: str | None
     suggested_stage_id: str | None
 
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -20,6 +21,7 @@ import {
   type CurriculumCatalog,
 } from "@/lib/client/curriculum";
 import { useNavigationGuard } from "@/lib/client/navigation";
+import { queryKeys } from "@/lib/client/query-keys";
 import type { Skill } from "@/lib/types";
 import { storageKeys } from "@/lib/client/storage";
 
@@ -37,6 +39,7 @@ interface TestDraft {
 const emptyDraft: TestDraft = { reading: {}, listening: {}, writing: "" };
 
 export function CurriculumTest({ stageId }: { stageId: string }) {
+  const queryClient = useQueryClient();
   const [attempt, setAttempt] = useState<CurriculumAttempt | null>(null);
   const [skill, setSkill] = useState<Skill>("reading");
   const [draft, setDraft] = useState<TestDraft>(emptyDraft);
@@ -159,6 +162,9 @@ export function CurriculumTest({ stageId }: { stageId: string }) {
         },
       });
       setAttempt(result);
+      // a passed check can earn a move-up offer and changes the path; both read fresh data
+      void queryClient.invalidateQueries({ queryKey: queryKeys.me() });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.curriculum.all() });
     } catch (cause) {
       setError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
       try {

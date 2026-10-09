@@ -49,16 +49,26 @@ def ensure(session: Session, learner: Learner) -> LearnerProfile:
     return profile
 
 
-def suggested_stage(session: Session, profile: LearnerProfile) -> str | None:
-    """A higher stage the learner has earned by passing checks, offered but never applied automatically."""
+def move_up(session: Session, profile: LearnerProfile) -> tuple[str | None, str | None]:
+    """The stage a learner has earned and the one to offer next, or (None, None).
+
+    The highest passed check at or above the current stage earns an offer of the first stage after it that
+    is not passed yet. Lower stages do not matter: a learner may start at A1 or higher without passing the
+    stages below. The offer is shown, never applied without the learner's say.
+    """
+    if profile.stage_id not in STAGE_IDS:
+        return None, None
     passed = passed_stages(session, profile.learner_id)
-    first_open = next((stage for stage in STAGE_IDS if stage not in passed), STAGE_IDS[-1])
-    if STAGE_IDS.index(first_open) > STAGE_IDS.index(profile.stage_id):
-        return first_open
-    return None
+    current = STAGE_IDS.index(profile.stage_id)
+    top = max((STAGE_IDS.index(stage) for stage in passed if stage in STAGE_IDS), default=-1)
+    if top < current:
+        return None, None
+    offer = next((stage for stage in STAGE_IDS[top + 1:] if stage not in passed), None)
+    return (STAGE_IDS[top], offer) if offer else (None, None)
 
 
 def view(session: Session, learner: Learner, profile: LearnerProfile) -> dict:
+    earned, offer = move_up(session, profile)
     return {
         "learner": {"email": learner.email, "display_name": learner.display_name},
         "profile": {
@@ -68,7 +78,8 @@ def view(session: Session, learner: Learner, profile: LearnerProfile) -> dict:
             "gloss_mode": profile.gloss_mode,
             "stated_goal": profile.stated_goal,
             "onboarded_at": profile.onboarded_at.isoformat() if profile.onboarded_at else None,
-            "suggested_stage_id": suggested_stage(session, profile),
+            "earned_stage_id": earned,
+            "suggested_stage_id": offer,
         },
         "features": dict(profile.features or {}),
     }

@@ -8,6 +8,8 @@ const PREFIX = "taalstudio.";
 export const storageKeys = {
   /** Support-language mode; a preference, kept across sign-out. */
   languageSupport: `${PREFIX}language-support`,
+  /** Set while a support-language change has not reached the server; it belongs to the signed-in learner. */
+  languageSupportUnsent: `${PREFIX}unsent.language-support`,
   /** Answer and goal tones on or off; a preference, kept across sign-out. */
   tones: `${PREFIX}tones`,
   /** Writing draft of the core lesson (sessionStorage). */
@@ -31,6 +33,7 @@ export const LEARNER_KEY_PREFIXES = [
   `${PREFIX}stories.`,
   `${PREFIX}topic-draft.`,
   `${PREFIX}conversation.`,
+  `${PREFIX}unsent.`,
   // the coach level moved to the learner profile; old copies on a device are still swept at sign-out
   `${PREFIX}practice-stage.`,
 ] as const;

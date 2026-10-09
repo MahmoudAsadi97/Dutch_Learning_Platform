@@ -38,5 +38,5 @@ def reset_me(ctx: RequestContext = Depends(context_dep), settings: Settings = De
     """Undo onboarding and return to the defaults. Browser tests use it; production never serves it."""
     if settings.app_env == "production":
         raise HTTPException(status_code=404, detail="not found")
-    profile = service.reset(session, ctx.learner)
+    profile = onboarding.reset(session, ctx.learner)
     return service.view(session, ctx.learner, profile)

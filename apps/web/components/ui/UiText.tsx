@@ -3,6 +3,7 @@
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { glossShown, type GlossTier } from "@/lib/client/gloss";
 import type { Copy } from "@/lib/ui-copy";
+import { Fragment } from "react";
 
 interface Props {
   text: Copy;
@@ -34,14 +35,16 @@ export function UiText({ text, tier = "chrome", className = "", inline = false }
         {text.nl}
       </span>
       {languages.map((language) => (
-        <span
-          key={language}
-          lang={language}
-          dir={language === "fa" ? "rtl" : undefined}
-          className={`ui-gloss ${language === "fa" ? "fa" : ""}`.trim()}
-        >
-          {text[language]}
-        </span>
+        <Fragment key={language}>
+          {/* a real space, so an accessible name reads "Volgende stap Next step", not one run-on word */}{" "}
+          <span
+            lang={language}
+            dir={language === "fa" ? "rtl" : undefined}
+            className={`ui-gloss ${language === "fa" ? "fa" : ""}`.trim()}
+          >
+            {text[language]}
+          </span>
+        </Fragment>
       ))}
     </span>
   );

@@ -28,8 +28,11 @@ export function CurriculumPath() {
   }, [retry]);
   const profile = useProfile();
   const current = profile.data?.profile.stage_id;
+  // the profile stage, until its check is passed; then the first stage after it that is still open
+  const atProfile = data?.stages.findIndex((stage) => stage.id === current) ?? -1;
   const next =
-    data?.stages.find((stage) => stage.id === current) ??
+    (atProfile >= 0 && data && !data.stages[atProfile].passed ? data.stages[atProfile] : undefined) ??
+    (atProfile >= 0 ? data?.stages.slice(atProfile + 1).find((stage) => !stage.passed) : undefined) ??
     data?.stages.find((stage) => !stage.passed) ??
     data?.stages.at(-1);
   const finished = data?.stages.filter((stage) => stage.passed).length ?? 0;

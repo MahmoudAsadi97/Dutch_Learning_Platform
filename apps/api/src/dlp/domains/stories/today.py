@@ -10,10 +10,17 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.orm import Session
 
 from dlp.db.base import utcnow
+from dlp.domains.profile.models import LearnerProfile
 from dlp.domains.stories.models import LearningDay
 
 LEARNER_TIMEZONE = ZoneInfo("Europe/Brussels")
 DAILY_GOAL = 20
+
+
+def goal_for(session: Session, learner_id: uuid.UUID) -> int:
+    """The learner's daily goal from the profile; the default before a profile exists."""
+    goal = session.scalar(select(LearnerProfile.daily_goal_points).where(LearnerProfile.learner_id == learner_id))
+    return goal or DAILY_GOAL
 
 
 def local_today(now: datetime | None = None) -> date:
@@ -24,10 +31,11 @@ def add_points(session: Session, learner_id: uuid.UUID, *, points: int, episodes
                words_reviewed: int = 0, questions_correct: int = 0, read_aloud: int = 0, videos_watched: int = 0,
                day: date | None = None) -> LearningDay:
     day = day or local_today()
+    goal = goal_for(session, learner_id)
     statement = insert(LearningDay).values(
         id=uuid.uuid4(), learner_id=learner_id, day=day, points=points, episodes_read=episodes_read,
         words_reviewed=words_reviewed, questions_correct=questions_correct, read_aloud=read_aloud,
-        videos_watched=videos_watched, goal_met=points >= DAILY_GOAL, updated_at=utcnow(),
+        videos_watched=videos_watched, goal_met=points >= goal, updated_at=utcnow(),
     ).on_conflict_do_update(
         index_elements=["learner_id", "day"],
         set_={
@@ -37,7 +45,7 @@ def add_points(session: Session, learner_id: uuid.UUID, *, points: int, episodes
             "questions_correct": LearningDay.questions_correct + questions_correct,
             "read_aloud": LearningDay.read_aloud + read_aloud,
             "videos_watched": LearningDay.videos_watched + videos_watched,
-            "goal_met": (LearningDay.points + points) >= DAILY_GOAL,
+            "goal_met": (LearningDay.points + points) >= goal,
             "updated_at": utcnow(),
         },
     )
@@ -74,6 +82,7 @@ def streak(session: Session, learner_id: uuid.UUID, today_date: date | None = No
 def recent_days(session: Session, learner_id: uuid.UUID, days: int = 14) -> list[dict]:
     end = local_today()
     start = end - timedelta(days=days - 1)
+    goal = goal_for(session, learner_id)
     rows = {row.day: row for row in session.scalars(select(LearningDay).where(
         LearningDay.learner_id == learner_id, LearningDay.day >= start, LearningDay.day <= end))}
     out = []
@@ -81,5 +90,6 @@ def recent_days(session: Session, learner_id: uuid.UUID, days: int = 14) -> list
         day = start + timedelta(days=offset)
         row = rows.get(day)
         out.append({"day": day.isoformat(), "points": row.points if row else 0,
-                    "goal_met": bool(row and row.points >= DAILY_GOAL)})
+                    # past days keep the goal they were played against; today follows the current goal
+                    "goal_met": bool(row and (row.goal_met if day < end else row.points >= goal))})
     return out

@@ -47,3 +47,10 @@ test("an unknown path falls back to Vandaag for the header", () => {
   assert.equal(navItemFor("/missions/x").label, "Spreken");
   assert.equal(navItemFor("/settings").accent, "neutral");
 });
+
+test("each navigation label is the Dutch of its copy entry, so the sidebar and the tabs say the same", async () => {
+  const { uiCopy } = await import("../../lib/ui-copy.ts");
+  for (const item of [...destinations, ...rooms]) {
+    assert.equal(uiCopy.nav[item.copy]?.nl, item.label, item.href);
+  }
+});

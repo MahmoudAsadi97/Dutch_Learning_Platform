@@ -29,14 +29,18 @@ export function LearningPreferences() {
   const { mode, setMode } = useLanguageSupport();
   const [saved, setSaved] = useState("");
 
-  if (profile.isError) {
+  const data = profile.data?.profile;
+  // a failed refresh keeps the preferences already on screen; only a first load that fails says so
+  if (profile.isError && !data) {
     return (
       <Notice tone="warning" role="status">
-        Je leervoorkeuren zijn nu niet beschikbaar. Probeer het straks opnieuw.
+        Je leervoorkeuren zijn nu niet beschikbaar.{" "}
+        <button type="button" className="linklike" onClick={() => void profile.refetch()}>
+          Opnieuw proberen
+        </button>
       </Notice>
     );
   }
-  const data = profile.data?.profile;
   if (!data) {
     return (
       <p className="muted" role="status">
@@ -44,13 +48,19 @@ export function LearningPreferences() {
       </p>
     );
   }
-  const save = (patch: Parameters<typeof update.mutate>[0], message: string) =>
+  const save = (patch: Parameters<typeof update.mutate>[0], message: string) => {
+    setSaved("");
     update.mutate(patch, { onSuccess: () => setSaved(message) });
+  };
 
   return (
     <div className="learning-preferences" data-testid="learning-preferences">
       {data.suggested_stage_id && (
-        <Notice tone="info" title={`Je hebt ${stageLabel(data.suggested_stage_id)} gehaald.`} role="status">
+        <Notice
+          tone="info"
+          title={`Je hebt ${stageLabel(data.earned_stage_id ?? data.stage_id)} gehaald.`}
+          role="status"
+        >
           <p>Wil je vanaf nu op dat niveau oefenen? Je verhalen en onderwerpen volgen mee.</p>
           <Button
             variant="secondary"
@@ -67,7 +77,6 @@ export function LearningPreferences() {
             <Select
               {...control}
               value={data.stage_id}
-              disabled={update.isPending}
               onChange={(event) => save({ stage_id: event.target.value }, "Niveau aangepast.")}
             >
               {STAGE_IDS.map((id) => (
@@ -83,7 +92,6 @@ export function LearningPreferences() {
             <Select
               {...control}
               value={String(data.daily_goal_points)}
-              disabled={update.isPending}
               onChange={(event) =>
                 save({ daily_goal_points: Number(event.target.value) as DailyGoal }, "Dagdoel aangepast.")
               }
@@ -114,7 +122,6 @@ export function LearningPreferences() {
             <Select
               {...control}
               value={data.gloss_mode}
-              disabled={update.isPending}
               onChange={(event) => save({ gloss_mode: event.target.value as GlossMode }, "Voorkeur bewaard.")}
             >
               {GLOSS.map((option) => (
@@ -126,11 +133,10 @@ export function LearningPreferences() {
           )}
         </Field>
       </div>
-      {saved && (
-        <p className="muted small-text" role="status">
-          {saved}
-        </p>
-      )}
+      {/* always present, so a screen reader hears each confirmation */}
+      <p className="muted small-text" role="status">
+        {update.isError ? "" : saved}
+      </p>
       {update.isError && (
         <Notice tone="danger" role="alert">
           Bewaren lukte niet. Probeer het opnieuw.

@@ -14,6 +14,7 @@ from dlp.domains.coaching.service import export_observations
 from dlp.domains.content_review.models import ContentReview
 from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice, TopicPractice
 from dlp.domains.feedback.service import report_view, reports_for
+from dlp.domains.identity.models import Learner
 from dlp.domains.practice.service import list_sessions
 from dlp.domains.practice.turns import evidence_view, turn_view
 from dlp.domains.profile import service as profile_service
@@ -28,6 +29,12 @@ from dlp.domains.videos import service as videos_service
 from dlp.domains.videos.models import VideoLesson
 
 router = APIRouter(tags=["progress"])
+
+
+def _profile_export(session: Session, learner: Learner) -> dict:
+    """The profile as the learner sees it, plus the feature switches stored with it."""
+    me = profile_service.view(session, learner, profile_service.ensure(session, learner))
+    return {**me["profile"], "features": me["features"]}
 
 
 @router.get("/progress")
@@ -61,7 +68,7 @@ def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depe
         "exported_at": utcnow().isoformat(),
         "learner": {"id": str(ctx.learner.id), "email": ctx.learner.email, "display_name": ctx.learner.display_name,
                     "support_language": ctx.learner.support_language, "target_language": ctx.learner.target_language},
-        "profile": profile_service.view(session, ctx.learner, profile_service.ensure(session, ctx.learner))["profile"],
+        "profile": _profile_export(session, ctx.learner),
         "skill_records": [
             {"id": str(r.id), "mission_id": r.mission_id, "skill": r.skill, "status": r.status, "attempts": r.attempts,
              "latest_assessment": r.latest_assessment, "evidence_ids": r.evidence_ids, "updated_at": r.updated_at.isoformat()}

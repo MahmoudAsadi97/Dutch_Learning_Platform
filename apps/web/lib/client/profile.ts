@@ -16,6 +16,9 @@ export interface Profile {
   gloss_mode: GlossMode;
   stated_goal: string;
   onboarded_at: string | null;
+  /** The stage whose passed check earned the offer below; null when there is no offer. */
+  earned_stage_id: string | null;
+  /** A stage the learner may move up to; offered, never applied without their say. */
   suggested_stage_id: string | null;
 }
 
@@ -69,7 +72,24 @@ export function useProfile() {
 export function useUpdateProfile() {
   const client = useQueryClient();
   return useMutation({
+    // one save at a time, in the order the learner made them
+    scope: { id: "profile" },
     mutationFn: updateProfile,
+    // the controls show the new value at once and fall back if the server refuses it
+    onMutate: async (patch: ProfileUpdate) => {
+      await client.cancelQueries({ queryKey: queryKeys.me() });
+      const previous = client.getQueryData<Me>(queryKeys.me());
+      if (previous) {
+        client.setQueryData<Me>(queryKeys.me(), {
+          ...previous,
+          profile: { ...previous.profile, ...(patch as Partial<Profile>) },
+        });
+      }
+      return { previous };
+    },
+    onError: (_error, _patch, context) => {
+      if (context?.previous) client.setQueryData(queryKeys.me(), context.previous);
+    },
     onSuccess: (me) => {
       client.setQueryData(queryKeys.me(), me);
       void client.invalidateQueries({ queryKey: queryKeys.today() });

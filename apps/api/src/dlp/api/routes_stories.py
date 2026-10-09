@@ -60,6 +60,7 @@ def today_plan(ctx: RequestContext = Depends(context_dep), session: Session = De
         episode = service.today_episode(session, ctx.learner)
         words = vocab.due_items(session, ctx.learner, limit=5)
         run = today.streak(session, ctx.learner.id)
+        goal = today.goal_for(session, ctx.learner.id)
         current = episode["episode"]
         if current and current["status"] == "ready" and not current["read_at"]:
             next_step = "read"
@@ -73,8 +74,7 @@ def today_plan(ctx: RequestContext = Depends(context_dep), session: Session = De
             next_step = "explore"
         return {
             "date": today.local_today().isoformat(), "streak": run,
-            "goal": {"target": today.DAILY_GOAL, "points": run["today_points"],
-                     "met": run["today_points"] >= today.DAILY_GOAL},
+            "goal": {"target": goal, "points": run["today_points"], "met": run["today_points"] >= goal},
             "series": episode["series"], "episode": current, "failed": episode["failed"],
             "awaiting_choice": episode["awaiting_choice"],
             "words": {"due_count": words["due_count"], "total": words["total"], "learned_count": words["learned_count"],

@@ -2,6 +2,7 @@
 first visit to Vandaag does not wait for the writer."""
 from __future__ import annotations
 
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from dlp.db.base import utcnow
@@ -10,6 +11,16 @@ from dlp.domains.profile import service
 from dlp.domains.profile.models import LearnerProfile
 from dlp.domains.profile.schemas import OnboardingBody, ProfileUpdate
 from dlp.domains.stories import service as stories
+from dlp.domains.stories.models import StorySeries
+
+
+def reset(session: Session, learner: Learner) -> LearnerProfile:
+    """Undo onboarding (browser tests only); an existing serial follows the profile back to its start."""
+    profile = service.reset(session, learner)
+    series = session.scalar(select(StorySeries).where(StorySeries.learner_id == learner.id))
+    if series is not None and series.stage_id != profile.stage_id:
+        stories.set_level(session, learner, profile.stage_id)
+    return profile
 
 
 def update(session: Session, learner: Learner, body: ProfileUpdate) -> LearnerProfile:
