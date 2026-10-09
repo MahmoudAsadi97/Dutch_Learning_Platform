@@ -445,3 +445,15 @@ updates the current day. An award that takes the day from below its goal to the 
 shell plays the goal tone and says it in a toast. `stories/today.py` keeps the old names as re-exports;
 its `add_points` only seeds history in tests. A new kind is a row in the rules table plus a
 `record_activity` call where the action is stored, never an update of `learning_days` by hand.
+
+## Judging an answer
+
+`domains/exercises/compare.py` compares a typed answer with one or more accepted answers and returns
+`correct`, `almost` or `incorrect` with notes and a token diff. Case, punctuation and spacing never matter;
+missing accents are forgiven and noted; a missing article is forgiven unless the exercise requires it, a
+wrong de/het is `almost`; one slip in a word of four letters or more (two from eight) is `almost` unless it
+spells another word the caller lists in `lexicon`; one missing or extra word in a sentence of four words or
+more is `almost`. The thresholds are named constants and `tests/test_exercise_compare.py` is their
+specification. `almost` never counts as a mistake. `domains/speech/compare.py` (`read_aloud_compare`) says
+which words of a text were recognised; the story reader and `POST /speech/read-aloud` (any text up to 600
+characters, the recording not kept, no points, no score field, audio seconds counted) share it.

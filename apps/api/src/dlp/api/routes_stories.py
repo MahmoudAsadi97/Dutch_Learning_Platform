@@ -170,7 +170,7 @@ def episode_read_aloud(episode_id: str, paragraph_index: int = Form(ge=0, le=7),
     def run():
         episode = service.get_episode(session, ctx.learner, _uuid(episode_id), lock=True)
         if episode.status != "ready":
-            raise CurriculumError("this episode is not ready yet", 409)
+            raise CurriculumError("this episode is not ready yet", 409, code="not_ready")
         if paragraph_index >= len(episode.paragraphs):
             raise CurriculumError("paragraph not found", 404)
         outcome = transcribe_upload(session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id,

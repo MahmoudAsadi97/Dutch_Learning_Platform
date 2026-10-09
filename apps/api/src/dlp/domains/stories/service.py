@@ -32,11 +32,12 @@ from dlp.domains.curriculum.schemas import STAGE_IDS
 from dlp.domains.identity.models import Learner
 from dlp.domains.jobs import service as jobs
 from dlp.domains.profile import service as profile_service
+from dlp.domains.speech.compare import read_aloud_compare
 from dlp.domains.stories.bible import DEFAULT_BIBLE, SERIES_TITLE, profile_for, stages_up_to
 from dlp.domains.stories.models import StoryEpisode, StorySeries, VocabItem
 from dlp.domains.stories.prompts import TRANSLATE_VERSION, WRITER_VERSION, translate_messages, writer_messages
 from dlp.domains.stories.schemas import EpisodeDraft, Translation
-from dlp.domains.stories.validator import ValidationResult, feedback_text, lemma_key, tokens, validate_draft
+from dlp.domains.stories.validator import ValidationResult, feedback_text, lemma_key, validate_draft
 from dlp.domains.usage import service as usage
 from dlp.providers.base import ProviderError
 from dlp.providers.chat_openai_compatible import schema_instruction
@@ -518,19 +519,8 @@ def translate_paragraph(session: Session, settings: Settings, providers: Provide
 def read_aloud_result(episode: StoryEpisode, *, paragraph_index: int, transcript: str) -> dict:
     if paragraph_index >= len(episode.paragraphs):
         raise StoryError("paragraph not found", 404)
-    target = tokens(episode.paragraphs[paragraph_index]["nl"])
-    heard = tokens(transcript)
-    remaining = list(heard)
-    matched = 0
-    missed: list[str] = []
-    for word in target:
-        if word in remaining:
-            remaining.remove(word)
-            matched += 1
-        else:
-            missed.append(word)
-    return {"paragraph_index": paragraph_index, "transcript": transcript, "target_words": len(target),
-            "matched_words": matched, "missed": missed[:40], "extra": remaining[:40]}
+    return {"paragraph_index": paragraph_index, "transcript": transcript,
+            **read_aloud_compare(episode.paragraphs[paragraph_index]["nl"], transcript)}
 
 
 def record_read_aloud(session: Session, learner: Learner, episode: StoryEpisode, result: dict) -> dict:

@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
 from dlp.config import Settings
 from dlp.db.session import get_session
+from dlp.domains.speech.compare import read_aloud_compare
 from dlp.domains.speech.service import synthesize_text, transcribe_upload
 from dlp.providers.base import ProviderError, ProviderUnavailable
 from dlp.providers.registry import Providers
@@ -54,6 +55,36 @@ def transcribe(
         },
         "evidence": {"modality": "speech", "kind": "transcript"},
     }
+
+
+class ReadAloudResult(BaseModel):
+    """Recognised words only: there is deliberately no score (D-20)."""
+
+    transcript: str
+    target_words: int
+    matched_words: int
+    missed: list[str]
+    extra: list[str]
+
+
+@router.post("/read-aloud", response_model=ReadAloudResult)
+def read_aloud(
+    text: str = Form(min_length=1, max_length=600),
+    audio: UploadFile = File(...),
+    ctx: RequestContext = Depends(context_dep),
+    settings: Settings = Depends(settings_dep),
+    providers: Providers = Depends(providers_dep),
+    session: Session = Depends(get_session),
+) -> ReadAloudResult:
+    """Read any text aloud and see which words were recognised. The recording is not kept and nothing is
+    awarded or scored; the audio seconds count against the allowance like any transcription. A speech
+    service that fails answers 503 with its code through the shared handler."""
+    outcome = transcribe_upload(
+        session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id,
+        upload_bytes=audio.file.read(settings.max_upload_bytes + 1), upload_filename=audio.filename or "recording",
+        stt=providers.stt, blob=providers.blob, keep_recording=False,
+    )
+    return ReadAloudResult(transcript=outcome.transcript.text, **read_aloud_compare(text, outcome.transcript.text))
 
 
 class SynthesisRequest(BaseModel):
