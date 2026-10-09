@@ -38,7 +38,7 @@ export const uiCopy = {
   state: {
     loading: { nl: "Bezig met laden", en: "Loading", fa: "در حال بارگذاری" },
     saved: { nl: "Bewaard", en: "Saved", fa: "ذخیره شد" },
-    offline: { nl: "Geen verbinding", en: "No connection", fa: "اتصال نیست" },
+    offline: { nl: "Geen verbinding", en: "No connection", fa: "اتصال برقرار نیست" },
     correct: { nl: "Juist", en: "Correct", fa: "درست" },
     almost: { nl: "Bijna", en: "Almost", fa: "تقریباً" },
     notHeard: { nl: "Niet gehoord", en: "Not heard", fa: "شنیده نشد" },
@@ -52,9 +52,24 @@ export const uiCopy = {
     goalMet: {
       nl: "Dagdoel gehaald. Alles wat je nu nog doet, is extra.",
       en: "Daily goal reached. Anything more is a bonus.",
-      fa: "به هدف روزانه رسیدی. هر چه بیشتر بخوانی، اضافه است.",
+      fa: "به هدف روزانه‌ات رسیدی. هر کاری که از حالا انجام بدهی، فراتر از هدفت است.",
     },
     streak: { nl: "{days} dagen op rij", en: "{days} days in a row", fa: "{days} روز پشت سر هم" },
+    loadFailed: {
+      nl: "Je overzicht kon niet worden geladen.",
+      en: "Your overview could not be loaded.",
+      fa: "نمای کلی‌ات بارگذاری نشد.",
+    },
+    retryStarted: {
+      nl: "De schrijver begint opnieuw.",
+      en: "The writer is starting again.",
+      fa: "نویسنده دوباره شروع می‌کند.",
+    },
+    wishQueued: {
+      nl: "Je wens staat in de wachtrij. De aflevering verschijnt hierboven zodra ze klaar is.",
+      en: "Your wish is in the queue. The episode appears above as soon as it is ready.",
+      fa: "خواسته‌ات در صف است. قسمت به‌محض آماده شدن در بالا نمایش داده می‌شود.",
+    },
   },
   honesty: {
     generated: {
@@ -72,7 +87,7 @@ export const uiCopy = {
     title: { nl: "Welkom bij Taalstudio", en: "Welcome to Taalstudio", fa: "به Taalstudio خوش آمدی" },
     intro: {
       nl: "Hier leer je Nederlands zoals het in België gesproken wordt: elke dag een stukje verhaal, woorden die je bewaart, en spreken en schrijven met uitleg.",
-      en: "Here you learn Dutch as it is spoken in Belgium: a piece of story every day, words you keep, and speaking and writing with explanations.",
+      en: "Here you learn Dutch as it is spoken in Belgium: part of a story every day, words you keep, and speaking and writing with explanations.",
       fa: "اینجا هلندی را همان‌طور که در بلژیک صحبت می‌شود یاد می‌گیری: هر روز بخشی از یک داستان، واژه‌هایی که نگه می‌داری، و صحبت کردن و نوشتن همراه با توضیح.",
     },
     stepLanguage: { nl: "Taal", en: "Language", fa: "زبان" },
@@ -112,8 +127,8 @@ export const uiCopy = {
     },
     levelNote: {
       nl: "Je kiest alleen een startpunt. Je slaagt hiermee voor niets, en je kunt het later altijd veranderen.",
-      en: "You only choose a starting point. It does not pass you for anything, and you can always change it later.",
-      fa: "فقط نقطه‌ی شروع را انتخاب می‌کنی. با این انتخاب هیچ مرحله‌ای را قبول نمی‌شوی و بعداً همیشه می‌توانی عوضش کنی.",
+      en: "You only choose a starting point. It does not mean you have passed anything, and you can always change it later.",
+      fa: "فقط نقطه‌ی شروع را انتخاب می‌کنی. این انتخاب به معنای قبول شدن در هیچ مرحله‌ای نیست و بعداً همیشه می‌توانی عوضش کنی.",
     },
     levelZero: { nl: "Ik begin bij nul", en: "I am starting from zero", fa: "از صفر شروع می‌کنم" },
     levelZeroDetail: {
@@ -135,7 +150,7 @@ export const uiCopy = {
     levelSimpleDetail: {
       nl: "Boodschappen, afspraken, over je dag vertellen.",
       en: "Shopping, appointments, talking about your day.",
-      fa: "خرید، قرار گذاشتن، تعریف کردن از روزت.",
+      fa: "خرید، قرار گذاشتن، حرف زدن درباره‌ی روزت.",
     },
     levelFair: {
       nl: "Ik spreek al redelijk Nederlands",
@@ -163,7 +178,7 @@ export const uiCopy = {
     reasonIntegration: {
       nl: "Voor inburgering",
       en: "For the civic integration course",
-      fa: "برای دوره‌ی ادغام (inburgering)",
+      fa: "برای دوره‌ی ادغام اجتماعی (inburgering)",
     },
     reasonSelf: { nl: "Gewoon voor mezelf", en: "Just for myself", fa: "فقط برای خودم" },
     paceQuestion: {
@@ -215,7 +230,7 @@ export const uiCopy = {
     howSpeak: {
       nl: "Je krijgt uitleg bij wat je zegt en schrijft, nooit een score voor je uitspraak.",
       en: "You get explanations for what you say and write, never a score for your pronunciation.",
-      fa: "برای آنچه می‌گویی و می‌نویسی توضیح می‌گیری، هرگز نمره‌ای برای تلفظت.",
+      fa: "برای آنچه می‌گویی و می‌نویسی توضیح می‌گیری، اما هرگز برای تلفظت نمره نمی‌گیری.",
     },
     howGoalTitle: { nl: "Een doel per dag", en: "A goal for each day", fa: "هدفی برای هر روز" },
     howGoal: {
@@ -291,7 +306,7 @@ export const uiCopy = {
     generated: {
       nl: "Een taalmodel schreef deze tekst. De computer controleerde lengte, niveau en samenhang, maar een taaldocent heeft hem nog niet nagekeken. Kleine fouten zijn mogelijk.",
       en: "A language model wrote this text. The computer checked its length, level and coherence, but a language teacher has not reviewed it yet. Small mistakes are possible.",
-      fa: "یک مدل زبانی این متن را نوشته است. رایانه طول، سطح و انسجام آن را بررسی کرده، اما هنوز یک معلم زبان آن را بازبینی نکرده است. اشتباه‌های کوچک ممکن است.",
+      fa: "یک مدل زبانی این متن را نوشته است. رایانه طول، سطح و انسجام آن را بررسی کرده، اما هنوز یک معلم زبان آن را بازبینی نکرده است. ممکن است اشتباه‌های کوچکی در آن باشد.",
     },
     videoLabel: {
       nl: "Taalmodel en computerstem",
@@ -300,8 +315,8 @@ export const uiCopy = {
     },
     video: {
       nl: "Een taalmodel schrijft het script; de stem en de presentator maakt de computer, het is geen echte persoon. De ondertitels komen uit de gesproken tekst. Een taaldocent heeft het script nog niet nagekeken.",
-      en: "A language model writes the script; the computer makes the voice and the presenter, it is not a real person. The subtitles come from the spoken text. A language teacher has not reviewed the script yet.",
-      fa: "یک مدل زبانی متن را می‌نویسد؛ صدا و مجری را رایانه می‌سازد و شخص واقعی نیست. زیرنویس‌ها از متن گفته‌شده می‌آیند. هنوز یک معلم زبان متن را بازبینی نکرده است.",
+      en: "A language model writes the script; the computer makes the voice and the presenter, who is not a real person. The subtitles come from the spoken text. A language teacher has not reviewed the script yet.",
+      fa: "یک مدل زبانی متن را می‌نویسد؛ صدا و مجری را رایانه می‌سازد و مجری شخص واقعی نیست. زیرنویس‌ها از متن گفتار ساخته می‌شوند. هنوز یک معلم زبان متن را بازبینی نکرده است.",
     },
     unreviewedLabel: { nl: "Nog niet nagekeken", en: "Not reviewed yet", fa: "هنوز بازبینی نشده" },
     unreviewed: {
@@ -313,7 +328,7 @@ export const uiCopy = {
     feedback: {
       nl: "Deze feedback komt van een taalmodel en is niet door een docent nagekeken. Ze gaat over wat je schreef of zei, nooit over je uitspraak, en geeft geen score.",
       en: "This feedback comes from a language model and has not been checked by a teacher. It is about what you wrote or said, never about your pronunciation, and gives no score.",
-      fa: "این بازخورد از یک مدل زبانی می‌آید و معلمی آن را بررسی نکرده است. درباره‌ی چیزی است که نوشتی یا گفتی، هرگز درباره‌ی تلفظت، و نمره‌ای نمی‌دهد.",
+      fa: "این بازخورد از یک مدل زبانی می‌آید و معلمی آن را بررسی نکرده است. درباره‌ی چیزی است که نوشتی یا گفتی، هرگز درباره‌ی تلفظت نیست و نمره‌ای هم نمی‌دهد.",
     },
     voiceLabel: { nl: "Computerstem", en: "Computer voice", fa: "صدای رایانه‌ای" },
     voice: {
@@ -338,7 +353,7 @@ export const uiCopy = {
     title: { nl: "Over de inhoud", en: "About the content", fa: "درباره‌ی محتوا" },
     intro: {
       nl: "Zo ontstaat wat je in Taalstudio leest, hoort en oefent, en wat het wel en niet zegt.",
-      en: "How what you read, hear and practise in Taalstudio is made, and what it does and does not say.",
+      en: "How everything you read, hear and practise in Taalstudio is made, and what it does and does not say.",
       fa: "آنچه در Taalstudio می‌خوانی، می‌شنوی و تمرین می‌کنی چگونه ساخته می‌شود، و چه می‌گوید و چه نمی‌گوید.",
     },
     lessonsTitle: { nl: "Lessen en onderwerpen", en: "Lessons and topics", fa: "درس‌ها و موضوع‌ها" },
@@ -355,7 +370,7 @@ export const uiCopy = {
     model: {
       nl: "Je verhalen, de scripts van je video's en de feedback op je teksten komen van een taalmodel. De computer controleert lengte, niveau en woordenschat; een docent kijkt ze niet na. Kleine fouten zijn mogelijk.",
       en: "Your stories, the scripts of your videos and the feedback on your texts come from a language model. The computer checks length, level and vocabulary; a teacher does not review them. Small mistakes are possible.",
-      fa: "داستان‌هایت، متن ویدیوهایت و بازخورد نوشته‌هایت از یک مدل زبانی می‌آیند. رایانه طول، سطح و واژگان را بررسی می‌کند؛ معلمی آن‌ها را بازبینی نمی‌کند. اشتباه‌های کوچک ممکن است.",
+      fa: "داستان‌هایت، متن ویدیوهایت و بازخورد درباره‌ی نوشته‌هایت از یک مدل زبانی می‌آیند. رایانه طول، سطح و واژگان را بررسی می‌کند؛ معلمی آن‌ها را بازبینی نمی‌کند. ممکن است اشتباه‌های کوچکی در آن‌ها باشد.",
     },
     voiceTitle: { nl: "Stemmen", en: "Voices", fa: "صداها" },
     voices: {
@@ -376,6 +391,195 @@ export const uiCopy = {
       fa: "پاسخ‌ها، نوشته‌ها و ضبط‌های صدایت، واژه‌های ذخیره‌شده و پیشرفتت را نگه می‌داریم تا از همان‌جا که ماندی ادامه بدهی.",
     },
   },
+  errors: {
+    generic: {
+      nl: "Dit lukte even niet. Je invoer blijft staan. Probeer het opnieuw.",
+      en: "That did not work just now. What you entered stays here. Please try again.",
+      fa: "این کار فعلاً انجام نشد. چیزی که وارد کردی سر جایش می‌ماند. دوباره امتحان کن.",
+    },
+    offline: {
+      nl: "De verbinding viel weg. Je invoer blijft staan; probeer het zo opnieuw.",
+      en: "The connection dropped. What you entered stays here; try again in a moment.",
+      fa: "اتصال قطع شد. چیزی که وارد کردی سر جایش می‌ماند؛ کمی بعد دوباره امتحان کن.",
+    },
+    serverAway: {
+      nl: "De server antwoordt even niet. Je invoer blijft staan; probeer het zo opnieuw.",
+      en: "The server is not answering right now. What you entered stays here; try again in a moment.",
+      fa: "سرور فعلاً پاسخ نمی‌دهد. چیزی که وارد کردی سر جایش می‌ماند؛ کمی بعد دوباره امتحان کن.",
+    },
+    session: {
+      nl: "Je sessie is verlopen. Meld je opnieuw aan en probeer verder te gaan.",
+      en: "Your session has expired. Sign in again and carry on.",
+      fa: "نشست تو تمام شده است. دوباره وارد شو و ادامه بده.",
+    },
+    forbidden: {
+      nl: "Je hebt nog geen toegang tot deze actie.",
+      en: "You do not have access to this action yet.",
+      fa: "هنوز به این کار دسترسی نداری.",
+    },
+    checkLocked: {
+      nl: "Je hebt nog geen toegang tot deze actie. Oefen voor een eindtoets eerst de vier vaardigheden van dit niveau.",
+      en: "You do not have access to this action yet. Before a final check, first practise the four skills of this level.",
+      fa: "هنوز به این کار دسترسی نداری. پیش از آزمون پایانی، اول چهار مهارت این سطح را تمرین کن.",
+    },
+    notFound: {
+      nl: "Dit bestaat niet meer of nog niet. Ga terug en kies opnieuw.",
+      en: "This no longer exists, or does not exist yet. Go back and choose again.",
+      fa: "این مورد دیگر وجود ندارد یا هنوز ساخته نشده است. برگرد و دوباره انتخاب کن.",
+    },
+    tooLarge: {
+      nl: "Dit is te groot om te versturen. Maak het korter en probeer opnieuw.",
+      en: "This is too large to send. Make it shorter and try again.",
+      fa: "این برای ارسال خیلی بزرگ است. کوتاه‌ترش کن و دوباره امتحان کن.",
+    },
+    invalid: {
+      nl: "Controleer je invoer en probeer het opnieuw.",
+      en: "Check what you entered and try again.",
+      fa: "چیزی را که وارد کردی بررسی کن و دوباره امتحان کن.",
+    },
+    checkIncomplete: {
+      nl: "Controleer of je alle onderdelen hebt ingevuld en een nieuwe opname hebt gemaakt.",
+      en: "Check that you filled in every part and made a new recording.",
+      fa: "بررسی کن که همه‌ی بخش‌ها را پر کرده‌ای و ضبط تازه‌ای انجام داده‌ای.",
+    },
+    limit: {
+      nl: "Je oefenlimiet is bereikt. Je werk blijft bewaard; probeer later opnieuw.",
+      en: "You have reached your practice limit. Your work is kept; try again later.",
+      fa: "به سقف تمرینت رسیده‌ای. کاری که کرده‌ای ذخیره می‌ماند؛ بعداً دوباره امتحان کن.",
+    },
+    modelAway: {
+      nl: "De taalhulp is even niet bereikbaar. Je invoer blijft staan. Probeer het zo opnieuw.",
+      en: "The language help cannot be reached right now. What you entered stays here. Try again in a moment.",
+      fa: "کمک زبانی فعلاً در دسترس نیست. چیزی که وارد کردی سر جایش می‌ماند. کمی بعد دوباره امتحان کن.",
+    },
+    episodesBusy: {
+      nl: "Er worden al twee afleveringen geschreven. Lees er eerst een.",
+      en: "Two episodes are already being written. Read one of them first.",
+      fa: "دو قسمت در حال نوشته شدن است. اول یکی از آن‌ها را بخوان.",
+    },
+    videosBusy: {
+      nl: "Er worden al twee video's gemaakt. Bekijk er eerst een.",
+      en: "Two videos are already being made. Watch one of them first.",
+      fa: "دو ویدیو در حال ساخته شدن است. اول یکی از آن‌ها را ببین.",
+    },
+    notReady: {
+      nl: "Dit is nog niet klaar. Probeer het zo opnieuw.",
+      en: "This is not ready yet. Try again in a moment.",
+      fa: "این هنوز آماده نیست. کمی بعد دوباره امتحان کن.",
+    },
+    alreadyAnswered: {
+      nl: "Je hebt deze vragen al beantwoord.",
+      en: "You have already answered these questions.",
+      fa: "به این سؤال‌ها قبلاً پاسخ داده‌ای.",
+    },
+    sessionClosed: {
+      nl: "Deze oefensessie is al afgesloten. Begin een nieuwe sessie.",
+      en: "This practice session is already closed. Start a new session.",
+      fa: "این جلسه‌ی تمرین قبلاً بسته شده است. یک جلسه‌ی تازه شروع کن.",
+    },
+    turnLimit: {
+      nl: "Je hebt het maximum aantal beurten voor deze stap bereikt.",
+      en: "You have reached the maximum number of turns for this step.",
+      fa: "به بیشترین تعداد نوبت برای این مرحله رسیده‌ای.",
+    },
+    noRetry: {
+      nl: "Deze toets kun je maar één keer doen. Je eerste poging telt.",
+      en: "You can take this check only once. Your first attempt counts.",
+      fa: "این آزمون را فقط یک بار می‌توانی بدهی. تلاش اولت حساب می‌شود.",
+    },
+    inProgress: {
+      nl: "Je antwoord wordt nog verwerkt. Probeer het zo opnieuw.",
+      en: "Your answer is still being processed. Try again in a moment.",
+      fa: "پاسخت هنوز در حال بررسی است. کمی بعد دوباره امتحان کن.",
+    },
+    loadFailed: {
+      nl: "Dit kon niet worden geladen. Probeer het zo opnieuw.",
+      en: "This could not be loaded. Try again in a moment.",
+      fa: "این بارگذاری نشد. کمی بعد دوباره امتحان کن.",
+    },
+    evidenceShort: {
+      nl: "Maak eerst deze oefening om feedback te krijgen.",
+      en: "Do this exercise first to get feedback.",
+      fa: "اول این تمرین را انجام بده تا بازخورد بگیری.",
+    },
+  },
+  failures: {
+    episodeAllowanceTitle: {
+      nl: "De schrijver heeft vandaag genoeg geschreven.",
+      en: "The writer has written enough for today.",
+      fa: "نویسنده امروز به اندازه‌ی کافی نوشته است.",
+    },
+    episodeQualityTitle: {
+      nl: "Deze aflevering haalde de controle niet.",
+      en: "This episode did not pass the check.",
+      fa: "این قسمت در بررسی قبول نشد.",
+    },
+    episodeAwayTitle: {
+      nl: "De schrijver is even niet bereikbaar.",
+      en: "The writer cannot be reached right now.",
+      fa: "نویسنده فعلاً در دسترس نیست.",
+    },
+    episodeQuality: {
+      nl: "De tekst haalde de automatische controle niet, ook niet na een tweede poging. Een nieuwe poging gebruikt dezelfde personages.",
+      en: "The text did not pass the automatic check, not even on a second attempt. A new attempt uses the same characters.",
+      fa: "متن حتی پس از تلاش دوم هم در بررسی خودکار قبول نشد. تلاش تازه از همان شخصیت‌ها استفاده می‌کند.",
+    },
+    episodeAllowance: {
+      nl: "Je dagelijkse limiet voor modelgebruik is bereikt. Probeer het morgen opnieuw of herhaal vandaag je woorden.",
+      en: "You have reached your daily limit for the language model. Try again tomorrow, or review your words today.",
+      fa: "به سقف روزانه‌ی استفاده از مدل زبانی رسیده‌ای. فردا دوباره امتحان کن یا امروز واژه‌هایت را مرور کن.",
+    },
+    paidNotApproved: {
+      nl: "Betaald modelgebruik is in deze omgeving niet ingeschakeld.",
+      en: "Paid model use is not switched on in this environment.",
+      fa: "استفاده‌ی پولی از مدل در این محیط فعال نیست.",
+    },
+    writerAway: {
+      nl: "De schrijver was even niet bereikbaar. Probeer het opnieuw.",
+      en: "The writer could not be reached just now. Please try again.",
+      fa: "نویسنده لحظه‌ای در دسترس نبود. دوباره امتحان کن.",
+    },
+    writerAwayDeveloper: {
+      nl: "Controleer of het taalmodel draait (Instellingen › Technische ondersteuning) en probeer opnieuw.",
+      en: "Check that the language model is running (Settings › Technical support) and try again.",
+      fa: "بررسی کن که مدل زبانی در حال اجرا باشد (تنظیمات › پشتیبانی فنی) و دوباره امتحان کن.",
+    },
+    writerLimit: {
+      nl: "Je dagelijkse limiet voor de schrijver is bereikt. Morgen schrijft hij verder.",
+      en: "You have reached your daily limit for the writer. It will continue writing tomorrow.",
+      fa: "به سقف روزانه‌ی نویسنده رسیده‌ای. فردا دوباره می‌نویسد.",
+    },
+    videoAllowance: {
+      nl: "De schrijver heeft vandaag genoeg geschreven. Probeer het morgen opnieuw.",
+      en: "The writer has written enough for today. Try again tomorrow.",
+      fa: "نویسنده امروز به اندازه‌ی کافی نوشته است. فردا دوباره امتحان کن.",
+    },
+    videoTime: {
+      nl: "Je dagelijkse videotijd is op. Morgen kan er weer een video gemaakt worden.",
+      en: "Your daily video time is used up. A new video can be made tomorrow.",
+      fa: "زمان روزانه‌ات برای ساخت ویدیو تمام شده است. فردا دوباره می‌شود ویدیو ساخت.",
+    },
+    videoQuality: {
+      nl: "Het script haalde de automatische controle niet, ook niet na een tweede poging.",
+      en: "The script did not pass the automatic check, not even on a second attempt.",
+      fa: "متن ویدیو حتی پس از تلاش دوم هم در بررسی خودکار قبول نشد.",
+    },
+    videoRender: {
+      nl: "Het maken van de video is mislukt. Het script is bewaard; een nieuwe poging gebruikt het opnieuw.",
+      en: "Making the video failed. The script is kept; a new attempt uses it again.",
+      fa: "ساختن ویدیو انجام نشد. متن ذخیره شده است؛ تلاش تازه دوباره از آن استفاده می‌کند.",
+    },
+    videoTooLong: {
+      nl: "Het script was te lang voor één video.",
+      en: "The script was too long for one video.",
+      fa: "متن برای یک ویدیو خیلی طولانی بود.",
+    },
+    videoAway: {
+      nl: "De schrijver of de videodienst was even niet bereikbaar.",
+      en: "The writer or the video service could not be reached just now.",
+      fa: "نویسنده یا سرویس ویدیو لحظه‌ای در دسترس نبود.",
+    },
+  },
 } as const satisfies Record<string, Record<string, Copy>>;
 
 export type UiCopyGroup = keyof typeof uiCopy;
@@ -384,15 +588,21 @@ export type UiCopyKey<G extends UiCopyGroup> = keyof (typeof uiCopy)[G];
 /** Which batch every entry belongs to, and which entry a filled copy came from (for the Persian review). */
 const batches = new WeakMap<object, string>();
 const origins = new WeakMap<object, Copy>();
+/** A server component hands its props to the client as copies, not the same objects; the text still matches. */
+const byText = new Map<string, string>();
+const textOf = (copy: Copy) => [copy.nl, copy.en, copy.fa].join("\u0000");
 
 /** Records the batch name of each entry; lib/client/persian-review.ts registers every batch once. */
 export function registerBatch(name: string, entries: Record<string, Copy>): void {
-  for (const copy of Object.values(entries)) batches.set(copy, name);
+  for (const copy of Object.values(entries)) {
+    batches.set(copy, name);
+    if (!byText.has(textOf(copy))) byText.set(textOf(copy), name);
+  }
 }
 
-/** The batch a copy entry (or a copy made from one with `fill`) belongs to. */
+/** The batch a copy entry (or a copy made from one with `fill`, or a serialized copy) belongs to. */
 export function batchOf(copy: Copy): string | undefined {
-  return batches.get(copy) ?? batches.get(origins.get(copy) ?? {});
+  return batches.get(copy) ?? batches.get(origins.get(copy) ?? {}) ?? byText.get(textOf(copy));
 }
 
 /** Fills `{name}` placeholders in every language of a copy entry. */

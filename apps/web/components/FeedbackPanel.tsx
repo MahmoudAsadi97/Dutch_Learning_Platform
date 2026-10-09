@@ -4,8 +4,12 @@ import { useState } from "react";
 
 import { LearningText } from "@/components/LanguageSupport";
 import { ApiError, apiJson, newRequestId } from "@/lib/client/api";
+import { errorCopy } from "@/lib/client/error-copy";
+import { uiCopy, type Copy } from "@/lib/ui-copy";
+import { missionsCopy } from "@/lib/copy/missions";
 import type { FeedbackReportView, SessionDetail } from "@/lib/types";
 import { HonestyChip } from "@/components/ui/HonestyChip";
+import { UiText } from "@/components/ui/UiText";
 
 interface Props {
   stepKey: string;
@@ -27,7 +31,7 @@ const KIND_LABEL: Record<string, { nl: string; fa: string; className: string }> 
  */
 export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: Props) {
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const [requestId, setRequestId] = useState(() => newRequestId());
   const reports = (detail?.feedback ?? []).filter((r) => r.step_key === stepKey);
   const latest: FeedbackReportView | undefined = reports[reports.length - 1];
@@ -35,7 +39,7 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
   async function ask() {
     if (!detail) return;
     setBusy(true);
-    setError("");
+    setError(null);
     try {
       const response = await apiJson<{ report: FeedbackReportView }>(
         `practice/sessions/${detail.session.id}/feedback`,
@@ -50,16 +54,13 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
       onProgressChanged?.();
       setRequestId(newRequestId());
     } catch (cause) {
-      if (cause instanceof ApiError) {
-        setError(
-          cause.status === 409
-            ? "Maak eerst deze oefening om feedback te krijgen."
-            : "Feedback is tijdelijk niet beschikbaar. Probeer opnieuw.",
-        );
-        if (cause.status >= 500) setRequestId(newRequestId());
-      } else {
-        setError("Geen verbinding met de server.");
-      }
+      setError(
+        errorCopy(cause, missionsCopy.feedbackUnavailable, {
+          409: uiCopy.errors.evidenceShort,
+          503: missionsCopy.feedbackUnavailable,
+        }),
+      );
+      if (cause instanceof ApiError && cause.status >= 500) setRequestId(newRequestId());
     } finally {
       setBusy(false);
     }
@@ -75,7 +76,9 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
         <LearningText text={{ nl: "Feedback", en: "Feedback", fa: "بازخورد" }} />
       </h3>
       <div className="honesty-row">
-        <p className="muted">Wat gaat goed en wat kun je verder oefenen?</p>
+        <p className="muted">
+          <UiText text={missionsCopy.feedbackIntro} tier="guide" />
+        </p>
         <HonestyChip kind="feedback" />
       </div>
       <p>
@@ -86,12 +89,21 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
           disabled={busy || !detail}
           data-testid={`${stepKey}-feedback-ask`}
         >
-          {busy ? "Feedback wordt opgesteld…" : latest ? "Vraag nieuwe feedback" : "Vraag feedback"}
+          <UiText
+            text={
+              busy
+                ? missionsCopy.feedbackBusy
+                : latest
+                  ? missionsCopy.feedbackAgain
+                  : missionsCopy.feedbackAsk
+            }
+            inline
+          />
         </button>
       </p>
       {error && (
         <p className="error" role="alert">
-          {error}
+          <UiText text={error} tier="guide" />
         </p>
       )}
       {latest && (

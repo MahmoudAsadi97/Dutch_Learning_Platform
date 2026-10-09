@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { EpisodeCard } from "@/components/TodayHome";
 import { Cover, EmptyState, Skeleton, SkeletonPanel } from "@/components/ui";
-import { ApiError } from "@/lib/client/api";
+import { UiText } from "@/components/ui/UiText";
+import { errorCopy } from "@/lib/client/error-copy";
+import { isAbort } from "@/lib/client/errors";
 import {
   episodeHref,
   stageLabels,
@@ -13,6 +15,8 @@ import {
   type EpisodeSummary,
   type SeriesView,
 } from "@/lib/client/stories";
+import { episodeCopy } from "@/lib/copy/episode";
+import { uiCopy, type Copy } from "@/lib/ui-copy";
 
 const statusCopy: Record<string, string> = {
   queued: "wordt geschreven",
@@ -23,9 +27,9 @@ const statusCopy: Record<string, string> = {
 
 export function StoryLibrary() {
   const [data, setData] = useState<{ series: SeriesView; items: EpisodeSummary[] } | null>(null);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const [wish, setWish] = useState("");
-  const [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState<Copy | null>(null);
   const [busy, setBusy] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
@@ -33,28 +37,20 @@ export function StoryLibrary() {
       .library(controller.signal)
       .then(setData)
       .catch((cause) => {
-        if (cause?.name !== "AbortError") setError("De verhalen konden niet worden geladen.");
+        if (!isAbort(cause)) setError(errorCopy(cause, episodeCopy.libraryLoadFailed));
       });
     return () => controller.abort();
   }, []);
   async function request() {
     setBusy(true);
-    setNotice("");
+    setNotice(null);
     try {
       await stories.request(wish.trim());
       setWish("");
       setData(await stories.library());
-      setNotice("De schrijver is begonnen. De aflevering verschijnt hier en op Vandaag zodra ze klaar is.");
+      setNotice(episodeCopy.requestStarted);
     } catch (cause) {
-      setNotice(
-        cause instanceof ApiError
-          ? cause.status === 409
-            ? "Er worden al twee afleveringen geschreven. Lees er eerst een."
-            : cause.status === 429
-              ? "Je dagelijkse limiet voor de schrijver is bereikt."
-              : cause.detail
-          : "Dat lukte nu niet.",
-      );
+      setNotice(errorCopy(cause, undefined, { 429: uiCopy.failures.writerLimit }));
     } finally {
       setBusy(false);
     }
@@ -62,7 +58,7 @@ export function StoryLibrary() {
   if (error)
     return (
       <div className="error" role="alert">
-        {error}
+        <UiText text={error} tier="guide" />
       </div>
     );
   if (!data)
@@ -112,7 +108,7 @@ export function StoryLibrary() {
         </form>
         {notice && (
           <p className="practice-hint" role="status">
-            {notice}
+            <UiText text={notice} tier="guide" />
           </p>
         )}
       </section>
@@ -155,7 +151,13 @@ export function StoryLibrary() {
                       .retry(item.id)
                       .then(() => stories.library())
                       .then(setData)
-                      .catch(() => setNotice("Opnieuw proberen lukte niet."))
+                      .catch((cause) =>
+                        setNotice(
+                          errorCopy(cause, episodeCopy.retryFailed, {
+                            paid_not_approved: uiCopy.failures.paidNotApproved,
+                          }),
+                        ),
+                      )
                   }
                 >
                   Opnieuw laten schrijven

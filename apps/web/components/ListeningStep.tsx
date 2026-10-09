@@ -9,10 +9,14 @@ import { HelpLadder } from "@/components/HelpLadder";
 import { QuestionList } from "@/components/QuestionList";
 import type { StepProps } from "@/components/ReadingStep";
 import { StepHeader } from "@/components/StepHeader";
+import { UiText } from "@/components/ui/UiText";
 import { ApiError, apiFetch } from "@/lib/client/api";
+import { errorCopy } from "@/lib/client/error-copy";
 import { usePlayback } from "@/lib/client/playback";
 import { recordHelp, submitAnswer } from "@/lib/client/practice";
+import { missionsCopy } from "@/lib/copy/missions";
 import type { HelpRung, ListeningPayload, Step } from "@/lib/types";
+import { fill, type Copy } from "@/lib/ui-copy";
 
 interface Props extends StepProps {
   missionId: string;
@@ -34,25 +38,27 @@ export function ListeningStep({
 }: Props) {
   const { payload } = step;
   const [audioLabel, setAudioLabel] = useState("");
-  const [audioNotice, setAudioNotice] = useState("");
+  // A Copy for playback outcomes; a failed download keeps the API's own message as a plain string (step 2.8 maps those).
+  const [audioNotice, setAudioNotice] = useState<Copy | null>(null);
   const [playing, setPlaying] = useState(false);
   const [plays, setPlays] = useState(0);
   const [showTranscript, setShowTranscript] = useState(false);
   const [transcriptBusy, setTranscriptBusy] = useState(false);
-  const [transcriptError, setTranscriptError] = useState("");
+  const [transcriptError, setTranscriptError] = useState<Copy | null>(null);
   const playback = usePlayback();
   const progress = detail?.session.step_progress[step.key];
 
   async function play() {
-    setAudioNotice("");
+    setAudioNotice(null);
     try {
       const response = await apiFetch(`missions/${missionId}/audio/${payload.audio_key}`);
       if (!response.ok) {
-        const body = (await response.json().catch(() => ({}))) as { detail?: string };
+        const body = (await response.json().catch(() => ({}))) as { detail?: string; code?: string };
         throw new ApiError(
           response.status,
           body.detail ?? response.statusText,
           response.headers.get("x-request-id") ?? "",
+          body.code ?? "",
         );
       }
       setAudioLabel(response.headers.get("x-audio-label") ?? "unknown");
@@ -62,16 +68,14 @@ export function ListeningStep({
       const outcome = await playback.play(wav, () => setPlaying(false));
       if (outcome.failed) {
         setPlaying(false);
-        setAudioNotice("Afspelen mislukt.");
+        setAudioNotice(missionsCopy.clipPlaybackFailed);
       } else if (outcome.blocked) {
         setPlaying(false);
-        setAudioNotice("Afspelen werd geblokkeerd; klik nog eens op de knop.");
+        setAudioNotice(missionsCopy.clipPlaybackBlocked);
       }
     } catch (cause) {
       setPlaying(false);
-      setAudioNotice(
-        cause instanceof ApiError ? `Audio niet beschikbaar: ${cause.detail}` : "Audio niet beschikbaar.",
-      );
+      setAudioNotice(errorCopy(cause, missionsCopy.audioUnavailable, { 404: missionsCopy.audioUnavailable }));
     }
   }
 
@@ -94,13 +98,13 @@ export function ListeningStep({
       return;
     }
     setTranscriptBusy(true);
-    setTranscriptError("");
+    setTranscriptError(null);
     try {
       const current = detail ?? (await ensureSession());
       onDetail(await recordHelp(current, step.key, { level: 3, kind: "listening_transcript" }));
       setShowTranscript(true);
     } catch {
-      setTranscriptError("De tekst is nog niet getoond: hulp kon niet worden opgeslagen. Probeer opnieuw.");
+      setTranscriptError(missionsCopy.transcriptFailed);
     } finally {
       setTranscriptBusy(false);
     }
@@ -111,7 +115,9 @@ export function ListeningStep({
       <StepHeader step={step} labels={labels} />
 
       <section className="card" aria-labelledby="clip-heading">
-        <h3 id="clip-heading">Beluister de boodschap</h3>
+        <h3 id="clip-heading">
+          <UiText text={missionsCopy.listenTitle} />
+        </h3>
         <p>
           <button
             type="button"
@@ -120,27 +126,36 @@ export function ListeningStep({
             disabled={playing}
             data-testid="play-clip"
           >
-            {playing ? "Speelt…" : plays > 0 ? "Nog eens beluisteren" : "Beluister"}
+            <UiText
+              text={
+                playing
+                  ? missionsCopy.clipPlaying
+                  : plays > 0
+                    ? missionsCopy.listenAgain
+                    : missionsCopy.listen
+              }
+              inline
+            />
           </button>
           {plays > 0 && (
             <span className="muted" style={{ marginInlineStart: "0.75rem" }} data-testid="play-count">
-              {plays}× beluisterd
+              <UiText text={fill(missionsCopy.playCount, { count: plays })} inline />
             </span>
           )}
         </p>
         {audioLabel && (
           <p>
             <span className="label warn" data-testid="clip-label">
-              Synthetische luisterstem
+              <UiText text={missionsCopy.syntheticVoice} inline />
             </span>
             <span className="muted" style={{ fontSize: "0.85rem" }}>
-              Luister opnieuw wanneer je dat nodig hebt.
+              <UiText text={missionsCopy.listenWhenNeeded} tier="guide" inline />
             </span>
           </p>
         )}
         {audioNotice && (
           <p className="error" role="alert">
-            {audioNotice}
+            <UiText text={audioNotice} tier="guide" />
           </p>
         )}
         <p>
@@ -152,12 +167,12 @@ export function ListeningStep({
             onClick={() => void toggleTranscript()}
             data-testid="toggle-transcript"
           >
-            {showTranscript ? "Verberg de tekst" : "Toon de tekst"}
+            <UiText text={showTranscript ? missionsCopy.hideText : missionsCopy.showText} inline />
           </button>
         </p>
         {transcriptError && (
           <p className="error" role="alert">
-            {transcriptError}
+            <UiText text={transcriptError} tier="guide" />
           </p>
         )}
         {showTranscript && (

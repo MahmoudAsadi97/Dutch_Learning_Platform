@@ -191,8 +191,7 @@ function CurriculumAudioPlayer({
         });
       }
     } catch (cause) {
-      if (!request.signal.aborted)
-        setError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
+      if (!request.signal.aborted) setError(friendlyError(cause));
     } finally {
       if (controllerRef.current === request) {
         releaseAudioFocus(focusRef.current);
@@ -333,7 +332,7 @@ export function CurriculumRecorder({
       if (!request.signal.aborted && mountedRef.current)
         setError(
           cause instanceof ApiError
-            ? friendlyError(cause.status)
+            ? friendlyError(cause)
             : "We konden je niet goed verstaan. Probeer een nieuwe opname in een rustige ruimte.",
         );
     } finally {

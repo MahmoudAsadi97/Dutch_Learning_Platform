@@ -3,7 +3,7 @@ from __future__ import annotations
 import uuid
 from collections.abc import Callable
 
-from fastapi import APIRouter, Depends, HTTPException, Query, Response
+from fastapi import APIRouter, Depends, Query, Response
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from sqlalchemy.exc import OperationalError
@@ -65,7 +65,9 @@ def _run(operation: Callable, *, provider_detail: str | None = None):
         })
     except OperationalError as exc:
         if getattr(exc.orig, "sqlstate", "") == "55P03":
-            raise HTTPException(status_code=409, detail="this response is already being processed; retry shortly") from exc
+            return JSONResponse(status_code=409, content={
+                "detail": "this response is already being processed; retry shortly", "code": "in_progress",
+            })
         raise
 
 

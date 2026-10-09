@@ -1,4 +1,184 @@
 import type { Copy } from "@/lib/ui-copy";
 
 /** Interface copy of the episode reader (components/EpisodeReader.tsx), in Dutch with English and Persian. */
-export const episodeCopy = {} as const satisfies Record<string, Copy>;
+export const episodeCopy = {
+  toStories: { nl: "Naar de verhalen", en: "To the stories", fa: "برو به داستان‌ها" },
+  loading: { nl: "Aflevering laden…", en: "Loading the episode…", fa: "در حال بارگذاری قسمت…" },
+  episodeNumber: { nl: "AFLEVERING {number}", en: "EPISODE {number}", fa: "قسمت {number}" },
+  episodeFailed: {
+    nl: "Deze aflevering is niet gelukt.",
+    en: "This episode did not work out.",
+    fa: "این قسمت ناموفق بود.",
+  },
+  episodeWriting: {
+    nl: "Deze aflevering wordt nog geschreven.",
+    en: "This episode is still being written.",
+    fa: "این قسمت هنوز در حال نوشته شدن است.",
+  },
+  goBackTo: { nl: "Ga terug naar", en: "Go back to", fa: "برگرد به" },
+  toSeeStatus: { nl: "om de stand te zien.", en: "to see where things stand.", fa: "تا وضعیت را ببینی." },
+  episodeMeta: {
+    nl: "AFLEVERING {number} · {stage} · {words} WOORDEN",
+    en: "EPISODE {number} · {stage} · {words} WORDS",
+    fa: "قسمت {number} · {stage} · {words} واژه",
+  },
+  theme: { nl: "Thema:", en: "Theme:", fa: "موضوع:" },
+  previousChoice: { nl: "Jouw vorige keuze:", en: "Your previous choice:", fa: "انتخاب قبلی تو:" },
+  wholeEpisode: { nl: "de hele aflevering", en: "the whole episode", fa: "کل قسمت" },
+  listenHint: {
+    nl: "Luister naar de hele aflevering, of per alinea hieronder.",
+    en: "Listen to the whole episode, or paragraph by paragraph below.",
+    fa: "به کل قسمت گوش بده، یا بند به بند در پایین.",
+  },
+  finishReading: { nl: "Klaar met lezen", en: "Done reading", fa: "خواندن تمام شد" },
+  finishHint: {
+    nl: "Daarna volgen een paar vragen en jouw keuze voor de volgende aflevering.",
+    en: "Then come a few questions and your choice for the next episode.",
+    fa: "بعد به چند سؤال پاسخ می‌دهی و برای قسمت بعدی انتخاب می‌کنی.",
+  },
+  yourChoice: { nl: "JOUW KEUZE", en: "YOUR CHOICE", fa: "انتخاب تو" },
+  nextBeingWritten: {
+    nl: "De volgende aflevering wordt geschreven.",
+    en: "The next episode is being written.",
+    fa: "قسمت بعدی در حال نوشته شدن است.",
+  },
+  howItContinues: {
+    nl: "Hoe gaat het verder?",
+    en: "What happens next?",
+    fa: "داستان چطور ادامه پیدا می‌کند؟",
+  },
+  writerUsesChoice: {
+    nl: "De schrijver gebruikt jouw keuze voor de volgende aflevering.",
+    en: "The writer uses your choice for the next episode.",
+    fa: "نویسنده انتخاب تو را برای قسمت بعدی به کار می‌برد.",
+  },
+  choicePassed: {
+    nl: "Je keuze is doorgegeven.",
+    en: "Your choice has been passed on.",
+    fa: "انتخابت فرستاده شد.",
+  },
+  backToToday: { nl: "Terug naar Vandaag", en: "Back to Today", fa: "برگرد به «امروز»" },
+  newEpisodeThere: {
+    nl: "— daar verschijnt de nieuwe aflevering zodra ze klaar is.",
+    en: "— the new episode appears there as soon as it is ready.",
+    fa: "— قسمت جدید همان‌جا نمایش داده می‌شود، به محض اینکه آماده شود.",
+  },
+  ratingGroup: { nl: "Was deze aflevering goed?", en: "Was this episode good?", fa: "این قسمت خوب بود؟" },
+  ratingQuestion: {
+    nl: "Was dit een goede aflevering?",
+    en: "Was this a good episode?",
+    fa: "قسمت خوبی بود؟",
+  },
+  yes: { nl: "Ja", en: "Yes", fa: "بله" },
+  notReally: { nl: "Niet echt", en: "Not really", fa: "نه چندان" },
+  practiseTopic: {
+    nl: "Oefen dit onderwerp in je leerpad",
+    en: "Practise this topic in your learning path",
+    fa: "این موضوع را در مسیر یادگیری‌ات تمرین کن",
+  },
+  paragraphAudio: { nl: "alinea {number}", en: "paragraph {number}", fa: "بند {number}" },
+  translate: { nl: "Vertaal naar het Perzisch", en: "Translate into Persian", fa: "به فارسی ترجمه کن" },
+  translating: { nl: "Vertalen…", en: "Translating…", fa: "در حال ترجمه…" },
+  stop: { nl: "Stop", en: "Stop", fa: "توقف" },
+  listening: { nl: "Luisteren…", en: "Listening…", fa: "در حال گوش دادن…" },
+  readAloud: { nl: "Lees hardop", en: "Read aloud", fa: "بلند بخوان" },
+  readAgain: { nl: "Lees nog eens hardop", en: "Read aloud again", fa: "دوباره بلند بخوان" },
+  recognised: {
+    nl: "{matched} van {target} woorden herkend.",
+    en: "{matched} of {target} words recognised.",
+    fa: "{matched} از {target} واژه شناخته شد.",
+  },
+  recognisedPoints: {
+    nl: "{matched} van {target} woorden herkend · +{points} punten.",
+    en: "{matched} of {target} words recognised · +{points} points.",
+    fa: "{matched} از {target} واژه شناخته شد · +{points} امتیاز.",
+  },
+  practiseMore: { nl: "Nog oefenen:", en: "Practise these more:", fa: "این‌ها را بیشتر تمرین کن:" },
+  earlier: {
+    nl: "Eerder: {matched} van {target} woorden herkend.",
+    en: "Earlier: {matched} of {target} words recognised.",
+    fa: "قبلاً: {matched} از {target} واژه شناخته شد.",
+  },
+  micAccess: {
+    nl: "Geef je browser toegang tot de microfoon.",
+    en: "Give your browser access to the microphone.",
+    fa: "به مرورگرت اجازه بده به میکروفون دسترسی داشته باشد.",
+  },
+  newWords: { nl: "NIEUWE WOORDEN", en: "NEW WORDS", fa: "واژه‌های تازه" },
+  glossaryTitle: {
+    nl: "Bewaar wat je wilt onthouden",
+    en: "Save what you want to remember",
+    fa: "چیزی را که می‌خواهی به خاطر بسپاری ذخیره کن",
+  },
+  wordCount: { nl: "{count} woorden", en: "{count} words", fa: "{count} واژه" },
+  wordSaved: {
+    nl: '"{term}" staat in je woordenlijst en komt terug op het juiste moment.',
+    en: '"{term}" is in your word list and will come back at the right moment.',
+    fa: "«{term}» در فهرست واژه‌هایت است و در زمان مناسب دوباره می‌آید.",
+  },
+  wordKnown: {
+    nl: '"{term}" stond al in je woordenlijst.',
+    en: '"{term}" was already in your word list.',
+    fa: "«{term}» از قبل در فهرست واژه‌هایت بود.",
+  },
+  comprehension: { nl: "BEGRIP", en: "COMPREHENSION", fa: "درک مطلب" },
+  score: {
+    nl: "{correct} van {total} juist",
+    en: "{correct} of {total} correct",
+    fa: "{correct} از {total} درست",
+  },
+  questionsTwo: {
+    nl: "Twee vragen over het verhaal",
+    en: "Two questions about the story",
+    fa: "دو سؤال درباره‌ی داستان",
+  },
+  questionsThree: {
+    nl: "Drie vragen over het verhaal",
+    en: "Three questions about the story",
+    fa: "سه سؤال درباره‌ی داستان",
+  },
+  inTheStory: { nl: "In het verhaal:", en: "In the story:", fa: "در داستان:" },
+  checkAnswers: { nl: "Controleer mijn antwoorden", en: "Check my answers", fa: "پاسخ‌هایم را بررسی کن" },
+  notFound: {
+    nl: "Deze aflevering bestaat niet.",
+    en: "This episode does not exist.",
+    fa: "این قسمت وجود ندارد.",
+  },
+  loadFailed: {
+    nl: "De aflevering kon niet worden geladen.",
+    en: "The episode could not be loaded.",
+    fa: "قسمت بارگذاری نشد.",
+  },
+  choiceFailed: {
+    nl: "Je keuze kon niet worden bewaard.",
+    en: "Your choice could not be saved.",
+    fa: "انتخابت ذخیره نشد.",
+  },
+  translateFailed: { nl: "Vertalen lukte niet.", en: "Translating did not work.", fa: "ترجمه انجام نشد." },
+  recordingFailed: {
+    nl: "We konden de opname niet verwerken. Probeer het in een rustige ruimte.",
+    en: "We could not process the recording. Try it in a quiet room.",
+    fa: "نتوانستیم صدای ضبط‌شده را پردازش کنیم. در جای ساکتی امتحان کن.",
+  },
+  saveFailed: { nl: "Bewaren lukte niet.", en: "Saving did not work.", fa: "ذخیره نشد." },
+  answersFailed: {
+    nl: "Je antwoorden konden niet worden bewaard.",
+    en: "Your answers could not be saved.",
+    fa: "پاسخ‌هایت ذخیره نشد.",
+  },
+  libraryLoadFailed: {
+    nl: "De verhalen konden niet worden geladen.",
+    en: "The stories could not be loaded.",
+    fa: "داستان‌ها بارگذاری نشدند.",
+  },
+  requestStarted: {
+    nl: "De schrijver is begonnen. De aflevering verschijnt hier en op Vandaag zodra ze klaar is.",
+    en: "The writer has started. The episode appears here and on Today as soon as it is ready.",
+    fa: "نویسنده شروع کرده است. قسمت به‌محض آماده شدن اینجا و در «امروز» نمایش داده می‌شود.",
+  },
+  retryFailed: {
+    nl: "Opnieuw proberen lukte niet.",
+    en: "Trying again did not work.",
+    fa: "تلاش دوباره انجام نشد.",
+  },
+} as const satisfies Record<string, Copy>;

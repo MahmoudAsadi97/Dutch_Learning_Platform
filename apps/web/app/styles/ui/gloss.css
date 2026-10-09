@@ -1,13 +1,24 @@
 /* A Dutch label with one short translation under it; the gloss never drops under the 12px floor. */
 @layer components {
+  /* with no translation shown the wrapper takes no box of its own: the Dutch lays out as plain text */
   .ui-text {
+    display: contents;
+  }
+  .ui-text:has(> .ui-gloss) {
     display: inline-grid;
     gap: 1px;
     min-width: 0;
     line-height: 1.25;
   }
-  .ui-text.is-inline {
+  .ui-text.is-inline:has(> .ui-gloss) {
     display: inline;
+  }
+  /* an instruction or a message flows like the paragraph around it; only labels sit tight */
+  .ui-text.is-sentence:has(> .ui-gloss) {
+    line-height: inherit;
+  }
+  .ui-text.is-sentence:not(.is-inline):has(> .ui-gloss) {
+    display: block;
   }
   .ui-gloss {
     display: block;
@@ -19,6 +30,11 @@
   }
   .ui-text.is-inline .ui-gloss {
     display: inline;
+  }
+  /* a translated sentence sits close under the Dutch, at the leading of its own small size */
+  .ui-text.is-sentence:not(.is-inline) .ui-gloss {
+    margin-top: 2px;
+    line-height: 1.4;
   }
   .ui-gloss.fa {
     font-family: var(--font-persian-ui);

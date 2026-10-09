@@ -6,7 +6,7 @@ import { PhraseAudio } from "@/components/PhraseAudio";
 import { VocabularyRecall } from "@/components/VocabularyRecall";
 import { CurriculumQuestions } from "@/components/CurriculumControls";
 import { dutchSentences } from "@/lib/client/sentences";
-import { apiJson, ApiError } from "@/lib/client/api";
+import { apiJson } from "@/lib/client/api";
 import { friendlyError, type CurriculumQuestion } from "@/lib/client/curriculum";
 import { storageKeys } from "@/lib/client/storage";
 
@@ -368,8 +368,7 @@ export function StoryTime({ stageId }: { stageId: string }) {
         }
       })
       .catch((cause) => {
-        if (!controller.signal.aborted)
-          setStoryError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
+        if (!controller.signal.aborted) setStoryError(friendlyError(cause));
       });
     return () => controller.abort();
   }, [stageId, selected, retry]);

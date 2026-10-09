@@ -139,6 +139,29 @@ one JSON body, `{"detail", "code", "request_id"}` plus any parameters, so the we
 failure no route handled becomes 503 instead of 500. Routes that must commit work before answering
 (usage rows, a failed turn) still return a `JSONResponse` themselves and include the same `code`.
 
+A conflict a learner can reach carries its own code (`episodes_busy`, `videos_busy`, `not_ready`,
+`already_answered`, `session_closed`, `turn_limit`, `no_retry`, `in_progress`, `evidence_short`,
+`paid_not_approved`). The `detail` sentence is English and for developers; the browser never shows it.
+`lib/client/errors.ts` (`errorFor`) picks the catalogue copy by code first and status second, a screen may
+pass overrides for a code or a status, and `lib/client/error-copy.ts` (`errorCopy`) lets a screen name what
+failed ("Bewaren lukte niet.") where the general message would only say that something did.
+`tests/unit/errors.test.mjs` scans the API source and fails when a code has no copy and is not listed as
+general on purpose, so a new code gets its sentence in the same change.
+
+### Interface copy
+
+Interface text lives in the catalogue, never in components: `lib/ui-copy.ts` for shared groups (navigation,
+actions, states, errors, failures, welcome, honesty chips, about) and `lib/copy/*.ts` for one screen each
+(episode, video, words, missions, speech). Every entry has `nl`, `en` and `fa`; `UiText` renders the Dutch
+with the glosses the learner chose and the level allows. Persian appears per batch only after a fluent
+reader has checked it: the owner reads a batch at `/dev/copy` and sets its flag in `lib/copy/review.ts`;
+until then English stands in for learners who chose it, and Persian-only learners see Dutch alone.
+Without a gloss shown, `UiText` takes no box of its own (`display: contents`), so moving a screen onto the
+catalogue changes no pixels for a learner without glosses; with one, labels stack compactly and sentences keep
+their paragraph's line height.
+`tests/unit/dutch-text.test.mjs` counts Dutch still written into components (JSX text and the spoken
+attributes) against `dutch-budget.json`; a change that moves text into the catalogue lowers the budget.
+
 ### Server state in the browser
 
 Data from the API is read through TanStack Query hooks (`lib/client/queries/*`, keys in

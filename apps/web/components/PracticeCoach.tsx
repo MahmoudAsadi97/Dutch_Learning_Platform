@@ -42,7 +42,7 @@ export function PracticeCoach({ initialStage = "a1" }: { initialStage?: string }
       .catch((cause) => {
         if (!controller.signal.aborted) {
           if (cause instanceof ApiError && cause.status === 404) setUnavailable(true);
-          else setError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
+          else setError(friendlyError(cause));
         }
       });
     return () => controller.abort();
@@ -67,8 +67,7 @@ export function PracticeCoach({ initialStage = "a1" }: { initialStage?: string }
         requestId.current = "";
       }
     } catch (cause) {
-      if (!controller.signal.aborted)
-        setError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
+      if (!controller.signal.aborted) setError(friendlyError(cause));
     } finally {
       if (pending.current === controller) {
         pending.current = null;

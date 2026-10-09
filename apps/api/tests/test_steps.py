@@ -107,6 +107,7 @@ def test_feedback_cites_only_real_evidence(client):
     too_early = client.post(f"/practice/sessions/{session_id}/feedback", headers=auth_headers("feedback-0000"),
                             json={"step_key": "read-reminder"})
     assert too_early.status_code == 409 and "not enough evidence" in too_early.json()["detail"]
+    assert too_early.json()["code"] == "evidence_short"
 
     _answer(client, session_id, "fb-answer-1", "read-reminder", "q-when", 0)
     _answer(client, session_id, "fb-answer-2", "read-reminder", "q-cannot-come", 0)

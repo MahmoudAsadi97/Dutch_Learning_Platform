@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
-import { apiJson, ApiError } from "@/lib/client/api";
+import { apiJson } from "@/lib/client/api";
 import { friendlyError } from "@/lib/client/curriculum";
 
 type Correction = { original: string; replacement: string; category: string; explanation: LearningCopy };
@@ -78,7 +78,7 @@ export function WritingCoach({
         setError({
           text,
           stage: stageId,
-          message: friendlyError(cause instanceof ApiError ? cause.status : undefined),
+          message: friendlyError(cause),
         });
     } finally {
       if (controller.current === request) {

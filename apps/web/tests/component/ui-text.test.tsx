@@ -58,3 +58,26 @@ describe("UiText and the Persian review", () => {
     expect(container.textContent).toBe("Vandaag");
   });
 });
+
+describe("layout", () => {
+  it("marks sentences, so they keep their paragraph's line height; labels stay compact", () => {
+    const { container } = render(
+      <>
+        <UiText text={uiCopy.nav.today} />
+        <UiText text={uiCopy.welcome.levelNote} tier="guide" />
+      </>,
+    );
+    const [label, sentence] = container.querySelectorAll(".ui-text");
+    expect(label).not.toHaveClass("is-sentence");
+    expect(sentence).toHaveClass("is-sentence");
+  });
+});
+
+describe("a copy that crossed from a server component", () => {
+  it("is still recognised by its text", async () => {
+    flags.nav = true;
+    const serialized = JSON.parse(JSON.stringify(uiCopy.nav.today));
+    const { container } = render(<UiText text={serialized} />);
+    expect(languages(container)).toEqual(["fa"]);
+  });
+});

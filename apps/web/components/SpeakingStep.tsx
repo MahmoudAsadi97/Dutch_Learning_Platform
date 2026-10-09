@@ -6,10 +6,13 @@ import { LearningText } from "@/components/LanguageSupport";
 import { ContentLabel } from "@/components/ContentLabel";
 import { FeedbackPanel } from "@/components/FeedbackPanel";
 import { HelpLadder } from "@/components/HelpLadder";
+import { UiText } from "@/components/ui/UiText";
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
+import { errorCopy } from "@/lib/client/error-copy";
 import { usePlayback } from "@/lib/client/playback";
 import { recordHelp } from "@/lib/client/practice";
 import { type Recording, talkButtonHandlers, useRecorder } from "@/lib/client/recorder";
+import { missionsCopy } from "@/lib/copy/missions";
 import type {
   CheckpointPayload,
   ConversationStepInfo,
@@ -20,6 +23,7 @@ import type {
   TurnResponse,
   TurnView,
 } from "@/lib/types";
+import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
 interface Props {
   step: Step & { payload: SpeakingPayload | CheckpointPayload };
@@ -37,7 +41,7 @@ type Pending = { requestId: string; modality: "speech" | "typed"; text?: string;
 type SendState =
   | { kind: "idle" }
   | { kind: "sending"; pending: Pending }
-  | { kind: "failed"; pending: Pending; message: string; sameRequestId: boolean };
+  | { kind: "failed"; pending: Pending; message: Copy; sameRequestId: boolean };
 
 const DAY_NAMES_NL = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
 const MONTH_NAMES_NL = [
@@ -65,17 +69,23 @@ export function describeSlot(info: ConversationStepInfo | undefined, slotId: str
   return `${DAY_NAMES_NL[date.getUTCDay()]} ${day} ${MONTH_NAMES_NL[month - 1]} om ${time}`;
 }
 
-const ACTION_LABEL: Record<string, string> = {
-  state_need: "vraag uitgelegd",
-  choose_option: "keuze gemaakt",
-  state_reason: "reden gegeven",
-  accept_slot: "nieuw moment gekozen",
-  confirm: "bevestigd",
-  propose_slot: "moment voorgesteld",
-  ask_repeat: "om herhaling gevraagd",
-  cancel: "geannuleerd",
-  none: "geen actie",
+const ACTION_LABEL: Record<string, Copy> = {
+  state_need: missionsCopy.actionStateNeed,
+  choose_option: missionsCopy.actionChooseOption,
+  state_reason: missionsCopy.actionStateReason,
+  accept_slot: missionsCopy.actionAcceptSlot,
+  confirm: missionsCopy.actionConfirm,
+  propose_slot: missionsCopy.actionProposeSlot,
+  ask_repeat: missionsCopy.actionAskRepeat,
+  cancel: missionsCopy.actionCancel,
+  none: missionsCopy.actionNone,
 };
+
+/** The label of a conversation action; an action this screen does not know yet shows its code. */
+function ActionLabel({ action }: { action: string }) {
+  const label = ACTION_LABEL[action];
+  return label ? <UiText text={label} inline /> : <>{action}</>;
+}
 
 /**
  * The speaking step and the checkpoint: a push-to-talk conversation with the character.
@@ -111,7 +121,7 @@ export function SpeakingStep({
   const [send, setSend] = useState<SendState>({ kind: "idle" });
   const [typedText, setTypedText] = useState("");
   const [audioLabel, setAudioLabel] = useState<string>("");
-  const [audioNotice, setAudioNotice] = useState<string>("");
+  const [audioNotice, setAudioNotice] = useState<Copy | null>(null);
   const [playingTurnId, setPlayingTurnId] = useState<string>("");
   const abortRef = useRef<AbortController | null>(null);
   const listRef = useRef<HTMLOListElement | null>(null);
@@ -172,16 +182,13 @@ export function SpeakingStep({
         // 502: the model did not answer and the turn is recorded as failed; a retry needs a new request id.
         // Anything else that is not retryable (403, 409, 422) is shown; the learner changes the input.
         const retryWithSameId = cause.status >= 500 && cause.status !== 502;
-        const message =
-          cause.status === 429
-            ? "Je oefenlimiet is bereikt. Bekijk je gebruik in Instellingen."
-            : cause.status === 401 || cause.status === 403
-              ? "Meld je opnieuw aan om verder te oefenen."
-              : "Je antwoord kon niet worden verwerkt. Probeer opnieuw.";
+        const message = errorCopy(cause, missionsCopy.turnNotProcessed, {
+          502: missionsCopy.turnNotProcessed,
+        });
         setSend({ kind: "failed", pending, message, sameRequestId: retryWithSameId });
         if (cause.status === 502) await reload();
       } else {
-        setSend({ kind: "failed", pending, message: "Geen verbinding met de server.", sameRequestId: true });
+        setSend({ kind: "failed", pending, message: errorCopy(cause), sameRequestId: true });
       }
     } finally {
       abortRef.current = null;
@@ -230,10 +237,10 @@ export function SpeakingStep({
 
   async function playCharacterAudio(turn: TurnView) {
     if (!session || !turn.character_audio_asset_id) {
-      if (turn.audio_error) setAudioNotice("Geen audio voor dit antwoord; lees de tekst.");
+      if (turn.audio_error) setAudioNotice(missionsCopy.audioMissing);
       return;
     }
-    setAudioNotice("");
+    setAudioNotice(null);
     try {
       const response = await apiFetch(`practice/sessions/${session.id}/turns/${turn.id}/audio`);
       if (!response.ok) throw new Error(`audio ${response.status}`);
@@ -245,30 +252,30 @@ export function SpeakingStep({
       );
       if (outcome.failed) {
         setPlayingTurnId("");
-        setAudioNotice("Afspelen mislukt; lees de tekst van het antwoord.");
+        setAudioNotice(missionsCopy.replyPlaybackFailed);
       } else if (outcome.blocked) {
         setPlayingTurnId("");
-        setAudioNotice("Automatisch afspelen is geblokkeerd; druk op \u201cspeel af\u201d bij het antwoord.");
+        setAudioNotice(missionsCopy.replyPlaybackBlocked);
       }
     } catch {
       setPlayingTurnId("");
-      setAudioNotice("Afspelen mislukt; lees de tekst van het antwoord.");
+      setAudioNotice(missionsCopy.replyPlaybackFailed);
     }
   }
 
-  const stepStatus = !session
-    ? "Nog geen sessie."
+  const stepStatus: Copy = !session
+    ? missionsCopy.statusNoSession
     : session.status === "completed"
-      ? "Controle afgerond: het doel is bereikt."
+      ? missionsCopy.statusCheckDone
       : session.status === "ended"
-        ? "De beurten zijn opgebruikt; de controle is afgesloten."
+        ? missionsCopy.statusEnded
         : session.status === "abandoned"
-          ? "Deze sessie is afgebroken."
+          ? missionsCopy.statusAbandoned
           : completed
             ? typedOnly
-              ? "Doel bereikt met getypte tekst. Dat telt niet als spreekoefening: start een nieuwe oefensessie en spreek de beurten in."
-              : "Doel bereikt. Je kunt verder naar de volgende stap."
-            : `${turnsLeft} van ${maxTurns} beurten over.`;
+              ? missionsCopy.statusTypedOnly
+              : missionsCopy.statusGoalReached
+            : fill(missionsCopy.statusTurnsLeft, { left: turnsLeft, max: maxTurns });
 
   return (
     <article aria-labelledby="step-title" data-step={step.key} data-step-type={payload.type}>
@@ -289,14 +296,16 @@ export function SpeakingStep({
         {checkpoint && (
           <p>
             <span className="label warn" data-testid="checkpoint-rules">
-              zelfstandige controle: alleen spreken, geen hulp, één poging
+              <UiText text={missionsCopy.checkpointRules} inline />
             </span>
           </p>
         )}
       </header>
 
       <section className="card" aria-labelledby="goal-heading">
-        <h3 id="goal-heading">Doel</h3>
+        <h3 id="goal-heading">
+          <UiText text={missionsCopy.goalTitle} />
+        </h3>
         <p>
           <ContentLabel
             status={payload.goal.review_status}
@@ -311,7 +320,16 @@ export function SpeakingStep({
 
       {!session ? (
         <section className="card">
-          <p>Start een sessie om met {info?.character.name ?? "de medewerker"} te bellen.</p>
+          <p>
+            <UiText
+              text={
+                info?.character.name
+                  ? fill(missionsCopy.startCallWith, { name: info.character.name })
+                  : missionsCopy.startCallDefault
+              }
+              tier="guide"
+            />
+          </p>
           <button
             type="button"
             className="button"
@@ -319,14 +337,23 @@ export function SpeakingStep({
             disabled={starting}
             data-testid="start-conversation"
           >
-            {starting ? "Bezig…" : checkpoint ? "Start de controle (één poging)" : "Start het gesprek"}
+            <UiText
+              text={
+                starting
+                  ? missionsCopy.busy
+                  : checkpoint
+                    ? missionsCopy.startCheck
+                    : missionsCopy.startConversation
+              }
+              inline
+            />
           </button>
         </section>
       ) : (
         <div className="grid two">
           <section className="card" aria-labelledby="conversation-heading">
             <h3 id="conversation-heading">
-              Gesprek met {info?.character.name}
+              <UiText text={fill(missionsCopy.conversationWith, { name: info?.character.name ?? "" })} />
               {info && (
                 <span className="muted" style={{ fontWeight: 400, fontSize: "0.85rem" }}>
                   {" "}
@@ -351,11 +378,18 @@ export function SpeakingStep({
               {send.kind === "sending" && (
                 <li className="bubble learner pending" data-testid="turn-pending">
                   <span className="who">U</span>
-                  <span lang="nl">{send.pending.text ?? "(opname)"}</span>
+                  <span lang="nl">
+                    {send.pending.text ?? <UiText text={missionsCopy.recordingPlaceholder} inline />}
+                  </span>
                   <span className="muted" style={{ display: "block", fontSize: "0.8rem" }}>
-                    {send.pending.modality === "speech"
-                      ? "Uploaden, herkennen en antwoord opstellen…"
-                      : "Antwoord opstellen…"}
+                    <UiText
+                      text={
+                        send.pending.modality === "speech"
+                          ? missionsCopy.pendingSpeech
+                          : missionsCopy.pendingTyped
+                      }
+                      inline
+                    />
                   </span>
                 </li>
               )}
@@ -363,20 +397,22 @@ export function SpeakingStep({
             {send.kind === "sending" && (
               <p>
                 <button type="button" className="button secondary" onClick={cancel} data-testid="cancel-turn">
-                  Annuleren
+                  <UiText text={missionsCopy.cancel} inline />
                 </button>
               </p>
             )}
             {send.kind === "failed" && (
               <div role="alert" data-testid="turn-error">
-                <p className="error">{send.message}</p>
+                <p className="error">
+                  <UiText text={send.message} tier="guide" />
+                </p>
                 <button type="button" className="button secondary" onClick={retry} data-testid="retry-turn">
-                  Opnieuw proberen
+                  <UiText text={uiCopy.action.retry} inline />
                 </button>
               </div>
             )}
             <p role="status" className="status-line" data-testid="step-status">
-              {stepStatus}
+              <UiText text={stepStatus} tier="guide" />
             </p>
             {!checkpoint && onRestart && (completed || !sessionOpen) && (
               <p>
@@ -387,18 +423,22 @@ export function SpeakingStep({
                   disabled={starting}
                   data-testid="restart-session"
                 >
-                  Nieuwe oefensessie (de huidige wordt afgesloten)
+                  <UiText text={missionsCopy.restartSession} inline />
                 </button>
               </p>
             )}
             {audioLabel && (
               <p>
                 <span className="label warn" data-testid="character-audio-label">
-                  audio: {audioLabel}
+                  <UiText text={fill(missionsCopy.audioLabel, { label: audioLabel })} inline />
                 </span>
               </p>
             )}
-            {audioNotice && <p className="muted">{audioNotice}</p>}
+            {audioNotice && (
+              <p className="muted">
+                <UiText text={audioNotice} tier="guide" />
+              </p>
+            )}
 
             <div className="talk-controls">
               <button
@@ -409,12 +449,15 @@ export function SpeakingStep({
                 {...talkButtonHandlers(() => void recorder.start(), recorder.stop)}
                 data-testid="talk-button"
               >
-                {recorder.phase === "recording"
-                  ? "Opname loopt… laat los om te versturen"
-                  : "Houd ingedrukt om te spreken"}
+                <UiText
+                  text={recorder.phase === "recording" ? missionsCopy.talkRecording : missionsCopy.talkHold}
+                  inline
+                />
               </button>
               {recorder.phase === "unsupported" && (
-                <p className="error">Deze browser ondersteunt geen opname.</p>
+                <p className="error">
+                  <UiText text={missionsCopy.recordingUnsupported} tier="guide" />
+                </p>
               )}
               {recorder.error && <p className="error">{recorder.error}</p>}
             </div>
@@ -434,7 +477,7 @@ export function SpeakingStep({
                   className="muted"
                   style={{ display: "block", fontSize: "0.85rem" }}
                 >
-                  Of typ je zin (wordt als getypte tekst opgeslagen, niet als spraak)
+                  <UiText text={missionsCopy.typedLabel} />
                 </label>
                 <textarea
                   id={`typed-${step.key}`}
@@ -453,12 +496,12 @@ export function SpeakingStep({
                   disabled={!canSend || !typedText.trim()}
                   data-testid="typed-send"
                 >
-                  Verstuur getypt
+                  <UiText text={missionsCopy.typedSend} inline />
                 </button>
               </form>
             ) : (
               <p className="muted" data-testid="typed-disabled">
-                Typen is in deze stap niet toegestaan.
+                <UiText text={missionsCopy.typedNotAllowed} tier="guide" />
               </p>
             )}
           </section>
@@ -466,40 +509,74 @@ export function SpeakingStep({
           <aside>
             <section className="card" aria-labelledby="appointment-heading" data-testid="appointment-panel">
               <h3 id="appointment-heading">
-                {info?.scenario_kind === "service" ? "Je gesprek" : "Afspraak"}
+                <UiText
+                  text={
+                    info?.scenario_kind === "service"
+                      ? missionsCopy.yourConversation
+                      : missionsCopy.appointment
+                  }
+                />
               </h3>
               <ul className="checklist">
                 <li data-done={Boolean(appointment.reason_stated)}>
                   {appointment.reason_stated ? "✓" : "○"}{" "}
-                  {info?.scenario_kind === "service" ? "vraag uitgelegd" : "reden gegeven"}
+                  <UiText
+                    text={
+                      info?.scenario_kind === "service"
+                        ? missionsCopy.actionStateNeed
+                        : missionsCopy.actionStateReason
+                    }
+                    inline
+                  />
                 </li>
                 {info?.scenario_kind === "service" ? (
                   <li data-done={Boolean(appointment.selected_choice_id)}>
-                    {appointment.selected_choice_id ? "✓" : "○"} keuze:{" "}
+                    {appointment.selected_choice_id ? "✓" : "○"}{" "}
+                    <UiText text={missionsCopy.choiceLine} inline />{" "}
                     {info.choices?.find((c) => c.id === appointment.selected_choice_id)?.label.nl || "—"}
                   </li>
                 ) : (
                   <li data-done={Boolean(appointment.accepted_slot_id)}>
-                    {appointment.accepted_slot_id ? "✓" : "○"} nieuw moment:{" "}
+                    {appointment.accepted_slot_id ? "✓" : "○"}{" "}
+                    <UiText text={missionsCopy.newMomentLine} inline />{" "}
                     {appointment.accepted_slot_id ? describeSlot(info, appointment.accepted_slot_id) : "—"}
                   </li>
                 )}
                 <li data-done={Boolean(appointment.confirmed)}>
-                  {appointment.confirmed ? "✓" : "○"} bevestigd
+                  {appointment.confirmed ? "✓" : "○"} <UiText text={missionsCopy.actionConfirm} inline />
                 </li>
-                {appointment.cancelled && <li>✗ gesprek geannuleerd</li>}
+                {appointment.cancelled && (
+                  <li>
+                    {"✗ "}
+                    <UiText text={missionsCopy.conversationCancelled} inline />
+                  </li>
+                )}
               </ul>
               <p className="muted" style={{ fontSize: "0.85rem" }}>
-                {info?.scenario_kind === "service"
-                  ? "Keuzes: " + info.choices?.map((c) => c.label.nl).join("; ")
-                  : "Beschikbare momenten: " + info?.slots.map((s) => describeSlot(info, s.id)).join("; ")}
+                <UiText
+                  text={
+                    info?.scenario_kind === "service"
+                      ? fill(missionsCopy.choicesList, {
+                          list: info.choices?.map((c) => c.label.nl).join("; ") ?? "",
+                        })
+                      : fill(missionsCopy.slotsList, {
+                          list: info?.slots.map((s) => describeSlot(info, s.id)).join("; ") ?? "",
+                        })
+                  }
+                  inline
+                />
               </p>
               <p className="mono" style={{ fontSize: "0.8rem" }}>
-                Gespreksbeurten {progress?.turns ?? 0}/{maxTurns}
+                <UiText
+                  text={fill(missionsCopy.turnCount, { used: progress?.turns ?? 0, max: maxTurns })}
+                  inline
+                />
               </p>
             </section>
             <section className="card" aria-labelledby="help-heading">
-              <h3 id="help-heading">Hulp</h3>
+              <h3 id="help-heading">
+                <UiText text={missionsCopy.help} />
+              </h3>
               <HelpLadder
                 rungs={helpRungs}
                 idPrefix={step.key}
@@ -534,13 +611,19 @@ function TurnBubbles({
   onPlay: () => void;
 }) {
   const result = turn.action_result;
-  const actionText = result
-    ? result.accepted
-      ? `${ACTION_LABEL[result.action] ?? result.action}`
-      : result.action === "none"
-        ? "geen actie herkend"
-        : `${ACTION_LABEL[result.action] ?? result.action} — niet aanvaard`
-    : "";
+  const actionText = result ? (
+    result.accepted ? (
+      <ActionLabel action={result.action} />
+    ) : result.action === "none" ? (
+      <UiText text={missionsCopy.actionNotRecognised} inline />
+    ) : (
+      <>
+        <ActionLabel action={result.action} />
+        {" — "}
+        <UiText text={missionsCopy.actionNotAccepted} inline />
+      </>
+    )
+  ) : null;
   return (
     <>
       <li
@@ -552,13 +635,26 @@ function TurnBubbles({
         <span className="who">U</span>
         <span lang="nl">{turn.learner_text}</span>
         <span className="muted" style={{ display: "block", fontSize: "0.8rem" }}>
-          {turn.modality === "speech" ? "gesproken · transcriptie" : "getypt · als getypte tekst opgeslagen"}
-          {actionText && ` · ${actionText}`}
-          {turn.status === "failed" && " · mislukt"}
+          <UiText
+            text={turn.modality === "speech" ? missionsCopy.spokenTranscript : missionsCopy.typedSaved}
+            inline
+          />
+          {actionText && (
+            <>
+              {" · "}
+              {actionText}
+            </>
+          )}
+          {turn.status === "failed" && (
+            <>
+              {" · "}
+              <UiText text={missionsCopy.turnFailed} inline />
+            </>
+          )}
         </span>
         {turn.recording_warning && (
           <span className="muted" role="status">
-            Je tekst is bewaard. De geluidsopname kon niet worden opgeslagen.
+            <UiText text={missionsCopy.recordingWarning} tier="guide" inline />
           </span>
         )}
       </li>
@@ -577,7 +673,7 @@ function TurnBubbles({
                   aria-pressed={playing}
                   data-testid="play-turn"
                 >
-                  {playing ? "speelt" : "speel af"}
+                  <UiText text={playing ? missionsCopy.playing : missionsCopy.play} inline />
                 </button>
               </>
             )}

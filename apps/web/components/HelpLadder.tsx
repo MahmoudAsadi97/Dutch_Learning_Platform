@@ -3,7 +3,10 @@
 import { useRef, useState } from "react";
 
 import { LearningText, useLanguageSupport } from "@/components/LanguageSupport";
+import { UiText } from "@/components/ui/UiText";
+import { missionsCopy } from "@/lib/copy/missions";
 import type { HelpRung } from "@/lib/types";
+import type { Copy } from "@/lib/ui-copy";
 
 interface Props {
   rungs: HelpRung[];
@@ -27,7 +30,7 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
   const { showEnglish, showPersian } = useLanguageSupport();
   const [revealed, setRevealed] = useState(0);
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const pending = useRef(false);
   const ordered = [...rungs].sort((a, b) => a.level - b.level);
   const next = ordered[revealed];
@@ -36,12 +39,12 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
     if (!next || pending.current) return;
     pending.current = true;
     setBusy(true);
-    setError("");
+    setError(null);
     try {
       await onReveal(next);
       setRevealed((value) => value + 1);
     } catch {
-      setError("Hulp kon niet worden opgeslagen. Probeer opnieuw; de tip is nog niet getoond.");
+      setError(missionsCopy.helpSaveFailed);
     } finally {
       pending.current = false;
       setBusy(false);
@@ -64,7 +67,7 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
 
   return (
     <div className="help-ladder" data-help-revealed={revealed}>
-      <ol aria-label="Hulp">
+      <ol aria-label={missionsCopy.help.nl}>
         {ordered.slice(0, revealed).map((rung) => (
           <li key={`${idPrefix}-${rung.level}`}>
             <div className="muted" style={{ fontSize: "0.8rem" }}>
@@ -102,11 +105,13 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
           />
         </button>
       ) : (
-        <p className="muted">Alle hulp is getoond.</p>
+        <p className="muted">
+          <UiText text={missionsCopy.helpAllShown} tier="guide" />
+        </p>
       )}
       {error && (
         <p className="error" role="alert">
-          {error}
+          <UiText text={error} tier="guide" />
         </p>
       )}
     </div>

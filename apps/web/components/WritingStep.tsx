@@ -9,10 +9,13 @@ import { FeedbackPanel } from "@/components/FeedbackPanel";
 import { HelpLadder } from "@/components/HelpLadder";
 import type { StepProps } from "@/components/ReadingStep";
 import { StepHeader } from "@/components/StepHeader";
-import { ApiError } from "@/lib/client/api";
+import { UiText } from "@/components/ui/UiText";
+import { errorCopy } from "@/lib/client/error-copy";
 import { DraftSaver } from "@/lib/client/draft-saver";
 import { recordHelp, saveDraft, submitWriting } from "@/lib/client/practice";
+import { missionsCopy } from "@/lib/copy/missions";
 import type { HelpRung, Step, WritingPayload } from "@/lib/types";
+import { fill, type Copy } from "@/lib/ui-copy";
 
 interface Props extends StepProps {
   step: Step & { payload: WritingPayload };
@@ -43,10 +46,10 @@ export function WritingStep({
   const [text, setText] = useState(draft?.text ?? "");
   const [savedAt, setSavedAt] = useState<string>(draft?.saved_at ?? "");
   const [saving, setSaving] = useState(false);
-  const [saveError, setSaveError] = useState("");
+  const [saveError, setSaveError] = useState<Copy | null>(null);
   const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState("");
-  const [error, setError] = useState("");
+  const [notice, setNotice] = useState<Copy | null>(null);
+  const [error, setError] = useState<Copy | null>(null);
   const timerRef = useRef<number | null>(null);
   const textRef = useRef(text);
   const mountedRef = useRef(false);
@@ -108,14 +111,11 @@ export function WritingStep({
 
   async function persist(next: string) {
     setSaving(true);
-    setSaveError("");
+    setSaveError(null);
     try {
       await saverRef.current!.save(next);
     } catch (cause) {
-      if (mountedRef.current)
-        setSaveError(
-          cause instanceof ApiError ? `Niet bewaard: ${cause.detail}` : "Niet bewaard: geen verbinding.",
-        );
+      if (mountedRef.current) setSaveError(errorCopy(cause, missionsCopy.draftNotSaved));
       throw cause;
     } finally {
       if (mountedRef.current) setSaving(false);
@@ -132,8 +132,8 @@ export function WritingStep({
       timerRef.current = null;
     }
     setBusy(true);
-    setError("");
-    setNotice("");
+    setError(null);
+    setNotice(null);
     try {
       // Drain older autosaves before submission so none can overwrite the submitted draft afterwards.
       await persist(text);
@@ -142,15 +142,18 @@ export function WritingStep({
       onDetail(result.detail);
       onProgressChanged();
       setNotice(
-        `Ingediend: ${result.word_count} woorden.` +
-          (result.missing.length > 0
-            ? ` Ontbreekt nog: ${result.missing.join(", ")}.`
-            : payload.must_include.length
-              ? " Alle vereiste woorden staan erin."
-              : " Lees je bericht na en vraag feedback."),
+        result.missing.length > 0
+          ? fill(missionsCopy.submittedMissing, {
+              count: result.word_count,
+              missing: result.missing.join(", "),
+            })
+          : fill(
+              payload.must_include.length ? missionsCopy.submittedComplete : missionsCopy.submittedReread,
+              { count: result.word_count },
+            ),
       );
     } catch (cause) {
-      setError(cause instanceof ApiError ? cause.detail : "Indienen mislukt: geen verbinding.");
+      setError(errorCopy(cause, missionsCopy.submitFailed));
     } finally {
       setBusy(false);
     }
@@ -166,7 +169,9 @@ export function WritingStep({
       <StepHeader step={step} labels={labels} />
 
       <section className="card" aria-labelledby="prompt-heading">
-        <h3 id="prompt-heading">Opdracht</h3>
+        <h3 id="prompt-heading">
+          <UiText text={missionsCopy.assignment} />
+        </h3>
         <p>
           <ContentLabel
             status={payload.prompt.review_status}
@@ -178,15 +183,27 @@ export function WritingStep({
           <LearningText text={payload.prompt} />
         </p>
         <p className="muted" style={{ fontSize: "0.85rem" }}>
-          {payload.min_words}–{payload.max_words} woorden
-          {payload.must_include.length > 0 && ` · gebruik: ${payload.must_include.join(", ")}`}
+          <UiText
+            text={
+              payload.must_include.length > 0
+                ? fill(missionsCopy.wordRangeUse, {
+                    min: payload.min_words,
+                    max: payload.max_words,
+                    words: payload.must_include.join(", "),
+                  })
+                : fill(missionsCopy.wordRange, { min: payload.min_words, max: payload.max_words })
+            }
+            inline
+          />
         </p>
       </section>
 
       <section className="card" aria-labelledby="message-heading">
-        <h3 id="message-heading">Je bericht</h3>
+        <h3 id="message-heading">
+          <UiText text={missionsCopy.yourMessage} />
+        </h3>
         <label htmlFor={`writing-${step.key}`} className="visually-hidden">
-          Je bericht in het Nederlands
+          <UiText text={missionsCopy.messageLabel} />
         </label>
         <textarea
           id={`writing-${step.key}`}
@@ -209,23 +226,48 @@ export function WritingStep({
         />
         <p className="status-line">
           <span data-testid="word-count" className={withinBounds ? "" : "muted"}>
-            {words} woorden{!withinBounds && ` (${payload.min_words}–${payload.max_words} nodig)`}
+            <UiText
+              text={
+                withinBounds
+                  ? fill(missionsCopy.wordCount, { count: words })
+                  : fill(missionsCopy.wordCountNeeded, {
+                      count: words,
+                      min: payload.min_words,
+                      max: payload.max_words,
+                    })
+              }
+              inline
+            />
           </span>
           {missing.length > 0 ? (
             <span className="muted" data-testid="missing-words">
-              nog te gebruiken: {missing.join(", ")}
+              <UiText text={fill(missionsCopy.stillToUse, { words: missing.join(", ") })} inline />
             </span>
           ) : (
-            <span className="label ok">alle vereiste woorden</span>
+            <span className="label ok">
+              <UiText text={missionsCopy.allRequiredWords} inline />
+            </span>
           )}
           <span className="muted" data-testid="autosave-status">
-            {saveError
-              ? saveError
-              : saving || !saverRef.current?.isSaved(text)
-                ? "wijzigingen bewaren…"
-                : savedAt
-                  ? `bewaard ${new Date(savedAt).toLocaleTimeString("nl-BE", { hour: "2-digit", minute: "2-digit" })}`
-                  : "nog niet bewaard"}
+            {saveError ? (
+              <UiText text={saveError} tier="guide" inline />
+            ) : (
+              <UiText
+                text={
+                  saving || !saverRef.current?.isSaved(text)
+                    ? missionsCopy.autosaving
+                    : savedAt
+                      ? fill(missionsCopy.savedAt, {
+                          time: new Date(savedAt).toLocaleTimeString("nl-BE", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          }),
+                        })
+                      : missionsCopy.notSavedYet
+                }
+                inline
+              />
+            )}
           </span>
         </p>
         {saveError && (
@@ -236,9 +278,12 @@ export function WritingStep({
               onClick={() => void persist(text).catch(() => undefined)}
               disabled={saving}
             >
-              Opnieuw bewaren
+              <UiText text={missionsCopy.saveAgain} inline />
             </button>
-            <span className="muted"> Je tekst blijft hier staan. Bewaar voordat je verdergaat.</span>
+            <span className="muted">
+              {" "}
+              <UiText text={missionsCopy.textStays} tier="guide" inline />
+            </span>
           </p>
         )}
         <p>
@@ -249,22 +294,31 @@ export function WritingStep({
             disabled={busy || !withinBounds}
             data-testid="writing-submit"
           >
-            {busy ? "Indienen…" : progress?.completed ? "Opnieuw indienen" : "Dien in"}
+            <UiText
+              text={
+                busy
+                  ? missionsCopy.submitting
+                  : progress?.completed
+                    ? missionsCopy.resubmit
+                    : missionsCopy.submit
+              }
+              inline
+            />
           </button>
           {progress?.completed && (
             <span className="label ok" style={{ marginInlineStart: "0.75rem" }} data-testid="writing-done">
-              bericht opgeslagen
+              <UiText text={missionsCopy.messageSaved} inline />
             </span>
           )}
         </p>
         {notice && (
           <p role="status" data-testid="writing-notice">
-            {notice}
+            <UiText text={notice} tier="guide" />
           </p>
         )}
         {error && (
           <p className="error" role="alert">
-            {error}
+            <UiText text={error} tier="guide" />
           </p>
         )}
       </section>

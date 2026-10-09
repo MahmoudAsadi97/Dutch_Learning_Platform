@@ -45,7 +45,7 @@ def _step(document: MissionDocument, practice: PracticeSession, step_key: str) -
     if step.variant != practice.variant:
         raise PracticeError(f"step {step_key} belongs to the {step.variant} variant", status_code=409)
     if practice.status != "active":
-        raise PracticeError("this session is closed", status_code=409)
+        raise PracticeError("this session is closed", status_code=409, code="session_closed")
     return step
 
 

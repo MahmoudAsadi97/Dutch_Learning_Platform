@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { LearningText } from "@/components/LanguageSupport";
-import { ApiError } from "@/lib/client/api";
+import { errorCopy } from "@/lib/client/error-copy";
+import { isAbort } from "@/lib/client/errors";
 import {
   episodeHref,
   greeting,
@@ -16,6 +17,9 @@ import {
 import { Cover, ProgressBar, ProgressRing, Skeleton, SkeletonPanel } from "@/components/ui";
 import { useDeveloperDetails } from "@/components/shell/EnvContext";
 import { HonestyChip } from "@/components/ui/HonestyChip";
+import { episodeFailure } from "@/lib/client/failures";
+import { UiText } from "@/components/ui/UiText";
+import { uiCopy, type Copy } from "@/lib/ui-copy";
 
 const POLL_MS = 5000;
 const POLL_LIMIT = 48; // four minutes: a local model writes an episode in one to three minutes
@@ -28,10 +32,10 @@ function dayLabel(iso: string) {
 export function TodayHome() {
   const developer = useDeveloperDetails();
   const [plan, setPlan] = useState<TodayPlan | null>(null);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const [busy, setBusy] = useState("");
   const [wish, setWish] = useState("");
-  const [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState<Copy | null>(null);
   const [polls, setPolls] = useState(0);
   const load = useCallback(
     (signal?: AbortSignal) =>
@@ -39,11 +43,10 @@ export function TodayHome() {
         .today(signal)
         .then((value) => {
           setPlan(value);
-          setError("");
+          setError(null);
         })
         .catch((cause) => {
-          if (!(cause instanceof DOMException && cause.name === "AbortError"))
-            setError("Je overzicht kon niet worden geladen.");
+          if (!isAbort(cause)) setError(errorCopy(cause, uiCopy.today.loadFailed));
         }),
     [],
   );
@@ -63,20 +66,19 @@ export function TodayHome() {
     return () => window.clearTimeout(timer);
   }, [pending, stalled, plan, load]);
 
-  async function act(key: string, work: () => Promise<unknown>, done?: string) {
+  async function act(key: string, work: () => Promise<unknown>, done?: Copy) {
     setBusy(key);
-    setNotice("");
+    setNotice(null);
     try {
       await work();
       await load();
       if (done) setNotice(done);
     } catch (cause) {
       setNotice(
-        cause instanceof ApiError && cause.status === 429
-          ? "Je dagelijkse limiet voor de schrijver is bereikt. Morgen schrijft hij verder."
-          : cause instanceof ApiError && cause.status === 409
-            ? cause.detail
-            : "Dat lukte nu niet. Probeer het zo opnieuw.",
+        errorCopy(cause, undefined, {
+          429: uiCopy.failures.writerLimit,
+          paid_not_approved: uiCopy.failures.paidNotApproved,
+        }),
       );
     } finally {
       setBusy("");
@@ -86,9 +88,9 @@ export function TodayHome() {
   if (error)
     return (
       <div className="error" role="alert">
-        {error}{" "}
+        <UiText text={error} tier="guide" inline />{" "}
         <button className="linklike" onClick={() => void load()}>
-          Opnieuw proberen
+          <UiText text={uiCopy.action.retry} inline />
         </button>
       </div>
     );
@@ -190,22 +192,13 @@ export function TodayHome() {
               <div>
                 <p className="eyebrow">AFLEVERING {failed.number}</p>
                 <h2 id="today-episode-title">
-                  {failed.error_code === "allowance"
-                    ? "De schrijver heeft vandaag genoeg geschreven."
-                    : failed.error_code === "quality"
-                      ? "Deze aflevering haalde de controle niet."
-                      : "De schrijver is even niet bereikbaar."}
+                  <UiText text={episodeFailure(failed.error_code, uiCopy.failures, developer).title} />
                 </h2>
                 <p className="muted">
-                  {failed.error_code === "quality"
-                    ? "De tekst haalde de automatische controle niet, ook niet na een tweede poging. Een nieuwe poging gebruikt dezelfde personages."
-                    : failed.error_code === "allowance"
-                      ? "Je dagelijkse limiet voor modelgebruik is bereikt. Probeer het morgen opnieuw of herhaal vandaag je woorden."
-                      : failed.error_code === "paid_not_approved"
-                        ? "Betaald modelgebruik is in deze omgeving niet ingeschakeld."
-                        : developer
-                          ? "Controleer of het taalmodel draait (Instellingen › Technische ondersteuning) en probeer opnieuw."
-                          : "De schrijver was even niet bereikbaar. Probeer het opnieuw."}
+                  <UiText
+                    text={episodeFailure(failed.error_code, uiCopy.failures, developer).body}
+                    tier="guide"
+                  />
                 </p>
                 {failed.failure_reasons?.length > 0 && (
                   <details className="failure-details">
@@ -224,7 +217,7 @@ export function TodayHome() {
                     className="button"
                     disabled={busy === "retry"}
                     onClick={() =>
-                      void act("retry", () => stories.retry(failed.id), "De schrijver begint opnieuw.")
+                      void act("retry", () => stories.retry(failed.id), uiCopy.today.retryStarted)
                     }
                   >
                     Opnieuw laten schrijven
@@ -351,11 +344,7 @@ export function TodayHome() {
             onSubmit={(event) => {
               event.preventDefault();
               if (!wish.trim()) return;
-              void act(
-                "wish",
-                () => stories.request(wish.trim()),
-                "Je wens staat in de wachtrij. De aflevering verschijnt hierboven zodra ze klaar is.",
-              );
+              void act("wish", () => stories.request(wish.trim()), uiCopy.today.wishQueued);
               setWish("");
             }}
           >
@@ -375,7 +364,7 @@ export function TodayHome() {
           </form>
           {notice && (
             <p className="practice-hint" role="status">
-              {notice}
+              <UiText text={notice} tier="guide" />
             </p>
           )}
         </div>

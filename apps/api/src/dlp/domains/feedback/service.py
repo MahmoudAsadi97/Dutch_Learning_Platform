@@ -151,7 +151,7 @@ def generate_feedback(session: Session, settings: Settings, providers: Providers
     records = evidence_for_step(practice, step_key)
     shortfall = check_expectations(document, step, records)
     if shortfall:
-        raise PracticeError(f"not enough evidence for feedback yet: {shortfall}", status_code=409)
+        raise PracticeError(f"not enough evidence for feedback yet: {shortfall}", status_code=409, code="evidence_short")
     progress = (practice.state.get("step_progress") or {}).get(step_key, {})
     task_completed = bool(progress.get("completed"))
     handles = [(f"E{i + 1}", record) for i, record in enumerate(records[-24:])]

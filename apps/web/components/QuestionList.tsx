@@ -6,6 +6,10 @@ import { LearningText } from "@/components/LanguageSupport";
 import { HelpLadder } from "@/components/HelpLadder";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import type { HelpRung, Question, StepProgress } from "@/lib/types";
+import { UiText } from "@/components/ui/UiText";
+import { errorCopy } from "@/lib/client/error-copy";
+import { missionsCopy } from "@/lib/copy/missions";
+import type { Copy } from "@/lib/ui-copy";
 
 interface Props {
   stepKey: string;
@@ -27,7 +31,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [verdicts, setVerdicts] = useState<Record<string, Verdict>>({});
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const answered = progress?.answered ?? {};
   const allChosen = questions.every((q) => answers[q.id] !== undefined);
   const correct = Object.values(verdicts).filter((v) => v.correct).length;
@@ -35,7 +39,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
 
   async function check() {
     setBusy(true);
-    setError("");
+    setError(null);
     try {
       const next: Record<string, Verdict> = {};
       for (const question of questions) {
@@ -45,7 +49,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
       }
       setVerdicts(next);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Antwoorden konden niet worden opgeslagen.");
+      setError(errorCopy(cause, missionsCopy.answersFailed));
     } finally {
       setBusy(false);
     }
@@ -144,7 +148,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
         )}
         {error && (
           <span className="error" role="alert">
-            {error}
+            <UiText text={error} tier="guide" inline />
           </span>
         )}
       </div>

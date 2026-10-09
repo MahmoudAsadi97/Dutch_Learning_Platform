@@ -57,7 +57,7 @@ def start_session(session: Session, *, learner_id: uuid.UUID, mission: Mission, 
     if active is not None:
         return active
     if previous and not variant_allows_retry(document, variant):
-        raise PracticeError("this checkpoint allows no retry; the earlier attempt stands", status_code=409)
+        raise PracticeError("this checkpoint allows no retry; the earlier attempt stands", status_code=409, code="no_retry")
     first_step = next(step for step in document.steps if step.variant == variant)
     practice = PracticeSession(
         learner_id=learner_id, mission_id=mission.id, variant=variant, status="active",
@@ -72,7 +72,7 @@ def start_session(session: Session, *, learner_id: uuid.UUID, mission: Mission, 
 def abandon_session(session: Session, practice: PracticeSession) -> PracticeSession:
     """Close an active session without completing it. Its turns and evidence stay; a checkpoint attempt stays used."""
     if practice.status != "active":
-        raise PracticeError("this session is already closed", status_code=409)
+        raise PracticeError("this session is already closed", status_code=409, code="session_closed")
     practice.status = "abandoned"
     practice.completed_at = utcnow()
     practice.updated_at = utcnow()

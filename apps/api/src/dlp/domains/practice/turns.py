@@ -86,7 +86,7 @@ def ensure_turn_allowed(session: Session, document: MissionDocument, practice: P
     step = conversation_step(document, practice, step_key)
     payload = step.payload
     if practice.status != "active":
-        raise PracticeError("this session is closed", status_code=409)
+        raise PracticeError("this session is closed", status_code=409, code="session_closed")
     if modality not in ("speech", "typed"):
         raise PracticeError("modality must be speech or typed", status_code=422)
     if isinstance(payload, CheckpointPayload) and modality == "typed" and not payload.restrictions.typed_fallback:
@@ -94,7 +94,7 @@ def ensure_turn_allowed(session: Session, document: MissionDocument, practice: P
     if isinstance(payload, SpeakingPayload) and modality == "typed" and not payload.typed_fallback_allowed:
         raise PracticeError("typed input is not allowed in this step", status_code=403)
     if turn_count_for(session, practice, step_key) >= payload.max_turns:  # type: ignore[union-attr]
-        raise PracticeError("the maximum number of turns for this step is reached", status_code=409)
+        raise PracticeError("the maximum number of turns for this step is reached", status_code=409, code="turn_limit")
     return step
 
 

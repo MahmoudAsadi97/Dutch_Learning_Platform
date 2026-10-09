@@ -5,16 +5,20 @@ import { useCallback, useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
-import { ApiError } from "@/lib/client/api";
+import { errorCopy } from "@/lib/client/error-copy";
+import { isAbort } from "@/lib/client/errors";
 import { words, type Grade, type WordItem, type WordStats } from "@/lib/client/stories";
+import { wordsCopy } from "@/lib/copy/words";
+import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 import { Skeleton, SkeletonPanel } from "@/components/ui";
 import { ButtonLink, EmptyState } from "@/components/ui";
+import { UiText } from "@/components/ui/UiText";
 
-const gradeCopy: { grade: Grade; label: string; hint: string }[] = [
-  { grade: "again", label: "Nog eens", hint: "straks opnieuw" },
-  { grade: "hard", label: "Moeilijk", hint: "kort interval" },
-  { grade: "good", label: "Goed", hint: "normaal interval" },
-  { grade: "easy", label: "Makkelijk", hint: "langer interval" },
+const gradeCopy: { grade: Grade; label: Copy; hint: Copy }[] = [
+  { grade: "again", label: wordsCopy.gradeAgain, hint: wordsCopy.gradeAgainHint },
+  { grade: "hard", label: wordsCopy.gradeHard, hint: wordsCopy.gradeHardHint },
+  { grade: "good", label: wordsCopy.gradeGood, hint: wordsCopy.gradeGoodHint },
+  { grade: "easy", label: wordsCopy.gradeEasy, hint: wordsCopy.gradeEasyHint },
 ];
 
 export function WordReview() {
@@ -22,10 +26,10 @@ export function WordReview() {
   const [stats, setStats] = useState<WordStats | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [done, setDone] = useState(0);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const [allWords, setAllWords] = useState<WordItem[] | null>(null);
   const [draft, setDraft] = useState({ term: "", meaning_en: "", meaning_fa: "" });
-  const [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState<Copy | null>(null);
   const { showEnglish, showPersian } = useLanguageSupport();
   const load = useCallback(
     (signal?: AbortSignal) =>
@@ -37,8 +41,7 @@ export function WordReview() {
           setRevealed(false);
         })
         .catch((cause) => {
-          if (!(cause instanceof DOMException && cause.name === "AbortError"))
-            setError("Je woorden konden niet worden geladen.");
+          if (!isAbort(cause)) setError(errorCopy(cause, wordsCopy.loadFailed));
         }),
     [],
   );
@@ -61,7 +64,7 @@ export function WordReview() {
       );
       setRevealed(false);
     } catch (cause) {
-      setError(cause instanceof ApiError ? cause.detail : "Je antwoord kon niet worden bewaard.");
+      setError(errorCopy(cause, wordsCopy.gradeFailed));
     }
   }
   async function toggleAll() {
@@ -71,60 +74,66 @@ export function WordReview() {
     }
     try {
       setAllWords((await words.all()).items);
-    } catch {
-      setError("De lijst kon niet worden geladen.");
+    } catch (cause) {
+      setError(errorCopy(cause, wordsCopy.listFailed));
     }
   }
   async function add() {
     if (!draft.term.trim()) return;
     try {
       const result = await words.save(draft.term.trim(), draft.meaning_en.trim(), draft.meaning_fa.trim());
-      setNotice(result.created ? `"${result.item.term}" is bewaard.` : `"${result.item.term}" stond er al.`);
+      setNotice(
+        fill(result.created ? wordsCopy.savedNew : wordsCopy.savedAlready, { term: result.item.term }),
+      );
       setDraft({ term: "", meaning_en: "", meaning_fa: "" });
       await load();
       if (allWords) setAllWords((await words.all()).items);
-    } catch {
-      setNotice("Bewaren lukte niet.");
+    } catch (cause) {
+      setNotice(errorCopy(cause, wordsCopy.saveFailed));
     }
   }
 
   if (error)
     return (
       <div className="error" role="alert">
-        {error}{" "}
+        <UiText text={error} tier="guide" inline />{" "}
         <button
           className="linklike"
           onClick={() => {
-            setError("");
+            setError(null);
             void load();
           }}
         >
-          Opnieuw proberen
+          <UiText text={uiCopy.action.retry} inline />
         </button>
       </div>
     );
   if (!queue || !stats)
     return (
-      <SkeletonPanel label="Woorden laden…">
+      <SkeletonPanel label={wordsCopy.loading.nl}>
         <Skeleton lines={3} />
       </SkeletonPanel>
     );
   const current = queue[0];
+  const counts = { total: stats.total, learned: stats.learned_count, due: stats.due_count, done };
   return (
     <div className="word-review" data-testid="word-review">
       <header className="path-heading">
         <div>
-          <p className="eyebrow">WOORDEN</p>
+          <p className="eyebrow">
+            <UiText text={wordsCopy.eyebrow} />
+          </p>
           <h1>
-            {current ? "Herhaal wat je bewaarde." : done ? "Klaar voor vandaag." : "Niets te herhalen."}
+            <UiText
+              text={current ? wordsCopy.titleReview : done ? wordsCopy.titleDone : wordsCopy.titleNothing}
+            />
           </h1>
           <p className="muted">
-            {stats.total} woorden bewaard · {stats.learned_count} stevig onthouden · {stats.due_count} vandaag
-            te herhalen{done ? ` · ${done} gedaan` : ""}
+            <UiText text={fill(done ? wordsCopy.statsWithDone : wordsCopy.stats, counts)} />
           </p>
         </div>
         <Link className="button secondary" href="/">
-          Vandaag
+          <UiText text={uiCopy.nav.today} inline />
           <Icon name="arrow" size={16} />
         </Link>
       </header>
@@ -132,7 +141,11 @@ export function WordReview() {
       {current ? (
         <section className="flashcard" aria-live="polite">
           <p className="eyebrow">
-            {queue.length} {queue.length === 1 ? "KAART" : "KAARTEN"} IN DEZE RONDE
+            <UiText
+              text={fill(queue.length === 1 ? wordsCopy.cardsOne : wordsCopy.cardsMany, {
+                count: queue.length,
+              })}
+            />
           </p>
           <div className="flashcard-face">
             <p className="flashcard-term" lang="nl">
@@ -155,7 +168,7 @@ export function WordReview() {
                     {current.example}
                   </p>
                 )}
-                <div className="grade-buttons" role="group" aria-label="Hoe goed kende je dit woord?">
+                <div className="grade-buttons" role="group" aria-label={wordsCopy.gradeQuestion.nl}>
                   {gradeCopy.map((option) => (
                     <button
                       key={option.grade}
@@ -163,8 +176,12 @@ export function WordReview() {
                       className={`grade-button grade-${option.grade}`}
                       onClick={() => void grade(current, option.grade)}
                     >
-                      <strong>{option.label}</strong>
-                      <small>{option.hint}</small>
+                      <strong>
+                        <UiText text={option.label} inline />
+                      </strong>
+                      <small>
+                        <UiText text={option.hint} inline />
+                      </small>
                     </button>
                   ))}
                 </div>
@@ -176,34 +193,33 @@ export function WordReview() {
                 data-testid="reveal-word"
                 onClick={() => setRevealed(true)}
               >
-                Toon de betekenis
+                <UiText text={uiCopy.action.showMeaning} inline />
               </button>
             )}
           </div>
           <p className="small-text muted">
-            Het interval groeit als je een woord goed kent en krimpt als je het vergeet. Het zegt niets over
-            je niveau, alleen over wanneer je dit woord weer ziet.
+            <UiText text={wordsCopy.intervalNote} tier="guide" />
           </p>
         </section>
       ) : (
         <EmptyState
           icon={done ? "check" : "star"}
           accent="words"
-          title={done ? "Alles herhaald voor vandaag" : "Nog niets te herhalen"}
+          title={<UiText text={done ? wordsCopy.emptyDoneTitle : wordsCopy.emptyNoneTitle} />}
           description={
-            done
-              ? "Lees een aflevering en bewaar nieuwe woorden; ze komen hier terug."
-              : "Bewaar woorden uit de verhalen met de knop Bewaar, of voeg hieronder zelf een woord toe."
+            <UiText text={done ? wordsCopy.emptyDoneText : wordsCopy.emptyNoneText} tier="guide" />
           }
         >
           <ButtonLink href="/verhalen" icon="arrow" iconEnd>
-            Naar de verhalen
+            <UiText text={wordsCopy.toStories} inline />
           </ButtonLink>
         </EmptyState>
       )}
 
       <section className="wish-card inline" aria-labelledby="add-word">
-        <h2 id="add-word">Zelf een woord toevoegen</h2>
+        <h2 id="add-word">
+          <UiText text={wordsCopy.addTitle} />
+        </h2>
         <form
           className="word-form"
           onSubmit={(event) => {
@@ -212,49 +228,49 @@ export function WordReview() {
           }}
         >
           <label>
-            Woord
+            <UiText text={wordsCopy.fieldWord} />
             <input
               lang="nl"
               value={draft.term}
               onChange={(event) => setDraft({ ...draft, term: event.target.value })}
               maxLength={120}
-              placeholder="de buurvrouw"
+              placeholder={wordsCopy.example.nl}
             />
           </label>
           <label>
-            Engels
+            <UiText text={wordsCopy.fieldEnglish} />
             <input
               lang="en"
               value={draft.meaning_en}
               onChange={(event) => setDraft({ ...draft, meaning_en: event.target.value })}
               maxLength={300}
-              placeholder="the neighbour"
+              placeholder={wordsCopy.example.en}
             />
           </label>
           <label>
-            Perzisch
+            <UiText text={wordsCopy.fieldPersian} />
             <input
               lang="fa"
               dir="rtl"
               value={draft.meaning_fa}
               onChange={(event) => setDraft({ ...draft, meaning_fa: event.target.value })}
               maxLength={300}
-              placeholder="همسایه"
+              placeholder={wordsCopy.example.fa}
             />
           </label>
           <button className="button secondary" type="submit" disabled={!draft.term.trim()}>
-            Bewaar
+            <UiText text={uiCopy.action.save} inline />
           </button>
         </form>
         {notice && (
           <p className="practice-hint" role="status">
-            {notice}
+            <UiText text={notice} tier="guide" />
           </p>
         )}
       </section>
 
       <button type="button" className="linklike" onClick={() => void toggleAll()}>
-        {allWords ? "Verberg de lijst" : "Toon al mijn woorden"}
+        <UiText text={allWords ? wordsCopy.hideList : wordsCopy.showList} inline />
       </button>
       {allWords && (
         <ul className="word-list">
@@ -266,24 +282,31 @@ export function WordReview() {
                 {item.meaning_fa ? ` · ${item.meaning_fa}` : ""}
               </span>
               <span className="small-text muted">
-                {item.learned
-                  ? "stevig"
-                  : item.due
-                    ? "nu te herhalen"
-                    : `terug over ${item.interval_days} ${item.interval_days === 1 ? "dag" : "dagen"}`}
+                <UiText
+                  text={
+                    item.learned
+                      ? wordsCopy.statusLearned
+                      : item.due
+                        ? wordsCopy.statusDue
+                        : fill(item.interval_days === 1 ? wordsCopy.backInDay : wordsCopy.backInDays, {
+                            days: item.interval_days,
+                          })
+                  }
+                  inline
+                />
               </span>
               <button
                 type="button"
                 className="linklike"
-                aria-label={`Verwijder ${item.term}`}
+                aria-label={fill(wordsCopy.removeWord, { term: item.term }).nl}
                 onClick={() =>
                   void words
                     .remove(item.id)
                     .then(() => Promise.all([load(), words.all().then((all) => setAllWords(all.items))]))
-                    .catch(() => setNotice("Verwijderen lukte niet."))
+                    .catch((cause) => setNotice(errorCopy(cause, wordsCopy.removeFailed)))
                 }
               >
-                Verwijder
+                <UiText text={wordsCopy.remove} inline />
               </button>
             </li>
           ))}

@@ -5,29 +5,25 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
-import { failureCopy } from "@/components/VideoLibrary";
-import { ApiError, newRequestId } from "@/lib/client/api";
+import { failureText } from "@/components/VideoLibrary";
+import { newRequestId } from "@/lib/client/api";
+import { errorCopy } from "@/lib/client/error-copy";
+import { isAbort } from "@/lib/client/errors";
 import { stageLabels, type GlossaryItem } from "@/lib/client/stories";
 import { clock, sceneAt, videos, type Video } from "@/lib/client/videos";
 import { Skeleton, SkeletonPanel } from "@/components/ui";
 import { HonestyChip } from "@/components/ui/HonestyChip";
-
-function friendly(cause: unknown, fallback: string) {
-  if (cause instanceof ApiError) {
-    if (cause.status === 429) return "Je dagelijkse limiet is bereikt.";
-    if (cause.status === 503) return "De dienst is even niet bereikbaar. Je voortgang is bewaard.";
-    if (cause.status === 409) return cause.detail;
-  }
-  return fallback;
-}
+import { UiText } from "@/components/ui/UiText";
+import { videoCopy } from "@/lib/copy/video";
+import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
 export function VideoPlayer({ videoId }: { videoId: string }) {
   const [video, setVideo] = useState<Video | null>(null);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const [time, setTime] = useState(0);
   const [finished, setFinished] = useState(false);
   const [showSubtitles, setShowSubtitles] = useState(true);
-  const [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState<Copy | null>(null);
   const player = useRef<HTMLVideoElement>(null);
   const load = useCallback(
     (signal?: AbortSignal) =>
@@ -38,12 +34,7 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
           setFinished(Boolean(value.watched_at));
         })
         .catch((cause) => {
-          if (!(cause instanceof DOMException && cause.name === "AbortError"))
-            setError(
-              cause instanceof ApiError && cause.status === 404
-                ? "Deze video bestaat niet."
-                : "De video kon niet worden geladen.",
-            );
+          if (!isAbort(cause)) setError(errorCopy(cause, videoCopy.loadFailed, { 404: videoCopy.notFound }));
         }),
     [videoId],
   );
@@ -61,12 +52,15 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
   if (error)
     return (
       <div className="error" role="alert">
-        {error} <Link href="/videos">Naar de video&apos;s</Link>
+        <UiText text={error} tier="guide" inline />{" "}
+        <Link href="/videos">
+          <UiText text={videoCopy.backToVideos} inline />
+        </Link>
       </div>
     );
   if (!video)
     return (
-      <SkeletonPanel label="Video laden…">
+      <SkeletonPanel label={videoCopy.loading.nl}>
         <Skeleton lines={3} />
       </SkeletonPanel>
     );
@@ -76,12 +70,19 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
         <p className="eyebrow">
           {video.kind_label.toUpperCase()} · {stageLabels[video.stage_id] ?? video.stage_id}
         </p>
-        <h1>{video.status === "failed" ? "Deze video is niet gelukt." : "Deze video wordt nog gemaakt."}</h1>
+        <h1>
+          <UiText text={video.status === "failed" ? videoCopy.failedTitle : videoCopy.makingTitle} />
+        </h1>
         <p className="muted">
-          {video.status === "failed"
-            ? failureCopy(video)
-            : "Het script wordt geschreven en de video opgenomen. Dat duurt een paar minuten."}{" "}
-          Ga terug naar <Link href="/videos">de video&apos;s</Link> om de stand te zien.
+          {video.status === "failed" ? (
+            <UiText text={failureText(video)} tier="guide" inline />
+          ) : (
+            <UiText text={videoCopy.makingBody} tier="guide" inline />
+          )}{" "}
+          {/* one sentence, so the gloss reads whole; the link covers it instead of "de video's" alone */}
+          <Link href="/videos">
+            <UiText text={videoCopy.checkStatus} tier="guide" inline />
+          </Link>
         </p>
       </div>
     );
@@ -96,13 +97,14 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
     void element.play().catch(() => undefined);
   }
   const currentId = video.id;
+  const presenter = video.presenter === "avatar" ? videoCopy.presenterAvatar : videoCopy.presenterCards;
   function markWatched() {
     if (finished) return;
     setFinished(true);
     void videos
       .watched(currentId)
       .then(setVideo)
-      .catch((cause) => setNotice(friendly(cause, "Je kijkbeurt kon niet worden bewaard.")));
+      .catch((cause) => setNotice(errorCopy(cause, videoCopy.watchFailed)));
   }
 
   return (
@@ -110,10 +112,13 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
       <header className="video-lesson-header">
         <p className="eyebrow">
           {video.kind_label.toUpperCase()} · {stageLabels[video.stage_id] ?? video.stage_id} ·{" "}
-          {clock(video.duration_seconds)} · {video.word_count} WOORDEN
+          {clock(video.duration_seconds)} ·{" "}
+          <UiText text={fill(videoCopy.wordCount, { count: video.word_count })} inline />
         </p>
         <h1>{video.title}</h1>
-        <p className="muted">Onderwerp: {video.topic}</p>
+        <p className="muted">
+          <UiText text={fill(videoCopy.topic, { topic: video.topic })} />
+        </p>
       </header>
 
       <div className="video-stage">
@@ -133,10 +138,10 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
             kind="subtitles"
             src={`/api/${video.subtitles_url}`}
             srcLang="nl"
-            label="Nederlands"
+            label={videoCopy.subtitleTrack.nl}
             default
           />
-          Je browser kan deze video niet afspelen.
+          <UiText text={videoCopy.noVideoSupport} tier="guide" />
         </video>
         <div className="video-controls-row">
           <label className="toggle">
@@ -145,13 +150,10 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
               checked={showSubtitles}
               onChange={(event) => setShowSubtitles(event.target.checked)}
             />{" "}
-            Ondertitels
+            <UiText text={videoCopy.subtitles} inline />
           </label>
           <span className="small-text muted">
-            {video.presenter === "avatar"
-              ? "Virtuele presentator en synthetische stem"
-              : "Scènekaarten en synthetische stem"}{" "}
-            ({video.voice || video.renderer}). Geen echte persoon.
+            <UiText text={fill(presenter, { voice: video.voice || video.renderer })} tier="guide" inline />
           </span>
         </div>
       </div>
@@ -163,10 +165,12 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
       {!finished && (
         <div className="finish-row">
           <button className="button" data-testid="finish-watching" onClick={markWatched}>
-            Klaar met kijken
+            <UiText text={videoCopy.finishWatching} inline />
             <Icon name="arrow" size={18} />
           </button>
-          <span className="small-text muted">Daarna volgen een paar vragen over de video.</span>
+          <span className="small-text muted">
+            <UiText text={videoCopy.questionsFollow} tier="guide" inline />
+          </span>
         </div>
       )}
 
@@ -174,8 +178,10 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
         <>
           <Questions video={video} onUpdate={setVideo} />
           <footer className="episode-footer">
-            <div className="rating" role="group" aria-label="Was deze video goed?">
-              <span className="small-text muted">Was dit een goede video?</span>
+            <div className="rating" role="group" aria-label={videoCopy.ratingGroup.nl}>
+              <span className="small-text muted">
+                <UiText text={videoCopy.ratingPrompt} inline />
+              </span>
               <button
                 type="button"
                 className={`linklike ${video.rating === 1 ? "is-on" : ""}`}
@@ -187,7 +193,7 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
                     .catch(() => undefined)
                 }
               >
-                Ja
+                <UiText text={videoCopy.ratingYes} inline />
               </button>
               <button
                 type="button"
@@ -200,11 +206,11 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
                     .catch(() => undefined)
                 }
               >
-                Niet echt
+                <UiText text={videoCopy.ratingNo} inline />
               </button>
             </div>
             <Link className="stage-link" href="/videos">
-              Vraag nog een video
+              <UiText text={videoCopy.anotherVideo} inline />
               <Icon name="arrow" size={17} />
             </Link>
             <div className="honesty-row">
@@ -215,7 +221,7 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
             </div>
             {notice && (
               <p className="error" role="alert">
-                {notice}
+                <UiText text={notice} tier="guide" />
               </p>
             )}
           </footer>
@@ -223,7 +229,7 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
       )}
       {!finished && notice && (
         <p className="error" role="alert">
-          {notice}
+          <UiText text={notice} tier="guide" />
         </p>
       )}
     </article>
@@ -244,10 +250,16 @@ function Transcript({
     <section className="video-transcript" aria-labelledby="transcript-title">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">TRANSCRIPT</p>
-          <h2 id="transcript-title">Lees mee</h2>
+          <p className="eyebrow">
+            <UiText text={videoCopy.transcriptEyebrow} />
+          </p>
+          <h2 id="transcript-title">
+            <UiText text={videoCopy.readAlong} />
+          </h2>
         </div>
-        <span className="small-text muted">Klik op een scène om daar te kijken.</span>
+        <span className="small-text muted">
+          <UiText text={videoCopy.sceneHint} tier="guide" />
+        </span>
       </div>
       <ol className="scene-list">
         {video.scenes.map((scene, index) => (
@@ -261,7 +273,7 @@ function Transcript({
               type="button"
               className="scene-jump"
               onClick={() => onSeek(index)}
-              aria-label={`Ga naar scène ${index + 1}`}
+              aria-label={fill(videoCopy.goToScene, { number: index + 1 }).nl}
             >
               <span className="scene-keyword" lang="nl">
                 {scene.keyword}
@@ -269,7 +281,8 @@ function Transcript({
             </button>
             <div className="scene-text">
               <p lang="nl" className="story-copy">
-                {scene.nl} <PhraseAudio text={scene.nl} label={`scène ${index + 1}`} />
+                {scene.nl}{" "}
+                <PhraseAudio text={scene.nl} label={fill(videoCopy.sceneName, { number: index + 1 }).nl} />
               </p>
               {showEnglish && scene.en && (
                 <p lang="en" className="copy-support">
@@ -292,16 +305,22 @@ function Transcript({
 function Glossary({ videoId, items }: { videoId: string; items: GlossaryItem[] }) {
   const { showEnglish, showPersian } = useLanguageSupport();
   const [saved, setSaved] = useState<Record<string, boolean>>({});
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<Copy | null>(null);
   if (!items.length) return null;
   return (
     <section className="episode-glossary" aria-labelledby="video-glossary-title">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">NIEUWE WOORDEN</p>
-          <h2 id="video-glossary-title">Bewaar wat je wilt onthouden</h2>
+          <p className="eyebrow">
+            <UiText text={videoCopy.newWordsEyebrow} />
+          </p>
+          <h2 id="video-glossary-title">
+            <UiText text={videoCopy.glossaryTitle} />
+          </h2>
         </div>
-        <span className="quiet-badge">{items.length} woorden</span>
+        <span className="quiet-badge">
+          <UiText text={fill(videoCopy.glossaryCount, { count: items.length })} inline />
+        </span>
       </div>
       <ul className="glossary-list">
         {items.map((item) => (
@@ -334,22 +353,20 @@ function Glossary({ videoId, items }: { videoId: string; items: GlossaryItem[] }
                   .then((result) => {
                     setSaved((current) => ({ ...current, [item.term]: true }));
                     setMessage(
-                      result.created
-                        ? `"${item.term}" staat in je woordenlijst en komt terug op het juiste moment.`
-                        : `"${item.term}" stond al in je woordenlijst.`,
+                      fill(result.created ? videoCopy.wordSaved : videoCopy.wordKnown, { term: item.term }),
                     );
                   })
-                  .catch((cause) => setMessage(friendly(cause, "Bewaren lukte niet.")))
+                  .catch((cause) => setMessage(errorCopy(cause, videoCopy.saveFailed)))
               }
             >
-              {saved[item.term] ? "Bewaard" : "Bewaar"}
+              <UiText text={saved[item.term] ? uiCopy.state.saved : uiCopy.action.save} inline />
             </button>
           </li>
         ))}
       </ul>
       {message && (
         <p className="practice-hint" role="status">
-          {message}
+          <UiText text={message} tier="guide" />
         </p>
       )}
     </section>
@@ -359,7 +376,7 @@ function Glossary({ videoId, items }: { videoId: string; items: GlossaryItem[] }
 function Questions({ video, onUpdate }: { video: Video; onUpdate: (video: Video) => void }) {
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [busy, setBusy] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<Copy | null>(null);
   const requestId = useRef(newRequestId());
   const complete = video.questions.every((question) => answers[String(question.index)] !== undefined);
   const correct = video.answered ? video.questions.filter((question) => question.correct).length : 0;
@@ -367,11 +384,19 @@ function Questions({ video, onUpdate }: { video: Video; onUpdate: (video: Video)
     <section className="episode-questions" aria-labelledby="video-questions-title">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">BEGRIP</p>
+          <p className="eyebrow">
+            <UiText text={videoCopy.comprehensionEyebrow} />
+          </p>
           <h2 id="video-questions-title">
-            {video.answered
-              ? `${correct} van ${video.questions.length} juist`
-              : `${video.questions.length === 2 ? "Twee" : "Drie"} vragen over de video`}
+            <UiText
+              text={
+                video.answered
+                  ? fill(videoCopy.score, { correct, total: video.questions.length })
+                  : video.questions.length === 2
+                    ? videoCopy.questionsTwo
+                    : videoCopy.questionsThree
+              }
+            />
           </h2>
         </div>
       </div>
@@ -380,11 +405,11 @@ function Questions({ video, onUpdate }: { video: Video; onUpdate: (video: Video)
           event.preventDefault();
           if (!complete || busy) return;
           setBusy(true);
-          setMessage("");
+          setMessage(null);
           void videos
             .answer(video.id, answers, requestId.current)
             .then(onUpdate)
-            .catch((cause) => setMessage(friendly(cause, "Je antwoorden konden niet worden bewaard.")))
+            .catch((cause) => setMessage(errorCopy(cause, videoCopy.answersFailed)))
             .finally(() => setBusy(false));
         }}
       >
@@ -422,7 +447,13 @@ function Questions({ video, onUpdate }: { video: Video; onUpdate: (video: Video)
               {video.answered && question.evidence && (
                 <p className="question-evidence">
                   <Icon name={question.correct ? "check" : "help"} size={15} />{" "}
-                  <span lang="nl">In de video: “{question.evidence}”</span>
+                  <span lang="nl">
+                    <UiText
+                      text={fill(videoCopy.evidence, { evidence: question.evidence })}
+                      tier="guide"
+                      inline
+                    />
+                  </span>
                 </p>
               )}
             </li>
@@ -430,12 +461,12 @@ function Questions({ video, onUpdate }: { video: Video; onUpdate: (video: Video)
         </ol>
         {!video.answered && (
           <button className="button" type="submit" disabled={!complete || busy}>
-            Controleer mijn antwoorden
+            <UiText text={videoCopy.checkAnswers} inline />
           </button>
         )}
         {message && (
           <p className="error" role="alert">
-            {message}
+            <UiText text={message} tier="guide" />
           </p>
         )}
       </form>

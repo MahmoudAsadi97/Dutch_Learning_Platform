@@ -1,6 +1,8 @@
 "use client";
 
-import { ApiError } from "@/lib/client/api";
+import { UiText } from "@/components/ui/UiText";
+import { errorCopy } from "@/lib/client/error-copy";
+import { uiCopy } from "@/lib/ui-copy";
 import { useUsage } from "@/lib/client/queries/usage";
 
 const METRIC_LABEL: Record<string, string> = {
@@ -17,12 +19,12 @@ function format(value: number): string {
 /** Budget counters of the signed-in learner: what today's and the total budget allow and what is used. */
 export function UsagePanel() {
   const { data: usage, error: cause } = useUsage();
-  const error = cause ? (cause instanceof ApiError ? cause.detail : "De API is niet bereikbaar.") : "";
+  const error = cause ? errorCopy(cause, uiCopy.errors.loadFailed) : null;
 
   if (error) {
     return (
       <p className="error" role="alert">
-        {error}
+        <UiText text={error} tier="guide" />
       </p>
     );
   }

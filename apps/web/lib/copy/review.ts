@@ -12,6 +12,8 @@ export const PERSIAN_REVIEWED: Record<string, boolean> = {
   welcome: false,
   chip: false,
   about: false,
+  errors: false,
+  failures: false,
   episode: false,
   video: false,
   words: false,

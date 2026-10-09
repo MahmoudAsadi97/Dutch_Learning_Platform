@@ -10,9 +10,14 @@ export const web = path.resolve(import.meta.dirname, "..", "..");
 
 const ATTRIBUTES = /\b(?:aria-label|placeholder|title|alt|label)="([^"]*)"/g;
 
+/** Text between a JSX tag and the next tag; generics, arrows and statements between two JSX blocks are code. */
+const JSX_TEXT = /(?:<[A-Za-z][\w.]*(?:\s[^<>]*?)?>|<\/[\w.]*>|<>)([^<>{}]+)(?=<)/g;
+const CODE =
+  /\b(?:return|const|let|if|else|null|await|useState|useRef|Promise)\b|=>|&&|\|\||;\s*$|^\s*[)(;]/m;
+
 export function hardCodedText(code) {
   const stripped = code.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:"'`])\/\/.*$/gm, "$1");
-  const jsx = [...stripped.matchAll(/>([^<>{}]+)</g)].map((m) => m[1].trim());
+  const jsx = [...stripped.matchAll(JSX_TEXT)].map((m) => m[1].trim()).filter((text) => !CODE.test(text));
   const attributes = [...stripped.matchAll(ATTRIBUTES)].map((m) => m[1].trim());
   return [...jsx, ...attributes].filter((text) => /\p{L}{2,}/u.test(text));
 }

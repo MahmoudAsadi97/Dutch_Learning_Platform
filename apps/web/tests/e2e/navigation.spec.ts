@@ -22,11 +22,19 @@ for (const width of [390, 320]) {
       const box = await link.boundingBox();
       expect(box?.width ?? 0).toBeGreaterThanOrEqual(44);
       expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
-      // a centred label that is wider than its tab spills out on both sides without moving scrollWidth
+      // a centred label that is wider than its tab spills out on both sides without moving scrollWidth;
+      // measure the text itself (the Dutch and any gloss), since the wrapper has no box without a gloss
       const fits = await link.evaluate((element) => {
         const tab = element.getBoundingClientRect();
-        const label = element.querySelector("span")?.getBoundingClientRect();
-        return !!label && label.left >= tab.left - 0.5 && label.right <= tab.right + 0.5;
+        const lines = [...element.querySelectorAll(".ui-text-nl, .ui-gloss")].map((span) =>
+          span.getBoundingClientRect(),
+        );
+        return (
+          lines.length > 0 &&
+          lines.every(
+            (line) => line.width === 0 || (line.left >= tab.left - 0.5 && line.right <= tab.right + 0.5),
+          )
+        );
       });
       expect(fits).toBe(true);
     }

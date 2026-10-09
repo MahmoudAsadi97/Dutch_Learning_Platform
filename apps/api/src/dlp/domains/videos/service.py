@@ -114,7 +114,7 @@ def request_video(session: Session, learner: Learner, *, stage_id: str, topic: s
     if existing is not None:
         return existing
     if len(_pending(session, learner.id)) >= MAX_PENDING:
-        raise VideoError("two videos are already being made; watch one first", 409)
+        raise VideoError("two videos are already being made; watch one first", 409, code="videos_busy")
     topic = " ".join(topic.split())[:160]
     topic_id, title = ("", "")
     if not topic:
@@ -490,7 +490,7 @@ def today_summary(session: Session, learner_id: uuid.UUID) -> dict:
 
 def mark_watched(session: Session, learner: Learner, lesson: VideoLesson) -> dict:
     if lesson.status != "ready":
-        raise VideoError("this video is not ready yet", 409)
+        raise VideoError("this video is not ready yet", 409, code="not_ready")
     if lesson.watched_at is None:
         lesson.watched_at = utcnow()
         today.add_points(session, learner.id, points=POINTS["watch"], videos_watched=1)
@@ -500,11 +500,11 @@ def mark_watched(session: Session, learner: Learner, lesson: VideoLesson) -> dic
 def answer_questions(session: Session, learner: Learner, lesson: VideoLesson, *, request_id: str,
                      answers: dict[str, int]) -> dict:
     if lesson.status != "ready":
-        raise VideoError("this video is not ready yet", 409)
+        raise VideoError("this video is not ready yet", 409, code="not_ready")
     state = dict(lesson.answers or {})
     if state.get("chosen") is not None:
         if state.get("request_id") != request_id:
-            raise VideoError("the questions of this video were already answered", 409)
+            raise VideoError("the questions of this video were already answered", 409, code="already_answered")
         return video_view(lesson)
     chosen = {str(i): answers.get(str(i)) for i in range(len(lesson.questions))}
     if any(value is None for value in chosen.values()):
@@ -540,7 +540,7 @@ def retry_failed(session: Session, learner: Learner, lesson: VideoLesson) -> dic
     if lesson.status != "failed":
         raise VideoError("only a failed video can be retried", 409)
     if lesson.error_code == "paid_not_approved":
-        raise VideoError("paid usage is not approved for this environment", 409)
+        raise VideoError("paid usage is not approved for this environment", 409, code="paid_not_approved")
     if lesson.error_code in ("quality", "provider", "allowance", "interrupted"):
         lesson.scenes, lesson.glossary, lesson.questions, lesson.word_count = [], [], [], 0
     lesson.status, lesson.error_code = "queued", ""
@@ -554,11 +554,11 @@ def retry_failed(session: Session, learner: Learner, lesson: VideoLesson) -> dic
 
 def media_for(lesson: VideoLesson) -> tuple[str, int]:
     if lesson.status != "ready" or not lesson.media_key:
-        raise VideoError("this video is not ready yet", 409)
+        raise VideoError("this video is not ready yet", 409, code="not_ready")
     return lesson.media_key, lesson.media_bytes
 
 
 def subtitles(lesson: VideoLesson) -> str:
     if lesson.status != "ready":
-        raise VideoError("this video is not ready yet", 409)
+        raise VideoError("this video is not ready yet", 409, code="not_ready")
     return media.vtt_for(lesson.cues)

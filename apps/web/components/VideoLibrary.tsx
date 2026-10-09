@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { LearningText } from "@/components/LanguageSupport";
-import { ApiError } from "@/lib/client/api";
+import { errorCopy } from "@/lib/client/error-copy";
+import { isAbort } from "@/lib/client/errors";
 import { stageLabels } from "@/lib/client/stories";
 import {
   clock,
@@ -15,6 +16,10 @@ import {
 } from "@/lib/client/videos";
 import { ButtonLink, EmptyState, Skeleton, SkeletonPanel } from "@/components/ui";
 import { HonestyChip } from "@/components/ui/HonestyChip";
+import { videoFailure } from "@/lib/client/failures";
+import { UiText } from "@/components/ui/UiText";
+import { videoCopy } from "@/lib/copy/video";
+import { uiCopy, type Copy } from "@/lib/ui-copy";
 
 const POLL_MS = 6000;
 const POLL_LIMIT = 150; // fifteen minutes: the avatar service renders a minute of video in a few minutes
@@ -27,24 +32,9 @@ export const statusCopy: Record<string, string> = {
   failed: "niet gelukt",
 };
 
-export function failureCopy(video: VideoSummary): string {
-  switch (video.error_code) {
-    case "allowance":
-      return "De schrijver heeft vandaag genoeg geschreven. Probeer het morgen opnieuw.";
-    case "allowance_video":
-      return "Je dagelijkse videotijd is op. Morgen kan er weer een video gemaakt worden.";
-    case "quality":
-      return "Het script haalde de automatische controle niet, ook niet na een tweede poging.";
-    case "paid_not_approved":
-      return "Betaald modelgebruik is in deze omgeving niet ingeschakeld.";
-    case "render":
-    case "render_timeout":
-      return "Het maken van de video is mislukt. Het script is bewaard; een nieuwe poging gebruikt het opnieuw.";
-    case "too_long":
-      return "Het script was te lang voor één video.";
-    default:
-      return "De schrijver of de videodienst was even niet bereikbaar.";
-  }
+/** Why a video was not made, with its glosses (the codes live in lib/client/failures.ts). */
+export function failureText(video: VideoSummary): Copy {
+  return videoFailure(video.error_code, uiCopy.failures);
 }
 
 export function VideoTile({
@@ -87,7 +77,11 @@ export function VideoTile({
             ? `${video.scene_count} scènes · ${video.word_count} woorden · ${video.watched_at ? "bekeken" : "nog niet bekeken"}${video.rating === 1 ? " · 👍" : video.rating === -1 ? " · 👎" : ""}`
             : statusCopy[video.status]}
         </p>
-        {video.status === "failed" && <p className="small-text">{failureCopy(video)}</p>}
+        {video.status === "failed" && (
+          <p className="small-text">
+            <UiText text={failureText(video)} tier="guide" />
+          </p>
+        )}
         {video.status === "failed" && video.failure_reasons?.length > 0 && (
           <details className="failure-details">
             <summary>Wat er niet klopte</summary>
@@ -121,11 +115,11 @@ export function VideoTile({
 
 export function VideoLibrary() {
   const [data, setData] = useState<Library | null>(null);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const [topic, setTopic] = useState("");
   const [stage, setStage] = useState("");
   const [kind, setKind] = useState("uitleg");
-  const [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState<Copy | null>(null);
   const [busy, setBusy] = useState(false);
   const [polls, setPolls] = useState(0);
   const load = useCallback(
@@ -134,12 +128,11 @@ export function VideoLibrary() {
         .library(signal)
         .then((value) => {
           setData(value);
-          setError("");
+          setError(null);
           setStage((current) => current || value.default_stage);
         })
         .catch((cause) => {
-          if (!(cause instanceof DOMException && cause.name === "AbortError"))
-            setError("De video's konden niet worden geladen.");
+          if (!isAbort(cause)) setError(errorCopy(cause, videoCopy.libraryLoadFailed));
         }),
     [],
   );
@@ -164,45 +157,37 @@ export function VideoLibrary() {
 
   async function request() {
     setBusy(true);
-    setNotice("");
+    setNotice(null);
     try {
       await videos.request(stage, topic.trim(), kind);
       setTopic("");
       setPolls(0);
       await load();
-      setNotice(
-        "De schrijver is begonnen. De video verschijnt hier zodra ze klaar is; dat duurt een paar minuten.",
-      );
+      setNotice(videoCopy.requestStarted);
     } catch (cause) {
-      setNotice(
-        cause instanceof ApiError
-          ? cause.status === 409
-            ? "Er worden al twee video's gemaakt. Bekijk er eerst een."
-            : cause.status === 429
-              ? "Je dagelijkse limiet is bereikt."
-              : cause.detail
-          : "Dat lukte nu niet.",
-      );
+      setNotice(errorCopy(cause));
     } finally {
       setBusy(false);
     }
   }
   async function retry(video: VideoSummary) {
-    setNotice("");
+    setNotice(null);
     try {
       await videos.retry(video.id);
       setPolls(0);
       await load();
-      setNotice("Nieuwe poging gestart.");
-    } catch {
-      setNotice("Opnieuw proberen lukte niet.");
+      setNotice(videoCopy.retryStarted);
+    } catch (cause) {
+      setNotice(
+        errorCopy(cause, videoCopy.retryFailed, { paid_not_approved: uiCopy.failures.paidNotApproved }),
+      );
     }
   }
 
   if (error)
     return (
       <div className="error" role="alert">
-        {error}
+        <UiText text={error} tier="guide" />
       </div>
     );
   if (!data)
@@ -294,7 +279,7 @@ export function VideoLibrary() {
         </p>
         {notice && (
           <p className="practice-hint" role="status">
-            {notice}
+            <UiText text={notice} tier="guide" />
           </p>
         )}
         {stalled && pending && (

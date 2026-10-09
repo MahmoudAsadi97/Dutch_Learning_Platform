@@ -9,8 +9,11 @@ import { HelpLadder } from "@/components/HelpLadder";
 import { QuestionList } from "@/components/QuestionList";
 import { StepHeader } from "@/components/StepHeader";
 import { PhraseAudio } from "@/components/PhraseAudio";
+import { UiText } from "@/components/ui/UiText";
 import { recordHelp, submitAnswer } from "@/lib/client/practice";
+import { missionsCopy } from "@/lib/copy/missions";
 import type { HelpRung, ReadingPayload, SessionDetail, Step } from "@/lib/types";
+import type { Copy } from "@/lib/ui-copy";
 
 export interface StepProps {
   labels: { unreviewed_nl: string; unreviewed_fa: string };
@@ -36,7 +39,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
   const { showEnglish, showPersian: supportPersian } = useLanguageSupport();
   const [showPersian, setShowPersian] = useState(false);
   const [translationBusy, setTranslationBusy] = useState(false);
-  const [translationError, setTranslationError] = useState("");
+  const [translationError, setTranslationError] = useState<Copy | null>(null);
   const progress = detail?.session.step_progress[step.key];
 
   async function answer(questionId: string, chosenIndex: number) {
@@ -58,15 +61,13 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
       return;
     }
     setTranslationBusy(true);
-    setTranslationError("");
+    setTranslationError(null);
     try {
       const current = detail ?? (await ensureSession());
       onDetail(await recordHelp(current, step.key, { level: 3, kind: "reading_translation" }));
       setShowPersian(true);
     } catch {
-      setTranslationError(
-        "De vertaling is nog niet getoond: hulp kon niet worden opgeslagen. Probeer opnieuw.",
-      );
+      setTranslationError(missionsCopy.translationFailed);
     } finally {
       setTranslationBusy(false);
     }
@@ -78,7 +79,8 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
 
       <section className="card" aria-labelledby="reading-text-heading">
         <h3 id="reading-text-heading">
-          Tekst <PhraseAudio text={payload.text.nl} label="De leestekst" />
+          <UiText text={missionsCopy.readingText} />{" "}
+          <PhraseAudio text={payload.text.nl} label={missionsCopy.readingTextAudio.nl} />
         </h3>
         <p>
           <ContentLabel
@@ -110,7 +112,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
         </p>
         {translationError && (
           <p className="error" role="alert">
-            {translationError}
+            <UiText text={translationError} tier="guide" />
           </p>
         )}
         {showPersian && (
@@ -127,13 +129,21 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
 
       {payload.vocabulary.length > 0 && (
         <section className="card" aria-labelledby="vocab-heading">
-          <h3 id="vocab-heading">Woordenschat</h3>
+          <h3 id="vocab-heading">
+            <UiText text={missionsCopy.vocabulary} />
+          </h3>
           <table className="plain">
             <thead>
               <tr>
-                <th scope="col">Nederlands</th>
-                <th scope="col">Betekenis</th>
-                <th scope="col">Opmerking</th>
+                <th scope="col">
+                  <UiText text={missionsCopy.columnDutch} />
+                </th>
+                <th scope="col">
+                  <UiText text={missionsCopy.columnMeaning} />
+                </th>
+                <th scope="col">
+                  <UiText text={missionsCopy.columnNote} />
+                </th>
               </tr>
             </thead>
             <tbody>

@@ -13,7 +13,7 @@ import { PhraseAudio } from "@/components/PhraseAudio";
 import { ConversationTopicChoices, TopicConversation } from "@/components/TopicConversation";
 import { WritingCoach } from "@/components/WritingCoach";
 import { Icon, type IconName } from "@/components/Icon";
-import { apiJson, ApiError, newRequestId } from "@/lib/client/api";
+import { apiJson, newRequestId } from "@/lib/client/api";
 import { friendlyError, skillNames } from "@/lib/client/curriculum";
 import type { TopicDetail, TopicFeedback, TopicPage } from "@/lib/client/topics";
 import type { Skill } from "@/lib/types";
@@ -77,7 +77,7 @@ export function SkillTopicPractice(props: Props) {
             if (!controller.signal.aborted)
               setFailed({
                 key,
-                message: friendlyError(cause instanceof ApiError ? cause.status : undefined),
+                message: friendlyError(cause),
               });
           });
       },
@@ -364,8 +364,7 @@ function TopicReader({
         }
       })
       .catch((cause) => {
-        if (!controller.signal.aborted)
-          setLoadError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
+        if (!controller.signal.aborted) setLoadError(friendlyError(cause));
       });
     return () => controller.abort();
   }, [endpoint, skill, retry]);
@@ -430,8 +429,7 @@ function TopicReader({
         if (response.completed) completedRef.current();
       }
     } catch (cause) {
-      if (!controller.signal.aborted)
-        setError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
+      if (!controller.signal.aborted) setError(friendlyError(cause));
     } finally {
       if (submitRef.current === controller) {
         submitRef.current = null;

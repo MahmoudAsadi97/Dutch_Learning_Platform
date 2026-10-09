@@ -271,6 +271,7 @@ def test_answers_are_graded_once_and_the_choice_queues_the_next_episode(client, 
     other = client.post(f"/stories/episodes/{eid}/answers", headers=headers,
                         json={"request_id": "ans-2", "answers": {"0": 1, "1": 2, "2": 0}})
     assert other.status_code == 409, "the questions cannot be re-answered for more points"
+    assert other.json()["code"] == "already_answered"
     plan = client.get("/today", headers=headers).json()
     assert plan["goal"]["points"] == 10 + 2 * 3 and plan["streak"]["current"] == 1 and plan["streak"]["today_active"]
     assert plan["episode"] is None and plan["awaiting_choice"]["id"] == eid and plan["next_step"] == "choose"
@@ -318,6 +319,7 @@ def test_level_can_be_changed_and_a_wish_queues_a_themed_episode(client, headers
     client.post("/stories/episodes", headers=headers, json={"request_id": "wish-2", "theme": "de markt"})
     third = client.post("/stories/episodes", headers=headers, json={"request_id": "wish-3", "theme": "de bus"})
     assert third.status_code == 409, "at most two unread episodes are written ahead"
+    assert third.json()["code"] == "episodes_busy", "the web app words this conflict from its code"
     with session_scope() as session:
         assert {row.stage_id for row in session.scalars(select(StoryEpisode))} == {"a2"}
 

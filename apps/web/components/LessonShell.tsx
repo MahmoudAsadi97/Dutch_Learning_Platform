@@ -8,9 +8,12 @@ import { ListeningStep } from "@/components/ListeningStep";
 import { ReadingStep } from "@/components/ReadingStep";
 import { SpeakingStep } from "@/components/SpeakingStep";
 import { WritingStep } from "@/components/WritingStep";
-import { ApiError, apiJson, newRequestId } from "@/lib/client/api";
+import { UiText } from "@/components/ui/UiText";
+import { apiJson, newRequestId } from "@/lib/client/api";
+import { errorCopy } from "@/lib/client/error-copy";
 import { useNavigationGuard } from "@/lib/client/navigation";
 import { recordStatus } from "@/lib/client/learning";
+import { missionsCopy } from "@/lib/copy/missions";
 import type {
   CheckpointPayload,
   ListeningPayload,
@@ -24,6 +27,7 @@ import type {
   WritingPayload,
 } from "@/lib/types";
 import { skillList } from "@/lib/domain/registry";
+import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
 const SKILL_LABEL: Record<string, { nl: string; fa: string }> = Object.fromEntries(
   skillList.map((skill) => [skill.key, { nl: skill.label.nl, fa: skill.label.fa }]),
@@ -36,9 +40,7 @@ interface Props {
 }
 
 type LoadState =
-  | { kind: "loading" }
-  | { kind: "error"; message: string; requestId: string }
-  | { kind: "ready"; mission: MissionResponse };
+  { kind: "loading" } | { kind: "error"; message: Copy } | { kind: "ready"; mission: MissionResponse };
 
 async function loadMission(missionId: string): Promise<{
   mission: MissionResponse;
@@ -87,13 +89,6 @@ function mergeDetail(current: SessionDetail | null, incoming: SessionDetail): Se
   };
 }
 
-function describeError(error: unknown): { message: string; requestId: string } {
-  return {
-    message: error instanceof ApiError ? error.detail : "De API is niet bereikbaar.",
-    requestId: error instanceof ApiError ? error.requestId : "",
-  };
-}
-
 export function LessonShell({ missionId }: Props) {
   const [state, setState] = useState<LoadState>({ kind: "loading" });
   const [activeKey, setActiveKey] = useState<string | null>(null);
@@ -108,7 +103,8 @@ export function LessonShell({ missionId }: Props) {
   });
   const [records, setRecords] = useState<SkillRecordView[]>([]);
   const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState<string>("");
+  // A Copy for what went well; a failed start keeps the API's own message as a plain string (step 2.8 maps those).
+  const [notice, setNotice] = useState<Copy | null>(null);
   const [attempt, setAttempt] = useState(0);
   const sessionsRef = useRef(sessions);
   const pendingStartRef = useRef<Partial<Record<Variant, Promise<SessionDetail>>>>({});
@@ -149,7 +145,7 @@ export function LessonShell({ missionId }: Props) {
         setSessions(found);
       })
       .catch((error: unknown) => {
-        if (!cancelled) setState({ kind: "error", ...describeError(error) });
+        if (!cancelled) setState({ kind: "error", message: errorCopy(error, missionsCopy.loadFailed) });
       });
     return () => {
       cancelled = true;
@@ -194,14 +190,16 @@ export function LessonShell({ missionId }: Props) {
 
   async function startSession(variant: Variant) {
     setBusy(true);
-    setNotice("");
+    setNotice(null);
     try {
       const detail = await ensureSession(variant);
-      setNotice(detail.turns.length > 0 || detail.evidence.length > 0 ? "Sessie hervat." : "Sessie gestart.");
-    } catch (error) {
       setNotice(
-        error instanceof ApiError ? `Kon geen sessie starten: ${error.detail}` : "Kon geen sessie starten.",
+        detail.turns.length > 0 || detail.evidence.length > 0
+          ? missionsCopy.sessionResumed
+          : missionsCopy.sessionStarted,
       );
+    } catch (error) {
+      setNotice(errorCopy(error, missionsCopy.sessionStartFailed));
     } finally {
       setBusy(false);
     }
@@ -211,7 +209,7 @@ export function LessonShell({ missionId }: Props) {
   async function restartSession(variant: Variant) {
     const current = sessionsRef.current[variant];
     setBusy(true);
-    setNotice("");
+    setNotice(null);
     try {
       if (current && current.session.status === "active") {
         await apiJson(`practice/sessions/${current.session.id}/abandon`, { method: "POST", body: {} });
@@ -220,13 +218,13 @@ export function LessonShell({ missionId }: Props) {
       setSessions((state) => ({ ...state, [variant]: null }));
       startRequestIdsRef.current = { ...startRequestIdsRef.current, [variant]: newRequestId() };
       const detail = await ensureSession(variant);
-      setNotice(detail.session.id !== current?.session.id ? "Nieuwe sessie gestart." : "Sessie hervat.");
-    } catch (error) {
       setNotice(
-        error instanceof ApiError
-          ? `Kon geen nieuwe sessie starten: ${error.detail}`
-          : "Kon geen nieuwe sessie starten.",
+        detail.session.id !== current?.session.id
+          ? missionsCopy.sessionRestarted
+          : missionsCopy.sessionResumed,
       );
+    } catch (error) {
+      setNotice(errorCopy(error, missionsCopy.sessionRestartFailed));
     } finally {
       setBusy(false);
     }
@@ -244,14 +242,16 @@ export function LessonShell({ missionId }: Props) {
   if (state.kind === "loading") {
     return (
       <p role="status" aria-live="polite">
-        Missie laden…
+        <UiText text={missionsCopy.missionLoading} />
       </p>
     );
   }
   if (state.kind === "error") {
     return (
       <div className="card" role="alert">
-        <p className="error">{state.message}</p>
+        <p className="error">
+          <UiText text={state.message} tier="guide" />
+        </p>
 
         <button
           type="button"
@@ -261,7 +261,7 @@ export function LessonShell({ missionId }: Props) {
             setAttempt((n) => n + 1);
           }}
         >
-          Opnieuw proberen
+          <UiText text={uiCopy.action.retry} inline />
         </button>
       </div>
     );
@@ -274,13 +274,16 @@ export function LessonShell({ missionId }: Props) {
 
   return (
     <div className="lesson-layout">
-      <aside aria-label="Stappen">
+      <aside aria-label={missionsCopy.stepsLabel.nl}>
         <div className="card">
           <h1 style={{ fontSize: "1.25rem" }}>
             <LearningText text={mission.title} />
           </h1>
           <p className="muted lesson-title-meta" style={{ fontSize: "0.85rem" }}>
-            {mission.cefr_target}-oefendoelen · {steps.length} stappen
+            <UiText
+              text={fill(missionsCopy.lessonMeta, { level: mission.cefr_target, count: steps.length })}
+              inline
+            />
           </p>
           <p>
             <ContentLabel
@@ -305,9 +308,11 @@ export function LessonShell({ missionId }: Props) {
                     </span>
                     <span>
                       <span className="step-skill">
-                        {step.variant === "transfer"
-                          ? "Zelfstandig"
-                          : (SKILL_LABEL[step.skill]?.nl ?? step.skill)}
+                        {step.variant === "transfer" ? (
+                          <UiText text={missionsCopy.independent} inline />
+                        ) : (
+                          (SKILL_LABEL[step.skill]?.nl ?? step.skill)
+                        )}
                       </span>
                       {step.title.nl}
                     </span>
@@ -318,10 +323,12 @@ export function LessonShell({ missionId }: Props) {
           </ol>
         </div>
         <div className="card">
-          <h2 style={{ fontSize: "1rem" }}>Sessie</h2>
+          <h2 style={{ fontSize: "1rem" }}>
+            <UiText text={missionsCopy.sessionTitle} />
+          </h2>
           {baseSession ? (
             <p className="small-text muted" data-testid="session-saved">
-              Je werk wordt tijdens het oefenen bewaard.
+              <UiText text={missionsCopy.sessionSaved} tier="guide" />
             </p>
           ) : (
             <button
@@ -330,17 +337,19 @@ export function LessonShell({ missionId }: Props) {
               onClick={() => void startSession("base")}
               disabled={busy}
             >
-              Start een oefensessie
+              <UiText text={missionsCopy.sessionStart} inline />
             </button>
           )}
           {notice && (
             <p role="status" aria-live="polite">
-              {notice}
+              <UiText text={notice} tier="guide" />
             </p>
           )}
         </div>
         <div className="card">
-          <h2 style={{ fontSize: "1rem" }}>Vaardigheden</h2>
+          <h2 style={{ fontSize: "1rem" }}>
+            <UiText text={missionsCopy.skillsTitle} />
+          </h2>
           <ul style={{ paddingInlineStart: "1.1rem", margin: 0 }} data-testid="skill-records">
             {records.map((record) => (
               <li key={record.id}>
@@ -348,7 +357,11 @@ export function LessonShell({ missionId }: Props) {
                 <span className="muted">{recordStatus[record.status] ?? record.status}</span>
               </li>
             ))}
-            {records.length === 0 && <li className="muted">nog geen records</li>}
+            {records.length === 0 && (
+              <li className="muted">
+                <UiText text={missionsCopy.noRecords} />
+              </li>
+            )}
           </ul>
         </div>
       </aside>
@@ -413,7 +426,9 @@ export function LessonShell({ missionId }: Props) {
             <p>
               <LearningText text={active.instructions} />
             </p>
-            <p className="muted">Deze stap ({active.payload.type}) heeft nog geen weergave.</p>
+            <p className="muted">
+              <UiText text={fill(missionsCopy.stepNoView, { type: active.payload.type })} tier="guide" />
+            </p>
           </article>
         ) : null}
       </section>

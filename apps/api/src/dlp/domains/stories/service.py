@@ -144,7 +144,7 @@ def queue_episode(session: Session, learner: Learner, *, theme: str = "", theme_
             return existing
     pending = [e for e in _unread_episodes(session, series) if e.status in ("queued", "generating")]
     if len(pending) >= 2:
-        raise StoryError("two episodes are already being written; read one first", 409)
+        raise StoryError("two episodes are already being written; read one first", 409, code="episodes_busy")
     number = series.episode_count + 1
     series.episode_count = number
     last_read = session.scalar(select(StoryEpisode).where(StoryEpisode.series_id == series.id,
@@ -397,7 +397,7 @@ def library(session: Session, learner: Learner, *, limit: int = 60) -> dict:
 
 def mark_read(session: Session, learner: Learner, episode: StoryEpisode) -> dict:
     if episode.status != "ready":
-        raise StoryError("this episode is not ready yet", 409)
+        raise StoryError("this episode is not ready yet", 409, code="not_ready")
     if episode.read_at is None:
         episode.read_at = utcnow()
         today.add_points(session, learner.id, points=POINTS["read"], episodes_read=1)
@@ -407,11 +407,11 @@ def mark_read(session: Session, learner: Learner, episode: StoryEpisode) -> dict
 def answer_questions(session: Session, learner: Learner, episode: StoryEpisode, *, request_id: str,
                      answers: dict[str, int]) -> dict:
     if episode.status != "ready":
-        raise StoryError("this episode is not ready yet", 409)
+        raise StoryError("this episode is not ready yet", 409, code="not_ready")
     state = dict(episode.answers or {})
     if state.get("chosen") is not None:
         if state.get("request_id") != request_id:
-            raise StoryError("the questions of this episode were already answered", 409)
+            raise StoryError("the questions of this episode were already answered", 409, code="already_answered")
         return episode_view(episode)
     chosen = {str(i): answers.get(str(i)) for i in range(len(episode.questions))}
     if any(value is None for value in chosen.values()):
@@ -429,7 +429,7 @@ def answer_questions(session: Session, learner: Learner, episode: StoryEpisode, 
 
 def choose(session: Session, learner: Learner, episode: StoryEpisode, choice: str) -> dict:
     if episode.status != "ready":
-        raise StoryError("this episode is not ready yet", 409)
+        raise StoryError("this episode is not ready yet", 409, code="not_ready")
     if choice not in {c["id"] for c in episode.choices}:
         raise StoryError("unknown choice", 422)
     first_choice = not episode.chosen_choice
@@ -457,7 +457,7 @@ def retry_failed(session: Session, learner: Learner, episode: StoryEpisode) -> d
     if episode.status != "failed":
         raise StoryError("only a failed episode can be retried", 409)
     if episode.error_code == "paid_not_approved":
-        raise StoryError("paid usage is not approved for this environment", 409)
+        raise StoryError("paid usage is not approved for this environment", 409, code="paid_not_approved")
     episode.status, episode.error_code = "queued", ""
     episode.updated_at = utcnow()
     jobs.enqueue(session, "story_episode", {"episode_id": str(episode.id)},
@@ -468,14 +468,14 @@ def retry_failed(session: Session, learner: Learner, episode: StoryEpisode) -> d
 def translate_paragraph(session: Session, settings: Settings, providers: Providers, learner: Learner,
                         episode: StoryEpisode, *, paragraph_index: int, request_id: str) -> dict:
     if episode.status != "ready":
-        raise StoryError("this episode is not ready yet", 409)
+        raise StoryError("this episode is not ready yet", 409, code="not_ready")
     if paragraph_index >= len(episode.paragraphs):
         raise StoryError("paragraph not found", 404)
     paragraphs = deepcopy(episode.paragraphs)
     if paragraphs[paragraph_index].get("fa"):
         return {"paragraph_index": paragraph_index, "fa": paragraphs[paragraph_index]["fa"], "cached": True}
     if settings.chat_provider == "azure" and not settings.paid_usage_enabled:
-        raise StoryError("paid usage is not approved for this environment", 409)
+        raise StoryError("paid usage is not approved for this environment", 409, code="paid_not_approved")
     messages = translate_messages(paragraphs[paragraph_index]["nl"], "fa")
     estimate = (sum(len(m.content) for m in messages) + len(schema_instruction(Translation))) // 2 + TRANSLATE_MAX_OUTPUT_TOKENS
     call_id = f"story-translate-{episode.id.hex}-{paragraph_index}-{hashlib.sha256(request_id.encode()).hexdigest()[:12]}"

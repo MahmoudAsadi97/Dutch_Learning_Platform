@@ -140,7 +140,7 @@ export function CurriculumTest({ stageId }: { stageId: string }) {
       setError(
         cause instanceof ApiError && cause.status === 409
           ? "Oefen eerst lezen, luisteren, spreken en schrijven. Daarna kun je deze eindtoets starten."
-          : friendlyError(cause instanceof ApiError ? cause.status : undefined),
+          : friendlyError(cause),
       );
     } finally {
       setBusy(false);
@@ -167,7 +167,7 @@ export function CurriculumTest({ stageId }: { stageId: string }) {
       void queryClient.invalidateQueries({ queryKey: queryKeys.me() });
       void queryClient.invalidateQueries({ queryKey: queryKeys.curriculum.all() });
     } catch (cause) {
-      setError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
+      setError(friendlyError(cause));
       try {
         const saved = await apiJson<CurriculumAttempt>(`curriculum/attempts/${attempt.id}`);
         setAttempt(saved);

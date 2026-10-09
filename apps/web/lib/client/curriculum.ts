@@ -1,5 +1,7 @@
 import type { LearningCopy } from "@/components/LanguageSupport";
+import { errorFor } from "@/lib/client/errors";
 import type { Skill } from "@/lib/types";
+import { uiCopy } from "@/lib/ui-copy";
 
 export interface CurriculumQuestion {
   id: string;
@@ -84,12 +86,15 @@ export interface CurriculumAttempt {
 }
 
 export { skillNames, skillOrder, stageLabel } from "../domain/registry";
-export function friendlyError(status?: number): string {
-  if (status === 401) return "Je sessie is verlopen. Meld je opnieuw aan en probeer verder te gaan.";
-  if (status === 403)
-    return "Je hebt nog geen toegang tot deze actie. Oefen voor een eindtoets eerst de vier vaardigheden van dit niveau.";
-  if (status === 429) return "Je oefenlimiet is bereikt. Je werk blijft bewaard; probeer later opnieuw.";
-  if (status === 422)
-    return "Controleer of je alle onderdelen hebt ingevuld en een nieuwe opname hebt gemaakt.";
-  return "Dit lukte even niet. Je invoer blijft staan. Probeer het opnieuw.";
+/**
+ * The message for a failed curriculum call. Pass the error itself: the API's code decides first, the
+ * status second (lib/client/errors.ts). A bare status still works for the few callers that only have one.
+ * The final check words its 403 and 422 precisely.
+ */
+export function friendlyError(cause?: unknown): string {
+  const failed = typeof cause === "number" ? { status: cause } : cause;
+  return errorFor(failed, uiCopy.errors, {
+    403: uiCopy.errors.checkLocked,
+    422: uiCopy.errors.checkIncomplete,
+  }).nl;
 }

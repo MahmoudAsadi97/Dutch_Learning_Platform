@@ -16,7 +16,7 @@ import {
 } from "@/components/CurriculumControls";
 import { Icon, type IconName } from "@/components/Icon";
 import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
-import { apiJson, ApiError } from "@/lib/client/api";
+import { apiJson } from "@/lib/client/api";
 import { friendlyError, skillNames, stageLabel, type CurriculumStage } from "@/lib/client/curriculum";
 import { useNavigationGuard } from "@/lib/client/navigation";
 import type { Skill } from "@/lib/types";
@@ -99,8 +99,7 @@ export function CurriculumLesson({
         } catch {}
       })
       .catch((cause) => {
-        if (cause?.name !== "AbortError")
-          setError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
+        if (cause?.name !== "AbortError") setError(friendlyError(cause));
       });
     return () => controller.abort();
   }, [stageId, retry]);
@@ -138,7 +137,7 @@ export function CurriculumLesson({
       setChecked((current) => ({ ...current, [section]: true }));
       if (result.completed) setStage(await apiJson<CurriculumStage>(`curriculum/${stageId}`));
     } catch (cause) {
-      setError(friendlyError(cause instanceof ApiError ? cause.status : undefined));
+      setError(friendlyError(cause));
     } finally {
       setBusy(false);
     }

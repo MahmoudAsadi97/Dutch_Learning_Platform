@@ -6,26 +6,22 @@ import { Icon } from "@/components/Icon";
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import { Cover, Skeleton, SkeletonPanel } from "@/components/ui";
-import { ApiError, newRequestId } from "@/lib/client/api";
+import { newRequestId } from "@/lib/client/api";
+import { errorCopy } from "@/lib/client/error-copy";
+import { isAbort } from "@/lib/client/errors";
 import { useRecorder } from "@/lib/client/recorder";
 import { stageLabels, stories, type Episode, type GlossaryItem } from "@/lib/client/stories";
 import { playTone } from "@/lib/client/tones";
 import { HonestyChip } from "@/components/ui/HonestyChip";
-
-function friendly(cause: unknown, fallback: string) {
-  if (cause instanceof ApiError) {
-    if (cause.status === 429) return "Je dagelijkse limiet voor het taalmodel is bereikt.";
-    if (cause.status === 503) return "Het taalmodel is even niet bereikbaar. Je voortgang is bewaard.";
-    if (cause.status === 409) return cause.detail;
-  }
-  return fallback;
-}
+import { UiText } from "@/components/ui/UiText";
+import { episodeCopy } from "@/lib/copy/episode";
+import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
 export function EpisodeReader({ episodeId }: { episodeId: string }) {
   const [episode, setEpisode] = useState<Episode | null>(null);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const [finished, setFinished] = useState(false);
-  const [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState<Copy | null>(null);
   const load = useCallback(
     (signal?: AbortSignal) =>
       stories
@@ -35,12 +31,8 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
           setFinished(Boolean(value.read_at));
         })
         .catch((cause) => {
-          if (!(cause instanceof DOMException && cause.name === "AbortError"))
-            setError(
-              cause instanceof ApiError && cause.status === 404
-                ? "Deze aflevering bestaat niet."
-                : "De aflevering kon niet worden geladen.",
-            );
+          if (!isAbort(cause))
+            setError(errorCopy(cause, episodeCopy.loadFailed, { 404: episodeCopy.notFound }));
         }),
     [episodeId],
   );
@@ -53,26 +45,35 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
   if (error)
     return (
       <div className="error" role="alert">
-        {error} <Link href="/verhalen">Naar de verhalen</Link>
+        <UiText text={error} tier="guide" inline />{" "}
+        <Link href="/verhalen">
+          <UiText text={episodeCopy.toStories} inline />
+        </Link>
       </div>
     );
   if (!episode)
     return (
-      <SkeletonPanel label="Aflevering laden…">
+      <SkeletonPanel label={episodeCopy.loading.nl}>
         <Skeleton lines={3} />
       </SkeletonPanel>
     );
   if (episode.status !== "ready")
     return (
       <div className="card">
-        <p className="eyebrow">AFLEVERING {episode.number}</p>
+        <p className="eyebrow">
+          <UiText text={fill(episodeCopy.episodeNumber, { number: episode.number })} />
+        </p>
         <h1>
-          {episode.status === "failed"
-            ? "Deze aflevering is niet gelukt."
-            : "Deze aflevering wordt nog geschreven."}
+          <UiText
+            text={episode.status === "failed" ? episodeCopy.episodeFailed : episodeCopy.episodeWriting}
+          />
         </h1>
         <p className="muted">
-          Ga terug naar <Link href="/">Vandaag</Link> om de stand te zien.
+          <UiText text={episodeCopy.goBackTo} tier="guide" inline />{" "}
+          <Link href="/">
+            <UiText text={uiCopy.nav.today} tier="guide" inline />
+          </Link>{" "}
+          <UiText text={episodeCopy.toSeeStatus} tier="guide" inline />
         </p>
       </div>
     );
@@ -83,23 +84,31 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
         <Cover number={episode.number} caption="De Lindestraat" />
         <div>
           <p className="eyebrow">
-            AFLEVERING {episode.number} · {stageLabels[episode.stage_id] ?? episode.stage_id} ·{" "}
-            {episode.word_count} WOORDEN
+            <UiText
+              text={fill(episodeCopy.episodeMeta, {
+                number: episode.number,
+                stage: stageLabels[episode.stage_id] ?? episode.stage_id,
+                words: episode.word_count,
+              })}
+            />
           </p>
           <h1>{episode.title}</h1>
           <p className="muted">
-            Thema: {episode.theme}
+            <UiText text={episodeCopy.theme} inline /> {episode.theme}
             {episode.previous_choice && (
               <>
                 {" "}
-                · Jouw vorige keuze: <em>{episode.previous_choice}</em>
+                · <UiText text={episodeCopy.previousChoice} inline /> <em>{episode.previous_choice}</em>
               </>
             )}
           </p>
           <div className="episode-tools">
-            <PhraseAudio text={episode.paragraphs.map((p) => p.nl).join(" ")} label="de hele aflevering" />
+            <PhraseAudio
+              text={episode.paragraphs.map((p) => p.nl).join(" ")}
+              label={episodeCopy.wholeEpisode.nl}
+            />
             <span className="small-text muted">
-              Luister naar de hele aflevering, of per alinea hieronder.
+              <UiText text={episodeCopy.listenHint} tier="guide" />
             </span>
           </div>
         </div>
@@ -145,11 +154,11 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
                 .catch(() => undefined);
             }}
           >
-            Klaar met lezen
+            <UiText text={episodeCopy.finishReading} inline />
             <Icon name="arrow" size={18} />
           </button>
           <span className="small-text muted">
-            Daarna volgen een paar vragen en jouw keuze voor de volgende aflevering.
+            <UiText text={episodeCopy.finishHint} tier="guide" />
           </span>
         </div>
       )}
@@ -158,12 +167,18 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
         <>
           <Questions episode={episode} onUpdate={setEpisode} />
           <section className="episode-choice" id="keuze" aria-labelledby="choice-title">
-            <p className="eyebrow">JOUW KEUZE</p>
+            <p className="eyebrow">
+              <UiText text={episodeCopy.yourChoice} />
+            </p>
             <h2 id="choice-title">
-              {episode.chosen_choice ? "De volgende aflevering wordt geschreven." : "Hoe gaat het verder?"}
+              <UiText
+                text={episode.chosen_choice ? episodeCopy.nextBeingWritten : episodeCopy.howItContinues}
+              />
             </h2>
             {!episode.chosen_choice && (
-              <p className="muted">De schrijver gebruikt jouw keuze voor de volgende aflevering.</p>
+              <p className="muted">
+                <UiText text={episodeCopy.writerUsesChoice} tier="guide" />
+              </p>
             )}
             <div className="choice-buttons">
               {episode.choices.map((choice) => (
@@ -177,7 +192,7 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
                     void stories
                       .choose(episode.id, choice.id)
                       .then(setEpisode)
-                      .catch((cause) => setNotice(friendly(cause, "Je keuze kon niet worden bewaard.")))
+                      .catch((cause) => setNotice(errorCopy(cause, episodeCopy.choiceFailed)))
                   }
                 >
                   <span className="choice-letter" aria-hidden="true">
@@ -189,19 +204,24 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
             </div>
             {episode.chosen_choice && (
               <p className="practice-complete" role="status">
-                Je keuze is doorgegeven. <Link href="/">Terug naar Vandaag</Link> — daar verschijnt de nieuwe
-                aflevering zodra ze klaar is.
+                <UiText text={episodeCopy.choicePassed} tier="guide" inline />{" "}
+                <Link href="/">
+                  <UiText text={episodeCopy.backToToday} inline />
+                </Link>{" "}
+                <UiText text={episodeCopy.newEpisodeThere} tier="guide" inline />
               </p>
             )}
             {notice && (
               <p className="error" role="alert">
-                {notice}
+                <UiText text={notice} tier="guide" />
               </p>
             )}
           </section>
           <footer className="episode-footer">
-            <div className="rating" role="group" aria-label="Was deze aflevering goed?">
-              <span className="small-text muted">Was dit een goede aflevering?</span>
+            <div className="rating" role="group" aria-label={episodeCopy.ratingGroup.nl}>
+              <span className="small-text muted">
+                <UiText text={episodeCopy.ratingQuestion} inline />
+              </span>
               <button
                 type="button"
                 className={`linklike ${episode.rating === 1 ? "is-on" : ""}`}
@@ -213,7 +233,7 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
                     .catch(() => undefined)
                 }
               >
-                Ja
+                <UiText text={episodeCopy.yes} inline />
               </button>
               <button
                 type="button"
@@ -226,7 +246,7 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
                     .catch(() => undefined)
                 }
               >
-                Niet echt
+                <UiText text={episodeCopy.notReally} inline />
               </button>
             </div>
             {episode.topic_id && (
@@ -234,7 +254,7 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
                 className="stage-link"
                 href={`/learn/${episode.stage_id}?skill=reading&topic=${episode.topic_id}`}
               >
-                Oefen dit onderwerp in je leerpad
+                <UiText text={episodeCopy.practiseTopic} inline />
                 <Icon name="arrow" size={17} />
               </Link>
             )}
@@ -272,11 +292,11 @@ function Paragraph({
 }) {
   const { showEnglish, showPersian } = useLanguageSupport();
   const [translating, setTranslating] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<Copy | null>(null);
   return (
     <section className="episode-paragraph" data-testid="episode-paragraph">
       <p lang="nl" className="story-copy">
-        {nl} <PhraseAudio text={nl} label={`alinea ${index + 1}`} />
+        {nl} <PhraseAudio text={nl} label={fill(episodeCopy.paragraphAudio, { number: index + 1 }).nl} />
       </p>
       {showEnglish && en && (
         <p lang="en" className="copy-support">
@@ -295,21 +315,21 @@ function Paragraph({
             disabled={translating}
             onClick={() => {
               setTranslating(true);
-              setMessage("");
+              setMessage(null);
               void stories
                 .translate(episodeId, index)
                 .then((result) => onTranslated(result.fa))
-                .catch((cause) => setMessage(friendly(cause, "Vertalen lukte niet.")))
+                .catch((cause) => setMessage(errorCopy(cause, episodeCopy.translateFailed)))
                 .finally(() => setTranslating(false));
             }}
           >
-            {translating ? "Vertalen…" : "Vertaal naar het Perzisch"}
+            <UiText text={translating ? episodeCopy.translating : episodeCopy.translate} inline />
           </button>
         ))}
       <ReadAloud episodeId={episodeId} index={index} attempts={attempts} onDone={onReadAloud} />
       {message && (
         <p className="error" role="alert">
-          {message}
+          <UiText text={message} tier="guide" />
         </p>
       )}
     </section>
@@ -334,7 +354,7 @@ function ReadAloud({
     missed: string[];
     points: number;
   } | null>(null);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Copy | null>(null);
   const uploadRef = useRef<AbortController | null>(null);
   useEffect(() => () => uploadRef.current?.abort(), []);
   const recorder = useRecorder((recording) => {
@@ -342,7 +362,7 @@ function ReadAloud({
     const request = new AbortController();
     uploadRef.current = request;
     setBusy(true);
-    setError("");
+    setError(null);
     void stories
       .readAloud(episodeId, index, recording.blob, recording.fileName, request.signal)
       .then((value) => {
@@ -357,8 +377,7 @@ function ReadAloud({
         }
       })
       .catch((cause) => {
-        if (!request.signal.aborted)
-          setError(friendly(cause, "We konden de opname niet verwerken. Probeer het in een rustige ruimte."));
+        if (!request.signal.aborted) setError(errorCopy(cause, episodeCopy.recordingFailed));
       })
       .finally(() => {
         if (uploadRef.current === request) setBusy(false);
@@ -379,34 +398,52 @@ function ReadAloud({
         }}
       >
         <Icon name="mic" size={16} />
-        {recording
-          ? "Stop"
-          : busy
-            ? "Luisteren…"
-            : result || attempts
-              ? "Lees nog eens hardop"
-              : "Lees hardop"}
+        <UiText
+          text={
+            recording
+              ? episodeCopy.stop
+              : busy
+                ? episodeCopy.listening
+                : result || attempts
+                  ? episodeCopy.readAgain
+                  : episodeCopy.readAloud
+          }
+          inline
+        />
       </button>
       {result && (
         <span className="read-aloud-result" role="status">
-          {result.matched} van {result.target} woorden herkend
-          {result.points ? ` · +${result.points} punten` : ""}.
+          <UiText
+            text={fill(result.points ? episodeCopy.recognisedPoints : episodeCopy.recognised, {
+              matched: result.matched,
+              target: result.target,
+              points: result.points,
+            })}
+            inline
+          />
           {result.missed.length > 0 && (
             <>
               {" "}
-              Nog oefenen: <em lang="nl">{result.missed.slice(0, 8).join(", ")}</em>
+              <UiText text={episodeCopy.practiseMore} inline />{" "}
+              <em lang="nl">{result.missed.slice(0, 8).join(", ")}</em>
             </>
           )}
         </span>
       )}
       {!result && attempts && (
         <span className="read-aloud-result muted">
-          Eerder: {attempts.matched_words} van {attempts.target_words} woorden herkend.
+          <UiText
+            text={fill(episodeCopy.earlier, {
+              matched: attempts.matched_words,
+              target: attempts.target_words,
+            })}
+            inline
+          />
         </span>
       )}
       {(error || recorder.error) && (
         <span className="error" role="alert">
-          {error || "Geef je browser toegang tot de microfoon."}
+          <UiText text={error ?? episodeCopy.micAccess} tier="guide" inline />
         </span>
       )}
     </div>
@@ -416,16 +453,22 @@ function ReadAloud({
 function Glossary({ episodeId, items }: { episodeId: string; items: GlossaryItem[] }) {
   const { showEnglish, showPersian } = useLanguageSupport();
   const [saved, setSaved] = useState<Record<string, boolean>>({});
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<Copy | null>(null);
   if (!items.length) return null;
   return (
     <section className="episode-glossary" aria-labelledby="glossary-title">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">NIEUWE WOORDEN</p>
-          <h2 id="glossary-title">Bewaar wat je wilt onthouden</h2>
+          <p className="eyebrow">
+            <UiText text={episodeCopy.newWords} />
+          </p>
+          <h2 id="glossary-title">
+            <UiText text={episodeCopy.glossaryTitle} />
+          </h2>
         </div>
-        <span className="quiet-badge">{items.length} woorden</span>
+        <span className="quiet-badge">
+          <UiText text={fill(episodeCopy.wordCount, { count: items.length })} inline />
+        </span>
       </div>
       <ul className="glossary-list">
         {items.map((item) => (
@@ -458,22 +501,22 @@ function Glossary({ episodeId, items }: { episodeId: string; items: GlossaryItem
                   .then((result) => {
                     setSaved((current) => ({ ...current, [item.term]: true }));
                     setMessage(
-                      result.created
-                        ? `"${item.term}" staat in je woordenlijst en komt terug op het juiste moment.`
-                        : `"${item.term}" stond al in je woordenlijst.`,
+                      fill(result.created ? episodeCopy.wordSaved : episodeCopy.wordKnown, {
+                        term: item.term,
+                      }),
                     );
                   })
-                  .catch((cause) => setMessage(friendly(cause, "Bewaren lukte niet.")))
+                  .catch((cause) => setMessage(errorCopy(cause, episodeCopy.saveFailed)))
               }
             >
-              {saved[item.term] ? "Bewaard" : "Bewaar"}
+              <UiText text={saved[item.term] ? uiCopy.state.saved : uiCopy.action.save} inline />
             </button>
           </li>
         ))}
       </ul>
       {message && (
         <p className="practice-hint" role="status">
-          {message}
+          <UiText text={message} tier="guide" />
         </p>
       )}
     </section>
@@ -483,7 +526,7 @@ function Glossary({ episodeId, items }: { episodeId: string; items: GlossaryItem
 function Questions({ episode, onUpdate }: { episode: Episode; onUpdate: (episode: Episode) => void }) {
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [busy, setBusy] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<Copy | null>(null);
   const requestId = useRef(newRequestId());
   const complete = episode.questions.every((question) => answers[String(question.index)] !== undefined);
   const correct = episode.answered ? episode.questions.filter((question) => question.correct).length : 0;
@@ -491,11 +534,19 @@ function Questions({ episode, onUpdate }: { episode: Episode; onUpdate: (episode
     <section className="episode-questions" aria-labelledby="questions-title">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">BEGRIP</p>
+          <p className="eyebrow">
+            <UiText text={episodeCopy.comprehension} />
+          </p>
           <h2 id="questions-title">
-            {episode.answered
-              ? `${correct} van ${episode.questions.length} juist`
-              : `${episode.questions.length === 2 ? "Twee" : "Drie"} vragen over het verhaal`}
+            <UiText
+              text={
+                episode.answered
+                  ? fill(episodeCopy.score, { correct, total: episode.questions.length })
+                  : episode.questions.length === 2
+                    ? episodeCopy.questionsTwo
+                    : episodeCopy.questionsThree
+              }
+            />
           </h2>
         </div>
       </div>
@@ -504,7 +555,7 @@ function Questions({ episode, onUpdate }: { episode: Episode; onUpdate: (episode
           event.preventDefault();
           if (!complete || busy) return;
           setBusy(true);
-          setMessage("");
+          setMessage(null);
           void stories
             .answer(episode.id, answers, requestId.current)
             .then((updated) => {
@@ -512,7 +563,7 @@ function Questions({ episode, onUpdate }: { episode: Episode; onUpdate: (episode
               const right = updated.questions.filter((question) => question.correct).length;
               playTone(right === updated.questions.length ? "correct" : "almost");
             })
-            .catch((cause) => setMessage(friendly(cause, "Je antwoorden konden niet worden bewaard.")))
+            .catch((cause) => setMessage(errorCopy(cause, episodeCopy.answersFailed)))
             .finally(() => setBusy(false));
         }}
       >
@@ -550,7 +601,9 @@ function Questions({ episode, onUpdate }: { episode: Episode; onUpdate: (episode
               {episode.answered && question.evidence && (
                 <p className="question-evidence">
                   <Icon name={question.correct ? "check" : "help"} size={15} />{" "}
-                  <span lang="nl">In het verhaal: “{question.evidence}”</span>
+                  <span lang="nl">
+                    <UiText text={episodeCopy.inTheStory} inline /> “{question.evidence}”
+                  </span>
                 </p>
               )}
             </li>
@@ -558,12 +611,12 @@ function Questions({ episode, onUpdate }: { episode: Episode; onUpdate: (episode
         </ol>
         {!episode.answered && (
           <button className="button" type="submit" disabled={!complete || busy}>
-            Controleer mijn antwoorden
+            <UiText text={episodeCopy.checkAnswers} inline />
           </button>
         )}
         {message && (
           <p className="error" role="alert">
-            {message}
+            <UiText text={message} tier="guide" />
           </p>
         )}
       </form>

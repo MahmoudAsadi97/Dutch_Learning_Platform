@@ -5,7 +5,10 @@ import { useEffect, useState } from "react";
 import { apiJson } from "@/lib/client/api";
 import { LearningText } from "@/components/LanguageSupport";
 import { Icon } from "@/components/Icon";
+import { UiText } from "@/components/ui/UiText";
+import { missionsCopy } from "@/lib/copy/missions";
 import type { MissionResponse } from "@/lib/types";
+import { fill, uiCopy } from "@/lib/ui-copy";
 
 export function MissionCatalog() {
   const [missions, setMissions] = useState<MissionResponse[] | null>(null);
@@ -24,14 +27,20 @@ export function MissionCatalog() {
     <section aria-labelledby="catalog-title" id="oefeningen">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">NEDERLANDS IN HET DAGELIJKS LEVEN</p>
-          <h2 id="catalog-title">Wat wil je vandaag oefenen?</h2>
-          <p className="muted">Elke missie combineert lezen, luisteren, spreken en schrijven.</p>
+          <p className="eyebrow">
+            <UiText text={missionsCopy.catalogEyebrow} />
+          </p>
+          <h2 id="catalog-title">
+            <UiText text={missionsCopy.catalogTitle} />
+          </h2>
+          <p className="muted">
+            <UiText text={missionsCopy.catalogIntro} tier="guide" />
+          </p>
         </div>
       </div>
       {failed ? (
         <p role="alert">
-          De oefeningen konden niet worden geladen.{" "}
+          <UiText text={missionsCopy.catalogFailed} tier="guide" inline />{" "}
           <button
             className="linklike"
             onClick={() => {
@@ -39,18 +48,24 @@ export function MissionCatalog() {
               setAttempt((n) => n + 1);
             }}
           >
-            Opnieuw proberen
+            <UiText text={uiCopy.action.retry} inline />
           </button>
         </p>
       ) : missions === null ? (
-        <p role="status">Oefeningen laden…</p>
+        <p role="status">
+          <UiText text={missionsCopy.catalogLoading} />
+        </p>
       ) : missions.length === 0 ? (
-        <p>Er zijn nog geen oefeningen beschikbaar.</p>
+        <p>
+          <UiText text={missionsCopy.catalogEmpty} tier="guide" />
+        </p>
       ) : (
         <div className="mission-catalog" data-testid="mission-catalog">
           {missions.map((mission) => (
             <article className="card catalog-card" key={mission.id}>
-              <span className="quiet-badge">{mission.cefr_target}-oefendoelen · 4 vaardigheden</span>
+              <span className="quiet-badge">
+                <UiText text={fill(missionsCopy.catalogBadge, { level: mission.cefr_target })} inline />
+              </span>
               <h3>
                 <LearningText text={mission.title} />
               </h3>
@@ -58,7 +73,11 @@ export function MissionCatalog() {
                 <LearningText text={mission.description} />
               </p>
               <Link className="button secondary" href={`/missions/${mission.id}`}>
-                Oefen {mission.title.nl.toLowerCase()} <Icon name="arrow" size={16} />
+                <UiText
+                  text={fill(missionsCopy.catalogPractise, { title: mission.title.nl.toLowerCase() })}
+                  inline
+                />{" "}
+                <Icon name="arrow" size={16} />
               </Link>
             </article>
           ))}

@@ -36,7 +36,9 @@ export function UiText({ text, tier = "chrome", className = "", inline = false }
     }
   }
   return (
-    <span className={`ui-text ${inline ? "is-inline" : ""} ${className}`.trim()}>
+    <span
+      className={`ui-text ${inline ? "is-inline" : ""} ${tier === "chrome" ? "" : "is-sentence"} ${className}`.trim()}
+    >
       <span lang="nl" className="ui-text-nl">
         {text.nl}
       </span>
