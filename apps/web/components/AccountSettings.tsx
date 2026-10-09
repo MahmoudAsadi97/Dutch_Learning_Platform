@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ContentReviewQueue } from "@/components/ContentReviewQueue";
 import { Icon } from "@/components/Icon";
+import { LearningPreferences } from "@/components/LearningPreferences";
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { apiFetch } from "@/lib/client/api";
 import { browserStorages, clearLearnerStorage } from "@/lib/client/storage";
@@ -76,6 +77,7 @@ export function AccountSettings() {
             </div>
           </dl>
         )}
+        <LearningPreferences />
         <p className="muted small-text">
           Accountgegevens komen uit je aanmelding. Je studiegegevens blijven aan dit account gekoppeld.
         </p>

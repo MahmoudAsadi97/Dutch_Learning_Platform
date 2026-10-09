@@ -299,14 +299,15 @@ test("the practice coach loads free suggestions and deep-links to the requested 
   const coach = page.locator(".practice-coach");
   await expect(coach.getByRole("heading", { name: "Jouw volgende oefening" })).toBeVisible();
   await expect(coach.locator(".practice-recommendations li")).toHaveCount(3);
-  await coach.getByLabel("Mijn oefenniveau", { exact: true }).selectOption("a2");
+  await page.request.patch("/api/me", { headers: { "X-Requested-With": "fetch" }, data: { stage_id: "a2" } });
+  await page.goto("/leerpad");
   await expect(coach.locator(".recommendation-label").first()).toContainText("A2");
   await coach.getByRole("link", { name: "Open deze oefening" }).nth(1).click();
   await expect(page).toHaveURL(/\/learn\/a2\?skill=writing&topic=a2-t001$/);
   await expect(page.getByLabel("Jouw tekst bij dit onderwerp", { exact: true })).toBeVisible();
   expect(calls.every((method) => method === "GET")).toBe(true);
   await page.goto("/leerpad");
-  await expect(page.getByLabel("Mijn oefenniveau", { exact: true })).toHaveValue("a2");
+  await expect(coach.locator(".recommendation-label").first()).toContainText("A2");
 });
 
 test("explicit coaching retries keep the same id and a failed request leaves suggestions usable", async ({

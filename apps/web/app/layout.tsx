@@ -30,6 +30,7 @@ import "./styles/ui/progress.css";
 import "./styles/ui/illustration.css";
 import "./styles/shell.css";
 import "./styles/features/gallery.css";
+import "./styles/features/preferences.css";
 import "./styles/features/speak.css";
 import "./styles/motion.css";
 import "./globals.css";

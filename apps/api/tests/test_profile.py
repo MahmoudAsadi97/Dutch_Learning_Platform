@@ -75,6 +75,15 @@ def test_stage_is_shared_with_the_serial_in_both_directions(client, headers):
     assert client.post("/stories/level", json={"stage_id": "nope"}, headers=headers).status_code == 404
 
 
+def test_a_learner_with_a_serial_keeps_its_level_when_the_profile_is_created(client, headers):
+    assert client.post("/stories/level", json={"stage_id": "b1"}, headers=headers).status_code == 200
+    with session_scope() as session:
+        for row in session.scalars(select(LearnerProfile)):
+            session.delete(row)
+    assert _series_stage() == "b1"
+    assert client.get("/me", headers=headers).json()["profile"]["stage_id"] == "b1"
+
+
 def test_reset_undoes_onboarding_outside_production(client, headers):
     client.post("/me/onboarding", json={"support_mode": "nl-en", "stage_id": "a2"}, headers=headers)
     profile = client.post("/me/reset", headers=headers).json()["profile"]

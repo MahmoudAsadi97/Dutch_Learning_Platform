@@ -368,27 +368,6 @@ export function TodayHome() {
               Schrijf dit
             </button>
           </form>
-          <div className="level-row">
-            <label htmlFor="story-level">Niveau van de verhalen</label>
-            <select
-              id="story-level"
-              value={plan.series.stage_id}
-              disabled={busy === "level"}
-              onChange={(event) =>
-                void act(
-                  "level",
-                  () => stories.level(event.target.value),
-                  "Vanaf de volgende aflevering schrijft de schrijver op dit niveau.",
-                )
-              }
-            >
-              {plan.levels.map((level) => (
-                <option key={level.id} value={level.id}>
-                  {level.label}
-                </option>
-              ))}
-            </select>
-          </div>
           {notice && (
             <p className="practice-hint" role="status">
               {notice}

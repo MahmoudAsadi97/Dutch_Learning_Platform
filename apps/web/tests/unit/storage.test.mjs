@@ -25,7 +25,6 @@ test("key builders produce the established names", () => {
   assert.equal(storageKeys.draft("L1", "a1"), "taalstudio.draft.L1.a1");
   assert.equal(storageKeys.test("L1", "a1"), "taalstudio.test.L1.a1");
   assert.equal(storageKeys.stories("L1", "a1"), "taalstudio.stories.L1.a1");
-  assert.equal(storageKeys.practiceStage("L1"), "taalstudio.practice-stage.L1");
   assert.equal(
     storageKeys.topicDraft("L1", "a1", "writing", "a1-t001"),
     "taalstudio.topic-draft.L1.a1.writing.a1-t001",
@@ -39,7 +38,7 @@ test("sign-out removes every learner key and keeps the language preference", () 
   const local = fakeStorage({
     [storageKeys.languageSupport]: "nl-fa",
     [storageKeys.stories("L1", "a1")]: "[]",
-    [storageKeys.practiceStage("L1")]: "a2",
+    "taalstudio.practice-stage.L1": "a2",
     "unrelated.key": "x",
   });
   const session = fakeStorage({

@@ -1,0 +1,13 @@
+/* The learning preferences block in Instellingen. */
+@layer features {
+  .learning-preferences {
+    display: grid;
+    gap: var(--space-4);
+    margin: var(--space-4) 0;
+  }
+  .preference-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-4);
+  }
+}

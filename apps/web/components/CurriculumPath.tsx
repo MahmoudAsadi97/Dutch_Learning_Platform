@@ -8,6 +8,7 @@ import { LearningText } from "@/components/LanguageSupport";
 import { apiJson } from "@/lib/client/api";
 import { stageLabel, type CurriculumCatalog } from "@/lib/client/curriculum";
 import { ProgressBar, Skeleton, SkeletonPanel, SkillMeter } from "@/components/ui";
+import { useProfile } from "@/lib/client/profile";
 
 export function CurriculumPath() {
   const [data, setData] = useState<CurriculumCatalog | null>(null);
@@ -25,7 +26,12 @@ export function CurriculumPath() {
       });
     return () => controller.abort();
   }, [retry]);
-  const next = data?.stages.find((stage) => !stage.passed) ?? data?.stages.at(-1);
+  const profile = useProfile();
+  const current = profile.data?.profile.stage_id;
+  const next =
+    data?.stages.find((stage) => stage.id === current) ??
+    data?.stages.find((stage) => !stage.passed) ??
+    data?.stages.at(-1);
   const finished = data?.stages.filter((stage) => stage.passed).length ?? 0;
   return (
     <div className="learning-path" data-testid="learning-overview">
@@ -99,7 +105,7 @@ export function CurriculumPath() {
               </div>
             </section>
           )}
-          <PracticeCoach key={data.learner_key} learnerKey={data.learner_key} />
+          <PracticeCoach key={data.learner_key} />
           <section aria-labelledby="path-title">
             <div className="section-heading">
               <div>

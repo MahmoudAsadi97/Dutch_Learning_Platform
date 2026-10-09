@@ -14,6 +14,7 @@ from dlp.domains.curriculum.service import passed_stages
 from dlp.domains.identity.models import Learner
 from dlp.domains.profile.models import LearnerProfile
 from dlp.domains.profile.schemas import ProfileUpdate
+from dlp.domains.stories.models import StorySeries
 
 
 def starting_stage(session: Session, learner_id: uuid.UUID) -> str:
@@ -27,13 +28,19 @@ def get(session: Session, learner_id: uuid.UUID) -> LearnerProfile | None:
     return session.scalar(select(LearnerProfile).where(LearnerProfile.learner_id == learner_id))
 
 
+def _seed_stage(session: Session, learner_id: uuid.UUID) -> str:
+    """A learner who already reads the serial keeps its level; anyone else starts at the first open stage."""
+    serial = session.scalar(select(StorySeries.stage_id).where(StorySeries.learner_id == learner_id))
+    return serial if serial in STAGE_IDS else starting_stage(session, learner_id)
+
+
 def ensure(session: Session, learner: Learner) -> LearnerProfile:
     """One row per learner. Several first-visit requests may race; the winner inserts, the rest read it."""
     profile = get(session, learner.id)
     if profile is None:
         session.execute(
             insert(LearnerProfile)
-            .values(learner_id=learner.id, stage_id=starting_stage(session, learner.id),
+            .values(learner_id=learner.id, stage_id=_seed_stage(session, learner.id),
                     created_at=utcnow(), updated_at=utcnow())
             .on_conflict_do_nothing()
         )

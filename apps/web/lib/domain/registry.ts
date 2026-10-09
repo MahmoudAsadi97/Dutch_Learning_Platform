@@ -39,6 +39,22 @@ export const stageLabels: Record<string, string> = Object.fromEntries(
   STAGE_IDS.map((id) => [id, stageLabel(id)]),
 );
 
+/** A plain-language name beside each CEFR code, for the people who do not know the codes. */
+export const stageNames: Record<StageId, string> = {
+  "pre-a1": "Eerste woorden",
+  a1: "Beginner",
+  "pre-a2": "Beginner plus",
+  a2: "Basis",
+  "pre-b1": "Basis plus",
+  b1: "Zelfstandig",
+  "pre-b2": "Zelfstandig plus",
+  b2: "Gevorderd",
+  "pre-c1": "Gevorderd plus",
+  c1: "Vaardig",
+  "pre-c2": "Vaardig plus",
+  c2: "Bijna moedertaal",
+};
+
 export const SKILLS = ["reading", "listening", "speaking", "writing"] as const;
 export type Skill = (typeof SKILLS)[number];
 

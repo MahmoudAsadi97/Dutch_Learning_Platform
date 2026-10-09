@@ -7,23 +7,18 @@ import { Icon } from "@/components/Icon";
 import { apiJson, ApiError, newRequestId } from "@/lib/client/api";
 import { friendlyError, skillNames, stageLabel } from "@/lib/client/curriculum";
 import { practiceStages, topicHref, type PracticePlan } from "@/lib/client/learning-agents";
-import { storageKeys } from "@/lib/client/storage";
+import { useProfile } from "@/lib/client/profile";
 
-export function PracticeCoach({
-  learnerKey,
-  initialStage = "a1",
-}: {
-  learnerKey: string;
-  initialStage?: string;
-}) {
-  const preferenceKey = storageKeys.practiceStage(learnerKey);
-  const [stage, setStage] = useState(() => {
-    try {
-      const saved = localStorage.getItem(preferenceKey);
-      if (saved && practiceStages.includes(saved)) return saved;
-    } catch {}
-    return practiceStages.includes(initialStage) ? initialStage : "a1";
-  });
+/** The coach plans at the learner's profile level; the path remounts it per learner through its key. */
+export function PracticeCoach({ initialStage = "a1" }: { initialStage?: string }) {
+  const profile = useProfile();
+  const profileStage = profile.data?.profile.stage_id;
+  const stage =
+    profileStage && practiceStages.includes(profileStage)
+      ? profileStage
+      : practiceStages.includes(initialStage)
+        ? initialStage
+        : "a1";
   const [plan, setPlan] = useState<PracticePlan | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -95,29 +90,6 @@ export function PracticeCoach({
               }}
             />
           </p>
-        </div>
-        <div>
-          <label htmlFor="practice-coach-stage">Mijn oefenniveau</label>
-          <select
-            id="practice-coach-stage"
-            value={stage}
-            disabled={busy}
-            onChange={(event) => {
-              const value = event.target.value;
-              setStage(value);
-              setError("");
-              requestId.current = "";
-              try {
-                localStorage.setItem(preferenceKey, value);
-              } catch {}
-            }}
-          >
-            {practiceStages.map((value) => (
-              <option key={value} value={value}>
-                {stageLabel(value)}
-              </option>
-            ))}
-          </select>
         </div>
       </header>
       {error && (

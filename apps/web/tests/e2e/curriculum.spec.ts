@@ -67,7 +67,10 @@ test("new level retains writing within the tab and stays usable at phone widths"
   await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    // layout after a resize settles a frame later; poll rather than read it once
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
+      .toBe(true);
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
       .analyze();

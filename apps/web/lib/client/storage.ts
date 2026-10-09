@@ -16,8 +16,6 @@ export const storageKeys = {
   test: (learnerKey: string, stageId: string) => `${PREFIX}test.${learnerKey}.${stageId}`,
   /** Story Time read marks (localStorage). */
   stories: (learnerKey: string, stageId: string) => `${PREFIX}stories.${learnerKey}.${stageId}`,
-  /** The practice coach's chosen level (localStorage), until the learner profile replaces it. */
-  practiceStage: (learnerKey: string) => `${PREFIX}practice-stage.${learnerKey}`,
   /** Topic writing draft (sessionStorage). */
   topicDraft: (learnerKey: string, stageId: string, skill: string, topicId: string) =>
     `${PREFIX}topic-draft.${learnerKey}.${stageId}.${skill}.${topicId}`,
@@ -31,9 +29,10 @@ export const LEARNER_KEY_PREFIXES = [
   `${PREFIX}draft.`,
   `${PREFIX}test.`,
   `${PREFIX}stories.`,
-  `${PREFIX}practice-stage.`,
   `${PREFIX}topic-draft.`,
   `${PREFIX}conversation.`,
+  // the coach level moved to the learner profile; old copies on a device are still swept at sign-out
+  `${PREFIX}practice-stage.`,
 ] as const;
 
 export function isLearnerKey(key: string): boolean {

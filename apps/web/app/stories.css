@@ -62,9 +62,6 @@ a.episode-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-3);
 .wish-card form { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
 .wish-card input { flex: 1 1 220px; min-height: 45px; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: 10px; font: inherit; font-size: 14px; }
 .wish-card.inline { margin: 18px 0 22px; }
-.level-row { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
-.level-row label { font-size: 13px; color: var(--muted); }
-.level-row select { min-height: 44px; border: 1px solid var(--border-strong); border-radius: 8px; padding: 6px 10px; font: inherit; background: var(--surface-raised); }
 .cast-card ul { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 8px; }
 .cast-card li { font-size: 14px; line-height: 1.5; }
 .cast-card details { margin-top: 14px; }
