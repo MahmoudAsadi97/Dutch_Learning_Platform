@@ -88,6 +88,8 @@ const SECTION_BY_SEGMENT: Record<string, string> = {
   woorden: "/woorden",
   progress: "/progress",
   settings: "/settings",
+  // "Over de inhoud" is reached from Instellingen and belongs to that room
+  over: "/settings",
 };
 
 /** The destination (or room) a path belongs to, or null for a path the shell does not know. */

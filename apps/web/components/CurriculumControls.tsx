@@ -191,7 +191,7 @@ function CurriculumAudioPlayer({
         });
       }
     } catch (cause) {
-      if (!request.signal.aborted) setError(friendlyError(cause));
+      if (!request.signal.aborted) setError(friendlyError(cause, "action"));
     } finally {
       if (controllerRef.current === request) {
         releaseAudioFocus(focusRef.current);

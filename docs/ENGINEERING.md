@@ -144,7 +144,11 @@ A conflict a learner can reach carries its own code (`episodes_busy`, `videos_bu
 `paid_not_approved`). The `detail` sentence is English and for developers; the browser never shows it.
 `lib/client/errors.ts` (`errorFor`) picks the catalogue copy by code first and status second, a screen may
 pass overrides for a code or a status, and `lib/client/error-copy.ts` (`errorCopy`) lets a screen name what
-failed ("Bewaren lukte niet.") where the general message would only say that something did.
+failed ("Bewaren lukte niet.") where the general message would only say that something did. Copy must be
+true: only a screen that keeps the learner's typed or recorded answer passes the `input` context, and only
+then do the messages say "Je invoer blijft staan"; a `load` shows the screen's own "kon niet worden geladen"
+when the network or the API is down. A 502 means "the server is away" only when the proxy says so
+(`api_unreachable`, `upstream_timeout`); the API's own 502 is a failed provider call that the screen words.
 `tests/unit/errors.test.mjs` scans the API source and fails when a code has no copy and is not listed as
 general on purpose, so a new code gets its sentence in the same change.
 
@@ -159,8 +163,9 @@ until then English stands in for learners who chose it, and Persian-only learner
 Without a gloss shown, `UiText` takes no box of its own (`display: contents`), so moving a screen onto the
 catalogue changes no pixels for a learner without glosses; with one, labels stack compactly and sentences keep
 their paragraph's line height.
-`tests/unit/dutch-text.test.mjs` counts Dutch still written into components (JSX text and the spoken
-attributes) against `dutch-budget.json`; a change that moves text into the catalogue lowers the budget.
+`tests/unit/dutch-text.test.mjs` counts Dutch still written into components with the TypeScript parser (JSX
+text, strings a JSX expression renders, the spoken attributes and inline `nl:` labels) against
+`dutch-budget.json`, an exact snapshot: a change that moves text into the catalogue lowers it in the same change.
 
 ### Server state in the browser
 

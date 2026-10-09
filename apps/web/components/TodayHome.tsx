@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { LearningText } from "@/components/LanguageSupport";
-import { errorCopy } from "@/lib/client/error-copy";
+import { errorCopy, type FailureContext } from "@/lib/client/error-copy";
 import { isAbort } from "@/lib/client/errors";
 import {
   episodeHref,
@@ -46,7 +46,7 @@ export function TodayHome() {
           setError(null);
         })
         .catch((cause) => {
-          if (!isAbort(cause)) setError(errorCopy(cause, uiCopy.today.loadFailed));
+          if (!isAbort(cause)) setError(errorCopy(cause, uiCopy.today.loadFailed, undefined, "load"));
         }),
     [],
   );
@@ -66,20 +66,30 @@ export function TodayHome() {
     return () => window.clearTimeout(timer);
   }, [pending, stalled, plan, load]);
 
-  async function act(key: string, work: () => Promise<unknown>, done?: Copy) {
+  /** Run one request; true when it went through. `load` handles its own failures, so a refresh never reads as one. */
+  async function act(
+    key: string,
+    work: () => Promise<unknown>,
+    done?: Copy,
+    context: FailureContext = "action",
+  ) {
     setBusy(key);
     setNotice(null);
     try {
       await work();
       await load();
       if (done) setNotice(done);
+      return true;
     } catch (cause) {
       setNotice(
-        errorCopy(cause, undefined, {
-          429: uiCopy.failures.writerLimit,
-          paid_not_approved: uiCopy.failures.paidNotApproved,
-        }),
+        errorCopy(
+          cause,
+          undefined,
+          { 429: uiCopy.failures.writerLimit, paid_not_approved: uiCopy.failures.paidNotApproved },
+          context,
+        ),
       );
+      return false;
     } finally {
       setBusy("");
     }
@@ -200,7 +210,7 @@ export function TodayHome() {
                     tier="guide"
                   />
                 </p>
-                {failed.failure_reasons?.length > 0 && (
+                {developer && failed.failure_reasons?.length > 0 && (
                   <details className="failure-details">
                     <summary>Wat er niet klopte</summary>
                     <ul>
@@ -344,8 +354,12 @@ export function TodayHome() {
             onSubmit={(event) => {
               event.preventDefault();
               if (!wish.trim()) return;
-              void act("wish", () => stories.request(wish.trim()), uiCopy.today.wishQueued);
-              setWish("");
+              // the wish stays in the field until the writer has it
+              void act("wish", () => stories.request(wish.trim()), uiCopy.today.wishQueued, "input").then(
+                (sent) => {
+                  if (sent) setWish("");
+                },
+              );
             }}
           >
             <label htmlFor="story-wish" className="visually-hidden">

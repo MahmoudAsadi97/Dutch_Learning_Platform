@@ -89,11 +89,26 @@ function StarterWords({ stage }: { stage: string }) {
           disabled={chosen.size === 0 || saving}
           onClick={() => void keep()}
         >
-          <UiText text={fill(uiCopy.welcome.wordsSave, { count: chosen.size })} inline />
+          <UiText
+            text={
+              chosen.size === 0
+                ? uiCopy.welcome.wordsChoose
+                : chosen.size === 1
+                  ? uiCopy.welcome.wordsSaveOne
+                  : fill(uiCopy.welcome.wordsSave, { count: chosen.size })
+            }
+            inline
+          />
         </Button>
         {saved > 0 && (
           <p className="muted" role="status">
-            <UiText text={fill(uiCopy.welcome.wordsSaved, { count: saved })} tier="always" inline />
+            <UiText
+              text={
+                saved === 1 ? uiCopy.welcome.wordsSavedOne : fill(uiCopy.welcome.wordsSaved, { count: saved })
+              }
+              tier="always"
+              inline
+            />
           </p>
         )}
       </div>

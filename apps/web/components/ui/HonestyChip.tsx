@@ -39,7 +39,7 @@ export function HonestyChip({ kind, detail }: { kind: HonestyKind; detail?: Reac
         onClick={() => setOpen(true)}
       >
         <Icon name="info" size={15} />
-        <span lang="nl">{label.nl}</span>
+        <UiText text={label} inline />
       </button>
       <Dialog open={open} onClose={() => setOpen(false)} title={<UiText text={label} tier="always" />}>
         <p className="honesty-text">

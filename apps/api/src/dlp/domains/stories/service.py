@@ -182,6 +182,18 @@ def awaiting_choice(session: Session, series: StorySeries) -> StoryEpisode | Non
     return None
 
 
+def restage_queued(session: Session, episode: StoryEpisode, stage_id: str) -> StoryEpisode:
+    """An episode the writer has not picked up yet follows a level chosen after it was queued (a first
+    visit that queued episode one before the welcome). Once writing has started it keeps its level."""
+    locked = session.scalar(select(StoryEpisode).where(StoryEpisode.id == episode.id).with_for_update())
+    if locked is None or locked.status != "queued" or locked.stage_id == stage_id:
+        return episode
+    locked.stage_id = stage_id
+    if locked.theme_source == "auto":
+        locked.topic_id, locked.theme = pick_theme(stage_id, locked.number, set())
+    return locked
+
+
 def ensure_buffer(session: Session, learner: Learner) -> StoryEpisode | None:
     """Keep one unread episode queued or ready so the next visit never waits for the writer.
 

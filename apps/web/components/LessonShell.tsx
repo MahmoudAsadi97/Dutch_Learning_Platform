@@ -145,7 +145,8 @@ export function LessonShell({ missionId }: Props) {
         setSessions(found);
       })
       .catch((error: unknown) => {
-        if (!cancelled) setState({ kind: "error", message: errorCopy(error, missionsCopy.loadFailed) });
+        if (!cancelled)
+          setState({ kind: "error", message: errorCopy(error, missionsCopy.loadFailed, undefined, "load") });
       });
     return () => {
       cancelled = true;

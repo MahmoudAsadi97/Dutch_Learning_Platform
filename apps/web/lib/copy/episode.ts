@@ -15,8 +15,11 @@ export const episodeCopy = {
     en: "This episode is still being written.",
     fa: "این قسمت هنوز در حال نوشته شدن است.",
   },
-  goBackTo: { nl: "Ga terug naar", en: "Go back to", fa: "برگرد به" },
-  toSeeStatus: { nl: "om de stand te zien.", en: "to see where things stand.", fa: "تا وضعیت را ببینی." },
+  checkStatus: {
+    nl: "Ga terug naar Vandaag om de stand te zien.",
+    en: "Go back to Today to see how it is going.",
+    fa: "به «امروز» برگرد تا ببینی کار به کجا رسیده است.",
+  },
   episodeMeta: {
     nl: "AFLEVERING {number} · {stage} · {words} WOORDEN",
     en: "EPISODE {number} · {stage} · {words} WORDS",
@@ -58,10 +61,10 @@ export const episodeCopy = {
     fa: "انتخابت فرستاده شد.",
   },
   backToToday: { nl: "Terug naar Vandaag", en: "Back to Today", fa: "برگرد به «امروز»" },
-  newEpisodeThere: {
-    nl: "— daar verschijnt de nieuwe aflevering zodra ze klaar is.",
-    en: "— the new episode appears there as soon as it is ready.",
-    fa: "— قسمت جدید همان‌جا نمایش داده می‌شود، به محض اینکه آماده شود.",
+  newEpisodeOnToday: {
+    nl: "De nieuwe aflevering verschijnt op Vandaag zodra ze klaar is.",
+    en: "The new episode appears on Today as soon as it is ready.",
+    fa: "قسمت جدید به‌محض آماده شدن در «امروز» نمایش داده می‌شود.",
   },
   ratingGroup: { nl: "Was deze aflevering goed?", en: "Was this episode good?", fa: "این قسمت خوب بود؟" },
   ratingQuestion: {

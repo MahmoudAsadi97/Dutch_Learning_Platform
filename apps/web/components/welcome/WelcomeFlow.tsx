@@ -10,7 +10,8 @@ import { Notice } from "@/components/ui/Notice";
 import { Skeleton, SkeletonPanel } from "@/components/ui/Skeleton";
 import { Stepper } from "@/components/ui/Stepper";
 import { UiText } from "@/components/ui/UiText";
-import { completeOnboarding, useProfile, type DailyGoal, type Me } from "@/lib/client/profile";
+import { persianReviewed } from "@/lib/client/persian-review";
+import { completeOnboarding, useProfile, type DailyGoal, type Me, type Profile } from "@/lib/client/profile";
 import { queryKeys } from "@/lib/client/query-keys";
 import { STAGE_IDS, stageLabel, stageNames } from "@/lib/domain/registry";
 import { uiCopy, type Copy } from "@/lib/ui-copy";
@@ -18,7 +19,7 @@ import { ChoiceCards } from "./ChoiceCards";
 import { FirstActivity } from "./FirstActivity";
 import { HowItWorks } from "./HowItWorks";
 import { Trilingual } from "./Trilingual";
-import { WritingProgress, type QueuedEpisode } from "./WritingProgress";
+import { useWriting, WritingProgress, type QueuedEpisode } from "./WritingProgress";
 
 type Step = "taal" | "niveau" | "doel" | "uitleg" | "start";
 const ORDER: Step[] = ["taal", "niveau", "doel", "uitleg", "start"];
@@ -30,10 +31,11 @@ const STEP_COPY: Record<Step, Copy> = {
   start: uiCopy.welcome.stepStart,
 };
 
-const SUPPORT: { value: SupportMode; copy: Copy }[] = [
+/** The Persian options carry the language's own name, so a Persian reader finds them before any review. */
+const SUPPORT: { value: SupportMode; copy: Copy; autonym?: string }[] = [
   { value: "nl-en", copy: uiCopy.welcome.supportEn },
-  { value: "nl-fa", copy: uiCopy.welcome.supportFa },
-  { value: "nl-fa-en", copy: uiCopy.welcome.supportBoth },
+  { value: "nl-fa", copy: uiCopy.welcome.supportFa, autonym: "فارسی" },
+  { value: "nl-fa-en", copy: uiCopy.welcome.supportBoth, autonym: "فارسی" },
 ];
 
 /** Plain-language starting points; any of the twelve stages can be picked below them. */
@@ -53,7 +55,8 @@ const REASONS: { value: string; copy: Copy }[] = [
   { value: "voor mezelf", copy: uiCopy.welcome.reasonSelf },
 ];
 
-const PACE: { value: "10" | "20" | "30"; copy: Copy }[] = [
+type Pace = "10" | "20" | "30";
+const PACE: { value: Pace; copy: Copy }[] = [
   { value: "10", copy: uiCopy.welcome.paceShort },
   { value: "20", copy: uiCopy.welcome.paceUsual },
   { value: "30", copy: uiCopy.welcome.paceLong },
@@ -66,37 +69,56 @@ const PACE: { value: "10" | "20" | "30"; copy: Copy }[] = [
  */
 export function WelcomeFlow({ explainOnly = false }: { explainOnly?: boolean }) {
   const profile = useProfile();
-  const client = useQueryClient();
-  const { mode, setMode } = useLanguageSupport();
-  const [step, setStep] = useState<Step>("taal");
-  const [stage, setStage] = useState<string | null>(null);
-  const [reason, setReason] = useState<string | null>(null);
-  const [pace, setPace] = useState<"10" | "20" | "30">("20");
-  const [submitting, setSubmitting] = useState(false);
-  const [failed, setFailed] = useState(false);
-  const [episode, setEpisode] = useState<QueuedEpisode | null>(null);
-  const [finished, setFinished] = useState(false);
-
   if (!profile.data && !profile.isError) {
     return (
-      <SkeletonPanel label="Laden…">
+      <SkeletonPanel label={uiCopy.state.loading.nl}>
         <Skeleton lines={4} />
       </SkeletonPanel>
     );
   }
-  const onboarded = Boolean(profile.data?.profile.onboarded_at) && !finished;
-  if (explainOnly || onboarded) {
-    return (
-      <div className="welcome-flow" data-accent="today">
-        <HowItWorks />
-        <div className="welcome-actions">
-          <ButtonLink href="/" icon="arrow" iconEnd>
-            <UiText text={uiCopy.welcome.toToday} inline />
-          </ButtonLink>
-        </div>
+  if (explainOnly) return <Explanation />;
+  return <WelcomeSteps saved={profile.data?.profile ?? null} />;
+}
+
+function Explanation({ notice }: { notice?: Copy }) {
+  return (
+    <div className="welcome-flow" data-accent="today">
+      {notice && (
+        <Notice tone="info" role="status">
+          <UiText text={notice} tier="always" />
+        </Notice>
+      )}
+      <HowItWorks />
+      <div className="welcome-actions">
+        <ButtonLink href="/" icon="arrow" iconEnd>
+          <UiText text={uiCopy.welcome.toToday} inline />
+        </ButtonLink>
       </div>
-    );
-  }
+    </div>
+  );
+}
+
+/** The steps; mounted once the profile is known, so a goal or reason chosen earlier is where they start. */
+function WelcomeSteps({ saved }: { saved: Profile | null }) {
+  const client = useQueryClient();
+  const { mode, setMode } = useLanguageSupport();
+  const [step, setStep] = useState<Step>("taal");
+  // the level is always asked; a goal or reason already set in Instellingen is kept unless changed here
+  const [stage, setStage] = useState<string | null>(null);
+  const [reason, setReason] = useState<string | null>(() =>
+    REASONS.some((option) => option.value === saved?.stated_goal) ? (saved?.stated_goal ?? null) : null,
+  );
+  const [pace, setPace] = useState<Pace>(() =>
+    saved?.daily_goal_points === 10 || saved?.daily_goal_points === 30 ? `${saved.daily_goal_points}` : "20",
+  );
+  const [submitting, setSubmitting] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [episode, setEpisode] = useState<QueuedEpisode | null>(null);
+  const [finished, setFinished] = useState(false);
+  const [alreadyChosen, setAlreadyChosen] = useState(false);
+
+  const onboarded = Boolean(saved?.onboarded_at) && !finished;
+  if (onboarded) return <Explanation notice={alreadyChosen ? uiCopy.welcome.alreadyChosen : undefined} />;
 
   const index = ORDER.indexOf(step);
   const go = (next: Step) => {
@@ -119,6 +141,12 @@ export function WelcomeFlow({ explainOnly = false }: { explainOnly?: boolean }) 
       client.setQueryData(queryKeys.me(), me);
       void client.invalidateQueries({ queryKey: queryKeys.today() });
       void client.invalidateQueries({ queryKey: queryKeys.curriculum.all() });
+      if (result.already_onboarded) {
+        // another tab got there first: nothing chosen here was stored, so say so instead of carrying on
+        setAlreadyChosen(true);
+        return;
+      }
+      setStage(result.profile.stage_id);
       setEpisode(result.episode);
       setFinished(true);
       go("uitleg");
@@ -157,14 +185,22 @@ export function WelcomeFlow({ explainOnly = false }: { explainOnly?: boolean }) 
             legend={<Trilingual text={uiCopy.welcome.languageQuestion} />}
             choices={SUPPORT.map((option) => ({
               value: option.value,
-              title: <Trilingual text={option.copy} />,
+              title: <Trilingual text={option.copy} autonym={option.autonym} />,
             }))}
             value={mode}
             onChange={setMode}
             columns={1}
           />
           <p className="muted">
-            <UiText text={uiCopy.welcome.languageNote} tier="always" />
+            {/* Persian-only learners see Dutch alone until the Persian is checked; promise nothing else */}
+            <UiText
+              text={
+                mode === "nl-fa" && !persianReviewed(uiCopy.welcome.levelQuestion)
+                  ? uiCopy.welcome.languageNoteFaPending
+                  : uiCopy.welcome.languageNote
+              }
+              tier="always"
+            />
           </p>
           <div className="welcome-actions">
             <Button icon="arrow" iconEnd onClick={() => go("niveau")}>
@@ -274,25 +310,37 @@ export function WelcomeFlow({ explainOnly = false }: { explainOnly?: boolean }) 
         </div>
       )}
 
-      {step === "start" && stage && (
-        <div className="welcome-step">
-          <section className="welcome-writer" aria-labelledby="writer-title">
-            <h2 id="writer-title">
-              <UiText text={uiCopy.welcome.startTitle} tier="always" />
-            </h2>
-            <p>
-              <UiText text={uiCopy.welcome.startIntro} tier="always" />
-            </p>
-            <WritingProgress episode={episode} />
-          </section>
-          <FirstActivity stage={stage} />
-          <div className="welcome-actions">
-            <ButtonLink href="/" icon="arrow" iconEnd>
-              <UiText text={uiCopy.welcome.toToday} inline />
-            </ButtonLink>
-          </div>
-        </div>
-      )}
+      {step === "start" && stage && <StartStep episode={episode} stage={stage} />}
+    </div>
+  );
+}
+
+/** The last step: what the writer is doing, said as it is, beside something to practise. */
+function StartStep({ episode, stage }: { episode: QueuedEpisode | null; stage: string }) {
+  const writing = useWriting(episode);
+  const firstBeingWritten = episode?.number === 1 && writing.waiting;
+  return (
+    <div className="welcome-step">
+      <section className="welcome-writer" aria-labelledby="writer-title">
+        <h2 id="writer-title">
+          <UiText
+            text={firstBeingWritten ? uiCopy.welcome.startTitle : uiCopy.welcome.startTitleNeutral}
+            tier="always"
+          />
+        </h2>
+        {firstBeingWritten && (
+          <p>
+            <UiText text={uiCopy.welcome.startIntro} tier="always" />
+          </p>
+        )}
+        <WritingProgress episode={episode} writing={writing} />
+      </section>
+      <FirstActivity stage={stage} />
+      <div className="welcome-actions">
+        <ButtonLink href="/" icon="arrow" iconEnd>
+          <UiText text={uiCopy.welcome.toToday} inline />
+        </ButtonLink>
+      </div>
     </div>
   );
 }

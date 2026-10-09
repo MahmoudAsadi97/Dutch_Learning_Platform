@@ -140,7 +140,7 @@ export function CurriculumTest({ stageId }: { stageId: string }) {
       setError(
         cause instanceof ApiError && cause.status === 409
           ? "Oefen eerst lezen, luisteren, spreken en schrijven. Daarna kun je deze eindtoets starten."
-          : friendlyError(cause),
+          : friendlyError(cause, "action"),
       );
     } finally {
       setBusy(false);

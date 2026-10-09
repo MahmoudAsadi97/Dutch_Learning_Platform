@@ -34,14 +34,14 @@ export const videoCopy = {
   },
   subtitles: { nl: "Ondertitels", en: "Subtitles", fa: "زیرنویس" },
   presenterAvatar: {
-    nl: "Virtuele presentator en synthetische stem ({voice}). Geen echte persoon.",
-    en: "Virtual presenter and synthetic voice ({voice}). Not a real person.",
-    fa: "مجری مجازی و صدای مصنوعی ({voice}). شخص واقعی نیست.",
+    nl: "Virtuele presentator en synthetische stem. Geen echte persoon.",
+    en: "Virtual presenter and synthetic voice. Not a real person.",
+    fa: "مجری مجازی و صدای مصنوعی. شخص واقعی نیست.",
   },
   presenterCards: {
-    nl: "Scènekaarten en synthetische stem ({voice}). Geen echte persoon.",
-    en: "Scene cards and synthetic voice ({voice}). Not a real person.",
-    fa: "کارت‌های صحنه و صدای مصنوعی ({voice}). شخص واقعی نیست.",
+    nl: "Scènekaarten en synthetische stem. Geen echte persoon.",
+    en: "Scene cards and synthetic voice. Not a real person.",
+    fa: "کارت‌های صحنه و صدای مصنوعی. شخص واقعی نیست.",
   },
   finishWatching: { nl: "Klaar met kijken", en: "Done watching", fa: "تماشا را تمام کردم" },
   questionsFollow: {

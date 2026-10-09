@@ -55,13 +55,15 @@ test("a new learner is sent to the welcome, chooses a start and finishes it once
   const heading = page.getByRole("heading", { level: 1 });
   await expect(heading).toContainText("Welkom bij Taalstudio");
   await expect(heading).toContainText("Welcome to Taalstudio");
-  await expect(heading.locator('[lang="fa"]')).toHaveAttribute("dir", "rtl");
+  // Persian sentences wait for a reviewer (O2); the Persian options still carry the language's own name
+  await expect(page.locator('.welcome-heading [lang="fa"]')).toHaveCount(0);
+  await expect(page.getByRole("radio", { name: /^Nederlands met Perzische hulp.*فارسی/ })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Hoofdmenu", exact: true })).toHaveCount(0);
   await expect(page.getByRole("navigation", { name: "Mobiel hoofdmenu" })).toHaveCount(0);
 
   await page.getByRole("radio", { name: /^Nederlands met Perzische hulp/ }).check();
   await expect(page.getByLabel("Taalhulp / language")).toHaveValue("nl-fa");
-  await expect(page.locator('.welcome-step [lang="fa"][dir="rtl"]').first()).toBeVisible();
+  await expect(page.getByText(/Perzische hulp komt zodra een lezer ze heeft nagekeken/)).toBeVisible();
   await page.getByRole("button", { name: next }).click();
 
   await expect(page.getByRole("button", { name: next })).toBeDisabled();
@@ -87,11 +89,11 @@ test("a new learner is sent to the welcome, chooses a start and finishes it once
 
   await page.getByRole("button", { name: next }).click();
   await expect(
-    page.getByTestId("writing-progress").or(page.getByText(/eerste aflevering verschijnt/)),
+    page.getByTestId("writing-progress").or(page.getByText(/aflevering verschijnt op Vandaag/)),
   ).toBeVisible();
   const starter = page.getByTestId("starter-words");
   await expect(starter.getByRole("checkbox").first()).toBeVisible();
-  await expect(starter.getByRole("button", { name: /^Bewaar 0 woorden/ })).toBeDisabled();
+  await expect(starter.getByRole("button", { name: /^Kies woorden om te bewaren/ })).toBeDisabled();
   await starter.getByRole("checkbox").nth(0).check();
   await starter.getByRole("checkbox").nth(1).check();
   await starter.getByRole("button", { name: /^Bewaar 2 woorden/ }).click();
@@ -130,6 +132,26 @@ test("at pre-A1 the first activity is the alphabet", async ({ page }) => {
   await page.getByRole("button", { name: next }).click();
   await expect(page.getByRole("heading", { name: /^Het alfabet/ })).toBeVisible();
   expect((await profile(page)).stage_id).toBe("pre-a1");
+});
+
+test("a daily goal set in Instellingen before the welcome is kept", async ({ page }) => {
+  await forgetOnboarding(page);
+  await page.evaluate(async () => {
+    await fetch("/api/me", {
+      method: "PATCH",
+      headers: { "X-Requested-With": "fetch", "Content-Type": "application/json" },
+      body: JSON.stringify({ daily_goal_points: 30 }),
+    });
+  });
+  await page.goto("/welkom");
+  await page.getByRole("radio", { name: /^Nederlands met Engelse hulp/ }).check();
+  await page.getByRole("button", { name: next }).click();
+  await page.getByRole("radio", { name: /^Ik ken een paar woorden/ }).check();
+  await page.getByRole("button", { name: next }).click();
+  await expect(page.getByRole("radio", { name: /^Stevig/ })).toBeChecked();
+  await page.getByRole("button", { name: /^Start met leren/ }).click();
+  await expect(page.getByTestId("how-it-works")).toBeVisible();
+  expect((await profile(page)).daily_goal_points).toBe(30);
 });
 
 test("settings stays open before the welcome is finished", async ({ page }) => {

@@ -18,18 +18,24 @@ export interface QueuedEpisode {
   status: string;
 }
 
-/**
- * The first episode, written while the learner practises. It reads the episode without changing it and
- * says plainly when writing failed, instead of spinning: Vandaag offers the retry.
- */
-export function WritingProgress({ episode }: { episode: QueuedEpisode | null }) {
+export interface Writing {
+  status: EpisodeStatus | "unknown";
+  /** Still being written, and still being watched. */
+  waiting: boolean;
+  /** Still being written after the poll limit: no longer watched, so nothing on screen claims progress. */
+  stalled: boolean;
+}
+
+/** Follows the first episode without changing it, for a few minutes at most. */
+export function useWriting(episode: QueuedEpisode | null): Writing {
   const [status, setStatus] = useState<EpisodeStatus | "unknown">(
     (episode?.status as EpisodeStatus | undefined) ?? "unknown",
   );
   const [polls, setPolls] = useState(0);
-  const waiting = status === "queued" || status === "generating";
+  const writing = status === "queued" || status === "generating";
+  const stalled = writing && polls >= POLL_LIMIT;
   useEffect(() => {
-    if (!episode || !waiting || polls >= POLL_LIMIT) return;
+    if (!episode || !writing || stalled) return;
     const controller = new AbortController();
     const timer = setTimeout(() => {
       stories
@@ -42,9 +48,17 @@ export function WritingProgress({ episode }: { episode: QueuedEpisode | null }) 
       clearTimeout(timer);
       controller.abort();
     };
-  }, [episode, waiting, polls]);
+  }, [episode, writing, stalled, polls]);
+  return { status, waiting: writing && !stalled, stalled };
+}
 
-  if (!episode) {
+/**
+ * The first episode, written while the learner practises. It says plainly when writing failed, and stops
+ * claiming progress once it stops watching: Vandaag shows the episode and offers the retry.
+ */
+export function WritingProgress({ episode, writing }: { episode: QueuedEpisode | null; writing: Writing }) {
+  const { status, waiting, stalled } = writing;
+  if (!episode || stalled) {
     return (
       <p className="writing-progress" role="status">
         <UiText text={uiCopy.welcome.writerLater} tier="always" />

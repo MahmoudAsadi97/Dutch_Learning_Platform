@@ -41,7 +41,7 @@ export function WordReview() {
           setRevealed(false);
         })
         .catch((cause) => {
-          if (!isAbort(cause)) setError(errorCopy(cause, wordsCopy.loadFailed));
+          if (!isAbort(cause)) setError(errorCopy(cause, wordsCopy.loadFailed, undefined, "load"));
         }),
     [],
   );
@@ -75,7 +75,7 @@ export function WordReview() {
     try {
       setAllWords((await words.all()).items);
     } catch (cause) {
-      setError(errorCopy(cause, wordsCopy.listFailed));
+      setError(errorCopy(cause, wordsCopy.listFailed, undefined, "load"));
     }
   }
   async function add() {
@@ -89,7 +89,7 @@ export function WordReview() {
       await load();
       if (allWords) setAllWords((await words.all()).items);
     } catch (cause) {
-      setNotice(errorCopy(cause, wordsCopy.saveFailed));
+      setNotice(errorCopy(cause, wordsCopy.saveFailed, undefined, "input"));
     }
   }
 
@@ -298,7 +298,6 @@ export function WordReview() {
               <button
                 type="button"
                 className="linklike"
-                aria-label={fill(wordsCopy.removeWord, { term: item.term }).nl}
                 onClick={() =>
                   void words
                     .remove(item.id)
@@ -306,7 +305,11 @@ export function WordReview() {
                     .catch((cause) => setNotice(errorCopy(cause, wordsCopy.removeFailed)))
                 }
               >
-                <UiText text={wordsCopy.remove} inline />
+                {/* the visible label starts the accessible name; the word says which one goes */}
+                <UiText text={wordsCopy.remove} inline />{" "}
+                <span className="visually-hidden" lang="nl">
+                  {item.term}
+                </span>
               </button>
             </li>
           ))}

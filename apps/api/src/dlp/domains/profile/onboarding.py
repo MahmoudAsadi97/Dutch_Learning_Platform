@@ -45,6 +45,8 @@ def complete(session: Session, learner: Learner, body: OnboardingBody) -> dict:
     session.flush()
     stories.set_level(session, learner, body.stage_id)
     episode = stories.ensure_buffer(session, learner)
+    if episode is not None:
+        episode = stories.restage_queued(session, episode, body.stage_id)
     return {
         "already_onboarded": False,
         **service.view(session, learner, profile),

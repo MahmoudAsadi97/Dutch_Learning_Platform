@@ -105,6 +105,11 @@ export const uiCopy = {
       en: "The buttons stay in Dutch. Under the Dutch text you see a short translation.",
       fa: "دکمه‌ها هلندی می‌مانند. زیر متن هلندی ترجمه‌ی کوتاهی می‌بینی.",
     },
+    languageNoteFaPending: {
+      nl: "De knoppen blijven Nederlands. Perzische hulp komt zodra een lezer ze heeft nagekeken; kies Perzisch en Engels als je nu al een vertaling wilt.",
+      en: "The buttons stay in Dutch. Persian help comes once a reader has checked it; choose Persian and English if you want a translation now.",
+      fa: "دکمه‌ها هلندی می‌مانند. کمک فارسی وقتی می‌آید که یک خواننده آن را بررسی کرده باشد؛ اگر همین حالا ترجمه می‌خواهی، فارسی و انگلیسی را انتخاب کن.",
+    },
     supportEn: {
       nl: "Nederlands met Engelse hulp",
       en: "Dutch with English help",
@@ -248,6 +253,12 @@ export const uiCopy = {
       en: "That takes one to three minutes. Practise a little in the meantime.",
       fa: "این یک تا سه دقیقه طول می‌کشد. در این فاصله کمی تمرین کن.",
     },
+    startTitleNeutral: { nl: "Oefen alvast even", en: "Practise for a moment", fa: "کمی تمرین کن" },
+    alreadyChosen: {
+      nl: "Je had je start al gekozen. Je niveau en dagdoel pas je aan in Instellingen.",
+      en: "You had already chosen your start. Change your level and daily goal in Settings.",
+      fa: "شروعت را قبلاً انتخاب کرده بودی. سطح و هدف روزانه‌ات را در «تنظیمات» تغییر بده.",
+    },
     writerQueued: {
       nl: "De schrijver begint zo.",
       en: "The writer starts shortly.",
@@ -270,9 +281,9 @@ export const uiCopy = {
       fa: "نوشتن انجام نشد. در «امروز» می‌توانی دوباره امتحان کنی.",
     },
     writerLater: {
-      nl: "Je eerste aflevering verschijnt op Vandaag zodra ze klaar is.",
-      en: "Your first episode appears on Today as soon as it is ready.",
-      fa: "اولین قسمتت به‌محض آماده شدن در «امروز» نمایش داده می‌شود.",
+      nl: "Je aflevering verschijnt op Vandaag zodra ze klaar is.",
+      en: "Your episode appears on Today as soon as it is ready.",
+      fa: "قسمتت به‌محض آماده شدن در «امروز» نمایش داده می‌شود.",
     },
     alphabetTitle: { nl: "Het alfabet", en: "The alphabet", fa: "الفبا" },
     wordsTitle: { nl: "Je eerste woorden", en: "Your first words", fa: "اولین واژه‌هایت" },
@@ -281,7 +292,14 @@ export const uiCopy = {
       en: "Choose the words you want to keep. You review them later under Words.",
       fa: "واژه‌هایی را که می‌خواهی نگه داری انتخاب کن. بعداً در بخش «واژه‌ها» مرورشان می‌کنی.",
     },
+    wordsChoose: {
+      nl: "Kies woorden om te bewaren",
+      en: "Choose words to keep",
+      fa: "واژه‌هایی برای نگه داشتن انتخاب کن",
+    },
+    wordsSaveOne: { nl: "Bewaar 1 woord", en: "Keep 1 word", fa: "یک واژه را نگه دار" },
     wordsSave: { nl: "Bewaar {count} woorden", en: "Keep {count} words", fa: "{count} واژه را نگه دار" },
+    wordsSavedOne: { nl: "1 woord bewaard.", en: "1 word kept.", fa: "یک واژه نگه داشته شد." },
     wordsSaved: {
       nl: "{count} woorden bewaard.",
       en: "{count} words kept.",
@@ -314,9 +332,9 @@ export const uiCopy = {
       fa: "مدل زبانی و صدای رایانه‌ای",
     },
     video: {
-      nl: "Een taalmodel schrijft het script; de stem en de presentator maakt de computer, het is geen echte persoon. De ondertitels komen uit de gesproken tekst. Een taaldocent heeft het script nog niet nagekeken.",
-      en: "A language model writes the script; the computer makes the voice and the presenter, who is not a real person. The subtitles come from the spoken text. A language teacher has not reviewed the script yet.",
-      fa: "یک مدل زبانی متن را می‌نویسد؛ صدا و مجری را رایانه می‌سازد و مجری شخص واقعی نیست. زیرنویس‌ها از متن گفتار ساخته می‌شوند. هنوز یک معلم زبان متن را بازبینی نکرده است.",
+      nl: "Een taalmodel schrijft het script en de vertalingen; de stem en het beeld maakt de computer. Wie je ziet of hoort, is geen echte persoon. De ondertitels komen uit de gesproken tekst. Een taaldocent heeft het script nog niet nagekeken.",
+      en: "A language model writes the script and the translations; the computer makes the voice and the picture. Whoever you see or hear is not a real person. The subtitles come from the spoken text. A language teacher has not reviewed the script yet.",
+      fa: "یک مدل زبانی متن و ترجمه‌ها را می‌نویسد؛ صدا و تصویر را رایانه می‌سازد. کسی که می‌بینی یا می‌شنوی شخص واقعی نیست. زیرنویس‌ها از متن گفتار ساخته می‌شوند. هنوز یک معلم زبان متن را بازبینی نکرده است.",
     },
     unreviewedLabel: { nl: "Nog niet nagekeken", en: "Not reviewed yet", fa: "هنوز بازبینی نشده" },
     unreviewed: {
@@ -368,9 +386,9 @@ export const uiCopy = {
       fa: "آنچه یک مدل زبانی می‌نویسد",
     },
     model: {
-      nl: "Je verhalen, de scripts van je video's en de feedback op je teksten komen van een taalmodel. De computer controleert lengte, niveau en woordenschat; een docent kijkt ze niet na. Kleine fouten zijn mogelijk.",
-      en: "Your stories, the scripts of your videos and the feedback on your texts come from a language model. The computer checks length, level and vocabulary; a teacher does not review them. Small mistakes are possible.",
-      fa: "داستان‌هایت، متن ویدیوهایت و بازخورد درباره‌ی نوشته‌هایت از یک مدل زبانی می‌آیند. رایانه طول، سطح و واژگان را بررسی می‌کند؛ معلمی آن‌ها را بازبینی نمی‌کند. ممکن است اشتباه‌های کوچکی در آن‌ها باشد.",
+      nl: "Je verhalen, de scripts van je video's, hun vertalingen en de feedback op je teksten komen van een taalmodel. De computer controleert lengte, niveau en woordenschat; een docent kijkt ze niet na. Kleine fouten zijn mogelijk.",
+      en: "Your stories, the scripts of your videos, their translations and the feedback on your texts come from a language model. The computer checks length, level and vocabulary; a teacher does not review them. Small mistakes are possible.",
+      fa: "داستان‌هایت، متن ویدیوهایت، ترجمه‌های آن‌ها و بازخورد درباره‌ی نوشته‌هایت از یک مدل زبانی می‌آیند. رایانه طول، سطح و واژگان را بررسی می‌کند؛ معلمی آن‌ها را بازبینی نمی‌کند. ممکن است اشتباه‌های کوچکی در آن‌ها باشد.",
     },
     voiceTitle: { nl: "Stemmen", en: "Voices", fa: "صداها" },
     voices: {
@@ -393,16 +411,31 @@ export const uiCopy = {
   },
   errors: {
     generic: {
+      nl: "Dit lukte even niet. Probeer het opnieuw.",
+      en: "That did not work just now. Please try again.",
+      fa: "این کار فعلاً انجام نشد. دوباره امتحان کن.",
+    },
+    genericKept: {
       nl: "Dit lukte even niet. Je invoer blijft staan. Probeer het opnieuw.",
       en: "That did not work just now. What you entered stays here. Please try again.",
       fa: "این کار فعلاً انجام نشد. چیزی که وارد کردی سر جایش می‌ماند. دوباره امتحان کن.",
     },
     offline: {
+      nl: "De verbinding viel weg. Probeer het zo opnieuw.",
+      en: "The connection dropped. Try again in a moment.",
+      fa: "اتصال قطع شد. کمی بعد دوباره امتحان کن.",
+    },
+    offlineKept: {
       nl: "De verbinding viel weg. Je invoer blijft staan; probeer het zo opnieuw.",
       en: "The connection dropped. What you entered stays here; try again in a moment.",
       fa: "اتصال قطع شد. چیزی که وارد کردی سر جایش می‌ماند؛ کمی بعد دوباره امتحان کن.",
     },
     serverAway: {
+      nl: "De server antwoordt even niet. Probeer het zo opnieuw.",
+      en: "The server is not answering right now. Try again in a moment.",
+      fa: "سرور فعلاً پاسخ نمی‌دهد. کمی بعد دوباره امتحان کن.",
+    },
+    serverAwayKept: {
       nl: "De server antwoordt even niet. Je invoer blijft staan; probeer het zo opnieuw.",
       en: "The server is not answering right now. What you entered stays here; try again in a moment.",
       fa: "سرور فعلاً پاسخ نمی‌دهد. چیزی که وارد کردی سر جایش می‌ماند؛ کمی بعد دوباره امتحان کن.",
@@ -443,11 +476,21 @@ export const uiCopy = {
       fa: "بررسی کن که همه‌ی بخش‌ها را پر کرده‌ای و ضبط تازه‌ای انجام داده‌ای.",
     },
     limit: {
-      nl: "Je oefenlimiet is bereikt. Je werk blijft bewaard; probeer later opnieuw.",
-      en: "You have reached your practice limit. Your work is kept; try again later.",
-      fa: "به سقف تمرینت رسیده‌ای. کاری که کرده‌ای ذخیره می‌ماند؛ بعداً دوباره امتحان کن.",
+      nl: "Je oefenlimiet is bereikt. Probeer het later opnieuw.",
+      en: "You have reached your practice limit. Try again later.",
+      fa: "به سقف تمرینت رسیده‌ای. بعداً دوباره امتحان کن.",
+    },
+    limitKept: {
+      nl: "Je oefenlimiet is bereikt. Je invoer blijft staan; probeer het later opnieuw.",
+      en: "You have reached your practice limit. What you entered stays here; try again later.",
+      fa: "به سقف تمرینت رسیده‌ای. چیزی که وارد کردی سر جایش می‌ماند؛ بعداً دوباره امتحان کن.",
     },
     modelAway: {
+      nl: "De taalhulp is even niet bereikbaar. Probeer het zo opnieuw.",
+      en: "The language help cannot be reached right now. Try again in a moment.",
+      fa: "کمک زبانی فعلاً در دسترس نیست. کمی بعد دوباره امتحان کن.",
+    },
+    modelAwayKept: {
       nl: "De taalhulp is even niet bereikbaar. Je invoer blijft staan. Probeer het zo opnieuw.",
       en: "The language help cannot be reached right now. What you entered stays here. Try again in a moment.",
       fa: "کمک زبانی فعلاً در دسترس نیست. چیزی که وارد کردی سر جایش می‌ماند. کمی بعد دوباره امتحان کن.",

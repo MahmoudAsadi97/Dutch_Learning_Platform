@@ -9,7 +9,7 @@ import type { HelpRung, Question, StepProgress } from "@/lib/types";
 import { UiText } from "@/components/ui/UiText";
 import { errorCopy } from "@/lib/client/error-copy";
 import { missionsCopy } from "@/lib/copy/missions";
-import type { Copy } from "@/lib/ui-copy";
+import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
 interface Props {
   stepKey: string;
@@ -49,7 +49,7 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
       }
       setVerdicts(next);
     } catch (cause) {
-      setError(errorCopy(cause, missionsCopy.answersFailed));
+      setError(errorCopy(cause, missionsCopy.answersFailed, undefined, "input"));
     } finally {
       setBusy(false);
     }
@@ -57,7 +57,9 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
 
   return (
     <section className="card" aria-labelledby={`${stepKey}-questions-heading`}>
-      <h3 id={`${stepKey}-questions-heading`}>Vragen</h3>
+      <h3 id={`${stepKey}-questions-heading`}>
+        <UiText text={missionsCopy.questionsTitle} />
+      </h3>
       {questions.map((question, qIndex) => {
         const verdict = verdicts[question.id];
         return (
@@ -98,15 +100,25 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
               {verdict && (
                 <p role="status" data-testid={`result-${question.id}`}>
                   {verdict.correct ? (
-                    <span className="label ok">Juist</span>
+                    <span className="label ok">
+                      <UiText text={missionsCopy.answerRight} inline />
+                    </span>
                   ) : (
-                    <span className="label bad">Nog niet juist</span>
+                    <span className="label bad">
+                      <UiText text={missionsCopy.answerNotYet} inline />
+                    </span>
                   )}
                 </p>
               )}
               {!verdict && answered[question.id] !== undefined && (
                 <p className="muted" style={{ fontSize: "0.85rem" }} data-testid={`earlier-${question.id}`}>
-                  Eerder beantwoord{answered[question.id] ? " (juist)" : ""}.
+                  <UiText
+                    text={
+                      answered[question.id] ? missionsCopy.answeredEarlierRight : missionsCopy.answeredEarlier
+                    }
+                    tier="guide"
+                    inline
+                  />
                 </p>
               )}
               {question.help.length > 0 && (
@@ -128,22 +140,16 @@ export function QuestionList({ stepKey, questions, progress, onAnswer, onHelp }:
           disabled={!allChosen || busy}
           data-testid={`${stepKey}-check`}
         >
-          <LearningText
-            text={{
-              nl: busy ? "Bezig…" : "Controleer",
-              en: busy ? "Checking…" : "Check",
-              fa: busy ? "در حال بررسی…" : "بررسی",
-            }}
-          />
+          <UiText text={busy ? missionsCopy.checking : uiCopy.action.check} inline />
         </button>
         {checked && (
           <span data-testid="score" aria-live="polite">
-            {correct} van {questions.length} juist
+            <UiText text={fill(missionsCopy.questionScore, { correct, total: questions.length })} inline />
           </span>
         )}
         {progress?.completed && (
           <span className="label ok" data-testid={`${stepKey}-done`}>
-            stap voltooid
+            <UiText text={missionsCopy.stepDone} inline />
           </span>
         )}
         {error && (

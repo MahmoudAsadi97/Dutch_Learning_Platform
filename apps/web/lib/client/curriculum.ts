@@ -89,12 +89,15 @@ export { skillNames, skillOrder, stageLabel } from "../domain/registry";
 /**
  * The message for a failed curriculum call. Pass the error itself: the API's code decides first, the
  * status second (lib/client/errors.ts). A bare status still works for the few callers that only have one.
- * The final check words its 403 and 422 precisely.
+ * The final check words its 403 and 422 precisely. Only a submission keeps the learner's input on
+ * screen, so only `input` may say it stays; loading and plain actions make no such claim.
  */
-export function friendlyError(cause?: unknown): string {
+export function friendlyError(cause?: unknown, context: "input" | "action" | "load" = "input"): string {
   const failed = typeof cause === "number" ? { status: cause } : cause;
-  return errorFor(failed, uiCopy.errors, {
-    403: uiCopy.errors.checkLocked,
-    422: uiCopy.errors.checkIncomplete,
-  }).nl;
+  return errorFor(
+    failed,
+    uiCopy.errors,
+    { 403: uiCopy.errors.checkLocked, 422: uiCopy.errors.checkIncomplete },
+    { keepsInput: context === "input" },
+  ).nl;
 }

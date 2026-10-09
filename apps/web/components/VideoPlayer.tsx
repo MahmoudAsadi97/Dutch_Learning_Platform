@@ -13,11 +13,13 @@ import { stageLabels, type GlossaryItem } from "@/lib/client/stories";
 import { clock, sceneAt, videos, type Video } from "@/lib/client/videos";
 import { Skeleton, SkeletonPanel } from "@/components/ui";
 import { HonestyChip } from "@/components/ui/HonestyChip";
+import { useDeveloperDetails } from "@/components/shell/EnvContext";
 import { UiText } from "@/components/ui/UiText";
 import { videoCopy } from "@/lib/copy/video";
 import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
 export function VideoPlayer({ videoId }: { videoId: string }) {
+  const developer = useDeveloperDetails();
   const [video, setVideo] = useState<Video | null>(null);
   const [error, setError] = useState<Copy | null>(null);
   const [time, setTime] = useState(0);
@@ -34,7 +36,8 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
           setFinished(Boolean(value.watched_at));
         })
         .catch((cause) => {
-          if (!isAbort(cause)) setError(errorCopy(cause, videoCopy.loadFailed, { 404: videoCopy.notFound }));
+          if (!isAbort(cause))
+            setError(errorCopy(cause, videoCopy.loadFailed, { 404: videoCopy.notFound }, "load"));
         }),
     [videoId],
   );
@@ -153,7 +156,8 @@ export function VideoPlayer({ videoId }: { videoId: string }) {
             <UiText text={videoCopy.subtitles} inline />
           </label>
           <span className="small-text muted">
-            <UiText text={fill(presenter, { voice: video.voice || video.renderer })} tier="guide" inline />
+            <UiText text={presenter} tier="guide" inline />
+            {developer && <span className="muted"> ({video.voice || video.renderer})</span>}
           </span>
         </div>
       </div>

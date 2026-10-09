@@ -1,25 +1,69 @@
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
+import ts from "typescript";
 
 /**
- * Interface text written straight into components instead of coming from the catalogue: JSX text and the
- * literal values of the attributes a learner reads or hears (aria-label, placeholder, title, alt, label).
- * Shared by the ratchet test and the budget recount, so both count the same way.
+ * Interface text written straight into components instead of coming from the catalogue, found with the
+ * TypeScript parser: JSX text; strings and template text a JSX expression renders (`{busy ? "Bezig…" :
+ * "Start"}`); string values of the attributes a learner reads or hears (aria-label, placeholder, title, alt,
+ * label, description); and inline `nl:` strings, the shape of a trilingual label that bypasses the
+ * catalogue and its Persian review. Shared by the ratchet test and the budget recount.
  */
 export const web = path.resolve(import.meta.dirname, "..", "..");
 
-const ATTRIBUTES = /\b(?:aria-label|placeholder|title|alt|label)="([^"]*)"/g;
+const SPOKEN_ATTRIBUTES = new Set(["aria-label", "placeholder", "title", "alt", "label", "description"]);
+const WORDS = /\p{L}{2,}/u;
 
-/** Text between a JSX tag and the next tag; generics, arrows and statements between two JSX blocks are code. */
-const JSX_TEXT = /(?:<[A-Za-z][\w.]*(?:\s[^<>]*?)?>|<\/[\w.]*>|<>)([^<>{}]+)(?=<)/g;
-const CODE =
-  /\b(?:return|const|let|if|else|null|await|useState|useRef|Promise)\b|=>|&&|\|\||;\s*$|^\s*[)(;]/m;
+/** Strings an expression shows as text: itself, both branches of a condition, the right side of && / || / ??. */
+function shownStrings(node, out) {
+  if (!node) return;
+  if (ts.isParenthesizedExpression(node) || ts.isAsExpression(node))
+    return shownStrings(node.expression, out);
+  if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) return void out.push(node.text);
+  if (ts.isTemplateExpression(node)) {
+    out.push([node.head.text, ...node.templateSpans.map((span) => span.literal.text)].join(" "));
+    return;
+  }
+  if (ts.isConditionalExpression(node)) {
+    shownStrings(node.whenTrue, out);
+    shownStrings(node.whenFalse, out);
+    return;
+  }
+  if (ts.isBinaryExpression(node)) {
+    const kind = node.operatorToken.kind;
+    if (kind === ts.SyntaxKind.AmpersandAmpersandToken) return shownStrings(node.right, out);
+    if (kind === ts.SyntaxKind.BarBarToken || kind === ts.SyntaxKind.QuestionQuestionToken) {
+      shownStrings(node.left, out);
+      shownStrings(node.right, out);
+    }
+  }
+}
 
-export function hardCodedText(code) {
-  const stripped = code.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:"'`])\/\/.*$/gm, "$1");
-  const jsx = [...stripped.matchAll(JSX_TEXT)].map((m) => m[1].trim()).filter((text) => !CODE.test(text));
-  const attributes = [...stripped.matchAll(ATTRIBUTES)].map((m) => m[1].trim());
-  return [...jsx, ...attributes].filter((text) => /\p{L}{2,}/u.test(text));
+const isChild = (node) => node.parent && (ts.isJsxElement(node.parent) || ts.isJsxFragment(node.parent));
+
+export function hardCodedText(code, fileName = "component.tsx") {
+  const source = ts.createSourceFile(fileName, code, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const found = [];
+  const visit = (node) => {
+    if (ts.isJsxText(node)) {
+      const text = node.text.replace(/\s+/g, " ").trim();
+      if (text) found.push(text);
+    } else if (ts.isJsxExpression(node) && isChild(node)) {
+      shownStrings(node.expression, found);
+    } else if (
+      ts.isJsxAttribute(node) &&
+      node.initializer &&
+      SPOKEN_ATTRIBUTES.has(node.name.getText(source))
+    ) {
+      if (ts.isStringLiteral(node.initializer)) found.push(node.initializer.text);
+      else if (ts.isJsxExpression(node.initializer)) shownStrings(node.initializer.expression, found);
+    } else if (ts.isPropertyAssignment(node) && node.name.getText(source) === "nl") {
+      shownStrings(node.initializer, found);
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(source);
+  return found.filter((text) => WORDS.test(text));
 }
 
 export function sourceFiles(dir = "components", out = []) {
@@ -34,7 +78,7 @@ export function sourceFiles(dir = "components", out = []) {
 export function measureAll() {
   const counts = {};
   for (const file of [...sourceFiles("components"), ...sourceFiles("app")].sort()) {
-    const n = hardCodedText(readFileSync(path.join(web, file), "utf8")).length;
+    const n = hardCodedText(readFileSync(path.join(web, file), "utf8"), file).length;
     if (n) counts[file] = n;
   }
   return counts;

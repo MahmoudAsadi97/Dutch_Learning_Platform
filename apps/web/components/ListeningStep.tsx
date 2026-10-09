@@ -75,7 +75,13 @@ export function ListeningStep({
       }
     } catch (cause) {
       setPlaying(false);
-      setAudioNotice(errorCopy(cause, missionsCopy.audioUnavailable, { 404: missionsCopy.audioUnavailable }));
+      setAudioNotice(
+        errorCopy(cause, missionsCopy.audioUnavailable, {
+          404: missionsCopy.audioUnavailable,
+          502: missionsCopy.audioUnavailable,
+          503: missionsCopy.audioUnavailable,
+        }),
+      );
     }
   }
 
@@ -204,7 +210,7 @@ export function ListeningStep({
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">
-          <LearningText text={{ nl: "Hulp", en: "Help", fa: "کمک" }} />
+          <UiText text={missionsCopy.help} />
         </h3>
         <HelpLadder rungs={payload.help} idPrefix={step.key} onReveal={(rung) => help(rung)} />
       </section>

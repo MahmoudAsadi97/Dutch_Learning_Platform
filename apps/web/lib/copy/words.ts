@@ -105,6 +105,5 @@ export const wordsCopy = {
   backInDay: { nl: "terug over {days} dag", en: "back in {days} day", fa: "{days} روز دیگر برمی‌گردد" },
   backInDays: { nl: "terug over {days} dagen", en: "back in {days} days", fa: "{days} روز دیگر برمی‌گردد" },
   remove: { nl: "Verwijder", en: "Remove", fa: "حذف کن" },
-  removeWord: { nl: "Verwijder {term}", en: "Remove {term}", fa: "{term} را حذف کن" },
   removeFailed: { nl: "Verwijderen lukte niet.", en: "Removing did not work.", fa: "حذف نشد." },
 } as const satisfies Record<string, Copy>;

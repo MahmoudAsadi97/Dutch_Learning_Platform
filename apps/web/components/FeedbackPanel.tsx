@@ -18,10 +18,10 @@ interface Props {
   onProgressChanged?: () => void;
 }
 
-const KIND_LABEL: Record<string, { nl: string; fa: string; className: string }> = {
-  strength: { nl: "sterk", fa: "نقطهٔ قوت", className: "ok" },
-  error: { nl: "fout", fa: "خطا", className: "bad" },
-  suggestion: { nl: "tip", fa: "پیشنهاد", className: "warn" },
+const KIND_LABEL: Record<string, { text: Copy; className: string }> = {
+  strength: { text: missionsCopy.feedbackStrength, className: "ok" },
+  error: { text: missionsCopy.feedbackError, className: "bad" },
+  suggestion: { text: missionsCopy.feedbackSuggestion, className: "warn" },
 };
 
 /**
@@ -57,6 +57,7 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
       setError(
         errorCopy(cause, missionsCopy.feedbackUnavailable, {
           409: uiCopy.errors.evidenceShort,
+          502: missionsCopy.feedbackUnavailable,
           503: missionsCopy.feedbackUnavailable,
         }),
       );
@@ -73,7 +74,7 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
       data-testid={`${stepKey}-feedback`}
     >
       <h3 id={`${stepKey}-feedback-heading`}>
-        <LearningText text={{ nl: "Feedback", en: "Feedback", fa: "بازخورد" }} />
+        <UiText text={missionsCopy.feedbackTitle} />
       </h3>
       <div className="honesty-row">
         <p className="muted">
@@ -117,7 +118,7 @@ export function FeedbackPanel({ stepKey, detail, onDetail, onProgressChanged }: 
               return (
                 <li key={`${latest.id}-${index}`} data-kind={point.kind}>
                   <span className={`label ${label.className}`}>
-                    <LearningText text={label} />
+                    <UiText text={label.text} inline />
                   </span>
                   <LearningText text={{ nl: point.text_nl, en: point.text_en, fa: point.text_fa }} />
                   {point.quote && (

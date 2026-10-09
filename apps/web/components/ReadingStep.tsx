@@ -101,13 +101,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
             disabled={translationBusy}
             onClick={() => void toggleTranslation()}
           >
-            <LearningText
-              text={{
-                nl: showPersian ? "Verberg de vertaling" : "Toon de vertaling",
-                en: showPersian ? "Hide translation" : "Show translation",
-                fa: showPersian ? "پنهان کردن ترجمه" : "نمایش ترجمه",
-              }}
-            />
+            <UiText text={showPersian ? missionsCopy.hideTranslation : missionsCopy.showTranslation} inline />
           </button>
         </p>
         {translationError && (
@@ -175,7 +169,7 @@ export function ReadingStep({ step, labels, detail, ensureSession, onDetail, onP
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">
-          <LearningText text={{ nl: "Hulp", en: "Help", fa: "کمک" }} />
+          <UiText text={missionsCopy.help} />
         </h3>
         <HelpLadder rungs={payload.help} idPrefix={step.key} onReveal={(rung) => help(rung)} />
       </section>

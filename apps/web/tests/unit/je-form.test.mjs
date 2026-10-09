@@ -23,12 +23,20 @@ function sources(dir, out = []) {
   return out;
 }
 
-/** The text a learner can read: string literals, template literals and JSX text, without comments. */
+/**
+ * The text a learner can read: string literals, template literals and JSX text, without comments. JSX text
+ * counts even as a single word (a speaker label "U") and next to an expression ("Lees uw bericht na{" "}");
+ * string literals need a sentence, so a letter name ("U") or a RegExp flag ("u") is not interface text.
+ */
 function readableText(code) {
   const withoutComments = code.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:"'`])\/\/.*$/gm, "$1");
-  const strings = [...withoutComments.matchAll(/"([^"\n]*)"|`([^`]*)`/g)].map((m) => m[1] ?? m[2]);
-  const jsxText = [...withoutComments.matchAll(/>([^<>{}]+)</g)].map((m) => m[1]);
-  return [...strings, ...jsxText].filter((text) => /[a-zà-ÿ]{2,} /i.test(text));
+  const strings = [...withoutComments.matchAll(/"([^"\n]*)"|`([^`]*)`/g)]
+    .map((m) => m[1] ?? m[2])
+    .filter((text) => /[a-zà-ÿ]{2,} /i.test(text));
+  const jsxText = [...withoutComments.matchAll(/[>}]([^<>{}]+)[<{]/g)]
+    .map((m) => m[1])
+    .filter((text) => /\p{L}/u.test(text));
+  return [...strings, ...jsxText];
 }
 
 test("interface Dutch uses je, never u or uw", () => {

@@ -16,6 +16,7 @@ import {
 } from "@/lib/client/videos";
 import { ButtonLink, EmptyState, Skeleton, SkeletonPanel } from "@/components/ui";
 import { HonestyChip } from "@/components/ui/HonestyChip";
+import { useDeveloperDetails } from "@/components/shell/EnvContext";
 import { videoFailure } from "@/lib/client/failures";
 import { UiText } from "@/components/ui/UiText";
 import { videoCopy } from "@/lib/copy/video";
@@ -45,6 +46,7 @@ export function VideoTile({
   onRetry?: (video: VideoSummary) => void;
 }) {
   const pending = video.status === "queued" || video.status === "writing" || video.status === "rendering";
+  const developer = useDeveloperDetails();
   return (
     <li
       className={`video-tile status-${video.status} ${video.watched_at ? "is-watched" : ""}`}
@@ -82,7 +84,7 @@ export function VideoTile({
             <UiText text={failureText(video)} tier="guide" />
           </p>
         )}
-        {video.status === "failed" && video.failure_reasons?.length > 0 && (
+        {developer && video.status === "failed" && video.failure_reasons?.length > 0 && (
           <details className="failure-details">
             <summary>Wat er niet klopte</summary>
             <ul>
@@ -132,7 +134,7 @@ export function VideoLibrary() {
           setStage((current) => current || value.default_stage);
         })
         .catch((cause) => {
-          if (!isAbort(cause)) setError(errorCopy(cause, videoCopy.libraryLoadFailed));
+          if (!isAbort(cause)) setError(errorCopy(cause, videoCopy.libraryLoadFailed, undefined, "load"));
         }),
     [],
   );
@@ -160,15 +162,17 @@ export function VideoLibrary() {
     setNotice(null);
     try {
       await videos.request(stage, topic.trim(), kind);
-      setTopic("");
-      setPolls(0);
-      await load();
-      setNotice(videoCopy.requestStarted);
     } catch (cause) {
-      setNotice(errorCopy(cause));
-    } finally {
+      // the topic is still in the field
+      setNotice(errorCopy(cause, undefined, undefined, "input"));
       setBusy(false);
+      return;
     }
+    setTopic("");
+    setPolls(0);
+    setNotice(videoCopy.requestStarted);
+    setBusy(false);
+    await load();
   }
   async function retry(video: VideoSummary) {
     setNotice(null);
@@ -305,7 +309,14 @@ export function VideoLibrary() {
           title="Nog geen video's"
           description="Kies hierboven een niveau en een onderwerp."
         >
-          <ButtonLink href="#video-request-title" variant="secondary" icon="arrow" iconEnd>
+          <ButtonLink
+            href="#video-request-title"
+            variant="secondary"
+            icon="arrow"
+            iconEnd
+            // the heading cannot take focus; put it where the learner types the topic
+            onClick={() => requestAnimationFrame(() => document.getElementById("video-topic")?.focus())}
+          >
             Vraag je eerste video
           </ButtonLink>
         </EmptyState>

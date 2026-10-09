@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { EpisodeCard } from "@/components/TodayHome";
+import { useDeveloperDetails } from "@/components/shell/EnvContext";
 import { Cover, EmptyState, Skeleton, SkeletonPanel } from "@/components/ui";
 import { UiText } from "@/components/ui/UiText";
 import { errorCopy } from "@/lib/client/error-copy";
@@ -31,13 +32,14 @@ export function StoryLibrary() {
   const [wish, setWish] = useState("");
   const [notice, setNotice] = useState<Copy | null>(null);
   const [busy, setBusy] = useState(false);
+  const developer = useDeveloperDetails();
   useEffect(() => {
     const controller = new AbortController();
     stories
       .library(controller.signal)
       .then(setData)
       .catch((cause) => {
-        if (!isAbort(cause)) setError(errorCopy(cause, episodeCopy.libraryLoadFailed));
+        if (!isAbort(cause)) setError(errorCopy(cause, episodeCopy.libraryLoadFailed, undefined, "load"));
       });
     return () => controller.abort();
   }, []);
@@ -46,14 +48,20 @@ export function StoryLibrary() {
     setNotice(null);
     try {
       await stories.request(wish.trim());
-      setWish("");
-      setData(await stories.library());
-      setNotice(episodeCopy.requestStarted);
     } catch (cause) {
-      setNotice(errorCopy(cause, undefined, { 429: uiCopy.failures.writerLimit }));
-    } finally {
+      // the wish is still in the field
+      setNotice(errorCopy(cause, undefined, { 429: uiCopy.failures.writerLimit }, "input"));
       setBusy(false);
+      return;
     }
+    setWish("");
+    setNotice(episodeCopy.requestStarted);
+    setBusy(false);
+    // the episode is queued either way; a failed refresh only means the list shows it on the next visit
+    await stories
+      .library()
+      .then(setData)
+      .catch(() => undefined);
   }
   if (error)
     return (
@@ -126,7 +134,7 @@ export function StoryLibrary() {
                   ? `${item.word_count} woorden · ${item.read_at ? "gelezen" : "nog niet gelezen"}${item.rating === 1 ? " · 👍" : item.rating === -1 ? " · 👎" : ""}`
                   : statusCopy[item.status]}
               </p>
-              {item.status === "failed" && item.failure_reasons?.length > 0 && (
+              {developer && item.status === "failed" && item.failure_reasons?.length > 0 && (
                 <details className="failure-details">
                   <summary>Wat er niet klopte</summary>
                   <ul>

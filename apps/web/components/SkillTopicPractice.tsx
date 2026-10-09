@@ -77,7 +77,7 @@ export function SkillTopicPractice(props: Props) {
             if (!controller.signal.aborted)
               setFailed({
                 key,
-                message: friendlyError(cause),
+                message: friendlyError(cause, "load"),
               });
           });
       },
@@ -364,7 +364,7 @@ function TopicReader({
         }
       })
       .catch((cause) => {
-        if (!controller.signal.aborted) setLoadError(friendlyError(cause));
+        if (!controller.signal.aborted) setLoadError(friendlyError(cause, "load"));
       });
     return () => controller.abort();
   }, [endpoint, skill, retry]);

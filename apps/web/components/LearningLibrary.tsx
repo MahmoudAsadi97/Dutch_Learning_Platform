@@ -368,7 +368,7 @@ export function StoryTime({ stageId }: { stageId: string }) {
         }
       })
       .catch((cause) => {
-        if (!controller.signal.aborted) setStoryError(friendlyError(cause));
+        if (!controller.signal.aborted) setStoryError(friendlyError(cause, "load"));
       });
     return () => controller.abort();
   }, [stageId, selected, retry]);

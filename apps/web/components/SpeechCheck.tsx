@@ -10,7 +10,7 @@ import { usePlayback } from "@/lib/client/playback";
 import { type Recording, talkButtonHandlers, useRecorder } from "@/lib/client/recorder";
 import { useDeveloperDetails } from "@/components/shell/EnvContext";
 import { speechCopy } from "@/lib/copy/speech";
-import type { Copy } from "@/lib/ui-copy";
+import { uiCopy, type Copy } from "@/lib/ui-copy";
 
 interface TranscriptResponse {
   request_id: string;
@@ -86,7 +86,13 @@ export function SpeechCheck() {
       setUploadPhase("done");
     } catch (cause) {
       setUploadPhase("error");
-      setError(errorCopy(cause, speechCopy.uploadFailed));
+      setError(
+        errorCopy(cause, speechCopy.uploadFailed, {
+          422: speechCopy.uploadFailed,
+          502: speechCopy.uploadFailed,
+          503: speechCopy.uploadFailed,
+        }),
+      );
     }
   }
 
@@ -122,7 +128,10 @@ export function SpeechCheck() {
       // a failed request has catalogue copy; anything else went wrong while playing
       setError(
         cause instanceof ApiError || cause instanceof TypeError
-          ? errorCopy(cause, speechCopy.synthesisFailed)
+          ? errorCopy(cause, speechCopy.synthesisFailed, {
+              502: speechCopy.synthesisFailed,
+              503: speechCopy.synthesisFailed,
+            })
           : speechCopy.playbackFailed,
       );
     } finally {
@@ -275,7 +284,8 @@ export function SpeechCheck() {
         {ttsLabel && (
           <p>
             <span className="label warn" data-testid="tts-label">
-              audio: {ttsLabel}
+              <UiText text={uiCopy.chip.voiceLabel} inline />
+              {developer && <> · {ttsLabel}</>}
             </span>
           </p>
         )}

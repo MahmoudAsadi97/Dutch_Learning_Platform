@@ -115,7 +115,7 @@ export function WritingStep({
     try {
       await saverRef.current!.save(next);
     } catch (cause) {
-      if (mountedRef.current) setSaveError(errorCopy(cause, missionsCopy.draftNotSaved));
+      if (mountedRef.current) setSaveError(errorCopy(cause, missionsCopy.draftNotSaved, undefined, "input"));
       throw cause;
     } finally {
       if (mountedRef.current) setSaving(false);
@@ -153,7 +153,7 @@ export function WritingStep({
             ),
       );
     } catch (cause) {
-      setError(errorCopy(cause, missionsCopy.submitFailed));
+      setError(errorCopy(cause, missionsCopy.submitFailed, undefined, "input"));
     } finally {
       setBusy(false);
     }
@@ -336,7 +336,7 @@ export function WritingStep({
 
       <section className="card" aria-labelledby="help-heading">
         <h3 id="help-heading">
-          <LearningText text={{ nl: "Hulp", en: "Help", fa: "کمک" }} />
+          <UiText text={missionsCopy.help} />
         </h3>
         <HelpLadder rungs={payload.help} idPrefix={step.key} onReveal={help} />
       </section>

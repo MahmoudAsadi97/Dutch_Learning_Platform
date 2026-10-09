@@ -73,13 +73,23 @@ describe("FirstRunGate", () => {
     expect(replace).not.toHaveBeenCalled();
   });
 
-  it("stays open when the profile cannot be loaded", async () => {
+  it("waits while the profile loads, so no page starts work before the learner has chosen", () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() => new Promise(() => undefined)),
+    );
+    renderGate(client());
+    expect(screen.queryByText("Vandaag")).toBeNull();
+    expect(replace).not.toHaveBeenCalled();
+  });
+
+  it("opens when the profile cannot be loaded", async () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new TypeError("network down")));
     const cache = client();
     renderGate(cache);
-    expect(screen.getByText("Vandaag")).toBeInTheDocument();
+    expect(screen.queryByText("Vandaag")).toBeNull();
     await waitFor(() => expect(cache.getQueryState(queryKeys.me())?.status).toBe("error"));
-    expect(screen.getByText("Vandaag")).toBeInTheDocument();
+    expect(await screen.findByText("Vandaag")).toBeInTheDocument();
     expect(replace).not.toHaveBeenCalled();
   });
 

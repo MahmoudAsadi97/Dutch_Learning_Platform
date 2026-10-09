@@ -1,6 +1,6 @@
 "use client";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 
 import { apiJson } from "./api";
 import { queryKeys } from "./query-keys";
@@ -69,6 +69,12 @@ export function useProfile() {
   });
 }
 
+/**
+ * Per query client: saves still in flight and the last profile the server confirmed. A failed save rolls
+ * back to what the server holds, never to another save's optimistic value that may fail too.
+ */
+const saves = new WeakMap<QueryClient, { pending: number; confirmed?: Me }>();
+
 export function useUpdateProfile() {
   const client = useQueryClient();
   return useMutation({
@@ -79,21 +85,42 @@ export function useUpdateProfile() {
     onMutate: async (patch: ProfileUpdate) => {
       await client.cancelQueries({ queryKey: queryKeys.me() });
       const previous = client.getQueryData<Me>(queryKeys.me());
+      const state = saves.get(client) ?? { pending: 0 };
+      if (state.pending === 0) state.confirmed = previous;
+      state.pending += 1;
+      saves.set(client, state);
       if (previous) {
         client.setQueryData<Me>(queryKeys.me(), {
           ...previous,
           profile: { ...previous.profile, ...(patch as Partial<Profile>) },
         });
       }
-      return { previous };
     },
-    onError: (_error, _patch, context) => {
-      if (context?.previous) client.setQueryData(queryKeys.me(), context.previous);
+    onError: (_error, patch) => {
+      const confirmed = saves.get(client)?.confirmed;
+      const current = client.getQueryData<Me>(queryKeys.me());
+      if (!confirmed || !current) return;
+      // undo only what this save still shows; a later save's value stays until that save settles
+      const profile: Record<string, unknown> = { ...current.profile };
+      const server: Record<string, unknown> = { ...confirmed.profile };
+      const own = patch as Record<string, unknown>;
+      for (const key of Object.keys(own)) {
+        if (key in profile && profile[key] === own[key]) profile[key] = server[key];
+      }
+      client.setQueryData<Me>(queryKeys.me(), { ...current, profile: profile as unknown as Profile });
     },
     onSuccess: (me) => {
       client.setQueryData(queryKeys.me(), me);
+      const state = saves.get(client);
+      if (state) state.confirmed = me;
       void client.invalidateQueries({ queryKey: queryKeys.today() });
       void client.invalidateQueries({ queryKey: queryKeys.curriculum.all() });
+    },
+    onSettled: (_me, error) => {
+      const state = saves.get(client);
+      if (state) state.pending = Math.max(0, state.pending - 1);
+      // after a failure, a reachable server corrects whatever the cache still shows
+      if (error && state?.pending === 0) void client.invalidateQueries({ queryKey: queryKeys.me() });
     },
   });
 }

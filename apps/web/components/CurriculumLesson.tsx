@@ -99,7 +99,7 @@ export function CurriculumLesson({
         } catch {}
       })
       .catch((cause) => {
-        if (cause?.name !== "AbortError") setError(friendlyError(cause));
+        if (cause?.name !== "AbortError") setError(friendlyError(cause, "load"));
       });
     return () => controller.abort();
   }, [stageId, retry]);

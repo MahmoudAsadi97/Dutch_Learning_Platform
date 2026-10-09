@@ -9,6 +9,7 @@ import { HelpLadder } from "@/components/HelpLadder";
 import { UiText } from "@/components/ui/UiText";
 import { ApiError, apiFetch, apiJson, newRequestId } from "@/lib/client/api";
 import { errorCopy } from "@/lib/client/error-copy";
+import { useDeveloperDetails } from "@/components/shell/EnvContext";
 import { usePlayback } from "@/lib/client/playback";
 import { recordHelp } from "@/lib/client/practice";
 import { type Recording, talkButtonHandlers, useRecorder } from "@/lib/client/recorder";
@@ -121,6 +122,7 @@ export function SpeakingStep({
   const [send, setSend] = useState<SendState>({ kind: "idle" });
   const [typedText, setTypedText] = useState("");
   const [audioLabel, setAudioLabel] = useState<string>("");
+  const developer = useDeveloperDetails();
   const [audioNotice, setAudioNotice] = useState<Copy | null>(null);
   const [playingTurnId, setPlayingTurnId] = useState<string>("");
   const abortRef = useRef<AbortController | null>(null);
@@ -182,13 +184,25 @@ export function SpeakingStep({
         // 502: the model did not answer and the turn is recorded as failed; a retry needs a new request id.
         // Anything else that is not retryable (403, 409, 422) is shown; the learner changes the input.
         const retryWithSameId = cause.status >= 500 && cause.status !== 502;
-        const message = errorCopy(cause, missionsCopy.turnNotProcessed, {
-          502: missionsCopy.turnNotProcessed,
-        });
+        // the answer stays for a retry; a recording the speech service heard nothing in is not a typing mistake
+        const message = errorCopy(
+          cause,
+          missionsCopy.turnNotProcessed,
+          {
+            502: missionsCopy.turnNotProcessed,
+            ...(pending.modality === "typed" ? {} : { 422: missionsCopy.nothingHeard }),
+          },
+          "input",
+        );
         setSend({ kind: "failed", pending, message, sameRequestId: retryWithSameId });
         if (cause.status === 502) await reload();
       } else {
-        setSend({ kind: "failed", pending, message: errorCopy(cause), sameRequestId: true });
+        setSend({
+          kind: "failed",
+          pending,
+          message: errorCopy(cause, undefined, undefined, "input"),
+          sameRequestId: true,
+        });
       }
     } finally {
       abortRef.current = null;
@@ -377,7 +391,9 @@ export function SpeakingStep({
               ))}
               {send.kind === "sending" && (
                 <li className="bubble learner pending" data-testid="turn-pending">
-                  <span className="who">U</span>
+                  <span className="who">
+                    <UiText text={missionsCopy.you} inline />
+                  </span>
                   <span lang="nl">
                     {send.pending.text ?? <UiText text={missionsCopy.recordingPlaceholder} inline />}
                   </span>
@@ -429,8 +445,10 @@ export function SpeakingStep({
             )}
             {audioLabel && (
               <p>
+                {/* the reply is a computer voice; which one is a developer detail */}
                 <span className="label warn" data-testid="character-audio-label">
-                  <UiText text={fill(missionsCopy.audioLabel, { label: audioLabel })} inline />
+                  <UiText text={uiCopy.chip.voiceLabel} inline />
+                  {developer && <> · {audioLabel}</>}
                 </span>
               </p>
             )}
@@ -632,7 +650,9 @@ function TurnBubbles({
         data-modality={turn.modality}
         data-turn-status={turn.status}
       >
-        <span className="who">U</span>
+        <span className="who">
+          <UiText text={missionsCopy.you} inline />
+        </span>
         <span lang="nl">{turn.learner_text}</span>
         <span className="muted" style={{ display: "block", fontSize: "0.8rem" }}>
           <UiText

@@ -34,6 +34,7 @@ test("every route belongs to one destination or room", () => {
     "/progress": "/progress",
     "/settings": "/settings",
     "/settings?tab=x": "/settings",
+    "/over": "/settings",
   };
   for (const [path, section] of Object.entries(expected)) {
     assert.equal(navSection(path), section, path);

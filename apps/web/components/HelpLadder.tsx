@@ -2,11 +2,11 @@
 
 import { useRef, useState } from "react";
 
-import { LearningText, useLanguageSupport } from "@/components/LanguageSupport";
+import { useLanguageSupport } from "@/components/LanguageSupport";
 import { UiText } from "@/components/ui/UiText";
 import { missionsCopy } from "@/lib/copy/missions";
 import type { HelpRung } from "@/lib/types";
-import type { Copy } from "@/lib/ui-copy";
+import { fill, type Copy } from "@/lib/ui-copy";
 
 interface Props {
   rungs: HelpRung[];
@@ -16,10 +16,10 @@ interface Props {
   onReveal: (rung: HelpRung) => Promise<void>;
 }
 
-const KIND_LABEL: Record<HelpRung["kind"], { nl: string; fa: string }> = {
-  hint_nl: { nl: "Tip in het Nederlands", fa: "راهنمایی به هلندی" },
-  gloss_fa: { nl: "Sleutelwoorden", fa: "واژه‌های کلیدی" },
-  translation_fa: { nl: "Vertaling", fa: "ترجمه" },
+const KIND_LABEL: Record<HelpRung["kind"], Copy> = {
+  hint_nl: missionsCopy.rungHint,
+  gloss_fa: missionsCopy.rungKeywords,
+  translation_fa: missionsCopy.rungTranslation,
 };
 
 /**
@@ -54,13 +54,7 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
   if (disabled) {
     return (
       <p className="muted" data-help="disabled">
-        <LearningText
-          text={{
-            nl: "Geen hulp beschikbaar in deze stap.",
-            en: "Help is not available in this independent step.",
-            fa: "در این بخش کمکی در دسترس نیست.",
-          }}
-        />
+        <UiText text={missionsCopy.helpDisabled} tier="guide" />
       </p>
     );
   }
@@ -71,7 +65,7 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
         {ordered.slice(0, revealed).map((rung) => (
           <li key={`${idPrefix}-${rung.level}`}>
             <div className="muted" style={{ fontSize: "0.8rem" }}>
-              <LearningText text={KIND_LABEL[rung.kind]} />
+              <UiText text={KIND_LABEL[rung.kind]} />
             </div>
             {/* Glosses mix "Dutch = Persian" pairs: dir=auto keeps the pair order readable while each Persian run stays RTL. */}
             {(rung.direction === "ltr" || showPersian) && (
@@ -100,9 +94,7 @@ export function HelpLadder({ rungs, idPrefix, disabled = false, onReveal }: Prop
           aria-busy={busy}
           onClick={() => void reveal()}
         >
-          <LearningText
-            text={{ nl: `Hulp niveau ${next.level}`, en: `Hint ${next.level}`, fa: `کمک سطح ${next.level}` }}
-          />
+          <UiText text={fill(missionsCopy.helpLevel, { level: next.level })} inline />
         </button>
       ) : (
         <p className="muted">

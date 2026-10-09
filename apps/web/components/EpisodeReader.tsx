@@ -32,7 +32,7 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
         })
         .catch((cause) => {
           if (!isAbort(cause))
-            setError(errorCopy(cause, episodeCopy.loadFailed, { 404: episodeCopy.notFound }));
+            setError(errorCopy(cause, episodeCopy.loadFailed, { 404: episodeCopy.notFound }, "load"));
         }),
     [episodeId],
   );
@@ -69,11 +69,10 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
           />
         </h1>
         <p className="muted">
-          <UiText text={episodeCopy.goBackTo} tier="guide" inline />{" "}
+          {/* one sentence, so the gloss reads whole; the link covers it instead of "Vandaag" alone */}
           <Link href="/">
-            <UiText text={uiCopy.nav.today} tier="guide" inline />
-          </Link>{" "}
-          <UiText text={episodeCopy.toSeeStatus} tier="guide" inline />
+            <UiText text={episodeCopy.checkStatus} tier="guide" inline />
+          </Link>
         </p>
       </div>
     );
@@ -205,10 +204,10 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
             {episode.chosen_choice && (
               <p className="practice-complete" role="status">
                 <UiText text={episodeCopy.choicePassed} tier="guide" inline />{" "}
+                <UiText text={episodeCopy.newEpisodeOnToday} tier="guide" inline />{" "}
                 <Link href="/">
                   <UiText text={episodeCopy.backToToday} inline />
-                </Link>{" "}
-                <UiText text={episodeCopy.newEpisodeThere} tier="guide" inline />
+                </Link>
               </p>
             )}
             {notice && (
@@ -377,7 +376,8 @@ function ReadAloud({
         }
       })
       .catch((cause) => {
-        if (!request.signal.aborted) setError(errorCopy(cause, episodeCopy.recordingFailed));
+        if (!request.signal.aborted)
+          setError(errorCopy(cause, episodeCopy.recordingFailed, { 422: episodeCopy.recordingFailed }));
       })
       .finally(() => {
         if (uploadRef.current === request) setBusy(false);

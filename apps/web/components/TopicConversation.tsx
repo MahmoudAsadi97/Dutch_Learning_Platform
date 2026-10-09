@@ -288,7 +288,7 @@ function ConversationPractice({
             sessionStorage.removeItem(storageKey);
           } catch {}
           setError("Dit bewaarde gesprek is niet meer beschikbaar. Begin een nieuw gesprek.");
-        } else setError(friendlyError(cause));
+        } else setError(friendlyError(cause, "load"));
       });
     return () => controller.abort();
     // Identity is fixed by the keyed parent; reload only after a server turn conflict.
@@ -308,7 +308,7 @@ function ConversationPractice({
       });
       if (!controller.signal.aborted) canonical(value);
     } catch (cause) {
-      if (!controller.signal.aborted) setError(friendlyError(cause));
+      if (!controller.signal.aborted) setError(friendlyError(cause, "action"));
     } finally {
       if (request.current === controller) {
         request.current = null;

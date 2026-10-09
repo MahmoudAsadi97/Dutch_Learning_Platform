@@ -23,7 +23,10 @@ test("without a known code the status decides", () => {
   assert.equal(errorFor(api(413), copies), copies.tooLarge);
   assert.equal(errorFor(api(422), copies), copies.invalid);
   assert.equal(errorFor(api(429), copies), copies.limit);
-  assert.equal(errorFor(api(502), copies), copies.serverAway);
+  // a 502 from the API itself is a failed provider call: the screen words it, not "the server is away"
+  assert.equal(errorFor(api(502), copies), copies.generic);
+  assert.equal(errorFor(api(502, "api_unreachable"), copies), copies.serverAway);
+  assert.equal(errorFor(api(504, "upstream_timeout"), copies), copies.serverAway);
   assert.equal(errorFor(api(503), copies), copies.modelAway);
   assert.equal(errorFor(api(500, "domain_error"), copies), copies.generic);
 });
@@ -38,6 +41,19 @@ test("a screen can say something more precise for a code or a status", () => {
   const overrides = { 403: copies.checkLocked, story: copies.notFound };
   assert.equal(errorFor(api(403, "curriculum"), copies, overrides), copies.checkLocked);
   assert.equal(errorFor(api(400, "story"), copies, overrides), copies.notFound);
+});
+
+test("only a screen that keeps the input says it stays", () => {
+  const keeps = { keepsInput: true };
+  assert.equal(errorFor(new TypeError("Failed to fetch"), copies, {}, keeps), copies.offlineKept);
+  assert.equal(errorFor(api(503), copies, {}, keeps), copies.modelAwayKept);
+  assert.equal(errorFor(api(500), copies, {}, keeps), copies.genericKept);
+  assert.equal(errorFor(api(429, "usage_limit"), copies, {}, keeps), copies.limitKept);
+  assert.equal(errorFor(api(401), copies, {}, keeps), copies.session);
+  for (const key of ["generic", "offline", "serverAway", "limit", "modelAway"]) {
+    assert.doesNotMatch(copies[key].nl, /invoer|bewaard/, `${key} makes no claim about the input`);
+    assert.match(copies[`${key}Kept`].nl, /Je invoer blijft staan/, `${key}Kept says the input stays`);
+  }
 });
 
 test("a conflict reads by its code, never by the API's English sentence", () => {
