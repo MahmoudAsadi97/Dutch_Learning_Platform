@@ -1,8 +1,35 @@
 import assert from "node:assert/strict";
+import { readdirSync } from "node:fs";
+import path from "node:path";
 import { test } from "node:test";
-import { allCopy, fill } from "../../lib/ui-copy.ts";
+import { pathToFileURL } from "node:url";
+import { PERSIAN_REVIEWED } from "../../lib/copy/review.ts";
+import { allCopy, fill, uiCopy } from "../../lib/ui-copy.ts";
 
-const entries = allCopy();
+/** The per-screen batches in lib/copy, loaded the way the catalogue's own groups are. */
+const copyDir = path.resolve(import.meta.dirname, "..", "..", "lib", "copy");
+const batchFiles = readdirSync(copyDir).filter((file) => file.endsWith(".ts") && file !== "review.ts");
+const batches = {};
+for (const file of batchFiles) {
+  const loaded = await import(pathToFileURL(path.join(copyDir, file)).href);
+  batches[file.replace(/\.ts$/, "")] = loaded[`${file.replace(/\.ts$/, "")}Copy`];
+}
+
+const entries = [
+  ...allCopy(),
+  ...Object.entries(batches).flatMap(([group, copies]) =>
+    Object.entries(copies).map(([name, copy]) => ({ key: `${group}.${name}`, copy })),
+  ),
+];
+
+test("every batch module exports its copy under <name>Copy", () => {
+  for (const [name, copies] of Object.entries(batches)) assert.equal(typeof copies, "object", name);
+});
+
+test("every batch has a Persian review flag, and no flag names a batch that does not exist", () => {
+  const names = [...Object.keys(uiCopy), ...Object.keys(batches)].sort();
+  assert.deepEqual(Object.keys(PERSIAN_REVIEWED).sort(), names);
+});
 
 test("every key carries Dutch, English and Persian", () => {
   assert.ok(entries.length >= 20);

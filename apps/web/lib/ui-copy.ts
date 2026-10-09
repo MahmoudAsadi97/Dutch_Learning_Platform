@@ -381,11 +381,27 @@ export const uiCopy = {
 export type UiCopyGroup = keyof typeof uiCopy;
 export type UiCopyKey<G extends UiCopyGroup> = keyof (typeof uiCopy)[G];
 
+/** Which batch every entry belongs to, and which entry a filled copy came from (for the Persian review). */
+const batches = new WeakMap<object, string>();
+const origins = new WeakMap<object, Copy>();
+
+/** Records the batch name of each entry; lib/client/persian-review.ts registers every batch once. */
+export function registerBatch(name: string, entries: Record<string, Copy>): void {
+  for (const copy of Object.values(entries)) batches.set(copy, name);
+}
+
+/** The batch a copy entry (or a copy made from one with `fill`) belongs to. */
+export function batchOf(copy: Copy): string | undefined {
+  return batches.get(copy) ?? batches.get(origins.get(copy) ?? {});
+}
+
 /** Fills `{name}` placeholders in every language of a copy entry. */
 export function fill(copy: Copy, values: Record<string, string | number>): Copy {
   const apply = (text: string) =>
     text.replace(/\{(\w+)\}/g, (match, name: string) => (name in values ? String(values[name]) : match));
-  return { nl: apply(copy.nl), en: apply(copy.en), fa: apply(copy.fa) };
+  const filled = { nl: apply(copy.nl), en: apply(copy.en), fa: apply(copy.fa) };
+  origins.set(filled, origins.get(copy) ?? copy);
+  return filled;
 }
 
 /** Every entry as a flat list for tests and tooling. */

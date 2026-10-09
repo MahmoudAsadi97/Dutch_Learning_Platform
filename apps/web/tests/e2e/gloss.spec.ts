@@ -3,6 +3,7 @@ import type { Page } from "@playwright/test";
 import { expect, test } from "./fixtures/test";
 
 /** With glosses on and every support language selected, the shell still fits and passes axe. */
+// Persian appears here once the owner marks the navigation batch reviewed in lib/copy/review.ts (O2).
 const headers = { "X-Requested-With": "fetch" };
 
 async function profile(page: Page, data: Record<string, unknown>) {
@@ -24,12 +25,13 @@ for (const width of [1440, 390, 320]) {
     await page.goto("/");
     const nav = page.getByRole("navigation", { name: width > 1050 ? "Hoofdmenu" : "Mobiel hoofdmenu" });
     await expect(nav.getByRole("link", { name: /^Vandaag/ })).toBeVisible();
-    const persian = nav.locator("[lang=fa]");
+    // the navigation's Persian waits for review (O2), so learners who also chose English see English
+    await expect(nav.locator("[lang=fa]")).toHaveCount(0);
+    const glosses = nav.locator(".ui-gloss[lang=en]");
     // the glosses are there at every width; under 360px they are hidden, not missing
-    await expect(persian).toHaveCount(width > 1050 ? 7 : 5);
-    await expect(persian.first()).toHaveAttribute("dir", "rtl");
-    if (width >= 360) await expect(persian.first()).toBeVisible();
-    else await expect(persian.first()).toBeHidden();
+    await expect(glosses).toHaveCount(width > 1050 ? 7 : 5);
+    if (width >= 360) await expect(glosses.first()).toBeVisible();
+    else await expect(glosses.first()).toBeHidden();
     await expect
       .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth))
       .toBe(true);
