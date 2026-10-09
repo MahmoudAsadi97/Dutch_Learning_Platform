@@ -286,3 +286,18 @@ surface, which opens a short explanation in the learner's languages and links to
 lost its label. Model names, check counts, the local run command and the recording format help whoever
 runs the app and now show only outside production.
 
+
+## D-27 · Every point comes from one recorded action; the day keeps its goal — 2026-10-09
+
+Points used to be added to the learner's day directly from eleven places in the story, video and word
+code, each guarding against double awards in its own way. From this change every award goes through one
+activity service: the action is recorded as an append-only event (kind, what it was about, the Brussels
+day), unique per learner, kind and a key that follows the kind's rule (once for good, once a day, or once
+per request), and only a new event moves the day. A retried or simultaneous request therefore finds the
+event and earns nothing, and a day's points always equal the sum of its events; days from before the
+change carry one `legacy` event with their points. Point values, the day counter an action moves and its
+skill live in one rules table (`domains/activity/rules.py`), unchanged for now; D-19's "points only for
+story and word actions" is revised when the other practice kinds get rules (roadmap step 4.2). The day
+stores the goal in force at its latest activity, and changing the goal updates the current day, so the
+dot a past day shows is the goal Today showed for it. Points, streaks and goals count by the Brussels
+calendar; usage allowances keep their UTC day. The streak rule is unchanged (owner decision O9).

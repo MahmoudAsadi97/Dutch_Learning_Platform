@@ -1,6 +1,7 @@
 """Imports every ORM model so that `Base.metadata` is complete (used by Alembic)."""
 
 from dlp.db.base import Base
+from dlp.domains.activity import models as activity_models
 from dlp.domains.coaching import models as coaching_models
 from dlp.domains.content import models as content_models
 from dlp.domains.content_review import models as content_review_models
@@ -19,6 +20,7 @@ from dlp.domains.videos import models as video_models
 
 __all__ = [
     "Base",
+    "activity_models",
     "coaching_models",
     "content_models",
     "content_review_models",

@@ -9,6 +9,7 @@ import { Icon } from "@/components/Icon";
 import { LanguageSwitcher } from "@/components/LanguageSupport";
 import { DeveloperDetailsProvider } from "@/components/shell/EnvContext";
 import { FirstRunGate } from "@/components/shell/FirstRunGate";
+import { GoalCelebration } from "@/components/shell/GoalCelebration";
 import { destinations, navItemFor, navSection, rooms, type NavItem } from "@/components/shell/nav";
 import { IconTile } from "@/components/ui/IconTile";
 import { ToastProvider } from "@/components/ui/Toast";
@@ -175,6 +176,7 @@ export function AppShell({
             <div className="app-workspace" data-accent={current.accent}>
               <Header current={current} />
               <ConnectionBanner />
+              <GoalCelebration />
               <main id="main" className="site-main" tabIndex={-1}>
                 <FirstRunGate enabled={firstRunGate}>{children}</FirstRunGate>
               </main>

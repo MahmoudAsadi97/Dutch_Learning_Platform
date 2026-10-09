@@ -26,6 +26,7 @@ EXPORTED = {
     "story_episodes": "stories",
     "vocab_items": "words",
     "learning_days": "learning_days",
+    "activity_events": "activity",
     "video_lessons": "videos",
     "usage_counters": "usage",
     "usage_reservations": "usage",
@@ -50,6 +51,15 @@ def test_every_learner_scoped_table_is_exported_or_explicitly_excluded():
     assert not unaccounted, f"add these tables to the export (or to EXCLUDED with a reason): {unaccounted}"
     stale = sorted((set(EXPORTED) | set(EXCLUDED)) - scoped)
     assert not stale, f"not learner-scoped tables (or gone): {stale}"
+
+
+def test_test_and_reset_cleanup_clear_every_learner_scoped_table():
+    from dlp.cli import LEARNER_DATA_TABLES
+    from tests.conftest import TABLES_TO_CLEAR
+
+    scoped = _learner_scoped_tables()
+    assert not sorted(scoped - set(LEARNER_DATA_TABLES)), "add these to dlp.cli.LEARNER_DATA_TABLES"
+    assert not sorted(scoped - set(TABLES_TO_CLEAR)), "add these to tests.conftest.TABLES_TO_CLEAR"
 
 
 def test_export_payload_has_every_declared_key(client, headers):

@@ -1,14 +1,17 @@
 from __future__ import annotations
 
 import uuid
-from datetime import date, datetime
+from datetime import datetime
 from typing import Any
 
-from sqlalchemy import Boolean, Date, DateTime, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint
+from sqlalchemy import DateTime, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
 from dlp.db.base import Base, new_id, utcnow
+
+# the learner's day moved to the activity domain; older imports keep working
+from dlp.domains.activity.models import LearningDay  # noqa: F401
 
 EPISODE_STATUSES: tuple[str, ...] = ("queued", "generating", "ready", "failed")
 
@@ -100,23 +103,3 @@ class VocabItem(Base):
     due_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=utcnow)
     reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=utcnow)
-
-
-class LearningDay(Base):
-    """One row per learner per calendar day (Europe/Brussels) with the points earned that day."""
-
-    __tablename__ = "learning_days"
-    __table_args__ = (UniqueConstraint("learner_id", "day"),)
-
-    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=new_id)
-    learner_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("learners.id", ondelete="CASCADE"), nullable=False)
-    day: Mapped[date] = mapped_column(Date, nullable=False)
-    points: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
-    episodes_read: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
-    words_reviewed: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
-    questions_correct: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
-    read_aloud: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
-    videos_watched: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
-    goal_met: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
-    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=utcnow,
-                                                 onupdate=utcnow)

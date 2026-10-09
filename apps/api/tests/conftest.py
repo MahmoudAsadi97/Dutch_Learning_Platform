@@ -65,6 +65,7 @@ TABLES_TO_CLEAR = [
     "audio_assets",
     "jobs",
     "pricing_entries",
+    "activity_events",
     "learner_profiles",
     "learners",
 ]

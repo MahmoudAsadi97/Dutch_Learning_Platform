@@ -29,13 +29,15 @@ from sqlalchemy.orm import Session
 
 from dlp.config import Settings, get_settings
 from dlp.db.base import utcnow
+from dlp.domains.activity.rules import RULES
+from dlp.domains.activity.service import reached, record_activity
 from dlp.domains.curriculum import topics as topic_bank
 from dlp.domains.curriculum.schemas import STAGE_IDS
 from dlp.domains.curriculum.service import CurriculumError
 from dlp.domains.identity.models import Learner
 from dlp.domains.jobs import service as jobs
 from dlp.domains.stories import service as stories
-from dlp.domains.stories import today, vocab
+from dlp.domains.stories import vocab
 from dlp.domains.stories.bible import StageProfile, profile_for
 from dlp.domains.stories.validator import ValidationResult, feedback_text, validate_draft
 from dlp.domains.usage import service as usage
@@ -53,7 +55,8 @@ WRITER_BASE_OUTPUT_TOKENS = 1500   # plus four tokens per word: three languages 
 WORDS_PER_SECOND = 2.3             # a neural nl-BE voice at normal rate, including the pauses between scenes
 MAX_PENDING = 2
 MAX_RENDER_POLLS = 90
-POINTS = {"watch": 10, "answer": 3}
+# what the screens show; the values live in the activity rules
+POINTS = {"watch": RULES["video_watched"].points, "answer": RULES["video_questions"].points}
 RENDER_POLL_SECONDS = {"azure-avatar": 20.0}  # others finish at once; the job loop's own interval paces them
 
 
@@ -491,10 +494,11 @@ def today_summary(session: Session, learner_id: uuid.UUID) -> dict:
 def mark_watched(session: Session, learner: Learner, lesson: VideoLesson) -> dict:
     if lesson.status != "ready":
         raise VideoError("this video is not ready yet", 409, code="not_ready")
+    award = None
     if lesson.watched_at is None:
         lesson.watched_at = utcnow()
-        today.add_points(session, learner.id, points=POINTS["watch"], videos_watched=1)
-    return video_view(lesson)
+        award = record_activity(session, learner.id, kind="video_watched", ref=str(lesson.id))
+    return {**video_view(lesson), **reached(award)}
 
 
 def answer_questions(session: Session, learner: Learner, lesson: VideoLesson, *, request_id: str,
@@ -512,12 +516,13 @@ def answer_questions(session: Session, learner: Learner, lesson: VideoLesson, *,
     correct = sum(1 for i, question in enumerate(lesson.questions) if chosen[str(i)] == question["answer_index"])
     state.update({"chosen": chosen, "correct": correct, "request_id": request_id, "answered_at": utcnow().isoformat()})
     lesson.answers = state
+    watched = None
     if lesson.watched_at is None:
         lesson.watched_at = utcnow()
-        today.add_points(session, learner.id, points=POINTS["watch"], videos_watched=1)
-    if correct:
-        today.add_points(session, learner.id, points=POINTS["answer"] * correct, questions_correct=correct)
-    return video_view(lesson)
+        watched = record_activity(session, learner.id, kind="video_watched", ref=str(lesson.id))
+    answered = record_activity(session, learner.id, kind="video_questions", ref=str(lesson.id), request_id=request_id,
+                               units=correct)
+    return {**video_view(lesson), **reached(watched, answered)}
 
 
 def rate(session: Session, learner: Learner, lesson: VideoLesson, rating: int) -> dict:

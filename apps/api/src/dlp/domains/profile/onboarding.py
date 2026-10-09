@@ -6,6 +6,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from dlp.db.base import utcnow
+from dlp.domains.activity.service import retarget_today
 from dlp.domains.identity.models import Learner
 from dlp.domains.profile import service
 from dlp.domains.profile.models import LearnerProfile
@@ -28,6 +29,8 @@ def update(session: Session, learner: Learner, body: ProfileUpdate) -> LearnerPr
     profile = service.update(session, learner, body)
     if "stage_id" in body.model_fields_set and body.stage_id is not None:
         stories.set_level(session, learner, body.stage_id)
+    if "daily_goal_points" in body.model_fields_set:
+        retarget_today(session, learner.id, profile.daily_goal_points)
     return profile
 
 
@@ -43,6 +46,7 @@ def complete(session: Session, learner: Learner, body: OnboardingBody) -> dict:
     profile.updated_at = utcnow()
     learner.support_language = "fa" if "fa" in body.support_mode else "en"
     session.flush()
+    retarget_today(session, learner.id, profile.daily_goal_points)
     stories.set_level(session, learner, body.stage_id)
     episode = stories.ensure_buffer(session, learner)
     if episode is not None:

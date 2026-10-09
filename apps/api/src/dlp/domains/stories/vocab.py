@@ -13,15 +13,14 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from dlp.db.base import utcnow
+from dlp.domains.activity.service import reached, record_activity
 from dlp.domains.identity.models import Learner
-from dlp.domains.stories import today
 from dlp.domains.stories.models import StoryEpisode, VocabItem
 from dlp.domains.stories.validator import lemma_key, normalise
 from dlp.errors import DomainError
 
 GRADES = {"again": 1, "hard": 3, "good": 4, "easy": 5}
 LEARNED_INTERVAL_DAYS = 21
-REVIEW_POINTS = 1
 
 
 class VocabError(DomainError):
@@ -121,8 +120,8 @@ def review(session: Session, learner: Learner, item_id: uuid.UUID, *, grade: str
         return item_view(item)
     item.last_request_id = request_id
     schedule(item, grade)
-    today.add_points(session, learner.id, points=REVIEW_POINTS, words_reviewed=1)
-    return item_view(item)
+    award = record_activity(session, learner.id, kind="word_review", ref=str(item.id), request_id=request_id)
+    return {**item_view(item), **reached(award)}
 
 
 def due_items(session: Session, learner: Learner, *, limit: int = 20, now: datetime | None = None) -> dict:

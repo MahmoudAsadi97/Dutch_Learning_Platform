@@ -33,6 +33,9 @@ export interface ApiOptions {
 /** Name of the DOM event fired on `window` when a call could not reach the server or reached it again. */
 export const CONNECTIVITY_EVENT = "dlp:connectivity";
 
+/** Name of the DOM event fired on `window` when an action's points took the day to its goal. */
+export const GOAL_EVENT = "dlp:goal-reached";
+
 function announce(reachable: boolean) {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new CustomEvent(CONNECTIVITY_EVENT, { detail: { reachable } }));
@@ -86,5 +89,7 @@ export async function apiJson<T>(path: string, options: ApiOptions = {}): Promis
     const code = typeof body.code === "string" ? body.code : "";
     throw new ApiError(response.status, detail, requestId, code);
   }
+  if (typeof window !== "undefined" && (payload as { goal_reached?: unknown } | null)?.goal_reached === true)
+    window.dispatchEvent(new CustomEvent(GOAL_EVENT));
   return payload as T;
 }

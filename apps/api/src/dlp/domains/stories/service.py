@@ -23,6 +23,8 @@ from sqlalchemy.orm import Session
 
 from dlp.config import Settings, get_settings
 from dlp.db.base import utcnow
+from dlp.domains.activity.rules import RULES
+from dlp.domains.activity.service import reached, record_activity
 from dlp.domains.curriculum import service as curriculum
 from dlp.domains.curriculum import topics as topic_bank
 from dlp.domains.curriculum.library import library_for
@@ -30,7 +32,6 @@ from dlp.domains.curriculum.schemas import STAGE_IDS
 from dlp.domains.identity.models import Learner
 from dlp.domains.jobs import service as jobs
 from dlp.domains.profile import service as profile_service
-from dlp.domains.stories import today
 from dlp.domains.stories.bible import DEFAULT_BIBLE, SERIES_TITLE, profile_for, stages_up_to
 from dlp.domains.stories.models import StoryEpisode, StorySeries, VocabItem
 from dlp.domains.stories.prompts import TRANSLATE_VERSION, WRITER_VERSION, translate_messages, writer_messages
@@ -45,7 +46,9 @@ log = logging.getLogger(__name__)
 
 WRITER_BASE_OUTPUT_TOKENS = 1200  # plus three tokens per word of the stage's longest story
 TRANSLATE_MAX_OUTPUT_TOKENS = 500
-POINTS = {"read": 10, "answer": 3, "choose": 2, "read_aloud": 5}
+# what the screens show; the values live in the activity rules
+POINTS = {"read": RULES["episode_read"].points, "answer": RULES["episode_questions"].points,
+          "choose": RULES["episode_choice"].points, "read_aloud": RULES["read_aloud"].points}
 
 
 class StoryError(curriculum.CurriculumError):
@@ -410,10 +413,11 @@ def library(session: Session, learner: Learner, *, limit: int = 60) -> dict:
 def mark_read(session: Session, learner: Learner, episode: StoryEpisode) -> dict:
     if episode.status != "ready":
         raise StoryError("this episode is not ready yet", 409, code="not_ready")
+    award = None
     if episode.read_at is None:
         episode.read_at = utcnow()
-        today.add_points(session, learner.id, points=POINTS["read"], episodes_read=1)
-    return episode_view(episode)
+        award = record_activity(session, learner.id, kind="episode_read", ref=str(episode.id))
+    return {**episode_view(episode), **reached(award)}
 
 
 def answer_questions(session: Session, learner: Learner, episode: StoryEpisode, *, request_id: str,
@@ -431,12 +435,13 @@ def answer_questions(session: Session, learner: Learner, episode: StoryEpisode, 
     correct = sum(1 for i, question in enumerate(episode.questions) if chosen[str(i)] == question["answer_index"])
     state.update({"chosen": chosen, "correct": correct, "request_id": request_id, "answered_at": utcnow().isoformat()})
     episode.answers = state
+    read = None
     if episode.read_at is None:
         episode.read_at = utcnow()
-        today.add_points(session, learner.id, points=POINTS["read"], episodes_read=1)
-    if correct:
-        today.add_points(session, learner.id, points=POINTS["answer"] * correct, questions_correct=correct)
-    return episode_view(episode)
+        read = record_activity(session, learner.id, kind="episode_read", ref=str(episode.id))
+    answered = record_activity(session, learner.id, kind="episode_questions", ref=str(episode.id),
+                               request_id=request_id, units=correct)
+    return {**episode_view(episode), **reached(read, answered)}
 
 
 def choose(session: Session, learner: Learner, episode: StoryEpisode, choice: str) -> dict:
@@ -446,18 +451,19 @@ def choose(session: Session, learner: Learner, episode: StoryEpisode, choice: st
         raise StoryError("unknown choice", 422)
     first_choice = not episode.chosen_choice
     episode.chosen_choice = choice
+    read = chose = None
     if episode.read_at is None:
         episode.read_at = utcnow()
-        today.add_points(session, learner.id, points=POINTS["read"], episodes_read=1)
+        read = record_activity(session, learner.id, kind="episode_read", ref=str(episode.id))
     if first_choice:
-        today.add_points(session, learner.id, points=POINTS["choose"])
+        chose = record_activity(session, learner.id, kind="episode_choice", ref=str(episode.id))
     series = session.get(StorySeries, episode.series_id)
     assert series is not None
     label = next(c["label"] for c in episode.choices if c["id"] == choice)
     series.memory = [{**m, "choice": label} if m["number"] == episode.number else m for m in series.memory]
     series.updated_at = utcnow()
     ensure_buffer(session, learner)
-    return episode_view(episode)
+    return {**episode_view(episode), **reached(read, chose)}
 
 
 def rate(session: Session, learner: Learner, episode: StoryEpisode, rating: int) -> dict:
@@ -536,16 +542,17 @@ def record_read_aloud(session: Session, learner: Learner, episode: StoryEpisode,
     previous = aloud.get(key, {})
     awarded = bool(previous.get("awarded", False))
     points = 0
+    award = None
     if not awarded and result["matched_words"] > 0:
-        points = POINTS["read_aloud"]
+        award = record_activity(session, learner.id, kind="read_aloud", ref=f"{episode.id}:{key}")
+        points = award.points
         awarded = True
-        today.add_points(session, learner.id, points=points, read_aloud=1)
     aloud[key] = {"matched_words": max(result["matched_words"], previous.get("matched_words", 0)),
                   "target_words": result["target_words"], "attempts": previous.get("attempts", 0) + 1,
                   "awarded": awarded}
     state["read_aloud"] = aloud
     episode.answers = state
-    return {**result, "points": points}
+    return {**result, "points": points, **reached(award)}
 
 
 def export(session: Session, learner_id: uuid.UUID) -> dict:

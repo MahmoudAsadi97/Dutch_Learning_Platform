@@ -429,3 +429,19 @@ chat model returns one validated A1 episode so every path is exercised in CI; th
 judged on the laptop with `python -m dlp.cli write-episode`. The web pages (`/`, `/verhalen`,
 `/verhalen/[id]`, `/woorden`) live in `components/TodayHome.tsx`, `StoryLibrary.tsx`,
 `EpisodeReader.tsx` and `WordReview.tsx`; the learning path moved to `/leerpad`.
+
+## Activity and points
+
+Every point is earned through `domains/activity/service.record_activity(session, learner_id, kind=..., ref=...,
+request_id=..., units=...)`. It inserts one `activity_events` row (migration `0009`) with ON CONFLICT DO
+NOTHING on `(learner_id, kind, dedupe_key)`; only a new row moves `learning_days`, so a retried or
+simultaneous request awards nothing and a day's points equal the sum of its events (days from before the
+table carry one backfilled `legacy` event). `domains/activity/rules.py` is the one table of kinds: points
+per unit, the day counter it moves, its skill, and its scope (`once`, `per_day`, `per_request`, which decide
+the dedupe key). The day is the Brussels calendar day (`activity/day.py`); usage allowances keep their UTC
+day. `learning_days.goal_target` holds the goal in force at the day's latest activity, and a goal change
+updates the current day. An award that takes the day from below its goal to the goal returns
+`goal_reached`; action responses carry it, `apiJson` fires `dlp:goal-reached`, and `GoalCelebration` in the
+shell plays the goal tone and says it in a toast. `stories/today.py` keeps the old names as re-exports;
+its `add_points` only seeds history in tests. A new kind is a row in the rules table plus a
+`record_activity` call where the action is stored, never an update of `learning_days` by hand.
