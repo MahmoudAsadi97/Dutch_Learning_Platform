@@ -12,7 +12,7 @@ import pytest
 
 from dlp.domains.curriculum.library import LibraryWord, library_for
 from dlp.domains.curriculum.schemas import STAGE_IDS, Localized, Question
-from dlp.domains.exercises import blueprints, generators, pool
+from dlp.domains.exercises import audio, blueprints, generators, pool
 from dlp.domains.exercises.pool import ODD_TOPIC_DISTANCE, build, contains_word, gives_away, pool_for
 from dlp.domains.exercises.themes import THEMES, related
 
@@ -114,6 +114,11 @@ def _check_prompt(stage, draft):
         return _check_board(stage, draft)
     if draft.kind in ("cloze_typed", "typed_recall"):
         return _check_typed(stage, draft)
+    if draft.kind in ("dictation", "shadow"):
+        assert not _keys(draft.prompt) & SECRET_KEYS
+        if draft.kind == "dictation":
+            assert draft.key["audio_text"] not in str(draft.prompt), "a dictation never shows what it says"
+        return None
     prompt, key = draft.prompt, draft.key
     assert not _keys(prompt) & SECRET_KEYS
     ids = [option["id"] for option in prompt["options"]]
@@ -154,10 +159,11 @@ def test_two_hundred_sessions_per_stage_keep_the_rules(stage_id):
         known = frozenset(word.key for word in rng.sample(stage.words, (seed % 25) * 12))
         size = blueprints.SIZE_MIN + seed % (blueprints.SIZE_MAX - blueprints.SIZE_MIN + 1)
         topic = rng.choice(stage.topics) if seed % 4 == 0 else None
+        speech = seed % 2 == 0
         drafts = blueprints.plan(stage, random.Random(f"{stage_id}:{seed}"), size=size, met=known,
-                                 library_topic=topic)
+                                 library_topic=topic, audio=speech)
         again = blueprints.plan(stage, random.Random(f"{stage_id}:{seed}"), size=size, met=known,
-                                library_topic=topic)
+                                library_topic=topic, audio=speech)
         assert [(d.ref, d.prompt) for d in drafts] == [(d.ref, d.prompt) for d in again], "seeded"
         graded = [d for d in drafts if d.kind != "intro"]
         assert 1 <= len(graded) <= size and (topic or len(graded) == size)
@@ -190,7 +196,10 @@ def test_two_hundred_sessions_per_stage_keep_the_rules(stage_id):
         counts = Counter(d.word for d in graded if d.word)
         if not counts or max(counts.values()) * 2 <= len(graded) + 1:
             assert all(a.word != b.word for a, b in zip(graded, graded[1:], strict=False) if a.word), "spread"
-    assert {"choice", "cloze_choice", "cloze_typed", "typed_recall", "sentence_builder", "match_pairs"} <= kinds
+    assert {"choice", "cloze_choice", "cloze_typed", "typed_recall", "sentence_builder", "match_pairs",
+            "listen_choose", "dictation"} <= kinds
+    # B1's examples are all longer than a sentence to shadow (3 to 10 words)
+    assert ("shadow" in kinds) == any(audio.shadow(stage, word) for word in stage.words)
     assert ("odd_one_out" in kinds) == stage.odd_one_out
     assert ("de_het" in kinds) == bool(stage.sortable)
     assert ("sentence_order" in kinds) == bool(stage.orders)

@@ -14,7 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 RequestId = Annotated[str, Field(min_length=8, max_length=80, pattern=r"^[a-zA-Z0-9_-]+$")]
 Source = Literal["stage_skill", "while_you_wait"]
 # "almost" is shown in a neutral colour and is never a mistake; "accepted" is the learner's own overrule
-Outcome = Literal["correct", "almost", "incorrect", "skipped", "done", "accepted"]
+Outcome = Literal["correct", "almost", "incorrect", "skipped", "done", "accepted", "heard", "not_heard"]
 OptionId = Annotated[str, Field(min_length=1, max_length=16)]
 
 
@@ -144,6 +144,21 @@ class SentenceOrderPrompt(BaseModel):
     sentences: list[Option]
 
 
+class ListenChoosePrompt(BaseModel):
+    kind: Literal["listen_choose"]
+    options: list[Option]  # written words; the spoken one comes from .../audio
+
+
+class DictationPrompt(BaseModel):
+    kind: Literal["dictation"]
+    word_count: int  # how many words to type; the sentence comes from .../audio
+
+
+class ShadowPrompt(BaseModel):
+    kind: Literal["shadow"]
+    sentence: str  # heard from .../audio, then said after the voice and sent to .../recording
+
+
 class OddPrompt(BaseModel):
     kind: Literal["odd_one_out"]
     topic: Text
@@ -162,7 +177,8 @@ class IntroPrompt(BaseModel):
 
 
 Prompt = Annotated[ChoicePrompt | ClozePrompt | OddPrompt | IntroPrompt | ClozeTypedPrompt | TypedRecallPrompt
-                   | FlashcardPrompt | MatchPairsPrompt | DeHetPrompt | SentenceBuilderPrompt | SentenceOrderPrompt,
+                   | FlashcardPrompt | MatchPairsPrompt | DeHetPrompt | SentenceBuilderPrompt | SentenceOrderPrompt
+                   | ListenChoosePrompt | DictationPrompt | ShadowPrompt,
                    Field(discriminator="kind")]
 
 
@@ -207,6 +223,10 @@ class Feedback(BaseModel):
     texts: list[str] | None = None  # the pieces in the right order
     translation: dict[str, list[str]] | None = None
     known: bool | None = None
+    transcript: str | None = None  # shadowing: what the speech service heard; recognised words, never a score
+    target_words: int | None = None
+    matched_words: int | None = None
+    missed: list[str] | None = None
     overridable: bool = False  # the learner may say the answer is right too
 
 

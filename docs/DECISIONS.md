@@ -333,3 +333,14 @@ word copied from the support-language cue is not a slip: an English spelling suc
 putting a Story Time paragraph back in order, nor a built sentence, whose other right orders the check does
 not know. Boards (match pairs, de/het) are submitted whole and judged per part, so a mistake names the word
 that was missed.
+
+## D-30 · Exercise speech is cached and shadowing is heard or not heard — 2026-10-10
+
+Exercises with speech (step 3.5) speak course text only: a word or a sentence of the library, the same for
+every learner. The sound is made once per text, voice and provider and kept under `tts-cache/`; hearing it
+again, or another learner hearing it, costs no audio allowance, and the cache never holds a learner's own
+words. A session plans speech only while enough of the learner's audio allowance is left, and a sound that
+does not play, or a microphone that does not work, closes the item without counting it as missed.
+Shadowing ("zeg het na") is judged like reading aloud (D-20, D-23): the speech service's transcript is
+compared with the sentence, the outcome is heard or not heard, there is no score or percentage, recognised
+speech earns the point, and a not-heard attempt is never a mistake. The recording is not kept.

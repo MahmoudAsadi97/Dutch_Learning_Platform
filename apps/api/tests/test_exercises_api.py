@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from threading import Barrier
 
+import pytest
 from alembic import command
 from alembic.config import Config
 from sqlalchemy import func, select
@@ -24,6 +25,13 @@ from dlp.domains.identity.models import Learner
 from tests.conftest import auth_headers
 
 SECRETS = {"answer", "support", "explanation", "met", "words", "key"}
+
+
+@pytest.fixture(autouse=True)
+def _no_speech(settings, monkeypatch):
+    """These sessions run without the kinds that speak (the audio allowance below the planning threshold);
+    tests/test_exercises_audio.py covers those."""
+    monkeypatch.setattr(settings, "usage_daily_audio_seconds", 30)
 
 
 def _keys(value) -> set[str]:

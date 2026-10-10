@@ -23,6 +23,7 @@ from typing import Any
 from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
+from dlp.config import Settings
 from dlp.db.base import utcnow
 from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.curriculum.schemas import STAGE_IDS
@@ -36,14 +37,21 @@ from dlp.domains.exercises.schemas import AnswerValue, CreateBody
 from dlp.domains.exercises.taxonomy import category_for
 from dlp.domains.identity.models import Learner
 from dlp.domains.profile import service as profiles
+from dlp.domains.speech.compare import read_aloud_compare
+from dlp.domains.speech.service import synthesize_cached, transcribe_upload
+from dlp.domains.usage import service as usage
 from dlp.errors import DomainError
+from dlp.providers.base import BlobStore, SpeechToText, TextToSpeech
 
 MAX_ATTEMPTS = 2
 RESUME_HOURS = 12
 SESSION_BONUS_MIN_ITEMS = 5
 # skip reasons that close an item without counting it as missed; only kinds with audio accept them
 AUDIO_SKIPS = ("no_microphone", "no_audio")
-AUDIO_KINDS: frozenset[str] = frozenset()
+AUDIO_KINDS = frozenset({"listen_choose", "dictation", "shadow"})
+# a session plans speech only while this many audio seconds of the allowance are left (a cached sound is free,
+# a new one or a recording costs seconds)
+AUDIO_MIN_SECONDS = 60.0
 
 
 class ExerciseError(DomainError):
@@ -66,7 +74,12 @@ def seed_for(learner_id: uuid.UUID, request_id: str) -> int:
 
 # --- create ------------------------------------------------------------------------------------------------
 
-def create(session: Session, learner: Learner, body: CreateBody) -> tuple[ExerciseSession, str]:
+def _audio_left(session: Session, settings: Settings, learner_id: uuid.UUID) -> float:
+    counters = usage.snapshot(session, settings, learner_id)["counters"]["audio_seconds"]
+    return min(counters["daily"]["remaining"], counters["total"]["remaining"])
+
+
+def create(session: Session, settings: Settings, learner: Learner, body: CreateBody) -> tuple[ExerciseSession, str]:
     """The session for this request id and how it was found: "replayed" (the same request again), "resumed" (an
     open one of the same kind) or "created"."""
     # Serialize starts for this learner, including when there is no session row to lock yet. FOR NO KEY UPDATE
@@ -101,7 +114,8 @@ def create(session: Session, learner: Learner, body: CreateBody) -> tuple[Exerci
     seed = seed_for(learner.id, body.request_id)
     drafts = plan(pool, random.Random(seed), size=body.size or SIZES[body.source],
                   met=mistakes.met_words(session, learner.id), last_seen=mistakes.last_practised(session, learner.id),
-                  library_topic=body.library_topic, typing=body.source != "while_you_wait")
+                  library_topic=body.library_topic, typing=body.source != "while_you_wait",
+                  audio=_audio_left(session, settings, learner.id) >= AUDIO_MIN_SECONDS)
     if not any(draft.kind != "intro" for draft in drafts):
         raise ExerciseError("there is nothing to practise here yet", 409, code="not_ready")
     row = ExerciseSession(learner_id=learner.id, request_id=body.request_id, source=body.source, stage_id=stage_id,
@@ -290,6 +304,8 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
         raise ExerciseError("this item is already answered", 409, code="already_answered")
     if skip in AUDIO_SKIPS and item.kind not in AUDIO_KINDS:
         raise ExerciseError("this item has no audio to skip for", 422)
+    if item.kind == "shadow" and skip is None:
+        raise ExerciseError("a shadowing item is answered with a recording", 422)
     judged: graders.Judgement | None = None
     if skip is not None:
         outcome = "done" if item.kind == "intro" else "skipped"
@@ -331,6 +347,78 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
     queue = _queue(rows)
     response.update(progress=progress(rows), next_item_id=str(queue[0].id) if queue else None)
     item.attempts = [*item.attempts[:-1], {**item.attempts[-1], "response": response}]
+    row.updated_at = now
+    session.flush()
+    return {**response, **reached(award)}
+
+
+def _item(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item_id: uuid.UUID, *,
+          lock: bool = False) -> tuple[ExerciseSession, list[ExerciseItem], ExerciseItem]:
+    row = get(session, learner_id, session_id, lock=lock)
+    rows = items(session, row)
+    item = next((candidate for candidate in rows if candidate.id == item_id), None)
+    if item is None:
+        raise ExerciseError("exercise item not found", 404)
+    return row, rows, item
+
+
+def item_audio(session: Session, settings: Settings, *, learner_id: uuid.UUID, session_id: uuid.UUID,
+               item_id: uuid.UUID, request_id: str, tts: TextToSpeech, blob: BlobStore) -> tuple[bytes, bool]:
+    """The sound of an item with speech, from the speech cache (free when cached). No row is locked: hearing a
+    sound again changes nothing in the session."""
+    _row, _rows, item = _item(session, learner_id, session_id, item_id)
+    if item.kind not in AUDIO_KINDS:
+        raise ExerciseError("this item has no sound", 422)
+    return synthesize_cached(session, settings, learner_id=learner_id, request_id=request_id,
+                             text=item.key["audio_text"], tts=tts, blob=blob)
+
+
+def record(session: Session, settings: Settings, *, learner_id: uuid.UUID, session_id: uuid.UUID,
+           item_id: uuid.UUID, request_id: str, upload_bytes: bytes, upload_filename: str, stt: SpeechToText,
+           blob: BlobStore) -> dict[str, Any]:
+    """A shadowing attempt: the recording is transcribed (not kept) before any row is locked, then the words
+    heard are compared with the sentence. The outcome is heard or not heard, never a score (D-20, D-23); heard
+    speech earns the item's point, and nothing is a mistake. One attempt closes the item."""
+    row, _rows, item = _item(session, learner_id, session_id, item_id)
+    if item.kind != "shadow":
+        raise ExerciseError("only a shadowing item takes a recording", 422)
+    previous = next((attempt for attempt in item.attempts if attempt["request_id"] == request_id), None)
+    if previous is not None:
+        return {**previous["response"], **replayed(session, learner_id, request_id)}
+    if row.status != "active":
+        raise ExerciseError("this exercise session is already finished", 409, code="session_closed")
+    if item.closed:
+        raise ExerciseError("this item is already answered", 409, code="already_answered")
+    heard_text = transcribe_upload(session, settings, learner_id=learner_id, request_id=request_id,
+                                   upload_bytes=upload_bytes, upload_filename=upload_filename, stt=stt, blob=blob,
+                                   keep_recording=False).transcript.text
+    row, rows, item = _item(session, learner_id, session_id, item_id, lock=True)
+    previous = next((attempt for attempt in item.attempts if attempt["request_id"] == request_id), None)
+    if previous is not None:
+        return {**previous["response"], **replayed(session, learner_id, request_id)}
+    if item.closed or row.status != "active":
+        raise ExerciseError("this item is already answered", 409, code="already_answered")
+    words = read_aloud_compare(item.key["audio_text"], heard_text)
+    outcome = "heard" if words["matched_words"] else "not_heard"
+    item.first_outcome = item.first_outcome or outcome
+    award = None
+    if outcome == "heard":
+        award = record_activity(session, learner_id, kind="exercise_item", ref=str(item.id), request_id=request_id,
+                                meta={"kind": item.kind, "session": str(row.id)})
+        item.points_awarded = award.points
+    now = utcnow()
+    item.closed, item.answered_at = True, now
+    feedback = {"outcome": outcome, "word": item.key.get("word"), "sentence": item.key["audio_text"],
+                "transcript": heard_text, **words}
+    queue = _queue(rows)
+    response: dict[str, Any] = {
+        "item_id": str(item.id), "attempt": len(item.attempts) + 1, "outcome": outcome, "closed": True,
+        "requeue": False, "attempts_left": 0, "feedback": feedback, "points": award.points if award else 0,
+        "progress": progress(rows), "next_item_id": str(queue[0].id) if queue else None,
+    }
+    item.attempts = [*item.attempts, {"request_id": request_id, "answer_hash": "", "outcome": outcome,
+                                      "at": now.isoformat(), "answer": {"transcript": heard_text}, "skip": None,
+                                      "response": response}]
     row.updated_at = now
     session.flush()
     return {**response, **reached(award)}
@@ -379,6 +467,14 @@ def _answered(item: ExerciseItem) -> bool:
     return any(attempt["outcome"] != "skipped" for attempt in item.attempts)
 
 
+def _first_miss(item: ExerciseItem) -> bool:
+    """Missed or skipped on the first try; a skip because the sound or the microphone did not work is neither,
+    and an answer the learner overruled is theirs to judge."""
+    first = item.attempts[0] if item.attempts else {}
+    return (item.first_outcome in ("incorrect", "skipped") and first.get("skip") not in AUDIO_SKIPS
+            and not item.key.get("override"))
+
+
 def _missed(item: ExerciseItem) -> list[dict[str, Any]]:
     """What the summary lists for a first-attempt miss: the word and its answer; a board, each word it missed."""
     key = item.key
@@ -408,14 +504,14 @@ def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
         counts["first_try_correct"] += item.first_outcome == "correct"
     # an answer the learner overruled is theirs to judge, and an ordering is about a paragraph, not a word:
     # neither is listed as missed
-    missed = [item for item in graded if item.first_outcome in ("incorrect", "skipped") and not item.key.get("override")
-              and item.kind != "sentence_order"]
+    missed = [item for item in graded if _first_miss(item) and item.kind != "sentence_order"]
     return {
         "items_total": len(graded),
         "answered": sum(1 for item in graded if _answered(item)),
         "first_try_correct": sum(1 for item in graded if item.first_outcome == "correct"),
         "fixed_on_retry": sum(1 for item in missed if item.attempts and item.attempts[-1]["outcome"] == "correct"),
-        "skipped": sum(1 for item in graded if item.first_outcome == "skipped"),
+        "skipped": sum(1 for item in graded if item.first_outcome == "skipped"
+                       and item.attempts[0].get("skip") not in AUDIO_SKIPS),
         "overridden": sum(1 for item in graded if item.key.get("override")),
         "points_earned": sum(item.points_awarded for item in graded) + bonus,
         "session_bonus": bonus,
@@ -426,7 +522,8 @@ def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
 
 
 # kinds whose miss is about knowing a word, so the word is offered for the word bank
-SUGGEST_KINDS = frozenset({"choice", "cloze_choice", "cloze_typed", "typed_recall", "flashcard"})
+SUGGEST_KINDS = frozenset({"choice", "cloze_choice", "cloze_typed", "typed_recall", "flashcard", "listen_choose",
+                           "dictation"})
 
 
 def finish(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, *, request_id: str,
@@ -453,7 +550,7 @@ def finish(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, *, re
     summary = {**_summary(rows, bonus.points if bonus else 0), "request_id": request_id}
     offered: list[tuple[str, dict[str, Any]]] = []
     for item in graded:
-        if item.first_outcome not in ("incorrect", "skipped") or item.key.get("override"):
+        if not _first_miss(item):
             continue
         if item.kind in SUGGEST_KINDS and item.word and "word" in item.key:
             offered.append((item.word, item.key["word"]))

@@ -27,6 +27,8 @@ KIND_CATEGORY: dict[str, Category] = {
     "de_het": "article",
     "sentence_builder": "word_order",
     "sentence_order": "comprehension",
+    "listen_choose": "listening_discrimination",
+    "dictation": "listening_discrimination",
 }
 
 

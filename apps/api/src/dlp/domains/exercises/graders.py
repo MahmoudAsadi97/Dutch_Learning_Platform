@@ -16,14 +16,14 @@ from typing import Any, Literal
 
 from dlp.domains.exercises.compare import compare, fold
 
-OPTION_KINDS = frozenset({"choice", "cloze_choice", "odd_one_out"})
-TYPED_KINDS = frozenset({"cloze_typed", "typed_recall"})
+OPTION_KINDS = frozenset({"choice", "cloze_choice", "odd_one_out", "listen_choose"})
+TYPED_KINDS = frozenset({"cloze_typed", "typed_recall", "dictation"})
 BOARD_KINDS = frozenset({"match_pairs", "de_het", "sentence_builder", "sentence_order"})
 # kinds whose check may miss a right answer, so the learner may overrule it ("mijn antwoord klopt ook")
-OVERRIDABLE = frozenset({"cloze_typed", "typed_recall", "sentence_builder"})
+OVERRIDABLE = frozenset({"cloze_typed", "typed_recall", "dictation", "sentence_builder"})
 # kinds whose misses are never mistakes: a learner's own say, a paragraph they may never have read, a sentence
-# whose other right orders the check does not know
-NO_MISTAKES = frozenset({"flashcard", "sentence_order", "sentence_builder"})
+# whose other right orders the check does not know, speech that was or was not heard (never a score)
+NO_MISTAKES = frozenset({"flashcard", "sentence_order", "sentence_builder", "shadow"})
 
 Outcome = Literal["correct", "almost", "incorrect"]
 

@@ -49,6 +49,13 @@ def test_no_noun_that_takes_both_articles_is_sorted():
     assert not sortable & {"punt", "pad", "bal", "doek", "bos", "rooster", "band", "matras"}
 
 
+@pytest.fixture(autouse=True)
+def _no_speech(settings, monkeypatch):
+    """These sessions run without the kinds that speak (the audio allowance below the planning threshold);
+    tests/test_exercises_audio.py covers those."""
+    monkeypatch.setattr(settings, "usage_daily_audio_seconds", 30)
+
+
 RECALL = ({"kind": "typed_recall"}, {"accepted": ["het huis"], "article": "optional"})
 
 

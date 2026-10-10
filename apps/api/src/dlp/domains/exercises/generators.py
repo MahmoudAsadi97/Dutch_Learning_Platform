@@ -62,7 +62,7 @@ def _support(option_id: str, word: Word) -> dict[str, str]:
     return {"id": option_id, "nl": word.term, "en": word.meaning["en"], "fa": word.meaning["fa"]}
 
 
-def _distractors(pool: Pool, word: Word, rng: random.Random, candidates: tuple[str, ...]) -> list[Word] | None:
+def distractors(pool: Pool, word: Word, rng: random.Random, candidates: tuple[str, ...]) -> list[Word] | None:
     """Three candidates that differ from each other in every language, drawn at random: nouns for a noun and
     other words for other words first (a verb among nouns gives itself away), then the same topic first."""
     noun = bool(word.article)
@@ -89,10 +89,10 @@ def word_choice(pool: Pool, word: Word, rng: random.Random, direction: str) -> D
     if direction == "definition" and contains_word(word.meaning["nl"], word.core):
         return None  # "bal waarmee je voetbal speelt" would answer "de voetbal"
     candidates = pool.choice.get(word.id)
-    distractors = _distractors(pool, word, rng, candidates) if candidates else None
-    if distractors is None:
+    others = distractors(pool, word, rng, candidates) if candidates else None
+    if others is None:
         return None
-    words = [word, *distractors]
+    words = [word, *others]
     rng.shuffle(words)
     ids = option_ids(rng, len(words))
     if direction == "meaning":
@@ -133,7 +133,7 @@ def cloze_choice(pool: Pool, word: Word, rng: random.Random) -> Draft | None:
     card = pool.cloze.get(word.id)
     if card is None:
         return None
-    picked = _distractors(pool, word, rng, card.distractors)
+    picked = distractors(pool, word, rng, card.distractors)
     if picked is None:
         return None
     words = [word, *picked]

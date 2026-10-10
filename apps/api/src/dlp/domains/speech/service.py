@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import tempfile
 import uuid
 from dataclasses import dataclass
@@ -137,6 +138,44 @@ def synthesize_text(
         session.add(asset)
         session.flush()
     return result.wav_bytes, asset, result.label
+
+
+TTS_CACHE_PREFIX = "tts-cache"
+
+
+def tts_cache_key(tts: TextToSpeech, text: str) -> str:
+    digest = hashlib.sha256(" ".join(text.split()).encode()).hexdigest()
+    return f"{TTS_CACHE_PREFIX}/{tts.name}/{tts.voice or 'default'}/{digest}.wav"
+
+
+def synthesize_cached(
+    session: Session,
+    settings: Settings,
+    *,
+    learner_id: uuid.UUID,
+    request_id: str,
+    text: str,
+    tts: TextToSpeech,
+    blob: BlobStore,
+) -> tuple[bytes, bool]:
+    """Speech for a course text every learner shares (an exercise word or sentence), and whether it came from the
+    cache. A hit costs no allowance; a miss is an ordinary paid synthesis, then kept under `tts-cache/` per
+    provider and voice. The cache holds course text only, never a learner's own words, and sits under its own
+    prefix, so removing a learner's recordings never touches it."""
+    text = " ".join(text.split())
+    key = tts_cache_key(tts, text)
+    try:
+        if blob.exists(key):
+            return blob.get(key), True
+    except ProviderError:
+        pass  # an unreadable cache falls back to synthesis
+    wav, _asset, _label = synthesize_text(session, settings, learner_id=learner_id, request_id=request_id, text=text,
+                                          tts=tts, blob=blob)
+    try:
+        blob.put(key, wav, content_type="audio/wav")
+    except ProviderError:
+        pass  # the learner still hears it; the next request synthesises again
+    return wav, False
 
 
 def _safe_suffix(filename: str) -> str:

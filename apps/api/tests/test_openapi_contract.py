@@ -87,6 +87,8 @@ def _operations(schema: dict) -> dict[str, dict]:
 
 def _is_untyped(operation: dict) -> bool:
     content = operation.get("responses", {}).get("200", {}).get("content", {})
+    if any(media.startswith("audio/") for media in content):
+        return False  # a sound declares its media type; there is no JSON body to model
     return not content.get("application/json", {}).get("schema")
 
 

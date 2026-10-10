@@ -508,12 +508,21 @@ whole.
   `sentence_order` (three or four sentences of a Story Time paragraph: pre-B1 and from pre-B2, the other
   stages' paragraphs being too short). Option and piece ids are four random letters, and pieces never read
   solved, on first showing or on a retry. `pool.available()` is the per-stage matrix of what each kind can
-  draw on, recorded in `tests/test_exercise_typed_kinds.py`.
+  draw on, recorded in `tests/test_exercise_typed_kinds.py`. `audio.py` (step 3.5): `listen_choose` (the word
+  is spoken, four written words to choose from), `dictation` (a sentence of the word's example spoken and typed,
+  at pre-A1 the word alone; judged like a typed answer) and `shadow` (a sentence of three to ten words shown
+  and spoken, then said after the voice). The spoken text stays in the key; `POST .../items/{item_id}/audio`
+  serves it from the speech cache (`speech.service.synthesize_cached`: `tts-cache/<provider>/<voice>/<sha256>.wav`,
+  course text only, a hit costs no allowance, a miss is an ordinary paid synthesis), and
+  `POST .../items/{item_id}/recording` (multipart) takes a shadowing attempt: transcribed before any row lock,
+  the recording not kept, the outcome `heard` or `not_heard` (recognised words, never a score), heard speech
+  earning the point, nothing a mistake, one attempt closing the item.
 - **Blueprint** (`blueprints.py`): up to four new words per session (six in a first session, never more than its
   size), the rest words met before, least recently practised first; the intro card shows the new words the
   session practises, each first recognised; then one kind per word at random (choice counts once, whatever its
-  direction; no typing in a while-you-wait session); items built on an example (cloze, typed cloze, sentence
-  builder) never repeat an example or frame nor show another one's answer; up to two boards take the place of
+  direction; no typing or speaking in a while-you-wait session; speech only while 60 seconds of the audio
+  allowance are left); items built on an example (cloze, typed cloze, sentence builder, dictation, shadowing)
+  never repeat an example or frame nor show another one's answer; up to two boards take the place of
   extra new words, else of words met before, and are built from the words the session keeps, so a new word on a
   board is on the intro card; an ordering paragraph shares no sentence with the session's examples; no two
   items about one word in a row where another order allows it.
@@ -526,7 +535,7 @@ whole.
   mistake row goes, its point stays, the summary counts it as `overridden` and leaves it out of the missed
   words, and it never counts towards completing a topic or stage. An item earns `exercise_item` (1 point)
   with its first real answer, right or wrong, so an early finish pays wrong answers like right ones; a skip is not an answer, and `no_microphone`/`no_audio` skips
-  are refused on items without audio. Finishing with five answered items earns `exercise_session` (5), and a
+  close an item with speech without counting it as missed (refused on items without speech). Finishing with five answered items earns `exercise_session` (5), and a
   retried finish repeats its points. A first miss on a word met before (an earlier session closed an item about
   it, or it is in the word bank) writes a `learner_mistakes` row in the one taxonomy (`taxonomy.py`), on the word
   the learner chose for odd one out, and one per missed pair or noun of a board; a first encounter writes

@@ -5,8 +5,9 @@ in library order, and fills the rest with words met before, the least recently p
 session, with nothing to review yet, introduces up to NEW_WORDS_FIRST. New words are shown on an ungraded
 intro card first and first practised by recognition (the Dutch word to its meaning). Every word gets one
 item, and further items in another kind or direction until the session has its size: choice in its
-directions, cloze by choice or typed, typed recall, the sentence builder (no typing in a while-you-wait
-session). Items built on a word's example (cloze, typed cloze, sentence builder) never repeat an example or a
+directions, cloze by choice or typed, typed recall, the sentence builder, and with speech listen-and-choose,
+dictation and shadowing (no typing or speaking in a tap-only while-you-wait session; no speech when the audio
+allowance runs low). Items built on a word's example (cloze, typed cloze, sentence builder) never repeat an example or a
 sentence frame (one example serves several A1 words; from pre-B2 an example also holds the next word's
 sentence), and none shows another one's answer, nor does the paragraph of an ordering board. No two items
 about the same word follow each other where another order allows it.
@@ -24,6 +25,7 @@ import random
 from collections import Counter
 from datetime import UTC, datetime
 
+from dlp.domains.exercises import audio as spoken
 from dlp.domains.exercises import boards, generators, typed
 from dlp.domains.exercises.compare import fold
 from dlp.domains.exercises.generators import Draft
@@ -36,7 +38,9 @@ NEW_WORDS_FIRST = 6
 ODD_ONE_OUT_MIN_SIZE = 6
 MAX_BOARDS = 2
 # kinds built on the word's example sentence: one per example and frame in a session
-EXAMPLE_KINDS = ("cloze_choice", "cloze_typed", "sentence_builder")
+EXAMPLE_KINDS = ("cloze_choice", "cloze_typed", "sentence_builder", "dictation", "shadow")
+# dictation is the word alone at the first stage, a sentence after it
+DICTATION_SINGLE_STAGE = "pre-a1"
 _NEVER = datetime.min.replace(tzinfo=UTC)
 
 
@@ -59,7 +63,7 @@ def _cloze_fits(word: Word, clozes: list[Word], shown: tuple[str, ...] = ()) -> 
 
 
 def _item(pool: Pool, word: Word, rng: random.Random, *, used: set[tuple[str, str]],
-          clozes: list[Word], shown: tuple[str, ...] = (), typing: bool = True) -> Draft | None:
+          clozes: list[Word], shown: tuple[str, ...] = (), typing: bool = True, audio: bool = False) -> Draft | None:
     """An item for `word` in a kind or direction it has not had in this session; choice is one kind among the
     others (its direction is drawn after it), so recognition does not crowd out typing and building."""
     directions = list(generators.directions(pool))
@@ -75,6 +79,10 @@ def _item(pool: Pool, word: Word, rng: random.Random, *, used: set[tuple[str, st
             options.append(("cloze_typed", ""))
         if word.id in pool.pieces:
             options.append(("sentence_builder", ""))
+        if audio and typing:
+            options += [("dictation", ""), ("shadow", "")]
+    if audio:
+        options.append(("listen_choose", ""))
     rng.shuffle(options)
     for kind, direction in options:
         if (kind, direction) in used:
@@ -87,6 +95,12 @@ def _item(pool: Pool, word: Word, rng: random.Random, *, used: set[tuple[str, st
             draft = typed.typed_recall(pool, word)
         elif kind == "sentence_builder":
             draft = boards.sentence_builder(pool, word, rng)
+        elif kind == "listen_choose":
+            draft = spoken.listen_choose(pool, word, rng)
+        elif kind == "dictation":
+            draft = spoken.dictation(pool, word, single=pool.stage_id == DICTATION_SINGLE_STAGE)
+        elif kind == "shadow":
+            draft = spoken.shadow(pool, word)
         else:
             draft = generators.word_choice(pool, word, rng, direction)
         if draft is not None:
@@ -184,9 +198,10 @@ def _spread(drafts: list[Draft]) -> list[Draft]:
 
 def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
          last_seen: dict[str, datetime] | None = None, library_topic: str | None = None,
-         typing: bool = True) -> list[Draft]:
+         typing: bool = True, audio: bool = False) -> list[Draft]:
     """The session's drafts in order: the intro card (when there are new words), then the graded items.
-    `typing` False leaves out the kinds answered by typing (a while-you-wait session is tapped only)."""
+    `typing` False leaves out the kinds answered by typing or speaking (a while-you-wait session is tapped
+    only); `audio` adds the kinds with speech."""
     last_seen = last_seen or {}
     candidates = [w for w in (pool.by_topic[library_topic] if library_topic else pool.words) if w.id in pool.choice]
     new = [w for w in candidates if w.key not in met]
@@ -215,7 +230,7 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
             used[word.id].add(("choice", "meaning"))
             first.append(draft)
     for word in known:
-        draft = _item(pool, word, rng, used=used[word.id], clozes=clozes, shown=shown, typing=typing)
+        draft = _item(pool, word, rng, used=used[word.id], clozes=clozes, shown=shown, typing=typing, audio=audio)
         if draft is not None:
             first.append(draft)
     rng.shuffle(first)
@@ -226,7 +241,8 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
         for word in words:
             if room <= 0:
                 break
-            draft = _item(pool, word, rng, used=used[word.id], clozes=clozes, shown=shown, typing=typing)
+            draft = _item(pool, word, rng, used=used[word.id], clozes=clozes, shown=shown, typing=typing,
+                          audio=audio)
             if draft is not None:
                 more.append(draft)
                 room -= 1
