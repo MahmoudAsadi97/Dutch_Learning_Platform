@@ -36,4 +36,7 @@ RULES: dict[str, Rule] = {
     "word_review": Rule(points=1, counter="words_reviewed", skill=None, scope="per_request"),
     "video_watched": Rule(points=10, counter="videos_watched", skill="listening", scope="once"),
     "video_questions": Rule(points=3, counter="questions_correct", skill="listening", scope="once"),
+    # an exercise item that closed after a real answer, right or wrong; a session with five closed items
+    "exercise_item": Rule(points=1, counter="exercise_items", skill=None, scope="once"),
+    "exercise_session": Rule(points=5, counter="exercise_sessions", skill=None, scope="once"),
 }

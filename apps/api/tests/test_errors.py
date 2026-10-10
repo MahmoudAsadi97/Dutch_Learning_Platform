@@ -10,6 +10,7 @@ from fastapi.testclient import TestClient
 
 from dlp.api.errors import install_handlers
 from dlp.domains.curriculum.service import CurriculumError
+from dlp.domains.exercises.service import ExerciseError
 from dlp.domains.practice.service import PracticeError
 from dlp.domains.speech.audio import AudioError
 from dlp.domains.stories.service import StoryError
@@ -29,6 +30,7 @@ from dlp.providers.base import ProviderError, ProviderUnavailable
         (PracticeError("session not found", 404), 404, "practice"),
         (AudioError("upload larger than 5 bytes", status_code=413), 413, "audio"),
         (VocabError("word not found", 404), 404, "vocabulary"),
+        (ExerciseError("exercise item not found", 404), 404, "exercise"),
         (UsageLimitExceeded("model_calls", "daily", 2, 1), 429, "usage_limit"),
         (DomainError("custom", 418, code="teapot", params={"size": "short"}), 418, "teapot"),
     ],

@@ -15,6 +15,7 @@ from dlp.domains.coaching.models import CoachPlanRequest
 from dlp.domains.coaching.service import export_observations
 from dlp.domains.content_review.models import ContentReview
 from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice, TopicPractice
+from dlp.domains.exercises import service as exercises
 from dlp.domains.feedback.service import report_view, reports_for
 from dlp.domains.identity.models import Learner
 from dlp.domains.practice.service import list_sessions
@@ -65,6 +66,7 @@ def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depe
     if ctx.principal.email.lower() not in {e.lower() for e in settings.allowlist}:
         raise HTTPException(status_code=403, detail="export is limited to the owner allowlist")
     sessions = list_sessions(session, ctx.learner.id)
+    practice = exercises.export(session, ctx.learner.id)
     payload = {
         "exported_at": utcnow().isoformat(),
         "learner": {"id": str(ctx.learner.id), "email": ctx.learner.email, "display_name": ctx.learner.display_name,
@@ -122,6 +124,9 @@ def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depe
         ],
         "stories": stories_service.export(session, ctx.learner.id),
         "activity": activity.events(session, ctx.learner.id),
+        "exercises": practice["sessions"],
+        "mistakes": practice["mistakes"],
+        "word_suggestions": practice["word_suggestions"],
         "words": vocab.all_items(session, ctx.learner)["items"],
         "learning_days": [
             {"day": row.day.isoformat(), "points": row.points, "episodes_read": row.episodes_read,

@@ -20,6 +20,7 @@ from dlp.api import (
     routes_coach,
     routes_content_review,
     routes_curriculum,
+    routes_exercises,
     routes_health,
     routes_library,
     routes_me,
@@ -122,6 +123,7 @@ def create_app() -> FastAPI:
     app.include_router(routes_curriculum.router)
     app.include_router(routes_library.router)
     app.include_router(routes_topics.router)
+    app.include_router(routes_exercises.router)
     app.include_router(routes_topic_conversations.router)
     app.include_router(routes_coach.router)
     app.include_router(routes_content_review.router)

@@ -27,6 +27,10 @@ EXPORTED = {
     "vocab_items": "words",
     "learning_days": "learning_days",
     "activity_events": "activity",
+    "exercise_sessions": "exercises",  # items hang off their session
+    "exercise_items": "exercises",
+    "learner_mistakes": "mistakes",
+    "word_suggestions": "word_suggestions",
     "video_lessons": "videos",
     "usage_counters": "usage",
     "usage_reservations": "usage",

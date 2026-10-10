@@ -77,6 +77,7 @@ const GENERAL_CODES = new Set([
   "vocabulary",
   "story",
   "video",
+  "exercise",
   "paid_not_approved",
 ]);
 

@@ -461,8 +461,45 @@ spells another word the caller lists in `lexicon` (library terms are read withou
 negation (geen/een, niet/net) or a number; a compound typed as two words is a slip. One missing or extra
 function word (an article, a preposition, er, wel, ...) in a sentence of four words or more is `almost`; a
 missing content word or negation is not. Changed words are paired with their closest counterpart, and among
-several accepted answers the closest of the kindest is shown. Text with no words is refused by
-`POST /speech/read-aloud` (`nothing_to_read`) before any audio is counted. The thresholds are named constants and `tests/test_exercise_compare.py` is their
-specification. `almost` never counts as a mistake. `domains/speech/compare.py` (`read_aloud_compare`) says
-which words of a text were recognised; the story reader and `POST /speech/read-aloud` (any text up to 600
-characters, the recording not kept, no points, no score field, audio seconds counted) share it.
+several accepted answers the closest of the kindest is shown. The thresholds are named constants and
+`tests/test_exercise_compare.py` is their specification. `almost` never counts as a mistake.
+`domains/speech/compare.py` (`read_aloud_compare`) says which words of a text were recognised; the story reader
+and `POST /speech/read-aloud` (any text up to 600 characters, the recording not kept, no points, no score
+field, audio seconds counted) share it. Text with no words is refused (`nothing_to_read`) before any audio is
+counted.
+
+## Exercise engine
+
+`domains/exercises` runs practice as server-graded sessions (migration `0010`). `POST /exercises/sessions`
+(`request_id`, `source` `stage_skill` or `while_you_wait`, optional `stage_id` (the profile's level by
+default), `library_topic`, `size` 5-12, `fresh`) generates the items once from a seed (learner, request id,
+`GENERATOR_VERSION`) and stores them: `prompt` is what the browser may see, `key` stays on the server and out
+of the export. The same request id returns the same session, another one resumes an open session of the same
+kind under 12 hours old (`resumed`), `fresh` starts over; the same id with other parameters is a 409.
+`GET /exercises/sessions/{id}`, `POST .../items/{item_id}/answer` (`{option}` or, for the intro card,
+`{done: true}`), `POST .../items/{item_id}/skip` and `POST .../finish` (`early` to stop before the end)
+complete it; every write locks the session row, and a repeated request id replays the stored response.
+
+- **Pool** (`pool.py`): per stage, built once per library file. Choice distractors come from the same topic
+  first, never the same word or a word with the same meaning in any language, nouns for nouns. A cloze card
+  needs the term exactly once in its example; a sibling that shares the sentence frame (the definition in
+  `tests/test_content_exercise_pool.py`), has the same meaning, another article or already stands in the
+  sentence is not offered; with fewer than three left the card shows the translation as a cue, unless the
+  translation shows the word itself; otherwise the word is practised by choice only.
+- **Kinds** (`generators.py`): `choice` (Dutch word to meaning, meaning to Dutch word, from A2 the Dutch
+  definition; an authored question keeps its options, shuffled), `cloze_choice`, `odd_one_out` (pre-A1 to B1:
+  three words of one topic and one from a topic at least ten away), and the ungraded `intro` card. Option ids
+  are four random letters.
+- **Blueprint** (`blueprints.py`): up to four new words per session (six in a first session), the rest words met
+  before, least recently practised first; new words on the intro card, then first recognised; one cloze per
+  sentence; no two items about one word in a row.
+- **Rules**: two attempts per item; a miss or skip shows the answer and comes back once at the end with its
+  options reshuffled. An item that closes after a real answer earns `exercise_item` (1 point, right or wrong);
+  finishing with five closed items earns `exercise_session` (5). A first miss on a word met before (an earlier
+  session closed an item about it, or it is in the word bank) writes a `learner_mistakes` row in the one
+  taxonomy (`taxonomy.py`); a first encounter writes none. Finishing offers the missed words not in the bank as
+  `word_suggestions`; only the learner saves a word.
+- **Content gate**: a stage takes sessions only when 200 of its words support a four-option choice and its words
+  support two kinds (`VARIETY_MIN_*` in `pool.py`); `tests/test_exercise_generators.py` records each stage's
+  numbers and checks 200 seeded sessions per stage against the rules above. A stage below the gate answers
+  409 `not_ready`.

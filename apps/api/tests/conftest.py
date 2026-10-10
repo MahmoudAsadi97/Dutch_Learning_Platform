@@ -66,6 +66,10 @@ TABLES_TO_CLEAR = [
     "jobs",
     "pricing_entries",
     "activity_events",
+    "exercise_items",
+    "exercise_sessions",
+    "learner_mistakes",
+    "word_suggestions",
     "learner_profiles",
     "learners",
 ]

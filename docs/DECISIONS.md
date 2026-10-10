@@ -301,3 +301,18 @@ story and word actions" is revised when the other practice kinds get rules (road
 stores the goal in force at its latest activity, and changing the goal updates the current day, so the
 dot a past day shows is the goal Today showed for it. Points, streaks and goals count by the Brussels
 calendar; usage allowances keep their UTC day. The streak rule is unchanged (owner decision O9).
+
+## D-28 · Practice is graded on the server, and what the learner answered is kept — 2026-10-10
+
+Practice items so far carried their answers to the browser and were judged there, or not at all. From this
+change practice also runs as exercise sessions generated and graded by the API: a session's items are made
+once from a seed and stored, the browser sees each item without its answer, and the answer comes back only
+in the response to an answer. Answers, the mistakes made on words the learner had met before and the words
+offered for the word bank are now stored, exported and deleted with the learner; the data rule "no learner
+free text stored beyond attempts" is revised accordingly, and retention follows in P9. A word met for the
+first time is never a mistake, and only the learner adds a word to the word bank (D-19's word-bank rule
+stands). Every item that closes after a real answer earns one point, right or wrong, and a session of five
+items or more earns five: points reward practising, never a judgement of the learner's Dutch (D-19 as
+revised in D-27). A stage offers sessions only above a stated content threshold, so thin or reused material
+is not presented as practice. The keys still sent by the stage view and Story Time are withdrawn when the
+lessons move onto the engine (roadmap 5.5).

@@ -6,6 +6,7 @@ from dlp.domains.coaching import models as coaching_models
 from dlp.domains.content import models as content_models
 from dlp.domains.content_review import models as content_review_models
 from dlp.domains.curriculum import models as curriculum_models
+from dlp.domains.exercises import models as exercise_models
 from dlp.domains.feedback import models as feedback_models
 from dlp.domains.identity import models as identity_models
 from dlp.domains.jobs import models as jobs_models
@@ -25,6 +26,7 @@ __all__ = [
     "content_models",
     "content_review_models",
     "curriculum_models",
+    "exercise_models",
     "feedback_models",
     "identity_models",
     "jobs_models",
