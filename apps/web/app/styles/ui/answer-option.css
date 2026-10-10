@@ -139,4 +139,18 @@
   .answer-option[data-state="idle"] .answer-option-key {
     border-color: var(--border);
   }
+  /* forced colours drop shadows and backgrounds: focus and the chosen option show as borders instead */
+  @media (forced-colors: active) {
+    .answer-option:has(.answer-option-input:focus-visible),
+    .answer-option[data-state="selected"] {
+      border: 3px solid Highlight;
+      padding: calc(var(--space-3) - 2px) calc(var(--space-4) - 2px);
+    }
+    .answer-option[data-state="selected"] .answer-option-key {
+      forced-color-adjust: none;
+      border-color: Highlight;
+      background: Highlight;
+      color: HighlightText;
+    }
+  }
 }

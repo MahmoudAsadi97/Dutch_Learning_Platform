@@ -80,6 +80,8 @@ def test_answer_timing_runs_only_when_asked_and_reports_the_p95(monkeypatch):
     sent = []
 
     def fake(url, *, method="GET", headers=None, body=None):
+        if method == "GET":
+            return 200, {}, b'{"status": "ready"}'
         payload = json.loads(body)
         sent.append((url, payload))
         assert headers["X-Request-Id"] == payload["request_id"] and headers["Cookie"] == "private-cookie"
@@ -89,10 +91,13 @@ def test_answer_timing_runs_only_when_asked_and_reports_the_p95(monkeypatch):
             return 200, {}, b"{}"
         return 200, {}, json.dumps({"next_item_id": following[url.split("/items/")[1].split("/")[0]]}).encode()
 
-    monkeypatch.setattr(verify, "request", fake)
+    connections = []
+    monkeypatch.setattr(verify, "persistent", lambda base: connections.append(base) or fake)
     result = verify.answer_round_trips("https://example.invalid", "private-cookie")
     assert result.passed and result.detail.startswith("2 answers")
+    assert connections == ["https://example.invalid"], "one kept-alive connection for every request"
     assert sent[0][1]["source"] == "while_you_wait" and sent[0][1]["fresh"] is True
+    assert sent[0][1]["kinds"] == ["choice"], "a kinds set the web app never asks for, so no real session is touched"
     assert [payload["answer"] for url, payload in sent if url.endswith("/answer")] == [
         {"done": True}, {"option": "aaaa"}, {"option": "bbbb"}]
     assert sent[-1][1]["early"] is True, "the session is closed afterwards"

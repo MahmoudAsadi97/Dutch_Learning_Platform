@@ -29,6 +29,7 @@ export interface RunnerState {
 }
 
 export type RunnerEvent =
+  | { type: "RESET" }
   | { type: "LOADED"; session: SessionView }
   | { type: "LOAD_FAILED" }
   | { type: "SUBMIT"; pending: Pending }
@@ -98,6 +99,9 @@ function next(state: RunnerState, session: SessionView): RunnerState {
 
 export function reduce(state: RunnerState, event: RunnerEvent): RunnerState {
   switch (event.type) {
+    case "RESET":
+      // a new session is on its way: nothing of the last one stays on screen
+      return initialState;
     case "LOADED": {
       const loaded = { ...state, failed: false, pending: null };
       if (event.session.status === "finished" && event.session.summary)

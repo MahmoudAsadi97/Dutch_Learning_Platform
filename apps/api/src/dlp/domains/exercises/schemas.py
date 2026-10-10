@@ -287,6 +287,9 @@ class Suggestion(BaseModel):
     term: str
     meaning_en: str
     meaning_fa: str
+    # saved with the word, so it reaches the bank as a library word with its example (older summaries lack them)
+    example: str = ""
+    library_id: str = ""
 
 
 class KindCount(BaseModel):

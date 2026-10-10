@@ -123,6 +123,20 @@ def cmd_reset_learner_data(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_exercise_reports(args: argparse.Namespace) -> int:
+    """Print the learners' exercise reports ("Meld een probleem") as JSON lines, newest first, for the owner's
+    content review. No learner is named."""
+    import json
+
+    from dlp.db.session import session_scope
+    from dlp.domains.exercises.service import reports
+
+    with session_scope() as session:
+        for entry in reports(session, limit=args.limit):
+            print(json.dumps(entry, ensure_ascii=False))
+    return 0
+
+
 def cmd_write_episode(args: argparse.Namespace) -> int:
     """Write one episode for the development owner with the configured providers and print the checks.
 
@@ -201,6 +215,10 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("reset-learner-data", help="empty the learner-generated tables of the test database")
     p.add_argument("--force", action="store_true", help="allow a database whose name does not end in _test")
     p.set_defaults(func=cmd_reset_learner_data)
+
+    p = sub.add_parser("exercise-reports", help="print the learners' exercise reports for the content review")
+    p.add_argument("--limit", type=int, default=200)
+    p.set_defaults(func=cmd_exercise_reports)
 
     p = sub.add_parser("write-episode", help="write one story episode with the configured providers and print it")
     p.add_argument("--stage", default="", help="set the serial's level first, e.g. a1")

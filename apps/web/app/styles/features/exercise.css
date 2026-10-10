@@ -116,6 +116,13 @@
     margin: 0;
     color: var(--text-muted);
   }
+  /* the number keys mean nothing on a phone */
+  @media (hover: none) and (pointer: coarse) {
+    .exercise-keys,
+    .answer-option-key {
+      display: none;
+    }
+  }
 
   /* the intro card */
   .intro-words {
@@ -175,8 +182,13 @@
     color: var(--text);
     font-size: var(--text-sm);
   }
-  .feedback-line {
+  .feedback-line,
+  .report-status {
     margin: 0;
+  }
+  .feedback-correction {
+    display: grid;
+    gap: var(--space-3);
   }
   .feedback-word {
     display: grid;
@@ -271,10 +283,6 @@
     min-width: 0;
   }
   .summary-term {
-    font-weight: var(--weight-semibold);
-  }
-  .summary-saved {
-    color: var(--success-ink);
     font-weight: var(--weight-semibold);
   }
   .summary-error {

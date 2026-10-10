@@ -6,6 +6,7 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from threading import Barrier
+from types import SimpleNamespace
 
 import pytest
 from alembic import command
@@ -251,6 +252,8 @@ def test_finishing_needs_every_item_unless_early_and_says_the_same_twice(client)
     assert (summary["items_total"], summary["answered"], summary["skipped"], summary["session_bonus"]) == (8, 1, 0, 0)
     assert summary["points_earned"] == 1, "the wrong answer earned its point; finishing early pays it the same"
     assert summary["missed"][0]["term"] and [s["term"] for s in summary["suggestions"]] == [summary["missed"][0]["term"]]
+    suggestion = summary["suggestions"][0]
+    assert suggestion["example"] and suggestion["library_id"], "saved as a library word with its example"
     again = client.post(f"/exercises/sessions/{view['id']}/finish", headers=auth_headers(),
                         json={"request_id": "finish-early-004"}).json()
     assert again["summary"] == summary and again["points"] == 0
@@ -310,6 +313,8 @@ def test_a_report_is_kept_with_the_item_and_changes_nothing(client):
     assert again.json() == first.json()
     report = _key(item)["report"]
     assert (report["reason"], report["note"]) == ("unclear", "Raar")
+    other = _post(client, view, item, "report", request_id="exercise-report-0101", reason="sound")
+    assert other.status_code == 409, "one request id is one report"
     later = _post(client, view, item, "report", request_id="exercise-report-0102", reason="answer_wrong")
     assert later.json()["reason"] == "answer_wrong" and _key(item)["report"]["note"] == ""
     assert _post(client, view, item, "report", request_id="exercise-report-0103", reason="rude").status_code == 422
@@ -318,7 +323,19 @@ def test_a_report_is_kept_with_the_item_and_changes_nothing(client):
     exported = client.get("/export", headers=auth_headers()).json()
     reported = [entry for entry in exported["exercises"][0]["items"] if entry["report"]]
     assert [(entry["id"], entry["report"]["reason"]) for entry in reported] == [(item["id"], "answer_wrong")]
-    assert "request_id" not in reported[0]["report"]
+    assert "request_id" not in reported[0]["report"] and "fingerprint" not in reported[0]["report"]
+    with session_scope() as session:
+        listed = service.reports(session)
+    assert [(entry["item_id"], entry["reason"]) for entry in listed] == [(item["id"], "answer_wrong")]
+    assert listed[0]["prompt"] and "learner_id" not in listed[0], "the content review sees the item, not who sent it"
+
+
+def test_a_word_missed_twice_is_listed_once():
+    def choice(ref):
+        return SimpleNamespace(kind="choice", ref=ref, attempts=[], key={
+            "word": {"term": "de deur"}, "answer": "a", "support": [{"id": "a", "nl": "de deur"}]})
+    listed = service._once_per_ref([choice("word:1"), choice("word:2"), choice("word:1")])
+    assert [entry["ref"] for entry in listed] == ["word:1", "word:2"]
 
 
 def test_another_learner_sees_nothing(client):

@@ -496,6 +496,19 @@ def override(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, ite
     return response
 
 
+def reports(session: Session, *, limit: int = 200) -> list[dict[str, Any]]:
+    """The learners' reports for the content review, newest first, without who sent them: the item's kind,
+    ref, stage, prompt and right answer, and the reason and note (`python -m dlp.cli exercise-reports`)."""
+    rows = session.execute(select(ExerciseItem, ExerciseSession.stage_id)
+                           .join(ExerciseSession, ExerciseSession.id == ExerciseItem.session_id)
+                           .where(ExerciseItem.key.has_key("report")))
+    found = [{"item_id": str(item.id), "kind": item.kind, "ref": item.ref, "stage_id": stage_id,
+              "reason": item.key["report"]["reason"], "note": item.key["report"]["note"],
+              "at": item.key["report"]["at"], "prompt": item.prompt, "expected": _expected(item)}
+             for item, stage_id in rows]
+    return sorted(found, key=lambda entry: entry["at"], reverse=True)[:limit]
+
+
 def report(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item_id: uuid.UUID, *,
            request_id: str, reason: str, note: str | None) -> dict[str, Any]:
     """"Meld een probleem": the learner flags an item (a wrong answer key, an unclear prompt, a bad sound). Kept
@@ -506,9 +519,13 @@ def report(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item_
     if item is None:
         raise ExerciseError("exercise item not found", 404)
     current = item.key.get("report") or {}
-    if current.get("request_id") != request_id:
-        item.key = {**item.key, "report": {"request_id": request_id, "reason": reason, "note": (note or "").strip(),
-                                           "at": utcnow().isoformat()}}
+    signature = fingerprint({"reason": reason, "note": (note or "").strip()})
+    if current.get("request_id") == request_id:
+        if current.get("fingerprint", signature) != signature:
+            raise ExerciseError("this request id belongs to a different report", 409)
+    else:
+        item.key = {**item.key, "report": {"request_id": request_id, "fingerprint": signature, "reason": reason,
+                                           "note": (note or "").strip(), "at": utcnow().isoformat()}}
         session.flush()
     return {"item_id": item.id, "reason": item.key["report"]["reason"]}
 
@@ -569,9 +586,18 @@ def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
         "points_earned": sum(item.points_awarded for item in graded) + bonus,
         "session_bonus": bonus,
         "by_kind": by_kind,
-        "missed": [entry for item in missed for entry in _missed(item)],
+        "missed": _once_per_ref(missed),
         "suggestions": [],
     }
+
+
+def _once_per_ref(missed: list[ExerciseItem]) -> list[dict[str, Any]]:
+    """What the summary lists as missed: a word missed in two items once, where it was first missed."""
+    entries: dict[str, dict[str, Any]] = {}
+    for item in missed:
+        for entry in _missed(item):
+            entries.setdefault(entry["ref"], entry)
+    return list(entries.values())
 
 
 # kinds whose miss is about knowing a word, so the word is offered for the word bank
@@ -648,7 +674,8 @@ def export(session: Session, learner_id: uuid.UUID) -> dict[str, Any]:
                                      "skip": a.get("skip")} for a in item.attempts],
                        "overridden_at": item.key["override"]["at"] if item.key.get("override") else None,
                        # the learner's own report, without its request id
-                       "report": {k: v for k, v in item.key["report"].items() if k != "request_id"}
+                       "report": {k: v for k, v in item.key["report"].items()
+                                  if k not in ("request_id", "fingerprint")}
                        if item.key.get("report") else None,
                        "answered_at": item.answered_at.isoformat() if item.answered_at else None}
                       for item in by_session.get(row.id, [])],

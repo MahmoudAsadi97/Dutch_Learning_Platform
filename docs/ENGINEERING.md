@@ -480,7 +480,10 @@ request id returns the same session (200), another one resumes an open session o
 hours old (200, `resumed`; only one created with the same `kinds`), `fresh` starts over; the same id with
 other parameters is a 409. `POST .../items/{item_id}/report` ("Meld een probleem": `reason` answer_wrong,
 unclear, sound or other, an optional `note`) keeps the learner's report in the item's key for the content
-review and in their export; a later report replaces it, and it changes nothing in the session.
+review and in their export; a later report replaces it (one request id is one report: the same id with
+another reason is a 409), and it changes nothing in the session. Until the review queue lists them (7.9) the
+owner reads them with `python -m dlp.cli exercise-reports` (JSON lines: item kind, ref, stage, prompt, answer,
+reason, note; never the learner).
 `GET /exercises/sessions/{id}`, `POST .../items/{item_id}/answer`, `POST .../items/{item_id}/skip`,
 `POST .../items/{item_id}/override` and `POST .../finish` (`early` to stop before the end) complete it; every
 write locks the session row, and a repeated request id replays the stored response. An answer takes the shape
@@ -568,21 +571,26 @@ whole.
   returns. It asks only for the kinds it can draw (`registry.ts`: choice, cloze by choice and odd one out until
   step 3.7 adds the rest). The create request id is minted once, so a repeated effect or a retry replays; an
   answer that did not arrive is sent again under the same id when it is the same answer, and under a new one
-  when the learner changed it; a 409 (already answered, session closed) reloads the session. Options are the
+  when the learner changed it; a 409 (already answered, session closed) on an answer or the finish reloads the
+  session; "Nog een oefening" resets the runner first. Options are the
   `AnswerOption` primitive (`components/ui`, `styles/ui/answer-option.css`): a native radio in its label in a
   fieldset; `data-state` default, selected, correct, incorrect (soft, shaken once unless motion is reduced),
   reveal (dashed) or idle, always with an icon and words. Dutch options show no gloss before the answer
-  (guessability); their meanings appear with the verdict. Keys 1 to 4 choose, Enter checks, Escape asks to
-  stop ("later verder" keeps the session, "rond nu af" finishes early); focus moves to each question and then to
-  "Verder"; a polite live region says the outcome; tones play only after the verdict and never for a miss. The
+  (guessability); their meanings appear with the verdict. While focus is in the item, keys 1 to 4 choose (the
+  number row's key on any layout, Persian digits too) and move focus to the option, and Enter checks; Escape
+  asks to stop ("rond nu af" finishes early; the session also stays open for 12 hours) unless another dialog is
+  open; focus moves to each question (a missed one that comes straight back too) and then to "Verder", which
+  is described by the correction, and returns to the opener when a dialog closes; a polite live region says
+  the outcome; tones play only after the verdict and never for a miss. The
   feedback bar shows the outcome ("Nog niet" for a miss, never red), the point, whether the item comes back,
   and the word card; "Meld een probleem" opens the report. The summary shows what was done (answered, right
-  first time, right the second time, points, the session bonus), the missed words and the word-bank
-  suggestions to save. `/oefenen` is a focus mode of the shell (no sidebar or tabs); `?bron=wachten` is the
-  short tap-only session that Today offers under a pending episode. The answer round trip is timed in the
-  browser (`lib/client/round-trips.ts`, a `performance.measure` named `exercise-answer`); the target is a
-  p95 at or under 300 ms, checked through the proxy by `tests/e2e/exercises.spec.ts` and on Azure by
-  `scripts/verify_live.py --measure-answers`.
+  first time, right the second time, points, the session bonus), the missed words (once each) and the
+  word-bank suggestions to save, as library words with their example. `/oefenen` is a focus mode of the shell (no sidebar or tabs); `?bron=wachten` is the
+  short tap-only session that Today offers under a pending episode. The target for an answer round trip is a
+  p95 at or under 300 ms: `tests/e2e/exercises.spec.ts` checks it through the proxy with Playwright's request
+  timing, `scripts/verify_live.py --measure-answers` on Azure with the script's wall-clock time over one
+  kept-alive connection, and the browser records each one as a `performance.measure` named
+  `exercise-answer` (`lib/client/round-trips.ts`) for DevTools.
 - **Content gate**: a stage takes sessions only when 200 of its words support a four-option choice, its examples
   hold 150 distinct sentences and it supports two kinds with at least 50 items each (`VARIETY_MIN_*`,
   `KIND_MIN_ITEMS` in `pool.py`). `tests/test_exercise_generators.py` records each stage's numbers, with its

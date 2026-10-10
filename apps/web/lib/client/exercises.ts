@@ -114,6 +114,15 @@ export interface ItemView {
   prompt: Prompt;
   feedback: Feedback | null;
 }
+/** A missed word the learner may save; the example and library id go with it into the word bank. */
+export interface Suggestion {
+  key: string;
+  term: string;
+  meaning_en: string;
+  meaning_fa: string;
+  example?: string;
+  library_id?: string;
+}
 export interface Summary {
   items_total: number;
   answered: number;
@@ -125,7 +134,7 @@ export interface Summary {
   session_bonus: number;
   by_kind: Record<string, { total: number; first_try_correct: number }>;
   missed: { ref: string; term: string | null; expected: string | null }[];
-  suggestions: { key: string; term: string; meaning_en: string; meaning_fa: string }[];
+  suggestions: Suggestion[];
 }
 export interface SessionView {
   id: string;

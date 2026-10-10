@@ -37,9 +37,16 @@ interface Props {
  */
 export function FeedbackBar({ result, onContinue, onReport, continueRef }: Props) {
   const titleId = useId();
+  const correctionId = useId();
   const { feedback } = result;
   const outcome = OUTCOMES[result.outcome];
   const word = feedback.word;
+  const missed = result.outcome !== "correct" && result.outcome !== "almost";
+  // the right option, for an item without a word card (an authored question)
+  const right =
+    missed && !word ? feedback.support?.find((entry) => entry.id === feedback.correct) : undefined;
+  // "Verder" takes focus after the verdict, so it also reads out what the answer revealed
+  const described = right || feedback.explanation || feedback.odd_topic || word ? correctionId : undefined;
   return (
     <section className="feedback-bar" data-outcome={result.outcome} aria-labelledby={titleId}>
       <p className="feedback-title" id={titleId}>
@@ -56,27 +63,36 @@ export function FeedbackBar({ result, onContinue, onReport, continueRef }: Props
           <UiText text={exerciseCopy.comesBack} tier="guide" />
         </p>
       )}
-      {feedback.odd_topic && (
-        <p className="feedback-line">
-          <UiText text={exerciseCopy.oddBelongs} inline /> <Dutch text={feedback.odd_topic.nl} />{" "}
-          <Meaning text={feedback.odd_topic} />
-        </p>
-      )}
-      {feedback.explanation && (
-        <p className="feedback-line">
-          <Dutch text={feedback.explanation.nl} /> <Meaning text={feedback.explanation} />
-        </p>
-      )}
-      {word && (
-        <div className="feedback-word">
-          <Dutch text={word.term} className="feedback-term" /> <Meaning text={word.meaning} />{" "}
-          <span className="feedback-example">
-            <Dutch text={word.example.nl} /> <Meaning text={word.example} />
-          </span>
-        </div>
-      )}
+      <div className="feedback-correction" id={correctionId}>
+        {right && (
+          <p className="feedback-line">
+            <UiText text={exerciseCopy.rightAnswer} inline />
+            {": "}
+            <Dutch text={right.nl} /> <Meaning text={right} />
+          </p>
+        )}
+        {feedback.odd_topic && (
+          <p className="feedback-line">
+            <UiText text={exerciseCopy.oddBelongs} inline /> <Dutch text={feedback.odd_topic.nl} />{" "}
+            <Meaning text={feedback.odd_topic} />
+          </p>
+        )}
+        {feedback.explanation && (
+          <p className="feedback-line">
+            <Dutch text={feedback.explanation.nl} /> <Meaning text={feedback.explanation} />
+          </p>
+        )}
+        {word && (
+          <div className="feedback-word">
+            <Dutch text={word.term} className="feedback-term" /> <Meaning text={word.meaning} />{" "}
+            <span className="feedback-example">
+              <Dutch text={word.example.nl} /> <Meaning text={word.example} />
+            </span>
+          </div>
+        )}
+      </div>
       <div className="feedback-actions">
-        <Button ref={continueRef} onClick={onContinue} icon="arrow" iconEnd>
+        <Button ref={continueRef} onClick={onContinue} icon="arrow" iconEnd aria-describedby={described}>
           <UiText text={exerciseCopy.continue} inline />
         </Button>
         <Button variant="ghost" size="small" icon="flag" onClick={onReport}>

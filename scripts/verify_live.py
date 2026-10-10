@@ -10,13 +10,16 @@ from the browser after logging in) it also runs the authenticated checks: prefli
 providers, one synthesis carries the `azure-neural` label, usage counters answer, and the acceptance
 checks pass. Exit code 0 only when every check passed. Nothing here writes to the environment except
 one short synthesis (counted in the usage budget), and with `--measure-answers` one short tap-only practice
-session in the signed-in learner's own account (its answers, points and misses stay there): it times every
-answer from this machine through the sign-in proxy and passes when the p95 is at or under 300 ms (step 3.6).
+session in the signed-in learner's own account (its answers, points and misses stay there; an earlier
+measurement session left open is abandoned, a real practice session never is): it times every answer from this
+machine through the sign-in proxy over one kept-alive connection and passes when the p95 is at or under 300 ms
+(step 3.6).
 """
 
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import os
 import sys
@@ -135,22 +138,42 @@ def signed_in_checks(base: str, cookie: str) -> list[Result]:
     return results
 
 
+def persistent(base: str):
+    """One kept-alive HTTPS connection, so a timing is the request itself, not a new TCP and TLS handshake."""
+    parsed = urlparse(base)
+    connection = http.client.HTTPSConnection(parsed.hostname or "", parsed.port or 443, timeout=TIMEOUT)
+
+    def send(path: str, *, method: str = "GET", headers: dict[str, str] | None = None,
+             body: bytes | None = None) -> tuple[int, dict[str, str], bytes]:
+        try:
+            connection.request(method, path, body=body, headers=headers or {})
+            response = connection.getresponse()
+            return response.status, {k.lower(): v for k, v in response.getheaders()}, response.read()
+        except (http.client.HTTPException, OSError) as exc:
+            connection.close()
+            return 0, {"x-error": str(exc)}, b""
+
+    return send
+
+
 def answer_round_trips(base: str, cookie: str) -> Result:
-    """One short practice session answered with each item's first option, timing every answer."""
+    """One short practice session answered with each item's first option, timing every answer. It asks for
+    choice items only, a set the web app never asks for, so it never resumes or abandons a real session."""
     name = f"practice answer round trip p95 <= {ANSWER_P95_MS} ms"
     common = {"Cookie": cookie, "Accept": "application/json", "Content-Type": "application/json",
               "X-Requested-With": "fetch"}
+    send = persistent(base)
 
     def post(path: str, payload: dict) -> tuple[int, dict, float]:
         request_id = uuid.uuid4().hex
         started = time.perf_counter()
-        status, _, body = request(f"{base}/api/{path}", method="POST", headers={**common, "X-Request-Id": request_id},
-                                  body=json.dumps({"request_id": request_id, **payload}).encode("utf-8"))
+        status, _, body = send(f"/api/{path}", method="POST", headers={**common, "X-Request-Id": request_id},
+                               body=json.dumps({"request_id": request_id, **payload}).encode("utf-8"))
         elapsed = (time.perf_counter() - started) * 1000
         return status, json.loads(body) if status in (200, 201) else {}, elapsed
 
-    status, view, _ = post("exercises/sessions", {"source": "while_you_wait", "fresh": True,
-                                                  "kinds": ["choice", "cloze_choice", "odd_one_out"]})
+    send("/api/health/ready", headers=common)  # untimed: opens the connection
+    status, view, _ = post("exercises/sessions", {"source": "while_you_wait", "fresh": True, "kinds": ["choice"]})
     if status not in (200, 201):
         return Result(name, False, f"starting a session: HTTP {status}")
     items = {item["id"]: item for item in view["items"]}

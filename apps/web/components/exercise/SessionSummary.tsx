@@ -14,14 +14,19 @@ import { Dutch, Meaning } from "./ContentText";
 
 type Suggestion = Summary["suggestions"][number];
 
+/**
+ * One suggested word and its save button. The button stays in place (focus stays on it) and says "Bewaard" once
+ * saved; the status beside it is always there, so the change is announced.
+ */
 function SuggestionRow({ suggestion }: { suggestion: Suggestion }) {
   const [state, setState] = useState<"open" | "saving" | "saved">("open");
   const [error, setError] = useState<Copy | null>(null);
   async function save() {
+    if (state !== "open") return;
     setState("saving");
     setError(null);
     try {
-      await words.save(suggestion.term, suggestion.meaning_en, suggestion.meaning_fa);
+      await words.saveSuggestion(suggestion);
       setState("saved");
     } catch (cause) {
       setState("open");
@@ -34,22 +39,19 @@ function SuggestionRow({ suggestion }: { suggestion: Suggestion }) {
         <Dutch text={suggestion.term} className="summary-term" />{" "}
         <Meaning text={{ en: suggestion.meaning_en, fa: suggestion.meaning_fa }} />
       </span>
-      {state === "saved" ? (
-        <span className="summary-saved" role="status">
-          <UiText text={uiCopy.state.saved} inline />
-        </span>
-      ) : (
-        <Button
-          variant="secondary"
-          size="small"
-          icon="plus"
-          disabled={state === "saving"}
-          aria-label={fill(exerciseCopy.saveWord, { term: suggestion.term }).nl}
-          onClick={() => void save()}
-        >
-          <UiText text={uiCopy.action.save} inline />
-        </Button>
-      )}
+      <Button
+        variant="secondary"
+        size="small"
+        icon={state === "saved" ? "check" : "plus"}
+        aria-disabled={state === "open" ? undefined : true}
+        aria-label={state === "saved" ? undefined : fill(exerciseCopy.saveWord, { term: suggestion.term }).nl}
+        onClick={() => void save()}
+      >
+        <UiText text={state === "saved" ? uiCopy.state.saved : uiCopy.action.save} inline />
+      </Button>
+      <span className="visually-hidden" role="status">
+        {state === "saved" && <UiText text={uiCopy.state.saved} inline />}
+      </span>
       {error && (
         <span className="summary-error" role="alert">
           <UiText text={error} tier="guide" />
@@ -72,7 +74,10 @@ export function SessionSummary({ summary, onAgain, headingRef }: Props) {
     { label: exerciseCopy.summaryFixed, value: summary.fixed_on_retry },
     { label: exerciseCopy.summaryPoints, value: summary.points_earned },
   ];
-  const missed = summary.missed.filter((entry) => entry.term);
+  // once per word, also for a summary stored before the server listed each word once
+  const missed = [
+    ...new Map(summary.missed.filter((entry) => entry.term).map((entry) => [entry.ref, entry])).values(),
+  ];
   return (
     <section className="exercise-summary" aria-labelledby="summary-title">
       <h2 id="summary-title" className="exercise-question" tabIndex={-1} ref={headingRef}>

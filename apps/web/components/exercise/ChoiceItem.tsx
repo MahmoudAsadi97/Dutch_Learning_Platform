@@ -137,7 +137,7 @@ export function ChoiceItem({ prompt, selected, onSelect, feedback, headingRef }:
               key={option.id}
               name={name}
               value={option.id}
-              checked={(feedback?.given ?? selected) === option.id}
+              checked={feedback ? feedback.given === option.id : selected === option.id}
               onSelect={onSelect}
               verdict={verdictFor(option.id, feedback)}
               shortcut={index < 9 ? index + 1 : undefined}

@@ -221,6 +221,8 @@ test("a mocked session runs by keyboard, in focus mode, accessible at every widt
   await report.getByRole("button", { name: "Verstuur" }).click();
   await expect(report.getByText("Bedankt. We bekijken deze oefening.")).toBeVisible();
   await report.getByRole("button", { name: "Sluiten" }).last().click();
+  await expect(report).toBeHidden();
+  await expect(page.getByRole("button", { name: "Meld een probleem" })).toBeFocused();
   expect(posts.find((post) => post.url.endsWith("/report"))?.body).toMatchObject({ reason: "unclear" });
 
   await next.press("Enter");
@@ -236,7 +238,9 @@ test("a mocked session runs by keyboard, in focus mode, accessible at every widt
   await checkWidths(page, testInfo, "summary");
 });
 
-test("Escape asks before stopping, and stopping later keeps the session", async ({ page }) => {
+test("Escape asks before stopping, closing gives focus back, and the session stays", async ({
+  page,
+}, testInfo) => {
   await mockSession(page);
   await page.goto("/oefenen");
   await page.getByRole("button", { name: "Begin met oefenen" }).click();
@@ -244,10 +248,16 @@ test("Escape asks before stopping, and stopping later keeps the session", async 
   await page.keyboard.press("Escape");
   const dialog = page.getByRole("dialog", { name: "Stoppen met oefenen?" });
   await expect(dialog).toBeVisible();
+  await checkWidths(page, testInfo, "exit");
   await dialog.getByRole("button", { name: "Blijf oefenen" }).click();
   await expect(dialog).toBeHidden();
+  await page.getByRole("button", { name: "Stoppen" }).click();
+  await expect(dialog).toBeVisible();
   await page.keyboard.press("Escape");
-  await page.getByRole("dialog").getByRole("link", { name: "Later verder" }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByRole("button", { name: "Stoppen" })).toBeFocused();
+  await page.getByRole("button", { name: "Stoppen" }).click();
+  await dialog.getByRole("link", { name: "Naar Vandaag" }).click();
   await expect(page).toHaveURL(/\/$/);
 });
 

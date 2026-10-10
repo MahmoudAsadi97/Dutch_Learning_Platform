@@ -70,5 +70,6 @@ def suggest_words(session: Session, learner_id: uuid.UUID, words: list[tuple[str
                                                         WordSuggestion.key.in_(offered),
                                                         WordSuggestion.status == "open")
                            .execution_options(populate_existing=True))
-    return [{"key": row.key, "term": row.term, "meaning_en": row.meaning_en, "meaning_fa": row.meaning_fa}
+    return [{"key": row.key, "term": row.term, "meaning_en": row.meaning_en, "meaning_fa": row.meaning_fa,
+             "example": row.example, "library_id": row.source_id}
             for row in sorted(rows, key=lambda row: list(offered).index(row.key))]

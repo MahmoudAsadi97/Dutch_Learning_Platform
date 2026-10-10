@@ -176,8 +176,9 @@ will deliberately make the web private again. Never set `publicWeb=true` for ini
 
   This makes one short, budgeted synthesis and verifies provider configuration, counters and acceptance
   rules. It does **not** prove STT, model language quality or a complete conversation. Add
-  `--measure-answers` to time one short practice session through the sign-in proxy (the step 3.6 target is
-  a p95 answer round trip at or under 300 ms); its answers, points and misses stay in the signed-in account.
+  `--measure-answers` to time one short practice session through the sign-in proxy over one kept-alive
+  connection (the step 3.6 target is a p95 answer round trip at or under 300 ms); its answers, points and misses
+  stay in the signed-in account, and a real practice session in progress is left alone.
 - Complete the four steps with actual model/speech services. Confirm dates are validated, feedback cites
   saved evidence, typed input does not become spoken evidence, assistance is tracked and a draft survives
   reload and navigation. Inspect the deployment/model labels; record latency and actual usage.

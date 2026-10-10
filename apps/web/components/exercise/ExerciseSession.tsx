@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useEffectEvent, useReducer, useRef, useState } from "react";
+import {
+  useEffect,
+  useEffectEvent,
+  useReducer,
+  useRef,
+  useState,
+  type KeyboardEvent as ReactKeyboardEvent,
+} from "react";
 
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Dialog } from "@/components/ui/Dialog";
@@ -14,7 +21,7 @@ import { ApiError, newRequestId } from "@/lib/client/api";
 import { errorCopy } from "@/lib/client/error-copy";
 import { isAbort } from "@/lib/client/errors";
 import { exercises, type Answer } from "@/lib/client/exercises";
-import { recordRoundTrip } from "@/lib/client/round-trips";
+import { timeRoundTrip } from "@/lib/client/round-trips";
 import { playTone } from "@/lib/client/tones";
 import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
@@ -26,16 +33,22 @@ import { ReportDialog } from "./ReportDialog";
 import { SessionSummary } from "./SessionSummary";
 import { currentItem, initialState, reduce, requestIdFor, type SkipReason } from "./sessionReducer";
 
+/** A new key for each live-region message, so the same words are announced again. */
+let announcements = 0;
+function nextAnnouncement(): number {
+  announcements += 1;
+  return announcements;
+}
+
 /** Attempts an item starts with (MAX_ATTEMPTS on the server); fewer means it was missed once. */
 const FIRST_ATTEMPTS = 2;
 
-/** Keys typed into a field or pressed on a control belong to that control, not to the session. */
-function ownKeys(target: EventTarget | null): boolean {
+/** Keys typed into a field belong to that field, not to the session. */
+function isTextEntry(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
   if (target.isContentEditable) return true;
   if (target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement) return true;
-  if (target instanceof HTMLInputElement) return target.type !== "radio";
-  return target.closest("button, a[href], dialog") !== null;
+  return target instanceof HTMLInputElement && target.type !== "radio";
 }
 
 interface Props {
@@ -45,7 +58,8 @@ interface Props {
 /**
  * One practice session, start to summary, driven by the reducer in sessionReducer.ts. The server generates
  * and grades; this screen shows one item at a time, sends the answer, shows what it revealed, and moves on.
- * Keyboard: 1 to 4 choose an option, Enter checks it (or goes on after the feedback), Escape asks to stop.
+ * Keyboard, while focus is in the item: 1 to 4 choose an option (the number row's key on any layout, or a
+ * Persian digit) and move focus to it, Enter checks it (on "Verder" it goes on); Escape asks to stop.
  * Focus moves to each new question, then to "Verder" after the verdict; a polite live region says the
  * outcome. Tones play only after the server's verdict, and never for a miss.
  */
@@ -96,9 +110,24 @@ export function ExerciseSession({ source }: Props) {
     exercises
       .finish(sessionId, requestId, early.current)
       .then((result) => {
-        if (live) dispatch({ type: "FINISHED", result });
+        if (!live) return;
+        setActionError(null);
+        dispatch({ type: "FINISHED", result });
       })
-      .catch((cause: unknown) => {
+      .catch(async (cause: unknown) => {
+        if (!live) return;
+        if (cause instanceof ApiError && cause.status === 409) {
+          // stopped or finished elsewhere: show what the server holds (a summary, or the stopped notice)
+          try {
+            const fresh = await exercises.get(sessionId);
+            if (!live) return;
+            setActionError(null);
+            dispatch({ type: "LOADED", session: fresh });
+            return;
+          } catch {
+            // the message below says the result was not saved
+          }
+        }
         if (!live) return;
         setActionError(errorCopy(cause, exerciseCopy.finishFailed));
         dispatch({ type: "FINISH_FAILED" });
@@ -112,6 +141,8 @@ export function ExerciseSession({ source }: Props) {
   const { phase, current } = state;
   useEffect(() => {
     if (phase === "feedback") {
+      // a missed item may come straight back: it is a new question then, and gets the focus again
+      shown.current = null;
       continueRef.current?.focus();
       return;
     }
@@ -129,17 +160,17 @@ export function ExerciseSession({ source }: Props) {
     dispatch({ type: "SUBMIT", pending: { itemId: item.id, requestId, answer, skip } });
     setActionError(null);
     setNudge(false);
-    const started = performance.now();
+    const timed = timeRoundTrip();
     try {
       const result = skip
         ? await exercises.skip(session.id, item.id, requestId, skip)
         : await exercises.answer(session.id, item.id, answer as Answer, requestId);
-      recordRoundTrip(performance.now() - started, started);
+      timed();
       dispatch({ type: "ANSWERED", result });
       if (result.outcome === "correct") playTone("correct");
       else if (result.outcome === "almost") playTone("almost");
       const headline = outcomeCopy(result.outcome);
-      if (headline) setAnnouncement({ id: Date.now(), text: headline });
+      if (headline) setAnnouncement({ id: nextAnnouncement(), text: headline });
     } catch (cause) {
       if (cause instanceof ApiError && cause.status === 409) {
         // the server already holds an answer for this item, or the session closed: carry on from what it holds
@@ -162,6 +193,7 @@ export function ExerciseSession({ source }: Props) {
   function check() {
     if (!selected) {
       setNudge(true);
+      setAnnouncement({ id: nextAnnouncement(), text: exerciseCopy.chooseFirst });
       return;
     }
     void send({ option: selected }, null);
@@ -200,30 +232,47 @@ export function ExerciseSession({ source }: Props) {
     shown.current = null;
     setSelected(null);
     setActionError(null);
+    setLoadError(null);
+    dispatch({ type: "RESET" });
     setCreateId(newRequestId());
   }
 
+  // Escape anywhere asks to stop, unless a dialog (this screen's or another one's) is open and takes it
   const onKey = useEffectEvent((event: KeyboardEvent) => {
-    if (dialog || event.altKey || event.ctrlKey || event.metaKey) return;
-    if (event.key === "Escape" && (state.phase === "answering" || state.phase === "feedback")) {
+    if (event.key !== "Escape" || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (document.querySelector("dialog[open]")) return;
+    if (state.phase === "answering" || state.phase === "feedback") {
       event.preventDefault();
       setDialog("exit");
-      return;
     }
-    if (ownKeys(event.target) || state.phase !== "answering" || !item || !isChoicePrompt(item.prompt)) return;
+  });
+
+  // the number keys and Enter only while focus is in the item, so they never take keys meant elsewhere
+  function onStageKey(event: ReactKeyboardEvent<HTMLDivElement>) {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.nativeEvent.isComposing) return;
+    if (state.phase !== "answering" || !item || !isChoicePrompt(item.prompt) || isTextEntry(event.target))
+      return;
     const option = optionForKey(
       event.key,
+      event.code,
       item.prompt.options.map((entry) => entry.id),
     );
     if (option) {
       event.preventDefault();
       setSelected(option);
       setNudge(false);
-    } else if (event.key === "Enter") {
+      // the focus ring and a screen reader follow the choice
+      Array.from(event.currentTarget.querySelectorAll<HTMLInputElement>("input[type=radio]"))
+        .find((input) => input.value === option)
+        ?.focus();
+    } else if (
+      event.key === "Enter" &&
+      !(event.target instanceof HTMLElement && event.target.closest("button, a[href]"))
+    ) {
       event.preventDefault();
       check();
     }
-  });
+  }
   useEffect(() => {
     const listener = (event: KeyboardEvent) => onKey(event);
     document.addEventListener("keydown", listener);
@@ -305,7 +354,7 @@ export function ExerciseSession({ source }: Props) {
       )}
 
       {item && (state.phase === "answering" || state.phase === "checking" || state.phase === "feedback") && (
-        <div className="exercise-stage" aria-busy={state.phase === "checking"}>
+        <div className="exercise-stage" aria-busy={state.phase === "checking"} onKeyDown={onStageKey}>
           {item.prompt.kind === "intro" ? (
             <>
               <IntroCard words={item.prompt.words} headingRef={headingRef} />
@@ -346,7 +395,7 @@ export function ExerciseSession({ source }: Props) {
                 </div>
               )}
               {nudge && (
-                <p className="exercise-nudge" role="status">
+                <p className="exercise-nudge">
                   <UiText text={exerciseCopy.chooseFirst} inline />
                 </p>
               )}
@@ -363,14 +412,24 @@ export function ExerciseSession({ source }: Props) {
         </div>
       )}
 
-      {actionError && (
+      {actionError && state.phase !== "summary" && (
         <Notice tone="warning" role="alert">
           <UiText text={actionError} tier="guide" />
           {state.phase === "finishing" && state.failed && (
             <div className="exercise-actions">
-              <Button variant="secondary" icon="refresh" onClick={() => dispatch({ type: "FINISH" })}>
+              <Button
+                variant="secondary"
+                icon="refresh"
+                onClick={() => {
+                  setActionError(null);
+                  dispatch({ type: "FINISH" });
+                }}
+              >
                 <UiText text={uiCopy.action.retry} inline />
               </Button>
+              <ButtonLink href="/" variant="ghost">
+                <UiText text={exerciseCopy.backToday} inline />
+              </ButtonLink>
             </div>
           )}
         </Notice>
@@ -382,8 +441,10 @@ export function ExerciseSession({ source }: Props) {
         <SessionSummary summary={session.summary} onAgain={again} headingRef={headingRef} />
       )}
       {state.phase === "summary" && session && !session.summary && (
-        <Notice tone="info" role="status">
-          <UiText text={exerciseCopy.stoppedElsewhere} tier="guide" />
+        <Notice tone="info">
+          <h2 className="exercise-question" tabIndex={-1} ref={headingRef}>
+            <UiText text={exerciseCopy.stoppedElsewhere} tier="guide" />
+          </h2>
           <div className="exercise-actions">
             <Button onClick={again} icon="repeat">
               <UiText text={exerciseCopy.again} inline />
@@ -395,9 +456,10 @@ export function ExerciseSession({ source }: Props) {
         </Notice>
       )}
 
-      {dialog === "exit" && (
+      {/* both dialogs stay mounted while there is a session, so closing one returns focus to its opener */}
+      {session && (
         <Dialog
-          open
+          open={dialog === "exit"}
           onClose={() => setDialog(null)}
           title={<UiText text={exerciseCopy.exitTitle} />}
           description={<UiText text={exerciseCopy.exitLead} tier="guide" />}
@@ -417,8 +479,15 @@ export function ExerciseSession({ source }: Props) {
           }
         />
       )}
-      {dialog === "report" && session && item && (
-        <ReportDialog sessionId={session.id} itemId={item.id} onClose={() => setDialog(null)} />
+      {session && item && (
+        <ReportDialog
+          key={item.id}
+          open={dialog === "report"}
+          sessionId={session.id}
+          itemId={item.id}
+          kind={item.kind}
+          onClose={() => setDialog(null)}
+        />
       )}
     </div>
   );

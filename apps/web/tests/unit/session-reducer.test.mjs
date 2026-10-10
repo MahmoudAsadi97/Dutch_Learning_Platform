@@ -144,6 +144,22 @@ test("a finished session resumes on its summary; a session that cannot load is a
   assert.equal(reduce(initialState, { type: "LOAD_FAILED" }).phase, "error");
 });
 
+test("a reset clears the last session, so a new one loads (or fails) on its own", () => {
+  let state = reduce(initialState, {
+    type: "LOADED",
+    session: session({ status: "finished", next_item_id: null, summary: { items_total: 2 } }),
+  });
+  assert.equal(
+    reduce(state, { type: "LOAD_FAILED" }).phase,
+    "summary",
+    "a summary on screen hides a failure",
+  );
+  state = reduce(state, { type: "RESET" });
+  assert.equal(state.phase, "creating");
+  assert.equal(state.session, null);
+  assert.equal(reduce(state, { type: "LOAD_FAILED" }).phase, "error");
+});
+
 test("events out of turn change nothing", () => {
   const state = reduce(initialState, { type: "LOADED", session: session({ next_item_id: "i1" }) });
   assert.equal(reduce(state, { type: "CONTINUE" }), state);

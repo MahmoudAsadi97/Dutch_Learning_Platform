@@ -176,6 +176,26 @@ export const words = {
       method: "POST",
       body: { term, meaning_en, meaning_fa, example, source_kind: "manual" },
     }),
+  /** A word the practice summary suggested: a library word with its example when the suggestion knows it. */
+  saveSuggestion: (item: {
+    term: string;
+    meaning_en: string;
+    meaning_fa: string;
+    example?: string;
+    library_id?: string;
+  }) =>
+    apiJson<{ item: WordItem; created: boolean }>("words", {
+      method: "POST",
+      body: {
+        term: item.term,
+        meaning_en: item.meaning_en,
+        meaning_fa: item.meaning_fa,
+        example: item.example ?? "",
+        ...(item.library_id
+          ? { source_kind: "library", source_id: item.library_id }
+          : { source_kind: "manual" }),
+      },
+    }),
   /** A word chosen from a stage library; the word list keeps where it came from. */
   saveLibrary: (item: LibraryWord) =>
     apiJson<{ item: WordItem; created: boolean }>("words", {

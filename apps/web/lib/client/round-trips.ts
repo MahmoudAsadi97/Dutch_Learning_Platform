@@ -17,6 +17,12 @@ export function recordRoundTrip(milliseconds: number, start?: number): void {
   }
 }
 
+/** Starts timing one answer; call the returned function when its verdict has arrived. */
+export function timeRoundTrip(): () => void {
+  const start = performance.now();
+  return () => recordRoundTrip(performance.now() - start, start);
+}
+
 export function roundTrips(): readonly number[] {
   return durations;
 }

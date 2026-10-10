@@ -195,15 +195,18 @@ describe("ExerciseSession", () => {
       expect.any(String),
     );
     fireEvent.click(start);
-    await screen.findByRole("heading", { name: /Welk Nederlands woord past/ });
-    expect(document.activeElement).toHaveTextContent(/Welk Nederlands woord past/);
+    const heading = await screen.findByRole("heading", { name: /Welk Nederlands woord past/ });
+    await waitFor(() => expect(heading).toHaveFocus());
 
+    // the 2 key of a Belgian AZERTY keyboard types "é"; it still picks the second option, and focus follows
     act(() => {
-      fireEvent.keyDown(document.body, { key: "2" });
+      fireEvent.keyDown(heading, { key: "é", code: "Digit2" });
     });
-    expect(screen.getByRole("radio", { name: /het raam/ })).toBeChecked();
+    const raam = screen.getByRole("radio", { name: /het raam/ });
+    expect(raam).toBeChecked();
+    expect(raam).toHaveFocus();
     act(() => {
-      fireEvent.keyDown(document.body, { key: "Enter" });
+      fireEvent.keyDown(raam, { key: "Enter", code: "Enter" });
     });
     const next = await screen.findByRole("button", { name: /^Verder/ });
     expect(client.answer).toHaveBeenLastCalledWith("s1", "i1", { option: "bbbb" }, expect.any(String));
@@ -221,6 +224,11 @@ describe("ExerciseSession", () => {
     render(<ExerciseSession source="while_you_wait" />);
     fireEvent.click(await screen.findByRole("button", { name: /Begin met oefenen/ }));
     await screen.findByRole("heading", { name: /Welk Nederlands woord past/ });
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    act(() => {
+      fireEvent.keyDown(document.body, { key: "2", code: "Digit2" });
+    });
+    expect(screen.getByRole("radio", { name: /het raam/ })).not.toBeChecked();
     act(() => {
       fireEvent.keyDown(document.body, { key: "Escape" });
     });
@@ -269,7 +277,21 @@ describe("ExerciseSession", () => {
     fireEvent.click(screen.getByRole("button", { name: /^Verder/ }));
     await waitFor(() => expect(client.get).toHaveBeenCalledWith("s1"));
     await waitFor(() => expect(screen.getAllByRole("radio")[0]).toHaveAccessibleName(/de trap/));
+    expect(screen.getByRole("heading", { name: /Welk Nederlands woord past/ })).toHaveFocus();
     expect(screen.getAllByRole("radio").every((radio) => !(radio as HTMLInputElement).checked)).toBe(true);
+  });
+
+  it("shows why another session could not start, instead of the last summary", async () => {
+    render(<ExerciseSession source="stage_skill" />);
+    fireEvent.click(await screen.findByRole("button", { name: /Begin met oefenen/ }));
+    fireEvent.click(await screen.findByRole("radio", { name: /de deur/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Controleer/ }));
+    fireEvent.click(await screen.findByRole("button", { name: /^Verder/ }));
+    await screen.findByRole("heading", { name: /Je oefening is klaar/ });
+    client.create.mockRejectedValueOnce(new TypeError("network"));
+    fireEvent.click(screen.getByRole("button", { name: /Nog een oefening/ }));
+    expect(await screen.findByRole("alert")).toHaveTextContent(/kon niet worden geladen/);
+    expect(screen.queryByRole("heading", { name: /Je oefening is klaar/ })).not.toBeInTheDocument();
   });
 
   it("sends a failed answer again under the same request id", async () => {

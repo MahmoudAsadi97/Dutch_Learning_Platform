@@ -153,11 +153,11 @@ export const exerciseCopy = {
   // stopping
   exitTitle: { nl: "Stoppen met oefenen?", en: "Stop practising?", fa: "تمرین را متوقف می‌کنی؟" },
   exitLead: {
-    nl: "Je antwoorden zijn bewaard. Ga later verder, of rond nu af en bekijk wat je gedaan hebt.",
-    en: "Your answers are saved. Continue later, or finish now and see what you have done.",
-    fa: "پاسخ‌هایت ذخیره شده‌اند. بعداً ادامه بده، یا همین حالا تمام کن و ببین چه کرده‌ای.",
+    nl: "Je antwoorden en punten zijn bewaard. Rond nu af om te zien wat je gedaan hebt, of ga terug naar Vandaag.",
+    en: "Your answers and points are saved. Finish now to see what you have done, or go back to Today.",
+    fa: "پاسخ‌ها و امتیازهایت ذخیره شده‌اند. همین حالا تمام کن تا ببینی چه کرده‌ای، یا به امروز برگرد.",
   },
-  exitLater: { nl: "Later verder", en: "Continue later", fa: "بعداً ادامه بده" },
+  exitLater: { nl: "Naar Vandaag", en: "To Today", fa: "به امروز" },
   exitFinish: { nl: "Rond nu af", en: "Finish now", fa: "همین حالا تمام کن" },
   keepGoing: { nl: "Blijf oefenen", en: "Keep practising", fa: "به تمرین ادامه بده" },
 
@@ -205,8 +205,8 @@ export const exerciseCopy = {
   // the entry on Today while an episode is written
   waitTitle: { nl: "Oefen terwijl je wacht", en: "Practise while you wait", fa: "تا منتظری، تمرین کن" },
   waitLead: {
-    nl: "Een paar korte vragen over je woorden, alleen tikken.",
-    en: "A few short questions about your words, tapping only.",
-    fa: "چند سؤال کوتاه درباره‌ی واژه‌هایت، فقط با لمس.",
+    nl: "Een paar korte vragen over woorden van je niveau, alleen tikken.",
+    en: "A few short questions on words at your level, tapping only.",
+    fa: "چند سؤال کوتاه درباره‌ی واژه‌های سطح تو، فقط با لمس.",
   },
 } as const satisfies Record<string, Copy>;
