@@ -30,7 +30,7 @@ from sqlalchemy.orm import Session
 from dlp.config import Settings, get_settings
 from dlp.db.base import utcnow
 from dlp.domains.activity.rules import RULES
-from dlp.domains.activity.service import reached, record_activity
+from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.curriculum import topics as topic_bank
 from dlp.domains.curriculum.schemas import STAGE_IDS
 from dlp.domains.curriculum.service import CurriculumError
@@ -509,7 +509,7 @@ def answer_questions(session: Session, learner: Learner, lesson: VideoLesson, *,
     if state.get("chosen") is not None:
         if state.get("request_id") != request_id:
             raise VideoError("the questions of this video were already answered", 409, code="already_answered")
-        return video_view(lesson)
+        return {**video_view(lesson), **replayed(session, learner.id, request_id)}
     chosen = {str(i): answers.get(str(i)) for i in range(len(lesson.questions))}
     if any(value is None for value in chosen.values()):
         raise VideoError("answer every question", 422)
@@ -519,7 +519,7 @@ def answer_questions(session: Session, learner: Learner, lesson: VideoLesson, *,
     watched = None
     if lesson.watched_at is None:
         lesson.watched_at = utcnow()
-        watched = record_activity(session, learner.id, kind="video_watched", ref=str(lesson.id))
+        watched = record_activity(session, learner.id, kind="video_watched", ref=str(lesson.id), request_id=request_id)
     answered = record_activity(session, learner.id, kind="video_questions", ref=str(lesson.id), request_id=request_id,
                                units=correct)
     return {**video_view(lesson), **reached(watched, answered)}

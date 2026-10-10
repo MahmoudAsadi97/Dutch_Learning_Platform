@@ -50,6 +50,14 @@ def test_the_text_is_bounded(client):
     assert _post(client, "read-aloud-0003", text="woord " * 120).status_code == 422
 
 
+@pytest.mark.parametrize("text", [" ", "...", "12 34"])
+def test_a_text_without_words_is_refused_before_any_audio_is_counted(client, text):
+    refused = _post(client, f"read-aloud-none-{len(text)}", text=text)
+    assert refused.status_code == 422 and refused.json()["code"] == "nothing_to_read"
+    usage = client.get("/usage", headers=auth_headers("read-aloud-usage-none")).json()["counters"]["audio_seconds"]
+    assert usage["daily"]["used"] == 0
+
+
 def test_the_allowance_and_an_unavailable_service_answer_with_codes(client, settings, monkeypatch):
     monkeypatch.setattr(settings, "usage_daily_audio_seconds", 1)
     assert _post(client, "read-aloud-0004").status_code == 200

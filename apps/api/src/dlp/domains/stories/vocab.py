@@ -13,7 +13,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from dlp.db.base import utcnow
-from dlp.domains.activity.service import reached, record_activity
+from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.identity.models import Learner
 from dlp.domains.stories.models import StoryEpisode, VocabItem
 from dlp.domains.stories.validator import lemma_key, normalise
@@ -117,7 +117,7 @@ def review(session: Session, learner: Learner, item_id: uuid.UUID, *, grade: str
     if item is None:
         raise VocabError("word not found", 404)
     if item.last_request_id == request_id:
-        return item_view(item)
+        return {**item_view(item), **replayed(session, learner.id, request_id)}
     item.last_request_id = request_id
     schedule(item, grade)
     award = record_activity(session, learner.id, kind="word_review", ref=str(item.id), request_id=request_id)

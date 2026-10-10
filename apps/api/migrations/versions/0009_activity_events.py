@@ -30,7 +30,7 @@ def upgrade() -> None:
         sa.Column("points", sa.Integer(), nullable=False, server_default="0"),
         sa.Column("units", sa.Integer(), nullable=False, server_default="1"),
         sa.Column("skill", sa.String(20), nullable=True),
-        sa.Column("request_id", sa.String(64), nullable=False, server_default=""),
+        sa.Column("request_id", sa.String(80), nullable=False, server_default=""),
         sa.Column("meta", postgresql.JSONB(), nullable=False, server_default=sa.text("'{}'::jsonb")),
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
         sa.ForeignKeyConstraint(["learner_id"], ["learners.id"], name="fk_activity_events_learner_id_learners",

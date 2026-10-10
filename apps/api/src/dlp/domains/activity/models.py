@@ -33,7 +33,7 @@ class ActivityEvent(Base):
     points: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
     units: Mapped[int] = mapped_column(Integer, nullable=False, default=1, server_default="1")
     skill: Mapped[str | None] = mapped_column(String(20), nullable=True)
-    request_id: Mapped[str] = mapped_column(String(64), nullable=False, default="", server_default="")
+    request_id: Mapped[str] = mapped_column(String(80), nullable=False, default="", server_default="")
     meta: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=utcnow)
 

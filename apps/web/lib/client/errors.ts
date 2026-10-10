@@ -49,6 +49,7 @@ const BY_CODE: Record<string, keyof ErrorCopies> = {
   no_retry: "noRetry",
   in_progress: "inProgress",
   evidence_short: "evidenceShort",
+  nothing_to_read: "invalid",
 };
 
 const BY_STATUS: Record<number, keyof ErrorCopies> = {

@@ -442,18 +442,27 @@ the dedupe key). The day is the Brussels calendar day (`activity/day.py`); usage
 day. `learning_days.goal_target` holds the goal in force at the day's latest activity, and a goal change
 updates the current day. An award that takes the day from below its goal to the goal returns
 `goal_reached`; action responses carry it, `apiJson` fires `dlp:goal-reached`, and `GoalCelebration` in the
-shell plays the goal tone and says it in a toast. `stories/today.py` keeps the old names as re-exports;
+shell says it in a toast and plays the goal tone after the screen's own answer tone, once a day. The crossing
+is kept in the event's `meta`, so a retried request answered from its stored result repeats it
+(`activity.service.replayed`, today only). `activity_events.request_id` holds up to 80 characters, like the
+request bodies. `stories/today.py` keeps the old names as re-exports;
 its `add_points` only seeds history in tests. A new kind is a row in the rules table plus a
 `record_activity` call where the action is stored, never an update of `learning_days` by hand.
 
 ## Judging an answer
 
 `domains/exercises/compare.py` compares a typed answer with one or more accepted answers and returns
-`correct`, `almost` or `incorrect` with notes and a token diff. Case, punctuation and spacing never matter;
-missing accents are forgiven and noted; a missing article is forgiven unless the exercise requires it, a
-wrong de/het is `almost`; one slip in a word of four letters or more (two from eight) is `almost` unless it
-spells another word the caller lists in `lexicon`; one missing or extra word in a sentence of four words or
-more is `almost`. The thresholds are named constants and `tests/test_exercise_compare.py` is their
+`correct`, `almost` or `incorrect` with notes and a token diff. Case, punctuation, quotation marks and
+spacing never matter; missing accents, apostrophes and hyphens are forgiven and noted (`accents`,
+`punctuation`). Only a term item has an article policy (`article="optional"` or `"required"`): a missing
+article is forgiven or `almost`, a wrong de/het is `almost`; a sentence (`"none"`, the default) compares its
+first word like any other. One slip in a word of four letters or more (two from eight) is `almost` unless it
+spells another word the caller lists in `lexicon` (library terms are read without article and accents), a
+negation (geen/een, niet/net) or a number; a compound typed as two words is a slip. One missing or extra
+function word (an article, a preposition, er, wel, ...) in a sentence of four words or more is `almost`; a
+missing content word or negation is not. Changed words are paired with their closest counterpart, and among
+several accepted answers the closest of the kindest is shown. Text with no words is refused by
+`POST /speech/read-aloud` (`nothing_to_read`) before any audio is counted. The thresholds are named constants and `tests/test_exercise_compare.py` is their
 specification. `almost` never counts as a mistake. `domains/speech/compare.py` (`read_aloud_compare`) says
 which words of a text were recognised; the story reader and `POST /speech/read-aloud` (any text up to 600
 characters, the recording not kept, no points, no score field, audio seconds counted) share it.

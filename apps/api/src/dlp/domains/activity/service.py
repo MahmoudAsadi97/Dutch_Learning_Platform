@@ -38,6 +38,18 @@ def reached(*awards: Award | None) -> dict[str, bool]:
     return {"goal_reached": True} if any(award and award.goal_reached for award in awards) else {}
 
 
+def replayed(session: Session, learner_id: uuid.UUID, request_id: str) -> dict[str, bool]:
+    """What `reached` said the first time, for a request that is answered again from its stored result: the
+    response that crossed the goal may never have arrived. Only today's crossing is repeated."""
+    if not request_id:
+        return {}
+    crossed = session.scalar(select(ActivityEvent.id).where(
+        ActivityEvent.learner_id == learner_id, ActivityEvent.request_id == request_id,
+        ActivityEvent.day == local_today(), ActivityEvent.meta["goal_reached"].as_boolean().is_(True),
+    ).limit(1))
+    return {"goal_reached": True} if crossed else {}
+
+
 def goal_for(session: Session, learner_id: uuid.UUID) -> int:
     """The learner's daily goal from the profile; the default before a profile exists."""
     goal = session.scalar(select(LearnerProfile.daily_goal_points).where(LearnerProfile.learner_id == learner_id))
@@ -78,7 +90,12 @@ def record_activity(session: Session, learner_id: uuid.UUID, *, kind: str, ref: 
         return Award(points=0, recorded=True)
     row = add_to_day(session, learner_id, day=day, points=points, counts={rule.counter: units} if rule.counter else {})
     goal = row.goal_target or DAILY_GOAL
-    return Award(points=points, recorded=True, goal_reached=0 < points and row.points - points < goal <= row.points)
+    goal_reached = 0 < points and row.points - points < goal <= row.points
+    if goal_reached:
+        # kept with the event, so a retry of the same request can still say so (`replayed`)
+        session.execute(update(ActivityEvent).where(ActivityEvent.id == event_id)
+                        .values(meta={**(meta or {}), "goal_reached": True}))
+    return Award(points=points, recorded=True, goal_reached=goal_reached)
 
 
 def add_to_day(session: Session, learner_id: uuid.UUID, *, day: date, points: int,

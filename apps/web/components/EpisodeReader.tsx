@@ -355,7 +355,15 @@ function ReadAloud({
   } | null>(null);
   const [error, setError] = useState<Copy | null>(null);
   const uploadRef = useRef<AbortController | null>(null);
-  useEffect(() => () => uploadRef.current?.abort(), []);
+  // Leaving the episode lets an upload in flight finish: the attempt counts either way, and only a finished
+  // request can announce the day's goal. Its result is just no longer shown.
+  const mounted = useRef(true);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
   const recorder = useRecorder((recording) => {
     uploadRef.current?.abort();
     const request = new AbortController();
@@ -365,7 +373,7 @@ function ReadAloud({
     void stories
       .readAloud(episodeId, index, recording.blob, recording.fileName, request.signal)
       .then((value) => {
-        if (!request.signal.aborted) {
+        if (mounted.current && !request.signal.aborted) {
           setResult({
             matched: value.matched_words,
             target: value.target_words,
@@ -376,11 +384,11 @@ function ReadAloud({
         }
       })
       .catch((cause) => {
-        if (!request.signal.aborted)
+        if (mounted.current && !request.signal.aborted)
           setError(errorCopy(cause, episodeCopy.recordingFailed, { 422: episodeCopy.recordingFailed }));
       })
       .finally(() => {
-        if (uploadRef.current === request) setBusy(false);
+        if (mounted.current && uploadRef.current === request) setBusy(false);
       });
   });
   const recording = recorder.phase === "recording";

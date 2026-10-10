@@ -24,7 +24,7 @@ from sqlalchemy.orm import Session
 from dlp.config import Settings, get_settings
 from dlp.db.base import utcnow
 from dlp.domains.activity.rules import RULES
-from dlp.domains.activity.service import reached, record_activity
+from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.curriculum import service as curriculum
 from dlp.domains.curriculum import topics as topic_bank
 from dlp.domains.curriculum.library import library_for
@@ -429,7 +429,7 @@ def answer_questions(session: Session, learner: Learner, episode: StoryEpisode, 
     if state.get("chosen") is not None:
         if state.get("request_id") != request_id:
             raise StoryError("the questions of this episode were already answered", 409, code="already_answered")
-        return episode_view(episode)
+        return {**episode_view(episode), **replayed(session, learner.id, request_id)}
     chosen = {str(i): answers.get(str(i)) for i in range(len(episode.questions))}
     if any(value is None for value in chosen.values()):
         raise StoryError("answer every question", 422)
@@ -439,7 +439,7 @@ def answer_questions(session: Session, learner: Learner, episode: StoryEpisode, 
     read = None
     if episode.read_at is None:
         episode.read_at = utcnow()
-        read = record_activity(session, learner.id, kind="episode_read", ref=str(episode.id))
+        read = record_activity(session, learner.id, kind="episode_read", ref=str(episode.id), request_id=request_id)
     answered = record_activity(session, learner.id, kind="episode_questions", ref=str(episode.id),
                                request_id=request_id, units=correct)
     return {**episode_view(episode), **reached(read, answered)}

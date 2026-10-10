@@ -175,3 +175,25 @@ def test_only_the_award_that_crosses_the_goal_reports_it(database):
     assert [award.goal_reached for award in (below, crossing, beyond, repeat)] == [False, True, False, False]
     assert reached(below, None, crossing) == {"goal_reached": True}
     assert reached(below, beyond) == {}
+
+
+def test_a_long_request_id_is_kept_and_its_retry_repeats_the_goal(client, headers):
+    """The request bodies allow 80 characters; the response that crossed the goal may never have arrived."""
+    saved = client.post("/words", headers=headers, json={"term": "de buurvrouw", "meaning_en": "neighbour"}).json()
+    item_id = saved["item"]["id"]
+    with session_scope() as session:
+        learner_id = session.scalar(select(Learner.id).where(Learner.email == "owner@example.com"))
+        add_to_day(session, learner_id, day=local_today(), points=19)
+    request_id = "r" * 80
+    review = {"request_id": request_id, "grade": "good"}
+    first = client.post(f"/words/{item_id}/review", headers=headers, json=review)
+    assert first.status_code == 200, first.text
+    assert first.json()["goal_reached"] is True
+    retried = client.post(f"/words/{item_id}/review", headers=headers, json=review).json()
+    assert retried.get("goal_reached") is True, "the retry says what the lost response said"
+    later = client.post(f"/words/{item_id}/review", headers=headers, json={"request_id": "r" * 79, "grade": "good"})
+    assert "goal_reached" not in later.json(), "only the crossing request repeats it"
+    with session_scope() as session:
+        event = session.scalar(select(ActivityEvent).where(ActivityEvent.request_id == request_id))
+        assert event is not None and event.meta == {"goal_reached": True}
+    assert _day(learner_id).points == 21

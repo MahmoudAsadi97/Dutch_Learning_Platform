@@ -36,7 +36,7 @@ describe("reaching the daily goal", () => {
     expect(heard).toHaveBeenCalledTimes(1);
   });
 
-  it("plays the goal tone and says it in words", async () => {
+  it("says it in words, then plays the goal tone after the answer tone, once a day", async () => {
     render(
       <ToastProvider>
         <GoalCelebration />
@@ -45,7 +45,14 @@ describe("reaching the daily goal", () => {
     act(() => {
       window.dispatchEvent(new CustomEvent(GOAL_EVENT));
     });
-    expect(playTone).toHaveBeenCalledWith("goal");
     expect((await screen.findAllByText(/Dagdoel gehaald/)).length).toBeGreaterThan(0);
+    expect(playTone).not.toHaveBeenCalled();
+    await vi.waitFor(() => expect(playTone).toHaveBeenCalledWith("goal"));
+    // a retried request announces the same crossing again
+    act(() => {
+      window.dispatchEvent(new CustomEvent(GOAL_EVENT));
+    });
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    expect(playTone).toHaveBeenCalledTimes(1);
   });
 });

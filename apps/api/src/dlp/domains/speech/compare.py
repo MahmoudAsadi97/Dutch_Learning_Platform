@@ -6,6 +6,13 @@ recognised words, lists the ones it did not hear, and never turns that into a sc
 from __future__ import annotations
 
 from dlp.domains.stories.validator import tokens
+from dlp.errors import DomainError
+
+
+def require_words(text: str) -> None:
+    """Refuse a text with nothing to compare (only spaces, punctuation or digits) before any audio is paid for."""
+    if not tokens(text):
+        raise DomainError("the text has no words to read aloud", 422, code="nothing_to_read")
 
 
 def read_aloud_compare(target: str, transcript: str) -> dict:

@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
 from dlp.config import Settings
 from dlp.db.session import get_session
-from dlp.domains.speech.compare import read_aloud_compare
+from dlp.domains.speech.compare import read_aloud_compare, require_words
 from dlp.domains.speech.service import synthesize_text, transcribe_upload
 from dlp.providers.base import ProviderError, ProviderUnavailable
 from dlp.providers.registry import Providers
@@ -79,6 +79,7 @@ def read_aloud(
     """Read any text aloud and see which words were recognised. The recording is not kept and nothing is
     awarded or scored; the audio seconds count against the allowance like any transcription. A speech
     service that fails answers 503 with its code through the shared handler."""
+    require_words(text)
     outcome = transcribe_upload(
         session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id,
         upload_bytes=audio.file.read(settings.max_upload_bytes + 1), upload_filename=audio.filename or "recording",
