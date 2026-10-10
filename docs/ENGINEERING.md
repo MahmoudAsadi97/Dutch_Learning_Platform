@@ -496,35 +496,44 @@ whole.
   `cloze_choice`, `odd_one_out` (pre-A1 to B1: three words of one topic and word class, and one of that class
   from a topic at least ten away and outside the group's theme (`themes.py`), never the word that names the
   topic), and the ungraded `intro` card. `typed.py`: `cloze_typed` (the example's word typed as it stands, the
-  translation as cue), `typed_recall` (the meaning; the Dutch word typed, another stage word with the same
-  meaning right too, a missing article forgiven), both with a hint (first letter, length) the screen shows on
-  request, and `flashcard` (self-assessed; for word review). `boards.py`: `match_pairs` (four words and their
-  meanings), `de_het` (six nouns without article, three of each, up to pre-C1), `sentence_builder` (one sentence
-  of the word's example as word tiles, or, when long, four to six chunks cut before conjunctions; `sentences.py`
-  keeps out sentences another word order would also make right: commas, movable time words, an opening
-  preposition) and `sentence_order` (three or four sentences of a Story Time paragraph, from pre-B1). Option and
-  piece ids are four random letters, and pieces are never shown solved. `pool.available()` is the per-stage
-  matrix of what each kind can draw on, recorded in `tests/test_exercise_typed_kinds.py`.
+  translation as cue), `typed_recall` (the meaning; the Dutch word typed, another stage word with the same gloss
+  in English and Persian and the same word class right too, a missing article forgiven; never for a word its
+  meaning spells, "bed"), both with a hint (first letter, length) the screen shows on request, and a word of
+  the cue typed back is another word, not a slip; and `flashcard` (self-assessed; for word review).
+  `boards.py`: `match_pairs` (four words and their meanings), `de_het` (six nouns without article, three of
+  each, up to pre-C1, never a noun that takes both articles: `DOUBLE_ARTICLE`), `sentence_builder` (one
+  sentence of the word's example as word tiles, or, when long, four to six chunks cut before conjunctions;
+  `sentences.py` takes only sentences that open with their subject, and for tiles no comma, no en/of and no
+  movable time word or adverb, since another order would also be right; chunks keep their commas) and
+  `sentence_order` (three or four sentences of a Story Time paragraph: pre-B1 and from pre-B2, the other
+  stages' paragraphs being too short). Option and piece ids are four random letters, and pieces never read
+  solved, on first showing or on a retry. `pool.available()` is the per-stage matrix of what each kind can
+  draw on, recorded in `tests/test_exercise_typed_kinds.py`.
 - **Blueprint** (`blueprints.py`): up to four new words per session (six in a first session, never more than its
   size), the rest words met before, least recently practised first; the intro card shows the new words the
   session practises, each first recognised; then one kind per word at random (choice counts once, whatever its
-  direction); items built on an example (cloze, typed cloze, sentence builder) never repeat an example or frame
-  nor show another one's answer; up to two boards take the place of extra new words, else of words met before;
-  no two items about one word in a row where another order allows it.
+  direction; no typing in a while-you-wait session); items built on an example (cloze, typed cloze, sentence
+  builder) never repeat an example or frame nor show another one's answer; up to two boards take the place of
+  extra new words, else of words met before, and are built from the words the session keeps, so a new word on a
+  board is on the intro card; an ordering paragraph shares no sentence with the session's examples; no two
+  items about one word in a row where another order allows it.
 - **Rules**: two attempts per item; a miss or skip shows the answer and comes back once at the end with its
-  options, pieces or sentences reshuffled. `almost` (a typed slip, an accent, a forgiven article, one swapped
-  pair of sentences) closes the item and is never a mistake. On a typed answer or a built sentence the check
+  options, pieces or sentences reshuffled. A missing accent or a forgiven article is correct with a note;
+  `almost` (a slip of the keyboard, a wrong de/het where the article is optional, a missing or extra function
+  word, two neighbouring sentences swapped or the closing sentence put first) closes the item and is never a
+  mistake. On a typed answer or a built sentence the check
   refused, the learner may say "mijn antwoord klopt ook" (`override`): the item closes as `accepted`, its
   mistake row goes, its point stays, the summary counts it as `overridden` and leaves it out of the missed
-  words, and it never counts towards completing a topic or stage. An item earns `exercise_item` (1 point) with its first real answer, right or wrong, so an
-  early finish pays wrong answers like right ones; a skip is not an answer, and `no_microphone`/`no_audio` skips
+  words, and it never counts towards completing a topic or stage. An item earns `exercise_item` (1 point)
+  with its first real answer, right or wrong, so an early finish pays wrong answers like right ones; a skip is not an answer, and `no_microphone`/`no_audio` skips
   are refused on items without audio. Finishing with five answered items earns `exercise_session` (5), and a
   retried finish repeats its points. A first miss on a word met before (an earlier session closed an item about
   it, or it is in the word bank) writes a `learner_mistakes` row in the one taxonomy (`taxonomy.py`), on the word
   the learner chose for odd one out, and one per missed pair or noun of a board; a first encounter writes
-  none, and neither does a flashcard (the learner's own say) or an ordering (a paragraph they may not have
-  read). Finishing offers the missed words not in the
-  bank as `word_suggestions`; only the learner saves a word.
+  none, and neither does a flashcard (the learner's own say), an ordering (a paragraph they may not have read)
+  or a built sentence (another order may be right). The summary lists each missed word, a board's one by one.
+  Finishing offers the missed words not in the bank as `word_suggestions`; only the learner saves a word. Each
+  attempt keeps the learner's own answer, which the export carries (`given`), with `overridden_at`.
 - **Content gate**: a stage takes sessions only when 200 of its words support a four-option choice, its examples
   hold 150 distinct sentences and it supports two kinds with at least 50 items each (`VARIETY_MIN_*`,
   `KIND_MIN_ITEMS` in `pool.py`). `tests/test_exercise_generators.py` records each stage's numbers, with its

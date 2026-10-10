@@ -2,10 +2,12 @@
 
 Every grader returns the outcome, what the feedback may now show, and the parts the learner got wrong (an
 option, a pair, a noun), so a board writes one mistake per missed word. Option kinds compare the chosen id
-with the key. Typed kinds go through compare.py, whose "almost" (an accent, a slip, an article the item
-forgives) closes the item and is never a mistake. A board is judged part by part and is right when every
-part is; putting sentences back in order with one neighbouring pair swapped is "almost". A flashcard is the
-learner's own say and writes no mistake.
+with the key. Typed kinds go through compare.py: a missing accent or a forgiven article is correct with a
+note, a slip or a wrong de/het is "almost", which closes the item and is never a mistake; a word copied from
+the cue is another word, not a slip. A board is judged part by part and is right when every part is. Putting
+sentences back in order with one neighbouring pair swapped, or with the closing sentence moved to the front
+(a general statement can open a paragraph as well as close it), is "almost". A flashcard is the learner's
+own say; a built sentence may have another right order the check does not know: neither writes a mistake.
 """
 from __future__ import annotations
 
@@ -19,8 +21,9 @@ TYPED_KINDS = frozenset({"cloze_typed", "typed_recall"})
 BOARD_KINDS = frozenset({"match_pairs", "de_het", "sentence_builder", "sentence_order"})
 # kinds whose check may miss a right answer, so the learner may overrule it ("mijn antwoord klopt ook")
 OVERRIDABLE = frozenset({"cloze_typed", "typed_recall", "sentence_builder"})
-# kinds whose misses are never mistakes: a learner's own say, or a paragraph they may never have read
-NO_MISTAKES = frozenset({"flashcard", "sentence_order"})
+# kinds whose misses are never mistakes: a learner's own say, a paragraph they may never have read, a sentence
+# whose other right orders the check does not know
+NO_MISTAKES = frozenset({"flashcard", "sentence_order", "sentence_builder"})
 
 Outcome = Literal["correct", "almost", "incorrect"]
 
@@ -58,7 +61,8 @@ def grade(kind: str, prompt: dict[str, Any], key: dict[str, Any], answer: dict[s
         text = answer.get("text")
         if not isinstance(text, str) or not text.strip():
             raise InvalidAnswer("type an answer")
-        result = compare(text, key["accepted"], article=key["article"], lexicon=lexicon)
+        result = compare(text, key["accepted"], article=key["article"],
+                         lexicon=lexicon | frozenset(key.get("cue_words", ())))
         return Judgement(result.outcome, {"typed": text, "expected": result.expected, "notes": list(result.notes),
                                           "diff": [asdict(op) for op in result.diff]},
                          ["answer"] if result.outcome == "incorrect" else [])
@@ -97,7 +101,8 @@ def grade(kind: str, prompt: dict[str, Any], key: dict[str, Any], answer: dict[s
         wanted = key["order"]
         wrong = [n for n, (a, b) in enumerate(zip(order, wanted, strict=True)) if a != b]
         swap = len(wrong) == 2 and wrong[1] == wrong[0] + 1 and order[wrong[0]] == wanted[wrong[1]]
-        outcome: Outcome = "correct" if not wrong else "almost" if swap else "incorrect"
+        closing_first = order == [wanted[-1], *wanted[:-1]]
+        outcome: Outcome = "correct" if not wrong else "almost" if swap or closing_first else "incorrect"
         return Judgement(outcome, {"order": wanted, "given_order": order, "translation": key.get("translation")},
                          ["answer"] if outcome == "incorrect" else [])
     raise ValueError(f"{kind} has no grader")

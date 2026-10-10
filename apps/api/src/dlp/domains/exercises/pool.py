@@ -16,8 +16,9 @@ by choice only.
 
 For the kinds of step 3.4 it also keeps the stage's terms (the real-word guard of typed answers), a sentence
 of each word's example cut into tiles or chunks (sentences.py), the nouns that can be sorted into de and het
-(up to pre-C1; from C1 nearly every noun is de), and runs of three or four sentences from the Story Time
-paragraphs to put back in order (from A2; earlier paragraphs are too short).
+(up to pre-C1, where nearly every noun is de from C1 on; never a noun that takes both articles), and runs of
+three or four sentences from the Story Time paragraphs to put back in order (pre-B1 and from pre-B2; the
+paragraphs of the other stages are too short).
 """
 from __future__ import annotations
 
@@ -46,8 +47,15 @@ ODD_ONE_OUT_LAST_STAGE = "b1"
 DEFINITION_FIRST_STAGE = "a2"
 # de/het sorting up to pre-C1; from C1 98% of the nouns take de
 DE_HET_LAST_STAGE = "pre-c1"
-# putting sentences back in order from A2; earlier Story Time paragraphs hold one or two sentences
-ORDER_FIRST_STAGE = "a2"
+# putting sentences back in order from pre-B1 (B1's paragraphs happen to be too short: it has none)
+ORDER_FIRST_STAGE = "pre-b1"
+# nouns whose article changes with the meaning (het punt / de punt, het pad / de pad) or that take both (de/het
+# matras): sorting them into one bin would mark right Dutch wrong
+DOUBLE_ARTICLE = frozenset({
+    "punt", "pad", "bal", "doek", "bos", "rooster", "band", "lid", "stof", "veer", "blik", "hof", "jacht", "portier",
+    "matras", "aanrecht", "kauwgom", "filter", "deksel", "soort", "idee", "patroon", "schot", "slot", "vorst",
+    "pijp", "bot", "kamp", "loods", "veld", "vat",
+})
 # The content gate: a stage offers engine sessions only when this many of its words support a four-option
 # choice, its examples hold this many distinct sentences, and it supports at least this many kinds with at least
 # KIND_MIN_ITEMS items each. Every stage passes on the content of 6 Oct 2026 (tests/test_exercise_generators.py
@@ -149,8 +157,9 @@ class Pool:
     def available(self) -> dict[str, int]:
         """How many items or cards each kind has at this stage (the availability matrix of step 3.4)."""
         typed = sum(1 for word in self.words if word.span and not gives_away(word))
+        recall = sum(1 for word in self.words if not gives_away(word, word.meaning))
         return {"choice": len(self.choice), "cloze_choice": len(self.cloze), "cloze_typed": typed,
-                "typed_recall": len(self.words), "flashcard": len(self.words), "match_pairs": len(self.choice),
+                "typed_recall": recall, "flashcard": len(self.words), "match_pairs": len(self.choice),
                 "de_het": len(self.sortable), "sentence_builder": len(self.pieces), "sentence_order": len(self.orders),
                 "odd_one_out": self.variety.odd_one_out}
 
@@ -212,13 +221,15 @@ def _squash(text: str) -> str:
     return strip_accents(text).replace("-", "").replace("'", "").replace(" ", "")
 
 
-def gives_away(word: Word) -> bool:
-    """The translation shows the Dutch word itself: a cognate or a name, also written as one word, two words or
-    without its hyphen ("email" for "e-mail", "yoga mat" for "yogamat")."""
+def gives_away(word: Word, texts: dict[str, str] | None = None) -> bool:
+    """The translation (of the example, or the given texts such as the meaning) shows the Dutch word itself: a
+    cognate or a name, also written as one word, two words or without its hyphen ("email" for "e-mail", "yoga
+    mat" for "yogamat", "bed" for "het bed")."""
+    texts = texts if texts is not None else word.example
     target = _squash(word.core)
     width = max(3, len(word.core.split()) + 1)
     for lang in ("en", "fa"):
-        tokens = strip_accents(fold(word.example[lang])).split()
+        tokens = strip_accents(fold(texts[lang])).split()
         for start in range(len(tokens)):
             for size in range(1, width + 1):
                 if _squash("".join(tokens[start:start + size])) == target:
@@ -263,7 +274,7 @@ def _sortable(words: tuple[Word, ...]) -> tuple[str, ...]:
     for word in words:
         articles.setdefault(word.core, set()).add(word.article)
     return tuple(word.id for word in words if word.article in ("de", "het") and " " not in word.core
-                 and articles[word.core] == {word.article})
+                 and articles[word.core] == {word.article} and word.core not in DOUBLE_ARTICLE)
 
 
 def _orders(bank) -> tuple[OrderRun, ...]:
@@ -302,7 +313,8 @@ def build(bank) -> Pool:
         if card:
             cloze[word.id] = card
     stage_index = STAGE_IDS.index(bank.stage_id)
-    lower = cutting.lower_words(word.example["nl"] for word in words)
+    stories = [paragraph.nl for story in getattr(bank, "stories", ()) for paragraph in story.paragraphs]
+    lower = cutting.lower_words([*(word.example["nl"] for word in words), *stories])
     return Pool(
         stage_id=bank.stage_id,
         content_version=hashlib.sha256(bank.model_dump_json().encode()).hexdigest(),

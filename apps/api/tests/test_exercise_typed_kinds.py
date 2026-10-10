@@ -13,23 +13,25 @@ from dlp.domains.curriculum.schemas import STAGE_IDS
 from dlp.domains.exercises.graders import InvalidAnswer, grade
 from dlp.domains.exercises.models import ExerciseItem, LearnerMistake
 from dlp.domains.exercises.pool import pool_for
+from dlp.domains.exercises.typed import typed_recall
 from tests.conftest import auth_headers
 
-# stage -> (words with a typed cloze, nouns to sort into de/het, words with a sentence to build, paragraphs to
-#           put in order); the other kinds work for every word. Measured 10 Oct 2026 on the content of 6 Oct.
+# stage -> (words with a typed cloze, words with a typed recall (not a word its meaning spells), nouns to sort
+#           into de/het (never one that takes both articles), words with a sentence to build, paragraphs to put in
+#           order); the other kinds work for every word. Measured 10 Oct 2026 on the content of 6 Oct.
 AVAILABLE = {
-    "pre-a1": (448, 309, 194, 0),
-    "a1": (448, 309, 259, 0),
-    "pre-a2": (450, 309, 271, 0),
-    "a2": (462, 320, 414, 0),
-    "pre-b1": (459, 340, 289, 99),
-    "b1": (457, 340, 217, 0),
-    "pre-b2": (437, 400, 310, 100),
-    "b2": (432, 400, 311, 200),
-    "pre-c1": (416, 400, 315, 200),
-    "c1": (488, 0, 283, 198),
-    "pre-c2": (492, 0, 271, 199),
-    "c2": (492, 0, 274, 199),
+    "pre-a1": (448, 456, 303, 108, 0),
+    "a1": (448, 456, 303, 185, 0),
+    "pre-a2": (450, 456, 303, 136, 0),
+    "a2": (462, 462, 317, 363, 0),
+    "pre-b1": (459, 461, 337, 140, 99),
+    "b1": (457, 462, 337, 104, 0),
+    "pre-b2": (437, 488, 399, 232, 100),
+    "b2": (432, 488, 399, 233, 200),
+    "pre-c1": (416, 488, 399, 239, 200),
+    "c1": (488, 489, 0, 229, 198),
+    "pre-c2": (492, 493, 0, 220, 199),
+    "c2": (492, 494, 0, 224, 199),
 }
 
 
@@ -37,9 +39,14 @@ def test_which_stage_has_which_kind():
     assert list(AVAILABLE) == list(STAGE_IDS)
     for stage_id, row in AVAILABLE.items():
         available = pool_for(stage_id).available()
-        measured = (available["cloze_typed"], available["de_het"], available["sentence_builder"],
-                    available["sentence_order"])
+        measured = (available["cloze_typed"], available["typed_recall"], available["de_het"],
+                    available["sentence_builder"], available["sentence_order"])
         assert measured == row, f"{stage_id}: content changed; re-measure and update AVAILABLE on purpose"
+
+
+def test_no_noun_that_takes_both_articles_is_sorted():
+    sortable = {pool_for(stage_id).by_id[i].core for stage_id in STAGE_IDS for i in pool_for(stage_id).sortable}
+    assert not sortable & {"punt", "pad", "bal", "doek", "bos", "rooster", "band", "matras"}
 
 
 RECALL = ({"kind": "typed_recall"}, {"accepted": ["het huis"], "article": "optional"})
@@ -56,6 +63,17 @@ def test_typed_answers_are_judged_tolerantly(text, outcome, notes):
     judged = grade("typed_recall", *RECALL, {"text": text}, frozenset({"de boom"}))
     assert (judged.outcome, judged.feedback["notes"]) == (outcome, notes)
     assert judged.misses == (["answer"] if outcome == "incorrect" else []), "almost is never a mistake"
+
+
+def test_a_word_from_the_cue_is_another_word_and_a_synonym_needs_every_gloss():
+    key = {"accepted": ["thee"], "article": "none", "cue_words": ["there", "is", "coffee", "tea", "and", "milk"]}
+    assert grade("cloze_typed", {}, key, {"text": "There"}).outcome == "incorrect", "copied from the cue"
+    assert grade("cloze_typed", {}, key, {"text": "thea"}).outcome == "almost"
+    stage = pool_for("pre-a1")
+    deur = next(word for word in stage.words if word.term == "de deur")
+    assert typed_recall(stage, deur).key["accepted"] == ["de deur"], "'in' shares only a Persian gloss"
+    bed = next(word for word in stage.words if word.term == "het bed")
+    assert typed_recall(stage, bed) is None, "the cue 'bed' would be the answer"
 
 
 def test_a_board_is_judged_part_by_part():
@@ -89,6 +107,7 @@ def test_one_neighbouring_swap_in_an_ordering_is_almost():
     key = {"order": list("abcd"), "texts": ["1", "2", "3", "4"]}
     assert grade("sentence_order", prompt, key, {"order": list("abcd")}).outcome == "correct"
     assert grade("sentence_order", prompt, key, {"order": list("acbd")}).outcome == "almost"
+    assert grade("sentence_order", prompt, key, {"order": list("dabc")}).outcome == "almost", "the closing line first"
     assert grade("sentence_order", prompt, key, {"order": list("dbca")}).outcome == "incorrect"
 
 
@@ -99,19 +118,19 @@ def test_a_flashcard_is_the_learners_own_say():
         grade("flashcard", {}, {}, {})
 
 
-def _session_with(client, kind, *, stage_id="a1"):
-    """The first of a few seeded sessions that holds an item of `kind`. Typed kinds come once words are known,
-    so the learner first saves a dozen words of the stage."""
+def _session_with(client, kind, *, stage_id="a1", where=lambda item, key: True):
+    """The first of a few seeded sessions that holds an item of `kind` (meeting `where`). Typed kinds come once
+    words are known, so the learner first saves a dozen words of the stage."""
     for word in pool_for(stage_id).words[:12]:
         client.post("/words", headers=auth_headers(), json={"term": word.term, "meaning_en": word.meaning["en"]})
-    for n in range(30):
+    for n in range(40):
         view = client.post("/exercises/sessions", headers=auth_headers(),
                            json={"request_id": f"kinds-{kind[:10]}-{n:04d}", "stage_id": stage_id,
                                  "fresh": True}).json()
-        item = next((entry for entry in view["items"] if entry["kind"] == kind), None)
+        item = next((entry for entry in view["items"] if entry["kind"] == kind and where(entry, _key(entry))), None)
         if item:
             return view, item
-    raise AssertionError(f"no {kind} item in 30 sessions")
+    raise AssertionError(f"no {kind} item in 40 sessions")
 
 
 def _post(client, view, item, action, request_id, **body):
@@ -124,13 +143,24 @@ def _key(item):
         return session.scalar(select(ExerciseItem.key).where(ExerciseItem.id == uuid.UUID(item["id"])))
 
 
+def _mistakes() -> set[str]:
+    with session_scope() as session:
+        return set(session.scalars(select(LearnerMistake.source_id)))
+
+
+def _met(item, key) -> bool:
+    return key["words"]["answer"] in key["met"]
+
+
 def test_a_typed_answer_can_be_overruled_and_it_completes_nothing(client):
-    view, item = _session_with(client, "typed_recall")
+    view, item = _session_with(client, "typed_recall", where=_met)
     assert set(item["prompt"]) == {"kind", "cue", "hint"} and "accepted" not in str(item["prompt"])
     wrong = _post(client, view, item, "answer", "typed-wrong-0001", answer={"text": "zzzz"}).json()
     assert wrong["outcome"] == "incorrect" and wrong["feedback"]["overridable"] and wrong["feedback"]["expected"]
+    assert item["id"] in _mistakes(), "a word met before: the miss is a mistake"
     accepted = _post(client, view, item, "override", "typed-overr-0001").json()
     assert (accepted["outcome"], accepted["closed"], accepted["points"]) == ("accepted", True, 0)
+    assert item["id"] not in _mistakes(), "the learner's overrule removes it"
     assert _post(client, view, item, "override", "typed-overr-0002").json() == accepted, "said once"
     choice = next(entry for entry in view["items"] if entry["kind"] == "choice")
     _post(client, view, choice, "answer", "typed-choice-001", answer={"option": choice["prompt"]["options"][0]["id"]})
@@ -143,31 +173,44 @@ def test_a_typed_answer_can_be_overruled_and_it_completes_nothing(client):
         assert session.scalar(select(func.count()).select_from(TopicPractice)) == 0
 
 
+def _slip(text: str) -> str:
+    """The answer with the second and third letters of its last word swapped: one slip of the keyboard."""
+    head, _, last = text.rpartition(" ")
+    return (head + " " if head else "") + last[0] + last[2] + last[1] + last[3:]
+
+
+def _slippable(item, key) -> bool:
+    last = key["accepted"][0].split()[-1]
+    return _met(item, key) and len(last) >= 5 and last[1] != last[2]
+
+
 def test_an_almost_closes_the_item_without_a_mistake(client):
-    view, item = _session_with(client, "typed_recall")
-    answer = _key(item)["accepted"][0]
-    slip = answer[:-2] + answer[-1] + answer[-2] if len(answer.split()[-1]) >= 4 else answer.upper()
-    reply = _post(client, view, item, "answer", "typed-almost-001", answer={"text": slip}).json()
-    assert reply["outcome"] in ("almost", "correct") and reply["closed"] and reply["points"] == 1
-    with session_scope() as session:
-        assert session.scalar(select(func.count()).select_from(LearnerMistake)) == 0
+    view, item = _session_with(client, "typed_recall", where=_slippable)
+    reply = _post(client, view, item, "answer", "typed-almost-001",
+                  answer={"text": _slip(_key(item)["accepted"][0])}).json()
+    assert (reply["outcome"], reply["closed"], reply["points"]) == ("almost", True, 1)
+    assert item["id"] not in _mistakes(), "almost is never a mistake, also on a word met before"
+
+
+def _two_met(item, key) -> bool:
+    return sum(key["words"][i] in key["met"] for i in key["pairs"]) >= 2
 
 
 def test_a_board_is_answered_whole_and_writes_a_mistake_per_missed_word(client):
-    client.post("/words", headers=auth_headers(), json={"term": "de ochtend", "meaning_en": "morning"})
-    view, item = _session_with(client, "match_pairs")
+    view, item = _session_with(client, "match_pairs", where=_two_met)
     key = _key(item)
-    left = [entry["id"] for entry in item["prompt"]["left"]]
-    rights = [key["pairs"][i] for i in left]
-    swapped = dict(zip(left, [rights[1], rights[0], *rights[2:]], strict=True))
-    reply = _post(client, view, item, "answer", "board-pairs-0001", answer={"pairs": swapped}).json()
+    met = [i for i in key["pairs"] if key["words"][i] in key["met"]][:2]
+    pairs = dict(key["pairs"])
+    pairs[met[0]], pairs[met[1]] = key["pairs"][met[1]], key["pairs"][met[0]]
+    reply = _post(client, view, item, "answer", "board-pairs-0001", answer={"pairs": pairs}).json()
     assert reply["outcome"] == "incorrect" and reply["requeue"] and reply["points"] == 1
     results = reply["feedback"]["pairs"]
-    assert [results[i]["ok"] for i in left] == [False, False, True, True]
-    assert reply["feedback"]["cards"][left[0]]["term"]
-    with session_scope() as session:
-        rows = list(session.scalars(select(LearnerMistake)))
-    met = {i for i in left[:2] if key["words"][i] in key["met"]}
-    assert {row.source_id for row in rows} == {f"{item['id']}:{i}" for i in met}
-    incomplete = _post(client, view, item, "answer", "board-pairs-0002", answer={"pairs": {left[0]: rights[0]}})
+    assert sorted(i for i, result in results.items() if not result["ok"]) == sorted(met)
+    assert reply["feedback"]["cards"][met[0]]["term"]
+    assert _mistakes() == {f"{item['id']}:{i}" for i in met}, "one mistake per missed word"
+    incomplete = _post(client, view, item, "answer", "board-pairs-0002", answer={"pairs": {met[0]: pairs[met[0]]}})
     assert incomplete.status_code == 422
+    finished = client.post(f"/exercises/sessions/{view['id']}/finish", headers=auth_headers(),
+                           json={"request_id": "board-finish-001", "early": True}).json()
+    named = {missed["term"] for missed in finished["summary"]["missed"]}
+    assert {key["cards"][i]["term"] for i in met} <= named, "the summary names the words a board missed"

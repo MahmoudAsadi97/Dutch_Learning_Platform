@@ -345,6 +345,8 @@ def test_the_export_carries_practice_without_keys_and_deletion_removes_it(client
     still_open = next(row for row in sessions if row["id"] == unanswered["id"])
     assert all(item["ref"] is None for item in still_open["items"]), "an unanswered item's ref names its answer"
     assert all(item["ref"] for item in sessions[0]["items"] if item["kind"] != "intro")
+    answered = [attempt for item in sessions[0]["items"] if item["kind"] != "intro" for attempt in item["attempts"]]
+    assert answered and all(attempt["given"] for attempt in answered), "the learner's own answers are exported"
     graded = [item for row in sessions for item in row["items"] if item["kind"] != "intro"]
     assert not _keys(graded) & SECRETS, "no item key in the export"
     assert payload["mistakes"] and all(m["source"] == "exercise" for m in payload["mistakes"])

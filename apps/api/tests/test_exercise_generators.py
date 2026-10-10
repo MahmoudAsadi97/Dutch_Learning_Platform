@@ -88,7 +88,7 @@ def _check_board(stage, draft):
         assert not any(o["nl"].split()[0] in ("de", "het", "een") for o in prompt["options"])
     if draft.kind in ("sentence_builder", "sentence_order"):
         pieces = prompt["tiles"] if draft.kind == "sentence_builder" else prompt["sentences"]
-        assert [piece["id"] for piece in pieces] != key["order"], "served solved"
+        assert [piece["nl"].lower() for piece in pieces] != [text.lower() for text in key["texts"]], "served solved"
         assert sorted(piece["nl"] for piece in pieces) == sorted(key["texts"])
     if draft.kind == "sentence_builder":
         target = stage.by_id[draft.ref.removeprefix("sentence:")]
@@ -167,6 +167,11 @@ def test_two_hundred_sessions_per_stage_keep_the_rules(stage_id):
         assert all(d.kind != "intro" for d in drafts[1:])
         practised = set().union(*(blueprints._targets(d) for d in graded))
         assert new <= practised, "every new word on the intro card is practised"
+        assert {i for i in practised if stage.by_id[i].key not in known} <= new, "every new word practised is introduced"
+        examples = " ".join(stage.by_id[d.ref.split(":", 1)[1]].example["nl"].lower() for d in graded
+                            if d.ref.startswith(("word:", "sentence:")))
+        for board in (d for d in graded if d.kind == "sentence_order"):
+            assert not any(text.lower() in examples for text in board.key["texts"]), "no other item shows its order"
         clozes = [stage.by_id[d.ref.split(":", 1)[1]] for d in graded if d.kind in blueprints.EXAMPLE_KINDS]
         assert len({w.example["nl"] for w in clozes}) == len({w.frame for w in clozes}) == len(clozes), (
             "one cloze per example and per sentence frame")
@@ -189,6 +194,15 @@ def test_two_hundred_sessions_per_stage_keep_the_rules(stage_id):
     assert ("odd_one_out" in kinds) == stage.odd_one_out
     assert ("de_het" in kinds) == bool(stage.sortable)
     assert ("sentence_order" in kinds) == bool(stage.orders)
+
+
+@pytest.mark.parametrize("stage_id", ["a1", "b2"])
+def test_a_while_you_wait_session_is_tapped_only(stage_id):
+    stage = pool_for(stage_id)
+    met = frozenset(word.key for word in stage.words)
+    for seed in range(50):
+        drafts = blueprints.plan(stage, random.Random(seed), size=5, met=met, typing=False)
+        assert not {d.kind for d in drafts} & {"cloze_typed", "typed_recall"}
 
 
 def test_a_topic_session_stays_in_its_topic():

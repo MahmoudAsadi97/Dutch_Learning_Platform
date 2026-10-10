@@ -11,8 +11,14 @@ LOWER = lower_words(["Ik zie dat ik de bus mis.", "Soms ga ik met de fiets.", "Z
 @pytest.mark.parametrize(("sentence", "expected"), [
     ("Ik neem de bus naar school.", (["ik", "neem", "de", "bus", "naar", "school"], ".")),
     ("Sara woont in Gent.", (["Sara", "woont", "in", "Gent"], ".")),  # a name keeps its capital
-    ("Waar woon je?", (["Waar", "woon", "je"], "?")),
-    # another order would be right too
+    ("Eén kat slaapt.", (["één", "kat", "slaapt"], ".")),
+    # another order would be right too: a question word, an adverb or a time phrase first, a movable word,
+    # an opening preposition or clause, words joined by en or of
+    ("Waar woon je?", None),
+    ("Daardoor ben ik weer blij.", None),
+    ("Samen bedachten ze een plan.", None),
+    ("De volgende dag ging ik weg.", None),
+    ("Mijn moeder en vader staan op de foto.", None),
     ("Morgen ga ik naar school.", None),
     ("Ik ga morgen naar school.", None),
     ("Voor de les drink ik koffie.", None),

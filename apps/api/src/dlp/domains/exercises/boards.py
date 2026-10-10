@@ -8,6 +8,7 @@ from __future__ import annotations
 import random
 from typing import Any
 
+from dlp.domains.exercises.compare import fold
 from dlp.domains.exercises.generators import Draft, option_ids, word_card
 from dlp.domains.exercises.pool import OrderRun, Pool, Word
 
@@ -15,12 +16,16 @@ PAIRS = 4
 SORT_NOUNS = 6
 
 
-def _scrambled(rng: random.Random, items: list[Any]) -> list[Any]:
-    """A shuffle that is never the original order (when there is more than one item)."""
+def _scrambled(rng: random.Random, items: list[tuple[str, Any]]) -> list[tuple[str, Any]]:
+    """A shuffle of (id, piece) pairs that never reads as the original order: two identical pieces swapped
+    still read solved, so the pieces are compared by their text."""
+    def reads(pairs: list[tuple[str, Any]]) -> list[str]:
+        return [fold(piece) if isinstance(piece, str) else id(piece) for _, piece in pairs]
+
     order = list(items)
-    for _ in range(20):
+    for _ in range(50):
         rng.shuffle(order)
-        if order != items:
+        if reads(order) != reads(items):
             break
     return order
 

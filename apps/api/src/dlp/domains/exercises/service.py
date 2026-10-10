@@ -28,6 +28,7 @@ from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.curriculum.schemas import STAGE_IDS
 from dlp.domains.exercises import graders, mistakes
 from dlp.domains.exercises.blueprints import SIZES, plan
+from dlp.domains.exercises.compare import fold
 from dlp.domains.exercises.generators import GENERATOR_VERSION
 from dlp.domains.exercises.models import ExerciseItem, ExerciseSession, LearnerMistake, WordSuggestion
 from dlp.domains.exercises.pool import pool_for
@@ -100,7 +101,7 @@ def create(session: Session, learner: Learner, body: CreateBody) -> tuple[Exerci
     seed = seed_for(learner.id, body.request_id)
     drafts = plan(pool, random.Random(seed), size=body.size or SIZES[body.source],
                   met=mistakes.met_words(session, learner.id), last_seen=mistakes.last_practised(session, learner.id),
-                  library_topic=body.library_topic)
+                  library_topic=body.library_topic, typing=body.source != "while_you_wait")
     if not any(draft.kind != "intro" for draft in drafts):
         raise ExerciseError("there is nothing to practise here yet", 409, code="not_ready")
     row = ExerciseSession(learner_id=learner.id, request_id=body.request_id, source=body.source, stage_id=stage_id,
@@ -141,8 +142,19 @@ def _attempts_left(item: ExerciseItem) -> int:
     return 1 if item.kind == "intro" else MAX_ATTEMPTS - len(item.attempts)
 
 
+def _solved(item: ExerciseItem, name: str, pieces: list[dict[str, Any]]) -> bool:
+    """The pieces as shown already read as the answer: the right column lined up with the left, or tiles and
+    sentences whose text is the solution (two identical tiles swapped still read solved)."""
+    key = item.key
+    if name == "right":
+        return [piece["id"] for piece in pieces] == [key["pairs"][left["id"]] for left in item.prompt["left"]]
+    if name in ("tiles", "sentences"):
+        return [fold(piece["nl"]) for piece in pieces] == [fold(text) for text in key["texts"]]
+    return False
+
+
 def _prompt(row: ExerciseSession, item: ExerciseItem) -> dict[str, Any]:
-    """An item asked again has its options, tiles or sentences in a new order (never the solution)."""
+    """An item asked again has its options, pieces or sentences in a new order, never one that reads solved."""
     prompt = dict(item.prompt)
     if not item.attempts or item.closed:
         return prompt
@@ -150,9 +162,9 @@ def _prompt(row: ExerciseSession, item: ExerciseItem) -> dict[str, Any]:
     for name in ("options", "right", "tiles", "sentences"):
         if name in prompt:
             pieces = list(prompt[name])
-            for _ in range(20):
+            for _ in range(50):
                 rng.shuffle(pieces)
-                if [piece["id"] for piece in pieces] != item.key.get("order"):
+                if not _solved(item, name, pieces):
                     break
             prompt[name] = pieces
     return prompt
@@ -313,8 +325,9 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
         "requeue": not closed, "attempts_left": 0 if closed else MAX_ATTEMPTS - attempt,
         "feedback": _feedback(item, outcome, judged), "points": award.points if award else 0,
     }
+    # the learner's own answer is kept with the attempt (and exported); the response replays a retry
     item.attempts = [*item.attempts, {"request_id": request_id, "answer_hash": signature, "outcome": outcome,
-                                      "at": now.isoformat(), "response": response}]
+                                      "at": now.isoformat(), "answer": given, "skip": skip, "response": response}]
     queue = _queue(rows)
     response.update(progress=progress(rows), next_item_id=str(queue[0].id) if queue else None)
     item.attempts = [*item.attempts[:-1], {**item.attempts[-1], "response": response}]
@@ -366,6 +379,17 @@ def _answered(item: ExerciseItem) -> bool:
     return any(attempt["outcome"] != "skipped" for attempt in item.attempts)
 
 
+def _missed(item: ExerciseItem) -> list[dict[str, Any]]:
+    """What the summary lists for a first-attempt miss: the word and its answer; a board, each word it missed."""
+    key = item.key
+    if item.kind in ("match_pairs", "de_het") and item.attempts:
+        results = item.attempts[0]["response"]["feedback"].get("pairs" if item.kind == "match_pairs" else "bins") or {}
+        return [{"ref": key["refs"][part], "term": key["cards"][part]["term"],
+                 "expected": key["cards"][part]["meaning"]["en"] if item.kind == "match_pairs"
+                 else key["cards"][part]["term"]} for part, result in results.items() if not result["ok"]]
+    return [{"ref": item.ref, "term": key.get("word", {}).get("term"), "expected": _expected(item)}]
+
+
 def _expected(item: ExerciseItem) -> str | None:
     key = item.key
     if item.kind in graders.TYPED_KINDS:
@@ -382,8 +406,10 @@ def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
         counts = by_kind.setdefault(item.kind, {"total": 0, "first_try_correct": 0})
         counts["total"] += 1
         counts["first_try_correct"] += item.first_outcome == "correct"
-    # an answer the learner overruled is theirs to judge: not listed as missed
-    missed = [item for item in graded if item.first_outcome in ("incorrect", "skipped") and not item.key.get("override")]
+    # an answer the learner overruled is theirs to judge, and an ordering is about a paragraph, not a word:
+    # neither is listed as missed
+    missed = [item for item in graded if item.first_outcome in ("incorrect", "skipped") and not item.key.get("override")
+              and item.kind != "sentence_order"]
     return {
         "items_total": len(graded),
         "answered": sum(1 for item in graded if _answered(item)),
@@ -394,8 +420,7 @@ def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
         "points_earned": sum(item.points_awarded for item in graded) + bonus,
         "session_bonus": bonus,
         "by_kind": by_kind,
-        "missed": [{"ref": item.ref, "term": item.key.get("word", {}).get("term"), "expected": _expected(item)}
-                   for item in missed],
+        "missed": [entry for item in missed for entry in _missed(item)],
         "suggestions": [],
     }
 
@@ -468,8 +493,9 @@ def export(session: Session, learner_id: uuid.UUID) -> dict[str, Any]:
                        "prompt": item.prompt, "first_outcome": item.first_outcome, "closed": item.closed,
                        "hint_used": item.hint_used, "overridden": bool(item.key.get("override")),
                        "points": item.points_awarded,
-                       "attempts": [{"outcome": a["outcome"], "at": a["at"],
-                                     "given": a["response"]["feedback"].get("given")} for a in item.attempts],
+                       "attempts": [{"outcome": a["outcome"], "at": a["at"], "given": a.get("answer"),
+                                     "skip": a.get("skip")} for a in item.attempts],
+                       "overridden_at": item.key["override"]["at"] if item.key.get("override") else None,
                        "answered_at": item.answered_at.isoformat() if item.answered_at else None}
                       for item in by_session.get(row.id, [])],
         } for row in rows],

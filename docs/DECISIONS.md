@@ -322,11 +322,14 @@ sent by the stage view and Story Time are withdrawn when the lessons move onto t
 
 Typed answers and sentences built from tiles are checked by code (step 3.4): a typed answer through the
 tolerant comparison (ENGINEERING, "Judging an answer"), a built sentence word by word against the authored
-order. Dutch often allows another right answer that no check knows (a synonym, another
-word order), so on those kinds the learner may say "mijn antwoord klopt ook". The item then closes as
-accepted, its mistake row is removed and it no longer appears among the missed words; it keeps the point it
-already earned by being answered, and it never counts towards completing a topic or a stage. "Almost" (a
-slip of the keyboard, a missing accent, an article the item forgives, two neighbouring sentences swapped)
-closes the item in a neutral colour and is never a mistake. A flashcard is the learner's own say and writes
-no mistake; neither does putting a Story Time paragraph back in order. Boards (match pairs, de/het) are
-submitted whole and judged per part, so a mistake names the word that was missed.
+order. Dutch often allows another right answer that no check knows (a synonym, another word order), so on
+those kinds the learner may say "mijn antwoord klopt ook". The item then closes as accepted, its mistake row
+is removed and it no longer appears among the missed words; it keeps the point it already earned by being
+answered, and it never counts towards completing a topic or a stage. A missing accent or an article the item
+forgives is correct with a note; "almost" (a slip of the keyboard, a wrong de/het where the article is
+optional, two neighbouring sentences swapped) closes the item in a neutral colour and is never a mistake. A
+word copied from the support-language cue is not a slip: an English spelling such as "passport" for
+"paspoort" counts as another word. A flashcard is the learner's own say and writes no mistake; neither does
+putting a Story Time paragraph back in order, nor a built sentence, whose other right orders the check does
+not know. Boards (match pairs, de/het) are submitted whole and judged per part, so a mistake names the word
+that was missed.
