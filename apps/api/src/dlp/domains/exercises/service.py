@@ -20,7 +20,7 @@ import uuid
 from datetime import timedelta
 from typing import Any
 
-from sqlalchemy import delete, select
+from sqlalchemy import delete, func, select
 from sqlalchemy.orm import Session
 
 from dlp.config import Settings
@@ -29,7 +29,7 @@ from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.curriculum.schemas import STAGE_IDS
 from dlp.domains.exercises import graders, mistakes
 from dlp.domains.exercises.blueprints import SIZES, plan
-from dlp.domains.exercises.compare import fold
+from dlp.domains.exercises.compare import ARTICLES, fold
 from dlp.domains.exercises.generators import GENERATOR_VERSION
 from dlp.domains.exercises.models import ExerciseItem, ExerciseSession, LearnerMistake, WordSuggestion
 from dlp.domains.exercises.pool import pool_for
@@ -49,6 +49,8 @@ SESSION_BONUS_MIN_ITEMS = 5
 # skip reasons that close an item without counting it as missed; only kinds with audio accept them
 AUDIO_SKIPS = ("no_microphone", "no_audio")
 AUDIO_KINDS = frozenset({"listen_choose", "dictation", "shadow"})
+# a first outcome that counts as right the first time: shadowing is heard, never "correct"
+FIRST_TRY_RIGHT = ("correct", "heard")
 # a session plans speech only while this many audio seconds of the allowance are left (a cached sound is free,
 # a new one or a recording costs seconds)
 AUDIO_MIN_SECONDS = 60.0
@@ -184,15 +186,20 @@ def _prompt(row: ExerciseSession, item: ExerciseItem) -> dict[str, Any]:
     return prompt
 
 
+def _retried_later(item: ExerciseItem) -> bool:
+    """Missed once and asked again at the end; a shadowing take not heard is tried again at once."""
+    return bool(item.attempts) and not item.closed and item.kind != "shadow"
+
+
 def _queue(rows: list[ExerciseItem]) -> list[ExerciseItem]:
     """Open items in order, then the ones missed once."""
-    return sorted((item for item in rows if not item.closed), key=lambda item: (bool(item.attempts), item.position))
+    return sorted((item for item in rows if not item.closed), key=lambda item: (_retried_later(item), item.position))
 
 
 def progress(rows: list[ExerciseItem]) -> dict[str, int]:
     graded = [item for item in rows if item.kind != "intro"]
     return {"closed": sum(item.closed for item in graded), "total": len(graded),
-            "queued": sum(1 for item in graded if item.attempts and not item.closed)}
+            "queued": sum(1 for item in graded if _retried_later(item))}
 
 
 def item_view(row: ExerciseSession, item: ExerciseItem) -> dict[str, Any]:
@@ -229,12 +236,24 @@ def _feedback(item: ExerciseItem, outcome: str, judged: graders.Judgement | None
     return {**feedback, **(judged.feedback if judged else {})}
 
 
+def _word_missed(item: ExerciseItem, feedback: dict[str, Any] | None) -> bool:
+    """Whether a miss is about the item's word. A dictated sentence can be wrong elsewhere (a word left out, a
+    name heard otherwise) with the word itself typed right; then neither a mistake nor a word-bank suggestion
+    lands on the word. A skipped dictation is a miss of the word, as for every other kind."""
+    if item.kind != "dictation" or not feedback or "diff" not in feedback:
+        return True
+    own = set(fold(item.key["word"]["term"]).split()) - ARTICLES
+    if len(fold(item.key["accepted"][0]).split()) <= len(own) + 1:
+        return True  # the word alone (pre-A1)
+    return any(op["op"] != "same" and own & set(fold(op["expected"]).split()) for op in feedback["diff"])
+
+
 def _record_mistakes(session: Session, row: ExerciseSession, item: ExerciseItem, *, judged: graders.Judgement | None,
                      outcome: str, request_id: str) -> None:
     """A row per missed part on a word met before this session: the item's word, the word the learner took for
     the odd one, every wrong pair or noun of a board. A first encounter is not a mistake."""
     key = item.key
-    if item.kind in graders.NO_MISTAKES:
+    if item.kind in graders.NO_MISTAKES or not _word_missed(item, judged.feedback if judged else None):
         return
     authored = bool(key.get("authored"))
     parts = judged.misses if judged else ["answer"]
@@ -320,7 +339,9 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
             raise ExerciseError(str(invalid), 422) from invalid
         outcome = judged.outcome
     attempt = len(item.attempts) + 1
-    closed = outcome in ("correct", "almost", "done") or attempt >= MAX_ATTEMPTS or skip in AUDIO_SKIPS
+    # a shadowing item is not asked again at the end: skipped, it is done with
+    closed = (outcome in ("correct", "almost", "done") or attempt >= MAX_ATTEMPTS or skip in AUDIO_SKIPS
+              or item.kind == "shadow")
     if attempt == 1:
         item.first_outcome = outcome
         if outcome in ("incorrect", "skipped") and skip in (None, "unknown"):
@@ -376,9 +397,16 @@ def item_audio(session: Session, settings: Settings, *, learner_id: uuid.UUID, s
 def record(session: Session, settings: Settings, *, learner_id: uuid.UUID, session_id: uuid.UUID,
            item_id: uuid.UUID, request_id: str, upload_bytes: bytes, upload_filename: str, stt: SpeechToText,
            blob: BlobStore) -> dict[str, Any]:
-    """A shadowing attempt: the recording is transcribed (not kept) before any row is locked, then the words
-    heard are compared with the sentence. The outcome is heard or not heard, never a score (D-20, D-23); heard
-    speech earns the item's point, and nothing is a mistake. One attempt closes the item."""
+    """A shadowing attempt: the recording is transcribed (not kept) before the session row is locked, then the
+    words heard are compared with the sentence. The outcome is heard or not heard, never a score (D-20, D-23);
+    heard speech earns the item's point, and nothing is a mistake. A take not heard may be
+    tried once more at once (a noisy room, a microphone that started late); heard, or a second take, closes it.
+
+    One recording of an item is handled at a time (a transaction-scoped advisory lock on the item, taken before
+    anything is read), so a retry or a second tap waits for the first, then replays it or finds the item
+    answered, without paying for a second transcription. A refusal after a transcription is returned with its
+    usage kept (`persist`), never rolled back."""
+    session.execute(select(func.pg_advisory_xact_lock(func.hashtextextended(f"exercise-recording:{item_id}", 0))))
     row, _rows, item = _item(session, learner_id, session_id, item_id)
     if item.kind != "shadow":
         raise ExerciseError("only a shadowing item takes a recording", 422)
@@ -396,24 +424,31 @@ def record(session: Session, settings: Settings, *, learner_id: uuid.UUID, sessi
     previous = next((attempt for attempt in item.attempts if attempt["request_id"] == request_id), None)
     if previous is not None:
         return {**previous["response"], **replayed(session, learner_id, request_id)}
-    if item.closed or row.status != "active":
-        raise ExerciseError("this item is already answered", 409, code="already_answered")
+    if row.status != "active":  # finished or left while the recording was transcribed
+        raise ExerciseError("this exercise session is already finished", 409, code="session_closed", persist=True)
+    if item.closed:  # skipped while the recording was transcribed
+        raise ExerciseError("this item is already answered", 409, code="already_answered", persist=True)
     words = read_aloud_compare(item.key["audio_text"], heard_text)
-    outcome = "heard" if words["matched_words"] else "not_heard"
+    outcome = "heard" if words["matched_words"] else "not_heard"  # any recognised word (D-23), no threshold
     item.first_outcome = item.first_outcome or outcome
+    attempt = len(item.attempts) + 1
+    closed = outcome == "heard" or attempt >= MAX_ATTEMPTS
     award = None
     if outcome == "heard":
         award = record_activity(session, learner_id, kind="exercise_item", ref=str(item.id), request_id=request_id,
                                 meta={"kind": item.kind, "session": str(row.id)})
         item.points_awarded = award.points
     now = utcnow()
-    item.closed, item.answered_at = True, now
+    item.closed = closed
+    if closed:
+        item.answered_at = now
     feedback = {"outcome": outcome, "word": item.key.get("word"), "sentence": item.key["audio_text"],
                 "transcript": heard_text, **words}
     queue = _queue(rows)
     response: dict[str, Any] = {
-        "item_id": str(item.id), "attempt": len(item.attempts) + 1, "outcome": outcome, "closed": True,
-        "requeue": False, "attempts_left": 0, "feedback": feedback, "points": award.points if award else 0,
+        "item_id": str(item.id), "attempt": attempt, "outcome": outcome, "closed": closed,
+        "requeue": False, "attempts_left": 0 if closed else MAX_ATTEMPTS - attempt, "feedback": feedback,
+        "points": award.points if award else 0,
         "progress": progress(rows), "next_item_id": str(queue[0].id) if queue else None,
     }
     item.attempts = [*item.attempts, {"request_id": request_id, "answer_hash": "", "outcome": outcome,
@@ -501,14 +536,14 @@ def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
     for item in graded:
         counts = by_kind.setdefault(item.kind, {"total": 0, "first_try_correct": 0})
         counts["total"] += 1
-        counts["first_try_correct"] += item.first_outcome == "correct"
+        counts["first_try_correct"] += item.first_outcome in FIRST_TRY_RIGHT
     # an answer the learner overruled is theirs to judge, and an ordering is about a paragraph, not a word:
     # neither is listed as missed
-    missed = [item for item in graded if _first_miss(item) and item.kind != "sentence_order"]
+    missed = [item for item in graded if _first_miss(item) and item.kind not in ("sentence_order", "shadow")]
     return {
         "items_total": len(graded),
         "answered": sum(1 for item in graded if _answered(item)),
-        "first_try_correct": sum(1 for item in graded if item.first_outcome == "correct"),
+        "first_try_correct": sum(1 for item in graded if item.first_outcome in FIRST_TRY_RIGHT),
         "fixed_on_retry": sum(1 for item in missed if item.attempts and item.attempts[-1]["outcome"] == "correct"),
         "skipped": sum(1 for item in graded if item.first_outcome == "skipped"
                        and item.attempts[0].get("skip") not in AUDIO_SKIPS),
@@ -553,7 +588,8 @@ def finish(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, *, re
         if not _first_miss(item):
             continue
         if item.kind in SUGGEST_KINDS and item.word and "word" in item.key:
-            offered.append((item.word, item.key["word"]))
+            if _word_missed(item, item.attempts[0]["response"]["feedback"] if item.attempts else None):
+                offered.append((item.word, item.key["word"]))
         elif item.kind == "match_pairs" and item.attempts:
             pairs = item.attempts[0]["response"]["feedback"].get("pairs") or {}
             offered += [(item.key["words"][part], item.key["cards"][part]) for part, result in pairs.items()

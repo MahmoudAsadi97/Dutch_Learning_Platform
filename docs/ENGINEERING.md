@@ -509,20 +509,35 @@ whole.
   stages' paragraphs being too short). Option and piece ids are four random letters, and pieces never read
   solved, on first showing or on a retry. `pool.available()` is the per-stage matrix of what each kind can
   draw on, recorded in `tests/test_exercise_typed_kinds.py`. `audio.py` (step 3.5): `listen_choose` (the word
-  is spoken, four written words to choose from), `dictation` (a sentence of the word's example spoken and typed,
-  at pre-A1 the word alone; judged like a typed answer) and `shadow` (a sentence of three to ten words shown
-  and spoken, then said after the voice). The spoken text stays in the key; `POST .../items/{item_id}/audio`
-  serves it from the speech cache (`speech.service.synthesize_cached`: `tts-cache/<provider>/<voice>/<sha256>.wav`,
-  course text only, a hit costs no allowance, a miss is an ordinary paid synthesis), and
-  `POST .../items/{item_id}/recording` (multipart) takes a shadowing attempt: transcribed before any row lock,
-  the recording not kept, the outcome `heard` or `not_heard` (recognised words, never a score), heard speech
-  earning the point, nothing a mistake, one attempt closing the item.
+  is spoken, four written words to choose from; a noun among nouns of its own article where there are three,
+  so hearing de or het alone does not answer it), `dictation` (a sentence of the word's example spoken and
+  typed, at pre-A1 the word alone; judged like a typed answer; its word count is counted the way answers are
+  compared, so "e-mail" is one word) and `shadow` (a sentence shown and spoken, then said after the voice).
+  The pool keeps one sentence per word for each (`Pool.dictated`, three to twelve words; `Pool.shadowed`, three
+  to ten): no number, no quotation, and no name in a dictation, whose spelling cannot be heard; the counts per
+  stage are recorded in `tests/test_exercises_audio.py` (B1's examples are nearly all longer: no shadowing
+  there until 7.9). The spoken text stays in the key; `POST .../items/{item_id}/audio` serves it from the speech
+  cache (`speech.service.synthesize_cached`: `tts-cache/<provider>/<voice>/<sha256>.wav`, course text only, a
+  hit costs no allowance, a miss is an ordinary paid synthesis made once: a second request for the same text
+  waits on an advisory lock for the first and then hits the cache; a hit never waits). The lesson, topic and
+  final-check listening parts come from the same cache. `POST .../items/{item_id}/recording` (multipart) takes
+  a shadowing take: one at a time per item (an advisory lock taken before anything is read, so a retry or a
+  second tap waits for the first, then replays it or finds the item answered, without a second transcription),
+  transcribed before the session row is locked (the learner's usage counters stay locked during the call), a
+  refusal after the transcription returned with its usage kept (`DomainError.persist`, honoured by `_run`), the
+  recording not kept; the outcome `heard` (any word recognised, D-23) or `not_heard`, never a score; heard
+  speech earns the item's point and counts as right the first time; a take not heard may be tried
+  once more at once, not at the end; nothing is a mistake, and a skipped shadowing closes without being listed
+  as missed. A miss of a dictated sentence is a mistake (and a word-bank suggestion) for the word only when the
+  diff shows the word itself missed or changed; a function word left out elsewhere is not the word's.
 - **Blueprint** (`blueprints.py`): up to four new words per session (six in a first session, never more than its
   size), the rest words met before, least recently practised first; the intro card shows the new words the
   session practises, each first recognised; then one kind per word at random (choice counts once, whatever its
   direction; no typing or speaking in a while-you-wait session; speech only while 60 seconds of the audio
   allowance are left); items built on an example (cloze, typed cloze, sentence builder, dictation, shadowing)
-  never repeat an example or frame nor show another one's answer; up to two boards take the place of
+  never repeat an example or frame nor show another one's answer; a dictated sentence stands nowhere else in
+  the session, not on the intro card nor in any item's word cards or boards (one A1 example serves several
+  words), else the dictation becomes another kind for the same word; up to two boards take the place of
   extra new words, else of words met before, and are built from the words the session keeps, so a new word on a
   board is on the intro card; an ordering paragraph shares no sentence with the session's examples; no two
   items about one word in a row where another order allows it.

@@ -19,6 +19,12 @@ of each word's example cut into tiles or chunks (sentences.py), the nouns that c
 (up to pre-C1, where nearly every noun is de from C1 on; never a noun that takes both articles), and runs of
 three or four sentences from the Story Time paragraphs to put back in order (pre-B1 and from pre-B2; the
 paragraphs of the other stages are too short).
+
+For the kinds with speech (step 3.5) it keeps the sentence of each example that holds the word, without a
+number or a quotation, when it is short enough to say after the voice (shadowing, three to ten words) or to
+type from hearing (dictation, three to twelve). A dictated sentence has no name in it either, since a name's
+spelling cannot be heard. B1's examples are nearly all longer, so B1 has no shadowing yet (generated
+sentences for the thin stages come with roadmap 7.9).
 """
 from __future__ import annotations
 
@@ -36,6 +42,11 @@ from dlp.domains.stories.vocab import key_for
 
 ARTICLE = re.compile(r"^(de|het|een)\s+", re.I)
 DISTRACTORS = 3
+# words in a sentence to say after the voice, and in one to type from hearing
+SHADOW_WORDS = (3, 10)
+DICTATION_WORDS = (3, 12)
+_DIGIT = re.compile(r"\d")
+_QUOTE = re.compile(r"[\"“”„«»]")  # not ’, the apostrophe of ’s morgens
 # choice draws distractors from this many neighbouring topics when a topic is too small
 NEIGHBOUR_TOPICS = 4
 # odd one out: the odd word comes from a topic at least this far away in the library's topic order, outside
@@ -141,6 +152,8 @@ class Pool:
     pieces: dict[str, Pieces] = field(default_factory=dict)  # word id -> a sentence for the sentence builder
     sortable: tuple[str, ...] = ()  # word ids of nouns to sort into de and het
     orders: tuple[OrderRun, ...] = ()
+    shadowed: dict[str, str] = field(default_factory=dict)  # word id -> a sentence to say after the voice
+    dictated: dict[str, str] = field(default_factory=dict)  # word id -> a sentence to type from hearing
     variety: Variety = field(init=False)
 
     def __post_init__(self) -> None:
@@ -161,7 +174,8 @@ class Pool:
         return {"choice": len(self.choice), "cloze_choice": len(self.cloze), "cloze_typed": typed,
                 "typed_recall": recall, "flashcard": len(self.words), "match_pairs": len(self.choice),
                 "de_het": len(self.sortable), "sentence_builder": len(self.pieces), "sentence_order": len(self.orders),
-                "odd_one_out": self.variety.odd_one_out}
+                "odd_one_out": self.variety.odd_one_out, "listen_choose": len(self.choice),
+                "dictation": len(self.dictated), "shadow": len(self.shadowed)}
 
     def far_topics(self, topic: str) -> tuple[str, ...]:
         """Topics an odd word may come from: far down or up the list, and not the same theme."""
@@ -292,6 +306,23 @@ def _orders(bank) -> tuple[OrderRun, ...]:
     return tuple(runs)
 
 
+def _named(sentence: str, lower: frozenset[str]) -> bool:
+    """A capitalised word the stage never writes in lower case: a name ("Mina", "Gent")."""
+    words = [word for word in (w.strip(".,!?;:\"“”‘’()…") for w in sentence.split()) if word]
+    return any(word[:1].isupper() and word.lower() not in lower for word in words)
+
+
+def _spoken(word: Word, bounds: tuple[int, int], lower: frozenset[str], *, names: bool) -> str | None:
+    """The sentence of the word's example that holds the word, when it is short enough and has no number and no
+    quotation (a sentence cut inside one would be half of it)."""
+    for part in sentences(word.example["nl"]):
+        if (word_pattern(word.core).search(part) and bounds[0] <= len(fold(part).split()) <= bounds[1]
+                and not _DIGIT.search(part) and not _QUOTE.search(part)
+                and (names or not _named(part, lower))):
+            return part
+    return None
+
+
 def build(bank) -> Pool:
     topics: list[str] = []
     for item in bank.vocabulary:
@@ -326,6 +357,9 @@ def build(bank) -> Pool:
         pieces={word.id: found for word in words if (found := _pieces(word, lower))},
         sortable=_sortable(words) if stage_index <= STAGE_IDS.index(DE_HET_LAST_STAGE) else (),
         orders=_orders(bank) if stage_index >= STAGE_IDS.index(ORDER_FIRST_STAGE) else (),
+        shadowed={word.id: found for word in words if (found := _spoken(word, SHADOW_WORDS, lower, names=True))},
+        dictated={word.id: found for word in words
+                  if (found := _spoken(word, DICTATION_WORDS, lower, names=False))},
     )
 
 

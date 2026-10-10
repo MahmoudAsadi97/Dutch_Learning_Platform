@@ -342,5 +342,9 @@ again, or another learner hearing it, costs no audio allowance, and the cache ne
 words. A session plans speech only while enough of the learner's audio allowance is left, and a sound that
 does not play, or a microphone that does not work, closes the item without counting it as missed.
 Shadowing ("zeg het na") is judged like reading aloud (D-20, D-23): the speech service's transcript is
-compared with the sentence, the outcome is heard or not heard, there is no score or percentage, recognised
-speech earns the point, and a not-heard attempt is never a mistake. The recording is not kept.
+compared with the sentence, the outcome is heard or not heard, there is no score or percentage, any
+recognised word counts as heard (no threshold, as for reading aloud), heard speech earns the item's point
+(D-28), and a not-heard take is never a mistake: as with reading aloud, the point comes with the take in
+which speech was recognised, so a take not heard may be tried once more at once, and the second take closes
+the item. The recording is not kept. The lesson, topic and
+final-check listening parts are course text too and come from the same cache.

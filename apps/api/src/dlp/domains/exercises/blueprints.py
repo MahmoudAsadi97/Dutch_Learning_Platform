@@ -9,8 +9,10 @@ directions, cloze by choice or typed, typed recall, the sentence builder, and wi
 dictation and shadowing (no typing or speaking in a tap-only while-you-wait session; no speech when the audio
 allowance runs low). Items built on a word's example (cloze, typed cloze, sentence builder) never repeat an example or a
 sentence frame (one example serves several A1 words; from pre-B2 an example also holds the next word's
-sentence), and none shows another one's answer, nor does the paragraph of an ordering board. No two items
-about the same word follow each other where another order allows it.
+sentence), and none shows another one's answer, nor does the paragraph of an ordering board. A dictated
+sentence stands nowhere else in the session, not on the intro card nor on any item's word cards (one example
+serves several A1 words, and every word card shows its example): such a dictation becomes another kind for the
+same word. No two items about the same word follow each other where another order allows it.
 
 Up to MAX_BOARDS boards take the place of single words: odd one out (where the stage has it and three words of
 one situation and word class are known), match pairs on four of the session's words, de/het on six nouns the
@@ -23,7 +25,9 @@ from __future__ import annotations
 
 import random
 from collections import Counter
+from collections.abc import Iterator
 from datetime import UTC, datetime
+from typing import Any
 
 from dlp.domains.exercises import audio as spoken
 from dlp.domains.exercises import boards, generators, typed
@@ -196,6 +200,24 @@ def _spread(drafts: list[Draft]) -> list[Draft]:
     return placed
 
 
+def _strings(value: Any) -> Iterator[str]:
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, dict):
+        for inner in value.values():
+            yield from _strings(inner)
+    elif isinstance(value, list | tuple):
+        for inner in value:
+            yield from _strings(inner)
+
+
+def _shown_elsewhere(dictation: Draft, drafts: list[Draft]) -> bool:
+    """Whether another draft (its prompt, or its key, which the feedback reveals) holds the dictated sentence."""
+    text = fold(dictation.key["audio_text"])
+    return any(text in fold(string) for draft in drafts if draft is not dictation
+               for string in _strings((draft.prompt, draft.key)))
+
+
 def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
          last_seen: dict[str, datetime] | None = None, library_topic: str | None = None,
          typing: bool = True, audio: bool = False) -> list[Draft]:
@@ -253,9 +275,16 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
     for board in found:
         more.insert(rng.randrange(len(more) + 1), board)
     graded = _spread([*first, *more])[:size]
-    for draft in graded:
-        draft.key["met"] = sorted({key for key in draft.key.get("words", {}).values() if key in met})
     # the intro card shows the new words the session goes on to practise, and only those
     practised = set().union(*(_targets(draft) for draft in graded)) if graded else set()
     shown = [word for word in fresh if word.id in practised]
-    return [generators.intro(pool.stage_id, shown), *graded] if shown else graded
+    intro = [generators.intro(pool.stage_id, shown)] if shown else []
+    if pool.stage_id != DICTATION_SINGLE_STAGE:  # a dictated word alone is on its own choice options anyway
+        for index, draft in reversed(list(enumerate(graded))):
+            if draft.kind == "dictation" and _shown_elsewhere(draft, [*intro, *graded]):
+                word = pool.by_id[draft.ref.removeprefix("word:")]
+                other = _item(pool, word, rng, used=used[word.id], clozes=clozes, typing=typing, audio=audio)
+                graded[index:index + 1] = [other] if other is not None else []
+    for draft in graded:
+        draft.key["met"] = sorted({key for key in draft.key.get("words", {}).values() if key in met})
+    return [*intro, *graded]

@@ -6,13 +6,17 @@ import json
 import random
 import uuid
 from dataclasses import replace
+from types import SimpleNamespace
 
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 
 from dlp.api.deps import providers_dep
 from dlp.db.session import session_scope
-from dlp.domains.exercises import audio, blueprints
-from dlp.domains.exercises.models import ExerciseItem, LearnerMistake
+from dlp.domains.curriculum.schemas import STAGE_IDS
+from dlp.domains.exercises import audio, blueprints, service
+from dlp.domains.exercises.compare import fold
+from dlp.domains.exercises.graders import grade
+from dlp.domains.exercises.models import ExerciseItem, ExerciseSession, LearnerMistake
 from dlp.domains.exercises.pool import pool_for
 from dlp.domains.identity.models import Learner
 from dlp.domains.speech.service import TTS_CACHE_PREFIX, synthesize_cached, tts_cache_key
@@ -22,6 +26,15 @@ from dlp.providers.registry import get_providers
 from tests.conftest import auth_headers
 
 SPEECH = {"listen_choose", "dictation", "shadow"}
+# stage -> (words with a sentence to dictate (3 to 12 words, no name), words with a sentence to shadow (3 to
+# 10)); at pre-A1 the word alone is dictated. B1's examples are nearly all longer (roadmap 7.9 adds sentences).
+# Measured 10 Oct 2026 on the content of 6 Oct.
+SPOKEN = {
+    "pre-a1": (466, 442), "a1": (430, 316), "pre-a2": (196, 59), "a2": (489, 500), "pre-b1": (367, 167),
+    "b1": (30, 0), "pre-b2": (398, 392), "b2": (400, 393), "pre-c1": (399, 392), "c1": (275, 99),
+    "pre-c2": (251, 87), "c2": (262, 86),
+}
+NAMES = {"Nora", "Noor", "Mina", "Yara", "Jonas", "Leyla", "Rob", "Emma", "Pieter", "Els", "Nadia"}
 
 
 def _learner(email: str):
@@ -73,8 +86,75 @@ def test_prompts_never_carry_the_spoken_text():
     assert first.key["accepted"] == [pool_for("pre-a1").words[0].term], "at pre-A1 the word alone"
 
 
-def test_speech_is_planned_only_with_allowance_and_never_in_a_tapped_session():
+def test_which_stage_has_which_sentence_to_hear():
+    assert list(SPOKEN) == list(STAGE_IDS)
+    for stage_id, row in SPOKEN.items():
+        available = pool_for(stage_id).available()
+        assert (available["dictation"], available["shadow"]) == row, f"{stage_id}: content changed; re-measure"
+
+
+def test_a_dictated_sentence_stands_nowhere_else_in_the_session():
+    """Not on the intro card, not on another item's word cards or boards: one A1 example serves several words."""
+    for stage_id in STAGE_IDS[1:]:
+        stage = pool_for(stage_id)
+        for seed in range(60):
+            rng = random.Random(seed)
+            met = frozenset(w.key for w in rng.sample(stage.words, rng.randrange(0, 300)))
+            drafts = blueprints.plan(stage, rng, size=rng.randrange(5, 13), met=met, audio=True)
+            for draft in drafts:
+                if draft.kind == "dictation":
+                    text = fold(draft.key["audio_text"])
+                    for other in drafts:
+                        if other is not draft:
+                            shown = fold(json.dumps([other.prompt, other.key], ensure_ascii=False))
+                            assert text not in shown, (stage_id, seed, other.kind)
+
+
+def test_a_dictation_counts_words_the_way_answers_are_compared():
+    stage = pool_for("a2")
+    word = next(stage.by_id[i] for i, text in stage.dictated.items() if "e-mail" in text)
+    draft = audio.dictation(stage, word)
+    assert draft.prompt["word_count"] == len(draft.key["audio_text"].split()), "'e-mail' is one word"
+
+
+def _names(text: str) -> set[str]:
+    return NAMES & set(text.strip(".!?").replace(",", " ").split())
+
+
+def test_a_name_cannot_be_heard_so_none_is_dictated():
+    for stage_id in STAGE_IDS:
+        assert not any(_names(text) for text in pool_for(stage_id).dictated.values()), stage_id
+    assert any(_names(text) for text in pool_for("b2").shadowed.values()), "shadowing shows its sentence"
+
+
+def test_a_listened_noun_is_offered_among_nouns_of_its_article():
     stage = pool_for("a1")
+    alone = total = 0
+    for word in stage.words:
+        draft = audio.listen_choose(stage, word, random.Random(word.id)) if word.article else None
+        if draft is not None:
+            articles = [stage.by_id[ref.removeprefix("word:")].article for ref in draft.key["refs"].values()]
+            total += 1
+            alone += articles.count(word.article) == 1
+    assert total > 250 and alone <= total // 50, "hearing 'het' alone must not pick the answer"
+
+
+def test_a_dictation_miss_elsewhere_in_the_sentence_is_not_the_words():
+    key = {"accepted": ["Ik leg de identiteitskaart klaar voor mijn afspraak."], "article": "none",
+           "word": {"term": "de identiteitskaart"}}
+    item = SimpleNamespace(kind="dictation", key=key)
+    prompt = {"kind": "dictation", "word_count": 8}
+    for typed, blamed in (("ik leg de identiteitskaart klaar voor afspraak", False),
+                          ("ik leg de kaart klaar voor mijn afspraak", True),
+                          ("ik leg klaar voor mijn afspraak", True)):
+        judged = grade("dictation", prompt, key, {"text": typed}, frozenset())
+        assert judged.outcome == "incorrect", typed
+        assert service._word_missed(item, judged.feedback) is blamed, typed
+    assert service._word_missed(item, None), "a skipped dictation is a miss of the word"
+
+
+def test_speech_is_planned_only_with_allowance_and_no_typed_or_spoken_kind_in_a_tapped_session():
+    stage = pool_for("a2")  # at A1 one example serves several words, so a dictation is rarer
     met = frozenset(word.key for word in stage.words[:200])
     kinds = set()
     for seed in range(40):
@@ -92,14 +172,14 @@ def _with_stt(text: str):
     return app
 
 
-def _session_with(client, kind, tag=""):
+def _session_with(client, kind, tag="", stage="a1"):
     """The first of a few seeded sessions with an item of `kind`; the learner knows some words, so the kinds
     beyond recognition come up."""
-    for word in pool_for("a1").words[:12]:
+    for word in pool_for(stage).words[:12]:
         client.post("/words", headers=auth_headers(), json={"term": word.term, "meaning_en": word.meaning["en"]})
     for n in range(40):
         view = client.post("/exercises/sessions", headers=auth_headers(),
-                           json={"request_id": f"speech-{kind[:8]}{tag}-{n:04d}", "stage_id": "a1", "size": 12,
+                           json={"request_id": f"speech-{kind[:8]}{tag}-{n:04d}", "stage_id": stage, "size": 12,
                                  "fresh": True}).json()
         item = next((entry for entry in view["items"] if entry["kind"] == kind), None)
         if item:
@@ -165,23 +245,73 @@ def test_shadowing_is_heard_or_not_heard_and_never_a_mistake(client):
     assert (body["outcome"], body["closed"], body["points"]) == ("heard", True, 1)
     assert "score" not in json.dumps(body) and body["feedback"]["matched_words"] > 0
     assert again.json() == body, "a retried recording replays what it got"
+    summary = client.post(f"/exercises/sessions/{view['id']}/finish", headers=auth_headers(),
+                          json={"request_id": "speech-finish-02", "early": True}).json()["summary"]
+    assert summary["by_kind"]["shadow"]["first_try_correct"] == 1, "heard is right the first time"
     other, quiet = _session_with(client, "shadow", tag="b")
     app = _with_stt("")
     try:
-        silent = client.post(_url(other, quiet, "recording"), headers=auth_headers(),
-                             data={"request_id": "speech-shadow-002"},
-                             files={"audio": ("take.wav", tone_wav(1.0), "audio/wav")}).json()
+        takes = [client.post(_url(other, quiet, "recording"), headers=auth_headers(),
+                             data={"request_id": f"speech-shadow-00{n}"},
+                             files={"audio": ("take.wav", tone_wav(1.0), "audio/wav")}).json() for n in (2, 3)]
     finally:
         app.dependency_overrides.pop(providers_dep, None)
-    assert (silent["outcome"], silent["closed"], silent["points"]) == ("not_heard", True, 0)
+    first, second = takes
+    assert (first["outcome"], first["closed"], first["attempts_left"], first["points"]) == ("not_heard", False, 1, 0)
+    assert not first["requeue"] and first["progress"]["queued"] == 0, "tried again at once, not at the end"
+    assert (second["outcome"], second["closed"], second["points"]) == ("not_heard", True, 0)
     with session_scope() as session:
         assert session.scalar(select(func.count()).select_from(LearnerMistake)) == 0
 
 
 def test_a_dictation_is_typed_and_judged_tolerantly(client):
-    view, item = _session_with(client, "dictation")
+    view, item = _session_with(client, "dictation", stage="a2")
     assert set(item["prompt"]) == {"kind", "word_count"}
     sentence = _key(item)["accepted"][0]
     reply = client.post(_url(view, item, "answer"), headers=auth_headers(),
                         json={"request_id": "speech-dict-0001", "answer": {"text": sentence.lower().rstrip(".")}}).json()
     assert reply["outcome"] == "correct" and reply["closed"] and reply["points"] == 1
+
+
+def test_a_recording_refused_after_its_transcription_keeps_its_usage(client, monkeypatch):
+    """The session closed while the recording was transcribed: the refusal is returned, not raised, so the paid
+    transcription stays counted."""
+    view, item = _session_with(client, "shadow", tag="c")
+    real = service.transcribe_upload
+
+    def closing(session, *args, **kwargs):
+        transcribed = real(session, *args, **kwargs)
+        session.execute(update(ExerciseSession).where(ExerciseSession.id == uuid.UUID(view["id"]))
+                        .values(status="abandoned"))
+        return transcribed
+
+    monkeypatch.setattr(service, "transcribe_upload", closing)
+    before = client.get("/usage", headers=auth_headers("speech-usage-03")).json()["counters"]["audio_seconds"]
+    app = _with_stt(item["prompt"]["sentence"])
+    try:
+        refused = client.post(_url(view, item, "recording"), headers=auth_headers(),
+                              data={"request_id": "speech-shadow-003"},
+                              files={"audio": ("take.wav", tone_wav(1.0), "audio/wav")})
+    finally:
+        app.dependency_overrides.pop(providers_dep, None)
+    assert refused.status_code == 409 and refused.json()["code"] == "session_closed"
+    after = client.get("/usage", headers=auth_headers("speech-usage-04")).json()["counters"]["audio_seconds"]
+    assert after["daily"]["used"] > before["daily"]["used"], "the transcription stays paid for"
+
+
+def test_a_skipped_shadowing_closes_and_is_no_missed_word(client):
+    view, item = _session_with(client, "shadow", tag="d")
+    skipped = client.post(_url(view, item, "skip"), headers=auth_headers(),
+                          json={"request_id": "speech-skip-0002", "reason": "unknown"}).json()
+    assert skipped["closed"] and not skipped["requeue"]
+    summary = client.post(f"/exercises/sessions/{view['id']}/finish", headers=auth_headers(),
+                          json={"request_id": "speech-finish-03", "early": True}).json()["summary"]
+    assert summary["skipped"] == 1 and not any(missed["ref"] == _key(item)["refs"]["answer"]
+                                               for missed in summary["missed"])
+
+
+def test_a_lesson_listening_text_is_made_once_too(client):
+    first = client.post("/curriculum/a1/listening", headers=auth_headers("listen-cache-01"))
+    again = client.post("/curriculum/a1/listening", headers=auth_headers("listen-cache-02"))
+    assert first.status_code == 200 and first.headers["x-audio-cached"] == "0"
+    assert again.headers["x-audio-cached"] == "1" and again.content == first.content

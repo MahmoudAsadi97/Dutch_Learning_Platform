@@ -15,8 +15,9 @@ from dlp.db.session import get_session
 from dlp.domains.curriculum import service
 from dlp.domains.curriculum.schemas import Skill, Test
 from dlp.domains.curriculum.writing import writing_feedback
-from dlp.domains.speech.service import synthesize_text
+from dlp.domains.speech.service import synthesize_cached
 from dlp.domains.usage.service import UsageLimitExceeded
+from dlp.errors import DomainError
 from dlp.providers.base import ProviderError
 from dlp.providers.registry import Providers
 
@@ -63,6 +64,11 @@ def _run(operation: Callable, *, provider_detail: str | None = None):
             "Your check has not been passed; please retry.",
             "code": "provider_unavailable",
         })
+    except DomainError as exc:
+        if exc.persist:
+            # refused after paid work (a transcription): returned, so its usage is committed, not rolled back
+            return JSONResponse(status_code=exc.status_code, content=exc.body())
+        raise
     except OperationalError as exc:
         if getattr(exc.orig, "sqlstate", "") == "55P03":
             return JSONResponse(status_code=409, content={
@@ -109,12 +115,14 @@ def _audio(text: str, part: int, ctx: RequestContext, settings: Settings, provid
     parts = service.audio_parts(text)
     if part >= len(parts):
         raise service.CurriculumError("listening part not found", 404)
-    data, _, label = synthesize_text(
+    # a listening text is course text, the same for every learner: made once, then free from the speech cache
+    data, cached = synthesize_cached(
         session, settings, learner_id=ctx.learner.id, request_id=ctx.request_id,
         text=parts[part], tts=providers.tts, blob=providers.blob,
     )
     return Response(content=data, media_type="audio/wav", headers={
-        "X-Audio-Label": label, "X-Audio-Voice": providers.tts.voice, "Cache-Control": "no-store",
+        "X-Audio-Label": providers.tts.label, "X-Audio-Voice": providers.tts.voice, "Cache-Control": "no-store",
+        "X-Audio-Cached": "1" if cached else "0",
     })
 
 

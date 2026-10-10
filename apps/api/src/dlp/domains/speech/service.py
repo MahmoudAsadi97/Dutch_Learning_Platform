@@ -8,6 +8,7 @@ import uuid
 from dataclasses import dataclass
 from pathlib import Path
 
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from dlp.config import Settings
@@ -161,14 +162,19 @@ def synthesize_cached(
     """Speech for a course text every learner shares (an exercise word or sentence), and whether it came from the
     cache. A hit costs no allowance; a miss is an ordinary paid synthesis, then kept under `tts-cache/` per
     provider and voice. The cache holds course text only, never a learner's own words, and sits under its own
-    prefix, so removing a learner's recordings never touches it."""
+    prefix, so removing a learner's recordings never touches it.
+
+    A miss is made once: the first request for a text takes a transaction-scoped advisory lock on its cache key,
+    so a simultaneous request for the same text waits, then finds the sound cached and pays nothing. A hit never
+    waits for the lock."""
     text = " ".join(text.split())
     key = tts_cache_key(tts, text)
-    try:
-        if blob.exists(key):
-            return blob.get(key), True
-    except ProviderError:
-        pass  # an unreadable cache falls back to synthesis
+    cached = _cached(blob, key)
+    if cached is None:
+        session.execute(select(func.pg_advisory_xact_lock(func.hashtextextended(key, 0))))
+        cached = _cached(blob, key)
+    if cached is not None:
+        return cached, True
     wav, _asset, _label = synthesize_text(session, settings, learner_id=learner_id, request_id=request_id, text=text,
                                           tts=tts, blob=blob)
     try:
@@ -176,6 +182,13 @@ def synthesize_cached(
     except ProviderError:
         pass  # the learner still hears it; the next request synthesises again
     return wav, False
+
+
+def _cached(blob: BlobStore, key: str) -> bytes | None:
+    try:
+        return blob.get(key) if blob.exists(key) else None
+    except ProviderError:
+        return None  # an unreadable cache falls back to synthesis
 
 
 def _safe_suffix(filename: str) -> str:
