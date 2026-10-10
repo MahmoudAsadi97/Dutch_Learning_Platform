@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Response
 from sqlalchemy.orm import Session
 
 from dlp.api.deps import RequestContext, context_dep
@@ -22,13 +22,15 @@ from dlp.domains.exercises.schemas import (
 router = APIRouter(prefix="/exercises", tags=["exercises"])
 
 
-@router.post("/sessions", response_model=SessionView)
-def create_session(body: CreateBody, ctx: RequestContext = Depends(context_dep),
+@router.post("/sessions", response_model=SessionView, responses={201: {"model": SessionView}})
+def create_session(body: CreateBody, response: Response, ctx: RequestContext = Depends(context_dep),
                    session: Session = Depends(get_session)):
-    """Start (or resume, or replay) a practice session. No model call; the items are generated and stored."""
+    """Start (201), resume or replay (200) a practice session. No model call; the items are generated and stored."""
     def operation():
-        row, resumed = service.create(session, ctx.learner, body)
-        return service.session_view(row, service.items(session, row), resumed=resumed)
+        row, found = service.create(session, ctx.learner, body)
+        if found == "created":
+            response.status_code = 201
+        return service.session_view(row, service.items(session, row), resumed=found == "resumed")
     return _run(operation)
 
 

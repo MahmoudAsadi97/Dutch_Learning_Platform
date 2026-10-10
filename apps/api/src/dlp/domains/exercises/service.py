@@ -6,9 +6,10 @@ latest item state after the lock, so a double click, two tabs or a retry give on
 mistake row. A repeated request id replays the stored response; the same id with another answer is refused.
 
 The rules (roadmap 3.3, D-28): at most two attempts per item; a first miss or skip is asked once more at the
-end with its options reshuffled, after the correct answer was shown; nothing blocks finishing. An item that
-closes after at least one real answer earns its point, right or wrong; a session with five closed items
-earns the session bonus. A first-attempt miss writes a mistake row only for a word met before this session.
+end with its options reshuffled, after the correct answer was shown; nothing blocks finishing. An item earns
+its point with its first real answer, right or wrong (a skip is not an answer), so finishing early never pays
+right answers more than wrong ones; a session with five answered items earns the session bonus. A
+first-attempt miss writes a mistake row only for a word met before this session.
 """
 from __future__ import annotations
 
@@ -39,6 +40,9 @@ from dlp.errors import DomainError
 MAX_ATTEMPTS = 2
 RESUME_HOURS = 12
 SESSION_BONUS_MIN_ITEMS = 5
+# skip reasons that close an item without counting it as missed; only kinds with audio accept them
+AUDIO_SKIPS = ("no_microphone", "no_audio")
+AUDIO_KINDS: frozenset[str] = frozenset()
 
 
 class ExerciseError(DomainError):
@@ -61,10 +65,12 @@ def seed_for(learner_id: uuid.UUID, request_id: str) -> int:
 
 # --- create ------------------------------------------------------------------------------------------------
 
-def create(session: Session, learner: Learner, body: CreateBody) -> tuple[ExerciseSession, bool]:
-    """The session for this request id: the same one again, an open one of the same kind (resumed), or new."""
-    # serialize starts for this learner, including when there is no session row to lock yet
-    session.execute(select(Learner.id).where(Learner.id == learner.id).with_for_update()).one()
+def create(session: Session, learner: Learner, body: CreateBody) -> tuple[ExerciseSession, str]:
+    """The session for this request id and how it was found: "replayed" (the same request again), "resumed" (an
+    open one of the same kind) or "created"."""
+    # Serialize starts for this learner, including when there is no session row to lock yet. FOR NO KEY UPDATE
+    # does not block the key-share locks that foreign-key checks of a concurrent answer take on this row.
+    session.execute(select(Learner.id).where(Learner.id == learner.id).with_for_update(key_share=True)).one()
     params = body.model_dump(exclude={"request_id"})
     signature = fingerprint(params)
     existing = session.scalar(select(ExerciseSession).where(ExerciseSession.learner_id == learner.id,
@@ -72,7 +78,7 @@ def create(session: Session, learner: Learner, body: CreateBody) -> tuple[Exerci
     if existing is not None:
         if existing.params.get("fingerprint") != signature:
             raise ExerciseError("this request id already started a different session", 409)
-        return existing, False
+        return existing, "replayed"
     stage_id = body.stage_id or profiles.ensure(session, learner).stage_id
     if stage_id not in STAGE_IDS:
         raise ExerciseError("learning stage not found", 404)
@@ -89,7 +95,7 @@ def create(session: Session, learner: Learner, body: CreateBody) -> tuple[Exerci
         if row.params.get("library_topic") != body.library_topic:
             continue
         if not body.fresh and row.created_at >= now - timedelta(hours=RESUME_HOURS):
-            return row, True
+            return row, "resumed"
         row.status, row.updated_at = "abandoned", now
     seed = seed_for(learner.id, body.request_id)
     drafts = plan(pool, random.Random(seed), size=body.size or SIZES[body.source],
@@ -108,7 +114,7 @@ def create(session: Session, learner: Learner, body: CreateBody) -> tuple[Exerci
                                  skill=draft.skill, ref=draft.ref, word=draft.word, prompt=draft.prompt,
                                  key=draft.key, attempts=[]))
     session.flush()
-    return row, False
+    return row, "created"
 
 
 # --- reading -----------------------------------------------------------------------------------------------
@@ -187,13 +193,15 @@ def _record_mistake(session: Session, row: ExerciseSession, item: ExerciseItem, 
     key = item.key
     authored = bool(key.get("authored"))
     # odd one out: the word the learner took for the odd one is the word they did not place
-    lemma = key.get("words", {}).get(option, "") if item.kind == "odd_one_out" else item.word
+    odd = item.kind == "odd_one_out"
+    lemma = key.get("words", {}).get(option, "") if odd else item.word
     if not authored and (not lemma or lemma not in key.get("met", [])):
         return  # a first encounter, not a mistake
     support = {entry["id"]: entry for entry in key.get("support", [])}
     mistakes.record_mistake(
         session, learner_id=row.learner_id, source="exercise", source_id=str(item.id), stage_id=row.stage_id,
-        category=category_for(item.kind, authored=authored), skill=item.skill, kind=item.kind, ref=item.ref,
+        category=category_for(item.kind, authored=authored), skill=item.skill, kind=item.kind,
+        ref=key.get("refs", {}).get(option, "") if odd else item.ref,
         lemma=lemma, given=support.get(option, {}).get("nl", "") if option else "",
         expected=support.get(key["answer"], {}).get("nl", ""), request_id=request_id,
         detail={"outcome": outcome, "direction": item.prompt.get("direction"), "option": option},
@@ -219,6 +227,8 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
     if item.closed:
         raise ExerciseError("this item is already answered", 409, code="already_answered")
     option = answer.option if answer else None
+    if skip in AUDIO_SKIPS and item.kind not in AUDIO_KINDS:
+        raise ExerciseError("this item has no audio to skip for", 422)
     if skip is not None:
         outcome = "done" if item.kind == "intro" else "skipped"
     elif item.kind == "intro":
@@ -230,14 +240,14 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
             raise ExerciseError("choose one of the item's options", 422)
         outcome = graders.grade(item.kind, item.key, option)
     attempt = len(item.attempts) + 1
-    closed = outcome in ("correct", "done") or attempt >= MAX_ATTEMPTS or skip in ("no_microphone", "no_audio")
+    closed = outcome in ("correct", "done") or attempt >= MAX_ATTEMPTS or skip in AUDIO_SKIPS
     if attempt == 1:
         item.first_outcome = outcome
         if outcome in ("incorrect", "skipped") and skip in (None, "unknown"):
             _record_mistake(session, row, item, option=option, outcome=outcome, request_id=request_id)
     award = None
-    answered = outcome != "skipped" or any(earlier["outcome"] != "skipped" for earlier in item.attempts)
-    if closed and item.kind != "intro" and answered:
+    if item.kind != "intro" and outcome != "skipped" and not _answered(item):
+        # the first real answer earns the item's point, right or wrong
         award = record_activity(session, learner_id, kind="exercise_item", ref=str(item.id), request_id=request_id,
                                 meta={"kind": item.kind, "session": str(row.id)})
         item.points_awarded = award.points
@@ -263,6 +273,11 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
 
 # --- finishing ---------------------------------------------------------------------------------------------
 
+def _answered(item: ExerciseItem) -> bool:
+    """The learner answered it at least once (a skip is not an answer)."""
+    return any(attempt["outcome"] != "skipped" for attempt in item.attempts)
+
+
 def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
     graded = [item for item in rows if item.kind != "intro"]
     by_kind: dict[str, dict[str, int]] = {}
@@ -273,7 +288,7 @@ def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
     missed = [item for item in graded if item.first_outcome in ("incorrect", "skipped")]
     return {
         "items_total": len(graded),
-        "answered": sum(1 for item in graded if item.closed),
+        "answered": sum(1 for item in graded if _answered(item)),
         "first_try_correct": sum(1 for item in graded if item.first_outcome == "correct"),
         "fixed_on_retry": sum(1 for item in missed if item.attempts and item.attempts[-1]["outcome"] == "correct"),
         "skipped": sum(1 for item in graded if item.first_outcome == "skipped"),
@@ -292,7 +307,10 @@ def finish(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, *, re
     """Close the session with its summary. Idempotent: a finished session returns what it said the first time."""
     row = get(session, learner_id, session_id, lock=True)
     if row.status == "finished":
-        return {"id": row.id, "status": "finished", "summary": row.summary, "points": 0,
+        # the request that finished it hears what it heard the first time; another one earns nothing
+        same = row.summary.get("request_id") == request_id
+        return {"id": row.id, "status": "finished", "summary": row.summary,
+                "points": row.summary.get("session_bonus", 0) if same else 0,
                 **replayed(session, learner_id, request_id)}
     if row.status != "active":
         raise ExerciseError("this exercise session was left unfinished", 409, code="session_closed")
@@ -301,10 +319,11 @@ def finish(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, *, re
     if not early and any(not item.closed for item in graded):
         raise ExerciseError("answer or skip every item first, or finish early", 409)
     bonus = None
-    if sum(item.closed for item in graded) >= SESSION_BONUS_MIN_ITEMS:
+    answered = sum(1 for item in graded if _answered(item))
+    if answered >= SESSION_BONUS_MIN_ITEMS:
         bonus = record_activity(session, learner_id, kind="exercise_session", ref=str(row.id), request_id=request_id,
-                                meta={"items": sum(item.closed for item in graded)})
-    summary = _summary(rows, bonus.points if bonus else 0)
+                                meta={"items": answered})
+    summary = {**_summary(rows, bonus.points if bonus else 0), "request_id": request_id}
     summary["suggestions"] = mistakes.suggest_words(session, learner_id, [
         (item.word, item.key["word"]) for item in graded
         if item.first_outcome in ("incorrect", "skipped") and item.kind in ("choice", "cloze_choice")
@@ -335,9 +354,11 @@ def export(session: Session, learner_id: uuid.UUID) -> dict[str, Any]:
             "generator_version": row.generator_version, "content_version": row.content_version,
             "summary": row.summary, "created_at": row.created_at.isoformat(),
             "finished_at": row.finished_at.isoformat() if row.finished_at else None,
-            "items": [{"id": str(item.id), "position": item.position, "kind": item.kind, "ref": item.ref,
+            # an item's ref names its answer: only once the answer has been shown
+            "items": [{"id": str(item.id), "position": item.position, "kind": item.kind,
+                       "ref": item.ref if item.closed or item.attempts else None,
                        "prompt": item.prompt, "first_outcome": item.first_outcome, "closed": item.closed,
-                       "points": item.points_awarded,
+                       "hint_used": item.hint_used, "points": item.points_awarded,
                        "attempts": [{"outcome": a["outcome"], "at": a["at"],
                                      "given": a["response"]["feedback"].get("given")} for a in item.attempts],
                        "answered_at": item.answered_at.isoformat() if item.answered_at else None}

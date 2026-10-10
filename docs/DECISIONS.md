@@ -311,8 +311,9 @@ in the response to an answer. Answers, the mistakes made on words the learner ha
 offered for the word bank are now stored, exported and deleted with the learner; the data rule "no learner
 free text stored beyond attempts" is revised accordingly, and retention follows in P9. A word met for the
 first time is never a mistake, and only the learner adds a word to the word bank (D-19's word-bank rule
-stands). Every item that closes after a real answer earns one point, right or wrong, and a session of five
-items or more earns five: points reward practising, never a judgement of the learner's Dutch (D-19 as
-revised in D-27). A stage offers sessions only above a stated content threshold, so thin or reused material
-is not presented as practice. The keys still sent by the stage view and Story Time are withdrawn when the
-lessons move onto the engine (roadmap 5.5).
+stands). Every item earns one point with its first real answer, right or wrong, and a session with five
+answered items earns five; a skip is not an answer, and stopping early never pays right answers more than
+wrong ones: points reward practising, never a judgement of the learner's Dutch (D-19 as revised in D-27). A
+stage offers sessions only above a stated content threshold, so thin material is not presented as practice;
+a stage that repeats an earlier word list is offered, and labelled as review (roadmap 3.9). The keys still
+sent by the stage view and Story Time are withdrawn when the lessons move onto the engine (roadmap 5.5).
