@@ -108,8 +108,8 @@ def create(session: Session, settings: Settings, learner: Learner, body: CreateB
             ExerciseSession.learner_id == learner.id, ExerciseSession.status == "active",
             ExerciseSession.source == body.source, ExerciseSession.stage_id == stage_id,
             ExerciseSession.focus == body.focus).order_by(ExerciseSession.created_at.desc())):
-        if row.params.get("library_topic") != body.library_topic:
-            continue
+        if row.params.get("library_topic") != body.library_topic or row.params.get("kinds") != body.kinds:
+            continue  # another topic, or kinds this client may not show
         if not body.fresh and row.created_at >= now - timedelta(hours=RESUME_HOURS):
             return row, "resumed"
         row.status, row.updated_at = "abandoned", now
@@ -117,7 +117,8 @@ def create(session: Session, settings: Settings, learner: Learner, body: CreateB
     drafts = plan(pool, random.Random(seed), size=body.size or SIZES[body.source],
                   met=mistakes.met_words(session, learner.id), last_seen=mistakes.last_practised(session, learner.id),
                   library_topic=body.library_topic, typing=body.source != "while_you_wait",
-                  audio=_audio_left(session, settings, learner.id) >= AUDIO_MIN_SECONDS)
+                  audio=_audio_left(session, settings, learner.id) >= AUDIO_MIN_SECONDS,
+                  kinds=frozenset(body.kinds) if body.kinds else None)
     if not any(draft.kind != "intro" for draft in drafts):
         raise ExerciseError("there is nothing to practise here yet", 409, code="not_ready")
     row = ExerciseSession(learner_id=learner.id, request_id=body.request_id, source=body.source, stage_id=stage_id,
@@ -495,6 +496,23 @@ def override(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, ite
     return response
 
 
+def report(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item_id: uuid.UUID, *,
+           request_id: str, reason: str, note: str | None) -> dict[str, Any]:
+    """"Meld een probleem": the learner flags an item (a wrong answer key, an unclear prompt, a bad sound). Kept
+    with the item for the content review, whatever its state; a later report replaces the earlier one. It
+    changes nothing in the session."""
+    row = get(session, learner_id, session_id, lock=True)
+    item = next((candidate for candidate in items(session, row) if candidate.id == item_id), None)
+    if item is None:
+        raise ExerciseError("exercise item not found", 404)
+    current = item.key.get("report") or {}
+    if current.get("request_id") != request_id:
+        item.key = {**item.key, "report": {"request_id": request_id, "reason": reason, "note": (note or "").strip(),
+                                           "at": utcnow().isoformat()}}
+        session.flush()
+    return {"item_id": item.id, "reason": item.key["report"]["reason"]}
+
+
 # --- finishing ---------------------------------------------------------------------------------------------
 
 def _answered(item: ExerciseItem) -> bool:
@@ -629,6 +647,9 @@ def export(session: Session, learner_id: uuid.UUID) -> dict[str, Any]:
                        "attempts": [{"outcome": a["outcome"], "at": a["at"], "given": a.get("answer"),
                                      "skip": a.get("skip")} for a in item.attempts],
                        "overridden_at": item.key["override"]["at"] if item.key.get("override") else None,
+                       # the learner's own report, without its request id
+                       "report": {k: v for k, v in item.key["report"].items() if k != "request_id"}
+                       if item.key.get("report") else None,
                        "answered_at": item.answered_at.isoformat() if item.answered_at else None}
                       for item in by_session.get(row.id, [])],
         } for row in rows],

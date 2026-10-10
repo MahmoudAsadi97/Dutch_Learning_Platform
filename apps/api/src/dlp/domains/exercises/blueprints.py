@@ -67,7 +67,8 @@ def _cloze_fits(word: Word, clozes: list[Word], shown: tuple[str, ...] = ()) -> 
 
 
 def _item(pool: Pool, word: Word, rng: random.Random, *, used: set[tuple[str, str]],
-          clozes: list[Word], shown: tuple[str, ...] = (), typing: bool = True, audio: bool = False) -> Draft | None:
+          clozes: list[Word], shown: tuple[str, ...] = (), typing: bool = True, audio: bool = False,
+          kinds: frozenset[str] | None = None) -> Draft | None:
     """An item for `word` in a kind or direction it has not had in this session; choice is one kind among the
     others (its direction is drawn after it), so recognition does not crowd out typing and building."""
     directions = list(generators.directions(pool))
@@ -87,6 +88,8 @@ def _item(pool: Pool, word: Word, rng: random.Random, *, used: set[tuple[str, st
             options += [("dictation", ""), ("shadow", "")]
     if audio:
         options.append(("listen_choose", ""))
+    if kinds is not None:
+        options = [option for option in options if option[0] in kinds]
     rng.shuffle(options)
     for kind, direction in options:
         if (kind, direction) in used:
@@ -163,14 +166,15 @@ def _sentence_order(pool: Pool, words: list[Word], rng: random.Random) -> Draft 
     return boards.sentence_order(rng.choice(linked or runs), rng) if runs else None
 
 
-def _boards(pool: Pool, words: list[Word], met: frozenset[str], rng: random.Random, size: int) -> list[Draft]:
+def _boards(pool: Pool, words: list[Word], met: frozenset[str], rng: random.Random, size: int,
+            kinds: frozenset[str] | None = None) -> list[Draft]:
     """Up to MAX_BOARDS boards, chosen at random among those the words allow."""
     found = [board for board in (
         _odd_one_out(pool, words, met, rng) if size >= ODD_ONE_OUT_MIN_SIZE else None,
         _match_pairs(pool, words, rng),
         _de_het(pool, words, met, rng),
         _sentence_order(pool, words, rng),
-    ) if board is not None]
+    ) if board is not None and (kinds is None or board.kind in kinds)]
     return rng.sample(found, min(MAX_BOARDS, len(found), max(size - 4, 0)))
 
 
@@ -220,10 +224,10 @@ def _shown_elsewhere(dictation: Draft, drafts: list[Draft]) -> bool:
 
 def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
          last_seen: dict[str, datetime] | None = None, library_topic: str | None = None,
-         typing: bool = True, audio: bool = False) -> list[Draft]:
+         typing: bool = True, audio: bool = False, kinds: frozenset[str] | None = None) -> list[Draft]:
     """The session's drafts in order: the intro card (when there are new words), then the graded items.
     `typing` False leaves out the kinds answered by typing or speaking (a while-you-wait session is tapped
-    only); `audio` adds the kinds with speech."""
+    only); `audio` adds the kinds with speech; `kinds`, when given, keeps only those kinds (with choice)."""
     last_seen = last_seen or {}
     candidates = [w for w in (pool.by_topic[library_topic] if library_topic else pool.words) if w.id in pool.choice]
     new = [w for w in candidates if w.key not in met]
@@ -232,7 +236,7 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
     fresh = _distinct(new, taken)[:min(NEW_WORDS if len(review) >= size - NEW_WORDS else NEW_WORDS_FIRST, size)]
     known = _distinct(review, taken)[:max(size - len(fresh), 0)]
     words = [*fresh, *known]
-    room_for = len(_boards(pool, words, met, random.Random(rng.random()), size))
+    room_for = len(_boards(pool, words, met, random.Random(rng.random()), size, kinds))
     while room_for and len(words) + room_for > size:
         # a board takes the place of a new word beyond the usual number, else of a word met before
         if len(fresh) > NEW_WORDS or not known:
@@ -241,7 +245,7 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
             known = known[:-1]
         words = [*fresh, *known]
     # the boards themselves come from the words the session keeps, so a new word on a board is introduced
-    found = _boards(pool, words, met, rng, size)[:room_for]
+    found = _boards(pool, words, met, rng, size, kinds)[:room_for]
     shown = tuple(text for board in found if board.kind == "sentence_order" for text in board.key["texts"])
     used: dict[str, set[tuple[str, str]]] = {word.id: set() for word in words}
     clozes: list[Word] = []
@@ -252,7 +256,8 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
             used[word.id].add(("choice", "meaning"))
             first.append(draft)
     for word in known:
-        draft = _item(pool, word, rng, used=used[word.id], clozes=clozes, shown=shown, typing=typing, audio=audio)
+        draft = _item(pool, word, rng, used=used[word.id], clozes=clozes, shown=shown, typing=typing, audio=audio,
+                      kinds=kinds)
         if draft is not None:
             first.append(draft)
     rng.shuffle(first)
@@ -264,7 +269,7 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
             if room <= 0:
                 break
             draft = _item(pool, word, rng, used=used[word.id], clozes=clozes, shown=shown, typing=typing,
-                          audio=audio)
+                          audio=audio, kinds=kinds)
             if draft is not None:
                 more.append(draft)
                 room -= 1
@@ -283,7 +288,8 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
         for index, draft in reversed(list(enumerate(graded))):
             if draft.kind == "dictation" and _shown_elsewhere(draft, [*intro, *graded]):
                 word = pool.by_id[draft.ref.removeprefix("word:")]
-                other = _item(pool, word, rng, used=used[word.id], clozes=clozes, typing=typing, audio=audio)
+                other = _item(pool, word, rng, used=used[word.id], clozes=clozes, typing=typing, audio=audio,
+                              kinds=kinds)
                 graded[index:index + 1] = [other] if other is not None else []
     for draft in graded:
         draft.key["met"] = sorted({key for key in draft.key.get("words", {}).values() if key in met})

@@ -1,0 +1,142 @@
+/* An answer to choose (components/ui/AnswerOption.tsx): a native radio over a card. The state is a
+   data-state attribute (default, selected, correct, incorrect, reveal, idle) and always comes with an icon
+   and words; the focus ring is a box-shadow because the radio itself is transparent. */
+@layer components {
+  .answer-group {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+  .answer-group-legend {
+    margin-bottom: var(--space-3);
+    padding: 0;
+    color: var(--text);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+  }
+  .answer-list {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+  .answer-option {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    min-height: 56px;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+    color: var(--text);
+    cursor: pointer;
+    transition:
+      border-color var(--dur-2) var(--ease-standard),
+      background var(--dur-2) var(--ease-standard);
+  }
+  .answer-option-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .answer-option-key {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+  }
+  .answer-option-body {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    gap: var(--space-1);
+    padding-top: 3px;
+    overflow-wrap: anywhere;
+  }
+  .answer-option-text {
+    font-size: var(--text-md);
+    font-weight: var(--weight-medium);
+  }
+  .answer-option-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+  }
+  .answer-option[data-state="default"]:hover {
+    border-color: var(--accent-border);
+    background: var(--accent-subtle);
+  }
+  .answer-option[data-state="selected"] {
+    border-color: var(--accent-solid);
+    background: var(--accent-subtle);
+    box-shadow: inset 0 0 0 1px var(--accent-solid);
+  }
+  .answer-option[data-state="selected"] .answer-option-key {
+    border-color: var(--accent-solid);
+    background: var(--accent-solid);
+    color: var(--text-on-solid);
+  }
+  .answer-option:has(.answer-option-input:focus-visible) {
+    box-shadow: 0 0 0 3px var(--focus-ring);
+  }
+  .answer-option[data-state="selected"]:has(.answer-option-input:focus-visible) {
+    box-shadow:
+      inset 0 0 0 1px var(--accent-solid),
+      0 0 0 3px var(--focus-ring);
+  }
+  /* after the verdict: read-only */
+  .answer-option[data-state="correct"],
+  .answer-option[data-state="incorrect"],
+  .answer-option[data-state="reveal"],
+  .answer-option[data-state="idle"] {
+    cursor: default;
+  }
+  .answer-option[data-state="correct"] .answer-option-input,
+  .answer-option[data-state="incorrect"] .answer-option-input,
+  .answer-option[data-state="reveal"] .answer-option-input,
+  .answer-option[data-state="idle"] .answer-option-input {
+    cursor: default;
+  }
+  .answer-option[data-state="correct"] {
+    border-color: var(--success-vivid);
+    background: var(--success-bg);
+    box-shadow: inset 0 0 0 1px var(--success-vivid);
+  }
+  .answer-option[data-state="correct"] .answer-option-mark,
+  .answer-option[data-state="reveal"] .answer-option-mark {
+    color: var(--success-ink);
+  }
+  /* a wrong choice is soft, never a solid fill */
+  .answer-option[data-state="incorrect"] {
+    border-color: var(--danger-vivid);
+    background: var(--danger-bg);
+  }
+  .answer-option[data-state="incorrect"] .answer-option-mark {
+    color: var(--danger-ink);
+  }
+  /* the right answer the learner did not choose: a dashed border, so it reads without colour too */
+  .answer-option[data-state="reveal"] {
+    border: 2px dashed var(--success-vivid);
+    padding: calc(var(--space-3) - 1px) calc(var(--space-4) - 1px);
+  }
+  .answer-option[data-state="idle"] {
+    border-color: var(--border);
+  }
+  .answer-option[data-state="idle"] .answer-option-key {
+    border-color: var(--border);
+  }
+}

@@ -156,7 +156,7 @@ general on purpose, so a new code gets its sentence in the same change.
 
 Interface text lives in the catalogue, never in components: `lib/ui-copy.ts` for shared groups (navigation,
 actions, states, errors, failures, welcome, honesty chips, about) and `lib/copy/*.ts` for one screen each
-(episode, video, words, missions, speech). Every entry has `nl`, `en` and `fa`; `UiText` renders the Dutch
+(episode, video, words, missions, speech, exercise). Every entry has `nl`, `en` and `fa`; `UiText` renders the Dutch
 with the glosses the learner chose and the level allows. Persian appears per batch only after a fluent
 reader has checked it: the owner reads a batch at `/dev/copy` and sets its flag in `lib/copy/review.ts`;
 until then English stands in for learners who chose it, and Persian-only learners see Dutch alone.
@@ -472,11 +472,15 @@ counted.
 
 `domains/exercises` runs practice as server-graded sessions (migration `0010`). `POST /exercises/sessions`
 (`request_id`, `source` `stage_skill` or `while_you_wait`, optional `stage_id` (the profile's level by
-default), `library_topic`, `size` 5-12, `fresh`) generates the items once from a seed (learner, request id,
+default), `library_topic`, `size` 5-12, `fresh`, and `kinds`, the kinds a client can show, always with
+`choice`) generates the items once from a seed (learner, request id,
 `GENERATOR_VERSION`) and stores them: `prompt` is what the browser may see, `key` stays on the server and out
 of the export (an item's `ref` too, until its answer has been shown). A new session answers 201; the same
 request id returns the same session (200), another one resumes an open session of the same kind under 12
-hours old (200, `resumed`), `fresh` starts over; the same id with other parameters is a 409.
+hours old (200, `resumed`; only one created with the same `kinds`), `fresh` starts over; the same id with
+other parameters is a 409. `POST .../items/{item_id}/report` ("Meld een probleem": `reason` answer_wrong,
+unclear, sound or other, an optional `note`) keeps the learner's report in the item's key for the content
+review and in their export; a later report replaces it, and it changes nothing in the session.
 `GET /exercises/sessions/{id}`, `POST .../items/{item_id}/answer`, `POST .../items/{item_id}/skip`,
 `POST .../items/{item_id}/override` and `POST .../finish` (`early` to stop before the end) complete it; every
 write locks the session row, and a repeated request id replays the stored response. An answer takes the shape
@@ -558,6 +562,27 @@ whole.
   or a built sentence (another order may be right). The summary lists each missed word, a board's one by one.
   Finishing offers the missed words not in the bank as `word_suggestions`; only the learner saves a word. Each
   attempt keeps the learner's own answer, which the export carries (`given`), with `overridden_at`.
+- **Web kit** (step 3.6, `components/exercise`, `/oefenen`): `ExerciseSession` runs a session from start to
+  summary through a pure reducer (`sessionReducer.ts`: creating, answering, checking, feedback, finishing,
+  summary, error); server responses are events, so a resumed session continues exactly from what the API
+  returns. It asks only for the kinds it can draw (`registry.ts`: choice, cloze by choice and odd one out until
+  step 3.7 adds the rest). The create request id is minted once, so a repeated effect or a retry replays; an
+  answer that did not arrive is sent again under the same id when it is the same answer, and under a new one
+  when the learner changed it; a 409 (already answered, session closed) reloads the session. Options are the
+  `AnswerOption` primitive (`components/ui`, `styles/ui/answer-option.css`): a native radio in its label in a
+  fieldset; `data-state` default, selected, correct, incorrect (soft, shaken once unless motion is reduced),
+  reveal (dashed) or idle, always with an icon and words. Dutch options show no gloss before the answer
+  (guessability); their meanings appear with the verdict. Keys 1 to 4 choose, Enter checks, Escape asks to
+  stop ("later verder" keeps the session, "rond nu af" finishes early); focus moves to each question and then to
+  "Verder"; a polite live region says the outcome; tones play only after the verdict and never for a miss. The
+  feedback bar shows the outcome ("Nog niet" for a miss, never red), the point, whether the item comes back,
+  and the word card; "Meld een probleem" opens the report. The summary shows what was done (answered, right
+  first time, right the second time, points, the session bonus), the missed words and the word-bank
+  suggestions to save. `/oefenen` is a focus mode of the shell (no sidebar or tabs); `?bron=wachten` is the
+  short tap-only session that Today offers under a pending episode. The answer round trip is timed in the
+  browser (`lib/client/round-trips.ts`, a `performance.measure` named `exercise-answer`); the target is a
+  p95 at or under 300 ms, checked through the proxy by `tests/e2e/exercises.spec.ts` and on Azure by
+  `scripts/verify_live.py --measure-answers`.
 - **Content gate**: a stage takes sessions only when 200 of its words support a four-option choice, its examples
   hold 150 distinct sentences and it supports two kinds with at least 50 items each (`VARIETY_MIN_*`,
   `KIND_MIN_ITEMS` in `pool.py`). `tests/test_exercise_generators.py` records each stage's numbers, with its

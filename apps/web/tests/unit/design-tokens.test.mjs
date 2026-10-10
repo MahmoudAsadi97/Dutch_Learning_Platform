@@ -68,6 +68,12 @@ const TEXT_PAIRS = [
   ["--success-ink", "--success-bg"],
   ["--warning-ink", "--warning-bg"],
   ["--danger-ink", "--danger-bg"],
+  // text inside answered options and the feedback bar
+  ["--text", "--success-bg"],
+  ["--text", "--danger-bg"],
+  ["--text-muted", "--success-bg"],
+  ["--text-muted", "--danger-bg"],
+  ["--success-ink", "--surface-raised"],
   ["--info-ink", "--info-bg"],
   ["--recording-ink", "--recording-bg"],
   ["--text-on-solid", "--success-solid"],
@@ -91,6 +97,10 @@ const GRAPHIC_PAIRS = [
   ["--focus-ring", "--surface-canvas"],
   ["--action-solid", "--surface-raised"],
   ["--success-vivid", "--surface-raised"],
+  // the borders that mark an answered option and the feedback bar
+  ["--success-vivid", "--success-bg"],
+  ["--danger-vivid", "--danger-bg"],
+  ["--border-strong", "--surface-sunken"],
   ["--warning-vivid", "--surface-raised"],
   ["--danger-vivid", "--surface-raised"],
   ["--recording-pulse", "--surface-raised"],

@@ -86,6 +86,8 @@ const SECTION_BY_SEGMENT: Record<string, string> = {
   missions: "/spreken",
   "speech-check": "/spreken",
   woorden: "/woorden",
+  // a practice session (focus mode) is about the learner's words
+  oefenen: "/woorden",
   progress: "/progress",
   settings: "/settings",
   // "Over de inhoud" is reached from Instellingen and belongs to that room

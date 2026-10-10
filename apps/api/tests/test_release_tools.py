@@ -69,6 +69,45 @@ def test_authenticated_mode_requires_explicit_paid_permission(monkeypatch):
     assert exc.value.code == 2
 
 
+def test_answer_timing_runs_only_when_asked_and_reports_the_p95(monkeypatch):
+    verify = module("verify_live")
+    view = {"id": "s1", "next_item_id": "intro", "items": [
+        {"id": "intro", "kind": "intro", "prompt": {"kind": "intro", "words": []}},
+        {"id": "i1", "kind": "choice", "prompt": {"options": [{"id": "aaaa"}, {"id": "cccc"}]}},
+        {"id": "i2", "kind": "cloze_choice", "prompt": {"options": [{"id": "bbbb"}]}},
+    ]}
+    following = {"intro": "i1", "i1": "i2", "i2": None}
+    sent = []
+
+    def fake(url, *, method="GET", headers=None, body=None):
+        payload = json.loads(body)
+        sent.append((url, payload))
+        assert headers["X-Request-Id"] == payload["request_id"] and headers["Cookie"] == "private-cookie"
+        if url.endswith("/exercises/sessions"):
+            return 201, {}, json.dumps(view).encode()
+        if url.endswith("/finish"):
+            return 200, {}, b"{}"
+        return 200, {}, json.dumps({"next_item_id": following[url.split("/items/")[1].split("/")[0]]}).encode()
+
+    monkeypatch.setattr(verify, "request", fake)
+    result = verify.answer_round_trips("https://example.invalid", "private-cookie")
+    assert result.passed and result.detail.startswith("2 answers")
+    assert sent[0][1]["source"] == "while_you_wait" and sent[0][1]["fresh"] is True
+    assert [payload["answer"] for url, payload in sent if url.endswith("/answer")] == [
+        {"done": True}, {"option": "aaaa"}, {"option": "bbbb"}]
+    assert sent[-1][1]["early"] is True, "the session is closed afterwards"
+    monkeypatch.setattr(verify, "ANSWER_P95_MS", -1)
+    assert not verify.answer_round_trips("https://example.invalid", "private-cookie").passed
+
+    monkeypatch.setenv("DLP_SESSION_COOKIE", "private-cookie")
+    monkeypatch.setattr(sys, "argv", ["verify_live.py", "--url", "https://example.invalid", "--mode", "authenticated",
+                                      "--allow-paid-smoke"])
+    monkeypatch.setattr(verify, "anonymous_checks", lambda base: [verify.Result("wall", True, "401")])
+    monkeypatch.setattr(verify, "signed_in_checks", lambda *args: [verify.Result("signed in", True, "ok")])
+    monkeypatch.setattr(verify, "answer_round_trips", lambda *args: pytest.fail("a session written unasked"))
+    assert verify.main() == 0
+
+
 def test_unrelated_redirect_is_not_a_sign_in_wall():
     verify = module("verify_live")
     assert not verify.is_sign_in_wall(302, {"location": "/dashboard"})

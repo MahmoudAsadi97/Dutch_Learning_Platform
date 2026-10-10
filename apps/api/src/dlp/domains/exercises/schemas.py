@@ -9,13 +9,18 @@ from __future__ import annotations
 import uuid
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 RequestId = Annotated[str, Field(min_length=8, max_length=80, pattern=r"^[a-zA-Z0-9_-]+$")]
 Source = Literal["stage_skill", "while_you_wait"]
 # "almost" is shown in a neutral colour and is never a mistake; "accepted" is the learner's own overrule
 Outcome = Literal["correct", "almost", "incorrect", "skipped", "done", "accepted", "heard", "not_heard"]
 OptionId = Annotated[str, Field(min_length=1, max_length=16)]
+# the kinds a session can hold besides its intro card; a client names those it can show
+GradedKind = Literal["choice", "cloze_choice", "odd_one_out", "cloze_typed", "typed_recall", "flashcard",
+                     "match_pairs", "de_het", "sentence_builder", "sentence_order", "listen_choose", "dictation",
+                     "shadow"]
+ReportReason = Literal["answer_wrong", "unclear", "sound", "other"]
 
 
 class CreateBody(BaseModel):
@@ -27,6 +32,17 @@ class CreateBody(BaseModel):
     library_topic: str | None = Field(default=None, min_length=1, max_length=120)  # a library topic (topic.nl)
     size: int | None = Field(default=None, ge=5, le=12)
     fresh: bool = False  # start a new session even when one is open
+    # only these kinds (a client that cannot show the others yet); recognition by choice is always among them
+    kinds: list[GradedKind] | None = Field(default=None, min_length=1, max_length=13)
+
+    @field_validator("kinds")
+    @classmethod
+    def _kinds(cls, kinds: list[str] | None) -> list[str] | None:
+        if kinds is None:
+            return None
+        if "choice" not in kinds:
+            raise ValueError("kinds must include choice")
+        return sorted(set(kinds))
 
 
 class AnswerValue(BaseModel):
@@ -58,6 +74,19 @@ class SkipBody(BaseModel):
 class OverrideBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
     request_id: RequestId
+
+
+class ReportBody(BaseModel):
+    """"Meld een probleem": something about this exercise looks wrong to the learner."""
+    model_config = ConfigDict(extra="forbid")
+    request_id: RequestId
+    reason: ReportReason
+    note: str | None = Field(default=None, max_length=500)
+
+
+class ReportResult(BaseModel):
+    item_id: uuid.UUID
+    reason: ReportReason
 
 
 class FinishBody(BaseModel):

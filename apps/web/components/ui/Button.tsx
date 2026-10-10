@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ButtonHTMLAttributes, ComponentProps, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import { Icon, type IconName } from "@/components/Icon";
 
@@ -51,7 +51,7 @@ export function Button({
   type = "button",
   children,
   ...rest
-}: ButtonHTMLAttributes<HTMLButtonElement> & Extras) {
+}: ComponentProps<"button"> & Extras) {
   return (
     <button type={type} className={buttonClass({ variant, size, className })} {...rest}>
       <Content icon={icon} iconEnd={iconEnd}>

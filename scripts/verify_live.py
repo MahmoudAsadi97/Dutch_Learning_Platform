@@ -2,13 +2,16 @@
 
     python scripts/verify_live.py --url https://dlp-web.<region>.azurecontainerapps.io
     DLP_SESSION_COOKIE=... python scripts/verify_live.py --url ... --mode authenticated --allow-paid-smoke
+    DLP_SESSION_COOKIE=... python scripts/verify_live.py --url ... --mode authenticated --allow-paid-smoke --measure-answers
 
 Without a cookie it checks what an anonymous visitor may see: the sign-in wall on the page and on the
 API path. API ingress isolation is checked separately by azure_release.py. With a signed-in cookie (copied
 from the browser after logging in) it also runs the authenticated checks: preflight reports the Azure
 providers, one synthesis carries the `azure-neural` label, usage counters answer, and the acceptance
 checks pass. Exit code 0 only when every check passed. Nothing here writes to the environment except
-one short synthesis (counted in the usage budget).
+one short synthesis (counted in the usage budget), and with `--measure-answers` one short tap-only practice
+session in the signed-in learner's own account (its answers, points and misses stay there): it times every
+answer from this machine through the sign-in proxy and passes when the p95 is at or under 300 ms (step 3.6).
 """
 
 from __future__ import annotations
@@ -17,6 +20,7 @@ import argparse
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.request
 import uuid
@@ -24,6 +28,7 @@ from dataclasses import dataclass
 from urllib.parse import urlparse
 
 TIMEOUT = 30
+ANSWER_P95_MS = 300
 
 
 @dataclass
@@ -130,11 +135,54 @@ def signed_in_checks(base: str, cookie: str) -> list[Result]:
     return results
 
 
+def answer_round_trips(base: str, cookie: str) -> Result:
+    """One short practice session answered with each item's first option, timing every answer."""
+    name = f"practice answer round trip p95 <= {ANSWER_P95_MS} ms"
+    common = {"Cookie": cookie, "Accept": "application/json", "Content-Type": "application/json",
+              "X-Requested-With": "fetch"}
+
+    def post(path: str, payload: dict) -> tuple[int, dict, float]:
+        request_id = uuid.uuid4().hex
+        started = time.perf_counter()
+        status, _, body = request(f"{base}/api/{path}", method="POST", headers={**common, "X-Request-Id": request_id},
+                                  body=json.dumps({"request_id": request_id, **payload}).encode("utf-8"))
+        elapsed = (time.perf_counter() - started) * 1000
+        return status, json.loads(body) if status in (200, 201) else {}, elapsed
+
+    status, view, _ = post("exercises/sessions", {"source": "while_you_wait", "fresh": True,
+                                                  "kinds": ["choice", "cloze_choice", "odd_one_out"]})
+    if status not in (200, 201):
+        return Result(name, False, f"starting a session: HTTP {status}")
+    items = {item["id"]: item for item in view["items"]}
+    timings: list[float] = []
+    next_id = view.get("next_item_id")
+    for _ in range(30):
+        if not next_id:
+            break
+        item = items[next_id]
+        answer = {"done": True} if item["kind"] == "intro" else {"option": item["prompt"]["options"][0]["id"]}
+        status, result, elapsed = post(f"exercises/sessions/{view['id']}/items/{next_id}/answer", {"answer": answer})
+        if status != 200:
+            return Result(name, False, f"answering: HTTP {status}")
+        if item["kind"] != "intro":
+            timings.append(elapsed)
+        next_id = result.get("next_item_id")
+    post(f"exercises/sessions/{view['id']}/finish", {"early": True})
+    if not timings:
+        return Result(name, False, "no answers were timed")
+    ordered = sorted(timings)
+    p50 = ordered[max(0, (len(ordered) + 1) // 2 - 1)]
+    p95 = ordered[min(len(ordered), -(-95 * len(ordered) // 100)) - 1]
+    return Result(name, p95 <= ANSWER_P95_MS, f"{len(timings)} answers, p50 {p50:.0f} ms, p95 {p95:.0f} ms")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--url", required=True, help="public URL of the web app, without a trailing slash")
     parser.add_argument("--mode", choices=["anonymous", "authenticated"], default="anonymous")
     parser.add_argument("--allow-paid-smoke", action="store_true", help="authorise one budgeted short synthesis")
+    parser.add_argument("--measure-answers", action="store_true",
+                        help="time one short practice session in the signed-in account (writes its answers)")
     args = parser.parse_args()
     base = args.url.rstrip("/")
     parsed = urlparse(base)
@@ -148,6 +196,8 @@ def main() -> int:
     if args.mode == "authenticated":
         try:
             results.extend(signed_in_checks(base, cookie))
+            if args.measure_answers:
+                results.append(answer_round_trips(base, cookie))
         except (ValueError, TypeError, KeyError):
             results.append(Result("authenticated response format", False, "unexpected JSON response"))
 

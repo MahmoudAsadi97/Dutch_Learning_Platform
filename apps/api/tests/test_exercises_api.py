@@ -287,6 +287,40 @@ def test_the_goal_moment_reaches_the_answer_that_crosses_it(client):
     assert replay["goal_reached"] is True, "a retried crossing says so again"
 
 
+def test_a_client_names_the_kinds_it_can_show(client):
+    """A screen that shows only some kinds yet gets only those; another set of kinds is another session."""
+    shown = ["choice", "cloze_choice", "odd_one_out"]
+    for n in range(6):
+        view = _create(client, f"exercise-kinds-{n:04d}", kinds=shown, size=12, fresh=True).json()
+        assert {item["kind"] for item in view["items"]} <= {"intro", *shown}
+    again = _create(client, "exercise-kinds-0100", kinds=list(reversed(shown))).json()
+    assert again["resumed"] and again["id"] == view["id"], "the same kinds in another order resume it"
+    other = _create(client, "exercise-kinds-0101")
+    assert other.status_code == 201, "a client that shows every kind does not resume a narrower session"
+    assert _create(client, "exercise-kinds-0102", kinds=["cloze_choice"]).status_code == 422
+    assert _create(client, "exercise-kinds-0103", kinds=["choice", "unknown"]).status_code == 422
+
+
+def test_a_report_is_kept_with_the_item_and_changes_nothing(client):
+    view = _create(client, "exercise-report-0001").json()
+    item = next(entry for entry in view["items"] if entry["kind"] != "intro")
+    first = _post(client, view, item, "report", request_id="exercise-report-0101", reason="unclear", note=" Raar ")
+    assert first.status_code == 200 and first.json()["reason"] == "unclear"
+    again = _post(client, view, item, "report", request_id="exercise-report-0101", reason="unclear", note=" Raar ")
+    assert again.json() == first.json()
+    report = _key(item)["report"]
+    assert (report["reason"], report["note"]) == ("unclear", "Raar")
+    later = _post(client, view, item, "report", request_id="exercise-report-0102", reason="answer_wrong")
+    assert later.json()["reason"] == "answer_wrong" and _key(item)["report"]["note"] == ""
+    assert _post(client, view, item, "report", request_id="exercise-report-0103", reason="rude").status_code == 422
+    fresh = client.get(f"/exercises/sessions/{view['id']}", headers=auth_headers()).json()
+    assert fresh["progress"] == view["progress"] and "report" not in _keys(fresh)
+    exported = client.get("/export", headers=auth_headers()).json()
+    reported = [entry for entry in exported["exercises"][0]["items"] if entry["report"]]
+    assert [(entry["id"], entry["report"]["reason"]) for entry in reported] == [(item["id"], "answer_wrong")]
+    assert "request_id" not in reported[0]["report"]
+
+
 def test_another_learner_sees_nothing(client):
     view = _create(client).json()
     item = _graded(view)[0]

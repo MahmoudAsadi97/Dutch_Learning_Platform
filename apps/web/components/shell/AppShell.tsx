@@ -165,8 +165,9 @@ export function AppShell({
   }
   const section = navSection(path);
   const current = navItemFor(path);
-  // the welcome stands on its own: no sidebar and no bottom tabs until the learner has a starting point
-  const bare = path === "/welkom" || path.startsWith("/welkom/");
+  // the welcome stands on its own (no sidebar and no bottom tabs until the learner has a starting point), and a
+  // practice session is in focus mode
+  const bare = path === "/welkom" || path.startsWith("/welkom/") || path === "/oefenen";
   return (
     <NavigationGuardContext.Provider value={registerGuard}>
       <DeveloperDetailsProvider show={environment !== "production"}>

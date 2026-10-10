@@ -17,6 +17,8 @@ from dlp.domains.exercises.schemas import (
     FinishBody,
     FinishResult,
     OverrideBody,
+    ReportBody,
+    ReportResult,
     SessionView,
     SkipBody,
 )
@@ -96,6 +98,14 @@ def override_item(session_id: uuid.UUID, item_id: uuid.UUID, body: OverrideBody,
                   ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)):
     """"Mijn antwoord klopt ook" on a typed answer or a built sentence; it never completes anything."""
     return _run(lambda: service.override(session, ctx.learner.id, session_id, item_id, request_id=body.request_id))
+
+
+@router.post("/sessions/{session_id}/items/{item_id}/report", response_model=ReportResult)
+def report_item(session_id: uuid.UUID, item_id: uuid.UUID, body: ReportBody,
+                ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)):
+    """"Meld een probleem": kept with the item for the content review; it changes nothing in the session."""
+    return _run(lambda: service.report(session, ctx.learner.id, session_id, item_id, request_id=body.request_id,
+                                       reason=body.reason, note=body.note))
 
 
 @router.post("/sessions/{session_id}/finish", response_model=FinishResult)

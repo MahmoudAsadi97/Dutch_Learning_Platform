@@ -19,6 +19,7 @@ import { useDeveloperDetails } from "@/components/shell/EnvContext";
 import { HonestyChip } from "@/components/ui/HonestyChip";
 import { episodeFailure } from "@/lib/client/failures";
 import { UiText } from "@/components/ui/UiText";
+import { WaitPracticeCard } from "@/components/exercise/WaitPracticeCard";
 import { uiCopy, type Copy } from "@/lib/ui-copy";
 
 const POLL_MS = 5000;
@@ -179,6 +180,8 @@ export function TodayHome() {
               </div>
             </div>
           )}
+          {/* outside the status region, which announces its own changes */}
+          {episode && pending && <WaitPracticeCard />}
           {!episode && awaiting && (
             <div className="episode-pending choose-next">
               <Cover number={awaiting.number} />
