@@ -13,7 +13,9 @@ from pydantic import BaseModel, ConfigDict, Field
 
 RequestId = Annotated[str, Field(min_length=8, max_length=80, pattern=r"^[a-zA-Z0-9_-]+$")]
 Source = Literal["stage_skill", "while_you_wait"]
-Outcome = Literal["correct", "incorrect", "skipped", "done"]
+# "almost" is shown in a neutral colour and is never a mistake; "accepted" is the learner's own overrule
+Outcome = Literal["correct", "almost", "incorrect", "skipped", "done", "accepted"]
+OptionId = Annotated[str, Field(min_length=1, max_length=16)]
 
 
 class CreateBody(BaseModel):
@@ -28,9 +30,16 @@ class CreateBody(BaseModel):
 
 
 class AnswerValue(BaseModel):
+    """One of these, by kind: an option; done (intro card); typed text; known (flashcard); pairs (left id to
+    right id); bins (option id to de or het); order (tile or sentence ids, first to last)."""
     model_config = ConfigDict(extra="forbid")
-    option: str | None = Field(default=None, min_length=1, max_length=16)
+    option: OptionId | None = None
     done: bool | None = None
+    text: str | None = Field(default=None, max_length=300)
+    known: bool | None = None
+    pairs: dict[OptionId, OptionId] | None = Field(default=None, max_length=8)
+    bins: dict[OptionId, Literal["de", "het"]] | None = Field(default=None, max_length=8)
+    order: list[OptionId] | None = Field(default=None, max_length=12)
 
 
 class AnswerBody(BaseModel):
@@ -44,6 +53,11 @@ class SkipBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
     request_id: RequestId
     reason: Literal["unknown", "no_microphone", "no_audio"] = "unknown"
+
+
+class OverrideBody(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    request_id: RequestId
 
 
 class FinishBody(BaseModel):
@@ -79,8 +93,55 @@ class ChoicePrompt(BaseModel):
 class ClozePrompt(BaseModel):
     kind: Literal["cloze_choice"]
     sentence: str  # "___" marks the blank
-    cue: Text | None = None  # the sentence's translation, when siblings would also fit
+    cue: Text | None = None  # the sentence's translation, which tells siblings that fit the blank apart
     options: list[Option]
+
+
+class Hint(BaseModel):
+    first: str  # the first letter
+    length: int
+
+
+class ClozeTypedPrompt(BaseModel):
+    kind: Literal["cloze_typed"]
+    sentence: str
+    cue: Text | None = None
+    hint: Hint  # shown only when the learner asks; using it is reported with the answer
+
+
+class TypedRecallPrompt(BaseModel):
+    kind: Literal["typed_recall"]
+    cue: Text  # the meaning in the support language
+    hint: Hint
+
+
+class FlashcardPrompt(BaseModel):
+    kind: Literal["flashcard"]
+    term: str
+
+
+class MatchPairsPrompt(BaseModel):
+    kind: Literal["match_pairs"]
+    left: list[Option]  # Dutch words
+    right: list[Option]  # meanings, in another order
+
+
+class DeHetPrompt(BaseModel):
+    kind: Literal["de_het"]
+    bins: list[Literal["de", "het"]]
+    options: list[Option]  # nouns without their article
+
+
+class SentenceBuilderPrompt(BaseModel):
+    kind: Literal["sentence_builder"]
+    tiles: list[Option]  # words or word groups, in another order
+    end: str  # the final punctuation
+    cue: Text | None = None
+
+
+class SentenceOrderPrompt(BaseModel):
+    kind: Literal["sentence_order"]
+    sentences: list[Option]
 
 
 class OddPrompt(BaseModel):
@@ -100,7 +161,9 @@ class IntroPrompt(BaseModel):
     words: list[IntroWord]
 
 
-Prompt = Annotated[ChoicePrompt | ClozePrompt | OddPrompt | IntroPrompt, Field(discriminator="kind")]
+Prompt = Annotated[ChoicePrompt | ClozePrompt | OddPrompt | IntroPrompt | ClozeTypedPrompt | TypedRecallPrompt
+                   | FlashcardPrompt | MatchPairsPrompt | DeHetPrompt | SentenceBuilderPrompt | SentenceOrderPrompt,
+                   Field(discriminator="kind")]
 
 
 class WordCard(BaseModel):
@@ -108,6 +171,18 @@ class WordCard(BaseModel):
     term: str
     meaning: Text
     example: Text
+
+
+class DiffOp(BaseModel):
+    op: Literal["same", "missing", "extra", "changed"]
+    expected: str = ""
+    given: str = ""
+
+
+class PartResult(BaseModel):
+    given: str
+    correct: str
+    ok: bool
 
 
 class Feedback(BaseModel):
@@ -119,6 +194,20 @@ class Feedback(BaseModel):
     word: WordCard | None = None
     sentence: str | None = None  # a cloze sentence, filled in
     odd_topic: Text | None = None  # odd one out: where the odd word belongs
+    typed: str | None = None  # typed kinds: what the learner typed, the answer it was compared with, and why
+    expected: str | None = None
+    notes: list[str] = []
+    diff: list[DiffOp] = []
+    pairs: dict[str, PartResult] | None = None  # match pairs: per left id
+    bins: dict[str, PartResult] | None = None  # de/het: per noun id
+    cards: dict[str, WordCard] | None = None  # the words of a board
+    order: list[str] | None = None  # the right order of tiles or sentences
+    given_order: list[str] | None = None
+    first_difference: int | None = None
+    texts: list[str] | None = None  # the pieces in the right order
+    translation: dict[str, list[str]] | None = None
+    known: bool | None = None
+    overridable: bool = False  # the learner may say the answer is right too
 
 
 class Progress(BaseModel):
@@ -162,6 +251,7 @@ class Summary(BaseModel):
     first_try_correct: int
     fixed_on_retry: int
     skipped: int
+    overridden: int = 0  # answers the learner overruled; they never count towards completion
     points_earned: int  # items and the session bonus
     session_bonus: int
     by_kind: dict[str, KindCount]

@@ -20,7 +20,7 @@ import uuid
 from datetime import timedelta
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
 from dlp.db.base import utcnow
@@ -142,12 +142,19 @@ def _attempts_left(item: ExerciseItem) -> int:
 
 
 def _prompt(row: ExerciseSession, item: ExerciseItem) -> dict[str, Any]:
-    """An item asked again has its options in a new order."""
+    """An item asked again has its options, tiles or sentences in a new order (never the solution)."""
     prompt = dict(item.prompt)
-    if item.attempts and not item.closed and "options" in prompt:
-        options = list(prompt["options"])
-        random.Random(f"{row.seed}:{item.position}:{len(item.attempts) + 1}").shuffle(options)
-        prompt["options"] = options
+    if not item.attempts or item.closed:
+        return prompt
+    rng = random.Random(f"{row.seed}:{item.position}:{len(item.attempts) + 1}")
+    for name in ("options", "right", "tiles", "sentences"):
+        if name in prompt:
+            pieces = list(prompt[name])
+            for _ in range(20):
+                rng.shuffle(pieces)
+                if [piece["id"] for piece in pieces] != item.key.get("order"):
+                    break
+            prompt[name] = pieces
     return prompt
 
 
@@ -179,33 +186,75 @@ def session_view(row: ExerciseSession, rows: list[ExerciseItem], *, resumed: boo
 
 # --- answering ---------------------------------------------------------------------------------------------
 
-def _feedback(item: ExerciseItem, outcome: str, option: str | None) -> dict[str, Any]:
+def _feedback(item: ExerciseItem, outcome: str, judged: graders.Judgement | None) -> dict[str, Any]:
+    """What the answer may now reveal: the key's answer, glosses, word cards and the grader's verdict."""
     if item.kind == "intro":
         return {"outcome": outcome}
     key = item.key
-    return {"outcome": outcome, "correct": key["answer"], "given": option, "support": key.get("support", []),
-            "explanation": key.get("explanation"), "word": key.get("word"), "sentence": key.get("sentence"),
-            "odd_topic": key.get("odd_topic")}
+    feedback: dict[str, Any] = {
+        "outcome": outcome, "correct": key.get("answer"), "support": key.get("support", []),
+        "explanation": key.get("explanation"), "word": key.get("word"), "sentence": key.get("sentence"),
+        "odd_topic": key.get("odd_topic"), "cards": key.get("cards"), "texts": key.get("texts"),
+        "order": key.get("order"), "translation": key.get("translation"),
+        "overridable": item.kind in graders.OVERRIDABLE and outcome in ("incorrect", "almost"),
+    }
+    if item.kind in graders.TYPED_KINDS:
+        feedback["expected"] = key["accepted"][0]
+    return {**feedback, **(judged.feedback if judged else {})}
 
 
-def _record_mistake(session: Session, row: ExerciseSession, item: ExerciseItem, *, option: str | None,
-                    outcome: str, request_id: str) -> None:
+def _record_mistakes(session: Session, row: ExerciseSession, item: ExerciseItem, *, judged: graders.Judgement | None,
+                     outcome: str, request_id: str) -> None:
+    """A row per missed part on a word met before this session: the item's word, the word the learner took for
+    the odd one, every wrong pair or noun of a board. A first encounter is not a mistake."""
     key = item.key
+    if item.kind in graders.NO_MISTAKES:
+        return
     authored = bool(key.get("authored"))
-    # odd one out: the word the learner took for the odd one is the word they did not place
-    odd = item.kind == "odd_one_out"
-    lemma = key.get("words", {}).get(option, "") if odd else item.word
-    if not authored and (not lemma or lemma not in key.get("met", [])):
-        return  # a first encounter, not a mistake
+    parts = judged.misses if judged else ["answer"]
+    met = set(key.get("met", []))
     support = {entry["id"]: entry for entry in key.get("support", [])}
-    mistakes.record_mistake(
-        session, learner_id=row.learner_id, source="exercise", source_id=str(item.id), stage_id=row.stage_id,
-        category=category_for(item.kind, authored=authored), skill=item.skill, kind=item.kind,
-        ref=key.get("refs", {}).get(option, "") if odd else item.ref,
-        lemma=lemma, given=support.get(option, {}).get("nl", "") if option else "",
-        expected=support.get(key["answer"], {}).get("nl", ""), request_id=request_id,
-        detail={"outcome": outcome, "direction": item.prompt.get("direction"), "option": option},
-    )
+    for part in parts:
+        if item.kind == "odd_one_out" or item.kind in ("match_pairs", "de_het"):
+            lemma, ref = key.get("words", {}).get(part, ""), key.get("refs", {}).get(part, "")
+        else:
+            lemma, ref = item.word, item.ref
+        if not authored and (not lemma or lemma not in met):
+            continue
+        given, expected = "", ""
+        if item.kind in graders.OPTION_KINDS:
+            given = support.get(part, {}).get("nl", "") if outcome != "skipped" else ""
+            expected = support.get(key["answer"], {}).get("nl", "")
+        elif item.kind in graders.TYPED_KINDS:
+            given, expected = (judged.feedback.get("typed", "") if judged else ""), key["accepted"][0]
+        elif item.kind == "match_pairs":
+            # the meaning the learner matched with this word, and its own
+            chosen = judged.feedback["pairs"][part]["given"] if judged else ""
+            owner = next((left for left, right in key["pairs"].items() if right == chosen), None)
+            given = key["cards"][owner]["meaning"]["en"] if owner else ""
+            expected = key["cards"][part]["meaning"]["en"]
+        elif item.kind == "de_het":
+            card = key["cards"][part]
+            given = f"{judged.feedback['bins'][part]['given']} {card['term'].split(' ', 1)[-1]}" if judged else ""
+            expected = card["term"]
+        elif item.kind == "sentence_builder":
+            given = " ".join(key["texts"][key["order"].index(i)] for i in judged.feedback["given_order"]) if judged else ""
+            expected = key["sentence"]
+        many = item.kind in ("match_pairs", "de_het")
+        mistakes.record_mistake(
+            session, learner_id=row.learner_id, source="exercise",
+            source_id=f"{item.id}:{part}" if many else str(item.id), stage_id=row.stage_id,
+            category=category_for(item.kind, authored=authored), skill=item.skill, kind=item.kind, ref=ref,
+            lemma=lemma, given=given, expected=expected, request_id=request_id,
+            detail={"outcome": outcome, "direction": item.prompt.get("direction"), "part": part},
+        )
+
+
+def _lexicon(row: ExerciseSession) -> frozenset[str]:
+    try:
+        return pool_for(row.stage_id).lexicon
+    except Exception:  # the real-word guard is a refinement; an unreadable library must not stop grading
+        return frozenset()
 
 
 def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item_id: uuid.UUID, *, request_id: str,
@@ -216,7 +265,8 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
     item = next((candidate for candidate in rows if candidate.id == item_id), None)
     if item is None:
         raise ExerciseError("exercise item not found", 404)
-    signature = fingerprint({"answer": answer.model_dump() if answer else None, "skip": skip})
+    given = answer.model_dump(exclude_none=True) if answer else {}
+    signature = fingerprint({"answer": given or None, "skip": skip})
     previous = next((attempt for attempt in item.attempts if attempt["request_id"] == request_id), None)
     if previous is not None:
         if previous["answer_hash"] != signature:
@@ -226,25 +276,27 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
         raise ExerciseError("this exercise session is already finished", 409, code="session_closed")
     if item.closed:
         raise ExerciseError("this item is already answered", 409, code="already_answered")
-    option = answer.option if answer else None
     if skip in AUDIO_SKIPS and item.kind not in AUDIO_KINDS:
         raise ExerciseError("this item has no audio to skip for", 422)
+    judged: graders.Judgement | None = None
     if skip is not None:
         outcome = "done" if item.kind == "intro" else "skipped"
     elif item.kind == "intro":
-        if not (answer and answer.done):
+        if not given.get("done"):
             raise ExerciseError("an intro card is closed with done", 422)
         outcome = "done"
     else:
-        if option not in {entry["id"] for entry in item.prompt["options"]}:
-            raise ExerciseError("choose one of the item's options", 422)
-        outcome = graders.grade(item.kind, item.key, option)
+        try:
+            judged = graders.grade(item.kind, item.prompt, item.key, given, _lexicon(row))
+        except graders.InvalidAnswer as invalid:
+            raise ExerciseError(str(invalid), 422) from invalid
+        outcome = judged.outcome
     attempt = len(item.attempts) + 1
-    closed = outcome in ("correct", "done") or attempt >= MAX_ATTEMPTS or skip in AUDIO_SKIPS
+    closed = outcome in ("correct", "almost", "done") or attempt >= MAX_ATTEMPTS or skip in AUDIO_SKIPS
     if attempt == 1:
         item.first_outcome = outcome
         if outcome in ("incorrect", "skipped") and skip in (None, "unknown"):
-            _record_mistake(session, row, item, option=option, outcome=outcome, request_id=request_id)
+            _record_mistakes(session, row, item, judged=judged, outcome=outcome, request_id=request_id)
     award = None
     if item.kind != "intro" and outcome != "skipped" and not _answered(item):
         # the first real answer earns the item's point, right or wrong
@@ -259,7 +311,7 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
     response: dict[str, Any] = {
         "item_id": str(item.id), "attempt": attempt, "outcome": outcome, "closed": closed,
         "requeue": not closed, "attempts_left": 0 if closed else MAX_ATTEMPTS - attempt,
-        "feedback": _feedback(item, outcome, option), "points": award.points if award else 0,
+        "feedback": _feedback(item, outcome, judged), "points": award.points if award else 0,
     }
     item.attempts = [*item.attempts, {"request_id": request_id, "answer_hash": signature, "outcome": outcome,
                                       "at": now.isoformat(), "response": response}]
@@ -271,11 +323,56 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
     return {**response, **reached(award)}
 
 
+def override(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item_id: uuid.UUID, *,
+             request_id: str) -> dict[str, Any]:
+    """"Mijn antwoord klopt ook": the learner overrules the check of a typed answer or a built sentence. The item
+    closes as accepted, its mistake row goes, its point stays what it was; nothing completes because of it."""
+    row = get(session, learner_id, session_id, lock=True)
+    rows = items(session, row)
+    item = next((candidate for candidate in rows if candidate.id == item_id), None)
+    if item is None:
+        raise ExerciseError("exercise item not found", 404)
+    if item.kind not in graders.OVERRIDABLE:
+        raise ExerciseError("only a typed answer or a built sentence can be overruled", 422)
+    if item.key.get("override"):
+        return {**item.key["override"]["response"], **replayed(session, learner_id, request_id)}
+    if row.status != "active":
+        raise ExerciseError("this exercise session is already finished", 409, code="session_closed")
+    last = item.attempts[-1] if item.attempts else None
+    if last is None or last["outcome"] not in ("incorrect", "almost"):
+        raise ExerciseError("there is no answer to overrule", 409)
+    now = utcnow()
+    session.execute(delete(LearnerMistake).where(LearnerMistake.learner_id == learner_id,
+                                                 LearnerMistake.source == "exercise",
+                                                 LearnerMistake.source_id == str(item.id)))
+    item.closed = True
+    item.answered_at = item.answered_at or now
+    queue = _queue(rows)
+    feedback = {**last["response"]["feedback"], "outcome": "accepted", "overridable": False}
+    response = {"item_id": str(item.id), "attempt": len(item.attempts), "outcome": "accepted", "closed": True,
+                "requeue": False, "attempts_left": 0, "feedback": feedback, "points": 0,
+                "progress": progress(rows), "next_item_id": str(queue[0].id) if queue else None}
+    item.key = {**item.key, "override": {"request_id": request_id, "at": now.isoformat(), "response": response}}
+    item.attempts = [*item.attempts[:-1], {**last, "response": {**last["response"], "feedback": feedback}}]
+    row.updated_at = now
+    session.flush()
+    return response
+
+
 # --- finishing ---------------------------------------------------------------------------------------------
 
 def _answered(item: ExerciseItem) -> bool:
     """The learner answered it at least once (a skip is not an answer)."""
     return any(attempt["outcome"] != "skipped" for attempt in item.attempts)
+
+
+def _expected(item: ExerciseItem) -> str | None:
+    key = item.key
+    if item.kind in graders.TYPED_KINDS:
+        return key["accepted"][0]
+    if "sentence" in key and item.kind == "sentence_builder":
+        return key["sentence"]
+    return next((entry.get("nl") for entry in key.get("support", []) if entry["id"] == key.get("answer")), None)
 
 
 def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
@@ -285,21 +382,26 @@ def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
         counts = by_kind.setdefault(item.kind, {"total": 0, "first_try_correct": 0})
         counts["total"] += 1
         counts["first_try_correct"] += item.first_outcome == "correct"
-    missed = [item for item in graded if item.first_outcome in ("incorrect", "skipped")]
+    # an answer the learner overruled is theirs to judge: not listed as missed
+    missed = [item for item in graded if item.first_outcome in ("incorrect", "skipped") and not item.key.get("override")]
     return {
         "items_total": len(graded),
         "answered": sum(1 for item in graded if _answered(item)),
         "first_try_correct": sum(1 for item in graded if item.first_outcome == "correct"),
         "fixed_on_retry": sum(1 for item in missed if item.attempts and item.attempts[-1]["outcome"] == "correct"),
         "skipped": sum(1 for item in graded if item.first_outcome == "skipped"),
+        "overridden": sum(1 for item in graded if item.key.get("override")),
         "points_earned": sum(item.points_awarded for item in graded) + bonus,
         "session_bonus": bonus,
         "by_kind": by_kind,
-        "missed": [{"ref": item.ref, "term": item.key.get("word", {}).get("term"),
-                    "expected": next((entry.get("nl") for entry in item.key.get("support", [])
-                                      if entry["id"] == item.key.get("answer")), None)} for item in missed],
+        "missed": [{"ref": item.ref, "term": item.key.get("word", {}).get("term"), "expected": _expected(item)}
+                   for item in missed],
         "suggestions": [],
     }
+
+
+# kinds whose miss is about knowing a word, so the word is offered for the word bank
+SUGGEST_KINDS = frozenset({"choice", "cloze_choice", "cloze_typed", "typed_recall", "flashcard"})
 
 
 def finish(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, *, request_id: str,
@@ -324,11 +426,17 @@ def finish(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, *, re
         bonus = record_activity(session, learner_id, kind="exercise_session", ref=str(row.id), request_id=request_id,
                                 meta={"items": answered})
     summary = {**_summary(rows, bonus.points if bonus else 0), "request_id": request_id}
-    summary["suggestions"] = mistakes.suggest_words(session, learner_id, [
-        (item.word, item.key["word"]) for item in graded
-        if item.first_outcome in ("incorrect", "skipped") and item.kind in ("choice", "cloze_choice")
-        and item.word and "word" in item.key
-    ])
+    offered: list[tuple[str, dict[str, Any]]] = []
+    for item in graded:
+        if item.first_outcome not in ("incorrect", "skipped") or item.key.get("override"):
+            continue
+        if item.kind in SUGGEST_KINDS and item.word and "word" in item.key:
+            offered.append((item.word, item.key["word"]))
+        elif item.kind == "match_pairs" and item.attempts:
+            pairs = item.attempts[0]["response"]["feedback"].get("pairs") or {}
+            offered += [(item.key["words"][part], item.key["cards"][part]) for part, result in pairs.items()
+                        if not result["ok"]]
+    summary["suggestions"] = mistakes.suggest_words(session, learner_id, offered)
     now = utcnow()
     row.summary, row.status, row.finished_at, row.updated_at = summary, "finished", now, now
     session.flush()
@@ -358,7 +466,8 @@ def export(session: Session, learner_id: uuid.UUID) -> dict[str, Any]:
             "items": [{"id": str(item.id), "position": item.position, "kind": item.kind,
                        "ref": item.ref if item.closed or item.attempts else None,
                        "prompt": item.prompt, "first_outcome": item.first_outcome, "closed": item.closed,
-                       "hint_used": item.hint_used, "points": item.points_awarded,
+                       "hint_used": item.hint_used, "overridden": bool(item.key.get("override")),
+                       "points": item.points_awarded,
                        "attempts": [{"outcome": a["outcome"], "at": a["at"],
                                      "given": a["response"]["feedback"].get("given")} for a in item.attempts],
                        "answered_at": item.answered_at.isoformat() if item.answered_at else None}

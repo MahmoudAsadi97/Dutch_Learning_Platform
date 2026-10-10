@@ -71,10 +71,51 @@ def _keys(value) -> set[str]:
     return set()
 
 
+SECRET_KEYS = {"answer", "support", "explanation", "met", "words", "word", "definition", "refs", "accepted", "pairs",
+               "order", "texts", "cards", "translation"}
+
+
+def _check_board(stage, draft):
+    """Boards: every piece has an id that says nothing, and the pieces are never shown solved."""
+    prompt, key = draft.prompt, draft.key
+    assert not _keys(prompt) & (SECRET_KEYS - {"bins"})
+    if draft.kind == "match_pairs":
+        assert [o["id"] for o in prompt["right"]] != [key["pairs"][o["id"]] for o in prompt["left"]], "served solved"
+        assert len(prompt["left"]) == len(prompt["right"]) == 4
+    if draft.kind == "de_het":
+        articles = [key["bins"][o["id"]] for o in prompt["options"]]
+        assert sorted(articles) == ["de", "de", "de", "het", "het", "het"], "half het, so 'always de' scores half"
+        assert not any(o["nl"].split()[0] in ("de", "het", "een") for o in prompt["options"])
+    if draft.kind in ("sentence_builder", "sentence_order"):
+        pieces = prompt["tiles"] if draft.kind == "sentence_builder" else prompt["sentences"]
+        assert [piece["id"] for piece in pieces] != key["order"], "served solved"
+        assert sorted(piece["nl"] for piece in pieces) == sorted(key["texts"])
+    if draft.kind == "sentence_builder":
+        target = stage.by_id[draft.ref.removeprefix("sentence:")]
+        assert pool.word_pattern(target.core).search(key["sentence"])
+
+
+def _check_typed(stage, draft):
+    prompt, key = draft.prompt, draft.key
+    assert not _keys(prompt) & SECRET_KEYS
+    target = stage.by_id[draft.ref.removeprefix("word:")]
+    assert prompt["hint"]["length"] == len(key["accepted"][0] if draft.kind == "cloze_typed" else target.core)
+    if draft.kind == "cloze_typed":
+        assert prompt["sentence"].count("___") == 1 and not pool.word_pattern(target.core).search(prompt["sentence"])
+        assert prompt["cue"] and not gives_away(target)
+    else:
+        assert target.term in key["accepted"] and prompt["cue"] == {"en": target.meaning["en"],
+                                                                     "fa": target.meaning["fa"]}
+
+
 def _check_prompt(stage, draft):
     """What the browser sees: options with ids that say nothing, Dutch options in Dutch only, no answer."""
+    if draft.kind in ("match_pairs", "de_het", "sentence_builder", "sentence_order"):
+        return _check_board(stage, draft)
+    if draft.kind in ("cloze_typed", "typed_recall"):
+        return _check_typed(stage, draft)
     prompt, key = draft.prompt, draft.key
-    assert not _keys(prompt) & {"answer", "support", "explanation", "met", "words", "word", "definition", "refs"}
+    assert not _keys(prompt) & SECRET_KEYS
     ids = [option["id"] for option in prompt["options"]]
     assert len(set(ids)) == len(ids) == 4 and all(re.fullmatch(r"[a-z]{4}", i) for i in ids)
     assert key["answer"] in ids and set(key["refs"]) == set(ids)
@@ -124,8 +165,9 @@ def test_two_hundred_sessions_per_stage_keep_the_rules(stage_id):
         new = set(intro.words if intro else ())
         assert all(stage.by_id[word_id].key not in known for word_id in new)
         assert all(d.kind != "intro" for d in drafts[1:])
-        assert {f"word:{word_id}" for word_id in new} <= {d.ref for d in graded}, "every new word is practised"
-        clozes = [stage.by_id[d.ref.removeprefix("word:")] for d in graded if d.kind == "cloze_choice"]
+        practised = set().union(*(blueprints._targets(d) for d in graded))
+        assert new <= practised, "every new word on the intro card is practised"
+        clozes = [stage.by_id[d.ref.split(":", 1)[1]] for d in graded if d.kind in blueprints.EXAMPLE_KINDS]
         assert len({w.example["nl"] for w in clozes}) == len({w.frame for w in clozes}) == len(clozes), (
             "one cloze per example and per sentence frame")
         for word in clozes:
@@ -136,15 +178,17 @@ def test_two_hundred_sessions_per_stage_keep_the_rules(stage_id):
             kinds.add(draft.kind)
             _check_prompt(stage, draft)
             firsts.setdefault(draft.ref, draft.prompt.get("direction", draft.kind))
-            if draft.kind != "odd_one_out":
+            if draft.word:
                 assert (draft.word in draft.key["met"]) == (draft.word in known)
         for word_id in new:
             assert firsts.get(f"word:{word_id}") == "meaning", "a new word is first recognised"
         counts = Counter(d.word for d in graded if d.word)
         if not counts or max(counts.values()) * 2 <= len(graded) + 1:
             assert all(a.word != b.word for a, b in zip(graded, graded[1:], strict=False) if a.word), "spread"
-    assert "choice" in kinds and "cloze_choice" in kinds
+    assert {"choice", "cloze_choice", "cloze_typed", "typed_recall", "sentence_builder", "match_pairs"} <= kinds
     assert ("odd_one_out" in kinds) == stage.odd_one_out
+    assert ("de_het" in kinds) == bool(stage.sortable)
+    assert ("sentence_order" in kinds) == bool(stage.orders)
 
 
 def test_a_topic_session_stays_in_its_topic():
@@ -152,8 +196,9 @@ def test_a_topic_session_stays_in_its_topic():
     topic = stage.topics[3]
     drafts = blueprints.plan(stage, random.Random("topic"), size=8, met=frozenset(), library_topic=topic)
     assert {stage.by_id[i].topic for d in drafts if d.kind == "intro" for i in d.words} == {topic}
-    assert all(stage.by_id[d.ref.removeprefix("word:")].topic == topic for d in drafts
-               if d.kind not in ("intro", "odd_one_out"))
+    # de/het may also sort nouns the learner met elsewhere; here nothing was met
+    practised = set().union(*(blueprints._targets(d) for d in drafts if d.kind != "intro"))
+    assert {stage.by_id[i].topic for i in practised} == {topic}
 
 
 def test_spreading_keeps_each_word_apart_and_its_own_order():

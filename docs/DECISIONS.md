@@ -317,3 +317,16 @@ wrong ones: points reward practising, never a judgement of the learner's Dutch (
 stage offers sessions only above a stated content threshold, so thin material is not presented as practice;
 a stage that repeats an earlier word list is offered, and labelled as review (roadmap 3.9). The keys still
 sent by the stage view and Story Time are withdrawn when the lessons move onto the engine (roadmap 5.5).
+
+## D-29 · The learner may overrule the check; "almost" is not wrong — 2026-10-10
+
+Typed answers and sentences built from tiles are checked by code (step 3.4): a typed answer through the
+tolerant comparison (ENGINEERING, "Judging an answer"), a built sentence word by word against the authored
+order. Dutch often allows another right answer that no check knows (a synonym, another
+word order), so on those kinds the learner may say "mijn antwoord klopt ook". The item then closes as
+accepted, its mistake row is removed and it no longer appears among the missed words; it keeps the point it
+already earned by being answered, and it never counts towards completing a topic or a stage. "Almost" (a
+slip of the keyboard, a missing accent, an article the item forgives, two neighbouring sentences swapped)
+closes the item in a neutral colour and is never a mistake. A flashcard is the learner's own say and writes
+no mistake; neither does putting a Story Time paragraph back in order. Boards (match pairs, de/het) are
+submitted whole and judged per part, so a mistake names the word that was missed.

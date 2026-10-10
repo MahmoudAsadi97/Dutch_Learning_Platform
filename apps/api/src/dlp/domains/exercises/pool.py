@@ -13,6 +13,11 @@ tests/test_content_exercise_pool.py), so every cloze card shows the sentence's t
 tells them apart (the red-team rule of step 3.3, applied to every card). Where the translation shows the
 Dutch word itself (a cognate, "e-mail" as "email"), or fewer than three siblings remain, the word is practised
 by choice only.
+
+For the kinds of step 3.4 it also keeps the stage's terms (the real-word guard of typed answers), a sentence
+of each word's example cut into tiles or chunks (sentences.py), the nouns that can be sorted into de and het
+(up to pre-C1; from C1 nearly every noun is de), and runs of three or four sentences from the Story Time
+paragraphs to put back in order (from A2; earlier paragraphs are too short).
 """
 from __future__ import annotations
 
@@ -22,8 +27,10 @@ from dataclasses import dataclass, field
 
 from dlp.domains.curriculum import library
 from dlp.domains.curriculum.schemas import STAGE_IDS
+from dlp.domains.exercises import sentences as cutting
 from dlp.domains.exercises.compare import fold, strip_accents
 from dlp.domains.exercises.themes import related
+from dlp.domains.stories.validator import sentences
 from dlp.domains.stories.vocab import key_for
 
 ARTICLE = re.compile(r"^(de|het|een)\s+", re.I)
@@ -37,6 +44,10 @@ ODD_TOPIC_DISTANCE = 10
 ODD_ONE_OUT_LAST_STAGE = "b1"
 # Dutch definitions as choice options from A2 on
 DEFINITION_FIRST_STAGE = "a2"
+# de/het sorting up to pre-C1; from C1 98% of the nouns take de
+DE_HET_LAST_STAGE = "pre-c1"
+# putting sentences back in order from A2; earlier Story Time paragraphs hold one or two sentences
+ORDER_FIRST_STAGE = "a2"
 # The content gate: a stage offers engine sessions only when this many of its words support a four-option
 # choice, its examples hold this many distinct sentences, and it supports at least this many kinds with at least
 # KIND_MIN_ITEMS items each. Every stage passes on the content of 6 Oct 2026 (tests/test_exercise_generators.py
@@ -74,6 +85,23 @@ class ClozeCard:
 
 
 @dataclass(frozen=True)
+class Pieces:
+    """A sentence of a word's example as tiles (short) or chunks (long), in the right order."""
+    pieces: tuple[str, ...]
+    end: str  # the final punctuation, shown after the pieces
+    sentence: str
+    cue: dict[str, str] | None  # the sentence's translation, when the translation splits into the same sentences
+
+
+@dataclass(frozen=True)
+class OrderRun:
+    ref: str  # story:<story id>:<paragraph>
+    sentences: tuple[str, ...]
+    translation: dict[str, tuple[str, ...]]  # en/fa, when the translation splits into the same sentences
+    words: frozenset[str]  # the story's vocabulary ids
+
+
+@dataclass(frozen=True)
 class Variety:
     words: int
     choice: int  # words with a four-option choice
@@ -101,6 +129,10 @@ class Pool:
     cloze: dict[str, ClozeCard]
     odd_one_out: bool
     definitions: bool
+    lexicon: frozenset[str] = frozenset()  # every term of the stage, for the real-word guard of typed answers
+    pieces: dict[str, Pieces] = field(default_factory=dict)  # word id -> a sentence for the sentence builder
+    sortable: tuple[str, ...] = ()  # word ids of nouns to sort into de and het
+    orders: tuple[OrderRun, ...] = ()
     variety: Variety = field(init=False)
 
     def __post_init__(self) -> None:
@@ -113,6 +145,14 @@ class Pool:
             examples=len({word.example["nl"] for word in self.words}),
             frames=len({word.frame for word in self.words if word.frame}),
             kinds=tuple(kind for kind, count in counts if count >= KIND_MIN_ITEMS)))
+
+    def available(self) -> dict[str, int]:
+        """How many items or cards each kind has at this stage (the availability matrix of step 3.4)."""
+        typed = sum(1 for word in self.words if word.span and not gives_away(word))
+        return {"choice": len(self.choice), "cloze_choice": len(self.cloze), "cloze_typed": typed,
+                "typed_recall": len(self.words), "flashcard": len(self.words), "match_pairs": len(self.choice),
+                "de_het": len(self.sortable), "sentence_builder": len(self.pieces), "sentence_order": len(self.orders),
+                "odd_one_out": self.variety.odd_one_out}
 
     def far_topics(self, topic: str) -> tuple[str, ...]:
         """Topics an odd word may come from: far down or up the list, and not the same theme."""
@@ -198,6 +238,49 @@ def _cloze(word: Word, siblings: tuple[Word, ...], patterns: dict[str, re.Patter
     return ClozeCard(sentence=word.example["nl"][:start] + "___" + word.example["nl"][end:], distractors=fitting)
 
 
+def _aligned(text: dict[str, str], index: int, count: int) -> dict[str, str] | None:
+    """The translation of sentence `index` of `count`, in the languages that split the same way."""
+    found = {lang: parts[index] for lang in ("en", "fa")
+             if len(parts := sentences(text[lang])) == count}
+    return found or None
+
+
+def _pieces(word: Word, lower: frozenset[str]) -> Pieces | None:
+    parts = sentences(word.example["nl"])
+    for index, part in enumerate(parts):
+        if not word_pattern(word.core).search(part):
+            continue
+        cut = cutting.tiles(part, lower) or cutting.chunks(part, lower)
+        if cut:
+            return Pieces(pieces=tuple(cut[0]), end=cut[1], sentence=part,
+                          cue=_aligned(word.example, index, len(parts)))
+    return None
+
+
+def _sortable(words: tuple[Word, ...]) -> tuple[str, ...]:
+    """Single-word nouns whose article is not in doubt (no other term of the stage gives it the other one)."""
+    articles: dict[str, set[str]] = {}
+    for word in words:
+        articles.setdefault(word.core, set()).add(word.article)
+    return tuple(word.id for word in words if word.article in ("de", "het") and " " not in word.core
+                 and articles[word.core] == {word.article})
+
+
+def _orders(bank) -> tuple[OrderRun, ...]:
+    runs: list[OrderRun] = []
+    for story in getattr(bank, "stories", ()):
+        for index, paragraph in enumerate(story.paragraphs):
+            run = cutting.order_run(paragraph.nl)
+            if run is None:
+                continue
+            count = len(sentences(paragraph.nl))
+            translation = {lang: tuple(parts[: len(run)]) for lang in ("en", "fa")
+                           if len(parts := sentences(getattr(paragraph, lang))) == count}
+            runs.append(OrderRun(ref=f"story:{story.id}:{index}", sentences=tuple(run), translation=translation,
+                                 words=frozenset(story.vocabulary_ids)))
+    return tuple(runs)
+
+
 def build(bank) -> Pool:
     topics: list[str] = []
     for item in bank.vocabulary:
@@ -219,6 +302,7 @@ def build(bank) -> Pool:
         if card:
             cloze[word.id] = card
     stage_index = STAGE_IDS.index(bank.stage_id)
+    lower = cutting.lower_words(word.example["nl"] for word in words)
     return Pool(
         stage_id=bank.stage_id,
         content_version=hashlib.sha256(bank.model_dump_json().encode()).hexdigest(),
@@ -226,6 +310,10 @@ def build(bank) -> Pool:
         choice=choice, cloze=cloze,
         odd_one_out=stage_index <= STAGE_IDS.index(ODD_ONE_OUT_LAST_STAGE),
         definitions=stage_index >= STAGE_IDS.index(DEFINITION_FIRST_STAGE),
+        lexicon=frozenset(word.term for word in words),
+        pieces={word.id: found for word in words if (found := _pieces(word, lower))},
+        sortable=_sortable(words) if stage_index <= STAGE_IDS.index(DE_HET_LAST_STAGE) else (),
+        orders=_orders(bank) if stage_index >= STAGE_IDS.index(ORDER_FIRST_STAGE) else (),
     )
 
 

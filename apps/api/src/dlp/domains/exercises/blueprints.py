@@ -4,11 +4,17 @@ A session takes up to NEW_WORDS new words (never practised in an earlier session
 in library order, and fills the rest with words met before, the least recently practised first; a first
 session, with nothing to review yet, introduces up to NEW_WORDS_FIRST. New words are shown on an ungraded
 intro card first and first practised by recognition (the Dutch word to its meaning). Every word gets one
-item, and further items in another kind or direction until the session has its size. No two cloze items use
-the same example (one example serves several A1 words; from pre-B2 an example also holds the next word's
-sentence), and no cloze target stands in another cloze's sentence. No two items about the same word follow
-each other where another order allows it, and one odd-one-out item joins where the stage has it and three
-words of one situation and word class are known.
+item, and further items in another kind or direction until the session has its size: choice in its
+directions, cloze by choice or typed, typed recall, the sentence builder. Items built on a word's example
+(cloze, typed cloze, sentence builder) never repeat an example or a sentence frame (one example serves several
+A1 words; from pre-B2 an example also holds the next word's sentence), and none shows another one's answer.
+No two items about the same word follow each other where another order allows it.
+
+Up to MAX_BOARDS boards take the place of single words: odd one out (where the stage has it and three words of
+one situation and word class are known), match pairs on four of the session's words, de/het on six nouns the
+learner knows or meets now (three of each, so "always de" scores half), and putting a Story Time paragraph
+that holds a session word back in order (from pre-B1, where the paragraphs are long enough). Flashcards are
+for saved words without a meaning (word review, roadmap 5.1) and are not planned here.
 """
 from __future__ import annotations
 
@@ -16,15 +22,18 @@ import random
 from collections import Counter
 from datetime import UTC, datetime
 
-from dlp.domains.exercises import generators
+from dlp.domains.exercises import boards, generators, typed
 from dlp.domains.exercises.generators import Draft
-from dlp.domains.exercises.pool import Pool, Word, word_pattern
+from dlp.domains.exercises.pool import Pool, Word, gives_away, word_pattern
 
 SIZES = {"stage_skill": 8, "while_you_wait": 5}
 SIZE_MIN, SIZE_MAX = 5, 12
 NEW_WORDS = 4
 NEW_WORDS_FIRST = 6
 ODD_ONE_OUT_MIN_SIZE = 6
+MAX_BOARDS = 2
+# kinds built on the word's example sentence: one per example and frame in a session
+EXAMPLE_KINDS = ("cloze_choice", "cloze_typed", "sentence_builder")
 _NEVER = datetime.min.replace(tzinfo=UTC)
 
 
@@ -47,20 +56,37 @@ def _cloze_fits(word: Word, clozes: list[Word]) -> bool:
 
 def _item(pool: Pool, word: Word, rng: random.Random, *, used: set[tuple[str, str]],
           clozes: list[Word]) -> Draft | None:
-    """An item for `word` in a kind or direction it has not had in this session."""
-    options: list[tuple[str, str]] = [("choice", direction) for direction in generators.directions(pool)]
-    card = pool.cloze.get(word.id)
-    if card and _cloze_fits(word, clozes):
-        options.append(("cloze_choice", ""))
+    """An item for `word` in a kind or direction it has not had in this session; choice is one kind among the
+    others (its direction is drawn after it), so recognition does not crowd out typing and building."""
+    directions = list(generators.directions(pool))
+    rng.shuffle(directions)
+    choice = next((("choice", d) for d in directions if ("choice", d) not in used), None)
+    options: list[tuple[str, str]] = [choice] if choice else []
+    options.append(("typed_recall", ""))
+    if _cloze_fits(word, clozes):
+        if word.id in pool.cloze:
+            options.append(("cloze_choice", ""))
+        if word.span and not gives_away(word):
+            options.append(("cloze_typed", ""))
+        if word.id in pool.pieces:
+            options.append(("sentence_builder", ""))
     rng.shuffle(options)
     for kind, direction in options:
         if (kind, direction) in used:
             continue
-        draft = (generators.cloze_choice(pool, word, rng) if kind == "cloze_choice"
-                 else generators.word_choice(pool, word, rng, direction))
+        if kind == "cloze_choice":
+            draft = generators.cloze_choice(pool, word, rng)
+        elif kind == "cloze_typed":
+            draft = typed.cloze_typed(pool, word)
+        elif kind == "typed_recall":
+            draft = typed.typed_recall(pool, word)
+        elif kind == "sentence_builder":
+            draft = boards.sentence_builder(pool, word, rng)
+        else:
+            draft = generators.word_choice(pool, word, rng, direction)
         if draft is not None:
             used.add((kind, direction))
-            if kind == "cloze_choice":
+            if kind in EXAMPLE_KINDS:
                 clozes.append(word)
             return draft
     return None
@@ -78,6 +104,56 @@ def _odd_one_out(pool: Pool, words: list[Word], met: frozenset[str], rng: random
                 if draft is not None:
                     return draft
     return None
+
+
+def _match_pairs(pool: Pool, words: list[Word], rng: random.Random) -> Draft | None:
+    order = list(words)
+    rng.shuffle(order)
+    picked: list[Word] = []
+    for word in order:
+        if all(word.key != other.key and word.core != other.core and not word.senses & other.senses
+               for other in picked):
+            picked.append(word)
+        if len(picked) == boards.PAIRS:
+            return boards.match_pairs(pool, picked, rng)
+    return None
+
+
+def _de_het(pool: Pool, words: list[Word], met: frozenset[str], rng: random.Random) -> Draft | None:
+    sortable = set(pool.sortable)
+    nouns = [w for w in words if w.id in sortable]
+    nouns += [pool.by_id[i] for i in pool.sortable if pool.by_id[i].key in met and pool.by_id[i] not in nouns]
+    half = boards.SORT_NOUNS // 2
+    by_article = {article: [w for w in nouns if w.article == article] for article in ("de", "het")}
+    if any(len(group) < half for group in by_article.values()):
+        return None
+    return boards.de_het(pool, [*rng.sample(by_article["de"], half), *rng.sample(by_article["het"], half)], rng)
+
+
+def _sentence_order(pool: Pool, words: list[Word], rng: random.Random) -> Draft | None:
+    ids = {word.id for word in words}
+    runs = [run for run in pool.orders if run.words & ids]
+    return boards.sentence_order(rng.choice(runs), rng) if runs else None
+
+
+def _boards(pool: Pool, words: list[Word], met: frozenset[str], rng: random.Random, size: int) -> list[Draft]:
+    """Up to MAX_BOARDS boards, chosen at random among those the words allow."""
+    found = [board for board in (
+        _odd_one_out(pool, words, met, rng) if size >= ODD_ONE_OUT_MIN_SIZE else None,
+        _match_pairs(pool, words, rng),
+        _de_het(pool, words, met, rng),
+        _sentence_order(pool, words, rng),
+    ) if board is not None]
+    return rng.sample(found, min(MAX_BOARDS, len(found), max(size - 4, 0)))
+
+
+def _targets(draft: Draft) -> set[str]:
+    """The library words an item practises (a board: all of its words; odd one out and ordering: none)."""
+    if draft.kind in ("match_pairs", "de_het"):
+        return set(draft.words)
+    if draft.ref.startswith("word:") and draft.kind != "odd_one_out":
+        return {draft.ref.removeprefix("word:")}
+    return set()
 
 
 def _spread(drafts: list[Draft]) -> list[Draft]:
@@ -108,12 +184,13 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
     fresh = _distinct(new, taken)[:min(NEW_WORDS if len(review) >= size - NEW_WORDS else NEW_WORDS_FIRST, size)]
     known = _distinct(review, taken)[:max(size - len(fresh), 0)]
     words = [*fresh, *known]
-    odd = _odd_one_out(pool, words, met, rng) if size >= ODD_ONE_OUT_MIN_SIZE else None
-    if odd is not None and len(words) >= size:  # it takes the place of a word met before, or of a new one
-        if known:
-            known = known[:-1]
-        else:
+    found = _boards(pool, words, met, rng, size)
+    while len(words) + len(found) > size:
+        # a board takes the place of a new word beyond the usual number, else of a word met before
+        if len(fresh) > NEW_WORDS or not known:
             fresh = fresh[:-1]
+        else:
+            known = known[:-1]
         words = [*fresh, *known]
     used: dict[str, set[tuple[str, str]]] = {word.id: set() for word in words}
     clozes: list[Word] = []
@@ -129,7 +206,7 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
             first.append(draft)
     rng.shuffle(first)
     more: list[Draft] = []
-    room = size - len(first) - (odd is not None)
+    room = size - len(first) - len(found)
     while room > 0:
         added = False
         for word in words:
@@ -143,12 +220,12 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
         if not added:
             break
     rng.shuffle(more)
-    if odd is not None:
-        more.insert(rng.randrange(len(more) + 1), odd)
+    for board in found:
+        more.insert(rng.randrange(len(more) + 1), board)
     graded = _spread([*first, *more])[:size]
     for draft in graded:
         draft.key["met"] = sorted({key for key in draft.key.get("words", {}).values() if key in met})
-    # the intro card shows only the new words the session goes on to practise
-    practised = {draft.ref for draft in graded}
-    shown = [word for word in fresh if f"word:{word.id}" in practised]
+    # the intro card shows the new words the session goes on to practise, and only those
+    practised = set().union(*(_targets(draft) for draft in graded)) if graded else set()
+    shown = [word for word in fresh if word.id in practised]
     return [generators.intro(pool.stage_id, shown), *graded] if shown else graded

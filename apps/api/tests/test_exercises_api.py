@@ -19,6 +19,7 @@ from dlp.domains.exercises import pool, service
 from dlp.domains.exercises.models import ExerciseItem, ExerciseSession, LearnerMistake, WordSuggestion
 from dlp.domains.exercises.pool import pool_for
 from dlp.domains.exercises.schemas import AnswerValue
+from dlp.domains.exercises.taxonomy import KIND_CATEGORY
 from dlp.domains.identity.models import Learner
 from tests.conftest import auth_headers
 
@@ -49,12 +50,39 @@ def _key(item) -> dict:
 
 
 def _right(item) -> dict:
-    return {"option": _key(item)["answer"]}
+    """The answer the key holds, in the shape the item's kind takes."""
+    key = _key(item)
+    if item["kind"] in ("cloze_typed", "typed_recall"):
+        return {"text": key["accepted"][0]}
+    if item["kind"] == "match_pairs":
+        return {"pairs": key["pairs"]}
+    if item["kind"] == "de_het":
+        return {"bins": key["bins"]}
+    if item["kind"] in ("sentence_builder", "sentence_order"):
+        return {"order": key["order"]}
+    return {"option": key["answer"]}
 
 
 def _wrong(item) -> dict:
-    answer = _key(item)["answer"]
-    return {"option": next(option["id"] for option in item["prompt"]["options"] if option["id"] != answer)}
+    """An answer that is plainly wrong (never 'almost')."""
+    key = _key(item)
+    if item["kind"] in ("cloze_typed", "typed_recall"):
+        return {"text": "zzzzzz"}
+    if item["kind"] == "match_pairs":
+        left = list(key["pairs"])
+        return {"pairs": dict(zip(left, [key["pairs"][i] for i in left[1:] + left[:1]], strict=True))}
+    if item["kind"] == "de_het":
+        return {"bins": {i: "het" if article == "de" else "de" for i, article in key["bins"].items()}}
+    if item["kind"] in ("sentence_builder", "sentence_order"):
+        order = key["order"]
+        return {"order": order[1:] + order[:1]}
+    return {"option": next(option["id"] for option in item["prompt"]["options"] if option["id"] != key["answer"])}
+
+
+def _pieces(prompt) -> list[str]:
+    """The ids of what the learner picks or places, in the order shown."""
+    name = next((name for name in ("options", "right", "tiles", "sentences") if name in prompt), None)
+    return [piece["id"] for piece in prompt[name]] if name else []
 
 
 def _graded(view) -> list[dict]:
@@ -81,7 +109,8 @@ def test_a_session_opens_with_the_new_words_and_shows_no_answer(client):
     assert intro["kind"] == "intro" and view["next_item_id"] == intro["id"]
     assert len(graded) == 8 and view["progress"] == {"closed": 0, "total": 8, "queued": 0}
     assert not _keys(graded) & SECRETS, "no key, gloss of a Dutch option or met-list before answering"
-    assert {item["kind"] for item in graded} <= {"choice", "cloze_choice", "odd_one_out"}
+    assert {item["kind"] for item in graded} <= {"choice", "cloze_choice", "odd_one_out", "match_pairs", "de_het",
+                                                 "cloze_typed", "typed_recall", "sentence_builder"}
     assert all(item["attempts_left"] == 2 and item["feedback"] is None for item in graded)
 
 
@@ -138,8 +167,7 @@ def test_a_miss_shows_the_answer_and_comes_back_once_at_the_end(client):
     again = {entry["id"]: entry for entry in reread["items"]}
     assert again[item["id"]]["state"] == "open" and again[item["id"]]["attempts_left"] == 1
     assert again[item["id"]]["feedback"] is None
-    orders = [([o["id"] for o in entry["prompt"]["options"]], [o["id"] for o in again[entry["id"]]["prompt"]["options"]])
-              for entry in graded]
+    orders = [(_pieces(entry["prompt"]), _pieces(again[entry["id"]]["prompt"])) for entry in graded]
     assert all(sorted(before) == sorted(after) for before, after in orders)
     assert any(before != after for before, after in orders), "options come back in a new order"
     second = _post(client, view, again[item["id"]], request_id="answer-miss-002", answer=_wrong(item)).json()
@@ -190,13 +218,14 @@ def test_a_first_encounter_is_no_mistake_and_a_word_met_before_is(client):
     client.post("/words", headers=auth_headers(), json={"term": "de ochtend", "meaning_en": "morning"})
     ochtend = next(word for word in pool_for("a1").words if word.term == "de ochtend")
     later = _create(client, "mistake-met-00001", fresh=True).json()
-    item = next(item for item in _graded(later) if item["id"] and _key(item).get("word", {}).get("library_id")
-                == ochtend.id and _key(item)["word"]["term"] == "de ochtend")
+    # the item whose answer is the word met before (its key names the answer's library word)
+    item = next(item for item in _graded(later)
+                if _key(item).get("refs", {}).get(_key(item).get("answer", "answer")) == f"word:{ochtend.id}")
     _post(client, later, item, request_id="mistake-met-00002", answer=_wrong(item))
     with session_scope() as session:
         mistake = session.scalar(select(LearnerMistake))
         assert mistake is not None and mistake.lemma == "ochtend" and mistake.source == "exercise"
-        assert mistake.category in ("vocabulary_meaning", "word_choice") and mistake.expected == "de ochtend"
+        assert mistake.ref.endswith(ochtend.id) and mistake.category in KIND_CATEGORY.values() and mistake.expected
         assert mistake.taxonomy_version == "t1" and mistake.assessed and mistake.source_id == item["id"]
 
 

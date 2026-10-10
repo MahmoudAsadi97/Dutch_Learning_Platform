@@ -477,9 +477,12 @@ default), `library_topic`, `size` 5-12, `fresh`) generates the items once from a
 of the export (an item's `ref` too, until its answer has been shown). A new session answers 201; the same
 request id returns the same session (200), another one resumes an open session of the same kind under 12
 hours old (200, `resumed`), `fresh` starts over; the same id with other parameters is a 409.
-`GET /exercises/sessions/{id}`, `POST .../items/{item_id}/answer` (`{option}` or, for the intro card,
-`{done: true}`), `POST .../items/{item_id}/skip` and `POST .../finish` (`early` to stop before the end)
-complete it; every write locks the session row, and a repeated request id replays the stored response.
+`GET /exercises/sessions/{id}`, `POST .../items/{item_id}/answer`, `POST .../items/{item_id}/skip`,
+`POST .../items/{item_id}/override` and `POST .../finish` (`early` to stop before the end) complete it; every
+write locks the session row, and a repeated request id replays the stored response. An answer takes the shape
+of its kind: `{option}`, `{done: true}` (intro card), `{text}` (typed), `{known}` (flashcard), `{pairs}` (left
+id to right id), `{bins}` (noun id to de or het) or `{order}` (tile or sentence ids); a board is submitted
+whole.
 
 - **Pool** (`pool.py`): per stage, built once per library file. Choice distractors come from the same topic
   first, never the same word or a word with the same meaning in any language, nouns for nouns. A cloze card
@@ -492,18 +495,35 @@ complete it; every write locks the session row, and a repeated request id replay
   definition, never one that contains the word; an authored question keeps its options, shuffled),
   `cloze_choice`, `odd_one_out` (pre-A1 to B1: three words of one topic and word class, and one of that class
   from a topic at least ten away and outside the group's theme (`themes.py`), never the word that names the
-  topic), and the ungraded `intro` card. Option ids are four random letters.
+  topic), and the ungraded `intro` card. `typed.py`: `cloze_typed` (the example's word typed as it stands, the
+  translation as cue), `typed_recall` (the meaning; the Dutch word typed, another stage word with the same
+  meaning right too, a missing article forgiven), both with a hint (first letter, length) the screen shows on
+  request, and `flashcard` (self-assessed; for word review). `boards.py`: `match_pairs` (four words and their
+  meanings), `de_het` (six nouns without article, three of each, up to pre-C1), `sentence_builder` (one sentence
+  of the word's example as word tiles, or, when long, four to six chunks cut before conjunctions; `sentences.py`
+  keeps out sentences another word order would also make right: commas, movable time words, an opening
+  preposition) and `sentence_order` (three or four sentences of a Story Time paragraph, from pre-B1). Option and
+  piece ids are four random letters, and pieces are never shown solved. `pool.available()` is the per-stage
+  matrix of what each kind can draw on, recorded in `tests/test_exercise_typed_kinds.py`.
 - **Blueprint** (`blueprints.py`): up to four new words per session (six in a first session, never more than its
   size), the rest words met before, least recently practised first; the intro card shows the new words the
-  session practises, each first recognised; one cloze per example and sentence frame, and no cloze answer in
-  another cloze's sentence; no two items about one word in a row where another order allows it.
+  session practises, each first recognised; then one kind per word at random (choice counts once, whatever its
+  direction); items built on an example (cloze, typed cloze, sentence builder) never repeat an example or frame
+  nor show another one's answer; up to two boards take the place of extra new words, else of words met before;
+  no two items about one word in a row where another order allows it.
 - **Rules**: two attempts per item; a miss or skip shows the answer and comes back once at the end with its
-  options reshuffled. An item earns `exercise_item` (1 point) with its first real answer, right or wrong, so an
+  options, pieces or sentences reshuffled. `almost` (a typed slip, an accent, a forgiven article, one swapped
+  pair of sentences) closes the item and is never a mistake. On a typed answer or a built sentence the check
+  refused, the learner may say "mijn antwoord klopt ook" (`override`): the item closes as `accepted`, its
+  mistake row goes, its point stays, the summary counts it as `overridden` and leaves it out of the missed
+  words, and it never counts towards completing a topic or stage. An item earns `exercise_item` (1 point) with its first real answer, right or wrong, so an
   early finish pays wrong answers like right ones; a skip is not an answer, and `no_microphone`/`no_audio` skips
   are refused on items without audio. Finishing with five answered items earns `exercise_session` (5), and a
   retried finish repeats its points. A first miss on a word met before (an earlier session closed an item about
   it, or it is in the word bank) writes a `learner_mistakes` row in the one taxonomy (`taxonomy.py`), on the word
-  the learner chose for odd one out; a first encounter writes none. Finishing offers the missed words not in the
+  the learner chose for odd one out, and one per missed pair or noun of a board; a first encounter writes
+  none, and neither does a flashcard (the learner's own say) or an ordering (a paragraph they may not have
+  read). Finishing offers the missed words not in the
   bank as `word_suggestions`; only the learner saves a word.
 - **Content gate**: a stage takes sessions only when 200 of its words support a four-option choice, its examples
   hold 150 distinct sentences and it supports two kinds with at least 50 items each (`VARIETY_MIN_*`,

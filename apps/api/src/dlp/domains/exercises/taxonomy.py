@@ -21,6 +21,12 @@ KIND_CATEGORY: dict[str, Category] = {
     "choice": "vocabulary_meaning",
     "cloze_choice": "word_choice",
     "odd_one_out": "vocabulary_meaning",
+    "cloze_typed": "word_choice",
+    "typed_recall": "vocabulary_meaning",
+    "match_pairs": "vocabulary_meaning",
+    "de_het": "article",
+    "sentence_builder": "word_order",
+    "sentence_order": "comprehension",
 }
 
 
