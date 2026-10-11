@@ -505,7 +505,7 @@ whole.
   topic), and the ungraded `intro` card. `typed.py`: `cloze_typed` (the example's word typed as it stands, the
   translation as cue), `typed_recall` (the meaning; the Dutch word typed, another stage word with the same gloss
   in English and Persian and the same word class right too, a missing article forgiven; never for a word its
-  meaning spells, "bed"), both with a hint (first letter, length) the screen shows on request, and a word of
+  meaning spells, "bed"), both with a hint (first letter, the letters of each word) the screen shows on request, and a word of
   the cue typed back is another word, not a slip; and `flashcard` (self-assessed; for word review).
   `boards.py`: `match_pairs` (four words and their meanings), `de_het` (six nouns without article, three of
   each, up to pre-C1, never a noun that takes both articles: `DOUBLE_ARTICLE`), `sentence_builder` (one
@@ -581,17 +581,22 @@ whole.
   answers alone. A renderer is keyed per asking and per verdict, so a question that comes straight back starts
   again from the server's reshuffled prompt. Typed answers (typed cloze, typed recall, dictation) go in a Dutch
   field the device leaves alone (`lang=nl`, autocapitalize, autocorrect, spellcheck and autocomplete off);
-  Enter checks; a hint (first letter and length) is there on request and reported with the answer
+  Enter checks; a hint (first letter and the letters of each word; an answer of several words is asked for as
+  words) is there on request, read out, with focus back in the field, and reported with that item's answer only
   (`hint_used`); answered, the field shows the typed text, a word-by-word comparison with the answer
-  (`TokenDiff`: missing, extra and changed words in words and marks, never a score) and what the comparison
-  forgave or found (its notes in words); on a typed answer or a built sentence the check did not accept,
-  "Mijn antwoord klopt ook" overrules it (`OVERRIDDEN`: the item closes as accepted). The sound of an item
+  (`TokenDiff`: missing, extra and changed words in words and marks, never a score; only a miss is drawn in the
+  miss colours, "almost" and an overruled answer are neutral) and what the comparison forgave or found (its
+  notes in words); on a typed answer or a built sentence the check did not accept, "Mijn antwoord klopt ook"
+  overrules it (`OVERRIDDEN`: the item closes as accepted, the answer's point stays on screen, focus moves to
+  "Verder", and the check's answer is shown as what it expected). "Verder" also reads out the item's own
+  verdict (the comparison, what was heard). The sound of an item
   (listen-and-choose, dictation, shadowing) comes from its audio route through `ItemAudio` (one sound at a
   time across the app, kept for the tab, silenced by a recording; a development test tone says so), and "Ik kan
   nu niet luisteren" closes such an item without a miss. Shadowing records with one press and stops with
-  another (no holding down), sends the recording (never kept) and shows heard or not heard and the words heard,
-  never a score; "Ik kan nu niet spreken" closes it without a miss; a take not heard may be tried again at
-  once. The create request id is
+  another (no holding down; the instruction is given before the take and nothing is announced while the
+  microphone listens), sends the recording (never kept) and shows heard or not heard and the words heard, never
+  a score; "Ik kan nu niet spreken" closes it without a miss; a take not heard may be tried again at once; a
+  browser that cannot record is not given shadowing. The create request id is
   minted once, so a repeated effect or a retry replays; an
   answer that did not arrive is sent again under the same id when it is the same answer, and under a new one
   when the learner changed it; a 409 (already answered, session closed) on an answer or the finish reloads the

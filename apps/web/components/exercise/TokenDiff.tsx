@@ -4,19 +4,20 @@ import { Fragment } from "react";
 
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
-import type { DiffOp } from "@/lib/client/exercises";
+import type { DiffOp, Outcome } from "@/lib/client/exercises";
 
 import { diffParts } from "./tokenParts";
 
 /**
  * A typed answer next to the one it was compared with, word by word: a missing word is shown inserted, a word
  * too many struck through, a word typed otherwise struck through with the right one after it. Each change also
- * says what it is in words (for screen readers and without colour), never as a score.
+ * says what it is in words (for screen readers and without colour), never as a score. Only a miss is drawn in
+ * the miss colours: "almost" and an answer the learner overruled are neutral (D-29).
  */
-export function TokenDiff({ ops }: { ops: readonly DiffOp[] }) {
+export function TokenDiff({ ops, outcome }: { ops: readonly DiffOp[]; outcome: Outcome }) {
   const parts = diffParts(ops);
   return (
-    <p className="token-diff" lang="nl">
+    <p className="token-diff" data-outcome={outcome} lang="nl">
       {parts.map((part, index) => (
         <Fragment key={index}>
           {index > 0 && " "}

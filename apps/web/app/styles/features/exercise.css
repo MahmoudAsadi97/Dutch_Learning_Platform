@@ -492,8 +492,13 @@
     background: var(--success-bg);
     text-decoration: none;
   }
+  /* a slip, "almost" or an overruled answer is neutral; only a miss is drawn in the miss colours */
   .token-diff del {
-    border-bottom: 2px dashed var(--danger-vivid);
+    border-bottom: 2px dashed var(--border-strong);
+    background: var(--surface-sunken);
+  }
+  .token-diff[data-outcome="incorrect"] del {
+    border-bottom-color: var(--danger-vivid);
     background: var(--danger-bg);
   }
 

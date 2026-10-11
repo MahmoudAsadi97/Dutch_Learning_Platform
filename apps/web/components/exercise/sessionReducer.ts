@@ -131,11 +131,17 @@ export function reduce(state: RunnerState, event: RunnerEvent): RunnerState {
       if (event.result.outcome === "done") return next(settled, session);
       return { ...settled, phase: "feedback", result: event.result };
     }
-    case "OVERRIDDEN":
-      // "mijn antwoord klopt ook": the verdict on screen becomes "accepted" and the item closes
-      return state.phase === "feedback" && state.session
-        ? { ...state, session: withResult(state.session, event.result), result: event.result }
-        : state;
+    case "OVERRIDDEN": {
+      // "mijn antwoord klopt ook": the verdict on screen becomes "accepted" and the item closes; the point
+      // the answer earned stays on screen (the override itself earns none, D-29)
+      if (state.phase !== "feedback" || !state.session) return state;
+      const kept = state.result?.item_id === event.result.item_id ? state.result.points : 0;
+      return {
+        ...state,
+        session: withResult(state.session, event.result),
+        result: { ...event.result, points: Math.max(event.result.points, kept) },
+      };
+    }
     case "ANSWER_FAILED":
       // back to the item with the answer kept; sending it again reuses the same request id
       return state.phase === "checking" ? { ...state, phase: "answering", failed: true } : state;

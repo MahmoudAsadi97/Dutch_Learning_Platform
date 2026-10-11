@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Field";
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
-import type { Answer, Feedback } from "@/lib/client/exercises";
+import type { Answer, Feedback, Hint } from "@/lib/client/exercises";
 import { fill, type Copy } from "@/lib/ui-copy";
 
 import { Dutch, Meaning } from "./ContentText";
@@ -28,9 +28,22 @@ const NOTES: Record<string, Copy> = {
 };
 
 function question(prompt: TypedPrompt): Copy {
-  if (prompt.kind === "cloze_typed") return exerciseCopy.askClozeTyped;
-  if (prompt.kind === "typed_recall") return exerciseCopy.askRecall;
-  return exerciseCopy.askDictation;
+  if (prompt.kind === "dictation") return exerciseCopy.askDictation;
+  // an answer of several words ("tot ziens") is asked for as words
+  const words = prompt.hint.letters.length > 1;
+  if (prompt.kind === "cloze_typed")
+    return words ? exerciseCopy.askClozeTypedWords : exerciseCopy.askClozeTyped;
+  return words ? exerciseCopy.askRecallWords : exerciseCopy.askRecall;
+}
+
+function hintCopy(hint: Hint): Copy {
+  if (hint.letters.length === 1)
+    return fill(exerciseCopy.hintWord, { first: hint.first, letters: hint.letters[0] });
+  return fill(exerciseCopy.hintWords, {
+    first: hint.first,
+    count: hint.letters.length,
+    letters: hint.letters.join(" + "),
+  });
 }
 
 interface Props {
@@ -44,13 +57,16 @@ interface Props {
   /** Enter in the field checks the answer. */
   onSubmit: () => void;
   headingRef?: Ref<HTMLHeadingElement>;
+  /** Where the verdict's details go, so "Verder" can read them out. */
+  verdictId?: string;
 }
 
 /**
  * A typed answer: a typed cloze, a word recalled from its meaning, or a dictation. The field is Dutch and
  * leaves the learner's spelling alone (no capitals, corrections or suggestions from the device). A hint (the
- * first letter and the length) is there on request. Answered, it shows what was typed against the answer it
- * was compared with, word by word, and what the comparison forgave or found.
+ * first letter and the letters of each word) is there on request; it is read out and focus stays in the
+ * field. Answered, it shows what was typed against the answer it was compared with, word by word, and what
+ * the comparison forgave or found; overruled by the learner, the same comparison is shown neutrally.
  */
 export function TypedItem({
   prompt,
@@ -61,9 +77,11 @@ export function TypedItem({
   onHint,
   onSubmit,
   headingRef,
+  verdictId,
 }: Props) {
   const headingId = useId();
   const fieldId = useId();
+  const hintId = useId();
   const [text, setText] = useState("");
   const [hinted, setHinted] = useState(false);
   const answered = feedback !== null;
@@ -109,6 +127,7 @@ export function TypedItem({
         </label>
         <Input
           id={fieldId}
+          aria-describedby={hinted && !answered ? hintId : undefined}
           lang="nl"
           autoCapitalize="off"
           autoCorrect="off"
@@ -132,14 +151,11 @@ export function TypedItem({
         />
         {hint && !answered && (
           <div className="typed-hint">
-            {hinted ? (
-              <p className="exercise-lead" role="status">
-                <UiText
-                  text={fill(exerciseCopy.hintText, { first: hint.first, length: hint.length })}
-                  tier="guide"
-                />
-              </p>
-            ) : (
+            {/* mounted before the hint is asked for, so the hint is announced when it appears */}
+            <p className="exercise-lead" role="status" id={hintId}>
+              {hinted && <UiText text={hintCopy(hint)} tier="guide" />}
+            </p>
+            {!hinted && (
               <Button
                 variant="ghost"
                 size="small"
@@ -147,6 +163,8 @@ export function TypedItem({
                 onClick={() => {
                   setHinted(true);
                   onHint();
+                  // the button goes: focus goes back to the answer
+                  document.getElementById(fieldId)?.focus();
                 }}
               >
                 <UiText text={exerciseCopy.showHint} inline />
@@ -155,24 +173,34 @@ export function TypedItem({
           </div>
         )}
       </div>
-      {answered && feedback.diff && hasDifference(feedback.diff) && <TokenDiff ops={feedback.diff} />}
-      {answered && feedback.expected && feedback.outcome !== "correct" && (
-        <p className="feedback-line">
-          <UiText text={exerciseCopy.rightAnswer} inline />
-          {": "}
-          <Dutch text={feedback.expected} />
-        </p>
-      )}
-      {answered && (feedback.notes ?? []).length > 0 && (
-        <ul className="typed-notes">
-          {(feedback.notes ?? [])
-            .filter((note) => NOTES[note])
-            .map((note) => (
-              <li key={note}>
-                <UiText text={NOTES[note]} tier="guide" />
-              </li>
-            ))}
-        </ul>
+      {answered && (
+        <div className="typed-verdict" id={verdictId}>
+          {feedback.diff && hasDifference(feedback.diff) && (
+            <TokenDiff ops={feedback.diff} outcome={feedback.outcome} />
+          )}
+          {feedback.expected && feedback.outcome !== "correct" && (
+            <p className="feedback-line">
+              {/* overruled, the answer was right too: the check's answer is not "the" right one */}
+              <UiText
+                text={feedback.outcome === "accepted" ? exerciseCopy.checkExpected : exerciseCopy.rightAnswer}
+                inline
+              />
+              {": "}
+              <Dutch text={feedback.expected} />
+            </p>
+          )}
+          {(feedback.notes ?? []).length > 0 && (
+            <ul className="typed-notes">
+              {(feedback.notes ?? [])
+                .filter((note) => NOTES[note])
+                .map((note) => (
+                  <li key={note}>
+                    <UiText text={NOTES[note]} tier="guide" />
+                  </li>
+                ))}
+            </ul>
+          )}
+        </div>
       )}
     </div>
   );

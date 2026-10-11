@@ -23,7 +23,9 @@ export function TilesItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
   const answered = feedback !== null;
   const built = answered ? (feedback.given_order ?? []) : placed;
   const loose = prompt.tiles.filter((tile) => !built.includes(tile.id));
-  const first = feedback?.first_difference ?? null;
+  // overruled by the learner ("mijn antwoord klopt ook"): no tile is marked as gone another way
+  const accepted = feedback?.outcome === "accepted";
+  const first = accepted ? null : (feedback?.first_difference ?? null);
   const skipped = answered && !feedback.given_order;
 
   // a chosen tile leaves its row: focus goes to the tile now in its place (or the other row when it emptied)
@@ -110,9 +112,9 @@ export function TilesItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
           ))}
         </div>
       )}
-      {answered && (first !== null || skipped) && (
+      {answered && (first !== null || skipped || accepted) && (
         <p className="tiles-right">
-          <UiText text={exerciseCopy.rightSentence} inline />
+          <UiText text={accepted ? exerciseCopy.checkExpected : exerciseCopy.rightSentence} inline />
           {": "}
           <Dutch text={feedback.sentence ?? `${(feedback.texts ?? []).join(" ")}${prompt.end}`} />
         </p>

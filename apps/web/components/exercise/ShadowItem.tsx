@@ -20,16 +20,29 @@ interface Props {
   busy: boolean;
   onRecording: (recording: Recording) => void;
   headingRef?: Ref<HTMLHeadingElement>;
+  /** Where the verdict's details go, so "Verder" can read them out. */
+  verdictId?: string;
 }
 
 /**
  * Shadowing ("zeg het na"): hear the sentence, then say it after the voice. One press starts the recording and
  * another stops it (no holding down, so it works the same by touch, keyboard and switch). The recording goes to
  * the speech service and is not kept; the outcome is heard or not heard, never a score (D-30), and the words it
- * heard are shown as they are.
+ * heard are shown as they are. The instruction is given before the take, and nothing is announced while the
+ * microphone listens (a screen reader's voice would be recorded too).
  */
-export function ShadowItem({ prompt, sessionId, itemId, feedback, busy, onRecording, headingRef }: Props) {
+export function ShadowItem({
+  prompt,
+  sessionId,
+  itemId,
+  feedback,
+  busy,
+  onRecording,
+  headingRef,
+  verdictId,
+}: Props) {
   const headingId = useId();
+  const howId = useId();
   const recorder = useRecorder(onRecording);
   const recording = recorder.phase === "recording";
   const answered = feedback !== null;
@@ -56,6 +69,7 @@ export function ShadowItem({ prompt, sessionId, itemId, feedback, busy, onRecord
               variant="talk"
               icon="mic"
               aria-pressed={recording}
+              aria-describedby={howId}
               disabled={busy}
               onClick={() => {
                 if (recording) recorder.stop();
@@ -74,14 +88,19 @@ export function ShadowItem({ prompt, sessionId, itemId, feedback, busy, onRecord
               />
             </Button>
           )}
+          {recorder.phase !== "unsupported" && (
+            <p className="exercise-lead" id={howId}>
+              <UiText text={exerciseCopy.recordHow} tier="guide" />
+            </p>
+          )}
           <p className="shadow-status" role="status">
-            {recording && <UiText text={exerciseCopy.recordOn} tier="guide" />}
             {recorder.error && <UiText text={exerciseCopy.recordFailed} tier="guide" />}
           </p>
         </div>
       )}
-      {answered && feedback.transcript !== undefined && (
-        <p className="feedback-line">
+      {/* only a take carries what was heard (a string, maybe empty); a skip carries none */}
+      {answered && typeof feedback.transcript === "string" && (
+        <p className="feedback-line" id={verdictId}>
           <UiText text={exerciseCopy.weHeard} inline />
           {": "}
           {feedback.transcript ? (

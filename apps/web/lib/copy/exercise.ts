@@ -126,7 +126,17 @@ export const exerciseCopy = {
     en: "Type the word that fits in the sentence.",
     fa: "واژه‌ای را که در جمله جا می‌افتد تایپ کن.",
   },
+  askClozeTypedWords: {
+    nl: "Typ de woorden die in de zin passen.",
+    en: "Type the words that fit in the sentence.",
+    fa: "واژه‌هایی را که در جمله جا می‌افتند تایپ کن.",
+  },
   askRecall: { nl: "Typ het Nederlandse woord.", en: "Type the Dutch word.", fa: "واژه‌ی هلندی را تایپ کن." },
+  askRecallWords: {
+    nl: "Typ de Nederlandse woorden.",
+    en: "Type the Dutch words.",
+    fa: "واژه‌های هلندی را تایپ کن.",
+  },
   askDictation: {
     nl: "Luister en typ wat je hoort.",
     en: "Listen and type what you hear.",
@@ -134,15 +144,20 @@ export const exerciseCopy = {
   },
   wordCount: { nl: "Aantal woorden: {n}", en: "Number of words: {n}", fa: "تعداد واژه‌ها: {n}" },
   showHint: { nl: "Toon een hint", en: "Show a hint", fa: "یک راهنمایی نشان بده" },
-  hintText: {
-    nl: "Het begint met {first} en heeft {length} letters.",
-    en: "It starts with {first} and has {length} letters.",
-    fa: "با {first} شروع می‌شود و {length} حرف دارد.",
+  hintWord: {
+    nl: "Het begint met {first} en heeft {letters} letters.",
+    en: "It starts with {first} and has {letters} letters.",
+    fa: "با {first} شروع می‌شود و {letters} حرف دارد.",
+  },
+  hintWords: {
+    nl: "Het begint met {first}. Het zijn {count} woorden, met {letters} letters.",
+    en: "It starts with {first}. It is {count} words, with {letters} letters.",
+    fa: "با {first} شروع می‌شود. {count} واژه است، با {letters} حرف.",
   },
   typeFirst: { nl: "Typ eerst een antwoord.", en: "Type an answer first.", fa: "اول یک پاسخ تایپ کن." },
   noteAccents: {
-    nl: "De accenten ontbraken; dat telt niet mee.",
-    en: "The accents were missing; that does not count against you.",
+    nl: "De accenten waren anders; dat telt hier niet mee.",
+    en: "The accents were different; that does not count here.",
     fa: "نشانه‌های تلفظ جا افتاده بود؛ این به حساب نمی‌آید.",
   },
   notePunctuation: {
@@ -203,9 +218,9 @@ export const exerciseCopy = {
     fa: "برای شنیدن دوباره وارد حساب شو.",
   },
   audioLimit: {
-    nl: "Je luistertijd voor vandaag is op. Kies 'Ik kan nu niet luisteren'.",
-    en: "Your listening time for today is used up. Choose 'I can't listen now'.",
-    fa: "زمان شنیدن امروزت تمام شده است. «الان نمی‌توانم گوش بدهم» را انتخاب کن.",
+    nl: "Je luistertijd is op. Kies 'Ik kan nu niet luisteren'.",
+    en: "Your listening time is used up. Choose 'I can't listen now'.",
+    fa: "زمان شنیدنت تمام شده است. «الان نمی‌توانم گوش بدهم» را انتخاب کن.",
   },
   audioBlocked: {
     nl: "Je browser vraagt nog een tik. Druk opnieuw op Luister.",
@@ -227,10 +242,10 @@ export const exerciseCopy = {
   recordStart: { nl: "Neem op", en: "Record", fa: "ضبط کن" },
   recordStop: { nl: "Stop met opnemen", en: "Stop recording", fa: "ضبط را متوقف کن" },
   recordListening: { nl: "We luisteren…", en: "Listening…", fa: "در حال شنیدن…" },
-  recordOn: {
-    nl: "Je wordt opgenomen. Zeg de zin en druk dan op stop.",
-    en: "You are being recorded. Say the sentence, then press stop.",
-    fa: "صدایت ضبط می‌شود. جمله را بگو و بعد توقف را بزن.",
+  recordHow: {
+    nl: "Druk op Neem op, zeg de zin en druk dan op stop. Met een koptelefoon gaat het het best.",
+    en: "Press Record, say the sentence, then press stop. Headphones work best.",
+    fa: "ضبط را بزن، جمله را بگو و بعد توقف را بزن. با هدفون بهتر کار می‌کند.",
   },
   recordFailed: {
     nl: "De microfoon werkt niet. Probeer opnieuw of kies 'Ik kan nu niet spreken'.",
@@ -248,7 +263,7 @@ export const exerciseCopy = {
     fa: "ضبطت فرستاده نشد. دوباره ضبط کن.",
   },
   weHeard: { nl: "Wat we hoorden", en: "What we heard", fa: "آنچه شنیدیم" },
-  heardNothing: { nl: "nog niets", en: "nothing yet", fa: "هنوز چیزی" },
+  heardNothing: { nl: "nog niets", en: "nothing yet", fa: "هنوز هیچ" },
   heard: { nl: "Gehoord", en: "Heard", fa: "شنیده شد" },
   tryOnceMore: {
     nl: "Je mag het meteen nog een keer proberen.",
@@ -274,6 +289,11 @@ export const exerciseCopy = {
     fa: "این سؤال در پایان یک بار دیگر برمی‌گردد.",
   },
   rightAnswer: { nl: "Het juiste antwoord", en: "The right answer", fa: "پاسخ درست" },
+  checkExpected: {
+    nl: "Wat de controle verwachtte",
+    en: "What the check expected",
+    fa: "آنچه بررسی انتظار داشت",
+  },
   yourAnswer: { nl: "Jouw antwoord", en: "Your answer", fa: "پاسخ تو" },
   oddBelongs: {
     nl: "Het andere woord hoort bij:",

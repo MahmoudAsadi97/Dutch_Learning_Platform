@@ -194,7 +194,8 @@ describe("ExerciseSession", () => {
     expect(client.create).toHaveBeenCalledWith(
       expect.objectContaining({
         source: "stage_skill",
-        kinds: RENDERED_KINDS,
+        // jsdom cannot record, so shadowing is not asked for
+        kinds: RENDERED_KINDS.filter((kind) => kind !== "shadow"),
       }),
       expect.any(String),
     );

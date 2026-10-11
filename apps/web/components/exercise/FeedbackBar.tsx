@@ -33,6 +33,8 @@ interface Props {
   /** "Mijn antwoord klopt ook", offered on a typed answer or a built sentence the check did not accept. */
   onOverride?: () => void;
   continueRef?: Ref<HTMLButtonElement>;
+  /** The item's own verdict details (a word comparison, what was heard), read out with "Verder". */
+  describedBy?: string;
 }
 
 /**
@@ -40,7 +42,7 @@ interface Props {
  * it earned, whether the item comes back, and the word it was about with its meaning and example (for a cloze,
  * the whole sentence).
  */
-export function FeedbackBar({ result, onContinue, onReport, onOverride, continueRef }: Props) {
+export function FeedbackBar({ result, onContinue, onReport, onOverride, continueRef, describedBy }: Props) {
   const titleId = useId();
   const correctionId = useId();
   const { feedback } = result;
@@ -50,8 +52,10 @@ export function FeedbackBar({ result, onContinue, onReport, onOverride, continue
   // the right option, for an item without a word card (an authored question)
   const right =
     missed && !word ? feedback.support?.find((entry) => entry.id === feedback.correct) : undefined;
-  // "Verder" takes focus after the verdict, so it also reads out what the answer revealed
-  const described = right || feedback.explanation || feedback.odd_topic || word ? correctionId : undefined;
+  // "Verder" takes focus after the verdict, so it also reads out what the answer revealed (an id that is not
+  // on the page is ignored)
+  const correction = right || feedback.explanation || feedback.odd_topic || word ? correctionId : undefined;
+  const described = [describedBy, correction].filter(Boolean).join(" ") || undefined;
   return (
     <section className="feedback-bar" data-outcome={result.outcome} aria-labelledby={titleId}>
       <p className="feedback-title" id={titleId}>

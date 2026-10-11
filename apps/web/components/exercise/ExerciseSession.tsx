@@ -4,6 +4,7 @@ import {
   useCallback,
   useEffect,
   useEffectEvent,
+  useId,
   useReducer,
   useRef,
   useState,
@@ -22,7 +23,7 @@ import { ApiError, newRequestId } from "@/lib/client/api";
 import { errorCopy } from "@/lib/client/error-copy";
 import { isAbort } from "@/lib/client/errors";
 import { exercises, type Answer, type AnswerResult, type ItemView } from "@/lib/client/exercises";
-import type { Recording } from "@/lib/client/recorder";
+import { pickMimeType, type Recording } from "@/lib/client/recorder";
 import { timeRoundTrip } from "@/lib/client/round-trips";
 import { playTone } from "@/lib/client/tones";
 import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
@@ -91,14 +92,15 @@ export function ExerciseSession({ source }: Props) {
   const [nudge, setNudge] = useState(false);
   const [dialog, setDialog] = useState<"exit" | "report" | null>(null);
   const [announcement, setAnnouncement] = useState<{ id: number; text: Copy } | null>(null);
+  const verdictId = useId();
   const headingRef = useRef<HTMLHeadingElement>(null);
   const continueRef = useRef<HTMLButtonElement>(null);
   const busy = useRef(false);
   const finishId = useRef<string | null>(null);
   const early = useRef(false);
   const shown = useRef<string | null>(null);
-  // the learner asked for the hint on the item on screen (reported with the answer)
-  const hinted = useRef(false);
+  // the item whose hint the learner asked for (reported with that item's answer only)
+  const hinted = useRef<string | null>(null);
   // one request id per overruled item, so a retried "mijn antwoord klopt ook" replays
   const overrideIds = useRef<Record<string, string>>({});
 
@@ -107,8 +109,11 @@ export function ExerciseSession({ source }: Props) {
 
   useEffect(() => {
     let live = true;
+    // a browser that cannot record is not given shadowing at all (the same list on every try of this id)
+    const kinds =
+      pickMimeType() !== null ? RENDERED_KINDS : RENDERED_KINDS.filter((kind) => kind !== "shadow");
     exercises
-      .create({ source, kinds: RENDERED_KINDS }, createId)
+      .create({ source, kinds }, createId)
       .then((created) => {
         if (live) dispatch({ type: "LOADED", session: created });
       })
@@ -226,7 +231,7 @@ export function ExerciseSession({ source }: Props) {
       (sessionId, itemId, requestId) =>
         skip
           ? exercises.skip(sessionId, itemId, requestId, skip)
-          : exercises.answer(sessionId, itemId, answer as Answer, requestId, hinted.current),
+          : exercises.answer(sessionId, itemId, answer as Answer, requestId, hinted.current === itemId),
       exerciseCopy.answerFailed,
     );
   }
@@ -251,6 +256,8 @@ export function ExerciseSession({ source }: Props) {
     setActionError(null);
     try {
       const result = await exercises.override(session.id, itemId, requestId);
+      // the override button goes with the verdict: focus moves on to "Verder", which stays
+      continueRef.current?.focus();
       dispatch({ type: "OVERRIDDEN", result });
       setAnnouncement({ id: nextAnnouncement(), text: exerciseCopy.accepted });
     } catch (cause) {
@@ -277,7 +284,6 @@ export function ExerciseSession({ source }: Props) {
   async function goOn() {
     if (busy.current) return; // the item coming back is still being fetched
     setDraft(null);
-    hinted.current = false;
     setActionError(null);
     const coming = session?.items.find((entry) => entry.id === session.next_item_id);
     if (session && coming && coming.state === "open" && coming.attempts_left < FIRST_ATTEMPTS) {
@@ -306,7 +312,7 @@ export function ExerciseSession({ source }: Props) {
     finishId.current = null;
     early.current = false;
     shown.current = null;
-    hinted.current = false;
+    hinted.current = null;
     overrideIds.current = {};
     setDraft(null);
     setActionError(null);
@@ -405,10 +411,11 @@ export function ExerciseSession({ source }: Props) {
             feedback={feedback}
             onDraft={onDraft}
             onHint={() => {
-              hinted.current = true;
+              hinted.current = view.id;
             }}
             onSubmit={check}
             headingRef={headingRef}
+            verdictId={verdictId}
           />
         );
       case "shadow":
@@ -422,6 +429,7 @@ export function ExerciseSession({ source }: Props) {
             busy={state.phase === "checking"}
             onRecording={(recording) => void sendRecording(recording)}
             headingRef={headingRef}
+            verdictId={verdictId}
           />
         );
       case "sentence_order":
@@ -600,6 +608,7 @@ export function ExerciseSession({ source }: Props) {
                   : undefined
               }
               continueRef={continueRef}
+              describedBy={verdictId}
             />
           )}
         </div>

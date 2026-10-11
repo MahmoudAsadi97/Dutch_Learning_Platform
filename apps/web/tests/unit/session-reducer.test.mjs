@@ -76,6 +76,24 @@ test("an answer is checked, shown, and the learner continues to the next item", 
   assert.equal(state.current, "i2");
 });
 
+test("overruling the check closes the item as accepted and keeps the point the answer earned on screen", () => {
+  let state = reduce(initialState, { type: "LOADED", session: session({ next_item_id: "i1" }) });
+  state = reduce(state, { type: "SUBMIT", pending: pending("i1", "r1", { text: "de woning" }) });
+  const missed = { outcome: "incorrect", closed: false, requeue: true, attempts_left: 1, next_item_id: "i2" };
+  state = reduce(state, {
+    type: "ANSWERED",
+    result: result("i1", { ...missed, feedback: { outcome: "incorrect" } }),
+  });
+  assert.equal(state.result.points, 1);
+  // the override itself earns nothing (D-29); the point the answer earned stays
+  const accepted = result("i1", { outcome: "accepted", points: 0, feedback: { outcome: "accepted" } });
+  state = reduce(state, { type: "OVERRIDDEN", result: accepted });
+  assert.equal(state.phase, "feedback");
+  assert.equal(state.result.outcome, "accepted");
+  assert.equal(state.result.points, 1);
+  assert.equal(state.session.items.find((item) => item.id === "i1").state, "closed");
+});
+
 test("a failed answer keeps its request id for the same answer, and another answer gets a new one", () => {
   let state = reduce(initialState, { type: "LOADED", session: session({ next_item_id: "i1" }) });
   const item = currentItem(state);

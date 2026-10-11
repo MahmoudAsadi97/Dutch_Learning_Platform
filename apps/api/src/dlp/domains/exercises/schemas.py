@@ -128,7 +128,7 @@ class ClozePrompt(BaseModel):
 
 class Hint(BaseModel):
     first: str  # the first letter
-    length: int
+    letters: list[int]  # the letters of each word
 
 
 class ClozeTypedPrompt(BaseModel):

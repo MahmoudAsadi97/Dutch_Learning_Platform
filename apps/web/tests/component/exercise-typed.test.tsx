@@ -34,7 +34,11 @@ beforeAll(() => {
   })) as unknown as typeof window.matchMedia;
 });
 
-const recall = { kind: "typed_recall", cue: { en: "the house" }, hint: { first: "h", length: 4 } } as const;
+const recall = {
+  kind: "typed_recall",
+  cue: { en: "the house" },
+  hint: { first: "h", letters: [4] },
+} as const;
 
 describe("TypedItem", () => {
   it("is a Dutch field the device leaves alone, with a hint on request and Enter to check", () => {
@@ -62,9 +66,13 @@ describe("TypedItem", () => {
     expect(onDraft).toHaveBeenLastCalledWith({ text: "het huis" });
     fireEvent.change(field, { target: { value: "  " } });
     expect(onDraft).toHaveBeenLastCalledWith(null);
+    // the hint is announced in a region that was there before, and focus goes back to the field
+    expect(screen.getByRole("status")).toBeEmptyDOMElement();
     fireEvent.click(screen.getByRole("button", { name: /Toon een hint/ }));
     expect(onHint).toHaveBeenCalledOnce();
-    expect(screen.getByText(/Het begint met h en heeft 4 letters/)).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent(/Het begint met h en heeft 4 letters/);
+    expect(field).toHaveFocus();
+    expect(field).toHaveAccessibleDescription(/Het begint met h en heeft 4 letters/);
     fireEvent.keyDown(field, { key: "Enter" });
     expect(onSubmit).toHaveBeenCalledOnce();
   });
@@ -94,6 +102,52 @@ describe("TypedItem", () => {
     expect(screen.getByRole("deletion")).toHaveTextContent(/jij typte:.*hius/);
     expect(screen.getByRole("insertion")).toHaveTextContent(/juist:.*huis/);
     expect(screen.getByText("Een kleine tikfout.")).toBeInTheDocument();
+    // "almost" is neutral: only a miss is drawn in the miss colours
+    expect(document.querySelector(".token-diff")).toHaveAttribute("data-outcome", "almost");
+  });
+
+  it("asks for words when the answer has several, and counts letters, not spaces", () => {
+    render(
+      <TypedItem
+        prompt={{ kind: "typed_recall", cue: { en: "goodbye" }, hint: { first: "t", letters: [3, 5] } }}
+        sessionId="s1"
+        itemId="i1"
+        feedback={null}
+        onDraft={() => {}}
+        onHint={() => {}}
+        onSubmit={() => {}}
+      />,
+    );
+    expect(screen.getByRole("heading", { name: /Typ de Nederlandse woorden/ })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /Toon een hint/ }));
+    expect(screen.getByRole("status")).toHaveTextContent(/Het zijn 2 woorden, met 3 \+ 5 letters/);
+  });
+
+  it("after an override, shows the comparison neutrally and the check's answer as what it expected", () => {
+    render(
+      <TypedItem
+        prompt={recall}
+        sessionId="s1"
+        itemId="i1"
+        feedback={{
+          outcome: "accepted",
+          typed: "de woning",
+          expected: "het huis",
+          diff: [
+            { op: "changed", expected: "het", given: "de" },
+            { op: "changed", expected: "huis", given: "woning" },
+          ],
+        }}
+        onDraft={() => {}}
+        onHint={() => {}}
+        onSubmit={() => {}}
+        verdictId="verdict"
+      />,
+    );
+    expect(document.querySelector(".token-diff")).toHaveAttribute("data-outcome", "accepted");
+    expect(screen.getByText(/Wat de controle verwachtte/)).toBeInTheDocument();
+    expect(screen.queryByText(/Het juiste antwoord/)).not.toBeInTheDocument();
+    expect(document.getElementById("verdict")).toHaveTextContent(/het huis/);
   });
 });
 
@@ -124,6 +178,18 @@ describe("ShadowItem", () => {
     );
     expect(screen.getByText(/Wat we hoorden/).closest("p")).toHaveTextContent("ik woon in gent");
     expect(document.body.textContent).not.toMatch(/4\s*\/\s*4|score|%/);
+    // a skip carries no take: nothing is said about what was heard
+    rerender(
+      <ShadowItem
+        prompt={{ kind: "shadow", sentence: "Ik woon in Gent." }}
+        sessionId="s1"
+        itemId="i1"
+        feedback={{ outcome: "skipped", transcript: null }}
+        busy={false}
+        onRecording={() => {}}
+      />,
+    );
+    expect(screen.queryByText(/Wat we hoorden/)).not.toBeInTheDocument();
   });
 });
 
@@ -172,8 +238,10 @@ describe("ExerciseSession with a typed answer", () => {
       ...overrides,
     });
     client.answer.mockResolvedValue(verdict({}));
+    // the override earns nothing itself (the point of the answer stays, D-29)
     client.override.mockResolvedValue(
       verdict({
+        points: 0,
         outcome: "accepted",
         closed: true,
         requeue: false,
@@ -197,8 +265,11 @@ describe("ExerciseSession with a typed answer", () => {
       true,
     );
     fireEvent.click(screen.getByRole("button", { name: /Mijn antwoord klopt ook/ }));
-    await screen.findByRole("region", { name: /Je antwoord telt/ });
+    const accepted = await screen.findByRole("region", { name: /Je antwoord telt/ });
     expect(client.override).toHaveBeenCalledWith("s1", "t1", expect.any(String));
+    // focus moves on to "Verder" as the override button goes, and the answer's point stays on screen
+    expect(screen.getByRole("button", { name: /Verder/ })).toHaveFocus();
+    expect(accepted).toHaveTextContent("+1 punt");
     await waitFor(() =>
       expect(screen.queryByRole("button", { name: /Mijn antwoord klopt ook/ })).not.toBeInTheDocument(),
     );

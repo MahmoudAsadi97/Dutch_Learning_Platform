@@ -99,7 +99,8 @@ def _check_typed(stage, draft):
     prompt, key = draft.prompt, draft.key
     assert not _keys(prompt) & SECRET_KEYS
     target = stage.by_id[draft.ref.removeprefix("word:")]
-    assert prompt["hint"]["length"] == len(key["accepted"][0] if draft.kind == "cloze_typed" else target.core)
+    answer = key["accepted"][0] if draft.kind == "cloze_typed" else target.core
+    assert prompt["hint"]["letters"] == [sum(char.isalpha() for char in word) for word in answer.split()]
     if draft.kind == "cloze_typed":
         assert prompt["sentence"].count("___") == 1 and not pool.word_pattern(target.core).search(prompt["sentence"])
         assert prompt["cue"] and not gives_away(target)

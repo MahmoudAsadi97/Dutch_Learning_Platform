@@ -3,7 +3,7 @@
 Typed answers are judged by compare.py: a missing accent, or an article the item forgives, is correct with a
 note; "almost" (a slip of the keyboard, a wrong de/het where the article is optional) closes the item in a
 neutral colour and is never a mistake. A word copied from the cue is another word, never a slip. The prompt
-carries a hint (first letter and length) that the screen shows only when the learner asks; using it is
+carries a hint (first letter, letters per word) that the screen shows only when the learner asks; using it is
 reported with the answer. A typed answer the check refuses may be overruled by the learner ("mijn antwoord
 klopt ook"), which never counts towards completing anything.
 """
@@ -18,7 +18,9 @@ from dlp.domains.exercises.pool import Pool, Word, gives_away
 
 
 def _hint(answer: str) -> dict[str, Any]:
-    return {"first": answer[0], "length": len(answer)}
+    """The first letter and the letters of each word: "tot ziens" is 3 and 5, "e-mail" is 5 (a space, hyphen or
+    apostrophe is not a letter)."""
+    return {"first": answer[0], "letters": [sum(char.isalpha() for char in word) for word in answer.split()]}
 
 
 def _refs(word: Word) -> dict[str, dict[str, str]]:

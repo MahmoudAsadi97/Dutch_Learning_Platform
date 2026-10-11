@@ -482,47 +482,78 @@ function speechSession() {
     items: [
       ask("listen", 0, "listen_choose", { options }),
       ask("dictation", 1, "dictation", { word_count: 4 }),
-      ask("recall", 2, "typed_recall", {
-        cue: { en: "the key", fa: "کلید" },
-        hint: { first: "s", length: 7 },
+      ask("cloze", 2, "cloze_typed", {
+        sentence: "Ik zeg ___ tegen Sam.",
+        cue: { en: "I say goodbye to Sam.", fa: "به سام خداحافظ می‌گویم." },
+        hint: { first: "t", letters: [3, 5] },
       }),
-      ask("shadow", 3, "shadow", { sentence: "Ik woon in Gent." }),
+      ask("recall", 3, "typed_recall", {
+        cue: { en: "the key", fa: "کلید" },
+        hint: { first: "s", letters: [7] },
+      }),
+      ask("shadow", 4, "shadow", { sentence: "Ik woon in Gent." }),
     ],
     next_item_id: "listen",
-    progress: { closed: 0, total: 4, queued: 0 },
+    progress: { closed: 0, total: 5, queued: 0 },
   };
 }
 
-test("listening, typing and speaking items, judged by the server and accessible at every width", async ({
+test("listening, typing and speaking items by keyboard, judged by the server and accessible at every width", async ({
   page,
 }, testInfo) => {
   const sent: Record<string, unknown> = {};
   let audioRequests = 0;
-  let closed = 0;
+  let takes = 0;
   const wav = readFileSync(path.resolve("tests/e2e/fixtures/speech-input.wav"));
+
+  // a stand-in for the server: an answer moves its item as service.respond does (two attempts; a miss comes
+  // back at the end; the first real answer earns the point), and an override as service.override does
+  const server = speechSession();
+  let nextItem: string | null = server.next_item_id;
+  const lastFeedback: Record<string, Record<string, unknown>> = {};
+  const itemOf = (id: string) => server.items.find((entry) => entry.id === id)!;
+  const progress = () => ({
+    closed: server.items.filter((entry) => entry.state === "closed").length,
+    total: server.items.length,
+    queued: server.items.filter((entry) => entry.state === "open" && entry.attempts_left < 2).length,
+  });
   const verdict = (
     itemId: string,
     outcome: string,
     feedback: Record<string, unknown>,
     next: string | null,
+    { closes = true, requeue = false }: { closes?: boolean; requeue?: boolean } = {},
   ) => {
-    closed += 1;
+    const entry = itemOf(itemId);
+    const attempt = 3 - entry.attempts_left;
+    entry.attempts_left = closes ? 0 : entry.attempts_left - 1;
+    if (closes) entry.state = "closed";
+    nextItem = next;
+    lastFeedback[itemId] = { outcome, ...feedback };
     return {
       item_id: itemId,
-      attempt: 1,
+      attempt,
       outcome,
-      closed: true,
-      requeue: false,
-      attempts_left: 0,
-      feedback: { outcome, ...feedback },
-      points: 1,
-      progress: { closed, total: 4, queued: 0 },
+      closed: closes,
+      requeue,
+      attempts_left: entry.attempts_left,
+      feedback: lastFeedback[itemId],
+      points: attempt === 1 ? 1 : 0,
+      progress: progress(),
       next_item_id: next,
     };
   };
+  const recallDiff = [
+    { op: "same", expected: "de", given: "de" },
+    { op: "changed", expected: "sleutel", given: "sleuter" },
+  ];
+
   await page.route(/\/api\/exercises\/sessions(\/|$)/, async (route: Route) => {
-    const url = route.request().url();
+    const request = route.request();
+    const url = request.url();
     if (url.endsWith("/api/exercises/sessions")) return route.fulfill({ status: 201, json: speechSession() });
+    if (request.method() === "GET")
+      return route.fulfill({ json: { ...server, next_item_id: nextItem, progress: progress() } });
     const itemId = url.split("/items/")[1]?.split("/")[0] ?? "";
     if (url.endsWith("/audio")) {
       audioRequests += 1;
@@ -532,28 +563,47 @@ test("listening, typing and speaking items, judged by the server and accessible 
       });
     }
     if (url.endsWith("/recording")) {
-      sent.recording = route.request().postData()?.includes('name="audio"');
+      takes += 1;
+      sent[`take${takes}`] = request.postData()?.includes('name="audio"');
+      // the first take is not heard (the item stays open for a second take at once), the second is
       return route.fulfill({
-        json: verdict(
-          "shadow",
-          "heard",
-          { transcript: "ik woon in gent", matched_words: 4, target_words: 4 },
-          null,
-        ),
+        json:
+          takes === 1
+            ? verdict(
+                "shadow",
+                "not_heard",
+                { transcript: "", matched_words: 0, target_words: 4 },
+                "shadow",
+                {
+                  closes: false,
+                },
+              )
+            : verdict(
+                "shadow",
+                "heard",
+                { transcript: "ik woon in gent", matched_words: 4, target_words: 4 },
+                "recall",
+              ),
       });
     }
-    if (url.endsWith("/override"))
+    if (url.endsWith("/override")) {
+      sent.override = itemId;
+      // the item closes as accepted with the feedback it had; the override earns nothing, progress stays
       return route.fulfill({
         json: {
-          ...verdict(
-            "dictation",
-            "accepted",
-            { typed: "ik woon in gend", expected: "Ik woon in Gent.", overridable: false },
-            "recall",
-          ),
-          progress: { closed, total: 4, queued: 0 },
+          item_id: itemId,
+          attempt: 1,
+          outcome: "accepted",
+          closed: true,
+          requeue: false,
+          attempts_left: 0,
+          feedback: { ...lastFeedback[itemId], outcome: "accepted", overridable: false },
+          points: 0,
+          progress: progress(),
+          next_item_id: nextItem,
         },
       });
+    }
     if (url.endsWith("/finish"))
       return route.fulfill({
         json: {
@@ -561,13 +611,13 @@ test("listening, typing and speaking items, judged by the server and accessible 
           status: "finished",
           points: 0,
           summary: {
-            items_total: 4,
-            answered: 4,
+            items_total: 5,
+            answered: 5,
             first_try_correct: 2,
-            fixed_on_retry: 0,
+            fixed_on_retry: 1,
             skipped: 0,
             overridden: 1,
-            points_earned: 4,
+            points_earned: 5,
             session_bonus: 0,
             by_kind: {},
             missed: [],
@@ -575,113 +625,178 @@ test("listening, typing and speaking items, judged by the server and accessible 
           },
         },
       });
-    const body = route.request().postDataJSON();
-    sent[itemId] = body;
+    const body = request.postDataJSON();
+    sent[`${itemId}${itemOf(itemId).attempts_left < 2 ? "-again" : ""}`] = body;
     if (itemId === "listen")
       return route.fulfill({
         json: verdict("listen", "correct", { correct: "bbbb", given: "bbbb", support }, "dictation"),
       });
     if (itemId === "dictation")
       return route.fulfill({
-        json: {
-          ...verdict(
-            "dictation",
-            "almost",
-            {
-              typed: "ik woon in gend",
-              expected: "Ik woon in Gent.",
-              notes: ["spelling"],
-              diff: [
-                { op: "same", expected: "ik", given: "ik" },
-                { op: "same", expected: "woon", given: "woon" },
-                { op: "same", expected: "in", given: "in" },
-                { op: "changed", expected: "gent", given: "gend" },
-              ],
-              overridable: true,
-            },
-            "recall",
-          ),
-        },
+        json: verdict(
+          "dictation",
+          "almost",
+          {
+            typed: "ik woon in gend",
+            expected: "Ik woon in Gent.",
+            notes: ["spelling"],
+            diff: [
+              { op: "same", expected: "ik", given: "ik" },
+              { op: "same", expected: "woon", given: "woon" },
+              { op: "same", expected: "in", given: "in" },
+              { op: "changed", expected: "gent", given: "gend" },
+            ],
+            overridable: true,
+          },
+          "cloze",
+        ),
+      });
+    if (itemId === "cloze")
+      return route.fulfill({
+        json: verdict("cloze", "correct", { typed: "tot ziens", expected: "tot ziens" }, "recall"),
+      });
+    // typed recall: missed at first (it comes back at the end), right the second time
+    if (itemOf("recall").attempts_left === 2)
+      return route.fulfill({
+        json: verdict(
+          "recall",
+          "incorrect",
+          {
+            typed: "de sleuter",
+            expected: "de sleutel",
+            diff: recallDiff,
+            overridable: true,
+            word: { ...card, term: "de sleutel" },
+          },
+          "shadow",
+          { closes: false, requeue: true },
+        ),
       });
     return route.fulfill({
       json: verdict(
         "recall",
-        "incorrect",
-        {
-          typed: "de sleuter",
-          expected: "de sleutel",
-          diff: [
-            { op: "same", expected: "de", given: "de" },
-            { op: "changed", expected: "sleutel", given: "sleuter" },
-          ],
-          word: { ...card, term: "de sleutel" },
-        },
-        "shadow",
+        "correct",
+        { typed: "de sleutel", expected: "de sleutel", word: { ...card, term: "de sleutel" } },
+        null,
       ),
     });
   });
   await page.goto("/oefenen");
   const next = page.getByRole("button", { name: "Verder" });
+  const field = page.getByRole("textbox", { name: /Jouw antwoord/ });
 
   // listen and choose: the sound comes from the item's audio route; the options are Dutch
-  await expect(page.getByRole("heading", { name: "Welk woord hoor je?" })).toBeFocused();
+  const listenHeading = page.getByRole("heading", { name: "Welk woord hoor je?" });
+  await expect(listenHeading).toBeFocused();
   await expect(page.getByRole("button", { name: "Ik kan nu niet luisteren" })).toBeVisible();
   await checkWidths(page, testInfo, "listen");
-  await page.getByRole("button", { name: "Luister", exact: true }).click();
+  await page.getByRole("button", { name: "Luister", exact: true }).focus();
+  await page.keyboard.press("Enter");
   await expect.poll(() => audioRequests).toBe(1);
   await expect(page.getByText(/Testtoon/)).toBeVisible();
-  await page.getByRole("heading", { name: "Welk woord hoor je?" }).focus();
+  await listenHeading.focus();
   await page.keyboard.press("2");
   await page.keyboard.press("Enter");
   await expect(next).toBeFocused();
   expect(sent.listen).toMatchObject({ answer: { option: "bbbb" } });
-  await next.press("Enter");
+  await page.keyboard.press("Enter");
 
-  // dictation: typed, judged tolerantly; the learner may say the answer is right too
+  // dictation: typed, judged tolerantly; "almost" is neutral, never in the miss colours
   await expect(page.getByRole("heading", { name: "Luister en typ wat je hoort." })).toBeFocused();
-  const field = page.getByRole("textbox", { name: /Jouw antwoord/ });
   await expect(field).toHaveAttribute("lang", "nl");
   await expect(field).toHaveAttribute("autocapitalize", "off");
-  await field.fill("ik woon in gend");
-  await field.press("Enter");
+  await field.focus();
+  await page.keyboard.type("ik woon in gend");
+  await page.keyboard.press("Enter");
   await expect(page.getByRole("region", { name: /Bijna/ })).toBeVisible();
+  await expect(next).toBeFocused();
+  await expect(page.locator('.token-diff[data-outcome="almost"]')).toBeVisible();
   await expect(page.getByRole("insertion")).toContainText("gent");
   await expect(page.getByText("Een kleine tikfout.")).toBeVisible();
   await checkWidths(page, testInfo, "dictation-feedback");
-  await page.getByRole("button", { name: "Mijn antwoord klopt ook" }).click();
-  await expect(page.getByRole("region", { name: /Je antwoord telt/ })).toBeVisible();
-  await page.getByRole("button", { name: "Verder" }).press("Enter");
 
-  // typed recall: the hint is reported with the answer
+  // the learner may say the answer is right too: focus stays on "Verder", the point stays on screen
+  await next.focus();
+  await page.keyboard.press("Tab");
+  await expect(page.getByRole("button", { name: "Mijn antwoord klopt ook" })).toBeFocused();
+  await page.keyboard.press("Enter");
+  const accepted = page.getByRole("region", { name: /Je antwoord telt/ });
+  await expect(accepted).toBeVisible();
+  await expect(next).toBeFocused();
+  await expect(accepted).toContainText("+1 punt");
+  await expect(page.getByText(/Wat de controle verwachtte/)).toBeVisible();
+  await expect(page.locator('.token-diff[data-outcome="accepted"]')).toBeVisible();
+  expect(sent.override).toBe("dictation");
+  await page.keyboard.press("Enter");
+
+  // typed cloze of two words: the hint is asked for by keyboard, read out, and focus goes back to the field
+  await expect(page.getByRole("heading", { name: "Typ de woorden die in de zin passen." })).toBeFocused();
+  await page.getByRole("button", { name: "Toon een hint" }).focus();
+  await page.keyboard.press("Enter");
+  await expect(field).toBeFocused();
+  const hint = "Het begint met t. Het zijn 2 woorden, met 3 + 5 letters.";
+  await expect(page.getByRole("status").filter({ hasText: hint })).toBeVisible();
+  await expect(field).toHaveAccessibleDescription(new RegExp(hint.replace(/[.+]/g, "\\$&")));
+  await page.keyboard.type("tot ziens");
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("region", { name: /Juist/ })).toBeVisible();
+  expect(sent.cloze).toMatchObject({ answer: { text: "tot ziens" }, hint_used: true });
+  await page.keyboard.press("Enter");
+
+  // typed recall: missed, so it comes back at the end; the hint of the item before is not reported with it
   await expect(page.getByRole("heading", { name: "Typ het Nederlandse woord." })).toBeFocused();
-  await page.getByRole("button", { name: "Toon een hint" }).click();
-  await expect(page.getByText("Het begint met s en heeft 7 letters.")).toBeVisible();
-  await page.getByRole("textbox", { name: /Jouw antwoord/ }).fill("de sleuter");
-  await page.getByRole("textbox", { name: /Jouw antwoord/ }).press("Enter");
+  await field.focus();
+  await page.keyboard.type("de sleuter");
+  await page.keyboard.press("Enter");
   await expect(page.getByRole("region", { name: /Nog niet/ })).toBeVisible();
-  expect(sent.recall).toMatchObject({ answer: { text: "de sleuter" }, hint_used: true });
+  await expect(page.getByText("Deze vraag komt aan het einde nog één keer terug.")).toBeVisible();
+  await expect(page.locator('.token-diff[data-outcome="incorrect"]')).toBeVisible();
+  expect(sent.recall).toMatchObject({ answer: { text: "de sleuter" }, hint_used: false });
   await checkWidths(page, testInfo, "recall-feedback");
-  await next.press("Enter");
+  await page.keyboard.press("Enter");
 
-  // shadowing: record with one press, stop with another (the fake microphone speaks); heard, never a score
-  await expect(page.getByRole("heading", { name: "Luister en zeg het na." })).toBeFocused();
+  // shadowing by keyboard: one press records, another stops (the fake microphone speaks); never a score
+  const shadowHeading = page.getByRole("heading", { name: "Luister en zeg het na." });
+  await expect(shadowHeading).toBeFocused();
   await expect(page.getByRole("button", { name: "Controleer" })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Ik kan nu niet spreken" })).toBeVisible();
-  await checkWidths(page, testInfo, "shadow");
   const record = page.getByRole("button", { name: "Neem op" });
-  await record.click();
-  await expect(page.getByRole("button", { name: "Stop met opnemen" })).toHaveAttribute(
-    "aria-pressed",
-    "true",
-  );
-  await page.waitForTimeout(600);
-  await page.getByRole("button", { name: "Stop met opnemen" }).click();
+  await expect(record).toHaveAccessibleDescription(/zeg de zin en druk dan op stop/);
+  await checkWidths(page, testInfo, "shadow");
+  const take = async () => {
+    await page.getByRole("button", { name: "Neem op" }).focus();
+    await page.keyboard.press("Enter");
+    const stop = page.getByRole("button", { name: "Stop met opnemen" });
+    await expect(stop).toHaveAttribute("aria-pressed", "true");
+    await expect(stop).toBeFocused();
+    await page.waitForTimeout(600);
+    await page.keyboard.press("Enter");
+  };
+  await take();
+  // not heard: the item stays open for a second take at once
+  await expect(page.getByRole("region", { name: /Niet gehoord/ })).toBeVisible();
+  await expect(page.getByText("Je mag het meteen nog een keer proberen.")).toBeVisible();
+  await expect(page.locator("p", { hasText: "Wat we hoorden" })).toContainText("nog niets");
+  await expect(next).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(shadowHeading).toBeFocused();
+  await take();
   await expect(page.getByRole("region", { name: /Gehoord/ })).toBeVisible();
-  expect(sent.recording).toBe(true);
-  await expect(page.getByText(/Wat we hoorden/)).toBeVisible();
+  expect(sent.take1).toBe(true);
+  expect(sent.take2).toBe(true);
+  await expect(page.locator("p", { hasText: "Wat we hoorden" })).toContainText("ik woon in gent");
   await expect(page.locator(".exercise-session")).not.toContainText(/4\s*\/\s*4|%/);
   await checkWidths(page, testInfo, "shadow-feedback");
-  await next.press("Enter");
+  await page.keyboard.press("Enter");
+
+  // the missed recall comes back (from the server's view of the session), and is right this time
+  await expect(page.getByRole("heading", { name: "Typ het Nederlandse woord." })).toBeFocused();
+  await field.focus();
+  await page.keyboard.type("de sleutel");
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("region", { name: /Juist/ })).toBeVisible();
+  expect(sent["recall-again"]).toMatchObject({ answer: { text: "de sleutel" }, hint_used: false });
+  await page.keyboard.press("Enter");
   await expect(page.getByRole("heading", { name: "Je oefening is klaar" })).toBeFocused();
 });
 

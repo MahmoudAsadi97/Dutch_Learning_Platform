@@ -21,7 +21,8 @@ export interface SupportOption extends Option {
 }
 export interface Hint {
   first: string;
-  length: number;
+  /** The letters of each word of the answer. */
+  letters: readonly number[];
 }
 export interface IntroWord {
   term: string;
