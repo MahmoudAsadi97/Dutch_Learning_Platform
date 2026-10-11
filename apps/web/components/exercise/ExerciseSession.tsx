@@ -8,6 +8,7 @@ import {
   useReducer,
   useRef,
   useState,
+  useSyncExternalStore,
   type KeyboardEvent as ReactKeyboardEvent,
 } from "react";
 
@@ -22,7 +23,14 @@ import { exerciseCopy } from "@/lib/copy/exercise";
 import { ApiError, newRequestId } from "@/lib/client/api";
 import { errorCopy } from "@/lib/client/error-copy";
 import { isAbort } from "@/lib/client/errors";
-import { exercises, type Answer, type AnswerResult, type ItemView } from "@/lib/client/exercises";
+import { isAudioRecording, subscribeAudioRecording } from "@/lib/client/audio-focus";
+import {
+  exercises,
+  type Answer,
+  type AnswerResult,
+  type ItemView,
+  type Summary,
+} from "@/lib/client/exercises";
 import { pickMimeType, type Recording } from "@/lib/client/recorder";
 import { timeRoundTrip } from "@/lib/client/round-trips";
 import { playTone } from "@/lib/client/tones";
@@ -38,10 +46,24 @@ import { SortBinsItem } from "./SortBinsItem";
 import { TilesItem } from "./TilesItem";
 import { FeedbackBar, outcomeCopy } from "./FeedbackBar";
 import { IntroCard } from "./IntroCard";
-import { RENDERED_KINDS, hasSound, isChoicePrompt, isTypedPrompt, optionForKey } from "./registry";
+import { HeadingLevel } from "./heading";
+import { PassagePanel, PassageReview } from "./PassagePanel";
+import {
+  RENDERED_KINDS,
+  hasSound,
+  isChoicePrompt,
+  isPassagePrompt,
+  isTypedPrompt,
+  optionForKey,
+  passageAudioPath,
+  passageRevealed,
+  sessionRequest,
+  type TopicActivity,
+} from "./registry";
 import { ReportDialog } from "./ReportDialog";
-import { SessionSummary } from "./SessionSummary";
+import { SessionSummary, type SessionExit } from "./SessionSummary";
 import { currentItem, initialState, reduce, requestIdFor, type SkipReason } from "./sessionReducer";
+import { ItemHeading } from "./heading";
 
 /** What to say when "Controleer" is pressed too early: choose an option, type an answer, or finish the board. */
 function nudgeFor(item: ItemView | null): Copy {
@@ -68,9 +90,20 @@ function isTextEntry(target: EventTarget | null): boolean {
   return target instanceof HTMLInputElement && target.type !== "radio";
 }
 
-interface Props {
-  source: "stage_skill" | "while_you_wait";
+interface Common {
+  /** Inside another page (a practice topic): no page title or honesty chip, Escape only within the session, and
+   * the host's own way out in place of the links to Today. */
+  embedded?: SessionExit;
+  /** The level of the session's headings under the host's own (2 on a page of its own). */
+  headingLevel?: 2 | 3 | 4 | 5;
+  /** While a recording runs or the session is being closed: the host keeps the learner on the page. */
+  onActivityChange?: (busy: boolean) => void;
+  /** Once, when the session has its summary (also a finished session found again). */
+  onFinished?: (summary: Summary) => void;
 }
+
+type Props =
+  ({ source: "stage_skill" | "while_you_wait" } & Common) | ({ source: "topic" } & TopicActivity & Common);
 
 /**
  * One practice session, start to summary, driven by the reducer in sessionReducer.ts. The server generates
@@ -80,12 +113,22 @@ interface Props {
  * Focus moves to each new question, then to "Verder" after the verdict; a polite live region says the
  * outcome. Tones play only after the server's verdict, and never for a miss.
  */
-export function ExerciseSession({ source }: Props) {
+export function ExerciseSession(props: Props) {
+  const { source, embedded, headingLevel = 2, onActivityChange, onFinished } = props;
+  // the activity as primitives, so the create effect sees no new object on every render
+  const stageId = props.source === "topic" ? props.stageId : undefined;
+  const topicId = props.source === "topic" ? props.topicId : undefined;
+  const skill = props.source === "topic" ? props.skill : undefined;
+  const receptiveTopic = skill === "reading" || skill === "listening";
+  const warmUp = skill === "speaking" || skill === "writing";
   const [state, dispatch] = useReducer(reduce, initialState);
   // minted once, so a second effect run (or a retry) asks for the same session and the API replays it
   const [createId, setCreateId] = useState(() => newRequestId());
+  // a topic's short session on the questions its last session missed
+  const [retry, setRetry] = useState(false);
   const [loadTry, setLoadTry] = useState(0);
   const [loadError, setLoadError] = useState<Copy | null>(null);
+  const [loadCode, setLoadCode] = useState("");
   // the answer as it stands: an option, or a whole board once every part is in place (null before)
   const [draft, setDraft] = useState<Answer | null>(null);
   const [actionError, setActionError] = useState<Copy | null>(null);
@@ -112,20 +155,41 @@ export function ExerciseSession({ source }: Props) {
     // a browser that cannot record is not given shadowing at all (the same list on every try of this id)
     const kinds =
       pickMimeType() !== null ? RENDERED_KINDS : RENDERED_KINDS.filter((kind) => kind !== "shadow");
+    const activity = source === "topic" && stageId && topicId && skill ? { stageId, topicId, skill } : null;
     exercises
-      .create({ source, kinds }, createId)
+      .create(sessionRequest(source, activity, retry, kinds), createId)
       .then((created) => {
         if (live) dispatch({ type: "LOADED", session: created });
       })
       .catch((cause: unknown) => {
         if (!live || isAbort(cause)) return;
-        setLoadError(errorCopy(cause, exerciseCopy.loadFailed, { not_ready: exerciseCopy.notReady }, "load"));
+        // a warm-up that cannot be made sends the learner on to the task
+        const notReady =
+          skill === "speaking" || skill === "writing" ? exerciseCopy.warmUpNotReady : exerciseCopy.notReady;
+        setLoadError(errorCopy(cause, exerciseCopy.loadFailed, { not_ready: notReady }, "load"));
+        setLoadCode(cause instanceof ApiError ? cause.code : "");
         dispatch({ type: "LOAD_FAILED" });
       });
     return () => {
       live = false;
     };
-  }, [source, createId, loadTry]);
+  }, [source, stageId, topicId, skill, retry, createId, loadTry]);
+
+  // a recording, or the session being closed: the host keeps the learner on the page meanwhile (an answer on its
+  // way is safe to leave: the server keeps it)
+  const recording = useSyncExternalStore(subscribeAudioRecording, isAudioRecording, () => false);
+  const active = recording || (state.phase === "finishing" && !state.failed);
+  const reportActivity = useEffectEvent((busy: boolean) => onActivityChange?.(busy));
+  useEffect(() => {
+    reportActivity(active);
+  }, [active]);
+  useEffect(() => () => reportActivity(false), []);
+
+  // the summary, once per finish (a finished session found again counts too)
+  const reportFinished = useEffectEvent((summary: Summary) => onFinished?.(summary));
+  useEffect(() => {
+    if (state.finished) reportFinished(state.finished.summary);
+  }, [state.finished]);
 
   // the last item answered: close the session (the same request id on every try, so it counts once)
   const sessionId = session?.id;
@@ -308,7 +372,8 @@ export function ExerciseSession({ source }: Props) {
     dispatch({ type: "FINISH" });
   }
 
-  function again() {
+  /** A new session: all the questions again, or (a topic's) only those the last session missed. */
+  function restart(nextRetry: boolean) {
     finishId.current = null;
     early.current = false;
     shown.current = null;
@@ -317,19 +382,28 @@ export function ExerciseSession({ source }: Props) {
     setDraft(null);
     setActionError(null);
     setLoadError(null);
+    setLoadCode("");
     dispatch({ type: "RESET" });
+    setRetry(nextRetry);
     setCreateId(newRequestId());
   }
+  const again = () => restart(false);
+  const retryMissed = () => restart(true);
 
-  // Escape anywhere asks to stop, unless a dialog (this screen's or another one's) is open and takes it
-  const onKey = useEffectEvent((event: KeyboardEvent) => {
+  /** Escape asks to stop, unless a dialog (this screen's or another one's) is open and takes it. */
+  function askToStop(
+    event: Pick<KeyboardEvent, "key" | "altKey" | "ctrlKey" | "metaKey" | "preventDefault">,
+  ) {
     if (event.key !== "Escape" || event.altKey || event.ctrlKey || event.metaKey) return;
     if (document.querySelector("dialog[open]")) return;
     if (state.phase === "answering" || state.phase === "feedback") {
       event.preventDefault();
       setDialog("exit");
     }
-  });
+  }
+  // on a page of its own Escape anywhere asks; inside another page only Escape within the session does
+  const onKey = useEffectEvent((event: KeyboardEvent) => askToStop(event));
+  const isEmbedded = embedded !== undefined;
 
   // the number keys and Enter only while focus is in the item, so they never take keys meant elsewhere
   function onStageKey(event: ReactKeyboardEvent<HTMLDivElement>) {
@@ -357,10 +431,51 @@ export function ExerciseSession({ source }: Props) {
     }
   }
   useEffect(() => {
+    if (isEmbedded) return;
     const listener = (event: KeyboardEvent) => onKey(event);
     document.addEventListener("keydown", listener);
     return () => document.removeEventListener("keydown", listener);
-  }, []);
+  }, [isEmbedded]);
+
+  /** The way out: the host's (a practice topic's) or back to Today. */
+  function exitButton(variant: "secondary" | "ghost") {
+    return embedded ? (
+      <Button
+        variant={variant}
+        onClick={() => {
+          setDialog(null);
+          embedded.onExit();
+        }}
+      >
+        <UiText text={embedded.label} inline />
+      </Button>
+    ) : (
+      <ButtonLink href="/" variant={variant}>
+        <UiText text={exerciseCopy.backToday} inline />
+      </ButtonLink>
+    );
+  }
+
+  // a topic's passage: one panel from its own step through every question, then read again in the summary
+  const passageItem = session?.items.find((entry) => isPassagePrompt(entry.prompt)) ?? null;
+  const passage = passageItem && isPassagePrompt(passageItem.prompt) ? passageItem.prompt : null;
+  const onPassage = passageItem !== null && item?.id === passageItem.id;
+  const needsReveal = state.phase === "summary" && passage !== null && !passageRevealed(passage);
+  useEffect(() => {
+    if (!needsReveal || !sessionId) return;
+    let live = true;
+    exercises
+      .get(sessionId)
+      .then((fresh) => {
+        if (live) dispatch({ type: "REVEALED", session: fresh });
+      })
+      .catch(() => {
+        // the summary shows the Dutch only
+      });
+    return () => {
+      live = false;
+    };
+  }, [needsReveal, sessionId]);
 
   /** The item's own renderer: a fresh one for each asking of a question (a question that comes straight back
    * starts again from the server's reshuffled prompt) and another for its verdict. */
@@ -462,235 +577,299 @@ export function ExerciseSession({ source }: Props) {
   }
 
   const loading = state.phase === "creating" || (state.phase === "error" && !loadError);
+  const asking = state.phase === "answering" || state.phase === "checking" || state.phase === "feedback";
   return (
-    <div className="exercise-session">
-      <header className="exercise-frame">
-        <h1 className="exercise-title">
-          <UiText text={exerciseCopy.pageTitle} />
-        </h1>
-        {session && state.phase !== "summary" && (
-          <div className="exercise-progress">
-            <ProgressBar
-              value={session.progress.closed}
-              max={Math.max(session.progress.total, 1)}
-              label={exerciseCopy.progressLabel.nl}
-              size="thin"
-            />
-            <span className="exercise-progress-text">
-              <UiText
-                text={fill(exerciseCopy.progress, {
-                  closed: session.progress.closed,
-                  total: session.progress.total,
-                })}
-                inline
+    <HeadingLevel value={headingLevel}>
+      <div
+        className="exercise-session"
+        data-embedded={isEmbedded ? "" : undefined}
+        onKeyDown={isEmbedded ? (event) => askToStop(event) : undefined}
+      >
+        <header className="exercise-frame">
+          {!isEmbedded && (
+            <h1 className="exercise-title">
+              <UiText text={exerciseCopy.pageTitle} />
+            </h1>
+          )}
+          {session && state.phase !== "summary" && (
+            <div className="exercise-progress">
+              <ProgressBar
+                value={session.progress.closed}
+                max={Math.max(session.progress.total, 1)}
+                label={exerciseCopy.progressLabel.nl}
+                size="thin"
               />
-            </span>
-          </div>
-        )}
-        <div className="exercise-frame-actions">
-          {session && <HonestyChip kind="unreviewed" />}
-          {session &&
-            (state.phase === "answering" || state.phase === "feedback" || state.phase === "checking") && (
-              <Button variant="ghost" size="small" icon="close" onClick={() => setDialog("exit")}>
-                <UiText text={exerciseCopy.exit} inline />
-              </Button>
-            )}
-        </div>
-      </header>
-
-      <p className="visually-hidden" role="status" aria-live="polite">
-        {announcement && (
-          <span key={announcement.id}>
-            <UiText text={announcement.text} inline />
-          </span>
-        )}
-      </p>
-
-      {loading && <SkeletonPanel label={exerciseCopy.loading.nl} />}
-
-      {state.phase === "error" && loadError && (
-        <Notice tone="warning" role="alert">
-          <UiText text={loadError} tier="guide" />
-          <div className="exercise-actions">
-            <Button
-              variant="secondary"
-              icon="refresh"
-              onClick={() => {
-                setLoadError(null);
-                setLoadTry((count) => count + 1);
-              }}
-            >
-              <UiText text={uiCopy.action.retry} inline />
-            </Button>
-            <ButtonLink href="/" variant="ghost">
-              <UiText text={exerciseCopy.backToday} inline />
-            </ButtonLink>
-          </div>
-        </Notice>
-      )}
-
-      {session?.resumed && state.phase === "answering" && session.progress.closed > 0 && (
-        <p className="exercise-resumed">
-          <UiText text={exerciseCopy.resumed} tier="guide" />
-        </p>
-      )}
-
-      {item && (state.phase === "answering" || state.phase === "checking" || state.phase === "feedback") && (
-        <div className="exercise-stage" aria-busy={state.phase === "checking"} onKeyDown={onStageKey}>
-          {item.prompt.kind === "intro" ? (
-            <>
-              <IntroCard words={item.prompt.words} headingRef={headingRef} />
-              <div className="exercise-actions">
-                <Button onClick={() => void send({ done: true }, null)} icon="arrow" iconEnd>
-                  <UiText text={exerciseCopy.introDone} inline />
-                </Button>
-              </div>
-            </>
-          ) : (
-            <>
-              {renderItem(item)}
-              {state.phase !== "feedback" && (
-                <div className="exercise-actions">
-                  {/* shadowing is answered by its recording */}
-                  {item.prompt.kind !== "shadow" && (
-                    <Button onClick={check} disabled={state.phase === "checking"} icon="check">
-                      <UiText text={state.failed ? exerciseCopy.sendAgain : uiCopy.action.check} inline />
-                    </Button>
-                  )}
-                  <Button
-                    variant="ghost"
-                    onClick={() => void send(null, "unknown")}
-                    disabled={state.phase === "checking"}
-                  >
-                    <UiText text={exerciseCopy.skip} inline />
-                  </Button>
-                  {/* a sound that will not play or a microphone that does not work is never a miss */}
-                  {hasSound(item.kind) && (
-                    <Button
-                      variant="ghost"
-                      onClick={() => void send(null, "no_audio")}
-                      disabled={state.phase === "checking"}
-                    >
-                      <UiText text={exerciseCopy.cannotListen} inline />
-                    </Button>
-                  )}
-                  {item.prompt.kind === "shadow" && (
-                    <Button
-                      variant="ghost"
-                      onClick={() => void send(null, "no_microphone")}
-                      disabled={state.phase === "checking"}
-                    >
-                      <UiText text={exerciseCopy.cannotSpeak} inline />
-                    </Button>
-                  )}
-                  {isChoicePrompt(item.prompt) && (
-                    <span className="exercise-keys">
-                      <UiText text={exerciseCopy.keysHint} tier="guide" />
-                    </span>
-                  )}
-                </div>
-              )}
-              {nudge && (
-                <p className="exercise-nudge">
-                  <UiText text={nudgeFor(item)} inline />
-                </p>
-              )}
-            </>
-          )}
-          {state.phase === "feedback" && state.result && (
-            <FeedbackBar
-              result={state.result}
-              onContinue={() => void goOn()}
-              onReport={() => setDialog("report")}
-              onOverride={
-                state.result.feedback.overridable && state.result.outcome !== "accepted"
-                  ? () => void overrule()
-                  : undefined
-              }
-              continueRef={continueRef}
-              describedBy={verdictId}
-            />
-          )}
-        </div>
-      )}
-
-      {actionError && state.phase !== "summary" && (
-        <Notice tone="warning" role="alert">
-          <UiText text={actionError} tier="guide" />
-          {state.phase === "finishing" && state.failed && (
-            <div className="exercise-actions">
-              <Button
-                variant="secondary"
-                icon="refresh"
-                onClick={() => {
-                  setActionError(null);
-                  dispatch({ type: "FINISH" });
-                }}
-              >
-                <UiText text={uiCopy.action.retry} inline />
-              </Button>
-              <ButtonLink href="/" variant="ghost">
-                <UiText text={exerciseCopy.backToday} inline />
-              </ButtonLink>
+              <span className="exercise-progress-text">
+                <UiText
+                  text={fill(exerciseCopy.progress, {
+                    closed: session.progress.closed,
+                    total: session.progress.total,
+                  })}
+                  inline
+                />
+              </span>
             </div>
           )}
-        </Notice>
-      )}
-
-      {state.phase === "finishing" && !state.failed && <SkeletonPanel label={exerciseCopy.loading.nl} />}
-
-      {state.phase === "summary" && session?.summary && (
-        <SessionSummary summary={session.summary} onAgain={again} headingRef={headingRef} />
-      )}
-      {state.phase === "summary" && session && !session.summary && (
-        <Notice tone="info">
-          <h2 className="exercise-question" tabIndex={-1} ref={headingRef}>
-            <UiText text={exerciseCopy.stoppedElsewhere} tier="guide" />
-          </h2>
-          <div className="exercise-actions">
-            <Button onClick={again} icon="repeat">
-              <UiText text={exerciseCopy.again} inline />
-            </Button>
-            <ButtonLink href="/" variant="secondary">
-              <UiText text={exerciseCopy.backToday} inline />
-            </ButtonLink>
+          <div className="exercise-frame-actions">
+            {/* inside a topic, the page's own chip says it */}
+            {session && !isEmbedded && <HonestyChip kind="unreviewed" />}
+            {session &&
+              (state.phase === "answering" || state.phase === "feedback" || state.phase === "checking") && (
+                <Button variant="ghost" size="small" icon="close" onClick={() => setDialog("exit")}>
+                  <UiText text={exerciseCopy.exit} inline />
+                </Button>
+              )}
           </div>
-        </Notice>
-      )}
+        </header>
 
-      {/* both dialogs stay mounted while there is a session, so closing one returns focus to its opener */}
-      {session && (
-        <Dialog
-          open={dialog === "exit"}
-          onClose={() => setDialog(null)}
-          title={<UiText text={exerciseCopy.exitTitle} />}
-          description={<UiText text={exerciseCopy.exitLead} tier="guide" />}
-          closeLabel={uiCopy.action.close.nl}
-          actions={
-            <>
-              <Button variant="secondary" onClick={finishNow}>
-                <UiText text={exerciseCopy.exitFinish} inline />
+        <p className="visually-hidden" role="status" aria-live="polite">
+          {announcement && (
+            <span key={announcement.id}>
+              <UiText text={announcement.text} inline />
+            </span>
+          )}
+        </p>
+
+        {loading && <SkeletonPanel label={exerciseCopy.loading.nl} />}
+
+        {state.phase === "error" && loadError && (
+          <Notice tone="warning" role="alert">
+            <UiText text={loadError} tier="guide" />
+            <div className="exercise-actions">
+              {loadCode === "nothing_to_retry" ? (
+                // nothing missed is left: all the questions again is the way on
+                <Button variant="secondary" icon="repeat" onClick={again}>
+                  <UiText text={exerciseCopy.againAll} inline />
+                </Button>
+              ) : (
+                <Button
+                  variant="secondary"
+                  icon="refresh"
+                  onClick={() => {
+                    setLoadError(null);
+                    setLoadTry((count) => count + 1);
+                  }}
+                >
+                  <UiText text={uiCopy.action.retry} inline />
+                </Button>
+              )}
+              {exitButton("ghost")}
+            </div>
+          </Notice>
+        )}
+
+        {session?.resumed && state.phase === "answering" && session.progress.closed > 0 && (
+          <p className="exercise-resumed">
+            <UiText text={exerciseCopy.resumed} tier="guide" />
+          </p>
+        )}
+
+        {session && passage && asking && (
+          <PassagePanel
+            prompt={passage}
+            mode={onPassage ? "step" : "reference"}
+            audioPath={passageAudioPath(session)}
+            headingRef={onPassage ? headingRef : undefined}
+          />
+        )}
+
+        {item && asking && (
+          <div className="exercise-stage" aria-busy={state.phase === "checking"} onKeyDown={onStageKey}>
+            {isPassagePrompt(item.prompt) ? (
+              // the passage is above: read or heard, it leads on to the questions
+              <div className="exercise-actions">
+                <Button
+                  onClick={() => void send({ done: true }, null)}
+                  disabled={state.phase === "checking"}
+                  icon="arrow"
+                  iconEnd
+                >
+                  <UiText text={exerciseCopy.passageDone} inline />
+                </Button>
+                {item.prompt.kind === "listen_passage" && (
+                  <Button
+                    variant="ghost"
+                    onClick={() => void send(null, "no_audio")}
+                    disabled={state.phase === "checking"}
+                  >
+                    <UiText text={exerciseCopy.cannotListen} inline />
+                  </Button>
+                )}
+              </div>
+            ) : item.prompt.kind === "intro" ? (
+              <>
+                <IntroCard words={item.prompt.words} headingRef={headingRef} />
+                <div className="exercise-actions">
+                  <Button onClick={() => void send({ done: true }, null)} icon="arrow" iconEnd>
+                    <UiText text={exerciseCopy.introDone} inline />
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <>
+                {renderItem(item)}
+                {state.phase !== "feedback" && (
+                  <div className="exercise-actions">
+                    {/* shadowing is answered by its recording */}
+                    {item.prompt.kind !== "shadow" && (
+                      <Button onClick={check} disabled={state.phase === "checking"} icon="check">
+                        <UiText text={state.failed ? exerciseCopy.sendAgain : uiCopy.action.check} inline />
+                      </Button>
+                    )}
+                    <Button
+                      variant="ghost"
+                      onClick={() => void send(null, "unknown")}
+                      disabled={state.phase === "checking"}
+                    >
+                      <UiText text={exerciseCopy.skip} inline />
+                    </Button>
+                    {/* a sound that will not play or a microphone that does not work is never a miss */}
+                    {hasSound(item.kind) && (
+                      <Button
+                        variant="ghost"
+                        onClick={() => void send(null, "no_audio")}
+                        disabled={state.phase === "checking"}
+                      >
+                        <UiText text={exerciseCopy.cannotListen} inline />
+                      </Button>
+                    )}
+                    {item.prompt.kind === "shadow" && (
+                      <Button
+                        variant="ghost"
+                        onClick={() => void send(null, "no_microphone")}
+                        disabled={state.phase === "checking"}
+                      >
+                        <UiText text={exerciseCopy.cannotSpeak} inline />
+                      </Button>
+                    )}
+                    {isChoicePrompt(item.prompt) && (
+                      <span className="exercise-keys">
+                        <UiText text={exerciseCopy.keysHint} tier="guide" />
+                      </span>
+                    )}
+                  </div>
+                )}
+                {nudge && (
+                  <p className="exercise-nudge">
+                    <UiText text={nudgeFor(item)} inline />
+                  </p>
+                )}
+              </>
+            )}
+            {state.phase === "feedback" && state.result && (
+              <FeedbackBar
+                result={state.result}
+                onContinue={() => void goOn()}
+                onReport={() => setDialog("report")}
+                onOverride={
+                  state.result.feedback.overridable && state.result.outcome !== "accepted"
+                    ? () => void overrule()
+                    : undefined
+                }
+                continueRef={continueRef}
+                describedBy={verdictId}
+              />
+            )}
+          </div>
+        )}
+
+        {actionError && state.phase !== "summary" && (
+          <Notice tone="warning" role="alert">
+            <UiText text={actionError} tier="guide" />
+            {state.phase === "finishing" && state.failed && (
+              <div className="exercise-actions">
+                <Button
+                  variant="secondary"
+                  icon="refresh"
+                  onClick={() => {
+                    setActionError(null);
+                    dispatch({ type: "FINISH" });
+                  }}
+                >
+                  <UiText text={uiCopy.action.retry} inline />
+                </Button>
+                {exitButton("ghost")}
+              </div>
+            )}
+          </Notice>
+        )}
+
+        {state.phase === "finishing" && !state.failed && <SkeletonPanel label={exerciseCopy.loading.nl} />}
+
+        {state.phase === "summary" && session?.summary && (
+          <SessionSummary
+            summary={session.summary}
+            onAgain={again}
+            onRetry={receptiveTopic ? retryMissed : undefined}
+            exit={embedded}
+            headingRef={headingRef}
+          >
+            {passage && <PassageReview prompt={passage} audioPath={passageAudioPath(session)} />}
+          </SessionSummary>
+        )}
+        {state.phase === "summary" && session && !session.summary && (
+          <Notice tone="info">
+            <ItemHeading className="exercise-question" tabIndex={-1} ref={headingRef}>
+              <UiText text={exerciseCopy.stoppedElsewhere} tier="guide" />
+            </ItemHeading>
+            <div className="exercise-actions">
+              <Button onClick={again} icon="repeat">
+                <UiText text={exerciseCopy.again} inline />
               </Button>
-              <ButtonLink href="/" variant="secondary">
-                <UiText text={exerciseCopy.exitLater} inline />
-              </ButtonLink>
-              <Button onClick={() => setDialog(null)}>
-                <UiText text={exerciseCopy.keepGoing} inline />
-              </Button>
-            </>
-          }
-        />
-      )}
-      {session && item && (
-        <ReportDialog
-          key={item.id}
-          open={dialog === "report"}
-          sessionId={session.id}
-          itemId={item.id}
-          kind={item.kind}
-          onClose={() => setDialog(null)}
-        />
-      )}
-    </div>
+              {exitButton("secondary")}
+            </div>
+          </Notice>
+        )}
+
+        {/* both dialogs stay mounted while there is a session, so closing one returns focus to its opener */}
+        {session && (
+          <Dialog
+            open={dialog === "exit"}
+            onClose={() => setDialog(null)}
+            title={<UiText text={exerciseCopy.exitTitle} />}
+            description={
+              <UiText
+                text={
+                  !isEmbedded
+                    ? exerciseCopy.exitLead
+                    : warmUp
+                      ? exerciseCopy.exitLeadWarmUp
+                      : exerciseCopy.exitLeadActivity
+                }
+                tier="guide"
+              />
+            }
+            closeLabel={uiCopy.action.close.nl}
+            actions={
+              <>
+                <Button variant="secondary" onClick={finishNow}>
+                  <UiText text={exerciseCopy.exitFinish} inline />
+                </Button>
+                {isEmbedded ? (
+                  exitButton("secondary")
+                ) : (
+                  <ButtonLink href="/" variant="secondary">
+                    <UiText text={exerciseCopy.exitLater} inline />
+                  </ButtonLink>
+                )}
+                <Button onClick={() => setDialog(null)}>
+                  <UiText text={exerciseCopy.keepGoing} inline />
+                </Button>
+              </>
+            }
+          />
+        )}
+        {session && item && (
+          <ReportDialog
+            key={item.id}
+            open={dialog === "report"}
+            sessionId={session.id}
+            itemId={item.id}
+            kind={item.kind}
+            onClose={() => setDialog(null)}
+          />
+        )}
+      </div>
+    </HeadingLevel>
   );
 }

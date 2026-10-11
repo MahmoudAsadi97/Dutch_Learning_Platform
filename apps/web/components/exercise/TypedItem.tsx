@@ -14,6 +14,7 @@ import { ItemAudio } from "./ItemAudio";
 import type { TypedPrompt } from "./registry";
 import { TokenDiff } from "./TokenDiff";
 import { hasDifference } from "./tokenParts";
+import { ItemHeading } from "./heading";
 
 /** What a compare note means, in words; the codes come from the API's tolerant comparison. */
 const NOTES: Record<string, Copy> = {
@@ -89,9 +90,9 @@ export function TypedItem({
 
   return (
     <div className="exercise-item">
-      <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
+      <ItemHeading className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
         <UiText text={question(prompt)} tier="guide" />
-      </h2>
+      </ItemHeading>
       <div className="exercise-stem">
         {prompt.kind === "cloze_typed" && (
           <>

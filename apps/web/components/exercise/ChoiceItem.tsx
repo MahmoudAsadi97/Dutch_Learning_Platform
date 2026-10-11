@@ -2,6 +2,7 @@
 
 import { useId, type ReactNode, type Ref } from "react";
 
+import { PhraseAudio } from "@/components/PhraseAudio";
 import { AnswerOption, type AnswerState } from "@/components/ui/AnswerOption";
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
@@ -10,6 +11,7 @@ import type { Copy } from "@/lib/ui-copy";
 
 import { Dutch, Meaning } from "./ContentText";
 import type { ChoicePrompt } from "./registry";
+import { ItemHeading } from "./heading";
 
 function question(prompt: ChoicePrompt): Copy {
   if (prompt.kind === "cloze_choice") return exerciseCopy.askCloze;
@@ -68,12 +70,14 @@ function Stem({ prompt, audio }: { prompt: ChoicePrompt; audio?: ReactNode }) {
         </p>
       </div>
     );
+  // an authored question: to hear, and with its gloss (the options' glosses wait for the answer)
   if (prompt.direction === "question")
     return (
       <div className="exercise-stem">
         <p className="exercise-prompt">
-          <Dutch text={prompt.stem.nl} />
+          <Dutch text={prompt.stem.nl} /> {prompt.stem.nl && <PhraseAudio text={prompt.stem.nl} />}
         </p>
+        <Meaning text={prompt.stem} className="exercise-cue" />
       </div>
     );
   return (
@@ -133,9 +137,9 @@ export function ChoiceItem({ prompt, selected, onSelect, feedback, headingRef, a
   const support = new Map((feedback?.support ?? []).map((entry) => [entry.id, entry]));
   return (
     <div className="exercise-item">
-      <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
+      <ItemHeading className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
         <UiText text={question(prompt)} tier="guide" />
-      </h2>
+      </ItemHeading>
       <Stem prompt={prompt} audio={audio} />
       <fieldset className="answer-group" aria-labelledby={headingId}>
         <div className="answer-list">

@@ -3,6 +3,7 @@ import { exerciseCopy } from "@/lib/copy/exercise";
 import { missionsCopy } from "@/lib/copy/missions";
 import { PERSIAN_REVIEWED } from "@/lib/copy/review";
 import { speechCopy } from "@/lib/copy/speech";
+import { topicsCopy } from "@/lib/copy/topics";
 import { videoCopy } from "@/lib/copy/video";
 import { wordsCopy } from "@/lib/copy/words";
 import { batchOf, registerBatch, uiCopy, type Copy } from "@/lib/ui-copy";
@@ -16,6 +17,7 @@ export const COPY_BATCHES: Record<string, Record<string, Copy>> = {
   missions: missionsCopy,
   speech: speechCopy,
   exercise: exerciseCopy,
+  topics: topicsCopy,
 };
 
 for (const [name, entries] of Object.entries(COPY_BATCHES)) registerBatch(name, entries);

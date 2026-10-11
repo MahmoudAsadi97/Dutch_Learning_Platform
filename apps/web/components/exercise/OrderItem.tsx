@@ -10,6 +10,7 @@ import { fill } from "@/lib/ui-copy";
 
 import type { BoardProps } from "./boardProps";
 import { Dutch, Meaning } from "./ContentText";
+import { ItemHeading } from "./heading";
 
 /**
  * Putting the sentences of a paragraph back in order: each sentence moves up or down with its own buttons (no
@@ -59,9 +60,9 @@ export function OrderItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
     const miss = feedback.outcome === "almost" ? "almost" : "incorrect";
     return (
       <div className="exercise-item">
-        <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
+        <ItemHeading className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
           <UiText text={exerciseCopy.rightOrder} tier="guide" />
-        </h2>
+        </ItemHeading>
         <ol className="order-list">
           {right.map((id, index) => {
             const placed = given ? given.indexOf(id) : index;
@@ -89,9 +90,9 @@ export function OrderItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
 
   return (
     <div className="exercise-item">
-      <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
+      <ItemHeading className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
         <UiText text={exerciseCopy.askOrder} tier="guide" />
-      </h2>
+      </ItemHeading>
       <ol className="order-list" ref={list} aria-labelledby={headingId}>
         {order.map((id, index) => (
           <li key={id} className="order-row">

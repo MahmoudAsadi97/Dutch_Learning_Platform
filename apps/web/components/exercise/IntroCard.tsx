@@ -7,6 +7,7 @@ import { exerciseCopy } from "@/lib/copy/exercise";
 import type { IntroWord } from "@/lib/client/exercises";
 
 import { Dutch, Meaning } from "./ContentText";
+import { ItemHeading } from "./heading";
 
 /** The session's new words, shown once before they are practised; nothing to answer. */
 export function IntroCard({
@@ -18,9 +19,9 @@ export function IntroCard({
 }) {
   return (
     <div className="exercise-item">
-      <h2 className="exercise-question" tabIndex={-1} ref={headingRef}>
+      <ItemHeading className="exercise-question" tabIndex={-1} ref={headingRef}>
         <UiText text={exerciseCopy.introTitle} />
-      </h2>
+      </ItemHeading>
       <p className="exercise-lead">
         <UiText text={exerciseCopy.introLead} tier="guide" />
       </p>

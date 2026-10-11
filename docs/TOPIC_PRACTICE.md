@@ -9,16 +9,21 @@ language demands. These are 4,800 stage-and-skill activities, not 4,800 unrelate
 
 Open a stage and choose Lezen, Luisteren, Spreken or Schrijven. The topic browser opens by default.
 Search in Dutch, English or Persian, choose a category, or filter to completed or unstarted practice.
-Open a topic and work on its task. The original introductory activity is still available through
-Startles; the vocabulary cards and Story Time remain separate sections.
+Open a topic: a short start card says what happens and whether the topic already counts as practised.
+The original introductory activity is still available through Startles; the vocabulary cards and Story
+Time remain separate sections.
 
-- Reading presents an original text with questions about its details and meaning.
-- Listening presents a distinct message or dialogue, replay controls, an optional transcript and
-  questions about the information heard. Existing synthetic speech renders the authored script.
+- Reading presents an original text, then its questions one at a time with feedback after each answer;
+  the text stays beside the questions, and its translation can be read once every question is answered.
+- Listening presents a distinct message or dialogue with replay controls, then its questions one at a
+  time; the transcript can be read along once every question is answered. Existing synthetic speech
+  renders the authored script.
 - Speaking gives a role, purpose and criteria, then records and transcribes a short response for
   task-based feedback. Recordings remain bounded by the existing short-audio service.
 - Writing specifies the recipient and purpose. A learner can request spelling/grammar corrections,
   edit the draft and submit for task feedback. Drafts are isolated by learner, stage and topic.
+- Speaking and writing can start with a short warm-up on the topic's words, or go straight to the task;
+  a link from the practice coach, a conversation or a draft already begun opens the task directly.
 
 English and Persian remain optional support. Short beginner tasks emphasise useful phrases; later
 tasks introduce explanations, register, comparison, synthesis and qualification. Advanced activities

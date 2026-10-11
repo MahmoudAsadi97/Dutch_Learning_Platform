@@ -39,7 +39,9 @@ export type RunnerEvent =
   | { type: "CONTINUE" }
   | { type: "FINISH" }
   | { type: "FINISHED"; result: FinishResult }
-  | { type: "FINISH_FAILED" };
+  | { type: "FINISH_FAILED" }
+  // a finished topic session read again: the passage now carries its translation or transcript
+  | { type: "REVEALED"; session: SessionView };
 
 export const initialState: RunnerState = {
   phase: "creating",
@@ -165,5 +167,10 @@ export function reduce(state: RunnerState, event: RunnerEvent): RunnerState {
       };
     case "FINISH_FAILED":
       return state.phase === "finishing" ? { ...state, failed: true } : state;
+    case "REVEALED":
+      // only the items change: the summary, its points and the phase stay as they were
+      return state.phase === "summary" && state.session && state.session.id === event.session.id
+        ? { ...state, session: { ...state.session, items: event.session.items } }
+        : state;
   }
 }

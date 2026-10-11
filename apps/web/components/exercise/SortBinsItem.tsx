@@ -8,6 +8,7 @@ import { exerciseCopy } from "@/lib/copy/exercise";
 
 import type { BoardProps } from "./boardProps";
 import { Dutch } from "./ContentText";
+import { ItemHeading } from "./heading";
 
 type Bin = "de" | "het";
 
@@ -35,9 +36,9 @@ export function SortBinsItem({ prompt, feedback, onDraft, headingRef }: BoardPro
 
   return (
     <div className="exercise-item">
-      <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
+      <ItemHeading className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
         <UiText text={exerciseCopy.askDeHet} tier="guide" />
-      </h2>
+      </ItemHeading>
       <ul className="sort-list" aria-labelledby={headingId}>
         {prompt.options.map((noun) => {
           const result = results?.[noun.id];

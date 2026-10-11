@@ -49,7 +49,12 @@ export function CurriculumQuestions({
                     checked={answers[question.id] === index}
                     onChange={() => onAnswer(question.id, index)}
                   />
-                  {exam ? <span lang="nl">{option.nl}</span> : <LearningText text={option} />}
+                  {/* an option's gloss would give the answer away: only once the answers are checked */}
+                  {exam ? (
+                    <span lang="nl">{option.nl}</span>
+                  ) : (
+                    <LearningText text={checked ? option : { nl: option.nl }} />
+                  )}
                 </label>
                 {!exam && <PhraseAudio text={option.nl} disabled={disabled} />}
               </div>

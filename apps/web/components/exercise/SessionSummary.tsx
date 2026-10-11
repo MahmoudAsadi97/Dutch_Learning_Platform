@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, type Ref } from "react";
+import { useState, type ReactNode, type Ref } from "react";
 
+import { Icon } from "@/components/Icon";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
@@ -10,7 +11,9 @@ import type { Summary } from "@/lib/client/exercises";
 import { words } from "@/lib/client/stories";
 import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
+import { againLabel, completionLines, completionState, summaryActions } from "./completion";
 import { Dutch, Meaning } from "./ContentText";
+import { ItemHeading } from "./heading";
 
 type Suggestion = Summary["suggestions"][number];
 
@@ -61,14 +64,30 @@ function SuggestionRow({ suggestion }: { suggestion: Suggestion }) {
   );
 }
 
+/** A host page's own way out (a practice topic's), in place of the link back to Today. */
+export interface SessionExit {
+  label: Copy;
+  onExit: () => void;
+}
+
 interface Props {
   summary: Summary;
   onAgain: () => void;
+  /** A topic's short session on the questions missed the first time (offered when there are some). */
+  onRetry?: () => void;
+  exit?: SessionExit;
   headingRef?: Ref<HTMLHeadingElement>;
+  /** Shown after the numbers: a topic's passage, read again. */
+  children?: ReactNode;
 }
 
-/** What the session did: answered, right first time, right on the second try, points; then what to keep. */
-export function SessionSummary({ summary, onAgain, headingRef }: Props) {
+/**
+ * What the session did: answered, right first time, right on the second try, points; for a topic, what it did
+ * for the topic (the server decides; never in a miss colour); then what to keep, and the ways on.
+ */
+export function SessionSummary({ summary, onAgain, onRetry, exit, headingRef, children }: Props) {
+  const completion = summary.completion ?? null;
+  const lines = completionLines(completion);
   const stats: { label: Copy; value: number }[] = [
     { label: exerciseCopy.summaryFirstTry, value: summary.first_try_correct },
     { label: exerciseCopy.summaryFixed, value: summary.fixed_on_retry },
@@ -80,9 +99,9 @@ export function SessionSummary({ summary, onAgain, headingRef }: Props) {
   ];
   return (
     <section className="exercise-summary" aria-labelledby="summary-title">
-      <h2 id="summary-title" className="exercise-question" tabIndex={-1} ref={headingRef}>
+      <ItemHeading id="summary-title" className="exercise-question" tabIndex={-1} ref={headingRef}>
         <UiText text={exerciseCopy.summaryTitle} />
-      </h2>
+      </ItemHeading>
       <p className="exercise-lead">
         <UiText
           text={fill(exerciseCopy.summaryAnswered, {
@@ -92,6 +111,21 @@ export function SessionSummary({ summary, onAgain, headingRef }: Props) {
           tier="guide"
         />
       </p>
+      {completion && lines.length > 0 && (
+        <div className="summary-completion" data-state={completionState(completion)}>
+          <Icon name={completionState(completion) === "done" ? "check" : "info"} size={20} />
+          <div>
+            {lines.map((line) => (
+              <p key={line.key}>
+                <UiText
+                  text={line.values ? fill(exerciseCopy[line.key], line.values) : exerciseCopy[line.key]}
+                  tier="guide"
+                />
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
       <dl className="summary-stats">
         {stats.map((stat) => (
           <div className="summary-stat" key={stat.label.nl}>
@@ -107,11 +141,12 @@ export function SessionSummary({ summary, onAgain, headingRef }: Props) {
           <UiText text={fill(exerciseCopy.summaryBonus, { points: summary.session_bonus })} tier="guide" />
         </p>
       )}
+      {children}
       {missed.length > 0 && (
         <div className="summary-block">
-          <h3>
+          <ItemHeading sub className="summary-subtitle">
             <UiText text={exerciseCopy.summaryMissed} />
-          </h3>
+          </ItemHeading>
           <ul className="summary-words">
             {missed.map((entry) => (
               <li key={entry.ref} className="summary-word">
@@ -123,9 +158,9 @@ export function SessionSummary({ summary, onAgain, headingRef }: Props) {
       )}
       {summary.suggestions.length > 0 && (
         <div className="summary-block">
-          <h3>
+          <ItemHeading sub className="summary-subtitle">
             <UiText text={exerciseCopy.summarySuggest} />
-          </h3>
+          </ItemHeading>
           <p className="exercise-lead">
             <UiText text={exerciseCopy.summarySuggestLead} tier="guide" />
           </p>
@@ -137,12 +172,29 @@ export function SessionSummary({ summary, onAgain, headingRef }: Props) {
         </div>
       )}
       <div className="exercise-actions">
-        <Button onClick={onAgain} icon="repeat">
-          <UiText text={exerciseCopy.again} inline />
-        </Button>
-        <ButtonLink href="/" variant="secondary">
-          <UiText text={exerciseCopy.backToday} inline />
-        </ButtonLink>
+        {summaryActions(completion, onRetry !== undefined).map(({ kind, variant }) => {
+          if (kind === "retry" && onRetry)
+            return (
+              <Button key={kind} variant={variant} onClick={onRetry} icon="repeat">
+                <UiText text={exerciseCopy.retryMissed} inline />
+              </Button>
+            );
+          if (kind === "again")
+            return (
+              <Button key={kind} variant={variant} onClick={onAgain} icon="repeat">
+                <UiText text={exerciseCopy[againLabel(completion)]} inline />
+              </Button>
+            );
+          return exit ? (
+            <Button key={kind} variant={variant} onClick={exit.onExit} icon="arrow" iconEnd>
+              <UiText text={exit.label} inline />
+            </Button>
+          ) : (
+            <ButtonLink key={kind} href="/" variant={variant}>
+              <UiText text={exerciseCopy.backToday} inline />
+            </ButtonLink>
+          );
+        })}
       </div>
     </section>
   );

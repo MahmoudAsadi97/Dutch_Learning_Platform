@@ -1,6 +1,7 @@
 import type { Copy } from "@/lib/ui-copy";
 
-/** Interface copy of practice sessions (components/exercise, app/oefenen), in Dutch with English and Persian. */
+/** Interface copy of practice sessions (components/exercise, app/oefenen, and the session inside a practice
+ * topic in SkillTopicPractice), in Dutch with English and Persian. */
 export const exerciseCopy = {
   // app/oefenen/page.tsx and the session frame
   pageTitle: { nl: "Oefenen", en: "Practice", fa: "تمرین" },
@@ -399,5 +400,111 @@ export const exerciseCopy = {
     nl: "Een paar korte vragen over woorden van je niveau, alleen tikken.",
     en: "A few short questions on words at your level, tapping only.",
     fa: "چند سؤال کوتاه درباره‌ی واژه‌های سطح تو، فقط با لمس.",
+  },
+
+  // a topic's session (SkillTopicPractice): the passage, the summary's word on the topic, the ways on
+  passageRead: { nl: "Lees eerst de tekst", en: "First read the text", fa: "اول متن را بخوان" },
+  passageReadLead: {
+    nl: "Neem je tijd. Je kunt elke zin laten voorlezen. Bij de vragen blijft de tekst erbij staan.",
+    en: "Take your time. You can have each sentence read aloud. The text stays with the questions.",
+    fa: "وقت بگذار. می‌توانی هر جمله را بشنوی. هنگام سؤال‌ها متن کنارت می‌ماند.",
+  },
+  passageListen: {
+    nl: "Luister eerst naar het fragment",
+    en: "First listen to the fragment",
+    fa: "اول به این قطعه گوش بده",
+  },
+  passageListenLead: {
+    nl: "Luister zo vaak als je wilt. Bij de vragen kun je opnieuw luisteren.",
+    en: "Listen as often as you like. You can listen again during the questions.",
+    fa: "هر چند بار که بخواهی گوش بده. هنگام سؤال‌ها هم می‌توانی دوباره گوش بدهی.",
+  },
+  passageText: { nl: "De tekst", en: "The text", fa: "متن" },
+  passageAudio: { nl: "Het fragment", en: "The fragment", fa: "قطعه‌ی شنیداری" },
+  passageWords: { nl: "Woorden bij deze tekst", en: "Words in this text", fa: "واژه‌های این متن" },
+  passageDone: { nl: "Naar de vragen", en: "To the questions", fa: "برو به سؤال‌ها" },
+  reviewRead: { nl: "Lees de tekst nog eens", en: "Read the text again", fa: "متن را دوباره بخوان" },
+  reviewListen: {
+    nl: "Luister nog eens en lees mee",
+    en: "Listen again and read along",
+    fa: "دوباره گوش بده و همراهش بخوان",
+  },
+  translationShow: { nl: "Vertaling tonen", en: "Show translation", fa: "نمایش ترجمه" },
+  translationHide: { nl: "Vertaling verbergen", en: "Hide translation", fa: "پنهان کردن ترجمه" },
+  completionPassed: {
+    nl: "Gelukt: dit onderwerp telt nu als geoefend.",
+    en: "Done: this topic now counts as practised.",
+    fa: "انجام شد: این موضوع حالا تمرین‌شده حساب می‌شود.",
+  },
+  completionKept: {
+    nl: "Dit onderwerp telt al als geoefend. Extra oefening maakt het steviger.",
+    en: "This topic already counts as practised. Extra practice makes it stronger.",
+    fa: "این موضوع از قبل تمرین‌شده حساب می‌شود. تمرین بیشتر آن را محکم‌تر می‌کند.",
+  },
+  completionRuleAll: {
+    nl: "Een onderwerp telt als geoefend als je eerste antwoord op elke vraag goed is. Probeer het gerust nog eens.",
+    en: "A topic counts as practised when your first answer to every question is right. Feel free to try again.",
+    fa: "یک موضوع وقتی تمرین‌شده حساب می‌شود که پاسخ اولت به هر سؤال درست باشد. با خیال راحت دوباره امتحان کن.",
+  },
+  completionRule: {
+    nl: "Een onderwerp telt als geoefend als je eerste antwoorden op {required} van de {total} vragen goed zijn. Probeer het gerust nog eens.",
+    en: "A topic counts as practised when your first answers to {required} of the {total} questions are right. Feel free to try again.",
+    fa: "یک موضوع وقتی تمرین‌شده حساب می‌شود که پاسخ‌های اولت به {required} سؤال از {total} سؤال درست باشد. با خیال راحت دوباره امتحان کن.",
+  },
+  completionRetry: {
+    nl: "Deze ronde met de gemiste vragen was extra oefening; die telt niet mee voor het onderwerp.",
+    en: "This round of missed questions was extra practice; it does not count for the topic.",
+    fa: "این دور با سؤال‌های جاافتاده تمرین اضافه بود و برای این موضوع حساب نمی‌شود.",
+  },
+  completionAlready: {
+    nl: "Dit onderwerp telt al als geoefend.",
+    en: "This topic already counts as practised.",
+    fa: "این موضوع از قبل تمرین‌شده حساب می‌شود.",
+  },
+  completionWhole: {
+    nl: "Doe alle vragen opnieuw om het onderwerp te laten meetellen.",
+    en: "Do all the questions again to make the topic count.",
+    fa: "برای اینکه این موضوع حساب شود، همه‌ی سؤال‌ها را دوباره انجام بده.",
+  },
+  completionUnfinished: {
+    nl: "Niet elke vraag is geprobeerd, dus deze ronde telt niet mee. Je punten blijven staan.",
+    en: "Not every question was tried, so this round does not count. Your points stay.",
+    fa: "همه‌ی سؤال‌ها امتحان نشد، پس این دور حساب نمی‌شود. امتیازهایت می‌مانند.",
+  },
+  completionChanged: {
+    nl: "Dit onderwerp is intussen aangepast, dus deze ronde telt niet mee. Probeer het gerust opnieuw.",
+    en: "This topic has changed in the meantime, so this round does not count. Feel free to try again.",
+    fa: "این موضوع در این میان تغییر کرده است، پس این دور حساب نمی‌شود. با خیال راحت دوباره امتحان کن.",
+  },
+  completionWarmUp: {
+    nl: "Dit was de opwarming met de woorden. Je opdracht hierna telt voor dit onderwerp.",
+    en: "This was the warm-up with the words. Your task next counts for this topic.",
+    fa: "این گرم‌کردن با واژه‌ها بود. تکلیف بعدی‌ات برای این موضوع حساب می‌شود.",
+  },
+  retryMissed: {
+    nl: "Oefen de gemiste vragen",
+    en: "Practise the missed questions",
+    fa: "سؤال‌های جاافتاده را تمرین کن",
+  },
+  againAll: {
+    nl: "Doe alle vragen opnieuw",
+    en: "Do all the questions again",
+    fa: "همه‌ی سؤال‌ها را دوباره انجام بده",
+  },
+  warmUpAgain: { nl: "Nog een keer opwarmen", en: "Warm up once more", fa: "یک بار دیگر گرم کن" },
+  warmUpNotReady: {
+    nl: "Voor deze situatie is er nog geen opwarming. Ga meteen naar de opdracht.",
+    en: "There is no warm-up for this situation yet. Go straight to the task.",
+    fa: "برای این موقعیت هنوز گرم‌کردنی نیست. مستقیم برو سراغ تکلیف.",
+  },
+  exitLeadActivity: {
+    nl: "Je antwoorden en punten zijn bewaard. Als je nu afrondt, telt dit onderwerp alleen mee als je elke vraag hebt geprobeerd. Je kunt ook later verdergaan.",
+    en: "Your answers and points are saved. If you finish now, this topic only counts if you tried every question. You can also continue later.",
+    fa: "پاسخ‌ها و امتیازهایت ذخیره شده‌اند. اگر حالا تمام کنی، این موضوع فقط وقتی حساب می‌شود که همه‌ی سؤال‌ها را امتحان کرده باشی. می‌توانی بعداً هم ادامه بدهی.",
+  },
+  exitLeadWarmUp: {
+    nl: "Je antwoorden en punten zijn bewaard. Rond nu af om te zien wat je gedaan hebt, of ga meteen naar de opdracht.",
+    en: "Your answers and points are saved. Finish now to see what you have done, or go straight to the task.",
+    fa: "پاسخ‌ها و امتیازهایت ذخیره شده‌اند. حالا تمام کن تا ببینی چه کرده‌ای، یا مستقیم برو سراغ تکلیف.",
   },
 } as const satisfies Record<string, Copy>;

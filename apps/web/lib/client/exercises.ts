@@ -6,6 +6,7 @@
  * its request id across a retry (the runner mints one per item and attempt), so a lost response is replayed,
  * never counted twice.
  */
+import type { Skill } from "../types";
 import { ApiError, apiFetch, apiJson, newRequestId } from "./api";
 
 export interface Text {
@@ -29,6 +30,11 @@ export interface IntroWord {
   meaning: Text;
   example: Text;
 }
+/** A word of a practice topic, shown beside its passage. */
+export interface PassageWord {
+  term: string;
+  meaning: Text;
+}
 
 export type Prompt =
   | {
@@ -49,8 +55,15 @@ export type Prompt =
   | { kind: "sentence_order"; sentences: Option[] }
   | { kind: "listen_choose"; options: Option[] }
   | { kind: "dictation"; word_count: number }
-  | { kind: "shadow"; sentence: string };
+  | { kind: "shadow"; sentence: string }
+  /** A topic's or lesson's text, Dutch only until every question is answered, then with its translation. */
+  | { kind: "read_passage"; text: Text; vocabulary: PassageWord[] }
+  /** Heard from the topic's or lesson's own listening route, part by part; the transcript once answered. */
+  | { kind: "listen_passage"; parts: number; transcript: Text | null; vocabulary: PassageWord[] };
 export type Kind = Prompt["kind"];
+/** Steps with nothing to answer: closed with done, never graded. The engine plans them; a client never asks. */
+export type UngradedKind = "intro" | "read_passage" | "listen_passage";
+export type GradedKind = Exclude<Kind, UngradedKind>;
 
 /** "almost" and "not_heard" are shown in a neutral colour, never red; "accepted" is the learner's overrule. */
 export type Outcome =
@@ -124,6 +137,23 @@ export interface Suggestion {
   example?: string;
   library_id?: string;
 }
+/** What a topic or lesson session did for its activity: only the first answers count, by the course's rule. */
+export interface Completion {
+  scope: "topic" | "lesson";
+  skill: Skill;
+  topic_id: string | null;
+  counted: boolean;
+  /** Why it did not count: a retry, a question never tried, changed content, or a warm-up before a task. */
+  reason: "retry" | "unfinished" | "content_changed" | "open_task" | null;
+  passed: boolean | null;
+  correct: number | null;
+  total: number | null;
+  required: number | null;
+  /** The topic (or the lesson's stage skill) is completed, by this session or before. */
+  completed: boolean;
+  /** Questions missed the first time here, which a retry session asks again. */
+  to_retry: number;
+}
 export interface Summary {
   items_total: number;
   answered: number;
@@ -136,6 +166,7 @@ export interface Summary {
   by_kind: Record<string, { total: number; first_try_correct: number }>;
   missed: { ref: string; term: string | null; expected: string | null }[];
   suggestions: Suggestion[];
+  completion?: Completion | null;
 }
 export interface SessionView {
   id: string;
@@ -143,6 +174,9 @@ export interface SessionView {
   stage_id: string;
   focus: string;
   library_topic: string | null;
+  topic_id?: string | null;
+  skill?: Skill | null;
+  retry?: boolean;
   status: "active" | "finished" | "abandoned";
   content_status: "unreviewed";
   resumed: boolean;
@@ -183,13 +217,18 @@ export type Answer =
   | { order: string[] };
 
 export interface CreateSession {
-  source?: "stage_skill" | "while_you_wait";
+  source?: "stage_skill" | "while_you_wait" | "topic";
   stage_id?: string;
   library_topic?: string;
   size?: number;
   fresh?: boolean;
   /** Only the kinds this client can show (always with choice). */
-  kinds?: readonly Exclude<Kind, "intro">[];
+  kinds?: readonly GradedKind[];
+  /** A practice topic and the skill practised (source "topic"). */
+  topic_id?: string;
+  skill?: Skill;
+  /** Only the questions the last session on this topic missed the first time. */
+  retry?: boolean;
 }
 
 /** Why the learner reports an exercise ("Meld een probleem"). */

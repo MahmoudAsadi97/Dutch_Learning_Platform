@@ -8,6 +8,50 @@
     max-width: 46rem;
     margin: 0 auto;
   }
+  /* inside a practice topic (SkillTopicPractice): under the topic's own heading */
+  .exercise-session[data-embedded] {
+    margin: var(--space-4) 0 0;
+  }
+  /* a topic's passage: one panel from its own step through every question */
+  .exercise-passage {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-canvas);
+    min-width: 0;
+  }
+  .exercise-passage[data-mode="reference"] {
+    padding: var(--space-3) var(--space-4);
+  }
+  .exercise-passage-title {
+    margin: 0;
+    font-size: var(--text-md);
+  }
+  .exercise-passage-body {
+    display: grid;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+  .exercise-passage-text {
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+  .exercise-passage-words summary {
+    cursor: pointer;
+    font-weight: var(--weight-semibold);
+  }
+  .exercise-passage-words ul {
+    display: grid;
+    gap: var(--space-2);
+    margin: var(--space-2) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .exercise-passage-term {
+    font-weight: var(--weight-semibold);
+  }
   .exercise-frame {
     display: flex;
     flex-wrap: wrap;
@@ -650,7 +694,28 @@
     display: grid;
     gap: var(--space-2);
   }
-  .summary-block h3 {
+  /* what a topic session did for the topic: a check once it counts as practised, otherwise neutral (never a
+     miss colour: not passing yet is a reason to practise, not a fault) */
+  .summary-completion {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--accent-subtle);
+    color: var(--text);
+  }
+  .summary-completion p {
+    margin: 0;
+  }
+  .summary-completion[data-state="done"] {
+    background: var(--success-bg);
+    color: var(--success-ink);
+  }
+  .summary-passage {
+    justify-items: start;
+  }
+  .summary-subtitle {
     margin: 0;
     font-size: var(--text-md);
   }

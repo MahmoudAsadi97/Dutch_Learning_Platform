@@ -9,6 +9,7 @@ import { fill } from "@/lib/ui-copy";
 
 import type { BoardProps } from "./boardProps";
 import { Dutch, Meaning } from "./ContentText";
+import { ItemHeading } from "./heading";
 
 /**
  * The sentence builder: word tiles (or chunks of a long sentence) to put in order. Choosing a tile adds it to
@@ -52,9 +53,9 @@ export function TilesItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
 
   return (
     <div className="exercise-item">
-      <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
+      <ItemHeading className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
         <UiText text={exerciseCopy.askBuild} tier="guide" />
-      </h2>
+      </ItemHeading>
       <Meaning text={prompt.cue} className="exercise-cue" />
       {!answered && (
         <p className="exercise-lead">

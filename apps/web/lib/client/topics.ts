@@ -2,12 +2,18 @@ import type { LearningCopy } from "@/components/LanguageSupport";
 import type { CurriculumQuestion, ProductiveTask, SkillResult } from "@/lib/client/curriculum";
 import type { Skill } from "@/lib/types";
 
+/** The earlier stage's topic whose reading or listening text this one repeats (for the skill asked for). */
+export interface TopicReview {
+  stage_id: string;
+  topic_id: string;
+}
 export interface TopicSummary {
   id: string;
   title: LearningCopy;
   category: LearningCopy;
   completed: boolean;
   attempted: boolean;
+  review_of?: TopicReview | null;
 }
 export interface TopicPage {
   stage_id: string;
@@ -47,6 +53,7 @@ export interface TopicDetail {
       };
   progress: { completed: boolean; attempted: boolean };
   policy: { recording_max_seconds: number };
+  review_of?: TopicReview | null;
 }
 export interface TopicFeedback {
   completed: boolean;

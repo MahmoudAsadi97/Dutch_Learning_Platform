@@ -1,25 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import {
-  CurriculumAudio,
-  CurriculumQuestions,
-  CurriculumRecorder,
-  countWords,
-} from "@/components/CurriculumControls";
+import { useEffect, useId, useRef, useState } from "react";
+import { CurriculumRecorder, countWords } from "@/components/CurriculumControls";
+import { ExerciseSession } from "@/components/exercise/ExerciseSession";
 import { LearningText, useLanguageSupport } from "@/components/LanguageSupport";
-import { SpokenPassage } from "@/components/LearningLibrary";
+import { SpokenPassage } from "@/components/SpokenPassage";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import { ConversationTopicChoices, TopicConversation } from "@/components/TopicConversation";
 import { WritingCoach } from "@/components/WritingCoach";
 import { Icon, type IconName } from "@/components/Icon";
 import { apiJson, newRequestId } from "@/lib/client/api";
 import { friendlyError, skillNames } from "@/lib/client/curriculum";
+import type { Summary } from "@/lib/client/exercises";
 import type { TopicDetail, TopicFeedback, TopicPage } from "@/lib/client/topics";
 import type { Skill } from "@/lib/types";
 import { storageKeys } from "@/lib/client/storage";
 import { playTone } from "@/lib/client/tones";
-import { ProgressBar } from "@/components/ui";
+import { topicsCopy } from "@/lib/copy/topics";
+import { stageLabel } from "@/lib/domain/registry";
+import { fill, type Copy } from "@/lib/ui-copy";
+import { Button, ProgressBar, UiText } from "@/components/ui";
 
 const icons: Record<Skill, IconName> = {
   reading: "book",
@@ -46,6 +46,8 @@ export function SkillTopicPractice(props: Props) {
   const [offset, setOffset] = useState(0);
   const [revision, setRevision] = useState(0);
   const [selected, setSelected] = useState(props.initialTopic ?? "");
+  // how the topic was reached: from the list (its start card), or sent to its task (a link, a conversation)
+  const [entry, setEntry] = useState<"list" | "task">(props.initialTopic ? "task" : "list");
   const [result, setResult] = useState<{ key: string; page: TopicPage } | null>(null);
   const [failed, setFailed] = useState<{ key: string; message: string } | null>(null);
   const { showEnglish, showPersian } = useLanguageSupport();
@@ -95,6 +97,7 @@ export function SkillTopicPractice(props: Props) {
         key={`${learnerKey}.${stageId}.${skill}.${selected}`}
         {...props}
         topicId={selected}
+        entry={entry}
         onBack={() => {
           setSelected("");
           setRevision((value) => value + 1);
@@ -145,7 +148,14 @@ export function SkillTopicPractice(props: Props) {
         )}
       </div>
       {skill === "speaking" && (
-        <ConversationTopicChoices stageId={stageId} learnerKey={learnerKey} onChoose={setSelected} />
+        <ConversationTopicChoices
+          stageId={stageId}
+          learnerKey={learnerKey}
+          onChoose={(id) => {
+            setEntry("task");
+            setSelected(id);
+          }}
+        />
       )}
       <div className="topic-filters">
         <div>
@@ -235,13 +245,24 @@ export function SkillTopicPractice(props: Props) {
                   </span>
                 </div>
                 <span className="eyebrow">{topic.category.nl}</span>
+                {topic.review_of && (
+                  <span className="quiet-badge topic-review">
+                    <UiText
+                      text={fill(topicsCopy.reviewOf, { stage: stageLabel(topic.review_of.stage_id) })}
+                      inline
+                    />
+                  </span>
+                )}
                 <h4>
                   <LearningText text={topic.title} />
                 </h4>
                 <button
                   className="button secondary"
                   aria-label={`Oefen ${topic.title.nl}`}
-                  onClick={() => setSelected(topic.id)}
+                  onClick={() => {
+                    setEntry("list");
+                    setSelected(topic.id);
+                  }}
                 >
                   <Icon name={icons[skill]} size={17} />
                   {topic.completed ? "Oefen opnieuw" : "Begin met oefenen"}
@@ -277,46 +298,61 @@ export function SkillTopicPractice(props: Props) {
   );
 }
 
-type Draft = { text: string; answers: Record<string, number> };
+type Draft = { text: string };
 function loadDraft(key: string): Draft {
-  const empty = { text: "", answers: {} };
+  const empty = { text: "" };
   const raw = sessionStorage.getItem(key);
   if (!raw) return empty;
   try {
     const value: unknown = JSON.parse(raw);
     if (!value || typeof value !== "object") return empty;
     const draft = value as Partial<Draft>;
-    return {
-      text: typeof draft.text === "string" ? draft.text.slice(0, 12000) : "",
-      answers: Object.fromEntries(
-        Object.entries(draft.answers ?? {}).filter(
-          ([key, index]) => key.length < 100 && Number.isInteger(index) && index >= 0 && index < 20,
-        ),
-      ),
-    };
+    // a draft saved before the questions moved into the session may also hold answers; only the text matters
+    return { text: typeof draft.text === "string" ? draft.text.slice(0, 12000) : "" };
   } catch {
     return empty;
   }
 }
 
+/** Where the learner is in a topic: its start card, the practice session, or the open task (speaking, writing). */
+type Phase = "start" | "session" | "task";
+
+const startSteps: Record<Skill, Copy[]> = {
+  reading: [topicsCopy.stepRead, topicsCopy.stepQuestionsRead, topicsCopy.stepRevealRead],
+  listening: [topicsCopy.stepListen, topicsCopy.stepQuestionsListen, topicsCopy.stepRevealListen],
+  speaking: [topicsCopy.stepWarmUp, topicsCopy.stepTask],
+  writing: [topicsCopy.stepWarmUp, topicsCopy.stepTask],
+};
+
+/**
+ * One topic. Reading and listening open on a start card, then run as a practice session (the passage, then the
+ * questions one at a time; the server decides what counts). Speaking and writing open on a start card with a
+ * warm-up on the topic's words, or go straight to the open task, whose submission completes the topic; a learner
+ * sent to the task (a coach's link, a conversation, a draft already begun) arrives at it directly.
+ */
 function TopicReader({
   stageId,
   skill,
   learnerKey,
   maxSeconds,
   topicId,
+  entry,
   onActivityChange,
   onCompleted,
   onBack,
-}: Props & { topicId: string; onBack: () => void }) {
+}: Props & { topicId: string; entry: "list" | "task"; onBack: () => void }) {
+  const receptive = skill === "reading" || skill === "listening";
   const draftKey = storageKeys.topicDraft(learnerKey, stageId, skill, topicId);
   const [initialDraft] = useState(() => {
     try {
       return { draft: loadDraft(draftKey), failed: false };
     } catch {
-      return { draft: { text: "", answers: {} } as Draft, failed: true };
+      return { draft: { text: "" } as Draft, failed: true };
     }
   });
+  const [phase, setPhase] = useState<Phase>(() =>
+    receptive ? "start" : entry === "task" || initialDraft.draft.text.trim() ? "task" : "start",
+  );
   const [topic, setTopic] = useState<TopicDetail | null>(null);
   const [loadError, setLoadError] = useState("");
   const [retry, setRetry] = useState(0);
@@ -327,17 +363,20 @@ function TopicReader({
   const [coachBusy, setCoachBusy] = useState(false);
   const [conversationBusy, setConversationBusy] = useState(false);
   const [conversationOpen, setConversationOpen] = useState(false);
+  const [sessionBusy, setSessionBusy] = useState(false);
   const submitKey = useRef<{ fingerprint: string; key: string } | null>(null);
   const [audioId, setAudioId] = useState("");
   const [feedback, setFeedback] = useState<TopicFeedback | null>(null);
   const [error, setError] = useState("");
-  const [showTranslation, setShowTranslation] = useState(false);
   const activityRef = useRef(onActivityChange);
   const completedRef = useRef(onCompleted);
   const submitRef = useRef<AbortController | null>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const taskRef = useRef<HTMLHeadingElement>(null);
   const focusTitle = useRef(false);
-  const busy = submitBusy || recordingBusy || coachBusy || conversationBusy;
+  const focusTask = useRef(false);
+  const startId = useId();
+  const busy = submitBusy || recordingBusy || coachBusy || conversationBusy || sessionBusy;
   const endpoint = `curriculum/${stageId}/topics/${encodeURIComponent(topicId)}`;
   useEffect(() => {
     activityRef.current = onActivityChange;
@@ -376,6 +415,31 @@ function TopicReader({
       titleRef.current.focus();
     }
   }, [topic]);
+  // the task heading takes focus when the learner moves on to the task by a button
+  useEffect(() => {
+    if (focusTask.current && phase === "task" && taskRef.current) {
+      focusTask.current = false;
+      taskRef.current.focus();
+    }
+  }, [phase]);
+  function go(next: Phase) {
+    setSessionBusy(false);
+    focusTask.current = next === "task";
+    setPhase(next);
+  }
+  /** The session's summary: only what the server counted moves the topic on (never a retry or a warm-up). */
+  function finished(summary: Summary) {
+    const completion = summary.completion;
+    if (!completion?.counted) return;
+    setTopic(
+      (current) =>
+        current && {
+          ...current,
+          progress: { attempted: true, completed: current.progress.completed || completion.completed },
+        },
+    );
+    if (completion.completed) completedRef.current();
+  }
   function updateDraft(next: Draft) {
     setDraft(next);
     setFeedback(null);
@@ -388,22 +452,14 @@ function TopicReader({
     }
   }
   async function submit() {
-    if (!topic || busy || submitRef.current) return;
+    if (!topic || busy || submitRef.current || receptive) return;
     const controller = new AbortController();
     submitRef.current = controller;
     setSubmitBusy(true);
     setError("");
-    const questions = topic.activity.questions ?? [];
     try {
       const payload = {
         skill,
-        ...(skill === "reading" || skill === "listening"
-          ? {
-              answers: Object.fromEntries(
-                questions.map((question) => [question.id, draft.answers[question.id]]),
-              ),
-            }
-          : {}),
         ...(skill === "writing" ? { text: draft.text } : {}),
         ...(skill === "speaking" ? { audio_asset_id: audioId } : {}),
       };
@@ -437,21 +493,12 @@ function TopicReader({
       }
     }
   }
-  const questions = (topic?.activity.questions ?? []).map((question) => {
-    const explanation = feedback?.explanations?.find((item) => item.id === question.id);
-    return explanation
-      ? { ...question, answer_index: explanation.answer_index, explanation: explanation.explanation }
-      : question;
-  });
   const task = topic?.activity;
   const words = countWords(draft.text);
   const ready =
     topic &&
-    (skill === "reading" || skill === "listening"
-      ? questions.length > 0 && questions.every((question) => draft.answers[question.id] !== undefined)
-      : skill === "speaking"
-        ? !!audioId
-        : words >= (task?.min_words ?? 1) && words <= (task?.max_words ?? 1));
+    (skill === "speaking" ? !!audioId : words >= (task?.min_words ?? 1) && words <= (task?.max_words ?? 1));
+  const review = topic?.review_of ? stageLabel(topic.review_of.stage_id) : null;
   return (
     <section className="topic-reader" aria-label="Oefenen met een onderwerp">
       <button className="back-link" disabled={busy} onClick={onBack}>
@@ -473,6 +520,11 @@ function TopicReader({
           <header className="topic-detail-heading">
             <div className="topic-detail-kicker">
               <span className="eyebrow">{topic.category.nl}</span>
+              {review && (
+                <span className="quiet-badge topic-review">
+                  <UiText text={fill(topicsCopy.reviewOf, { stage: review })} inline />
+                </span>
+              )}
               {topic.progress.completed && (
                 <span className="practice-complete">
                   <Icon name="check" size={16} />
@@ -487,17 +539,19 @@ function TopicReader({
               <LearningText text={topic.language_focus} />
             </p>
           </header>
-          <details className="topic-goals">
-            <summary>Wat oefen je hier?</summary>
-            <ul>
-              {topic.objectives.map((goal, index) => (
-                <li key={index}>
-                  <LearningText text={goal} />
-                </li>
-              ))}
-            </ul>
-          </details>
-          {skill === "speaking" && (
+          {phase !== "session" && (
+            <details className="topic-goals">
+              <summary>Wat oefen je hier?</summary>
+              <ul>
+                {topic.objectives.map((goal, index) => (
+                  <li key={index}>
+                    <LearningText text={goal} />
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+          {skill === "speaking" && phase !== "session" && (
             <TopicConversation
               stageId={stageId}
               topicId={topicId}
@@ -509,201 +563,259 @@ function TopicReader({
           )}
           {!conversationOpen && (
             <>
-              {(skill === "speaking" || skill === "writing") && topic.context && (
-                <details className="topic-scene" open>
-                  <summary>De situatie</summary>
-                  <p className="small-text">
-                    Gebruik deze informatie voor jouw antwoord. Je hoeft geen andere oefening te openen.
-                  </p>
-                  <h4>Wat je leest</h4>
-                  <SpokenPassage text={topic.context.reading} />
-                  <h4>Het gesproken bericht</h4>
-                  <SpokenPassage text={topic.context.listening} />
-                </details>
+              {phase === "start" && (
+                <section className="topic-start" aria-labelledby={startId}>
+                  <h4 id={startId}>
+                    <UiText text={topicsCopy.startTitle} />
+                  </h4>
+                  {review && (
+                    <p>
+                      <UiText text={fill(topicsCopy.reviewLead, { stage: review })} tier="guide" />
+                    </p>
+                  )}
+                  {topic.progress.completed && (
+                    <p>
+                      <UiText text={topicsCopy.alreadyDone} tier="guide" />
+                    </p>
+                  )}
+                  <ol className="topic-steps">
+                    {startSteps[skill].map((step) => (
+                      <li key={step.nl}>
+                        <UiText text={step} tier="guide" />
+                      </li>
+                    ))}
+                  </ol>
+                  {receptive && (
+                    <p className="small-text">
+                      <UiText text={topicsCopy.countsReceptive} tier="guide" />
+                    </p>
+                  )}
+                  <div className="topic-start-actions">
+                    {receptive ? (
+                      <Button icon={icons[skill]} onClick={() => go("session")}>
+                        <UiText
+                          text={skill === "reading" ? topicsCopy.beginReading : topicsCopy.beginListening}
+                          inline
+                        />
+                      </Button>
+                    ) : (
+                      <>
+                        <Button icon="sparkles" onClick={() => go("session")}>
+                          <UiText text={topicsCopy.warmUp} inline />
+                        </Button>
+                        <Button variant="secondary" icon="arrow" iconEnd onClick={() => go("task")}>
+                          <UiText text={topicsCopy.skipToTask} inline />
+                        </Button>
+                      </>
+                    )}
+                  </div>
+                </section>
               )}
-              {skill === "reading" && task?.text && (
-                <article className="story-panel topic-reading-text">
-                  <p className="eyebrow">LEES EN ONTDEK</p>
-                  <SpokenPassage text={showTranslation ? task.text : { nl: task.text.nl }} />
-                  <button
-                    className="button secondary"
-                    aria-pressed={showTranslation}
-                    onClick={() => setShowTranslation((value) => !value)}
-                  >
-                    {showTranslation ? "Vertaling verbergen" : "Vertaling tonen"}
-                  </button>
-                </article>
-              )}
-              {skill === "listening" && task?.text && (
-                <CurriculumAudio
-                  endpoint={`${endpoint}/listening`}
-                  parts={task.audio_parts ?? 1}
-                  transcript={task.text}
-                  disabled={submitBusy}
-                />
-              )}
-              {(skill === "reading" || skill === "listening") && (
+              {phase === "session" && (
                 <>
-                  <h4>Wat heb je begrepen?</h4>
-                  <CurriculumQuestions
-                    questions={questions}
-                    answers={draft.answers}
-                    onAnswer={(id, index) =>
-                      updateDraft({ ...draft, answers: { ...draft.answers, [id]: index } })
-                    }
-                    checked={!!feedback}
-                    disabled={submitBusy}
+                  {!receptive && (
+                    <div className="topic-start-actions">
+                      <Button
+                        variant="secondary"
+                        size="small"
+                        icon="arrow"
+                        iconEnd
+                        disabled={busy}
+                        onClick={() => go("task")}
+                      >
+                        <UiText text={topicsCopy.skipToTask} inline />
+                      </Button>
+                    </div>
+                  )}
+                  <ExerciseSession
+                    source="topic"
+                    stageId={stageId}
+                    topicId={topicId}
+                    skill={skill}
+                    headingLevel={4}
+                    embedded={{
+                      label: receptive ? topicsCopy.toTopics : topicsCopy.toTask,
+                      onExit: receptive ? onBack : () => go("task"),
+                    }}
+                    onActivityChange={setSessionBusy}
+                    onFinished={finished}
                   />
                 </>
               )}
-              {(skill === "speaking" || skill === "writing") && task?.prompt && (
+              {phase === "task" && (
                 <>
-                  <div className="productive-task">
-                    <p>
-                      <LearningText text={task.prompt} />
-                      <PhraseAudio text={task.prompt.nl} disabled={busy} />
-                    </p>
-                    <h4>Dit probeer je te doen</h4>
-                    <ul className="task-criteria">
-                      {task.criteria.map((criterion, index) => (
-                        <li key={index}>
-                          <LearningText text={criterion} />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  {skill === "speaking" ? (
-                    <CurriculumRecorder
-                      onReady={(asset) => {
-                        setAudioId(asset);
-                        setFeedback(null);
-                      }}
-                      onActivityChange={setRecordingBusy}
-                      disabled={submitBusy}
-                      minWords={task.min_words}
-                      maxWords={task.max_words}
-                      maxSeconds={topic.policy?.recording_max_seconds ?? maxSeconds}
-                    />
-                  ) : (
-                    <>
-                      <div className="writing-workspace">
-                        <label htmlFor="topic-writing">Jouw tekst bij dit onderwerp</label>
-                        <textarea
-                          id="topic-writing"
-                          value={draft.text}
-                          disabled={submitBusy}
-                          rows={9}
-                          maxLength={12000}
-                          placeholder="Schrijf hier in het Nederlands…"
-                          onChange={(event) => updateDraft({ ...draft, text: event.target.value })}
-                        />
-                        <div className="writing-meta">
-                          <span>
-                            {words} woorden · doel: {task.min_words}–{task.max_words}
-                          </span>
-                          <span>Concept per onderwerp in dit tabblad</span>
-                        </div>
-                      </div>
-                      <WritingCoach
-                        stageId={stageId}
-                        text={draft.text}
-                        disabled={submitBusy}
-                        onActivityChange={setCoachBusy}
-                        onApply={(text) => updateDraft({ ...draft, text })}
-                      />
-                    </>
+                  <h4 className="topic-task-heading" tabIndex={-1} ref={taskRef}>
+                    <UiText text={topicsCopy.taskTitle} />
+                  </h4>
+                  {!audioId && !busy && (
+                    <Button variant="ghost" size="small" icon="sparkles" onClick={() => go("session")}>
+                      <UiText text={topicsCopy.warmUp} inline />
+                    </Button>
                   )}
-                  {task.sample && (
-                    <details className="sample-help">
-                      <summary>
-                        {task.sample_is_excerpt
-                          ? "Bekijk een voorbeeldbegin"
-                          : "Bekijk een voorbeeld als je vastzit"}
-                      </summary>
-                      {task.sample_is_excerpt && (
-                        <p>
-                          Dit is alleen een begin. Werk je eigen antwoord verder uit tot de gevraagde lengte.
-                        </p>
-                      )}
-                      <p className="story-copy">
-                        <LearningText text={task.sample} />
-                        <PhraseAudio text={task.sample.nl} disabled={busy} />
+                  {topic.context && (
+                    <details className="topic-scene" open>
+                      <summary>De situatie</summary>
+                      <p className="small-text">
+                        Gebruik deze informatie voor jouw antwoord. Je hoeft geen andere oefening te openen.
                       </p>
+                      <h4>Wat je leest</h4>
+                      <SpokenPassage text={topic.context.reading} />
+                      <h4>Het gesproken bericht</h4>
+                      <SpokenPassage text={topic.context.listening} />
                     </details>
+                  )}
+                  {task?.prompt && (
+                    <>
+                      <div className="productive-task">
+                        <p>
+                          <LearningText text={task.prompt} />
+                          <PhraseAudio text={task.prompt.nl} disabled={busy} />
+                        </p>
+                        <h4>Dit probeer je te doen</h4>
+                        <ul className="task-criteria">
+                          {task.criteria.map((criterion, index) => (
+                            <li key={index}>
+                              <LearningText text={criterion} />
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      {skill === "speaking" ? (
+                        <CurriculumRecorder
+                          onReady={(asset) => {
+                            setAudioId(asset);
+                            setFeedback(null);
+                          }}
+                          onActivityChange={setRecordingBusy}
+                          disabled={submitBusy}
+                          minWords={task.min_words}
+                          maxWords={task.max_words}
+                          maxSeconds={topic.policy?.recording_max_seconds ?? maxSeconds}
+                        />
+                      ) : (
+                        <>
+                          <div className="writing-workspace">
+                            <label htmlFor="topic-writing">Jouw tekst bij dit onderwerp</label>
+                            <textarea
+                              id="topic-writing"
+                              value={draft.text}
+                              disabled={submitBusy}
+                              rows={9}
+                              maxLength={12000}
+                              placeholder="Schrijf hier in het Nederlands…"
+                              onChange={(event) => updateDraft({ ...draft, text: event.target.value })}
+                            />
+                            <div className="writing-meta">
+                              <span>
+                                {words} woorden · doel: {task.min_words}–{task.max_words}
+                              </span>
+                              <span>Concept per onderwerp in dit tabblad</span>
+                            </div>
+                          </div>
+                          <WritingCoach
+                            stageId={stageId}
+                            text={draft.text}
+                            disabled={submitBusy}
+                            onActivityChange={setCoachBusy}
+                            onApply={(text) => updateDraft({ ...draft, text })}
+                          />
+                        </>
+                      )}
+                      {task.sample && (
+                        <details className="sample-help">
+                          <summary>
+                            {task.sample_is_excerpt
+                              ? "Bekijk een voorbeeldbegin"
+                              : "Bekijk een voorbeeld als je vastzit"}
+                          </summary>
+                          {task.sample_is_excerpt && (
+                            <p>
+                              Dit is alleen een begin. Werk je eigen antwoord verder uit tot de gevraagde
+                              lengte.
+                            </p>
+                          )}
+                          <p className="story-copy">
+                            <LearningText text={task.sample} />
+                            <PhraseAudio text={task.sample.nl} disabled={busy} />
+                          </p>
+                        </details>
+                      )}
+                    </>
                   )}
                 </>
               )}
-              <details className="topic-vocabulary">
-                <summary>Woorden voor deze situatie</summary>
-                <div>
-                  {topic.vocabulary.map((word) => (
-                    <article key={word.id}>
-                      <div className="word-card-heading">
-                        <h4 lang="nl">{word.term}</h4>
-                        <PhraseAudio text={word.term} disabled={busy} />
-                      </div>
-                      <LearningText text={word.meaning} />
-                      <p>
-                        <LearningText text={word.example} />
-                        <PhraseAudio text={word.example.nl} disabled={busy} />
-                      </p>
-                    </article>
-                  ))}
-                </div>
-              </details>
-              {storageError && (
-                <p className="practice-hint" role="status">
-                  Je browser kan dit concept niet bewaren. Je tekst blijft hier staan; kopieer hem voordat je
-                  dit onderwerp verlaat.
-                </p>
+              {phase !== "session" && (
+                <details className="topic-vocabulary">
+                  <summary>Woorden voor deze situatie</summary>
+                  <div>
+                    {topic.vocabulary.map((word) => (
+                      <article key={word.id}>
+                        <div className="word-card-heading">
+                          <h4 lang="nl">{word.term}</h4>
+                          <PhraseAudio text={word.term} disabled={busy} />
+                        </div>
+                        <LearningText text={word.meaning} />
+                        <p>
+                          <LearningText text={word.example} />
+                          <PhraseAudio text={word.example.nl} disabled={busy} />
+                        </p>
+                      </article>
+                    ))}
+                  </div>
+                </details>
               )}
-              {error && (
-                <p className="error" role="alert">
-                  {error}
-                </p>
-              )}
-              <div className="practice-submit">
-                <button className="button" disabled={busy || !ready} onClick={() => void submit()}>
-                  {submitBusy ? "Even nakijken…" : `Rond ${skillNames[skill].toLowerCase()} af`}
-                  <Icon name="check" size={17} />
-                </button>
-              </div>
-              {feedback && (
-                <div
-                  className={`practice-feedback ${feedback.completed ? "complete" : "retry"}`}
-                  role="status"
-                >
-                  <h4>
-                    {feedback.passed === false
-                      ? "Je hebt geoefend. Bekijk je volgende stap."
-                      : feedback.completed
-                        ? "Een onderwerp verder."
-                        : "Probeer het nog eens."}
-                  </h4>
-                  <LearningText text={feedback.feedback} />
-                  {feedback.total !== undefined && (
-                    <p>
-                      {feedback.correct} van {feedback.total} juist
+              {phase === "task" && (
+                <>
+                  {storageError && (
+                    <p className="practice-hint" role="status">
+                      Je browser kan dit concept niet bewaren. Je tekst blijft hier staan; kopieer hem voordat
+                      je dit onderwerp verlaat.
                     </p>
                   )}
-                  {feedback.criteria && (
-                    <ul className="topic-feedback-criteria">
-                      {feedback.criteria.map((item, index) => (
-                        <li key={index}>
-                          <strong>
-                            <LearningText text={item.criterion} />
-                          </strong>
-                          <span className="quiet-badge">{item.met ? "Gelukt" : "Verder oefenen"}</span>
-                          <LearningText text={item.feedback} />
-                        </li>
-                      ))}
-                    </ul>
+                  {error && (
+                    <p className="error" role="alert">
+                      {error}
+                    </p>
                   )}
-                  <button className="button secondary" disabled={busy} onClick={onBack}>
-                    Kies een ander onderwerp
-                    <Icon name="arrow" size={17} />
-                  </button>
-                </div>
+                  <div className="practice-submit">
+                    <button className="button" disabled={busy || !ready} onClick={() => void submit()}>
+                      {submitBusy ? "Even nakijken…" : `Rond ${skillNames[skill].toLowerCase()} af`}
+                      <Icon name="check" size={17} />
+                    </button>
+                  </div>
+                  {feedback && (
+                    <div
+                      className={`practice-feedback ${feedback.completed ? "complete" : "retry"}`}
+                      role="status"
+                    >
+                      <h4>
+                        {feedback.passed === false
+                          ? "Je hebt geoefend. Bekijk je volgende stap."
+                          : feedback.completed
+                            ? "Een onderwerp verder."
+                            : "Probeer het nog eens."}
+                      </h4>
+                      <LearningText text={feedback.feedback} />
+                      {feedback.criteria && (
+                        <ul className="topic-feedback-criteria">
+                          {feedback.criteria.map((item, index) => (
+                            <li key={index}>
+                              <strong>
+                                <LearningText text={item.criterion} />
+                              </strong>
+                              <span className="quiet-badge">{item.met ? "Gelukt" : "Verder oefenen"}</span>
+                              <LearningText text={item.feedback} />
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <button className="button secondary" disabled={busy} onClick={onBack}>
+                        Kies een ander onderwerp
+                        <Icon name="arrow" size={17} />
+                      </button>
+                    </div>
+                  )}
+                </>
               )}
             </>
           )}

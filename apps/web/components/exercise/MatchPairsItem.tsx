@@ -8,6 +8,7 @@ import { exerciseCopy } from "@/lib/copy/exercise";
 
 import type { BoardProps } from "./boardProps";
 import { Dutch, Meaning } from "./ContentText";
+import { ItemHeading } from "./heading";
 
 /**
  * Match pairs: Dutch words on one side, meanings on the other. Choose a word, then its meaning; a pair shows
@@ -60,9 +61,9 @@ export function MatchPairsItem({ prompt, feedback, onDraft, headingRef }: BoardP
 
   return (
     <div className="exercise-item">
-      <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
+      <ItemHeading className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
         <UiText text={exerciseCopy.askPairs} tier="guide" />
-      </h2>
+      </ItemHeading>
       {!answered && (
         <p className="exercise-lead">
           <UiText text={exerciseCopy.pairsHint} tier="guide" />

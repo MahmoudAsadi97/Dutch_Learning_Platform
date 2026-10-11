@@ -5,7 +5,7 @@ import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import { VocabularyRecall } from "@/components/VocabularyRecall";
 import { CurriculumQuestions } from "@/components/CurriculumControls";
-import { dutchSentences } from "@/lib/client/sentences";
+import { SpokenPassage } from "@/components/SpokenPassage";
 import { apiJson } from "@/lib/client/api";
 import { friendlyError, type CurriculumQuestion } from "@/lib/client/curriculum";
 import { storageKeys } from "@/lib/client/storage";
@@ -29,27 +29,8 @@ type Overview = {
 };
 type Page<T> = { items: T[]; total: number; offset: number; limit: number };
 
-/** Sentence replay remains separate from translations and from final tests. */
-export function SpokenPassage({ text }: { text: LearningCopy }) {
-  const paragraphs = text.nl.split(/\n\s*\n/).filter(Boolean);
-  return (
-    <div className="spoken-passage">
-      <div lang="nl">
-        {paragraphs.map((paragraph, i) => (
-          <p key={i}>
-            {dutchSentences(paragraph).map((sentence, j) => (
-              <span className="spoken-sentence" key={j}>
-                <span>{sentence.trim()} </span>
-                <PhraseAudio text={sentence.trim()} />{" "}
-              </span>
-            ))}
-          </p>
-        ))}
-      </div>
-      <LearningText text={text} supportOnly />
-    </div>
-  );
-}
+/** Moved to its own module (step 3.9); still exported here for the pages that import it from the library. */
+export { SpokenPassage };
 
 function subscribeReads(listener: () => void) {
   window.addEventListener("storage", listener);

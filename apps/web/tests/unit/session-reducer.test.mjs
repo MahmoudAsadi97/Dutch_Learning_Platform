@@ -178,6 +178,50 @@ test("a reset clears the last session, so a new one loads (or fails) on its own"
   assert.equal(reduce(state, { type: "LOAD_FAILED" }).phase, "error");
 });
 
+test("a passage step closed with done goes straight to the first question", () => {
+  const passage = {
+    ...choice("p", 0),
+    kind: "read_passage",
+    attempts_left: 1,
+    prompt: { kind: "read_passage", text: { nl: "Ik woon in Gent." }, vocabulary: [] },
+  };
+  let state = reduce(initialState, {
+    type: "LOADED",
+    session: session({ items: [passage, choice("i1", 1), choice("i2", 2)], next_item_id: "p" }),
+  });
+  assert.equal(currentItem(state).kind, "read_passage");
+  state = reduce(state, { type: "SUBMIT", pending: pending("p", "r-p", { done: true }) });
+  state = reduce(state, {
+    type: "ANSWERED",
+    result: result("p", {
+      outcome: "done",
+      next_item_id: "i1",
+      progress: { closed: 0, total: 2, queued: 0 },
+    }),
+  });
+  assert.equal(state.phase, "answering");
+  assert.equal(state.current, "i1");
+});
+
+test("a finished session read again brings its passage's translation and changes nothing else", () => {
+  let state = reduce(initialState, { type: "LOADED", session: session({ next_item_id: "i1" }) });
+  const finished = { id: "s1", status: "finished", points: 5, summary: { items_total: 2, answered: 2 } };
+  state = reduce(reduce(state, { type: "FINISH" }), { type: "FINISHED", result: finished });
+  const revealed = session({ status: "finished", items: [choice("i1", 1)] });
+  const after = reduce(state, { type: "REVEALED", session: revealed });
+  assert.equal(after.phase, "summary");
+  assert.equal(after.finished, state.finished);
+  assert.equal(after.session.summary, state.session.summary);
+  assert.deepEqual(
+    after.session.items.map((item) => item.id),
+    ["i1"],
+  );
+  // another session's view, or one read while still answering, is ignored
+  assert.equal(reduce(state, { type: "REVEALED", session: { ...revealed, id: "other" } }), state);
+  const answering = reduce(initialState, { type: "LOADED", session: session({ next_item_id: "i1" }) });
+  assert.equal(reduce(answering, { type: "REVEALED", session: revealed }), answering);
+});
+
 test("events out of turn change nothing", () => {
   const state = reduce(initialState, { type: "LOADED", session: session({ next_item_id: "i1" }) });
   assert.equal(reduce(state, { type: "CONTINUE" }), state);

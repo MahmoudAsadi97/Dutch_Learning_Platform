@@ -3,7 +3,8 @@
  * kind is added here in the same change as its renderer: every kind the engine plans has one now (the
  * flashcard is for word review, 5.1). Pure, so the unit tests load it without a bundler.
  */
-import type { Kind, Prompt } from "../../lib/client/exercises";
+import type { CreateSession, GradedKind, Prompt } from "../../lib/client/exercises";
+import type { Skill } from "../../lib/types";
 
 const CHOICE_KINDS = ["choice", "cloze_choice", "odd_one_out", "listen_choose"] as const;
 const TYPED_KINDS = ["cloze_typed", "typed_recall", "dictation"] as const;
@@ -16,7 +17,7 @@ export const RENDERED_KINDS = [
   "sentence_builder",
   "sentence_order",
   "shadow",
-] as const satisfies readonly Exclude<Kind, "intro">[];
+] as const satisfies readonly GradedKind[];
 
 export type RenderedKind = (typeof RENDERED_KINDS)[number];
 
@@ -32,6 +33,55 @@ export type TypedPrompt = Extract<Prompt, { kind: (typeof TYPED_KINDS)[number] }
 
 export function isTypedPrompt(prompt: Prompt): prompt is TypedPrompt {
   return (TYPED_KINDS as readonly string[]).includes(prompt.kind);
+}
+
+/** A topic's or lesson's passage step: read or heard, then closed with done (never asked for in `kinds`). */
+export type PassagePrompt = Extract<Prompt, { kind: "read_passage" | "listen_passage" }>;
+
+export function isPassagePrompt(prompt: Prompt): prompt is PassagePrompt {
+  return prompt.kind === "read_passage" || prompt.kind === "listen_passage";
+}
+
+/** The server adds the translation, or the transcript, once every question about the passage is answered. */
+export function passageRevealed(prompt: PassagePrompt): boolean {
+  return prompt.kind === "read_passage"
+    ? Boolean(prompt.text.en || prompt.text.fa)
+    : prompt.transcript !== null;
+}
+
+/** Where a listening passage is heard, part by part: the topic's own listening route, or the lesson's. */
+export function passageAudioPath(session: { stage_id: string; topic_id?: string | null }): string {
+  return session.topic_id
+    ? `curriculum/${session.stage_id}/topics/${encodeURIComponent(session.topic_id)}/listening`
+    : `curriculum/${session.stage_id}/listening`;
+}
+
+/** A practice topic and the skill a session on it practises. */
+export interface TopicActivity {
+  stageId: string;
+  topicId: string;
+  skill: Skill;
+}
+
+/**
+ * The create request: a page's session asks for its kinds only (exactly as before topics existed); a topic's
+ * session names the topic and skill, and `retry` only when it asks the missed questions again.
+ */
+export function sessionRequest(
+  source: "stage_skill" | "while_you_wait" | "topic",
+  activity: TopicActivity | null,
+  retry: boolean,
+  kinds: readonly GradedKind[],
+): CreateSession {
+  if (source !== "topic" || !activity) return { source, kinds };
+  return {
+    source: "topic",
+    stage_id: activity.stageId,
+    topic_id: activity.topicId,
+    skill: activity.skill,
+    kinds,
+    ...(retry ? { retry: true } : {}),
+  };
 }
 
 /** Kinds with a sound of their own: only these can be reported for a wrong or unclear sound. */

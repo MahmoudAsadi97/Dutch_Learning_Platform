@@ -220,9 +220,18 @@ describe("ExerciseSession", () => {
     expect(within(feedback).getByText(/\+1 punt/)).toBeInTheDocument();
 
     fireEvent.click(next);
-    await screen.findByRole("heading", { name: /Je oefening is klaar/ });
+    await screen.findByRole("heading", { name: /Je oefening is klaar/, level: 2 });
     expect(client.finish).toHaveBeenCalledWith("s1", expect.any(String), false);
     expect(screen.getByText("het raam")).toBeInTheDocument();
+    // a page of its own: exactly the request it always sent, its title, one chip, no reading back afterwards
+    expect(client.create.mock.calls[0][0]).toEqual({
+      source: "stage_skill",
+      kinds: RENDERED_KINDS.filter((kind) => kind !== "shadow"),
+    });
+    expect(screen.getByRole("heading", { level: 1, name: /Oefenen/ })).toBeInTheDocument();
+    expect(document.querySelectorAll("[data-honesty]")).toHaveLength(1);
+    expect(screen.getByRole("link", { name: /Terug naar Vandaag/ })).toHaveAttribute("href", "/");
+    expect(client.get).not.toHaveBeenCalled();
   });
 
   it("asks before stopping, and finishing early closes the session", async () => {

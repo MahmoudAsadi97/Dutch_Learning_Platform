@@ -649,6 +649,23 @@ whole.
   timing, `scripts/verify_live.py --measure-answers` on Azure with the script's wall-clock time over one
   kept-alive connection, and the browser records each one as a `performance.measure` named
   `exercise-answer` (`lib/client/round-trips.ts`) for DevTools.
+- **Topic sessions in the web** (step 3.9, `SkillTopicPractice`, D-32): a topic opens on a start card (what
+  happens, the review label when its text repeats an earlier stage's, whether it already counts); reading and
+  listening then run `ExerciseSession` embedded (`source: topic`, `headingLevel` 4 under the topic's h3, no page
+  title or second honesty chip, Escape only within the session, the host's way out instead of the links to
+  Today, `onActivityChange` while a recording runs or the session is closed, `onFinished` with the summary). The
+  request body comes from the pure `sessionRequest` (a page's session still sends `{source, kinds}` only). The
+  passage (`PassagePanel`) is one panel from its own step through every question (the text or the
+  `CurriculumAudio` player over the topic's `/listening` route stays the same node); after finishing, one
+  read of the session brings its translation or transcript (`REVEALED`), shown on request in the summary. The
+  summary says what the session did for the topic from `summary.completion` (`completion.ts`: done in the
+  success colours, otherwise neutral, never a miss colour) and offers the missed questions first when there
+  are some (`retry: true`; a 409 `nothing_to_retry` offers all the questions again). Speaking and writing
+  offer a warm-up on the topic's words or "Ga meteen naar de opdracht"; the task is the open task as before,
+  under "Jouw opdracht"; a link from the coach, a conversation and a writing draft already begun open the task
+  directly. Only what the server counted moves the topic on (`onCompleted` refetches the stage). The classic
+  receptive form left the page; its endpoint stays for the API and its tests. `CurriculumQuestions` shows an
+  option's gloss only once answers are checked (never in the final check), as the session does.
 - **Content gate**: a stage takes sessions only when 200 of its words support a four-option choice, its examples
   hold 150 distinct sentences and it supports two kinds with at least 50 items each (`VARIETY_MIN_*`,
   `KIND_MIN_ITEMS` in `pool.py`). `tests/test_exercise_generators.py` records each stage's numbers, with its

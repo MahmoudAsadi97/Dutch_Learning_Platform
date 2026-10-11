@@ -369,3 +369,17 @@ answer like every item (D-28); step 4.2 decides topic points and must not pay th
 content is never a source: a lesson session reads `stage.lesson` only. A topic is labelled as review of an
 earlier stage only for a skill whose text it repeats word for word: the same situation with a new text is
 new practice.
+
+## D-32 · A topic starts on a card; the questions come one at a time — 2026-10-11
+
+A practice topic (step 3.9) opens on a start card that says what will happen and whether the topic already
+counts, then reading and listening run as a practice session (D-31): the passage, kept beside every
+question, then the questions one at a time with feedback after each. The passage's translation, or the
+transcript, can be read once every question is answered; an option's gloss appears only with its verdict,
+also in the classic forms that remain (Startles, grammar, Story Time; never in the final check), because a
+gloss under each option gives the answer away. Speaking and writing offer a warm-up on the topic's words or
+the task straight away, and a learner sent to the task (a coach's link, a conversation choice, a writing
+draft already begun) arrives at it directly, without the card. The summary says what the session did for the
+topic, never in a miss colour, and offers the missed questions first; that short session never counts, so
+the topic still asks for a first right answer to every question in one full session. The classic receptive
+form leaves the page; its endpoint stays.

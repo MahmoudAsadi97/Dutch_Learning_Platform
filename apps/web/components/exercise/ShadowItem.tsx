@@ -10,6 +10,7 @@ import { useRecorder, type Recording } from "@/lib/client/recorder";
 
 import { Dutch } from "./ContentText";
 import { ItemAudio } from "./ItemAudio";
+import { ItemHeading } from "./heading";
 
 interface Props {
   prompt: Extract<Prompt, { kind: "shadow" }>;
@@ -49,9 +50,9 @@ export function ShadowItem({
 
   return (
     <div className="exercise-item">
-      <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
+      <ItemHeading className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
         <UiText text={exerciseCopy.askShadow} tier="guide" />
-      </h2>
+      </ItemHeading>
       <div className="exercise-stem">
         <p className="exercise-prompt shadow-sentence">
           <Dutch text={prompt.sentence} />

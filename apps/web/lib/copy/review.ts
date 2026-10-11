@@ -20,4 +20,5 @@ export const PERSIAN_REVIEWED: Record<string, boolean> = {
   missions: false,
   speech: false,
   exercise: false,
+  topics: false,
 };
