@@ -62,7 +62,8 @@ export interface Episode extends EpisodeSummary {
   model: string;
 }
 export interface SeriesView {
-  id: string;
+  /** None until the series exists (Today before it is first opened). */
+  id: string | null;
   title: string;
   stage_id: string;
   episode_count: number;
@@ -116,7 +117,10 @@ export type Grade = "again" | "hard" | "good" | "easy";
 export { stageLabels } from "../domain/registry";
 
 export const stories = {
+  /** The day's plan, read only (the page's refreshes and polls). */
   today: (signal?: AbortSignal) => apiJson<TodayPlan>("today", { signal }),
+  /** Opening Today: keeps one unread episode queued or ready, then the same plan (idempotent). */
+  prepare: (signal?: AbortSignal) => apiJson<TodayPlan>("today/prepare", { method: "POST", signal }),
   library: (signal?: AbortSignal) =>
     apiJson<{ series: SeriesView; items: EpisodeSummary[] }>("stories", { signal }),
   episode: (id: string, signal?: AbortSignal) => apiJson<Episode>(`stories/episodes/${id}`, { signal }),

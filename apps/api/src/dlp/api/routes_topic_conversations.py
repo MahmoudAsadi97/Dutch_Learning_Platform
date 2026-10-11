@@ -8,10 +8,9 @@ from fastapi import APIRouter, Depends, Query
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from sqlalchemy.orm import Session
 
-from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
+from dlp.api.deps import RequestContext, context_dep, db_session, providers_dep, settings_dep
 from dlp.api.routes_curriculum import _run
 from dlp.config import Settings
-from dlp.db.session import get_session
 from dlp.domains.topic_conversations import service
 from dlp.domains.topic_conversations.content import blueprint_for
 from dlp.providers.registry import Providers
@@ -37,7 +36,7 @@ class TurnBody(BaseModel):
 
 @router.get("")
 def conversations(stage_id: str | None = Query(default=None, max_length=20),
-                  ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)):
+                  ctx: RequestContext = Depends(context_dep), session: Session = db_session):
     return _run(lambda: service.listing(session, ctx.learner.id, stage_id))
 
 
@@ -48,20 +47,20 @@ def blueprint(blueprint_id: str, ctx: RequestContext = Depends(context_dep), set
 
 @router.post("/start")
 def start(body: StartBody, ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-          session: Session = Depends(get_session)):
+          session: Session = db_session):
     return _run(lambda: service.view(service.start(session, ctx.learner.id, **body.model_dump()), settings))
 
 
 @router.get("/{conversation_id}")
 def get(conversation_id: uuid.UUID, ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-        session: Session = Depends(get_session)):
+        session: Session = db_session):
     return _run(lambda: service.view(service.get(session, ctx.learner.id, conversation_id), settings))
 
 
 @router.post("/{conversation_id}/turns")
 def turn(conversation_id: uuid.UUID, body: TurnBody, ctx: RequestContext = Depends(context_dep),
          settings: Settings = Depends(settings_dep), providers: Providers = Depends(providers_dep),
-         session: Session = Depends(get_session)):
+         session: Session = db_session):
     def operation():
         row = service.get(session, ctx.learner.id, conversation_id, lock=True)
         return service.view(service.turn(session, settings, providers, row, **body.model_dump(),
@@ -72,6 +71,6 @@ def turn(conversation_id: uuid.UUID, body: TurnBody, ctx: RequestContext = Depen
 
 @router.post("/{conversation_id}/end")
 def end(conversation_id: uuid.UUID, ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-        session: Session = Depends(get_session)):
+        session: Session = db_session):
     return _run(lambda: service.view(service.finish(session, service.get(session, ctx.learner.id, conversation_id,
                                                                          lock=True)), settings))

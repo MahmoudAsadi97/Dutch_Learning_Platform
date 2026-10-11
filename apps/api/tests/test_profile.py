@@ -13,7 +13,7 @@ from dlp.domains.curriculum.models import CurriculumAttempt
 from dlp.domains.identity.models import Learner
 from dlp.domains.profile.models import LearnerProfile
 from dlp.domains.stories.models import StoryEpisode, StorySeries
-from tests.conftest import auth_headers
+from tests.conftest import auth_headers, open_today
 
 
 def _series_stage() -> str | None:
@@ -72,7 +72,7 @@ def test_onboarding_runs_once_and_queues_one_episode(client, headers):
 
 
 def test_an_episode_queued_before_the_welcome_is_written_at_the_chosen_level(client, headers):
-    client.get("/today", headers=headers)  # a first visit queues episode one at the default level
+    open_today(client, headers)  # opening Today before the welcome queues episode one at the default level
     with session_scope() as session:
         assert [row.stage_id for row in session.scalars(select(StoryEpisode))] == ["a1"]
     body = {"support_mode": "nl-en", "stage_id": "b1", "daily_goal_points": 20}
@@ -85,7 +85,7 @@ def test_an_episode_queued_before_the_welcome_is_written_at_the_chosen_level(cli
 
 
 def test_stage_is_shared_with_the_serial_in_both_directions(client, headers):
-    client.get("/today", headers=headers)
+    open_today(client, headers)
     assert client.patch("/me", json={"stage_id": "a2"}, headers=headers).status_code == 200
     assert _series_stage() == "a2"
     assert client.post("/stories/level", json={"stage_id": "b1"}, headers=headers).status_code == 200

@@ -8,7 +8,8 @@ and queued ahead of the learner so the next one is usually ready when the app op
 ## Flow
 
 ```
-GET /today ──▶ ensure a series exists ──▶ ensure one unread episode is queued/ready
+POST /today/prepare ──▶ ensure a series exists ──▶ ensure one unread episode is queued/ready
+(opening Today; GET /today only reads)
                                                │
                                         job: story_episode
                                                │

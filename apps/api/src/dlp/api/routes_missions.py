@@ -6,9 +6,8 @@ import json
 from fastapi import APIRouter, Depends, HTTPException, Response
 from sqlalchemy.orm import Session
 
-from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
+from dlp.api.deps import RequestContext, context_dep, db_session, providers_dep, settings_dep
 from dlp.config import Settings
-from dlp.db.session import get_session
 from dlp.domains.content.acceptance import check_a01
 from dlp.domains.content.schemas import UNREVIEWED_LABEL_FA, UNREVIEWED_LABEL_NL, ListeningPayload, review_summary
 from dlp.domains.content.service import get_mission, list_missions, mission_document
@@ -45,12 +44,12 @@ def _summary(mission) -> dict:
 
 
 @router.get("")
-def missions(ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)) -> dict:
+def missions(ctx: RequestContext = Depends(context_dep), session: Session = db_session) -> dict:
     return {"missions": [_summary(m) for m in list_missions(session)], "request_id": ctx.request_id}
 
 
 @router.get("/{mission_id}")
-def mission(mission_id: str, ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)) -> dict:
+def mission(mission_id: str, ctx: RequestContext = Depends(context_dep), session: Session = db_session) -> dict:
     record = get_mission(session, mission_id)
     if record is None:
         raise HTTPException(status_code=404, detail="mission not found")
@@ -66,7 +65,7 @@ def mission(mission_id: str, ctx: RequestContext = Depends(context_dep), session
 
 @router.get("/{mission_id}/steps/{step_key}")
 def step(mission_id: str, step_key: str, ctx: RequestContext = Depends(context_dep),
-         session: Session = Depends(get_session)) -> dict:
+         session: Session = db_session) -> dict:
     record = get_mission(session, mission_id)
     if record is None:
         raise HTTPException(status_code=404, detail="mission not found")
@@ -81,7 +80,7 @@ def step(mission_id: str, step_key: str, ctx: RequestContext = Depends(context_d
 
 @router.get("/{mission_id}/acceptance/{check_id}")
 def acceptance(mission_id: str, check_id: str, ctx: RequestContext = Depends(context_dep),
-               session: Session = Depends(get_session)) -> dict:
+               session: Session = db_session) -> dict:
     """One acceptance check (A01–A06) or `all`; read-only, so it may be run at any time."""
     checks = {"A01": check_a01, **PRACTICE_CHECKS}
     if check_id.lower() == "all":
@@ -101,7 +100,7 @@ def fixed_audio(
     ctx: RequestContext = Depends(context_dep),
     settings: Settings = Depends(settings_dep),
     providers: Providers = Depends(providers_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> Response:
     """Cache fixed listening audio by exact text, content version, provider and voice."""
     record = get_mission(session, mission_id)

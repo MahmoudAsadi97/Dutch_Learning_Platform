@@ -4,9 +4,8 @@ from fastapi import APIRouter, Depends, File, Form, HTTPException, Response, Upl
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
+from dlp.api.deps import RequestContext, context_dep, db_session, providers_dep, settings_dep
 from dlp.config import Settings
-from dlp.db.session import get_session
 from dlp.domains.speech.compare import read_aloud_compare, require_words
 from dlp.domains.speech.service import synthesize_text, transcribe_upload
 from dlp.providers.base import ProviderError, ProviderUnavailable
@@ -22,7 +21,7 @@ def transcribe(
     ctx: RequestContext = Depends(context_dep),
     settings: Settings = Depends(settings_dep),
     providers: Providers = Depends(providers_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> dict:
     """Run blocking audio, database and provider work in FastAPI's worker pool."""
     data = audio.file.read(settings.max_upload_bytes + 1)
@@ -74,7 +73,7 @@ def read_aloud(
     ctx: RequestContext = Depends(context_dep),
     settings: Settings = Depends(settings_dep),
     providers: Providers = Depends(providers_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> ReadAloudResult:
     """Read any text aloud and see which words were recognised. The recording is not kept and nothing is
     awarded or scored; the audio seconds count against the allowance like any transcription. A speech
@@ -99,7 +98,7 @@ def synthesize(
     ctx: RequestContext = Depends(context_dep),
     settings: Settings = Depends(settings_dep),
     providers: Providers = Depends(providers_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> Response:
     try:
         wav_bytes, asset, label = synthesize_text(

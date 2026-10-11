@@ -9,9 +9,8 @@ from fastapi import APIRouter, Depends, Header, HTTPException, Response
 from fastapi.responses import JSONResponse, StreamingResponse
 from sqlalchemy.orm import Session
 
-from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
+from dlp.api.deps import RequestContext, context_dep, db_session, providers_dep, settings_dep
 from dlp.config import Settings
-from dlp.db.session import get_session
 from dlp.domains.usage.service import UsageLimitExceeded
 from dlp.domains.videos import service
 from dlp.domains.videos.schemas import RequestVideoBody, VideoAnswerBody, VideoRateBody, VideoWordBody
@@ -45,25 +44,25 @@ def _uuid(value: str) -> uuid.UUID:
 
 @router.get("")
 def list_videos(ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-                providers: Providers = Depends(providers_dep), session: Session = Depends(get_session)):
+                providers: Providers = Depends(providers_dep), session: Session = db_session):
     return _run(lambda: service.library(session, ctx.learner, settings, providers))
 
 
 @router.post("", status_code=201)
 def request_video(body: RequestVideoBody, ctx: RequestContext = Depends(context_dep),
-                  session: Session = Depends(get_session)):
+                  session: Session = db_session):
     return _run(lambda: service.video_view(service.request_video(
         session, ctx.learner, stage_id=body.stage_id, topic=body.topic, kind=body.kind, request_id=body.request_id),
         full=False))
 
 
 @router.get("/{video_id}")
-def get_video(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)):
+def get_video(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = db_session):
     return _run(lambda: service.video_view(service.get_video(session, ctx.learner, _uuid(video_id))))
 
 
 @router.get("/{video_id}/subtitles.vtt")
-def subtitles(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)):
+def subtitles(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = db_session):
     text = _run(lambda: service.subtitles(service.get_video(session, ctx.learner, _uuid(video_id))))
     if not isinstance(text, str):
         return text
@@ -74,7 +73,7 @@ def subtitles(video_id: str, ctx: RequestContext = Depends(context_dep), session
 @router.get("/{video_id}/media")
 def media(video_id: str, range_header: str | None = Header(default=None, alias="Range"),
           ctx: RequestContext = Depends(context_dep), providers: Providers = Depends(providers_dep),
-          session: Session = Depends(get_session)):
+          session: Session = db_session):
     """The MP4 with byte ranges, so the player can seek without downloading everything."""
     located = _run(lambda: service.media_for(service.get_video(session, ctx.learner, _uuid(video_id))))
     if not isinstance(located, tuple):
@@ -120,14 +119,14 @@ def media(video_id: str, range_header: str | None = Header(default=None, alias="
 
 
 @router.post("/{video_id}/watched")
-def watched(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)):
+def watched(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = db_session):
     return _run(lambda: service.mark_watched(
         session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id), lock=True)))
 
 
 @router.post("/{video_id}/answers")
 def answers(video_id: str, body: VideoAnswerBody, ctx: RequestContext = Depends(context_dep),
-            session: Session = Depends(get_session)):
+            session: Session = db_session):
     return _run(lambda: service.answer_questions(
         session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id), lock=True),
         request_id=body.request_id, answers=body.answers))
@@ -135,19 +134,19 @@ def answers(video_id: str, body: VideoAnswerBody, ctx: RequestContext = Depends(
 
 @router.post("/{video_id}/rating")
 def rating(video_id: str, body: VideoRateBody, ctx: RequestContext = Depends(context_dep),
-           session: Session = Depends(get_session)):
+           session: Session = db_session):
     return _run(lambda: service.rate(
         session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id), lock=True), body.rating))
 
 
 @router.post("/{video_id}/words")
 def save_word(video_id: str, body: VideoWordBody, ctx: RequestContext = Depends(context_dep),
-              session: Session = Depends(get_session)):
+              session: Session = db_session):
     return _run(lambda: service.save_word(
         session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id)), body.term))
 
 
 @router.post("/{video_id}/retry")
-def retry(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)):
+def retry(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = db_session):
     return _run(lambda: service.retry_failed(
         session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id), lock=True)))

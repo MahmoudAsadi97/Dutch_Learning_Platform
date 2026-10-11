@@ -5,10 +5,9 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from dlp.api.deps import RequestContext, context_dep, settings_dep
+from dlp.api.deps import RequestContext, context_dep, db_session, settings_dep
 from dlp.config import Settings
 from dlp.db.base import utcnow
-from dlp.db.session import get_session
 from dlp.domains.activity import service as activity
 from dlp.domains.activity.models import LearningDay
 from dlp.domains.coaching.models import CoachPlanRequest
@@ -40,7 +39,7 @@ def _profile_export(session: Session, learner: Learner) -> dict:
 
 
 @router.get("/progress")
-def progress(ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)) -> dict:
+def progress(ctx: RequestContext = Depends(context_dep), session: Session = db_session) -> dict:
     return {
         "learner": {"id": str(ctx.learner.id), "email": ctx.learner.email, "display_name": ctx.learner.display_name,
                     "support_language": ctx.learner.support_language, "target_language": ctx.learner.target_language},
@@ -55,13 +54,13 @@ def progress(ctx: RequestContext = Depends(context_dep), session: Session = Depe
 
 @router.get("/usage")
 def usage(ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-          session: Session = Depends(get_session)) -> dict:
+          session: Session = db_session) -> dict:
     return {**snapshot(session, settings, ctx.learner.id), "request_id": ctx.request_id}
 
 
 @router.get("/export")
 def export(ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-           session: Session = Depends(get_session)) -> JSONResponse:
+           session: Session = db_session) -> JSONResponse:
     """Owner-only JSON export of everything stored about the learner: records, sessions, turns, evidence, feedback."""
     if ctx.principal.email.lower() not in {e.lower() for e in settings.allowlist}:
         raise HTTPException(status_code=403, detail="export is limited to the owner allowlist")

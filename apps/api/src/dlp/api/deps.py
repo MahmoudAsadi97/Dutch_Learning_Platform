@@ -27,6 +27,13 @@ class RequestContext:
     request_id: str
 
 
+# The request's database session. Function scope: it commits once the route has returned and before the response
+# is sent, so a failed commit answers 500, never a 2xx (docs/plan/CHECKS.md). Every route and `context_dep` use this
+# one dependency: FastAPI caches a dependency per request by its scope too, so a second scope would open a second
+# session (tests/test_today_contract.py guards it).
+db_session = Depends(get_session, scope="function")
+
+
 def settings_dep() -> Settings:
     return get_settings()
 
@@ -73,7 +80,7 @@ def context_dep(
     principal: Principal = Depends(principal_dep),
     request_id: str = Depends(request_id_dep),
     _csrf: None = Depends(csrf_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> RequestContext:
     learner = get_or_create_learner(session, principal)
     return RequestContext(principal=principal, learner=learner, request_id=request_id)

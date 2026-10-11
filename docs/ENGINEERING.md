@@ -137,7 +137,12 @@ Every expected failure is a subclass of `dlp.errors.DomainError` (`CurriculumErr
 one JSON body, `{"detail", "code", "request_id"}` plus any parameters, so the web app can map the stable
 `code` (`usage_limit`, `provider_unavailable`, `story`, ...) to copy in the learner's languages. A provider
 failure no route handled becomes 503 instead of 500. Routes that must commit work before answering
-(usage rows, a failed turn) still return a `JSONResponse` themselves and include the same `code`.
+(usage rows, a failed turn) still return a `JSONResponse` themselves and include the same `code`. The request's
+session (`api/deps.db_session`, function scope) commits once the route has returned and before the response is
+sent, so a failed commit answers 500, never a 2xx whose writes were lost (D-33); every route and `context_dep` share
+that one dependency, because FastAPI caches a dependency per request by its scope too and a second scope would open
+a second session (`tests/test_today_contract.py` checks every route). A learner's `last_seen_at` is written at most
+once every ten minutes, so a read stays a read.
 
 A conflict a learner can reach carries its own code (`episodes_busy`, `videos_busy`, `not_ready`,
 `already_answered`, `session_closed`, `turn_limit`, `no_retry`, `in_progress`, `evidence_short`,
@@ -417,10 +422,12 @@ progress before deliberately resubmitting.
 rolling memory), `story_episodes` (status `queued` → `generating` → `ready` | `failed`, the text, glossary,
 questions, choices, validator findings, provider/model/prompt version, the learner's answers and
 choice), `vocab_items` (the word bank with SM-2 fields) and `learning_days` (points per Europe/Brussels
-day). Routes are in `api/routes_stories.py`: `GET /today`, `GET/POST /stories…`, `GET/POST/DELETE
-/words…`. The writer runs as the `story_episode` job in the existing job loop; `GET /today` queues the
-first episode and keeps one unread episode ahead, holding back while the reader still owes a choice
-(twelve-hour grace). `docs/STORY_ENGINE.md` describes the prompt, the validator and the cost rules.
+day). Routes are in `api/routes_stories.py`: `GET /today`, `POST /today/prepare`, `GET/POST /stories…`,
+`GET/POST/DELETE /words…`. The writer runs as the `story_episode` job in the existing job loop. `GET /today` only
+reads (`today_view`; a learner without a series yet sees the series to come); opening Today, `POST /today/prepare`
+(`ensure_buffer`), queues the first episode and keeps one unread episode ahead, holding back while the reader still
+owes a choice (twelve-hour grace), and answers the same plan (`TodayPlan`). The page opens with prepare and
+refreshes and polls with the GET. `docs/STORY_ENGINE.md` describes the prompt, the validator and the cost rules.
 
 Rules that hold throughout: answers to the comprehension questions are graded on the server once per
 episode (a retried request id replays the stored result; a new id is refused); points are awarded by

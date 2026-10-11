@@ -1,7 +1,7 @@
 """Structured outputs the story writer must return, and the request bodies the routes accept."""
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -182,3 +182,20 @@ class ReadAloudResult(BaseModel):
     missed: list[str]
     extra: list[str]
     points: int
+
+
+class TodayPlan(BaseModel):
+    """The day's plan (GET /today and POST /today/prepare). The nested parts are built by their own domains and
+    pass through as they are."""
+    date: str
+    streak: dict[str, Any]
+    goal: dict[str, Any]
+    series: dict[str, Any]
+    episode: dict[str, Any] | None = None
+    failed: dict[str, Any] | None = None
+    awaiting_choice: dict[str, Any] | None = None
+    words: dict[str, Any]
+    next_step: Literal["read", "choose", "review", "wait", "explore"]
+    recent_days: list[dict[str, Any]]
+    levels: list[dict[str, Any]]
+    videos: dict[str, Any]

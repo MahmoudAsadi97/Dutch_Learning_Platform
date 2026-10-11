@@ -2,7 +2,8 @@
 
 Flow
 ----
-1. `today_episode` makes sure the learner has a series and at least one unread episode queued or ready.
+1. Opening Today (POST /today/prepare, `ensure_buffer`) makes sure the learner has a series and one unread episode
+   queued or ready; GET /today (`today_view`) only reads.
 2. The `story_episode` job calls the writer with the series memory, the learner's saved words and the stage
    vocabulary, validates the draft deterministically, retries once with the validator's feedback, and stores
    the episode as `ready` (or `failed`, with a reason the learner can act on).
@@ -390,9 +391,18 @@ def get_episode(session: Session, learner: Learner, episode_id: uuid.UUID, *, lo
     return episode
 
 
-def today_episode(session: Session, learner: Learner) -> dict:
-    series = ensure_series(session, learner)
-    current = ensure_buffer(session, learner)
+def today_view(session: Session, learner: Learner) -> dict:
+    """The series and its episode for Today, read only: nothing is created, locked or queued here (that is
+    `ensure_buffer`, through POST /today/prepare). A learner without a series yet sees the series to come."""
+    series = session.scalar(select(StorySeries).where(StorySeries.learner_id == learner.id))
+    if series is None:
+        bible = DEFAULT_BIBLE
+        return {"series": {"id": None, "title": SERIES_TITLE, "stage_id": default_stage(session, learner.id),
+                           "episode_count": 0, "town": bible["setting"]["town"],
+                           "cast": [{"name": c["name"], "role": c["role"]} for c in bible["cast"]], "memory": []},
+                "episode": None, "awaiting_choice": None, "failed": None}
+    unread = _unread_episodes(session, series)
+    current = unread[0] if unread else None
     failed = session.scalar(select(StoryEpisode).where(StoryEpisode.series_id == series.id,
                                                        StoryEpisode.status == "failed", StoryEpisode.read_at.is_(None))
                             .order_by(StoryEpisode.number.desc()).limit(1))

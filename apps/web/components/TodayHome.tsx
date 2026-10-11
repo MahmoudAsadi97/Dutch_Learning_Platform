@@ -38,10 +38,10 @@ export function TodayHome() {
   const [wish, setWish] = useState("");
   const [notice, setNotice] = useState<Copy | null>(null);
   const [polls, setPolls] = useState(0);
+  // opening the page (and trying again after a failure) prepares the day; refreshes and polls only read it
   const load = useCallback(
-    (signal?: AbortSignal) =>
-      stories
-        .today(signal)
+    (signal?: AbortSignal, open = false) =>
+      (open ? stories.prepare : stories.today)(signal)
         .then((value) => {
           setPlan(value);
           setError(null);
@@ -53,7 +53,7 @@ export function TodayHome() {
   );
   useEffect(() => {
     const controller = new AbortController();
-    void load(controller.signal);
+    void load(controller.signal, true);
     return () => controller.abort();
   }, [load]);
   const pending = plan?.episode && (plan.episode.status === "queued" || plan.episode.status === "generating");
@@ -100,7 +100,7 @@ export function TodayHome() {
     return (
       <div className="error" role="alert">
         <UiText text={error} tier="guide" inline />{" "}
-        <button className="linklike" onClick={() => void load()}>
+        <button className="linklike" onClick={() => void load(undefined, true)}>
           <UiText text={uiCopy.action.retry} inline />
         </button>
       </div>
@@ -170,7 +170,7 @@ export function TodayHome() {
                       className="linklike"
                       onClick={() => {
                         setPolls(0);
-                        void load();
+                        void load(undefined, true);
                       }}
                     >
                       Vernieuwen

@@ -8,9 +8,8 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
+from dlp.api.deps import RequestContext, context_dep, db_session, providers_dep, settings_dep
 from dlp.config import Settings
-from dlp.db.session import get_session
 from dlp.domains.content.schemas import CheckpointPayload, MissionDocument, SpeakingPayload
 from dlp.domains.content.service import get_mission, mission_document
 from dlp.domains.feedback.service import generate_feedback, report_view, reports_for
@@ -170,7 +169,7 @@ def _load(session: Session, ctx: RequestContext, session_id: uuid.UUID, *, for_u
 
 @router.post("/sessions", status_code=201)
 def create(body: StartSessionRequest, ctx: RequestContext = Depends(context_dep),
-           session: Session = Depends(get_session)) -> dict:
+           session: Session = db_session) -> dict:
     mission = get_mission(session, body.mission_id)
     if mission is None:
         raise HTTPException(status_code=404, detail="mission not found")
@@ -186,7 +185,7 @@ def index(
     variant: str | None = Query(default=None, pattern=r"^(base|transfer)$"),
     status: str | None = Query(default=None, pattern=r"^(active|completed|ended|abandoned)$"),
     ctx: RequestContext = Depends(context_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> dict:
     sessions = list_sessions(session, ctx.learner.id, mission_id=mission_id, variant=variant, status=status)
     return {"sessions": [_session_view(p) for p in sessions], "request_id": ctx.request_id}
@@ -194,14 +193,14 @@ def index(
 
 @router.get("/sessions/{session_id}")
 def show(session_id: uuid.UUID, ctx: RequestContext = Depends(context_dep),
-         session: Session = Depends(get_session)) -> dict:
+         session: Session = db_session) -> dict:
     practice = _load(session, ctx, session_id, for_update=False)
     return _full_view(session, practice, ctx.request_id)
 
 
 @router.post("/sessions/{session_id}/abandon")
 def abandon(session_id: uuid.UUID, ctx: RequestContext = Depends(context_dep),
-            session: Session = Depends(get_session)) -> dict:
+            session: Session = db_session) -> dict:
     practice = _load(session, ctx, session_id)
     abandon_session(session, practice)
     return {"session": _session_view(practice), "request_id": ctx.request_id}
@@ -214,7 +213,7 @@ def typed_turn(
     ctx: RequestContext = Depends(context_dep),
     settings: Settings = Depends(settings_dep),
     providers: Providers = Depends(providers_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> Any:
     """A typed learner turn. Typed text is labelled as such in the evidence; the checkpoint refuses it."""
     practice = _load(session, ctx, session_id)
@@ -234,7 +233,7 @@ def speech_turn(
     ctx: RequestContext = Depends(context_dep),
     settings: Settings = Depends(settings_dep),
     providers: Providers = Depends(providers_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> Any:
     """A spoken learner turn: upload → canonical WAV → transcript → the same turn workflow as typed input."""
     practice = _load(session, ctx, session_id)
@@ -296,7 +295,7 @@ def character_audio(
     turn_id: uuid.UUID,
     ctx: RequestContext = Depends(context_dep),
     providers: Providers = Depends(providers_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> Response:
     """The synthesised character line for one turn, labelled as synthetic audio."""
     practice = _load(session, ctx, session_id)
@@ -323,7 +322,7 @@ def character_audio(
 
 @router.post("/sessions/{session_id}/answers")
 def answer(session_id: uuid.UUID, body: AnswerRequest, ctx: RequestContext = Depends(context_dep),
-           session: Session = Depends(get_session)) -> dict:
+           session: Session = db_session) -> dict:
     """An answer to a reading or listening question; correctness is decided here and stored as evidence."""
     practice = _load(session, ctx, session_id)
     outcome = submit_answer(session, practice, step_key=body.step_key, question_id=body.question_id,
@@ -337,7 +336,7 @@ def answer(session_id: uuid.UUID, body: AnswerRequest, ctx: RequestContext = Dep
 
 @router.post("/sessions/{session_id}/help")
 def help_used(session_id: uuid.UUID, body: HelpUseRequest, ctx: RequestContext = Depends(context_dep),
-              session: Session = Depends(get_session)) -> dict:
+              session: Session = db_session) -> dict:
     """One rung of the Persian help ladder was opened; recorded as evidence so feedback can see it."""
     practice = _load(session, ctx, session_id)
     evidence = record_help_use(session, practice, step_key=body.step_key, level=body.level, kind=body.kind,
@@ -347,7 +346,7 @@ def help_used(session_id: uuid.UUID, body: HelpUseRequest, ctx: RequestContext =
 
 @router.put("/sessions/{session_id}/drafts/{step_key}")
 def draft(session_id: uuid.UUID, step_key: str, body: DraftRequest, ctx: RequestContext = Depends(context_dep),
-          session: Session = Depends(get_session)) -> dict:
+          session: Session = db_session) -> dict:
     """Autosave of the writing step; not evidence until the message is submitted."""
     practice = _load(session, ctx, session_id)
     entry = save_draft(session, practice, step_key=step_key, text=body.text)
@@ -356,7 +355,7 @@ def draft(session_id: uuid.UUID, step_key: str, body: DraftRequest, ctx: Request
 
 @router.post("/sessions/{session_id}/writing")
 def writing(session_id: uuid.UUID, body: WritingRequest, ctx: RequestContext = Depends(context_dep),
-            session: Session = Depends(get_session)) -> dict:
+            session: Session = db_session) -> dict:
     """The submitted message of the writing step, stored as typed evidence with its word count."""
     practice = _load(session, ctx, session_id)
     outcome = submit_writing(session, practice, step_key=body.step_key, text=body.text)
@@ -373,7 +372,7 @@ def feedback(
     ctx: RequestContext = Depends(context_dep),
     settings: Settings = Depends(settings_dep),
     providers: Providers = Depends(providers_dep),
-    session: Session = Depends(get_session),
+    session: Session = db_session,
 ) -> dict:
     """Feedback on one step, every point tied to evidence ids that were verified before storing."""
     practice = _load(session, ctx, session_id)
@@ -389,6 +388,6 @@ def feedback(
 
 @router.get("/sessions/{session_id}/feedback")
 def feedback_index(session_id: uuid.UUID, ctx: RequestContext = Depends(context_dep),
-                   session: Session = Depends(get_session)) -> dict:
+                   session: Session = db_session) -> dict:
     practice = _load(session, ctx, session_id, for_update=False)
     return {"reports": [report_view(r) for r in reports_for(session, practice)], "request_id": ctx.request_id}

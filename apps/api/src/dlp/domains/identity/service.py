@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from datetime import timedelta
+
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.orm import Session
@@ -7,6 +9,10 @@ from sqlalchemy.orm import Session
 from dlp.db.base import utcnow
 from dlp.domains.identity.assertions import Principal
 from dlp.domains.identity.models import Learner
+
+# how stale "last seen" may get: writing it on every request would make every read a write and queue one
+# learner's parallel requests on the learner row
+LAST_SEEN_EVERY = timedelta(minutes=10)
 
 
 def get_or_create_learner(session: Session, principal: Principal) -> Learner:
@@ -25,7 +31,9 @@ def get_or_create_learner(session: Session, principal: Principal) -> Learner:
             learner = session.scalar(select(Learner).where(Learner.email == principal.email))
         assert learner is not None
     else:
-        learner.last_seen_at = utcnow()
+        now = utcnow()
+        if learner.last_seen_at is None or now - learner.last_seen_at >= LAST_SEEN_EVERY:
+            learner.last_seen_at = now
         if principal.name and learner.display_name != principal.name:
             learner.display_name = principal.name
     return learner

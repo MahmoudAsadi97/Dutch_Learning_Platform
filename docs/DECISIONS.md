@@ -383,3 +383,15 @@ draft already begun) arrives at it directly, without the card. The summary says 
 topic, never in a miss colour, and offers the missed questions first; that short session never counts, so
 the topic still asks for a first right answer to every question in one full session. The classic receptive
 form leaves the page; its endpoint stays.
+
+## D-33 · Reads only read; a request's writes commit before it answers — 2026-10-11
+
+`GET /today` used to create the learner's series and queue a paid episode as a side effect, so a prefetch, a
+second tab or a retry could start model work, and every read was a write transaction. Today is now read by
+`GET /today`, which writes nothing, and prepared by `POST /today/prepare` (step 4.1), which the page calls once
+when it opens: it keeps one unread episode queued or ready, never more, and answers the same plan. Refreshes and
+the wait for the writer only read. The request's database session now commits after the route returns and before
+the response is sent (FastAPI's function-scoped dependency), so a commit that fails reaches the learner as an
+error instead of a success whose work was lost; responses that must keep completed work (usage, a failed turn)
+still return rather than raise. "Last seen" is written at most every ten minutes, so it no longer turns reads
+into writes.

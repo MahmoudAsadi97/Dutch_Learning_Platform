@@ -26,7 +26,7 @@ test("today shows the streak, the goal and the episode that is ready", async ({ 
 });
 
 test("today reports a writer at work and a failed episode honestly", async ({ page }) => {
-  await page.route(/\/api\/today(?:\?|$)/, (route) =>
+  await page.route(/\/api\/today(?:\/prepare)?(?:\?|$)/, (route) =>
     route.fulfill({
       json: plan({ next_step: "wait", episode: episode({ status: "generating", title: "" }) }),
     }),
@@ -36,8 +36,8 @@ test("today reports a writer at work and a failed episode honestly", async ({ pa
     "Je volgende aflevering wordt geschreven.",
   );
   await expect(page.getByText("De schrijver is bezig…")).toBeVisible();
-  await page.unroute(/\/api\/today(?:\?|$)/);
-  await page.route(/\/api\/today(?:\?|$)/, (route) =>
+  await page.unroute(/\/api\/today(?:\/prepare)?(?:\?|$)/);
+  await page.route(/\/api\/today(?:\/prepare)?(?:\?|$)/, (route) =>
     route.fulfill({
       json: plan({
         next_step: "review",

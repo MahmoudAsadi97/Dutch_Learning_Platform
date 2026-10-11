@@ -112,7 +112,9 @@ export function plan(overrides: Record<string, unknown> = {}) {
 export async function storyFixture(page: Page) {
   let state: Record<string, unknown> = episode();
   const posts: string[] = [];
-  await page.route(/\/api\/today(?:\?|$)/, (route) => route.fulfill({ json: plan({ episode: state }) }));
+  await page.route(/\/api\/today(?:\/prepare)?(?:\?|$)/, (route) =>
+    route.fulfill({ json: plan({ episode: state }) }),
+  );
   await page.route(/\/api\/stories\/episodes\/[^/]+(?:\/.*)?$/, async (route) => {
     const url = new URL(route.request().url());
     const action = url.pathname.split(`/stories/episodes/${episodeId}`)[1] ?? "";

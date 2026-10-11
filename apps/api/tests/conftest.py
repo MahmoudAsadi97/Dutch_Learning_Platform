@@ -138,3 +138,11 @@ def auth_headers(request_id: str = "test-request-0001", *, email: str = "owner@e
 @pytest.fixture
 def headers() -> dict[str, str]:
     return auth_headers()
+
+
+def open_today(client: TestClient, headers: dict[str, str]) -> dict:
+    """Opening Today as the page does (POST /today/prepare): keeps one unread episode queued or ready. GET /today
+    only reads (step 4.1)."""
+    response = client.post("/today/prepare", headers=headers)
+    assert response.status_code == 200, response.text
+    return response.json()

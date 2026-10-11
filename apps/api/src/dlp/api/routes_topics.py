@@ -4,10 +4,9 @@ from typing import Literal
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
-from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
+from dlp.api.deps import RequestContext, context_dep, db_session, providers_dep, settings_dep
 from dlp.api.routes_curriculum import PracticeBody, _audio, _run
 from dlp.config import Settings
-from dlp.db.session import get_session
 from dlp.domains.curriculum import topics
 from dlp.domains.curriculum.schemas import Skill
 from dlp.providers.registry import Providers
@@ -20,14 +19,14 @@ def topic_list(stage_id: str, skill: Skill, q: str = Query(default="", max_lengt
                category: str = Query(default="", max_length=160),
                status: Literal["all", "not_started", "completed"] = "all",
                offset: int = Query(default=0, ge=0, le=100000), limit: int = Query(default=12, ge=1, le=24),
-               ctx: RequestContext = Depends(context_dep), session: Session = Depends(get_session)):
+               ctx: RequestContext = Depends(context_dep), session: Session = db_session):
     return _run(lambda: topics.topic_page(session, ctx.learner.id, topics.topics_for(stage_id), skill=skill,
                                           query=q, category=category, status=status, offset=offset, limit=limit))
 
 
 @router.get("/{topic_id}")
 def topic_get(stage_id: str, topic_id: str, skill: Skill, ctx: RequestContext = Depends(context_dep),
-              settings: Settings = Depends(settings_dep), session: Session = Depends(get_session)):
+              settings: Settings = Depends(settings_dep), session: Session = db_session):
     def operation():
         bank = topics.topics_for(stage_id)
         topic = topics.topic_for(bank, topic_id)
@@ -39,7 +38,7 @@ def topic_get(stage_id: str, topic_id: str, skill: Skill, ctx: RequestContext = 
 @router.post("/{topic_id}/practice")
 def topic_practice(stage_id: str, topic_id: str, body: PracticeBody,
                    ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-                   providers: Providers = Depends(providers_dep), session: Session = Depends(get_session)):
+                   providers: Providers = Depends(providers_dep), session: Session = db_session):
     def operation():
         bank = topics.topics_for(stage_id)
         topic = topics.topic_for(bank, topic_id)
@@ -56,7 +55,7 @@ def topic_practice(stage_id: str, topic_id: str, body: PracticeBody,
 @router.post("/{topic_id}/listening")
 def topic_listening(stage_id: str, topic_id: str, part: int = Query(default=0, ge=0, le=100),
                     ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-                    providers: Providers = Depends(providers_dep), session: Session = Depends(get_session)):
+                    providers: Providers = Depends(providers_dep), session: Session = db_session):
     def operation():
         topic = topics.topic_for(topics.topics_for(stage_id), topic_id)
         return _audio(topic.listening.text.nl, part, ctx, settings, providers, session)

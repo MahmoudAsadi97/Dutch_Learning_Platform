@@ -27,7 +27,7 @@ from dlp.domains.usage.models import UsageCounter
 from dlp.providers.fixtures import FixtureChatModel, FixtureSpeechToText
 from dlp.providers.registry import get_providers
 
-from .conftest import FIXTURES, auth_headers
+from .conftest import FIXTURES, auth_headers, open_today
 
 GOOD = json.loads((FIXTURES / "chat_replies.json").read_text(encoding="utf-8"))["story-episode-v1"]["default"]
 
@@ -161,12 +161,12 @@ def _learner(session) -> Learner:
     return learner
 
 
-def test_today_queues_an_episode_and_the_job_writes_a_validated_one(client, headers):
-    first = client.get("/today", headers=headers).json()
+def test_opening_today_queues_an_episode_and_the_job_writes_a_validated_one(client, headers):
+    first = open_today(client, headers)
     assert first["episode"]["status"] == "queued" and first["next_step"] == "wait"
     assert first["series"]["title"] == "De Lindestraat" and first["series"]["stage_id"] == "a1"
     assert first["streak"]["current"] == 0 and first["goal"] == {"target": 20, "points": 0, "met": False}
-    assert client.get("/today", headers=headers).json()["series"]["episode_count"] == 1, "no second queue while one is pending"
+    assert open_today(client, headers)["series"]["episode_count"] == 1, "no second queue while one is pending"
     assert drain(get_settings()) == 1
     plan = client.get("/today", headers=headers).json()
     episode = plan["episode"]
@@ -190,7 +190,7 @@ def test_a_draft_that_fails_the_gate_is_rewritten_once_with_feedback(client, hea
     bad["questions"][0]["evidence"] = "Deze zin staat niet in het verhaal."
     table = {"story-episode-v1": {"rules": [{"any": ["FAILED CHECKS"], "reply": GOOD}], "default": bad}}
     writer = FixtureChatModel(table)
-    client.get("/today", headers=headers)
+    open_today(client, headers)
     with session_scope() as session:
         episode = session.scalar(select(StoryEpisode))
         result = service.generate_episode(session, {"episode_id": str(episode.id)}, get_settings(),
@@ -203,7 +203,7 @@ def test_a_persistently_bad_draft_fails_honestly_and_can_be_retried(client, head
     bad = deepcopy(GOOD)
     bad["paragraphs"] = ["The council approved the plan after a long debate about the budget and the station."] * 3
     writer = FixtureChatModel({"story-episode-v1": bad})
-    client.get("/today", headers=headers)
+    open_today(client, headers)
     with session_scope() as session:
         episode = session.scalar(select(StoryEpisode))
         result = service.generate_episode(session, {"episode_id": str(episode.id)}, get_settings(),
@@ -221,7 +221,7 @@ def test_a_persistently_bad_draft_fails_honestly_and_can_be_retried(client, head
 
 def test_a_provider_failure_keeps_the_reservation_and_marks_the_episode(client, headers):
     writer = FixtureChatModel({"story-episode-v1": GOOD}, fail_first=1)
-    client.get("/today", headers=headers)
+    open_today(client, headers)
     with session_scope() as session:
         episode = session.scalar(select(StoryEpisode))
         result = service.generate_episode(session, {"episode_id": str(episode.id)}, get_settings(),
@@ -237,7 +237,7 @@ def test_a_provider_failure_keeps_the_reservation_and_marks_the_episode(client, 
 def test_an_exhausted_allowance_fails_without_a_model_call(client, headers, monkeypatch):
     monkeypatch.setattr(get_settings(), "usage_daily_model_calls", 0)
     writer = FixtureChatModel({"story-episode-v1": GOOD})
-    client.get("/today", headers=headers)
+    open_today(client, headers)
     with session_scope() as session:
         episode = session.scalar(select(StoryEpisode))
         result = service.generate_episode(session, {"episode_id": str(episode.id)}, get_settings(),
@@ -250,7 +250,7 @@ def test_an_exhausted_allowance_fails_without_a_model_call(client, headers, monk
 # --- learner actions ------------------------------------------------------------------------------------------
 
 def ready_episode(client, headers) -> dict:
-    client.get("/today", headers=headers)
+    open_today(client, headers)
     drain(get_settings())
     return client.get("/today", headers=headers).json()["episode"]
 
@@ -306,7 +306,7 @@ def test_a_learner_cannot_see_or_touch_another_learners_episode(client, headers)
     assert client.post(f"/stories/episodes/{episode['id']}/read", headers=other).status_code == 404
     theirs = client.get("/stories", headers=other).json()
     assert theirs["series"]["episode_count"] == 0 and theirs["items"] == [], "a series of their own, nothing shared"
-    assert client.get("/today", headers=other).json()["series"]["episode_count"] == 1
+    assert open_today(client, other)["series"]["episode_count"] == 1
 
 
 def test_level_can_be_changed_and_a_wish_queues_a_themed_episode(client, headers):

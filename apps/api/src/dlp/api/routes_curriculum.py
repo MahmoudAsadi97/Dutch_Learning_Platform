@@ -9,9 +9,8 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session
 
-from dlp.api.deps import RequestContext, context_dep, providers_dep, settings_dep
+from dlp.api.deps import RequestContext, context_dep, db_session, providers_dep, settings_dep
 from dlp.config import Settings
-from dlp.db.session import get_session
 from dlp.domains.curriculum import service
 from dlp.domains.curriculum.schemas import Skill, Test
 from dlp.domains.curriculum.writing import writing_feedback
@@ -79,7 +78,7 @@ def _run(operation: Callable, *, provider_detail: str | None = None):
 
 @router.get("")
 def catalogue(ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-              session: Session = Depends(get_session)):
+              session: Session = db_session):
     return _run(lambda: service.catalogue(session, ctx.learner.id, admin=service.is_admin(settings, ctx.principal.email),
                                           recording_max_seconds=settings.max_audio_seconds))
 
@@ -87,7 +86,7 @@ def catalogue(ctx: RequestContext = Depends(context_dep), settings: Settings = D
 # Static 'attempts' routes deliberately precede the stage routes.
 @router.get("/attempts/{attempt_id}")
 def attempt_get(attempt_id: uuid.UUID, ctx: RequestContext = Depends(context_dep),
-                settings: Settings = Depends(settings_dep), session: Session = Depends(get_session)):
+                settings: Settings = Depends(settings_dep), session: Session = db_session):
     def operation():
         attempt = service.get_attempt(session, ctx.learner.id, attempt_id)
         service.require_access(session, ctx.learner.id, attempt.stage_id,
@@ -99,7 +98,7 @@ def attempt_get(attempt_id: uuid.UUID, ctx: RequestContext = Depends(context_dep
 @router.post("/attempts/{attempt_id}/submit")
 def attempt_submit(attempt_id: uuid.UUID, body: SubmitBody, ctx: RequestContext = Depends(context_dep),
                    settings: Settings = Depends(settings_dep), providers: Providers = Depends(providers_dep),
-                   session: Session = Depends(get_session)):
+                   session: Session = db_session):
     def operation():
         attempt = service.get_attempt(session, ctx.learner.id, attempt_id, lock=True)
         service.require_access(session, ctx.learner.id, attempt.stage_id,
@@ -129,7 +128,7 @@ def _audio(text: str, part: int, ctx: RequestContext, settings: Settings, provid
 @router.post("/attempts/{attempt_id}/listening")
 def attempt_listening(attempt_id: uuid.UUID, part: int = Query(default=0, ge=0, le=100),
                       ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-                      providers: Providers = Depends(providers_dep), session: Session = Depends(get_session)):
+                      providers: Providers = Depends(providers_dep), session: Session = db_session):
     def operation():
         attempt = service.get_attempt(session, ctx.learner.id, attempt_id)
         service.require_access(session, ctx.learner.id, attempt.stage_id,
@@ -140,7 +139,7 @@ def attempt_listening(attempt_id: uuid.UUID, part: int = Query(default=0, ge=0, 
 
 @router.get("/{stage_id}")
 def stage_get(stage_id: str, ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-              session: Session = Depends(get_session)):
+              session: Session = db_session):
     def operation():
         admin = service.is_admin(settings, ctx.principal.email)
         stage = service.require_access(session, ctx.learner.id, stage_id, admin=admin)
@@ -151,7 +150,7 @@ def stage_get(stage_id: str, ctx: RequestContext = Depends(context_dep), setting
 @router.post("/{stage_id}/practice")
 def practice(stage_id: str, body: PracticeBody, ctx: RequestContext = Depends(context_dep),
              settings: Settings = Depends(settings_dep), providers: Providers = Depends(providers_dep),
-             session: Session = Depends(get_session)):
+             session: Session = db_session):
     def operation():
         stage = service.require_access(session, ctx.learner.id, stage_id,
                                        admin=service.is_admin(settings, ctx.principal.email))
@@ -165,7 +164,7 @@ def practice(stage_id: str, body: PracticeBody, ctx: RequestContext = Depends(co
 @router.post("/{stage_id}/writing-feedback")
 def lesson_writing_feedback(stage_id: str, body: WritingFeedbackBody, ctx: RequestContext = Depends(context_dep),
                             settings: Settings = Depends(settings_dep), providers: Providers = Depends(providers_dep),
-                            session: Session = Depends(get_session)):
+                            session: Session = db_session):
     def operation():
         stage = service.require_access(session, ctx.learner.id, stage_id,
                                        admin=service.is_admin(settings, ctx.principal.email))
@@ -176,7 +175,7 @@ def lesson_writing_feedback(stage_id: str, body: WritingFeedbackBody, ctx: Reque
 
 @router.post("/{stage_id}/test")
 def test_start(stage_id: str, body: StartBody, ctx: RequestContext = Depends(context_dep),
-               settings: Settings = Depends(settings_dep), session: Session = Depends(get_session)):
+               settings: Settings = Depends(settings_dep), session: Session = db_session):
     def operation():
         admin = service.is_admin(settings, ctx.principal.email)
         stage = service.require_access(session, ctx.learner.id, stage_id, admin=admin)
@@ -188,7 +187,7 @@ def test_start(stage_id: str, body: StartBody, ctx: RequestContext = Depends(con
 @router.post("/{stage_id}/listening")
 def lesson_listening(stage_id: str, part: int = Query(default=0, ge=0, le=100),
                      ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
-                     providers: Providers = Depends(providers_dep), session: Session = Depends(get_session)):
+                     providers: Providers = Depends(providers_dep), session: Session = db_session):
     def operation():
         stage = service.require_access(session, ctx.learner.id, stage_id,
                                        admin=service.is_admin(settings, ctx.principal.email))
