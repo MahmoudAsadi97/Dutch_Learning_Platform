@@ -142,7 +142,9 @@ session (`api/deps.db_session`, function scope) commits once the route has retur
 sent, so a failed commit answers 500, never a 2xx whose writes were lost (D-33); every route and `context_dep` share
 that one dependency, because FastAPI caches a dependency per request by its scope too and a second scope would open
 a second session (`tests/test_today_contract.py` checks every route). A learner's `last_seen_at` is written at most
-once every ten minutes, so a read stays a read.
+once every ten minutes, so most reads write nothing. That write no longer serializes one learner's requests, so
+writes that touch several of the learner's rows take `identity.service.lock_learner` first, and a first insert
+that may race uses ON CONFLICT DO NOTHING and reads the winner's row (learner, profile, story series).
 
 A conflict a learner can reach carries its own code (`episodes_busy`, `videos_busy`, `not_ready`,
 `already_answered`, `session_closed`, `turn_limit`, `no_retry`, `in_progress`, `evidence_short`,
@@ -426,8 +428,9 @@ day). Routes are in `api/routes_stories.py`: `GET /today`, `POST /today/prepare`
 `GET/POST/DELETE /words…`. The writer runs as the `story_episode` job in the existing job loop. `GET /today` only
 reads (`today_view`; a learner without a series yet sees the series to come); opening Today, `POST /today/prepare`
 (`ensure_buffer`), queues the first episode and keeps one unread episode ahead, holding back while the reader still
-owes a choice (twelve-hour grace), and answers the same plan (`TodayPlan`). The page opens with prepare and
-refreshes and polls with the GET. `docs/STORY_ENGINE.md` describes the prompt, the validator and the cost rules.
+owes a choice (twelve-hour grace), and answers the same plan (`TodayPlan`). The page prepares when it opens, when it
+tries again after a failure and from the stalled "Vernieuwen"; its polls and the reloads after an action use the
+GET. `docs/STORY_ENGINE.md` describes the prompt, the validator and the cost rules.
 
 Rules that hold throughout: answers to the comprehension questions are graded on the server once per
 episode (a retried request id replays the stored result; a new id is refused); points are awarded by

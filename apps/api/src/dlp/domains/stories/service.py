@@ -20,6 +20,7 @@ from copy import deepcopy
 from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import select
+from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.orm import Session
 
 from dlp.config import Settings, get_settings
@@ -31,6 +32,7 @@ from dlp.domains.curriculum import topics as topic_bank
 from dlp.domains.curriculum.library import library_for
 from dlp.domains.curriculum.schemas import STAGE_IDS
 from dlp.domains.identity.models import Learner
+from dlp.domains.identity.service import lock_learner
 from dlp.domains.jobs import service as jobs
 from dlp.domains.profile import service as profile_service
 from dlp.domains.speech.compare import read_aloud_compare
@@ -70,18 +72,24 @@ def default_stage(session: Session, learner_id: uuid.UUID) -> str:
 
 
 def ensure_series(session: Session, learner: Learner) -> StorySeries:
-    series = session.scalar(select(StorySeries).where(StorySeries.learner_id == learner.id).with_for_update())
+    """The learner's series, locked for this transaction. Two first requests may race (two tabs opening Today,
+    Today beside the library): the winner inserts, the other waits for its commit and then locks that row."""
+    mine = select(StorySeries).where(StorySeries.learner_id == learner.id).with_for_update()
+    series = session.scalar(mine)
     if series is None:
-        series = StorySeries(learner_id=learner.id, stage_id=default_stage(session, learner.id), title=SERIES_TITLE,
-                             bible=deepcopy(DEFAULT_BIBLE), memory=[], episode_count=0)
-        session.add(series)
-        session.flush()
+        session.execute(insert(StorySeries).values(
+            learner_id=learner.id, stage_id=default_stage(session, learner.id), title=SERIES_TITLE,
+            bible=deepcopy(DEFAULT_BIBLE), memory=[], episode_count=0,
+        ).on_conflict_do_nothing(index_elements=[StorySeries.learner_id]))
+        series = session.scalar(mine)
+        assert series is not None
     return series
 
 
 def set_level(session: Session, learner: Learner, stage_id: str) -> dict:
     if stage_id not in STAGE_IDS:
         raise StoryError("learning stage not found", 404)
+    lock_learner(session, learner.id)  # the series, then the profile: never against a profile-first writer
     series = ensure_series(session, learner)
     series.stage_id = stage_id
     series.updated_at = utcnow()

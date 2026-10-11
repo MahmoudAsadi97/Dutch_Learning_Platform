@@ -37,3 +37,10 @@ def get_or_create_learner(session: Session, principal: Principal) -> Learner:
         if principal.name and learner.display_name != principal.name:
             learner.display_name = principal.name
     return learner
+
+
+def lock_learner(session: Session, learner_id) -> None:
+    """Serializes one learner's writes that change several of their rows (the profile and the story series), so
+    two of them never take those row locks in opposite orders. Taken first, before any other row lock; FOR NO KEY
+    UPDATE does not block the key-share locks that foreign-key checks take on the learner row."""
+    session.execute(select(Learner.id).where(Learner.id == learner_id).with_for_update(key_share=True)).one()

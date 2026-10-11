@@ -38,7 +38,8 @@ export function TodayHome() {
   const [wish, setWish] = useState("");
   const [notice, setNotice] = useState<Copy | null>(null);
   const [polls, setPolls] = useState(0);
-  // opening the page (and trying again after a failure) prepares the day; refreshes and polls only read it
+  // opening the page, trying again after a failure and the stalled "Vernieuwen" prepare the day; the polls
+  // and the reloads after an action only read it
   const load = useCallback(
     (signal?: AbortSignal, open = false) =>
       (open ? stories.prepare : stories.today)(signal)

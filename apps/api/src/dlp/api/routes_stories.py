@@ -87,7 +87,8 @@ def _today(session: Session, learner: Learner) -> dict:
 
 @router.get("/today", response_model=TodayPlan)
 def today_plan(ctx: RequestContext = Depends(context_dep), session: Session = db_session):
-    """The day's plan, read only: opening or refreshing it writes nothing and queues nothing."""
+    """The day's plan as stored: it creates, locks and queues nothing (like every signed-in request it may refresh
+    the learner's "last seen", at most every ten minutes)."""
     return _run(lambda: _today(session, ctx.learner))
 
 

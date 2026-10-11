@@ -388,10 +388,14 @@ form leaves the page; its endpoint stays.
 
 `GET /today` used to create the learner's series and queue a paid episode as a side effect, so a prefetch, a
 second tab or a retry could start model work, and every read was a write transaction. Today is now read by
-`GET /today`, which writes nothing, and prepared by `POST /today/prepare` (step 4.1), which the page calls once
-when it opens: it keeps one unread episode queued or ready, never more, and answers the same plan. Refreshes and
-the wait for the writer only read. The request's database session now commits after the route returns and before
-the response is sent (FastAPI's function-scoped dependency), so a commit that fails reaches the learner as an
-error instead of a success whose work was lost; responses that must keep completed work (usage, a failed turn)
-still return rather than raise. "Last seen" is written at most every ten minutes, so it no longer turns reads
-into writes.
+`GET /today`, which creates, locks and queues nothing, and prepared by `POST /today/prepare` (step 4.1), which the
+page calls when it opens, when it tries again after a failure and from the stalled-writer "Vernieuwen": it keeps
+one unread episode queued or ready, never more, and answers the same plan. The polls while the writer works and
+the reloads after an action only read. The request's database session now commits after the route returns and
+before the response is sent (FastAPI's function-scoped dependency), so a commit that fails reaches the learner as
+an error instead of a success whose work was lost; responses that must keep completed work (usage, a failed turn)
+still return rather than raise. "Last seen", which any signed-in request may refresh, is written at most every
+ten minutes, so most reads write nothing at all. That write used to lock the learner row on every request and so
+queued one learner's requests; without it, the series is inserted with ON CONFLICT DO NOTHING (two first prepares
+share one series and one episode), and the writes that change both the profile and the series (a level change,
+onboarding) lock the learner row first, so they never take those locks in opposite orders.
