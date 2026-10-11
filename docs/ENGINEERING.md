@@ -471,9 +471,10 @@ counted.
 ## Exercise engine
 
 `domains/exercises` runs practice as server-graded sessions (migration `0010`). `POST /exercises/sessions`
-(`request_id`, `source` `stage_skill` or `while_you_wait`, optional `stage_id` (the profile's level by
-default), `library_topic`, `size` 5-12, `fresh`, and `kinds`, the kinds a client can show, always with
-`choice`) generates the items once from a seed (learner, request id,
+(`request_id`, `source` `stage_skill`, `while_you_wait` or `topic`, optional `stage_id` (the profile's level by
+default; a topic's own stage), `library_topic`, `size` 5-12, `fresh`, `kinds`, the kinds a client can show,
+always with `choice`, and for a topic or lesson `topic_id`, `skill` and `retry`) generates the items once from
+a seed (learner, request id,
 `GENERATOR_VERSION`) and stores them: `prompt` is what the browser may see, `key` stays on the server and out
 of the export (an item's `ref` too, until its answer has been shown). A new session answers 201; the same
 request id returns the same session (200), another one resumes an open session of the same kind under 12
@@ -565,6 +566,30 @@ whole.
   or a built sentence (another order may be right). The summary lists each missed word, a board's one by one.
   Finishing offers the missed words not in the bank as `word_suggestions`; only the learner saves a word. Each
   attempt keeps the learner's own answer, which the export carries (`given`), with `overridden_at`.
+- **Topic and lesson sessions** (step 3.8, `activities.py`, D-31): `source: topic` with a `topic_id` and a
+  `skill`, or `source: stage_skill` with `skill` reading or listening for the stage lesson (`stage.lesson`
+  only; the final check is never read, `tests/test_exercises_final_check_isolation.py`). Reading or listening:
+  a passage step (`read_passage`: the Dutch text and the topic's words; `listen_passage`: the number of parts,
+  heard from the topic's or lesson's own `/listening?part=N` route), closed with `{done: true}` (a
+  `no_audio` skip closes a listening one) and never graded, then the authored questions in their order as
+  `choice` items (options shuffled under opaque ids; the key keeps each option's authored place and the
+  question id; a lesson's refs name the stage, `question:<stage>:<id>`, since its ids repeat). The session
+  view adds the passage's translation, or the transcript, once every question is closed. At finish the first
+  answers go through the unchanged `objective_result` (a first-try skip counts as wrong) and are recorded as
+  the classic form records them: `_persist_topic_result` (sticky topic completion, the stage skill) and one
+  practice observation (`topic_practice`, request id `exercise:<session id>`, which no client can send), or for
+  a lesson `_persist_core_practice` (now returning the sticky value) and no observation. The summary's
+  `completion` says what happened: `counted`, or why not (`retry`, `unfinished` when a question was never
+  tried, `content_changed` when the topic or lesson changed since the session began, `open_task`), the result,
+  whether the activity is completed, and `to_retry`, the questions missed the first time. `retry: true` asks
+  only the questions the last finished session on the same activity did not get right first (409
+  `nothing_to_retry` when there are none) and completes nothing. A topic's speaking or writing is a warm-up
+  on the topic's own words (`plan(..., only=vocabulary_ids)`, six items, no ordering board); it completes
+  nothing, and its typed items are never tagged speaking. Sessions resume only on the same topic, skill and
+  retry; reading and listening build no word pool, so the library's content gate does not hold them back.
+  The passage steps join `intro` in `UNGRADED` (no attempt count, point, mistake or progress). Topic lists and
+  details carry `review_of` (`topics.review_of`): the earliest earlier stage whose bank has the same situation
+  at the same place, worked out per view, never stored on the topic.
 - **Web kit** (step 3.6, `components/exercise`, `/oefenen`): `ExerciseSession` runs a session from start to
   summary through a pure reducer (`sessionReducer.ts`: creating, answering, checking, feedback, finishing,
   summary, error); server responses are events, so a resumed session continues exactly from what the API

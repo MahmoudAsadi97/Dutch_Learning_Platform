@@ -9,10 +9,14 @@ from __future__ import annotations
 import uuid
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 RequestId = Annotated[str, Field(min_length=8, max_length=80, pattern=r"^[a-zA-Z0-9_-]+$")]
-Source = Literal["stage_skill", "while_you_wait"]
+# "stage_skill": the stage's words, or with a skill the stage lesson's reading or listening;
+# "topic": a practice topic
+Source = Literal["stage_skill", "while_you_wait", "topic"]
+Skill = Literal["reading", "listening", "speaking", "writing"]
+TopicId = Annotated[str, Field(min_length=6, max_length=60, pattern=r"^[a-z0-9-]+-t[0-9]{3}$")]
 # "almost" is shown in a neutral colour and is never a mistake; "accepted" is the learner's own overrule
 Outcome = Literal["correct", "almost", "incorrect", "skipped", "done", "accepted", "heard", "not_heard"]
 OptionId = Annotated[str, Field(min_length=1, max_length=16)]
@@ -34,6 +38,11 @@ class CreateBody(BaseModel):
     fresh: bool = False  # start a new session even when one is open
     # only these kinds (a client that cannot show the others yet); recognition by choice is always among them
     kinds: list[GradedKind] | None = Field(default=None, min_length=1, max_length=13)
+    # a practice topic (source "topic"; its stage when stage_id is absent) and the skill practised: a topic's
+    # reading, listening, speaking or writing, or with source "stage_skill" the stage lesson's reading or listening
+    topic_id: TopicId | None = None
+    skill: Skill | None = None
+    retry: bool = False  # only the questions the last session on this activity missed the first time
 
     @field_validator("kinds")
     @classmethod
@@ -43,6 +52,22 @@ class CreateBody(BaseModel):
         if "choice" not in kinds:
             raise ValueError("kinds must include choice")
         return sorted(set(kinds))
+
+    @model_validator(mode="after")
+    def _activity(self) -> CreateBody:
+        if self.source == "topic" and (self.topic_id is None or self.skill is None):
+            raise ValueError("a topic session names its topic and skill")
+        if self.source != "topic" and self.topic_id is not None:
+            raise ValueError("only a topic session names a topic")
+        if self.source == "while_you_wait" and self.skill is not None:
+            raise ValueError("a while-you-wait session practises words")
+        if self.source == "stage_skill" and self.skill not in (None, "reading", "listening"):
+            raise ValueError("a lesson session practises its reading or listening")
+        if self.skill is not None and (self.library_topic is not None or self.size is not None):
+            raise ValueError("a topic or lesson session has its own content and length")
+        if self.retry and self.skill not in ("reading", "listening"):
+            raise ValueError("only the questions of a reading or listening activity are retried")
+        return self
 
 
 class AnswerValue(BaseModel):
@@ -205,9 +230,30 @@ class IntroPrompt(BaseModel):
     words: list[IntroWord]
 
 
+class PassageWord(BaseModel):
+    term: str
+    meaning: Text  # English and Persian
+
+
+class ReadPassagePrompt(BaseModel):
+    """A topic's or lesson's text to read before its questions; closed with done, never graded."""
+    kind: Literal["read_passage"]
+    text: Text  # Dutch; with its translation once every question is answered
+    vocabulary: list[PassageWord] = []  # the topic's own words
+
+
+class ListenPassagePrompt(BaseModel):
+    """A topic's or lesson's listening, heard from its own /listening route part by part (`?part=0` up to
+    `parts - 1`); closed with done, never graded."""
+    kind: Literal["listen_passage"]
+    parts: int
+    transcript: Text | None = None  # once every question is answered
+    vocabulary: list[PassageWord] = []
+
+
 Prompt = Annotated[ChoicePrompt | ClozePrompt | OddPrompt | IntroPrompt | ClozeTypedPrompt | TypedRecallPrompt
                    | FlashcardPrompt | MatchPairsPrompt | DeHetPrompt | SentenceBuilderPrompt | SentenceOrderPrompt
-                   | ListenChoosePrompt | DictationPrompt | ShadowPrompt,
+                   | ListenChoosePrompt | DictationPrompt | ShadowPrompt | ReadPassagePrompt | ListenPassagePrompt,
                    Field(discriminator="kind")]
 
 
@@ -297,6 +343,23 @@ class KindCount(BaseModel):
     first_try_correct: int
 
 
+class Completion(BaseModel):
+    """What a topic or lesson session did for its activity. Only the first answers to the authored questions
+    count, through the course's own rule (75 %); a retry, a session finished with a question never tried, a
+    warm-up before an open task, or content changed since the session began counts for nothing."""
+    scope: Literal["topic", "lesson"]
+    skill: Skill
+    topic_id: str | None = None
+    counted: bool
+    reason: Literal["retry", "unfinished", "content_changed", "open_task"] | None = None  # when not counted
+    passed: bool | None = None
+    correct: int | None = None
+    total: int | None = None
+    required: int | None = None
+    completed: bool  # the topic (a lesson: the stage skill) is completed, by this session or before
+    to_retry: int = 0  # questions missed the first time here, which a retry session asks again
+
+
 class Summary(BaseModel):
     items_total: int
     answered: int
@@ -309,6 +372,7 @@ class Summary(BaseModel):
     by_kind: dict[str, KindCount]
     missed: list[MissedItem]
     suggestions: list[Suggestion]
+    completion: Completion | None = None  # topic and lesson sessions
 
 
 class SessionView(BaseModel):
@@ -317,6 +381,9 @@ class SessionView(BaseModel):
     stage_id: str
     focus: str
     library_topic: str | None = None
+    topic_id: str | None = None
+    skill: Skill | None = None
+    retry: bool = False
     status: Literal["active", "finished", "abandoned"]
     content_status: Literal["unreviewed"] = "unreviewed"
     resumed: bool = False

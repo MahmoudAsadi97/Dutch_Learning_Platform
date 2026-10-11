@@ -10,6 +10,10 @@ end with its options reshuffled, after the correct answer was shown; nothing blo
 its point with its first real answer, right or wrong (a skip is not an answer), so finishing early never pays
 right answers more than wrong ones; a session with five answered items earns the session bonus. A
 first-attempt miss writes a mistake row only for a word met before this session.
+
+A practice topic or a stage lesson is a session too (activities.py): a passage step, then the authored
+questions, whose first answers complete the activity at finish by the course's own rule; or, for a topic's
+speaking or writing, a warm-up on its words that completes nothing.
 """
 from __future__ import annotations
 
@@ -18,7 +22,7 @@ import json
 import random
 import uuid
 from datetime import timedelta
-from typing import Any
+from typing import Any, get_args
 
 from sqlalchemy import delete, func, select
 from sqlalchemy.orm import Session
@@ -27,13 +31,13 @@ from dlp.config import Settings
 from dlp.db.base import utcnow
 from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.curriculum.schemas import STAGE_IDS
-from dlp.domains.exercises import graders, mistakes
+from dlp.domains.exercises import activities, graders, mistakes
 from dlp.domains.exercises.blueprints import SIZES, plan
 from dlp.domains.exercises.compare import ARTICLES, fold
 from dlp.domains.exercises.generators import GENERATOR_VERSION
 from dlp.domains.exercises.models import ExerciseItem, ExerciseSession, LearnerMistake, WordSuggestion
 from dlp.domains.exercises.pool import pool_for
-from dlp.domains.exercises.schemas import AnswerValue, CreateBody
+from dlp.domains.exercises.schemas import AnswerValue, CreateBody, GradedKind
 from dlp.domains.exercises.taxonomy import category_for
 from dlp.domains.identity.models import Learner
 from dlp.domains.profile import service as profiles
@@ -49,6 +53,8 @@ SESSION_BONUS_MIN_ITEMS = 5
 # skip reasons that close an item without counting it as missed; only kinds with audio accept them
 AUDIO_SKIPS = ("no_microphone", "no_audio")
 AUDIO_KINDS = frozenset({"listen_choose", "dictation", "shadow"})
+# steps with nothing to answer: closed with done (or any skip), never graded, never a point or a mistake
+UNGRADED = frozenset({"intro"}) | activities.PASSAGE_KINDS
 # a first outcome that counts as right the first time: shadowing is heard, never "correct"
 FIRST_TRY_RIGHT = ("correct", "heard")
 # a session plans speech only while this many audio seconds of the allowance are left (a cached sound is free,
@@ -81,13 +87,38 @@ def _audio_left(session: Session, settings: Settings, learner_id: uuid.UUID) -> 
     return min(counters["daily"]["remaining"], counters["total"]["remaining"])
 
 
+# CreateBody fields added after the first sessions: left out of the fingerprint at their defaults, so a request
+# id sent before they existed keeps its fingerprint
+_ADDED_FIELDS = {"topic_id": None, "skill": None, "retry": False}
+
+
+def _params(body: CreateBody) -> dict[str, Any]:
+    defaults = {name for name, default in _ADDED_FIELDS.items() if getattr(body, name) == default}
+    return body.model_dump(exclude={"request_id", *defaults})
+
+
+def _to_retry(session: Session, learner_id: uuid.UUID, body: CreateBody, stage_id: str) -> set[str]:
+    """The questions the last finished session on this activity did not get right the first time (wrong,
+    skipped or never tried); a retry session asks only those."""
+    last = session.scalar(select(ExerciseSession).where(
+        ExerciseSession.learner_id == learner_id, ExerciseSession.status == "finished",
+        ExerciseSession.source == body.source, ExerciseSession.stage_id == stage_id,
+        ExerciseSession.topic_id == (body.topic_id or ""), ExerciseSession.skill == body.skill,
+    ).order_by(ExerciseSession.finished_at.desc()).limit(1))
+    missed = {item.key["question"] for item in (items(session, last) if last else [])
+              if item.key.get("authored") and item.first_outcome not in FIRST_TRY_RIGHT}
+    if not missed:
+        raise ExerciseError("there is no missed question to practise again", 409, code="nothing_to_retry")
+    return missed
+
+
 def create(session: Session, settings: Settings, learner: Learner, body: CreateBody) -> tuple[ExerciseSession, str]:
     """The session for this request id and how it was found: "replayed" (the same request again), "resumed" (an
     open one of the same kind) or "created"."""
     # Serialize starts for this learner, including when there is no session row to lock yet. FOR NO KEY UPDATE
     # does not block the key-share locks that foreign-key checks of a concurrent answer take on this row.
     session.execute(select(Learner.id).where(Learner.id == learner.id).with_for_update(key_share=True)).one()
-    params = body.model_dump(exclude={"request_id"})
+    params = _params(body)
     signature = fingerprint(params)
     existing = session.scalar(select(ExerciseSession).where(ExerciseSession.learner_id == learner.id,
                                                             ExerciseSession.request_id == body.request_id))
@@ -95,35 +126,65 @@ def create(session: Session, settings: Settings, learner: Learner, body: CreateB
         if existing.params.get("fingerprint") != signature:
             raise ExerciseError("this request id already started a different session", 409)
         return existing, "replayed"
-    stage_id = body.stage_id or profiles.ensure(session, learner).stage_id
+    if body.topic_id is not None:
+        stage_id = body.stage_id or activities.stage_of(body.topic_id)
+        if activities.stage_of(body.topic_id) != stage_id:
+            raise ExerciseError("practice topic not found", 404)
+    else:
+        stage_id = body.stage_id or profiles.ensure(session, learner).stage_id
     if stage_id not in STAGE_IDS:
         raise ExerciseError("learning stage not found", 404)
-    pool = pool_for(stage_id)
-    if not pool.variety.enabled:
-        raise ExerciseError("there is not enough practice material at this stage yet", 409, code="not_ready")
-    if body.library_topic is not None and body.library_topic not in pool.by_topic:
-        raise ExerciseError("library topic not found", 404)
+    activity = activities.activity_for(stage_id, topic_id=body.topic_id, skill=body.skill) if body.skill else None
+    receptive = activity is not None and activity.skill in activities.RECEPTIVE
+    pool = None
+    if not receptive:  # authored comprehension needs no word pool: the library's gate is not its gate
+        pool = pool_for(stage_id)
+        if not pool.variety.enabled:
+            raise ExerciseError("there is not enough practice material at this stage yet", 409, code="not_ready")
+        if body.library_topic is not None and body.library_topic not in pool.by_topic:
+            raise ExerciseError("library topic not found", 404)
     now = utcnow()
     for row in session.scalars(select(ExerciseSession).where(
             ExerciseSession.learner_id == learner.id, ExerciseSession.status == "active",
             ExerciseSession.source == body.source, ExerciseSession.stage_id == stage_id,
-            ExerciseSession.focus == body.focus).order_by(ExerciseSession.created_at.desc())):
-        if row.params.get("library_topic") != body.library_topic or row.params.get("kinds") != body.kinds:
-            continue  # another topic, or kinds this client may not show
+            ExerciseSession.focus == body.focus, ExerciseSession.topic_id == (body.topic_id or ""),
+            ExerciseSession.skill == (body.skill or "")).order_by(ExerciseSession.created_at.desc())):
+        if (row.params.get("library_topic") != body.library_topic or row.params.get("kinds") != body.kinds
+                or row.params.get("retry", False) != body.retry):
+            continue  # another library topic, kinds this client may not show, or a retry and a full session
         if not body.fresh and row.created_at >= now - timedelta(hours=RESUME_HOURS):
             return row, "resumed"
         row.status, row.updated_at = "abandoned", now
     seed = seed_for(learner.id, body.request_id)
-    drafts = plan(pool, random.Random(seed), size=body.size or SIZES[body.source],
-                  met=mistakes.met_words(session, learner.id), last_seen=mistakes.last_practised(session, learner.id),
-                  library_topic=body.library_topic, typing=body.source != "while_you_wait",
-                  audio=_audio_left(session, settings, learner.id) >= AUDIO_MIN_SECONDS,
-                  kinds=frozenset(body.kinds) if body.kinds else None)
-    if not any(draft.kind != "intro" for draft in drafts):
+    rng = random.Random(seed)
+    if activity is not None and receptive:
+        drafts = activities.comprehension(activity, rng,
+                                          only=_to_retry(session, learner.id, body, stage_id) if body.retry else None)
+        content_version = activity.content_version
+    else:
+        assert pool is not None
+        kinds = frozenset(body.kinds) if body.kinds else None
+        if activity is not None and activity.topic is not None:
+            # a warm-up on the topic's own words; a Story Time paragraph to order would be about something else
+            content_version = activity.content_version
+            drafts = plan(pool, rng, size=activities.WARM_UP_SIZE, met=mistakes.met_words(session, learner.id),
+                          last_seen=mistakes.last_practised(session, learner.id),
+                          audio=_audio_left(session, settings, learner.id) >= AUDIO_MIN_SECONDS,
+                          kinds=(kinds or frozenset(get_args(GradedKind))) - {"sentence_order"},
+                          only=frozenset(activity.topic.vocabulary_ids))
+        else:
+            content_version = pool.content_version
+            drafts = plan(pool, rng, size=body.size or SIZES[body.source],
+                          met=mistakes.met_words(session, learner.id),
+                          last_seen=mistakes.last_practised(session, learner.id),
+                          library_topic=body.library_topic, typing=body.source != "while_you_wait",
+                          audio=_audio_left(session, settings, learner.id) >= AUDIO_MIN_SECONDS, kinds=kinds)
+    if not any(draft.kind not in UNGRADED for draft in drafts):
         raise ExerciseError("there is nothing to practise here yet", 409, code="not_ready")
     row = ExerciseSession(learner_id=learner.id, request_id=body.request_id, source=body.source, stage_id=stage_id,
-                          focus=body.focus, seed=seed, generator_version=GENERATOR_VERSION,
-                          content_version=pool.content_version, params={**params, "fingerprint": signature},
+                          topic_id=body.topic_id or "", skill=body.skill or "", focus=body.focus, seed=seed,
+                          generator_version=GENERATOR_VERSION, content_version=content_version,
+                          params={**params, "fingerprint": signature},
                           status="active", item_count=len(drafts), created_at=now, updated_at=now)
     session.add(row)
     session.flush()
@@ -156,7 +217,7 @@ def items(session: Session, row: ExerciseSession) -> list[ExerciseItem]:
 def _attempts_left(item: ExerciseItem) -> int:
     if item.closed:
         return 0
-    return 1 if item.kind == "intro" else MAX_ATTEMPTS - len(item.attempts)
+    return 1 if item.kind in UNGRADED else MAX_ATTEMPTS - len(item.attempts)
 
 
 def _solved(item: ExerciseItem, name: str, pieces: list[dict[str, Any]]) -> bool:
@@ -170,9 +231,14 @@ def _solved(item: ExerciseItem, name: str, pieces: list[dict[str, Any]]) -> bool
     return False
 
 
-def _prompt(row: ExerciseSession, item: ExerciseItem) -> dict[str, Any]:
-    """An item asked again has its options, pieces or sentences in a new order, never one that reads solved."""
+def _prompt(row: ExerciseSession, item: ExerciseItem, *, reveal: bool = False) -> dict[str, Any]:
+    """An item asked again has its options, pieces or sentences in a new order, never one that reads solved. A
+    passage shows its translation, or its transcript, once `reveal` says its questions are answered."""
     prompt = dict(item.prompt)
+    if item.kind in activities.PASSAGE_KINDS:
+        if reveal:
+            prompt["text" if item.kind == "read_passage" else "transcript"] = item.key["reveal"]
+        return prompt
     if not item.attempts or item.closed:
         return prompt
     rng = random.Random(f"{row.seed}:{item.position}:{len(item.attempts) + 1}")
@@ -198,31 +264,40 @@ def _queue(rows: list[ExerciseItem]) -> list[ExerciseItem]:
 
 
 def progress(rows: list[ExerciseItem]) -> dict[str, int]:
-    graded = [item for item in rows if item.kind != "intro"]
+    graded = [item for item in rows if item.kind not in UNGRADED]
     return {"closed": sum(item.closed for item in graded), "total": len(graded),
             "queued": sum(1 for item in graded if _retried_later(item))}
 
 
-def item_view(row: ExerciseSession, item: ExerciseItem) -> dict[str, Any]:
+def item_view(row: ExerciseSession, item: ExerciseItem, *, reveal: bool = False) -> dict[str, Any]:
     return {"id": item.id, "position": item.position, "kind": item.kind, "skill": item.skill,
             "state": "closed" if item.closed else "open", "attempts_left": _attempts_left(item),
-            "prompt": _prompt(row, item),
+            "prompt": _prompt(row, item, reveal=reveal),
             "feedback": item.attempts[-1]["response"]["feedback"] if item.closed and item.attempts else None}
+
+
+def _revealed(row: ExerciseSession, rows: list[ExerciseItem]) -> bool:
+    """A passage's translation or transcript is shown once every question about it is closed, or the session
+    has ended."""
+    return row.status != "active" or all(item.closed for item in rows if item.key.get("authored"))
 
 
 def session_view(row: ExerciseSession, rows: list[ExerciseItem], *, resumed: bool = False) -> dict[str, Any]:
     queue = _queue(rows) if row.status == "active" else []
+    reveal = _revealed(row, rows)
     return {"id": row.id, "source": row.source, "stage_id": row.stage_id, "focus": row.focus,
-            "library_topic": row.params.get("library_topic"), "status": row.status, "resumed": resumed,
-            "items": [item_view(row, item) for item in rows], "next_item_id": queue[0].id if queue else None,
-            "progress": progress(rows), "summary": row.summary or None}
+            "library_topic": row.params.get("library_topic"), "topic_id": row.topic_id or None,
+            "skill": row.skill or None, "retry": bool(row.params.get("retry")), "status": row.status,
+            "resumed": resumed, "items": [item_view(row, item, reveal=reveal) for item in rows],
+            "next_item_id": queue[0].id if queue else None, "progress": progress(rows),
+            "summary": row.summary or None}
 
 
 # --- answering ---------------------------------------------------------------------------------------------
 
 def _feedback(item: ExerciseItem, outcome: str, judged: graders.Judgement | None) -> dict[str, Any]:
     """What the answer may now reveal: the key's answer, glosses, word cards and the grader's verdict."""
-    if item.kind == "intro":
+    if item.kind in UNGRADED:
         return {"outcome": outcome}
     key = item.key
     feedback: dict[str, Any] = {
@@ -322,16 +397,16 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
         raise ExerciseError("this exercise session is already finished", 409, code="session_closed")
     if item.closed:
         raise ExerciseError("this item is already answered", 409, code="already_answered")
-    if skip in AUDIO_SKIPS and item.kind not in AUDIO_KINDS:
+    if skip in AUDIO_SKIPS and item.kind not in AUDIO_KINDS | {"listen_passage"}:
         raise ExerciseError("this item has no audio to skip for", 422)
     if item.kind == "shadow" and skip is None:
         raise ExerciseError("a shadowing item is answered with a recording", 422)
     judged: graders.Judgement | None = None
     if skip is not None:
-        outcome = "done" if item.kind == "intro" else "skipped"
-    elif item.kind == "intro":
+        outcome = "done" if item.kind in UNGRADED else "skipped"
+    elif item.kind in UNGRADED:
         if not given.get("done"):
-            raise ExerciseError("an intro card is closed with done", 422)
+            raise ExerciseError("this step is closed with done", 422)
         outcome = "done"
     else:
         try:
@@ -348,7 +423,7 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
         if outcome in ("incorrect", "skipped") and skip in (None, "unknown"):
             _record_mistakes(session, row, item, judged=judged, outcome=outcome, request_id=request_id)
     award = None
-    if item.kind != "intro" and outcome != "skipped" and not _answered(item):
+    if item.kind not in UNGRADED and outcome != "skipped" and not _answered(item):
         # the first real answer earns the item's point, right or wrong
         award = record_activity(session, learner_id, kind="exercise_item", ref=str(item.id), request_id=request_id,
                                 meta={"kind": item.kind, "session": str(row.id)})
@@ -566,7 +641,7 @@ def _expected(item: ExerciseItem) -> str | None:
 
 
 def _summary(rows: list[ExerciseItem], bonus: int) -> dict[str, Any]:
-    graded = [item for item in rows if item.kind != "intro"]
+    graded = [item for item in rows if item.kind not in UNGRADED]
     by_kind: dict[str, dict[str, int]] = {}
     for item in graded:
         counts = by_kind.setdefault(item.kind, {"total": 0, "first_try_correct": 0})
@@ -618,7 +693,7 @@ def finish(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, *, re
     if row.status != "active":
         raise ExerciseError("this exercise session was left unfinished", 409, code="session_closed")
     rows = items(session, row)
-    graded = [item for item in rows if item.kind != "intro"]
+    graded = [item for item in rows if item.kind not in UNGRADED]
     if not early and any(not item.closed for item in graded):
         raise ExerciseError("answer or skip every item first, or finish early", 409)
     bonus = None
@@ -639,11 +714,53 @@ def finish(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, *, re
             offered += [(item.key["words"][part], item.key["cards"][part]) for part, result in pairs.items()
                         if not result["ok"]]
     summary["suggestions"] = mistakes.suggest_words(session, learner_id, offered)
+    completion = _completion(session, row, rows)
+    if completion is not None:
+        summary["completion"] = completion
     now = utcnow()
     row.summary, row.status, row.finished_at, row.updated_at = summary, "finished", now, now
     session.flush()
     return {"id": row.id, "status": "finished", "summary": summary, "points": bonus.points if bonus else 0,
             **reached(bonus)}
+
+
+def _first_choice(item: ExerciseItem) -> int | None:
+    """The authored option first chosen for a question (its place in the authored list); None for a skip."""
+    first = item.attempts[0]
+    option = None if first.get("skip") else first.get("answer", {}).get("option")
+    return item.key["positions"].get(option) if option else None
+
+
+def _completion(session: Session, row: ExerciseSession, rows: list[ExerciseItem]) -> dict[str, Any] | None:
+    """What a topic or lesson session does for its activity (activities.py): the first answers to all of its
+    questions count; a retry, a question never tried, a warm-up or content changed since the start do not."""
+    if not row.skill:
+        return None
+    questions = [item for item in rows if item.key.get("authored")]
+    base = {"scope": "topic" if row.topic_id else "lesson", "skill": row.skill, "topic_id": row.topic_id or None,
+            "to_retry": sum(1 for item in questions if item.first_outcome not in FIRST_TRY_RIGHT)}
+    reason = None
+    activity = None
+    if row.skill not in activities.RECEPTIVE:
+        reason = "open_task"
+    elif row.params.get("retry"):
+        reason = "retry"
+    elif not questions or any(not item.attempts for item in questions):
+        reason = "unfinished"
+    else:
+        try:
+            activity = activities.activity_for(row.stage_id, topic_id=row.topic_id or None, skill=row.skill)
+        except activities.ActivityNotFound:
+            activity = None
+        if activity is None or activity.content_version != row.content_version:
+            reason = "content_changed"
+    if reason is not None or activity is None:
+        return {**base, "counted": False, "reason": reason,
+                "completed": activities.stored_completion(session, learner_id=row.learner_id, stage_id=row.stage_id,
+                                                          topic_id=row.topic_id, skill=row.skill)}
+    chosen = {item.key["question"]: _first_choice(item) for item in questions}
+    return {**base, **activities.record_result(session, learner_id=row.learner_id, session_id=row.id,
+                                               activity=activity, chosen=chosen)}
 
 
 # --- export ------------------------------------------------------------------------------------------------

@@ -163,6 +163,31 @@ def test_topic_api_auth_bounds_and_read_only_browsing(client, headers, bank):
         assert session.scalar(select(func.count()).select_from(CurriculumPractice)) == 0
 
 
+def test_a_topic_met_at_an_earlier_stage_names_where(client, headers):
+    """Reused topics (the same situation at the same place in an earlier stage's bank) are labelled as review
+    of the earliest stage they appeared at; the field leaks no key."""
+    listing = client.get("/curriculum/a1/topics", params={"skill": "reading"}, headers=headers).json()
+    assert listing["items"][0]["review_of"] == {"stage_id": "pre-a1", "topic_id": "pre-a1-t001"}
+    detail = client.get("/curriculum/b1/topics/b1-t001", params={"skill": "listening"}, headers=headers)
+    assert detail.json()["review_of"] == {"stage_id": "a2", "topic_id": "a2-t001"}
+    assert "answer_index" not in detail.text and "explanation" not in detail.text
+    writing = client.get("/curriculum/c2/topics/c2-t050", params={"skill": "writing"}, headers=headers)
+    assert writing.json()["review_of"] == {"stage_id": "c1", "topic_id": "c1-t050"}
+    assert "answer_index" not in writing.text and "explanation" not in writing.text
+    # the first stage of each group of three reuses nothing
+    for stage_id in ("pre-a1", "a2", "pre-b2", "c1"):
+        page = client.get(f"/curriculum/{stage_id}/topics", params={"skill": "writing"}, headers=headers).json()
+        assert all(item["review_of"] is None for item in page["items"])
+    # measured: each later stage of a group repeats every topic of the group's first stage, in place
+    expected = {"a1": "pre-a1", "pre-a2": "pre-a1", "pre-b1": "a2", "b1": "a2", "b2": "pre-b2", "pre-c1": "pre-b2",
+                "pre-c2": "c1", "c2": "c1"}
+    for stage_id in STAGE_IDS:
+        reviews = topics.review_of(topics.topics_for(stage_id))
+        assert {entry["stage_id"] for entry in reviews.values()} == ({expected[stage_id]} if stage_id in expected
+                                                                     else set())
+        assert len(reviews) in (0, len(topics.topics_for(stage_id).topics))
+
+
 def submit_reading(client, headers, topic, *, skill="reading", correct=True):
     questions = getattr(topic, skill).questions
     response = answers(questions) if correct else {q.id: (q.answer_index + 1) % len(q.options) for q in questions}

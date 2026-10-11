@@ -31,6 +31,15 @@ on the submitted answers; productive completion records a substantive attempt an
 successful practice attempt does not award a final-test pass. The latest answer and previous
 completion are distinct: a later retry does not erase an earlier completion.
 
+A topic's reading or listening can also run as a practice session (roadmap 3.8; the web moves to it in
+3.9): the passage first, then the same authored questions one at a time with instant feedback. Only the
+first answer to each question counts, through the same 75 % rule, when the session ends; a question
+answered wrong and then right on its second try does not count as right, a question skipped the first time
+counts as wrong, and a session ended before every question was tried records nothing. A short retry
+session asks only the missed questions again and completes nothing. Speaking and writing sessions are
+warm-ups on the topic's words; their completion still comes from the open task. A topic that repeats a
+situation from an earlier stage names it (`review_of`).
+
 Topic practice can fulfil the existing stage-level practice prerequisite. Completing all 100 topics
 is not required to attempt a final check. Opening a topic, replaying audio or revealing a transcript
 does not mark the topic complete. All stages remain accessible to admitted learners.

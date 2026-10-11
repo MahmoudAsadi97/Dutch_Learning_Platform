@@ -280,4 +280,11 @@ def test_authored_questions_keep_their_options_shuffled_under_opaque_ids():
         positions.add(options.index(answer))
         assert "Ze woont" not in json.dumps(draft.prompt, ensure_ascii=False)
         assert draft.key["explanation"]["nl"] == "Ze woont in Brussel." and draft.key["authored"]
+        # each option's place in the authored list stays in the key, so a first answer can be checked by the
+        # course's own rule; the ref names the question unless the caller qualifies it (a lesson's ids repeat)
+        assert draft.key["question"] == "a1-t001-r1" and draft.ref == "question:a1-t001-r1"
+        assert draft.key["positions"][draft.key["answer"]] == question.answer_index
+        assert sorted(draft.key["positions"].values()) == [0, 1]
     assert positions == {0, 1}
+    lesson = generators.authored_choice(question, random.Random(0), skill="reading", ref="question:a1:r1")
+    assert lesson.ref == "question:a1:r1"

@@ -27,7 +27,7 @@ class ExerciseSession(Base):
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=new_id)
     learner_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("learners.id", ondelete="CASCADE"), nullable=False)
     request_id: Mapped[str] = mapped_column(String(80), nullable=False)
-    source: Mapped[str] = mapped_column(String(20), nullable=False)  # stage_skill | while_you_wait (more later)
+    source: Mapped[str] = mapped_column(String(20), nullable=False)  # stage_skill | while_you_wait | topic
     stage_id: Mapped[str] = mapped_column(String(20), nullable=False)
     topic_id: Mapped[str] = mapped_column(String(60), nullable=False, default="", server_default="")
     skill: Mapped[str] = mapped_column(String(20), nullable=False, default="", server_default="")

@@ -35,7 +35,7 @@ from dlp.domains.exercises.compare import fold
 from dlp.domains.exercises.generators import Draft
 from dlp.domains.exercises.pool import Pool, Word, gives_away, word_pattern
 
-SIZES = {"stage_skill": 8, "while_you_wait": 5}
+SIZES = {"stage_skill": 8, "while_you_wait": 5}  # a topic or lesson session has its own length (activities.py)
 SIZE_MIN, SIZE_MAX = 5, 12
 NEW_WORDS = 4
 NEW_WORDS_FIRST = 6
@@ -224,12 +224,15 @@ def _shown_elsewhere(dictation: Draft, drafts: list[Draft]) -> bool:
 
 def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
          last_seen: dict[str, datetime] | None = None, library_topic: str | None = None,
-         typing: bool = True, audio: bool = False, kinds: frozenset[str] | None = None) -> list[Draft]:
+         typing: bool = True, audio: bool = False, kinds: frozenset[str] | None = None,
+         only: frozenset[str] | None = None) -> list[Draft]:
     """The session's drafts in order: the intro card (when there are new words), then the graded items.
     `typing` False leaves out the kinds answered by typing or speaking (a while-you-wait session is tapped
-    only); `audio` adds the kinds with speech; `kinds`, when given, keeps only those kinds (with choice)."""
+    only); `audio` adds the kinds with speech; `kinds`, when given, keeps only those kinds (with choice);
+    `only`, when given, practises only those library words (a practice topic's own words)."""
     last_seen = last_seen or {}
-    candidates = [w for w in (pool.by_topic[library_topic] if library_topic else pool.words) if w.id in pool.choice]
+    candidates = [w for w in (pool.by_topic[library_topic] if library_topic else pool.words)
+                  if w.id in pool.choice and (only is None or w.id in only)]
     new = [w for w in candidates if w.key not in met]
     review = sorted((w for w in candidates if w.key in met), key=lambda w: (last_seen.get(w.key, _NEVER), w.order))
     taken: set[str] = set()

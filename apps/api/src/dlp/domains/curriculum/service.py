@@ -277,15 +277,16 @@ def save_practice(session: Session, settings: Settings, providers: Providers, *,
 
 
 def _persist_core_practice(session: Session, *, learner_id: uuid.UUID, stage_id: str, skill: str, completed: bool,
-                           evidence: dict) -> None:
-    """Record a core-lesson practice attempt for one skill; completion is sticky once reached."""
+                           evidence: dict) -> bool:
+    """Record a core-lesson practice attempt for one skill; completion is sticky once reached. Returns whether
+    the stage skill counts as completed (an exercise session shows it; the classic form reports its own attempt)."""
     statement = insert(CurriculumPractice).values(
         id=uuid.uuid4(), learner_id=learner_id, stage_id=stage_id, skill=skill,
         completed=completed, evidence=evidence, updated_at=utcnow(),
     ).on_conflict_do_update(index_elements=["learner_id", "stage_id", "skill"], set_={
         "completed": CurriculumPractice.completed | completed, "evidence": evidence, "updated_at": utcnow(),
-    })
-    session.execute(statement)
+    }).returning(CurriculumPractice.completed)
+    return bool(session.execute(statement).scalar_one())
 
 
 def public_test(test: Test) -> dict:

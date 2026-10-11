@@ -114,19 +114,21 @@ def word_choice(pool: Pool, word: Word, rng: random.Random, direction: str) -> D
                  key={"answer": answer, "support": support, "word": word_card(word), **_option_words(ids, words)})
 
 
-def authored_choice(question: Question, rng: random.Random, *, skill: str) -> Draft:
+def authored_choice(question: Question, rng: random.Random, *, skill: str, ref: str | None = None) -> Draft:
     """An authored comprehension question keeps its options, shuffled under opaque ids; their glosses and the
-    explanation stay in the key until it is answered."""
+    explanation stay in the key until it is answered. The key also keeps the question's id and each option's
+    place in the authored list (`positions`), so a first answer can be checked by the course's own rule."""
     order = list(range(len(question.options)))
     rng.shuffle(order)
     ids = option_ids(rng, len(order))
     options = [{"id": i, "nl": question.options[o].nl} for i, o in zip(ids, order, strict=True)]
     support = [{"id": i, **question.options[o].model_dump()} for i, o in zip(ids, order, strict=True)]
-    return Draft(kind="choice", ref=f"question:{question.id}", skill=skill,
+    return Draft(kind="choice", ref=ref or f"question:{question.id}", skill=skill,
                  prompt={"kind": "choice", "direction": "question", "stem": question.prompt.model_dump(),
                          "options": options},
                  key={"answer": ids[order.index(question.answer_index)], "support": support,
-                      "explanation": question.explanation.model_dump(), "authored": True})
+                      "explanation": question.explanation.model_dump(), "authored": True,
+                      "question": question.id, "positions": dict(zip(ids, order, strict=True))})
 
 
 def cloze_choice(pool: Pool, word: Word, rng: random.Random) -> Draft | None:

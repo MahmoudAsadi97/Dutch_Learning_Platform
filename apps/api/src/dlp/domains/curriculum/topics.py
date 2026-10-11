@@ -139,6 +139,20 @@ def topic_for(bank: TopicBank, topic_id: str) -> PracticeTopic:
     return topic
 
 
+def review_of(bank: TopicBank) -> dict[str, dict[str, str]]:
+    """Topics met before: the same situation (title) at the same place in an earlier stage's bank, named after the
+    earliest such stage (shown as "Herhaling van pre-A1"). Worked out when a page is built, never stored on the
+    topic, whose hash versions the learner's results and the content reviews."""
+    found: dict[str, dict[str, str]] = {}
+    for stage_id in STAGE_IDS[:STAGE_IDS.index(bank.stage_id)]:
+        earlier = topics_for(stage_id).topics
+        for index, topic in enumerate(bank.topics):
+            if (topic.id not in found and index < len(earlier)
+                    and normalise(earlier[index].title.nl) == normalise(topic.title.nl)):
+                found[topic.id] = {"stage_id": stage_id, "topic_id": earlier[index].id}
+    return found
+
+
 def _progress(session: Session, learner_id: uuid.UUID, stage_id: str, skill: Skill) -> dict[str, TopicPractice]:
     return {item.topic_id: item for item in session.scalars(select(TopicPractice).where(
         TopicPractice.learner_id == learner_id, TopicPractice.stage_id == stage_id, TopicPractice.skill == skill,
@@ -160,13 +174,15 @@ def topic_page(session: Session, learner_id: uuid.UUID, bank: TopicBank, *, skil
                  for lang in ("nl", "en", "fa")]
         return not query or normalise(query) in normalise(" ".join(terms))
     selected = [topic for topic in bank.topics if matches(topic)]
+    reviews = review_of(bank)
     return {
         "stage_id": bank.stage_id, "skill": skill, "total": len(selected), "total_topics": len(bank.topics),
         "offset": offset, "limit": limit, "completed_count": sum(bool(saved.get(t.id) and saved[t.id].completed)
                                                                    for t in bank.topics),
         "categories": [labels[key] for key in sorted(labels)], "learner_key": str(learner_id),
         "items": [{"id": topic.id, "title": topic.title.model_dump(), "category": topic.category.model_dump(),
-                   "completed": bool(saved.get(topic.id) and saved[topic.id].completed), "attempted": topic.id in saved}
+                   "completed": bool(saved.get(topic.id) and saved[topic.id].completed), "attempted": topic.id in saved,
+                   "review_of": reviews.get(topic.id)}
                   for topic in selected[offset:offset + limit]],
     }
 
@@ -192,6 +208,7 @@ def topic_detail(session: Session, learner_id: uuid.UUID, bank: TopicBank, topic
            if skill in ("speaking", "writing") else {}),
         "progress": {"completed": bool(saved and saved.completed), "attempted": saved is not None},
         "policy": {"recording_max_seconds": min(60, recording_max_seconds)},
+        "review_of": review_of(bank).get(topic.id),
     }
 
 
@@ -200,7 +217,7 @@ def _persist_topic_result(session: Session, *, learner_id: uuid.UUID, bank: Topi
     """Record one topic attempt: the sticky per-topic completion and the per-skill aggregate.
 
     Returns the content version and whether the topic counts as completed (once completed, always). Shared by
-    the classic practice form and, later, by exercise sessions that end on the same authored questions."""
+    the classic practice form and by exercise sessions that end on the same authored questions (activities.py)."""
     version = hashlib.sha256(topic.model_dump_json().encode()).hexdigest()
     statement = insert(TopicPractice).values(
         id=uuid.uuid4(), learner_id=learner_id, stage_id=bank.stage_id, topic_id=topic.id, skill=skill,

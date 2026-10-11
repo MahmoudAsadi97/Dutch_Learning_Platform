@@ -348,3 +348,22 @@ recognised word counts as heard (no threshold, as for reading aloud), heard spee
 which speech was recognised, so a take not heard may be tried once more at once, and the second take closes
 the item. The recording is not kept. The lesson, topic and
 final-check listening parts are course text too and come from the same cache.
+
+## D-31 · Topic and lesson sessions keep the course's completion rule — 2026-10-11
+
+A topic's or the stage lesson's reading and listening run as exercise sessions (step 3.8) without changing
+what completes them (CURRICULUM, TOPIC_PRACTICE): only the first answer to each authored question counts, at
+finish, through the same `objective_result` (75 %, so both of a topic's two questions and all three of a
+lesson's). The engine shows each answer at once and asks a miss again, so a miss put right on its second try
+is practice, not a pass; a question skipped the first time counts as answered wrong; a session ended with a
+question never tried records nothing (the classic form cannot be sent half-filled either). Completion is
+sticky as before, a topic session records the same practice observation as the classic form (one per
+session), and a lesson records none, as before. A retry session on the missed questions alone completes
+nothing: a subset would loosen the 75 % rule; a full session again may. Content changed between start and
+finish counts for nothing, rather than checking old answers against new questions. Speaking and writing
+sessions are warm-ups on the topic's words: completion still comes from the open task and its feedback, and
+typed input is never tagged as speaking. The passage's translation, or the listening transcript, joins it
+once every question is answered (the browser could read the translation from the topic page before; the
+session keeps the order read, answer, then check). Authored questions earn the engine's point per first
+answer like every item (D-28); step 4.2 decides topic points and must not pay these twice. Final-check
+content is never a source: a lesson session reads `stage.lesson` only.
