@@ -189,7 +189,18 @@ test("a mocked session runs by keyboard, in focus mode, accessible at every widt
   await expect(page.locator(".app-frame.is-bare")).toBeVisible();
   await expect(page.locator(".app-sidebar")).toHaveCount(0);
   await expect(page.getByRole("navigation", { name: /hoofdmenu/i })).toHaveCount(0);
-  expect(posts[0].body).toMatchObject({ kinds: ["choice", "cloze_choice", "odd_one_out"], focus: "words" });
+  expect(posts[0].body).toMatchObject({
+    kinds: [
+      "choice",
+      "cloze_choice",
+      "odd_one_out",
+      "match_pairs",
+      "de_het",
+      "sentence_builder",
+      "sentence_order",
+    ],
+    focus: "words",
+  });
 
   await expect(page.getByRole("heading", { name: "Nieuwe woorden" })).toBeFocused();
   await checkWidths(page, testInfo, "intro");
@@ -238,6 +249,192 @@ test("a mocked session runs by keyboard, in focus mode, accessible at every widt
   await checkWidths(page, testInfo, "summary");
 });
 
+function boardSession() {
+  const view = sessionView();
+  const board = (id: string, position: number, kind: string, prompt: Record<string, unknown>) => ({
+    id,
+    position,
+    kind,
+    skill: "vocabulary",
+    state: "open",
+    attempts_left: 2,
+    prompt: { kind, ...prompt },
+    feedback: null,
+  });
+  return {
+    ...view,
+    id: "mock-boards",
+    items: [
+      board("pairs", 0, "match_pairs", {
+        left: [
+          { id: "l1", nl: "de deur" },
+          { id: "l2", nl: "het raam" },
+        ],
+        right: [
+          { id: "r1", en: "the window", fa: "پنجره" },
+          { id: "r2", en: "the door", fa: "در" },
+        ],
+      }),
+      board("bins", 1, "de_het", {
+        bins: ["de", "het"],
+        options: [
+          { id: "n1", nl: "huis" },
+          { id: "n2", nl: "tafel" },
+        ],
+      }),
+      board("tiles", 2, "sentence_builder", {
+        tiles: [
+          { id: "t2", nl: "woon" },
+          { id: "t1", nl: "ik" },
+          { id: "t3", nl: "in Gent" },
+        ],
+        end: ".",
+        cue: { en: "I live in Ghent.", fa: "من در گنت زندگی می‌کنم." },
+      }),
+      board("order", 3, "sentence_order", {
+        sentences: [
+          { id: "s2", nl: "Dan eet ik een boterham." },
+          { id: "s1", nl: "Ik sta om zeven uur op." },
+        ],
+      }),
+    ],
+    next_item_id: "pairs",
+    progress: { closed: 0, total: 4, queued: 0 },
+  };
+}
+
+const BOARD_FEEDBACK: Record<string, Record<string, unknown>> = {
+  pairs: {
+    pairs: {
+      l1: { given: "r2", correct: "r2", ok: true },
+      l2: { given: "r1", correct: "r1", ok: true },
+    },
+  },
+  bins: {
+    bins: {
+      n1: { given: "de", correct: "het", ok: false },
+      n2: { given: "de", correct: "de", ok: true },
+    },
+    cards: { n1: { ...card, term: "het huis" }, n2: { ...card, term: "de tafel" } },
+  },
+  tiles: { order: ["t1", "t2", "t3"], given_order: ["t1", "t2", "t3"], first_difference: null },
+  order: {
+    order: ["s1", "s2"],
+    given_order: ["s1", "s2"],
+    translation: { en: ["I get up at seven.", "Then I eat a sandwich."] },
+  },
+};
+
+test("the boards are played by keyboard and answered whole, accessible at every width", async ({
+  page,
+}, testInfo) => {
+  const answers: Record<string, unknown> = {};
+  let closed = 0;
+  await page.route(/\/api\/exercises\/sessions(\/|$)/, async (route: Route) => {
+    const url = route.request().url();
+    if (url.endsWith("/api/exercises/sessions")) return route.fulfill({ status: 201, json: boardSession() });
+    const itemId = url.split("/items/")[1]?.split("/")[0] ?? "";
+    if (url.endsWith("/finish"))
+      return route.fulfill({
+        json: {
+          id: "mock-boards",
+          status: "finished",
+          points: 0,
+          summary: {
+            items_total: 4,
+            answered: 4,
+            first_try_correct: 3,
+            fixed_on_retry: 0,
+            skipped: 0,
+            overridden: 0,
+            points_earned: 4,
+            session_bonus: 0,
+            by_kind: {},
+            missed: [],
+            suggestions: [],
+          },
+        },
+      });
+    answers[itemId] = route.request().postDataJSON().answer;
+    closed += 1;
+    const order = ["pairs", "bins", "tiles", "order"];
+    const outcome = itemId === "bins" ? "incorrect" : "correct";
+    return route.fulfill({
+      json: {
+        item_id: itemId,
+        attempt: 1,
+        outcome,
+        closed: true,
+        requeue: false,
+        attempts_left: 0,
+        feedback: { outcome, ...BOARD_FEEDBACK[itemId] },
+        points: 1,
+        progress: { closed, total: 4, queued: 0 },
+        next_item_id: order[order.indexOf(itemId) + 1] ?? null,
+      },
+    });
+  });
+  await page.goto("/oefenen");
+  const check = page.getByRole("button", { name: "Controleer" });
+  const next = page.getByRole("button", { name: "Verder" });
+
+  // match pairs: choose a word, then its meaning; checking too early asks to finish first
+  await expect(page.getByRole("heading", { name: "Welke betekenis hoort bij welk woord?" })).toBeFocused();
+  await checkWidths(page, testInfo, "pairs");
+  await page.getByRole("button", { name: /^de deur/ }).press("Enter");
+  await page.getByRole("button", { name: /^the door/ }).press("Enter");
+  await check.click();
+  await expect(page.locator(".exercise-nudge")).toHaveText(/Maak eerst alles af./);
+  await page.getByRole("button", { name: /^het raam/ }).press("Enter");
+  await page.getByRole("button", { name: /^the window/ }).press("Enter");
+  await check.click();
+  await expect(next).toBeFocused();
+  expect(answers.pairs).toEqual({ pairs: { l1: "r2", l2: "r1" } });
+  await checkWidths(page, testInfo, "pairs-feedback");
+  await next.press("Enter");
+
+  // de or het: native radios
+  await expect(page.getByRole("heading", { name: "De of het?" })).toBeFocused();
+  await checkWidths(page, testInfo, "bins");
+  await page.getByRole("group", { name: "huis" }).getByRole("radio", { name: "de" }).check();
+  await page.getByRole("group", { name: "tafel" }).getByRole("radio", { name: "de" }).check();
+  await check.click();
+  await expect(page.getByText("het huis")).toBeVisible();
+  expect(answers.bins).toEqual({ bins: { n1: "de", n2: "de" } });
+  await checkWidths(page, testInfo, "bins-feedback");
+  await next.press("Enter");
+
+  // the sentence builder: the pieces by keyboard, focus staying among them
+  await expect(page.getByRole("heading", { name: "Maak de zin." })).toBeFocused();
+  await checkWidths(page, testInfo, "tiles");
+  const pieces = page.getByRole("group", { name: "Stukjes" });
+  await pieces.getByRole("button", { name: "ik" }).press("Enter");
+  await expect(pieces.getByRole("button", { name: "in Gent" })).toBeFocused();
+  await page.keyboard.press("Enter");
+  await page
+    .getByRole("group", { name: "Jouw zin" })
+    .getByRole("button", { name: "Leg in Gent terug" })
+    .press("Enter");
+  await pieces.getByRole("button", { name: "woon" }).press("Enter");
+  await pieces.getByRole("button", { name: "in Gent" }).press("Enter");
+  await check.click();
+  expect(answers.tiles).toEqual({ order: ["t1", "t2", "t3"] });
+  await checkWidths(page, testInfo, "tiles-feedback");
+  await next.press("Enter");
+
+  // putting sentences in order: up and down buttons
+  await expect(page.getByRole("heading", { name: "Zet de zinnen in de goede volgorde." })).toBeFocused();
+  await checkWidths(page, testInfo, "order");
+  await page.getByRole("button", { name: "Zet zin 1 lager" }).press("Enter");
+  await expect(page.getByRole("button", { name: "Zet zin 2 hoger" })).toBeFocused();
+  await check.click();
+  expect(answers.order).toEqual({ order: ["s1", "s2"] });
+  await expect(page.getByText("Then I eat a sandwich.")).toBeVisible();
+  await checkWidths(page, testInfo, "order-feedback");
+  await next.press("Enter");
+  await expect(page.getByRole("heading", { name: "Je oefening is klaar" })).toBeFocused();
+});
+
 test("Escape asks before stopping, closing gives focus back, and the session stays", async ({
   page,
 }, testInfo) => {
@@ -283,13 +480,17 @@ test("a real session runs through the proxy with quick answers", async ({ page }
       await next.click();
       await expect(next).toBeHidden();
     } else {
-      const first = page.getByRole("radio").first();
-      if (!(await first.isVisible())) {
+      const skip = page.getByRole("button", { name: "Ik weet het niet" });
+      if (!(await skip.isVisible())) {
         await page.waitForTimeout(100);
         continue;
       }
-      await first.check();
-      await page.getByRole("button", { name: "Controleer" }).click();
+      // an option is answered (and timed); a board is skipped, which this smoke does not time
+      const option = page.locator(".answer-option input").first();
+      if (await option.isVisible()) {
+        await option.check();
+        await page.getByRole("button", { name: "Controleer" }).click();
+      } else await skip.click();
       await expect(page.getByRole("button", { name: "Verder" })).toBeVisible();
     }
   }

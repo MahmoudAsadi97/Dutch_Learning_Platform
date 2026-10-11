@@ -191,7 +191,18 @@ describe("ExerciseSession", () => {
     render(<ExerciseSession source="stage_skill" />);
     const start = await screen.findByRole("button", { name: /Begin met oefenen/ });
     expect(client.create).toHaveBeenCalledWith(
-      expect.objectContaining({ source: "stage_skill", kinds: ["choice", "cloze_choice", "odd_one_out"] }),
+      expect.objectContaining({
+        source: "stage_skill",
+        kinds: [
+          "choice",
+          "cloze_choice",
+          "odd_one_out",
+          "match_pairs",
+          "de_het",
+          "sentence_builder",
+          "sentence_order",
+        ],
+      }),
       expect.any(String),
     );
     fireEvent.click(start);

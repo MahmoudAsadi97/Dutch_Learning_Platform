@@ -28,8 +28,21 @@ import {
   useToast,
 } from "@/components/ui";
 import { Illustration } from "@/components/illustrations";
+import { AnswerOption, type AnswerState } from "@/components/ui/AnswerOption";
+import { UiText } from "@/components/ui/UiText";
+import { exerciseCopy } from "@/lib/copy/exercise";
 import { ACCENTS } from "@/lib/design/identity";
 import { playTone, setTonesEnabled, useTonesEnabled } from "@/lib/client/tones";
+
+// every state an answer option can show, before and after the server's verdict (sample practice content)
+const ANSWER_STATES: { word: string; checked: boolean; verdict?: AnswerState }[] = [
+  { word: "de deur", checked: false },
+  { word: "het raam", checked: true },
+  { word: "de sleutel", checked: true, verdict: "correct" },
+  { word: "de trap", checked: true, verdict: "incorrect" },
+  { word: "het huis", checked: false, verdict: "reveal" },
+  { word: "de tafel", checked: false, verdict: "idle" },
+];
 
 type Lens = "lezen" | "luisteren" | "spreken";
 type Source = "onderwerpen" | "startles";
@@ -344,6 +357,27 @@ export function UiGallery() {
             Kies een niveau
           </Button>
         </EmptyState>
+      </Card>
+
+      <Card aria-labelledby="gallery-answers">
+        <h2 id="gallery-answers">
+          <UiText text={exerciseCopy.askQuestion} />
+        </h2>
+        <div className="answer-list" data-testid="ui-answer-states">
+          {ANSWER_STATES.map((entry, index) => (
+            <AnswerOption
+              key={entry.word}
+              name={`gallery-answer-${index}`}
+              value={entry.word}
+              checked={entry.checked}
+              onSelect={() => undefined}
+              verdict={entry.verdict}
+              shortcut={index + 1}
+            >
+              <span lang="nl">{entry.word}</span>
+            </AnswerOption>
+          ))}
+        </div>
       </Card>
 
       <Card tone="tinted" aria-labelledby="gallery-cards" data-accent="progress">

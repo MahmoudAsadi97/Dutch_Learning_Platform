@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  useCallback,
   useEffect,
   useEffectEvent,
   useReducer,
@@ -20,18 +21,27 @@ import { exerciseCopy } from "@/lib/copy/exercise";
 import { ApiError, newRequestId } from "@/lib/client/api";
 import { errorCopy } from "@/lib/client/error-copy";
 import { isAbort } from "@/lib/client/errors";
-import { exercises, type Answer } from "@/lib/client/exercises";
+import { exercises, type Answer, type ItemView } from "@/lib/client/exercises";
 import { timeRoundTrip } from "@/lib/client/round-trips";
 import { playTone } from "@/lib/client/tones";
 import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
 import { ChoiceItem } from "./ChoiceItem";
+import { MatchPairsItem } from "./MatchPairsItem";
+import { OrderItem } from "./OrderItem";
+import { SortBinsItem } from "./SortBinsItem";
+import { TilesItem } from "./TilesItem";
 import { FeedbackBar, outcomeCopy } from "./FeedbackBar";
 import { IntroCard } from "./IntroCard";
 import { RENDERED_KINDS, isChoicePrompt, optionForKey } from "./registry";
 import { ReportDialog } from "./ReportDialog";
 import { SessionSummary } from "./SessionSummary";
 import { currentItem, initialState, reduce, requestIdFor, type SkipReason } from "./sessionReducer";
+
+/** What to say when "Controleer" is pressed too early: choose an option, or finish the board first. */
+function nudgeFor(item: ItemView | null): Copy {
+  return item && isChoicePrompt(item.prompt) ? exerciseCopy.chooseFirst : exerciseCopy.finishFirst;
+}
 
 /** A new key for each live-region message, so the same words are announced again. */
 let announcements = 0;
@@ -69,7 +79,8 @@ export function ExerciseSession({ source }: Props) {
   const [createId, setCreateId] = useState(() => newRequestId());
   const [loadTry, setLoadTry] = useState(0);
   const [loadError, setLoadError] = useState<Copy | null>(null);
-  const [selected, setSelected] = useState<string | null>(null);
+  // the answer as it stands: an option, or a whole board once every part is in place (null before)
+  const [draft, setDraft] = useState<Answer | null>(null);
   const [actionError, setActionError] = useState<Copy | null>(null);
   const [nudge, setNudge] = useState(false);
   const [dialog, setDialog] = useState<"exit" | "report" | null>(null);
@@ -176,7 +187,7 @@ export function ExerciseSession({ source }: Props) {
         // the server already holds an answer for this item, or the session closed: carry on from what it holds
         try {
           const fresh = await exercises.get(session.id);
-          setSelected(null);
+          setDraft(null);
           dispatch({ type: "LOADED", session: fresh });
           return;
         } catch {
@@ -190,18 +201,23 @@ export function ExerciseSession({ source }: Props) {
     }
   }
 
+  const onDraft = useCallback((answer: Answer | null) => {
+    setDraft(answer);
+    setNudge(false);
+  }, []);
+
   function check() {
-    if (!selected) {
+    if (!draft) {
       setNudge(true);
-      setAnnouncement({ id: nextAnnouncement(), text: exerciseCopy.chooseFirst });
+      setAnnouncement({ id: nextAnnouncement(), text: nudgeFor(item) });
       return;
     }
-    void send({ option: selected }, null);
+    void send(draft, null);
   }
 
   async function goOn() {
     if (busy.current) return; // the item coming back is still being fetched
-    setSelected(null);
+    setDraft(null);
     setActionError(null);
     const coming = session?.items.find((entry) => entry.id === session.next_item_id);
     if (session && coming && coming.state === "open" && coming.attempts_left < FIRST_ATTEMPTS) {
@@ -230,7 +246,7 @@ export function ExerciseSession({ source }: Props) {
     finishId.current = null;
     early.current = false;
     shown.current = null;
-    setSelected(null);
+    setDraft(null);
     setActionError(null);
     setLoadError(null);
     dispatch({ type: "RESET" });
@@ -259,8 +275,7 @@ export function ExerciseSession({ source }: Props) {
     );
     if (option) {
       event.preventDefault();
-      setSelected(option);
-      setNudge(false);
+      onDraft({ option });
       // the focus ring and a screen reader follow the choice
       Array.from(event.currentTarget.querySelectorAll<HTMLInputElement>("input[type=radio]"))
         .find((input) => input.value === option)
@@ -278,6 +293,66 @@ export function ExerciseSession({ source }: Props) {
     document.addEventListener("keydown", listener);
     return () => document.removeEventListener("keydown", listener);
   }, []);
+
+  /** The item's own renderer, keyed per attempt so a question that comes back starts empty. */
+  function renderItem(view: ItemView) {
+    const feedback = state.phase === "feedback" ? (state.result?.feedback ?? null) : null;
+    const key = `${view.id}:${view.attempts_left}`;
+    const prompt = view.prompt;
+    switch (prompt.kind) {
+      case "match_pairs":
+        return (
+          <MatchPairsItem
+            key={key}
+            prompt={prompt}
+            feedback={feedback}
+            onDraft={onDraft}
+            headingRef={headingRef}
+          />
+        );
+      case "de_het":
+        return (
+          <SortBinsItem
+            key={key}
+            prompt={prompt}
+            feedback={feedback}
+            onDraft={onDraft}
+            headingRef={headingRef}
+          />
+        );
+      case "sentence_builder":
+        return (
+          <TilesItem
+            key={key}
+            prompt={prompt}
+            feedback={feedback}
+            onDraft={onDraft}
+            headingRef={headingRef}
+          />
+        );
+      case "sentence_order":
+        return (
+          <OrderItem
+            key={key}
+            prompt={prompt}
+            feedback={feedback}
+            onDraft={onDraft}
+            headingRef={headingRef}
+          />
+        );
+      default:
+        return isChoicePrompt(prompt) ? (
+          <ChoiceItem
+            key={key}
+            prompt={prompt}
+            selected={draft && "option" in draft ? draft.option : null}
+            onSelect={(option) => onDraft({ option })}
+            feedback={feedback}
+            headingRef={headingRef}
+          />
+        ) : null;
+    }
+  }
 
   const loading = state.phase === "creating" || (state.phase === "error" && !loadError);
   return (
@@ -364,19 +439,9 @@ export function ExerciseSession({ source }: Props) {
                 </Button>
               </div>
             </>
-          ) : isChoicePrompt(item.prompt) ? (
+          ) : (
             <>
-              <ChoiceItem
-                key={`${item.id}:${item.attempts_left}`}
-                prompt={item.prompt}
-                selected={selected}
-                onSelect={(option) => {
-                  setSelected(option);
-                  setNudge(false);
-                }}
-                feedback={state.phase === "feedback" ? (state.result?.feedback ?? null) : null}
-                headingRef={headingRef}
-              />
+              {renderItem(item)}
               {state.phase !== "feedback" && (
                 <div className="exercise-actions">
                   <Button onClick={check} disabled={state.phase === "checking"} icon="check">
@@ -389,18 +454,20 @@ export function ExerciseSession({ source }: Props) {
                   >
                     <UiText text={exerciseCopy.skip} inline />
                   </Button>
-                  <span className="exercise-keys">
-                    <UiText text={exerciseCopy.keysHint} tier="guide" />
-                  </span>
+                  {isChoicePrompt(item.prompt) && (
+                    <span className="exercise-keys">
+                      <UiText text={exerciseCopy.keysHint} tier="guide" />
+                    </span>
+                  )}
                 </div>
               )}
               {nudge && (
                 <p className="exercise-nudge">
-                  <UiText text={exerciseCopy.chooseFirst} inline />
+                  <UiText text={nudgeFor(item)} inline />
                 </p>
               )}
             </>
-          ) : null}
+          )}
           {state.phase === "feedback" && state.result && (
             <FeedbackBar
               result={state.result}

@@ -74,3 +74,25 @@ test("animations are off when the system asks for less motion", async ({ page })
   );
   expect(animated).toEqual([]);
 });
+
+test("every answer state shows in words and an icon, never in colour alone", async ({ page }) => {
+  await page.goto("/dev/ui");
+  const options = page.getByTestId("ui-answer-states").locator(".answer-option");
+  await expect(options).toHaveCount(6);
+  expect(await options.evaluateAll((all) => all.map((option) => option.getAttribute("data-state")))).toEqual([
+    "default",
+    "selected",
+    "correct",
+    "incorrect",
+    "reveal",
+    "idle",
+  ]);
+  for (const state of ["correct", "incorrect", "reveal"]) {
+    const mark = page
+      .getByTestId("ui-answer-states")
+      .locator(`.answer-option[data-state="${state}"] .answer-option-mark`);
+    await expect(mark.locator("svg")).toHaveCount(1);
+    await expect(mark).toHaveText(/\S/);
+  }
+  await expect(page.getByRole("radio", { name: /het huis Het juiste antwoord/ })).toBeDisabled();
+});

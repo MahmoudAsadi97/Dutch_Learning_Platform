@@ -568,8 +568,16 @@ whole.
 - **Web kit** (step 3.6, `components/exercise`, `/oefenen`): `ExerciseSession` runs a session from start to
   summary through a pure reducer (`sessionReducer.ts`: creating, answering, checking, feedback, finishing,
   summary, error); server responses are events, so a resumed session continues exactly from what the API
-  returns. It asks only for the kinds it can draw (`registry.ts`: choice, cloze by choice and odd one out until
-  step 3.7 adds the rest). The create request id is minted once, so a repeated effect or a retry replays; an
+  returns. It asks only for the kinds it can draw (`registry.ts`: choice, cloze by choice, odd one out and the
+  four boards; step 3.7b adds typing, listening and speaking). The answer as it stands is a draft: an option,
+  or a whole board once every part is in place, so "Controleer" sends a board whole and, too early, says
+  "Maak eerst alles af". The boards need no dragging: match pairs (choose a word, then its meaning; a pair shows
+  one number on both sides, and every button's name says what it is paired with), de/het (a pair of native
+  radios per noun, drawn as a switch), the sentence builder (choose the pieces in order, choose one in the
+  sentence to put it back; focus moves to the piece now in its place) and the ordering (up and down buttons per
+  sentence; focus stays on the button that moved it). Answered, each board shows every part's result, the right
+  meaning, article, sentence or order (with its translation), and is read-only. The create request id is
+  minted once, so a repeated effect or a retry replays; an
   answer that did not arrive is sent again under the same id when it is the same answer, and under a new one
   when the learner changed it; a 409 (already answered, session closed) on an answer or the finish reloads the
   session; "Nog een oefening" resets the runner first. Options are the

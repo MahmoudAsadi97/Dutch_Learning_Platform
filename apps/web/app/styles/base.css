@@ -105,7 +105,10 @@
     color: var(--text-subtle);
     opacity: 1;
   }
-  :focus:not(:focus-visible) {
+  /* no ring on a mouse click, nor on a heading or region that only takes focus so a screen reader starts
+     there (tabindex -1: it cannot be reached or used with the keyboard) */
+  :focus:not(:focus-visible),
+  [tabindex="-1"]:focus {
     outline: none;
   }
   .skip-link {
