@@ -441,7 +441,78 @@
     gap: var(--space-1);
   }
 
-  /* the intro card */
+  /* an item's sound */
+  .item-audio {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+  }
+  .item-audio-status {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  /* typed answers */
+  .typed-answer {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .typed-input {
+    max-width: 32rem;
+    font-size: var(--text-lg);
+  }
+  .typed-hint {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .typed-notes {
+    display: grid;
+    gap: var(--space-1);
+    margin: 0;
+    padding-left: var(--space-5);
+    color: var(--text-muted);
+  }
+  /* the answer typed against the one it was compared with: changes in words and marks, not colour alone */
+  .token-diff {
+    margin: 0;
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+  .token-diff ins,
+  .token-diff del {
+    padding: 1px var(--space-1);
+    border-radius: var(--radius-sm);
+  }
+  .token-diff ins {
+    border-bottom: 2px solid var(--success-vivid);
+    background: var(--success-bg);
+    text-decoration: none;
+  }
+  .token-diff del {
+    border-bottom: 2px dashed var(--danger-vivid);
+    background: var(--danger-bg);
+  }
+
+  /* shadowing */
+  .shadow-sentence {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+  }
+  .shadow-record {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: start;
+  }
+  .shadow-status {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  /* the intro card */ /* the intro card */
   .intro-words {
     display: grid;
     gap: var(--space-3);

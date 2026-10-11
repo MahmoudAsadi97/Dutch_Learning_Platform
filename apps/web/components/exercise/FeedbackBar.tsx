@@ -15,6 +15,9 @@ const OUTCOMES: Partial<Record<Outcome, { text: Copy; icon: IconName }>> = {
   correct: { text: uiCopy.state.correct, icon: "check" },
   almost: { text: uiCopy.state.almost, icon: "info" },
   incorrect: { text: exerciseCopy.incorrect, icon: "repeat" },
+  accepted: { text: exerciseCopy.accepted, icon: "check" },
+  heard: { text: exerciseCopy.heard, icon: "ear" },
+  not_heard: { text: uiCopy.state.notHeard, icon: "ear" },
   skipped: { text: exerciseCopy.skipped, icon: "repeat" },
 };
 
@@ -27,6 +30,8 @@ interface Props {
   result: AnswerResult;
   onContinue: () => void;
   onReport: () => void;
+  /** "Mijn antwoord klopt ook", offered on a typed answer or a built sentence the check did not accept. */
+  onOverride?: () => void;
   continueRef?: Ref<HTMLButtonElement>;
 }
 
@@ -35,7 +40,7 @@ interface Props {
  * it earned, whether the item comes back, and the word it was about with its meaning and example (for a cloze,
  * the whole sentence).
  */
-export function FeedbackBar({ result, onContinue, onReport, continueRef }: Props) {
+export function FeedbackBar({ result, onContinue, onReport, onOverride, continueRef }: Props) {
   const titleId = useId();
   const correctionId = useId();
   const { feedback } = result;
@@ -61,6 +66,11 @@ export function FeedbackBar({ result, onContinue, onReport, continueRef }: Props
       {result.requeue && (
         <p className="feedback-line">
           <UiText text={exerciseCopy.comesBack} tier="guide" />
+        </p>
+      )}
+      {!result.closed && !result.requeue && (
+        <p className="feedback-line">
+          <UiText text={exerciseCopy.tryOnceMore} tier="guide" />
         </p>
       )}
       <div className="feedback-correction" id={correctionId}>
@@ -95,6 +105,11 @@ export function FeedbackBar({ result, onContinue, onReport, continueRef }: Props
         <Button ref={continueRef} onClick={onContinue} icon="arrow" iconEnd aria-describedby={described}>
           <UiText text={exerciseCopy.continue} inline />
         </Button>
+        {onOverride && (
+          <Button variant="secondary" size="small" icon="check" onClick={onOverride}>
+            <UiText text={exerciseCopy.override} inline />
+          </Button>
+        )}
         <Button variant="ghost" size="small" icon="flag" onClick={onReport}>
           <UiText text={exerciseCopy.report} inline />
         </Button>

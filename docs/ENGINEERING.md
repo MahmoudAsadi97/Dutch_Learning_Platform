@@ -568,8 +568,8 @@ whole.
 - **Web kit** (step 3.6, `components/exercise`, `/oefenen`): `ExerciseSession` runs a session from start to
   summary through a pure reducer (`sessionReducer.ts`: creating, answering, checking, feedback, finishing,
   summary, error); server responses are events, so a resumed session continues exactly from what the API
-  returns. It asks only for the kinds it can draw (`registry.ts`: choice, cloze by choice, odd one out and the
-  four boards; step 3.7b adds typing, listening and speaking). The answer as it stands is a draft: an option,
+  returns. It asks only for the kinds it can draw (`registry.ts`: every kind the engine plans; the flashcard
+  is for word review). The answer as it stands is a draft: an option, typed text,
   or a whole board once every part is in place, so "Controleer" sends a board whole and, too early, says
   "Maak eerst alles af". The boards need no dragging: match pairs (choose a word, then its meaning; a pair shows
   one number on both sides, and every button's name says what it is paired with), de/het (a pair of native
@@ -579,7 +579,19 @@ whole.
   icon and words, not colour alone), the right meaning, article, sentence or order (with its translation, and
   where each misplaced sentence stood; an "almost" swap stays neutral), and is read-only; skipped, it shows the
   answers alone. A renderer is keyed per asking and per verdict, so a question that comes straight back starts
-  again from the server's reshuffled prompt. The create request id is
+  again from the server's reshuffled prompt. Typed answers (typed cloze, typed recall, dictation) go in a Dutch
+  field the device leaves alone (`lang=nl`, autocapitalize, autocorrect, spellcheck and autocomplete off);
+  Enter checks; a hint (first letter and length) is there on request and reported with the answer
+  (`hint_used`); answered, the field shows the typed text, a word-by-word comparison with the answer
+  (`TokenDiff`: missing, extra and changed words in words and marks, never a score) and what the comparison
+  forgave or found (its notes in words); on a typed answer or a built sentence the check did not accept,
+  "Mijn antwoord klopt ook" overrules it (`OVERRIDDEN`: the item closes as accepted). The sound of an item
+  (listen-and-choose, dictation, shadowing) comes from its audio route through `ItemAudio` (one sound at a
+  time across the app, kept for the tab, silenced by a recording; a development test tone says so), and "Ik kan
+  nu niet luisteren" closes such an item without a miss. Shadowing records with one press and stops with
+  another (no holding down), sends the recording (never kept) and shows heard or not heard and the words heard,
+  never a score; "Ik kan nu niet spreken" closes it without a miss; a take not heard may be tried again at
+  once. The create request id is
   minted once, so a repeated effect or a retry replays; an
   answer that did not arrive is sent again under the same id when it is the same answer, and under a new one
   when the learner changed it; a 409 (already answered, session closed) on an answer or the finish reloads the

@@ -200,6 +200,7 @@ def test_the_sound_of_an_item_comes_from_the_cache(client):
     view, item = _session_with(client, "listen_choose")
     first = client.post(_url(view, item, "audio"), headers=auth_headers("speech-audio-0001"))
     assert first.status_code == 200 and first.headers["content-type"] == "audio/wav"
+    assert first.headers["x-audio-voice"], "the voice is named, so a development tone can be told apart"
     used = client.get("/usage", headers=auth_headers("speech-usage-01")).json()["counters"]["audio_seconds"]
     again = client.post(_url(view, item, "audio"), headers=auth_headers("speech-audio-0002"))
     assert again.headers["x-audio-cached"] == "1" and again.content == first.content

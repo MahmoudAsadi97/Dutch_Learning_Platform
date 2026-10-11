@@ -120,6 +120,142 @@ export const exerciseCopy = {
   },
   sendAgain: { nl: "Verstuur opnieuw", en: "Send again", fa: "دوباره بفرست" },
 
+  // typed answers (typed cloze, typed recall, dictation)
+  askClozeTyped: {
+    nl: "Typ het woord dat in de zin past.",
+    en: "Type the word that fits in the sentence.",
+    fa: "واژه‌ای را که در جمله جا می‌افتد تایپ کن.",
+  },
+  askRecall: { nl: "Typ het Nederlandse woord.", en: "Type the Dutch word.", fa: "واژه‌ی هلندی را تایپ کن." },
+  askDictation: {
+    nl: "Luister en typ wat je hoort.",
+    en: "Listen and type what you hear.",
+    fa: "گوش بده و آنچه را می‌شنوی تایپ کن.",
+  },
+  wordCount: { nl: "Aantal woorden: {n}", en: "Number of words: {n}", fa: "تعداد واژه‌ها: {n}" },
+  showHint: { nl: "Toon een hint", en: "Show a hint", fa: "یک راهنمایی نشان بده" },
+  hintText: {
+    nl: "Het begint met {first} en heeft {length} letters.",
+    en: "It starts with {first} and has {length} letters.",
+    fa: "با {first} شروع می‌شود و {length} حرف دارد.",
+  },
+  typeFirst: { nl: "Typ eerst een antwoord.", en: "Type an answer first.", fa: "اول یک پاسخ تایپ کن." },
+  noteAccents: {
+    nl: "De accenten ontbraken; dat telt niet mee.",
+    en: "The accents were missing; that does not count against you.",
+    fa: "نشانه‌های تلفظ جا افتاده بود؛ این به حساب نمی‌آید.",
+  },
+  notePunctuation: {
+    nl: "Leestekens tellen niet mee.",
+    en: "Punctuation does not count.",
+    fa: "علامت‌های نگارشی به حساب نمی‌آیند.",
+  },
+  noteArticleMissing: {
+    nl: "Het lidwoord ontbrak; dat mag hier.",
+    en: "The article was missing; that is fine here.",
+    fa: "حرف تعریف جا افتاده بود؛ اینجا اشکالی ندارد.",
+  },
+  noteArticleExtra: {
+    nl: "Er stond een lidwoord bij dat hier niet hoort.",
+    en: "There was an article that does not belong here.",
+    fa: "یک حرف تعریف اضافه بود که اینجا لازم نیست.",
+  },
+  noteArticle: {
+    nl: "Het lidwoord is anders: let op de of het.",
+    en: "The article is different: watch de or het.",
+    fa: "حرف تعریف فرق دارد: به de یا het دقت کن.",
+  },
+  noteSpelling: { nl: "Een kleine tikfout.", en: "A small typo.", fa: "یک غلط تایپی کوچک." },
+  noteMissingWord: {
+    nl: "Er ontbreekt een klein woord.",
+    en: "A small word is missing.",
+    fa: "یک واژه‌ی کوچک جا افتاده است.",
+  },
+  noteExtraWord: {
+    nl: "Er staat een klein woord te veel.",
+    en: "There is one small word too many.",
+    fa: "یک واژه‌ی کوچک اضافه است.",
+  },
+  diffMissing: { nl: "ontbreekt:", en: "missing:", fa: "جا افتاده:" },
+  diffExtra: { nl: "te veel:", en: "too many:", fa: "اضافه:" },
+  diffTyped: { nl: "jij typte:", en: "you typed:", fa: "تو تایپ کردی:" },
+  diffRight: { nl: "juist:", en: "right:", fa: "درست:" },
+  override: { nl: "Mijn antwoord klopt ook", en: "My answer is right too", fa: "پاسخ من هم درست است" },
+  accepted: { nl: "Je antwoord telt", en: "Your answer counts", fa: "پاسخت حساب می‌شود" },
+  overrideFailed: {
+    nl: "Dat kon niet worden bewaard.",
+    en: "That could not be saved.",
+    fa: "این ذخیره نشد.",
+  },
+
+  // listening and speaking
+  askListen: { nl: "Welk woord hoor je?", en: "Which word do you hear?", fa: "کدام واژه را می‌شنوی؟" },
+  askShadow: {
+    nl: "Luister en zeg het na.",
+    en: "Listen and say it after the voice.",
+    fa: "گوش بده و بعد از صدا تکرارش کن.",
+  },
+  audioPlay: { nl: "Luister", en: "Listen", fa: "گوش بده" },
+  audioStop: { nl: "Stop", en: "Stop", fa: "توقف" },
+  audioSignin: {
+    nl: "Meld je opnieuw aan om te luisteren.",
+    en: "Sign in again to listen.",
+    fa: "برای شنیدن دوباره وارد حساب شو.",
+  },
+  audioLimit: {
+    nl: "Je luistertijd voor vandaag is op. Kies 'Ik kan nu niet luisteren'.",
+    en: "Your listening time for today is used up. Choose 'I can't listen now'.",
+    fa: "زمان شنیدن امروزت تمام شده است. «الان نمی‌توانم گوش بدهم» را انتخاب کن.",
+  },
+  audioBlocked: {
+    nl: "Je browser vraagt nog een tik. Druk opnieuw op Luister.",
+    en: "Your browser needs another tap. Press Listen again.",
+    fa: "مرورگر به یک لمس دیگر نیاز دارد. دوباره «گوش بده» را بزن.",
+  },
+  audioUnavailable: {
+    nl: "Het geluid speelt nu niet. Probeer opnieuw.",
+    en: "The sound is not playing now. Try again.",
+    fa: "صدا الان پخش نمی‌شود. دوباره تلاش کن.",
+  },
+  audioTestTone: {
+    nl: "Testtoon: in deze omgeving spreekt nog geen echte stem.",
+    en: "Test tone: no real voice speaks in this environment yet.",
+    fa: "صدای آزمایشی: در این محیط هنوز صدای واقعی پخش نمی‌شود.",
+  },
+  cannotListen: { nl: "Ik kan nu niet luisteren", en: "I can't listen now", fa: "الان نمی‌توانم گوش بدهم" },
+  cannotSpeak: { nl: "Ik kan nu niet spreken", en: "I can't speak now", fa: "الان نمی‌توانم صحبت کنم" },
+  recordStart: { nl: "Neem op", en: "Record", fa: "ضبط کن" },
+  recordStop: { nl: "Stop met opnemen", en: "Stop recording", fa: "ضبط را متوقف کن" },
+  recordListening: { nl: "We luisteren…", en: "Listening…", fa: "در حال شنیدن…" },
+  recordOn: {
+    nl: "Je wordt opgenomen. Zeg de zin en druk dan op stop.",
+    en: "You are being recorded. Say the sentence, then press stop.",
+    fa: "صدایت ضبط می‌شود. جمله را بگو و بعد توقف را بزن.",
+  },
+  recordFailed: {
+    nl: "De microfoon werkt niet. Probeer opnieuw of kies 'Ik kan nu niet spreken'.",
+    en: "The microphone is not working. Try again or choose 'I can't speak now'.",
+    fa: "میکروفون کار نمی‌کند. دوباره تلاش کن یا «الان نمی‌توانم صحبت کنم» را انتخاب کن.",
+  },
+  recordUnsupported: {
+    nl: "Deze browser kan niet opnemen. Kies 'Ik kan nu niet spreken'.",
+    en: "This browser cannot record. Choose 'I can't speak now'.",
+    fa: "این مرورگر نمی‌تواند ضبط کند. «الان نمی‌توانم صحبت کنم» را انتخاب کن.",
+  },
+  recordSendFailed: {
+    nl: "Je opname kon niet worden verstuurd. Neem opnieuw op.",
+    en: "Your recording could not be sent. Record again.",
+    fa: "ضبطت فرستاده نشد. دوباره ضبط کن.",
+  },
+  weHeard: { nl: "Wat we hoorden", en: "What we heard", fa: "آنچه شنیدیم" },
+  heardNothing: { nl: "nog niets", en: "nothing yet", fa: "هنوز چیزی" },
+  heard: { nl: "Gehoord", en: "Heard", fa: "شنیده شد" },
+  tryOnceMore: {
+    nl: "Je mag het meteen nog een keer proberen.",
+    en: "You can try once more right away.",
+    fa: "می‌توانی همین حالا یک بار دیگر امتحان کنی.",
+  },
+
   // the intro card
   introTitle: { nl: "Nieuwe woorden", en: "New words", fa: "واژه‌های تازه" },
   introLead: {

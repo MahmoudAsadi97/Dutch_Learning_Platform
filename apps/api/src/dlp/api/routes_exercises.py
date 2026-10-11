@@ -76,7 +76,8 @@ def item_audio(session_id: uuid.UUID, item_id: uuid.UUID, ctx: RequestContext = 
                                          item_id=item_id, request_id=ctx.request_id, tts=providers.tts,
                                          blob=providers.blob)
         return WavResponse(content=wav, headers={"X-Audio-Cached": "1" if cached else "0",
-                                                 "X-Audio-Label": providers.tts.label, "Cache-Control": "no-store"})
+                                                 "X-Audio-Label": providers.tts.label,
+                                                 "X-Audio-Voice": providers.tts.voice, "Cache-Control": "no-store"})
     return _run(operation)
 
 

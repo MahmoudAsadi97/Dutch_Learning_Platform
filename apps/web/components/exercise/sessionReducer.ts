@@ -34,6 +34,7 @@ export type RunnerEvent =
   | { type: "LOAD_FAILED" }
   | { type: "SUBMIT"; pending: Pending }
   | { type: "ANSWERED"; result: AnswerResult }
+  | { type: "OVERRIDDEN"; result: AnswerResult }
   | { type: "ANSWER_FAILED" }
   | { type: "CONTINUE" }
   | { type: "FINISH" }
@@ -130,6 +131,11 @@ export function reduce(state: RunnerState, event: RunnerEvent): RunnerState {
       if (event.result.outcome === "done") return next(settled, session);
       return { ...settled, phase: "feedback", result: event.result };
     }
+    case "OVERRIDDEN":
+      // "mijn antwoord klopt ook": the verdict on screen becomes "accepted" and the item closes
+      return state.phase === "feedback" && state.session
+        ? { ...state, session: withResult(state.session, event.result), result: event.result }
+        : state;
     case "ANSWER_FAILED":
       // back to the item with the answer kept; sending it again reuses the same request id
       return state.phase === "checking" ? { ...state, phase: "answering", failed: true } : state;

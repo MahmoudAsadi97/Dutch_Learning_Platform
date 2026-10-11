@@ -1,17 +1,21 @@
 /**
  * The kinds this runner can show. A session is created with exactly these (the API plans nothing else), so a
- * kind is added here in the same change as its renderer (step 3.7b adds typing, listening and speaking). Pure, so the unit tests load it without a bundler.
+ * kind is added here in the same change as its renderer: every kind the engine plans has one now (the
+ * flashcard is for word review, 5.1). Pure, so the unit tests load it without a bundler.
  */
 import type { Kind, Prompt } from "../../lib/client/exercises";
 
-const CHOICE_KINDS = ["choice", "cloze_choice", "odd_one_out"] as const;
+const CHOICE_KINDS = ["choice", "cloze_choice", "odd_one_out", "listen_choose"] as const;
+const TYPED_KINDS = ["cloze_typed", "typed_recall", "dictation"] as const;
 
 export const RENDERED_KINDS = [
   ...CHOICE_KINDS,
+  ...TYPED_KINDS,
   "match_pairs",
   "de_het",
   "sentence_builder",
   "sentence_order",
+  "shadow",
 ] as const satisfies readonly Exclude<Kind, "intro">[];
 
 export type RenderedKind = (typeof RENDERED_KINDS)[number];
@@ -21,6 +25,13 @@ export type ChoicePrompt = Extract<Prompt, { kind: (typeof CHOICE_KINDS)[number]
 
 export function isChoicePrompt(prompt: Prompt): prompt is ChoicePrompt {
   return (CHOICE_KINDS as readonly string[]).includes(prompt.kind);
+}
+
+/** The prompts answered by typing. */
+export type TypedPrompt = Extract<Prompt, { kind: (typeof TYPED_KINDS)[number] }>;
+
+export function isTypedPrompt(prompt: Prompt): prompt is TypedPrompt {
+  return (TYPED_KINDS as readonly string[]).includes(prompt.kind);
 }
 
 /** Kinds with a sound of their own: only these can be reported for a wrong or unclear sound. */

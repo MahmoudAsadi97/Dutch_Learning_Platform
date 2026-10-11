@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, waitFor, within } from "@testing-librar
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ChoiceItem } from "@/components/exercise/ChoiceItem";
+import { RENDERED_KINDS } from "@/components/exercise/registry";
 import { ExerciseSession } from "@/components/exercise/ExerciseSession";
 import { AnswerOption } from "@/components/ui/AnswerOption";
 import type { AnswerResult, SessionView } from "@/lib/client/exercises";
@@ -193,15 +194,7 @@ describe("ExerciseSession", () => {
     expect(client.create).toHaveBeenCalledWith(
       expect.objectContaining({
         source: "stage_skill",
-        kinds: [
-          "choice",
-          "cloze_choice",
-          "odd_one_out",
-          "match_pairs",
-          "de_het",
-          "sentence_builder",
-          "sentence_order",
-        ],
+        kinds: RENDERED_KINDS,
       }),
       expect.any(String),
     );
@@ -220,7 +213,7 @@ describe("ExerciseSession", () => {
       fireEvent.keyDown(raam, { key: "Enter", code: "Enter" });
     });
     const next = await screen.findByRole("button", { name: /^Verder/ });
-    expect(client.answer).toHaveBeenLastCalledWith("s1", "i1", { option: "bbbb" }, expect.any(String));
+    expect(client.answer).toHaveBeenLastCalledWith("s1", "i1", { option: "bbbb" }, expect.any(String), false);
     await waitFor(() => expect(next).toHaveFocus());
     const feedback = screen.getByRole("region", { name: /Nog niet/ });
     expect(within(feedback).getByText(/\+1 punt/)).toBeInTheDocument();

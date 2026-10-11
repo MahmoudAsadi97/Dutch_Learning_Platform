@@ -229,8 +229,13 @@ export const exercises = {
       body: { request_id: requestId },
       requestId,
     }),
-  /** The item's sound (a word or sentence of the course), served from the speech cache. */
-  audio: async (sessionId: string, itemId: string, signal?: AbortSignal): Promise<Blob> => {
+  /** The item's sound (a word or sentence of the course), served from the speech cache; a development
+   * environment's test tone says so. */
+  audio: async (
+    sessionId: string,
+    itemId: string,
+    signal?: AbortSignal,
+  ): Promise<{ blob: Blob; developmentTone: boolean }> => {
     const response = await apiFetch(item(sessionId, itemId, "audio"), { method: "POST", signal });
     if (!response.ok) {
       // keep the status and code, so a used-up allowance or an outage reads as such
@@ -242,7 +247,10 @@ export const exercises = {
         typeof body?.code === "string" ? body.code : "",
       );
     }
-    return response.blob();
+    return {
+      blob: await response.blob(),
+      developmentTone: response.headers.get("x-audio-voice") === "fixture-tone",
+    };
   },
   /** A shadowing attempt: heard or not heard, never a score; the recording is not kept. */
   record: (sessionId: string, itemId: string, requestId: string, blob: Blob, fileName: string) => {

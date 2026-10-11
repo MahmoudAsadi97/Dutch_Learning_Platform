@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, type Ref } from "react";
+import { useId, type ReactNode, type Ref } from "react";
 
 import { AnswerOption, type AnswerState } from "@/components/ui/AnswerOption";
 import { UiText } from "@/components/ui/UiText";
@@ -14,6 +14,7 @@ import type { ChoicePrompt } from "./registry";
 function question(prompt: ChoicePrompt): Copy {
   if (prompt.kind === "cloze_choice") return exerciseCopy.askCloze;
   if (prompt.kind === "odd_one_out") return exerciseCopy.askOdd;
+  if (prompt.kind === "listen_choose") return exerciseCopy.askListen;
   switch (prompt.direction) {
     case "meaning":
       return exerciseCopy.askMeaning;
@@ -26,8 +27,9 @@ function question(prompt: ChoicePrompt): Copy {
   }
 }
 
-/** What the question is about: a Dutch word, a meaning, a sentence with a gap, a topic or a question. */
-function Stem({ prompt }: { prompt: ChoicePrompt }) {
+/** What the question is about: a Dutch word, a meaning, a sentence with a gap, a topic, a question or a sound. */
+function Stem({ prompt, audio }: { prompt: ChoicePrompt; audio?: ReactNode }) {
+  if (prompt.kind === "listen_choose") return <div className="exercise-stem">{audio}</div>;
   if (prompt.kind === "cloze_choice") {
     const [before, ...rest] = prompt.sentence.split("___");
     return (
@@ -117,10 +119,15 @@ interface Props {
   /** The verdict of the answer just given, or of an item already closed. */
   feedback: Feedback | null;
   headingRef?: Ref<HTMLHeadingElement>;
+  /** Listen and choose: the control that plays the item's sound. */
+  audio?: ReactNode;
 }
 
-/** Choice, cloze by choice and odd one out: a question, its stem and up to four options in a radio group. */
-export function ChoiceItem({ prompt, selected, onSelect, feedback, headingRef }: Props) {
+/**
+ * Choice, cloze by choice, odd one out and listen-and-choose: a question, its stem (or its sound) and up to
+ * four options in a radio group.
+ */
+export function ChoiceItem({ prompt, selected, onSelect, feedback, headingRef, audio }: Props) {
   const name = useId();
   const headingId = useId();
   const support = new Map((feedback?.support ?? []).map((entry) => [entry.id, entry]));
@@ -129,7 +136,7 @@ export function ChoiceItem({ prompt, selected, onSelect, feedback, headingRef }:
       <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
         <UiText text={question(prompt)} tier="guide" />
       </h2>
-      <Stem prompt={prompt} />
+      <Stem prompt={prompt} audio={audio} />
       <fieldset className="answer-group" aria-labelledby={headingId}>
         <div className="answer-list">
           {prompt.options.map((option, index) => (

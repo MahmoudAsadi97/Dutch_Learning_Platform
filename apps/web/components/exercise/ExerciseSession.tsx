@@ -21,26 +21,32 @@ import { exerciseCopy } from "@/lib/copy/exercise";
 import { ApiError, newRequestId } from "@/lib/client/api";
 import { errorCopy } from "@/lib/client/error-copy";
 import { isAbort } from "@/lib/client/errors";
-import { exercises, type Answer, type ItemView } from "@/lib/client/exercises";
+import { exercises, type Answer, type AnswerResult, type ItemView } from "@/lib/client/exercises";
+import type { Recording } from "@/lib/client/recorder";
 import { timeRoundTrip } from "@/lib/client/round-trips";
 import { playTone } from "@/lib/client/tones";
 import { fill, uiCopy, type Copy } from "@/lib/ui-copy";
 
 import { ChoiceItem } from "./ChoiceItem";
+import { ItemAudio } from "./ItemAudio";
+import { ShadowItem } from "./ShadowItem";
+import { TypedItem } from "./TypedItem";
 import { MatchPairsItem } from "./MatchPairsItem";
 import { OrderItem } from "./OrderItem";
 import { SortBinsItem } from "./SortBinsItem";
 import { TilesItem } from "./TilesItem";
 import { FeedbackBar, outcomeCopy } from "./FeedbackBar";
 import { IntroCard } from "./IntroCard";
-import { RENDERED_KINDS, isChoicePrompt, optionForKey } from "./registry";
+import { RENDERED_KINDS, hasSound, isChoicePrompt, isTypedPrompt, optionForKey } from "./registry";
 import { ReportDialog } from "./ReportDialog";
 import { SessionSummary } from "./SessionSummary";
 import { currentItem, initialState, reduce, requestIdFor, type SkipReason } from "./sessionReducer";
 
-/** What to say when "Controleer" is pressed too early: choose an option, or finish the board first. */
+/** What to say when "Controleer" is pressed too early: choose an option, type an answer, or finish the board. */
 function nudgeFor(item: ItemView | null): Copy {
-  return item && isChoicePrompt(item.prompt) ? exerciseCopy.chooseFirst : exerciseCopy.finishFirst;
+  if (item && isChoicePrompt(item.prompt)) return exerciseCopy.chooseFirst;
+  if (item && isTypedPrompt(item.prompt)) return exerciseCopy.typeFirst;
+  return exerciseCopy.finishFirst;
 }
 
 /** A new key for each live-region message, so the same words are announced again. */
@@ -91,6 +97,10 @@ export function ExerciseSession({ source }: Props) {
   const finishId = useRef<string | null>(null);
   const early = useRef(false);
   const shown = useRef<string | null>(null);
+  // the learner asked for the hint on the item on screen (reported with the answer)
+  const hinted = useRef(false);
+  // one request id per overruled item, so a retried "mijn antwoord klopt ook" replays
+  const overrideIds = useRef<Record<string, string>>({});
 
   const session = state.session;
   const item = currentItem(state);
@@ -164,18 +174,26 @@ export function ExerciseSession({ source }: Props) {
     }
   }, [phase, current]);
 
-  async function send(answer: Answer | null, skip: SkipReason | null) {
+  /**
+   * Sends an answer, a skip or a recording, and shows the verdict. `call` makes the request under the given id;
+   * a recording is always a new take (`fresh`), an answer sent again after a failure keeps its id.
+   */
+  async function deliver(
+    answer: Answer | null,
+    skip: SkipReason | null,
+    call: (sessionId: string, itemId: string, requestId: string) => Promise<AnswerResult>,
+    failed: Copy,
+    fresh = false,
+  ) {
     if (!session || !item || state.phase !== "answering" || busy.current) return;
     busy.current = true;
-    const requestId = requestIdFor(state, item, answer, skip, newRequestId);
+    const requestId = fresh ? newRequestId() : requestIdFor(state, item, answer, skip, newRequestId);
     dispatch({ type: "SUBMIT", pending: { itemId: item.id, requestId, answer, skip } });
     setActionError(null);
     setNudge(false);
     const timed = timeRoundTrip();
     try {
-      const result = skip
-        ? await exercises.skip(session.id, item.id, requestId, skip)
-        : await exercises.answer(session.id, item.id, answer as Answer, requestId);
+      const result = await call(session.id, item.id, requestId);
       timed();
       dispatch({ type: "ANSWERED", result });
       if (result.outcome === "correct") playTone("correct");
@@ -194,8 +212,49 @@ export function ExerciseSession({ source }: Props) {
           // the message below says the answer did not go through
         }
       }
-      setActionError(errorCopy(cause, exerciseCopy.answerFailed));
+      setActionError(errorCopy(cause, failed));
       dispatch({ type: "ANSWER_FAILED" });
+    } finally {
+      busy.current = false;
+    }
+  }
+
+  function send(answer: Answer | null, skip: SkipReason | null) {
+    return deliver(
+      answer,
+      skip,
+      (sessionId, itemId, requestId) =>
+        skip
+          ? exercises.skip(sessionId, itemId, requestId, skip)
+          : exercises.answer(sessionId, itemId, answer as Answer, requestId, hinted.current),
+      exerciseCopy.answerFailed,
+    );
+  }
+
+  function sendRecording(recording: Recording) {
+    return deliver(
+      null,
+      null,
+      (sessionId, itemId, requestId) =>
+        exercises.record(sessionId, itemId, requestId, recording.blob, recording.fileName),
+      exerciseCopy.recordSendFailed,
+      true,
+    );
+  }
+
+  /** "Mijn antwoord klopt ook": the learner overrules the check of a typed answer or a built sentence. */
+  async function overrule() {
+    if (!session || !state.result || busy.current) return;
+    const itemId = state.result.item_id;
+    const requestId = (overrideIds.current[itemId] ??= newRequestId());
+    busy.current = true;
+    setActionError(null);
+    try {
+      const result = await exercises.override(session.id, itemId, requestId);
+      dispatch({ type: "OVERRIDDEN", result });
+      setAnnouncement({ id: nextAnnouncement(), text: exerciseCopy.accepted });
+    } catch (cause) {
+      setActionError(errorCopy(cause, exerciseCopy.overrideFailed));
     } finally {
       busy.current = false;
     }
@@ -218,6 +277,7 @@ export function ExerciseSession({ source }: Props) {
   async function goOn() {
     if (busy.current) return; // the item coming back is still being fetched
     setDraft(null);
+    hinted.current = false;
     setActionError(null);
     const coming = session?.items.find((entry) => entry.id === session.next_item_id);
     if (session && coming && coming.state === "open" && coming.attempts_left < FIRST_ATTEMPTS) {
@@ -246,6 +306,8 @@ export function ExerciseSession({ source }: Props) {
     finishId.current = null;
     early.current = false;
     shown.current = null;
+    hinted.current = false;
+    overrideIds.current = {};
     setDraft(null);
     setActionError(null);
     setLoadError(null);
@@ -331,6 +393,37 @@ export function ExerciseSession({ source }: Props) {
             headingRef={headingRef}
           />
         );
+      case "cloze_typed":
+      case "typed_recall":
+      case "dictation":
+        return (
+          <TypedItem
+            key={key}
+            prompt={prompt}
+            sessionId={session?.id ?? ""}
+            itemId={view.id}
+            feedback={feedback}
+            onDraft={onDraft}
+            onHint={() => {
+              hinted.current = true;
+            }}
+            onSubmit={check}
+            headingRef={headingRef}
+          />
+        );
+      case "shadow":
+        return (
+          <ShadowItem
+            key={key}
+            prompt={prompt}
+            sessionId={session?.id ?? ""}
+            itemId={view.id}
+            feedback={feedback}
+            busy={state.phase === "checking"}
+            onRecording={(recording) => void sendRecording(recording)}
+            headingRef={headingRef}
+          />
+        );
       case "sentence_order":
         return (
           <OrderItem
@@ -350,6 +443,11 @@ export function ExerciseSession({ source }: Props) {
             onSelect={(option) => onDraft({ option })}
             feedback={feedback}
             headingRef={headingRef}
+            audio={
+              prompt.kind === "listen_choose" ? (
+                <ItemAudio sessionId={session?.id ?? ""} itemId={view.id} />
+              ) : undefined
+            }
           />
         ) : null;
     }
@@ -445,9 +543,12 @@ export function ExerciseSession({ source }: Props) {
               {renderItem(item)}
               {state.phase !== "feedback" && (
                 <div className="exercise-actions">
-                  <Button onClick={check} disabled={state.phase === "checking"} icon="check">
-                    <UiText text={state.failed ? exerciseCopy.sendAgain : uiCopy.action.check} inline />
-                  </Button>
+                  {/* shadowing is answered by its recording */}
+                  {item.prompt.kind !== "shadow" && (
+                    <Button onClick={check} disabled={state.phase === "checking"} icon="check">
+                      <UiText text={state.failed ? exerciseCopy.sendAgain : uiCopy.action.check} inline />
+                    </Button>
+                  )}
                   <Button
                     variant="ghost"
                     onClick={() => void send(null, "unknown")}
@@ -455,6 +556,25 @@ export function ExerciseSession({ source }: Props) {
                   >
                     <UiText text={exerciseCopy.skip} inline />
                   </Button>
+                  {/* a sound that will not play or a microphone that does not work is never a miss */}
+                  {hasSound(item.kind) && (
+                    <Button
+                      variant="ghost"
+                      onClick={() => void send(null, "no_audio")}
+                      disabled={state.phase === "checking"}
+                    >
+                      <UiText text={exerciseCopy.cannotListen} inline />
+                    </Button>
+                  )}
+                  {item.prompt.kind === "shadow" && (
+                    <Button
+                      variant="ghost"
+                      onClick={() => void send(null, "no_microphone")}
+                      disabled={state.phase === "checking"}
+                    >
+                      <UiText text={exerciseCopy.cannotSpeak} inline />
+                    </Button>
+                  )}
                   {isChoicePrompt(item.prompt) && (
                     <span className="exercise-keys">
                       <UiText text={exerciseCopy.keysHint} tier="guide" />
@@ -474,6 +594,11 @@ export function ExerciseSession({ source }: Props) {
               result={state.result}
               onContinue={() => void goOn()}
               onReport={() => setDialog("report")}
+              onOverride={
+                state.result.feedback.overridable && state.result.outcome !== "accepted"
+                  ? () => void overrule()
+                  : undefined
+              }
               continueRef={continueRef}
             />
           )}
