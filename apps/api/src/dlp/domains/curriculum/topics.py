@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import uuid
 from functools import lru_cache
 from pathlib import Path
@@ -139,17 +140,33 @@ def topic_for(bank: TopicBank, topic_id: str) -> PracticeTopic:
     return topic
 
 
-def review_of(bank: TopicBank) -> dict[str, dict[str, str]]:
-    """Topics met before: the same situation (title) at the same place in an earlier stage's bank, named after the
-    earliest such stage (shown as "Herhaling van pre-A1"). Worked out when a page is built, never stored on the
-    topic, whose hash versions the learner's results and the content reviews."""
+@lru_cache(maxsize=32)
+def _texts(path: str, modified: int, skill: str) -> dict[str, str]:
+    """One stage's reading or listening texts (normalised) to their topic id, read from the file alone: the
+    earlier banks are not validated or kept for this."""
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    found: dict[str, str] = {}
+    for topic in data["topics"]:
+        found.setdefault(normalise(topic[skill]["text"]["nl"]), topic["id"])
+    return found
+
+
+def review_of(bank: TopicBank, skill: Skill, topic: PracticeTopic | None = None) -> dict[str, dict[str, str]]:
+    """Reused practice: a topic whose reading or listening text is the same as an earlier stage's names the
+    earliest such topic for that skill (shown as "Herhaling van pre-A1"). Speaking and writing tasks are never
+    repeated, and a text that only extends an earlier one is new. Worked out per view (one topic, or the whole
+    bank), never stored on the topic, whose hash versions the learner's results and the content reviews."""
+    if skill not in ("reading", "listening"):
+        return {}
+    texts = {item.id: normalise(getattr(item, skill).text.nl) for item in ([topic] if topic else bank.topics)}
     found: dict[str, dict[str, str]] = {}
     for stage_id in STAGE_IDS[:STAGE_IDS.index(bank.stage_id)]:
-        earlier = topics_for(stage_id).topics
-        for index, topic in enumerate(bank.topics):
-            if (topic.id not in found and index < len(earlier)
-                    and normalise(earlier[index].title.nl) == normalise(topic.title.nl)):
-                found[topic.id] = {"stage_id": stage_id, "topic_id": earlier[index].id}
+        path = CONTENT_DIR / "practice" / f"{stage_id}.json"
+        earlier = _texts(str(path), path.stat().st_mtime_ns, skill)
+        for topic_id, text in texts.items():
+            twin = earlier.get(text)
+            if twin is not None and topic_id not in found:
+                found[topic_id] = {"stage_id": stage_id, "topic_id": twin}
     return found
 
 
@@ -174,7 +191,7 @@ def topic_page(session: Session, learner_id: uuid.UUID, bank: TopicBank, *, skil
                  for lang in ("nl", "en", "fa")]
         return not query or normalise(query) in normalise(" ".join(terms))
     selected = [topic for topic in bank.topics if matches(topic)]
-    reviews = review_of(bank)
+    reviews = review_of(bank, skill)
     return {
         "stage_id": bank.stage_id, "skill": skill, "total": len(selected), "total_topics": len(bank.topics),
         "offset": offset, "limit": limit, "completed_count": sum(bool(saved.get(t.id) and saved[t.id].completed)
@@ -208,7 +225,7 @@ def topic_detail(session: Session, learner_id: uuid.UUID, bank: TopicBank, topic
            if skill in ("speaking", "writing") else {}),
         "progress": {"completed": bool(saved and saved.completed), "attempted": saved is not None},
         "policy": {"recording_max_seconds": min(60, recording_max_seconds)},
-        "review_of": review_of(bank).get(topic.id),
+        "review_of": review_of(bank, skill, topic).get(topic.id),
     }
 
 

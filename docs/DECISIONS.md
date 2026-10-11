@@ -366,4 +366,6 @@ typed input is never tagged as speaking. The passage's translation, or the liste
 once every question is answered (the browser could read the translation from the topic page before; the
 session keeps the order read, answer, then check). Authored questions earn the engine's point per first
 answer like every item (D-28); step 4.2 decides topic points and must not pay these twice. Final-check
-content is never a source: a lesson session reads `stage.lesson` only.
+content is never a source: a lesson session reads `stage.lesson` only. A topic is labelled as review of an
+earlier stage only for a skill whose text it repeats word for word: the same situation with a new text is
+new practice.

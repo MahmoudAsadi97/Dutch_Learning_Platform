@@ -583,13 +583,18 @@ whole.
   tried, `content_changed` when the topic or lesson changed since the session began, `open_task`), the result,
   whether the activity is completed, and `to_retry`, the questions missed the first time. `retry: true` asks
   only the questions the last finished session on the same activity did not get right first (409
-  `nothing_to_retry` when there are none) and completes nothing. A topic's speaking or writing is a warm-up
-  on the topic's own words (`plan(..., only=vocabulary_ids)`, six items, no ordering board); it completes
-  nothing, and its typed items are never tagged speaking. Sessions resume only on the same topic, skill and
-  retry; reading and listening build no word pool, so the library's content gate does not hold them back.
-  The passage steps join `intro` in `UNGRADED` (no attempt count, point, mistake or progress). Topic lists and
-  details carry `review_of` (`topics.review_of`): the earliest earlier stage whose bank has the same situation
-  at the same place, worked out per view, never stored on the topic.
+  `nothing_to_retry` when there are none; the session it came from is kept as `retry_of`) and completes
+  nothing. A topic's speaking or writing is a warm-up on the topic's own words (`plan(..., only=
+  vocabulary_ids)`, boards included, odd one out's odd word excepted; six items, no ordering board); it
+  completes nothing, and its typed items are never tagged speaking. Sessions resume only on the same topic,
+  skill and retry, never on content changed since they began (such a session is abandoned: it could not
+  count) and, for a retry, only while it still answers the last finished session; reading and listening build
+  no word pool, so the library's content gate does not hold them back. The passage steps join `intro` in
+  `UNGRADED` (no attempt count, point, mistake or progress). Topic lists and details carry `review_of`
+  (`topics.review_of`) for the requested skill: the earliest earlier stage's topic whose reading or listening
+  text is exactly the same (none for speaking and writing, whose tasks never repeat; a text that only extends
+  an earlier one is new). The earlier texts are read from the bank files once per file version and kept as a
+  small index, never stored on the topic.
 - **Web kit** (step 3.6, `components/exercise`, `/oefenen`): `ExerciseSession` runs a session from start to
   summary through a pure reducer (`sessionReducer.ts`: creating, answering, checking, feedback, finishing,
   summary, error); server responses are events, so a resumed session continues exactly from what the API

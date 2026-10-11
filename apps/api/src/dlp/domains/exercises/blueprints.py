@@ -118,13 +118,15 @@ def _item(pool: Pool, word: Word, rng: random.Random, *, used: set[tuple[str, st
     return None
 
 
-def _odd_one_out(pool: Pool, words: list[Word], met: frozenset[str], rng: random.Random) -> Draft | None:
+def _odd_one_out(pool: Pool, words: list[Word], met: frozenset[str], rng: random.Random,
+                 only: frozenset[str] | None = None) -> Draft | None:
     if not pool.odd_one_out:
         return None
     for topic in dict.fromkeys(word.topic for word in words):
         for noun in (True, False):
             group = [w for w in words if w.topic == topic and bool(w.article) == noun]
-            group += [w for w in pool.by_topic[topic] if w.key in met and bool(w.article) == noun and w not in group]
+            group += [w for w in pool.by_topic[topic] if w.key in met and bool(w.article) == noun and w not in group
+                      and (only is None or w.id in only)]
             if len(group) >= 3:
                 draft = generators.odd_one_out(pool, group[:3], rng)
                 if draft is not None:
@@ -145,10 +147,12 @@ def _match_pairs(pool: Pool, words: list[Word], rng: random.Random) -> Draft | N
     return None
 
 
-def _de_het(pool: Pool, words: list[Word], met: frozenset[str], rng: random.Random) -> Draft | None:
+def _de_het(pool: Pool, words: list[Word], met: frozenset[str], rng: random.Random,
+            only: frozenset[str] | None = None) -> Draft | None:
     sortable = set(pool.sortable)
     nouns = [w for w in words if w.id in sortable]
-    nouns += [pool.by_id[i] for i in pool.sortable if pool.by_id[i].key in met and pool.by_id[i] not in nouns]
+    nouns += [pool.by_id[i] for i in pool.sortable if pool.by_id[i].key in met and pool.by_id[i] not in nouns
+              and (only is None or i in only)]
     half = boards.SORT_NOUNS // 2
     by_article = {article: [w for w in nouns if w.article == article] for article in ("de", "het")}
     if any(len(group) < half for group in by_article.values()):
@@ -167,12 +171,13 @@ def _sentence_order(pool: Pool, words: list[Word], rng: random.Random) -> Draft 
 
 
 def _boards(pool: Pool, words: list[Word], met: frozenset[str], rng: random.Random, size: int,
-            kinds: frozenset[str] | None = None) -> list[Draft]:
-    """Up to MAX_BOARDS boards, chosen at random among those the words allow."""
+            kinds: frozenset[str] | None = None, only: frozenset[str] | None = None) -> list[Draft]:
+    """Up to MAX_BOARDS boards, chosen at random among those the words allow; with `only`, the words a board adds
+    to the session's own come from those words too (odd one out's odd word excepted)."""
     found = [board for board in (
-        _odd_one_out(pool, words, met, rng) if size >= ODD_ONE_OUT_MIN_SIZE else None,
+        _odd_one_out(pool, words, met, rng, only) if size >= ODD_ONE_OUT_MIN_SIZE else None,
         _match_pairs(pool, words, rng),
-        _de_het(pool, words, met, rng),
+        _de_het(pool, words, met, rng, only),
         _sentence_order(pool, words, rng),
     ) if board is not None and (kinds is None or board.kind in kinds)]
     return rng.sample(found, min(MAX_BOARDS, len(found), max(size - 4, 0)))
@@ -239,7 +244,7 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
     fresh = _distinct(new, taken)[:min(NEW_WORDS if len(review) >= size - NEW_WORDS else NEW_WORDS_FIRST, size)]
     known = _distinct(review, taken)[:max(size - len(fresh), 0)]
     words = [*fresh, *known]
-    room_for = len(_boards(pool, words, met, random.Random(rng.random()), size, kinds))
+    room_for = len(_boards(pool, words, met, random.Random(rng.random()), size, kinds, only))
     while room_for and len(words) + room_for > size:
         # a board takes the place of a new word beyond the usual number, else of a word met before
         if len(fresh) > NEW_WORDS or not known:
@@ -248,7 +253,7 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
             known = known[:-1]
         words = [*fresh, *known]
     # the boards themselves come from the words the session keeps, so a new word on a board is introduced
-    found = _boards(pool, words, met, rng, size, kinds)[:room_for]
+    found = _boards(pool, words, met, rng, size, kinds, only)[:room_for]
     shown = tuple(text for board in found if board.kind == "sentence_order" for text in board.key["texts"])
     used: dict[str, set[tuple[str, str]]] = {word.id: set() for word in words}
     clozes: list[Word] = []

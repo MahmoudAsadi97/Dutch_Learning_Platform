@@ -320,12 +320,11 @@ def test_warm_ups_before_an_open_task_never_complete_and_typed_items_are_never_s
             # only the item said aloud is speaking; typing never is
             assert item["skill"] != "speaking" or item["kind"] == "shadow"
             assert item["skill"] != skill or item["kind"] == "shadow"
-        # every item is about the topic's own words (an odd-one-out board's odd word comes from elsewhere)
+        # every item is about the topic's own words, boards too (an odd-one-out board's odd word excepted)
         with session_scope() as session:
-            refs = set(session.scalars(select(ExerciseItem.ref).where(
-                ExerciseItem.session_id == uuid.UUID(view["id"]), ExerciseItem.ref.like("word:%"),
-                ExerciseItem.kind != "odd_one_out")))
-        assert refs and {ref.removeprefix("word:") for ref in refs} <= set(topic.vocabulary_ids)
+            rows = list(session.scalars(select(ExerciseItem).where(ExerciseItem.session_id == uuid.UUID(view["id"]),
+                                                                   ExerciseItem.kind != "intro")))
+        assert _words(rows) and _words(rows) <= set(topic.vocabulary_ids)
         for index, item in enumerate(graded):
             skipped = _post(client, view, item, "skip", f"warm-up-skip-{skill}-{index:03d}", reason="unknown")
             assert skipped.status_code == 200, skipped.text
@@ -336,6 +335,87 @@ def test_warm_ups_before_an_open_task_never_complete_and_typed_items_are_never_s
                               "required": None, "completed": False, "to_retry": 0}
     assert _topic_row(skill="speaking") is None and _topic_row(skill="writing") is None
     assert _stage_skill(skill="speaking") is None and _observations() == []
+
+
+def _words(rows) -> set[str]:
+    """The library words items are about: an item's own word, every word of a board (not odd one out's odd
+    word, which comes from another topic by design)."""
+    words: set[str] = set()
+    for row in rows:
+        refs = row.key.get("refs", {})
+        if row.kind == "odd_one_out":
+            words |= {ref for option, ref in refs.items() if option != row.key["answer"]}
+        elif row.kind in ("match_pairs", "de_het"):
+            words |= set(refs.values())
+        else:
+            words.add(row.ref)  # a choice's other options are distractors, not what it practises
+    return {ref.split(":", 1)[1] for ref in words if ref.startswith(("word:", "sentence:"))}
+
+
+def test_a_warm_up_keeps_to_the_topic_words_and_never_tags_typing_as_speaking():
+    """Over many seeds, with the topic's words and the whole stage met (boards may then draw on known words):
+    every item and board stays on the topic's words, typed kinds occur and are never speaking or writing, and
+    only shadowing is speaking."""
+    import random
+    from typing import get_args
+
+    from dlp.domains.exercises.blueprints import plan
+    from dlp.domains.exercises.pool import pool_for
+    from dlp.domains.exercises.schemas import GradedKind
+
+    seen: set[str] = set()
+    for stage_id, topic_id in (("a1", TOPIC), ("b1", "b1-t001"), ("c2", "c2-t001")):
+        pool = pool_for(stage_id)
+        topic = topics.topic_for(topics.topics_for(stage_id), topic_id)
+        met = frozenset(word.key for word in pool.words)
+        kinds = frozenset(get_args(GradedKind)) - {"sentence_order"}
+        for seed in range(60):
+            drafts = plan(pool, random.Random(seed), size=6, met=met, audio=seed % 2 == 0, kinds=kinds,
+                          only=frozenset(topic.vocabulary_ids))
+            graded = [draft for draft in drafts if draft.kind != "intro"]
+            assert graded
+            for draft in graded:
+                seen.add(draft.kind)
+                assert draft.skill in ("", "listening") or (draft.skill == "speaking" and draft.kind == "shadow")
+                if draft.kind in ("match_pairs", "de_het"):
+                    about = set(draft.words)
+                elif draft.kind == "odd_one_out":
+                    about = set(draft.words) - {draft.key["refs"][draft.key["answer"]].removeprefix("word:")}
+                else:  # a choice's other options are distractors, not what it practises
+                    about = {draft.ref.split(":", 1)[1]}  # word:<id>, or sentence:<id> for a built sentence
+                assert about <= set(topic.vocabulary_ids), (stage_id, seed, draft.kind)
+    assert {"typed_recall", "cloze_typed", "shadow"} <= seen
+
+
+def test_a_session_on_changed_content_is_not_resumed(client, monkeypatch):
+    """A session built before its topic changed could never count: a new request starts over."""
+    first = _topic(client, "topic-session-0401").json()
+    original = topics.topics_for
+    real = original("a1")
+    changed = [topic.model_copy(update={"language_focus": topic.objectives[0]}) if topic.id == TOPIC else topic
+               for topic in real.topics]
+    monkeypatch.setattr(topics, "topics_for",
+                        lambda stage_id: real.model_copy(update={"topics": changed}) if stage_id == "a1"
+                        else original(stage_id))
+    again = _topic(client, "topic-session-0402")
+    assert again.status_code == 201 and again.json()["id"] != first["id"] and not again.json()["resumed"]
+    stale = client.get(f"/exercises/sessions/{first['id']}", headers=auth_headers()).json()
+    assert stale["status"] == "abandoned"
+
+
+def test_a_retry_left_open_is_not_resumed_once_a_newer_session_finished(client):
+    first_run = _run(client, "topic-session-0501", [False, True])
+    first_missed = _key(_questions(first_run["view"])[0])["question"]
+    left_open = _topic(client, "retry-session-0501", retry=True).json()
+    assert [_key(item)["question"] for item in _questions(left_open)] == [first_missed]
+    second_run = _run(client, "topic-session-0502", [True, False])
+    second_missed = _key(_questions(second_run["view"])[1])["question"]
+    retry = _topic(client, "retry-session-0502", retry=True)
+    assert retry.status_code == 201 and retry.json()["id"] != left_open["id"]
+    assert [_key(item)["question"] for item in _questions(retry.json())] == [second_missed]
+    # the same retry asked again resumes it
+    again = _topic(client, "retry-session-0503", retry=True).json()
+    assert again["resumed"] and again["id"] == retry.json()["id"]
 
 
 def test_sessions_on_other_activities_never_resume_each_other(client):

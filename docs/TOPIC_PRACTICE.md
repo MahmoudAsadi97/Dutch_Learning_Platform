@@ -37,8 +37,9 @@ first answer to each question counts, through the same 75 % rule, when the sessi
 answered wrong and then right on its second try does not count as right, a question skipped the first time
 counts as wrong, and a session ended before every question was tried records nothing. A short retry
 session asks only the missed questions again and completes nothing. Speaking and writing sessions are
-warm-ups on the topic's words; their completion still comes from the open task. A topic that repeats a
-situation from an earlier stage names it (`review_of`).
+warm-ups on the topic's words; their completion still comes from the open task. A topic whose reading
+or listening text is the same as an earlier stage's names the earliest such topic for that skill
+(`review_of`); a situation that returns with a new text is new practice.
 
 Topic practice can fulfil the existing stage-level practice prerequisite. Completing all 100 topics
 is not required to attempt a final check. Opening a topic, replaying audio or revealing a transcript

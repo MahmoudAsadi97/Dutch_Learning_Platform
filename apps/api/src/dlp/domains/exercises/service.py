@@ -97,14 +97,19 @@ def _params(body: CreateBody) -> dict[str, Any]:
     return body.model_dump(exclude={"request_id", *defaults})
 
 
-def _to_retry(session: Session, learner_id: uuid.UUID, body: CreateBody, stage_id: str) -> set[str]:
-    """The questions the last finished session on this activity did not get right the first time (wrong,
-    skipped or never tried); a retry session asks only those."""
-    last = session.scalar(select(ExerciseSession).where(
+def _last_finished(session: Session, learner_id: uuid.UUID, body: CreateBody,
+                   stage_id: str) -> ExerciseSession | None:
+    """The learner's last finished session on this activity (a retry or not)."""
+    return session.scalar(select(ExerciseSession).where(
         ExerciseSession.learner_id == learner_id, ExerciseSession.status == "finished",
         ExerciseSession.source == body.source, ExerciseSession.stage_id == stage_id,
         ExerciseSession.topic_id == (body.topic_id or ""), ExerciseSession.skill == body.skill,
     ).order_by(ExerciseSession.finished_at.desc()).limit(1))
+
+
+def _to_retry(session: Session, last: ExerciseSession | None) -> set[str]:
+    """The questions the last finished session on this activity did not get right the first time (wrong,
+    skipped or never tried); a retry session asks only those."""
     missed = {item.key["question"] for item in (items(session, last) if last else [])
               if item.key.get("authored") and item.first_outcome not in FIRST_TRY_RIGHT}
     if not missed:
@@ -144,6 +149,8 @@ def create(session: Session, settings: Settings, learner: Learner, body: CreateB
         if body.library_topic is not None and body.library_topic not in pool.by_topic:
             raise ExerciseError("library topic not found", 404)
     now = utcnow()
+    # a retry is built from the misses of the last finished session on the activity
+    last = _last_finished(session, learner.id, body, stage_id) if body.retry else None
     for row in session.scalars(select(ExerciseSession).where(
             ExerciseSession.learner_id == learner.id, ExerciseSession.status == "active",
             ExerciseSession.source == body.source, ExerciseSession.stage_id == stage_id,
@@ -152,14 +159,18 @@ def create(session: Session, settings: Settings, learner: Learner, body: CreateB
         if (row.params.get("library_topic") != body.library_topic or row.params.get("kinds") != body.kinds
                 or row.params.get("retry", False) != body.retry):
             continue  # another library topic, kinds this client may not show, or a retry and a full session
+        if ((activity is not None and row.content_version != activity.content_version)
+                or (body.retry and row.params.get("retry_of") != (str(last.id) if last else None))):
+            # built on content changed since (it could never count), or a retry of an older session's misses
+            row.status, row.updated_at = "abandoned", now
+            continue
         if not body.fresh and row.created_at >= now - timedelta(hours=RESUME_HOURS):
             return row, "resumed"
         row.status, row.updated_at = "abandoned", now
     seed = seed_for(learner.id, body.request_id)
     rng = random.Random(seed)
     if activity is not None and receptive:
-        drafts = activities.comprehension(activity, rng,
-                                          only=_to_retry(session, learner.id, body, stage_id) if body.retry else None)
+        drafts = activities.comprehension(activity, rng, only=_to_retry(session, last) if body.retry else None)
         content_version = activity.content_version
     else:
         assert pool is not None
@@ -184,7 +195,8 @@ def create(session: Session, settings: Settings, learner: Learner, body: CreateB
     row = ExerciseSession(learner_id=learner.id, request_id=body.request_id, source=body.source, stage_id=stage_id,
                           topic_id=body.topic_id or "", skill=body.skill or "", focus=body.focus, seed=seed,
                           generator_version=GENERATOR_VERSION, content_version=content_version,
-                          params={**params, "fingerprint": signature},
+                          params={**params, "fingerprint": signature,
+                                  **({"retry_of": str(last.id)} if body.retry and last else {})},
                           status="active", item_count=len(drafts), created_at=now, updated_at=now)
     session.add(row)
     session.flush()

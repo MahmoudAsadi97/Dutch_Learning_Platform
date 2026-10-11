@@ -163,29 +163,36 @@ def test_topic_api_auth_bounds_and_read_only_browsing(client, headers, bank):
         assert session.scalar(select(func.count()).select_from(CurriculumPractice)) == 0
 
 
-def test_a_topic_met_at_an_earlier_stage_names_where(client, headers):
-    """Reused topics (the same situation at the same place in an earlier stage's bank) are labelled as review
-    of the earliest stage they appeared at; the field leaks no key."""
-    listing = client.get("/curriculum/a1/topics", params={"skill": "reading"}, headers=headers).json()
-    assert listing["items"][0]["review_of"] == {"stage_id": "pre-a1", "topic_id": "pre-a1-t001"}
-    detail = client.get("/curriculum/b1/topics/b1-t001", params={"skill": "listening"}, headers=headers)
-    assert detail.json()["review_of"] == {"stage_id": "a2", "topic_id": "a2-t001"}
-    assert "answer_index" not in detail.text and "explanation" not in detail.text
+def test_a_text_met_at_an_earlier_stage_is_labelled_as_review(client, headers):
+    """A topic whose reading or listening text is an earlier stage's own names the earliest such topic, for
+    that skill only; speaking and writing tasks are never repeated. The field leaks no key."""
+    reading = client.get("/curriculum/a1/topics", params={"skill": "reading"}, headers=headers).json()
+    assert all(item["review_of"] is None for item in reading["items"])  # a1's texts are new, its titles are not
+    listening = client.get("/curriculum/a1/topics", params={"skill": "listening"}, headers=headers).json()
+    assert listening["items"][0]["review_of"] == {"stage_id": "pre-a1", "topic_id": "pre-a1-t001"}
+    for skill in ("reading", "listening"):
+        detail = client.get("/curriculum/b1/topics/b1-t001", params={"skill": skill}, headers=headers)
+        assert detail.json()["review_of"] == {"stage_id": "a2", "topic_id": "a2-t001"}
+        # (the b1 texts themselves use the word "explanation", so the key check is on the questions)
+        assert all(set(question) == {"id", "prompt", "options"} for question in detail.json()["activity"]["questions"])
+    assert client.get("/curriculum/c2/topics/c2-t050", params={"skill": "reading"},
+                      headers=headers).json()["review_of"] == {"stage_id": "c1", "topic_id": "c1-t050"}
     writing = client.get("/curriculum/c2/topics/c2-t050", params={"skill": "writing"}, headers=headers)
-    assert writing.json()["review_of"] == {"stage_id": "c1", "topic_id": "c1-t050"}
+    assert writing.json()["review_of"] is None
     assert "answer_index" not in writing.text and "explanation" not in writing.text
-    # the first stage of each group of three reuses nothing
-    for stage_id in ("pre-a1", "a2", "pre-b2", "c1"):
-        page = client.get(f"/curriculum/{stage_id}/topics", params={"skill": "writing"}, headers=headers).json()
-        assert all(item["review_of"] is None for item in page["items"])
-    # measured: each later stage of a group repeats every topic of the group's first stage, in place
-    expected = {"a1": "pre-a1", "pre-a2": "pre-a1", "pre-b1": "a2", "b1": "a2", "b2": "pre-b2", "pre-c1": "pre-b2",
-                "pre-c2": "c1", "c2": "c1"}
+    # measured on the banks: (reading twins, listening twins) per stage, always of one earlier stage
+    expected = {"a1": (0, 100, "pre-a1"), "pre-a2": (0, 100, "pre-a1"), "pre-b1": (4, 100, "a2"),
+                "b1": (100, 100, "a2"), "pre-c2": (100, 0, "c1"), "c2": (100, 0, "c1")}
     for stage_id in STAGE_IDS:
-        reviews = topics.review_of(topics.topics_for(stage_id))
-        assert {entry["stage_id"] for entry in reviews.values()} == ({expected[stage_id]} if stage_id in expected
-                                                                     else set())
-        assert len(reviews) in (0, len(topics.topics_for(stage_id).topics))
+        bank = topics.topics_for(stage_id)
+        counts = [len(topics.review_of(bank, skill)) for skill in ("reading", "listening")]
+        sources = {entry["stage_id"] for skill in ("reading", "listening")
+                   for entry in topics.review_of(bank, skill).values()}
+        reads, hears, source = expected.get(stage_id, (0, 0, None))
+        assert counts == [reads, hears] and sources == ({source} if source else set()), stage_id
+        assert topics.review_of(bank, "speaking") == topics.review_of(bank, "writing") == {}
+    assert sorted(topics.review_of(topics.topics_for("pre-b1"), "reading")) == [
+        "pre-b1-t023", "pre-b1-t024", "pre-b1-t077", "pre-b1-t078"]
 
 
 def submit_reading(client, headers, topic, *, skill="reading", correct=True):

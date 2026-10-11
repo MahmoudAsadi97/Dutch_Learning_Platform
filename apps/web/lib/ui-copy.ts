@@ -530,6 +530,11 @@ export const uiCopy = {
       en: "You can take this check only once. Your first attempt counts.",
       fa: "این آزمون را فقط یک بار می‌توانی بدهی. تلاش اولت حساب می‌شود.",
     },
+    nothingToRetry: {
+      nl: "Er is geen gemiste vraag meer om opnieuw te oefenen.",
+      en: "There is no missed question left to practise again.",
+      fa: "دیگر سؤال جاافتاده‌ای برای تمرین دوباره نمانده است.",
+    },
     inProgress: {
       nl: "Je antwoord wordt nog verwerkt. Probeer het zo opnieuw.",
       en: "Your answer is still being processed. Try again in a moment.",

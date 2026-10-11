@@ -28,6 +28,7 @@ export interface ErrorCopies {
   sessionClosed: Copy;
   turnLimit: Copy;
   noRetry: Copy;
+  nothingToRetry: Copy;
   inProgress: Copy;
   evidenceShort: Copy;
 }
@@ -47,6 +48,7 @@ const BY_CODE: Record<string, keyof ErrorCopies> = {
   session_closed: "sessionClosed",
   turn_limit: "turnLimit",
   no_retry: "noRetry",
+  nothing_to_retry: "nothingToRetry",
   in_progress: "inProgress",
   evidence_short: "evidenceShort",
   nothing_to_read: "invalid",
