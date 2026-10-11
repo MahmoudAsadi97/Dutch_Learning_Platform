@@ -62,7 +62,9 @@ export function summaryActions(
       { kind: "exit", variant: "primary" },
       { kind: "again", variant: "secondary" },
     ];
-  if (canRetry && completion.to_retry > 0)
+  // a retry asks the questions the learner answered and missed; after an early finish or changed content the
+  // way to count is all the questions again (to_retry then holds questions never asked, or old ones)
+  if (canRetry && completion.to_retry > 0 && (completion.reason === null || completion.reason === "retry"))
     return [
       { kind: "retry", variant: "primary" },
       { kind: "again", variant: "secondary" },

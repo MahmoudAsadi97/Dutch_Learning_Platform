@@ -430,6 +430,13 @@ export function ExerciseSession(props: Props) {
       check();
     }
   }
+  // Inside a topic the button that started the session has gone: a session that cannot start takes the focus,
+  // so the way on is next to it. On a page of its own the load runs with the page and focus is at the top.
+  const errorRef = useRef<HTMLDivElement>(null);
+  const loadFailed = state.phase === "error" && loadError !== null;
+  useEffect(() => {
+    if (isEmbedded && loadFailed) errorRef.current?.focus();
+  }, [isEmbedded, loadFailed]);
   useEffect(() => {
     if (isEmbedded) return;
     const listener = (event: KeyboardEvent) => onKey(event);
@@ -633,7 +640,13 @@ export function ExerciseSession(props: Props) {
         {loading && <SkeletonPanel label={exerciseCopy.loading.nl} />}
 
         {state.phase === "error" && loadError && (
-          <Notice tone="warning" role="alert">
+          <Notice
+            tone="warning"
+            role="alert"
+            ref={errorRef}
+            tabIndex={isEmbedded ? -1 : undefined}
+            className={isEmbedded ? "exercise-load-error" : undefined}
+          >
             <UiText text={loadError} tier="guide" />
             <div className="exercise-actions">
               {loadCode === "nothing_to_retry" ? (
@@ -834,7 +847,9 @@ export function ExerciseSession(props: Props) {
                     ? exerciseCopy.exitLead
                     : warmUp
                       ? exerciseCopy.exitLeadWarmUp
-                      : exerciseCopy.exitLeadActivity
+                      : retry
+                        ? exerciseCopy.exitLeadRetry
+                        : exerciseCopy.exitLeadActivity
                 }
                 tier="guide"
               />

@@ -30,7 +30,7 @@ function question(prompt: ChoicePrompt): Copy {
 }
 
 /** What the question is about: a Dutch word, a meaning, a sentence with a gap, a topic, a question or a sound. */
-function Stem({ prompt, audio }: { prompt: ChoicePrompt; audio?: ReactNode }) {
+function Stem({ prompt, audio, stemId }: { prompt: ChoicePrompt; audio?: ReactNode; stemId?: string }) {
   if (prompt.kind === "listen_choose") return <div className="exercise-stem">{audio}</div>;
   if (prompt.kind === "cloze_choice") {
     const [before, ...rest] = prompt.sentence.split("___");
@@ -75,7 +75,8 @@ function Stem({ prompt, audio }: { prompt: ChoicePrompt; audio?: ReactNode }) {
     return (
       <div className="exercise-stem">
         <p className="exercise-prompt">
-          <Dutch text={prompt.stem.nl} /> {prompt.stem.nl && <PhraseAudio text={prompt.stem.nl} />}
+          <Dutch text={prompt.stem.nl} id={stemId} />{" "}
+          {prompt.stem.nl && <PhraseAudio text={prompt.stem.nl} />}
         </p>
         <Meaning text={prompt.stem} className="exercise-cue" />
       </div>
@@ -134,14 +135,17 @@ interface Props {
 export function ChoiceItem({ prompt, selected, onSelect, feedback, headingRef, audio }: Props) {
   const name = useId();
   const headingId = useId();
+  const stemId = useId();
   const support = new Map((feedback?.support ?? []).map((entry) => [entry.id, entry]));
+  // an authored question is part of its group's name, as a legend would be (its Dutch only, not its play button)
+  const asks = prompt.kind === "choice" && prompt.direction === "question" && Boolean(prompt.stem.nl);
   return (
     <div className="exercise-item">
       <ItemHeading className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
         <UiText text={question(prompt)} tier="guide" />
       </ItemHeading>
-      <Stem prompt={prompt} audio={audio} />
-      <fieldset className="answer-group" aria-labelledby={headingId}>
+      <Stem prompt={prompt} audio={audio} stemId={stemId} />
+      <fieldset className="answer-group" aria-labelledby={asks ? `${headingId} ${stemId}` : headingId}>
         <div className="answer-list">
           {prompt.options.map((option, index) => (
             <AnswerOption

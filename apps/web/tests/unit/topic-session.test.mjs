@@ -114,6 +114,21 @@ test("the way that helps most comes first: the missed questions, the task, or al
     "exit",
   ]);
   assert.deepEqual(order(completion({ passed: false, completed: false, to_retry: 0 })), ["again", "exit"]);
+  // questions never tried, or content that changed, are not "missed": all the questions again leads
+  assert.deepEqual(
+    order(completion({ counted: false, reason: "unfinished", completed: false, to_retry: 2 })),
+    ["again", "exit"],
+  );
+  assert.deepEqual(
+    order(completion({ counted: false, reason: "content_changed", completed: false, to_retry: 1 })),
+    ["again", "exit"],
+  );
+  // a retry may still be followed by another on what it missed
+  assert.deepEqual(order(completion({ counted: false, reason: "retry", completed: false, to_retry: 1 })), [
+    "retry",
+    "again",
+    "exit",
+  ]);
   assert.deepEqual(order(completion({ counted: false, reason: "open_task", skill: "writing" })), [
     "exit",
     "again",

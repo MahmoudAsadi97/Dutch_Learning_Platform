@@ -647,20 +647,25 @@ function TopicReader({
                   <h4 className="topic-task-heading" tabIndex={-1} ref={taskRef}>
                     <UiText text={topicsCopy.taskTitle} />
                   </h4>
-                  {!audioId && !busy && (
-                    <Button variant="ghost" size="small" icon="sparkles" onClick={() => go("session")}>
-                      <UiText text={topicsCopy.warmUp} inline />
-                    </Button>
-                  )}
+                  {/* disabled rather than removed while busy, so the recorder and the text box never move */}
+                  <Button
+                    variant="ghost"
+                    size="small"
+                    icon="sparkles"
+                    disabled={busy || Boolean(audioId)}
+                    onClick={() => go("session")}
+                  >
+                    <UiText text={topicsCopy.warmUp} inline />
+                  </Button>
                   {topic.context && (
                     <details className="topic-scene" open>
                       <summary>De situatie</summary>
                       <p className="small-text">
                         Gebruik deze informatie voor jouw antwoord. Je hoeft geen andere oefening te openen.
                       </p>
-                      <h4>Wat je leest</h4>
+                      <h5>Wat je leest</h5>
                       <SpokenPassage text={topic.context.reading} />
-                      <h4>Het gesproken bericht</h4>
+                      <h5>Het gesproken bericht</h5>
                       <SpokenPassage text={topic.context.listening} />
                     </details>
                   )}
@@ -671,7 +676,7 @@ function TopicReader({
                           <LearningText text={task.prompt} />
                           <PhraseAudio text={task.prompt.nl} disabled={busy} />
                         </p>
-                        <h4>Dit probeer je te doen</h4>
+                        <h5>Dit probeer je te doen</h5>
                         <ul className="task-criteria">
                           {task.criteria.map((criterion, index) => (
                             <li key={index}>
@@ -788,13 +793,13 @@ function TopicReader({
                       className={`practice-feedback ${feedback.completed ? "complete" : "retry"}`}
                       role="status"
                     >
-                      <h4>
+                      <h5>
                         {feedback.passed === false
                           ? "Je hebt geoefend. Bekijk je volgende stap."
                           : feedback.completed
                             ? "Een onderwerp verder."
                             : "Probeer het nog eens."}
-                      </h4>
+                      </h5>
                       <LearningText text={feedback.feedback} />
                       {feedback.criteria && (
                         <ul className="topic-feedback-criteria">

@@ -502,6 +502,11 @@ export const exerciseCopy = {
     en: "Your answers and points are saved. If you finish now, this topic only counts if you tried every question. You can also continue later.",
     fa: "پاسخ‌ها و امتیازهایت ذخیره شده‌اند. اگر حالا تمام کنی، این موضوع فقط وقتی حساب می‌شود که همه‌ی سؤال‌ها را امتحان کرده باشی. می‌توانی بعداً هم ادامه بدهی.",
   },
+  exitLeadRetry: {
+    nl: "Je antwoorden en punten zijn bewaard. Deze ronde met de gemiste vragen is extra oefening; die telt niet mee voor het onderwerp.",
+    en: "Your answers and points are saved. This round of missed questions is extra practice; it does not count for the topic.",
+    fa: "پاسخ‌ها و امتیازهایت ذخیره شده‌اند. این دور با سؤال‌های جاافتاده تمرین اضافه است و برای این موضوع حساب نمی‌شود.",
+  },
   exitLeadWarmUp: {
     nl: "Je antwoorden en punten zijn bewaard. Rond nu af om te zien wat je gedaan hebt, of ga meteen naar de opdracht.",
     en: "Your answers and points are saved. Finish now to see what you have done, or go straight to the task.",

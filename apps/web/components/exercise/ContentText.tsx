@@ -7,10 +7,18 @@ import type { Text } from "@/lib/client/exercises";
  * Practice content from the API, which is not catalogue copy: Dutch in its own `lang` span, and meanings in
  * the learner's support languages. API texts may lack a language; a meaning always shows in at least one.
  */
-export function Dutch({ text, className = "" }: { text?: string | null; className?: string }) {
+export function Dutch({
+  text,
+  className = "",
+  id,
+}: {
+  text?: string | null;
+  className?: string;
+  id?: string;
+}) {
   if (!text) return null;
   return (
-    <span lang="nl" className={className || undefined}>
+    <span lang="nl" className={className || undefined} id={id}>
       {text}
     </span>
   );

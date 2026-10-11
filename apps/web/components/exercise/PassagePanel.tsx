@@ -125,7 +125,6 @@ export function PassageReview({ prompt, audioPath }: { prompt: PassagePrompt; au
           variant="secondary"
           size="small"
           icon="languages"
-          aria-pressed={translated}
           onClick={() => setTranslated((value) => !value)}
         >
           <UiText text={translated ? exerciseCopy.translationHide : exerciseCopy.translationShow} inline />

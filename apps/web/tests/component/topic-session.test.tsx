@@ -233,6 +233,10 @@ describe("a session inside a practice topic", () => {
     expect(document.querySelector(".exercise-passage")).toHaveAttribute("data-mode", "reference");
     // the question's own gloss helps; the options' glosses wait for the answer
     expect(screen.getByText("Waar wacht Sam? (en)")).toBeInTheDocument();
+    // the question is part of the group's name, as the old form's legend was (its Dutch, not its play button)
+    expect(
+      screen.getByRole("group", { name: /^Kies het juiste antwoord.* Waar wacht Sam\?$/ }),
+    ).toBeInTheDocument();
     expect(document.querySelector(".answer-option .exercise-meaning")).toBeNull();
 
     fireEvent.click(screen.getByRole("radio", { name: /Aan de halte/ }));
@@ -251,6 +255,8 @@ describe("a session inside a practice topic", () => {
     await waitFor(() => expect(client.get).toHaveBeenCalledWith("s1"));
     const translate = await screen.findByRole("button", { name: /Vertaling tonen/ });
     fireEvent.click(translate);
+    // an action that says what it does, not a toggle whose state and name contradict each other
+    expect(screen.getByRole("button", { name: /Vertaling verbergen/ })).not.toHaveAttribute("aria-pressed");
     expect(
       within(document.querySelector(".summary-passage") as HTMLElement).getByText("Sam waits for the bus."),
     ).toBeInTheDocument();
@@ -300,9 +306,27 @@ describe("a session inside a practice topic", () => {
     expect(body).toMatchObject({ source: "topic", retry: true });
     expect(id).not.toBe(client.create.mock.calls[0][1]);
     await screen.findByText(/geen gemiste vraag meer/);
+    // the button that started it has gone: the notice takes the focus, next to its way on
+    await waitFor(() => expect(document.querySelector(".exercise-load-error")).toHaveFocus());
     fireEvent.click(screen.getByRole("button", { name: /Doe alle vragen opnieuw/ }));
     await waitFor(() => expect(client.create).toHaveBeenCalledTimes(3));
     expect(client.create.mock.calls[2][0]).not.toHaveProperty("retry");
+  });
+
+  it("says in a retry that stopping keeps the answers and that the round does not count", async () => {
+    wire(summary({ passed: false, completed: false, correct: 1, to_retry: 1 }));
+    render(topic());
+    await answerBoth();
+    fireEvent.click(await screen.findByRole("button", { name: /Oefen de gemiste vragen/ }));
+    await waitFor(() => expect(client.create).toHaveBeenCalledTimes(2));
+    fireEvent.click(await screen.findByRole("button", { name: /Naar de vragen/ }));
+    const heading = await screen.findByRole("heading", { name: /Kies het juiste antwoord/ });
+    act(() => {
+      fireEvent.keyDown(heading, { key: "Escape" });
+    });
+    const dialog = await screen.findByRole("dialog", { name: /Stoppen met oefenen/ });
+    expect(dialog).toHaveTextContent(exerciseCopy.exitLeadRetry.nl);
+    expect(dialog).not.toHaveTextContent(/later verdergaan/);
   });
 
   it("keeps the host busy only while the session is being closed, not while an answer is checked", async () => {
