@@ -37,10 +37,3 @@ export function Meaning({ text, className = "" }: { text?: Text | null; classNam
     </span>
   );
 }
-
-/** A meaning as plain text in the learner's first support language, for an accessible name. */
-export function useMeaningText(): (text?: Text | null) => string {
-  const { showEnglish, showPersian } = useLanguageSupport();
-  return (text) =>
-    (text && ((showEnglish && text.en) || (showPersian && text.fa) || text.en || text.fa)) || "";
-}

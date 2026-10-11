@@ -294,10 +294,11 @@ export function ExerciseSession({ source }: Props) {
     return () => document.removeEventListener("keydown", listener);
   }, []);
 
-  /** The item's own renderer, keyed per attempt so a question that comes back starts empty. */
+  /** The item's own renderer: a fresh one for each asking of a question (a question that comes straight back
+   * starts again from the server's reshuffled prompt) and another for its verdict. */
   function renderItem(view: ItemView) {
     const feedback = state.phase === "feedback" ? (state.result?.feedback ?? null) : null;
-    const key = `${view.id}:${view.attempts_left}`;
+    const key = `${view.id}:${view.attempts_left}:${state.phase === "feedback" ? "verdict" : "ask"}`;
     const prompt = view.prompt;
     switch (prompt.kind) {
       case "match_pairs":

@@ -5,19 +5,18 @@ import { useId, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
-import { fill } from "@/lib/ui-copy";
 
 import type { BoardProps } from "./boardProps";
-import { Dutch, Meaning, useMeaningText } from "./ContentText";
+import { Dutch, Meaning } from "./ContentText";
 
 /**
  * Match pairs: Dutch words on one side, meanings on the other. Choose a word, then its meaning; a pair shows
  * the same number on both sides, and choosing either side again changes it. Every control is a button whose
- * name says what it is paired with, so it works by keyboard and screen reader as well as by touch.
+ * name says what it is paired with, so it works by keyboard and screen reader as well as by touch. Answered,
+ * each word shows whether its pair was right and, when it was not (or the board was skipped), its meaning.
  */
 export function MatchPairsItem({ prompt, feedback, onDraft, headingRef }: BoardProps<"match_pairs">) {
   const headingId = useId();
-  const meaningText = useMeaningText();
   const [pairs, setPairs] = useState<Record<string, string>>({});
   const [active, setActive] = useState<string | null>(null);
   const answered = feedback !== null;
@@ -30,8 +29,12 @@ export function MatchPairsItem({ prompt, feedback, onDraft, headingRef }: BoardP
   const meaningOf = (right: string | undefined) => prompt.right.find((entry) => entry.id === right);
 
   function update(next: Record<string, string>) {
-    setPairs(next);
-    onDraft(Object.keys(next).length === prompt.left.length ? { pairs: next } : null);
+    // always in the board's order, so the same pairs are the same answer (and a resend keeps its request id)
+    const ordered = Object.fromEntries(
+      prompt.left.filter((entry) => entry.id in next).map((entry) => [entry.id, next[entry.id]]),
+    );
+    setPairs(ordered);
+    onDraft(Object.keys(ordered).length === prompt.left.length ? { pairs: ordered } : null);
   }
 
   function chooseLeft(left: string) {
@@ -89,16 +92,19 @@ export function MatchPairsItem({ prompt, feedback, onDraft, headingRef }: BoardP
                   {meaning && (
                     <span className="visually-hidden">
                       {", "}
-                      <UiText text={fill(exerciseCopy.pairedWith, { other: meaningText(meaning) })} inline />
+                      <span lang="nl">{exerciseCopy.goesWith.nl}</span> <Meaning text={meaning} />
                     </span>
                   )}
                   {result && <Icon name={result.ok ? "check" : "close"} size={16} />}
                 </button>
-                {result && !result.ok && (
+                {answered && (!result || !result.ok) && (
                   <span className="pair-correction">
                     <UiText text={exerciseCopy.rightAnswer} inline />
                     {": "}
-                    <Meaning text={meaningOf(result.correct)} />
+                    {/* a skipped board has no results: the word's own meaning shows what it goes with */}
+                    <Meaning
+                      text={result ? meaningOf(result.correct) : feedback?.cards?.[entry.id]?.meaning}
+                    />
                   </span>
                 )}
               </li>
@@ -125,7 +131,7 @@ export function MatchPairsItem({ prompt, feedback, onDraft, headingRef }: BoardP
                   {ownerText && (
                     <span className="visually-hidden">
                       {", "}
-                      <UiText text={fill(exerciseCopy.pairedWith, { other: ownerText })} inline />
+                      <span lang="nl">{exerciseCopy.goesWith.nl}</span> <Dutch text={ownerText} />
                     </span>
                   )}
                 </button>

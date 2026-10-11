@@ -27,7 +27,8 @@ describe("MatchPairsItem", () => {
     expect(screen.getByRole("button", { name: /de deur/ })).toHaveAttribute("aria-pressed", "true");
     fireEvent.click(screen.getByRole("button", { name: /the window/ }));
     expect(onDraft).toHaveBeenLastCalledWith(null);
-    expect(screen.getByRole("button", { name: /the window, hoort bij de deur/ })).toBeInTheDocument();
+    // the name says what it goes with once, without a gloss of the template repeating it
+    expect(screen.getByRole("button", { name: /^the window, hoort bij de deur$/ })).toBeInTheDocument();
     // the door goes with de deur after all: the window is free again
     fireEvent.click(screen.getByRole("button", { name: /^de deur/ }));
     fireEvent.click(screen.getByRole("button", { name: /the door/ }));
@@ -35,6 +36,21 @@ describe("MatchPairsItem", () => {
     fireEvent.click(screen.getByRole("button", { name: /het raam/ }));
     fireEvent.click(screen.getByRole("button", { name: /the window/ }));
     expect(onDraft).toHaveBeenLastCalledWith({ pairs: { l1: "r2", l2: "r1" } });
+  });
+
+  it("shows each word's meaning after a skip", () => {
+    const card = (en: string) => ({ library_id: "x", term: "", meaning: { en }, example: {} });
+    render(
+      <MatchPairsItem
+        prompt={{ kind: "match_pairs", left, right }}
+        feedback={{ outcome: "skipped", cards: { l1: card("the door"), l2: card("the window") } }}
+        onDraft={() => {}}
+      />,
+    );
+    expect(screen.getByRole("button", { name: /^de deur/ }).closest("li")).toHaveTextContent(
+      /Het juiste antwoord.*the door/,
+    );
+    expect(screen.getByRole("button", { name: /^het raam/ }).closest("li")).toHaveTextContent(/the window/);
   });
 
   it("shows each pair's result and the right meaning of a wrong one", () => {
@@ -102,6 +118,20 @@ describe("SortBinsItem", () => {
     ).toBeChecked();
     expect(screen.getByText("het huis").closest(".sort-result")).toHaveTextContent(/Het juiste antwoord/);
   });
+
+  it("shows every article after a skip, read-only", () => {
+    const card = (term: string) => ({ library_id: "x", term, meaning: {}, example: {} });
+    render(
+      <SortBinsItem
+        prompt={{ ...prompt, bins: [...prompt.bins], options: [...prompt.options] }}
+        feedback={{ outcome: "skipped", cards: { n1: card("het huis"), n2: card("de tafel") } }}
+        onDraft={() => {}}
+      />,
+    );
+    for (const radio of screen.getAllByRole("radio")) expect(radio).toBeDisabled();
+    expect(screen.getByText("het huis")).toBeInTheDocument();
+    expect(screen.getByText("de tafel")).toBeInTheDocument();
+  });
 });
 
 describe("TilesItem", () => {
@@ -156,6 +186,28 @@ describe("TilesItem", () => {
   });
 });
 
+describe("TilesItem after a skip", () => {
+  it("shows only the right sentence", () => {
+    render(
+      <TilesItem
+        prompt={{
+          kind: "sentence_builder",
+          tiles: [
+            { id: "t1", nl: "ik" },
+            { id: "t2", nl: "woon" },
+          ],
+          end: ".",
+          cue: null,
+        }}
+        feedback={{ outcome: "skipped", sentence: "Ik woon." }}
+        onDraft={() => {}}
+      />,
+    );
+    expect(screen.queryByRole("group", { name: "Jouw zin" })).not.toBeInTheDocument();
+    expect(screen.getByText("Ik woon.")).toBeInTheDocument();
+  });
+});
+
 describe("OrderItem", () => {
   const prompt = {
     kind: "sentence_order",
@@ -184,12 +236,12 @@ describe("OrderItem", () => {
     expect(screen.getByRole("button", { name: "Zet zin 2 hoger" })).toHaveFocus();
   });
 
-  it("shows the right order with its translation", () => {
+  it("shows the right order with its translation, says where each sentence stood, and keeps a swap neutral", () => {
     render(
       <OrderItem
         prompt={{ ...prompt, sentences: [...prompt.sentences] }}
         feedback={{
-          outcome: "incorrect",
+          outcome: "almost",
           order: ["s1", "s2"],
           given_order: ["s2", "s1"],
           translation: { en: ["I get up.", "Then I eat."] },
@@ -198,7 +250,21 @@ describe("OrderItem", () => {
       />,
     );
     const rows = screen.getAllByRole("listitem");
-    expect(rows.map((row) => row.textContent)).toEqual(["Ik sta op.I get up.", "Dan eet ik.Then I eat."]);
-    expect(rows[0]).toHaveAttribute("data-state", "incorrect");
+    expect(rows[0]).toHaveTextContent(/Ik sta op\..*I get up\..*Stond op plaats 2/);
+    expect(rows[1]).toHaveTextContent(/Dan eet ik\..*Then I eat\..*Stond op plaats 1/);
+    expect(rows.map((row) => row.getAttribute("data-state"))).toEqual(["almost", "almost"]);
+  });
+
+  it("shows a skipped ordering's right order without marks for an order never sent", () => {
+    render(
+      <OrderItem
+        prompt={{ ...prompt, sentences: [...prompt.sentences] }}
+        feedback={{ outcome: "skipped", order: ["s1", "s2"] }}
+        onDraft={() => {}}
+      />,
+    );
+    const rows = screen.getAllByRole("listitem");
+    expect(rows.map((row) => row.getAttribute("data-state"))).toEqual(["shown", "shown"]);
+    expect(screen.queryByText(/Stond op plaats/)).not.toBeInTheDocument();
   });
 });

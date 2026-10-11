@@ -2,23 +2,23 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
+import { Icon } from "@/components/Icon";
 import { Button } from "@/components/ui/Button";
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
-import { useLanguageSupport } from "@/components/LanguageSupport";
 import { fill } from "@/lib/ui-copy";
 
 import type { BoardProps } from "./boardProps";
-import { Dutch } from "./ContentText";
+import { Dutch, Meaning } from "./ContentText";
 
 /**
  * Putting the sentences of a paragraph back in order: each sentence moves up or down with its own buttons (no
  * dragging), and focus stays on the button that moved it. Every order is a whole answer. Answered, it shows the
- * right order with the translation, and marks the sentences that stood elsewhere.
+ * right order with the translation and says where each misplaced sentence stood (an "almost", a swap, in a
+ * neutral colour); skipped, the right order only.
  */
 export function OrderItem({ prompt, feedback, onDraft, headingRef }: BoardProps<"sentence_order">) {
   const headingId = useId();
-  const { showEnglish, showPersian } = useLanguageSupport();
   const [order, setOrder] = useState<string[]>(() => prompt.sentences.map((sentence) => sentence.id));
   const textOf = new Map(prompt.sentences.map((sentence) => [sentence.id, sentence.nl ?? ""]));
   const list = useRef<HTMLOListElement>(null);
@@ -54,29 +54,34 @@ export function OrderItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
 
   if (feedback) {
     const right = feedback.order ?? [];
-    const given = feedback.given_order ?? order;
+    const given = feedback.given_order ?? null; // a skip sent no order
     const translation = feedback.translation ?? {};
-    const language = showEnglish && translation.en ? "en" : showPersian && translation.fa ? "fa" : null;
+    const miss = feedback.outcome === "almost" ? "almost" : "incorrect";
     return (
       <div className="exercise-item">
         <h2 className="exercise-question" id={headingId} tabIndex={-1} ref={headingRef}>
           <UiText text={exerciseCopy.rightOrder} tier="guide" />
         </h2>
         <ol className="order-list">
-          {right.map((id, index) => (
-            <li key={id} className="order-row" data-state={given[index] === id ? "correct" : "incorrect"}>
-              <Dutch text={textOf.get(id)} className="order-text" />
-              {language && (
-                <span
-                  lang={language}
-                  dir={language === "fa" ? "rtl" : undefined}
+          {right.map((id, index) => {
+            const placed = given ? given.indexOf(id) : index;
+            const state = !given ? "shown" : placed === index ? "correct" : miss;
+            return (
+              <li key={id} className="order-row" data-state={state}>
+                <Dutch text={textOf.get(id)} className="order-text" />
+                <Meaning
+                  text={{ en: translation.en?.[index], fa: translation.fa?.[index] }}
                   className="order-translation"
-                >
-                  {translation[language][index]}
-                </span>
-              )}
-            </li>
-          ))}
+                />
+                {given && placed !== index && (
+                  <span className="order-placed">
+                    <Icon name="repeat" size={14} />
+                    <UiText text={fill(exerciseCopy.orderPlaced, { m: placed + 1 })} inline />
+                  </span>
+                )}
+              </li>
+            );
+          })}
         </ol>
       </div>
     );

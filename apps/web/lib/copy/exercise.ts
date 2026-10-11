@@ -82,7 +82,7 @@ export const exerciseCopy = {
   },
   words: { nl: "Woorden", en: "Words", fa: "واژه‌ها" },
   meanings: { nl: "Betekenissen", en: "Meanings", fa: "معناها" },
-  pairedWith: { nl: "hoort bij {other}", en: "goes with {other}", fa: "با {other} جفت است" },
+  goesWith: { nl: "hoort bij", en: "goes with", fa: "جفت است با" },
   askDeHet: { nl: "De of het?", en: "De or het?", fa: "de یا het؟" },
   askBuild: { nl: "Maak de zin.", en: "Build the sentence.", fa: "جمله را بساز." },
   buildHint: {
@@ -103,6 +103,8 @@ export const exerciseCopy = {
   finishFirst: { nl: "Maak eerst alles af.", en: "Finish everything first.", fa: "اول همه را کامل کن." },
   rightOrder: { nl: "De goede volgorde", en: "The right order", fa: "ترتیب درست" },
   rightSentence: { nl: "De goede zin", en: "The right sentence", fa: "جمله‌ی درست" },
+  tilesDiffer: { nl: "Hier ging het anders:", en: "Here it went another way:", fa: "از اینجا متفاوت شد:" },
+  orderPlaced: { nl: "Stond op plaats {m}", en: "Was in place {m}", fa: "در جای {m} بود" },
 
   // answering
   skip: { nl: "Ik weet het niet", en: "I don't know", fa: "نمی‌دانم" },

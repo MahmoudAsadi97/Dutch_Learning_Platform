@@ -280,6 +280,7 @@ function boardSession() {
         options: [
           { id: "n1", nl: "huis" },
           { id: "n2", nl: "tafel" },
+          { id: "n3", nl: "verantwoordelijkheid" },
         ],
       }),
       board("tiles", 2, "sentence_builder", {
@@ -314,8 +315,13 @@ const BOARD_FEEDBACK: Record<string, Record<string, unknown>> = {
     bins: {
       n1: { given: "de", correct: "het", ok: false },
       n2: { given: "de", correct: "de", ok: true },
+      n3: { given: "het", correct: "de", ok: false },
     },
-    cards: { n1: { ...card, term: "het huis" }, n2: { ...card, term: "de tafel" } },
+    cards: {
+      n1: { ...card, term: "het huis" },
+      n2: { ...card, term: "de tafel" },
+      n3: { ...card, term: "de verantwoordelijkheid" },
+    },
   },
   tiles: { order: ["t1", "t2", "t3"], given_order: ["t1", "t2", "t3"], first_difference: null },
   order: {
@@ -383,24 +389,38 @@ test("the boards are played by keyboard and answered whole, accessible at every 
   await checkWidths(page, testInfo, "pairs");
   await page.getByRole("button", { name: /^de deur/ }).press("Enter");
   await page.getByRole("button", { name: /^the door/ }).press("Enter");
-  await check.click();
+  await check.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("status").filter({ hasText: "Maak eerst alles af." })).toHaveCount(1);
   await expect(page.locator(".exercise-nudge")).toHaveText(/Maak eerst alles af./);
   await page.getByRole("button", { name: /^het raam/ }).press("Enter");
   await page.getByRole("button", { name: /^the window/ }).press("Enter");
-  await check.click();
+  await check.focus();
+  await page.keyboard.press("Enter");
   await expect(next).toBeFocused();
   expect(answers.pairs).toEqual({ pairs: { l1: "r2", l2: "r1" } });
   await checkWidths(page, testInfo, "pairs-feedback");
   await next.press("Enter");
 
-  // de or het: native radios
+  // de or het: native radios, by keyboard (Space chooses, the arrow moves to the other article)
   await expect(page.getByRole("heading", { name: "De of het?" })).toBeFocused();
   await checkWidths(page, testInfo, "bins");
-  await page.getByRole("group", { name: "huis" }).getByRole("radio", { name: "de" }).check();
-  await page.getByRole("group", { name: "tafel" }).getByRole("radio", { name: "de" }).check();
-  await check.click();
+  const huis = page.getByRole("group", { name: "huis" }).getByRole("radio", { name: "de" });
+  await huis.focus();
+  await page.keyboard.press("Space");
+  await expect(huis).toBeChecked();
+  await page.getByRole("group", { name: "tafel" }).getByRole("radio", { name: "de" }).focus();
+  await page.keyboard.press("Space");
+  const long = page.getByRole("group", { name: "verantwoordelijkheid" });
+  await long.getByRole("radio", { name: "de" }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(long.getByRole("radio", { name: "het" })).toBeChecked();
+  await expect(long.getByRole("radio", { name: "het" })).toBeFocused();
+  await check.focus();
+  await page.keyboard.press("Enter");
   await expect(page.getByText("het huis")).toBeVisible();
-  expect(answers.bins).toEqual({ bins: { n1: "de", n2: "de" } });
+  await expect(page.getByRole("status").filter({ hasText: "Nog niet" })).toHaveCount(1);
+  expect(answers.bins).toEqual({ bins: { n1: "de", n2: "de", n3: "het" } });
   await checkWidths(page, testInfo, "bins-feedback");
   await next.press("Enter");
 
@@ -417,7 +437,8 @@ test("the boards are played by keyboard and answered whole, accessible at every 
     .press("Enter");
   await pieces.getByRole("button", { name: "woon" }).press("Enter");
   await pieces.getByRole("button", { name: "in Gent" }).press("Enter");
-  await check.click();
+  await check.focus();
+  await page.keyboard.press("Enter");
   expect(answers.tiles).toEqual({ order: ["t1", "t2", "t3"] });
   await checkWidths(page, testInfo, "tiles-feedback");
   await next.press("Enter");
@@ -427,7 +448,8 @@ test("the boards are played by keyboard and answered whole, accessible at every 
   await checkWidths(page, testInfo, "order");
   await page.getByRole("button", { name: "Zet zin 1 lager" }).press("Enter");
   await expect(page.getByRole("button", { name: "Zet zin 2 hoger" })).toBeFocused();
-  await check.click();
+  await check.focus();
+  await page.keyboard.press("Enter");
   expect(answers.order).toEqual({ order: ["s1", "s2"] });
   await expect(page.getByText("Then I eat a sandwich.")).toBeVisible();
   await checkWidths(page, testInfo, "order-feedback");

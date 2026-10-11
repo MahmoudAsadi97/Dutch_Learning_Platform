@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
+import { Icon } from "@/components/Icon";
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
 import { fill } from "@/lib/ui-copy";
@@ -12,8 +13,8 @@ import { Dutch, Meaning } from "./ContentText";
 /**
  * The sentence builder: word tiles (or chunks of a long sentence) to put in order. Choosing a tile adds it to
  * the sentence; choosing a tile in the sentence puts it back. No dragging, so it works the same by touch,
- * keyboard and screen reader. Answered, it shows the sentence as built, where it first went another way, and
- * the right sentence.
+ * keyboard and screen reader. Answered, it shows the sentence as built, where it first went another way (with
+ * an icon and words, not colour alone), and the right sentence; skipped, the right sentence only.
  */
 export function TilesItem({ prompt, feedback, onDraft, headingRef }: BoardProps<"sentence_builder">) {
   const headingId = useId();
@@ -23,6 +24,7 @@ export function TilesItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
   const built = answered ? (feedback.given_order ?? []) : placed;
   const loose = prompt.tiles.filter((tile) => !built.includes(tile.id));
   const first = feedback?.first_difference ?? null;
+  const skipped = answered && !feedback.given_order;
 
   // a chosen tile leaves its row: focus goes to the tile now in its place (or the other row when it emptied)
   const line = useRef<HTMLDivElement>(null);
@@ -57,32 +59,43 @@ export function TilesItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
           <UiText text={exerciseCopy.buildHint} tier="guide" />
         </p>
       )}
-      <div className="tiles-line" role="group" aria-label={exerciseCopy.yourSentence.nl} ref={line}>
-        {built.map((id, index) => (
-          <button
-            key={id}
-            type="button"
-            className="tile"
-            data-state={answered ? (first !== null && index >= first ? "incorrect" : "correct") : "placed"}
-            disabled={answered}
-            aria-label={
-              answered ? undefined : fill(exerciseCopy.removePiece, { piece: textOf.get(id) ?? "" }).nl
-            }
-            onClick={() =>
-              update(
-                placed.filter((entry) => entry !== id),
-                "line",
-                index,
-              )
-            }
-          >
-            <Dutch text={textOf.get(id)} />
-          </button>
-        ))}
-        <span className="tiles-end" lang="nl" aria-hidden="true">
-          {prompt.end}
-        </span>
-      </div>
+      {!skipped && (
+        <div className="tiles-line" role="group" aria-label={exerciseCopy.yourSentence.nl} ref={line}>
+          {built.map((id, index) => {
+            const off = answered && first !== null && index >= first;
+            return (
+              <button
+                key={id}
+                type="button"
+                className="tile"
+                data-state={answered ? (off ? "incorrect" : "correct") : "placed"}
+                disabled={answered}
+                aria-label={
+                  answered ? undefined : fill(exerciseCopy.removePiece, { piece: textOf.get(id) ?? "" }).nl
+                }
+                onClick={() =>
+                  update(
+                    placed.filter((entry) => entry !== id),
+                    "line",
+                    index,
+                  )
+                }
+              >
+                {answered && index === first && (
+                  <span className="visually-hidden">
+                    <UiText text={exerciseCopy.tilesDiffer} inline />{" "}
+                  </span>
+                )}
+                {answered && <Icon name={off ? "close" : "check"} size={14} />}
+                <Dutch text={textOf.get(id)} />
+              </button>
+            );
+          })}
+          <span className="tiles-end" lang="nl" aria-hidden="true">
+            {prompt.end}
+          </span>
+        </div>
+      )}
       {!answered && (
         <div className="tiles-pool" role="group" aria-label={exerciseCopy.pieces.nl} ref={pool}>
           {loose.map((tile, index) => (
@@ -97,7 +110,7 @@ export function TilesItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
           ))}
         </div>
       )}
-      {answered && first !== null && (
+      {answered && (first !== null || skipped) && (
         <p className="tiles-right">
           <UiText text={exerciseCopy.rightSentence} inline />
           {": "}
