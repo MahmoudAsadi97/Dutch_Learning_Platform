@@ -185,14 +185,32 @@ export function ExerciseSession(props: Props) {
   }, [active]);
   useEffect(() => () => reportActivity(false), []);
 
-  // the summary, once per finish (a finished session found again counts too)
-  const reportFinished = useEffectEvent((summary: Summary) => onFinished?.(summary));
+  // the summary, once per session (a finished session found again counts too)
+  const reported = useRef<string | null>(null);
+  const reportFinished = useEffectEvent((id: string, summary: Summary) => {
+    if (reported.current === id) return;
+    reported.current = id;
+    onFinished?.(summary);
+  });
   useEffect(() => {
-    if (state.finished) reportFinished(state.finished.summary);
+    if (state.finished) reportFinished(state.finished.id, state.finished.summary);
   }, [state.finished]);
 
   // the last item answered: close the session (the same request id on every try, so it counts once)
   const sessionId = session?.id;
+  // In a reading or listening topic the last verdict already ends the session, so its finish goes out with it
+  // (under the id "Verder" sends again): the first answers count even when the learner leaves before "Verder".
+  // A failure here says nothing; "Verder" sends it again and shows its own.
+  const lastVerdict =
+    receptiveTopic && state.phase === "feedback" && session?.status === "active" && !session.next_item_id;
+  useEffect(() => {
+    if (!lastVerdict || !sessionId) return;
+    const requestId = (finishId.current ??= newRequestId());
+    exercises
+      .finish(sessionId, requestId, false)
+      .then((result) => reportFinished(result.id, result.summary))
+      .catch(() => {});
+  }, [lastVerdict, sessionId]);
   useEffect(() => {
     if (state.phase !== "finishing" || !sessionId || state.failed) return;
     const requestId = (finishId.current ??= newRequestId());

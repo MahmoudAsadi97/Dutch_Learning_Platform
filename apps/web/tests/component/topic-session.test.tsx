@@ -329,6 +329,40 @@ describe("a session inside a practice topic", () => {
     expect(dialog).not.toHaveTextContent(/later verdergaan/);
   });
 
+  it("sends the finish with the last verdict, so leaving before Verder still counts the answers", async () => {
+    const onFinished = vi.fn();
+    const { unmount } = render(topic("reading", { onFinished }));
+    fireEvent.click(await screen.findByRole("button", { name: /Naar de vragen/ }));
+    for (const [heading, option] of [
+      ["Waar wacht Sam?", /Aan de halte/],
+      ["Wat is laat?", /De trein/],
+    ] as const) {
+      await screen.findByText(heading);
+      fireEvent.click(screen.getByRole("radio", { name: option }));
+      fireEvent.click(screen.getByRole("button", { name: /Controleer/ }));
+      await screen.findByRole("button", { name: /^Verder/ });
+      if (heading === "Waar wacht Sam?") {
+        expect(client.finish).not.toHaveBeenCalled();
+        fireEvent.click(screen.getByRole("button", { name: /^Verder/ }));
+      }
+    }
+    // the last verdict is on screen and the learner leaves: the finish has gone out, the host hears it once
+    await waitFor(() => expect(client.finish).toHaveBeenCalledWith("s1", expect.any(String), false));
+    await waitFor(() => expect(onFinished).toHaveBeenCalledTimes(1));
+    unmount();
+    expect(client.finish).toHaveBeenCalledTimes(1);
+  });
+
+  it("finishes once with one id when Verder follows the early finish", async () => {
+    const onFinished = vi.fn();
+    render(topic("reading", { onFinished }));
+    await answerBoth();
+    await screen.findByRole("heading", { level: 4, name: /Je oefening is klaar/ });
+    const ids = client.finish.mock.calls.map((call) => call[1]);
+    expect(new Set(ids).size).toBe(1);
+    expect(onFinished).toHaveBeenCalledTimes(1);
+  });
+
   it("keeps the host busy only while the session is being closed, not while an answer is checked", async () => {
     const onActivityChange = vi.fn();
     let finish: (value: unknown) => void = () => {};

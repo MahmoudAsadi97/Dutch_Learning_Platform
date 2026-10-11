@@ -38,12 +38,14 @@ const productiveTask = {
 type Review = { stage_id: string; topic_id: string };
 
 /** Browser transition fixtures only; the API suite validates all authored banks and persistence. */
-async function mockTopics(page: Page, reviews: Record<string, Review> = {}) {
-  const stage = await (await page.request.get("/api/curriculum/pre-a1")).json();
+async function mockTopics(page: Page, reviews: Record<string, Review> = {}, stageId = "pre-a1") {
+  const stage = await (await page.request.get(`/api/curriculum/${stageId}`)).json();
+  // the same hundred topics, with the ids of the stage asked for
+  const list = topics.map((item) => ({ ...item, id: item.id.replace(/^pre-a1/, stageId) }));
   const completed = new Set<string>();
   const attempted = new Set<string>();
   const requests: { id: string; body: Record<string, unknown> }[] = [];
-  await page.route(/\/api\/curriculum\/pre-a1\/topics(?:\/|\?|$)/, async (route) => {
+  await page.route(new RegExp(`/api/curriculum/${stageId}/topics(?:/|[?]|$)`), async (route) => {
     const url = new URL(route.request().url());
     const parts = url.pathname.split("/topics")[1].split("/").filter(Boolean);
     const skill = (url.searchParams.get("skill") ?? "reading") as Skill;
@@ -54,7 +56,7 @@ async function mockTopics(page: Page, reviews: Record<string, Review> = {}) {
       const offset = Number(url.searchParams.get("offset") ?? 0);
       const limit = Number(url.searchParams.get("limit") ?? 12);
       expect(limit).toBeLessThanOrEqual(24);
-      const items = topics.filter(
+      const items = list.filter(
         (item) =>
           (!q || JSON.stringify(item.title).toLowerCase().includes(q)) &&
           (!category || item.category.nl === category) &&
@@ -66,12 +68,12 @@ async function mockTopics(page: Page, reviews: Record<string, Review> = {}) {
       );
       await route.fulfill({
         json: {
-          stage_id: "pre-a1",
+          stage_id: stageId,
           skill,
           learner_key: stage.learner_key,
           total: items.length,
           total_topics: 100,
-          completed_count: topics.filter((item) => completed.has(`${skill}.${item.id}`)).length,
+          completed_count: list.filter((item) => completed.has(`${skill}.${item.id}`)).length,
           offset,
           limit,
           categories: [copy("Onderweg"), copy("Vrije tijd")],
@@ -85,7 +87,7 @@ async function mockTopics(page: Page, reviews: Record<string, Review> = {}) {
       });
       return;
     }
-    const topic = topics.find((item) => item.id === parts[0]);
+    const topic = list.find((item) => item.id === parts[0]);
     if (!topic) {
       await route.fulfill({ status: 404, json: { detail: "Unknown topic" } });
       return;
@@ -131,7 +133,7 @@ async function mockTopics(page: Page, reviews: Record<string, Review> = {}) {
     await route.fulfill({
       json: {
         ...topic,
-        stage_id: "pre-a1",
+        stage_id: stageId,
         skill,
         review_status: "unreviewed",
         context: {
@@ -935,12 +937,13 @@ test("an authored A2 topic persists reading evidence through the real API and pl
 });
 
 test("a reused topic says which stage it repeats", async ({ page }) => {
-  await mockTopics(page, { "pre-a1-t002": { stage_id: "pre-a1", topic_id: "pre-a1-t002" } });
+  // as the API does: a topic of a later stage repeats an earlier stage's text, never its own stage's
+  await mockTopics(page, { "a1-t002": { stage_id: "pre-a1", topic_id: "pre-a1-t002" } }, "a1");
   const sessions: string[] = [];
   page.on("request", (request) => {
     if (request.url().includes("/api/exercises/sessions")) sessions.push(request.url());
   });
-  await page.goto("/learn/pre-a1");
+  await page.goto("/learn/a1");
   await selectSkill(page, "reading");
   const tiles = page.locator(".topic-tile");
   await expect(tiles.nth(1).locator(".topic-review")).toHaveText(/Herhaling van pre-A1/);
