@@ -36,14 +36,19 @@ for (const width of [1440, 390, 320]) {
       .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth))
       .toBe(true);
     if (width >= 360 && width <= 1050) {
-      // the glossed bar is taller; the end of the page must still clear it
-      await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
-      const clear = await page.evaluate(() => {
-        const footer = document.querySelector(".site-footer")?.getBoundingClientRect();
-        const bar = document.querySelector(".mobile-nav")?.getBoundingClientRect();
-        return !!footer && !!bar && footer.bottom <= bar.top + 1;
-      });
-      expect(clear).toBe(true);
+      // the glossed bar is taller; the end of the page must still clear it. Today loads its plan after the
+      // shell, so measure once it is there and the page has stopped growing.
+      await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+      await expect
+        .poll(() =>
+          page.evaluate(() => {
+            window.scrollTo(0, document.documentElement.scrollHeight);
+            const footer = document.querySelector(".site-footer")?.getBoundingClientRect();
+            const bar = document.querySelector(".mobile-nav")?.getBoundingClientRect();
+            return !!footer && !!bar && footer.bottom <= bar.top + 1;
+          }),
+        )
+        .toBe(true);
     }
     await accessible(page);
   });
