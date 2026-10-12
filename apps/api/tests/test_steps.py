@@ -90,7 +90,7 @@ def test_writing_draft_autosaves_and_the_submission_is_typed_evidence(client):
 
 
 def test_listening_audio_is_synthesised_once_and_labelled(client):
-    key = "fixed/appointment-change/voicemail-base.wav"
+    key = "fixed/appointment-change/voicemail-base-v3.wav"
     first = client.get(f"/missions/appointment-change/audio/{key}", headers=auth_headers("audio-fixed-01"))
     assert first.status_code == 200 and first.headers["content-type"] == "audio/wav"
     assert first.headers["x-audio-label"] == "synthetic-development"
@@ -105,6 +105,9 @@ def test_listening_audio_is_synthesised_once_and_labelled(client):
     assert used_seconds("audio-usage-2") == usage_after_first, "the stored file is served without a second synthesis"
     missing = client.get("/missions/appointment-change/audio/fixed/nope.wav", headers=auth_headers("audio-fixed-03"))
     assert missing.status_code == 404
+    retired = client.get("/missions/appointment-change/audio/fixed/appointment-change/voicemail-base.wav",
+                         headers=auth_headers("audio-fixed-retired"))
+    assert retired.status_code == 404, "the changed script must not reuse the retired clip's key"
 
 
 def test_feedback_cites_only_real_evidence(client):
