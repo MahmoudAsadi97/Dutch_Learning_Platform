@@ -16,7 +16,9 @@ RequestId = Annotated[str, Field(min_length=8, max_length=80, pattern=r"^[a-zA-Z
 # "topic": a practice topic
 Source = Literal["stage_skill", "while_you_wait", "topic"]
 Skill = Literal["reading", "listening", "speaking", "writing"]
-TopicId = Annotated[str, Field(min_length=6, max_length=60, pattern=r"^[a-z0-9-]+-t[0-9]{3}$")]
+# Retain legacy topic IDs and accept the additive source-pack suffix. The service still checks the stage and
+# looks up the actual topic; syntax acceptance does not grant access or make an unknown item exist.
+TopicId = Annotated[str, Field(min_length=6, max_length=60, pattern=r"^[a-z0-9-]+-t(?:[0-9]{3}|-source-[0-9]{2})$")]
 # "almost" is shown in a neutral colour and is never a mistake; "accepted" is the learner's own overrule
 Outcome = Literal["correct", "almost", "incorrect", "skipped", "done", "accepted", "heard", "not_heard"]
 OptionId = Annotated[str, Field(min_length=1, max_length=16)]

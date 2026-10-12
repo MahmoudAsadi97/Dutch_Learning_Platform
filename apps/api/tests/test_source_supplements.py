@@ -7,12 +7,92 @@ import os
 import re
 
 import pytest
+from pydantic import ValidationError
 
 from dlp.config import CONTENT_DIR
 from dlp.domains.curriculum import library, service, supplements, topics
-from dlp.domains.curriculum.schemas import Stage
+from dlp.domains.curriculum.schemas import STAGE_IDS, Stage
+from dlp.domains.exercises.schemas import CreateBody
 
 STAGES = ("pre-a1", "a1", "pre-a2", "a2", "pre-b1", "b1")
+
+
+@pytest.mark.parametrize("topic_id", [*(f"{stage}-t001" for stage in STAGE_IDS),
+                                      *(f"{stage}-t-source-01" for stage in STAGES)])
+def test_exercise_request_accepts_legacy_and_source_topic_syntax(topic_id):
+    body = CreateBody(request_id="source-body-0001", source="topic", topic_id=topic_id, skill="reading")
+    assert body.topic_id == topic_id
+
+
+@pytest.mark.parametrize("topic_id", ("../a1-t-source-01", "a1-t-source-01/../../x", "a1-t-source-01?x=1",
+                                     "a1-t-source-1", "a1-t-source-001", "a1-t-source-aa",
+                                     "a1-t-source-01-r1", "a1-t-source-01.json", "a1-t1", "a1-t0001",
+                                     "a1-t-source-01\n", "A1-t-source-01", "a1-t-story-01"))
+def test_exercise_request_rejects_malformed_and_path_like_source_topic_ids(topic_id):
+    with pytest.raises(ValidationError):
+        CreateBody(request_id="source-body-0002", source="topic", topic_id=topic_id, skill="reading")
+
+
+@pytest.mark.parametrize("stage", STAGES)
+@pytest.mark.parametrize("skill", ("reading", "listening"))
+def test_source_topic_session_starts_completes_and_persists_progress(client, stage, skill):
+    from tests.conftest import auth_headers
+    from tests.test_exercises_topic_completion import _create, _run
+
+    topic_id = f"{stage}-t-source-01"
+    tag = f"source-session-{stage}-{skill}"
+    body = {"source": "topic", "stage_id": stage, "topic_id": topic_id, "skill": skill}
+    assert client.post("/exercises/sessions", json={"request_id": tag, **body}).status_code == 401
+    detail_url = f"/curriculum/{stage}/topics/{topic_id}"
+    before = client.get(detail_url, params={"skill": skill}, headers=auth_headers())
+    assert before.status_code == 200, before.text
+    assert before.json()["progress"] == {"completed": False, "attempted": False}
+
+    def checked_create(client, request_id, **requested):
+        response = _create(client, request_id, source="topic", **requested)
+        assert response.status_code == 201, response.text
+        view = response.json()
+        assert (view["stage_id"], view["topic_id"], view["skill"]) == (stage, topic_id, skill)
+        passage, *questions = view["items"]
+        assert passage["kind"] == ("read_passage" if skill == "reading" else "listen_passage")
+        assert len(questions) == 2
+        assert all(item["kind"] == "choice" and item["skill"] == skill for item in questions)
+        serialized = json.dumps(view, ensure_ascii=False)
+        assert all(private not in serialized for private in ("answer_index", "explanation", "positions"))
+        topic = topics.topic_for(topics.topics_for(stage), topic_id)
+        assert all(question.explanation.nl not in serialized for question in getattr(topic, skill).questions)
+        assert all(option.get("en") is None and option.get("fa") is None
+                   for item in questions for option in item["prompt"]["options"])
+        return response
+
+    finished = _run(client, tag, [True, True], create=checked_create,
+                    stage_id=stage, topic_id=topic_id, skill=skill)
+    completion = finished["summary"]["completion"]
+    assert completion["scope"] == "topic" and completion["topic_id"] == topic_id
+    assert completion["skill"] == skill and completion["counted"] and completion["passed"]
+    assert completion["correct"] == completion["required"] == completion["total"] == 2
+    assert completion["completed"] and completion["to_retry"] == 0
+    # These are fresh requests: completion must survive the POST transaction, not just appear in its response.
+    after = client.get(detail_url, params={"skill": skill}, headers=auth_headers())
+    assert after.status_code == 200, after.text
+    assert after.json()["progress"] == {"completed": True, "attempted": True}
+    assert all(set(question) == {"id", "prompt", "options"} for question in after.json()["activity"]["questions"])
+    stored = client.get(f"/exercises/sessions/{finished['view']['id']}", headers=auth_headers())
+    assert stored.status_code == 200, stored.text
+    assert stored.json()["status"] == "finished"
+    stage_progress = client.get(f"/curriculum/{stage}", headers=auth_headers())
+    assert stage_progress.status_code == 200, stage_progress.text
+    assert skill in stage_progress.json()["progress"]["practice_completed"]
+
+
+def test_source_topic_session_refuses_unknown_items_and_stage_mismatch(client):
+    from tests.test_exercises_topic_completion import _create
+
+    missing = _create(client, "source-missing-0001", source="topic", topic_id="a1-t-source-99", skill="reading")
+    assert missing.status_code == 404, missing.text
+    mismatch = _create(client, "source-mismatch-0001", source="topic", stage_id="pre-a1",
+                       topic_id="a1-t-source-01", skill="reading")
+    assert mismatch.status_code == 404, mismatch.text
 
 
 @pytest.mark.parametrize("stage_id", STAGES)
