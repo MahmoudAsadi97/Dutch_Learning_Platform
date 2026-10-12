@@ -306,8 +306,9 @@ def generate_episode(session: Session, payload: dict, settings: Settings, provid
             usage.release(session, tokens_reservation.id)
             return {"status": "obsolete"}
         episode.attempts += 1
+        usage.started(session, calls.id, tokens_reservation.id)
         try:
-            result = chat.complete(messages, schema=EpisodeDraft, max_output_tokens=max_output,
+            result = chat.complete_once(messages, schema=EpisodeDraft, max_output_tokens=max_output,
                                    temperature=0.7, prompt_version=WRITER_VERSION, request_id=call_id)
         except ProviderError:
             # A timed-out call may have been billed: charge the estimate rather than refund it.
@@ -517,8 +518,8 @@ def translate_paragraph(session: Session, settings: Settings, providers: Provide
     messages = translate_messages(paragraphs[paragraph_index]["nl"], "fa")
     estimate = (sum(len(m.content) for m in messages) + len(schema_instruction(Translation))) // 2 + TRANSLATE_MAX_OUTPUT_TOKENS
     call_id = f"story-translate-{episode.id.hex}-{paragraph_index}-{hashlib.sha256(request_id.encode()).hexdigest()[:12]}"
-    calls = usage.reserve(session, settings, learner.id, "model_calls", 1, call_id)
-    tokens_reservation = usage.reserve(session, settings, learner.id, "tokens", estimate, call_id)
+    calls, tokens_reservation = usage.reserve_model(session, settings, learner.id, estimate, call_id)
+    usage.started(session, calls.id, tokens_reservation.id)
     try:
         result = providers.chat.complete_once(messages, schema=Translation, max_output_tokens=TRANSLATE_MAX_OUTPUT_TOKENS,
                                               temperature=0.0, prompt_version=TRANSLATE_VERSION, request_id=call_id)
@@ -570,3 +571,4 @@ def export(session: Session, learner_id: uuid.UUID) -> dict:
         return {"series": None, "episodes": []}
     rows = session.scalars(select(StoryEpisode).where(StoryEpisode.series_id == series.id).order_by(StoryEpisode.number))
     return {"series": series_view(series), "episodes": [episode_view(row) for row in rows]}
+

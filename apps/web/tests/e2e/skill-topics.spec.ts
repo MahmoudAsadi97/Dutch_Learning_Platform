@@ -975,3 +975,61 @@ test("a reused topic says which stage it repeats", async ({ page }) => {
   expect(sessions).toEqual([]);
 });
 
+test.describe("reading feedback with normal motion", () => {
+  // The rest of the suite intentionally reduces motion. This regression exercises the real shake effect
+  // at a phone width so a moving verdict cannot widen the document between otherwise stable screenshots.
+  test.use({ contextOptions: { reducedMotion: "no-preference" } });
+
+  test("a 390px reading verdict fits at every shake keyframe", async ({ page }, testInfo) => {
+    const { completed, attempted } = await mockTopics(page);
+    await mockTopicSessions(page, { completed, attempted });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/learn/pre-a1");
+    expect(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches)).toBe(false);
+    await selectSkill(page, "reading");
+    await openTopic(page);
+    await page.getByRole("button", { name: "Begin met lezen", exact: true }).click();
+    await page.getByRole("button", { name: "Naar de vragen", exact: true }).click();
+    await page.getByRole("radio", { name: /Thuis/ }).check();
+    await page.getByRole("button", { name: "Controleer", exact: true }).click();
+    await expect(page.locator(".feedback-bar[data-outcome=incorrect]")).toBeVisible();
+
+    const frames = await page.locator(".answer-option[data-state=incorrect]").evaluate(async (element) => {
+      const animation = element
+        .getAnimations()
+        .find((candidate) => candidate instanceof CSSAnimation && candidate.animationName === "ts-shake");
+      if (!animation?.effect) throw new Error("The normal-motion reading verdict must have its shake effect");
+      const duration = animation.effect.getComputedTiming().duration;
+      if (typeof duration !== "number" || duration <= 0) throw new Error("The shake must have a duration");
+      animation.pause();
+      const measured = [];
+      // Seeking the real CSS animation makes these measurements deterministic, even on a busy CI runner.
+      for (const progress of [0, 0.25, 0.5, 0.75, 1]) {
+        animation.currentTime = duration * progress;
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+        const box = element.getBoundingClientRect();
+        measured.push({
+          progress,
+          duration,
+          viewport: innerWidth,
+          document: document.documentElement.scrollWidth,
+          left: box.left,
+          right: box.right,
+        });
+      }
+      animation.finish();
+      return measured;
+    });
+    await testInfo.attach("reading-verdict-normal-motion-390", {
+      body: JSON.stringify(frames, null, 2),
+      contentType: "application/json",
+    });
+    for (const frame of frames) {
+      expect(frame.document, `shake progress ${frame.progress}`).toBeLessThanOrEqual(frame.viewport);
+      expect(frame.left, `shake progress ${frame.progress}`).toBeGreaterThanOrEqual(0);
+      expect(frame.right, `shake progress ${frame.progress}`).toBeLessThanOrEqual(frame.viewport);
+    }
+    await page.getByRole("button", { name: "Verder", exact: true }).click();
+    await expect(page.getByText("Wat doet Noor daarna?", { exact: true })).toBeVisible();
+  });
+});

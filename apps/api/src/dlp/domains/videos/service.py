@@ -210,8 +210,9 @@ def _write(session: Session, lesson: VideoLesson, settings: Settings, providers:
             usage.release(session, tokens_reservation.id)
             return "obsolete"
         lesson.attempts += 1
+        usage.started(session, calls.id, tokens_reservation.id)
         try:
-            result = chat.complete(messages, schema=VideoScript, max_output_tokens=max_output, temperature=0.7,
+            result = chat.complete_once(messages, schema=VideoScript, max_output_tokens=max_output, temperature=0.7,
                                    prompt_version=SCRIPT_VERSION, request_id=call_id)
         except ProviderError:
             usage.commit(session, calls.id, 1)
@@ -253,7 +254,9 @@ def _start_render(session: Session, lesson: VideoLesson, settings: Settings, pro
         reservation = usage.reserve(session, settings, lesson.learner_id, "video_seconds", seconds, call_id)
     except usage.UsageLimitExceeded:
         return "allowance_video"
-    lesson.checks = {**lesson.checks, "video_reservation": str(reservation.id), "estimated_seconds": seconds}
+    lesson.checks = {**lesson.checks, "video_reservation": str(reservation.id), "estimated_seconds": seconds,
+                     "paid_render": renderer.name != "fixture" and (
+                         renderer.name == "azure-avatar" or settings.tts_provider == "azure")}
     session.commit()
     fresh = _reload(session, lesson.id)
     if fresh is None or fresh.status != "writing":
@@ -262,6 +265,7 @@ def _start_render(session: Session, lesson: VideoLesson, settings: Settings, pro
     lesson = fresh
     request = VideoRequest(scenes=[VideoScene(text=s["nl"], keyword=s.get("keyword", "")) for s in lesson.scenes],
                            title=lesson.title, voice=renderer.voice)
+    usage.started(session, reservation.id)
     try:
         job_id = renderer.start(request, request_id=call_id)
     except ProviderError as exc:
@@ -335,7 +339,7 @@ def video_script_job(session: Session, payload: dict) -> dict:
 # --- the render job ----------------------------------------------------------------------------------------
 
 def _settle_reservation(session: Session, lesson: VideoLesson, seconds: float | None) -> None:
-    """Commit the measured seconds, or release the reservation when nothing was rendered."""
+    """Commit measured seconds; retain uncertain Azure work rather than refunding a failed render."""
     token = (lesson.checks or {}).get("video_reservation")
     if not token:
         return
@@ -343,7 +347,21 @@ def _settle_reservation(session: Session, lesson: VideoLesson, seconds: float | 
         reservation_id = uuid.UUID(str(token))
     except ValueError:
         return
-    if seconds is None:
+    checks = lesson.checks or {}
+    # Before provenance was recorded, card lessons still stored the configured
+    # voice. Azure's persisted Neural voice is an indicative conservative signal
+    # of paid narration, not proof of an invoice. Old jobs must still be drained
+    # before deploying a schema/runtime change.
+    legacy_paid_narration = ("paid_render" not in checks and lesson.renderer == "scene-cards"
+                             and lesson.voice.endswith("Neural"))
+    paid = lesson.renderer == "azure-avatar" or bool(checks.get("paid_render")) or legacy_paid_narration
+    if paid:
+        # A fresh poll worker has no in-memory dispatch marker. The provenance
+        # was persisted before rendering; both failed and successful paid work
+        # settle independently of the lesson/status transaction.
+        actual = float((lesson.checks or {}).get("estimated_seconds", 0)) if seconds is None else max(float(seconds), 0.0)
+        usage.commit(session, reservation_id, actual, durable=True)
+    elif seconds is None:
         usage.release(session, reservation_id)
     else:
         usage.commit(session, reservation_id, max(float(seconds), 0.0))
@@ -568,3 +586,4 @@ def subtitles(lesson: VideoLesson) -> str:
     if lesson.status != "ready":
         raise VideoError("this video is not ready yet", 409, code="not_ready")
     return media.vtt_for(lesson.cues)
+

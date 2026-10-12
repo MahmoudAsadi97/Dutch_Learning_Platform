@@ -62,7 +62,7 @@ def build_graph(chat: ChatModel):
         messages = [ChatMessage(role, text) for role, text in  # type: ignore[arg-type]
                     propose_action_messages(scenario, appointment, state.get("history", []), state["learner_text"])]
         # A ProviderError here propagates: see the module docstring.
-        result = chat.complete(messages, schema=ProposedActionReply, max_output_tokens=state.get("max_output_tokens", 200),
+        result = chat.complete_once(messages, schema=ProposedActionReply, max_output_tokens=state.get("max_output_tokens", 200),
                                temperature=0.0, prompt_version=PROPOSE_ACTION_VERSION, request_id=state.get("request_id", ""))
         parsed = result.parsed if isinstance(result.parsed, ProposedActionReply) else ProposedActionReply(action="none")
         proposed = ProposedAction(action=parsed.action, reason_text=parsed.reason_text, slot_id=parsed.slot_id,
@@ -106,7 +106,7 @@ def build_graph(chat: ChatModel):
                     character_reply_messages(scenario, appointment, state.get("history", []), state["learner_text"],
                                              state["phase"], anchor, note)]
         try:
-            outcome = chat.complete(messages, schema=CharacterReply, max_output_tokens=state.get("max_output_tokens", 200),
+            outcome = chat.complete_once(messages, schema=CharacterReply, max_output_tokens=state.get("max_output_tokens", 200),
                                     temperature=0.3, prompt_version=CHARACTER_REPLY_VERSION,
                                     request_id=state.get("request_id", ""))
         except ProviderError as exc:
@@ -155,3 +155,4 @@ def run_turn(chat: ChatModel, *, scenario: Scenario, appointment: dict[str, Any]
         "scenario": scenario, "appointment": appointment, "history": history, "learner_text": learner_text,
         "request_id": request_id, "max_output_tokens": max_output_tokens, "model_calls": [], "errors": [],
     })
+

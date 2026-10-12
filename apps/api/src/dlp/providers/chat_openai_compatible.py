@@ -1,7 +1,7 @@
 """One OpenAI-compatible chat client used for Ollama (Phase A) and Azure (Phase B).
 
-Prompt handling, JSON-schema validation, retries and version tags are identical
-for every backend; only the URL and the authentication header differ.
+Prompt handling, JSON-schema validation and version tags are shared. Azure
+sends one paid request per invocation; local Ollama retains bounded repairs.
 """
 
 from __future__ import annotations
@@ -133,10 +133,14 @@ class OpenAICompatibleChatModel(ChatModel):
         prompt_version: str = "v0",
         request_id: str = "",
     ) -> ChatResult:
+        # Every Azure invocation has one allowance reservation. Hidden repair or
+        # transport retries could multiply paid requests after the caller's cap
+        # was checked. Local Ollama can retain its bounded repair loop.
+        attempts = 1 if self.endpoint.kind == "azure_openai" else self.max_attempts
         return self._complete(
             messages, schema=schema, max_output_tokens=max_output_tokens,
             temperature=temperature, prompt_version=prompt_version,
-            request_id=request_id, max_attempts=self.max_attempts,
+            request_id=request_id, max_attempts=attempts,
         )
 
     def complete_once(
@@ -185,11 +189,22 @@ class OpenAICompatibleChatModel(ChatModel):
 
         started = time.monotonic()
         last_error_kind = "unknown"
+        total_input_tokens = total_output_tokens = 0
         with self._semaphore:
             for attempt in range(1, max_attempts + 1):
                 try:
                     data = self._post(body)
                     text = _first_content(data)
+                    usage = data.get("usage") or {}
+                    try:
+                        input_tokens = int(usage.get("prompt_tokens") or _estimate_tokens(body["messages"]))
+                        output_tokens = int(usage.get("completion_tokens") or max(1, len(text) // 4))
+                        if input_tokens < 0 or output_tokens < 0:
+                            raise ValueError("negative token count")
+                    except (AttributeError, TypeError, ValueError, OverflowError):
+                        raise ProviderError("chat backend returned invalid usage metadata") from None
+                    total_input_tokens += input_tokens
+                    total_output_tokens += output_tokens
                     parsed = None
                     if schema is not None and _finish_reason(data) == "length":
                         # The reply was cut off at max_tokens: repairing a fragment is pointless, so the next
@@ -213,20 +228,14 @@ class OpenAICompatibleChatModel(ChatModel):
                             # Validation errors can include learner text. Never expose
                             # the model payload in the eventual exception or logs.
                             raise _Retryable("schema validation failed") from None
-                    usage = data.get("usage") or {}
-                    try:
-                        input_tokens = int(usage.get("prompt_tokens") or _estimate_tokens(payload_messages))
-                        output_tokens = int(usage.get("completion_tokens") or max(1, len(text) // 4))
-                    except (AttributeError, TypeError, ValueError, OverflowError):
-                        raise ProviderError("chat backend returned invalid usage metadata") from None
                     return ChatResult(
                         text=text,
                         parsed=parsed,
                         provider=self.name,
                         model=str(data.get("model") or self.endpoint.model),
                         prompt_version=prompt_version,
-                        input_tokens=input_tokens,
-                        output_tokens=output_tokens,
+                        input_tokens=total_input_tokens,
+                        output_tokens=total_output_tokens,
                         latency_ms=int((time.monotonic() - started) * 1000),
                         attempts=attempt,
                         raw={"id": data.get("id"), "finish_reason": _finish_reason(data), "request_id": request_id},

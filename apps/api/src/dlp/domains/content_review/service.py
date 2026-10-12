@@ -217,6 +217,7 @@ def process_review(session: Session, payload: dict, settings: Settings, provider
         usage.release(session, calls.id)
         usage.release(session, tokens.id)
         return {"status": "obsolete"}
+    usage.started(session, calls.id, tokens.id)
     try:
         result = providers.chat_strong.complete_once(
             messages, schema=ReviewReply, max_output_tokens=MAX_OUTPUT_TOKENS, temperature=0,

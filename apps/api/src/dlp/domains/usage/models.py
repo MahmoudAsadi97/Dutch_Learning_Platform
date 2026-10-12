@@ -15,7 +15,7 @@ SCOPES: tuple[str, ...] = ("daily", "total")
 
 
 class UsageCounter(Base):
-    """One counter per learner, scope, period and metric. `used + reserved` may never exceed `limit_value`."""
+    """One counter per scope/period/metric; reservations obey the limit and measured overruns remain visible."""
 
     __tablename__ = "usage_counters"
     __table_args__ = (
@@ -71,3 +71,4 @@ class PricingEntry(Base):
     effective_from: Mapped[date] = mapped_column(Date, nullable=False)
     source: Mapped[str] = mapped_column(String(300), nullable=False, default="")
     meta: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)
+

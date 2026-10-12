@@ -29,10 +29,10 @@ def _reply(content='{"answer":"Dag!"}', *, finish_reason="stop", **overrides):
     return httpx.Response(200, json=payload)
 
 
-def _model(handler):
+def _model(handler, *, kind="azure_openai"):
     return OpenAICompatibleChatModel(
         ChatEndpoint(
-            kind="azure_openai", base_url="https://unit.invalid", model="test-model",
+            kind=kind, base_url="https://unit.invalid", model="test-model",
             api_key=PRIVATE_TEXT, api_version="v1",
         ),
         name="unit", max_attempts=3, transport=httpx.MockTransport(handler),
@@ -130,12 +130,13 @@ def test_legacy_complete_retains_repair_and_truncation_retry(monkeypatch):
             return _reply("not valid JSON")
         return _reply()
 
-    model = _model(handler)
+    model = _model(handler, kind="ollama")
     try:
         result = model.complete([ChatMessage("user", "hello")], schema=Answer, max_output_tokens=80)
     finally:
         model.close()
     assert result.attempts == 3
+    assert result.total_tokens == 96, "local repair attempts are included in recorded usage"
     assert [body["max_tokens"] for body in bodies] == [80, 160, 160]
     assert "not valid" in bodies[2]["messages"][-1]["content"]
 
@@ -154,7 +155,7 @@ def test_concurrent_single_call_does_not_change_legacy_retry_limit(monkeypatch):
             return httpx.Response(429, json={"error": "rate limited"})
         return _reply()
 
-    model = _model(handler)
+    model = _model(handler, kind="ollama")
     try:
         with ThreadPoolExecutor(max_workers=2) as pool:
             single = pool.submit(model.complete_once, [ChatMessage("user", "single")], schema=Answer)
@@ -175,7 +176,7 @@ def test_legacy_exhausted_schema_error_does_not_expose_model_output(monkeypatch,
         calls.append(request)
         return _reply(json.dumps({"answer": {"private": PRIVATE_TEXT}}))
 
-    model = _model(handler)
+    model = _model(handler, kind="ollama")
     try:
         with pytest.raises(ProviderError, match="after 3 attempts") as exc:
             model.complete([ChatMessage("user", "hello")], schema=Answer)
@@ -184,6 +185,29 @@ def test_legacy_exhausted_schema_error_does_not_expose_model_output(monkeypatch,
     assert len(calls) == 3
     assert PRIVATE_TEXT not in str(exc.value)
     assert PRIVATE_TEXT not in caplog.text
+
+
+@pytest.mark.parametrize("failure", ["timeout", "schema", "truncated", "rate-limit"])
+def test_azure_complete_has_no_hidden_paid_retry_even_when_configured_for_three(failure, monkeypatch):
+    requests = []
+    monkeypatch.setattr("dlp.providers.chat_openai_compatible.time.sleep",
+                        Mock(side_effect=AssertionError("paid requests must not retry invisibly")))
+    def handler(request):
+        requests.append(json.loads(request.content))
+        if failure == "timeout":
+            raise httpx.ReadTimeout("response lost", request=request)
+        if failure == "rate-limit":
+            return httpx.Response(429, json={"error": "busy"})
+        if failure == "truncated":
+            return _reply('{"answer":"unfinished', finish_reason="length")
+        return _reply("not JSON")
+    model = _model(handler)
+    try:
+        with pytest.raises(ProviderError):
+            model.complete([ChatMessage("user", "hello")], schema=Answer, max_output_tokens=80)
+    finally:
+        model.close()
+    assert len(requests) == 1 and requests[0]["max_tokens"] == 80
 
 
 def test_fixture_fallback_delegates_exactly_once_with_all_options():

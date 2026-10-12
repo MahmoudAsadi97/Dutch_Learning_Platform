@@ -122,4 +122,3 @@ test("a failed episode or video says why, by its failure code", async () => {
   assert.equal(videoFailure("too_long", failures), failures.videoTooLong);
   assert.equal(videoFailure(null, failures), failures.videoAway);
 });
-

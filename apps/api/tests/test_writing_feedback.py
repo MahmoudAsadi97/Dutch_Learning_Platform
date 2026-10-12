@@ -126,7 +126,7 @@ def test_input_instruction_stays_quoted_data_and_cannot_select_output_authority(
         parsed = reply()
         return ChatResult(text=parsed.model_dump_json(), parsed=parsed, provider="controlled", model="test",
                           prompt_version=PROMPT_VERSION, input_tokens=10, output_tokens=10, latency_ms=1, attempts=1)
-    result = invoke(SimpleNamespace(name="controlled", complete=complete), malicious)
+    result = invoke(SimpleNamespace(name="controlled", complete_once=complete), malicious)
     messages, options = received[0]
     assert len(messages) == 2 and messages[1].role == "user"
     assert json.loads(messages[1].content) == {"learner_text": malicious}
@@ -150,7 +150,7 @@ def test_model_outage_releases_reservations(monkeypatch):
     def fail(*args, **kwargs):
         raise ProviderError("offline")
     with pytest.raises(ProviderError):
-        invoke(SimpleNamespace(name="controlled", complete=fail))
+        invoke(SimpleNamespace(name="controlled", complete_once=fail))
     assert events[-2:] == [("release", "model_calls"), ("release", "tokens")]
 
 
@@ -161,7 +161,7 @@ def test_unusable_paid_output_is_counted_but_never_applied(monkeypatch):
         return ChatResult(text=invalid.model_dump_json(), parsed=invalid, provider="controlled", model="test",
                           prompt_version=PROMPT_VERSION, input_tokens=10, output_tokens=10, latency_ms=1, attempts=1)
     with pytest.raises(ProviderError):
-        invoke(SimpleNamespace(name="controlled", complete=complete))
+        invoke(SimpleNamespace(name="controlled", complete_once=complete))
     assert events[-2:] == [("commit", "model_calls"), ("commit", "tokens")]
 
 

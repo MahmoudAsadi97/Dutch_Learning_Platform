@@ -223,13 +223,15 @@ def turn(session: Session, settings: Settings, providers: Providers, row: TopicC
         from dlp.domains.coaching.service import paid_model_guard
         paid_model_guard(session, row.learner_id)
         estimate = reservation_tokens(messages_for(item, step, learner_text, row.history))
-        call_id = uuid.uuid4().hex
+        call_id = (hashlib.sha256(f"topic-turn:{row.id}:{client_turn_id}".encode()).hexdigest()
+                   if settings.chat_provider == "azure" else uuid.uuid4().hex)
         calls = usage.reserve(session, settings, row.learner_id, "model_calls", 1, call_id)
         try:
             tokens = usage.reserve(session, settings, row.learner_id, "tokens", estimate, call_id)
         except usage.UsageLimitExceeded:
             usage.release(session, calls.id)
             raise
+        usage.started(session, calls.id, tokens.id)
         try:
             outcome = run_turn(providers.chat, blueprint=item, step_index=row.step_index, text=learner_text,
                                history=row.history, request_id=request_id)
@@ -263,3 +265,4 @@ def turn(session: Session, settings: Settings, providers: Providers, row: TopicC
         _record_episode(session, row)
     session.flush()
     return row
+

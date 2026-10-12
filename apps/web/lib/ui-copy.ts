@@ -683,4 +683,3 @@ export function allCopy(): { key: string; copy: Copy }[] {
     Object.entries(entries).map(([name, copy]) => ({ key: `${group}.${name}`, copy })),
   );
 }
-

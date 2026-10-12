@@ -4,6 +4,7 @@ and recorded, never shown. Nothing here counts as an assessment: it is feedback 
 
 from __future__ import annotations
 
+import hashlib
 import re
 import uuid
 from typing import Any, Literal
@@ -157,11 +158,13 @@ def generate_feedback(session: Session, settings: Settings, providers: Providers
     handles = [(f"E{i + 1}", record) for i, record in enumerate(records[-24:])]
     by_handle = {handle: record for handle, record in handles}
 
-    call_id = uuid.uuid4().hex
-    calls_reservation = usage.reserve(session, settings, practice.learner_id, "model_calls", 1, call_id)
-    tokens_reservation = usage.reserve(session, settings, practice.learner_id, "tokens", TOKENS_ESTIMATE, call_id)
+    call_id = (hashlib.sha256(f"feedback:{practice.id}:{step_key}:{request_id}".encode()).hexdigest()
+               if settings.chat_provider == "azure" else uuid.uuid4().hex)
+    calls_reservation, tokens_reservation = usage.reserve_model(
+        session, settings, practice.learner_id, TOKENS_ESTIMATE, call_id)
+    usage.started(session, calls_reservation.id, tokens_reservation.id)
     try:
-        result = providers.chat.complete(
+        result = providers.chat.complete_once(
             feedback_messages(step, handles, task_completed), schema=FeedbackModelReply,
             max_output_tokens=settings.feedback_max_output_tokens, temperature=0.2,
             prompt_version=FEEDBACK_VERSION, request_id=request_id,
@@ -257,3 +260,4 @@ def report_view(report: FeedbackReport) -> dict[str, Any]:
         "model_name": report.model_name, "prompt_version": report.prompt_version,
         "created_at": report.created_at.isoformat(),
     }
+

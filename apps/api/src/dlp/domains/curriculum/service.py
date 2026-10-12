@@ -225,7 +225,8 @@ def assess_productive(session: Session, settings: Settings, providers: Providers
         + (f"\nFictional topic context (check relevant facts, not extra unrequested criteria):\n{context}" if context else "")
     )
     messages = [ChatMessage("system", system), ChatMessage("user", json.dumps({"learner_response": text}, ensure_ascii=False))]
-    call_id = uuid.uuid4().hex
+    call_id = (hashlib.sha256(f"productive:{stage_id}:{skill}:{request_id}".encode()).hexdigest()
+               if settings.chat_provider == "azure" else uuid.uuid4().hex)
     output_limit = max(1000, settings.feedback_max_output_tokens)
     token_estimate = sum(len(message.content) for message in messages) // 2 + output_limit + 128
     calls = usage.reserve(session, settings, learner_id, "model_calls", 1, call_id)
@@ -234,8 +235,9 @@ def assess_productive(session: Session, settings: Settings, providers: Providers
     except usage.UsageLimitExceeded:
         usage.release(session, calls.id)
         raise
+    usage.started(session, calls.id, tokens.id)
     try:
-        result = providers.chat_strong.complete(messages, schema=ProductiveReply, max_output_tokens=output_limit,
+        result = providers.chat_strong.complete_once(messages, schema=ProductiveReply, max_output_tokens=output_limit,
                                                temperature=0.0, prompt_version=PROMPT_VERSION, request_id=request_id)
     except ProviderError:
         usage.release(session, calls.id)
@@ -403,3 +405,4 @@ def attempt_points(session: Session, learner_id: uuid.UUID, attempt: CurriculumA
         return {}
     award = record_activity(session, learner_id, kind="stage_check", ref=str(attempt.id), request_id=attempt.request_id)
     return {**replayed(session, learner_id, attempt.request_id), **reached(award)}
+

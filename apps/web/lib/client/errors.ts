@@ -126,4 +126,3 @@ function errorKey(cause: unknown, overrides: ErrorOverrides): keyof ErrorCopies 
 export function isAbort(cause: unknown): boolean {
   return typeof cause === "object" && cause !== null && (cause as { name?: unknown }).name === "AbortError";
 }
-

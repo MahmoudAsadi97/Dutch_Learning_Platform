@@ -57,4 +57,3 @@ for (const screen of screens) {
     });
   }
 }
-

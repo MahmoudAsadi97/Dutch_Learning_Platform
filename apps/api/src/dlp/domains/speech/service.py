@@ -61,6 +61,7 @@ def transcribe_upload(
             session, settings, learner_id, "audio_seconds",
             max(1.0, canonical_info.duration_seconds), call_id,
         )
+        usage.started(session, reservation.id)
         try:
             transcript = stt.transcribe(target, language="nl", request_id=request_id)
         except ProviderError:
@@ -112,6 +113,7 @@ def synthesize_text(
     estimated_seconds = max(1.0, len(text) / 14.0)
     call_id = uuid.uuid4().hex
     reservation = usage.reserve(session, settings, learner_id, "audio_seconds", estimated_seconds, call_id)
+    usage.started(session, reservation.id)
     try:
         result = tts.synthesize(text, request_id=request_id)
     except ProviderError:
@@ -211,3 +213,4 @@ def _wav_seconds(wav_bytes: bytes, sample_rate: int) -> float:
             return handle.getnframes() / float(handle.getframerate() or sample_rate or 16000)
     except wave.Error:
         return max(0.1, len(wav_bytes) / float(2 * (sample_rate or 16000)))
+

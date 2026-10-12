@@ -1,6 +1,7 @@
 """Actionable practice corrections; the original draft and course-check state stay unchanged."""
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import unicodedata
@@ -128,15 +129,17 @@ def writing_feedback(session: Session, settings: Settings, providers: Providers,
     output_limit = WRITING_OUTPUT_TOKENS
     token_estimate = (sum(len(message.content) for message in messages)
                       + len(json.dumps(WritingReply.model_json_schema(), ensure_ascii=False))) // 2 + output_limit + 128
-    call_id = uuid.uuid4().hex
+    call_id = (hashlib.sha256(f"writing:{request_id}".encode()).hexdigest()
+               if settings.chat_provider == "azure" else uuid.uuid4().hex)
     calls = usage.reserve(session, settings, learner_id, "model_calls", 1, call_id)
     try:
         tokens = usage.reserve(session, settings, learner_id, "tokens", token_estimate, call_id)
     except usage.UsageLimitExceeded:
         usage.release(session, calls.id)
         raise
+    usage.started(session, calls.id, tokens.id)
     try:
-        result = providers.chat_strong.complete(
+        result = providers.chat_strong.complete_once(
             messages, schema=WritingReply, max_output_tokens=output_limit, temperature=0.0,
             prompt_version=PROMPT_VERSION, request_id=request_id,
         )

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import uuid
 from dataclasses import dataclass, field
 from typing import Any
@@ -154,13 +155,13 @@ def submit_turn(
         raise PracticeError("utterance too long", status_code=413)
     turn_count = turn_count_for(session, practice, step_key)
 
-    # Reserve before the model is called; commit the measured usage afterwards, release on failure.
-    # Both allowances must be available. A token refusal must not leave a call reservation
-    # behind when a spoken turn keeps its earlier transcription usage.
+    # Azure reservations are durably recorded before dispatch. Failed/uncertain
+    # work conservatively consumes its allowance even if the caller rolls back.
     with session.begin_nested():
-        call_id = uuid.uuid4().hex
-        calls_reservation = usage.reserve(session, settings, practice.learner_id, "model_calls", MODEL_CALLS_PER_TURN, call_id)
-        tokens_reservation = usage.reserve(session, settings, practice.learner_id, "tokens", TOKENS_PER_TURN_ESTIMATE, call_id)
+        call_id = (hashlib.sha256(f"mission:{practice.id}:{step_key}:{request_id}".encode()).hexdigest()
+                   if settings.chat_provider == "azure" else uuid.uuid4().hex)
+        calls_reservation, tokens_reservation = usage.reserve_model(
+            session, settings, practice.learner_id, TOKENS_PER_TURN_ESTIMATE, call_id, call_count=MODEL_CALLS_PER_TURN)
 
     last_index = session.scalar(select(func.max(PracticeTurn.turn_index)).where(PracticeTurn.session_id == practice.id))
     next_index = (last_index or 0) + 1
@@ -173,6 +174,7 @@ def submit_turn(
     session.flush()
 
     appointment_before = practice.state.get("appointment") or {}
+    usage.started(session, calls_reservation.id, tokens_reservation.id)
     try:
         result = run_turn(
             providers.chat, scenario=scenario, appointment=appointment_before, history=_history(practice, step_key),
@@ -188,8 +190,15 @@ def submit_turn(
         raise TurnFailed(turn, error) from exc
 
     calls = result.get("model_calls", [])
-    usage.commit(session, calls_reservation.id, float(len(calls)))
-    usage.commit(session, tokens_reservation.id, float(sum(c.get("input_tokens", 0) + c.get("output_tokens", 0) for c in calls)))
+    call_count = len(calls)
+    tokens_used = sum(c.get("input_tokens", 0) + c.get("output_tokens", 0) for c in calls)
+    if result.get("errors"):
+        # The graph can recover from a failed second call with an authored line.
+        # That response still may have been billed; success must not hide it.
+        call_count = max(call_count, MODEL_CALLS_PER_TURN)
+        tokens_used = max(tokens_used, TOKENS_PER_TURN_ESTIMATE)
+    usage.commit(session, calls_reservation.id, float(call_count))
+    usage.commit(session, tokens_reservation.id, float(tokens_used))
 
     turn.proposed_action = result["proposed"]
     turn.action_result = result["action_result"]
@@ -279,6 +288,7 @@ def _attach_character_audio(session: Session, settings: Settings, providers: Pro
         call_id = uuid.uuid4().hex
         reservation = usage.reserve(session, settings, practice.learner_id, "audio_seconds",
                                     max(1.0, len(turn.character_text) / 14.0), call_id)
+        usage.started(session, reservation.id)
         audio = providers.tts.synthesize(turn.character_text, request_id=request_id)
         seconds = _wav_seconds(audio.wav_bytes, audio.sample_rate)
         usage.commit(session, reservation.id, seconds)
@@ -344,3 +354,4 @@ def evidence_view(record: EvidenceRecord) -> dict[str, Any]:
         "skill": record.skill, "kind": record.kind, "modality": record.modality, "payload": record.payload,
         "source": record.source, "created_at": record.created_at.isoformat(),
     }
+

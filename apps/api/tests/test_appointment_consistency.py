@@ -1,7 +1,7 @@
 """The reminder must not cancel the same appointment the learner needs to change."""
 
-from dlp.domains.content.service import CONTENT_DIR
 from dlp.domains.content.schemas import MissionDocument
+from dlp.domains.content.service import CONTENT_DIR
 
 
 def test_reminder_and_rescheduling_share_one_premise():
