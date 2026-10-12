@@ -32,7 +32,8 @@
 .topic-reader .writing-meta { flex-wrap:wrap; gap:.5rem; }.topic-reader .productive-task { margin:1.5rem 0; }.topic-reader .phrase-audio { max-width:100%; }
 .topic-reader .curriculum-recorder audio,.topic-reader .curriculum-audio audio { width:100%; max-width:100%; }
 .topic-start { border:1px solid var(--accent-border); background:var(--surface-raised); border-radius:14px; padding:1.25rem; margin:1.25rem 0; }.topic-start h4 { margin:0 0 .75rem; }.topic-start p { margin:.5rem 0; }
-.topic-steps { display:grid; gap:.4rem; margin:.75rem 0; padding-left:1.25rem; }
+.topic-steps { display:grid; grid-template-columns:minmax(0,1fr); min-width:0; gap:.4rem; margin:.75rem 0; padding-left:1.25rem; }
+.topic-steps > li { min-width:0; overflow-wrap:anywhere; }
 .topic-start-actions { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1rem; }.topic-task-heading { margin:1.25rem 0 .5rem; }.topic-reader h5 { margin:0 0 var(--space-2); font-size:var(--text-md); font-weight:var(--weight-semibold); line-height:var(--leading-tight); letter-spacing:-0.02em; text-wrap:balance; }
 .topic-feedback-criteria { list-style:none; padding:0; }.topic-feedback-criteria li { border-top:1px solid var(--accent-border); padding:1rem 0; }.topic-feedback-criteria li > strong,.topic-feedback-criteria li > .learning-copy { display:block; }.topic-feedback-criteria .quiet-badge { margin:.5rem 0; }
 @media(max-width:850px) { .topic-filters { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }.topic-filters > div:first-child { grid-column:1/-1; }.topic-library-intro { grid-template-columns:1fr; }.topic-progress-summary { gap:.2rem; } }

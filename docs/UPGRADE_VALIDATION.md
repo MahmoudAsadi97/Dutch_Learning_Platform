@@ -43,6 +43,10 @@ passed all 861 API tests (one intentionally skipped), the populated PostgreSQL m
 the failure-accounting and worker regressions, the pinned screenshot job and both production image
 builds. Its functional browser job passed 145 checks and found two mobile completion-banner overflows.
 The banner now uses a fixed icon column and a shrinking text column; the width assertions remain intact.
+The following staged run passed both completion screens and 146 functional journeys, but exposed an
+implicit-width grid in the reading introduction. Its instruction list now has an explicit shrinking
+column and wrapping list items. Ancestor geometry is attached to failures to distinguish content
+overflow from a surrounding layout issue; no assertion, screenshot threshold or motion check is relaxed.
 
 The changed revision must pass every CI job before `main` is updated. The subsequent push-event run
 on the exact `main` commit is the deployment gate. Inspect

@@ -382,6 +382,19 @@ async function checkTopicWidths(page: Page, testInfo: TestInfo, name: string) {
     const layout = await page.evaluate(() => ({
       viewport: innerWidth,
       document: document.documentElement.scrollWidth,
+      containers: Array.from(
+        document.querySelectorAll<HTMLElement>(
+          ".app-workspace, .site-main, .learning-workspace, .unit-content, .topic-reader, .topic-start, .topic-steps",
+        ),
+      ).map((element) => ({
+        className: element.className,
+        left: element.getBoundingClientRect().left,
+        width: element.getBoundingClientRect().width,
+        right: element.getBoundingClientRect().right,
+        display: getComputedStyle(element).display,
+        columns: getComputedStyle(element).gridTemplateColumns,
+        minWidth: getComputedStyle(element).minWidth,
+      })),
       // Keep failure evidence focused on visible containers instead of an unexplained false assertion.
       outside: Array.from(document.querySelectorAll<HTMLElement>(".topic-reader, .topic-reader *"))
         .filter((element) => {
