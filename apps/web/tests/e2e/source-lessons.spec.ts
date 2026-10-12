@@ -58,7 +58,9 @@ test("A1 source words and story open, and first-try reading answers persist inde
   const pack = await sourcePack("a1");
   const topic = pack.topics[0];
   await page.goto("/learn/a1");
-  await expect(page.locator(".word-library h3")).toHaveText("502 woorden en uitdrukkingen");
+  await expect(
+    page.locator(".word-library").getByRole("heading", { name: "502 woorden en uitdrukkingen", exact: true }),
+  ).toHaveText("502 woorden en uitdrukkingen");
   const nav = page.getByRole("navigation", { name: "Onderdelen van dit niveau" });
   await nav.getByRole("button", { name: "Story Time", exact: true }).click();
   await expect(page.locator(".library-count")).toContainText("101 verhalen");
