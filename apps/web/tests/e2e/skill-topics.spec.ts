@@ -375,10 +375,19 @@ async function mockTopicSessions(page: Page, sets: Sets) {
   return { bodies };
 }
 
+async function resizeTopicViewport(page: Page, width: 1440 | 390 | 320) {
+  await page.setViewportSize({ width, height: width === 1440 ? 1000 : 844 });
+  // CI captured innerWidth=390 while the shell still had its desktop 232px margin. Wait for the
+  // responsive layout state and a rendering frame; never poll the overflow assertion until it passes.
+  await expect(page.locator(".app-workspace")).toHaveCSS("margin-left", width === 1440 ? "232px" : "0px");
+  await expect(page.locator(".learning-workspace")).toHaveCSS("display", width === 1440 ? "grid" : "block");
+  await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
+}
+
 /** No page overflow and no WCAG A/AA violation in the topic reader, at 1440, 390 and 320 pixels. */
 async function checkTopicWidths(page: Page, testInfo: TestInfo, name: string) {
-  for (const width of [1440, 390, 320]) {
-    await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
+  for (const width of [1440, 390, 320] as const) {
+    await resizeTopicViewport(page, width);
     const layout = await page.evaluate(() => ({
       viewport: innerWidth,
       document: document.documentElement.scrollWidth,
@@ -439,7 +448,7 @@ async function checkTopicWidths(page: Page, testInfo: TestInfo, name: string) {
     });
     expect(results.violations).toEqual([]);
   }
-  await page.setViewportSize({ width: 1440, height: 1000 });
+  await resizeTopicViewport(page, 1440);
 }
 
 /** Answers the two questions of a topic session: right (true) or wrong (false), each in turn. */

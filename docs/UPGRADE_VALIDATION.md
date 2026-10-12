@@ -47,6 +47,10 @@ The following staged run passed both completion screens and 146 functional journ
 implicit-width grid in the reading introduction. Its instruction list now has an explicit shrinking
 column and wrapping list items. Ancestor geometry is attached to failures to distinguish content
 overflow from a surrounding layout issue; no assertion, screenshot threshold or motion check is relaxed.
+Those diagnostics then isolated a viewport-update race: one 390px measurement still had the shell's
+232px desktop margin, while the earlier 390px card had the correct zero margin. Width checks now wait
+for the declared responsive shell/workspace state and one rendering frame before measuring. They do
+not poll for an overflow to disappear; the same strict page-width and accessibility assertions remain.
 
 The changed revision must pass every CI job before `main` is updated. The subsequent push-event run
 on the exact `main` commit is the deployment gate. Inspect
