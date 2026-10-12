@@ -1,3 +1,6 @@
+> Current authority: [REVIEW_DECISIONS.md](REVIEW_DECISIONS.md), checked 12 October 2026.
+> This handoff retains earlier implementation history; “locally done” is not evidence of Azure deployment.
+
 # Handoff: where the October 2026 programme stands (2026-10-12)
 
 This file is for whoever continues the work. It summarises what was done, what
@@ -26,12 +29,13 @@ partner, study guide, generated content) · P8 live voice (spike first, go/no-go
 
 Every step below has a row in the Progress table of `docs/ROADMAP.md` with the details. Every step from P1
 on was followed by an adversarial review whose surviving findings were fixed in an "Apply the review of …"
-commit (P0 had none; the three P1 reviews are commits a0bea19, 244020d and c723e2b without Progress rows).
+commit (P0 had none; the three P1 reviews are commits 56e04bd, cb7a06d and 0ac54a2 without Progress rows).
 
-**Nothing is released.** Local `main` is 58 commits ahead of `origin/main` (795697b) and nothing is pushed, so
-no phase release gate has run: P0–P3 and migrations 0008–0010 are not in production. The CI job that
-regenerates the screenshot baselines (step 0.3) is committed locally; its PR waits for the first push. The
-first release gate (end of P4) will cover P0–P4 together unless the owner wants one per phase.
+**Repository baseline:** remote `main` is `92a6963` (12 October 2026). The code is pushed;
+Azure deployment of this programme is not verified. Exact-commit CI failed on the 390px reading verdict
+and the word-page screenshot comparison. Production migration head and running image digests must be
+recorded from Azure before any release. See [final review decisions](REVIEW_DECISIONS.md) for the current
+priority and validation policy; older local test entries below are historical observations.
 
 **Where the code is:** the project folder `C:\Users\Nima\Desktop\MINE\My_projects\Dutch Learning
 Platform\Final_Project_v1`, branch `main` (it has no `apps/api/.venv` yet: run `python scripts/run.py setup` there
@@ -45,9 +49,9 @@ first). The test runs below were made in a second local checkout of the same com
 | P3 | 3.1–3.9 + reviews | Activity service (`domains/activity`, migration 0009, one rules table, Brussels day, goal crossing), tolerant answer comparison, the exercise engine (`domains/exercises`, migration 0010) with twelve item kinds (choice, cloze, odd one out, match pairs, de/het, typed cloze, typed recall, sentence builder, ordering, listen-and-choose, dictation, shadowing), the web runner `components/exercise/*` at `/oefenen`, topic and lesson sessions (D-31), and the topic reader starting with a session (D-32) |
 | P4 | 4.1 + review | `GET /today` only reads (`today_view`), `POST /today/prepare` keeps one unread episode queued (idempotent), one function-scoped DB session dependency for every route so a failed commit is a 500 (D-33), `last_seen_at` throttled, series insert race-safe, `lock_learner` for profile+series writes |
 
-Last commits (all authored by the owner): `ae865bf` Finish a reading or listening topic with its last answer ·
-`1e37ae2` Apply the review of the read-only Today · `fa92e61` Read Today without writing; prepare it on opening
-· `c131fa4` Apply the review of the topic reader · `0bba87c` Start practice topics with a session and a start card.
+Last commits (all authored by the owner): `2a666c1` Finish a reading or listening topic with its last answer ·
+`546df28` Apply the review of the read-only Today · `47a5fea` Read Today without writing; prepare it on opening
+· `c9487f4` Apply the review of the topic reader · `95d7039` Start practice topics with a session and a start card.
 
 ### Committed, not yet reviewed: step 4.2 (points for every kind of practice, design J11)
 
@@ -234,3 +238,4 @@ components; promote CI images by digest; retention jobs; docs refresh.
 ### API test result at handoff
 
 `pytest -q` in `apps/api` on the working tree (4.2 included): **803 passed** in 3 min 32 s (2026-10-12).
+

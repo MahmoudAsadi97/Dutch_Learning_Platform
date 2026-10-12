@@ -1,3 +1,6 @@
+> Priority update: [REVIEW_DECISIONS.md](REVIEW_DECISIONS.md) takes precedence where this long-term roadmap differs.
+> Current palette: brand blue; writing indigo; words plum; semantic feedback colours are reserved for feedback.
+
 # Roadmap — October 2026
 
 The approved plan for the three asks of October 2026: a structure review against modern practice
@@ -32,8 +35,7 @@ node -e "const d=JSON.parse(require('fs').readFileSync('docs/plan/designs.json',
 - **Agent architecture: a small in-house loop on the existing model port, no framework.** The judge
   scored it 60 against 52 (LangGraph agents with a Postgres checkpointer) and 51 (Microsoft Agent
   Framework in-process): it keeps every rule literally testable (reserve before call, one request per
-  step, never replay), keeps CI on fixtures and local runs on Ollama, and adds no dependency. LangGraph
-  is removed (it only runs two linear three-step graphs). Tool and agent definitions map one-to-one onto
+  step, never replay), keeps CI on fixtures and local runs on Ollama, and adds no dependency. Removal of the existing linear LangGraph graphs is planned in P6 (it only runs two linear three-step graphs). Tool and agent definitions map one-to-one onto
   Agent Framework function tools, which stays the documented exit path.
 - **Honest description of the agents.** The tutor is a real tool loop (at most 3–4 model steps over
   read-only, learner-scoped tools). The study guide is one ranking call shaped as a "propose" tool over
@@ -102,7 +104,7 @@ free number and updates this table.
 ## Phases
 
 Each step is one reviewable pull request of one to four commits, with the test suites green at the end
-of the step. Commits and pushes happen only on the owner's say-so.
+of the step. The owner authorises staged commits and pushes for this upgrade. Use neutral messages, the owner's identity, and no attribution trailers. Deploy only after the exact commit passes CI; Azure deployment remains separate.
 
 ### P0 — Safety net (slim)
 
@@ -208,7 +210,7 @@ Owner action in this phase: run the voice spike (P8 step 8.0).
 | 7.3–7.4 [A-S15, A-S16] | Conversation partner: guarded generated reaction before the authored anchor (migration 0014); feedback after the conversation quoting the learner's own turns. |
 | 7.5 [A-S17] | Scenario scale-up (migration 0015). |
 | 7.6 | Optional open-turn partner mode per O5. |
-| 7.7 [A-S13, A-S14] | Study guide (migration 0013); `POST /coach/plan` and its button stay until the flag is on in production. Automatic daily run per O4. |
+| 7.7 [A-S13, A-S14] | Study guide (migration 0013); `POST /coach/plan` and its button stay until the flag is on in production. Manual refresh by default; automatic daily runs remain off under O4. |
 | 7.8 [X15] | Model-judged exercise kinds. |
 | 7.9 [X16] | Generated items behind a validator and the review queue (migration 0016); a verb bank; the queue also lists the learners' exercise reports (admin only, without the learner: kind, ref, prompt, answer, reason, note), read until then with `python -m dlp.cli exercise-reports`. |
 | 7.10 [A-S18] | Run visibility, export of the new tables, documentation. |
@@ -351,3 +353,4 @@ changed. Phase acceptance checks are listed with each phase in the approved plan
 | 4.1 | done | Today reads without writing (D-33): `GET /today` builds the plan from what is stored (`today_view`; a learner without a series sees the series to come) and creates, locks and queues nothing (only the throttled `last_seen_at` of every signed-in request); `POST /today/prepare` (opening Today, CSRF-checked, idempotent) keeps one unread episode queued or ready and answers the same `TodayPlan`; the page prepares when it opens, on its retry and on the stalled refresh, and otherwise reads; one function-scoped session dependency (`api/deps.db_session`) for every route and `context_dep`, so a request's writes commit before the response and a failed commit is a 500; `last_seen_at` written at most every ten minutes; fastapi 0.141 or later; `tests/test_today_contract.py` (no write statement on three reads, prepare queues one episode once, a failed commit answers 500 with nothing kept, every route shares one function-scoped session); API suite 791 passed; e2e 145 of 146 (the writing warm-up summary's overflow check at 390 px failed once and is re-run when the database is back), screenshots to compare |
 | 4.1 review | done | adversarial review of 12 Oct (5 findings, 3 kept): with "last seen" throttled nothing serialized one learner's requests any more, so two first prepares could both insert the series and one answered 500; the series is now inserted with ON CONFLICT DO NOTHING and the winner's row read back, and the writes that change both the profile and the series (a level change, onboarding) take `lock_learner` first so they never lock in opposite orders; D-33, ENGINEERING, the route and the page say what really happens (GET /today creates, locks and queues nothing but may refresh "last seen"; the stalled "Vernieuwen" and the retry prepare); `test_today_contract.py` adds two prepares at once and a read after "last seen" went stale (both pass in the 803-test API run of 2026-10-12) |
 | 4.2 | done | API 803, web unit and component tests pass; `run.py e2e` and the adversarial review are still to run. Points for every kind of practice (D-34, revising D-19 and amending D-20): the lesson's and the topic's classic forms pay per question answered or the assessed open task, once per activity and Brussels day (`course_questions`, `course_task`); a submitted stage check 15 once per attempt, passed or not, never an admin preview (`stage_check`); missions per question of a done step, the message and each stored turn (`mission_questions`, `mission_writing`, `mission_turn`); a topic conversation's answer turns (`conversation_turn`, help turns nothing); the microphone warm-up 2 a day with `purpose=warmup` and recognised speech (`speech_warmup`); typed turns under writing, spoken under speaking (`record_activity(skill=...)`); story and video questions per answered one (O1), the day still counting the correct ones (`counted=`); awards only in entry functions after the paid call, never in helpers a session shares; replays repeat `goal_reached` only; conversations' daily start limit on the Brussels day (`day_bounds_utc`); tests per call site in the existing suites |
+
