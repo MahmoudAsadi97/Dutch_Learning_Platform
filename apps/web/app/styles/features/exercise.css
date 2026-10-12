@@ -726,13 +726,21 @@
   /* what a topic session did for the topic: a check once it counts as practised, otherwise neutral (never a
      miss colour: not passing yet is a reason to practise, not a fault) */
   .summary-completion {
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    align-items: start;
+    min-width: 0;
     gap: var(--space-3);
     padding: var(--space-3) var(--space-4);
     border-radius: var(--radius-md);
     background: var(--accent-subtle);
     color: var(--text);
+  }
+  /* The icon keeps its declared size while the completion sentence wraps in the remaining space. In a
+     flex banner its anonymous text column could retain an intrinsic minimum after a viewport resize. */
+  .summary-completion > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
   .summary-completion p {
     margin: 0;

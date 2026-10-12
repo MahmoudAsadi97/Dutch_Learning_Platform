@@ -38,11 +38,18 @@ for the demo workspace; its visual and physical-phone behaviour still needs user
 
 ## Remote checks
 
-The early staged run passed the pinned screenshots and both production image builds, but stopped at
-format/import lint. Those failures were corrected; the final pushed revision must pass all CI jobs before
-merging or releasing. Inspect [PR #9](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/pull/9) and
-[CI](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/workflows/ci.yml) for the exact run.
-Do not treat a successful earlier revision as evidence for a changed one.
+The [staged run for `ed0892d`](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/runs/38198488055)
+passed all 861 API tests (one intentionally skipped), the populated PostgreSQL migration rehearsal,
+the failure-accounting and worker regressions, the pinned screenshot job and both production image
+builds. Its functional browser job passed 145 checks and found two mobile completion-banner overflows.
+The banner now uses a fixed icon column and a shrinking text column; the width assertions remain intact.
+
+The changed revision must pass every CI job before `main` is updated. The subsequent push-event run
+on the exact `main` commit is the deployment gate. Inspect
+[PR #9](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/pull/9) and
+[CI](https://github.com/MahmoudAsadi97/Dutch_Learning_Platform/actions/workflows/ci.yml) for those results.
+Do not treat a successful earlier revision as evidence for a changed one. This report records observed
+checks; the linked exact-commit run is authoritative for the current source.
 
 Independent code review caught two uncertain-usage refund paths. Both were corrected and covered by
 regressions. Review of the source is distinct from PostgreSQL execution of those tests.

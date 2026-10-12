@@ -392,9 +392,24 @@ async function checkTopicWidths(page: Page, testInfo: TestInfo, name: string) {
         .map((element) => ({
           tag: element.tagName,
           className: element.className,
+          text: element.textContent?.slice(0, 90),
           width: element.getBoundingClientRect().width,
           right: element.getBoundingClientRect().right,
+          parent: element.parentElement?.className,
+          display: getComputedStyle(element).display,
+          minWidth: getComputedStyle(element).minWidth,
         })),
+      completionBanners: Array.from(document.querySelectorAll<HTMLElement>(".summary-completion")).map(
+        (element) => ({
+          width: element.getBoundingClientRect().width,
+          display: getComputedStyle(element).display,
+          children: Array.from(element.children).map((child) => ({
+            tag: child.tagName,
+            width: child.getBoundingClientRect().width,
+            right: child.getBoundingClientRect().right,
+          })),
+        }),
+      ),
     }));
     await testInfo.attach(`${name}-${width}-layout`, {
       body: JSON.stringify(layout, null, 2),
