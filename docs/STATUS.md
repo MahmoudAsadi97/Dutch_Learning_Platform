@@ -1,5 +1,9 @@
 # Status and roadmap
 
+> Latest update: [UPGRADE_VALIDATION.md](UPGRADE_VALIDATION.md) and
+> [REVIEW_DECISIONS.md](REVIEW_DECISIONS.md), 12 October 2026. The older feature inventory below is retained
+> as history; it is not evidence of current Azure deployment or calibrated language content.
+
 Updated 2 October 2026.
 
 ## What works today

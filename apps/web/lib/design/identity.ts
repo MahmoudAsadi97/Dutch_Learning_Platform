@@ -35,6 +35,7 @@ export const sectionAccent: Record<string, Accent> = {
   "": "today",
   leerpad: "path",
   learn: "path",
+  examens: "path",
   verhalen: "stories",
   videos: "videos",
   missions: "conversations",

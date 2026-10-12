@@ -80,6 +80,7 @@ const SECTION_BY_SEGMENT: Record<string, string> = {
   "": "/",
   leerpad: "/leerpad",
   learn: "/leerpad",
+  examens: "/leerpad",
   verhalen: "/verhalen",
   videos: "/verhalen",
   spreken: "/spreken",

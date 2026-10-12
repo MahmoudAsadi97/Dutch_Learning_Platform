@@ -38,6 +38,7 @@ import "./styles/features/welcome.css";
 import "./styles/features/about.css";
 import "./styles/features/speak.css";
 import "./styles/features/exercise.css";
+import "./styles/features/alignment.css";
 import "./styles/motion.css";
 import "./globals.css";
 import "./design.css";

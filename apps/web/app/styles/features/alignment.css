@@ -1,0 +1,43 @@
+@layer features {
+  .alignment-panel {
+    margin-block: var(--space-4);
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-raised);
+    overflow-wrap: anywhere;
+  }
+  .alignment-panel summary {
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .exam-preparation {
+    max-width: 960px;
+    margin-inline: auto;
+  }
+  .exam-profile-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    margin-block: var(--space-5);
+  }
+  .exam-profile {
+    min-width: 0;
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-raised);
+    overflow-wrap: anywhere;
+  }
+  .exam-skill-links {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-block: var(--space-5);
+  }
+  @media (min-width: 768px) {
+    .exam-profile-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}

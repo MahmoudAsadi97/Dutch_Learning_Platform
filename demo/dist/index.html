@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#20352f">
+    <meta name="description" content="An interactive Taalstudio design preview: connected language practice, practical communication and thoughtful learning support.">
+    <title>Taalstudio · Interactive design preview</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace">Skip to learning workspace</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Hoofdnavigatie">
+        <a class="brand" href="#today" aria-label="Taalstudio home"><span class="brand-mark">t<span>.</span></span><span>taalstudio<small>Nederlands voor het echte leven</small></span></a>
+        <div class="sidebar-rule"></div>
+        <span class="nav-label">JOUW LEERPLEK</span>
+        <nav id="navigation" class="navigation">
+          <button type="button" data-view="today" class="nav-item active" aria-current="page"><span data-icon="home"></span> Vandaag</button>
+          <button type="button" data-view="mission" class="nav-item"><span data-icon="compass"></span> Oefenmissie</button>
+          <button type="button" data-view="stories" class="nav-item"><span data-icon="book"></span> Verhaaltijd</button>
+          <button type="button" data-view="path" class="nav-item"><span data-icon="path"></span> Mijn leerroute</button>
+          <button type="button" data-view="exam" class="nav-item"><span data-icon="badge"></span> Examenwijzer</button>
+        </nav>
+        <div class="sidebar-note"><span class="tiny-tag">ÉÉN DOEL TEGELIJK</span><strong>Een gesprek.<br>Een stap vooruit.</strong><p>Oefen niet alleen woorden. Oefen wat je ermee kunt doen.</p><span class="sidebar-flower" aria-hidden="true">✳</span></div>
+        <div class="sidebar-footer"><span class="belgian-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Standaardnederlands<small>Belgische context</small></span></div>
+      </aside>
+      <div class="main-shell">
+        <div class="demo-banner"><span><b>INTERACTIVE DEMO</b> · Original sample content, browser-local interactions. No live model, Azure connection or certified assessment.</span><button id="reset-demo" type="button">Reset preview</button></div>
+        <header class="topbar">
+          <div class="breadcrumb"><span>Taalstudio</span><span class="separator">/</span><strong id="breadcrumb-title">Vandaag</strong></div>
+          <div class="topbar-controls">
+            <label class="select-label" for="level-select">LEERSTAP<select id="level-select" aria-label="Learning stage"></select></label>
+            <label class="select-label language-select" for="language-select">TAALHULP<select id="language-select" aria-label="Language support"><option value="en">Nederlands + English</option><option value="fa">Nederlands + فارسی</option><option value="all">Nederlands + فارسی + English</option></select></label>
+            <span class="profile-avatar" aria-label="Demo learner">S</span>
+          </div>
+        </header>
+        <main id="workspace" tabindex="-1"></main>
+        <footer class="main-footer"><span>Designed for thoughtful practice.</span><span>Preview content is not human-reviewed. Level targets are illustrative.</span></footer>
+      </div>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <div id="a11y-status" class="sr-only" role="status" aria-live="polite"></div>
+    <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><span class="eyebrow">HULP, OP JOUW TEMPO</span><button type="button" data-action="close-help" class="icon-button" aria-label="Close help">×</button></div><h2 id="help-title">De hulp blijft bij jou.</h2><p>Instructions and hints can appear in English, Persian, or both. Revealing an answer or a transcript is recorded as support in this demo.</p><p class="persian" dir="rtl" lang="fa">می‌توانید راهنماها را به انگلیسی، فارسی یا هر دو زبان ببینید. دیدن پاسخ یا متن صوت به‌عنوان کمک ثبت می‌شود.</p><button type="button" data-action="close-help" class="button primary">Verder oefenen <span aria-hidden="true">→</span></button></dialog>
+  </body>
+</html>

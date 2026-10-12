@@ -6,6 +6,7 @@ import { AlphabetPractice } from "@/components/AlphabetPractice";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import { SkillTopicPractice } from "@/components/SkillTopicPractice";
 import { WritingCoach } from "@/components/WritingCoach";
+import { AlignmentPanel } from "@/components/AlignmentPanel";
 import { CommunicationCoach } from "@/components/CommunicationCoach";
 import { useEffect, useState } from "react";
 import {
@@ -239,6 +240,7 @@ export function CurriculumLesson({
                             : "Schrijf je eigen boodschap"}
             </h2>
           </div>
+          {isSkill && <AlignmentPanel stageId={stageId} skill={section as Skill} />}
           {isSkill && (
             <div className="practice-source-switch" role="group" aria-label="Kies je oefenmateriaal">
               <button

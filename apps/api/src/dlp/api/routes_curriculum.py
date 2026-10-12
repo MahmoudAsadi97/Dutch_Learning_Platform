@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import uuid
 from collections.abc import Callable
+from typing import Any
 
 from fastapi import APIRouter, Depends, Query, Response
 from fastapi.responses import JSONResponse
@@ -12,7 +13,8 @@ from sqlalchemy.orm import Session
 from dlp.api.deps import RequestContext, context_dep, db_session, providers_dep, settings_dep
 from dlp.config import Settings
 from dlp.domains.curriculum import service
-from dlp.domains.curriculum.schemas import Skill, Test
+from dlp.domains.curriculum.alignment import load_alignment, stage_contract
+from dlp.domains.curriculum.schemas import STAGE_IDS, Skill, Test
 from dlp.domains.curriculum.writing import writing_feedback
 from dlp.domains.speech.service import synthesize_cached
 from dlp.domains.usage.service import UsageLimitExceeded
@@ -81,6 +83,19 @@ def catalogue(ctx: RequestContext = Depends(context_dep), settings: Settings = D
               session: Session = db_session):
     return _run(lambda: service.catalogue(session, ctx.learner.id, admin=service.is_admin(settings, ctx.principal.email),
                                           recording_max_seconds=settings.max_audio_seconds))
+
+
+@router.get("/reference/exams", response_model=dict[str, Any])
+def exam_references(ctx: RequestContext = Depends(context_dep)):
+    """Original preparation blueprints and official links, not examination results."""
+    return load_alignment()["exams"]
+
+
+@router.get("/{stage_id}/alignment", response_model=dict[str, Any])
+def level_alignment(stage_id: str, ctx: RequestContext = Depends(context_dep)):
+    if stage_id not in STAGE_IDS:
+        raise service.CurriculumError("learning stage not found", 404)
+    return stage_contract(stage_id)
 
 
 # Static 'attempts' routes deliberately precede the stage routes.
@@ -195,3 +210,4 @@ def lesson_listening(stage_id: str, part: int = Query(default=0, ge=0, le=100),
                                        admin=service.is_admin(settings, ctx.principal.email))
         return _audio(stage.lesson.listening.nl, part, ctx, settings, providers, session)
     return _run(operation)
+

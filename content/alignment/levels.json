@@ -1,0 +1,972 @@
+{
+  "schema_version": 1,
+  "version": "2026.10.12.1",
+  "checked_at": "2026-10-12",
+  "claim": {
+    "nl": "Leerdoelen voor oefening; geen officieel niveauattest.",
+    "en": "Practice goals; no official level certificate.",
+    "fa": "هدف‌های تمرین؛ نه گواهی رسمی سطح."
+  },
+  "alignment_status": "reference_mapped_not_calibrated",
+  "assessment_policy": {
+    "recognized_certificate": false,
+    "cut_scores_validated": false,
+    "open_stage_access": true,
+    "four_skill_records": true
+  },
+  "sources": [
+    {
+      "id": "cefr-companion-2020",
+      "title": "Council of Europe: CEFR Companion volume",
+      "url": "https://rm.coe.int/common-european-framework-of-reference-for-languages-learning-teaching/16809ea0d4",
+      "kind": "reference_framework",
+      "checked_at": "2026-10-12",
+      "published_on": "2020-04-01"
+    },
+    {
+      "id": "nt2-r1",
+      "title": "Flemish Ministry: NT2 Richtgraad 1 training profile",
+      "url": "https://jaarverslag.ahovoks.be/curriculum/volwassenenonderwijs/secundair-volwassenenonderwijs/nederlands-tweede-taal-richtgraad-1-en-2/files/Nederlands-tweede-taal-Richtgraad-1.pdf",
+      "kind": "government_curriculum_profile",
+      "checked_at": "2026-10-12",
+      "published_on": "2014-02-01"
+    },
+    {
+      "id": "nt2-r2",
+      "title": "Flemish Ministry: NT2 Richtgraad 2 training profile",
+      "url": "https://jaarverslag.ahovoks.be/curriculum/volwassenenonderwijs/secundair-volwassenenonderwijs/nederlands-tweede-taal-richtgraad-1-en-2/files/Nederlands-tweede-taal-Richtgraad-2.pdf",
+      "kind": "government_curriculum_profile",
+      "checked_at": "2026-10-12",
+      "published_on": "2014-02-01"
+    },
+    {
+      "id": "nt2-r3",
+      "title": "Flemish Ministry: NT2 Richtgraad 3 training profile",
+      "url": "https://eindtermen.vlaanderen.be/volwassenenonderwijs/secundair-volwassenenonderwijs/nederlands-tweede-taal-richtgraad-3-en-4/files/Nederlands-tweede-taal-Richtgraad-3.pdf",
+      "kind": "government_curriculum_profile",
+      "checked_at": "2026-10-12",
+      "published_on": "2014-02-01"
+    },
+    {
+      "id": "nt2-r4",
+      "title": "Flemish Ministry: NT2 Richtgraad 4 training profile",
+      "url": "https://jaarverslag.ahovoks.be/curriculum/volwassenenonderwijs/secundair-volwassenenonderwijs/nederlands-tweede-taal-richtgraad-3-en-4/files/Nederlands-tweede-taal-Richtgraad-4.pdf",
+      "kind": "government_curriculum_profile",
+      "checked_at": "2026-10-12",
+      "published_on": "2014-02-01"
+    },
+    {
+      "id": "vlaanderen-curriculum",
+      "title": "Flanders: adult-education curriculum and current profile finder",
+      "url": "https://www.vlaanderen.be/onderwijsprofessionals/lesgeven-en-begeleiden/opleidingsinhouden/opleidingsinhouden-secundair-volwassenenonderwijs",
+      "kind": "government_directory",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "taalunie-learning-goals",
+      "title": "Taalunie: learner-selected NT2 goals for Belgium and the Netherlands",
+      "url": "https://nt2-leerdoelen.org/",
+      "kind": "language_authority",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "belgian-standard",
+      "title": "Flanders Team Taaladvies: standard Dutch and national variation",
+      "url": "https://www.vlaanderen.be/team-taaladvies/over-team-taaladvies",
+      "kind": "language_authority",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "time-variation",
+      "title": "Flanders Team Taaladvies: voormiddag, namiddag and middag",
+      "url": "https://www.vlaanderen.be/team-taaladvies/taaladviezen/voormiddag-namiddag-middag",
+      "kind": "language_authority",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "ugent-language-policy",
+      "title": "UGent: language policy in the 2026-2027 education regulations",
+      "url": "https://www.ugent.be/student/nl/studeren/regelgeving/gedragscodetaal.pdf",
+      "kind": "university_policy",
+      "checked_at": "2026-10-12"
+    }
+  ],
+  "stages": [
+    {
+      "id": "pre-a1",
+      "order": 1,
+      "cefr_reference": "Pre-A1",
+      "reference_status": "cefr_descriptor",
+      "target_level": "A1",
+      "bridge_from": null,
+      "flemish_mapping": {
+        "richtgraad": null,
+        "status": "not_an_official_module"
+      },
+      "purpose": {
+        "nl": "Begin met herkenbare woorden en korte zinnen.",
+        "en": "Start with familiar words and short phrases.",
+        "fa": "با واژه‌های آشنا و عبارت‌های کوتاه شروع کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Herken woorden met beeldsteun.",
+            "en": "Recognise words with pictures.",
+            "fa": "واژه‌ها را با کمک تصویر تشخیص دهید."
+          },
+          "practice_task": "Match a familiar shop sign to a picture.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Herken namen en cijfers.",
+            "en": "Recognise names and numbers.",
+            "fa": "نام‌ها و عددها را تشخیص دهید."
+          },
+          "practice_task": "Select the number heard in a slow, repeated message.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Stel jezelf kort voor.",
+            "en": "Introduce yourself briefly.",
+            "fa": "خودتان را کوتاه معرفی کنید."
+          },
+          "practice_task": "Give a prepared greeting and your name.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Vul je persoonlijke gegevens in.",
+            "en": "Fill in personal details.",
+            "fa": "اطلاعات شخصی را بنویسید."
+          },
+          "practice_task": "Copy then enter your name and address.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Pictures, short phrases, slow delivery and repetition; alphabet practice supports literacy without assuming that adults lack literacy.",
+      "provisional_language_targets": [
+        "letter-sound connections",
+        "personal-information chunks",
+        "numbers and greetings"
+      ],
+      "source_ids": [
+        "cefr-companion-2020"
+      ],
+      "exam_profile_ids": [],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "a1",
+      "order": 2,
+      "cefr_reference": "A1",
+      "reference_status": "cefr_level",
+      "target_level": "A1",
+      "bridge_from": null,
+      "flemish_mapping": {
+        "richtgraad": "1.1",
+        "status": "reference_mapping"
+      },
+      "purpose": {
+        "nl": "Gebruik eenvoudig Nederlands in vertrouwde situaties.",
+        "en": "Use simple Dutch in familiar situations.",
+        "fa": "در موقعیت‌های آشنا از هلندی ساده استفاده کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Vind gegevens in korte berichten.",
+            "en": "Find details in short messages.",
+            "fa": "جزئیات پیام‌های کوتاه را پیدا کنید."
+          },
+          "practice_task": "Find the day and place in a short invitation.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Begrijp langzaam uitgesproken afspraken.",
+            "en": "Understand slowly spoken arrangements.",
+            "fa": "قرارهای آهسته بیان‌شده را بفهمید."
+          },
+          "practice_task": "Choose the appointment time from a clear reminder.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Vraag en geef eenvoudige informatie.",
+            "en": "Ask for and give simple information.",
+            "fa": "اطلاعات ساده را بپرسید و بیان کنید."
+          },
+          "practice_task": "Ask for an appointment and repeat its time.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Schrijf een kort bericht.",
+            "en": "Write a short message.",
+            "fa": "یک پیام کوتاه بنویسید."
+          },
+          "practice_task": "Write a brief note with your name and request.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Very short explicit texts, familiar language, visual support where useful, a patient interlocutor and repeatable clear audio.",
+      "provisional_language_targets": [
+        "present tense and main-clause word order",
+        "questions and negation",
+        "articles, plural forms and clock times"
+      ],
+      "source_ids": [
+        "nt2-r1",
+        "cefr-companion-2020"
+      ],
+      "exam_profile_ids": [
+        "nt2-course-checks",
+        "certifying-a1-a2"
+      ],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "pre-a2",
+      "order": 3,
+      "cefr_reference": "A1 → A2",
+      "reference_status": "internal_bridge",
+      "target_level": "A2",
+      "bridge_from": "A1",
+      "flemish_mapping": {
+        "richtgraad": null,
+        "status": "not_an_official_module"
+      },
+      "purpose": {
+        "nl": "Verbind korte zinnen en oefen eenvoudige keuzes.",
+        "en": "Connect short sentences and practise simple choices.",
+        "fa": "جمله‌های کوتاه را به هم وصل کنید و انتخاب‌های ساده را تمرین کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Zoek de reden in een bericht.",
+            "en": "Find a reason in a message.",
+            "fa": "دلیل را در یک پیام پیدا کنید."
+          },
+          "practice_task": "Find a changed detail in a familiar confirmation.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Kies de juiste dag en tijd.",
+            "en": "Choose the correct day and time.",
+            "fa": "روز و ساعت درست را انتخاب کنید."
+          },
+          "practice_task": "Match a short voicemail to one calendar slot.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Stel een ander moment voor.",
+            "en": "Suggest another time.",
+            "fa": "زمان دیگری پیشنهاد دهید."
+          },
+          "practice_task": "Decline one time and propose another with prompts.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Verbind een verzoek met een reden.",
+            "en": "Connect a request with a reason.",
+            "fa": "درخواست را به دلیل آن وصل کنید."
+          },
+          "practice_task": "Write a request plus one reason using a sentence frame.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Internal bridge: keep A1 topics, add one information gap, gradually fade optional prompts, and record help separately.",
+      "provisional_language_targets": [
+        "simple connectors",
+        "modal verbs",
+        "time expressions and separable verbs"
+      ],
+      "source_ids": [
+        "nt2-r1"
+      ],
+      "exam_profile_ids": [
+        "cnavt-info",
+        "certifying-a1-a2"
+      ],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "a2",
+      "order": 4,
+      "cefr_reference": "A2",
+      "reference_status": "cefr_level",
+      "target_level": "A2",
+      "bridge_from": null,
+      "flemish_mapping": {
+        "richtgraad": "1.2",
+        "status": "reference_mapping"
+      },
+      "purpose": {
+        "nl": "Regel alledaagse zaken met eenvoudige uitleg.",
+        "en": "Handle everyday matters with simple explanations.",
+        "fa": "کارهای روزمره را با توضیح ساده انجام دهید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Haal informatie uit alledaagse teksten.",
+            "en": "Extract information from everyday texts.",
+            "fa": "اطلاعات متن‌های روزمره را استخراج کنید."
+          },
+          "practice_task": "Compare an appointment reminder with available times.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Volg een korte boodschap.",
+            "en": "Follow a short message.",
+            "fa": "یک پیام کوتاه را دنبال کنید."
+          },
+          "practice_task": "Extract the reason and action from a short voicemail.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Bespreek een probleem of voorstel.",
+            "en": "Discuss a problem or proposal.",
+            "fa": "درباره یک مشکل یا پیشنهاد صحبت کنید."
+          },
+          "practice_task": "Explain a conflict, propose an option and confirm details.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Schrijf een verzoek of beschrijving.",
+            "en": "Write a request or description.",
+            "fa": "درخواست یا توضیحی بنویسید."
+          },
+          "practice_task": "Write a clear appointment-change message for its recipient.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Short familiar texts and clear audio; straightforward exchanges; basic errors are not automatically task failure when meaning remains clear.",
+      "provisional_language_targets": [
+        "past-event descriptions",
+        "modal verbs and separable verbs",
+        "reason clauses and simple linking"
+      ],
+      "source_ids": [
+        "nt2-r1"
+      ],
+      "exam_profile_ids": [
+        "nt2-course-checks",
+        "cnavt-info",
+        "certifying-a1-a2"
+      ],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "pre-b1",
+      "order": 5,
+      "cefr_reference": "A2 → B1",
+      "reference_status": "internal_bridge",
+      "target_level": "B1",
+      "bridge_from": "A2",
+      "flemish_mapping": {
+        "richtgraad": null,
+        "status": "not_an_official_module"
+      },
+      "purpose": {
+        "nl": "Vertel samenhangend en herstel misverstanden.",
+        "en": "Tell connected accounts and repair misunderstandings.",
+        "fa": "روایت منسجم بیان کنید و سوءتفاهم‌ها را برطرف کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Verbind feiten in een langere tekst.",
+            "en": "Connect facts in a longer text.",
+            "fa": "واقعیت‌ها را در متن طولانی‌تر به هم وصل کنید."
+          },
+          "practice_task": "Put information from two familiar notices in order.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Volg de volgorde van gebeurtenissen.",
+            "en": "Follow a sequence of events.",
+            "fa": "ترتیب رویدادها را دنبال کنید."
+          },
+          "practice_task": "Identify what happened before a missed appointment.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Vraag door bij een misverstand.",
+            "en": "Clarify a misunderstanding.",
+            "fa": "برای رفع سوءتفاهم سؤال کنید."
+          },
+          "practice_task": "Recover from one conflicting detail without a script.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Schrijf een samenhangend verhaal.",
+            "en": "Write a connected account.",
+            "fa": "روایتی منسجم بنویسید."
+          },
+          "practice_task": "Describe what happened and what should happen next.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Internal bridge: familiar subjects with fewer prompts, connected discourse and one controlled complication; no A3 label.",
+      "provisional_language_targets": [
+        "subordinate clauses",
+        "past and future reference",
+        "sequencing and comparison"
+      ],
+      "source_ids": [
+        "nt2-r2"
+      ],
+      "exam_profile_ids": [
+        "cnavt-form",
+        "certifying-b1-b2"
+      ],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "b1",
+      "order": 6,
+      "cefr_reference": "B1",
+      "reference_status": "cefr_level",
+      "target_level": "B1",
+      "bridge_from": null,
+      "flemish_mapping": {
+        "richtgraad": "2",
+        "status": "reference_mapping"
+      },
+      "purpose": {
+        "nl": "Handel zelfstandig in vertrouwde situaties.",
+        "en": "Act independently in familiar situations.",
+        "fa": "در موقعیت‌های آشنا مستقل عمل کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Vind hoofdpunten en relevante details.",
+            "en": "Find main points and relevant details.",
+            "fa": "نکات اصلی و جزئیات مهم را پیدا کنید."
+          },
+          "practice_task": "Combine a service notice and an email to plan a response.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Volg uitleg en duidelijke verhalen.",
+            "en": "Follow explanations and clear accounts.",
+            "fa": "توضیح‌ها و روایت‌های روشن را دنبال کنید."
+          },
+          "practice_task": "Take notes from a clear report and decide the next action.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Leg keuzes uit en geef redenen.",
+            "en": "Explain choices and give reasons.",
+            "fa": "انتخاب‌ها را توضیح دهید و دلیل بیاورید."
+          },
+          "practice_task": "Explain a problem, negotiate a solution and clarify doubt.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Schrijf een gestructureerd verslag.",
+            "en": "Write a structured account.",
+            "fa": "گزارشی ساختارمند بنویسید."
+          },
+          "practice_task": "Write a complaint with facts, reasons and a requested solution.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Familiar personal, public, work or study settings; connected clear discourse; introduce labelled informal listening variants without requiring their production.",
+      "provisional_language_targets": [
+        "connected narration and subordinate clauses",
+        "relative clauses and reported information",
+        "reasons, contrast and practical register choices"
+      ],
+      "source_ids": [
+        "nt2-r2"
+      ],
+      "exam_profile_ids": [
+        "nt2-course-checks",
+        "cnavt-form",
+        "certifying-b1-b2"
+      ],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "pre-b2",
+      "order": 7,
+      "cefr_reference": "B1 → B2",
+      "reference_status": "internal_bridge",
+      "target_level": "B2",
+      "bridge_from": "B1",
+      "flemish_mapping": {
+        "richtgraad": null,
+        "status": "not_an_official_module"
+      },
+      "purpose": {
+        "nl": "Vergelijk standpunten en bouw een argument op.",
+        "en": "Compare viewpoints and build an argument.",
+        "fa": "دیدگاه‌ها را مقایسه کنید و استدلال بسازید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Vergelijk twee standpunten.",
+            "en": "Compare two viewpoints.",
+            "fa": "دو دیدگاه را مقایسه کنید."
+          },
+          "practice_task": "Compare two short recommendations with different priorities.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Herken redenen achter een standpunt.",
+            "en": "Recognise reasons behind a viewpoint.",
+            "fa": "دلایل پشت یک دیدگاه را تشخیص دهید."
+          },
+          "practice_task": "Map reasons from a structured discussion.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Onderbouw en bespreek een keuze.",
+            "en": "Support and discuss a choice.",
+            "fa": "از یک انتخاب دفاع کنید و درباره آن صحبت کنید."
+          },
+          "practice_task": "Defend an option and address one objection.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Schrijf een afgewogen voorstel.",
+            "en": "Write a balanced proposal.",
+            "fa": "پیشنهادی سنجیده بنویسید."
+          },
+          "practice_task": "Draft a proposal with evidence and a counterpoint.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Internal bridge: start with familiar topics and explicit argument structure, then reduce planning support and add less predictable follow-up.",
+      "provisional_language_targets": [
+        "conditionals and relative clauses",
+        "passive voice in context",
+        "argument links and hedging"
+      ],
+      "source_ids": [
+        "nt2-r3"
+      ],
+      "exam_profile_ids": [
+        "cnavt-prof",
+        "cnavt-strt",
+        "itna-b2"
+      ],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "b2",
+      "order": 8,
+      "cefr_reference": "B2",
+      "reference_status": "cefr_level",
+      "target_level": "B2",
+      "bridge_from": null,
+      "flemish_mapping": {
+        "richtgraad": "3",
+        "status": "reference_mapping"
+      },
+      "purpose": {
+        "nl": "Communiceer helder over complexe onderwerpen.",
+        "en": "Communicate clearly about complex subjects.",
+        "fa": "درباره موضوعات پیچیده روشن ارتباط برقرار کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Analyseer argumenten en tekststructuur.",
+            "en": "Analyse arguments and text structure.",
+            "fa": "استدلال‌ها و ساختار متن را تحلیل کنید."
+          },
+          "practice_task": "Assess arguments in two reports rather than just recall facts.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Volg een betoog en standpunten.",
+            "en": "Follow an argument and viewpoints.",
+            "fa": "استدلال و دیدگاه‌ها را دنبال کنید."
+          },
+          "practice_task": "Compare positions in a lecture or workplace discussion.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Verdedig een standpunt met voorbeelden.",
+            "en": "Defend a viewpoint with examples.",
+            "fa": "از دیدگاه با مثال دفاع کنید."
+          },
+          "practice_task": "Present a proposal, answer objections and reach a conclusion.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Schrijf een duidelijke onderbouwde tekst.",
+            "en": "Write a clear supported text.",
+            "fa": "متنی روشن و مستدل بنویسید."
+          },
+          "practice_task": "Write a report or argument adapted to a work or study reader.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Longer structured texts, concrete and abstract issues, normal clear delivery, broader vocabulary and spontaneous interaction; tasks vary by goal domain.",
+      "provisional_language_targets": [
+        "complex clause relationships",
+        "conditionals, modality and stance",
+        "cohesion and audience-appropriate register"
+      ],
+      "source_ids": [
+        "nt2-r3"
+      ],
+      "exam_profile_ids": [
+        "nt2-course-checks",
+        "cnavt-prof",
+        "cnavt-strt",
+        "itna-b2",
+        "certifying-b1-b2"
+      ],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "pre-c1",
+      "order": 9,
+      "cefr_reference": "B2 → C1",
+      "reference_status": "internal_bridge",
+      "target_level": "C1",
+      "bridge_from": "B2",
+      "flemish_mapping": {
+        "richtgraad": null,
+        "status": "not_an_official_module"
+      },
+      "purpose": {
+        "nl": "Lees tussen de regels en verfijn je register.",
+        "en": "Read between the lines and refine register.",
+        "fa": "معنی ضمنی را بفهمید و لحن را دقیق‌تر کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Herken impliciete houdingen.",
+            "en": "Recognise implied attitudes.",
+            "fa": "نگرش‌های ضمنی را تشخیص دهید."
+          },
+          "practice_task": "Explain where two authors imply different assumptions.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Verbind impliciete informatie.",
+            "en": "Connect implicit information.",
+            "fa": "اطلاعات ضمنی را به هم وصل کنید."
+          },
+          "practice_task": "Identify an unstated reservation in a discussion.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Pas je uitleg aan de luisteraar aan.",
+            "en": "Adapt explanations to the listener.",
+            "fa": "توضیح را با شنونده هماهنگ کنید."
+          },
+          "practice_task": "Reframe the same explanation for a colleague and a student.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Combineer bronnen in een heldere tekst.",
+            "en": "Combine sources into a clear text.",
+            "fa": "منابع را در متنی روشن ترکیب کنید."
+          },
+          "practice_task": "Synthesize two sources without copying their wording.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Internal bridge: demanding but bounded subjects, implicit meaning with evidence, multiple registers and progressively fewer scaffolds.",
+      "provisional_language_targets": [
+        "nominalisation and information structure",
+        "nuanced connectors and stance",
+        "register and cohesion editing"
+      ],
+      "source_ids": [
+        "nt2-r4"
+      ],
+      "exam_profile_ids": [
+        "cnavt-edup",
+        "itna-c1"
+      ],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "c1",
+      "order": 10,
+      "cefr_reference": "C1",
+      "reference_status": "cefr_level",
+      "target_level": "C1",
+      "bridge_from": null,
+      "flemish_mapping": {
+        "richtgraad": "4",
+        "status": "reference_mapping"
+      },
+      "purpose": {
+        "nl": "Gebruik Nederlands flexibel en nauwkeurig.",
+        "en": "Use Dutch flexibly and precisely.",
+        "fa": "از هلندی انعطاف‌پذیر و دقیق استفاده کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Interpreteer complexe teksten en implicaties.",
+            "en": "Interpret complex texts and implications.",
+            "fa": "متن‌های پیچیده و پیامدهای ضمنی را تفسیر کنید."
+          },
+          "practice_task": "Evaluate assumptions across demanding texts.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Volg een debat met meerdere sprekers.",
+            "en": "Follow a multi-speaker debate.",
+            "fa": "بحث چند گوینده را دنبال کنید."
+          },
+          "practice_task": "Synthesize positions from a discussion with implicit links.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Verbind subthema’s en genuanceerde standpunten.",
+            "en": "Connect subtopics and nuanced positions.",
+            "fa": "موضوعات فرعی و دیدگاه‌های ظریف را به هم وصل کنید."
+          },
+          "practice_task": "Present a complex issue, handle challenge and adapt register.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Schrijf een precies gestructureerde uiteenzetting.",
+            "en": "Write a precisely structured exposition.",
+            "fa": "شرحی دقیق و ساختارمند بنویسید."
+          },
+          "practice_task": "Write a coherent synthesis or report for a specific reader.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Long complex texts, abstract or sensitive subjects, varied registers, implicit relationships and flexible discourse; specialist unfamiliarity is not a grammar error.",
+      "provisional_language_targets": [
+        "discourse organisation and precise reference",
+        "nuanced modality and rhetorical choices",
+        "style, register and complex-text revision"
+      ],
+      "source_ids": [
+        "nt2-r4"
+      ],
+      "exam_profile_ids": [
+        "nt2-course-checks",
+        "cnavt-edup",
+        "itna-c1"
+      ],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "pre-c2",
+      "order": 11,
+      "cefr_reference": "C1 → C2",
+      "reference_status": "internal_bridge",
+      "target_level": "C2",
+      "bridge_from": "C1",
+      "flemish_mapping": {
+        "richtgraad": null,
+        "status": "not_an_official_module"
+      },
+      "purpose": {
+        "nl": "Onderzoek nuance, stijl en complexe bemiddeling.",
+        "en": "Explore nuance, style and complex mediation.",
+        "fa": "ظرافت، سبک و میانجی‌گری پیچیده را بررسی کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Vergelijk subtiele betekenissen.",
+            "en": "Compare subtle meanings.",
+            "fa": "معناهای ظریف را مقایسه کنید."
+          },
+          "practice_task": "Compare the effect of two plausible readings of a text.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Onderzoek toon en bedoelingen.",
+            "en": "Explore tone and intentions.",
+            "fa": "لحن و قصدها را بررسی کنید."
+          },
+          "practice_task": "Test an interpretation of irony against audio evidence.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Herformuleer een complexe boodschap.",
+            "en": "Reframe a complex message.",
+            "fa": "پیامی پیچیده را بازنویسی شفاهی کنید."
+          },
+          "practice_task": "Reframe conflicting positions for a new audience.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Verfijn stijl en precisie.",
+            "en": "Refine style and precision.",
+            "fa": "سبک و دقت را بهبود دهید."
+          },
+          "practice_task": "Edit a complex synthesis for ambiguity and register.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "Internal advanced extension: tasks test interpretation and adaptable communication; difficulty and assessor reliability require expert review.",
+      "provisional_language_targets": [
+        "semantic precision and ambiguity",
+        "rhetorical and pragmatic choices",
+        "stylistic revision"
+      ],
+      "source_ids": [
+        "cefr-companion-2020"
+      ],
+      "exam_profile_ids": [],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    },
+    {
+      "id": "c2",
+      "order": 12,
+      "cefr_reference": "C2",
+      "reference_status": "cefr_level",
+      "target_level": "C2",
+      "bridge_from": null,
+      "flemish_mapping": {
+        "richtgraad": null,
+        "status": "not_an_official_module"
+      },
+      "purpose": {
+        "nl": "Communiceer met nuance in veeleisende contexten.",
+        "en": "Communicate with nuance in demanding contexts.",
+        "fa": "در موقعیت‌های دشوار با ظرافت ارتباط برقرار کنید."
+      },
+      "skills": {
+        "reading": {
+          "target": {
+            "nl": "Interpreteer moeilijke teksten met nuance.",
+            "en": "Interpret demanding texts with nuance.",
+            "fa": "متن‌های دشوار را با ظرافت تفسیر کنید."
+          },
+          "practice_task": "Resolve competing interpretations of a demanding text.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "listening": {
+          "target": {
+            "nl": "Verwerk snel en complex taalgebruik.",
+            "en": "Process fast and complex language.",
+            "fa": "زبان سریع و پیچیده را پردازش کنید."
+          },
+          "practice_task": "Synthesize a fast discussion after familiarisation with its variety.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "speaking": {
+          "target": {
+            "nl": "Druk fijne betekenisverschillen uit.",
+            "en": "Express fine distinctions of meaning.",
+            "fa": "تفاوت‌های ظریف معنایی را بیان کنید."
+          },
+          "practice_task": "Mediate a disagreement and express fine distinctions precisely.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        },
+        "writing": {
+          "target": {
+            "nl": "Schrijf doelgericht met een passende stijl.",
+            "en": "Write purposefully in an appropriate style.",
+            "fa": "هدفمند و با سبک مناسب بنویسید."
+          },
+          "practice_task": "Produce and edit a complex text for contrasting audiences.",
+          "evidence": "Task result and learner response; assistance recorded separately."
+        }
+      },
+      "task_conditions": "CEFR-informed extension, not an ITNA or CNaVT C2 mock; no verified C2 offering is supplied by this catalog and no native-accent requirement is imposed.",
+      "provisional_language_targets": [
+        "fine semantic and pragmatic distinctions",
+        "idiomatic register awareness",
+        "advanced synthesis and stylistic control"
+      ],
+      "source_ids": [
+        "cefr-companion-2020",
+        "ugent-language-policy"
+      ],
+      "exam_profile_ids": [],
+      "review": {
+        "status": "provisional",
+        "native_reviewer": null,
+        "content_calibrated": false
+      }
+    }
+  ]
+}

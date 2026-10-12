@@ -1,0 +1,414 @@
+{
+  "schema_version": 1,
+  "version": "2026.10.12.1",
+  "checked_at": "2026-10-12",
+  "claim": "Readiness catalog only; no affiliation, official exam reproduction or recognized certificate.",
+  "coverage_gap": {
+    "C2": "No currently bookable ITNA or CNaVT C2 exam is verified in this catalog. University recognition of C2 certificates is not proof of a current offering."
+  },
+  "sources": [
+    {
+      "id": "cnavt-taalunie",
+      "title": "Taalunie: CNaVT certification overview",
+      "url": "https://mijnnederlands.org/leerders/welke-diplomas-zijn-er",
+      "kind": "exam_authority",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "cnavt-cll",
+      "title": "CLL Brussels: CNaVT profiles and parts",
+      "url": "https://www.cll.be/nl/volwassenen/officiele-examens/nederlandse-test-cnavt/",
+      "kind": "exam_holder",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "cnavt-vub",
+      "title": "VUB ACTO: May 2026 CNaVT STRT and EDUP offering",
+      "url": "https://www.vub.be/nl/evenement/cnavt-examen-11052026",
+      "kind": "university_exam_holder",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "itna-b2",
+      "title": "ITNA: B2 test components",
+      "url": "https://www.itna.be/over-de-test/testonderdelen/testonderdelen-b2/",
+      "kind": "exam_authority",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "itna-c1",
+      "title": "ITNA: C1 test components and permitted checker",
+      "url": "https://www.itna.be/over-de-test/testonderdelen/testonderdelen-c1/",
+      "kind": "exam_authority",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "itna-samples",
+      "title": "ITNA: official task-type examples",
+      "url": "https://www.itna.be/over-de-test/toetsvoorbeelden/",
+      "kind": "exam_authority",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "itna-preparation",
+      "title": "ITNA: test principles and preparation limitations",
+      "url": "https://www.itna.be/over-de-test/testprincipes/",
+      "kind": "exam_authority",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "atlas-tests",
+      "title": "Atlas Antwerp: certifying Dutch tests",
+      "url": "https://www.atlas-antwerpen.be/nl/inburgeraars/nederlands/je-niveau-nederlands-testen/certificerende-taaltesten",
+      "kind": "public_exam_holder",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "brussels-tests",
+      "title": "Huis van het Nederlands Brussel: certifying test organisation",
+      "url": "https://www.huisnederlandsbrussel.be/info/testen/certificerend",
+      "kind": "public_exam_holder",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "university-course-checks",
+      "title": "KU Leuven ILT: course exams and progression policy",
+      "url": "https://ilt.kuleuven.be/cursus/nt2_faq.php",
+      "kind": "university_course_provider",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "bosa-tests",
+      "title": "BOSA: professional language-test modules",
+      "url": "https://bosa.belgium.be/nl/services/screenen-van-taalcompetenties",
+      "kind": "government_exam_authority",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "ugent-itna",
+      "title": "UGent UCT: ITNA",
+      "url": "https://uct.ugent.be/nl/taaltesten/itna-nederlands",
+      "kind": "university_exam_holder",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "kuleuven-itna",
+      "title": "KU Leuven ILT: ITNA",
+      "url": "https://ilt.kuleuven.be/certificaten/cert_ned_proficiency.php",
+      "kind": "university_exam_holder",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "uantwerpen-itna",
+      "title": "UAntwerpen Linguapolis: ITNA",
+      "url": "https://www.uantwerpen.be/nl/centra/linguapolis/taaltesten/taaltesten-nederlands/itna/",
+      "kind": "university_exam_holder",
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "uantwerpen-cnavt",
+      "title": "UAntwerpen Linguapolis: CNaVT no longer administered since 2020",
+      "url": "https://www.uantwerpen.be/nl/centra/linguapolis/taaltesten/taaltesten-nederlands/cnavt/",
+      "kind": "university_exam_holder",
+      "checked_at": "2026-10-12"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "nt2-course-checks",
+      "title": "NT2 course readiness",
+      "family": "course_provider",
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1"
+      ],
+      "purpose": "Prepare for the learner's actual course outcomes.",
+      "official_format_summary": [
+        "Reading, listening, writing and speaking; local course rules govern the exam."
+      ],
+      "source_ids": [
+        "university-course-checks"
+      ],
+      "original_practice_tasks": [
+        "Check a personal four-skill readiness checklist against the course contract."
+      ],
+      "format_note": "There is no single universal exam blueprint for every Belgian course provider. Do not import one provider's pass rule into this app.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "certifying-a1-a2",
+      "title": "Certifying Dutch A1/A2 readiness",
+      "family": "public_certifying_test",
+      "levels": [
+        "A1",
+        "A2"
+      ],
+      "purpose": "Practise familiar everyday communication.",
+      "official_format_summary": [
+        "Atlas: written reading/writing and oral listening/speaking parts.",
+        "Brussels: reading/listening first; writing/speaking on a separate day."
+      ],
+      "source_ids": [
+        "atlas-tests",
+        "brussels-tests"
+      ],
+      "original_practice_tasks": [
+        "Read a notice, understand a message and respond with the requested details."
+      ],
+      "format_note": "Test organisation and required skills depend on the holder and purpose. Check current official rules before booking.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "certifying-b1-b2",
+      "title": "Certifying Dutch B1/B2 readiness",
+      "family": "public_certifying_test",
+      "levels": [
+        "B1",
+        "B2"
+      ],
+      "purpose": "Practise independent public and professional communication.",
+      "official_format_summary": [
+        "Written and oral components; their order varies by holder."
+      ],
+      "source_ids": [
+        "atlas-tests",
+        "brussels-tests"
+      ],
+      "original_practice_tasks": [
+        "Explain a problem and support a practical solution using supplied information."
+      ],
+      "format_note": "Acceptance of a certificate must be checked with the receiving institution; Atlas does not offer C1.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "cnavt-info",
+      "title": "CNaVT INFO",
+      "family": "cnavt",
+      "levels": [
+        "A2"
+      ],
+      "purpose": "Informal everyday communication.",
+      "official_format_summary": [
+        "A: listening-related tasks.",
+        "B: reading and writing tasks.",
+        "C: individual spoken interaction."
+      ],
+      "source_ids": [
+        "cnavt-taalunie",
+        "cnavt-cll"
+      ],
+      "original_practice_tasks": [
+        "Resolve an everyday request and confirm its details."
+      ],
+      "format_note": "Original task design informed by the profile; not a copied official exam or a validated mock score.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "cnavt-form",
+      "title": "CNaVT FORM",
+      "family": "cnavt",
+      "levels": [
+        "B1"
+      ],
+      "purpose": "Independent communication in formal social contexts.",
+      "official_format_summary": [
+        "A: listening-related tasks.",
+        "B: reading and writing tasks.",
+        "C: individual spoken interaction."
+      ],
+      "source_ids": [
+        "cnavt-taalunie",
+        "cnavt-cll"
+      ],
+      "original_practice_tasks": [
+        "Use two public-service messages to explain an issue and request a solution."
+      ],
+      "format_note": "Original task design informed by the profile; not a copied official exam or a validated mock score.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "cnavt-prof",
+      "title": "CNaVT PROF",
+      "family": "cnavt",
+      "levels": [
+        "B2"
+      ],
+      "purpose": "Workplace communication.",
+      "official_format_summary": [
+        "A: listening-related tasks.",
+        "B: reading and writing tasks.",
+        "C: individual spoken interaction."
+      ],
+      "source_ids": [
+        "cnavt-taalunie",
+        "cnavt-cll"
+      ],
+      "original_practice_tasks": [
+        "Summarize a workplace problem, propose an action and discuss objections."
+      ],
+      "format_note": "Original task design informed by the profile; not a copied official exam or a validated mock score.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "cnavt-strt",
+      "title": "CNaVT STRT",
+      "family": "cnavt",
+      "levels": [
+        "B2"
+      ],
+      "purpose": "Readiness for Dutch-medium higher education.",
+      "official_format_summary": [
+        "A: listening-related tasks.",
+        "B: reading and writing tasks.",
+        "C: individual spoken interaction."
+      ],
+      "source_ids": [
+        "cnavt-taalunie",
+        "cnavt-cll",
+        "cnavt-vub"
+      ],
+      "original_practice_tasks": [
+        "Take notes, compare study information and explain a recommendation."
+      ],
+      "format_note": "Original task design informed by the profile; not a copied official exam or a validated mock score.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "cnavt-edup",
+      "title": "CNaVT EDUP",
+      "family": "cnavt",
+      "levels": [
+        "C1"
+      ],
+      "purpose": "Demanding educational and professional communication.",
+      "official_format_summary": [
+        "A: listening-related tasks.",
+        "B: reading and writing tasks.",
+        "C: individual spoken interaction."
+      ],
+      "source_ids": [
+        "cnavt-taalunie",
+        "cnavt-cll",
+        "cnavt-vub"
+      ],
+      "original_practice_tasks": [
+        "Synthesize viewpoints and defend a nuanced conclusion for a specified audience."
+      ],
+      "format_note": "Original task design informed by the profile; not a copied official exam or a validated mock score.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "itna-b2",
+      "title": "ITNA B2",
+      "family": "itna",
+      "levels": [
+        "B2"
+      ],
+      "purpose": "General Dutch for higher education.",
+      "official_format_summary": [
+        "Computer: language in use, reading and listening.",
+        "Speaking: presentation and argumentation after a sufficient computer result."
+      ],
+      "source_ids": [
+        "itna-b2",
+        "itna-samples",
+        "itna-preparation",
+        "ugent-itna",
+        "kuleuven-itna",
+        "uantwerpen-itna"
+      ],
+      "original_practice_tasks": [
+        "Work through original language-in-use items; prepare a presentation and defend a position."
+      ],
+      "format_note": "The official site provides question-type examples, not a dedicated preparatory textbook. App scores are not ITNA results.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "itna-c1",
+      "title": "ITNA C1",
+      "family": "itna",
+      "levels": [
+        "C1"
+      ],
+      "purpose": "Advanced higher-education language readiness.",
+      "official_format_summary": [
+        "Computer and speaking components; qualifying results lead to an extra C1 writing task on another day."
+      ],
+      "source_ids": [
+        "itna-c1",
+        "itna-samples",
+        "itna-preparation"
+      ],
+      "original_practice_tasks": [
+        "Produce and revise an original source-based argument for a specified audience."
+      ],
+      "format_note": "This is a follow-on procedure with official eligibility rules, not a standalone four-part C1 exam.",
+      "permitted_tools_note": "The official C1 writing task permits Word spelling/grammar checking; do not impose a blanket no-tools imitation.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    },
+    {
+      "id": "bosa-professional",
+      "title": "BOSA professional language tests",
+      "family": "bosa",
+      "levels": [],
+      "purpose": "Professional communication for a specific certificate or role.",
+      "official_format_summary": [
+        "Possible reading, listening, oral and written modules; certificate-specific rules choose the modules and level."
+      ],
+      "source_ids": [
+        "bosa-tests"
+      ],
+      "original_practice_tasks": [
+        "Use an original workplace brief to prepare a clear explanation and written response."
+      ],
+      "format_note": "No generic level or pass score is asserted. The legal article and exact certificate must be selected before a timed format is implemented.",
+      "permitted_tools_note": "Follow the current official instructions for the chosen profile.",
+      "practice_status": "design_blueprint",
+      "recognized_certificate": false,
+      "official_sample_reproduced": false,
+      "checked_at": "2026-10-12"
+    }
+  ]
+}
