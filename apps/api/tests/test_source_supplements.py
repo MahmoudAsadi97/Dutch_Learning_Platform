@@ -168,6 +168,9 @@ def test_grammar_examples_extend_existing_rules_without_touching_final_tests():
 def test_reference_pages_and_content_hashes_are_bound_to_supplied_sources():
     manifest = json.loads((CONTENT_DIR / "source-index/manifest.json").read_text())
     refs = {s["source_id"]: s for s in manifest["sources"]}
+    stage_map = json.loads((CONTENT_DIR / "source-index/stage-map.json").read_text())
+    concepts_by_stage = {s["id"]: set(s.get("source_concepts", [])) | set(s.get("source_concepts_recycled", []))
+                         for s in stage_map["stages"]}
     links = json.loads((CONTENT_DIR / "source-index/lesson-links.json").read_text())["lessons"]
     concepts = json.loads((CONTENT_DIR / "source-index/concepts.json").read_text())
     concept_ids = {concept["id"] for concept in concepts["grammar"]}
@@ -178,6 +181,7 @@ def test_reference_pages_and_content_hashes_are_bound_to_supplied_sources():
         f"{stage}-t-source-{unit}" for stage in STAGES for unit in UNITS}
     assert len({link["story_id"] for link in links}) == len(links)
     for link in links:
+        assert link["concept"] in concepts_by_stage[link["stage_id"]]
         pack_path = CONTENT_DIR / "source-lessons" / f"{link['stage_id']}.json"
         assert hashlib.sha256(pack_path.read_bytes()).hexdigest() == link["pack_sha256"]
         assert link["language_review"] == "pending" and link["level_alignment"] == "provisional"

@@ -251,6 +251,9 @@ def build(units: list[dict] | None = None, root: Path = ROOT) -> None:
     sources = {s["source_id"]: s for s in manifest["sources"]}
     curriculum = json.loads((root / "content/curriculum/path.json").read_text(encoding="utf-8"))
     rules = {s["id"]: {g["id"] for g in s["grammar"]} for s in curriculum["stages"]}
+    stage_map = json.loads((root / "content/source-index/stage-map.json").read_text(encoding="utf-8"))
+    concepts = {s["id"]: set(s.get("source_concepts", [])) | set(s.get("source_concepts_recycled", []))
+                for s in stage_map["stages"]}
     grouped = defaultdict(list)
     for unit in units:
         stage, number = unit["stage"], unit.get("unit", 1)
@@ -260,6 +263,8 @@ def build(units: list[dict] | None = None, root: Path = ROOT) -> None:
             raise ValueError("duplicate source unit number in a stage")
         if unit["grammar"] not in rules[stage]:
             raise ValueError("source unit targets an unknown stage grammar rule")
+        if unit["concept"] not in concepts.get(stage, set()):
+            raise ValueError("source unit concept is not mapped to its learning stage")
         grouped[stage].append(unit)
 
     links = []

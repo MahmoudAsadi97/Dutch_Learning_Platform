@@ -17,7 +17,7 @@ def builder(tmp_path):
     spec = importlib.util.spec_from_file_location("source_lesson_builder", source)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    for name in ("library/pre-a1.json", "curriculum/path.json", "source-index/manifest.json"):
+    for name in ("library/pre-a1.json", "curriculum/path.json", "source-index/manifest.json", "source-index/stage-map.json"):
         path = tmp_path / "content" / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes((CONTENT_DIR / name).read_bytes())
@@ -52,7 +52,8 @@ def test_multiple_units_share_targets_and_grammar_without_changing_the_first_uni
     assert files == (path.read_bytes(), links_path.read_bytes())
 
 
-@pytest.mark.parametrize("case", ("duplicate-number", "unknown-stage", "unknown-rule", "invalid-number",
+@pytest.mark.parametrize("case", ("duplicate-number", "unknown-stage", "unknown-rule", "unknown-concept",
+                                  "unmapped-concept", "invalid-number",
                                   "unknown-source", "zero-page", "outside-page", "duplicate-target"))
 def test_invalid_authoring_contracts_fail_before_writing_lesson_files(builder, case):
     module, root = builder
@@ -65,6 +66,10 @@ def test_invalid_authoring_contracts_fail_before_writing_lesson_files(builder, c
         other["stage"] = "a3"
     elif case == "unknown-rule":
         other["grammar"] = "not-a-rule"
+    elif case == "unknown-concept":
+        other["concept"] = "not-a-concept"
+    elif case == "unmapped-concept":
+        other["concept"] = "spatial-prepositions"
     elif case == "invalid-number":
         other["unit"] = 100
     elif case == "unknown-source":
