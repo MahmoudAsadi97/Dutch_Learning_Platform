@@ -52,8 +52,11 @@ Writing feedback points to the learner's actual draft, suggests a corrected form
 change. The draft stays available for revision. Feedback, assistance and later independent performance
 must remain distinguishable.
 
-The supplied Dutch scans now support **Van woord naar gesprek**: six original units from pre-A1 to
+The supplied Dutch scans now support **Van woord naar gesprek**: twelve original units from pre-A1 to
 B1, connecting new Story Time stories with reading, listening, speaking, writing and grammar practice.
+Each stage has two connected units: introductions and classroom details, times and locations, preferences
+and requests, everyday problems and messages, linked events and negotiations. Listening introduces
+new information that the learner uses in speaking or writing.
 The existing banks and progress stay intact. The new language and level assignments still need native
 review; raw scans and OCR remain private. [What was added and where to find it](docs/SOURCE_LESSONS.md).
 

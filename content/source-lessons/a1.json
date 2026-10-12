@@ -97,6 +97,61 @@
           "fa": "روی کارت چهارشنبه نوشته شده است."
         }
       }
+    },
+    {
+      "id": "a1-s-source-02",
+      "title": {
+        "nl": "Waar ligt het boek?",
+        "en": "Where is the book?",
+        "fa": "کتاب کجاست؟"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Rosa komt in de klas. De tafel staat naast de deur. Haar boek ligt op de tafel. Haar tas staat onder de stoel.",
+          "en": "Rosa enters the classroom. The table is next to the door. Her book is on the table. Her bag is under the chair.",
+          "fa": "روزا وارد کلاس می‌شود. میز کنار در است. کتابش روی میز است. کیفش زیر صندلی است."
+        },
+        {
+          "nl": "Rosa gaat even naar buiten. Amir blijft in de klas. Hij maakt plaats op de tafel. Hij verplaatst het boek en de tas.",
+          "en": "Rosa goes outside for a moment. Amir stays in the classroom. He makes space on the table. He moves the book and the bag.",
+          "fa": "روزا برای لحظه‌ای بیرون می‌رود. امیر در کلاس می‌ماند. روی میز جا باز می‌کند. کتاب و کیف را جابه‌جا می‌کند."
+        }
+      ],
+      "vocabulary_ids": [
+        "a1-v129",
+        "a1-v027",
+        "a1-v026"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waar staat de tafel?",
+          "en": "Where is the table?",
+          "fa": "میز کجاست؟"
+        },
+        "options": [
+          {
+            "nl": "Naast de deur.",
+            "en": "Next to the door.",
+            "fa": "کنار در."
+          },
+          {
+            "nl": "Voor het raam.",
+            "en": "In front of the window.",
+            "fa": "جلوی پنجره."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "De tekst zegt dat de tafel naast de deur staat.",
+          "en": "The text says the table is next to the door.",
+          "fa": "متن می‌گوید میز کنار در است."
+        }
+      }
     }
   ],
   "topics": [
@@ -308,6 +363,215 @@
         "min_words": 8,
         "max_words": 45
       }
+    },
+    {
+      "id": "a1-t-source-02",
+      "title": {
+        "nl": "Waar ligt het boek?",
+        "en": "Where is the book?",
+        "fa": "کتاب کجاست؟"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Met op, onder en naast zeggen waar iets staat of ligt.",
+          "en": "Saying where something is with op, onder and naast.",
+          "fa": "گفتن جای وسایل با op، onder و naast."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Met op, onder en naast zeggen waar iets staat of ligt.",
+        "en": "Saying where something is with op, onder and naast.",
+        "fa": "گفتن جای وسایل با op، onder و naast."
+      },
+      "vocabulary_ids": [
+        "a1-v129",
+        "a1-v027",
+        "a1-v026"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Rosa komt in de klas. De tafel staat naast de deur. Haar boek ligt op de tafel. Haar tas staat onder de stoel.\n\nRosa gaat even naar buiten. Amir blijft in de klas. Hij maakt plaats op de tafel. Hij verplaatst het boek en de tas.",
+          "en": "Rosa enters the classroom. The table is next to the door. Her book is on the table. Her bag is under the chair.\n\nRosa goes outside for a moment. Amir stays in the classroom. He makes space on the table. He moves the book and the bag.",
+          "fa": "روزا وارد کلاس می‌شود. میز کنار در است. کتابش روی میز است. کیفش زیر صندلی است.\n\nروزا برای لحظه‌ای بیرون می‌رود. امیر در کلاس می‌ماند. روی میز جا باز می‌کند. کتاب و کیف را جابه‌جا می‌کند."
+        },
+        "questions": [
+          {
+            "id": "a1-t-source-02-r1",
+            "prompt": {
+              "nl": "Waar staat de tafel?",
+              "en": "Where is the table?",
+              "fa": "میز کجاست؟"
+            },
+            "options": [
+              {
+                "nl": "Naast de deur.",
+                "en": "Next to the door.",
+                "fa": "کنار در."
+              },
+              {
+                "nl": "Voor het raam.",
+                "en": "In front of the window.",
+                "fa": "جلوی پنجره."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De tekst zegt dat de tafel naast de deur staat.",
+              "en": "The text says the table is next to the door.",
+              "fa": "متن می‌گوید میز کنار در است."
+            }
+          },
+          {
+            "id": "a1-t-source-02-r2",
+            "prompt": {
+              "nl": "Waar ligt het boek eerst?",
+              "en": "Where is the book at first?",
+              "fa": "کتاب ابتدا کجاست؟"
+            },
+            "options": [
+              {
+                "nl": "Onder de stoel.",
+                "en": "Under the chair.",
+                "fa": "زیر صندلی."
+              },
+              {
+                "nl": "Op de tafel.",
+                "en": "On the table.",
+                "fa": "روی میز."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Voor Rosa naar buiten gaat, ligt het boek op de tafel.",
+              "en": "Before Rosa goes outside, the book is on the table.",
+              "fa": "پیش از بیرون رفتن روزا، کتاب روی میز است."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Rosa. Het boek ligt nu onder de tafel. De tas staat op de stoel. De tafel staat nog naast de deur.",
+          "en": "Hi Rosa. The book is now under the table. The bag is on the chair. The table is still next to the door.",
+          "fa": "سلام روزا. کتاب اکنون زیر میز است. کیف روی صندلی است. میز همچنان کنار در است."
+        },
+        "questions": [
+          {
+            "id": "a1-t-source-02-l1",
+            "prompt": {
+              "nl": "Waar ligt het boek nu?",
+              "en": "Where is the book now?",
+              "fa": "کتاب اکنون کجاست؟"
+            },
+            "options": [
+              {
+                "nl": "Op de tafel.",
+                "en": "On the table.",
+                "fa": "روی میز."
+              },
+              {
+                "nl": "Onder de tafel.",
+                "en": "Under the table.",
+                "fa": "زیر میز."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De nieuwe boodschap zegt: Het boek ligt nu onder de tafel.",
+              "en": "The new message says: The book is now under the table.",
+              "fa": "پیام تازه می‌گوید: کتاب اکنون زیر میز است."
+            }
+          },
+          {
+            "id": "a1-t-source-02-l2",
+            "prompt": {
+              "nl": "Waar staat de tas nu?",
+              "en": "Where is the bag now?",
+              "fa": "کیف اکنون کجاست؟"
+            },
+            "options": [
+              {
+                "nl": "Onder de stoel.",
+                "en": "Under the chair.",
+                "fa": "زیر صندلی."
+              },
+              {
+                "nl": "Op de stoel.",
+                "en": "On the chair.",
+                "fa": "روی صندلی."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Je hoort dat de tas op de stoel staat.",
+              "en": "You hear that the bag is on the chair.",
+              "fa": "می‌شنوید که کیف روی صندلی است."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Vertel Rosa waar het boek, de tas en de tafel nu zijn. Gebruik de nieuwe boodschap.",
+          "en": "Tell Rosa where the book, bag and table are now. Use the new message.",
+          "fa": "به روزا بگویید کتاب، کیف و میز اکنون کجا هستند. از پیام تازه استفاده کنید."
+        },
+        "sample": {
+          "nl": "Je boek ligt onder de tafel. Je tas staat op de stoel. De tafel staat naast de deur.",
+          "en": "Your book is under the table. Your bag is on the chair. The table is next to the door.",
+          "fa": "کتابت زیر میز است. کیفت روی صندلی است. میز کنار در است."
+        },
+        "criteria": [
+          {
+            "nl": "Geef de nieuwe plaats van het boek en de tas correct.",
+            "en": "Give the new location of the book and bag correctly.",
+            "fa": "جای تازه کتاب و کیف را درست بیان کنید."
+          },
+          {
+            "nl": "Gebruik op, onder en naast voor de drie plaatsen.",
+            "en": "Use op, onder and naast for the three locations.",
+            "fa": "برای سه مکان از op، onder و naast استفاده کنید."
+          }
+        ],
+        "min_words": 12,
+        "max_words": 35
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een kort bericht aan Rosa. Geef de nieuwe plaats van het boek en de tas. Noem ook de plaats van de tafel.",
+          "en": "Write a short message to Rosa. Give the new location of the book and bag. Also say where the table is.",
+          "fa": "پیامی کوتاه به روزا بنویسید. جای تازه کتاب و کیف را بگویید. جای میز را هم ذکر کنید."
+        },
+        "sample": {
+          "nl": "Dag Rosa, je boek ligt nu onder de tafel. Je tas staat op de stoel. De tafel staat naast de deur.",
+          "en": "Hi Rosa, your book is now under the table. Your bag is on the chair. The table is next to the door.",
+          "fa": "سلام روزا، کتابت اکنون زیر میز است. کیفت روی صندلی است. میز کنار در است."
+        },
+        "criteria": [
+          {
+            "nl": "Geef de nieuwe plaats van het boek en de tas correct.",
+            "en": "Give the new location of the book and bag correctly.",
+            "fa": "جای تازه کتاب و کیف را درست بیان کنید."
+          },
+          {
+            "nl": "Gebruik op, onder en naast voor de drie plaatsen.",
+            "en": "Use op, onder and naast for the three locations.",
+            "fa": "برای سه مکان از op، onder و naast استفاده کنید."
+          }
+        ],
+        "min_words": 12,
+        "max_words": 35
+      }
     }
   ],
   "grammar_extensions": [
@@ -355,6 +619,54 @@
             "nl": "Half zes is een halfuur vóór zes, hier in de namiddag.",
             "en": "Half zes is half an hour before six, here in the afternoon.",
             "fa": "Half zes نیم ساعت پیش از شش است؛ اینجا منظور بعدازظهر است."
+          }
+        }
+      ]
+    },
+    {
+      "id": "spatial-prepositions",
+      "examples": [
+        {
+          "nl": "Het boek ligt op de tafel.",
+          "en": "The book is on the table.",
+          "fa": "کتاب روی میز است."
+        },
+        {
+          "nl": "Het boek ligt onder de tafel.",
+          "en": "The book is under the table.",
+          "fa": "کتاب زیر میز است."
+        },
+        {
+          "nl": "De tafel staat naast de deur.",
+          "en": "The table is next to the door.",
+          "fa": "میز کنار در است."
+        }
+      ],
+      "practice": [
+        {
+          "id": "a1-source-grammar-02",
+          "prompt": {
+            "nl": "Het boek ligt beneden, niet bovenop de tafel. Vul aan: Het boek ligt … de tafel.",
+            "en": "The book is below, not on top of the table. Complete: Het boek ligt … de tafel.",
+            "fa": "کتاب پایین است، نه روی میز. کامل کنید: Het boek ligt … de tafel."
+          },
+          "options": [
+            {
+              "nl": "op",
+              "en": "op",
+              "fa": "op"
+            },
+            {
+              "nl": "onder",
+              "en": "onder",
+              "fa": "onder"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Onder betekent lager dan de tafel, niet op het tafelblad.",
+            "en": "Onder means below the table, not on the tabletop.",
+            "fa": "Onder یعنی پایین‌تر از میز، نه روی سطح آن."
           }
         }
       ]

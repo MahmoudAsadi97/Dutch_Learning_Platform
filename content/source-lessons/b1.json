@@ -59,6 +59,25 @@
         "en": "The photo I am sending shows my bag.",
         "fa": "عکسی که می‌فرستم کیفم را نشان می‌دهد."
       }
+    },
+    {
+      "id": "b1-source-02-v003",
+      "term": "de verbinding",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De aansluiting waarmee apparaten informatie uitwisselen.",
+        "en": "The connection through which devices exchange information.",
+        "fa": "اتصالی که دستگاه‌ها از طریق آن اطلاعات مبادله می‌کنند."
+      },
+      "example": {
+        "nl": "De verbinding moet werken zodat Tess online kan deelnemen.",
+        "en": "The connection must work so Tess can join online.",
+        "fa": "اتصال باید کار کند تا تس بتواند آنلاین شرکت کند."
+      }
     }
   ],
   "stories": [
@@ -114,6 +133,61 @@
           "nl": "De tekst noemt het boek dat hij gisteren heeft gekocht.",
           "en": "The text names the book he bought yesterday.",
           "fa": "متن کتابی را ذکر می‌کند که دیروز خریده است."
+        }
+      }
+    },
+    {
+      "id": "b1-s-source-02",
+      "title": {
+        "nl": "Samen, maar niet op dezelfde plaats",
+        "en": "Together, but not in the same place",
+        "fa": "با هم، اما نه در یک مکان"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Lina, Omar en Tess bereiden samen een presentatie voor. Ze willen donderdag van vijf tot zes uur in de namiddag vergaderen in lokaal drie. Lina is pas om vijf uur vrij. Omar moet om zes uur vertrekken. Tess kan van vijf tot zes uur deelnemen, maar alleen online. De afspraak is dat niemand de bespreking mist.",
+          "en": "Lina, Omar and Tess are preparing a presentation together. They want to meet on Thursday from five to six in the afternoon in classroom three. Lina is only free from five. Omar has to leave at six. Tess can take part from five to six, but only online. They have agreed that no one should miss the discussion.",
+          "fa": "لینا، عمر و تس با هم یک ارائه آماده می‌کنند. می‌خواهند پنجشنبه از ساعت پنج تا شش بعدازظهر در اتاق سه جلسه داشته باشند. لینا فقط از ساعت پنج آزاد است. عمر باید ساعت شش برود. تس می‌تواند از پنج تا شش شرکت کند، اما فقط آنلاین. توافق کرده‌اند هیچ‌کس گفت‌وگو را از دست ندهد."
+        },
+        {
+          "nl": "Lina schrijft een voorstel in de groepschat: We zouden in lokaal drie kunnen zitten en Tess via een videogesprek laten deelnemen. Omar zal de laptop meebrengen. Voordat Lina het voorstel bevestigt, controleert ze bij de balie of het lokaal beschikbaar is en of de verbinding met het internet werkt.",
+          "en": "Lina writes a proposal in the group chat: We could sit in classroom three and let Tess join by video call. Omar will bring the laptop. Before Lina confirms the proposal, she checks at the desk whether the classroom is available and whether the internet connection works.",
+          "fa": "لینا در گفت‌وگوی گروهی پیشنهادی می‌نویسد: می‌توانیم در اتاق سه بنشینیم و تس از راه تماس تصویری شرکت کند. عمر لپ‌تاپ را می‌آورد. قبل از تأیید پیشنهاد، لینا از مسئول میز می‌پرسد آیا اتاق آزاد است و اینترنت کار می‌کند یا نه."
+        }
+      ],
+      "vocabulary_ids": [
+        "b1-v166",
+        "b1-v171",
+        "b1-source-02-v003"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom kan de groep niet vóór vijf uur beginnen?",
+          "en": "Why can the group not start before five?",
+          "fa": "چرا گروه نمی‌تواند پیش از ساعت پنج شروع کند؟"
+        },
+        "options": [
+          {
+            "nl": "Lina is pas om vijf uur vrij.",
+            "en": "Lina is only free from five.",
+            "fa": "لینا فقط از ساعت پنج آزاد است."
+          },
+          {
+            "nl": "Omar kan alleen online deelnemen.",
+            "en": "Omar can only join online.",
+            "fa": "عمر فقط می‌تواند آنلاین شرکت کند."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "Lina kan pas vanaf vijf uur deelnemen; Tess is degene die online aansluit.",
+          "en": "Lina can only take part from five; Tess is the one joining online.",
+          "fa": "لینا فقط از ساعت پنج می‌تواند شرکت کند؛ تس کسی است که آنلاین می‌پیوندد."
         }
       }
     }
@@ -327,6 +401,215 @@
         "min_words": 40,
         "max_words": 100
       }
+    },
+    {
+      "id": "b1-t-source-02",
+      "title": {
+        "nl": "Samen, maar niet op dezelfde plaats",
+        "en": "Together, but not in the same place",
+        "fa": "با هم، اما نه در یک مکان"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Met zou een haalbaar voorstel doen, een alternatief afwijzen en de reden uitleggen.",
+          "en": "Using zou to make a workable proposal, decline an alternative and explain why.",
+          "fa": "ارائه پیشنهاد عملی با zou، رد یک گزینه و توضیح دلیل."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Met zou een haalbaar voorstel doen, een alternatief afwijzen en de reden uitleggen.",
+        "en": "Using zou to make a workable proposal, decline an alternative and explain why.",
+        "fa": "ارائه پیشنهاد عملی با zou، رد یک گزینه و توضیح دلیل."
+      },
+      "vocabulary_ids": [
+        "b1-v166",
+        "b1-v171",
+        "b1-source-02-v003"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Lina, Omar en Tess bereiden samen een presentatie voor. Ze willen donderdag van vijf tot zes uur in de namiddag vergaderen in lokaal drie. Lina is pas om vijf uur vrij. Omar moet om zes uur vertrekken. Tess kan van vijf tot zes uur deelnemen, maar alleen online. De afspraak is dat niemand de bespreking mist.\n\nLina schrijft een voorstel in de groepschat: We zouden in lokaal drie kunnen zitten en Tess via een videogesprek laten deelnemen. Omar zal de laptop meebrengen. Voordat Lina het voorstel bevestigt, controleert ze bij de balie of het lokaal beschikbaar is en of de verbinding met het internet werkt.",
+          "en": "Lina, Omar and Tess are preparing a presentation together. They want to meet on Thursday from five to six in the afternoon in classroom three. Lina is only free from five. Omar has to leave at six. Tess can take part from five to six, but only online. They have agreed that no one should miss the discussion.\n\nLina writes a proposal in the group chat: We could sit in classroom three and let Tess join by video call. Omar will bring the laptop. Before Lina confirms the proposal, she checks at the desk whether the classroom is available and whether the internet connection works.",
+          "fa": "لینا، عمر و تس با هم یک ارائه آماده می‌کنند. می‌خواهند پنجشنبه از ساعت پنج تا شش بعدازظهر در اتاق سه جلسه داشته باشند. لینا فقط از ساعت پنج آزاد است. عمر باید ساعت شش برود. تس می‌تواند از پنج تا شش شرکت کند، اما فقط آنلاین. توافق کرده‌اند هیچ‌کس گفت‌وگو را از دست ندهد.\n\nلینا در گفت‌وگوی گروهی پیشنهادی می‌نویسد: می‌توانیم در اتاق سه بنشینیم و تس از راه تماس تصویری شرکت کند. عمر لپ‌تاپ را می‌آورد. قبل از تأیید پیشنهاد، لینا از مسئول میز می‌پرسد آیا اتاق آزاد است و اینترنت کار می‌کند یا نه."
+        },
+        "questions": [
+          {
+            "id": "b1-t-source-02-r1",
+            "prompt": {
+              "nl": "Waarom kan de groep niet vóór vijf uur beginnen?",
+              "en": "Why can the group not start before five?",
+              "fa": "چرا گروه نمی‌تواند پیش از ساعت پنج شروع کند؟"
+            },
+            "options": [
+              {
+                "nl": "Lina is pas om vijf uur vrij.",
+                "en": "Lina is only free from five.",
+                "fa": "لینا فقط از ساعت پنج آزاد است."
+              },
+              {
+                "nl": "Omar kan alleen online deelnemen.",
+                "en": "Omar can only join online.",
+                "fa": "عمر فقط می‌تواند آنلاین شرکت کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Lina kan pas vanaf vijf uur deelnemen; Tess is degene die online aansluit.",
+              "en": "Lina can only take part from five; Tess is the one joining online.",
+              "fa": "لینا فقط از ساعت پنج می‌تواند شرکت کند؛ تس کسی است که آنلاین می‌پیوندد."
+            }
+          },
+          {
+            "id": "b1-t-source-02-r2",
+            "prompt": {
+              "nl": "Wat is nodig om Tess te laten deelnemen?",
+              "en": "What is needed for Tess to take part?",
+              "fa": "برای شرکت کردن تس چه چیزی لازم است؟"
+            },
+            "options": [
+              {
+                "nl": "Een werkende internetverbinding voor het videogesprek.",
+                "en": "A working internet connection for the video call.",
+                "fa": "اینترنت فعال برای تماس تصویری."
+              },
+              {
+                "nl": "Een bespreking na zes uur zonder laptop.",
+                "en": "A discussion after six without a laptop.",
+                "fa": "گفت‌وگو پس از ساعت شش بدون لپ‌تاپ."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Tess kan alleen online deelnemen; de groep heeft dus een werkende verbinding nodig.",
+              "en": "Tess can only join online, so the group needs a working connection.",
+              "fa": "تس فقط می‌تواند آنلاین شرکت کند؛ بنابراین گروه به اینترنت فعال نیاز دارد."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Lina, lokaal drie is donderdag van vijf tot zes uur in de namiddag bezet. Lokaal vijf is dan wel vrij, maar de internetverbinding werkt er niet. U zou lokaal twee kunnen nemen: dat is van vijf tot zes uur vrij en heeft een werkende verbinding. Lokaal drie is pas vanaf zes uur vrij. Laat ons weten welk lokaal u wilt reserveren.",
+          "en": "Hello Lina, classroom three is occupied on Thursday from five to six in the afternoon. Classroom five is free then, but its internet connection does not work. You could take classroom two: it is free from five to six and has a working connection. Classroom three is only free from six onwards. Let us know which classroom you want to reserve.",
+          "fa": "سلام لینا، اتاق سه پنجشنبه از پنج تا شش بعدازظهر اشغال است. اتاق پنج آن موقع آزاد است، اما اینترنتش کار نمی‌کند. می‌توانید اتاق دو را بگیرید: از پنج تا شش آزاد است و اینترنت دارد. اتاق سه فقط از ساعت شش آزاد می‌شود. به ما بگویید کدام اتاق را می‌خواهید رزرو کنید."
+        },
+        "questions": [
+          {
+            "id": "b1-t-source-02-l1",
+            "prompt": {
+              "nl": "Welk lokaal is van 17.00 tot 18.00 uur vrij en heeft werkend internet?",
+              "en": "Which classroom is free from 17:00 to 18:00 and has working internet?",
+              "fa": "کدام اتاق از ساعت ۱۷ تا ۱۸ آزاد است و اینترنت فعال دارد؟"
+            },
+            "options": [
+              {
+                "nl": "Lokaal vijf, van 17.00 tot 18.00 uur.",
+                "en": "Classroom five, from 17:00 to 18:00.",
+                "fa": "اتاق پنج، از ساعت ۱۷ تا ۱۸."
+              },
+              {
+                "nl": "Lokaal twee, van 17.00 tot 18.00 uur.",
+                "en": "Classroom two, from 17:00 to 18:00.",
+                "fa": "اتاق دو، از ساعت ۱۷ تا ۱۸."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Lokaal twee is vrij op het juiste moment en heeft internet; lokaal vijf heeft geen werkende verbinding.",
+              "en": "Classroom two is free at the right time and has internet; classroom five has no working connection.",
+              "fa": "اتاق دو در زمان مناسب آزاد است و اینترنت دارد؛ اتاق پنج اینترنت فعال ندارد."
+            }
+          },
+          {
+            "id": "b1-t-source-02-l2",
+            "prompt": {
+              "nl": "Wat moet Lina nog doen?",
+              "en": "What does Lina still need to do?",
+              "fa": "لینا هنوز چه کاری باید انجام دهد؟"
+            },
+            "options": [
+              {
+                "nl": "Doorgeven welk lokaal de groep wil reserveren.",
+                "en": "Say which classroom the group wants to reserve.",
+                "fa": "بگوید گروه کدام اتاق را می‌خواهد رزرو کند."
+              },
+              {
+                "nl": "Bevestigen dat lokaal twee al gereserveerd is.",
+                "en": "Confirm that classroom two is already reserved.",
+                "fa": "تأیید کند اتاق دو از قبل رزرو شده است."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De balie biedt mogelijkheden aan, maar vraagt nog een keuze; de reservering is niet bevestigd.",
+              "en": "The desk offers options but still asks for a choice; the reservation is not confirmed.",
+              "fa": "مسئول میز گزینه‌ها را پیشنهاد می‌دهد، اما هنوز انتخاب گروه را می‌خواهد؛ رزرو تأیید نشده است."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Doe als Lina een nieuw voorstel aan Omar en Tess. Gebruik zou of zouden. Noem het haalbare lokaal en de tijd. Leg uit waarom lokaal vijf en een start om zes uur niet werken. Maak duidelijk dat de balie de reservering nog moet bevestigen.",
+          "en": "As Lina, make a new proposal to Omar and Tess. Use zou or zouden. Give the workable classroom and time. Explain why classroom five and starting at six do not work. Make clear that the desk still needs to confirm the reservation.",
+          "fa": "در نقش لینا پیشنهاد تازه‌ای به عمر و تس بدهید. از zou یا zouden استفاده کنید. اتاق و زمان مناسب را بگویید. توضیح دهید چرا اتاق پنج و شروع ساعت شش مناسب نیستند. روشن کنید مسئول میز هنوز باید رزرو را تأیید کند."
+        },
+        "sample": {
+          "nl": "We zouden donderdag van vijf tot zes uur in lokaal twee kunnen vergaderen. Daar werkt het internet, zodat Tess online kan deelnemen. Lokaal vijf lijkt mij geen goede keuze, want daar werkt de verbinding niet. Om zes uur beginnen lukt ook niet, omdat Omar dan moet vertrekken. Ik zal lokaal twee aanvragen, maar de balie moet onze reservering nog bevestigen.",
+          "en": "We could meet on Thursday from five to six in classroom two. The internet works there, so Tess can join online. Classroom five does not seem a good choice to me because its connection does not work. Starting at six does not work either, because Omar has to leave then. I will request classroom two, but the desk still needs to confirm our reservation.",
+          "fa": "می‌توانیم پنجشنبه از پنج تا شش در اتاق دو جلسه داشته باشیم. اینترنت آنجا کار می‌کند، پس تس می‌تواند آنلاین شرکت کند. به نظرم اتاق پنج گزینه خوبی نیست، چون اتصالش کار نمی‌کند. شروع ساعت شش هم ممکن نیست، چون عمر آن موقع باید برود. درخواست اتاق دو را می‌دهم، اما مسئول میز هنوز باید رزرو ما را تأیید کند."
+        },
+        "criteria": [
+          {
+            "nl": "Doe met zou of zouden een voorstel voor lokaal twee op donderdag van 17.00 tot 18.00 uur, zodat Tess online kan deelnemen.",
+            "en": "Use zou or zouden to propose classroom two on Thursday from 17:00 to 18:00 so Tess can join online.",
+            "fa": "با zou یا zouden اتاق دو را برای پنجشنبه از ۱۷ تا ۱۸ پیشنهاد دهید تا تس بتواند آنلاین شرکت کند."
+          },
+          {
+            "nl": "Geef redenen om de onhaalbare alternatieven af te wijzen en presenteer de reservering als een aanvraag, niet als een bevestigde boeking.",
+            "en": "Give reasons to decline the unworkable alternatives and present the reservation as a request, not a confirmed booking.",
+            "fa": "برای رد گزینه‌های ناممکن دلیل بدهید و رزرو را به‌عنوان درخواست بیان کنید، نه رزرو تأییدشده."
+          }
+        ],
+        "min_words": 40,
+        "max_words": 100
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf Lina's vervolgbericht in de groepschat. Stel met zouden lokaal twee van vijf tot zes uur voor en leg uit hoe Tess kan deelnemen. Wijs lokaal vijf en beginnen om zes uur beleefd af, met redenen. Zeg wat nog niet bevestigd is.",
+          "en": "Write Lina's follow-up in the group chat. Use zouden to suggest classroom two from five to six and explain how Tess can take part. Politely decline classroom five and starting at six, giving reasons. Say what is not yet confirmed.",
+          "fa": "پیام بعدی لینا را در گفت‌وگوی گروهی بنویسید. با zouden اتاق دو از پنج تا شش را پیشنهاد دهید و توضیح دهید تس چگونه شرکت می‌کند. اتاق پنج و شروع ساعت شش را با دلیل مؤدبانه رد کنید. بگویید چه چیزی هنوز تأیید نشده است."
+        },
+        "sample": {
+          "nl": "Dag Omar en Tess, we zouden donderdag van vijf tot zes uur in lokaal twee kunnen vergaderen. Dat lokaal is vrij en heeft internet, dus Tess kan online aansluiten. Ik zou lokaal vijf niet kiezen, omdat de verbinding daar niet werkt. Lokaal drie vanaf zes uur is ook geen oplossing: Omar moet dan vertrekken. Omar brengt de laptop mee. Ik vraag lokaal twee aan en stuur jullie de bevestiging zodra de balie antwoordt. Groetjes, Lina.",
+          "en": "Hi Omar and Tess, we could meet on Thursday from five to six in classroom two. That room is free and has internet, so Tess can join online. I would not choose classroom five because its connection does not work. Classroom three from six is not a solution either: Omar has to leave then. Omar will bring the laptop. I will request classroom two and send you the confirmation as soon as the desk replies. Best wishes, Lina.",
+          "fa": "سلام عمر و تس، می‌توانیم پنجشنبه از پنج تا شش در اتاق دو جلسه داشته باشیم. اتاق آزاد است و اینترنت دارد، پس تس می‌تواند آنلاین بپیوندد. اتاق پنج را انتخاب نمی‌کنم، چون اتصالش کار نمی‌کند. اتاق سه از ساعت شش هم راه‌حل نیست: عمر آن موقع باید برود. عمر لپ‌تاپ را می‌آورد. درخواست اتاق دو را می‌دهم و به‌محض پاسخ مسئول میز تأیید را برایتان می‌فرستم. با مهر، لینا."
+        },
+        "criteria": [
+          {
+            "nl": "Doe met zou of zouden een voorstel voor lokaal twee op donderdag van 17.00 tot 18.00 uur, zodat Tess online kan deelnemen.",
+            "en": "Use zou or zouden to propose classroom two on Thursday from 17:00 to 18:00 so Tess can join online.",
+            "fa": "با zou یا zouden اتاق دو را برای پنجشنبه از ۱۷ تا ۱۸ پیشنهاد دهید تا تس بتواند آنلاین شرکت کند."
+          },
+          {
+            "nl": "Geef redenen om de onhaalbare alternatieven af te wijzen en presenteer de reservering als een aanvraag, niet als een bevestigde boeking.",
+            "en": "Give reasons to decline the unworkable alternatives and present the reservation as a request, not a confirmed booking.",
+            "fa": "برای رد گزینه‌های ناممکن دلیل بدهید و رزرو را به‌عنوان درخواست بیان کنید، نه رزرو تأییدشده."
+          }
+        ],
+        "min_words": 40,
+        "max_words": 100
+      }
     }
   ],
   "grammar_extensions": [
@@ -374,6 +657,54 @@
             "nl": "Een enkelvoudig het-woord krijgt hier dat.",
             "en": "A singular het-word takes dat here.",
             "fa": "اینجا برای واژه مفرد دارای het از dat استفاده می‌شود."
+          }
+        }
+      ]
+    },
+    {
+      "id": "conditional",
+      "examples": [
+        {
+          "nl": "We zouden lokaal twee kunnen aanvragen.",
+          "en": "We could request classroom two.",
+          "fa": "می‌توانیم درخواست اتاق دو را بدهیم."
+        },
+        {
+          "nl": "Ik zou liever om vijf uur beginnen.",
+          "en": "I would prefer to start at five.",
+          "fa": "ترجیح می‌دهم ساعت پنج شروع کنیم."
+        },
+        {
+          "nl": "Als de verbinding werkt, zou Tess online kunnen deelnemen.",
+          "en": "If the connection works, Tess could join online.",
+          "fa": "اگر اتصال کار کند، تس می‌تواند آنلاین شرکت کند."
+        }
+      ],
+      "practice": [
+        {
+          "id": "b1-source-grammar-02",
+          "prompt": {
+            "nl": "Vul aan: We … lokaal twee kunnen aanvragen.",
+            "en": "Complete: We … lokaal twee kunnen aanvragen.",
+            "fa": "کامل کنید: We … lokaal twee kunnen aanvragen."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Bij we hoort het meervoud zouden; bij ik hoort zou.",
+            "en": "We takes plural zouden; ik takes zou.",
+            "fa": "برای we شکل جمع zouden به کار می‌رود؛ برای ik شکل zou."
           }
         }
       ]

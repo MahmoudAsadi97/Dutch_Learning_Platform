@@ -78,6 +78,61 @@
           "fa": "روی کارت نوشته شده نور."
         }
       }
+    },
+    {
+      "id": "pre-a1-s-source-02",
+      "title": {
+        "nl": "Hallo, ik ben Sara",
+        "en": "Hello, I am Sara",
+        "fa": "سلام، من سارا هستم"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Hallo. Ik ben Sara. Mijn naam is Sara.",
+          "en": "Hello. I am Sara. My name is Sara.",
+          "fa": "سلام. من سارا هستم. نام من سارا است."
+        },
+        {
+          "nl": "Dit is Amir. Hij zit in de klas. Ik zit ook in de klas.",
+          "en": "This is Amir. He is in the classroom. I am in the classroom too.",
+          "fa": "این امیر است. او در کلاس است. من هم در کلاس هستم."
+        }
+      ],
+      "vocabulary_ids": [
+        "pre-a1-v016",
+        "pre-a1-v011",
+        "pre-a1-v127"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat is haar naam?",
+          "en": "What is her name?",
+          "fa": "نام او چیست؟"
+        },
+        "options": [
+          {
+            "nl": "Lina",
+            "en": "Lina",
+            "fa": "لینا"
+          },
+          {
+            "nl": "Sara",
+            "en": "Sara",
+            "fa": "سارا"
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Ze zegt: Mijn naam is Sara.",
+          "en": "She says: My name is Sara.",
+          "fa": "او می‌گوید: نام من سارا است."
+        }
+      }
     }
   ],
   "topics": [
@@ -289,6 +344,215 @@
         "min_words": 3,
         "max_words": 20
       }
+    },
+    {
+      "id": "pre-a1-t-source-02",
+      "title": {
+        "nl": "Hallo, ik ben Sara",
+        "en": "Hello, I am Sara",
+        "fa": "سلام، من سارا هستم"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Met ik en hij een naam en een persoon noemen.",
+          "en": "Giving a name and identifying a person with ik and hij.",
+          "fa": "گفتن نام و معرفی یک فرد با ik و hij."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Met ik en hij een naam en een persoon noemen.",
+        "en": "Giving a name and identifying a person with ik and hij.",
+        "fa": "گفتن نام و معرفی یک فرد با ik و hij."
+      },
+      "vocabulary_ids": [
+        "pre-a1-v016",
+        "pre-a1-v011",
+        "pre-a1-v127"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Hallo. Ik ben Sara. Mijn naam is Sara.\n\nDit is Amir. Hij zit in de klas. Ik zit ook in de klas.",
+          "en": "Hello. I am Sara. My name is Sara.\n\nThis is Amir. He is in the classroom. I am in the classroom too.",
+          "fa": "سلام. من سارا هستم. نام من سارا است.\n\nاین امیر است. او در کلاس است. من هم در کلاس هستم."
+        },
+        "questions": [
+          {
+            "id": "pre-a1-t-source-02-r1",
+            "prompt": {
+              "nl": "Wat is haar naam?",
+              "en": "What is her name?",
+              "fa": "نام او چیست؟"
+            },
+            "options": [
+              {
+                "nl": "Lina",
+                "en": "Lina",
+                "fa": "لینا"
+              },
+              {
+                "nl": "Sara",
+                "en": "Sara",
+                "fa": "سارا"
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Ze zegt: Mijn naam is Sara.",
+              "en": "She says: My name is Sara.",
+              "fa": "او می‌گوید: نام من سارا است."
+            }
+          },
+          {
+            "id": "pre-a1-t-source-02-r2",
+            "prompt": {
+              "nl": "Waar is Amir?",
+              "en": "Where is Amir?",
+              "fa": "امیر کجاست؟"
+            },
+            "options": [
+              {
+                "nl": "In de winkel.",
+                "en": "In the shop.",
+                "fa": "در فروشگاه."
+              },
+              {
+                "nl": "In de klas.",
+                "en": "In the classroom.",
+                "fa": "در کلاس."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De tekst zegt: Hij zit in de klas.",
+              "en": "The text says: He is in the classroom.",
+              "fa": "متن می‌گوید: او در کلاس است."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Hallo, ik ben Lina. Ik woon in Brugge. Dag!",
+          "en": "Hello, I am Lina. I live in Bruges. Bye!",
+          "fa": "سلام، من لینا هستم. در بروژ زندگی می‌کنم. خداحافظ!"
+        },
+        "questions": [
+          {
+            "id": "pre-a1-t-source-02-l1",
+            "prompt": {
+              "nl": "Welke naam hoor je nu?",
+              "en": "Which name do you hear now?",
+              "fa": "اکنون چه نامی می‌شنوید؟"
+            },
+            "options": [
+              {
+                "nl": "Lina",
+                "en": "Lina",
+                "fa": "لینا"
+              },
+              {
+                "nl": "Sara",
+                "en": "Sara",
+                "fa": "سارا"
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De nieuwe spreker zegt: Ik ben Lina.",
+              "en": "The new speaker says: I am Lina.",
+              "fa": "گوینده تازه می‌گوید: من لینا هستم."
+            }
+          },
+          {
+            "id": "pre-a1-t-source-02-l2",
+            "prompt": {
+              "nl": "Waar woont Lina?",
+              "en": "Where does Lina live?",
+              "fa": "لینا کجا زندگی می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Brugge",
+                "en": "Bruges",
+                "fa": "بروژ"
+              },
+              {
+                "nl": "Gent",
+                "en": "Ghent",
+                "fa": "خنت"
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Je hoort: Ik woon in Brugge.",
+              "en": "You hear: I live in Bruges.",
+              "fa": "می‌شنوید: در بروژ زندگی می‌کنم."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Zeg hallo. Zeg je naam en je stad. Je mag Lina en Brugge gebruiken.",
+          "en": "Say hello. Say your name and city. You may use Lina and Bruges.",
+          "fa": "سلام کنید. نام و شهرتان را بگویید. می‌توانید از لینا و بروژ استفاده کنید."
+        },
+        "sample": {
+          "nl": "Hallo. Ik ben Lina. Ik woon in Brugge.",
+          "en": "Hello. I am Lina. I live in Bruges.",
+          "fa": "سلام. من لینا هستم. در بروژ زندگی می‌کنم."
+        },
+        "criteria": [
+          {
+            "nl": "Begin met een groet.",
+            "en": "Begin with a greeting.",
+            "fa": "با سلام آغاز کنید."
+          },
+          {
+            "nl": "Noem een naam en een stad.",
+            "en": "Give a name and a city.",
+            "fa": "یک نام و یک شهر بگویید."
+          }
+        ],
+        "min_words": 3,
+        "max_words": 20
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf hallo, een naam en een stad. Je mag Lina en Brugge gebruiken.",
+          "en": "Write hello, a name and a city. You may use Lina and Bruges.",
+          "fa": "سلام، یک نام و یک شهر بنویسید. می‌توانید از لینا و بروژ استفاده کنید."
+        },
+        "sample": {
+          "nl": "Hallo. Ik ben Lina. Ik woon in Brugge.",
+          "en": "Hello. I am Lina. I live in Bruges.",
+          "fa": "سلام. من لینا هستم. در بروژ زندگی می‌کنم."
+        },
+        "criteria": [
+          {
+            "nl": "Begin met een groet.",
+            "en": "Begin with a greeting.",
+            "fa": "با سلام آغاز کنید."
+          },
+          {
+            "nl": "Noem een naam en een stad.",
+            "en": "Give a name and a city.",
+            "fa": "یک نام و یک شهر بگویید."
+          }
+        ],
+        "min_words": 3,
+        "max_words": 20
+      }
     }
   ],
   "grammar_extensions": [
@@ -336,6 +600,54 @@
             "nl": "Lina heeft vier letters, met een i na de l.",
             "en": "Lina has four letters, with i after l.",
             "fa": "Lina چهار حرف دارد؛ i پس از l می‌آید."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pronouns",
+      "examples": [
+        {
+          "nl": "Ik ben Sara.",
+          "en": "I am Sara.",
+          "fa": "من سارا هستم."
+        },
+        {
+          "nl": "Hij is Amir.",
+          "en": "He is Amir.",
+          "fa": "او امیر است."
+        },
+        {
+          "nl": "Mijn naam is Lina.",
+          "en": "My name is Lina.",
+          "fa": "نام من لینا است."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-source-grammar-02",
+          "prompt": {
+            "nl": "Je noemt jezelf. Vul aan: … ben Sara.",
+            "en": "You introduce yourself. Complete: … ben Sara.",
+            "fa": "خودتان را معرفی می‌کنید. کامل کنید: … ben Sara."
+          },
+          "options": [
+            {
+              "nl": "Hij",
+              "en": "Hij",
+              "fa": "Hij"
+            },
+            {
+              "nl": "Ik",
+              "en": "Ik",
+              "fa": "Ik"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Je gebruikt ik voor jezelf: Ik ben Sara.",
+            "en": "Use ik for yourself: Ik ben Sara.",
+            "fa": "برای خودتان از ik استفاده می‌کنید: Ik ben Sara."
           }
         }
       ]

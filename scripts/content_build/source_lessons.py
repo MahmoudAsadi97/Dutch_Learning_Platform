@@ -8,6 +8,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -229,52 +230,101 @@ def lemma(term: str) -> str:
     return re.sub(r"^(de|het|een) ", "", term.casefold())
 
 
-def build() -> None:
-    manifest = json.loads((ROOT / "content/source-index/manifest.json").read_text(encoding="utf-8"))
+def productive_task(unit: dict, kind: str, sample: str) -> dict:
+    lo, hi = unit["bounds"]
+    return {"prompt": tr(unit[kind]), "sample": tr(unit[sample]), "criteria": list(map(tr, unit["criteria"])),
+            "min_words": lo, "max_words": hi}
+
+
+def build(units: list[dict] | None = None, root: Path = ROOT) -> None:
+    """Append stable units to each stage; source-01 identifiers remain unchanged."""
+    if units is None:
+        # Separate authoring files keep each pack readable without adding a runtime dependency.
+        if __package__:
+            from .source_lessons_lower import EXTRA_UNITS as lower
+            from .source_lessons_upper import EXTRA_UNITS as upper
+        else:
+            from source_lessons_lower import EXTRA_UNITS as lower
+            from source_lessons_upper import EXTRA_UNITS as upper
+        units = [*UNITS, *lower, *upper]
+    manifest = json.loads((root / "content/source-index/manifest.json").read_text(encoding="utf-8"))
     sources = {s["source_id"]: s for s in manifest["sources"]}
+    curriculum = json.loads((root / "content/curriculum/path.json").read_text(encoding="utf-8"))
+    rules = {s["id"]: {g["id"] for g in s["grammar"]} for s in curriculum["stages"]}
+    grouped = defaultdict(list)
+    for unit in units:
+        stage, number = unit["stage"], unit.get("unit", 1)
+        if stage not in rules or type(number) is not int or not 1 <= number <= 99:
+            raise ValueError("source unit needs a known stage and a stable number from 1 to 99")
+        if any(previous.get("unit", 1) == number for previous in grouped[stage]):
+            raise ValueError("duplicate source unit number in a stage")
+        if unit["grammar"] not in rules[stage]:
+            raise ValueError("source unit targets an unknown stage grammar rule")
+        grouped[stage].append(unit)
+
     links = []
-    for unit in UNITS:
-        stage = unit["stage"]
-        base = json.loads((ROOT / f"content/library/{stage}.json").read_text(encoding="utf-8"))
+    packs = {}
+    for stage, stage_units in grouped.items():
+        base = json.loads((root / f"content/library/{stage}.json").read_text(encoding="utf-8"))
         existing = {lemma(w["term"]): w["id"] for w in base["vocabulary"]}
-        words, targets = [], []
-        for i, (term, meaning, example) in enumerate(unit["words"], 1):
-            identifier = existing.get(lemma(term), f"{stage}-scan-v{i:03d}")
-            targets.append(identifier)
-            if lemma(term) not in existing:
-                words.append({"id": identifier, "term": term, "topic": CATEGORY,
-                              "meaning": tr(meaning), "example": tr(example)})
-        topic_id, story_id = f"{stage}-t-source-01", f"{stage}-s-source-01"
-        reading = {"text": {lang: "\n\n".join(tr(p)[lang] for p in unit["paragraphs"]) for lang in ("nl", "en", "fa")},
-                   "questions": [question(f"{topic_id}-r{i}", q) for i, q in enumerate(unit["reading_q"], 1)]}
-        listening = {"text": tr(unit["listening"]),
-                     "questions": [question(f"{topic_id}-l{i}", q) for i, q in enumerate(unit["listening_q"], 1)]}
-        lo, hi = unit["bounds"]
-        def task(kind: str, sample: str) -> dict:
-            return {"prompt": tr(unit[kind]), "sample": tr(unit[sample]), "criteria": list(map(tr, unit["criteria"])),
-                    "min_words": lo, "max_words": hi}
-        topic = {"id": topic_id, "title": tr(unit["title"]), "category": CATEGORY,
-                 "objectives": [tr(unit["focus"]), tr("Gebruik bekende woorden in een nieuwe situatie.|Use familiar words in a new situation.|واژه‌های آشنا را در موقعیتی تازه به کار ببرید.")],
-                 "language_focus": tr(unit["focus"]), "vocabulary_ids": targets,
-                 "reading": reading, "listening": listening,
-                 "speaking": task("speaking", "spoken_sample"), "writing": task("writing", "written_sample")}
-        story_q = dict(reading["questions"][0]); story_q.pop("id")
-        story = {"id": story_id, "title": tr(unit["title"]), "topic": CATEGORY,
-                 "paragraphs": list(map(tr, unit["paragraphs"])), "vocabulary_ids": targets, "question": story_q}
-        extra = {"id": unit["grammar"], "examples": list(map(tr, unit["examples"])),
-                 "practice": [question(f"{stage}-source-grammar-01", unit["grammar_q"])]}
         pack = {"schema_version": 1, "stage_id": stage, "review_status": "unreviewed",
-                "vocabulary": words, "stories": [story], "topics": [topic], "grammar_extensions": [extra]}
-        destination = ROOT / f"content/source-lessons/{stage}.json"
+                "vocabulary": [], "stories": [], "topics": [], "grammar_extensions": []}
+        grammar = {}
+        for unit in sorted(stage_units, key=lambda item: item.get("unit", 1)):
+            number = unit.get("unit", 1)
+            targets = []
+            for i, (term, meaning, example) in enumerate(unit["words"], 1):
+                candidate = (f"{stage}-scan-v{i:03d}" if number == 1
+                             else f"{stage}-source-{number:02d}-v{i:03d}")
+                identifier = existing.get(lemma(term), candidate)
+                targets.append(identifier)
+                if lemma(term) not in existing:
+                    pack["vocabulary"].append({"id": identifier, "term": term, "topic": CATEGORY,
+                                              "meaning": tr(meaning), "example": tr(example)})
+                    existing[lemma(term)] = identifier
+            if len(targets) != len(set(targets)):
+                raise ValueError("source unit repeats a target lemma")
+            topic_id, story_id = f"{stage}-t-source-{number:02d}", f"{stage}-s-source-{number:02d}"
+            reading = {"text": {lang: "\n\n".join(tr(p)[lang] for p in unit["paragraphs"]) for lang in ("nl", "en", "fa")},
+                       "questions": [question(f"{topic_id}-r{i}", q) for i, q in enumerate(unit["reading_q"], 1)]}
+            listening = {"text": tr(unit["listening"]),
+                         "questions": [question(f"{topic_id}-l{i}", q) for i, q in enumerate(unit["listening_q"], 1)]}
+            topic = {"id": topic_id, "title": tr(unit["title"]), "category": CATEGORY,
+                     "objectives": [tr(unit["focus"]), tr("Gebruik bekende woorden in een nieuwe situatie.|Use familiar words in a new situation.|واژه‌های آشنا را در موقعیتی تازه به کار ببرید.")],
+                     "language_focus": tr(unit["focus"]), "vocabulary_ids": targets,
+                     "reading": reading, "listening": listening,
+                     "speaking": productive_task(unit, "speaking", "spoken_sample"),
+                     "writing": productive_task(unit, "writing", "written_sample")}
+            story_q = dict(reading["questions"][0]); story_q.pop("id")
+            story = {"id": story_id, "title": tr(unit["title"]), "topic": CATEGORY,
+                     "paragraphs": list(map(tr, unit["paragraphs"])), "vocabulary_ids": targets, "question": story_q}
+            pack["topics"].append(topic)
+            pack["stories"].append(story)
+            extra = grammar.setdefault(unit["grammar"], {"id": unit["grammar"], "examples": [], "practice": []})
+            extra["examples"].extend(map(tr, unit["examples"]))
+            extra["practice"].append(question(f"{stage}-source-grammar-{number:02d}", unit["grammar_q"]))
+            refs = []
+            for sid, page in unit["sources"]:
+                if sid not in sources or type(page) is not int or not 1 <= page <= sources[sid]["pdf_pages"]:
+                    raise ValueError("source page outside the supplied PDF")
+                refs.append({"source_id": sid, "source_sha256": sources[sid]["sha256"], "pdf_page": page})
+            links.append({"stage_id": stage, "topic_id": topic_id, "story_id": story_id, "concept": unit["concept"],
+                          "grammar_id": unit["grammar"],
+                          "vocabulary_ids": targets, "sources": refs, "authoring": "original_text_from_source_concepts",
+                          "language_review": "pending", "level_alignment": "provisional"})
+        pack["grammar_extensions"] = list(grammar.values())
+        packs[stage] = pack
+
+    # Check all references before writing any stage, then bind every unit to its final stage pack.
+    for stage, pack in packs.items():
+        destination = root / f"content/source-lessons/{stage}.json"
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        refs = [{"source_id": sid, "source_sha256": sources[sid]["sha256"], "pdf_page": page} for sid, page in unit["sources"]]
-        if any(ref["pdf_page"] > sources[ref["source_id"]]["pdf_pages"] for ref in refs):
-            raise ValueError("source page outside the supplied PDF")
-        links.append({"stage_id": stage, "topic_id": topic_id, "story_id": story_id, "concept": unit["concept"],
-                      "vocabulary_ids": targets, "sources": refs, "authoring": "original_text_from_source_concepts",
-                      "language_review": "pending", "level_alignment": "provisional", "pack_sha256": hashlib.sha256(destination.read_bytes()).hexdigest()})
-    destination = ROOT / "content/source-index/lesson-links.json"
+        digest = hashlib.sha256(destination.read_bytes()).hexdigest()
+        for link in links:
+            if link["stage_id"] == stage:
+                link["pack_sha256"] = digest
+    destination = root / "content/source-index/lesson-links.json"
     destination.write_text(json.dumps({"schema_version": 1, "lessons": links,
         "coverage_limit": "Original supplements for pre-A1 through B1 only; no B2-C2 coverage or exam validity is inferred."},
         ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

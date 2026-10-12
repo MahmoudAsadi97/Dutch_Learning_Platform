@@ -59,6 +59,44 @@
         "en": "I bought bread.",
         "fa": "نان خریده‌ام."
       }
+    },
+    {
+      "id": "a2-source-02-v001",
+      "term": "opbellen",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Iemand telefonisch contacteren.",
+        "en": "Contact someone by telephone.",
+        "fa": "تلفنی با کسی تماس گرفتن."
+      },
+      "example": {
+        "nl": "Ik bel de school op.",
+        "en": "I call the school.",
+        "fa": "به مدرسه تلفن می‌کنم."
+      }
+    },
+    {
+      "id": "a2-source-02-v002",
+      "term": "meebrengen",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Iets meenemen naar de plaats waar je naartoe gaat.",
+        "en": "Bring something to the place you are going.",
+        "fa": "چیزی را به جایی که می‌روید همراه بردن."
+      },
+      "example": {
+        "nl": "Ik breng mijn schrift mee.",
+        "en": "I bring my notebook.",
+        "fa": "دفترم را همراه می‌آورم."
+      }
     }
   ],
   "stories": [
@@ -114,6 +152,61 @@
           "nl": "Sam mist zijn blauwe tas.",
           "en": "Sam is missing his blue bag.",
           "fa": "سام کیف آبی‌اش را گم کرده است."
+        }
+      }
+    },
+    {
+      "id": "a2-s-source-02",
+      "title": {
+        "nl": "Een bericht voor twee mensen",
+        "en": "One message for two people",
+        "fa": "یک پیام برای دو نفر"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Dina heeft dinsdag koorts. Ze kan vanavond niet naar de les komen. Ze stuurt haar vriend Sam een bericht. Ze wil de school opbellen, maar vindt het telefoonnummer niet. Sam stuurt haar het nummer.",
+          "en": "Dina has a fever on Tuesday. She cannot attend class this evening. She sends her friend Sam a message. She wants to call the school but cannot find the telephone number. Sam sends her the number.",
+          "fa": "دینا سه‌شنبه تب دارد. نمی‌تواند امشب به کلاس بیاید. به دوستش سام پیام می‌دهد. می‌خواهد به مدرسه تلفن کند، اما شماره را پیدا نمی‌کند. سام شماره را برایش می‌فرستد."
+        },
+        {
+          "nl": "Dina belt de school op en meldt dat ze ziek is. Op haar oude leskaart staat lokaal vier. Ze wil ook weten wat ze volgende dinsdag moet meebrengen. Sam vraagt haar om het antwoord door te geven, want hij volgt dezelfde les.",
+          "en": "Dina calls the school and reports that she is ill. Her old class card says classroom four. She also wants to know what she should bring next Tuesday. Sam asks her to pass on the answer because he attends the same class.",
+          "fa": "دینا به مدرسه تلفن می‌کند و می‌گوید بیمار است. روی کارت قدیمی کلاسش، اتاق چهار نوشته شده است. می‌خواهد بداند سه‌شنبه آینده چه چیزی باید همراه بیاورد. سام می‌خواهد پاسخ را به او هم بگوید، چون در همان کلاس شرکت می‌کند."
+        }
+      ],
+      "vocabulary_ids": [
+        "a2-source-02-v001",
+        "a2-source-02-v002",
+        "a2-v161"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom kan Dina vanavond niet naar de les komen?",
+          "en": "Why can Dina not attend class tonight?",
+          "fa": "چرا دینا نمی‌تواند امشب به کلاس بیاید؟"
+        },
+        "options": [
+          {
+            "nl": "Ze heeft koorts.",
+            "en": "She has a fever.",
+            "fa": "تب دارد."
+          },
+          {
+            "nl": "Ze moet werken.",
+            "en": "She has to work.",
+            "fa": "باید کار کند."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "In het bericht legt Dina uit dat ze koorts heeft.",
+          "en": "In her message, Dina explains that she has a fever.",
+          "fa": "دینا در پیامش توضیح می‌دهد که تب دارد."
         }
       }
     }
@@ -327,6 +420,215 @@
         "min_words": 20,
         "max_words": 100
       }
+    },
+    {
+      "id": "a2-t-source-02",
+      "title": {
+        "nl": "Een bericht voor twee mensen",
+        "en": "One message for two people",
+        "fa": "یک پیام برای دو نفر"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een afwezigheid uitleggen, een gewijzigd lokaal bevestigen en opbellen en meebrengen gebruiken.",
+          "en": "Explaining an absence, confirming a changed classroom and using opbellen and meebrengen.",
+          "fa": "توضیح غیبت، تأیید تغییر کلاس و کاربرد opbellen و meebrengen."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een afwezigheid uitleggen, een gewijzigd lokaal bevestigen en opbellen en meebrengen gebruiken.",
+        "en": "Explaining an absence, confirming a changed classroom and using opbellen and meebrengen.",
+        "fa": "توضیح غیبت، تأیید تغییر کلاس و کاربرد opbellen و meebrengen."
+      },
+      "vocabulary_ids": [
+        "a2-source-02-v001",
+        "a2-source-02-v002",
+        "a2-v161"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Dina heeft dinsdag koorts. Ze kan vanavond niet naar de les komen. Ze stuurt haar vriend Sam een bericht. Ze wil de school opbellen, maar vindt het telefoonnummer niet. Sam stuurt haar het nummer.\n\nDina belt de school op en meldt dat ze ziek is. Op haar oude leskaart staat lokaal vier. Ze wil ook weten wat ze volgende dinsdag moet meebrengen. Sam vraagt haar om het antwoord door te geven, want hij volgt dezelfde les.",
+          "en": "Dina has a fever on Tuesday. She cannot attend class this evening. She sends her friend Sam a message. She wants to call the school but cannot find the telephone number. Sam sends her the number.\n\nDina calls the school and reports that she is ill. Her old class card says classroom four. She also wants to know what she should bring next Tuesday. Sam asks her to pass on the answer because he attends the same class.",
+          "fa": "دینا سه‌شنبه تب دارد. نمی‌تواند امشب به کلاس بیاید. به دوستش سام پیام می‌دهد. می‌خواهد به مدرسه تلفن کند، اما شماره را پیدا نمی‌کند. سام شماره را برایش می‌فرستد.\n\nدینا به مدرسه تلفن می‌کند و می‌گوید بیمار است. روی کارت قدیمی کلاسش، اتاق چهار نوشته شده است. می‌خواهد بداند سه‌شنبه آینده چه چیزی باید همراه بیاورد. سام می‌خواهد پاسخ را به او هم بگوید، چون در همان کلاس شرکت می‌کند."
+        },
+        "questions": [
+          {
+            "id": "a2-t-source-02-r1",
+            "prompt": {
+              "nl": "Waarom kan Dina vanavond niet naar de les komen?",
+              "en": "Why can Dina not attend class tonight?",
+              "fa": "چرا دینا نمی‌تواند امشب به کلاس بیاید؟"
+            },
+            "options": [
+              {
+                "nl": "Ze heeft koorts.",
+                "en": "She has a fever.",
+                "fa": "تب دارد."
+              },
+              {
+                "nl": "Ze moet werken.",
+                "en": "She has to work.",
+                "fa": "باید کار کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "In het bericht legt Dina uit dat ze koorts heeft.",
+              "en": "In her message, Dina explains that she has a fever.",
+              "fa": "دینا در پیامش توضیح می‌دهد که تب دارد."
+            }
+          },
+          {
+            "id": "a2-t-source-02-r2",
+            "prompt": {
+              "nl": "Welk lokaal staat op de oude leskaart?",
+              "en": "Which classroom is on the old class card?",
+              "fa": "روی کارت قدیمی کلاس کدام اتاق نوشته شده است؟"
+            },
+            "options": [
+              {
+                "nl": "Lokaal twee.",
+                "en": "Classroom two.",
+                "fa": "اتاق دو."
+              },
+              {
+                "nl": "Lokaal vier.",
+                "en": "Classroom four.",
+                "fa": "اتاق چهار."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De oude kaart noemt lokaal vier; de nieuwe informatie komt in het telefoongesprek.",
+              "en": "The old card says classroom four; the new information comes in the telephone call.",
+              "fa": "روی کارت قدیمی اتاق چهار نوشته شده است؛ اطلاعات جدید در تماس تلفنی می‌آید."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Dina, bedankt dat u ons opbelt. Veel beterschap. Volgende dinsdag is de les in lokaal twee, niet in lokaal vier. Breng uw schrift mee. U hoeft uw boek niet mee te brengen. Wilt u deze informatie ook aan Sam doorgeven?",
+          "en": "Hello Dina, thank you for calling us. Get well soon. Next Tuesday the class is in classroom two, not classroom four. Bring your notebook. You do not need to bring your book. Could you also pass this information to Sam?",
+          "fa": "سلام دینا، ممنون که تلفن کردید. امیدواریم زودتر خوب شوید. سه‌شنبه آینده کلاس در اتاق دو است، نه اتاق چهار. دفترتان را بیاورید. لازم نیست کتابتان را بیاورید. می‌توانید این اطلاعات را به سام هم بگویید؟"
+        },
+        "questions": [
+          {
+            "id": "a2-t-source-02-l1",
+            "prompt": {
+              "nl": "Waar is de les volgende dinsdag?",
+              "en": "Where is the class next Tuesday?",
+              "fa": "کلاس سه‌شنبه آینده کجاست؟"
+            },
+            "options": [
+              {
+                "nl": "In lokaal twee.",
+                "en": "In classroom two.",
+                "fa": "در اتاق دو."
+              },
+              {
+                "nl": "In lokaal vier.",
+                "en": "In classroom four.",
+                "fa": "در اتاق چهار."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De medewerker corrigeert het lokaal: twee, niet vier.",
+              "en": "The staff member corrects the classroom: two, not four.",
+              "fa": "کارمند شماره اتاق را اصلاح می‌کند: دو، نه چهار."
+            }
+          },
+          {
+            "id": "a2-t-source-02-l2",
+            "prompt": {
+              "nl": "Wat moet Dina meebrengen?",
+              "en": "What should Dina bring?",
+              "fa": "دینا چه چیزی باید همراه بیاورد؟"
+            },
+            "options": [
+              {
+                "nl": "Haar schrift.",
+                "en": "Her notebook.",
+                "fa": "دفترش را."
+              },
+              {
+                "nl": "Haar boek.",
+                "en": "Her book.",
+                "fa": "کتابش را."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Dina moet haar schrift meebrengen; haar boek is niet nodig.",
+              "en": "Dina should bring her notebook; her book is not needed.",
+              "fa": "دینا باید دفترش را بیاورد؛ کتابش لازم نیست."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Vertel Sam waarom je vandaag niet naar de les kunt komen. Leg daarna uit wat de school heeft veranderd voor volgende dinsdag: het lokaal en wat jullie moeten meebrengen. Spreek Sam aan met je.",
+          "en": "Tell Sam why you cannot attend class today. Then explain what the school has changed for next Tuesday: the classroom and what you should bring. Address Sam informally with je.",
+          "fa": "به سام بگویید چرا امروز نمی‌توانید به کلاس بیایید. سپس تغییرات سه‌شنبه آینده را توضیح دهید: اتاق کلاس و چیزی که باید بیاورید. سام را با je خطاب کنید."
+        },
+        "sample": {
+          "nl": "Dag Sam, ik kan vanavond niet naar de les komen, want ik heb koorts. Ik heb de school opgebeld. Volgende dinsdag zitten we in lokaal twee, niet in lokaal vier. We moeten ons schrift meebrengen. Ons boek is niet nodig. Heb je het nieuwe lokaal genoteerd?",
+          "en": "Hi Sam, I cannot attend class tonight because I have a fever. I called the school. Next Tuesday we will be in classroom two, not classroom four. We should bring our notebooks. We do not need our books. Have you noted the new classroom?",
+          "fa": "سلام سام، نمی‌توانم امشب به کلاس بیایم چون تب دارم. به مدرسه تلفن کردم. سه‌شنبه آینده در اتاق دو هستیم، نه اتاق چهار. باید دفترمان را بیاوریم. کتابمان لازم نیست. شماره اتاق جدید را یادداشت کرده‌ای؟"
+        },
+        "criteria": [
+          {
+            "nl": "Leg uit dat je niet kunt komen en geef de reden.",
+            "en": "Explain that you cannot attend and give the reason.",
+            "fa": "توضیح دهید که نمی‌توانید بیایید و دلیل را ذکر کنید."
+          },
+          {
+            "nl": "Bevestig lokaal twee en het schrift voor volgende dinsdag; pas je aanspreekvorm aan de ontvanger aan.",
+            "en": "Confirm classroom two and the notebook for next Tuesday; adapt how you address the recipient.",
+            "fa": "اتاق دو و دفتر را برای سه‌شنبه آینده تأیید کنید؛ شیوه خطاب را با مخاطب هماهنگ کنید."
+          }
+        ],
+        "min_words": 20,
+        "max_words": 100
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf Dina's e-mail aan haar leerkracht. Meld dat je vandaag niet kunt komen en geef de reden. Bevestig het nieuwe lokaal voor volgende dinsdag en wat je meebrengt. Gebruik een beleefde begroeting en afsluiting en spreek de leerkracht aan met u.",
+          "en": "Write Dina's email to her teacher. Report that you cannot attend today and give the reason. Confirm the new classroom for next Tuesday and what you will bring. Use a polite greeting and closing and address the teacher with u.",
+          "fa": "ایمیل دینا به معلمش را بنویسید. بگویید امروز نمی‌توانید بیایید و دلیل را ذکر کنید. اتاق جدید برای سه‌شنبه آینده و چیزی که همراه می‌آورید را تأیید کنید. از سلام و پایان مؤدبانه استفاده کنید و معلم را با u خطاب کنید."
+        },
+        "sample": {
+          "nl": "Beste leerkracht, ik kan vanavond niet naar de les komen, want ik heb koorts. Ik heb de school opgebeld. Ik begrijp dat de les volgende dinsdag in lokaal twee is, niet in lokaal vier. Ik breng mijn schrift mee en laat mijn boek thuis. Ik heb deze informatie ook aan Sam doorgegeven. Kunt u mij zeggen welke oefeningen ik thuis kan maken? Met vriendelijke groeten, Dina.",
+          "en": "Dear teacher, I cannot attend class tonight because I have a fever. I called the school. I understand that next Tuesday the class is in classroom two, not classroom four. I will bring my notebook and leave my book at home. I have also passed this information to Sam. Could you tell me which exercises I can do at home? Kind regards, Dina.",
+          "fa": "معلم گرامی، نمی‌توانم امشب به کلاس بیایم چون تب دارم. به مدرسه تلفن کردم. متوجه شدم که سه‌شنبه آینده کلاس در اتاق دو است، نه اتاق چهار. دفترم را می‌آورم و کتابم را در خانه می‌گذارم. این اطلاعات را به سام هم گفتم. می‌توانید بگویید چه تمرین‌هایی را در خانه انجام دهم؟ با احترام، دینا."
+        },
+        "criteria": [
+          {
+            "nl": "Leg uit dat je niet kunt komen en geef de reden.",
+            "en": "Explain that you cannot attend and give the reason.",
+            "fa": "توضیح دهید که نمی‌توانید بیایید و دلیل را ذکر کنید."
+          },
+          {
+            "nl": "Bevestig lokaal twee en het schrift voor volgende dinsdag; pas je aanspreekvorm aan de ontvanger aan.",
+            "en": "Confirm classroom two and the notebook for next Tuesday; adapt how you address the recipient.",
+            "fa": "اتاق دو و دفتر را برای سه‌شنبه آینده تأیید کنید؛ شیوه خطاب را با مخاطب هماهنگ کنید."
+          }
+        ],
+        "min_words": 20,
+        "max_words": 100
+      }
     }
   ],
   "grammar_extensions": [
@@ -374,6 +676,54 @@
             "nl": "Gaan naar een bestemming gebruikt hier zijn.",
             "en": "Going to a destination takes zijn here.",
             "fa": "رفتن به یک مقصد در این جمله با zijn ساخته می‌شود."
+          }
+        }
+      ]
+    },
+    {
+      "id": "separable",
+      "examples": [
+        {
+          "nl": "Ik bel de school op.",
+          "en": "I call the school.",
+          "fa": "به مدرسه تلفن می‌کنم."
+        },
+        {
+          "nl": "Ik moet de school opbellen.",
+          "en": "I need to call the school.",
+          "fa": "باید به مدرسه تلفن کنم."
+        },
+        {
+          "nl": "Ik breng mijn schrift mee.",
+          "en": "I bring my notebook.",
+          "fa": "دفترم را همراه می‌آورم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "a2-source-grammar-02",
+          "prompt": {
+            "nl": "Welke zin is juist?",
+            "en": "Which sentence is correct?",
+            "fa": "کدام جمله درست است؟"
+          },
+          "options": [
+            {
+              "nl": "Ik opbel de school.",
+              "en": "Ik opbel de school.",
+              "fa": "Ik opbel de school."
+            },
+            {
+              "nl": "Ik bel de school op.",
+              "en": "Ik bel de school op.",
+              "fa": "Ik bel de school op."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze hoofdzin staan bel en op apart. Met moet blijft de infinitief samen: ik moet de school opbellen.",
+            "en": "In this main clause, bel and op are separated. With moet the infinitive stays together: ik moet de school opbellen.",
+            "fa": "در این جمله اصلی bel و op جدا هستند. با moet، مصدر یک‌پارچه می‌ماند: ik moet de school opbellen."
           }
         }
       ]

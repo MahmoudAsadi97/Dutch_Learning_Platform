@@ -58,6 +58,61 @@
           "fa": "میرا آب می‌خواهد."
         }
       }
+    },
+    {
+      "id": "pre-a2-s-source-02",
+      "title": {
+        "nl": "Mag ik met Rosa werken?",
+        "en": "May I work with Rosa?",
+        "fa": "می‌توانم با روزا کار کنم؟"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Amir zit in de klas. Hij heeft zijn boek bij zich. Op het bord staat: Maak voor morgen twee oefeningen. Amir wil samen met Rosa werken. Hij weet niet of dat mag.",
+          "en": "Amir is in the classroom. He has his book with him. The board says: Complete two exercises for tomorrow. Amir wants to work with Rosa. He does not know whether that is allowed.",
+          "fa": "امیر در کلاس است. کتابش همراهش است. روی تخته نوشته: برای فردا دو تمرین انجام دهید. امیر می‌خواهد با روزا کار کند. نمی‌داند اجازه دارد یا نه."
+        },
+        {
+          "nl": "De leraar begint te spreken. Amir begrijpt de opdracht niet goed. Hij wil iets vragen. Hij zegt: Kunt u wat langzamer spreken, alstublieft? De leraar herhaalt de opdracht.",
+          "en": "The teacher starts speaking. Amir does not understand the task well. He wants to ask something. He says: Could you speak a little more slowly, please? The teacher repeats the task.",
+          "fa": "معلم شروع به صحبت می‌کند. امیر تکلیف را خوب نمی‌فهمد. می‌خواهد چیزی بپرسد. می‌گوید: لطفاً می‌توانید کمی آهسته‌تر صحبت کنید؟ معلم تکلیف را تکرار می‌کند."
+        }
+      ],
+      "vocabulary_ids": [
+        "pre-a2-v129",
+        "pre-a2-v309",
+        "pre-a2-v331"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Hoeveel oefeningen staan er eerst op het bord?",
+          "en": "How many exercises are on the board at first?",
+          "fa": "ابتدا چند تمرین روی تخته نوشته شده است؟"
+        },
+        "options": [
+          {
+            "nl": "Twee.",
+            "en": "Two.",
+            "fa": "دو."
+          },
+          {
+            "nl": "Drie.",
+            "en": "Three.",
+            "fa": "سه."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "Op het bord staat eerst: Maak voor morgen twee oefeningen.",
+          "en": "The board initially says: Complete two exercises for tomorrow.",
+          "fa": "ابتدا روی تخته نوشته: برای فردا دو تمرین انجام دهید."
+        }
+      }
     }
   ],
   "topics": [
@@ -269,6 +324,215 @@
         "min_words": 10,
         "max_words": 65
       }
+    },
+    {
+      "id": "pre-a2-t-source-02",
+      "title": {
+        "nl": "Mag ik met Rosa werken?",
+        "en": "May I work with Rosa?",
+        "fa": "می‌توانم با روزا کار کنم؟"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Met moeten, mogen en kunnen een opdracht en een hulpvraag verduidelijken.",
+          "en": "Clarifying a task and a request for help with moeten, mogen and kunnen.",
+          "fa": "روشن کردن تکلیف و درخواست کمک با moeten، mogen و kunnen."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Met moeten, mogen en kunnen een opdracht en een hulpvraag verduidelijken.",
+        "en": "Clarifying a task and a request for help with moeten, mogen and kunnen.",
+        "fa": "روشن کردن تکلیف و درخواست کمک با moeten، mogen و kunnen."
+      },
+      "vocabulary_ids": [
+        "pre-a2-v129",
+        "pre-a2-v309",
+        "pre-a2-v331"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Amir zit in de klas. Hij heeft zijn boek bij zich. Op het bord staat: Maak voor morgen twee oefeningen. Amir wil samen met Rosa werken. Hij weet niet of dat mag.\n\nDe leraar begint te spreken. Amir begrijpt de opdracht niet goed. Hij wil iets vragen. Hij zegt: Kunt u wat langzamer spreken, alstublieft? De leraar herhaalt de opdracht.",
+          "en": "Amir is in the classroom. He has his book with him. The board says: Complete two exercises for tomorrow. Amir wants to work with Rosa. He does not know whether that is allowed.\n\nThe teacher starts speaking. Amir does not understand the task well. He wants to ask something. He says: Could you speak a little more slowly, please? The teacher repeats the task.",
+          "fa": "امیر در کلاس است. کتابش همراهش است. روی تخته نوشته: برای فردا دو تمرین انجام دهید. امیر می‌خواهد با روزا کار کند. نمی‌داند اجازه دارد یا نه.\n\nمعلم شروع به صحبت می‌کند. امیر تکلیف را خوب نمی‌فهمد. می‌خواهد چیزی بپرسد. می‌گوید: لطفاً می‌توانید کمی آهسته‌تر صحبت کنید؟ معلم تکلیف را تکرار می‌کند."
+        },
+        "questions": [
+          {
+            "id": "pre-a2-t-source-02-r1",
+            "prompt": {
+              "nl": "Hoeveel oefeningen staan er eerst op het bord?",
+              "en": "How many exercises are on the board at first?",
+              "fa": "ابتدا چند تمرین روی تخته نوشته شده است؟"
+            },
+            "options": [
+              {
+                "nl": "Twee.",
+                "en": "Two.",
+                "fa": "دو."
+              },
+              {
+                "nl": "Drie.",
+                "en": "Three.",
+                "fa": "سه."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Op het bord staat eerst: Maak voor morgen twee oefeningen.",
+              "en": "The board initially says: Complete two exercises for tomorrow.",
+              "fa": "ابتدا روی تخته نوشته: برای فردا دو تمرین انجام دهید."
+            }
+          },
+          {
+            "id": "pre-a2-t-source-02-r2",
+            "prompt": {
+              "nl": "Wat vraagt Amir aan de leraar?",
+              "en": "What does Amir ask the teacher?",
+              "fa": "امیر از معلم چه می‌خواهد؟"
+            },
+            "options": [
+              {
+                "nl": "Om wat langzamer te spreken.",
+                "en": "To speak a little more slowly.",
+                "fa": "کمی آهسته‌تر صحبت کند."
+              },
+              {
+                "nl": "Om de les vroeger te stoppen.",
+                "en": "To finish the lesson earlier.",
+                "fa": "کلاس را زودتر تمام کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Amir begrijpt de opdracht niet goed en vraagt om langzamer te spreken.",
+              "en": "Amir does not understand the task well and asks the teacher to speak more slowly.",
+              "fa": "امیر تکلیف را خوب نمی‌فهمد و می‌خواهد معلم آهسته‌تر صحبت کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Amir, er is een kleine verandering. Voor morgen moet je drie oefeningen maken, niet twee. Je mag samen met Rosa werken. Neem je boek mee. Als iets niet duidelijk is, mag je een vraag stellen.",
+          "en": "Amir, there is a small change. For tomorrow you must do three exercises, not two. You may work with Rosa. Bring your book. If something is unclear, you may ask a question.",
+          "fa": "امیر، یک تغییر کوچک داریم. برای فردا باید سه تمرین انجام بدهی، نه دو تمرین. می‌توانی با روزا کار کنی. کتابت را بیاور. اگر چیزی روشن نیست، می‌توانی سؤال بپرسی."
+        },
+        "questions": [
+          {
+            "id": "pre-a2-t-source-02-l1",
+            "prompt": {
+              "nl": "Hoeveel oefeningen moet Amir nu maken?",
+              "en": "How many exercises must Amir do now?",
+              "fa": "امیر اکنون باید چند تمرین انجام دهد؟"
+            },
+            "options": [
+              {
+                "nl": "Drie.",
+                "en": "Three.",
+                "fa": "سه."
+              },
+              {
+                "nl": "Twee.",
+                "en": "Two.",
+                "fa": "دو."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De leraar verandert de opdracht van twee naar drie oefeningen.",
+              "en": "The teacher changes the task from two to three exercises.",
+              "fa": "معلم تعداد تمرین‌ها را از دو به سه تغییر می‌دهد."
+            }
+          },
+          {
+            "id": "pre-a2-t-source-02-l2",
+            "prompt": {
+              "nl": "Mag Amir met Rosa werken?",
+              "en": "May Amir work with Rosa?",
+              "fa": "آیا امیر اجازه دارد با روزا کار کند؟"
+            },
+            "options": [
+              {
+                "nl": "Ja, ze mogen samenwerken.",
+                "en": "Yes, they may work together.",
+                "fa": "بله، می‌توانند با هم کار کنند."
+              },
+              {
+                "nl": "Nee, hij moet alleen werken.",
+                "en": "No, he must work alone.",
+                "fa": "نه، باید تنها کار کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De leraar zegt: Je mag samen met Rosa werken.",
+              "en": "The teacher says: You may work with Rosa.",
+              "fa": "معلم می‌گوید: می‌توانی با روزا کار کنی."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Bevestig als Amir hoeveel oefeningen je nu moet maken en met wie je mag werken. Vraag de leraar beleefd om de opdracht nog eens langzaam te herhalen.",
+          "en": "As Amir, confirm how many exercises you must now do and who you may work with. Politely ask the teacher to repeat the task slowly once more.",
+          "fa": "در نقش امیر تعداد تازه تمرین‌ها و کسی را که می‌توانید با او کار کنید تأیید کنید. مؤدبانه از معلم بخواهید تکلیف را یک بار دیگر آهسته تکرار کند."
+        },
+        "sample": {
+          "nl": "Ik moet voor morgen drie oefeningen maken. Ik mag met Rosa werken. Kunt u de opdracht nog eens langzaam herhalen, alstublieft? Dan weet ik wat ik moet doen.",
+          "en": "I must do three exercises for tomorrow. I may work with Rosa. Could you repeat the task slowly once more, please? Then I will know what I must do.",
+          "fa": "باید برای فردا سه تمرین انجام بدهم. می‌توانم با روزا کار کنم. لطفاً می‌توانید تکلیف را یک بار دیگر آهسته تکرار کنید؟ آن وقت می‌دانم باید چه کار کنم."
+        },
+        "criteria": [
+          {
+            "nl": "Bevestig de drie oefeningen en de toestemming om met Rosa te werken.",
+            "en": "Confirm the three exercises and permission to work with Rosa.",
+            "fa": "سه تمرین و اجازه کار با روزا را تأیید کنید."
+          },
+          {
+            "nl": "Vraag beleefd om herhaling van de opdracht.",
+            "en": "Politely ask for the task to be repeated.",
+            "fa": "مؤدبانه بخواهید تکلیف تکرار شود."
+          }
+        ],
+        "min_words": 15,
+        "max_words": 65
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf als Amir een kort bericht aan de leraar. Bevestig de drie oefeningen en de toestemming om met Rosa te werken. Vraag beleefd om de opdracht nog eens te herhalen.",
+          "en": "As Amir, write a short message to the teacher. Confirm the three exercises and permission to work with Rosa. Politely ask for the task to be repeated once more.",
+          "fa": "در نقش امیر پیامی کوتاه به معلم بنویسید. سه تمرین و اجازه کار با روزا را تأیید کنید. مؤدبانه بخواهید تکلیف یک بار دیگر تکرار شود."
+        },
+        "sample": {
+          "nl": "Beste leraar, ik moet voor morgen drie oefeningen maken. Ik mag met Rosa werken. Kunt u de opdracht nog eens herhalen, alstublieft? Ik wil zeker zijn dat ik alles begrijp. Dank u wel! Amir.",
+          "en": "Dear teacher, I must do three exercises for tomorrow. I may work with Rosa. Could you repeat the task once more, please? I want to be sure I understand everything. Thank you! Amir.",
+          "fa": "معلم گرامی، باید برای فردا سه تمرین انجام بدهم. می‌توانم با روزا کار کنم. لطفاً می‌توانید تکلیف را یک بار دیگر تکرار کنید؟ می‌خواهم مطمئن شوم همه چیز را می‌فهمم. متشکرم! امیر."
+        },
+        "criteria": [
+          {
+            "nl": "Bevestig de drie oefeningen en de toestemming om met Rosa te werken.",
+            "en": "Confirm the three exercises and permission to work with Rosa.",
+            "fa": "سه تمرین و اجازه کار با روزا را تأیید کنید."
+          },
+          {
+            "nl": "Vraag beleefd om herhaling van de opdracht.",
+            "en": "Politely ask for the task to be repeated.",
+            "fa": "مؤدبانه بخواهید تکلیف تکرار شود."
+          }
+        ],
+        "min_words": 15,
+        "max_words": 65
+      }
     }
   ],
   "grammar_extensions": [
@@ -316,6 +580,54 @@
             "nl": "Geen staat hier vóór het zelfstandig naamwoord koffie.",
             "en": "Geen comes before the noun koffie here.",
             "fa": "اینجا geen پیش از اسم koffie می‌آید."
+          }
+        }
+      ]
+    },
+    {
+      "id": "modal",
+      "examples": [
+        {
+          "nl": "Ik moet drie oefeningen maken.",
+          "en": "I must do three exercises.",
+          "fa": "باید سه تمرین انجام بدهم."
+        },
+        {
+          "nl": "Ik mag met Rosa werken.",
+          "en": "I may work with Rosa.",
+          "fa": "می‌توانم با روزا کار کنم."
+        },
+        {
+          "nl": "Kunt u de opdracht herhalen?",
+          "en": "Could you repeat the task?",
+          "fa": "می‌توانید تکلیف را تکرار کنید؟"
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-source-grammar-02",
+          "prompt": {
+            "nl": "Er is toestemming, geen verplichting. Vul aan: Ik … met Rosa werken.",
+            "en": "There is permission, not an obligation. Complete: Ik … met Rosa werken.",
+            "fa": "اجازه داده شده، نه اجبار. کامل کنید: Ik … met Rosa werken."
+          },
+          "options": [
+            {
+              "nl": "mag",
+              "en": "mag",
+              "fa": "mag"
+            },
+            {
+              "nl": "moet",
+              "en": "moet",
+              "fa": "moet"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mag geeft hier toestemming; moet geeft een verplichting.",
+            "en": "Mag expresses permission here; moet expresses an obligation.",
+            "fa": "اینجا mag اجازه را بیان می‌کند و moet الزام را."
           }
         }
       ]

@@ -15,10 +15,11 @@ from dlp.domains.curriculum.schemas import STAGE_IDS, Stage
 from dlp.domains.exercises.schemas import CreateBody
 
 STAGES = ("pre-a1", "a1", "pre-a2", "a2", "pre-b1", "b1")
+UNITS = ("01", "02")
 
 
 @pytest.mark.parametrize("topic_id", [*(f"{stage}-t001" for stage in STAGE_IDS),
-                                      *(f"{stage}-t-source-01" for stage in STAGES)])
+                                      *(f"{stage}-t-source-{unit}" for stage in STAGES for unit in UNITS)])
 def test_exercise_request_accepts_legacy_and_source_topic_syntax(topic_id):
     body = CreateBody(request_id="source-body-0001", source="topic", topic_id=topic_id, skill="reading")
     assert body.topic_id == topic_id
@@ -34,13 +35,14 @@ def test_exercise_request_rejects_malformed_and_path_like_source_topic_ids(topic
 
 
 @pytest.mark.parametrize("stage", STAGES)
+@pytest.mark.parametrize("unit", UNITS)
 @pytest.mark.parametrize("skill", ("reading", "listening"))
-def test_source_topic_session_starts_completes_and_persists_progress(client, stage, skill):
+def test_source_topic_session_starts_completes_and_persists_progress(client, stage, unit, skill):
     from tests.conftest import auth_headers
     from tests.test_exercises_topic_completion import _create, _run
 
-    topic_id = f"{stage}-t-source-01"
-    tag = f"source-session-{stage}-{skill}"
+    topic_id = f"{stage}-t-source-{unit}"
+    tag = f"source-session-{stage}-{unit}-{skill}"
     body = {"source": "topic", "stage_id": stage, "topic_id": topic_id, "skill": skill}
     assert client.post("/exercises/sessions", json={"request_id": tag, **body}).status_code == 401
     detail_url = f"/curriculum/{stage}/topics/{topic_id}"
@@ -91,6 +93,11 @@ def test_source_topic_session_starts_completes_and_persists_progress(client, sta
     stage_progress = client.get(f"/curriculum/{stage}", headers=auth_headers())
     assert stage_progress.status_code == 200, stage_progress.text
     assert skill in stage_progress.json()["progress"]["practice_completed"]
+    other_unit = next(other for other in UNITS if other != unit)
+    separate = client.get(f"/curriculum/{stage}/topics/{stage}-t-source-{other_unit}",
+                          params={"skill": skill}, headers=auth_headers())
+    assert separate.status_code == 200, separate.text
+    assert separate.json()["progress"] == {"completed": False, "attempted": False}
 
 
 def test_source_topic_session_refuses_unknown_items_and_stage_mismatch(client):
@@ -111,20 +118,37 @@ def test_original_supplement_is_live_in_all_four_skills_and_story_time(stage_id)
     base_words = json.loads((CONTENT_DIR / "library" / f"{stage_id}.json").read_text())
     base_topics = json.loads((CONTENT_DIR / "practice" / f"{stage_id}.json").read_text())
     assert len(bank.vocabulary) == len(base_words["vocabulary"]) + len(pack["vocabulary"])
-    assert len(bank.stories) == len(base_words["stories"]) + 1
-    assert len(topic_bank.topics) == len(base_topics["topics"]) + 1
-    topic = topics.topic_for(topic_bank, f"{stage_id}-t-source-01")
-    assert topics.review_of(topic_bank, "reading", topic) == {}
-    assert topics.review_of(topic_bank, "listening", topic) == {}
-    assert set(topic.vocabulary_ids).issubset({w.id for w in bank.vocabulary})
-    assert topic.reading.text.nl != topic.listening.text.nl
-    story = library.story_detail(bank, f"{stage_id}-s-source-01")
-    assert len(story["paragraphs"]) == 2
-    assert set(story["vocabulary_ids"]) == set(topic.vocabulary_ids)
-    assert library.story_page(bank, topic="Van woord naar gesprek")["total"] == 1
-    for question in [*topic.reading.questions, *topic.listening.questions]:
-        for language in ("nl", "en", "fa"):
-            assert len({getattr(o, language) for o in question.options}) == len(question.options)
+    assert len(pack["stories"]) == len(pack["topics"]) == len(UNITS)
+    assert len(bank.stories) == len(base_words["stories"]) + len(pack["stories"])
+    assert len(topic_bank.topics) == len(base_topics["topics"]) + len(pack["topics"])
+    assert [word.id for word in bank.vocabulary[:len(base_words["vocabulary"])]] == [
+        word["id"] for word in base_words["vocabulary"]]
+    assert [story.id for story in bank.stories[:len(base_words["stories"])]] == [
+        story["id"] for story in base_words["stories"]]
+    assert [topic.id for topic in topic_bank.topics[:len(base_topics["topics"])]] == [
+        topic["id"] for topic in base_topics["topics"]]
+    assert {topic["id"] for topic in pack["topics"]} == {
+        f"{stage_id}-t-source-{unit}" for unit in UNITS}
+    assert {story["id"] for story in pack["stories"]} == {
+        f"{stage_id}-s-source-{unit}" for unit in UNITS}
+    assert len({topic["reading"]["text"]["nl"] for topic in pack["topics"]}) == len(UNITS)
+    assert len({topic["listening"]["text"]["nl"] for topic in pack["topics"]}) == len(UNITS)
+    assert library.story_page(bank, topic="Van woord naar gesprek")["total"] == len(UNITS)
+    for unit in UNITS:
+        topic = topics.topic_for(topic_bank, f"{stage_id}-t-source-{unit}")
+        assert topics.review_of(topic_bank, "reading", topic) == {}
+        assert topics.review_of(topic_bank, "listening", topic) == {}
+        assert set(topic.vocabulary_ids).issubset({w.id for w in bank.vocabulary})
+        assert topic.reading.text.nl != topic.listening.text.nl
+        story = library.story_detail(bank, f"{stage_id}-s-source-{unit}")
+        assert len(story["paragraphs"]) == 2
+        assert set(story["vocabulary_ids"]) == set(topic.vocabulary_ids)
+        for skill in ("speaking", "writing"):
+            task = getattr(topic, skill)
+            assert task.min_words <= len(task.sample.nl.split()) <= task.max_words
+        for question in [*topic.reading.questions, *topic.listening.questions]:
+            for language in ("nl", "en", "fa"):
+                assert len({getattr(o, language) for o in question.options}) == len(question.options)
 
 
 def test_grammar_examples_extend_existing_rules_without_touching_final_tests():
@@ -137,6 +161,7 @@ def test_grammar_examples_extend_existing_rules_without_touching_final_tests():
         for rule in before["grammar"]:
             updated = next(g for g in after.grammar if g.id == rule["id"])
             assert [e.model_dump() for e in updated.examples[:len(rule["examples"])]] == rule["examples"]
+            assert [q.model_dump() for q in updated.practice[:len(rule["practice"])]] == rule["practice"]
     assert len(supplements.curriculum_stamp(CONTENT_DIR)) == len(STAGES)
 
 
@@ -144,12 +169,25 @@ def test_reference_pages_and_content_hashes_are_bound_to_supplied_sources():
     manifest = json.loads((CONTENT_DIR / "source-index/manifest.json").read_text())
     refs = {s["source_id"]: s for s in manifest["sources"]}
     links = json.loads((CONTENT_DIR / "source-index/lesson-links.json").read_text())["lessons"]
+    concepts = json.loads((CONTENT_DIR / "source-index/concepts.json").read_text())
+    concept_ids = {concept["id"] for concept in concepts["grammar"]}
     assert len(refs) == 9 and manifest["total_pages"] == 884
     assert {x["stage_id"] for x in links} == set(STAGES)
+    assert len(links) == len(STAGES) * len(UNITS)
+    assert {link["topic_id"] for link in links} == {
+        f"{stage}-t-source-{unit}" for stage in STAGES for unit in UNITS}
+    assert len({link["story_id"] for link in links}) == len(links)
     for link in links:
         pack_path = CONTENT_DIR / "source-lessons" / f"{link['stage_id']}.json"
         assert hashlib.sha256(pack_path.read_bytes()).hexdigest() == link["pack_sha256"]
         assert link["language_review"] == "pending" and link["level_alignment"] == "provisional"
+        pack = json.loads(pack_path.read_text())
+        topic = next(item for item in pack["topics"] if item["id"] == link["topic_id"])
+        story = next(item for item in pack["stories"] if item["id"] == link["story_id"])
+        assert link["concept"] in concept_ids
+        assert link["grammar_id"] in {rule["id"] for rule in pack["grammar_extensions"]}
+        assert set(link["vocabulary_ids"]) == set(topic["vocabulary_ids"]) == set(story["vocabulary_ids"])
+        assert link["sources"]
         for source in link["sources"]:
             assert source["source_sha256"] == refs[source["source_id"]]["sha256"]
             assert 1 <= source["pdf_page"] <= refs[source["source_id"]]["pdf_pages"]
@@ -192,17 +230,20 @@ def test_library_and_topic_caches_notice_changed_supplements(tmp_path, monkeypat
         (tmp_path / directory / "a1.json").write_bytes(source.read_bytes())
     monkeypatch.setattr(library, "CONTENT_DIR", tmp_path)
     monkeypatch.setattr(topics, "CONTENT_DIR", tmp_path)
-    assert library.library_for("a1").stories[-1].title.nl == "Woensdag om twee uur"
-    assert topics.topics_for("a1").topics[-1].title.nl == "Woensdag om twee uur"
+    first_story = library.story_detail(library.library_for("a1"), "a1-s-source-01")
+    first_topic = topics.topic_for(topics.topics_for("a1"), "a1-t-source-01")
+    assert first_story["title"]["nl"] == first_topic.title.nl == "Woensdag om twee uur"
     path = tmp_path / "source-lessons/a1.json"
     data = json.loads(path.read_text())
-    for item in [*data["topics"], *data["stories"]]:
+    for item in (data["topics"][-1], data["stories"][-1]):
         item["title"]["nl"] = "Een herziene afspraak"
     previous = path.stat().st_mtime_ns
     path.write_text(json.dumps(data), encoding="utf-8")
     os.utime(path, ns=(previous + 1_000_000_000, previous + 1_000_000_000))
     assert library.library_for("a1").stories[-1].title.nl == "Een herziene afspraak"
     assert topics.topics_for("a1").topics[-1].title.nl == "Een herziene afspraak"
+    assert library.story_detail(library.library_for("a1"), "a1-s-source-01")["title"]["nl"] == "Woensdag om twee uur"
+    assert topics.topic_for(topics.topics_for("a1"), "a1-t-source-01").title.nl == "Woensdag om twee uur"
     path.unlink()
     assert len(library.library_for("a1").stories) == 100
     assert len(topics.topics_for("a1").topics) == 100
@@ -305,15 +346,20 @@ def test_new_target_words_really_occur_in_their_story():
     variants = {"spellen": ("spel", "spellen"), "kopen": ("gekocht", "koop", "kopen")}
     for stage in STAGES:
         pack = supplements.load(CONTENT_DIR, stage)
-        story = " ".join(p["nl"] for p in pack["stories"][0]["paragraphs"]).casefold()
         for word in pack["vocabulary"]:
             lemma = re.sub(r"^(de|het|een) ", "", word["term"].casefold())
-            assert any(re.search(r"\b" + re.escape(form) + r"\b", story) for form in variants.get(lemma, (lemma,))), lemma
+            linked_stories = [story for story in pack["stories"] if word["id"] in story["vocabulary_ids"]]
+            assert linked_stories, word["id"]
+            for linked in linked_stories:
+                story = " ".join(p["nl"] for p in linked["paragraphs"]).casefold()
+                assert any(re.search(r"\b" + re.escape(form) + r"\b", story)
+                           for form in variants.get(lemma, (lemma,))), (lemma, linked["id"])
 
 
 @pytest.mark.parametrize("stage", STAGES)
-def test_supplement_routes_use_existing_auth_and_hide_receptive_keys(client, headers, stage):
-    base = f"/curriculum/{stage}/topics/{stage}-t-source-01"
+@pytest.mark.parametrize("unit", UNITS)
+def test_supplement_routes_use_existing_auth_and_hide_receptive_keys(client, headers, stage, unit):
+    base = f"/curriculum/{stage}/topics/{stage}-t-source-{unit}"
     assert client.get(base, params={"skill": "reading"}).status_code == 401
     for skill in ("reading", "listening", "speaking", "writing"):
         response = client.get(base, params={"skill": skill}, headers=headers)

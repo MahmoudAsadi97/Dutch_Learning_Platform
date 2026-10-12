@@ -4,41 +4,45 @@ Nine scanned PDFs were supplied, containing **884 PDF pages**. The two latest fi
 
 This is a source inventory and review queue. It is **not** a claim that every source word has been verified, licensed for redistribution, or incorporated into the live curriculum. A lesson can have correct software behaviour while its Dutch, translations, level suitability and feedback still need expert review.
 
-| Source ID | File | PDF pages |
-|---|---|---:|
-| source-01 | Dutch pdf 1.pdf | 120 |
-| source-02 | Dutch pdf2.pdf | 86 |
-| source-03 | Dutch pdf3.pdf | 121 |
-| source-04 | Dutch pdf4.pdf | 120 |
-| source-05 | Dutch pdf 5.pdf | 120 |
-| source-06 | Dutch pdf6.pdf | 108 |
-| source-07 | Dutch pdf7.pdf | 8 |
-| source-08 | Dutch pdf8.pdf | 120 |
-| source-09 | Dutch pdf 9.pdf | 81 |
+| Source ID | File            | PDF pages |
+| --------- | --------------- | --------: |
+| source-01 | Dutch pdf 1.pdf |       120 |
+| source-02 | Dutch pdf2.pdf  |        86 |
+| source-03 | Dutch pdf3.pdf  |       121 |
+| source-04 | Dutch pdf4.pdf  |       120 |
+| source-05 | Dutch pdf 5.pdf |       120 |
+| source-06 | Dutch pdf6.pdf  |       108 |
+| source-07 | Dutch pdf7.pdf  |         8 |
+| source-08 | Dutch pdf8.pdf  |       120 |
+| source-09 | Dutch pdf 9.pdf |        81 |
 
 Page numbers below are one-based PDF pages. A scanned page can contain two printed pages. Printed page numbers must not be substituted for PDF page references.
 
 ## What was inspected
 
-Thirty-nine pages were visually inspected in this expansion: source-07 pages 1-8; source-04 pages 102-104; source-08 pages 1, 2, 20, 30, 43, 50, 70, 90 and 110; source-09 pages 1, 2, 12, 20, 30, 36, 37, 40, 53, 60, 63, 65, 70, 71, 73, 78, 79, 80 and 81. This complements the targeted review documented in `FOUR_SKILL_CONTENT.md`. It does not mean all 884 pages were visually checked.
+The earlier source review recorded this thirty-nine-page visual selection: source-07 pages 1-8; source-04 pages 102-104; source-08 pages 1, 2, 20, 30, 43, 50, 70, 90 and 110; source-09 pages 1, 2, 12, 20, 30, 36, 37, 40, 53, 60, 63, 65, 70, 71, 73, 78, 79, 80 and 81. This complements the targeted review documented in [FOUR_SKILL_CONTENT.md](FOUR_SKILL_CONTENT.md), including the message-to-email pattern on source-06 PDF page 72. Source-09 page 37 was revisited for the new past-event unit. This is a record of selected checks, not a total of every visual check or a claim that all 884 pages were inspected.
 
-| Visual anchors | Confirmed teaching patterns |
-|---|---|
-| source-07 / 1-8 | Time and ordinal numbers; spatial prepositions; main-clause inversion; questions; preferences; negation; modals; future and progressive expressions; conjunctions; imperative; because-clauses; articles; plurals; word classes |
-| source-04 / 102-104 | Curriculum connects situations with vocabulary, grammar, pronunciation and practical skills; family, food, clothing, transport, home and appointments |
-| source-08 / 1, 2, 20, 30 | Introductions, spelling, greetings and formal/informal register; short vowels; negation |
-| source-08 / 50, 70, 90, 110 | Plural spelling; simultaneous events with `terwijl`; perfect tense with `hebben`/`zijn`; reflexive verbs and health vocabulary |
-| source-09 / 1, 2, 20, 30, 40, 60 | Social issues and chart reading; clothing; wishes and polite suggestions with `zou`; `hoeven` plus `te`; leisure and travel |
-| source-09 / 70, 78-81 | Word order; irregular past and participle reference lists; relative clauses and grammatical terminology |
-| source-09 / 12, 36, 37, 53, 63, 65, 71, 73 | Relative pronouns; regular past; `toen`; clausal reference; possession; posture verbs with `te`; impersonal pronouns; argument connectors; quantifiers |
+| Visual anchors                             | Confirmed teaching patterns                                                                                                                                                                                                     |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source-07 / 1-8                            | Time and ordinal numbers; spatial prepositions; main-clause inversion; questions; preferences; negation; modals; future and progressive expressions; conjunctions; imperative; because-clauses; articles; plurals; word classes |
+| source-04 / 102-104                        | Curriculum connects situations with vocabulary, grammar, pronunciation and practical skills; family, food, clothing, transport, home and appointments                                                                           |
+| source-08 / 1, 2, 20, 30                   | Introductions, spelling, greetings and formal/informal register; short vowels; negation                                                                                                                                         |
+| source-08 / 50, 70, 90, 110                | Plural spelling; simultaneous events with `terwijl`; perfect tense with `hebben`/`zijn`; reflexive verbs and health vocabulary                                                                                                  |
+| source-09 / 1, 2, 20, 30, 40, 60           | Social issues and chart reading; clothing; wishes and polite suggestions with `zou`; `hoeven` plus `te`; leisure and travel                                                                                                     |
+| source-09 / 70, 78-81                      | Word order; irregular past and participle reference lists; relative clauses and grammatical terminology                                                                                                                         |
+| source-09 / 12, 36, 37, 53, 63, 65, 71, 73 | Relative pronouns; regular past; `toen`; clausal reference; possession; posture verbs with `te`; impersonal pronouns; argument connectors; quantifiers                                                                          |
 
 The social and administrative readings contain dated facts. Their historical statistics or descriptions of public benefits must not be copied into new lessons as current factual guidance. Original scenarios should use clearly fictional data or independently verified current facts. Source-09 page 81 is rotated and has an explicit scan correction in `scan-adjustments.json`.
 
 ## Machine extraction and private review data
 
-`scripts/index_teaching_sources.py` renders every selected page and performs Dutch Tesseract OCR. Extraction is resumable by source hash, page, resolution, language, rotation and extractor version. `manifest.json` and `pages.json` contain the completed run's exact machine coverage and failure/empty-page counts. Missing text, low confidence and orientation problems remain review concerns even if an OCR process exits successfully.
+`scripts/index_teaching_sources.py` renders every selected page and performs Dutch Tesseract OCR. Extraction is resumable by source hash, page, resolution, language, image channel, rotation and extractor version. `manifest.json` and `pages.json` contain the completed run's exact machine coverage and failure/empty-page counts. Missing text, low confidence and orientation problems remain review concerns even if an OCR process exits successfully.
 
-The recorded run attempted all **884 pages**: **877 yielded text**, **7 yielded no recognised words**, and **0 had process failures**. It recognised **203,972 word tokens** and produced **22,138 distinct surface-token candidates**. These numbers include OCR noise and are not a vocabulary-size or learning-coverage claim. Fifty-four pages have a mean OCR word confidence below 50. The empty pages are source-01 pages 30, 32, 34 and 36; source-03 pages 22 and 119; source-04 page 33. They require visual diagnosis and, where appropriate, a clearer scan or another OCR pass. Both new PDFs yielded text on every page.
+The completed run on **12 October 2026** attempted all **884 pages**: **884 yielded nonempty text**, **0 were empty**, and **0 had process failures**. It produced **18,702 distinct surface-form candidates**. These are machine extractions, including sparse numeric labels, foreign-language glosses and uncertain fragments; they are not verified words, dictionary lemmas or a learning-coverage claim. **39 pages** have a mean optical word confidence below **55**.
+
+Four pale-blue worksheets in source-01, PDF pages **30, 32, 34 and 36**, needed a blue-channel render at **220 dpi** instead of the default grayscale at **150 dpi**. Their recovery settings are recorded in [colour-recovery.json](../content/source-index/colour-recovery.json). The recovered text was checked against the page images, but not transcribed and verified word for word. Source-03 pages **22 and 119** remain badly blurred photographs: their sparse OCR is not a usable transcription, and clearer scans are still needed. Source-04 page **33** is primarily a body-part illustration with sparse labels, so it must not be counted as a normal prose page.
+
+Private `QUALITY_REVIEW.json` records the low-confidence pages and visual findings. Private `EXTRACTION_RUN.json` records Tesseract **5.3.4**, the Dutch language-data hash, rendering settings and implementation commit. The cache checks the extractor version but does not fingerprint a replacement OCR engine or language-data file; use a fresh output directory if those dependencies change.
 
 The script separates:
 
@@ -55,9 +59,11 @@ Run locally after installing Python's `pymupdf`, Tesseract and its Dutch languag
 python -m pip install -r scripts/source-requirements.txt
 python scripts/index_teaching_sources.py \
   --pdf-dir /path/to/private/scans \
+  --language nld \
   --workers 4 \
-  --dpi 110 \
+  --dpi 150 \
   --rotations-file content/source-index/scan-adjustments.json \
+  --recovery-file content/source-index/colour-recovery.json \
   --public-index content/source-index
 ```
 

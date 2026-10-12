@@ -7,13 +7,13 @@ and 100 topics with four skills. All banks retain their unreviewed language stat
 
 | Stage | Vocabulary | Stories | Topics per skill | Terms new relative to earlier banks | Earlier reading passages | Earlier listening passages |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| pre-a1 | 501 | 101 | 101 | 501 | 0 | 0 |
-| a1 | 502 | 101 | 101 | 2 | 0 | 100 |
-| pre-a2 | 500 | 101 | 101 | 0 | 0 | 100 |
-| a2 | 503 | 101 | 101 | 416 | 0 | 0 |
-| pre-b1 | 500 | 101 | 101 | 19 | 4 | 100 |
-| b1 | 503 | 101 | 101 | 0 | 100 | 100 |
-| pre-b2 | 500 | 100 | 100 | 440 | 0 | 0 |
+| pre-a1 | 501 | 102 | 102 | 501 | 0 | 0 |
+| a1 | 502 | 102 | 102 | 2 | 0 | 100 |
+| pre-a2 | 500 | 102 | 102 | 0 | 0 | 100 |
+| a2 | 505 | 102 | 102 | 418 | 0 | 0 |
+| pre-b1 | 500 | 102 | 102 | 19 | 4 | 100 |
+| b1 | 504 | 102 | 102 | 1 | 100 | 100 |
+| pre-b2 | 500 | 100 | 100 | 439 | 0 | 0 |
 | b2 | 500 | 100 | 100 | 0 | 0 | 0 |
 | pre-c1 | 500 | 100 | 100 | 0 | 0 | 0 |
 | c1 | 500 | 100 | 100 | 402 | 0 | 0 |
@@ -35,7 +35,7 @@ more nominal topics. The advanced duplicate reading banks also require new tasks
 review pilot remains required. Every changed bank must rerun answerability, source-hash and final-check
 isolation tests. Do not automatically paraphrase a bank and call it approved.
 
-The six source units add original passages but do not erase repeated older material.
+The twelve source units add original passages but do not erase repeated older material.
 See [SOURCE_LESSONS.md](SOURCE_LESSONS.md) for the additions and their review status.
 
 The audit emits exact base-bank and supplement hashes and per-topic review links into a local JSON file:

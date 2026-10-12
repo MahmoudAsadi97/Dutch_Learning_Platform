@@ -58,6 +58,61 @@
           "fa": "اتوبوس بیست دقیقه تأخیر دارد."
         }
       }
+    },
+    {
+      "id": "pre-b1-s-source-02",
+      "title": {
+        "nl": "Toen de ketting brak",
+        "en": "When the chain broke",
+        "fa": "وقتی زنجیر پاره شد"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Noor fietste maandag naar haar werk. Toen ze bij de brug kwam, brak de ketting van haar fiets. Ze stapte af en liep naar de fietsenwinkel. De medewerker schreef de herstelling op een bon: de fiets zou woensdag om vier uur in de namiddag klaar zijn. De prijs was vijfentwintig euro.",
+          "en": "Noor cycled to work on Monday. When she reached the bridge, her bicycle chain broke. She got off and walked to the bicycle shop. The staff member wrote the repair on a receipt: the bicycle would be ready on Wednesday at four in the afternoon. The price was twenty-five euros.",
+          "fa": "نور دوشنبه با دوچرخه به محل کارش می‌رفت. وقتی به پل رسید، زنجیر دوچرخه‌اش پاره شد. پیاده شد و به فروشگاه دوچرخه رفت. کارمند تعمیر را روی رسید نوشت: دوچرخه چهارشنبه ساعت چهار بعدازظهر آماده می‌شد. قیمت بیست‌وپنج یورو بود."
+        },
+        {
+          "nl": "Woensdagmorgen las Noor de bon opnieuw. Toen ze haar collega over de kapotte ketting vertelde, bood hij aan om mee te gaan naar de winkel. Noor wilde na het werk vertrekken. Haar collega vroeg of er intussen een nieuw bericht van de winkel was gekomen.",
+          "en": "On Wednesday morning, Noor read the receipt again. When she told her colleague about the broken chain, he offered to go to the shop with her. Noor wanted to leave after work. Her colleague asked whether a new message from the shop had arrived in the meantime.",
+          "fa": "چهارشنبه صبح نور رسید را دوباره خواند. وقتی ماجرای زنجیر پاره را برای همکارش تعریف کرد، او پیشنهاد داد همراهش به فروشگاه برود. نور می‌خواست بعد از کار راه بیفتد. همکارش پرسید آیا در این فاصله پیام تازه‌ای از فروشگاه رسیده است."
+        }
+      ],
+      "vocabulary_ids": [
+        "pre-b1-v025",
+        "pre-b1-v317",
+        "pre-b1-v151"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat gebeurde er toen Noor bij de brug kwam?",
+          "en": "What happened when Noor reached the bridge?",
+          "fa": "وقتی نور به پل رسید چه اتفاقی افتاد؟"
+        },
+        "options": [
+          {
+            "nl": "De ketting van haar fiets brak.",
+            "en": "Her bicycle chain broke.",
+            "fa": "زنجیر دوچرخه‌اش پاره شد."
+          },
+          {
+            "nl": "Ze verloor de bon van de winkel.",
+            "en": "She lost the shop receipt.",
+            "fa": "رسید فروشگاه را گم کرد."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "De ketting brak bij de brug; daarna ging Noor naar de fietsenwinkel.",
+          "en": "The chain broke at the bridge; Noor then went to the bicycle shop.",
+          "fa": "زنجیر کنار پل پاره شد؛ سپس نور به فروشگاه دوچرخه رفت."
+        }
+      }
     }
   ],
   "topics": [
@@ -269,6 +324,215 @@
         "min_words": 30,
         "max_words": 100
       }
+    },
+    {
+      "id": "pre-b1-t-source-02",
+      "title": {
+        "nl": "Toen de ketting brak",
+        "en": "When the chain broke",
+        "fa": "وقتی زنجیر پاره شد"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een gebeurtenis met toen navertellen en een nieuw ophaalmoment doorgeven.",
+          "en": "Retelling an event with toen and passing on a revised collection time.",
+          "fa": "بازگویی یک اتفاق با toen و اعلام زمان جدید دریافت."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een gebeurtenis met toen navertellen en een nieuw ophaalmoment doorgeven.",
+        "en": "Retelling an event with toen and passing on a revised collection time.",
+        "fa": "بازگویی یک اتفاق با toen و اعلام زمان جدید دریافت."
+      },
+      "vocabulary_ids": [
+        "pre-b1-v025",
+        "pre-b1-v317",
+        "pre-b1-v151"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Noor fietste maandag naar haar werk. Toen ze bij de brug kwam, brak de ketting van haar fiets. Ze stapte af en liep naar de fietsenwinkel. De medewerker schreef de herstelling op een bon: de fiets zou woensdag om vier uur in de namiddag klaar zijn. De prijs was vijfentwintig euro.\n\nWoensdagmorgen las Noor de bon opnieuw. Toen ze haar collega over de kapotte ketting vertelde, bood hij aan om mee te gaan naar de winkel. Noor wilde na het werk vertrekken. Haar collega vroeg of er intussen een nieuw bericht van de winkel was gekomen.",
+          "en": "Noor cycled to work on Monday. When she reached the bridge, her bicycle chain broke. She got off and walked to the bicycle shop. The staff member wrote the repair on a receipt: the bicycle would be ready on Wednesday at four in the afternoon. The price was twenty-five euros.\n\nOn Wednesday morning, Noor read the receipt again. When she told her colleague about the broken chain, he offered to go to the shop with her. Noor wanted to leave after work. Her colleague asked whether a new message from the shop had arrived in the meantime.",
+          "fa": "نور دوشنبه با دوچرخه به محل کارش می‌رفت. وقتی به پل رسید، زنجیر دوچرخه‌اش پاره شد. پیاده شد و به فروشگاه دوچرخه رفت. کارمند تعمیر را روی رسید نوشت: دوچرخه چهارشنبه ساعت چهار بعدازظهر آماده می‌شد. قیمت بیست‌وپنج یورو بود.\n\nچهارشنبه صبح نور رسید را دوباره خواند. وقتی ماجرای زنجیر پاره را برای همکارش تعریف کرد، او پیشنهاد داد همراهش به فروشگاه برود. نور می‌خواست بعد از کار راه بیفتد. همکارش پرسید آیا در این فاصله پیام تازه‌ای از فروشگاه رسیده است."
+        },
+        "questions": [
+          {
+            "id": "pre-b1-t-source-02-r1",
+            "prompt": {
+              "nl": "Wat gebeurde er toen Noor bij de brug kwam?",
+              "en": "What happened when Noor reached the bridge?",
+              "fa": "وقتی نور به پل رسید چه اتفاقی افتاد؟"
+            },
+            "options": [
+              {
+                "nl": "De ketting van haar fiets brak.",
+                "en": "Her bicycle chain broke.",
+                "fa": "زنجیر دوچرخه‌اش پاره شد."
+              },
+              {
+                "nl": "Ze verloor de bon van de winkel.",
+                "en": "She lost the shop receipt.",
+                "fa": "رسید فروشگاه را گم کرد."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De ketting brak bij de brug; daarna ging Noor naar de fietsenwinkel.",
+              "en": "The chain broke at the bridge; Noor then went to the bicycle shop.",
+              "fa": "زنجیر کنار پل پاره شد؛ سپس نور به فروشگاه دوچرخه رفت."
+            }
+          },
+          {
+            "id": "pre-b1-t-source-02-r2",
+            "prompt": {
+              "nl": "Wanneer zou de fiets volgens de bon klaar zijn?",
+              "en": "When would the bicycle be ready according to the receipt?",
+              "fa": "طبق رسید دوچرخه چه زمانی آماده می‌شد؟"
+            },
+            "options": [
+              {
+                "nl": "Donderdag om 16.00 uur.",
+                "en": "Thursday at 16:00.",
+                "fa": "پنجشنبه ساعت ۱۶."
+              },
+              {
+                "nl": "Woensdag om 16.00 uur.",
+                "en": "Wednesday at 16:00.",
+                "fa": "چهارشنبه ساعت ۱۶."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Op de bon stond woensdag om vier uur; de medewerker noemt pas in het nieuwe bericht een andere dag.",
+              "en": "The receipt said Wednesday at four; the staff member gives a different day only in the new message.",
+              "fa": "روی رسید چهارشنبه ساعت چهار بود؛ کارمند فقط در پیام جدید روز دیگری را اعلام می‌کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Noor, met de fietsenwinkel. Het onderdeel voor uw fiets is te laat geleverd. Daarom is de fiets vandaag nog niet klaar. U kunt die donderdag om vier uur in de namiddag ophalen. Dat is een dag later dan op uw bon. De prijs blijft vijfentwintig euro. Excuses voor de vertraging.",
+          "en": "Hello Noor, this is the bicycle shop. The part for your bicycle was delivered late. Your bicycle is therefore not ready today. You can collect it on Thursday at four in the afternoon. That is one day later than on your receipt. The price remains twenty-five euros. Sorry for the delay.",
+          "fa": "سلام نور، از فروشگاه دوچرخه تماس می‌گیریم. قطعه دوچرخه‌تان دیر تحویل داده شد. به همین دلیل دوچرخه امروز هنوز آماده نیست. می‌توانید پنجشنبه ساعت چهار بعدازظهر آن را بگیرید. یک روز دیرتر از زمان روی رسید است. قیمت همچنان بیست‌وپنج یورو است. بابت تأخیر پوزش می‌خواهیم."
+        },
+        "questions": [
+          {
+            "id": "pre-b1-t-source-02-l1",
+            "prompt": {
+              "nl": "Wanneer kan Noor haar fiets nu ophalen?",
+              "en": "When can Noor collect her bicycle now?",
+              "fa": "نور اکنون چه زمانی می‌تواند دوچرخه‌اش را بگیرد؟"
+            },
+            "options": [
+              {
+                "nl": "Donderdag om 16.00 uur.",
+                "en": "Thursday at 16:00.",
+                "fa": "پنجشنبه ساعت ۱۶."
+              },
+              {
+                "nl": "Woensdag om 16.00 uur.",
+                "en": "Wednesday at 16:00.",
+                "fa": "چهارشنبه ساعت ۱۶."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De nieuwe boodschap verplaatst het ophalen naar donderdag om vier uur.",
+              "en": "The new message moves collection to Thursday at four.",
+              "fa": "پیام جدید زمان دریافت را به پنجشنبه ساعت چهار تغییر می‌دهد."
+            }
+          },
+          {
+            "id": "pre-b1-t-source-02-l2",
+            "prompt": {
+              "nl": "Wat blijft hetzelfde ondanks de vertraging?",
+              "en": "What stays the same despite the delay?",
+              "fa": "با وجود تأخیر چه چیزی ثابت می‌ماند؟"
+            },
+            "options": [
+              {
+                "nl": "De dag waarop de fiets klaar is.",
+                "en": "The day the bicycle is ready.",
+                "fa": "روز آماده شدن دوچرخه."
+              },
+              {
+                "nl": "De prijs van vijfentwintig euro.",
+                "en": "The price of twenty-five euros.",
+                "fa": "قیمت بیست‌وپنج یورو."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De winkel zegt dat de prijs vijfentwintig euro blijft.",
+              "en": "The shop says the price remains twenty-five euros.",
+              "fa": "فروشگاه می‌گوید قیمت همچنان بیست‌وپنج یورو است."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Vertel je collega als Noor wat er maandag gebeurde. Gebruik toen om twee gebeurtenissen te verbinden. Corrigeer daarna het oude ophaalmoment met het nieuwe bericht en zeg wat niet verandert.",
+          "en": "As Noor, tell your colleague what happened on Monday. Use toen to connect two events. Then correct the old collection time using the new message and say what does not change.",
+          "fa": "در نقش نور برای همکارتان اتفاق دوشنبه را تعریف کنید. با toen دو رویداد را به هم مرتبط کنید. سپس زمان دریافت قبلی را با پیام جدید اصلاح کنید و بگویید چه چیزی تغییر نکرده است."
+        },
+        "sample": {
+          "nl": "Toen ik maandag bij de brug kwam, brak de ketting van mijn fiets. Daarna liep ik naar de fietsenwinkel. Op de bon stond woensdag om vier uur, maar het onderdeel is te laat geleverd. Ik kan mijn fiets nu donderdag om vier uur ophalen. De prijs blijft vijfentwintig euro.",
+          "en": "When I reached the bridge on Monday, my bicycle chain broke. I then walked to the bicycle shop. The receipt said Wednesday at four, but the part was delivered late. I can now collect my bicycle on Thursday at four. The price remains twenty-five euros.",
+          "fa": "وقتی دوشنبه به پل رسیدم، زنجیر دوچرخه‌ام پاره شد. بعد به فروشگاه دوچرخه رفتم. روی رسید چهارشنبه ساعت چهار بود، اما قطعه دیر رسید. اکنون می‌توانم پنجشنبه ساعت چهار دوچرخه‌ام را بگیرم. قیمت همچنان بیست‌وپنج یورو است."
+        },
+        "criteria": [
+          {
+            "nl": "Verbind het probleem met het juiste moment in het verleden en gebruik toen.",
+            "en": "Link the problem to the correct moment in the past and use toen.",
+            "fa": "مشکل را به زمان درست در گذشته مرتبط کنید و toen به کار ببرید."
+          },
+          {
+            "nl": "Corrigeer woensdag naar donderdag om 16.00 uur en behoud de prijs van 25 euro.",
+            "en": "Correct Wednesday to Thursday at 16:00 and keep the price of 25 euros.",
+            "fa": "چهارشنبه را به پنجشنبه ساعت ۱۶ اصلاح کنید و قیمت ۲۵ یورو را ثابت نگه دارید."
+          }
+        ],
+        "min_words": 30,
+        "max_words": 100
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Stuur als Noor een bericht naar je collega. Vertel kort wat er gebeurde toen je bij de brug kwam. Leg uit waarom jullie niet op woensdag naar de winkel moeten gaan. Geef de nieuwe dag en tijd en de ongewijzigde prijs.",
+          "en": "As Noor, send your colleague a message. Briefly say what happened when you reached the bridge. Explain why you should not go to the shop on Wednesday. Give the new day and time and the unchanged price.",
+          "fa": "در نقش نور به همکارتان پیام دهید. کوتاه بگویید وقتی به پل رسیدید چه اتفاقی افتاد. توضیح دهید چرا نباید چهارشنبه به فروشگاه بروید. روز و ساعت جدید و قیمت ثابت را ذکر کنید."
+        },
+        "sample": {
+          "nl": "Dag Amir, toen ik maandag bij de brug kwam, brak mijn fietsketting. De winkel beloofde de herstelling tegen woensdag om vier uur, maar het onderdeel is te laat geleverd. We hoeven vandaag dus niet te gaan. Volgens het nieuwe bericht kan ik de fiets donderdag om vier uur ophalen. De prijs blijft vijfentwintig euro. Kun je dan met me meegaan? Groetjes, Noor.",
+          "en": "Hi Amir, when I reached the bridge on Monday, my bicycle chain broke. The shop promised to repair it by Wednesday at four, but the part was delivered late. We therefore do not need to go today. According to the new message, I can collect the bicycle on Thursday at four. The price remains twenty-five euros. Can you come with me then? Best wishes, Noor.",
+          "fa": "سلام امیر، وقتی دوشنبه به پل رسیدم، زنجیر دوچرخه‌ام پاره شد. فروشگاه قول داد تعمیر تا چهارشنبه ساعت چهار تمام شود، اما قطعه دیر رسید. پس لازم نیست امروز برویم. طبق پیام جدید می‌توانم پنجشنبه ساعت چهار دوچرخه را بگیرم. قیمت همچنان بیست‌وپنج یورو است. می‌توانی آن موقع همراهم بیایی؟ با مهر، نور."
+        },
+        "criteria": [
+          {
+            "nl": "Verbind het probleem met het juiste moment in het verleden en gebruik toen.",
+            "en": "Link the problem to the correct moment in the past and use toen.",
+            "fa": "مشکل را به زمان درست در گذشته مرتبط کنید و toen به کار ببرید."
+          },
+          {
+            "nl": "Corrigeer woensdag naar donderdag om 16.00 uur en behoud de prijs van 25 euro.",
+            "en": "Correct Wednesday to Thursday at 16:00 and keep the price of 25 euros.",
+            "fa": "چهارشنبه را به پنجشنبه ساعت ۱۶ اصلاح کنید و قیمت ۲۵ یورو را ثابت نگه دارید."
+          }
+        ],
+        "min_words": 30,
+        "max_words": 100
+      }
     }
   ],
   "grammar_extensions": [
@@ -316,6 +580,54 @@
             "nl": "Na omdat staat de persoonsvorm hier achteraan.",
             "en": "After omdat, the finite verb is at the end here.",
             "fa": "پس از omdat، فعل صرف‌شده در این جمله در پایان می‌آید."
+          }
+        }
+      ]
+    },
+    {
+      "id": "temporal-toen",
+      "examples": [
+        {
+          "nl": "Toen de ketting brak, stapte Noor af.",
+          "en": "When the chain broke, Noor got off the bicycle.",
+          "fa": "وقتی زنجیر پاره شد، نور از دوچرخه پیاده شد."
+        },
+        {
+          "nl": "Noor liep naar de winkel toen haar fiets kapotging.",
+          "en": "Noor walked to the shop when her bicycle broke down.",
+          "fa": "وقتی دوچرخه نور خراب شد، او پیاده به فروشگاه رفت."
+        },
+        {
+          "nl": "Toen ik het bericht las, veranderde ik mijn plan.",
+          "en": "When I read the message, I changed my plan.",
+          "fa": "وقتی پیام را خواندم، برنامه‌ام را تغییر دادم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-source-grammar-02",
+          "prompt": {
+            "nl": "Welke zin vertelt correct over één moment in het verleden?",
+            "en": "Which sentence correctly describes one moment in the past?",
+            "fa": "کدام جمله یک لحظه در گذشته را درست بیان می‌کند؟"
+          },
+          "options": [
+            {
+              "nl": "Toen de ketting brak, stapte Noor af.",
+              "en": "Toen de ketting brak, stapte Noor af.",
+              "fa": "Toen de ketting brak, stapte Noor af."
+            },
+            {
+              "nl": "Toen de ketting brak, Noor stapte af.",
+              "en": "Toen de ketting brak, Noor stapte af.",
+              "fa": "Toen de ketting brak, Noor stapte af."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Na de bijzin met toen begint de hoofdzin hier met de persoonsvorm stapte: stapte Noor af.",
+            "en": "After the toen clause, the main clause starts with the finite verb stapte here: stapte Noor af.",
+            "fa": "پس از جمله وابسته با toen، اینجا جمله اصلی با فعل صرف‌شده stapte آغاز می‌شود: stapte Noor af."
           }
         }
       ]

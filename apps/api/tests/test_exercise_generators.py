@@ -24,10 +24,10 @@ RECORDED = {
     "pre-a1": (501, 501, 100, 100, 201, 495, 501),
     "a1": (502, 502, 92, 100, 202, 497, 2),
     "pre-a2": (500, 500, 87, 100, 200, 496, 0),
-    "a2": (503, 503, 422, 51, 503, 84, 407),
+    "a2": (505, 505, 422, 51, 505, 84, 409),
     "pre-b1": (500, 500, 419, 50, 500, 84, 19),
-    "b1": (503, 503, 417, 51, 503, 86, 0),
-    "pre-b2": (500, 500, 429, 0, 500, 446, 435),
+    "b1": (504, 504, 417, 51, 504, 87, 1),
+    "pre-b2": (500, 500, 429, 0, 500, 446, 434),
     "b2": (500, 500, 423, 0, 500, 447, 0),
     "pre-c1": (500, 500, 409, 0, 500, 446, 0),
     "c1": (500, 500, 485, 0, 500, 499, 402),
@@ -207,7 +207,7 @@ def test_two_hundred_sessions_per_stage_keep_the_rules(stage_id):
             assert all(a.word != b.word for a, b in zip(graded, graded[1:], strict=False) if a.word), "spread"
     assert {"choice", "cloze_choice", "cloze_typed", "typed_recall", "sentence_builder", "match_pairs",
             "listen_choose", "dictation"} <= kinds
-    # A uniform sample need not select the three short B1 supplement cards among 503 words. Availability
+    # A uniform sample need not select the four short B1 supplement cards among 504 words. Availability
     # has its own targeted coverage below; this random-session check still refuses unavailable shadow items.
     if "shadow" in kinds:
         assert any(audio.shadow(stage, word) for word in stage.words)
