@@ -458,8 +458,9 @@ def answer_questions(session: Session, learner: Learner, episode: StoryEpisode, 
     if episode.read_at is None:
         episode.read_at = utcnow()
         read = record_activity(session, learner.id, kind="episode_read", ref=str(episode.id), request_id=request_id)
+    # every answered question pays (O1); the day counts the correct ones
     answered = record_activity(session, learner.id, kind="episode_questions", ref=str(episode.id),
-                               request_id=request_id, units=correct)
+                               request_id=request_id, units=len(chosen), counted=correct)
     return {**episode_view(episode), **reached(read, answered)}
 
 

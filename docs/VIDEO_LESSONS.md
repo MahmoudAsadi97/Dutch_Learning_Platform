@@ -89,7 +89,7 @@ The file is served by the API from blob storage with HTTP byte ranges (`Accept-R
 the same-origin proxy, so the player can seek without downloading everything. Subtitles are a separate
 WebVTT track built from the stored cues; the transcript highlights the scene the playhead is in and a
 click on a scene seeks to its first cue. Watching to the end (or *Klaar met kijken*) awards ten points
-once, each correct answer three; words are saved to the word bank with `source_kind = video`.
+once, each answered question three (D-34); words are saved to the word bank with `source_kind = video`.
 
 ## Honesty
 

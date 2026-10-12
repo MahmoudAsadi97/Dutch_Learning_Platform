@@ -5,6 +5,11 @@ from __future__ import annotations
 import io
 import wave
 
+from sqlalchemy import select
+
+from dlp.db.session import session_scope
+from dlp.domains.activity.models import ActivityEvent
+from dlp.domains.activity.rules import RULES
 from tests.conftest import auth_headers
 
 MISSION = {"mission_id": "appointment-change", "variant": "base"}
@@ -211,3 +216,25 @@ def test_clearing_a_draft_does_not_restore_the_previous_text(client):
     view = client.get(f"/practice/sessions/{session_id}", headers=auth_headers("draft-after-clear")).json()
     assert view["drafts"]["write-message"]["text"] == ""
     assert view["evidence"] == []
+
+
+def test_a_step_earns_its_points_once_it_is_done_and_the_message_once(client):
+    points = lambda: client.get("/today", headers=auth_headers("points-today")).json()["goal"]["points"]  # noqa: E731
+    session_id = _start(client, "points-start-0001")
+    assert _answer(client, session_id, "points-0001", "read-reminder", "q-when", 1).status_code == 200
+    assert points() == 0, "a step not done yet earns nothing"
+    done = _answer(client, session_id, "points-0002", "read-reminder", "q-cannot-come", 0).json()
+    assert done["step_completed"] is True
+    assert points() == 2 * RULES["mission_questions"].points, "per question, right or wrong"
+    assert _answer(client, session_id, "points-0003", "read-reminder", "q-when", 0).status_code == 200
+    assert points() == 2 * RULES["mission_questions"].points, "answering again pays nothing more"
+    message = ("Beste tandarts De Smet, ik kan woensdag niet komen naar de praktijk omdat ik moet werken. "
+               "Kan ik een nieuwe afspraak maken op donderdag of vrijdag? Bedankt en tot binnenkort. Groeten, Mahmoud")
+    for request_id in ("points-0004", "points-0005"):
+        sent = client.post(f"/practice/sessions/{session_id}/writing", headers=auth_headers(request_id),
+                           json={"step_key": "write-message", "text": message})
+        assert sent.status_code == 200, sent.text
+    assert points() == 2 * RULES["mission_questions"].points + RULES["mission_writing"].points
+    with session_scope() as session:
+        skills = {event.kind: event.skill for event in session.scalars(select(ActivityEvent))}
+    assert skills == {"mission_questions": "reading", "mission_writing": "writing"}

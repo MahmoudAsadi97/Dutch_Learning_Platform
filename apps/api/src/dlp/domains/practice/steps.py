@@ -5,13 +5,14 @@ document, never in the browser."""
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from dlp.db.base import utcnow
+from dlp.domains.activity.service import reached, record_activity
 from dlp.domains.content.schemas import (
     CheckpointPayload,
     ListeningPayload,
@@ -94,6 +95,7 @@ class AnswerOutcome:
     answer_index: int
     step_completed: bool
     answered: dict[str, bool]
+    goal: dict[str, bool] = field(default_factory=dict)  # `reached` for the step's points
 
 
 def submit_answer(session: Session, practice: PracticeSession, *, step_key: str, question_id: str,
@@ -126,7 +128,12 @@ def submit_answer(session: Session, practice: PracticeSession, *, step_key: str,
     _set_progress(practice, step_key, answered=answered, attempts=attempts, completed=completed,
                   correct=correct_count, total=len(payload.questions))
     _touch_skill(session, practice, step, completed, {"correct": correct_count, "total": len(payload.questions)})
-    return AnswerOutcome(evidence, correct, question.answer_index, completed, answered)
+    goal: dict[str, bool] = {}
+    if completed:
+        # the step's points once, per question, right or wrong (D-34)
+        goal = reached(record_activity(session, practice.learner_id, kind="mission_questions",
+                                       ref=f"{practice.id}:{step_key}", units=len(payload.questions), skill=step.skill))
+    return AnswerOutcome(evidence, correct, question.answer_index, completed, answered, goal)
 
 
 # --- help ladder -----------------------------------------------------------------------------------------------------
@@ -200,6 +207,7 @@ class WritingOutcome:
     word_count: int
     missing: list[str]
     step_completed: bool
+    goal: dict[str, bool] = field(default_factory=dict)  # `reached` for the message's points
 
 
 def submit_writing(session: Session, practice: PracticeSession, *, step_key: str, text: str) -> WritingOutcome:
@@ -228,4 +236,7 @@ def submit_writing(session: Session, practice: PracticeSession, *, step_key: str
     practice.state = {**practice.state, "drafts": drafts}
     _set_progress(practice, step_key, completed=True, submissions=submissions, word_count=count, missing=missing)
     _touch_skill(session, practice, step, True, {"word_count": count, "missing": missing})
-    return WritingOutcome(evidence, count, missing, True)
+    # inside the word limits: the message earns its points once (D-34)
+    goal = reached(record_activity(session, practice.learner_id, kind="mission_writing",
+                                   ref=f"{practice.id}:{step_key}"))
+    return WritingOutcome(evidence, count, missing, True, goal)

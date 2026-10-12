@@ -9,6 +9,8 @@ from pydantic import ValidationError
 from sqlalchemy import func, select
 
 from dlp.db.session import session_scope
+from dlp.domains.activity.models import ActivityEvent
+from dlp.domains.activity.rules import RULES
 from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice, TopicPractice
 from dlp.domains.identity.models import Learner
 from dlp.domains.speech.models import AudioAsset
@@ -456,3 +458,35 @@ def test_azure_paid_flag_off_keeps_start_and_help_free_but_blocks_response(
     assert client.get(f"/topic-conversations/{row['id']}", headers=headers).json()["turn_count"] == 1
     with session_scope() as session:
         assert session.scalar(select(func.count()).select_from(UsageReservation)) == 0
+
+
+def test_answer_turns_earn_points_once_typed_as_writing_spoken_as_speaking(client, headers, blueprint, monkeypatch):
+    points = lambda: client.get("/today", headers=headers).json()["goal"]["points"]  # noqa: E731
+    row = start(client, headers, blueprint)
+    calls = install_interpreter(monkeypatch, blueprint)
+    helped = submit(client, headers, row, "", action="hint")
+    assert helped.status_code == 200, helped.text
+    assert points() == 0, "a help turn earns nothing"
+    key = uuid.uuid4().hex
+    answered = submit(client, headers, helped.json(), client_turn_id=key)
+    assert answered.status_code == 200, answered.text
+    again = submit(client, headers, helped.json(), client_turn_id=key)
+    assert again.status_code == 200 and len(calls) == 1
+    assert points() == RULES["conversation_turn"].points, "a retried turn pays once"
+    assert client.post(f"/topic-conversations/{row['id']}/end", headers=headers).status_code == 200
+    spoken = start(client, headers, blueprint, mode="spoken")
+    said = submit(client, headers, spoken, "", audio_asset_id=new_recording("Ik wil een ticket."))
+    assert said.status_code == 200, said.text
+    assert points() == 2 * RULES["conversation_turn"].points
+    with session_scope() as session:
+        events = session.scalars(select(ActivityEvent).where(ActivityEvent.kind == "conversation_turn")
+                                 .order_by(ActivityEvent.created_at))
+        assert [event.skill for event in events] == ["writing", "speaking"]
+
+
+def test_an_outage_turn_earns_nothing(client, headers, blueprint, monkeypatch, settings):
+    monkeypatch.setattr(settings, "usage_daily_tokens", 50000)
+    row = start(client, headers, blueprint)
+    install_interpreter(monkeypatch, blueprint, fail=True)
+    assert submit(client, headers, row).status_code == 503
+    assert client.get("/today", headers=headers).json()["goal"]["points"] == 0

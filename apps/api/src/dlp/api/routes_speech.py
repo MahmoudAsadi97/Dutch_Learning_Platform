@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+from typing import Literal
+
 from fastapi import APIRouter, Depends, File, Form, HTTPException, Response, UploadFile
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
 from dlp.api.deps import RequestContext, context_dep, db_session, providers_dep, settings_dep
 from dlp.config import Settings
+from dlp.domains.activity.service import reached, record_activity
 from dlp.domains.speech.compare import read_aloud_compare, require_words
 from dlp.domains.speech.service import synthesize_text, transcribe_upload
 from dlp.providers.base import ProviderError, ProviderUnavailable
@@ -18,6 +21,7 @@ router = APIRouter(prefix="/speech", tags=["speech"])
 def transcribe(
     audio: UploadFile = File(...),
     keep_recording: bool = Form(default=True),
+    purpose: Literal["warmup"] | None = Form(default=None),
     ctx: RequestContext = Depends(context_dep),
     settings: Settings = Depends(settings_dep),
     providers: Providers = Depends(providers_dep),
@@ -34,7 +38,14 @@ def transcribe(
         raise HTTPException(status_code=503, detail=f"speech-to-text unavailable: {exc}") from exc
     except ProviderError as exc:
         raise HTTPException(status_code=502, detail=f"speech-to-text failed: {exc}") from exc
+    goal: dict[str, bool] = {}
+    if purpose == "warmup" and outcome.transcript.text.strip():
+        # the microphone warm-up with recognised speech: 2 points once a day (D-34); other recordings earn theirs
+        # where they are used
+        goal = reached(record_activity(session, ctx.learner.id, kind="speech_warmup", ref="speech-warmup",
+                                       request_id=ctx.request_id))
     return {
+        **goal,
         "request_id": ctx.request_id,
         "transcript": {
             "text": outcome.transcript.text,

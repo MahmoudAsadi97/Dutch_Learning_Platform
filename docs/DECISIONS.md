@@ -399,3 +399,20 @@ ten minutes, so most reads write nothing at all. That write used to lock the lea
 queued one learner's requests; without it, the series is inserted with ON CONFLICT DO NOTHING (two first prepares
 share one series and one episode), and the writes that change both the profile and the series (a level change,
 onboarding) lock the learner row first, so they never take those locks in opposite orders.
+
+## D-34 · Every kind of practice earns points, for doing it — 2026-10-12
+
+Revises D-19 ("points only for story and word actions") and amends D-20. Until now a learner who worked through
+the course (lessons, topics, the stage check), a mission or a conversation saw "0 / 20" and lost the streak. From
+step 4.2 every kind of practice earns points, and still only for what code can observe, never for a model's
+verdict on the learner's Dutch: a lesson's or topic's classic form pays per question answered, or its open
+speaking or writing task once it was assessed, once per activity and Brussels day; a submitted stage check pays
+15 once per attempt, passed or not, and an admin preview nothing; a mission's reading or listening step pays per
+question once it is done, its written message once, and each stored turn of its conversation; a topic
+conversation pays each answer turn (a help turn nothing); the microphone warm-up pays 2 a day when speech was
+recognised (the client says it is a warm-up, so it stays small). A typed turn counts under writing, a spoken one
+under speaking. Episode and video questions now pay per answered question instead of per correct one (owner
+decision O1); the day still counts the correct ones. Exercise sessions keep paying their items (D-28, D-31), never
+these as well. Points are awarded only where the action is stored, after any paid call and every refusal, never
+in a helper that a session shares (D-31). The values live in `domains/activity/rules.py` and are tuned after a
+week of real use; the goal question (O3) may change what the daily goal is measured in.

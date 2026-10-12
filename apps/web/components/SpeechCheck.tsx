@@ -74,8 +74,10 @@ export function SpeechCheck() {
     setResult(null);
     const form = new FormData();
     form.append("audio", recording.blob, recording.fileName);
-    // A microphone check is not a practice attempt. Keep playback only in this browser tab.
+    // The recording is not kept (playback stays in this browser tab); the warm-up earns its small daily points
+    // when speech was recognised.
     form.append("keep_recording", "false");
+    form.append("purpose", "warmup");
     try {
       const response = await apiJson<TranscriptResponse>("speech/transcribe", {
         method: "POST",

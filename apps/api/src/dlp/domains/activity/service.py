@@ -19,7 +19,7 @@ from sqlalchemy.orm import Session
 from dlp.db.base import utcnow
 from dlp.domains.activity.day import local_today
 from dlp.domains.activity.models import ActivityEvent, LearningDay
-from dlp.domains.activity.rules import COUNTERS, RULES, Rule
+from dlp.domains.activity.rules import COUNTERS, RULES, SKILLS, Rule
 from dlp.domains.profile.models import LearnerProfile
 
 DAILY_GOAL = 20
@@ -67,28 +67,34 @@ def dedupe_key(rule: Rule, ref: str, *, request_id: str, day: date) -> str:
 
 
 def record_activity(session: Session, learner_id: uuid.UUID, *, kind: str, ref: str, request_id: str = "",
-                    units: int = 1, meta: dict[str, Any] | None = None, now: datetime | None = None) -> Award:
+                    units: int = 1, counted: int | None = None, skill: str | None = None,
+                    meta: dict[str, Any] | None = None, now: datetime | None = None) -> Award:
     """Record one action of `kind` on `ref` (an episode id, a word id, ...) and award what the rules say.
 
-    `units` multiplies the points and moves the day counter (the number of correct questions, for example);
-    an action with no units is still recorded, so it cannot be replayed later for points."""
+    `units` multiplies the points (the number of answered questions, for example) and moves the day counter,
+    unless `counted` gives the counter its own number (the correct ones among them). `skill` is the action's own
+    skill when the rule leaves it open or the action decides it (a typed turn is writing). An action with no units
+    is still recorded, so it cannot be replayed later for points."""
     rule = RULES[kind]
-    if units < 0:
+    if units < 0 or (counted is not None and counted < 0):
         raise ValueError("units cannot be negative")
+    if skill is not None and skill not in SKILLS:
+        raise ValueError(f"unknown skill: {skill}")
     day = local_today(now)
     points = rule.points * units
+    count = units if counted is None else counted
     event_id = session.scalar(
         insert(ActivityEvent).values(
             id=uuid.uuid4(), learner_id=learner_id, kind=kind, ref=ref,
             dedupe_key=dedupe_key(rule, ref, request_id=request_id, day=day), day=day, points=points, units=units,
-            skill=rule.skill, request_id=request_id, meta=meta or {}, created_at=utcnow(),
+            skill=skill or rule.skill, request_id=request_id, meta=meta or {}, created_at=utcnow(),
         ).on_conflict_do_nothing(index_elements=["learner_id", "kind", "dedupe_key"]).returning(ActivityEvent.id)
     )
     if event_id is None:
         return Award(points=0, recorded=False)
-    if not (points or (rule.counter and units)):
+    if not (points or (rule.counter and count)):
         return Award(points=0, recorded=True)
-    row = add_to_day(session, learner_id, day=day, points=points, counts={rule.counter: units} if rule.counter else {})
+    row = add_to_day(session, learner_id, day=day, points=points, counts={rule.counter: count} if rule.counter else {})
     goal = row.goal_target or DAILY_GOAL
     goal_reached = 0 < points and row.points - points < goal <= row.points
     if goal_reached:

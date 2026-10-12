@@ -5,6 +5,7 @@ import json
 import uuid
 from datetime import timedelta
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 from pydantic import ValidationError
@@ -13,6 +14,8 @@ from sqlalchemy import select
 from dlp.config import Settings
 from dlp.db.base import utcnow
 from dlp.db.session import session_scope
+from dlp.domains.activity.models import ActivityEvent
+from dlp.domains.activity.rules import RULES
 from dlp.domains.curriculum import service
 from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice
 from dlp.domains.curriculum.schemas import SKILLS, STAGE_IDS, Localized, ProductiveReply, Stage, Task
@@ -324,6 +327,7 @@ def test_assessor_outage_preserves_paid_skill_and_retry_does_not_duplicate_it(cl
     path = f'/curriculum/attempts/{attempt["id"]}/submit'
     response = client.post(path, headers=headers, json=body)
     assert response.status_code == 503
+    assert day_points(client, headers) == 0, "a check that could not be assessed earns nothing"
     assert client.get("/curriculum/a1", headers=headers).status_code == 200
     saved = client.get(f'/curriculum/attempts/{attempt["id"]}', headers=headers).json()
     assert saved["status"] == "in_progress"
@@ -336,6 +340,7 @@ def test_assessor_outage_preserves_paid_skill_and_retry_does_not_duplicate_it(cl
     assert retry.status_code == 200, retry.text
     assert retry.json()["status"] == "passed"
     assert len(calls) == 3  # successful speaking, failed writing, retried writing only
+    assert day_points(client, headers) == RULES["stage_check"].points
 
 
 def test_default_fixture_assessor_is_valid_but_never_awards_a_pass():
@@ -440,3 +445,54 @@ def test_recording_policy_reports_effective_configured_limit(client, headers, se
     for response in (catalog, stage, attempt):
         assert response["policy"]["recording_max_seconds"] == min(60, settings.max_audio_seconds)
     assert catalog["learner_key"] == stage["learner_key"]
+
+
+def day_points(client, headers) -> int:
+    return client.get("/today", headers=headers).json()["goal"]["points"]
+
+
+def lesson_text(task: Task) -> str:
+    words = ("Ik woon in Gent en ik werk elke dag in Brussel met mijn collega Sam " * 20).split()
+    return " ".join(words[:task.min_words])
+
+
+def test_lesson_practice_pays_per_question_or_task_once_a_day_and_nothing_after_an_outage(client, headers, monkeypatch):
+    stage = first_stage()
+    reading = stage.lesson.reading_questions
+    wrong = {q.id: (q.answer_index + 1) % len(q.options) for q in reading}
+    path = "/curriculum/pre-a1/practice"
+    assert client.post(path, headers=headers, json={"skill": "reading", "answers": wrong}).status_code == 200
+    assert day_points(client, headers) == len(reading), "answering pays, right or wrong"
+    assert client.post(path, headers=headers, json={"skill": "reading", "answers": answers(reading)}).status_code == 200
+    assert day_points(client, headers) == len(reading), "the same lesson skill pays once a day"
+    text = lesson_text(stage.lesson.writing)
+    install_assessor(monkeypatch, fail_on=1)
+    assert client.post(path, headers=headers, json={"skill": "writing", "text": text}).status_code == 503
+    assert day_points(client, headers) == len(reading), "an assessment that failed earns nothing"
+    install_assessor(monkeypatch)
+    written = client.post(path, headers=headers, json={"skill": "writing", "text": text})
+    assert written.status_code == 200, written.text
+    assert day_points(client, headers) == len(reading) + RULES["course_task"].points
+    with session_scope() as db:
+        events = {(event.kind, event.ref, event.skill, event.units) for event in db.scalars(select(ActivityEvent))}
+    assert events == {("course_questions", "lesson:pre-a1:reading", "reading", len(reading)),
+                      ("course_task", "lesson:pre-a1:writing", "writing", 1)}
+
+
+def test_a_submitted_stage_check_earns_its_points_once_passed_or_not_and_never_as_a_preview(client, headers, monkeypatch):
+    attempt = prepare_check(client, headers)
+    stage = first_stage()
+    install_assessor(monkeypatch, fail_writing=True)
+    body = submission_for(stage, new_recording(stage.test.speaking.sample.nl))
+    path = f'/curriculum/attempts/{attempt["id"]}/submit'
+    first = client.post(path, headers=headers, json=body)
+    assert first.status_code == 200 and first.json()["status"] == "needs_practice"
+    assert client.post(path, headers=headers, json=body).status_code == 200
+    assert day_points(client, headers) == RULES["stage_check"].points
+    with session_scope() as db:
+        learner = db.scalar(select(Learner).where(Learner.email == "owner@example.com"))
+        preview = SimpleNamespace(admin_preview=True, status="passed", id=uuid.uuid4(), request_id="preview-points")
+        assert service.attempt_points(db, learner.id, preview) == {}
+        unfinished = SimpleNamespace(admin_preview=False, status="in_progress", id=uuid.uuid4(), request_id="open")
+        assert service.attempt_points(db, learner.id, unfinished) == {}
+    assert day_points(client, headers) == RULES["stage_check"].points

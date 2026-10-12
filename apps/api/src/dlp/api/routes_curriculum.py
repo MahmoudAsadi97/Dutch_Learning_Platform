@@ -103,10 +103,12 @@ def attempt_submit(attempt_id: uuid.UUID, body: SubmitBody, ctx: RequestContext 
         attempt = service.get_attempt(session, ctx.learner.id, attempt_id, lock=True)
         service.require_access(session, ctx.learner.id, attempt.stage_id,
                                admin=service.is_admin(settings, ctx.principal.email))
-        return service.attempt_view(service.submit_attempt(
+        submitted = service.submit_attempt(
             session, settings, providers, learner_id=ctx.learner.id, attempt=attempt,
             submission=body.model_dump(mode="json"), request_id=ctx.request_id,
-        ), recording_max_seconds=settings.max_audio_seconds)
+        )
+        return {**service.attempt_view(submitted, recording_max_seconds=settings.max_audio_seconds),
+                **service.attempt_points(session, ctx.learner.id, submitted)}
     return _run(operation)
 
 

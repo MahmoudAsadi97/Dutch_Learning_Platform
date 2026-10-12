@@ -10,7 +10,7 @@ from sqlalchemy import func, select
 
 from dlp.db.session import session_scope
 from dlp.domains.activity import rules
-from dlp.domains.activity.day import local_today
+from dlp.domains.activity.day import day_bounds_utc, local_today
 from dlp.domains.activity.models import ActivityEvent, LearningDay
 from dlp.domains.activity.service import add_to_day, reached, record_activity
 from dlp.domains.identity.models import Learner
@@ -197,3 +197,26 @@ def test_a_long_request_id_is_kept_and_its_retry_repeats_the_goal(client, header
         event = session.scalar(select(ActivityEvent).where(ActivityEvent.request_id == request_id))
         assert event is not None and event.meta == {"goal_reached": True}
     assert _day(learner_id).points == 21
+
+
+def test_an_action_names_its_own_skill_and_may_count_other_units_than_it_pays(database):
+    learner_id = _learner("own-skill@example.com")
+    with session_scope() as session:
+        spoken = record_activity(session, learner_id, kind="mission_turn", ref="turn-1", skill="speaking")
+        answered = record_activity(session, learner_id, kind="episode_questions", ref="episode-1", units=3, counted=1)
+        assert (spoken.points, answered.points) == (2, 9)
+        with pytest.raises(ValueError):
+            record_activity(session, learner_id, kind="mission_turn", ref="turn-2", skill="dancing")
+    with session_scope() as session:
+        events = {event.kind: event for event in session.scalars(select(ActivityEvent))}
+        assert events["mission_turn"].skill == "speaking" and events["episode_questions"].skill == "reading"
+        assert events["episode_questions"].units == 3
+    row = _day(learner_id)
+    assert row is not None and row.points == 11 and row.questions_correct == 1
+
+
+def test_the_brussels_day_in_utc_has_23_hours_when_the_clocks_go_forward():
+    late = datetime(2026, 7, 1, 21, 30, tzinfo=UTC)  # 23:30 in Brussels
+    assert day_bounds_utc(late) == (datetime(2026, 6, 30, 22, 0, tzinfo=UTC), datetime(2026, 7, 1, 22, 0, tzinfo=UTC))
+    start, end = day_bounds_utc(datetime(2026, 3, 29, 12, 0, tzinfo=UTC))
+    assert start == datetime(2026, 3, 28, 23, 0, tzinfo=UTC) and (end - start).total_seconds() == 23 * 3600

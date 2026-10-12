@@ -520,8 +520,9 @@ def answer_questions(session: Session, learner: Learner, lesson: VideoLesson, *,
     if lesson.watched_at is None:
         lesson.watched_at = utcnow()
         watched = record_activity(session, learner.id, kind="video_watched", ref=str(lesson.id), request_id=request_id)
+    # every answered question pays (O1); the day counts the correct ones
     answered = record_activity(session, learner.id, kind="video_questions", ref=str(lesson.id), request_id=request_id,
-                               units=correct)
+                               units=len(chosen), counted=correct)
     return {**video_view(lesson), **reached(watched, answered)}
 
 

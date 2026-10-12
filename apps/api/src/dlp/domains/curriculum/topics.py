@@ -258,6 +258,7 @@ def _persist_topic_result(session: Session, *, learner_id: uuid.UUID, bank: Topi
 def save_topic_practice(session: Session, settings: Settings, providers: Providers, *, learner_id: uuid.UUID,
                         bank: TopicBank, topic: PracticeTopic, skill: Skill, answers: dict[str, int], text: str,
                         asset_id: uuid.UUID | None, request_id: str, observation_request_id: str | None = None) -> dict:
+    from dlp.domains.activity.service import reached, record_activity, replayed
     from dlp.domains.coaching.service import observation_for_request, record_observation
 
     # Transport tracing ids are not attempt ids. Old clients get a fresh episode;
@@ -268,7 +269,8 @@ def save_topic_practice(session: Session, settings: Settings, providers: Provide
     previous = observation_for_request(session, learner_id=learner_id, source="topic_practice",
                                        request_id=episode_id, payload=payload)
     if previous is not None:
-        return dict(previous.response)
+        # the stored answer, as it was; only whether it reached the day's goal is said again
+        return {**dict(previous.response), **replayed(session, learner_id, episode_id)}
     if skill in ("reading", "listening"):
         if text or asset_id:
             raise service.CurriculumError("this skill accepts answers to its own questions only", 422)
@@ -316,4 +318,9 @@ def save_topic_practice(session: Session, settings: Settings, providers: Provide
                        source="topic_practice", request_id=episode_id, content_version=version,
                        passed=result["passed"] if assessed else None, summary=summary, failed_refs=failed_refs,
                        payload=payload, response=response)
-    return response
+    # points for doing it (D-34), never part of the stored answer: per question, or the task, per topic and day
+    receptive = skill in ("reading", "listening")
+    award = record_activity(session, learner_id, kind="course_questions" if receptive else "course_task",
+                            ref=f"topic:{topic.id}:{skill}", request_id=episode_id, skill=skill,
+                            units=len(questions) if receptive else 1)
+    return {**response, **reached(award)}

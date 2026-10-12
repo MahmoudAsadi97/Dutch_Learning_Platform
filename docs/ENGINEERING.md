@@ -443,7 +443,7 @@ judged on the laptop with `python -m dlp.cli write-episode`. The web pages (`/`,
 ## Activity and points
 
 Every point is earned through `domains/activity/service.record_activity(session, learner_id, kind=..., ref=...,
-request_id=..., units=...)`. It inserts one `activity_events` row (migration `0009`) with ON CONFLICT DO
+request_id=..., units=..., counted=..., skill=...)`. It inserts one `activity_events` row (migration `0009`) with ON CONFLICT DO
 NOTHING on `(learner_id, kind, dedupe_key)`; only a new row moves `learning_days`, so a retried or
 simultaneous request awards nothing and a day's points equal the sum of its events (days from before the
 table carry one backfilled `legacy` event). `domains/activity/rules.py` is the one table of kinds: points
@@ -457,7 +457,17 @@ is kept in the event's `meta`, so a retried request answered from its stored res
 (`activity.service.replayed`, today only). `activity_events.request_id` holds up to 80 characters, like the
 request bodies. `stories/today.py` keeps the old names as re-exports;
 its `add_points` only seeds history in tests. A new kind is a row in the rules table plus a
-`record_activity` call where the action is stored, never an update of `learning_days` by hand.
+`record_activity` call where the action is stored, never an update of `learning_days` by hand. Every kind of
+practice earns points (D-34): the lesson's and the topic's classic forms (`course_questions` per question,
+`course_task` for the open task, per activity and day, refs `lesson:<stage>:<skill>` and `topic:<id>:<skill>`),
+the stage check (`stage_check`, `curriculum.service.attempt_points`, never an admin preview), missions
+(`mission_questions`, `mission_writing`, `mission_turn`), topic conversations (`conversation_turn`,
+`topic_conversations.service.turn_points`; the daily start limit counts the Brussels day, `day_bounds_utc`) and
+the warm-up (`speech_warmup`, `POST /speech/transcribe` with `purpose=warmup`). `skill` names the action's own
+skill (a typed turn is writing); `counted` moves the day counter by another number than the paid units (story and
+video questions pay per answered one and count the correct ones). Awards sit only in the entry functions, after
+the paid call and every refusal, and a stored body replayed (a topic's classic answer, a stage check, a turn)
+repeats `goal_reached` through `replayed`, never in what is stored.
 
 ## Judging an answer
 

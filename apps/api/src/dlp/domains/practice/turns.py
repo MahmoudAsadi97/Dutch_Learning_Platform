@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import uuid
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 from sqlalchemy import func, select
@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 from dlp.config import Settings
 from dlp.db.base import utcnow
+from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.content.schemas import CheckpointPayload, MissionDocument, SpeakingPayload, Step
 from dlp.domains.content.service import get_mission, mission_document
 from dlp.domains.practice.actions import AppointmentState, required_actions_completed
@@ -35,6 +36,7 @@ class TurnOutcome:
     step_completed: bool
     appointment: dict[str, Any]
     reply_source: str
+    goal: dict[str, bool] = field(default_factory=dict)  # `reached` for the turn's points
 
 
 class TurnFailed(PracticeError):
@@ -109,12 +111,14 @@ def _history(practice: PracticeSession, step_key: str) -> list[tuple[str, str]]:
     return history
 
 
-def _deduplicated(practice: PracticeSession, turn: PracticeTurn, required_actions: list[str]) -> TurnOutcome:
+def _deduplicated(session: Session, practice: PracticeSession, turn: PracticeTurn,
+                  required_actions: list[str]) -> TurnOutcome:
     if turn.status == "failed":
         raise TurnFailed(turn, str(turn.model_meta.get("error", "")))
     state = AppointmentState.from_dict(practice.state.get("appointment"))
     return TurnOutcome(turn, True, required_actions_completed(state, required_actions), state.as_dict(),
-                       str(turn.model_meta.get("reply_source", "")))
+                       str(turn.model_meta.get("reply_source", "")),
+                       replayed(session, practice.learner_id, turn.request_id))
 
 
 def submit_turn(
@@ -140,7 +144,7 @@ def submit_turn(
     # A retry with the same request id gets the same answer, even when that turn closed the session.
     existing = existing_turn(session, practice, request_id)
     if existing is not None:
-        return _deduplicated(practice, existing, payload.required_actions)  # type: ignore[union-attr]
+        return _deduplicated(session, practice, existing, payload.required_actions)  # type: ignore[union-attr]
 
     ensure_turn_allowed(session, document, practice, step_key, modality)
     learner_text = learner_text.strip()
@@ -235,9 +239,12 @@ def submit_turn(
             practice.completed_at = utcnow()
 
     _attach_character_audio(session, settings, providers, practice, turn, request_id)
+    # a stored turn earns its points (D-34): spoken under speaking, typed under writing
+    goal = reached(record_activity(session, practice.learner_id, kind="mission_turn", ref=str(turn.id),
+                                   request_id=request_id, skill="speaking" if modality == "speech" else "writing"))
     session.flush()
     session.expire(practice, ["turns", "evidence"])
-    return TurnOutcome(turn, False, completed, state.as_dict(), result["reply_source"])
+    return TurnOutcome(turn, False, completed, state.as_dict(), result["reply_source"], goal)
 
 
 def _update_skill_record(session: Session, practice: PracticeSession, step: Step, completed: bool, modality: str) -> None:

@@ -63,8 +63,8 @@ def turn(conversation_id: uuid.UUID, body: TurnBody, ctx: RequestContext = Depen
          session: Session = db_session):
     def operation():
         row = service.get(session, ctx.learner.id, conversation_id, lock=True)
-        return service.view(service.turn(session, settings, providers, row, **body.model_dump(),
-                                         request_id=ctx.request_id), settings)
+        row = service.turn(session, settings, providers, row, **body.model_dump(), request_id=ctx.request_id)
+        return {**service.view(row, settings), **service.turn_points(session, row, body.client_turn_id)}
     return _run(operation, provider_detail="Conversation feedback is temporarily unavailable. "
                 "Your response was not added; keep it and retry.")
 

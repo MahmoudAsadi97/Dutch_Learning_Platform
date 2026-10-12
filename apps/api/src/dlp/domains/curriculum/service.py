@@ -22,6 +22,7 @@ from sqlalchemy.orm import Session
 
 from dlp.config import CONTENT_DIR, Settings
 from dlp.db.base import utcnow
+from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice
 from dlp.domains.curriculum.schemas import SKILLS, Curriculum, ProductiveReply, Question, Stage, Task, Test
 from dlp.domains.speech.models import AudioAsset
@@ -273,7 +274,12 @@ def save_practice(session: Session, settings: Settings, providers: Providers, *,
         evidence = {"text": text, "audio_asset_id": str(asset_id) if asset_id else None, "result": result}
     _persist_core_practice(session, learner_id=learner_id, stage_id=stage.id, skill=skill, completed=completed,
                            evidence=evidence)
-    return {**result, "completed": completed, "skill": skill}
+    # points for doing it, after the assessment and every refusal (D-34): per question, or the task, a day
+    receptive = skill in ("reading", "listening")
+    award = record_activity(session, learner_id, kind="course_questions" if receptive else "course_task",
+                            ref=f"lesson:{stage.id}:{skill}", request_id=request_id, skill=skill,
+                            units=len(questions) if receptive else 1)
+    return {**result, "completed": completed, "skill": skill, **reached(award)}
 
 
 def _persist_core_practice(session: Session, *, learner_id: uuid.UUID, stage_id: str, skill: str, completed: bool,
@@ -388,3 +394,12 @@ def submit_attempt(session: Session, settings: Settings, providers: Providers, *
     attempt.status = "passed" if all(attempt.results[skill]["passed"] for skill in SKILLS) else "needs_practice"
     attempt.completed_at = utcnow()
     return attempt
+
+
+def attempt_points(session: Session, learner_id: uuid.UUID, attempt: CurriculumAttempt) -> dict[str, bool]:
+    """The stage check's points (D-34): a submitted check earns them once, passed or not; an admin preview never.
+    A repeated submit says again whether the first one reached the day's goal."""
+    if attempt.admin_preview or attempt.status not in ("passed", "needs_practice"):
+        return {}
+    award = record_activity(session, learner_id, kind="stage_check", ref=str(attempt.id), request_id=attempt.request_id)
+    return {**replayed(session, learner_id, attempt.request_id), **reached(award)}

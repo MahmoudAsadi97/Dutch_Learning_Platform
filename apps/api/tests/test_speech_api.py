@@ -4,6 +4,7 @@ import wave
 
 import pytest
 
+from dlp.domains.activity.rules import RULES
 from dlp.providers.fixtures import FixtureSpeechToText, tone_wav
 from dlp.providers.registry import get_providers
 from tests.conftest import FIXTURES, auth_headers
@@ -95,3 +96,22 @@ def test_synthesize_rejects_empty_and_huge_text(client):
     assert client.post("/speech/synthesize", headers=auth_headers("tts-req-0003"), json={"text": ""}).status_code == 422
     assert client.post("/speech/synthesize", headers=auth_headers("tts-req-0004"),
                        json={"text": "x" * 601}).status_code == 422
+
+
+@needs_ffmpeg
+def test_the_warm_up_earns_its_points_once_a_day_and_other_recordings_none_here(client):
+    wav = (FIXTURES / "tone_1s.wav").read_bytes()
+
+    def send(request_id, **data):
+        return client.post("/speech/transcribe", headers=auth_headers(request_id),
+                           files={"audio": ("tone_1s.wav", wav, "audio/wav")}, data=data)
+
+    def points():
+        return client.get("/today", headers=auth_headers("warmup-today")).json()["goal"]["points"]
+
+    assert send("warmup-0001").status_code == 200
+    assert points() == 0, "a recording without the warm-up purpose earns nothing here"
+    for request_id in ("warmup-0002", "warmup-0003"):
+        assert send(request_id, purpose="warmup", keep_recording="false").status_code == 200
+    assert points() == RULES["speech_warmup"].points
+    assert send("warmup-0004", purpose="lesson").status_code == 422

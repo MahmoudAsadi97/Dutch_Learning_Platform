@@ -14,6 +14,8 @@ from pydantic import ValidationError
 from sqlalchemy import func, select
 
 from dlp.db.session import session_scope
+from dlp.domains.activity.models import ActivityEvent
+from dlp.domains.activity.rules import RULES
 from dlp.domains.curriculum import service, topics
 from dlp.domains.curriculum.library import library_for
 from dlp.domains.curriculum.models import CurriculumPractice, TopicPractice
@@ -276,6 +278,7 @@ def test_provider_outage_and_invalid_draft_never_complete_topic(client, headers,
     assert result.status_code == 503
     with session_scope() as session:
         assert session.scalar(select(func.count()).select_from(TopicPractice)) == 0
+        assert session.scalar(select(func.count()).select_from(ActivityEvent)) == 0
     assert not client.get("/curriculum/pre-a1", headers=headers).json()["progress"]["practice_completed"]
 
 
@@ -360,3 +363,22 @@ def test_release_refuses_invalid_topics_before_database_connection(monkeypatch):
     with pytest.raises(ValueError, match="topic coverage"):
         release.migrate("postgresql+psycopg://dlp:dlp@localhost/dlp_test", "x" * 32)
     assert sequence == ["curriculum", "libraries", "topics"]
+
+
+def test_topic_practice_pays_per_question_or_task_once_a_day(client, headers, bank, monkeypatch):
+    first, second = bank.topics[:2]
+    questions = first.reading.questions
+    assert submit_reading(client, headers, first, correct=False).status_code == 200
+    points = lambda: client.get("/today", headers=headers).json()["goal"]["points"]  # noqa: E731
+    assert points() == len(questions), "answering pays, right or wrong"
+    assert submit_reading(client, headers, first).status_code == 200
+    assert points() == len(questions), "the same topic and skill pays once a day"
+    install_assessor(monkeypatch)
+    written = client.post(f"/curriculum/pre-a1/topics/{second.id}/practice", headers=headers,
+                          json={"skill": "writing", "text": "Ik ben Sam."})
+    assert written.status_code == 200, written.text
+    assert points() == len(questions) + RULES["course_task"].points
+    with session_scope() as session:
+        events = {(event.kind, event.ref, event.skill) for event in session.scalars(select(ActivityEvent))}
+    assert events == {("course_questions", f"topic:{first.id}:reading", "reading"),
+                      ("course_task", f"topic:{second.id}:writing", "writing")}

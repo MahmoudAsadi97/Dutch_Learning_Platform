@@ -159,7 +159,8 @@ def test_watching_answering_and_saving_words_award_points_once(client):
     rated = client.post(f"/videos/{video_id}/rating", headers=auth_headers("rate-0001"), json={"rating": 1}).json()
     assert rated["rating"] == 1
     plan = client.get("/today", headers=auth_headers()).json()
-    assert plan["goal"]["points"] == service.POINTS["watch"] + service.POINTS["answer"]
+    # both answered questions pay (O1); the day counts the one that was right
+    assert plan["goal"]["points"] == service.POINTS["watch"] + 2 * service.POINTS["answer"]
     with session_scope() as session:
         from dlp.domains.stories.models import LearningDay
         day = session.scalar(select(LearningDay))

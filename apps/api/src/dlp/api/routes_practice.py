@@ -150,6 +150,7 @@ def _turn_response(practice: PracticeSession, outcome: TurnOutcome, request_id: 
         "reply_source": outcome.reply_source,
         "session": _session_view(practice),
         "request_id": request_id,
+        **outcome.goal,
     }
 
 
@@ -330,7 +331,7 @@ def answer(session_id: uuid.UUID, body: AnswerRequest, ctx: RequestContext = Dep
     return {
         "evidence": evidence_view(outcome.evidence), "correct": outcome.correct, "answer_index": outcome.answer_index,
         "step_completed": outcome.step_completed, "answered": outcome.answered,
-        "session": _session_view(practice), "request_id": ctx.request_id,
+        "session": _session_view(practice), "request_id": ctx.request_id, **outcome.goal,
     }
 
 
@@ -362,6 +363,7 @@ def writing(session_id: uuid.UUID, body: WritingRequest, ctx: RequestContext = D
     return {
         "evidence": evidence_view(outcome.evidence), "word_count": outcome.word_count, "missing": outcome.missing,
         "step_completed": outcome.step_completed, "session": _session_view(practice), "request_id": ctx.request_id,
+        **outcome.goal,
     }
 
 

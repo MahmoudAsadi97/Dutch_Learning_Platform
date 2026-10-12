@@ -9,6 +9,8 @@ from sqlalchemy.orm import Session
 
 from dlp.config import Settings
 from dlp.db.base import utcnow
+from dlp.domains.activity.day import day_bounds_utc
+from dlp.domains.activity.service import reached, record_activity, replayed
 from dlp.domains.curriculum.service import CurriculumError, localized, recording, word_count
 from dlp.domains.curriculum.topics import topic_for, topics_for
 from dlp.domains.identity.models import Learner
@@ -116,7 +118,7 @@ def start(session: Session, learner_id: uuid.UUID, *, blueprint_id: str, request
         raise CurriculumError("resume or finish the active conversation for this topic before starting another", 409)
     if len(active) >= MAX_ACTIVE:
         raise CurriculumError("finish one of your active conversations before starting another", 429)
-    since = utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
+    since, _ = day_bounds_utc()
     count = session.scalar(select(func.count()).select_from(TopicConversation).where(
         TopicConversation.learner_id == learner_id, TopicConversation.created_at >= since))
     if count >= MAX_DAILY_STARTS:
@@ -149,6 +151,17 @@ def _record_episode(session: Session, row: TopicConversation):
         failed_refs=[step.id for step in item.steps[row.step_index:]] if assessed else [],
         payload={"conversation_id": str(row.id), "mode": row.mode, "history": row.history},
     )
+
+
+def turn_points(session: Session, row: TopicConversation, client_turn_id: str) -> dict[str, bool]:
+    """Points for an answer the learner gave in the conversation (D-34): typed under writing, spoken under speaking;
+    a help turn earns nothing. A retried turn says again whether it reached the day's goal."""
+    entry = next((item for item in row.history if item["id"] == client_turn_id), None)
+    if entry is None or entry["action"] != "respond":
+        return {}
+    award = record_activity(session, row.learner_id, kind="conversation_turn", ref=f"{row.id}:{client_turn_id}",
+                            request_id=client_turn_id, skill="speaking" if row.mode == "spoken" else "writing")
+    return {**replayed(session, row.learner_id, client_turn_id), **reached(award)}
 
 
 def finish(session: Session, row: TopicConversation) -> TopicConversation:

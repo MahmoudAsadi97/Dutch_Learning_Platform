@@ -7,7 +7,11 @@ import shutil
 import wave
 
 import pytest
+from sqlalchemy import select
 
+from dlp.db.session import session_scope
+from dlp.domains.activity.models import ActivityEvent
+from dlp.domains.activity.rules import RULES
 from dlp.domains.content.service import MISSIONS_DIR, read_mission_file
 from dlp.domains.practice.workflow import run_turn
 from dlp.providers.fixtures import FixtureChatModel
@@ -308,3 +312,20 @@ def test_a_spoken_turn_records_the_transcript_as_evidence(client):
 
 def _learner_id(client) -> str:
     return client.get("/progress", headers=auth_headers("who-am-i-01")).json()["learner"]["id"]
+
+
+def test_a_stored_turn_earns_points_once_and_a_failed_one_none(client, monkeypatch):
+    points = lambda: client.get("/today", headers=auth_headers("turn-points-today")).json()["goal"]["points"]  # noqa: E731
+    session_id = _start(client, "turn-points-start")
+    monkeypatch.setattr("dlp.domains.practice.workflow.build_graph", lambda chat: _Exploding())
+    assert _say(client, session_id, "turn-points-0001", "Ik moet werken.").status_code == 502
+    assert points() == 0, "a failed turn earns nothing"
+    monkeypatch.undo()
+    first = _say(client, session_id, "turn-points-0002", "Ik heb een examen.")
+    assert first.status_code == 200, first.text
+    again = _say(client, session_id, "turn-points-0002", "Ik heb een examen.")
+    assert again.json()["deduplicated"] is True
+    assert points() == RULES["mission_turn"].points, "a retried turn pays once"
+    with session_scope() as session:
+        event = session.scalar(select(ActivityEvent).where(ActivityEvent.kind == "mission_turn"))
+        assert event.skill == "writing" and event.ref == first.json()["turn"]["id"]

@@ -273,7 +273,8 @@ def test_answers_are_graded_once_and_the_choice_queues_the_next_episode(client, 
     assert other.status_code == 409, "the questions cannot be re-answered for more points"
     assert other.json()["code"] == "already_answered"
     plan = client.get("/today", headers=headers).json()
-    assert plan["goal"]["points"] == 10 + 2 * 3 and plan["streak"]["current"] == 1 and plan["streak"]["today_active"]
+    # every answered question pays (O1), two of the three were right
+    assert plan["goal"]["points"] == 10 + 3 * 3 and plan["streak"]["current"] == 1 and plan["streak"]["today_active"]
     assert plan["episode"] is None and plan["awaiting_choice"]["id"] == eid and plan["next_step"] == "choose"
 
     chosen = client.post(f"/stories/episodes/{eid}/choice", headers=headers, json={"choice": "b"}).json()
@@ -286,7 +287,7 @@ def test_answers_are_graded_once_and_the_choice_queues_the_next_episode(client, 
         assert queued.previous_choice == GOOD["choices"][1]["label"]
         series = session.get(StorySeries, queued.series_id)
         assert series.memory[0]["choice"] == GOOD["choices"][1]["label"]
-    assert client.get("/today", headers=headers).json()["goal"]["points"] == 18
+    assert client.get("/today", headers=headers).json()["goal"]["points"] == 21
     assert client.post(f"/stories/episodes/{eid}/rating", headers=headers, json={"rating": 1}).json()["rating"] == 1
     bad_choice = client.post(f"/stories/episodes/{eid}/choice", headers=headers, json={"choice": "c"})
     assert bad_choice.status_code == 422

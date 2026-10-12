@@ -12,6 +12,7 @@ from sqlalchemy import func, select
 
 from dlp.db.base import utcnow
 from dlp.db.session import session_scope
+from dlp.domains.activity.rules import RULES
 from dlp.domains.coaching import service
 from dlp.domains.coaching.models import CoachPlanRequest, PracticeObservation
 from dlp.domains.coaching.schemas import PlanRanking
@@ -201,6 +202,7 @@ def test_topic_submission_history_replay_does_not_pay_or_mutate_progress_twice(c
     second = client.post(path, headers=headers, json=body)
     assert second.status_code == 200 and second.json() == first.json()
     assert len(calls) == 1
+    assert client.get("/today", headers=headers).json()["goal"]["points"] == RULES["course_task"].points
     changed = client.post(path, headers=headers, json={**body, "text": body["text"] + " Dag."})
     assert changed.status_code == 409 and len(calls) == 1
     with session_scope() as db:
