@@ -2,7 +2,7 @@
   "schema_version": 1,
   "ocr_engine": "tesseract",
   "ocr_language": "nld",
-  "dpi": 110,
+  "dpi": 150,
   "sources": [
     {
       "source_id": "source-01",
@@ -87,10 +87,30 @@
     }
   ],
   "total_pages": 884,
-  "ocr_completed": 877,
+  "ocr_completed": 884,
   "ocr_failed": 0,
-  "ocr_empty_needs_review": 7,
+  "ocr_empty_needs_review": 0,
   "review_status": "unverified_machine_extraction",
   "warning": "OCR confidence is not language accuracy. Grammar matches are navigation candidates, not teaching facts.",
-  "private_unique_token_candidates": 22138
+  "page_recovery_settings": {
+    "source-01": {
+      "30": {
+        "dpi": 220,
+        "channel": "blue"
+      },
+      "32": {
+        "dpi": 220,
+        "channel": "blue"
+      },
+      "34": {
+        "dpi": 220,
+        "channel": "blue"
+      },
+      "36": {
+        "dpi": 220,
+        "channel": "blue"
+      }
+    }
+  },
+  "private_unique_token_candidates": 18702
 }

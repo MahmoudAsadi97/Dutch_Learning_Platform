@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "stage_id": "a1",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "a1-scan-v002",
+      "term": "de namiddag",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Het deel van de dag na de middag.",
+        "en": "The part of the day after noon.",
+        "fa": "بخش روز پس از ظهر."
+      },
+      "example": {
+        "nl": "Ik kom om twee uur in de namiddag.",
+        "en": "I will come at two in the afternoon.",
+        "fa": "ساعت دو بعدازظهر می‌آیم."
+      }
+    },
+    {
+      "id": "a1-scan-v003",
+      "term": "de kaart",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een kaartje met informatie of gegevens.",
+        "en": "A card with information or details.",
+        "fa": "کارتی با اطلاعات."
+      },
+      "example": {
+        "nl": "Ik neem mijn kaart mee.",
+        "en": "I will bring my card.",
+        "fa": "کارتم را می‌آورم."
+      }
+    }
+  ],
+  "stories": [
+    {
+      "id": "a1-s-source-01",
+      "title": {
+        "nl": "Woensdag om twee uur",
+        "en": "Wednesday at two",
+        "fa": "چهارشنبه ساعت دو"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Leila leest een kaart. Haar afspraak is op woensdag om twee uur in de namiddag. De afspraak is in de bibliotheek.",
+          "en": "Leila reads a card. Her appointment is on Wednesday at two in the afternoon. The appointment is in the library.",
+          "fa": "لیلا یک کارت را می‌خواند. قرارش چهارشنبه ساعت دو بعدازظهر است. قرار در کتابخانه است."
+        },
+        {
+          "nl": "Leila doet de kaart in haar tas. Op woensdag gaat ze naar de bibliotheek. Ze toont haar kaart aan de medewerker.",
+          "en": "Leila puts the card in her bag. On Wednesday she goes to the library. She shows her card to the staff member.",
+          "fa": "لیلا کارت را در کیفش می‌گذارد. چهارشنبه به کتابخانه می‌رود. کارت را به کارمند نشان می‌دهد."
+        }
+      ],
+      "vocabulary_ids": [
+        "a1-v226",
+        "a1-scan-v002",
+        "a1-scan-v003"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Op welke dag is de afspraak?",
+          "en": "On which day is the appointment?",
+          "fa": "قرار چه روزی است؟"
+        },
+        "options": [
+          {
+            "nl": "Woensdag",
+            "en": "Wednesday",
+            "fa": "چهارشنبه"
+          },
+          {
+            "nl": "Dinsdag",
+            "en": "Tuesday",
+            "fa": "سه‌شنبه"
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "De kaart noemt woensdag.",
+          "en": "The card names Wednesday.",
+          "fa": "روی کارت چهارشنبه نوشته شده است."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "a1-t-source-01",
+      "title": {
+        "nl": "Woensdag om twee uur",
+        "en": "Wednesday at two",
+        "fa": "چهارشنبه ساعت دو"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een dag en een kloktijd begrijpen en bevestigen.",
+          "en": "Understanding and confirming a day and time.",
+          "fa": "فهمیدن و تأیید روز و ساعت."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een dag en een kloktijd begrijpen en bevestigen.",
+        "en": "Understanding and confirming a day and time.",
+        "fa": "فهمیدن و تأیید روز و ساعت."
+      },
+      "vocabulary_ids": [
+        "a1-v226",
+        "a1-scan-v002",
+        "a1-scan-v003"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Leila leest een kaart. Haar afspraak is op woensdag om twee uur in de namiddag. De afspraak is in de bibliotheek.\n\nLeila doet de kaart in haar tas. Op woensdag gaat ze naar de bibliotheek. Ze toont haar kaart aan de medewerker.",
+          "en": "Leila reads a card. Her appointment is on Wednesday at two in the afternoon. The appointment is in the library.\n\nLeila puts the card in her bag. On Wednesday she goes to the library. She shows her card to the staff member.",
+          "fa": "لیلا یک کارت را می‌خواند. قرارش چهارشنبه ساعت دو بعدازظهر است. قرار در کتابخانه است.\n\nلیلا کارت را در کیفش می‌گذارد. چهارشنبه به کتابخانه می‌رود. کارت را به کارمند نشان می‌دهد."
+        },
+        "questions": [
+          {
+            "id": "a1-t-source-01-r1",
+            "prompt": {
+              "nl": "Op welke dag is de afspraak?",
+              "en": "On which day is the appointment?",
+              "fa": "قرار چه روزی است؟"
+            },
+            "options": [
+              {
+                "nl": "Woensdag",
+                "en": "Wednesday",
+                "fa": "چهارشنبه"
+              },
+              {
+                "nl": "Dinsdag",
+                "en": "Tuesday",
+                "fa": "سه‌شنبه"
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De kaart noemt woensdag.",
+              "en": "The card names Wednesday.",
+              "fa": "روی کارت چهارشنبه نوشته شده است."
+            }
+          },
+          {
+            "id": "a1-t-source-01-r2",
+            "prompt": {
+              "nl": "Waar is de afspraak?",
+              "en": "Where is the appointment?",
+              "fa": "قرار کجاست؟"
+            },
+            "options": [
+              {
+                "nl": "In de bibliotheek.",
+                "en": "In the library.",
+                "fa": "در کتابخانه."
+              },
+              {
+                "nl": "In het station.",
+                "en": "In the station.",
+                "fa": "در ایستگاه."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Leila gaat naar de bibliotheek.",
+              "en": "Leila goes to the library.",
+              "fa": "لیلا به کتابخانه می‌رود."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Leila, met de bibliotheek. Uw afspraak is woensdag om twee uur in de namiddag. Neem uw kaart mee, alstublieft. Tot woensdag!",
+          "en": "Hello Leila, this is the library. Your appointment is Wednesday at two in the afternoon. Please bring your card. See you Wednesday!",
+          "fa": "سلام لیلا، از کتابخانه تماس می‌گیریم. قرارتان چهارشنبه ساعت دو بعدازظهر است. لطفاً کارتتان را بیاورید. تا چهارشنبه!"
+        },
+        "questions": [
+          {
+            "id": "a1-t-source-01-l1",
+            "prompt": {
+              "nl": "Hoe laat is de afspraak?",
+              "en": "What time is the appointment?",
+              "fa": "قرار چه ساعتی است؟"
+            },
+            "options": [
+              {
+                "nl": "Om 10.00 uur.",
+                "en": "At 10:00.",
+                "fa": "ساعت ۱۰."
+              },
+              {
+                "nl": "Om 14.00 uur.",
+                "en": "At 14:00.",
+                "fa": "ساعت ۱۴."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Twee uur in de namiddag is 14.00 uur.",
+              "en": "Two in the afternoon is 14:00.",
+              "fa": "دو بعدازظهر همان ساعت ۱۴ است."
+            }
+          },
+          {
+            "id": "a1-t-source-01-l2",
+            "prompt": {
+              "nl": "Wat moet Leila meenemen?",
+              "en": "What should Leila bring?",
+              "fa": "لیلا چه چیزی باید بیاورد؟"
+            },
+            "options": [
+              {
+                "nl": "Een foto.",
+                "en": "A photo.",
+                "fa": "یک عکس."
+              },
+              {
+                "nl": "Haar kaart.",
+                "en": "Her card.",
+                "fa": "کارتش را."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De medewerker vraagt om de kaart.",
+              "en": "The staff member asks for the card.",
+              "fa": "کارمند کارت را درخواست می‌کند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Bevestig Leila's afspraak: noem de dag, de tijd en de plaats.",
+          "en": "Confirm Leila's appointment: give the day, time and place.",
+          "fa": "قرار لیلا را تأیید کنید: روز، ساعت و مکان را بگویید."
+        },
+        "sample": {
+          "nl": "Mijn afspraak is woensdag om twee uur in de namiddag, in de bibliotheek.",
+          "en": "My appointment is Wednesday at two in the afternoon, in the library.",
+          "fa": "قرار من چهارشنبه ساعت دو بعدازظهر در کتابخانه است."
+        },
+        "criteria": [
+          {
+            "nl": "Vermeld woensdag en 14.00 uur.",
+            "en": "Give Wednesday and 14:00.",
+            "fa": "چهارشنبه و ساعت ۱۴ را ذکر کنید."
+          },
+          {
+            "nl": "Bevestig de gevraagde details duidelijk.",
+            "en": "Confirm the requested details clearly.",
+            "fa": "جزئیات خواسته‌شده را روشن تأیید کنید."
+          }
+        ],
+        "min_words": 8,
+        "max_words": 45
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een kort bericht om de afspraak te bevestigen. Vermeld ook de kaart.",
+          "en": "Write a short message confirming the appointment. Also mention the card.",
+          "fa": "پیامی کوتاه برای تأیید قرار بنویسید. کارت را هم ذکر کنید."
+        },
+        "sample": {
+          "nl": "Dag, mijn afspraak is woensdag om twee uur in de namiddag. Ik breng mijn kaart mee. Tot woensdag!",
+          "en": "Hello, my appointment is Wednesday at two in the afternoon. I will bring my card. See you Wednesday!",
+          "fa": "سلام، قرار من چهارشنبه ساعت دو بعدازظهر است. کارتم را می‌آورم. تا چهارشنبه!"
+        },
+        "criteria": [
+          {
+            "nl": "Vermeld woensdag en 14.00 uur.",
+            "en": "Give Wednesday and 14:00.",
+            "fa": "چهارشنبه و ساعت ۱۴ را ذکر کنید."
+          },
+          {
+            "nl": "Bevestig de gevraagde details duidelijk.",
+            "en": "Confirm the requested details clearly.",
+            "fa": "جزئیات خواسته‌شده را روشن تأیید کنید."
+          }
+        ],
+        "min_words": 8,
+        "max_words": 45
+      }
+    }
+  ],
+  "grammar_extensions": [
+    {
+      "id": "clock-time",
+      "examples": [
+        {
+          "nl": "De les begint om negen uur.",
+          "en": "The lesson starts at nine.",
+          "fa": "درس ساعت نه شروع می‌شود."
+        },
+        {
+          "nl": "De winkel sluit om half zes.",
+          "en": "The shop closes at half past five.",
+          "fa": "فروشگاه ساعت پنج‌ونیم بسته می‌شود."
+        },
+        {
+          "nl": "We spreken af om kwart over drie.",
+          "en": "We meet at a quarter past three.",
+          "fa": "ساعت سه‌وربع قرار می‌گذاریم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "a1-source-grammar-01",
+          "prompt": {
+            "nl": "In de namiddag: hoe laat is half zes?",
+            "en": "In the afternoon: what time is half zes?",
+            "fa": "در بعدازظهر، half zes چه ساعتی است؟"
+          },
+          "options": [
+            {
+              "nl": "18.30 uur.",
+              "en": "18:30.",
+              "fa": "ساعت ۱۸:۳۰."
+            },
+            {
+              "nl": "17.30 uur.",
+              "en": "17:30.",
+              "fa": "ساعت ۱۷:۳۰."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Half zes is een halfuur vóór zes, hier in de namiddag.",
+            "en": "Half zes is half an hour before six, here in the afternoon.",
+            "fa": "Half zes نیم ساعت پیش از شش است؛ اینجا منظور بعدازظهر است."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -23,6 +23,7 @@ from sqlalchemy.orm import Session
 from dlp.config import CONTENT_DIR, Settings
 from dlp.db.base import utcnow
 from dlp.domains.activity.service import reached, record_activity, replayed
+from dlp.domains.curriculum import supplements
 from dlp.domains.curriculum.models import CurriculumAttempt, CurriculumPractice
 from dlp.domains.curriculum.schemas import SKILLS, Curriculum, ProductiveReply, Question, Stage, Task, Test
 from dlp.domains.speech.models import AudioAsset
@@ -52,13 +53,14 @@ def localized(nl: str, en: str, fa: str) -> dict[str, str]:
 
 
 @lru_cache(maxsize=4)
-def _read_curriculum(path: str, modified: int) -> Curriculum:
-    return Curriculum.model_validate_json(Path(path).read_text(encoding="utf-8"))
+def _read_curriculum(path: str, modified: int, supplement_versions: tuple = ()) -> Curriculum:
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    return Curriculum.model_validate(supplements.merge_curriculum(data, Path(path).parent.parent))
 
 
 def curriculum() -> Curriculum:
     path = CONTENT_DIR / "curriculum" / "path.json"
-    return _read_curriculum(str(path), path.stat().st_mtime_ns)
+    return _read_curriculum(str(path), path.stat().st_mtime_ns, supplements.curriculum_stamp(CONTENT_DIR))
 
 
 def stage_for(stage_id: str) -> Stage:

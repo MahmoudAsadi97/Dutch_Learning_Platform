@@ -1,0 +1,382 @@
+{
+  "schema_version": 1,
+  "stage_id": "a2",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "a2-scan-v001",
+      "term": "de markt",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een plaats met kramen waar mensen producten verkopen.",
+        "en": "A place with stalls where people sell products.",
+        "fa": "محلی با غرفه‌های فروش کالا."
+      },
+      "example": {
+        "nl": "Ik ben naar de markt gegaan.",
+        "en": "I went to the market.",
+        "fa": "به بازار رفته‌ام."
+      }
+    },
+    {
+      "id": "a2-scan-v002",
+      "term": "de tas",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een voorwerp waarin je spullen meeneemt.",
+        "en": "An object used to carry belongings.",
+        "fa": "وسیله‌ای برای حمل وسایل؛ کیف."
+      },
+      "example": {
+        "nl": "Ik heb mijn tas gevonden.",
+        "en": "I found my bag.",
+        "fa": "کیفم را پیدا کرده‌ام."
+      }
+    },
+    {
+      "id": "a2-scan-v003",
+      "term": "kopen",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Iets krijgen door ervoor te betalen.",
+        "en": "Get something by paying for it.",
+        "fa": "گرفتن چیزی در برابر پرداخت پول؛ خریدن."
+      },
+      "example": {
+        "nl": "Ik heb brood gekocht.",
+        "en": "I bought bread.",
+        "fa": "نان خریده‌ام."
+      }
+    }
+  ],
+  "stories": [
+    {
+      "id": "a2-s-source-01",
+      "title": {
+        "nl": "Een tas na de markt",
+        "en": "A bag after the market",
+        "fa": "کیف پس از خرید از بازار"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Sam is gisteren naar de markt gegaan. Hij heeft brood gekocht en heeft daarna een winkel bezocht. Toen hij thuiskwam, was zijn blauwe tas er niet. Hij heeft de winkel gebeld.",
+          "en": "Sam went to the market yesterday. He bought bread and then visited a shop. When he arrived home, his blue bag was missing. He called the shop.",
+          "fa": "سام دیروز به بازار رفت. نان خرید و سپس به یک فروشگاه رفت. وقتی به خانه رسید، کیف آبی‌اش همراهش نبود. به فروشگاه تلفن کرد."
+        },
+        {
+          "nl": "De winkelier heeft de tas gevonden en bewaart die achter de toonbank. Sam kan de tas vandaag na vier uur ophalen. Hij heeft het adres genoteerd en gaat vanmiddag terug.",
+          "en": "The shopkeeper found the bag and is keeping it behind the counter. Sam can collect it today after four. He noted the address and is returning this afternoon.",
+          "fa": "فروشنده کیف را پیدا کرده و آن را پشت پیشخوان نگه داشته است. سام می‌تواند امروز پس از ساعت چهار کیف را بگیرد. نشانی را یادداشت کرده و امروز بعدازظهر برمی‌گردد."
+        }
+      ],
+      "vocabulary_ids": [
+        "a2-scan-v001",
+        "a2-scan-v002",
+        "a2-scan-v003"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Welke kleur heeft Sams tas?",
+          "en": "What colour is Sam's bag?",
+          "fa": "کیف سام چه رنگی است؟"
+        },
+        "options": [
+          {
+            "nl": "Groen.",
+            "en": "Green.",
+            "fa": "سبز."
+          },
+          {
+            "nl": "Blauw.",
+            "en": "Blue.",
+            "fa": "آبی."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Sam mist zijn blauwe tas.",
+          "en": "Sam is missing his blue bag.",
+          "fa": "سام کیف آبی‌اش را گم کرده است."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "a2-t-source-01",
+      "title": {
+        "nl": "Een tas na de markt",
+        "en": "A bag after the market",
+        "fa": "کیف پس از خرید از بازار"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Met hebben en zijn vertellen wat er gebeurd is.",
+          "en": "Explaining what happened with hebben and zijn.",
+          "fa": "بیان اتفاق‌ها با hebben و zijn."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Met hebben en zijn vertellen wat er gebeurd is.",
+        "en": "Explaining what happened with hebben and zijn.",
+        "fa": "بیان اتفاق‌ها با hebben و zijn."
+      },
+      "vocabulary_ids": [
+        "a2-scan-v001",
+        "a2-scan-v002",
+        "a2-scan-v003"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Sam is gisteren naar de markt gegaan. Hij heeft brood gekocht en heeft daarna een winkel bezocht. Toen hij thuiskwam, was zijn blauwe tas er niet. Hij heeft de winkel gebeld.\n\nDe winkelier heeft de tas gevonden en bewaart die achter de toonbank. Sam kan de tas vandaag na vier uur ophalen. Hij heeft het adres genoteerd en gaat vanmiddag terug.",
+          "en": "Sam went to the market yesterday. He bought bread and then visited a shop. When he arrived home, his blue bag was missing. He called the shop.\n\nThe shopkeeper found the bag and is keeping it behind the counter. Sam can collect it today after four. He noted the address and is returning this afternoon.",
+          "fa": "سام دیروز به بازار رفت. نان خرید و سپس به یک فروشگاه رفت. وقتی به خانه رسید، کیف آبی‌اش همراهش نبود. به فروشگاه تلفن کرد.\n\nفروشنده کیف را پیدا کرده و آن را پشت پیشخوان نگه داشته است. سام می‌تواند امروز پس از ساعت چهار کیف را بگیرد. نشانی را یادداشت کرده و امروز بعدازظهر برمی‌گردد."
+        },
+        "questions": [
+          {
+            "id": "a2-t-source-01-r1",
+            "prompt": {
+              "nl": "Welke kleur heeft Sams tas?",
+              "en": "What colour is Sam's bag?",
+              "fa": "کیف سام چه رنگی است؟"
+            },
+            "options": [
+              {
+                "nl": "Groen.",
+                "en": "Green.",
+                "fa": "سبز."
+              },
+              {
+                "nl": "Blauw.",
+                "en": "Blue.",
+                "fa": "آبی."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Sam mist zijn blauwe tas.",
+              "en": "Sam is missing his blue bag.",
+              "fa": "سام کیف آبی‌اش را گم کرده است."
+            }
+          },
+          {
+            "id": "a2-t-source-01-r2",
+            "prompt": {
+              "nl": "Wat heeft Sam gedaan toen hij thuis was?",
+              "en": "What did Sam do when he was home?",
+              "fa": "سام وقتی به خانه رسید چه کرد؟"
+            },
+            "options": [
+              {
+                "nl": "Hij heeft de winkel gebeld.",
+                "en": "He called the shop.",
+                "fa": "به فروشگاه تلفن کرد."
+              },
+              {
+                "nl": "Hij heeft de tas gekocht.",
+                "en": "He bought the bag.",
+                "fa": "کیف را خرید."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Na het ontdekken van het probleem belt hij de winkel.",
+              "en": "After discovering the problem, he calls the shop.",
+              "fa": "پس از فهمیدن مشکل، به فروشگاه تلفن می‌کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Sam, uw blauwe tas ligt bij ons achter de toonbank. U kunt die vandaag vanaf vier uur ophalen. De winkel sluit om zes uur. Breng iets mee waarmee u kunt tonen dat de tas van u is.",
+          "en": "Hello Sam, your blue bag is behind our counter. You can collect it today from four. The shop closes at six. Bring something that can show the bag is yours.",
+          "fa": "سلام سام، کیف آبی شما پشت پیشخوان ماست. امروز از ساعت چهار می‌توانید آن را بگیرید. فروشگاه ساعت شش بسته می‌شود. چیزی بیاورید که نشان دهد کیف متعلق به شماست."
+        },
+        "questions": [
+          {
+            "id": "a2-t-source-01-l1",
+            "prompt": {
+              "nl": "Wanneer kan Sam de tas ophalen?",
+              "en": "When can Sam collect the bag?",
+              "fa": "سام چه زمانی می‌تواند کیف را بگیرد؟"
+            },
+            "options": [
+              {
+                "nl": "Tussen 16.00 en 18.00 uur.",
+                "en": "Between 16:00 and 18:00.",
+                "fa": "بین ساعت ۱۶ و ۱۸."
+              },
+              {
+                "nl": "Na 18.00 uur.",
+                "en": "After 18:00.",
+                "fa": "پس از ساعت ۱۸."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Ophalen kan vanaf vier; de winkel sluit om zes.",
+              "en": "Collection starts at four; the shop closes at six.",
+              "fa": "از ساعت چهار می‌توان کیف را گرفت؛ فروشگاه ساعت شش بسته می‌شود."
+            }
+          },
+          {
+            "id": "a2-t-source-01-l2",
+            "prompt": {
+              "nl": "Waar ligt de tas?",
+              "en": "Where is the bag?",
+              "fa": "کیف کجاست؟"
+            },
+            "options": [
+              {
+                "nl": "Bij Sam thuis.",
+                "en": "At Sam's home.",
+                "fa": "در خانه سام."
+              },
+              {
+                "nl": "Achter de toonbank.",
+                "en": "Behind the counter.",
+                "fa": "پشت پیشخوان."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De winkelier noemt de toonbank.",
+              "en": "The shopkeeper mentions the counter.",
+              "fa": "فروشنده پیشخوان را ذکر می‌کند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Speel Sam. Vertel kort wat gisteren is gebeurd en zeg dat je om vijf uur komt. Vraag hoe je kunt aantonen dat de tas van jou is.",
+          "en": "Play Sam. Briefly explain what happened yesterday and say you will come at five. Ask how you can show the bag is yours.",
+          "fa": "نقش سام را بازی کنید. اتفاق دیروز را کوتاه توضیح دهید و بگویید ساعت پنج می‌آیید. بپرسید چطور می‌توانید نشان دهید کیف مال شماست."
+        },
+        "sample": {
+          "nl": "Gisteren ben ik naar de markt gegaan en heb ik uw winkel bezocht. Thuis heb ik mijn tas niet gevonden. Ik kom vandaag om vijf uur. Hoe kan ik tonen dat de tas van mij is?",
+          "en": "Yesterday I went to the market and visited your shop. At home I could not find my bag. I will come today at five. How can I show the bag is mine?",
+          "fa": "دیروز به بازار رفتم و به فروشگاه شما آمدم. در خانه کیفم را پیدا نکردم. امروز ساعت پنج می‌آیم. چطور نشان بدهم کیف مال من است؟"
+        },
+        "criteria": [
+          {
+            "nl": "Vertel wat is gebeurd en bevestig een geldige ophaaltijd.",
+            "en": "Explain what happened and confirm a valid collection time.",
+            "fa": "اتفاق را توضیح دهید و زمان مجاز دریافت را تأیید کنید."
+          },
+          {
+            "nl": "Vraag om het ontbrekende praktische detail.",
+            "en": "Ask for the missing practical detail.",
+            "fa": "جزئیات عملی نامشخص را بپرسید."
+          }
+        ],
+        "min_words": 20,
+        "max_words": 100
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Bevestig in een kort bericht dat je de blauwe tas vandaag om vijf uur ophaalt. Noem wat gisteren is gebeurd, bedank de winkelier en vraag wat je moet meenemen om te tonen dat de tas van jou is.",
+          "en": "Confirm in a short message that you will collect the blue bag today at five. Mention yesterday's events, thank the shopkeeper and ask what to bring to show the bag is yours.",
+          "fa": "در پیامی کوتاه تأیید کنید که امروز ساعت پنج کیف آبی را می‌گیرید. اتفاق دیروز را ذکر کنید، از فروشنده تشکر کنید و بپرسید برای نشان دادن اینکه کیف متعلق به شماست چه چیزی باید همراه بیاورید."
+        },
+        "sample": {
+          "nl": "Beste medewerker, gisteren heb ik uw winkel bezocht en heb ik mijn blauwe tas laten liggen. Bedankt dat u die hebt gevonden. Ik kom de tas vandaag om vijf uur ophalen, vóór de winkel sluit. Kunt u mij zeggen wat ik moet meenemen om te tonen dat de tas van mij is? Met vriendelijke groeten, Sam.",
+          "en": "Dear staff member, yesterday I visited your shop and left my blue bag behind. Thank you for finding it. I will collect it today at five, before the shop closes. Could you tell me what I should bring to show the bag is mine? Kind regards, Sam.",
+          "fa": "کارمند گرامی، دیروز به فروشگاه شما آمدم و کیف آبی‌ام را جا گذاشتم. ممنون که آن را پیدا کردید. امروز ساعت پنج، پیش از بسته شدن فروشگاه، کیف را می‌گیرم. می‌توانید بگویید برای نشان دادن مالکیت کیف چه چیزی همراه داشته باشم؟ با احترام، سام."
+        },
+        "criteria": [
+          {
+            "nl": "Vertel wat is gebeurd en bevestig een geldige ophaaltijd.",
+            "en": "Explain what happened and confirm a valid collection time.",
+            "fa": "اتفاق را توضیح دهید و زمان مجاز دریافت را تأیید کنید."
+          },
+          {
+            "nl": "Vraag om het ontbrekende praktische detail.",
+            "en": "Ask for the missing practical detail.",
+            "fa": "جزئیات عملی نامشخص را بپرسید."
+          }
+        ],
+        "min_words": 20,
+        "max_words": 100
+      }
+    }
+  ],
+  "grammar_extensions": [
+    {
+      "id": "perfect",
+      "examples": [
+        {
+          "nl": "Ik heb brood gekocht.",
+          "en": "I bought bread.",
+          "fa": "نان خریده‌ام."
+        },
+        {
+          "nl": "Sam is naar de markt gegaan.",
+          "en": "Sam went to the market.",
+          "fa": "سام به بازار رفته است."
+        },
+        {
+          "nl": "Wij hebben de winkel gebeld.",
+          "en": "We called the shop.",
+          "fa": "به فروشگاه تلفن کرده‌ایم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "a2-source-grammar-01",
+          "prompt": {
+            "nl": "Vul aan: Sam … naar de markt gegaan.",
+            "en": "Complete: Sam … naar de markt gegaan.",
+            "fa": "کامل کنید: Sam … naar de markt gegaan."
+          },
+          "options": [
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Gaan naar een bestemming gebruikt hier zijn.",
+            "en": "Going to a destination takes zijn here.",
+            "fa": "رفتن به یک مقصد در این جمله با zijn ساخته می‌شود."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 """Versioned, original practice banks. Browsing never creates assessment credit."""
 from __future__ import annotations
 
+import json
 import unicodedata
 from collections import Counter
 from functools import lru_cache
@@ -9,6 +10,7 @@ from pathlib import Path
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from dlp.config import CONTENT_DIR
+from dlp.domains.curriculum import supplements
 from dlp.domains.curriculum.schemas import STAGE_IDS, Localized, Question
 from dlp.domains.curriculum.service import CurriculumError
 
@@ -95,15 +97,16 @@ def normalise(value: str) -> str:
 
 
 @lru_cache(maxsize=16)
-def _read(path: str, modified: int) -> StageLibrary:
-    return StageLibrary.model_validate_json(Path(path).read_text(encoding="utf-8"))
+def _read(path: str, modified: int, supplement_modified: int = 0) -> StageLibrary:
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    return StageLibrary.model_validate(supplements.merge_bank(data, Path(path).parent.parent, "library"))
 
 
 def library_for(stage_id: str) -> StageLibrary:
     if stage_id not in STAGE_IDS:
         raise CurriculumError("learning stage not found", 404)
     path = CONTENT_DIR / "library" / f"{stage_id}.json"
-    bank = _read(str(path), path.stat().st_mtime_ns)
+    bank = _read(str(path), path.stat().st_mtime_ns, supplements.stamp(CONTENT_DIR, stage_id))
     if bank.stage_id != stage_id:
         raise ValueError("library file does not match its requested stage")
     return bank

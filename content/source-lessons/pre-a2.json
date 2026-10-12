@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a2",
+  "review_status": "unreviewed",
+  "vocabulary": [],
+  "stories": [
+    {
+      "id": "pre-a2-s-source-01",
+      "title": {
+        "nl": "Geen koffie, wel water",
+        "en": "No coffee, but water",
+        "fa": "قهوه نه، آب بله"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Mira zit in een café. Ze bestelt brood en een glas water. De medewerker vraagt: Wilt u ook koffie? Mira antwoordt: Nee, ik drink geen koffie.",
+          "en": "Mira is in a café. She orders bread and a glass of water. The staff member asks: Would you also like coffee? Mira replies: No, I do not drink coffee.",
+          "fa": "میرا در یک کافه است. نان و یک لیوان آب سفارش می‌دهد. کارمند می‌پرسد: قهوه هم می‌خواهید؟ میرا پاسخ می‌دهد: نه، من قهوه نمی‌نوشم."
+        },
+        {
+          "nl": "De medewerker zet toch een kop koffie op tafel. Mira zegt rustig: Dit is niet mijn bestelling. Ik wil water, geen koffie. De medewerker brengt een glas water.",
+          "en": "The staff member nevertheless puts a cup of coffee on the table. Mira calmly says: This is not my order. I want water, not coffee. The staff member brings a glass of water.",
+          "fa": "بااین‌حال کارمند یک فنجان قهوه روی میز می‌گذارد. میرا آرام می‌گوید: این سفارش من نیست. آب می‌خواهم، نه قهوه. کارمند یک لیوان آب می‌آورد."
+        }
+      ],
+      "vocabulary_ids": [
+        "pre-a2-v041",
+        "pre-a2-v036",
+        "pre-a2-v038"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat wil Mira drinken?",
+          "en": "What does Mira want to drink?",
+          "fa": "میرا چه می‌خواهد بنوشد؟"
+        },
+        "options": [
+          {
+            "nl": "Koffie.",
+            "en": "Coffee.",
+            "fa": "قهوه."
+          },
+          {
+            "nl": "Water.",
+            "en": "Water.",
+            "fa": "آب."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Mira vraagt om water.",
+          "en": "Mira asks for water.",
+          "fa": "میرا آب می‌خواهد."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "pre-a2-t-source-01",
+      "title": {
+        "nl": "Geen koffie, wel water",
+        "en": "No coffee, but water",
+        "fa": "قهوه نه، آب بله"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Met geen en niet een bestelling verduidelijken.",
+          "en": "Clarifying an order with geen and niet.",
+          "fa": "روشن کردن سفارش با geen و niet."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Met geen en niet een bestelling verduidelijken.",
+        "en": "Clarifying an order with geen and niet.",
+        "fa": "روشن کردن سفارش با geen و niet."
+      },
+      "vocabulary_ids": [
+        "pre-a2-v041",
+        "pre-a2-v036",
+        "pre-a2-v038"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Mira zit in een café. Ze bestelt brood en een glas water. De medewerker vraagt: Wilt u ook koffie? Mira antwoordt: Nee, ik drink geen koffie.\n\nDe medewerker zet toch een kop koffie op tafel. Mira zegt rustig: Dit is niet mijn bestelling. Ik wil water, geen koffie. De medewerker brengt een glas water.",
+          "en": "Mira is in a café. She orders bread and a glass of water. The staff member asks: Would you also like coffee? Mira replies: No, I do not drink coffee.\n\nThe staff member nevertheless puts a cup of coffee on the table. Mira calmly says: This is not my order. I want water, not coffee. The staff member brings a glass of water.",
+          "fa": "میرا در یک کافه است. نان و یک لیوان آب سفارش می‌دهد. کارمند می‌پرسد: قهوه هم می‌خواهید؟ میرا پاسخ می‌دهد: نه، من قهوه نمی‌نوشم.\n\nبااین‌حال کارمند یک فنجان قهوه روی میز می‌گذارد. میرا آرام می‌گوید: این سفارش من نیست. آب می‌خواهم، نه قهوه. کارمند یک لیوان آب می‌آورد."
+        },
+        "questions": [
+          {
+            "id": "pre-a2-t-source-01-r1",
+            "prompt": {
+              "nl": "Wat wil Mira drinken?",
+              "en": "What does Mira want to drink?",
+              "fa": "میرا چه می‌خواهد بنوشد؟"
+            },
+            "options": [
+              {
+                "nl": "Koffie.",
+                "en": "Coffee.",
+                "fa": "قهوه."
+              },
+              {
+                "nl": "Water.",
+                "en": "Water.",
+                "fa": "آب."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Mira vraagt om water.",
+              "en": "Mira asks for water.",
+              "fa": "میرا آب می‌خواهد."
+            }
+          },
+          {
+            "id": "pre-a2-t-source-01-r2",
+            "prompt": {
+              "nl": "Wat gaat eerst mis?",
+              "en": "What goes wrong first?",
+              "fa": "ابتدا چه اشتباهی رخ می‌دهد؟"
+            },
+            "options": [
+              {
+                "nl": "Mira krijgt koffie.",
+                "en": "Mira receives coffee.",
+                "fa": "برای میرا قهوه می‌آورند."
+              },
+              {
+                "nl": "Mira krijgt geen brood.",
+                "en": "Mira receives no bread.",
+                "fa": "برای میرا نان نمی‌آورند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Er komt een kop koffie op tafel.",
+              "en": "A cup of coffee is placed on the table.",
+              "fa": "یک فنجان قهوه روی میز قرار می‌گیرد."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Mira, hier is uw brood. U wilt geen koffie, maar water. Hier is uw glas water. Wilt u nog iets eten?",
+          "en": "Hello Mira, here is your bread. You want water, not coffee. Here is your glass of water. Would you like anything else to eat?",
+          "fa": "سلام میرا، این نان شماست. آب می‌خواهید، نه قهوه. این لیوان آب شماست. چیز دیگری برای خوردن می‌خواهید؟"
+        },
+        "questions": [
+          {
+            "id": "pre-a2-t-source-01-l1",
+            "prompt": {
+              "nl": "Welke drank brengt de medewerker nu?",
+              "en": "Which drink does the staff member bring now?",
+              "fa": "کارمند اکنون چه نوشیدنی می‌آورد؟"
+            },
+            "options": [
+              {
+                "nl": "Een glas water.",
+                "en": "A glass of water.",
+                "fa": "یک لیوان آب."
+              },
+              {
+                "nl": "Een kop koffie.",
+                "en": "A cup of coffee.",
+                "fa": "یک فنجان قهوه."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De medewerker zegt: Hier is uw glas water.",
+              "en": "The staff member says: Here is your glass of water.",
+              "fa": "کارمند می‌گوید: این لیوان آب شماست."
+            }
+          },
+          {
+            "id": "pre-a2-t-source-01-l2",
+            "prompt": {
+              "nl": "Welke vraag stelt de medewerker op het einde?",
+              "en": "What does the staff member ask at the end?",
+              "fa": "کارمند در پایان چه می‌پرسد؟"
+            },
+            "options": [
+              {
+                "nl": "Of Mira koffie wil meenemen.",
+                "en": "Whether Mira wants takeaway coffee.",
+                "fa": "آیا میرا قهوه برای بردن می‌خواهد."
+              },
+              {
+                "nl": "Of Mira nog iets wil eten.",
+                "en": "Whether Mira wants anything else to eat.",
+                "fa": "آیا میرا چیز دیگری برای خوردن می‌خواهد."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De laatste vraag gaat over iets eten.",
+              "en": "The final question is about something to eat.",
+              "fa": "پرسش آخر درباره خوردن است."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Je krijgt koffie, maar je wilt water. Leg het probleem beleefd uit en vraag om water.",
+          "en": "You receive coffee but ordered water. Explain politely and ask for water.",
+          "fa": "قهوه گرفته‌اید اما آب سفارش داده بودید. مؤدبانه مشکل را توضیح دهید و آب بخواهید."
+        },
+        "sample": {
+          "nl": "Sorry, dit is niet mijn bestelling. Ik drink geen koffie. Mag ik een glas water, alstublieft?",
+          "en": "Sorry, this is not my order. I do not drink coffee. May I have a glass of water, please?",
+          "fa": "ببخشید، این سفارش من نیست. قهوه نمی‌نوشم. می‌توانم لطفاً یک لیوان آب داشته باشم؟"
+        },
+        "criteria": [
+          {
+            "nl": "Maak duidelijk wat je wel en niet wilt.",
+            "en": "Make clear what you do and do not want.",
+            "fa": "روشن کنید چه چیزی می‌خواهید و چه چیزی نمی‌خواهید."
+          },
+          {
+            "nl": "Formuleer een beleefd verzoek.",
+            "en": "Make a polite request.",
+            "fa": "درخواستی مؤدبانه بیان کنید."
+          }
+        ],
+        "min_words": 10,
+        "max_words": 65
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Stuur een kort bericht met je bestelling: brood en water, maar geen koffie.",
+          "en": "Send a short message with your order: bread and water, but no coffee.",
+          "fa": "سفارش خود را در پیامی کوتاه بنویسید: نان و آب، اما قهوه نه."
+        },
+        "sample": {
+          "nl": "Hallo, ik wil graag brood en een glas water bestellen. Ik drink geen koffie. Dank u wel!",
+          "en": "Hello, I would like to order bread and a glass of water. I do not drink coffee. Thank you!",
+          "fa": "سلام، می‌خواهم نان و یک لیوان آب سفارش بدهم. قهوه نمی‌نوشم. متشکرم!"
+        },
+        "criteria": [
+          {
+            "nl": "Maak duidelijk wat je wel en niet wilt.",
+            "en": "Make clear what you do and do not want.",
+            "fa": "روشن کنید چه چیزی می‌خواهید و چه چیزی نمی‌خواهید."
+          },
+          {
+            "nl": "Formuleer een beleefd verzoek.",
+            "en": "Make a polite request.",
+            "fa": "درخواستی مؤدبانه بیان کنید."
+          }
+        ],
+        "min_words": 10,
+        "max_words": 65
+      }
+    }
+  ],
+  "grammar_extensions": [
+    {
+      "id": "negation",
+      "examples": [
+        {
+          "nl": "Ik drink geen koffie.",
+          "en": "I do not drink coffee.",
+          "fa": "قهوه نمی‌نوشم."
+        },
+        {
+          "nl": "Dit is niet mijn glas.",
+          "en": "This is not my glass.",
+          "fa": "این لیوان من نیست."
+        },
+        {
+          "nl": "Ik wil water, maar geen koffie.",
+          "en": "I want water, but no coffee.",
+          "fa": "آب می‌خواهم، اما قهوه نه."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-source-grammar-01",
+          "prompt": {
+            "nl": "Vul aan: Ik drink … koffie.",
+            "en": "Complete: Ik drink … koffie.",
+            "fa": "کامل کنید: Ik drink … koffie."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "not",
+              "fa": "نه"
+            },
+            {
+              "nl": "geen",
+              "en": "no",
+              "fa": "هیچ"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Geen staat hier vóór het zelfstandig naamwoord koffie.",
+            "en": "Geen comes before the noun koffie here.",
+            "fa": "اینجا geen پیش از اسم koffie می‌آید."
+          }
+        }
+      ]
+    }
+  ]
+}

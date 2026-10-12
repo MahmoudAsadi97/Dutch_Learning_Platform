@@ -1,0 +1,382 @@
+{
+  "schema_version": 1,
+  "stage_id": "b1",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "b1-scan-v001",
+      "term": "de tas",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een voorwerp waarin je spullen meeneemt.",
+        "en": "An object used to carry belongings.",
+        "fa": "وسیله‌ای برای حمل وسایل؛ کیف."
+      },
+      "example": {
+        "nl": "De tas die ik zoek, is groen.",
+        "en": "The bag I am looking for is green.",
+        "fa": "کیفی که دنبالش هستم سبز است."
+      }
+    },
+    {
+      "id": "b1-scan-v002",
+      "term": "het boek",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een werk met bladzijden om te lezen.",
+        "en": "A work with pages to read.",
+        "fa": "اثری با صفحه‌هایی برای خواندن؛ کتاب."
+      },
+      "example": {
+        "nl": "Het boek dat ik kocht, ligt in de tas.",
+        "en": "The book I bought is in the bag.",
+        "fa": "کتابی که خریدم در کیف است."
+      }
+    },
+    {
+      "id": "b1-scan-v003",
+      "term": "de foto",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een afbeelding die met een camera is gemaakt.",
+        "en": "An image made with a camera.",
+        "fa": "تصویری ثبت‌شده با دوربین؛ عکس."
+      },
+      "example": {
+        "nl": "De foto die ik stuur, toont mijn tas.",
+        "en": "The photo I am sending shows my bag.",
+        "fa": "عکسی که می‌فرستم کیفم را نشان می‌دهد."
+      }
+    }
+  ],
+  "stories": [
+    {
+      "id": "b1-s-source-01",
+      "title": {
+        "nl": "De tas die op de bus bleef",
+        "en": "The bag left on the bus",
+        "fa": "کیفی که در اتوبوس جا ماند"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Ravi stapt om 15.10 uur uit bus acht en merkt dat zijn groene tas niet bij hem is. In de tas zit het boek dat hij gisteren heeft gekocht. Op zijn telefoon vindt hij een foto waarop de tas te zien is. Hij weet welke bus hij heeft genomen, maar hij weet nog niet of iemand de tas heeft gevonden.",
+          "en": "Ravi gets off bus eight at 15:10 and notices his green bag is missing. The bag contains the book he bought yesterday. On his phone he finds a photo showing the bag. He knows which bus he took, but does not yet know whether anyone found the bag.",
+          "fa": "راوی ساعت ۱۵:۱۰ از اتوبوس شماره هشت پیاده می‌شود و می‌بیند کیف سبزش همراهش نیست. در کیف کتابی است که دیروز خریده. در تلفنش عکسی پیدا می‌کند که کیف در آن دیده می‌شود. می‌داند سوار کدام اتوبوس شده، اما هنوز نمی‌داند کسی کیف را پیدا کرده یا نه."
+        },
+        {
+          "nl": "Hij stuurt een bericht naar de dienst voor verloren voorwerpen. Hij beschrijft de tas die op de bus is blijven liggen en voegt de foto toe. Ravi vraagt of de medewerker kan controleren of de tas is binnengebracht. Hij vraagt ook waar hij die kan ophalen als ze gevonden is.",
+          "en": "He sends a message to the lost-property service. He describes the bag left on the bus and attaches the photo. Ravi asks the staff member to check whether the bag has been handed in. He also asks where he can collect it if it has been found.",
+          "fa": "به بخش اشیای گمشده پیام می‌دهد. کیفی را که در اتوبوس جا مانده توصیف می‌کند و عکس را ضمیمه می‌کند. راوی می‌خواهد کارمند بررسی کند آیا کیف تحویل داده شده است. همچنین می‌پرسد اگر پیدا شده، کجا می‌تواند آن را بگیرد."
+        }
+      ],
+      "vocabulary_ids": [
+        "b1-scan-v001",
+        "b1-scan-v002",
+        "b1-scan-v003"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat zit er in de groene tas?",
+          "en": "What is inside the green bag?",
+          "fa": "داخل کیف سبز چیست؟"
+        },
+        "options": [
+          {
+            "nl": "Het boek dat Ravi gisteren kocht.",
+            "en": "The book Ravi bought yesterday.",
+            "fa": "کتابی که راوی دیروز خریده."
+          },
+          {
+            "nl": "Een kaart die Ravi vandaag kreeg.",
+            "en": "A card Ravi received today.",
+            "fa": "کارتی که راوی امروز گرفته."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "De tekst noemt het boek dat hij gisteren heeft gekocht.",
+          "en": "The text names the book he bought yesterday.",
+          "fa": "متن کتابی را ذکر می‌کند که دیروز خریده است."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "b1-t-source-01",
+      "title": {
+        "nl": "De tas die op de bus bleef",
+        "en": "The bag left on the bus",
+        "fa": "کیفی که در اتوبوس جا ماند"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Met die en dat een voorwerp precies beschrijven en ontbrekende informatie vragen.",
+          "en": "Describing an object precisely with die and dat, and requesting missing information.",
+          "fa": "توصیف دقیق وسیله با die و dat و درخواست اطلاعات نامشخص."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Met die en dat een voorwerp precies beschrijven en ontbrekende informatie vragen.",
+        "en": "Describing an object precisely with die and dat, and requesting missing information.",
+        "fa": "توصیف دقیق وسیله با die و dat و درخواست اطلاعات نامشخص."
+      },
+      "vocabulary_ids": [
+        "b1-scan-v001",
+        "b1-scan-v002",
+        "b1-scan-v003"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Ravi stapt om 15.10 uur uit bus acht en merkt dat zijn groene tas niet bij hem is. In de tas zit het boek dat hij gisteren heeft gekocht. Op zijn telefoon vindt hij een foto waarop de tas te zien is. Hij weet welke bus hij heeft genomen, maar hij weet nog niet of iemand de tas heeft gevonden.\n\nHij stuurt een bericht naar de dienst voor verloren voorwerpen. Hij beschrijft de tas die op de bus is blijven liggen en voegt de foto toe. Ravi vraagt of de medewerker kan controleren of de tas is binnengebracht. Hij vraagt ook waar hij die kan ophalen als ze gevonden is.",
+          "en": "Ravi gets off bus eight at 15:10 and notices his green bag is missing. The bag contains the book he bought yesterday. On his phone he finds a photo showing the bag. He knows which bus he took, but does not yet know whether anyone found the bag.\n\nHe sends a message to the lost-property service. He describes the bag left on the bus and attaches the photo. Ravi asks the staff member to check whether the bag has been handed in. He also asks where he can collect it if it has been found.",
+          "fa": "راوی ساعت ۱۵:۱۰ از اتوبوس شماره هشت پیاده می‌شود و می‌بیند کیف سبزش همراهش نیست. در کیف کتابی است که دیروز خریده. در تلفنش عکسی پیدا می‌کند که کیف در آن دیده می‌شود. می‌داند سوار کدام اتوبوس شده، اما هنوز نمی‌داند کسی کیف را پیدا کرده یا نه.\n\nبه بخش اشیای گمشده پیام می‌دهد. کیفی را که در اتوبوس جا مانده توصیف می‌کند و عکس را ضمیمه می‌کند. راوی می‌خواهد کارمند بررسی کند آیا کیف تحویل داده شده است. همچنین می‌پرسد اگر پیدا شده، کجا می‌تواند آن را بگیرد."
+        },
+        "questions": [
+          {
+            "id": "b1-t-source-01-r1",
+            "prompt": {
+              "nl": "Wat zit er in de groene tas?",
+              "en": "What is inside the green bag?",
+              "fa": "داخل کیف سبز چیست؟"
+            },
+            "options": [
+              {
+                "nl": "Het boek dat Ravi gisteren kocht.",
+                "en": "The book Ravi bought yesterday.",
+                "fa": "کتابی که راوی دیروز خریده."
+              },
+              {
+                "nl": "Een kaart die Ravi vandaag kreeg.",
+                "en": "A card Ravi received today.",
+                "fa": "کارتی که راوی امروز گرفته."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De tekst noemt het boek dat hij gisteren heeft gekocht.",
+              "en": "The text names the book he bought yesterday.",
+              "fa": "متن کتابی را ذکر می‌کند که دیروز خریده است."
+            }
+          },
+          {
+            "id": "b1-t-source-01-r2",
+            "prompt": {
+              "nl": "Wat weet Ravi nog niet?",
+              "en": "What does Ravi not know yet?",
+              "fa": "راوی هنوز چه چیزی را نمی‌داند؟"
+            },
+            "options": [
+              {
+                "nl": "Of iemand de tas heeft gevonden.",
+                "en": "Whether anyone has found the bag.",
+                "fa": "آیا کسی کیف را پیدا کرده است."
+              },
+              {
+                "nl": "Welke kleur zijn tas heeft.",
+                "en": "What colour his bag is.",
+                "fa": "کیفش چه رنگی است."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De kleur is bekend; het vinden van de tas is niet bevestigd.",
+              "en": "The colour is known; finding the bag is not confirmed.",
+              "fa": "رنگ مشخص است؛ پیدا شدن کیف تأیید نشده است."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Ravi, bedankt voor uw bericht. We hebben uw foto ontvangen, maar we kunnen nog niet bevestigen dat uw tas gevonden is. Kunt u het nummer van de bus en het uur waarop u uitstapte doorgeven? Daarmee kunnen we gerichter navragen. We laten u weten waar u de tas kunt ophalen zodra we die hebben gevonden.",
+          "en": "Hello Ravi, thank you for your message. We received your photo, but cannot yet confirm that your bag has been found. Could you provide the bus number and the time you got off? That will help us enquire more specifically. We will tell you where to collect the bag once we find it.",
+          "fa": "سلام راوی، ممنون از پیامتان. عکس را دریافت کرده‌ایم، اما هنوز نمی‌توانیم پیدا شدن کیف را تأیید کنیم. می‌توانید شماره اتوبوس و ساعت پیاده‌شدنتان را بگویید؟ با این اطلاعات دقیق‌تر پیگیری می‌کنیم. وقتی کیف را پیدا کردیم، محل دریافت را به شما اطلاع می‌دهیم."
+        },
+        "questions": [
+          {
+            "id": "b1-t-source-01-l1",
+            "prompt": {
+              "nl": "Welke aanvullende informatie vraagt de medewerker?",
+              "en": "What additional information does the staff member request?",
+              "fa": "کارمند چه اطلاعات دیگری می‌خواهد؟"
+            },
+            "options": [
+              {
+                "nl": "De prijs van het boek en de naam van de winkel.",
+                "en": "The book price and the shop name.",
+                "fa": "قیمت کتاب و نام فروشگاه."
+              },
+              {
+                "nl": "Het busnummer en het uur van uitstappen.",
+                "en": "The bus number and the time Ravi got off.",
+                "fa": "شماره اتوبوس و ساعت پیاده شدن."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De medewerker vraagt naar het busnummer en het uitstapuur.",
+              "en": "The staff member asks for the bus number and time Ravi got off.",
+              "fa": "کارمند شماره اتوبوس و ساعت پیاده شدن را می‌پرسد."
+            }
+          },
+          {
+            "id": "b1-t-source-01-l2",
+            "prompt": {
+              "nl": "Is de tas al zeker gevonden?",
+              "en": "Has the bag definitely been found?",
+              "fa": "آیا کیف قطعاً پیدا شده است؟"
+            },
+            "options": [
+              {
+                "nl": "Nee, dat is nog niet bevestigd.",
+                "en": "No, that is not yet confirmed.",
+                "fa": "نه، هنوز تأیید نشده است."
+              },
+              {
+                "nl": "Ja, Ravi kan die meteen ophalen.",
+                "en": "Yes, Ravi can collect it immediately.",
+                "fa": "بله، راوی می‌تواند فوراً آن را بگیرد."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De dienst kan het vinden van de tas nog niet bevestigen.",
+              "en": "The service cannot yet confirm finding the bag.",
+              "fa": "بخش مربوط هنوز پیدا شدن کیف را تأیید نمی‌کند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Beschrijf als Ravi je tas en het boek. Geef ook het busnummer en het uitstapuur door. Maak duidelijk wat je weet en wat nog gecontroleerd moet worden. Gebruik minstens één zin met die of dat. Verzin geen bevestiging dat de tas gevonden is.",
+          "en": "As Ravi, describe your bag and book. Also provide the bus number and the time you got off. Distinguish what you know from what still needs checking. Use at least one clause with die or dat. Do not invent confirmation that the bag was found.",
+          "fa": "در نقش راوی کیف و کتاب را توصیف کنید. شماره اتوبوس و ساعت پیاده شدن را نیز بگویید. اطلاعات قطعی را از موارد نیازمند بررسی جدا کنید. حداقل یک جمله با die یا dat به کار ببرید. پیدا شدن کیف را بدون تأیید اعلام نکنید."
+        },
+        "sample": {
+          "nl": "Ik zoek de groene tas die ik op de bus heb laten liggen. In de tas zit het boek dat ik gisteren heb gekocht. Ik heb een foto gestuurd, maar ik weet nog niet of iemand de tas heeft gevonden. Ik stapte om 15.10 uur uit bus acht. Kunt u daarmee controleren of de tas is binnengebracht?",
+          "en": "I am looking for the green bag I left on the bus. It contains the book I bought yesterday. I sent a photo, but do not yet know whether anyone found the bag. I got off bus eight at 15:10. Can you check with those details whether the bag has been handed in?",
+          "fa": "دنبال کیف سبزی هستم که در اتوبوس جا گذاشته‌ام. داخلش کتابی است که دیروز خریدم. عکس فرستاده‌ام، اما هنوز نمی‌دانم کسی کیف را پیدا کرده است یا نه. ساعت ۱۵:۱۰ از اتوبوس شماره هشت پیاده شدم. می‌توانید با این اطلاعات بررسی کنید آیا کیف تحویل داده شده است؟"
+        },
+        "criteria": [
+          {
+            "nl": "Beschrijf het voorwerp met een passende relatieve zin.",
+            "en": "Describe the object with an appropriate relative clause.",
+            "fa": "وسیله را با جمله موصولی مناسب توصیف کنید."
+          },
+          {
+            "nl": "Houd bevestigde feiten en open vragen uit elkaar.",
+            "en": "Keep confirmed facts separate from open questions.",
+            "fa": "اطلاعات تأییدشده را از پرسش‌های باز جدا کنید."
+          }
+        ],
+        "min_words": 40,
+        "max_words": 100
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een vervolgbericht aan de dienst. Beschrijf de tas en het boek, verwijs naar de foto en geef het gevraagde busnummer en uitstapuur door. Gebruik die bij een de-woord en dat bij een het-woord.",
+          "en": "Write a follow-up message to the service. Describe the bag and book, refer to the photo and provide the requested bus number and exit time. Use die with a de-word and dat with a het-word.",
+          "fa": "پیامی برای پیگیری بنویسید. کیف و کتاب را توصیف کنید، به عکس اشاره کنید و شماره اتوبوس و ساعت پیاده شدن خواسته‌شده را اعلام کنید. برای واژه دارای de از die و برای واژه دارای het از dat استفاده کنید."
+        },
+        "sample": {
+          "nl": "Beste medewerker, ik zoek de groene tas die ik op de bus heb laten liggen. In de tas zit het boek dat ik gisteren heb gekocht. De foto die ik eerder heb gestuurd, toont hoe de tas eruitziet. Ik begrijp dat nog niet bevestigd is of de tas gevonden is. Ik stapte om 15.10 uur uit bus acht. Kunt u met deze gegevens nagaan of de tas is binnengebracht? Met vriendelijke groeten, Ravi.",
+          "en": "Dear staff member, I am looking for the green bag I left on the bus. It contains the book I bought yesterday. The photo I sent earlier shows what the bag looks like. I understand that finding the bag is not yet confirmed. I got off bus eight at 15:10. Could you use these details to check whether the bag has been handed in? Kind regards, Ravi.",
+          "fa": "کارمند گرامی، دنبال کیف سبزی هستم که در اتوبوس جا گذاشته‌ام. در آن کتابی است که دیروز خریدم. عکسی که قبلاً فرستاده‌ام ظاهر کیف را نشان می‌دهد. می‌دانم هنوز پیدا شدن کیف تأیید نشده است. ساعت ۱۵:۱۰ از اتوبوس شماره هشت پیاده شدم. می‌توانید با این اطلاعات بررسی کنید آیا کیف تحویل داده شده است؟ با احترام، راوی."
+        },
+        "criteria": [
+          {
+            "nl": "Beschrijf het voorwerp met een passende relatieve zin.",
+            "en": "Describe the object with an appropriate relative clause.",
+            "fa": "وسیله را با جمله موصولی مناسب توصیف کنید."
+          },
+          {
+            "nl": "Houd bevestigde feiten en open vragen uit elkaar.",
+            "en": "Keep confirmed facts separate from open questions.",
+            "fa": "اطلاعات تأییدشده را از پرسش‌های باز جدا کنید."
+          }
+        ],
+        "min_words": 40,
+        "max_words": 100
+      }
+    }
+  ],
+  "grammar_extensions": [
+    {
+      "id": "relative",
+      "examples": [
+        {
+          "nl": "De tas die ik zoek, is groen.",
+          "en": "The bag I am looking for is green.",
+          "fa": "کیفی که دنبالش هستم سبز است."
+        },
+        {
+          "nl": "Het boek dat ik gisteren kocht, ligt in de tas.",
+          "en": "The book I bought yesterday is in the bag.",
+          "fa": "کتابی که دیروز خریدم در کیف است."
+        },
+        {
+          "nl": "De boeken die ik leen, breng ik terug.",
+          "en": "I return the books I borrow.",
+          "fa": "کتاب‌هایی را که قرض می‌گیرم پس می‌دهم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "b1-source-grammar-01",
+          "prompt": {
+            "nl": "Vul aan: het boek … ik zoek.",
+            "en": "Complete: het boek … ik zoek.",
+            "fa": "کامل کنید: het boek … ik zoek."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Een enkelvoudig het-woord krijgt hier dat.",
+            "en": "A singular het-word takes dat here.",
+            "fa": "اینجا برای واژه مفرد دارای het از dat استفاده می‌شود."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -59,52 +59,80 @@ def write_json(path: Path, value: object) -> None:
     temporary.replace(path)
 
 
+def page_recovery_settings(value: object, sources: dict[str, int]) -> dict:
+    """Validate explicit page-level render adjustments before any OCR job starts."""
+    if not isinstance(value, dict):
+        raise ValueError("Recovery settings must be an object keyed by source ID")
+    for source_id, mapping in value.items():
+        if source_id not in sources or not isinstance(mapping, dict):
+            raise ValueError("Recovery settings refer to an unknown source or invalid page mapping")
+        for page, settings in mapping.items():
+            if not isinstance(page, str) or not page.isdigit() or str(int(page)) != page or not 1 <= int(page) <= sources[source_id]:
+                raise ValueError("Recovery settings refer to a nonexistent PDF page")
+            if not isinstance(settings, dict) or set(settings) - {"dpi", "channel"}:
+                raise ValueError("Page recovery permits only dpi and channel settings")
+            if "dpi" in settings and (type(settings["dpi"]) is not int or not 72 <= settings["dpi"] <= 600):
+                raise ValueError("Page recovery dpi must be an integer between 72 and 600")
+            if "channel" in settings and settings["channel"] not in ("gray", "blue"):
+                raise ValueError("Page recovery channel must be gray or blue")
+    return value
+
+
+def render_page(page, dpi: int, rotation: int, channel: str = "gray") -> bytes:
+    """The blue plane separates dark text from pale blue worksheet backgrounds."""
+    if channel not in ("gray", "blue"):
+        raise ValueError("Unsupported page rendering channel")
+    image = page.get_pixmap(
+        matrix=fitz.Matrix(dpi / 72, dpi / 72).prerotate(rotation),
+        colorspace=fitz.csRGB if channel == "blue" else fitz.csGRAY,
+        alpha=False,
+    )
+    if channel == "blue":
+        image = fitz.Pixmap(fitz.csGRAY, image.width, image.height, image.samples[2::3], False)
+    return image.tobytes("png")
+
+
 def process_page(job: dict) -> dict:
     destination = Path(job["cache_path"])
+    channel = job.get("colour_channel", "gray")
     if destination.exists():
         cached = json.loads(destination.read_text())
-        if cached.get("extractor_version") == 2 and cached.get("source_sha256") == job["sha256"] and cached.get("language") == job["language"] and cached.get("dpi") == job["dpi"] and cached.get("rotation_degrees", 0) == job["rotation"] and cached.get("status") == "ocr_unverified":
+        if cached.get("extractor_version") == 2 and cached.get("source_sha256") == job["sha256"] and cached.get("language") == job["language"] and cached.get("dpi") == job["dpi"] and cached.get("colour_channel", "gray") == channel and cached.get("rotation_degrees", 0) == job["rotation"] and cached.get("status") == "ocr_unverified" and cached.get("word_count", 0) > 0 and cached.get("text", "").strip():
             cached["grammar_candidates"] = grammar_candidates(cached["text"])
+            cached.setdefault("colour_channel", "gray")
+            cached.setdefault("ocr_psm", 3)
+            cached.setdefault("ocr_attempted_psms", [3])
             write_json(destination, cached)
             return public_page(cached)
     row = {
         "source_id": job["source_id"], "pdf_page": job["page"],
         "extractor_version": 2,
         "source_sha256": job["sha256"], "language": job["language"],
-        "dpi": job["dpi"], "rotation_degrees": job["rotation"],
+        "dpi": job["dpi"], "colour_channel": channel, "rotation_degrees": job["rotation"],
         "status": "ocr_failed", "text": "",
         "word_count": 0, "mean_word_confidence": None,
         "grammar_candidates": [], "error": None,
+        "ocr_psm": None, "ocr_attempted_psms": [],
     }
     try:
         with fitz.open(job["pdf"]) as document:
-            image = document[job["page"] - 1].get_pixmap(
-                matrix=fitz.Matrix(job["dpi"] / 72, job["dpi"] / 72).prerotate(job["rotation"]),
-                colorspace=fitz.csGRAY,
-            ).tobytes("png")
-        command = ["tesseract", "stdin", "stdout", "-l", job["language"], "--psm", "3"]
-        if job["tessdata"]:
-            command += ["--tessdata-dir", job["tessdata"]]
-        # The config filename `tsv` is absent when a custom tessdata directory
-        # contains only language files. Set the renderer directly instead.
-        command += ["-c", "tessedit_create_tsv=1"]
-        result = subprocess.run(command, input=image, capture_output=True, timeout=90,
-                                env={**os.environ, "OMP_THREAD_LIMIT": "1"}, check=True)
-        words, confidences, lines = [], [], {}
-        output = result.stdout.decode("utf-8")
-        if not output.startswith("level\tpage_num\t"):
-            raise ValueError("Tesseract did not return TSV")
-        for item in csv.DictReader(io.StringIO(output), delimiter="\t", quoting=csv.QUOTE_NONE):
-            word = item.get("text", "").strip()
-            if not word:
-                continue
-            words.append(word)
-            confidence = float(item["conf"])
-            if confidence >= 0:
-                confidences.append(confidence)
-            key = (item["block_num"], item["par_num"], item["line_num"])
-            lines.setdefault(key, []).append(word)
-        text = "\n".join(" ".join(line) for line in lines.values())
+            image = render_page(document[job["page"] - 1], job["dpi"], job["rotation"], channel)
+        for psm in (3, 11):
+            # Automatic page segmentation misses some coloured worksheets.
+            # Try sparse-text layout only after a valid TSV contains no words.
+            # A nonempty result is kept, without another paid or remote service.
+            row["ocr_attempted_psms"].append(psm)
+            command = ["tesseract", "stdin", "stdout", "-l", job["language"], "--psm", str(psm)]
+            if job["tessdata"]:
+                command += ["--tessdata-dir", job["tessdata"]]
+            # Custom tessdata may contain language data without the `tsv` config.
+            command += ["-c", "tessedit_create_tsv=1"]
+            result = subprocess.run(command, input=image, capture_output=True, timeout=90,
+                                    env={**os.environ, "OMP_THREAD_LIMIT": "1"}, check=True)
+            words, confidences, text = parse_ocr_tsv(result.stdout.decode("utf-8"))
+            row["ocr_psm"] = psm
+            if words:
+                break
         row.update(status="ocr_unverified" if words else "ocr_empty_needs_review", text=text, word_count=len(words),
                    mean_word_confidence=round(sum(confidences) / len(confidences), 2) if confidences else None,
                    grammar_candidates=grammar_candidates(text))
@@ -114,9 +142,32 @@ def process_page(job: dict) -> dict:
     return public_page(row)
 
 
+def parse_ocr_tsv(output: str) -> tuple[list[str], list[float], str]:
+    if not output.startswith("level\tpage_num\t"):
+        raise ValueError("Tesseract did not return TSV")
+    words, confidences, lines = [], [], {}
+    for item in csv.DictReader(io.StringIO(output), delimiter="\t", quoting=csv.QUOTE_NONE):
+        word = item.get("text", "").strip()
+        if not word:
+            continue
+        words.append(word)
+        confidence = float(item["conf"])
+        if confidence >= 0:
+            confidences.append(confidence)
+        key = (item["block_num"], item["par_num"], item["line_num"])
+        lines.setdefault(key, []).append(word)
+    return words, confidences, "\n".join(" ".join(line) for line in lines.values())
+
+
 def grammar_candidates(text: str) -> list[str]:
     return [name for name, pattern in GRAMMAR_PATTERNS.items()
             if re.search(r"\b(?:" + pattern + r")\b", text, re.I)]
+
+
+def source_identifier(filename: str, digest: str) -> str:
+    """Keep a download's copy suffix from changing the numbered source identity."""
+    number = re.search(r"(\d+)(?:\(\d+\))?\.pdf$", filename, re.I)
+    return f"source-{int(number.group(1)):02d}" if number else digest[:12]
 
 
 def public_page(row: dict) -> dict:
@@ -137,6 +188,7 @@ def main() -> int:
     parser.add_argument("--dpi", type=int, default=120)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--rotations-file", type=Path, help="JSON {source-id: {PDF-page: clockwise-degrees}}")
+    parser.add_argument("--recovery-file", type=Path, help="JSON {source-id: {PDF-page: {dpi: 220, channel: blue}}}")
     parser.add_argument("--only", nargs="*", help="Optional filenames to process; otherwise all PDFs")
     args = parser.parse_args()
     output = args.output_dir.resolve()
@@ -148,12 +200,17 @@ def main() -> int:
     if any(int(degrees) not in (0, 90, 180, 270) for mapping in rotations.values() for degrees in mapping.values()):
         parser.error("Page rotation must be 0, 90, 180 or 270 degrees")
     sources, jobs, pages = [], [], []
+    seen_sources = {}
     for pdf in sorted(args.pdf_dir.glob("*.pdf")):
         if args.only and pdf.name not in args.only:
             continue
         digest = hashlib.sha256(pdf.read_bytes()).hexdigest()
-        number = re.search(r"(\d+)\.pdf$", pdf.name)
-        source_id = f"source-{int(number.group(1)):02d}" if number else digest[:12]
+        source_id = source_identifier(pdf.name, digest)
+        if source_id in seen_sources:
+            if seen_sources[source_id] != digest:
+                parser.error(f"Different PDFs share {source_id}; use distinct source numbers")
+            continue
+        seen_sources[source_id] = digest
         with fitz.open(pdf) as document:
             count = len(document)
             native = sum(bool(page.get_text().strip()) for page in document)
@@ -169,6 +226,17 @@ def main() -> int:
                          "cache_path": str(output / source_id / f"{page:04d}.json")})
     if not jobs:
         parser.error("No source PDFs found")
+    try:
+        recovery = page_recovery_settings(
+            json.loads(args.recovery_file.read_text()) if args.recovery_file else {},
+            {source["source_id"]: source["pdf_pages"] for source in sources},
+        )
+    except (OSError, ValueError) as exc:
+        parser.error(str(exc))
+    for job in jobs:
+        settings = recovery.get(job["source_id"], {}).get(str(job["page"]), {})
+        job["dpi"] = settings.get("dpi", args.dpi)
+        job["colour_channel"] = settings.get("channel", "gray")
     with ProcessPoolExecutor(max_workers=args.workers) as pool:
         futures = [pool.submit(process_page, job) for job in jobs]
         for future in as_completed(futures):
@@ -183,6 +251,8 @@ def main() -> int:
                 "ocr_empty_needs_review": sum(page["status"] == "ocr_empty_needs_review" for page in pages),
                 "review_status": "unverified_machine_extraction",
                 "warning": "OCR confidence is not language accuracy. Grammar matches are navigation candidates, not teaching facts."}
+    if recovery:
+        manifest["page_recovery_settings"] = recovery
     write_json(output / "manifest.json", manifest)
     write_json(output / "pages.json", pages)
     tokens: dict[str, dict] = {}

@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a1",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "pre-a1-scan-v003",
+      "term": "spellen",
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De letters één voor één noemen.",
+        "en": "Name the letters one by one.",
+        "fa": "گفتن حروف به‌ترتیب."
+      },
+      "example": {
+        "nl": "Ik kan Noor spellen: N–O–O–R.",
+        "en": "I can spell Noor: N–O–O–R.",
+        "fa": "می‌توانم Noor را هجی کنم: N–O–O–R."
+      }
+    }
+  ],
+  "stories": [
+    {
+      "id": "pre-a1-s-source-01",
+      "title": {
+        "nl": "Een naam op de kaart",
+        "en": "A name on the card",
+        "fa": "یک نام روی کارت"
+      },
+      "topic": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "paragraphs": [
+        {
+          "nl": "Ik heet Noor. Ik spel mijn naam: N–O–O–R. Vier letters.",
+          "en": "My name is Noor. I spell my name: N–O–O–R. Four letters.",
+          "fa": "نام من نور است. نامم را هجی می‌کنم: N–O–O–R. چهار حرف."
+        },
+        {
+          "nl": "Ik woon in Gent. Dit is mijn kaart. Op de kaart staat Noor.",
+          "en": "I live in Ghent. This is my card. The card says Noor.",
+          "fa": "در خنت زندگی می‌کنم. این کارت من است. روی کارت نوشته شده نور."
+        }
+      ],
+      "vocabulary_ids": [
+        "pre-a1-v011",
+        "pre-a1-v135",
+        "pre-a1-scan-v003"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat is de naam?",
+          "en": "What is the name?",
+          "fa": "نام چیست؟"
+        },
+        "options": [
+          {
+            "nl": "Noor",
+            "en": "Noor",
+            "fa": "نور"
+          },
+          {
+            "nl": "Sam",
+            "en": "Sam",
+            "fa": "سام"
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "Op de kaart staat Noor.",
+          "en": "The card says Noor.",
+          "fa": "روی کارت نوشته شده نور."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "pre-a1-t-source-01",
+      "title": {
+        "nl": "Een naam op de kaart",
+        "en": "A name on the card",
+        "fa": "یک نام روی کارت"
+      },
+      "category": {
+        "nl": "Van woord naar gesprek",
+        "en": "From word to conversation",
+        "fa": "از واژه تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een naam herkennen en spellen.",
+          "en": "Recognising and spelling a name.",
+          "fa": "تشخیص و هجی کردن نام."
+        },
+        {
+          "nl": "Gebruik bekende woorden in een nieuwe situatie.",
+          "en": "Use familiar words in a new situation.",
+          "fa": "واژه‌های آشنا را در موقعیتی تازه به کار ببرید."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een naam herkennen en spellen.",
+        "en": "Recognising and spelling a name.",
+        "fa": "تشخیص و هجی کردن نام."
+      },
+      "vocabulary_ids": [
+        "pre-a1-v011",
+        "pre-a1-v135",
+        "pre-a1-scan-v003"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Ik heet Noor. Ik spel mijn naam: N–O–O–R. Vier letters.\n\nIk woon in Gent. Dit is mijn kaart. Op de kaart staat Noor.",
+          "en": "My name is Noor. I spell my name: N–O–O–R. Four letters.\n\nI live in Ghent. This is my card. The card says Noor.",
+          "fa": "نام من نور است. نامم را هجی می‌کنم: N–O–O–R. چهار حرف.\n\nدر خنت زندگی می‌کنم. این کارت من است. روی کارت نوشته شده نور."
+        },
+        "questions": [
+          {
+            "id": "pre-a1-t-source-01-r1",
+            "prompt": {
+              "nl": "Wat is de naam?",
+              "en": "What is the name?",
+              "fa": "نام چیست؟"
+            },
+            "options": [
+              {
+                "nl": "Noor",
+                "en": "Noor",
+                "fa": "نور"
+              },
+              {
+                "nl": "Sam",
+                "en": "Sam",
+                "fa": "سام"
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Op de kaart staat Noor.",
+              "en": "The card says Noor.",
+              "fa": "روی کارت نوشته شده نور."
+            }
+          },
+          {
+            "id": "pre-a1-t-source-01-r2",
+            "prompt": {
+              "nl": "Waar woont Noor?",
+              "en": "Where does Noor live?",
+              "fa": "نور کجا زندگی می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Gent",
+                "en": "Ghent",
+                "fa": "خنت"
+              },
+              {
+                "nl": "Brugge",
+                "en": "Bruges",
+                "fa": "بروژ"
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Noor zegt: Ik woon in Gent.",
+              "en": "Noor says: I live in Ghent.",
+              "fa": "نور می‌گوید: در خنت زندگی می‌کنم."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag, ik ben Noor. Mijn naam heeft vier letters: N, O, O, R. Ik woon in Gent.",
+          "en": "Hello, I am Noor. My name has four letters: N, O, O, R. I live in Ghent.",
+          "fa": "سلام، من نور هستم. نام من چهار حرف دارد: N، O، O، R. در خنت زندگی می‌کنم."
+        },
+        "questions": [
+          {
+            "id": "pre-a1-t-source-01-l1",
+            "prompt": {
+              "nl": "Hoeveel letters hoor je?",
+              "en": "How many letters do you hear?",
+              "fa": "چند حرف می‌شنوید؟"
+            },
+            "options": [
+              {
+                "nl": "Vier",
+                "en": "Four",
+                "fa": "چهار"
+              },
+              {
+                "nl": "Drie",
+                "en": "Three",
+                "fa": "سه"
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Je hoort N, O, O en R.",
+              "en": "You hear N, O, O and R.",
+              "fa": "حروف N، O، O و R را می‌شنوید."
+            }
+          },
+          {
+            "id": "pre-a1-t-source-01-l2",
+            "prompt": {
+              "nl": "Welke stad hoor je?",
+              "en": "Which city do you hear?",
+              "fa": "نام کدام شهر را می‌شنوید؟"
+            },
+            "options": [
+              {
+                "nl": "Gent",
+                "en": "Ghent",
+                "fa": "خنت"
+              },
+              {
+                "nl": "Kortrijk",
+                "en": "Kortrijk",
+                "fa": "کورتریک"
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Noor noemt Gent.",
+              "en": "Noor names Ghent.",
+              "fa": "نور نام خنت را می‌گوید."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Zeg je naam en spel die langzaam. De voorbeeldnaam is Noor.",
+          "en": "Say your name and spell it slowly. The sample name is Noor.",
+          "fa": "نامتان را بگویید و آهسته هجی کنید. نام نمونه نور است."
+        },
+        "sample": {
+          "nl": "Ik heet Noor. N, O, O, R.",
+          "en": "My name is Noor. N, O, O, R.",
+          "fa": "نام من نور است. N، O، O، R."
+        },
+        "criteria": [
+          {
+            "nl": "Noem een naam.",
+            "en": "Give a name.",
+            "fa": "یک نام بگویید."
+          },
+          {
+            "nl": "Geef de gevraagde informatie duidelijk.",
+            "en": "Give the requested information clearly.",
+            "fa": "اطلاعات خواسته‌شده را روشن بیان کنید."
+          }
+        ],
+        "min_words": 3,
+        "max_words": 20
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf met het voorbeeld een naam en een woonplaats. Je mag je eigen gegevens gebruiken.",
+          "en": "Using the example, write a name and a city. You may use your own details.",
+          "fa": "با کمک نمونه یک نام و شهر محل زندگی بنویسید. می‌توانید اطلاعات خودتان را بنویسید."
+        },
+        "sample": {
+          "nl": "Ik heet Noor. Ik woon in Gent.",
+          "en": "My name is Noor. I live in Ghent.",
+          "fa": "نام من نور است. در خنت زندگی می‌کنم."
+        },
+        "criteria": [
+          {
+            "nl": "Noem een naam.",
+            "en": "Give a name.",
+            "fa": "یک نام بگویید."
+          },
+          {
+            "nl": "Geef de gevraagde informatie duidelijk.",
+            "en": "Give the requested information clearly.",
+            "fa": "اطلاعات خواسته‌شده را روشن بیان کنید."
+          }
+        ],
+        "min_words": 3,
+        "max_words": 20
+      }
+    }
+  ],
+  "grammar_extensions": [
+    {
+      "id": "alphabet-spelling",
+      "examples": [
+        {
+          "nl": "Noor: N–O–O–R.",
+          "en": "Noor: N–O–O–R.",
+          "fa": "نور: N–O–O–R."
+        },
+        {
+          "nl": "Sam: S–A–M.",
+          "en": "Sam: S–A–M.",
+          "fa": "سام: S–A–M."
+        },
+        {
+          "nl": "Mijn naam is Lina: L–I–N–A.",
+          "en": "My name is Lina: L–I–N–A.",
+          "fa": "نام من لینا است: L–I–N–A."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-source-grammar-01",
+          "prompt": {
+            "nl": "Welke reeks spelt Lina?",
+            "en": "Which sequence spells Lina?",
+            "fa": "کدام ترتیب Lina را هجی می‌کند؟"
+          },
+          "options": [
+            {
+              "nl": "L–N–A",
+              "en": "L–N–A",
+              "fa": "L–N–A"
+            },
+            {
+              "nl": "L–I–N–A",
+              "en": "L–I–N–A",
+              "fa": "L–I–N–A"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Lina heeft vier letters, met een i na de l.",
+            "en": "Lina has four letters, with i after l.",
+            "fa": "Lina چهار حرف دارد؛ i پس از l می‌آید."
+          }
+        }
+      ]
+    }
+  ]
+}

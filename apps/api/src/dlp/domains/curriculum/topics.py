@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session
 
 from dlp.config import CONTENT_DIR, Settings
 from dlp.db.base import utcnow
-from dlp.domains.curriculum import service
+from dlp.domains.curriculum import service, supplements
 from dlp.domains.curriculum.library import library_for, normalise
 from dlp.domains.curriculum.models import CurriculumPractice, TopicPractice
 from dlp.domains.curriculum.schemas import SKILLS, STAGE_IDS, Localized, Question, Skill, Task
@@ -112,15 +112,16 @@ class TopicBank(BaseModel):
 
 
 @lru_cache(maxsize=16)
-def _read(path: str, modified: int) -> TopicBank:
-    return TopicBank.model_validate_json(Path(path).read_text(encoding="utf-8"))
+def _read(path: str, modified: int, supplement_modified: int = 0) -> TopicBank:
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    return TopicBank.model_validate(supplements.merge_bank(data, Path(path).parent.parent, "practice"))
 
 
 def topics_for(stage_id: str) -> TopicBank:
     if stage_id not in STAGE_IDS:
         raise service.CurriculumError("learning stage not found", 404)
     path = CONTENT_DIR / "practice" / f"{stage_id}.json"
-    bank = _read(str(path), path.stat().st_mtime_ns)
+    bank = _read(str(path), path.stat().st_mtime_ns, supplements.stamp(CONTENT_DIR, stage_id))
     if bank.stage_id != stage_id:
         raise ValueError("topic file does not match its requested stage")
     known = {word.id for word in library_for(stage_id).vocabulary}
@@ -141,13 +142,14 @@ def topic_for(bank: TopicBank, topic_id: str) -> PracticeTopic:
 
 
 @lru_cache(maxsize=32)
-def _texts(path: str, modified: int, skill: str) -> dict[str, str]:
-    """One stage's reading or listening texts (normalised) to their topic id, read from the file alone: the
-    earlier banks are not validated or kept for this."""
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
+def _texts(path: str, modified: int, skill: str, supplement_modified: int = 0) -> dict[str, str]:
+    """Earlier reading/listening texts share the validated bank cache, including supplements."""
+    bank = _read(path, modified, supplement_modified)
+    if bank.stage_id != Path(path).stem:
+        raise ValueError("topic file does not match its requested stage")
     found: dict[str, str] = {}
-    for topic in data["topics"]:
-        found.setdefault(normalise(topic[skill]["text"]["nl"]), topic["id"])
+    for topic in bank.topics:
+        found.setdefault(normalise(getattr(topic, skill).text.nl), topic.id)
     return found
 
 
@@ -162,7 +164,7 @@ def review_of(bank: TopicBank, skill: Skill, topic: PracticeTopic | None = None)
     found: dict[str, dict[str, str]] = {}
     for stage_id in STAGE_IDS[:STAGE_IDS.index(bank.stage_id)]:
         path = CONTENT_DIR / "practice" / f"{stage_id}.json"
-        earlier = _texts(str(path), path.stat().st_mtime_ns, skill)
+        earlier = _texts(str(path), path.stat().st_mtime_ns, skill, supplements.stamp(CONTENT_DIR, stage_id))
         for topic_id, text in texts.items():
             twin = earlier.get(text)
             if twin is not None and topic_id not in found:
