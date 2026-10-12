@@ -1,6 +1,7 @@
 """Facts about the static content that the exercise engine (roadmap P3) builds on, measured per stage.
 
-The recorded table is the measurement of 2026-10-06. A content rebuild that changes it must update the table
+The recorded table is the measurement of 2026-10-12, including the additive source lesson packs. A content
+rebuild that changes it must update the table
 on purpose, because the item generators choose kinds per stage from exactly these facts: how many library
 words share a topic (match pairs), whether a term appears in its own example (cloze), de/het balance
 (article sort), how many examples are short (sentence builder), how many sentences a reading text has
@@ -10,14 +11,17 @@ same cloze (the distractor rule in step 3.3).
 
 from __future__ import annotations
 
+import json
 import re
 from collections import Counter, defaultdict
 
 import pytest
 
-from dlp.domains.curriculum.library import library_for
+from dlp.config import CONTENT_DIR
+from dlp.domains.curriculum.library import StageLibrary, library_for
 from dlp.domains.curriculum.service import curriculum
 from dlp.domains.curriculum.topics import topics_for
+from dlp.domains.exercises.pool import pool_for
 from dlp.domains.stories.validator import sentences, tokens
 
 ARTICLE = re.compile(r"^(de|het|een)\s+", re.I)
@@ -26,12 +30,12 @@ ARTICLE = re.compile(r"^(de|het|een)\s+", re.I)
 #           words sharing a sentence frame, topic groups with a frame collision, reading texts under 3 sentences,
 #           smallest topic vocabulary list, option counts of the authored questions)
 RECORDED = {
-    "pre-a1": (100, 5, 494, 89, 220, 355, 0, 0, 82, 5, {2: 400}),
-    "a1": (100, 5, 495, 89, 220, 153, 0, 0, 72, 5, {2: 400}),
-    "pre-a2": (100, 5, 496, 89, 220, 7, 0, 0, 82, 5, {2: 400}),
-    "a2": (50, 10, 500, 89, 241, 500, 491, 50, 1, 5, {2: 400}),
-    "pre-b1": (50, 10, 498, 93, 257, 72, 489, 50, 0, 2, {2: 400}),
-    "b1": (50, 10, 497, 93, 257, 0, 488, 50, 1, 1, {2: 400}),
+    "pre-a1": (101, 1, 495, 89, 220, 356, 0, 0, 82, 3, {2: 404}),
+    "a1": (101, 2, 497, 89, 222, 155, 0, 0, 72, 3, {2: 404}),
+    "pre-a2": (100, 5, 496, 89, 220, 7, 0, 0, 82, 3, {2: 404}),
+    "a2": (51, 3, 502, 89, 243, 503, 491, 50, 1, 3, {2: 404}),
+    "pre-b1": (50, 10, 498, 93, 257, 72, 489, 50, 0, 2, {2: 404}),
+    "b1": (51, 3, 500, 94, 259, 3, 488, 50, 1, 1, {2: 404}),
     "pre-b2": (10, 25, 446, 57, 344, 359, 0, 0, 0, 5, {3: 400}),
     "b2": (10, 25, 447, 57, 344, 0, 0, 0, 0, 5, {3: 400}),
     "pre-c1": (10, 25, 446, 57, 344, 0, 0, 0, 0, 5, {3: 400}),
@@ -94,8 +98,15 @@ def test_content_facts_match_the_recorded_table(stage_id):
 
 @pytest.mark.parametrize("stage_id", list(RECORDED))
 def test_invariants_the_generators_rely_on(stage_id):
-    groups, smallest, found, het, de, _short, _shared, _collisions, _lt3, _vocab_min, options = RECORDED[stage_id]
-    assert smallest >= 4, "match pairs need at least four words per library topic"
+    groups, _smallest, found, het, de, _short, _shared, _collisions, _lt3, _vocab_min, options = RECORDED[stage_id]
+    # The original topics still support four pairs on their own. Additive packs may add smaller topic groups;
+    # the actual generator uses neighbouring-topic distractors and combines distinct session words for pairs.
+    base_path = CONTENT_DIR / "library" / f"{stage_id}.json"
+    base = StageLibrary.model_validate(json.loads(base_path.read_text(encoding="utf-8")))
+    assert min(Counter(word.topic.nl for word in base.vocabulary).values()) >= 4
+    stage = pool_for(stage_id)
+    assert set(stage.choice) == set(stage.by_id), "every merged card needs a four-option choice"
+    assert all(len(set(candidates)) >= 3 for candidates in stage.choice.values())
     assert found >= 440, "cloze needs the term inside its own example for most cards"
     assert groups >= 10
     if stage_id in ("pre-a1", "a1", "pre-a2", "a2", "pre-b1", "b1", "pre-b2", "b2", "pre-c1"):

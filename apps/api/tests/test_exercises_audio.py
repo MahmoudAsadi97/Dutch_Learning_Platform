@@ -27,11 +27,11 @@ from tests.conftest import auth_headers
 
 SPEECH = {"listen_choose", "dictation", "shadow"}
 # stage -> (words with a sentence to dictate (3 to 12 words, no name), words with a sentence to shadow (3 to
-# 10)); at pre-A1 the word alone is dictated. B1's examples are nearly all longer (roadmap 7.9 adds sentences).
-# Measured 10 Oct 2026 on the content of 6 Oct.
+# 10)); at pre-A1 the word alone is dictated. The source pack adds three short B1 examples; the original B1
+# examples are nearly all longer. Measured 12 Oct 2026 including additive source packs.
 SPOKEN = {
-    "pre-a1": (466, 442), "a1": (430, 316), "pre-a2": (196, 59), "a2": (489, 500), "pre-b1": (367, 167),
-    "b1": (30, 0), "pre-b2": (398, 392), "b2": (400, 393), "pre-c1": (399, 392), "c1": (275, 99),
+    "pre-a1": (466, 443), "a1": (432, 318), "pre-a2": (196, 59), "a2": (491, 502), "pre-b1": (367, 167),
+    "b1": (33, 3), "pre-b2": (398, 392), "b2": (400, 393), "pre-c1": (399, 392), "c1": (275, 99),
     "pre-c2": (251, 87), "c2": (262, 86),
 }
 NAMES = {"Nora", "Noor", "Mina", "Yara", "Jonas", "Leyla", "Rob", "Emma", "Pieter", "Els", "Nadia"}

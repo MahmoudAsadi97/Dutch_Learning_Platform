@@ -18,14 +18,14 @@ from tests.conftest import auth_headers
 
 # stage -> (words with a typed cloze, words with a typed recall (not a word its meaning spells), nouns to sort
 #           into de/het (never one that takes both articles), words with a sentence to build, paragraphs to put in
-#           order); the other kinds work for every word. Measured 10 Oct 2026 on the content of 6 Oct.
+#           order); the other kinds work for every word. Measured 12 Oct 2026 including additive source packs.
 AVAILABLE = {
-    "pre-a1": (448, 456, 303, 108, 0),
-    "a1": (448, 456, 303, 185, 0),
+    "pre-a1": (449, 457, 303, 108, 0),
+    "a1": (450, 458, 305, 187, 0),
     "pre-a2": (450, 456, 303, 136, 0),
-    "a2": (462, 462, 317, 363, 0),
-    "pre-b1": (459, 461, 337, 140, 99),
-    "b1": (457, 462, 337, 104, 0),
+    "a2": (464, 465, 319, 365, 0),
+    "pre-b1": (459, 461, 337, 140, 101),
+    "b1": (460, 465, 340, 104, 2),
     "pre-b2": (437, 488, 399, 232, 100),
     "b2": (432, 488, 399, 233, 200),
     "pre-c1": (416, 488, 399, 239, 200),

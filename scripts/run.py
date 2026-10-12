@@ -400,7 +400,9 @@ def task_e2e_visual() -> None:
     docker = [
         "docker", "run", "--rm", "--init",
         "--add-host=host.docker.internal:host-gateway",
-        "--volume", f"{WEB}:/work", "--workdir", "/work",
+        "--volume", f"{WEB}:/work",
+        # Screenshot fixtures read the original authored banks without modifying them.
+        "--volume", f"{ROOT / 'content'}:/content:ro", "--workdir", "/work",
         "--env", "VISUAL_LOCAL=1", "--env", "CI=1",
         "--env", f"E2E_BASE_URL=http://localhost:{web_port}",
         # the fixture identity accepts only "localhost", so Chromium maps that name to the host machine

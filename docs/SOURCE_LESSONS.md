@@ -138,9 +138,9 @@ is native approval or evidence that the whole stage is calibrated for an officia
 
 ## Validation for this update
 
-The local API regression run passed 120 checks; 34 database-dependent checks are reserved for CI.
+The expanded local content/API regression run passed 202 checks; 45 database-dependent checks are reserved for CI.
 The checks cover source-page and pack hashes, original vocabulary use, task-fact consistency,
 unchanged final tests, authenticated routes, missing answer keys in learner payloads, stage-bound
 IDs, and cache updates/deletions. The builder was rerun without changing its output hashes.
-CI additionally exercises PostgreSQL, browser flows, screenshots and production-image builds.
+The coverage audit includes the effective merged banks. Recorded generator measurements were updated deliberately, and targeted shadowing checks cover the small new B1 word group. Visual snapshots use the original authored A1 bank as a fixed fixture; separate browser journeys cover the live source packs in all four skills and reading-session persistence. CI additionally exercises PostgreSQL, browser flows, screenshots and production-image builds.
 These are software checks, not native-language approval.

@@ -253,3 +253,20 @@ def test_connected_tasks_keep_known_facts_and_requested_actions_consistent():
         for text in (b1['reading']['text'][language], b1['speaking']['sample'][language],
                      b1['writing']['sample'][language]):
             assert bus in text and time in text
+
+
+def test_content_audit_counts_the_same_effective_banks_as_the_application():
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("content_audit", CONTENT_DIR.parent / "scripts/audit_learning_content.py")
+    audit = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(audit)
+    result = audit.audit(CONTENT_DIR)
+    assert result["schema_version"] == 2
+    for row in result["stages"]:
+        stage = row["stage"]
+        bank = library.library_for(stage)
+        assert row["vocabulary"] == len(bank.vocabulary)
+        assert row["stories"] == len(bank.stories)
+        assert row["topics_per_skill"] == len(topics.topics_for(stage).topics)
+        assert bool(row["content_sha256"]["supplement"]) == (stage in STAGES)

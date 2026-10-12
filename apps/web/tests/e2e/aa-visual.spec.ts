@@ -1,5 +1,6 @@
 import { expect, test } from "./fixtures/test";
 import { episodeId, storyFixture, wordsFixture } from "./fixtures/stories";
+import { baseA1LibraryFixture } from "./fixtures/source-library";
 
 /**
  * Screenshot baselines of the learner-facing screens at three widths. They freeze the look of the app so
@@ -10,7 +11,8 @@ import { episodeId, storyFixture, wordsFixture } from "./fixtures/stories";
  * and accessibility journeys. On a non-Linux developer machine this spec is skipped. The file name starts
  * with "aa" so it runs first, on the learner that
  * the e2e task has just reset; the daily plan, the episode and the word bank come from route fixtures because
- * the real ones depend on a background writer.
+ * the real ones depend on a background writer. The A1 word-library overview and cards use the original
+ * authored base bank, keeping snapshot geometry stable when a supplementary lesson adds words.
  */
 
 const onLinux = process.platform === "linux" || process.env.VISUAL_LOCAL === "1";
@@ -45,6 +47,7 @@ for (const screen of screens) {
       await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
       await storyFixture(page);
       await wordsFixture(page);
+      if (screen.name === "learn-a1") await baseA1LibraryFixture(page);
       await page.goto(screen.path);
       await expect(page.locator(screen.ready).first()).toBeVisible();
       await page.evaluate(() => document.fonts.ready.then(() => undefined));

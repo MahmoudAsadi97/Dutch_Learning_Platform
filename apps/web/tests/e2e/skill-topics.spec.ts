@@ -938,7 +938,9 @@ test("an authored A2 topic persists reading evidence through the real API and pl
   await page.goto("/learn/a2");
   const nav = page.getByRole("navigation", { name: "Onderdelen van dit niveau" });
   await nav.getByRole("button", { name: "Lezen", exact: true }).click();
-  await expect(page.locator(".skill-topic-library h3")).toHaveText("100 onderwerpen voor lezen");
+  await expect(page.locator(".skill-topic-library h3")).toHaveText(
+    `${beforeReading.total_topics} onderwerpen voor lezen`,
+  );
   await page.getByLabel("Zoek een situatie").fill(topic.title.nl);
   await page.getByRole("button", { name: `Oefen ${topic.title.nl}`, exact: true }).click();
   await page.getByRole("button", { name: "Begin met lezen", exact: true }).click();
@@ -971,13 +973,17 @@ test("an authored A2 topic persists reading evidence through the real API and pl
   await expect(page.locator(".summary-completion[data-state=done]")).toBeVisible();
   await page.reload();
   await nav.getByRole("button", { name: "Lezen", exact: true }).click();
-  await expect(page.locator(".topic-progress-number")).toHaveText(`${expectedCount} / 100`);
+  await expect(page.locator(".topic-progress-number")).toHaveText(
+    `${expectedCount} / ${beforeReading.total_topics}`,
+  );
   const persisted = await (
     await page.request.get(`/api/curriculum/a2/topics/${topic.id}?skill=reading`)
   ).json();
   expect(persisted.progress).toEqual({ completed: true, attempted: true });
   await nav.getByRole("button", { name: "Luisteren", exact: true }).click();
-  await expect(page.locator(".topic-progress-number")).toHaveText(`${beforeListening.completed_count} / 100`);
+  await expect(page.locator(".topic-progress-number")).toHaveText(
+    `${beforeListening.completed_count} / ${beforeListening.total_topics}`,
+  );
   await page.getByLabel("Zoek een situatie").fill(topic.title.nl);
   await page.getByRole("button", { name: `Oefen ${topic.title.nl}`, exact: true }).click();
   await page.getByRole("button", { name: "Begin met luisteren", exact: true }).click();

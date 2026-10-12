@@ -17,16 +17,16 @@ from dlp.domains.exercises.pool import ODD_TOPIC_DISTANCE, build, contains_word,
 from dlp.domains.exercises.themes import THEMES, related
 
 # stage -> (words, words with a four-option choice, cloze cards, topics odd one out can use, distinct example
-#           sentences, distinct sentence frames, words new against the earlier stages); measured 10 Oct 2026 on
-#           the content of 6 Oct. Reused word lists (a1, pre-a2, b1, b2, pre-c1, c2 bring no new word) are
-#           labelled as review in roadmap step 3.9; the gate does not hide them.
+#           sentences, distinct sentence frames, words new against the earlier stages); measured 12 Oct 2026,
+#           including source packs. The original reused lists are still labelled as review in roadmap step 3.9;
+#           source additions are counted rather than concealed by the content gate.
 RECORDED = {
-    "pre-a1": (500, 500, 100, 100, 200, 494, 500),
-    "a1": (500, 500, 92, 100, 200, 495, 0),
+    "pre-a1": (501, 501, 100, 100, 201, 495, 501),
+    "a1": (502, 502, 92, 100, 202, 497, 2),
     "pre-a2": (500, 500, 87, 100, 200, 496, 0),
-    "a2": (500, 500, 422, 50, 500, 82, 407),
+    "a2": (503, 503, 422, 51, 503, 84, 407),
     "pre-b1": (500, 500, 419, 50, 500, 84, 19),
-    "b1": (500, 500, 417, 50, 500, 83, 0),
+    "b1": (503, 503, 417, 51, 503, 86, 0),
     "pre-b2": (500, 500, 429, 0, 500, 446, 435),
     "b2": (500, 500, 423, 0, 500, 447, 0),
     "pre-c1": (500, 500, 409, 0, 500, 446, 0),
@@ -51,11 +51,19 @@ def test_every_stage_is_recorded_and_passes_the_content_gate():
         assert variety.enabled, f"{stage_id} falls below the variety threshold"
 
 
-@pytest.mark.parametrize(("name", "value"), [("VARIETY_MIN_CHOICE_WORDS", 501), ("VARIETY_MIN_EXAMPLES", 201),
-                                              ("KIND_MIN_ITEMS", 101)])
-def test_a_thin_stage_is_kept_out(monkeypatch, name, value):
+@pytest.mark.parametrize("name", ["VARIETY_MIN_CHOICE_WORDS", "VARIETY_MIN_EXAMPLES", "KIND_MIN_ITEMS"])
+def test_a_thin_stage_is_kept_out(monkeypatch, name):
+    bank = library_for("a1")
+    variety = build(bank).variety
+    assert variety.enabled
+    # Stay exactly one above the measured boundary when additive packs increase the live bank. This still
+    # tests each gate independently; production thresholds are never reduced to make a thin stage pass.
+    kind_counts = sorted((variety.choice, variety.cloze, variety.odd_one_out), reverse=True)
+    value = {"VARIETY_MIN_CHOICE_WORDS": variety.choice + 1,
+             "VARIETY_MIN_EXAMPLES": variety.examples + 1,
+             "KIND_MIN_ITEMS": kind_counts[pool.VARIETY_MIN_KINDS - 1] + 1}[name]
     monkeypatch.setattr(pool, name, value)
-    assert not build(library_for("a1")).variety.enabled
+    assert not build(bank).variety.enabled
 
 
 def test_every_theme_names_topics_that_exist():
@@ -199,11 +207,38 @@ def test_two_hundred_sessions_per_stage_keep_the_rules(stage_id):
             assert all(a.word != b.word for a, b in zip(graded, graded[1:], strict=False) if a.word), "spread"
     assert {"choice", "cloze_choice", "cloze_typed", "typed_recall", "sentence_builder", "match_pairs",
             "listen_choose", "dictation"} <= kinds
-    # B1's examples are all longer than a sentence to shadow (3 to 10 words)
-    assert ("shadow" in kinds) == any(audio.shadow(stage, word) for word in stage.words)
+    # A uniform sample need not select the three short B1 supplement cards among 503 words. Availability
+    # has its own targeted coverage below; this random-session check still refuses unavailable shadow items.
+    if "shadow" in kinds:
+        assert any(audio.shadow(stage, word) for word in stage.words)
     assert ("odd_one_out" in kinds) == stage.odd_one_out
     assert ("de_het" in kinds) == bool(stage.sortable)
     assert ("sentence_order" in kinds) == bool(stage.orders)
+
+
+@pytest.mark.parametrize("stage_id", STAGE_IDS)
+def test_available_shadow_is_planned_in_a_targeted_topic(stage_id):
+    stage = pool_for(stage_id)
+    eligible = {topic: sum(word.id in stage.shadowed for word in stage.by_topic[topic])
+                / len(stage.by_topic[topic]) for topic in stage.topics}
+    topic = max(eligible, key=eligible.get)
+    assert eligible[topic] > 0, "the recorded catalog has a short speaking example in every stage"
+    met = frozenset(word.key for word in stage.words)
+    shadows = []
+    for seed in range(60):
+        drafts = blueprints.plan(stage, random.Random(f"{stage_id}:shadow:{seed}"), size=12, met=met,
+                                 library_topic=topic, audio=True)
+        for draft in drafts:
+            _check_prompt(stage, draft)
+        shadows.extend(draft for draft in drafts if draft.kind == "shadow")
+        if shadows:
+            break
+    assert shadows, f"{stage_id}: available shadow cards must be reachable through real topic planning"
+    for draft in shadows:
+        word = stage.by_id[draft.ref.removeprefix("word:")]
+        assert word.topic == topic
+        assert draft.prompt["sentence"] == draft.key["audio_text"] == stage.shadowed[word.id]
+        assert draft.skill == "speaking"
 
 
 @pytest.mark.parametrize("stage_id", ["a1", "b2"])
