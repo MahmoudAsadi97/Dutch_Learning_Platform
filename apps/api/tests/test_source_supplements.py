@@ -57,10 +57,18 @@ def test_source_topic_session_starts_completes_and_persists_progress(client, sta
         assert passage["kind"] == ("read_passage" if skill == "reading" else "listen_passage")
         assert len(questions) == 2
         assert all(item["kind"] == "choice" and item["skill"] == skill for item in questions)
-        serialized = json.dumps(view, ensure_ascii=False)
-        assert all(private not in serialized for private in ("answer_index", "explanation", "positions"))
-        topic = topics.topic_for(topics.topics_for(stage), topic_id)
-        assert all(question.explanation.nl not in serialized for question in getattr(topic, skill).questions)
+        def protected_fields(value):
+            if isinstance(value, dict):
+                return bool({"answer_index", "explanation", "positions"} & set(value)) or any(
+                    protected_fields(child) for child in value.values())
+            if isinstance(value, list):
+                return any(protected_fields(child) for child in value)
+            return False
+
+        assert not protected_fields(view)
+        # An explanation may quote the passage verbatim, especially at pre-A1. Those visible facts are
+        # the task, not a leaked key; protect answer/explanation fields and unreleased feedback instead.
+        assert all(item["feedback"] is None for item in questions)
         assert all(option.get("en") is None and option.get("fa") is None
                    for item in questions for option in item["prompt"]["options"])
         return response
