@@ -68,6 +68,13 @@ test("a conflict reads by its code, never by the API's English sentence", () => 
   assert.equal(errorFor(api(409, "toString"), copies, {}), copies.generic);
 });
 
+test("paid-call safeguards never describe an uncertain attempt as a provider outage or completed result", () => {
+  assert.equal(errorFor(api(503, "usage_accounting"), copies), copies.usageUnavailable);
+  assert.equal(errorFor(api(409, "paid_request_replayed"), copies), copies.paidAlreadyStarted);
+  assert.equal(errorFor(api(409, "paid_identity_pending"), copies), copies.profilePending);
+  assert.doesNotMatch(copies.paidAlreadyStarted.en, /completed|saved|refunded/i);
+});
+
 /** Codes whose message depends on the status or the screen: family codes, and one a screen words itself. */
 const GENERAL_CODES = new Set([
   "domain_error",
@@ -115,3 +122,4 @@ test("a failed episode or video says why, by its failure code", async () => {
   assert.equal(videoFailure("too_long", failures), failures.videoTooLong);
   assert.equal(videoFailure(null, failures), failures.videoAway);
 });
+

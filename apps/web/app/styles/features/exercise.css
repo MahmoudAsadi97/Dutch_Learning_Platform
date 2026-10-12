@@ -3,8 +3,10 @@
 @layer features {
   .exercise-session {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
     width: 100%;
+    min-width: 0;
     max-width: 46rem;
     margin: 0 auto;
   }
@@ -89,10 +91,14 @@
   }
   .exercise-stage {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
     gap: var(--space-4);
   }
   .exercise-item {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
     gap: var(--space-4);
     padding: var(--space-5);
     border: 1px solid var(--border);
@@ -136,7 +142,13 @@
   .exercise-meaning {
     display: inline-flex;
     flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
     gap: 0 var(--space-2);
+  }
+  .exercise-meaning > span {
+    min-width: 0;
   }
   .exercise-meaning [lang="fa"] {
     font-family: var(--font-persian-ui);
@@ -151,6 +163,12 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-3);
+  }
+  /* A translated label may be longer than its Dutch counterpart. Let the button shrink and its text wrap,
+     rather than allowing a grid item's implicit minimum to widen the entire reading verdict. */
+  .exercise-session .button {
+    max-width: 100%;
+    white-space: normal;
   }
   .exercise-keys {
     color: var(--text-muted);
@@ -590,6 +608,8 @@
   /* after the answer: a correct one in the success colours, everything else neutral */
   .feedback-bar {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
     gap: var(--space-3);
     padding: var(--space-4) var(--space-5);
     border: 1px solid var(--border-strong);
@@ -625,10 +645,15 @@
   }
   .feedback-correction {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
+    overflow-wrap: anywhere;
     gap: var(--space-3);
   }
   .feedback-word {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
     gap: var(--space-1);
     padding: var(--space-3) var(--space-4);
     border-radius: var(--radius-md);
@@ -661,6 +686,8 @@
   /* the summary */
   .exercise-summary {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
     gap: var(--space-4);
     padding: var(--space-5);
     border: 1px solid var(--border);
@@ -692,6 +719,8 @@
   }
   .summary-block {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
     gap: var(--space-2);
   }
   /* what a topic session did for the topic: a check once it counts as practised, otherwise neutral (never a
@@ -748,6 +777,14 @@
     color: var(--text-muted);
   }
 
+  @media (max-width: 600px) {
+    .exercise-item,
+    .feedback-bar,
+    .exercise-summary {
+      padding: var(--space-4);
+    }
+  }
+
   /* on Today, under the pending episode */
   .wait-practice {
     display: flex;
@@ -767,3 +804,4 @@
     color: var(--text-muted);
   }
 }
+

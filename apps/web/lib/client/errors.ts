@@ -30,6 +30,9 @@ export interface ErrorCopies {
   noRetry: Copy;
   nothingToRetry: Copy;
   inProgress: Copy;
+  usageUnavailable: Copy;
+  paidAlreadyStarted: Copy;
+  profilePending: Copy;
   evidenceShort: Copy;
 }
 
@@ -39,6 +42,9 @@ const BY_CODE: Record<string, keyof ErrorCopies> = {
   api_unreachable: "serverAway",
   upstream_timeout: "serverAway",
   usage_limit: "limit",
+  usage_accounting: "usageUnavailable",
+  paid_request_replayed: "paidAlreadyStarted",
+  paid_identity_pending: "profilePending",
   provider_unavailable: "modelAway",
   provider_failed: "modelAway",
   episodes_busy: "episodesBusy",
@@ -120,3 +126,4 @@ function errorKey(cause: unknown, overrides: ErrorOverrides): keyof ErrorCopies 
 export function isAbort(cause: unknown): boolean {
   return typeof cause === "object" && cause !== null && (cause as { name?: unknown }).name === "AbortError";
 }
+

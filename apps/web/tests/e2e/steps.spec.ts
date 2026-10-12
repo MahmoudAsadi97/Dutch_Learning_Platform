@@ -12,9 +12,9 @@ test.describe("listening and writing steps", () => {
     await expect(step.getByTestId("clip-label")).toContainText("Synthetische luisterstem");
     await expect(step.getByTestId("play-count")).toContainText("1× beluisterd");
     await step.getByTestId("toggle-transcript").click();
-    await expect(step.getByTestId("transcript")).toContainText("Tandarts De Smet is woensdag ziek");
+    await expect(step.getByTestId("transcript")).toContainText("U hebt woensdag om twee uur een afspraak");
 
-    await step.getByRole("radio", { name: /De tandarts is ziek/ }).check();
+    await step.getByRole("radio", { name: /Herinnering aan uw afspraak/ }).check();
     await step.getByTestId("listen-voicemail-check").click();
     await expect(step.getByTestId("score")).toHaveText("1 van 1 juist");
     await expect(step.getByTestId("listen-voicemail-done")).toBeVisible();
@@ -84,3 +84,4 @@ test.describe("listening and writing steps", () => {
     ).toEqual(["listening", "reading", "speaking", "writing"]);
   });
 });
+

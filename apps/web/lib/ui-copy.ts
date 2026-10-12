@@ -540,6 +540,21 @@ export const uiCopy = {
       en: "Your answer is still being processed. Try again in a moment.",
       fa: "پاسخت هنوز در حال بررسی است. کمی بعد دوباره امتحان کن.",
     },
+    usageUnavailable: {
+      nl: "Deze oefening kan tijdelijk niet starten. Probeer het straks opnieuw.",
+      en: "This exercise cannot start right now. Please try again later.",
+      fa: "این تمرین فعلاً نمی‌تواند شروع شود. کمی بعد دوباره امتحان کن.",
+    },
+    paidAlreadyStarted: {
+      nl: "Deze poging is al gestart en kan niet nog eens worden verstuurd. Wacht even voordat je een nieuwe poging begint.",
+      en: "This attempt has already started and cannot be sent again. Wait a moment before starting a new attempt.",
+      fa: "این تلاش قبلاً شروع شده و نمی‌توان آن را دوباره فرستاد. پیش از شروع تلاش تازه کمی صبر کن.",
+    },
+    profilePending: {
+      nl: "Je profiel wordt nog klaargezet. Vernieuw de pagina en probeer het opnieuw.",
+      en: "Your profile is still being prepared. Refresh the page and try again.",
+      fa: "نمایه‌ات هنوز در حال آماده شدن است. صفحه را تازه کن و دوباره امتحان کن.",
+    },
     loadFailed: {
       nl: "Dit kon niet worden geladen. Probeer het zo opnieuw.",
       en: "This could not be loaded. Try again in a moment.",
@@ -668,3 +683,4 @@ export function allCopy(): { key: string; copy: Copy }[] {
     Object.entries(entries).map(([name, copy]) => ({ key: `${group}.${name}`, copy })),
   );
 }
+

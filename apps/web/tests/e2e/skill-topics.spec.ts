@@ -379,7 +379,28 @@ async function mockTopicSessions(page: Page, sets: Sets) {
 async function checkTopicWidths(page: Page, testInfo: TestInfo, name: string) {
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    const layout = await page.evaluate(() => ({
+      viewport: innerWidth,
+      document: document.documentElement.scrollWidth,
+      // Keep failure evidence focused on visible containers instead of an unexplained false assertion.
+      outside: Array.from(document.querySelectorAll<HTMLElement>(".topic-reader, .topic-reader *"))
+        .filter((element) => {
+          const box = element.getBoundingClientRect();
+          return box.width > 0 && (box.right > innerWidth + 1 || box.left < -1);
+        })
+        .slice(0, 12)
+        .map((element) => ({
+          tag: element.tagName,
+          className: element.className,
+          width: element.getBoundingClientRect().width,
+          right: element.getBoundingClientRect().right,
+        })),
+    }));
+    await testInfo.attach(`${name}-${width}-layout`, {
+      body: JSON.stringify(layout, null, 2),
+      contentType: "application/json",
+    });
+    expect(layout.document, JSON.stringify(layout.outside)).toBeLessThanOrEqual(layout.viewport);
     const results = await new AxeBuilder({ page })
       .include(".topic-reader")
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
@@ -953,3 +974,4 @@ test("a reused topic says which stage it repeats", async ({ page }) => {
   await expect(page.locator(".topic-start")).toContainText("Dit kwam al voor bij pre-A1.");
   expect(sessions).toEqual([]);
 });
+

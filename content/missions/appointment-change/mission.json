@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "appointment-change",
-  "version": 2,
+  "version": 3,
   "cefr_target": "A2",
   "title": {
     "nl": "Een afspraak verzetten",
@@ -269,12 +269,12 @@
       },
       "payload": {
         "type": "listening",
-        "audio_key": "fixed/appointment-change/voicemail-base.wav",
+        "audio_key": "fixed/appointment-change/voicemail-base-v3.wav",
         "transcript": {
-          "nl": "Goeiedag, u spreekt met Tandartspraktijk Molenstraat. Tandarts De Smet is woensdag ziek. Kunt u ons terugbellen om een nieuwe afspraak te maken? Bedankt en tot ziens.",
-          "fa": "روز بخیر، مطب دندان‌پزشکی مولن‌استرات هستیم. دندان‌پزشک دِ اسمِت چهارشنبه بیمار است. می‌توانید با ما تماس بگیرید تا قرار تازه‌ای بگذاریم؟ ممنون و خدانگهدار.",
+          "nl": "Tandartspraktijk Molenstraat. U hebt woensdag om twee uur een afspraak met tandarts De Smet. Kunt u niet komen? Bel op voorhand om uw afspraak te verzetten. Tot ziens.",
+          "fa": "مطب دندان‌پزشکی مولن‌استرات. شما چهارشنبه ساعت دو با دندان‌پزشک دِ اسمِت قرار دارید. نمی‌توانید بیایید؟ از قبل تلفن بزنید تا قرار خود را جابه‌جا کنید. خدانگهدار.",
           "review_status": "unreviewed",
-          "en": "Hello, this is Molenstraat Dental Practice. Dentist De Smet is ill on Wednesday. Could you call us back to make a new appointment? Thank you and goodbye."
+          "en": "Molenstraat Dental Practice. You have an appointment with dentist De Smet on Wednesday at two o’clock. Can you not attend? Call in advance to change your appointment. Goodbye."
         },
         "questions": [
           {
@@ -287,10 +287,10 @@
             },
             "options": [
               {
-                "nl": "De tandarts is ziek",
-                "fa": "دندان‌پزشک بیمار است",
+                "nl": "Herinnering aan uw afspraak",
+                "fa": "برای یادآوری قرار شما",
                 "review_status": "unreviewed",
-                "en": "The dentist is ill"
+                "en": "A reminder about your appointment"
               },
               {
                 "nl": "De praktijk is gesloten",
@@ -310,23 +310,23 @@
               {
                 "level": 1,
                 "kind": "hint_nl",
-                "text": "Luister naar de tweede zin.",
+                "text": "Luister naar de zin over woensdag en twee uur.",
                 "direction": "ltr",
-                "en": "Listen to the second sentence."
+                "en": "Listen to the sentence about Wednesday and two o’clock."
               },
               {
                 "level": 2,
                 "kind": "gloss_fa",
-                "text": "ziek = بیمار، terugbellen = دوباره تماس گرفتن",
+                "text": "afspraak = قرار، op voorhand = از قبل، verzetten = جابه‌جا کردن",
                 "direction": "rtl",
-                "en": "ziek = ill; terugbellen = to call back"
+                "en": "afspraak = appointment; op voorhand = in advance; verzetten = to change"
               },
               {
                 "level": 3,
                 "kind": "translation_fa",
-                "text": "دندان‌پزشک چهارشنبه بیمار است؛ به همین دلیل مطب تماس می‌گیرد.",
+                "text": "مطب قرار چهارشنبه ساعت دو را یادآوری می‌کند. اگر نمی‌توانید بیایید، از قبل تلفن بزنید.",
                 "direction": "rtl",
-                "en": "The dentist is ill on Wednesday; that is why the practice is calling."
+                "en": "The practice reminds you of Wednesday at two o’clock. If you cannot attend, call in advance."
               }
             ]
           }
@@ -342,9 +342,9 @@
           {
             "level": 2,
             "kind": "gloss_fa",
-            "text": "u spreekt met = شما صحبت می‌کنید با، nieuwe afspraak = قرار تازه",
+            "text": "u spreekt met = شما صحبت می‌کنید با، op voorhand = از قبل",
             "direction": "rtl",
-            "en": "u spreekt met = you are speaking to; nieuwe afspraak = a new appointment"
+            "en": "u spreekt met = you are speaking to; op voorhand = in advance"
           },
           {
             "level": 3,

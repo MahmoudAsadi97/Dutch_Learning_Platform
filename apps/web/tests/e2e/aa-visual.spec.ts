@@ -5,9 +5,10 @@ import { episodeId, storyFixture, wordsFixture } from "./fixtures/stories";
  * Screenshot baselines of the learner-facing screens at three widths. They freeze the look of the app so
  * that the design-system work can prove which steps change pixels and which do not.
  *
- * Baselines are rendered on Linux only (font rasterisation differs per platform): CI's runner, or the pinned
- * Playwright container started by `python scripts/run.py e2e-visual`, which sets VISUAL_LOCAL=1. On a
- * developer machine the spec is skipped. The file name starts with "aa" so it runs first, on the learner that
+ * Baselines are checked in the pinned Playwright container by CI and `python scripts/run.py e2e-visual`,
+ * which sets VISUAL_LOCAL=1. The regular browser job excludes @visual; it still checks the full functional
+ * and accessibility journeys. On a non-Linux developer machine this spec is skipped. The file name starts
+ * with "aa" so it runs first, on the learner that
  * the e2e task has just reset; the daily plan, the episode and the word bank come from route fixtures because
  * the real ones depend on a background writer.
  */
@@ -39,7 +40,7 @@ const screens: { name: string; path: string; ready: string }[] = [
 
 for (const screen of screens) {
   for (const width of [1440, 390, 320]) {
-    test(`${screen.name} at ${width}px`, async ({ page }) => {
+    test(`${screen.name} at ${width}px`, { tag: "@visual" }, async ({ page }) => {
       await page.clock.setFixedTime(fixedTime);
       await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
       await storyFixture(page);
@@ -56,3 +57,4 @@ for (const screen of screens) {
     });
   }
 }
+
