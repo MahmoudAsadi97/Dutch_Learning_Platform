@@ -18,10 +18,14 @@ python3 scripts/azure_release.py verify-ci --repository "$DLP_RELEASE_REPOSITORY
 az account show --query '{subscription:name,id:id}' --output table
 az group show --name "$DLP_RELEASE_GROUP" --query '{name:name,location:location}' --output table
 python3 scripts/azure_release.py verify --resource-group "$DLP_RELEASE_GROUP" --prefix "$DLP_RELEASE_PREFIX"
+# Build only committed application files, never the laptop's full working directory.
+DLP_RELEASE_CONTEXT="$(mktemp -d "${TMPDIR:-/tmp}/dlp-release.XXXXXXXX")"
+trap 'rm -rf -- "$DLP_RELEASE_CONTEXT"' EXIT
+git archive "$DLP_RELEASE_SHA" .dockerignore apps/api apps/web content | tar -x -C "$DLP_RELEASE_CONTEXT"
 az acr build --registry "$DLP_RELEASE_ACR" --image "dlp-api:$DLP_RELEASE_SHA" --file apps/api/Dockerfile \
-  --build-arg "RELEASE_SHA=$DLP_RELEASE_SHA" .
+  --build-arg "RELEASE_SHA=$DLP_RELEASE_SHA" "$DLP_RELEASE_CONTEXT"
 az acr build --registry "$DLP_RELEASE_ACR" --image "dlp-web:$DLP_RELEASE_SHA" --file apps/web/Dockerfile \
-  --build-arg "RELEASE_SHA=$DLP_RELEASE_SHA" .
+  --build-arg "RELEASE_SHA=$DLP_RELEASE_SHA" "$DLP_RELEASE_CONTEXT"
 DLP_RELEASE_SERVER="$(az acr show --name "$DLP_RELEASE_ACR" --query loginServer --output tsv)"
 DLP_RELEASE_API_DIGEST="$(az acr repository show --name "$DLP_RELEASE_ACR" --image "dlp-api:$DLP_RELEASE_SHA" --query digest --output tsv)"
 DLP_RELEASE_WEB_DIGEST="$(az acr repository show --name "$DLP_RELEASE_ACR" --image "dlp-web:$DLP_RELEASE_SHA" --query digest --output tsv)"
