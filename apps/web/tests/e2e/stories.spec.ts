@@ -94,11 +94,11 @@ test("reading an episode: finish, answer, save a word, choose how it continues",
   await expect(reader.getByRole("heading", { name: "1 van 2 juist" })).toBeVisible();
   await expect(reader.getByText("In het verhaal: “Baas, de oude hond, ligt bij de deur.”")).toBeVisible();
   await expect(reader.getByRole("heading", { name: "Hoe gaat het verder?" })).toBeVisible();
-  await reader.getByRole("button", { name: /Sami gaat naar mevrouw De Clercq\./ }).click();
+  await reader.getByRole("button", { name: "Sami gaat naar mevrouw De Clercq.", exact: true }).click();
   await expect(
     reader.getByRole("heading", { name: "De volgende aflevering wordt geschreven." }),
   ).toBeVisible();
-  await expect(reader.getByRole("button", { name: /Sami vraagt Tom om hulp\./ })).toBeDisabled();
+  await expect(reader.getByRole("button", { name: "Sami vraagt Tom om hulp.", exact: true })).toBeDisabled();
   expect(fixture.posts).toEqual(["/words", "/read", "/answers", "/choice"]);
   const yes = reader.getByRole("button", { name: "Ja", exact: true });
   await yes.click();
