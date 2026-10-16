@@ -15,6 +15,7 @@ from dlp.domains.exercises.schemas import (
     CreateBody,
     FinishBody,
     FinishResult,
+    ItemView,
     OverrideBody,
     ReportBody,
     ReportResult,
@@ -59,6 +60,13 @@ def skip_item(session_id: uuid.UUID, item_id: uuid.UUID, body: SkipBody,
               ctx: RequestContext = Depends(context_dep), session: Session = db_session):
     return _run(lambda: service.respond(session, ctx.learner.id, session_id, item_id, request_id=body.request_id,
                                         skip=body.reason))
+
+
+@router.post("/sessions/{session_id}/items/{item_id}/assistance", response_model=ItemView)
+def mark_item_assistance(session_id: uuid.UUID, item_id: uuid.UUID,
+                         ctx: RequestContext = Depends(context_dep), session: Session = db_session):
+    """Record support before playback. A repeated call is a harmless sticky flag."""
+    return _run(lambda: service.mark_assistance(session, ctx.learner.id, session_id, item_id))
 
 
 class WavResponse(Response):

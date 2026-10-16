@@ -18,20 +18,20 @@ from tests.conftest import auth_headers
 
 # stage -> (words with a typed cloze, words with a typed recall (not a word its meaning spells), nouns to sort
 #           into de/het (never one that takes both articles), words with a sentence to build, paragraphs to put in
-#           order); the other kinds work for every word. Measured 12 Oct 2026 including additive source packs.
+#           order); the other kinds work for every word. Measured 16 Oct 2026 including source and connected packs.
 AVAILABLE = {
-    "pre-a1": (449, 457, 303, 108, 0),
-    "a1": (450, 458, 305, 187, 0),
-    "pre-a2": (450, 456, 303, 136, 0),
-    "a2": (464, 467, 319, 365, 0),
-    "pre-b1": (459, 461, 337, 140, 103),
-    "b1": (461, 466, 341, 104, 4),
-    "pre-b2": (437, 488, 399, 232, 100),
-    "b2": (432, 488, 399, 233, 200),
-    "pre-c1": (416, 488, 399, 239, 200),
-    "c1": (488, 489, 0, 229, 198),
-    "pre-c2": (492, 493, 0, 220, 199),
-    "c2": (492, 494, 0, 224, 199),
+    'pre-a1': (451, 461, 303, 108, 0),
+    'a1': (452, 463, 307, 189, 0),
+    'pre-a2': (453, 460, 304, 138, 0),
+    'a2': (470, 475, 320, 368, 0),
+    'pre-b1': (464, 469, 338, 144, 107),
+    'b1': (467, 474, 342, 109, 8),
+    'pre-b2': (443, 499, 401, 235, 104),
+    'b2': (435, 496, 400, 235, 204),
+    'pre-c1': (423, 498, 401, 245, 204),
+    'c1': (496, 500, 0, 235, 202),
+    'pre-c2': (499, 504, 0, 226, 203),
+    'c2': (503, 506, 0, 230, 203),
 }
 
 

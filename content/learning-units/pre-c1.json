@@ -1,0 +1,858 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-c1",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "pre-c1-unit-letter-without-instruction-v1",
+      "term": "suggereren",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een mogelijkheid oproepen zonder die uitdrukkelijk vast te leggen.",
+        "en": "Suggest a possibility without stating it explicitly as certain.",
+        "fa": "احتمالی را مطرح کردن بدون قطعی گفتن آن."
+      },
+      "example": {
+        "nl": "De herinnering suggereert toenadering.",
+        "en": "The memory suggests a wish for closeness.",
+        "fa": "خاطره احتمال نزدیک شدن را مطرح می‌کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-c1-unit-letter-without-instruction-v2",
+      "term": "doorstrepen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Doorstrepen zodat een tekst niet als geldige versie blijft staan.",
+        "en": "Cross out a text so that it no longer stands as the valid version.",
+        "fa": "روی متن خط کشیدن تا نسخه معتبر نباشد."
+      },
+      "example": {
+        "nl": "Ze heeft de laatste alinea doorgestreept.",
+        "en": "She crossed out the final paragraph.",
+        "fa": "بند آخر را خط زده است."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-c1-unit-letter-without-instruction-v3",
+      "term": "de verzoening",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Het herstel van contact na een conflict.",
+        "en": "The restoration of a relationship after a conflict.",
+        "fa": "بازسازی رابطه پس از تعارض؛ آشتی."
+      },
+      "example": {
+        "nl": "Een verzoening wordt nergens bevestigd.",
+        "en": "A reconciliation is nowhere confirmed.",
+        "fa": "هیچ‌جا آشتی تأیید نشده است."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "pre-c1-unit-letter-without-instruction-v4",
+      "term": "eenduidig",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Slechts op één manier uit te leggen.",
+        "en": "Open to only one interpretation.",
+        "fa": "دارای یک تفسیر روشن."
+      },
+      "example": {
+        "nl": "De bedoeling is niet eenduidig.",
+        "en": "The intention is not clear-cut.",
+        "fa": "قصد روشن و یک‌معنا نیست."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "pre-c1-unit-letter-without-instruction-v6",
+      "term": "voor zover",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Binnen de grenzen van wat bekend of mogelijk is.",
+        "en": "Within the limits of what is known or possible.",
+        "fa": "تا جایی که معلوم یا ممکن است."
+      },
+      "example": {
+        "nl": "Voor zover ik weet, bestaat er geen tweede versie.",
+        "en": "As far as I know, there is no second version.",
+        "fa": "تا جایی که می‌دانم، نسخه دومی وجود ندارد."
+      },
+      "part_of_speech": "expression"
+    },
+    {
+      "id": "pre-c1-unit-second-voice-v1",
+      "term": "bewerken",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een bestaande tekst voor een doel aanpassen.",
+        "en": "Adapt an existing text for a purpose.",
+        "fa": "متن موجود را برای هدفی ویرایش کردن."
+      },
+      "example": {
+        "nl": "Lien bewerkt het interview voor een tijdschrift.",
+        "en": "Lien edits the interview for a magazine.",
+        "fa": "لین مصاحبه را برای مجله ویرایش می‌کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-c1-unit-second-voice-v2",
+      "term": "waarborgen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Ervoor zorgen dat iets behouden of beschermd blijft.",
+        "en": "Ensure something remains preserved or protected.",
+        "fa": "حفظ یا حفاظت چیزی را تضمین کردن."
+      },
+      "example": {
+        "nl": "De herlezing moet zijn stem waarborgen.",
+        "en": "Rereading should safeguard his voice.",
+        "fa": "بازخوانی باید صدای او را حفظ کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-c1-unit-second-voice-v3",
+      "term": "de strekking",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De wezenlijke bedoeling of betekenis van een uitspraak.",
+        "en": "The essential import or meaning of a statement.",
+        "fa": "مفهوم اصلی گفته."
+      },
+      "example": {
+        "nl": "De strekking mag bij inkorting niet veranderen.",
+        "en": "The meaning must not change when the text is shortened.",
+        "fa": "با کوتاه‌سازی نباید مفهوم اصلی تغییر کند."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "pre-c1-unit-second-voice-v4",
+      "term": "stellig",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zonder zichtbare twijfel geformuleerd.",
+        "en": "Expressed without visible doubt.",
+        "fa": "با قطعیت بیان‌شده."
+      },
+      "example": {
+        "nl": "De eerste versie klonk te stellig.",
+        "en": "The first version sounded too definite.",
+        "fa": "نسخه اول بیش از حد قطعی بود."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "pre-c1-unit-second-voice-v6",
+      "term": "recht doen aan",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De betekenis of waarde van iets voldoende respecteren.",
+        "en": "Give proper recognition to the meaning or value of something.",
+        "fa": "حق معنا یا ارزش چیزی را ادا کردن."
+      },
+      "example": {
+        "nl": "De tekst moet recht doen aan zijn twijfel.",
+        "en": "The text must do justice to his doubt.",
+        "fa": "متن باید حق تردید او را ادا کند."
+      },
+      "part_of_speech": "expression"
+    }
+  ],
+  "stories": [
+    {
+      "id": "pre-c1-s-unit-letter-without-instruction",
+      "title": {
+        "nl": "Wat de brief niet zei",
+        "en": "What the letter did not say",
+        "fa": "آنچه نامه نگفت"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een ingehouden familiedrama",
+        "en": "A restrained family drama",
+        "fa": "درام خانوادگی آرام"
+      },
+      "lines": [
+        {
+          "nl": "In de schrijftafel van zijn overleden tante vond Wout een ongeposte brief aan zijn vader, met wie zij al jaren geen contact had.",
+          "en": "In his late aunt's writing desk, Wout found an unposted letter to his father, with whom she had not been in contact for years.",
+          "fa": "ووت در میز تحریر عمه درگذشته‌اش نامه‌ای ارسال‌نشده به پدرش یافت؛ آن دو سال‌ها با هم ارتباطی نداشتند."
+        },
+        {
+          "nl": "De brief begon zakelijk over een uitgeleend schilderij, maar eindigde met een herinnering aan hun eerste fietstocht naar zee.",
+          "en": "The letter began with businesslike remarks about a loaned painting, but ended with a memory of their first bicycle ride to the sea.",
+          "fa": "نامه با حرف‌های رسمی درباره تابلوی قرض‌داده‌شده شروع می‌شد، اما با خاطره نخستین دوچرخه‌سواری‌شان به دریا پایان می‌یافت."
+        },
+        {
+          "nl": "Nergens stond dat ze verzoening zocht; toch las Wout in de beschrijving van de tegenwind een voorzichtig verlangen naar toenadering.",
+          "en": "Nowhere did it say she sought reconciliation; nevertheless, Wout read a tentative wish for renewed closeness in the description of the headwind.",
+          "fa": "هیچ‌جا نگفته بود آشتی می‌خواهد؛ بااین‌حال ووت در توصیف باد مخالف میلی محتاطانه به نزدیک شدن می‌دید."
+        },
+        {
+          "nl": "Hij wilde zijn vader onmiddellijk bellen, totdat hij zag dat de laatste bladzijde was doorgestreept en opnieuw begonnen.",
+          "en": "He wanted to call his father immediately, until he saw that the final page had been crossed out and restarted.",
+          "fa": "می‌خواست فوراً به پدرش زنگ بزند، تا دید صفحه آخر خط خورده و از نو شروع شده است."
+        },
+        {
+          "nl": "Zijn zus merkte op dat een bewaarde brief ook een gedachte kon zijn die hun tante nooit had willen versturen.",
+          "en": "His sister pointed out that a preserved letter could also be a thought their aunt had never intended to send.",
+          "fa": "خواهرش گفت نامه نگه‌داشته‌شده ممکن است فکری باشد که عمه‌شان هرگز قصد فرستادنش را نداشته است."
+        },
+        {
+          "nl": "Daarop lazen ze de tekst opnieuw, nu met aandacht voor wat er werkelijk stond en wat zij er zelf bij dachten.",
+          "en": "They therefore read the text again, now attending to what it actually said and what they themselves were adding.",
+          "fa": "پس دوباره متن را خواندند، این بار با توجه به آنچه واقعاً نوشته بود و آنچه خودشان به آن می‌افزودند."
+        },
+        {
+          "nl": "Wout vertelde zijn vader alleen dat er een persoonlijke brief bestond en vroeg of hij die wilde lezen.",
+          "en": "Wout told his father only that a personal letter existed and asked whether he wished to read it.",
+          "fa": "ووت فقط به پدرش گفت نامه‌ای شخصی وجود دارد و پرسید آیا مایل است آن را بخواند."
+        },
+        {
+          "nl": "Zijn vader vroeg geen samenvatting, maar een dag bedenktijd; die stilte voelde voor Wout moeilijker dan een weigering.",
+          "en": "His father asked not for a summary but for a day to think; Wout found that silence harder than a refusal.",
+          "fa": "پدرش خلاصه نخواست؛ یک روز فرصت فکر کردن خواست. آن سکوت برای ووت از جواب رد سخت‌تر بود."
+        },
+        {
+          "nl": "De volgende avond las zijn vader de brief en wees op de fietstocht: daarover hadden ze ondanks alles altijd kunnen lachen.",
+          "en": "The following evening, his father read the letter and pointed to the bicycle ride: despite everything, they had always been able to laugh about that.",
+          "fa": "شب بعد پدرش نامه را خواند و به دوچرخه‌سواری اشاره کرد؛ با وجود همه چیز، همیشه می‌توانستند به آن بخندند."
+        },
+        {
+          "nl": "Wout kreeg geen antwoord op alle vragen, maar begreep dat een gedeelde herinnering niet hetzelfde hoefde te zijn als een opgeloste ruzie.",
+          "en": "Wout did not receive answers to all his questions, but understood that a shared memory need not be the same as a resolved quarrel.",
+          "fa": "ووت پاسخ همه پرسش‌ها را نگرفت، اما فهمید خاطره مشترک لزوماً همان دعوای حل‌شده نیست."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "In de schrijftafel van zijn overleden tante vond Wout een ongeposte brief aan zijn vader, met wie zij al jaren geen contact had. De brief begon zakelijk over een uitgeleend schilderij, maar eindigde met een herinnering aan hun eerste fietstocht naar zee. Nergens stond dat ze verzoening zocht; toch las Wout in de beschrijving van de tegenwind een voorzichtig verlangen naar toenadering. Hij wilde zijn vader onmiddellijk bellen, totdat hij zag dat de laatste bladzijde was doorgestreept en opnieuw begonnen. Zijn zus merkte op dat een bewaarde brief ook een gedachte kon zijn die hun tante nooit had willen versturen.",
+          "en": "In his late aunt's writing desk, Wout found an unposted letter to his father, with whom she had not been in contact for years. The letter began with businesslike remarks about a loaned painting, but ended with a memory of their first bicycle ride to the sea. Nowhere did it say she sought reconciliation; nevertheless, Wout read a tentative wish for renewed closeness in the description of the headwind. He wanted to call his father immediately, until he saw that the final page had been crossed out and restarted. His sister pointed out that a preserved letter could also be a thought their aunt had never intended to send.",
+          "fa": "ووت در میز تحریر عمه درگذشته‌اش نامه‌ای ارسال‌نشده به پدرش یافت؛ آن دو سال‌ها با هم ارتباطی نداشتند. نامه با حرف‌های رسمی درباره تابلوی قرض‌داده‌شده شروع می‌شد، اما با خاطره نخستین دوچرخه‌سواری‌شان به دریا پایان می‌یافت. هیچ‌جا نگفته بود آشتی می‌خواهد؛ بااین‌حال ووت در توصیف باد مخالف میلی محتاطانه به نزدیک شدن می‌دید. می‌خواست فوراً به پدرش زنگ بزند، تا دید صفحه آخر خط خورده و از نو شروع شده است. خواهرش گفت نامه نگه‌داشته‌شده ممکن است فکری باشد که عمه‌شان هرگز قصد فرستادنش را نداشته است."
+        },
+        {
+          "nl": "Daarop lazen ze de tekst opnieuw, nu met aandacht voor wat er werkelijk stond en wat zij er zelf bij dachten. Wout vertelde zijn vader alleen dat er een persoonlijke brief bestond en vroeg of hij die wilde lezen. Zijn vader vroeg geen samenvatting, maar een dag bedenktijd; die stilte voelde voor Wout moeilijker dan een weigering. De volgende avond las zijn vader de brief en wees op de fietstocht: daarover hadden ze ondanks alles altijd kunnen lachen. Wout kreeg geen antwoord op alle vragen, maar begreep dat een gedeelde herinnering niet hetzelfde hoefde te zijn als een opgeloste ruzie.",
+          "en": "They therefore read the text again, now attending to what it actually said and what they themselves were adding. Wout told his father only that a personal letter existed and asked whether he wished to read it. His father asked not for a summary but for a day to think; Wout found that silence harder than a refusal. The following evening, his father read the letter and pointed to the bicycle ride: despite everything, they had always been able to laugh about that. Wout did not receive answers to all his questions, but understood that a shared memory need not be the same as a resolved quarrel.",
+          "fa": "پس دوباره متن را خواندند، این بار با توجه به آنچه واقعاً نوشته بود و آنچه خودشان به آن می‌افزودند. ووت فقط به پدرش گفت نامه‌ای شخصی وجود دارد و پرسید آیا مایل است آن را بخواند. پدرش خلاصه نخواست؛ یک روز فرصت فکر کردن خواست. آن سکوت برای ووت از جواب رد سخت‌تر بود. شب بعد پدرش نامه را خواند و به دوچرخه‌سواری اشاره کرد؛ با وجود همه چیز، همیشه می‌توانستند به آن بخندند. ووت پاسخ همه پرسش‌ها را نگرفت، اما فهمید خاطره مشترک لزوماً همان دعوای حل‌شده نیست."
+        }
+      ],
+      "topic_id": "pre-c1-t-unit-letter-without-instruction",
+      "vocabulary_ids": [
+        "pre-c1-unit-letter-without-instruction-v1",
+        "pre-c1-unit-letter-without-instruction-v2",
+        "pre-c1-unit-letter-without-instruction-v3",
+        "pre-c1-unit-letter-without-instruction-v4",
+        "pre-c1-v479",
+        "pre-c1-unit-letter-without-instruction-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom verandert de opmerking van zijn zus Wouts aanpak?",
+          "en": "Why does his sister's remark change Wout's approach?",
+          "fa": "چرا حرف خواهر روش ووت را عوض می‌کند؟"
+        },
+        "options": [
+          {
+            "nl": "Ze bewijst dat de brief door iemand anders is geschreven.",
+            "en": "She proves that somebody else wrote the letter.",
+            "fa": "ثابت می‌کند شخص دیگری نامه را نوشته است."
+          },
+          {
+            "nl": "Ze maakt zichtbaar dat bewaren niet noodzakelijk willen versturen betekent.",
+            "en": "She makes clear that keeping a letter does not necessarily mean intending to send it.",
+            "fa": "نشان می‌دهد نگه داشتن نامه لزوماً به معنی قصد فرستادن نیست."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Haar opmerking zet een grens tussen een mogelijke lezing en een bewezen bedoeling.",
+          "en": "Her remark sets a boundary between a possible reading and a proven intention.",
+          "fa": "حرفش میان خوانش احتمالی و قصد اثبات‌شده مرز می‌گذارد."
+        }
+      }
+    },
+    {
+      "id": "pre-c1-s-unit-second-voice",
+      "title": {
+        "nl": "De tweede stem",
+        "en": "The second voice",
+        "fa": "صدای دوم"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een redactieverhaal over vertrouwen",
+        "en": "An editorial story about trust",
+        "fa": "داستان تحریریه و اعتماد"
+      },
+      "lines": [
+        {
+          "nl": "Voor een klein literair tijdschrift bewerkte Lien een interview met een jonge danser die na een blessure opnieuw begon.",
+          "en": "For a small literary magazine, Lien edited an interview with a young dancer starting again after an injury.",
+          "fa": "لین برای مجله ادبی کوچکی مصاحبه رقصنده جوانی را ویرایش می‌کرد که پس از آسیب دوباره شروع کرده بود."
+        },
+        {
+          "nl": "Ze schrapte herhalingen, aarzelingen en halve zinnen, totdat zijn antwoorden even soepel klonken als haar eigen vragen.",
+          "en": "She removed repetitions, hesitations and unfinished sentences until his answers sounded as smooth as her own questions.",
+          "fa": "تکرارها، مکث‌های مردد و جمله‌های نیمه‌تمام را حذف کرد تا جواب‌ها به روانی پرسش‌های خودش شدند."
+        },
+        {
+          "nl": "De danser bedankte haar eerst, maar vroeg bij de tweede lezing waarom hij nergens meer leek te twijfelen.",
+          "en": "The dancer initially thanked her, but on a second reading asked why he no longer seemed to doubt anything.",
+          "fa": "رقصنده اول تشکر کرد، اما در خواندن دوم پرسید چرا دیگر هیچ‌جا انگار تردید ندارد."
+        },
+        {
+          "nl": "Lien wees op de leesbaarheid; hij wees op de zin waarin zijn voorzichtige hoop een stellige belofte was geworden.",
+          "en": "Lien pointed to readability; he pointed to the sentence where his tentative hope had become a firm promise.",
+          "fa": "لین به خوانایی اشاره کرد؛ او به جمله‌ای که امید محتاطانه‌اش در آن وعده قطعی شده بود."
+        },
+        {
+          "nl": "Toen ze samen de opname beluisterden, hoorde Lien dat zijn stiltes vaak de grens tussen verlangen en zekerheid markeerden.",
+          "en": "When they listened to the recording together, Lien heard that his silences often marked the boundary between desire and certainty.",
+          "fa": "وقتی با هم ضبط را شنیدند، لین فهمید سکوت‌هایش اغلب مرز خواستن و مطمئن بودن را نشان می‌داد."
+        },
+        {
+          "nl": "Ze stelde voor de tekst minder glad te maken, zonder iedere verspreking letterlijk terug te zetten.",
+          "en": "She proposed making the text less polished without restoring every slip of the tongue word for word.",
+          "fa": "پیشنهاد کرد متن کمتر صیقلی شود، بدون آنکه هر لغزش زبانی کلمه‌به‌کلمه برگردد."
+        },
+        {
+          "nl": "Bij het moeilijkste antwoord voegden ze een korte beschrijving toe van het moment waarop hij naar zijn schoenen keek.",
+          "en": "At the most difficult answer, they added a short description of the moment when he looked down at his shoes.",
+          "fa": "کنار دشوارترین پاسخ توصیف کوتاهی از لحظه نگاه کردن او به کفش‌هایش افزودند."
+        },
+        {
+          "nl": "Hij wilde niet zielig worden voorgesteld, zei hij, maar ook niet als iemand die zijn herstel volledig beheerste.",
+          "en": "He did not want to be portrayed as pitiful, he said, but neither as someone entirely in control of his recovery.",
+          "fa": "گفت نمی‌خواهد ترحم‌برانگیز نشانش بدهند، اما درعین‌حال نمی‌خواهد مثل کسی جلوه کند که کاملاً بر روند بهبودی‌اش مسلط است."
+        },
+        {
+          "nl": "De nieuwe versie werd iets langer en verloor een pakkende kop, maar de danser herkende zichzelf erin.",
+          "en": "The new version became slightly longer and lost a catchy headline, but the dancer recognised himself in it.",
+          "fa": "نسخه تازه کمی بلندتر شد و عنوان جذابی را از دست داد، اما رقصنده خودش را در آن بازشناخت."
+        },
+        {
+          "nl": "Toen Lien het bestand opsloeg, noemde ze het niet definitief, maar gelezen door ons beiden.",
+          "en": "When Lien saved the file, she named it not final but read by both of us.",
+          "fa": "وقتی لین فایل را ذخیره کرد، نامش را نه نهایی، بلکه خوانده‌شده توسط هر دوی ما گذاشت."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Voor een klein literair tijdschrift bewerkte Lien een interview met een jonge danser die na een blessure opnieuw begon. Ze schrapte herhalingen, aarzelingen en halve zinnen, totdat zijn antwoorden even soepel klonken als haar eigen vragen. De danser bedankte haar eerst, maar vroeg bij de tweede lezing waarom hij nergens meer leek te twijfelen. Lien wees op de leesbaarheid; hij wees op de zin waarin zijn voorzichtige hoop een stellige belofte was geworden. Toen ze samen de opname beluisterden, hoorde Lien dat zijn stiltes vaak de grens tussen verlangen en zekerheid markeerden.",
+          "en": "For a small literary magazine, Lien edited an interview with a young dancer starting again after an injury. She removed repetitions, hesitations and unfinished sentences until his answers sounded as smooth as her own questions. The dancer initially thanked her, but on a second reading asked why he no longer seemed to doubt anything. Lien pointed to readability; he pointed to the sentence where his tentative hope had become a firm promise. When they listened to the recording together, Lien heard that his silences often marked the boundary between desire and certainty.",
+          "fa": "لین برای مجله ادبی کوچکی مصاحبه رقصنده جوانی را ویرایش می‌کرد که پس از آسیب دوباره شروع کرده بود. تکرارها، مکث‌های مردد و جمله‌های نیمه‌تمام را حذف کرد تا جواب‌ها به روانی پرسش‌های خودش شدند. رقصنده اول تشکر کرد، اما در خواندن دوم پرسید چرا دیگر هیچ‌جا انگار تردید ندارد. لین به خوانایی اشاره کرد؛ او به جمله‌ای که امید محتاطانه‌اش در آن وعده قطعی شده بود. وقتی با هم ضبط را شنیدند، لین فهمید سکوت‌هایش اغلب مرز خواستن و مطمئن بودن را نشان می‌داد."
+        },
+        {
+          "nl": "Ze stelde voor de tekst minder glad te maken, zonder iedere verspreking letterlijk terug te zetten. Bij het moeilijkste antwoord voegden ze een korte beschrijving toe van het moment waarop hij naar zijn schoenen keek. Hij wilde niet zielig worden voorgesteld, zei hij, maar ook niet als iemand die zijn herstel volledig beheerste. De nieuwe versie werd iets langer en verloor een pakkende kop, maar de danser herkende zichzelf erin. Toen Lien het bestand opsloeg, noemde ze het niet definitief, maar gelezen door ons beiden.",
+          "en": "She proposed making the text less polished without restoring every slip of the tongue word for word. At the most difficult answer, they added a short description of the moment when he looked down at his shoes. He did not want to be portrayed as pitiful, he said, but neither as someone entirely in control of his recovery. The new version became slightly longer and lost a catchy headline, but the dancer recognised himself in it. When Lien saved the file, she named it not final but read by both of us.",
+          "fa": "پیشنهاد کرد متن کمتر صیقلی شود، بدون آنکه هر لغزش زبانی کلمه‌به‌کلمه برگردد. کنار دشوارترین پاسخ توصیف کوتاهی از لحظه نگاه کردن او به کفش‌هایش افزودند. گفت نمی‌خواهد ترحم‌برانگیز نشانش بدهند، اما درعین‌حال نمی‌خواهد مثل کسی جلوه کند که کاملاً بر روند بهبودی‌اش مسلط است. نسخه تازه کمی بلندتر شد و عنوان جذابی را از دست داد، اما رقصنده خودش را در آن بازشناخت. وقتی لین فایل را ذخیره کرد، نامش را نه نهایی، بلکه خوانده‌شده توسط هر دوی ما گذاشت."
+        }
+      ],
+      "topic_id": "pre-c1-t-unit-second-voice",
+      "vocabulary_ids": [
+        "pre-c1-unit-second-voice-v1",
+        "pre-c1-unit-second-voice-v2",
+        "pre-c1-unit-second-voice-v3",
+        "pre-c1-unit-second-voice-v4",
+        "pre-c1-v461",
+        "pre-c1-unit-second-voice-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Welk effect heeft de eerste bewerking onbedoeld?",
+          "en": "What unintended effect does the first edit have?",
+          "fa": "ویرایش اول ناخواسته چه اثری دارد؟"
+        },
+        "options": [
+          {
+            "nl": "Ze voegt medische gegevens toe die hij niet heeft gegeven.",
+            "en": "It adds medical information he did not provide.",
+            "fa": "اطلاعات پزشکی نگفته او را اضافه می‌کند."
+          },
+          {
+            "nl": "Ze maakt de danser zekerder dan hij in het gesprek was.",
+            "en": "It makes the dancer sound more certain than he was in the conversation.",
+            "fa": "رقصنده را مطمئن‌تر از زمان گفت‌وگو نشان می‌دهد."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Door het schrappen verdwijnt betekenisvolle twijfel, niet alleen onhandige formulering.",
+          "en": "The cuts remove meaningful doubt, not merely awkward phrasing.",
+          "fa": "حذف‌ها تردید معنادار را از بین می‌برند، نه فقط عبارت‌های ناروان را."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "pre-c1-t-unit-letter-without-instruction",
+      "title": {
+        "nl": "Wat de brief niet zei",
+        "en": "What the letter did not say",
+        "fa": "آنچه نامه نگفت"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Impliciete gevoelens bespreken zonder een interpretatie als bedoeling vast te leggen.",
+          "en": "Discuss implied feelings without treating an interpretation as an established intention.",
+          "fa": "گفت‌وگو درباره احساسات ضمنی بدون قطعی شمردن تفسیر به‌عنوان قصد نویسنده."
+        }
+      ],
+      "language_focus": {
+        "nl": "Impliciete gevoelens bespreken zonder een interpretatie als bedoeling vast te leggen.",
+        "en": "Discuss implied feelings without treating an interpretation as an established intention.",
+        "fa": "گفت‌وگو درباره احساسات ضمنی بدون قطعی شمردن تفسیر به‌عنوان قصد نویسنده."
+      },
+      "vocabulary_ids": [
+        "pre-c1-unit-letter-without-instruction-v1",
+        "pre-c1-unit-letter-without-instruction-v2",
+        "pre-c1-unit-letter-without-instruction-v3",
+        "pre-c1-unit-letter-without-instruction-v4",
+        "pre-c1-v479",
+        "pre-c1-unit-letter-without-instruction-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "In de schrijftafel van zijn overleden tante vond Wout een ongeposte brief aan zijn vader, met wie zij al jaren geen contact had. De brief begon zakelijk over een uitgeleend schilderij, maar eindigde met een herinnering aan hun eerste fietstocht naar zee. Nergens stond dat ze verzoening zocht; toch las Wout in de beschrijving van de tegenwind een voorzichtig verlangen naar toenadering. Hij wilde zijn vader onmiddellijk bellen, totdat hij zag dat de laatste bladzijde was doorgestreept en opnieuw begonnen. Zijn zus merkte op dat een bewaarde brief ook een gedachte kon zijn die hun tante nooit had willen versturen.\n\nDaarop lazen ze de tekst opnieuw, nu met aandacht voor wat er werkelijk stond en wat zij er zelf bij dachten. Wout vertelde zijn vader alleen dat er een persoonlijke brief bestond en vroeg of hij die wilde lezen. Zijn vader vroeg geen samenvatting, maar een dag bedenktijd; die stilte voelde voor Wout moeilijker dan een weigering. De volgende avond las zijn vader de brief en wees op de fietstocht: daarover hadden ze ondanks alles altijd kunnen lachen. Wout kreeg geen antwoord op alle vragen, maar begreep dat een gedeelde herinnering niet hetzelfde hoefde te zijn als een opgeloste ruzie.",
+          "en": "In his late aunt's writing desk, Wout found an unposted letter to his father, with whom she had not been in contact for years. The letter began with businesslike remarks about a loaned painting, but ended with a memory of their first bicycle ride to the sea. Nowhere did it say she sought reconciliation; nevertheless, Wout read a tentative wish for renewed closeness in the description of the headwind. He wanted to call his father immediately, until he saw that the final page had been crossed out and restarted. His sister pointed out that a preserved letter could also be a thought their aunt had never intended to send.\n\nThey therefore read the text again, now attending to what it actually said and what they themselves were adding. Wout told his father only that a personal letter existed and asked whether he wished to read it. His father asked not for a summary but for a day to think; Wout found that silence harder than a refusal. The following evening, his father read the letter and pointed to the bicycle ride: despite everything, they had always been able to laugh about that. Wout did not receive answers to all his questions, but understood that a shared memory need not be the same as a resolved quarrel.",
+          "fa": "ووت در میز تحریر عمه درگذشته‌اش نامه‌ای ارسال‌نشده به پدرش یافت؛ آن دو سال‌ها با هم ارتباطی نداشتند. نامه با حرف‌های رسمی درباره تابلوی قرض‌داده‌شده شروع می‌شد، اما با خاطره نخستین دوچرخه‌سواری‌شان به دریا پایان می‌یافت. هیچ‌جا نگفته بود آشتی می‌خواهد؛ بااین‌حال ووت در توصیف باد مخالف میلی محتاطانه به نزدیک شدن می‌دید. می‌خواست فوراً به پدرش زنگ بزند، تا دید صفحه آخر خط خورده و از نو شروع شده است. خواهرش گفت نامه نگه‌داشته‌شده ممکن است فکری باشد که عمه‌شان هرگز قصد فرستادنش را نداشته است.\n\nپس دوباره متن را خواندند، این بار با توجه به آنچه واقعاً نوشته بود و آنچه خودشان به آن می‌افزودند. ووت فقط به پدرش گفت نامه‌ای شخصی وجود دارد و پرسید آیا مایل است آن را بخواند. پدرش خلاصه نخواست؛ یک روز فرصت فکر کردن خواست. آن سکوت برای ووت از جواب رد سخت‌تر بود. شب بعد پدرش نامه را خواند و به دوچرخه‌سواری اشاره کرد؛ با وجود همه چیز، همیشه می‌توانستند به آن بخندند. ووت پاسخ همه پرسش‌ها را نگرفت، اما فهمید خاطره مشترک لزوماً همان دعوای حل‌شده نیست."
+        },
+        "questions": [
+          {
+            "id": "pre-c1-t-unit-letter-without-instruction-r1",
+            "prompt": {
+              "nl": "Waarom verandert de opmerking van zijn zus Wouts aanpak?",
+              "en": "Why does his sister's remark change Wout's approach?",
+              "fa": "چرا حرف خواهر روش ووت را عوض می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Ze bewijst dat de brief door iemand anders is geschreven.",
+                "en": "She proves that somebody else wrote the letter.",
+                "fa": "ثابت می‌کند شخص دیگری نامه را نوشته است."
+              },
+              {
+                "nl": "Ze maakt zichtbaar dat bewaren niet noodzakelijk willen versturen betekent.",
+                "en": "She makes clear that keeping a letter does not necessarily mean intending to send it.",
+                "fa": "نشان می‌دهد نگه داشتن نامه لزوماً به معنی قصد فرستادن نیست."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Haar opmerking zet een grens tussen een mogelijke lezing en een bewezen bedoeling.",
+              "en": "Her remark sets a boundary between a possible reading and a proven intention.",
+              "fa": "حرفش میان خوانش احتمالی و قصد اثبات‌شده مرز می‌گذارد."
+            }
+          },
+          {
+            "id": "pre-c1-t-unit-letter-without-instruction-r2",
+            "prompt": {
+              "nl": "Welke interpretatie ondersteunt de slotzin?",
+              "en": "Which interpretation does the final sentence support?",
+              "fa": "جمله آخر از کدام تفسیر پشتیبانی می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Een warm moment kan waarde hebben zonder het conflict volledig op te lossen.",
+                "en": "A warm moment can matter without fully resolving the conflict.",
+                "fa": "لحظه‌ای صمیمانه می‌تواند ارزشمند باشد، بی‌آنکه تعارض را کامل حل کند."
+              },
+              {
+                "nl": "De fietstocht bewijst dat er nooit een werkelijk conflict was.",
+                "en": "The bicycle ride proves there was never a real conflict.",
+                "fa": "دوچرخه‌سواری ثابت می‌کند هیچ تعارض واقعی وجود نداشته است."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Het verhaal laat de ruzie onopgelost, maar ontkent de betekenis van de herinnering niet.",
+              "en": "The story leaves the quarrel unresolved without denying the memory's significance.",
+              "fa": "داستان دعوا را حل‌نشده می‌گذارد، اما اهمیت خاطره را نفی نمی‌کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Wout, ik heb de brief inmiddels gelezen, maar ik wil nog niet dat de hele familie er een kopie van krijgt. Je mag je zus vertellen dat ik vooral door de herinnering aan zee geraakt was. Bewaar het origineel voorlopig bij de andere brieven, niet in de map voor de tentoonstelling. Volgende week kunnen we bespreken wat we er later mee doen.",
+          "en": "Wout, I have now read the letter, but I do not yet want the whole family to receive a copy. You may tell your sister that I was particularly moved by the memory of the sea. For now, keep the original with the other letters, not in the exhibition folder. Next week we can discuss what to do with it later.",
+          "fa": "ووت، حالا نامه را خوانده‌ام، اما هنوز نمی‌خواهم همه خانواده نسخه‌ای بگیرند. می‌توانی به خواهرت بگویی بیشتر از همه خاطره دریا تحت تأثیرم گذاشت. فعلاً اصل نامه را کنار نامه‌های دیگر نگه دار، نه در پوشه نمایشگاه. هفته بعد می‌توانیم درباره آینده‌اش صحبت کنیم."
+        },
+        "questions": [
+          {
+            "id": "pre-c1-t-unit-letter-without-instruction-l1",
+            "prompt": {
+              "nl": "Welke toestemming geeft de vader precies?",
+              "en": "Exactly what permission does the father give?",
+              "fa": "پدر دقیقاً چه اجازه‌ای می‌دهد؟"
+            },
+            "options": [
+              {
+                "nl": "Wout mag de brief onder alle familieleden verspreiden.",
+                "en": "Wout may distribute the letter to all family members.",
+                "fa": "ووت می‌تواند نامه را میان همه اعضای خانواده پخش کند."
+              },
+              {
+                "nl": "Wout mag zijn zus over de betekenis van de herinnering vertellen.",
+                "en": "Wout may tell his sister about the significance of the memory.",
+                "fa": "ووت می‌تواند درباره اهمیت خاطره به خواهرش بگوید."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De vader staat een beperkte mededeling toe en houdt verspreiding van kopieën tegen.",
+              "en": "The father permits a limited message while withholding permission to circulate copies.",
+              "fa": "پدر اطلاع‌رسانی محدودی را اجازه می‌دهد و مجوز پخش نسخه‌ها نمی‌دهد."
+            }
+          },
+          {
+            "id": "pre-c1-t-unit-letter-without-instruction-l2",
+            "prompt": {
+              "nl": "Welke handeling moet Wout nu uitvoeren?",
+              "en": "What should Wout do now?",
+              "fa": "ووت اکنون چه کاری باید انجام دهد؟"
+            },
+            "options": [
+              {
+                "nl": "Het origineel bij de andere brieven bewaren.",
+                "en": "Keep the original with the other letters.",
+                "fa": "اصل را کنار نامه‌های دیگر نگه دارد."
+              },
+              {
+                "nl": "De brief toevoegen aan de tentoonstellingsmap.",
+                "en": "Add the letter to the exhibition folder.",
+                "fa": "نامه را به پوشه نمایشگاه اضافه کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De vader noemt expliciet de andere brieven en sluit de tentoonstellingsmap voorlopig uit.",
+              "en": "The father explicitly names the other letters and excludes the exhibition folder for now.",
+              "fa": "پدر صریحاً نامه‌های دیگر را نام می‌برد و فعلاً پوشه نمایشگاه را کنار می‌گذارد."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Leg aan je zus uit wat je vader heeft toegestaan en welke vragen nog openblijven. Bespreek vervolgens één mogelijke betekenis van de brief, met woorden die onzekerheid zichtbaar houden.",
+          "en": "Explain to your sister what your father has permitted and which questions remain open. Then discuss one possible meaning of the letter, using language that keeps uncertainty visible.",
+          "fa": "برای خواهرتان توضیح دهید پدرتان چه اجازه‌ای داده و چه پرسش‌هایی باز است. سپس یک معنای احتمالی نامه را با عباراتی بیان کنید که تردید را آشکار نگه دارد."
+        },
+        "sample": {
+          "nl": "Papa wil voorlopig geen kopieën verspreiden. Ik mag je wel vertellen dat vooral de herinnering aan zee hem raakte. Het origineel blijft bij de andere brieven; over eventueel verder gebruik praten we volgende week. Voor mij suggereert het slot enige toenadering, maar dat blijft mijn interpretatie. We weten niet waarom tante de brief uiteindelijk niet verstuurd heeft.",
+          "en": "Dad does not want copies circulated for now. I may tell you that the memory of the sea particularly moved him. The original stays with the other letters; we will discuss any further use next week. To me, the ending suggests some wish for closeness, but that remains my interpretation. We do not know why our aunt ultimately did not send the letter.",
+          "fa": "بابا فعلاً نمی‌خواهد نسخه‌ها پخش شوند. اجازه دارم بگویم خاطره دریا بیشتر تحت تأثیرش گذاشته. اصل کنار نامه‌های دیگر می‌ماند؛ درباره استفاده بعدی هفته آینده صحبت می‌کنیم. برای من پایان نشانه‌ای از نزدیک شدن است، اما این تفسیر من است. نمی‌دانیم چرا عمه سرانجام نامه را نفرستاد."
+        },
+        "min_words": 50,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Beperk het delen tot de toegestane mededeling aan de zus.",
+            "en": "Limit sharing to the permitted message to the sister.",
+            "fa": "اشتراک را به اطلاع مجاز به خواهر محدود کنید."
+          },
+          {
+            "nl": "Noem toenadering een interpretatie en bewaar het origineel bij de brieven.",
+            "en": "Call renewed closeness an interpretation and keep the original with the letters.",
+            "fa": "نزدیک شدن را تفسیر بدانید و اصل را کنار نامه‌ها نگه دارید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf je zus een afgewogen bericht van 100 tot 220 woorden. Verbind de gebeurtenissen uit het verhaal met de beperkingen uit het nieuwe bericht. Scheid tekst, interpretatie en toestemming.",
+          "en": "Write your sister a balanced message of 100–220 Dutch words. Connect the story's events with the restrictions in the new message. Separate text, interpretation and permission.",
+          "fa": "پیامی سنجیده در ۱۰۰ تا ۲۲۰ واژه هلندی برای خواهرتان بنویسید. اتفاق‌های داستان را به محدودیت‌های پیام تازه وصل کنید. متن، تفسیر و اجازه را جدا نگه دارید."
+        },
+        "sample": {
+          "nl": "Dag zus, papa heeft de brief gelezen. Vooral de herinnering aan hun fietstocht naar zee heeft hem geraakt; dat mag ik je uitdrukkelijk vertellen. Hij wil voorlopig echter geen kopieën onder de familie verspreiden. Ik bewaar het origineel daarom bij de andere brieven en niet in de map voor de tentoonstelling. Volgende week bespreken we eventueel verder gebruik. Je opmerking over de ongeposte brief heeft me geholpen. Ik las er meteen een verzoeningspoging in, terwijl de tekst die bedoeling nergens bevestigt. Dat de laatste bladzijde is herschreven, maakt de zaak nog minder eenduidig. We kunnen de warme herinnering serieus nemen zonder te beweren dat daarmee hun ruzie opgelost was. Laten we papa de tijd geven om zelf te bepalen wat hij met deze vondst wil delen.",
+          "en": "Hi, Dad has read the letter. He was particularly moved by the memory of their bicycle ride to the sea; he expressly permits me to tell you that. For now, however, he does not want copies circulated among the family. I am therefore keeping the original with the other letters, not in the exhibition folder. Next week we will discuss any further use. Your comment about the unposted letter helped me. I immediately read it as an attempt at reconciliation, although the text nowhere confirms that intention. The rewritten final page makes matters even less clear-cut. We can take the warm memory seriously without claiming that it resolved their quarrel. Let us give Dad time to decide what he wants to share about this discovery.",
+          "fa": "سلام، بابا نامه را خوانده است. خاطره دوچرخه‌سواری‌شان به دریا بیشتر تحت تأثیرش گذاشته؛ صریحاً اجازه داده این را بگویم. اما فعلاً نمی‌خواهد نسخه‌ها میان خانواده پخش شوند. بنابراین اصل را کنار نامه‌های دیگر نگه می‌دارم، نه در پوشه نمایشگاه. هفته بعد درباره استفاده احتمالی بعدی صحبت می‌کنیم. حرفت درباره نامه ارسال‌نشده کمکم کرد. فوراً آن را تلاش برای آشتی خواندم، درحالی‌که متن هیچ‌جا چنین قصدی را تأیید نمی‌کند. بازنویسی صفحه آخر موضوع را پیچیده‌تر می‌کند. می‌توانیم خاطره صمیمانه را جدی بگیریم، بدون ادعای حل شدن دعوا. به بابا فرصت بدهیم خودش تصمیم بگیرد چه چیزی از این کشف را می‌خواهد در میان بگذارد."
+        },
+        "min_words": 100,
+        "max_words": 220,
+        "criteria": [
+          {
+            "nl": "Verbind de doorgehaalde versie met de onzekerheid over de bedoeling.",
+            "en": "Connect the crossed-out version to uncertainty about the intention.",
+            "fa": "نسخه خط‌خورده را به ابهام قصد مرتبط کنید."
+          },
+          {
+            "nl": "Vermeld dat kopieën en de tentoonstelling voorlopig niet zijn toegestaan.",
+            "en": "State that copies and exhibition use have not been permitted for now.",
+            "fa": "بگویید فعلاً نسخه‌برداری و نمایش مجاز نشده‌اند."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pre-c1-t-unit-second-voice",
+      "title": {
+        "nl": "De tweede stem",
+        "en": "The second voice",
+        "fa": "صدای دوم"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een inhoudelijke herziening beargumenteren en de stem van een ander zorgvuldig weergeven.",
+          "en": "Argue for a substantive revision and represent another person's voice carefully.",
+          "fa": "دلیل آوردن برای بازنگری محتوایی و بازتاب دقیق صدای دیگری."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een inhoudelijke herziening beargumenteren en de stem van een ander zorgvuldig weergeven.",
+        "en": "Argue for a substantive revision and represent another person's voice carefully.",
+        "fa": "دلیل آوردن برای بازنگری محتوایی و بازتاب دقیق صدای دیگری."
+      },
+      "vocabulary_ids": [
+        "pre-c1-unit-second-voice-v1",
+        "pre-c1-unit-second-voice-v2",
+        "pre-c1-unit-second-voice-v3",
+        "pre-c1-unit-second-voice-v4",
+        "pre-c1-v461",
+        "pre-c1-unit-second-voice-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Voor een klein literair tijdschrift bewerkte Lien een interview met een jonge danser die na een blessure opnieuw begon. Ze schrapte herhalingen, aarzelingen en halve zinnen, totdat zijn antwoorden even soepel klonken als haar eigen vragen. De danser bedankte haar eerst, maar vroeg bij de tweede lezing waarom hij nergens meer leek te twijfelen. Lien wees op de leesbaarheid; hij wees op de zin waarin zijn voorzichtige hoop een stellige belofte was geworden. Toen ze samen de opname beluisterden, hoorde Lien dat zijn stiltes vaak de grens tussen verlangen en zekerheid markeerden.\n\nZe stelde voor de tekst minder glad te maken, zonder iedere verspreking letterlijk terug te zetten. Bij het moeilijkste antwoord voegden ze een korte beschrijving toe van het moment waarop hij naar zijn schoenen keek. Hij wilde niet zielig worden voorgesteld, zei hij, maar ook niet als iemand die zijn herstel volledig beheerste. De nieuwe versie werd iets langer en verloor een pakkende kop, maar de danser herkende zichzelf erin. Toen Lien het bestand opsloeg, noemde ze het niet definitief, maar gelezen door ons beiden.",
+          "en": "For a small literary magazine, Lien edited an interview with a young dancer starting again after an injury. She removed repetitions, hesitations and unfinished sentences until his answers sounded as smooth as her own questions. The dancer initially thanked her, but on a second reading asked why he no longer seemed to doubt anything. Lien pointed to readability; he pointed to the sentence where his tentative hope had become a firm promise. When they listened to the recording together, Lien heard that his silences often marked the boundary between desire and certainty.\n\nShe proposed making the text less polished without restoring every slip of the tongue word for word. At the most difficult answer, they added a short description of the moment when he looked down at his shoes. He did not want to be portrayed as pitiful, he said, but neither as someone entirely in control of his recovery. The new version became slightly longer and lost a catchy headline, but the dancer recognised himself in it. When Lien saved the file, she named it not final but read by both of us.",
+          "fa": "لین برای مجله ادبی کوچکی مصاحبه رقصنده جوانی را ویرایش می‌کرد که پس از آسیب دوباره شروع کرده بود. تکرارها، مکث‌های مردد و جمله‌های نیمه‌تمام را حذف کرد تا جواب‌ها به روانی پرسش‌های خودش شدند. رقصنده اول تشکر کرد، اما در خواندن دوم پرسید چرا دیگر هیچ‌جا انگار تردید ندارد. لین به خوانایی اشاره کرد؛ او به جمله‌ای که امید محتاطانه‌اش در آن وعده قطعی شده بود. وقتی با هم ضبط را شنیدند، لین فهمید سکوت‌هایش اغلب مرز خواستن و مطمئن بودن را نشان می‌داد.\n\nپیشنهاد کرد متن کمتر صیقلی شود، بدون آنکه هر لغزش زبانی کلمه‌به‌کلمه برگردد. کنار دشوارترین پاسخ توصیف کوتاهی از لحظه نگاه کردن او به کفش‌هایش افزودند. گفت نمی‌خواهد ترحم‌برانگیز نشانش بدهند، اما درعین‌حال نمی‌خواهد مثل کسی جلوه کند که کاملاً بر روند بهبودی‌اش مسلط است. نسخه تازه کمی بلندتر شد و عنوان جذابی را از دست داد، اما رقصنده خودش را در آن بازشناخت. وقتی لین فایل را ذخیره کرد، نامش را نه نهایی، بلکه خوانده‌شده توسط هر دوی ما گذاشت."
+        },
+        "questions": [
+          {
+            "id": "pre-c1-t-unit-second-voice-r1",
+            "prompt": {
+              "nl": "Welk effect heeft de eerste bewerking onbedoeld?",
+              "en": "What unintended effect does the first edit have?",
+              "fa": "ویرایش اول ناخواسته چه اثری دارد؟"
+            },
+            "options": [
+              {
+                "nl": "Ze voegt medische gegevens toe die hij niet heeft gegeven.",
+                "en": "It adds medical information he did not provide.",
+                "fa": "اطلاعات پزشکی نگفته او را اضافه می‌کند."
+              },
+              {
+                "nl": "Ze maakt de danser zekerder dan hij in het gesprek was.",
+                "en": "It makes the dancer sound more certain than he was in the conversation.",
+                "fa": "رقصنده را مطمئن‌تر از زمان گفت‌وگو نشان می‌دهد."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Door het schrappen verdwijnt betekenisvolle twijfel, niet alleen onhandige formulering.",
+              "en": "The cuts remove meaningful doubt, not merely awkward phrasing.",
+              "fa": "حذف‌ها تردید معنادار را از بین می‌برند، نه فقط عبارت‌های ناروان را."
+            }
+          },
+          {
+            "id": "pre-c1-t-unit-second-voice-r2",
+            "prompt": {
+              "nl": "Welke houding blijkt uit de nieuwe bestandsnaam?",
+              "en": "What attitude does the new file name reveal?",
+              "fa": "نام تازه فایل چه نگرشی را نشان می‌دهد؟"
+            },
+            "options": [
+              {
+                "nl": "De versie is gezamenlijk gelezen zonder absolute eindigheid te claimen.",
+                "en": "The version has been read together without claiming absolute finality.",
+                "fa": "نسخه مشترکاً خوانده شده، بی‌آنکه نهایی بودن مطلق ادعا شود."
+              },
+              {
+                "nl": "Lien draagt al haar verantwoordelijkheid aan de danser over.",
+                "en": "Lien transfers all her responsibility to the dancer.",
+                "fa": "لین تمام مسئولیت خود را به رقصنده واگذار می‌کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De naam benadrukt gezamenlijke betrokkenheid; de tekst zegt niet dat redactionele verantwoordelijkheid vervalt.",
+              "en": "The name emphasises shared involvement; the text does not say editorial responsibility disappears.",
+              "fa": "نام بر مشارکت مشترک تأکید می‌کند؛ متن نمی‌گوید مسئولیت تحریریه از بین می‌رود."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Lien, de eindredacteur vraagt om de tekst vrijdag aan te leveren in plaats van woensdag. De langere versie mag blijven, maar de kop met het woord genezen moet vervangen worden. De danser heeft alleen ingestemd met de beschrijving van zijn blik, niet met het publiceren van de volledige opname. Kun je die grenzen in de overdracht duidelijk aangeven?",
+          "en": "Lien, the managing editor asks for the text on Friday instead of Wednesday. The longer version can stay, but the headline containing the word cured must be replaced. The dancer agreed only to the description of his glance, not to publication of the complete recording. Can you make those boundaries clear in the handover?",
+          "fa": "لین، دبیر تحریریه خواسته متن را به‌جای چهارشنبه، جمعه تحویل بدهیم. نسخه بلندتر می‌تواند بماند، اما عنوان شامل واژه درمان‌شده باید عوض شود. رقصنده فقط با توصیف نگاهش موافقت کرده، نه انتشار تمام ضبط. می‌توانی این مرزها را در تحویل روشن کنی؟"
+        },
+        "questions": [
+          {
+            "id": "pre-c1-t-unit-second-voice-l1",
+            "prompt": {
+              "nl": "Welke twee redactionele wijzigingen noemt het bericht?",
+              "en": "Which two editorial changes does the message mention?",
+              "fa": "پیام کدام دو تغییر تحریریه را ذکر می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Een kortere tekst en publicatie van de opname.",
+                "en": "A shorter text and publication of the recording.",
+                "fa": "متنی کوتاه‌تر و انتشار ضبط."
+              },
+              {
+                "nl": "Een latere aanleverdag en een andere kop.",
+                "en": "A later submission day and a different headline.",
+                "fa": "روز تحویل دیرتر و عنوانی دیگر."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Vrijdag vervangt woensdag en de kop moet veranderen; de langere tekst mag blijven.",
+              "en": "Friday replaces Wednesday and the headline must change; the longer text may remain.",
+              "fa": "جمعه جای چهارشنبه را می‌گیرد و عنوان باید عوض شود؛ متن بلندتر می‌تواند بماند."
+            }
+          },
+          {
+            "id": "pre-c1-t-unit-second-voice-l2",
+            "prompt": {
+              "nl": "Wat valt buiten de gegeven toestemming?",
+              "en": "What falls outside the permission given?",
+              "fa": "چه چیزی خارج از اجازه داده‌شده است؟"
+            },
+            "options": [
+              {
+                "nl": "De volledige opname publiceren.",
+                "en": "Publishing the complete recording.",
+                "fa": "انتشار تمام ضبط."
+              },
+              {
+                "nl": "Een beschrijving van zijn blik opnemen.",
+                "en": "Including a description of his glance.",
+                "fa": "آوردن توصیفی از نگاه او."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De toestemming betreft de beschrijving, niet de verspreiding van het volledige bronmateriaal.",
+              "en": "The permission concerns the description, not circulation of the complete source material.",
+              "fa": "اجازه به توصیف مربوط است، نه پخش تمام ماده اولیه."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Draag de tekst mondeling aan een collega over. Leg uit waarom de twijfel moet blijven, noem de gewijzigde deadline en onderscheid redactionele instemming van toestemming voor de opname.",
+          "en": "Hand the text over orally to a colleague. Explain why the doubt must remain, state the changed deadline and distinguish editorial agreement from permission concerning the recording.",
+          "fa": "متن را شفاهی به همکار تحویل دهید. توضیح دهید چرا تردید باید بماند، مهلت تغییرکرده را بگویید و توافق تحریریه را از مجوز ضبط جدا کنید."
+        },
+        "sample": {
+          "nl": "De langere versie bewaart de twijfel van de danser; die maakt deel uit van wat hij werkelijk vertelt. We leveren vrijdag aan, niet woensdag. De kop met genezen moet weg omdat die meer zekerheid suggereert dan het interview biedt. De beschrijving van zijn blik is besproken en toegestaan, maar dat geeft ons geen toestemming om de volledige opname openbaar te maken.",
+          "en": "The longer version preserves the dancer's doubt; that is part of what he is actually saying. We submit on Friday, not Wednesday. The headline containing cured must go because it suggests more certainty than the interview provides. The description of his glance has been discussed and permitted, but that does not give us permission to make the complete recording public.",
+          "fa": "نسخه بلندتر تردید رقصنده را نگه می‌دارد؛ این بخشی از حرف واقعی اوست. جمعه تحویل می‌دهیم، نه چهارشنبه. عنوان شامل درمان‌شده باید حذف شود چون اطمینانی بیش از مصاحبه القا می‌کند. توصیف نگاهش بررسی و مجاز شده، اما این به ما مجوز انتشار کامل ضبط نمی‌دهد."
+        },
+        "min_words": 50,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Noem vrijdag als nieuwe deadline en vermijd de kop genezen.",
+            "en": "State Friday as the new deadline and avoid the headline cured.",
+            "fa": "جمعه را مهلت تازه بگویید و از عنوان درمان‌شده پرهیز کنید."
+          },
+          {
+            "nl": "Behoud de twijfel en geef geen toestemming voor de volledige opname aan.",
+            "en": "Preserve the doubt and do not claim permission for the complete recording.",
+            "fa": "تردید را حفظ کنید و مجوز ضبط کامل ادعا نکنید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een overdrachtsnotitie van 100 tot 220 woorden. Verantwoord de minder gladde formulering, stel een nauwkeuriger kop voor en noteer de deadline en toestemmingsgrens.",
+          "en": "Write a handover note of 100–220 Dutch words. Justify the less polished wording, propose a more accurate headline and record the deadline and permission boundary.",
+          "fa": "یادداشت تحویلی در ۱۰۰ تا ۲۲۰ واژه هلندی بنویسید. عبارت‌بندی کمتر صیقلی را توجیه کنید، عنوان دقیق‌تری پیشنهاد دهید و مهلت و مرز اجازه را ثبت کنید."
+        },
+        "sample": {
+          "nl": "Voor de eindredactie: we leveren de herziene versie vrijdag aan, niet woensdag. De langere tekst mag volgens het nieuwe bericht behouden blijven. Ik stel als kop Opnieuw beginnen, zonder zekerheid voor. Die sluit beter aan bij de danser dan een titel die hem genezen noemt. In de eerste bewerking waren aarzelingen geschrapt waardoor hoop op herstel onbedoeld als een belofte klonk. De huidige versie bewaart betekenisvolle twijfel zonder iedere verspreking letterlijk weer te geven. De beschrijving van zijn blik is met hem besproken en door hem toegestaan. Deze instemming geldt niet voor publicatie van de volledige opname. Houd die daarom buiten het openbare dossier. Controleer bij verdere inkorting vooral of mogelijkheden niet opnieuw als zekerheden gaan klinken.",
+          "en": "For the managing editor: we will submit the revised version on Friday, not Wednesday. The new message permits the longer text to remain. I propose Starting again, without certainty as the headline. It fits the dancer better than a title calling him cured. The first edit removed hesitations, unintentionally making hope of recovery sound like a promise. The current version preserves meaningful doubt without reproducing every verbal slip literally. The description of his glance was discussed with him and approved by him. This agreement does not cover publication of the complete recording. Please therefore keep it out of the public file. During any further cuts, check especially that possibilities do not again begin to sound like certainties.",
+          "fa": "برای دبیر تحریریه: نسخه بازنگری‌شده را جمعه تحویل می‌دهیم، نه چهارشنبه. طبق پیام تازه متن بلندتر می‌تواند بماند. عنوان «شروع دوباره، بدون قطعیت» را پیشنهاد می‌کنم. این از عنوانی که او را درمان‌شده می‌نامد دقیق‌تر است. در ویرایش اول مکث‌های مردد حذف شده و امید بهبود ناخواسته وعده به نظر می‌رسید. نسخه کنونی تردید معنادار را حفظ می‌کند، بدون بازنویسی لفظ‌به‌لفظ هر لغزش زبانی. توصیف نگاهش با خودش بررسی و تأیید شده است. این موافقت شامل انتشار تمام ضبط نیست. بنابراین آن را از پرونده عمومی بیرون نگه دارید. در کوتاه‌سازی بعدی به‌ویژه بررسی کنید امکان‌ها دوباره قطعیت جلوه نکنند."
+        },
+        "min_words": 100,
+        "max_words": 220,
+        "criteria": [
+          {
+            "nl": "Verantwoord de langere versie en formuleer een minder stellige kop.",
+            "en": "Justify the longer version and formulate a less categorical headline.",
+            "fa": "نسخه بلندتر را توجیه کنید و عنوانی کمتر قطعی بسازید."
+          },
+          {
+            "nl": "Leg vrijdag en de grens tussen beschrijving en volledige opname vast.",
+            "en": "Record Friday and the boundary between the description and the complete recording.",
+            "fa": "جمعه و مرز توصیف و ضبط کامل را ثبت کنید."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

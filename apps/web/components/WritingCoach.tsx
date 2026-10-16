@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
+import { SpokenPassage } from "@/components/SpokenPassage";
 import { apiJson } from "@/lib/client/api";
 import { friendlyError } from "@/lib/client/curriculum";
 
@@ -153,8 +154,7 @@ export function WritingCoach({
               </ol>
               <details className="corrected-draft">
                 <summary>Je tekst met deze verbeteringen</summary>
-                <p lang="nl">{valid.corrected_text}</p>
-                <PhraseAudio text={valid.corrected_text} />
+                <SpokenPassage text={{ nl: valid.corrected_text }} disabled={disabled || busy} />
                 <button
                   className="button secondary"
                   disabled={disabled || busy}

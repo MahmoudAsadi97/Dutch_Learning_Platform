@@ -127,6 +127,7 @@ export interface ItemView {
   attempts_left: number;
   prompt: Prompt;
   feedback: Feedback | null;
+  hint_used?: boolean;
 }
 /** A missed word the learner may save; the example and library id go with it into the word bank. */
 export interface Suggestion {
@@ -144,7 +145,7 @@ export interface Completion {
   topic_id: string | null;
   counted: boolean;
   /** Why it did not count: a retry, a question never tried, changed content, or a warm-up before a task. */
-  reason: "retry" | "unfinished" | "content_changed" | "open_task" | null;
+  reason: "retry" | "unfinished" | "content_changed" | "open_task" | "assisted" | null;
   passed: boolean | null;
   correct: number | null;
   total: number | null;
@@ -246,6 +247,8 @@ export const exercises = {
     }),
   get: (sessionId: string, signal?: AbortSignal) =>
     apiJson<SessionView>(`exercises/sessions/${sessionId}`, { signal }),
+  assistance: (sessionId: string, itemId: string, signal?: AbortSignal) =>
+    apiJson<ItemView>(item(sessionId, itemId, "assistance"), { method: "POST", signal }),
   answer: (sessionId: string, itemId: string, answer: Answer, requestId: string, hintUsed = false) =>
     apiJson<AnswerResult>(item(sessionId, itemId, "answer"), {
       method: "POST",

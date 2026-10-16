@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
+import { SpokenText } from "@/components/SpokenPassage";
 import { errorCopy } from "@/lib/client/error-copy";
 import { isAbort } from "@/lib/client/errors";
 import { words, type Grade, type WordItem, type WordStats } from "@/lib/client/stories";
@@ -165,7 +166,7 @@ export function WordReview() {
                 </p>
                 {current.example && (
                   <p lang="nl" className="muted">
-                    {current.example}
+                    <SpokenText text={{ nl: current.example }} />
                   </p>
                 )}
                 <div className="grade-buttons" role="group" aria-label={wordsCopy.gradeQuestion.nl}>

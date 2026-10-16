@@ -5,6 +5,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
+import { SentenceAudio } from "@/components/SpokenPassage";
 import { fill } from "@/lib/ui-copy";
 
 import type { BoardProps } from "./boardProps";
@@ -118,6 +119,7 @@ export function TilesItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
           <UiText text={accepted ? exerciseCopy.checkExpected : exerciseCopy.rightSentence} inline />
           {": "}
           <Dutch text={feedback.sentence ?? `${(feedback.texts ?? []).join(" ")}${prompt.end}`} />
+          <SentenceAudio text={feedback.sentence ?? `${(feedback.texts ?? []).join(" ")}${prompt.end}`} />
         </p>
       )}
     </div>

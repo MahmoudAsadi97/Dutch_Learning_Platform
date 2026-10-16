@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { PhraseAudio } from "@/components/PhraseAudio";
+import { SentenceAudio, SpokenPassage } from "@/components/SpokenPassage";
 import { Icon } from "@/components/Icon";
 import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
 import { apiFetch, apiJson, ApiError } from "@/lib/client/api";
@@ -38,7 +38,7 @@ export function CurriculumQuestions({
             <span className="question-number">{number + 1}</span>
             {exam ? question.prompt.nl : <LearningText text={question.prompt} />}
           </legend>
-          {!exam && <PhraseAudio text={question.prompt.nl} disabled={disabled} />}
+          {!exam && <SentenceAudio text={question.prompt.nl} disabled={disabled} />}
           <div className="answer-options">
             {question.options.map((option, index) => (
               <div className="answer-option-shell" key={index}>
@@ -56,7 +56,7 @@ export function CurriculumQuestions({
                     <LearningText text={checked ? option : { nl: option.nl }} />
                   )}
                 </label>
-                {!exam && <PhraseAudio text={option.nl} disabled={disabled} />}
+                {!exam && <SentenceAudio text={option.nl} disabled={disabled} />}
               </div>
             ))}
           </div>
@@ -249,9 +249,7 @@ function CurriculumAudioPlayer({
       {transcript && (
         <details className="transcript-help">
           <summary>Lees mee als je hulp nodig hebt</summary>
-          <p className="story-copy">
-            <LearningText text={transcript} />
-          </p>
+          <SpokenPassage text={transcript} disabled={disabled} />
         </details>
       )}
     </div>

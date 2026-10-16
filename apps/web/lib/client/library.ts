@@ -10,6 +10,17 @@ export interface LibraryWord {
   topic: LearningCopy;
   meaning: LearningCopy;
   example: LearningCopy;
+  part_of_speech?: "noun" | "verb" | "adjective" | "adverb" | "expression" | "other";
+  article?: string;
+  plural?: string;
+  forms?: { label: LearningCopy; text: LearningCopy }[];
+  contexts?: {
+    id: string;
+    setting: LearningCopy;
+    sentence: LearningCopy;
+    production_prompt: LearningCopy;
+    structure: string;
+  }[];
 }
 
 export interface LibraryPage<T> {

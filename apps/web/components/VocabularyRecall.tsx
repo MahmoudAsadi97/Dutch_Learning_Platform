@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
+import { SpokenText } from "@/components/SpokenPassage";
 
 type Word = { id: string; term: string; meaning: LearningCopy; example: LearningCopy };
 
@@ -103,8 +104,7 @@ export function VocabularyRecall({ words }: { words: Word[] }) {
                 {word.term} <PhraseAudio text={word.term} />
               </h4>
               <p className="phrase-line">
-                <LearningText text={word.example} />
-                <PhraseAudio text={word.example.nl} />
+                <SpokenText text={word.example} />
               </p>
               <p>
                 <LearningText

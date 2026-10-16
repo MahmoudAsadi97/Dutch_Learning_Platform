@@ -295,9 +295,22 @@ def plan(pool: Pool, rng: random.Random, *, size: int, met: frozenset[str],
     if pool.stage_id != DICTATION_SINGLE_STAGE:  # a dictated word alone is on its own choice options anyway
         for index, draft in reversed(list(enumerate(graded))):
             if draft.kind == "dictation" and _shown_elsewhere(draft, [*intro, *graded]):
-                word = pool.by_id[draft.ref.removeprefix("word:")]
-                other = _item(pool, word, rng, used=used[word.id], clozes=clozes, typing=typing, audio=audio,
-                              kinds=kinds)
+                # A board's feedback may expose this word's example. Preserve the listening
+                # activity with another already-met word from the same permitted candidate pool
+                # before falling back to a different kind. Never introduce an unshown new word.
+                other = None
+                for candidate in review:
+                    if candidate.id not in pool.dictated or not _cloze_fits(candidate, clozes):
+                        continue
+                    alternative = spoken.dictation(pool, candidate)
+                    if alternative is not None and not _shown_elsewhere(alternative, [*intro, *graded]):
+                        other = alternative
+                        clozes.append(candidate)
+                        break
+                if other is None:
+                    word = pool.by_id[draft.ref.removeprefix("word:")]
+                    other = _item(pool, word, rng, used=used[word.id], clozes=clozes, typing=typing, audio=audio,
+                                  kinds=kinds)
                 graded[index:index + 1] = [other] if other is not None else []
     for draft in graded:
         draft.key["met"] = sorted({key for key in draft.key.get("words", {}).values() if key in met})

@@ -1,0 +1,878 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-c2",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "pre-c2-unit-ordered-compliment-v1",
+      "term": "reduceren",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Tot een beperkter geheel terugbrengen.",
+        "en": "Reduce something to a narrower whole.",
+        "fa": "به مجموعه‌ای محدودتر کاهش دادن."
+      },
+      "example": {
+        "nl": "Ze reduceert het bezoek tot één compliment.",
+        "en": "She reduces the visit to one compliment.",
+        "fa": "دیدار را به یک تعریف کاهش می‌دهد."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-c2-unit-ordered-compliment-v2",
+      "term": "vertekenen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een beeld door selectie of wijziging minder juist maken.",
+        "en": "Distort a picture through selection or alteration.",
+        "fa": "با گزینش یا تغییر تصویر را نادرست‌تر کردن."
+      },
+      "example": {
+        "nl": "Het losse citaat vertekent zijn oordeel.",
+        "en": "The isolated quotation distorts his judgment.",
+        "fa": "نقل‌قول جداشده قضاوتش را تحریف می‌کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-c2-unit-ordered-compliment-v4",
+      "term": "ongedwongen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Natuurlijk en niet geforceerd.",
+        "en": "Natural and unforced.",
+        "fa": "طبیعی و بی‌تکلف."
+      },
+      "example": {
+        "nl": "Een ongedwongen gesprek laat zich niet bestellen.",
+        "en": "An unforced conversation cannot be ordered.",
+        "fa": "گفت‌وگوی بی‌تکلف را نمی‌توان سفارش داد."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "pre-c2-unit-ordered-compliment-v5",
+      "term": "achteraf",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Na de gebeurtenis, wanneer de afloop bekend is.",
+        "en": "After the event, when the outcome is known.",
+        "fa": "پس از رویداد، وقتی نتیجه معلوم است."
+      },
+      "example": {
+        "nl": "Achteraf klinkt de stilte principiëler dan ze was.",
+        "en": "In hindsight, the silence sounds more principled than it was.",
+        "fa": "بعداً سکوت اصولی‌تر از واقعیتش به نظر می‌رسد."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "pre-c2-unit-ordered-compliment-v6",
+      "term": "een spiegel voorhouden",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Iemand zijn eigen gedrag herkenbaar tonen.",
+        "en": "Make someone's own behaviour recognisable to them.",
+        "fa": "رفتار خود فرد را مثل آینه به او نشان دادن."
+      },
+      "example": {
+        "nl": "De kok houdt haar zonder woorden een spiegel voor.",
+        "en": "Without words, the cook holds a mirror up to her.",
+        "fa": "آشپز بی‌کلام رفتارش را مثل آینه نشانش می‌دهد."
+      },
+      "part_of_speech": "expression"
+    },
+    {
+      "id": "pre-c2-unit-map-for-two-v1",
+      "term": "vervolledigen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een geheel afmaken door iets toe te voegen.",
+        "en": "Complete a whole by adding something.",
+        "fa": "با افزودن چیزی مجموعه را کامل کردن."
+      },
+      "example": {
+        "nl": "Zijn kaart hoeft haar herinnering niet te vervolledigen.",
+        "en": "His map need not complete her memory.",
+        "fa": "نقشه او لازم نیست خاطره ماود را کامل کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-c2-unit-map-for-two-v2",
+      "term": "beogen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Als doel voor ogen hebben.",
+        "en": "Have something as an intended goal.",
+        "fa": "چیزی را هدف قرار دادن."
+      },
+      "example": {
+        "nl": "De tweede kaart beoogt geen hereniging.",
+        "en": "The second map is not intended to bring about a reunion.",
+        "fa": "نقشه دوم هدفش بازگشت به رابطه نیست."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-c2-unit-map-for-two-v3",
+      "term": "de terughoudendheid",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Bewuste voorzichtigheid in uiting of handelen.",
+        "en": "Deliberate restraint in expression or action.",
+        "fa": "خویشتن‌داری آگاهانه در بیان یا عمل."
+      },
+      "example": {
+        "nl": "Zijn terughoudendheid laat haar ruimte.",
+        "en": "His restraint leaves her space.",
+        "fa": "خویشتن‌داری او برای ماود فضا می‌گذارد."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "pre-c2-unit-map-for-two-v4",
+      "term": "afzonderlijk",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Los van iets anders, op zichzelf.",
+        "en": "Separate from something else, on its own.",
+        "fa": "جدا از چیز دیگر و مستقل."
+      },
+      "example": {
+        "nl": "Beide kaarten mogen afzonderlijk bestaan.",
+        "en": "Both maps may exist separately.",
+        "fa": "هر دو نقشه می‌توانند مستقل وجود داشته باشند."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "pre-c2-unit-map-for-two-v5",
+      "term": "alsnog",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Toch nog, na een eerdere andere verwachting.",
+        "en": "After all, despite an earlier different expectation.",
+        "fa": "بااین‌حال در نهایت."
+      },
+      "example": {
+        "nl": "Hij verwacht niet dat er alsnog een gezamenlijke route ontstaat.",
+        "en": "He does not expect a shared route after all.",
+        "fa": "انتظار ندارد سرانجام مسیر مشترکی شکل بگیرد."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "pre-c2-unit-map-for-two-v6",
+      "term": "op zichzelf staan",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zonder een ander geheel betekenis kunnen hebben.",
+        "en": "Have meaning independently of another whole.",
+        "fa": "مستقل از مجموعه دیگر معنا داشتن."
+      },
+      "example": {
+        "nl": "De tweede kaart kan op zichzelf staan.",
+        "en": "The second map can stand on its own.",
+        "fa": "نقشه دوم می‌تواند مستقل معنا داشته باشد."
+      },
+      "part_of_speech": "expression"
+    }
+  ],
+  "stories": [
+    {
+      "id": "pre-c2-s-unit-ordered-compliment",
+      "title": {
+        "nl": "Een compliment op bestelling",
+        "en": "A compliment to order",
+        "fa": "تعریف سفارشی"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een satirisch restaurantverhaal",
+        "en": "A satirical restaurant story",
+        "fa": "داستان طنز رستوران"
+      },
+      "lines": [
+        {
+          "nl": "Toen de bescheiden eetzaak van Ada onverwacht populair werd, bood een onbekend bureau haar een pakket authentieke lof aan.",
+          "en": "When Ada's modest restaurant unexpectedly became popular, an unfamiliar agency offered her a package of authentic praise.",
+          "fa": "وقتی غذاخوری ساده آدا ناگهان محبوب شد، مؤسسه‌ای ناشناس بسته‌ای از تحسین اصیل به او پیشنهاد کرد."
+        },
+        {
+          "nl": "Het voorstel beloofde spontane reacties, zorgvuldig gepland op dinsdag, donderdag en zaterdag, met natuurlijke variatie in enthousiasme.",
+          "en": "The proposal promised spontaneous reactions, carefully scheduled for Tuesday, Thursday and Saturday, with natural variation in enthusiasm.",
+          "fa": "پیشنهاد واکنش‌های خودجوش وعده می‌داد، با برنامه دقیق سه‌شنبه، پنجشنبه و شنبه و تنوع طبیعی در میزان اشتیاق."
+        },
+        {
+          "nl": "Ada liet het bericht aan haar kok zien, die vroeg of hij de ongedwongenheid dan ook per kilo kon bestellen.",
+          "en": "Ada showed the message to her cook, who asked whether he could order the informality by the kilo as well.",
+          "fa": "آدا پیام را به آشپزش نشان داد؛ او پرسید آیا می‌شود بی‌تکلفی را هم کیلویی سفارش داد."
+        },
+        {
+          "nl": "Ze lachten, maar de lege reservatielijst voor de volgende week maakte het aanbod minder belachelijk dan zij wilden toegeven.",
+          "en": "They laughed, but the empty booking list for the following week made the offer less ridiculous than they wanted to admit.",
+          "fa": "خندیدند، اما فهرست خالی رزرو هفته بعد پیشنهاد را کمتر از آنچه می‌خواستند بپذیرند مسخره می‌کرد."
+        },
+        {
+          "nl": "Die avond schreef een echte gast dat de soep heerlijk was geweest en dat de wachttijd hem bijna het genoegen had ontnomen.",
+          "en": "That evening, a real guest wrote that the soup had been delicious and that the wait had almost robbed him of the pleasure.",
+          "fa": "آن شب مهمانی واقعی نوشت سوپ عالی بوده و زمان انتظار نزدیک بوده لذتش را از بین ببرد."
+        },
+        {
+          "nl": "Ada wilde aanvankelijk alleen de eerste helft citeren, alsof de tweede helft bij een ander bezoek hoorde.",
+          "en": "Ada initially wanted to quote only the first half, as though the second half belonged to a different visit.",
+          "fa": "آدا ابتدا می‌خواست فقط نیمه اول را نقل کند، انگار نیمه دوم به دیداری دیگر مربوط بود."
+        },
+        {
+          "nl": "Haar kok schoof het aanbod van het bureau ernaast en zei niets; dat was hinderlijk overtuigend.",
+          "en": "Her cook placed the agency's offer beside it and said nothing; that was annoyingly persuasive.",
+          "fa": "آشپزش پیشنهاد مؤسسه را کنارش گذاشت و چیزی نگفت؛ این سکوت به‌شکل آزاردهنده‌ای قانع‌کننده بود."
+        },
+        {
+          "nl": "Ze antwoordden de gast dat de soep mocht blijven en de wachttijd moest veranderen, zonder een toekomst zonder fouten te beloven.",
+          "en": "They replied that the soup could stay and the waiting time had to change, without promising a faultless future.",
+          "fa": "به مهمان جواب دادند سوپ می‌تواند بماند و زمان انتظار باید عوض شود، بی‌آنکه آینده بی‌خطا وعده دهند."
+        },
+        {
+          "nl": "Het bureau stuurde nog één bericht: voor eerlijke communicatie bestond inmiddels ook een voordelig pakket.",
+          "en": "The agency sent one more message: there was now also an attractively priced package for honest communication.",
+          "fa": "مؤسسه یک پیام دیگر فرستاد: حالا برای ارتباط صادقانه هم بسته‌ای با قیمت مناسب وجود داشت."
+        },
+        {
+          "nl": "Ada verwijderde het bericht niet meteen; ze printte het uit en hing het boven de lege plek voor de reservatielijst.",
+          "en": "Ada did not delete the message immediately; she printed it and hung it above the empty space for the booking list.",
+          "fa": "آدا پیام را فوراً پاک نکرد؛ چاپش کرد و بالای جای خالی فهرست رزرو آویخت."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Toen de bescheiden eetzaak van Ada onverwacht populair werd, bood een onbekend bureau haar een pakket authentieke lof aan. Het voorstel beloofde spontane reacties, zorgvuldig gepland op dinsdag, donderdag en zaterdag, met natuurlijke variatie in enthousiasme. Ada liet het bericht aan haar kok zien, die vroeg of hij de ongedwongenheid dan ook per kilo kon bestellen. Ze lachten, maar de lege reservatielijst voor de volgende week maakte het aanbod minder belachelijk dan zij wilden toegeven. Die avond schreef een echte gast dat de soep heerlijk was geweest en dat de wachttijd hem bijna het genoegen had ontnomen.",
+          "en": "When Ada's modest restaurant unexpectedly became popular, an unfamiliar agency offered her a package of authentic praise. The proposal promised spontaneous reactions, carefully scheduled for Tuesday, Thursday and Saturday, with natural variation in enthusiasm. Ada showed the message to her cook, who asked whether he could order the informality by the kilo as well. They laughed, but the empty booking list for the following week made the offer less ridiculous than they wanted to admit. That evening, a real guest wrote that the soup had been delicious and that the wait had almost robbed him of the pleasure.",
+          "fa": "وقتی غذاخوری ساده آدا ناگهان محبوب شد، مؤسسه‌ای ناشناس بسته‌ای از تحسین اصیل به او پیشنهاد کرد. پیشنهاد واکنش‌های خودجوش وعده می‌داد، با برنامه دقیق سه‌شنبه، پنجشنبه و شنبه و تنوع طبیعی در میزان اشتیاق. آدا پیام را به آشپزش نشان داد؛ او پرسید آیا می‌شود بی‌تکلفی را هم کیلویی سفارش داد. خندیدند، اما فهرست خالی رزرو هفته بعد پیشنهاد را کمتر از آنچه می‌خواستند بپذیرند مسخره می‌کرد. آن شب مهمانی واقعی نوشت سوپ عالی بوده و زمان انتظار نزدیک بوده لذتش را از بین ببرد."
+        },
+        {
+          "nl": "Ada wilde aanvankelijk alleen de eerste helft citeren, alsof de tweede helft bij een ander bezoek hoorde. Haar kok schoof het aanbod van het bureau ernaast en zei niets; dat was hinderlijk overtuigend. Ze antwoordden de gast dat de soep mocht blijven en de wachttijd moest veranderen, zonder een toekomst zonder fouten te beloven. Het bureau stuurde nog één bericht: voor eerlijke communicatie bestond inmiddels ook een voordelig pakket. Ada verwijderde het bericht niet meteen; ze printte het uit en hing het boven de lege plek voor de reservatielijst.",
+          "en": "Ada initially wanted to quote only the first half, as though the second half belonged to a different visit. Her cook placed the agency's offer beside it and said nothing; that was annoyingly persuasive. They replied that the soup could stay and the waiting time had to change, without promising a faultless future. The agency sent one more message: there was now also an attractively priced package for honest communication. Ada did not delete the message immediately; she printed it and hung it above the empty space for the booking list.",
+          "fa": "آدا ابتدا می‌خواست فقط نیمه اول را نقل کند، انگار نیمه دوم به دیداری دیگر مربوط بود. آشپزش پیشنهاد مؤسسه را کنارش گذاشت و چیزی نگفت؛ این سکوت به‌شکل آزاردهنده‌ای قانع‌کننده بود. به مهمان جواب دادند سوپ می‌تواند بماند و زمان انتظار باید عوض شود، بی‌آنکه آینده بی‌خطا وعده دهند. مؤسسه یک پیام دیگر فرستاد: حالا برای ارتباط صادقانه هم بسته‌ای با قیمت مناسب وجود داشت. آدا پیام را فوراً پاک نکرد؛ چاپش کرد و بالای جای خالی فهرست رزرو آویخت."
+        }
+      ],
+      "topic_id": "pre-c2-t-unit-ordered-compliment",
+      "vocabulary_ids": [
+        "pre-c2-unit-ordered-compliment-v1",
+        "pre-c2-unit-ordered-compliment-v2",
+        "pre-c2-v166",
+        "pre-c2-unit-ordered-compliment-v4",
+        "pre-c2-unit-ordered-compliment-v5",
+        "pre-c2-unit-ordered-compliment-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarop berust de ironie van het aanbod?",
+          "en": "What creates the irony in the offer?",
+          "fa": "کنایه پیشنهاد بر چه چیزی استوار است؟"
+        },
+        "options": [
+          {
+            "nl": "Het bureau weigert om vooraf data vast te leggen.",
+            "en": "The agency refuses to set dates in advance.",
+            "fa": "مؤسسه از تعیین قبلی تاریخ‌ها خودداری می‌کند."
+          },
+          {
+            "nl": "Eigenschappen als spontaniteit en authenticiteit worden als planbaar product verkocht.",
+            "en": "Qualities such as spontaneity and authenticity are sold as a schedulable product.",
+            "fa": "ویژگی‌هایی مانند خودجوش بودن و اصالت به‌صورت محصول برنامه‌پذیر فروخته می‌شوند."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De tekst plaatst spontane reacties naast een nauwkeurig publicatieschema.",
+          "en": "The text places spontaneous reactions alongside a precise publication schedule.",
+          "fa": "متن واکنش خودجوش را کنار جدول دقیق انتشار می‌گذارد."
+        }
+      }
+    },
+    {
+      "id": "pre-c2-s-unit-map-for-two",
+      "title": {
+        "nl": "Een kaart voor twee",
+        "en": "A map for two",
+        "fa": "نقشه‌ای برای دو نفر"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een romance verteld langs omwegen",
+        "en": "A romance told through detours",
+        "fa": "عاشقانه‌ای از راه‌های فرعی"
+      },
+      "lines": [
+        {
+          "nl": "Na hun scheiding stuurde Maud geen afscheidsbrief, maar een met de hand getekende kaart van hun vroegere buurt in Leuven.",
+          "en": "After their separation, Maud sent no farewell letter, but a hand-drawn map of their former neighbourhood in Leuven.",
+          "fa": "پس از جدایی، ماود نامه خداحافظی نفرستاد، بلکه نقشه دست‌کشیده محله قدیمشان در لوون را فرستاد."
+        },
+        {
+          "nl": "Op de plaats van de supermarkt stond onze eerste ruzie, en de brug heette waar jij toch bleef wachten.",
+          "en": "Where the supermarket should have been stood our first quarrel, and the bridge was named where you waited after all.",
+          "fa": "جای سوپرمارکت نوشته بود نخستین دعوای ما و نام پل بود جایی که بااین‌حال منتظرم ماندی."
+        },
+        {
+          "nl": "Robin vond het gebaar teder tot hij ontdekte dat het park ontbrak waar hij zijn voorstel voor een nieuw begin had gedaan.",
+          "en": "Robin found the gesture tender until he discovered the missing park where he had proposed a new beginning.",
+          "fa": "روبین حرکت را مهربانانه دید، تا متوجه نبودن پارکی شد که در آن شروعی تازه پیشنهاد کرده بود."
+        },
+        {
+          "nl": "Hij nam een pen om het park erbij te tekenen en stopte toen hij merkte dat hij vooral zijn eigen versie wilde redden.",
+          "en": "He picked up a pen to draw in the park, then stopped when he realised he mainly wanted to rescue his own version.",
+          "fa": "قلم برداشت پارک را بکشد، اما وقتی فهمید بیشتر می‌خواهد روایت خودش را نجات دهد، متوقف شد."
+        },
+        {
+          "nl": "In plaats daarvan liep hij de route, die onlogisch begon bij het einde en na drie omwegen naar dezelfde brug terugkeerde.",
+          "en": "Instead, he walked the route, which began illogically at the end and returned to the same bridge after three detours.",
+          "fa": "در عوض مسیر را پیمود؛ مسیری که به‌طرزی نامنطقی از پایان شروع می‌شد و پس از سه انحراف دوباره به همان پل می‌رسید."
+        },
+        {
+          "nl": "Pas daar zag hij onder de legenda de kleine zin: deze kaart toont niet wat gebeurd is, maar wat ik kan meenemen.",
+          "en": "Only there did he notice the small sentence beneath the key: this map shows not what happened, but what I can take with me.",
+          "fa": "همان‌جا تازه جمله کوچک زیر راهنما را دید: این نقشه نه اتفاق‌ها، بلکه چیزهایی را نشان می‌دهد که می‌توانم با خود ببرم."
+        },
+        {
+          "nl": "Hij begreep niet plots alles, maar de afwezigheid van het park voelde minder als een beschuldiging dan als een grens.",
+          "en": "He did not suddenly understand everything, but the park's absence felt less like an accusation than a boundary.",
+          "fa": "ناگهان همه چیز را نفهمید، اما نبود پارک کمتر اتهام و بیشتر مرز به نظر رسید."
+        },
+        {
+          "nl": "Robin tekende op een apart blad zijn eigen wandeling, met het park erin en zonder Mauds straatnamen te corrigeren.",
+          "en": "Robin drew his own walk on a separate sheet, including the park and without correcting Maud's street names.",
+          "fa": "روبین گردش خودش را روی برگ جدا کشید، با پارک و بدون اصلاح نام خیابان‌های ماود."
+        },
+        {
+          "nl": "Hij stuurde haar geen verzoek om terug te komen, alleen de vraag of ze de tweede kaart wilde ontvangen.",
+          "en": "He sent her no request to return, only a question asking whether she wanted to receive the second map.",
+          "fa": "از او نخواست برگردد؛ فقط پرسید آیا مایل است نقشه دوم را دریافت کند."
+        },
+        {
+          "nl": "Haar antwoord kwam zonder uitleg: ja, zolang er geen gezamenlijke route op hoeft te staan.",
+          "en": "Her answer came without explanation: yes, as long as it does not have to show a shared route.",
+          "fa": "جواب بی‌توضیح آمد: بله، به شرطی که لازم نباشد مسیر مشترکی روی آن باشد."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Na hun scheiding stuurde Maud geen afscheidsbrief, maar een met de hand getekende kaart van hun vroegere buurt in Leuven. Op de plaats van de supermarkt stond onze eerste ruzie, en de brug heette waar jij toch bleef wachten. Robin vond het gebaar teder tot hij ontdekte dat het park ontbrak waar hij zijn voorstel voor een nieuw begin had gedaan. Hij nam een pen om het park erbij te tekenen en stopte toen hij merkte dat hij vooral zijn eigen versie wilde redden. In plaats daarvan liep hij de route, die onlogisch begon bij het einde en na drie omwegen naar dezelfde brug terugkeerde.",
+          "en": "After their separation, Maud sent no farewell letter, but a hand-drawn map of their former neighbourhood in Leuven. Where the supermarket should have been stood our first quarrel, and the bridge was named where you waited after all. Robin found the gesture tender until he discovered the missing park where he had proposed a new beginning. He picked up a pen to draw in the park, then stopped when he realised he mainly wanted to rescue his own version. Instead, he walked the route, which began illogically at the end and returned to the same bridge after three detours.",
+          "fa": "پس از جدایی، ماود نامه خداحافظی نفرستاد، بلکه نقشه دست‌کشیده محله قدیمشان در لوون را فرستاد. جای سوپرمارکت نوشته بود نخستین دعوای ما و نام پل بود جایی که بااین‌حال منتظرم ماندی. روبین حرکت را مهربانانه دید، تا متوجه نبودن پارکی شد که در آن شروعی تازه پیشنهاد کرده بود. قلم برداشت پارک را بکشد، اما وقتی فهمید بیشتر می‌خواهد روایت خودش را نجات دهد، متوقف شد. در عوض مسیر را پیمود؛ مسیری که به‌طرزی نامنطقی از پایان شروع می‌شد و پس از سه انحراف دوباره به همان پل می‌رسید."
+        },
+        {
+          "nl": "Pas daar zag hij onder de legenda de kleine zin: deze kaart toont niet wat gebeurd is, maar wat ik kan meenemen. Hij begreep niet plots alles, maar de afwezigheid van het park voelde minder als een beschuldiging dan als een grens. Robin tekende op een apart blad zijn eigen wandeling, met het park erin en zonder Mauds straatnamen te corrigeren. Hij stuurde haar geen verzoek om terug te komen, alleen de vraag of ze de tweede kaart wilde ontvangen. Haar antwoord kwam zonder uitleg: ja, zolang er geen gezamenlijke route op hoeft te staan.",
+          "en": "Only there did he notice the small sentence beneath the key: this map shows not what happened, but what I can take with me. He did not suddenly understand everything, but the park's absence felt less like an accusation than a boundary. Robin drew his own walk on a separate sheet, including the park and without correcting Maud's street names. He sent her no request to return, only a question asking whether she wanted to receive the second map. Her answer came without explanation: yes, as long as it does not have to show a shared route.",
+          "fa": "همان‌جا تازه جمله کوچک زیر راهنما را دید: این نقشه نه اتفاق‌ها، بلکه چیزهایی را نشان می‌دهد که می‌توانم با خود ببرم. ناگهان همه چیز را نفهمید، اما نبود پارک کمتر اتهام و بیشتر مرز به نظر رسید. روبین گردش خودش را روی برگ جدا کشید، با پارک و بدون اصلاح نام خیابان‌های ماود. از او نخواست برگردد؛ فقط پرسید آیا مایل است نقشه دوم را دریافت کند. جواب بی‌توضیح آمد: بله، به شرطی که لازم نباشد مسیر مشترکی روی آن باشد."
+        }
+      ],
+      "topic_id": "pre-c2-t-unit-map-for-two",
+      "vocabulary_ids": [
+        "pre-c2-unit-map-for-two-v1",
+        "pre-c2-unit-map-for-two-v2",
+        "pre-c2-unit-map-for-two-v3",
+        "pre-c2-unit-map-for-two-v4",
+        "pre-c2-unit-map-for-two-v5",
+        "pre-c2-unit-map-for-two-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Welke functie krijgt de ontbrekende plaats tijdens Robins wandeling?",
+          "en": "What function does the missing place acquire during Robin's walk?",
+          "fa": "مکان حذف‌شده در گردش روبین چه معنایی پیدا می‌کند؟"
+        },
+        "options": [
+          {
+            "nl": "Ze bewijst dat het park nooit heeft bestaan.",
+            "en": "It proves the park never existed.",
+            "fa": "ثابت می‌کند پارک هرگز وجود نداشته است."
+          },
+          {
+            "nl": "Ze kan een grens van Mauds herinnering uitdrukken in plaats van een feitelijke ontkenning.",
+            "en": "It may express a boundary in Maud's memory rather than a factual denial.",
+            "fa": "ممکن است مرز خاطره ماود را نشان دهد، نه انکار واقعیت را."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De legenda maakt duidelijk dat de kaart selectief en persoonlijk is, niet volledig historisch.",
+          "en": "The key makes clear that the map is selective and personal, not a complete historical record.",
+          "fa": "راهنما روشن می‌کند نقشه گزینشی و شخصی است، نه سند کامل تاریخی."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "pre-c2-t-unit-ordered-compliment",
+      "title": {
+        "nl": "Een compliment op bestelling",
+        "en": "A compliment to order",
+        "fa": "تعریف سفارشی"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Ironie en commerciële belangen herkennen en een geloofwaardige positie formuleren.",
+          "en": "Recognise irony and commercial interests and formulate a credible position.",
+          "fa": "تشخیص کنایه و منافع تجاری و بیان موضع قابل اعتماد."
+        }
+      ],
+      "language_focus": {
+        "nl": "Ironie en commerciële belangen herkennen en een geloofwaardige positie formuleren.",
+        "en": "Recognise irony and commercial interests and formulate a credible position.",
+        "fa": "تشخیص کنایه و منافع تجاری و بیان موضع قابل اعتماد."
+      },
+      "vocabulary_ids": [
+        "pre-c2-unit-ordered-compliment-v1",
+        "pre-c2-unit-ordered-compliment-v2",
+        "pre-c2-v166",
+        "pre-c2-unit-ordered-compliment-v4",
+        "pre-c2-unit-ordered-compliment-v5",
+        "pre-c2-unit-ordered-compliment-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Toen de bescheiden eetzaak van Ada onverwacht populair werd, bood een onbekend bureau haar een pakket authentieke lof aan. Het voorstel beloofde spontane reacties, zorgvuldig gepland op dinsdag, donderdag en zaterdag, met natuurlijke variatie in enthousiasme. Ada liet het bericht aan haar kok zien, die vroeg of hij de ongedwongenheid dan ook per kilo kon bestellen. Ze lachten, maar de lege reservatielijst voor de volgende week maakte het aanbod minder belachelijk dan zij wilden toegeven. Die avond schreef een echte gast dat de soep heerlijk was geweest en dat de wachttijd hem bijna het genoegen had ontnomen.\n\nAda wilde aanvankelijk alleen de eerste helft citeren, alsof de tweede helft bij een ander bezoek hoorde. Haar kok schoof het aanbod van het bureau ernaast en zei niets; dat was hinderlijk overtuigend. Ze antwoordden de gast dat de soep mocht blijven en de wachttijd moest veranderen, zonder een toekomst zonder fouten te beloven. Het bureau stuurde nog één bericht: voor eerlijke communicatie bestond inmiddels ook een voordelig pakket. Ada verwijderde het bericht niet meteen; ze printte het uit en hing het boven de lege plek voor de reservatielijst.",
+          "en": "When Ada's modest restaurant unexpectedly became popular, an unfamiliar agency offered her a package of authentic praise. The proposal promised spontaneous reactions, carefully scheduled for Tuesday, Thursday and Saturday, with natural variation in enthusiasm. Ada showed the message to her cook, who asked whether he could order the informality by the kilo as well. They laughed, but the empty booking list for the following week made the offer less ridiculous than they wanted to admit. That evening, a real guest wrote that the soup had been delicious and that the wait had almost robbed him of the pleasure.\n\nAda initially wanted to quote only the first half, as though the second half belonged to a different visit. Her cook placed the agency's offer beside it and said nothing; that was annoyingly persuasive. They replied that the soup could stay and the waiting time had to change, without promising a faultless future. The agency sent one more message: there was now also an attractively priced package for honest communication. Ada did not delete the message immediately; she printed it and hung it above the empty space for the booking list.",
+          "fa": "وقتی غذاخوری ساده آدا ناگهان محبوب شد، مؤسسه‌ای ناشناس بسته‌ای از تحسین اصیل به او پیشنهاد کرد. پیشنهاد واکنش‌های خودجوش وعده می‌داد، با برنامه دقیق سه‌شنبه، پنجشنبه و شنبه و تنوع طبیعی در میزان اشتیاق. آدا پیام را به آشپزش نشان داد؛ او پرسید آیا می‌شود بی‌تکلفی را هم کیلویی سفارش داد. خندیدند، اما فهرست خالی رزرو هفته بعد پیشنهاد را کمتر از آنچه می‌خواستند بپذیرند مسخره می‌کرد. آن شب مهمانی واقعی نوشت سوپ عالی بوده و زمان انتظار نزدیک بوده لذتش را از بین ببرد.\n\nآدا ابتدا می‌خواست فقط نیمه اول را نقل کند، انگار نیمه دوم به دیداری دیگر مربوط بود. آشپزش پیشنهاد مؤسسه را کنارش گذاشت و چیزی نگفت؛ این سکوت به‌شکل آزاردهنده‌ای قانع‌کننده بود. به مهمان جواب دادند سوپ می‌تواند بماند و زمان انتظار باید عوض شود، بی‌آنکه آینده بی‌خطا وعده دهند. مؤسسه یک پیام دیگر فرستاد: حالا برای ارتباط صادقانه هم بسته‌ای با قیمت مناسب وجود داشت. آدا پیام را فوراً پاک نکرد؛ چاپش کرد و بالای جای خالی فهرست رزرو آویخت."
+        },
+        "questions": [
+          {
+            "id": "pre-c2-t-unit-ordered-compliment-r1",
+            "prompt": {
+              "nl": "Waarop berust de ironie van het aanbod?",
+              "en": "What creates the irony in the offer?",
+              "fa": "کنایه پیشنهاد بر چه چیزی استوار است؟"
+            },
+            "options": [
+              {
+                "nl": "Het bureau weigert om vooraf data vast te leggen.",
+                "en": "The agency refuses to set dates in advance.",
+                "fa": "مؤسسه از تعیین قبلی تاریخ‌ها خودداری می‌کند."
+              },
+              {
+                "nl": "Eigenschappen als spontaniteit en authenticiteit worden als planbaar product verkocht.",
+                "en": "Qualities such as spontaneity and authenticity are sold as a schedulable product.",
+                "fa": "ویژگی‌هایی مانند خودجوش بودن و اصالت به‌صورت محصول برنامه‌پذیر فروخته می‌شوند."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De tekst plaatst spontane reacties naast een nauwkeurig publicatieschema.",
+              "en": "The text places spontaneous reactions alongside a precise publication schedule.",
+              "fa": "متن واکنش خودجوش را کنار جدول دقیق انتشار می‌گذارد."
+            }
+          },
+          {
+            "id": "pre-c2-t-unit-ordered-compliment-r2",
+            "prompt": {
+              "nl": "Waarom is het zwijgen van de kok overtuigend?",
+              "en": "Why is the cook's silence persuasive?",
+              "fa": "چرا سکوت آشپز قانع‌کننده است؟"
+            },
+            "options": [
+              {
+                "nl": "De juxtapositie toont overeenkomst tussen gekochte lof en Ada's selectieve citaat.",
+                "en": "The juxtaposition reveals a similarity between purchased praise and Ada's selective quotation.",
+                "fa": "کنار هم گذاشتن شباهت تحسین خریداری‌شده و نقل‌قول گزینشی آدا را نشان می‌دهد."
+              },
+              {
+                "nl": "Hij heeft aangetoond dat de gast nooit in de zaak is geweest.",
+                "en": "He has proved that the guest never visited the restaurant.",
+                "fa": "ثابت کرده مهمان هرگز به غذاخوری نیامده است."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Hij hoeft de overeenkomst niet uit te spreken: Ada ziet haar eigen selectie naast het aanbod.",
+              "en": "He need not state the similarity: Ada sees her own selection beside the offer.",
+              "fa": "لازم نیست شباهت را بگوید؛ آدا انتخاب خودش را کنار پیشنهاد می‌بیند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Ada, ik heb de gast gesproken: hij vond de wachttijd vooral vóór het voorgerecht lang, niet tussen de gangen. Onze reactie moet dus niet naar het hoofdgerecht verwijzen. Hij vindt het goed dat we zijn volledige reactie op onze eigen pagina tonen, maar we hebben geen toestemming voor een betaalde advertentie. Het bureau heeft intussen korting aangeboden; daarop hebben we nog niet gereageerd.",
+          "en": "Ada, I spoke to the guest: he mainly found the wait before the starter long, not the time between courses. Our reply should therefore not refer to the main course. He is happy for us to show his complete comment on our own page, but we have no permission for a paid advertisement. Meanwhile, the agency has offered a discount; we have not replied to that yet.",
+          "fa": "آدا، با مهمان حرف زدم؛ انتظار پیش از پیش‌غذا را طولانی می‌دانست، نه فاصله بین غذاها را. پس جوابمان نباید به غذای اصلی اشاره کند. با نمایش کامل نظرش در صفحه خودمان موافق است، اما برای تبلیغ پولی اجازه نداریم. مؤسسه هم تخفیف داده؛ هنوز جوابش را نداده‌ایم."
+        },
+        "questions": [
+          {
+            "id": "pre-c2-t-unit-ordered-compliment-l1",
+            "prompt": {
+              "nl": "Welke precisering is nodig in de reactie aan de gast?",
+              "en": "What clarification is needed in the reply to the guest?",
+              "fa": "چه دقتی در پاسخ به مهمان لازم است؟"
+            },
+            "options": [
+              {
+                "nl": "Het probleem betrof uitsluitend de wachttijd tussen alle gangen.",
+                "en": "The problem concerned only the wait between all courses.",
+                "fa": "مشکل فقط فاصله انتظار میان همه غذاها بود."
+              },
+              {
+                "nl": "Het probleem betrof de wachttijd vóór het voorgerecht.",
+                "en": "The problem concerned the wait before the starter.",
+                "fa": "مشکل انتظار پیش از پیش‌غذا بود."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De spreker corrigeert expliciet de plaats van de wachttijd in het bezoek.",
+              "en": "The speaker explicitly corrects where the wait occurred during the visit.",
+              "fa": "گوینده صریحاً مشخص می‌کند انتظار در کدام بخش دیدار بوده است."
+            }
+          },
+          {
+            "id": "pre-c2-t-unit-ordered-compliment-l2",
+            "prompt": {
+              "nl": "Welk gebruik van de reactie is toegestaan?",
+              "en": "Which use of the comment is permitted?",
+              "fa": "کدام استفاده از نظر مجاز است؟"
+            },
+            "options": [
+              {
+                "nl": "De volledige reactie op de eigen pagina tonen.",
+                "en": "Displaying the complete comment on their own page.",
+                "fa": "نمایش نظر کامل در صفحه خودشان."
+              },
+              {
+                "nl": "Een lovend fragment in een betaalde advertentie plaatsen.",
+                "en": "Putting a flattering excerpt in a paid advertisement.",
+                "fa": "گذاشتن بخش تحسین‌آمیز در تبلیغ پولی."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De toestemming is beperkt tot de volledige reactie op de eigen pagina.",
+              "en": "Permission is limited to the complete comment on their own page.",
+              "fa": "اجازه به نظر کامل در صفحه خودشان محدود است."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Leg aan een medewerker uit waarom selectief citeren hier problematisch is. Verwerk de precieze klacht en de gebruikstoestemming, zonder te doen alsof de stilte tegenover het bureau al een weigering is.",
+          "en": "Explain to an employee why selective quotation is problematic here. Include the exact complaint and permission for use, without treating silence towards the agency as an established refusal.",
+          "fa": "برای کارمند توضیح دهید چرا نقل‌قول گزینشی در اینجا مشکل دارد. شکایت دقیق و اجازه استفاده را بیاورید، بدون آنکه سکوت در برابر مؤسسه را رد قطعی بدانید."
+        },
+        "sample": {
+          "nl": "Als we alleen de lof over de soep tonen, ontnemen we de reactie haar strekking. De gast klaagde over het wachten vóór het voorgerecht, niet over het hoofdgerecht of alle tussenpozen. Hij staat publicatie van zijn volledige reactie op onze eigen pagina toe, niet in een betaalde advertentie. Op de korting van het bureau is nog geen antwoord gegeven; ook dat moeten we niet achteraf mooier voorstellen.",
+          "en": "If we show only the praise for the soup, we strip the comment of its meaning. The guest complained about waiting before the starter, not about the main course or every interval. He permits publication of his complete comment on our own page, not in a paid advertisement. The agency's discount has not yet been answered; we should not retrospectively embellish that either.",
+          "fa": "اگر فقط تعریف سوپ را نشان دهیم، مفهوم نظر را از آن می‌گیریم. مهمان از انتظار پیش از پیش‌غذا شکایت داشت، نه غذای اصلی یا همه فاصله‌ها. انتشار کامل نظرش در صفحه خودمان را اجازه می‌دهد، نه تبلیغ پولی. تخفیف مؤسسه هنوز پاسخ نگرفته؛ آن را هم نباید بعداً زیباتر نشان دهیم."
+        },
+        "min_words": 60,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Behoud de klacht over wachten vóór het voorgerecht.",
+            "en": "Preserve the complaint about waiting before the starter.",
+            "fa": "شکایت انتظار پیش از پیش‌غذا را حفظ کنید."
+          },
+          {
+            "nl": "Beperk publicatie tot de volledige reactie op de eigen pagina; het bureau heeft nog geen antwoord.",
+            "en": "Limit publication to the complete comment on the own page; the agency has not yet received a reply.",
+            "fa": "انتشار را به نظر کامل در صفحه خود محدود کنید؛ مؤسسه هنوز پاسخ نگرفته است."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een interne reflectie van 120 tot 250 woorden. Analyseer de ironie, verantwoord een eerlijk antwoord aan de gast en onderscheid reeds gegeven toestemming van een nog te nemen besluit over het bureau.",
+          "en": "Write an internal reflection of 120–250 Dutch words. Analyse the irony, justify an honest reply to the guest and distinguish permission already given from a pending decision about the agency.",
+          "fa": "تأمل داخلی ۱۲۰ تا ۲۵۰ واژه‌ای به هلندی بنویسید. کنایه را تحلیل کنید، پاسخ صادقانه را توجیه کنید و اجازه داده‌شده را از تصمیم آینده درباره مؤسسه جدا کنید."
+        },
+        "sample": {
+          "nl": "Het aanbod van het bureau is komisch omdat het spontaniteit volgens een vast schema verkoopt. Minder comfortabel is de spiegel die het ons voorhoudt: ook wij wilden de reactie van een gast tot bruikbare lof reduceren. Een correct antwoord moet zowel zijn waardering voor de soep als zijn kritiek op het wachten vóór het voorgerecht erkennen. Het hoofdgerecht noemen zou de klacht verschuiven en daarmee opnieuw vervormen. De gast heeft ingestemd met weergave van zijn volledige reactie op onze eigen pagina, niet met gebruik in een betaalde advertentie. Die grens blijft gelden, hoe aantrekkelijk een fragment ook lijkt. Over het kortingsaanbod van het bureau is nog geen besluit genomen. We mogen onze onbeantwoorde stilte dus niet achteraf als een principiële weigering presenteren. Geloofwaardigheid begint hier bij nauwkeurigheid, niet bij een overtuigend verhaal over onze eigen eerlijkheid.",
+          "en": "The agency's offer is comic because it sells spontaneity on a fixed schedule. Less comfortable is the mirror it holds up to us: we too wanted to reduce a guest's comment to useful praise. A proper reply must acknowledge both his appreciation of the soup and his criticism of waiting before the starter. Mentioning the main course would shift and therefore distort the complaint again. The guest has agreed to his complete comment appearing on our own page, not in a paid advertisement. That boundary remains, however appealing an excerpt might be. No decision has yet been made about the agency's discount. We therefore cannot retrospectively present our unanswered silence as a principled refusal. Credibility here starts with accuracy, not with a persuasive story about our own honesty.",
+          "fa": "پیشنهاد مؤسسه خنده‌دار است چون خودجوش بودن را با جدول ثابت می‌فروشد. آینه‌ای که پیش رویمان می‌گذارد ناراحت‌کننده‌تر است: ما هم می‌خواستیم نظر مهمان را به تحسین قابل استفاده کاهش دهیم. پاسخ درست باید هم پسند او از سوپ و هم نقد انتظار پیش از پیش‌غذا را بپذیرد. نام بردن غذای اصلی شکایت را جابه‌جا و دوباره تحریف می‌کند. مهمان با نمایش کامل نظر در صفحه خودمان موافقت کرده، نه تبلیغ پولی. این مرز هرقدر بخشی از نظر جذاب باشد پابرجاست. درباره تخفیف مؤسسه هنوز تصمیمی نیست. بنابراین نمی‌توان سکوت بی‌پاسخ را بعداً رد اصولی جلوه داد. اعتبار از دقت آغاز می‌شود، نه روایت قانع‌کننده‌ای درباره صداقت خودمان."
+        },
+        "min_words": 120,
+        "max_words": 250,
+        "criteria": [
+          {
+            "nl": "Verbind de satire van geplande spontaniteit met het selectieve citaat.",
+            "en": "Connect the satire of planned spontaneity to the selective quotation.",
+            "fa": "طنز خودجوشی برنامه‌ریزی‌شده را به نقل‌قول گزینشی وصل کنید."
+          },
+          {
+            "nl": "Maak toestemming en het nog te nemen bureau-besluit afzonderlijk zichtbaar.",
+            "en": "Make permission and the pending decision about the agency separately visible.",
+            "fa": "اجازه و تصمیم آینده درباره مؤسسه را جدا روشن کنید."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pre-c2-t-unit-map-for-two",
+      "title": {
+        "nl": "Een kaart voor twee",
+        "en": "A map for two",
+        "fa": "نقشه‌ای برای دو نفر"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een ruimtelijke metafoor interpreteren en een persoonlijk standpunt met terughoudendheid uitdrukken.",
+          "en": "Interpret a spatial metaphor and express a personal position with restraint.",
+          "fa": "تفسیر استعاره مکانی و بیان موضع شخصی با خویشتن‌داری."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een ruimtelijke metafoor interpreteren en een persoonlijk standpunt met terughoudendheid uitdrukken.",
+        "en": "Interpret a spatial metaphor and express a personal position with restraint.",
+        "fa": "تفسیر استعاره مکانی و بیان موضع شخصی با خویشتن‌داری."
+      },
+      "vocabulary_ids": [
+        "pre-c2-unit-map-for-two-v1",
+        "pre-c2-unit-map-for-two-v2",
+        "pre-c2-unit-map-for-two-v3",
+        "pre-c2-unit-map-for-two-v4",
+        "pre-c2-unit-map-for-two-v5",
+        "pre-c2-unit-map-for-two-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Na hun scheiding stuurde Maud geen afscheidsbrief, maar een met de hand getekende kaart van hun vroegere buurt in Leuven. Op de plaats van de supermarkt stond onze eerste ruzie, en de brug heette waar jij toch bleef wachten. Robin vond het gebaar teder tot hij ontdekte dat het park ontbrak waar hij zijn voorstel voor een nieuw begin had gedaan. Hij nam een pen om het park erbij te tekenen en stopte toen hij merkte dat hij vooral zijn eigen versie wilde redden. In plaats daarvan liep hij de route, die onlogisch begon bij het einde en na drie omwegen naar dezelfde brug terugkeerde.\n\nPas daar zag hij onder de legenda de kleine zin: deze kaart toont niet wat gebeurd is, maar wat ik kan meenemen. Hij begreep niet plots alles, maar de afwezigheid van het park voelde minder als een beschuldiging dan als een grens. Robin tekende op een apart blad zijn eigen wandeling, met het park erin en zonder Mauds straatnamen te corrigeren. Hij stuurde haar geen verzoek om terug te komen, alleen de vraag of ze de tweede kaart wilde ontvangen. Haar antwoord kwam zonder uitleg: ja, zolang er geen gezamenlijke route op hoeft te staan.",
+          "en": "After their separation, Maud sent no farewell letter, but a hand-drawn map of their former neighbourhood in Leuven. Where the supermarket should have been stood our first quarrel, and the bridge was named where you waited after all. Robin found the gesture tender until he discovered the missing park where he had proposed a new beginning. He picked up a pen to draw in the park, then stopped when he realised he mainly wanted to rescue his own version. Instead, he walked the route, which began illogically at the end and returned to the same bridge after three detours.\n\nOnly there did he notice the small sentence beneath the key: this map shows not what happened, but what I can take with me. He did not suddenly understand everything, but the park's absence felt less like an accusation than a boundary. Robin drew his own walk on a separate sheet, including the park and without correcting Maud's street names. He sent her no request to return, only a question asking whether she wanted to receive the second map. Her answer came without explanation: yes, as long as it does not have to show a shared route.",
+          "fa": "پس از جدایی، ماود نامه خداحافظی نفرستاد، بلکه نقشه دست‌کشیده محله قدیمشان در لوون را فرستاد. جای سوپرمارکت نوشته بود نخستین دعوای ما و نام پل بود جایی که بااین‌حال منتظرم ماندی. روبین حرکت را مهربانانه دید، تا متوجه نبودن پارکی شد که در آن شروعی تازه پیشنهاد کرده بود. قلم برداشت پارک را بکشد، اما وقتی فهمید بیشتر می‌خواهد روایت خودش را نجات دهد، متوقف شد. در عوض مسیر را پیمود؛ مسیری که به‌طرزی نامنطقی از پایان شروع می‌شد و پس از سه انحراف دوباره به همان پل می‌رسید.\n\nهمان‌جا تازه جمله کوچک زیر راهنما را دید: این نقشه نه اتفاق‌ها، بلکه چیزهایی را نشان می‌دهد که می‌توانم با خود ببرم. ناگهان همه چیز را نفهمید، اما نبود پارک کمتر اتهام و بیشتر مرز به نظر رسید. روبین گردش خودش را روی برگ جدا کشید، با پارک و بدون اصلاح نام خیابان‌های ماود. از او نخواست برگردد؛ فقط پرسید آیا مایل است نقشه دوم را دریافت کند. جواب بی‌توضیح آمد: بله، به شرطی که لازم نباشد مسیر مشترکی روی آن باشد."
+        },
+        "questions": [
+          {
+            "id": "pre-c2-t-unit-map-for-two-r1",
+            "prompt": {
+              "nl": "Welke functie krijgt de ontbrekende plaats tijdens Robins wandeling?",
+              "en": "What function does the missing place acquire during Robin's walk?",
+              "fa": "مکان حذف‌شده در گردش روبین چه معنایی پیدا می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Ze bewijst dat het park nooit heeft bestaan.",
+                "en": "It proves the park never existed.",
+                "fa": "ثابت می‌کند پارک هرگز وجود نداشته است."
+              },
+              {
+                "nl": "Ze kan een grens van Mauds herinnering uitdrukken in plaats van een feitelijke ontkenning.",
+                "en": "It may express a boundary in Maud's memory rather than a factual denial.",
+                "fa": "ممکن است مرز خاطره ماود را نشان دهد، نه انکار واقعیت را."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De legenda maakt duidelijk dat de kaart selectief en persoonlijk is, niet volledig historisch.",
+              "en": "The key makes clear that the map is selective and personal, not a complete historical record.",
+              "fa": "راهنما روشن می‌کند نقشه گزینشی و شخصی است، نه سند کامل تاریخی."
+            }
+          },
+          {
+            "id": "pre-c2-t-unit-map-for-two-r2",
+            "prompt": {
+              "nl": "Welke lezing past het best bij Mauds laatste antwoord?",
+              "en": "Which reading best fits Maud's final reply?",
+              "fa": "کدام خوانش با پاسخ آخر ماود سازگارتر است؟"
+            },
+            "options": [
+              {
+                "nl": "Ze staat open voor zijn perspectief zonder een hereniging toe te zeggen.",
+                "en": "She is open to his perspective without promising a reunion.",
+                "fa": "پذیرای دیدگاه اوست، بی‌آنکه بازگشت را قول دهد."
+              },
+              {
+                "nl": "Ze stemt ermee in hun vroegere relatie te hervatten.",
+                "en": "She agrees to resume their former relationship.",
+                "fa": "موافقت می‌کند رابطه قبلی را از سر بگیرند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Het ja geldt voor de tweede kaart; de voorwaarde begrenst de verwachting van een gedeelde toekomst.",
+              "en": "The yes applies to the second map; the condition limits expectations of a shared future.",
+              "fa": "بله به نقشه دوم مربوط است؛ شرط، انتظار آینده مشترک را محدود می‌کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Robin, je mag de tweede kaart sturen, maar liever digitaal dan per post. Zet mijn huidige adres er niet op, ook niet als klein detail in de legenda. Ik wil jouw wandeling wel zien; dat betekent niet dat ik samen wil gaan wandelen. Als we daar later anders over denken, kunnen we dat apart bespreken.",
+          "en": "Robin, you may send the second map, but preferably digitally rather than by post. Do not put my current address on it, not even as a small detail in the key. I do want to see your walk; that does not mean I want to go walking together. If we feel differently about that later, we can discuss it separately.",
+          "fa": "روبین، می‌توانی نقشه دوم را بفرستی، اما ترجیحاً دیجیتال نه پستی. نشانی فعلی‌ام را روی آن نگذار، حتی به‌صورت جزئی کوچک در راهنما. می‌خواهم گردش تو را ببینم؛ این به معنی خواستن پیاده‌روی مشترک نیست. اگر بعداً نظرمان عوض شد، جدا درباره آن صحبت می‌کنیم."
+        },
+        "questions": [
+          {
+            "id": "pre-c2-t-unit-map-for-two-l1",
+            "prompt": {
+              "nl": "Welke twee praktische grenzen noemt Maud?",
+              "en": "Which two practical boundaries does Maud state?",
+              "fa": "ماود کدام دو مرز عملی را مشخص می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Per post versturen en haar huidige adres in de legenda zetten.",
+                "en": "Send by post and put her current address in the key.",
+                "fa": "ارسال پستی و نوشتن نشانی فعلی در راهنما."
+              },
+              {
+                "nl": "Digitaal versturen en haar huidige adres weglaten.",
+                "en": "Send digitally and omit her current address.",
+                "fa": "ارسال دیجیتال و حذف نشانی فعلی او."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Ze verkiest digitale ontvangst en sluit vermelding van het huidige adres uit.",
+              "en": "She prefers digital receipt and rules out including the current address.",
+              "fa": "دریافت دیجیتال را ترجیح می‌دهد و درج نشانی فعلی را کنار می‌گذارد."
+            }
+          },
+          {
+            "id": "pre-c2-t-unit-map-for-two-l2",
+            "prompt": {
+              "nl": "Waarvoor is nog geen instemming gegeven?",
+              "en": "What has not yet been agreed to?",
+              "fa": "با چه چیزی هنوز موافقت نشده است؟"
+            },
+            "options": [
+              {
+                "nl": "Samen de route wandelen.",
+                "en": "Walking the route together.",
+                "fa": "پیمودن مشترک مسیر."
+              },
+              {
+                "nl": "Zijn eigen perspectief op een aparte kaart tonen.",
+                "en": "Showing his perspective on a separate map.",
+                "fa": "نشان دادن دیدگاه او روی نقشه جدا."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Ze onderscheidt de kaart ontvangen van een gezamenlijke activiteit.",
+              "en": "She distinguishes receiving the map from a shared activity.",
+              "fa": "دریافت نقشه را از فعالیت مشترک جدا می‌کند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Formuleer Robins antwoord zonder de toestemming tot verzoening op te rekken. Leg uit waarom de tweede kaart op zichzelf kan staan en bevestig de praktische grenzen.",
+          "en": "Formulate Robin's reply without stretching the permission into reconciliation. Explain why the second map can stand on its own and confirm the practical boundaries.",
+          "fa": "پاسخ روبین را بدون تبدیل اجازه به آشتی بیان کنید. توضیح دهید چرا نقشه دوم می‌تواند مستقل باشد و مرزهای عملی را تأیید کنید."
+        },
+        "sample": {
+          "nl": "Dank je. Ik stuur de kaart digitaal en laat je huidige adres volledig weg. Mijn wandeling hoeft de jouwe niet te corrigeren; ze kan ernaast bestaan. Ik begrijp ook dat de kaart willen zien geen uitnodiging is om samen op pad te gaan. Over een eventuele ontmoeting hoeven we nu niets vast te leggen. Voor mij is het voldoende dat mijn versie haar eigen blad krijgt.",
+          "en": "Thank you. I will send the map digitally and omit your current address completely. My walk does not have to correct yours; it can exist alongside it. I also understand that wanting to see the map is not an invitation to walk together. We do not need to settle a possible meeting now. For me, it is enough for my version to have its own sheet.",
+          "fa": "ممنون. نقشه را دیجیتال می‌فرستم و نشانی فعلی‌ات را کامل حذف می‌کنم. گردش من لازم نیست مال تو را اصلاح کند؛ می‌تواند کنارش وجود داشته باشد. می‌فهمم خواستن دیدن نقشه دعوت به پیاده‌روی مشترک نیست. لازم نیست الان درباره دیدار احتمالی چیزی قطعی کنیم. برای من کافی است روایت خودم برگ خودش را داشته باشد."
+        },
+        "min_words": 60,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Bevestig digitale verzending en het weglaten van het huidige adres.",
+            "en": "Confirm digital sending and omission of the current address.",
+            "fa": "ارسال دیجیتال و حذف نشانی فعلی را تأیید کنید."
+          },
+          {
+            "nl": "Verwar een kaart ontvangen niet met samen wandelen of hereniging.",
+            "en": "Do not confuse receiving a map with walking together or reuniting.",
+            "fa": "دریافت نقشه را با پیاده‌روی مشترک یا بازگشت به رابطه اشتباه نگیرید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een persoonlijke reactie van 120 tot 250 woorden. Gebruik de kaartmetafoor zonder omslachtig te worden, erken Mauds grenzen en leg uit wat je tweede versie wel en niet beoogt.",
+          "en": "Write a personal response of 120–250 Dutch words. Use the map metaphor without becoming verbose, acknowledge Maud's boundaries and explain what your second version does and does not aim to do.",
+          "fa": "پاسخ شخصی ۱۲۰ تا ۲۵۰ واژه‌ای به هلندی بنویسید. استعاره نقشه را بی‌اطناب به کار ببرید، مرزهای ماود را بپذیرید و هدف و غیرهدف نسخه دومتان را توضیح دهید."
+        },
+        "sample": {
+          "nl": "Dank je dat je mijn kaart wilt ontvangen. Ik stuur ze digitaal en neem je huidige adres nergens op, ook niet in de legenda. Aanvankelijk wilde ik het ontbrekende park op jouw blad tekenen, alsof mijn herinnering die van jou kon vervolledigen. Tijdens het wandelen begreep ik dat dit geen ontbrekend straatplan was dat ik moest herstellen. Jouw kaart liet zien wat jij kunt meenemen. De mijne mag dus een ander park en een andere omweg bevatten zonder de jouwe ongeldig te maken. Ik verwacht niet dat er alsnog een gezamenlijke route uit ontstaat. Je bereidheid om mijn perspectief te zien is geen belofte om samen te wandelen, en ik wil dat onderscheid respecteren. Misschien helpt een afzonderlijk blad me juist om niet meer iedere herinnering met jou te moeten afronden. Meer hoeft deze zending voorlopig niet te dragen.",
+          "en": "Thank you for being willing to receive my map. I will send it digitally and include your current address nowhere, not even in the key. At first, I wanted to draw the missing park on your sheet, as though my memory could complete yours. During the walk, I understood that this was not an incomplete street plan for me to repair. Your map showed what you can take with you. Mine can therefore contain a different park and a different detour without invalidating yours. I do not expect a shared route to emerge after all. Your willingness to see my perspective is not a promise to walk together, and I want to respect that distinction. Perhaps a separate sheet will help me stop needing to resolve every memory with you. For now, this sending need carry no more than that.",
+          "fa": "ممنون که حاضری نقشه‌ام را دریافت کنی. دیجیتال می‌فرستمش و نشانی فعلی‌ات را هیچ‌جا، حتی در راهنما، نمی‌گذارم. اول می‌خواستم پارک حذف‌شده را روی برگ تو بکشم، انگار خاطره من می‌توانست خاطره تو را کامل کند. در پیاده‌روی فهمیدم این نقشه ناقص خیابان‌ها نیست که باید ترمیمش کنم. نقشه تو نشان می‌داد چه چیزی می‌توانی با خود ببری. پس نقشه من می‌تواند پارک و دور دیگری داشته باشد، بی‌آنکه نقشه تو را بی‌اعتبار کند. انتظار ندارم سرانجام مسیر مشترکی پدید بیاید. آمادگی تو برای دیدن دیدگاهم قول پیاده‌روی مشترک نیست و می‌خواهم این تفاوت را رعایت کنم. شاید برگی جدا کمک کند دیگر پایان دادن هر خاطره را به تو وابسته نکنم. این ارسال فعلاً لازم نیست بار بیشتری داشته باشد."
+        },
+        "min_words": 120,
+        "max_words": 250,
+        "criteria": [
+          {
+            "nl": "Gebruik de kaartmetafoor om twee afzonderlijke perspectieven te erkennen.",
+            "en": "Use the map metaphor to acknowledge two separate perspectives.",
+            "fa": "استعاره نقشه را برای پذیرش دو دیدگاه جدا به کار ببرید."
+          },
+          {
+            "nl": "Respecteer digitale ontvangst zonder adres of verwachting van een gezamenlijke route.",
+            "en": "Respect digital receipt without an address or expectation of a shared route.",
+            "fa": "دریافت دیجیتال بدون نشانی یا انتظار مسیر مشترک را رعایت کنید."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

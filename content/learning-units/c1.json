@@ -1,0 +1,878 @@
+{
+  "schema_version": 1,
+  "stage_id": "c1",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "c1-unit-applause-withheld-v1",
+      "term": "verdoezelen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een ongunstig of moeilijk aspect minder zichtbaar maken.",
+        "en": "Make an unfavourable or difficult aspect less visible.",
+        "fa": "جنبه دشوار یا نامطلوب را پنهان‌تر کردن."
+      },
+      "example": {
+        "nl": "Een mooie formulering mag het probleem niet verdoezelen.",
+        "en": "An elegant formulation must not obscure the problem.",
+        "fa": "عبارت زیبا نباید مشکل را پنهان کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "c1-unit-applause-withheld-v2",
+      "term": "afbakenen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De grenzen van iets precies aangeven.",
+        "en": "Define the limits of something precisely.",
+        "fa": "مرزهای چیزی را دقیق مشخص کردن."
+      },
+      "example": {
+        "nl": "We bakenen de reikwijdte van het akkoord af.",
+        "en": "We define the scope of the agreement.",
+        "fa": "دامنه توافق را مشخص می‌کنیم."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "c1-unit-applause-withheld-v3",
+      "term": "de mondigheid",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Het vermogen en de bereidheid om voor zichzelf op te komen.",
+        "en": "The ability and willingness to speak up for oneself.",
+        "fa": "توان و آمادگی برای دفاع از خود."
+      },
+      "example": {
+        "nl": "Erkenning mag niet alleen van mondigheid afhangen.",
+        "en": "Recognition must not depend solely on assertiveness.",
+        "fa": "به‌رسمیت‌شناختن نباید فقط به جسارت در بیان وابسته باشد."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "c1-unit-applause-withheld-v4",
+      "term": "afdoende",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Voldoende om een probleem werkelijk te behandelen.",
+        "en": "Sufficient to address a problem adequately.",
+        "fa": "برای رسیدگی واقعی به مسئله کافی."
+      },
+      "example": {
+        "nl": "Tijdsdruk is geen afdoende verklaring.",
+        "en": "Time pressure is not a sufficient explanation.",
+        "fa": "فشار زمانی توضیح کافی نیست."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "c1-unit-applause-withheld-v5",
+      "term": "voortaan",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Vanaf nu in toekomstige gevallen.",
+        "en": "From now on in future cases.",
+        "fa": "از این پس."
+      },
+      "example": {
+        "nl": "Voortaan controleren alle makers de vermelding.",
+        "en": "From now on, all contributors check the credit.",
+        "fa": "از این پس همه سازندگان ذکر نام را بررسی می‌کنند."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "c1-unit-applause-withheld-v6",
+      "term": "tot zijn recht komen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zichtbaar worden op een manier die bij de werkelijke waarde past.",
+        "en": "Be represented in a way that reflects its real value.",
+        "fa": "به‌گونه‌ای دیده شدن که شایسته ارزش واقعی باشد."
+      },
+      "example": {
+        "nl": "Haar bijdrage moet beter tot haar recht komen.",
+        "en": "Her contribution needs to be represented more adequately.",
+        "fa": "سهم او باید بهتر و شایسته‌تر دیده شود."
+      },
+      "part_of_speech": "expression"
+    },
+    {
+      "id": "c1-unit-borrowed-view-v1",
+      "term": "rechtvaardigen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Goede redenen geven voor een keuze of handeling.",
+        "en": "Provide sound reasons for a choice or action.",
+        "fa": "برای انتخاب یا عمل دلیل موجه آوردن."
+      },
+      "example": {
+        "nl": "Een behoefte rechtvaardigt niet elke oplossing.",
+        "en": "A need does not justify every solution.",
+        "fa": "یک نیاز هر راه‌حلی را توجیه نمی‌کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "c1-unit-borrowed-view-v2",
+      "term": "toetsen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Aan concrete criteria controleren of iets klopt of werkt.",
+        "en": "Check against specific criteria whether something is sound or works.",
+        "fa": "درستی یا کارکرد را با معیار مشخص بررسی کردن."
+      },
+      "example": {
+        "nl": "We toetsen de belofte aan de openingstijden.",
+        "en": "We test the promise against the opening hours.",
+        "fa": "وعده را با ساعت باز بودن می‌سنجیم."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "c1-unit-borrowed-view-v4",
+      "term": "onaantastbaar",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Voorgesteld als iets dat niet ter discussie kan staan.",
+        "en": "Presented as something beyond question or challenge.",
+        "fa": "چیزی که قابل بحث یا تعرض شمرده نمی‌شود."
+      },
+      "example": {
+        "nl": "Zijn uitzicht is geen onaantastbaar uitgangspunt.",
+        "en": "His view is not an unquestionable starting point.",
+        "fa": "چشم‌اندازش نقطه شروع تعرض‌ناپذیر نیست."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "c1-unit-borrowed-view-v5",
+      "term": "evenzeer",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "In dezelfde mate.",
+        "en": "To the same extent.",
+        "fa": "به همان اندازه."
+      },
+      "example": {
+        "nl": "Woonbehoefte verdient evenzeer aandacht.",
+        "en": "Housing needs deserve attention to the same extent.",
+        "fa": "نیاز مسکن به همان اندازه توجه می‌خواهد."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "c1-unit-borrowed-view-v6",
+      "term": "zonder meer",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zonder nadere afweging of beperking.",
+        "en": "Without further qualification or consideration.",
+        "fa": "بی‌قیدوشرط یا بدون بررسی بیشتر."
+      },
+      "example": {
+        "nl": "Een schets is niet zonder meer een garantie.",
+        "en": "A sketch is not automatically a guarantee.",
+        "fa": "طرح اولیه خودبه‌خود تضمین نیست."
+      },
+      "part_of_speech": "expression"
+    }
+  ],
+  "stories": [
+    {
+      "id": "c1-s-unit-applause-withheld",
+      "title": {
+        "nl": "Het applaus dat uitbleef",
+        "en": "The applause that never came",
+        "fa": "تشویقی که نیامد"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een theaterverhaal over erkenning",
+        "en": "A theatre story about recognition",
+        "fa": "داستان تئاتر و به‌رسمیت‌شناختن"
+      },
+      "lines": [
+        {
+          "nl": "Bij de première van een toneelstuk in een Antwerpse kelderzaal bleef dramaturg Salma zitten toen de anderen opstonden voor applaus.",
+          "en": "At the premiere of a play in an Antwerp basement venue, dramaturg Salma remained seated as the others rose to applaud.",
+          "fa": "در نخستین اجرای نمایشی در سالن زیرزمینی آنتورپ، سلما، دراماتورژ، وقتی دیگران برای تشویق برخاستند، نشسته ماند."
+        },
+        {
+          "nl": "Niet de voorstelling stelde haar teleur, maar de programmabrochure, waarin haar maandenlange samenwerking tot één bedankregel was teruggebracht.",
+          "en": "It was not the performance that disappointed her, but the programme booklet, where her months of collaboration had been reduced to one line of thanks.",
+          "fa": "نه اجرا، بلکه دفترچه برنامه ناامیدش کرده بود؛ همکاری چندماهه‌اش در آن به یک خط تشکر کاهش یافته بود."
+        },
+        {
+          "nl": "De regisseur zag haar stilte en vroeg achteraf of zij soms niet blij kon zijn voor het gezelschap.",
+          "en": "The director noticed her silence and afterwards asked whether she could not simply be happy for the company.",
+          "fa": "کارگردان سکوتش را دید و بعد پرسید آیا نمی‌تواند برای گروه خوشحال باشد."
+        },
+        {
+          "nl": "Salma antwoordde dat juist haar betrokkenheid maakte dat ze niet ongemerkt uit het verhaal van de productie wilde verdwijnen.",
+          "en": "Salma replied that it was precisely her commitment that made her unwilling to disappear unnoticed from the production's story.",
+          "fa": "سلما جواب داد دقیقاً به‌خاطر مشارکتش نمی‌خواست بی‌سروصدا از روایت تولید ناپدید شود."
+        },
+        {
+          "nl": "Hij wees op de krappe drukdeadline; zij legde drie oude versies op tafel waarin dezelfde vermelding telkens ontbrak.",
+          "en": "He pointed to the tight printing deadline; she laid three earlier versions on the table, each missing the same credit.",
+          "fa": "او به مهلت کوتاه چاپ اشاره کرد؛ سلما سه نسخه قدیمی روی میز گذاشت که در همه همان نام‌بردن غایب بود."
+        },
+        {
+          "nl": "Voor het eerst ging het gesprek niet over dankbaarheid, maar over wie de voorstelling mee had vormgegeven.",
+          "en": "For the first time, the conversation concerned not gratitude but who had helped shape the performance.",
+          "fa": "برای نخستین بار گفت‌وگو نه درباره قدردانی، بلکه درباره کسانی بود که در شکل گرفتن اجرا نقش داشتند."
+        },
+        {
+          "nl": "Een actrice stelde een openbare correctie voor, terwijl de producent vreesde dat zo'n bericht vooral het conflict zou uitvergroten.",
+          "en": "An actress proposed a public correction, while the producer feared such a statement would mainly magnify the conflict.",
+          "fa": "بازیگری اصلاح عمومی پیشنهاد کرد، اما تهیه‌کننده می‌ترسید چنین پیامی بیشتر تعارض را بزرگ کند."
+        },
+        {
+          "nl": "Salma vroeg om een feitelijke aanvulling, geen schuldbekentenis, en om een vast controlemoment bij toekomstige producties.",
+          "en": "Salma asked for a factual addition, not a confession of guilt, and for a fixed review point in future productions.",
+          "fa": "سلما تکمیلی واقعی خواست، نه اعتراف به گناه، و همچنین زمان بازبینی مشخص برای تولیدهای بعدی."
+        },
+        {
+          "nl": "Ze bereikten geen volledige overeenstemming over het verleden, maar wel over de tekst die de volgende bezoekers zouden lezen.",
+          "en": "They did not reach complete agreement about the past, but did agree on the text future visitors would read.",
+          "fa": "درباره گذشته کاملاً توافق نکردند، اما درباره متنی که بازدیدکنندگان بعدی می‌خواندند به توافق رسیدند."
+        },
+        {
+          "nl": "Bij de tweede voorstelling klapte Salma mee: niet omdat alles vergeten was, maar omdat haar bijdrage eindelijk zichtbaar naast de anderen stond.",
+          "en": "At the second performance Salma joined the applause: not because everything was forgotten, but because her contribution was finally visible alongside the others.",
+          "fa": "در اجرای دوم سلما هم تشویق کرد؛ نه چون همه چیز فراموش شده بود، بلکه چون سرانجام سهمش کنار دیگران دیده می‌شد."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Bij de première van een toneelstuk in een Antwerpse kelderzaal bleef dramaturg Salma zitten toen de anderen opstonden voor applaus. Niet de voorstelling stelde haar teleur, maar de programmabrochure, waarin haar maandenlange samenwerking tot één bedankregel was teruggebracht. De regisseur zag haar stilte en vroeg achteraf of zij soms niet blij kon zijn voor het gezelschap. Salma antwoordde dat juist haar betrokkenheid maakte dat ze niet ongemerkt uit het verhaal van de productie wilde verdwijnen. Hij wees op de krappe drukdeadline; zij legde drie oude versies op tafel waarin dezelfde vermelding telkens ontbrak.",
+          "en": "At the premiere of a play in an Antwerp basement venue, dramaturg Salma remained seated as the others rose to applaud. It was not the performance that disappointed her, but the programme booklet, where her months of collaboration had been reduced to one line of thanks. The director noticed her silence and afterwards asked whether she could not simply be happy for the company. Salma replied that it was precisely her commitment that made her unwilling to disappear unnoticed from the production's story. He pointed to the tight printing deadline; she laid three earlier versions on the table, each missing the same credit.",
+          "fa": "در نخستین اجرای نمایشی در سالن زیرزمینی آنتورپ، سلما، دراماتورژ، وقتی دیگران برای تشویق برخاستند، نشسته ماند. نه اجرا، بلکه دفترچه برنامه ناامیدش کرده بود؛ همکاری چندماهه‌اش در آن به یک خط تشکر کاهش یافته بود. کارگردان سکوتش را دید و بعد پرسید آیا نمی‌تواند برای گروه خوشحال باشد. سلما جواب داد دقیقاً به‌خاطر مشارکتش نمی‌خواست بی‌سروصدا از روایت تولید ناپدید شود. او به مهلت کوتاه چاپ اشاره کرد؛ سلما سه نسخه قدیمی روی میز گذاشت که در همه همان نام‌بردن غایب بود."
+        },
+        {
+          "nl": "Voor het eerst ging het gesprek niet over dankbaarheid, maar over wie de voorstelling mee had vormgegeven. Een actrice stelde een openbare correctie voor, terwijl de producent vreesde dat zo'n bericht vooral het conflict zou uitvergroten. Salma vroeg om een feitelijke aanvulling, geen schuldbekentenis, en om een vast controlemoment bij toekomstige producties. Ze bereikten geen volledige overeenstemming over het verleden, maar wel over de tekst die de volgende bezoekers zouden lezen. Bij de tweede voorstelling klapte Salma mee: niet omdat alles vergeten was, maar omdat haar bijdrage eindelijk zichtbaar naast de anderen stond.",
+          "en": "For the first time, the conversation concerned not gratitude but who had helped shape the performance. An actress proposed a public correction, while the producer feared such a statement would mainly magnify the conflict. Salma asked for a factual addition, not a confession of guilt, and for a fixed review point in future productions. They did not reach complete agreement about the past, but did agree on the text future visitors would read. At the second performance Salma joined the applause: not because everything was forgotten, but because her contribution was finally visible alongside the others.",
+          "fa": "برای نخستین بار گفت‌وگو نه درباره قدردانی، بلکه درباره کسانی بود که در شکل گرفتن اجرا نقش داشتند. بازیگری اصلاح عمومی پیشنهاد کرد، اما تهیه‌کننده می‌ترسید چنین پیامی بیشتر تعارض را بزرگ کند. سلما تکمیلی واقعی خواست، نه اعتراف به گناه، و همچنین زمان بازبینی مشخص برای تولیدهای بعدی. درباره گذشته کاملاً توافق نکردند، اما درباره متنی که بازدیدکنندگان بعدی می‌خواندند به توافق رسیدند. در اجرای دوم سلما هم تشویق کرد؛ نه چون همه چیز فراموش شده بود، بلکه چون سرانجام سهمش کنار دیگران دیده می‌شد."
+        }
+      ],
+      "topic_id": "c1-t-unit-applause-withheld",
+      "vocabulary_ids": [
+        "c1-unit-applause-withheld-v1",
+        "c1-unit-applause-withheld-v2",
+        "c1-unit-applause-withheld-v3",
+        "c1-unit-applause-withheld-v4",
+        "c1-unit-applause-withheld-v5",
+        "c1-unit-applause-withheld-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Hoe verschuift Salma het gesprek?",
+          "en": "How does Salma shift the conversation?",
+          "fa": "سلما گفت‌وگو را چگونه تغییر می‌دهد؟"
+        },
+        "options": [
+          {
+            "nl": "Van onenigheid over de inhoud naar kritiek op het acteerwerk.",
+            "en": "From disagreement about the content to criticism of the acting.",
+            "fa": "از اختلاف درباره محتوا به نقد بازیگری."
+          },
+          {
+            "nl": "Van haar vermeende gebrek aan dankbaarheid naar de zichtbaarheid van haar werk.",
+            "en": "From her alleged lack of gratitude to the visibility of her work.",
+            "fa": "از ناسپاسی ادعایی خود به دیده شدن کارش."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Ze verdedigt haar betrokkenheid en toont terugkerende omissies in de versies.",
+          "en": "She defends her commitment and shows repeated omissions in earlier versions.",
+          "fa": "از مشارکتش دفاع می‌کند و حذف تکراری را در نسخه‌ها نشان می‌دهد."
+        }
+      }
+    },
+    {
+      "id": "c1-s-unit-borrowed-view",
+      "title": {
+        "nl": "Een uitzicht in bruikleen",
+        "en": "A view on loan",
+        "fa": "چشم‌اندازی امانتی"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een stedelijk verhaal over verandering",
+        "en": "An urban story about change",
+        "fa": "داستان شهری تغییر"
+      },
+      "lines": [
+        {
+          "nl": "Vanuit zijn Brusselse huurkamer zag Idris jarenlang een braakliggend terrein waarop ieder voorjaar klaprozen verschenen.",
+          "en": "For years, from his rented room in Brussels, Idris looked out over vacant land where poppies appeared every spring.",
+          "fa": "ادریس سال‌ها از اتاق اجاره‌ای‌اش در بروکسل به زمین خالی‌ای نگاه می‌کرد که هر بهار شقایق می‌داد."
+        },
+        {
+          "nl": "Toen een woonproject werd aangekondigd, schreef hij een felle brief over het laatste stukje vrije natuur in de straat.",
+          "en": "When a housing project was announced, he wrote an angry letter about the street's last patch of free nature.",
+          "fa": "وقتی پروژه مسکونی اعلام شد، نامه تندی درباره آخرین تکه طبیعت آزاد خیابان نوشت."
+        },
+        {
+          "nl": "Zijn vriendin Elena, die met haar kind bij familie inwoonde, las de brief en vroeg voor wie die vrijheid precies gold.",
+          "en": "His friend Elena, who was living with relatives and her child, read the letter and asked exactly who enjoyed that freedom.",
+          "fa": "دوستش النا که با فرزندش نزد خانواده زندگی می‌کرد، نامه را خواند و پرسید آن آزادی دقیقاً برای چه کسی بود."
+        },
+        {
+          "nl": "Het terrein was afgesloten, herinnerde ze hem eraan; hij kon ernaar kijken, maar niemand kon er spelen of wandelen.",
+          "en": "The site was fenced off, she reminded him; he could look at it, but nobody could play or walk there.",
+          "fa": "یادآوری کرد زمین بسته بود؛ او می‌توانست نگاهش کند، اما کسی نمی‌توانست آنجا بازی یا قدم بزند."
+        },
+        {
+          "nl": "Idris voelde zich betrapt op een gemakzuchtig woord, al vond hij niet dat woningnood iedere inrichting vanzelf rechtvaardigde.",
+          "en": "Idris felt caught using a facile word, although he did not believe housing shortages automatically justified every design.",
+          "fa": "ادریس حس کرد در واژه‌ای ساده‌انگارانه گیر افتاده، هرچند معتقد نبود کمبود مسکن هر طراحی‌ای را خودبه‌خود توجیه می‌کند."
+        },
+        {
+          "nl": "Tijdens een informatieavond vroeg hij daarom zowel naar de betaalbaarheid van de woningen als naar de toegankelijkheid van de geplande tuin.",
+          "en": "At an information evening, he therefore asked about both the affordability of the homes and access to the planned garden.",
+          "fa": "برای همین در نشست اطلاع‌رسانی هم درباره استطاعت‌پذیری خانه‌ها پرسید و هم دسترسی به باغ برنامه‌ریزی‌شده."
+        },
+        {
+          "nl": "De ontwerper kon een doorgang op de tekening aanwijzen, maar over openingstijden en beheer was nog niets beslist.",
+          "en": "The designer could point out a passage on the plan, but nothing had been decided about opening hours or management.",
+          "fa": "طراح می‌توانست گذرگاهی روی نقشه نشان دهد، اما درباره ساعت باز بودن و اداره آن هنوز تصمیمی نبود."
+        },
+        {
+          "nl": "Elena vertelde dat een nieuw adres voor haar geen abstract beleidsdoel was, maar ruimte om haar kind zelf naar bed te brengen.",
+          "en": "Elena said that a new address was not an abstract policy goal for her, but space to put her child to bed herself.",
+          "fa": "النا گفت نشانی تازه برایش هدف انتزاعی سیاست نبود، بلکه فضایی بود تا خودش فرزندش را بخواباند."
+        },
+        {
+          "nl": "In zijn tweede brief vroeg Idris om aantoonbaar toegankelijke buitenruimte zonder te doen alsof zijn uitzicht een onaantastbaar recht was.",
+          "en": "In his second letter, Idris asked for demonstrably accessible outdoor space without pretending that his view was an inviolable right.",
+          "fa": "ادریس در نامه دوم فضای بیرونی واقعاً قابل دسترسی خواست، بی‌آنکه وانمود کند چشم‌اندازش حقی تعرض‌ناپذیر است."
+        },
+        {
+          "nl": "De klaprozen zouden verdwijnen, maar hij begreep nu dat ook een open raam op een ontoegankelijk landschap als een vorm van bezit kon aanvoelen.",
+          "en": "The poppies would disappear, but he now understood that even an open window onto an inaccessible landscape could feel like a form of ownership.",
+          "fa": "شقایق‌ها ناپدید می‌شدند، اما حالا می‌فهمید حتی پنجره باز رو به منظره‌ای دسترس‌ناپذیر هم می‌تواند حس مالکیت بدهد."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Vanuit zijn Brusselse huurkamer zag Idris jarenlang een braakliggend terrein waarop ieder voorjaar klaprozen verschenen. Toen een woonproject werd aangekondigd, schreef hij een felle brief over het laatste stukje vrije natuur in de straat. Zijn vriendin Elena, die met haar kind bij familie inwoonde, las de brief en vroeg voor wie die vrijheid precies gold. Het terrein was afgesloten, herinnerde ze hem eraan; hij kon ernaar kijken, maar niemand kon er spelen of wandelen. Idris voelde zich betrapt op een gemakzuchtig woord, al vond hij niet dat woningnood iedere inrichting vanzelf rechtvaardigde.",
+          "en": "For years, from his rented room in Brussels, Idris looked out over vacant land where poppies appeared every spring. When a housing project was announced, he wrote an angry letter about the street's last patch of free nature. His friend Elena, who was living with relatives and her child, read the letter and asked exactly who enjoyed that freedom. The site was fenced off, she reminded him; he could look at it, but nobody could play or walk there. Idris felt caught using a facile word, although he did not believe housing shortages automatically justified every design.",
+          "fa": "ادریس سال‌ها از اتاق اجاره‌ای‌اش در بروکسل به زمین خالی‌ای نگاه می‌کرد که هر بهار شقایق می‌داد. وقتی پروژه مسکونی اعلام شد، نامه تندی درباره آخرین تکه طبیعت آزاد خیابان نوشت. دوستش النا که با فرزندش نزد خانواده زندگی می‌کرد، نامه را خواند و پرسید آن آزادی دقیقاً برای چه کسی بود. یادآوری کرد زمین بسته بود؛ او می‌توانست نگاهش کند، اما کسی نمی‌توانست آنجا بازی یا قدم بزند. ادریس حس کرد در واژه‌ای ساده‌انگارانه گیر افتاده، هرچند معتقد نبود کمبود مسکن هر طراحی‌ای را خودبه‌خود توجیه می‌کند."
+        },
+        {
+          "nl": "Tijdens een informatieavond vroeg hij daarom zowel naar de betaalbaarheid van de woningen als naar de toegankelijkheid van de geplande tuin. De ontwerper kon een doorgang op de tekening aanwijzen, maar over openingstijden en beheer was nog niets beslist. Elena vertelde dat een nieuw adres voor haar geen abstract beleidsdoel was, maar ruimte om haar kind zelf naar bed te brengen. In zijn tweede brief vroeg Idris om aantoonbaar toegankelijke buitenruimte zonder te doen alsof zijn uitzicht een onaantastbaar recht was. De klaprozen zouden verdwijnen, maar hij begreep nu dat ook een open raam op een ontoegankelijk landschap als een vorm van bezit kon aanvoelen.",
+          "en": "At an information evening, he therefore asked about both the affordability of the homes and access to the planned garden. The designer could point out a passage on the plan, but nothing had been decided about opening hours or management. Elena said that a new address was not an abstract policy goal for her, but space to put her child to bed herself. In his second letter, Idris asked for demonstrably accessible outdoor space without pretending that his view was an inviolable right. The poppies would disappear, but he now understood that even an open window onto an inaccessible landscape could feel like a form of ownership.",
+          "fa": "برای همین در نشست اطلاع‌رسانی هم درباره استطاعت‌پذیری خانه‌ها پرسید و هم دسترسی به باغ برنامه‌ریزی‌شده. طراح می‌توانست گذرگاهی روی نقشه نشان دهد، اما درباره ساعت باز بودن و اداره آن هنوز تصمیمی نبود. النا گفت نشانی تازه برایش هدف انتزاعی سیاست نبود، بلکه فضایی بود تا خودش فرزندش را بخواباند. ادریس در نامه دوم فضای بیرونی واقعاً قابل دسترسی خواست، بی‌آنکه وانمود کند چشم‌اندازش حقی تعرض‌ناپذیر است. شقایق‌ها ناپدید می‌شدند، اما حالا می‌فهمید حتی پنجره باز رو به منظره‌ای دسترس‌ناپذیر هم می‌تواند حس مالکیت بدهد."
+        }
+      ],
+      "topic_id": "c1-t-unit-borrowed-view",
+      "vocabulary_ids": [
+        "c1-unit-borrowed-view-v1",
+        "c1-unit-borrowed-view-v2",
+        "c1-v351",
+        "c1-unit-borrowed-view-v4",
+        "c1-unit-borrowed-view-v5",
+        "c1-unit-borrowed-view-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat maakt Elena's vraag ontregelend voor Idris?",
+          "en": "Why does Elena's question unsettle Idris?",
+          "fa": "چرا پرسش النا ادریس را به فکر فرو می‌برد؟"
+        },
+        "options": [
+          {
+            "nl": "Ze bewijst dat alle woningen betaalbaar zullen zijn.",
+            "en": "It proves that all homes will be affordable.",
+            "fa": "ثابت می‌کند همه خانه‌ها استطاعت‌پذیر خواهند بود."
+          },
+          {
+            "nl": "Ze legt bloot dat hij zichtbaar groen met gedeelde toegankelijkheid verwart.",
+            "en": "It exposes his confusion between visible greenery and shared access.",
+            "fa": "آشکار می‌کند سبزی قابل دیدن را با دسترسی همگانی اشتباه گرفته است."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Zijn woord vrije verbergt dat het terrein gesloten is en vooral zijn uitzicht dient.",
+          "en": "His word free obscures the fact that the land is closed and mainly serves his view.",
+          "fa": "واژه آزاد او پنهان می‌کند که زمین بسته است و بیشتر منظره او را تأمین می‌کند."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "c1-t-unit-applause-withheld",
+      "title": {
+        "nl": "Het applaus dat uitbleef",
+        "en": "The applause that never came",
+        "fa": "تشویقی که نیامد"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Tegenstrijdige perspectieven synthetiseren en een oplossing verdedigen zonder belangen te verdoezelen.",
+          "en": "Synthesise conflicting perspectives and defend a solution without obscuring competing interests.",
+          "fa": "ترکیب دیدگاه‌های متضاد و دفاع از راه‌حل بدون پنهان کردن منافع."
+        }
+      ],
+      "language_focus": {
+        "nl": "Tegenstrijdige perspectieven synthetiseren en een oplossing verdedigen zonder belangen te verdoezelen.",
+        "en": "Synthesise conflicting perspectives and defend a solution without obscuring competing interests.",
+        "fa": "ترکیب دیدگاه‌های متضاد و دفاع از راه‌حل بدون پنهان کردن منافع."
+      },
+      "vocabulary_ids": [
+        "c1-unit-applause-withheld-v1",
+        "c1-unit-applause-withheld-v2",
+        "c1-unit-applause-withheld-v3",
+        "c1-unit-applause-withheld-v4",
+        "c1-unit-applause-withheld-v5",
+        "c1-unit-applause-withheld-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Bij de première van een toneelstuk in een Antwerpse kelderzaal bleef dramaturg Salma zitten toen de anderen opstonden voor applaus. Niet de voorstelling stelde haar teleur, maar de programmabrochure, waarin haar maandenlange samenwerking tot één bedankregel was teruggebracht. De regisseur zag haar stilte en vroeg achteraf of zij soms niet blij kon zijn voor het gezelschap. Salma antwoordde dat juist haar betrokkenheid maakte dat ze niet ongemerkt uit het verhaal van de productie wilde verdwijnen. Hij wees op de krappe drukdeadline; zij legde drie oude versies op tafel waarin dezelfde vermelding telkens ontbrak.\n\nVoor het eerst ging het gesprek niet over dankbaarheid, maar over wie de voorstelling mee had vormgegeven. Een actrice stelde een openbare correctie voor, terwijl de producent vreesde dat zo'n bericht vooral het conflict zou uitvergroten. Salma vroeg om een feitelijke aanvulling, geen schuldbekentenis, en om een vast controlemoment bij toekomstige producties. Ze bereikten geen volledige overeenstemming over het verleden, maar wel over de tekst die de volgende bezoekers zouden lezen. Bij de tweede voorstelling klapte Salma mee: niet omdat alles vergeten was, maar omdat haar bijdrage eindelijk zichtbaar naast de anderen stond.",
+          "en": "At the premiere of a play in an Antwerp basement venue, dramaturg Salma remained seated as the others rose to applaud. It was not the performance that disappointed her, but the programme booklet, where her months of collaboration had been reduced to one line of thanks. The director noticed her silence and afterwards asked whether she could not simply be happy for the company. Salma replied that it was precisely her commitment that made her unwilling to disappear unnoticed from the production's story. He pointed to the tight printing deadline; she laid three earlier versions on the table, each missing the same credit.\n\nFor the first time, the conversation concerned not gratitude but who had helped shape the performance. An actress proposed a public correction, while the producer feared such a statement would mainly magnify the conflict. Salma asked for a factual addition, not a confession of guilt, and for a fixed review point in future productions. They did not reach complete agreement about the past, but did agree on the text future visitors would read. At the second performance Salma joined the applause: not because everything was forgotten, but because her contribution was finally visible alongside the others.",
+          "fa": "در نخستین اجرای نمایشی در سالن زیرزمینی آنتورپ، سلما، دراماتورژ، وقتی دیگران برای تشویق برخاستند، نشسته ماند. نه اجرا، بلکه دفترچه برنامه ناامیدش کرده بود؛ همکاری چندماهه‌اش در آن به یک خط تشکر کاهش یافته بود. کارگردان سکوتش را دید و بعد پرسید آیا نمی‌تواند برای گروه خوشحال باشد. سلما جواب داد دقیقاً به‌خاطر مشارکتش نمی‌خواست بی‌سروصدا از روایت تولید ناپدید شود. او به مهلت کوتاه چاپ اشاره کرد؛ سلما سه نسخه قدیمی روی میز گذاشت که در همه همان نام‌بردن غایب بود.\n\nبرای نخستین بار گفت‌وگو نه درباره قدردانی، بلکه درباره کسانی بود که در شکل گرفتن اجرا نقش داشتند. بازیگری اصلاح عمومی پیشنهاد کرد، اما تهیه‌کننده می‌ترسید چنین پیامی بیشتر تعارض را بزرگ کند. سلما تکمیلی واقعی خواست، نه اعتراف به گناه، و همچنین زمان بازبینی مشخص برای تولیدهای بعدی. درباره گذشته کاملاً توافق نکردند، اما درباره متنی که بازدیدکنندگان بعدی می‌خواندند به توافق رسیدند. در اجرای دوم سلما هم تشویق کرد؛ نه چون همه چیز فراموش شده بود، بلکه چون سرانجام سهمش کنار دیگران دیده می‌شد."
+        },
+        "questions": [
+          {
+            "id": "c1-t-unit-applause-withheld-r1",
+            "prompt": {
+              "nl": "Hoe verschuift Salma het gesprek?",
+              "en": "How does Salma shift the conversation?",
+              "fa": "سلما گفت‌وگو را چگونه تغییر می‌دهد؟"
+            },
+            "options": [
+              {
+                "nl": "Van onenigheid over de inhoud naar kritiek op het acteerwerk.",
+                "en": "From disagreement about the content to criticism of the acting.",
+                "fa": "از اختلاف درباره محتوا به نقد بازیگری."
+              },
+              {
+                "nl": "Van haar vermeende gebrek aan dankbaarheid naar de zichtbaarheid van haar werk.",
+                "en": "From her alleged lack of gratitude to the visibility of her work.",
+                "fa": "از ناسپاسی ادعایی خود به دیده شدن کارش."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Ze verdedigt haar betrokkenheid en toont terugkerende omissies in de versies.",
+              "en": "She defends her commitment and shows repeated omissions in earlier versions.",
+              "fa": "از مشارکتش دفاع می‌کند و حذف تکراری را در نسخه‌ها نشان می‌دهد."
+            }
+          },
+          {
+            "id": "c1-t-unit-applause-withheld-r2",
+            "prompt": {
+              "nl": "Welke nuance draagt het slot?",
+              "en": "What nuance does the ending convey?",
+              "fa": "پایان چه ظرافتی را منتقل می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Erkenning maakt samenwerking mogelijk zonder volledige verzoening te suggereren.",
+                "en": "Recognition enables cooperation without implying complete reconciliation.",
+                "fa": "به‌رسمیت‌شناختن همکاری را ممکن می‌کند، بی‌آنکه آشتی کامل القا شود."
+              },
+              {
+                "nl": "Applaus bewijst dat Salma haar klacht onterecht vond.",
+                "en": "Applause proves that Salma considered her complaint unjustified.",
+                "fa": "تشویق ثابت می‌کند سلما شکایتش را بی‌جا می‌دانست."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De tekst zegt expliciet dat niet alles vergeten is, ondanks haar deelname aan het applaus.",
+              "en": "The text explicitly says that not everything is forgotten despite her joining the applause.",
+              "fa": "متن صریح می‌گوید با وجود همراهی در تشویق، همه چیز فراموش نشده است."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Salma, de aanvulling komt morgen online, maar de gedrukte brochure kunnen we pas vanaf vrijdag vervangen. De formulering over jouw dramaturgische bijdrage is goedgekeurd; een gezamenlijke verklaring over het conflict zelf is dat niet. Voor de volgende productie plannen we bovendien twee weken vóór de drukdeadline een controle door alle makers. Wil je nagaan of die afspraken in de begeleidende mail exact zo staan?",
+          "en": "Salma, the addition will go online tomorrow, but we cannot replace the printed booklet until Friday. The wording about your dramaturgical contribution has been approved; a joint statement on the conflict itself has not. For the next production, we will also schedule a review by all contributors two weeks before the printing deadline. Could you check that the accompanying email records those arrangements exactly?",
+          "fa": "سلما، تکمیل فردا آنلاین می‌شود، اما دفترچه چاپی را زودتر از جمعه نمی‌توانیم عوض کنیم. عبارت مربوط به سهم دراماتورژی تو تأیید شده؛ بیانیه مشترک درباره خود تعارض تأیید نشده است. برای تولید بعدی هم دو هفته پیش از مهلت چاپ بازبینی همه سازندگان را برنامه‌ریزی می‌کنیم. می‌توانی بررسی کنی این توافق‌ها دقیقاً همین‌گونه در ایمیل همراه آمده‌اند؟"
+        },
+        "questions": [
+          {
+            "id": "c1-t-unit-applause-withheld-l1",
+            "prompt": {
+              "nl": "Welk onderscheid moet de begeleidende mail behouden?",
+              "en": "Which distinction must the accompanying email preserve?",
+              "fa": "ایمیل همراه باید کدام تمایز را حفظ کند؟"
+            },
+            "options": [
+              {
+                "nl": "De online aanvulling en de gedrukte brochure verschijnen beide morgen.",
+                "en": "The online addition and the printed booklet both appear tomorrow.",
+                "fa": "تکمیل آنلاین و دفترچه چاپی هر دو فردا منتشر می‌شوند."
+              },
+              {
+                "nl": "De bijdrage is goedgekeurd beschreven, maar er is geen gezamenlijke conflictverklaring.",
+                "en": "The description of the contribution is approved, but there is no joint statement on the conflict.",
+                "fa": "توصیف سهم تأیید شده، اما بیانیه مشترکی درباره تعارض وجود ندارد."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De spreker onderscheidt instemming met de vermelding van instemming met een bredere verklaring.",
+              "en": "The speaker distinguishes agreement to the credit from agreement to a broader statement.",
+              "fa": "گوینده موافقت با ذکر سهم را از موافقت با بیانیه گسترده‌تر جدا می‌کند."
+            }
+          },
+          {
+            "id": "c1-t-unit-applause-withheld-l2",
+            "prompt": {
+              "nl": "Welke maatregel moet herhaling voorkomen?",
+              "en": "Which measure is intended to prevent recurrence?",
+              "fa": "چه اقدامی قرار است مانع تکرار شود؟"
+            },
+            "options": [
+              {
+                "nl": "Alle makers controleren twee weken vóór de drukdeadline.",
+                "en": "All contributors review the material two weeks before the printing deadline.",
+                "fa": "همه سازندگان دو هفته پیش از مهلت چاپ بازبینی می‌کنند."
+              },
+              {
+                "nl": "De producent controleert alles pas na de première.",
+                "en": "The producer checks everything only after the premiere.",
+                "fa": "تهیه‌کننده همه چیز را فقط پس از اجرای نخست بررسی می‌کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Het nieuwe controlemoment ligt vóór het drukken en betrekt alle makers.",
+              "en": "The new review point comes before printing and involves all contributors.",
+              "fa": "زمان بازبینی تازه پیش از چاپ است و همه سازندگان را دربرمی‌گیرد."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Vat als Salma het bereikte akkoord samen voor een collega die het conflict niet kent. Verdedig waarom een feitelijke correctie nuttiger kan zijn dan een algemene verklaring en noem wat nog niet is overeengekomen.",
+          "en": "As Salma, summarise the agreement for a colleague unfamiliar with the dispute. Defend why a factual correction may be more useful than a general statement and state what has not been agreed.",
+          "fa": "در نقش سلما توافق را برای همکار ناآشنا با اختلاف خلاصه کنید. دلیل بیاورید چرا اصلاح واقعی می‌تواند از بیانیه عمومی مفیدتر باشد و موارد توافق‌نشده را بگویید."
+        },
+        "sample": {
+          "nl": "Mijn bijdrage wordt morgen online toegevoegd; de gedrukte brochure volgt vanaf vrijdag. Die correctie is concreet en controleerbaar. We hoeven daarvoor geen gezamenlijke lezing van het hele conflict te presenteren, want daarover bestaat nog geen akkoord. Voor een volgende productie controleren alle makers twee weken vóór de drukdeadline hun vermelding. Zo wordt erkenning niet afhankelijk van wie achteraf het hardst protesteert.",
+          "en": "My contribution will be added online tomorrow; the printed booklet will follow from Friday. That correction is specific and verifiable. We do not need to present a shared account of the entire conflict, since that has not been agreed. For the next production, all contributors will check their credit two weeks before the printing deadline. Recognition will then not depend on who protests most loudly afterwards.",
+          "fa": "سهمم فردا آنلاین اضافه می‌شود؛ دفترچه چاپی از جمعه اصلاح می‌شود. این اصلاح مشخص و قابل بررسی است. لازم نیست روایت مشترکی از کل تعارض بدهیم، چون درباره آن توافقی نیست. برای تولید بعدی همه سازندگان دو هفته پیش از مهلت چاپ نام‌بردن خود را بررسی می‌کنند. این‌گونه به‌رسمیت‌شناختن وابسته به بلندترین اعتراض بعدی نیست."
+        },
+        "min_words": 55,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Scheid de online aanvulling morgen van vervanging op papier vanaf vrijdag.",
+            "en": "Distinguish tomorrow's online addition from printed replacement from Friday.",
+            "fa": "تکمیل آنلاین فردا را از تعویض چاپی از جمعه جدا کنید."
+          },
+          {
+            "nl": "Noem geen gezamenlijke verklaring als afgesproken en licht de voorafgaande controle toe.",
+            "en": "Do not claim a joint statement was agreed, and explain the advance review.",
+            "fa": "بیانیه مشترک را توافق‌شده ندانید و بازبینی قبلی را توضیح دهید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een interne notitie van 120 tot 250 woorden waarin je de afspraken precies vastlegt en toelicht hoe het controlemoment de werkwijze verbetert. Vermijd een verzonnen gezamenlijk oordeel over het conflict.",
+          "en": "Write an internal note of 120–250 Dutch words recording the arrangements precisely and explaining how the review point improves the process. Do not invent a shared judgment of the dispute.",
+          "fa": "یادداشت داخلی ۱۲۰ تا ۲۵۰ واژه‌ای به هلندی بنویسید که توافق‌ها را دقیق ثبت کند و بهبود روش کار با زمان بازبینی را توضیح دهد. قضاوت مشترک ساختگی درباره اختلاف نسازید."
+        },
+        "sample": {
+          "nl": "De overeengekomen correctie betreft de zichtbaarheid van mijn dramaturgische bijdrage. De aanvulling verschijnt morgen online; vervanging van de gedrukte brochure is pas vanaf vrijdag mogelijk. Deze twee momenten mogen in de communicatie niet samenvallen. Over de formulering van de bijdrage bestaat overeenstemming, maar niet over een gezamenlijke verklaring waarin het conflict als geheel wordt beoordeeld. Ik stel daarom voor de begeleidende tekst feitelijk te houden. Voor toekomstige producties controleren alle makers hun vermelding twee weken vóór de drukdeadline. Dat moment moet voldoende ruimte bieden om ontbrekende informatie aan te vullen voordat de brochure wordt gedrukt. Een dergelijke werkwijze maakt erkenning minder afhankelijk van individuele mondigheid en voorkomt dat praktische tijdsdruk achteraf als afdoende verklaring fungeert. De maatregel veronderstelt geen volledige overeenstemming over wat eerder misging; hij legt wel vast wie voortaan wanneer kan reageren.",
+          "en": "The agreed correction concerns the visibility of my dramaturgical contribution. The addition will appear online tomorrow; replacement of the printed booklet is only possible from Friday. These two moments must not be conflated in our communication. There is agreement on the wording of the contribution, but not on a joint statement judging the dispute as a whole. I therefore propose keeping the accompanying text factual. For future productions, all contributors will check their credit two weeks before the printing deadline. That point must leave sufficient time to add missing information before printing. Such a process makes recognition less dependent on individual assertiveness and prevents time pressure from serving retrospectively as a sufficient explanation. The measure does not assume complete agreement about earlier failures; it does specify who can respond, and when, in future.",
+          "fa": "اصلاح مورد توافق مربوط به دیده شدن سهم دراماتورژی من است. تکمیل فردا آنلاین می‌شود؛ تعویض دفترچه چاپی فقط از جمعه ممکن است. در اطلاع‌رسانی نباید این دو زمان یکی نشان داده شوند. درباره عبارت سهم توافق هست، اما درباره بیانیه مشترکی برای قضاوت کل اختلاف نیست. بنابراین پیشنهاد می‌کنم متن همراه واقعی و دقیق بماند. برای تولیدهای بعدی همه سازندگان دو هفته پیش از مهلت چاپ نام‌بردن خود را بررسی می‌کنند. این زمان باید فرصت کافی برای تکمیل اطلاعات پیش از چاپ بدهد. چنین روشی به‌رسمیت‌شناختن را کمتر به جسارت فردی وابسته می‌کند و مانع می‌شود فشار زمانی بعداً توضیح کافی شمرده شود. این اقدام توافق کامل درباره خطای گذشته را فرض نمی‌گیرد؛ اما مشخص می‌کند از این پس چه کسی و چه زمانی می‌تواند پاسخ دهد."
+        },
+        "min_words": 120,
+        "max_words": 250,
+        "criteria": [
+          {
+            "nl": "Leg de twee publicatiemomenten en de beperkte reikwijdte van het akkoord vast.",
+            "en": "Record the two publication times and the limited scope of the agreement.",
+            "fa": "دو زمان انتشار و دامنه محدود توافق را ثبت کنید."
+          },
+          {
+            "nl": "Onderbouw controle door alle makers twee weken vóór de drukdeadline.",
+            "en": "Justify review by all contributors two weeks before the printing deadline.",
+            "fa": "بازبینی همه سازندگان دو هفته پیش از مهلت چاپ را مستدل کنید."
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-t-unit-borrowed-view",
+      "title": {
+        "nl": "Een uitzicht in bruikleen",
+        "en": "A view on loan",
+        "fa": "چشم‌اندازی امانتی"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een publieke beslissing vanuit meerdere waarden bespreken en absolute claims nuanceren.",
+          "en": "Discuss a public decision through multiple values and qualify absolute claims.",
+          "fa": "بحث درباره تصمیم عمومی بر اساس ارزش‌های مختلف و تعدیل ادعاهای مطلق."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een publieke beslissing vanuit meerdere waarden bespreken en absolute claims nuanceren.",
+        "en": "Discuss a public decision through multiple values and qualify absolute claims.",
+        "fa": "بحث درباره تصمیم عمومی بر اساس ارزش‌های مختلف و تعدیل ادعاهای مطلق."
+      },
+      "vocabulary_ids": [
+        "c1-unit-borrowed-view-v1",
+        "c1-unit-borrowed-view-v2",
+        "c1-v351",
+        "c1-unit-borrowed-view-v4",
+        "c1-unit-borrowed-view-v5",
+        "c1-unit-borrowed-view-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Vanuit zijn Brusselse huurkamer zag Idris jarenlang een braakliggend terrein waarop ieder voorjaar klaprozen verschenen. Toen een woonproject werd aangekondigd, schreef hij een felle brief over het laatste stukje vrije natuur in de straat. Zijn vriendin Elena, die met haar kind bij familie inwoonde, las de brief en vroeg voor wie die vrijheid precies gold. Het terrein was afgesloten, herinnerde ze hem eraan; hij kon ernaar kijken, maar niemand kon er spelen of wandelen. Idris voelde zich betrapt op een gemakzuchtig woord, al vond hij niet dat woningnood iedere inrichting vanzelf rechtvaardigde.\n\nTijdens een informatieavond vroeg hij daarom zowel naar de betaalbaarheid van de woningen als naar de toegankelijkheid van de geplande tuin. De ontwerper kon een doorgang op de tekening aanwijzen, maar over openingstijden en beheer was nog niets beslist. Elena vertelde dat een nieuw adres voor haar geen abstract beleidsdoel was, maar ruimte om haar kind zelf naar bed te brengen. In zijn tweede brief vroeg Idris om aantoonbaar toegankelijke buitenruimte zonder te doen alsof zijn uitzicht een onaantastbaar recht was. De klaprozen zouden verdwijnen, maar hij begreep nu dat ook een open raam op een ontoegankelijk landschap als een vorm van bezit kon aanvoelen.",
+          "en": "For years, from his rented room in Brussels, Idris looked out over vacant land where poppies appeared every spring. When a housing project was announced, he wrote an angry letter about the street's last patch of free nature. His friend Elena, who was living with relatives and her child, read the letter and asked exactly who enjoyed that freedom. The site was fenced off, she reminded him; he could look at it, but nobody could play or walk there. Idris felt caught using a facile word, although he did not believe housing shortages automatically justified every design.\n\nAt an information evening, he therefore asked about both the affordability of the homes and access to the planned garden. The designer could point out a passage on the plan, but nothing had been decided about opening hours or management. Elena said that a new address was not an abstract policy goal for her, but space to put her child to bed herself. In his second letter, Idris asked for demonstrably accessible outdoor space without pretending that his view was an inviolable right. The poppies would disappear, but he now understood that even an open window onto an inaccessible landscape could feel like a form of ownership.",
+          "fa": "ادریس سال‌ها از اتاق اجاره‌ای‌اش در بروکسل به زمین خالی‌ای نگاه می‌کرد که هر بهار شقایق می‌داد. وقتی پروژه مسکونی اعلام شد، نامه تندی درباره آخرین تکه طبیعت آزاد خیابان نوشت. دوستش النا که با فرزندش نزد خانواده زندگی می‌کرد، نامه را خواند و پرسید آن آزادی دقیقاً برای چه کسی بود. یادآوری کرد زمین بسته بود؛ او می‌توانست نگاهش کند، اما کسی نمی‌توانست آنجا بازی یا قدم بزند. ادریس حس کرد در واژه‌ای ساده‌انگارانه گیر افتاده، هرچند معتقد نبود کمبود مسکن هر طراحی‌ای را خودبه‌خود توجیه می‌کند.\n\nبرای همین در نشست اطلاع‌رسانی هم درباره استطاعت‌پذیری خانه‌ها پرسید و هم دسترسی به باغ برنامه‌ریزی‌شده. طراح می‌توانست گذرگاهی روی نقشه نشان دهد، اما درباره ساعت باز بودن و اداره آن هنوز تصمیمی نبود. النا گفت نشانی تازه برایش هدف انتزاعی سیاست نبود، بلکه فضایی بود تا خودش فرزندش را بخواباند. ادریس در نامه دوم فضای بیرونی واقعاً قابل دسترسی خواست، بی‌آنکه وانمود کند چشم‌اندازش حقی تعرض‌ناپذیر است. شقایق‌ها ناپدید می‌شدند، اما حالا می‌فهمید حتی پنجره باز رو به منظره‌ای دسترس‌ناپذیر هم می‌تواند حس مالکیت بدهد."
+        },
+        "questions": [
+          {
+            "id": "c1-t-unit-borrowed-view-r1",
+            "prompt": {
+              "nl": "Wat maakt Elena's vraag ontregelend voor Idris?",
+              "en": "Why does Elena's question unsettle Idris?",
+              "fa": "چرا پرسش النا ادریس را به فکر فرو می‌برد؟"
+            },
+            "options": [
+              {
+                "nl": "Ze bewijst dat alle woningen betaalbaar zullen zijn.",
+                "en": "It proves that all homes will be affordable.",
+                "fa": "ثابت می‌کند همه خانه‌ها استطاعت‌پذیر خواهند بود."
+              },
+              {
+                "nl": "Ze legt bloot dat hij zichtbaar groen met gedeelde toegankelijkheid verwart.",
+                "en": "It exposes his confusion between visible greenery and shared access.",
+                "fa": "آشکار می‌کند سبزی قابل دیدن را با دسترسی همگانی اشتباه گرفته است."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Zijn woord vrije verbergt dat het terrein gesloten is en vooral zijn uitzicht dient.",
+              "en": "His word free obscures the fact that the land is closed and mainly serves his view.",
+              "fa": "واژه آزاد او پنهان می‌کند که زمین بسته است و بیشتر منظره او را تأمین می‌کند."
+            }
+          },
+          {
+            "id": "c1-t-unit-borrowed-view-r2",
+            "prompt": {
+              "nl": "Hoe verandert zijn tweede brief?",
+              "en": "How does his second letter change?",
+              "fa": "نامه دومش چه تغییری می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Hij vervangt een absoluut verzet door concrete vragen over gedeelde belangen.",
+                "en": "He replaces absolute opposition with specific questions about shared interests.",
+                "fa": "مخالفت مطلق را با پرسش‌های مشخص درباره منافع مشترک عوض می‌کند."
+              },
+              {
+                "nl": "Hij laat iedere vraag over de inrichting vallen.",
+                "en": "He drops every question about the design.",
+                "fa": "هر پرسشی درباره طراحی را کنار می‌گذارد."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Hij blijft buitenruimte belangrijk vinden, maar beschouwt zijn eigen perspectief niet meer als doorslaggevend.",
+              "en": "He still values outdoor space, but no longer treats his own perspective as decisive.",
+              "fa": "هنوز فضای باز را مهم می‌داند، اما دیدگاه خود را تعیین‌کننده نمی‌شمارد."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Idris, in de nieuwe projectnota staat dat de tuin overdag toegankelijk zou worden via de oostelijke doorgang, niet via de westelijke zoals op de eerste schets. Het beheer is nog niet toegewezen en de openingstijden zijn dus evenmin gegarandeerd. Over betaalbare woningen bevat deze nota geen nieuwe cijfers. Voor de inspraakronde kunnen we beter precies die ontbrekende garanties benoemen.",
+          "en": "Idris, the new project note says the garden would be accessible during the day through the eastern passage, not the western one shown in the first sketch. Management has not yet been assigned, so opening hours are not guaranteed either. This note contains no new figures on affordable housing. For the consultation round, we should identify precisely those missing guarantees.",
+          "fa": "ادریس، در یادداشت تازه پروژه پیشنهاد شده باغ روزها از گذرگاه شرقی قابل دسترسی باشد، نه غربیِ طرح نخست. اداره آن هنوز واگذار نشده، پس ساعت باز بودن هم تضمین نشده است. یادداشت درباره مسکن استطاعت‌پذیر عدد تازه‌ای ندارد. برای دور اظهارنظر بهتر است دقیقاً همین تضمین‌های غایب را نام ببریم."
+        },
+        "questions": [
+          {
+            "id": "c1-t-unit-borrowed-view-l1",
+            "prompt": {
+              "nl": "Wat verandert in het plan van de doorgang?",
+              "en": "What changes in the passage plan?",
+              "fa": "در نقشه گذرگاه چه چیزی عوض می‌شود؟"
+            },
+            "options": [
+              {
+                "nl": "De westelijke ingang heeft nu gegarandeerde openingstijden.",
+                "en": "The western entrance now has guaranteed opening hours.",
+                "fa": "ورودی غربی اکنون ساعت تضمین‌شده دارد."
+              },
+              {
+                "nl": "De toegang wordt aan de oostkant voorgesteld.",
+                "en": "Access is proposed on the eastern side.",
+                "fa": "دسترسی در سمت شرق پیشنهاد می‌شود."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De oostelijke doorgang vervangt de westelijke schets, maar toegankelijkheid is nog niet gegarandeerd.",
+              "en": "The eastern passage replaces the western sketch, but access is not yet guaranteed.",
+              "fa": "گذرگاه شرقی جای طرح غربی را می‌گیرد، اما دسترسی هنوز تضمین نیست."
+            }
+          },
+          {
+            "id": "c1-t-unit-borrowed-view-l2",
+            "prompt": {
+              "nl": "Welke conclusie is op basis van de nota gerechtvaardigd?",
+              "en": "Which conclusion is warranted by the note?",
+              "fa": "بر اساس یادداشت کدام نتیجه موجه است؟"
+            },
+            "options": [
+              {
+                "nl": "Een voorgestelde toegang is nog geen uitvoerbare beheersafspraak.",
+                "en": "A proposed entrance is not yet an operational management agreement.",
+                "fa": "ورودی پیشنهادی هنوز توافق اجرایی اداره فضا نیست."
+              },
+              {
+                "nl": "De nota lost zowel betaalbaarheid als openingstijden definitief op.",
+                "en": "The note definitively resolves both affordability and opening hours.",
+                "fa": "یادداشت هم استطاعت‌پذیری و هم ساعت‌ها را قطعی حل می‌کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Beheer en uren ontbreken, en er zijn geen nieuwe cijfers over betaalbaarheid.",
+              "en": "Management and hours are missing, and there are no new affordability figures.",
+              "fa": "اداره و ساعت‌ها مشخص نیست و ارقام تازه استطاعت‌پذیری هم وجود ندارد."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Formuleer een bijdrage voor de inspraakronde. Erken de behoefte aan woningen, stel twee gerichte vragen over de tuin en voorkom dat een voorstel als garantie klinkt.",
+          "en": "Formulate a contribution for the consultation round. Acknowledge the need for housing, ask two targeted questions about the garden and avoid making a proposal sound like a guarantee.",
+          "fa": "برای جلسه اظهارنظر مداخله‌ای آماده کنید. نیاز به مسکن را بپذیرید، دو پرسش مشخص درباره باغ بپرسید و پیشنهاد را تضمین جلوه ندهید."
+        },
+        "sample": {
+          "nl": "De behoefte aan woningen is reëel, maar publieke toegankelijkheid verdient meer dan een doorgang op een tekening. De nota noemt nu de oostelijke toegang. Wie wordt verantwoordelijk voor het openen en sluiten, en hoe worden de uren vastgelegd? Zolang het beheer ontbreekt, kunnen we niet van gegarandeerde toegang spreken. Ook over betaalbaarheid ontbreken nieuwe cijfers; ik vraag daarom aanvullende informatie in plaats van een geruststellend algemeen antwoord.",
+          "en": "The need for housing is real, but public access deserves more than a passage on a drawing. The note now names the eastern entrance. Who will be responsible for opening and closing it, and how will the hours be fixed? Until management is specified, we cannot speak of guaranteed access. New affordability figures are also missing, so I request additional information rather than a reassuring general answer.",
+          "fa": "نیاز به مسکن واقعی است، اما دسترسی عمومی بیش از گذرگاهی روی نقشه می‌خواهد. یادداشت اکنون ورودی شرقی را نام می‌برد. مسئول باز و بسته کردن چه کسی است و ساعت‌ها چگونه تعیین می‌شوند؟ تا اداره مشخص نشود، نمی‌توان از دسترسی تضمین‌شده گفت. ارقام تازه استطاعت‌پذیری هم غایب است؛ بنابراین به‌جای پاسخ کلی آرام‌بخش، اطلاعات تکمیلی می‌خواهم."
+        },
+        "min_words": 55,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Vermeld de oostelijke toegang als voorstel en vraag naar beheer en uren.",
+            "en": "State the eastern entrance as a proposal and ask about management and hours.",
+            "fa": "ورودی شرقی را پیشنهاد بدانید و درباره اداره و ساعت‌ها بپرسید."
+          },
+          {
+            "nl": "Erken woonbehoefte zonder cijfers over betaalbaarheid te verzinnen.",
+            "en": "Acknowledge housing needs without inventing affordability figures.",
+            "fa": "نیاز مسکن را بدون ساختن ارقام استطاعت‌پذیری بپذیرید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een inspraakreactie van 120 tot 250 woorden. Weeg uitzicht, buitenruimte en woonbehoefte af. Verwerk de gewijzigde toegang en vraag om toetsbare afspraken zonder echte projectgegevens te verzinnen.",
+          "en": "Write a consultation response of 120–250 Dutch words. Weigh the view, outdoor space and housing needs. Include the changed entrance and request verifiable arrangements without inventing real project data.",
+          "fa": "پاسخ مشورتی ۱۲۰ تا ۲۵۰ واژه‌ای به هلندی بنویسید. چشم‌انداز، فضای باز و نیاز مسکن را بسنجید. ورودی تغییریافته را بیاورید و بدون ساختن اطلاعات واقعی پروژه، توافق قابل بررسی بخواهید."
+        },
+        "sample": {
+          "nl": "Mijn eerdere bezwaar vertrok vooral vanuit het uitzicht uit mijn kamer. Dat perspectief is begrijpelijk, maar onvoldoende om de inrichting van een hele buurt te beoordelen. De behoefte aan woningen verdient evenzeer aandacht als de kwaliteit van de buitenruimte. In de nieuwe nota wordt toegang via de oostelijke doorgang voorgesteld, in tegenstelling tot de westelijke toegang op de eerste schets. Dat is nog geen garantie voor daadwerkelijk gebruik. Wie het beheer opneemt en welke openingstijden gelden, is niet vastgelegd. Ik vraag daarom om concrete afspraken over verantwoordelijkheid, uren en communicatie bij tijdelijke sluiting. Daarnaast bevat de nota geen nieuwe cijfers over betaalbaarheid; ook daar is verduidelijking nodig. Het behoud van mijn uitzicht hoeft niet het uitgangspunt te zijn. Wel moet zichtbaar worden hoe de beloofde buitenruimte ook voor anderen dan de toekomstige bewoners toegankelijk kan zijn.",
+          "en": "My earlier objection mainly arose from the view from my room. That perspective is understandable but insufficient for judging the design of an entire neighbourhood. Housing needs deserve attention just as much as the quality of outdoor space. The new note proposes access through the eastern passage, unlike the western entrance in the first sketch. That does not yet guarantee actual use. Responsibility for management and the opening hours have not been established. I therefore request specific arrangements on responsibility, hours and communication about temporary closures. In addition, the note contains no new affordability figures; clarification is also needed there. Preserving my view need not be the starting point. However, it must become clear how the promised outdoor space can also be accessible to people other than future residents.",
+          "fa": "اعتراض قبلی‌ام بیشتر از منظره اتاقم می‌آمد. این دیدگاه قابل فهم است، اما برای قضاوت طراحی کل محله کافی نیست. نیاز به مسکن به‌اندازه کیفیت فضای باز توجه می‌خواهد. در یادداشت تازه ورودی شرقی پیشنهاد شده، برخلاف ورودی غربی طرح نخست. این هنوز استفاده واقعی را تضمین نمی‌کند. مسئول اداره و ساعت‌های باز بودن مشخص نیست. بنابراین درباره مسئولیت، ساعت‌ها و اطلاع‌رسانی تعطیلی موقت توافق مشخص می‌خواهم. همچنین یادداشت رقم تازه‌ای درباره استطاعت‌پذیری ندارد؛ آنجا هم توضیح لازم است. حفظ چشم‌انداز من لازم نیست نقطه شروع باشد. اما باید روشن شود فضای باز وعده‌داده‌شده چگونه برای افرادی غیر از ساکنان آینده هم قابل دسترسی است."
+        },
+        "min_words": 120,
+        "max_words": 250,
+        "criteria": [
+          {
+            "nl": "Weeg eigen uitzicht en gedeelde woon- en buitenruimte af.",
+            "en": "Weigh your own view against shared housing and outdoor space.",
+            "fa": "چشم‌انداز شخصی را با مسکن و فضای باز مشترک بسنجید."
+          },
+          {
+            "nl": "Vraag toetsbare afspraken over de oostelijke doorgang en onbevestigd beheer.",
+            "en": "Request verifiable arrangements for the eastern passage and unconfirmed management.",
+            "fa": "توافق قابل بررسی درباره گذرگاه شرقی و اداره تأییدنشده بخواهید."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { CurriculumRecorder, countWords } from "@/components/CurriculumControls";
 import { LearningText } from "@/components/LanguageSupport";
-import { PhraseAudio } from "@/components/PhraseAudio";
+import { SpokenText } from "@/components/SpokenPassage";
 import { Icon } from "@/components/Icon";
 import { apiJson, ApiError, newRequestId } from "@/lib/client/api";
 import { friendlyError } from "@/lib/client/curriculum";
@@ -500,8 +500,7 @@ function ConversationPractice({
                 <LearningText text={session.role} />
               </strong>
               <p>
-                <LearningText text={session.opening} />
-                <PhraseAudio text={session.opening.nl} disabled={stateBusy} />
+                <SpokenText text={session.opening} disabled={stateBusy} />
               </p>
             </li>
             {session.history.map((turn) => (
@@ -520,8 +519,7 @@ function ConversationPractice({
                 )}
                 <div className="conversation-partner">
                   <p>
-                    <LearningText text={turn.reply} />
-                    <PhraseAudio text={turn.reply.nl} disabled={stateBusy} />
+                    <SpokenText text={turn.reply} disabled={stateBusy} />
                   </p>
                   {turn.assisted && <span className="small-text">Met hulp geoefend</span>}
                 </div>

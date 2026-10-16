@@ -29,6 +29,16 @@ def audit(content: Path) -> dict:
             library["stories"] += addition["stories"]
             practice["topics"] += addition["topics"]
             supplement_hash = hashlib.sha256(supplement_path.read_bytes()).hexdigest()
+        unit_path = content / "learning-units" / f"{stage}.json"
+        unit_hash = None
+        if unit_path.exists():
+            addition = json.loads(unit_path.read_text(encoding="utf-8"))
+            if addition.get("schema_version") != 1 or addition.get("stage_id") != stage or addition.get("review_status") != "unreviewed":
+                raise ValueError("Audit refuses an invalid or falsely approved learning unit")
+            library["vocabulary"] += addition["vocabulary"]
+            library["stories"] += addition["stories"]
+            practice["topics"] += addition["topics"]
+            unit_hash = hashlib.sha256(unit_path.read_bytes()).hexdigest()
         terms = {word["term"].strip().casefold() for word in library["vocabulary"]}
         repeated = {"reading": [], "listening": []}
         for topic in practice["topics"]:
@@ -46,10 +56,10 @@ def audit(content: Path) -> dict:
             "reused_texts": repeated,
             "content_sha256": {"library": hashlib.sha256(library_path.read_bytes()).hexdigest(),
                                "practice": hashlib.sha256(practice_path.read_bytes()).hexdigest(),
-                               "supplement": supplement_hash},
+                               "supplement": supplement_hash, "learning_units": unit_hash},
         })
         seen_terms.update(terms)
-    return {"schema_version": 2, "scope": "Effective banks including original source supplements", "claim": "Coverage and duplication only; no level or language validation.", "stages": rows}
+    return {"schema_version": 2, "scope": "Effective banks including original source supplements and connected units", "claim": "Coverage and duplication only; no level or language validation.", "stages": rows}
 
 
 def main() -> None:

@@ -1,0 +1,818 @@
+{
+  "schema_version": 1,
+  "stage_id": "b2",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "b2-unit-balcony-rehearsal-v2",
+      "term": "toezeggen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Beloven dat je iets zult doen.",
+        "en": "Promise to do something.",
+        "fa": "انجام کاری را قول دادن."
+      },
+      "example": {
+        "nl": "We hebben een herinnering toegezegd.",
+        "en": "We have promised a reminder.",
+        "fa": "قول یادآوری داده‌ایم."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "b2-unit-balcony-rehearsal-v4",
+      "term": "onmisbaar",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zo belangrijk dat het niet kan ontbreken.",
+        "en": "So important that it cannot be left out.",
+        "fa": "آن‌قدر مهم که نبودش ممکن نیست؛ ضروری."
+      },
+      "example": {
+        "nl": "Een duidelijk einduur is onmisbaar.",
+        "en": "A clear finishing time is essential.",
+        "fa": "زمان پایان مشخص ضروری است."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "b2-unit-balcony-rehearsal-v5",
+      "term": "blijkbaar",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zoals het op grond van aanwijzingen lijkt.",
+        "en": "As the available signs suggest.",
+        "fa": "ظاهراً، بر اساس نشانه‌ها."
+      },
+      "example": {
+        "nl": "Blijkbaar had Noor zijn slaaptijden niet gekend.",
+        "en": "Apparently, Noor had not known his sleeping hours.",
+        "fa": "ظاهراً نور ساعت خواب او را نمی‌دانسته است."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "b2-unit-balcony-rehearsal-v6",
+      "term": "rekening houden met",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een belang of omstandigheid mee laten wegen.",
+        "en": "Take an interest or circumstance into account.",
+        "fa": "خواست یا شرایطی را در نظر گرفتن."
+      },
+      "example": {
+        "nl": "We houden rekening met nachtdiensten.",
+        "en": "We take night shifts into account.",
+        "fa": "شیفت‌های شب را در نظر می‌گیریم."
+      },
+      "part_of_speech": "expression"
+    },
+    {
+      "id": "b2-unit-unnamed-photograph-v1",
+      "term": "toeschrijven",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een uitspraak of waarneming met een bron verbinden.",
+        "en": "Attribute a statement or observation to a source.",
+        "fa": "گفته یا مشاهده‌ای را به منبع نسبت دادن."
+      },
+      "example": {
+        "nl": "We schrijven de herkenning aan haar herinnering toe.",
+        "en": "We attribute the identification to her memory.",
+        "fa": "شناسایی را به خاطره او نسبت می‌دهیم."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "b2-unit-unnamed-photograph-v2",
+      "term": "vaststellen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Na onderzoek bepalen wat het geval is.",
+        "en": "Establish what is the case after investigation.",
+        "fa": "پس از بررسی مشخص کردن."
+      },
+      "example": {
+        "nl": "Het archief heeft de maand vastgesteld.",
+        "en": "The archive has established the month.",
+        "fa": "بایگانی ماه را مشخص کرده است."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "b2-unit-unnamed-photograph-v3",
+      "term": "het bijschrift",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een korte tekst bij een beeld.",
+        "en": "A short text accompanying an image.",
+        "fa": "نوشته کوتاه همراه تصویر؛ زیرنویس."
+      },
+      "example": {
+        "nl": "Het bijschrift vermeldt de juiste locatie.",
+        "en": "The caption gives the correct location.",
+        "fa": "زیرنویس مکان درست را ذکر می‌کند."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "b2-unit-unnamed-photograph-v6",
+      "term": "door elkaar halen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Twee dingen ten onrechte met elkaar verwarren.",
+        "en": "Mistakenly confuse two things.",
+        "fa": "دو چیز را با هم اشتباه گرفتن."
+      },
+      "example": {
+        "nl": "Ze kan twee feesten door elkaar hebben gehaald.",
+        "en": "She may have confused two celebrations.",
+        "fa": "ممکن است دو جشن را با هم اشتباه گرفته باشد."
+      },
+      "part_of_speech": "expression"
+    }
+  ],
+  "stories": [
+    {
+      "id": "b2-s-unit-balcony-rehearsal",
+      "title": {
+        "nl": "Onder het balkon",
+        "en": "Beneath the balcony",
+        "fa": "زیر بالکن"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een burendrama met muziek",
+        "en": "A neighbourhood drama with music",
+        "fa": "داستان همسایه‌ها و موسیقی"
+      },
+      "lines": [
+        {
+          "nl": "Toen violiste Noor naar Mechelen verhuisde, leek de binnenplaats onder haar balkon de ideale plek voor een klein concert.",
+          "en": "When violinist Noor moved to Mechelen, the courtyard beneath her balcony seemed the ideal place for a small concert.",
+          "fa": "وقتی نور، نوازنده ویولن، به مخلن آمد، حیاط زیر بالکنش را مکان مناسبی برای کنسرتی کوچک دید."
+        },
+        {
+          "nl": "Ze hing een uitnodiging op zonder te bedenken dat het geluid ook de slaapkamers aan de overkant zou bereiken.",
+          "en": "She put up an invitation without considering that the sound would also reach the bedrooms opposite.",
+          "fa": "دعوت‌نامه‌ای نصب کرد بی‌آنکه فکر کند صدا به اتاق‌خواب‌های روبه‌رو هم می‌رسد."
+        },
+        {
+          "nl": "Haar buur Elias, die nachtdiensten draaide, schreef eronder dat gezelligheid blijkbaar belangrijker was dan zijn slaap.",
+          "en": "Her neighbour Elias, who worked night shifts, wrote beneath it that sociability apparently mattered more than his sleep.",
+          "fa": "همسایه‌اش الیاس که شیفت شب داشت، زیر آن نوشت ظاهراً دورهمی از خواب او مهم‌تر است."
+        },
+        {
+          "nl": "Noor las zijn opmerking als een persoonlijke aanval en wilde de hele uitnodiging alweer weghalen.",
+          "en": "Noor read his remark as a personal attack and was about to take down the entire invitation.",
+          "fa": "نور حرفش را حمله‌ای شخصی برداشت کرد و می‌خواست کل دعوت‌نامه را بردارد."
+        },
+        {
+          "nl": "De oudere buurvrouw stelde voor eerst te vragen wat precies lastig was, in plaats van over goede bedoelingen te discussiëren.",
+          "en": "The older neighbour suggested first asking exactly what was difficult, rather than arguing about good intentions.",
+          "fa": "همسایه مسن پیشنهاد کرد به‌جای بحث درباره نیت خوب، اول بپرسند دقیقاً چه چیزی مشکل ایجاد می‌کند."
+        },
+        {
+          "nl": "Elias legde uit dat hij op zaterdag tot vier uur sliep, maar daarna zelf graag naar muziek luisterde.",
+          "en": "Elias explained that on Saturdays he slept until four in the afternoon, but afterwards enjoyed listening to music himself.",
+          "fa": "الیاس توضیح داد شنبه‌ها تا ساعت چهار بعدازظهر می‌خوابد، اما بعد از آن خودش هم از موسیقی لذت می‌برد."
+        },
+        {
+          "nl": "Noor merkte dat haar plan van twee uur vooral een gewoonte was geweest, geen onmisbare voorwaarde.",
+          "en": "Noor realised that her plan for two in the afternoon had mostly been a habit, not an essential condition.",
+          "fa": "نور فهمید برنامه ساعت دو بیشتر از روی عادت بوده، نه شرطی ضروری."
+        },
+        {
+          "nl": "Ze stelden een kort concert om vijf uur voor, zonder versterking en met een duidelijke eindtijd.",
+          "en": "They proposed a short concert at five in the afternoon, without amplification and with a clear finishing time.",
+          "fa": "کنسرتی کوتاه در ساعت پنج بعدازظهر، بدون تقویت صدا و با زمان پایان مشخص پیشنهاد کردند."
+        },
+        {
+          "nl": "Pas nadat alle bewoners hun opmerkingen hadden kunnen geven, besloten ze het één zaterdag uit te proberen.",
+          "en": "Only after all residents had been able to comment did they decide to try it for one Saturday.",
+          "fa": "تنها پس از آنکه همه ساکنان فرصت اظهارنظر یافتند، تصمیم گرفتند یک روز شنبه آزمایشش کنند."
+        },
+        {
+          "nl": "Tijdens het applaus zag Noor Elias op zijn balkon staan; hij hield geen protestbrief vast, maar twee koppen thee.",
+          "en": "During the applause, Noor saw Elias on his balcony; he was holding not a protest letter, but two cups of tea.",
+          "fa": "هنگام تشویق، نور الیاس را روی بالکن دید؛ در دستش نامه اعتراض نبود، دو فنجان چای بود."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Toen violiste Noor naar Mechelen verhuisde, leek de binnenplaats onder haar balkon de ideale plek voor een klein concert. Ze hing een uitnodiging op zonder te bedenken dat het geluid ook de slaapkamers aan de overkant zou bereiken. Haar buur Elias, die nachtdiensten draaide, schreef eronder dat gezelligheid blijkbaar belangrijker was dan zijn slaap. Noor las zijn opmerking als een persoonlijke aanval en wilde de hele uitnodiging alweer weghalen. De oudere buurvrouw stelde voor eerst te vragen wat precies lastig was, in plaats van over goede bedoelingen te discussiëren.",
+          "en": "When violinist Noor moved to Mechelen, the courtyard beneath her balcony seemed the ideal place for a small concert. She put up an invitation without considering that the sound would also reach the bedrooms opposite. Her neighbour Elias, who worked night shifts, wrote beneath it that sociability apparently mattered more than his sleep. Noor read his remark as a personal attack and was about to take down the entire invitation. The older neighbour suggested first asking exactly what was difficult, rather than arguing about good intentions.",
+          "fa": "وقتی نور، نوازنده ویولن، به مخلن آمد، حیاط زیر بالکنش را مکان مناسبی برای کنسرتی کوچک دید. دعوت‌نامه‌ای نصب کرد بی‌آنکه فکر کند صدا به اتاق‌خواب‌های روبه‌رو هم می‌رسد. همسایه‌اش الیاس که شیفت شب داشت، زیر آن نوشت ظاهراً دورهمی از خواب او مهم‌تر است. نور حرفش را حمله‌ای شخصی برداشت کرد و می‌خواست کل دعوت‌نامه را بردارد. همسایه مسن پیشنهاد کرد به‌جای بحث درباره نیت خوب، اول بپرسند دقیقاً چه چیزی مشکل ایجاد می‌کند."
+        },
+        {
+          "nl": "Elias legde uit dat hij op zaterdag tot vier uur sliep, maar daarna zelf graag naar muziek luisterde. Noor merkte dat haar plan van twee uur vooral een gewoonte was geweest, geen onmisbare voorwaarde. Ze stelden een kort concert om vijf uur voor, zonder versterking en met een duidelijke eindtijd. Pas nadat alle bewoners hun opmerkingen hadden kunnen geven, besloten ze het één zaterdag uit te proberen. Tijdens het applaus zag Noor Elias op zijn balkon staan; hij hield geen protestbrief vast, maar twee koppen thee.",
+          "en": "Elias explained that on Saturdays he slept until four in the afternoon, but afterwards enjoyed listening to music himself. Noor realised that her plan for two in the afternoon had mostly been a habit, not an essential condition. They proposed a short concert at five in the afternoon, without amplification and with a clear finishing time. Only after all residents had been able to comment did they decide to try it for one Saturday. During the applause, Noor saw Elias on his balcony; he was holding not a protest letter, but two cups of tea.",
+          "fa": "الیاس توضیح داد شنبه‌ها تا ساعت چهار بعدازظهر می‌خوابد، اما بعد از آن خودش هم از موسیقی لذت می‌برد. نور فهمید برنامه ساعت دو بیشتر از روی عادت بوده، نه شرطی ضروری. کنسرتی کوتاه در ساعت پنج بعدازظهر، بدون تقویت صدا و با زمان پایان مشخص پیشنهاد کردند. تنها پس از آنکه همه ساکنان فرصت اظهارنظر یافتند، تصمیم گرفتند یک روز شنبه آزمایشش کنند. هنگام تشویق، نور الیاس را روی بالکن دید؛ در دستش نامه اعتراض نبود، دو فنجان چای بود."
+        }
+      ],
+      "topic_id": "b2-t-unit-balcony-rehearsal",
+      "vocabulary_ids": [
+        "b2-v402",
+        "b2-unit-balcony-rehearsal-v2",
+        "b2-v099",
+        "b2-unit-balcony-rehearsal-v4",
+        "b2-unit-balcony-rehearsal-v5",
+        "b2-unit-balcony-rehearsal-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Welke stap maakt een compromis mogelijk?",
+          "en": "Which step makes a compromise possible?",
+          "fa": "چه اقدامی سازش را ممکن می‌کند؟"
+        },
+        "options": [
+          {
+            "nl": "Noor bewijst dat Elias niet van muziek houdt.",
+            "en": "Noor proves that Elias dislikes music.",
+            "fa": "نور ثابت می‌کند الیاس موسیقی را دوست ندارد."
+          },
+          {
+            "nl": "Ze bespreken het concrete slaapprobleem in plaats van elkaars bedoelingen te beoordelen.",
+            "en": "They discuss the specific sleep problem rather than judging each other's intentions.",
+            "fa": "به‌جای قضاوت درباره نیت یکدیگر، درباره مشکل مشخص خواب حرف می‌زنند."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De uitleg over zijn slaaptijden laat zien welk onderdeel van het plan kan veranderen.",
+          "en": "The explanation of his sleeping hours shows which part of the plan can change.",
+          "fa": "توضیح ساعت خواب او نشان می‌دهد کدام بخش برنامه قابل تغییر است."
+        }
+      }
+    },
+    {
+      "id": "b2-s-unit-unnamed-photograph",
+      "title": {
+        "nl": "Een foto zonder naam",
+        "en": "A photograph without a name",
+        "fa": "عکسی بی‌نام"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een klein historisch raadsel",
+        "en": "A small historical mystery",
+        "fa": "معمای تاریخی کوچک"
+      },
+      "lines": [
+        {
+          "nl": "Bij het opruimen van een buurthuis in Brugge vond Bas een foto van twee dansende vrouwen op een plein.",
+          "en": "While clearing out a community centre in Bruges, Bas found a photograph of two women dancing in a square.",
+          "fa": "باس هنگام مرتب کردن مرکز محله‌ای در بروژ عکسی از دو زن پیدا کرد که در میدانی می‌رقصیدند."
+        },
+        {
+          "nl": "Achterop stond alleen een jaartal, en in het raam op de achtergrond weerspiegelde een half zichtbaar uithangbord.",
+          "en": "Only a year was written on the back, and a partly visible shop sign was reflected in a background window.",
+          "fa": "پشت عکس فقط سالی نوشته شده بود و تابلوی نیمه‌پیدایی در شیشه پنجره پس‌زمینه بازتاب داشت."
+        },
+        {
+          "nl": "Zijn grootmoeder herkende onmiddellijk haar zus, maar noemde een feest dat volgens het stadsarchief pas jaren later plaatsvond.",
+          "en": "His grandmother immediately recognised her sister, but named a celebration that the city archive dated several years later.",
+          "fa": "مادربزرگش بی‌درنگ خواهرش را شناخت، اما از جشنی گفت که طبق بایگانی شهر چند سال بعد برگزار شده بود."
+        },
+        {
+          "nl": "Bas wilde haar niet tegenspreken en schreef haar uitleg alvast bij de foto voor een kleine tentoonstelling.",
+          "en": "Bas did not want to contradict her and provisionally added her explanation to the photograph for a small exhibition.",
+          "fa": "باس نمی‌خواست با او مخالفت کند و توضیحش را فعلاً برای نمایشگاهی کوچک کنار عکس نوشت."
+        },
+        {
+          "nl": "Een bezoeker wees hem erop dat het uithangbord gespiegeld was en dus vanaf de andere kant gelezen moest worden.",
+          "en": "A visitor pointed out that the sign was mirrored and therefore had to be read in the opposite direction.",
+          "fa": "بازدیدکننده‌ای گفت تصویر تابلو در شیشه وارونه است و باید از جهت مخالف خوانده شود."
+        },
+        {
+          "nl": "Daardoor vond hij een oude bakkerij op een ander plein, waar in dat jaar een buurtfeest was gehouden.",
+          "en": "That led him to an old bakery on a different square, where a neighbourhood celebration had been held that year.",
+          "fa": "با این سرنخ نانوایی قدیمی میدان دیگری را یافت که همان سال آنجا جشن محله برگزار شده بود."
+        },
+        {
+          "nl": "Zijn grootmoeder bleef bij de identiteit van haar zus, maar gaf toe dat ze twee feesten door elkaar kon halen.",
+          "en": "His grandmother stood by her identification of her sister, but admitted she might be confusing two celebrations.",
+          "fa": "مادربزرگ همچنان هویت خواهرش را تأیید کرد، اما پذیرفت ممکن است دو جشن را با هم اشتباه گرفته باشد."
+        },
+        {
+          "nl": "Samen kozen ze een nieuw bijschrift dat het vastgestelde plein noemde en de herkenning aan haar herinnering toeschreef.",
+          "en": "Together, they chose a new caption naming the verified square and attributing the identification to her memory.",
+          "fa": "با هم زیرنویسی تازه انتخاب کردند که میدان تأییدشده را نام می‌برد و شناسایی را به خاطره او نسبت می‌داد."
+        },
+        {
+          "nl": "De naam van de tweede vrouw bleef onbekend, hoewel verscheidene bezoekers dachten haar ergens van te kennen.",
+          "en": "The second woman's name remained unknown, although several visitors thought she looked familiar.",
+          "fa": "نام زن دوم ناشناخته ماند، هرچند چند بازدیدکننده فکر می‌کردند او را از جایی می‌شناسند."
+        },
+        {
+          "nl": "Bas liet een lege regel staan: liever een open vraag dan een mooi verhaal zonder bewijs.",
+          "en": "Bas left a blank line: better an open question than a good story without evidence.",
+          "fa": "باس یک خط را خالی گذاشت: پرسشی باز بهتر از داستانی زیبا اما بی‌مدرک بود."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Bij het opruimen van een buurthuis in Brugge vond Bas een foto van twee dansende vrouwen op een plein. Achterop stond alleen een jaartal, en in het raam op de achtergrond weerspiegelde een half zichtbaar uithangbord. Zijn grootmoeder herkende onmiddellijk haar zus, maar noemde een feest dat volgens het stadsarchief pas jaren later plaatsvond. Bas wilde haar niet tegenspreken en schreef haar uitleg alvast bij de foto voor een kleine tentoonstelling. Een bezoeker wees hem erop dat het uithangbord gespiegeld was en dus vanaf de andere kant gelezen moest worden.",
+          "en": "While clearing out a community centre in Bruges, Bas found a photograph of two women dancing in a square. Only a year was written on the back, and a partly visible shop sign was reflected in a background window. His grandmother immediately recognised her sister, but named a celebration that the city archive dated several years later. Bas did not want to contradict her and provisionally added her explanation to the photograph for a small exhibition. A visitor pointed out that the sign was mirrored and therefore had to be read in the opposite direction.",
+          "fa": "باس هنگام مرتب کردن مرکز محله‌ای در بروژ عکسی از دو زن پیدا کرد که در میدانی می‌رقصیدند. پشت عکس فقط سالی نوشته شده بود و تابلوی نیمه‌پیدایی در شیشه پنجره پس‌زمینه بازتاب داشت. مادربزرگش بی‌درنگ خواهرش را شناخت، اما از جشنی گفت که طبق بایگانی شهر چند سال بعد برگزار شده بود. باس نمی‌خواست با او مخالفت کند و توضیحش را فعلاً برای نمایشگاهی کوچک کنار عکس نوشت. بازدیدکننده‌ای گفت تصویر تابلو در شیشه وارونه است و باید از جهت مخالف خوانده شود."
+        },
+        {
+          "nl": "Daardoor vond hij een oude bakkerij op een ander plein, waar in dat jaar een buurtfeest was gehouden. Zijn grootmoeder bleef bij de identiteit van haar zus, maar gaf toe dat ze twee feesten door elkaar kon halen. Samen kozen ze een nieuw bijschrift dat het vastgestelde plein noemde en de herkenning aan haar herinnering toeschreef. De naam van de tweede vrouw bleef onbekend, hoewel verscheidene bezoekers dachten haar ergens van te kennen. Bas liet een lege regel staan: liever een open vraag dan een mooi verhaal zonder bewijs.",
+          "en": "That led him to an old bakery on a different square, where a neighbourhood celebration had been held that year. His grandmother stood by her identification of her sister, but admitted she might be confusing two celebrations. Together, they chose a new caption naming the verified square and attributing the identification to her memory. The second woman's name remained unknown, although several visitors thought she looked familiar. Bas left a blank line: better an open question than a good story without evidence.",
+          "fa": "با این سرنخ نانوایی قدیمی میدان دیگری را یافت که همان سال آنجا جشن محله برگزار شده بود. مادربزرگ همچنان هویت خواهرش را تأیید کرد، اما پذیرفت ممکن است دو جشن را با هم اشتباه گرفته باشد. با هم زیرنویسی تازه انتخاب کردند که میدان تأییدشده را نام می‌برد و شناسایی را به خاطره او نسبت می‌داد. نام زن دوم ناشناخته ماند، هرچند چند بازدیدکننده فکر می‌کردند او را از جایی می‌شناسند. باس یک خط را خالی گذاشت: پرسشی باز بهتر از داستانی زیبا اما بی‌مدرک بود."
+        }
+      ],
+      "topic_id": "b2-t-unit-unnamed-photograph",
+      "vocabulary_ids": [
+        "b2-unit-unnamed-photograph-v1",
+        "b2-unit-unnamed-photograph-v2",
+        "b2-unit-unnamed-photograph-v3",
+        "b2-v470",
+        "b2-v472",
+        "b2-unit-unnamed-photograph-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Welk probleem heeft het eerste bijschrift?",
+          "en": "What problem does the first caption have?",
+          "fa": "زیرنویس اول چه مشکلی دارد؟"
+        },
+        "options": [
+          {
+            "nl": "Het bevat opzettelijk de naam van een verzonnen vrouw.",
+            "en": "It deliberately contains the name of an invented woman.",
+            "fa": "عمداً نام زنی خیالی را در خود دارد."
+          },
+          {
+            "nl": "Het behandelt een onzekere herinnering te gemakkelijk als vaststaande informatie.",
+            "en": "It too readily treats an uncertain memory as established information.",
+            "fa": "خاطره‌ای نامطمئن را بیش از حد آسان اطلاعات قطعی در نظر می‌گیرد."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De herinnering botst met de archiefdatum; Bas had dat verschil zichtbaar moeten houden.",
+          "en": "The memory conflicts with the archive date; Bas should have kept that difference visible.",
+          "fa": "خاطره با تاریخ بایگانی ناسازگار است؛ باس باید این تفاوت را آشکار نگه می‌داشت."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "b2-t-unit-balcony-rehearsal",
+      "title": {
+        "nl": "Onder het balkon",
+        "en": "Beneath the balcony",
+        "fa": "زیر بالکن"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Tegenstrijdige belangen samenvatten en een onderbouwd compromis formuleren.",
+          "en": "Summarise conflicting interests and formulate a reasoned compromise.",
+          "fa": "خلاصه کردن منافع متضاد و ارائه سازشی مستدل."
+        }
+      ],
+      "language_focus": {
+        "nl": "Tegenstrijdige belangen samenvatten en een onderbouwd compromis formuleren.",
+        "en": "Summarise conflicting interests and formulate a reasoned compromise.",
+        "fa": "خلاصه کردن منافع متضاد و ارائه سازشی مستدل."
+      },
+      "vocabulary_ids": [
+        "b2-v402",
+        "b2-unit-balcony-rehearsal-v2",
+        "b2-v099",
+        "b2-unit-balcony-rehearsal-v4",
+        "b2-unit-balcony-rehearsal-v5",
+        "b2-unit-balcony-rehearsal-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Toen violiste Noor naar Mechelen verhuisde, leek de binnenplaats onder haar balkon de ideale plek voor een klein concert. Ze hing een uitnodiging op zonder te bedenken dat het geluid ook de slaapkamers aan de overkant zou bereiken. Haar buur Elias, die nachtdiensten draaide, schreef eronder dat gezelligheid blijkbaar belangrijker was dan zijn slaap. Noor las zijn opmerking als een persoonlijke aanval en wilde de hele uitnodiging alweer weghalen. De oudere buurvrouw stelde voor eerst te vragen wat precies lastig was, in plaats van over goede bedoelingen te discussiëren.\n\nElias legde uit dat hij op zaterdag tot vier uur sliep, maar daarna zelf graag naar muziek luisterde. Noor merkte dat haar plan van twee uur vooral een gewoonte was geweest, geen onmisbare voorwaarde. Ze stelden een kort concert om vijf uur voor, zonder versterking en met een duidelijke eindtijd. Pas nadat alle bewoners hun opmerkingen hadden kunnen geven, besloten ze het één zaterdag uit te proberen. Tijdens het applaus zag Noor Elias op zijn balkon staan; hij hield geen protestbrief vast, maar twee koppen thee.",
+          "en": "When violinist Noor moved to Mechelen, the courtyard beneath her balcony seemed the ideal place for a small concert. She put up an invitation without considering that the sound would also reach the bedrooms opposite. Her neighbour Elias, who worked night shifts, wrote beneath it that sociability apparently mattered more than his sleep. Noor read his remark as a personal attack and was about to take down the entire invitation. The older neighbour suggested first asking exactly what was difficult, rather than arguing about good intentions.\n\nElias explained that on Saturdays he slept until four in the afternoon, but afterwards enjoyed listening to music himself. Noor realised that her plan for two in the afternoon had mostly been a habit, not an essential condition. They proposed a short concert at five in the afternoon, without amplification and with a clear finishing time. Only after all residents had been able to comment did they decide to try it for one Saturday. During the applause, Noor saw Elias on his balcony; he was holding not a protest letter, but two cups of tea.",
+          "fa": "وقتی نور، نوازنده ویولن، به مخلن آمد، حیاط زیر بالکنش را مکان مناسبی برای کنسرتی کوچک دید. دعوت‌نامه‌ای نصب کرد بی‌آنکه فکر کند صدا به اتاق‌خواب‌های روبه‌رو هم می‌رسد. همسایه‌اش الیاس که شیفت شب داشت، زیر آن نوشت ظاهراً دورهمی از خواب او مهم‌تر است. نور حرفش را حمله‌ای شخصی برداشت کرد و می‌خواست کل دعوت‌نامه را بردارد. همسایه مسن پیشنهاد کرد به‌جای بحث درباره نیت خوب، اول بپرسند دقیقاً چه چیزی مشکل ایجاد می‌کند.\n\nالیاس توضیح داد شنبه‌ها تا ساعت چهار بعدازظهر می‌خوابد، اما بعد از آن خودش هم از موسیقی لذت می‌برد. نور فهمید برنامه ساعت دو بیشتر از روی عادت بوده، نه شرطی ضروری. کنسرتی کوتاه در ساعت پنج بعدازظهر، بدون تقویت صدا و با زمان پایان مشخص پیشنهاد کردند. تنها پس از آنکه همه ساکنان فرصت اظهارنظر یافتند، تصمیم گرفتند یک روز شنبه آزمایشش کنند. هنگام تشویق، نور الیاس را روی بالکن دید؛ در دستش نامه اعتراض نبود، دو فنجان چای بود."
+        },
+        "questions": [
+          {
+            "id": "b2-t-unit-balcony-rehearsal-r1",
+            "prompt": {
+              "nl": "Welke stap maakt een compromis mogelijk?",
+              "en": "Which step makes a compromise possible?",
+              "fa": "چه اقدامی سازش را ممکن می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Noor bewijst dat Elias niet van muziek houdt.",
+                "en": "Noor proves that Elias dislikes music.",
+                "fa": "نور ثابت می‌کند الیاس موسیقی را دوست ندارد."
+              },
+              {
+                "nl": "Ze bespreken het concrete slaapprobleem in plaats van elkaars bedoelingen te beoordelen.",
+                "en": "They discuss the specific sleep problem rather than judging each other's intentions.",
+                "fa": "به‌جای قضاوت درباره نیت یکدیگر، درباره مشکل مشخص خواب حرف می‌زنند."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De uitleg over zijn slaaptijden laat zien welk onderdeel van het plan kan veranderen.",
+              "en": "The explanation of his sleeping hours shows which part of the plan can change.",
+              "fa": "توضیح ساعت خواب او نشان می‌دهد کدام بخش برنامه قابل تغییر است."
+            }
+          },
+          {
+            "id": "b2-t-unit-balcony-rehearsal-r2",
+            "prompt": {
+              "nl": "Waarom is het slot met de thee betekenisvol?",
+              "en": "Why is the ending with the tea meaningful?",
+              "fa": "چرا پایان با چای معنا دارد؟"
+            },
+            "options": [
+              {
+                "nl": "Het suggereert dat het contact vriendelijker is geworden.",
+                "en": "It suggests that their relationship has become friendlier.",
+                "fa": "نشان می‌دهد رابطه‌شان دوستانه‌تر شده است."
+              },
+              {
+                "nl": "Het bewijst dat Elias voortaan ieder concert organiseert.",
+                "en": "It proves that Elias will organise every concert from now on.",
+                "fa": "ثابت می‌کند از این پس الیاس همه کنسرت‌ها را برگزار می‌کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De twee koppen wijzen op toenadering, maar de tekst belooft geen verdere afspraken.",
+              "en": "The two cups suggest an approach towards friendship, but the text promises no further arrangements.",
+              "fa": "دو فنجان نشانه نزدیک شدن است، اما متن توافق‌های بعدی را تضمین نمی‌کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Beste buren, na de proef willen we de volgende keer niet op zaterdag maar op zondag spelen, van halfzes tot zes uur in de vooravond. Eén bewoner heeft gevraagd vooraf een herinnering te krijgen en daarmee hebben we ingestemd. Er komt opnieuw geen versterking. Dit is nog een voorstel: reageer vóór donderdag als dit tijdstip problemen geeft.",
+          "en": "Dear neighbours, after the trial we would like to play next time on Sunday rather than Saturday, from half past five to six in the evening. One resident asked for a reminder beforehand, and we agreed. Once again, there will be no amplification. This is still a proposal: please respond before Thursday if this time causes problems.",
+          "fa": "همسایه‌های گرامی، پس از اجرای آزمایشی می‌خواهیم بار بعد به‌جای شنبه، یکشنبه از پنج‌ونیم تا شش عصر بنوازیم. یکی از ساکنان یادآوری قبلی خواسته و پذیرفته‌ایم. این بار هم تقویت صدا نداریم. این هنوز پیشنهاد است: اگر زمان مشکل دارد، پیش از پنجشنبه پاسخ بدهید."
+        },
+        "questions": [
+          {
+            "id": "b2-t-unit-balcony-rehearsal-l1",
+            "prompt": {
+              "nl": "Welk tijdstip wordt nu voorgesteld?",
+              "en": "What time is now being proposed?",
+              "fa": "اکنون چه زمانی پیشنهاد شده است؟"
+            },
+            "options": [
+              {
+                "nl": "Zaterdag van 17.00 tot 18.00 uur.",
+                "en": "Saturday from 17:00 to 18:00.",
+                "fa": "شنبه از ۱۷ تا ۱۸."
+              },
+              {
+                "nl": "Zondag van 17.30 tot 18.00 uur.",
+                "en": "Sunday from 17:30 to 18:00.",
+                "fa": "یکشنبه از ۱۷:۳۰ تا ۱۸."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Halfzes betekent 17.30 uur in deze avondcontext; zowel dag als beginuur verandert.",
+              "en": "Halfzes means 17:30 in this evening context; both the day and the starting time change.",
+              "fa": "Halfzes در این بافت عصر یعنی ۱۷:۳۰؛ هم روز و هم ساعت شروع تغییر می‌کند."
+            }
+          },
+          {
+            "id": "b2-t-unit-balcony-rehearsal-l2",
+            "prompt": {
+              "nl": "Welke afspraak is wél al gemaakt?",
+              "en": "Which arrangement has already been agreed?",
+              "fa": "کدام مورد واقعاً توافق شده است؟"
+            },
+            "options": [
+              {
+                "nl": "Een bewoner krijgt vooraf een herinnering.",
+                "en": "A resident will receive a reminder beforehand.",
+                "fa": "یکی از ساکنان از قبل یادآوری دریافت می‌کند."
+              },
+              {
+                "nl": "Alle bewoners hebben het nieuwe tijdstip goedgekeurd.",
+                "en": "All residents have approved the new time.",
+                "fa": "همه ساکنان زمان تازه را تأیید کرده‌اند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De herinnering is toegezegd; over het voorgestelde tijdstip kunnen bewoners nog reageren.",
+              "en": "The reminder has been promised; residents can still respond to the proposed time.",
+              "fa": "یادآوری قول داده شده؛ ساکنان هنوز می‌توانند درباره زمان پیشنهادی نظر بدهند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Leg aan een afwezige bewoner uit hoe het oorspronkelijke conflict is opgelost en wat in het nieuwe bericht nog bespreekbaar is. Geef één redelijk alternatief als zondag niet past.",
+          "en": "Explain to an absent resident how the original conflict was resolved and what remains open in the new message. Give one reasonable alternative if Sunday is unsuitable.",
+          "fa": "برای ساکنی که حضور نداشته توضیح دهید تعارض قبلی چگونه حل شد و در پیام تازه چه چیزی هنوز قابل بحث است. اگر یکشنبه مناسب نباشد، یک جایگزین منطقی بدهید."
+        },
+        "sample": {
+          "nl": "Eerst botsten de repetitie en Elias' slaaptijden, maar een later begin maakte een proef mogelijk. Nu wordt zondag van halfzes tot zes uur voorgesteld. Dat is nog niet definitief; bewoners kunnen vóór donderdag reageren. De herinnering voor één buur is wel toegezegd. Als zondag moeilijk ligt, kunnen we opnieuw een korte zaterdaguitvoering na vier uur bespreken.",
+          "en": "At first, the rehearsal conflicted with Elias's sleeping hours, but a later start made a trial possible. Sunday from half past five to six is now proposed. That is not yet final; residents can respond before Thursday. The reminder for one neighbour has been promised. If Sunday is difficult, we could discuss another short Saturday performance after four.",
+          "fa": "در ابتدا تمرین با ساعت خواب الیاس تداخل داشت، اما شروع دیرتر اجرای آزمایشی را ممکن کرد. اکنون یکشنبه از پنج‌ونیم تا شش پیشنهاد شده است. هنوز قطعی نیست؛ ساکنان می‌توانند پیش از پنجشنبه پاسخ دهند. یادآوری برای یک همسایه قول داده شده. اگر یکشنبه دشوار است، می‌توان دوباره اجرای کوتاه شنبه پس از چهار را بررسی کرد."
+        },
+        "min_words": 45,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Noem zondag van 17.30 tot 18.00 uur als voorstel, niet als definitief akkoord.",
+            "en": "State Sunday from 17:30 to 18:00 as a proposal, not a final agreement.",
+            "fa": "یکشنبه ۱۷:۳۰ تا ۱۸ را پیشنهاد، نه توافق قطعی، بگویید."
+          },
+          {
+            "nl": "Scheid de toegezegde herinnering van het nog bespreekbare tijdstip.",
+            "en": "Separate the promised reminder from the time still open to discussion.",
+            "fa": "یادآوری قول‌داده‌شده را از زمان قابل بحث جدا کنید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een bemiddelend bericht van 80 tot 180 woorden. Vat beide belangen samen, maak het nieuwe voorstel nauwkeurig duidelijk en vraag om concrete bezwaren of alternatieven.",
+          "en": "Write a mediating message of 80–180 Dutch words. Summarise both interests, state the new proposal accurately and ask for specific objections or alternatives.",
+          "fa": "پیامی میانجی‌گرانه در ۸۰ تا ۱۸۰ واژه هلندی بنویسید. خواسته‌های دو طرف را خلاصه کنید، پیشنهاد تازه را دقیق بگویید و اعتراض یا جایگزین مشخص بخواهید."
+        },
+        "sample": {
+          "nl": "Beste buren, de eerste uitvoering heeft laten zien dat muziek en voldoende rust niet noodzakelijk tegenover elkaar staan. Noor wil graag samen muziek beleven, terwijl Elias na zijn nachtdienst ongestoord moet kunnen slapen. Daarom stellen we voor om de volgende keer op zondag van halfzes tot zes uur te spelen, opnieuw zonder versterking. Dit tijdstip ligt nog niet vast. Wie er problemen mee heeft, kan vóór donderdag reageren, liefst met een concreet alternatief. We hebben wel al toegezegd één bewoner vooraf een herinnering te sturen. Laten we na een eventuele tweede uitvoering opnieuw bespreken hoe iedereen het heeft ervaren. Zo blijft een proef een gesprek en wordt ze geen verplichting.",
+          "en": "Dear neighbours, the first performance has shown that enjoying music and getting enough rest do not necessarily conflict. Noor would like to share music, while Elias needs undisturbed sleep after his night shift. We therefore propose playing next time on Sunday from half past five to six, again without amplification. This time is not yet fixed. Anyone who has a problem with it can respond before Thursday, preferably with a specific alternative. We have already promised one resident a reminder beforehand. After a possible second performance, let us discuss everyone's experience again. That way, a trial remains a conversation rather than becoming an obligation.",
+          "fa": "همسایه‌های گرامی، اجرای اول نشان داد موسیقی و استراحت کافی لزوماً در تضاد نیستند. نور می‌خواهد موسیقی را با دیگران تجربه کند و الیاس پس از شیفت شب به خواب بی‌مزاحمت نیاز دارد. بنابراین برای بار بعد یکشنبه از پنج‌ونیم تا شش، باز هم بدون تقویت صدا، پیشنهاد می‌کنیم. این زمان هنوز قطعی نیست. هر کس مشکلی دارد، پیش از پنجشنبه ترجیحاً با جایگزینی مشخص پاسخ دهد. به یک ساکن قول داده‌ایم از قبل یادآوری بفرستیم. پس از اجرای دوم احتمالی دوباره تجربه همه را بررسی کنیم. این‌گونه اجرای آزمایشی گفت‌وگو می‌ماند و به الزام تبدیل نمی‌شود."
+        },
+        "min_words": 80,
+        "max_words": 180,
+        "criteria": [
+          {
+            "nl": "Verbind de behoefte aan muziek en de behoefte aan rust met het voorstel.",
+            "en": "Connect the need for music and the need for rest to the proposal.",
+            "fa": "نیاز به موسیقی و استراحت را به پیشنهاد وصل کنید."
+          },
+          {
+            "nl": "Vraag vóór donderdag om concrete bezwaren of alternatieven.",
+            "en": "Ask for specific objections or alternatives before Thursday.",
+            "fa": "اعتراض یا جایگزین مشخص پیش از پنجشنبه بخواهید."
+          }
+        ]
+      }
+    },
+    {
+      "id": "b2-t-unit-unnamed-photograph",
+      "title": {
+        "nl": "Een foto zonder naam",
+        "en": "A photograph without a name",
+        "fa": "عکسی بی‌نام"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Bewijs, herinnering en veronderstelling onderscheiden in een heldere reconstructie.",
+          "en": "Distinguish evidence, memory and assumption in a clear reconstruction.",
+          "fa": "جدا کردن مدرک، خاطره و فرض در بازسازی روشن ماجرا."
+        }
+      ],
+      "language_focus": {
+        "nl": "Bewijs, herinnering en veronderstelling onderscheiden in een heldere reconstructie.",
+        "en": "Distinguish evidence, memory and assumption in a clear reconstruction.",
+        "fa": "جدا کردن مدرک، خاطره و فرض در بازسازی روشن ماجرا."
+      },
+      "vocabulary_ids": [
+        "b2-unit-unnamed-photograph-v1",
+        "b2-unit-unnamed-photograph-v2",
+        "b2-unit-unnamed-photograph-v3",
+        "b2-v470",
+        "b2-v472",
+        "b2-unit-unnamed-photograph-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Bij het opruimen van een buurthuis in Brugge vond Bas een foto van twee dansende vrouwen op een plein. Achterop stond alleen een jaartal, en in het raam op de achtergrond weerspiegelde een half zichtbaar uithangbord. Zijn grootmoeder herkende onmiddellijk haar zus, maar noemde een feest dat volgens het stadsarchief pas jaren later plaatsvond. Bas wilde haar niet tegenspreken en schreef haar uitleg alvast bij de foto voor een kleine tentoonstelling. Een bezoeker wees hem erop dat het uithangbord gespiegeld was en dus vanaf de andere kant gelezen moest worden.\n\nDaardoor vond hij een oude bakkerij op een ander plein, waar in dat jaar een buurtfeest was gehouden. Zijn grootmoeder bleef bij de identiteit van haar zus, maar gaf toe dat ze twee feesten door elkaar kon halen. Samen kozen ze een nieuw bijschrift dat het vastgestelde plein noemde en de herkenning aan haar herinnering toeschreef. De naam van de tweede vrouw bleef onbekend, hoewel verscheidene bezoekers dachten haar ergens van te kennen. Bas liet een lege regel staan: liever een open vraag dan een mooi verhaal zonder bewijs.",
+          "en": "While clearing out a community centre in Bruges, Bas found a photograph of two women dancing in a square. Only a year was written on the back, and a partly visible shop sign was reflected in a background window. His grandmother immediately recognised her sister, but named a celebration that the city archive dated several years later. Bas did not want to contradict her and provisionally added her explanation to the photograph for a small exhibition. A visitor pointed out that the sign was mirrored and therefore had to be read in the opposite direction.\n\nThat led him to an old bakery on a different square, where a neighbourhood celebration had been held that year. His grandmother stood by her identification of her sister, but admitted she might be confusing two celebrations. Together, they chose a new caption naming the verified square and attributing the identification to her memory. The second woman's name remained unknown, although several visitors thought she looked familiar. Bas left a blank line: better an open question than a good story without evidence.",
+          "fa": "باس هنگام مرتب کردن مرکز محله‌ای در بروژ عکسی از دو زن پیدا کرد که در میدانی می‌رقصیدند. پشت عکس فقط سالی نوشته شده بود و تابلوی نیمه‌پیدایی در شیشه پنجره پس‌زمینه بازتاب داشت. مادربزرگش بی‌درنگ خواهرش را شناخت، اما از جشنی گفت که طبق بایگانی شهر چند سال بعد برگزار شده بود. باس نمی‌خواست با او مخالفت کند و توضیحش را فعلاً برای نمایشگاهی کوچک کنار عکس نوشت. بازدیدکننده‌ای گفت تصویر تابلو در شیشه وارونه است و باید از جهت مخالف خوانده شود.\n\nبا این سرنخ نانوایی قدیمی میدان دیگری را یافت که همان سال آنجا جشن محله برگزار شده بود. مادربزرگ همچنان هویت خواهرش را تأیید کرد، اما پذیرفت ممکن است دو جشن را با هم اشتباه گرفته باشد. با هم زیرنویسی تازه انتخاب کردند که میدان تأییدشده را نام می‌برد و شناسایی را به خاطره او نسبت می‌داد. نام زن دوم ناشناخته ماند، هرچند چند بازدیدکننده فکر می‌کردند او را از جایی می‌شناسند. باس یک خط را خالی گذاشت: پرسشی باز بهتر از داستانی زیبا اما بی‌مدرک بود."
+        },
+        "questions": [
+          {
+            "id": "b2-t-unit-unnamed-photograph-r1",
+            "prompt": {
+              "nl": "Welk probleem heeft het eerste bijschrift?",
+              "en": "What problem does the first caption have?",
+              "fa": "زیرنویس اول چه مشکلی دارد؟"
+            },
+            "options": [
+              {
+                "nl": "Het bevat opzettelijk de naam van een verzonnen vrouw.",
+                "en": "It deliberately contains the name of an invented woman.",
+                "fa": "عمداً نام زنی خیالی را در خود دارد."
+              },
+              {
+                "nl": "Het behandelt een onzekere herinnering te gemakkelijk als vaststaande informatie.",
+                "en": "It too readily treats an uncertain memory as established information.",
+                "fa": "خاطره‌ای نامطمئن را بیش از حد آسان اطلاعات قطعی در نظر می‌گیرد."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De herinnering botst met de archiefdatum; Bas had dat verschil zichtbaar moeten houden.",
+              "en": "The memory conflicts with the archive date; Bas should have kept that difference visible.",
+              "fa": "خاطره با تاریخ بایگانی ناسازگار است؛ باس باید این تفاوت را آشکار نگه می‌داشت."
+            }
+          },
+          {
+            "id": "b2-t-unit-unnamed-photograph-r2",
+            "prompt": {
+              "nl": "Wat betekent de lege regel aan het einde?",
+              "en": "What does the blank line at the end mean?",
+              "fa": "خط خالی پایان چه معنایی دارد؟"
+            },
+            "options": [
+              {
+                "nl": "Bas laat een vraag open omdat het bewijs nog ontbreekt.",
+                "en": "Bas leaves a question open because evidence is still missing.",
+                "fa": "باس پرسشی را باز می‌گذارد چون هنوز مدرک کافی نیست."
+              },
+              {
+                "nl": "Bas weet de naam maar wil die geheimhouden.",
+                "en": "Bas knows the name but wants to keep it secret.",
+                "fa": "باس نام را می‌داند، اما می‌خواهد پنهان کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Het openlaten voorkomt dat een vermoedelijke herkenning als feit wordt gepresenteerd.",
+              "en": "Leaving it open prevents a tentative identification from being presented as fact.",
+              "fa": "باز گذاشتن مانع می‌شود شناسایی احتمالی واقعیت قطعی جلوه کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Bas, het archief heeft een nieuwe vondst. Een gedateerde uitnodiging bevestigt dat het buurtfeest niet in juni maar in september plaatsvond. De locatie op het bijschrift klopt wel. De tweede vrouw is nog steeds niet geïdentificeerd; de naam die gisteren rondging, hoort bij een andere foto.",
+          "en": "Bas, the archive has made a new discovery. A dated invitation confirms that the neighbourhood celebration took place in September rather than June. The location in the caption is correct. The second woman is still unidentified; the name circulating yesterday belongs to another photograph.",
+          "fa": "باس، بایگانی مدرک تازه‌ای پیدا کرده. دعوت‌نامه تاریخ‌دار تأیید می‌کند جشن محله نه در ژوئن، بلکه در سپتامبر بوده است. مکان زیرنویس درست است. زن دوم هنوز شناسایی نشده؛ نامی که دیروز مطرح شد به عکس دیگری مربوط است."
+        },
+        "questions": [
+          {
+            "id": "b2-t-unit-unnamed-photograph-l1",
+            "prompt": {
+              "nl": "Welk onderdeel moet Bas op basis van de uitnodiging aanpassen?",
+              "en": "Which part must Bas change on the basis of the invitation?",
+              "fa": "باس بر اساس دعوت‌نامه کدام بخش را باید اصلاح کند؟"
+            },
+            "options": [
+              {
+                "nl": "De locatie: een ander plein dan op het bijschrift.",
+                "en": "The location: a different square from the one in the caption.",
+                "fa": "مکان: میدانی غیر از میدان زیرنویس."
+              },
+              {
+                "nl": "De maand: september in plaats van juni.",
+                "en": "The month: September rather than June.",
+                "fa": "ماه: سپتامبر به‌جای ژوئن."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De uitnodiging onderbouwt de maand; de locatie wordt juist bevestigd.",
+              "en": "The invitation supports the month; the location is confirmed as correct.",
+              "fa": "دعوت‌نامه ماه را مستند می‌کند؛ مکان درست تأیید شده است."
+            }
+          },
+          {
+            "id": "b2-t-unit-unnamed-photograph-l2",
+            "prompt": {
+              "nl": "Wat kan hij over de tweede vrouw schrijven?",
+              "en": "What can he write about the second woman?",
+              "fa": "درباره زن دوم چه می‌تواند بنویسد؟"
+            },
+            "options": [
+              {
+                "nl": "Haar identiteit blijft onbekend.",
+                "en": "Her identity remains unknown.",
+                "fa": "هویتش همچنان ناشناخته است."
+              },
+              {
+                "nl": "De naam van gisteren is nu bevestigd.",
+                "en": "Yesterday's name is now confirmed.",
+                "fa": "نام دیروز اکنون تأیید شده است."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De spreker koppelt die naam aan een andere foto, niet aan deze vrouw.",
+              "en": "The speaker links that name to another photograph, not this woman.",
+              "fa": "گوینده آن نام را به عکس دیگری مرتبط می‌کند، نه این زن."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Geef als Bas een korte update aan de bezoekers. Leg uit wat nieuw bevestigd is, wat gelijk blijft en wat nog onbekend is. Benoem de bron van de correctie.",
+          "en": "As Bas, give visitors a short update. Explain what is newly confirmed, what remains unchanged and what is still unknown. Name the source of the correction.",
+          "fa": "در نقش باس به بازدیدکنندگان گزارشی کوتاه بدهید. تأیید تازه، موارد ثابت و ناشناخته‌ها را توضیح دهید. منبع اصلاح را نام ببرید."
+        },
+        "sample": {
+          "nl": "We passen de maand in het bijschrift aan. Een gedateerde uitnodiging uit het archief toont dat het buurtfeest in september plaatsvond, niet in juni. Het plein was wel correct vermeld. De herkenning van één vrouw blijft gebaseerd op de herinnering van mijn grootmoeder. De tweede naam kunnen we nog niet invullen: de recente suggestie bleek bij een andere foto te horen.",
+          "en": "We are changing the month in the caption. A dated invitation from the archive shows that the neighbourhood celebration took place in September, not June. The square was correctly named. The identification of one woman is still based on my grandmother's memory. We cannot yet fill in the second name: the recent suggestion turned out to belong to another photograph.",
+          "fa": "ماه زیرنویس را اصلاح می‌کنیم. دعوت‌نامه تاریخ‌دار بایگانی نشان می‌دهد جشن در سپتامبر بوده، نه ژوئن. نام میدان درست بود. شناسایی یک زن هنوز بر خاطره مادربزرگم استوار است. نام دوم را هنوز نمی‌توان نوشت؛ معلوم شد پیشنهاد اخیر به عکس دیگری مربوط است."
+        },
+        "min_words": 45,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Corrigeer juni naar september met verwijzing naar de uitnodiging.",
+            "en": "Correct June to September, referring to the invitation.",
+            "fa": "ژوئن را با ارجاع به دعوت‌نامه به سپتامبر اصلاح کنید."
+          },
+          {
+            "nl": "Laat de tweede identiteit onbekend en behoud de bevestigde locatie.",
+            "en": "Leave the second identity unknown and retain the confirmed location.",
+            "fa": "هویت دوم را ناشناخته بگذارید و مکان تأییدشده را حفظ کنید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een toelichting van 80 tot 180 woorden voor de tentoonstelling. Verwerk de nieuwe informatie en leg uit waarom je herinneringen niet weglaat, maar wel als herinnering aanduidt.",
+          "en": "Write an exhibition note of 80–180 Dutch words. Include the new information and explain why you retain memories but label them as memories.",
+          "fa": "یادداشتی ۸۰ تا ۱۸۰ واژه‌ای به هلندی برای نمایشگاه بنویسید. اطلاعات تازه را بیاورید و توضیح دهید چرا خاطره‌ها را حذف نمی‌کنید، اما به‌عنوان خاطره مشخص می‌کنید."
+        },
+        "sample": {
+          "nl": "Bij deze foto hebben we het bijschrift aangepast. Een gedateerde uitnodiging uit het archief bevestigt dat het buurtfeest in september werd gehouden en niet in juni. Het eerder genoemde plein blijft correct. Eén van de vrouwen is door mijn grootmoeder als haar zus herkend. Die herkenning vermelden we als een persoonlijke herinnering, omdat de foto zelf geen namen bevat. Voor de tweede vrouw is nog geen betrouwbare identificatie gevonden. Een recente naam bleek bij een andere opname te horen. We bewaren het verhaal van mijn grootmoeder dus naast de archiefinformatie, zonder beide dezelfde zekerheid te geven. Bezoekers met aanvullende gegevens kunnen die aan ons doorgeven.",
+          "en": "We have revised the caption for this photograph. A dated invitation from the archive confirms that the neighbourhood celebration was held in September, not June. The previously named square remains correct. My grandmother identified one of the women as her sister. We present that identification as a personal memory because the photograph itself contains no names. No reliable identification has yet been found for the second woman. A recently suggested name turned out to belong to another image. We therefore preserve my grandmother's account alongside the archive information without assigning both the same certainty. Visitors with additional information can pass it on to us.",
+          "fa": "زیرنویس این عکس را اصلاح کرده‌ایم. دعوت‌نامه تاریخ‌دار بایگانی تأیید می‌کند جشن محله در سپتامبر بوده، نه ژوئن. میدان قبلی همچنان درست است. مادربزرگم یکی از زن‌ها را خواهر خود شناخته است. این شناسایی را خاطره‌ای شخصی معرفی می‌کنیم، چون خود عکس نامی ندارد. برای زن دوم هنوز شناسایی قابل اعتماد پیدا نشده است. معلوم شد نام پیشنهادی اخیر به عکس دیگری تعلق دارد. بنابراین روایت مادربزرگ را کنار اطلاعات بایگانی حفظ می‌کنیم، بی‌آنکه به هر دو اطمینان یکسان بدهیم. بازدیدکنندگان می‌توانند اطلاعات تکمیلی را در اختیارمان بگذارند."
+        },
+        "min_words": 80,
+        "max_words": 180,
+        "criteria": [
+          {
+            "nl": "Maak onderscheid tussen de uitnodiging als bewijs en de persoonlijke herinnering.",
+            "en": "Distinguish the invitation as evidence from the personal memory.",
+            "fa": "دعوت‌نامه به‌عنوان مدرک را از خاطره شخصی جدا کنید."
+          },
+          {
+            "nl": "Verwerk de maandcorrectie zonder een naam voor de tweede vrouw te verzinnen.",
+            "en": "Include the month correction without inventing a name for the second woman.",
+            "fa": "اصلاح ماه را بدون ساختن نام زن دوم بیاورید."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

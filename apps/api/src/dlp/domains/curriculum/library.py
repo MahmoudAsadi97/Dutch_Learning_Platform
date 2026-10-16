@@ -6,13 +6,32 @@ import unicodedata
 from collections import Counter
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from dlp.config import CONTENT_DIR
-from dlp.domains.curriculum import supplements
+from dlp.domains.curriculum import supplements, word_usage
 from dlp.domains.curriculum.schemas import STAGE_IDS, Localized, Question
 from dlp.domains.curriculum.service import CurriculumError
+
+
+class WordForm(BaseModel):
+    """An authored example of a form, never a guessed conjugation."""
+    model_config = ConfigDict(extra="forbid")
+    label: Localized
+    text: Localized
+
+
+class WordContext(BaseModel):
+    """One use of a word in a specific situation, with a transfer invitation."""
+    model_config = ConfigDict(extra="forbid")
+    id: str = Field(min_length=1, max_length=100)
+    setting: Localized
+    sentence: Localized
+    production_prompt: Localized
+    structure: Literal["present", "past", "future", "modal", "conditional", "comparison",
+                       "register", "noun_phrase", "adjective", "other"]
 
 
 class LibraryWord(BaseModel):
@@ -22,6 +41,28 @@ class LibraryWord(BaseModel):
     topic: Localized
     meaning: Localized
     example: Localized
+    part_of_speech: Literal["noun", "verb", "adjective", "adverb", "expression", "other"] | None = None
+    article: Literal["de", "het"] | None = None
+    plural: str | None = Field(default=None, min_length=1, max_length=180)
+    forms: list[WordForm] = Field(default_factory=list, max_length=8)
+    contexts: list[WordContext] = Field(default_factory=list, max_length=6)
+
+    @model_validator(mode="after")
+    def meaningful_usage(self):
+        if self.article is not None and self.part_of_speech != "noun":
+            raise ValueError("only a noun can have an article")
+        if self.plural is not None and self.part_of_speech != "noun":
+            raise ValueError("only a noun can have a plural")
+        if len({item.id for item in self.contexts}) != len(self.contexts):
+            raise ValueError("word contexts need unique IDs")
+        texts = [normalise(item.sentence.nl) for item in self.contexts]
+        if len(texts) != len(set(texts)):
+            raise ValueError("word contexts must contain different Dutch examples")
+        copies = [copy for item in self.forms for copy in (item.label, item.text)]
+        copies += [copy for item in self.contexts for copy in (item.setting, item.sentence, item.production_prompt)]
+        if any(not all(text.strip() for text in (copy.nl, copy.en, copy.fa)) for copy in copies):
+            raise ValueError("word usage needs three nonblank language versions")
+        return self
 
 
 class StoryQuestion(BaseModel):
@@ -43,9 +84,26 @@ class LibraryStory(BaseModel):
     id: str = Field(min_length=1, max_length=69)
     title: Localized
     topic: Localized
+    genre: Localized | None = None
     paragraphs: list[Localized] = Field(min_length=2, max_length=12)
+    lines: list[Localized] | None = Field(default=None, min_length=8, max_length=12)
+    topic_id: str | None = Field(default=None, max_length=60, pattern=r"^[a-z0-9-]+$")
     vocabulary_ids: list[str] = Field(min_length=1, max_length=30)
     question: StoryQuestion
+
+    @model_validator(mode="after")
+    def parallel_narrative(self):
+        if self.lines is not None:
+            for language in ("nl", "en", "fa"):
+                line_text = normalise(" ".join(getattr(line, language) for line in self.lines))
+                paragraph_text = normalise(" ".join(getattr(p, language) for p in self.paragraphs))
+                if line_text != paragraph_text:
+                    raise ValueError("authored story lines must match their paragraphs in every language")
+                if any(not getattr(line, language).strip() for line in self.lines):
+                    raise ValueError("authored story lines require parallel translations")
+            if any(len(line.nl) > 600 for line in self.lines):
+                raise ValueError("authored story lines must fit sentence playback")
+        return self
 
 
 class StageLibrary(BaseModel):
@@ -97,16 +155,18 @@ def normalise(value: str) -> str:
 
 
 @lru_cache(maxsize=16)
-def _read(path: str, modified: int, supplement_modified: int = 0) -> StageLibrary:
+def _read(path: str, modified: int, supplement_modified: int = 0, usage_modified: int = 0) -> StageLibrary:
     data = json.loads(Path(path).read_text(encoding="utf-8"))
-    return StageLibrary.model_validate(supplements.merge_bank(data, Path(path).parent.parent, "library"))
+    root = Path(path).parent.parent
+    return StageLibrary.model_validate(word_usage.enrich(supplements.merge_bank(data, root, "library"), root))
 
 
 def library_for(stage_id: str) -> StageLibrary:
     if stage_id not in STAGE_IDS:
         raise CurriculumError("learning stage not found", 404)
     path = CONTENT_DIR / "library" / f"{stage_id}.json"
-    bank = _read(str(path), path.stat().st_mtime_ns, supplements.stamp(CONTENT_DIR, stage_id))
+    bank = _read(str(path), path.stat().st_mtime_ns, supplements.stamp(CONTENT_DIR, stage_id),
+                 word_usage.stamp(CONTENT_DIR, stage_id))
     if bank.stage_id != stage_id:
         raise ValueError("library file does not match its requested stage")
     return bank
@@ -137,6 +197,8 @@ def summary(bank: StageLibrary) -> dict:
     labels = {item.topic.nl: item.topic.model_dump() for item in [*bank.vocabulary, *bank.stories]}
     return {"stage_id": bank.stage_id, "review_status": bank.review_status,
             "vocabulary_count": len(bank.vocabulary), "story_count": len(bank.stories),
+            "authored_story_count": sum(story.lines is not None for story in bank.stories),
+            "target_story_count": 200,
             "topics": [{"key": name, "label": labels[name], "vocabulary_count": words[name],
                         "story_count": stories[name]} for name in sorted(labels)]}
 
@@ -151,7 +213,9 @@ def story_page(bank: StageLibrary, *, query: str = "", topic: str = "", offset: 
     items = [item for item in bank.stories if matches(item, query, topic)]
     return {"total": len(items), "offset": offset, "limit": limit,
             "items": [{"id": item.id, "title": item.title.model_dump(), "topic": item.topic.model_dump(),
+                       "genre": item.genre.model_dump() if item.genre else None,
                        "preview": item.paragraphs[0].model_dump(), "paragraph_count": len(item.paragraphs),
+                       "line_count": len(item.lines) if item.lines else None,
                        "word_count": len(" ".join(p.nl for p in item.paragraphs).split()),
                        "vocabulary_ids": item.vocabulary_ids} for item in items[offset:offset + limit]]}
 

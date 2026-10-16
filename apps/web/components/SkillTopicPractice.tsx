@@ -4,10 +4,11 @@ import { useEffect, useId, useRef, useState } from "react";
 import { CurriculumRecorder, countWords } from "@/components/CurriculumControls";
 import { ExerciseSession } from "@/components/exercise/ExerciseSession";
 import { LearningText, useLanguageSupport } from "@/components/LanguageSupport";
-import { SpokenPassage } from "@/components/SpokenPassage";
+import { SpokenPassage, SpokenText } from "@/components/SpokenPassage";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import { ConversationTopicChoices, TopicConversation } from "@/components/TopicConversation";
 import { WritingCoach } from "@/components/WritingCoach";
+import { WordUsage } from "@/components/WordUsage";
 import { Icon, type IconName } from "@/components/Icon";
 import { apiJson, newRequestId } from "@/lib/client/api";
 import { friendlyError, skillNames } from "@/lib/client/curriculum";
@@ -17,6 +18,7 @@ import type { Skill } from "@/lib/types";
 import { storageKeys } from "@/lib/client/storage";
 import { playTone } from "@/lib/client/tones";
 import { topicsCopy } from "@/lib/copy/topics";
+import { storyLearningCopy } from "@/lib/copy/storyLearning";
 import { stageLabel } from "@/lib/domain/registry";
 import { fill, type Copy } from "@/lib/ui-copy";
 import { Button, ProgressBar, UiText } from "@/components/ui";
@@ -147,6 +149,19 @@ export function SkillTopicPractice(props: Props) {
           </div>
         )}
       </div>
+      {metadata?.categories.some((item) => item.nl === storyLearningCopy.category.nl) && (
+        <button
+          className="button secondary"
+          onClick={() => {
+            setCategory(storyLearningCopy.category.nl);
+            setQuery("");
+            setStatus("all");
+            setOffset(0);
+          }}
+        >
+          <LearningText text={storyLearningCopy.practiseAuthored} />
+        </button>
+      )}
       {skill === "speaking" && (
         <ConversationTopicChoices
           stageId={stageId}
@@ -673,8 +688,7 @@ function TopicReader({
                     <>
                       <div className="productive-task">
                         <p>
-                          <LearningText text={task.prompt} />
-                          <PhraseAudio text={task.prompt.nl} disabled={busy} />
+                          <SpokenText text={task.prompt} disabled={busy} />
                         </p>
                         <h5>Dit probeer je te doen</h5>
                         <ul className="task-criteria">
@@ -740,8 +754,7 @@ function TopicReader({
                             </p>
                           )}
                           <p className="story-copy">
-                            <LearningText text={task.sample} />
-                            <PhraseAudio text={task.sample.nl} disabled={busy} />
+                            <SpokenText text={task.sample} disabled={busy} />
                           </p>
                         </details>
                       )}
@@ -761,9 +774,9 @@ function TopicReader({
                         </div>
                         <LearningText text={word.meaning} />
                         <p>
-                          <LearningText text={word.example} />
-                          <PhraseAudio text={word.example.nl} disabled={busy} />
+                          <SpokenText text={word.example} disabled={busy} />
                         </p>
+                        <WordUsage key={word.id} word={word} />
                       </article>
                     ))}
                   </div>

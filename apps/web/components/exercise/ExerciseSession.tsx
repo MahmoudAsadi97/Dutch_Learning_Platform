@@ -19,6 +19,7 @@ import { Notice } from "@/components/ui/Notice";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { SkeletonPanel } from "@/components/ui/Skeleton";
 import { UiText } from "@/components/ui/UiText";
+import { AudioAssistanceProvider } from "@/components/AudioAssistance";
 import { exerciseCopy } from "@/lib/copy/exercise";
 import { ApiError, newRequestId } from "@/lib/client/api";
 import { errorCopy } from "@/lib/client/error-copy";
@@ -144,6 +145,7 @@ export function ExerciseSession(props: Props) {
   const shown = useRef<string | null>(null);
   // the item whose hint the learner asked for (reported with that item's answer only)
   const hinted = useRef<string | null>(null);
+  const assistedPassages = useRef(new Set<string>());
   // one request id per overruled item, so a retried "mijn antwoord klopt ook" replays
   const overrideIds = useRef<Record<string, string>>({});
 
@@ -313,9 +315,39 @@ export function ExerciseSession(props: Props) {
       (sessionId, itemId, requestId) =>
         skip
           ? exercises.skip(sessionId, itemId, requestId, skip)
-          : exercises.answer(sessionId, itemId, answer as Answer, requestId, hinted.current === itemId),
+          : exercises.answer(
+              sessionId,
+              itemId,
+              answer as Answer,
+              requestId,
+              hinted.current === itemId ||
+                assistedPassages.current.has(sessionId) ||
+                Boolean(
+                  session?.items.some(
+                    (entry) => (entry.id === itemId || entry.kind === "read_passage") && entry.hint_used,
+                  ),
+                ),
+            ),
       exerciseCopy.answerFailed,
     );
+  }
+
+  async function recordOptionalAudio(viewId: string, passageSupport: boolean, signal: AbortSignal) {
+    if (!session || session.status !== "active") return;
+    if (
+      passageSupport
+        ? !["answering", "checking", "feedback"].includes(state.phase)
+        : state.phase !== "answering"
+    )
+      return;
+    try {
+      const saved = await exercises.assistance(session.id, viewId, signal);
+      if (!saved.hint_used) throw new Error("support");
+      if (passageSupport) assistedPassages.current.add(session.id);
+      else hinted.current = viewId;
+    } catch {
+      throw new Error("support");
+    }
   }
 
   function sendRecording(recording: Recording) {
@@ -396,6 +428,7 @@ export function ExerciseSession(props: Props) {
     early.current = false;
     shown.current = null;
     hinted.current = null;
+    assistedPassages.current.clear();
     overrideIds.current = {};
     setDraft(null);
     setActionError(null);
@@ -696,12 +729,18 @@ export function ExerciseSession(props: Props) {
         )}
 
         {session && passage && asking && (
-          <PassagePanel
-            prompt={passage}
-            mode={onPassage ? "step" : "reference"}
-            audioPath={passageAudioPath(session)}
-            headingRef={onPassage ? headingRef : undefined}
-          />
+          <AudioAssistanceProvider
+            onRequest={(signal) =>
+              recordOptionalAudio(passageItem!.id, passage.kind === "read_passage", signal)
+            }
+          >
+            <PassagePanel
+              prompt={passage}
+              mode={onPassage ? "step" : "reference"}
+              audioPath={passageAudioPath(session)}
+              headingRef={onPassage ? headingRef : undefined}
+            />
+          </AudioAssistanceProvider>
         )}
 
         {item && asking && (
@@ -738,7 +777,9 @@ export function ExerciseSession(props: Props) {
               </>
             ) : (
               <>
-                {renderItem(item)}
+                <AudioAssistanceProvider onRequest={(signal) => recordOptionalAudio(item.id, false, signal)}>
+                  {renderItem(item)}
+                </AudioAssistanceProvider>
                 {state.phase !== "feedback" && (
                   <div className="exercise-actions">
                     {/* shadowing is answered by its recording */}

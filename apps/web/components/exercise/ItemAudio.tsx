@@ -15,6 +15,7 @@ import {
 } from "@/lib/client/audio-focus";
 import { exercises } from "@/lib/client/exercises";
 import { IDLE_PHRASE_AUDIO, PhraseAudioController, type PhraseAudioError } from "@/lib/client/phrase-audio";
+import { storyLearningCopy } from "@/lib/copy/storyLearning";
 import type { Copy } from "@/lib/ui-copy";
 
 /**
@@ -52,6 +53,7 @@ player.subscribe(() => {
 });
 
 const ERRORS: Record<PhraseAudioError, Copy> = {
+  support: storyLearningCopy.audioSupportFailed,
   signin: exerciseCopy.audioSignin,
   limit: exerciseCopy.audioLimit,
   blocked: exerciseCopy.audioBlocked,

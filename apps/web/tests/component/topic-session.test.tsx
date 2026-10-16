@@ -15,8 +15,13 @@ const client = vi.hoisted(() => ({
   skip: vi.fn(),
   report: vi.fn(),
   finish: vi.fn(),
+  assistance: vi.fn(),
 }));
 vi.mock("@/lib/client/exercises", () => ({ exercises: client }));
+vi.mock("@/lib/client/api", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/client/api")>();
+  return { ...actual, apiFetch: vi.fn(async () => new Response("unavailable", { status: 503 })) };
+});
 
 beforeAll(() => {
   HTMLDialogElement.prototype.showModal = function showModal(this: HTMLDialogElement) {
@@ -184,26 +189,82 @@ function topic(skill: "reading" | "listening" | "writing" = "reading", extra = {
   );
 }
 
-async function answerBoth() {
-  fireEvent.click(await screen.findByRole("button", { name: /Naar de vragen/ }));
+/** Keep interactions within their visible control group: document-wide role queries otherwise
+ * repeatedly calculate names and visibility for every replay button in the reference passage. */
+async function answerQuestions() {
   for (const [heading, option] of [
     ["Waar wacht Sam?", /Aan de halte/],
     ["Wat is laat?", /De trein/],
   ] as const) {
-    await screen.findByText(heading);
-    fireEvent.click(screen.getByRole("radio", { name: option }));
-    fireEvent.click(screen.getByRole("button", { name: /Controleer/ }));
-    fireEvent.click(await screen.findByRole("button", { name: /^Verder/ }));
+    const question = await screen.findByText(heading);
+    const choices = within(question.closest(".exercise-item") as HTMLElement);
+    fireEvent.click(choices.getByLabelText(option, { selector: "input[type=radio]" }));
+    const actions = within(document.querySelector(".exercise-stage > .exercise-actions") as HTMLElement);
+    await act(async () => fireEvent.click(actions.getByRole("button", { name: /Controleer/ })));
+    const feedback = within(document.querySelector(".feedback-actions") as HTMLElement);
+    await act(async () => fireEvent.click(feedback.getByRole("button", { name: /^Verder/ })));
   }
+}
+
+async function answerBoth() {
+  await screen.findByText(exerciseCopy.passageDone.nl);
+  const actions = within(document.querySelector(".exercise-stage > .exercise-actions") as HTMLElement);
+  await act(async () => fireEvent.click(actions.getByRole("button", { name: /Naar de vragen/ })));
+  await answerQuestions();
 }
 
 beforeEach(() => {
   vi.clearAllMocks();
   client.create.mockResolvedValue(topicSession());
+  client.assistance.mockResolvedValue({ hint_used: true });
   wire();
 });
 
 describe("a session inside a practice topic", () => {
+  it("records optional passage audio before all later answers and keeps those answers assisted", async () => {
+    await act(async () => render(topic()));
+    const passage = within(document.querySelector(".exercise-passage-text") as HTMLElement);
+    fireEvent.click(passage.getByRole("button", { name: /^Luister: Sam wacht op de bus\./ }));
+    await waitFor(() => expect(client.assistance).toHaveBeenCalledWith("s1", "p", expect.any(AbortSignal)));
+    await answerBoth();
+    const answers = client.answer.mock.calls.filter((call) => call[1] === "q1" || call[1] === "q2");
+    expect(answers).toHaveLength(2);
+    expect(answers.every((call) => call[4] === true)).toBe(true);
+  });
+
+  it("question pronunciation helps only that question, not the next independent answer", async () => {
+    render(topic());
+    fireEvent.click(await screen.findByRole("button", { name: /Naar de vragen/ }));
+    fireEvent.click(await screen.findByRole("button", { name: /^Luister: Waar wacht Sam\?/ }));
+    await waitFor(() => expect(client.assistance).toHaveBeenCalledWith("s1", "q1", expect.any(AbortSignal)));
+    await answerQuestions();
+    expect(client.answer.mock.calls.find((call) => call[1] === "q1")?.[4]).toBe(true);
+    expect(client.answer.mock.calls.find((call) => call[1] === "q2")?.[4]).toBe(false);
+  });
+
+  it("restores saved passage assistance when an active session resumes", async () => {
+    const resumed = topicSession();
+    resumed.resumed = true;
+    resumed.next_item_id = "q1";
+    resumed.items[0] = { ...resumed.items[0], state: "closed", hint_used: true };
+    client.create.mockResolvedValue(resumed);
+    render(topic());
+    await screen.findByText("Waar wacht Sam?");
+    fireEvent.click(screen.getByRole("radio", { name: /Aan de halte/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Controleer/ }));
+    await waitFor(() =>
+      expect(client.answer).toHaveBeenCalledWith("s1", "q1", { option: "q1b" }, expect.any(String), true),
+    );
+    expect(client.assistance).not.toHaveBeenCalled();
+  });
+
+  it("primary listening playback is part of the task and never registers optional help", async () => {
+    client.create.mockResolvedValue(topicSession("listening"));
+    render(topic("listening"));
+    fireEvent.click(await screen.findByRole("button", { name: /Luister naar het fragment/ }));
+    expect(client.assistance).not.toHaveBeenCalled();
+  });
+
   it("reads the passage, keeps it beside each question, and reports what counted", async () => {
     const onFinished = vi.fn();
     const onActivityChange = vi.fn();

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { WordLibrary, StoryTime, SpokenPassage } from "@/components/LearningLibrary";
 import { AlphabetPractice } from "@/components/AlphabetPractice";
 import { PhraseAudio } from "@/components/PhraseAudio";
+import { SpokenText } from "@/components/SpokenPassage";
 import { SkillTopicPractice } from "@/components/SkillTopicPractice";
 import { WritingCoach } from "@/components/WritingCoach";
 import { AlignmentPanel } from "@/components/AlignmentPanel";
@@ -300,8 +301,7 @@ export function CurriculumLesson({
                       </div>
                       <LearningText text={word.meaning} />
                       <p>
-                        <LearningText text={word.example} />
-                        <PhraseAudio text={word.example.nl} />
+                        <SpokenText text={word.example} />
                       </p>
                     </article>
                   ))}
@@ -326,8 +326,7 @@ export function CurriculumLesson({
                   <div className="grammar-examples">
                     {topic.examples.map((example, index) => (
                       <p key={index}>
-                        <LearningText text={example} />
-                        <PhraseAudio text={example.nl} />
+                        <SpokenText text={example} />
                       </p>
                     ))}
                   </div>
@@ -455,8 +454,7 @@ export function CurriculumLesson({
                     </p>
                   )}
                   <p className="story-copy">
-                    <LearningText text={task.sample} />
-                    <PhraseAudio text={task.sample.nl} />
+                    <SpokenText text={task.sample} />
                   </p>
                 </details>
               )}

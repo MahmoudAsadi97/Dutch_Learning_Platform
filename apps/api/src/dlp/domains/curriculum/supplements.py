@@ -12,8 +12,9 @@ from dlp.domains.curriculum.schemas import STAGE_IDS, Localized, Question
 def stamp(root: Path, stage_id: str) -> int:
     if stage_id not in STAGE_IDS:
         raise ValueError("supplement has an unknown learning stage")
-    path = root / "source-lessons" / f"{stage_id}.json"
-    return path.stat().st_mtime_ns if path.exists() else 0
+    paths = [root / directory / f"{stage_id}.json" for directory in ("source-lessons", "learning-units")]
+    versions = tuple((path.stat().st_mtime_ns, path.stat().st_size) if path.exists() else (0, 0) for path in paths)
+    return hash(versions) if any(modified for modified, _ in versions) else 0
 
 
 @lru_cache(maxsize=32)
@@ -45,6 +46,20 @@ def _read(path: str, modified: int) -> dict:
         for item in items:
             if key != "vocabulary" and any(not ref.startswith(f"{stage_id}-") for ref in item.vocabulary_ids):
                 raise ValueError("supplement vocabulary references must belong to its stage")
+
+    if Path(path).parent.name == "learning-units":
+        topics = {item["id"]: item for item in data["topics"]}
+        for story in data["stories"]:
+            linked = topics.get(story.get("topic_id"))
+            if not story.get("lines") or linked is None:
+                raise ValueError("connected stories need authored lines and an existing topic link")
+            if set(story["vocabulary_ids"]) != set(linked["vocabulary_ids"]):
+                raise ValueError("connected story and topic must share their learning vocabulary")
+            for language in ("nl", "en", "fa"):
+                narrative = " ".join(p[language] for p in story["paragraphs"])
+                reading = linked["reading"]["text"][language]
+                if " ".join(narrative.split()) != " ".join(reading.split()):
+                    raise ValueError("connected reading must preserve the story in each language")
 
     grammar_ids: set[str] = set()
     question_ids: set[str] = set()
@@ -81,10 +96,16 @@ def _read(path: str, modified: int) -> dict:
 
 
 def load(root: Path, stage_id: str) -> dict:
-    modified = stamp(root, stage_id)
-    if not modified:
-        return {key: [] for key in ("vocabulary", "stories", "topics", "grammar_extensions")}
-    return deepcopy(_read(str(root / "source-lessons" / f"{stage_id}.json"), modified))
+    result = {key: [] for key in ("vocabulary", "stories", "topics", "grammar_extensions")}
+    if stage_id not in STAGE_IDS:
+        raise ValueError("supplement has an unknown learning stage")
+    for directory in ("source-lessons", "learning-units"):
+        path = root / directory / f"{stage_id}.json"
+        if path.exists():
+            data = _read(str(path), path.stat().st_mtime_ns)
+            for key in result:
+                result[key].extend(deepcopy(data[key]))
+    return result
 
 
 def merge_bank(data: dict, root: Path, kind: str) -> dict:
@@ -94,8 +115,8 @@ def merge_bank(data: dict, root: Path, kind: str) -> dict:
 
 
 def curriculum_stamp(root: Path) -> tuple[tuple[str, int], ...]:
-    directory = root / "source-lessons"
-    return tuple((p.stem, p.stat().st_mtime_ns) for p in sorted(directory.glob("*.json")))
+    return tuple((p.stem, p.stat().st_mtime_ns) for directory in ("source-lessons", "learning-units")
+                 for p in sorted((root / directory).glob("*.json")))
 
 
 def merge_curriculum(data: dict, root: Path) -> dict:

@@ -1,0 +1,750 @@
+{
+  "schema_version": 1,
+  "stage_id": "a1",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "a1-unit-window-plant-v1",
+      "term": "de vensterbank",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De rand onder een raam.",
+        "en": "The ledge below a window.",
+        "fa": "لبهٔ زیر پنجره."
+      },
+      "example": {
+        "nl": "De plant staat op de vensterbank.",
+        "en": "The plant is on the windowsill.",
+        "fa": "گیاه روی لبهٔ پنجره است."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "a1-unit-window-plant-v2",
+      "term": "aanbellen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Op de bel bij een deur drukken.",
+        "en": "To ring a doorbell.",
+        "fa": "زنگ در را زدن."
+      },
+      "example": {
+        "nl": "Jonas belt bij Mina aan.",
+        "en": "Jonas rings Mina’s doorbell.",
+        "fa": "یوناس زنگ در مینا را می‌زند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "a1-unit-window-plant-v4",
+      "term": "samen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Met elkaar.",
+        "en": "Together.",
+        "fa": "با هم."
+      },
+      "example": {
+        "nl": "Ze drinken samen thee.",
+        "en": "They drink tea together.",
+        "fa": "آن‌ها با هم چای می‌نوشند."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "a1-unit-first-dance-v1",
+      "term": "de partner",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De persoon met wie je samen iets doet.",
+        "en": "The person with whom you do an activity.",
+        "fa": "کسی که فعالیتی را همراه او انجام می‌دهی؛ یار."
+      },
+      "example": {
+        "nl": "Els is mijn partner bij de dansles.",
+        "en": "Els is my partner in the dance class.",
+        "fa": "الس یار من در کلاس رقص است."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "a1-unit-first-dance-v2",
+      "term": "meedoen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Samen met anderen aan een activiteit deelnemen.",
+        "en": "To join an activity with others.",
+        "fa": "در فعالیتی با دیگران شرکت کردن."
+      },
+      "example": {
+        "nl": "Yara doet mee met de dansles.",
+        "en": "Yara joins the dance class.",
+        "fa": "یارا در کلاس رقص شرکت می‌کند."
+      },
+      "part_of_speech": "verb"
+    }
+  ],
+  "stories": [
+    {
+      "id": "a1-s-unit-window-plant",
+      "title": {
+        "nl": "Een plant aan het raam",
+        "en": "A plant at the window",
+        "fa": "گیاهی کنار پنجره"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een ontmoeting",
+        "en": "An encounter",
+        "fa": "یک آشنایی"
+      },
+      "lines": [
+        {
+          "nl": "Mina woont naast Jonas.",
+          "en": "Mina lives next door to Jonas.",
+          "fa": "مینا همسایهٔ یوناس است."
+        },
+        {
+          "nl": "Elke ochtend ziet ze zijn lege raam.",
+          "en": "Every morning she sees his empty window.",
+          "fa": "هر صبح پنجرهٔ خالی او را می‌بیند."
+        },
+        {
+          "nl": "Vandaag koopt ze een kleine plant.",
+          "en": "Today she buys a small plant.",
+          "fa": "امروز گیاه کوچکی می‌خرد."
+        },
+        {
+          "nl": "Ze zet de plant voor zijn deur.",
+          "en": "She puts the plant outside his door.",
+          "fa": "گیاه را جلوی در او می‌گذارد."
+        },
+        {
+          "nl": "Op een kaart schrijft ze: Voor je raam.",
+          "en": "On a card she writes: For your window.",
+          "fa": "روی کارتی می‌نویسد: برای پنجره‌ات."
+        },
+        {
+          "nl": "Jonas vindt de plant na zijn werk.",
+          "en": "Jonas finds the plant after work.",
+          "fa": "یوناس بعد از کار گیاه را پیدا می‌کند."
+        },
+        {
+          "nl": "Hij leest de kaart en belt bij Mina aan.",
+          "en": "He reads the card and rings Mina’s doorbell.",
+          "fa": "کارت را می‌خواند و زنگ در مینا را می‌زند."
+        },
+        {
+          "nl": "Hij vraagt: Waar staat een plant het best?",
+          "en": "He asks: Where is the best place for a plant?",
+          "fa": "می‌پرسد: بهترین جا برای گیاه کجاست؟"
+        },
+        {
+          "nl": "Mina wijst naar de lichte vensterbank.",
+          "en": "Mina points to the bright windowsill.",
+          "fa": "مینا به لبهٔ روشن پنجره اشاره می‌کند."
+        },
+        {
+          "nl": "Nu drinken ze aan de tafel samen thee.",
+          "en": "Now they drink tea together at the table.",
+          "fa": "حالا پشت میز با هم چای می‌نوشند."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Mina woont naast Jonas. Elke ochtend ziet ze zijn lege raam. Vandaag koopt ze een kleine plant. Ze zet de plant voor zijn deur. Op een kaart schrijft ze: Voor je raam.",
+          "en": "Mina lives next door to Jonas. Every morning she sees his empty window. Today she buys a small plant. She puts the plant outside his door. On a card she writes: For your window.",
+          "fa": "مینا همسایهٔ یوناس است. هر صبح پنجرهٔ خالی او را می‌بیند. امروز گیاه کوچکی می‌خرد. گیاه را جلوی در او می‌گذارد. روی کارتی می‌نویسد: برای پنجره‌ات."
+        },
+        {
+          "nl": "Jonas vindt de plant na zijn werk. Hij leest de kaart en belt bij Mina aan. Hij vraagt: Waar staat een plant het best? Mina wijst naar de lichte vensterbank. Nu drinken ze aan de tafel samen thee.",
+          "en": "Jonas finds the plant after work. He reads the card and rings Mina’s doorbell. He asks: Where is the best place for a plant? Mina points to the bright windowsill. Now they drink tea together at the table.",
+          "fa": "یوناس بعد از کار گیاه را پیدا می‌کند. کارت را می‌خواند و زنگ در مینا را می‌زند. می‌پرسد: بهترین جا برای گیاه کجاست؟ مینا به لبهٔ روشن پنجره اشاره می‌کند. حالا پشت میز با هم چای می‌نوشند."
+        }
+      ],
+      "topic_id": "a1-t-unit-window-plant",
+      "vocabulary_ids": [
+        "a1-unit-window-plant-v1",
+        "a1-unit-window-plant-v2",
+        "a1-v272",
+        "a1-unit-window-plant-v4"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom geeft Mina de plant?",
+          "en": "Why does Mina give the plant?",
+          "fa": "چرا مینا گیاه را هدیه می‌دهد؟"
+        },
+        "options": [
+          {
+            "nl": "Voor haar werk.",
+            "en": "For her work.",
+            "fa": "برای کار خودش."
+          },
+          {
+            "nl": "Voor het lege raam van Jonas.",
+            "en": "For Jonas’s empty window.",
+            "fa": "برای پنجرهٔ خالی یوناس."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Op de kaart staat: Voor je raam.",
+          "en": "The card says: For your window.",
+          "fa": "روی کارت نوشته شده: برای پنجره‌ات."
+        }
+      }
+    },
+    {
+      "id": "a1-s-unit-first-dance",
+      "title": {
+        "nl": "Niet meer bij de deur",
+        "en": "No longer by the door",
+        "fa": "دیگر کنار در نیست"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een nieuw begin",
+        "en": "A new beginning",
+        "fa": "یک شروع تازه"
+      },
+      "lines": [
+        {
+          "nl": "Yara komt voor het eerst naar de dansles.",
+          "en": "Yara comes to the dance class for the first time.",
+          "fa": "یارا برای نخستین بار به کلاس رقص می‌آید."
+        },
+        {
+          "nl": "Ze kent niemand in de zaal.",
+          "en": "She does not know anyone in the room.",
+          "fa": "هیچ‌کس را در سالن نمی‌شناسد."
+        },
+        {
+          "nl": "De muziek begint.",
+          "en": "The music starts.",
+          "fa": "موسیقی شروع می‌شود."
+        },
+        {
+          "nl": "De andere mensen kiezen een partner.",
+          "en": "The other people choose a partner.",
+          "fa": "دیگران برای خود یار انتخاب می‌کنند."
+        },
+        {
+          "nl": "Yara blijft zenuwachtig bij de deur staan.",
+          "en": "Yara stays nervously by the door.",
+          "fa": "یارا با اضطراب کنار در می‌ماند."
+        },
+        {
+          "nl": "Els loopt naar haar toe.",
+          "en": "Els walks up to her.",
+          "fa": "الس به طرفش می‌آید."
+        },
+        {
+          "nl": "Wil je met mij dansen? vraagt Els.",
+          "en": "Would you like to dance with me? Els asks.",
+          "fa": "الس می‌پرسد: می‌خواهی با من برقصی؟"
+        },
+        {
+          "nl": "Ik kan niet goed dansen, zegt Yara.",
+          "en": "I cannot dance well, Yara says.",
+          "fa": "یارا می‌گوید: خوب رقصیدن بلد نیستم."
+        },
+        {
+          "nl": "Dan leren we samen, antwoordt Els.",
+          "en": "Then we will learn together, Els replies.",
+          "fa": "الس جواب می‌دهد: پس با هم یاد می‌گیریم."
+        },
+        {
+          "nl": "Bij het volgende lied doet Yara mee.",
+          "en": "Yara joins in for the next song.",
+          "fa": "با آهنگ بعدی، یارا هم با دیگران همراه می‌شود."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Yara komt voor het eerst naar de dansles. Ze kent niemand in de zaal. De muziek begint. De andere mensen kiezen een partner. Yara blijft zenuwachtig bij de deur staan.",
+          "en": "Yara comes to the dance class for the first time. She does not know anyone in the room. The music starts. The other people choose a partner. Yara stays nervously by the door.",
+          "fa": "یارا برای نخستین بار به کلاس رقص می‌آید. هیچ‌کس را در سالن نمی‌شناسد. موسیقی شروع می‌شود. دیگران برای خود یار انتخاب می‌کنند. یارا با اضطراب کنار در می‌ماند."
+        },
+        {
+          "nl": "Els loopt naar haar toe. Wil je met mij dansen? vraagt Els. Ik kan niet goed dansen, zegt Yara. Dan leren we samen, antwoordt Els. Bij het volgende lied doet Yara mee.",
+          "en": "Els walks up to her. Would you like to dance with me? Els asks. I cannot dance well, Yara says. Then we will learn together, Els replies. Yara joins in for the next song.",
+          "fa": "الس به طرفش می‌آید. الس می‌پرسد: می‌خواهی با من برقصی؟ یارا می‌گوید: خوب رقصیدن بلد نیستم. الس جواب می‌دهد: پس با هم یاد می‌گیریم. با آهنگ بعدی، یارا هم با دیگران همراه می‌شود."
+        }
+      ],
+      "topic_id": "a1-t-unit-first-dance",
+      "vocabulary_ids": [
+        "a1-unit-first-dance-v1",
+        "a1-unit-first-dance-v2",
+        "a1-v449",
+        "a1-unit-window-plant-v4"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom blijft Yara eerst bij de deur?",
+          "en": "Why does Yara initially stay by the door?",
+          "fa": "چرا یارا ابتدا کنار در می‌ماند؟"
+        },
+        "options": [
+          {
+            "nl": "Ze wacht op een taxi.",
+            "en": "She is waiting for a taxi.",
+            "fa": "منتظر تاکسی است."
+          },
+          {
+            "nl": "Ze is zenuwachtig en kent niemand.",
+            "en": "She is nervous and knows nobody.",
+            "fa": "مضطرب است و کسی را نمی‌شناسد."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Het is haar eerste les en ze kent niemand.",
+          "en": "It is her first lesson and she knows nobody.",
+          "fa": "اولین کلاسش است و کسی را نمی‌شناسد."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "a1-t-unit-window-plant",
+      "title": {
+        "nl": "Een plant aan het raam",
+        "en": "A plant at the window",
+        "fa": "گیاهی کنار پنجره"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Beschrijf een plaats en bied eenvoudige hulp aan.",
+          "en": "Describe a place and offer simple help.",
+          "fa": "یک مکان را توصیف کن و کمکی ساده پیشنهاد بده."
+        }
+      ],
+      "language_focus": {
+        "nl": "Beschrijf een plaats en bied eenvoudige hulp aan.",
+        "en": "Describe a place and offer simple help.",
+        "fa": "یک مکان را توصیف کن و کمکی ساده پیشنهاد بده."
+      },
+      "vocabulary_ids": [
+        "a1-unit-window-plant-v1",
+        "a1-unit-window-plant-v2",
+        "a1-v272",
+        "a1-unit-window-plant-v4"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Mina woont naast Jonas. Elke ochtend ziet ze zijn lege raam. Vandaag koopt ze een kleine plant. Ze zet de plant voor zijn deur. Op een kaart schrijft ze: Voor je raam.\n\nJonas vindt de plant na zijn werk. Hij leest de kaart en belt bij Mina aan. Hij vraagt: Waar staat een plant het best? Mina wijst naar de lichte vensterbank. Nu drinken ze aan de tafel samen thee.",
+          "en": "Mina lives next door to Jonas. Every morning she sees his empty window. Today she buys a small plant. She puts the plant outside his door. On a card she writes: For your window.\n\nJonas finds the plant after work. He reads the card and rings Mina’s doorbell. He asks: Where is the best place for a plant? Mina points to the bright windowsill. Now they drink tea together at the table.",
+          "fa": "مینا همسایهٔ یوناس است. هر صبح پنجرهٔ خالی او را می‌بیند. امروز گیاه کوچکی می‌خرد. گیاه را جلوی در او می‌گذارد. روی کارتی می‌نویسد: برای پنجره‌ات.\n\nیوناس بعد از کار گیاه را پیدا می‌کند. کارت را می‌خواند و زنگ در مینا را می‌زند. می‌پرسد: بهترین جا برای گیاه کجاست؟ مینا به لبهٔ روشن پنجره اشاره می‌کند. حالا پشت میز با هم چای می‌نوشند."
+        },
+        "questions": [
+          {
+            "id": "a1-t-unit-window-plant-r1",
+            "prompt": {
+              "nl": "Waarom geeft Mina de plant?",
+              "en": "Why does Mina give the plant?",
+              "fa": "چرا مینا گیاه را هدیه می‌دهد؟"
+            },
+            "options": [
+              {
+                "nl": "Voor haar werk.",
+                "en": "For her work.",
+                "fa": "برای کار خودش."
+              },
+              {
+                "nl": "Voor het lege raam van Jonas.",
+                "en": "For Jonas’s empty window.",
+                "fa": "برای پنجرهٔ خالی یوناس."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Op de kaart staat: Voor je raam.",
+              "en": "The card says: For your window.",
+              "fa": "روی کارت نوشته شده: برای پنجره‌ات."
+            }
+          },
+          {
+            "id": "a1-t-unit-window-plant-r2",
+            "prompt": {
+              "nl": "Waar wijst Mina naar?",
+              "en": "What does Mina point to?",
+              "fa": "مینا به کجا اشاره می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "De vensterbank.",
+                "en": "The windowsill.",
+                "fa": "لبهٔ پنجره."
+              },
+              {
+                "nl": "De straat.",
+                "en": "The street.",
+                "fa": "خیابان."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Ze wijst naar de lichte vensterbank.",
+              "en": "She points to the bright windowsill.",
+              "fa": "به لبهٔ روشن پنجره اشاره می‌کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Mina, met Jonas. De plant staat nu op mijn tafel. Het raam is dicht. Kom je om drie uur thee drinken?",
+          "en": "Hello, Mina, Jonas here. The plant is on my table now. The window is closed. Will you come for tea at three?",
+          "fa": "سلام مینا، یوناس هستم. گیاه حالا روی میز من است. پنجره بسته است. ساعت سه برای نوشیدن چای می‌آیی؟"
+        },
+        "questions": [
+          {
+            "id": "a1-t-unit-window-plant-l1",
+            "prompt": {
+              "nl": "Waar staat de plant nu?",
+              "en": "Where is the plant now?",
+              "fa": "گیاه حالا کجاست؟"
+            },
+            "options": [
+              {
+                "nl": "Voor de deur.",
+                "en": "Outside the door.",
+                "fa": "جلوی در."
+              },
+              {
+                "nl": "Op de tafel.",
+                "en": "On the table.",
+                "fa": "روی میز."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Jonas noemt zijn tafel.",
+              "en": "Jonas mentions his table.",
+              "fa": "یوناس از میز خود می‌گوید."
+            }
+          },
+          {
+            "id": "a1-t-unit-window-plant-l2",
+            "prompt": {
+              "nl": "Hoe laat is Mina welkom?",
+              "en": "What time is Mina invited for?",
+              "fa": "مینا چه ساعتی دعوت شده است؟"
+            },
+            "options": [
+              {
+                "nl": "Om drie uur.",
+                "en": "At three.",
+                "fa": "ساعت سه."
+              },
+              {
+                "nl": "Om twee uur.",
+                "en": "At two.",
+                "fa": "ساعت دو."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Jonas vraagt haar om drie uur te komen.",
+              "en": "Jonas asks her to come at three.",
+              "fa": "یوناس می‌خواهد او ساعت سه بیاید."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Je buur krijgt een plant. Zeg waar de plant kan staan en nodig je buur uit voor thee.",
+          "en": "Your neighbour receives a plant. Say where it can go and invite your neighbour for tea.",
+          "fa": "همسایه‌ات گیاهی هدیه می‌گیرد. بگو آن را کجا بگذارد و همسایه‌ات را به چای دعوت کن."
+        },
+        "sample": {
+          "nl": "De plant kan op de tafel staan. Kom je om drie uur thee drinken?",
+          "en": "The plant can go on the table. Will you come for tea at three?",
+          "fa": "گیاه می‌تواند روی میز باشد. ساعت سه برای چای می‌آیی؟"
+        },
+        "min_words": 6,
+        "max_words": 40,
+        "criteria": [
+          {
+            "nl": "Noem een plaats voor de plant.",
+            "en": "Give a place for the plant.",
+            "fa": "جایی برای گیاه مشخص کن."
+          },
+          {
+            "nl": "Nodig de buur uit voor thee.",
+            "en": "Invite the neighbour for tea.",
+            "fa": "همسایه را به چای دعوت کن."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Antwoord op Jonas. Zeg of je om drie uur kunt komen.",
+          "en": "Reply to Jonas. Say whether you can come at three.",
+          "fa": "به یوناس پاسخ بده. بگو آیا می‌توانی ساعت سه بیایی."
+        },
+        "sample": {
+          "nl": "Dag Jonas, dank je. Ik kan om drie uur komen. Tot straks!",
+          "en": "Hello, Jonas, thank you. I can come at three. See you soon!",
+          "fa": "سلام یوناس، ممنون. می‌توانم ساعت سه بیایم. تا بعد!"
+        },
+        "min_words": 6,
+        "max_words": 40,
+        "criteria": [
+          {
+            "nl": "Zeg of je kunt komen.",
+            "en": "Say whether you can come.",
+            "fa": "بگو می‌توانی بیایی یا نه."
+          },
+          {
+            "nl": "Reageer op de uitnodiging voor drie uur.",
+            "en": "Respond to the invitation for three.",
+            "fa": "به دعوت ساعت سه پاسخ بده."
+          }
+        ]
+      }
+    },
+    {
+      "id": "a1-t-unit-first-dance",
+      "title": {
+        "nl": "Niet meer bij de deur",
+        "en": "No longer by the door",
+        "fa": "دیگر کنار در نیست"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Vertel wat je kunt en nodig iemand uit om mee te doen.",
+          "en": "Say what you can do and invite someone to join.",
+          "fa": "بگو چه کاری بلدی و کسی را به همراهی دعوت کن."
+        }
+      ],
+      "language_focus": {
+        "nl": "Vertel wat je kunt en nodig iemand uit om mee te doen.",
+        "en": "Say what you can do and invite someone to join.",
+        "fa": "بگو چه کاری بلدی و کسی را به همراهی دعوت کن."
+      },
+      "vocabulary_ids": [
+        "a1-unit-first-dance-v1",
+        "a1-unit-first-dance-v2",
+        "a1-v449",
+        "a1-unit-window-plant-v4"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Yara komt voor het eerst naar de dansles. Ze kent niemand in de zaal. De muziek begint. De andere mensen kiezen een partner. Yara blijft zenuwachtig bij de deur staan.\n\nEls loopt naar haar toe. Wil je met mij dansen? vraagt Els. Ik kan niet goed dansen, zegt Yara. Dan leren we samen, antwoordt Els. Bij het volgende lied doet Yara mee.",
+          "en": "Yara comes to the dance class for the first time. She does not know anyone in the room. The music starts. The other people choose a partner. Yara stays nervously by the door.\n\nEls walks up to her. Would you like to dance with me? Els asks. I cannot dance well, Yara says. Then we will learn together, Els replies. Yara joins in for the next song.",
+          "fa": "یارا برای نخستین بار به کلاس رقص می‌آید. هیچ‌کس را در سالن نمی‌شناسد. موسیقی شروع می‌شود. دیگران برای خود یار انتخاب می‌کنند. یارا با اضطراب کنار در می‌ماند.\n\nالس به طرفش می‌آید. الس می‌پرسد: می‌خواهی با من برقصی؟ یارا می‌گوید: خوب رقصیدن بلد نیستم. الس جواب می‌دهد: پس با هم یاد می‌گیریم. با آهنگ بعدی، یارا هم با دیگران همراه می‌شود."
+        },
+        "questions": [
+          {
+            "id": "a1-t-unit-first-dance-r1",
+            "prompt": {
+              "nl": "Waarom blijft Yara eerst bij de deur?",
+              "en": "Why does Yara initially stay by the door?",
+              "fa": "چرا یارا ابتدا کنار در می‌ماند؟"
+            },
+            "options": [
+              {
+                "nl": "Ze wacht op een taxi.",
+                "en": "She is waiting for a taxi.",
+                "fa": "منتظر تاکسی است."
+              },
+              {
+                "nl": "Ze is zenuwachtig en kent niemand.",
+                "en": "She is nervous and knows nobody.",
+                "fa": "مضطرب است و کسی را نمی‌شناسد."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Het is haar eerste les en ze kent niemand.",
+              "en": "It is her first lesson and she knows nobody.",
+              "fa": "اولین کلاسش است و کسی را نمی‌شناسد."
+            }
+          },
+          {
+            "id": "a1-t-unit-first-dance-r2",
+            "prompt": {
+              "nl": "Wat doet Els?",
+              "en": "What does Els do?",
+              "fa": "الس چه کار می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Ze vraagt Yara om samen te dansen.",
+                "en": "She asks Yara to dance with her.",
+                "fa": "از یارا می‌خواهد با او برقصد."
+              },
+              {
+                "nl": "Ze zet de muziek uit.",
+                "en": "She switches off the music.",
+                "fa": "موسیقی را خاموش می‌کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Els loopt naar Yara en nodigt haar uit.",
+              "en": "Els approaches Yara and invites her.",
+              "fa": "الس به یارا نزدیک می‌شود و دعوتش می‌کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Yara, Els hier. De volgende les is vrijdag. We beginnen om zeven uur in de avond. Neem een fles water mee.",
+          "en": "Hi Yara, Els here. The next lesson is on Friday. We start at seven in the evening. Bring a bottle of water.",
+          "fa": "سلام یارا، الس هستم. کلاس بعدی جمعه است. ساعت هفت عصر شروع می‌کنیم. یک بطری آب همراهت بیاور."
+        },
+        "questions": [
+          {
+            "id": "a1-t-unit-first-dance-l1",
+            "prompt": {
+              "nl": "Op welke dag is de volgende les?",
+              "en": "On which day is the next lesson?",
+              "fa": "کلاس بعدی چه روزی است؟"
+            },
+            "options": [
+              {
+                "nl": "Woensdag.",
+                "en": "Wednesday.",
+                "fa": "چهارشنبه."
+              },
+              {
+                "nl": "Vrijdag.",
+                "en": "Friday.",
+                "fa": "جمعه."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Els noemt vrijdag.",
+              "en": "Els says Friday.",
+              "fa": "الس از جمعه می‌گوید."
+            }
+          },
+          {
+            "id": "a1-t-unit-first-dance-l2",
+            "prompt": {
+              "nl": "Hoe laat begint de les?",
+              "en": "What time does the lesson start?",
+              "fa": "کلاس چه ساعتی شروع می‌شود؟"
+            },
+            "options": [
+              {
+                "nl": "Om zeven uur in de avond.",
+                "en": "At seven in the evening.",
+                "fa": "ساعت هفت عصر."
+              },
+              {
+                "nl": "Om zeven uur in de ochtend.",
+                "en": "At seven in the morning.",
+                "fa": "ساعت هفت صبح."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Els zegt dat de les in de avond begint.",
+              "en": "Els says the lesson starts in the evening.",
+              "fa": "الس می‌گوید کلاس عصر شروع می‌شود."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Je ziet een nieuwe deelnemer bij de deur. Nodig die persoon uit om samen te dansen. Vertel ook wanneer de volgende les is volgens het luisterbericht.",
+          "en": "You see a new participant by the door. Invite that person to dance. Also say when the next lesson is, according to the audio message.",
+          "fa": "شرکت‌کنندهٔ تازه‌ای را کنار در می‌بینی. او را به رقص دعوت کن. زمان کلاس بعدی را هم طبق پیام شنیداری بگو."
+        },
+        "sample": {
+          "nl": "Dag, wil je met mij dansen? Ik ben ook nieuw. De volgende les is vrijdag om zeven uur in de avond.",
+          "en": "Hello, would you like to dance with me? I am new too. The next lesson is on Friday at seven in the evening.",
+          "fa": "سلام، می‌خواهی با من برقصی؟ من هم تازه آمده‌ام. کلاس بعدی جمعه ساعت هفت عصر است."
+        },
+        "min_words": 6,
+        "max_words": 40,
+        "criteria": [
+          {
+            "nl": "Nodig de andere deelnemer uit om samen te dansen.",
+            "en": "Invite the other participant to dance with you.",
+            "fa": "شرکت‌کنندهٔ دیگر را به رقص با خودت دعوت کن."
+          },
+          {
+            "nl": "Noem vrijdag om zeven uur in de avond als moment van de volgende les.",
+            "en": "Give Friday at seven in the evening as the time of the next lesson.",
+            "fa": "زمان کلاس بعدی را جمعه ساعت هفت عصر بیان کن."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Antwoord op Els. Bevestig de dag en het uur van de volgende les en zeg wat je meebrengt.",
+          "en": "Reply to Els. Confirm the day and time of the next lesson and say what you will bring.",
+          "fa": "به الس جواب بده. روز و ساعت کلاس بعدی را تأیید کن و بگو چه چیزی همراهت می‌آوری."
+        },
+        "sample": {
+          "nl": "Dag Els, bedankt! Ik kom vrijdag om zeven uur in de avond. Ik neem water mee. Tot dan!",
+          "en": "Hi Els, thanks! I will come on Friday at seven in the evening. I will bring water. See you then!",
+          "fa": "سلام الس، ممنون! جمعه ساعت هفت عصر می‌آیم. آب هم می‌آورم. تا آن موقع!"
+        },
+        "min_words": 6,
+        "max_words": 40,
+        "criteria": [
+          {
+            "nl": "Bevestig vrijdag om zeven uur in de avond als lesmoment.",
+            "en": "Confirm Friday at seven in the evening as the lesson time.",
+            "fa": "جمعه ساعت هفت عصر را به‌عنوان زمان کلاس تأیید کن."
+          },
+          {
+            "nl": "Zeg dat je water meebrengt.",
+            "en": "Say that you will bring water.",
+            "fa": "بگو آب همراهت می‌آوری."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

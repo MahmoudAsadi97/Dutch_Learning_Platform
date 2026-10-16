@@ -5,6 +5,7 @@ import { useId, useState, type Ref } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Field";
 import { UiText } from "@/components/ui/UiText";
+import { SentenceAudio } from "@/components/SpokenPassage";
 import { exerciseCopy } from "@/lib/copy/exercise";
 import type { Answer, Feedback, Hint } from "@/lib/client/exercises";
 import { fill, type Copy } from "@/lib/ui-copy";
@@ -188,6 +189,7 @@ export function TypedItem({
               />
               {": "}
               <Dutch text={feedback.expected} />
+              <SentenceAudio text={feedback.expected} />
             </p>
           )}
           {(feedback.notes ?? []).length > 0 && (

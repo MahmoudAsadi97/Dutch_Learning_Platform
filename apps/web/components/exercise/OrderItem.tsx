@@ -6,10 +6,11 @@ import { Icon } from "@/components/Icon";
 import { Button } from "@/components/ui/Button";
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
+import { SpokenText } from "@/components/SpokenPassage";
 import { fill } from "@/lib/ui-copy";
 
 import type { BoardProps } from "./boardProps";
-import { Dutch, Meaning } from "./ContentText";
+import { Meaning } from "./ContentText";
 import { ItemHeading } from "./heading";
 
 /**
@@ -69,7 +70,9 @@ export function OrderItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
             const state = !given ? "shown" : placed === index ? "correct" : miss;
             return (
               <li key={id} className="order-row" data-state={state}>
-                <Dutch text={textOf.get(id)} className="order-text" />
+                <span className="order-text" lang="nl">
+                  <SpokenText text={{ nl: textOf.get(id) ?? "" }} />
+                </span>
                 <Meaning
                   text={{ en: translation.en?.[index], fa: translation.fa?.[index] }}
                   className="order-translation"
@@ -99,7 +102,9 @@ export function OrderItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
             <span className="order-number" aria-hidden="true">
               {index + 1}
             </span>
-            <Dutch text={textOf.get(id)} className="order-text" />
+            <span className="order-text" lang="nl">
+              <SpokenText text={{ nl: textOf.get(id) ?? "" }} />
+            </span>
             <span className="order-moves">
               <Button
                 variant="ghost"

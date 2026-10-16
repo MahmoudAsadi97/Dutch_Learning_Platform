@@ -18,7 +18,8 @@ Source = Literal["stage_skill", "while_you_wait", "topic"]
 Skill = Literal["reading", "listening", "speaking", "writing"]
 # Retain legacy topic IDs and accept the additive source-pack suffix. The service still checks the stage and
 # looks up the actual topic; syntax acceptance does not grant access or make an unknown item exist.
-TopicId = Annotated[str, Field(min_length=6, max_length=60, pattern=r"^[a-z0-9-]+-t(?:[0-9]{3}|-source-[0-9]{2})$")]
+TopicId = Annotated[str, Field(min_length=6, max_length=60,
+                            pattern=r"^[a-z0-9-]+-t(?:[0-9]{3}|-source-[0-9]{2}|-unit-[a-z0-9]+(?:-[a-z0-9]+)*)$")]
 # "almost" is shown in a neutral colour and is never a mistake; "accepted" is the learner's own overrule
 Outcome = Literal["correct", "almost", "incorrect", "skipped", "done", "accepted", "heard", "not_heard"]
 OptionId = Annotated[str, Field(min_length=1, max_length=16)]
@@ -321,6 +322,7 @@ class ItemView(BaseModel):
     state: Literal["open", "closed"]
     attempts_left: int
     prompt: Prompt
+    hint_used: bool = False  # durable support flag, including inherited reading-passage audio
     feedback: Feedback | None = None  # once the item is closed
 
 
@@ -348,12 +350,13 @@ class KindCount(BaseModel):
 class Completion(BaseModel):
     """What a topic or lesson session did for its activity. Only the first answers to the authored questions
     count, through the course's own rule (75 %); a retry, a session finished with a question never tried, a
-    warm-up before an open task, or content changed since the session began counts for nothing."""
+    warm-up before an open task, support used on its questions, or content changed since the session began
+    does not establish independent completion."""
     scope: Literal["topic", "lesson"]
     skill: Skill
     topic_id: str | None = None
     counted: bool
-    reason: Literal["retry", "unfinished", "content_changed", "open_task"] | None = None  # when not counted
+    reason: Literal["retry", "unfinished", "content_changed", "open_task", "assisted"] | None = None
     passed: bool | None = None
     correct: int | None = None
     total: int | None = None

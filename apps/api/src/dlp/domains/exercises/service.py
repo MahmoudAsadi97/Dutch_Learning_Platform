@@ -284,7 +284,7 @@ def progress(rows: list[ExerciseItem]) -> dict[str, int]:
 def item_view(row: ExerciseSession, item: ExerciseItem, *, reveal: bool = False) -> dict[str, Any]:
     return {"id": item.id, "position": item.position, "kind": item.kind, "skill": item.skill,
             "state": "closed" if item.closed else "open", "attempts_left": _attempts_left(item),
-            "prompt": _prompt(row, item, reveal=reveal),
+            "prompt": _prompt(row, item, reveal=reveal), "hint_used": bool(item.hint_used),
             "feedback": item.attempts[-1]["response"]["feedback"] if item.closed and item.attempts else None}
 
 
@@ -409,6 +409,7 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
         raise ExerciseError("this exercise session is already finished", 409, code="session_closed")
     if item.closed:
         raise ExerciseError("this item is already answered", 409, code="already_answered")
+    _inherit_reading_assistance(rows)
     if skip in AUDIO_SKIPS and item.kind not in AUDIO_KINDS | {"listen_passage"}:
         raise ExerciseError("this item has no audio to skip for", 422)
     if item.kind == "shadow" and skip is None:
@@ -443,6 +444,7 @@ def respond(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item
     now = utcnow()
     item.closed = closed
     item.hint_used = item.hint_used or hint_used
+    _inherit_reading_assistance(rows)
     if closed:
         item.answered_at = now
     response: dict[str, Any] = {
@@ -469,6 +471,42 @@ def _item(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID, item_i
     if item is None:
         raise ExerciseError("exercise item not found", 404)
     return row, rows, item
+
+
+def _inherit_reading_assistance(rows: list[ExerciseItem]) -> bool:
+    """Reading a passage aloud supports every question about it, including after a reload.
+
+    Primary listening audio is the task itself, so it does not set this flag.
+    Only questions without a first answer inherit support. Listening to feedback
+    after answering does not rewrite the earlier independent evidence.
+    """
+    assisted = any(item.kind == "read_passage" and item.hint_used for item in rows)
+    if assisted:
+        for item in rows:
+            if item.key.get("authored") and item.first_outcome is None and not item.attempts:
+                item.hint_used = True
+    return assisted
+
+
+def mark_assistance(session: Session, learner_id: uuid.UUID, session_id: uuid.UUID,
+                    item_id: uuid.UUID) -> dict[str, Any]:
+    """Persist support before it is delivered; repeated calls only keep the flag true.
+
+    No answer, attempt, point, paid call or session completion is created here.
+    The session lock serializes this with answering and finishing in another tab.
+    """
+    row, rows, item = _item(session, learner_id, session_id, item_id, lock=True)
+    if row.status != "active":
+        raise ExerciseError("this exercise session is already finished", 409, code="session_closed")
+    if item.kind == "listen_passage":
+        raise ExerciseError("primary listening audio is not reading assistance", 422)
+    if item.closed and item.kind != "read_passage":
+        raise ExerciseError("this item is already answered", 409, code="already_answered")
+    item.hint_used = True
+    _inherit_reading_assistance(rows)
+    row.updated_at = utcnow()
+    session.flush()
+    return item_view(row, item, reveal=_revealed(row, rows))
 
 
 def item_audio(session: Session, settings: Settings, *, learner_id: uuid.UUID, session_id: uuid.UUID,
@@ -748,6 +786,7 @@ def _completion(session: Session, row: ExerciseSession, rows: list[ExerciseItem]
     questions count; a retry, a question never tried, a warm-up or content changed since the start do not."""
     if not row.skill:
         return None
+    _inherit_reading_assistance(rows)
     questions = [item for item in rows if item.key.get("authored")]
     base = {"scope": "topic" if row.topic_id else "lesson", "skill": row.skill, "topic_id": row.topic_id or None,
             "to_retry": sum(1 for item in questions if item.first_outcome not in FIRST_TRY_RIGHT)}
@@ -759,6 +798,8 @@ def _completion(session: Session, row: ExerciseSession, rows: list[ExerciseItem]
         reason = "retry"
     elif not questions or any(not item.attempts for item in questions):
         reason = "unfinished"
+    elif any(item.hint_used for item in questions):
+        reason = "assisted"
     else:
         try:
             activity = activities.activity_for(row.stage_id, topic_id=row.topic_id or None, skill=row.skill)

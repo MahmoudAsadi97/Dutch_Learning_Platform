@@ -1,0 +1,810 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b1",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "pre-b1-unit-silent-radio-v1",
+      "term": "vastmaken",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zorgen dat iets niet meer los zit.",
+        "en": "To fasten something securely.",
+        "fa": "محکم کردن چیزی."
+      },
+      "example": {
+        "nl": "Luc maakt het draadje vast.",
+        "en": "Luc secures the wire.",
+        "fa": "لوک سیم را محکم می‌کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-b1-unit-silent-radio-v2",
+      "term": "herkennen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Weten wat of wie iets of iemand is doordat je het eerder zag of hoorde.",
+        "en": "To recognise something or someone encountered before.",
+        "fa": "شناختن چیزی یا کسی که قبلاً دیده یا شنیده‌ای."
+      },
+      "example": {
+        "nl": "Aya herkent het lied.",
+        "en": "Aya recognises the song.",
+        "fa": "آیا آهنگ را می‌شناسد."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-b1-unit-silent-radio-v3",
+      "term": "voorzichtig",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zonder onnodige risico’s.",
+        "en": "Careful.",
+        "fa": "بااحتیاط."
+      },
+      "example": {
+        "nl": "Luc werkt voorzichtig.",
+        "en": "Luc works carefully.",
+        "fa": "لوک بااحتیاط کار می‌کند."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "pre-b1-unit-silent-radio-v4",
+      "term": "plots",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Onverwacht en opeens.",
+        "en": "Suddenly.",
+        "fa": "ناگهان."
+      },
+      "example": {
+        "nl": "Plots klinkt muziek.",
+        "en": "Suddenly music plays.",
+        "fa": "ناگهان موسیقی پخش می‌شود."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "pre-b1-unit-sour-cherries-v1",
+      "term": "de ruzie",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een onvriendelijk meningsverschil tussen mensen.",
+        "en": "An unfriendly disagreement between people.",
+        "fa": "اختلاف و مشاجره میان افراد؛ دعوا."
+      },
+      "example": {
+        "nl": "Na de ruzie spraken ze niet meer.",
+        "en": "They stopped speaking after the argument.",
+        "fa": "بعد از دعوا دیگر با هم حرف نمی‌زدند."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "pre-b1-unit-sour-cherries-v2",
+      "term": "bijpraten",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Elkaar vertellen wat er de laatste tijd is gebeurd.",
+        "en": "To catch up on what has happened recently.",
+        "fa": "از اتفاق‌های اخیر و حال‌وروز هم باخبر شدن."
+      },
+      "example": {
+        "nl": "Zondag praten de zussen bij.",
+        "en": "The sisters catch up on Sunday.",
+        "fa": "خواهرها یکشنبه از حال‌وروز هم باخبر می‌شوند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-b1-unit-sour-cherries-v3",
+      "term": "zuur",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Met een smaak zoals die van een citroen.",
+        "en": "With a taste like a lemon.",
+        "fa": "دارای مزه‌ای شبیه لیمو؛ ترش."
+      },
+      "example": {
+        "nl": "De kersen waren zuur.",
+        "en": "The cherries were sour.",
+        "fa": "گیلاس‌ها ترش بودند."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "pre-b1-unit-sour-cherries-v4",
+      "term": "onderaan",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Aan de onderkant.",
+        "en": "At the bottom.",
+        "fa": "در پایین."
+      },
+      "example": {
+        "nl": "Onderaan staat haar telefoonnummer.",
+        "en": "Her phone number is at the bottom.",
+        "fa": "شمارهٔ تلفنش پایین نوشته شده است."
+      },
+      "part_of_speech": "adverb"
+    }
+  ],
+  "stories": [
+    {
+      "id": "pre-b1-s-unit-silent-radio",
+      "title": {
+        "nl": "De stille radio",
+        "en": "The silent radio",
+        "fa": "رادیوی خاموش"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Herinneringen",
+        "en": "Memories",
+        "fa": "خاطره‌ها"
+      },
+      "lines": [
+        {
+          "nl": "Toen haar grootvader verhuisde, kreeg Aya zijn oude radio.",
+          "en": "When her grandfather moved, Aya received his old radio.",
+          "fa": "وقتی پدربزرگ آیا اسباب‌کشی کرد، رادیوی قدیمی‌اش را به او داد."
+        },
+        {
+          "nl": "Ze herinnerde zich de muziek tijdens hun zondagse ontbijt.",
+          "en": "She remembered the music during their Sunday breakfasts.",
+          "fa": "موسیقی صبحانه‌های یکشنبه‌شان را به یاد می‌آورد."
+        },
+        {
+          "nl": "Thuis draaide ze aan de knop, maar ze hoorde niets.",
+          "en": "At home she turned the knob, but heard nothing.",
+          "fa": "در خانه پیچ رادیو را چرخاند، اما چیزی نشنید."
+        },
+        {
+          "nl": "Een nieuwe batterij hielp niet.",
+          "en": "A new battery did not help.",
+          "fa": "باتری تازه هم کمکی نکرد."
+        },
+        {
+          "nl": "Daarom nam ze de radio mee naar een herstelatelier.",
+          "en": "So she took the radio to a repair workshop.",
+          "fa": "برای همین رادیو را به کارگاه تعمیر برد."
+        },
+        {
+          "nl": "Vrijwilliger Luc ontdekte een los draadje.",
+          "en": "Volunteer Luc discovered a loose wire.",
+          "fa": "لوک، داوطلب کارگاه، سیمی شل پیدا کرد."
+        },
+        {
+          "nl": "Aya mocht kijken terwijl hij het voorzichtig vastmaakte.",
+          "en": "Aya could watch while he carefully secured it.",
+          "fa": "آیا اجازه داشت نگاه کند، درحالی‌که او بااحتیاط سیم را محکم می‌کرد."
+        },
+        {
+          "nl": "Plots klonk een lied dat ze meteen herkende.",
+          "en": "Suddenly a song played that she recognised immediately.",
+          "fa": "ناگهان آهنگی پخش شد که فوراً شناخت."
+        },
+        {
+          "nl": "Ze belde haar grootvader en hield de telefoon bij de radio.",
+          "en": "She called her grandfather and held the phone beside the radio.",
+          "fa": "به پدربزرگش زنگ زد و تلفن را کنار رادیو گرفت."
+        },
+        {
+          "nl": "Aan de andere kant begon hij zacht mee te zingen.",
+          "en": "At the other end he began to sing along softly.",
+          "fa": "آن‌سوی خط، او آهسته با آهنگ هم‌صدا شد."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Toen haar grootvader verhuisde, kreeg Aya zijn oude radio. Ze herinnerde zich de muziek tijdens hun zondagse ontbijt. Thuis draaide ze aan de knop, maar ze hoorde niets. Een nieuwe batterij hielp niet. Daarom nam ze de radio mee naar een herstelatelier.",
+          "en": "When her grandfather moved, Aya received his old radio. She remembered the music during their Sunday breakfasts. At home she turned the knob, but heard nothing. A new battery did not help. So she took the radio to a repair workshop.",
+          "fa": "وقتی پدربزرگ آیا اسباب‌کشی کرد، رادیوی قدیمی‌اش را به او داد. موسیقی صبحانه‌های یکشنبه‌شان را به یاد می‌آورد. در خانه پیچ رادیو را چرخاند، اما چیزی نشنید. باتری تازه هم کمکی نکرد. برای همین رادیو را به کارگاه تعمیر برد."
+        },
+        {
+          "nl": "Vrijwilliger Luc ontdekte een los draadje. Aya mocht kijken terwijl hij het voorzichtig vastmaakte. Plots klonk een lied dat ze meteen herkende. Ze belde haar grootvader en hield de telefoon bij de radio. Aan de andere kant begon hij zacht mee te zingen.",
+          "en": "Volunteer Luc discovered a loose wire. Aya could watch while he carefully secured it. Suddenly a song played that she recognised immediately. She called her grandfather and held the phone beside the radio. At the other end he began to sing along softly.",
+          "fa": "لوک، داوطلب کارگاه، سیمی شل پیدا کرد. آیا اجازه داشت نگاه کند، درحالی‌که او بااحتیاط سیم را محکم می‌کرد. ناگهان آهنگی پخش شد که فوراً شناخت. به پدربزرگش زنگ زد و تلفن را کنار رادیو گرفت. آن‌سوی خط، او آهسته با آهنگ هم‌صدا شد."
+        }
+      ],
+      "topic_id": "pre-b1-t-unit-silent-radio",
+      "vocabulary_ids": [
+        "pre-b1-unit-silent-radio-v1",
+        "pre-b1-unit-silent-radio-v2",
+        "pre-b1-unit-silent-radio-v3",
+        "pre-b1-unit-silent-radio-v4"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom is de radio belangrijk voor Aya?",
+          "en": "Why is the radio important to Aya?",
+          "fa": "چرا رادیو برای آیا مهم است؟"
+        },
+        "options": [
+          {
+            "nl": "Ze heeft hem net in een winkel gekocht.",
+            "en": "She has just bought it in a shop.",
+            "fa": "همین حالا آن را از فروشگاه خریده است."
+          },
+          {
+            "nl": "Hij herinnert haar aan ontbijt met haar grootvader.",
+            "en": "It reminds her of breakfast with her grandfather.",
+            "fa": "او را به یاد صبحانه با پدربزرگش می‌اندازد."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Ze herinnert zich hun zondagse muziek.",
+          "en": "She remembers their Sunday music.",
+          "fa": "موسیقی یکشنبه‌هایشان را به یاد دارد."
+        }
+      }
+    },
+    {
+      "id": "pre-b1-s-unit-sour-cherries",
+      "title": {
+        "nl": "De zure kersen",
+        "en": "The sour cherries",
+        "fa": "گیلاس‌های ترش"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Familie en verzoening",
+        "en": "Family and reconciliation",
+        "fa": "خانواده و آشتی"
+      },
+      "lines": [
+        {
+          "nl": "Na een ruzie hadden Sona en haar zus drie jaar niet met elkaar gesproken.",
+          "en": "After an argument, Sona and her sister had not spoken for three years.",
+          "fa": "سونا و خواهرش پس از دعوایی سه سال با هم حرف نزده بودند."
+        },
+        {
+          "nl": "Van hun moeder hoorde Sona dat haar zus naar Gent was verhuisd.",
+          "en": "Sona heard from their mother that her sister had moved to Ghent.",
+          "fa": "سونا از مادرشان شنید خواهرش به خنت نقل مکان کرده است."
+        },
+        {
+          "nl": "Ze wilde schrijven, maar vond geen goede eerste zin.",
+          "en": "She wanted to write, but could not find a good opening sentence.",
+          "fa": "می‌خواست نامه بنویسد، اما جملهٔ مناسبی برای شروع پیدا نمی‌کرد."
+        },
+        {
+          "nl": "Na drie pogingen lag haar tafel vol papier.",
+          "en": "After three attempts her table was covered in paper.",
+          "fa": "بعد از سه تلاش، میزش پر از کاغذ شده بود."
+        },
+        {
+          "nl": "Toen vond ze een foto waarop ze samen onder een kersenboom zaten.",
+          "en": "Then she found a photo of them sitting together under a cherry tree.",
+          "fa": "بعد عکسی پیدا کرد که در آن با هم زیر درخت گیلاس نشسته بودند."
+        },
+        {
+          "nl": "Op de achterkant schreef ze: Weet je nog hoe zuur de kersen waren?",
+          "en": "On the back she wrote: Do you remember how sour the cherries were?",
+          "fa": "پشت عکس نوشت: یادت هست گیلاس‌ها چقدر ترش بودند؟"
+        },
+        {
+          "nl": "Daaronder voegde ze toe: Het spijt me dat ik toen niet luisterde.",
+          "en": "Below that she added: I am sorry I did not listen then.",
+          "fa": "زیر آن اضافه کرد: متأسفم که آن‌وقت به حرفت گوش نکردم."
+        },
+        {
+          "nl": "Een week later kwam er een kaart uit Gent.",
+          "en": "A week later a card arrived from Ghent.",
+          "fa": "یک هفته بعد کارتی از خنت رسید."
+        },
+        {
+          "nl": "Haar zus schreef: De kersen waren zuur, maar we bleven lachen.",
+          "en": "Her sister wrote: The cherries were sour, but we kept laughing.",
+          "fa": "خواهرش نوشته بود: گیلاس‌ها ترش بودند، اما ما همچنان می‌خندیدیم."
+        },
+        {
+          "nl": "Onderaan stond een telefoonnummer; nog die avond belde Sona om bij te praten.",
+          "en": "There was a phone number at the bottom; Sona called that same evening to catch up.",
+          "fa": "پایین کارت شمارهٔ تلفنی بود؛ سونا همان شب زنگ زد تا از حال‌وروز هم باخبر شوند."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Na een ruzie hadden Sona en haar zus drie jaar niet met elkaar gesproken. Van hun moeder hoorde Sona dat haar zus naar Gent was verhuisd. Ze wilde schrijven, maar vond geen goede eerste zin. Na drie pogingen lag haar tafel vol papier. Toen vond ze een foto waarop ze samen onder een kersenboom zaten.",
+          "en": "After an argument, Sona and her sister had not spoken for three years. Sona heard from their mother that her sister had moved to Ghent. She wanted to write, but could not find a good opening sentence. After three attempts her table was covered in paper. Then she found a photo of them sitting together under a cherry tree.",
+          "fa": "سونا و خواهرش پس از دعوایی سه سال با هم حرف نزده بودند. سونا از مادرشان شنید خواهرش به خنت نقل مکان کرده است. می‌خواست نامه بنویسد، اما جملهٔ مناسبی برای شروع پیدا نمی‌کرد. بعد از سه تلاش، میزش پر از کاغذ شده بود. بعد عکسی پیدا کرد که در آن با هم زیر درخت گیلاس نشسته بودند."
+        },
+        {
+          "nl": "Op de achterkant schreef ze: Weet je nog hoe zuur de kersen waren? Daaronder voegde ze toe: Het spijt me dat ik toen niet luisterde. Een week later kwam er een kaart uit Gent. Haar zus schreef: De kersen waren zuur, maar we bleven lachen. Onderaan stond een telefoonnummer; nog die avond belde Sona om bij te praten.",
+          "en": "On the back she wrote: Do you remember how sour the cherries were? Below that she added: I am sorry I did not listen then. A week later a card arrived from Ghent. Her sister wrote: The cherries were sour, but we kept laughing. There was a phone number at the bottom; Sona called that same evening to catch up.",
+          "fa": "پشت عکس نوشت: یادت هست گیلاس‌ها چقدر ترش بودند؟ زیر آن اضافه کرد: متأسفم که آن‌وقت به حرفت گوش نکردم. یک هفته بعد کارتی از خنت رسید. خواهرش نوشته بود: گیلاس‌ها ترش بودند، اما ما همچنان می‌خندیدیم. پایین کارت شمارهٔ تلفنی بود؛ سونا همان شب زنگ زد تا از حال‌وروز هم باخبر شوند."
+        }
+      ],
+      "topic_id": "pre-b1-t-unit-sour-cherries",
+      "vocabulary_ids": [
+        "pre-b1-unit-sour-cherries-v1",
+        "pre-b1-unit-sour-cherries-v2",
+        "pre-b1-unit-sour-cherries-v3",
+        "pre-b1-unit-sour-cherries-v4"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat helpt Sona om te beginnen schrijven?",
+          "en": "What helps Sona start writing?",
+          "fa": "چه چیزی به سونا کمک می‌کند نوشتن را شروع کند؟"
+        },
+        "options": [
+          {
+            "nl": "Een officieel formulier.",
+            "en": "An official form.",
+            "fa": "فرمی رسمی."
+          },
+          {
+            "nl": "Een foto van een gedeelde herinnering.",
+            "en": "A photo of a shared memory.",
+            "fa": "عکسی از یک خاطرهٔ مشترک."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De foto onder de kersenboom geeft haar een eerste zin.",
+          "en": "The photo under the cherry tree gives her an opening sentence.",
+          "fa": "عکس زیر درخت گیلاس جملهٔ شروع را به ذهنش می‌آورد."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "pre-b1-t-unit-silent-radio",
+      "title": {
+        "nl": "De stille radio",
+        "en": "The silent radio",
+        "fa": "رادیوی خاموش"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Vertel een gebeurtenis in het verleden en bespreek een oplossing.",
+          "en": "Tell a past event and discuss a solution.",
+          "fa": "رویدادی در گذشته را تعریف کن و دربارهٔ راه‌حل گفت‌وگو کن."
+        }
+      ],
+      "language_focus": {
+        "nl": "Vertel een gebeurtenis in het verleden en bespreek een oplossing.",
+        "en": "Tell a past event and discuss a solution.",
+        "fa": "رویدادی در گذشته را تعریف کن و دربارهٔ راه‌حل گفت‌وگو کن."
+      },
+      "vocabulary_ids": [
+        "pre-b1-unit-silent-radio-v1",
+        "pre-b1-unit-silent-radio-v2",
+        "pre-b1-unit-silent-radio-v3",
+        "pre-b1-unit-silent-radio-v4"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Toen haar grootvader verhuisde, kreeg Aya zijn oude radio. Ze herinnerde zich de muziek tijdens hun zondagse ontbijt. Thuis draaide ze aan de knop, maar ze hoorde niets. Een nieuwe batterij hielp niet. Daarom nam ze de radio mee naar een herstelatelier.\n\nVrijwilliger Luc ontdekte een los draadje. Aya mocht kijken terwijl hij het voorzichtig vastmaakte. Plots klonk een lied dat ze meteen herkende. Ze belde haar grootvader en hield de telefoon bij de radio. Aan de andere kant begon hij zacht mee te zingen.",
+          "en": "When her grandfather moved, Aya received his old radio. She remembered the music during their Sunday breakfasts. At home she turned the knob, but heard nothing. A new battery did not help. So she took the radio to a repair workshop.\n\nVolunteer Luc discovered a loose wire. Aya could watch while he carefully secured it. Suddenly a song played that she recognised immediately. She called her grandfather and held the phone beside the radio. At the other end he began to sing along softly.",
+          "fa": "وقتی پدربزرگ آیا اسباب‌کشی کرد، رادیوی قدیمی‌اش را به او داد. موسیقی صبحانه‌های یکشنبه‌شان را به یاد می‌آورد. در خانه پیچ رادیو را چرخاند، اما چیزی نشنید. باتری تازه هم کمکی نکرد. برای همین رادیو را به کارگاه تعمیر برد.\n\nلوک، داوطلب کارگاه، سیمی شل پیدا کرد. آیا اجازه داشت نگاه کند، درحالی‌که او بااحتیاط سیم را محکم می‌کرد. ناگهان آهنگی پخش شد که فوراً شناخت. به پدربزرگش زنگ زد و تلفن را کنار رادیو گرفت. آن‌سوی خط، او آهسته با آهنگ هم‌صدا شد."
+        },
+        "questions": [
+          {
+            "id": "pre-b1-t-unit-silent-radio-r1",
+            "prompt": {
+              "nl": "Waarom is de radio belangrijk voor Aya?",
+              "en": "Why is the radio important to Aya?",
+              "fa": "چرا رادیو برای آیا مهم است؟"
+            },
+            "options": [
+              {
+                "nl": "Ze heeft hem net in een winkel gekocht.",
+                "en": "She has just bought it in a shop.",
+                "fa": "همین حالا آن را از فروشگاه خریده است."
+              },
+              {
+                "nl": "Hij herinnert haar aan ontbijt met haar grootvader.",
+                "en": "It reminds her of breakfast with her grandfather.",
+                "fa": "او را به یاد صبحانه با پدربزرگش می‌اندازد."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Ze herinnert zich hun zondagse muziek.",
+              "en": "She remembers their Sunday music.",
+              "fa": "موسیقی یکشنبه‌هایشان را به یاد دارد."
+            }
+          },
+          {
+            "id": "pre-b1-t-unit-silent-radio-r2",
+            "prompt": {
+              "nl": "Wat herstelt Luc eerst?",
+              "en": "What does Luc repair first?",
+              "fa": "لوک ابتدا چه چیزی را تعمیر می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Een los draadje.",
+                "en": "A loose wire.",
+                "fa": "سیمی شل."
+              },
+              {
+                "nl": "Een gebroken knop.",
+                "en": "A broken knob.",
+                "fa": "پیچی شکسته."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Hij maakt het draadje vast.",
+              "en": "He secures the wire.",
+              "fa": "سیم را محکم می‌کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Aya, met Luc. Het draadje zit nu goed vast, maar de luidspreker kraakt. Je kunt de radio vandaag ophalen of hem tot vrijdag hier laten voor een tweede controle. Die controle is gratis.",
+          "en": "Aya, Luc here. The wire is secure now, but the speaker crackles. You can collect the radio today or leave it here until Friday for a second check. That check is free.",
+          "fa": "آیا، لوک هستم. سیم حالا محکم است، اما بلندگو خش‌خش می‌کند. می‌توانی رادیو را امروز تحویل بگیری یا تا جمعه برای بررسی دوم اینجا بگذاری. این بررسی رایگان است."
+        },
+        "questions": [
+          {
+            "id": "pre-b1-t-unit-silent-radio-l1",
+            "prompt": {
+              "nl": "Welk probleem blijft er nog?",
+              "en": "What problem remains?",
+              "fa": "چه مشکلی هنوز باقی است؟"
+            },
+            "options": [
+              {
+                "nl": "De batterij ontbreekt.",
+                "en": "The battery is missing.",
+                "fa": "باتری وجود ندارد."
+              },
+              {
+                "nl": "De luidspreker kraakt.",
+                "en": "The speaker crackles.",
+                "fa": "بلندگو خش‌خش می‌کند."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Luc hoort gekraak in de luidspreker.",
+              "en": "Luc hears crackling in the speaker.",
+              "fa": "لوک از بلندگو خش‌خش می‌شنود."
+            }
+          },
+          {
+            "id": "pre-b1-t-unit-silent-radio-l2",
+            "prompt": {
+              "nl": "Tot wanneer kan de radio voor controle blijven?",
+              "en": "Until when can the radio stay for a check?",
+              "fa": "رادیو برای بررسی تا چه روزی می‌تواند بماند؟"
+            },
+            "options": [
+              {
+                "nl": "Tot vrijdag.",
+                "en": "Until Friday.",
+                "fa": "تا جمعه."
+              },
+              {
+                "nl": "Tot maandag.",
+                "en": "Until Monday.",
+                "fa": "تا دوشنبه."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Luc biedt een controle tegen vrijdag aan.",
+              "en": "Luc offers a check by Friday.",
+              "fa": "لوک بررسی تا جمعه را پیشنهاد می‌کند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Leg aan je grootvader uit wat er met de radio gebeurd is. Bespreek of je op de tweede controle wilt wachten.",
+          "en": "Explain to your grandfather what happened to the radio. Discuss whether you want to wait for the second check.",
+          "fa": "به پدربزرگت توضیح بده چه اتفاقی برای رادیو افتاده است. دربارهٔ منتظر ماندن برای بررسی دوم صحبت کن."
+        },
+        "sample": {
+          "nl": "Luc heeft het draadje vastgemaakt. De radio speelt weer, maar de luidspreker kraakt nog. Ik wil tot vrijdag wachten op de gratis controle. Dan weten we beter of het probleem opgelost is.",
+          "en": "Luc has secured the wire. The radio plays again, but the speaker still crackles. I want to wait until Friday for the free check. Then we will know better whether the problem is solved.",
+          "fa": "لوک سیم را محکم کرده است. رادیو دوباره کار می‌کند، اما بلندگو هنوز خش‌خش می‌کند. می‌خواهم تا جمعه منتظر بررسی رایگان بمانم. آن‌وقت بهتر می‌فهمیم مشکل حل شده یا نه."
+        },
+        "min_words": 25,
+        "max_words": 90,
+        "criteria": [
+          {
+            "nl": "Leg uit wat is hersteld en wat nog kraakt.",
+            "en": "Explain what was repaired and what still crackles.",
+            "fa": "بگو چه چیزی تعمیر شده و چه چیزی هنوز خش‌خش می‌کند."
+          },
+          {
+            "nl": "Bespreek de keuze om tot vrijdag te wachten.",
+            "en": "Discuss the choice to wait until Friday.",
+            "fa": "دربارهٔ انتخاب منتظر ماندن تا جمعه صحبت کن."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf Luc terug. Kies ophalen of wachten en geef een reden op basis van zijn bericht.",
+          "en": "Write back to Luc. Choose collection or waiting and give a reason based on his message.",
+          "fa": "به لوک پاسخ بده. تحویل گرفتن یا منتظر ماندن را انتخاب کن و بر اساس پیامش دلیل بیاور."
+        },
+        "sample": {
+          "nl": "Dag Luc, bedankt voor de herstelling. Ik laat de radio graag tot vrijdag bij jullie, want de luidspreker kraakt nog. Het is een cadeau van mijn grootvader en ik wil hem blijven gebruiken. Laat je weten wanneer de tweede controle klaar is? Vriendelijke groeten, Aya.",
+          "en": "Hello, Luc, thank you for the repair. I would like to leave the radio with you until Friday because the speaker still crackles. It is a gift from my grandfather and I want to keep using it. Will you let me know when the second check is finished? Kind regards, Aya.",
+          "fa": "سلام لوک، از تعمیرت ممنونم. ترجیح می‌دهم رادیو تا جمعه پیش شما بماند، چون بلندگو هنوز خش‌خش می‌کند. هدیهٔ پدربزرگم است و می‌خواهم همچنان از آن استفاده کنم. خبر می‌دهی بررسی دوم چه زمانی تمام می‌شود؟ با احترام، آیا."
+        },
+        "min_words": 25,
+        "max_words": 90,
+        "criteria": [
+          {
+            "nl": "Kies ophalen of wachten.",
+            "en": "Choose collection or waiting.",
+            "fa": "تحویل گرفتن یا منتظر ماندن را انتخاب کن."
+          },
+          {
+            "nl": "Geef een reden uit Lucs bericht.",
+            "en": "Give a reason from Luc’s message.",
+            "fa": "از پیام لوک دلیلی بیاور."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pre-b1-t-unit-sour-cherries",
+      "title": {
+        "nl": "De zure kersen",
+        "en": "The sour cherries",
+        "fa": "گیلاس‌های ترش"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Vertel een herinnering en reageer met respect op een persoonlijke wens.",
+          "en": "Tell a memory and respond respectfully to a personal wish.",
+          "fa": "خاطره‌ای تعریف کن و با احترام به خواستهٔ شخصی دیگری پاسخ بده."
+        }
+      ],
+      "language_focus": {
+        "nl": "Vertel een herinnering en reageer met respect op een persoonlijke wens.",
+        "en": "Tell a memory and respond respectfully to a personal wish.",
+        "fa": "خاطره‌ای تعریف کن و با احترام به خواستهٔ شخصی دیگری پاسخ بده."
+      },
+      "vocabulary_ids": [
+        "pre-b1-unit-sour-cherries-v1",
+        "pre-b1-unit-sour-cherries-v2",
+        "pre-b1-unit-sour-cherries-v3",
+        "pre-b1-unit-sour-cherries-v4"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Na een ruzie hadden Sona en haar zus drie jaar niet met elkaar gesproken. Van hun moeder hoorde Sona dat haar zus naar Gent was verhuisd. Ze wilde schrijven, maar vond geen goede eerste zin. Na drie pogingen lag haar tafel vol papier. Toen vond ze een foto waarop ze samen onder een kersenboom zaten.\n\nOp de achterkant schreef ze: Weet je nog hoe zuur de kersen waren? Daaronder voegde ze toe: Het spijt me dat ik toen niet luisterde. Een week later kwam er een kaart uit Gent. Haar zus schreef: De kersen waren zuur, maar we bleven lachen. Onderaan stond een telefoonnummer; nog die avond belde Sona om bij te praten.",
+          "en": "After an argument, Sona and her sister had not spoken for three years. Sona heard from their mother that her sister had moved to Ghent. She wanted to write, but could not find a good opening sentence. After three attempts her table was covered in paper. Then she found a photo of them sitting together under a cherry tree.\n\nOn the back she wrote: Do you remember how sour the cherries were? Below that she added: I am sorry I did not listen then. A week later a card arrived from Ghent. Her sister wrote: The cherries were sour, but we kept laughing. There was a phone number at the bottom; Sona called that same evening to catch up.",
+          "fa": "سونا و خواهرش پس از دعوایی سه سال با هم حرف نزده بودند. سونا از مادرشان شنید خواهرش به خنت نقل مکان کرده است. می‌خواست نامه بنویسد، اما جملهٔ مناسبی برای شروع پیدا نمی‌کرد. بعد از سه تلاش، میزش پر از کاغذ شده بود. بعد عکسی پیدا کرد که در آن با هم زیر درخت گیلاس نشسته بودند.\n\nپشت عکس نوشت: یادت هست گیلاس‌ها چقدر ترش بودند؟ زیر آن اضافه کرد: متأسفم که آن‌وقت به حرفت گوش نکردم. یک هفته بعد کارتی از خنت رسید. خواهرش نوشته بود: گیلاس‌ها ترش بودند، اما ما همچنان می‌خندیدیم. پایین کارت شمارهٔ تلفنی بود؛ سونا همان شب زنگ زد تا از حال‌وروز هم باخبر شوند."
+        },
+        "questions": [
+          {
+            "id": "pre-b1-t-unit-sour-cherries-r1",
+            "prompt": {
+              "nl": "Wat helpt Sona om te beginnen schrijven?",
+              "en": "What helps Sona start writing?",
+              "fa": "چه چیزی به سونا کمک می‌کند نوشتن را شروع کند؟"
+            },
+            "options": [
+              {
+                "nl": "Een officieel formulier.",
+                "en": "An official form.",
+                "fa": "فرمی رسمی."
+              },
+              {
+                "nl": "Een foto van een gedeelde herinnering.",
+                "en": "A photo of a shared memory.",
+                "fa": "عکسی از یک خاطرهٔ مشترک."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De foto onder de kersenboom geeft haar een eerste zin.",
+              "en": "The photo under the cherry tree gives her an opening sentence.",
+              "fa": "عکس زیر درخت گیلاس جملهٔ شروع را به ذهنش می‌آورد."
+            }
+          },
+          {
+            "id": "pre-b1-t-unit-sour-cherries-r2",
+            "prompt": {
+              "nl": "Waarom is het antwoord meer dan alleen een herinnering aan fruit?",
+              "en": "Why is the reply more than just a memory about fruit?",
+              "fa": "چرا پاسخ فقط خاطره‌ای دربارهٔ میوه نیست؟"
+            },
+            "options": [
+              {
+                "nl": "Haar zus deelt de herinnering en geeft een telefoonnummer.",
+                "en": "Her sister shares the memory and gives a phone number.",
+                "fa": "خواهرش در خاطره شریک می‌شود و شمارهٔ تلفن می‌دهد."
+              },
+              {
+                "nl": "Haar zus vraagt om kersen te kopen.",
+                "en": "Her sister asks her to buy cherries.",
+                "fa": "خواهرش می‌خواهد گیلاس بخرد."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De gedeelde herinnering en het nummer openen opnieuw contact.",
+              "en": "The shared memory and the number reopen contact.",
+              "fa": "خاطرهٔ مشترک و شمارهٔ تلفن راه ارتباط دوباره را باز می‌کنند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Sona, ik vond ons gesprek fijn. Vrijdagavond kan ik niet opnieuw bellen. Kan het zondag om tien uur in de voormiddag? Ik wil eerst gewoon wat bijpraten. Over de ruzie praten we later, als we er allebei klaar voor zijn.",
+          "en": "Hi Sona, I enjoyed our conversation. I cannot call again on Friday evening. Could we call on Sunday at ten in the morning? I would first like to catch up a little. We can talk about the argument later, when we are both ready.",
+          "fa": "سلام سونا، از گفت‌وگویمان خوشحال شدم. جمعه‌شب نمی‌توانم دوباره تلفنی حرف بزنم. یکشنبه ساعت ده صبح می‌شود؟ اول دوست دارم فقط کمی از حال‌وروز هم باخبر شویم. دربارهٔ دعوا بعداً حرف می‌زنیم، وقتی هر دو آماده باشیم."
+        },
+        "questions": [
+          {
+            "id": "pre-b1-t-unit-sour-cherries-l1",
+            "prompt": {
+              "nl": "Wanneer stelt haar zus het volgende gesprek voor?",
+              "en": "When does her sister propose the next conversation?",
+              "fa": "خواهرش چه زمانی را برای گفت‌وگوی بعدی پیشنهاد می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Vrijdag om tien uur in de avond.",
+                "en": "Friday at ten in the evening.",
+                "fa": "جمعه ساعت ده شب."
+              },
+              {
+                "nl": "Zondag om tien uur in de voormiddag.",
+                "en": "Sunday at ten in the morning.",
+                "fa": "یکشنبه ساعت ده صبح."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Vrijdag kan niet; het voorstel is zondagvoormiddag.",
+              "en": "Friday is not possible; the proposal is Sunday morning.",
+              "fa": "جمعه نمی‌شود؛ پیشنهاد برای یکشنبه صبح است."
+            }
+          },
+          {
+            "id": "pre-b1-t-unit-sour-cherries-l2",
+            "prompt": {
+              "nl": "Wat wil haar zus eerst bespreken?",
+              "en": "What does her sister want to discuss first?",
+              "fa": "خواهرش ابتدا می‌خواهد دربارهٔ چه چیزی صحبت کند؟"
+            },
+            "options": [
+              {
+                "nl": "Hoe het nu met hen gaat.",
+                "en": "How they are doing now.",
+                "fa": "اینکه این روزها حال‌وروزشان چطور است."
+              },
+              {
+                "nl": "Alle details van de oude ruzie.",
+                "en": "Every detail of the old argument.",
+                "fa": "همهٔ جزئیات دعوای قدیمی."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Ze wil eerst bijpraten en de ruzie pas later bespreken.",
+              "en": "She wants to catch up first and discuss the argument later.",
+              "fa": "می‌خواهد اول از حال‌وروز هم باخبر شوند و بعداً دربارهٔ دعوا حرف بزنند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Reageer op je zus. Bevestig het voorgestelde moment, respecteer haar wens en stel een eenvoudige vraag over haar nieuwe leven.",
+          "en": "Respond to your sister. Confirm the proposed time, respect her wish and ask a simple question about her new life.",
+          "fa": "به خواهرت پاسخ بده. زمان پیشنهادی را تأیید کن، به خواسته‌اش احترام بگذار و سؤال ساده‌ای دربارهٔ زندگی تازه‌اش بپرس."
+        },
+        "sample": {
+          "nl": "Zondag om tien uur past voor mij. We hoeven de ruzie niet meteen te bespreken. Ik wil ook graag rustig bijpraten. Hoe bevalt je nieuwe woning in Gent? Heb je al een fijne plek in de buurt ontdekt?",
+          "en": "Sunday at ten works for me. We do not need to discuss the argument straight away. I would like to catch up calmly too. How do you like your new home in Ghent? Have you already discovered a nice place nearby?",
+          "fa": "یکشنبه ساعت ده برای من مناسب است. لازم نیست فوراً دربارهٔ دعوا حرف بزنیم. من هم دوست دارم با آرامش از حال‌وروز هم باخبر شویم. خانهٔ تازه‌ات در خنت چطور است؟ جای خوبی در اطراف پیدا کرده‌ای؟"
+        },
+        "min_words": 25,
+        "max_words": 90,
+        "criteria": [
+          {
+            "nl": "Bevestig zondag om tien uur in de voormiddag voor het telefoongesprek.",
+            "en": "Confirm Sunday at ten in the morning for the telephone conversation.",
+            "fa": "یکشنبه ساعت ده صبح را برای گفت‌وگوی تلفنی تأیید کن."
+          },
+          {
+            "nl": "Respecteer dat de ruzie later besproken wordt en vraag eerst iets over haar nieuwe leven.",
+            "en": "Respect that the argument will be discussed later and first ask something about her new life.",
+            "fa": "به صحبت دربارهٔ دعوا در زمانی دیگر احترام بگذار و ابتدا دربارهٔ زندگی تازه‌اش چیزی بپرس."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf je zus een antwoord. Bevestig de tijd, leg uit dat je haar niet onder druk wilt zetten en vraag iets over Gent.",
+          "en": "Write your sister a reply. Confirm the time, explain that you do not want to pressure her and ask something about Ghent.",
+          "fa": "برای خواهرت پاسخ بنویس. زمان را تأیید کن، توضیح بده نمی‌خواهی به او فشار بیاوری و چیزی دربارهٔ خنت بپرس."
+        },
+        "sample": {
+          "nl": "Dag zus, zondag om tien uur in de voormiddag past goed. Ik vond ons eerste gesprek ook fijn. We hoeven niet alles tegelijk op te lossen en ik wil je niet onder druk zetten. Vertel me zondag gerust over je nieuwe buurt. Wat vind je tot nu toe het fijnst aan Gent? Tot zondag, Sona.",
+          "en": "Dear sister, Sunday at ten in the morning works well. I enjoyed our first conversation too. We do not need to solve everything at once and I do not want to pressure you. Please tell me about your new neighbourhood on Sunday. What have you liked most about Ghent so far? See you on Sunday, Sona.",
+          "fa": "خواهر عزیزم، یکشنبه ساعت ده صبح خوب است. من هم از اولین گفت‌وگویمان خوشحال شدم. لازم نیست همه‌چیز را یک‌باره حل کنیم و نمی‌خواهم به تو فشار بیاورم. یکشنبه از محلهٔ تازه‌ات برایم بگو. تا حالا چه چیزی را در خنت بیشتر از همه دوست داشته‌ای؟ تا یکشنبه، سونا."
+        },
+        "min_words": 25,
+        "max_words": 90,
+        "criteria": [
+          {
+            "nl": "Bevestig zondag om tien uur in de voormiddag.",
+            "en": "Confirm Sunday at ten in the morning.",
+            "fa": "یکشنبه ساعت ده صبح را تأیید کن."
+          },
+          {
+            "nl": "Zeg dat je geen druk wilt zetten en stel een vraag over Gent of haar nieuwe buurt.",
+            "en": "Say that you do not want to pressure her and ask a question about Ghent or her new neighbourhood.",
+            "fa": "بگو نمی‌خواهی به او فشار بیاوری و دربارهٔ خنت یا محلهٔ تازه‌اش سؤالی بپرس."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

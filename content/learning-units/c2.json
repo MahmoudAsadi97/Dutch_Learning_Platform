@@ -1,0 +1,898 @@
+{
+  "schema_version": 1,
+  "stage_id": "c2",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "c2-unit-number-for-yesterday-v1",
+      "term": "veralgemenen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een afzonderlijk geval als regel voor een geheel behandelen.",
+        "en": "Treat a particular case as a rule for a whole.",
+        "fa": "مورد خاص را حکم کل دانستن؛ تعمیم دادن."
+      },
+      "example": {
+        "nl": "Met altijd veralgemeent zij haar bezwaar.",
+        "en": "By saying always, she generalises her objection.",
+        "fa": "با همیشه اعتراضش را تعمیم می‌دهد."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "c2-unit-number-for-yesterday-v2",
+      "term": "relativeren",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De absolute kracht van een uitspraak of oordeel verminderen.",
+        "en": "Reduce the absolute force of a statement or judgment.",
+        "fa": "قطعیت گفته یا قضاوت را کاهش دادن."
+      },
+      "example": {
+        "nl": "Een uitleg mag de excuses niet meteen relativeren.",
+        "en": "An explanation should not immediately qualify the apology.",
+        "fa": "توضیح نباید فوراً عذرخواهی را کم‌رنگ کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "c2-unit-number-for-yesterday-v3",
+      "term": "de stelligheid",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De mate waarin iets zonder voorbehoud wordt gesteld.",
+        "en": "The degree to which something is asserted without qualification.",
+        "fa": "میزان بی‌قیدوشرط بودن ادعا؛ قطعیت."
+      },
+      "example": {
+        "nl": "De stelligheid van altijd sluit uitzonderingen uit.",
+        "en": "The categorical force of always excludes exceptions.",
+        "fa": "قطعیت همیشه استثنا را کنار می‌گذارد."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "c2-unit-number-for-yesterday-v4",
+      "term": "afgebakend",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Duidelijk begrensd in onderwerp of omvang.",
+        "en": "Clearly limited in subject or scope.",
+        "fa": "با موضوع یا دامنه روشن و محدود."
+      },
+      "example": {
+        "nl": "Hij vraagt om een afgebakend gesprek.",
+        "en": "He asks for a focused conversation.",
+        "fa": "گفت‌وگویی با موضوع محدود می‌خواهد."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "c2-unit-number-for-yesterday-v5",
+      "term": "louter",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Alleen maar, zonder iets anders erbij.",
+        "en": "Merely, with nothing else involved.",
+        "fa": "صرفاً، فقط."
+      },
+      "example": {
+        "nl": "Het loket is niet louter een decor.",
+        "en": "The counter is not merely a setting.",
+        "fa": "پیشخوان صرفاً دکور نیست."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "c2-unit-number-for-yesterday-v6",
+      "term": "met terugwerkende kracht",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zo dat een latere handeling ook voor het verleden geldt.",
+        "en": "So that a later action also applies to the past.",
+        "fa": "به‌گونه‌ای که عمل بعدی به گذشته هم اعمال شود."
+      },
+      "example": {
+        "nl": "Een bedoeling verandert woorden niet met terugwerkende kracht.",
+        "en": "An intention does not change words retroactively.",
+        "fa": "نیت واژه‌ها را با اثر گذشته عوض نمی‌کند."
+      },
+      "part_of_speech": "expression"
+    },
+    {
+      "id": "c2-unit-farewell-future-tense-v1",
+      "term": "overbruggen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een afstand of periode hanteerbaar maken.",
+        "en": "Make a distance or period manageable.",
+        "fa": "فاصله یا دوره را قابل تحمل و مدیریت کردن."
+      },
+      "example": {
+        "nl": "Ze weten nog niet hoe ze de afstand zullen overbruggen.",
+        "en": "They do not yet know how they will bridge the distance.",
+        "fa": "هنوز نمی‌دانند فاصله را چگونه مدیریت خواهند کرد."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "c2-unit-farewell-future-tense-v2",
+      "term": "toedichten",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een betekenis of eigenschap aan iets toekennen, soms zonder voldoende grond.",
+        "en": "Attribute a meaning or quality to something, sometimes without sufficient grounds.",
+        "fa": "معنا یا ویژگی‌ای را گاه بی‌دلیل کافی به چیزی نسبت دادن."
+      },
+      "example": {
+        "nl": "Hij wil de sleutel geen belofte toedichten.",
+        "en": "He does not want to attribute a promise to the key.",
+        "fa": "نمی‌خواهد به کلید معنای قول نسبت دهد."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "c2-unit-farewell-future-tense-v3",
+      "term": "de voorlopigheid",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Het nog niet definitieve karakter van iets.",
+        "en": "The not-yet-final character of something.",
+        "fa": "ویژگی هنوز نهایی نبودن؛ موقتی بودن."
+      },
+      "example": {
+        "nl": "Hij erkent de voorlopigheid van de duur.",
+        "en": "He acknowledges the provisional nature of the duration.",
+        "fa": "موقتی بودن مدت را می‌پذیرد."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "c2-unit-farewell-future-tense-v4",
+      "term": "omzichtig",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Voorzichtig en met aandacht voor gevoeligheden.",
+        "en": "Cautious and attentive to sensitivities.",
+        "fa": "محتاط و حساس به ظرافت‌ها."
+      },
+      "example": {
+        "nl": "Ze formuleert haar verwachting omzichtig.",
+        "en": "She phrases her expectation cautiously.",
+        "fa": "انتظارش را محتاطانه بیان می‌کند."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "c2-unit-farewell-future-tense-v5",
+      "term": "ondertussen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "In de tijd tussen twee gebeurtenissen.",
+        "en": "In the time between two events.",
+        "fa": "در فاصله دو رویداد؛ در این میان."
+      },
+      "example": {
+        "nl": "Ondertussen heeft hij de plant water gegeven.",
+        "en": "Meanwhile, he has watered the plant.",
+        "fa": "در این میان به گیاه آب داده است."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "c2-unit-farewell-future-tense-v6",
+      "term": "onder geen beding",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "In geen enkele omstandigheid.",
+        "en": "Under no circumstances.",
+        "fa": "تحت هیچ شرایطی."
+      },
+      "example": {
+        "nl": "De planten mogen onder geen beding verdrogen.",
+        "en": "Under no circumstances may the plants dry out.",
+        "fa": "گیاهان تحت هیچ شرایطی نباید خشک شوند."
+      },
+      "part_of_speech": "expression"
+    }
+  ],
+  "stories": [
+    {
+      "id": "c2-s-unit-number-for-yesterday",
+      "title": {
+        "nl": "Een nummer voor gisteren",
+        "en": "A number for yesterday",
+        "fa": "نوبتی برای دیروز"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een magisch-realistische miniatuur",
+        "en": "A magical-realist miniature",
+        "fa": "داستان کوتاه واقع‌گرایی جادویی"
+      },
+      "lines": [
+        {
+          "nl": "In een verzonnen Belgisch stadje trok Lea aan het loket een volgnummer waarop niet een cijfer, maar gisteren stond.",
+          "en": "In an imaginary Belgian town, Lea took a queue ticket bearing not a number but the word yesterday.",
+          "fa": "در شهرکی خیالی در بلژیک، لیا نوبتی از دستگاه گرفت که رویش نه عدد، بلکه دیروز نوشته بود."
+        },
+        {
+          "nl": "Ze wilde het terugleggen, maar de bediende zei dat juist dit soort aanvragen doorgaans het langst bleef liggen.",
+          "en": "She wanted to put it back, but the clerk said that precisely this kind of request usually remained pending longest.",
+          "fa": "می‌خواست برگه را برگرداند، اما کارمند گفت اتفاقاً این نوع درخواست معمولاً بیشتر از همه معطل می‌ماند."
+        },
+        {
+          "nl": "Lea vroeg of een gemiste verontschuldiging alsnog kon worden ingediend, mits ze de juiste datum en het juiste adres kende.",
+          "en": "Lea asked whether a missed apology could still be submitted, provided she knew the correct date and address.",
+          "fa": "لیا پرسید آیا می‌شود عذرخواهی ازدست‌رفته را هنوز ثبت کرد، به شرط آنکه تاریخ و نشانی درست را بداند."
+        },
+        {
+          "nl": "De bediende schoof een formulier naar haar toe met slechts twee vakken: wat u gezegd hebt en wat u bedoelde.",
+          "en": "The clerk slid a form towards her with only two boxes: what you said and what you meant.",
+          "fa": "کارمند فرمی با تنها دو خانه جلو گذاشت: آنچه گفتید و آنچه منظورتان بود."
+        },
+        {
+          "nl": "In het eerste vak schreef ze dat haar broer altijd alles overdreef; voor het tweede vroeg ze een nieuw vel.",
+          "en": "In the first box she wrote that her brother always exaggerated everything; for the second she asked for another sheet.",
+          "fa": "در خانه اول نوشت برادرش همیشه همه چیز را بزرگ می‌کند؛ برای خانه دوم برگی دیگر خواست."
+        },
+        {
+          "nl": "Niet omdat het papier te klein was, merkte ze, maar omdat haar uitleg steeds opnieuw een verdediging van de eerste zin werd.",
+          "en": "Not because the paper was too small, she realised, but because her explanation kept becoming a defence of the first sentence.",
+          "fa": "فهمید نه چون کاغذ کوچک بود، بلکه چون توضیحش بارها به دفاع از جمله اول تبدیل می‌شد."
+        },
+        {
+          "nl": "De bediende wees op een lege envelop en zei dat bedoelingen helaas niet met terugwerkende kracht werden bezorgd.",
+          "en": "The clerk pointed to an empty envelope and said that intentions unfortunately could not be delivered retroactively.",
+          "fa": "کارمند به پاکت خالی اشاره کرد و گفت متأسفانه نیت‌ها را نمی‌شود با اثر گذشته تحویل داد."
+        },
+        {
+          "nl": "Lea vouwde het formulier dicht, verliet het gebouw en belde haar broer zonder vooraf het tweede vak af te maken.",
+          "en": "Lea folded the form, left the building and called her brother without first finishing the second box.",
+          "fa": "لیا فرم را تا کرد، بیرون رفت و بدون کامل کردن خانه دوم به برادرش زنگ زد."
+        },
+        {
+          "nl": "Ze zei niet wat ze eigenlijk had willen zeggen, maar dat het haar speet wat ze werkelijk had gezegd.",
+          "en": "She did not say what she had actually wanted to say, but that she was sorry for what she had really said.",
+          "fa": "نگفت در اصل چه می‌خواسته بگوید؛ گفت از آنچه واقعاً گفته متأسف است."
+        },
+        {
+          "nl": "Toen ze later het volgnummer terugvond, stond er vandaag; ze kon zich niet herinneren het woord te hebben veranderd.",
+          "en": "When she later found the ticket again, it said today; she could not remember changing the word.",
+          "fa": "وقتی بعداً برگه نوبت را یافت، نوشته بود امروز؛ یادش نمی‌آمد واژه را عوض کرده باشد."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "In een verzonnen Belgisch stadje trok Lea aan het loket een volgnummer waarop niet een cijfer, maar gisteren stond. Ze wilde het terugleggen, maar de bediende zei dat juist dit soort aanvragen doorgaans het langst bleef liggen. Lea vroeg of een gemiste verontschuldiging alsnog kon worden ingediend, mits ze de juiste datum en het juiste adres kende. De bediende schoof een formulier naar haar toe met slechts twee vakken: wat u gezegd hebt en wat u bedoelde. In het eerste vak schreef ze dat haar broer altijd alles overdreef; voor het tweede vroeg ze een nieuw vel.",
+          "en": "In an imaginary Belgian town, Lea took a queue ticket bearing not a number but the word yesterday. She wanted to put it back, but the clerk said that precisely this kind of request usually remained pending longest. Lea asked whether a missed apology could still be submitted, provided she knew the correct date and address. The clerk slid a form towards her with only two boxes: what you said and what you meant. In the first box she wrote that her brother always exaggerated everything; for the second she asked for another sheet.",
+          "fa": "در شهرکی خیالی در بلژیک، لیا نوبتی از دستگاه گرفت که رویش نه عدد، بلکه دیروز نوشته بود. می‌خواست برگه را برگرداند، اما کارمند گفت اتفاقاً این نوع درخواست معمولاً بیشتر از همه معطل می‌ماند. لیا پرسید آیا می‌شود عذرخواهی ازدست‌رفته را هنوز ثبت کرد، به شرط آنکه تاریخ و نشانی درست را بداند. کارمند فرمی با تنها دو خانه جلو گذاشت: آنچه گفتید و آنچه منظورتان بود. در خانه اول نوشت برادرش همیشه همه چیز را بزرگ می‌کند؛ برای خانه دوم برگی دیگر خواست."
+        },
+        {
+          "nl": "Niet omdat het papier te klein was, merkte ze, maar omdat haar uitleg steeds opnieuw een verdediging van de eerste zin werd. De bediende wees op een lege envelop en zei dat bedoelingen helaas niet met terugwerkende kracht werden bezorgd. Lea vouwde het formulier dicht, verliet het gebouw en belde haar broer zonder vooraf het tweede vak af te maken. Ze zei niet wat ze eigenlijk had willen zeggen, maar dat het haar speet wat ze werkelijk had gezegd. Toen ze later het volgnummer terugvond, stond er vandaag; ze kon zich niet herinneren het woord te hebben veranderd.",
+          "en": "Not because the paper was too small, she realised, but because her explanation kept becoming a defence of the first sentence. The clerk pointed to an empty envelope and said that intentions unfortunately could not be delivered retroactively. Lea folded the form, left the building and called her brother without first finishing the second box. She did not say what she had actually wanted to say, but that she was sorry for what she had really said. When she later found the ticket again, it said today; she could not remember changing the word.",
+          "fa": "فهمید نه چون کاغذ کوچک بود، بلکه چون توضیحش بارها به دفاع از جمله اول تبدیل می‌شد. کارمند به پاکت خالی اشاره کرد و گفت متأسفانه نیت‌ها را نمی‌شود با اثر گذشته تحویل داد. لیا فرم را تا کرد، بیرون رفت و بدون کامل کردن خانه دوم به برادرش زنگ زد. نگفت در اصل چه می‌خواسته بگوید؛ گفت از آنچه واقعاً گفته متأسف است. وقتی بعداً برگه نوبت را یافت، نوشته بود امروز؛ یادش نمی‌آمد واژه را عوض کرده باشد."
+        }
+      ],
+      "topic_id": "c2-t-unit-number-for-yesterday",
+      "vocabulary_ids": [
+        "c2-unit-number-for-yesterday-v1",
+        "c2-unit-number-for-yesterday-v2",
+        "c2-unit-number-for-yesterday-v3",
+        "c2-unit-number-for-yesterday-v4",
+        "c2-unit-number-for-yesterday-v5",
+        "c2-unit-number-for-yesterday-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Welke spanning maakt het tweede vak moeilijk in te vullen?",
+          "en": "What tension makes the second box difficult to complete?",
+          "fa": "کدام کشمکش پر کردن خانه دوم را دشوار می‌کند؟"
+        },
+        "options": [
+          {
+            "nl": "Ze herinnert zich de woorden van de eerste zin niet.",
+            "en": "She cannot remember the words of the first sentence.",
+            "fa": "واژه‌های جمله اول را به یاد نمی‌آورد."
+          },
+          {
+            "nl": "Haar uitleg dreigt het uitgesproken verwijt te rechtvaardigen in plaats van verantwoordelijkheid te nemen.",
+            "en": "Her explanation risks justifying the accusation instead of taking responsibility.",
+            "fa": "توضیحش ممکن است به‌جای پذیرش مسئولیت، سرزنش گفته‌شده را توجیه کند."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Ze kent de eerste zin; het probleem is de verdedigende functie van haar toelichting.",
+          "en": "She knows the first sentence; the problem is the defensive function of her explanation.",
+          "fa": "جمله اول را می‌داند؛ مشکل نقش دفاعی توضیح اوست."
+        }
+      }
+    },
+    {
+      "id": "c2-s-unit-farewell-future-tense",
+      "title": {
+        "nl": "Een afscheid in de toekomstige tijd",
+        "en": "A farewell in the future tense",
+        "fa": "خداحافظی در زمان آینده"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een romance met een open einde",
+        "en": "An open-ended romance",
+        "fa": "عاشقانه‌ای با پایان باز"
+      },
+      "lines": [
+        {
+          "nl": "In de week vóór haar vertrek naar een kunstenaarsverblijf in Lyon spraken Maja en Bram bijna uitsluitend in de toekomstige tijd.",
+          "en": "In the week before her departure for an artists' residency in Lyon, Maja and Bram spoke almost exclusively in the future tense.",
+          "fa": "در هفته پیش از رفتن ماژا به اقامت هنری در لیون، او و برام تقریباً فقط در زمان آینده حرف می‌زدند."
+        },
+        {
+          "nl": "Hij zou haar bezoeken, zij zou blijven bellen, en hun planten zouden onder geen beding de gevolgen van hun keuze dragen.",
+          "en": "He would visit her, she would keep calling, and under no circumstances would their plants bear the consequences of their choice.",
+          "fa": "قرار بود برام به دیدن ماژا برود، ماژا همچنان تماس بگیرد و گیاهانشان تحت هیچ شرایطی پیامد انتخابشان را تحمل نکنند."
+        },
+        {
+          "nl": "Alleen over wat zij op dat moment voelden, formuleerden ze omzichtig, alsof het heden minder betrouwbaar was dan een nog ongeschreven agenda.",
+          "en": "Only about what they felt at that moment did they speak cautiously, as if the present were less reliable than an unwritten diary.",
+          "fa": "فقط درباره احساس همان لحظه محتاطانه حرف می‌زدند، انگار اکنون از تقویمی هنوز نانوشته کمتر قابل اعتماد بود."
+        },
+        {
+          "nl": "Toen Bram haar koffer naar beneden droeg, vroeg hij of zes maanden eigenlijk lang waren; zij antwoordde dat maanden geen vaste lengte hadden.",
+          "en": "As Bram carried her suitcase downstairs, he asked whether six months was really a long time; she replied that months had no fixed length.",
+          "fa": "وقتی برام چمدان را پایین می‌برد، پرسید شش ماه واقعاً طولانی است؟ جواب داد ماه‌ها طول ثابت ندارند."
+        },
+        {
+          "nl": "Het was een antwoord waarmee geen trein kon worden gehaald en geen angst kon worden weggenomen, maar hij bleef ernaast staan.",
+          "en": "It was an answer that could neither catch a train nor remove a fear, but he stayed beside her.",
+          "fa": "جوابی بود که نه قطاری را می‌شد با آن گرفت و نه ترسی را زدود، اما کنار او ماند."
+        },
+        {
+          "nl": "Maja haalde de sleutel uit haar jaszak en legde hem niet op tafel, maar in de pot van de plant die het vaakst verdroogde.",
+          "en": "Maja took the key from her coat pocket and put it not on the table but in the pot of the plant that dried out most often.",
+          "fa": "ماژا کلید را از جیب کت درآورد و نه روی میز، بلکه در گلدان گیاهی گذاشت که بیشتر از همه خشک می‌شد."
+        },
+        {
+          "nl": "Als je hier komt, zei ze, geef die dan eerst water; het was de eerste afspraak die niet over hun hele toekomst ging.",
+          "en": "If you come here, she said, water that one first; it was the first arrangement that was not about their entire future.",
+          "fa": "گفت اگر اینجا آمدی، اول به این آب بده؛ نخستین قرارشان بود که درباره تمام آینده‌شان نبود."
+        },
+        {
+          "nl": "Bram wilde vragen of die sleutel iets bewees en bedacht op tijd dat een voorwerp geen antwoord hoefde te geven.",
+          "en": "Bram wanted to ask whether the key proved something, then remembered in time that an object did not have to provide an answer.",
+          "fa": "برام می‌خواست بپرسد کلید چیزی را ثابت می‌کند؟ به‌موقع یادش آمد لازم نیست شیء جواب بدهد."
+        },
+        {
+          "nl": "Op het perron namen ze geen besluit over hun hele toekomst, maar spraken ze af de volgende avond eerlijk te vertellen hoe het ging.",
+          "en": "On the platform they made no decision about their entire future, but agreed to speak honestly the following evening about how they were doing.",
+          "fa": "روی سکو درباره کل آینده تصمیم نگرفتند؛ قرار گذاشتند فرداشب صادقانه بگویند حالشان چطور است."
+        },
+        {
+          "nl": "Pas toen de trein vertrok, merkte Bram dat hij haar niet tot snel had gewenst, maar een goede eerste dag.",
+          "en": "Only when the train departed did Bram realise he had not said see you soon, but wished her a good first day.",
+          "fa": "وقتی قطار حرکت کرد، برام فهمید نگفته تا به‌زودی؛ روز اول خوبی برایش آرزو کرده بود."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "In de week vóór haar vertrek naar een kunstenaarsverblijf in Lyon spraken Maja en Bram bijna uitsluitend in de toekomstige tijd. Hij zou haar bezoeken, zij zou blijven bellen, en hun planten zouden onder geen beding de gevolgen van hun keuze dragen. Alleen over wat zij op dat moment voelden, formuleerden ze omzichtig, alsof het heden minder betrouwbaar was dan een nog ongeschreven agenda. Toen Bram haar koffer naar beneden droeg, vroeg hij of zes maanden eigenlijk lang waren; zij antwoordde dat maanden geen vaste lengte hadden. Het was een antwoord waarmee geen trein kon worden gehaald en geen angst kon worden weggenomen, maar hij bleef ernaast staan.",
+          "en": "In the week before her departure for an artists' residency in Lyon, Maja and Bram spoke almost exclusively in the future tense. He would visit her, she would keep calling, and under no circumstances would their plants bear the consequences of their choice. Only about what they felt at that moment did they speak cautiously, as if the present were less reliable than an unwritten diary. As Bram carried her suitcase downstairs, he asked whether six months was really a long time; she replied that months had no fixed length. It was an answer that could neither catch a train nor remove a fear, but he stayed beside her.",
+          "fa": "در هفته پیش از رفتن ماژا به اقامت هنری در لیون، او و برام تقریباً فقط در زمان آینده حرف می‌زدند. قرار بود برام به دیدن ماژا برود، ماژا همچنان تماس بگیرد و گیاهانشان تحت هیچ شرایطی پیامد انتخابشان را تحمل نکنند. فقط درباره احساس همان لحظه محتاطانه حرف می‌زدند، انگار اکنون از تقویمی هنوز نانوشته کمتر قابل اعتماد بود. وقتی برام چمدان را پایین می‌برد، پرسید شش ماه واقعاً طولانی است؟ جواب داد ماه‌ها طول ثابت ندارند. جوابی بود که نه قطاری را می‌شد با آن گرفت و نه ترسی را زدود، اما کنار او ماند."
+        },
+        {
+          "nl": "Maja haalde de sleutel uit haar jaszak en legde hem niet op tafel, maar in de pot van de plant die het vaakst verdroogde. Als je hier komt, zei ze, geef die dan eerst water; het was de eerste afspraak die niet over hun hele toekomst ging. Bram wilde vragen of die sleutel iets bewees en bedacht op tijd dat een voorwerp geen antwoord hoefde te geven. Op het perron namen ze geen besluit over hun hele toekomst, maar spraken ze af de volgende avond eerlijk te vertellen hoe het ging. Pas toen de trein vertrok, merkte Bram dat hij haar niet tot snel had gewenst, maar een goede eerste dag.",
+          "en": "Maja took the key from her coat pocket and put it not on the table but in the pot of the plant that dried out most often. If you come here, she said, water that one first; it was the first arrangement that was not about their entire future. Bram wanted to ask whether the key proved something, then remembered in time that an object did not have to provide an answer. On the platform they made no decision about their entire future, but agreed to speak honestly the following evening about how they were doing. Only when the train departed did Bram realise he had not said see you soon, but wished her a good first day.",
+          "fa": "ماژا کلید را از جیب کت درآورد و نه روی میز، بلکه در گلدان گیاهی گذاشت که بیشتر از همه خشک می‌شد. گفت اگر اینجا آمدی، اول به این آب بده؛ نخستین قرارشان بود که درباره تمام آینده‌شان نبود. برام می‌خواست بپرسد کلید چیزی را ثابت می‌کند؟ به‌موقع یادش آمد لازم نیست شیء جواب بدهد. روی سکو درباره کل آینده تصمیم نگرفتند؛ قرار گذاشتند فرداشب صادقانه بگویند حالشان چطور است. وقتی قطار حرکت کرد، برام فهمید نگفته تا به‌زودی؛ روز اول خوبی برایش آرزو کرده بود."
+        }
+      ],
+      "topic_id": "c2-t-unit-farewell-future-tense",
+      "vocabulary_ids": [
+        "c2-unit-farewell-future-tense-v1",
+        "c2-unit-farewell-future-tense-v2",
+        "c2-unit-farewell-future-tense-v3",
+        "c2-unit-farewell-future-tense-v4",
+        "c2-unit-farewell-future-tense-v5",
+        "c2-unit-farewell-future-tense-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Welke functie heeft de nadruk op de toekomstige tijd?",
+          "en": "What is the function of the emphasis on the future tense?",
+          "fa": "تأکید بر زمان آینده چه نقشی دارد؟"
+        },
+        "options": [
+          {
+            "nl": "De verteller verzekert dat alle genoemde plannen zullen worden uitgevoerd.",
+            "en": "The narrator guarantees that all the plans mentioned will happen.",
+            "fa": "راوی تضمین می‌کند همه برنامه‌ها اجرا خواهند شد."
+          },
+          {
+            "nl": "Toekomstplannen bieden houvast terwijl onmiddellijke gevoelens moeilijk uitspreekbaar blijven.",
+            "en": "Future plans provide support while immediate feelings remain difficult to express.",
+            "fa": "برنامه‌های آینده تکیه‌گاه می‌شوند، درحالی‌که احساس اکنون دشوار بیان می‌شود."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De vergelijking met een ongeschreven agenda problematiseert juist de schijnzekerheid van die plannen.",
+          "en": "The comparison with an unwritten diary questions the apparent certainty of those plans.",
+          "fa": "مقایسه با تقویم نانوشته دقیقاً قطعیت ظاهری برنامه‌ها را زیر سؤال می‌برد."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "c2-t-unit-number-for-yesterday",
+      "title": {
+        "nl": "Een nummer voor gisteren",
+        "en": "A number for yesterday",
+        "fa": "نوبتی برای دیروز"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een niet-letterlijke vertelling interpreteren, meerdere lezingen afwegen en stijl bewust inzetten.",
+          "en": "Interpret a non-literal narrative, weigh multiple readings and use style deliberately.",
+          "fa": "تفسیر روایت غیرلفظی، سنجیدن خوانش‌های مختلف و کاربرد آگاهانه سبک."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een niet-letterlijke vertelling interpreteren, meerdere lezingen afwegen en stijl bewust inzetten.",
+        "en": "Interpret a non-literal narrative, weigh multiple readings and use style deliberately.",
+        "fa": "تفسیر روایت غیرلفظی، سنجیدن خوانش‌های مختلف و کاربرد آگاهانه سبک."
+      },
+      "vocabulary_ids": [
+        "c2-unit-number-for-yesterday-v1",
+        "c2-unit-number-for-yesterday-v2",
+        "c2-unit-number-for-yesterday-v3",
+        "c2-unit-number-for-yesterday-v4",
+        "c2-unit-number-for-yesterday-v5",
+        "c2-unit-number-for-yesterday-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "In een verzonnen Belgisch stadje trok Lea aan het loket een volgnummer waarop niet een cijfer, maar gisteren stond. Ze wilde het terugleggen, maar de bediende zei dat juist dit soort aanvragen doorgaans het langst bleef liggen. Lea vroeg of een gemiste verontschuldiging alsnog kon worden ingediend, mits ze de juiste datum en het juiste adres kende. De bediende schoof een formulier naar haar toe met slechts twee vakken: wat u gezegd hebt en wat u bedoelde. In het eerste vak schreef ze dat haar broer altijd alles overdreef; voor het tweede vroeg ze een nieuw vel.\n\nNiet omdat het papier te klein was, merkte ze, maar omdat haar uitleg steeds opnieuw een verdediging van de eerste zin werd. De bediende wees op een lege envelop en zei dat bedoelingen helaas niet met terugwerkende kracht werden bezorgd. Lea vouwde het formulier dicht, verliet het gebouw en belde haar broer zonder vooraf het tweede vak af te maken. Ze zei niet wat ze eigenlijk had willen zeggen, maar dat het haar speet wat ze werkelijk had gezegd. Toen ze later het volgnummer terugvond, stond er vandaag; ze kon zich niet herinneren het woord te hebben veranderd.",
+          "en": "In an imaginary Belgian town, Lea took a queue ticket bearing not a number but the word yesterday. She wanted to put it back, but the clerk said that precisely this kind of request usually remained pending longest. Lea asked whether a missed apology could still be submitted, provided she knew the correct date and address. The clerk slid a form towards her with only two boxes: what you said and what you meant. In the first box she wrote that her brother always exaggerated everything; for the second she asked for another sheet.\n\nNot because the paper was too small, she realised, but because her explanation kept becoming a defence of the first sentence. The clerk pointed to an empty envelope and said that intentions unfortunately could not be delivered retroactively. Lea folded the form, left the building and called her brother without first finishing the second box. She did not say what she had actually wanted to say, but that she was sorry for what she had really said. When she later found the ticket again, it said today; she could not remember changing the word.",
+          "fa": "در شهرکی خیالی در بلژیک، لیا نوبتی از دستگاه گرفت که رویش نه عدد، بلکه دیروز نوشته بود. می‌خواست برگه را برگرداند، اما کارمند گفت اتفاقاً این نوع درخواست معمولاً بیشتر از همه معطل می‌ماند. لیا پرسید آیا می‌شود عذرخواهی ازدست‌رفته را هنوز ثبت کرد، به شرط آنکه تاریخ و نشانی درست را بداند. کارمند فرمی با تنها دو خانه جلو گذاشت: آنچه گفتید و آنچه منظورتان بود. در خانه اول نوشت برادرش همیشه همه چیز را بزرگ می‌کند؛ برای خانه دوم برگی دیگر خواست.\n\nفهمید نه چون کاغذ کوچک بود، بلکه چون توضیحش بارها به دفاع از جمله اول تبدیل می‌شد. کارمند به پاکت خالی اشاره کرد و گفت متأسفانه نیت‌ها را نمی‌شود با اثر گذشته تحویل داد. لیا فرم را تا کرد، بیرون رفت و بدون کامل کردن خانه دوم به برادرش زنگ زد. نگفت در اصل چه می‌خواسته بگوید؛ گفت از آنچه واقعاً گفته متأسف است. وقتی بعداً برگه نوبت را یافت، نوشته بود امروز؛ یادش نمی‌آمد واژه را عوض کرده باشد."
+        },
+        "questions": [
+          {
+            "id": "c2-t-unit-number-for-yesterday-r1",
+            "prompt": {
+              "nl": "Welke spanning maakt het tweede vak moeilijk in te vullen?",
+              "en": "What tension makes the second box difficult to complete?",
+              "fa": "کدام کشمکش پر کردن خانه دوم را دشوار می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Ze herinnert zich de woorden van de eerste zin niet.",
+                "en": "She cannot remember the words of the first sentence.",
+                "fa": "واژه‌های جمله اول را به یاد نمی‌آورد."
+              },
+              {
+                "nl": "Haar uitleg dreigt het uitgesproken verwijt te rechtvaardigen in plaats van verantwoordelijkheid te nemen.",
+                "en": "Her explanation risks justifying the accusation instead of taking responsibility.",
+                "fa": "توضیحش ممکن است به‌جای پذیرش مسئولیت، سرزنش گفته‌شده را توجیه کند."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Ze kent de eerste zin; het probleem is de verdedigende functie van haar toelichting.",
+              "en": "She knows the first sentence; the problem is the defensive function of her explanation.",
+              "fa": "جمله اول را می‌داند؛ مشکل نقش دفاعی توضیح اوست."
+            }
+          },
+          {
+            "id": "c2-t-unit-number-for-yesterday-r2",
+            "prompt": {
+              "nl": "Welke interpretatie van de laatste regel is het best verdedigbaar?",
+              "en": "Which interpretation of the final line is most defensible?",
+              "fa": "کدام تفسیر خط آخر دفاع‌پذیرتر است؟"
+            },
+            "options": [
+              {
+                "nl": "De verandering verbindt de onmogelijkheid om gisteren te herstellen met handelen in het heden.",
+                "en": "The change links the impossibility of repairing yesterday to action in the present.",
+                "fa": "تغییر، ناممکن بودن اصلاح دیروز را به عمل در اکنون پیوند می‌دهد."
+              },
+              {
+                "nl": "De regel verklaart ondubbelzinnig hoe het loket technisch werkt.",
+                "en": "The line unambiguously explains how the counter works technically.",
+                "fa": "خط به‌طور قطعی سازوکار فنی پیشخوان را توضیح می‌دهد."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De tekst laat de letterlijke oorzaak open; gisteren en vandaag dragen een figuurlijke tegenstelling.",
+              "en": "The text leaves the literal cause open; yesterday and today carry a figurative contrast.",
+              "fa": "متن علت لفظی را باز می‌گذارد؛ دیروز و امروز تقابلی استعاری دارند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Lea, ik heb over ons gesprek nagedacht. Niet je kritiek op mijn plan, maar het woord altijd deed pijn: daarmee leek je alles wat ik ooit vertelde terzijde te schuiven. Ik hoef geen nieuwe uitleg over je bedoeling; ik zou liever horen welk onderdeel van mijn plan je werkelijk onhaalbaar vindt. Dan kunnen we daarover praten zonder onze hele geschiedenis erbij te halen.",
+          "en": "Lea, I have been thinking about our conversation. It was not your criticism of my plan but the word always that hurt: it seemed to dismiss everything I had ever told you. I do not need another explanation of your intention; I would rather hear which part of my plan you actually find unworkable. Then we can discuss that without dragging in our entire history.",
+          "fa": "لیا، به گفت‌وگویمان فکر کردم. نقد برنامه‌ام نبود که آزار داد، واژه همیشه بود؛ انگار همه چیزهایی را که تا حالا گفته‌ام کنار می‌گذاشتی. توضیح تازه‌ای درباره نیتت نمی‌خواهم؛ ترجیح می‌دهم بشنوم کدام بخش برنامه را واقعاً غیرعملی می‌دانی. آن‌وقت می‌توانیم درباره‌اش حرف بزنیم، بدون کشاندن تمام گذشته‌مان به بحث."
+        },
+        "questions": [
+          {
+            "id": "c2-t-unit-number-for-yesterday-l1",
+            "prompt": {
+              "nl": "Waartegen richt zijn bezwaar zich in het bijzonder?",
+              "en": "What is his objection particularly directed at?",
+              "fa": "اعتراض او به‌ویژه متوجه چیست؟"
+            },
+            "options": [
+              {
+                "nl": "Tegen iedere inhoudelijke kritiek op zijn plan.",
+                "en": "Any substantive criticism of his plan.",
+                "fa": "هر نقد محتوایی از برنامه‌اش."
+              },
+              {
+                "nl": "Tegen de veralgemening die in het woord altijd besloten ligt.",
+                "en": "The generalisation contained in the word always.",
+                "fa": "تعمیم نهفته در واژه همیشه."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Hij onderscheidt kritiek op het plan van een oordeel over alles wat hij ooit vertelde.",
+              "en": "He distinguishes criticism of the plan from a judgment on everything he has ever said.",
+              "fa": "نقد برنامه را از قضاوت درباره تمام گفته‌های گذشته جدا می‌کند."
+            }
+          },
+          {
+            "id": "c2-t-unit-number-for-yesterday-l2",
+            "prompt": {
+              "nl": "Wat vraagt hij voor een vervolggesprek?",
+              "en": "What does he ask for in a follow-up conversation?",
+              "fa": "برای گفت‌وگوی بعدی چه می‌خواهد؟"
+            },
+            "options": [
+              {
+                "nl": "Een concrete bespreking van het onhaalbaar geachte onderdeel.",
+                "en": "A specific discussion of the part considered unworkable.",
+                "fa": "بحث مشخص درباره بخشی که غیرعملی دانسته شده است."
+              },
+              {
+                "nl": "Een volledige reconstructie van alle vroegere conflicten.",
+                "en": "A complete reconstruction of all earlier conflicts.",
+                "fa": "بازسازی کامل همه تعارض‌های قبلی."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Hij wil de bespreking begrenzen tot de inhoud van het plan.",
+              "en": "He wants to limit the discussion to the substance of the plan.",
+              "fa": "می‌خواهد بحث به محتوای برنامه محدود شود."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Reageer als Lea. Erken de werking van altijd, onderscheid die van inhoudelijke kritiek en stel één afgebakende vraag over het plan zonder ontbrekende plandetails te verzinnen.",
+          "en": "Respond as Lea. Acknowledge the effect of always, distinguish it from substantive criticism and ask one focused question about the plan without inventing missing details.",
+          "fa": "در نقش لیا پاسخ دهید. اثر همیشه را بپذیرید، از نقد محتوایی جدا کنید و بدون ساختن جزئیات غایب یک پرسش محدود درباره برنامه بپرسید."
+        },
+        "sample": {
+          "nl": "Met altijd heb ik mijn bezwaar onterecht tot een oordeel over jou gemaakt. Daarvoor bied ik mijn excuses aan, zonder die meteen met mijn bedoeling te relativeren. Over je plan ontbreken mij nog details om iets onhaalbaar te noemen. Kunnen we beginnen bij de middelen die je voor de eerste stap beschikbaar hebt? Dan bespreken we een concreet onderdeel in plaats van onze hele geschiedenis.",
+          "en": "By using always, I unfairly turned my objection into a judgment about you. I apologise for that without immediately qualifying it through my intentions. I still lack details to call anything in your plan unworkable. Could we start with the resources you have available for the first step? Then we can discuss a specific part rather than our entire history.",
+          "fa": "با گفتن همیشه اعتراضم را ناعادلانه به قضاوت درباره تو تبدیل کردم. برای آن عذر می‌خواهم، بدون آنکه فوراً با نیت خودم تعدیلش کنم. هنوز برای غیرعملی نامیدن چیزی در برنامه‌ات جزئیات کافی ندارم. می‌توانیم از منابع موجود برای قدم اول شروع کنیم؟ آن‌وقت به‌جای تمام گذشته‌مان، بخشی مشخص را بررسی می‌کنیم."
+        },
+        "min_words": 60,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Erken de veralgemening door altijd zonder de excuses weg te verklaren.",
+            "en": "Acknowledge the generalisation in always without explaining away the apology.",
+            "fa": "تعمیم همیشه را بپذیرید بدون بی‌اثر کردن عذرخواهی."
+          },
+          {
+            "nl": "Vraag naar een concreet onderdeel zonder ontbrekende plandetails te verzinnen.",
+            "en": "Ask about a specific part without inventing missing plan details.",
+            "fa": "درباره بخشی مشخص بدون ساختن جزئیات غایب بپرسید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een korte literaire beschouwing van 120 tot 250 woorden. Verbind één stijlmiddel uit het verhaal met de nieuwe boodschap van de broer. Verdedig een lezing, maar benoem ook wat de tekst openlaat.",
+          "en": "Write a short literary reflection of 120–250 Dutch words. Connect one stylistic device in the story to the brother's new message. Defend a reading while also identifying what the text leaves open.",
+          "fa": "تأمل ادبی کوتاه در ۱۲۰ تا ۲۵۰ واژه هلندی بنویسید. یک شگرد داستان را به پیام تازه برادر وصل کنید. از خوانشی دفاع کنید و ناگفته‌های متن را هم نام ببرید."
+        },
+        "sample": {
+          "nl": "Het onmogelijke loket maakt een alledaags probleem zichtbaar: Lea wil de betekenis van haar woorden achteraf beheersen. Het formulier suggereert dat zij wat ze zei netjes kan scheiden van wat ze bedoelde, maar haar uitleg wordt telkens een verdediging. De uitspraak over bezorging met terugwerkende kracht doorbreekt die administratieve illusie. In de nieuwe boodschap benoemt haar broer preciezer wat hem trof: niet kritiek op een plan, maar de veralgemening altijd. Daarmee wordt de figuurlijke les concreet zonder dat het verhaal één verplicht moreel antwoord oplegt. De verandering van gisteren in vandaag kan gelezen worden als de verschuiving van herstel van het verleden naar verantwoordelijkheid in het heden. Of het briefje letterlijk verandert, blijft onbeslist. Juist die onzekerheid voorkomt dat het loket louter een verklarende droom wordt; de aandacht blijft bij wat Lea nu met haar taal kan doen.",
+          "en": "The impossible counter makes an everyday problem visible: Lea wants to control the meaning of her words after the event. The form suggests she can neatly separate what she said from what she meant, but her explanation repeatedly becomes a defence. The remark about retroactive delivery breaks that administrative illusion. In the new message, her brother identifies more precisely what hurt him: not criticism of a plan but the generalisation always. The figurative lesson thus becomes concrete without the story imposing one compulsory moral answer. The change from yesterday to today can be read as a shift from repairing the past to responsibility in the present. Whether the ticket literally changes remains unresolved. That uncertainty prevents the counter from becoming merely an explanatory dream; attention stays on what Lea can now do with her language.",
+          "fa": "پیشخوان ناممکن مشکلی روزمره را آشکار می‌کند: لیا می‌خواهد معنای واژه‌هایش را بعد از واقعه کنترل کند. فرم القا می‌کند گفته و منظور را می‌توان مرتب جدا کرد، اما توضیحش هر بار دفاع می‌شود. جمله تحویل با اثر گذشته این توهم اداری را می‌شکند. در پیام تازه برادر دقیق‌تر می‌گوید چه آزرده‌اش: نه نقد برنامه، بلکه تعمیم همیشه. به این ترتیب درس استعاری ملموس می‌شود، بدون تحمیل پاسخ اخلاقی واحد. تبدیل دیروز به امروز را می‌توان گذار از ترمیم گذشته به مسئولیت اکنون خواند. اینکه برگه واقعاً عوض می‌شود نامعلوم است. همین ابهام مانع می‌شود پیشخوان صرفاً رؤیایی توضیح‌دهنده باشد؛ توجه بر کاری می‌ماند که لیا اکنون با زبانش می‌تواند بکند."
+        },
+        "min_words": 120,
+        "max_words": 250,
+        "criteria": [
+          {
+            "nl": "Koppel een concreet stijlmiddel aan het bezwaar tegen altijd.",
+            "en": "Link a specific stylistic device to the objection to always.",
+            "fa": "شگرد مشخص را به اعتراض به همیشه وصل کنید."
+          },
+          {
+            "nl": "Onderbouw een lezing en laat de letterlijke verandering van het briefje open.",
+            "en": "Support a reading and leave the literal change of the ticket unresolved.",
+            "fa": "خوانشی را مستدل کنید و تغییر واقعی برگه را نامعلوم بگذارید."
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-t-unit-farewell-future-tense",
+      "title": {
+        "nl": "Een afscheid in de toekomstige tijd",
+        "en": "A farewell in the future tense",
+        "fa": "خداحافظی در زمان آینده"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Subtiele betekenisverschuivingen in tijd en modaliteit interpreteren en een precieze persoonlijke reactie schrijven.",
+          "en": "Interpret subtle shifts in tense and modality and write a precise personal response.",
+          "fa": "تفسیر جابه‌جایی ظریف معنا در زمان و وجه و نوشتن پاسخ شخصی دقیق."
+        }
+      ],
+      "language_focus": {
+        "nl": "Subtiele betekenisverschuivingen in tijd en modaliteit interpreteren en een precieze persoonlijke reactie schrijven.",
+        "en": "Interpret subtle shifts in tense and modality and write a precise personal response.",
+        "fa": "تفسیر جابه‌جایی ظریف معنا در زمان و وجه و نوشتن پاسخ شخصی دقیق."
+      },
+      "vocabulary_ids": [
+        "c2-unit-farewell-future-tense-v1",
+        "c2-unit-farewell-future-tense-v2",
+        "c2-unit-farewell-future-tense-v3",
+        "c2-unit-farewell-future-tense-v4",
+        "c2-unit-farewell-future-tense-v5",
+        "c2-unit-farewell-future-tense-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "In de week vóór haar vertrek naar een kunstenaarsverblijf in Lyon spraken Maja en Bram bijna uitsluitend in de toekomstige tijd. Hij zou haar bezoeken, zij zou blijven bellen, en hun planten zouden onder geen beding de gevolgen van hun keuze dragen. Alleen over wat zij op dat moment voelden, formuleerden ze omzichtig, alsof het heden minder betrouwbaar was dan een nog ongeschreven agenda. Toen Bram haar koffer naar beneden droeg, vroeg hij of zes maanden eigenlijk lang waren; zij antwoordde dat maanden geen vaste lengte hadden. Het was een antwoord waarmee geen trein kon worden gehaald en geen angst kon worden weggenomen, maar hij bleef ernaast staan.\n\nMaja haalde de sleutel uit haar jaszak en legde hem niet op tafel, maar in de pot van de plant die het vaakst verdroogde. Als je hier komt, zei ze, geef die dan eerst water; het was de eerste afspraak die niet over hun hele toekomst ging. Bram wilde vragen of die sleutel iets bewees en bedacht op tijd dat een voorwerp geen antwoord hoefde te geven. Op het perron namen ze geen besluit over hun hele toekomst, maar spraken ze af de volgende avond eerlijk te vertellen hoe het ging. Pas toen de trein vertrok, merkte Bram dat hij haar niet tot snel had gewenst, maar een goede eerste dag.",
+          "en": "In the week before her departure for an artists' residency in Lyon, Maja and Bram spoke almost exclusively in the future tense. He would visit her, she would keep calling, and under no circumstances would their plants bear the consequences of their choice. Only about what they felt at that moment did they speak cautiously, as if the present were less reliable than an unwritten diary. As Bram carried her suitcase downstairs, he asked whether six months was really a long time; she replied that months had no fixed length. It was an answer that could neither catch a train nor remove a fear, but he stayed beside her.\n\nMaja took the key from her coat pocket and put it not on the table but in the pot of the plant that dried out most often. If you come here, she said, water that one first; it was the first arrangement that was not about their entire future. Bram wanted to ask whether the key proved something, then remembered in time that an object did not have to provide an answer. On the platform they made no decision about their entire future, but agreed to speak honestly the following evening about how they were doing. Only when the train departed did Bram realise he had not said see you soon, but wished her a good first day.",
+          "fa": "در هفته پیش از رفتن ماژا به اقامت هنری در لیون، او و برام تقریباً فقط در زمان آینده حرف می‌زدند. قرار بود برام به دیدن ماژا برود، ماژا همچنان تماس بگیرد و گیاهانشان تحت هیچ شرایطی پیامد انتخابشان را تحمل نکنند. فقط درباره احساس همان لحظه محتاطانه حرف می‌زدند، انگار اکنون از تقویمی هنوز نانوشته کمتر قابل اعتماد بود. وقتی برام چمدان را پایین می‌برد، پرسید شش ماه واقعاً طولانی است؟ جواب داد ماه‌ها طول ثابت ندارند. جوابی بود که نه قطاری را می‌شد با آن گرفت و نه ترسی را زدود، اما کنار او ماند.\n\nماژا کلید را از جیب کت درآورد و نه روی میز، بلکه در گلدان گیاهی گذاشت که بیشتر از همه خشک می‌شد. گفت اگر اینجا آمدی، اول به این آب بده؛ نخستین قرارشان بود که درباره تمام آینده‌شان نبود. برام می‌خواست بپرسد کلید چیزی را ثابت می‌کند؟ به‌موقع یادش آمد لازم نیست شیء جواب بدهد. روی سکو درباره کل آینده تصمیم نگرفتند؛ قرار گذاشتند فرداشب صادقانه بگویند حالشان چطور است. وقتی قطار حرکت کرد، برام فهمید نگفته تا به‌زودی؛ روز اول خوبی برایش آرزو کرده بود."
+        },
+        "questions": [
+          {
+            "id": "c2-t-unit-farewell-future-tense-r1",
+            "prompt": {
+              "nl": "Welke functie heeft de nadruk op de toekomstige tijd?",
+              "en": "What is the function of the emphasis on the future tense?",
+              "fa": "تأکید بر زمان آینده چه نقشی دارد؟"
+            },
+            "options": [
+              {
+                "nl": "De verteller verzekert dat alle genoemde plannen zullen worden uitgevoerd.",
+                "en": "The narrator guarantees that all the plans mentioned will happen.",
+                "fa": "راوی تضمین می‌کند همه برنامه‌ها اجرا خواهند شد."
+              },
+              {
+                "nl": "Toekomstplannen bieden houvast terwijl onmiddellijke gevoelens moeilijk uitspreekbaar blijven.",
+                "en": "Future plans provide support while immediate feelings remain difficult to express.",
+                "fa": "برنامه‌های آینده تکیه‌گاه می‌شوند، درحالی‌که احساس اکنون دشوار بیان می‌شود."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De vergelijking met een ongeschreven agenda problematiseert juist de schijnzekerheid van die plannen.",
+              "en": "The comparison with an unwritten diary questions the apparent certainty of those plans.",
+              "fa": "مقایسه با تقویم نانوشته دقیقاً قطعیت ظاهری برنامه‌ها را زیر سؤال می‌برد."
+            }
+          },
+          {
+            "id": "c2-t-unit-farewell-future-tense-r2",
+            "prompt": {
+              "nl": "Wat is een verdedigbare betekenis van het slot?",
+              "en": "What is a defensible meaning of the ending?",
+              "fa": "معنای دفاع‌پذیر پایان چیست؟"
+            },
+            "options": [
+              {
+                "nl": "Bram richt zijn wens op haar concrete begin zonder de gezamenlijke toekomst vast te leggen.",
+                "en": "Bram directs his wish towards her concrete beginning without settling their shared future.",
+                "fa": "برام آرزویش را متوجه شروع مشخص او می‌کند، بدون قطعی کردن آینده مشترک."
+              },
+              {
+                "nl": "De formulering bewijst dat hun relatie definitief voorbij is.",
+                "en": "The wording proves that their relationship is definitively over.",
+                "fa": "عبارت ثابت می‌کند رابطه‌شان قطعاً تمام شده است."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De tekst verschuift naar een eerste dag en laat de verdere relatie bewust open.",
+              "en": "The text shifts towards a first day and deliberately leaves the relationship's future open.",
+              "fa": "متن به روز اول می‌چرخد و آینده رابطه را عمداً باز می‌گذارد."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Bram, ik ben aangekomen. Het verblijf duurt voorlopig drie maanden, niet zes: daarna wordt bekeken of de tweede periode doorgaat. Morgenavond bellen lukt, maar liever om halfnegen dan om acht uur, omdat de kennismaking uitloopt. Over een bezoek hoeven we vandaag nog niets te boeken; ik wil eerst begrijpen hoe mijn dagen hier eruitzien.",
+          "en": "Bram, I have arrived. For now, the residency lasts three months, not six: after that, they will review whether the second period goes ahead. We can call tomorrow evening, but preferably at half past eight rather than eight, because the introduction is running late. We need not book a visit today; I first want to understand what my days here look like.",
+          "fa": "برام، رسیده‌ام. اقامت فعلاً سه ماه است، نه شش؛ بعد بررسی می‌کنند دوره دوم برگزار شود یا نه. فرداشب می‌توانیم حرف بزنیم، اما ترجیحاً هشت‌ونیم نه هشت، چون جلسه آشنایی طول می‌کشد. لازم نیست امروز دیدار را رزرو کنیم؛ اول می‌خواهم بفهمم روزهایم اینجا چگونه است."
+        },
+        "questions": [
+          {
+            "id": "c2-t-unit-farewell-future-tense-l1",
+            "prompt": {
+              "nl": "Hoe wijzigt het bericht de verwachte verblijfsduur?",
+              "en": "How does the message revise the expected duration of the stay?",
+              "fa": "پیام مدت مورد انتظار اقامت را چگونه تغییر می‌دهد؟"
+            },
+            "options": [
+              {
+                "nl": "Zes maanden zijn nu onvoorwaardelijk bevestigd.",
+                "en": "Six months have now been unconditionally confirmed.",
+                "fa": "شش ماه اکنون بی‌قیدوشرط تأیید شده است."
+              },
+              {
+                "nl": "Drie maanden staan voorlopig vast; de tweede periode wordt later beoordeeld.",
+                "en": "Three months are provisionally established; the second period will be assessed later.",
+                "fa": "فعلاً سه ماه مشخص است؛ دوره دوم بعداً بررسی می‌شود."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Niet zes begrenst de huidige zekerheid; het bericht sluit een tweede periode niet uit.",
+              "en": "Not six limits the current certainty; the message does not rule out a second period.",
+              "fa": "نه شش قطعیت فعلی را محدود می‌کند؛ پیام دوره دوم را ناممکن نمی‌داند."
+            }
+          },
+          {
+            "id": "c2-t-unit-farewell-future-tense-l2",
+            "prompt": {
+              "nl": "Welke concrete wijziging vraagt Maja voor het gesprek?",
+              "en": "What specific change does Maja request for the call?",
+              "fa": "ماژا برای گفت‌وگو چه تغییر مشخصی می‌خواهد؟"
+            },
+            "options": [
+              {
+                "nl": "Bellen om 20.30 uur in plaats van 20.00 uur.",
+                "en": "Calling at 20:30 rather than 20:00.",
+                "fa": "تماس در ۲۰:۳۰ به‌جای ۲۰."
+              },
+              {
+                "nl": "Het gesprek vervangen door een meteen geboekt bezoek.",
+                "en": "Replacing the call with an immediately booked visit.",
+                "fa": "جایگزینی تماس با دیداری که فوراً رزرو شود."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Halfnegen is hier 20.30 uur; over het bezoek wil ze nog niets boeken.",
+              "en": "Halfnegen here means 20:30; she does not yet want to book a visit.",
+              "fa": "Halfnegen اینجا ۲۰:۳۰ است؛ هنوز نمی‌خواهد دیدار رزرو کند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Antwoord als Bram met aandacht voor zowel de praktische wijziging als de terughoudendheid over later. Benoem de voorlopige duur zonder een verlenging of een afscheid te voorspellen.",
+          "en": "Reply as Bram, attending both to the practical change and to the restraint about the future. State the provisional duration without predicting either an extension or a farewell.",
+          "fa": "در نقش برام هم به تغییر عملی و هم به احتیاط درباره آینده توجه کنید. مدت موقت را بگویید، بدون پیش‌بینی تمدید یا جدایی."
+        },
+        "sample": {
+          "nl": "Fijn dat je aangekomen bent. Morgen om halfnegen is goed; ik noteer dat in plaats van acht uur. Ik begrijp dat voorlopig alleen de eerste drie maanden vaststaan en dat de tweede periode later wordt bekeken. Een bezoek boeken kan wachten tot je weet hoe je dagen verlopen. Je hoeft vanavond niet uit te leggen wat die onzekerheid voor ons hele verhaal betekent. Vertel morgen eerst hoe je eerste dag was.",
+          "en": "I am glad you have arrived. Tomorrow at half past eight is fine; I will note that instead of eight. I understand that only the first three months are provisionally established and that the second period will be reviewed later. Booking a visit can wait until you know how your days unfold. Tonight, you need not explain what that uncertainty means for our entire story. Tomorrow, first tell me how your first day went.",
+          "fa": "خوشحالم رسیده‌ای. فردا هشت‌ونیم خوب است؛ به‌جای هشت یادداشت می‌کنم. می‌فهمم فعلاً فقط سه ماه اول مشخص است و دوره دوم بعداً بررسی می‌شود. رزرو دیدار می‌تواند صبر کند تا روند روزهایت روشن شود. لازم نیست امشب بگویی این نامعلومی برای تمام داستان ما چه معنایی دارد. فردا اول از روز اولت بگو."
+        },
+        "min_words": 60,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Bevestig morgen om 20.30 uur en voorlopig drie maanden.",
+            "en": "Confirm tomorrow at 20:30 and provisionally three months.",
+            "fa": "فردا ۲۰:۳۰ و فعلاً سه ماه را تأیید کنید."
+          },
+          {
+            "nl": "Leg bezoek of verlenging niet vast en houd een warme persoonlijke toon.",
+            "en": "Do not fix a visit or extension, and maintain a warm personal tone.",
+            "fa": "دیدار یا تمدید را قطعی نکنید و لحن شخصی گرم نگه دارید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf Brams antwoord van 120 tot 250 woorden. Gebruik tijd en modaliteit bewust: bevestig praktische informatie, onderscheid verwachting van toezegging en laat onzekerheid bestaan zonder afstandelijk te klinken.",
+          "en": "Write Bram's reply in 120–250 Dutch words. Use tense and modality deliberately: confirm practical details, distinguish expectation from commitment and allow uncertainty without sounding distant.",
+          "fa": "پاسخ برام را در ۱۲۰ تا ۲۵۰ واژه هلندی بنویسید. زمان و وجه را آگاهانه به کار ببرید: جزئیات عملی را تأیید کنید، انتظار را از قول جدا کنید و بدون سردی به ابهام جا بدهید."
+        },
+        "sample": {
+          "nl": "Lieve Maja, fijn dat je goed bent aangekomen. Ik zet ons gesprek morgen op halfnegen in plaats van acht uur. Voorlopig gaat het dus om drie maanden; of er daarna een tweede periode volgt, wordt later bekeken. Dat is andere informatie dan de zes maanden waarmee we rekening hielden, maar ze hoeft vanavond geen antwoord op alle andere vragen te worden. Een bezoek boek ik nog niet. Laat eerst duidelijk worden hoe je dagen daar lopen en wat voor jou een prettig moment zou zijn. Ik merk dat ik graag van ieder praktisch detail een teken over onze toekomst zou maken, zelfs van een sleutel in een bloempot. Dat is niet eerlijk tegenover jou of tegenover dat voorwerp. Morgen wil ik vooral horen hoe je eerste dag was. De plant heeft water gekregen; die ene afspraak is alvast nagekomen.",
+          "en": "Dear Maja, I am glad you arrived safely. I am moving our call tomorrow to half past eight instead of eight. So for now it is three months; whether a second period follows will be reviewed later. That differs from the six months we had in mind, but tonight it need not become an answer to every other question. I will not book a visit yet. First let your daily routine become clearer, along with what would be a pleasant time for you. I notice how much I want to make every practical detail a sign about our future, even a key in a flowerpot. That is not fair to you or to that object. Tomorrow, above all, I want to hear how your first day went. The plant has been watered; that one arrangement has at least been honoured.",
+          "fa": "ماژای عزیز، خوشحالم سالم رسیدی. تماس فردا را از هشت به هشت‌ونیم تغییر می‌دهم. پس فعلاً سه ماه است؛ بعداً بررسی می‌شود دوره دومی باشد یا نه. این با شش ماهی که در نظر داشتیم فرق دارد، اما لازم نیست امشب پاسخ همه پرسش‌های دیگر شود. هنوز دیداری رزرو نمی‌کنم. اول روال روزهایت و زمان مناسب برای تو روشن شود. می‌بینم دوست دارم هر جزئیات عملی، حتی کلید در گلدان، را نشانه آینده‌مان بدانم. این نه در حق تو منصفانه است نه آن شیء. فردا بیشتر از همه می‌خواهم از روز اولت بشنوم. به گیاه آب داده‌ام؛ دست‌کم آن یک قرار انجام شده است."
+        },
+        "min_words": 120,
+        "max_words": 250,
+        "criteria": [
+          {
+            "nl": "Verwerk 20.30 uur en de nog niet besliste tweede periode nauwkeurig.",
+            "en": "Include 20:30 and the undecided second period accurately.",
+            "fa": "۲۰:۳۰ و دوره دوم تصمیم‌نگرفته را دقیق بیاورید."
+          },
+          {
+            "nl": "Gebruik modaliteit om betrokkenheid zonder onbewezen belofte uit te drukken.",
+            "en": "Use modality to express care without an unsupported promise.",
+            "fa": "وجه را برای بیان توجه بدون وعده بی‌پشتوانه به کار ببرید."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

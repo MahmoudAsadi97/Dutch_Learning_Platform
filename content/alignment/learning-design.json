@@ -1,0 +1,863 @@
+{
+  "schema_version": 1,
+  "version": "2026.10.16.1",
+  "checked_at": "2026-10-16",
+  "status": "provisional_design_not_calibrated",
+  "source_ids": [
+    "cefr-companion-2020",
+    "nt2-r1",
+    "nt2-r2",
+    "nt2-r3",
+    "nt2-r4"
+  ],
+  "sources_catalog": "levels.json",
+  "design_note": "The communication descriptors are reference-informed. The story lengths, word guidance, vocabulary floor and activity sequence are product design decisions, not official CEFR thresholds.",
+  "collection_policy": {
+    "minimum_stories_per_stage": 200,
+    "story_line_count": {
+      "min": 8,
+      "max": 12
+    },
+    "productive_vocabulary_minimum": 150,
+    "preserve_existing_word_bank": true,
+    "no_cross_stage_story_reuse": true,
+    "uniqueness_policy": "Different plots, causes, character goals and outcomes; name or place substitution alone is not a new story. Audit near-duplicates and shared story structures across stages. Common language may be recycled in new contexts.",
+    "inspiration_policy": "Use original plots and wording. Public broadcaster and public-authority material can suggest themes or link-out activities; publication on the web is not a redistribution licence.",
+    "translation_policy": "Dutch, English and Persian must preserve participants, negation, modality, chronology, facts and register. Store translation review evidence separately from software validation.",
+    "pronunciation_policy": "Sentence playback uses a labelled synthetic Dutch example. Playback and transcription are not a validated pronunciation score.",
+    "progress_policy": "Keep four skill records and assisted evidence separately. Count later independent transfer, not recognition alone, as productive evidence."
+  },
+  "learning_loop": [
+    {
+      "id": "meet",
+      "purpose": "Notice a useful word or expression in a concrete context."
+    },
+    {
+      "id": "story",
+      "purpose": "Understand its meaning within a coherent short story."
+    },
+    {
+      "id": "hear",
+      "purpose": "Listen to a sentence or related dialogue and act on its meaning."
+    },
+    {
+      "id": "use",
+      "purpose": "Use the expression in several situations with a real communication goal."
+    },
+    {
+      "id": "revise",
+      "purpose": "Review a specific correction, preserve the intended meaning and try again."
+    },
+    {
+      "id": "transfer",
+      "purpose": "Use it in a different situation in a later session without answer help."
+    }
+  ],
+  "stages": [
+    {
+      "id": "pre-a1",
+      "cefr_reference": "Pre-A1",
+      "reference_status": "cefr_descriptor",
+      "flemish_richtgraad_reference": null,
+      "communicative_focus": "Recognise and use concrete words for people, objects, places and simple needs.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          2,
+          7
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 3,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "past-tense paradigms",
+          "conditional chains",
+          "implicit irony"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "short subject-verb chunks",
+          "basic present forms in familiar expressions",
+          "names, articles, numbers and simple descriptions"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "identify a person or object",
+        "listening": "hear a name or number",
+        "speaking": "say a prepared greeting",
+        "writing": "copy then enter a short familiar phrase"
+      },
+      "support_conditions": "pictures, repeatable slow audio, optional translation and a model before a short supported attempt",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "a1",
+      "cefr_reference": "A1",
+      "reference_status": "cefr_level",
+      "flemish_richtgraad_reference": "1.1",
+      "communicative_focus": "Exchange simple personal information and express concrete everyday needs.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          4,
+          10
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 4,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "dense subordinate clauses",
+          "unexplained idioms",
+          "required past-tense narration"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "present tense",
+          "simple main clauses and questions",
+          "negation, articles and common plural forms",
+          "time expressions; present forms with a future time cue"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "read a short concrete event",
+        "listening": "notice one changed detail in a spoken message",
+        "speaking": "ask and answer a simple question",
+        "writing": "write a short message with a clear purpose"
+      },
+      "support_conditions": "short explicit texts, patient turn-taking, optional prompts and clear repeatable audio",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "pre-a2",
+      "cefr_reference": "A1 → A2",
+      "reference_status": "internal_bridge",
+      "flemish_richtgraad_reference": null,
+      "communicative_focus": "Connect familiar phrases to ask, explain a small problem and arrange a simple action.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          5,
+          12
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 5,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "unscaffolded retrospective narration",
+          "abstract argumentation"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "modal verbs and infinitives",
+          "separable verbs in common main clauses",
+          "simple connectors such as en, maar and want",
+          "planned action with gaan or a present form and time cue"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "follow a short sequence",
+        "listening": "listen for a changed place or time",
+        "speaking": "request a change and ask for repetition",
+        "writing": "write linked sentences that preserve the agreed facts"
+      },
+      "support_conditions": "one information gap with optional sentence starts; fade prompts on the transfer attempt",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "a2",
+      "cefr_reference": "A2",
+      "reference_status": "cefr_level",
+      "flemish_richtgraad_reference": "1.2",
+      "communicative_focus": "Complete routine exchanges, describe familiar experiences and confirm practical arrangements.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          6,
+          14
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 5,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "nested arguments",
+          "unexplained literary ambiguity"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "present and common perfect forms",
+          "past descriptions with common high-frequency verbs",
+          "plans and future time cues",
+          "modality, separable verbs and short reason clauses"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "read a short everyday story",
+        "listening": "act on a voicemail or dialogue",
+        "speaking": "explain a conflict and agree a feasible solution",
+        "writing": "write a connected practical message"
+      },
+      "support_conditions": "short familiar contexts, clear audio, one manageable complication and optional support",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "pre-b1",
+      "cefr_reference": "A2 → B1",
+      "reference_status": "internal_bridge",
+      "flemish_richtgraad_reference": null,
+      "communicative_focus": "Tell a connected event, justify a choice and recover from a predictable misunderstanding.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          8,
+          17
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 6,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "sustained specialist debate",
+          "unstated causal leaps"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "perfect and simple past in a coherent timeline",
+          "future plans and intentions",
+          "subordinate clauses",
+          "sequencing, comparison and contrast"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "identify cause and consequence",
+        "listening": "combine two explicit spoken details",
+        "speaking": "retell a difficulty and propose a repair",
+        "writing": "explain a choice in a connected message"
+      },
+      "support_conditions": "fewer prompts, one controlled complication and a changed-context transfer with help recorded separately",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "b1",
+      "cefr_reference": "B1",
+      "reference_status": "cefr_level",
+      "flemish_richtgraad_reference": "2",
+      "communicative_focus": "Maintain a connected conversation on familiar matters, describe events and give reasons.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          9,
+          20
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 6,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "specialist background knowledge as a prerequisite",
+          "forced regional production"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "coherent past-event narration",
+          "relative and reason clauses",
+          "reported information with an explicit source",
+          "practical distinctions in register and certainty"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "follow a connected personal story",
+        "listening": "infer a simple intention from stated clues",
+        "speaking": "negotiate an outcome and clarify a misunderstanding",
+        "writing": "retell events and justify a decision"
+      },
+      "support_conditions": "clear connected discourse; introduce labelled informal listening variants while modelling standard production",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "pre-b2",
+      "cefr_reference": "B1 → B2",
+      "reference_status": "internal_bridge",
+      "flemish_richtgraad_reference": null,
+      "communicative_focus": "Compare alternatives, sustain a viewpoint and respond to a less predictable follow-up.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          11,
+          23
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 7,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "dense unsupported abstraction",
+          "rare words solely to inflate difficulty"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "conditionals in meaningful situations",
+          "passive forms in context",
+          "relative clauses",
+          "argument links and cautious claims"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "compare two perspectives",
+        "listening": "distinguish a claim from its reason",
+        "speaking": "defend a choice then adapt to new information",
+        "writing": "write an organised comparison"
+      },
+      "support_conditions": "explicit argument structure at first, then reduced planning support and a new follow-up",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "b2",
+      "cefr_reference": "B2",
+      "reference_status": "cefr_level",
+      "flemish_richtgraad_reference": "3",
+      "communicative_focus": "Discuss concrete and abstract issues, weigh arguments and communicate with audience-appropriate detail.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          12,
+          26
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 7,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "unexplained specialist facts as the sole difficulty",
+          "gratuitously archaic language"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "complex clause relationships",
+          "hypothetical situations and modality",
+          "cohesive reference",
+          "stance, contrast and audience-appropriate register"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "analyse motives and viewpoints",
+        "listening": "compare claims in two spoken accounts",
+        "speaking": "negotiate and defend a position",
+        "writing": "write a structured argument with relevant support"
+      },
+      "support_conditions": "normal clear delivery, broader topics, authentic-style discourse and spontaneous follow-up",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "pre-c1",
+      "cefr_reference": "B2 → C1",
+      "reference_status": "internal_bridge",
+      "flemish_richtgraad_reference": null,
+      "communicative_focus": "Interpret implied meaning and adapt explanations and arguments for different readers.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          14,
+          29
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 8,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "opaque terminology without context",
+          "length as a substitute for sophistication"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "information structure and nominalisation where useful",
+          "nuanced connectors",
+          "stance and hedging",
+          "register shifts and cohesion editing"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "support an inference with textual evidence",
+        "listening": "notice tone and implication",
+        "speaking": "reframe an explanation for another person",
+        "writing": "synthesise viewpoints with explicit attribution"
+      },
+      "support_conditions": "demanding but bounded topics, multiple registers and progressively fewer scaffolds",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "c1",
+      "cefr_reference": "C1",
+      "reference_status": "cefr_level",
+      "flemish_richtgraad_reference": "4",
+      "communicative_focus": "Interpret complex discourse and express nuanced, well-structured meaning flexibly.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          16,
+          32
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 8,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "unfamiliar specialist knowledge treated as linguistic failure",
+          "one prescribed style for all audiences"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "precise reference and discourse organisation",
+          "nuanced modality",
+          "rhetorical and stylistic choices",
+          "tense and viewpoint shifts with clear purpose"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "analyse narration and implicit relationships",
+        "listening": "interpret stance and allusion with evidence",
+        "speaking": "mediate a disagreement and adjust register",
+        "writing": "write a sustained synthesis or carefully voiced narrative"
+      },
+      "support_conditions": "longer complex discourse, implicit links and varied registers; a ten-line story is one activity rather than a full C1 curriculum",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "pre-c2",
+      "cefr_reference": "C1 → C2",
+      "reference_status": "internal_bridge",
+      "flemish_richtgraad_reference": null,
+      "communicative_focus": "Resolve ambiguity, explain fine meaning distinctions and revise communication for a demanding purpose.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          17,
+          35
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 8,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "native-accent requirements",
+          "rarity alone as an advanced target"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "fine semantic distinctions",
+          "pragmatic and rhetorical choices",
+          "controlled ambiguity",
+          "stylistic revision and compression"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "compare plausible interpretations",
+        "listening": "evaluate implication and tone",
+        "speaking": "negotiate a nuanced interpretation",
+        "writing": "revise wording while preserving intended meaning"
+      },
+      "support_conditions": "advanced extension with competing interpretations and evidence-led feedback; specialist review remains needed",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    },
+    {
+      "id": "c2",
+      "cefr_reference": "C2",
+      "reference_status": "cefr_level",
+      "flemish_richtgraad_reference": null,
+      "communicative_focus": "Integrate subtle meanings across complex sources and adapt expression with precision and control.",
+      "story_design": {
+        "line_count": {
+          "min": 8,
+          "max": 12
+        },
+        "words_per_line_guidance": [
+          18,
+          38
+        ],
+        "guidance_is_not_a_cefr_cut_score": true,
+        "new_target_words_guidance": 8,
+        "required_narrative_elements": [
+          "consistent characters and setting",
+          "one understandable goal or question",
+          "events with a clear causal or temporal connection",
+          "a meaningful outcome linked to the goal"
+        ],
+        "genre_choices": [
+          "friendship",
+          "gentle romance",
+          "everyday drama",
+          "humour",
+          "discovery",
+          "mystery"
+        ],
+        "avoid": [
+          "a claim of native equivalence",
+          "an unvalidated examination or certificate claim"
+        ]
+      },
+      "productive_language": {
+        "forms": [
+          "idiomatic register awareness",
+          "subtle stance, perspective and implication",
+          "advanced synthesis",
+          "deliberate style, rhythm and semantic precision"
+        ],
+        "core_selection": "At least 150 distinct useful lemmas or fixed multiword expressions; retain the larger existing bank. Select a balanced mix that serves communication. Inflections and repeated meanings are not additional vocabulary entries.",
+        "word_classes": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "useful fixed expression"
+        ],
+        "inflection_policy": "Only show grammatically meaningful forms for the word class and stage. Nouns need article/plural where applicable; verbs need stage-appropriate contextual forms. Do not give adjectives a tense or force every beginner example into the past."
+      },
+      "four_skill_actions": {
+        "reading": "analyse layered meaning and narrative perspective",
+        "listening": "interpret complex speech and implicit references",
+        "speaking": "mediate competing interpretations with precision",
+        "writing": "produce and revise an exact synthesis for a defined audience"
+      },
+      "support_conditions": "CEFR-informed extension requiring expert calibration; include complex multi-source tasks beyond the short-story library",
+      "independent_transfer": "Revisit the target expression in a different, understandable scenario; hide optional answer support and keep any help as assisted evidence.",
+      "review_status": "provisional_not_human_calibrated"
+    }
+  ]
+}

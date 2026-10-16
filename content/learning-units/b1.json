@@ -1,0 +1,815 @@
+{
+  "schema_version": 1,
+  "stage_id": "b1",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "b1-unit-unfinished-mural-v1",
+      "term": "overschilderen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Nieuwe verf over een geschilderd oppervlak aanbrengen.",
+        "en": "To paint over a painted surface.",
+        "fa": "روی سطح نقاشی‌شده دوباره رنگ زدن."
+      },
+      "example": {
+        "nl": "We willen de boom niet overschilderen.",
+        "en": "We do not want to paint over the tree.",
+        "fa": "نمی‌خواهیم روی درخت دوباره رنگ بزنیم."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "b1-unit-unfinished-mural-v2",
+      "term": "bijdragen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een aandeel leveren aan iets gemeenschappelijks.",
+        "en": "To contribute to something shared.",
+        "fa": "در کاری مشترک مشارکت کردن."
+      },
+      "example": {
+        "nl": "Ook nieuwe buren kunnen bijdragen.",
+        "en": "New neighbours can contribute too.",
+        "fa": "همسایه‌های تازه هم می‌توانند مشارکت کنند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "b1-unit-unfinished-mural-v3",
+      "term": "verwisselbaar",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Vervangbaar door een ander exemplaar.",
+        "en": "Interchangeable.",
+        "fa": "قابل تعویض."
+      },
+      "example": {
+        "nl": "De tekeningen zijn verwisselbaar.",
+        "en": "The pictures are interchangeable.",
+        "fa": "تصویرها قابل تعویض هستند."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "b1-unit-unfinished-mural-v4",
+      "term": "bovenaan",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Aan de bovenkant.",
+        "en": "At the top.",
+        "fa": "در بالا."
+      },
+      "example": {
+        "nl": "De straatnaam staat bovenaan.",
+        "en": "The street’s name is at the top.",
+        "fa": "نام خیابان بالاست."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "b1-unit-portrait-scar-v1",
+      "term": "het litteken",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een blijvende plek op de huid na een wond.",
+        "en": "A lasting mark on the skin after an injury.",
+        "fa": "اثری ماندگار روی پوست پس از زخم؛ جای زخم."
+      },
+      "example": {
+        "nl": "Het litteken herinnert Lieve aan een fietstocht.",
+        "en": "The scar reminds Lieve of a bicycle ride.",
+        "fa": "جای زخم لیفه را به یاد دوچرخه‌سواری می‌اندازد."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "b1-unit-portrait-scar-v2",
+      "term": "bewerken",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een tekst, beeld of ander materiaal aanpassen.",
+        "en": "To edit a text, image or other material.",
+        "fa": "متن، تصویر یا مواد دیگر را ویرایش کردن."
+      },
+      "example": {
+        "nl": "De fotograaf heeft de foto te sterk bewerkt.",
+        "en": "The photographer has edited the photo too heavily.",
+        "fa": "عکاس عکس را بیش از حد ویرایش کرده است."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "b1-unit-portrait-scar-v3",
+      "term": "oorspronkelijk",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zoals iets eerst was, vóór veranderingen.",
+        "en": "As something was initially, before changes.",
+        "fa": "به شکل اولیه، پیش از تغییرها؛ اصلی."
+      },
+      "example": {
+        "nl": "Lieve vraagt naar de oorspronkelijke foto.",
+        "en": "Lieve asks for the original photo.",
+        "fa": "لیفه عکس اصلی را می‌خواهد."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "b1-unit-portrait-scar-v4",
+      "term": "nauwelijks",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Bijna niet.",
+        "en": "Hardly or barely.",
+        "fa": "به‌سختی؛ تقریباً نه."
+      },
+      "example": {
+        "nl": "Ze herkent haar glimlach nauwelijks.",
+        "en": "She can barely recognise her smile.",
+        "fa": "به‌سختی لبخند خودش را می‌شناسد."
+      },
+      "part_of_speech": "adverb"
+    }
+  ],
+  "stories": [
+    {
+      "id": "b1-s-unit-unfinished-mural",
+      "title": {
+        "nl": "De lege plek op de muur",
+        "en": "The empty space on the wall",
+        "fa": "جای خالی روی دیوار"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een buurtverhaal",
+        "en": "A neighbourhood story",
+        "fa": "داستان محله"
+      },
+      "lines": [
+        {
+          "nl": "De bewoners van een straat in Kortrijk maken samen een muurschildering.",
+          "en": "The residents of a street in Kortrijk are creating a mural together.",
+          "fa": "ساکنان خیابانی در کورتریک با هم نقاشی دیواری می‌کشند."
+        },
+        {
+          "nl": "Iedereen mag iets schilderen dat bij de buurt past.",
+          "en": "Everyone may paint something that belongs to the neighbourhood.",
+          "fa": "هرکس می‌تواند چیزی متناسب با محله نقاشی کند."
+        },
+        {
+          "nl": "Bilal schildert de bakkerij waar hij zijn eerste baan vond.",
+          "en": "Bilal paints the bakery where he found his first job.",
+          "fa": "بلال نانوایی‌ای را می‌کشد که اولین کارش را آنجا پیدا کرد."
+        },
+        {
+          "nl": "Emma tekent de boom waaronder haar ouders elkaar leerden kennen.",
+          "en": "Emma draws the tree under which her parents first met.",
+          "fa": "اما درختی را می‌کشد که پدر و مادرش زیر آن با هم آشنا شدند."
+        },
+        {
+          "nl": "Alleen in het midden blijft een groot wit vlak over.",
+          "en": "Only a large white area in the middle remains empty.",
+          "fa": "فقط بخش سفید بزرگی در وسط خالی می‌ماند."
+        },
+        {
+          "nl": "Sommige buren willen daar de naam van de straat zetten.",
+          "en": "Some neighbours want to put the street’s name there.",
+          "fa": "بعضی همسایه‌ها می‌خواهند نام خیابان را آنجا بنویسند."
+        },
+        {
+          "nl": "Anderen willen ruimte laten voor bewoners die later komen.",
+          "en": "Others want to leave room for residents who arrive later.",
+          "fa": "دیگران می‌خواهند برای ساکنان آینده جا بگذارند."
+        },
+        {
+          "nl": "Na een gesprek stellen ze voor om er losse panelen te hangen.",
+          "en": "After a discussion they propose hanging removable panels there.",
+          "fa": "پس از گفت‌وگو پیشنهاد می‌کنند آنجا صفحه‌های جداشدنی نصب کنند."
+        },
+        {
+          "nl": "Zo kan het midden veranderen zonder de rest te overschilderen.",
+          "en": "This lets the centre change without painting over the rest.",
+          "fa": "این‌طوری بخش میانی بدون پوشاندن بقیهٔ نقاشی تغییر می‌کند."
+        },
+        {
+          "nl": "Emma schrijft de eerste uitnodiging voor de nieuwe buren.",
+          "en": "Emma writes the first invitation for the new neighbours.",
+          "fa": "اما اولین دعوت‌نامه را برای همسایه‌های تازه می‌نویسد."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "De bewoners van een straat in Kortrijk maken samen een muurschildering. Iedereen mag iets schilderen dat bij de buurt past. Bilal schildert de bakkerij waar hij zijn eerste baan vond. Emma tekent de boom waaronder haar ouders elkaar leerden kennen. Alleen in het midden blijft een groot wit vlak over.",
+          "en": "The residents of a street in Kortrijk are creating a mural together. Everyone may paint something that belongs to the neighbourhood. Bilal paints the bakery where he found his first job. Emma draws the tree under which her parents first met. Only a large white area in the middle remains empty.",
+          "fa": "ساکنان خیابانی در کورتریک با هم نقاشی دیواری می‌کشند. هرکس می‌تواند چیزی متناسب با محله نقاشی کند. بلال نانوایی‌ای را می‌کشد که اولین کارش را آنجا پیدا کرد. اما درختی را می‌کشد که پدر و مادرش زیر آن با هم آشنا شدند. فقط بخش سفید بزرگی در وسط خالی می‌ماند."
+        },
+        {
+          "nl": "Sommige buren willen daar de naam van de straat zetten. Anderen willen ruimte laten voor bewoners die later komen. Na een gesprek stellen ze voor om er losse panelen te hangen. Zo kan het midden veranderen zonder de rest te overschilderen. Emma schrijft de eerste uitnodiging voor de nieuwe buren.",
+          "en": "Some neighbours want to put the street’s name there. Others want to leave room for residents who arrive later. After a discussion they propose hanging removable panels there. This lets the centre change without painting over the rest. Emma writes the first invitation for the new neighbours.",
+          "fa": "بعضی همسایه‌ها می‌خواهند نام خیابان را آنجا بنویسند. دیگران می‌خواهند برای ساکنان آینده جا بگذارند. پس از گفت‌وگو پیشنهاد می‌کنند آنجا صفحه‌های جداشدنی نصب کنند. این‌طوری بخش میانی بدون پوشاندن بقیهٔ نقاشی تغییر می‌کند. اما اولین دعوت‌نامه را برای همسایه‌های تازه می‌نویسد."
+        }
+      ],
+      "topic_id": "b1-t-unit-unfinished-mural",
+      "vocabulary_ids": [
+        "b1-unit-unfinished-mural-v1",
+        "b1-unit-unfinished-mural-v2",
+        "b1-unit-unfinished-mural-v3",
+        "b1-unit-unfinished-mural-v4"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom willen sommige buren ruimte vrijhouden?",
+          "en": "Why do some neighbours want to leave space?",
+          "fa": "چرا بعضی همسایه‌ها می‌خواهند جایی خالی بماند؟"
+        },
+        "options": [
+          {
+            "nl": "Omdat niemand kan schilderen.",
+            "en": "Because nobody can paint.",
+            "fa": "چون هیچ‌کس نقاشی بلد نیست."
+          },
+          {
+            "nl": "Voor bewoners die later komen.",
+            "en": "For residents who arrive later.",
+            "fa": "برای ساکنان آینده."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Ook nieuwe bewoners moeten kunnen bijdragen.",
+          "en": "New residents should be able to contribute too.",
+          "fa": "ساکنان تازه هم باید بتوانند مشارکت کنند."
+        }
+      }
+    },
+    {
+      "id": "b1-s-unit-portrait-scar",
+      "title": {
+        "nl": "Het litteken op de foto",
+        "en": "The scar in the photograph",
+        "fa": "جای زخم در عکس"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een persoonlijk verhaal",
+        "en": "A personal story",
+        "fa": "روایتی شخصی"
+      },
+      "lines": [
+        {
+          "nl": "Voor haar zestigste verjaardag liet Lieve een portret maken.",
+          "en": "Lieve had a portrait taken for her sixtieth birthday.",
+          "fa": "لیفه برای شصتمین سالگرد تولدش عکس پرتره گرفت."
+        },
+        {
+          "nl": "De fotograaf stuurde eerst een sterk bewerkte versie.",
+          "en": "The photographer first sent a heavily edited version.",
+          "fa": "عکاس ابتدا نسخه‌ای بسیار ویرایش‌شده فرستاد."
+        },
+        {
+          "nl": "Haar huid was glad, maar ze herkende haar eigen glimlach nauwelijks.",
+          "en": "Her skin was smooth, but she could barely recognise her own smile.",
+          "fa": "پوستش صاف بود، اما به‌سختی لبخند خودش را می‌شناخت."
+        },
+        {
+          "nl": "Haar dochter vond de foto mooi en begreep haar teleurstelling niet.",
+          "en": "Her daughter thought the photo was beautiful and did not understand her disappointment.",
+          "fa": "دخترش عکس را زیبا می‌دانست و ناراحتی او را نمی‌فهمید."
+        },
+        {
+          "nl": "Lieve legde uit dat het kleine litteken bij haar mond bij haar hoorde.",
+          "en": "Lieve explained that the small scar beside her mouth was part of who she was.",
+          "fa": "لیفه توضیح داد جای زخم کوچک کنار دهانش بخشی از وجود اوست."
+        },
+        {
+          "nl": "Ze had het gekregen tijdens de fietstocht waarop ze haar partner ontmoette.",
+          "en": "She had got it during the bicycle ride on which she met her partner.",
+          "fa": "در همان دوچرخه‌سواری‌ای آن زخم را برداشته بود که با شریک زندگی‌اش آشنا شد."
+        },
+        {
+          "nl": "De fotograaf gaf toe dat hij zonder overleg te veel had veranderd.",
+          "en": "The photographer admitted that he had changed too much without consulting her.",
+          "fa": "عکاس پذیرفت بدون مشورت بیش از حد تغییر ایجاد کرده است."
+        },
+        {
+          "nl": "Hij stuurde de oorspronkelijke foto en vroeg welke aanpassingen zij zelf wilde.",
+          "en": "He sent the original photo and asked which changes she herself wanted.",
+          "fa": "عکس اصلی را فرستاد و پرسید خود او چه تغییرهایی می‌خواهد."
+        },
+        {
+          "nl": "Lieve koos alleen een lichtere achtergrond.",
+          "en": "Lieve chose only a lighter background.",
+          "fa": "لیفه فقط پس‌زمینه‌ای روشن‌تر انتخاب کرد."
+        },
+        {
+          "nl": "Op het feest vertelde ze het verhaal van het litteken bij haar portret.",
+          "en": "At the party she told the story of the scar beside her portrait.",
+          "fa": "در مهمانی کنار پرتره‌اش داستان جای زخم را تعریف کرد."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Voor haar zestigste verjaardag liet Lieve een portret maken. De fotograaf stuurde eerst een sterk bewerkte versie. Haar huid was glad, maar ze herkende haar eigen glimlach nauwelijks. Haar dochter vond de foto mooi en begreep haar teleurstelling niet. Lieve legde uit dat het kleine litteken bij haar mond bij haar hoorde.",
+          "en": "Lieve had a portrait taken for her sixtieth birthday. The photographer first sent a heavily edited version. Her skin was smooth, but she could barely recognise her own smile. Her daughter thought the photo was beautiful and did not understand her disappointment. Lieve explained that the small scar beside her mouth was part of who she was.",
+          "fa": "لیفه برای شصتمین سالگرد تولدش عکس پرتره گرفت. عکاس ابتدا نسخه‌ای بسیار ویرایش‌شده فرستاد. پوستش صاف بود، اما به‌سختی لبخند خودش را می‌شناخت. دخترش عکس را زیبا می‌دانست و ناراحتی او را نمی‌فهمید. لیفه توضیح داد جای زخم کوچک کنار دهانش بخشی از وجود اوست."
+        },
+        {
+          "nl": "Ze had het gekregen tijdens de fietstocht waarop ze haar partner ontmoette. De fotograaf gaf toe dat hij zonder overleg te veel had veranderd. Hij stuurde de oorspronkelijke foto en vroeg welke aanpassingen zij zelf wilde. Lieve koos alleen een lichtere achtergrond. Op het feest vertelde ze het verhaal van het litteken bij haar portret.",
+          "en": "She had got it during the bicycle ride on which she met her partner. The photographer admitted that he had changed too much without consulting her. He sent the original photo and asked which changes she herself wanted. Lieve chose only a lighter background. At the party she told the story of the scar beside her portrait.",
+          "fa": "در همان دوچرخه‌سواری‌ای آن زخم را برداشته بود که با شریک زندگی‌اش آشنا شد. عکاس پذیرفت بدون مشورت بیش از حد تغییر ایجاد کرده است. عکس اصلی را فرستاد و پرسید خود او چه تغییرهایی می‌خواهد. لیفه فقط پس‌زمینه‌ای روشن‌تر انتخاب کرد. در مهمانی کنار پرتره‌اش داستان جای زخم را تعریف کرد."
+        }
+      ],
+      "topic_id": "b1-t-unit-portrait-scar",
+      "vocabulary_ids": [
+        "b1-unit-portrait-scar-v1",
+        "b1-unit-portrait-scar-v2",
+        "b1-unit-portrait-scar-v3",
+        "b1-unit-portrait-scar-v4"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom is Lieve niet tevreden met de eerste versie?",
+          "en": "Why is Lieve dissatisfied with the first version?",
+          "fa": "چرا لیفه از نسخهٔ اول راضی نیست؟"
+        },
+        "options": [
+          {
+            "nl": "De foto toont een andere persoon naast haar.",
+            "en": "The photo shows another person beside her.",
+            "fa": "عکس شخص دیگری را کنار او نشان می‌دهد."
+          },
+          {
+            "nl": "Een persoonlijk kenmerk is te veel veranderd.",
+            "en": "A personal feature has been changed too much.",
+            "fa": "ویژگی شخصی‌اش بیش از حد تغییر کرده است."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Het litteken is voor haar verbonden met een belangrijke herinnering.",
+          "en": "For her, the scar is linked to an important memory.",
+          "fa": "جای زخم برای او با خاطره‌ای مهم پیوند دارد."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "b1-t-unit-unfinished-mural",
+      "title": {
+        "nl": "De lege plek op de muur",
+        "en": "The empty space on the wall",
+        "fa": "جای خالی روی دیوار"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Bespreek verschillende wensen en onderbouw een gezamenlijk besluit.",
+          "en": "Discuss different wishes and justify a shared decision.",
+          "fa": "خواسته‌های متفاوت را بررسی کن و برای تصمیم مشترک دلیل بیاور."
+        }
+      ],
+      "language_focus": {
+        "nl": "Bespreek verschillende wensen en onderbouw een gezamenlijk besluit.",
+        "en": "Discuss different wishes and justify a shared decision.",
+        "fa": "خواسته‌های متفاوت را بررسی کن و برای تصمیم مشترک دلیل بیاور."
+      },
+      "vocabulary_ids": [
+        "b1-unit-unfinished-mural-v1",
+        "b1-unit-unfinished-mural-v2",
+        "b1-unit-unfinished-mural-v3",
+        "b1-unit-unfinished-mural-v4"
+      ],
+      "reading": {
+        "text": {
+          "nl": "De bewoners van een straat in Kortrijk maken samen een muurschildering. Iedereen mag iets schilderen dat bij de buurt past. Bilal schildert de bakkerij waar hij zijn eerste baan vond. Emma tekent de boom waaronder haar ouders elkaar leerden kennen. Alleen in het midden blijft een groot wit vlak over.\n\nSommige buren willen daar de naam van de straat zetten. Anderen willen ruimte laten voor bewoners die later komen. Na een gesprek stellen ze voor om er losse panelen te hangen. Zo kan het midden veranderen zonder de rest te overschilderen. Emma schrijft de eerste uitnodiging voor de nieuwe buren.",
+          "en": "The residents of a street in Kortrijk are creating a mural together. Everyone may paint something that belongs to the neighbourhood. Bilal paints the bakery where he found his first job. Emma draws the tree under which her parents first met. Only a large white area in the middle remains empty.\n\nSome neighbours want to put the street’s name there. Others want to leave room for residents who arrive later. After a discussion they propose hanging removable panels there. This lets the centre change without painting over the rest. Emma writes the first invitation for the new neighbours.",
+          "fa": "ساکنان خیابانی در کورتریک با هم نقاشی دیواری می‌کشند. هرکس می‌تواند چیزی متناسب با محله نقاشی کند. بلال نانوایی‌ای را می‌کشد که اولین کارش را آنجا پیدا کرد. اما درختی را می‌کشد که پدر و مادرش زیر آن با هم آشنا شدند. فقط بخش سفید بزرگی در وسط خالی می‌ماند.\n\nبعضی همسایه‌ها می‌خواهند نام خیابان را آنجا بنویسند. دیگران می‌خواهند برای ساکنان آینده جا بگذارند. پس از گفت‌وگو پیشنهاد می‌کنند آنجا صفحه‌های جداشدنی نصب کنند. این‌طوری بخش میانی بدون پوشاندن بقیهٔ نقاشی تغییر می‌کند. اما اولین دعوت‌نامه را برای همسایه‌های تازه می‌نویسد."
+        },
+        "questions": [
+          {
+            "id": "b1-t-unit-unfinished-mural-r1",
+            "prompt": {
+              "nl": "Waarom willen sommige buren ruimte vrijhouden?",
+              "en": "Why do some neighbours want to leave space?",
+              "fa": "چرا بعضی همسایه‌ها می‌خواهند جایی خالی بماند؟"
+            },
+            "options": [
+              {
+                "nl": "Omdat niemand kan schilderen.",
+                "en": "Because nobody can paint.",
+                "fa": "چون هیچ‌کس نقاشی بلد نیست."
+              },
+              {
+                "nl": "Voor bewoners die later komen.",
+                "en": "For residents who arrive later.",
+                "fa": "برای ساکنان آینده."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Ook nieuwe bewoners moeten kunnen bijdragen.",
+              "en": "New residents should be able to contribute too.",
+              "fa": "ساکنان تازه هم باید بتوانند مشارکت کنند."
+            }
+          },
+          {
+            "id": "b1-t-unit-unfinished-mural-r2",
+            "prompt": {
+              "nl": "Wat is het voordeel van losse panelen?",
+              "en": "What is the advantage of removable panels?",
+              "fa": "مزیت صفحه‌های جداشدنی چیست؟"
+            },
+            "options": [
+              {
+                "nl": "Het midden kan veranderen.",
+                "en": "The centre can change.",
+                "fa": "بخش میانی می‌تواند تغییر کند."
+              },
+              {
+                "nl": "De hele muur moet telkens opnieuw geschilderd worden.",
+                "en": "The whole wall must be repainted each time.",
+                "fa": "هربار باید کل دیوار دوباره نقاشی شود."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De rest hoeft niet overschilderd te worden.",
+              "en": "The rest does not need painting over.",
+              "fa": "لازم نیست روی بقیه دوباره رنگ بزنند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag iedereen, de panelen zijn te zwaar voor de bevestiging die we hebben. Een vrijwilliger stelt lichte houten kaders voor. Die kosten samen veertig euro. We kunnen de naam van de straat bovenaan houden en de tekeningen in de kaders verwisselen. Beslissen we daar zaterdag samen over?",
+          "en": "Hello, everyone, the panels are too heavy for the fastening we have. A volunteer suggests lightweight wooden frames. Together they cost forty euros. We can keep the street’s name at the top and change the pictures in the frames. Shall we decide together on Saturday?",
+          "fa": "سلام به همه، صفحه‌ها برای اتصالی که داریم بیش از حد سنگین هستند. داوطلبی قاب‌های چوبی سبک پیشنهاد می‌کند. در مجموع چهل یورو هزینه دارند. می‌توانیم نام خیابان را بالا نگه داریم و تصویرهای داخل قاب‌ها را عوض کنیم. شنبه با هم درباره‌اش تصمیم بگیریم؟"
+        },
+        "questions": [
+          {
+            "id": "b1-t-unit-unfinished-mural-l1",
+            "prompt": {
+              "nl": "Waarom wordt een ander materiaal voorgesteld?",
+              "en": "Why is another material suggested?",
+              "fa": "چرا مادهٔ دیگری پیشنهاد می‌شود؟"
+            },
+            "options": [
+              {
+                "nl": "De straat krijgt een nieuwe naam.",
+                "en": "The street is getting a new name.",
+                "fa": "نام خیابان عوض می‌شود."
+              },
+              {
+                "nl": "De panelen zijn te zwaar.",
+                "en": "The panels are too heavy.",
+                "fa": "صفحه‌ها بیش از حد سنگین هستند."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De bestaande bevestiging kan het gewicht niet dragen.",
+              "en": "The existing fastening cannot support the weight.",
+              "fa": "اتصال موجود تحمل وزن را ندارد."
+            }
+          },
+          {
+            "id": "b1-t-unit-unfinished-mural-l2",
+            "prompt": {
+              "nl": "Is het voorstel al definitief goedgekeurd?",
+              "en": "Has the proposal already received final approval?",
+              "fa": "آیا پیشنهاد به‌طور نهایی تصویب شده است؟"
+            },
+            "options": [
+              {
+                "nl": "Nee, er volgt zaterdag een gezamenlijk besluit.",
+                "en": "No, a joint decision follows on Saturday.",
+                "fa": "نه، شنبه تصمیم مشترک گرفته می‌شود."
+              },
+              {
+                "nl": "Ja, de kaders zijn al gekocht.",
+                "en": "Yes, the frames have already been bought.",
+                "fa": "بله، قاب‌ها قبلاً خریده شده‌اند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Het bericht vraagt nog om een besluit.",
+              "en": "The message still asks for a decision.",
+              "fa": "پیام هنوز درخواست تصمیم‌گیری می‌کند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Bespreek het voorstel voor lichte kaders met een buur. Noem een voordeel en een bezwaar en stel een volgende stap voor.",
+          "en": "Discuss the lightweight-frame proposal with a neighbour. Give one advantage and one concern, then propose a next step.",
+          "fa": "پیشنهاد قاب‌های سبک را با همسایه بررسی کن. یک مزیت و یک نگرانی بگو و قدم بعد را پیشنهاد بده."
+        },
+        "sample": {
+          "nl": "Lichte kaders lijken me handig, want we kunnen de tekeningen later veranderen. Ik weet alleen niet of het hout tegen regen kan. Zullen we dat voor zaterdag aan de vrijwilliger vragen? Dan kunnen we met de juiste informatie over de veertig euro beslissen.",
+          "en": "Lightweight frames seem useful because we can change the pictures later. I just do not know whether the wood can withstand rain. Shall we ask the volunteer before Saturday? Then we can decide about the forty euros with the right information.",
+          "fa": "قاب‌های سبک به‌نظرم کاربردی هستند، چون بعداً می‌توانیم تصویرها را تغییر بدهیم. فقط نمی‌دانم چوب در برابر باران دوام دارد یا نه. قبل از شنبه از داوطلب بپرسیم؟ آن‌وقت با اطلاعات درست دربارهٔ چهل یورو تصمیم می‌گیریم."
+        },
+        "min_words": 30,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Noem een voordeel en een bezwaar.",
+            "en": "Give an advantage and a concern.",
+            "fa": "یک مزیت و یک نگرانی بگو."
+          },
+          {
+            "nl": "Stel een concrete volgende stap voor.",
+            "en": "Propose a concrete next step.",
+            "fa": "قدم بعدی مشخصی پیشنهاد بده."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een uitnodiging voor het overleg van zaterdag. Leg uit wat veranderde, noem de kosten en maak duidelijk dat er nog geen definitief besluit is.",
+          "en": "Write an invitation to Saturday’s discussion. Explain what changed, give the cost and make clear that no final decision has been made.",
+          "fa": "برای جلسهٔ شنبه دعوت‌نامه بنویس. تغییر را توضیح بده، هزینه را بگو و روشن کن هنوز تصمیم نهایی گرفته نشده است."
+        },
+        "sample": {
+          "nl": "Beste buren, zaterdag bespreken we hoe we het midden van de muurschildering kunnen gebruiken. De panelen blijken te zwaar voor onze bevestiging. Daarom stelt een vrijwilliger lichte houten kaders voor. Die kosten samen veertig euro. De tekeningen blijven dan verwisselbaar en de straatnaam kan bovenaan staan. We hebben dit nog niet definitief goedgekeurd. Kom dus mee nadenken en breng je vragen over het materiaal en de kosten mee. Tot zaterdag!",
+          "en": "Dear neighbours, on Saturday we will discuss how to use the centre of the mural. The panels turn out to be too heavy for our fastening. A volunteer therefore suggests lightweight wooden frames. Together they cost forty euros. The pictures would remain interchangeable and the street’s name could stay at the top. We have not given this final approval yet. Please join the discussion and bring your questions about the material and the cost. See you on Saturday!",
+          "fa": "همسایه‌های عزیز، شنبه دربارهٔ استفاده از بخش میانی نقاشی دیواری گفت‌وگو می‌کنیم. مشخص شده صفحه‌ها برای اتصال ما بیش از حد سنگین هستند. بنابراین داوطلبی قاب‌های چوبی سبک پیشنهاد می‌کند. در مجموع چهل یورو هزینه دارند. تصویرها قابل تعویض می‌مانند و نام خیابان می‌تواند بالا باشد. هنوز این پیشنهاد را نهایی تصویب نکرده‌ایم. لطفاً در گفت‌وگو شرکت کنید و پرسش‌هایتان دربارهٔ جنس و هزینه را بیاورید. تا شنبه!"
+        },
+        "min_words": 30,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Nodig uit voor zaterdag.",
+            "en": "Invite people for Saturday.",
+            "fa": "برای شنبه دعوت کن."
+          },
+          {
+            "nl": "Leg het gewichtsprobleem en de veertig euro uit.",
+            "en": "Explain the weight problem and the forty euros.",
+            "fa": "مشکل وزن و چهل یورو را توضیح بده."
+          },
+          {
+            "nl": "Zeg dat het voorstel nog niet is goedgekeurd.",
+            "en": "Say the proposal has not been approved yet.",
+            "fa": "بگو پیشنهاد هنوز تصویب نشده است."
+          }
+        ]
+      }
+    },
+    {
+      "id": "b1-t-unit-portrait-scar",
+      "title": {
+        "nl": "Het litteken op de foto",
+        "en": "The scar in the photograph",
+        "fa": "جای زخم در عکس"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Leg een persoonlijke voorkeur uit en maak een duidelijke afspraak over een dienst.",
+          "en": "Explain a personal preference and make a clear arrangement for a service.",
+          "fa": "ترجیح شخصی‌ات را توضیح بده و دربارهٔ یک خدمت روشن هماهنگ کن."
+        }
+      ],
+      "language_focus": {
+        "nl": "Leg een persoonlijke voorkeur uit en maak een duidelijke afspraak over een dienst.",
+        "en": "Explain a personal preference and make a clear arrangement for a service.",
+        "fa": "ترجیح شخصی‌ات را توضیح بده و دربارهٔ یک خدمت روشن هماهنگ کن."
+      },
+      "vocabulary_ids": [
+        "b1-unit-portrait-scar-v1",
+        "b1-unit-portrait-scar-v2",
+        "b1-unit-portrait-scar-v3",
+        "b1-unit-portrait-scar-v4"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Voor haar zestigste verjaardag liet Lieve een portret maken. De fotograaf stuurde eerst een sterk bewerkte versie. Haar huid was glad, maar ze herkende haar eigen glimlach nauwelijks. Haar dochter vond de foto mooi en begreep haar teleurstelling niet. Lieve legde uit dat het kleine litteken bij haar mond bij haar hoorde.\n\nZe had het gekregen tijdens de fietstocht waarop ze haar partner ontmoette. De fotograaf gaf toe dat hij zonder overleg te veel had veranderd. Hij stuurde de oorspronkelijke foto en vroeg welke aanpassingen zij zelf wilde. Lieve koos alleen een lichtere achtergrond. Op het feest vertelde ze het verhaal van het litteken bij haar portret.",
+          "en": "Lieve had a portrait taken for her sixtieth birthday. The photographer first sent a heavily edited version. Her skin was smooth, but she could barely recognise her own smile. Her daughter thought the photo was beautiful and did not understand her disappointment. Lieve explained that the small scar beside her mouth was part of who she was.\n\nShe had got it during the bicycle ride on which she met her partner. The photographer admitted that he had changed too much without consulting her. He sent the original photo and asked which changes she herself wanted. Lieve chose only a lighter background. At the party she told the story of the scar beside her portrait.",
+          "fa": "لیفه برای شصتمین سالگرد تولدش عکس پرتره گرفت. عکاس ابتدا نسخه‌ای بسیار ویرایش‌شده فرستاد. پوستش صاف بود، اما به‌سختی لبخند خودش را می‌شناخت. دخترش عکس را زیبا می‌دانست و ناراحتی او را نمی‌فهمید. لیفه توضیح داد جای زخم کوچک کنار دهانش بخشی از وجود اوست.\n\nدر همان دوچرخه‌سواری‌ای آن زخم را برداشته بود که با شریک زندگی‌اش آشنا شد. عکاس پذیرفت بدون مشورت بیش از حد تغییر ایجاد کرده است. عکس اصلی را فرستاد و پرسید خود او چه تغییرهایی می‌خواهد. لیفه فقط پس‌زمینه‌ای روشن‌تر انتخاب کرد. در مهمانی کنار پرتره‌اش داستان جای زخم را تعریف کرد."
+        },
+        "questions": [
+          {
+            "id": "b1-t-unit-portrait-scar-r1",
+            "prompt": {
+              "nl": "Waarom is Lieve niet tevreden met de eerste versie?",
+              "en": "Why is Lieve dissatisfied with the first version?",
+              "fa": "چرا لیفه از نسخهٔ اول راضی نیست؟"
+            },
+            "options": [
+              {
+                "nl": "De foto toont een andere persoon naast haar.",
+                "en": "The photo shows another person beside her.",
+                "fa": "عکس شخص دیگری را کنار او نشان می‌دهد."
+              },
+              {
+                "nl": "Een persoonlijk kenmerk is te veel veranderd.",
+                "en": "A personal feature has been changed too much.",
+                "fa": "ویژگی شخصی‌اش بیش از حد تغییر کرده است."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Het litteken is voor haar verbonden met een belangrijke herinnering.",
+              "en": "For her, the scar is linked to an important memory.",
+              "fa": "جای زخم برای او با خاطره‌ای مهم پیوند دارد."
+            }
+          },
+          {
+            "id": "b1-t-unit-portrait-scar-r2",
+            "prompt": {
+              "nl": "Wat kiest Lieve uiteindelijk?",
+              "en": "What does Lieve ultimately choose?",
+              "fa": "لیفه در پایان چه چیزی انتخاب می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Alleen een lichtere achtergrond.",
+                "en": "Only a lighter background.",
+                "fa": "فقط پس‌زمینه‌ای روشن‌تر."
+              },
+              {
+                "nl": "Een volledig glad gezicht.",
+                "en": "A completely smooth face.",
+                "fa": "چهره‌ای کاملاً صاف."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Ze wil haar gezicht behouden en alleen de achtergrond veranderen.",
+              "en": "She wants to keep her face as it is and change only the background.",
+              "fa": "می‌خواهد چهره‌اش همان‌طور بماند و فقط پس‌زمینه تغییر کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Lieve, ik kan de achtergrond lichter maken zonder uw gezicht te veranderen. Een afdruk op A4 kost twintig euro, maar op A3 vijfendertig euro. Ik druk nog niets af voordat u het formaat bevestigt.",
+          "en": "Hello, Lieve, I can lighten the background without changing your face. An A4 print costs twenty euros, while A3 costs thirty-five euros. I will not print anything until you confirm the size.",
+          "fa": "سلام لیفه، می‌توانم بدون تغییر چهره‌تان پس‌زمینه را روشن‌تر کنم. چاپ اندازهٔ A4 بیست یورو و اندازهٔ A3 سی‌وپنج یورو هزینه دارد. تا اندازه را تأیید نکنید چیزی چاپ نمی‌کنم."
+        },
+        "questions": [
+          {
+            "id": "b1-t-unit-portrait-scar-l1",
+            "prompt": {
+              "nl": "Welke afdruk kost twintig euro?",
+              "en": "Which print costs twenty euros?",
+              "fa": "کدام اندازهٔ چاپ بیست یورو هزینه دارد؟"
+            },
+            "options": [
+              {
+                "nl": "A3.",
+                "en": "A3.",
+                "fa": "A3."
+              },
+              {
+                "nl": "A4.",
+                "en": "A4.",
+                "fa": "A4."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Het bericht noemt twintig euro voor A4 en vijfendertig voor A3.",
+              "en": "The message quotes twenty euros for A4 and thirty-five for A3.",
+              "fa": "پیام برای A4 بیست یورو و برای A3 سی‌وپنج یورو می‌گوید."
+            }
+          },
+          {
+            "id": "b1-t-unit-portrait-scar-l2",
+            "prompt": {
+              "nl": "Wat moet gebeuren voordat de fotograaf afdrukt?",
+              "en": "What must happen before the photographer prints?",
+              "fa": "پیش از چاپ عکاس چه اتفاقی باید بیفتد؟"
+            },
+            "options": [
+              {
+                "nl": "Lieve moet het formaat bevestigen.",
+                "en": "Lieve must confirm the size.",
+                "fa": "لیفه باید اندازه را تأیید کند."
+              },
+              {
+                "nl": "Haar dochter moet een nieuwe foto maken.",
+                "en": "Her daughter must take a new photograph.",
+                "fa": "دخترش باید عکس تازه‌ای بگیرد."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De fotograaf wacht op toestemming voor het formaat.",
+              "en": "The photographer is waiting for approval of the size.",
+              "fa": "عکاس منتظر تأیید اندازه است."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Je hebt maximaal vijfentwintig euro. Kies een passend formaat uit het luisterbericht. Leg uit welke verandering je wilt en geef duidelijk toestemming voor de afdruk.",
+          "en": "You have a maximum of twenty-five euros. Choose a suitable size from the audio message. Explain which change you want and clearly authorise printing.",
+          "fa": "حداکثر بیست‌وپنج یورو داری. از پیام شنیداری اندازهٔ مناسبی انتخاب کن. تغییر دلخواهت را توضیح بده و روشن اجازهٔ چاپ بده."
+        },
+        "sample": {
+          "nl": "Ik kies A4 voor twintig euro, want mijn budget is vijfentwintig euro. U mag de achtergrond lichter maken, maar laat mijn gezicht alstublieft zoals het op de oorspronkelijke foto staat. Het litteken hoort bij mij. Als u alleen die achtergrond aanpast, mag u één afdruk op A4 maken.",
+          "en": "I choose A4 at twenty euros because my budget is twenty-five euros. You may lighten the background, but please leave my face as it appears in the original photo. The scar is part of me. If you change only the background, you may make one A4 print.",
+          "fa": "A4 بیست‌یورویی را انتخاب می‌کنم، چون بودجه‌ام بیست‌وپنج یوروست. می‌توانید پس‌زمینه را روشن‌تر کنید، اما لطفاً چهره‌ام را همان‌طور که در عکس اصلی است نگه دارید. جای زخم بخشی از من است. اگر فقط پس‌زمینه را تغییر دهید، می‌توانید یک چاپ A4 تهیه کنید."
+        },
+        "min_words": 30,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Kies A4 voor twintig euro en blijf binnen het budget van vijfentwintig euro.",
+            "en": "Choose A4 at twenty euros and stay within the twenty-five-euro budget.",
+            "fa": "A4 بیست‌یورویی را انتخاب کن و از بودجهٔ بیست‌وپنج یورو بیشتر خرج نکن."
+          },
+          {
+            "nl": "Geef toestemming voor de afdruk met alleen een lichtere achtergrond en behoud het gezicht en litteken.",
+            "en": "Authorise printing with only a lighter background while keeping the face and scar unchanged.",
+            "fa": "اجازهٔ چاپ با تنها تغییرِ روشن‌تر شدن پس‌زمینه را بده و چهره و جای زخم را بدون تغییر نگه دار."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een bericht aan de fotograaf. Kies binnen een budget van vijfentwintig euro, bevestig de prijs en leg vast wat wel en niet aangepast mag worden.",
+          "en": "Write a message to the photographer. Choose within a twenty-five-euro budget, confirm the price and specify what may and may not be changed.",
+          "fa": "برای عکاس پیام بنویس. با بودجهٔ بیست‌وپنج یورو انتخاب کن، قیمت را تأیید کن و روشن کن چه چیزهایی اجازه دارند یا ندارند تغییر کنند."
+        },
+        "sample": {
+          "nl": "Beste fotograaf, bedankt dat u de oorspronkelijke foto hebt doorgestuurd. Ik kies één afdruk op A4 voor twintig euro. Dat past binnen mijn budget van vijfentwintig euro. U mag de achtergrond wat lichter maken. Mijn gezicht en het litteken wil ik graag behouden, omdat ze bij mijn verhaal horen. Andere veranderingen zijn niet nodig. Als u alleen de achtergrond aanpast, geef ik toestemming voor die afdruk. Laat u weten wanneer ik de foto kan ophalen? Met vriendelijke groeten, Lieve.",
+          "en": "Dear photographer, thank you for sending the original photo. I choose one A4 print at twenty euros. That fits within my budget of twenty-five euros. You may make the background a little lighter. I would like to keep my face and the scar as they are because they belong to my story. No other changes are needed. If you change only the background, I authorise that print. Please let me know when I can collect the photo. Kind regards, Lieve.",
+          "fa": "عکاس گرامی، ممنون که عکس اصلی را فرستادید. یک چاپ A4 به قیمت بیست یورو انتخاب می‌کنم. این مبلغ در بودجهٔ بیست‌وپنج یورویی من می‌گنجد. می‌توانید پس‌زمینه را کمی روشن‌تر کنید. می‌خواهم چهره و جای زخم همان‌طور بمانند، چون بخشی از داستان من هستند. تغییر دیگری لازم نیست. اگر فقط پس‌زمینه را تغییر دهید، اجازهٔ همین چاپ را می‌دهم. لطفاً خبر بدهید چه زمانی می‌توانم عکس را تحویل بگیرم. با احترام، لیفه."
+        },
+        "min_words": 30,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Bevestig één afdruk op A4 voor twintig euro binnen het budget.",
+            "en": "Confirm one A4 print at twenty euros within the budget.",
+            "fa": "یک چاپ A4 به قیمت بیست یورو را در محدودهٔ بودجه تأیید کن."
+          },
+          {
+            "nl": "Leg vast dat alleen de achtergrond lichter mag worden en geef onder die voorwaarde toestemming voor de afdruk.",
+            "en": "Specify that only the background may be lightened and authorise printing on that condition.",
+            "fa": "مشخص کن فقط پس‌زمینه اجازه دارد روشن‌تر شود و به این شرط اجازهٔ چاپ بده."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

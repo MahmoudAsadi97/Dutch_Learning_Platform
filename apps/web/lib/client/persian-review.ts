@@ -1,4 +1,5 @@
 import { episodeCopy } from "@/lib/copy/episode";
+import { storyLearningCopy } from "@/lib/copy/storyLearning";
 import { alignmentCopy } from "@/lib/copy/alignment";
 import { exerciseCopy } from "@/lib/copy/exercise";
 import { missionsCopy } from "@/lib/copy/missions";
@@ -20,6 +21,7 @@ export const COPY_BATCHES: Record<string, Record<string, Copy>> = {
   exercise: exerciseCopy,
   topics: topicsCopy,
   alignment: alignmentCopy,
+  storyLearning: storyLearningCopy,
 };
 
 for (const [name, entries] of Object.entries(COPY_BATCHES)) registerBatch(name, entries);

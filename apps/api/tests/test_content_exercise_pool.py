@@ -1,6 +1,6 @@
 """Facts about the static content that the exercise engine (roadmap P3) builds on, measured per stage.
 
-The recorded table is the measurement of 2026-10-12, including the additive source lesson packs. A content
+The recorded table is the measurement of 2026-10-16, including the additive source and connected lesson packs. A content
 rebuild that changes it must update the table
 on purpose, because the item generators choose kinds per stage from exactly these facts: how many library
 words share a topic (match pairs), whether a term appears in its own example (cloze), de/het balance
@@ -30,18 +30,18 @@ ARTICLE = re.compile(r"^(de|het|een)\s+", re.I)
 #           words sharing a sentence frame, topic groups with a frame collision, reading texts under 3 sentences,
 #           smallest topic vocabulary list, option counts of the authored questions)
 RECORDED = {
-    "pre-a1": (101, 1, 495, 89, 220, 356, 0, 0, 82, 3, {2: 408}),
-    "a1": (101, 2, 497, 89, 222, 155, 0, 0, 72, 3, {2: 408}),
-    "pre-a2": (100, 5, 496, 89, 220, 7, 0, 0, 82, 3, {2: 408}),
-    "a2": (51, 5, 502, 89, 243, 505, 491, 50, 1, 3, {2: 408}),
-    "pre-b1": (50, 10, 498, 93, 257, 72, 489, 50, 0, 2, {2: 408}),
-    "b1": (51, 4, 501, 94, 260, 4, 488, 50, 1, 1, {2: 408}),
-    "pre-b2": (10, 25, 446, 57, 344, 359, 0, 0, 0, 5, {3: 400}),
-    "b2": (10, 25, 447, 57, 344, 0, 0, 0, 0, 5, {3: 400}),
-    "pre-c1": (10, 25, 446, 57, 344, 0, 0, 0, 0, 5, {3: 400}),
-    "c1": (10, 50, 499, 9, 491, 35, 0, 0, 0, 5, {2: 300, 3: 100}),
-    "pre-c2": (10, 50, 500, 8, 492, 25, 0, 0, 0, 3, {2: 300, 3: 100}),
-    "c2": (10, 50, 499, 13, 487, 26, 0, 0, 0, 3, {2: 300, 3: 100}),
+    'pre-a1': (102, 1, 497, 89, 220, 360, 0, 0, 82, 3, {2: 416}),
+    'a1': (102, 2, 500, 89, 224, 160, 0, 0, 72, 3, {2: 416}),
+    'pre-a2': (101, 4, 499, 89, 221, 11, 0, 0, 82, 3, {2: 416}),
+    'a2': (52, 5, 508, 89, 244, 513, 491, 50, 1, 3, {2: 416}),
+    'pre-b1': (51, 8, 503, 93, 258, 80, 489, 50, 0, 2, {2: 416}),
+    'b1': (52, 4, 507, 95, 260, 12, 488, 50, 1, 1, {2: 416}),
+    'pre-b2': (11, 11, 452, 58, 345, 370, 0, 0, 0, 5, {3: 400, 2: 8}),
+    'b2': (11, 8, 450, 58, 344, 8, 0, 0, 0, 5, {3: 400, 2: 8}),
+    'pre-c1': (11, 10, 453, 57, 346, 10, 0, 0, 0, 5, {3: 400, 2: 8}),
+    'c1': (11, 11, 507, 9, 492, 46, 0, 0, 0, 5, {2: 308, 3: 100}),
+    'pre-c2': (11, 11, 507, 8, 493, 35, 0, 0, 0, 3, {2: 308, 3: 100}),
+    'c2': (11, 12, 510, 13, 489, 37, 0, 0, 0, 3, {2: 308, 3: 100}),
 }
 
 

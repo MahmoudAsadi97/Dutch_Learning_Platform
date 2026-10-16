@@ -78,7 +78,8 @@ export function topicHref(stageId: string, skill: string, topicId: string): stri
   if (
     !practiceStages.includes(stageId) ||
     !isSkill(skill) ||
-    !new RegExp(`^${stageId}-t\\d{3}$`).test(topicId)
+    topicId.length > 160 ||
+    !new RegExp(`^${stageId}-t(?:\\d{3}|-source-\\d{2}|-unit-[a-z0-9]+(?:-[a-z0-9]+)*)$`).test(topicId)
   )
     return null;
   return `/learn/${stageId}?${new URLSearchParams({ skill, topic: topicId })}`;

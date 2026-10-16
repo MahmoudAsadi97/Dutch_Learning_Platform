@@ -92,6 +92,13 @@ test("the summary says what the session did for the topic, as the server decided
   assert.deepEqual(keys(completion({ counted: false, reason: "open_task", skill: "writing" })), [
     "completionWarmUp",
   ]);
+  assert.deepEqual(keys(completion({ counted: false, reason: "assisted", completed: false })), [
+    "completionAssisted",
+  ]);
+  assert.deepEqual(keys(completion({ counted: false, reason: "assisted" })), [
+    "completionAssisted",
+    "completionAlready",
+  ]);
   assert.deepEqual(keys(completion({ scope: "lesson" })), []);
   assert.deepEqual(keys(null), []);
   // done is a check; anything else is neutral, and a warm-up never reads as done
@@ -132,6 +139,10 @@ test("the way that helps most comes first: the missed questions, the task, or al
   assert.deepEqual(order(completion({ counted: false, reason: "open_task", skill: "writing" })), [
     "exit",
     "again",
+  ]);
+  assert.deepEqual(order(completion({ counted: false, reason: "assisted", completed: false })), [
+    "again",
+    "exit",
   ]);
   assert.equal(summaryActions(null, false)[0].variant, "primary");
   assert.equal(againLabel(null), "again");

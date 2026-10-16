@@ -2,7 +2,7 @@
 
 import { useId, type ReactNode, type Ref } from "react";
 
-import { PhraseAudio } from "@/components/PhraseAudio";
+import { SentenceAudio } from "@/components/SpokenPassage";
 import { AnswerOption, type AnswerState } from "@/components/ui/AnswerOption";
 import { UiText } from "@/components/ui/UiText";
 import { exerciseCopy } from "@/lib/copy/exercise";
@@ -76,7 +76,7 @@ function Stem({ prompt, audio, stemId }: { prompt: ChoicePrompt; audio?: ReactNo
       <div className="exercise-stem">
         <p className="exercise-prompt">
           <Dutch text={prompt.stem.nl} id={stemId} />{" "}
-          {prompt.stem.nl && <PhraseAudio text={prompt.stem.nl} />}
+          {prompt.stem.nl && <SentenceAudio text={prompt.stem.nl} />}
         </p>
         <Meaning text={prompt.stem} className="exercise-cue" />
       </div>
@@ -85,6 +85,7 @@ function Stem({ prompt, audio, stemId }: { prompt: ChoicePrompt; audio?: ReactNo
     <div className="exercise-stem">
       <p className="exercise-term">
         <Dutch text={prompt.stem.nl} />
+        {prompt.stem.nl && <SentenceAudio text={prompt.stem.nl} />}
       </p>
     </div>
   );
@@ -148,18 +149,22 @@ export function ChoiceItem({ prompt, selected, onSelect, feedback, headingRef, a
       <fieldset className="answer-group" aria-labelledby={asks ? `${headingId} ${stemId}` : headingId}>
         <div className="answer-list">
           {prompt.options.map((option, index) => (
-            <AnswerOption
-              key={option.id}
-              name={name}
-              value={option.id}
-              checked={feedback ? feedback.given === option.id : selected === option.id}
-              onSelect={onSelect}
-              verdict={verdictFor(option.id, feedback)}
-              shortcut={index < 9 ? index + 1 : undefined}
-              after={feedback ? <OptionAfter prompt={prompt} support={support.get(option.id)} /> : null}
-            >
-              <OptionText prompt={prompt} option={option} />
-            </AnswerOption>
+            <div className="answer-option-shell" key={option.id}>
+              <AnswerOption
+                name={name}
+                value={option.id}
+                checked={feedback ? feedback.given === option.id : selected === option.id}
+                onSelect={onSelect}
+                verdict={verdictFor(option.id, feedback)}
+                shortcut={index < 9 ? index + 1 : undefined}
+                after={feedback ? <OptionAfter prompt={prompt} support={support.get(option.id)} /> : null}
+              >
+                <OptionText prompt={prompt} option={option} />
+              </AnswerOption>
+              {!(prompt.kind === "choice" && prompt.direction === "meaning") && option.nl && (
+                <SentenceAudio text={option.nl} />
+              )}
+            </div>
           ))}
         </div>
       </fieldset>

@@ -1,6 +1,7 @@
 import type { LearningCopy } from "@/components/LanguageSupport";
 import type { CurriculumQuestion, ProductiveTask, SkillResult } from "@/lib/client/curriculum";
 import type { Skill } from "@/lib/types";
+import type { LibraryWord } from "@/lib/client/library";
 
 /** The earlier stage's topic whose reading or listening text this one repeats (for the skill asked for). */
 export interface TopicReview {
@@ -37,7 +38,7 @@ export interface TopicDetail {
   language_focus: LearningCopy;
   review_status: string;
   context?: { reading: LearningCopy; listening: LearningCopy };
-  vocabulary: { id: string; term: string; meaning: LearningCopy; example: LearningCopy }[];
+  vocabulary: Omit<LibraryWord, "topic">[];
   activity:
     | (ProductiveTask & { text?: never; questions?: never; audio_parts?: never })
     | {

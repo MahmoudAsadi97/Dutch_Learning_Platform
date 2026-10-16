@@ -1,0 +1,810 @@
+{
+  "schema_version": 1,
+  "stage_id": "a2",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "a2-unit-two-tickets-v1",
+      "term": "verrassen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Iemand iets onverwachts en leuks geven of laten beleven.",
+        "en": "To give someone an unexpected pleasant experience.",
+        "fa": "کسی را با اتفاقی خوشایند و غیرمنتظره غافلگیر کردن."
+      },
+      "example": {
+        "nl": "Lena wil Milan verrassen.",
+        "en": "Lena wants to surprise Milan.",
+        "fa": "لنا می‌خواهد میلان را غافلگیر کند."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "a2-unit-two-tickets-v2",
+      "term": "weggooien",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Iets bij het afval doen.",
+        "en": "To throw something away.",
+        "fa": "چیزی را دور انداختن."
+      },
+      "example": {
+        "nl": "Hij gooit de kaartjes niet weg.",
+        "en": "He does not throw the tickets away.",
+        "fa": "بلیت‌ها را دور نمی‌اندازد."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "a2-unit-two-tickets-v3",
+      "term": "uitverkocht",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Zonder beschikbare kaartjes of producten.",
+        "en": "Sold out.",
+        "fa": "تمام‌شده از نظر موجودی یا بلیت."
+      },
+      "example": {
+        "nl": "Het concert is uitverkocht.",
+        "en": "The concert is sold out.",
+        "fa": "بلیت‌های کنسرت تمام شده است."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "a2-unit-two-tickets-v4",
+      "term": "gelukkig",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Tot ons geluk.",
+        "en": "Fortunately.",
+        "fa": "خوشبختانه."
+      },
+      "example": {
+        "nl": "Gelukkig vraagt hij het eerst.",
+        "en": "Fortunately he asks first.",
+        "fa": "خوشبختانه اول سؤال می‌کند."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "a2-unit-anniversary-cake-v1",
+      "term": "de kaars",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een voorwerp van was dat licht geeft als het brandt.",
+        "en": "A wax object that gives light when it burns.",
+        "fa": "وسیله‌ای مومی که با سوختن نور می‌دهد؛ شمع."
+      },
+      "example": {
+        "nl": "Er staat een kaars op de cake.",
+        "en": "There is a candle on the cake.",
+        "fa": "روی کیک یک شمع است."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "a2-unit-anniversary-cake-v2",
+      "term": "reserveren",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Vooraf een plaats laten vrijhouden.",
+        "en": "To arrange for a place to be kept for you in advance.",
+        "fa": "از قبل جایی را برای خود نگه داشتن؛ رزرو کردن."
+      },
+      "example": {
+        "nl": "Farah heeft een tafel gereserveerd.",
+        "en": "Farah has booked a table.",
+        "fa": "فرح میزی رزرو کرده است."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "a2-unit-anniversary-cake-v3",
+      "term": "scheef",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Niet recht.",
+        "en": "Not straight or level.",
+        "fa": "کج؛ صاف و مستقیم نیست."
+      },
+      "example": {
+        "nl": "De cake is scheef.",
+        "en": "The cake is lopsided.",
+        "fa": "کیک کج است."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "a2-unit-anniversary-cake-v4",
+      "term": "daarna",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Na dat moment.",
+        "en": "After that moment.",
+        "fa": "بعد از آن."
+      },
+      "example": {
+        "nl": "Daarna stoppen ze hun telefoons weg.",
+        "en": "Afterwards they put their phones away.",
+        "fa": "بعد تلفن‌هایشان را کنار می‌گذارند."
+      },
+      "part_of_speech": "adverb"
+    }
+  ],
+  "stories": [
+    {
+      "id": "a2-s-unit-two-tickets",
+      "title": {
+        "nl": "Twee kaartjes, één verrassing",
+        "en": "Two tickets, one surprise",
+        "fa": "دو بلیت، یک غافلگیری"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Romantiek en humor",
+        "en": "Romance and humour",
+        "fa": "عاشقانه و طنز"
+      },
+      "lines": [
+        {
+          "nl": "Lena heeft twee kaartjes voor een concert gekocht.",
+          "en": "Lena has bought two concert tickets.",
+          "fa": "لنا دو بلیت کنسرت خریده است."
+        },
+        {
+          "nl": "Ze wil haar vriend Milan verrassen.",
+          "en": "She wants to surprise her boyfriend Milan.",
+          "fa": "می‌خواهد دوست‌پسرش میلان را غافلگیر کند."
+        },
+        {
+          "nl": "Ze heeft de kaartjes in een kookboek gelegd.",
+          "en": "She has put the tickets in a cookbook.",
+          "fa": "بلیت‌ها را داخل کتاب آشپزی گذاشته است."
+        },
+        {
+          "nl": "Op vrijdag bakt Milan een taart uit dat boek.",
+          "en": "On Friday Milan bakes a cake from that book.",
+          "fa": "جمعه میلان از روی همان کتاب کیک می‌پزد."
+        },
+        {
+          "nl": "Hij vindt de kaartjes en denkt dat het oude kaartjes zijn.",
+          "en": "He finds the tickets and thinks they are old ones.",
+          "fa": "بلیت‌ها را پیدا می‌کند و فکر می‌کند قدیمی هستند."
+        },
+        {
+          "nl": "Gelukkig vraagt hij het voordat hij ze weggooit.",
+          "en": "Fortunately he asks before throwing them away.",
+          "fa": "خوشبختانه پیش از دور انداختنشان سؤال می‌کند."
+        },
+        {
+          "nl": "Lena vertelt hem over het concert van zaterdag.",
+          "en": "Lena tells him about Saturday’s concert.",
+          "fa": "لنا دربارهٔ کنسرت شنبه به او می‌گوید."
+        },
+        {
+          "nl": "Milan moet zaterdagavond werken.",
+          "en": "Milan has to work on Saturday evening.",
+          "fa": "میلان باید شنبه‌شب کار کند."
+        },
+        {
+          "nl": "Samen zoeken ze een concert op zondag.",
+          "en": "Together they look for a concert on Sunday.",
+          "fa": "با هم دنبال کنسرتی در روز یکشنبه می‌گردند."
+        },
+        {
+          "nl": "De verrassing is weg, maar hun nieuwe plan is beter.",
+          "en": "The surprise is gone, but their new plan is better.",
+          "fa": "غافلگیری از بین رفته، اما برنامهٔ تازه‌شان بهتر است."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Lena heeft twee kaartjes voor een concert gekocht. Ze wil haar vriend Milan verrassen. Ze heeft de kaartjes in een kookboek gelegd. Op vrijdag bakt Milan een taart uit dat boek. Hij vindt de kaartjes en denkt dat het oude kaartjes zijn.",
+          "en": "Lena has bought two concert tickets. She wants to surprise her boyfriend Milan. She has put the tickets in a cookbook. On Friday Milan bakes a cake from that book. He finds the tickets and thinks they are old ones.",
+          "fa": "لنا دو بلیت کنسرت خریده است. می‌خواهد دوست‌پسرش میلان را غافلگیر کند. بلیت‌ها را داخل کتاب آشپزی گذاشته است. جمعه میلان از روی همان کتاب کیک می‌پزد. بلیت‌ها را پیدا می‌کند و فکر می‌کند قدیمی هستند."
+        },
+        {
+          "nl": "Gelukkig vraagt hij het voordat hij ze weggooit. Lena vertelt hem over het concert van zaterdag. Milan moet zaterdagavond werken. Samen zoeken ze een concert op zondag. De verrassing is weg, maar hun nieuwe plan is beter.",
+          "en": "Fortunately he asks before throwing them away. Lena tells him about Saturday’s concert. Milan has to work on Saturday evening. Together they look for a concert on Sunday. The surprise is gone, but their new plan is better.",
+          "fa": "خوشبختانه پیش از دور انداختنشان سؤال می‌کند. لنا دربارهٔ کنسرت شنبه به او می‌گوید. میلان باید شنبه‌شب کار کند. با هم دنبال کنسرتی در روز یکشنبه می‌گردند. غافلگیری از بین رفته، اما برنامهٔ تازه‌شان بهتر است."
+        }
+      ],
+      "topic_id": "a2-t-unit-two-tickets",
+      "vocabulary_ids": [
+        "a2-unit-two-tickets-v1",
+        "a2-unit-two-tickets-v2",
+        "a2-unit-two-tickets-v3",
+        "a2-unit-two-tickets-v4"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waar vindt Milan de kaartjes?",
+          "en": "Where does Milan find the tickets?",
+          "fa": "میلان بلیت‌ها را کجا پیدا می‌کند؟"
+        },
+        "options": [
+          {
+            "nl": "In zijn jas.",
+            "en": "In his coat.",
+            "fa": "داخل کتش."
+          },
+          {
+            "nl": "In een kookboek.",
+            "en": "In a cookbook.",
+            "fa": "داخل کتاب آشپزی."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Lena heeft ze in het kookboek gelegd.",
+          "en": "Lena has put them in the cookbook.",
+          "fa": "لنا آن‌ها را داخل کتاب آشپزی گذاشته است."
+        }
+      }
+    },
+    {
+      "id": "a2-s-unit-anniversary-cake",
+      "title": {
+        "nl": "De scheve cake",
+        "en": "The lopsided cake",
+        "fa": "کیک کج"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Liefde en een misverstand",
+        "en": "Love and a misunderstanding",
+        "fa": "عشق و یک سوءتفاهم"
+      },
+      "lines": [
+        {
+          "nl": "Voor hun eerste huwelijksverjaardag heeft Farah een tafel gereserveerd.",
+          "en": "Farah has booked a table for their first wedding anniversary.",
+          "fa": "فرح برای اولین سالگرد ازدواجشان میز رزرو کرده است."
+        },
+        {
+          "nl": "Haar man Benoit komt na zijn werk naar het restaurant.",
+          "en": "Her husband Benoit comes to the restaurant after work.",
+          "fa": "همسرش بنوا بعد از کار به رستوران می‌آید."
+        },
+        {
+          "nl": "Hij zet zijn telefoon bij het begin van de maaltijd op stil.",
+          "en": "He silences his phone at the start of the meal.",
+          "fa": "در شروع غذا تلفنش را روی حالت بی‌صدا می‌گذارد."
+        },
+        {
+          "nl": "Even later licht het scherm toch op.",
+          "en": "A moment later the screen lights up nevertheless.",
+          "fa": "کمی بعد بااین‌حال صفحه روشن می‌شود."
+        },
+        {
+          "nl": "Farah vraagt of zijn werk weer belangrijker is.",
+          "en": "Farah asks whether his work is more important again.",
+          "fa": "فرح می‌پرسد آیا باز هم کارش مهم‌تر است."
+        },
+        {
+          "nl": "Benoit laat haar het bericht zien.",
+          "en": "Benoit shows her the message.",
+          "fa": "بنوا پیام را به او نشان می‌دهد."
+        },
+        {
+          "nl": "Het is een foto van de cake die hun dochter met haar oma heeft gebakken.",
+          "en": "It is a photo of the cake their daughter has baked with her grandmother.",
+          "fa": "عکس کیکی است که دخترشان با مادربزرگش پخته است."
+        },
+        {
+          "nl": "Farah lacht en vraagt hem om één kort antwoord te sturen.",
+          "en": "Farah laughs and asks him to send one short reply.",
+          "fa": "فرح می‌خندد و از او می‌خواهد یک جواب کوتاه بفرستد."
+        },
+        {
+          "nl": "Daarna stoppen ze hun telefoons in haar tas.",
+          "en": "Then they put their phones in her bag.",
+          "fa": "بعد تلفن‌هایشان را در کیف او می‌گذارند."
+        },
+        {
+          "nl": "Thuis wacht geen groot cadeau, maar een scheve cake met een kaars.",
+          "en": "No large present awaits them at home, but a lopsided cake with a candle does.",
+          "fa": "در خانه هدیه‌ای بزرگ منتظرشان نیست، بلکه کیکی کج با یک شمع است."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Voor hun eerste huwelijksverjaardag heeft Farah een tafel gereserveerd. Haar man Benoit komt na zijn werk naar het restaurant. Hij zet zijn telefoon bij het begin van de maaltijd op stil. Even later licht het scherm toch op. Farah vraagt of zijn werk weer belangrijker is.",
+          "en": "Farah has booked a table for their first wedding anniversary. Her husband Benoit comes to the restaurant after work. He silences his phone at the start of the meal. A moment later the screen lights up nevertheless. Farah asks whether his work is more important again.",
+          "fa": "فرح برای اولین سالگرد ازدواجشان میز رزرو کرده است. همسرش بنوا بعد از کار به رستوران می‌آید. در شروع غذا تلفنش را روی حالت بی‌صدا می‌گذارد. کمی بعد بااین‌حال صفحه روشن می‌شود. فرح می‌پرسد آیا باز هم کارش مهم‌تر است."
+        },
+        {
+          "nl": "Benoit laat haar het bericht zien. Het is een foto van de cake die hun dochter met haar oma heeft gebakken. Farah lacht en vraagt hem om één kort antwoord te sturen. Daarna stoppen ze hun telefoons in haar tas. Thuis wacht geen groot cadeau, maar een scheve cake met een kaars.",
+          "en": "Benoit shows her the message. It is a photo of the cake their daughter has baked with her grandmother. Farah laughs and asks him to send one short reply. Then they put their phones in her bag. No large present awaits them at home, but a lopsided cake with a candle does.",
+          "fa": "بنوا پیام را به او نشان می‌دهد. عکس کیکی است که دخترشان با مادربزرگش پخته است. فرح می‌خندد و از او می‌خواهد یک جواب کوتاه بفرستد. بعد تلفن‌هایشان را در کیف او می‌گذارند. در خانه هدیه‌ای بزرگ منتظرشان نیست، بلکه کیکی کج با یک شمع است."
+        }
+      ],
+      "topic_id": "a2-t-unit-anniversary-cake",
+      "vocabulary_ids": [
+        "a2-unit-anniversary-cake-v1",
+        "a2-unit-anniversary-cake-v2",
+        "a2-unit-anniversary-cake-v3",
+        "a2-unit-anniversary-cake-v4"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom licht de telefoon op?",
+          "en": "Why does the phone light up?",
+          "fa": "چرا صفحهٔ تلفن روشن می‌شود؟"
+        },
+        "options": [
+          {
+            "nl": "Benoits werk belt.",
+            "en": "Benoit’s workplace is calling.",
+            "fa": "از محل کار بنوا زنگ می‌زنند."
+          },
+          {
+            "nl": "Er komt een foto van de cake.",
+            "en": "A photo of the cake arrives.",
+            "fa": "عکس کیک می‌رسد."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Benoit laat een foto zien van wat hun dochter heeft gebakken.",
+          "en": "Benoit shows a photo of what their daughter has baked.",
+          "fa": "بنوا عکسی از چیزی نشان می‌دهد که دخترشان پخته است."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "a2-t-unit-two-tickets",
+      "title": {
+        "nl": "Twee kaartjes, één verrassing",
+        "en": "Two tickets, one surprise",
+        "fa": "دو بلیت، یک غافلگیری"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Vertel wat er gebeurd is en stel een nieuw plan voor.",
+          "en": "Explain what happened and propose a new plan.",
+          "fa": "بگو چه اتفاقی افتاده و برنامه‌ای تازه پیشنهاد بده."
+        }
+      ],
+      "language_focus": {
+        "nl": "Vertel wat er gebeurd is en stel een nieuw plan voor.",
+        "en": "Explain what happened and propose a new plan.",
+        "fa": "بگو چه اتفاقی افتاده و برنامه‌ای تازه پیشنهاد بده."
+      },
+      "vocabulary_ids": [
+        "a2-unit-two-tickets-v1",
+        "a2-unit-two-tickets-v2",
+        "a2-unit-two-tickets-v3",
+        "a2-unit-two-tickets-v4"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Lena heeft twee kaartjes voor een concert gekocht. Ze wil haar vriend Milan verrassen. Ze heeft de kaartjes in een kookboek gelegd. Op vrijdag bakt Milan een taart uit dat boek. Hij vindt de kaartjes en denkt dat het oude kaartjes zijn.\n\nGelukkig vraagt hij het voordat hij ze weggooit. Lena vertelt hem over het concert van zaterdag. Milan moet zaterdagavond werken. Samen zoeken ze een concert op zondag. De verrassing is weg, maar hun nieuwe plan is beter.",
+          "en": "Lena has bought two concert tickets. She wants to surprise her boyfriend Milan. She has put the tickets in a cookbook. On Friday Milan bakes a cake from that book. He finds the tickets and thinks they are old ones.\n\nFortunately he asks before throwing them away. Lena tells him about Saturday’s concert. Milan has to work on Saturday evening. Together they look for a concert on Sunday. The surprise is gone, but their new plan is better.",
+          "fa": "لنا دو بلیت کنسرت خریده است. می‌خواهد دوست‌پسرش میلان را غافلگیر کند. بلیت‌ها را داخل کتاب آشپزی گذاشته است. جمعه میلان از روی همان کتاب کیک می‌پزد. بلیت‌ها را پیدا می‌کند و فکر می‌کند قدیمی هستند.\n\nخوشبختانه پیش از دور انداختنشان سؤال می‌کند. لنا دربارهٔ کنسرت شنبه به او می‌گوید. میلان باید شنبه‌شب کار کند. با هم دنبال کنسرتی در روز یکشنبه می‌گردند. غافلگیری از بین رفته، اما برنامهٔ تازه‌شان بهتر است."
+        },
+        "questions": [
+          {
+            "id": "a2-t-unit-two-tickets-r1",
+            "prompt": {
+              "nl": "Waar vindt Milan de kaartjes?",
+              "en": "Where does Milan find the tickets?",
+              "fa": "میلان بلیت‌ها را کجا پیدا می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "In zijn jas.",
+                "en": "In his coat.",
+                "fa": "داخل کتش."
+              },
+              {
+                "nl": "In een kookboek.",
+                "en": "In a cookbook.",
+                "fa": "داخل کتاب آشپزی."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Lena heeft ze in het kookboek gelegd.",
+              "en": "Lena has put them in the cookbook.",
+              "fa": "لنا آن‌ها را داخل کتاب آشپزی گذاشته است."
+            }
+          },
+          {
+            "id": "a2-t-unit-two-tickets-r2",
+            "prompt": {
+              "nl": "Waarom zoeken ze eerst een concert op zondag?",
+              "en": "Why do they initially look for a Sunday concert?",
+              "fa": "چرا ابتدا دنبال کنسرت یکشنبه می‌گردند؟"
+            },
+            "options": [
+              {
+                "nl": "Milan moet zaterdagavond werken.",
+                "en": "Milan has to work on Saturday evening.",
+                "fa": "میلان باید شنبه‌شب کار کند."
+              },
+              {
+                "nl": "Lena houdt niet van muziek.",
+                "en": "Lena does not like music.",
+                "fa": "لنا موسیقی دوست ندارد."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Zijn werk botst met het eerste plan.",
+              "en": "His work conflicts with the first plan.",
+              "fa": "کار او با برنامهٔ اول تداخل دارد."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Lena, ik heb geruild met een collega. Zaterdagavond ben ik toch vrij. Het concert op zondag is uitverkocht. Laten we de twee kaartjes voor zaterdag houden.",
+          "en": "Hello, Lena, I have swapped shifts with a colleague. I am free on Saturday evening after all. Sunday’s concert is sold out. Let’s keep the two tickets for Saturday.",
+          "fa": "سلام لنا، شیفتم را با همکارم عوض کرده‌ام. بالاخره شنبه‌شب آزاد هستم. بلیت‌های کنسرت یکشنبه تمام شده است. بیا دو بلیت شنبه را نگه داریم."
+        },
+        "questions": [
+          {
+            "id": "a2-t-unit-two-tickets-l1",
+            "prompt": {
+              "nl": "Wat is er veranderd?",
+              "en": "What has changed?",
+              "fa": "چه چیزی تغییر کرده است؟"
+            },
+            "options": [
+              {
+                "nl": "Lena moet zaterdag werken.",
+                "en": "Lena has to work on Saturday.",
+                "fa": "لنا باید شنبه کار کند."
+              },
+              {
+                "nl": "Milan is zaterdagavond vrij.",
+                "en": "Milan is free on Saturday evening.",
+                "fa": "میلان شنبه‌شب آزاد است."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Milan heeft zijn dienst geruild.",
+              "en": "Milan has swapped his shift.",
+              "fa": "میلان شیفتش را عوض کرده است."
+            }
+          },
+          {
+            "id": "a2-t-unit-two-tickets-l2",
+            "prompt": {
+              "nl": "Welke kaartjes willen ze houden?",
+              "en": "Which tickets do they want to keep?",
+              "fa": "کدام بلیت‌ها را می‌خواهند نگه دارند؟"
+            },
+            "options": [
+              {
+                "nl": "De kaartjes voor zaterdag.",
+                "en": "The Saturday tickets.",
+                "fa": "بلیت‌های شنبه."
+              },
+              {
+                "nl": "De kaartjes voor zondag.",
+                "en": "The Sunday tickets.",
+                "fa": "بلیت‌های یکشنبه."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Het zondagconcert is uitverkocht.",
+              "en": "The Sunday concert is sold out.",
+              "fa": "بلیت‌های کنسرت یکشنبه تمام شده است."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Je vriend kan na een wijziging toch mee. Bevestig het nieuwe plan en vraag waar jullie afspreken.",
+          "en": "Your friend can come after a change. Confirm the new plan and ask where to meet.",
+          "fa": "دوستت پس از تغییری می‌تواند بیاید. برنامهٔ تازه را تأیید کن و بپرس کجا قرار می‌گذارید."
+        },
+        "sample": {
+          "nl": "Fijn dat je zaterdag vrij bent! Dan houden we de kaartjes voor zaterdag. Waar spreken we af?",
+          "en": "It’s good that you are free on Saturday! Then we will keep the Saturday tickets. Where shall we meet?",
+          "fa": "خوب شد شنبه آزادی! پس بلیت‌های شنبه را نگه می‌داریم. کجا قرار بگذاریم؟"
+        },
+        "min_words": 15,
+        "max_words": 65,
+        "criteria": [
+          {
+            "nl": "Bevestig dat jullie zaterdag gaan.",
+            "en": "Confirm that you will go on Saturday.",
+            "fa": "تأیید کن که شنبه می‌روید."
+          },
+          {
+            "nl": "Vraag waar jullie afspreken.",
+            "en": "Ask where to meet.",
+            "fa": "بپرس کجا قرار می‌گذارید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Antwoord op Milans bericht. Bevestig de dag en leg uit waarom zondag niet meer nodig is.",
+          "en": "Reply to Milan’s message. Confirm the day and explain why Sunday is no longer needed.",
+          "fa": "به پیام میلان پاسخ بده. روز را تأیید کن و توضیح بده چرا یکشنبه دیگر لازم نیست."
+        },
+        "sample": {
+          "nl": "Dag Milan, wat fijn! We gaan zaterdag naar het concert, want je hebt je dienst geruild. We hoeven geen kaartjes voor zondag te zoeken. Zullen we om zeven uur aan de ingang afspreken?",
+          "en": "Hello, Milan, that’s great! We will go to the concert on Saturday because you have swapped your shift. We do not need to look for Sunday tickets. Shall we meet at the entrance at seven?",
+          "fa": "سلام میلان، چه خوب! شنبه به کنسرت می‌رویم، چون شیفتت را عوض کرده‌ای. لازم نیست دنبال بلیت یکشنبه بگردیم. ساعت هفت جلوی ورودی قرار بگذاریم؟"
+        },
+        "min_words": 15,
+        "max_words": 65,
+        "criteria": [
+          {
+            "nl": "Bevestig zaterdag en de geruilde dienst.",
+            "en": "Confirm Saturday and the swapped shift.",
+            "fa": "شنبه و عوض شدن شیفت را تأیید کن."
+          },
+          {
+            "nl": "Leg uit dat zondag niet meer nodig is.",
+            "en": "Explain that Sunday is no longer needed.",
+            "fa": "توضیح بده یکشنبه دیگر لازم نیست."
+          }
+        ]
+      }
+    },
+    {
+      "id": "a2-t-unit-anniversary-cake",
+      "title": {
+        "nl": "De scheve cake",
+        "en": "The lopsided cake",
+        "fa": "کیک کج"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Vertel wat er is gebeurd en controleer een nieuwe afspraak.",
+          "en": "Explain what happened and check a new arrangement.",
+          "fa": "بگو چه اتفاقی افتاده و هماهنگی تازه‌ای را بررسی کن."
+        }
+      ],
+      "language_focus": {
+        "nl": "Vertel wat er is gebeurd en controleer een nieuwe afspraak.",
+        "en": "Explain what happened and check a new arrangement.",
+        "fa": "بگو چه اتفاقی افتاده و هماهنگی تازه‌ای را بررسی کن."
+      },
+      "vocabulary_ids": [
+        "a2-unit-anniversary-cake-v1",
+        "a2-unit-anniversary-cake-v2",
+        "a2-unit-anniversary-cake-v3",
+        "a2-unit-anniversary-cake-v4"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Voor hun eerste huwelijksverjaardag heeft Farah een tafel gereserveerd. Haar man Benoit komt na zijn werk naar het restaurant. Hij zet zijn telefoon bij het begin van de maaltijd op stil. Even later licht het scherm toch op. Farah vraagt of zijn werk weer belangrijker is.\n\nBenoit laat haar het bericht zien. Het is een foto van de cake die hun dochter met haar oma heeft gebakken. Farah lacht en vraagt hem om één kort antwoord te sturen. Daarna stoppen ze hun telefoons in haar tas. Thuis wacht geen groot cadeau, maar een scheve cake met een kaars.",
+          "en": "Farah has booked a table for their first wedding anniversary. Her husband Benoit comes to the restaurant after work. He silences his phone at the start of the meal. A moment later the screen lights up nevertheless. Farah asks whether his work is more important again.\n\nBenoit shows her the message. It is a photo of the cake their daughter has baked with her grandmother. Farah laughs and asks him to send one short reply. Then they put their phones in her bag. No large present awaits them at home, but a lopsided cake with a candle does.",
+          "fa": "فرح برای اولین سالگرد ازدواجشان میز رزرو کرده است. همسرش بنوا بعد از کار به رستوران می‌آید. در شروع غذا تلفنش را روی حالت بی‌صدا می‌گذارد. کمی بعد بااین‌حال صفحه روشن می‌شود. فرح می‌پرسد آیا باز هم کارش مهم‌تر است.\n\nبنوا پیام را به او نشان می‌دهد. عکس کیکی است که دخترشان با مادربزرگش پخته است. فرح می‌خندد و از او می‌خواهد یک جواب کوتاه بفرستد. بعد تلفن‌هایشان را در کیف او می‌گذارند. در خانه هدیه‌ای بزرگ منتظرشان نیست، بلکه کیکی کج با یک شمع است."
+        },
+        "questions": [
+          {
+            "id": "a2-t-unit-anniversary-cake-r1",
+            "prompt": {
+              "nl": "Waarom licht de telefoon op?",
+              "en": "Why does the phone light up?",
+              "fa": "چرا صفحهٔ تلفن روشن می‌شود؟"
+            },
+            "options": [
+              {
+                "nl": "Benoits werk belt.",
+                "en": "Benoit’s workplace is calling.",
+                "fa": "از محل کار بنوا زنگ می‌زنند."
+              },
+              {
+                "nl": "Er komt een foto van de cake.",
+                "en": "A photo of the cake arrives.",
+                "fa": "عکس کیک می‌رسد."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Benoit laat een foto zien van wat hun dochter heeft gebakken.",
+              "en": "Benoit shows a photo of what their daughter has baked.",
+              "fa": "بنوا عکسی از چیزی نشان می‌دهد که دخترشان پخته است."
+            }
+          },
+          {
+            "id": "a2-t-unit-anniversary-cake-r2",
+            "prompt": {
+              "nl": "Wat doen ze na het korte antwoord?",
+              "en": "What do they do after the short reply?",
+              "fa": "بعد از جواب کوتاه چه کار می‌کنند؟"
+            },
+            "options": [
+              {
+                "nl": "Ze stoppen hun telefoons in de tas.",
+                "en": "They put their phones in the bag.",
+                "fa": "تلفن‌ها را در کیف می‌گذارند."
+              },
+              {
+                "nl": "Ze gaan onmiddellijk naar hun werk.",
+                "en": "They go straight to work.",
+                "fa": "فوراً به محل کارشان می‌روند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Ze kiezen ervoor om de telefoons daarna weg te stoppen.",
+              "en": "They choose to put the phones away afterwards.",
+              "fa": "انتخاب می‌کنند بعد از آن تلفن‌ها را کنار بگذارند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Farah, met mama. We zouden jullie dochter vanavond thuisbrengen, maar ze blijft graag bij ons slapen. We brengen haar morgen om tien uur in de voormiddag thuis. Jullie hoeven haar dus vanavond niet op te halen.",
+          "en": "Hi Farah, Mum here. We were going to bring your daughter home tonight, but she would like to sleep at our place. We will bring her home tomorrow at ten in the morning. So you do not need to collect her tonight.",
+          "fa": "سلام فرح، مامان هستم. قرار بود دخترتان را امشب به خانه بیاوریم، اما دوست دارد پیش ما بخوابد. فردا ساعت ده صبح او را به خانه می‌آوریم. پس لازم نیست امشب دنبالش بیایید."
+        },
+        "questions": [
+          {
+            "id": "a2-t-unit-anniversary-cake-l1",
+            "prompt": {
+              "nl": "Wanneer komt hun dochter thuis?",
+              "en": "When does their daughter come home?",
+              "fa": "دخترشان چه زمانی به خانه می‌آید؟"
+            },
+            "options": [
+              {
+                "nl": "Vanavond om tien uur.",
+                "en": "Tonight at ten.",
+                "fa": "امشب ساعت ده."
+              },
+              {
+                "nl": "Morgen om tien uur in de voormiddag.",
+                "en": "Tomorrow at ten in the morning.",
+                "fa": "فردا ساعت ده صبح."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De grootmoeder verandert het plan naar morgenochtend.",
+              "en": "The grandmother changes the plan to tomorrow morning.",
+              "fa": "مادربزرگ برنامه را به فردا صبح تغییر می‌دهد."
+            }
+          },
+          {
+            "id": "a2-t-unit-anniversary-cake-l2",
+            "prompt": {
+              "nl": "Moeten de ouders haar vanavond ophalen?",
+              "en": "Do the parents need to collect her tonight?",
+              "fa": "آیا پدر و مادر باید امشب دنبالش بروند؟"
+            },
+            "options": [
+              {
+                "nl": "Nee, ze blijft bij haar grootouders slapen.",
+                "en": "No, she is sleeping at her grandparents’ home.",
+                "fa": "نه، پیش پدربزرگ و مادربزرگش می‌خوابد."
+              },
+              {
+                "nl": "Ja, na het eten.",
+                "en": "Yes, after dinner.",
+                "fa": "بله، بعد از شام."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Het bericht zegt uitdrukkelijk dat ophalen vanavond niet nodig is.",
+              "en": "The message explicitly says collection tonight is unnecessary.",
+              "fa": "پیام صریحاً می‌گوید امشب نیازی به دنبال او رفتن نیست."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Bel de grootmoeder terug. Bedank haar en controleer de nieuwe afspraak. Zeg dat jullie vanavond niet komen.",
+          "en": "Call the grandmother back. Thank her and check the new arrangement. Say that you will not come tonight.",
+          "fa": "به مادربزرگ زنگ بزن. تشکر کن و هماهنگی تازه را بررسی کن. بگو امشب نمی‌آیید."
+        },
+        "sample": {
+          "nl": "Dank je, mama. Ze blijft dus vannacht bij jullie en je brengt haar morgen om tien uur thuis, klopt dat? Dan komen wij haar vanavond niet ophalen.",
+          "en": "Thank you, Mum. So she is staying with you tonight and you will bring her home tomorrow at ten, is that right? Then we will not collect her tonight.",
+          "fa": "ممنون، مامان. پس امشب پیش شما می‌ماند و فردا ساعت ده او را به خانه می‌آوری، درست است؟ پس امشب دنبالش نمی‌آییم."
+        },
+        "min_words": 15,
+        "max_words": 65,
+        "criteria": [
+          {
+            "nl": "Controleer dat je dochter bij haar grootouders slaapt en morgen om tien uur in de voormiddag thuiskomt.",
+            "en": "Check that your daughter sleeps at her grandparents’ home and returns tomorrow at ten in the morning.",
+            "fa": "بررسی کن دخترت پیش پدربزرگ و مادربزرگش می‌خوابد و فردا ساعت ده صبح برمی‌گردد."
+          },
+          {
+            "nl": "Bedank de grootmoeder en zeg dat jullie je dochter vanavond niet ophalen.",
+            "en": "Thank the grandmother and say that you will not collect your daughter tonight.",
+            "fa": "از مادربزرگ تشکر کن و بگو امشب دنبال دخترت نمی‌روید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een kort antwoord op het luisterbericht. Bevestig waar je dochter slaapt en wanneer ze thuiskomt.",
+          "en": "Write a short reply to the audio message. Confirm where your daughter is sleeping and when she comes home.",
+          "fa": "پاسخ کوتاهی به پیام شنیداری بنویس. تأیید کن دخترت کجا می‌خوابد و چه زمانی به خانه می‌آید."
+        },
+        "sample": {
+          "nl": "Dag mama, bedankt voor je bericht en voor de mooie cake. Het is goed dat ze bij jullie blijft slapen. We komen haar vanavond niet ophalen. Morgen om tien uur zijn we thuis. Tot morgen!",
+          "en": "Hi Mum, thank you for your message and the lovely cake. It is fine for her to stay the night with you. We will not collect her tonight. We will be home tomorrow at ten. See you tomorrow!",
+          "fa": "سلام مامان، از پیامت و کیک قشنگ ممنونم. خوب است که امشب پیش شما می‌ماند. امشب دنبالش نمی‌آییم. فردا ساعت ده خانه هستیم. تا فردا!"
+        },
+        "min_words": 15,
+        "max_words": 65,
+        "criteria": [
+          {
+            "nl": "Bevestig dat je dochter bij haar grootouders blijft slapen.",
+            "en": "Confirm that your daughter stays overnight at her grandparents’ home.",
+            "fa": "تأیید کن دخترت شب را پیش پدربزرگ و مادربزرگش می‌ماند."
+          },
+          {
+            "nl": "Bevestig morgen om tien uur in de voormiddag als thuiskomst en zeg dat ophalen vanavond niet nodig is.",
+            "en": "Confirm tomorrow at ten in the morning as the return time and say that collection tonight is unnecessary.",
+            "fa": "فردا ساعت ده صبح را برای بازگشت تأیید کن و بگو امشب نیازی به دنبال او رفتن نیست."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

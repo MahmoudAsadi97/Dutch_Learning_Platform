@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { useLanguageSupport } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
+import { SentenceAudio, SpokenText } from "@/components/SpokenPassage";
 import { Cover, Skeleton, SkeletonPanel } from "@/components/ui";
 import { newRequestId } from "@/lib/client/api";
 import { errorCopy } from "@/lib/client/error-copy";
@@ -181,24 +182,26 @@ export function EpisodeReader({ episodeId }: { episodeId: string }) {
             )}
             <div className="choice-buttons">
               {episode.choices.map((choice) => (
-                <button
-                  key={choice.id}
-                  type="button"
-                  className={`choice-button ${episode.chosen_choice === choice.id ? "is-chosen" : ""}`}
-                  disabled={Boolean(episode.chosen_choice)}
-                  aria-pressed={episode.chosen_choice === choice.id}
-                  onClick={() =>
-                    void stories
-                      .choose(episode.id, choice.id)
-                      .then(setEpisode)
-                      .catch((cause) => setNotice(errorCopy(cause, episodeCopy.choiceFailed)))
-                  }
-                >
-                  <span className="choice-letter" aria-hidden="true">
-                    {choice.id.toUpperCase()}
-                  </span>
-                  <span lang="nl">{choice.label}</span>
-                </button>
+                <div key={choice.id} className="story-choice-audio">
+                  <button
+                    type="button"
+                    className={`choice-button ${episode.chosen_choice === choice.id ? "is-chosen" : ""}`}
+                    disabled={Boolean(episode.chosen_choice)}
+                    aria-pressed={episode.chosen_choice === choice.id}
+                    onClick={() =>
+                      void stories
+                        .choose(episode.id, choice.id)
+                        .then(setEpisode)
+                        .catch((cause) => setNotice(errorCopy(cause, episodeCopy.choiceFailed)))
+                    }
+                  >
+                    <span className="choice-letter" aria-hidden="true">
+                      {choice.id.toUpperCase()}
+                    </span>
+                    <span lang="nl">{choice.label}</span>
+                  </button>
+                  <SentenceAudio text={choice.label} />
+                </div>
               ))}
             </div>
             {episode.chosen_choice && (
@@ -295,7 +298,7 @@ function Paragraph({
   return (
     <section className="episode-paragraph" data-testid="episode-paragraph">
       <p lang="nl" className="story-copy">
-        {nl} <PhraseAudio text={nl} label={fill(episodeCopy.paragraphAudio, { number: index + 1 }).nl} />
+        <SpokenText text={{ nl }} />
       </p>
       {showEnglish && en && (
         <p lang="en" className="copy-support">
@@ -496,7 +499,7 @@ function Glossary({ episodeId, items }: { episodeId: string; items: GlossaryItem
               {!showEnglish && !showPersian && <span lang="en">{item.meaning_en}</span>}
             </div>
             <p lang="nl" className="glossary-example muted">
-              {item.example}
+              <SpokenText text={{ nl: item.example }} />
             </p>
             <button
               type="button"
@@ -582,28 +585,31 @@ function Questions({ episode, onUpdate }: { episode: Episode; onUpdate: (episode
               className={`episode-question ${episode.answered ? (question.correct ? "is-correct" : "is-wrong") : ""}`}
             >
               <p lang="nl" className="question-prompt">
-                {question.prompt}
+                <SpokenText text={{ nl: question.prompt }} />
               </p>
               <div className="answer-options" role="radiogroup" aria-label={question.prompt}>
                 {question.options.map((option, optionIndex) => (
-                  <label
-                    key={optionIndex}
-                    className={episode.answered && question.answer_index === optionIndex ? "is-answer" : ""}
-                  >
-                    <input
-                      type="radio"
-                      name={`question-${question.index}`}
-                      value={optionIndex}
-                      disabled={episode.answered}
-                      checked={
-                        (episode.answered ? question.chosen : answers[String(question.index)]) === optionIndex
-                      }
-                      onChange={() =>
-                        setAnswers((current) => ({ ...current, [String(question.index)]: optionIndex }))
-                      }
-                    />
-                    <span lang="nl">{option}</span>
-                  </label>
+                  <div key={optionIndex} className="answer-option-shell">
+                    <label
+                      className={episode.answered && question.answer_index === optionIndex ? "is-answer" : ""}
+                    >
+                      <input
+                        type="radio"
+                        name={`question-${question.index}`}
+                        value={optionIndex}
+                        disabled={episode.answered}
+                        checked={
+                          (episode.answered ? question.chosen : answers[String(question.index)]) ===
+                          optionIndex
+                        }
+                        onChange={() =>
+                          setAnswers((current) => ({ ...current, [String(question.index)]: optionIndex }))
+                        }
+                      />
+                      <span lang="nl">{option}</span>
+                    </label>
+                    <SentenceAudio text={option} />
+                  </div>
                 ))}
               </div>
               {episode.answered && question.evidence && (

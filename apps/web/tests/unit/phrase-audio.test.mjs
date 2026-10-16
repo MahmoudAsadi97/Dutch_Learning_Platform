@@ -63,6 +63,47 @@ test("audio is never fetched or played until explicitly requested", () => {
   assert.equal(f.controller.getSnapshot().phase, "idle");
 });
 
+test("optional assistance is saved before synthesis and cannot be bypassed by replaying cached audio", async () => {
+  let release;
+  const f = fixture();
+  const saved = new Promise((resolve) => {
+    release = resolve;
+  });
+  const attempt = f.controller.play("first", "Dag.", () => saved);
+  assert.equal(f.controller.getSnapshot().phase, "loading");
+  assert.equal(f.calls.length, 0);
+  release();
+  await flush();
+  assert.equal(f.calls.length, 1);
+  f.players[0].onended();
+  await attempt;
+  await f.controller.play("again", "Dag.", () => {
+    throw new Error("support");
+  });
+  assert.equal(f.players.length, 1);
+  assert.equal(f.calls.length, 1);
+  assert.equal(f.controller.getSnapshot().error, "support");
+});
+
+test("cancelling an assistance registration cannot start stale playback when it completes late", async () => {
+  let release;
+  let signal;
+  const f = fixture();
+  const attempt = f.controller.play("first", "Dag.", (current) => {
+    signal = current;
+    return new Promise((resolve) => {
+      release = resolve;
+    });
+  });
+  f.controller.stop("first");
+  assert.equal(signal.aborted, true);
+  release();
+  await attempt;
+  assert.equal(f.calls.length, 0);
+  assert.equal(f.players.length, 0);
+  assert.equal(f.controller.getSnapshot().phase, "idle");
+});
+
 test("a stopped pending request cannot start stale speech even when the provider ignores cancellation", async () => {
   let release;
   const f = fixture(

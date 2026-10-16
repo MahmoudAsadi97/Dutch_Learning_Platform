@@ -23,7 +23,6 @@ the proposed learning experience; it is not the Azure deployment and makes no li
 | Run the app on my laptop | [Local setup](#run-locally) |
 | Understand the learning experience | [What I can practise](#what-i-can-practise) |
 | Check the level and exam references | [Belgian alignment](docs/BELGIAN_ALIGNMENT.md) |
-| Understand the current upgrade decisions | [Review decisions](docs/REVIEW_DECISIONS.md) |
 | Verify code before a release | [Checks](#checks) and [verification guide](docs/VERIFICATION.md) |
 | Release to Azure | [GO_LIVE](docs/GO_LIVE.md) |
 
@@ -51,6 +50,19 @@ translations may remain hidden. Audio controls use the configured voice and iden
 Writing feedback points to the learner's actual draft, suggests a corrected form and explains the
 change. The draft stays available for revision. Feedback, assistance and later independent performance
 must remain distinguishable.
+
+The connected learning sequence is **meet a word → understand it in a story → hear it → use it in
+different situations → revise → return without help**. New units use ten explicit story lines with
+parallel Dutch, English and Persian text, sentence playback, and related four-skill activities. The
+tasks progress from naming concrete things at pre-A1 to interpreting viewpoints and register at C2.
+In Story Time, choose **Verhaal naar gesprek** to find these units. Selected word cards also include
+several situations, useful forms and a short response task.
+
+The editorial target is **200 distinct 8–12-line stories per stage**, without reusing a plot at another
+stage. This target is not complete: the current connected collection starts with two original stories
+per stage. Older story banks remain accessible and include repeated plots; they do not meet the new
+story standard merely because they have a different stage ID. Existing banks retain at least 500
+words; the requested 150-word productive core is a separate curation target, not a reduction in coverage.
 
 The supplied Dutch scans now support **Van woord naar gesprek**: twelve original units from pre-A1 to
 B1, connecting new Story Time stories with reading, listening, speaking, writing and grammar practice.
@@ -107,6 +119,17 @@ and repeated reading/listening texts without claiming to classify their CEFR dif
 
 ```bash
 python scripts/audit_learning_content.py --json .local/content-audit.json
+python scripts/validate_story_quality.py --json .local/story-quality.json
+```
+
+The story audit distinguishes authored lines from legacy passages, reports duplicates and translation
+fact checks, and measures the remaining inventory. `--require-targets` exits unsuccessfully until the
+requested inventory is present. Neither audit certifies natural language, CEFR difficulty or translation
+accuracy. To rebuild the versioned connected units after editing their authored source:
+
+```bash
+python -m scripts.content_build.learning_units
+python -m scripts.content_build.vocabulary_transfer
 ```
 
 A small native-review pilot starts with one mission and one A2 topic. Reviews must identify the reviewer,

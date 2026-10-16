@@ -1,0 +1,730 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a2",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "pre-a2-unit-recipe-stain-v2",
+      "term": "toevoegen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Er iets bij doen.",
+        "en": "To add something.",
+        "fa": "چیزی اضافه کردن."
+      },
+      "example": {
+        "nl": "Voeg een beetje room toe.",
+        "en": "Add a little cream.",
+        "fa": "کمی خامه اضافه کن."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-a2-unit-silent-waiter-v1",
+      "term": "de rol",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "De persoon die je in een toneelstuk speelt.",
+        "en": "The character you play in a performance.",
+        "fa": "شخصیتی که در نمایش بازی می‌کنی؛ نقش."
+      },
+      "example": {
+        "nl": "Adam krijgt een rol zonder tekst.",
+        "en": "Adam receives a role without lines.",
+        "fa": "آدم نقشی بدون دیالوگ می‌گیرد."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "pre-a2-unit-silent-waiter-v2",
+      "term": "oefenen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Iets herhalen om het beter te kunnen.",
+        "en": "To repeat something to improve at it.",
+        "fa": "برای بهتر شدن، کاری را تمرین کردن."
+      },
+      "example": {
+        "nl": "We oefenen de scène twee keer.",
+        "en": "We practise the scene twice.",
+        "fa": "صحنه را دو بار تمرین می‌کنیم."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-a2-unit-silent-waiter-v4",
+      "term": "toch",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Ondanks wat eerder is gezegd of gebeurd.",
+        "en": "Nevertheless, despite what was said or happened.",
+        "fa": "بااین‌حال، با وجود چیزی که گفته شده یا رخ داده است."
+      },
+      "example": {
+        "nl": "Toch wil hij een zin zeggen.",
+        "en": "Nevertheless, he wants to say a line.",
+        "fa": "بااین‌حال می‌خواهد یک جمله بگوید."
+      },
+      "part_of_speech": "adverb"
+    }
+  ],
+  "stories": [
+    {
+      "id": "pre-a2-s-unit-recipe-stain",
+      "title": {
+        "nl": "De vlek op het recept",
+        "en": "The stain on the recipe",
+        "fa": "لکهٔ روی دستور پخت"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Familie",
+        "en": "Family",
+        "fa": "خانوادگی"
+      },
+      "lines": [
+        {
+          "nl": "Rosa wil soep maken voor haar vader.",
+          "en": "Rosa wants to make soup for her father.",
+          "fa": "روزا می‌خواهد برای پدرش سوپ درست کند."
+        },
+        {
+          "nl": "Ze gebruikt een oud recept van haar moeder.",
+          "en": "She uses an old recipe from her mother.",
+          "fa": "از دستور پخت قدیمی مادرش استفاده می‌کند."
+        },
+        {
+          "nl": "Er zit een grote vlek op het papier.",
+          "en": "There is a large stain on the paper.",
+          "fa": "روی کاغذ لکهٔ بزرگی است."
+        },
+        {
+          "nl": "De groenten kan ze lezen, maar de kooktijd niet.",
+          "en": "She can read the vegetables, but not the cooking time.",
+          "fa": "نام سبزی‌ها را می‌تواند بخواند، اما زمان پخت را نه."
+        },
+        {
+          "nl": "Ze belt haar moeder en vraagt om hulp.",
+          "en": "She calls her mother and asks for help.",
+          "fa": "به مادرش زنگ می‌زند و کمک می‌خواهد."
+        },
+        {
+          "nl": "Eerst snijd je de wortels, zegt haar moeder.",
+          "en": "First you cut the carrots, her mother says.",
+          "fa": "مادرش می‌گوید: اول هویج‌ها را خرد می‌کنی."
+        },
+        {
+          "nl": "Dan kook je alles twintig minuten.",
+          "en": "Then you cook everything for twenty minutes.",
+          "fa": "بعد همه‌چیز را بیست دقیقه می‌پزی."
+        },
+        {
+          "nl": "Rosa schrijft de tijd naast de vlek.",
+          "en": "Rosa writes the time beside the stain.",
+          "fa": "روزا زمان را کنار لکه می‌نویسد."
+        },
+        {
+          "nl": "Haar vader proeft de soep en glimlacht.",
+          "en": "Her father tastes the soup and smiles.",
+          "fa": "پدرش سوپ را می‌چشد و لبخند می‌زند."
+        },
+        {
+          "nl": "De soep smaakt net als vroeger.",
+          "en": "The soup tastes just like it used to.",
+          "fa": "مزهٔ سوپ درست مثل گذشته است."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Rosa wil soep maken voor haar vader. Ze gebruikt een oud recept van haar moeder. Er zit een grote vlek op het papier. De groenten kan ze lezen, maar de kooktijd niet. Ze belt haar moeder en vraagt om hulp.",
+          "en": "Rosa wants to make soup for her father. She uses an old recipe from her mother. There is a large stain on the paper. She can read the vegetables, but not the cooking time. She calls her mother and asks for help.",
+          "fa": "روزا می‌خواهد برای پدرش سوپ درست کند. از دستور پخت قدیمی مادرش استفاده می‌کند. روی کاغذ لکهٔ بزرگی است. نام سبزی‌ها را می‌تواند بخواند، اما زمان پخت را نه. به مادرش زنگ می‌زند و کمک می‌خواهد."
+        },
+        {
+          "nl": "Eerst snijd je de wortels, zegt haar moeder. Dan kook je alles twintig minuten. Rosa schrijft de tijd naast de vlek. Haar vader proeft de soep en glimlacht. De soep smaakt net als vroeger.",
+          "en": "First you cut the carrots, her mother says. Then you cook everything for twenty minutes. Rosa writes the time beside the stain. Her father tastes the soup and smiles. The soup tastes just like it used to.",
+          "fa": "مادرش می‌گوید: اول هویج‌ها را خرد می‌کنی. بعد همه‌چیز را بیست دقیقه می‌پزی. روزا زمان را کنار لکه می‌نویسد. پدرش سوپ را می‌چشد و لبخند می‌زند. مزهٔ سوپ درست مثل گذشته است."
+        }
+      ],
+      "topic_id": "pre-a2-t-unit-recipe-stain",
+      "vocabulary_ids": [
+        "pre-a2-v085",
+        "pre-a2-unit-recipe-stain-v2",
+        "pre-a2-v489",
+        "pre-a2-v453"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat kan Rosa niet lezen?",
+          "en": "What can Rosa not read?",
+          "fa": "روزا چه چیزی را نمی‌تواند بخواند؟"
+        },
+        "options": [
+          {
+            "nl": "De groenten.",
+            "en": "The vegetables.",
+            "fa": "سبزی‌ها."
+          },
+          {
+            "nl": "De kooktijd.",
+            "en": "The cooking time.",
+            "fa": "زمان پخت."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De vlek bedekt de kooktijd.",
+          "en": "The stain covers the cooking time.",
+          "fa": "لکه زمان پخت را پوشانده است."
+        }
+      }
+    },
+    {
+      "id": "pre-a2-s-unit-silent-waiter",
+      "title": {
+        "nl": "Een rol zonder tekst",
+        "en": "A role without lines",
+        "fa": "نقشی بدون دیالوگ"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een vrolijke verrassing",
+        "en": "A cheerful surprise",
+        "fa": "غافلگیری شاد"
+      },
+      "lines": [
+        {
+          "nl": "In het buurthuis doet Adam mee aan een toneelles.",
+          "en": "Adam joins a drama class at the community centre.",
+          "fa": "آدم در کلاس تئاتر مرکز محله شرکت می‌کند."
+        },
+        {
+          "nl": "Iedere deelnemer krijgt een kleine rol.",
+          "en": "Each participant receives a small role.",
+          "fa": "هر شرکت‌کننده نقش کوچکی می‌گیرد."
+        },
+        {
+          "nl": "Adam wil graag spreken, maar hij speelt een ober zonder tekst.",
+          "en": "Adam wants to speak, but he plays a waiter without lines.",
+          "fa": "آدم دوست دارد حرف بزند، اما نقش گارسونی بدون دیالوگ را بازی می‌کند."
+        },
+        {
+          "nl": "Tijdens de eerste oefening zet hij een lege kop op tafel.",
+          "en": "During the first exercise he puts an empty cup on the table.",
+          "fa": "در تمرین اول، فنجانی خالی روی میز می‌گذارد."
+        },
+        {
+          "nl": "De actrice vraagt waarom er geen koffie is.",
+          "en": "The actress asks why there is no coffee.",
+          "fa": "بازیگر زن می‌پرسد چرا قهوه‌ای در فنجان نیست."
+        },
+        {
+          "nl": "Adam kijkt in de kop en dan verbaasd naar de zaal.",
+          "en": "Adam looks into the cup and then at the room in surprise.",
+          "fa": "آدم داخل فنجان را نگاه می‌کند و بعد با تعجب به سالن نگاه می‌کند."
+        },
+        {
+          "nl": "Iedereen lacht om het grappige moment.",
+          "en": "Everyone laughs at the funny moment.",
+          "fa": "همه به آن لحظهٔ خنده‌دار می‌خندند."
+        },
+        {
+          "nl": "De begeleidster wil de scène nog eens oefenen.",
+          "en": "The instructor wants to practise the scene again.",
+          "fa": "مربی می‌خواهد صحنه را دوباره تمرین کنند."
+        },
+        {
+          "nl": "Nu begrijpt Adam dat hij ook zonder woorden iets kan vertellen.",
+          "en": "Adam now understands that he can communicate something without words too.",
+          "fa": "حالا آدم می‌فهمد بدون کلمه هم می‌تواند چیزی بیان کند."
+        },
+        {
+          "nl": "Toch vraagt hij voor de volgende oefening één korte zin.",
+          "en": "Still, he asks for one short line in the next exercise.",
+          "fa": "بااین‌حال، برای تمرین بعدی یک جملهٔ کوتاه درخواست می‌کند."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "In het buurthuis doet Adam mee aan een toneelles. Iedere deelnemer krijgt een kleine rol. Adam wil graag spreken, maar hij speelt een ober zonder tekst. Tijdens de eerste oefening zet hij een lege kop op tafel. De actrice vraagt waarom er geen koffie is.",
+          "en": "Adam joins a drama class at the community centre. Each participant receives a small role. Adam wants to speak, but he plays a waiter without lines. During the first exercise he puts an empty cup on the table. The actress asks why there is no coffee.",
+          "fa": "آدم در کلاس تئاتر مرکز محله شرکت می‌کند. هر شرکت‌کننده نقش کوچکی می‌گیرد. آدم دوست دارد حرف بزند، اما نقش گارسونی بدون دیالوگ را بازی می‌کند. در تمرین اول، فنجانی خالی روی میز می‌گذارد. بازیگر زن می‌پرسد چرا قهوه‌ای در فنجان نیست."
+        },
+        {
+          "nl": "Adam kijkt in de kop en dan verbaasd naar de zaal. Iedereen lacht om het grappige moment. De begeleidster wil de scène nog eens oefenen. Nu begrijpt Adam dat hij ook zonder woorden iets kan vertellen. Toch vraagt hij voor de volgende oefening één korte zin.",
+          "en": "Adam looks into the cup and then at the room in surprise. Everyone laughs at the funny moment. The instructor wants to practise the scene again. Adam now understands that he can communicate something without words too. Still, he asks for one short line in the next exercise.",
+          "fa": "آدم داخل فنجان را نگاه می‌کند و بعد با تعجب به سالن نگاه می‌کند. همه به آن لحظهٔ خنده‌دار می‌خندند. مربی می‌خواهد صحنه را دوباره تمرین کنند. حالا آدم می‌فهمد بدون کلمه هم می‌تواند چیزی بیان کند. بااین‌حال، برای تمرین بعدی یک جملهٔ کوتاه درخواست می‌کند."
+        }
+      ],
+      "topic_id": "pre-a2-t-unit-silent-waiter",
+      "vocabulary_ids": [
+        "pre-a2-unit-silent-waiter-v1",
+        "pre-a2-unit-silent-waiter-v2",
+        "pre-a2-v448",
+        "pre-a2-unit-silent-waiter-v4"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom lacht de groep?",
+          "en": "Why does the group laugh?",
+          "fa": "چرا گروه می‌خندد؟"
+        },
+        "options": [
+          {
+            "nl": "Adam vertelt een lange grap.",
+            "en": "Adam tells a long joke.",
+            "fa": "آدم لطیفه‌ای طولانی تعریف می‌کند."
+          },
+          {
+            "nl": "Adam kijkt verbaasd in een lege kop.",
+            "en": "Adam looks into an empty cup in surprise.",
+            "fa": "آدم با تعجب داخل فنجان خالی نگاه می‌کند."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Zijn gezicht maakt de scène grappig, niet een gesproken grap.",
+          "en": "His expression makes the scene funny, rather than a spoken joke.",
+          "fa": "حالت چهره‌اش صحنه را خنده‌دار می‌کند، نه لطیفه‌ای که تعریف کرده باشد."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "pre-a2-t-unit-recipe-stain",
+      "title": {
+        "nl": "De vlek op het recept",
+        "en": "The stain on the recipe",
+        "fa": "لکهٔ روی دستور پخت"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Vraag om ontbrekende informatie en geef een volgorde aan.",
+          "en": "Ask for missing information and give a sequence.",
+          "fa": "اطلاعات جاافتاده را بپرس و ترتیب کار را بیان کن."
+        }
+      ],
+      "language_focus": {
+        "nl": "Vraag om ontbrekende informatie en geef een volgorde aan.",
+        "en": "Ask for missing information and give a sequence.",
+        "fa": "اطلاعات جاافتاده را بپرس و ترتیب کار را بیان کن."
+      },
+      "vocabulary_ids": [
+        "pre-a2-v085",
+        "pre-a2-unit-recipe-stain-v2",
+        "pre-a2-v489",
+        "pre-a2-v453"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Rosa wil soep maken voor haar vader. Ze gebruikt een oud recept van haar moeder. Er zit een grote vlek op het papier. De groenten kan ze lezen, maar de kooktijd niet. Ze belt haar moeder en vraagt om hulp.\n\nEerst snijd je de wortels, zegt haar moeder. Dan kook je alles twintig minuten. Rosa schrijft de tijd naast de vlek. Haar vader proeft de soep en glimlacht. De soep smaakt net als vroeger.",
+          "en": "Rosa wants to make soup for her father. She uses an old recipe from her mother. There is a large stain on the paper. She can read the vegetables, but not the cooking time. She calls her mother and asks for help.\n\nFirst you cut the carrots, her mother says. Then you cook everything for twenty minutes. Rosa writes the time beside the stain. Her father tastes the soup and smiles. The soup tastes just like it used to.",
+          "fa": "روزا می‌خواهد برای پدرش سوپ درست کند. از دستور پخت قدیمی مادرش استفاده می‌کند. روی کاغذ لکهٔ بزرگی است. نام سبزی‌ها را می‌تواند بخواند، اما زمان پخت را نه. به مادرش زنگ می‌زند و کمک می‌خواهد.\n\nمادرش می‌گوید: اول هویج‌ها را خرد می‌کنی. بعد همه‌چیز را بیست دقیقه می‌پزی. روزا زمان را کنار لکه می‌نویسد. پدرش سوپ را می‌چشد و لبخند می‌زند. مزهٔ سوپ درست مثل گذشته است."
+        },
+        "questions": [
+          {
+            "id": "pre-a2-t-unit-recipe-stain-r1",
+            "prompt": {
+              "nl": "Wat kan Rosa niet lezen?",
+              "en": "What can Rosa not read?",
+              "fa": "روزا چه چیزی را نمی‌تواند بخواند؟"
+            },
+            "options": [
+              {
+                "nl": "De groenten.",
+                "en": "The vegetables.",
+                "fa": "سبزی‌ها."
+              },
+              {
+                "nl": "De kooktijd.",
+                "en": "The cooking time.",
+                "fa": "زمان پخت."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De vlek bedekt de kooktijd.",
+              "en": "The stain covers the cooking time.",
+              "fa": "لکه زمان پخت را پوشانده است."
+            }
+          },
+          {
+            "id": "pre-a2-t-unit-recipe-stain-r2",
+            "prompt": {
+              "nl": "Hoe lang kookt de soep uit het oude recept?",
+              "en": "How long does the soup in the old recipe cook?",
+              "fa": "سوپ دستور قدیمی چقدر می‌پزد؟"
+            },
+            "options": [
+              {
+                "nl": "Twintig minuten.",
+                "en": "Twenty minutes.",
+                "fa": "بیست دقیقه."
+              },
+              {
+                "nl": "Dertig minuten.",
+                "en": "Thirty minutes.",
+                "fa": "سی دقیقه."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Haar moeder zegt twintig minuten.",
+              "en": "Her mother says twenty minutes.",
+              "fa": "مادرش می‌گوید بیست دقیقه."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Rosa, voor pompoensoep is het anders. Snijd eerst de pompoen. Kook de soep dertig minuten. Voeg daarna een beetje room toe.",
+          "en": "Rosa, pumpkin soup is different. Cut the pumpkin first. Cook the soup for thirty minutes. Add a little cream afterwards.",
+          "fa": "روزا، سوپ کدوحلوایی فرق دارد. اول کدوحلوایی را خرد کن. سوپ را سی دقیقه بپز. بعد کمی خامه اضافه کن."
+        },
+        "questions": [
+          {
+            "id": "pre-a2-t-unit-recipe-stain-l1",
+            "prompt": {
+              "nl": "Hoe lang kookt de pompoensoep?",
+              "en": "How long does the pumpkin soup cook?",
+              "fa": "سوپ کدوحلوایی چقدر می‌پزد؟"
+            },
+            "options": [
+              {
+                "nl": "Twintig minuten.",
+                "en": "Twenty minutes.",
+                "fa": "بیست دقیقه."
+              },
+              {
+                "nl": "Dertig minuten.",
+                "en": "Thirty minutes.",
+                "fa": "سی دقیقه."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De nieuwe instructie noemt dertig minuten.",
+              "en": "The new instruction says thirty minutes.",
+              "fa": "دستور تازه سی دقیقه را بیان می‌کند."
+            }
+          },
+          {
+            "id": "pre-a2-t-unit-recipe-stain-l2",
+            "prompt": {
+              "nl": "Wat voeg je daarna toe?",
+              "en": "What do you add afterwards?",
+              "fa": "بعد چه چیزی اضافه می‌کنی؟"
+            },
+            "options": [
+              {
+                "nl": "Een beetje room.",
+                "en": "A little cream.",
+                "fa": "کمی خامه."
+              },
+              {
+                "nl": "Een wortel.",
+                "en": "A carrot.",
+                "fa": "یک هویج."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Room komt na het koken.",
+              "en": "Cream is added after cooking.",
+              "fa": "خامه بعد از پخت اضافه می‌شود."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Je kunt een stap op een recept niet lezen. Vraag om hulp en herhaal de kooktijd die je hoort.",
+          "en": "You cannot read a recipe step. Ask for help and repeat the cooking time you hear.",
+          "fa": "یکی از مراحل دستور را نمی‌توانی بخوانی. کمک بخواه و زمان پختی را که می‌شنوی تکرار کن."
+        },
+        "sample": {
+          "nl": "Ik kan de tijd niet lezen. Hoe lang moet de soep koken? Dertig minuten, juist?",
+          "en": "I cannot read the time. How long should the soup cook? Thirty minutes, right?",
+          "fa": "زمان را نمی‌توانم بخوانم. سوپ چقدر باید بپزد؟ سی دقیقه، درست است؟"
+        },
+        "min_words": 8,
+        "max_words": 55,
+        "criteria": [
+          {
+            "nl": "Vraag naar de ontbrekende kooktijd.",
+            "en": "Ask for the missing cooking time.",
+            "fa": "زمان پخت جاافتاده را بپرس."
+          },
+          {
+            "nl": "Bevestig de gehoorde dertig minuten.",
+            "en": "Confirm the thirty minutes you heard.",
+            "fa": "سی دقیقه‌ای را که شنیدی تأیید کن."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf drie stappen voor de pompoensoep uit het luisterbericht.",
+          "en": "Write three steps for the pumpkin soup from the audio message.",
+          "fa": "از پیام شنیداری، سه مرحلهٔ سوپ کدوحلوایی را بنویس."
+        },
+        "sample": {
+          "nl": "Snijd eerst de pompoen. Kook de soep dertig minuten. Voeg daarna een beetje room toe.",
+          "en": "Cut the pumpkin first. Cook the soup for thirty minutes. Add a little cream afterwards.",
+          "fa": "اول کدوحلوایی را خرد کن. سوپ را سی دقیقه بپز. بعد کمی خامه اضافه کن."
+        },
+        "min_words": 8,
+        "max_words": 55,
+        "criteria": [
+          {
+            "nl": "Noem de pompoen en dertig minuten.",
+            "en": "Mention the pumpkin and thirty minutes.",
+            "fa": "کدوحلوایی و سی دقیقه را ذکر کن."
+          },
+          {
+            "nl": "Voeg de room pas na het koken toe.",
+            "en": "Add the cream only after cooking.",
+            "fa": "خامه را فقط بعد از پخت اضافه کن."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pre-a2-t-unit-silent-waiter",
+      "title": {
+        "nl": "Een rol zonder tekst",
+        "en": "A role without lines",
+        "fa": "نقشی بدون دیالوگ"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Beschrijf een oefening en vraag om een verandering.",
+          "en": "Describe an exercise and ask for a change.",
+          "fa": "تمرینی را توصیف کن و تغییری درخواست کن."
+        }
+      ],
+      "language_focus": {
+        "nl": "Beschrijf een oefening en vraag om een verandering.",
+        "en": "Describe an exercise and ask for a change.",
+        "fa": "تمرینی را توصیف کن و تغییری درخواست کن."
+      },
+      "vocabulary_ids": [
+        "pre-a2-unit-silent-waiter-v1",
+        "pre-a2-unit-silent-waiter-v2",
+        "pre-a2-v448",
+        "pre-a2-unit-silent-waiter-v4"
+      ],
+      "reading": {
+        "text": {
+          "nl": "In het buurthuis doet Adam mee aan een toneelles. Iedere deelnemer krijgt een kleine rol. Adam wil graag spreken, maar hij speelt een ober zonder tekst. Tijdens de eerste oefening zet hij een lege kop op tafel. De actrice vraagt waarom er geen koffie is.\n\nAdam kijkt in de kop en dan verbaasd naar de zaal. Iedereen lacht om het grappige moment. De begeleidster wil de scène nog eens oefenen. Nu begrijpt Adam dat hij ook zonder woorden iets kan vertellen. Toch vraagt hij voor de volgende oefening één korte zin.",
+          "en": "Adam joins a drama class at the community centre. Each participant receives a small role. Adam wants to speak, but he plays a waiter without lines. During the first exercise he puts an empty cup on the table. The actress asks why there is no coffee.\n\nAdam looks into the cup and then at the room in surprise. Everyone laughs at the funny moment. The instructor wants to practise the scene again. Adam now understands that he can communicate something without words too. Still, he asks for one short line in the next exercise.",
+          "fa": "آدم در کلاس تئاتر مرکز محله شرکت می‌کند. هر شرکت‌کننده نقش کوچکی می‌گیرد. آدم دوست دارد حرف بزند، اما نقش گارسونی بدون دیالوگ را بازی می‌کند. در تمرین اول، فنجانی خالی روی میز می‌گذارد. بازیگر زن می‌پرسد چرا قهوه‌ای در فنجان نیست.\n\nآدم داخل فنجان را نگاه می‌کند و بعد با تعجب به سالن نگاه می‌کند. همه به آن لحظهٔ خنده‌دار می‌خندند. مربی می‌خواهد صحنه را دوباره تمرین کنند. حالا آدم می‌فهمد بدون کلمه هم می‌تواند چیزی بیان کند. بااین‌حال، برای تمرین بعدی یک جملهٔ کوتاه درخواست می‌کند."
+        },
+        "questions": [
+          {
+            "id": "pre-a2-t-unit-silent-waiter-r1",
+            "prompt": {
+              "nl": "Waarom lacht de groep?",
+              "en": "Why does the group laugh?",
+              "fa": "چرا گروه می‌خندد؟"
+            },
+            "options": [
+              {
+                "nl": "Adam vertelt een lange grap.",
+                "en": "Adam tells a long joke.",
+                "fa": "آدم لطیفه‌ای طولانی تعریف می‌کند."
+              },
+              {
+                "nl": "Adam kijkt verbaasd in een lege kop.",
+                "en": "Adam looks into an empty cup in surprise.",
+                "fa": "آدم با تعجب داخل فنجان خالی نگاه می‌کند."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Zijn gezicht maakt de scène grappig, niet een gesproken grap.",
+              "en": "His expression makes the scene funny, rather than a spoken joke.",
+              "fa": "حالت چهره‌اش صحنه را خنده‌دار می‌کند، نه لطیفه‌ای که تعریف کرده باشد."
+            }
+          },
+          {
+            "id": "pre-a2-t-unit-silent-waiter-r2",
+            "prompt": {
+              "nl": "Wat vraagt Adam voor de volgende oefening?",
+              "en": "What does Adam ask for in the next exercise?",
+              "fa": "آدم برای تمرین بعدی چه می‌خواهد؟"
+            },
+            "options": [
+              {
+                "nl": "Eén korte zin.",
+                "en": "One short line.",
+                "fa": "یک جملهٔ کوتاه."
+              },
+              {
+                "nl": "Een andere zaal.",
+                "en": "A different room.",
+                "fa": "سالنی دیگر."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Hij wil toch ook een beetje spreken.",
+              "en": "He would still like to speak a little too.",
+              "fa": "بااین‌حال می‌خواهد کمی هم حرف بزند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Adam, na de pauze speel je geen ober maar een klant. Je zegt: Een koffie, alstublieft. Daarna wacht je op de ober. We oefenen de scène twee keer.",
+          "en": "Adam, after the break you play a customer rather than a waiter. You say: A coffee, please. Then you wait for the waiter. We practise the scene twice.",
+          "fa": "آدم، بعد از استراحت به‌جای گارسون نقش مشتری را بازی می‌کنی. می‌گویی: یک قهوه، لطفاً. بعد منتظر گارسون می‌مانی. صحنه را دو بار تمرین می‌کنیم."
+        },
+        "questions": [
+          {
+            "id": "pre-a2-t-unit-silent-waiter-l1",
+            "prompt": {
+              "nl": "Welke rol speelt Adam na de pauze?",
+              "en": "Which role does Adam play after the break?",
+              "fa": "آدم بعد از استراحت چه نقشی بازی می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Een ober.",
+                "en": "A waiter.",
+                "fa": "گارسون."
+              },
+              {
+                "nl": "Een klant.",
+                "en": "A customer.",
+                "fa": "مشتری."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "De begeleidster verandert zijn rol in die van klant.",
+              "en": "The instructor changes his role to a customer.",
+              "fa": "مربی نقش او را به مشتری تغییر می‌دهد."
+            }
+          },
+          {
+            "id": "pre-a2-t-unit-silent-waiter-l2",
+            "prompt": {
+              "nl": "Hoe vaak oefenen ze de scène?",
+              "en": "How many times do they practise the scene?",
+              "fa": "صحنه را چند بار تمرین می‌کنند؟"
+            },
+            "options": [
+              {
+                "nl": "Twee keer.",
+                "en": "Twice.",
+                "fa": "دو بار."
+              },
+              {
+                "nl": "Eén keer.",
+                "en": "Once.",
+                "fa": "یک بار."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "In het bericht staat dat ze twee keer oefenen.",
+              "en": "The message says they practise twice.",
+              "fa": "پیام می‌گوید دو بار تمرین می‌کنند."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Je speelt nu de klant. Herhaal de bestelling uit het luisterbericht en vraag of je twee keer mag oefenen.",
+          "en": "You now play the customer. Repeat the order from the audio message and ask to practise twice.",
+          "fa": "حالا نقش مشتری را بازی می‌کنی. سفارش پیام شنیداری را تکرار کن و بپرس می‌توانی دو بار تمرین کنی."
+        },
+        "sample": {
+          "nl": "Een koffie, alstublieft. Mag ik deze zin twee keer oefenen?",
+          "en": "A coffee, please. May I practise this line twice?",
+          "fa": "یک قهوه، لطفاً. می‌توانم این جمله را دو بار تمرین کنم؟"
+        },
+        "min_words": 8,
+        "max_words": 55,
+        "criteria": [
+          {
+            "nl": "Bestel als klant één koffie met een beleefde korte zin.",
+            "en": "Order one coffee as the customer using a polite short phrase.",
+            "fa": "در نقش مشتری با جمله‌ای کوتاه و مؤدبانه یک قهوه سفارش بده."
+          },
+          {
+            "nl": "Vraag toestemming om de zin twee keer te oefenen.",
+            "en": "Ask permission to practise the line twice.",
+            "fa": "اجازه بخواه جمله را دو بار تمرین کنی."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf Adam een kort bericht over zijn nieuwe rol. Noem de rol, het moment en het aantal oefeningen.",
+          "en": "Write Adam a short message about his new role. Include the role, when it starts and how many times they practise.",
+          "fa": "دربارهٔ نقش تازهٔ آدم برایش پیام کوتاهی بنویس. نقش، زمان شروع و تعداد تمرین را بیان کن."
+        },
+        "sample": {
+          "nl": "Dag Adam, na de pauze ben je de klant. Je bestelt een koffie en wacht op de ober. We oefenen twee keer.",
+          "en": "Hi Adam, after the break you are the customer. You order a coffee and wait for the waiter. We practise twice.",
+          "fa": "سلام آدم، بعد از استراحت تو مشتری هستی. قهوه سفارش می‌دهی و منتظر گارسون می‌مانی. دو بار تمرین می‌کنیم."
+        },
+        "min_words": 8,
+        "max_words": 55,
+        "criteria": [
+          {
+            "nl": "Leg uit dat Adam na de pauze de klant speelt.",
+            "en": "Explain that Adam plays the customer after the break.",
+            "fa": "توضیح بده آدم بعد از استراحت نقش مشتری را بازی می‌کند."
+          },
+          {
+            "nl": "Vermeld dat de scène twee keer wordt geoefend.",
+            "en": "Mention that the scene is practised twice.",
+            "fa": "بیان کن صحنه دو بار تمرین می‌شود."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

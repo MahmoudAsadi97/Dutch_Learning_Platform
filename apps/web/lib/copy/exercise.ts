@@ -3,6 +3,11 @@ import type { Copy } from "@/lib/ui-copy";
 /** Interface copy of practice sessions (components/exercise, app/oefenen, and the session inside a practice
  * topic in SkillTopicPractice), in Dutch with English and Persian. */
 export const exerciseCopy = {
+  completionAssisted: {
+    nl: "Je hebt bij deze oefening hulp gevraagd. Je antwoorden blijven bewaard. Probeer de hele oefening later zonder hulp om zelfstandig begrip te laten zien.",
+    en: "You requested assistance in this activity. Your answers are saved. Try the whole activity later without help to show independent understanding.",
+    fa: "در این تمرین کمک درخواست کردی و پاسخ‌هایت ذخیره شده‌اند. بعداً کل تمرین را بدون کمک انجام بده تا درک مستقل خودت را نشان بدهی.",
+  },
   // app/oefenen/page.tsx and the session frame
   pageTitle: { nl: "Oefenen", en: "Practice", fa: "تمرین" },
   progressLabel: { nl: "Voortgang van je oefening", en: "Progress of your practice", fa: "پیشرفت تمرینت" },

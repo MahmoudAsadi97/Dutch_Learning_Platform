@@ -4,13 +4,18 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import { VocabularyRecall } from "@/components/VocabularyRecall";
+import { WordUsage } from "@/components/WordUsage";
+import { StoryPractice } from "@/components/StoryPractice";
 import { CurriculumQuestions } from "@/components/CurriculumControls";
-import { SpokenPassage } from "@/components/SpokenPassage";
+import { SpokenPassage, SpokenText } from "@/components/SpokenPassage";
 import { apiJson } from "@/lib/client/api";
 import { friendlyError, type CurriculumQuestion } from "@/lib/client/curriculum";
 import { storageKeys } from "@/lib/client/storage";
+import type { LibraryWord } from "@/lib/client/library";
+import { storyLearningCopy } from "@/lib/copy/storyLearning";
+import { fill } from "@/lib/ui-copy";
 
-type Word = { id: string; term: string; topic: LearningCopy; meaning: LearningCopy; example: LearningCopy };
+type Word = LibraryWord;
 type StorySummary = {
   id: string;
   title: LearningCopy;
@@ -19,12 +24,20 @@ type StorySummary = {
   word_count: number;
   paragraph_count: number;
 };
-type Story = StorySummary & { paragraphs: LearningCopy[]; vocabulary: Word[]; question: CurriculumQuestion };
+type Story = StorySummary & {
+  paragraphs: LearningCopy[];
+  lines?: LearningCopy[];
+  topic_id?: string;
+  vocabulary: Word[];
+  question: CurriculumQuestion;
+};
 type Overview = {
   stage_id: string;
   learner_key: string;
   vocabulary_count: number;
   story_count: number;
+  authored_story_count?: number;
+  target_story_count?: number;
   topics: { key: string; label: LearningCopy; vocabulary_count: number; story_count: number }[];
 };
 type Page<T> = { items: T[]; total: number; offset: number; limit: number };
@@ -182,6 +195,7 @@ export function WordLibrary({ stageId }: { stageId: string }) {
   const [revealed, setRevealed] = useState<Record<string, boolean>>({});
   const key = JSON.stringify([stageId, query, topic, offset, retry]);
   const data = result?.key === key ? result.page : null;
+  const authoredTopic = overview?.topics.find((item) => item.label.nl === storyLearningCopy.category.nl);
   useEffect(() => {
     const controller = new AbortController();
     const timer = window.setTimeout(
@@ -220,6 +234,18 @@ export function WordLibrary({ stageId }: { stageId: string }) {
         </p>
       </div>
       {overviewFailed && <LibraryError retry={retryOverview} />}
+      {authoredTopic && (
+        <button
+          className="button secondary"
+          onClick={() => {
+            setTopic(authoredTopic.key);
+            setQuery("");
+            setOffset(0);
+          }}
+        >
+          <LearningText text={storyLearningCopy.wordsAuthored} />
+        </button>
+      )}
       <LibraryFilters
         kind="words"
         overview={overview}
@@ -248,7 +274,7 @@ export function WordLibrary({ stageId }: { stageId: string }) {
                 <span className="eyebrow">{word.topic.nl}</span>
                 <div className="word-card-heading">
                   <h3 lang="nl">{word.term}</h3>
-                  <PhraseAudio text={word.term} label={`Luister naar ${word.term}`} />
+                  <PhraseAudio text={word.term} />
                 </div>
                 <button
                   className="word-reveal"
@@ -263,12 +289,9 @@ export function WordLibrary({ stageId }: { stageId: string }) {
                       <LearningText text={word.meaning} />
                     </p>
                     <div className="word-example">
-                      <LearningText text={word.example} />
-                      <PhraseAudio
-                        text={word.example.nl}
-                        label={`Luister naar het voorbeeld bij ${word.term}`}
-                      />
+                      <SpokenText text={word.example} />
                     </div>
+                    <WordUsage key={word.id} word={word} />
                   </div>
                 )}
               </article>
@@ -292,11 +315,13 @@ export function WordLibrary({ stageId }: { stageId: string }) {
 export function StoryTime({ stageId }: { stageId: string }) {
   const { overview, failed: overviewFailed, retryOverview } = useOverview(stageId);
   const [query, setQuery] = useState("");
-  const [topic, setTopic] = useState("");
+  const [selectedTopic, setTopic] = useState<string | null>(null);
   const [offset, setOffset] = useState(0);
   const [result, setResult] = useState<{ key: string; page: Page<StorySummary> } | null>(null);
   const [error, setError] = useState(false);
   const [retry, setRetry] = useState(0);
+  const authoredTopic = overview?.topics.find((item) => item.label.nl === storyLearningCopy.category.nl);
+  const topic = selectedTopic ?? (overview?.authored_story_count && authoredTopic ? authoredTopic.key : "");
   const key = JSON.stringify([stageId, query, topic, offset, retry]);
   const data = result?.key === key ? result.page : null;
   const [selected, setSelected] = useState("");
@@ -390,6 +415,24 @@ export function StoryTime({ stageId }: { stageId: string }) {
               <h3 ref={titleRef} tabIndex={-1}>
                 <LearningText text={story.title} />
               </h3>
+              <p className="story-learning-loop">
+                <LearningText
+                  text={{
+                    nl: "Ontdek woorden → begrijp het verhaal → luister → gebruik → verbeter → probeer later zonder hulp.",
+                    en: "Meet words → understand the story → listen → use → revise → try later without help.",
+                    fa: "واژه‌ها را بشناس ← داستان را بفهم ← گوش بده ← به کار ببر ← اصلاح کن ← بعداً بدون کمک امتحان کن.",
+                  }}
+                />
+              </p>
+              <div className="story-reader-tools">
+                <PhraseAudio
+                  text={(story.lines?.length ? story.lines : story.paragraphs)
+                    .map((line) => line.nl)
+                    .join(" ")}
+                  label={storyLearningCopy.wholeStory.nl}
+                />
+                <LearningText text={storyLearningCopy.listenWholeStory} />
+              </div>
               <button
                 className="button secondary"
                 aria-pressed={showSupport}
@@ -399,11 +442,24 @@ export function StoryTime({ stageId }: { stageId: string }) {
               </button>
             </header>
             <article className="story-paper" aria-label="Leesverhaal">
-              {story.paragraphs.map((paragraph, i) => (
-                <div className="story-paragraph" key={i}>
-                  <SpokenPassage text={showSupport ? paragraph : { nl: paragraph.nl }} />
-                </div>
-              ))}
+              {story.lines?.length ? (
+                <ol className="story-lines" aria-label="Regels van het verhaal">
+                  {story.lines.map((line, i) => (
+                    <li key={i}>
+                      <span className="story-line-number" aria-hidden="true">
+                        {i + 1}
+                      </span>
+                      <SpokenText text={showSupport ? line : { nl: line.nl }} />
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                story.paragraphs.map((paragraph, i) => (
+                  <div className="story-paragraph" key={i}>
+                    <SpokenPassage text={showSupport ? paragraph : { nl: paragraph.nl }} />
+                  </div>
+                ))
+              )}
             </article>
             <section className="story-word-strip">
               <h4>Woorden uit dit verhaal</h4>
@@ -415,8 +471,8 @@ export function StoryTime({ stageId }: { stageId: string }) {
                     <p>
                       <LearningText text={word.meaning} />
                     </p>
-                    <LearningText text={word.example} />
-                    <PhraseAudio text={word.example.nl} />
+                    <SpokenText text={word.example} />
+                    <WordUsage key={word.id} word={word} />
                   </details>
                 ))}
               </div>
@@ -439,15 +495,6 @@ export function StoryTime({ stageId }: { stageId: string }) {
               >
                 Controleer mijn begrip
               </button>
-              <p>
-                <LearningText
-                  text={{
-                    nl: "Vertel het verhaal daarna in je eigen woorden. Wat zou jij doen?",
-                    en: "Then retell the story in your own words. What would you do?",
-                    fa: "سپس داستان را با کلمات خودت تعریف کن. تو چه کار می‌کردی؟",
-                  }}
-                />
-              </p>
               <button className="button" onClick={markRead} disabled={read.includes(story.id)}>
                 {read.includes(story.id) ? "Gelezen" : "Markeer als gelezen"}
               </button>
@@ -458,6 +505,13 @@ export function StoryTime({ stageId }: { stageId: string }) {
                 Je leeslijst blijft in deze browser. Lezen telt niet als een geslaagde eindtoets.
               </p>
             </section>
+            <StoryPractice
+              key={story.id}
+              stageId={stageId}
+              storyId={story.id}
+              learnerKey={overview?.learner_key}
+              topicId={story.topic_id}
+            />
           </>
         )}
       </section>
@@ -480,6 +534,25 @@ export function StoryTime({ stageId }: { stageId: string }) {
           <p className="library-count">
             {overview.story_count} verhalen · {read.length} gemarkeerd als gelezen
           </p>
+        )}
+        {!!overview?.authored_story_count && authoredTopic && (
+          <div className="authored-story-entry">
+            <p>
+              <LearningText
+                text={fill(storyLearningCopy.authoredCount, { count: overview.authored_story_count })}
+              />
+            </p>
+            <button
+              className="button secondary"
+              onClick={() => {
+                setTopic(authoredTopic.key);
+                setQuery("");
+                setOffset(0);
+              }}
+            >
+              <LearningText text={storyLearningCopy.startAuthored} />
+            </button>
+          </div>
         )}
       </header>
       {overviewFailed && <LibraryError retry={retryOverview} />}

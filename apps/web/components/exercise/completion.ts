@@ -29,6 +29,8 @@ export function completionLines(completion: Completion | null | undefined): Comp
       return [{ key: "completionUnfinished" }, ...already];
     case "content_changed":
       return [{ key: "completionChanged" }, ...already];
+    case "assisted":
+      return [{ key: "completionAssisted" }, ...already];
   }
   if (completion.passed) return [{ key: "completionPassed" }];
   if (completion.completed) return [{ key: "completionKept" }];

@@ -1,0 +1,878 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "pre-b2-unit-empty-chair-v1",
+      "term": "aarzelen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Niet meteen durven beslissen.",
+        "en": "Hesitate before deciding.",
+        "fa": "برای تصمیم گرفتن تردید کردن."
+      },
+      "example": {
+        "nl": "Mira aarzelde voordat ze de uitnodiging schreef.",
+        "en": "Mira hesitated before writing the invitation.",
+        "fa": "میرا پیش از نوشتن دعوت‌نامه تردید کرد."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-b2-unit-empty-chair-v2",
+      "term": "blijken",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Na nieuwe informatie duidelijk worden.",
+        "en": "Become clear after new information.",
+        "fa": "پس از اطلاعات تازه روشن شدن."
+      },
+      "example": {
+        "nl": "Het café blijkt donderdag gesloten.",
+        "en": "The café turns out to be closed on Thursday.",
+        "fa": "معلوم می‌شود کافه پنجشنبه بسته است."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-b2-unit-empty-chair-v3",
+      "term": "het gebaar",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een handeling die een gevoel of bedoeling uitdrukt.",
+        "en": "An action expressing a feeling or intention.",
+        "fa": "عملی که احساس یا قصدی را نشان می‌دهد."
+      },
+      "example": {
+        "nl": "Ze waardeert zijn vriendelijke gebaar.",
+        "en": "She appreciates his kind gesture.",
+        "fa": "او برای حرکت دوستانه‌اش ارزش قائل است."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "pre-b2-unit-empty-chair-v4",
+      "term": "onhandig",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Ongemakkelijk of niet handig uitgevoerd.",
+        "en": "Awkward or clumsily carried out.",
+        "fa": "ناشیانه یا نامناسب انجام‌شده."
+      },
+      "example": {
+        "nl": "Haar uitnodiging leek haar plots onhandig.",
+        "en": "Her invitation suddenly seemed awkward to her.",
+        "fa": "دعوتش ناگهان به نظر خودش ناشیانه آمد."
+      },
+      "part_of_speech": "adjective"
+    },
+    {
+      "id": "pre-b2-unit-empty-chair-v5",
+      "term": "intussen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "In de tijd die ondertussen verstreken is.",
+        "en": "In the time that has passed meanwhile.",
+        "fa": "در این فاصله."
+      },
+      "example": {
+        "nl": "Intussen heeft Jonas de kaart gevonden.",
+        "en": "Meanwhile, Jonas has found the card.",
+        "fa": "در این فاصله یوناس کارت را پیدا کرده است."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "pre-b2-unit-empty-chair-v6",
+      "term": "voor alle duidelijkheid",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Om een mogelijk misverstand weg te nemen.",
+        "en": "To remove a possible misunderstanding.",
+        "fa": "برای برطرف کردن سوءتفاهم احتمالی."
+      },
+      "example": {
+        "nl": "Voor alle duidelijkheid: ik kom graag.",
+        "en": "Just to be clear: I would like to come.",
+        "fa": "برای روشن شدن موضوع: خوشحال می‌شوم بیایم."
+      },
+      "part_of_speech": "expression"
+    },
+    {
+      "id": "pre-b2-unit-last-loaf-v1",
+      "term": "overnemen",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een zaak of taak van iemand anders voortzetten.",
+        "en": "Take over another person's business or task.",
+        "fa": "کار یا وظیفه دیگری را بر عهده گرفتن."
+      },
+      "example": {
+        "nl": "Niemand heeft beslist de bakkerij over te nemen.",
+        "en": "Nobody has decided to take over the bakery.",
+        "fa": "هیچ‌کس تصمیم نگرفته نانوایی را تحویل بگیرد."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-b2-unit-last-loaf-v2",
+      "term": "toelichten",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Iets met uitleg duidelijker maken.",
+        "en": "Clarify something through explanation.",
+        "fa": "چیزی را با توضیح روشن کردن."
+      },
+      "example": {
+        "nl": "Amira licht haar keuze toe.",
+        "en": "Amira explains her choice.",
+        "fa": "امیرا انتخابش را توضیح می‌دهد."
+      },
+      "part_of_speech": "verb"
+    },
+    {
+      "id": "pre-b2-unit-last-loaf-v3",
+      "term": "de opvolger",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Iemand die een taak na een ander uitvoert.",
+        "en": "Someone who performs a role after another person.",
+        "fa": "کسی که پس از دیگری کاری را ادامه می‌دهد؛ جانشین."
+      },
+      "example": {
+        "nl": "Ze zoeken een opvolger voor haar vader.",
+        "en": "They are looking for a successor to her father.",
+        "fa": "دنبال جانشینی برای پدرش هستند."
+      },
+      "part_of_speech": "noun"
+    },
+    {
+      "id": "pre-b2-unit-last-loaf-v5",
+      "term": "tegelijk",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Op hetzelfde moment of daarnaast.",
+        "en": "At the same time or alongside that.",
+        "fa": "هم‌زمان؛ درعین‌حال."
+      },
+      "example": {
+        "nl": "Ze is verdrietig en tegelijk opgelucht.",
+        "en": "She is sad and relieved at the same time.",
+        "fa": "هم ناراحت است و هم آسوده."
+      },
+      "part_of_speech": "adverb"
+    },
+    {
+      "id": "pre-b2-unit-last-loaf-v6",
+      "term": "ruimte laten voor",
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "meaning": {
+        "nl": "Een andere mogelijkheid niet uitsluiten.",
+        "en": "Leave another possibility open.",
+        "fa": "برای امکان دیگری جا گذاشتن."
+      },
+      "example": {
+        "nl": "De familie laat ruimte voor nieuwe ideeën.",
+        "en": "The family leaves room for new ideas.",
+        "fa": "خانواده برای ایده‌های تازه جا می‌گذارد."
+      },
+      "part_of_speech": "expression"
+    }
+  ],
+  "stories": [
+    {
+      "id": "pre-b2-s-unit-empty-chair",
+      "title": {
+        "nl": "De lege stoel",
+        "en": "The empty chair",
+        "fa": "صندلی خالی"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een voorzichtige romance",
+        "en": "A tentative romance",
+        "fa": "عاشقانه‌ای محتاطانه"
+      },
+      "lines": [
+        {
+          "nl": "Elke donderdag koos Mira in de Gentse filmclub de stoel naast Jonas, al kende ze hem nauwelijks.",
+          "en": "Every Thursday at the Ghent film club, Mira chose the seat beside Jonas, although she barely knew him.",
+          "fa": "میرا هر پنجشنبه در باشگاه فیلم خنت صندلی کنار یوناس را انتخاب می‌کرد، هرچند او را به‌زحمت می‌شناخت."
+        },
+        {
+          "nl": "Na de voorstelling praatten ze gewoonlijk over de film, totdat de laatste bezoekers naar huis gingen.",
+          "en": "After the screening, they usually talked about the film until the last visitors went home.",
+          "fa": "پس از نمایش معمولاً آن‌قدر درباره فیلم حرف می‌زدند تا آخرین تماشاگران به خانه بروند."
+        },
+        {
+          "nl": "Op een avond lag op haar stoel een kaartje: Voor wie altijd blijft tot het einde.",
+          "en": "One evening, a card lay on her seat: For the person who always stays until the end.",
+          "fa": "یک شب کارتی روی صندلی‌اش بود: برای کسی که همیشه تا پایان می‌ماند."
+        },
+        {
+          "nl": "Ze dacht dat Jonas het had geschreven en durfde eindelijk een uitnodiging voor koffie in zijn jaszak te steken.",
+          "en": "She thought Jonas had written it and finally dared to slip an invitation for coffee into his coat pocket.",
+          "fa": "فکر کرد یوناس آن را نوشته و سرانجام جرئت کرد دعوتی برای قهوه در جیب کت او بگذارد."
+        },
+        {
+          "nl": "De volgende donderdag bleef zijn stoel leeg, waardoor Mira haar eigen gebaar steeds onhandiger begon te vinden.",
+          "en": "The following Thursday, his chair remained empty, making Mira feel increasingly awkward about her own gesture.",
+          "fa": "پنجشنبه بعد صندلی او خالی ماند و میرا کم‌کم حرکت خودش را ناشیانه‌تر می‌دید."
+        },
+        {
+          "nl": "Toen ze wilde vertrekken, vroeg de vrijwilliger of ze het bedankkaartje van de filmclub had gevonden.",
+          "en": "As she was about to leave, the volunteer asked whether she had found the film club's thank-you card.",
+          "fa": "وقتی می‌خواست برود، داوطلب پرسید آیا کارت تشکر باشگاه فیلم را پیدا کرده است."
+        },
+        {
+          "nl": "Het kaartje was dus niet van Jonas; Mira lachte, maar voelde ook hoe warm haar wangen werden.",
+          "en": "So the card had not come from Jonas; Mira laughed, but also felt her cheeks grow warm.",
+          "fa": "پس کارت از طرف یوناس نبود؛ میرا خندید، اما حس کرد گونه‌هایش داغ شده‌اند."
+        },
+        {
+          "nl": "Buiten stond Jonas met een kapotte fiets en haar uitnodiging, die hij pas die avond had ontdekt.",
+          "en": "Outside stood Jonas with a broken bicycle and her invitation, which he had only discovered that evening.",
+          "fa": "بیرون یوناس با دوچرخه خراب و دعوت‌نامه او ایستاده بود؛ همان شب تازه آن را پیدا کرده بود."
+        },
+        {
+          "nl": "Hij had de vertoning gemist, legde hij uit, maar wilde weten of het voorstel voor koffie nog gold.",
+          "en": "He explained that he had missed the screening, but wanted to know whether the offer of coffee still stood.",
+          "fa": "توضیح داد که نمایش را از دست داده، اما می‌خواست بداند پیشنهاد قهوه هنوز پابرجاست یا نه."
+        },
+        {
+          "nl": "Mira vertelde hem over haar vergissing en merkte dat een eerlijk gesprek beter werkte dan een perfect kaartje.",
+          "en": "Mira told him about her mistake and found that an honest conversation worked better than a perfect card.",
+          "fa": "میرا اشتباهش را برایش گفت و دید گفت‌وگوی صادقانه از یک کارت بی‌نقص بهتر جواب می‌دهد."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Elke donderdag koos Mira in de Gentse filmclub de stoel naast Jonas, al kende ze hem nauwelijks. Na de voorstelling praatten ze gewoonlijk over de film, totdat de laatste bezoekers naar huis gingen. Op een avond lag op haar stoel een kaartje: Voor wie altijd blijft tot het einde. Ze dacht dat Jonas het had geschreven en durfde eindelijk een uitnodiging voor koffie in zijn jaszak te steken. De volgende donderdag bleef zijn stoel leeg, waardoor Mira haar eigen gebaar steeds onhandiger begon te vinden.",
+          "en": "Every Thursday at the Ghent film club, Mira chose the seat beside Jonas, although she barely knew him. After the screening, they usually talked about the film until the last visitors went home. One evening, a card lay on her seat: For the person who always stays until the end. She thought Jonas had written it and finally dared to slip an invitation for coffee into his coat pocket. The following Thursday, his chair remained empty, making Mira feel increasingly awkward about her own gesture.",
+          "fa": "میرا هر پنجشنبه در باشگاه فیلم خنت صندلی کنار یوناس را انتخاب می‌کرد، هرچند او را به‌زحمت می‌شناخت. پس از نمایش معمولاً آن‌قدر درباره فیلم حرف می‌زدند تا آخرین تماشاگران به خانه بروند. یک شب کارتی روی صندلی‌اش بود: برای کسی که همیشه تا پایان می‌ماند. فکر کرد یوناس آن را نوشته و سرانجام جرئت کرد دعوتی برای قهوه در جیب کت او بگذارد. پنجشنبه بعد صندلی او خالی ماند و میرا کم‌کم حرکت خودش را ناشیانه‌تر می‌دید."
+        },
+        {
+          "nl": "Toen ze wilde vertrekken, vroeg de vrijwilliger of ze het bedankkaartje van de filmclub had gevonden. Het kaartje was dus niet van Jonas; Mira lachte, maar voelde ook hoe warm haar wangen werden. Buiten stond Jonas met een kapotte fiets en haar uitnodiging, die hij pas die avond had ontdekt. Hij had de vertoning gemist, legde hij uit, maar wilde weten of het voorstel voor koffie nog gold. Mira vertelde hem over haar vergissing en merkte dat een eerlijk gesprek beter werkte dan een perfect kaartje.",
+          "en": "As she was about to leave, the volunteer asked whether she had found the film club's thank-you card. So the card had not come from Jonas; Mira laughed, but also felt her cheeks grow warm. Outside stood Jonas with a broken bicycle and her invitation, which he had only discovered that evening. He explained that he had missed the screening, but wanted to know whether the offer of coffee still stood. Mira told him about her mistake and found that an honest conversation worked better than a perfect card.",
+          "fa": "وقتی می‌خواست برود، داوطلب پرسید آیا کارت تشکر باشگاه فیلم را پیدا کرده است. پس کارت از طرف یوناس نبود؛ میرا خندید، اما حس کرد گونه‌هایش داغ شده‌اند. بیرون یوناس با دوچرخه خراب و دعوت‌نامه او ایستاده بود؛ همان شب تازه آن را پیدا کرده بود. توضیح داد که نمایش را از دست داده، اما می‌خواست بداند پیشنهاد قهوه هنوز پابرجاست یا نه. میرا اشتباهش را برایش گفت و دید گفت‌وگوی صادقانه از یک کارت بی‌نقص بهتر جواب می‌دهد."
+        }
+      ],
+      "topic_id": "pre-b2-t-unit-empty-chair",
+      "vocabulary_ids": [
+        "pre-b2-unit-empty-chair-v1",
+        "pre-b2-unit-empty-chair-v2",
+        "pre-b2-unit-empty-chair-v3",
+        "pre-b2-unit-empty-chair-v4",
+        "pre-b2-unit-empty-chair-v5",
+        "pre-b2-unit-empty-chair-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom schrijft Mira een uitnodiging?",
+          "en": "Why does Mira write an invitation?",
+          "fa": "چرا میرا دعوت‌نامه می‌نویسد؟"
+        },
+        "options": [
+          {
+            "nl": "De vrijwilliger vraagt haar alle bezoekers uit te nodigen.",
+            "en": "The volunteer asks her to invite all the visitors.",
+            "fa": "داوطلب از او می‌خواهد همه تماشاگران را دعوت کند."
+          },
+          {
+            "nl": "Ze denkt dat het kaartje een persoonlijk gebaar van Jonas is.",
+            "en": "She thinks the card is a personal gesture from Jonas.",
+            "fa": "فکر می‌کند کارت حرکت شخصی یوناس است."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Mira schrijft na haar veronderstelling over de afzender; de vrijwilliger verduidelijkt die pas later.",
+          "en": "Mira writes after assuming who sent the card; the volunteer explains its origin only later.",
+          "fa": "میرا پس از حدس درباره فرستنده می‌نویسد؛ داوطلب بعداً منشأ کارت را روشن می‌کند."
+        }
+      }
+    },
+    {
+      "id": "pre-b2-s-unit-last-loaf",
+      "title": {
+        "nl": "Het laatste brood",
+        "en": "The last loaf",
+        "fa": "آخرین قرص نان"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Een familiedrama met hoop",
+        "en": "A hopeful family drama",
+        "fa": "داستان خانوادگی امیدبخش"
+      },
+      "lines": [
+        {
+          "nl": "Op de laatste werkdag van haar vader legde Amira één brood apart in de kleine bakkerij in Kortrijk.",
+          "en": "On her father's last working day, Amira set one loaf aside in their small bakery in Kortrijk.",
+          "fa": "امیرا در آخرین روز کاری پدرش یک قرص نان را در نانوایی کوچکشان در کورتریک کنار گذاشت."
+        },
+        {
+          "nl": "Hij dacht dat ze de zaak zou overnemen, maar zij had een opleiding tot verpleegkundige gekozen.",
+          "en": "He thought she would take over the business, but she had chosen to train as a nurse.",
+          "fa": "او فکر می‌کرد دخترش مغازه را تحویل می‌گیرد، اما امیرا آموزش پرستاری را انتخاب کرده بود."
+        },
+        {
+          "nl": "Ze had het nieuws al weken willen vertellen en vond telkens een reden om te wachten.",
+          "en": "She had wanted to share the news for weeks and kept finding a reason to wait.",
+          "fa": "هفته‌ها بود می‌خواست خبر را بگوید و هر بار بهانه‌ای برای صبر کردن پیدا می‌کرد."
+        },
+        {
+          "nl": "Toen haar vader de ovens uitzette, vroeg hij waarom ze dat ene brood niet verkocht had.",
+          "en": "When her father switched off the ovens, he asked why she had not sold that one loaf.",
+          "fa": "وقتی پدرش فرها را خاموش کرد، پرسید چرا آن یک قرص نان را نفروخته است."
+        },
+        {
+          "nl": "Amira antwoordde dat ze nog eenmaal samen wilde eten en daarna iets moeilijks moest zeggen.",
+          "en": "Amira replied that she wanted them to eat together one more time and then needed to say something difficult.",
+          "fa": "امیرا جواب داد می‌خواهد یک بار دیگر با هم غذا بخورند و بعد حرف سختی بزند."
+        },
+        {
+          "nl": "Haar vader luisterde zwijgend, tot ze uitlegde dat zorgen voor mensen haar meer aantrok dan bakken.",
+          "en": "Her father listened silently until she explained that caring for people appealed to her more than baking.",
+          "fa": "پدرش ساکت گوش داد تا توضیح داد مراقبت از مردم بیشتر از نانوایی جذبش می‌کند."
+        },
+        {
+          "nl": "Hij brak het brood en vertelde dat hij vroeger eigenlijk tuinier had willen worden.",
+          "en": "He broke the loaf and said that he had once actually wanted to become a gardener.",
+          "fa": "نان را شکست و گفت خودش زمانی در اصل می‌خواسته باغبان شود."
+        },
+        {
+          "nl": "Dat had Amira nooit geweten; opeens begreep ze beter waarom hij altijd bloemen achter de winkel zette.",
+          "en": "Amira had never known that; suddenly she understood better why he always put flowers behind the shop.",
+          "fa": "امیرا این را نمی‌دانست؛ ناگهان بهتر فهمید چرا همیشه پشت مغازه گل می‌گذاشت."
+        },
+        {
+          "nl": "Ze besloten de recepten te bewaren en een opvolger te zoeken die zijn eigen keuzes mocht maken.",
+          "en": "They decided to preserve the recipes and find a successor who would be free to make their own choices.",
+          "fa": "تصمیم گرفتند دستورها را نگه دارند و جانشینی پیدا کنند که بتواند انتخاب‌های خودش را داشته باشد."
+        },
+        {
+          "nl": "De winkel zou veranderen, maar voor het eerst voelde Amira dat hun verhaal niet hoefde te eindigen.",
+          "en": "The shop would change, but for the first time Amira felt that their story did not have to end.",
+          "fa": "مغازه تغییر می‌کرد، اما برای نخستین بار امیرا حس کرد داستانشان لازم نیست تمام شود."
+        }
+      ],
+      "paragraphs": [
+        {
+          "nl": "Op de laatste werkdag van haar vader legde Amira één brood apart in de kleine bakkerij in Kortrijk. Hij dacht dat ze de zaak zou overnemen, maar zij had een opleiding tot verpleegkundige gekozen. Ze had het nieuws al weken willen vertellen en vond telkens een reden om te wachten. Toen haar vader de ovens uitzette, vroeg hij waarom ze dat ene brood niet verkocht had. Amira antwoordde dat ze nog eenmaal samen wilde eten en daarna iets moeilijks moest zeggen.",
+          "en": "On her father's last working day, Amira set one loaf aside in their small bakery in Kortrijk. He thought she would take over the business, but she had chosen to train as a nurse. She had wanted to share the news for weeks and kept finding a reason to wait. When her father switched off the ovens, he asked why she had not sold that one loaf. Amira replied that she wanted them to eat together one more time and then needed to say something difficult.",
+          "fa": "امیرا در آخرین روز کاری پدرش یک قرص نان را در نانوایی کوچکشان در کورتریک کنار گذاشت. او فکر می‌کرد دخترش مغازه را تحویل می‌گیرد، اما امیرا آموزش پرستاری را انتخاب کرده بود. هفته‌ها بود می‌خواست خبر را بگوید و هر بار بهانه‌ای برای صبر کردن پیدا می‌کرد. وقتی پدرش فرها را خاموش کرد، پرسید چرا آن یک قرص نان را نفروخته است. امیرا جواب داد می‌خواهد یک بار دیگر با هم غذا بخورند و بعد حرف سختی بزند."
+        },
+        {
+          "nl": "Haar vader luisterde zwijgend, tot ze uitlegde dat zorgen voor mensen haar meer aantrok dan bakken. Hij brak het brood en vertelde dat hij vroeger eigenlijk tuinier had willen worden. Dat had Amira nooit geweten; opeens begreep ze beter waarom hij altijd bloemen achter de winkel zette. Ze besloten de recepten te bewaren en een opvolger te zoeken die zijn eigen keuzes mocht maken. De winkel zou veranderen, maar voor het eerst voelde Amira dat hun verhaal niet hoefde te eindigen.",
+          "en": "Her father listened silently until she explained that caring for people appealed to her more than baking. He broke the loaf and said that he had once actually wanted to become a gardener. Amira had never known that; suddenly she understood better why he always put flowers behind the shop. They decided to preserve the recipes and find a successor who would be free to make their own choices. The shop would change, but for the first time Amira felt that their story did not have to end.",
+          "fa": "پدرش ساکت گوش داد تا توضیح داد مراقبت از مردم بیشتر از نانوایی جذبش می‌کند. نان را شکست و گفت خودش زمانی در اصل می‌خواسته باغبان شود. امیرا این را نمی‌دانست؛ ناگهان بهتر فهمید چرا همیشه پشت مغازه گل می‌گذاشت. تصمیم گرفتند دستورها را نگه دارند و جانشینی پیدا کنند که بتواند انتخاب‌های خودش را داشته باشد. مغازه تغییر می‌کرد، اما برای نخستین بار امیرا حس کرد داستانشان لازم نیست تمام شود."
+        }
+      ],
+      "topic_id": "pre-b2-t-unit-last-loaf",
+      "vocabulary_ids": [
+        "pre-b2-unit-last-loaf-v1",
+        "pre-b2-unit-last-loaf-v2",
+        "pre-b2-unit-last-loaf-v3",
+        "pre-b2-v466",
+        "pre-b2-unit-last-loaf-v5",
+        "pre-b2-unit-last-loaf-v6"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom stelt Amira het gesprek uit?",
+          "en": "Why does Amira postpone the conversation?",
+          "fa": "چرا امیرا گفت‌وگو را عقب می‌اندازد؟"
+        },
+        "options": [
+          {
+            "nl": "Ze weet nog niet welke opleiding ze wil volgen.",
+            "en": "She does not yet know which course she wants to take.",
+            "fa": "هنوز نمی‌داند چه آموزشی می‌خواهد بگذراند."
+          },
+          {
+            "nl": "Haar beroepskeuze past niet bij de verwachting van haar vader.",
+            "en": "Her career choice differs from her father's expectation.",
+            "fa": "انتخاب شغلی‌اش با انتظار پدرش تفاوت دارد."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Ze heeft al voor verpleegkunde gekozen, maar vindt het moeilijk dat te vertellen.",
+          "en": "She has already chosen nursing, but finds it difficult to say so.",
+          "fa": "پرستاری را انتخاب کرده، اما گفتنش برایش دشوار است."
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "pre-b2-t-unit-empty-chair",
+      "title": {
+        "nl": "De lege stoel",
+        "en": "The empty chair",
+        "fa": "صندلی خالی"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een misverstand uitleggen, onzekerheid aangeven en een voorstel doen.",
+          "en": "Explain a misunderstanding, express uncertainty and make a proposal.",
+          "fa": "توضیح سوءتفاهم، بیان تردید و ارائه پیشنهاد."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een misverstand uitleggen, onzekerheid aangeven en een voorstel doen.",
+        "en": "Explain a misunderstanding, express uncertainty and make a proposal.",
+        "fa": "توضیح سوءتفاهم، بیان تردید و ارائه پیشنهاد."
+      },
+      "vocabulary_ids": [
+        "pre-b2-unit-empty-chair-v1",
+        "pre-b2-unit-empty-chair-v2",
+        "pre-b2-unit-empty-chair-v3",
+        "pre-b2-unit-empty-chair-v4",
+        "pre-b2-unit-empty-chair-v5",
+        "pre-b2-unit-empty-chair-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Elke donderdag koos Mira in de Gentse filmclub de stoel naast Jonas, al kende ze hem nauwelijks. Na de voorstelling praatten ze gewoonlijk over de film, totdat de laatste bezoekers naar huis gingen. Op een avond lag op haar stoel een kaartje: Voor wie altijd blijft tot het einde. Ze dacht dat Jonas het had geschreven en durfde eindelijk een uitnodiging voor koffie in zijn jaszak te steken. De volgende donderdag bleef zijn stoel leeg, waardoor Mira haar eigen gebaar steeds onhandiger begon te vinden.\n\nToen ze wilde vertrekken, vroeg de vrijwilliger of ze het bedankkaartje van de filmclub had gevonden. Het kaartje was dus niet van Jonas; Mira lachte, maar voelde ook hoe warm haar wangen werden. Buiten stond Jonas met een kapotte fiets en haar uitnodiging, die hij pas die avond had ontdekt. Hij had de vertoning gemist, legde hij uit, maar wilde weten of het voorstel voor koffie nog gold. Mira vertelde hem over haar vergissing en merkte dat een eerlijk gesprek beter werkte dan een perfect kaartje.",
+          "en": "Every Thursday at the Ghent film club, Mira chose the seat beside Jonas, although she barely knew him. After the screening, they usually talked about the film until the last visitors went home. One evening, a card lay on her seat: For the person who always stays until the end. She thought Jonas had written it and finally dared to slip an invitation for coffee into his coat pocket. The following Thursday, his chair remained empty, making Mira feel increasingly awkward about her own gesture.\n\nAs she was about to leave, the volunteer asked whether she had found the film club's thank-you card. So the card had not come from Jonas; Mira laughed, but also felt her cheeks grow warm. Outside stood Jonas with a broken bicycle and her invitation, which he had only discovered that evening. He explained that he had missed the screening, but wanted to know whether the offer of coffee still stood. Mira told him about her mistake and found that an honest conversation worked better than a perfect card.",
+          "fa": "میرا هر پنجشنبه در باشگاه فیلم خنت صندلی کنار یوناس را انتخاب می‌کرد، هرچند او را به‌زحمت می‌شناخت. پس از نمایش معمولاً آن‌قدر درباره فیلم حرف می‌زدند تا آخرین تماشاگران به خانه بروند. یک شب کارتی روی صندلی‌اش بود: برای کسی که همیشه تا پایان می‌ماند. فکر کرد یوناس آن را نوشته و سرانجام جرئت کرد دعوتی برای قهوه در جیب کت او بگذارد. پنجشنبه بعد صندلی او خالی ماند و میرا کم‌کم حرکت خودش را ناشیانه‌تر می‌دید.\n\nوقتی می‌خواست برود، داوطلب پرسید آیا کارت تشکر باشگاه فیلم را پیدا کرده است. پس کارت از طرف یوناس نبود؛ میرا خندید، اما حس کرد گونه‌هایش داغ شده‌اند. بیرون یوناس با دوچرخه خراب و دعوت‌نامه او ایستاده بود؛ همان شب تازه آن را پیدا کرده بود. توضیح داد که نمایش را از دست داده، اما می‌خواست بداند پیشنهاد قهوه هنوز پابرجاست یا نه. میرا اشتباهش را برایش گفت و دید گفت‌وگوی صادقانه از یک کارت بی‌نقص بهتر جواب می‌دهد."
+        },
+        "questions": [
+          {
+            "id": "pre-b2-t-unit-empty-chair-r1",
+            "prompt": {
+              "nl": "Waarom schrijft Mira een uitnodiging?",
+              "en": "Why does Mira write an invitation?",
+              "fa": "چرا میرا دعوت‌نامه می‌نویسد؟"
+            },
+            "options": [
+              {
+                "nl": "De vrijwilliger vraagt haar alle bezoekers uit te nodigen.",
+                "en": "The volunteer asks her to invite all the visitors.",
+                "fa": "داوطلب از او می‌خواهد همه تماشاگران را دعوت کند."
+              },
+              {
+                "nl": "Ze denkt dat het kaartje een persoonlijk gebaar van Jonas is.",
+                "en": "She thinks the card is a personal gesture from Jonas.",
+                "fa": "فکر می‌کند کارت حرکت شخصی یوناس است."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Mira schrijft na haar veronderstelling over de afzender; de vrijwilliger verduidelijkt die pas later.",
+              "en": "Mira writes after assuming who sent the card; the volunteer explains its origin only later.",
+              "fa": "میرا پس از حدس درباره فرستنده می‌نویسد؛ داوطلب بعداً منشأ کارت را روشن می‌کند."
+            }
+          },
+          {
+            "id": "pre-b2-t-unit-empty-chair-r2",
+            "prompt": {
+              "nl": "Wat verklaart de lege stoel uiteindelijk?",
+              "en": "What ultimately explains the empty chair?",
+              "fa": "چه چیزی سرانجام علت صندلی خالی را روشن می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Jonas heeft door een kapotte fiets de vertoning gemist.",
+                "en": "Jonas missed the screening because of a broken bicycle.",
+                "fa": "یوناس به‌دلیل خرابی دوچرخه نمایش را از دست داده است."
+              },
+              {
+                "nl": "Jonas wil geen contact meer met Mira.",
+                "en": "Jonas no longer wants contact with Mira.",
+                "fa": "یوناس دیگر نمی‌خواهد با میرا ارتباطی داشته باشد."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Zijn uitleg buiten geeft een praktische oorzaak, geen afwijzing van Mira.",
+              "en": "His explanation outside gives a practical cause, rather than a rejection of Mira.",
+              "fa": "توضیح او در بیرون دلیل عملی می‌دهد، نه رد کردن میرا."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Mira, met Jonas. Het café naast de cinema blijkt donderdag gesloten, dus ik stel vrijdag om zeven uur in de avond het koffiehuis aan de brug voor. Als dat niet past, zoeken we samen een ander moment. En voor alle duidelijkheid: ik kom graag, ook zonder een film achteraf.",
+          "en": "Hi Mira, Jonas here. The café beside the cinema turns out to be closed on Thursday, so I suggest the coffee house by the bridge on Friday at seven in the evening. If that does not suit you, we can find another time together. And just to be clear: I would like to come, even without a film afterwards.",
+          "fa": "سلام میرا، یوناس هستم. معلوم شده کافه کنار سینما پنجشنبه بسته است؛ برای همین قهوه‌خانه کنار پل را جمعه ساعت هفت شب پیشنهاد می‌کنم. اگر مناسب نیست، با هم زمان دیگری پیدا می‌کنیم. برای روشن شدن موضوع: خوشحال می‌شوم بیایم، حتی بدون فیلم بعد از آن."
+        },
+        "questions": [
+          {
+            "id": "pre-b2-t-unit-empty-chair-l1",
+            "prompt": {
+              "nl": "Welk voorstel doet Jonas in zijn bericht?",
+              "en": "What proposal does Jonas make in his message?",
+              "fa": "یوناس در پیامش چه پیشنهادی می‌دهد؟"
+            },
+            "options": [
+              {
+                "nl": "Donderdag om 19.00 uur in het café naast de cinema.",
+                "en": "Thursday at 19:00 at the café beside the cinema.",
+                "fa": "پنجشنبه ساعت ۱۹ در کافه کنار سینما."
+              },
+              {
+                "nl": "Vrijdag om 19.00 uur in het koffiehuis aan de brug.",
+                "en": "Friday at 19:00 at the coffee house by the bridge.",
+                "fa": "جمعه ساعت ۱۹ در قهوه‌خانه کنار پل."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Jonas wijzigt zowel de dag als de plaats omdat het eerste café gesloten is.",
+              "en": "Jonas changes both the day and the place because the first café is closed.",
+              "fa": "یوناس هم روز و هم مکان را عوض می‌کند، چون کافه نخست بسته است."
+            }
+          },
+          {
+            "id": "pre-b2-t-unit-empty-chair-l2",
+            "prompt": {
+              "nl": "Welke betekenis heeft zijn laatste zin?",
+              "en": "What does his final sentence mean?",
+              "fa": "جمله آخر او چه معنایی دارد؟"
+            },
+            "options": [
+              {
+                "nl": "Hij wil Mira ontmoeten, ook als ze niet naar de film gaan.",
+                "en": "He wants to meet Mira even if they do not go to a film.",
+                "fa": "می‌خواهد میرا را ببیند، حتی اگر به تماشای فیلم نروند."
+              },
+              {
+                "nl": "Hij komt alleen als Mira eerst een film kiest.",
+                "en": "He will come only if Mira first chooses a film.",
+                "fa": "فقط در صورتی می‌آید که میرا اول فیلمی انتخاب کند."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Ook zonder maakt duidelijk dat een film geen voorwaarde is.",
+              "en": "Even without makes clear that a film is not a condition.",
+              "fa": "عبارت حتی بدون نشان می‌دهد فیلم شرط نیست."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Antwoord als Mira op het bericht. Bevestig het nieuwe voorstel of bied een alternatief en leg kort de eerdere vergissing uit zonder Jonas iets te verwijten.",
+          "en": "Reply to the message as Mira. Confirm the new proposal or offer an alternative, and briefly explain the earlier mistake without blaming Jonas.",
+          "fa": "در نقش میرا پاسخ دهید. پیشنهاد تازه را تأیید کنید یا جایگزین بدهید و سوءتفاهم قبلی را کوتاه و بدون سرزنش یوناس توضیح دهید."
+        },
+        "sample": {
+          "nl": "Dag Jonas, vrijdag om zeven uur aan de brug past voor mij. Ik dacht eerst dat het kaartje van jou kwam, maar het bleek van de filmclub te zijn. Daardoor voelde mijn uitnodiging even nogal onverwacht. Ik ben blij dat je toch graag wilt afspreken. Tot vrijdag!",
+          "en": "Hi Jonas, Friday at seven in the evening by the bridge suits me. At first I thought the card came from you, but it turned out to be from the film club. That made my invitation feel rather unexpected for a moment. I am glad you would still like to meet. See you Friday!",
+          "fa": "سلام یوناس، جمعه ساعت هفت شب کنار پل برای من مناسب است. اول فکر کردم کارت از طرف توست، اما معلوم شد از باشگاه فیلم بوده. برای همین یک لحظه دعوت خودم خیلی ناگهانی به نظر رسید. خوشحالم که تو هم دوست داری همدیگر را ببینیم. تا جمعه!"
+        },
+        "min_words": 35,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Bevestig vrijdag om 19.00 uur aan de brug of stel expliciet een alternatief voor.",
+            "en": "Confirm Friday at 19:00 by the bridge or explicitly propose an alternative.",
+            "fa": "جمعه ساعت ۱۹ کنار پل را تأیید کنید یا صریحاً جایگزین بدهید."
+          },
+          {
+            "nl": "Leg de vergissing over het kaartje uit zonder verwijt.",
+            "en": "Explain the mistake about the card without blame.",
+            "fa": "اشتباه کارت را بدون سرزنش توضیح دهید."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf Mira's antwoord van 60 tot 140 woorden. Verwerk de nieuwe dag en plaats, leg de vergissing uit en sluit af met een vraag die het gesprek voortzet.",
+          "en": "Write Mira's reply in 60–140 Dutch words. Include the new day and place, explain the mistake and finish with a question that continues the conversation.",
+          "fa": "پاسخ میرا را در ۶۰ تا ۱۴۰ واژه هلندی بنویسید. روز و مکان تازه را بیاورید، اشتباه را توضیح دهید و با پرسشی ادامه‌دهنده گفت‌وگو پایان دهید."
+        },
+        "sample": {
+          "nl": "Dag Jonas, bedankt voor je bericht. Vrijdag om zeven uur in het koffiehuis aan de brug past goed voor mij. Ik moet je nog iets vertellen: ik dacht dat het kaartje op mijn stoel van jou kwam. Daarom heb ik mijn uitnodiging in je jaszak gestoken. De vrijwilliger heeft intussen uitgelegd dat het een bedankje van de filmclub was. Ik moest er zelf om lachen. Gelukkig heb je de uitnodiging toch gevonden. Zullen we vrijdag ook eens praten over iets anders dan films? Groetjes, Mira.",
+          "en": "Hi Jonas, thank you for your message. Friday at seven in the evening at the coffee house by the bridge suits me well. There is something I still need to tell you: I thought the card on my chair came from you. That is why I slipped my invitation into your coat pocket. The volunteer has since explained that it was a thank-you from the film club. I had to laugh about it myself. Fortunately, you found the invitation anyway. Shall we also talk about something other than films on Friday? Best, Mira.",
+          "fa": "سلام یوناس، ممنون از پیامت. جمعه ساعت هفت شب در قهوه‌خانه کنار پل برایم مناسب است. هنوز چیزی باید بگویم: فکر کردم کارت روی صندلی‌ام از طرف توست. برای همین دعوتم را در جیب کتت گذاشتم. داوطلب حالا توضیح داده که کارت تشکر باشگاه فیلم بوده. خودم هم خنده‌ام گرفت. خوشبختانه به‌هرحال دعوت را پیدا کردی. جمعه درباره چیزی جز فیلم هم حرف بزنیم؟ با مهر، میرا."
+        },
+        "min_words": 60,
+        "max_words": 140,
+        "criteria": [
+          {
+            "nl": "Verwerk het gewijzigde voorstel en verklaar de oorspronkelijke uitnodiging.",
+            "en": "Include the changed proposal and explain the original invitation.",
+            "fa": "پیشنهاد تغییریافته را بیاورید و دعوت نخست را توضیح دهید."
+          },
+          {
+            "nl": "Stel een open vraag die het persoonlijke gesprek voortzet.",
+            "en": "Ask an open question that continues the personal conversation.",
+            "fa": "پرسش بازی برای ادامه گفت‌وگوی شخصی بپرسید."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pre-b2-t-unit-last-loaf",
+      "title": {
+        "nl": "Het laatste brood",
+        "en": "The last loaf",
+        "fa": "آخرین قرص نان"
+      },
+      "category": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "objectives": [
+        {
+          "nl": "Een verandering toelichten en belangen afwegen met duidelijke redenen.",
+          "en": "Explain a change and weigh people's interests using clear reasons.",
+          "fa": "توضیح تغییر و سنجیدن خواسته‌های افراد با دلیل روشن."
+        }
+      ],
+      "language_focus": {
+        "nl": "Een verandering toelichten en belangen afwegen met duidelijke redenen.",
+        "en": "Explain a change and weigh people's interests using clear reasons.",
+        "fa": "توضیح تغییر و سنجیدن خواسته‌های افراد با دلیل روشن."
+      },
+      "vocabulary_ids": [
+        "pre-b2-unit-last-loaf-v1",
+        "pre-b2-unit-last-loaf-v2",
+        "pre-b2-unit-last-loaf-v3",
+        "pre-b2-v466",
+        "pre-b2-unit-last-loaf-v5",
+        "pre-b2-unit-last-loaf-v6"
+      ],
+      "reading": {
+        "text": {
+          "nl": "Op de laatste werkdag van haar vader legde Amira één brood apart in de kleine bakkerij in Kortrijk. Hij dacht dat ze de zaak zou overnemen, maar zij had een opleiding tot verpleegkundige gekozen. Ze had het nieuws al weken willen vertellen en vond telkens een reden om te wachten. Toen haar vader de ovens uitzette, vroeg hij waarom ze dat ene brood niet verkocht had. Amira antwoordde dat ze nog eenmaal samen wilde eten en daarna iets moeilijks moest zeggen.\n\nHaar vader luisterde zwijgend, tot ze uitlegde dat zorgen voor mensen haar meer aantrok dan bakken. Hij brak het brood en vertelde dat hij vroeger eigenlijk tuinier had willen worden. Dat had Amira nooit geweten; opeens begreep ze beter waarom hij altijd bloemen achter de winkel zette. Ze besloten de recepten te bewaren en een opvolger te zoeken die zijn eigen keuzes mocht maken. De winkel zou veranderen, maar voor het eerst voelde Amira dat hun verhaal niet hoefde te eindigen.",
+          "en": "On her father's last working day, Amira set one loaf aside in their small bakery in Kortrijk. He thought she would take over the business, but she had chosen to train as a nurse. She had wanted to share the news for weeks and kept finding a reason to wait. When her father switched off the ovens, he asked why she had not sold that one loaf. Amira replied that she wanted them to eat together one more time and then needed to say something difficult.\n\nHer father listened silently until she explained that caring for people appealed to her more than baking. He broke the loaf and said that he had once actually wanted to become a gardener. Amira had never known that; suddenly she understood better why he always put flowers behind the shop. They decided to preserve the recipes and find a successor who would be free to make their own choices. The shop would change, but for the first time Amira felt that their story did not have to end.",
+          "fa": "امیرا در آخرین روز کاری پدرش یک قرص نان را در نانوایی کوچکشان در کورتریک کنار گذاشت. او فکر می‌کرد دخترش مغازه را تحویل می‌گیرد، اما امیرا آموزش پرستاری را انتخاب کرده بود. هفته‌ها بود می‌خواست خبر را بگوید و هر بار بهانه‌ای برای صبر کردن پیدا می‌کرد. وقتی پدرش فرها را خاموش کرد، پرسید چرا آن یک قرص نان را نفروخته است. امیرا جواب داد می‌خواهد یک بار دیگر با هم غذا بخورند و بعد حرف سختی بزند.\n\nپدرش ساکت گوش داد تا توضیح داد مراقبت از مردم بیشتر از نانوایی جذبش می‌کند. نان را شکست و گفت خودش زمانی در اصل می‌خواسته باغبان شود. امیرا این را نمی‌دانست؛ ناگهان بهتر فهمید چرا همیشه پشت مغازه گل می‌گذاشت. تصمیم گرفتند دستورها را نگه دارند و جانشینی پیدا کنند که بتواند انتخاب‌های خودش را داشته باشد. مغازه تغییر می‌کرد، اما برای نخستین بار امیرا حس کرد داستانشان لازم نیست تمام شود."
+        },
+        "questions": [
+          {
+            "id": "pre-b2-t-unit-last-loaf-r1",
+            "prompt": {
+              "nl": "Waarom stelt Amira het gesprek uit?",
+              "en": "Why does Amira postpone the conversation?",
+              "fa": "چرا امیرا گفت‌وگو را عقب می‌اندازد؟"
+            },
+            "options": [
+              {
+                "nl": "Ze weet nog niet welke opleiding ze wil volgen.",
+                "en": "She does not yet know which course she wants to take.",
+                "fa": "هنوز نمی‌داند چه آموزشی می‌خواهد بگذراند."
+              },
+              {
+                "nl": "Haar beroepskeuze past niet bij de verwachting van haar vader.",
+                "en": "Her career choice differs from her father's expectation.",
+                "fa": "انتخاب شغلی‌اش با انتظار پدرش تفاوت دارد."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Ze heeft al voor verpleegkunde gekozen, maar vindt het moeilijk dat te vertellen.",
+              "en": "She has already chosen nursing, but finds it difficult to say so.",
+              "fa": "پرستاری را انتخاب کرده، اما گفتنش برایش دشوار است."
+            }
+          },
+          {
+            "id": "pre-b2-t-unit-last-loaf-r2",
+            "prompt": {
+              "nl": "Wat verandert door het verhaal over de tuin?",
+              "en": "What changes because of the story about gardening?",
+              "fa": "روایت باغبانی چه چیزی را عوض می‌کند؟"
+            },
+            "options": [
+              {
+                "nl": "Amira ontdekt dat haar vader ook een andere wens heeft gehad.",
+                "en": "Amira discovers that her father also had a different ambition.",
+                "fa": "امیرا می‌فهمد پدرش هم آرزوی دیگری داشته است."
+              },
+              {
+                "nl": "Amira besluit alsnog bakker te worden.",
+                "en": "Amira decides to become a baker after all.",
+                "fa": "امیرا تصمیم می‌گیرد بااین‌حال نانوا شود."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "Zijn vroegere wens maakt wederzijds begrip mogelijk; haar opleiding verandert niet.",
+              "en": "His earlier ambition allows mutual understanding; her course choice does not change.",
+              "fa": "آرزوی قبلی پدر فهم متقابل را ممکن می‌کند؛ انتخاب آموزشی امیرا تغییر نمی‌کند."
+            }
+          }
+        ]
+      },
+      "listening": {
+        "text": {
+          "nl": "Dag Amira, ik heb met een mogelijke opvolger gesproken. Zij wil de bakkerij niet op maandag maar op woensdag bezoeken, om tien uur in de voormiddag. Ze wil de recepten bekijken, maar heeft nog niets over een overname beslist. Kun jij erbij zijn zodat we onze verwachtingen samen uitleggen?",
+          "en": "Hi Amira, I have spoken to a possible successor. She would like to visit the bakery on Wednesday rather than Monday, at ten in the morning. She wants to see the recipes, but has not decided anything about a takeover. Can you join us so that we can explain our expectations together?",
+          "fa": "سلام امیرا، با یک جانشین احتمالی صحبت کردم. می‌خواهد به‌جای دوشنبه، چهارشنبه ساعت ده صبح از نانوایی بازدید کند. می‌خواهد دستورها را ببیند، اما هنوز درباره تحویل گرفتن مغازه تصمیمی نگرفته. می‌توانی همراه باشی تا خواسته‌هایمان را با هم توضیح بدهیم؟"
+        },
+        "questions": [
+          {
+            "id": "pre-b2-t-unit-last-loaf-l1",
+            "prompt": {
+              "nl": "Wanneer wil de kandidaat langskomen?",
+              "en": "When does the candidate want to visit?",
+              "fa": "داوطلب چه زمانی می‌خواهد بیاید؟"
+            },
+            "options": [
+              {
+                "nl": "Maandag om 10.00 uur.",
+                "en": "Monday at 10:00.",
+                "fa": "دوشنبه ساعت ۱۰."
+              },
+              {
+                "nl": "Woensdag om 10.00 uur.",
+                "en": "Wednesday at 10:00.",
+                "fa": "چهارشنبه ساعت ۱۰."
+              }
+            ],
+            "answer_index": 1,
+            "explanation": {
+              "nl": "Het bericht vervangt maandag door woensdag; het gaat om de voormiddag.",
+              "en": "The message replaces Monday with Wednesday; the time is in the morning.",
+              "fa": "پیام چهارشنبه را جایگزین دوشنبه می‌کند؛ زمان مربوط به صبح است."
+            }
+          },
+          {
+            "id": "pre-b2-t-unit-last-loaf-l2",
+            "prompt": {
+              "nl": "Wat is al beslist over de overname?",
+              "en": "What has already been decided about the takeover?",
+              "fa": "درباره تحویل گرفتن مغازه چه تصمیمی گرفته شده است؟"
+            },
+            "options": [
+              {
+                "nl": "Nog niets; het bezoek is verkennend.",
+                "en": "Nothing yet; the visit is exploratory.",
+                "fa": "هنوز هیچ چیز؛ بازدید برای آشنایی اولیه است."
+              },
+              {
+                "nl": "De kandidaat heeft de zaak al gekocht.",
+                "en": "The candidate has already bought the business.",
+                "fa": "داوطلب مغازه را خریده است."
+              }
+            ],
+            "answer_index": 0,
+            "explanation": {
+              "nl": "De vader zegt uitdrukkelijk dat er nog geen beslissing is.",
+              "en": "The father explicitly says there has not yet been a decision.",
+              "fa": "پدر صریح می‌گوید هنوز تصمیمی گرفته نشده است."
+            }
+          }
+        ]
+      },
+      "speaking": {
+        "prompt": {
+          "nl": "Leg aan de kandidaat uit wat je familie graag bewaart en waar zij vrij in mag zijn. Verwijs naar het nieuwe bezoekmoment en presenteer een wens niet als een gemaakte afspraak.",
+          "en": "Explain to the candidate what your family would like to preserve and where she may make her own choices. Refer to the new visit time and do not present a wish as an agreement.",
+          "fa": "برای داوطلب توضیح دهید خانواده‌تان چه چیزهایی را می‌خواهد نگه دارد و او در چه مواردی آزاد است. به زمان تازه بازدید اشاره کنید و خواسته را توافق قطعی نشان ندهید."
+        },
+        "sample": {
+          "nl": "We ontvangen u woensdag om tien uur graag in de bakkerij. Mijn vader wil de recepten bewaren omdat ze bij de geschiedenis van de zaak horen. Dat betekent niet dat u niets mag veranderen. We willen vooral horen wat u zelf voorstelt. Over een overname is nog niets afgesproken.",
+          "en": "We would be happy to welcome you to the bakery on Wednesday at ten in the morning. My father wants to preserve the recipes because they are part of the business's history. That does not mean you cannot change anything. Above all, we would like to hear what you propose. Nothing has yet been agreed about a takeover.",
+          "fa": "خوشحال می‌شویم چهارشنبه ساعت ده صبح در نانوایی پذیرایتان باشیم. پدرم می‌خواهد دستورها حفظ شوند چون بخشی از تاریخ مغازه‌اند. این به معنی ممنوع بودن هر تغییری نیست. بیشتر از همه می‌خواهیم پیشنهاد خودتان را بشنویم. درباره تحویل گرفتن مغازه هنوز توافقی نشده است."
+        },
+        "min_words": 35,
+        "max_words": 100,
+        "criteria": [
+          {
+            "nl": "Vermeld woensdag om 10.00 uur als bezoekmoment.",
+            "en": "State Wednesday at 10:00 as the visit time.",
+            "fa": "چهارشنبه ساعت ۱۰ را زمان بازدید بگویید."
+          },
+          {
+            "nl": "Maak duidelijk dat de overname nog niet beslist is.",
+            "en": "Make clear that the takeover has not yet been decided.",
+            "fa": "روشن کنید تحویل گرفتن هنوز قطعی نشده است."
+          }
+        ]
+      },
+      "writing": {
+        "prompt": {
+          "nl": "Schrijf een bericht van 60 tot 140 woorden aan de kandidaat. Bevestig het bezoek, licht twee verwachtingen toe en nodig haar uit om eigen ideeën mee te brengen.",
+          "en": "Write a message of 60–140 Dutch words to the candidate. Confirm the visit, explain two expectations and invite her to bring her own ideas.",
+          "fa": "پیامی ۶۰ تا ۱۴۰ واژه‌ای به هلندی برای داوطلب بنویسید. بازدید را تأیید کنید، دو انتظار را توضیح دهید و از او بخواهید ایده‌های خودش را بیاورد."
+        },
+        "sample": {
+          "nl": "Beste mevrouw, woensdag om tien uur ontvangen we u graag in onze bakkerij. Mijn vader legt u dan uit hoe hij zijn brood maakt. We willen de recepten graag bewaren, omdat ze veel voor onze familie betekenen. Tegelijk begrijpen we dat een nieuwe uitbater eigen ideeën nodig heeft. U hoeft dus niet alles precies zoals vroeger te doen. Breng gerust enkele voorstellen mee, zodat we kunnen bespreken wat voor iedereen haalbaar is. Dit bezoek verplicht niemand tot een overname. We hopen vooral op een open gesprek. Met vriendelijke groeten, Amira.",
+          "en": "Dear Madam, we would be happy to welcome you to our bakery on Wednesday at ten in the morning. My father will then explain how he makes his bread. We would like to preserve the recipes because they mean a great deal to our family. At the same time, we understand that a new operator needs ideas of her own. So you do not have to do everything exactly as before. Please feel free to bring some proposals so that we can discuss what is feasible for everyone. This visit commits nobody to a takeover. Above all, we hope for an open conversation. Kind regards, Amira.",
+          "fa": "خانم گرامی، خوشحال می‌شویم چهارشنبه ساعت ده صبح در نانوایی پذیرایتان باشیم. پدرم آن‌وقت روش پخت نانش را توضیح می‌دهد. دوست داریم دستورها حفظ شوند، چون برای خانواده‌مان اهمیت زیادی دارند. درعین‌حال می‌دانیم گرداننده تازه به ایده‌های خودش نیاز دارد. بنابراین لازم نیست همه کارها را دقیقاً مثل گذشته انجام دهید. لطفاً پیشنهادهایتان را بیاورید تا درباره آنچه برای همه عملی است صحبت کنیم. این بازدید هیچ‌کس را به تحویل گرفتن مغازه متعهد نمی‌کند. بیشتر از همه به گفت‌وگویی باز امیدواریم. با احترام، امیرا."
+        },
+        "min_words": 60,
+        "max_words": 140,
+        "criteria": [
+          {
+            "nl": "Bevestig het bezoek en licht twee verwachtingen met redenen toe.",
+            "en": "Confirm the visit and explain two expectations with reasons.",
+            "fa": "بازدید را تأیید کنید و دو انتظار را با دلیل توضیح دهید."
+          },
+          {
+            "nl": "Nodig de kandidaat uit tot eigen voorstellen zonder een overname te bevestigen.",
+            "en": "Invite the candidate's own proposals without confirming a takeover.",
+            "fa": "پیشنهادهای خود داوطلب را بخواهید، بدون تأیید تحویل گرفتن."
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_extensions": []
+}

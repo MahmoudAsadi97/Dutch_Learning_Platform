@@ -112,15 +112,16 @@ def test_source_topic_session_refuses_unknown_items_and_stage_mismatch(client):
 
 @pytest.mark.parametrize("stage_id", STAGES)
 def test_original_supplement_is_live_in_all_four_skills_and_story_time(stage_id):
-    pack = supplements.load(CONTENT_DIR, stage_id)
+    pack = json.loads((CONTENT_DIR / "source-lessons" / f"{stage_id}.json").read_text())
+    merged = supplements.load(CONTENT_DIR, stage_id)
     bank = library.library_for(stage_id)
     topic_bank = topics.topics_for(stage_id)
     base_words = json.loads((CONTENT_DIR / "library" / f"{stage_id}.json").read_text())
     base_topics = json.loads((CONTENT_DIR / "practice" / f"{stage_id}.json").read_text())
-    assert len(bank.vocabulary) == len(base_words["vocabulary"]) + len(pack["vocabulary"])
+    assert len(bank.vocabulary) == len(base_words["vocabulary"]) + len(merged["vocabulary"])
     assert len(pack["stories"]) == len(pack["topics"]) == len(UNITS)
-    assert len(bank.stories) == len(base_words["stories"]) + len(pack["stories"])
-    assert len(topic_bank.topics) == len(base_topics["topics"]) + len(pack["topics"])
+    assert len(bank.stories) == len(base_words["stories"]) + len(merged["stories"])
+    assert len(topic_bank.topics) == len(base_topics["topics"]) + len(merged["topics"])
     assert [word.id for word in bank.vocabulary[:len(base_words["vocabulary"])]] == [
         word["id"] for word in base_words["vocabulary"]]
     assert [story.id for story in bank.stories[:len(base_words["stories"])]] == [
@@ -162,7 +163,8 @@ def test_grammar_examples_extend_existing_rules_without_touching_final_tests():
             updated = next(g for g in after.grammar if g.id == rule["id"])
             assert [e.model_dump() for e in updated.examples[:len(rule["examples"])]] == rule["examples"]
             assert [q.model_dump() for q in updated.practice[:len(rule["practice"])]] == rule["practice"]
-    assert len(supplements.curriculum_stamp(CONTENT_DIR)) == len(STAGES)
+    assert len(supplements.curriculum_stamp(CONTENT_DIR)) == sum(
+        len(list((CONTENT_DIR / directory).glob("*.json"))) for directory in ("source-lessons", "learning-units"))
 
 
 def test_reference_pages_and_content_hashes_are_bound_to_supplied_sources():
@@ -206,8 +208,10 @@ def test_public_source_inventory_has_no_ocr_text_or_candidate_tokens():
 
 @pytest.mark.parametrize("stage_id", ("pre-b2", "b2", "pre-c1", "c1", "pre-c2", "c2"))
 def test_beginner_scans_are_not_promoted_to_advanced_stage_content(stage_id):
-    assert supplements.stamp(CONTENT_DIR, stage_id) == 0
-    assert all(not value for value in supplements.load(CONTENT_DIR, stage_id).values())
+    assert not (CONTENT_DIR / "source-lessons" / f"{stage_id}.json").exists()
+    pack = supplements.load(CONTENT_DIR, stage_id)
+    assert pack["grammar_extensions"] == []
+    assert all("-t-source-" not in item["id"] for item in pack["topics"])
 
 
 def test_mutating_a_returned_pack_does_not_modify_the_cached_source():
@@ -349,7 +353,7 @@ def test_prior_stage_review_lookup_refuses_an_invalid_topic_bank(tmp_path):
 def test_new_target_words_really_occur_in_their_story():
     variants = {"spellen": ("spel", "spellen"), "kopen": ("gekocht", "koop", "kopen")}
     for stage in STAGES:
-        pack = supplements.load(CONTENT_DIR, stage)
+        pack = json.loads((CONTENT_DIR / "source-lessons" / f"{stage}.json").read_text())
         for word in pack["vocabulary"]:
             lemma = re.sub(r"^(de|het|een) ", "", word["term"].casefold())
             linked_stories = [story for story in pack["stories"] if word["id"] in story["vocabulary_ids"]]

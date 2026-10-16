@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useSyncExternalStore } from "react";
 import { Icon } from "@/components/Icon";
+import { useAudioAssistance } from "@/components/AudioAssistance";
 import { LearningText, type LearningCopy } from "@/components/LanguageSupport";
 import { apiFetch } from "@/lib/client/api";
 import {
@@ -12,6 +13,7 @@ import {
   subscribeAudioRecording,
 } from "@/lib/client/audio-focus";
 import { IDLE_PHRASE_AUDIO, PhraseAudioController, type PhraseAudioError } from "@/lib/client/phrase-audio";
+import { storyLearningCopy } from "@/lib/copy/storyLearning";
 
 const player = new PhraseAudioController({
   async synthesize(text, signal) {
@@ -47,6 +49,7 @@ player.subscribe(() => {
 });
 
 const messages: Record<PhraseAudioError, LearningCopy> = {
+  support: storyLearningCopy.audioSupportFailed,
   signin: {
     nl: "Meld je opnieuw aan om te luisteren.",
     en: "Sign in again to listen.",
@@ -85,6 +88,7 @@ export function PhraseAudio({
   disabled?: boolean;
 }) {
   const owner = useId();
+  const registerAssistance = useAudioAssistance();
   const state = useSyncExternalStore(player.subscribe, player.getSnapshot, () => IDLE_PHRASE_AUDIO);
   const recording = useSyncExternalStore(subscribeAudioRecording, isAudioRecording, () => false);
   const own = state.owner === owner;
@@ -110,7 +114,7 @@ export function PhraseAudio({
         aria-describedby={error ? `${owner}-error` : undefined}
         onClick={() => {
           if (active) player.stop(owner);
-          else if (!isAudioRecording()) void player.play(owner, text);
+          else if (!isAudioRecording()) void player.play(owner, text, registerAssistance);
         }}
       >
         {active ? (

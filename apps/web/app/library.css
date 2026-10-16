@@ -40,4 +40,30 @@
 
 .core-word-list {margin:1.4rem 0; padding:1rem; border:1px solid var(--accent-border); border-radius:12px; background:var(--surface-raised);}
 .core-word-card {border-top:1px solid var(--accent-border); padding:.5rem 0; min-width:0;}
+.spoken-text > .learning-copy > .copy-support { display:block; white-space:pre-line; }
+.story-learning-loop { color:var(--text-muted); font-size:var(--text-sm); line-height:1.7; margin:1rem 0; }
+.story-reader-tools { display:flex; flex-wrap:wrap; align-items:center; gap:.6rem; margin:1rem 0; }
+.story-lines { list-style:none; padding:0; margin:0; display:grid; gap:.85rem; }
+.story-lines > li { display:grid; grid-template-columns:1.4rem minmax(0,1fr); gap:.65rem; font-size:1.06rem; line-height:1.9; }
+.story-line-number { color:var(--text-muted); font-size:var(--text-xs); padding-top:.5rem; font-variant-numeric:tabular-nums; }
+.story-lines .spoken-text { min-width:0; overflow-wrap:anywhere; }
+.story-transfer { margin:1.5rem 0; padding:1.3rem; background:var(--surface-raised); border:1px solid var(--accent-border); border-radius:14px; }
+.story-transfer h4 { margin:.5rem 0; font-size:1.2rem; }
+.story-transfer textarea,.word-context textarea { display:block; width:100%; margin:.6rem 0; min-height:5rem; resize:vertical; border:1px solid var(--border-strong); border-radius:9px; padding:.75rem; background:var(--surface-canvas); color:var(--text); font:inherit; }
+.story-skill-links { display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0; }
+.story-revisit { padding-top:1rem; border-top:1px solid var(--border); line-height:1.7; }
+.word-usage { margin-top:1rem; border-top:1px solid var(--accent-border); padding-top:1rem; }
+.word-shape { font-size:var(--text-sm); color:var(--text-muted); }
+.word-forms { margin:.75rem 0; }
+.word-forms > div { display:grid; grid-template-columns:minmax(0,1fr); gap:.25rem; margin:.75rem 0; }
+.word-forms dt { font-size:var(--text-sm); color:var(--text-muted); }
+.word-forms dd { margin:0; overflow-wrap:anywhere; }
+.word-context .eyebrow { margin-bottom:.4rem; }
+.word-context .linklike { margin:.75rem 0; text-align:start; }
+.word-context-prompt { display:block; margin-top:.7rem; }
+.word-context-example { overflow-wrap:anywhere; }
+.story-choice-audio { display:flex; gap:.65rem; align-items:center; min-width:0; }
+.story-choice-audio > .choice-button { flex:1; min-width:0; align-self:stretch; }
+.sentence-audio-controls { display:inline-flex; flex-wrap:wrap; align-items:center; gap:.3rem; vertical-align:middle; }
+@media(max-width:480px) { .story-lines > li { grid-template-columns:1rem minmax(0,1fr); gap:.4rem; } .story-transfer { padding:1rem; } }
 }

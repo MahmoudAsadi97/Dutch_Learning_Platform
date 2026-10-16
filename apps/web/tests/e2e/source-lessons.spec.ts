@@ -26,16 +26,18 @@ async function sourcePack(stageId: string): Promise<Pack> {
 }
 
 async function effectiveCounts(stageId: string, pack: Pack): Promise<Counts> {
-  const [library, practice] = await Promise.all([
+  const [library, practice, units] = await Promise.all([
     readFile(path.resolve(__dirname, `../../../../content/library/${stageId}.json`), "utf8"),
     readFile(path.resolve(__dirname, `../../../../content/practice/${stageId}.json`), "utf8"),
+    readFile(path.resolve(__dirname, `../../../../content/learning-units/${stageId}.json`), "utf8"),
   ]);
   const baseLibrary = JSON.parse(library) as { vocabulary: unknown[]; stories: unknown[] };
   const basePractice = JSON.parse(practice) as { topics: unknown[] };
+  const learningUnits = JSON.parse(units) as Pack;
   return {
-    words: baseLibrary.vocabulary.length + pack.vocabulary.length,
-    stories: baseLibrary.stories.length + pack.stories.length,
-    topics: basePractice.topics.length + pack.topics.length,
+    words: baseLibrary.vocabulary.length + pack.vocabulary.length + learningUnits.vocabulary.length,
+    stories: baseLibrary.stories.length + pack.stories.length + learningUnits.stories.length,
+    topics: basePractice.topics.length + pack.topics.length + learningUnits.topics.length,
   };
 }
 

@@ -1,5 +1,5 @@
 /** Explicit, single-speaker playback with bounded tab-only audio reuse. */
-export type PhraseAudioError = "unavailable" | "signin" | "limit" | "blocked" | "too-long";
+export type PhraseAudioError = "unavailable" | "signin" | "limit" | "blocked" | "too-long" | "support";
 export type PhraseAudioState = {
   owner: string | null;
   phase: "idle" | "loading" | "playing" | "error";
@@ -105,7 +105,11 @@ export class PhraseAudioController {
     return result;
   }
 
-  async play(owner: string, text: string): Promise<void> {
+  async play(
+    owner: string,
+    text: string,
+    beforePlay?: (signal: AbortSignal) => Promise<void> | void,
+  ): Promise<void> {
     this.stop();
     const generation = this.generation;
     let chunks: string[];
@@ -121,6 +125,11 @@ export class PhraseAudioController {
     const current = () => generation === this.generation && !request.signal.aborted;
     let developmentTone = false;
     try {
+      if (beforePlay) {
+        this.publish({ owner, phase: "loading" });
+        await beforePlay(request.signal);
+        if (!current()) return;
+      }
       for (const chunk of chunks) {
         if (!current()) return;
         this.publish({ owner, phase: "loading" });
@@ -134,7 +143,7 @@ export class PhraseAudioController {
     } catch (cause) {
       if (!current()) return;
       const code = cause instanceof Error ? cause.message : "unavailable";
-      const allowed: PhraseAudioError[] = ["signin", "limit", "blocked", "too-long"];
+      const allowed: PhraseAudioError[] = ["signin", "limit", "blocked", "too-long", "support"];
       this.publish({
         owner,
         phase: "error",

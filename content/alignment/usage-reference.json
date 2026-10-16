@@ -1,0 +1,412 @@
+{
+  "schema_version": 1,
+  "version": "2026.10.16.1",
+  "checked_at": "2026-10-16",
+  "review_status": "source_checked_scope_limited",
+  "purpose": "Sense-specific reference for content review and feedback; not a list for blanket text replacement.",
+  "policy": {
+    "automatic_blacklist": false,
+    "meaning_required": true,
+    "register_is_separate_from_standard_status": true,
+    "retain_acceptable_variants": true,
+    "uncertain_items_need_contextual_explanation": true,
+    "sources_do_not_validate_all_generated_content": true
+  },
+  "sources": [
+    {
+      "id": "plezant",
+      "title": "Plezant / plezierig",
+      "url": "https://taaladvies.net/plezant-of-plezierig/",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "duimspijker",
+      "title": "Duimspijker / punaise",
+      "url": "https://www.vlaanderen.be/team-taaladvies/taaladviezen/duimspijker-punaise",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "goesting",
+      "title": "Goesting / zin / trek",
+      "url": "https://taaladvies.net/goesting-of-zin-of-trek/",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "valies",
+      "title": "Valies / koffer",
+      "url": "https://www.vlaanderen.be/team-taaladvies/taaladviezen/valies-koffer",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "kleed",
+      "title": "Kleed(je) / jurk(je)",
+      "url": "https://taaladvies.net/kleedje-of-jurkje/",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "tas",
+      "title": "Kop / tas",
+      "url": "https://www.vlaanderen.be/team-taaladvies/taaladviezen/kop-tas",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "frigo",
+      "title": "Frigo / ijskast / koelkast",
+      "url": "https://taaladvies.net/frigo-of-ijskast-of-koelkast/",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "two-verb-order",
+      "title": "Werkwoordvolgorde: groepen van twee werkwoorden",
+      "url": "https://taaladvies.net/werkwoordvolgorde-in-werkwoordgroepen-groepen-van-twee-werkwoorden-algemeen/",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "red-green-terms",
+      "title": "Is vertrokken / vertrokken is",
+      "url": "https://onzetaal.nl/taalloket/rode-groene-volgorde",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "address-pronouns",
+      "title": "Je, jij / jullie / u",
+      "url": "https://www.vlaanderen.be/team-taaladvies/taaladviezen/je-jij-jullie-u",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    },
+    {
+      "id": "btw",
+      "title": "Btw / BTW",
+      "url": "https://www.vlaanderen.be/team-taaladvies/taaladviezen/btw-btw",
+      "checked_at": "2026-10-16",
+      "kind": "language_advice"
+    }
+  ],
+  "entries": [
+    {
+      "id": "plezant-enjoyable",
+      "forms": [
+        "plezant",
+        "plezante"
+      ],
+      "sense": {
+        "nl": "leuk of aangenaam",
+        "en": "enjoyable or pleasant",
+        "fa": "خوشایند یا سرگرم‌کننده"
+      },
+      "status": "standard_belgium",
+      "register": "informal",
+      "contexts": [
+        "conversation",
+        "informal writing"
+      ],
+      "shared_standard_alternatives": [
+        "leuk",
+        "prettig",
+        "aangenaam"
+      ],
+      "guidance": "Accept this Belgian standard form when its informal tone suits the audience. Do not call it a grammatical error or automatically replace it.",
+      "source_ids": [
+        "plezant"
+      ]
+    },
+    {
+      "id": "duimspijker-drawing-pin",
+      "forms": [
+        "duimspijker",
+        "duimspijkers"
+      ],
+      "sense": {
+        "nl": "kleine spijker om papier vast te maken",
+        "en": "drawing pin or thumbtack",
+        "fa": "پونز"
+      },
+      "status": "standard_belgium",
+      "register": "neutral",
+      "contexts": [
+        "stationery",
+        "household"
+      ],
+      "shared_standard_alternatives": [
+        "punaise"
+      ],
+      "guidance": "Accept the Belgian word. Punaise is also suitable across the language area.",
+      "source_ids": [
+        "duimspijker"
+      ]
+    },
+    {
+      "id": "goesting-desire",
+      "forms": [
+        "goesting"
+      ],
+      "sense": {
+        "nl": "zin, trek of enthousiasme, afhankelijk van de context",
+        "en": "desire, appetite or enthusiasm, depending on context",
+        "fa": "میل، اشتها یا اشتیاق، بسته به بافت"
+      },
+      "status": "uncertain_standard_status_belgium",
+      "register": "informal",
+      "contexts": [
+        "receptive everyday conversation"
+      ],
+      "shared_standard_alternatives": [
+        "zin",
+        "trek",
+        "enthousiasme"
+      ],
+      "guidance": "Explain as common Belgian usage with unresolved standard status. Choose a context-appropriate standard alternative for formal production. Do not label the speaker incapable or translate every occurrence as appetite.",
+      "source_ids": [
+        "goesting"
+      ]
+    },
+    {
+      "id": "valies-luggage",
+      "forms": [
+        "valies",
+        "valiezen"
+      ],
+      "sense": {
+        "nl": "tas of koffer voor een reis",
+        "en": "suitcase or travel bag",
+        "fa": "چمدان یا ساک سفر"
+      },
+      "status": "standard_belgium",
+      "register": "neutral",
+      "contexts": [
+        "travel"
+      ],
+      "shared_standard_alternatives": [
+        "koffer"
+      ],
+      "guidance": "Accept this Belgian standard luggage word; its origin is not a reason to reject it.",
+      "source_ids": [
+        "valies"
+      ]
+    },
+    {
+      "id": "kleed-dress",
+      "forms": [
+        "kleed",
+        "kleedje",
+        "kleedjes"
+      ],
+      "sense": {
+        "nl": "jurk of jurkje",
+        "en": "dress",
+        "fa": "پیراهن زنانه"
+      },
+      "status": "standard_belgium",
+      "register": "often_informal",
+      "contexts": [
+        "clothing"
+      ],
+      "shared_standard_alternatives": [
+        "jurk",
+        "jurkje"
+      ],
+      "guidance": "In the dress sense, accept this Belgian standard word. Resolve the sense from the sentence instead of applying a whole-word replacement.",
+      "source_ids": [
+        "kleed"
+      ]
+    },
+    {
+      "id": "tas-bag",
+      "forms": [
+        "tas",
+        "tassen"
+      ],
+      "sense": {
+        "nl": "zak of handtas",
+        "en": "bag or handbag",
+        "fa": "کیف یا ساک"
+      },
+      "status": "shared_standard",
+      "register": "neutral",
+      "contexts": [
+        "bags",
+        "personal belongings"
+      ],
+      "shared_standard_alternatives": [],
+      "guidance": "Accept tas for a bag. Never replace it with kopje in this meaning.",
+      "source_ids": [
+        "tas"
+      ]
+    },
+    {
+      "id": "tas-cup",
+      "forms": [
+        "tas",
+        "tassen"
+      ],
+      "sense": {
+        "nl": "kop of kopje om uit te drinken",
+        "en": "drinking cup",
+        "fa": "فنجان"
+      },
+      "status": "nonstandard_in_this_sense",
+      "register": "regional_spoken",
+      "contexts": [
+        "receptive conversation about drinks"
+      ],
+      "shared_standard_alternatives": [
+        "kop",
+        "kopje"
+      ],
+      "guidance": "For standard production referring to a drinking vessel, teach kop or kopje. The same spelling has an accepted bag sense, so determine meaning first.",
+      "source_ids": [
+        "tas"
+      ]
+    },
+    {
+      "id": "frigo-refrigerator",
+      "forms": [
+        "frigo"
+      ],
+      "sense": {
+        "nl": "koelkast",
+        "en": "refrigerator",
+        "fa": "یخچال"
+      },
+      "status": "nonstandard_in_this_sense",
+      "register": "regional_spoken",
+      "contexts": [
+        "receptive household conversation"
+      ],
+      "shared_standard_alternatives": [
+        "koelkast",
+        "ijskast"
+      ],
+      "guidance": "Recognise the everyday Belgian form while modelling koelkast or ijskast for standard production.",
+      "source_ids": [
+        "frigo"
+      ]
+    },
+    {
+      "id": "participle-first-two-verbs",
+      "forms": [
+        "dat hij het gedaan heeft",
+        "gedaan heeft"
+      ],
+      "sense": {
+        "nl": "voltooid deelwoord vóór het hulpwerkwoord",
+        "en": "participle before auxiliary in a two-verb clause-final group",
+        "fa": "اسم مفعول پیش از فعل کمکی در گروه دوفعلی پایان جمله"
+      },
+      "status": "shared_standard",
+      "register": "context_dependent",
+      "contexts": [
+        "two-verb clause-final group with a participle"
+      ],
+      "shared_standard_alternatives": [
+        "dat hij het heeft gedaan",
+        "heeft gedaan"
+      ],
+      "term": "green_order",
+      "guidance": "Both orders are grammatical. Participle-first is traditionally called green order. Do not generalise the rule to every infinitive or larger verb cluster, and do not assign a blanket Belgian-versus-Netherlands division.",
+      "source_ids": [
+        "two-verb-order",
+        "red-green-terms"
+      ]
+    },
+    {
+      "id": "auxiliary-first-two-verbs",
+      "forms": [
+        "dat hij het heeft gedaan",
+        "heeft gedaan"
+      ],
+      "sense": {
+        "nl": "hulpwerkwoord vóór het voltooid deelwoord",
+        "en": "auxiliary before participle in a two-verb clause-final group",
+        "fa": "فعل کمکی پیش از اسم مفعول در گروه دوفعلی پایان جمله"
+      },
+      "status": "shared_standard",
+      "register": "context_dependent",
+      "contexts": [
+        "two-verb clause-final group with a participle"
+      ],
+      "shared_standard_alternatives": [
+        "dat hij het gedaan heeft",
+        "gedaan heeft"
+      ],
+      "term": "red_order",
+      "guidance": "Both orders are grammatical. Auxiliary-first is traditionally called red order. Do not mark the alternative incorrect.",
+      "source_ids": [
+        "two-verb-order",
+        "red-green-terms"
+      ]
+    },
+    {
+      "id": "u-polite-address",
+      "forms": [
+        "u"
+      ],
+      "sense": {
+        "nl": "beleefde aanspreekvorm voor één of meer personen",
+        "en": "polite address to one or more people",
+        "fa": "خطاب محترمانه به یک یا چند نفر"
+      },
+      "status": "shared_standard",
+      "register": "polite",
+      "contexts": [
+        "service encounters",
+        "formal or courteous correspondence"
+      ],
+      "shared_standard_alternatives": [],
+      "guidance": "In standard address, u is a polite form. Informal regional pronoun patterns need their own context labels; they do not make every occurrence of u or uw informal.",
+      "source_ids": [
+        "address-pronouns"
+      ]
+    },
+    {
+      "id": "btw-abbreviation",
+      "forms": [
+        "btw",
+        "btw-nummer"
+      ],
+      "sense": {
+        "nl": "belasting over de toegevoegde waarde",
+        "en": "value-added tax",
+        "fa": "مالیات بر ارزش افزوده"
+      },
+      "status": "shared_standard",
+      "register": "neutral",
+      "contexts": [
+        "administration",
+        "business"
+      ],
+      "shared_standard_alternatives": [],
+      "guidance": "Use the lowercase spelling btw in ordinary text and compounds. An all-uppercase version is not a Belgian spelling variant.",
+      "source_ids": [
+        "btw"
+      ]
+    }
+  ],
+  "excluded_equivalences": [
+    {
+      "belgian": "remgeld",
+      "proposed_equivalent": "eigen risico",
+      "reason": "Different health-financing concepts. Use a meaning explanation, not an interchangeable vocabulary pair.",
+      "source_url": "https://www.riziv.fgov.be/nl/thema-s/verzorging-kosten-en-terugbetaling/wat-het-ziekenfonds-terugbetaalt"
+    },
+    {
+      "belgian": "lagere school",
+      "proposed_equivalent": "basisschool",
+      "reason": "Check the education system and school age. Do not flatten primary and nursery education into a universal synonym pair."
+    },
+    {
+      "belgian": "VDAB",
+      "proposed_equivalent": "UWV",
+      "reason": "Institution names and responsibilities differ. Treat them as local organisations with explanations, not lexical substitutions."
+    }
+  ]
+}
