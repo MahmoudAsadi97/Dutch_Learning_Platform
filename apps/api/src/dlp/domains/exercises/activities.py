@@ -29,7 +29,7 @@ from dlp.domains.curriculum import service as curriculum
 from dlp.domains.curriculum import topics
 from dlp.domains.curriculum.library import library_for
 from dlp.domains.curriculum.models import CurriculumPractice, TopicPractice
-from dlp.domains.curriculum.schemas import Localized, Question
+from dlp.domains.curriculum.schemas import STAGE_IDS, Localized, Question
 from dlp.domains.exercises.generators import Draft, authored_choice
 from dlp.errors import DomainError
 
@@ -68,8 +68,11 @@ def _version(model: Any) -> str:
 
 
 def stage_of(topic_id: str) -> str:
-    """"pre-a1-t001" belongs to "pre-a1"."""
-    return topic_id.rsplit("-t", 1)[0]
+    """Read the stage prefix; an authored slug may itself contain ``-t``."""
+    for stage_id in STAGE_IDS:
+        if topic_id.startswith(f"{stage_id}-t"):
+            return stage_id
+    raise ActivityNotFound("practice topic not found")
 
 
 def activity_for(stage_id: str, *, topic_id: str | None, skill: str) -> Activity:

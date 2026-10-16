@@ -12,6 +12,7 @@ from dlp.config import CONTENT_DIR
 from dlp.domains.curriculum import library, supplements, topics
 from dlp.domains.curriculum.library import LibraryStory
 from dlp.domains.curriculum.schemas import STAGE_IDS
+from dlp.domains.exercises import activities
 from dlp.domains.exercises.schemas import CreateBody
 
 
@@ -25,6 +26,20 @@ def authoring_module(name):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+@pytest.mark.parametrize("stage", STAGE_IDS)
+@pytest.mark.parametrize("suffix", ("001", "-source-01", "-unit-two-tickets", "-unit-a-turn-to-talk"))
+def test_topic_stage_comes_from_its_prefix_not_letters_inside_an_authored_slug(stage, suffix):
+    topic_id = f"{stage}-t{suffix}"
+    CreateBody(request_id="stage-prefix-test", source="topic", topic_id=topic_id, skill="reading")
+    assert activities.stage_of(topic_id) == stage
+
+
+@pytest.mark.parametrize("topic_id", ("a3-t001", "invalid-t-unit-topic", "../../a1-t001", "A1-t001"))
+def test_topic_stage_refuses_an_unknown_or_untrusted_prefix(topic_id):
+    with pytest.raises(activities.ActivityNotFound):
+        activities.stage_of(topic_id)
 
 
 @pytest.mark.parametrize("stage", STAGE_IDS)
@@ -159,12 +174,13 @@ def test_connected_pack_cannot_link_an_unrelated_or_foreign_practice(tmp_path, c
 
 @pytest.mark.parametrize("stage", STAGE_IDS)
 @pytest.mark.parametrize("skill", ("reading", "listening"))
-def test_connected_story_skill_can_complete_a_real_session(client, stage, skill):
+@pytest.mark.parametrize("unit_index", (0, 1))
+def test_connected_story_skill_can_complete_a_real_session(client, stage, skill, unit_index):
     from tests.conftest import auth_headers
     from tests.test_exercises_topic_completion import _create, _run
 
-    topic_id = pack(stage)["topics"][0]["id"]
-    tag = f"connected-{stage}-{skill}"
+    topic_id = pack(stage)["topics"][unit_index]["id"]
+    tag = f"connected-{stage}-{skill}-{unit_index}"
 
     def create(client, request_id, **requested):
         response = _create(client, request_id, source="topic", **requested)

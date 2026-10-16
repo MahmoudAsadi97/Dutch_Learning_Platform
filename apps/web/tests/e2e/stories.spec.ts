@@ -74,11 +74,22 @@ test("reading an episode: finish, answer, save a word, choose how it continues",
   await expect(reader.getByRole("heading", { name: "Twee vragen over het verhaal" })).toBeVisible();
   const check = reader.getByRole("button", { name: "Controleer mijn antwoorden" });
   await expect(check).toBeDisabled();
-  await reader
-    .getByRole("radiogroup", { name: "Waar werkt Sami?" })
-    .getByLabel("In de fietsenwinkel.")
-    .check();
-  await reader.getByRole("radiogroup", { name: "Wie ligt bij de deur?" }).getByLabel("Tom.").check();
+  const workplace = reader.getByRole("radiogroup", { name: "Waar werkt Sami?", exact: true });
+  const chosenWorkplace = workplace.getByRole("radio", { name: "In de fietsenwinkel.", exact: true });
+  await chosenWorkplace.check();
+  await expect(chosenWorkplace).toBeChecked();
+  await expect(
+    workplace.getByRole("button", {
+      name: "Luister: In de fietsenwinkel. · synthetische stem",
+      exact: true,
+    }),
+  ).toBeVisible();
+  const chosenPerson = reader
+    .getByRole("radiogroup", { name: "Wie ligt bij de deur?", exact: true })
+    .getByRole("radio", { name: "Tom.", exact: true });
+  await chosenPerson.check();
+  await expect(chosenPerson).toBeChecked();
+  await expect(reader.locator(".answer-options label button")).toHaveCount(0);
   await check.click();
   await expect(reader.getByRole("heading", { name: "1 van 2 juist" })).toBeVisible();
   await expect(reader.getByText("In het verhaal: “Baas, de oude hond, ligt bij de deur.”")).toBeVisible();

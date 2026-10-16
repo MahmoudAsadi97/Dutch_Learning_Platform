@@ -248,8 +248,10 @@ test("writing corrections explain real fragments and require choosing the revise
   await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
   await expect(coach).toContainText("Use ben with ik.");
   await expect(coach.locator(".correction-list [lang=fa]").first()).toBeVisible();
-  await coach.locator(".corrected-draft summary").click();
-  await expect(coach.locator(".corrected-draft > p")).toHaveText("Ik ben Noor. Ik woon in België.");
+  const corrected = coach.locator(".corrected-draft");
+  await corrected.locator("summary").click();
+  await expect(corrected.getByRole("paragraph")).toHaveText("Ik ben Noor. Ik woon in België.");
+  await expect(corrected.getByRole("button", { name: /^Luister:/ })).toHaveCount(2);
   await coach.getByRole("button", { name: "Gebruik als nieuwe versie", exact: true }).click();
   await expect(draft).toHaveValue("Ik ben Noor. Ik woon in België.");
   await expect(coach.locator(".writing-review")).toHaveCount(0);
