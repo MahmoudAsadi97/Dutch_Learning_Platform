@@ -205,19 +205,26 @@ def matches(item, query: str, topic: str) -> bool:
 
 
 def summary(bank: StageLibrary) -> dict:
+    from dlp.domains.curriculum.coverage import eligible_story_ids
+
+    eligible = eligible_story_ids(bank.stage_id)
     words = Counter(w.topic.nl for w in bank.vocabulary)
     cores = Counter(w.topic.nl for w in bank.vocabulary if w.productive_core)
     stories = Counter(s.topic.nl for s in bank.stories)
+    authored = Counter(s.topic.nl for s in bank.stories if s.id in eligible)
     labels = {item.topic.nl: item.topic.model_dump() for item in [*bank.vocabulary, *bank.stories]}
     return {"stage_id": bank.stage_id, "review_status": bank.review_status,
             "vocabulary_count": len(bank.vocabulary), "story_count": len(bank.stories),
             "authored_story_count": sum(story.lines is not None for story in bank.stories),
+            "eligible_authored_story_count": sum(story.id in eligible for story in bank.stories),
+            "legacy_story_count": sum(story.lines is None for story in bank.stories),
             "target_story_count": 200,
             "productive_core_count": sum(word.productive_core for word in bank.vocabulary),
             "target_productive_core_count": 150,
             "topics": [{"key": name, "label": labels[name], "vocabulary_count": words[name],
                         "productive_core_count": cores[name],
-                        "story_count": stories[name]} for name in sorted(labels)]}
+                        "story_count": stories[name],
+                        "eligible_authored_story_count": authored[name]} for name in sorted(labels)]}
 
 
 def vocabulary_page(bank: StageLibrary, *, query: str = "", topic: str = "", offset: int = 0,
@@ -230,9 +237,13 @@ def vocabulary_page(bank: StageLibrary, *, query: str = "", topic: str = "", off
             "items": [item.model_dump() for item in items[offset:offset + limit]]}
 
 
-def story_page(bank: StageLibrary, *, query: str = "", topic: str = "", offset: int = 0, limit: int = 12):
-    items = [item for item in bank.stories if matches(item, query, topic)]
-    return {"total": len(items), "offset": offset, "limit": limit,
+def story_page(bank: StageLibrary, *, query: str = "", topic: str = "", offset: int = 0, limit: int = 12,
+               authored_only: bool = False):
+    from dlp.domains.curriculum.coverage import eligible_story_ids
+
+    eligible = eligible_story_ids(bank.stage_id) if authored_only else frozenset()
+    items = [item for item in bank.stories if (not authored_only or item.id in eligible) and matches(item, query, topic)]
+    return {"total": len(items), "offset": offset, "limit": limit, "authored_only": authored_only,
             "items": [{"id": item.id, "title": item.title.model_dump(), "topic": item.topic.model_dump(),
                        "genre": item.genre.model_dump() if item.genre else None,
                        "preview": item.paragraphs[0].model_dump(), "paragraph_count": len(item.paragraphs),

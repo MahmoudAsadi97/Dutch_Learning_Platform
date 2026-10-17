@@ -377,10 +377,10 @@ async function mockTopicSessions(page: Page, sets: Sets) {
 
 async function resizeTopicViewport(page: Page, width: 1440 | 390 | 320) {
   await page.setViewportSize({ width, height: width === 1440 ? 1000 : 844 });
-  // CI captured innerWidth=390 while the shell still had its desktop 232px margin. Wait for the
+  // CI captured innerWidth=390 while the shell still had its desktop sidebar margin. Wait for the
   // responsive layout state and a rendering frame; never poll the overflow assertion until it passes.
-  await expect(page.locator(".app-workspace")).toHaveCSS("margin-left", width === 1440 ? "232px" : "0px");
-  await expect(page.locator(".learning-workspace")).toHaveCSS("display", width === 1440 ? "grid" : "block");
+  await expect(page.locator(".app-workspace")).toHaveCSS("margin-left", width === 1440 ? "208px" : "0px");
+  await expect(page.locator(".learning-workspace")).toHaveCSS("display", "block");
   await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
 }
 

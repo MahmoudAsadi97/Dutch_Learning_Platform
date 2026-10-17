@@ -296,17 +296,20 @@ test("the practice coach loads free suggestions and deep-links to the requested 
     });
   });
   await page.goto("/leerpad");
+  await page.locator(".directory-coach > summary").click();
   const coach = page.locator(".practice-coach");
   await expect(coach.getByRole("heading", { name: "Jouw volgende oefening" })).toBeVisible();
   await expect(coach.locator(".practice-recommendations li")).toHaveCount(3);
   await page.request.patch("/api/me", { headers: { "X-Requested-With": "fetch" }, data: { stage_id: "a2" } });
   await page.goto("/leerpad");
+  await page.locator(".directory-coach > summary").click();
   await expect(coach.locator(".recommendation-label").first()).toContainText("A2");
   await coach.getByRole("link", { name: "Open deze oefening" }).nth(1).click();
   await expect(page).toHaveURL(/\/learn\/a2\?skill=writing&topic=a2-t001$/);
   await expect(page.getByLabel("Jouw tekst bij dit onderwerp", { exact: true })).toBeVisible();
   expect(calls.every((method) => method === "GET")).toBe(true);
   await page.goto("/leerpad");
+  await page.locator(".directory-coach > summary").click();
   await expect(coach.locator(".recommendation-label").first()).toContainText("A2");
 });
 
@@ -346,6 +349,7 @@ test("explicit coaching retries keep the same id and a failed request leaves sug
     await route.fulfill({ json: plan });
   });
   await page.goto("/leerpad");
+  await page.locator(".directory-coach > summary").click();
   const coach = page.locator(".practice-coach");
   await coach.getByRole("button", { name: "Stem de volgorde op mij af", exact: true }).click();
   await expect(coach.getByRole("alert")).toBeVisible();

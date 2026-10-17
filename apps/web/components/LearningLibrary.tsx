@@ -13,6 +13,7 @@ import { friendlyError, type CurriculumQuestion } from "@/lib/client/curriculum"
 import { storageKeys } from "@/lib/client/storage";
 import type { LibraryWord } from "@/lib/client/library";
 import { storyLearningCopy } from "@/lib/copy/storyLearning";
+import { workspaceCopy } from "@/lib/copy/workspace";
 import { fill } from "@/lib/ui-copy";
 
 type Word = LibraryWord;
@@ -37,6 +38,8 @@ type Overview = {
   vocabulary_count: number;
   story_count: number;
   authored_story_count?: number;
+  eligible_authored_story_count?: number;
+  legacy_story_count?: number;
   target_story_count?: number;
   productive_core_count?: number;
   topics: {
@@ -45,6 +48,7 @@ type Overview = {
     vocabulary_count: number;
     story_count: number;
     productive_core_count?: number;
+    eligible_authored_story_count?: number;
   }[];
 };
 type Page<T> = { items: T[]; total: number; offset: number; limit: number };
@@ -350,13 +354,13 @@ export function StoryTime({ stageId }: { stageId: string }) {
   const { overview, failed: overviewFailed, retryOverview } = useOverview(stageId);
   const [query, setQuery] = useState("");
   const [selectedTopic, setTopic] = useState<string | null>(null);
+  const [authoredOnly, setAuthoredOnly] = useState(true);
   const [offset, setOffset] = useState(0);
   const [result, setResult] = useState<{ key: string; page: Page<StorySummary> } | null>(null);
   const [error, setError] = useState(false);
   const [retry, setRetry] = useState(0);
-  const authoredTopic = overview?.topics.find((item) => item.label.nl === storyLearningCopy.category.nl);
-  const topic = selectedTopic ?? (overview?.authored_story_count && authoredTopic ? authoredTopic.key : "");
-  const key = JSON.stringify([stageId, query, topic, offset, retry]);
+  const topic = selectedTopic ?? "";
+  const key = JSON.stringify([stageId, query, topic, authoredOnly, offset, retry]);
   const data = result?.key === key ? result.page : null;
   const [selected, setSelected] = useState("");
   const [story, setStory] = useState<Story | null>(null);
@@ -379,7 +383,13 @@ export function StoryTime({ stageId }: { stageId: string }) {
       () => {
         setResult(null);
         setError(false);
-        const params = new URLSearchParams({ q: query, topic, offset: String(offset), limit: "12" });
+        const params = new URLSearchParams({
+          q: query,
+          topic,
+          authored_only: String(authoredOnly),
+          offset: String(offset),
+          limit: "12",
+        });
         apiJson<Page<StorySummary>>(`library/${stageId}/stories?${params}`, { signal: controller.signal })
           .then((value) => {
             if (!controller.signal.aborted) setResult({ key, page: value });
@@ -394,7 +404,7 @@ export function StoryTime({ stageId }: { stageId: string }) {
       clearTimeout(timer);
       controller.abort();
     };
-  }, [stageId, query, topic, offset, retry, key]);
+  }, [stageId, query, topic, authoredOnly, offset, retry, key]);
   useEffect(() => {
     if (!selected) return;
     const controller = new AbortController();
@@ -564,35 +574,43 @@ export function StoryTime({ stageId }: { stageId: string }) {
             }}
           />
         </p>
-        {overview && (
+        {typeof overview?.eligible_authored_story_count === "number" && (
           <p className="library-count">
-            {overview.story_count} verhalen · {read.length} gemarkeerd als gelezen
+            <LearningText
+              text={fill(workspaceCopy.storyAvailable, {
+                count: overview.eligible_authored_story_count,
+                target: overview.target_story_count ?? 200,
+              })}
+            />
           </p>
         )}
-        {!!overview?.authored_story_count && authoredTopic && (
-          <div className="authored-story-entry">
-            <p>
-              <LearningText
-                text={fill(storyLearningCopy.authoredCount, { count: overview.authored_story_count })}
-              />
-            </p>
-            <button
-              className="button secondary"
-              onClick={() => {
-                setTopic(authoredTopic.key);
-                setQuery("");
-                setOffset(0);
-              }}
-            >
-              <LearningText text={storyLearningCopy.startAuthored} />
-            </button>
-          </div>
-        )}
+        <label className="older-story-toggle">
+          <input
+            type="checkbox"
+            checked={!authoredOnly}
+            onChange={(event) => {
+              setAuthoredOnly(!event.target.checked);
+              setTopic("");
+              setOffset(0);
+              setQuery("");
+            }}
+          />
+          <LearningText text={workspaceCopy.olderCollection} />
+        </label>
       </header>
       {overviewFailed && <LibraryError retry={retryOverview} />}
       <LibraryFilters
         kind="stories"
-        overview={overview}
+        overview={
+          overview && authoredOnly
+            ? {
+                ...overview,
+                topics: overview.topics.filter(
+                  (item) => (item.eligible_authored_story_count ?? item.story_count) > 0,
+                ),
+              }
+            : overview
+        }
         query={query}
         topic={topic}
         onQuery={(value) => {
@@ -610,6 +628,9 @@ export function StoryTime({ stageId }: { stageId: string }) {
         <p role="status">Verhalen laden…</p>
       ) : (
         <>
+          <p className="small-text muted">
+            <LearningText text={fill(workspaceCopy.filteredStories, { count: data.total })} />
+          </p>
           <div className="story-grid">
             {data.items.map((item, i) => (
               <article className="story-tile" key={item.id}>

@@ -14,6 +14,7 @@ import { destinations, navItemFor, navSection, rooms, type NavItem } from "@/com
 import { IconTile } from "@/components/ui/IconTile";
 import { ToastProvider } from "@/components/ui/Toast";
 import { UiText } from "@/components/ui/UiText";
+import { workspaceCopy } from "@/lib/copy/workspace";
 import { uiCopy } from "@/lib/ui-copy";
 import { NavigationGuardContext, type LeaveGuard } from "@/lib/client/navigation";
 
@@ -45,7 +46,15 @@ function Sidebar({ section }: { section: string | null }) {
       </Link>
       <nav aria-label="Hoofdmenu">
         <div className="nav-group">
-          {destinations.map((item) => (
+          {destinations.slice(0, 2).map((item) => (
+            <NavLink key={item.href} item={item} section={section} />
+          ))}
+        </div>
+        <div className="nav-group">
+          <p className="nav-group-label">
+            <UiText text={workspaceCopy.activity} />
+          </p>
+          {destinations.slice(2).map((item) => (
             <NavLink key={item.href} item={item} section={section} />
           ))}
         </div>

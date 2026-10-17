@@ -28,8 +28,8 @@ def words(stage_id: str, q: str = Query(default="", max_length=120), topic: str 
 @router.get("/{stage_id}/stories")
 def stories(stage_id: str, q: str = Query(default="", max_length=120), topic: str = Query(default="", max_length=160),
             offset: int = Query(default=0, ge=0, le=100000), limit: int = Query(default=12, ge=1, le=30),
-            ctx: RequestContext = Depends(context_dep)):
-    return library.story_page(_bank(stage_id), query=q, topic=topic, offset=offset, limit=limit)
+            authored_only: bool = False, ctx: RequestContext = Depends(context_dep)):
+    return library.story_page(_bank(stage_id), query=q, topic=topic, offset=offset, limit=limit, authored_only=authored_only)
 
 
 @router.get("/{stage_id}/stories/{story_id}")

@@ -30,7 +30,7 @@ export const destinations: NavItem[] = [
     accent: "today",
     copy: "today",
   },
-  { href: "/leerpad", label: "Leren", short: "Leren", icon: "flag", accent: "path", copy: "learn" },
+  { href: "/leerpad", label: "Niveaus", short: "Niveaus", icon: "flag", accent: "path", copy: "learn" },
   {
     href: "/verhalen",
     label: "Verhalen",

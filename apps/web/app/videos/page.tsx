@@ -1,13 +1,6 @@
-import type { Metadata } from "next";
-import { VideoLibrary } from "@/components/VideoLibrary";
-import { MediaTabs } from "@/components/shell/SectionTabs";
-export const metadata: Metadata = { title: "Video's" };
-/** The tabs sit outside the library so they show while it loads and when it fails. */
-export default function VideosPage() {
-  return (
-    <>
-      <MediaTabs />
-      <VideoLibrary />
-    </>
-  );
+import { redirect } from "next/navigation";
+
+/** Old bookmarks lead to the narrated story library; video creation has been retired. */
+export default function RetiredVideoPage() {
+  redirect("/verhalen");
 }

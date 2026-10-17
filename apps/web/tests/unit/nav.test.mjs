@@ -46,6 +46,8 @@ test("every route belongs to one destination or room", () => {
 test("an unknown path falls back to Vandaag for the header", () => {
   assert.equal(navItemFor("/dev/ui").href, "/");
   assert.equal(navItemFor("/missions/x").label, "Spreken");
+  assert.equal(navItemFor("/leerpad").label, "Niveaus");
+  assert.equal(navItemFor("/learn/pre-a2?section=stories").label, "Niveaus");
   assert.equal(navItemFor("/settings").accent, "neutral");
 });
 

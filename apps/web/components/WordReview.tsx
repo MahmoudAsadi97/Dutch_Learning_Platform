@@ -22,7 +22,8 @@ const gradeCopy: { grade: Grade; label: Copy; hint: Copy }[] = [
   { grade: "easy", label: wordsCopy.gradeEasy, hint: wordsCopy.gradeEasyHint },
 ];
 
-export function WordReview() {
+export function WordReview({ embedded = false }: { embedded?: boolean }) {
+  const Heading = embedded ? "h2" : "h1";
   const [queue, setQueue] = useState<WordItem[] | null>(null);
   const [stats, setStats] = useState<WordStats | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -124,11 +125,11 @@ export function WordReview() {
           <p className="eyebrow">
             <UiText text={wordsCopy.eyebrow} />
           </p>
-          <h1>
+          <Heading>
             <UiText
               text={current ? wordsCopy.titleReview : done ? wordsCopy.titleDone : wordsCopy.titleNothing}
             />
-          </h1>
+          </Heading>
           <p className="muted">
             <UiText text={fill(done ? wordsCopy.statsWithDone : wordsCopy.stats, counts)} />
           </p>

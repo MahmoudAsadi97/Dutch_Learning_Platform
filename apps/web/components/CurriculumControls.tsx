@@ -22,10 +22,12 @@ export function CurriculumQuestions({
   exam = false,
   checked = false,
   disabled = false,
+  startAt = 0,
 }: {
   questions: CurriculumQuestion[];
   answers: Record<string, number>;
   onAnswer: (id: string, index: number) => void;
+  startAt?: number;
   exam?: boolean;
   checked?: boolean;
   disabled?: boolean;
@@ -35,7 +37,7 @@ export function CurriculumQuestions({
       {questions.map((question, number) => (
         <fieldset key={question.id} className="curriculum-question" disabled={disabled}>
           <legend>
-            <span className="question-number">{number + 1}</span>
+            <span className="question-number">{number + 1 + startAt}</span>
             {exam ? question.prompt.nl : <LearningText text={question.prompt} />}
           </legend>
           {!exam && <SentenceAudio text={question.prompt.nl} disabled={disabled} />}

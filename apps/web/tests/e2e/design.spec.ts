@@ -10,7 +10,7 @@ const screens = [
   {
     name: "dashboard",
     path: "/leerpad",
-    heading: "Kleine stappen. Echte gesprekken.",
+    heading: /^Kies je niveau\. Kies wat je wilt oefenen\./,
   },
   { name: "progress", path: "/progress", heading: "Elke stap vertelt iets." },
   { name: "settings", path: "/settings", heading: "Jouw leeromgeving." },
@@ -19,7 +19,7 @@ const screens = [
     path: "/speech-check",
     heading: "Jouw stem. Jouw Nederlands.",
   },
-  { name: "speak", path: "/spreken", heading: "Zeg het in het Nederlands." },
+  { name: "speak", path: "/spreken", heading: "Oefen een gesprek op jouw niveau" },
 ];
 
 test("page scripts use a fresh CSP nonce and private caching", async ({ request }) => {
@@ -49,7 +49,14 @@ for (const screen of screens) {
       await expect(stages.first()).toBeVisible();
       await expect(stages.first().locator("dt")).toHaveText(["Lezen", "Luisteren", "Spreken", "Schrijven"]);
     }
-    if (screen.name === "speak") await expect(page.locator(".speak-choices a").first()).toBeVisible();
+    if (screen.name === "speak") {
+      await expect(page.locator("#library-hub-stage option")).toHaveCount(12);
+      await expect(page.locator(".speak-main .button")).toBeVisible();
+      await expect(page.locator(".speak-main .button")).toHaveAttribute(
+        "href",
+        "/learn/pre-a1?skill=speaking",
+      );
+    }
     if (screen.name === "settings")
       await expect(page.getByText("Technische ondersteuning", { exact: true })).toBeVisible();
     await page.evaluate(() => document.fonts.ready.then(() => undefined));

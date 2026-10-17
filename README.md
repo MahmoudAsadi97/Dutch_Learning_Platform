@@ -28,20 +28,20 @@ the proposed learning experience; it is not the Azure deployment and makes no li
 
 ## What I can practise
 
-The main navigation has five destinations: **Vandaag**, **Leren**, **Verhalen**, **Spreken** and **Woorden**.
+The main navigation has five destinations: **Vandaag**, **Niveaus**, **Verhalen**, **Spreken** and **Woorden**.
 Progress and settings sit alongside them, keeping everyday practice easy to find.
 
 - **Vandaag:** an episode, words due for spaced review, and the next useful activity. Points recognise
   practice effort; they are not a judgement of language ability.
-- **Leren:** twelve open stages, four skills, grammar practice, vocabulary cards, short stories and a
-  separate four-skill final check. Every stage has a word bank of at least 500 entries, 100 stories and
-  100 topics per skill. These are coverage counts, not proof that the content is correctly calibrated.
-- **Verhalen:** the continuing story _De Lindestraat_, comprehension activities, optional support and
-  labelled synthetic audio. Choices shape later episodes. Video lessons are a separate optional feature.
-- **Spreken:** practical missions about changing an appointment, ordering lunch, returning a purchase
-  and contacting a course. The character's facts and valid arrangements are enforced by code.
-  Push-to-talk has a labelled typed fallback; typed answers do not count as spoken evidence.
-- **Woorden:** save words encountered in context and revisit them with spaced practice.
+- **Niveaus:** twelve open stages, direct links to four skills, grammar, vocabulary and stories, plus a
+  separate four-skill final check. Actual content counts and targets are visible on each stage.
+- **Verhalen:** stage-filtered stories with optional sentence audio, comprehension, vocabulary and
+  retelling. Personal episodes from _De Lindestraat_ sit in their own view.
+- **Spreken:** stage-specific speaking topics, optional partner conversations and connected missions.
+  Scenario facts and valid arrangements are enforced by code. Push-to-talk has a labelled typed
+  fallback; typed answers do not count as spoken evidence.
+- **Woorden:** explore the selected stage's word cards, hear examples and practise using words in
+  several situations. Saved words have a separate spaced-review view.
 
 Dutch stays the practice language. English and Persian support can be selected in the header; learning
 text follows that choice. Interface Persian is activated in reviewed batches, so unreviewed interface
@@ -55,7 +55,7 @@ The connected learning sequence is **meet a word → understand it in a story �
 different situations → revise → return without help**. New units use ten explicit story lines with
 parallel Dutch, English and Persian text, sentence playback, and related four-skill activities. The
 tasks progress from naming concrete things at pre-A1 to interpreting viewpoints and register at C2.
-In Story Time, **Verhaal naar gesprek** opens the new ten-line collection first. Stories include a
+Story Time opens the eligible 8–12-line collection by default. Stories include a
 comprehension question, sentence playback and a level-specific invitation to retell, discuss or rewrite.
 The original connected units also open their related four-skill activities. In the word library,
 **Oefen de 150 kernwoorden** selects the productive core: a mix of nouns, verbs, adjectives, adverbs,
@@ -94,25 +94,6 @@ records the permitted role of each resource, and [story provenance](content/alig
 records the source family and plot synopsis without claiming external endorsement. Wablieft and NedBox
 remain external reading/listening resources, rather than content to copy into the app.
 
-Current authored inventory (legacy stories excluded):
-
-| Stage  | Productive core | Authored stories / 200 |
-| ------ | --------------: | ---------------------: |
-| Pre-A1 |             150 |                     42 |
-| A1     |             150 |                     15 |
-| Pre-A2 |             150 |                     27 |
-| A2     |             150 |                     22 |
-| Pre-B1 |             150 |                     18 |
-| B1     |             150 |                     48 |
-| Pre-B2 |             150 |                     11 |
-| B2     |             150 |                      7 |
-| Pre-C1 |             150 |                     14 |
-| C1     |             150 |                     15 |
-| Pre-C2 |             150 |                     21 |
-| C2     |             150 |                     15 |
-
-These are authored entries, with language review pending. They are not certified level inventories.
-
 To rebuild the authored expansion and inspect its actual coverage:
 
 ```bash
@@ -132,6 +113,23 @@ The existing banks and progress stay intact. The new language and level assignme
 review; raw scans and OCR remain private. [What was added and where to find it](docs/SOURCE_LESSONS.md).
 
 ![The current Today interface](docs/previews/today-desktop.png)
+
+## Finding practice
+
+Open **Niveaus**, choose any of the twelve levels, then jump directly to reading, listening, speaking,
+writing, vocabulary, grammar or stories. Inside a level, the level picker keeps the selected activity
+when you switch levels. Stories and Words also have their own level-filtered libraries; personal episodes
+and saved-word review are separate views.
+
+The interface displays content-backed counts and targets. Every level has 150 productive-core words,
+500+ vocabulary cards, 100+ grammar questions and 100+ topics per skill. The story target is **not yet met**:
+there are 290 eligible authored stories across the twelve levels, with 2,110 still needed for 200 per level.
+Older short/template texts are kept separate and never counted toward that target. These counts describe
+content availability; language accuracy and CEFR placement still require qualified review.
+
+Video generation has been removed from the interface and disabled in the API and background jobs.
+The replacement is interactive narrated reading: choose a story, hear individual sentences, answer
+questions and retell it. Audio uses the existing speech service only when requested.
 
 ## Grammar practice
 
@@ -308,5 +306,5 @@ billing. Hosting and database costs continue even when paid inference is disable
   [curriculum](docs/CURRICULUM.md), [topics](docs/TOPIC_PRACTICE.md), [source coverage](docs/SOURCE_COVERAGE.md).
 - **Engineering:** [architecture and conventions](docs/ENGINEERING.md), [decisions](docs/DECISIONS.md),
   [verification](docs/VERIFICATION.md), [release guide](docs/GO_LIVE.md).
-- **Experiences:** [story engine](docs/STORY_ENGINE.md), [video lessons](docs/VIDEO_LESSONS.md),
+- **Experiences:** [story engine](docs/STORY_ENGINE.md),
   [review walkthrough](docs/DEMO.md).

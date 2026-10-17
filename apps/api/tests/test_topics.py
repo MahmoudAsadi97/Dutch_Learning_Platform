@@ -153,6 +153,9 @@ def test_topic_api_auth_bounds_and_read_only_browsing(client, headers, bank):
     assert search["total"] == 1
     detail = client.get(f"{base}/{bank.topics[0].id}", params={"skill": "listening"}, headers=headers)
     assert "answer_index" not in detail.text and "explanation" not in detail.text
+    assert detail.json()["objectives"] == topics.skill_objectives(bank.topics[0], "listening")
+    spoken = client.get(f"{base}/{bank.topics[0].id}", params={"skill": "speaking"}, headers=headers)
+    assert spoken.json()["objectives"] == [item.model_dump() for item in bank.topics[0].speaking.criteria]
     assert detail.json()["activity"]["audio_parts"] >= 1
     assert not detail.json()["progress"]["attempted"]
     productive = client.get(f"{base}/{bank.topics[0].id}", params={"skill": "writing"}, headers=headers)

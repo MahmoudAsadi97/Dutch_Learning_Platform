@@ -1,4 +1,4 @@
-"""Video lessons. Reads are free; a deliberate POST queues a model call and a render against the counters."""
+"""Historical video archive. Creation and retries are permanently retired."""
 from __future__ import annotations
 
 import re
@@ -48,7 +48,7 @@ def list_videos(ctx: RequestContext = Depends(context_dep), settings: Settings =
     return _run(lambda: service.library(session, ctx.learner, settings, providers))
 
 
-@router.post("", status_code=201)
+@router.post("", status_code=410, deprecated=True)
 def request_video(body: RequestVideoBody, ctx: RequestContext = Depends(context_dep),
                   session: Session = db_session):
     return _run(lambda: service.video_view(service.request_video(
@@ -118,35 +118,30 @@ def media(video_id: str, range_header: str | None = Header(default=None, alias="
     return StreamingResponse(body(), status_code=status, media_type="video/mp4", headers=headers)
 
 
-@router.post("/{video_id}/watched")
+@router.post("/{video_id}/watched", status_code=410, deprecated=True)
 def watched(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = db_session):
-    return _run(lambda: service.mark_watched(
-        session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id), lock=True)))
+    raise service.VideoError(service.RETIRED_DETAIL, 410, params={"replacement_url": "/verhalen"})
 
 
-@router.post("/{video_id}/answers")
+@router.post("/{video_id}/answers", status_code=410, deprecated=True)
 def answers(video_id: str, body: VideoAnswerBody, ctx: RequestContext = Depends(context_dep),
             session: Session = db_session):
-    return _run(lambda: service.answer_questions(
-        session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id), lock=True),
-        request_id=body.request_id, answers=body.answers))
+    raise service.VideoError(service.RETIRED_DETAIL, 410, params={"replacement_url": "/verhalen"})
 
 
-@router.post("/{video_id}/rating")
+@router.post("/{video_id}/rating", status_code=410, deprecated=True)
 def rating(video_id: str, body: VideoRateBody, ctx: RequestContext = Depends(context_dep),
            session: Session = db_session):
-    return _run(lambda: service.rate(
-        session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id), lock=True), body.rating))
+    raise service.VideoError(service.RETIRED_DETAIL, 410, params={"replacement_url": "/verhalen"})
 
 
-@router.post("/{video_id}/words")
+@router.post("/{video_id}/words", status_code=410, deprecated=True)
 def save_word(video_id: str, body: VideoWordBody, ctx: RequestContext = Depends(context_dep),
               session: Session = db_session):
-    return _run(lambda: service.save_word(
-        session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id)), body.term))
+    raise service.VideoError(service.RETIRED_DETAIL, 410, params={"replacement_url": "/verhalen"})
 
 
-@router.post("/{video_id}/retry")
+@router.post("/{video_id}/retry", status_code=410, deprecated=True)
 def retry(video_id: str, ctx: RequestContext = Depends(context_dep), session: Session = db_session):
-    return _run(lambda: service.retry_failed(
-        session, ctx.learner, service.get_video(session, ctx.learner, _uuid(video_id), lock=True)))
+    # Do not fetch, queue, reserve or call a provider, even for a stale bookmark.
+    raise service.VideoError(service.RETIRED_DETAIL, 410, params={"replacement_url": "/verhalen"})

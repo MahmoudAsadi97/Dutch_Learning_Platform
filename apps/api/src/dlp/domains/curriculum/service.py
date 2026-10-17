@@ -98,6 +98,9 @@ def practice_completed(session: Session, learner_id: uuid.UUID, stage_id: str) -
 
 
 def catalogue(session: Session, learner_id: uuid.UUID, *, admin: bool, recording_max_seconds: float = 60) -> dict:
+    from dlp.domains.curriculum.coverage import all_coverage
+
+    content_coverage = all_coverage()
     passed = passed_stages(session, learner_id)
     stages = []
     latest_checks = {}
@@ -116,6 +119,7 @@ def catalogue(session: Session, learner_id: uuid.UUID, *, admin: bool, recording
             "cefr_reference": stage.cefr_reference, "unlocked": True, "passed": stage.id in passed,
             "practice_completed": completed, "test_available": admin or len(completed) == 4,
             "content_status": "unreviewed", "latest_check": latest_checks.get(stage.id),
+            "coverage": content_coverage[stage.id],
         })
     return {"stages": stages, "admin_bypass": admin, "learner_key": str(learner_id),
             "policy": {**POLICY, "recording_max_seconds": min(60, recording_max_seconds)}}
@@ -139,7 +143,10 @@ def audio_parts(text: str, limit: int = 500) -> list[str]:
 
 def stage_view(session: Session, learner_id: uuid.UUID, stage: Stage, *, admin: bool,
                recording_max_seconds: float = 60) -> dict:
+    from dlp.domains.curriculum.coverage import all_coverage
+
     data = stage.model_dump(exclude={"test"})
+    data["coverage"] = all_coverage()[stage.id]
     data["lesson"]["audio_parts"] = len(audio_parts(stage.lesson.listening.nl))
     data["content_status"] = "unreviewed"
     data["learner_key"] = str(learner_id)

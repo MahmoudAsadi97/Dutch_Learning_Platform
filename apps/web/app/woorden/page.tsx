@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import { WordReview } from "@/components/WordReview";
+import { Suspense } from "react";
+import { LibraryHub } from "@/components/LibraryHub";
+
 export const metadata: Metadata = { title: "Woorden" };
+
 export default function WordsPage() {
-  return <WordReview />;
+  return (
+    <Suspense>
+      <LibraryHub kind="words" />
+    </Suspense>
+  );
 }

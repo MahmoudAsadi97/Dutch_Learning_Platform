@@ -3,7 +3,7 @@ import { expect, test } from "./fixtures/test";
 
 /** The five destinations: bottom tabs on a phone, sidebar on a desktop, one current item at a time. */
 
-const tabs = ["Vandaag", "Leren", "Verhalen", "Spreken", "Woorden"];
+const tabs = ["Vandaag", "Niveaus", "Verhalen", "Spreken", "Woorden"];
 
 for (const width of [390, 320]) {
   test(`five tabs fit at ${width}px with 44px targets and no axe violations`, async ({ page }) => {
@@ -54,7 +54,7 @@ test("the current destination follows the route", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const nav = page.getByRole("navigation", { name: "Mobiel hoofdmenu" });
   for (const [path, name] of [
-    ["/learn/a1", "Leren"],
+    ["/learn/a1", "Niveaus"],
     ["/videos", "Verhalen"],
     ["/missions/appointment-change", "Spreken"],
     ["/speech-check", "Spreken"],
@@ -93,27 +93,25 @@ test("the sidebar marks the rooms and keeps 44px links", async ({ page }) => {
   }
   await page.goto("/videos");
   await expect(menu.getByRole("link", { name: "Verhalen" })).toHaveAttribute("aria-current", "page");
-  await expect(
-    page.getByRole("navigation", { name: "Verhalen en video's" }).getByRole("link", { name: "Video's" }),
-  ).toHaveAttribute("aria-current", "page");
-});
-
-test("the Verhalen tabs stay while the library is loading or has failed", async ({ page }) => {
-  await page.route(/\/api\/videos(?:\?|$)/, (route) => route.abort("connectionrefused"));
-  await page.goto("/videos");
-  const media = page.getByRole("navigation", { name: "Verhalen en video's" });
-  await expect(media.getByRole("link", { name: "Verhalen" })).toBeVisible();
-  await expect(media.getByRole("link", { name: "Video's" })).toHaveAttribute("aria-current", "page");
+  await expect(page).toHaveURL(/\/verhalen$/);
+  await expect(page.getByRole("link", { name: "Video's", exact: true })).toHaveCount(0);
 });
 
 for (const width of [1440, 390, 320]) {
   test(`the Spreken hub gathers conversations, missions and the studio at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
     await page.goto("/spreken");
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Zeg het in het Nederlands.");
-    const first = page.locator(".speak-choices a").first();
-    await expect(first).toBeVisible();
-    await expect(first).toHaveAttribute("href", /^\/learn\/[^/?]+\?(?:.*&)?skill=speaking(?:&|$)/);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Oefen een gesprek op jouw niveau");
+    await expect(page.locator("#library-hub-stage option")).toHaveCount(12);
+    await expect(page.getByRole("link", { name: /Kies een spreekonderwerp/ })).toHaveAttribute(
+      "href",
+      "/learn/pre-a1?skill=speaking",
+    );
+    await page.locator("#library-hub-stage").selectOption("pre-a2");
+    await expect(page.getByRole("link", { name: /Kies een spreekonderwerp/ })).toHaveAttribute(
+      "href",
+      "/learn/pre-a2?skill=speaking",
+    );
     await expect(page.getByTestId("mission-catalog").locator("article")).toHaveCount(4);
     await expect(page.getByRole("link", { name: /spraakstudio/i })).toHaveAttribute("href", "/speech-check");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);

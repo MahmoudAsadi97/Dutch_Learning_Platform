@@ -108,8 +108,9 @@ test("A1 source words and story open, and first-try reading answers persist inde
       .getByRole("heading", { name: `${counts.words} woorden en uitdrukkingen`, exact: true }),
   ).toHaveText(`${counts.words} woorden en uitdrukkingen`);
   const nav = page.getByRole("navigation", { name: "Onderdelen van dit niveau" });
-  await nav.getByRole("button", { name: "Story Time", exact: true }).click();
-  await expect(page.locator(".library-count")).toContainText(`${counts.stories} verhalen`);
+  await nav.getByRole("button", { name: "Verhalen", exact: true }).click();
+  await page.getByRole("checkbox", { name: /^Ook oudere korte teksten bekijken/ }).check();
+  await expect(page.locator(".story-time")).toContainText(`${counts.stories} resultaten in deze selectie`);
   await page.getByLabel("Onderwerp", { exact: true }).selectOption(category);
   await expect(page.locator(".story-tile")).toHaveCount(pack.stories.length);
   await page.getByRole("button", { name: `Lees ${story.title.nl}`, exact: true }).click();

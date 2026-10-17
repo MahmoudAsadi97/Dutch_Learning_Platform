@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-import tempfile
 from dataclasses import dataclass
 from functools import lru_cache
-from pathlib import Path
 
 from dlp.config import Settings, get_settings
 from dlp.providers.base import BlobStore, ChatModel, ProviderUnavailable, SpeechToText, TextToSpeech, VideoRenderer
@@ -14,8 +12,7 @@ from dlp.providers.chat_openai_compatible import ChatEndpoint, OpenAICompatibleC
 from dlp.providers.fixtures import FixtureChatModel, FixtureSpeechToText, FixtureTextToSpeech, MemoryBlobStore
 from dlp.providers.speech_azure import AzureSpeechToText, AzureTextToSpeech
 from dlp.providers.speech_local import FasterWhisperSpeechToText, PiperTextToSpeech
-from dlp.providers.video_azure import AzureAvatarRenderer, endpoint_for
-from dlp.providers.video_local import SceneCardRenderer
+from dlp.providers.video_disabled import DisabledVideoRenderer
 
 
 @dataclass
@@ -121,35 +118,12 @@ def build_blob(settings: Settings) -> BlobStore:
 
 
 def video_mode(settings: Settings) -> str:
-    """Which renderer `video_provider` resolves to: avatar | cards | fixture."""
-    if settings.video_provider != "auto":
-        return settings.video_provider
-    if settings.tts_provider == "fixture":
-        return "fixture"
-    if settings.tts_provider == "azure":
-        return "avatar"
-    return "cards"
+    """Legacy VIDEO_PROVIDER values cannot re-enable the retired feature."""
+    return "disabled"
 
 
 def build_video(settings: Settings, tts: TextToSpeech) -> VideoRenderer:
-    mode = video_mode(settings)
-    work_dir = (settings.resolve_path(settings.video_work_dir) if settings.video_work_dir
-                else Path(tempfile.gettempdir()) / "dlp-video")
-    if mode == "fixture":
-        return SceneCardRenderer(FixtureTextToSpeech(), work_dir=work_dir, name="fixture", fast=True,
-                                 timeout_seconds=settings.ffmpeg_timeout_seconds * 6,
-                                 memory_limit_mb=settings.ffmpeg_memory_limit_mb)
-    if mode == "avatar":
-        return AzureAvatarRenderer(
-            key=settings.azure_speech_key,
-            endpoint=endpoint_for(endpoint=settings.azure_speech_endpoint, resource_id=settings.azure_speech_resource_id,
-                                  region=settings.azure_speech_region),
-            voice=settings.azure_tts_voice, character=settings.video_avatar_character, style=settings.video_avatar_style,
-            background=settings.video_avatar_background, token_provider=_speech_token_provider(settings),
-        )
-    return SceneCardRenderer(tts, work_dir=work_dir, name="scene-cards", font=settings.video_font,
-                             timeout_seconds=settings.ffmpeg_timeout_seconds * 9,
-                             memory_limit_mb=settings.ffmpeg_memory_limit_mb)
+    return DisabledVideoRenderer()
 
 
 def build_providers(settings: Settings | None = None) -> Providers:

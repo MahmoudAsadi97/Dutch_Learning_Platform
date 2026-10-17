@@ -7,6 +7,9 @@ import type { CurriculumStage } from "@/lib/client/curriculum";
 vi.mock("@/components/LanguageSupport", () => ({
   LearningText: ({ text }: { text: { nl: string } }) => <span>{text.nl}</span>,
 }));
+vi.mock("@/components/ui/UiText", () => ({
+  UiText: ({ text }: { text: { nl: string } }) => <span>{text.nl}</span>,
+}));
 vi.mock("@/components/PhraseAudio", () => ({
   PhraseAudio: ({ label }: { label?: string }) => <button>{label ?? "Afspelen"}</button>,
 }));
@@ -39,21 +42,25 @@ const topics: CurriculumStage["grammar"] = ["first", "second"].map((id) => ({
   })),
 }));
 
-test("only the selected round appears; checking requires all ten answers", async () => {
+test("one question appears at a time and checking waits for an answer", async () => {
   const onCheck = vi.fn();
   const props = { topics, answers: {}, onAnswer: vi.fn(), checked: {}, onCheck, onPractice: vi.fn() };
   const { rerender } = render(<GrammarPractice {...props} />);
   expect(screen.getByText("first-0")).toBeVisible();
   expect(screen.queryByText("second-0")).not.toBeInTheDocument();
-  expect(screen.getByRole("button", { name: "Controleer deze ronde" })).toBeDisabled();
+  expect(screen.queryByText("first-1")).not.toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "Controleer je antwoord" })).toBeDisabled();
   const answers = Object.fromEntries(topics[0].practice.map((q) => [q.id, 0]));
   rerender(<GrammarPractice {...props} answers={answers} />);
-  await userEvent.click(screen.getByRole("button", { name: "Controleer deze ronde" }));
+  await userEvent.click(screen.getByRole("button", { name: "Controleer je antwoord" }));
   expect(onCheck).toHaveBeenCalledWith("practice-first");
+  await userEvent.click(screen.getByRole("button", { name: "Volgende vraag" }));
+  expect(screen.getByText("first-1")).toBeVisible();
+  expect(screen.queryByText("first-0")).not.toBeInTheDocument();
   await userEvent.selectOptions(screen.getByLabelText("Kies een onderwerp"), "practice-second");
   expect(screen.getByText("second-0")).toBeVisible();
   expect(screen.queryByText("first-0")).not.toBeInTheDocument();
-  expect(screen.getByRole("button", { name: "Controleer deze ronde" })).toBeDisabled();
+  expect(screen.getByRole("button", { name: "Controleer je antwoord" })).toBeDisabled();
 });
 
 test("listen first conceals the example and each skill is reachable", async () => {

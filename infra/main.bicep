@@ -51,11 +51,11 @@ param totalTokens int = 2000000
 param dailyAudioSeconds int = 1200
 @minValue(1)
 param totalAudioSeconds int = 18000
-// Seconds of avatar video per day and in total: the batch avatar is billed per second of video.
-@minValue(1)
-param dailyVideoSeconds int = 300
-@minValue(1)
-param totalVideoSeconds int = 7200
+// Retired feature: retain counters for historical accounting, with no new allowance by default.
+@minValue(0)
+param dailyVideoSeconds int = 0
+@minValue(0)
+param totalVideoSeconds int = 0
 @minValue(1)
 param monthlyBudget int = 50
 param budgetStartDate string

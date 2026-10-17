@@ -52,7 +52,7 @@ export const stageNames: Record<StageId, string> = {
   "pre-c1": "Gevorderd plus",
   c1: "Vaardig",
   "pre-c2": "Vaardig plus",
-  c2: "Bijna moedertaal",
+  c2: "Zeer vaardig",
 };
 
 export const SKILLS = ["reading", "listening", "speaking", "writing"] as const;

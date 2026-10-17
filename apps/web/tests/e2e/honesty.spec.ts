@@ -6,7 +6,6 @@ import { expect, test } from "./fixtures/test";
 for (const [path, kind] of [
   ["/", "generated"],
   ["/leerpad", "check"],
-  ["/videos", "video"],
   ["/learn/a1/test", "check"],
 ] as const) {
   test(`${path} carries one ${kind} chip`, async ({ page }) => {

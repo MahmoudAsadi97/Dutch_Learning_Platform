@@ -9,7 +9,6 @@ const METRIC_LABEL: Record<string, string> = {
   model_calls: "modeloproepen",
   tokens: "tokens",
   audio_seconds: "seconden audio",
-  video_seconds: "seconden video",
 };
 
 function format(value: number): string {
@@ -46,20 +45,22 @@ export function UsagePanel() {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(usage.counters).map(([metric, scopes]) => (
-            <tr key={metric}>
-              <th scope="row">{METRIC_LABEL[metric] ?? metric}</th>
-              <td>
-                {format(scopes.daily.used)} van {format(scopes.daily.limit)}
-                {scopes.daily.reserved > 0 && (
-                  <span className="muted"> (+{format(scopes.daily.reserved)} gereserveerd)</span>
-                )}
-              </td>
-              <td>
-                {format(scopes.total.used)} van {format(scopes.total.limit)}
-              </td>
-            </tr>
-          ))}
+          {Object.entries(usage.counters)
+            .filter(([metric]) => metric !== "video_seconds")
+            .map(([metric, scopes]) => (
+              <tr key={metric}>
+                <th scope="row">{METRIC_LABEL[metric] ?? metric}</th>
+                <td>
+                  {format(scopes.daily.used)} van {format(scopes.daily.limit)}
+                  {scopes.daily.reserved > 0 && (
+                    <span className="muted"> (+{format(scopes.daily.reserved)} gereserveerd)</span>
+                  )}
+                </td>
+                <td>
+                  {format(scopes.total.used)} van {format(scopes.total.limit)}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
       <p className="muted" style={{ fontSize: "0.85rem" }} data-testid="pricing-note">

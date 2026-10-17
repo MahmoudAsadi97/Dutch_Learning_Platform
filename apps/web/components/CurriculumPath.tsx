@@ -1,20 +1,38 @@
 "use client";
 
+import { UiText } from "@/components/ui/UiText";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PracticeCoach } from "@/components/PracticeCoach";
+import { ContentCoverage } from "@/components/ContentCoverage";
 import { Icon } from "@/components/Icon";
 import { LearningText } from "@/components/LanguageSupport";
 import { apiJson } from "@/lib/client/api";
 import { stageLabel, type CurriculumCatalog } from "@/lib/client/curriculum";
-import { ProgressBar, Skeleton, SkeletonPanel, SkillMeter } from "@/components/ui";
+import { STAGE_IDS, stageNames, isStageId } from "@/lib/domain/registry";
+import { activityHref, type LearningActivity } from "@/lib/client/learning-navigation";
+import { workspaceCopy as copy } from "@/lib/copy/workspace";
+import { Skeleton, SkeletonPanel, SkillMeter } from "@/components/ui";
 import { useProfile } from "@/lib/client/profile";
 import { HonestyChip } from "@/components/ui/HonestyChip";
+import { fill } from "@/lib/ui-copy";
 
+const activities: { id: LearningActivity; icon: "book" | "headphones" | "mic" | "pen" | "star" }[] = [
+  { id: "reading", icon: "book" },
+  { id: "listening", icon: "headphones" },
+  { id: "speaking", icon: "mic" },
+  { id: "writing", icon: "pen" },
+  { id: "words", icon: "star" },
+  { id: "grammar", icon: "pen" },
+  { id: "stories", icon: "book" },
+];
 export function CurriculumPath() {
   const [data, setData] = useState<CurriculumCatalog | null>(null);
   const [error, setError] = useState(false);
   const [retry, setRetry] = useState(0);
+  const profile = useProfile();
+  const router = useRouter();
   useEffect(() => {
     const controller = new AbortController();
     apiJson<CurriculumCatalog>("curriculum", { signal: controller.signal })
@@ -27,38 +45,40 @@ export function CurriculumPath() {
       });
     return () => controller.abort();
   }, [retry]);
-  const profile = useProfile();
   const current = profile.data?.profile.stage_id;
-  // the profile stage, until its check is passed; then the first stage after it that is still open
-  const atProfile = data?.stages.findIndex((stage) => stage.id === current) ?? -1;
-  const next =
-    (atProfile >= 0 && data && !data.stages[atProfile].passed ? data.stages[atProfile] : undefined) ??
-    (atProfile >= 0 ? data?.stages.slice(atProfile + 1).find((stage) => !stage.passed) : undefined) ??
-    data?.stages.find((stage) => !stage.passed) ??
-    data?.stages.at(-1);
-  const finished = data?.stages.filter((stage) => stage.passed).length ?? 0;
+  const next = data?.stages.find((s) => s.id === current) ?? data?.stages[0];
   return (
-    <div className="learning-path" data-testid="learning-overview">
+    <div className="learning-path level-directory" data-testid="learning-overview">
       <header className="path-heading">
         <div>
-          <p className="eyebrow">JOUW LEERPAD</p>
-          <h1>Kleine stappen. Echte gesprekken.</h1>
+          <h1>
+            <LearningText text={copy.title} />
+          </h1>
           <p>
-            <LearningText
-              text={{
-                nl: "Van je eerste woorden naar zelfverzekerd Nederlands.",
-                en: "From your first words to confident Dutch.",
-                fa: "از نخستین واژه‌ها تا هلندی با اعتمادبه‌نفس.",
-              }}
-            />
+            <LearningText text={copy.intro} />
           </p>
+          <div className="directory-quick-level">
+            <label htmlFor="directory-stage">
+              <LearningText text={copy.level} />
+            </label>
+            <select
+              id="directory-stage"
+              value={current ?? "pre-a1"}
+              onChange={(event) => router.push(activityHref(event.target.value, "words"))}
+            >
+              {STAGE_IDS.map((id) => (
+                <option value={id} key={id}>
+                  {stageLabel(id)} · {stageNames[id]}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        {data?.admin_bypass && <span className="quiet-badge">Testweergave · alle niveaus open</span>}
       </header>
       {error ? (
         <div className="error" role="alert">
-          Je leerpad kon niet worden geladen.{" "}
-          <button className="linklike" onClick={() => setRetry((value) => value + 1)}>
+          <p>Je leerpad kon niet worden geladen.</p>
+          <button className="button secondary" onClick={() => setRetry((v) => v + 1)}>
             Opnieuw proberen
           </button>
         </div>
@@ -69,124 +89,70 @@ export function CurriculumPath() {
       ) : (
         <>
           {next && (
-            <section className="continue-panel" aria-labelledby="continue-title">
-              <div className="continue-copy">
-                <p className="eyebrow">
-                  VOORGESTELD STARTPUNT <span>{stageLabel(next.id)}</span>
-                </p>
-                <h2 id="continue-title">{next.title.nl}</h2>
-                <p>
-                  <LearningText text={next.description} />
-                </p>
-                <Link className="button" href={`/learn/${next.id}`}>
-                  {next.practice_completed.length ? "Verder leren" : "Begin met leren"}
-                  <Icon name="arrow" size={18} />
-                </Link>
-              </div>
-              <div className="continue-overview">
-                <span className="continue-count">
-                  {String(finished).padStart(2, "0")}
-                  <span> / {data.stages.length}</span>
-                </span>
-                <p>niveaus afgerond</p>
-                <ProgressBar
-                  className="path-progress"
-                  size="thin"
-                  value={finished}
-                  max={data.stages.length}
-                  label="Afgeronde niveaus"
-                />
-                <div
-                  className="continue-skill-icons"
-                  role="group"
-                  aria-label="Lezen, luisteren, spreken en schrijven"
-                >
-                  <Icon name="book" />
-                  <Icon name="headphones" />
-                  <Icon name="mic" />
-                  <Icon name="pen" />
-                </div>
-              </div>
-            </section>
-          )}
-          <PracticeCoach key={data.learner_key} />
-          <section aria-labelledby="path-title">
-            <div className="section-heading">
-              <div>
-                <h2 id="path-title">Een helder pad vooruit</h2>
-                <p className="muted">
-                  Alle niveaus zijn open. Kies je startpunt, oefen en meet je vooruitgang.
-                </p>
-              </div>
-              <span className="quiet-badge">pre-A1 → C2</span>
+            <div className="level-resume">
+              <span>
+                <LearningText text={copy.resume} />: <strong>{stageLabel(next.id)}</strong>
+              </span>
+              <Link className="button" href={`/learn/${next.id}`}>
+                <LearningText text={copy.resume} />
+                <Icon name="arrow" size={18} />
+              </Link>
             </div>
-            <ol className="stage-grid" data-testid="curriculum-path">
-              {data.stages.map((stage) => (
-                <li
-                  key={stage.id}
-                  className={`stage-card ${stage.passed ? "stage-passed" : ""} ${stage.id === next?.id ? "stage-current" : ""}`}
-                >
-                  <div className="stage-card-top">
-                    <span className="stage-level">{stageLabel(stage.id)}</span>
-                    <span className="stage-status">
-                      {stage.passed ? (
-                        <>
-                          <Icon name="check" size={15} />
-                          Afgerond
-                        </>
-                      ) : stage.id === next?.id ? (
-                        "Jouw volgende stap"
-                      ) : (
-                        "Beschikbaar"
-                      )}
-                    </span>
-                  </div>
-                  <h3>
-                    <LearningText text={stage.title} />
-                  </h3>
-                  <p>
-                    <LearningText text={stage.description} />
-                  </p>
-                  <SkillMeter
-                    done={Object.fromEntries(stage.practice_completed.map((skill) => [skill, true]))}
-                    label={`Vaardigheden van ${stageLabel(stage.id)}`}
-                  />
-                  <div className="stage-practice-status">
-                    <span>{stage.practice_completed.length} / 4 vaardigheden</span>
-                    <span>Eindtoets</span>
-                  </div>
-                  {
-                    <Link
-                      className="stage-link"
-                      href={`/learn/${stage.id}`}
-                      aria-label={`Open ${stageLabel(stage.id)}: ${stage.title.nl}`}
-                    >
-                      {stage.passed ? "Opnieuw oefenen" : "Open dit niveau"}
-                      <Icon name="arrow" size={17} />
+          )}
+          <ol className="stage-grid" data-testid="curriculum-path">
+            {data.stages.map((stage) => (
+              <li key={stage.id} className={`stage-card ${stage.id === next?.id ? "stage-current" : ""}`}>
+                <div className="stage-card-top">
+                  <span className="stage-level">{stageLabel(stage.id)}</span>
+                  <span className="stage-status">
+                    {stage.passed ? <Icon name="check" size={16} /> : null}
+                    {stage.passed ? "Afgerond" : "Beschikbaar"}
+                  </span>
+                </div>
+                <h2>{isStageId(stage.id) ? stageNames[stage.id] : stageLabel(stage.id)}</h2>
+                <ContentCoverage coverage={stage.coverage} compact />
+                <div className="stage-activity-grid">
+                  {activities.map((item) => (
+                    <Link key={item.id} href={activityHref(stage.id, item.id)}>
+                      <Icon name={item.icon} size={17} />
+                      <UiText text={copy[item.id]} />
+                      {["reading", "listening", "speaking", "writing"].includes(item.id) && stage.coverage ? (
+                        <small>{stage.coverage.skill_topics[item.id as "reading"]}</small>
+                      ) : null}
                     </Link>
-                  }
-                </li>
-              ))}
-            </ol>
-          </section>
-          <div className="path-bottom-links">
-            <Link href="/missions">
-              <Icon name="book" />
-              <span>
-                <strong>Praktijkgesprekken</strong>
-                <small>Pas je Nederlands toe in het dagelijkse leven.</small>
-              </span>
-              <Icon name="arrow" />
-            </Link>
-            <Link href="/speech-check">
-              <Icon name="mic" />
-              <span>
-                <strong>Even je stem opwarmen</strong>
-                <small>Neem op, luister terug en vergelijk.</small>
-              </span>
-              <Icon name="arrow" />
-            </Link>
-          </div>
+                  ))}
+                </div>
+                {stage.id === "pre-a1" && (
+                  <Link className="alphabet-entry" href={activityHref(stage.id, "alphabet")}>
+                    <Icon name="volume" size={16} />
+                    <LearningText text={copy.alphabet} />
+                  </Link>
+                )}
+                <ContentCoverage coverage={stage.coverage} />
+                <SkillMeter
+                  done={Object.fromEntries(stage.practice_completed.map((skill) => [skill, true]))}
+                  label={`Vaardigheden van ${stageLabel(stage.id)}`}
+                />
+                <p className="stage-practice-status">
+                  <LearningText text={fill(copy.practiced, { n: stage.practice_completed.length })} />
+                </p>
+                <Link
+                  className="stage-link"
+                  href={`/learn/${stage.id}`}
+                  aria-label={`Open ${stageLabel(stage.id)}: ${stage.title.nl}`}
+                >
+                  Open dit niveau
+                  <Icon name="arrow" size={17} />
+                </Link>
+              </li>
+            ))}
+          </ol>
+          <details className="directory-coach">
+            <summary>
+              <LearningText text={copy.coach} />
+            </summary>
+            <PracticeCoach key={data.learner_key} />
+          </details>
           <div className="honesty-row">
             <HonestyChip kind="check" />
           </div>

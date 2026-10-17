@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText } from "@/components/ui/UiText";
+
 import { useState } from "react";
 import { grammarCopy as copy } from "@/lib/copy/grammar";
 import { fill } from "@/lib/ui-copy";
@@ -30,6 +32,8 @@ export function GrammarPractice({
   const [selected, setSelected] = useState(
     () => topics.find((t) => t.id.startsWith("practice-"))?.id ?? topics[0]?.id,
   );
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [checkedQuestions, setCheckedQuestions] = useState<Record<string, boolean>>({});
   const [listenFirst, setListenFirst] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const index = Math.max(
@@ -38,9 +42,11 @@ export function GrammarPractice({
   );
   const topic = topics[index];
   if (!topic) return null;
+  const currentQuestion = topic.practice[questionIndex] ?? topic.practice[0];
   const total = topics.reduce((sum, t) => sum + t.practice.length, 0);
   function select(id: string) {
     setSelected(id);
+    setQuestionIndex(0);
     setRevealed(false);
   }
   return (
@@ -92,19 +98,42 @@ export function GrammarPractice({
             </button>
           )}
         </div>
+        <p className="grammar-position" aria-live="polite">
+          <UiText text={fill(copy.position, { n: questionIndex + 1, total: topic.practice.length })} />
+        </p>
         <CurriculumQuestions
-          questions={topic.practice}
+          questions={currentQuestion ? [currentQuestion] : []}
+          startAt={questionIndex}
           answers={answers}
           onAnswer={onAnswer}
-          checked={!!checked[topic.id]}
+          checked={!!checked[topic.id] || !!checkedQuestions[currentQuestion?.id]}
         />
         <button
           className="button secondary"
-          disabled={!topic.practice.every((q) => answers[q.id] !== undefined)}
-          onClick={() => onCheck(topic.id)}
+          disabled={!currentQuestion || answers[currentQuestion.id] === undefined}
+          onClick={() => {
+            setCheckedQuestions((values) => ({ ...values, [currentQuestion.id]: true }));
+            if (topic.practice.every((q) => answers[q.id] !== undefined)) onCheck(topic.id);
+          }}
         >
-          <LearningText text={copy.check} />
+          <UiText text={copy.checkAnswer} />
         </button>
+        <div className="action-row">
+          <button
+            className="button secondary"
+            disabled={questionIndex === 0}
+            onClick={() => setQuestionIndex((value) => value - 1)}
+          >
+            <UiText text={copy.previousQuestion} />
+          </button>
+          <button
+            className="button"
+            disabled={questionIndex === topic.practice.length - 1}
+            onClick={() => setQuestionIndex((value) => value + 1)}
+          >
+            <UiText text={copy.nextQuestion} />
+          </button>
+        </div>
       </section>
       <div className="action-row">
         <button
