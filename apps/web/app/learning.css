@@ -1150,6 +1150,7 @@
   font-size: 20px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 .coverage-shortfall {
   color: var(--text);
@@ -1294,4 +1295,13 @@
 .level-resume .button .copy-support,
 .grammar-practice .button:not(.secondary) .copy-support {
   color: inherit;
+}
+
+@media (max-width: 360px) {
+  .coverage-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stage-activity-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

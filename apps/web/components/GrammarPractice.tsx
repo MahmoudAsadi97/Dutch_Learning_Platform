@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText } from "@/components/ui/UiText";
+
 import { useState } from "react";
 import { grammarCopy as copy } from "@/lib/copy/grammar";
 import { fill } from "@/lib/ui-copy";
@@ -97,7 +99,7 @@ export function GrammarPractice({
           )}
         </div>
         <p className="grammar-position" aria-live="polite">
-          <LearningText text={fill(copy.position, { n: questionIndex + 1, total: topic.practice.length })} />
+          <UiText text={fill(copy.position, { n: questionIndex + 1, total: topic.practice.length })} />
         </p>
         <CurriculumQuestions
           questions={currentQuestion ? [currentQuestion] : []}
@@ -114,7 +116,7 @@ export function GrammarPractice({
             if (topic.practice.every((q) => answers[q.id] !== undefined)) onCheck(topic.id);
           }}
         >
-          <LearningText text={copy.checkAnswer} />
+          <UiText text={copy.checkAnswer} />
         </button>
         <div className="action-row">
           <button
@@ -122,14 +124,14 @@ export function GrammarPractice({
             disabled={questionIndex === 0}
             onClick={() => setQuestionIndex((value) => value - 1)}
           >
-            <LearningText text={copy.previousQuestion} />
+            <UiText text={copy.previousQuestion} />
           </button>
           <button
             className="button"
             disabled={questionIndex === topic.practice.length - 1}
             onClick={() => setQuestionIndex((value) => value + 1)}
           >
-            <LearningText text={copy.nextQuestion} />
+            <UiText text={copy.nextQuestion} />
           </button>
         </div>
       </section>

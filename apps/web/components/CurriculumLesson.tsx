@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText } from "@/components/ui/UiText";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ContentCoverage } from "@/components/ContentCoverage";
@@ -230,7 +232,7 @@ export function CurriculumLesson({
             onClick={() => changeSection(item.id)}
           >
             <Icon name={item.icon} size={18} />
-            <LearningText text={workspaceCopy[item.id]} />
+            <UiText text={workspaceCopy[item.id]} />
             {completed.includes(item.id as Skill) && <Icon name="check" size={14} />}
           </button>
         ))}

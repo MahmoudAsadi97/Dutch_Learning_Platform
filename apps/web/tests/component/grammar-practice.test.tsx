@@ -7,6 +7,9 @@ import type { CurriculumStage } from "@/lib/client/curriculum";
 vi.mock("@/components/LanguageSupport", () => ({
   LearningText: ({ text }: { text: { nl: string } }) => <span>{text.nl}</span>,
 }));
+vi.mock("@/components/ui/UiText", () => ({
+  UiText: ({ text }: { text: { nl: string } }) => <span>{text.nl}</span>,
+}));
 vi.mock("@/components/PhraseAudio", () => ({
   PhraseAudio: ({ label }: { label?: string }) => <button>{label ?? "Afspelen"}</button>,
 }));

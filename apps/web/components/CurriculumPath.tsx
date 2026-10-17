@@ -1,4 +1,6 @@
 "use client";
+
+import { UiText } from "@/components/ui/UiText";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -113,7 +115,7 @@ export function CurriculumPath() {
                   {activities.map((item) => (
                     <Link key={item.id} href={activityHref(stage.id, item.id)}>
                       <Icon name={item.icon} size={17} />
-                      <LearningText text={copy[item.id]} />
+                      <UiText text={copy[item.id]} />
                       {["reading", "listening", "speaking", "writing"].includes(item.id) && stage.coverage ? (
                         <small>{stage.coverage.skill_topics[item.id as "reading"]}</small>
                       ) : null}

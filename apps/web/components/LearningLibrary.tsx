@@ -574,13 +574,11 @@ export function StoryTime({ stageId }: { stageId: string }) {
             }}
           />
         </p>
-        {overview && (
+        {typeof overview?.eligible_authored_story_count === "number" && (
           <p className="library-count">
             <LearningText
               text={fill(workspaceCopy.storyAvailable, {
-                count: authoredOnly
-                  ? (overview.eligible_authored_story_count ?? overview.authored_story_count ?? 0)
-                  : overview.story_count,
+                count: overview.eligible_authored_story_count,
                 target: overview.target_story_count ?? 200,
               })}
             />

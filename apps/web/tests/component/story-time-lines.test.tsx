@@ -73,7 +73,9 @@ function mockLibrary(authoredLines: boolean, highlightNew = false) {
               },
             ]
           : [],
-        ...(highlightNew ? { authored_story_count: 2, target_story_count: 200 } : {}),
+        ...(highlightNew
+          ? { authored_story_count: 2, eligible_authored_story_count: 2, target_story_count: 200 }
+          : {}),
       };
     if (String(path).startsWith("library/a1/stories?"))
       return { items: [story], total: 200, offset: 0, limit: 12 };
@@ -121,5 +123,6 @@ test("authored collection is explicit, while legacy texts require a separate cho
       true,
     ),
   );
-  expect(screen.queryByText("200 nieuwe verhalen")).not.toBeInTheDocument();
+  expect(screen.getByText("2 verhalen beschikbaar · doel: 200")).toBeVisible();
+  expect(screen.queryByText("200 verhalen beschikbaar · doel: 200")).not.toBeInTheDocument();
 });

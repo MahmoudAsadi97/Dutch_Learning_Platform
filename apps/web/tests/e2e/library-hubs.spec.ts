@@ -68,7 +68,7 @@ for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/learn/a1?section=grammar");
     const navigation = page.getByRole("navigation", { name: "Onderdelen van dit niveau" });
-    await expect(navigation.getByRole("button", { name: "Grammatica", exact: true })).toHaveAttribute(
+    await expect(navigation.getByRole("button", { name: /^Grammatica(?:\s|$)/ })).toHaveAttribute(
       "aria-current",
       "step",
     );
@@ -77,14 +77,14 @@ for (const width of [1440, 390]) {
     await page.locator("#workspace-stage").selectOption("pre-a2");
     await expect(page).toHaveURL(/\/learn\/pre-a2\?section=grammar$/);
     await expect(page.locator("#workspace-stage")).toHaveValue("pre-a2");
-    await expect(navigation.getByRole("button", { name: "Grammatica", exact: true })).toHaveAttribute(
+    await expect(navigation.getByRole("button", { name: /^Grammatica(?:\s|$)/ })).toHaveAttribute(
       "aria-current",
       "step",
     );
     await expect(page.locator(".grammar-practice .curriculum-question")).toHaveCount(1);
-    await expect(page.locator(".grammar-position")).toHaveText("Vraag 1 van 10");
+    await expect(page.locator(".grammar-position")).toContainText("Vraag 1 van 10");
     await page.reload();
-    await expect(navigation.getByRole("button", { name: "Grammatica", exact: true })).toHaveAttribute(
+    await expect(navigation.getByRole("button", { name: /^Grammatica(?:\s|$)/ })).toHaveAttribute(
       "aria-current",
       "step",
     );
@@ -111,25 +111,25 @@ test("grammar shows one real question, preserves an answer when moving back and 
   const second = round.practice[1];
   const grammar = page.locator(".grammar-practice");
   await expect(grammar.locator(".curriculum-question")).toHaveCount(1);
-  await expect(grammar.getByRole("button", { name: "Vorige vraag", exact: true })).toBeDisabled();
-  await expect(grammar.getByRole("button", { name: "Controleer je antwoord", exact: true })).toBeDisabled();
+  await expect(grammar.getByRole("button", { name: /^Vorige vraag(?:\s|$)/ })).toBeDisabled();
+  await expect(grammar.getByRole("button", { name: /^Controleer je antwoord(?:\s|$)/ })).toBeDisabled();
   const choice = grammar.locator(`input[name="q-${first.id}"]`).nth(first.answer_index);
   await choice.check();
-  await grammar.getByRole("button", { name: "Controleer je antwoord", exact: true }).click();
+  await grammar.getByRole("button", { name: /^Controleer je antwoord(?:\s|$)/ }).click();
   await expect(grammar.locator(".practice-correct")).toContainText("Goed gedaan.");
-  await grammar.getByRole("button", { name: "Volgende vraag", exact: true }).click();
-  await expect(grammar.locator(".grammar-position")).toHaveText("Vraag 2 van 10");
+  await grammar.getByRole("button", { name: /^Volgende vraag(?:\s|$)/ }).click();
+  await expect(grammar.locator(".grammar-position")).toContainText("Vraag 2 van 10");
   await expect(grammar.locator(`input[name="q-${first.id}"]`)).toHaveCount(0);
   await expect(grammar.locator(`input[name="q-${second.id}"]`).first()).toBeVisible();
   await expect(grammar.locator(".practice-correct")).toHaveCount(0);
-  await grammar.getByRole("button", { name: "Vorige vraag", exact: true }).click();
+  await grammar.getByRole("button", { name: /^Vorige vraag(?:\s|$)/ }).click();
   await expect(choice).toBeChecked();
   await expect(grammar.locator(".practice-correct")).toContainText("Goed gedaan.");
-  await grammar.getByRole("button", { name: "Volgende vraag", exact: true }).click();
-  await grammar.getByRole("button", { name: "Volgend onderwerp", exact: true }).click();
-  await expect(grammar.locator(".grammar-position")).toHaveText("Vraag 1 van 10");
+  await grammar.getByRole("button", { name: /^Volgende vraag(?:\s|$)/ }).click();
+  await grammar.getByRole("button", { name: /^Volgend onderwerp(?:\s|$)/ }).click();
+  await expect(grammar.locator(".grammar-position")).toContainText("Vraag 1 van 10");
   await expect(grammar.locator(".curriculum-question")).toHaveCount(1);
-  await expect(grammar.getByRole("button", { name: "Vorige vraag", exact: true })).toBeDisabled();
+  await expect(grammar.getByRole("button", { name: /^Vorige vraag(?:\s|$)/ })).toBeDisabled();
 });
 
 test("the level directory exposes every activity directly and opens pre-A2 stories", async ({ page }) => {
@@ -153,13 +153,52 @@ test("the level directory exposes every activity directly and opens pre-A2 stori
       `/learn/pre-a2?${query}`,
     );
   }
-  await target.getByRole("link", { name: "Verhalen", exact: true }).click();
+  await target.getByRole("link", { name: /^Verhalen(?:\s|$)/ }).click();
   await expect(page).toHaveURL(/\/learn\/pre-a2\?section=stories$/);
   await expect(page.locator("#workspace-stage")).toHaveValue("pre-a2");
   await expect(
     page
       .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-      .getByRole("button", { name: "Verhalen", exact: true }),
+      .getByRole("button", { name: /^Verhalen(?:\s|$)/ }),
   ).toHaveAttribute("aria-current", "step");
   await expect(page.locator(".story-tile").first()).toBeVisible();
+});
+
+test("320px level cards keep translated counts and skill labels apart", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto("/leerpad");
+  await expect(page.locator("#directory-stage")).toBeVisible();
+  await expect(page.locator("#directory-stage option")).toHaveCount(12);
+  const target = page
+    .getByTestId("curriculum-path")
+    .locator(":scope > li")
+    .filter({
+      has: page.locator(".stage-level").filter({ hasText: /^C2$/ }),
+    });
+  await expect(target).toHaveCount(1);
+  await target.scrollIntoViewIfNeeded();
+  await expect(target.locator(".coverage-summary dt")).toHaveCount(3);
+  await expect
+    .poll(async () =>
+      target.evaluate((card) => {
+        const problems: string[] = [];
+        for (const element of card.querySelectorAll<HTMLElement>(
+          ".coverage-summary dt, .coverage-summary dd, .stage-activity-grid a",
+        )) {
+          if (element.scrollWidth > element.clientWidth + 1)
+            problems.push(`overflow: ${element.textContent}`);
+        }
+        for (const link of card.querySelectorAll<HTMLElement>(".stage-activity-grid a")) {
+          const children = [...link.children]
+            .map((child) => child.getBoundingClientRect())
+            .filter((box) => box.width > 0);
+          for (let i = 1; i < children.length; i += 1) {
+            if (children[i - 1].right > children[i].left + 1) problems.push(`overlap: ${link.textContent}`);
+          }
+        }
+        return problems;
+      }),
+    )
+    .toEqual([]);
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
