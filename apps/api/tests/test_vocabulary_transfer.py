@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 import shutil
 from copy import deepcopy
 
@@ -10,12 +11,13 @@ import pytest
 from pydantic import ValidationError
 
 from dlp.config import CONTENT_DIR
-from dlp.domains.curriculum import library, word_usage
+from dlp.domains.curriculum import library, supplements, word_usage
 from dlp.domains.curriculum.schemas import STAGE_IDS
 
 
 def source_data(stage="pre-a1"):
-    return json.loads((CONTENT_DIR / "library" / f"{stage}.json").read_text(encoding="utf-8"))
+    data = json.loads((CONTENT_DIR / "library" / f"{stage}.json").read_text(encoding="utf-8"))
+    return supplements.merge_bank(data, CONTENT_DIR, "library")
 
 
 def pack_data(stage="pre-a1"):
@@ -59,8 +61,9 @@ def test_noun_forms_are_explicit_and_verb_forms_are_complete_localized_examples(
     intermediate = word_usage.enrich(source_data("a2"), CONTENT_DIR)
     verb = next(word for word in intermediate["vocabulary"] if word["term"] == "terugbellen")
     assert verb["article"] is None and verb["plural"] is None
-    assert {context["structure"] for context in verb["contexts"]} == {"past", "future", "modal"}
-    assert any(form["text"]["nl"] == "Ik heb je teruggebeld, maar je nam niet op." for form in verb["forms"])
+    assert {context["structure"] for context in verb["contexts"]} == {"present", "past", "future"}
+    assert any("belde" in form["text"]["nl"] and "terug" in form["text"]["nl"]
+               for form in verb["forms"] if form["label"]["nl"] == "Verleden tijd")
     assert all(set(form["text"]) == {"nl", "en", "fa"} for form in verb["forms"])
 
 
@@ -128,6 +131,22 @@ def test_pack_cache_does_not_return_a_mutable_result_to_the_next_request(tmp_pat
     assert word["contexts"][0]["sentence"]["nl"] != "Changed by caller"
 
 
+def test_usage_cache_and_its_outer_stamp_agree_when_mtime_is_preserved(tmp_path):
+    data = pack_data()
+    path = write_pack(tmp_path, data)
+    original_stat = path.stat()
+    before = word_usage.stamp(tmp_path, "pre-a1")
+    word_id = data["entries"][0]["word_id"]
+    word_usage.enrich(source_data(), tmp_path)
+    data["entries"][0]["contexts"][0]["setting"]["nl"] = "Een gewijzigde en langere cachetestcontext"
+    write_pack(tmp_path, data)
+    os.utime(path, ns=(original_stat.st_atime_ns, original_stat.st_mtime_ns))
+    assert word_usage.stamp(tmp_path, "pre-a1") != before
+    updated = word_usage.enrich(source_data(), tmp_path)
+    word = next(word for word in updated["vocabulary"] if word["id"] == word_id)
+    assert word["contexts"][0]["setting"]["nl"] == "Een gewijzigde en langere cachetestcontext"
+
+
 def test_published_library_and_its_story_words_expose_the_same_authored_contexts():
     bank = library.library_for("pre-a1")
     word = next(item for item in bank.vocabulary if item.term == "de naam")
@@ -148,6 +167,13 @@ def test_authored_pack_builder_reproduces_published_bytes_without_mutating_sourc
     directory.mkdir(parents=True)
     for stage in STAGE_IDS:
         shutil.copyfile(CONTENT_DIR / "library" / f"{stage}.json", directory / f"{stage}.json")
+    for folder in ("source-lessons", "learning-units"):
+        shutil.copytree(CONTENT_DIR / folder, tmp_path / "content" / folder)
+    shutil.copytree(CONTENT_DIR.parent / "scripts/content_build/expansion",
+                    tmp_path / "scripts/content_build/expansion")
+    batches = CONTENT_DIR.parent / "scripts/content_build/expansion-stories"
+    if batches.exists():
+        shutil.copytree(batches, tmp_path / "scripts/content_build/expansion-stories")
     result = module.build(tmp_path)
     assert set(result) == set(STAGE_IDS)
     for stage in STAGE_IDS:

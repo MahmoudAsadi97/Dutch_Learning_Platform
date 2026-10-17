@@ -34,14 +34,9 @@ export const storyLearningCopy = {
     fa: "داستان‌های تازه را کشف کن",
   },
   authoredCount: {
-    nl: "{count} nieuwe verhalen met korte regels en verbonden oefeningen",
-    en: "{count} new stories with short lines and connected practice",
-    fa: "{count} داستان تازه با سطرهای کوتاه و تمرین‌های مرتبط",
-  },
-  wordsAuthored: {
-    nl: "Woorden uit de nieuwe verhalen",
-    en: "Words from the new stories",
-    fa: "واژه‌های داستان‌های تازه",
+    nl: "{count} nieuwe verhalen met korte regels en gebruiksoefeningen",
+    en: "{count} new stories with explicit lines and language-use practice",
+    fa: "{count} داستان تازه با سطرهای مشخص و تمرین کاربرد زبان",
   },
   practiseAuthored: { nl: "Oefen met een verhaal", en: "Practise with a story", fa: "با یک داستان تمرین کن" },
   "pre-a1": {
@@ -145,6 +140,22 @@ export const storyLearningCopy = {
   adverb: { nl: "Bijwoord", en: "Adverb", fa: "قید" },
   expression: { nl: "Uitdrukking", en: "Expression", fa: "عبارت" },
   other: { nl: "Woord of woordgroep", en: "Word or phrase", fa: "واژه یا عبارت" },
+  productiveCore: {
+    nl: "Oefen de 150 kernwoorden",
+    en: "Practise the 150 core words",
+    fa: "۱۵۰ واژهٔ اصلی را تمرین کن",
+  },
+  coreTitle: {
+    nl: "150 woorden om zelf te gebruiken",
+    en: "150 words to use yourself",
+    fa: "۱۵۰ واژه برای استفادهٔ خودت",
+  },
+  allWords: { nl: "Bekijk alle woordkaarten", en: "View all word cards", fa: "همهٔ کارت‌های واژگان را ببین" },
+  coreExplanation: {
+    nl: "De kernwoorden hebben elk drie voorbeelden in verschillende situaties. Leer ze in kleine rondes en maak daarna je eigen zin. De andere kaarten blijven beschikbaar.",
+    en: "Each core word has three examples in different situations. Learn them in small rounds, then make your own sentence. The other cards remain available.",
+    fa: "هر واژهٔ اصلی سه مثال در موقعیت‌های متفاوت دارد. آن‌ها را در نوبت‌های کوتاه یاد بگیر و سپس جملهٔ خودت را بساز. کارت‌های دیگر هم در دسترس‌اند.",
+  },
   wordContext: {
     nl: "Gebruik {term} in een situatie",
     en: "Use {term} in a situation",

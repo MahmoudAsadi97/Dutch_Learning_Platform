@@ -8,17 +8,19 @@ from pathlib import Path
 
 from dlp.domains.curriculum.schemas import STAGE_IDS, Localized, Question
 
+DIRECTORIES = ("source-lessons", "learning-units", "reading-library")
+
 
 def stamp(root: Path, stage_id: str) -> int:
     if stage_id not in STAGE_IDS:
         raise ValueError("supplement has an unknown learning stage")
-    paths = [root / directory / f"{stage_id}.json" for directory in ("source-lessons", "learning-units")]
+    paths = [root / directory / f"{stage_id}.json" for directory in DIRECTORIES]
     versions = tuple((path.stat().st_mtime_ns, path.stat().st_size) if path.exists() else (0, 0) for path in paths)
     return hash(versions) if any(modified for modified, _ in versions) else 0
 
 
-@lru_cache(maxsize=32)
-def _read(path: str, modified: int) -> dict:
+@lru_cache(maxsize=64)
+def _read(path: str, version: tuple[int, int]) -> dict:
     # Import existing activity models only when loading: library/topics also use this
     # module, so module-level imports would create a circular dependency.
     from dlp.domains.curriculum.library import LibraryStory, LibraryWord
@@ -99,10 +101,11 @@ def load(root: Path, stage_id: str) -> dict:
     result = {key: [] for key in ("vocabulary", "stories", "topics", "grammar_extensions")}
     if stage_id not in STAGE_IDS:
         raise ValueError("supplement has an unknown learning stage")
-    for directory in ("source-lessons", "learning-units"):
+    for directory in DIRECTORIES:
         path = root / directory / f"{stage_id}.json"
         if path.exists():
-            data = _read(str(path), path.stat().st_mtime_ns)
+            stat = path.stat()
+            data = _read(str(path), (stat.st_mtime_ns, stat.st_size))
             for key in result:
                 result[key].extend(deepcopy(data[key]))
     return result
@@ -115,7 +118,7 @@ def merge_bank(data: dict, root: Path, kind: str) -> dict:
 
 
 def curriculum_stamp(root: Path) -> tuple[tuple[str, int], ...]:
-    return tuple((p.stem, p.stat().st_mtime_ns) for directory in ("source-lessons", "learning-units")
+    return tuple((p.stem, hash((p.stat().st_mtime_ns, p.stat().st_size))) for directory in DIRECTORIES
                  for p in sorted((root / directory).glob("*.json")))
 
 

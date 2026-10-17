@@ -1,0 +1,3209 @@
+{
+  "schema_version": 1,
+  "stage_id": "c1",
+  "review_status": "unreviewed",
+  "vocabulary": [
+    {
+      "id": "c1-core-v001",
+      "term": "nuanceren",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Een uitspraak verfijnen door verschillen of voorbehouden te benoemen.",
+        "en": "Refine a statement by expressing distinctions or reservations.",
+        "fa": "با بیان تفاوت‌ها یا ملاحظات، گفته‌ای را دقیق‌تر کردن."
+      },
+      "example": {
+        "nl": "Zij wil haar uitspraak nuanceren zonder de ervaring van haar collega te ontkennen.",
+        "en": "She wants to qualify her statement without denying her colleague's experience.",
+        "fa": "او می‌خواهد گفته‌اش را دقیق‌تر کند، بی‌آنکه تجربه همکارش را انکار کند."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v002",
+      "term": "betwisten",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Aangeven dat men de juistheid of geldigheid van iets niet aanvaardt.",
+        "en": "Dispute the correctness or validity of something.",
+        "fa": "درستی یا اعتبار چیزی را مورد اعتراض قرار دادن."
+      },
+      "example": {
+        "nl": "Bewoners mogen de berekening betwisten zonder zelf al een volledig alternatief te hebben.",
+        "en": "Residents may dispute the calculation without already having a complete alternative.",
+        "fa": "ساکنان می‌توانند محاسبه را به چالش بکشند، بی‌آنکه از پیش جایگزینی کامل داشته باشند."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v003",
+      "term": "onderbouwen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Met controleerbare redenen of gegevens ondersteunen.",
+        "en": "Support with verifiable reasons or data.",
+        "fa": "با دلیل‌ها یا داده‌های بررسی‌پذیر پشتیبانی کردن."
+      },
+      "example": {
+        "nl": "We moeten de conclusie onderbouwen met meer dan enkele opvallende antwoorden.",
+        "en": "We must support the conclusion with more than a few striking responses.",
+        "fa": "باید نتیجه را با چیزی بیش از چند پاسخ چشمگیر پشتیبانی کنیم."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v004",
+      "term": "afwegen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Verschillende belangen of gevolgen zorgvuldig tegen elkaar beoordelen.",
+        "en": "Carefully weigh different interests or consequences.",
+        "fa": "منافع یا پیامدهای گوناگون را با دقت سنجیدن."
+      },
+      "example": {
+        "nl": "We moeten veiligheid afwegen tegen de vrijheid die zij zelf belangrijk vindt.",
+        "en": "We must weigh safety against the freedom she herself values.",
+        "fa": "باید ایمنی را در برابر آزادی‌ای بسنجیم که خودش ارزشمند می‌داند."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v005",
+      "term": "erkennen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Als werkelijk, geldig of gerechtvaardigd aanvaarden.",
+        "en": "Acknowledge as real, valid or justified.",
+        "fa": "واقعی، معتبر یا موجه دانستن."
+      },
+      "example": {
+        "nl": "De leiding moet erkennen dat de fout ook door onduidelijke instructies ontstond.",
+        "en": "Management must acknowledge that unclear instructions also contributed to the error.",
+        "fa": "مدیریت باید بپذیرد که دستورهای نامشخص نیز در خطا نقش داشتند."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v006",
+      "term": "voorbehouden",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Iets uitdrukkelijk behouden voor een later oordeel of een bepaalde persoon.",
+        "en": "Explicitly reserve something for a later judgment or a particular person.",
+        "fa": "چیزی را صریحاً برای داوری بعدی یا شخصی معین محفوظ نگه داشتن."
+      },
+      "example": {
+        "nl": "Ik wil mij het recht voorbehouden om pas te oordelen nadat de betrokken bewoners gehoord zijn.",
+        "en": "I want to reserve the right to judge only after the residents involved have been heard.",
+        "fa": "می‌خواهم این حق را برای خود محفوظ نگه دارم که تنها پس از شنیدن سخن ساکنان درگیر داوری کنم."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v007",
+      "term": "onderschrijven",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Uitdrukkelijk instemmen met een standpunt of beginsel.",
+        "en": "Explicitly endorse a position or principle.",
+        "fa": "با موضع یا اصلی صریحاً موافقت کردن."
+      },
+      "example": {
+        "nl": "Ik kan het doel onderschrijven zonder akkoord te gaan met deze werkwijze.",
+        "en": "I can endorse the aim without agreeing with this method.",
+        "fa": "می‌توانم هدف را تأیید کنم، بی‌آنکه با این روش موافق باشم."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v008",
+      "term": "tegenspreken",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Zeggen dat een uitspraak of bewering niet klopt.",
+        "en": "State that a statement or claim is incorrect.",
+        "fa": "گفتن اینکه گفته یا ادعایی درست نیست."
+      },
+      "example": {
+        "nl": "Een junior moet de voorzitter kunnen tegenspreken zonder gevolgen voor zijn beoordeling.",
+        "en": "A junior employee must be able to contradict the chair without consequences for his appraisal.",
+        "fa": "کارمند تازه‌کار باید بتواند با رئیس مخالفت کند، بی‌آنکه ارزیابی‌اش آسیب ببیند."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v009",
+      "term": "verduidelijken",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Begrijpelijker of preciezer maken.",
+        "en": "Make clearer or more precise.",
+        "fa": "روشن‌تر یا دقیق‌تر کردن."
+      },
+      "example": {
+        "nl": "Kunt u verduidelijken op welke beslissing deze brief precies betrekking heeft?",
+        "en": "Could you clarify exactly which decision this letter concerns?",
+        "fa": "می‌توانید روشن کنید این نامه دقیقاً به کدام تصمیم مربوط است؟"
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v010",
+      "term": "verantwoorden",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Uitleggen op welke gronden een keuze of handeling berust.",
+        "en": "Explain the grounds for a choice or action.",
+        "fa": "دلیل‌های یک انتخاب یا اقدام را توضیح دادن."
+      },
+      "example": {
+        "nl": "Het bestuur moet verantwoorden waarom het deze groep zwaarder belast.",
+        "en": "The board must explain why it places a heavier burden on this group.",
+        "fa": "هیئت باید توضیح دهد چرا بار سنگین‌تری بر این گروه می‌گذارد."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v011",
+      "term": "afstemmen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Zo op elkaar aanpassen dat behoeften of werkzaamheden beter aansluiten.",
+        "en": "Coordinate or adapt things so needs or activities fit better.",
+        "fa": "چیزها را برای هماهنگی بهتر نیازها یا کارها با یکدیگر تنظیم کردن."
+      },
+      "example": {
+        "nl": "We moeten de afspraken op haar werkuren afstemmen, niet omgekeerd.",
+        "en": "We must adapt the appointments to her working hours, not the reverse.",
+        "fa": "باید نوبت‌ها را با ساعت کاری او هماهنگ کنیم، نه برعکس."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v012",
+      "term": "bijsturen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Een lopende aanpak aanpassen op grond van nieuwe informatie.",
+        "en": "Adjust an ongoing approach in light of new information.",
+        "fa": "روشی در حال اجرا را بر پایه اطلاعات تازه اصلاح کردن."
+      },
+      "example": {
+        "nl": "We kunnen de aanpak bijsturen zonder de ongunstige resultaten weg te laten.",
+        "en": "We can adjust the approach without omitting unfavourable results.",
+        "fa": "می‌توانیم روش را اصلاح کنیم، بی‌آنکه نتیجه‌های نامطلوب را حذف کنیم."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v013",
+      "term": "waarborgen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Ervoor zorgen dat een recht, kwaliteit of mogelijkheid beschermd blijft.",
+        "en": "Ensure that a right, quality or opportunity remains protected.",
+        "fa": "محفوظ ماندن یک حق، کیفیت یا امکان را تضمین کردن."
+      },
+      "example": {
+        "nl": "We moeten waarborgen dat een papieren aanvraag even zorgvuldig wordt behandeld.",
+        "en": "We must ensure that a paper application is treated with equal care.",
+        "fa": "باید تضمین کنیم درخواست کاغذی با همان دقت بررسی شود."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v014",
+      "term": "belemmeren",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "De voortgang of mogelijkheid van iets hinderen.",
+        "en": "Hinder the progress or possibility of something.",
+        "fa": "پیشرفت یا امکان چیزی را مختل کردن."
+      },
+      "example": {
+        "nl": "Een ingewikkelde inschrijving mag deelname niet belemmeren.",
+        "en": "A complicated registration process must not hinder participation.",
+        "fa": "ثبت‌نام پیچیده نباید مانع مشارکت شود."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v015",
+      "term": "veronderstellen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Iets als uitgangspunt aannemen zonder dat het vaststaat.",
+        "en": "Assume something as a starting point without its being established.",
+        "fa": "چیزی اثبات‌نشده را مبنا فرض کردن."
+      },
+      "example": {
+        "nl": "We mogen niet veronderstellen dat zwijgen betekent dat iemand akkoord gaat.",
+        "en": "We must not assume that silence means agreement.",
+        "fa": "نباید فرض کنیم سکوت به معنای موافقت است."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v016",
+      "term": "weerleggen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Met argumenten of bewijs aantonen dat een bewering niet klopt.",
+        "en": "Show through arguments or evidence that a claim is incorrect.",
+        "fa": "با استدلال یا مدرک نادرستی ادعایی را نشان دادن."
+      },
+      "example": {
+        "nl": "Eén tegenvoorbeeld kan de algemene bewering weerleggen, maar verklaart het verschil nog niet.",
+        "en": "One counterexample can refute the general claim but does not yet explain the difference.",
+        "fa": "یک مثال نقض می‌تواند ادعای عمومی را رد کند، اما هنوز تفاوت را توضیح نمی‌دهد."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v017",
+      "term": "verzwijgen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Bewust niet vertellen wat voor anderen relevant is.",
+        "en": "Deliberately withhold information relevant to others.",
+        "fa": "عمداً نگفتن اطلاعاتی که برای دیگران مهم است."
+      },
+      "example": {
+        "nl": "We mogen de meerkost niet verzwijgen om de stemming eenvoudiger te maken.",
+        "en": "We must not conceal the additional cost to make the vote easier.",
+        "fa": "نباید برای آسان‌تر شدن رأی‌گیری، هزینه اضافی را پنهان کنیم."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v018",
+      "term": "toeschrijven",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Een kenmerk, oorzaak of uitspraak aan iemand of iets verbinden.",
+        "en": "Attribute a characteristic, cause or statement to someone or something.",
+        "fa": "ویژگی، علت یا گفته‌ای را به کسی یا چیزی نسبت دادن."
+      },
+      "example": {
+        "nl": "We kunnen het verschil niet uitsluitend aan de opleiding toeschrijven.",
+        "en": "We cannot attribute the difference solely to the training.",
+        "fa": "نمی‌توانیم تفاوت را تنها به آموزش نسبت دهیم."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v019",
+      "term": "relativeren",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Iets in verhouding tot andere feiten of omstandigheden plaatsen.",
+        "en": "Put something in perspective alongside other facts or circumstances.",
+        "fa": "چیزی را در نسبت با واقعیت‌ها یا شرایط دیگر دیدن."
+      },
+      "example": {
+        "nl": "Je kunt een fout relativeren zonder de gevolgen voor de bezoeker te ontkennen.",
+        "en": "You can put a mistake in perspective without denying its consequences for the visitor.",
+        "fa": "می‌توانی خطا را در اندازه واقعی ببینی، بی‌آنکه پیامدش برای مراجعه‌کننده را انکار کنی."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v020",
+      "term": "inwilligen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Een verzoek toestaan of eraan tegemoetkomen.",
+        "en": "Grant or comply with a request.",
+        "fa": "درخواستی را پذیرفتن یا برآورده کردن."
+      },
+      "example": {
+        "nl": "We kunnen het verzoek inwilligen zonder de gegevens aan andere diensten door te geven.",
+        "en": "We can grant the request without passing the data to other services.",
+        "fa": "می‌توانیم درخواست را بپذیریم، بی‌آنکه داده‌ها را به خدمات دیگر بدهیم."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v021",
+      "term": "achterhalen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Door gericht onderzoek te weten komen.",
+        "en": "Discover through targeted inquiry.",
+        "fa": "با بررسی هدفمند به چیزی پی بردن."
+      },
+      "example": {
+        "nl": "We moeten achterhalen wie de toelichting heeft geschreven voordat we haar als bron gebruiken.",
+        "en": "We must establish who wrote the explanation before using it as a source.",
+        "fa": "باید پیش از استفاده از توضیح به‌عنوان منبع، بفهمیم چه کسی آن را نوشته است."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v022",
+      "term": "blootleggen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Zichtbaar maken wat verborgen of onduidelijk was.",
+        "en": "Reveal what was hidden or unclear.",
+        "fa": "آنچه پنهان یا نامشخص بوده آشکار کردن."
+      },
+      "example": {
+        "nl": "De vergelijking kan een ongelijkheid blootleggen die in het gemiddelde verdwijnt.",
+        "en": "The comparison can reveal an inequality that disappears in the average.",
+        "fa": "مقایسه می‌تواند نابرابری‌ای را آشکار کند که در میانگین ناپدید می‌شود."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v023",
+      "term": "aanscherpen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Preciezer, duidelijker of strenger maken.",
+        "en": "Make more precise, clear or strict.",
+        "fa": "دقیق‌تر، روشن‌تر یا سخت‌گیرانه‌تر کردن."
+      },
+      "example": {
+        "nl": "We moeten de vraag aanscherpen voordat we opnieuw gegevens verzamelen.",
+        "en": "We must sharpen the question before collecting data again.",
+        "fa": "باید پیش از گردآوری دوباره داده‌ها، پرسش را دقیق‌تر کنیم."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v024",
+      "term": "opschorten",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Tijdelijk uitstellen of buiten werking stellen.",
+        "en": "Temporarily postpone or suspend.",
+        "fa": "موقتاً به تعویق انداختن یا معلق کردن."
+      },
+      "example": {
+        "nl": "We moeten de uitvoering opschorten tot de ontbrekende informatie is onderzocht.",
+        "en": "We must suspend implementation until the missing information has been examined.",
+        "fa": "باید اجرا را تا بررسی اطلاعات گمشده معلق کنیم."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v025",
+      "term": "doorgronden",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "De diepere samenhang of betekenis goed begrijpen.",
+        "en": "Understand the deeper connections or meaning.",
+        "fa": "ارتباط یا معنای عمیق‌تر را به‌خوبی فهمیدن."
+      },
+      "example": {
+        "nl": "Je hoeft niet elk woord te kennen om de redenering te doorgronden.",
+        "en": "You do not need to know every word to grasp the reasoning.",
+        "fa": "برای فهم عمیق استدلال لازم نیست هر واژه را بدانی."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v026",
+      "term": "bemiddelen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Partijen helpen om bij een geschil tot afspraken te komen.",
+        "en": "Help parties reach agreements in a dispute.",
+        "fa": "به طرف‌ها برای رسیدن به توافق در اختلاف کمک کردن."
+      },
+      "example": {
+        "nl": "Zij kan alleen bemiddelen als niemand haar al als bondgenoot opeist.",
+        "en": "She can only mediate if nobody already claims her as an ally.",
+        "fa": "او تنها زمانی می‌تواند میانجی‌گری کند که کسی از پیش او را متحد خود نداند."
+      },
+      "part_of_speech": "verb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v027",
+      "term": "terughoudend",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Voorzichtig in het uiten van een oordeel of het nemen van initiatief.",
+        "en": "Cautious in expressing judgment or taking initiative.",
+        "fa": "در بیان داوری یا اقدام محتاط."
+      },
+      "example": {
+        "nl": "De getuige is terughoudend omdat haar vorige woorden zonder overleg werden gepubliceerd.",
+        "en": "The witness is reserved because her earlier words were published without consultation.",
+        "fa": "شاهد محتاط است، چون حرف‌های قبلی‌اش بدون مشورت منتشر شده‌اند."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v028",
+      "term": "voorwaardelijk",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Afhankelijk van een uitdrukkelijke voorwaarde.",
+        "en": "Dependent on an explicit condition.",
+        "fa": "وابسته به شرطی صریح."
+      },
+      "example": {
+        "nl": "De steun is voorwaardelijk: de leden moeten eerst de volledige berekening zien.",
+        "en": "Support is conditional: members must first see the full calculation.",
+        "fa": "حمایت مشروط است: اعضا باید ابتدا محاسبه کامل را ببینند."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v029",
+      "term": "doorslaggevend",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Zo belangrijk dat het de uiteindelijke keuze bepaalt.",
+        "en": "Important enough to determine the final choice.",
+        "fa": "آن‌قدر مهم که انتخاب نهایی را تعیین کند."
+      },
+      "example": {
+        "nl": "Niet de prijs maar de veilige toegang is hier doorslaggevend.",
+        "en": "Safe access, rather than the price, is decisive here.",
+        "fa": "در اینجا دسترسی ایمن تعیین‌کننده است، نه قیمت."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v030",
+      "term": "aannemelijk",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Geloofwaardig op grond van de beschikbare informatie, zonder bewezen te zijn.",
+        "en": "Plausible given the available information, without being proven.",
+        "fa": "با توجه به اطلاعات موجود باورپذیر، بی‌آنکه ثابت شده باشد."
+      },
+      "example": {
+        "nl": "De verklaring is aannemelijk, maar we hebben nog geen onafhankelijk bewijs.",
+        "en": "The explanation is plausible, but we have no independent evidence yet.",
+        "fa": "توضیح باورپذیر است، اما هنوز مدرک مستقلی نداریم."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v031",
+      "term": "onbedoeld",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Niet als doel of bedoeling gekozen.",
+        "en": "Not intended or chosen as an aim.",
+        "fa": "ناخواسته و خارج از قصد."
+      },
+      "example": {
+        "nl": "Het effect was onbedoeld, maar de schade vraagt wel om herstel.",
+        "en": "The effect was unintended, but the harm still calls for redress.",
+        "fa": "اثر ناخواسته بود، اما آسیب همچنان نیاز به جبران دارد."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v032",
+      "term": "tegenstrijdig",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Niet tegelijk met elkaar verenigbaar.",
+        "en": "Mutually incompatible.",
+        "fa": "با یکدیگر ناسازگار."
+      },
+      "example": {
+        "nl": "De twee instructies zijn tegenstrijdig: de ene vraagt een handtekening, de andere verbiedt haar.",
+        "en": "The two instructions conflict: one requires a signature, the other forbids it.",
+        "fa": "دو دستور متناقض‌اند: یکی امضا می‌خواهد و دیگری آن را منع می‌کند."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v033",
+      "term": "billijk",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Redelijk en rechtvaardig met aandacht voor de omstandigheden.",
+        "en": "Reasonable and fair in light of the circumstances.",
+        "fa": "با توجه به شرایط معقول و منصفانه."
+      },
+      "example": {
+        "nl": "Een gelijk bedrag is niet noodzakelijk billijk voor leden met sterk verschillende inkomens.",
+        "en": "An equal amount is not necessarily fair for members with very different incomes.",
+        "fa": "مبلغ برابر لزوماً برای اعضایی با درآمدهای بسیار متفاوت منصفانه نیست."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v034",
+      "term": "eenzijdig",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Vanuit slechts één kant of perspectief bekeken of beslist.",
+        "en": "Viewed or decided from only one side or perspective.",
+        "fa": "از یک سو یا دیدگاه بررسی یا تعیین‌شده."
+      },
+      "example": {
+        "nl": "Het verslag is eenzijdig omdat alleen de organisatoren aan het woord komen.",
+        "en": "The report is one-sided because only the organisers are heard.",
+        "fa": "گزارش یک‌جانبه است، چون تنها برگزارکنندگان سخن می‌گویند."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v035",
+      "term": "genuanceerd",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Met aandacht voor relevante verschillen en voorbehouden.",
+        "en": "Attentive to relevant distinctions and reservations.",
+        "fa": "با توجه به تفاوت‌ها و ملاحظات مرتبط."
+      },
+      "example": {
+        "nl": "Het antwoord is genuanceerd, maar de kop laat alleen de felste zin zien.",
+        "en": "The answer is nuanced, but the headline shows only the strongest sentence.",
+        "fa": "پاسخ سنجیده است، اما تیتر تنها تندترین جمله را نشان می‌دهد."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v036",
+      "term": "bespreekbaar",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Zonder verboden of beschaming ter sprake te brengen.",
+        "en": "Able to be discussed without prohibition or shaming.",
+        "fa": "قابل گفت‌وگو بدون منع یا شرمسارسازی."
+      },
+      "example": {
+        "nl": "De werkdruk is pas bespreekbaar als een klacht geen teken van zwakte heet.",
+        "en": "Workload can only be discussed when a complaint is not called a sign of weakness.",
+        "fa": "فشار کار تنها زمانی قابل گفت‌وگوست که شکایت نشانه ضعف نامیده نشود."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v037",
+      "term": "onomkeerbaar",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Niet terug te draaien naar de eerdere toestand.",
+        "en": "Unable to be reversed to the earlier state.",
+        "fa": "برگشت‌ناپذیر به وضعیت پیشین."
+      },
+      "example": {
+        "nl": "Het verlies is onomkeerbaar zodra de enige opname wordt gewist.",
+        "en": "The loss is irreversible once the only recording is deleted.",
+        "fa": "به‌محض پاک شدن تنها ضبط موجود، فقدان برگشت‌ناپذیر است."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v038",
+      "term": "navolgbaar",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Zo uitgelegd dat anderen de redenering kunnen volgen.",
+        "en": "Explained so others can follow the reasoning.",
+        "fa": "چنان توضیح‌داده‌شده که دیگران بتوانند استدلال را دنبال کنند."
+      },
+      "example": {
+        "nl": "Het besluit is navolgbaar doordat ook de afgewezen alternatieven worden toegelicht.",
+        "en": "The decision is understandable because the rejected alternatives are explained too.",
+        "fa": "چون گزینه‌های ردشده نیز توضیح داده می‌شوند، می‌توان منطق تصمیم را دنبال کرد."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v039",
+      "term": "omstreden",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Onderwerp van duidelijke onenigheid of kritiek.",
+        "en": "Subject to clear disagreement or criticism.",
+        "fa": "محل اختلاف یا انتقاد آشکار."
+      },
+      "example": {
+        "nl": "De herkomst is omstreden, ook al bestaat over de ouderdom weinig twijfel.",
+        "en": "The provenance is disputed, although there is little doubt about the age.",
+        "fa": "خاستگاه محل اختلاف است، هرچند درباره قدمت تردید کمی وجود دارد."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v040",
+      "term": "wederzijds",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Van beide betrokken kanten uitgaand.",
+        "en": "Coming from both sides involved.",
+        "fa": "از سوی هر دو طرف."
+      },
+      "example": {
+        "nl": "Het wantrouwen is wederzijds, maar de gevolgen zijn niet voor beide buren gelijk.",
+        "en": "The mistrust is mutual, but the consequences are not equal for both neighbours.",
+        "fa": "بی‌اعتمادی متقابل است، اما پیامدها برای دو همسایه برابر نیست."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v041",
+      "term": "zorgvuldig",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Met voldoende aandacht voor relevante details en gevolgen.",
+        "en": "With sufficient attention to relevant details and consequences.",
+        "fa": "با توجه کافی به جزئیات و پیامدهای مرتبط."
+      },
+      "example": {
+        "nl": "De beschrijving is zorgvuldig, maar stelt niet alles met zekerheid vast.",
+        "en": "The description is careful but does not establish everything with certainty.",
+        "fa": "توصیف دقیق است، اما همه چیز را قطعی نمی‌کند."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v042",
+      "term": "toereikend",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Voldoende voor het beoogde doel of de concrete behoefte.",
+        "en": "Sufficient for the intended aim or specific need.",
+        "fa": "برای هدف مورد نظر یا نیاز مشخص کافی."
+      },
+      "example": {
+        "nl": "De hulp is niet toereikend als de mantelzorger daardoor nooit rust krijgt.",
+        "en": "Support is not sufficient if the informal caregiver never gets rest as a result.",
+        "fa": "اگر مراقب خانوادگی هیچ‌گاه استراحت نکند، کمک کافی نیست."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v043",
+      "term": "vrijblijvend",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Zonder verplichting tot deelname of vervolg.",
+        "en": "Without an obligation to participate or continue.",
+        "fa": "بدون الزام به مشارکت یا ادامه."
+      },
+      "example": {
+        "nl": "Het gesprek is vrijblijvend en heeft geen invloed op uw lopende aanvraag.",
+        "en": "The conversation is optional and has no effect on your pending application.",
+        "fa": "گفت‌وگو اختیاری است و بر درخواست جاری شما اثری ندارد."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v044",
+      "term": "kwetsbaar",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Gemakkelijk te raken of te schaden door de omstandigheden.",
+        "en": "Easily affected or harmed by circumstances.",
+        "fa": "در برابر شرایط به‌آسانی آسیب‌پذیر."
+      },
+      "example": {
+        "nl": "De getuige is kwetsbaar omdat herkenning ook haar familie kan raken.",
+        "en": "The witness is vulnerable because identification could affect her family too.",
+        "fa": "شاهد آسیب‌پذیر است، چون شناسایی ممکن است به خانواده‌اش هم آسیب برساند."
+      },
+      "part_of_speech": "adjective",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v045",
+      "term": "overigens",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Bijwoord waarmee men een aanvullende opmerking maakt.",
+        "en": "Adverb introducing an additional remark.",
+        "fa": "قیدی برای افزودن نکته‌ای تکمیلی."
+      },
+      "example": {
+        "nl": "Die afspraak geldt overigens ook voor de leiding, niet alleen voor nieuwe collega's.",
+        "en": "That arrangement applies to management too, incidentally, not just new colleagues.",
+        "fa": "ضمناً این توافق برای مدیریت هم معتبر است، نه فقط همکاران تازه."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v046",
+      "term": "kennelijk",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Blijkbaar, zoals uit de beschikbare aanwijzingen lijkt te volgen.",
+        "en": "Apparently, as the available indications suggest.",
+        "fa": "ظاهراً، چنان‌که از نشانه‌های موجود برمی‌آید."
+      },
+      "example": {
+        "nl": "Er ontbreekt kennelijk een bladzijde, want de uitleg begint midden in een zin.",
+        "en": "A page is apparently missing, because the explanation begins halfway through a sentence.",
+        "fa": "ظاهراً صفحه‌ای کم است، چون توضیح از وسط جمله شروع می‌شود."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v047",
+      "term": "vooralsnog",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Voorlopig, zolang de situatie niet verandert.",
+        "en": "For the time being, until the situation changes.",
+        "fa": "فعلاً، تا زمانی که وضعیت تغییر نکند."
+      },
+      "example": {
+        "nl": "Vooralsnog kunnen we beide verklaringen niet van elkaar onderscheiden.",
+        "en": "For the time being, we cannot distinguish between the two explanations.",
+        "fa": "فعلاً نمی‌توانیم میان دو توضیح تمایز بگذاریم."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v048",
+      "term": "desondanks",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Ondanks het eerder genoemde bezwaar of de genoemde omstandigheid.",
+        "en": "Despite the objection or circumstance just mentioned.",
+        "fa": "با وجود مانع یا شرایط گفته‌شده."
+      },
+      "example": {
+        "nl": "De bijdrage is laag; desondanks blijft ze voor enkele leden onbetaalbaar.",
+        "en": "The contribution is low; nevertheless, some members still cannot afford it.",
+        "fa": "سهم کم است؛ با این حال برای برخی اعضا همچنان پرداخت‌ناپذیر است."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v049",
+      "term": "uitdrukkelijk",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Op een duidelijke en nadrukkelijke manier.",
+        "en": "Clearly and explicitly.",
+        "fa": "به‌روشنی و با تأکید."
+      },
+      "example": {
+        "nl": "Zij vroeg uitdrukkelijk om haar stem niet online te zetten.",
+        "en": "She explicitly asked that her voice not be put online.",
+        "fa": "او صریحاً خواست صدایش در اینترنت قرار نگیرد."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v050",
+      "term": "geleidelijk",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Stap voor stap, zonder plotselinge overgang.",
+        "en": "Step by step, without an abrupt transition.",
+        "fa": "به‌تدریج، بدون گذار ناگهانی."
+      },
+      "example": {
+        "nl": "De begeleiding neemt geleidelijk af naarmate zij zelf meer keuzes overneemt.",
+        "en": "Support decreases gradually as she takes over more decisions herself.",
+        "fa": "همراهی به‌تدریج کم می‌شود، هرچه او تصمیم‌های بیشتری را خودش بر عهده می‌گیرد."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v051",
+      "term": "achteraf",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Na de gebeurtenis of beslissing waarover men spreekt.",
+        "en": "After the event or decision being discussed.",
+        "fa": "پس از رخداد یا تصمیم مورد بحث."
+      },
+      "example": {
+        "nl": "Achteraf lijkt de keuze eenvoudiger dan zij tijdens het overleg was.",
+        "en": "In retrospect, the choice seems simpler than it was during the meeting.",
+        "fa": "در نگاه پسینی، انتخاب ساده‌تر از زمان جلسه به نظر می‌رسد."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v052",
+      "term": "doorgaans",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "In de meeste gevallen, maar niet altijd.",
+        "en": "In most cases, though not always.",
+        "fa": "معمولاً، اما نه همیشه."
+      },
+      "example": {
+        "nl": "De dienst antwoordt doorgaans per brief, tenzij de bezoeker iets anders vraagt.",
+        "en": "The service usually replies by letter unless the visitor requests otherwise.",
+        "fa": "این خدمت معمولاً با نامه پاسخ می‌دهد، مگر مراجعه‌کننده روش دیگری بخواهد."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v053",
+      "term": "hoogstens",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Niet meer dan de genoemde grens.",
+        "en": "No more than the stated limit.",
+        "fa": "حداکثر تا حد گفته‌شده."
+      },
+      "example": {
+        "nl": "De gegevens laten hoogstens een voorzichtig vermoeden toe.",
+        "en": "The data allow at most a cautious suspicion.",
+        "fa": "داده‌ها حداکثر اجازه گمانی محتاطانه می‌دهند."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v054",
+      "term": "nauwelijks",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Bijna niet of slechts in zeer geringe mate.",
+        "en": "Hardly or only to a very small extent.",
+        "fa": "تقریباً هیچ یا به میزان بسیار اندک."
+      },
+      "example": {
+        "nl": "De samenvatting laat nauwelijks zien hoeveel twijfel er tijdens het overleg was.",
+        "en": "The summary barely shows how much doubt there was during the meeting.",
+        "fa": "خلاصه به‌سختی نشان می‌دهد چقدر در جلسه تردید وجود داشته است."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v055",
+      "term": "wellicht",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Misschien; als een mogelijkheid, zonder zekerheid.",
+        "en": "Perhaps; as a possibility, without certainty.",
+        "fa": "شاید؛ به‌عنوان امکان، بدون قطعیت."
+      },
+      "example": {
+        "nl": "Wellicht hangt het verschil samen met wie zich vrijwillig aanmeldde.",
+        "en": "Perhaps the difference is related to who volunteered.",
+        "fa": "شاید تفاوت به کسانی مربوط باشد که داوطلبانه ثبت‌نام کردند."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v056",
+      "term": "doelbewust",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Met een bewust gekozen bedoeling.",
+        "en": "With a consciously chosen intention.",
+        "fa": "با قصد آگاهانه."
+      },
+      "example": {
+        "nl": "De maker laat doelbewust een lege plaats voor verhalen die nog niet verteld zijn.",
+        "en": "The artist deliberately leaves an empty space for stories not yet told.",
+        "fa": "هنرمند آگاهانه جایی خالی برای روایت‌های هنوز گفته‌نشده می‌گذارد."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v057",
+      "term": "onderling",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Tussen de betrokken personen of zaken zelf.",
+        "en": "Among the people or things involved.",
+        "fa": "میان خود افراد یا چیزهای درگیر."
+      },
+      "example": {
+        "nl": "De afdelingen spreken onderling af wie de bezoeker op de hoogte houdt.",
+        "en": "The departments agree among themselves who will keep the visitor informed.",
+        "fa": "بخش‌ها میان خود توافق می‌کنند چه کسی مراجعه‌کننده را باخبر نگه دارد."
+      },
+      "part_of_speech": "adverb",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v058",
+      "term": "met dien verstande dat",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Formele toevoeging die een voorwaarde of beperking aankondigt.",
+        "en": "Formal addition introducing a condition or qualification.",
+        "fa": "عبارت رسمی برای بیان شرط یا محدودیت."
+      },
+      "example": {
+        "nl": "We stemmen in, met dien verstande dat de maker vooraf elke wijziging ziet.",
+        "en": "We agree, on the understanding that the artist sees every change beforehand.",
+        "fa": "موافقت می‌کنیم، با این شرط که هنرمند هر تغییر را از پیش ببیند."
+      },
+      "part_of_speech": "expression",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v059",
+      "term": "op gespannen voet staan met",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Moeilijk verenigbaar zijn met iets anders.",
+        "en": "Be in tension with something else.",
+        "fa": "با چیز دیگری به‌سختی سازگار بودن."
+      },
+      "example": {
+        "nl": "De snelle uitvoering kan op gespannen voet staan met een zorgvuldige raadpleging.",
+        "en": "Rapid implementation may be in tension with careful consultation.",
+        "fa": "اجرای سریع ممکن است با مشورت دقیق ناسازگار باشد."
+      },
+      "part_of_speech": "expression",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v060",
+      "term": "voor lief nemen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Een nadeel bewust aanvaarden omdat iets anders zwaarder weegt.",
+        "en": "Knowingly accept a disadvantage because something else matters more.",
+        "fa": "آگاهانه پذیرفتن زیان، چون چیز دیگری مهم‌تر است."
+      },
+      "example": {
+        "nl": "Bewoners willen tijdelijke hinder voor lief nemen als de uiteindelijke winst eerlijk wordt verdeeld.",
+        "en": "Residents are willing to accept temporary inconvenience if the eventual benefit is shared fairly.",
+        "fa": "اگر سود نهایی منصفانه تقسیم شود، ساکنان حاضرند مزاحمت موقت را بپذیرند."
+      },
+      "part_of_speech": "expression",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v061",
+      "term": "in het midden laten",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Bewust niet vastleggen welk antwoord of oordeel juist is.",
+        "en": "Deliberately leave undecided which answer or judgment is correct.",
+        "fa": "عمداً تعیین نکردن اینکه کدام پاسخ یا داوری درست است."
+      },
+      "example": {
+        "nl": "We kunnen in het midden laten wie zich vergist zonder beide herinneringen gelijk te verklaren.",
+        "en": "We can leave it undecided who is mistaken without declaring both memories equally accurate.",
+        "fa": "می‌توانیم تعیین نکنیم چه کسی اشتباه می‌کند، بی‌آنکه هر دو خاطره را به یک اندازه دقیق بدانیم."
+      },
+      "part_of_speech": "expression",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v062",
+      "term": "onder voorbehoud",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Met een uitdrukkelijke beperking; nog niet definitief.",
+        "en": "With an explicit reservation; not yet final.",
+        "fa": "با ملاحظه‌ای صریح؛ هنوز نهایی‌نشده."
+      },
+      "example": {
+        "nl": "Wij geven onder voorbehoud toestemming, omdat de verzekering nog bevestigd moet worden.",
+        "en": "We give provisional permission, because the insurance still needs confirmation.",
+        "fa": "با قید احتیاط اجازه می‌دهیم، چون بیمه هنوز باید تأیید شود."
+      },
+      "part_of_speech": "expression",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v063",
+      "term": "de doorslag geven",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "De uiteindelijke keuze of uitkomst bepalen.",
+        "en": "Determine the final choice or outcome.",
+        "fa": "انتخاب یا نتیجه نهایی را تعیین کردن."
+      },
+      "example": {
+        "nl": "De ervaring van de bewoners moet hier de doorslag geven, niet de snelste presentatie.",
+        "en": "Residents' experience should be decisive here, not the quickest presentation.",
+        "fa": "اینجا تجربه ساکنان باید تعیین‌کننده باشد، نه سریع‌ترین ارائه."
+      },
+      "part_of_speech": "expression",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v064",
+      "term": "ter zake doen",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Relevant zijn voor de kwestie die besproken wordt.",
+        "en": "Be relevant to the matter under discussion.",
+        "fa": "به موضوع مورد بحث مربوط بودن."
+      },
+      "example": {
+        "nl": "Zijn afkomst kan hier niet ter zake doen, want de vraag gaat over de gebruikte methode.",
+        "en": "His origin cannot be relevant here, because the question concerns the method used.",
+        "fa": "اصل‌ونسب او نمی‌تواند اینجا مربوط باشد، چون پرسش درباره روش استفاده‌شده است."
+      },
+      "part_of_speech": "expression",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    },
+    {
+      "id": "c1-core-v065",
+      "term": "op het spel staan",
+      "topic": {
+        "nl": "Standpunt en verantwoordelijkheid",
+        "en": "Position and responsibility",
+        "fa": "موضع و مسئولیت"
+      },
+      "meaning": {
+        "nl": "Gevaar lopen verloren te gaan of geschaad te worden.",
+        "en": "Be at risk of being lost or harmed.",
+        "fa": "در خطر از دست رفتن یا آسیب دیدن بودن."
+      },
+      "example": {
+        "nl": "Haar vertrouwen kan op het spel staan als we de afspraak achteraf verruimen.",
+        "en": "Her trust may be at stake if we broaden the agreement afterwards.",
+        "fa": "اگر بعداً توافق را گسترده کنیم، اعتماد او ممکن است به خطر بیفتد."
+      },
+      "part_of_speech": "expression",
+      "article": null,
+      "plural": null,
+      "forms": [],
+      "contexts": [],
+      "productive_core": false,
+      "core_order": null
+    }
+  ],
+  "stories": [
+    {
+      "id": "c1-s-reading-asterisk-on-poster",
+      "title": {
+        "nl": "Het sterretje op de affiche",
+        "en": "The asterisk on the poster",
+        "fa": "ستاره روی پوستر"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Drama",
+        "en": "Drama",
+        "fa": "درام"
+      },
+      "paragraphs": [
+        {
+          "nl": "Op de affiche voor het nieuwe buurtforum stond dat alle werkgroepen het plan steunden. Toen Leen de proefdruk zag, wilde ze dat woord «alle» betwisten. Haar groep had immers alleen steun uitgesproken voor een versie met een avondvergadering en een papieren antwoordmogelijkheid. In de notulen stond dat akkoord nog correct als voorwaardelijk omschreven. De ontwerper stelde een sterretje voor, omdat de drukker bijna klaarstond.",
+          "en": "The poster for the new neighbourhood forum said that all working groups supported the plan. When Leen saw the proof, she wanted to challenge the word “all”. Her group had only supported a version with an evening meeting and a paper response option. The minutes still correctly described that agreement as conditional. The designer suggested an asterisk because the printer was almost ready.",
+          "fa": "روی پوستر نشست تازه محله نوشته بود همه گروه‌های کاری از طرح حمایت می‌کنند. وقتی لین نمونه چاپ را دید، خواست به واژه «همه» اعتراض کند. گروه او فقط از نسخه‌ای حمایت کرده بود که جلسه عصر و امکان پاسخ کاغذی داشت. صورت‌جلسه هنوز به‌درستی آن موافقت را مشروط توصیف می‌کرد. طراح ستاره کوچکی پیشنهاد کرد، چون چاپخانه تقریباً آماده بود."
+        },
+        {
+          "nl": "Leen vond dat je een openbare toezegging niet pas achteraf mocht nuanceren. Ze hield de dozen met nog onbedrukte enveloppen bij zich en vroeg om één extra tekstregel. «Wij steunen het forum, met dien verstande dat beide deelnamemogelijkheden behouden blijven», schreef ze. De voorzitter vond de zin minder feestelijk, maar gaf toestemming voor de wijziging. De affiche verscheen een dag later; voor het eerst wist iedereen precies wat er was beloofd.",
+          "en": "Leen felt that a public commitment should not be qualified only afterwards. She kept the boxes of still unprinted envelopes with her and asked for one extra line of text. “We support the forum, provided that both ways of participating are retained,” she wrote. The chair found the sentence less celebratory but approved the change. The poster appeared a day later; for the first time, everyone knew exactly what had been promised.",
+          "fa": "لین معتقد بود نباید تعهد عمومی را تازه بعداً با توضیح محدود کرد. او جعبه‌های پاکت هنوز چاپ‌نشده را پیش خود نگه داشت و یک سطر متن بیشتر خواست. نوشت: «از نشست حمایت می‌کنیم، با این شرط که هر دو راه مشارکت حفظ شوند.» رئیس جمله را کمتر جشن‌گونه دانست، اما با تغییر موافقت کرد. پوستر یک روز دیرتر منتشر شد؛ برای نخستین بار همه دقیقاً می‌دانستند چه وعده‌ای داده شده است."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Op de affiche voor het nieuwe buurtforum stond dat alle werkgroepen het plan steunden.",
+          "en": "The poster for the new neighbourhood forum said that all working groups supported the plan.",
+          "fa": "روی پوستر نشست تازه محله نوشته بود همه گروه‌های کاری از طرح حمایت می‌کنند."
+        },
+        {
+          "nl": "Toen Leen de proefdruk zag, wilde ze dat woord «alle» betwisten.",
+          "en": "When Leen saw the proof, she wanted to challenge the word “all”.",
+          "fa": "وقتی لین نمونه چاپ را دید، خواست به واژه «همه» اعتراض کند."
+        },
+        {
+          "nl": "Haar groep had immers alleen steun uitgesproken voor een versie met een avondvergadering en een papieren antwoordmogelijkheid.",
+          "en": "Her group had only supported a version with an evening meeting and a paper response option.",
+          "fa": "گروه او فقط از نسخه‌ای حمایت کرده بود که جلسه عصر و امکان پاسخ کاغذی داشت."
+        },
+        {
+          "nl": "In de notulen stond dat akkoord nog correct als voorwaardelijk omschreven.",
+          "en": "The minutes still correctly described that agreement as conditional.",
+          "fa": "صورت‌جلسه هنوز به‌درستی آن موافقت را مشروط توصیف می‌کرد."
+        },
+        {
+          "nl": "De ontwerper stelde een sterretje voor, omdat de drukker bijna klaarstond.",
+          "en": "The designer suggested an asterisk because the printer was almost ready.",
+          "fa": "طراح ستاره کوچکی پیشنهاد کرد، چون چاپخانه تقریباً آماده بود."
+        },
+        {
+          "nl": "Leen vond dat je een openbare toezegging niet pas achteraf mocht nuanceren.",
+          "en": "Leen felt that a public commitment should not be qualified only afterwards.",
+          "fa": "لین معتقد بود نباید تعهد عمومی را تازه بعداً با توضیح محدود کرد."
+        },
+        {
+          "nl": "Ze hield de dozen met nog onbedrukte enveloppen bij zich en vroeg om één extra tekstregel.",
+          "en": "She kept the boxes of still unprinted envelopes with her and asked for one extra line of text.",
+          "fa": "او جعبه‌های پاکت هنوز چاپ‌نشده را پیش خود نگه داشت و یک سطر متن بیشتر خواست."
+        },
+        {
+          "nl": "«Wij steunen het forum, met dien verstande dat beide deelnamemogelijkheden behouden blijven», schreef ze.",
+          "en": "“We support the forum, provided that both ways of participating are retained,” she wrote.",
+          "fa": "نوشت: «از نشست حمایت می‌کنیم، با این شرط که هر دو راه مشارکت حفظ شوند.»"
+        },
+        {
+          "nl": "De voorzitter vond de zin minder feestelijk, maar gaf toestemming voor de wijziging.",
+          "en": "The chair found the sentence less celebratory but approved the change.",
+          "fa": "رئیس جمله را کمتر جشن‌گونه دانست، اما با تغییر موافقت کرد."
+        },
+        {
+          "nl": "De affiche verscheen een dag later; voor het eerst wist iedereen precies wat er was beloofd.",
+          "en": "The poster appeared a day later; for the first time, everyone knew exactly what had been promised.",
+          "fa": "پوستر یک روز دیرتر منتشر شد؛ برای نخستین بار همه دقیقاً می‌دانستند چه وعده‌ای داده شده است."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v001",
+        "c1-core-v002",
+        "c1-core-v028",
+        "c1-core-v051",
+        "c1-core-v058",
+        "c1-v045",
+        "c1-v037"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom hield Leen de enveloppen bij zich?",
+          "en": "Why did Leen keep the envelopes with her?",
+          "fa": "چرا لین پاکت‌ها را پیش خود نگه داشت؟"
+        },
+        "options": [
+          {
+            "nl": "Ze wilde verhinderen dat haar groep ooit nog aan het forum deelnam.",
+            "en": "She wanted to stop her group from ever participating in the forum again.",
+            "fa": "می‌خواست گروهش دیگر هرگز در نشست شرکت نکند."
+          },
+          {
+            "nl": "Ze wilde dat de voorwaarden vóór de verspreiding duidelijk op de affiche kwamen.",
+            "en": "She wanted the conditions clearly printed on the poster before distribution.",
+            "fa": "می‌خواست شرط‌ها پیش از پخش به‌روشنی روی پوستر نوشته شوند."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Haar groep steunde het forum wel, maar alleen met twee concrete mogelijkheden tot deelname.",
+          "en": "Her group supported the forum, but only with two specific ways of participating.",
+          "fa": "گروهش از نشست حمایت می‌کرد، اما فقط با دو راه مشخص مشارکت."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-battery-for-two",
+      "title": {
+        "nl": "De accu die niet vertrok",
+        "en": "The battery that stayed behind",
+        "fa": "باتری‌ای که نرفت"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Samenleven",
+        "en": "Community",
+        "fa": "زندگی اجتماعی"
+      },
+      "paragraphs": [
+        {
+          "nl": "Na een stroomstoring had het vrijwillige vervoersnet nog maar één opgeladen accu voor de rolstoellift. Daarmee konden ze hoogstens één rit uitvoeren voordat de werkplaats weer openging. Een groep had een uitstap gereserveerd, terwijl een alleenwonende reiziger nog van een behandeling moest worden opgehaald. Coördinator Bas wilde de keuze onderbouwen zonder medische details aan de groep bekend te maken. Hij liet de vrijwilligers het uitstel en de beschikbare alternatieven afwegen.",
+          "en": "After a power cut, the volunteer transport network had only one charged battery left for the wheelchair lift. They could make at most one journey with it before the workshop reopened. A group had booked an outing, while a traveller living alone still needed collecting after treatment. Coordinator Bas wanted to justify the choice without revealing medical details to the group. He asked the volunteers to weigh the delay and available alternatives.",
+          "fa": "پس از قطع برق، شبکه حمل‌ونقل داوطلبانه تنها یک باتری شارژشده برای بالابر ویلچر داشت. با آن حداکثر می‌توانستند پیش از باز شدن تعمیرگاه یک سفر انجام دهند. گروهی گردش رزرو کرده بود، در حالی که مسافری که تنها زندگی می‌کرد باید پس از درمان به خانه برده می‌شد. باس، هماهنگ‌کننده، می‌خواست انتخاب را توضیح دهد، بی‌آنکه جزئیات پزشکی را به گروه بگوید. از داوطلبان خواست تأخیر و گزینه‌های موجود را بسنجند."
+        },
+        {
+          "nl": "Niet de volgorde van de boekingen bleek doorslaggevend, maar het ontbreken van een veilige terugweg. Bij die belangenafweging mocht de luidste organisator niet de doorslag geven. Bas besprak ook de proportionaliteit: één uitstap uitstellen was minder ingrijpend dan een reiziger zonder veilige terugweg achterlaten. De reiziger kwam thuis en de groep koos die middag een bereikbare activiteit in het eigen buurthuis. Bij de volgende vergadering werd een reserveaccu begroot, zodat dezelfde noodkeuze niet gewoonte werd.",
+          "en": "The decisive factor proved to be the lack of a safe way home, rather than booking order. In that balancing of interests, the loudest organiser could not decide the matter. Bas also discussed proportionality: postponing one outing was less serious than leaving a traveller without a safe way home. The traveller got home, and the group chose an accessible activity at their own community centre that afternoon. At the next meeting, a spare battery was budgeted for, so the same emergency choice would not become routine.",
+          "fa": "عامل تعیین‌کننده نبود راه بازگشت ایمن بود، نه ترتیب رزروها. در آن سنجش منافع، بلندصداترین برگزارکننده نباید تعیین‌کننده می‌بود. باس تناسب را هم مطرح کرد: به تعویق انداختن یک گردش کم‌ضررتر از رها کردن مسافری بدون راه بازگشت ایمن بود. مسافر به خانه رسید و گروه برای آن عصر فعالیتی دسترس‌پذیر در مرکز محله خود برگزید. در جلسه بعد برای باتری یدکی بودجه گذاشتند تا همان انتخاب اضطراری به عادت تبدیل نشود."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Na een stroomstoring had het vrijwillige vervoersnet nog maar één opgeladen accu voor de rolstoellift.",
+          "en": "After a power cut, the volunteer transport network had only one charged battery left for the wheelchair lift.",
+          "fa": "پس از قطع برق، شبکه حمل‌ونقل داوطلبانه تنها یک باتری شارژشده برای بالابر ویلچر داشت."
+        },
+        {
+          "nl": "Daarmee konden ze hoogstens één rit uitvoeren voordat de werkplaats weer openging.",
+          "en": "They could make at most one journey with it before the workshop reopened.",
+          "fa": "با آن حداکثر می‌توانستند پیش از باز شدن تعمیرگاه یک سفر انجام دهند."
+        },
+        {
+          "nl": "Een groep had een uitstap gereserveerd, terwijl een alleenwonende reiziger nog van een behandeling moest worden opgehaald.",
+          "en": "A group had booked an outing, while a traveller living alone still needed collecting after treatment.",
+          "fa": "گروهی گردش رزرو کرده بود، در حالی که مسافری که تنها زندگی می‌کرد باید پس از درمان به خانه برده می‌شد."
+        },
+        {
+          "nl": "Coördinator Bas wilde de keuze onderbouwen zonder medische details aan de groep bekend te maken.",
+          "en": "Coordinator Bas wanted to justify the choice without revealing medical details to the group.",
+          "fa": "باس، هماهنگ‌کننده، می‌خواست انتخاب را توضیح دهد، بی‌آنکه جزئیات پزشکی را به گروه بگوید."
+        },
+        {
+          "nl": "Hij liet de vrijwilligers het uitstel en de beschikbare alternatieven afwegen.",
+          "en": "He asked the volunteers to weigh the delay and available alternatives.",
+          "fa": "از داوطلبان خواست تأخیر و گزینه‌های موجود را بسنجند."
+        },
+        {
+          "nl": "Niet de volgorde van de boekingen bleek doorslaggevend, maar het ontbreken van een veilige terugweg.",
+          "en": "The decisive factor proved to be the lack of a safe way home, rather than booking order.",
+          "fa": "عامل تعیین‌کننده نبود راه بازگشت ایمن بود، نه ترتیب رزروها."
+        },
+        {
+          "nl": "Bij die belangenafweging mocht de luidste organisator niet de doorslag geven.",
+          "en": "In that balancing of interests, the loudest organiser could not decide the matter.",
+          "fa": "در آن سنجش منافع، بلندصداترین برگزارکننده نباید تعیین‌کننده می‌بود."
+        },
+        {
+          "nl": "Bas besprak ook de proportionaliteit: één uitstap uitstellen was minder ingrijpend dan een reiziger zonder veilige terugweg achterlaten.",
+          "en": "Bas also discussed proportionality: postponing one outing was less serious than leaving a traveller without a safe way home.",
+          "fa": "باس تناسب را هم مطرح کرد: به تعویق انداختن یک گردش کم‌ضررتر از رها کردن مسافری بدون راه بازگشت ایمن بود."
+        },
+        {
+          "nl": "De reiziger kwam thuis en de groep koos die middag een bereikbare activiteit in het eigen buurthuis.",
+          "en": "The traveller got home, and the group chose an accessible activity at their own community centre that afternoon.",
+          "fa": "مسافر به خانه رسید و گروه برای آن عصر فعالیتی دسترس‌پذیر در مرکز محله خود برگزید."
+        },
+        {
+          "nl": "Bij de volgende vergadering werd een reserveaccu begroot, zodat dezelfde noodkeuze niet gewoonte werd.",
+          "en": "At the next meeting, a spare battery was budgeted for, so the same emergency choice would not become routine.",
+          "fa": "در جلسه بعد برای باتری یدکی بودجه گذاشتند تا همان انتخاب اضطراری به عادت تبدیل نشود."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v003",
+        "c1-core-v004",
+        "c1-core-v029",
+        "c1-core-v053",
+        "c1-core-v063",
+        "c1-v029",
+        "c1-v027"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat gaf de doorslag bij de verdeling van de accu?",
+          "en": "What decided the allocation of the battery?",
+          "fa": "چه چیزی تخصیص باتری را تعیین کرد؟"
+        },
+        "options": [
+          {
+            "nl": "Eén reiziger had geen veilige andere manier om thuis te komen.",
+            "en": "One traveller had no other safe way to get home.",
+            "fa": "یک مسافر راه ایمن دیگری برای بازگشت به خانه نداشت."
+          },
+          {
+            "nl": "De organisator van de uitstap had als eerste gereserveerd.",
+            "en": "The outing organiser had booked first.",
+            "fa": "برگزارکننده گردش زودتر رزرو کرده بود."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "De vrijwilligers wogen de gevolgen en alternatieven af; de boekingsvolgorde bepaalde de keuze niet.",
+          "en": "The volunteers weighed consequences and alternatives; booking order did not decide the choice.",
+          "fa": "داوطلبان پیامدها و گزینه‌ها را سنجیدند؛ ترتیب رزرو تعیین‌کننده نبود."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-unsigned-last-page",
+      "title": {
+        "nl": "De laatste bladzijde bleef leeg",
+        "en": "The last page stayed blank",
+        "fa": "صفحه آخر خالی ماند"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Drama",
+        "en": "Drama",
+        "fa": "درام"
+      },
+      "paragraphs": [
+        {
+          "nl": "Mina mocht namens het koor een gratis repetitieruimte bespreken, maar niets ondertekenen. Haar mandaat leek eenvoudig tot de beheerder een overeenkomst van zes bladzijden neerlegde. Op de laatste bladzijde stond dat de contactpersoon persoonlijk instond voor alle bestaande gebreken. De beheerder noemde dat een standaardzin; Mina bleef terughoudend. Ze wilde de samenwerking onderschrijven, maar niet een verantwoordelijkheid die ze onmogelijk kon overzien.",
+          "en": "Mina could discuss a free rehearsal space on behalf of the choir, but sign nothing. Her mandate seemed simple until the manager put down a six-page agreement. The last page said the contact person was personally responsible for all existing defects. The manager called it a standard sentence; Mina remained cautious. She wanted to endorse the cooperation, but not a responsibility whose scope she could not assess.",
+          "fa": "مینا اجازه داشت از جانب گروه کر درباره اتاق تمرین رایگان گفت‌وگو کند، اما چیزی امضا نکند. مأموریتش ساده به نظر می‌رسید تا اینکه مدیر توافقی شش‌صفحه‌ای مقابلش گذاشت. صفحه آخر می‌گفت شخص رابط شخصاً مسئول همه عیب‌های موجود است. مدیر آن را جمله‌ای استاندارد نامید؛ مینا محتاط ماند. می‌خواست همکاری را تأیید کند، اما مسئولیتی را نه که ابعادش را نمی‌توانست بسنجد."
+        },
+        {
+          "nl": "«Ik moet erkennen dat mijn opdracht niet zover gaat», zei ze, zonder de ruimte af te wijzen. Ze wilde het definitieve oordeel voorbehouden aan het bestuur en vroeg om een plaatsbezoek. De beheerder hield de zaal een week onder voorbehoud vrij en stuurde een lijst van de bekende gebreken. Daarna werd de clausule beperkt tot schade die het koor zelf veroorzaakte. Mina tekende ook toen niet; de bevoegde bestuurder kwam mee en zette de handtekening.",
+          "en": "“I must acknowledge that my assignment does not go that far,” she said, without rejecting the space. She wanted to reserve the final judgment for the board and requested a site visit. The manager provisionally held the room for a week and sent a list of known defects. The clause was then limited to damage caused by the choir itself. Mina still did not sign; the authorised board member accompanied her and signed.",
+          "fa": "بدون رد کردن اتاق گفت: «باید بپذیرم که مأموریت من تا این حد نیست.» می‌خواست داوری نهایی را برای هیئت محفوظ نگه دارد و بازدید محل خواست. مدیر اتاق را یک هفته با قید احتیاط نگه داشت و فهرست عیب‌های شناخته‌شده را فرستاد. سپس بند قرارداد به خسارتی محدود شد که خود گروه کر ایجاد می‌کرد. مینا باز هم امضا نکرد؛ عضو صاحب‌اختیار هیئت همراهش آمد و امضا کرد."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Mina mocht namens het koor een gratis repetitieruimte bespreken, maar niets ondertekenen.",
+          "en": "Mina could discuss a free rehearsal space on behalf of the choir, but sign nothing.",
+          "fa": "مینا اجازه داشت از جانب گروه کر درباره اتاق تمرین رایگان گفت‌وگو کند، اما چیزی امضا نکند."
+        },
+        {
+          "nl": "Haar mandaat leek eenvoudig tot de beheerder een overeenkomst van zes bladzijden neerlegde.",
+          "en": "Her mandate seemed simple until the manager put down a six-page agreement.",
+          "fa": "مأموریتش ساده به نظر می‌رسید تا اینکه مدیر توافقی شش‌صفحه‌ای مقابلش گذاشت."
+        },
+        {
+          "nl": "Op de laatste bladzijde stond dat de contactpersoon persoonlijk instond voor alle bestaande gebreken.",
+          "en": "The last page said the contact person was personally responsible for all existing defects.",
+          "fa": "صفحه آخر می‌گفت شخص رابط شخصاً مسئول همه عیب‌های موجود است."
+        },
+        {
+          "nl": "De beheerder noemde dat een standaardzin; Mina bleef terughoudend.",
+          "en": "The manager called it a standard sentence; Mina remained cautious.",
+          "fa": "مدیر آن را جمله‌ای استاندارد نامید؛ مینا محتاط ماند."
+        },
+        {
+          "nl": "Ze wilde de samenwerking onderschrijven, maar niet een verantwoordelijkheid die ze onmogelijk kon overzien.",
+          "en": "She wanted to endorse the cooperation, but not a responsibility whose scope she could not assess.",
+          "fa": "می‌خواست همکاری را تأیید کند، اما مسئولیتی را نه که ابعادش را نمی‌توانست بسنجد."
+        },
+        {
+          "nl": "«Ik moet erkennen dat mijn opdracht niet zover gaat», zei ze, zonder de ruimte af te wijzen.",
+          "en": "“I must acknowledge that my assignment does not go that far,” she said, without rejecting the space.",
+          "fa": "بدون رد کردن اتاق گفت: «باید بپذیرم که مأموریت من تا این حد نیست.»"
+        },
+        {
+          "nl": "Ze wilde het definitieve oordeel voorbehouden aan het bestuur en vroeg om een plaatsbezoek.",
+          "en": "She wanted to reserve the final judgment for the board and requested a site visit.",
+          "fa": "می‌خواست داوری نهایی را برای هیئت محفوظ نگه دارد و بازدید محل خواست."
+        },
+        {
+          "nl": "De beheerder hield de zaal een week onder voorbehoud vrij en stuurde een lijst van de bekende gebreken.",
+          "en": "The manager provisionally held the room for a week and sent a list of known defects.",
+          "fa": "مدیر اتاق را یک هفته با قید احتیاط نگه داشت و فهرست عیب‌های شناخته‌شده را فرستاد."
+        },
+        {
+          "nl": "Daarna werd de clausule beperkt tot schade die het koor zelf veroorzaakte.",
+          "en": "The clause was then limited to damage caused by the choir itself.",
+          "fa": "سپس بند قرارداد به خسارتی محدود شد که خود گروه کر ایجاد می‌کرد."
+        },
+        {
+          "nl": "Mina tekende ook toen niet; de bevoegde bestuurder kwam mee en zette de handtekening.",
+          "en": "Mina still did not sign; the authorised board member accompanied her and signed.",
+          "fa": "مینا باز هم امضا نکرد؛ عضو صاحب‌اختیار هیئت همراهش آمد و امضا کرد."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v005",
+        "c1-core-v006",
+        "c1-core-v007",
+        "c1-core-v027",
+        "c1-core-v062",
+        "c1-v003",
+        "c1-v106"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom ondertekende Mina de aangepaste overeenkomst niet zelf?",
+          "en": "Why did Mina not sign the revised agreement herself?",
+          "fa": "چرا مینا توافق اصلاح‌شده را خودش امضا نکرد؟"
+        },
+        "options": [
+          {
+            "nl": "Zij vond dat het koor voor geen enkele zelf veroorzaakte schade mocht instaan.",
+            "en": "She felt the choir should bear no responsibility for any damage it caused.",
+            "fa": "فکر می‌کرد گروه کر نباید مسئول هیچ خسارتی باشد که خودش ایجاد کرده است."
+          },
+          {
+            "nl": "Haar mandaat gaf haar alleen de bevoegdheid om te overleggen.",
+            "en": "Her mandate only authorised her to discuss matters.",
+            "fa": "مأموریتش فقط اختیار گفت‌وگو را به او داده بود."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Mina bewaakte zowel de inhoudelijke grens als de grens van haar eigen opdracht.",
+          "en": "Mina respected both the substantive boundary and the limits of her own assignment.",
+          "fa": "مینا هم مرز محتوایی و هم حد مأموریت خودش را رعایت کرد."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-bell-not-clock",
+      "title": {
+        "nl": "De bel in het verhaal",
+        "en": "The bell in the account",
+        "fa": "زنگ در روایت"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Raadsel",
+        "en": "Mystery",
+        "fa": "معما"
+      },
+      "paragraphs": [
+        {
+          "nl": "In zijn getuigenis vertelde oud-conciërge Herman dat de school precies om twaalf uur was ontruimd. Hij herinnerde zich de bel en was zeker van de volgorde: eerst dat geluid, dan de rook. Bij de luisteravond vroeg technicus Rachid of hij Herman mocht tegenspreken over het tijdstip. Voor een bezoeker had een technicus kennelijk minder gezag dan de vroegere conciërge. «Rang kan hier niet ter zake doen», zei de archivaris, waarna ze Rachid vroeg zijn herinnering te verduidelijken.",
+          "en": "In his testimony, former caretaker Herman said the school had been evacuated at exactly noon. He remembered the bell and was certain of the sequence: first that sound, then the smoke. At the listening evening, technician Rachid asked whether he could contradict Herman about the time. For one visitor, a technician apparently carried less authority than the former caretaker. “Rank cannot be relevant here,” the archivist said, then asked Rachid to clarify his recollection.",
+          "fa": "هرمان، سرایدار سابق، در شهادتش گفت مدرسه دقیقاً ظهر تخلیه شده بود. صدای زنگ را به یاد داشت و از ترتیب مطمئن بود: اول آن صدا، بعد دود. در شب شنیدن روایت‌ها، رشید، تکنسین، پرسید آیا می‌تواند درباره زمان با هرمان مخالفت کند. ظاهراً از نظر یکی از حاضران، یک تکنسین کمتر از سرایدار سابق اعتبار داشت. بایگان گفت: «مقام اینجا نمی‌تواند ملاک باشد»، سپس از رشید خواست خاطره‌اش را روشن کند."
+        },
+        {
+          "nl": "Hij had die ochtend de bel getest en zijn werkbon bleek elf uur te vermelden. Daardoor werd een vroegere ontruiming aannemelijk, zonder dat de bon op zichzelf het hele verhaal bewees. Herman herkende de test toen Rachid de drie korte signalen nadeed. Samen voegden ze een toelichting toe waarin de betrouwbaarheid van de volgorde apart werd besproken van die van het uur. De opname bleef hoorbaar, nu naast de werkbon en met een vraagteken bij twaalf uur.",
+          "en": "He had tested the bell that morning, and his work ticket turned out to list eleven o'clock. That made an earlier evacuation plausible, without the ticket by itself proving the whole account. Herman recognised the test when Rachid imitated the three short signals. Together, they added a note discussing the reliability of the sequence separately from that of the time. The recording remained available to hear, now beside the work ticket and with a question mark at noon.",
+          "fa": "او آن صبح زنگ را آزمایش کرده بود و برگه کارش ساعت یازده را نشان می‌داد. این امر تخلیه زودتر را باورپذیر کرد، بی‌آنکه برگه به‌تنهایی کل روایت را ثابت کند. وقتی رشید سه صدای کوتاه را تقلید کرد، هرمان آزمایش را به یاد آورد. با هم توضیحی افزودند که اعتبار ترتیب را جدا از اعتبار ساعت بررسی می‌کرد. صدای ضبط‌شده همچنان قابل شنیدن ماند، این بار کنار برگه کار و با علامت سؤال کنار ساعت دوازده."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "In zijn getuigenis vertelde oud-conciërge Herman dat de school precies om twaalf uur was ontruimd.",
+          "en": "In his testimony, former caretaker Herman said the school had been evacuated at exactly noon.",
+          "fa": "هرمان، سرایدار سابق، در شهادتش گفت مدرسه دقیقاً ظهر تخلیه شده بود."
+        },
+        {
+          "nl": "Hij herinnerde zich de bel en was zeker van de volgorde: eerst dat geluid, dan de rook.",
+          "en": "He remembered the bell and was certain of the sequence: first that sound, then the smoke.",
+          "fa": "صدای زنگ را به یاد داشت و از ترتیب مطمئن بود: اول آن صدا، بعد دود."
+        },
+        {
+          "nl": "Bij de luisteravond vroeg technicus Rachid of hij Herman mocht tegenspreken over het tijdstip.",
+          "en": "At the listening evening, technician Rachid asked whether he could contradict Herman about the time.",
+          "fa": "در شب شنیدن روایت‌ها، رشید، تکنسین، پرسید آیا می‌تواند درباره زمان با هرمان مخالفت کند."
+        },
+        {
+          "nl": "Voor een bezoeker had een technicus kennelijk minder gezag dan de vroegere conciërge.",
+          "en": "For one visitor, a technician apparently carried less authority than the former caretaker.",
+          "fa": "ظاهراً از نظر یکی از حاضران، یک تکنسین کمتر از سرایدار سابق اعتبار داشت."
+        },
+        {
+          "nl": "«Rang kan hier niet ter zake doen», zei de archivaris, waarna ze Rachid vroeg zijn herinnering te verduidelijken.",
+          "en": "“Rank cannot be relevant here,” the archivist said, then asked Rachid to clarify his recollection.",
+          "fa": "بایگان گفت: «مقام اینجا نمی‌تواند ملاک باشد»، سپس از رشید خواست خاطره‌اش را روشن کند."
+        },
+        {
+          "nl": "Hij had die ochtend de bel getest en zijn werkbon bleek elf uur te vermelden.",
+          "en": "He had tested the bell that morning, and his work ticket turned out to list eleven o'clock.",
+          "fa": "او آن صبح زنگ را آزمایش کرده بود و برگه کارش ساعت یازده را نشان می‌داد."
+        },
+        {
+          "nl": "Daardoor werd een vroegere ontruiming aannemelijk, zonder dat de bon op zichzelf het hele verhaal bewees.",
+          "en": "That made an earlier evacuation plausible, without the ticket by itself proving the whole account.",
+          "fa": "این امر تخلیه زودتر را باورپذیر کرد، بی‌آنکه برگه به‌تنهایی کل روایت را ثابت کند."
+        },
+        {
+          "nl": "Herman herkende de test toen Rachid de drie korte signalen nadeed.",
+          "en": "Herman recognised the test when Rachid imitated the three short signals.",
+          "fa": "وقتی رشید سه صدای کوتاه را تقلید کرد، هرمان آزمایش را به یاد آورد."
+        },
+        {
+          "nl": "Samen voegden ze een toelichting toe waarin de betrouwbaarheid van de volgorde apart werd besproken van die van het uur.",
+          "en": "Together, they added a note discussing the reliability of the sequence separately from that of the time.",
+          "fa": "با هم توضیحی افزودند که اعتبار ترتیب را جدا از اعتبار ساعت بررسی می‌کرد."
+        },
+        {
+          "nl": "De opname bleef hoorbaar, nu naast de werkbon en met een vraagteken bij twaalf uur.",
+          "en": "The recording remained available to hear, now beside the work ticket and with a question mark at noon.",
+          "fa": "صدای ضبط‌شده همچنان قابل شنیدن ماند، این بار کنار برگه کار و با علامت سؤال کنار ساعت دوازده."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v008",
+        "c1-core-v009",
+        "c1-core-v030",
+        "c1-core-v046",
+        "c1-core-v064",
+        "c1-v241",
+        "c1-v056"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat veranderde door Rachids bijdrage?",
+          "en": "What changed through Rachid’s contribution?",
+          "fa": "مشارکت رشید چه چیزی را تغییر داد؟"
+        },
+        "options": [
+          {
+            "nl": "De zekerheid over het uur nam af, terwijl de volgorde afzonderlijk beoordeeld werd.",
+            "en": "Certainty about the time decreased, while the sequence was assessed separately.",
+            "fa": "قطعیت درباره ساعت کمتر شد، در حالی که ترتیب جداگانه بررسی شد."
+          },
+          {
+            "nl": "De volledige getuigenis werd verwijderd omdat één tijdstip onjuist kon zijn.",
+            "en": "The entire testimony was removed because one time could be wrong.",
+            "fa": "تمام شهادت حذف شد، چون ممکن بود یک زمان نادرست باشد."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "De twee mannen koppelden de herinnering aan een andere bron zonder één fout aan het hele verhaal gelijk te stellen.",
+          "en": "The two men linked the memory to another source without treating one error as invalidating the whole story.",
+          "fa": "آن دو خاطره را به منبعی دیگر پیوند دادند، بی‌آنکه یک خطا را معادل بی‌اعتباری کل روایت بدانند."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-invisible-last-reader",
+      "title": {
+        "nl": "De lezer na de vertaler",
+        "en": "The reader after the translator",
+        "fa": "خواننده پس از مترجم"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Drama",
+        "en": "Drama",
+        "fa": "درام"
+      },
+      "paragraphs": [
+        {
+          "nl": "Het buurtnieuws verscheen in drie talen en volgens de taakverdeling deed ieder evenveel. Toch was Aïcha elke vrijdag tot laat bezig nadat de vertalers hun teksten hadden doorgestuurd. Zij herstelde verschillen in data en toon zonder die extra rondes bij de gezamenlijke taakverdeling te vermelden. Toen ze één week geen eindcontrole deed, spraken twee versies elkaar tegen over de inschrijving. De anderen wilden dat zij de fout zou verantwoorden, maar Aïcha bracht haar urenlijst mee.",
+          "en": "The neighbourhood bulletin appeared in three languages, and according to the division of tasks everyone did equal work. Yet Aïcha worked late every Friday after the translators had sent in their texts. She corrected differences in dates and tone without mentioning those extra rounds in the shared division of tasks. When she skipped the final check for one week, two versions contradicted each other about registration. The others wanted her to explain the error, but Aïcha brought her record of hours.",
+          "fa": "خبرنامه محله به سه زبان منتشر می‌شد و طبق تقسیم کار همه به یک اندازه کار می‌کردند. با این حال عایشه هر جمعه پس از فرستادن متن‌های مترجمان تا دیروقت مشغول بود. تفاوت تاریخ‌ها و لحن را اصلاح می‌کرد، بی‌آنکه آن مرحله‌های اضافی را در تقسیم کار مشترک ذکر کند. وقتی یک هفته بازبینی نهایی نکرد، دو نسخه درباره ثبت‌نام با هم تعارض داشتند. دیگران می‌خواستند او خطا را توضیح دهد، اما عایشه فهرست ساعت‌هایش را آورد."
+        },
+        {
+          "nl": "Daarmee werd navolgbaar hoe een gedeelde tekst stilzwijgend haar persoonlijke verantwoordelijkheid was geworden. De vrijwilligers besloten onderling dat ze de vertalingen vroeger op elkaar moesten afstemmen. Ze konden de planning bijsturen door de laatste leesbeurt te laten rouleren en ook daarvoor tijd te voorzien. Het nieuws verscheen voortaan een dag later, maar de continuïteit hing niet meer van Aïcha's vrije avond af. Bij de volgende uitgave stond ook de laatste lezer tussen de medewerkers vermeld.",
+          "en": "This made it possible to follow how a shared text had silently become her personal responsibility. The volunteers agreed among themselves that they needed to coordinate the translations earlier. They could adjust the schedule by rotating the final reading and allowing time for it too. The bulletin now appeared a day later, but continuity no longer depended on Aïcha's free evening. In the next issue, the final reader was listed among the contributors too.",
+          "fa": "با آن روشن شد چگونه متنی مشترک بی‌سروصدا به مسئولیت شخصی او تبدیل شده بود. داوطلبان میان خود تصمیم گرفتند که باید ترجمه‌ها را زودتر هماهنگ کنند. با چرخشی کردن بازخوانی نهایی و در نظر گرفتن وقت برای آن توانستند برنامه را اصلاح کنند. از آن پس خبرنامه یک روز دیرتر منتشر شد، اما تداومش دیگر به شب آزاد عایشه وابسته نبود. در شماره بعد، نام بازخوان نهایی نیز در میان همکاران آمده بود."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Het buurtnieuws verscheen in drie talen en volgens de taakverdeling deed ieder evenveel.",
+          "en": "The neighbourhood bulletin appeared in three languages, and according to the division of tasks everyone did equal work.",
+          "fa": "خبرنامه محله به سه زبان منتشر می‌شد و طبق تقسیم کار همه به یک اندازه کار می‌کردند."
+        },
+        {
+          "nl": "Toch was Aïcha elke vrijdag tot laat bezig nadat de vertalers hun teksten hadden doorgestuurd.",
+          "en": "Yet Aïcha worked late every Friday after the translators had sent in their texts.",
+          "fa": "با این حال عایشه هر جمعه پس از فرستادن متن‌های مترجمان تا دیروقت مشغول بود."
+        },
+        {
+          "nl": "Zij herstelde verschillen in data en toon zonder die extra rondes bij de gezamenlijke taakverdeling te vermelden.",
+          "en": "She corrected differences in dates and tone without mentioning those extra rounds in the shared division of tasks.",
+          "fa": "تفاوت تاریخ‌ها و لحن را اصلاح می‌کرد، بی‌آنکه آن مرحله‌های اضافی را در تقسیم کار مشترک ذکر کند."
+        },
+        {
+          "nl": "Toen ze één week geen eindcontrole deed, spraken twee versies elkaar tegen over de inschrijving.",
+          "en": "When she skipped the final check for one week, two versions contradicted each other about registration.",
+          "fa": "وقتی یک هفته بازبینی نهایی نکرد، دو نسخه درباره ثبت‌نام با هم تعارض داشتند."
+        },
+        {
+          "nl": "De anderen wilden dat zij de fout zou verantwoorden, maar Aïcha bracht haar urenlijst mee.",
+          "en": "The others wanted her to explain the error, but Aïcha brought her record of hours.",
+          "fa": "دیگران می‌خواستند او خطا را توضیح دهد، اما عایشه فهرست ساعت‌هایش را آورد."
+        },
+        {
+          "nl": "Daarmee werd navolgbaar hoe een gedeelde tekst stilzwijgend haar persoonlijke verantwoordelijkheid was geworden.",
+          "en": "This made it possible to follow how a shared text had silently become her personal responsibility.",
+          "fa": "با آن روشن شد چگونه متنی مشترک بی‌سروصدا به مسئولیت شخصی او تبدیل شده بود."
+        },
+        {
+          "nl": "De vrijwilligers besloten onderling dat ze de vertalingen vroeger op elkaar moesten afstemmen.",
+          "en": "The volunteers agreed among themselves that they needed to coordinate the translations earlier.",
+          "fa": "داوطلبان میان خود تصمیم گرفتند که باید ترجمه‌ها را زودتر هماهنگ کنند."
+        },
+        {
+          "nl": "Ze konden de planning bijsturen door de laatste leesbeurt te laten rouleren en ook daarvoor tijd te voorzien.",
+          "en": "They could adjust the schedule by rotating the final reading and allowing time for it too.",
+          "fa": "با چرخشی کردن بازخوانی نهایی و در نظر گرفتن وقت برای آن توانستند برنامه را اصلاح کنند."
+        },
+        {
+          "nl": "Het nieuws verscheen voortaan een dag later, maar de continuïteit hing niet meer van Aïcha's vrije avond af.",
+          "en": "The bulletin now appeared a day later, but continuity no longer depended on Aïcha's free evening.",
+          "fa": "از آن پس خبرنامه یک روز دیرتر منتشر شد، اما تداومش دیگر به شب آزاد عایشه وابسته نبود."
+        },
+        {
+          "nl": "Bij de volgende uitgave stond ook de laatste lezer tussen de medewerkers vermeld.",
+          "en": "In the next issue, the final reader was listed among the contributors too.",
+          "fa": "در شماره بعد، نام بازخوان نهایی نیز در میان همکاران آمده بود."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v010",
+        "c1-core-v011",
+        "c1-core-v012",
+        "c1-core-v038",
+        "c1-core-v057",
+        "c1-v101",
+        "c1-v110"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom helpt een latere publicatiedag de continuïteit?",
+          "en": "Why does a later publication day help continuity?",
+          "fa": "چرا روز انتشار دیرتر به تداوم کمک می‌کند؟"
+        },
+        "options": [
+          {
+            "nl": "Aïcha doet dan alle vertalingen zelf en hoeft niemand meer te raadplegen.",
+            "en": "Aïcha then translates everything herself and no longer needs to consult anyone.",
+            "fa": "عایشه آن زمان همه ترجمه‌ها را خودش انجام می‌دهد و دیگر به مشورت نیاز ندارد."
+          },
+          {
+            "nl": "Er is tijd voor gedeelde eindcontrole, waardoor het werk niet meer op één persoon steunt.",
+            "en": "There is time for a shared final check, so the work no longer relies on one person.",
+            "fa": "برای بازبینی نهایی مشترک وقت هست و کار دیگر بر یک نفر تکیه ندارد."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De nieuwe afspraak maakt het verborgen werk zichtbaar en verdeelt het, ook al kost dat een extra dag.",
+          "en": "The new arrangement makes hidden work visible and shares it, even though that takes an extra day.",
+          "fa": "توافق تازه کار پنهان را آشکار و تقسیم می‌کند، هرچند یک روز بیشتر زمان می‌برد."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-badge-before-entry",
+      "title": {
+        "nl": "Het kaartje aan de deur",
+        "en": "The card at the door",
+        "fa": "کارت کنار در"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Samenleven",
+        "en": "Community",
+        "fa": "زندگی اجتماعی"
+      },
+      "paragraphs": [
+        {
+          "nl": "Bij de open atelierdag kreeg iedere bezoeker aan de deur een groen kaartje voor foto's. De vrijwilliger zei dat het vrijblijvend was, maar hield de toegangsbandjes achter zijn stapel kaartjes. Een bezoekster vroeg uitdrukkelijk of zij zonder kaartje ook de bovenverdieping mocht zien. De vrijwilliger aarzelde; daar zou immers de fotograaf rondlopen. Organisator Sander zag hoe een vraag om toestemming de vrije toegang kon belemmeren.",
+          "en": "At the open studio day, every visitor received a green photography card at the door. The volunteer said it was optional but kept the entry wristbands behind his stack of cards. A visitor explicitly asked whether she could also see the upper floor without a card. The volunteer hesitated; the photographer would be walking around there. Organiser Sander saw how a request for consent could hinder free access.",
+          "fa": "در روز بازدید آزاد کارگاه، هر بازدیدکننده کنار در کارتی سبز برای عکس می‌گرفت. داوطلب گفت اختیاری است، اما دست‌بندهای ورود را پشت دسته کارت‌ها نگه داشته بود. بازدیدکننده‌ای صریحاً پرسید آیا بدون کارت هم می‌تواند طبقه بالا را ببیند. داوطلب مردد شد؛ عکاس قرار بود آنجا بگردد. ساندر، برگزارکننده، دید چگونه درخواست رضایت می‌تواند مانع دسترسی آزاد شود."
+        },
+        {
+          "nl": "«We mogen niet veronderstellen dat binnenkomen hetzelfde is als gefotografeerd willen worden», zei hij. Hij legde de bandjes vooraan en vroeg de fotograaf alleen op twee aangeduide plaatsen te werken. Zo kon hij de privacy waarborgen zonder bezoekers een deel van het gebouw te ontzeggen. Wie een foto wilde, kon daar apart instemmen; de andere route bleef volledig open. De bezoekster deed de hele rondgang en vertrok zonder kaartje, maar met drie adressen van kunstenaars.",
+          "en": "“We must not assume that coming inside is the same as wanting to be photographed,” he said. He moved the wristbands to the front and asked the photographer to work only in two marked places. This let him protect privacy without denying visitors access to part of the building. Anyone wanting a photo could consent separately there; the other route remained fully open. The visitor completed the full tour and left without a card but with three artists' addresses.",
+          "fa": "گفت: «نباید فرض کنیم هرکس وارد می‌شود، می‌خواهد از او عکس بگیرند.» دست‌بندها را جلو گذاشت و از عکاس خواست فقط در دو جای مشخص کار کند. این‌گونه توانست حریم خصوصی را حفظ کند، بی‌آنکه بازدیدکنندگان را از بخشی از ساختمان محروم کند. هرکس عکس می‌خواست، می‌توانست آنجا جداگانه رضایت بدهد؛ مسیر دیگر کاملاً باز ماند. بازدیدکننده تمام مسیر را دید و بدون کارت، اما با نشانی سه هنرمند رفت."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Bij de open atelierdag kreeg iedere bezoeker aan de deur een groen kaartje voor foto's.",
+          "en": "At the open studio day, every visitor received a green photography card at the door.",
+          "fa": "در روز بازدید آزاد کارگاه، هر بازدیدکننده کنار در کارتی سبز برای عکس می‌گرفت."
+        },
+        {
+          "nl": "De vrijwilliger zei dat het vrijblijvend was, maar hield de toegangsbandjes achter zijn stapel kaartjes.",
+          "en": "The volunteer said it was optional but kept the entry wristbands behind his stack of cards.",
+          "fa": "داوطلب گفت اختیاری است، اما دست‌بندهای ورود را پشت دسته کارت‌ها نگه داشته بود."
+        },
+        {
+          "nl": "Een bezoekster vroeg uitdrukkelijk of zij zonder kaartje ook de bovenverdieping mocht zien.",
+          "en": "A visitor explicitly asked whether she could also see the upper floor without a card.",
+          "fa": "بازدیدکننده‌ای صریحاً پرسید آیا بدون کارت هم می‌تواند طبقه بالا را ببیند."
+        },
+        {
+          "nl": "De vrijwilliger aarzelde; daar zou immers de fotograaf rondlopen.",
+          "en": "The volunteer hesitated; the photographer would be walking around there.",
+          "fa": "داوطلب مردد شد؛ عکاس قرار بود آنجا بگردد."
+        },
+        {
+          "nl": "Organisator Sander zag hoe een vraag om toestemming de vrije toegang kon belemmeren.",
+          "en": "Organiser Sander saw how a request for consent could hinder free access.",
+          "fa": "ساندر، برگزارکننده، دید چگونه درخواست رضایت می‌تواند مانع دسترسی آزاد شود."
+        },
+        {
+          "nl": "«We mogen niet veronderstellen dat binnenkomen hetzelfde is als gefotografeerd willen worden», zei hij.",
+          "en": "“We must not assume that coming inside is the same as wanting to be photographed,” he said.",
+          "fa": "گفت: «نباید فرض کنیم هرکس وارد می‌شود، می‌خواهد از او عکس بگیرند.»"
+        },
+        {
+          "nl": "Hij legde de bandjes vooraan en vroeg de fotograaf alleen op twee aangeduide plaatsen te werken.",
+          "en": "He moved the wristbands to the front and asked the photographer to work only in two marked places.",
+          "fa": "دست‌بندها را جلو گذاشت و از عکاس خواست فقط در دو جای مشخص کار کند."
+        },
+        {
+          "nl": "Zo kon hij de privacy waarborgen zonder bezoekers een deel van het gebouw te ontzeggen.",
+          "en": "This let him protect privacy without denying visitors access to part of the building.",
+          "fa": "این‌گونه توانست حریم خصوصی را حفظ کند، بی‌آنکه بازدیدکنندگان را از بخشی از ساختمان محروم کند."
+        },
+        {
+          "nl": "Wie een foto wilde, kon daar apart instemmen; de andere route bleef volledig open.",
+          "en": "Anyone wanting a photo could consent separately there; the other route remained fully open.",
+          "fa": "هرکس عکس می‌خواست، می‌توانست آنجا جداگانه رضایت بدهد؛ مسیر دیگر کاملاً باز ماند."
+        },
+        {
+          "nl": "De bezoekster deed de hele rondgang en vertrok zonder kaartje, maar met drie adressen van kunstenaars.",
+          "en": "The visitor completed the full tour and left without a card but with three artists' addresses.",
+          "fa": "بازدیدکننده تمام مسیر را دید و بدون کارت، اما با نشانی سه هنرمند رفت."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v013",
+        "c1-core-v014",
+        "c1-core-v015",
+        "c1-core-v043",
+        "c1-core-v049",
+        "c1-v224",
+        "c1-v234"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Welke verandering maakte de toestemming werkelijk vrijblijvend?",
+          "en": "What change made consent genuinely optional?",
+          "fa": "کدام تغییر رضایت را واقعاً اختیاری کرد؟"
+        },
+        "options": [
+          {
+            "nl": "Ook zonder fototoestemming bleef het volledige bezoek mogelijk.",
+            "en": "The complete visit remained possible without photography consent too.",
+            "fa": "بدون رضایت عکس‌برداری هم بازدید کامل ممکن ماند."
+          },
+          {
+            "nl": "Iedere bezoeker moest alsnog een groen kaartje meenemen.",
+            "en": "Every visitor still had to take a green card.",
+            "fa": "همه بازدیدکنندگان باز هم باید کارت سبز می‌گرفتند."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "Toegang en toestemming werden los van elkaar geregeld, met aparte fotoplaatsen.",
+          "en": "Admission and consent were arranged separately, with designated photography areas.",
+          "fa": "ورود و رضایت جداگانه تنظیم شدند، با جاهای مشخص برای عکس‌برداری."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-correction-with-an-address",
+      "title": {
+        "nl": "De rechtzetting met een adres",
+        "en": "The correction with an address",
+        "fa": "اصلاحیه با نشانی"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Drama",
+        "en": "Drama",
+        "fa": "درام"
+      },
+      "paragraphs": [
+        {
+          "nl": "In het koorblad stond de bewering dat een nieuw ensemble de vaste repetitieruimte had ingepikt. De schrijver kende alleen de teleurstelling van zijn eigen koor; zijn tekst was eenzijdig. Boekingsmedewerker Farah kon de beschuldiging weerleggen met de sluitingsmelding van de zaal. Beide groepen waren getroffen door een controle van de toegestane bezetting. Het bestuur wilde het ongemak aan een vertraagd bericht toeschrijven en de digitale versie stil vervangen.",
+          "en": "The choir newsletter claimed that a new ensemble had taken over the regular rehearsal room. The writer knew only his own choir's disappointment; his text was one-sided. Booking clerk Farah could refute the accusation with the hall's closure notice. Both groups had been affected by an inspection of permitted occupancy. The board wanted to attribute the problem to a delayed message and quietly replace the digital version.",
+          "fa": "در خبرنامه گروه کر ادعا شده بود گروهی تازه اتاق تمرین همیشگی را تصاحب کرده است. نویسنده تنها ناامیدی گروه خودش را می‌شناخت؛ متنش یک‌جانبه بود. فرح، مسئول رزرو، توانست با اطلاعیه تعطیلی سالن اتهام را رد کند. هر دو گروه تحت تأثیر بررسی ظرفیت مجاز قرار گرفته بودند. هیئت می‌خواست مشکل را به پیام دیررس نسبت دهد و نسخه دیجیتال را بی‌سروصدا عوض کند."
+        },
+        {
+          "nl": "Desondanks bleef Farah aandringen: ook de papieren exemplaren lagen al in drie cafés. Een fout verzwijgen zou het nieuwe ensemble met de verdenking laten zitten. De weerlegging werd daarom op dezelfde adressen bezorgd en bovenaan de website geplaatst. De schrijver noemde zijn eigen aandeel en vroeg het ensemble of het een reactie wilde toevoegen. Het ensemble koos voor één zin: beide koren zochten nu samen een tijdelijke zaal.",
+          "en": "Nevertheless, Farah kept insisting: paper copies were already in three cafés too. Concealing a mistake would leave the new ensemble under suspicion. The refutation was therefore delivered to the same addresses and placed at the top of the website. The writer acknowledged his own part and asked whether the ensemble wanted to add a response. The ensemble chose one sentence: both choirs were now seeking a temporary hall together.",
+          "fa": "با این حال فرح پافشاری کرد: نسخه‌های کاغذی هم از قبل در سه کافه بودند. پنهان کردن خطا، گروه تازه را زیر سایه بدگمانی رها می‌کرد. بنابراین ردیه را به همان نشانی‌ها رساندند و بالای وب‌سایت گذاشتند. نویسنده سهم خودش را بیان کرد و از گروه پرسید آیا می‌خواهد پاسخی اضافه کند. گروه یک جمله را برگزید: حالا هر دو گروه کر با هم به دنبال سالنی موقت بودند."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "In het koorblad stond de bewering dat een nieuw ensemble de vaste repetitieruimte had ingepikt.",
+          "en": "The choir newsletter claimed that a new ensemble had taken over the regular rehearsal room.",
+          "fa": "در خبرنامه گروه کر ادعا شده بود گروهی تازه اتاق تمرین همیشگی را تصاحب کرده است."
+        },
+        {
+          "nl": "De schrijver kende alleen de teleurstelling van zijn eigen koor; zijn tekst was eenzijdig.",
+          "en": "The writer knew only his own choir's disappointment; his text was one-sided.",
+          "fa": "نویسنده تنها ناامیدی گروه خودش را می‌شناخت؛ متنش یک‌جانبه بود."
+        },
+        {
+          "nl": "Boekingsmedewerker Farah kon de beschuldiging weerleggen met de sluitingsmelding van de zaal.",
+          "en": "Booking clerk Farah could refute the accusation with the hall's closure notice.",
+          "fa": "فرح، مسئول رزرو، توانست با اطلاعیه تعطیلی سالن اتهام را رد کند."
+        },
+        {
+          "nl": "Beide groepen waren getroffen door een controle van de toegestane bezetting.",
+          "en": "Both groups had been affected by an inspection of permitted occupancy.",
+          "fa": "هر دو گروه تحت تأثیر بررسی ظرفیت مجاز قرار گرفته بودند."
+        },
+        {
+          "nl": "Het bestuur wilde het ongemak aan een vertraagd bericht toeschrijven en de digitale versie stil vervangen.",
+          "en": "The board wanted to attribute the problem to a delayed message and quietly replace the digital version.",
+          "fa": "هیئت می‌خواست مشکل را به پیام دیررس نسبت دهد و نسخه دیجیتال را بی‌سروصدا عوض کند."
+        },
+        {
+          "nl": "Desondanks bleef Farah aandringen: ook de papieren exemplaren lagen al in drie cafés.",
+          "en": "Nevertheless, Farah kept insisting: paper copies were already in three cafés too.",
+          "fa": "با این حال فرح پافشاری کرد: نسخه‌های کاغذی هم از قبل در سه کافه بودند."
+        },
+        {
+          "nl": "Een fout verzwijgen zou het nieuwe ensemble met de verdenking laten zitten.",
+          "en": "Concealing a mistake would leave the new ensemble under suspicion.",
+          "fa": "پنهان کردن خطا، گروه تازه را زیر سایه بدگمانی رها می‌کرد."
+        },
+        {
+          "nl": "De weerlegging werd daarom op dezelfde adressen bezorgd en bovenaan de website geplaatst.",
+          "en": "The refutation was therefore delivered to the same addresses and placed at the top of the website.",
+          "fa": "بنابراین ردیه را به همان نشانی‌ها رساندند و بالای وب‌سایت گذاشتند."
+        },
+        {
+          "nl": "De schrijver noemde zijn eigen aandeel en vroeg het ensemble of het een reactie wilde toevoegen.",
+          "en": "The writer acknowledged his own part and asked whether the ensemble wanted to add a response.",
+          "fa": "نویسنده سهم خودش را بیان کرد و از گروه پرسید آیا می‌خواهد پاسخی اضافه کند."
+        },
+        {
+          "nl": "Het ensemble koos voor één zin: beide koren zochten nu samen een tijdelijke zaal.",
+          "en": "The ensemble chose one sentence: both choirs were now seeking a temporary hall together.",
+          "fa": "گروه یک جمله را برگزید: حالا هر دو گروه کر با هم به دنبال سالنی موقت بودند."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v016",
+        "c1-core-v017",
+        "c1-core-v018",
+        "c1-core-v034",
+        "c1-core-v048",
+        "c1-v173",
+        "c1-v198"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom volstond een stille digitale wijziging niet?",
+          "en": "Why was a quiet digital change insufficient?",
+          "fa": "چرا تغییر بی‌سروصدای نسخه دیجیتال کافی نبود؟"
+        },
+        "options": [
+          {
+            "nl": "Farah wilde verhinderen dat de zaal ooit opnieuw openging.",
+            "en": "Farah wanted to prevent the hall from ever reopening.",
+            "fa": "فرح می‌خواست مانع باز شدن دوباره سالن شود."
+          },
+          {
+            "nl": "De beschuldiging was ook op papier verspreid en bleef het ensemble schaden.",
+            "en": "The allegation had also circulated on paper and continued to harm the ensemble.",
+            "fa": "اتهام روی کاغذ هم پخش شده بود و همچنان به گروه آسیب می‌زد."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De rechtzetting moest dezelfde lezers kunnen bereiken als de onjuiste bewering.",
+          "en": "The correction needed to be able to reach the same readers as the incorrect claim.",
+          "fa": "اصلاحیه باید می‌توانست به همان خوانندگان ادعای نادرست برسد."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-visible-mend",
+      "title": {
+        "nl": "Een zichtbare naad",
+        "en": "A visible seam",
+        "fa": "درزی آشکار"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Nadenken",
+        "en": "Reflection",
+        "fa": "تأمل"
+      },
+      "paragraphs": [
+        {
+          "nl": "Het herstelcafé ontving doorgaans werkjassen en versleten broeken, maar die zaterdag lag er een dure mantel. De eigenares, Nora, had de nieuwe naaimachine geschonken en kreeg meteen de specialist toegewezen. Naast haar wachtte een kok met een gescheurde uniformjas die hij maandag nodig had. Nora vond de voorrang niet billijk en vroeg om een eenvoudig, zichtbaar lapje. De vrijwilliger wilde haar gift niet relativeren en dacht dat ze uit beleefdheid sprak.",
+          "en": "The repair café usually received work jackets and worn trousers, but that Saturday there was an expensive coat. Its owner, Nora, had donated the new sewing machine and was immediately assigned the specialist. Beside her waited a cook with a torn uniform jacket he needed on Monday. Nora found the priority unfair and asked for a simple, visible patch. The volunteer did not want to diminish her gift and thought she was speaking out of politeness.",
+          "fa": "تعمیرکافه معمولاً کت کار و شلوار کهنه می‌گرفت، اما آن شنبه پالتویی گران روی میز بود. نورا، صاحب آن، چرخ خیاطی تازه را اهدا کرده بود و فوراً متخصص را به او اختصاص دادند. کنارش آشپزی با کت کار پاره منتظر بود که دوشنبه به آن نیاز داشت. نورا این اولویت را منصفانه ندانست و وصله‌ای ساده و آشکار خواست. داوطلب نمی‌خواست ارزش هدیه‌اش را کم کند و فکر کرد از سر تعارف حرف می‌زند."
+        },
+        {
+          "nl": "«Ik wil de zichtbare naad voor lief nemen als de kok geholpen wordt», legde ze uit. Haar verzoek inwilligen bleek eenvoudiger dan telkens opnieuw dankbaarheid te bewijzen. Er kwam overeenstemming over de twee herstellingen, zonder van andere schenkers hetzelfde te verwachten. De kok vertrok met een draagbare jas; Nora koos een lapje dat juist bij haar voering paste. Voor haar zat de solidariteit niet in onzichtbaar herstel, maar in de vrije keuze om ruimte te maken.",
+          "en": "“I am willing to accept a visible seam if the cook receives help,” she explained. Granting her request proved easier than repeatedly demonstrating gratitude. They agreed on the two repairs without expecting the same from other donors. The cook left with a wearable jacket; Nora chose a patch that matched her lining. For her, solidarity lay not in invisible repair but in freely choosing to make room.",
+          "fa": "توضیح داد: «اگر به آشپز کمک شود، با میل درز آشکار را می‌پذیرم.» پذیرفتن درخواستش ساده‌تر از اثبات پی‌درپی سپاسگزاری شد. درباره دو تعمیر توافق کردند، بی‌آنکه از دیگر اهداکنندگان همان انتظار را داشته باشند. آشپز با کتی قابل پوشیدن رفت؛ نورا وصله‌ای برگزید که با آسترش هماهنگ بود. برای او همبستگی در تعمیر نامرئی نبود، بلکه در انتخاب آزادانه جا باز کردن بود."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Het herstelcafé ontving doorgaans werkjassen en versleten broeken, maar die zaterdag lag er een dure mantel.",
+          "en": "The repair café usually received work jackets and worn trousers, but that Saturday there was an expensive coat.",
+          "fa": "تعمیرکافه معمولاً کت کار و شلوار کهنه می‌گرفت، اما آن شنبه پالتویی گران روی میز بود."
+        },
+        {
+          "nl": "De eigenares, Nora, had de nieuwe naaimachine geschonken en kreeg meteen de specialist toegewezen.",
+          "en": "Its owner, Nora, had donated the new sewing machine and was immediately assigned the specialist.",
+          "fa": "نورا، صاحب آن، چرخ خیاطی تازه را اهدا کرده بود و فوراً متخصص را به او اختصاص دادند."
+        },
+        {
+          "nl": "Naast haar wachtte een kok met een gescheurde uniformjas die hij maandag nodig had.",
+          "en": "Beside her waited a cook with a torn uniform jacket he needed on Monday.",
+          "fa": "کنارش آشپزی با کت کار پاره منتظر بود که دوشنبه به آن نیاز داشت."
+        },
+        {
+          "nl": "Nora vond de voorrang niet billijk en vroeg om een eenvoudig, zichtbaar lapje.",
+          "en": "Nora found the priority unfair and asked for a simple, visible patch.",
+          "fa": "نورا این اولویت را منصفانه ندانست و وصله‌ای ساده و آشکار خواست."
+        },
+        {
+          "nl": "De vrijwilliger wilde haar gift niet relativeren en dacht dat ze uit beleefdheid sprak.",
+          "en": "The volunteer did not want to diminish her gift and thought she was speaking out of politeness.",
+          "fa": "داوطلب نمی‌خواست ارزش هدیه‌اش را کم کند و فکر کرد از سر تعارف حرف می‌زند."
+        },
+        {
+          "nl": "«Ik wil de zichtbare naad voor lief nemen als de kok geholpen wordt», legde ze uit.",
+          "en": "“I am willing to accept a visible seam if the cook receives help,” she explained.",
+          "fa": "توضیح داد: «اگر به آشپز کمک شود، با میل درز آشکار را می‌پذیرم.»"
+        },
+        {
+          "nl": "Haar verzoek inwilligen bleek eenvoudiger dan telkens opnieuw dankbaarheid te bewijzen.",
+          "en": "Granting her request proved easier than repeatedly demonstrating gratitude.",
+          "fa": "پذیرفتن درخواستش ساده‌تر از اثبات پی‌درپی سپاسگزاری شد."
+        },
+        {
+          "nl": "Er kwam overeenstemming over de twee herstellingen, zonder van andere schenkers hetzelfde te verwachten.",
+          "en": "They agreed on the two repairs without expecting the same from other donors.",
+          "fa": "درباره دو تعمیر توافق کردند، بی‌آنکه از دیگر اهداکنندگان همان انتظار را داشته باشند."
+        },
+        {
+          "nl": "De kok vertrok met een draagbare jas; Nora koos een lapje dat juist bij haar voering paste.",
+          "en": "The cook left with a wearable jacket; Nora chose a patch that matched her lining.",
+          "fa": "آشپز با کتی قابل پوشیدن رفت؛ نورا وصله‌ای برگزید که با آسترش هماهنگ بود."
+        },
+        {
+          "nl": "Voor haar zat de solidariteit niet in onzichtbaar herstel, maar in de vrije keuze om ruimte te maken.",
+          "en": "For her, solidarity lay not in invisible repair but in freely choosing to make room.",
+          "fa": "برای او همبستگی در تعمیر نامرئی نبود، بلکه در انتخاب آزادانه جا باز کردن بود."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v019",
+        "c1-core-v020",
+        "c1-core-v033",
+        "c1-core-v052",
+        "c1-core-v060",
+        "c1-v418",
+        "c1-v139"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat maakte Nora’s keuze volgens het verhaal waardevol?",
+          "en": "What made Nora’s choice valuable in the story?",
+          "fa": "چه چیزی انتخاب نورا را در داستان ارزشمند کرد؟"
+        },
+        "options": [
+          {
+            "nl": "Zij maakte vrijwillig ruimte voor een dringende herstelling zonder dat anderen daartoe verplicht werden.",
+            "en": "She voluntarily made room for an urgent repair without obliging others to do the same.",
+            "fa": "داوطلبانه برای تعمیری فوری جا باز کرد، بی‌آنکه دیگران موظف به همان کار شوند."
+          },
+          {
+            "nl": "Zij eiste voor iedere schenker een onzichtbare herstelling.",
+            "en": "She demanded an invisible repair for every donor.",
+            "fa": "برای هر اهداکننده تعمیر نامرئی خواست."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "Haar voorstel combineert solidariteit met keuzevrijheid en wordt geen algemene eis aan schenkers.",
+          "en": "Her proposal combines solidarity with freedom of choice and does not become a general demand on donors.",
+          "fa": "پیشنهادش همبستگی را با آزادی انتخاب همراه می‌کند و به خواسته عمومی از اهداکنندگان تبدیل نمی‌شود."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-name-under-the-stitch",
+      "title": {
+        "nl": "De naam onder de steek",
+        "en": "The name beneath the stitch",
+        "fa": "نام زیر دوخت"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Raadsel",
+        "en": "Mystery",
+        "fa": "معما"
+      },
+      "paragraphs": [
+        {
+          "nl": "Een geborduurd wandkleed hing al jaren onder de naam van de vrouw die het museum had gesteund. De authenticiteit van het kleed stond vast, maar stagiair Elias zag een klein merkteken onder een losse steek. Hij wilde de herkomst van dat teken achterhalen zonder het kwetsbare garen los te trekken. In een loonboek vond hij dezelfde vorm naast betalingen aan vijf borduursters voor precies dit kleed. Die vondst kon een vergeten samenwerking blootleggen, maar maakte de oude naamsvermelding omstreden.",
+          "en": "An embroidered wall hanging had been displayed for years under the name of the woman who had supported the museum. The hanging's authenticity was established, but intern Elias noticed a small mark beneath a loose stitch. He wanted to discover the origin of that mark without pulling apart the fragile thread. In a wage ledger, he found the same mark beside payments to five embroiderers for this very hanging. The discovery could reveal a forgotten collaboration but made the old attribution disputed.",
+          "fa": "قالیچه‌ای گلدوزی‌شده سال‌ها به نام زنی نمایش داده می‌شد که از موزه حمایت کرده بود. اصالت قالیچه معلوم بود، اما الیاس، کارآموز، زیر دوختی شل نشانی کوچک دید. می‌خواست منشأ آن نشان را بیابد، بی‌آنکه نخ شکننده را باز کند. در دفتر دستمزد، همان نشان را کنار پرداخت‌هایی به پنج زن گلدوز برای همین قالیچه یافت. کشف می‌توانست همکاری فراموش‌شده‌ای را آشکار کند، اما نام‌گذاری قدیمی را محل اختلاف کرد."
+        },
+        {
+          "nl": "Een bestuurslid vreesde dat een nieuwe tekst de schenking van de beschermvrouw zou kleineren. Elias zei: «We moeten de vraag aanscherpen: gaat de naam over betaling, bezit of het eigenlijke werk?» De conservator liet doelbewust beide rollen in de nieuwe toelichting staan. De beschermvrouw bleef als schenker vermeld; de vijf makers kregen hun namen uit het loonboek terug. Het kleed veranderde niet, maar bezoekers bleven nu langer bij de tekst dan bij de gouden lijst.",
+          "en": "A board member feared a new text would diminish the patron's donation. Elias said: “We must refine the question: does the name refer to payment, ownership or the actual work?” The curator deliberately retained both roles in the new explanation. The patron remained listed as donor; the five makers regained their names from the wage ledger. The hanging did not change, but visitors now lingered longer at the text than at the gold frame.",
+          "fa": "عضوی از هیئت نگران بود متن تازه اهدای بانوی حامی را کوچک بشمارد. الیاس گفت: «باید پرسش را دقیق‌تر کنیم: نام به پرداخت مربوط است، به مالکیت یا به خود کار؟» مسئول موزه آگاهانه هر دو نقش را در توضیح تازه نگه داشت. نام بانوی حامی به‌عنوان اهداکننده ماند؛ پنج سازنده نام‌هایشان را از دفتر دستمزد باز یافتند. قالیچه تغییری نکرد، اما حالا بازدیدکنندگان بیشتر کنار متن می‌ماندند تا قاب طلایی."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Een geborduurd wandkleed hing al jaren onder de naam van de vrouw die het museum had gesteund.",
+          "en": "An embroidered wall hanging had been displayed for years under the name of the woman who had supported the museum.",
+          "fa": "قالیچه‌ای گلدوزی‌شده سال‌ها به نام زنی نمایش داده می‌شد که از موزه حمایت کرده بود."
+        },
+        {
+          "nl": "De authenticiteit van het kleed stond vast, maar stagiair Elias zag een klein merkteken onder een losse steek.",
+          "en": "The hanging's authenticity was established, but intern Elias noticed a small mark beneath a loose stitch.",
+          "fa": "اصالت قالیچه معلوم بود، اما الیاس، کارآموز، زیر دوختی شل نشانی کوچک دید."
+        },
+        {
+          "nl": "Hij wilde de herkomst van dat teken achterhalen zonder het kwetsbare garen los te trekken.",
+          "en": "He wanted to discover the origin of that mark without pulling apart the fragile thread.",
+          "fa": "می‌خواست منشأ آن نشان را بیابد، بی‌آنکه نخ شکننده را باز کند."
+        },
+        {
+          "nl": "In een loonboek vond hij dezelfde vorm naast betalingen aan vijf borduursters voor precies dit kleed.",
+          "en": "In a wage ledger, he found the same mark beside payments to five embroiderers for this very hanging.",
+          "fa": "در دفتر دستمزد، همان نشان را کنار پرداخت‌هایی به پنج زن گلدوز برای همین قالیچه یافت."
+        },
+        {
+          "nl": "Die vondst kon een vergeten samenwerking blootleggen, maar maakte de oude naamsvermelding omstreden.",
+          "en": "The discovery could reveal a forgotten collaboration but made the old attribution disputed.",
+          "fa": "کشف می‌توانست همکاری فراموش‌شده‌ای را آشکار کند، اما نام‌گذاری قدیمی را محل اختلاف کرد."
+        },
+        {
+          "nl": "Een bestuurslid vreesde dat een nieuwe tekst de schenking van de beschermvrouw zou kleineren.",
+          "en": "A board member feared a new text would diminish the patron's donation.",
+          "fa": "عضوی از هیئت نگران بود متن تازه اهدای بانوی حامی را کوچک بشمارد."
+        },
+        {
+          "nl": "Elias zei: «We moeten de vraag aanscherpen: gaat de naam over betaling, bezit of het eigenlijke werk?»",
+          "en": "Elias said: “We must refine the question: does the name refer to payment, ownership or the actual work?”",
+          "fa": "الیاس گفت: «باید پرسش را دقیق‌تر کنیم: نام به پرداخت مربوط است، به مالکیت یا به خود کار؟»"
+        },
+        {
+          "nl": "De conservator liet doelbewust beide rollen in de nieuwe toelichting staan.",
+          "en": "The curator deliberately retained both roles in the new explanation.",
+          "fa": "مسئول موزه آگاهانه هر دو نقش را در توضیح تازه نگه داشت."
+        },
+        {
+          "nl": "De beschermvrouw bleef als schenker vermeld; de vijf makers kregen hun namen uit het loonboek terug.",
+          "en": "The patron remained listed as donor; the five makers regained their names from the wage ledger.",
+          "fa": "نام بانوی حامی به‌عنوان اهداکننده ماند؛ پنج سازنده نام‌هایشان را از دفتر دستمزد باز یافتند."
+        },
+        {
+          "nl": "Het kleed veranderde niet, maar bezoekers bleven nu langer bij de tekst dan bij de gouden lijst.",
+          "en": "The hanging did not change, but visitors now lingered longer at the text than at the gold frame.",
+          "fa": "قالیچه تغییری نکرد، اما حالا بازدیدکنندگان بیشتر کنار متن می‌ماندند تا قاب طلایی."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v021",
+        "c1-core-v022",
+        "c1-core-v023",
+        "c1-core-v039",
+        "c1-core-v056",
+        "c1-v338",
+        "c1-v324"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Welk onderscheid maakte de nieuwe toelichting?",
+          "en": "What distinction did the new explanation make?",
+          "fa": "توضیح تازه چه تمایزی ایجاد کرد؟"
+        },
+        "options": [
+          {
+            "nl": "Zij verklaarde dat het hele kleed een moderne vervalsing was.",
+            "en": "It declared the entire hanging a modern forgery.",
+            "fa": "اعلام کرد تمام قالیچه جعلی امروزی است."
+          },
+          {
+            "nl": "Zij onderscheidde de schenker van de mensen die het kleed hadden gemaakt.",
+            "en": "It distinguished the donor from the people who made the hanging.",
+            "fa": "اهداکننده را از افرادی که قالیچه را ساخته بودند جدا کرد."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Het loonboek gaf informatie over het werk, terwijl de schenking als afzonderlijke bijdrage behouden bleef.",
+          "en": "The ledger provided information about the work, while the donation remained recognised as a separate contribution.",
+          "fa": "دفتر درباره کار اطلاعات داد، در حالی که اهدا به‌عنوان مشارکتی جدا همچنان به رسمیت شناخته شد."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-coded-greeting",
+      "title": {
+        "nl": "Een groet die iemand herkende",
+        "en": "A greeting someone recognised",
+        "fa": "سلامی که کسی شناخت"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Drama",
+        "en": "Drama",
+        "fa": "درام"
+      },
+      "paragraphs": [
+        {
+          "nl": "Voor een voorstelling had regisseur Ines een getuigenverhaal laten inspreken door een acteur. De vertelstem was anders en alle namen waren vervangen, zoals vooraf afgesproken. Tijdens de besloten voorvertoning hoorde de getuige echter de groet die alleen haar broer gebruikte. Zij vroeg Ines de scène voorlopig niet te spelen, omdat haar familie haar zo kon herkennen. Ines had tijd nodig om te doorgronden waarom juist dat warme detail zo bedreigend was.",
+          "en": "For a production, director Ines had a witness’s account recorded by an actor. The narrative voice was different and all names had been changed, as agreed beforehand. During the private preview, however, the witness heard the greeting only her brother used. She asked Ines not to perform the scene for now because her family could identify her that way. Ines needed time to understand why that particular warm detail felt so threatening.",
+          "fa": "اینس، کارگردان، برای نمایشی روایت یک شاهد را با صدای بازیگر ضبط کرده بود. صدای روایت متفاوت بود و همه نام‌ها طبق توافق عوض شده بودند. اما در پیش‌نمایش خصوصی، شاهد سلامی را شنید که فقط برادرش استفاده می‌کرد. از اینس خواست فعلاً صحنه را اجرا نکند، چون خانواده می‌توانستند از آن او را بشناسند. اینس به زمان نیاز داشت تا بفهمد چرا درست همان جزئیات صمیمی این‌قدر تهدیدآمیز است."
+        },
+        {
+          "nl": "Daarna besefte ze dat de vertrouwelijkheid niet alleen door namen werd bepaald. «Haar vertrouwen kan op het spel staan als ik nu doorga», dacht Ines. Omdat een openbare herkenning onomkeerbaar kon zijn, wilde ze de scène opschorten. Vooralsnog kwam er een korte overgang zonder dat verhaal, ook al werd de voorstelling daardoor minder vloeiend. De getuige bleef betrokken bij een nieuwe versie en hoefde haar grens niet voor het publiek te verdedigen.",
+          "en": "Then she realised that confidentiality was not determined by names alone. “Her trust may be at stake if I go ahead now,” Ines thought. Because public identification could be irreversible, she wanted to suspend the scene. For the time being, a short transition replaced that story, even though the production became less fluid. The witness remained involved in a new version and did not have to defend her boundary to the audience.",
+          "fa": "سپس فهمید محرمانگی فقط به نام‌ها بستگی ندارد. اینس فکر کرد: «اگر حالا ادامه بدهم، اعتماد او ممکن است به خطر بیفتد.» چون شناسایی عمومی می‌توانست برگشت‌ناپذیر باشد، می‌خواست صحنه را معلق کند. فعلاً گذاری کوتاه بدون آن روایت جایگزین شد، هرچند نمایش روانی کمتری پیدا کرد. شاهد در نسخه تازه مشارکت داشت و لازم نبود مرزش را در برابر تماشاگران توجیه کند."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Voor een voorstelling had regisseur Ines een getuigenverhaal laten inspreken door een acteur.",
+          "en": "For a production, director Ines had a witness’s account recorded by an actor.",
+          "fa": "اینس، کارگردان، برای نمایشی روایت یک شاهد را با صدای بازیگر ضبط کرده بود."
+        },
+        {
+          "nl": "De vertelstem was anders en alle namen waren vervangen, zoals vooraf afgesproken.",
+          "en": "The narrative voice was different and all names had been changed, as agreed beforehand.",
+          "fa": "صدای روایت متفاوت بود و همه نام‌ها طبق توافق عوض شده بودند."
+        },
+        {
+          "nl": "Tijdens de besloten voorvertoning hoorde de getuige echter de groet die alleen haar broer gebruikte.",
+          "en": "During the private preview, however, the witness heard the greeting only her brother used.",
+          "fa": "اما در پیش‌نمایش خصوصی، شاهد سلامی را شنید که فقط برادرش استفاده می‌کرد."
+        },
+        {
+          "nl": "Zij vroeg Ines de scène voorlopig niet te spelen, omdat haar familie haar zo kon herkennen.",
+          "en": "She asked Ines not to perform the scene for now because her family could identify her that way.",
+          "fa": "از اینس خواست فعلاً صحنه را اجرا نکند، چون خانواده می‌توانستند از آن او را بشناسند."
+        },
+        {
+          "nl": "Ines had tijd nodig om te doorgronden waarom juist dat warme detail zo bedreigend was.",
+          "en": "Ines needed time to understand why that particular warm detail felt so threatening.",
+          "fa": "اینس به زمان نیاز داشت تا بفهمد چرا درست همان جزئیات صمیمی این‌قدر تهدیدآمیز است."
+        },
+        {
+          "nl": "Daarna besefte ze dat de vertrouwelijkheid niet alleen door namen werd bepaald.",
+          "en": "Then she realised that confidentiality was not determined by names alone.",
+          "fa": "سپس فهمید محرمانگی فقط به نام‌ها بستگی ندارد."
+        },
+        {
+          "nl": "«Haar vertrouwen kan op het spel staan als ik nu doorga», dacht Ines.",
+          "en": "“Her trust may be at stake if I go ahead now,” Ines thought.",
+          "fa": "اینس فکر کرد: «اگر حالا ادامه بدهم، اعتماد او ممکن است به خطر بیفتد.»"
+        },
+        {
+          "nl": "Omdat een openbare herkenning onomkeerbaar kon zijn, wilde ze de scène opschorten.",
+          "en": "Because public identification could be irreversible, she wanted to suspend the scene.",
+          "fa": "چون شناسایی عمومی می‌توانست برگشت‌ناپذیر باشد، می‌خواست صحنه را معلق کند."
+        },
+        {
+          "nl": "Vooralsnog kwam er een korte overgang zonder dat verhaal, ook al werd de voorstelling daardoor minder vloeiend.",
+          "en": "For the time being, a short transition replaced that story, even though the production became less fluid.",
+          "fa": "فعلاً گذاری کوتاه بدون آن روایت جایگزین شد، هرچند نمایش روانی کمتری پیدا کرد."
+        },
+        {
+          "nl": "De getuige bleef betrokken bij een nieuwe versie en hoefde haar grens niet voor het publiek te verdedigen.",
+          "en": "The witness remained involved in a new version and did not have to defend her boundary to the audience.",
+          "fa": "شاهد در نسخه تازه مشارکت داشت و لازم نبود مرزش را در برابر تماشاگران توجیه کند."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v024",
+        "c1-core-v025",
+        "c1-core-v037",
+        "c1-core-v047",
+        "c1-core-v065",
+        "c1-v183",
+        "c1-v310"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom werd de scène uitgesteld ondanks de gewijzigde namen?",
+          "en": "Why was the scene postponed despite the changed names?",
+          "fa": "چرا با وجود تغییر نام‌ها صحنه به تعویق افتاد؟"
+        },
+        "options": [
+          {
+            "nl": "Een herkenbare persoonlijke groet kon de identiteit van de getuige alsnog prijsgeven.",
+            "en": "A recognisable private greeting could still reveal the witness’s identity.",
+            "fa": "سلامی شخصی و قابل تشخیص باز هم می‌توانست هویت شاهد را فاش کند."
+          },
+          {
+            "nl": "De acteur weigerde nog langer een andere vertelstem te gebruiken.",
+            "en": "The actor refused to keep using a different narrative voice.",
+            "fa": "بازیگر از ادامه استفاده از صدای روایی متفاوت خودداری کرد."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "Een detail buiten de namen kon herkenning veroorzaken; de regisseur koos daarom voor uitstel.",
+          "en": "A detail other than names could cause identification, so the director chose postponement.",
+          "fa": "جزئیاتی غیر از نام‌ها می‌توانست موجب شناسایی شود؛ بنابراین کارگردان تعویق را برگزید."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-two-drying-rules",
+      "title": {
+        "nl": "Twee regels in de droogkamer",
+        "en": "Two rules in the drying room",
+        "fa": "دو قاعده در اتاق خشک‌کن"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Samenleven",
+        "en": "Community",
+        "fa": "زندگی اجتماعی"
+      },
+      "paragraphs": [
+        {
+          "nl": "In de gemeenschappelijke droogkamer trok Pieter de deur telkens dicht en zette Laleh haar telkens weer open. Hij wilde niet dat voorbijgangers zijn was zagen; zij wilde vochtige lucht uit het lokaal laten. Hun wantrouwen was wederzijds geworden en de huisvergadering sprak al van een patstelling. Buurvrouw Eva wilde bemiddelen, maar vroeg eerst welke instructie ieder precies volgde. Pieter wees op een oud bordje in de kamer; Laleh had een nieuwe brief van de beheerder.",
+          "en": "In the shared drying room, Pieter kept closing the door and Laleh kept opening it again. He did not want passers-by seeing his laundry; she wanted damp air to leave the room. Their mistrust had become mutual, and the building meeting was already calling it a deadlock. Their neighbour Eva wanted to mediate but first asked which instruction each was following. Pieter pointed to an old sign in the room; Laleh had a new letter from the manager.",
+          "fa": "در اتاق خشک‌کردن مشترک، پیتر مدام در را می‌بست و لاله دوباره بازش می‌کرد. او نمی‌خواست رهگذران لباس‌هایش را ببینند؛ لاله می‌خواست هوای مرطوب بیرون برود. بی‌اعتمادی‌شان متقابل شده بود و جلسه ساختمان از بن‌بست حرف می‌زد. اوا، همسایه‌شان، می‌خواست میانجی‌گری کند، اما ابتدا پرسید هرکدام دقیقاً از چه دستوری پیروی می‌کنند. پیتر به تابلوی قدیمی اتاق اشاره کرد؛ لاله نامه‌ای تازه از مدیر داشت."
+        },
+        {
+          "nl": "De instructies waren tegenstrijdig, zodat het volgen van de ene regel voor de andere bewoner op sabotage leek. Eva zei: «Ventilatie kan op gespannen voet staan met privacy in een gang zonder afscherming.» Hun contact was te kwetsbaar voor nog een bevel dat slechts één belang erkende. De beheerder plaatste een afgeschermd rooster en verving beide teksten door één samen gelezen afspraak. De deur kon dichtblijven, de lucht kon weg en geen van beiden hoefde de eigen kwetsbaarheid te bewijzen.",
+          "en": "The instructions conflicted, so following one rule looked like sabotage to the other resident. Eva said: “Ventilation can conflict with privacy in an unscreened corridor.” Their relationship was too fragile for another instruction recognising only one interest. The manager installed a screened vent and replaced both texts with one agreement read together. The door could stay shut, air could escape, and neither had to prove their vulnerability.",
+          "fa": "دستورها متناقض بودند؛ بنابراین پیروی از یک قاعده از نظر ساکن دیگر شبیه خرابکاری بود. اوا گفت: «در راهروی بدون حفاظ، تهویه می‌تواند با حریم خصوصی ناسازگار باشد.» رابطه‌شان برای دستوری دیگر که تنها یک منفعت را ببیند، بیش از حد شکننده بود. مدیر دریچه‌ای با پوشش نصب کرد و هر دو متن را با توافقی جایگزین کرد که با هم خواندند. در می‌توانست بسته بماند، هوا خارج شود و هیچ‌کدام مجبور نبود آسیب‌پذیری‌اش را ثابت کند."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "In de gemeenschappelijke droogkamer trok Pieter de deur telkens dicht en zette Laleh haar telkens weer open.",
+          "en": "In the shared drying room, Pieter kept closing the door and Laleh kept opening it again.",
+          "fa": "در اتاق خشک‌کردن مشترک، پیتر مدام در را می‌بست و لاله دوباره بازش می‌کرد."
+        },
+        {
+          "nl": "Hij wilde niet dat voorbijgangers zijn was zagen; zij wilde vochtige lucht uit het lokaal laten.",
+          "en": "He did not want passers-by seeing his laundry; she wanted damp air to leave the room.",
+          "fa": "او نمی‌خواست رهگذران لباس‌هایش را ببینند؛ لاله می‌خواست هوای مرطوب بیرون برود."
+        },
+        {
+          "nl": "Hun wantrouwen was wederzijds geworden en de huisvergadering sprak al van een patstelling.",
+          "en": "Their mistrust had become mutual, and the building meeting was already calling it a deadlock.",
+          "fa": "بی‌اعتمادی‌شان متقابل شده بود و جلسه ساختمان از بن‌بست حرف می‌زد."
+        },
+        {
+          "nl": "Buurvrouw Eva wilde bemiddelen, maar vroeg eerst welke instructie ieder precies volgde.",
+          "en": "Their neighbour Eva wanted to mediate but first asked which instruction each was following.",
+          "fa": "اوا، همسایه‌شان، می‌خواست میانجی‌گری کند، اما ابتدا پرسید هرکدام دقیقاً از چه دستوری پیروی می‌کنند."
+        },
+        {
+          "nl": "Pieter wees op een oud bordje in de kamer; Laleh had een nieuwe brief van de beheerder.",
+          "en": "Pieter pointed to an old sign in the room; Laleh had a new letter from the manager.",
+          "fa": "پیتر به تابلوی قدیمی اتاق اشاره کرد؛ لاله نامه‌ای تازه از مدیر داشت."
+        },
+        {
+          "nl": "De instructies waren tegenstrijdig, zodat het volgen van de ene regel voor de andere bewoner op sabotage leek.",
+          "en": "The instructions conflicted, so following one rule looked like sabotage to the other resident.",
+          "fa": "دستورها متناقض بودند؛ بنابراین پیروی از یک قاعده از نظر ساکن دیگر شبیه خرابکاری بود."
+        },
+        {
+          "nl": "Eva zei: «Ventilatie kan op gespannen voet staan met privacy in een gang zonder afscherming.»",
+          "en": "Eva said: “Ventilation can conflict with privacy in an unscreened corridor.”",
+          "fa": "اوا گفت: «در راهروی بدون حفاظ، تهویه می‌تواند با حریم خصوصی ناسازگار باشد.»"
+        },
+        {
+          "nl": "Hun contact was te kwetsbaar voor nog een bevel dat slechts één belang erkende.",
+          "en": "Their relationship was too fragile for another instruction recognising only one interest.",
+          "fa": "رابطه‌شان برای دستوری دیگر که تنها یک منفعت را ببیند، بیش از حد شکننده بود."
+        },
+        {
+          "nl": "De beheerder plaatste een afgeschermd rooster en verving beide teksten door één samen gelezen afspraak.",
+          "en": "The manager installed a screened vent and replaced both texts with one agreement read together.",
+          "fa": "مدیر دریچه‌ای با پوشش نصب کرد و هر دو متن را با توافقی جایگزین کرد که با هم خواندند."
+        },
+        {
+          "nl": "De deur kon dichtblijven, de lucht kon weg en geen van beiden hoefde de eigen kwetsbaarheid te bewijzen.",
+          "en": "The door could stay shut, air could escape, and neither had to prove their vulnerability.",
+          "fa": "در می‌توانست بسته بماند، هوا خارج شود و هیچ‌کدام مجبور نبود آسیب‌پذیری‌اش را ثابت کند."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v026",
+        "c1-core-v032",
+        "c1-core-v040",
+        "c1-core-v044",
+        "c1-core-v059",
+        "c1-v048",
+        "c1-v357"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat maakte de patstelling begrijpelijk?",
+          "en": "What made the deadlock understandable?",
+          "fa": "چه چیزی بن‌بست را قابل فهم کرد؟"
+        },
+        "options": [
+          {
+            "nl": "Beide bewoners wilden dat de droogkamer voorgoed gesloten werd.",
+            "en": "Both residents wanted the drying room permanently closed.",
+            "fa": "هر دو ساکن می‌خواستند اتاق خشک‌کن برای همیشه بسته شود."
+          },
+          {
+            "nl": "De bewoners volgden verschillende instructies die niet tegelijk konden worden uitgevoerd.",
+            "en": "The residents followed different instructions that could not both be carried out.",
+            "fa": "ساکنان از دستورهای متفاوتی پیروی می‌کردند که اجرای هم‌زمانشان ممکن نبود."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "Het conflict leek persoonlijk, maar de tegenstrijdige regels versterkten twee echte belangen.",
+          "en": "The dispute seemed personal, but conflicting rules reinforced two real interests.",
+          "fa": "اختلاف شخصی به نظر می‌رسید، اما قواعد متناقض دو منفعت واقعی را تشدید می‌کردند."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-two-final-verses",
+      "title": {
+        "nl": "Twee laatste coupletten",
+        "en": "Two final verses",
+        "fa": "دو بند پایانی"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Nadenken",
+        "en": "Reflection",
+        "fa": "تأمل"
+      },
+      "paragraphs": [
+        {
+          "nl": "Voor het jubileum wilde het buurtkoor de laatste strofe zingen zoals die vroeger altijd geklonken had. Maar twee oudere leden brachten verschillende woorden mee en noemden allebei hun versie de traditie. De dirigent vond het verschil klein; zijn grapje had een onbedoeld effect en maakte hen nog stelliger. Hij besloot daarna zorgvuldig te zijn en vroeg ieder het eigen blad toe te lichten. Geleidelijk bleek dat de ene versie bij rouwbijeenkomsten werd gebruikt en de andere bij feesten.",
+          "en": "For the anniversary, the neighbourhood choir wanted to sing the last verse as it had always sounded. But two older members brought different words, each calling their version the tradition. The conductor thought the difference small; his joke had an unintended effect and made them more adamant. He then decided to be careful and asked each to explain their sheet. Gradually, it emerged that one version was used at mourning gatherings and the other at celebrations.",
+          "fa": "گروه کر محله می‌خواست برای سالگرد، بند آخر را همان‌طور بخواند که همیشه در گذشته شنیده می‌شد. اما دو عضو مسن واژه‌هایی متفاوت آوردند و هر دو نسخه خود را سنت نامیدند. رهبر تفاوت را کوچک دانست؛ شوخی‌اش اثری ناخواسته داشت و آن‌ها را قاطع‌تر کرد. سپس تصمیم گرفت دقیق عمل کند و از هرکدام خواست برگه خود را توضیح دهد. به‌تدریج معلوم شد یک نسخه در سوگواری و دیگری در جشن‌ها استفاده می‌شد."
+        },
+        {
+          "nl": "Een oude repetitieopname bevatte zelfs beide strofen achter elkaar, zonder verklaring over hun ouderdom. Daardoor werd het oordeel genuanceerd: hun herinneringen betroffen andere gelegenheden. Het koor kon in het midden laten welke tekst het eerst bestond en toch beide leden serieus nemen. Op de jubileumavond zongen ze beide strofen, met een korte toelichting die de nuance behield. Voor het slot stonden de twee leden naast elkaar; ditmaal wist niemand meer wie als eerste had aangedrongen.",
+          "en": "An old rehearsal recording even contained both verses in sequence, without any explanation of their age. That made the judgment more nuanced: their memories concerned different occasions. The choir could leave undecided which text came first while taking both members seriously. On the anniversary evening, they sang both verses with a short explanation preserving the nuance. For the finale, the two members stood side by side; this time nobody remembered who had insisted first.",
+          "fa": "ضبط تمرینی قدیمی حتی هر دو بند را پشت سر هم داشت، بدون توضیحی درباره قدمتشان. در نتیجه داوری سنجیده‌تر شد: خاطره‌هایشان به موقعیت‌های متفاوت مربوط بود. گروه می‌توانست تعیین نکند کدام متن زودتر وجود داشته و با این حال هر دو عضو را جدی بگیرد. شب سالگرد هر دو بند را خواندند، با توضیحی کوتاه که ظرافت معنا را حفظ می‌کرد. در پایان، دو عضو کنار هم ایستادند؛ این بار دیگر کسی به یاد نداشت چه کسی اول اصرار کرده بود."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Voor het jubileum wilde het buurtkoor de laatste strofe zingen zoals die vroeger altijd geklonken had.",
+          "en": "For the anniversary, the neighbourhood choir wanted to sing the last verse as it had always sounded.",
+          "fa": "گروه کر محله می‌خواست برای سالگرد، بند آخر را همان‌طور بخواند که همیشه در گذشته شنیده می‌شد."
+        },
+        {
+          "nl": "Maar twee oudere leden brachten verschillende woorden mee en noemden allebei hun versie de traditie.",
+          "en": "But two older members brought different words, each calling their version the tradition.",
+          "fa": "اما دو عضو مسن واژه‌هایی متفاوت آوردند و هر دو نسخه خود را سنت نامیدند."
+        },
+        {
+          "nl": "De dirigent vond het verschil klein; zijn grapje had een onbedoeld effect en maakte hen nog stelliger.",
+          "en": "The conductor thought the difference small; his joke had an unintended effect and made them more adamant.",
+          "fa": "رهبر تفاوت را کوچک دانست؛ شوخی‌اش اثری ناخواسته داشت و آن‌ها را قاطع‌تر کرد."
+        },
+        {
+          "nl": "Hij besloot daarna zorgvuldig te zijn en vroeg ieder het eigen blad toe te lichten.",
+          "en": "He then decided to be careful and asked each to explain their sheet.",
+          "fa": "سپس تصمیم گرفت دقیق عمل کند و از هرکدام خواست برگه خود را توضیح دهد."
+        },
+        {
+          "nl": "Geleidelijk bleek dat de ene versie bij rouwbijeenkomsten werd gebruikt en de andere bij feesten.",
+          "en": "Gradually, it emerged that one version was used at mourning gatherings and the other at celebrations.",
+          "fa": "به‌تدریج معلوم شد یک نسخه در سوگواری و دیگری در جشن‌ها استفاده می‌شد."
+        },
+        {
+          "nl": "Een oude repetitieopname bevatte zelfs beide strofen achter elkaar, zonder verklaring over hun ouderdom.",
+          "en": "An old rehearsal recording even contained both verses in sequence, without any explanation of their age.",
+          "fa": "ضبط تمرینی قدیمی حتی هر دو بند را پشت سر هم داشت، بدون توضیحی درباره قدمتشان."
+        },
+        {
+          "nl": "Daardoor werd het oordeel genuanceerd: hun herinneringen betroffen andere gelegenheden.",
+          "en": "That made the judgment more nuanced: their memories concerned different occasions.",
+          "fa": "در نتیجه داوری سنجیده‌تر شد: خاطره‌هایشان به موقعیت‌های متفاوت مربوط بود."
+        },
+        {
+          "nl": "Het koor kon in het midden laten welke tekst het eerst bestond en toch beide leden serieus nemen.",
+          "en": "The choir could leave undecided which text came first while taking both members seriously.",
+          "fa": "گروه می‌توانست تعیین نکند کدام متن زودتر وجود داشته و با این حال هر دو عضو را جدی بگیرد."
+        },
+        {
+          "nl": "Op de jubileumavond zongen ze beide strofen, met een korte toelichting die de nuance behield.",
+          "en": "On the anniversary evening, they sang both verses with a short explanation preserving the nuance.",
+          "fa": "شب سالگرد هر دو بند را خواندند، با توضیحی کوتاه که ظرافت معنا را حفظ می‌کرد."
+        },
+        {
+          "nl": "Voor het slot stonden de twee leden naast elkaar; ditmaal wist niemand meer wie als eerste had aangedrongen.",
+          "en": "For the finale, the two members stood side by side; this time nobody remembered who had insisted first.",
+          "fa": "در پایان، دو عضو کنار هم ایستادند؛ این بار دیگر کسی به یاد نداشت چه کسی اول اصرار کرده بود."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v031",
+        "c1-core-v035",
+        "c1-core-v041",
+        "c1-core-v050",
+        "c1-core-v061",
+        "c1-v155",
+        "c1-v303"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Waarom kon het koor beide versies zingen zonder hun ouderdom vast te stellen?",
+          "en": "Why could the choir sing both versions without establishing their age?",
+          "fa": "چرا گروه می‌توانست بدون تعیین قدمت، هر دو نسخه را بخواند؟"
+        },
+        "options": [
+          {
+            "nl": "De bronnen toonden verschillende gebruiken, waardoor beide herinneringen betekenis hielden.",
+            "en": "The sources showed different uses, so both memories retained meaning.",
+            "fa": "منابع کاربردهای متفاوت نشان دادند، پس هر دو خاطره معنا داشتند."
+          },
+          {
+            "nl": "De dirigent had bewezen dat beide leden hun teksten pas onlangs hadden verzonnen.",
+            "en": "The conductor had proved both members had invented their texts recently.",
+            "fa": "رهبر ثابت کرده بود هر دو عضو متنشان را به‌تازگی ساخته‌اند."
+          }
+        ],
+        "answer_index": 0,
+        "explanation": {
+          "nl": "Het koor scheidde de vraag naar historische voorrang van de erkenning van beide ervaringen.",
+          "en": "The choir separated historical priority from recognising both experiences.",
+          "fa": "گروه پرسش تقدم تاریخی را از به‌رسمیت‌شناختن هر دو تجربه جدا کرد."
+        }
+      }
+    },
+    {
+      "id": "c1-s-reading-help-without-portrait",
+      "title": {
+        "nl": "Hulp zonder portret",
+        "en": "Help without a portrait",
+        "fa": "کمک بدون پرتره"
+      },
+      "topic": {
+        "nl": "Verhaal naar gesprek",
+        "en": "Story into conversation",
+        "fa": "از داستان تا گفت‌وگو"
+      },
+      "genre": {
+        "nl": "Drama",
+        "en": "Drama",
+        "fa": "درام"
+      },
+      "paragraphs": [
+        {
+          "nl": "Na een geslaagde aanvraag vroeg het opleidingscentrum aan Samira of zij het gezicht van een campagne wilde worden. De medewerker zei dat haar verhaal wellicht meer mensen over de drempel zou helpen. Samira glimlachte, maar kreeg nauwelijks ruimte om te zeggen dat haar aanvraag niet haar hele leven was. Toen de medewerker al een fotograaf noemde, vroeg zij of haar verdere hulp van deelname afhing. Haar vraag maakte de stille druk eindelijk bespreekbaar.",
+          "en": "After a successful application, the training centre asked Samira to be the face of a campaign. The employee said her story might help more people take the first step. Samira smiled but had hardly any room to say that her application was not her whole life. When the employee was already mentioning a photographer, she asked whether further help depended on participating. Her question finally made the quiet pressure open to discussion.",
+          "fa": "پس از درخواستی موفق، مرکز آموزشی از سمیرا خواست چهره یک کارزار شود. کارمند گفت شاید روایت او به افراد بیشتری برای برداشتن قدم اول کمک کند. سمیرا لبخند زد، اما به‌سختی فرصت یافت بگوید درخواستش تمام زندگی او نیست. وقتی کارمند از عکاس هم حرف زد، پرسید آیا ادامه کمک به مشارکت وابسته است. پرسش او سرانجام فشار خاموش را قابل گفت‌وگو کرد."
+        },
+        {
+          "nl": "De medewerker antwoordde dat ondersteuning overigens geen tegenprestatie in publiciteit vereiste. Hij zag dat alleen een vriendelijk bedoelde uitnodiging niet toereikend was om haar autonomie te beschermen. Samen tekenden ze een anoniem schema van de stappen waarbij het centrum kon helpen. De campagne kreeg dat schema; Samira behield haar volgende afspraak zonder camera. Haar waardigheid bleek niet uit een dankbaar portret, maar uit de mogelijkheid om zelf nee te zeggen.",
+          "en": "The employee answered that support, incidentally, required no publicity in return. He saw that a well-intentioned invitation alone was not enough to protect her autonomy. Together, they drew an anonymous diagram of the steps with which the centre could help. The campaign received that diagram; Samira kept her next appointment without a camera. Her dignity was shown not by a grateful portrait but by being able to say no for herself.",
+          "fa": "کارمند پاسخ داد که ضمناً دریافت حمایت نیازمند تبلیغ در عوض آن نیست. فهمید دعوتی با نیت خوب به‌تنهایی برای حفظ استقلال او کافی نیست. با هم نموداری بی‌نام از مرحله‌هایی کشیدند که مرکز می‌توانست در آن‌ها کمک کند. کارزار آن نمودار را گرفت؛ نوبت بعدی سمیرا بدون دوربین پابرجا ماند. کرامتش در پرتره‌ای سپاسگزار نبود، بلکه در امکان نه گفتن خودش بود."
+        }
+      ],
+      "lines": [
+        {
+          "nl": "Na een geslaagde aanvraag vroeg het opleidingscentrum aan Samira of zij het gezicht van een campagne wilde worden.",
+          "en": "After a successful application, the training centre asked Samira to be the face of a campaign.",
+          "fa": "پس از درخواستی موفق، مرکز آموزشی از سمیرا خواست چهره یک کارزار شود."
+        },
+        {
+          "nl": "De medewerker zei dat haar verhaal wellicht meer mensen over de drempel zou helpen.",
+          "en": "The employee said her story might help more people take the first step.",
+          "fa": "کارمند گفت شاید روایت او به افراد بیشتری برای برداشتن قدم اول کمک کند."
+        },
+        {
+          "nl": "Samira glimlachte, maar kreeg nauwelijks ruimte om te zeggen dat haar aanvraag niet haar hele leven was.",
+          "en": "Samira smiled but had hardly any room to say that her application was not her whole life.",
+          "fa": "سمیرا لبخند زد، اما به‌سختی فرصت یافت بگوید درخواستش تمام زندگی او نیست."
+        },
+        {
+          "nl": "Toen de medewerker al een fotograaf noemde, vroeg zij of haar verdere hulp van deelname afhing.",
+          "en": "When the employee was already mentioning a photographer, she asked whether further help depended on participating.",
+          "fa": "وقتی کارمند از عکاس هم حرف زد، پرسید آیا ادامه کمک به مشارکت وابسته است."
+        },
+        {
+          "nl": "Haar vraag maakte de stille druk eindelijk bespreekbaar.",
+          "en": "Her question finally made the quiet pressure open to discussion.",
+          "fa": "پرسش او سرانجام فشار خاموش را قابل گفت‌وگو کرد."
+        },
+        {
+          "nl": "De medewerker antwoordde dat ondersteuning overigens geen tegenprestatie in publiciteit vereiste.",
+          "en": "The employee answered that support, incidentally, required no publicity in return.",
+          "fa": "کارمند پاسخ داد که ضمناً دریافت حمایت نیازمند تبلیغ در عوض آن نیست."
+        },
+        {
+          "nl": "Hij zag dat alleen een vriendelijk bedoelde uitnodiging niet toereikend was om haar autonomie te beschermen.",
+          "en": "He saw that a well-intentioned invitation alone was not enough to protect her autonomy.",
+          "fa": "فهمید دعوتی با نیت خوب به‌تنهایی برای حفظ استقلال او کافی نیست."
+        },
+        {
+          "nl": "Samen tekenden ze een anoniem schema van de stappen waarbij het centrum kon helpen.",
+          "en": "Together, they drew an anonymous diagram of the steps with which the centre could help.",
+          "fa": "با هم نموداری بی‌نام از مرحله‌هایی کشیدند که مرکز می‌توانست در آن‌ها کمک کند."
+        },
+        {
+          "nl": "De campagne kreeg dat schema; Samira behield haar volgende afspraak zonder camera.",
+          "en": "The campaign received that diagram; Samira kept her next appointment without a camera.",
+          "fa": "کارزار آن نمودار را گرفت؛ نوبت بعدی سمیرا بدون دوربین پابرجا ماند."
+        },
+        {
+          "nl": "Haar waardigheid bleek niet uit een dankbaar portret, maar uit de mogelijkheid om zelf nee te zeggen.",
+          "en": "Her dignity was shown not by a grateful portrait but by being able to say no for herself.",
+          "fa": "کرامتش در پرتره‌ای سپاسگزار نبود، بلکه در امکان نه گفتن خودش بود."
+        }
+      ],
+      "vocabulary_ids": [
+        "c1-core-v036",
+        "c1-core-v042",
+        "c1-core-v045",
+        "c1-core-v054",
+        "c1-core-v055",
+        "c1-v385",
+        "c1-v107"
+      ],
+      "question": {
+        "prompt": {
+          "nl": "Wat veranderde nadat Samira naar de voorwaarden vroeg?",
+          "en": "What changed after Samira asked about the conditions?",
+          "fa": "پس از پرسش سمیرا درباره شرط‌ها چه چیزی تغییر کرد؟"
+        },
+        "options": [
+          {
+            "nl": "Haar volgende afspraak werd geannuleerd omdat zij niet op de foto wilde.",
+            "en": "Her next appointment was cancelled because she did not want to be photographed.",
+            "fa": "چون نمی‌خواست از او عکس بگیرند، نوبت بعدی‌اش لغو شد."
+          },
+          {
+            "nl": "De campagne kreeg een anoniem schema en haar ondersteuning ging zonder publiciteitsverplichting verder.",
+            "en": "The campaign received an anonymous diagram and her support continued without a publicity obligation.",
+            "fa": "کارزار نموداری بی‌نام گرفت و حمایت از او بدون تعهد تبلیغاتی ادامه یافت."
+          }
+        ],
+        "answer_index": 1,
+        "explanation": {
+          "nl": "De dienst maakte concreet dat hulp en publiciteit los van elkaar stonden.",
+          "en": "The service made it concrete that support and publicity were separate.",
+          "fa": "مرکز به‌طور عملی روشن کرد که کمک و تبلیغات از هم جدا هستند."
+        }
+      }
+    }
+  ],
+  "topics": [],
+  "grammar_extensions": []
+}

@@ -38,7 +38,14 @@ type Overview = {
   story_count: number;
   authored_story_count?: number;
   target_story_count?: number;
-  topics: { key: string; label: LearningCopy; vocabulary_count: number; story_count: number }[];
+  productive_core_count?: number;
+  topics: {
+    key: string;
+    label: LearningCopy;
+    vocabulary_count: number;
+    story_count: number;
+    productive_core_count?: number;
+  }[];
 };
 type Page<T> = { items: T[]; total: number; offset: number; limit: number };
 
@@ -112,6 +119,7 @@ function LibraryFilters({
   topic,
   onQuery,
   onTopic,
+  coreOnly = false,
 }: {
   kind: "words" | "stories";
   overview: Overview | null;
@@ -119,6 +127,7 @@ function LibraryFilters({
   topic: string;
   onQuery: (v: string) => void;
   onTopic: (v: string) => void;
+  coreOnly?: boolean;
 }) {
   return (
     <div className="library-filters">
@@ -138,7 +147,9 @@ function LibraryFilters({
         <select id={`${kind}-topic`} value={topic} onChange={(e) => onTopic(e.target.value)}>
           <option value="">Alle onderwerpen</option>
           {overview?.topics
-            .filter((t) => (kind === "words" ? t.vocabulary_count : t.story_count))
+            .filter((t) =>
+              kind === "words" ? (coreOnly ? t.productive_core_count : t.vocabulary_count) : t.story_count,
+            )
             .map((t) => (
               <option key={t.key} value={t.key}>
                 {t.label.nl}
@@ -193,16 +204,23 @@ export function WordLibrary({ stageId }: { stageId: string }) {
   const [error, setError] = useState(false);
   const [retry, setRetry] = useState(0);
   const [revealed, setRevealed] = useState<Record<string, boolean>>({});
-  const key = JSON.stringify([stageId, query, topic, offset, retry]);
+  const [selectedCore, setCoreOnly] = useState<boolean | null>(null);
+  const coreOnly = selectedCore ?? overview?.productive_core_count === 150;
+  const key = JSON.stringify([stageId, query, topic, offset, retry, coreOnly]);
   const data = result?.key === key ? result.page : null;
-  const authoredTopic = overview?.topics.find((item) => item.label.nl === storyLearningCopy.category.nl);
   useEffect(() => {
     const controller = new AbortController();
     const timer = window.setTimeout(
       () => {
         setResult(null);
         setError(false);
-        const params = new URLSearchParams({ q: query, topic, offset: String(offset), limit: "20" });
+        const params = new URLSearchParams({
+          q: query,
+          topic,
+          offset: String(offset),
+          limit: "20",
+          core_only: String(coreOnly),
+        });
         apiJson<Page<Word>>(`library/${stageId}/vocabulary?${params}`, { signal: controller.signal })
           .then((value) => {
             if (!controller.signal.aborted) setResult({ key, page: value });
@@ -217,12 +235,20 @@ export function WordLibrary({ stageId }: { stageId: string }) {
       clearTimeout(timer);
       controller.abort();
     };
-  }, [stageId, query, topic, offset, retry, key]);
+  }, [stageId, query, topic, offset, retry, key, coreOnly]);
   return (
     <section className="word-library" aria-label="Woordkaarten">
       <div className="library-intro">
         <p className="eyebrow">LUISTER · HERINNER · GEBRUIK</p>
-        <h3>{overview ? `${overview.vocabulary_count} woorden en uitdrukkingen` : "Je woordkaarten"}</h3>
+        <h3>
+          {coreOnly ? (
+            <LearningText text={storyLearningCopy.coreTitle} />
+          ) : overview ? (
+            `${overview.vocabulary_count} woorden en uitdrukkingen`
+          ) : (
+            "Je woordkaarten"
+          )}
+        </h3>
         <p>
           <LearningText
             text={{
@@ -234,20 +260,28 @@ export function WordLibrary({ stageId }: { stageId: string }) {
         </p>
       </div>
       {overviewFailed && <LibraryError retry={retryOverview} />}
-      {authoredTopic && (
-        <button
-          className="button secondary"
-          onClick={() => {
-            setTopic(authoredTopic.key);
-            setQuery("");
-            setOffset(0);
-          }}
-        >
-          <LearningText text={storyLearningCopy.wordsAuthored} />
-        </button>
+      {!!overview?.productive_core_count && (
+        <div className="library-core-filter">
+          <button
+            className="button secondary"
+            onClick={() => {
+              setCoreOnly(!coreOnly);
+              setTopic("");
+              setQuery("");
+              setOffset(0);
+              setRevealed({});
+            }}
+          >
+            <LearningText text={coreOnly ? storyLearningCopy.allWords : storyLearningCopy.productiveCore} />
+          </button>
+          <p>
+            <LearningText text={storyLearningCopy.coreExplanation} />
+          </p>
+        </div>
       )}
       <LibraryFilters
         kind="words"
+        coreOnly={coreOnly}
         overview={overview}
         query={query}
         topic={topic}

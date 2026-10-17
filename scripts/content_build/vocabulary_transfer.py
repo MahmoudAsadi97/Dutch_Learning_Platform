@@ -1,4 +1,4 @@
-"""Build small authored word-use packs without changing the existing word banks.
+"""Build authored word-use packs and compose the selected productive cores.
 
 The examples are original drafts awaiting language review. They are deliberately
 explicit: Dutch forms, translations and scenarios are not guessed by inflection
@@ -6,6 +6,7 @@ rules or generated from a list of unrelated nouns.
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 from pathlib import Path
 
@@ -287,11 +288,19 @@ def build(root=ROOT):
             raise ValueError("vocabulary transfer cannot repeat a word")
         grouped.setdefault(stage, []).append(entry)
     directory = content / "vocabulary-transfer"
+    expanded = {}
+    if (root / "scripts/content_build/expansion").exists():
+        spec = importlib.util.spec_from_file_location("productive_core_builder", Path(__file__).with_name("compile_expansion.py"))
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        expanded = module.build(root, base_entries=grouped)
     directory.mkdir(parents=True, exist_ok=True)
     for stage, entries in grouped.items():
-        payload = {"schema_version": 1, "stage_id": stage, "review_status": "unreviewed", "entries": entries}
-        (directory / f"{stage}.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return grouped
+        if stage not in expanded:
+            payload = {"schema_version": 1, "stage_id": stage, "review_status": "unreviewed", "entries": entries}
+            (directory / f"{stage}.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return {stage: json.loads((directory / f"{stage}.json").read_text(encoding="utf-8"))["entries"]
+            for stage in grouped}
 
 
 if __name__ == "__main__":

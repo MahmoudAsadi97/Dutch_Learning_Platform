@@ -16,7 +16,7 @@ from pathlib import Path
 
 STAGES = ("pre-a1", "a1", "pre-a2", "a2", "pre-b1", "b1", "pre-b2", "b2", "pre-c1", "c1", "pre-c2", "c2")
 LANGS = ("nl", "en", "fa")
-PACKS = ("library", "source-lessons", "learning-units")
+PACKS = ("library", "source-lessons", "learning-units", "reading-library")
 
 
 def normal(text: str) -> str:
@@ -44,6 +44,7 @@ def audit(content: Path, *, minimum_stories: int = 200, minimum_words: int = 150
     issues: list[dict] = []
     records: list[dict] = []
     stage_rows = []
+    core_contexts: dict[str, tuple[str, str]] = {}
 
     def issue(code: str, severity: str, story_id: str, **details) -> None:
         issues.append({"code": code, "severity": severity, "story_id": story_id, **details})
@@ -105,10 +106,40 @@ def audit(content: Path, *, minimum_stories: int = 200, minimum_words: int = 150
                             "title": story.get("title", {}).get("nl", ""),
                             "authored": isinstance(lines, list) and 8 <= len(lines) <= 12})
         distinct_terms = len({normal(word["term"]) for word in vocabulary if isinstance(word.get("term"), str)})
+        usage_path = content / "vocabulary-transfer" / f"{stage}.json"
+        usage = json.loads(usage_path.read_text(encoding="utf-8"))["entries"] if usage_path.exists() else []
+        core = [entry for entry in usage if entry.get("productive_core")]
+        word_ids = {word.get("id") for word in vocabulary}
+        core_ids: set[str] = set()
+        core_orders: set[int] = set()
+        for entry in core:
+            contexts = entry.get("contexts", [])
+            valid_copy = all(all(isinstance(context.get(key, {}).get(lang), str)
+                                and context[key][lang].strip() for lang in LANGS)
+                             for context in contexts for key in ("sentence", "setting", "production_prompt"))
+            order = entry.get("core_order")
+            if (entry.get("word_id") not in word_ids or len(contexts) != 3 or not valid_copy
+                    or type(order) is not int or not 1 <= order <= 150 or order in core_orders
+                    or len({normal(context.get("sentence", {}).get("nl", "")) for context in contexts}) != 3):
+                issue("invalid_productive_core_entry", "error", entry.get("word_id", stage))
+                continue
+            core_ids.add(entry["word_id"])
+            core_orders.add(order)
+            for context in contexts:
+                text = normal(context["sentence"]["nl"])
+                previous = core_contexts.get(text)
+                if previous and previous[0] != stage:
+                    issue("cross_stage_core_example_repeated", "warning", entry["word_id"], other_id=previous[1])
+                else:
+                    core_contexts[text] = (stage, entry["word_id"])
+        authored_targets = {ref for story in stories if story.get("lines") for ref in story.get("vocabulary_ids", [])}
         stage_rows.append({"stage": stage, "stories_total": len(stories), "authored_stories": authored,
                            "legacy_stories": legacy, "distinct_vocabulary": distinct_terms,
+                           "productive_core_words": len(core_ids),
+                           "productive_core_classes": dict(Counter(entry.get("part_of_speech") for entry in core)),
+                           "core_words_in_authored_stories": len(core_ids & authored_targets),
                            "authored_story_shortfall": max(0, minimum_stories - authored),
-                           "vocabulary_shortfall": max(0, minimum_words - distinct_terms)})
+                           "vocabulary_shortfall": max(0, minimum_words - len(core_ids))})
 
     seen_texts: dict[str, dict] = {}
     seen_titles: dict[str, dict] = {}
@@ -139,7 +170,21 @@ def audit(content: Path, *, minimum_stories: int = 200, minimum_words: int = 150
             for piece in pieces:
                 postings[piece].append(index)
         story_shingles.append(pieces)
-    invalid_ids = {issue["story_id"] for issue in issues if issue["severity"] == "error"}
+    provenance_path = content / "alignment/story-provenance.json"
+    if provenance_path.exists():
+        seen_plots = {}
+        declared = json.loads(provenance_path.read_text(encoding="utf-8")).get("stories", [])
+        story_ids = {record["id"] for record in records}
+        for item in declared:
+            key = normal(item.get("plot_key", ""))
+            if not key or item.get("story_id") not in story_ids:
+                issue("invalid_story_provenance", "error", item.get("story_id", ""))
+            elif key in seen_plots:
+                issue("repeated_plot_synopsis", "error", item["story_id"], other_id=seen_plots[key])
+            else:
+                seen_plots[key] = item["story_id"]
+    invalid_ids = {item["story_id"] for item in issues if item["severity"] == "error"
+                   or item["code"] == "near_copy_needs_review"}
     for row in stage_rows:
         row["eligible_authored_stories"] = sum(record["stage"] == row["stage"] and record["authored"]
                                                and record["id"] not in invalid_ids for record in records)

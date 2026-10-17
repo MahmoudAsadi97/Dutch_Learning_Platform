@@ -30,18 +30,18 @@ SPEECH = {"listen_choose", "dictation", "shadow"}
 # 10)); at pre-A1 the word alone is dictated. The source packs add four short B1 examples; the original B1
 # examples are nearly all longer. Measured 16 Oct 2026 including source and connected packs.
 SPOKEN = {
-    'pre-a1': (467, 445),
-    'a1': (434, 321),
-    'pre-a2': (198, 62),
-    'a2': (496, 508),
-    'pre-b1': (369, 172),
-    'b1': (38, 10),
-    'pre-b2': (403, 398),
-    'b2': (402, 396),
-    'pre-c1': (406, 399),
-    'c1': (281, 107),
-    'pre-c2': (258, 94),
-    'c2': (274, 97),
+    'pre-a1': (482, 455),
+    'a1': (446, 331),
+    'pre-a2': (201, 65),
+    'a2': (504, 516),
+    'pre-b1': (394, 191),
+    'b1': (62, 29),
+    'pre-b2': (421, 417),
+    'b2': (421, 415),
+    'pre-c1': (439, 433),
+    'c1': (325, 118),
+    'pre-c2': (281, 118),
+    'c2': (320, 114),
 }
 NAMES = {"Nora", "Noor", "Mina", "Yara", "Jonas", "Leyla", "Rob", "Emma", "Pieter", "Els", "Nadia"}
 
@@ -85,7 +85,11 @@ def test_prompts_never_carry_the_spoken_text():
                     continue
                 prompt = json.dumps(draft.prompt, ensure_ascii=False)
                 if draft.kind == "dictation":
-                    assert draft.key["audio_text"] not in prompt
+                    # A short target such as "in" occurs inside metadata keys ("kind"); inspect the
+                    # actual schema instead of treating serialised property names as learner text.
+                    assert set(draft.prompt) == {"kind", "word_count"}
+                    assert draft.prompt["kind"] == "dictation"
+                    assert type(draft.prompt["word_count"]) is int
                 else:
                     assert "audio_text" not in prompt and set(draft.prompt) == {"kind", "options"}
             shadow = audio.shadow(stage, word)

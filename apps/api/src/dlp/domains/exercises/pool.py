@@ -86,7 +86,7 @@ class Word:
     core: str  # the term without its article, lower case: what fills a cloze blank
     article: str  # de, het, een or ''
     key: str  # the same word across stages (stories.vocab.key_for)
-    order: int  # position in the library
+    order: int  # learning priority: the productive core, then the wider library
     topic: str  # topic.nl
     topic_index: int
     topic_label: dict[str, str]
@@ -328,7 +328,10 @@ def build(bank) -> Pool:
     for item in bank.vocabulary:
         if item.topic.nl not in topics:
             topics.append(item.topic.nl)
-    words = tuple(_word(item, order, topics.index(item.topic.nl)) for order, item in enumerate(bank.vocabulary))
+    indexed = list(enumerate(bank.vocabulary))
+    indexed.sort(key=lambda pair: (0, pair[1].core_order) if getattr(pair[1], "productive_core", False)
+                 else (1, pair[0]))
+    words = tuple(_word(item, order, topics.index(item.topic.nl)) for order, (_, item) in enumerate(indexed))
     by_topic = {topic: tuple(word for word in words if word.topic == topic) for topic in topics}
     neighbours = {topic: sorted((i for i in range(len(topics)) if i != index), key=lambda i: (abs(i - index), i))
                   [:NEIGHBOUR_TOPICS] for index, topic in enumerate(topics)}

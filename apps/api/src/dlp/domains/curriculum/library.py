@@ -46,9 +46,17 @@ class LibraryWord(BaseModel):
     plural: str | None = Field(default=None, min_length=1, max_length=180)
     forms: list[WordForm] = Field(default_factory=list, max_length=8)
     contexts: list[WordContext] = Field(default_factory=list, max_length=6)
+    productive_core: bool = False
+    core_order: int | None = Field(default=None, ge=1, le=150)
 
     @model_validator(mode="after")
     def meaningful_usage(self):
+        if self.productive_core != (self.core_order is not None):
+            raise ValueError("productive core entries require an explicit learning order")
+        if self.productive_core and (self.part_of_speech is None or len(self.contexts) < 3):
+            raise ValueError("productive core entries need a word class and three authored contexts")
+        if self.productive_core and len({normalise(context.setting.nl) for context in self.contexts}) < 2:
+            raise ValueError("productive core examples need different communicative situations")
         if self.article is not None and self.part_of_speech != "noun":
             raise ValueError("only a noun can have an article")
         if self.plural is not None and self.part_of_speech != "noun":
@@ -138,6 +146,11 @@ class StageLibrary(BaseModel):
             covered.update(targets)
         if covered != set(word_ids):
             raise ValueError("every vocabulary entry needs a Story Time connection")
+        core_orders = [word.core_order for word in self.vocabulary if word.productive_core]
+        if len(core_orders) != len(set(core_orders)):
+            raise ValueError("productive core positions must be unique within a stage")
+        if core_orders and set(core_orders) != set(range(1, 151)):
+            raise ValueError("a published productive core must contain all 150 ordered entries")
         for value in self.vocabulary:
             for copy in (value.topic, value.meaning, value.example):
                 if not all(text.strip() for text in (copy.nl, copy.en, copy.fa)):
@@ -193,18 +206,26 @@ def matches(item, query: str, topic: str) -> bool:
 
 def summary(bank: StageLibrary) -> dict:
     words = Counter(w.topic.nl for w in bank.vocabulary)
+    cores = Counter(w.topic.nl for w in bank.vocabulary if w.productive_core)
     stories = Counter(s.topic.nl for s in bank.stories)
     labels = {item.topic.nl: item.topic.model_dump() for item in [*bank.vocabulary, *bank.stories]}
     return {"stage_id": bank.stage_id, "review_status": bank.review_status,
             "vocabulary_count": len(bank.vocabulary), "story_count": len(bank.stories),
             "authored_story_count": sum(story.lines is not None for story in bank.stories),
             "target_story_count": 200,
+            "productive_core_count": sum(word.productive_core for word in bank.vocabulary),
+            "target_productive_core_count": 150,
             "topics": [{"key": name, "label": labels[name], "vocabulary_count": words[name],
+                        "productive_core_count": cores[name],
                         "story_count": stories[name]} for name in sorted(labels)]}
 
 
-def vocabulary_page(bank: StageLibrary, *, query: str = "", topic: str = "", offset: int = 0, limit: int = 20):
-    items = [item for item in bank.vocabulary if matches(item, query, topic)]
+def vocabulary_page(bank: StageLibrary, *, query: str = "", topic: str = "", offset: int = 0,
+                    limit: int = 20, core_only: bool = False):
+    items = [item for item in bank.vocabulary if (not core_only or item.productive_core)
+             and matches(item, query, topic)]
+    if core_only:
+        items.sort(key=lambda item: item.core_order or 151)
     return {"total": len(items), "offset": offset, "limit": limit,
             "items": [item.model_dump() for item in items[offset:offset + limit]]}
 

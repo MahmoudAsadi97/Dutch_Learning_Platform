@@ -43,7 +43,10 @@ def stamp(root: Path, stage_id: str) -> int:
     if stage_id not in STAGE_IDS:
         raise ValueError("word usage has an unknown stage")
     path = root / "vocabulary-transfer" / f"{stage_id}.json"
-    return path.stat().st_mtime_ns if path.exists() else 0
+    if not path.exists():
+        return 0
+    stat = path.stat()
+    return hash((stat.st_mtime_ns, stat.st_size))
 
 
 @lru_cache(maxsize=24)
@@ -71,7 +74,8 @@ def enrich(data: dict, root: Path) -> dict:
     pack = _read(str(root / "vocabulary-transfer" / f"{stage_id}.json"), modified)
     words = {item["id"]: item for item in result["vocabulary"]}
     allowed = STAGE_STRUCTURES.get(stage_id, ALL_STRUCTURES)
-    fields = {"word_id", "term", "part_of_speech", "article", "plural", "forms", "contexts"}
+    fields = {"word_id", "term", "part_of_speech", "article", "plural", "forms", "contexts",
+              "productive_core", "core_order"}
     for entry in pack.entries:
         if set(entry) - fields or "word_id" not in entry or "term" not in entry:
             raise ValueError("word usage contains unsupported fields")
