@@ -9,6 +9,7 @@ export interface CurriculumQuestion {
   options: LearningCopy[];
   answer_index?: number;
   explanation?: LearningCopy;
+  model_sentence?: string | null;
 }
 export interface ProductiveTask {
   prompt: LearningCopy;

@@ -11,7 +11,7 @@ from pydantic import ValidationError
 
 from dlp.config import CONTENT_DIR
 from dlp.domains.curriculum import library, service, supplements, topics
-from dlp.domains.curriculum.schemas import STAGE_IDS, Stage
+from dlp.domains.curriculum.schemas import STAGE_IDS, GrammarQuestion, Stage
 from dlp.domains.exercises.schemas import CreateBody
 
 STAGES = ("pre-a1", "a1", "pre-a2", "a2", "pre-b1", "b1")
@@ -162,7 +162,8 @@ def test_grammar_examples_extend_existing_rules_without_touching_final_tests():
         for rule in before["grammar"]:
             updated = next(g for g in after.grammar if g.id == rule["id"])
             assert [e.model_dump() for e in updated.examples[:len(rule["examples"])]] == rule["examples"]
-            assert [q.model_dump() for q in updated.practice[:len(rule["practice"])]] == rule["practice"]
+            assert [q.model_dump() for q in updated.practice[:len(rule["practice"])]] == [
+                GrammarQuestion.model_validate(q).model_dump() for q in rule["practice"]]
     assert len(supplements.curriculum_stamp(CONTENT_DIR)) == sum(
         len(list((CONTENT_DIR / directory).glob("*.json"))) for directory in supplements.DIRECTORIES)
 

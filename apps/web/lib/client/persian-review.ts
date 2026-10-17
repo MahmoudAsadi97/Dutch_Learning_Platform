@@ -1,3 +1,4 @@
+import { grammarCopy } from "@/lib/copy/grammar";
 import { episodeCopy } from "@/lib/copy/episode";
 import { storyLearningCopy } from "@/lib/copy/storyLearning";
 import { alignmentCopy } from "@/lib/copy/alignment";
@@ -13,6 +14,7 @@ import { batchOf, registerBatch, uiCopy, type Copy } from "@/lib/ui-copy";
 /** Every batch of interface copy, by name: the catalogue's groups and the per-screen modules. */
 export const COPY_BATCHES: Record<string, Record<string, Copy>> = {
   ...uiCopy,
+  grammar: grammarCopy,
   episode: episodeCopy,
   video: videoCopy,
   words: wordsCopy,

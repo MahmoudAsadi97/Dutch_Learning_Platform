@@ -1,0 +1,3257 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a1",
+  "review_status": "unreviewed",
+  "rounds": [
+    {
+      "id": "practice-zijn",
+      "title": {
+        "nl": "Zijn: persoon en getal",
+        "en": "Be: person and number",
+        "fa": "بودن: شخص و شمار"
+      },
+      "explanation": {
+        "nl": "Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+        "en": "Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+        "fa": "با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+      },
+      "examples": [
+        {
+          "nl": "Ik ben thuis.",
+          "en": "I am at home.",
+          "fa": "من در خانه هستم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-zijn-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik … Noor.",
+            "en": "Choose the correct Dutch form: Ik … Noor.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik … Noor."
+          },
+          "options": [
+            {
+              "nl": "bent",
+              "en": "bent",
+              "fa": "bent"
+            },
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik ben Noor. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: Ik ben Noor. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: Ik ben Noor. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "Ik ben Noor."
+        },
+        {
+          "id": "pre-a1-practice-zijn-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Sam … hier.",
+            "en": "Choose the correct Dutch form: Sam … hier.",
+            "fa": "شکل درست هلندی را انتخاب کن: Sam … hier."
+          },
+          "options": [
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            },
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Sam is hier. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: Sam is hier. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: Sam is hier. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "Sam is hier."
+        },
+        {
+          "id": "pre-a1-practice-zijn-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij … in de klas.",
+            "en": "Choose the correct Dutch form: Wij … in de klas.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij … in de klas."
+          },
+          "options": [
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            },
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij zijn in de klas. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: Wij zijn in de klas. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: Wij zijn in de klas. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "Wij zijn in de klas."
+        },
+        {
+          "id": "pre-a1-practice-zijn-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: U … welkom.",
+            "en": "Choose the correct Dutch form: U … welkom.",
+            "fa": "شکل درست هلندی را انتخاب کن: U … welkom."
+          },
+          "options": [
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "bent",
+              "en": "bent",
+              "fa": "bent"
+            },
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: U bent welkom. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: U bent welkom. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: U bent welkom. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "U bent welkom."
+        },
+        {
+          "id": "pre-a1-practice-zijn-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het water … koud.",
+            "en": "Choose the correct Dutch form: Het water … koud.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het water … koud."
+          },
+          "options": [
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het water is koud. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: Het water is koud. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: Het water is koud. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "Het water is koud."
+        },
+        {
+          "id": "pre-a1-practice-zijn-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De boeken … nieuw.",
+            "en": "Choose the correct Dutch form: De boeken … nieuw.",
+            "fa": "شکل درست هلندی را انتخاب کن: De boeken … nieuw."
+          },
+          "options": [
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "bent",
+              "en": "bent",
+              "fa": "bent"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De boeken zijn nieuw. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: De boeken zijn nieuw. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: De boeken zijn nieuw. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "De boeken zijn nieuw."
+        },
+        {
+          "id": "pre-a1-practice-zijn-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij … mijn buur.",
+            "en": "Choose the correct Dutch form: Jij … mijn buur.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij … mijn buur."
+          },
+          "options": [
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "bent",
+              "en": "bent",
+              "fa": "bent"
+            },
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Jij bent mijn buur. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: Jij bent mijn buur. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: Jij bent mijn buur. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "Jij bent mijn buur."
+        },
+        {
+          "id": "pre-a1-practice-zijn-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De deur … open.",
+            "en": "Choose the correct Dutch form: De deur … open.",
+            "fa": "شکل درست هلندی را انتخاب کن: De deur … open."
+          },
+          "options": [
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            },
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De deur is open. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: De deur is open. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: De deur is open. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "De deur is open."
+        },
+        {
+          "id": "pre-a1-practice-zijn-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jullie … vroeg.",
+            "en": "Choose the correct Dutch form: Jullie … vroeg.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jullie … vroeg."
+          },
+          "options": [
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "bent",
+              "en": "bent",
+              "fa": "bent"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Jullie zijn vroeg. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: Jullie zijn vroeg. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: Jullie zijn vroeg. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "Jullie zijn vroeg."
+        },
+        {
+          "id": "pre-a1-practice-zijn-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn naam … Mina.",
+            "en": "Choose the correct Dutch form: Mijn naam … Mina.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn naam … Mina."
+          },
+          "options": [
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Mijn naam is Mina. Ik ben; jij/u bent; hij/zij/het is; wij/jullie/zij zijn.",
+            "en": "Correct Dutch sentence: Mijn naam is Mina. Use ben with ik, bent with jij/u, is with a singular third person and zijn with plural subjects.",
+            "fa": "جملهٔ درست هلندی: Mijn naam is Mina. با ik از ben، با jij و u از bent، با سوم‌شخص مفرد از is و با فاعل جمع از zijn استفاده کن."
+          },
+          "model_sentence": "Mijn naam is Mina."
+        }
+      ]
+    },
+    {
+      "id": "practice-hebben",
+      "title": {
+        "nl": "Hebben: bezit en ervaring",
+        "en": "Have: possession and experience",
+        "fa": "داشتن: مالکیت و تجربه"
+      },
+      "explanation": {
+        "nl": "Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+        "en": "Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+        "fa": "با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+      },
+      "examples": [
+        {
+          "nl": "Wij hebben tijd.",
+          "en": "We have time.",
+          "fa": "ما وقت داریم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-hebben-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik … een pen.",
+            "en": "Choose the correct Dutch form: Ik … een pen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik … een pen."
+          },
+          "options": [
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            },
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            },
+            {
+              "nl": "hebt",
+              "en": "hebt",
+              "fa": "hebt"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik heb een pen. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: Ik heb een pen. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: Ik heb een pen. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "Ik heb een pen."
+        },
+        {
+          "id": "pre-a1-practice-hebben-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Noor … een fiets.",
+            "en": "Choose the correct Dutch form: Noor … een fiets.",
+            "fa": "شکل درست هلندی را انتخاب کن: Noor … een fiets."
+          },
+          "options": [
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            },
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Noor heeft een fiets. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: Noor heeft een fiets. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: Noor heeft een fiets. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "Noor heeft een fiets."
+        },
+        {
+          "id": "pre-a1-practice-hebben-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij … twee stoelen.",
+            "en": "Choose the correct Dutch form: Wij … twee stoelen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij … twee stoelen."
+          },
+          "options": [
+            {
+              "nl": "hebt",
+              "en": "hebt",
+              "fa": "hebt"
+            },
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            },
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij hebben twee stoelen. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: Wij hebben twee stoelen. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: Wij hebben twee stoelen. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "Wij hebben twee stoelen."
+        },
+        {
+          "id": "pre-a1-practice-hebben-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij … een boek.",
+            "en": "Choose the correct Dutch form: Jij … een boek.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij … een boek."
+          },
+          "options": [
+            {
+              "nl": "hebt",
+              "en": "hebt",
+              "fa": "hebt"
+            },
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            },
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Jij hebt een boek. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: Jij hebt een boek. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: Jij hebt een boek. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "Jij hebt een boek."
+        },
+        {
+          "id": "pre-a1-practice-hebben-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn broer … koffie.",
+            "en": "Choose the correct Dutch form: Mijn broer … koffie.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn broer … koffie."
+          },
+          "options": [
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            },
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Mijn broer heeft koffie. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: Mijn broer heeft koffie. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: Mijn broer heeft koffie. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "Mijn broer heeft koffie."
+        },
+        {
+          "id": "pre-a1-practice-hebben-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jullie … tijd.",
+            "en": "Choose the correct Dutch form: Jullie … tijd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jullie … tijd."
+          },
+          "options": [
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            },
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Jullie hebben tijd. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: Jullie hebben tijd. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: Jullie hebben tijd. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "Jullie hebben tijd."
+        },
+        {
+          "id": "pre-a1-practice-hebben-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik … een appel.",
+            "en": "Choose the correct Dutch form: Ik … een appel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik … een appel."
+          },
+          "options": [
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            },
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "hebt",
+              "en": "hebt",
+              "fa": "hebt"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik heb een appel. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: Ik heb een appel. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: Ik heb een appel. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "Ik heb een appel."
+        },
+        {
+          "id": "pre-a1-practice-hebben-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De klas … een raam.",
+            "en": "Choose the correct Dutch form: De klas … een raam.",
+            "fa": "شکل درست هلندی را انتخاب کن: De klas … een raam."
+          },
+          "options": [
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            },
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De klas heeft een raam. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: De klas heeft een raam. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: De klas heeft een raam. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "De klas heeft een raam."
+        },
+        {
+          "id": "pre-a1-practice-hebben-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij … een tafel.",
+            "en": "Choose the correct Dutch form: Wij … een tafel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij … een tafel."
+          },
+          "options": [
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            },
+            {
+              "nl": "hebt",
+              "en": "hebt",
+              "fa": "hebt"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij hebben een tafel. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: Wij hebben een tafel. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: Wij hebben een tafel. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "Wij hebben een tafel."
+        },
+        {
+          "id": "pre-a1-practice-hebben-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij … mijn sleutel.",
+            "en": "Choose the correct Dutch form: Jij … mijn sleutel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij … mijn sleutel."
+          },
+          "options": [
+            {
+              "nl": "hebt",
+              "en": "hebt",
+              "fa": "hebt"
+            },
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            },
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Jij hebt mijn sleutel. Ik heb; jij hebt; hij/zij heeft; wij/jullie/zij hebben. Bij u zijn hebt en heeft beide standaardtaal.",
+            "en": "Correct Dutch sentence: Jij hebt mijn sleutel. Use heb with ik, hebt with jij, heeft with hij/zij and hebben with plural subjects. Both u hebt and u heeft are standard Dutch.",
+            "fa": "جملهٔ درست هلندی: Jij hebt mijn sleutel. با ik از heb، با jij از hebt، با hij و zij مفرد از heeft و با فاعل جمع از hebben استفاده کن. هر دو شکل u hebt و u heeft معیارند."
+          },
+          "model_sentence": "Jij hebt mijn sleutel."
+        }
+      ]
+    },
+    {
+      "id": "practice-present",
+      "title": {
+        "nl": "De tegenwoordige tijd",
+        "en": "The present tense",
+        "fa": "زمان حال"
+      },
+      "explanation": {
+        "nl": "Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+        "en": "Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+        "fa": "با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+      },
+      "examples": [
+        {
+          "nl": "Zij werkt vandaag.",
+          "en": "She works today.",
+          "fa": "او امروز کار می‌کند."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-present-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik … thee.",
+            "en": "Choose the correct Dutch form: Ik … thee.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik … thee."
+          },
+          "options": [
+            {
+              "nl": "drinken",
+              "en": "drinken",
+              "fa": "drinken"
+            },
+            {
+              "nl": "drink",
+              "en": "drink",
+              "fa": "drink"
+            },
+            {
+              "nl": "drinkt",
+              "en": "drinkt",
+              "fa": "drinkt"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik drink thee. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: Ik drink thee. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: Ik drink thee. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "Ik drink thee."
+        },
+        {
+          "id": "pre-a1-practice-present-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Sara … brood.",
+            "en": "Choose the correct Dutch form: Sara … brood.",
+            "fa": "شکل درست هلندی را انتخاب کن: Sara … brood."
+          },
+          "options": [
+            {
+              "nl": "eten",
+              "en": "eten",
+              "fa": "eten"
+            },
+            {
+              "nl": "eet",
+              "en": "eet",
+              "fa": "eet"
+            },
+            {
+              "nl": "eet ik",
+              "en": "eet ik",
+              "fa": "eet ik"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Sara eet brood. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: Sara eet brood. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: Sara eet brood. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "Sara eet brood."
+        },
+        {
+          "id": "pre-a1-practice-present-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij … een naam.",
+            "en": "Choose the correct Dutch form: Wij … een naam.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij … een naam."
+          },
+          "options": [
+            {
+              "nl": "schrijven",
+              "en": "schrijven",
+              "fa": "schrijven"
+            },
+            {
+              "nl": "schrijft",
+              "en": "schrijft",
+              "fa": "schrijft"
+            },
+            {
+              "nl": "schrijf",
+              "en": "schrijf",
+              "fa": "schrijf"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij schrijven een naam. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: Wij schrijven een naam. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: Wij schrijven een naam. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "Wij schrijven een naam."
+        },
+        {
+          "id": "pre-a1-practice-present-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij … hier.",
+            "en": "Choose the correct Dutch form: Jij … hier.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij … hier."
+          },
+          "options": [
+            {
+              "nl": "wonen",
+              "en": "wonen",
+              "fa": "wonen"
+            },
+            {
+              "nl": "woont",
+              "en": "woont",
+              "fa": "woont"
+            },
+            {
+              "nl": "woon",
+              "en": "woon",
+              "fa": "woon"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Jij woont hier. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: Jij woont hier. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: Jij woont hier. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "Jij woont hier."
+        },
+        {
+          "id": "pre-a1-practice-present-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De buur … binnen.",
+            "en": "Choose the correct Dutch form: De buur … binnen.",
+            "fa": "شکل درست هلندی را انتخاب کن: De buur … binnen."
+          },
+          "options": [
+            {
+              "nl": "kom",
+              "en": "kom",
+              "fa": "kom"
+            },
+            {
+              "nl": "komen",
+              "en": "komen",
+              "fa": "komen"
+            },
+            {
+              "nl": "komt",
+              "en": "komt",
+              "fa": "komt"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De buur komt binnen. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: De buur komt binnen. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: De buur komt binnen. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "De buur komt binnen."
+        },
+        {
+          "id": "pre-a1-practice-present-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik … een boek.",
+            "en": "Choose the correct Dutch form: Ik … een boek.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik … een boek."
+          },
+          "options": [
+            {
+              "nl": "lees",
+              "en": "lees",
+              "fa": "lees"
+            },
+            {
+              "nl": "leest",
+              "en": "leest",
+              "fa": "leest"
+            },
+            {
+              "nl": "lezen",
+              "en": "lezen",
+              "fa": "lezen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik lees een boek. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: Ik lees een boek. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: Ik lees een boek. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "Ik lees een boek."
+        },
+        {
+          "id": "pre-a1-practice-present-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jullie … goed.",
+            "en": "Choose the correct Dutch form: Jullie … goed.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jullie … goed."
+          },
+          "options": [
+            {
+              "nl": "luistert",
+              "en": "luistert",
+              "fa": "luistert"
+            },
+            {
+              "nl": "luister",
+              "en": "luister",
+              "fa": "luister"
+            },
+            {
+              "nl": "luisteren",
+              "en": "luisteren",
+              "fa": "luisteren"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Jullie luisteren goed. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: Jullie luisteren goed. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: Jullie luisteren goed. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "Jullie luisteren goed."
+        },
+        {
+          "id": "pre-a1-practice-present-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De man … buiten.",
+            "en": "Choose the correct Dutch form: De man … buiten.",
+            "fa": "شکل درست هلندی را انتخاب کن: De man … buiten."
+          },
+          "options": [
+            {
+              "nl": "werkt",
+              "en": "werkt",
+              "fa": "werkt"
+            },
+            {
+              "nl": "werk",
+              "en": "werk",
+              "fa": "werk"
+            },
+            {
+              "nl": "werken",
+              "en": "werken",
+              "fa": "werken"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De man werkt buiten. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: De man werkt buiten. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: De man werkt buiten. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "De man werkt buiten."
+        },
+        {
+          "id": "pre-a1-practice-present-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij … naar huis.",
+            "en": "Choose the correct Dutch form: Wij … naar huis.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij … naar huis."
+          },
+          "options": [
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            },
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Wij gaan naar huis. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: Wij gaan naar huis. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: Wij gaan naar huis. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "Wij gaan naar huis."
+        },
+        {
+          "id": "pre-a1-practice-present-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik … een stoel.",
+            "en": "Choose the correct Dutch form: Ik … een stoel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik … een stoel."
+          },
+          "options": [
+            {
+              "nl": "zoeken",
+              "en": "zoeken",
+              "fa": "zoeken"
+            },
+            {
+              "nl": "zoek",
+              "en": "zoek",
+              "fa": "zoek"
+            },
+            {
+              "nl": "zoekt",
+              "en": "zoekt",
+              "fa": "zoekt"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik zoek een stoel. Bij ik gebruik je de stam; bij jij/hij/zij meestal stam+t; bij wij/jullie/zij de meervoudsvorm. Na de persoonsvorm valt de t bij jij weg.",
+            "en": "Correct Dutch sentence: Ik zoek een stoel. Use the stem with ik, usually stem+t with jij/hij/zij and the plural form with plural subjects. With inverted jij, drop the t.",
+            "fa": "جملهٔ درست هلندی: Ik zoek een stoel. با ik از بن فعل، با jij و سوم‌شخص مفرد معمولاً از بن به‌اضافهٔ t و با فاعل جمع از شکل جمع استفاده کن. در وارونگی با jij، حرف t حذف می‌شود."
+          },
+          "model_sentence": "Ik zoek een stoel."
+        }
+      ]
+    },
+    {
+      "id": "practice-pronouns",
+      "title": {
+        "nl": "Wie doet iets?",
+        "en": "Who does something?",
+        "fa": "چه کسی کاری انجام می‌دهد؟"
+      },
+      "explanation": {
+        "nl": "Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+        "en": "Choose the subject pronoun that matches the person and the verb.",
+        "fa": "ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+      },
+      "examples": [
+        {
+          "nl": "Wij wonen hier.",
+          "en": "We live here.",
+          "fa": "ما اینجا زندگی می‌کنیم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-pronouns-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn broer is hier. … is blij.",
+            "en": "Choose the correct Dutch form: Mijn broer is hier. … is blij.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn broer is hier. … is blij."
+          },
+          "options": [
+            {
+              "nl": "Hij",
+              "en": "Hij",
+              "fa": "Hij"
+            },
+            {
+              "nl": "Wij",
+              "en": "Wij",
+              "fa": "Wij"
+            },
+            {
+              "nl": "Ik",
+              "en": "Ik",
+              "fa": "Ik"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Mijn broer is hier. Hij is blij. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Mijn broer is hier. Hij is blij. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Mijn broer is hier. Hij is blij. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Mijn broer is hier. Hij is blij."
+        },
+        {
+          "id": "pre-a1-practice-pronouns-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn zus heet Sara. … woont hier.",
+            "en": "Choose the correct Dutch form: Mijn zus heet Sara. … woont hier.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn zus heet Sara. … woont hier."
+          },
+          "options": [
+            {
+              "nl": "Hij",
+              "en": "Hij",
+              "fa": "Hij"
+            },
+            {
+              "nl": "Wij",
+              "en": "Wij",
+              "fa": "Wij"
+            },
+            {
+              "nl": "Zij",
+              "en": "Zij",
+              "fa": "Zij"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Mijn zus heet Sara. Zij woont hier. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Mijn zus heet Sara. Zij woont hier. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Mijn zus heet Sara. Zij woont hier. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Mijn zus heet Sara. Zij woont hier."
+        },
+        {
+          "id": "pre-a1-practice-pronouns-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Sam en ik zijn thuis. … drinken thee.",
+            "en": "Choose the correct Dutch form: Sam en ik zijn thuis. … drinken thee.",
+            "fa": "شکل درست هلندی را انتخاب کن: Sam en ik zijn thuis. … drinken thee."
+          },
+          "options": [
+            {
+              "nl": "Jij",
+              "en": "Jij",
+              "fa": "Jij"
+            },
+            {
+              "nl": "Wij",
+              "en": "Wij",
+              "fa": "Wij"
+            },
+            {
+              "nl": "Hij",
+              "en": "Hij",
+              "fa": "Hij"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Sam en ik zijn thuis. Wij drinken thee. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Sam en ik zijn thuis. Wij drinken thee. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Sam en ik zijn thuis. Wij drinken thee. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Sam en ik zijn thuis. Wij drinken thee."
+        },
+        {
+          "id": "pre-a1-practice-pronouns-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Noor en jij zijn vroeg. … wachten hier.",
+            "en": "Choose the correct Dutch form: Noor en jij zijn vroeg. … wachten hier.",
+            "fa": "شکل درست هلندی را انتخاب کن: Noor en jij zijn vroeg. … wachten hier."
+          },
+          "options": [
+            {
+              "nl": "Hij",
+              "en": "Hij",
+              "fa": "Hij"
+            },
+            {
+              "nl": "Jullie",
+              "en": "Jullie",
+              "fa": "Jullie"
+            },
+            {
+              "nl": "Ik",
+              "en": "Ik",
+              "fa": "Ik"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Noor en jij zijn vroeg. Jullie wachten hier. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Noor en jij zijn vroeg. Jullie wachten hier. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Noor en jij zijn vroeg. Jullie wachten hier. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Noor en jij zijn vroeg. Jullie wachten hier."
+        },
+        {
+          "id": "pre-a1-practice-pronouns-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik stel mij voor: … ben Ali.",
+            "en": "Choose the correct Dutch form: Ik stel mij voor: … ben Ali.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik stel mij voor: … ben Ali."
+          },
+          "options": [
+            {
+              "nl": "Wij",
+              "en": "Wij",
+              "fa": "Wij"
+            },
+            {
+              "nl": "Ik",
+              "en": "Ik",
+              "fa": "Ik"
+            },
+            {
+              "nl": "Jij",
+              "en": "Jij",
+              "fa": "Jij"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik stel mij voor: Ik ben Ali. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Ik stel mij voor: Ik ben Ali. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Ik stel mij voor: Ik ben Ali. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Ik stel mij voor: Ik ben Ali."
+        },
+        {
+          "id": "pre-a1-practice-pronouns-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik spreek jou aan: … bent welkom.",
+            "en": "Choose the correct Dutch form: Ik spreek jou aan: … bent welkom.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik spreek jou aan: … bent welkom."
+          },
+          "options": [
+            {
+              "nl": "Jij",
+              "en": "Jij",
+              "fa": "Jij"
+            },
+            {
+              "nl": "Ik",
+              "en": "Ik",
+              "fa": "Ik"
+            },
+            {
+              "nl": "Wij",
+              "en": "Wij",
+              "fa": "Wij"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik spreek jou aan: Jij bent welkom. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Ik spreek jou aan: Jij bent welkom. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Ik spreek jou aan: Jij bent welkom. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Ik spreek jou aan: Jij bent welkom."
+        },
+        {
+          "id": "pre-a1-practice-pronouns-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het boek is nieuw. … ligt hier.",
+            "en": "Choose the correct Dutch form: Het boek is nieuw. … ligt hier.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het boek is nieuw. … ligt hier."
+          },
+          "options": [
+            {
+              "nl": "Jullie",
+              "en": "Jullie",
+              "fa": "Jullie"
+            },
+            {
+              "nl": "Het",
+              "en": "Het",
+              "fa": "Het"
+            },
+            {
+              "nl": "Wij",
+              "en": "Wij",
+              "fa": "Wij"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Het boek is nieuw. Het ligt hier. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Het boek is nieuw. Het ligt hier. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Het boek is nieuw. Het ligt hier. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Het boek is nieuw. Het ligt hier."
+        },
+        {
+          "id": "pre-a1-practice-pronouns-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn vader zit daar. … leest.",
+            "en": "Choose the correct Dutch form: Mijn vader zit daar. … leest.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn vader zit daar. … leest."
+          },
+          "options": [
+            {
+              "nl": "Ik",
+              "en": "Ik",
+              "fa": "Ik"
+            },
+            {
+              "nl": "Hij",
+              "en": "Hij",
+              "fa": "Hij"
+            },
+            {
+              "nl": "Wij",
+              "en": "Wij",
+              "fa": "Wij"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Mijn vader zit daar. Hij leest. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Mijn vader zit daar. Hij leest. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Mijn vader zit daar. Hij leest. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Mijn vader zit daar. Hij leest."
+        },
+        {
+          "id": "pre-a1-practice-pronouns-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn moeder komt binnen. … lacht.",
+            "en": "Choose the correct Dutch form: Mijn moeder komt binnen. … lacht.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn moeder komt binnen. … lacht."
+          },
+          "options": [
+            {
+              "nl": "Wij",
+              "en": "Wij",
+              "fa": "Wij"
+            },
+            {
+              "nl": "Zij",
+              "en": "Zij",
+              "fa": "Zij"
+            },
+            {
+              "nl": "Hij",
+              "en": "Hij",
+              "fa": "Hij"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Mijn moeder komt binnen. Zij lacht. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Mijn moeder komt binnen. Zij lacht. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Mijn moeder komt binnen. Zij lacht. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Mijn moeder komt binnen. Zij lacht."
+        },
+        {
+          "id": "pre-a1-practice-pronouns-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik spreek de klas aan: … zijn klaar.",
+            "en": "Choose the correct Dutch form: Ik spreek de klas aan: … zijn klaar.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik spreek de klas aan: … zijn klaar."
+          },
+          "options": [
+            {
+              "nl": "Hij",
+              "en": "Hij",
+              "fa": "Hij"
+            },
+            {
+              "nl": "Ik",
+              "en": "Ik",
+              "fa": "Ik"
+            },
+            {
+              "nl": "Jullie",
+              "en": "Jullie",
+              "fa": "Jullie"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik spreek de klas aan: Jullie zijn klaar. Gebruik een onderwerp zoals ik, jij, hij, zij, wij of jullie bij de juiste persoon en werkwoordsvorm.",
+            "en": "Correct Dutch sentence: Ik spreek de klas aan: Jullie zijn klaar. Choose the subject pronoun that matches the person and the verb.",
+            "fa": "جملهٔ درست هلندی: Ik spreek de klas aan: Jullie zijn klaar. ضمیر فاعلی را متناسب با شخص و شکل فعل انتخاب کن."
+          },
+          "model_sentence": "Ik spreek de klas aan: Jullie zijn klaar."
+        }
+      ]
+    },
+    {
+      "id": "practice-possessive",
+      "title": {
+        "nl": "Van wie is het?",
+        "en": "Whose is it?",
+        "fa": "مال چه کسی است؟"
+      },
+      "explanation": {
+        "nl": "Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+        "en": "Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+        "fa": "ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+      },
+      "examples": [
+        {
+          "nl": "Dit is ons huis.",
+          "en": "This is our house.",
+          "fa": "این خانهٔ ماست."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-possessive-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik heb een pen. Dit is … pen.",
+            "en": "Choose the correct Dutch form: Ik heb een pen. Dit is … pen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik heb een pen. Dit is … pen."
+          },
+          "options": [
+            {
+              "nl": "haar",
+              "en": "haar",
+              "fa": "haar"
+            },
+            {
+              "nl": "mijn",
+              "en": "mijn",
+              "fa": "mijn"
+            },
+            {
+              "nl": "jouw",
+              "en": "jouw",
+              "fa": "jouw"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik heb een pen. Dit is mijn pen. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Ik heb een pen. Dit is mijn pen. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Ik heb een pen. Dit is mijn pen. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Ik heb een pen. Dit is mijn pen."
+        },
+        {
+          "id": "pre-a1-practice-possessive-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij hebt een boek. Dit is … boek.",
+            "en": "Choose the correct Dutch form: Jij hebt een boek. Dit is … boek.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij hebt een boek. Dit is … boek."
+          },
+          "options": [
+            {
+              "nl": "mijn",
+              "en": "mijn",
+              "fa": "mijn"
+            },
+            {
+              "nl": "haar",
+              "en": "haar",
+              "fa": "haar"
+            },
+            {
+              "nl": "jouw",
+              "en": "jouw",
+              "fa": "jouw"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Jij hebt een boek. Dit is jouw boek. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Jij hebt een boek. Dit is jouw boek. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Jij hebt een boek. Dit is jouw boek. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Jij hebt een boek. Dit is jouw boek."
+        },
+        {
+          "id": "pre-a1-practice-possessive-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn broer heeft een fiets. Het is … fiets.",
+            "en": "Choose the correct Dutch form: Mijn broer heeft een fiets. Het is … fiets.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn broer heeft een fiets. Het is … fiets."
+          },
+          "options": [
+            {
+              "nl": "haar",
+              "en": "haar",
+              "fa": "haar"
+            },
+            {
+              "nl": "mijn",
+              "en": "mijn",
+              "fa": "mijn"
+            },
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Mijn broer heeft een fiets. Het is zijn fiets. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Mijn broer heeft een fiets. Het is zijn fiets. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Mijn broer heeft een fiets. Het is zijn fiets. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Mijn broer heeft een fiets. Het is zijn fiets."
+        },
+        {
+          "id": "pre-a1-practice-possessive-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn zus heeft een tas. Het is … tas.",
+            "en": "Choose the correct Dutch form: Mijn zus heeft een tas. Het is … tas.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn zus heeft een tas. Het is … tas."
+          },
+          "options": [
+            {
+              "nl": "haar",
+              "en": "haar",
+              "fa": "haar"
+            },
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "jouw",
+              "en": "jouw",
+              "fa": "jouw"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Mijn zus heeft een tas. Het is haar tas. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Mijn zus heeft een tas. Het is haar tas. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Mijn zus heeft een tas. Het is haar tas. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Mijn zus heeft een tas. Het is haar tas."
+        },
+        {
+          "id": "pre-a1-practice-possessive-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij hebben een huis. Het is … huis.",
+            "en": "Choose the correct Dutch form: Wij hebben een huis. Het is … huis.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij hebben een huis. Het is … huis."
+          },
+          "options": [
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "onze",
+              "en": "onze",
+              "fa": "onze"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij hebben een huis. Het is ons huis. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Wij hebben een huis. Het is ons huis. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Wij hebben een huis. Het is ons huis. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Wij hebben een huis. Het is ons huis."
+        },
+        {
+          "id": "pre-a1-practice-possessive-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij hebben een tafel. Het is … tafel.",
+            "en": "Choose the correct Dutch form: Wij hebben een tafel. Het is … tafel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij hebben een tafel. Het is … tafel."
+          },
+          "options": [
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "onze",
+              "en": "onze",
+              "fa": "onze"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij hebben een tafel. Het is onze tafel. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Wij hebben een tafel. Het is onze tafel. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Wij hebben een tafel. Het is onze tafel. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Wij hebben een tafel. Het is onze tafel."
+        },
+        {
+          "id": "pre-a1-practice-possessive-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij hebben boeken. Dat zijn … boeken.",
+            "en": "Choose the correct Dutch form: Wij hebben boeken. Dat zijn … boeken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij hebben boeken. Dat zijn … boeken."
+          },
+          "options": [
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "onze",
+              "en": "onze",
+              "fa": "onze"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij hebben boeken. Dat zijn onze boeken. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Wij hebben boeken. Dat zijn onze boeken. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Wij hebben boeken. Dat zijn onze boeken. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Wij hebben boeken. Dat zijn onze boeken."
+        },
+        {
+          "id": "pre-a1-practice-possessive-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij hebt een stoel. Dat is … stoel.",
+            "en": "Choose the correct Dutch form: Jij hebt een stoel. Dat is … stoel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij hebt een stoel. Dat is … stoel."
+          },
+          "options": [
+            {
+              "nl": "mijn",
+              "en": "mijn",
+              "fa": "mijn"
+            },
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "jouw",
+              "en": "jouw",
+              "fa": "jouw"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Jij hebt een stoel. Dat is jouw stoel. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Jij hebt een stoel. Dat is jouw stoel. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Jij hebt een stoel. Dat is jouw stoel. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Jij hebt een stoel. Dat is jouw stoel."
+        },
+        {
+          "id": "pre-a1-practice-possessive-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik heb koffie. Dit is … koffie.",
+            "en": "Choose the correct Dutch form: Ik heb koffie. Dit is … koffie.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik heb koffie. Dit is … koffie."
+          },
+          "options": [
+            {
+              "nl": "mijn",
+              "en": "mijn",
+              "fa": "mijn"
+            },
+            {
+              "nl": "haar",
+              "en": "haar",
+              "fa": "haar"
+            },
+            {
+              "nl": "jouw",
+              "en": "jouw",
+              "fa": "jouw"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik heb koffie. Dit is mijn koffie. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Ik heb koffie. Dit is mijn koffie. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Ik heb koffie. Dit is mijn koffie. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Ik heb koffie. Dit is mijn koffie."
+        },
+        {
+          "id": "pre-a1-practice-possessive-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij hebben een klas. Dit is … klas.",
+            "en": "Choose the correct Dutch form: Wij hebben een klas. Dit is … klas.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij hebben een klas. Dit is … klas."
+          },
+          "options": [
+            {
+              "nl": "onze",
+              "en": "onze",
+              "fa": "onze"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij hebben een klas. Dit is onze klas. Mijn hoort bij ik, jouw bij jij, zijn bij hij, haar bij zij en ons/onze bij wij. Ons staat voor een enkelvoudig het-woord.",
+            "en": "Correct Dutch sentence: Wij hebben een klas. Dit is onze klas. Match the possessive to the owner; use ons before a singular het-word and onze before de-words and plurals.",
+            "fa": "جملهٔ درست هلندی: Wij hebben een klas. Dit is onze klas. ضمیر ملکی را با مالک هماهنگ کن. پیش از اسم خنثای مفرد از ons و پیش از اسم‌های دارای de و اسم‌های جمع از onze استفاده کن."
+          },
+          "model_sentence": "Wij hebben een klas. Dit is onze klas."
+        }
+      ]
+    },
+    {
+      "id": "practice-articles",
+      "title": {
+        "nl": "De of het?",
+        "en": "De or het?",
+        "fa": "حرف تعریف de یا het؟"
+      },
+      "explanation": {
+        "nl": "Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+        "en": "Learn the definite article with the noun. Plural nouns take de.",
+        "fa": "حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+      },
+      "examples": [
+        {
+          "nl": "Het boek ligt op de tafel.",
+          "en": "The book is on the table.",
+          "fa": "کتاب روی میز است."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-articles-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Waar is … boek?",
+            "en": "Choose the correct Dutch form: Waar is … boek?",
+            "fa": "شکل درست هلندی را انتخاب کن: Waar is … boek?"
+          },
+          "options": [
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            },
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Waar is het boek? Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Waar is het boek? Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Waar is het boek? حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Waar is het boek?"
+        },
+        {
+          "id": "pre-a1-practice-articles-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hier staat … stoel.",
+            "en": "Choose the correct Dutch form: Hier staat … stoel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hier staat … stoel."
+          },
+          "options": [
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            },
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hier staat de stoel. Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Hier staat de stoel. Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Hier staat de stoel. حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Hier staat de stoel."
+        },
+        {
+          "id": "pre-a1-practice-articles-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik open … raam.",
+            "en": "Choose the correct Dutch form: Ik open … raam.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik open … raam."
+          },
+          "options": [
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            },
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik open het raam. Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Ik open het raam. Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Ik open het raam. حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Ik open het raam."
+        },
+        {
+          "id": "pre-a1-practice-articles-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dat is … deur.",
+            "en": "Choose the correct Dutch form: Dat is … deur.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dat is … deur."
+          },
+          "options": [
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            },
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Dat is de deur. Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Dat is de deur. Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Dat is de deur. حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Dat is de deur."
+        },
+        {
+          "id": "pre-a1-practice-articles-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik neem … glas.",
+            "en": "Choose the correct Dutch form: Ik neem … glas.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik neem … glas."
+          },
+          "options": [
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            },
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik neem het glas. Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Ik neem het glas. Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Ik neem het glas. حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Ik neem het glas."
+        },
+        {
+          "id": "pre-a1-practice-articles-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Waar ligt … sleutel?",
+            "en": "Choose the correct Dutch form: Waar ligt … sleutel?",
+            "fa": "شکل درست هلندی را انتخاب کن: Waar ligt … sleutel?"
+          },
+          "options": [
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            },
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Waar ligt de sleutel? Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Waar ligt de sleutel? Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Waar ligt de sleutel? حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Waar ligt de sleutel?"
+        },
+        {
+          "id": "pre-a1-practice-articles-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Daar staat … bed.",
+            "en": "Choose the correct Dutch form: Daar staat … bed.",
+            "fa": "شکل درست هلندی را انتخاب کن: Daar staat … bed."
+          },
+          "options": [
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            },
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Daar staat het bed. Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Daar staat het bed. Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Daar staat het bed. حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Daar staat het bed."
+        },
+        {
+          "id": "pre-a1-practice-articles-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hier ligt … appel.",
+            "en": "Choose the correct Dutch form: Hier ligt … appel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hier ligt … appel."
+          },
+          "options": [
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            },
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Hier ligt de appel. Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Hier ligt de appel. Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Hier ligt de appel. حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Hier ligt de appel."
+        },
+        {
+          "id": "pre-a1-practice-articles-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik zie … huis.",
+            "en": "Choose the correct Dutch form: Ik zie … huis.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik zie … huis."
+          },
+          "options": [
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            },
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik zie het huis. Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Ik zie het huis. Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Ik zie het huis. حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Ik zie het huis."
+        },
+        {
+          "id": "pre-a1-practice-articles-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dit zijn … pennen.",
+            "en": "Choose the correct Dutch form: Dit zijn … pennen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dit zijn … pennen."
+          },
+          "options": [
+            {
+              "nl": "de",
+              "en": "de",
+              "fa": "de"
+            },
+            {
+              "nl": "het",
+              "en": "het",
+              "fa": "het"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dit zijn de pennen. Leer het bepaalde lidwoord samen met het zelfstandig naamwoord. Meervouden hebben de.",
+            "en": "Correct Dutch sentence: Dit zijn de pennen. Learn the definite article with the noun. Plural nouns take de.",
+            "fa": "جملهٔ درست هلندی: Dit zijn de pennen. حرف تعریف معین را همراه اسم یاد بگیر. اسم‌های جمع de می‌گیرند."
+          },
+          "model_sentence": "Dit zijn de pennen."
+        }
+      ]
+    },
+    {
+      "id": "practice-demonstratives",
+      "title": {
+        "nl": "Dit, dat, deze en die",
+        "en": "This and that",
+        "fa": "این و آن"
+      },
+      "explanation": {
+        "nl": "Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+        "en": "Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+        "fa": "برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+      },
+      "examples": [
+        {
+          "nl": "Deze stoel staat hier.",
+          "en": "This chair is here.",
+          "fa": "این صندلی اینجاست."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-demonstratives-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … boek hier is van mij.",
+            "en": "Choose the correct Dutch form: … boek hier is van mij.",
+            "fa": "شکل درست هلندی را انتخاب کن: … boek hier is van mij."
+          },
+          "options": [
+            {
+              "nl": "Deze",
+              "en": "Deze",
+              "fa": "Deze"
+            },
+            {
+              "nl": "Dit",
+              "en": "Dit",
+              "fa": "Dit"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Dit boek hier is van mij. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Dit boek hier is van mij. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Dit boek hier is van mij. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Dit boek hier is van mij."
+        },
+        {
+          "id": "pre-a1-practice-demonstratives-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … stoel hier is vrij.",
+            "en": "Choose the correct Dutch form: … stoel hier is vrij.",
+            "fa": "شکل درست هلندی را انتخاب کن: … stoel hier is vrij."
+          },
+          "options": [
+            {
+              "nl": "Dit",
+              "en": "Dit",
+              "fa": "Dit"
+            },
+            {
+              "nl": "Deze",
+              "en": "Deze",
+              "fa": "Deze"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Deze stoel hier is vrij. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Deze stoel hier is vrij. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Deze stoel hier is vrij. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Deze stoel hier is vrij."
+        },
+        {
+          "id": "pre-a1-practice-demonstratives-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … huis daar is groot.",
+            "en": "Choose the correct Dutch form: … huis daar is groot.",
+            "fa": "شکل درست هلندی را انتخاب کن: … huis daar is groot."
+          },
+          "options": [
+            {
+              "nl": "Dat",
+              "en": "Dat",
+              "fa": "Dat"
+            },
+            {
+              "nl": "Die",
+              "en": "Die",
+              "fa": "Die"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dat huis daar is groot. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Dat huis daar is groot. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Dat huis daar is groot. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Dat huis daar is groot."
+        },
+        {
+          "id": "pre-a1-practice-demonstratives-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … deur daar is dicht.",
+            "en": "Choose the correct Dutch form: … deur daar is dicht.",
+            "fa": "شکل درست هلندی را انتخاب کن: … deur daar is dicht."
+          },
+          "options": [
+            {
+              "nl": "Die",
+              "en": "Die",
+              "fa": "Die"
+            },
+            {
+              "nl": "Dat",
+              "en": "Dat",
+              "fa": "Dat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Die deur daar is dicht. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Die deur daar is dicht. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Die deur daar is dicht. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Die deur daar is dicht."
+        },
+        {
+          "id": "pre-a1-practice-demonstratives-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … pennen hier zijn blauw.",
+            "en": "Choose the correct Dutch form: … pennen hier zijn blauw.",
+            "fa": "شکل درست هلندی را انتخاب کن: … pennen hier zijn blauw."
+          },
+          "options": [
+            {
+              "nl": "Dit",
+              "en": "Dit",
+              "fa": "Dit"
+            },
+            {
+              "nl": "Deze",
+              "en": "Deze",
+              "fa": "Deze"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Deze pennen hier zijn blauw. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Deze pennen hier zijn blauw. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Deze pennen hier zijn blauw. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Deze pennen hier zijn blauw."
+        },
+        {
+          "id": "pre-a1-practice-demonstratives-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … raam hier is open.",
+            "en": "Choose the correct Dutch form: … raam hier is open.",
+            "fa": "شکل درست هلندی را انتخاب کن: … raam hier is open."
+          },
+          "options": [
+            {
+              "nl": "Dit",
+              "en": "Dit",
+              "fa": "Dit"
+            },
+            {
+              "nl": "Deze",
+              "en": "Deze",
+              "fa": "Deze"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dit raam hier is open. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Dit raam hier is open. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Dit raam hier is open. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Dit raam hier is open."
+        },
+        {
+          "id": "pre-a1-practice-demonstratives-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … tafel daar is klein.",
+            "en": "Choose the correct Dutch form: … tafel daar is klein.",
+            "fa": "شکل درست هلندی را انتخاب کن: … tafel daar is klein."
+          },
+          "options": [
+            {
+              "nl": "Dat",
+              "en": "Dat",
+              "fa": "Dat"
+            },
+            {
+              "nl": "Die",
+              "en": "Die",
+              "fa": "Die"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Die tafel daar is klein. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Die tafel daar is klein. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Die tafel daar is klein. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Die tafel daar is klein."
+        },
+        {
+          "id": "pre-a1-practice-demonstratives-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … glas daar is leeg.",
+            "en": "Choose the correct Dutch form: … glas daar is leeg.",
+            "fa": "شکل درست هلندی را انتخاب کن: … glas daar is leeg."
+          },
+          "options": [
+            {
+              "nl": "Dat",
+              "en": "Dat",
+              "fa": "Dat"
+            },
+            {
+              "nl": "Die",
+              "en": "Die",
+              "fa": "Die"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dat glas daar is leeg. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Dat glas daar is leeg. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Dat glas daar is leeg. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Dat glas daar is leeg."
+        },
+        {
+          "id": "pre-a1-practice-demonstratives-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … boeken daar zijn nieuw.",
+            "en": "Choose the correct Dutch form: … boeken daar zijn nieuw.",
+            "fa": "شکل درست هلندی را انتخاب کن: … boeken daar zijn nieuw."
+          },
+          "options": [
+            {
+              "nl": "Dat",
+              "en": "Dat",
+              "fa": "Dat"
+            },
+            {
+              "nl": "Die",
+              "en": "Die",
+              "fa": "Die"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Die boeken daar zijn nieuw. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Die boeken daar zijn nieuw. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Die boeken daar zijn nieuw. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Die boeken daar zijn nieuw."
+        },
+        {
+          "id": "pre-a1-practice-demonstratives-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … sleutel hier is groen.",
+            "en": "Choose the correct Dutch form: … sleutel hier is groen.",
+            "fa": "شکل درست هلندی را انتخاب کن: … sleutel hier is groen."
+          },
+          "options": [
+            {
+              "nl": "Dit",
+              "en": "Dit",
+              "fa": "Dit"
+            },
+            {
+              "nl": "Deze",
+              "en": "Deze",
+              "fa": "Deze"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Deze sleutel hier is groen. Dit/dat verwijzen naar enkelvoudige het-woorden; deze/die naar de-woorden en meervouden. Dit/deze zijn dichtbij, dat/die verder weg.",
+            "en": "Correct Dutch sentence: Deze sleutel hier is groen. Dit/dat refer to singular het-nouns; deze/die to de-nouns and plurals. Dit/deze are near, dat/die farther away.",
+            "fa": "جملهٔ درست هلندی: Deze sleutel hier is groen. برای اسم خنثای مفرد از dit یا dat و برای اسم‌های دارای de و جمع از deze یا die استفاده کن. dit و deze نزدیک و dat و die دورترند."
+          },
+          "model_sentence": "Deze sleutel hier is groen."
+        }
+      ]
+    },
+    {
+      "id": "practice-wordorder",
+      "title": {
+        "nl": "Een duidelijke hoofdzin",
+        "en": "Main-clause word order",
+        "fa": "ترتیب واژه‌ها در جملهٔ اصلی"
+      },
+      "explanation": {
+        "nl": "In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+        "en": "In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+        "fa": "در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+      },
+      "examples": [
+        {
+          "nl": "Vandaag werk ik thuis.",
+          "en": "Today I work at home.",
+          "fa": "امروز در خانه کار می‌کنم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-wordorder-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Bij de deur zeg ik: …",
+            "en": "Choose the correct Dutch form: Bij de deur zeg ik: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Bij de deur zeg ik: …"
+          },
+          "options": [
+            {
+              "nl": "Ik ben hier.",
+              "en": "Ik ben hier.",
+              "fa": "Ik ben hier."
+            },
+            {
+              "nl": "Ik hier ben.",
+              "en": "Ik hier ben.",
+              "fa": "Ik hier ben."
+            },
+            {
+              "nl": "Hier ik ben.",
+              "en": "Hier ik ben.",
+              "fa": "Hier ik ben."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Bij de deur zeg ik: Ik ben hier. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Bij de deur zeg ik: Ik ben hier. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Bij de deur zeg ik: Ik ben hier. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Bij de deur zeg ik: Ik ben hier."
+        },
+        {
+          "id": "pre-a1-practice-wordorder-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik geef mijn naam: …",
+            "en": "Choose the correct Dutch form: Ik geef mijn naam: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik geef mijn naam: …"
+          },
+          "options": [
+            {
+              "nl": "Ik heet Sara.",
+              "en": "Ik heet Sara.",
+              "fa": "Ik heet Sara."
+            },
+            {
+              "nl": "Ik Sara heet.",
+              "en": "Ik Sara heet.",
+              "fa": "Ik Sara heet."
+            },
+            {
+              "nl": "Heet Sara ik.",
+              "en": "Heet Sara ik.",
+              "fa": "Heet Sara ik."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik geef mijn naam: Ik heet Sara. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Ik geef mijn naam: Ik heet Sara. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Ik geef mijn naam: Ik heet Sara. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Ik geef mijn naam: Ik heet Sara."
+        },
+        {
+          "id": "pre-a1-practice-wordorder-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik wijs naar mijn huis: …",
+            "en": "Choose the correct Dutch form: Ik wijs naar mijn huis: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik wijs naar mijn huis: …"
+          },
+          "options": [
+            {
+              "nl": "Dat mijn huis is.",
+              "en": "Dat mijn huis is.",
+              "fa": "Dat mijn huis is."
+            },
+            {
+              "nl": "Is dat mijn huis.",
+              "en": "Is dat mijn huis.",
+              "fa": "Is dat mijn huis."
+            },
+            {
+              "nl": "Dat is mijn huis.",
+              "en": "Dat is mijn huis.",
+              "fa": "Dat is mijn huis."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik wijs naar mijn huis: Dat is mijn huis. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Ik wijs naar mijn huis: Dat is mijn huis. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Ik wijs naar mijn huis: Dat is mijn huis. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Ik wijs naar mijn huis: Dat is mijn huis."
+        },
+        {
+          "id": "pre-a1-practice-wordorder-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik noem de kleur: …",
+            "en": "Choose the correct Dutch form: Ik noem de kleur: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik noem de kleur: …"
+          },
+          "options": [
+            {
+              "nl": "De pen blauw is.",
+              "en": "De pen blauw is.",
+              "fa": "De pen blauw is."
+            },
+            {
+              "nl": "Blauw de pen is.",
+              "en": "Blauw de pen is.",
+              "fa": "Blauw de pen is."
+            },
+            {
+              "nl": "De pen is blauw.",
+              "en": "De pen is blauw.",
+              "fa": "De pen is blauw."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik noem de kleur: De pen is blauw. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Ik noem de kleur: De pen is blauw. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Ik noem de kleur: De pen is blauw. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Ik noem de kleur: De pen is blauw."
+        },
+        {
+          "id": "pre-a1-practice-wordorder-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik vertel wat ik drink: …",
+            "en": "Choose the correct Dutch form: Ik vertel wat ik drink: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik vertel wat ik drink: …"
+          },
+          "options": [
+            {
+              "nl": "Ik water drink.",
+              "en": "Ik water drink.",
+              "fa": "Ik water drink."
+            },
+            {
+              "nl": "Drink water ik.",
+              "en": "Drink water ik.",
+              "fa": "Drink water ik."
+            },
+            {
+              "nl": "Ik drink water.",
+              "en": "Ik drink water.",
+              "fa": "Ik drink water."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik vertel wat ik drink: Ik drink water. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Ik vertel wat ik drink: Ik drink water. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Ik vertel wat ik drink: Ik drink water. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Ik vertel wat ik drink: Ik drink water."
+        },
+        {
+          "id": "pre-a1-practice-wordorder-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik zeg wat wij doen: …",
+            "en": "Choose the correct Dutch form: Ik zeg wat wij doen: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik zeg wat wij doen: …"
+          },
+          "options": [
+            {
+              "nl": "Wij lezen een boek.",
+              "en": "Wij lezen een boek.",
+              "fa": "Wij lezen een boek."
+            },
+            {
+              "nl": "Wij een boek lezen.",
+              "en": "Wij een boek lezen.",
+              "fa": "Wij een boek lezen."
+            },
+            {
+              "nl": "Een lezen wij boek.",
+              "en": "Een lezen wij boek.",
+              "fa": "Een lezen wij boek."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik zeg wat wij doen: Wij lezen een boek. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Ik zeg wat wij doen: Wij lezen een boek. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Ik zeg wat wij doen: Wij lezen een boek. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Ik zeg wat wij doen: Wij lezen een boek."
+        },
+        {
+          "id": "pre-a1-practice-wordorder-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik beschrijf de tafel: …",
+            "en": "Choose the correct Dutch form: Ik beschrijf de tafel: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik beschrijf de tafel: …"
+          },
+          "options": [
+            {
+              "nl": "De tafel is klein.",
+              "en": "De tafel is klein.",
+              "fa": "De tafel is klein."
+            },
+            {
+              "nl": "De tafel klein is.",
+              "en": "De tafel klein is.",
+              "fa": "De tafel klein is."
+            },
+            {
+              "nl": "Klein de tafel is.",
+              "en": "Klein de tafel is.",
+              "fa": "Klein de tafel is."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik beschrijf de tafel: De tafel is klein. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Ik beschrijf de tafel: De tafel is klein. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Ik beschrijf de tafel: De tafel is klein. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Ik beschrijf de tafel: De tafel is klein."
+        },
+        {
+          "id": "pre-a1-practice-wordorder-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik vertel over mijn broer: …",
+            "en": "Choose the correct Dutch form: Ik vertel over mijn broer: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik vertel over mijn broer: …"
+          },
+          "options": [
+            {
+              "nl": "Woont hier hij.",
+              "en": "Woont hier hij.",
+              "fa": "Woont hier hij."
+            },
+            {
+              "nl": "Hij woont hier.",
+              "en": "Hij woont hier.",
+              "fa": "Hij woont hier."
+            },
+            {
+              "nl": "Hij hier woont.",
+              "en": "Hij hier woont.",
+              "fa": "Hij hier woont."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik vertel over mijn broer: Hij woont hier. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Ik vertel over mijn broer: Hij woont hier. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Ik vertel over mijn broer: Hij woont hier. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Ik vertel over mijn broer: Hij woont hier."
+        },
+        {
+          "id": "pre-a1-practice-wordorder-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik benoem het eten: …",
+            "en": "Choose the correct Dutch form: Ik benoem het eten: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik benoem het eten: …"
+          },
+          "options": [
+            {
+              "nl": "Is kaas dit.",
+              "en": "Is kaas dit.",
+              "fa": "Is kaas dit."
+            },
+            {
+              "nl": "Dit is kaas.",
+              "en": "Dit is kaas.",
+              "fa": "Dit is kaas."
+            },
+            {
+              "nl": "Dit kaas is.",
+              "en": "Dit kaas is.",
+              "fa": "Dit kaas is."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik benoem het eten: Dit is kaas. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Ik benoem het eten: Dit is kaas. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Ik benoem het eten: Dit is kaas. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Ik benoem het eten: Dit is kaas."
+        },
+        {
+          "id": "pre-a1-practice-wordorder-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik vertel over de klas: …",
+            "en": "Choose the correct Dutch form: Ik vertel over de klas: …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik vertel over de klas: …"
+          },
+          "options": [
+            {
+              "nl": "Wij zijn klaar.",
+              "en": "Wij zijn klaar.",
+              "fa": "Wij zijn klaar."
+            },
+            {
+              "nl": "Wij klaar zijn.",
+              "en": "Wij klaar zijn.",
+              "fa": "Wij klaar zijn."
+            },
+            {
+              "nl": "Zijn klaar wij.",
+              "en": "Zijn klaar wij.",
+              "fa": "Zijn klaar wij."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik vertel over de klas: Wij zijn klaar. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Ik vertel over de klas: Wij zijn klaar. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Ik vertel over de klas: Wij zijn klaar. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Ik vertel over de klas: Wij zijn klaar."
+        }
+      ]
+    },
+    {
+      "id": "practice-questions",
+      "title": {
+        "nl": "Vragen stellen",
+        "en": "Asking questions",
+        "fa": "پرسیدن سؤال"
+      },
+      "explanation": {
+        "nl": "Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+        "en": "In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+        "fa": "در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+      },
+      "examples": [
+        {
+          "nl": "Waar woont u?",
+          "en": "Where do you live?",
+          "fa": "کجا زندگی می‌کنید؟"
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-questions-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … heet jij? Vraag naar de naam.",
+            "en": "Choose the correct Dutch form: … heet jij? Vraag naar de naam.",
+            "fa": "شکل درست هلندی را انتخاب کن: … heet jij? Vraag naar de naam."
+          },
+          "options": [
+            {
+              "nl": "Waar",
+              "en": "Waar",
+              "fa": "Waar"
+            },
+            {
+              "nl": "Wanneer",
+              "en": "Wanneer",
+              "fa": "Wanneer"
+            },
+            {
+              "nl": "Hoe",
+              "en": "Hoe",
+              "fa": "Hoe"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Hoe heet jij? Vraag naar de naam. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Hoe heet jij? Vraag naar de naam. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Hoe heet jij? Vraag naar de naam. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Hoe heet jij? Vraag naar de naam."
+        },
+        {
+          "id": "pre-a1-practice-questions-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … woont u? Vraag naar de plaats.",
+            "en": "Choose the correct Dutch form: … woont u? Vraag naar de plaats.",
+            "fa": "شکل درست هلندی را انتخاب کن: … woont u? Vraag naar de plaats."
+          },
+          "options": [
+            {
+              "nl": "Waar",
+              "en": "Waar",
+              "fa": "Waar"
+            },
+            {
+              "nl": "Wie",
+              "en": "Wie",
+              "fa": "Wie"
+            },
+            {
+              "nl": "Wanneer",
+              "en": "Wanneer",
+              "fa": "Wanneer"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Waar woont u? Vraag naar de plaats. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Waar woont u? Vraag naar de plaats. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Waar woont u? Vraag naar de plaats. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Waar woont u? Vraag naar de plaats."
+        },
+        {
+          "id": "pre-a1-practice-questions-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … bent u? Vraag wie de persoon is.",
+            "en": "Choose the correct Dutch form: … bent u? Vraag wie de persoon is.",
+            "fa": "شکل درست هلندی را انتخاب کن: … bent u? Vraag wie de persoon is."
+          },
+          "options": [
+            {
+              "nl": "Waar",
+              "en": "Waar",
+              "fa": "Waar"
+            },
+            {
+              "nl": "Wanneer",
+              "en": "Wanneer",
+              "fa": "Wanneer"
+            },
+            {
+              "nl": "Wie",
+              "en": "Wie",
+              "fa": "Wie"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Wie bent u? Vraag wie de persoon is. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Wie bent u? Vraag wie de persoon is. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Wie bent u? Vraag wie de persoon is. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Wie bent u? Vraag wie de persoon is."
+        },
+        {
+          "id": "pre-a1-practice-questions-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … is de pen? Vraag naar de plaats.",
+            "en": "Choose the correct Dutch form: … is de pen? Vraag naar de plaats.",
+            "fa": "شکل درست هلندی را انتخاب کن: … is de pen? Vraag naar de plaats."
+          },
+          "options": [
+            {
+              "nl": "Waar",
+              "en": "Waar",
+              "fa": "Waar"
+            },
+            {
+              "nl": "Wie",
+              "en": "Wie",
+              "fa": "Wie"
+            },
+            {
+              "nl": "Hoeveel",
+              "en": "Hoeveel",
+              "fa": "Hoeveel"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Waar is de pen? Vraag naar de plaats. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Waar is de pen? Vraag naar de plaats. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Waar is de pen? Vraag naar de plaats. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Waar is de pen? Vraag naar de plaats."
+        },
+        {
+          "id": "pre-a1-practice-questions-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … komt de buur? Vraag naar de tijd.",
+            "en": "Choose the correct Dutch form: … komt de buur? Vraag naar de tijd.",
+            "fa": "شکل درست هلندی را انتخاب کن: … komt de buur? Vraag naar de tijd."
+          },
+          "options": [
+            {
+              "nl": "Wanneer",
+              "en": "Wanneer",
+              "fa": "Wanneer"
+            },
+            {
+              "nl": "Wie",
+              "en": "Wie",
+              "fa": "Wie"
+            },
+            {
+              "nl": "Waar",
+              "en": "Waar",
+              "fa": "Waar"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wanneer komt de buur? Vraag naar de tijd. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Wanneer komt de buur? Vraag naar de tijd. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Wanneer komt de buur? Vraag naar de tijd. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Wanneer komt de buur? Vraag naar de tijd."
+        },
+        {
+          "id": "pre-a1-practice-questions-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … kost het brood? Vraag naar de prijs.",
+            "en": "Choose the correct Dutch form: … kost het brood? Vraag naar de prijs.",
+            "fa": "شکل درست هلندی را انتخاب کن: … kost het brood? Vraag naar de prijs."
+          },
+          "options": [
+            {
+              "nl": "Wie",
+              "en": "Wie",
+              "fa": "Wie"
+            },
+            {
+              "nl": "Waar",
+              "en": "Waar",
+              "fa": "Waar"
+            },
+            {
+              "nl": "Hoeveel",
+              "en": "Hoeveel",
+              "fa": "Hoeveel"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Hoeveel kost het brood? Vraag naar de prijs. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Hoeveel kost het brood? Vraag naar de prijs. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Hoeveel kost het brood? Vraag naar de prijs. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Hoeveel kost het brood? Vraag naar de prijs."
+        },
+        {
+          "id": "pre-a1-practice-questions-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … kleur is dit? Vraag naar de kleur.",
+            "en": "Choose the correct Dutch form: … kleur is dit? Vraag naar de kleur.",
+            "fa": "شکل درست هلندی را انتخاب کن: … kleur is dit? Vraag naar de kleur."
+          },
+          "options": [
+            {
+              "nl": "Wie",
+              "en": "Wie",
+              "fa": "Wie"
+            },
+            {
+              "nl": "Wanneer",
+              "en": "Wanneer",
+              "fa": "Wanneer"
+            },
+            {
+              "nl": "Welke",
+              "en": "Welke",
+              "fa": "Welke"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Welke kleur is dit? Vraag naar de kleur. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Welke kleur is dit? Vraag naar de kleur. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Welke kleur is dit? Vraag naar de kleur. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Welke kleur is dit? Vraag naar de kleur."
+        },
+        {
+          "id": "pre-a1-practice-questions-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … is dit? Vraag naar het voorwerp.",
+            "en": "Choose the correct Dutch form: … is dit? Vraag naar het voorwerp.",
+            "fa": "شکل درست هلندی را انتخاب کن: … is dit? Vraag naar het voorwerp."
+          },
+          "options": [
+            {
+              "nl": "Wanneer",
+              "en": "Wanneer",
+              "fa": "Wanneer"
+            },
+            {
+              "nl": "Wat",
+              "en": "Wat",
+              "fa": "Wat"
+            },
+            {
+              "nl": "Wie",
+              "en": "Wie",
+              "fa": "Wie"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wat is dit? Vraag naar het voorwerp. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Wat is dit? Vraag naar het voorwerp. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Wat is dit? Vraag naar het voorwerp. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Wat is dit? Vraag naar het voorwerp."
+        },
+        {
+          "id": "pre-a1-practice-questions-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … gaat het? Vraag hoe iemand zich voelt.",
+            "en": "Choose the correct Dutch form: … gaat het? Vraag hoe iemand zich voelt.",
+            "fa": "شکل درست هلندی را انتخاب کن: … gaat het? Vraag hoe iemand zich voelt."
+          },
+          "options": [
+            {
+              "nl": "Hoe",
+              "en": "Hoe",
+              "fa": "Hoe"
+            },
+            {
+              "nl": "Waar",
+              "en": "Waar",
+              "fa": "Waar"
+            },
+            {
+              "nl": "Hoeveel",
+              "en": "Hoeveel",
+              "fa": "Hoeveel"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Hoe gaat het? Vraag hoe iemand zich voelt. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Hoe gaat het? Vraag hoe iemand zich voelt. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Hoe gaat het? Vraag hoe iemand zich voelt. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Hoe gaat het? Vraag hoe iemand zich voelt."
+        },
+        {
+          "id": "pre-a1-practice-questions-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … boeken zijn er? Vraag naar het aantal.",
+            "en": "Choose the correct Dutch form: … boeken zijn er? Vraag naar het aantal.",
+            "fa": "شکل درست هلندی را انتخاب کن: … boeken zijn er? Vraag naar het aantal."
+          },
+          "options": [
+            {
+              "nl": "Waar",
+              "en": "Waar",
+              "fa": "Waar"
+            },
+            {
+              "nl": "Hoeveel",
+              "en": "Hoeveel",
+              "fa": "Hoeveel"
+            },
+            {
+              "nl": "Wie",
+              "en": "Wie",
+              "fa": "Wie"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hoeveel boeken zijn er? Vraag naar het aantal. Bij een ja-neevraag staat de persoonsvorm voor het onderwerp. Na een vraagwoord volgt meestal de persoonsvorm.",
+            "en": "Correct Dutch sentence: Hoeveel boeken zijn er? Vraag naar het aantal. In a yes/no question the finite verb precedes the subject. A question word is normally followed by the finite verb.",
+            "fa": "جملهٔ درست هلندی: Hoeveel boeken zijn er? Vraag naar het aantal. در پرسش بله/خیر، فعل صرف‌شده پیش از فاعل می‌آید. معمولاً پس از واژهٔ پرسشی فعل صرف‌شده قرار می‌گیرد."
+          },
+          "model_sentence": "Hoeveel boeken zijn er? Vraag naar het aantal."
+        }
+      ]
+    },
+    {
+      "id": "practice-negation",
+      "title": {
+        "nl": "Niet en geen",
+        "en": "Niet and geen",
+        "fa": "منفی‌سازی با niet و geen"
+      },
+      "explanation": {
+        "nl": "Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+        "en": "Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+        "fa": "geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+      },
+      "examples": [
+        {
+          "nl": "Ik heb geen fiets.",
+          "en": "I do not have a bicycle.",
+          "fa": "من دوچرخه ندارم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a1-practice-negation-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dit is … koffie; dit is thee.",
+            "en": "Choose the correct Dutch form: Dit is … koffie; dit is thee.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dit is … koffie; dit is thee."
+          },
+          "options": [
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            },
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dit is geen koffie; dit is thee. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Dit is geen koffie; dit is thee. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Dit is geen koffie; dit is thee. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Dit is geen koffie; dit is thee."
+        },
+        {
+          "id": "pre-a1-practice-negation-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik heb … fiets.",
+            "en": "Choose the correct Dutch form: Ik heb … fiets.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik heb … fiets."
+          },
+          "options": [
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            },
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik heb geen fiets. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Ik heb geen fiets. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Ik heb geen fiets. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Ik heb geen fiets."
+        },
+        {
+          "id": "pre-a1-practice-negation-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het water is … warm.",
+            "en": "Choose the correct Dutch form: Het water is … warm.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het water is … warm."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het water is niet warm. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Het water is niet warm. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Het water is niet warm. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Het water is niet warm."
+        },
+        {
+          "id": "pre-a1-practice-negation-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn naam is … Sam.",
+            "en": "Choose the correct Dutch form: Mijn naam is … Sam.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn naam is … Sam."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Mijn naam is niet Sam. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Mijn naam is niet Sam. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Mijn naam is niet Sam. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Mijn naam is niet Sam."
+        },
+        {
+          "id": "pre-a1-practice-negation-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Er staat … stoel in mijn kamer.",
+            "en": "Choose the correct Dutch form: Er staat … stoel in mijn kamer.",
+            "fa": "شکل درست هلندی را انتخاب کن: Er staat … stoel in mijn kamer."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Er staat geen stoel in mijn kamer. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Er staat geen stoel in mijn kamer. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Er staat geen stoel in mijn kamer. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Er staat geen stoel in mijn kamer."
+        },
+        {
+          "id": "pre-a1-practice-negation-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De deur is … open.",
+            "en": "Choose the correct Dutch form: De deur is … open.",
+            "fa": "شکل درست هلندی را انتخاب کن: De deur is … open."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De deur is niet open. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: De deur is niet open. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: De deur is niet open. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "De deur is niet open."
+        },
+        {
+          "id": "pre-a1-practice-negation-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij hebben … melk.",
+            "en": "Choose the correct Dutch form: Wij hebben … melk.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij hebben … melk."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij hebben geen melk. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Wij hebben geen melk. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Wij hebben geen melk. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Wij hebben geen melk."
+        },
+        {
+          "id": "pre-a1-practice-negation-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik woon … hier.",
+            "en": "Choose the correct Dutch form: Ik woon … hier.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik woon … hier."
+          },
+          "options": [
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            },
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik woon niet hier. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Ik woon niet hier. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Ik woon niet hier. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Ik woon niet hier."
+        },
+        {
+          "id": "pre-a1-practice-negation-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dat is … mijn boek.",
+            "en": "Choose the correct Dutch form: Dat is … mijn boek.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dat is … mijn boek."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dat is niet mijn boek. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Dat is niet mijn boek. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Dat is niet mijn boek. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Dat is niet mijn boek."
+        },
+        {
+          "id": "pre-a1-practice-negation-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik drink … thee vandaag.",
+            "en": "Choose the correct Dutch form: Ik drink … thee vandaag.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik drink … thee vandaag."
+          },
+          "options": [
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            },
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik drink geen thee vandaag. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Ik drink geen thee vandaag. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Ik drink geen thee vandaag. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Ik drink geen thee vandaag."
+        }
+      ]
+    }
+  ]
+}

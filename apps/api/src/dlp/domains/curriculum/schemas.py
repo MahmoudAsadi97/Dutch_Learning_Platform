@@ -47,12 +47,16 @@ class Task(BaseModel):
         return self
 
 
+class GrammarQuestion(Question):
+    model_sentence: str | None = Field(default=None, min_length=1, max_length=1200)
+
+
 class Grammar(BaseModel):
     id: str
     title: Localized
     explanation: Localized
     examples: list[Localized]
-    practice: list[Question]
+    practice: list[GrammarQuestion]
 
 
 class Vocabulary(BaseModel):

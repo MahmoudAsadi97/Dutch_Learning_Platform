@@ -39,9 +39,13 @@ test("grammar answers do not pollute the submitted reading answers", async ({ pa
   const stage = await response.json();
   const nav = page.getByRole("navigation", { name: "Onderdelen van dit niveau" });
   await nav.getByRole("button", { name: "Grammatica", exact: true }).click();
+  await page.locator("#grammar-topic").selectOption(stage.grammar[0].id);
   const grammar = stage.grammar[0].practice[0];
   await page.locator(`input[name="q-${grammar.id}"]`).nth(grammar.answer_index).check();
-  await page.getByRole("button", { name: "Controleer je zin" }).first().click();
+  await page
+    .getByRole("button", { name: /Controleer deze ronde/ })
+    .first()
+    .click();
   await expect(page.locator(".practice-correct").first()).toBeVisible();
   await nav.getByRole("button", { name: "Lezen", exact: true }).click();
   await page.getByRole("button", { name: "Startles", exact: true }).click();
@@ -247,4 +251,23 @@ test("test interface protects a recording and retries an unchanged submitted sna
   await expect(page.locator(".skill-result")).toHaveCount(4);
   await expect(page.locator(".result-banner")).toContainText("verder kunt oefenen");
   expect(submissions).toBe(2);
+});
+
+test("grammar rounds stay manageable and accessible on a narrow phone", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/learn/a2");
+  await page
+    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
+    .getByRole("button", { name: "Grammatica", exact: true })
+    .click();
+  const practice = page.getByRole("region", { name: "Grammaticaoefeningen", exact: true });
+  await expect(practice.locator(".curriculum-question")).toHaveCount(10);
+  await expect(practice.locator("#grammar-topic option")).not.toHaveCount(0);
+  await expect(practice.getByRole("button", { name: /Controleer deze ronde/ })).toBeDisabled();
+  await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  const results = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .analyze();
+  expect(results.violations).toEqual([]);
 });

@@ -53,7 +53,7 @@ export function CurriculumQuestions({
                   {exam ? (
                     <span lang="nl">{option.nl}</span>
                   ) : (
-                    <LearningText text={checked ? option : { nl: option.nl }} />
+                    <LearningText text={checked && !question.model_sentence ? option : { nl: option.nl }} />
                   )}
                 </label>
                 {!exam && <SentenceAudio text={option.nl} disabled={disabled} />}
@@ -73,6 +73,7 @@ export function CurriculumQuestions({
                   : "Bekijk de uitleg en probeer opnieuw."}
               </strong>
               {question.explanation && <LearningText text={question.explanation} />}
+              {question.model_sentence && <SpokenPassage text={{ nl: question.model_sentence }} />}
             </div>
           )}
         </fieldset>

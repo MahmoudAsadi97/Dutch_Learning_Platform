@@ -1,0 +1,3202 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b1",
+  "review_status": "unreviewed",
+  "rounds": [
+    {
+      "id": "practice-past",
+      "title": {
+        "nl": "Vertellen over vroeger",
+        "en": "Talking about the past",
+        "fa": "صحبت دربارهٔ گذشته"
+      },
+      "explanation": {
+        "nl": "De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+        "en": "The simple past has regular and irregular forms. Match the subject and the past-time context.",
+        "fa": "گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+      },
+      "examples": [
+        {
+          "nl": "Vroeger woonde ik in Brugge.",
+          "en": "I used to live in Bruges.",
+          "fa": "قبلاً در بروژ زندگی می‌کردم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-past-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gisteren … ik tot zes uur.",
+            "en": "Choose the correct Dutch form: Gisteren … ik tot zes uur.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gisteren … ik tot zes uur."
+          },
+          "options": [
+            {
+              "nl": "werkte",
+              "en": "werkte",
+              "fa": "werkte"
+            },
+            {
+              "nl": "werk",
+              "en": "werk",
+              "fa": "werk"
+            },
+            {
+              "nl": "werkten",
+              "en": "werkten",
+              "fa": "werkten"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Gisteren werkte ik tot zes uur. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Gisteren werkte ik tot zes uur. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Gisteren werkte ik tot zes uur. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Gisteren werkte ik tot zes uur."
+        },
+        {
+          "id": "pre-b1-practice-past-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Vroeger … wij naast het station.",
+            "en": "Choose the correct Dutch form: Vroeger … wij naast het station.",
+            "fa": "شکل درست هلندی را انتخاب کن: Vroeger … wij naast het station."
+          },
+          "options": [
+            {
+              "nl": "woonde",
+              "en": "woonde",
+              "fa": "woonde"
+            },
+            {
+              "nl": "wonen",
+              "en": "wonen",
+              "fa": "wonen"
+            },
+            {
+              "nl": "woonden",
+              "en": "woonden",
+              "fa": "woonden"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Vroeger woonden wij naast het station. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Vroeger woonden wij naast het station. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Vroeger woonden wij naast het station. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Vroeger woonden wij naast het station."
+        },
+        {
+          "id": "pre-b1-practice-past-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Vorige week … mijn zus alleen een kamer.",
+            "en": "Choose the correct Dutch form: Vorige week … mijn zus alleen een kamer.",
+            "fa": "شکل درست هلندی را انتخاب کن: Vorige week … mijn zus alleen een kamer."
+          },
+          "options": [
+            {
+              "nl": "huurde",
+              "en": "huurde",
+              "fa": "huurde"
+            },
+            {
+              "nl": "huurden",
+              "en": "huurden",
+              "fa": "huurden"
+            },
+            {
+              "nl": "huurt",
+              "en": "huurt",
+              "fa": "huurt"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Vorige week huurde mijn zus alleen een kamer. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Vorige week huurde mijn zus alleen een kamer. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Vorige week huurde mijn zus alleen een kamer. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Vorige week huurde mijn zus alleen een kamer."
+        },
+        {
+          "id": "pre-b1-practice-past-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Als kind … ik vaak in deze tuin.",
+            "en": "Choose the correct Dutch form: Als kind … ik vaak in deze tuin.",
+            "fa": "شکل درست هلندی را انتخاب کن: Als kind … ik vaak in deze tuin."
+          },
+          "options": [
+            {
+              "nl": "speelden",
+              "en": "speelden",
+              "fa": "speelden"
+            },
+            {
+              "nl": "speel",
+              "en": "speel",
+              "fa": "speel"
+            },
+            {
+              "nl": "speelde",
+              "en": "speelde",
+              "fa": "speelde"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Als kind speelde ik vaak in deze tuin. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Als kind speelde ik vaak in deze tuin. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Als kind speelde ik vaak in deze tuin. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Als kind speelde ik vaak in deze tuin."
+        },
+        {
+          "id": "pre-b1-practice-past-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Tijdens de pauze … mijn collega koffie.",
+            "en": "Choose the correct Dutch form: Tijdens de pauze … mijn collega koffie.",
+            "fa": "شکل درست هلندی را انتخاب کن: Tijdens de pauze … mijn collega koffie."
+          },
+          "options": [
+            {
+              "nl": "haalde",
+              "en": "haalde",
+              "fa": "haalde"
+            },
+            {
+              "nl": "haalden",
+              "en": "haalden",
+              "fa": "haalden"
+            },
+            {
+              "nl": "haalt",
+              "en": "haalt",
+              "fa": "haalt"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Tijdens de pauze haalde mijn collega koffie. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Tijdens de pauze haalde mijn collega koffie. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Tijdens de pauze haalde mijn collega koffie. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Tijdens de pauze haalde mijn collega koffie."
+        },
+        {
+          "id": "pre-b1-practice-past-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gisteren … de docent de vraag.",
+            "en": "Choose the correct Dutch form: Gisteren … de docent de vraag.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gisteren … de docent de vraag."
+          },
+          "options": [
+            {
+              "nl": "herhaalden",
+              "en": "herhaalden",
+              "fa": "herhaalden"
+            },
+            {
+              "nl": "herhaalt",
+              "en": "herhaalt",
+              "fa": "herhaalt"
+            },
+            {
+              "nl": "herhaalde",
+              "en": "herhaalde",
+              "fa": "herhaalde"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Gisteren herhaalde de docent de vraag. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Gisteren herhaalde de docent de vraag. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Gisteren herhaalde de docent de vraag. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Gisteren herhaalde de docent de vraag."
+        },
+        {
+          "id": "pre-b1-practice-past-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Vorig jaar … wij de cursus samen.",
+            "en": "Choose the correct Dutch form: Vorig jaar … wij de cursus samen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Vorig jaar … wij de cursus samen."
+          },
+          "options": [
+            {
+              "nl": "volgden",
+              "en": "volgden",
+              "fa": "volgden"
+            },
+            {
+              "nl": "volgde",
+              "en": "volgde",
+              "fa": "volgde"
+            },
+            {
+              "nl": "volgen",
+              "en": "volgen",
+              "fa": "volgen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Vorig jaar volgden wij de cursus samen. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Vorig jaar volgden wij de cursus samen. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Vorig jaar volgden wij de cursus samen. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Vorig jaar volgden wij de cursus samen."
+        },
+        {
+          "id": "pre-b1-practice-past-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Die avond … ik op de bus.",
+            "en": "Choose the correct Dutch form: Die avond … ik op de bus.",
+            "fa": "شکل درست هلندی را انتخاب کن: Die avond … ik op de bus."
+          },
+          "options": [
+            {
+              "nl": "wachten",
+              "en": "wachten",
+              "fa": "wachten"
+            },
+            {
+              "nl": "wachtte",
+              "en": "wachtte",
+              "fa": "wachtte"
+            },
+            {
+              "nl": "wachteten",
+              "en": "wachteten",
+              "fa": "wachteten"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Die avond wachtte ik op de bus. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Die avond wachtte ik op de bus. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Die avond wachtte ik op de bus. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Die avond wachtte ik op de bus."
+        },
+        {
+          "id": "pre-b1-practice-past-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Toen … de fiets nog goed.",
+            "en": "Choose the correct Dutch form: Toen … de fiets nog goed.",
+            "fa": "شکل درست هلندی را انتخاب کن: Toen … de fiets nog goed."
+          },
+          "options": [
+            {
+              "nl": "werkte",
+              "en": "werkte",
+              "fa": "werkte"
+            },
+            {
+              "nl": "werkten",
+              "en": "werkten",
+              "fa": "werkten"
+            },
+            {
+              "nl": "werkt",
+              "en": "werkt",
+              "fa": "werkt"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Toen werkte de fiets nog goed. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Toen werkte de fiets nog goed. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Toen werkte de fiets nog goed. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Toen werkte de fiets nog goed."
+        },
+        {
+          "id": "pre-b1-practice-past-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Vorige maand … jullie naar een nieuwe woning.",
+            "en": "Choose the correct Dutch form: Vorige maand … jullie naar een nieuwe woning.",
+            "fa": "شکل درست هلندی را انتخاب کن: Vorige maand … jullie naar een nieuwe woning."
+          },
+          "options": [
+            {
+              "nl": "verhuisde",
+              "en": "verhuisde",
+              "fa": "verhuisde"
+            },
+            {
+              "nl": "verhuizen",
+              "en": "verhuizen",
+              "fa": "verhuizen"
+            },
+            {
+              "nl": "verhuisden",
+              "en": "verhuisden",
+              "fa": "verhuisden"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Vorige maand verhuisden jullie naar een nieuwe woning. De onvoltooid verleden tijd heeft regelmatige en onregelmatige vormen. Kies de vorm die bij onderwerp en tijd past.",
+            "en": "Correct Dutch sentence: Vorige maand verhuisden jullie naar een nieuwe woning. The simple past has regular and irregular forms. Match the subject and the past-time context.",
+            "fa": "جملهٔ درست هلندی: Vorige maand verhuisden jullie naar een nieuwe woning. گذشتهٔ ساده شکل‌های باقاعده و بی‌قاعده دارد. شکل فعل را با فاعل و زمان جمله هماهنگ کن."
+          },
+          "model_sentence": "Vorige maand verhuisden jullie naar een nieuwe woning."
+        }
+      ]
+    },
+    {
+      "id": "practice-tense",
+      "title": {
+        "nl": "Tijdsverbanden precies houden",
+        "en": "Precise time relations",
+        "fa": "حفظ دقیق رابطه‌های زمانی"
+      },
+      "explanation": {
+        "nl": "De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+        "en": "The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+        "fa": "ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+      },
+      "examples": [
+        {
+          "nl": "Zij vertrok nadat ze had gebeld.",
+          "en": "She left after she had called.",
+          "fa": "پس از اینکه تلفن کرده بود، رفت."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-tense-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: Toen ik aankwam, … het overleg al begonnen.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: Toen ik aankwam, … het overleg al begonnen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: Toen ik aankwam, … het overleg al begonnen."
+          },
+          "options": [
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: Toen ik aankwam, was het overleg al begonnen. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: Toen ik aankwam, was het overleg al begonnen. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: Toen ik aankwam, was het overleg al begonnen. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: Toen ik aankwam, was het overleg al begonnen."
+        },
+        {
+          "id": "pre-b1-practice-tense-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: Voor hij vertrok, … hij zijn tas al gepakt.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: Voor hij vertrok, … hij zijn tas al gepakt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: Voor hij vertrok, … hij zijn tas al gepakt."
+          },
+          "options": [
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: Voor hij vertrok, had hij zijn tas al gepakt. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: Voor hij vertrok, had hij zijn tas al gepakt. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: Voor hij vertrok, had hij zijn tas al gepakt. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: Voor hij vertrok, had hij zijn tas al gepakt."
+        },
+        {
+          "id": "pre-b1-practice-tense-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: Toen zij belde, … wij net gegeten.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: Toen zij belde, … wij net gegeten.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: Toen zij belde, … wij net gegeten."
+          },
+          "options": [
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "hadden",
+              "en": "hadden",
+              "fa": "hadden"
+            },
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: Toen zij belde, hadden wij net gegeten. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: Toen zij belde, hadden wij net gegeten. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: Toen zij belde, hadden wij net gegeten. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: Toen zij belde, hadden wij net gegeten."
+        },
+        {
+          "id": "pre-b1-practice-tense-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: Het lokaal was leeg: iedereen … al vertrokken.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: Het lokaal was leeg: iedereen … al vertrokken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: Het lokaal was leeg: iedereen … al vertrokken."
+          },
+          "options": [
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: Het lokaal was leeg: iedereen was al vertrokken. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: Het lokaal was leeg: iedereen was al vertrokken. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: Het lokaal was leeg: iedereen was al vertrokken. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: Het lokaal was leeg: iedereen was al vertrokken."
+        },
+        {
+          "id": "pre-b1-practice-tense-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: Ik vond de sleutel die ik eerder … verloren.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: Ik vond de sleutel die ik eerder … verloren.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: Ik vond de sleutel die ik eerder … verloren."
+          },
+          "options": [
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            },
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: Ik vond de sleutel die ik eerder had verloren. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: Ik vond de sleutel die ik eerder had verloren. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: Ik vond de sleutel die ik eerder had verloren. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: Ik vond de sleutel die ik eerder had verloren."
+        },
+        {
+          "id": "pre-b1-practice-tense-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: Wij zagen dat iemand de deur … gesloten.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: Wij zagen dat iemand de deur … gesloten.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: Wij zagen dat iemand de deur … gesloten."
+          },
+          "options": [
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: Wij zagen dat iemand de deur had gesloten. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: Wij zagen dat iemand de deur had gesloten. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: Wij zagen dat iemand de deur had gesloten. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: Wij zagen dat iemand de deur had gesloten."
+        },
+        {
+          "id": "pre-b1-practice-tense-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: De soep was koud; hij … haar te vroeg gemaakt.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: De soep was koud; hij … haar te vroeg gemaakt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: De soep was koud; hij … haar te vroeg gemaakt."
+          },
+          "options": [
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: De soep was koud; hij had haar te vroeg gemaakt. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: De soep was koud; hij had haar te vroeg gemaakt. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: De soep was koud; hij had haar te vroeg gemaakt. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: De soep was koud; hij had haar te vroeg gemaakt."
+        },
+        {
+          "id": "pre-b1-practice-tense-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: De klas was stil omdat de toets al … gestart.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: De klas was stil omdat de toets al … gestart.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: De klas was stil omdat de toets al … gestart."
+          },
+          "options": [
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: De klas was stil omdat de toets al was gestart. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: De klas was stil omdat de toets al was gestart. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: De klas was stil omdat de toets al was gestart. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: De klas was stil omdat de toets al was gestart."
+        },
+        {
+          "id": "pre-b1-practice-tense-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: Zij kende de weg omdat ze hier eerder … geweest.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: Zij kende de weg omdat ze hier eerder … geweest.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: Zij kende de weg omdat ze hier eerder … geweest."
+          },
+          "options": [
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: Zij kende de weg omdat ze hier eerder was geweest. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: Zij kende de weg omdat ze hier eerder was geweest. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: Zij kende de weg omdat ze hier eerder was geweest. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: Zij kende de weg omdat ze hier eerder was geweest."
+        },
+        {
+          "id": "pre-b1-practice-tense-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gebruik de voltooid verleden tijd: Ik was moe omdat ik slecht … geslapen.",
+            "en": "Choose the correct Dutch form: Gebruik de voltooid verleden tijd: Ik was moe omdat ik slecht … geslapen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gebruik de voltooid verleden tijd: Ik was moe omdat ik slecht … geslapen."
+          },
+          "options": [
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Gebruik de voltooid verleden tijd: Ik was moe omdat ik slecht had geslapen. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Gebruik de voltooid verleden tijd: Ik was moe omdat ik slecht had geslapen. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Gebruik de voltooid verleden tijd: Ik was moe omdat ik slecht had geslapen. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Gebruik de voltooid verleden tijd: Ik was moe omdat ik slecht had geslapen."
+        }
+      ]
+    },
+    {
+      "id": "practice-subordinate",
+      "title": {
+        "nl": "De bijzin",
+        "en": "Subordinate-clause order",
+        "fa": "ترتیب جملهٔ وابسته"
+      },
+      "explanation": {
+        "nl": "Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+        "en": "After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+        "fa": "پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+      },
+      "examples": [
+        {
+          "nl": "Ik blijf omdat het regent.",
+          "en": "I am staying because it is raining.",
+          "fa": "می‌مانم چون باران می‌بارد."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-subordinate-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Omdat het regende, … wij de bus.",
+            "en": "Choose the correct Dutch form: Omdat het regende, … wij de bus.",
+            "fa": "شکل درست هلندی را انتخاب کن: Omdat het regende, … wij de bus."
+          },
+          "options": [
+            {
+              "nl": "wij namen",
+              "en": "wij namen",
+              "fa": "wij namen"
+            },
+            {
+              "nl": "nemen wij",
+              "en": "nemen wij",
+              "fa": "nemen wij"
+            },
+            {
+              "nl": "namen",
+              "en": "namen",
+              "fa": "namen"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Omdat het regende, namen wij de bus. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Omdat het regende, namen wij de bus. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Omdat het regende, namen wij de bus. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Omdat het regende, namen wij de bus."
+        },
+        {
+          "id": "pre-b1-practice-subordinate-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Toen de bel ging, … iedereen op.",
+            "en": "Choose the correct Dutch form: Toen de bel ging, … iedereen op.",
+            "fa": "شکل درست هلندی را انتخاب کن: Toen de bel ging, … iedereen op."
+          },
+          "options": [
+            {
+              "nl": "iedereen stond",
+              "en": "iedereen stond",
+              "fa": "iedereen stond"
+            },
+            {
+              "nl": "staan iedereen",
+              "en": "staan iedereen",
+              "fa": "staan iedereen"
+            },
+            {
+              "nl": "stond",
+              "en": "stond",
+              "fa": "stond"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Toen de bel ging, stond iedereen op. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Toen de bel ging, stond iedereen op. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Toen de bel ging, stond iedereen op. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Toen de bel ging, stond iedereen op."
+        },
+        {
+          "id": "pre-b1-practice-subordinate-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Terwijl ik kookte, … mijn broer de tafel.",
+            "en": "Choose the correct Dutch form: Terwijl ik kookte, … mijn broer de tafel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Terwijl ik kookte, … mijn broer de tafel."
+          },
+          "options": [
+            {
+              "nl": "dekte",
+              "en": "dekte",
+              "fa": "dekte"
+            },
+            {
+              "nl": "mijn broer dekte",
+              "en": "mijn broer dekte",
+              "fa": "mijn broer dekte"
+            },
+            {
+              "nl": "dekken",
+              "en": "dekken",
+              "fa": "dekken"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Terwijl ik kookte, dekte mijn broer de tafel. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Terwijl ik kookte, dekte mijn broer de tafel. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Terwijl ik kookte, dekte mijn broer de tafel. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Terwijl ik kookte, dekte mijn broer de tafel."
+        },
+        {
+          "id": "pre-b1-practice-subordinate-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Als de les uitvalt, … ik je.",
+            "en": "Choose the correct Dutch form: Als de les uitvalt, … ik je.",
+            "fa": "شکل درست هلندی را انتخاب کن: Als de les uitvalt, … ik je."
+          },
+          "options": [
+            {
+              "nl": "belt ik",
+              "en": "belt ik",
+              "fa": "belt ik"
+            },
+            {
+              "nl": "bel",
+              "en": "bel",
+              "fa": "bel"
+            },
+            {
+              "nl": "ik bel",
+              "en": "ik bel",
+              "fa": "ik bel"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Als de les uitvalt, bel ik je. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Als de les uitvalt, bel ik je. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Als de les uitvalt, bel ik je. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Als de les uitvalt, bel ik je."
+        },
+        {
+          "id": "pre-b1-practice-subordinate-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hoewel het laat was, … de buur nog.",
+            "en": "Choose the correct Dutch form: Hoewel het laat was, … de buur nog.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hoewel het laat was, … de buur nog."
+          },
+          "options": [
+            {
+              "nl": "de buur kwam",
+              "en": "de buur kwam",
+              "fa": "de buur kwam"
+            },
+            {
+              "nl": "komen",
+              "en": "komen",
+              "fa": "komen"
+            },
+            {
+              "nl": "kwam",
+              "en": "kwam",
+              "fa": "kwam"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Hoewel het laat was, kwam de buur nog. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Hoewel het laat was, kwam de buur nog. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Hoewel het laat was, kwam de buur nog. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Hoewel het laat was, kwam de buur nog."
+        },
+        {
+          "id": "pre-b1-practice-subordinate-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Omdat mijn kaart niet werkte, … ik naar het loket.",
+            "en": "Choose the correct Dutch form: Omdat mijn kaart niet werkte, … ik naar het loket.",
+            "fa": "شکل درست هلندی را انتخاب کن: Omdat mijn kaart niet werkte, … ik naar het loket."
+          },
+          "options": [
+            {
+              "nl": "ging",
+              "en": "ging",
+              "fa": "ging"
+            },
+            {
+              "nl": "ik ging",
+              "en": "ik ging",
+              "fa": "ik ging"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Omdat mijn kaart niet werkte, ging ik naar het loket. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Omdat mijn kaart niet werkte, ging ik naar het loket. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Omdat mijn kaart niet werkte, ging ik naar het loket. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Omdat mijn kaart niet werkte, ging ik naar het loket."
+        },
+        {
+          "id": "pre-b1-practice-subordinate-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Toen zij het nieuws hoorde, … ze meteen.",
+            "en": "Choose the correct Dutch form: Toen zij het nieuws hoorde, … ze meteen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Toen zij het nieuws hoorde, … ze meteen."
+          },
+          "options": [
+            {
+              "nl": "ze belde",
+              "en": "ze belde",
+              "fa": "ze belde"
+            },
+            {
+              "nl": "bellen",
+              "en": "bellen",
+              "fa": "bellen"
+            },
+            {
+              "nl": "belde",
+              "en": "belde",
+              "fa": "belde"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Toen zij het nieuws hoorde, belde ze meteen. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Toen zij het nieuws hoorde, belde ze meteen. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Toen zij het nieuws hoorde, belde ze meteen. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Toen zij het nieuws hoorde, belde ze meteen."
+        },
+        {
+          "id": "pre-b1-practice-subordinate-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Als je het niet begrijpt, … je om uitleg.",
+            "en": "Choose the correct Dutch form: Als je het niet begrijpt, … je om uitleg.",
+            "fa": "شکل درست هلندی را انتخاب کن: Als je het niet begrijpt, … je om uitleg."
+          },
+          "options": [
+            {
+              "nl": "je vraag",
+              "en": "je vraag",
+              "fa": "je vraag"
+            },
+            {
+              "nl": "vragen",
+              "en": "vragen",
+              "fa": "vragen"
+            },
+            {
+              "nl": "vraag",
+              "en": "vraag",
+              "fa": "vraag"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Als je het niet begrijpt, vraag je om uitleg. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Als je het niet begrijpt, vraag je om uitleg. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Als je het niet begrijpt, vraag je om uitleg. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Als je het niet begrijpt, vraag je om uitleg."
+        },
+        {
+          "id": "pre-b1-practice-subordinate-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Terwijl wij wachtten, … het donker.",
+            "en": "Choose the correct Dutch form: Terwijl wij wachtten, … het donker.",
+            "fa": "شکل درست هلندی را انتخاب کن: Terwijl wij wachtten, … het donker."
+          },
+          "options": [
+            {
+              "nl": "worden",
+              "en": "worden",
+              "fa": "worden"
+            },
+            {
+              "nl": "werd",
+              "en": "werd",
+              "fa": "werd"
+            },
+            {
+              "nl": "het werd",
+              "en": "het werd",
+              "fa": "het werd"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Terwijl wij wachtten, werd het donker. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Terwijl wij wachtten, werd het donker. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Terwijl wij wachtten, werd het donker. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Terwijl wij wachtten, werd het donker."
+        },
+        {
+          "id": "pre-b1-practice-subordinate-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Omdat de weg dicht was, … wij om.",
+            "en": "Choose the correct Dutch form: Omdat de weg dicht was, … wij om.",
+            "fa": "شکل درست هلندی را انتخاب کن: Omdat de weg dicht was, … wij om."
+          },
+          "options": [
+            {
+              "nl": "reden",
+              "en": "reden",
+              "fa": "reden"
+            },
+            {
+              "nl": "wij reden",
+              "en": "wij reden",
+              "fa": "wij reden"
+            },
+            {
+              "nl": "rijden wij",
+              "en": "rijden wij",
+              "fa": "rijden wij"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Omdat de weg dicht was, reden wij om. Na voegwoorden als omdat, terwijl en hoewel staat de persoonsvorm in de bijzin doorgaans achteraan.",
+            "en": "Correct Dutch sentence: Omdat de weg dicht was, reden wij om. After subordinators such as omdat, terwijl and hoewel the finite verb normally comes at the end of its clause.",
+            "fa": "جملهٔ درست هلندی: Omdat de weg dicht was, reden wij om. پس از پیوندهایی مانند omdat و terwijl و hoewel، فعل صرف‌شده معمولاً در انتهای جملهٔ وابسته قرار می‌گیرد."
+          },
+          "model_sentence": "Omdat de weg dicht was, reden wij om."
+        }
+      ]
+    },
+    {
+      "id": "practice-connectors",
+      "title": {
+        "nl": "Redenen en verbanden",
+        "en": "Reasons and connections",
+        "fa": "دلیل‌ها و پیوندها"
+      },
+      "explanation": {
+        "nl": "Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+        "en": "Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+        "fa": "want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+      },
+      "examples": [
+        {
+          "nl": "Ik neem de bus, want het regent.",
+          "en": "I am taking the bus because it is raining.",
+          "fa": "اتوبوس می‌گیرم، چون باران می‌بارد."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-connectors-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik neem een jas mee, … het wordt koud.",
+            "en": "Choose the correct Dutch form: Ik neem een jas mee, … het wordt koud.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik neem een jas mee, … het wordt koud."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik neem een jas mee, want het wordt koud. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Ik neem een jas mee, want het wordt koud. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Ik neem een jas mee, want het wordt koud. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Ik neem een jas mee, want het wordt koud."
+        },
+        {
+          "id": "pre-b1-practice-connectors-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik neem een jas mee … het koud wordt.",
+            "en": "Choose the correct Dutch form: Ik neem een jas mee … het koud wordt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik neem een jas mee … het koud wordt."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik neem een jas mee omdat het koud wordt. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Ik neem een jas mee omdat het koud wordt. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Ik neem een jas mee omdat het koud wordt. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Ik neem een jas mee omdat het koud wordt."
+        },
+        {
+          "id": "pre-b1-practice-connectors-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij blijven langer, … het werk is niet af.",
+            "en": "Choose the correct Dutch form: Wij blijven langer, … het werk is niet af.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij blijven langer, … het werk is niet af."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij blijven langer, want het werk is niet af. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Wij blijven langer, want het werk is niet af. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Wij blijven langer, want het werk is niet af. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Wij blijven langer, want het werk is niet af."
+        },
+        {
+          "id": "pre-b1-practice-connectors-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij blijven langer … het werk niet af is.",
+            "en": "Choose the correct Dutch form: Wij blijven langer … het werk niet af is.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij blijven langer … het werk niet af is."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij blijven langer omdat het werk niet af is. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Wij blijven langer omdat het werk niet af is. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Wij blijven langer omdat het werk niet af is. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Wij blijven langer omdat het werk niet af is."
+        },
+        {
+          "id": "pre-b1-practice-connectors-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij kon niet komen, … haar kind was ziek.",
+            "en": "Choose the correct Dutch form: Zij kon niet komen, … haar kind was ziek.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij kon niet komen, … haar kind was ziek."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Zij kon niet komen, want haar kind was ziek. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Zij kon niet komen, want haar kind was ziek. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Zij kon niet komen, want haar kind was ziek. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Zij kon niet komen, want haar kind was ziek."
+        },
+        {
+          "id": "pre-b1-practice-connectors-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij kon niet komen … haar kind ziek was.",
+            "en": "Choose the correct Dutch form: Zij kon niet komen … haar kind ziek was.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij kon niet komen … haar kind ziek was."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Zij kon niet komen omdat haar kind ziek was. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Zij kon niet komen omdat haar kind ziek was. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Zij kon niet komen omdat haar kind ziek was. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Zij kon niet komen omdat haar kind ziek was."
+        },
+        {
+          "id": "pre-b1-practice-connectors-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij ging te voet, … de bus reed niet.",
+            "en": "Choose the correct Dutch form: Hij ging te voet, … de bus reed niet.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij ging te voet, … de bus reed niet."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hij ging te voet, want de bus reed niet. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Hij ging te voet, want de bus reed niet. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Hij ging te voet, want de bus reed niet. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Hij ging te voet, want de bus reed niet."
+        },
+        {
+          "id": "pre-b1-practice-connectors-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij ging te voet … de bus niet reed.",
+            "en": "Choose the correct Dutch form: Hij ging te voet … de bus niet reed.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij ging te voet … de bus niet reed."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hij ging te voet omdat de bus niet reed. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Hij ging te voet omdat de bus niet reed. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Hij ging te voet omdat de bus niet reed. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Hij ging te voet omdat de bus niet reed."
+        },
+        {
+          "id": "pre-b1-practice-connectors-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik stel een vraag, … ik begrijp de afspraak niet.",
+            "en": "Choose the correct Dutch form: Ik stel een vraag, … ik begrijp de afspraak niet.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik stel een vraag, … ik begrijp de afspraak niet."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik stel een vraag, want ik begrijp de afspraak niet. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Ik stel een vraag, want ik begrijp de afspraak niet. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Ik stel een vraag, want ik begrijp de afspraak niet. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Ik stel een vraag, want ik begrijp de afspraak niet."
+        },
+        {
+          "id": "pre-b1-practice-connectors-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik stel een vraag … ik de afspraak niet begrijp.",
+            "en": "Choose the correct Dutch form: Ik stel een vraag … ik de afspraak niet begrijp.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik stel een vraag … ik de afspraak niet begrijp."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik stel een vraag omdat ik de afspraak niet begrijp. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Ik stel een vraag omdat ik de afspraak niet begrijp. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Ik stel een vraag omdat ik de afspraak niet begrijp. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Ik stel een vraag omdat ik de afspraak niet begrijp."
+        }
+      ]
+    },
+    {
+      "id": "practice-relative",
+      "title": {
+        "nl": "Die, dat en wat",
+        "en": "Relative clauses",
+        "fa": "جملهٔ موصولی"
+      },
+      "explanation": {
+        "nl": "Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+        "en": "Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+        "fa": "die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+      },
+      "examples": [
+        {
+          "nl": "Het boek dat ik lees is nieuw.",
+          "en": "The book I am reading is new.",
+          "fa": "کتابی که می‌خوانم نو است."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-relative-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De buur … de sleutel heeft, is op vakantie.",
+            "en": "Choose the correct Dutch form: De buur … de sleutel heeft, is op vakantie.",
+            "fa": "شکل درست هلندی را انتخاب کن: De buur … de sleutel heeft, is op vakantie."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De buur die de sleutel heeft, is op vakantie. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: De buur die de sleutel heeft, is op vakantie. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: De buur die de sleutel heeft, is op vakantie. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "De buur die de sleutel heeft, is op vakantie."
+        },
+        {
+          "id": "pre-b1-practice-relative-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het verhaal … zij vertelde, was grappig.",
+            "en": "Choose the correct Dutch form: Het verhaal … zij vertelde, was grappig.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het verhaal … zij vertelde, was grappig."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het verhaal dat zij vertelde, was grappig. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: Het verhaal dat zij vertelde, was grappig. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: Het verhaal dat zij vertelde, was grappig. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "Het verhaal dat zij vertelde, was grappig."
+        },
+        {
+          "id": "pre-b1-practice-relative-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De studenten … te laat kwamen, wachtten buiten.",
+            "en": "Choose the correct Dutch form: De studenten … te laat kwamen, wachtten buiten.",
+            "fa": "شکل درست هلندی را انتخاب کن: De studenten … te laat kwamen, wachtten buiten."
+          },
+          "options": [
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            },
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De studenten die te laat kwamen, wachtten buiten. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: De studenten die te laat kwamen, wachtten buiten. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: De studenten die te laat kwamen, wachtten buiten. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "De studenten die te laat kwamen, wachtten buiten."
+        },
+        {
+          "id": "pre-b1-practice-relative-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het gesprek … wij gisteren voerden, was nuttig.",
+            "en": "Choose the correct Dutch form: Het gesprek … wij gisteren voerden, was nuttig.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het gesprek … wij gisteren voerden, was nuttig."
+          },
+          "options": [
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            },
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Het gesprek dat wij gisteren voerden, was nuttig. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: Het gesprek dat wij gisteren voerden, was nuttig. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: Het gesprek dat wij gisteren voerden, was nuttig. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "Het gesprek dat wij gisteren voerden, was nuttig."
+        },
+        {
+          "id": "pre-b1-practice-relative-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De brief … ik ontving, bevatte een fout.",
+            "en": "Choose the correct Dutch form: De brief … ik ontving, bevatte een fout.",
+            "fa": "شکل درست هلندی را انتخاب کن: De brief … ik ontving, bevatte een fout."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De brief die ik ontving, bevatte een fout. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: De brief die ik ontving, bevatte een fout. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: De brief die ik ontving, bevatte een fout. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "De brief die ik ontving, bevatte een fout."
+        },
+        {
+          "id": "pre-b1-practice-relative-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het voorstel … jij deed, was duidelijk.",
+            "en": "Choose the correct Dutch form: Het voorstel … jij deed, was duidelijk.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het voorstel … jij deed, was duidelijk."
+          },
+          "options": [
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            },
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Het voorstel dat jij deed, was duidelijk. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: Het voorstel dat jij deed, was duidelijk. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: Het voorstel dat jij deed, was duidelijk. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "Het voorstel dat jij deed, was duidelijk."
+        },
+        {
+          "id": "pre-b1-practice-relative-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De mensen … hier werken, kennen de buurt.",
+            "en": "Choose the correct Dutch form: De mensen … hier werken, kennen de buurt.",
+            "fa": "شکل درست هلندی را انتخاب کن: De mensen … hier werken, kennen de buurt."
+          },
+          "options": [
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            },
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De mensen die hier werken, kennen de buurt. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: De mensen die hier werken, kennen de buurt. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: De mensen die hier werken, kennen de buurt. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "De mensen die hier werken, kennen de buurt."
+        },
+        {
+          "id": "pre-b1-practice-relative-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het huis … wij huurden, had een kleine tuin.",
+            "en": "Choose the correct Dutch form: Het huis … wij huurden, had een kleine tuin.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het huis … wij huurden, had een kleine tuin."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het huis dat wij huurden, had een kleine tuin. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: Het huis dat wij huurden, had een kleine tuin. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: Het huis dat wij huurden, had een kleine tuin. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "Het huis dat wij huurden, had een kleine tuin."
+        },
+        {
+          "id": "pre-b1-practice-relative-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De afspraak … ik vergat, was belangrijk.",
+            "en": "Choose the correct Dutch form: De afspraak … ik vergat, was belangrijk.",
+            "fa": "شکل درست هلندی را انتخاب کن: De afspraak … ik vergat, was belangrijk."
+          },
+          "options": [
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            },
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De afspraak die ik vergat, was belangrijk. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: De afspraak die ik vergat, was belangrijk. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: De afspraak die ik vergat, was belangrijk. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "De afspraak die ik vergat, was belangrijk."
+        },
+        {
+          "id": "pre-b1-practice-relative-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het probleem … wij bespraken, is opgelost.",
+            "en": "Choose the correct Dutch form: Het probleem … wij bespraken, is opgelost.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het probleem … wij bespraken, is opgelost."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "die",
+              "en": "die",
+              "fa": "die"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het probleem dat wij bespraken, is opgelost. Die verwijst naar de-woorden en meervouden; dat naar enkelvoudige het-woorden. Wat kan onder meer verwijzen naar een hele voorafgaande zin.",
+            "en": "Correct Dutch sentence: Het probleem dat wij bespraken, is opgelost. Die refers to de-nouns and plurals; dat to a singular het-noun. Wat can refer to a whole preceding clause.",
+            "fa": "جملهٔ درست هلندی: Het probleem dat wij bespraken, is opgelost. die به اسم دارای de و جمع و dat به اسم خنثای مفرد برمی‌گردد. wat می‌تواند به کل جملهٔ قبلی اشاره کند."
+          },
+          "model_sentence": "Het probleem dat wij bespraken, is opgelost."
+        }
+      ]
+    },
+    {
+      "id": "practice-conditional",
+      "title": {
+        "nl": "Voorwaarden en voorstellen",
+        "en": "Conditions and proposals",
+        "fa": "شرط‌ها و پیشنهادها"
+      },
+      "explanation": {
+        "nl": "Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+        "en": "Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+        "fa": "zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+      },
+      "examples": [
+        {
+          "nl": "Wij zouden vroeger vertrekken.",
+          "en": "We would leave earlier.",
+          "fa": "ما زودتر راه می‌افتادیم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-conditional-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Als ik meer tijd had, … ik vaker lezen.",
+            "en": "Choose the correct Dutch form: Als ik meer tijd had, … ik vaker lezen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Als ik meer tijd had, … ik vaker lezen."
+          },
+          "options": [
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            },
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Als ik meer tijd had, zou ik vaker lezen. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: Als ik meer tijd had, zou ik vaker lezen. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: Als ik meer tijd had, zou ik vaker lezen. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "Als ik meer tijd had, zou ik vaker lezen."
+        },
+        {
+          "id": "pre-b1-practice-conditional-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Als wij vroeger vertrokken, … wij de trein halen.",
+            "en": "Choose the correct Dutch form: Als wij vroeger vertrokken, … wij de trein halen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Als wij vroeger vertrokken, … wij de trein halen."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Als wij vroeger vertrokken, zouden wij de trein halen. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: Als wij vroeger vertrokken, zouden wij de trein halen. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: Als wij vroeger vertrokken, zouden wij de trein halen. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "Als wij vroeger vertrokken, zouden wij de trein halen."
+        },
+        {
+          "id": "pre-b1-practice-conditional-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik … graag een andere datum voorstellen.",
+            "en": "Choose the correct Dutch form: Ik … graag een andere datum voorstellen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik … graag een andere datum voorstellen."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik zou graag een andere datum voorstellen. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: Ik zou graag een andere datum voorstellen. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: Ik zou graag een andere datum voorstellen. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "Ik zou graag een andere datum voorstellen."
+        },
+        {
+          "id": "pre-b1-practice-conditional-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn collega … liever thuis werken.",
+            "en": "Choose the correct Dutch form: Mijn collega … liever thuis werken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn collega … liever thuis werken."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Mijn collega zou liever thuis werken. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: Mijn collega zou liever thuis werken. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: Mijn collega zou liever thuis werken. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "Mijn collega zou liever thuis werken."
+        },
+        {
+          "id": "pre-b1-practice-conditional-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De buren … samen een tuin kunnen onderhouden.",
+            "en": "Choose the correct Dutch form: De buren … samen een tuin kunnen onderhouden.",
+            "fa": "شکل درست هلندی را انتخاب کن: De buren … samen een tuin kunnen onderhouden."
+          },
+          "options": [
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            },
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De buren zouden samen een tuin kunnen onderhouden. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: De buren zouden samen een tuin kunnen onderhouden. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: De buren zouden samen een tuin kunnen onderhouden. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "De buren zouden samen een tuin kunnen onderhouden."
+        },
+        {
+          "id": "pre-b1-practice-conditional-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij … die vraag beter eerst stellen.",
+            "en": "Choose the correct Dutch form: Jij … die vraag beter eerst stellen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij … die vraag beter eerst stellen."
+          },
+          "options": [
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            },
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Jij zou die vraag beter eerst stellen. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: Jij zou die vraag beter eerst stellen. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: Jij zou die vraag beter eerst stellen. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "Jij zou die vraag beter eerst stellen."
+        },
+        {
+          "id": "pre-b1-practice-conditional-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij … met de fiets kunnen gaan.",
+            "en": "Choose the correct Dutch form: Wij … met de fiets kunnen gaan.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij … met de fiets kunnen gaan."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij zouden met de fiets kunnen gaan. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: Wij zouden met de fiets kunnen gaan. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: Wij zouden met de fiets kunnen gaan. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "Wij zouden met de fiets kunnen gaan."
+        },
+        {
+          "id": "pre-b1-practice-conditional-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De docent … de uitleg kunnen herhalen.",
+            "en": "Choose the correct Dutch form: De docent … de uitleg kunnen herhalen.",
+            "fa": "شکل درست هلندی را انتخاب کن: De docent … de uitleg kunnen herhalen."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De docent zou de uitleg kunnen herhalen. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: De docent zou de uitleg kunnen herhalen. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: De docent zou de uitleg kunnen herhalen. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "De docent zou de uitleg kunnen herhalen."
+        },
+        {
+          "id": "pre-b1-practice-conditional-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jullie … de taak kunnen verdelen.",
+            "en": "Choose the correct Dutch form: Jullie … de taak kunnen verdelen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jullie … de taak kunnen verdelen."
+          },
+          "options": [
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            },
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Jullie zouden de taak kunnen verdelen. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: Jullie zouden de taak kunnen verdelen. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: Jullie zouden de taak kunnen verdelen. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "Jullie zouden de taak kunnen verdelen."
+        },
+        {
+          "id": "pre-b1-practice-conditional-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het … fijn zijn als iedereen kon komen.",
+            "en": "Choose the correct Dutch form: Het … fijn zijn als iedereen kon komen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het … fijn zijn als iedereen kon komen."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Het zou fijn zijn als iedereen kon komen. Zou/zouden met een infinitief kan een voorstel of hypothetische situatie uitdrukken. De vorm past bij het onderwerp.",
+            "en": "Correct Dutch sentence: Het zou fijn zijn als iedereen kon komen. Zou/zouden with an infinitive can express a proposal or hypothetical situation. Match it to the subject.",
+            "fa": "جملهٔ درست هلندی: Het zou fijn zijn als iedereen kon komen. zou یا zouden با مصدر می‌تواند پیشنهاد یا موقعیت فرضی را بیان کند. شکل آن را با فاعل هماهنگ کن."
+          },
+          "model_sentence": "Het zou fijn zijn als iedereen kon komen."
+        }
+      ]
+    },
+    {
+      "id": "practice-indirect",
+      "title": {
+        "nl": "Een indirecte vraag",
+        "en": "Indirect questions",
+        "fa": "پرسش غیرمستقیم"
+      },
+      "explanation": {
+        "nl": "Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+        "en": "An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+        "fa": "پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+      },
+      "examples": [
+        {
+          "nl": "Ik vraag of de trein rijdt.",
+          "en": "I am asking whether the train is running.",
+          "fa": "می‌پرسم آیا قطار حرکت می‌کند."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-indirect-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik weet niet … de winkel nog open is.",
+            "en": "Choose the correct Dutch form: Ik weet niet … de winkel nog open is.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik weet niet … de winkel nog open is."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "of",
+              "en": "of",
+              "fa": "of"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik weet niet of de winkel nog open is. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Ik weet niet of de winkel nog open is. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Ik weet niet of de winkel nog open is. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Ik weet niet of de winkel nog open is."
+        },
+        {
+          "id": "pre-b1-practice-indirect-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Kun je zeggen … de trein vertrekt? Vraag naar het uur.",
+            "en": "Choose the correct Dutch form: Kun je zeggen … de trein vertrekt? Vraag naar het uur.",
+            "fa": "شکل درست هلندی را انتخاب کن: Kun je zeggen … de trein vertrekt? Vraag naar het uur."
+          },
+          "options": [
+            {
+              "nl": "wie",
+              "en": "wie",
+              "fa": "wie"
+            },
+            {
+              "nl": "hoeveel",
+              "en": "hoeveel",
+              "fa": "hoeveel"
+            },
+            {
+              "nl": "wanneer",
+              "en": "wanneer",
+              "fa": "wanneer"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Kun je zeggen wanneer de trein vertrekt? Vraag naar het uur. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Kun je zeggen wanneer de trein vertrekt? Vraag naar het uur. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Kun je zeggen wanneer de trein vertrekt? Vraag naar het uur. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Kun je zeggen wanneer de trein vertrekt? Vraag naar het uur."
+        },
+        {
+          "id": "pre-b1-practice-indirect-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij vraagt … je morgen kunt helpen.",
+            "en": "Choose the correct Dutch form: Hij vraagt … je morgen kunt helpen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij vraagt … je morgen kunt helpen."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "of",
+              "en": "of",
+              "fa": "of"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hij vraagt of je morgen kunt helpen. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Hij vraagt of je morgen kunt helpen. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Hij vraagt of je morgen kunt helpen. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Hij vraagt of je morgen kunt helpen."
+        },
+        {
+          "id": "pre-b1-practice-indirect-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Weet jij … het formulier ligt? Vraag naar de plaats.",
+            "en": "Choose the correct Dutch form: Weet jij … het formulier ligt? Vraag naar de plaats.",
+            "fa": "شکل درست هلندی را انتخاب کن: Weet jij … het formulier ligt? Vraag naar de plaats."
+          },
+          "options": [
+            {
+              "nl": "waar",
+              "en": "waar",
+              "fa": "waar"
+            },
+            {
+              "nl": "wie",
+              "en": "wie",
+              "fa": "wie"
+            },
+            {
+              "nl": "hoeveel",
+              "en": "hoeveel",
+              "fa": "hoeveel"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Weet jij waar het formulier ligt? Vraag naar de plaats. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Weet jij waar het formulier ligt? Vraag naar de plaats. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Weet jij waar het formulier ligt? Vraag naar de plaats. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Weet jij waar het formulier ligt? Vraag naar de plaats."
+        },
+        {
+          "id": "pre-b1-practice-indirect-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik vraag … er nog plaats is.",
+            "en": "Choose the correct Dutch form: Ik vraag … er nog plaats is.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik vraag … er nog plaats is."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "of",
+              "en": "of",
+              "fa": "of"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik vraag of er nog plaats is. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Ik vraag of er nog plaats is. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Ik vraag of er nog plaats is. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Ik vraag of er nog plaats is."
+        },
+        {
+          "id": "pre-b1-practice-indirect-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij wil weten … het ticket kost.",
+            "en": "Choose the correct Dutch form: Zij wil weten … het ticket kost.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij wil weten … het ticket kost."
+          },
+          "options": [
+            {
+              "nl": "wie",
+              "en": "wie",
+              "fa": "wie"
+            },
+            {
+              "nl": "waar",
+              "en": "waar",
+              "fa": "waar"
+            },
+            {
+              "nl": "hoeveel",
+              "en": "hoeveel",
+              "fa": "hoeveel"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Zij wil weten hoeveel het ticket kost. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Zij wil weten hoeveel het ticket kost. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Zij wil weten hoeveel het ticket kost. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Zij wil weten hoeveel het ticket kost."
+        },
+        {
+          "id": "pre-b1-practice-indirect-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik weet niet … hij al betaald heeft.",
+            "en": "Choose the correct Dutch form: Ik weet niet … hij al betaald heeft.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik weet niet … hij al betaald heeft."
+          },
+          "options": [
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "of",
+              "en": "of",
+              "fa": "of"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik weet niet of hij al betaald heeft. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Ik weet niet of hij al betaald heeft. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Ik weet niet of hij al betaald heeft. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Ik weet niet of hij al betaald heeft."
+        },
+        {
+          "id": "pre-b1-practice-indirect-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Kunt u uitleggen … deze knop werkt? Vraag naar de werking.",
+            "en": "Choose the correct Dutch form: Kunt u uitleggen … deze knop werkt? Vraag naar de werking.",
+            "fa": "شکل درست هلندی را انتخاب کن: Kunt u uitleggen … deze knop werkt? Vraag naar de werking."
+          },
+          "options": [
+            {
+              "nl": "hoe",
+              "en": "hoe",
+              "fa": "hoe"
+            },
+            {
+              "nl": "wie",
+              "en": "wie",
+              "fa": "wie"
+            },
+            {
+              "nl": "hoeveel",
+              "en": "hoeveel",
+              "fa": "hoeveel"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Kunt u uitleggen hoe deze knop werkt? Vraag naar de werking. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Kunt u uitleggen hoe deze knop werkt? Vraag naar de werking. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Kunt u uitleggen hoe deze knop werkt? Vraag naar de werking. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Kunt u uitleggen hoe deze knop werkt? Vraag naar de werking."
+        },
+        {
+          "id": "pre-b1-practice-indirect-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij vragen … we vroeger mogen vertrekken.",
+            "en": "Choose the correct Dutch form: Wij vragen … we vroeger mogen vertrekken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij vragen … we vroeger mogen vertrekken."
+          },
+          "options": [
+            {
+              "nl": "of",
+              "en": "of",
+              "fa": "of"
+            },
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij vragen of we vroeger mogen vertrekken. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Wij vragen of we vroeger mogen vertrekken. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Wij vragen of we vroeger mogen vertrekken. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Wij vragen of we vroeger mogen vertrekken."
+        },
+        {
+          "id": "pre-b1-practice-indirect-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij wil weten … hem heeft opgebeld.",
+            "en": "Choose the correct Dutch form: Hij wil weten … hem heeft opgebeld.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij wil weten … hem heeft opgebeld."
+          },
+          "options": [
+            {
+              "nl": "hoeveel",
+              "en": "hoeveel",
+              "fa": "hoeveel"
+            },
+            {
+              "nl": "wie",
+              "en": "wie",
+              "fa": "wie"
+            },
+            {
+              "nl": "waar",
+              "en": "waar",
+              "fa": "waar"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hij wil weten wie hem heeft opgebeld. Een indirecte vraag heeft bijzinvolgorde. Of leidt een ja-neevraag in; een vraagwoord blijft bij een inhoudsvraag staan.",
+            "en": "Correct Dutch sentence: Hij wil weten wie hem heeft opgebeld. An indirect question uses subordinate order. Of introduces a yes/no question; keep the question word for an information question.",
+            "fa": "جملهٔ درست هلندی: Hij wil weten wie hem heeft opgebeld. پرسش غیرمستقیم ترتیب جملهٔ وابسته دارد. of پرسش بله/خیر را معرفی می‌کند؛ واژهٔ پرسشی در سؤال اطلاعاتی حفظ می‌شود."
+          },
+          "model_sentence": "Hij wil weten wie hem heeft opgebeld."
+        }
+      ]
+    },
+    {
+      "id": "practice-reflexive",
+      "title": {
+        "nl": "Me, je en zich",
+        "en": "Reflexive pronouns",
+        "fa": "ضمیرهای انعکاسی"
+      },
+      "explanation": {
+        "nl": "Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+        "en": "Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+        "fa": "ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+      },
+      "examples": [
+        {
+          "nl": "Wij schrijven ons in.",
+          "en": "We register.",
+          "fa": "ما ثبت‌نام می‌کنیم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-reflexive-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Tijdens het gesprek vergiste ik … in de naam.",
+            "en": "Choose the correct Dutch form: Tijdens het gesprek vergiste ik … in de naam.",
+            "fa": "شکل درست هلندی را انتخاب کن: Tijdens het gesprek vergiste ik … in de naam."
+          },
+          "options": [
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Tijdens het gesprek vergiste ik me in de naam. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Tijdens het gesprek vergiste ik me in de naam. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Tijdens het gesprek vergiste ik me in de naam. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Tijdens het gesprek vergiste ik me in de naam."
+        },
+        {
+          "id": "pre-b1-practice-reflexive-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Na de verhuizing voelden wij … snel thuis.",
+            "en": "Choose the correct Dutch form: Na de verhuizing voelden wij … snel thuis.",
+            "fa": "شکل درست هلندی را انتخاب کن: Na de verhuizing voelden wij … snel thuis."
+          },
+          "options": [
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Na de verhuizing voelden wij ons snel thuis. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Na de verhuizing voelden wij ons snel thuis. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Na de verhuizing voelden wij ons snel thuis. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Na de verhuizing voelden wij ons snel thuis."
+        },
+        {
+          "id": "pre-b1-practice-reflexive-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn zus herinnerde … het oude adres.",
+            "en": "Choose the correct Dutch form: Mijn zus herinnerde … het oude adres.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn zus herinnerde … het oude adres."
+          },
+          "options": [
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Mijn zus herinnerde zich het oude adres. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Mijn zus herinnerde zich het oude adres. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Mijn zus herinnerde zich het oude adres. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Mijn zus herinnerde zich het oude adres."
+        },
+        {
+          "id": "pre-b1-practice-reflexive-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij moet … niet voor die vraag schamen.",
+            "en": "Choose the correct Dutch form: Jij moet … niet voor die vraag schamen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij moet … niet voor die vraag schamen."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "je",
+              "en": "je",
+              "fa": "je"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Jij moet je niet voor die vraag schamen. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Jij moet je niet voor die vraag schamen. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Jij moet je niet voor die vraag schamen. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Jij moet je niet voor die vraag schamen."
+        },
+        {
+          "id": "pre-b1-practice-reflexive-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De studenten bereidden … op het gesprek voor.",
+            "en": "Choose the correct Dutch form: De studenten bereidden … op het gesprek voor.",
+            "fa": "شکل درست هلندی را انتخاب کن: De studenten bereidden … op het gesprek voor."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De studenten bereidden zich op het gesprek voor. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: De studenten bereidden zich op het gesprek voor. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: De studenten bereidden zich op het gesprek voor. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "De studenten bereidden zich op het gesprek voor."
+        },
+        {
+          "id": "pre-b1-practice-reflexive-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik vroeg … af of ik mocht blijven.",
+            "en": "Choose the correct Dutch form: Ik vroeg … af of ik mocht blijven.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik vroeg … af of ik mocht blijven."
+          },
+          "options": [
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik vroeg me af of ik mocht blijven. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Ik vroeg me af of ik mocht blijven. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Ik vroeg me af of ik mocht blijven. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Ik vroeg me af of ik mocht blijven."
+        },
+        {
+          "id": "pre-b1-practice-reflexive-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij realiseerden … dat de tijd veranderde.",
+            "en": "Choose the correct Dutch form: Wij realiseerden … dat de tijd veranderde.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij realiseerden … dat de tijd veranderde."
+          },
+          "options": [
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij realiseerden ons dat de tijd veranderde. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Wij realiseerden ons dat de tijd veranderde. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Wij realiseerden ons dat de tijd veranderde. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Wij realiseerden ons dat de tijd veranderde."
+        },
+        {
+          "id": "pre-b1-practice-reflexive-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij verontschuldigde … voor het misverstand.",
+            "en": "Choose the correct Dutch form: Hij verontschuldigde … voor het misverstand.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij verontschuldigde … voor het misverstand."
+          },
+          "options": [
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hij verontschuldigde zich voor het misverstand. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Hij verontschuldigde zich voor het misverstand. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Hij verontschuldigde zich voor het misverstand. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Hij verontschuldigde zich voor het misverstand."
+        },
+        {
+          "id": "pre-b1-practice-reflexive-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jullie kunnen … na de training douchen.",
+            "en": "Choose the correct Dutch form: Jullie kunnen … na de training douchen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jullie kunnen … na de training douchen."
+          },
+          "options": [
+            {
+              "nl": "je",
+              "en": "je",
+              "fa": "je"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Jullie kunnen je na de training douchen. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Jullie kunnen je na de training douchen. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Jullie kunnen je na de training douchen. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Jullie kunnen je na de training douchen."
+        },
+        {
+          "id": "pre-b1-practice-reflexive-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij verheugde … op de ontmoeting.",
+            "en": "Choose the correct Dutch form: Zij verheugde … op de ontmoeting.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij verheugde … op de ontmoeting."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Zij verheugde zich op de ontmoeting. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Zij verheugde zich op de ontmoeting. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Zij verheugde zich op de ontmoeting. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Zij verheugde zich op de ontmoeting."
+        }
+      ]
+    },
+    {
+      "id": "practice-wordorder",
+      "title": {
+        "nl": "Een duidelijke hoofdzin",
+        "en": "Main-clause word order",
+        "fa": "ترتیب واژه‌ها در جملهٔ اصلی"
+      },
+      "explanation": {
+        "nl": "In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+        "en": "In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+        "fa": "در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+      },
+      "examples": [
+        {
+          "nl": "Vandaag werk ik thuis.",
+          "en": "Today I work at home.",
+          "fa": "امروز در خانه کار می‌کنم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-wordorder-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Gisteren … mijn buur de sleutel terug.",
+            "en": "Choose the correct Dutch form: Gisteren … mijn buur de sleutel terug.",
+            "fa": "شکل درست هلندی را انتخاب کن: Gisteren … mijn buur de sleutel terug."
+          },
+          "options": [
+            {
+              "nl": "mijn buur bracht",
+              "en": "mijn buur bracht",
+              "fa": "mijn buur bracht"
+            },
+            {
+              "nl": "brengen",
+              "en": "brengen",
+              "fa": "brengen"
+            },
+            {
+              "nl": "bracht",
+              "en": "bracht",
+              "fa": "bracht"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Gisteren bracht mijn buur de sleutel terug. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Gisteren bracht mijn buur de sleutel terug. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Gisteren bracht mijn buur de sleutel terug. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Gisteren bracht mijn buur de sleutel terug."
+        },
+        {
+          "id": "pre-b1-practice-wordorder-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Na de vergadering … wij naar huis.",
+            "en": "Choose the correct Dutch form: Na de vergadering … wij naar huis.",
+            "fa": "شکل درست هلندی را انتخاب کن: Na de vergadering … wij naar huis."
+          },
+          "options": [
+            {
+              "nl": "wij gingen",
+              "en": "wij gingen",
+              "fa": "wij gingen"
+            },
+            {
+              "nl": "gingen wij",
+              "en": "gingen wij",
+              "fa": "gingen wij"
+            },
+            {
+              "nl": "gingen",
+              "en": "gingen",
+              "fa": "gingen"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Na de vergadering gingen wij naar huis. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Na de vergadering gingen wij naar huis. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Na de vergadering gingen wij naar huis. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Na de vergadering gingen wij naar huis."
+        },
+        {
+          "id": "pre-b1-practice-wordorder-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Door de regen … de wedstrijd later.",
+            "en": "Choose the correct Dutch form: Door de regen … de wedstrijd later.",
+            "fa": "شکل درست هلندی را انتخاب کن: Door de regen … de wedstrijd later."
+          },
+          "options": [
+            {
+              "nl": "beginnen",
+              "en": "beginnen",
+              "fa": "beginnen"
+            },
+            {
+              "nl": "begon",
+              "en": "begon",
+              "fa": "begon"
+            },
+            {
+              "nl": "de wedstrijd begon",
+              "en": "de wedstrijd begon",
+              "fa": "de wedstrijd begon"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Door de regen begon de wedstrijd later. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Door de regen begon de wedstrijd later. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Door de regen begon de wedstrijd later. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Door de regen begon de wedstrijd later."
+        },
+        {
+          "id": "pre-b1-practice-wordorder-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Tijdens de pauze … ik met de docent.",
+            "en": "Choose the correct Dutch form: Tijdens de pauze … ik met de docent.",
+            "fa": "شکل درست هلندی را انتخاب کن: Tijdens de pauze … ik met de docent."
+          },
+          "options": [
+            {
+              "nl": "ik sprak",
+              "en": "ik sprak",
+              "fa": "ik sprak"
+            },
+            {
+              "nl": "spraken",
+              "en": "spraken",
+              "fa": "spraken"
+            },
+            {
+              "nl": "sprak",
+              "en": "sprak",
+              "fa": "sprak"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Tijdens de pauze sprak ik met de docent. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Tijdens de pauze sprak ik met de docent. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Tijdens de pauze sprak ik met de docent. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Tijdens de pauze sprak ik met de docent."
+        },
+        {
+          "id": "pre-b1-practice-wordorder-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: In de zomer … mijn ouders vaak buiten.",
+            "en": "Choose the correct Dutch form: In de zomer … mijn ouders vaak buiten.",
+            "fa": "شکل درست هلندی را انتخاب کن: In de zomer … mijn ouders vaak buiten."
+          },
+          "options": [
+            {
+              "nl": "mijn ouders aten",
+              "en": "mijn ouders aten",
+              "fa": "mijn ouders aten"
+            },
+            {
+              "nl": "eten",
+              "en": "eten",
+              "fa": "eten"
+            },
+            {
+              "nl": "aten",
+              "en": "aten",
+              "fa": "aten"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: In de zomer aten mijn ouders vaak buiten. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: In de zomer aten mijn ouders vaak buiten. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: In de zomer aten mijn ouders vaak buiten. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "In de zomer aten mijn ouders vaak buiten."
+        },
+        {
+          "id": "pre-b1-practice-wordorder-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Na dat bericht … zij meteen hulp.",
+            "en": "Choose the correct Dutch form: Na dat bericht … zij meteen hulp.",
+            "fa": "شکل درست هلندی را انتخاب کن: Na dat bericht … zij meteen hulp."
+          },
+          "options": [
+            {
+              "nl": "zoeken",
+              "en": "zoeken",
+              "fa": "zoeken"
+            },
+            {
+              "nl": "zocht",
+              "en": "zocht",
+              "fa": "zocht"
+            },
+            {
+              "nl": "zij zocht",
+              "en": "zij zocht",
+              "fa": "zij zocht"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Na dat bericht zocht zij meteen hulp. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Na dat bericht zocht zij meteen hulp. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Na dat bericht zocht zij meteen hulp. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Na dat bericht zocht zij meteen hulp."
+        },
+        {
+          "id": "pre-b1-practice-wordorder-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Met een duidelijke planning … het beter.",
+            "en": "Choose the correct Dutch form: Met een duidelijke planning … het beter.",
+            "fa": "شکل درست هلندی را انتخاب کن: Met een duidelijke planning … het beter."
+          },
+          "options": [
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "ging",
+              "en": "ging",
+              "fa": "ging"
+            },
+            {
+              "nl": "het ging",
+              "en": "het ging",
+              "fa": "het ging"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Met een duidelijke planning ging het beter. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Met een duidelijke planning ging het beter. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Met een duidelijke planning ging het beter. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Met een duidelijke planning ging het beter."
+        },
+        {
+          "id": "pre-b1-practice-wordorder-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Op het plein … de kinderen een spel.",
+            "en": "Choose the correct Dutch form: Op het plein … de kinderen een spel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Op het plein … de kinderen een spel."
+          },
+          "options": [
+            {
+              "nl": "speelde",
+              "en": "speelde",
+              "fa": "speelde"
+            },
+            {
+              "nl": "speelden",
+              "en": "speelden",
+              "fa": "speelden"
+            },
+            {
+              "nl": "de kinderen speelden",
+              "en": "de kinderen speelden",
+              "fa": "de kinderen speelden"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Op het plein speelden de kinderen een spel. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Op het plein speelden de kinderen een spel. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Op het plein speelden de kinderen een spel. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Op het plein speelden de kinderen een spel."
+        },
+        {
+          "id": "pre-b1-practice-wordorder-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Voor het bezoek … wij de kamer schoon.",
+            "en": "Choose the correct Dutch form: Voor het bezoek … wij de kamer schoon.",
+            "fa": "شکل درست هلندی را انتخاب کن: Voor het bezoek … wij de kamer schoon."
+          },
+          "options": [
+            {
+              "nl": "wij maakten",
+              "en": "wij maakten",
+              "fa": "wij maakten"
+            },
+            {
+              "nl": "maakte",
+              "en": "maakte",
+              "fa": "maakte"
+            },
+            {
+              "nl": "maakten",
+              "en": "maakten",
+              "fa": "maakten"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Voor het bezoek maakten wij de kamer schoon. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Voor het bezoek maakten wij de kamer schoon. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Voor het bezoek maakten wij de kamer schoon. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Voor het bezoek maakten wij de kamer schoon."
+        },
+        {
+          "id": "pre-b1-practice-wordorder-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Bij de ingang … een medewerker op ons.",
+            "en": "Choose the correct Dutch form: Bij de ingang … een medewerker op ons.",
+            "fa": "شکل درست هلندی را انتخاب کن: Bij de ingang … een medewerker op ons."
+          },
+          "options": [
+            {
+              "nl": "een medewerker wachtte",
+              "en": "een medewerker wachtte",
+              "fa": "een medewerker wachtte"
+            },
+            {
+              "nl": "wachten",
+              "en": "wachten",
+              "fa": "wachten"
+            },
+            {
+              "nl": "wachtte",
+              "en": "wachtte",
+              "fa": "wachtte"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Bij de ingang wachtte een medewerker op ons. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Bij de ingang wachtte een medewerker op ons. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Bij de ingang wachtte een medewerker op ons. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Bij de ingang wachtte een medewerker op ons."
+        }
+      ]
+    },
+    {
+      "id": "practice-quantifiers",
+      "title": {
+        "nl": "Hoeveel en voor wie?",
+        "en": "Quantifiers",
+        "fa": "کمیت‌نماها"
+      },
+      "explanation": {
+        "nl": "Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+        "en": "Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+        "fa": "بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+      },
+      "examples": [
+        {
+          "nl": "Iedereen krijgt een kaartje.",
+          "en": "Everyone gets a card.",
+          "fa": "همه یک کارت می‌گیرند."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-b1-practice-quantifiers-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Alle personen krijgen een kaart. … krijgt een kaart.",
+            "en": "Choose the correct Dutch form: Alle personen krijgen een kaart. … krijgt een kaart.",
+            "fa": "شکل درست هلندی را انتخاب کن: Alle personen krijgen een kaart. … krijgt een kaart."
+          },
+          "options": [
+            {
+              "nl": "Alles",
+              "en": "Alles",
+              "fa": "Alles"
+            },
+            {
+              "nl": "Iedereen",
+              "en": "Iedereen",
+              "fa": "Iedereen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Alle personen krijgen een kaart. Iedereen krijgt een kaart. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: Alle personen krijgen een kaart. Iedereen krijgt een kaart. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: Alle personen krijgen een kaart. Iedereen krijgt een kaart. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "Alle personen krijgen een kaart. Iedereen krijgt een kaart."
+        },
+        {
+          "id": "pre-b1-practice-quantifiers-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Alle spullen zijn gepakt. … is klaar.",
+            "en": "Choose the correct Dutch form: Alle spullen zijn gepakt. … is klaar.",
+            "fa": "شکل درست هلندی را انتخاب کن: Alle spullen zijn gepakt. … is klaar."
+          },
+          "options": [
+            {
+              "nl": "Alles",
+              "en": "Alles",
+              "fa": "Alles"
+            },
+            {
+              "nl": "Iedereen",
+              "en": "Iedereen",
+              "fa": "Iedereen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Alle spullen zijn gepakt. Alles is klaar. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: Alle spullen zijn gepakt. Alles is klaar. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: Alle spullen zijn gepakt. Alles is klaar. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "Alle spullen zijn gepakt. Alles is klaar."
+        },
+        {
+          "id": "pre-b1-practice-quantifiers-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik neem niet de hele stapel; ik neem … formulieren.",
+            "en": "Choose the correct Dutch form: Ik neem niet de hele stapel; ik neem … formulieren.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik neem niet de hele stapel; ik neem … formulieren."
+          },
+          "options": [
+            {
+              "nl": "elk",
+              "en": "elk",
+              "fa": "elk"
+            },
+            {
+              "nl": "enkele",
+              "en": "enkele",
+              "fa": "enkele"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik neem niet de hele stapel; ik neem enkele formulieren. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: Ik neem niet de hele stapel; ik neem enkele formulieren. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: Ik neem niet de hele stapel; ik neem enkele formulieren. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "Ik neem niet de hele stapel; ik neem enkele formulieren."
+        },
+        {
+          "id": "pre-b1-practice-quantifiers-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De kinderen hebben … een eigen schrift.",
+            "en": "Choose the correct Dutch form: De kinderen hebben … een eigen schrift.",
+            "fa": "شکل درست هلندی را انتخاب کن: De kinderen hebben … een eigen schrift."
+          },
+          "options": [
+            {
+              "nl": "allemaal",
+              "en": "allemaal",
+              "fa": "allemaal"
+            },
+            {
+              "nl": "alles",
+              "en": "alles",
+              "fa": "alles"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De kinderen hebben allemaal een eigen schrift. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: De kinderen hebben allemaal een eigen schrift. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: De kinderen hebben allemaal een eigen schrift. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "De kinderen hebben allemaal een eigen schrift."
+        },
+        {
+          "id": "pre-b1-practice-quantifiers-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Van de tien plaatsen zijn er nog … vrij: twee.",
+            "en": "Choose the correct Dutch form: Van de tien plaatsen zijn er nog … vrij: twee.",
+            "fa": "شکل درست هلندی را انتخاب کن: Van de tien plaatsen zijn er nog … vrij: twee."
+          },
+          "options": [
+            {
+              "nl": "enkele",
+              "en": "enkele",
+              "fa": "enkele"
+            },
+            {
+              "nl": "alle",
+              "en": "alle",
+              "fa": "alle"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Van de tien plaatsen zijn er nog enkele vrij: twee. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: Van de tien plaatsen zijn er nog enkele vrij: twee. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: Van de tien plaatsen zijn er nog enkele vrij: twee. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "Van de tien plaatsen zijn er nog enkele vrij: twee."
+        },
+        {
+          "id": "pre-b1-practice-quantifiers-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik geef … deelnemer één blad.",
+            "en": "Choose the correct Dutch form: Ik geef … deelnemer één blad.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik geef … deelnemer één blad."
+          },
+          "options": [
+            {
+              "nl": "alle",
+              "en": "alle",
+              "fa": "alle"
+            },
+            {
+              "nl": "elke",
+              "en": "elke",
+              "fa": "elke"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik geef elke deelnemer één blad. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: Ik geef elke deelnemer één blad. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: Ik geef elke deelnemer één blad. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "Ik geef elke deelnemer één blad."
+        },
+        {
+          "id": "pre-b1-practice-quantifiers-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Er is niemand afwezig; … zijn aanwezig.",
+            "en": "Choose the correct Dutch form: Er is niemand afwezig; … zijn aanwezig.",
+            "fa": "شکل درست هلندی را انتخاب کن: Er is niemand afwezig; … zijn aanwezig."
+          },
+          "options": [
+            {
+              "nl": "allen",
+              "en": "allen",
+              "fa": "allen"
+            },
+            {
+              "nl": "alles",
+              "en": "alles",
+              "fa": "alles"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Er is niemand afwezig; allen zijn aanwezig. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: Er is niemand afwezig; allen zijn aanwezig. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: Er is niemand afwezig; allen zijn aanwezig. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "Er is niemand afwezig; allen zijn aanwezig."
+        },
+        {
+          "id": "pre-b1-practice-quantifiers-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik heb … informatie nodig, geen extra personen.",
+            "en": "Choose the correct Dutch form: Ik heb … informatie nodig, geen extra personen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik heb … informatie nodig, geen extra personen."
+          },
+          "options": [
+            {
+              "nl": "meerdere",
+              "en": "meerdere",
+              "fa": "meerdere"
+            },
+            {
+              "nl": "meer",
+              "en": "meer",
+              "fa": "meer"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik heb meer informatie nodig, geen extra personen. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: Ik heb meer informatie nodig, geen extra personen. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: Ik heb meer informatie nodig, geen extra personen. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "Ik heb meer informatie nodig, geen extra personen."
+        },
+        {
+          "id": "pre-b1-practice-quantifiers-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij zoeken … vrijwilligers, niet meer informatie.",
+            "en": "Choose the correct Dutch form: Wij zoeken … vrijwilligers, niet meer informatie.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij zoeken … vrijwilligers, niet meer informatie."
+          },
+          "options": [
+            {
+              "nl": "elk",
+              "en": "elk",
+              "fa": "elk"
+            },
+            {
+              "nl": "meer",
+              "en": "meer",
+              "fa": "meer"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij zoeken meer vrijwilligers, niet meer informatie. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: Wij zoeken meer vrijwilligers, niet meer informatie. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: Wij zoeken meer vrijwilligers, niet meer informatie. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "Wij zoeken meer vrijwilligers, niet meer informatie."
+        },
+        {
+          "id": "pre-b1-practice-quantifiers-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Er staat op … blad een datum.",
+            "en": "Choose the correct Dutch form: Er staat op … blad een datum.",
+            "fa": "شکل درست هلندی را انتخاب کن: Er staat op … blad een datum."
+          },
+          "options": [
+            {
+              "nl": "elk",
+              "en": "elk",
+              "fa": "elk"
+            },
+            {
+              "nl": "alle",
+              "en": "alle",
+              "fa": "alle"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Er staat op elk blad een datum. Kies volgens wat je telt en wat je bedoelt: alle is niet hetzelfde als sommige; iedereen verwijst naar personen en alles naar zaken.",
+            "en": "Correct Dutch sentence: Er staat op elk blad een datum. Choose for the counted set and intended meaning: all differs from some; iedereen refers to people and alles to things.",
+            "fa": "جملهٔ درست هلندی: Er staat op elk blad een datum. بر اساس مجموعه و معنای موردنظر انتخاب کن: همه با بعضی فرق دارد؛ iedereen به اشخاص و alles به چیزها اشاره می‌کند."
+          },
+          "model_sentence": "Er staat op elk blad een datum."
+        }
+      ]
+    }
+  ]
+}
