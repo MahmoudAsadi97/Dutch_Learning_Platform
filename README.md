@@ -70,7 +70,7 @@ these inventories are provisional until language review, not a claim of CEFR cer
 | Pre-A1 | 150 | 52 | 200 |
 | A1 | 150 | 35 | 200 |
 | pre-A2 | 150 | 27 | 200 |
-| A2 | 150 | 22 | 200 |
+| A2 | 150 | 27 | 200 |
 | pre-B1 | 150 | 18 | 200 |
 | B1 | 150 | 48 | 200 |
 | pre-B2 | 150 | 11 | 200 |
