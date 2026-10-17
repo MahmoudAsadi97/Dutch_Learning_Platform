@@ -1,0 +1,3257 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a2",
+  "review_status": "unreviewed",
+  "rounds": [
+    {
+      "id": "practice-modals",
+      "title": {
+        "nl": "Kunnen, mogen en moeten",
+        "en": "Ability, permission and obligation",
+        "fa": "توانایی، اجازه و الزام"
+      },
+      "explanation": {
+        "nl": "Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+        "en": "Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+        "fa": "فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+      },
+      "examples": [
+        {
+          "nl": "Wij moeten morgen werken.",
+          "en": "We have to work tomorrow.",
+          "fa": "ما باید فردا کار کنیم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-modals-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Druk een verplichting uit: Ik … morgen vroeg werken; mijn dienst begint om zes uur.",
+            "en": "Choose the correct Dutch form: Druk een verplichting uit: Ik … morgen vroeg werken; mijn dienst begint om zes uur.",
+            "fa": "شکل درست هلندی را انتخاب کن: Druk een verplichting uit: Ik … morgen vroeg werken; mijn dienst begint om zes uur."
+          },
+          "options": [
+            {
+              "nl": "mag",
+              "en": "mag",
+              "fa": "mag"
+            },
+            {
+              "nl": "kan",
+              "en": "kan",
+              "fa": "kan"
+            },
+            {
+              "nl": "moet",
+              "en": "moet",
+              "fa": "moet"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Druk een verplichting uit: Ik moet morgen vroeg werken; mijn dienst begint om zes uur. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Druk een verplichting uit: Ik moet morgen vroeg werken; mijn dienst begint om zes uur. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Druk een verplichting uit: Ik moet morgen vroeg werken; mijn dienst begint om zes uur. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Druk een verplichting uit: Ik moet morgen vroeg werken; mijn dienst begint om zes uur."
+        },
+        {
+          "id": "pre-a2-practice-modals-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Druk toestemming uit: Hier … je niet roken; het is verboden.",
+            "en": "Choose the correct Dutch form: Druk toestemming uit: Hier … je niet roken; het is verboden.",
+            "fa": "شکل درست هلندی را انتخاب کن: Druk toestemming uit: Hier … je niet roken; het is verboden."
+          },
+          "options": [
+            {
+              "nl": "mag",
+              "en": "mag",
+              "fa": "mag"
+            },
+            {
+              "nl": "moet",
+              "en": "moet",
+              "fa": "moet"
+            },
+            {
+              "nl": "wil",
+              "en": "wil",
+              "fa": "wil"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Druk toestemming uit: Hier mag je niet roken; het is verboden. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Druk toestemming uit: Hier mag je niet roken; het is verboden. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Druk toestemming uit: Hier mag je niet roken; het is verboden. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Druk toestemming uit: Hier mag je niet roken; het is verboden."
+        },
+        {
+          "id": "pre-a2-practice-modals-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Druk bekwaamheid uit: Mijn broer … goed zwemmen; hij heeft het geleerd.",
+            "en": "Choose the correct Dutch form: Druk bekwaamheid uit: Mijn broer … goed zwemmen; hij heeft het geleerd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Druk bekwaamheid uit: Mijn broer … goed zwemmen; hij heeft het geleerd."
+          },
+          "options": [
+            {
+              "nl": "mag",
+              "en": "mag",
+              "fa": "mag"
+            },
+            {
+              "nl": "kan",
+              "en": "kan",
+              "fa": "kan"
+            },
+            {
+              "nl": "moet",
+              "en": "moet",
+              "fa": "moet"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Druk bekwaamheid uit: Mijn broer kan goed zwemmen; hij heeft het geleerd. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Druk bekwaamheid uit: Mijn broer kan goed zwemmen; hij heeft het geleerd. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Druk bekwaamheid uit: Mijn broer kan goed zwemmen; hij heeft het geleerd. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Druk bekwaamheid uit: Mijn broer kan goed zwemmen; hij heeft het geleerd."
+        },
+        {
+          "id": "pre-a2-practice-modals-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Druk een verplichting uit: Wij … onze identiteitskaart tonen; dat is verplicht.",
+            "en": "Choose the correct Dutch form: Druk een verplichting uit: Wij … onze identiteitskaart tonen; dat is verplicht.",
+            "fa": "شکل درست هلندی را انتخاب کن: Druk een verplichting uit: Wij … onze identiteitskaart tonen; dat is verplicht."
+          },
+          "options": [
+            {
+              "nl": "moeten",
+              "en": "moeten",
+              "fa": "moeten"
+            },
+            {
+              "nl": "mogen",
+              "en": "mogen",
+              "fa": "mogen"
+            },
+            {
+              "nl": "willen",
+              "en": "willen",
+              "fa": "willen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Druk een verplichting uit: Wij moeten onze identiteitskaart tonen; dat is verplicht. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Druk een verplichting uit: Wij moeten onze identiteitskaart tonen; dat is verplicht. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Druk een verplichting uit: Wij moeten onze identiteitskaart tonen; dat is verplicht. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Druk een verplichting uit: Wij moeten onze identiteitskaart tonen; dat is verplicht."
+        },
+        {
+          "id": "pre-a2-practice-modals-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Druk toestemming uit: De deur is open; je … naar binnen.",
+            "en": "Choose the correct Dutch form: Druk toestemming uit: De deur is open; je … naar binnen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Druk toestemming uit: De deur is open; je … naar binnen."
+          },
+          "options": [
+            {
+              "nl": "wil",
+              "en": "wil",
+              "fa": "wil"
+            },
+            {
+              "nl": "mag",
+              "en": "mag",
+              "fa": "mag"
+            },
+            {
+              "nl": "moet",
+              "en": "moet",
+              "fa": "moet"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Druk toestemming uit: De deur is open; je mag naar binnen. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Druk toestemming uit: De deur is open; je mag naar binnen. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Druk toestemming uit: De deur is open; je mag naar binnen. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Druk toestemming uit: De deur is open; je mag naar binnen."
+        },
+        {
+          "id": "pre-a2-practice-modals-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Druk een wens uit: Ik … fietsen, maar mijn fiets is kapot.",
+            "en": "Choose the correct Dutch form: Druk een wens uit: Ik … fietsen, maar mijn fiets is kapot.",
+            "fa": "شکل درست هلندی را انتخاب کن: Druk een wens uit: Ik … fietsen, maar mijn fiets is kapot."
+          },
+          "options": [
+            {
+              "nl": "mag",
+              "en": "mag",
+              "fa": "mag"
+            },
+            {
+              "nl": "wil",
+              "en": "wil",
+              "fa": "wil"
+            },
+            {
+              "nl": "moet",
+              "en": "moet",
+              "fa": "moet"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Druk een wens uit: Ik wil fietsen, maar mijn fiets is kapot. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Druk een wens uit: Ik wil fietsen, maar mijn fiets is kapot. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Druk een wens uit: Ik wil fietsen, maar mijn fiets is kapot. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Druk een wens uit: Ik wil fietsen, maar mijn fiets is kapot."
+        },
+        {
+          "id": "pre-a2-practice-modals-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Druk een verplichting uit: Zij … vandaag rusten; de arts schrijft het voor.",
+            "en": "Choose the correct Dutch form: Druk een verplichting uit: Zij … vandaag rusten; de arts schrijft het voor.",
+            "fa": "شکل درست هلندی را انتخاب کن: Druk een verplichting uit: Zij … vandaag rusten; de arts schrijft het voor."
+          },
+          "options": [
+            {
+              "nl": "mag",
+              "en": "mag",
+              "fa": "mag"
+            },
+            {
+              "nl": "wil",
+              "en": "wil",
+              "fa": "wil"
+            },
+            {
+              "nl": "moet",
+              "en": "moet",
+              "fa": "moet"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Druk een verplichting uit: Zij moet vandaag rusten; de arts schrijft het voor. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Druk een verplichting uit: Zij moet vandaag rusten; de arts schrijft het voor. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Druk een verplichting uit: Zij moet vandaag rusten; de arts schrijft het voor. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Druk een verplichting uit: Zij moet vandaag rusten; de arts schrijft het voor."
+        },
+        {
+          "id": "pre-a2-practice-modals-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Druk een verbod uit: Jullie … hier parkeren; er staat een verbodsbord.",
+            "en": "Choose the correct Dutch form: Druk een verbod uit: Jullie … hier parkeren; er staat een verbodsbord.",
+            "fa": "شکل درست هلندی را انتخاب کن: Druk een verbod uit: Jullie … hier parkeren; er staat een verbodsbord."
+          },
+          "options": [
+            {
+              "nl": "willen niet",
+              "en": "willen niet",
+              "fa": "willen niet"
+            },
+            {
+              "nl": "mogen niet",
+              "en": "mogen niet",
+              "fa": "mogen niet"
+            },
+            {
+              "nl": "moeten niet",
+              "en": "moeten niet",
+              "fa": "moeten niet"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Druk een verbod uit: Jullie mogen niet hier parkeren; er staat een verbodsbord. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Druk een verbod uit: Jullie mogen niet hier parkeren; er staat een verbodsbord. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Druk een verbod uit: Jullie mogen niet hier parkeren; er staat een verbodsbord. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Druk een verbod uit: Jullie mogen niet hier parkeren; er staat een verbodsbord."
+        },
+        {
+          "id": "pre-a2-practice-modals-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Er is geen verplichting: Je … geen ticket te kopen; de toegang is gratis.",
+            "en": "Choose the correct Dutch form: Er is geen verplichting: Je … geen ticket te kopen; de toegang is gratis.",
+            "fa": "شکل درست هلندی را انتخاب کن: Er is geen verplichting: Je … geen ticket te kopen; de toegang is gratis."
+          },
+          "options": [
+            {
+              "nl": "kan",
+              "en": "kan",
+              "fa": "kan"
+            },
+            {
+              "nl": "hoeft",
+              "en": "hoeft",
+              "fa": "hoeft"
+            },
+            {
+              "nl": "mag",
+              "en": "mag",
+              "fa": "mag"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Er is geen verplichting: Je hoeft geen ticket te kopen; de toegang is gratis. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Er is geen verplichting: Je hoeft geen ticket te kopen; de toegang is gratis. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Er is geen verplichting: Je hoeft geen ticket te kopen; de toegang is gratis. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Er is geen verplichting: Je hoeft geen ticket te kopen; de toegang is gratis."
+        },
+        {
+          "id": "pre-a2-practice-modals-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Druk een verplichting uit: Wij … onze handen wassen voor het koken; dat is de regel.",
+            "en": "Choose the correct Dutch form: Druk een verplichting uit: Wij … onze handen wassen voor het koken; dat is de regel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Druk een verplichting uit: Wij … onze handen wassen voor het koken; dat is de regel."
+          },
+          "options": [
+            {
+              "nl": "moeten",
+              "en": "moeten",
+              "fa": "moeten"
+            },
+            {
+              "nl": "mogen",
+              "en": "mogen",
+              "fa": "mogen"
+            },
+            {
+              "nl": "willen",
+              "en": "willen",
+              "fa": "willen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Druk een verplichting uit: Wij moeten onze handen wassen voor het koken; dat is de regel. Een modaal werkwoord wordt vervoegd; het andere werkwoord blijft infinitief zonder te. Let op het verschil tussen mogen en moeten.",
+            "en": "Correct Dutch sentence: Druk een verplichting uit: Wij moeten onze handen wassen voor het koken; dat is de regel. Conjugate the modal; the other verb stays an infinitive without te. Distinguish permission from obligation.",
+            "fa": "جملهٔ درست هلندی: Druk een verplichting uit: Wij moeten onze handen wassen voor het koken; dat is de regel. فعل وجهی صرف می‌شود و فعل دیگر به صورت مصدر بدون te می‌آید. اجازه را با الزام اشتباه نگیر."
+          },
+          "model_sentence": "Druk een verplichting uit: Wij moeten onze handen wassen voor het koken; dat is de regel."
+        }
+      ]
+    },
+    {
+      "id": "practice-future",
+      "title": {
+        "nl": "Plannen en de toekomst",
+        "en": "Plans and the future",
+        "fa": "برنامه‌ها و آینده"
+      },
+      "explanation": {
+        "nl": "Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+        "en": "Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+        "fa": "با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+      },
+      "examples": [
+        {
+          "nl": "Morgen gaan wij zwemmen.",
+          "en": "Tomorrow we are going swimming.",
+          "fa": "فردا می‌خواهیم شنا کنیم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-future-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Morgen … ik mijn kamer opruimen.",
+            "en": "Choose the correct Dutch form: Morgen … ik mijn kamer opruimen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Morgen … ik mijn kamer opruimen."
+          },
+          "options": [
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Morgen ga ik mijn kamer opruimen. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Morgen ga ik mijn kamer opruimen. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Morgen ga ik mijn kamer opruimen. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Morgen ga ik mijn kamer opruimen."
+        },
+        {
+          "id": "pre-a2-practice-future-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Volgende week … wij verhuizen.",
+            "en": "Choose the correct Dutch form: Volgende week … wij verhuizen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Volgende week … wij verhuizen."
+          },
+          "options": [
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Volgende week gaan wij verhuizen. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Volgende week gaan wij verhuizen. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Volgende week gaan wij verhuizen. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Volgende week gaan wij verhuizen."
+        },
+        {
+          "id": "pre-a2-practice-future-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Na de vakantie … Sara een cursus volgen.",
+            "en": "Choose the correct Dutch form: Na de vakantie … Sara een cursus volgen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Na de vakantie … Sara een cursus volgen."
+          },
+          "options": [
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Na de vakantie gaat Sara een cursus volgen. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Na de vakantie gaat Sara een cursus volgen. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Na de vakantie gaat Sara een cursus volgen. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Na de vakantie gaat Sara een cursus volgen."
+        },
+        {
+          "id": "pre-a2-practice-future-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Vanavond … jij voor ons koken.",
+            "en": "Choose the correct Dutch form: Vanavond … jij voor ons koken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Vanavond … jij voor ons koken."
+          },
+          "options": [
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Vanavond gaat jij voor ons koken. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Vanavond gaat jij voor ons koken. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Vanavond gaat jij voor ons koken. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Vanavond gaat jij voor ons koken."
+        },
+        {
+          "id": "pre-a2-practice-future-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Straks … de kinderen buiten spelen.",
+            "en": "Choose the correct Dutch form: Straks … de kinderen buiten spelen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Straks … de kinderen buiten spelen."
+          },
+          "options": [
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            },
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Straks gaan de kinderen buiten spelen. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Straks gaan de kinderen buiten spelen. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Straks gaan de kinderen buiten spelen. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Straks gaan de kinderen buiten spelen."
+        },
+        {
+          "id": "pre-a2-practice-future-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Komende zomer … mijn broer reizen.",
+            "en": "Choose the correct Dutch form: Komende zomer … mijn broer reizen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Komende zomer … mijn broer reizen."
+          },
+          "options": [
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Komende zomer gaat mijn broer reizen. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Komende zomer gaat mijn broer reizen. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Komende zomer gaat mijn broer reizen. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Komende zomer gaat mijn broer reizen."
+        },
+        {
+          "id": "pre-a2-practice-future-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Over een uur … ik vertrekken.",
+            "en": "Choose the correct Dutch form: Over een uur … ik vertrekken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Over een uur … ik vertrekken."
+          },
+          "options": [
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Over een uur ga ik vertrekken. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Over een uur ga ik vertrekken. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Over een uur ga ik vertrekken. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Over een uur ga ik vertrekken."
+        },
+        {
+          "id": "pre-a2-practice-future-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Morgenmiddag … jullie samen studeren.",
+            "en": "Choose the correct Dutch form: Morgenmiddag … jullie samen studeren.",
+            "fa": "شکل درست هلندی را انتخاب کن: Morgenmiddag … jullie samen studeren."
+          },
+          "options": [
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Morgenmiddag gaan jullie samen studeren. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Morgenmiddag gaan jullie samen studeren. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Morgenmiddag gaan jullie samen studeren. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Morgenmiddag gaan jullie samen studeren."
+        },
+        {
+          "id": "pre-a2-practice-future-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zaterdag … mijn moeder bloemen kopen.",
+            "en": "Choose the correct Dutch form: Zaterdag … mijn moeder bloemen kopen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zaterdag … mijn moeder bloemen kopen."
+          },
+          "options": [
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Zaterdag gaat mijn moeder bloemen kopen. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Zaterdag gaat mijn moeder bloemen kopen. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Zaterdag gaat mijn moeder bloemen kopen. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Zaterdag gaat mijn moeder bloemen kopen."
+        },
+        {
+          "id": "pre-a2-practice-future-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Na het eten … wij wandelen.",
+            "en": "Choose the correct Dutch form: Na het eten … wij wandelen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Na het eten … wij wandelen."
+          },
+          "options": [
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Na het eten gaan wij wandelen. Met gaan plus een infinitief kun je een plan uitdrukken. Ook de tegenwoordige tijd met een tijdsbepaling kan toekomstig zijn.",
+            "en": "Correct Dutch sentence: Na het eten gaan wij wandelen. Gaan plus an infinitive can express a plan. A present tense with a time expression can also refer to the future.",
+            "fa": "جملهٔ درست هلندی: Na het eten gaan wij wandelen. با gaan و مصدر می‌توان برنامه را بیان کرد. زمان حال همراه عبارت زمانی نیز می‌تواند به آینده اشاره کند."
+          },
+          "model_sentence": "Na het eten gaan wij wandelen."
+        }
+      ]
+    },
+    {
+      "id": "practice-infinitive",
+      "title": {
+        "nl": "Te en om te",
+        "en": "Infinitive clauses",
+        "fa": "ساخت‌های مصدر با te"
+      },
+      "explanation": {
+        "nl": "Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+        "en": "Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+        "fa": "بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+      },
+      "examples": [
+        {
+          "nl": "Ik kom om te helpen.",
+          "en": "I am coming to help.",
+          "fa": "می‌آیم تا کمک کنم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-infinitive-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik probeer op tijd … komen.",
+            "en": "Choose the correct Dutch form: Ik probeer op tijd … komen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik probeer op tijd … komen."
+          },
+          "options": [
+            {
+              "nl": "naar",
+              "en": "naar",
+              "fa": "naar"
+            },
+            {
+              "nl": "te",
+              "en": "te",
+              "fa": "te"
+            },
+            {
+              "nl": "om",
+              "en": "om",
+              "fa": "om"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik probeer op tijd te komen. Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Ik probeer op tijd te komen. Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Ik probeer op tijd te komen. بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Ik probeer op tijd te komen."
+        },
+        {
+          "id": "pre-a2-practice-infinitive-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij willen morgen …",
+            "en": "Choose the correct Dutch form: Wij willen morgen …",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij willen morgen …"
+          },
+          "options": [
+            {
+              "nl": "te vertrekken",
+              "en": "te vertrekken",
+              "fa": "te vertrekken"
+            },
+            {
+              "nl": "vertrekken",
+              "en": "vertrekken",
+              "fa": "vertrekken"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij willen morgen vertrekken Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Wij willen morgen vertrekken Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Wij willen morgen vertrekken بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Wij willen morgen vertrekken"
+        },
+        {
+          "id": "pre-a2-practice-infinitive-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij begint Nederlands … leren.",
+            "en": "Choose the correct Dutch form: Zij begint Nederlands … leren.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij begint Nederlands … leren."
+          },
+          "options": [
+            {
+              "nl": "naar",
+              "en": "naar",
+              "fa": "naar"
+            },
+            {
+              "nl": "te",
+              "en": "te",
+              "fa": "te"
+            },
+            {
+              "nl": "om",
+              "en": "om",
+              "fa": "om"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Zij begint Nederlands te leren. Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Zij begint Nederlands te leren. Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Zij begint Nederlands te leren. بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Zij begint Nederlands te leren."
+        },
+        {
+          "id": "pre-a2-practice-infinitive-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik kom hier om Nederlands … oefenen.",
+            "en": "Choose the correct Dutch form: Ik kom hier om Nederlands … oefenen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik kom hier om Nederlands … oefenen."
+          },
+          "options": [
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            },
+            {
+              "nl": "naar",
+              "en": "naar",
+              "fa": "naar"
+            },
+            {
+              "nl": "te",
+              "en": "te",
+              "fa": "te"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik kom hier om Nederlands te oefenen. Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Ik kom hier om Nederlands te oefenen. Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Ik kom hier om Nederlands te oefenen. بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Ik kom hier om Nederlands te oefenen."
+        },
+        {
+          "id": "pre-a2-practice-infinitive-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij hoeft niet … betalen.",
+            "en": "Choose the correct Dutch form: Hij hoeft niet … betalen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij hoeft niet … betalen."
+          },
+          "options": [
+            {
+              "nl": "te",
+              "en": "te",
+              "fa": "te"
+            },
+            {
+              "nl": "om",
+              "en": "om",
+              "fa": "om"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Hij hoeft niet te betalen. Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Hij hoeft niet te betalen. Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Hij hoeft niet te betalen. بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Hij hoeft niet te betalen."
+        },
+        {
+          "id": "pre-a2-practice-infinitive-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij hebben zin om … zwemmen.",
+            "en": "Choose the correct Dutch form: Wij hebben zin om … zwemmen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij hebben zin om … zwemmen."
+          },
+          "options": [
+            {
+              "nl": "naar",
+              "en": "naar",
+              "fa": "naar"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            },
+            {
+              "nl": "te",
+              "en": "te",
+              "fa": "te"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Wij hebben zin om te zwemmen. Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Wij hebben zin om te zwemmen. Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Wij hebben zin om te zwemmen. بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Wij hebben zin om te zwemmen."
+        },
+        {
+          "id": "pre-a2-practice-infinitive-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij kan goed …",
+            "en": "Choose the correct Dutch form: Zij kan goed …",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij kan goed …"
+          },
+          "options": [
+            {
+              "nl": "te zingen",
+              "en": "te zingen",
+              "fa": "te zingen"
+            },
+            {
+              "nl": "zingen",
+              "en": "zingen",
+              "fa": "zingen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Zij kan goed zingen Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Zij kan goed zingen Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Zij kan goed zingen بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Zij kan goed zingen"
+        },
+        {
+          "id": "pre-a2-practice-infinitive-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik vergeet mijn kaart … nemen.",
+            "en": "Choose the correct Dutch form: Ik vergeet mijn kaart … nemen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik vergeet mijn kaart … nemen."
+          },
+          "options": [
+            {
+              "nl": "mee te",
+              "en": "mee te",
+              "fa": "mee te"
+            },
+            {
+              "nl": "te mee",
+              "en": "te mee",
+              "fa": "te mee"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik vergeet mijn kaart mee te nemen. Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Ik vergeet mijn kaart mee te nemen. Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Ik vergeet mijn kaart mee te nemen. بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Ik vergeet mijn kaart mee te nemen."
+        },
+        {
+          "id": "pre-a2-practice-infinitive-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het is fijn om hier … wonen.",
+            "en": "Choose the correct Dutch form: Het is fijn om hier … wonen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het is fijn om hier … wonen."
+          },
+          "options": [
+            {
+              "nl": "naar",
+              "en": "naar",
+              "fa": "naar"
+            },
+            {
+              "nl": "te",
+              "en": "te",
+              "fa": "te"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Het is fijn om hier te wonen. Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Het is fijn om hier te wonen. Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Het is fijn om hier te wonen. بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Het is fijn om hier te wonen."
+        },
+        {
+          "id": "pre-a2-practice-infinitive-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij moet de deur …",
+            "en": "Choose the correct Dutch form: Jij moet de deur …",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij moet de deur …"
+          },
+          "options": [
+            {
+              "nl": "te sluiten",
+              "en": "te sluiten",
+              "fa": "te sluiten"
+            },
+            {
+              "nl": "sluiten",
+              "en": "sluiten",
+              "fa": "sluiten"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Jij moet de deur sluiten Bij bepaalde werkwoorden hoort te; een doel kun je uitdrukken met om ... te. Na modale werkwoorden staat meestal geen te.",
+            "en": "Correct Dutch sentence: Jij moet de deur sluiten Some verbs require te; om ... te expresses a purpose. Modals usually take an infinitive without te.",
+            "fa": "جملهٔ درست هلندی: Jij moet de deur sluiten بعضی فعل‌ها te می‌خواهند؛ om ... te هدف را بیان می‌کند. پس از فعل‌های وجهی معمولاً te نمی‌آید."
+          },
+          "model_sentence": "Jij moet de deur sluiten"
+        }
+      ]
+    },
+    {
+      "id": "practice-imperative",
+      "title": {
+        "nl": "Een instructie geven",
+        "en": "Giving instructions",
+        "fa": "دادن دستور"
+      },
+      "explanation": {
+        "nl": "Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+        "en": "A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+        "fa": "امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+      },
+      "examples": [
+        {
+          "nl": "Neem uw ticket mee.",
+          "en": "Take your ticket with you.",
+          "fa": "بلیتان را همراه ببرید."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-imperative-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie aan één persoon: … de deur, alstublieft.",
+            "en": "Choose the correct Dutch form: Instructie aan één persoon: … de deur, alstublieft.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie aan één persoon: … de deur, alstublieft."
+          },
+          "options": [
+            {
+              "nl": "Sluit je",
+              "en": "Sluit je",
+              "fa": "Sluit je"
+            },
+            {
+              "nl": "Sluit",
+              "en": "Sluit",
+              "fa": "Sluit"
+            },
+            {
+              "nl": "Sluiten",
+              "en": "Sluiten",
+              "fa": "Sluiten"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Instructie aan één persoon: Sluit de deur, alstublieft. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie aan één persoon: Sluit de deur, alstublieft. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie aan één persoon: Sluit de deur, alstublieft. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie aan één persoon: Sluit de deur, alstublieft."
+        },
+        {
+          "id": "pre-a2-practice-imperative-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie: … uw naam op het blad.",
+            "en": "Choose the correct Dutch form: Instructie: … uw naam op het blad.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie: … uw naam op het blad."
+          },
+          "options": [
+            {
+              "nl": "Schrijf",
+              "en": "Schrijf",
+              "fa": "Schrijf"
+            },
+            {
+              "nl": "Schrijft",
+              "en": "Schrijft",
+              "fa": "Schrijft"
+            },
+            {
+              "nl": "Schrijven",
+              "en": "Schrijven",
+              "fa": "Schrijven"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Instructie: Schrijf uw naam op het blad. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie: Schrijf uw naam op het blad. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie: Schrijf uw naam op het blad. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie: Schrijf uw naam op het blad."
+        },
+        {
+          "id": "pre-a2-practice-imperative-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie: … even hier.",
+            "en": "Choose the correct Dutch form: Instructie: … even hier.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie: … even hier."
+          },
+          "options": [
+            {
+              "nl": "Wacht",
+              "en": "Wacht",
+              "fa": "Wacht"
+            },
+            {
+              "nl": "Wachten",
+              "en": "Wachten",
+              "fa": "Wachten"
+            },
+            {
+              "nl": "Wacht jij",
+              "en": "Wacht jij",
+              "fa": "Wacht jij"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Instructie: Wacht even hier. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie: Wacht even hier. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie: Wacht even hier. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie: Wacht even hier."
+        },
+        {
+          "id": "pre-a2-practice-imperative-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie: … rechtdoor tot de hoek.",
+            "en": "Choose the correct Dutch form: Instructie: … rechtdoor tot de hoek.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie: … rechtdoor tot de hoek."
+          },
+          "options": [
+            {
+              "nl": "Loopt je",
+              "en": "Loopt je",
+              "fa": "Loopt je"
+            },
+            {
+              "nl": "Loop",
+              "en": "Loop",
+              "fa": "Loop"
+            },
+            {
+              "nl": "Lopen",
+              "en": "Lopen",
+              "fa": "Lopen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Instructie: Loop rechtdoor tot de hoek. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie: Loop rechtdoor tot de hoek. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie: Loop rechtdoor tot de hoek. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie: Loop rechtdoor tot de hoek."
+        },
+        {
+          "id": "pre-a2-practice-imperative-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie: … uw kaart bij de lezer.",
+            "en": "Choose the correct Dutch form: Instructie: … uw kaart bij de lezer.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie: … uw kaart bij de lezer."
+          },
+          "options": [
+            {
+              "nl": "Houd je",
+              "en": "Houd je",
+              "fa": "Houd je"
+            },
+            {
+              "nl": "Houd",
+              "en": "Houd",
+              "fa": "Houd"
+            },
+            {
+              "nl": "Houden",
+              "en": "Houden",
+              "fa": "Houden"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Instructie: Houd uw kaart bij de lezer. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie: Houd uw kaart bij de lezer. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie: Houd uw kaart bij de lezer. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie: Houd uw kaart bij de lezer."
+        },
+        {
+          "id": "pre-a2-practice-imperative-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie: … het formulier mee.",
+            "en": "Choose the correct Dutch form: Instructie: … het formulier mee.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie: … het formulier mee."
+          },
+          "options": [
+            {
+              "nl": "Nemen",
+              "en": "Nemen",
+              "fa": "Nemen"
+            },
+            {
+              "nl": "Neemt je",
+              "en": "Neemt je",
+              "fa": "Neemt je"
+            },
+            {
+              "nl": "Neem",
+              "en": "Neem",
+              "fa": "Neem"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Instructie: Neem het formulier mee. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie: Neem het formulier mee. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie: Neem het formulier mee. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie: Neem het formulier mee."
+        },
+        {
+          "id": "pre-a2-practice-imperative-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie: … het raam open.",
+            "en": "Choose the correct Dutch form: Instructie: … het raam open.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie: … het raam open."
+          },
+          "options": [
+            {
+              "nl": "Doet je",
+              "en": "Doet je",
+              "fa": "Doet je"
+            },
+            {
+              "nl": "Doe",
+              "en": "Doe",
+              "fa": "Doe"
+            },
+            {
+              "nl": "Doen",
+              "en": "Doen",
+              "fa": "Doen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Instructie: Doe het raam open. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie: Doe het raam open. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie: Doe het raam open. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie: Doe het raam open."
+        },
+        {
+          "id": "pre-a2-practice-imperative-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie: … de zin nog eens.",
+            "en": "Choose the correct Dutch form: Instructie: … de zin nog eens.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie: … de zin nog eens."
+          },
+          "options": [
+            {
+              "nl": "Lezen",
+              "en": "Lezen",
+              "fa": "Lezen"
+            },
+            {
+              "nl": "Leest je",
+              "en": "Leest je",
+              "fa": "Leest je"
+            },
+            {
+              "nl": "Lees",
+              "en": "Lees",
+              "fa": "Lees"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Instructie: Lees de zin nog eens. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie: Lees de zin nog eens. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie: Lees de zin nog eens. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie: Lees de zin nog eens."
+        },
+        {
+          "id": "pre-a2-practice-imperative-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie: … uw tas onder de stoel.",
+            "en": "Choose the correct Dutch form: Instructie: … uw tas onder de stoel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie: … uw tas onder de stoel."
+          },
+          "options": [
+            {
+              "nl": "Zet je",
+              "en": "Zet je",
+              "fa": "Zet je"
+            },
+            {
+              "nl": "Zet",
+              "en": "Zet",
+              "fa": "Zet"
+            },
+            {
+              "nl": "Zetten",
+              "en": "Zetten",
+              "fa": "Zetten"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Instructie: Zet uw tas onder de stoel. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie: Zet uw tas onder de stoel. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie: Zet uw tas onder de stoel. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie: Zet uw tas onder de stoel."
+        },
+        {
+          "id": "pre-a2-practice-imperative-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Instructie: … niet op de trap.",
+            "en": "Choose the correct Dutch form: Instructie: … niet op de trap.",
+            "fa": "شکل درست هلندی را انتخاب کن: Instructie: … niet op de trap."
+          },
+          "options": [
+            {
+              "nl": "Rennen",
+              "en": "Rennen",
+              "fa": "Rennen"
+            },
+            {
+              "nl": "Rent je",
+              "en": "Rent je",
+              "fa": "Rent je"
+            },
+            {
+              "nl": "Ren",
+              "en": "Ren",
+              "fa": "Ren"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Instructie: Ren niet op de trap. Een eenvoudige gebiedende wijs gebruikt doorgaans de stam zonder onderwerp. Maak de instructie duidelijk en passend beleefd.",
+            "en": "Correct Dutch sentence: Instructie: Ren niet op de trap. A simple imperative normally uses the stem without a subject. Make instructions clear and appropriately polite.",
+            "fa": "جملهٔ درست هلندی: Instructie: Ren niet op de trap. امر ساده معمولاً با بن فعل و بدون فاعل ساخته می‌شود. دستور را روشن و با ادب متناسب بیان کن."
+          },
+          "model_sentence": "Instructie: Ren niet op de trap."
+        }
+      ]
+    },
+    {
+      "id": "practice-connectors",
+      "title": {
+        "nl": "Redenen en verbanden",
+        "en": "Reasons and connections",
+        "fa": "دلیل‌ها و پیوندها"
+      },
+      "explanation": {
+        "nl": "Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+        "en": "Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+        "fa": "want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+      },
+      "examples": [
+        {
+          "nl": "Ik neem de bus, want het regent.",
+          "en": "I am taking the bus because it is raining.",
+          "fa": "اتوبوس می‌گیرم، چون باران می‌بارد."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-connectors-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik blijf thuis, … ik ben ziek.",
+            "en": "Choose the correct Dutch form: Ik blijf thuis, … ik ben ziek.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik blijf thuis, … ik ben ziek."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik blijf thuis, want ik ben ziek. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Ik blijf thuis, want ik ben ziek. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Ik blijf thuis, want ik ben ziek. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Ik blijf thuis, want ik ben ziek."
+        },
+        {
+          "id": "pre-a2-practice-connectors-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij komt niet, … zij moet werken.",
+            "en": "Choose the correct Dutch form: Zij komt niet, … zij moet werken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij komt niet, … zij moet werken."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Zij komt niet, want zij moet werken. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Zij komt niet, want zij moet werken. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Zij komt niet, want zij moet werken. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Zij komt niet, want zij moet werken."
+        },
+        {
+          "id": "pre-a2-practice-connectors-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij eten binnen, … het regent.",
+            "en": "Choose the correct Dutch form: Wij eten binnen, … het regent.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij eten binnen, … het regent."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij eten binnen, want het regent. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Wij eten binnen, want het regent. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Wij eten binnen, want het regent. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Wij eten binnen, want het regent."
+        },
+        {
+          "id": "pre-a2-practice-connectors-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De bus is laat, … ik wacht rustig.",
+            "en": "Choose the correct Dutch form: De bus is laat, … ik wacht rustig.",
+            "fa": "شکل درست هلندی را انتخاب کن: De bus is laat, … ik wacht rustig."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "maar",
+              "en": "maar",
+              "fa": "maar"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De bus is laat, maar ik wacht rustig. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: De bus is laat, maar ik wacht rustig. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: De bus is laat, maar ik wacht rustig. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "De bus is laat, maar ik wacht rustig."
+        },
+        {
+          "id": "pre-a2-practice-connectors-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik neem brood … kaas.",
+            "en": "Choose the correct Dutch form: Ik neem brood … kaas.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik neem brood … kaas."
+          },
+          "options": [
+            {
+              "nl": "en",
+              "en": "en",
+              "fa": "en"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik neem brood en kaas. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Ik neem brood en kaas. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Ik neem brood en kaas. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Ik neem brood en kaas."
+        },
+        {
+          "id": "pre-a2-practice-connectors-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij wil helpen, … hij heeft geen tijd.",
+            "en": "Choose the correct Dutch form: Hij wil helpen, … hij heeft geen tijd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij wil helpen, … hij heeft geen tijd."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "maar",
+              "en": "maar",
+              "fa": "maar"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hij wil helpen, maar hij heeft geen tijd. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Hij wil helpen, maar hij heeft geen tijd. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Hij wil helpen, maar hij heeft geen tijd. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Hij wil helpen, maar hij heeft geen tijd."
+        },
+        {
+          "id": "pre-a2-practice-connectors-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij neemt een jas, … het is koud.",
+            "en": "Choose the correct Dutch form: Zij neemt een jas, … het is koud.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij neemt een jas, … het is koud."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Zij neemt een jas, want het is koud. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Zij neemt een jas, want het is koud. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Zij neemt een jas, want het is koud. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Zij neemt een jas, want het is koud."
+        },
+        {
+          "id": "pre-a2-practice-connectors-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij lezen … schrijven in de les.",
+            "en": "Choose the correct Dutch form: Wij lezen … schrijven in de les.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij lezen … schrijven in de les."
+          },
+          "options": [
+            {
+              "nl": "en",
+              "en": "en",
+              "fa": "en"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij lezen en schrijven in de les. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Wij lezen en schrijven in de les. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Wij lezen en schrijven in de les. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Wij lezen en schrijven in de les."
+        },
+        {
+          "id": "pre-a2-practice-connectors-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik drink water, … ik heb dorst.",
+            "en": "Choose the correct Dutch form: Ik drink water, … ik heb dorst.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik drink water, … ik heb dorst."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik drink water, want ik heb dorst. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Ik drink water, want ik heb dorst. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Ik drink water, want ik heb dorst. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Ik drink water, want ik heb dorst."
+        },
+        {
+          "id": "pre-a2-practice-connectors-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het huis is klein, … het is gezellig.",
+            "en": "Choose the correct Dutch form: Het huis is klein, … het is gezellig.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het huis is klein, … het is gezellig."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "maar",
+              "en": "maar",
+              "fa": "maar"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Het huis is klein, maar het is gezellig. Want verbindt hoofdzinnen; omdat leidt een bijzin in. Kies ook het bedoelde verband: reden, tegenstelling of gevolg.",
+            "en": "Correct Dutch sentence: Het huis is klein, maar het is gezellig. Want joins main clauses; omdat introduces a subordinate clause. Preserve the intended reason, contrast or consequence.",
+            "fa": "جملهٔ درست هلندی: Het huis is klein, maar het is gezellig. want جمله‌های اصلی را پیوند می‌دهد؛ omdat جملهٔ وابسته می‌سازد. رابطهٔ موردنظر، مانند دلیل یا تضاد یا پیامد، را حفظ کن."
+          },
+          "model_sentence": "Het huis is klein, maar het is gezellig."
+        }
+      ]
+    },
+    {
+      "id": "practice-negation",
+      "title": {
+        "nl": "Niet en geen",
+        "en": "Niet and geen",
+        "fa": "منفی‌سازی با niet و geen"
+      },
+      "explanation": {
+        "nl": "Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+        "en": "Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+        "fa": "geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+      },
+      "examples": [
+        {
+          "nl": "Ik heb geen fiets.",
+          "en": "I do not have a bicycle.",
+          "fa": "من دوچرخه ندارم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-negation-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik hoef morgen … te werken.",
+            "en": "Choose the correct Dutch form: Ik hoef morgen … te werken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik hoef morgen … te werken."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik hoef morgen niet te werken. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Ik hoef morgen niet te werken. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Ik hoef morgen niet te werken. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Ik hoef morgen niet te werken."
+        },
+        {
+          "id": "pre-a2-practice-negation-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij koopt … suiker; er is nog genoeg.",
+            "en": "Choose the correct Dutch form: Zij koopt … suiker; er is nog genoeg.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij koopt … suiker; er is nog genoeg."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Zij koopt geen suiker; er is nog genoeg. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Zij koopt geen suiker; er is nog genoeg. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Zij koopt geen suiker; er is nog genoeg. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Zij koopt geen suiker; er is nog genoeg."
+        },
+        {
+          "id": "pre-a2-practice-negation-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij willen vandaag … buiten eten.",
+            "en": "Choose the correct Dutch form: Wij willen vandaag … buiten eten.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij willen vandaag … buiten eten."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij willen vandaag niet buiten eten. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Wij willen vandaag niet buiten eten. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Wij willen vandaag niet buiten eten. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Wij willen vandaag niet buiten eten."
+        },
+        {
+          "id": "pre-a2-practice-negation-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dit is … jouw afspraak.",
+            "en": "Choose the correct Dutch form: Dit is … jouw afspraak.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dit is … jouw afspraak."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dit is niet jouw afspraak. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Dit is niet jouw afspraak. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Dit is niet jouw afspraak. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Dit is niet jouw afspraak."
+        },
+        {
+          "id": "pre-a2-practice-negation-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij heeft … contant geld bij zich.",
+            "en": "Choose the correct Dutch form: Hij heeft … contant geld bij zich.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij heeft … contant geld bij zich."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hij heeft geen contant geld bij zich. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Hij heeft geen contant geld bij zich. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Hij heeft geen contant geld bij zich. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Hij heeft geen contant geld bij zich."
+        },
+        {
+          "id": "pre-a2-practice-negation-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij spreken … over het probleem.",
+            "en": "Choose the correct Dutch form: Zij spreken … over het probleem.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij spreken … over het probleem."
+          },
+          "options": [
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            },
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Zij spreken niet over het probleem. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Zij spreken niet over het probleem. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Zij spreken niet over het probleem. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Zij spreken niet over het probleem."
+        },
+        {
+          "id": "pre-a2-practice-negation-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Er staat … naam op dit pakket.",
+            "en": "Choose the correct Dutch form: Er staat … naam op dit pakket.",
+            "fa": "شکل درست هلندی را انتخاب کن: Er staat … naam op dit pakket."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Er staat geen naam op dit pakket. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Er staat geen naam op dit pakket. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Er staat geen naam op dit pakket. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Er staat geen naam op dit pakket."
+        },
+        {
+          "id": "pre-a2-practice-negation-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De trein vertrekt … om tien uur.",
+            "en": "Choose the correct Dutch form: De trein vertrekt … om tien uur.",
+            "fa": "شکل درست هلندی را انتخاب کن: De trein vertrekt … om tien uur."
+          },
+          "options": [
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            },
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De trein vertrekt niet om tien uur. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: De trein vertrekt niet om tien uur. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: De trein vertrekt niet om tien uur. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "De trein vertrekt niet om tien uur."
+        },
+        {
+          "id": "pre-a2-practice-negation-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik heb … andere oplossing.",
+            "en": "Choose the correct Dutch form: Ik heb … andere oplossing.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik heb … andere oplossing."
+          },
+          "options": [
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            },
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik heb geen andere oplossing. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Ik heb geen andere oplossing. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Ik heb geen andere oplossing. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Ik heb geen andere oplossing."
+        },
+        {
+          "id": "pre-a2-practice-negation-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dit antwoord is … helemaal juist.",
+            "en": "Choose the correct Dutch form: Dit antwoord is … helemaal juist.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dit antwoord is … helemaal juist."
+          },
+          "options": [
+            {
+              "nl": "geen",
+              "en": "geen",
+              "fa": "geen"
+            },
+            {
+              "nl": "niet",
+              "en": "niet",
+              "fa": "niet"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Dit antwoord is niet helemaal juist. Geen ontkent meestal een onbepaald zelfstandig naamwoord; niet ontkent onder meer een handeling, eigenschap of bepaald zinsdeel.",
+            "en": "Correct Dutch sentence: Dit antwoord is niet helemaal juist. Geen usually negates an indefinite noun; niet negates an action, property or definite constituent.",
+            "fa": "جملهٔ درست هلندی: Dit antwoord is niet helemaal juist. geen معمولاً اسم نامعین را منفی می‌کند؛ niet برای منفی کردن عمل، ویژگی یا جزء معین جمله به کار می‌رود."
+          },
+          "model_sentence": "Dit antwoord is niet helemaal juist."
+        }
+      ]
+    },
+    {
+      "id": "practice-separable",
+      "title": {
+        "nl": "Scheidbare werkwoorden",
+        "en": "Separable verbs",
+        "fa": "فعل‌های جداشدنی"
+      },
+      "explanation": {
+        "nl": "In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+        "en": "In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+        "fa": "در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+      },
+      "examples": [
+        {
+          "nl": "Ik bel je morgen terug.",
+          "en": "I will call you back tomorrow.",
+          "fa": "فردا دوباره به تو تلفن می‌کنم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-separable-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik ruim mijn kamer …",
+            "en": "Choose the correct Dutch form: Ik ruim mijn kamer …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik ruim mijn kamer …"
+          },
+          "options": [
+            {
+              "nl": "terug",
+              "en": "terug",
+              "fa": "terug"
+            },
+            {
+              "nl": "op",
+              "en": "op",
+              "fa": "op"
+            },
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik ruim mijn kamer op In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: Ik ruim mijn kamer op In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: Ik ruim mijn kamer op در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "Ik ruim mijn kamer op"
+        },
+        {
+          "id": "pre-a2-practice-separable-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij bellen u morgen …",
+            "en": "Choose the correct Dutch form: Wij bellen u morgen …",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij bellen u morgen …"
+          },
+          "options": [
+            {
+              "nl": "opruim",
+              "en": "opruim",
+              "fa": "opruim"
+            },
+            {
+              "nl": "inschrijf",
+              "en": "inschrijf",
+              "fa": "inschrijf"
+            },
+            {
+              "nl": "terug",
+              "en": "terug",
+              "fa": "terug"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Wij bellen u morgen terug In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: Wij bellen u morgen terug In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: Wij bellen u morgen terug در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "Wij bellen u morgen terug"
+        },
+        {
+          "id": "pre-a2-practice-separable-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Sara staat elke dag vroeg …",
+            "en": "Choose the correct Dutch form: Sara staat elke dag vroeg …",
+            "fa": "شکل درست هلندی را انتخاب کن: Sara staat elke dag vroeg …"
+          },
+          "options": [
+            {
+              "nl": "op",
+              "en": "op",
+              "fa": "op"
+            },
+            {
+              "nl": "terug",
+              "en": "terug",
+              "fa": "terug"
+            },
+            {
+              "nl": "mee",
+              "en": "mee",
+              "fa": "mee"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Sara staat elke dag vroeg op In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: Sara staat elke dag vroeg op In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: Sara staat elke dag vroeg op در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "Sara staat elke dag vroeg op"
+        },
+        {
+          "id": "pre-a2-practice-separable-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Neem je identiteitskaart …",
+            "en": "Choose the correct Dutch form: Neem je identiteitskaart …",
+            "fa": "شکل درست هلندی را انتخاب کن: Neem je identiteitskaart …"
+          },
+          "options": [
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "uit",
+              "en": "uit",
+              "fa": "uit"
+            },
+            {
+              "nl": "mee",
+              "en": "mee",
+              "fa": "mee"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Neem je identiteitskaart mee In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: Neem je identiteitskaart mee In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: Neem je identiteitskaart mee در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "Neem je identiteitskaart mee"
+        },
+        {
+          "id": "pre-a2-practice-separable-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij doet het licht …; het wordt donker.",
+            "en": "Choose the correct Dutch form: Hij doet het licht …; het wordt donker.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij doet het licht …; het wordt donker."
+          },
+          "options": [
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "terug",
+              "en": "terug",
+              "fa": "terug"
+            },
+            {
+              "nl": "mee",
+              "en": "mee",
+              "fa": "mee"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Hij doet het licht aan; het wordt donker. In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: Hij doet het licht aan; het wordt donker. In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: Hij doet het licht aan; het wordt donker. در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "Hij doet het licht aan; het wordt donker."
+        },
+        {
+          "id": "pre-a2-practice-separable-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik vul het formulier …",
+            "en": "Choose the correct Dutch form: Ik vul het formulier …",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik vul het formulier …"
+          },
+          "options": [
+            {
+              "nl": "mee",
+              "en": "mee",
+              "fa": "mee"
+            },
+            {
+              "nl": "in",
+              "en": "in",
+              "fa": "in"
+            },
+            {
+              "nl": "op",
+              "en": "op",
+              "fa": "op"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ik vul het formulier in In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: Ik vul het formulier in In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: Ik vul het formulier in در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "Ik vul het formulier in"
+        },
+        {
+          "id": "pre-a2-practice-separable-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij trekken onze schoenen …; ze zijn nat.",
+            "en": "Choose the correct Dutch form: Wij trekken onze schoenen …; ze zijn nat.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij trekken onze schoenen …; ze zijn nat."
+          },
+          "options": [
+            {
+              "nl": "in",
+              "en": "in",
+              "fa": "in"
+            },
+            {
+              "nl": "terug",
+              "en": "terug",
+              "fa": "terug"
+            },
+            {
+              "nl": "uit",
+              "en": "uit",
+              "fa": "uit"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Wij trekken onze schoenen uit; ze zijn nat. In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: Wij trekken onze schoenen uit; ze zijn nat. In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: Wij trekken onze schoenen uit; ze zijn nat. در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "Wij trekken onze schoenen uit; ze zijn nat."
+        },
+        {
+          "id": "pre-a2-practice-separable-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De bus komt om tien uur …",
+            "en": "Choose the correct Dutch form: De bus komt om tien uur …",
+            "fa": "شکل درست هلندی را انتخاب کن: De bus komt om tien uur …"
+          },
+          "options": [
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "mee",
+              "en": "mee",
+              "fa": "mee"
+            },
+            {
+              "nl": "uit",
+              "en": "uit",
+              "fa": "uit"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De bus komt om tien uur aan In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: De bus komt om tien uur aan In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: De bus komt om tien uur aan در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "De bus komt om tien uur aan"
+        },
+        {
+          "id": "pre-a2-practice-separable-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Schrijf het adres …",
+            "en": "Choose the correct Dutch form: Schrijf het adres …",
+            "fa": "شکل درست هلندی را انتخاب کن: Schrijf het adres …"
+          },
+          "options": [
+            {
+              "nl": "op",
+              "en": "op",
+              "fa": "op"
+            },
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "mee",
+              "en": "mee",
+              "fa": "mee"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Schrijf het adres op In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: Schrijf het adres op In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: Schrijf het adres op در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "Schrijf het adres op"
+        },
+        {
+          "id": "pre-a2-practice-separable-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij maakt het cadeautje …",
+            "en": "Choose the correct Dutch form: Zij maakt het cadeautje …",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij maakt het cadeautje …"
+          },
+          "options": [
+            {
+              "nl": "mee",
+              "en": "mee",
+              "fa": "mee"
+            },
+            {
+              "nl": "terug",
+              "en": "terug",
+              "fa": "terug"
+            },
+            {
+              "nl": "open",
+              "en": "open",
+              "fa": "open"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Zij maakt het cadeautje open In een gewone hoofdzin kan het voorvoegsel achteraan staan. In een infinitief of bijzin hoort het weer bij het werkwoord.",
+            "en": "Correct Dutch sentence: Zij maakt het cadeautje open In a main clause the prefix can move to the end. In an infinitive or subordinate clause it rejoins the verb.",
+            "fa": "جملهٔ درست هلندی: Zij maakt het cadeautje open در جملهٔ اصلی ممکن است پیشوند به انتهای جمله برود. در مصدر یا جملهٔ وابسته دوباره به فعل متصل می‌شود."
+          },
+          "model_sentence": "Zij maakt het cadeautje open"
+        }
+      ]
+    },
+    {
+      "id": "practice-comparison",
+      "title": {
+        "nl": "Vergelijken",
+        "en": "Comparisons",
+        "fa": "مقایسه"
+      },
+      "explanation": {
+        "nl": "Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+        "en": "Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+        "fa": "در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+      },
+      "examples": [
+        {
+          "nl": "Deze route is korter dan de andere.",
+          "en": "This route is shorter than the other one.",
+          "fa": "این مسیر از مسیر دیگر کوتاه‌تر است."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-comparison-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Deze straat is langer … de vorige.",
+            "en": "Choose the correct Dutch form: Deze straat is langer … de vorige.",
+            "fa": "شکل درست هلندی را انتخاب کن: Deze straat is langer … de vorige."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Deze straat is langer dan de vorige. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: Deze straat is langer dan de vorige. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: Deze straat is langer dan de vorige. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "Deze straat is langer dan de vorige."
+        },
+        {
+          "id": "pre-a2-practice-comparison-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn tas is even zwaar … jouw tas.",
+            "en": "Choose the correct Dutch form: Mijn tas is even zwaar … jouw tas.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn tas is even zwaar … jouw tas."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Mijn tas is even zwaar als jouw tas. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: Mijn tas is even zwaar als jouw tas. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: Mijn tas is even zwaar als jouw tas. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "Mijn tas is even zwaar als jouw tas."
+        },
+        {
+          "id": "pre-a2-practice-comparison-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Deze thee is warmer … het water.",
+            "en": "Choose the correct Dutch form: Deze thee is warmer … het water.",
+            "fa": "شکل درست هلندی را انتخاب کن: Deze thee is warmer … het water."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Deze thee is warmer dan het water. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: Deze thee is warmer dan het water. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: Deze thee is warmer dan het water. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "Deze thee is warmer dan het water."
+        },
+        {
+          "id": "pre-a2-practice-comparison-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn kamer is groter … die van mijn broer.",
+            "en": "Choose the correct Dutch form: Mijn kamer is groter … die van mijn broer.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn kamer is groter … die van mijn broer."
+          },
+          "options": [
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            },
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Mijn kamer is groter dan die van mijn broer. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: Mijn kamer is groter dan die van mijn broer. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: Mijn kamer is groter dan die van mijn broer. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "Mijn kamer is groter dan die van mijn broer."
+        },
+        {
+          "id": "pre-a2-practice-comparison-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dit boek is even duur … dat boek.",
+            "en": "Choose the correct Dutch form: Dit boek is even duur … dat boek.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dit boek is even duur … dat boek."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Dit boek is even duur als dat boek. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: Dit boek is even duur als dat boek. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: Dit boek is even duur als dat boek. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "Dit boek is even duur als dat boek."
+        },
+        {
+          "id": "pre-a2-practice-comparison-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De trein is sneller … de bus.",
+            "en": "Choose the correct Dutch form: De trein is sneller … de bus.",
+            "fa": "شکل درست هلندی را انتخاب کن: De trein is sneller … de bus."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De trein is sneller dan de bus. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: De trein is sneller dan de bus. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: De trein is sneller dan de bus. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "De trein is sneller dan de bus."
+        },
+        {
+          "id": "pre-a2-practice-comparison-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Deze stoel is even hoog … de tafel.",
+            "en": "Choose the correct Dutch form: Deze stoel is even hoog … de tafel.",
+            "fa": "شکل درست هلندی را انتخاب کن: Deze stoel is even hoog … de tafel."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Deze stoel is even hoog als de tafel. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: Deze stoel is even hoog als de tafel. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: Deze stoel is even hoog als de tafel. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "Deze stoel is even hoog als de tafel."
+        },
+        {
+          "id": "pre-a2-practice-comparison-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het is vandaag kouder … gisteren.",
+            "en": "Choose the correct Dutch form: Het is vandaag kouder … gisteren.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het is vandaag kouder … gisteren."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het is vandaag kouder dan gisteren. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: Het is vandaag kouder dan gisteren. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: Het is vandaag kouder dan gisteren. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "Het is vandaag kouder dan gisteren."
+        },
+        {
+          "id": "pre-a2-practice-comparison-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Deze oefening is makkelijker … de vorige.",
+            "en": "Choose the correct Dutch form: Deze oefening is makkelijker … de vorige.",
+            "fa": "شکل درست هلندی را انتخاب کن: Deze oefening is makkelijker … de vorige."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Deze oefening is makkelijker dan de vorige. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: Deze oefening is makkelijker dan de vorige. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: Deze oefening is makkelijker dan de vorige. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "Deze oefening is makkelijker dan de vorige."
+        },
+        {
+          "id": "pre-a2-practice-comparison-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De blauwe jas is even mooi … de rode.",
+            "en": "Choose the correct Dutch form: De blauwe jas is even mooi … de rode.",
+            "fa": "شکل درست هلندی را انتخاب کن: De blauwe jas is even mooi … de rode."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De blauwe jas is even mooi als de rode. Na een vergrotende trap gebruik je in de standaardtaal dan; bij een gelijkheid met even gebruik je als. Let op onregelmatige vormen.",
+            "en": "Correct Dutch sentence: De blauwe jas is even mooi als de rode. Standard Dutch uses dan after a comparative and als with equality using even. Watch irregular forms.",
+            "fa": "جملهٔ درست هلندی: De blauwe jas is even mooi als de rode. در هلندی معیار پس از صفت تفضیلی از dan و برای برابری با even از als استفاده کن. به شکل‌های بی‌قاعده توجه کن."
+          },
+          "model_sentence": "De blauwe jas is even mooi als de rode."
+        }
+      ]
+    },
+    {
+      "id": "practice-wordorder",
+      "title": {
+        "nl": "Een duidelijke hoofdzin",
+        "en": "Main-clause word order",
+        "fa": "ترتیب واژه‌ها در جملهٔ اصلی"
+      },
+      "explanation": {
+        "nl": "In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+        "en": "In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+        "fa": "در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+      },
+      "examples": [
+        {
+          "nl": "Vandaag werk ik thuis.",
+          "en": "Today I work at home.",
+          "fa": "امروز در خانه کار می‌کنم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-wordorder-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Na het werk … hij boodschappen.",
+            "en": "Choose the correct Dutch form: Na het werk … hij boodschappen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Na het werk … hij boodschappen."
+          },
+          "options": [
+            {
+              "nl": "doen",
+              "en": "doen",
+              "fa": "doen"
+            },
+            {
+              "nl": "doe",
+              "en": "doe",
+              "fa": "doe"
+            },
+            {
+              "nl": "doet",
+              "en": "doet",
+              "fa": "doet"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Na het werk doet hij boodschappen. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Na het werk doet hij boodschappen. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Na het werk doet hij boodschappen. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Na het werk doet hij boodschappen."
+        },
+        {
+          "id": "pre-a2-practice-wordorder-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Om halfnegen … ik mijn collega.",
+            "en": "Choose the correct Dutch form: Om halfnegen … ik mijn collega.",
+            "fa": "شکل درست هلندی را انتخاب کن: Om halfnegen … ik mijn collega."
+          },
+          "options": [
+            {
+              "nl": "bellen",
+              "en": "bellen",
+              "fa": "bellen"
+            },
+            {
+              "nl": "bel",
+              "en": "bel",
+              "fa": "bel"
+            },
+            {
+              "nl": "belt",
+              "en": "belt",
+              "fa": "belt"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Om halfnegen bel ik mijn collega. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Om halfnegen bel ik mijn collega. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Om halfnegen bel ik mijn collega. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Om halfnegen bel ik mijn collega."
+        },
+        {
+          "id": "pre-a2-practice-wordorder-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: In de keuken … wij het eten klaar.",
+            "en": "Choose the correct Dutch form: In de keuken … wij het eten klaar.",
+            "fa": "شکل درست هلندی را انتخاب کن: In de keuken … wij het eten klaar."
+          },
+          "options": [
+            {
+              "nl": "maak",
+              "en": "maak",
+              "fa": "maak"
+            },
+            {
+              "nl": "maken",
+              "en": "maken",
+              "fa": "maken"
+            },
+            {
+              "nl": "maakt",
+              "en": "maakt",
+              "fa": "maakt"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: In de keuken maken wij het eten klaar. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: In de keuken maken wij het eten klaar. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: In de keuken maken wij het eten klaar. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "In de keuken maken wij het eten klaar."
+        },
+        {
+          "id": "pre-a2-practice-wordorder-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Volgende maand … zij alleen in een nieuw huis.",
+            "en": "Choose the correct Dutch form: Volgende maand … zij alleen in een nieuw huis.",
+            "fa": "شکل درست هلندی را انتخاب کن: Volgende maand … zij alleen in een nieuw huis."
+          },
+          "options": [
+            {
+              "nl": "wonen",
+              "en": "wonen",
+              "fa": "wonen"
+            },
+            {
+              "nl": "woont",
+              "en": "woont",
+              "fa": "woont"
+            },
+            {
+              "nl": "woon",
+              "en": "woon",
+              "fa": "woon"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Volgende maand woont zij alleen in een nieuw huis. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Volgende maand woont zij alleen in een nieuw huis. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Volgende maand woont zij alleen in een nieuw huis. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Volgende maand woont zij alleen in een nieuw huis."
+        },
+        {
+          "id": "pre-a2-practice-wordorder-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Na de film … jullie naar huis.",
+            "en": "Choose the correct Dutch form: Na de film … jullie naar huis.",
+            "fa": "شکل درست هلندی را انتخاب کن: Na de film … jullie naar huis."
+          },
+          "options": [
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Na de film gaan jullie naar huis. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Na de film gaan jullie naar huis. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Na de film gaan jullie naar huis. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Na de film gaan jullie naar huis."
+        },
+        {
+          "id": "pre-a2-practice-wordorder-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Deze ochtend … de kinderen vroeg op.",
+            "en": "Choose the correct Dutch form: Deze ochtend … de kinderen vroeg op.",
+            "fa": "شکل درست هلندی را انتخاب کن: Deze ochtend … de kinderen vroeg op."
+          },
+          "options": [
+            {
+              "nl": "sta",
+              "en": "sta",
+              "fa": "sta"
+            },
+            {
+              "nl": "staan",
+              "en": "staan",
+              "fa": "staan"
+            },
+            {
+              "nl": "staat",
+              "en": "staat",
+              "fa": "staat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Deze ochtend staan de kinderen vroeg op. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Deze ochtend staan de kinderen vroeg op. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Deze ochtend staan de kinderen vroeg op. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Deze ochtend staan de kinderen vroeg op."
+        },
+        {
+          "id": "pre-a2-practice-wordorder-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Aan het loket … ik een ticket.",
+            "en": "Choose the correct Dutch form: Aan het loket … ik een ticket.",
+            "fa": "شکل درست هلندی را انتخاب کن: Aan het loket … ik een ticket."
+          },
+          "options": [
+            {
+              "nl": "kopen",
+              "en": "kopen",
+              "fa": "kopen"
+            },
+            {
+              "nl": "koop",
+              "en": "koop",
+              "fa": "koop"
+            },
+            {
+              "nl": "koopt",
+              "en": "koopt",
+              "fa": "koopt"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Aan het loket koop ik een ticket. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Aan het loket koop ik een ticket. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Aan het loket koop ik een ticket. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Aan het loket koop ik een ticket."
+        },
+        {
+          "id": "pre-a2-practice-wordorder-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Op de hoek … je naar links.",
+            "en": "Choose the correct Dutch form: Op de hoek … je naar links.",
+            "fa": "شکل درست هلندی را انتخاب کن: Op de hoek … je naar links."
+          },
+          "options": [
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Op de hoek ga je naar links. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Op de hoek ga je naar links. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Op de hoek ga je naar links. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Op de hoek ga je naar links."
+        },
+        {
+          "id": "pre-a2-practice-wordorder-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Na de pauze … de les verder.",
+            "en": "Choose the correct Dutch form: Na de pauze … de les verder.",
+            "fa": "شکل درست هلندی را انتخاب کن: Na de pauze … de les verder."
+          },
+          "options": [
+            {
+              "nl": "gaat",
+              "en": "gaat",
+              "fa": "gaat"
+            },
+            {
+              "nl": "gaan",
+              "en": "gaan",
+              "fa": "gaan"
+            },
+            {
+              "nl": "ga",
+              "en": "ga",
+              "fa": "ga"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Na de pauze gaat de les verder. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Na de pauze gaat de les verder. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Na de pauze gaat de les verder. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Na de pauze gaat de les verder."
+        },
+        {
+          "id": "pre-a2-practice-wordorder-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Voor het bezoek … wij de kamer op.",
+            "en": "Choose the correct Dutch form: Voor het bezoek … wij de kamer op.",
+            "fa": "شکل درست هلندی را انتخاب کن: Voor het bezoek … wij de kamer op."
+          },
+          "options": [
+            {
+              "nl": "ruimen",
+              "en": "ruimen",
+              "fa": "ruimen"
+            },
+            {
+              "nl": "ruimt",
+              "en": "ruimt",
+              "fa": "ruimt"
+            },
+            {
+              "nl": "ruim",
+              "en": "ruim",
+              "fa": "ruim"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Voor het bezoek ruimen wij de kamer op. In een mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een vooropgeplaatst tijdsdeel telt als één zinsdeel.",
+            "en": "Correct Dutch sentence: Voor het bezoek ruimen wij de kamer op. In a declarative main clause the finite verb takes second position; an initial time phrase counts as one constituent.",
+            "fa": "جملهٔ درست هلندی: Voor het bezoek ruimen wij de kamer op. در جملهٔ خبری اصلی، فعل صرف‌شده در جایگاه دوم است. عبارت زمانیِ اول جمله یک جزء حساب می‌شود."
+          },
+          "model_sentence": "Voor het bezoek ruimen wij de kamer op."
+        }
+      ]
+    },
+    {
+      "id": "practice-reflexive",
+      "title": {
+        "nl": "Me, je en zich",
+        "en": "Reflexive pronouns",
+        "fa": "ضمیرهای انعکاسی"
+      },
+      "explanation": {
+        "nl": "Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+        "en": "Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+        "fa": "ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+      },
+      "examples": [
+        {
+          "nl": "Wij schrijven ons in.",
+          "en": "We register.",
+          "fa": "ما ثبت‌نام می‌کنیم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-a2-practice-reflexive-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik meld … aan voor de cursus.",
+            "en": "Choose the correct Dutch form: Ik meld … aan voor de cursus.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik meld … aan voor de cursus."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik meld me aan voor de cursus. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Ik meld me aan voor de cursus. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Ik meld me aan voor de cursus. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Ik meld me aan voor de cursus."
+        },
+        {
+          "id": "pre-a2-practice-reflexive-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij wast … voor het eten.",
+            "en": "Choose the correct Dutch form: Jij wast … voor het eten.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij wast … voor het eten."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "je",
+              "en": "je",
+              "fa": "je"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Jij wast je voor het eten. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Jij wast je voor het eten. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Jij wast je voor het eten. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Jij wast je voor het eten."
+        },
+        {
+          "id": "pre-a2-practice-reflexive-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Mijn broer scheert … elke ochtend.",
+            "en": "Choose the correct Dutch form: Mijn broer scheert … elke ochtend.",
+            "fa": "شکل درست هلندی را انتخاب کن: Mijn broer scheert … elke ochtend."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Mijn broer scheert zich elke ochtend. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Mijn broer scheert zich elke ochtend. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Mijn broer scheert zich elke ochtend. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Mijn broer scheert zich elke ochtend."
+        },
+        {
+          "id": "pre-a2-practice-reflexive-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij voelen … hier goed.",
+            "en": "Choose the correct Dutch form: Wij voelen … hier goed.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij voelen … hier goed."
+          },
+          "options": [
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij voelen ons hier goed. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Wij voelen ons hier goed. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Wij voelen ons hier goed. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Wij voelen ons hier goed."
+        },
+        {
+          "id": "pre-a2-practice-reflexive-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jullie vergissen … in het adres.",
+            "en": "Choose the correct Dutch form: Jullie vergissen … in het adres.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jullie vergissen … in het adres."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "je",
+              "en": "je",
+              "fa": "je"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Jullie vergissen je in het adres. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Jullie vergissen je in het adres. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Jullie vergissen je in het adres. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Jullie vergissen je in het adres."
+        },
+        {
+          "id": "pre-a2-practice-reflexive-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Sara kleedt … snel aan.",
+            "en": "Choose the correct Dutch form: Sara kleedt … snel aan.",
+            "fa": "شکل درست هلندی را انتخاب کن: Sara kleedt … snel aan."
+          },
+          "options": [
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Sara kleedt zich snel aan. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Sara kleedt zich snel aan. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Sara kleedt zich snel aan. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Sara kleedt zich snel aan."
+        },
+        {
+          "id": "pre-a2-practice-reflexive-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik herinner … die naam.",
+            "en": "Choose the correct Dutch form: Ik herinner … die naam.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik herinner … die naam."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ik herinner me die naam. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Ik herinner me die naam. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Ik herinner me die naam. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Ik herinner me die naam."
+        },
+        {
+          "id": "pre-a2-practice-reflexive-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij haasten … naar de bus.",
+            "en": "Choose the correct Dutch form: Wij haasten … naar de bus.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij haasten … naar de bus."
+          },
+          "options": [
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij haasten ons naar de bus. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Wij haasten ons naar de bus. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Wij haasten ons naar de bus. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Wij haasten ons naar de bus."
+        },
+        {
+          "id": "pre-a2-practice-reflexive-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De buur schaamt … voor het lawaai.",
+            "en": "Choose the correct Dutch form: De buur schaamt … voor het lawaai.",
+            "fa": "شکل درست هلندی را انتخاب کن: De buur schaamt … voor het lawaai."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "zich",
+              "en": "zich",
+              "fa": "zich"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De buur schaamt zich voor het lawaai. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: De buur schaamt zich voor het lawaai. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: De buur schaamt zich voor het lawaai. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "De buur schaamt zich voor het lawaai."
+        },
+        {
+          "id": "pre-a2-practice-reflexive-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Jij stelt … aan de groep voor.",
+            "en": "Choose the correct Dutch form: Jij stelt … aan de groep voor.",
+            "fa": "شکل درست هلندی را انتخاب کن: Jij stelt … aan de groep voor."
+          },
+          "options": [
+            {
+              "nl": "me",
+              "en": "me",
+              "fa": "me"
+            },
+            {
+              "nl": "ons",
+              "en": "ons",
+              "fa": "ons"
+            },
+            {
+              "nl": "je",
+              "en": "je",
+              "fa": "je"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Jij stelt je aan de groep voor. Kies het wederkerende voornaamwoord bij het onderwerp: ik me, jij je, hij/zij zich, wij ons, jullie je en zij zich.",
+            "en": "Correct Dutch sentence: Jij stelt je aan de groep voor. Match the reflexive pronoun to the subject: ik me, jij je, hij/zij zich, wij ons, jullie je, zij zich.",
+            "fa": "جملهٔ درست هلندی: Jij stelt je aan de groep voor. ضمیر انعکاسی را با فاعل هماهنگ کن: ik me، jij je، hij/zij zich، wij ons، jullie je و zij zich."
+          },
+          "model_sentence": "Jij stelt je aan de groep voor."
+        }
+      ]
+    }
+  ]
+}

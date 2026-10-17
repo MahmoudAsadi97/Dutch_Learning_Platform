@@ -257,3 +257,25 @@
 .curriculum-question:disabled label { cursor: default; }
 .unit-sidebar nav button:disabled, .test-tabs button:disabled { cursor: not-allowed; }
 }
+
+/* Grammar is a short selected round, including on narrow screens. */
+.grammar-practice {
+  min-width: 0;
+}
+.grammar-practice > select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  margin: 8px 0 20px;
+}
+.grammar-practice .action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+.grammar-practice .action-row > button {
+  max-width: 100%;
+  white-space: normal;
+}

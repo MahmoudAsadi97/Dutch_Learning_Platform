@@ -1,0 +1,3277 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-c1",
+  "review_status": "unreviewed",
+  "rounds": [
+    {
+      "id": "practice-nominal",
+      "title": {
+        "nl": "Handeling en nominalisatie",
+        "en": "Actions and nominalisation",
+        "fa": "عمل و اسم‌سازی"
+      },
+      "explanation": {
+        "nl": "Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+        "en": "Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+        "fa": "اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+      },
+      "examples": [
+        {
+          "nl": "De weigering van de aanvraag vraagt uitleg.",
+          "en": "The rejection of the application needs an explanation.",
+          "fa": "رد درخواست به توضیح نیاز دارد."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-nominal-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De raad keurt het plan goed. Benoem de actor: de goedkeuring van het plan … de raad.",
+            "en": "Choose the correct Dutch form: De raad keurt het plan goed. Benoem de actor: de goedkeuring van het plan … de raad.",
+            "fa": "شکل درست هلندی را انتخاب کن: De raad keurt het plan goed. Benoem de actor: de goedkeuring van het plan … de raad."
+          },
+          "options": [
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            },
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De raad keurt het plan goed. Benoem de actor: de goedkeuring van het plan door de raad. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De raad keurt het plan goed. Benoem de actor: de goedkeuring van het plan door de raad. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De raad keurt het plan goed. Benoem de actor: de goedkeuring van het plan door de raad. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De raad keurt het plan goed. Benoem de actor: de goedkeuring van het plan door de raad."
+        },
+        {
+          "id": "pre-c1-practice-nominal-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De redactie wijzigt de titel. Benoem de actor: de wijziging van de titel … de redactie.",
+            "en": "Choose the correct Dutch form: De redactie wijzigt de titel. Benoem de actor: de wijziging van de titel … de redactie.",
+            "fa": "شکل درست هلندی را انتخاب کن: De redactie wijzigt de titel. Benoem de actor: de wijziging van de titel … de redactie."
+          },
+          "options": [
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            },
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De redactie wijzigt de titel. Benoem de actor: de wijziging van de titel door de redactie. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De redactie wijzigt de titel. Benoem de actor: de wijziging van de titel door de redactie. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De redactie wijzigt de titel. Benoem de actor: de wijziging van de titel door de redactie. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De redactie wijzigt de titel. Benoem de actor: de wijziging van de titel door de redactie."
+        },
+        {
+          "id": "pre-c1-practice-nominal-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De commissie beoordeelt de dossiers. Benoem de actor: de beoordeling van de dossiers … de commissie.",
+            "en": "Choose the correct Dutch form: De commissie beoordeelt de dossiers. Benoem de actor: de beoordeling van de dossiers … de commissie.",
+            "fa": "شکل درست هلندی را انتخاب کن: De commissie beoordeelt de dossiers. Benoem de actor: de beoordeling van de dossiers … de commissie."
+          },
+          "options": [
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            },
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De commissie beoordeelt de dossiers. Benoem de actor: de beoordeling van de dossiers door de commissie. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De commissie beoordeelt de dossiers. Benoem de actor: de beoordeling van de dossiers door de commissie. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De commissie beoordeelt de dossiers. Benoem de actor: de beoordeling van de dossiers door de commissie. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De commissie beoordeelt de dossiers. Benoem de actor: de beoordeling van de dossiers door de commissie."
+        },
+        {
+          "id": "pre-c1-practice-nominal-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De onderzoeker selecteert de bronnen. Benoem de actor: de selectie van de bronnen … de onderzoeker.",
+            "en": "Choose the correct Dutch form: De onderzoeker selecteert de bronnen. Benoem de actor: de selectie van de bronnen … de onderzoeker.",
+            "fa": "شکل درست هلندی را انتخاب کن: De onderzoeker selecteert de bronnen. Benoem de actor: de selectie van de bronnen … de onderzoeker."
+          },
+          "options": [
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            },
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            },
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De onderzoeker selecteert de bronnen. Benoem de actor: de selectie van de bronnen door de onderzoeker. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De onderzoeker selecteert de bronnen. Benoem de actor: de selectie van de bronnen door de onderzoeker. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De onderzoeker selecteert de bronnen. Benoem de actor: de selectie van de bronnen door de onderzoeker. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De onderzoeker selecteert de bronnen. Benoem de actor: de selectie van de bronnen door de onderzoeker."
+        },
+        {
+          "id": "pre-c1-practice-nominal-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De dienst weigert de aanvraag. Benoem de actor: de weigering van de aanvraag … de dienst.",
+            "en": "Choose the correct Dutch form: De dienst weigert de aanvraag. Benoem de actor: de weigering van de aanvraag … de dienst.",
+            "fa": "شکل درست هلندی را انتخاب کن: De dienst weigert de aanvraag. Benoem de actor: de weigering van de aanvraag … de dienst."
+          },
+          "options": [
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            },
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De dienst weigert de aanvraag. Benoem de actor: de weigering van de aanvraag door de dienst. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De dienst weigert de aanvraag. Benoem de actor: de weigering van de aanvraag door de dienst. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De dienst weigert de aanvraag. Benoem de actor: de weigering van de aanvraag door de dienst. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De dienst weigert de aanvraag. Benoem de actor: de weigering van de aanvraag door de dienst."
+        },
+        {
+          "id": "pre-c1-practice-nominal-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De school hervormt de cursus. Benoem de actor: de hervorming van de cursus … de school.",
+            "en": "Choose the correct Dutch form: De school hervormt de cursus. Benoem de actor: de hervorming van de cursus … de school.",
+            "fa": "شکل درست هلندی را انتخاب کن: De school hervormt de cursus. Benoem de actor: de hervorming van de cursus … de school."
+          },
+          "options": [
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            },
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De school hervormt de cursus. Benoem de actor: de hervorming van de cursus door de school. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De school hervormt de cursus. Benoem de actor: de hervorming van de cursus door de school. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De school hervormt de cursus. Benoem de actor: de hervorming van de cursus door de school. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De school hervormt de cursus. Benoem de actor: de hervorming van de cursus door de school."
+        },
+        {
+          "id": "pre-c1-practice-nominal-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De beheerder sluit de zaal. Benoem de actor: de sluiting van de zaal … de beheerder.",
+            "en": "Choose the correct Dutch form: De beheerder sluit de zaal. Benoem de actor: de sluiting van de zaal … de beheerder.",
+            "fa": "شکل درست هلندی را انتخاب کن: De beheerder sluit de zaal. Benoem de actor: de sluiting van de zaal … de beheerder."
+          },
+          "options": [
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            },
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            },
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De beheerder sluit de zaal. Benoem de actor: de sluiting van de zaal door de beheerder. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De beheerder sluit de zaal. Benoem de actor: de sluiting van de zaal door de beheerder. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De beheerder sluit de zaal. Benoem de actor: de sluiting van de zaal door de beheerder. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De beheerder sluit de zaal. Benoem de actor: de sluiting van de zaal door de beheerder."
+        },
+        {
+          "id": "pre-c1-practice-nominal-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De groep herziet de planning. Benoem de actor: de herziening van de planning … de groep.",
+            "en": "Choose the correct Dutch form: De groep herziet de planning. Benoem de actor: de herziening van de planning … de groep.",
+            "fa": "شکل درست هلندی را انتخاب کن: De groep herziet de planning. Benoem de actor: de herziening van de planning … de groep."
+          },
+          "options": [
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            },
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De groep herziet de planning. Benoem de actor: de herziening van de planning door de groep. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De groep herziet de planning. Benoem de actor: de herziening van de planning door de groep. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De groep herziet de planning. Benoem de actor: de herziening van de planning door de groep. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De groep herziet de planning. Benoem de actor: de herziening van de planning door de groep."
+        },
+        {
+          "id": "pre-c1-practice-nominal-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De uitgever vertaalt de tekst. Benoem de actor: de vertaling van de tekst … de uitgever.",
+            "en": "Choose the correct Dutch form: De uitgever vertaalt de tekst. Benoem de actor: de vertaling van de tekst … de uitgever.",
+            "fa": "شکل درست هلندی را انتخاب کن: De uitgever vertaalt de tekst. Benoem de actor: de vertaling van de tekst … de uitgever."
+          },
+          "options": [
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            },
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De uitgever vertaalt de tekst. Benoem de actor: de vertaling van de tekst door de uitgever. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De uitgever vertaalt de tekst. Benoem de actor: de vertaling van de tekst door de uitgever. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De uitgever vertaalt de tekst. Benoem de actor: de vertaling van de tekst door de uitgever. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De uitgever vertaalt de tekst. Benoem de actor: de vertaling van de tekst door de uitgever."
+        },
+        {
+          "id": "pre-c1-practice-nominal-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De overheid beperkt de toegang. Benoem de actor: de beperking van de toegang … de overheid.",
+            "en": "Choose the correct Dutch form: De overheid beperkt de toegang. Benoem de actor: de beperking van de toegang … de overheid.",
+            "fa": "شکل درست هلندی را انتخاب کن: De overheid beperkt de toegang. Benoem de actor: de beperking van de toegang … de overheid."
+          },
+          "options": [
+            {
+              "nl": "door",
+              "en": "door",
+              "fa": "door"
+            },
+            {
+              "nl": "aan",
+              "en": "aan",
+              "fa": "aan"
+            },
+            {
+              "nl": "voor",
+              "en": "voor",
+              "fa": "voor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De overheid beperkt de toegang. Benoem de actor: de beperking van de toegang door de overheid. Een nominalisatie maakt een handeling tot een naamwoord. Behoud wie handelt en wie gevolgen ondervindt als dat voor de betekenis belangrijk is.",
+            "en": "Correct Dutch sentence: De overheid beperkt de toegang. Benoem de actor: de beperking van de toegang door de overheid. Nominalisation turns an action into a noun. Retain the agent and affected party when needed for the meaning.",
+            "fa": "جملهٔ درست هلندی: De overheid beperkt de toegang. Benoem de actor: de beperking van de toegang door de overheid. اسم‌سازی، عمل را به اسم تبدیل می‌کند. اگر برای معنا مهم است، عامل و فرد تحت‌تأثیر را حفظ کن."
+          },
+          "model_sentence": "De overheid beperkt de toegang. Benoem de actor: de beperking van de toegang door de overheid."
+        }
+      ]
+    },
+    {
+      "id": "practice-evidential",
+      "title": {
+        "nl": "Bron en zekerheid",
+        "en": "Source and certainty",
+        "fa": "منبع و میزان قطعیت"
+      },
+      "explanation": {
+        "nl": "Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+        "en": "Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+        "fa": "volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+      },
+      "examples": [
+        {
+          "nl": "Volgens de getuige zou de deur openstaan.",
+          "en": "According to the witness, the door is reportedly open.",
+          "fa": "بنا بر گفتهٔ شاهد، گویا در باز است."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-evidential-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: de woordvoerder … vooraf gewaarschuwd hebben.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: de woordvoerder … vooraf gewaarschuwd hebben.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: de woordvoerder … vooraf gewaarschuwd hebben."
+          },
+          "options": [
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            },
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: de woordvoerder zou vooraf gewaarschuwd hebben. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: de woordvoerder zou vooraf gewaarschuwd hebben. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: de woordvoerder zou vooraf gewaarschuwd hebben. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: de woordvoerder zou vooraf gewaarschuwd hebben."
+        },
+        {
+          "id": "pre-c1-practice-evidential-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: de onderzoekers … nieuwe gegevens hebben.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: de onderzoekers … nieuwe gegevens hebben.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: de onderzoekers … nieuwe gegevens hebben."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: de onderzoekers zouden nieuwe gegevens hebben. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: de onderzoekers zouden nieuwe gegevens hebben. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: de onderzoekers zouden nieuwe gegevens hebben. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: de onderzoekers zouden nieuwe gegevens hebben."
+        },
+        {
+          "id": "pre-c1-practice-evidential-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: het document … later aangepast zijn.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: het document … later aangepast zijn.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: het document … later aangepast zijn."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: het document zou later aangepast zijn. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: het document zou later aangepast zijn. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: het document zou later aangepast zijn. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: het document zou later aangepast zijn."
+        },
+        {
+          "id": "pre-c1-practice-evidential-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: de betrokkenen … bezwaar hebben gemaakt.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: de betrokkenen … bezwaar hebben gemaakt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: de betrokkenen … bezwaar hebben gemaakt."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: de betrokkenen zouden bezwaar hebben gemaakt. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: de betrokkenen zouden bezwaar hebben gemaakt. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: de betrokkenen zouden bezwaar hebben gemaakt. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: de betrokkenen zouden bezwaar hebben gemaakt."
+        },
+        {
+          "id": "pre-c1-practice-evidential-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: de eigenaar … niets geweten hebben.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: de eigenaar … niets geweten hebben.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: de eigenaar … niets geweten hebben."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: de eigenaar zou niets geweten hebben. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: de eigenaar zou niets geweten hebben. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: de eigenaar zou niets geweten hebben. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: de eigenaar zou niets geweten hebben."
+        },
+        {
+          "id": "pre-c1-practice-evidential-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: de cijfers … onvolledig zijn.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: de cijfers … onvolledig zijn.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: de cijfers … onvolledig zijn."
+          },
+          "options": [
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            },
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: de cijfers zouden onvolledig zijn. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: de cijfers zouden onvolledig zijn. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: de cijfers zouden onvolledig zijn. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: de cijfers zouden onvolledig zijn."
+        },
+        {
+          "id": "pre-c1-practice-evidential-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: de commissie … al besloten hebben.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: de commissie … al besloten hebben.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: de commissie … al besloten hebben."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: de commissie zou al besloten hebben. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: de commissie zou al besloten hebben. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: de commissie zou al besloten hebben. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: de commissie zou al besloten hebben."
+        },
+        {
+          "id": "pre-c1-practice-evidential-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: de maatregelen … tijdelijk zijn.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: de maatregelen … tijdelijk zijn.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: de maatregelen … tijdelijk zijn."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: de maatregelen zouden tijdelijk zijn. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: de maatregelen zouden tijdelijk zijn. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: de maatregelen zouden tijdelijk zijn. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: de maatregelen zouden tijdelijk zijn."
+        },
+        {
+          "id": "pre-c1-practice-evidential-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: het bestuur … overleg hebben beloofd.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: het bestuur … overleg hebben beloofd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: het bestuur … overleg hebben beloofd."
+          },
+          "options": [
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            },
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: het bestuur zou overleg hebben beloofd. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: het bestuur zou overleg hebben beloofd. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: het bestuur zou overleg hebben beloofd. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: het bestuur zou overleg hebben beloofd."
+        },
+        {
+          "id": "pre-c1-practice-evidential-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Onbevestigde bronclaim: de getuigen … hetzelfde hebben gezien.",
+            "en": "Choose the correct Dutch form: Onbevestigde bronclaim: de getuigen … hetzelfde hebben gezien.",
+            "fa": "شکل درست هلندی را انتخاب کن: Onbevestigde bronclaim: de getuigen … hetzelfde hebben gezien."
+          },
+          "options": [
+            {
+              "nl": "zouden",
+              "en": "zouden",
+              "fa": "zouden"
+            },
+            {
+              "nl": "zou",
+              "en": "zou",
+              "fa": "zou"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Onbevestigde bronclaim: de getuigen zouden hetzelfde hebben gezien. Volgens vermeldt een bron; zou kan een niet door de schrijver bevestigde bewering markeren. Zo'n vorm is geen bewijs dat iets onwaar is.",
+            "en": "Correct Dutch sentence: Onbevestigde bronclaim: de getuigen zouden hetzelfde hebben gezien. Volgens attributes a source; zou can mark a claim not independently confirmed by the writer. This does not prove the claim false.",
+            "fa": "جملهٔ درست هلندی: Onbevestigde bronclaim: de getuigen zouden hetzelfde hebben gezien. volgens منبع را مشخص می‌کند؛ zou می‌تواند ادعایی را نشان دهد که نویسنده مستقلاً تأیید نکرده است. این به معنای اثبات نادرستی ادعا نیست."
+          },
+          "model_sentence": "Onbevestigde bronclaim: de getuigen zouden hetzelfde hebben gezien."
+        }
+      ]
+    },
+    {
+      "id": "practice-focus",
+      "title": {
+        "nl": "Nadruk en focus",
+        "en": "Focus and emphasis",
+        "fa": "تأکید و کانون جمله"
+      },
+      "explanation": {
+        "nl": "De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+        "en": "The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+        "fa": "جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+      },
+      "examples": [
+        {
+          "nl": "Niet zozeer de prijs als wel de levertijd telt.",
+          "en": "It is not so much the price as the delivery time that matters.",
+          "fa": "نه چندان قیمت، بلکه زمان تحویل اهمیت دارد."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-focus-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer de uitkomst … de methode wordt betwist.",
+            "en": "Choose the correct Dutch form: Niet zozeer de uitkomst … de methode wordt betwist.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer de uitkomst … de methode wordt betwist."
+          },
+          "options": [
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            },
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Niet zozeer de uitkomst als wel de methode wordt betwist. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer de uitkomst als wel de methode wordt betwist. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer de uitkomst als wel de methode wordt betwist. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer de uitkomst als wel de methode wordt betwist."
+        },
+        {
+          "id": "pre-c1-practice-focus-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer de prijs … de onzekerheid belemmert de keuze.",
+            "en": "Choose the correct Dutch form: Niet zozeer de prijs … de onzekerheid belemmert de keuze.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer de prijs … de onzekerheid belemmert de keuze."
+          },
+          "options": [
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Niet zozeer de prijs als wel de onzekerheid belemmert de keuze. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer de prijs als wel de onzekerheid belemmert de keuze. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer de prijs als wel de onzekerheid belemmert de keuze. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer de prijs als wel de onzekerheid belemmert de keuze."
+        },
+        {
+          "id": "pre-c1-practice-focus-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer de titel … de bronvermelding ontbreekt.",
+            "en": "Choose the correct Dutch form: Niet zozeer de titel … de bronvermelding ontbreekt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer de titel … de bronvermelding ontbreekt."
+          },
+          "options": [
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Niet zozeer de titel als wel de bronvermelding ontbreekt. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer de titel als wel de bronvermelding ontbreekt. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer de titel als wel de bronvermelding ontbreekt. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer de titel als wel de bronvermelding ontbreekt."
+        },
+        {
+          "id": "pre-c1-practice-focus-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer de omvang … de samenstelling maakt de groep bijzonder.",
+            "en": "Choose the correct Dutch form: Niet zozeer de omvang … de samenstelling maakt de groep bijzonder.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer de omvang … de samenstelling maakt de groep bijzonder."
+          },
+          "options": [
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Niet zozeer de omvang als wel de samenstelling maakt de groep bijzonder. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer de omvang als wel de samenstelling maakt de groep bijzonder. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer de omvang als wel de samenstelling maakt de groep bijzonder. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer de omvang als wel de samenstelling maakt de groep bijzonder."
+        },
+        {
+          "id": "pre-c1-practice-focus-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer de vertraging … het gebrek aan uitleg stoort haar.",
+            "en": "Choose the correct Dutch form: Niet zozeer de vertraging … het gebrek aan uitleg stoort haar.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer de vertraging … het gebrek aan uitleg stoort haar."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            },
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Niet zozeer de vertraging als wel het gebrek aan uitleg stoort haar. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer de vertraging als wel het gebrek aan uitleg stoort haar. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer de vertraging als wel het gebrek aan uitleg stoort haar. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer de vertraging als wel het gebrek aan uitleg stoort haar."
+        },
+        {
+          "id": "pre-c1-practice-focus-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer de vorm … de bedoeling is hier relevant.",
+            "en": "Choose the correct Dutch form: Niet zozeer de vorm … de bedoeling is hier relevant.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer de vorm … de bedoeling is hier relevant."
+          },
+          "options": [
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            },
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Niet zozeer de vorm als wel de bedoeling is hier relevant. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer de vorm als wel de bedoeling is hier relevant. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer de vorm als wel de bedoeling is hier relevant. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer de vorm als wel de bedoeling is hier relevant."
+        },
+        {
+          "id": "pre-c1-practice-focus-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer het getal … de meetwijze vraagt toelichting.",
+            "en": "Choose the correct Dutch form: Niet zozeer het getal … de meetwijze vraagt toelichting.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer het getal … de meetwijze vraagt toelichting."
+          },
+          "options": [
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            },
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Niet zozeer het getal als wel de meetwijze vraagt toelichting. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer het getal als wel de meetwijze vraagt toelichting. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer het getal als wel de meetwijze vraagt toelichting. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer het getal als wel de meetwijze vraagt toelichting."
+        },
+        {
+          "id": "pre-c1-practice-focus-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer de afstand … de verbinding bepaalt de reistijd.",
+            "en": "Choose the correct Dutch form: Niet zozeer de afstand … de verbinding bepaalt de reistijd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer de afstand … de verbinding bepaalt de reistijd."
+          },
+          "options": [
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Niet zozeer de afstand als wel de verbinding bepaalt de reistijd. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer de afstand als wel de verbinding bepaalt de reistijd. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer de afstand als wel de verbinding bepaalt de reistijd. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer de afstand als wel de verbinding bepaalt de reistijd."
+        },
+        {
+          "id": "pre-c1-practice-focus-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer de toestemming … de voorwaarden ontbreken.",
+            "en": "Choose the correct Dutch form: Niet zozeer de toestemming … de voorwaarden ontbreken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer de toestemming … de voorwaarden ontbreken."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            },
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Niet zozeer de toestemming als wel de voorwaarden ontbreken. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer de toestemming als wel de voorwaarden ontbreken. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer de toestemming als wel de voorwaarden ontbreken. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer de toestemming als wel de voorwaarden ontbreken."
+        },
+        {
+          "id": "pre-c1-practice-focus-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niet zozeer het antwoord … de formulering is dubbelzinnig.",
+            "en": "Choose the correct Dutch form: Niet zozeer het antwoord … de formulering is dubbelzinnig.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niet zozeer het antwoord … de formulering is dubbelzinnig."
+          },
+          "options": [
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "als wel",
+              "en": "als wel",
+              "fa": "als wel"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Niet zozeer het antwoord als wel de formulering is dubbelzinnig. De plaats van alleen, juist en zelfs verandert waarop de nadruk valt. Niet zozeer ... als wel verschuift het zwaartepunt.",
+            "en": "Correct Dutch sentence: Niet zozeer het antwoord als wel de formulering is dubbelzinnig. The position of alleen, juist and zelfs changes the focus. Niet zozeer ... als wel shifts the emphasis.",
+            "fa": "جملهٔ درست هلندی: Niet zozeer het antwoord als wel de formulering is dubbelzinnig. جای alleen و juist و zelfs کانون تأکید را تغییر می‌دهد. niet zozeer ... als wel نقطهٔ تأکید را جابه‌جا می‌کند."
+          },
+          "model_sentence": "Niet zozeer het antwoord als wel de formulering is dubbelzinnig."
+        }
+      ]
+    },
+    {
+      "id": "practice-scope",
+      "title": {
+        "nl": "Ontkenning en reikwijdte",
+        "en": "Negation and scope",
+        "fa": "دامنهٔ نفی"
+      },
+      "explanation": {
+        "nl": "Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+        "en": "Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+        "fa": "niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+      },
+      "examples": [
+        {
+          "nl": "Niet alle aanvragen zijn afgewezen.",
+          "en": "Not all applications were rejected.",
+          "fa": "همهٔ درخواست‌ها رد نشده‌اند."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-scope-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Tien dossiers zijn ontvangen; twee zijn onvolledig. … dossiers zijn volledig.",
+            "en": "Choose the correct Dutch form: Tien dossiers zijn ontvangen; twee zijn onvolledig. … dossiers zijn volledig.",
+            "fa": "شکل درست هلندی را انتخاب کن: Tien dossiers zijn ontvangen; twee zijn onvolledig. … dossiers zijn volledig."
+          },
+          "options": [
+            {
+              "nl": "Geen",
+              "en": "Geen",
+              "fa": "Geen"
+            },
+            {
+              "nl": "Niet alle",
+              "en": "Niet alle",
+              "fa": "Niet alle"
+            },
+            {
+              "nl": "Alle",
+              "en": "Alle",
+              "fa": "Alle"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Tien dossiers zijn ontvangen; twee zijn onvolledig. Niet alle dossiers zijn volledig. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: Tien dossiers zijn ontvangen; twee zijn onvolledig. Niet alle dossiers zijn volledig. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: Tien dossiers zijn ontvangen; twee zijn onvolledig. Niet alle dossiers zijn volledig. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "Tien dossiers zijn ontvangen; twee zijn onvolledig. Niet alle dossiers zijn volledig."
+        },
+        {
+          "id": "pre-c1-practice-scope-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De limiet is maximaal vijf aanvragen. Er mogen … vijf worden ingediend.",
+            "en": "Choose the correct Dutch form: De limiet is maximaal vijf aanvragen. Er mogen … vijf worden ingediend.",
+            "fa": "شکل درست هلندی را انتخاب کن: De limiet is maximaal vijf aanvragen. Er mogen … vijf worden ingediend."
+          },
+          "options": [
+            {
+              "nl": "minstens",
+              "en": "minstens",
+              "fa": "minstens"
+            },
+            {
+              "nl": "precies",
+              "en": "precies",
+              "fa": "precies"
+            },
+            {
+              "nl": "hoogstens",
+              "en": "hoogstens",
+              "fa": "hoogstens"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De limiet is maximaal vijf aanvragen. Er mogen hoogstens vijf worden ingediend. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: De limiet is maximaal vijf aanvragen. Er mogen hoogstens vijf worden ingediend. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: De limiet is maximaal vijf aanvragen. Er mogen hoogstens vijf worden ingediend. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "De limiet is maximaal vijf aanvragen. Er mogen hoogstens vijf worden ingediend."
+        },
+        {
+          "id": "pre-c1-practice-scope-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Drie bronnen zijn vereist; meer mag ook. Men vraagt … drie bronnen.",
+            "en": "Choose the correct Dutch form: Drie bronnen zijn vereist; meer mag ook. Men vraagt … drie bronnen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Drie bronnen zijn vereist; meer mag ook. Men vraagt … drie bronnen."
+          },
+          "options": [
+            {
+              "nl": "precies",
+              "en": "precies",
+              "fa": "precies"
+            },
+            {
+              "nl": "minstens",
+              "en": "minstens",
+              "fa": "minstens"
+            },
+            {
+              "nl": "hoogstens",
+              "en": "hoogstens",
+              "fa": "hoogstens"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Drie bronnen zijn vereist; meer mag ook. Men vraagt minstens drie bronnen. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: Drie bronnen zijn vereist; meer mag ook. Men vraagt minstens drie bronnen. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: Drie bronnen zijn vereist; meer mag ook. Men vraagt minstens drie bronnen. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "Drie bronnen zijn vereist; meer mag ook. Men vraagt minstens drie bronnen."
+        },
+        {
+          "id": "pre-c1-practice-scope-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Slechts één deelnemer ontbrak. Er ontbrak … één deelnemer.",
+            "en": "Choose the correct Dutch form: Slechts één deelnemer ontbrak. Er ontbrak … één deelnemer.",
+            "fa": "شکل درست هلندی را انتخاب کن: Slechts één deelnemer ontbrak. Er ontbrak … één deelnemer."
+          },
+          "options": [
+            {
+              "nl": "precies",
+              "en": "precies",
+              "fa": "precies"
+            },
+            {
+              "nl": "minstens",
+              "en": "minstens",
+              "fa": "minstens"
+            },
+            {
+              "nl": "hoogstens",
+              "en": "hoogstens",
+              "fa": "hoogstens"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Slechts één deelnemer ontbrak. Er ontbrak precies één deelnemer. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: Slechts één deelnemer ontbrak. Er ontbrak precies één deelnemer. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: Slechts één deelnemer ontbrak. Er ontbrak precies één deelnemer. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "Slechts één deelnemer ontbrak. Er ontbrak precies één deelnemer."
+        },
+        {
+          "id": "pre-c1-practice-scope-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Een deel van de voorstellen is haalbaar, maar niet alles. … voorstellen zijn haalbaar.",
+            "en": "Choose the correct Dutch form: Een deel van de voorstellen is haalbaar, maar niet alles. … voorstellen zijn haalbaar.",
+            "fa": "شکل درست هلندی را انتخاب کن: Een deel van de voorstellen is haalbaar, maar niet alles. … voorstellen zijn haalbaar."
+          },
+          "options": [
+            {
+              "nl": "Geen",
+              "en": "Geen",
+              "fa": "Geen"
+            },
+            {
+              "nl": "Sommige",
+              "en": "Sommige",
+              "fa": "Sommige"
+            },
+            {
+              "nl": "Alle",
+              "en": "Alle",
+              "fa": "Alle"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Een deel van de voorstellen is haalbaar, maar niet alles. Sommige voorstellen zijn haalbaar. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: Een deel van de voorstellen is haalbaar, maar niet alles. Sommige voorstellen zijn haalbaar. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: Een deel van de voorstellen is haalbaar, maar niet alles. Sommige voorstellen zijn haalbaar. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "Een deel van de voorstellen is haalbaar, maar niet alles. Sommige voorstellen zijn haalbaar."
+        },
+        {
+          "id": "pre-c1-practice-scope-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Niemand gaf toestemming. … deelnemer gaf toestemming.",
+            "en": "Choose the correct Dutch form: Niemand gaf toestemming. … deelnemer gaf toestemming.",
+            "fa": "شکل درست هلندی را انتخاب کن: Niemand gaf toestemming. … deelnemer gaf toestemming."
+          },
+          "options": [
+            {
+              "nl": "Een",
+              "en": "Een",
+              "fa": "Een"
+            },
+            {
+              "nl": "Geen",
+              "en": "Geen",
+              "fa": "Geen"
+            },
+            {
+              "nl": "Elke",
+              "en": "Elke",
+              "fa": "Elke"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Niemand gaf toestemming. Geen deelnemer gaf toestemming. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: Niemand gaf toestemming. Geen deelnemer gaf toestemming. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: Niemand gaf toestemming. Geen deelnemer gaf toestemming. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "Niemand gaf toestemming. Geen deelnemer gaf toestemming."
+        },
+        {
+          "id": "pre-c1-practice-scope-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De ondergrens is twee jaar ervaring. Men vraagt … twee jaar.",
+            "en": "Choose the correct Dutch form: De ondergrens is twee jaar ervaring. Men vraagt … twee jaar.",
+            "fa": "شکل درست هلندی را انتخاب کن: De ondergrens is twee jaar ervaring. Men vraagt … twee jaar."
+          },
+          "options": [
+            {
+              "nl": "precies",
+              "en": "precies",
+              "fa": "precies"
+            },
+            {
+              "nl": "minstens",
+              "en": "minstens",
+              "fa": "minstens"
+            },
+            {
+              "nl": "hoogstens",
+              "en": "hoogstens",
+              "fa": "hoogstens"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De ondergrens is twee jaar ervaring. Men vraagt minstens twee jaar. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: De ondergrens is twee jaar ervaring. Men vraagt minstens twee jaar. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: De ondergrens is twee jaar ervaring. Men vraagt minstens twee jaar. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "De ondergrens is twee jaar ervaring. Men vraagt minstens twee jaar."
+        },
+        {
+          "id": "pre-c1-practice-scope-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het plafond bedraagt honderd euro. De vergoeding is … honderd euro.",
+            "en": "Choose the correct Dutch form: Het plafond bedraagt honderd euro. De vergoeding is … honderd euro.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het plafond bedraagt honderd euro. De vergoeding is … honderd euro."
+          },
+          "options": [
+            {
+              "nl": "hoogstens",
+              "en": "hoogstens",
+              "fa": "hoogstens"
+            },
+            {
+              "nl": "minstens",
+              "en": "minstens",
+              "fa": "minstens"
+            },
+            {
+              "nl": "precies",
+              "en": "precies",
+              "fa": "precies"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het plafond bedraagt honderd euro. De vergoeding is hoogstens honderd euro. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: Het plafond bedraagt honderd euro. De vergoeding is hoogstens honderd euro. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: Het plafond bedraagt honderd euro. De vergoeding is hoogstens honderd euro. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "Het plafond bedraagt honderd euro. De vergoeding is hoogstens honderd euro."
+        },
+        {
+          "id": "pre-c1-practice-scope-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Iedere bron is nagekeken. … bronnen zijn nagekeken.",
+            "en": "Choose the correct Dutch form: Iedere bron is nagekeken. … bronnen zijn nagekeken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Iedere bron is nagekeken. … bronnen zijn nagekeken."
+          },
+          "options": [
+            {
+              "nl": "Geen",
+              "en": "Geen",
+              "fa": "Geen"
+            },
+            {
+              "nl": "Alle",
+              "en": "Alle",
+              "fa": "Alle"
+            },
+            {
+              "nl": "Sommige",
+              "en": "Sommige",
+              "fa": "Sommige"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Iedere bron is nagekeken. Alle bronnen zijn nagekeken. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: Iedere bron is nagekeken. Alle bronnen zijn nagekeken. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: Iedere bron is nagekeken. Alle bronnen zijn nagekeken. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "Iedere bron is nagekeken. Alle bronnen zijn nagekeken."
+        },
+        {
+          "id": "pre-c1-practice-scope-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Er is niets veranderd. … is veranderd.",
+            "en": "Choose the correct Dutch form: Er is niets veranderd. … is veranderd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Er is niets veranderd. … is veranderd."
+          },
+          "options": [
+            {
+              "nl": "Alles",
+              "en": "Alles",
+              "fa": "Alles"
+            },
+            {
+              "nl": "Iets",
+              "en": "Iets",
+              "fa": "Iets"
+            },
+            {
+              "nl": "Niets",
+              "en": "Niets",
+              "fa": "Niets"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Er is niets veranderd. Niets is veranderd. Niet alle sluit een universele bewering uit; geen ontkent alle gevallen. Slechts, minstens en hoogstens hebben verschillende grenzen.",
+            "en": "Correct Dutch sentence: Er is niets veranderd. Niets is veranderd. Niet alle rejects a universal claim; geen excludes every case. Only, at least and at most set different bounds.",
+            "fa": "جملهٔ درست هلندی: Er is niets veranderd. Niets is veranderd. niet alle ادعای همگانی را رد می‌کند؛ geen همهٔ موارد را نفی می‌کند. فقط، دست‌کم و حداکثر مرزهای متفاوتی دارند."
+          },
+          "model_sentence": "Er is niets veranderd. Niets is veranderd."
+        }
+      ]
+    },
+    {
+      "id": "practice-reference",
+      "title": {
+        "nl": "Precies verwijzen",
+        "en": "Precise reference",
+        "fa": "ارجاع دقیق"
+      },
+      "explanation": {
+        "nl": "Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+        "en": "Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+        "fa": "مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+      },
+      "examples": [
+        {
+          "nl": "Dat is de collega met wie ik werk.",
+          "en": "That is the colleague I work with.",
+          "fa": "آن همکار کسی است که با او کار می‌کنم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-reference-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik sprak over het rapport. Het rapport … ik sprak, ontbreekt.",
+            "en": "Choose the correct Dutch form: Ik sprak over het rapport. Het rapport … ik sprak, ontbreekt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik sprak over het rapport. Het rapport … ik sprak, ontbreekt."
+          },
+          "options": [
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            },
+            {
+              "nl": "waarnaar",
+              "en": "waarnaar",
+              "fa": "waarnaar"
+            },
+            {
+              "nl": "waarover",
+              "en": "waarover",
+              "fa": "waarover"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik sprak over het rapport. Het rapport waarover ik sprak, ontbreekt. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: Ik sprak over het rapport. Het rapport waarover ik sprak, ontbreekt. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: Ik sprak over het rapport. Het rapport waarover ik sprak, ontbreekt. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "Ik sprak over het rapport. Het rapport waarover ik sprak, ontbreekt."
+        },
+        {
+          "id": "pre-c1-practice-reference-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij kreeg advies van de begeleider. De begeleider … zij advies kreeg, is onafhankelijk.",
+            "en": "Choose the correct Dutch form: Zij kreeg advies van de begeleider. De begeleider … zij advies kreeg, is onafhankelijk.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij kreeg advies van de begeleider. De begeleider … zij advies kreeg, is onafhankelijk."
+          },
+          "options": [
+            {
+              "nl": "voor wie",
+              "en": "voor wie",
+              "fa": "voor wie"
+            },
+            {
+              "nl": "van wie",
+              "en": "van wie",
+              "fa": "van wie"
+            },
+            {
+              "nl": "met wie",
+              "en": "met wie",
+              "fa": "met wie"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Zij kreeg advies van de begeleider. De begeleider van wie zij advies kreeg, is onafhankelijk. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: Zij kreeg advies van de begeleider. De begeleider van wie zij advies kreeg, is onafhankelijk. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: Zij kreeg advies van de begeleider. De begeleider van wie zij advies kreeg, is onafhankelijk. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "Zij kreeg advies van de begeleider. De begeleider van wie zij advies kreeg, is onafhankelijk."
+        },
+        {
+          "id": "pre-c1-practice-reference-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij vertrouwen op de methode. De methode … wij vertrouwen, is beschreven.",
+            "en": "Choose the correct Dutch form: Wij vertrouwen op de methode. De methode … wij vertrouwen, is beschreven.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij vertrouwen op de methode. De methode … wij vertrouwen, is beschreven."
+          },
+          "options": [
+            {
+              "nl": "waarvan",
+              "en": "waarvan",
+              "fa": "waarvan"
+            },
+            {
+              "nl": "waarop",
+              "en": "waarop",
+              "fa": "waarop"
+            },
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Wij vertrouwen op de methode. De methode waarop wij vertrouwen, is beschreven. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: Wij vertrouwen op de methode. De methode waarop wij vertrouwen, is beschreven. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: Wij vertrouwen op de methode. De methode waarop wij vertrouwen, is beschreven. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "Wij vertrouwen op de methode. De methode waarop wij vertrouwen, is beschreven."
+        },
+        {
+          "id": "pre-c1-practice-reference-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hij werkt voor de stichting. De stichting … hij werkt, betaalt de kosten.",
+            "en": "Choose the correct Dutch form: Hij werkt voor de stichting. De stichting … hij werkt, betaalt de kosten.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hij werkt voor de stichting. De stichting … hij werkt, betaalt de kosten."
+          },
+          "options": [
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            },
+            {
+              "nl": "waarmee",
+              "en": "waarmee",
+              "fa": "waarmee"
+            },
+            {
+              "nl": "waarvoor",
+              "en": "waarvoor",
+              "fa": "waarvoor"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Hij werkt voor de stichting. De stichting waarvoor hij werkt, betaalt de kosten. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: Hij werkt voor de stichting. De stichting waarvoor hij werkt, betaalt de kosten. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: Hij werkt voor de stichting. De stichting waarvoor hij werkt, betaalt de kosten. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "Hij werkt voor de stichting. De stichting waarvoor hij werkt, betaalt de kosten."
+        },
+        {
+          "id": "pre-c1-practice-reference-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik deel gegevens met de collega. De collega … ik gegevens deel, is verantwoordelijk.",
+            "en": "Choose the correct Dutch form: Ik deel gegevens met de collega. De collega … ik gegevens deel, is verantwoordelijk.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik deel gegevens met de collega. De collega … ik gegevens deel, is verantwoordelijk."
+          },
+          "options": [
+            {
+              "nl": "van wie",
+              "en": "van wie",
+              "fa": "van wie"
+            },
+            {
+              "nl": "voor wie",
+              "en": "voor wie",
+              "fa": "voor wie"
+            },
+            {
+              "nl": "met wie",
+              "en": "met wie",
+              "fa": "met wie"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik deel gegevens met de collega. De collega met wie ik gegevens deel, is verantwoordelijk. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: Ik deel gegevens met de collega. De collega met wie ik gegevens deel, is verantwoordelijk. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: Ik deel gegevens met de collega. De collega met wie ik gegevens deel, is verantwoordelijk. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "Ik deel gegevens met de collega. De collega met wie ik gegevens deel, is verantwoordelijk."
+        },
+        {
+          "id": "pre-c1-practice-reference-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het bezwaar volgt uit de voorwaarden. De voorwaarden … het bezwaar volgt, zijn gewijzigd.",
+            "en": "Choose the correct Dutch form: Het bezwaar volgt uit de voorwaarden. De voorwaarden … het bezwaar volgt, zijn gewijzigd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het bezwaar volgt uit de voorwaarden. De voorwaarden … het bezwaar volgt, zijn gewijzigd."
+          },
+          "options": [
+            {
+              "nl": "waartegen",
+              "en": "waartegen",
+              "fa": "waartegen"
+            },
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            },
+            {
+              "nl": "waarop",
+              "en": "waarop",
+              "fa": "waarop"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Het bezwaar volgt uit de voorwaarden. De voorwaarden waaruit het bezwaar volgt, zijn gewijzigd. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: Het bezwaar volgt uit de voorwaarden. De voorwaarden waaruit het bezwaar volgt, zijn gewijzigd. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: Het bezwaar volgt uit de voorwaarden. De voorwaarden waaruit het bezwaar volgt, zijn gewijzigd. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "Het bezwaar volgt uit de voorwaarden. De voorwaarden waaruit het bezwaar volgt, zijn gewijzigd."
+        },
+        {
+          "id": "pre-c1-practice-reference-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij verwijst naar de oorspronkelijke tekst. De tekst … zij verwijst, is publiek.",
+            "en": "Choose the correct Dutch form: Zij verwijst naar de oorspronkelijke tekst. De tekst … zij verwijst, is publiek.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij verwijst naar de oorspronkelijke tekst. De tekst … zij verwijst, is publiek."
+          },
+          "options": [
+            {
+              "nl": "waarmee",
+              "en": "waarmee",
+              "fa": "waarmee"
+            },
+            {
+              "nl": "waarnaar",
+              "en": "waarnaar",
+              "fa": "waarnaar"
+            },
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Zij verwijst naar de oorspronkelijke tekst. De tekst waarnaar zij verwijst, is publiek. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: Zij verwijst naar de oorspronkelijke tekst. De tekst waarnaar zij verwijst, is publiek. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: Zij verwijst naar de oorspronkelijke tekst. De tekst waarnaar zij verwijst, is publiek. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "Zij verwijst naar de oorspronkelijke tekst. De tekst waarnaar zij verwijst, is publiek."
+        },
+        {
+          "id": "pre-c1-practice-reference-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij rekenen op de organisator. De organisator op … wij rekenen, komt later.",
+            "en": "Choose the correct Dutch form: Wij rekenen op de organisator. De organisator op … wij rekenen, komt later.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij rekenen op de organisator. De organisator op … wij rekenen, komt later."
+          },
+          "options": [
+            {
+              "nl": "wat",
+              "en": "wat",
+              "fa": "wat"
+            },
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "wie",
+              "en": "wie",
+              "fa": "wie"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Wij rekenen op de organisator. De organisator op wie wij rekenen, komt later. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: Wij rekenen op de organisator. De organisator op wie wij rekenen, komt later. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: Wij rekenen op de organisator. De organisator op wie wij rekenen, komt later. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "Wij rekenen op de organisator. De organisator op wie wij rekenen, komt later."
+        },
+        {
+          "id": "pre-c1-practice-reference-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De analyse steunt op de vergelijking. De vergelijking … de analyse steunt, is beperkt.",
+            "en": "Choose the correct Dutch form: De analyse steunt op de vergelijking. De vergelijking … de analyse steunt, is beperkt.",
+            "fa": "شکل درست هلندی را انتخاب کن: De analyse steunt op de vergelijking. De vergelijking … de analyse steunt, is beperkt."
+          },
+          "options": [
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            },
+            {
+              "nl": "waarvan",
+              "en": "waarvan",
+              "fa": "waarvan"
+            },
+            {
+              "nl": "waarop",
+              "en": "waarop",
+              "fa": "waarop"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De analyse steunt op de vergelijking. De vergelijking waarop de analyse steunt, is beperkt. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: De analyse steunt op de vergelijking. De vergelijking waarop de analyse steunt, is beperkt. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: De analyse steunt op de vergelijking. De vergelijking waarop de analyse steunt, is beperkt. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "De analyse steunt op de vergelijking. De vergelijking waarop de analyse steunt, is beperkt."
+        },
+        {
+          "id": "pre-c1-practice-reference-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik vraag toestemming aan de eigenaar. De eigenaar aan … ik toestemming vraag, is afwezig.",
+            "en": "Choose the correct Dutch form: Ik vraag toestemming aan de eigenaar. De eigenaar aan … ik toestemming vraag, is afwezig.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik vraag toestemming aan de eigenaar. De eigenaar aan … ik toestemming vraag, is afwezig."
+          },
+          "options": [
+            {
+              "nl": "wat",
+              "en": "wat",
+              "fa": "wat"
+            },
+            {
+              "nl": "dat",
+              "en": "dat",
+              "fa": "dat"
+            },
+            {
+              "nl": "wie",
+              "en": "wie",
+              "fa": "wie"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik vraag toestemming aan de eigenaar. De eigenaar aan wie ik toestemming vraag, is afwezig. Een verwijzing moet een duidelijk antecedent hebben. Gebruik waarvan/waarop voor zaken en bijvoorbeeld van wie/voor wie voor personen.",
+            "en": "Correct Dutch sentence: Ik vraag toestemming aan de eigenaar. De eigenaar aan wie ik toestemming vraag, is afwezig. Keep the antecedent clear. Waarvan/waarop refer to things; van wie/voor wie can refer to people.",
+            "fa": "جملهٔ درست هلندی: Ik vraag toestemming aan de eigenaar. De eigenaar aan wie ik toestemming vraag, is afwezig. مرجع ضمیر باید روشن باشد. waarvan و waarop به چیزها و ترکیب‌هایی مانند van wie و voor wie به افراد اشاره می‌کنند."
+          },
+          "model_sentence": "Ik vraag toestemming aan de eigenaar. De eigenaar aan wie ik toestemming vraag, is afwezig."
+        }
+      ]
+    },
+    {
+      "id": "practice-concession",
+      "title": {
+        "nl": "Toegeving en tegenstelling",
+        "en": "Concession and contrast",
+        "fa": "پذیرش مانع و تضاد"
+      },
+      "explanation": {
+        "nl": "Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+        "en": "Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+        "fa": "hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+      },
+      "examples": [
+        {
+          "nl": "Hoewel het regent, gaan we wandelen.",
+          "en": "Although it is raining, we are going for a walk.",
+          "fa": "با اینکه باران می‌بارد، به پیاده‌روی می‌رویم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-concession-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … de reactie begrijpelijk is, rechtvaardigt zij de gevolgtrekking niet.",
+            "en": "Choose the correct Dutch form: … de reactie begrijpelijk is, rechtvaardigt zij de gevolgtrekking niet.",
+            "fa": "شکل درست هلندی را انتخاب کن: … de reactie begrijpelijk is, rechtvaardigt zij de gevolgtrekking niet."
+          },
+          "options": [
+            {
+              "nl": "Hoewel",
+              "en": "Hoewel",
+              "fa": "Hoewel"
+            },
+            {
+              "nl": "Want",
+              "en": "Want",
+              "fa": "Want"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Hoewel de reactie begrijpelijk is, rechtvaardigt zij de gevolgtrekking niet. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: Hoewel de reactie begrijpelijk is, rechtvaardigt zij de gevolgtrekking niet. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: Hoewel de reactie begrijpelijk is, rechtvaardigt zij de gevolgtrekking niet. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "Hoewel de reactie begrijpelijk is, rechtvaardigt zij de gevolgtrekking niet."
+        },
+        {
+          "id": "pre-c1-practice-concession-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … staat het resultaat vast, de verklaring blijft onzeker.",
+            "en": "Choose the correct Dutch form: … staat het resultaat vast, de verklaring blijft onzeker.",
+            "fa": "شکل درست هلندی را انتخاب کن: … staat het resultaat vast, de verklaring blijft onzeker."
+          },
+          "options": [
+            {
+              "nl": "Ook al",
+              "en": "Ook al",
+              "fa": "Ook al"
+            },
+            {
+              "nl": "Hoewel",
+              "en": "Hoewel",
+              "fa": "Hoewel"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ook al staat het resultaat vast, de verklaring blijft onzeker. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: Ook al staat het resultaat vast, de verklaring blijft onzeker. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: Ook al staat het resultaat vast, de verklaring blijft onzeker. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "Ook al staat het resultaat vast, de verklaring blijft onzeker."
+        },
+        {
+          "id": "pre-c1-practice-concession-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De interpretatie is verdedigbaar, … zij niet de enige is.",
+            "en": "Choose the correct Dutch form: De interpretatie is verdedigbaar, … zij niet de enige is.",
+            "fa": "شکل درست هلندی را انتخاب کن: De interpretatie is verdedigbaar, … zij niet de enige is."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "hoewel",
+              "en": "hoewel",
+              "fa": "hoewel"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De interpretatie is verdedigbaar, hoewel zij niet de enige is. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: De interpretatie is verdedigbaar, hoewel zij niet de enige is. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: De interpretatie is verdedigbaar, hoewel zij niet de enige is. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "De interpretatie is verdedigbaar, hoewel zij niet de enige is."
+        },
+        {
+          "id": "pre-c1-practice-concession-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … wordt het stuk als neutraal gepresenteerd, de selectie stuurt de lezing.",
+            "en": "Choose the correct Dutch form: … wordt het stuk als neutraal gepresenteerd, de selectie stuurt de lezing.",
+            "fa": "شکل درست هلندی را انتخاب کن: … wordt het stuk als neutraal gepresenteerd, de selectie stuurt de lezing."
+          },
+          "options": [
+            {
+              "nl": "Hoewel",
+              "en": "Hoewel",
+              "fa": "Hoewel"
+            },
+            {
+              "nl": "Ook al",
+              "en": "Ook al",
+              "fa": "Ook al"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ook al wordt het stuk als neutraal gepresenteerd, de selectie stuurt de lezing. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: Ook al wordt het stuk als neutraal gepresenteerd, de selectie stuurt de lezing. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: Ook al wordt het stuk als neutraal gepresenteerd, de selectie stuurt de lezing. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "Ook al wordt het stuk als neutraal gepresenteerd, de selectie stuurt de lezing."
+        },
+        {
+          "id": "pre-c1-practice-concession-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … de bron partij kiest, kan zij relevante feiten bevatten.",
+            "en": "Choose the correct Dutch form: … de bron partij kiest, kan zij relevante feiten bevatten.",
+            "fa": "شکل درست هلندی را انتخاب کن: … de bron partij kiest, kan zij relevante feiten bevatten."
+          },
+          "options": [
+            {
+              "nl": "Hoewel",
+              "en": "Hoewel",
+              "fa": "Hoewel"
+            },
+            {
+              "nl": "Want",
+              "en": "Want",
+              "fa": "Want"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Hoewel de bron partij kiest, kan zij relevante feiten bevatten. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: Hoewel de bron partij kiest, kan zij relevante feiten bevatten. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: Hoewel de bron partij kiest, kan zij relevante feiten bevatten. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "Hoewel de bron partij kiest, kan zij relevante feiten bevatten."
+        },
+        {
+          "id": "pre-c1-practice-concession-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … ontbreekt een fout in de berekening, de aannames kunnen zwak zijn.",
+            "en": "Choose the correct Dutch form: … ontbreekt een fout in de berekening, de aannames kunnen zwak zijn.",
+            "fa": "شکل درست هلندی را انتخاب کن: … ontbreekt een fout in de berekening, de aannames kunnen zwak zijn."
+          },
+          "options": [
+            {
+              "nl": "Hoewel",
+              "en": "Hoewel",
+              "fa": "Hoewel"
+            },
+            {
+              "nl": "Ook al",
+              "en": "Ook al",
+              "fa": "Ook al"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ook al ontbreekt een fout in de berekening, de aannames kunnen zwak zijn. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: Ook al ontbreekt een fout in de berekening, de aannames kunnen zwak zijn. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: Ook al ontbreekt een fout in de berekening, de aannames kunnen zwak zijn. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "Ook al ontbreekt een fout in de berekening, de aannames kunnen zwak zijn."
+        },
+        {
+          "id": "pre-c1-practice-concession-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De regeling blijft betwist, … zij formeel is goedgekeurd.",
+            "en": "Choose the correct Dutch form: De regeling blijft betwist, … zij formeel is goedgekeurd.",
+            "fa": "شکل درست هلندی را انتخاب کن: De regeling blijft betwist, … zij formeel is goedgekeurd."
+          },
+          "options": [
+            {
+              "nl": "hoewel",
+              "en": "hoewel",
+              "fa": "hoewel"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De regeling blijft betwist, hoewel zij formeel is goedgekeurd. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: De regeling blijft betwist, hoewel zij formeel is goedgekeurd. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: De regeling blijft betwist, hoewel zij formeel is goedgekeurd. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "De regeling blijft betwist, hoewel zij formeel is goedgekeurd."
+        },
+        {
+          "id": "pre-c1-practice-concession-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … lijken de gevallen gelijk, de context verschilt wezenlijk.",
+            "en": "Choose the correct Dutch form: … lijken de gevallen gelijk, de context verschilt wezenlijk.",
+            "fa": "شکل درست هلندی را انتخاب کن: … lijken de gevallen gelijk, de context verschilt wezenlijk."
+          },
+          "options": [
+            {
+              "nl": "Ook al",
+              "en": "Ook al",
+              "fa": "Ook al"
+            },
+            {
+              "nl": "Hoewel",
+              "en": "Hoewel",
+              "fa": "Hoewel"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Ook al lijken de gevallen gelijk, de context verschilt wezenlijk. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: Ook al lijken de gevallen gelijk, de context verschilt wezenlijk. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: Ook al lijken de gevallen gelijk, de context verschilt wezenlijk. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "Ook al lijken de gevallen gelijk, de context verschilt wezenlijk."
+        },
+        {
+          "id": "pre-c1-practice-concession-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … de term gangbaar is, vraagt zijn betekenis hier uitleg.",
+            "en": "Choose the correct Dutch form: … de term gangbaar is, vraagt zijn betekenis hier uitleg.",
+            "fa": "شکل درست هلندی را انتخاب کن: … de term gangbaar is, vraagt zijn betekenis hier uitleg."
+          },
+          "options": [
+            {
+              "nl": "Want",
+              "en": "Want",
+              "fa": "Want"
+            },
+            {
+              "nl": "Hoewel",
+              "en": "Hoewel",
+              "fa": "Hoewel"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hoewel de term gangbaar is, vraagt zijn betekenis hier uitleg. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: Hoewel de term gangbaar is, vraagt zijn betekenis hier uitleg. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: Hoewel de term gangbaar is, vraagt zijn betekenis hier uitleg. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "Hoewel de term gangbaar is, vraagt zijn betekenis hier uitleg."
+        },
+        {
+          "id": "pre-c1-practice-concession-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: … is de samenvatting kort, ze mag geen cruciale beperking verliezen.",
+            "en": "Choose the correct Dutch form: … is de samenvatting kort, ze mag geen cruciale beperking verliezen.",
+            "fa": "شکل درست هلندی را انتخاب کن: … is de samenvatting kort, ze mag geen cruciale beperking verliezen."
+          },
+          "options": [
+            {
+              "nl": "Hoewel",
+              "en": "Hoewel",
+              "fa": "Hoewel"
+            },
+            {
+              "nl": "Ook al",
+              "en": "Ook al",
+              "fa": "Ook al"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Ook al is de samenvatting kort, ze mag geen cruciale beperking verliezen. Hoewel en ook al erkennen een tegenargument zonder de hoofdconclusie op te geven. Na hoewel volgt bijzinvolgorde; na ook al vaak inversie.",
+            "en": "Correct Dutch sentence: Ook al is de samenvatting kort, ze mag geen cruciale beperking verliezen. Hoewel and ook al concede a counterpoint while retaining the main conclusion. Hoewel takes subordinate order; ook al commonly takes inversion.",
+            "fa": "جملهٔ درست هلندی: Ook al is de samenvatting kort, ze mag geen cruciale beperking verliezen. hoewel و ook al نکتهٔ مخالف را می‌پذیرند، بدون کنار گذاشتن نتیجهٔ اصلی. hoewel ترتیب وابسته و ook al معمولاً وارونگی می‌گیرد."
+          },
+          "model_sentence": "Ook al is de samenvatting kort, ze mag geen cruciale beperking verliezen."
+        }
+      ]
+    },
+    {
+      "id": "practice-parallel",
+      "title": {
+        "nl": "Parallelle zinsbouw",
+        "en": "Parallel structure",
+        "fa": "ساختار موازی"
+      },
+      "explanation": {
+        "nl": "Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+        "en": "Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+        "fa": "در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+      },
+      "examples": [
+        {
+          "nl": "Zowel de tekst als de opname zijn beschikbaar.",
+          "en": "Both the text and the recording are available.",
+          "fa": "هم متن و هم فایل صوتی موجود است."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-parallel-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De evaluatie omvat zowel uitvoering … verantwoording.",
+            "en": "Choose the correct Dutch form: De evaluatie omvat zowel uitvoering … verantwoording.",
+            "fa": "شکل درست هلندی را انتخاب کن: De evaluatie omvat zowel uitvoering … verantwoording."
+          },
+          "options": [
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            },
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De evaluatie omvat zowel uitvoering als verantwoording. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: De evaluatie omvat zowel uitvoering als verantwoording. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: De evaluatie omvat zowel uitvoering als verantwoording. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "De evaluatie omvat zowel uitvoering als verantwoording."
+        },
+        {
+          "id": "pre-c1-practice-parallel-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De auteur vermeldt niet alleen overeenkomsten, … ook afwijkingen.",
+            "en": "Choose the correct Dutch form: De auteur vermeldt niet alleen overeenkomsten, … ook afwijkingen.",
+            "fa": "شکل درست هلندی را انتخاب کن: De auteur vermeldt niet alleen overeenkomsten, … ook afwijkingen."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "hoewel",
+              "en": "hoewel",
+              "fa": "hoewel"
+            },
+            {
+              "nl": "maar",
+              "en": "maar",
+              "fa": "maar"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De auteur vermeldt niet alleen overeenkomsten, maar ook afwijkingen. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: De auteur vermeldt niet alleen overeenkomsten, maar ook afwijkingen. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: De auteur vermeldt niet alleen overeenkomsten, maar ook afwijkingen. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "De auteur vermeldt niet alleen overeenkomsten, maar ook afwijkingen."
+        },
+        {
+          "id": "pre-c1-practice-parallel-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Noch de samenvatting … de grafiek toont de spreiding.",
+            "en": "Choose the correct Dutch form: Noch de samenvatting … de grafiek toont de spreiding.",
+            "fa": "شکل درست هلندی را انتخاب کن: Noch de samenvatting … de grafiek toont de spreiding."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "noch",
+              "en": "noch",
+              "fa": "noch"
+            },
+            {
+              "nl": "of",
+              "en": "of",
+              "fa": "of"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Noch de samenvatting noch de grafiek toont de spreiding. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: Noch de samenvatting noch de grafiek toont de spreiding. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: Noch de samenvatting noch de grafiek toont de spreiding. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "Noch de samenvatting noch de grafiek toont de spreiding."
+        },
+        {
+          "id": "pre-c1-practice-parallel-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij beoordelen zowel betrouwbaarheid … relevantie.",
+            "en": "Choose the correct Dutch form: Wij beoordelen zowel betrouwbaarheid … relevantie.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij beoordelen zowel betrouwbaarheid … relevantie."
+          },
+          "options": [
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            },
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Wij beoordelen zowel betrouwbaarheid als relevantie. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: Wij beoordelen zowel betrouwbaarheid als relevantie. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: Wij beoordelen zowel betrouwbaarheid als relevantie. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "Wij beoordelen zowel betrouwbaarheid als relevantie."
+        },
+        {
+          "id": "pre-c1-practice-parallel-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij vraagt niet alleen toegang, … ook inspraak.",
+            "en": "Choose the correct Dutch form: Zij vraagt niet alleen toegang, … ook inspraak.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij vraagt niet alleen toegang, … ook inspraak."
+          },
+          "options": [
+            {
+              "nl": "hoewel",
+              "en": "hoewel",
+              "fa": "hoewel"
+            },
+            {
+              "nl": "maar",
+              "en": "maar",
+              "fa": "maar"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Zij vraagt niet alleen toegang, maar ook inspraak. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: Zij vraagt niet alleen toegang, maar ook inspraak. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: Zij vraagt niet alleen toegang, maar ook inspraak. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "Zij vraagt niet alleen toegang, maar ook inspraak."
+        },
+        {
+          "id": "pre-c1-practice-parallel-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Noch snelheid … herhaling garandeert nauwkeurigheid.",
+            "en": "Choose the correct Dutch form: Noch snelheid … herhaling garandeert nauwkeurigheid.",
+            "fa": "شکل درست هلندی را انتخاب کن: Noch snelheid … herhaling garandeert nauwkeurigheid."
+          },
+          "options": [
+            {
+              "nl": "of",
+              "en": "of",
+              "fa": "of"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "noch",
+              "en": "noch",
+              "fa": "noch"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Noch snelheid noch herhaling garandeert nauwkeurigheid. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: Noch snelheid noch herhaling garandeert nauwkeurigheid. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: Noch snelheid noch herhaling garandeert nauwkeurigheid. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "Noch snelheid noch herhaling garandeert nauwkeurigheid."
+        },
+        {
+          "id": "pre-c1-practice-parallel-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het kader beschrijft zowel rechten … verplichtingen.",
+            "en": "Choose the correct Dutch form: Het kader beschrijft zowel rechten … verplichtingen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het kader beschrijft zowel rechten … verplichtingen."
+          },
+          "options": [
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            },
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Het kader beschrijft zowel rechten als verplichtingen. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: Het kader beschrijft zowel rechten als verplichtingen. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: Het kader beschrijft zowel rechten als verplichtingen. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "Het kader beschrijft zowel rechten als verplichtingen."
+        },
+        {
+          "id": "pre-c1-practice-parallel-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De beperking betreft niet alleen inhoud, … ook bereik.",
+            "en": "Choose the correct Dutch form: De beperking betreft niet alleen inhoud, … ook bereik.",
+            "fa": "شکل درست هلندی را انتخاب کن: De beperking betreft niet alleen inhoud, … ook bereik."
+          },
+          "options": [
+            {
+              "nl": "maar",
+              "en": "maar",
+              "fa": "maar"
+            },
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "hoewel",
+              "en": "hoewel",
+              "fa": "hoewel"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De beperking betreft niet alleen inhoud, maar ook bereik. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: De beperking betreft niet alleen inhoud, maar ook bereik. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: De beperking betreft niet alleen inhoud, maar ook bereik. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "De beperking betreft niet alleen inhoud, maar ook bereik."
+        },
+        {
+          "id": "pre-c1-practice-parallel-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Noch het etiket … de bronnaam vervangt een argument.",
+            "en": "Choose the correct Dutch form: Noch het etiket … de bronnaam vervangt een argument.",
+            "fa": "شکل درست هلندی را انتخاب کن: Noch het etiket … de bronnaam vervangt een argument."
+          },
+          "options": [
+            {
+              "nl": "want",
+              "en": "want",
+              "fa": "want"
+            },
+            {
+              "nl": "noch",
+              "en": "noch",
+              "fa": "noch"
+            },
+            {
+              "nl": "of",
+              "en": "of",
+              "fa": "of"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Noch het etiket noch de bronnaam vervangt een argument. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: Noch het etiket noch de bronnaam vervangt een argument. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: Noch het etiket noch de bronnaam vervangt een argument. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "Noch het etiket noch de bronnaam vervangt een argument."
+        },
+        {
+          "id": "pre-c1-practice-parallel-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij onderzoeken zowel opzet … uitwerking.",
+            "en": "Choose the correct Dutch form: Wij onderzoeken zowel opzet … uitwerking.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij onderzoeken zowel opzet … uitwerking."
+          },
+          "options": [
+            {
+              "nl": "dan",
+              "en": "dan",
+              "fa": "dan"
+            },
+            {
+              "nl": "omdat",
+              "en": "omdat",
+              "fa": "omdat"
+            },
+            {
+              "nl": "als",
+              "en": "als",
+              "fa": "als"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Wij onderzoeken zowel opzet als uitwerking. Verbind grammaticaal gelijkwaardige delen: zowel ... als, niet alleen ... maar ook, noch ... noch. Laat de constructie aan beide kanten kloppen.",
+            "en": "Correct Dutch sentence: Wij onderzoeken zowel opzet als uitwerking. Coordinate grammatically parallel elements with both/and, not only/but also and neither/nor structures.",
+            "fa": "جملهٔ درست هلندی: Wij onderzoeken zowel opzet als uitwerking. در ساخت‌های دو‌بخشی، اجزای دستوری هم‌ارز را پیوند بده؛ ساختار هر دو طرف باید هماهنگ باشد."
+          },
+          "model_sentence": "Wij onderzoeken zowel opzet als uitwerking."
+        }
+      ]
+    },
+    {
+      "id": "practice-prepadverb",
+      "title": {
+        "nl": "Ermee, daarop en waaraan",
+        "en": "Prepositional adverbs",
+        "fa": "قیدهای ضمیریِ حرف‌اضافه‌ای"
+      },
+      "explanation": {
+        "nl": "Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+        "en": "Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+        "fa": "er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+      },
+      "examples": [
+        {
+          "nl": "Dat is het plan waarover we praten.",
+          "en": "That is the plan we are discussing.",
+          "fa": "این همان برنامه‌ای است که درباره‌اش صحبت می‌کنیم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-prepadverb-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dat is de grond … het besluit berust.",
+            "en": "Choose the correct Dutch form: Dat is de grond … het besluit berust.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dat is de grond … het besluit berust."
+          },
+          "options": [
+            {
+              "nl": "waarop",
+              "en": "waarop",
+              "fa": "waarop"
+            },
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            },
+            {
+              "nl": "waarvan",
+              "en": "waarvan",
+              "fa": "waarvan"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dat is de grond waarop het besluit berust. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Dat is de grond waarop het besluit berust. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Dat is de grond waarop het besluit berust. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Dat is de grond waarop het besluit berust."
+        },
+        {
+          "id": "pre-c1-practice-prepadverb-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dit is de beperking … wij ons bewust zijn.",
+            "en": "Choose the correct Dutch form: Dit is de beperking … wij ons bewust zijn.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dit is de beperking … wij ons bewust zijn."
+          },
+          "options": [
+            {
+              "nl": "waarnaar",
+              "en": "waarnaar",
+              "fa": "waarnaar"
+            },
+            {
+              "nl": "waarvan",
+              "en": "waarvan",
+              "fa": "waarvan"
+            },
+            {
+              "nl": "waarop",
+              "en": "waarop",
+              "fa": "waarop"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Dit is de beperking waarvan wij ons bewust zijn. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Dit is de beperking waarvan wij ons bewust zijn. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Dit is de beperking waarvan wij ons bewust zijn. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Dit is de beperking waarvan wij ons bewust zijn."
+        },
+        {
+          "id": "pre-c1-practice-prepadverb-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Daar staat de redenering … de auteur voortbouwt.",
+            "en": "Choose the correct Dutch form: Daar staat de redenering … de auteur voortbouwt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Daar staat de redenering … de auteur voortbouwt."
+          },
+          "options": [
+            {
+              "nl": "waarmee",
+              "en": "waarmee",
+              "fa": "waarmee"
+            },
+            {
+              "nl": "waarop",
+              "en": "waarop",
+              "fa": "waarop"
+            },
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Daar staat de redenering waarop de auteur voortbouwt. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Daar staat de redenering waarop de auteur voortbouwt. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Daar staat de redenering waarop de auteur voortbouwt. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Daar staat de redenering waarop de auteur voortbouwt."
+        },
+        {
+          "id": "pre-c1-practice-prepadverb-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dat is het voorbehoud … de uitkomst wordt meegedeeld.",
+            "en": "Choose the correct Dutch form: Dat is het voorbehoud … de uitkomst wordt meegedeeld.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dat is het voorbehoud … de uitkomst wordt meegedeeld."
+          },
+          "options": [
+            {
+              "nl": "waarmee",
+              "en": "waarmee",
+              "fa": "waarmee"
+            },
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            },
+            {
+              "nl": "waarvan",
+              "en": "waarvan",
+              "fa": "waarvan"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dat is het voorbehoud waarmee de uitkomst wordt meegedeeld. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Dat is het voorbehoud waarmee de uitkomst wordt meegedeeld. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Dat is het voorbehoud waarmee de uitkomst wordt meegedeeld. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Dat is het voorbehoud waarmee de uitkomst wordt meegedeeld."
+        },
+        {
+          "id": "pre-c1-practice-prepadverb-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dit is het materiaal … wij kunnen beschikken.",
+            "en": "Choose the correct Dutch form: Dit is het materiaal … wij kunnen beschikken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dit is het materiaal … wij kunnen beschikken."
+          },
+          "options": [
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            },
+            {
+              "nl": "waarnaar",
+              "en": "waarnaar",
+              "fa": "waarnaar"
+            },
+            {
+              "nl": "waarover",
+              "en": "waarover",
+              "fa": "waarover"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Dit is het materiaal waarover wij kunnen beschikken. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Dit is het materiaal waarover wij kunnen beschikken. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Dit is het materiaal waarover wij kunnen beschikken. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Dit is het materiaal waarover wij kunnen beschikken."
+        },
+        {
+          "id": "pre-c1-practice-prepadverb-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dat is het kader … de bespreking zich beperkt.",
+            "en": "Choose the correct Dutch form: Dat is het kader … de bespreking zich beperkt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dat is het kader … de bespreking zich beperkt."
+          },
+          "options": [
+            {
+              "nl": "waarmee",
+              "en": "waarmee",
+              "fa": "waarmee"
+            },
+            {
+              "nl": "waartoe",
+              "en": "waartoe",
+              "fa": "waartoe"
+            },
+            {
+              "nl": "waarvan",
+              "en": "waarvan",
+              "fa": "waarvan"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Dat is het kader waartoe de bespreking zich beperkt. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Dat is het kader waartoe de bespreking zich beperkt. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Dat is het kader waartoe de bespreking zich beperkt. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Dat is het kader waartoe de bespreking zich beperkt."
+        },
+        {
+          "id": "pre-c1-practice-prepadverb-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Hier ligt de norm … het voorstel wordt getoetst.",
+            "en": "Choose the correct Dutch form: Hier ligt de norm … het voorstel wordt getoetst.",
+            "fa": "شکل درست هلندی را انتخاب کن: Hier ligt de norm … het voorstel wordt getoetst."
+          },
+          "options": [
+            {
+              "nl": "waarnaar",
+              "en": "waarnaar",
+              "fa": "waarnaar"
+            },
+            {
+              "nl": "waaraan",
+              "en": "waaraan",
+              "fa": "waaraan"
+            },
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Hier ligt de norm waaraan het voorstel wordt getoetst. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Hier ligt de norm waaraan het voorstel wordt getoetst. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Hier ligt de norm waaraan het voorstel wordt getoetst. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Hier ligt de norm waaraan het voorstel wordt getoetst."
+        },
+        {
+          "id": "pre-c1-practice-prepadverb-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dat is het onderscheid … de conclusie afhangt.",
+            "en": "Choose the correct Dutch form: Dat is het onderscheid … de conclusie afhangt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dat is het onderscheid … de conclusie afhangt."
+          },
+          "options": [
+            {
+              "nl": "waarnaar",
+              "en": "waarnaar",
+              "fa": "waarnaar"
+            },
+            {
+              "nl": "waarvan",
+              "en": "waarvan",
+              "fa": "waarvan"
+            },
+            {
+              "nl": "waarop",
+              "en": "waarop",
+              "fa": "waarop"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Dat is het onderscheid waarvan de conclusie afhangt. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Dat is het onderscheid waarvan de conclusie afhangt. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Dat is het onderscheid waarvan de conclusie afhangt. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Dat is het onderscheid waarvan de conclusie afhangt."
+        },
+        {
+          "id": "pre-c1-practice-prepadverb-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dit is het standpunt … zij afstand neemt.",
+            "en": "Choose the correct Dutch form: Dit is het standpunt … zij afstand neemt.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dit is het standpunt … zij afstand neemt."
+          },
+          "options": [
+            {
+              "nl": "waarvan",
+              "en": "waarvan",
+              "fa": "waarvan"
+            },
+            {
+              "nl": "waarop",
+              "en": "waarop",
+              "fa": "waarop"
+            },
+            {
+              "nl": "waarnaar",
+              "en": "waarnaar",
+              "fa": "waarnaar"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dit is het standpunt waarvan zij afstand neemt. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Dit is het standpunt waarvan zij afstand neemt. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Dit is het standpunt waarvan zij afstand neemt. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Dit is het standpunt waarvan zij afstand neemt."
+        },
+        {
+          "id": "pre-c1-practice-prepadverb-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Dat is de procedure … men zich moet houden.",
+            "en": "Choose the correct Dutch form: Dat is de procedure … men zich moet houden.",
+            "fa": "شکل درست هلندی را انتخاب کن: Dat is de procedure … men zich moet houden."
+          },
+          "options": [
+            {
+              "nl": "waaraan",
+              "en": "waaraan",
+              "fa": "waaraan"
+            },
+            {
+              "nl": "waaruit",
+              "en": "waaruit",
+              "fa": "waaruit"
+            },
+            {
+              "nl": "waarmee",
+              "en": "waarmee",
+              "fa": "waarmee"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Dat is de procedure waaraan men zich moet houden. Er/daar/waar kan met een voorzetsel naar een zaak verwijzen. In een gesplitste vorm kunnen andere woorden ertussen staan.",
+            "en": "Correct Dutch sentence: Dat is de procedure waaraan men zich moet houden. Er/daar/waar can combine with a preposition to refer to a thing. In a split form other words may intervene.",
+            "fa": "جملهٔ درست هلندی: Dat is de procedure waaraan men zich moet houden. er و daar و waar می‌توانند همراه حرف اضافه به یک چیز اشاره کنند. در شکل جداشده، واژه‌های دیگری میان آن‌ها می‌آیند."
+          },
+          "model_sentence": "Dat is de procedure waaraan men zich moet houden."
+        }
+      ]
+    },
+    {
+      "id": "practice-tense",
+      "title": {
+        "nl": "Tijdsverbanden precies houden",
+        "en": "Precise time relations",
+        "fa": "حفظ دقیق رابطه‌های زمانی"
+      },
+      "explanation": {
+        "nl": "De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+        "en": "The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+        "fa": "ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+      },
+      "examples": [
+        {
+          "nl": "Zij vertrok nadat ze had gebeld.",
+          "en": "She left after she had called.",
+          "fa": "پس از اینکه تلفن کرده بود، رفت."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-tense-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Toen de fout zichtbaar werd, … het verslag al verspreid.",
+            "en": "Choose the correct Dutch form: Toen de fout zichtbaar werd, … het verslag al verspreid.",
+            "fa": "شکل درست هلندی را انتخاب کن: Toen de fout zichtbaar werd, … het verslag al verspreid."
+          },
+          "options": [
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Toen de fout zichtbaar werd, was het verslag al verspreid. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Toen de fout zichtbaar werd, was het verslag al verspreid. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Toen de fout zichtbaar werd, was het verslag al verspreid. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Toen de fout zichtbaar werd, was het verslag al verspreid."
+        },
+        {
+          "id": "pre-c1-practice-tense-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De docent verklaarde dat zij de bron eerder … geraadpleegd.",
+            "en": "Choose the correct Dutch form: De docent verklaarde dat zij de bron eerder … geraadpleegd.",
+            "fa": "شکل درست هلندی را انتخاب کن: De docent verklaarde dat zij de bron eerder … geraadpleegd."
+          },
+          "options": [
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De docent verklaarde dat zij de bron eerder had geraadpleegd. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: De docent verklaarde dat zij de bron eerder had geraadpleegd. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: De docent verklaarde dat zij de bron eerder had geraadpleegd. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "De docent verklaarde dat zij de bron eerder had geraadpleegd."
+        },
+        {
+          "id": "pre-c1-practice-tense-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De commissie wist niet dat de voorwaarden … veranderd.",
+            "en": "Choose the correct Dutch form: De commissie wist niet dat de voorwaarden … veranderd.",
+            "fa": "شکل درست هلندی را انتخاب کن: De commissie wist niet dat de voorwaarden … veranderd."
+          },
+          "options": [
+            {
+              "nl": "zijn",
+              "en": "zijn",
+              "fa": "zijn"
+            },
+            {
+              "nl": "hadden",
+              "en": "hadden",
+              "fa": "hadden"
+            },
+            {
+              "nl": "waren",
+              "en": "waren",
+              "fa": "waren"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: De commissie wist niet dat de voorwaarden waren veranderd. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: De commissie wist niet dat de voorwaarden waren veranderd. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: De commissie wist niet dat de voorwaarden waren veranderd. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "De commissie wist niet dat de voorwaarden waren veranderd."
+        },
+        {
+          "id": "pre-c1-practice-tense-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Ik begreep de reactie pas nadat ik de bijlage … gelezen.",
+            "en": "Choose the correct Dutch form: Ik begreep de reactie pas nadat ik de bijlage … gelezen.",
+            "fa": "شکل درست هلندی را انتخاب کن: Ik begreep de reactie pas nadat ik de bijlage … gelezen."
+          },
+          "options": [
+            {
+              "nl": "heb",
+              "en": "heb",
+              "fa": "heb"
+            },
+            {
+              "nl": "ben",
+              "en": "ben",
+              "fa": "ben"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Ik begreep de reactie pas nadat ik de bijlage had gelezen. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Ik begreep de reactie pas nadat ik de bijlage had gelezen. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Ik begreep de reactie pas nadat ik de bijlage had gelezen. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Ik begreep de reactie pas nadat ik de bijlage had gelezen."
+        },
+        {
+          "id": "pre-c1-practice-tense-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Toen zij haar bezwaar toelichtte, … de termijn al verstreken.",
+            "en": "Choose the correct Dutch form: Toen zij haar bezwaar toelichtte, … de termijn al verstreken.",
+            "fa": "شکل درست هلندی را انتخاب کن: Toen zij haar bezwaar toelichtte, … de termijn al verstreken."
+          },
+          "options": [
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Toen zij haar bezwaar toelichtte, was de termijn al verstreken. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Toen zij haar bezwaar toelichtte, was de termijn al verstreken. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Toen zij haar bezwaar toelichtte, was de termijn al verstreken. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Toen zij haar bezwaar toelichtte, was de termijn al verstreken."
+        },
+        {
+          "id": "pre-c1-practice-tense-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het onderzoek wees uit dat de groep vooraf anders … samengesteld.",
+            "en": "Choose the correct Dutch form: Het onderzoek wees uit dat de groep vooraf anders … samengesteld.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het onderzoek wees uit dat de groep vooraf anders … samengesteld."
+          },
+          "options": [
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            },
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het onderzoek wees uit dat de groep vooraf anders was samengesteld. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Het onderzoek wees uit dat de groep vooraf anders was samengesteld. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Het onderzoek wees uit dat de groep vooraf anders was samengesteld. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Het onderzoek wees uit dat de groep vooraf anders was samengesteld."
+        },
+        {
+          "id": "pre-c1-practice-tense-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Wij ontdekten dat de toelichting nooit … gepubliceerd.",
+            "en": "Choose the correct Dutch form: Wij ontdekten dat de toelichting nooit … gepubliceerd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Wij ontdekten dat de toelichting nooit … gepubliceerd."
+          },
+          "options": [
+            {
+              "nl": "is",
+              "en": "is",
+              "fa": "is"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Wij ontdekten dat de toelichting nooit was gepubliceerd. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Wij ontdekten dat de toelichting nooit was gepubliceerd. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Wij ontdekten dat de toelichting nooit was gepubliceerd. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Wij ontdekten dat de toelichting nooit was gepubliceerd."
+        },
+        {
+          "id": "pre-c1-practice-tense-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Zij herzag een uitspraak die zij eerder … bevestigd.",
+            "en": "Choose the correct Dutch form: Zij herzag een uitspraak die zij eerder … bevestigd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Zij herzag een uitspraak die zij eerder … bevestigd."
+          },
+          "options": [
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            },
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Zij herzag een uitspraak die zij eerder had bevestigd. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Zij herzag een uitspraak die zij eerder had bevestigd. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Zij herzag een uitspraak die zij eerder had bevestigd. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Zij herzag een uitspraak die zij eerder had bevestigd."
+        },
+        {
+          "id": "pre-c1-practice-tense-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Toen het overleg hervatte, … beide partijen hun stukken ingediend.",
+            "en": "Choose the correct Dutch form: Toen het overleg hervatte, … beide partijen hun stukken ingediend.",
+            "fa": "شکل درست هلندی را انتخاب کن: Toen het overleg hervatte, … beide partijen hun stukken ingediend."
+          },
+          "options": [
+            {
+              "nl": "hebben",
+              "en": "hebben",
+              "fa": "hebben"
+            },
+            {
+              "nl": "waren",
+              "en": "waren",
+              "fa": "waren"
+            },
+            {
+              "nl": "hadden",
+              "en": "hadden",
+              "fa": "hadden"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist: Toen het overleg hervatte, hadden beide partijen hun stukken ingediend. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Toen het overleg hervatte, hadden beide partijen hun stukken ingediend. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Toen het overleg hervatte, hadden beide partijen hun stukken ingediend. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Toen het overleg hervatte, hadden beide partijen hun stukken ingediend."
+        },
+        {
+          "id": "pre-c1-practice-tense-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het bleek dat de redactie een zin … toegevoegd.",
+            "en": "Choose the correct Dutch form: Het bleek dat de redactie een zin … toegevoegd.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het bleek dat de redactie een zin … toegevoegd."
+          },
+          "options": [
+            {
+              "nl": "was",
+              "en": "was",
+              "fa": "was"
+            },
+            {
+              "nl": "had",
+              "en": "had",
+              "fa": "had"
+            },
+            {
+              "nl": "heeft",
+              "en": "heeft",
+              "fa": "heeft"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: Het bleek dat de redactie een zin had toegevoegd. De voltooid verleden tijd plaatst iets vóór een ander verleden moment. Bij een hypothese of bronweergave kan een verleden vorm een andere functie hebben.",
+            "en": "Correct Dutch sentence: Het bleek dat de redactie een zin had toegevoegd. The past perfect places an event before another past moment. Past forms may also mark hypotheses or source distance.",
+            "fa": "جملهٔ درست هلندی: Het bleek dat de redactie een zin had toegevoegd. ماضی بعید رویدادی را پیش از لحظه‌ای دیگر در گذشته قرار می‌دهد. شکل گذشته می‌تواند برای فرض یا فاصله‌گذاری از منبع نیز به کار رود."
+          },
+          "model_sentence": "Het bleek dat de redactie een zin had toegevoegd."
+        }
+      ]
+    },
+    {
+      "id": "practice-result",
+      "title": {
+        "nl": "Oorzaak en gevolg",
+        "en": "Cause and result",
+        "fa": "علت و نتیجه"
+      },
+      "explanation": {
+        "nl": "Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+        "en": "Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+        "fa": "doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+      },
+      "examples": [
+        {
+          "nl": "Het regende; daardoor bleven we binnen.",
+          "en": "It rained; as a result we stayed inside.",
+          "fa": "باران بارید؛ به همین دلیل داخل ماندیم."
+        }
+      ],
+      "practice": [
+        {
+          "id": "pre-c1-practice-result-01",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De meetwijze veranderde; … waren de periodes niet rechtstreeks vergelijkbaar.",
+            "en": "Choose the correct Dutch form: De meetwijze veranderde; … waren de periodes niet rechtstreeks vergelijkbaar.",
+            "fa": "شکل درست هلندی را انتخاب کن: De meetwijze veranderde; … waren de periodes niet rechtstreeks vergelijkbaar."
+          },
+          "options": [
+            {
+              "nl": "doordat",
+              "en": "doordat",
+              "fa": "doordat"
+            },
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De meetwijze veranderde; daardoor waren de periodes niet rechtstreeks vergelijkbaar. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: De meetwijze veranderde; daardoor waren de periodes niet rechtstreeks vergelijkbaar. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: De meetwijze veranderde; daardoor waren de periodes niet rechtstreeks vergelijkbaar. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "De meetwijze veranderde; daardoor waren de periodes niet rechtstreeks vergelijkbaar."
+        },
+        {
+          "id": "pre-c1-practice-result-02",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De bron bleef anoniem, … onafhankelijke controle moeilijk was.",
+            "en": "Choose the correct Dutch form: De bron bleef anoniem, … onafhankelijke controle moeilijk was.",
+            "fa": "شکل درست هلندی را انتخاب کن: De bron bleef anoniem, … onafhankelijke controle moeilijk was."
+          },
+          "options": [
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De bron bleef anoniem, zodat onafhankelijke controle moeilijk was. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: De bron bleef anoniem, zodat onafhankelijke controle moeilijk was. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: De bron bleef anoniem, zodat onafhankelijke controle moeilijk was. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "De bron bleef anoniem, zodat onafhankelijke controle moeilijk was."
+        },
+        {
+          "id": "pre-c1-practice-result-03",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De selectie was eenzijdig; … ontbraken bepaalde ervaringen.",
+            "en": "Choose the correct Dutch form: De selectie was eenzijdig; … ontbraken bepaalde ervaringen.",
+            "fa": "شکل درست هلندی را انتخاب کن: De selectie was eenzijdig; … ontbraken bepaalde ervaringen."
+          },
+          "options": [
+            {
+              "nl": "doordat",
+              "en": "doordat",
+              "fa": "doordat"
+            },
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De selectie was eenzijdig; daardoor ontbraken bepaalde ervaringen. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: De selectie was eenzijdig; daardoor ontbraken bepaalde ervaringen. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: De selectie was eenzijdig; daardoor ontbraken bepaalde ervaringen. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "De selectie was eenzijdig; daardoor ontbraken bepaalde ervaringen."
+        },
+        {
+          "id": "pre-c1-practice-result-04",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De voorwaarden werden aangescherpt, … minder aanvragen in aanmerking kwamen.",
+            "en": "Choose the correct Dutch form: De voorwaarden werden aangescherpt, … minder aanvragen in aanmerking kwamen.",
+            "fa": "شکل درست هلندی را انتخاب کن: De voorwaarden werden aangescherpt, … minder aanvragen in aanmerking kwamen."
+          },
+          "options": [
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            },
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De voorwaarden werden aangescherpt, zodat minder aanvragen in aanmerking kwamen. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: De voorwaarden werden aangescherpt, zodat minder aanvragen in aanmerking kwamen. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: De voorwaarden werden aangescherpt, zodat minder aanvragen in aanmerking kwamen. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "De voorwaarden werden aangescherpt, zodat minder aanvragen in aanmerking kwamen."
+        },
+        {
+          "id": "pre-c1-practice-result-05",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het citaat verloor zijn context; … verschoof de betekenis.",
+            "en": "Choose the correct Dutch form: Het citaat verloor zijn context; … verschoof de betekenis.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het citaat verloor zijn context; … verschoof de betekenis."
+          },
+          "options": [
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            },
+            {
+              "nl": "doordat",
+              "en": "doordat",
+              "fa": "doordat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het citaat verloor zijn context; daardoor verschoof de betekenis. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: Het citaat verloor zijn context; daardoor verschoof de betekenis. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: Het citaat verloor zijn context; daardoor verschoof de betekenis. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "Het citaat verloor zijn context; daardoor verschoof de betekenis."
+        },
+        {
+          "id": "pre-c1-practice-result-06",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De steekproef was klein, … de schatting onzeker bleef.",
+            "en": "Choose the correct Dutch form: De steekproef was klein, … de schatting onzeker bleef.",
+            "fa": "شکل درست هلندی را انتخاب کن: De steekproef was klein, … de schatting onzeker bleef."
+          },
+          "options": [
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: De steekproef was klein, zodat de schatting onzeker bleef. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: De steekproef was klein, zodat de schatting onzeker bleef. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: De steekproef was klein, zodat de schatting onzeker bleef. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "De steekproef was klein, zodat de schatting onzeker bleef."
+        },
+        {
+          "id": "pre-c1-practice-result-07",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De definities verschilden; … ontstond verwarring in de discussie.",
+            "en": "Choose the correct Dutch form: De definities verschilden; … ontstond verwarring in de discussie.",
+            "fa": "شکل درست هلندی را انتخاب کن: De definities verschilden; … ontstond verwarring in de discussie."
+          },
+          "options": [
+            {
+              "nl": "doordat",
+              "en": "doordat",
+              "fa": "doordat"
+            },
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De definities verschilden; daardoor ontstond verwarring in de discussie. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: De definities verschilden; daardoor ontstond verwarring in de discussie. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: De definities verschilden; daardoor ontstond verwarring in de discussie. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "De definities verschilden; daardoor ontstond verwarring in de discussie."
+        },
+        {
+          "id": "pre-c1-practice-result-08",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Het model werd vereenvoudigd, … uitzonderingen buiten beeld raakten.",
+            "en": "Choose the correct Dutch form: Het model werd vereenvoudigd, … uitzonderingen buiten beeld raakten.",
+            "fa": "شکل درست هلندی را انتخاب کن: Het model werd vereenvoudigd, … uitzonderingen buiten beeld raakten."
+          },
+          "options": [
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            },
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Het model werd vereenvoudigd, zodat uitzonderingen buiten beeld raakten. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: Het model werd vereenvoudigd, zodat uitzonderingen buiten beeld raakten. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: Het model werd vereenvoudigd, zodat uitzonderingen buiten beeld raakten. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "Het model werd vereenvoudigd, zodat uitzonderingen buiten beeld raakten."
+        },
+        {
+          "id": "pre-c1-practice-result-09",
+          "prompt": {
+            "nl": "Kies de juiste vorm: Er ontbrak een referentiewaarde; … was vergelijking lastig.",
+            "en": "Choose the correct Dutch form: Er ontbrak een referentiewaarde; … was vergelijking lastig.",
+            "fa": "شکل درست هلندی را انتخاب کن: Er ontbrak een referentiewaarde; … was vergelijking lastig."
+          },
+          "options": [
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            },
+            {
+              "nl": "doordat",
+              "en": "doordat",
+              "fa": "doordat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Juist: Er ontbrak een referentiewaarde; daardoor was vergelijking lastig. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: Er ontbrak een referentiewaarde; daardoor was vergelijking lastig. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: Er ontbrak een referentiewaarde; daardoor was vergelijking lastig. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "Er ontbrak een referentiewaarde; daardoor was vergelijking lastig."
+        },
+        {
+          "id": "pre-c1-practice-result-10",
+          "prompt": {
+            "nl": "Kies de juiste vorm: De vraag werd anders gesteld, … de antwoorden veranderden.",
+            "en": "Choose the correct Dutch form: De vraag werd anders gesteld, … de antwoorden veranderden.",
+            "fa": "شکل درست هلندی را انتخاب کن: De vraag werd anders gesteld, … de antwoorden veranderden."
+          },
+          "options": [
+            {
+              "nl": "daardoor",
+              "en": "daardoor",
+              "fa": "daardoor"
+            },
+            {
+              "nl": "zodat",
+              "en": "zodat",
+              "fa": "zodat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Juist: De vraag werd anders gesteld, zodat de antwoorden veranderden. Doordat introduceert een oorzaak; daardoor verwijst ernaar in een hoofdzin. Zodat introduceert een gevolg in een bijzin.",
+            "en": "Correct Dutch sentence: De vraag werd anders gesteld, zodat de antwoorden veranderden. Doordat introduces a cause; daardoor refers back to it in a main clause. Zodat introduces a consequence in a subordinate clause.",
+            "fa": "جملهٔ درست هلندی: De vraag werd anders gesteld, zodat de antwoorden veranderden. doordat علت را معرفی می‌کند؛ daardoor در جملهٔ اصلی به آن برمی‌گردد. zodat پیامد را در جملهٔ وابسته بیان می‌کند."
+          },
+          "model_sentence": "De vraag werd anders gesteld, zodat de antwoorden veranderden."
+        }
+      ]
+    }
+  ]
+}

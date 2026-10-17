@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { WordLibrary, StoryTime, SpokenPassage } from "@/components/LearningLibrary";
+import { GrammarPractice } from "@/components/GrammarPractice";
 import { AlphabetPractice } from "@/components/AlphabetPractice";
 import { PhraseAudio } from "@/components/PhraseAudio";
 import { SpokenText } from "@/components/SpokenPassage";
@@ -315,36 +316,15 @@ export function CurriculumLesson({
           )}
           {section === "grammar" && (
             <>
-              {stage.grammar.map((topic) => (
-                <section className="grammar-card" key={topic.id}>
-                  <h3>
-                    <LearningText text={topic.title} />
-                  </h3>
-                  <p>
-                    <LearningText text={topic.explanation} />
-                  </p>
-                  <div className="grammar-examples">
-                    {topic.examples.map((example, index) => (
-                      <p key={index}>
-                        <SpokenText text={example} />
-                      </p>
-                    ))}
-                  </div>
-                  <CurriculumQuestions
-                    questions={topic.practice}
-                    answers={answers}
-                    onAnswer={answer}
-                    checked={!!checked[topic.id]}
-                  />
-                  <button
-                    className="button secondary"
-                    disabled={!topic.practice.every((question) => answers[question.id] !== undefined)}
-                    onClick={() => setChecked((current) => ({ ...current, [topic.id]: true }))}
-                  >
-                    Controleer je zin
-                  </button>
-                </section>
-              ))}
+              <GrammarPractice
+                key={stage.id}
+                topics={stage.grammar}
+                answers={answers}
+                onAnswer={answer}
+                checked={checked}
+                onCheck={(id) => setChecked((current) => ({ ...current, [id]: true }))}
+                onPractice={(skill) => changeSection(skill)}
+              />
               <button className="button" onClick={() => changeSection("reading")}>
                 Gebruik dit in een verhaal
                 <Icon name="arrow" />

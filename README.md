@@ -18,13 +18,13 @@ the proposed learning experience; it is not the Azure deployment and makes no li
 
 ## Start here
 
-| I want to… | Read or open |
-| --- | --- |
-| Run the app on my laptop | [Local setup](#run-locally) |
-| Understand the learning experience | [What I can practise](#what-i-can-practise) |
-| Check the level and exam references | [Belgian alignment](docs/BELGIAN_ALIGNMENT.md) |
-| Verify code before a release | [Checks](#checks) and [verification guide](docs/VERIFICATION.md) |
-| Release to Azure | [GO_LIVE](docs/GO_LIVE.md) |
+| I want to…                          | Read or open                                                     |
+| ----------------------------------- | ---------------------------------------------------------------- |
+| Run the app on my laptop            | [Local setup](#run-locally)                                      |
+| Understand the learning experience  | [What I can practise](#what-i-can-practise)                      |
+| Check the level and exam references | [Belgian alignment](docs/BELGIAN_ALIGNMENT.md)                   |
+| Verify code before a release        | [Checks](#checks) and [verification guide](docs/VERIFICATION.md) |
+| Release to Azure                    | [GO_LIVE](docs/GO_LIVE.md)                                       |
 
 ## What I can practise
 
@@ -36,7 +36,7 @@ Progress and settings sit alongside them, keeping everyday practice easy to find
 - **Leren:** twelve open stages, four skills, grammar practice, vocabulary cards, short stories and a
   separate four-skill final check. Every stage has a word bank of at least 500 entries, 100 stories and
   100 topics per skill. These are coverage counts, not proof that the content is correctly calibrated.
-- **Verhalen:** the continuing story *De Lindestraat*, comprehension activities, optional support and
+- **Verhalen:** the continuing story _De Lindestraat_, comprehension activities, optional support and
   labelled synthetic audio. Choices shape later episodes. Video lessons are a separate optional feature.
 - **Spreken:** practical missions about changing an appointment, ordering lunch, returning a purchase
   and contacting a course. The character's facts and valid arrangements are enforced by code.
@@ -65,20 +65,20 @@ bank remains available. Forms are contextual examples, not automatically guessed
 The current authored inventory is shown below. Each core entry has three trilingual context examples;
 these inventories are provisional until language review, not a claim of CEFR certification.
 
-| Stage | Productive core | Authored stories | Story target |
-| --- | ---: | ---: | ---: |
-| Pre-A1 | 150 | 52 | 200 |
-| A1 | 150 | 35 | 200 |
-| pre-A2 | 150 | 27 | 200 |
-| A2 | 150 | 27 | 200 |
-| pre-B1 | 150 | 18 | 200 |
-| B1 | 150 | 48 | 200 |
-| pre-B2 | 150 | 11 | 200 |
-| B2 | 150 | 7 | 200 |
-| pre-C1 | 150 | 14 | 200 |
-| C1 | 150 | 15 | 200 |
-| pre-C2 | 150 | 21 | 200 |
-| C2 | 150 | 15 | 200 |
+| Stage  | Productive core | Authored stories | Story target |
+| ------ | --------------: | ---------------: | -----------: |
+| Pre-A1 |             150 |               52 |          200 |
+| A1     |             150 |               35 |          200 |
+| pre-A2 |             150 |               27 |          200 |
+| A2     |             150 |               27 |          200 |
+| pre-B1 |             150 |               18 |          200 |
+| B1     |             150 |               48 |          200 |
+| pre-B2 |             150 |               11 |          200 |
+| B2     |             150 |                7 |          200 |
+| pre-C1 |             150 |               14 |          200 |
+| C1     |             150 |               15 |          200 |
+| pre-C2 |             150 |               21 |          200 |
+| C2     |             150 |               15 |          200 |
 
 The editorial target is **200 distinct 8–12-line stories per stage**, without reusing a plot at another
 stage. The inventory audit reports the exact current shortfall; a new title or changed name does not
@@ -96,20 +96,20 @@ remain external reading/listening resources, rather than content to copy into th
 
 Current authored inventory (legacy stories excluded):
 
-| Stage | Productive core | Authored stories / 200 |
-| --- | ---: | ---: |
-| Pre-A1 | 150 | 42 |
-| A1 | 150 | 15 |
-| Pre-A2 | 150 | 27 |
-| A2 | 150 | 22 |
-| Pre-B1 | 150 | 18 |
-| B1 | 150 | 48 |
-| Pre-B2 | 150 | 11 |
-| B2 | 150 | 7 |
-| Pre-C1 | 150 | 14 |
-| C1 | 150 | 15 |
-| Pre-C2 | 150 | 21 |
-| C2 | 150 | 15 |
+| Stage  | Productive core | Authored stories / 200 |
+| ------ | --------------: | ---------------------: |
+| Pre-A1 |             150 |                     42 |
+| A1     |             150 |                     15 |
+| Pre-A2 |             150 |                     27 |
+| A2     |             150 |                     22 |
+| Pre-B1 |             150 |                     18 |
+| B1     |             150 |                     48 |
+| Pre-B2 |             150 |                     11 |
+| B2     |             150 |                      7 |
+| Pre-C1 |             150 |                     14 |
+| C1     |             150 |                     15 |
+| Pre-C2 |             150 |                     21 |
+| C2     |             150 |                     15 |
 
 These are authored entries, with language review pending. They are not certified level inventories.
 
@@ -132,6 +132,23 @@ The existing banks and progress stay intact. The new language and level assignme
 review; raw scans and OCR remain private. [What was added and where to find it](docs/SOURCE_LESSONS.md).
 
 ![The current Today interface](docs/previews/today-desktop.png)
+
+## Grammar practice
+
+Every stage now has **100 additional original grammar questions**, organised into ten rounds of ten.
+Existing exercises remain available: the effective totals range from **102 to 111 questions per stage**.
+Choose a topic, try the round, then check the answers for Dutch explanations with English/Persian support
+and replay the completed Dutch sentences. A listen-first example and links to all four skill areas help
+move from recognising a form to using it yourself.
+
+Beginner rounds cover familiar details, questions, articles, negation and everyday requests. Later rounds
+add past events, clauses, reference, argument structure, qualification and register-sensitive meaning.
+IELTS provides inspiration for everyday/academic contexts and completion tasks, rather than copied
+questions or an IELTS examination claim. Level placement and language support remain provisional pending
+qualified Belgian Dutch review.
+
+Rebuild this bank with `python scripts/content_build/grammar_bank.py`. Its checked-in authoring sources
+contain 1,200 distinct prompts; tests enforce coverage, answer integrity and reproducible builds.
 
 ## Levels and exam preparation
 
@@ -230,16 +247,16 @@ from actually reachable services; fixture results never establish live Azure suc
 
 ## Architecture
 
-| Component | Local | Azure |
-| --- | --- | --- |
-| Web: Next.js, React, TypeScript | Laptop | Container App; only public origin, built-in sign-in |
-| API: FastAPI, Pydantic, SQLAlchemy | Laptop | Internal Container App behind the signed web proxy |
-| Database | PostgreSQL 16 in Docker | PostgreSQL Flexible Server |
-| Files and audio | Azurite/local providers | Private Blob Storage |
-| Language model | Ollama | Configured usage-based Azure deployment |
-| Speech | faster-whisper and Piper | Azure Speech, Belgian Dutch recognition and voices |
-| Background work | PostgreSQL jobs, in-process worker | Same job contract; leases and schema compatibility guard |
-| Operations | Local checks | Key Vault, managed identities, Application Insights, Bicep |
+| Component                          | Local                              | Azure                                                      |
+| ---------------------------------- | ---------------------------------- | ---------------------------------------------------------- |
+| Web: Next.js, React, TypeScript    | Laptop                             | Container App; only public origin, built-in sign-in        |
+| API: FastAPI, Pydantic, SQLAlchemy | Laptop                             | Internal Container App behind the signed web proxy         |
+| Database                           | PostgreSQL 16 in Docker            | PostgreSQL Flexible Server                                 |
+| Files and audio                    | Azurite/local providers            | Private Blob Storage                                       |
+| Language model                     | Ollama                             | Configured usage-based Azure deployment                    |
+| Speech                             | faster-whisper and Piper           | Azure Speech, Belgian Dutch recognition and voices         |
+| Background work                    | PostgreSQL jobs, in-process worker | Same job contract; leases and schema compatibility guard   |
+| Operations                         | Local checks                       | Key Vault, managed identities, Application Insights, Bicep |
 
 External services sit behind narrow provider interfaces. Models propose language and feedback;
 application code controls permissions, usage limits, submissions, scenario facts and completion.
