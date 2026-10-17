@@ -118,6 +118,6 @@ test("new authored stories open first and the learner can still choose all topic
   ).toBe(true);
   await userEvent.selectOptions(screen.getByRole("combobox", { name: "Onderwerp" }), "");
   await waitFor(() => expect(screen.getByRole("combobox", { name: "Onderwerp" })).toHaveValue(""));
-  expect(screen.getByText("2 nieuwe verhalen met korte regels en verbonden oefeningen")).toBeVisible();
+  expect(screen.getByText("2 nieuwe verhalen met korte regels en gebruiksoefeningen")).toBeVisible();
   expect(screen.queryByText("200 nieuwe verhalen")).not.toBeInTheDocument();
 });

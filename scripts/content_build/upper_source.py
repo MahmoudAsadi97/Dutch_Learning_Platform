@@ -144,7 +144,7 @@ de rechtzetting~openbare verbetering van onjuiste informatie~correction~اصلا
 de kop~titel boven een nieuwsbericht~headline~تیتر~De kop boven het artikel beloofde een wondermiddel tegen vermoeidheid.~The headline promised a miracle cure for tiredness.~تیتر مقاله وعدهٔ درمان معجزه‌آسای خستگی را می‌داد.
 de bewering~uitspraak die waar zou zijn~claim~ادعا~De sterke bewering steunde op een erg kleine studie.~The strong claim rested on a very small study.~ادعای قاطع بر پژوهشی بسیار کوچک استوار بود.
 de steekproef~onderzochte selectie uit een groep~sample~نمونهٔ آماری~De steekproef bestond uit slechts twaalf deelnemers.~The sample consisted of only twelve participants.~نمونهٔ آماری فقط دوازده شرکت‌کننده داشت.
-de beperking~grens aan wat iets kan aantonen~limitation~محدودیت~Een lezer vroeg waarom die beperking niet vermeld werd.~A reader asked why that limitation had not been mentioned.~خواننده‌ای پرسید چرا این محدودیت ذکر نشده است.
+de beperking~een grens aan wat kan, mag of aangetoond kan worden~limitation; restriction~محدودیت؛ محدودسازی~Een lezer vroeg waarom die beperking niet vermeld werd.~A reader asked why that limitation had not been mentioned.~خواننده‌ای پرسید چرا این محدودیت ذکر نشده است.
 de nuance~klein maar belangrijk onderscheid~nuance~نکتهٔ ظریف~De redactie paste de kop aan om meer nuance te bieden.~The editors changed the headline to provide more nuance.~تحریریه تیتر را اصلاح کرد تا ظرافت بیشتری داشته باشد.
 @media|Een stem in het verslag|A voice in the report|صدایی در گزارش
 de redactie~groep die publicaties samenstelt~editorial team~تحریریه~De redactie maakte een verslag over een druk marktplein.~The editorial team prepared a report about a busy market square.~تحریریه گزارشی دربارهٔ میدان شلوغ بازار تهیه کرد.
@@ -510,7 +510,7 @@ de knoop doorhakken~een definitieve beslissing nemen~decide conclusively~تصم�
 onderhandelen~bespreken om tot een akkoord te komen~negotiate~مذاکره کردن~Twee ploegen moesten onderhandelen over een nieuw beginuur.~Two teams had to negotiate a new starting time.~دو گروه باید دربارهٔ ساعت شروع تازه مذاکره می‌کردند.
 vasthouden~niet loslaten van een standpunt~stick to~پافشاری کردن~Aanvankelijk hield iedereen vast aan zijn eigen voorkeur.~Initially, everyone stuck to their own preference.~در ابتدا همه بر ترجیح خود پافشاری کردند.
 luisteren~aandachtig horen wat iemand zegt~listen~گوش دادن~Toen ze naar elkaars redenen luisterden, veranderde de sfeer.~When they listened to one another's reasons, the atmosphere changed.~وقتی به دلیل‌های یکدیگر گوش دادند، فضا تغییر کرد.
-toegeven~een deel van de eigen eis loslaten~concede~کوتاه آمدن~Beide ploegen gaven op één punt toe.~Both teams conceded on one point.~هر دو گروه در یک مورد کوتاه آمدند.
+toegeven~een eis loslaten of erkennen dat iets waar is~give way; admit something is true~کوتاه آمدن؛ پذیرفتن درستی چیزی~Beide ploegen gaven op één punt toe.~Both teams conceded on one point.~هر دو گروه در یک مورد کوتاه آمدند.
 vastleggen~officieel noteren of afspreken~record formally~ثبت کردن~Ze legden het akkoord vast en spraken een evaluatiemoment af.~They recorded the agreement and arranged an evaluation date.~توافق را ثبت کردند و زمانی برای ارزیابی گذاشتند.
 @work|De onzichtbare taak|The invisible task|کار نامرئی
 onderschatten~lager inschatten dan terecht is~underestimate~دست‌کم گرفتن~De manager onderschatte hoeveel tijd klantenopvolging vroeg.~The manager underestimated the time needed for customer follow-up.~مدیر زمان لازم برای پیگیری مشتریان را دست‌کم گرفت.
@@ -540,7 +540,7 @@ nuanceren~minder absoluut formuleren~qualify~تعدیل کردن~In zijn verslag
 formuleren~onder woorden brengen~formulate~صورت‌بندی کردن~Een onderzoeker formuleerde haar conclusie voor een vakblad.~A researcher formulated her conclusion for a specialist journal.~پژوهشگری نتیجه‌اش را برای مجلهٔ تخصصی صورت‌بندی کرد.
 vereenvoudigen~minder ingewikkeld maken~simplify~ساده کردن~Voor een buurtkrant moest ze dezelfde uitleg vereenvoudigen.~For a local newspaper, she had to simplify the same explanation.~برای روزنامهٔ محلی باید همان توضیح را ساده می‌کرد.
 weglaten~niet opnemen~omit~حذف کردن~Ze wilde daarbij geen belangrijke beperkingen weglaten.~She did not want to omit important limitations.~نمی‌خواست محدودیت‌های مهم را حذف کند.
-omschrijven~met andere woorden uitleggen~paraphrase~بازگویی کردن~Daarom omschreef ze de vaktermen met herkenbare voorbeelden.~She therefore explained technical terms using familiar examples.~بنابراین اصطلاح‌های تخصصی را با مثال‌های آشنا توضیح داد.
+omschrijven~iets beschrijven of met andere woorden uitleggen~describe; explain in other words~توصیف کردن؛ با واژه‌های دیگر توضیح دادن~Daarom omschreef ze de vaktermen met herkenbare voorbeelden.~She therefore explained technical terms using familiar examples.~بنابراین اصطلاح‌های تخصصی را با مثال‌های آشنا توضیح داد.
 toetsen~nagaan of iets werkt of klopt~test~آزمودن~Een buurvrouw toetste of de nieuwe tekst echt begrijpelijk was.~A neighbour tested whether the new text was truly understandable.~همسایه‌ای آزمود آیا متن تازه واقعاً قابل فهم است.
 @study|De ontbrekende tegenspraak|The missing counterargument|استدلال مخالفِ غایب
 beargumenteren~met redenen ondersteunen~argue~استدلال کردن~Voor een debat moest een leerling zijn voorkeur beargumenteren.~For a debate, a pupil had to argue for his preference.~دانش‌آموزی برای مناظره باید برای ترجیحش استدلال می‌کرد.
@@ -576,12 +576,12 @@ verdedigbaar~met goede redenen te ondersteunen~defensible~قابل‌دفاع~De
 onbedoeld~zonder dat men het wilde~unintended~ناخواسته~Een onbedoelde grap kwetste een collega.~An unintended joke hurt a colleague.~شوخی ناخواسته‌ای همکار را رنجاند.
 pijnlijk~verdriet of ongemak veroorzakend~painful~دردناک~Het daaropvolgende stilzwijgen was voor beiden pijnlijk.~The silence that followed was painful for both.~سکوت پس از آن برای هر دو دردناک بود.
 oprecht~eerlijk gemeend~sincere~صادقانه~De spreker bood later een oprechte verontschuldiging aan.~The speaker later offered a sincere apology.~گوینده بعداً صادقانه عذرخواهی کرد.
-herstelbaar~opnieuw goed te maken~repairable~قابل جبران~De collega zei dat de relatie herstelbaar was, maar tijd nodig had.~The colleague said the relationship could be repaired but needed time.~همکار گفت رابطه قابل ترمیم است، اما زمان می‌خواهد.
+herstelbaar~te repareren, te verbeteren of weer goed te maken~repairable; capable of being put right~قابل تعمیر، ترمیم یا جبران~De collega zei dat de relatie herstelbaar was, maar tijd nodig had.~The colleague said the relationship could be repaired but needed time.~همکار گفت رابطه قابل ترمیم است، اما زمان می‌خواهد.
 zorgvuldig~met aandacht voor mogelijke gevolgen~careful~دقیق و محتاط~Voortaan ging de spreker zorgvuldiger met zulke grappen om.~From then on, the speaker handled such jokes more carefully.~از آن پس گوینده در این‌گونه شوخی‌ها محتاط‌تر شد.
 @ethics|Een belofte met grenzen|A promise with limits|وعده‌ای با محدودیت
 haalbaar~mogelijk om uit te voeren~feasible~شدنی~Een vrijwilliger beloofde meer dan haalbaar was.~A volunteer promised more than was feasible.~داوطلبی بیش از حد شدنی قول داد.
 overmoedig~te veel vertrouwen hebbend~overconfident~بیش‌ازحد مطمئن~Zijn overmoedige planning liet geen ruimte voor onverwachte problemen.~His overconfident schedule left no room for unexpected problems.~برنامهٔ بیش‌ازحد خوش‌بینانه‌اش جایی برای مشکلات پیش‌بینی‌نشده نداشت.
-eerlijk~zonder misleiding~honest~صادق~Hij besloot eerlijk te zeggen dat de deadline niet lukte.~He decided to say honestly that he could not meet the deadline.~تصمیم گرفت صادقانه بگوید به موعد نمی‌رسد.
+eerlijk~zonder misleiding of volgens een rechtvaardige verdeling~honest; fair~صادق؛ منصفانه~Hij besloot eerlijk te zeggen dat de deadline niet lukte.~He decided to say honestly that he could not meet the deadline.~تصمیم گرفت صادقانه بگوید به موعد نمی‌رسد.
 realistisch~passend bij de werkelijkheid~realistic~واقع‌بینانه~Samen maakten ze een realistischer tijdschema.~Together, they created a more realistic schedule.~با هم برنامهٔ زمانی واقع‌بینانه‌تری ساختند.
 betrouwbaar~waarop men kan rekenen~reliable~قابل اعتماد~Een kleinere belofte maakte zijn hulp uiteindelijk betrouwbaarder.~A smaller promise ultimately made his help more reliable.~وعدهٔ کوچک‌تر در نهایت کمکش را قابل‌اعتمادتر کرد.
 @ethics|Een besluit zonder haast|A decision without haste|تصمیم بدون شتاب

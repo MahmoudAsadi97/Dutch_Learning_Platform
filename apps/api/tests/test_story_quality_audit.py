@@ -39,7 +39,8 @@ def test_legacy_and_authored_counts_are_separate(tmp_path):
     legacy = deepcopy(modern)
     legacy.pop("lines")
     legacy["id"] = "a1-old"
-    legacy["paragraphs"][0]["nl"] += " Sara lacht."
+    legacy["paragraphs"][0]["nl"] = "De trein vertrekt te laat. Een reiziger zoekt een andere verbinding."
+    legacy["paragraphs"][1]["nl"] = "Aan het loket krijgt hij uitleg. Nu weet hij welk perron hij nodig heeft."
     write_pack(tmp_path, "a1", [legacy])
     write_pack(tmp_path, "a1", [modern], "learning-units")
     row = next(row for row in MODULE.audit(tmp_path)["stages"] if row["stage"] == "a1")
@@ -98,7 +99,9 @@ def test_appending_a_moral_does_not_hide_a_near_copy(tmp_path):
     second["paragraphs"][-1]["nl"] += " Daarom is goede communicatie heel belangrijk."
     write_pack(tmp_path, "a1", [first])
     write_pack(tmp_path, "a2", [second])
-    assert "near_copy_needs_review" in codes(MODULE.audit(tmp_path))
+    result = MODULE.audit(tmp_path)
+    assert "near_copy_needs_review" in codes(result)
+    assert next(row for row in result["stages"] if row["stage"] == "a2")["eligible_authored_stories"] == 0
 
 
 def test_repeated_short_expression_is_not_automatically_a_repeated_plot(tmp_path):

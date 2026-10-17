@@ -55,14 +55,73 @@ The connected learning sequence is **meet a word → understand it in a story �
 different situations → revise → return without help**. New units use ten explicit story lines with
 parallel Dutch, English and Persian text, sentence playback, and related four-skill activities. The
 tasks progress from naming concrete things at pre-A1 to interpreting viewpoints and register at C2.
-In Story Time, choose **Verhaal naar gesprek** to find these units. Selected word cards also include
-several situations, useful forms and a short response task.
+In Story Time, **Verhaal naar gesprek** opens the new ten-line collection first. Stories include a
+comprehension question, sentence playback and a level-specific invitation to retell, discuss or rewrite.
+The original connected units also open their related four-skill activities. In the word library,
+**Oefen de 150 kernwoorden** selects the productive core: a mix of nouns, verbs, adjectives, adverbs,
+interaction phrases and function words, with three authored usage examples per entry. The wider word
+bank remains available. Forms are contextual examples, not automatically guessed conjugations.
+
+The current authored inventory is shown below. Each core entry has three trilingual context examples;
+these inventories are provisional until language review, not a claim of CEFR certification.
+
+| Stage | Productive core | Authored stories | Story target |
+| --- | ---: | ---: | ---: |
+| Pre-A1 | 150 | 42 | 200 |
+| A1 | 150 | 15 | 200 |
+| pre-A2 | 150 | 27 | 200 |
+| A2 | 150 | 22 | 200 |
+| pre-B1 | 150 | 18 | 200 |
+| B1 | 150 | 48 | 200 |
+| pre-B2 | 150 | 11 | 200 |
+| B2 | 150 | 7 | 200 |
+| pre-C1 | 150 | 14 | 200 |
+| C1 | 150 | 15 | 200 |
+| pre-C2 | 150 | 21 | 200 |
+| C2 | 150 | 15 | 200 |
 
 The editorial target is **200 distinct 8–12-line stories per stage**, without reusing a plot at another
-stage. This target is not complete: the current connected collection starts with two original stories
-per stage. Older story banks remain accessible and include repeated plots; they do not meet the new
-story standard merely because they have a different stage ID. Existing banks retain at least 500
-words; the requested 150-word productive core is a separate curation target, not a reduction in coverage.
+stage. The inventory audit reports the exact current shortfall; a new title or changed name does not
+make a repeated plot distinct. Older story banks remain accessible and include repeated plots; they do
+not meet the new standard merely because they have a different stage ID. Existing banks retain at
+least 500 words. Authored content and translations still need competent Belgian Dutch, English and Persian
+review; neither an automated structural check nor a word count establishes language accuracy.
+
+New stories are original modern fiction. Everyday domains come from Belgian public-service resources;
+historical literary motifs are referenced only with edition-specific public-domain checks. No news
+articles, TV transcripts or textbook pages are bundled. The [source registry](content/alignment/source-registry.json)
+records the permitted role of each resource, and [story provenance](content/alignment/story-provenance.json)
+records the source family and plot synopsis without claiming external endorsement. Wablieft and NedBox
+remain external reading/listening resources, rather than content to copy into the app.
+
+Current authored inventory (legacy stories excluded):
+
+| Stage | Productive core | Authored stories / 200 |
+| --- | ---: | ---: |
+| Pre-A1 | 150 | 42 |
+| A1 | 150 | 15 |
+| Pre-A2 | 150 | 27 |
+| A2 | 150 | 22 |
+| Pre-B1 | 150 | 18 |
+| B1 | 150 | 48 |
+| Pre-B2 | 150 | 11 |
+| B2 | 150 | 7 |
+| Pre-C1 | 150 | 14 |
+| C1 | 150 | 15 |
+| Pre-C2 | 150 | 21 |
+| C2 | 150 | 15 |
+
+These are authored entries, with language review pending. They are not certified level inventories.
+
+To rebuild the authored expansion and inspect its actual coverage:
+
+```bash
+python scripts/content_build/vocabulary_transfer.py
+python scripts/validate_story_quality.py --require-targets
+```
+
+The target check intentionally fails while any stage lacks 200 eligible authored stories or a complete
+150-word productive core. It is separate from software tests and never grants assessment credit.
 
 The supplied Dutch scans now support **Van woord naar gesprek**: twelve original units from pre-A1 to
 B1, connecting new Story Time stories with reading, listening, speaking, writing and grammar practice.

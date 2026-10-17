@@ -19,7 +19,7 @@ const STARTER_COUNT = 8;
 /** The first words of the chosen stage; the learner ticks the ones to keep, nothing is kept unasked. */
 function StarterWords({ stage }: { stage: string }) {
   const list = useQuery({
-    queryKey: ["library", "words", stage, STARTER_COUNT],
+    queryKey: ["library", "words", stage, "productive-core", STARTER_COUNT],
     queryFn: ({ signal }) => library.words(stage, STARTER_COUNT, signal),
     staleTime: Infinity,
   });

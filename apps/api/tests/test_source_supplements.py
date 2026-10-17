@@ -164,7 +164,7 @@ def test_grammar_examples_extend_existing_rules_without_touching_final_tests():
             assert [e.model_dump() for e in updated.examples[:len(rule["examples"])]] == rule["examples"]
             assert [q.model_dump() for q in updated.practice[:len(rule["practice"])]] == rule["practice"]
     assert len(supplements.curriculum_stamp(CONTENT_DIR)) == sum(
-        len(list((CONTENT_DIR / directory).glob("*.json"))) for directory in ("source-lessons", "learning-units"))
+        len(list((CONTENT_DIR / directory).glob("*.json"))) for directory in supplements.DIRECTORIES)
 
 
 def test_reference_pages_and_content_hashes_are_bound_to_supplied_sources():

@@ -19,8 +19,10 @@ def overview(stage_id: str, ctx: RequestContext = Depends(context_dep)):
 @router.get("/{stage_id}/vocabulary")
 def words(stage_id: str, q: str = Query(default="", max_length=120), topic: str = Query(default="", max_length=160),
           offset: int = Query(default=0, ge=0, le=100000), limit: int = Query(default=20, ge=1, le=50),
+          core_only: bool = False,
           ctx: RequestContext = Depends(context_dep)):
-    return library.vocabulary_page(_bank(stage_id), query=q, topic=topic, offset=offset, limit=limit)
+    return library.vocabulary_page(_bank(stage_id), query=q, topic=topic, offset=offset, limit=limit,
+                                   core_only=core_only)
 
 
 @router.get("/{stage_id}/stories")

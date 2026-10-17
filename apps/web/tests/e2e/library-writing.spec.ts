@@ -34,7 +34,7 @@ const fixtureStories = Array.from({ length: 100 }, (_, index) => ({
 }));
 
 /** Isolate browser state transitions from authored prose; the API suite checks every real content file. */
-async function mockLibrary(page: Page) {
+async function mockLibrary(page: Page, withCore = false) {
   await page.route(/\/api\/library\/pre-a1(?:\/|\?|$)/, async (route) => {
     const url = new URL(route.request().url());
     if (url.pathname === "/api/library/pre-a1") {
@@ -44,6 +44,7 @@ async function mockLibrary(page: Page) {
           stage_id: "pre-a1",
           review_status: "unreviewed",
           vocabulary_count: 500,
+          ...(withCore ? { productive_core_count: 150 } : {}),
           story_count: 100,
           topics: ["Eten", "Werk"].map((key) => ({
             key,
@@ -66,7 +67,13 @@ async function mockLibrary(page: Page) {
     const topic = url.searchParams.get("topic") ?? "";
     const offset = Number(url.searchParams.get("offset") ?? 0);
     const limit = Number(url.searchParams.get("limit") ?? (isWords ? 20 : 12));
-    const items = (isWords ? fixtureWords : fixtureStories).filter(
+    const candidates =
+      isWords && withCore && url.searchParams.get("core_only") === "true"
+        ? fixtureWords.slice(0, 150)
+        : isWords
+          ? fixtureWords
+          : fixtureStories;
+    const items = candidates.filter(
       (item) =>
         (!topic || item.topic.nl === topic) && (!query || JSON.stringify(item).toLowerCase().includes(query)),
     );
@@ -75,6 +82,22 @@ async function mockLibrary(page: Page) {
     });
   });
 }
+
+test("the 150-word core remains usable at phone width and the full bank stays accessible", async ({
+  page,
+}) => {
+  await mockLibrary(page, true);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/learn/pre-a1");
+  await expect(page.getByRole("button", { name: "Bekijk alle woordkaarten" })).not.toHaveAttribute(
+    "aria-pressed",
+  );
+  await expect(page.getByText("1–20 van 150", { exact: true })).toBeVisible();
+  await expect(page.locator(".vocabulary-card")).toHaveCount(20);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.getByRole("button", { name: "Bekijk alle woordkaarten" }).click();
+  await expect(page.getByText("1–20 van 500", { exact: true })).toBeVisible();
+});
 
 async function writingSection(page: Page) {
   await mockLibrary(page);

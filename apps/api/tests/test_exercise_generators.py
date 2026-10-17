@@ -21,18 +21,18 @@ from dlp.domains.exercises.themes import THEMES, related
 #           including source and connected packs. The original reused lists are still labelled as review in roadmap step 3.9;
 #           source additions are counted rather than concealed by the content gate.
 RECORDED = {
-    'pre-a1': (505, 505, 102, 101, 205, 497, 505),
-    'a1': (507, 507, 92, 101, 207, 500, 7),
-    'pre-a2': (504, 504, 87, 101, 204, 499, 4),
-    'a2': (513, 513, 427, 52, 513, 90, 415),
-    'pre-b1': (508, 508, 423, 51, 508, 89, 26),
-    'b1': (512, 512, 422, 52, 512, 93, 9),
-    'pre-b2': (511, 511, 433, 0, 511, 452, 444),
-    'b2': (508, 508, 425, 0, 508, 450, 8),
-    'pre-c1': (510, 510, 414, 0, 510, 453, 9),
-    'c1': (511, 511, 492, 0, 511, 507, 411),
-    'pre-c2': (511, 511, 490, 0, 511, 507, 255),
-    'c2': (512, 512, 494, 0, 512, 510, 12),
+    'pre-a1': (515, 515, 111, 102, 215, 507, 515),
+    'a1': (517, 517, 101, 102, 217, 510, 7),
+    'pre-a2': (507, 507, 87, 102, 207, 502, 7),
+    'a2': (526, 526, 440, 53, 519, 103, 424),
+    'pre-b1': (538, 538, 446, 52, 538, 113, 51),
+    'b1': (542, 542, 445, 53, 542, 117, 9),
+    'pre-b2': (540, 540, 453, 0, 540, 472, 469),
+    'b2': (537, 537, 445, 0, 537, 470, 8),
+    'pre-c1': (572, 572, 450, 0, 572, 490, 59),
+    'c1': (576, 576, 556, 0, 576, 572, 434),
+    'pre-c2': (586, 586, 516, 0, 586, 533, 291),
+    'c2': (577, 577, 555, 0, 577, 572, 52),
 }
 SEEDS = 200
 
@@ -216,20 +216,34 @@ def test_two_hundred_sessions_per_stage_keep_the_rules(stage_id):
     assert ("sentence_order" in kinds) == bool(stage.orders)
 
 
-def test_a_leaked_dictation_keeps_listening_with_another_known_word():
-    """The real pre-C2 board exposes the first sentence; use another known target, not its answer."""
-    stage = pool_for("pre-c2")
-    seed = 78
-    rng = random.Random(seed)
-    met = frozenset(word.key for word in rng.sample(stage.words, (seed % 25) * 12))
-    drafts = blueprints.plan(stage, random.Random(f"pre-c2:{seed}"), size=11, met=met, audio=True)
+def test_a_leaked_dictation_keeps_listening_with_another_known_word(monkeypatch):
+    """A board reveals the first sentence; use another known target without losing listening."""
+    stage = build(_bank({
+        "het paspoort": ("Ik leg mijn paspoort klaar.", "I get my passport ready."),
+        "het formulier": ("Zij leest het formulier.", "She reads the form."),
+        "het attest": ("Hij toont zijn attest.", "He shows his certificate."),
+        "het contract": ("Wij tekenen het contract.", "We sign the contract."),
+        "de brief": ("Ik ontvang morgen een brief.", "I receive a letter tomorrow."),
+        "de map": ("De map ligt op tafel.", "The folder is on the table."),
+        "de pen": ("Mijn pen is blauw.", "My pen is blue."),
+        "de stoel": ("Die stoel staat buiten.", "That chair is outside."),
+    }))
+    # Pair feedback includes each card's example, so those four dictations would reveal their answers.
+    exposed = stage.words[:4]
+    board = blueprints.boards.match_pairs(stage, list(exposed), random.Random(0))
+    monkeypatch.setattr(blueprints, "_boards", lambda *args, **kwargs: [board])
+    met = frozenset(word.key for word in stage.words)
+    drafts = blueprints.plan(stage, random.Random(0), size=5, met=met, audio=True,
+                             kinds=frozenset({"dictation", "match_pairs"}))
     dictations = [draft for draft in drafts if draft.kind == "dictation"]
-    assert dictations, "a board leaking one target must not unnecessarily remove listening practice"
+    assert len(dictations) == 4, "replace the exposed target rather than dropping listening practice"
+    assert not {word.key for word in exposed} & {draft.word for draft in dictations}
+    assert {draft.word for draft in dictations} == {word.key for word in stage.words[4:]}
     for draft in dictations:
         assert draft.word in met, "a replacement cannot introduce a word the learner has not met"
         assert not blueprints._shown_elsewhere(draft, drafts), "other items must not reveal the replacement"
         _check_prompt(stage, draft)
-    assert len([draft for draft in drafts if draft.kind != "intro"]) == 11
+    assert len([draft for draft in drafts if draft.kind != "intro"]) == 5
 
 
 @pytest.mark.parametrize("stage_id", STAGE_IDS)

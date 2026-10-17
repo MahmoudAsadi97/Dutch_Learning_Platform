@@ -26,18 +26,32 @@ async function sourcePack(stageId: string): Promise<Pack> {
 }
 
 async function effectiveCounts(stageId: string, pack: Pack): Promise<Counts> {
-  const [library, practice, units] = await Promise.all([
+  const [library, practice, units, reading] = await Promise.all([
     readFile(path.resolve(__dirname, `../../../../content/library/${stageId}.json`), "utf8"),
     readFile(path.resolve(__dirname, `../../../../content/practice/${stageId}.json`), "utf8"),
     readFile(path.resolve(__dirname, `../../../../content/learning-units/${stageId}.json`), "utf8"),
+    readFile(path.resolve(__dirname, `../../../../content/reading-library/${stageId}.json`), "utf8"),
   ]);
   const baseLibrary = JSON.parse(library) as { vocabulary: unknown[]; stories: unknown[] };
   const basePractice = JSON.parse(practice) as { topics: unknown[] };
   const learningUnits = JSON.parse(units) as Pack;
+  const readingLibrary = JSON.parse(reading) as Pack;
   return {
-    words: baseLibrary.vocabulary.length + pack.vocabulary.length + learningUnits.vocabulary.length,
-    stories: baseLibrary.stories.length + pack.stories.length + learningUnits.stories.length,
-    topics: basePractice.topics.length + pack.topics.length + learningUnits.topics.length,
+    words:
+      baseLibrary.vocabulary.length +
+      pack.vocabulary.length +
+      learningUnits.vocabulary.length +
+      readingLibrary.vocabulary.length,
+    stories:
+      baseLibrary.stories.length +
+      pack.stories.length +
+      learningUnits.stories.length +
+      readingLibrary.stories.length,
+    topics:
+      basePractice.topics.length +
+      pack.topics.length +
+      learningUnits.topics.length +
+      readingLibrary.topics.length,
   };
 }
 
@@ -86,6 +100,8 @@ test("A1 source words and story open, and first-try reading answers persist inde
   expect(topic).toBeTruthy();
   expect(story).toBeTruthy();
   await page.goto("/learn/a1");
+  await expect(page.getByRole("heading", { name: /^150 woorden om zelf te gebruiken/ })).toBeVisible();
+  await page.getByRole("button", { name: "Bekijk alle woordkaarten" }).click();
   await expect(
     page
       .locator(".word-library")

@@ -49,7 +49,9 @@ def test_connected_units_are_stage_bound_parallel_and_not_a_claim_of_200_complet
     topic_bank = topics.topics_for(stage)
     assert data["review_status"] == "unreviewed"
     assert len(data["stories"]) == len(data["topics"]) >= 2
-    assert library.summary(bank)["authored_story_count"] == len(data["stories"])
+    reading = CONTENT_DIR / "reading-library" / f"{stage}.json"
+    added_count = len(json.loads(reading.read_text())["stories"]) if reading.exists() else 0
+    assert library.summary(bank)["authored_story_count"] == len(data["stories"]) + added_count
     assert library.summary(bank)["target_story_count"] == 200
     assert len(bank.vocabulary) >= 500
     for story in data["stories"]:
