@@ -85,6 +85,14 @@ def catalogue(ctx: RequestContext = Depends(context_dep), settings: Settings = D
                                           recording_max_seconds=settings.max_audio_seconds))
 
 
+@router.get("/reference/coverage", response_model=dict[str, Any])
+def content_coverage(ctx: RequestContext = Depends(context_dep)):
+    """Actual content, goals and gaps; no learner records or assessment keys."""
+    from dlp.domains.curriculum.coverage import report
+
+    return report()
+
+
 @router.get("/reference/exams", response_model=dict[str, Any])
 def exam_references(ctx: RequestContext = Depends(context_dep)):
     """Original preparation blueprints and official links, not examination results."""

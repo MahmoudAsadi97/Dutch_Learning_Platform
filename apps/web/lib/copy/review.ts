@@ -15,7 +15,6 @@ export const PERSIAN_REVIEWED: Record<string, boolean> = {
   errors: false,
   failures: false,
   episode: false,
-  video: false,
   words: false,
   missions: false,
   speech: false,
@@ -24,4 +23,6 @@ export const PERSIAN_REVIEWED: Record<string, boolean> = {
   alignment: false,
   storyLearning: false,
   grammar: false,
+  workspace: false,
+  libraryHubs: false,
 };

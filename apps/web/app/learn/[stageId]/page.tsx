@@ -1,3 +1,4 @@
+import { isActivity } from "@/lib/client/learning-navigation";
 import { CurriculumLesson } from "@/components/CurriculumLesson";
 import { topicHref } from "@/lib/client/learning-agents";
 import type { Skill } from "@/lib/types";
@@ -7,7 +8,11 @@ export default async function LevelPage({
   searchParams,
 }: {
   params: Promise<{ stageId: string }>;
-  searchParams: Promise<{ skill?: string | string[]; topic?: string | string[] }>;
+  searchParams: Promise<{
+    skill?: string | string[];
+    topic?: string | string[];
+    section?: string | string[];
+  }>;
 }) {
   const { stageId } = await params;
   const query = await searchParams;
@@ -15,16 +20,21 @@ export default async function LevelPage({
     typeof query.skill === "string" && ["reading", "listening", "speaking", "writing"].includes(query.skill)
       ? (query.skill as Skill)
       : undefined;
+  const section =
+    isActivity(query.section) && (query.section !== "alphabet" || stageId === "pre-a1")
+      ? query.section
+      : undefined;
   const topic =
     skill && typeof query.topic === "string" && topicHref(stageId, skill, query.topic)
       ? query.topic
       : undefined;
   return (
     <CurriculumLesson
-      key={`${stageId}.${skill ?? "words"}.${topic ?? ""}`}
+      key={`${stageId}.${skill ?? section ?? "words"}.${topic ?? ""}`}
       stageId={stageId}
       initialSkill={skill}
       initialTopic={topic}
+      initialSection={section}
     />
   );
 }

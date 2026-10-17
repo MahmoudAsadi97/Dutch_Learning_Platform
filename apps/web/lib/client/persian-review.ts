@@ -1,3 +1,5 @@
+import { workspaceCopy } from "@/lib/copy/workspace";
+import { libraryHubsCopy } from "@/lib/copy/libraryHubs";
 import { grammarCopy } from "@/lib/copy/grammar";
 import { episodeCopy } from "@/lib/copy/episode";
 import { storyLearningCopy } from "@/lib/copy/storyLearning";
@@ -7,16 +9,16 @@ import { missionsCopy } from "@/lib/copy/missions";
 import { PERSIAN_REVIEWED } from "@/lib/copy/review";
 import { speechCopy } from "@/lib/copy/speech";
 import { topicsCopy } from "@/lib/copy/topics";
-import { videoCopy } from "@/lib/copy/video";
 import { wordsCopy } from "@/lib/copy/words";
 import { batchOf, registerBatch, uiCopy, type Copy } from "@/lib/ui-copy";
 
 /** Every batch of interface copy, by name: the catalogue's groups and the per-screen modules. */
 export const COPY_BATCHES: Record<string, Record<string, Copy>> = {
   ...uiCopy,
+  workspace: workspaceCopy,
+  libraryHubs: libraryHubsCopy,
   grammar: grammarCopy,
   episode: episodeCopy,
-  video: videoCopy,
   words: wordsCopy,
   missions: missionsCopy,
   speech: speechCopy,

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { workspaceCopy } from "@/lib/copy/workspace";
 import { useCallback, useEffect, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { LearningText } from "@/components/LanguageSupport";
@@ -305,7 +306,7 @@ export function TodayHome() {
               ))}
             </ol>
           </div>
-          <Link href="/woorden" className={`words-card ${words.due_count ? "has-due" : ""}`}>
+          <Link href="/woorden?view=personal" className={`words-card ${words.due_count ? "has-due" : ""}`}>
             <span className="words-count">{words.due_count}</span>
             <span>
               <strong>{words.due_count === 1 ? "woord om te herhalen" : "woorden om te herhalen"}</strong>
@@ -315,33 +316,17 @@ export function TodayHome() {
             </span>
             <Icon name="arrow" />
           </Link>
-          <Link
-            href={plan.videos?.ready ? `/videos/${plan.videos.ready.id}` : "/videos"}
-            className={`words-card video-card ${plan.videos?.ready ? "has-due" : ""}`}
-            data-testid="today-video"
-          >
+          <Link href="/verhalen" className="words-card" data-testid="today-story-practice">
             <span className="words-count">
-              <Icon name="play" size={22} />
+              <Icon name="headphones" size={22} />
             </span>
             <span>
-              {plan.videos?.ready ? (
-                <>
-                  <strong>Een video staat klaar</strong>
-                  <small>
-                    {plan.videos.ready.title || plan.videos.ready.topic} · {plan.videos.ready.kind_label}
-                  </small>
-                </>
-              ) : plan.videos?.pending ? (
-                <>
-                  <strong>Je video wordt gemaakt</strong>
-                  <small>Dat duurt een paar minuten.</small>
-                </>
-              ) : (
-                <>
-                  <strong>Vraag een video</strong>
-                  <small>Op jouw niveau, over wat jij kiest.</small>
-                </>
-              )}
+              <strong>
+                <LearningText text={workspaceCopy.audioStory} />
+              </strong>
+              <small>
+                <LearningText text={workspaceCopy.audioStoryHint} />
+              </small>
             </span>
             <Icon name="arrow" />
           </Link>

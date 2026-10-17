@@ -12,7 +12,7 @@ export interface Copy {
 export const uiCopy = {
   nav: {
     today: { nl: "Vandaag", en: "Today", fa: "امروز" },
-    learn: { nl: "Leren", en: "Learn", fa: "یادگیری" },
+    learn: { nl: "Niveaus", en: "Levels", fa: "سطح‌ها" },
     stories: { nl: "Verhalen", en: "Stories", fa: "داستان‌ها" },
     speak: { nl: "Spreken", en: "Speaking", fa: "صحبت کردن" },
     words: { nl: "Woorden", en: "Words", fa: "واژه‌ها" },
@@ -386,15 +386,15 @@ export const uiCopy = {
       fa: "آنچه یک مدل زبانی می‌نویسد",
     },
     model: {
-      nl: "Je verhalen, de scripts van je video's, hun vertalingen en de feedback op je teksten komen van een taalmodel. De computer controleert lengte, niveau en woordenschat; een docent kijkt ze niet na. Kleine fouten zijn mogelijk.",
-      en: "Your stories, the scripts of your videos, their translations and the feedback on your texts come from a language model. The computer checks length, level and vocabulary; a teacher does not review them. Small mistakes are possible.",
-      fa: "داستان‌هایت، متن ویدیوهایت، ترجمه‌های آن‌ها و بازخورد درباره‌ی نوشته‌هایت از یک مدل زبانی می‌آیند. رایانه طول، سطح و واژگان را بررسی می‌کند؛ معلمی آن‌ها را بازبینی نمی‌کند. ممکن است اشتباه‌های کوچکی در آن‌ها باشد.",
+      nl: "Persoonlijke vervolgverhalen, vertalingen op aanvraag en feedback op je teksten worden automatisch opgesteld. De computer controleert een aantal vormeisen, maar een taaldocent heeft deze inhoud nog niet nagekeken. Kleine fouten zijn mogelijk.",
+      en: "Personal story episodes, on-demand translations and feedback on your writing are prepared automatically. The computer checks some format requirements, but a language teacher has not reviewed this content yet. Small mistakes are possible.",
+      fa: "قسمت‌های داستان شخصی، ترجمه‌های درخواستی و بازخورد درباره‌ی نوشته‌هایت به‌صورت خودکار تهیه می‌شوند. رایانه بعضی از الزامات قالب را بررسی می‌کند، اما هنوز یک معلم زبان این محتوا را بازبینی نکرده است. ممکن است اشتباه‌های کوچکی در آن باشد.",
     },
     voiceTitle: { nl: "Stemmen", en: "Voices", fa: "صداها" },
     voices: {
-      nl: "Wat je hoort, spreekt de computer uit met een Belgische stem. De presentator in een video is geen echte persoon.",
-      en: "What you hear is spoken by the computer with a Belgian voice. The presenter in a video is not a real person.",
-      fa: "آنچه می‌شنوی را رایانه با صدایی بلژیکی می‌گوید. مجری ویدیو شخص واقعی نیست.",
+      nl: "De luistervoorbeelden gebruiken een synthetische Belgisch-Nederlandse stem. Je kunt zinnen opnieuw beluisteren; het zijn geen opnamen van een menselijke spreker.",
+      en: "The listening examples use a synthetic Belgian Dutch voice. You can replay sentences; these are not recordings of a human speaker.",
+      fa: "نمونه‌های شنیداری از صدای مصنوعی هلندیِ بلژیکی استفاده می‌کنند. می‌توانی جمله‌ها را دوباره بشنوی؛ این صداها ضبطِ گفتار یک انسان نیستند.",
     },
     measureTitle: { nl: "Wat we niet meten", en: "What we do not measure", fa: "آنچه نمی‌سنجیم" },
     measure: {

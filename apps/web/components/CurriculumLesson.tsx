@@ -1,6 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ContentCoverage } from "@/components/ContentCoverage";
+import { STAGE_IDS, stageNames } from "@/lib/domain/registry";
+import { activityHref, type LearningActivity } from "@/lib/client/learning-navigation";
+import { workspaceCopy } from "@/lib/copy/workspace";
+import { fill } from "@/lib/ui-copy";
 import { WordLibrary, StoryTime, SpokenPassage } from "@/components/LearningLibrary";
 import { GrammarPractice } from "@/components/GrammarPractice";
 import { AlphabetPractice } from "@/components/AlphabetPractice";
@@ -28,7 +34,7 @@ import { skillAccent, type Accent } from "@/lib/design/identity";
 import { playTone } from "@/lib/client/tones";
 import { HonestyChip } from "@/components/ui/HonestyChip";
 
-type Section = "words" | "grammar" | "stories" | "alphabet" | Skill;
+type Section = LearningActivity;
 const sectionAccents: Record<Section, Accent> = {
   words: "words",
   grammar: "neutral",
@@ -43,7 +49,7 @@ const sections: { id: Section; label: string; icon: IconName }[] = [
   { id: "listening", label: "Luisteren", icon: "headphones" },
   { id: "speaking", label: "Spreken", icon: "mic" },
   { id: "writing", label: "Schrijven", icon: "pen" },
-  { id: "stories", label: "Story Time", icon: "book" },
+  { id: "stories", label: "Verhalen", icon: "book" },
 ];
 interface PracticeResponse {
   completed: boolean;
@@ -58,17 +64,20 @@ export function CurriculumLesson({
   stageId,
   initialSkill,
   initialTopic,
+  initialSection,
 }: {
   stageId: string;
   initialSkill?: Skill;
   initialTopic?: string;
+  initialSection?: LearningActivity;
 }) {
+  const router = useRouter();
   const lessonSections =
     stageId === "pre-a1"
       ? [{ id: "alphabet" as Section, label: "Alfabet", icon: "volume" as IconName }, ...sections]
       : sections;
   const [stage, setStage] = useState<CurriculumStage | null>(null);
-  const [section, setSection] = useState<Section>(initialSkill ?? "words");
+  const [section, setSection] = useState<Section>(initialSkill ?? initialSection ?? "words");
   const [showCore, setShowCore] = useState(false);
   const [linkedTopic, setLinkedTopic] = useState(initialTopic);
   const [error, setError] = useState("");
@@ -109,6 +118,7 @@ export function CurriculumLesson({
   function changeSection(next: Section) {
     if (busy || recordingBusy) return;
     setSection(next);
+    window.history.replaceState(null, "", activityHref(stageId, next));
     setLinkedTopic(undefined);
     setShowCore(false);
     setFeedback(null);
@@ -175,72 +185,68 @@ export function CurriculumLesson({
       <Link href="/leerpad" className="back-link">
         ← Terug naar je leerpad
       </Link>
-      <header className="lesson-heading">
-        <span className="stage-level">{stageLabel(stageId)}</span>
-        <div>
-          <h1>
-            <LearningText text={stage.title} />
-          </h1>
-          <p>
-            <LearningText text={stage.description} />
-          </p>
+      <header className="level-workspace-heading">
+        <div className="level-picker">
+          <label htmlFor="workspace-stage">
+            <LearningText text={workspaceCopy.level} />
+          </label>
+          <select
+            id="workspace-stage"
+            value={stageId}
+            disabled={busy || recordingBusy}
+            onChange={(event) => router.push(activityHref(event.target.value, section))}
+          >
+            {STAGE_IDS.map((id) => (
+              <option key={id} value={id}>
+                {stageLabel(id)} · {stageNames[id]}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="workspace-progress unit-test-card">
+          <strong>
+            <LearningText text={fill(workspaceCopy.practiced, { n: completed.length })} />
+          </strong>
+          {progress.test_available || stage.admin_bypass ? (
+            <Link className="button secondary" href={`/learn/${stageId}/test`}>
+              <LearningText text={workspaceCopy.check} />
+              <Icon name="arrow" size={16} />
+            </Link>
+          ) : (
+            <span className="test-unavailable">
+              <Icon name="shield" size={16} />
+              <LearningText text={workspaceCopy.checkLocked} />
+            </span>
+          )}
         </div>
       </header>
-      <div className="learning-workspace">
-        <aside className="unit-sidebar">
-          <p className="eyebrow">STAP VOOR STAP</p>
-          <nav aria-label="Onderdelen van dit niveau">
-            {lessonSections.map((item) => (
-              <button
-                key={item.id}
-                disabled={busy || recordingBusy}
-                aria-current={section === item.id ? "step" : undefined}
-                onClick={() => changeSection(item.id)}
-              >
-                <Icon name={item.icon} />
-                <span>{item.label}</span>
-                {completed.includes(item.id as Skill) && <Icon name="check" size={15} />}
-              </button>
-            ))}
-          </nav>
-          <div className="unit-test-card">
-            <strong>{completed.length} van 4 vaardigheden geoefend</strong>
-            <p>Laat daarna zelfstandig zien wat je kunt.</p>
-            {progress.test_available || stage.admin_bypass ? (
-              <Link className="button" href={`/learn/${stageId}/test`}>
-                Naar de eindtoets
-                <Icon name="arrow" size={16} />
-              </Link>
-            ) : (
-              <span className="test-unavailable">
-                <Icon name="shield" size={16} />
-                Eindtoets opent na vier vaardigheden
-              </span>
-            )}
-          </div>
-        </aside>
+      <nav className="activity-navigation" aria-label="Onderdelen van dit niveau">
+        {lessonSections.map((item) => (
+          <button
+            key={item.id}
+            disabled={busy || recordingBusy}
+            aria-current={section === item.id ? "step" : undefined}
+            data-accent={sectionAccents[item.id]}
+            onClick={() => changeSection(item.id)}
+          >
+            <Icon name={item.icon} size={18} />
+            <LearningText text={workspaceCopy[item.id]} />
+            {completed.includes(item.id as Skill) && <Icon name="check" size={14} />}
+          </button>
+        ))}
+      </nav>
+      <ContentCoverage coverage={stage.coverage} />
+      <div className="learning-workspace level-workspace">
         <div className="unit-content" key={section} data-accent={sectionAccents[section]}>
           <div className="unit-section-title">
             <p className="eyebrow">
               {stageLabel(stageId)} · {lessonSections.find((item) => item.id === section)?.label}
             </p>
-            <h2>
-              {section === "alphabet"
-                ? "Letters horen, herkennen en gebruiken"
-                : section === "stories"
-                  ? "Story Time"
-                  : section === "words"
-                    ? "Woorden die je kunt gebruiken"
-                    : section === "grammar"
-                      ? "Zo bouw je een zin"
-                      : section === "reading"
-                        ? "Een verhaal om te ontdekken"
-                        : section === "listening"
-                          ? "Luister naar de situatie"
-                          : section === "speaking"
-                            ? "Breng het gesprek op gang"
-                            : "Schrijf je eigen boodschap"}
-            </h2>
+            <h1>
+              <LearningText
+                text={workspaceCopy[section === "stories" ? "stories" : (`${section}Title` as "wordsTitle")]}
+              />
+            </h1>
           </div>
           {isSkill && <AlignmentPanel stageId={stageId} skill={section as Skill} />}
           {isSkill && (

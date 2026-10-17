@@ -45,7 +45,7 @@ for (const stageId of stages) {
     await page.goto(`/learn/${stageId}`);
     await page
       .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-      .getByRole("button", { name: "Story Time", exact: true })
+      .getByRole("button", { name: "Verhalen", exact: true })
       .click();
     await expect(page.getByLabel("Onderwerp", { exact: true })).toHaveValue("Verhaal naar gesprek");
     await page.getByRole("button", { name: /^Ontdek de nieuwe verhalen/ }).click();

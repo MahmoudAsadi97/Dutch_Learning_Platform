@@ -171,9 +171,9 @@ test("word review reveals, grades and brings a lapsed card back in the same roun
           : { ...item, interval_days: 1, repetitions: 1, due: false, due_at: "2026-10-03T00:00:00Z" },
     });
   });
-  await page.goto("/woorden");
+  await page.goto("/woorden?view=personal");
   const review = page.getByTestId("word-review");
-  await expect(review.getByRole("heading", { level: 1 })).toHaveText("Herhaal wat je bewaarde.");
+  await expect(review.locator(".path-heading h2")).toHaveText("Herhaal wat je bewaarde.");
   await expect(review.getByText("2 KAARTEN IN DEZE RONDE")).toBeVisible();
   await expect(review.getByText("the counter")).toHaveCount(0);
   await review.getByTestId("reveal-word").click();
@@ -186,7 +186,7 @@ test("word review reveals, grades and brings a lapsed card back in the same roun
   await expect(review.locator(".flashcard-term")).toContainText("de toonbank");
   await review.getByTestId("reveal-word").click();
   await review.getByRole("button", { name: /Makkelijk/ }).click();
-  await expect(review.getByRole("heading", { level: 1 })).toHaveText("Klaar voor vandaag.");
+  await expect(review.locator(".path-heading h2")).toHaveText("Klaar voor vandaag.");
   expect(reviews).toEqual(["w1:again", "w2:good", "w1:easy"]);
 });
 
@@ -197,9 +197,7 @@ test("the real API queues the first episode for a new learner", async ({ page })
     /wordt geschreven|nieuwe aflevering klaar/,
   );
   await expect(home.getByText("Wie is wie in De Lindestraat")).toBeVisible();
-  await page.goto("/verhalen");
-  await expect(page.getByTestId("story-library").getByRole("heading", { level: 1 })).toHaveText(
-    "De Lindestraat",
-  );
+  await page.goto("/verhalen?view=personal");
+  await expect(page.getByTestId("story-library").locator(".path-heading h2")).toHaveText("De Lindestraat");
   await expect(page.locator(".episode-tile")).toHaveCount(1);
 });

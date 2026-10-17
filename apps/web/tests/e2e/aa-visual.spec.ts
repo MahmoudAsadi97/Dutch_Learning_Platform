@@ -35,7 +35,11 @@ const screens: { name: string; path: string; ready: string }[] = [
   { name: "mission", path: "/missions/appointment-change", ready: '[data-testid="reading-text"]' },
   { name: "speech", path: "/speech-check", ready: '[data-testid="talk-button"]' },
   { name: "episode", path: `/verhalen/${episodeId}`, ready: '[data-testid="episode-paragraph"]' },
-  { name: "woorden", path: "/woorden", ready: '[data-testid="word-review"] [data-testid="reveal-word"]' },
+  {
+    name: "woorden",
+    path: "/woorden?view=personal",
+    ready: '[data-testid="word-review"] [data-testid="reveal-word"]',
+  },
   { name: "gallery", path: "/dev/ui", ready: '[data-testid="ui-gallery"]' },
   { name: "welkom", path: "/welkom?stap=uitleg", ready: '[data-testid="how-it-works"]' },
 ];

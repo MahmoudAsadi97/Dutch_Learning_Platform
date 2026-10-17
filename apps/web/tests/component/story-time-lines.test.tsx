@@ -106,18 +106,20 @@ test("legacy paragraphs remain readable without pretending they have authored li
   expect(screen.queryByRole("list", { name: "Regels van het verhaal" })).not.toBeInTheDocument();
 });
 
-test("new authored stories open first and the learner can still choose all topics", async () => {
+test("authored collection is explicit, while legacy texts require a separate choice", async () => {
   mockLibrary(true, true);
   render(<StoryTime stageId="a1" />);
   await screen.findByRole("button", { name: "Lees De brief" });
-  await waitFor(() =>
-    expect(screen.getByRole("combobox", { name: "Onderwerp" })).toHaveValue("Verhaal naar gesprek"),
+  expect(screen.getByRole("combobox", { name: "Onderwerp" })).toHaveValue("");
+  expect(vi.mocked(apiJson).mock.calls.some(([path]) => String(path).includes("authored_only=true"))).toBe(
+    true,
   );
-  expect(
-    vi.mocked(apiJson).mock.calls.some(([path]) => String(path).includes("topic=Verhaal+naar+gesprek")),
-  ).toBe(true);
-  await userEvent.selectOptions(screen.getByRole("combobox", { name: "Onderwerp" }), "");
-  await waitFor(() => expect(screen.getByRole("combobox", { name: "Onderwerp" })).toHaveValue(""));
-  expect(screen.getByText("2 nieuwe verhalen met korte regels en gebruiksoefeningen")).toBeVisible();
+  expect(screen.getByText("2 verhalen beschikbaar · doel: 200")).toBeVisible();
+  await userEvent.click(screen.getByRole("checkbox", { name: /Ook oudere korte teksten bekijken/ }));
+  await waitFor(() =>
+    expect(vi.mocked(apiJson).mock.calls.some(([path]) => String(path).includes("authored_only=false"))).toBe(
+      true,
+    ),
+  );
   expect(screen.queryByText("200 nieuwe verhalen")).not.toBeInTheDocument();
 });

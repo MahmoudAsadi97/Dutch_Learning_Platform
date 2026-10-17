@@ -206,6 +206,31 @@ def topic_page(session: Session, learner_id: uuid.UUID, bank: TopicBank, *, skil
     }
 
 
+def skill_objectives(topic: PracticeTopic, skill: Skill) -> list[dict[str, str]]:
+    """Describe the selected task, rather than reusing a speaking goal for every skill.
+
+    Receptive goals use the authored questions, without answers or explanations.
+    Productive goals retain the task's own criteria. This presentation does not
+    mutate the lesson contract or invalidate earlier evidence hashes.
+    """
+    activity = getattr(topic, skill)
+    if skill in ("speaking", "writing"):
+        return [item.model_dump() for item in activity.criteria]
+    lead = {
+        "reading": {
+            "nl": "Lees de tekst. Zoek de antwoorden op deze vragen.",
+            "en": "Read the text. Find the answers to these questions.",
+            "fa": "متن را بخوان. پاسخ این پرسش‌ها را پیدا کن.",
+        },
+        "listening": {
+            "nl": "Luister naar het fragment. Zoek de antwoorden op deze vragen.",
+            "en": "Listen to the recording. Find the answers to these questions.",
+            "fa": "به قطعهٔ صوتی گوش بده. پاسخ این پرسش‌ها را پیدا کن.",
+        },
+    }
+    return [lead[skill], *[item.prompt.model_dump() for item in activity.questions]]
+
+
 def topic_detail(session: Session, learner_id: uuid.UUID, bank: TopicBank, topic: PracticeTopic, *, skill: Skill,
                  recording_max_seconds: float = 60) -> dict:
     activity = getattr(topic, skill).model_dump()
@@ -219,7 +244,7 @@ def topic_detail(session: Session, learner_id: uuid.UUID, bank: TopicBank, topic
     words = {word.id: word for word in library_for(bank.stage_id).vocabulary}
     return {
         "stage_id": bank.stage_id, "skill": skill, "id": topic.id, "title": topic.title.model_dump(),
-        "category": topic.category.model_dump(), "objectives": [item.model_dump() for item in topic.objectives],
+        "category": topic.category.model_dump(), "objectives": skill_objectives(topic, skill),
         "language_focus": topic.language_focus.model_dump(), "review_status": bank.review_status,
         "vocabulary": [words[key].model_dump(exclude={"topic"}) for key in topic.vocabulary_ids],
         "activity": activity,

@@ -72,7 +72,7 @@ export function LearningPreferences() {
         </Notice>
       )}
       <div className="preference-grid">
-        <Field label="Mijn niveau" hint="Dit niveau bepaalt je verhalen, video's en onderwerpen.">
+        <Field label="Mijn niveau" hint="Dit niveau bepaalt je verhalen en oefenonderwerpen.">
           {(control) => (
             <Select
               {...control}

@@ -37,7 +37,7 @@ Progress and settings sit alongside them, keeping everyday practice easy to find
   separate four-skill final check. Every stage has a word bank of at least 500 entries, 100 stories and
   100 topics per skill. These are coverage counts, not proof that the content is correctly calibrated.
 - **Verhalen:** the continuing story _De Lindestraat_, comprehension activities, optional support and
-  labelled synthetic audio. Choices shape later episodes. Video lessons are a separate optional feature.
+  labelled synthetic audio. Choices shape later episodes. Narrated stories combine text, optional sentence audio, questions and retelling. Video creation is retired.
 - **Spreken:** practical missions about changing an appointment, ordering lunch, returning a purchase
   and contacting a course. The character's facts and valid arrangements are enforced by code.
   Push-to-talk has a labelled typed fallback; typed answers do not count as spoken evidence.
@@ -132,6 +132,23 @@ The existing banks and progress stay intact. The new language and level assignme
 review; raw scans and OCR remain private. [What was added and where to find it](docs/SOURCE_LESSONS.md).
 
 ![The current Today interface](docs/previews/today-desktop.png)
+
+## Finding practice
+
+Open **Niveaus**, choose any of the twelve levels, then jump directly to reading, listening, speaking,
+writing, vocabulary, grammar or stories. Inside a level, the level picker keeps the selected activity
+when you switch levels. Stories and Words also have their own level-filtered libraries; personal episodes
+and saved-word review are separate views.
+
+The interface displays content-backed counts and targets. Every level has 150 productive-core words,
+500+ vocabulary cards, 100+ grammar questions and 100+ topics per skill. The story target is **not yet met**:
+there are 290 eligible authored stories across the twelve levels, with 2,110 still needed for 200 per level.
+Older short/template texts are kept separate and never counted toward that target. These counts describe
+content availability; language accuracy and CEFR placement still require qualified review.
+
+Video generation has been removed from the interface and disabled in the API and background jobs.
+The replacement is interactive narrated reading: choose a story, hear individual sentences, answer
+questions and retell it. Audio uses the existing speech service only when requested.
 
 ## Grammar practice
 
@@ -308,5 +325,5 @@ billing. Hosting and database costs continue even when paid inference is disable
   [curriculum](docs/CURRICULUM.md), [topics](docs/TOPIC_PRACTICE.md), [source coverage](docs/SOURCE_COVERAGE.md).
 - **Engineering:** [architecture and conventions](docs/ENGINEERING.md), [decisions](docs/DECISIONS.md),
   [verification](docs/VERIFICATION.md), [release guide](docs/GO_LIVE.md).
-- **Experiences:** [story engine](docs/STORY_ENGINE.md), [video lessons](docs/VIDEO_LESSONS.md),
+- **Experiences:** [story engine](docs/STORY_ENGINE.md),
   [review walkthrough](docs/DEMO.md).

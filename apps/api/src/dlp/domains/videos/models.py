@@ -1,8 +1,6 @@
-"""A video lesson: a short presenter video in Belgian Dutch at the learner's level, about a topic they chose.
+"""Historical video records retained for owner exports and media access.
 
-The script is written by the chat model and checked by the story validator; the picture and the voice
-come from the configured renderer (an Azure text-to-speech avatar in production, drawn scene cards with
-the local voice on a laptop). The finished file lives in blob storage; subtitles are kept here as cues.
+No new videos are created. Keeping the table avoids deleting existing learner data on upgrade.
 """
 from __future__ import annotations
 

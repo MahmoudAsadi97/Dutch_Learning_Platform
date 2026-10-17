@@ -19,6 +19,33 @@ export interface ProductiveTask {
   min_words: number;
   max_words: number;
 }
+export interface StageCoverage {
+  words: number;
+  productive_core: number;
+  productive_contexts: number;
+  authored_stories: number;
+  eligible_authored_stories: number;
+  legacy_stories: number;
+  total_stories: number;
+  grammar_questions: number;
+  grammar_topics: number;
+  skill_topics: Record<Skill, number>;
+  targets: {
+    words: number;
+    productive_core: number;
+    authored_stories: number;
+    grammar_questions: number;
+    skill_topics: number;
+  };
+  shortfalls: {
+    words: number;
+    productive_core: number;
+    authored_stories: number;
+    grammar_questions: number;
+    skill_topics: Record<Skill, number>;
+  };
+  review_status: string;
+}
 export interface StageSummary {
   id: string;
   title: LearningCopy;
@@ -28,6 +55,7 @@ export interface StageSummary {
   passed: boolean;
   practice_completed: Skill[];
   test_available: boolean;
+  coverage?: StageCoverage;
 }
 export interface CurriculumCatalog {
   learner_key: string;

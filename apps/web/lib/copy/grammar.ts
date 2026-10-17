@@ -1,4 +1,8 @@
 export const grammarCopy = {
+  position: { nl: "Vraag {n} van {total}", en: "Question {n} of {total}", fa: "پرسش {n} از {total}" },
+  previousQuestion: { nl: "Vorige vraag", en: "Previous question", fa: "پرسش قبلی" },
+  nextQuestion: { nl: "Volgende vraag", en: "Next question", fa: "پرسش بعدی" },
+  checkAnswer: { nl: "Controleer je antwoord", en: "Check your answer", fa: "پاسخت را بررسی کن" },
   count: { nl: "grammaticaoefeningen", en: "grammar questions", fa: "تمرین دستور زبان" },
   choose: { nl: "Kies een onderwerp", en: "Choose a topic", fa: "یک موضوع انتخاب کن" },
   listen: {

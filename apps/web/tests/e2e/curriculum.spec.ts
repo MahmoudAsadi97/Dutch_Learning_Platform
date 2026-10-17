@@ -43,7 +43,7 @@ test("grammar answers do not pollute the submitted reading answers", async ({ pa
   const grammar = stage.grammar[0].practice[0];
   await page.locator(`input[name="q-${grammar.id}"]`).nth(grammar.answer_index).check();
   await page
-    .getByRole("button", { name: /Controleer deze ronde/ })
+    .getByRole("button", { name: /Controleer je antwoord/ })
     .first()
     .click();
   await expect(page.locator(".practice-correct").first()).toBeVisible();
@@ -261,9 +261,9 @@ test("grammar rounds stay manageable and accessible on a narrow phone", async ({
     .getByRole("button", { name: "Grammatica", exact: true })
     .click();
   const practice = page.getByRole("region", { name: "Grammaticaoefeningen", exact: true });
-  await expect(practice.locator(".curriculum-question")).toHaveCount(10);
+  await expect(practice.locator(".curriculum-question")).toHaveCount(1);
   await expect(practice.locator("#grammar-topic option")).not.toHaveCount(0);
-  await expect(practice.getByRole("button", { name: /Controleer deze ronde/ })).toBeDisabled();
+  await expect(practice.getByRole("button", { name: /Controleer je antwoord/ })).toBeDisabled();
   await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
   await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const results = await new AxeBuilder({ page })

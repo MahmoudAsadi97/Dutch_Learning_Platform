@@ -163,7 +163,7 @@ general on purpose, so a new code gets its sentence in the same change.
 
 Interface text lives in the catalogue, never in components: `lib/ui-copy.ts` for shared groups (navigation,
 actions, states, errors, failures, welcome, honesty chips, about) and `lib/copy/*.ts` for one screen each
-(episode, video, words, missions, speech, exercise). Every entry has `nl`, `en` and `fa`; `UiText` renders the Dutch
+(episode, words, missions, speech, exercise). Every entry has `nl`, `en` and `fa`; `UiText` renders the Dutch
 with the glosses the learner chose and the level allows. Persian appears per batch only after a fluent
 reader has checked it: the owner reads a batch at `/dev/copy` and sets its flag in `lib/copy/review.ts`;
 until then English stands in for learners who chose it, and Persian-only learners see Dutch alone.
@@ -191,7 +191,6 @@ they are touched.
 | `SpeechToText` | `FasterWhisperSpeechToText` (`nl`) | `FixtureSpeechToText` (sidecar transcript) | `AzureSpeechToText` (M3) |
 | `TextToSpeech` | `PiperTextToSpeech` (`nl_BE` voice, label `synthetic-development`) | `FixtureTextToSpeech` (tone) | `AzureTextToSpeech` (M3) |
 | `BlobStore` | `AzureBlobStore` against Azurite | `MemoryBlobStore` | `AzureBlobStore` against a private container |
-| `VideoRenderer` | `SceneCardRenderer` (drawn cards, the local voice, ffmpeg) | `SceneCardRenderer` with the tone voice, small and fast | `AzureAvatarRenderer` (batch text-to-speech avatar) |
 | Identity | fixture principal in the web tier | same | Container Apps built-in auth headers |
 
 `providers/registry.py` builds them from `CHAT_PROVIDER`, `STT_PROVIDER`, `TTS_PROVIDER`,
@@ -465,7 +464,7 @@ the stage check (`stage_check`, `curriculum.service.attempt_points`, never an ad
 `topic_conversations.service.turn_points`; the daily start limit counts the Brussels day, `day_bounds_utc`) and
 the warm-up (`speech_warmup`, `POST /speech/transcribe` with `purpose=warmup`). `skill` names the action's own
 skill (a typed turn is writing); `counted` moves the day counter by another number than the paid units (story and
-video questions pay per answered one and count the correct ones). Awards sit only in the entry functions, after
+historical video awards are retained, but no new video activity is accepted). Awards sit only in the entry functions, after
 the paid call and every refusal, and a stored body replayed (a topic's classic answer, a stage check, a turn)
 repeats `goal_reached` through `replayed`, never in what is stored.
 

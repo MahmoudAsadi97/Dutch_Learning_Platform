@@ -26,7 +26,8 @@ const statusCopy: Record<string, string> = {
   failed: "niet gelukt",
 };
 
-export function StoryLibrary() {
+export function StoryLibrary({ embedded = false }: { embedded?: boolean }) {
+  const Heading = embedded ? "h2" : "h1";
   const [data, setData] = useState<{ series: SeriesView; items: EpisodeSummary[] } | null>(null);
   const [error, setError] = useState<Copy | null>(null);
   const [wish, setWish] = useState("");
@@ -82,7 +83,7 @@ export function StoryLibrary() {
       <header className="path-heading">
         <div>
           <p className="eyebrow">VERHALEN</p>
-          <h1>{data.series.title}</h1>
+          <Heading>{data.series.title}</Heading>
           <p className="muted">
             Een doorlopend feuilleton uit {data.series.town}, geschreven op jouw niveau (
             {stageLabels[data.series.stage_id] ?? data.series.stage_id}). {read} van {data.items.length}{" "}

@@ -215,7 +215,7 @@ test("Story Time reveals translations without resetting understanding and read m
   const before = await (await page.request.get("/api/curriculum/pre-a1")).json();
   await page
     .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Story Time", exact: true })
+    .getByRole("button", { name: "Verhalen", exact: true })
     .click();
   await expect(page.locator(".library-count")).toContainText("100 verhalen");
   await expect(page.locator(".story-tile")).toHaveCount(12);
@@ -245,7 +245,7 @@ test("Story Time reveals translations without resetting understanding and read m
   await page.reload();
   await page
     .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Story Time", exact: true })
+    .getByRole("button", { name: "Verhalen", exact: true })
     .click();
   await expect(page.locator(".library-count")).toContainText("1 gemarkeerd als gelezen");
 });
@@ -500,7 +500,7 @@ test("word cards and translated Story Time remain accessible and fit 320 and 390
 
     await page
       .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-      .getByRole("button", { name: "Story Time", exact: true })
+      .getByRole("button", { name: "Verhalen", exact: true })
       .click();
     await page.getByRole("button", { name: "Lees Een dag 1", exact: true }).click();
     const reader = page.locator(".story-reader");

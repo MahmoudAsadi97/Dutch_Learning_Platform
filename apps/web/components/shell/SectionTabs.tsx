@@ -25,17 +25,9 @@ export function SectionTabs({ label, tabs }: { label: string; tabs: Tab[] }) {
   );
 }
 
-/** Verhalen holds the serial and the videos. */
+/** Personal episodes are reached inside the story library. */
 export function MediaTabs() {
-  return (
-    <SectionTabs
-      label="Verhalen en video's"
-      tabs={[
-        { href: "/verhalen", label: "Verhalen" },
-        { href: "/videos", label: "Video's" },
-      ]}
-    />
-  );
+  return null;
 }
 
 /** The two rooms beside the destinations. */

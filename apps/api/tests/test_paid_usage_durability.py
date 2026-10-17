@@ -186,70 +186,56 @@ def test_repeated_settlement_does_not_double_count(paid_settings, paid_learner):
     assert snapshot["used"] == 200 and snapshot["reserved"] == 0
 
 
-def test_paid_narration_render_failure_settles_in_fresh_session_despite_parent_rollback(
-    paid_settings, paid_learner,
-):
+def test_retired_paid_render_keeps_prior_expenditure_despite_parent_rollback(paid_settings, paid_learner):
     from dlp.domains.videos import service as videos
     from dlp.domains.videos.models import VideoLesson
-    class BilledNarrationCards:
-        name = "scene-cards"
-        label = "scene-cards"
-        voice = "nl-BE-controlled"
-        def start(self, request, *, request_id):
-            return "controlled-narration-already-created"
-        def cleanup(self, job_id):
-            pass
-    provider = SimpleNamespace(video=BilledNarrationCards())
-    azure_narration = paid_settings.model_copy(update={"video_provider": "cards", "tts_provider": "azure"})
+    azure_narration = paid_settings.model_copy(update={"video_provider": "cards", "tts_provider": "azure",
+                                                     "usage_daily_video_seconds": 300, "usage_total_video_seconds": 7200})
     with session_scope() as session:
-        lesson = VideoLesson(learner_id=paid_learner, stage_id="a2", status="writing", word_count=80,
-                             scenes=[{"nl": "Ik wil mijn afspraak verzetten.", "keyword": "afspraak"}] * 3)
+        reservation = usage.reserve(session, azure_narration, paid_learner, "video_seconds", 40, "retired-paid-render")
+        usage.started(session, reservation.id)
+        lesson = VideoLesson(learner_id=paid_learner, stage_id="a2", status="rendering", renderer="scene-cards",
+                             checks={"video_reservation": str(reservation.id), "estimated_seconds": 40,
+                                     "paid_render": True}, scenes=[{"nl": "Ik wacht."}])
         session.add(lesson)
         session.flush()
         lesson_id = lesson.id
-        assert videos._start_render(session, lesson, azure_narration, provider) == "rendering"
-    reserved = counters(azure_narration, paid_learner)["video_seconds"]["daily"]["reserved"]
-    assert reserved > 0
-    with pytest.raises(RuntimeError, match="poll transaction failed"):
-        with session_scope() as session:
-            lesson = session.get(VideoLesson, lesson_id)
-            assert lesson.renderer == "scene-cards" and lesson.checks["paid_render"] is True
-            videos._fail_render(session, lesson, provider, "render", "encoding failed after narration")
-            raise RuntimeError("poll transaction failed")
-    snapshot = counters(azure_narration, paid_learner)["video_seconds"]["daily"]
-    assert snapshot["used"] == reserved and snapshot["reserved"] == 0
-
-
-def test_azure_narrated_cards_keep_allowance_when_start_fails_after_synthesis(paid_settings, paid_learner):
-    from dlp.domains.videos import service as videos
-    from dlp.domains.videos.models import VideoLesson
-    class FailedAfterNarration:
-        name = "scene-cards"
-        label = "scene-cards"
-        voice = "nl-BE-controlled"
-        calls = 0
-        def start(self, request, *, request_id):
-            self.calls += 1
-            raise ProviderError("controlled encoding failure after billed narration")
-    renderer = FailedAfterNarration()
-    provider = SimpleNamespace(video=renderer)
-    azure_narration = paid_settings.model_copy(update={"video_provider": "cards", "tts_provider": "azure"})
     with pytest.raises(RuntimeError, match="parent write failed"):
         with session_scope() as session:
-            lesson = VideoLesson(learner_id=paid_learner, stage_id="a2", status="writing", word_count=80,
-                                 scenes=[{"nl": "Ik wil mijn afspraak verzetten.", "keyword": "afspraak"}] * 3)
-            session.add(lesson)
-            session.flush()
-            assert videos._start_render(session, lesson, azure_narration, provider) == "render"
+            assert videos.retire_pending(session, {"video_id": str(lesson_id)})["generation_enabled"] is False
             raise RuntimeError("parent write failed")
     snapshot = counters(azure_narration, paid_learner)["video_seconds"]["daily"]
-    assert renderer.calls == 1 and snapshot["used"] > 0 and snapshot["reserved"] == 0
+    assert snapshot["used"] == 40 and snapshot["reserved"] == 0
+    # The durable settlement is safe when the failed status transaction is retried.
+    with session_scope() as session:
+        videos.retire_pending(session, {"video_id": str(lesson_id)})
+    assert counters(azure_narration, paid_learner)["video_seconds"]["daily"]["used"] == 40
+
+
+def test_retired_local_render_releases_only_an_unbilled_reservation(paid_settings, paid_learner):
+    from dlp.domains.videos import service as videos
+    from dlp.domains.videos.models import VideoLesson
+    local = paid_settings.model_copy(update={"video_provider": "cards", "tts_provider": "local",
+                                               "usage_daily_video_seconds": 300, "usage_total_video_seconds": 7200})
+    with session_scope() as session:
+        reservation = usage.reserve(session, local, paid_learner, "video_seconds", 30, "retired-local-render")
+        lesson = VideoLesson(learner_id=paid_learner, stage_id="a2", status="rendering", renderer="scene-cards",
+                             checks={"video_reservation": str(reservation.id), "estimated_seconds": 30,
+                                     "paid_render": False})
+        session.add(lesson)
+        session.flush()
+        assert videos.retire_pending(session, {"video_id": str(lesson.id)}) == {
+            "status": "failed", "generation_enabled": False,
+        }
+    snapshot = counters(local, paid_learner)["video_seconds"]["daily"]
+    assert snapshot["used"] == 0 and snapshot["reserved"] == 0
 
 
 def test_legacy_cards_with_persisted_neural_voice_keep_uncertain_allowance(paid_settings, paid_learner):
     from dlp.domains.videos import service as videos
     from dlp.domains.videos.models import VideoLesson
-    azure_narration = paid_settings.model_copy(update={"video_provider": "cards", "tts_provider": "azure"})
+    azure_narration = paid_settings.model_copy(update={"video_provider": "cards", "tts_provider": "azure",
+                                                     "usage_daily_video_seconds": 300, "usage_total_video_seconds": 7200})
     with session_scope() as session:
         reservation = usage.reserve(session, azure_narration, paid_learner, "video_seconds", 30, "legacy-neural-cards")
         lesson = VideoLesson(learner_id=paid_learner, stage_id="a2", status="rendering", renderer="scene-cards",

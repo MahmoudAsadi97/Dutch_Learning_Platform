@@ -29,13 +29,12 @@ DOMAINS_IMPORTING_ADAPTERS = frozenset(
         ("domains.stories.service", "dlp.providers.registry"),
         ("domains.topic_conversations.service", "dlp.providers.registry"),
         ("domains.topic_conversations.workflow", "dlp.providers.chat_openai_compatible"),
-        ("domains.videos.service", "dlp.providers.chat_openai_compatible"),
         ("domains.videos.service", "dlp.providers.registry"),
     }
 )
 
 # provider module -> domain module it imports
-PROVIDERS_IMPORTING_DOMAINS = frozenset({("providers.video_local", "dlp.domains.speech.audio")})
+PROVIDERS_IMPORTING_DOMAINS = frozenset()
 
 # vendor SDKs and agent frameworks that application code (domains, api) must not import directly;
 # the two workflow modules keep LangGraph until the pipelines become plain functions

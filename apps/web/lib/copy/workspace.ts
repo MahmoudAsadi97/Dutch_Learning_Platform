@@ -1,0 +1,132 @@
+import type { Copy } from "@/lib/ui-copy";
+
+export const workspaceCopy = {
+  authoredCollection: {
+    nl: "Verhalen met 8–12 regels",
+    en: "Stories with 8–12 authored lines",
+    fa: "داستان‌های دارای ۸ تا ۱۲ جملهٔ تألیفی",
+  },
+  olderCollection: {
+    nl: "Ook oudere korte teksten bekijken",
+    en: "Also browse older short texts",
+    fa: "دیدن متن‌های کوتاه قدیمی هم",
+  },
+  storyAvailable: {
+    nl: "{count} verhalen beschikbaar · doel: {target}",
+    en: "{count} stories available · target: {target}",
+    fa: "{count} داستان موجود · هدف: {target}",
+  },
+  filteredStories: {
+    nl: "{count} resultaten in deze selectie",
+    en: "{count} results in this selection",
+    fa: "{count} نتیجه در این انتخاب",
+  },
+  title: {
+    nl: "Kies je niveau. Kies wat je wilt oefenen.",
+    en: "Choose your level. Choose what to practise.",
+    fa: "سطحت را انتخاب کن و مهارتی را که می‌خواهی تمرین کنی پیدا کن.",
+  },
+  intro: {
+    nl: "Alle niveaus zijn open. Ga direct naar een vaardigheid, woorden, grammatica of een verhaal.",
+    en: "Every level is open. Go straight to a skill, vocabulary, grammar or a story.",
+    fa: "همهٔ سطح‌ها باز هستند. مستقیم به مهارت‌ها، واژه‌ها، دستور زبان یا داستان‌ها برو.",
+  },
+  level: { nl: "Niveau", en: "Level", fa: "سطح" },
+  activity: { nl: "Kies je oefening", en: "Choose an activity", fa: "تمرینت را انتخاب کن" },
+  reading: { nl: "Lezen", en: "Reading", fa: "خواندن" },
+  listening: { nl: "Luisteren", en: "Listening", fa: "شنیدن" },
+  speaking: { nl: "Spreken", en: "Speaking", fa: "صحبت کردن" },
+  writing: { nl: "Schrijven", en: "Writing", fa: "نوشتن" },
+  words: { nl: "Woorden", en: "Vocabulary", fa: "واژه‌ها" },
+  grammar: { nl: "Grammatica", en: "Grammar", fa: "دستور زبان" },
+  stories: { nl: "Verhalen", en: "Stories", fa: "داستان‌ها" },
+  alphabet: { nl: "Alfabet", en: "Alphabet", fa: "الفبا" },
+  coverage: {
+    nl: "Wat staat er in dit niveau?",
+    en: "What is in this level?",
+    fa: "در این سطح چه محتوایی هست؟",
+  },
+  available: { nl: "Nu beschikbaar", en: "Available now", fa: "اکنون در دسترس" },
+  target: { nl: "Doel", en: "Target", fa: "هدف" },
+  totalWords: { nl: "Woordkaarten", en: "Word cards", fa: "کارت‌های واژگان" },
+  core: {
+    nl: "Kernwoorden om zelf te gebruiken",
+    en: "Core words to use yourself",
+    fa: "واژه‌های اصلی برای استفادهٔ فعال",
+  },
+  grammarCount: { nl: "Grammaticavragen", en: "Grammar questions", fa: "پرسش‌های دستور زبان" },
+  authored: {
+    nl: "Verhalen met 8–12 regels",
+    en: "Stories with 8–12 authored lines",
+    fa: "داستان‌های دارای ۸ تا ۱۲ جملهٔ تألیفی",
+  },
+  legacy: {
+    nl: "Oudere korte verhalen (apart)",
+    en: "Older short stories (separate)",
+    fa: "داستان‌های کوتاه قدیمی، در بخش جداگانه",
+  },
+  contexts: {
+    nl: "Voorbeelden in verschillende situaties",
+    en: "Examples in different situations",
+    fa: "مثال‌ها در موقعیت‌های مختلف",
+  },
+  topics: { nl: "onderwerpen", en: "topics", fa: "موضوع" },
+  missing: {
+    nl: "Nog {n} verhalen te schrijven voor het doel van {target}.",
+    en: "{n} more stories are needed to reach the target of {target}.",
+    fa: "برای رسیدن به هدف {target} داستان، هنوز {n} داستان باید نوشته شود.",
+  },
+  countNote: {
+    nl: "Deze aantallen tellen de beschikbare inhoud. Ze zeggen niet wat je al beheerst. De taal en niveau-indeling wachten nog op deskundige beoordeling.",
+    en: "These counts describe available content, not what you have mastered. Language and level placement still await specialist review.",
+    fa: "این اعداد محتوای موجود را نشان می‌دهند، نه میزان تسلط تو را. زبان و سطح‌بندی هنوز به بررسی متخصص نیاز دارند.",
+  },
+  details: {
+    nl: "Aantallen en doelen bekijken",
+    en: "View counts and targets",
+    fa: "دیدن تعداد محتوا و هدف‌ها",
+  },
+  resume: { nl: "Verder op jouw niveau", en: "Continue at your level", fa: "ادامه در سطح خودت" },
+  coach: {
+    nl: "Een suggestie voor je volgende oefening",
+    en: "A suggestion for your next activity",
+    fa: "پیشنهادی برای تمرین بعدی",
+  },
+  practiced: {
+    nl: "{n} van 4 vaardigheden geoefend",
+    en: "{n} of 4 skills practised",
+    fa: "{n} مهارت از ۴ مهارت تمرین شده",
+  },
+  check: { nl: "Naar de eindtoets", en: "Open the final check", fa: "رفتن به آزمون پایانی" },
+  checkLocked: {
+    nl: "Oefen eerst de vier vaardigheden",
+    en: "Practise all four skills first",
+    fa: "اول چهار مهارت را تمرین کن",
+  },
+  readingTitle: { nl: "Lees en ontdek", en: "Read and discover", fa: "بخوان و کشف کن" },
+  listeningTitle: { nl: "Luister en begrijp", en: "Listen and understand", fa: "گوش بده و بفهم" },
+  speakingTitle: { nl: "Voer een gesprek", en: "Have a conversation", fa: "گفت‌وگو کن" },
+  writingTitle: { nl: "Schrijf je boodschap", en: "Write your message", fa: "پیامت را بنویس" },
+  wordsTitle: {
+    nl: "Woorden die je kunt gebruiken",
+    en: "Words you can use",
+    fa: "واژه‌هایی که می‌توانی به کار ببری",
+  },
+  grammarTitle: { nl: "Zo bouw je een zin", en: "Build a sentence", fa: "ساختن جمله" },
+  alphabetTitle: {
+    nl: "Letters horen, herkennen en gebruiken",
+    en: "Hear, recognise and use letters",
+    fa: "شنیدن، شناختن و استفاده از حروف",
+  },
+  audioStory: {
+    nl: "Een verhaal om te lezen en te horen",
+    en: "A story to read and hear",
+    fa: "داستانی برای خواندن و شنیدن",
+  },
+  audioStoryHint: {
+    nl: "Lees, luister en vertel het na. Kies zelf wanneer je audio gebruikt.",
+    en: "Read, listen and retell. You choose when to use audio.",
+    fa: "بخوان، گوش بده و بازگو کن. خودت انتخاب کن چه زمانی صدا را پخش کنی.",
+  },
+  archive: { nl: "Persoonlijke afleveringen", en: "Personal episodes", fa: "قسمت‌های شخصی" },
+} satisfies Record<string, Copy>;
