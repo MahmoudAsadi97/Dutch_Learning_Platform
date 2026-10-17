@@ -67,8 +67,8 @@ these inventories are provisional until language review, not a claim of CEFR cer
 
 | Stage | Productive core | Authored stories | Story target |
 | --- | ---: | ---: | ---: |
-| Pre-A1 | 150 | 42 | 200 |
-| A1 | 150 | 15 | 200 |
+| Pre-A1 | 150 | 52 | 200 |
+| A1 | 150 | 35 | 200 |
 | pre-A2 | 150 | 27 | 200 |
 | A2 | 150 | 22 | 200 |
 | pre-B1 | 150 | 18 | 200 |

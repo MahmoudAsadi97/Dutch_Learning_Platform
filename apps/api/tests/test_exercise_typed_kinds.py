@@ -21,7 +21,7 @@ from tests.conftest import auth_headers
 #           order); the other kinds work for every word. Measured 16 Oct 2026 including source and connected packs.
 AVAILABLE = {
     'pre-a1': (461, 471, 303, 108, 0),
-    'a1': (462, 473, 307, 189, 0),
+    'a1': (462, 473, 307, 188, 0),
     'pre-a2': (456, 463, 304, 140, 0),
     'a2': (483, 488, 320, 368, 0),
     'pre-b1': (488, 499, 338, 149, 139),

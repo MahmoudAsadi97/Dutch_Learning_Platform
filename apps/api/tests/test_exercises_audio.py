@@ -31,7 +31,7 @@ SPEECH = {"listen_choose", "dictation", "shadow"}
 # examples are nearly all longer. Measured 16 Oct 2026 including source and connected packs.
 SPOKEN = {
     'pre-a1': (482, 455),
-    'a1': (446, 331),
+    'a1': (447, 331),
     'pre-a2': (201, 65),
     'a2': (504, 516),
     'pre-b1': (394, 191),
