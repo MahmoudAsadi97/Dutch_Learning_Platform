@@ -27,7 +27,7 @@ for (const width of [1440, 390, 320]) {
     await expect(nav.getByRole("link", { name: /^Vandaag/ })).toBeVisible();
     // the navigation's Persian waits for review (O2), so learners who also chose English see English
     await expect(nav.locator("[lang=fa]")).toHaveCount(0);
-    const glosses = nav.locator(".ui-gloss[lang=en]");
+    const glosses = nav.locator("a .ui-gloss[lang=en]");
     // the glosses are there at every width; under 360px they are hidden, not missing
     await expect(glosses).toHaveCount(width > 1050 ? 7 : 5);
     if (width >= 360) await expect(glosses.first()).toBeVisible();
