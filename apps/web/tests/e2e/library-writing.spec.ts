@@ -521,6 +521,7 @@ test("word cards and translated Story Time remain accessible and fit 320 and 390
       .getByRole("navigation", { name: "Onderdelen van dit niveau" })
       .getByRole("button", { name: "Verhalen", exact: true })
       .click();
+    await page.getByRole("checkbox", { name: /^Ook oudere korte teksten bekijken/ }).check();
     await page.getByRole("button", { name: "Lees Een dag 1", exact: true }).click();
     const reader = page.locator(".story-reader");
     await reader.getByRole("button", { name: "Vertaling tonen", exact: true }).click();
