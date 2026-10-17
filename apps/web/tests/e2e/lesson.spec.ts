@@ -106,7 +106,7 @@ test.describe("settings", () => {
     await expect(page.getByTestId("principal")).toContainText(OWNER);
     await expect(page.getByTestId("principal")).toContainText("fixture");
     const rows = page.getByTestId("preflight").locator("tbody tr");
-    await expect(rows).toHaveCount(11);
+    await expect(rows).toHaveCount(10);
     await expect(page.getByTestId("preflight")).not.toContainText("video renderer");
     await expect(page.getByTestId("preflight")).toContainText("ffmpeg");
   });

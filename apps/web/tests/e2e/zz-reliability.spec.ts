@@ -68,7 +68,9 @@ test("home shows the staged learning path without a fabricated aggregate score",
   await expect(overview).not.toContainText("Laden…");
   await expect(page.getByRole("link", { name: /Open pre-A1:/ })).toBeVisible();
   await expect(overview).not.toContainText(/A3|totaalscore|azure-small|feedback-v1/);
-  await expect(page.getByRole("heading", { name: "Kleine stappen. Echte gesprekken." })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /^Kies je niveau\. Kies wat je wilt oefenen\./ }),
+  ).toBeVisible();
   await testInfo.attach("home-desktop", {
     body: await page.screenshot({ fullPage: true }),
     contentType: "image/png",

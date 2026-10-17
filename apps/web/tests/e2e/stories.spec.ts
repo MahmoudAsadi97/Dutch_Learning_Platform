@@ -14,7 +14,7 @@ test("today shows the streak, the goal and the episode that is ready", async ({ 
   await expect(home.getByText("Nog 20 punten tot je dagdoel.")).toBeVisible();
   await expect(home.getByRole("link", { name: /3 woorden om te herhalen/ })).toHaveAttribute(
     "href",
-    "/woorden",
+    "/woorden?view=personal",
   );
   await expect(home.getByTestId("episode-card")).toContainText("De sleutel van Sami");
   await expect(

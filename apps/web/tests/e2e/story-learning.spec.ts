@@ -47,8 +47,10 @@ for (const stageId of stages) {
       .getByRole("navigation", { name: "Onderdelen van dit niveau" })
       .getByRole("button", { name: "Verhalen", exact: true })
       .click();
-    await expect(page.getByLabel("Onderwerp", { exact: true })).toHaveValue("Verhaal naar gesprek");
-    await page.getByRole("button", { name: /^Ontdek de nieuwe verhalen/ }).click();
+    await expect(page.getByLabel("Onderwerp", { exact: true })).toHaveValue("");
+    await expect(
+      page.getByRole("checkbox", { name: /^Ook oudere korte teksten bekijken/ }),
+    ).not.toBeChecked();
     await page.getByRole("button", { name: `Lees ${story.title.nl}`, exact: true }).click();
     const authored = page.getByRole("list", { name: "Regels van het verhaal" });
     await expect(authored.locator(":scope > li")).toHaveCount(story.lines.length);

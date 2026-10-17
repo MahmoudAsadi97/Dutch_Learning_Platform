@@ -19,11 +19,17 @@ test.describe("resilience", () => {
     await expect(banner).toHaveAttribute("data-state", "api-down");
     // the Spreken hub says the conversations failed to load instead of pretending there are none
     const conversations = page.locator("section", {
-      has: page.getByRole("heading", { name: "Om de beurt antwoorden en vragen" }),
+      has: page.getByRole("heading", { name: "Korte gesprekken met een gesprekspartner" }),
     });
-    await expect(conversations.getByRole("alert")).toContainText("De gesprekken konden niet worden geladen.");
-    await expect(page.getByText(/nog geen korte gesprekken/i)).toHaveCount(0);
+    await expect(conversations.getByRole("alert")).toContainText(
+      "De extra gesprekken konden niet worden geladen.",
+    );
+    await expect(page.getByText(/Voor dit niveau staan hier nog geen extra gesprekken/)).toHaveCount(0);
 
+    await page.locator("#library-hub-stage").selectOption("a1");
+    await expect(conversations.getByRole("alert")).toContainText(
+      "De extra gesprekken konden niet worden geladen.",
+    );
     await page.unroute("**/api/**");
     await banner.getByRole("button", { name: "Opnieuw proberen" }).click();
     await expect(page.getByTestId("connection-banner")).toHaveCount(0);

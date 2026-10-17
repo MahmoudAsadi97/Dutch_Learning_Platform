@@ -46,11 +46,15 @@ async function mockLibrary(page: Page, withCore = false) {
           vocabulary_count: 500,
           ...(withCore ? { productive_core_count: 150 } : {}),
           story_count: 100,
+          authored_story_count: 0,
+          eligible_authored_story_count: 0,
+          target_story_count: 200,
           topics: ["Eten", "Werk"].map((key) => ({
             key,
             label: copy(key),
             vocabulary_count: 250,
             story_count: 50,
+            eligible_authored_story_count: 0,
           })),
         },
       });
@@ -68,11 +72,13 @@ async function mockLibrary(page: Page, withCore = false) {
     const offset = Number(url.searchParams.get("offset") ?? 0);
     const limit = Number(url.searchParams.get("limit") ?? (isWords ? 20 : 12));
     const candidates =
-      isWords && withCore && url.searchParams.get("core_only") === "true"
-        ? fixtureWords.slice(0, 150)
-        : isWords
-          ? fixtureWords
-          : fixtureStories;
+      !isWords && url.searchParams.get("authored_only") === "true"
+        ? []
+        : isWords && withCore && url.searchParams.get("core_only") === "true"
+          ? fixtureWords.slice(0, 150)
+          : isWords
+            ? fixtureWords
+            : fixtureStories;
     const items = candidates.filter(
       (item) =>
         (!topic || item.topic.nl === topic) && (!query || JSON.stringify(item).toLowerCase().includes(query)),
@@ -217,7 +223,9 @@ test("Story Time reveals translations without resetting understanding and read m
     .getByRole("navigation", { name: "Onderdelen van dit niveau" })
     .getByRole("button", { name: "Verhalen", exact: true })
     .click();
-  await expect(page.locator(".library-count")).toContainText("100 verhalen");
+  await expect(page.locator(".library-count")).toContainText("0 verhalen beschikbaar · doel: 200");
+  await page.getByRole("checkbox", { name: /^Ook oudere korte teksten bekijken/ }).check();
+  await expect(page.locator(".story-time")).toContainText("100 resultaten in deze selectie");
   await expect(page.locator(".story-tile")).toHaveCount(12);
   await page.getByRole("button", { name: "Lees Een dag 1", exact: true }).click();
   const reader = page.locator(".story-reader");
@@ -241,13 +249,24 @@ test("Story Time reveals translations without resetting understanding and read m
   const after = await (await page.request.get("/api/curriculum/pre-a1")).json();
   expect(after.progress).toEqual(before.progress);
   await reader.getByRole("button", { name: "← Alle verhalen", exact: true }).click();
-  await expect(page.locator(".library-count")).toContainText("1 gemarkeerd als gelezen");
+  await expect(
+    page
+      .locator(".story-tile")
+      .filter({ has: page.getByRole("button", { name: "Lees Een dag 1", exact: true }) })
+      .getByText("Gelezen", { exact: true }),
+  ).toBeVisible();
   await page.reload();
   await page
     .getByRole("navigation", { name: "Onderdelen van dit niveau" })
     .getByRole("button", { name: "Verhalen", exact: true })
     .click();
-  await expect(page.locator(".library-count")).toContainText("1 gemarkeerd als gelezen");
+  await page.getByRole("checkbox", { name: /^Ook oudere korte teksten bekijken/ }).check();
+  await expect(
+    page
+      .locator(".story-tile")
+      .filter({ has: page.getByRole("button", { name: "Lees Een dag 1", exact: true }) })
+      .getByText("Gelezen", { exact: true }),
+  ).toBeVisible();
 });
 
 test("writing corrections explain real fragments and require choosing the revised draft", async ({
