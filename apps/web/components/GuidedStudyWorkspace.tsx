@@ -299,7 +299,10 @@ export function GuidedStudyWorkspace({
               <Icon name="search" size={18} />
               <input
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setTopicPage({ key: "", index: 0 });
+                }}
                 placeholder={studyCopy.topicSearchPlaceholder.nl}
                 aria-label={studyCopy.topicSearchLabel.nl}
                 maxLength={120}
@@ -310,7 +313,13 @@ export function GuidedStudyWorkspace({
                 {" "}
                 <LearningText text={studyCopy.filterTheme} />{" "}
               </span>
-              <select value={group} onChange={(event) => setGroup(event.target.value)}>
+              <select
+                value={group}
+                onChange={(event) => {
+                  setGroup(event.target.value);
+                  setTopicPage({ key: "", index: 0 });
+                }}
+              >
                 <option value="">
                   {" "}
                   <LearningText text={studyCopy.allThemes} />{" "}
@@ -413,6 +422,7 @@ export function GuidedStudyWorkspace({
                     onClick={() => {
                       setQuery("");
                       setGroup("");
+                      setTopicPage({ key: "", index: 0 });
                     }}
                   >
                     <LearningText text={studyCopy.clearFilters} />{" "}
@@ -423,7 +433,10 @@ export function GuidedStudyWorkspace({
                 <input
                   type="checkbox"
                   checked={showPlanned}
-                  onChange={(event) => setShowPlanned(event.target.checked)}
+                  onChange={(event) => {
+                    setShowPlanned(event.target.checked);
+                    setTopicPage({ key: "", index: 0 });
+                  }}
                 />
                 <LearningText text={studyCopy.includePlanned} />{" "}
               </label>

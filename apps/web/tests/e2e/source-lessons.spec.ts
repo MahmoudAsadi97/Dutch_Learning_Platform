@@ -104,12 +104,20 @@ test("A1 source words remain searchable in the complete level reference", async 
   const pack = await sourcePack("a1");
   expect(pack.vocabulary.length).toBeGreaterThan(0);
   const sourceWord = pack.vocabulary[0];
-  const response = await page.request.get(
-    "/api/library/a1/vocabulary?q=" + encodeURIComponent(sourceWord.term) + "&limit=100",
-  );
-  expect(response.ok()).toBe(true);
-  const words = await response.json();
-  expect(words.items.some((item: { id: string }) => item.id === sourceWord.id)).toBe(true);
+  let found = false;
+  let offset = 0;
+  let total = 1;
+  while (!found && offset < total) {
+    const response = await page.request.get(
+      "/api/library/a1/vocabulary?q=" + encodeURIComponent(sourceWord.term) + "&limit=50&offset=" + offset,
+    );
+    expect(response.ok()).toBe(true);
+    const words = await response.json();
+    found = words.items.some((item: { id: string }) => item.id === sourceWord.id);
+    offset += words.limit;
+    total = words.total;
+  }
+  expect(found).toBe(true);
   await page.goto("/learn/a1?skill=reading&view=vocabulary");
   const reference = page.getByRole("region", { name: "Woordenlijst van dit niveau" });
   await reference.getByLabel("Zoek in de woordenlijst").fill(sourceWord.term);

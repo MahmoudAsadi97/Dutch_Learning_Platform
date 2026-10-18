@@ -210,16 +210,17 @@ test("writing service failures preserve the answer and a later successful review
       : route.fulfill({ json: writingFeedback() });
   });
   const draft = await writingSection(page);
+  const error = page.getByTestId("study-practice").getByRole("alert");
   await draft.fill("Ik bent Noor. Ik woon in Belgie.");
   await page.getByRole("button", { name: /^Bekijk mijn feedback/ }).click();
-  await expect(page.getByRole("alert")).toBeVisible();
+  await expect(error).toBeVisible();
   await expect(draft).toHaveValue("Ik bent Noor. Ik woon in Belgie.");
   await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toHaveCount(0);
   await page.getByRole("button", { name: /^Bekijk mijn feedback/ }).click();
   await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toBeVisible();
   await draft.fill("Ik woon in België.");
   await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toHaveCount(0);
-  await expect(page.getByRole("alert")).toHaveCount(0);
+  await expect(error).toHaveCount(0);
 });
 
 test("an in-flight writing review cannot annotate an answer edited after its response", async ({ page }) => {

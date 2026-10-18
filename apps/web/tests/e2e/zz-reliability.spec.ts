@@ -64,13 +64,16 @@ test("home shows the staged learning path without a fabricated aggregate score",
 }, testInfo) => {
   await page.goto("/leerpad");
   const overview = page.getByTestId("learning-overview");
-  await expect(overview.getByTestId("curriculum-path").locator("li")).toHaveCount(12);
+  const levels = overview.getByTestId("curriculum-path").locator(".study-level-card");
+  await expect(levels).toHaveCount(12);
+  for (const level of await levels.all()) {
+    await expect(level.locator(".study-level-skills a")).toHaveCount(4);
+  }
   await expect(overview).not.toContainText("Laden…");
-  await expect(page.getByRole("link", { name: /Open pre-A1:/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: "pre-A1 · Lezen", exact: true })).toBeVisible();
   await expect(overview).not.toContainText(/A3|totaalscore|azure-small|feedback-v1/);
-  await expect(
-    page.getByRole("heading", { name: /^Kies je niveau\. Kies wat je wilt oefenen\./ }),
-  ).toBeVisible();
+  await expect(overview.locator('[lang="fa"]')).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: /^Kies je niveau/ })).toBeVisible();
   await testInfo.attach("home-desktop", {
     body: await page.screenshot({ fullPage: true }),
     contentType: "image/png",
