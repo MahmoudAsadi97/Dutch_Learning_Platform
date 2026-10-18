@@ -82,6 +82,14 @@ export const studyCopy = {
     nl: "Volgende woorden",
     en: "Next words",
   },
+  browseTopics: {
+    nl: "Bladeren door onderwerpen",
+    en: "Browse topics",
+  },
+  nextTopics: {
+    nl: "Volgende",
+    en: "Next",
+  },
   noWords: {
     nl: "Geen woorden gevonden. Probeer een kortere zoekterm.",
     en: "No words found. Try a shorter search.",
@@ -309,6 +317,46 @@ export const studyCopy = {
   directoryKicker: {
     nl: "JOUW STARTPUNT",
     en: "YOUR STARTING POINT",
+  },
+  optionalCoach: {
+    nl: "Hulp bij je volgende oefening",
+    en: "Help choosing your next practice",
+  },
+  situationConversations: {
+    nl: "Situatiegesprekken",
+    en: "Situation conversations",
+  },
+  conversationInvitation: {
+    nl: "Wil je verder oefenen? Kies een kort gesprek waarin je om de beurt antwoordt.",
+    en: "Want to practise further? Choose a short conversation and take turns answering.",
+  },
+  openConversations: {
+    nl: "Kies een situatiegesprek",
+    en: "Choose a situation conversation",
+  },
+  extendedPractice: {
+    nl: "Verder oefenen",
+    en: "Further practice",
+  },
+  backToTopicPractice: {
+    nl: "Terug naar de onderwerpen",
+    en: "Back to topic practice",
+  },
+  savedConversationNotice: {
+    nl: "Dit is een aparte oefening met bewaarde gespreksgeschiedenis, zodat je later kunt verdergaan. Er wordt geen oefenscore gegeven.",
+    en: "This separate practice keeps conversation history so you can continue later. It does not award a practice score.",
+  },
+  savedPracticeNotice: {
+    nl: "Deze extra oefening bewaart je voortgang en kladtekst. De tijdelijke oefenscores in het gewone onderwerp blijven apart.",
+    en: "This extra practice keeps your progress and draft. Temporary scores in the main topic practice remain separate.",
+  },
+  noConversations: {
+    nl: "Voor dit niveau zijn er nog geen situatiegesprekken. Je kunt wel de gewone spreekonderwerpen oefenen.",
+    en: "Situation conversations are not available at this level yet. You can practise the main speaking topics.",
+  },
+  chooseConversation: {
+    nl: "Kies een gesprek dat je wilt oefenen.",
+    en: "Choose a conversation you would like to practise.",
   },
   stopBeforeLeaving: {
     nl: "Stop eerst je opname voordat je verdergaat.",

@@ -8,9 +8,12 @@ import { LearningText } from "@/components/LanguageSupport";
 import { SKILLS, STAGE_IDS, stageLabel, stageNames } from "@/lib/domain/registry";
 import { studyHref, studySkillCopy } from "@/lib/client/study";
 import { useProfile } from "@/lib/client/profile";
+import { useState } from "react";
+import { PracticeCoach } from "@/components/PracticeCoach";
 
 export function StudyLevelDirectory() {
   const profile = useProfile();
+  const [coachOpen, setCoachOpen] = useState(false);
   return (
     <div className="study-directory" data-testid="learning-overview">
       <header className="study-page-heading">
@@ -56,6 +59,12 @@ export function StudyLevelDirectory() {
           </li>
         ))}
       </ol>
+      <details className="directory-coach" onToggle={(event) => setCoachOpen(event.currentTarget.open)}>
+        <summary>
+          <LearningText text={studyCopy.optionalCoach} />
+        </summary>
+        {coachOpen && <PracticeCoach />}
+      </details>
       <p className="study-footnote">
         <LearningText text={studyCopy.thePreLevelsAreBridgeStages} />
       </p>

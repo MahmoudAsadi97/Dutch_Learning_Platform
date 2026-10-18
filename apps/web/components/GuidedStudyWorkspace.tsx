@@ -17,6 +17,7 @@ import { SKILLS, STAGE_IDS, stageLabel, stageNames, type Skill } from "@/lib/dom
 import { studyCopy, studyLabels, studyStarterTopics } from "@/lib/copy/study";
 import { StudyError, WordReference } from "@/components/study/StudyShared";
 import { GuidedLesson } from "@/components/study/GuidedLesson";
+import { StudyDeepPractice } from "@/components/study/StudyDeepPractice";
 
 export function GuidedStudyWorkspace({
   stageId,
@@ -49,9 +50,11 @@ export function GuidedStudyWorkspace({
     initialView === "personal-words" ? "words" : initialView === "personal-stories" ? "stories" : null,
   );
   const [showPlanned, setShowPlanned] = useState(false);
+  const [topicPage, setTopicPage] = useState({ key: "", index: 0 });
+  const deepPractice = initialView === "conversation" || initialView === "extended";
   useEffect(() => rememberStudyStage(stageId), [stageId]);
   useEffect(() => {
-    if (topicId) return;
+    if (topicId || deepPractice) return;
     const controller = new AbortController();
     apiJson<StudyCatalog>(`study/${stageId}/topics?skill=${skill}`, { signal: controller.signal })
       .then((value) => {
@@ -62,7 +65,7 @@ export function GuidedStudyWorkspace({
         if (cause?.name !== "AbortError") setError(friendlyError(cause, "load"));
       });
     return () => controller.abort();
-  }, [stageId, skill, topicId, retry]);
+  }, [stageId, skill, topicId, retry, deepPractice]);
   const activeView = personal
     ? `personal-${personal}`
     : alphabet
@@ -71,7 +74,9 @@ export function GuidedStudyWorkspace({
         ? "grammar"
         : reference
           ? "vocabulary"
-          : undefined;
+          : initialView === "conversation"
+            ? "conversation"
+            : undefined;
   const filtered =
     catalog?.topics.filter(
       (topic) =>
@@ -79,6 +84,10 @@ export function GuidedStudyWorkspace({
         (!group || topic.group === group) &&
         `${topic.title.nl} ${topic.title.en ?? ""}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
     ) ?? [];
+  const pageKey = JSON.stringify([stageId, skill, query, group, showPlanned]);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / 12));
+  const pageIndex = topicPage.key === pageKey ? Math.min(topicPage.index, pageCount - 1) : 0;
+  const visibleTopics = filtered.slice(pageIndex * 12, (pageIndex + 1) * 12);
   return (
     <div className="study-workspace" data-testid="guided-study-workspace">
       <nav className="study-breadcrumb" aria-label={studyCopy.breadcrumb.nl}>
@@ -154,8 +163,8 @@ export function GuidedStudyWorkspace({
           <Link
             key={key}
             href={studyHref(stageId, key, {
-              ...(topicId ? { topic: topicId } : {}),
-              ...(activeView ? { view: activeView } : {}),
+              ...(topicId && !deepPractice ? { topic: topicId } : {}),
+              ...(activeView && !deepPractice ? { view: activeView } : {}),
             })}
             aria-current={skill === key ? "page" : undefined}
           >
@@ -223,7 +232,15 @@ export function GuidedStudyWorkspace({
           <AlphabetPractice />
         </div>
       )}
-      {topicId ? (
+      {deepPractice ? (
+        <StudyDeepPractice
+          key={`${stageId}.${skill}.${topicId ?? ""}`}
+          stageId={stageId}
+          skill={skill}
+          topicId={topicId}
+          conversation={initialView === "conversation" && skill === "speaking"}
+        />
+      ) : topicId ? (
         <GuidedLesson
           key={`${stageId}.${skill}.${topicId}.${activityId ?? ""}`}
           stageId={stageId}
@@ -246,6 +263,19 @@ export function GuidedStudyWorkspace({
               <LearningText text={studyLabels.topicIntroduction(skill === "reading")} />
             </p>
           </header>
+          {skill === "speaking" && (
+            <details className="study-optional-practice">
+              <summary>
+                <LearningText text={studyCopy.situationConversations} />
+              </summary>
+              <p>
+                <LearningText text={studyCopy.conversationInvitation} />
+              </p>
+              <Link className="button secondary" href={studyHref(stageId, skill, { view: "conversation" })}>
+                <LearningText text={studyCopy.openConversations} />
+              </Link>
+            </details>
+          )}
           {stageId === "pre-a1" && (
             <section className="study-starter-topics" aria-label={studyCopy.firstPractice.nl}>
               <h2>
@@ -308,7 +338,7 @@ export function GuidedStudyWorkspace({
           ) : (
             <>
               <div className="study-topic-grid">
-                {filtered.map((topic) =>
+                {visibleTopics.map((topic) =>
                   topic.available ? (
                     <Link
                       key={topic.id}
@@ -346,6 +376,27 @@ export function GuidedStudyWorkspace({
                   ),
                 )}
               </div>
+              {pageCount > 1 && (
+                <nav className="study-pagination" aria-label={studyCopy.browseTopics.nl}>
+                  <button
+                    className="button secondary"
+                    disabled={pageIndex === 0}
+                    onClick={() => setTopicPage({ key: pageKey, index: pageIndex - 1 })}
+                  >
+                    <LearningText text={studyCopy.previous} />
+                  </button>
+                  <span role="status" aria-live="polite">
+                    {pageIndex + 1} / {pageCount}
+                  </span>
+                  <button
+                    className="button secondary"
+                    disabled={pageIndex + 1 >= pageCount}
+                    onClick={() => setTopicPage({ key: pageKey, index: pageIndex + 1 })}
+                  >
+                    <LearningText text={studyCopy.nextTopics} />
+                  </button>
+                </nav>
+              )}
               {filtered.length === 0 && (
                 <div className="study-empty">
                   <Icon name="search" size={26} />

@@ -48,7 +48,11 @@ export function PracticePart({
   const [voiceUrl, setVoiceUrl] = useState("");
   const [audioBusy, setAudioBusy] = useState(false);
   const [syntheticTest, setSyntheticTest] = useState(false);
-  const [questionIndex, setQuestionIndex] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(() =>
+    mode === "check" && lesson.skill === "speaking" && part.practice_questions?.length
+      ? Math.floor(Math.random() * part.practice_questions.length)
+      : 0,
+  );
   const controller = useRef<AbortController | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const localAudio = useRef("");

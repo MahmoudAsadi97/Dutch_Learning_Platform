@@ -165,6 +165,35 @@ class ListeningOverride(BaseModel):
         return self
 
 
+class SourceListeningLesson(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    stage_id: str
+    activity_id: str = Field(min_length=1, max_length=100, pattern=r"^[a-z0-9-]+$")
+    listening: ListeningOverride
+
+    @model_validator(mode="after")
+    def known_stage(self):
+        if self.stage_id not in STAGE_IDS or not self.activity_id.startswith(f"{self.stage_id}-t-source-"):
+            raise ValueError("source listening must retain a known stage and original activity identity")
+        ids = [question.id for section in self.listening.sections for question in section.questions]
+        if len(set(ids)) != len(ids):
+            raise ValueError("source listening question IDs must be unique")
+        return self
+
+
+class SourceListeningDocument(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    schema_version: Literal[1]
+    review_status: Literal["unreviewed"]
+    lessons: list[SourceListeningLesson] = Field(min_length=1, max_length=200)
+
+    @model_validator(mode="after")
+    def unique_activities(self):
+        if len({lesson.activity_id for lesson in self.lessons}) != len(self.lessons):
+            raise ValueError("source listening requires unique activity IDs")
+        return self
+
+
 class AuthoredLesson(BaseModel):
     model_config = ConfigDict(extra="forbid")
     id: str = Field(min_length=1, max_length=100, pattern=r"^[a-z0-9-]+$")

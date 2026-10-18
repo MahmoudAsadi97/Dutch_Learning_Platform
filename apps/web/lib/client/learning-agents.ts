@@ -82,5 +82,5 @@ export function topicHref(stageId: string, skill: string, topicId: string): stri
     !new RegExp(`^${stageId}-t(?:\\d{3}|-source-\\d{2}|-unit-[a-z0-9]+(?:-[a-z0-9]+)*)$`).test(topicId)
   )
     return null;
-  return `/learn/${stageId}?${new URLSearchParams({ skill, topic: topicId })}`;
+  return `/learn/${stageId}?${new URLSearchParams({ skill, topic: topicId, view: "extended" })}`;
 }

@@ -15,6 +15,8 @@ The main menu contains **Dashboard**, **Leren**, **Voortgang** and **Instellinge
 every level uses the same four skills. Vocabulary and grammar stay beside the activity; stories are
 part of Reading. Old word, story and speaking bookmarks lead into the same workspace.
 
+![The learning dashboard](docs/previews/today-desktop.png)
+
 | Skill | How practice works |
 | --- | --- |
 | Reading | Prepare vocabulary and grammar, read a coherent story with sentence audio, check understanding, then retell it. |
@@ -23,14 +25,16 @@ part of Reading. Old word, story and speaking bookmarks lead into the same works
 | Writing | Start with a short response, then develop a longer message for a purpose. Feedback shows the original fragment, a correction and an explanation. |
 
 Each topic has **Prepare → Practise → Try it yourself** steps. The word reference is searchable and
-compact, with replay for Dutch words and examples. Saved-word review and personal episodes remain
-available as nested tools. Audio is generated only after an explicit action; video generation is disabled.
+compact, with replay for Dutch words and examples. Topics appear twelve at a time, with search and theme
+filters. Saved-word review, personal episodes and saved situation conversations remain available as nested
+tools. Audio is generated only after an explicit action; video generation is disabled.
 
 Choose **Dutch** or **Dutch + English** in the header. Dutch remains the practice language. Existing
 Persian source fields are preserved for data compatibility but do not appear in the learner interface.
 
 New guided-practice responses, transcripts and scores are temporary. They disappear when the activity
-is left or reloaded and do not count toward saved progress. Short-answer variants that cannot be checked
+is left or reloaded and do not count toward saved progress. Optional saved conversations and extended
+exercises identify their separate history before starting. Short-answer variants that cannot be checked
 reliably are left unscored. Typed text and transcripts never receive a pronunciation grade. Local fixture
 providers demonstrate the interaction without claiming to provide real speech or assessed language feedback.
 

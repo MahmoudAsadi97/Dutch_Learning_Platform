@@ -1,5 +1,5 @@
 import { expect, test } from "./fixtures/test";
-import { studyCatalog, exampleFeedback } from "./fixtures/study";
+import { studyCatalog, studyLesson, exampleFeedback } from "./fixtures/study";
 import { STAGE_IDS, SKILLS } from "../../lib/domain/registry";
 
 test("every stage has at least fifty selectable real topic activities for each skill", async ({ page }) => {
@@ -13,15 +13,25 @@ test("every stage has at least fifty selectable real topic activities for each s
       expect(catalogue.topics).toHaveLength(100);
       expect(new Set(catalogue.topics.map((topic) => topic.id)).size).toBe(100);
     }
+  await page.setViewportSize({ width: 320, height: 844 });
   await page.goto("/learn/a2?skill=reading");
-  await expect(page.locator(".study-topic-card").first()).toBeVisible();
+  const cards = page.locator(".study-topic-card");
+  await expect(cards).toHaveCount(12);
+  const firstTopic = await cards.first().getAttribute("href");
+  const pagination = page.getByRole("navigation", { name: "Bladeren door onderwerpen" });
+  await pagination.getByRole("button", { name: /^Volgende(?:\s|$)/ }).click();
+  await expect(pagination.getByRole("status")).toContainText("2 /");
+  await expect(cards.first()).not.toHaveAttribute("href", firstTopic!);
   await page.getByLabel("Zoek een onderwerp").fill("familie");
   await expect(page.locator(".study-topic-card")).toHaveCount(1);
   await expect(page.locator(".study-topic-card")).toContainText("Familie");
   await page.getByLabel("Zoek een onderwerp").fill("geen-bestaand-onderwerp");
   await expect(page.getByRole("heading", { name: /^Geen onderwerp gevonden(?:\s|$)/ })).toBeVisible();
   await page.getByRole("button", { name: /^Wis filters(?:\s|$)/ }).click();
-  expect(await page.locator(".study-topic-card").count()).toBeGreaterThanOrEqual(50);
+  await expect(cards).toHaveCount(12);
+  await expect(cards.first()).toHaveAttribute("href", firstTopic!);
+  await expect(pagination.getByRole("status")).toContainText("1 /");
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
 test("parts advance in order and every speaking part offers a hidden example", async ({ page }) => {
@@ -36,6 +46,23 @@ test("parts advance in order and every speaking part offers a hidden example", a
     await page.getByRole("button", { name: /^Voorbeeld verbergen/ }).click();
     if (index < 2) await page.locator(".study-check-actions button.secondary").click();
   }
+});
+
+test("speaking starts with the first warm-up but chooses a random question for the final check", async ({
+  page,
+}) => {
+  const lesson = await studyLesson(page, "a2", "speaking");
+  const questions = lesson.parts[0].practice_questions!;
+  expect(questions.length).toBeGreaterThan(1);
+  expect(questions.at(-1)!.prompt.nl).not.toBe(questions[0].prompt.nl);
+  await page.addInitScript(() => {
+    Math.random = () => 0.999;
+  });
+  await page.goto("/learn/a2?skill=speaking&topic=family&step=practise");
+  await expect(page.locator(".study-response-prompt")).toContainText(questions[0].prompt.nl);
+  await page.goto("/learn/a2?skill=speaking&topic=family&step=check");
+  await expect(page.locator(".study-response-prompt")).toContainText(questions.at(-1)!.prompt.nl);
+  await expect(page.locator(".study-example-answer")).toHaveCount(0);
 });
 
 test("a failed feedback request keeps the answer and a successful response explains corrections", async ({
@@ -88,6 +115,9 @@ test("pending transcription protects the recording and uses only the temporary e
     await page.goto("/learn/pre-a1?skill=speaking&topic=family&step=practise");
     await page.getByRole("button", { name: /^Neem je antwoord op(?:\s|$)/ }).click();
     await page.getByRole("button", { name: /^Stop opname(?:\s|$)/ }).click();
+    // Stopping the microphone includes a short capture tail. Wait for the held request so this
+    // checks the transcription guard, rather than racing the recorder's own stop message.
+    await expect.poll(() => bodyType).toContain("multipart/form-data");
     await expect(page.getByLabel(/^Je herkende woorden/)).toBeDisabled();
     await page
       .getByRole("navigation", { name: "Kies een vaardigheid" })
@@ -95,6 +125,17 @@ test("pending transcription protects the recording and uses only the temporary e
       .click();
     await expect(page).toHaveURL(/skill=speaking/);
     await expect(page.locator(".study-error")).toBeVisible();
+    await page.locator("#study-stage").selectOption("a1");
+    await expect(page.locator("#study-stage")).toHaveValue("pre-a1");
+    const steps = page.getByRole("navigation", { name: "Stappen van de oefening" }).getByRole("button");
+    await steps.first().click();
+    await expect(steps.nth(1)).toHaveAttribute("aria-current", "step");
+    const parts = page
+      .getByRole("navigation", { name: "Onderdelen van deze vaardigheid" })
+      .getByRole("button");
+    await parts.last().click();
+    await expect(parts.first()).toHaveAttribute("aria-pressed", "true");
+    await expect(page.getByLabel(/^Je herkende woorden/)).toBeDisabled();
     release();
     await expect(page.getByLabel(/^Je herkende woorden/)).toHaveValue("Ik heet Noor.");
     expect(bodyType).toContain("multipart/form-data");

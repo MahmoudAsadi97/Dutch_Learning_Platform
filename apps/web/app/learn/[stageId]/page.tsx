@@ -25,6 +25,8 @@ export default async function LevelPage({
   const identifier = (value: unknown) =>
     typeof value === "string" && /^[a-z0-9-]{1,100}$/.test(value) ? value : undefined;
   const topic = identifier(query.topic);
+  const legacyTopic = topic?.startsWith(`${stageId}-t`);
+  const numericTopic = topic && new RegExp(`^${stageId}-t\\d{3}$`).test(topic);
   const view =
     query.view === "vocabulary" || query.section === "words"
       ? "vocabulary"
@@ -33,9 +35,15 @@ export default async function LevelPage({
         : query.section === "grammar"
           ? "grammar"
           : typeof query.view === "string" &&
-              ["grammar", "personal-words", "personal-stories"].includes(query.view)
+              ["grammar", "personal-words", "personal-stories", "conversation", "extended"].includes(
+                query.view,
+              )
             ? query.view
-            : undefined;
+            : legacyTopic
+              ? skill === "speaking" && numericTopic
+                ? "conversation"
+                : "extended"
+              : undefined;
   return (
     <GuidedStudyWorkspace
       key={`${stageId}.${skill}.${topic ?? ""}`}

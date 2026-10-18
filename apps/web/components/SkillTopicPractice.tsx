@@ -345,7 +345,7 @@ const startSteps: Record<Skill, Copy[]> = {
  * warm-up on the topic's words, or go straight to the open task, whose submission completes the topic; a learner
  * sent to the task (a coach's link, a conversation, a draft already begun) arrives at it directly.
  */
-function TopicReader({
+export function TopicReader({
   stageId,
   skill,
   learnerKey,

@@ -14,6 +14,7 @@ from dlp.domains.curriculum.schemas import Skill
 from dlp.domains.curriculum.service import CurriculumError, audio_parts
 from dlp.domains.speech.service import synthesize_cached, transcribe_upload
 from dlp.domains.study import content, feedback
+from dlp.domains.study.responses import StudyCatalogue, StudyFeedback, StudyLesson, StudyTranscription
 from dlp.domains.study.schemas import FeedbackBody
 from dlp.providers.base import ProviderError
 from dlp.providers.registry import Providers
@@ -21,14 +22,14 @@ from dlp.providers.registry import Providers
 router = APIRouter(prefix="/study/{stage_id}/topics", tags=["study"])
 
 
-@router.get("")
+@router.get("", response_model=StudyCatalogue)
 def topic_catalogue(stage_id: str, skill: Skill, q: str = Query(default="", max_length=120),
                     topic_group: str = Query(default="", max_length=100),
                     ctx: RequestContext = Depends(context_dep)):
     return content.catalogue(stage_id, skill, query=q, topic_group=topic_group)
 
 
-@router.get("/{topic_id}")
+@router.get("/{topic_id}", response_model=StudyLesson)
 def topic_lesson(stage_id: str, topic_id: str, skill: Skill,
                  activity_id: str | None = Query(default=None, max_length=100),
                  ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep)):
@@ -37,7 +38,7 @@ def topic_lesson(stage_id: str, topic_id: str, skill: Skill,
     return result
 
 
-@router.post("/{topic_id}/feedback")
+@router.post("/{topic_id}/feedback", response_model=StudyFeedback)
 def topic_feedback(stage_id: str, topic_id: str, body: FeedbackBody,
                    ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
                    providers: Providers = Depends(providers_dep), session: Session = db_session):
@@ -47,7 +48,8 @@ def topic_feedback(stage_id: str, topic_id: str, body: FeedbackBody,
             "Practice feedback is temporarily unavailable. No score was saved; your response is still on this page."))
 
 
-@router.post("/{topic_id}/audio")
+@router.post("/{topic_id}/audio", response_class=Response, responses={200: {"content": {"audio/wav": {"schema": {
+    "type": "string", "format": "binary"}}}, "description": "A continuous synthetic Dutch practice recording."}})
 def topic_audio(stage_id: str, topic_id: str, part: str = Query(min_length=1, max_length=80),
                 skill: Skill = "listening", activity_id: str | None = Query(default=None, max_length=100),
                 ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
@@ -96,7 +98,7 @@ def topic_audio(stage_id: str, topic_id: str, part: str = Query(min_length=1, ma
     return _run(operation)
 
 
-@router.post("/{topic_id}/transcribe")
+@router.post("/{topic_id}/transcribe", response_model=StudyTranscription)
 def topic_transcribe(stage_id: str, topic_id: str, audio: UploadFile = File(...),
                      ctx: RequestContext = Depends(context_dep), settings: Settings = Depends(settings_dep),
                      providers: Providers = Depends(providers_dep), session: Session = db_session):

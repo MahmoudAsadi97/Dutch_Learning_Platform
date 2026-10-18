@@ -96,7 +96,7 @@
   .study-tool-panel { margin-bottom: 24px; padding: 20px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface-raised); }
   .study-tool-panel > summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-weight: 600; margin-bottom: 16px; }
   .study-reference > .study-search { margin-bottom: 16px; }
-  .study-pagination { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; }
+  .study-pagination { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
   .study-lesson-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
   .study-lesson-heading h1 { margin: 0; font-size: clamp(25px,2.6vw,34px); line-height: 1.2; letter-spacing: -.03em; }
   .study-review-note { display: inline-block; padding: 5px 9px; border: 1px solid var(--warning-border); border-radius: 7px; color: var(--warning-ink); background: var(--warning-bg); font-size: 12px; white-space: nowrap; }
@@ -191,6 +191,7 @@
     .app-sidebar .brand, .app-sidebar .sidebar-locale strong { color: var(--text-on-inverse); }
     .app-sidebar .brand-caption, .app-sidebar .nav-link, .app-sidebar .sidebar-locale { color: var(--text-muted-on-inverse); }
     .app-sidebar .nav-link[aria-current="page"], .app-sidebar .nav-link:hover { color: var(--text); background: var(--surface-raised); }
+    .app-sidebar .nav-link .ui-gloss { color: inherit; }
     .app-sidebar .nav-link .icon-tile { background: transparent; color: inherit; }
     .app-sidebar .nav-link[aria-current="page"] .icon-tile { background: var(--action-subtle); color: var(--action-solid); }
   }

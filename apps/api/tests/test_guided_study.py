@@ -323,15 +323,18 @@ def test_authored_productive_and_listening_overrides_are_used_instead_of_generic
 
 def test_every_stage_and_skill_has_fifty_resolvable_topic_choices_without_answer_keys():
     from dlp.domains.curriculum.schemas import SKILLS, STAGE_IDS
+    from dlp.domains.study.responses import StudyCatalogue, StudyLesson
 
     for stage_id in STAGE_IDS:
         for skill in SKILLS:
             catalogue = content.catalogue(stage_id, skill)
+            StudyCatalogue.model_validate(catalogue)
             available = [topic for topic in catalogue["topics"] if topic["available"]]
             assert len(available) >= 50, (stage_id, skill, len(available))
             assert catalogue["available_topics"] == len(available)
             selected = available[0]
             detail = content.lesson(stage_id, selected["id"], skill)
+            StudyLesson.model_validate({**detail, "policy": {**detail["policy"], "recording_max_seconds": 60}})
             assert detail["review_status"] == "unreviewed"
             assert detail["preparation"]["words"]
             assert detail["context"]["text"]
@@ -345,6 +348,8 @@ def test_every_stage_and_skill_has_fifty_resolvable_topic_choices_without_answer
 
 
 def test_explicit_source_lesson_choices_keep_their_own_topic_context_and_foundation_prompts():
+    from dlp.domains.study.responses import StudyLesson
+
     document, index = content.documents()
     checked = 0
     for stage, skills in index.stages.items():
@@ -355,6 +360,7 @@ def test_explicit_source_lesson_choices_keep_their_own_topic_context_and_foundat
                         continue
                     checked += 1
                     detail = content.lesson(stage, topic_id, skill, activity_id=reference.id)
+                    StudyLesson.model_validate({**detail, "policy": {**detail["policy"], "recording_max_seconds": 60}})
                     assert detail["activity_id"] == reference.id
                     assert detail["preparation"]["words"]
                     assert '"fa"' not in json.dumps(detail)
@@ -364,6 +370,42 @@ def test_explicit_source_lesson_choices_keep_their_own_topic_context_and_foundat
                         assert detail["parts"][-1]["prompt"] == content.bilingual(source["speaking"]["criteria"][-1])
                         assert detail["parts"][-1]["sample"] == content.bilingual(source["speaking"]["sample"])
     assert checked == 36  # twelve explicit source lessons, available in three productive/listening routes
+
+
+def test_source_listening_uses_ordered_nonoverlapping_sections_and_grounded_answer_keys():
+    from dlp.domains.study.schemas import SourceListeningDocument
+
+    path = content.CONTENT_DIR / "study/source-listening.json"
+    authored = SourceListeningDocument.model_validate_json(path.read_text())
+    _, index = content.documents()
+    indexed = {(stage, topic_id, source.id)
+               for stage, skills in index.stages.items()
+               for topic_id, references in skills["listening"].items()
+               for source in references if source.source == "practice"}
+    assert {(item.stage_id, item.activity_id) for item in authored.lessons} == {
+        (stage, activity_id) for stage, _, activity_id in indexed}
+    assert len(indexed) == 12
+    for stage, topic_id, activity_id in indexed:
+        original = next(item for item in json.loads((content.CONTENT_DIR / "source-lessons" / f"{stage}.json").read_text())[
+            "topics"] if item["id"] == activity_id)["listening"]["text"]
+        detail = content.lesson(stage, topic_id, "listening", activity_id=activity_id, include_answers=True)
+        parts = detail["parts"]
+        assert [part["id"] for part in parts] == ["listen-gaps", "listen-choose", "listen-answer"]
+        for language in ("nl", "en"):
+            assembled = " ".join(line[language] for part in parts for line in part["text"])
+            assert " ".join(assembled.split()) == " ".join(original[language].split())
+        for part, kind in zip(parts, ("gap", "choice", "short"), strict=True):
+            script = " ".join(line["nl"] for line in part["text"])
+            assert script and script != original["nl"]
+            answers = {}
+            for question in part["questions"]:
+                assert question["kind"] == kind
+                assert question["explanation"]["nl"] in script
+                answer = question["answer_index"] if kind == "choice" else question["accepted_answers"][0]
+                answers[question["id"]] = answer
+                if kind == "gap":
+                    assert answer.casefold() in script.casefold()
+            assert feedback.check_answers(part, answers)["score"] == 10
 
 
 def learning_row_counts():

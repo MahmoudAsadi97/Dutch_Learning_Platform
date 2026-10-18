@@ -18,7 +18,7 @@ from dlp.domains.curriculum.coverage import eligible_story_ids
 from dlp.domains.curriculum.library import LibraryWord, library_for, normalise
 from dlp.domains.curriculum.schemas import SKILLS, STAGE_IDS, Skill
 from dlp.domains.curriculum.topics import PracticeTopic, topics_for
-from dlp.domains.study.schemas import CheckQuestion, IndexDocument, PackDocument, TopicDocument
+from dlp.domains.study.schemas import CheckQuestion, IndexDocument, PackDocument, SourceListeningDocument, TopicDocument
 
 GROUPS = {
     "culture": ("Cultuur", "Culture"), "daily": ("Dagelijks leven", "Daily life"),
@@ -79,6 +79,36 @@ def pack_for(stage_id: str) -> PackDocument | None:
     require_stage(stage_id)
     path = CONTENT_DIR / "study" / "packs" / f"{stage_id}.json"
     return _pack(str(path), path.stat().st_mtime_ns) if path.exists() else None
+
+
+@lru_cache(maxsize=4)
+def _source_listening(path: str, modified: int) -> SourceListeningDocument:
+    return SourceListeningDocument.model_validate_json(Path(path).read_text(encoding="utf-8"))
+
+
+def _source_listening_parts(stage_id: str, topic) -> list[dict]:
+    path = CONTENT_DIR / "study" / "source-listening.json"
+    document = _source_listening(str(path), path.stat().st_mtime_ns)
+    authored = next((lesson for lesson in document.lessons
+                     if lesson.stage_id == stage_id and lesson.activity_id == topic.id), None)
+    if authored is None:
+        raise service.CurriculumError("this source has no authored sequential listening activity", 404)
+    sections = authored.listening.sections
+    for language in ("nl", "en"):
+        original = " ".join(getattr(topic.listening.text, language).split())
+        assembled = " ".join(" ".join(getattr(section.text, language) for section in sections).split())
+        if assembled != original:
+            raise ValueError("source listening sections must preserve the complete original script in order")
+    descriptions = (("listen-gaps", copy("Luister en vul aan", "Listen and complete")),
+                    ("listen-choose", copy("Luister en kies", "Listen and choose")),
+                    ("listen-answer", copy("Luister en antwoord", "Listen and answer")))
+    return [_part(key, title, text=_lines(section.text),
+                  questions=[question.model_dump() for question in section.questions], instructions=copy(
+                      "Lees eerst de vraag. Luister naar dit deel en antwoord terwijl je luistert. "
+                      "Ga daarna naar het volgende deel van dezelfde opname.",
+                      "Read the question first. Listen to this section and answer as you listen. "
+                      "Then continue to the next section of the same recording."))
+            for (key, title), section in zip(descriptions, sections, strict=True)]
 
 
 @lru_cache(maxsize=32)
@@ -583,60 +613,7 @@ def _practice_parts(stage_id: str, topic, skill: Skill, *, source_words: dict | 
                                   "Explain the text in your own words. Include an important detail."),
                       min_words=1, max_words=200)]
     if skill == "listening":
-        activity = topic.listening
-        questions = _questions(activity.questions)
-        text = _lines(activity.text)
-        gaps = []
-        # A gap keeps its original sentence and uses a source-grounded word.
-        vocabulary = source_words if source_words is not None else {
-            word.id: word for word in library_for(stage_id).vocabulary}
-        for key in topic.vocabulary_ids:
-            word = vocabulary.get(key)
-            if word is None or " " in word.term:
-                continue
-            match = re.search(rf"(?<!\w){re.escape(word.term)}(?!\w)", activity.text.nl, re.IGNORECASE)
-            if match is None:
-                continue
-            sentences = re.split(r"(?<=[.!?])\s+", activity.text.nl)
-            sentence = next((line for line in sentences if re.search(
-                rf"(?<!\w){re.escape(word.term)}(?!\w)", line, re.IGNORECASE)), None)
-            if sentence is None:
-                continue
-            blank = re.sub(rf"(?<!\w){re.escape(word.term)}(?!\w)", "_____", sentence, count=1,
-                           flags=re.IGNORECASE)
-            gaps.append({"id": f"{topic.id}-gap-{len(gaps) + 1}", "kind": "gap",
-                         "prompt": copy(blank, "Listen and complete the missing Dutch word."), "options": [],
-                         "answer_index": None, "accepted_answers": [match.group()],
-                         "explanation": copy(sentence, "The missing word is present in this sentence of the recording.")})
-            if len(gaps) == 3:
-                break
-        if not gaps:
-            first_sentence = re.split(r"(?<=[.!?])\s+", activity.text.nl)[0]
-            heard = re.findall(r"\d+(?::\d+)?|[A-Za-zÀ-ÿ]+", first_sentence)
-            if heard:
-                target = next((word for word in heard if word[0].isdigit()), heard[-1])
-                gaps.append({"id": f"{topic.id}-gap-1", "kind": "gap", "prompt": copy(
-                    re.sub(rf"(?<!\w){re.escape(target)}(?!\w)", "_____", first_sentence, count=1),
-                    "Listen and complete the missing Dutch word or number."),
-                    "options": [], "answer_index": None, "accepted_answers": [target],
-                    "explanation": copy(first_sentence, "Listen for this exact detail in the recording.")})
-        # Where no target appears literally, reuse a source-grounded short
-        # answer. Never turn an arbitrary word into a supposed grammar lesson.
-        short = [{**question, "id": f"{question['id']}-short", "kind": "short", "options": [],
-                  "answer_index": None,
-                  "accepted_answers": [question["options"][question["answer_index"]]["nl"]]}
-                 for question in questions]
-        parts = []
-        if gaps:
-            parts.append(_part("listen-gaps", copy("Luister en vul aan", "Listen and complete"),
-                               text=text, questions=gaps))
-        parts.append(_part("listen-choose", copy("Luister en kies", "Listen and choose"),
-                           text=text, questions=questions))
-        parts.append(_part("listen-answer", copy("Luister en antwoord", "Listen and answer"),
-                           text=text, questions=short, instructions=copy(
-                               "Luister opnieuw naar hetzelfde fragment. Antwoord kort in het Nederlands.",
-                               "Replay the same recording. Answer briefly in Dutch.")))
-        return parts
+        return _source_listening_parts(stage_id, topic)
     task = getattr(topic, skill)
     early = STAGE_IDS.index(stage_id) < STAGE_IDS.index("b1")
     if skill == "speaking":
