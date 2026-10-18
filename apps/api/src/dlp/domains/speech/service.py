@@ -37,7 +37,11 @@ def transcribe_upload(
     stt: SpeechToText,
     blob: BlobStore,
     keep_recording: bool = True,
+    persist_asset: bool = True,
 ) -> TranscriptionOutcome:
+    # Transient guided checks retain neither learner audio nor transcripts.
+    # Legacy evidence workflows keep their explicit default behaviour.
+    keep_recording = keep_recording and persist_asset
     if len(upload_bytes) == 0:
         raise AudioError("empty upload")
     if len(upload_bytes) > settings.max_upload_bytes:
@@ -89,8 +93,9 @@ def transcribe_upload(
         meta={"transcript": transcript.text, "stt_model": transcript.model, "stored": stored,
               "storage_warning": storage_warning},
     )
-    session.add(asset)
-    session.flush()
+    if persist_asset:
+        session.add(asset)
+        session.flush()
     return TranscriptionOutcome(asset=asset, source=source_info, canonical=canonical_info, transcript=transcript)
 
 

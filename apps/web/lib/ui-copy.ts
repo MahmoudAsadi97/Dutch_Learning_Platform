@@ -11,8 +11,8 @@ export interface Copy {
 
 export const uiCopy = {
   nav: {
-    today: { nl: "Vandaag", en: "Today", fa: "امروز" },
-    learn: { nl: "Niveaus", en: "Levels", fa: "سطح‌ها" },
+    today: { nl: "Dashboard", en: "Dashboard", fa: "امروز" },
+    learn: { nl: "Leren", en: "Learn", fa: "سطح‌ها" },
     stories: { nl: "Verhalen", en: "Stories", fa: "داستان‌ها" },
     speak: { nl: "Spreken", en: "Speaking", fa: "صحبت کردن" },
     words: { nl: "Woorden", en: "Words", fa: "واژه‌ها" },
@@ -36,6 +36,11 @@ export const uiCopy = {
     showMeaning: { nl: "Toon de betekenis", en: "Show the meaning", fa: "معنی را نشان بده" },
   },
   state: {
+    openingWorkspace: {
+      nl: "Je gaat naar je leeromgeving…",
+      en: "Opening your learning workspace…",
+      fa: "در حال باز کردن فضای یادگیری…",
+    },
     loading: { nl: "Bezig met laden", en: "Loading", fa: "در حال بارگذاری" },
     saved: { nl: "Bewaard", en: "Saved", fa: "ذخیره شد" },
     offline: { nl: "Geen verbinding", en: "No connection", fa: "اتصال برقرار نیست" },
@@ -84,6 +89,7 @@ export const uiCopy = {
     },
   },
   welcome: {
+    supportNl: { nl: "Alleen Nederlands", en: "Dutch only", fa: "فقط هلندی" },
     title: { nl: "Welkom bij Taalstudio", en: "Welcome to Taalstudio", fa: "به Taalstudio خوش آمدی" },
     intro: {
       nl: "Hier leer je Nederlands zoals het in België gesproken wordt: elke dag een stukje verhaal, woorden die je bewaart, en spreken en schrijven met uitleg.",
@@ -101,8 +107,8 @@ export const uiCopy = {
       fa: "به چه زبانی کمک می‌خواهی؟",
     },
     languageNote: {
-      nl: "De knoppen blijven Nederlands. Onder de Nederlandse tekst zie je een korte vertaling.",
-      en: "The buttons stay in Dutch. Under the Dutch text you see a short translation.",
+      nl: "Je oefent in het Nederlands. Met Engelse hulp zie je een korte uitleg bij de Nederlandse tekst.",
+      en: "Practise in Dutch. With English help selected, short explanations appear beside the Dutch text.",
       fa: "دکمه‌ها هلندی می‌مانند. زیر متن هلندی ترجمه‌ی کوتاهی می‌بینی.",
     },
     languageNoteFaPending: {

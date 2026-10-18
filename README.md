@@ -2,212 +2,71 @@
 
 **Belgian Dutch for the conversations that matter.**
 
-I'm building Taalstudio as a personal language-learning workspace: read something useful, listen for the
-important detail, say what you need, and write a clear response. Vocabulary and grammar support those tasks.
+I’m building Taalstudio around a simple learning sequence: meet useful words, understand them in a
+connected situation, hear them, use them, and improve your answer.
 
-![The learning loop: meet, try, repair and return](docs/assets/learning-loop.gif)
+![Meet, practise, repair and return](docs/assets/learning-loop.gif)
 
-[Try the interactive preview](https://taalstudio-learning-preview.nimaa-asadii.chatgpt.site) ·
-[Learning and exam references](docs/BELGIAN_ALIGNMENT.md) ·
-[Architecture](docs/ENGINEERING.md) · [Release guide](docs/GO_LIVE.md)
+## Find your next activity
 
-[Preview source and local instructions](demo/README.md).
+**Dashboard → choose a level → choose a skill → choose a topic.**
 
-The preview is private to the project owner and uses browser-local sample interactions. It demonstrates
-the proposed learning experience; it is not the Azure deployment and makes no live model or speech calls.
+The main menu contains **Dashboard**, **Leren**, **Voortgang** and **Instellingen**. Within Leren,
+every level uses the same four skills. Vocabulary and grammar stay beside the activity; stories are
+part of Reading. Old word, story and speaking bookmarks lead into the same workspace.
 
-## Start here
+| Skill | How practice works |
+| --- | --- |
+| Reading | Prepare vocabulary and grammar, read a coherent story with sentence audio, check understanding, then retell it. |
+| Listening | Follow a continuous situation in three sections: complete gaps, choose answers, and write short answers. Reveal the transcript when needed. |
+| Speaking | Answer short questions, give a description, then develop an opinion. Reveal model answers on demand, record or type, and review your wording. |
+| Writing | Start with a short response, then develop a longer message for a purpose. Feedback shows the original fragment, a correction and an explanation. |
 
-| I want to…                          | Read or open                                                     |
-| ----------------------------------- | ---------------------------------------------------------------- |
-| Run the app on my laptop            | [Local setup](#run-locally)                                      |
-| Understand the learning experience  | [What I can practise](#what-i-can-practise)                      |
-| Check the level and exam references | [Belgian alignment](docs/BELGIAN_ALIGNMENT.md)                   |
-| Verify code before a release        | [Checks](#checks) and [verification guide](docs/VERIFICATION.md) |
-| Release to Azure                    | [GO_LIVE](docs/GO_LIVE.md)                                       |
+Each topic has **Prepare → Practise → Try it yourself** steps. The word reference is searchable and
+compact, with replay for Dutch words and examples. Saved-word review and personal episodes remain
+available as nested tools. Audio is generated only after an explicit action; video generation is disabled.
 
-## What I can practise
+Choose **Dutch** or **Dutch + English** in the header. Dutch remains the practice language. Existing
+Persian source fields are preserved for data compatibility but do not appear in the learner interface.
 
-The main navigation has five destinations: **Vandaag**, **Niveaus**, **Verhalen**, **Spreken** and **Woorden**.
-Progress and settings sit alongside them, keeping everyday practice easy to find.
+New guided-practice responses, transcripts and scores are temporary. They disappear when the activity
+is left or reloaded and do not count toward saved progress. Short-answer variants that cannot be checked
+reliably are left unscored. Typed text and transcripts never receive a pronunciation grade. Local fixture
+providers demonstrate the interaction without claiming to provide real speech or assessed language feedback.
 
-- **Vandaag:** an episode, words due for spaced review, and the next useful activity. Points recognise
-  practice effort; they are not a judgement of language ability.
-- **Niveaus:** twelve open stages, direct links to four skills, grammar, vocabulary and stories, plus a
-  separate four-skill final check. Actual content counts and targets are visible on each stage.
-- **Verhalen:** stage-filtered stories with optional sentence audio, comprehension, vocabulary and
-  retelling. Personal episodes from _De Lindestraat_ sit in their own view.
-- **Spreken:** stage-specific speaking topics, optional partner conversations and connected missions.
-  Scenario facts and valid arrangements are enforced by code. Push-to-talk has a labelled typed
-  fallback; typed answers do not count as spoken evidence.
-- **Woorden:** explore the selected stage's word cards, hear examples and practise using words in
-  several situations. Saved words have a separate spaced-review view.
-
-Dutch stays the practice language. English and Persian support can be selected in the header; learning
-text follows that choice. Interface Persian is activated in reviewed batches, so unreviewed interface
-translations may remain hidden. Audio controls use the configured voice and identify synthetic speech.
-
-Writing feedback points to the learner's actual draft, suggests a corrected form and explains the
-change. The draft stays available for revision. Feedback, assistance and later independent performance
-must remain distinguishable.
-
-The connected learning sequence is **meet a word → understand it in a story → hear it → use it in
-different situations → revise → return without help**. New units use ten explicit story lines with
-parallel Dutch, English and Persian text, sentence playback, and related four-skill activities. The
-tasks progress from naming concrete things at pre-A1 to interpreting viewpoints and register at C2.
-Story Time opens the eligible 8–12-line collection by default. Stories include a
-comprehension question, sentence playback and a level-specific invitation to retell, discuss or rewrite.
-The original connected units also open their related four-skill activities. In the word library,
-**Oefen de 150 kernwoorden** selects the productive core: a mix of nouns, verbs, adjectives, adverbs,
-interaction phrases and function words, with three authored usage examples per entry. The wider word
-bank remains available. Forms are contextual examples, not automatically guessed conjugations.
-
-The current authored inventory is shown below. Each core entry has three trilingual context examples;
-these inventories are provisional until language review, not a claim of CEFR certification.
-
-| Stage  | Productive core | Authored stories | Story target |
-| ------ | --------------: | ---------------: | -----------: |
-| Pre-A1 |             150 |               52 |          200 |
-| A1     |             150 |               35 |          200 |
-| pre-A2 |             150 |               27 |          200 |
-| A2     |             150 |               27 |          200 |
-| pre-B1 |             150 |               18 |          200 |
-| B1     |             150 |               48 |          200 |
-| pre-B2 |             150 |               11 |          200 |
-| B2     |             150 |                7 |          200 |
-| pre-C1 |             150 |               14 |          200 |
-| C1     |             150 |               15 |          200 |
-| pre-C2 |             150 |               21 |          200 |
-| C2     |             150 |               15 |          200 |
-
-The editorial target is **200 distinct 8–12-line stories per stage**, without reusing a plot at another
-stage. The inventory audit reports the exact current shortfall; a new title or changed name does not
-make a repeated plot distinct. Older story banks remain accessible and include repeated plots; they do
-not meet the new standard merely because they have a different stage ID. Existing banks retain at
-least 500 words. Authored content and translations still need competent Belgian Dutch, English and Persian
-review; neither an automated structural check nor a word count establishes language accuracy.
-
-New stories are original modern fiction. Everyday domains come from Belgian public-service resources;
-historical literary motifs are referenced only with edition-specific public-domain checks. No news
-articles, TV transcripts or textbook pages are bundled. The [source registry](content/alignment/source-registry.json)
-records the permitted role of each resource, and [story provenance](content/alignment/story-provenance.json)
-records the source family and plot synopsis without claiming external endorsement. Wablieft and NedBox
-remain external reading/listening resources, rather than content to copy into the app.
-
-To rebuild the authored expansion and inspect its actual coverage:
-
-```bash
-python scripts/content_build/vocabulary_transfer.py
-python scripts/validate_story_quality.py --require-targets
-```
-
-The target check intentionally fails while any stage lacks 200 eligible authored stories or a complete
-150-word productive core. It is separate from software tests and never grants assessment credit.
-
-The supplied Dutch scans now support **Van woord naar gesprek**: twelve original units from pre-A1 to
-B1, connecting new Story Time stories with reading, listening, speaking, writing and grammar practice.
-Each stage has two connected units: introductions and classroom details, times and locations, preferences
-and requests, everyday problems and messages, linked events and negotiations. Listening introduces
-new information that the learner uses in speaking or writing.
-The existing banks and progress stay intact. The new language and level assignments still need native
-review; raw scans and OCR remain private. [What was added and where to find it](docs/SOURCE_LESSONS.md).
-
-![The current Today interface](docs/previews/today-desktop.png)
-
-## Finding practice
-
-Open **Niveaus**, choose any of the twelve levels, then jump directly to reading, listening, speaking,
-writing, vocabulary, grammar or stories. Inside a level, the level picker keeps the selected activity
-when you switch levels. Stories and Words also have their own level-filtered libraries; personal episodes
-and saved-word review are separate views.
-
-The interface displays content-backed counts and targets. Every level has 150 productive-core words,
-500+ vocabulary cards, 100+ grammar questions and 100+ topics per skill. The story target is **not yet met**:
-there are 290 eligible authored stories across the twelve levels, with 2,110 still needed for 200 per level.
-Older short/template texts are kept separate and never counted toward that target. These counts describe
-content availability; language accuracy and CEFR placement still require qualified review.
-
-Video generation has been removed from the interface and disabled in the API and background jobs.
-The replacement is interactive narrated reading: choose a story, hear individual sentences, answer
-questions and retell it. Audio uses the existing speech service only when requested.
-
-## Grammar practice
-
-Every stage now has **100 additional original grammar questions**, organised into ten rounds of ten.
-Existing exercises remain available: the effective totals range from **102 to 111 questions per stage**.
-Choose a topic, try the round, then check the answers for Dutch explanations with English/Persian support
-and replay the completed Dutch sentences. A listen-first example and links to all four skill areas help
-move from recognising a form to using it yourself.
-
-Beginner rounds cover familiar details, questions, articles, negation and everyday requests. Later rounds
-add past events, clauses, reference, argument structure, qualification and register-sensitive meaning.
-IELTS provides inspiration for everyday/academic contexts and completion tasks, rather than copied
-questions or an IELTS examination claim. Level placement and language support remain provisional pending
-qualified Belgian Dutch review.
-
-Rebuild this bank with `python scripts/content_build/grammar_bank.py`. Its checked-in authoring sources
-contain 1,200 distinct prompts; tests enforce coverage, answer integrity and reproducible builds.
-
-## Levels and exam preparation
-
-The course follows this sequence:
+## Levels and content
 
 **Pre-A1 → A1 → pre-A2 → A2 → pre-B1 → B1 → pre-B2 → B2 → pre-C1 → C1 → pre-C2 → C2**
 
-A1–C2 are CEFR levels. Pre-A1 is a descriptor band in the CEFR Companion volume. The other `pre-` stages
-are internal bridges, not extra official levels. There is no A3. Flemish NT2 references run from
-Breakthrough/1.1 and Waystage/1.2 through richtgraden 2, 3 and 4; C2 needs a separately reviewed extension.
+All stages are open. A1–C2 are CEFR levels; Pre-A1 has CEFR descriptors. The other pre-stages are internal
+bridges. Early tasks use letters, numbers, time, introductions and directions. Later tasks build toward
+connected explanations, professional communication, argument, nuance and academic work.
 
-The new **“Wat oefen je op dit niveau?”** panel connects each skill to a sourced learning target. The
-**Examenwijzer** at `/examens` distinguishes CNaVT profiles, ITNA and other Belgian readiness routes and
-links to their official information. It does not turn the existing exercises into official mock papers.
-ITNA and CNaVT have different formats; a generic four-part score should not pretend to reproduce both.
+The guided catalogue has **100 topic categories** and at least **50 available topics for each skill in
+every stage**, backed by actual activities. The twelve packs contain **600 guided topic lessons**,
+including existing original material surfaced with its source identity. Each reading has 8–12 connected
+Dutch lines, parallel English support and grounded comprehension questions. These are activities,
+not 600 independently reviewed texts.
 
-Reading, listening, speaking and writing keep separate records. A stage check is provisional practice
-evidence. It does not award a recognised certificate, determine a person's official CEFR level or
-predict an official examination result. All stages remain accessible.
+Existing stage libraries retain 500+ word entries and 150-word productive cores. Each stage also has
+100 additional original grammar questions in ten manageable rounds, alongside its earlier exercises.
+The separate editorial target of 200 distinct, reviewed stories per stage remains unfinished. Structural
+checks verify coverage and answer integrity; they cannot certify natural language, translation quality
+or CEFR placement. Content remains labelled as awaiting specialist language review.
 
-See [the complete reference map](docs/BELGIAN_ALIGNMENT.md),
-[versioned learning targets](content/alignment/levels.json) and
-[exam readiness blueprints](content/alignment/exams.json).
+IELTS preparation resources inform the task patterns, not the language being taught or an examination
+claim. Stories, prompts and examples are original; commercial exam passages and audio are not copied.
+[Belgian level and exam references](docs/BELGIAN_ALIGNMENT.md) explain the NT2, ITNA and CNaVT context.
 
-## Quality I am working toward
-
-I want practice to show whether someone can communicate independently in a different situation later,
-not only whether they can repeat a corrected sentence immediately.
-
-The next learning experiments are deliberately small:
-
-1. **Return in a new context:** revisit a useful function after a delay with changed facts.
-2. **Repair a misunderstanding:** notice a wrong detail, clarify it and confirm a workable outcome.
-3. **Listen before revealing:** make an initial interpretation, replay, then revise; transcripts and
-   translations are available on request and count as support.
-
-These are research-informed directions, not proven outcomes for this product. The preview demonstrates
-them with fixtures. Production evidence and broader activation still need learner trials and language
-review. [Research and limitations](docs/LEARNING_RESEARCH.md) explain the decisions.
-
-Existing fixed banks remain labelled **unreviewed**. Shared words can support spiral practice, but a
-reused whole passage is review, not fresh coverage of a higher level. The content audit reports hashes
-and repeated reading/listening texts without claiming to classify their CEFR difficulty:
+Validate the guided catalogue after content edits:
 
 ```bash
-python scripts/audit_learning_content.py --json .local/content-audit.json
-python scripts/validate_story_quality.py --json .local/story-quality.json
+python scripts/audit_guided_study.py --write-index
+python scripts/validate_story_quality.py --require-targets
 ```
 
-The story audit distinguishes authored lines from legacy passages, reports duplicates and translation
-fact checks, and measures the remaining inventory. `--require-targets` exits unsuccessfully until the
-requested inventory is present. Neither audit certifies natural language, CEFR difficulty or translation
-accuracy. To rebuild the versioned connected units after editing their authored source:
-
-```bash
-python -m scripts.content_build.learning_units
-python -m scripts.content_build.vocabulary_transfer
-```
-
-A small native-review pilot starts with one mission and one A2 topic. Reviews must identify the reviewer,
-date and exact content hash. [Review form](docs/CONTENT_REVIEW_FORM.md).
+The second command intentionally fails until the larger story target is met. Neither command grants
+assessment credit or establishes language accuracy.
 
 ## Run locally
 
@@ -298,13 +157,3 @@ A successful GitHub commit or fixture test is not proof that Azure has been upda
 
 Paid use requires deliberate approval and configured limits. Azure budgets alert; they do not stop
 billing. Hosting and database costs continue even when paid inference is disabled.
-
-## Documentation
-
-- **Current work:** [Review decisions](docs/REVIEW_DECISIONS.md), [status](docs/STATUS.md), [roadmap](docs/ROADMAP.md).
-- **Learning:** [Belgian alignment](docs/BELGIAN_ALIGNMENT.md), [research](docs/LEARNING_RESEARCH.md),
-  [curriculum](docs/CURRICULUM.md), [topics](docs/TOPIC_PRACTICE.md), [source coverage](docs/SOURCE_COVERAGE.md).
-- **Engineering:** [architecture and conventions](docs/ENGINEERING.md), [decisions](docs/DECISIONS.md),
-  [verification](docs/VERIFICATION.md), [release guide](docs/GO_LIVE.md).
-- **Experiences:** [story engine](docs/STORY_ENGINE.md),
-  [review walkthrough](docs/DEMO.md).

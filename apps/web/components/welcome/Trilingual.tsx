@@ -1,32 +1,22 @@
-import { persianReviewed } from "@/lib/client/persian-review";
+"use client";
+
+import { useLanguageSupport } from "@/components/LanguageSupport";
 import type { Copy } from "@/lib/ui-copy";
 
 /**
- * Dutch, English and Persian together: the first screen, before the learner has chosen a support language.
- * Persian sentences wait until a fluent reader has checked their batch (O2); until then `autonym` (the
- * language's own name, "فارسی") lets a Persian reader find their choice.
+ * Welcome copy follows the same Dutch / optional English preference as the learning workspace.
+ * The legacy prop shape is retained for callers; source translations are left intact.
  */
-export function Trilingual({
-  text,
-  autonym,
-  className = "",
-}: {
-  text: Copy;
-  autonym?: string;
-  className?: string;
-}) {
-  const persian = persianReviewed(text) ? text.fa : autonym;
+export function Trilingual({ text, className = "" }: { text: Copy; autonym?: string; className?: string }) {
+  const { showEnglish } = useLanguageSupport();
   return (
     <span className={`trilingual ${className}`.trim()}>
       <span lang="nl" className="trilingual-nl">
         {text.nl}
       </span>
-      <span lang="en" className="trilingual-support">
-        {text.en}
-      </span>
-      {persian && (
-        <span lang="fa" dir="rtl" className="trilingual-support fa">
-          {persian}
+      {showEnglish && (
+        <span lang="en" className="trilingual-support">
+          {text.en}
         </span>
       )}
     </span>

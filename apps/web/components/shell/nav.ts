@@ -6,7 +6,7 @@ import type { uiCopy } from "@/lib/ui-copy";
 export type NavCopyKey = keyof (typeof uiCopy)["nav"];
 
 /**
- * The five destinations a learner moves between, and the two rooms beside them. Every entry is a plain
+ * One learning entrance and the dashboard, with progress and settings beside them. Every entry is a plain
  * link rendered inside `.app-frame`, so the navigation guard that waits for a draft to save still sees
  * each click. Labels are plain Dutch until the gloss layer lands (roadmap P2).
  */
@@ -24,37 +24,13 @@ export interface NavItem {
 export const destinations: NavItem[] = [
   {
     href: "/",
-    label: "Vandaag",
-    short: "Vandaag",
+    label: "Dashboard",
+    short: "Dashboard",
     icon: "calendar",
     accent: "today",
     copy: "today",
   },
-  { href: "/leerpad", label: "Niveaus", short: "Niveaus", icon: "flag", accent: "path", copy: "learn" },
-  {
-    href: "/verhalen",
-    label: "Verhalen",
-    short: "Verhalen",
-    icon: "book",
-    accent: "stories",
-    copy: "stories",
-  },
-  {
-    href: "/spreken",
-    label: "Spreken",
-    short: "Spreken",
-    icon: "message",
-    accent: "conversations",
-    copy: "speak",
-  },
-  {
-    href: "/woorden",
-    label: "Woorden",
-    short: "Woorden",
-    icon: "star",
-    accent: "words",
-    copy: "words",
-  },
+  { href: "/leerpad", label: "Leren", short: "Leren", icon: "flag", accent: "path", copy: "learn" },
 ];
 
 export const rooms: NavItem[] = [
@@ -81,14 +57,13 @@ const SECTION_BY_SEGMENT: Record<string, string> = {
   leerpad: "/leerpad",
   learn: "/leerpad",
   examens: "/leerpad",
-  verhalen: "/verhalen",
-  videos: "/verhalen",
-  spreken: "/spreken",
-  missions: "/spreken",
-  "speech-check": "/spreken",
-  woorden: "/woorden",
-  // a practice session (focus mode) practises words
-  oefenen: "/woorden",
+  verhalen: "/leerpad",
+  videos: "/leerpad",
+  spreken: "/leerpad",
+  missions: "/leerpad",
+  "speech-check": "/leerpad",
+  woorden: "/leerpad",
+  oefenen: "/leerpad",
   progress: "/progress",
   settings: "/settings",
   // "Over de inhoud" is reached from Instellingen and belongs to that room

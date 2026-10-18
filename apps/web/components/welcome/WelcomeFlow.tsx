@@ -10,7 +10,6 @@ import { Notice } from "@/components/ui/Notice";
 import { Skeleton, SkeletonPanel } from "@/components/ui/Skeleton";
 import { Stepper } from "@/components/ui/Stepper";
 import { UiText } from "@/components/ui/UiText";
-import { persianReviewed } from "@/lib/client/persian-review";
 import { completeOnboarding, useProfile, type DailyGoal, type Me, type Profile } from "@/lib/client/profile";
 import { queryKeys } from "@/lib/client/query-keys";
 import { STAGE_IDS, stageLabel, stageNames } from "@/lib/domain/registry";
@@ -31,11 +30,10 @@ const STEP_COPY: Record<Step, Copy> = {
   start: uiCopy.welcome.stepStart,
 };
 
-/** The Persian options carry the language's own name, so a Persian reader finds them before any review. */
+/** Dutch practice, with optional English explanations. */
 const SUPPORT: { value: SupportMode; copy: Copy; autonym?: string }[] = [
+  { value: "nl", copy: uiCopy.welcome.supportNl },
   { value: "nl-en", copy: uiCopy.welcome.supportEn },
-  { value: "nl-fa", copy: uiCopy.welcome.supportFa, autonym: "فارسی" },
-  { value: "nl-fa-en", copy: uiCopy.welcome.supportBoth, autonym: "فارسی" },
 ];
 
 /** Plain-language starting points; any of the twelve stages can be picked below them. */
@@ -192,15 +190,7 @@ function WelcomeSteps({ saved }: { saved: Profile | null }) {
             columns={1}
           />
           <p className="muted">
-            {/* Persian-only learners see Dutch alone until the Persian is checked; promise nothing else */}
-            <UiText
-              text={
-                mode === "nl-fa" && !persianReviewed(uiCopy.welcome.levelQuestion)
-                  ? uiCopy.welcome.languageNoteFaPending
-                  : uiCopy.welcome.languageNote
-              }
-              tier="always"
-            />
+            <UiText text={uiCopy.welcome.languageNote} tier="always" />
           </p>
           <div className="welcome-actions">
             <Button icon="arrow" iconEnd onClick={() => go("niveau")}>

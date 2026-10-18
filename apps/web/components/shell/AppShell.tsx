@@ -14,9 +14,8 @@ import { destinations, navItemFor, navSection, rooms, type NavItem } from "@/com
 import { IconTile } from "@/components/ui/IconTile";
 import { ToastProvider } from "@/components/ui/Toast";
 import { UiText } from "@/components/ui/UiText";
-import { workspaceCopy } from "@/lib/copy/workspace";
 import { uiCopy } from "@/lib/ui-copy";
-import { NavigationGuardContext, type LeaveGuard } from "@/lib/client/navigation";
+import { NavigationCheckContext, NavigationGuardContext, type LeaveGuard } from "@/lib/client/navigation";
 
 function NavLink({ item, section }: { item: NavItem; section: string | null }) {
   return (
@@ -35,7 +34,7 @@ function NavLink({ item, section }: { item: NavItem; section: string | null }) {
 function Sidebar({ section }: { section: string | null }) {
   return (
     <aside className="app-sidebar">
-      <Link href="/" className="brand" aria-label="Taalstudio, naar vandaag">
+      <Link href="/" className="brand" aria-label="Taalstudio, naar dashboard">
         <span className="brand-mark">
           t<span>.</span>
         </span>
@@ -46,20 +45,11 @@ function Sidebar({ section }: { section: string | null }) {
       </Link>
       <nav aria-label="Hoofdmenu">
         <div className="nav-group">
-          {destinations.slice(0, 2).map((item) => (
+          {destinations.map((item) => (
             <NavLink key={item.href} item={item} section={section} />
           ))}
         </div>
         <div className="nav-group">
-          <p className="nav-group-label">
-            <UiText text={workspaceCopy.activity} />
-          </p>
-          {destinations.slice(2).map((item) => (
-            <NavLink key={item.href} item={item} section={section} />
-          ))}
-        </div>
-        <div className="nav-group">
-          <p className="nav-group-label">Jouw plek</p>
           {rooms.map((item) => (
             <NavLink key={item.href} item={item} section={section} />
           ))}
@@ -105,7 +95,7 @@ function Header({ current }: { current: NavItem }) {
 function MobileTabs({ section }: { section: string | null }) {
   return (
     <nav className="mobile-nav" aria-label="Mobiel hoofdmenu">
-      {destinations.map((item) => (
+      {[...destinations, ...rooms].map((item) => (
         <Link
           key={item.href}
           href={item.href}
@@ -142,6 +132,7 @@ export function AppShell({
   const registerGuard = useCallback((value: LeaveGuard) => {
     guard.current = value;
   }, []);
+  const canLeave = useCallback(async () => !guard.current || (await guard.current()), []);
   function navigate(event: MouseEvent<HTMLDivElement>) {
     if (
       !guard.current ||
@@ -157,7 +148,11 @@ export function AppShell({
       event.target instanceof Element ? event.target.closest<HTMLAnchorElement>("a[href]") : null;
     if (!anchor || anchor.download || anchor.target === "_blank") return;
     const target = new URL(anchor.href, window.location.href);
-    if (target.origin !== window.location.origin || target.pathname === path) return;
+    if (
+      target.origin !== window.location.origin ||
+      (target.pathname === path && target.search === window.location.search)
+    )
+      return;
     event.preventDefault();
     event.stopPropagation();
     if (leaving.current) return;
@@ -179,31 +174,33 @@ export function AppShell({
   const bare = path === "/welkom" || path.startsWith("/welkom/") || path === "/oefenen";
   return (
     <NavigationGuardContext.Provider value={registerGuard}>
-      <DeveloperDetailsProvider show={environment !== "production"}>
-        <div className={bare ? "app-frame is-bare" : "app-frame"} onClickCapture={navigate}>
-          <ToastProvider>
-            {!bare && <Sidebar section={section} />}
-            <div className="app-workspace" data-accent={current.accent}>
-              <Header current={current} />
-              <ConnectionBanner />
-              <GoalCelebration />
-              <main id="main" className="site-main" tabIndex={-1}>
-                <FirstRunGate enabled={firstRunGate}>{children}</FirstRunGate>
-              </main>
-              <footer className="site-footer">
-                <span>
-                  taalstudio <span className="footer-dot">·</span> Nederlands, stap voor stap.
-                </span>
-                <span>
-                  {environment === "production" ? "Persoonlijke leeromgeving" : "Lokale leeromgeving"}{" "}
-                  <span className="footer-dot">·</span> Standaardnederlands in België
-                </span>
-              </footer>
-            </div>
-            {!bare && <MobileTabs section={section} />}
-          </ToastProvider>
-        </div>
-      </DeveloperDetailsProvider>
+      <NavigationCheckContext.Provider value={canLeave}>
+        <DeveloperDetailsProvider show={environment !== "production"}>
+          <div className={bare ? "app-frame is-bare" : "app-frame"} onClickCapture={navigate}>
+            <ToastProvider>
+              {!bare && <Sidebar section={section} />}
+              <div className="app-workspace" data-accent={current.accent}>
+                <Header current={current} />
+                <ConnectionBanner />
+                <GoalCelebration />
+                <main id="main" className="site-main" tabIndex={-1}>
+                  <FirstRunGate enabled={firstRunGate}>{children}</FirstRunGate>
+                </main>
+                <footer className="site-footer">
+                  <span>
+                    taalstudio <span className="footer-dot">·</span> Nederlands, stap voor stap.
+                  </span>
+                  <span>
+                    {environment === "production" ? "Persoonlijke leeromgeving" : "Lokale leeromgeving"}{" "}
+                    <span className="footer-dot">·</span> Standaardnederlands in België
+                  </span>
+                </footer>
+              </div>
+              {!bare && <MobileTabs section={section} />}
+            </ToastProvider>
+          </div>
+        </DeveloperDetailsProvider>
+      </NavigationCheckContext.Provider>
     </NavigationGuardContext.Provider>
   );
 }

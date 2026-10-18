@@ -87,7 +87,7 @@ def view(session: Session, learner: Learner, profile: LearnerProfile) -> dict:
 
 def _mirror_support_language(learner: Learner, support_mode: str | None) -> None:
     if support_mode:
-        learner.support_language = "fa" if "fa" in support_mode else "en"
+        learner.support_language = "nl" if support_mode == "nl" else "en"
 
 
 def update(session: Session, learner: Learner, body: ProfileUpdate) -> LearnerProfile:

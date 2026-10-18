@@ -20,6 +20,7 @@ function respond(body: unknown) {
 }
 
 afterEach(() => {
+  vi.useRealTimers();
   vi.unstubAllGlobals();
   playTone.mockClear();
 });
@@ -37,6 +38,7 @@ describe("reaching the daily goal", () => {
   });
 
   it("says it in words, then plays the goal tone after the answer tone, once a day", async () => {
+    vi.useFakeTimers();
     render(
       <ToastProvider>
         <GoalCelebration />
@@ -45,14 +47,17 @@ describe("reaching the daily goal", () => {
     act(() => {
       window.dispatchEvent(new CustomEvent(GOAL_EVENT));
     });
-    expect((await screen.findAllByText(/Dagdoel gehaald/)).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Dagdoel gehaald/).length).toBeGreaterThan(0);
     expect(playTone).not.toHaveBeenCalled();
-    await vi.waitFor(() => expect(playTone).toHaveBeenCalledWith("goal"));
+    act(() => vi.advanceTimersByTime(319));
+    expect(playTone).not.toHaveBeenCalled();
+    act(() => vi.advanceTimersByTime(1));
+    expect(playTone).toHaveBeenCalledWith("goal");
     // a retried request announces the same crossing again
     act(() => {
       window.dispatchEvent(new CustomEvent(GOAL_EVENT));
     });
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    act(() => vi.advanceTimersByTime(400));
     expect(playTone).toHaveBeenCalledTimes(1);
   });
 });

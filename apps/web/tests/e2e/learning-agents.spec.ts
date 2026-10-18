@@ -360,25 +360,26 @@ test("explicit coaching retries keep the same id and a failed request leaves sug
   expect(calls[0]).toEqual(calls[1]);
 });
 
-test("the conversation is readable and accessible at 320px with Persian support", async ({
+test("the conversation is readable and accessible at 320px with English support", async ({
   page,
 }, testInfo) => {
   await page.setViewportSize({ width: 320, height: 850 });
   await page.request.patch("/api/me", {
     headers: { "X-Requested-With": "fetch" },
-    data: { support_mode: "nl-fa-en" },
+    data: { support_mode: "nl-en" },
   });
-  await page.addInitScript(() => localStorage.setItem("taalstudio.language-support", "nl-fa-en"));
+  await page.addInitScript(() => localStorage.setItem("taalstudio.language-support", "nl-en"));
   await conversationFixture(page);
   await openConversation(page);
-  await expect(page.locator(".conversation-practice [lang=fa]").first()).toHaveAttribute("dir", "rtl");
+  await expect(page.locator(".conversation-practice [lang=fa]")).toHaveCount(0);
+  await expect(page.locator(".conversation-practice [lang=en]").first()).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   const audit = await new AxeBuilder({ page })
     .include(".topic-conversation")
     .withTags(["wcag2a", "wcag2aa"])
     .analyze();
   expect(audit.violations).toEqual([]);
-  await testInfo.attach("conversation-phone-persian", {
+  await testInfo.attach("conversation-phone-english", {
     body: await page.screenshot({ fullPage: true }),
     contentType: "image/png",
   });

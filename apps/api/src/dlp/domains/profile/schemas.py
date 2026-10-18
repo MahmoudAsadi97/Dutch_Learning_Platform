@@ -2,13 +2,19 @@
 sizes and extra fields; the response models keep the HTTP contract typed."""
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, ConfigDict, field_validator, model_validator
+from pydantic import BaseModel, BeforeValidator, ConfigDict, field_validator, model_validator
 
 from dlp.domains.curriculum.schemas import STAGE_IDS
 
-SupportMode = Literal["nl-en", "nl-fa", "nl-fa-en"]
+
+def normalize_support_mode(value: Any) -> Any:
+    """Read retired preferences safely without deleting stored translations or profile history."""
+    return "nl-en" if value in ("nl-fa", "nl-fa-en") else value
+
+
+SupportMode = Annotated[Literal["nl", "nl-en"], BeforeValidator(normalize_support_mode)]
 GlossMode = Literal["auto", "on", "off"]
 DailyGoal = Literal[10, 20, 30]
 # Why the learner studies, chosen in the welcome; "" is no answer. A closed list keeps free text out of the profile.

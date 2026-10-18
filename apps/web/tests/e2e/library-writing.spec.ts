@@ -4,183 +4,99 @@ import AxeBuilder from "@axe-core/playwright";
 import type { Page } from "@playwright/test";
 import { expect, test } from "./fixtures/test";
 
-const copy = (nl: string, en = `English: ${nl}`, fa = `فارسی: ${nl}`) => ({ nl, en, fa });
+const copy = (nl: string, en: string) => ({ nl, en });
 const fixtureWords = Array.from({ length: 500 }, (_, index) => ({
-  id: `test-word-${index + 1}`,
-  term: `woord${index + 1}`,
-  topic: copy(index < 250 ? "Eten" : "Werk"),
-  meaning: copy(`Betekenis ${index + 1}`),
-  example: copy(`Ik gebruik woord${index + 1} vandaag.`),
-}));
-const fixtureStories = Array.from({ length: 100 }, (_, index) => ({
-  id: `test-story-${index + 1}`,
-  title: copy(`Een dag ${index + 1}`),
-  topic: copy(index < 50 ? "Eten" : "Werk"),
-  preview: copy(`Noor leest verhaal ${index + 1}.`),
-  word_count: 16,
-  paragraph_count: 2,
-  paragraphs: [
-    copy(`Noor leest verhaal ${index + 1}. Het is een mooie dag.`),
-    copy("Daarna vertelt Noor het verhaal aan Sam."),
-  ],
-  vocabulary: fixtureWords.slice(index * 5, index * 5 + 5),
-  question: {
-    id: `test-story-${index + 1}-understand`,
-    prompt: copy("Wie leest het verhaal?"),
-    options: [copy("Noor"), copy("Sam")],
-    answer_index: 0,
-    explanation: copy("In de eerste zin leest Noor het verhaal."),
-  },
+  id: "test-word-" + (index + 1),
+  term: "woord" + (index + 1),
+  topic: copy(index < 250 ? "Eten" : "Werk", index < 250 ? "Food" : "Work"),
+  meaning: copy("Betekenis " + (index + 1), "Meaning " + (index + 1)),
+  example: copy("Ik gebruik woord" + (index + 1) + " vandaag.", "I use word" + (index + 1) + " today."),
 }));
 
-/** Isolate browser state transitions from authored prose; the API suite checks every real content file. */
-async function mockLibrary(page: Page, withCore = false) {
-  await page.route(/\/api\/library\/pre-a1(?:\/|\?|$)/, async (route) => {
+/** Fixtures isolate pagination and media state from prose authoring; the API tests validate content. */
+async function mockWords(page: Page) {
+  await page.route(/\/api\/library\/pre-a1\/vocabulary(?:\?|$)/, async (route) => {
     const url = new URL(route.request().url());
-    if (url.pathname === "/api/library/pre-a1") {
-      await route.fulfill({
-        json: {
-          learner_key: "library-browser-test",
-          stage_id: "pre-a1",
-          review_status: "unreviewed",
-          vocabulary_count: 500,
-          ...(withCore ? { productive_core_count: 150 } : {}),
-          story_count: 100,
-          authored_story_count: 0,
-          eligible_authored_story_count: 0,
-          target_story_count: 200,
-          topics: ["Eten", "Werk"].map((key) => ({
-            key,
-            label: copy(key),
-            vocabulary_count: 250,
-            story_count: 50,
-            eligible_authored_story_count: 0,
-          })),
-        },
-      });
-      return;
-    }
-    const storyId = url.pathname.split("/stories/")[1];
-    if (storyId) {
-      const story = fixtureStories.find((item) => item.id === storyId);
-      await route.fulfill({ status: story ? 200 : 404, json: story ?? { detail: "story not found" } });
-      return;
-    }
-    const isWords = url.pathname.endsWith("/vocabulary");
     const query = (url.searchParams.get("q") ?? "").toLowerCase();
-    const topic = url.searchParams.get("topic") ?? "";
     const offset = Number(url.searchParams.get("offset") ?? 0);
-    const limit = Number(url.searchParams.get("limit") ?? (isWords ? 20 : 12));
-    const candidates =
-      !isWords && url.searchParams.get("authored_only") === "true"
-        ? []
-        : isWords && withCore && url.searchParams.get("core_only") === "true"
-          ? fixtureWords.slice(0, 150)
-          : isWords
-            ? fixtureWords
-            : fixtureStories;
-    const items = candidates.filter(
-      (item) =>
-        (!topic || item.topic.nl === topic) && (!query || JSON.stringify(item).toLowerCase().includes(query)),
-    );
+    const limit = Number(url.searchParams.get("limit") ?? 18);
+    const items = fixtureWords.filter((word) => JSON.stringify(word).toLowerCase().includes(query));
     await route.fulfill({
       json: { total: items.length, offset, limit, items: items.slice(offset, offset + limit) },
     });
   });
 }
 
-test("the 150-word core remains usable at phone width and the full bank stays accessible", async ({
-  page,
-}) => {
-  await mockLibrary(page, true);
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/learn/pre-a1");
-  await expect(page.getByRole("button", { name: "Bekijk alle woordkaarten" })).not.toHaveAttribute(
-    "aria-pressed",
-  );
-  await expect(page.getByText("1–20 van 150", { exact: true })).toBeVisible();
-  await expect(page.locator(".vocabulary-card")).toHaveCount(20);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await page.getByRole("button", { name: "Bekijk alle woordkaarten" }).click();
-  await expect(page.getByText("1–20 van 500", { exact: true })).toBeVisible();
-});
-
-async function writingSection(page: Page) {
-  await mockLibrary(page);
-  await page.goto("/learn/pre-a1");
-  await page
-    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Schrijven", exact: true })
-    .click();
-  await page.getByRole("button", { name: "Startles", exact: true }).click();
-  return page.getByLabel("Jouw tekst", { exact: true });
+async function wordReference(page: Page) {
+  await page.goto("/learn/pre-a1?skill=reading&view=vocabulary");
+  const reference = page.getByRole("region", { name: "Woordenlijst van dit niveau" });
+  await expect(reference.locator(".study-word").first()).toBeVisible();
+  return reference;
 }
 
-function writingFeedback(original: string) {
+async function writingSection(page: Page) {
+  const response = await page.request.get("/api/study/a1/topics?skill=writing");
+  expect(response.ok()).toBe(true);
+  const catalog = await response.json();
+  const topic = catalog.topics.find((item: { available: boolean }) => item.available);
+  expect(topic).toBeTruthy();
+  await page.goto("/learn/a1?skill=writing&topic=" + topic.id + "&step=practise");
+  const draft = page.getByLabel(/^Jouw antwoord/);
+  await expect(draft).toBeVisible();
+  return draft;
+}
+
+function writingFeedback() {
   return {
-    original_text: original,
-    corrected_text: "Ik ben Noor. Ik woon in België.",
-    review_status: "automated",
+    status: "evaluated",
+    score: 7,
+    dimensions: { task: 8, grammar: 6, vocabulary: 7, organisation: 7, pronunciation: null },
+    summary: copy("Bekijk deze twee verbeteringen.", "Review these two corrections."),
     corrections: [
       {
         original: "Ik bent",
         replacement: "Ik ben",
         category: "grammar",
-        explanation: copy("Bij ik gebruik je ben.", "Use ben with ik.", "با ik از ben استفاده کن."),
+        explanation: copy("Bij ik gebruik je ben.", "Use ben with ik."),
       },
       {
         original: "Belgie",
         replacement: "België",
         category: "spelling",
-        explanation: copy(
-          "Schrijf België met een trema.",
-          "Write België with a diaeresis.",
-          "België را با علامت دو نقطه بنویس.",
-        ),
+        explanation: copy("Schrijf België met een trema.", "Write België with a diaeresis."),
       },
     ],
-    summary: copy(
-      "Bekijk deze twee verbeteringen.",
-      "Review these two corrections.",
-      "این دو اصلاح را بررسی کن.",
-    ),
+    checks: [],
+    pronunciation_note: copy("Uitspraak is niet beoordeeld.", "Pronunciation was not assessed."),
+    ephemeral: true,
   };
 }
 
-test("word cards paginate a 500-word bank, filter topics and search without losing the selected language", async ({
+test("the compact word reference retains the full 500-word bank and resets pagination for searches", async ({
   page,
 }) => {
-  await mockLibrary(page);
-  await page.goto("/learn/pre-a1");
-  const bank = page.locator(".word-library");
-  await expect(bank.getByRole("heading", { name: "500 woorden en uitdrukkingen" })).toBeVisible();
-  await expect(bank.locator(".vocabulary-card")).toHaveCount(20);
-  const pager = bank.getByRole("navigation", { name: "Pagina’s in de bibliotheek" });
-  await expect(pager.getByRole("status")).toHaveText("1–20 van 500");
-  await expect(pager.getByRole("button", { name: "Vorige", exact: true })).toBeDisabled();
-  await pager.getByRole("button", { name: "Volgende", exact: true }).click();
-  await expect(pager.getByRole("status")).toHaveText("21–40 van 500");
-  await expect(bank.locator(".vocabulary-card h3").first()).toHaveText("woord21");
-  await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
-  await bank.getByLabel("Onderwerp", { exact: true }).selectOption("Werk");
-  await expect(pager.getByRole("status")).toHaveText("1–20 van 250");
-  await expect(bank.locator(".vocabulary-card h3").first()).toHaveText("woord251");
-  await bank.getByLabel("Zoeken", { exact: true }).fill("woord500");
-  await expect(bank.locator(".vocabulary-card")).toHaveCount(1);
-  await expect(pager.getByRole("status")).toHaveText("1–1 van 1");
-  await expect(pager.getByRole("button", { name: "Volgende", exact: true })).toBeDisabled();
-  await bank.getByRole("button", { name: "Toon de betekenis", exact: true }).click();
-  await expect(bank.locator(".word-answer [lang=en]").first()).toBeVisible();
-  await expect(bank.locator(".word-answer [lang=fa]").first()).toHaveAttribute("dir", "rtl");
-  await bank.getByLabel("Zoeken", { exact: true }).fill("no-match-zzzz");
-  await expect(pager.getByRole("status")).toHaveText("Geen resultaten");
-  await expect(bank.locator(".vocabulary-card")).toHaveCount(0);
+  await mockWords(page);
+  await page.setViewportSize({ width: 390, height: 844 });
+  const bank = await wordReference(page);
+  await expect(bank.locator(".study-word")).toHaveCount(18);
+  await expect(bank.locator(".study-word-top strong").first()).toHaveText("woord1");
+  await expect(bank.getByRole("button", { name: "Vorige", exact: true })).toBeDisabled();
+  await bank.getByRole("button", { name: /Volgende woorden/ }).click();
+  await expect(bank.locator(".study-word-top strong").first()).toHaveText("woord19");
+  await page.getByLabel("Taalhulp / language").selectOption("nl-en");
+  await bank.getByLabel("Zoek in de woordenlijst").fill("woord500");
+  await expect(bank.locator(".study-word")).toHaveCount(1);
+  await expect(bank.locator(".study-word-top strong")).toHaveText("woord500");
+  await expect(bank.getByRole("button", { name: /Volgende woorden/ })).toBeDisabled();
+  await expect(bank.locator('[lang="en"]').first()).toBeVisible();
+  await bank.getByLabel("Zoek in de woordenlijst").fill("no-match-zzzz");
+  await expect(bank.locator(".study-word")).toHaveCount(0);
+  await expect(bank).toContainText("Geen woorden gevonden");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
-test("word and example audio requires an explicit click and repeats the cached word without another request", async ({
-  page,
-}) => {
-  await mockLibrary(page);
+test("word and sentence pronunciation require a click and replay uses cached audio", async ({ page }) => {
+  await mockWords(page);
   const wav = await readFile(path.resolve(__dirname, "../../../api/tests/fixtures/tone_1s.wav"));
   const spoken: string[] = [];
   await page.route("**/api/speech/synthesize", async (route) => {
@@ -193,14 +109,10 @@ test("word and example audio requires an explicit click and repeats the cached w
       headers: { "x-audio-voice": "fixture-tone" },
     });
   });
-  await page.goto("/learn/pre-a1");
-  const card = page.locator(".word-library .vocabulary-card").first();
-  await expect(card.getByRole("heading")).toHaveText("woord1");
+  const bank = await wordReference(page);
+  const card = bank.locator(".study-word").first();
   expect(spoken).toEqual([]);
-  await card.getByRole("button", { name: "Toon de betekenis", exact: true }).click();
-  await expect(card.locator(".word-example")).toBeVisible();
-  expect(spoken).toEqual([]);
-  const wordPlay = card.locator(".word-card-heading .phrase-audio-button");
+  const wordPlay = card.locator(".study-word-top .phrase-audio-button");
   await wordPlay.click();
   await expect.poll(() => spoken).toEqual(["woord1"]);
   await expect(wordPlay).toHaveAttribute("aria-pressed", "false");
@@ -209,228 +121,22 @@ test("word and example audio requires an explicit click and repeats the cached w
   await expect(wordPlay).toHaveAttribute("aria-pressed", "true");
   await expect(wordPlay).toHaveAttribute("aria-pressed", "false");
   expect(spoken).toEqual(["woord1"]);
-  await card.locator(".word-example .phrase-audio-button").click();
+  await card.locator(".study-word-example .phrase-audio-button").click();
   await expect.poll(() => spoken).toEqual(["woord1", "Ik gebruik woord1 vandaag."]);
 });
 
-test("Story Time reveals translations without resetting understanding and read marks never award assessment credit", async ({
-  page,
-}) => {
-  await mockLibrary(page);
-  await page.goto("/learn/pre-a1");
-  const before = await (await page.request.get("/api/curriculum/pre-a1")).json();
-  await page
-    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Verhalen", exact: true })
-    .click();
-  await expect(page.locator(".library-count")).toContainText("0 verhalen beschikbaar · doel: 200");
-  await page.getByRole("checkbox", { name: /^Ook oudere korte teksten bekijken/ }).check();
-  await expect(page.locator(".story-time")).toContainText("100 resultaten in deze selectie");
-  await expect(page.locator(".story-tile")).toHaveCount(12);
-  await page.getByRole("button", { name: "Lees Een dag 1", exact: true }).click();
-  const reader = page.locator(".story-reader");
-  await expect(reader.locator(".story-paragraph")).toHaveCount(2);
-  await expect(reader.locator(".story-paper [lang=en]")).toHaveCount(0);
-  await expect(reader.locator(".story-paper [lang=fa]")).toHaveCount(0);
-  const choice = reader.locator('input[name="q-test-story-1-understand"]').first();
-  await choice.check();
-  await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
-  await reader.getByRole("button", { name: "Vertaling tonen", exact: true }).click();
-  await expect(reader.locator(".story-paper [lang=en]")).toHaveCount(2);
-  await expect(reader.locator(".story-paper [lang=fa]")).toHaveCount(2);
-  await expect(choice).toBeChecked();
-  await reader.getByRole("button", { name: "Controleer mijn begrip", exact: true }).click();
-  await expect(reader.locator(".practice-correct")).toContainText("Goed gedaan.");
-  await reader.getByRole("button", { name: "Vertaling verbergen", exact: true }).click();
-  await expect(choice).toBeChecked();
-  await expect(reader.locator(".practice-correct")).toBeVisible();
-  await reader.getByRole("button", { name: "Markeer als gelezen", exact: true }).click();
-  await expect(reader.getByRole("button", { name: "Gelezen", exact: true })).toBeDisabled();
-  const after = await (await page.request.get("/api/curriculum/pre-a1")).json();
-  expect(after.progress).toEqual(before.progress);
-  await reader.getByRole("button", { name: "← Alle verhalen", exact: true }).click();
-  await expect(
-    page
-      .locator(".story-tile")
-      .filter({ has: page.getByRole("button", { name: "Lees Een dag 1", exact: true }) })
-      .getByText("Gelezen", { exact: true }),
-  ).toBeVisible();
-  await page.reload();
-  await page
-    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Verhalen", exact: true })
-    .click();
-  await page.getByRole("checkbox", { name: /^Ook oudere korte teksten bekijken/ }).check();
-  await expect(
-    page
-      .locator(".story-tile")
-      .filter({ has: page.getByRole("button", { name: "Lees Een dag 1", exact: true }) })
-      .getByText("Gelezen", { exact: true }),
-  ).toBeVisible();
-});
-
-test("writing corrections explain real fragments and require choosing the revised draft", async ({
-  page,
-}) => {
-  const original = "Ik bent Noor. Ik woon in Belgie.";
-  await page.route("**/api/curriculum/pre-a1/writing-feedback", (route) => {
-    expect(route.request().postDataJSON()).toEqual({ text: original });
-    return route.fulfill({ json: writingFeedback(original) });
-  });
-  const draft = await writingSection(page);
-  await draft.fill(original);
-  const coach = page.getByRole("region", { name: "Schrijfhulp" });
-  await coach.getByRole("button", { name: "Controleer spelling en grammatica", exact: true }).click();
-  await expect(coach.locator(".correction-list > li")).toHaveCount(2);
-  await expect(draft).toHaveValue(original);
-  await expect(coach.locator("del").first()).toHaveText("Ik bent");
-  await expect(coach.locator("ins").first()).toHaveText("Ik ben");
-  await expect(coach).toContainText("Bij ik gebruik je ben.");
-  await expect(coach).toContainText("Schrijf België met een trema.");
-  await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
-  await expect(coach).toContainText("Use ben with ik.");
-  await expect(coach.locator(".correction-list [lang=fa]").first()).toBeVisible();
-  const corrected = coach.locator(".corrected-draft");
-  await corrected.locator("summary").click();
-  await expect(corrected.getByRole("paragraph")).toHaveText("Ik ben Noor. Ik woon in België.");
-  await expect(corrected.getByRole("button", { name: /^Luister:/ })).toHaveCount(2);
-  await coach.getByRole("button", { name: "Gebruik als nieuwe versie", exact: true }).click();
-  await expect(draft).toHaveValue("Ik ben Noor. Ik woon in België.");
-  await expect(coach.locator(".writing-review")).toHaveCount(0);
-  await page.reload();
-  await page
-    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Schrijven", exact: true })
-    .click();
-  await page.getByRole("button", { name: "Startles", exact: true }).click();
-  await expect(draft).toHaveValue("Ik ben Noor. Ik woon in België.");
-});
-
-test("writing service errors preserve the draft and editing clears previous suggestions", async ({
-  page,
-}) => {
-  const original = "Ik bent Noor. Ik woon in Belgie.";
-  let calls = 0;
-  await page.route("**/api/curriculum/pre-a1/writing-feedback", (route) => {
-    calls++;
-    return calls === 1
-      ? route.fulfill({ status: 503, json: { detail: "temporarily unavailable" } })
-      : route.fulfill({ json: writingFeedback(original) });
-  });
-  const draft = await writingSection(page);
-  await draft.fill(original);
-  const coach = page.getByRole("region", { name: "Schrijfhulp" });
-  await coach.getByRole("button", { name: "Controleer spelling en grammatica", exact: true }).click();
-  await expect(coach.getByRole("alert")).toContainText("Je invoer blijft staan.");
-  await expect(draft).toHaveValue(original);
-  await expect(coach.locator(".writing-review")).toHaveCount(0);
-  await coach.getByRole("button", { name: "Controleer spelling en grammatica", exact: true }).click();
-  await expect(coach.locator(".writing-review")).toBeVisible();
-  await draft.fill("Ik ben Noor. Vandaag woon ik in Gent.");
-  await expect(coach.locator(".writing-review")).toHaveCount(0);
-  await expect(coach.getByRole("alert")).toHaveCount(0);
-});
-
-test("a late writing response cannot overwrite or annotate a newer draft", async ({ page }) => {
-  const original = "Ik bent Noor. Ik woon in Belgie.";
+test("a slower word search cannot display stale cards or replace a newer search", async ({ page }) => {
+  await mockWords(page);
   let release = () => {};
   let started = () => {};
   let finished = () => {};
-  const waitForRelease = new Promise<void>((resolve) => {
+  const held = new Promise<void>((resolve) => {
     release = resolve;
   });
-  const requestStarted = new Promise<void>((resolve) => {
+  const requested = new Promise<void>((resolve) => {
     started = resolve;
   });
-  const requestFinished = new Promise<void>((resolve) => {
-    finished = resolve;
-  });
-  await page.route("**/api/curriculum/pre-a1/writing-feedback", async (route) => {
-    started();
-    await waitForRelease;
-    try {
-      await route.fulfill({ json: writingFeedback(original) });
-    } finally {
-      finished();
-    }
-  });
-  try {
-    const draft = await writingSection(page);
-    await draft.fill(original);
-    const coach = page.getByRole("region", { name: "Schrijfhulp" });
-    await coach.getByRole("button", { name: "Controleer spelling en grammatica", exact: true }).click();
-    await requestStarted;
-    await expect(coach.getByRole("button", { name: "Je tekst nakijken…", exact: true })).toBeDisabled();
-    await draft.fill("Mijn nieuwe antwoord blijft staan.");
-    release();
-    await requestFinished;
-    await expect(draft).toHaveValue("Mijn nieuwe antwoord blijft staan.");
-    await expect(coach.locator(".writing-review")).toHaveCount(0);
-    await expect(
-      coach.getByRole("button", { name: "Controleer spelling en grammatica", exact: true }),
-    ).toBeEnabled();
-  } finally {
-    release();
-  }
-});
-
-test("pre-A1 alphabet has 26 selectable letters, letter names and an independent listening round", async ({
-  page,
-}) => {
-  await mockLibrary(page);
-  await page.goto("/learn/pre-a1");
-  await page
-    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Alfabet", exact: true })
-    .click();
-  const alphabet = page.getByTestId("alphabet-practice");
-  const picker = alphabet.getByRole("group", { name: "Kies een letter", exact: true });
-  await expect(picker.getByRole("button")).toHaveCount(26);
-  await expect(picker.getByRole("button", { name: "A", exact: true })).toHaveAttribute(
-    "aria-pressed",
-    "true",
-  );
-  await picker.getByRole("button", { name: "Z", exact: true }).click();
-  await expect(picker.getByRole("button", { name: "Z", exact: true })).toHaveAttribute(
-    "aria-pressed",
-    "true",
-  );
-  await expect(picker.getByRole("button", { name: "A", exact: true })).toHaveAttribute(
-    "aria-pressed",
-    "false",
-  );
-  await expect(alphabet.locator(".alphabet-spoken-name")).toContainText("zet");
-  await expect(alphabet.locator(".alphabet-focus")).toContainText("zon");
-  await expect(alphabet.locator(".alphabet-focus .phrase-audio-button")).toHaveCount(2);
-  const options = alphabet.getByRole("group", { name: "Welke letter hoor je?", exact: true });
-  await expect(options.getByRole("button")).toHaveCount(4);
-  await options.getByRole("button", { name: "D", exact: true }).click();
-  await expect(alphabet.locator(".alphabet-answer")).toContainText("Juist: D heet dee.");
-  await alphabet.getByRole("button", { name: /Volgende letter/ }).click();
-  await expect(alphabet.locator(".alphabet-answer")).toHaveCount(0);
-  await expect(options.getByRole("button").first()).toBeEnabled();
-  await page.goto("/learn/a1");
-  await expect(
-    page
-      .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-      .getByRole("button", { name: "Alfabet", exact: true }),
-  ).toHaveCount(0);
-});
-
-test("delayed word searches never pair an updated pager with stale cards or restore an older result", async ({
-  page,
-}) => {
-  await mockLibrary(page);
-  let release = () => {};
-  let started = () => {};
-  let finished = () => {};
-  const waitForRelease = new Promise<void>((resolve) => {
-    release = resolve;
-  });
-  const requestStarted = new Promise<void>((resolve) => {
-    started = resolve;
-  });
-  const requestFinished = new Promise<void>((resolve) => {
+  const completed = new Promise<void>((resolve) => {
     finished = resolve;
   });
   await page.route(/\/api\/library\/pre-a1\/vocabulary\?/, async (route) => {
@@ -439,106 +145,142 @@ test("delayed word searches never pair an updated pager with stale cards or rest
       return;
     }
     started();
-    await waitForRelease;
+    await held;
     try {
-      await route.fulfill({ json: { total: 1, offset: 0, limit: 20, items: [fixtureWords[499]] } });
+      await route.fulfill({ json: { total: 1, offset: 0, limit: 18, items: [fixtureWords[499]] } });
     } finally {
       finished();
     }
   });
   try {
-    await page.goto("/learn/pre-a1");
-    const bank = page.locator(".word-library");
-    const pager = bank.getByRole("navigation", { name: "Pagina’s in de bibliotheek" });
-    await pager.getByRole("button", { name: "Volgende", exact: true }).click();
-    await expect(bank.locator(".vocabulary-card h3").first()).toHaveText("woord21");
-    await expect(pager.getByRole("status")).toHaveText("21–40 van 500");
-    await bank.getByLabel("Zoeken", { exact: true }).fill("woord500");
-
-    // Observe one DOM snapshot without retrying past the debounce: the previous
-    // page must disappear as soon as the query changes, before a response exists.
-    expect(
-      await bank.evaluate((element) => ({
-        cards: element.querySelectorAll(".vocabulary-card").length,
-        pagers: element.querySelectorAll(".library-pagination").length,
-        loading: element.textContent?.includes("Woordkaarten laden…"),
-      })),
-    ).toEqual({ cards: 0, pagers: 0, loading: true });
-    await requestStarted;
-    await expect(bank.getByRole("status")).toHaveText("Woordkaarten laden…");
-    await expect(pager).toHaveCount(0);
-
-    // A newer search completes first; releasing the older request cannot
-    // replace its card, search value, or page range.
-    await bank.getByLabel("Zoeken", { exact: true }).fill("woord499");
-    await expect(bank.locator(".vocabulary-card h3")).toHaveText(["woord499"]);
+    const bank = await wordReference(page);
+    await bank.getByRole("button", { name: /Volgende woorden/ }).click();
+    await expect(bank.locator(".study-word-top strong").first()).toHaveText("woord19");
+    await bank.getByLabel("Zoek in de woordenlijst").fill("woord500");
+    // The old page disappears immediately, not only after the replacement request completes.
+    expect(await bank.locator(".study-word").count()).toBe(0);
+    await requested;
+    await bank.getByLabel("Zoek in de woordenlijst").fill("woord499");
+    await expect(bank.locator(".study-word-top strong")).toHaveText(["woord499"]);
     release();
-    await requestFinished;
-    await expect(bank.getByLabel("Zoeken", { exact: true })).toHaveValue("woord499");
-    await expect(bank.locator(".vocabulary-card h3")).toHaveText(["woord499"]);
-    await expect(pager.getByRole("status")).toHaveText("1–1 van 1");
-    await expect(pager.getByRole("button", { name: "Volgende", exact: true })).toBeDisabled();
+    await completed;
+    await expect(bank.getByLabel("Zoek in de woordenlijst")).toHaveValue("woord499");
+    await expect(bank.locator(".study-word-top strong")).toHaveText(["woord499"]);
   } finally {
     release();
   }
 });
 
-test("word cards and translated Story Time remain accessible and fit 320 and 390 pixel screens without autoplay", async ({
+test("temporary writing feedback corrects real fragments and disappears when the draft changes", async ({
+  page,
+}) => {
+  const original = "Ik bent Noor. Ik woon in Belgie.";
+  await page.route(/\/api\/study\/a1\/topics\/[^/]+\/feedback$/, (route) => {
+    expect(route.request().postDataJSON().text).toBe(original);
+    return route.fulfill({ json: writingFeedback() });
+  });
+  const draft = await writingSection(page);
+  await draft.fill(original);
+  await page.getByRole("button", { name: /^Bekijk mijn feedback/ }).click();
+  const report = page.getByRole("region", { name: "Tijdelijke oefenfeedback" });
+  await expect(report.locator(".study-correction")).toHaveCount(2);
+  await expect(report.locator("del").first()).toHaveText("Ik bent");
+  await expect(report.locator(".study-correction strong").first()).toHaveText("Ik ben");
+  await expect(report).toContainText("Schrijf België met een trema.");
+  await expect(report.locator(".study-score")).toContainText("7/10");
+  await expect(draft).toHaveValue(original);
+  await page.getByLabel("Taalhulp / language").selectOption("nl-en");
+  await expect(report).toContainText("Use ben with ik.");
+  await expect(report.locator('[lang="fa"]')).toHaveCount(0);
+  await draft.fill("Mijn nieuwe antwoord blijft staan.");
+  await expect(report).toHaveCount(0);
+  await page.reload();
+  await expect(draft).toHaveValue("");
+  await expect(report).toHaveCount(0);
+});
+
+test("writing service failures preserve the answer and a later successful review remains temporary", async ({
+  page,
+}) => {
+  let calls = 0;
+  await page.route(/\/api\/study\/a1\/topics\/[^/]+\/feedback$/, (route) => {
+    calls++;
+    return calls === 1
+      ? route.fulfill({ status: 503, json: { detail: "temporarily unavailable" } })
+      : route.fulfill({ json: writingFeedback() });
+  });
+  const draft = await writingSection(page);
+  await draft.fill("Ik bent Noor. Ik woon in Belgie.");
+  await page.getByRole("button", { name: /^Bekijk mijn feedback/ }).click();
+  await expect(page.getByRole("alert")).toBeVisible();
+  await expect(draft).toHaveValue("Ik bent Noor. Ik woon in Belgie.");
+  await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toHaveCount(0);
+  await page.getByRole("button", { name: /^Bekijk mijn feedback/ }).click();
+  await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toBeVisible();
+  await draft.fill("Ik woon in België.");
+  await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toHaveCount(0);
+  await expect(page.getByRole("alert")).toHaveCount(0);
+});
+
+test("an in-flight writing review cannot annotate an answer edited after its response", async ({ page }) => {
+  let release = () => {};
+  let started = () => {};
+  const held = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  const requested = new Promise<void>((resolve) => {
+    started = resolve;
+  });
+  await page.route(/\/api\/study\/a1\/topics\/[^/]+\/feedback$/, async (route) => {
+    started();
+    await held;
+    await route.fulfill({ json: writingFeedback() });
+  });
+  try {
+    const draft = await writingSection(page);
+    await draft.fill("Ik bent Noor. Ik woon in Belgie.");
+    await page.getByRole("button", { name: /^Bekijk mijn feedback/ }).click();
+    await requested;
+    // Locking the submitted version prevents an older response from attaching to a newer answer.
+    await expect(draft).toBeDisabled();
+    await expect(page.getByRole("button", { name: /^Je antwoord bekijken/ })).toBeDisabled();
+    release();
+    const report = page.getByRole("region", { name: "Tijdelijke oefenfeedback" });
+    await expect(report).toBeVisible();
+    await expect(draft).toBeEnabled();
+    await draft.fill("Mijn nieuwe antwoord blijft staan.");
+    await expect(draft).toHaveValue("Mijn nieuwe antwoord blijft staan.");
+    await expect(report).toHaveCount(0);
+  } finally {
+    release();
+  }
+});
+
+test("compact bilingual words remain accessible at 320 and 390 pixels without autoplay", async ({
   page,
 }, testInfo) => {
-  await mockLibrary(page);
-  const wav = await readFile(path.resolve(__dirname, "../../../api/tests/fixtures/tone_1s.wav"));
-  const spoken: string[] = [];
-  await page.route("**/api/speech/synthesize", async (route) => {
-    spoken.push(route.request().postDataJSON().text);
-    await route.fulfill({
-      body: wav,
-      contentType: "audio/wav",
-      headers: { "x-audio-voice": "fixture-tone" },
-    });
+  await mockWords(page);
+  let audioCalls = 0;
+  await page.route("**/api/speech/synthesize", (route) => {
+    audioCalls++;
+    return route.abort();
   });
   for (const width of [320, 390]) {
     await page.setViewportSize({ width, height: 844 });
-    await page.goto("/learn/pre-a1");
-    await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
-    const bank = page.locator(".word-library");
-    await bank.getByRole("button", { name: "Toon de betekenis", exact: true }).first().click();
-    await expect(bank.locator(".word-answer [lang=en]").first()).toBeVisible();
-    await expect(bank.locator(".word-answer [lang=fa]").first()).toHaveAttribute("dir", "rtl");
+    const bank = await wordReference(page);
+    await page.getByLabel("Taalhulp / language").selectOption("nl-en");
+    await expect(bank.locator('[lang="en"]').first()).toBeVisible();
     await page.evaluate(() => document.fonts.ready.then(() => undefined));
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    const wordsAudit = await new AxeBuilder({ page })
-      .include(".word-library")
+    const audit = await new AxeBuilder({ page })
+      .include(".study-reference")
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
       .analyze();
-    await testInfo.attach(`word-cards-rtl-${width}`, {
+    expect(audit.violations).toEqual([]);
+    await testInfo.attach("compact-words-" + width, {
       body: await page.screenshot({ fullPage: true }),
       contentType: "image/png",
     });
-    expect(wordsAudit.violations).toEqual([]);
-
-    await page
-      .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-      .getByRole("button", { name: "Verhalen", exact: true })
-      .click();
-    await page.getByRole("checkbox", { name: /^Ook oudere korte teksten bekijken/ }).check();
-    await page.getByRole("button", { name: "Lees Een dag 1", exact: true }).click();
-    const reader = page.locator(".story-reader");
-    await reader.getByRole("button", { name: "Vertaling tonen", exact: true }).click();
-    await expect(reader.locator(".story-paper [lang=fa]").first()).toHaveAttribute("dir", "rtl");
-    await expect(reader.locator(".story-paper [lang=en]").first()).toBeVisible();
-    await reader.locator(".story-word-strip summary").first().click();
-    await expect(reader.locator(".story-word-strip details[open] [lang=fa]").first()).toBeVisible();
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    const storyAudit = await new AxeBuilder({ page })
-      .include(".story-reader")
-      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
-      .analyze();
-    await testInfo.attach(`story-reader-rtl-${width}`, {
-      body: await page.screenshot({ fullPage: true }),
-      contentType: "image/png",
-    });
-    expect(storyAudit.violations).toEqual([]);
-    expect(spoken).toEqual([]);
   }
+  expect(audioCalls).toBe(0);
 });

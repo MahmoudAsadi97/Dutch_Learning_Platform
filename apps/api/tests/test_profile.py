@@ -45,7 +45,7 @@ def test_patch_validates_and_keeps_other_fields(client, headers):
     assert client.patch("/me", json={"gloss_mode": None}, headers=headers).status_code == 422
     assert client.patch("/me", json={"support_mode": None}, headers=headers).status_code == 200
     first = client.patch("/me", json={"stage_id": "a2", "support_mode": "nl-fa"}, headers=headers).json()
-    assert first["profile"]["stage_id"] == "a2" and first["profile"]["support_mode"] == "nl-fa"
+    assert first["profile"]["stage_id"] == "a2" and first["profile"]["support_mode"] == "nl-en"
     second = client.patch("/me", json={"daily_goal_points": 30}, headers=headers).json()["profile"]
     assert second == {**first["profile"], "daily_goal_points": 30}
     other = client.get("/me", headers=auth_headers("second-1", email="second@example.com")).json()["profile"]

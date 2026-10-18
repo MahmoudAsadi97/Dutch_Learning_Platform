@@ -1,48 +1,85 @@
 import { expect, test } from "./fixtures/test";
 
-test("recall reveals only on request and repeats the words the learner found difficult", async ({ page }) => {
-  await page.goto("/learn/pre-a1");
-  const tool = page.getByTestId("vocabulary-recall");
-  await expect(tool).toBeVisible();
+test("pre-A1 alphabet names and its listening round remain available inside the level", async ({ page }) => {
   const before = await (await page.request.get("/api/curriculum/pre-a1")).json();
-  await tool.getByRole("button", { name: "Start een korte woordronde" }).click();
-  await expect(tool.getByRole("status")).toHaveText("Woord 1 van 5");
-  await expect(tool.locator(".recall-reveal")).toHaveCount(0);
-  await tool.locator("input").fill("mijn poging");
-  await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
-  await expect(tool.locator("input")).toHaveValue("mijn poging");
-  await tool.getByRole("button", { name: "Vergelijk je antwoord" }).click();
-  const firstWord = await tool.locator(".recall-reveal h4").innerText();
-  await tool.getByRole("button", { name: "Nog eens oefenen" }).click();
-  for (let i = 0; i < 4; i++) {
-    await tool.getByRole("button", { name: "Vergelijk je antwoord" }).click();
-    await tool.getByRole("button", { name: "Ik herinnerde het me" }).click();
-  }
-  await expect(tool).toContainText("1 van 5 woorden wil je opnieuw oefenen.");
-  await tool.getByRole("button", { name: "Herhaal de lastige woorden" }).click();
-  await expect(tool.getByRole("status")).toHaveText("Woord 1 van 1");
-  await tool.getByRole("button", { name: "Vergelijk je antwoord" }).click();
-  await expect(tool.locator(".recall-reveal h4")).toHaveText(firstWord);
-  // Self-report is practice support, never a pass or a shortcut through a level.
+  await page.goto("/learn/pre-a1?skill=reading");
+  await page.getByRole("button", { name: "Alfabet & getallen", exact: true }).click();
+  const alphabet = page.getByTestId("alphabet-practice");
+  const picker = alphabet.getByRole("group", { name: "Kies een letter", exact: true });
+  await expect(picker.getByRole("button")).toHaveCount(26);
+  await expect(picker.getByRole("button", { name: "A", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  await picker.getByRole("button", { name: "Z", exact: true }).click();
+  await expect(picker.getByRole("button", { name: "Z", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  await expect(picker.getByRole("button", { name: "A", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "false",
+  );
+  await expect(alphabet.locator(".alphabet-spoken-name")).toContainText("zet");
+  await expect(alphabet.locator(".alphabet-focus")).toContainText("zon");
+  await expect(alphabet.locator(".alphabet-focus .phrase-audio-button")).toHaveCount(2);
+  const options = alphabet.getByRole("group", { name: "Welke letter hoor je?", exact: true });
+  await expect(options.getByRole("button")).toHaveCount(4);
+  await options.getByRole("button", { name: "D", exact: true }).click();
+  await expect(alphabet.locator(".alphabet-answer")).toContainText("Juist: D heet dee.");
+  await alphabet.getByRole("button", { name: /Volgende letter/ }).click();
+  await expect(alphabet.locator(".alphabet-answer")).toHaveCount(0);
+  await expect(options.getByRole("button").first()).toBeEnabled();
   const after = await (await page.request.get("/api/curriculum/pre-a1")).json();
-  expect(after.progress.practice_completed).toEqual(before.progress.practice_completed);
+  expect(after.progress).toEqual(before.progress);
+  await page.goto("/learn/a1?skill=reading");
+  await expect(page.getByRole("button", { name: "Alfabet & getallen", exact: true })).toHaveCount(0);
 });
 
-test("speaking support explains a communication goal and connects to the real role-play library", async ({
+test("grammar remains independently reachable without awarding four-skill completion", async ({ page }) => {
+  const before = await (await page.request.get("/api/curriculum/a2")).json();
+  await page.goto("/learn/a2?skill=reading");
+  await page.getByRole("button", { name: "Grammatica", exact: true }).click();
+  const grammar = page.getByRole("region", { name: "Grammaticaoefeningen", exact: true });
+  await expect(grammar).toBeVisible();
+  await expect(grammar.getByLabel("Kies een onderwerp", { exact: true })).toBeVisible();
+  const question = grammar.locator(".curriculum-question").first();
+  await expect(question.getByRole("radio").first()).toBeVisible();
+  await question.getByRole("radio").first().check();
+  await grammar.getByRole("button", { name: "Controleer je antwoord", exact: true }).click();
+  await expect(question.getByRole("status")).toBeVisible();
+  await expect(grammar.getByRole("button", { name: "Volgende vraag", exact: true })).toBeEnabled();
+  await grammar.getByRole("button", { name: "Volgende vraag", exact: true }).click();
+  await expect(grammar.locator(".grammar-position")).toContainText("Vraag 2");
+  const after = await (await page.request.get("/api/curriculum/a2")).json();
+  expect(after.progress).toEqual(before.progress);
+  await expect(page.getByLabel("Niveau", { exact: true })).toHaveValue("a2");
+  await expect(page.getByRole("navigation", { name: "Kies een vaardigheid" }).getByRole("link")).toHaveCount(
+    4,
+  );
+});
+
+test("topic words stay available while composing and opening support never erases the answer", async ({
   page,
 }) => {
-  await page.goto("/learn/pre-a1");
-  await page
-    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Spreken", exact: true })
-    .click();
-  await page.getByRole("button", { name: "Startles", exact: true }).click();
-  const coach = page.locator(".communication-coach");
-  await coach.locator("summary").click();
-  await expect(coach.locator(".communication-steps > li")).toHaveCount(3);
-  await expect(coach).toContainText("Kunt u dat herhalen?");
-  await expect(coach).toContainText("geen uitspraakscore");
-  await coach.getByRole("link").click();
-  await expect(page).toHaveURL(/\/missions$/);
-  await expect(page.locator(".catalog-card")).toHaveCount(4);
+  const catalog = await (await page.request.get("/api/study/b1/topics?skill=writing")).json();
+  const topic = catalog.topics.find((item: { available: boolean }) => item.available);
+  expect(topic).toBeTruthy();
+  await page.goto("/learn/b1?skill=writing&topic=" + topic.id);
+  await expect(page.locator(".study-preparation .study-word").first()).toBeVisible();
+  await expect(page.locator(".study-preparation .study-grammar")).not.toHaveCount(0);
+  await page.getByRole("button", { name: /^Ik ben klaar om te oefenen/ }).click();
+  const draft = page.getByLabel(/^Jouw antwoord/);
+  await draft.fill("Mijn eigen antwoord blijft behouden terwijl ik woorden opzoek.");
+  await expect(page.locator(".study-example-answer")).toHaveCount(0);
+  await page.getByRole("button", { name: "Woorden erbij", exact: true }).click();
+  await expect(page.locator(".study-lesson > .study-word-grid .study-word").first()).toBeVisible();
+  await expect(draft).toHaveValue("Mijn eigen antwoord blijft behouden terwijl ik woorden opzoek.");
+  await page.getByLabel("Taalhulp / language").selectOption("nl-en");
+  await page.getByRole("button", { name: /^Bekijk een voorbeeldantwoord/ }).click();
+  await expect(page.locator(".study-example-answer")).toBeVisible();
+  await expect(draft).toHaveValue("Mijn eigen antwoord blijft behouden terwijl ik woorden opzoek.");
+  await page.getByRole("button", { name: "Woorden erbij", exact: true }).click();
+  await expect(draft).toHaveValue("Mijn eigen antwoord blijft behouden terwijl ik woorden opzoek.");
+  await expect(page.locator('[lang="fa"]')).toHaveCount(0);
 });

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { LearningOverview } from "@/components/LearningOverview";
+import { StudyLevelDirectory } from "@/components/StudyLevelDirectory";
 export const metadata: Metadata = { title: "Mijn leerpad" };
 export default function LearningPathPage() {
-  return <LearningOverview />;
+  return <StudyLevelDirectory />;
 }

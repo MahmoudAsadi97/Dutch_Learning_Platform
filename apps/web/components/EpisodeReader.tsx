@@ -496,7 +496,6 @@ function Glossary({ episodeId, items }: { episodeId: string; items: GlossaryItem
                   {item.meaning_fa}
                 </span>
               )}
-              {!showEnglish && !showPersian && <span lang="en">{item.meaning_en}</span>}
             </div>
             <p lang="nl" className="glossary-example muted">
               <SpokenText text={{ nl: item.example }} />

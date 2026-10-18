@@ -1,0 +1,6557 @@
+{
+  "schema_version": 1,
+  "stage_id": "a1",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "a1-family",
+      "topic_id": "family",
+      "title": {
+        "nl": "De lunch bij opa",
+        "en": "Lunch at Grandpa's"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Op zondag eet ik bij opa.",
+          "en": "On Sunday I eat at Grandpa's."
+        },
+        {
+          "nl": "Mijn broer komt ook.",
+          "en": "My brother comes too."
+        },
+        {
+          "nl": "Opa maakt soep voor ons.",
+          "en": "Grandpa makes soup for us."
+        },
+        {
+          "nl": "Mijn broer brengt het brood.",
+          "en": "My brother brings the bread."
+        },
+        {
+          "nl": "Ik zet drie glazen op tafel.",
+          "en": "I put three glasses on the table."
+        },
+        {
+          "nl": "We eten samen in de keuken.",
+          "en": "We eat together in the kitchen."
+        },
+        {
+          "nl": "Na de soep drinken we thee.",
+          "en": "After the soup we drink tea."
+        },
+        {
+          "nl": "Dan was ik de glazen af.",
+          "en": "Then I wash the glasses."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wie maakt de soep?",
+            "en": "Who makes the soup?"
+          },
+          "options": [
+            {
+              "nl": "Opa",
+              "en": "Grandpa"
+            },
+            {
+              "nl": "De broer",
+              "en": "The brother"
+            },
+            {
+              "nl": "De ik-persoon",
+              "en": "The speaker"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Opa",
+            "en": "In this text: Grandpa"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat drinken zij na de soep?",
+            "en": "What do they drink after the soup?"
+          },
+          "options": [
+            {
+              "nl": "Melk",
+              "en": "Milk"
+            },
+            {
+              "nl": "Koffie",
+              "en": "Coffee"
+            },
+            {
+              "nl": "Thee",
+              "en": "Tea"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Thee",
+            "en": "In this text: Tea"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "We eten samen in de keuken.",
+              "en": "We eat together in the kitchen."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Mijn broer komt ook.",
+              "en": "My brother comes too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-friends",
+      "topic_id": "friends",
+      "title": {
+        "nl": "De vergeten sleutel",
+        "en": "The forgotten key"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Mijn vriend Bas staat buiten.",
+          "en": "My friend Bas is outside."
+        },
+        {
+          "nl": "Zijn sleutel ligt in zijn kamer.",
+          "en": "His key is in his room."
+        },
+        {
+          "nl": "Ik woon naast hem.",
+          "en": "I live next door to him."
+        },
+        {
+          "nl": "Hij belt bij mij aan.",
+          "en": "He rings my doorbell."
+        },
+        {
+          "nl": "We wachten op zijn zus.",
+          "en": "We wait for his sister."
+        },
+        {
+          "nl": "Ik geef Bas een kop thee.",
+          "en": "I give Bas a cup of tea."
+        },
+        {
+          "nl": "Om zes uur komt zijn zus.",
+          "en": "His sister arrives at six o'clock."
+        },
+        {
+          "nl": "Zij opent de deur voor Bas.",
+          "en": "She opens the door for Bas."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar ligt de sleutel?",
+            "en": "Where is the key?"
+          },
+          "options": [
+            {
+              "nl": "In de tuin",
+              "en": "In the garden"
+            },
+            {
+              "nl": "In de bus",
+              "en": "On the bus"
+            },
+            {
+              "nl": "In de kamer",
+              "en": "In the room"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: In de kamer",
+            "en": "In this text: In the room"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie opent de deur?",
+            "en": "Who opens the door?"
+          },
+          "options": [
+            {
+              "nl": "Bas zelf",
+              "en": "Bas himself"
+            },
+            {
+              "nl": "De zus van Bas",
+              "en": "Bas's sister"
+            },
+            {
+              "nl": "De buurman",
+              "en": "The male neighbour"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: De zus van Bas",
+            "en": "In this text: Bas's sister"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Om zes uur komt zijn zus.",
+              "en": "His sister arrives at six o'clock."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Mijn vriend Bas staat buiten.",
+              "en": "My friend Bas is outside."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-sports",
+      "topic_id": "sports",
+      "title": {
+        "nl": "De eerste training",
+        "en": "The first training session"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Lina gaat naar de sportclub.",
+          "en": "Lina goes to the sports club."
+        },
+        {
+          "nl": "Ze wil leren zwemmen.",
+          "en": "She wants to learn to swim."
+        },
+        {
+          "nl": "Haar les begint om vijf uur.",
+          "en": "Her lesson starts at five o'clock."
+        },
+        {
+          "nl": "Ze neemt een handdoek mee.",
+          "en": "She takes a towel with her."
+        },
+        {
+          "nl": "De trainer staat bij het water.",
+          "en": "The trainer is beside the water."
+        },
+        {
+          "nl": "Lina oefent eerst met een plankje.",
+          "en": "Lina first practises with a float."
+        },
+        {
+          "nl": "Na de les is ze moe.",
+          "en": "After the lesson she is tired."
+        },
+        {
+          "nl": "Volgende week komt ze terug.",
+          "en": "She will come back next week."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke sport wil Lina leren?",
+            "en": "Which sport does Lina want to learn?"
+          },
+          "options": [
+            {
+              "nl": "Tennis",
+              "en": "Tennis"
+            },
+            {
+              "nl": "Zwemmen",
+              "en": "Swimming"
+            },
+            {
+              "nl": "Voetbal",
+              "en": "Football"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Zwemmen",
+            "en": "In this text: Swimming"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat neemt Lina mee?",
+            "en": "What does Lina bring?"
+          },
+          "options": [
+            {
+              "nl": "Een handdoek",
+              "en": "A towel"
+            },
+            {
+              "nl": "Een bal",
+              "en": "A ball"
+            },
+            {
+              "nl": "Een fiets",
+              "en": "A bicycle"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Een handdoek",
+            "en": "In this text: A towel"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Haar les begint om vijf uur.",
+              "en": "Her lesson starts at five o'clock."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Ze neemt een handdoek mee.",
+              "en": "She takes a towel with her."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-technology",
+      "topic_id": "technology",
+      "title": {
+        "nl": "Een lege batterij",
+        "en": "An empty battery"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Amir wil zijn moeder bellen.",
+          "en": "Amir wants to call his mother."
+        },
+        {
+          "nl": "Zijn gsm gaat niet aan.",
+          "en": "His mobile phone will not turn on."
+        },
+        {
+          "nl": "De batterij is leeg.",
+          "en": "The battery is empty."
+        },
+        {
+          "nl": "Zijn lader ligt in zijn tas.",
+          "en": "His charger is in his bag."
+        },
+        {
+          "nl": "Hij sluit de lader aan.",
+          "en": "He plugs in the charger."
+        },
+        {
+          "nl": "Na een tijdje werkt de gsm.",
+          "en": "After a while the phone works."
+        },
+        {
+          "nl": "Amir belt zijn moeder.",
+          "en": "Amir calls his mother."
+        },
+        {
+          "nl": "Ze spreken af voor zondag.",
+          "en": "They arrange to meet on Sunday."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom werkt de gsm eerst niet?",
+            "en": "Why does the phone not work at first?"
+          },
+          "options": [
+            {
+              "nl": "De batterij is leeg.",
+              "en": "The battery is empty."
+            },
+            {
+              "nl": "Het scherm is kapot.",
+              "en": "The screen is broken."
+            },
+            {
+              "nl": "De gsm is nat.",
+              "en": "The phone is wet."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: De batterij is leeg.",
+            "en": "In this text: The battery is empty."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Voor welke dag spreken zij af?",
+            "en": "Which day do they arrange to meet?"
+          },
+          "options": [
+            {
+              "nl": "Maandag",
+              "en": "Monday"
+            },
+            {
+              "nl": "Vrijdag",
+              "en": "Friday"
+            },
+            {
+              "nl": "Zondag",
+              "en": "Sunday"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Zondag",
+            "en": "In this text: Sunday"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Ze spreken af voor zondag.",
+              "en": "They arrange to meet on Sunday."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een mededeling ontkennen met niet",
+            "en": "Negating a statement with niet"
+          },
+          "explanation": {
+            "nl": "Niet maakt duidelijk dat de genoemde handeling of eigenschap niet geldt. Kijk welk deel wordt ontkend.",
+            "en": "Niet shows that the stated action or property does not apply. Notice which part is negated."
+          },
+          "examples": [
+            {
+              "nl": "Zijn gsm gaat niet aan.",
+              "en": "His mobile phone will not turn on."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-education",
+      "topic_id": "education",
+      "title": {
+        "nl": "De nieuwe buur in de klas",
+        "en": "The new neighbour in class"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik zit vooraan in de klas.",
+          "en": "I sit at the front of the classroom."
+        },
+        {
+          "nl": "Vandaag zit er een nieuwe student naast mij.",
+          "en": "Today a new student sits next to me."
+        },
+        {
+          "nl": "Hij heet Karim.",
+          "en": "His name is Karim."
+        },
+        {
+          "nl": "Karim heeft nog geen boek.",
+          "en": "Karim does not have a book yet."
+        },
+        {
+          "nl": "Ik leg mijn boek tussen ons in.",
+          "en": "I put my book between us."
+        },
+        {
+          "nl": "We lezen samen de eerste tekst.",
+          "en": "We read the first text together."
+        },
+        {
+          "nl": "Daarna stellen we elkaar vragen.",
+          "en": "Then we ask each other questions."
+        },
+        {
+          "nl": "In de pauze drinken we koffie.",
+          "en": "During the break we drink coffee."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom delen zij een boek?",
+            "en": "Why do they share a book?"
+          },
+          "options": [
+            {
+              "nl": "De les is buiten.",
+              "en": "The lesson is outside."
+            },
+            {
+              "nl": "Het boek is kapot.",
+              "en": "The book is broken."
+            },
+            {
+              "nl": "Karim heeft nog geen boek.",
+              "en": "Karim does not have a book yet."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Karim heeft nog geen boek.",
+            "en": "In this text: Karim does not have a book yet."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar zit de ik-persoon?",
+            "en": "Where does the speaker sit?"
+          },
+          "options": [
+            {
+              "nl": "Buiten",
+              "en": "Outside"
+            },
+            {
+              "nl": "Vooraan",
+              "en": "At the front"
+            },
+            {
+              "nl": "Achteraan",
+              "en": "At the back"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Vooraan",
+            "en": "In this text: At the front"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Geen bij een zelfstandig naamwoord",
+            "en": "Geen with a noun"
+          },
+          "explanation": {
+            "nl": "Geen ontkent een zelfstandig naamwoord zonder bepaald lidwoord, bijvoorbeeld geen tijd.",
+            "en": "Geen negates a noun without a definite article, for example geen tijd."
+          },
+          "examples": [
+            {
+              "nl": "Karim heeft nog geen boek.",
+              "en": "Karim does not have a book yet."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "Vandaag zit er een nieuwe student naast mij.",
+              "en": "Today a new student sits next to me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-work-careers",
+      "topic_id": "work-careers",
+      "title": {
+        "nl": "Een naam op de doos",
+        "en": "A name on the box"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Els werkt in een kleine winkel.",
+          "en": "Els works in a small shop."
+        },
+        {
+          "nl": "Vandaag komt er een grote doos.",
+          "en": "A big box arrives today."
+        },
+        {
+          "nl": "Op de doos staat haar naam.",
+          "en": "Her name is on the box."
+        },
+        {
+          "nl": "Ze doet de doos open.",
+          "en": "She opens the box."
+        },
+        {
+          "nl": "Er zitten nieuwe werkschoenen in.",
+          "en": "There are new work shoes inside."
+        },
+        {
+          "nl": "Els past de schoenen.",
+          "en": "Els tries on the shoes."
+        },
+        {
+          "nl": "Ze passen goed.",
+          "en": "They fit well."
+        },
+        {
+          "nl": "Haar oude schoenen gaan in de doos.",
+          "en": "Her old shoes go in the box."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat zit in de doos?",
+            "en": "What is in the box?"
+          },
+          "options": [
+            {
+              "nl": "Glazen",
+              "en": "Glasses"
+            },
+            {
+              "nl": "Werkschoenen",
+              "en": "Work shoes"
+            },
+            {
+              "nl": "Boeken",
+              "en": "Books"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Werkschoenen",
+            "en": "In this text: Work shoes"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe passen de nieuwe schoenen?",
+            "en": "How do the new shoes fit?"
+          },
+          "options": [
+            {
+              "nl": "Goed",
+              "en": "Well"
+            },
+            {
+              "nl": "Te klein",
+              "en": "Too small"
+            },
+            {
+              "nl": "Te groot",
+              "en": "Too large"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Goed",
+            "en": "In this text: Well"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "Els werkt in een kleine winkel.",
+              "en": "Els works in a small shop."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Er is, er zijn of er staat",
+            "en": "Er is, er zijn or er staat"
+          },
+          "explanation": {
+            "nl": "Met er aan het begin introduceer je hier iets dat aanwezig is. Lees daarna wat er is en waar.",
+            "en": "Here initial er introduces something that is present. Read what is there and where."
+          },
+          "examples": [
+            {
+              "nl": "Er zitten nieuwe werkschoenen in.",
+              "en": "There are new work shoes inside."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-travel",
+      "topic_id": "travel",
+      "title": {
+        "nl": "Een raamplaats",
+        "en": "A window seat"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Noor reist met de trein naar zee.",
+          "en": "Noor travels to the coast by train."
+        },
+        {
+          "nl": "Ze vertrekt om tien uur.",
+          "en": "She leaves at ten o'clock."
+        },
+        {
+          "nl": "In de trein zoekt ze een plaats.",
+          "en": "On the train she looks for a seat."
+        },
+        {
+          "nl": "Naast het raam zit een jongen.",
+          "en": "A boy is sitting by the window."
+        },
+        {
+          "nl": "Hij stapt bij de volgende halte uit.",
+          "en": "He gets off at the next stop."
+        },
+        {
+          "nl": "Noor gaat op zijn plaats zitten.",
+          "en": "Noor sits in his seat."
+        },
+        {
+          "nl": "Ze kijkt naar de velden.",
+          "en": "She looks at the fields."
+        },
+        {
+          "nl": "Een uur later ziet ze de zee.",
+          "en": "An hour later she sees the sea."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar gaat Noor naartoe?",
+            "en": "Where is Noor going?"
+          },
+          "options": [
+            {
+              "nl": "Naar zee",
+              "en": "To the coast"
+            },
+            {
+              "nl": "Naar de school",
+              "en": "To the school"
+            },
+            {
+              "nl": "Naar het werk",
+              "en": "To work"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Naar zee",
+            "en": "In this text: To the coast"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wanneer komt de raamplaats vrij?",
+            "en": "When does the window seat become free?"
+          },
+          "options": [
+            {
+              "nl": "Na drie uur",
+              "en": "After three hours"
+            },
+            {
+              "nl": "Pas aan zee",
+              "en": "Only at the coast"
+            },
+            {
+              "nl": "Bij de volgende halte",
+              "en": "At the next stop"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Bij de volgende halte",
+            "en": "In this text: At the next stop"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Ze vertrekt om tien uur.",
+              "en": "She leaves at ten o'clock."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "Naast het raam zit een jongen.",
+              "en": "A boy is sitting by the window."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-food-cooking",
+      "topic_id": "food-cooking",
+      "title": {
+        "nl": "Soep zonder zout",
+        "en": "Soup without salt"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik maak soep voor mijn buur.",
+          "en": "I make soup for my neighbour."
+        },
+        {
+          "nl": "Ik snijd wortels en een ui.",
+          "en": "I cut carrots and an onion."
+        },
+        {
+          "nl": "Alles gaat in een grote pot.",
+          "en": "Everything goes into a large pot."
+        },
+        {
+          "nl": "Ik doe er water bij.",
+          "en": "I add water."
+        },
+        {
+          "nl": "Na twintig minuten proef ik de soep.",
+          "en": "After twenty minutes I taste the soup."
+        },
+        {
+          "nl": "Er zit nog geen zout in.",
+          "en": "There is no salt in it yet."
+        },
+        {
+          "nl": "Ik voeg een beetje zout toe.",
+          "en": "I add a little salt."
+        },
+        {
+          "nl": "Mijn buur vindt de soep lekker.",
+          "en": "My neighbour likes the soup."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Voor wie maakt de ik-persoon soep?",
+            "en": "Who does the speaker make soup for?"
+          },
+          "options": [
+            {
+              "nl": "Een leraar",
+              "en": "A teacher"
+            },
+            {
+              "nl": "Een broer",
+              "en": "A brother"
+            },
+            {
+              "nl": "Een buur",
+              "en": "A neighbour"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Een buur",
+            "en": "In this text: A neighbour"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat ontbreekt eerst?",
+            "en": "What is missing at first?"
+          },
+          "options": [
+            {
+              "nl": "Een ui",
+              "en": "An onion"
+            },
+            {
+              "nl": "Zout",
+              "en": "Salt"
+            },
+            {
+              "nl": "Water",
+              "en": "Water"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Zout",
+            "en": "In this text: Salt"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Geen bij een zelfstandig naamwoord",
+            "en": "Geen with a noun"
+          },
+          "explanation": {
+            "nl": "Geen ontkent een zelfstandig naamwoord zonder bepaald lidwoord, bijvoorbeeld geen tijd.",
+            "en": "Geen negates a noun without a definite article, for example geen tijd."
+          },
+          "examples": [
+            {
+              "nl": "Er zit nog geen zout in.",
+              "en": "There is no salt in it yet."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "Alles gaat in een grote pot.",
+              "en": "Everything goes into a large pot."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-health-fitness",
+      "topic_id": "health-fitness",
+      "title": {
+        "nl": "Een korte wandeling",
+        "en": "A short walk"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Tom zit de hele ochtend aan zijn bureau.",
+          "en": "Tom sits at his desk all morning."
+        },
+        {
+          "nl": "Om twaalf uur neemt hij pauze.",
+          "en": "At twelve o'clock he takes a break."
+        },
+        {
+          "nl": "Hij trekt zijn jas aan.",
+          "en": "He puts on his coat."
+        },
+        {
+          "nl": "Buiten schijnt de zon.",
+          "en": "The sun is shining outside."
+        },
+        {
+          "nl": "Tom wandelt naar het park.",
+          "en": "Tom walks to the park."
+        },
+        {
+          "nl": "Daar drinkt hij wat water.",
+          "en": "He drinks some water there."
+        },
+        {
+          "nl": "Na een halfuur is hij terug.",
+          "en": "He is back after half an hour."
+        },
+        {
+          "nl": "Nu gaat hij weer aan het werk.",
+          "en": "Now he goes back to work."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wanneer neemt Tom pauze?",
+            "en": "When does Tom take a break?"
+          },
+          "options": [
+            {
+              "nl": "Om twee uur",
+              "en": "At two o'clock"
+            },
+            {
+              "nl": "Om twaalf uur",
+              "en": "At twelve o'clock"
+            },
+            {
+              "nl": "Om tien uur",
+              "en": "At ten o'clock"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Om twaalf uur",
+            "en": "In this text: At twelve o'clock"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoelang duurt zijn pauze?",
+            "en": "How long is his break?"
+          },
+          "options": [
+            {
+              "nl": "Een halfuur",
+              "en": "Half an hour"
+            },
+            {
+              "nl": "Twee uur",
+              "en": "Two hours"
+            },
+            {
+              "nl": "Vijf minuten",
+              "en": "Five minutes"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Een halfuur",
+            "en": "In this text: Half an hour"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Om twaalf uur neemt hij pauze.",
+              "en": "At twelve o'clock he takes a break."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een tijdsduur noemen",
+            "en": "Giving a duration"
+          },
+          "explanation": {
+            "nl": "Een tijdsduur vertelt hoelang iets duurt, niet hoe laat het is. Een uur of een halfuur is een hoeveelheid tijd.",
+            "en": "A duration says how long something lasts, not what time it is. Een uur or een halfuur is an amount of time."
+          },
+          "examples": [
+            {
+              "nl": "Na een halfuur is hij terug.",
+              "en": "He is back after half an hour."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-music",
+      "topic_id": "music",
+      "title": {
+        "nl": "Het lied voor de buur",
+        "en": "The song for the neighbour"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Sara speelt gitaar in haar kamer.",
+          "en": "Sara plays guitar in her room."
+        },
+        {
+          "nl": "Het raam staat open.",
+          "en": "The window is open."
+        },
+        {
+          "nl": "Haar buur hoort de muziek.",
+          "en": "Her neighbour hears the music."
+        },
+        {
+          "nl": "Hij klopt op haar deur.",
+          "en": "He knocks on her door."
+        },
+        {
+          "nl": "Sara doet de deur open.",
+          "en": "Sara opens the door."
+        },
+        {
+          "nl": "De buur vraagt een rustig lied.",
+          "en": "The neighbour asks for a quiet song."
+        },
+        {
+          "nl": "Sara speelt zijn favoriete lied.",
+          "en": "Sara plays his favourite song."
+        },
+        {
+          "nl": "De buur luistert en glimlacht.",
+          "en": "The neighbour listens and smiles."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk instrument speelt Sara?",
+            "en": "Which instrument does Sara play?"
+          },
+          "options": [
+            {
+              "nl": "Gitaar",
+              "en": "Guitar"
+            },
+            {
+              "nl": "Piano",
+              "en": "Piano"
+            },
+            {
+              "nl": "Trompet",
+              "en": "Trumpet"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Gitaar",
+            "en": "In this text: Guitar"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vraagt de buur?",
+            "en": "What does the neighbour ask for?"
+          },
+          "options": [
+            {
+              "nl": "Een nieuwe gitaar",
+              "en": "A new guitar"
+            },
+            {
+              "nl": "Een glas water",
+              "en": "A glass of water"
+            },
+            {
+              "nl": "Een rustig lied",
+              "en": "A quiet song"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Een rustig lied",
+            "en": "In this text: A quiet song"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Het raam staat open.",
+              "en": "The window is open."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een nieuw persoon of voorwerp noemen",
+            "en": "Introducing a person or object"
+          },
+          "explanation": {
+            "nl": "Met een kun je één persoon of voorwerp introduceren dat nog niet precies is aangeduid.",
+            "en": "Use een to introduce a person or object that has not yet been specifically identified."
+          },
+          "examples": [
+            {
+              "nl": "De buur vraagt een rustig lied.",
+              "en": "The neighbour asks for a quiet song."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-movies-tv",
+      "topic_id": "movies-tv",
+      "title": {
+        "nl": "De film begint later",
+        "en": "The film starts later"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Bas en Lina gaan naar de cinema.",
+          "en": "Bas and Lina go to the cinema."
+        },
+        {
+          "nl": "Hun film begint om acht uur.",
+          "en": "Their film starts at eight o'clock."
+        },
+        {
+          "nl": "Ze zijn er om halfacht.",
+          "en": "They arrive at half past seven."
+        },
+        {
+          "nl": "Er hangt een briefje aan de deur.",
+          "en": "There is a note on the door."
+        },
+        {
+          "nl": "De film begint vandaag om halfnegen.",
+          "en": "Today the film starts at half past eight."
+        },
+        {
+          "nl": "Ze kopen eerst een drankje.",
+          "en": "They buy a drink first."
+        },
+        {
+          "nl": "Daarna wachten ze in de hal.",
+          "en": "Then they wait in the lobby."
+        },
+        {
+          "nl": "Om halfnegen gaan de deuren open.",
+          "en": "At half past eight the doors open."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoe laat begint de film vandaag?",
+            "en": "What time does the film start today?"
+          },
+          "options": [
+            {
+              "nl": "Om halfacht",
+              "en": "At half past seven"
+            },
+            {
+              "nl": "Om acht uur",
+              "en": "At eight o'clock"
+            },
+            {
+              "nl": "Om halfnegen",
+              "en": "At half past eight"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Om halfnegen",
+            "en": "In this text: At half past eight"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen zij eerst na het lezen?",
+            "en": "What do they do first after reading?"
+          },
+          "options": [
+            {
+              "nl": "De film bekijken",
+              "en": "Watch the film"
+            },
+            {
+              "nl": "Een drankje kopen",
+              "en": "Buy a drink"
+            },
+            {
+              "nl": "Naar huis gaan",
+              "en": "Go home"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Een drankje kopen",
+            "en": "In this text: Buy a drink"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Hun film begint om acht uur.",
+              "en": "Their film starts at eight o'clock."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Bas en Lina gaan naar de cinema.",
+              "en": "Bas and Lina go to the cinema."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-books-reading",
+      "topic_id": "books-reading",
+      "title": {
+        "nl": "Een boek met een kaartje",
+        "en": "A book with a card"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik leen een boek in de bib.",
+          "en": "I borrow a book from the library."
+        },
+        {
+          "nl": "Thuis doe ik het open.",
+          "en": "At home I open it."
+        },
+        {
+          "nl": "Tussen de bladzijden zit een kaartje.",
+          "en": "There is a card between the pages."
+        },
+        {
+          "nl": "Op het kaartje staat een naam.",
+          "en": "There is a name on the card."
+        },
+        {
+          "nl": "De volgende dag neem ik het mee.",
+          "en": "The next day I take it with me."
+        },
+        {
+          "nl": "Ik geef het aan de medewerker.",
+          "en": "I give it to the staff member."
+        },
+        {
+          "nl": "Zij kent de naam op het kaartje.",
+          "en": "She knows the name on the card."
+        },
+        {
+          "nl": "Het kaartje kan terug naar de eigenaar.",
+          "en": "The card can go back to its owner."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar vindt de ik-persoon het kaartje?",
+            "en": "Where does the speaker find the card?"
+          },
+          "options": [
+            {
+              "nl": "Onder een stoel",
+              "en": "Under a chair"
+            },
+            {
+              "nl": "In een boek",
+              "en": "In a book"
+            },
+            {
+              "nl": "In een jas",
+              "en": "In a coat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: In een boek",
+            "en": "In this text: In a book"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie krijgt het kaartje?",
+            "en": "Who receives the card?"
+          },
+          "options": [
+            {
+              "nl": "De medewerker van de bib",
+              "en": "The library staff member"
+            },
+            {
+              "nl": "De buur",
+              "en": "The neighbour"
+            },
+            {
+              "nl": "De chauffeur",
+              "en": "The driver"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: De medewerker van de bib",
+            "en": "In this text: The library staff member"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "De volgende dag neem ik het mee.",
+              "en": "The next day I take it with me."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Ik leen een boek in de bib.",
+              "en": "I borrow a book from the library."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-hobbies",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "De fietsbel herstellen",
+        "en": "Repairing the bicycle bell"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Amir werkt graag aan fietsen.",
+          "en": "Amir likes working on bicycles."
+        },
+        {
+          "nl": "Zijn zus heeft een kapotte bel.",
+          "en": "His sister has a broken bell."
+        },
+        {
+          "nl": "Ze brengt haar fiets naar Amir.",
+          "en": "She brings her bicycle to Amir."
+        },
+        {
+          "nl": "Hij maakt de bel open.",
+          "en": "He opens the bell."
+        },
+        {
+          "nl": "Binnen zit een klein steentje.",
+          "en": "There is a small stone inside."
+        },
+        {
+          "nl": "Amir haalt het steentje eruit.",
+          "en": "Amir takes the stone out."
+        },
+        {
+          "nl": "Nu klinkt de bel weer.",
+          "en": "Now the bell rings again."
+        },
+        {
+          "nl": "Zijn zus fietst blij naar huis.",
+          "en": "His sister cycles home happily."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat is kapot?",
+            "en": "What is broken?"
+          },
+          "options": [
+            {
+              "nl": "De bel",
+              "en": "The bell"
+            },
+            {
+              "nl": "Het wiel",
+              "en": "The wheel"
+            },
+            {
+              "nl": "Het licht",
+              "en": "The light"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: De bel",
+            "en": "In this text: The bell"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat zit in de bel?",
+            "en": "What is inside the bell?"
+          },
+          "options": [
+            {
+              "nl": "Een munt",
+              "en": "A coin"
+            },
+            {
+              "nl": "Een sleutel",
+              "en": "A key"
+            },
+            {
+              "nl": "Een steentje",
+              "en": "A small stone"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Een steentje",
+            "en": "In this text: A small stone"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Hij maakt de bel open.",
+              "en": "He opens the bell."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een nieuw persoon of voorwerp noemen",
+            "en": "Introducing a person or object"
+          },
+          "explanation": {
+            "nl": "Met een kun je één persoon of voorwerp introduceren dat nog niet precies is aangeduid.",
+            "en": "Use een to introduce a person or object that has not yet been specifically identified."
+          },
+          "examples": [
+            {
+              "nl": "Zijn zus heeft een kapotte bel.",
+              "en": "His sister has a broken bell."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-daily-routines",
+      "topic_id": "daily-routines",
+      "title": {
+        "nl": "Ontbijt voor twee",
+        "en": "Breakfast for two"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Eva staat om zeven uur op.",
+          "en": "Eva gets up at seven o'clock."
+        },
+        {
+          "nl": "Haar partner slaapt nog.",
+          "en": "Her partner is still asleep."
+        },
+        {
+          "nl": "Eva zet twee koppen klaar.",
+          "en": "Eva gets two cups ready."
+        },
+        {
+          "nl": "Ze maakt koffie en roostert brood.",
+          "en": "She makes coffee and toasts bread."
+        },
+        {
+          "nl": "Dan roept ze haar partner.",
+          "en": "Then she calls her partner."
+        },
+        {
+          "nl": "Hij komt naar de keuken.",
+          "en": "He comes to the kitchen."
+        },
+        {
+          "nl": "Ze eten samen voor het werk.",
+          "en": "They eat together before work."
+        },
+        {
+          "nl": "Om acht uur vertrekken ze.",
+          "en": "They leave at eight o'clock."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel koppen zet Eva klaar?",
+            "en": "How many cups does Eva get ready?"
+          },
+          "options": [
+            {
+              "nl": "Eén",
+              "en": "One"
+            },
+            {
+              "nl": "Vier",
+              "en": "Four"
+            },
+            {
+              "nl": "Twee",
+              "en": "Two"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Twee",
+            "en": "In this text: Two"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wanneer vertrekken zij?",
+            "en": "When do they leave?"
+          },
+          "options": [
+            {
+              "nl": "Om negen uur",
+              "en": "At nine o'clock"
+            },
+            {
+              "nl": "Om acht uur",
+              "en": "At eight o'clock"
+            },
+            {
+              "nl": "Om zeven uur",
+              "en": "At seven o'clock"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Om acht uur",
+            "en": "In this text: At eight o'clock"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Eva staat om zeven uur op.",
+              "en": "Eva gets up at seven o'clock."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Eva staat om zeven uur op.",
+              "en": "Eva gets up at seven o'clock."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-relationships",
+      "topic_id": "relationships",
+      "title": {
+        "nl": "Een bezoek aan tante",
+        "en": "A visit to Auntie"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Mijn tante woont alleen.",
+          "en": "My aunt lives alone."
+        },
+        {
+          "nl": "Op woensdag ga ik bij haar langs.",
+          "en": "On Wednesday I visit her."
+        },
+        {
+          "nl": "Ik neem haar boodschappen mee.",
+          "en": "I bring her groceries."
+        },
+        {
+          "nl": "Zij zet de melk in de koelkast.",
+          "en": "She puts the milk in the fridge."
+        },
+        {
+          "nl": "Ik leg de appels in een schaal.",
+          "en": "I put the apples in a bowl."
+        },
+        {
+          "nl": "Daarna praten we aan tafel.",
+          "en": "Then we talk at the table."
+        },
+        {
+          "nl": "Tante vertelt over haar kat.",
+          "en": "Auntie talks about her cat."
+        },
+        {
+          "nl": "Voor ik vertrek, krijgt de kat eten.",
+          "en": "Before I leave, the cat gets food."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Op welke dag komt de ik-persoon?",
+            "en": "On which day does the speaker visit?"
+          },
+          "options": [
+            {
+              "nl": "Zondag",
+              "en": "Sunday"
+            },
+            {
+              "nl": "Woensdag",
+              "en": "Wednesday"
+            },
+            {
+              "nl": "Vrijdag",
+              "en": "Friday"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Woensdag",
+            "en": "In this text: Wednesday"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar gaat de melk naartoe?",
+            "en": "Where does the milk go?"
+          },
+          "options": [
+            {
+              "nl": "In de koelkast",
+              "en": "In the fridge"
+            },
+            {
+              "nl": "In een schaal",
+              "en": "In a bowl"
+            },
+            {
+              "nl": "Op de stoel",
+              "en": "On the chair"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: In de koelkast",
+            "en": "In this text: In the fridge"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Ik neem haar boodschappen mee.",
+              "en": "I bring her groceries."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Mijn tante woont alleen.",
+              "en": "My aunt lives alone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-holidays-celebrations",
+      "topic_id": "holidays-celebrations",
+      "title": {
+        "nl": "Een pakje aan het raam",
+        "en": "A parcel by the window"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Vandaag vieren we de verjaardag van oma.",
+          "en": "Today we celebrate Grandma's birthday."
+        },
+        {
+          "nl": "Mijn zus koopt een kleine plant.",
+          "en": "My sister buys a small plant."
+        },
+        {
+          "nl": "Ik maak een kaart voor oma.",
+          "en": "I make a card for Grandma."
+        },
+        {
+          "nl": "We pakken de plant samen in.",
+          "en": "We wrap the plant together."
+        },
+        {
+          "nl": "Oma maakt het pakje open.",
+          "en": "Grandma opens the parcel."
+        },
+        {
+          "nl": "Ze zet de plant bij het raam.",
+          "en": "She puts the plant by the window."
+        },
+        {
+          "nl": "De kaart staat naast de plant.",
+          "en": "The card stands beside the plant."
+        },
+        {
+          "nl": "We zingen een lied voor oma.",
+          "en": "We sing a song for Grandma."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat zit in het pakje?",
+            "en": "What is in the parcel?"
+          },
+          "options": [
+            {
+              "nl": "Een plant",
+              "en": "A plant"
+            },
+            {
+              "nl": "Een boek",
+              "en": "A book"
+            },
+            {
+              "nl": "Een kop",
+              "en": "A cup"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Een plant",
+            "en": "In this text: A plant"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar zet oma het cadeau?",
+            "en": "Where does Grandma put the gift?"
+          },
+          "options": [
+            {
+              "nl": "Onder de tafel",
+              "en": "Under the table"
+            },
+            {
+              "nl": "In de kast",
+              "en": "In the cupboard"
+            },
+            {
+              "nl": "Bij het raam",
+              "en": "By the window"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Bij het raam",
+            "en": "In this text: By the window"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "De kaart staat naast de plant.",
+              "en": "The card stands beside the plant."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "Mijn zus koopt een kleine plant.",
+              "en": "My sister buys a small plant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-lifestyle",
+      "topic_id": "lifestyle",
+      "title": {
+        "nl": "Een rustige zaterdag",
+        "en": "A quiet Saturday"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Op zaterdag zet Noor geen wekker.",
+          "en": "On Saturday Noor does not set an alarm."
+        },
+        {
+          "nl": "Ze ontbijt rustig aan het raam.",
+          "en": "She has a quiet breakfast by the window."
+        },
+        {
+          "nl": "Daarna doet ze haar boodschappen.",
+          "en": "Then she does her shopping."
+        },
+        {
+          "nl": "Op de markt koopt ze bloemen.",
+          "en": "At the market she buys flowers."
+        },
+        {
+          "nl": "Thuis zet ze de bloemen in water.",
+          "en": "At home she puts the flowers in water."
+        },
+        {
+          "nl": "Ze leest een boek op de bank.",
+          "en": "She reads a book on the sofa."
+        },
+        {
+          "nl": "Om vier uur komt een vriendin.",
+          "en": "At four o'clock a friend visits."
+        },
+        {
+          "nl": "Samen drinken ze thee.",
+          "en": "They drink tea together."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar koopt Noor bloemen?",
+            "en": "Where does Noor buy flowers?"
+          },
+          "options": [
+            {
+              "nl": "In de bib",
+              "en": "In the library"
+            },
+            {
+              "nl": "Op het station",
+              "en": "At the station"
+            },
+            {
+              "nl": "Op de markt",
+              "en": "At the market"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Op de markt",
+            "en": "In this text: At the market"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe laat komt haar vriendin?",
+            "en": "What time does her friend arrive?"
+          },
+          "options": [
+            {
+              "nl": "Om zes uur",
+              "en": "At six o'clock"
+            },
+            {
+              "nl": "Om vier uur",
+              "en": "At four o'clock"
+            },
+            {
+              "nl": "Om twee uur",
+              "en": "At two o'clock"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Om vier uur",
+            "en": "In this text: At four o'clock"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Om vier uur komt een vriendin.",
+              "en": "At four o'clock a friend visits."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "Ze leest een boek op de bank.",
+              "en": "She reads a book on the sofa."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-nature",
+      "topic_id": "nature",
+      "title": {
+        "nl": "Het nest boven de deur",
+        "en": "The nest above the door"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Bij ons tuinhuis zit een vogel.",
+          "en": "There is a bird by our garden shed."
+        },
+        {
+          "nl": "Hij vliegt vaak naar de deur.",
+          "en": "He often flies to the door."
+        },
+        {
+          "nl": "Boven de deur ligt een nest.",
+          "en": "There is a nest above the door."
+        },
+        {
+          "nl": "Ik hoor kleine vogels piepen.",
+          "en": "I hear little birds chirping."
+        },
+        {
+          "nl": "Mijn broer wil dichterbij kijken.",
+          "en": "My brother wants to look more closely."
+        },
+        {
+          "nl": "We blijven toch op het pad.",
+          "en": "We stay on the path instead."
+        },
+        {
+          "nl": "De grote vogel brengt eten.",
+          "en": "The adult bird brings food."
+        },
+        {
+          "nl": "We kijken rustig van een afstand.",
+          "en": "We watch quietly from a distance."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar ligt het nest?",
+            "en": "Where is the nest?"
+          },
+          "options": [
+            {
+              "nl": "In de straat",
+              "en": "In the street"
+            },
+            {
+              "nl": "Boven de deur",
+              "en": "Above the door"
+            },
+            {
+              "nl": "Onder de tafel",
+              "en": "Under the table"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Boven de deur",
+            "en": "In this text: Above the door"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar blijven de kinderen kijken?",
+            "en": "Where do the children stay to watch?"
+          },
+          "options": [
+            {
+              "nl": "Op het pad",
+              "en": "On the path"
+            },
+            {
+              "nl": "In het nest",
+              "en": "In the nest"
+            },
+            {
+              "nl": "Op het dak",
+              "en": "On the roof"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Op het pad",
+            "en": "In this text: On the path"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mogelijkheid, wens of noodzaak uitdrukken",
+            "en": "Expressing possibility, a wish or necessity"
+          },
+          "explanation": {
+            "nl": "Kunnen, willen, mogen en moeten geven aan hoe de spreker naar een handeling kijkt. Zoek ook het andere werkwoord in de zin.",
+            "en": "Kunnen, willen, mogen and moeten indicate how the speaker views an action. Find the other verb in the sentence too."
+          },
+          "examples": [
+            {
+              "nl": "Mijn broer wil dichterbij kijken.",
+              "en": "My brother wants to look more closely."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "De grote vogel brengt eten.",
+              "en": "The adult bird brings food."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-animals-pets",
+      "topic_id": "animals-pets",
+      "title": {
+        "nl": "De hond van de buur",
+        "en": "The neighbour's dog"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "De buur heeft een kleine hond.",
+          "en": "The neighbour has a small dog."
+        },
+        {
+          "nl": "Vandaag moet hij vroeg werken.",
+          "en": "Today he has to work early."
+        },
+        {
+          "nl": "Ik laat zijn hond uit.",
+          "en": "I walk his dog."
+        },
+        {
+          "nl": "We wandelen langs het kanaal.",
+          "en": "We walk along the canal."
+        },
+        {
+          "nl": "De hond ruikt aan elke boom.",
+          "en": "The dog sniffs every tree."
+        },
+        {
+          "nl": "Daarna lopen we terug naar huis.",
+          "en": "Then we walk back home."
+        },
+        {
+          "nl": "Ik vul zijn bak met water.",
+          "en": "I fill his bowl with water."
+        },
+        {
+          "nl": "De hond gaat in zijn mand liggen.",
+          "en": "The dog lies down in his basket."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wandelt de ik-persoon met de hond?",
+            "en": "Why does the speaker walk the dog?"
+          },
+          "options": [
+            {
+              "nl": "De buur moet vroeg werken.",
+              "en": "The neighbour has to work early."
+            },
+            {
+              "nl": "De hond woont in de bib.",
+              "en": "The dog lives in the library."
+            },
+            {
+              "nl": "De buur is op reis.",
+              "en": "The neighbour is travelling."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: De buur moet vroeg werken.",
+            "en": "In this text: The neighbour has to work early."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de hond op het einde?",
+            "en": "What does the dog do at the end?"
+          },
+          "options": [
+            {
+              "nl": "In de tuin spelen",
+              "en": "Play in the garden"
+            },
+            {
+              "nl": "Naar de winkel lopen",
+              "en": "Walk to the shop"
+            },
+            {
+              "nl": "In zijn mand liggen",
+              "en": "Lie in his basket"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: In zijn mand liggen",
+            "en": "In this text: Lie in his basket"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mogelijkheid, wens of noodzaak uitdrukken",
+            "en": "Expressing possibility, a wish or necessity"
+          },
+          "explanation": {
+            "nl": "Kunnen, willen, mogen en moeten geven aan hoe de spreker naar een handeling kijkt. Zoek ook het andere werkwoord in de zin.",
+            "en": "Kunnen, willen, mogen and moeten indicate how the speaker views an action. Find the other verb in the sentence too."
+          },
+          "examples": [
+            {
+              "nl": "Vandaag moet hij vroeg werken.",
+              "en": "Today he has to work early."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "De buur heeft een kleine hond.",
+              "en": "The neighbour has a small dog."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-weather",
+      "topic_id": "weather",
+      "title": {
+        "nl": "Een droge plek",
+        "en": "A dry place"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Els wandelt naar de halte.",
+          "en": "Els walks to the stop."
+        },
+        {
+          "nl": "Plots begint het te regenen.",
+          "en": "Suddenly it starts raining."
+        },
+        {
+          "nl": "Ze heeft geen paraplu bij zich.",
+          "en": "She does not have an umbrella with her."
+        },
+        {
+          "nl": "Bij de halte staat een hokje.",
+          "en": "There is a shelter at the stop."
+        },
+        {
+          "nl": "Els gaat onder het dak staan.",
+          "en": "Els stands under the roof."
+        },
+        {
+          "nl": "Een andere vrouw wacht er ook.",
+          "en": "Another woman is waiting there too."
+        },
+        {
+          "nl": "Na vijf minuten komt de bus.",
+          "en": "After five minutes the bus arrives."
+        },
+        {
+          "nl": "Els stapt droog op de bus.",
+          "en": "Els gets on the bus dry."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat heeft Els niet bij zich?",
+            "en": "What does Els not have with her?"
+          },
+          "options": [
+            {
+              "nl": "Een jas",
+              "en": "A coat"
+            },
+            {
+              "nl": "Een tas",
+              "en": "A bag"
+            },
+            {
+              "nl": "Een paraplu",
+              "en": "An umbrella"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Een paraplu",
+            "en": "In this text: An umbrella"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoelang wacht zij?",
+            "en": "How long does she wait?"
+          },
+          "options": [
+            {
+              "nl": "Twintig minuten",
+              "en": "Twenty minutes"
+            },
+            {
+              "nl": "Vijf minuten",
+              "en": "Five minutes"
+            },
+            {
+              "nl": "Een uur",
+              "en": "An hour"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Vijf minuten",
+            "en": "In this text: Five minutes"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijdsduur noemen",
+            "en": "Giving a duration"
+          },
+          "explanation": {
+            "nl": "Een tijdsduur vertelt hoelang iets duurt, niet hoe laat het is. Een uur of een halfuur is een hoeveelheid tijd.",
+            "en": "A duration says how long something lasts, not what time it is. Een uur or een halfuur is an amount of time."
+          },
+          "examples": [
+            {
+              "nl": "Na vijf minuten komt de bus.",
+              "en": "After five minutes the bus arrives."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "Els gaat onder het dak staan.",
+              "en": "Els stands under the roof."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-geography",
+      "topic_id": "geography",
+      "title": {
+        "nl": "De rivier op de kaart",
+        "en": "The river on the map"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "In de klas bekijken we een kaart.",
+          "en": "In class we look at a map."
+        },
+        {
+          "nl": "De blauwe lijn is een rivier.",
+          "en": "The blue line is a river."
+        },
+        {
+          "nl": "De rivier loopt door de stad.",
+          "en": "The river runs through the city."
+        },
+        {
+          "nl": "Ik zoek de brug bij mijn huis.",
+          "en": "I look for the bridge near my house."
+        },
+        {
+          "nl": "Mijn huis staat niet op de kaart.",
+          "en": "My house is not on the map."
+        },
+        {
+          "nl": "Maar de brug staat er wel op.",
+          "en": "But the bridge is on it."
+        },
+        {
+          "nl": "Ik wijs de brug aan.",
+          "en": "I point out the bridge."
+        },
+        {
+          "nl": "Mijn buur in de klas ziet ze ook.",
+          "en": "My neighbour in class sees it too."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat is de blauwe lijn?",
+            "en": "What is the blue line?"
+          },
+          "options": [
+            {
+              "nl": "Een spoorlijn",
+              "en": "A railway line"
+            },
+            {
+              "nl": "Een rivier",
+              "en": "A river"
+            },
+            {
+              "nl": "Een weg",
+              "en": "A road"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Een rivier",
+            "en": "In this text: A river"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vindt de ik-persoon op de kaart?",
+            "en": "What does the speaker find on the map?"
+          },
+          "options": [
+            {
+              "nl": "De brug",
+              "en": "The bridge"
+            },
+            {
+              "nl": "Het huis",
+              "en": "The house"
+            },
+            {
+              "nl": "De tuin",
+              "en": "The garden"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: De brug",
+            "en": "In this text: The bridge"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een mededeling ontkennen met niet",
+            "en": "Negating a statement with niet"
+          },
+          "explanation": {
+            "nl": "Niet maakt duidelijk dat de genoemde handeling of eigenschap niet geldt. Kijk welk deel wordt ontkend.",
+            "en": "Niet shows that the stated action or property does not apply. Notice which part is negated."
+          },
+          "examples": [
+            {
+              "nl": "Mijn huis staat niet op de kaart.",
+              "en": "My house is not on the map."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "De blauwe lijn is een rivier.",
+              "en": "The blue line is a river."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-art-creativity",
+      "topic_id": "art-creativity",
+      "title": {
+        "nl": "Een naam van klei",
+        "en": "A name made of clay"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Karim gaat naar een workshop.",
+          "en": "Karim goes to a workshop."
+        },
+        {
+          "nl": "Op tafel ligt zachte klei.",
+          "en": "There is soft clay on the table."
+        },
+        {
+          "nl": "Hij maakt eerst de letter K.",
+          "en": "First he makes the letter K."
+        },
+        {
+          "nl": "Daarna maakt hij de andere letters.",
+          "en": "Then he makes the other letters."
+        },
+        {
+          "nl": "Nu ligt zijn naam op tafel.",
+          "en": "Now his name is on the table."
+        },
+        {
+          "nl": "Hij verft de letters blauw.",
+          "en": "He paints the letters blue."
+        },
+        {
+          "nl": "De klei moet nog drogen.",
+          "en": "The clay still needs to dry."
+        },
+        {
+          "nl": "Morgen mag hij zijn naam meenemen.",
+          "en": "Tomorrow he can take his name home."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt Karim?",
+            "en": "What does Karim make?"
+          },
+          "options": [
+            {
+              "nl": "Zijn naam",
+              "en": "His name"
+            },
+            {
+              "nl": "Een dier",
+              "en": "An animal"
+            },
+            {
+              "nl": "Een kop",
+              "en": "A cup"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Zijn naam",
+            "en": "In this text: His name"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke kleur gebruikt hij?",
+            "en": "Which colour does he use?"
+          },
+          "options": [
+            {
+              "nl": "Rood",
+              "en": "Red"
+            },
+            {
+              "nl": "Geel",
+              "en": "Yellow"
+            },
+            {
+              "nl": "Blauw",
+              "en": "Blue"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Blauw",
+            "en": "In this text: Blue"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mogelijkheid, wens of noodzaak uitdrukken",
+            "en": "Expressing possibility, a wish or necessity"
+          },
+          "explanation": {
+            "nl": "Kunnen, willen, mogen en moeten geven aan hoe de spreker naar een handeling kijkt. Zoek ook het andere werkwoord in de zin.",
+            "en": "Kunnen, willen, mogen and moeten indicate how the speaker views an action. Find the other verb in the sentence too."
+          },
+          "examples": [
+            {
+              "nl": "Morgen mag hij zijn naam meenemen.",
+              "en": "Tomorrow he can take his name home."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Hij maakt eerst de letter K.",
+              "en": "First he makes the letter K."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-photography",
+      "topic_id": "photography",
+      "title": {
+        "nl": "De foto voor oma",
+        "en": "The photo for Grandma"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Onze familie staat in de tuin.",
+          "en": "Our family is standing in the garden."
+        },
+        {
+          "nl": "Mijn broer houdt de camera vast.",
+          "en": "My brother holds the camera."
+        },
+        {
+          "nl": "Maar hij moet ook op de foto.",
+          "en": "But he needs to be in the photo too."
+        },
+        {
+          "nl": "Hij zet de camera op een tafel.",
+          "en": "He puts the camera on a table."
+        },
+        {
+          "nl": "Hij drukt op de timer.",
+          "en": "He presses the timer."
+        },
+        {
+          "nl": "Dan loopt hij snel naar ons.",
+          "en": "Then he runs quickly towards us."
+        },
+        {
+          "nl": "Iedereen staat op de foto.",
+          "en": "Everyone is in the photo."
+        },
+        {
+          "nl": "We sturen de foto naar oma.",
+          "en": "We send the photo to Grandma."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar staat de camera?",
+            "en": "Where is the camera?"
+          },
+          "options": [
+            {
+              "nl": "In de boom",
+              "en": "In the tree"
+            },
+            {
+              "nl": "Op de grond",
+              "en": "On the ground"
+            },
+            {
+              "nl": "Op een tafel",
+              "en": "On a table"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Op een tafel",
+            "en": "In this text: On a table"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Voor wie is de foto?",
+            "en": "Who is the photo for?"
+          },
+          "options": [
+            {
+              "nl": "De buur",
+              "en": "The neighbour"
+            },
+            {
+              "nl": "Oma",
+              "en": "Grandma"
+            },
+            {
+              "nl": "De leraar",
+              "en": "The teacher"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Oma",
+            "en": "In this text: Grandma"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Mijn broer houdt de camera vast.",
+              "en": "My brother holds the camera."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Onze familie staat in de tuin.",
+              "en": "Our family is standing in the garden."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-fashion-clothing",
+      "topic_id": "fashion-clothing",
+      "title": {
+        "nl": "Een knoop aan de jas",
+        "en": "A button on the coat"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Mijn jas heeft vier knopen.",
+          "en": "My coat has four buttons."
+        },
+        {
+          "nl": "Eén knoop zit los.",
+          "en": "One button is loose."
+        },
+        {
+          "nl": "Ik leg de jas op tafel.",
+          "en": "I put the coat on the table."
+        },
+        {
+          "nl": "Mijn moeder geeft mij draad.",
+          "en": "My mother gives me thread."
+        },
+        {
+          "nl": "Ik naai de knoop vast.",
+          "en": "I sew the button on securely."
+        },
+        {
+          "nl": "Het duurt maar vijf minuten.",
+          "en": "It only takes five minutes."
+        },
+        {
+          "nl": "Nu kan de jas weer dicht.",
+          "en": "Now the coat can close again."
+        },
+        {
+          "nl": "Ik trek hem aan voor de wandeling.",
+          "en": "I put it on for the walk."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat zit los?",
+            "en": "What is loose?"
+          },
+          "options": [
+            {
+              "nl": "Een schoen",
+              "en": "A shoe"
+            },
+            {
+              "nl": "Een knoop",
+              "en": "A button"
+            },
+            {
+              "nl": "Een mouw",
+              "en": "A sleeve"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Een knoop",
+            "en": "In this text: A button"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoelang duurt het werk?",
+            "en": "How long does the work take?"
+          },
+          "options": [
+            {
+              "nl": "Vijf minuten",
+              "en": "Five minutes"
+            },
+            {
+              "nl": "Een uur",
+              "en": "An hour"
+            },
+            {
+              "nl": "Tien dagen",
+              "en": "Ten days"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Vijf minuten",
+            "en": "In this text: Five minutes"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Mijn jas heeft vier knopen.",
+              "en": "My coat has four buttons."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Ik leg de jas op tafel.",
+              "en": "I put the coat on the table."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-shopping",
+      "topic_id": "shopping",
+      "title": {
+        "nl": "De laatste doos eieren",
+        "en": "The last box of eggs"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik zoek eieren in de winkel.",
+          "en": "I look for eggs in the shop."
+        },
+        {
+          "nl": "Er staat nog één doos.",
+          "en": "There is one box left."
+        },
+        {
+          "nl": "Ik doe de doos voorzichtig open.",
+          "en": "I open the box carefully."
+        },
+        {
+          "nl": "Eén ei is kapot.",
+          "en": "One egg is broken."
+        },
+        {
+          "nl": "Ik laat het aan een medewerker zien.",
+          "en": "I show it to a staff member."
+        },
+        {
+          "nl": "Hij haalt een nieuwe doos uit de voorraad.",
+          "en": "He gets a new box from stock."
+        },
+        {
+          "nl": "Alle eieren zijn heel.",
+          "en": "All the eggs are intact."
+        },
+        {
+          "nl": "Ik neem die doos mee naar de kassa.",
+          "en": "I take that box to the checkout."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat is er mis met de eerste doos?",
+            "en": "What is wrong with the first box?"
+          },
+          "options": [
+            {
+              "nl": "Eén ei is kapot.",
+              "en": "One egg is broken."
+            },
+            {
+              "nl": "De doos is leeg.",
+              "en": "The box is empty."
+            },
+            {
+              "nl": "De doos is te zwaar.",
+              "en": "The box is too heavy."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Eén ei is kapot.",
+            "en": "In this text: One egg is broken."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie haalt een nieuwe doos?",
+            "en": "Who gets a new box?"
+          },
+          "options": [
+            {
+              "nl": "Een kind",
+              "en": "A child"
+            },
+            {
+              "nl": "Een chauffeur",
+              "en": "A driver"
+            },
+            {
+              "nl": "Een medewerker",
+              "en": "A staff member"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Een medewerker",
+            "en": "In this text: A staff member"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Ik neem die doos mee naar de kassa.",
+              "en": "I take that box to the checkout."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "Hij haalt een nieuwe doos uit de voorraad.",
+              "en": "He gets a new box from stock."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-transportation",
+      "topic_id": "transportation",
+      "title": {
+        "nl": "Mijn fiets bij de halte",
+        "en": "My bicycle at the stop"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik fiets naar de bushalte.",
+          "en": "I cycle to the bus stop."
+        },
+        {
+          "nl": "Daar zet ik mijn fiets op slot.",
+          "en": "There I lock my bicycle."
+        },
+        {
+          "nl": "Ik neem de bus naar mijn werk.",
+          "en": "I take the bus to work."
+        },
+        {
+          "nl": "Na het werk kom ik terug.",
+          "en": "After work I come back."
+        },
+        {
+          "nl": "Er staan veel fietsen bij de halte.",
+          "en": "There are many bicycles at the stop."
+        },
+        {
+          "nl": "Mijn fiets heeft een oranje zadel.",
+          "en": "My bicycle has an orange saddle."
+        },
+        {
+          "nl": "Ik vind hem meteen.",
+          "en": "I find it immediately."
+        },
+        {
+          "nl": "Dan fiets ik naar huis.",
+          "en": "Then I cycle home."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoe reist de ik-persoon naar het werk?",
+            "en": "How does the speaker travel to work?"
+          },
+          "options": [
+            {
+              "nl": "Met de trein",
+              "en": "By train"
+            },
+            {
+              "nl": "Met de auto",
+              "en": "By car"
+            },
+            {
+              "nl": "Met de bus",
+              "en": "By bus"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Met de bus",
+            "en": "In this text: By bus"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe herkent de ik-persoon de fiets?",
+            "en": "How does the speaker recognise the bicycle?"
+          },
+          "options": [
+            {
+              "nl": "Aan een blauwe mand",
+              "en": "By a blue basket"
+            },
+            {
+              "nl": "Aan het oranje zadel",
+              "en": "By the orange saddle"
+            },
+            {
+              "nl": "Aan een rode bel",
+              "en": "By a red bell"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Aan het oranje zadel",
+            "en": "In this text: By the orange saddle"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Er is, er zijn of er staat",
+            "en": "Er is, er zijn or er staat"
+          },
+          "explanation": {
+            "nl": "Met er aan het begin introduceer je hier iets dat aanwezig is. Lees daarna wat er is en waar.",
+            "en": "Here initial er introduces something that is present. Read what is there and where."
+          },
+          "examples": [
+            {
+              "nl": "Er staan veel fietsen bij de halte.",
+              "en": "There are many bicycles at the stop."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Daar zet ik mijn fiets op slot.",
+              "en": "There I lock my bicycle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-housing",
+      "topic_id": "housing",
+      "title": {
+        "nl": "Een lege kamer",
+        "en": "An empty room"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Lina verhuist naar een klein appartement.",
+          "en": "Lina moves to a small flat."
+        },
+        {
+          "nl": "Haar broer helpt met de dozen.",
+          "en": "Her brother helps with the boxes."
+        },
+        {
+          "nl": "Ze zetten het bed bij de muur.",
+          "en": "They put the bed by the wall."
+        },
+        {
+          "nl": "De tafel komt bij het raam.",
+          "en": "The table goes by the window."
+        },
+        {
+          "nl": "Er is nog geen stoel.",
+          "en": "There is no chair yet."
+        },
+        {
+          "nl": "De buur leent haar een stoel.",
+          "en": "The neighbour lends her a chair."
+        },
+        {
+          "nl": "Lina maakt koffie voor iedereen.",
+          "en": "Lina makes coffee for everyone."
+        },
+        {
+          "nl": "Ze drinken samen aan haar nieuwe tafel.",
+          "en": "They drink together at her new table."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar komt de tafel?",
+            "en": "Where does the table go?"
+          },
+          "options": [
+            {
+              "nl": "Naast de deur",
+              "en": "Beside the door"
+            },
+            {
+              "nl": "Bij het raam",
+              "en": "By the window"
+            },
+            {
+              "nl": "In de gang",
+              "en": "In the hallway"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Bij het raam",
+            "en": "In this text: By the window"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat leent de buur aan Lina?",
+            "en": "What does the neighbour lend Lina?"
+          },
+          "options": [
+            {
+              "nl": "Een stoel",
+              "en": "A chair"
+            },
+            {
+              "nl": "Een bed",
+              "en": "A bed"
+            },
+            {
+              "nl": "Een kast",
+              "en": "A cupboard"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Een stoel",
+            "en": "In this text: A chair"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Geen bij een zelfstandig naamwoord",
+            "en": "Geen with a noun"
+          },
+          "explanation": {
+            "nl": "Geen ontkent een zelfstandig naamwoord zonder bepaald lidwoord, bijvoorbeeld geen tijd.",
+            "en": "Geen negates a noun without a definite article, for example geen tijd."
+          },
+          "examples": [
+            {
+              "nl": "Er is nog geen stoel.",
+              "en": "There is no chair yet."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Er is, er zijn of er staat",
+            "en": "Er is, er zijn or er staat"
+          },
+          "explanation": {
+            "nl": "Met er aan het begin introduceer je hier iets dat aanwezig is. Lees daarna wat er is en waar.",
+            "en": "Here initial er introduces something that is present. Read what is there and where."
+          },
+          "examples": [
+            {
+              "nl": "Er is nog geen stoel.",
+              "en": "There is no chair yet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-cities-countries",
+      "topic_id": "cities-countries",
+      "title": {
+        "nl": "Een wandeling in Brugge",
+        "en": "A walk in Bruges"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik bezoek Brugge met een vriend.",
+          "en": "I visit Bruges with a friend."
+        },
+        {
+          "nl": "We lopen eerst naar de markt.",
+          "en": "We first walk to the market square."
+        },
+        {
+          "nl": "Daar staat een hoge toren.",
+          "en": "There is a tall tower there."
+        },
+        {
+          "nl": "Mijn vriend maakt een foto.",
+          "en": "My friend takes a photo."
+        },
+        {
+          "nl": "Daarna zoeken we een café.",
+          "en": "Then we look for a café."
+        },
+        {
+          "nl": "We vinden een tafeltje aan het water.",
+          "en": "We find a small table by the water."
+        },
+        {
+          "nl": "We drinken er warme chocolademelk.",
+          "en": "We drink hot chocolate there."
+        },
+        {
+          "nl": "Voor de terugreis kopen we nog een postkaart.",
+          "en": "Before the return journey we buy a postcard."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke stad bezoeken zij?",
+            "en": "Which city do they visit?"
+          },
+          "options": [
+            {
+              "nl": "Brugge",
+              "en": "Bruges"
+            },
+            {
+              "nl": "Gent",
+              "en": "Ghent"
+            },
+            {
+              "nl": "Brussel",
+              "en": "Brussels"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Brugge",
+            "en": "In this text: Bruges"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar staat hun tafeltje?",
+            "en": "Where is their little table?"
+          },
+          "options": [
+            {
+              "nl": "In het station",
+              "en": "In the station"
+            },
+            {
+              "nl": "Boven in de toren",
+              "en": "At the top of the tower"
+            },
+            {
+              "nl": "Aan het water",
+              "en": "By the water"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Aan het water",
+            "en": "In this text: By the water"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Mijn vriend maakt een foto.",
+              "en": "My friend takes a photo."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "We lopen eerst naar de markt.",
+              "en": "We first walk to the market square."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-communication",
+      "topic_id": "communication",
+      "title": {
+        "nl": "Een verkeerd nummer",
+        "en": "A wrong number"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Mijn gsm gaat tijdens de lunch.",
+          "en": "My mobile rings during lunch."
+        },
+        {
+          "nl": "Een vrouw vraagt naar Peter.",
+          "en": "A woman asks for Peter."
+        },
+        {
+          "nl": "Ik heet geen Peter.",
+          "en": "My name is not Peter."
+        },
+        {
+          "nl": "Ik zeg dat ze verkeerd verbonden is.",
+          "en": "I say she has the wrong number."
+        },
+        {
+          "nl": "Ze leest het nummer langzaam voor.",
+          "en": "She reads the number slowly."
+        },
+        {
+          "nl": "Het laatste cijfer is fout.",
+          "en": "The last digit is wrong."
+        },
+        {
+          "nl": "Ik leg het rustig uit.",
+          "en": "I explain it calmly."
+        },
+        {
+          "nl": "De vrouw bedankt mij en hangt op.",
+          "en": "The woman thanks me and hangs up."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Naar wie vraagt de vrouw?",
+            "en": "Who does the woman ask for?"
+          },
+          "options": [
+            {
+              "nl": "Bas",
+              "en": "Bas"
+            },
+            {
+              "nl": "Karim",
+              "en": "Karim"
+            },
+            {
+              "nl": "Peter",
+              "en": "Peter"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Peter",
+            "en": "In this text: Peter"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welk deel van het nummer is fout?",
+            "en": "Which part of the number is wrong?"
+          },
+          "options": [
+            {
+              "nl": "Alle cijfers",
+              "en": "All the digits"
+            },
+            {
+              "nl": "Het laatste cijfer",
+              "en": "The last digit"
+            },
+            {
+              "nl": "Het eerste cijfer",
+              "en": "The first digit"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Het laatste cijfer",
+            "en": "In this text: The last digit"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Ik leg het rustig uit.",
+              "en": "I explain it calmly."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Geen bij een zelfstandig naamwoord",
+            "en": "Geen with a noun"
+          },
+          "explanation": {
+            "nl": "Geen ontkent een zelfstandig naamwoord zonder bepaald lidwoord, bijvoorbeeld geen tijd.",
+            "en": "Geen negates a noun without a definite article, for example geen tijd."
+          },
+          "examples": [
+            {
+              "nl": "Ik heet geen Peter.",
+              "en": "My name is not Peter."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-personal-identity",
+      "topic_id": "personal-identity",
+      "title": {
+        "nl": "Twee mensen met dezelfde naam",
+        "en": "Two people with the same name"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "In mijn klas zitten twee mensen met de naam Sara.",
+          "en": "There are two people called Sara in my class."
+        },
+        {
+          "nl": "De ene Sara woont in Gent.",
+          "en": "One Sara lives in Ghent."
+        },
+        {
+          "nl": "De andere Sara woont in Kortrijk.",
+          "en": "The other Sara lives in Kortrijk."
+        },
+        {
+          "nl": "De leraar vraagt naar hun familienamen.",
+          "en": "The teacher asks for their surnames."
+        },
+        {
+          "nl": "Sara uit Gent heet Peeters.",
+          "en": "Sara from Ghent is called Peeters."
+        },
+        {
+          "nl": "Sara uit Kortrijk heet Janssens.",
+          "en": "Sara from Kortrijk is called Janssens."
+        },
+        {
+          "nl": "De leraar schrijft beide namen op.",
+          "en": "The teacher writes down both names."
+        },
+        {
+          "nl": "Nu is het duidelijk wie wie is.",
+          "en": "Now it is clear who is who."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar woont Sara Peeters?",
+            "en": "Where does Sara Peeters live?"
+          },
+          "options": [
+            {
+              "nl": "In Brugge",
+              "en": "In Bruges"
+            },
+            {
+              "nl": "In Gent",
+              "en": "In Ghent"
+            },
+            {
+              "nl": "In Kortrijk",
+              "en": "In Kortrijk"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: In Gent",
+            "en": "In this text: In Ghent"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vraagt de leraar?",
+            "en": "What does the teacher ask for?"
+          },
+          "options": [
+            {
+              "nl": "Hun familienamen",
+              "en": "Their surnames"
+            },
+            {
+              "nl": "Hun hobby's",
+              "en": "Their hobbies"
+            },
+            {
+              "nl": "Hun leeftijden",
+              "en": "Their ages"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Hun familienamen",
+            "en": "In this text: Their surnames"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "In mijn klas zitten twee mensen met de naam Sara.",
+              "en": "There are two people called Sara in my class."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "In mijn klas zitten twee mensen met de naam Sara.",
+              "en": "There are two people called Sara in my class."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-time-management",
+      "topic_id": "time-management",
+      "title": {
+        "nl": "De afspraak op dinsdag",
+        "en": "The appointment on Tuesday"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik heb dinsdag een afspraak om drie uur.",
+          "en": "I have an appointment on Tuesday at three o'clock."
+        },
+        {
+          "nl": "Ik schrijf die in mijn agenda.",
+          "en": "I write it in my diary."
+        },
+        {
+          "nl": "Mijn bus vertrekt om halfdrie.",
+          "en": "My bus leaves at half past two."
+        },
+        {
+          "nl": "Ik wil wat vroeger aan de halte zijn.",
+          "en": "I want to be at the stop a little earlier."
+        },
+        {
+          "nl": "Om twee uur leg ik mijn boek weg.",
+          "en": "At two o'clock I put my book away."
+        },
+        {
+          "nl": "Ik neem mijn kaart en mijn jas.",
+          "en": "I take my card and my coat."
+        },
+        {
+          "nl": "Om kwart over twee sta ik aan de halte.",
+          "en": "At quarter past two I am at the stop."
+        },
+        {
+          "nl": "Ik heb nog een kwartier tijd.",
+          "en": "I still have fifteen minutes."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wanneer is de afspraak?",
+            "en": "When is the appointment?"
+          },
+          "options": [
+            {
+              "nl": "Dinsdag om drie uur",
+              "en": "Tuesday at three o'clock"
+            },
+            {
+              "nl": "Dinsdag om twee uur",
+              "en": "Tuesday at two o'clock"
+            },
+            {
+              "nl": "Woensdag om drie uur",
+              "en": "Wednesday at three o'clock"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Dinsdag om drie uur",
+            "en": "In this text: Tuesday at three o'clock"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe laat is de ik-persoon aan de halte?",
+            "en": "What time is the speaker at the stop?"
+          },
+          "options": [
+            {
+              "nl": "Halfdrie",
+              "en": "Half past two"
+            },
+            {
+              "nl": "Kwart voor drie",
+              "en": "Quarter to three"
+            },
+            {
+              "nl": "Kwart over twee",
+              "en": "Quarter past two"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Kwart over twee",
+            "en": "In this text: Quarter past two"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Ik heb dinsdag een afspraak om drie uur.",
+              "en": "I have an appointment on Tuesday at three o'clock."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Ik schrijf die in mijn agenda.",
+              "en": "I write it in my diary."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-household-chores",
+      "topic_id": "household-chores",
+      "title": {
+        "nl": "De was op het balkon",
+        "en": "Laundry on the balcony"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Het is vandaag zonnig.",
+          "en": "It is sunny today."
+        },
+        {
+          "nl": "Ik haal de was uit de machine.",
+          "en": "I take the laundry out of the machine."
+        },
+        {
+          "nl": "Mijn broer zet het rek op het balkon.",
+          "en": "My brother puts the rack on the balcony."
+        },
+        {
+          "nl": "Ik hang de handdoeken op.",
+          "en": "I hang up the towels."
+        },
+        {
+          "nl": "Mijn broer hangt de truien op.",
+          "en": "My brother hangs up the jumpers."
+        },
+        {
+          "nl": "Na de lunch is de was droog.",
+          "en": "After lunch the laundry is dry."
+        },
+        {
+          "nl": "We vouwen alles samen op.",
+          "en": "We fold everything together."
+        },
+        {
+          "nl": "Dan gaat het rek weer naar binnen.",
+          "en": "Then the rack goes back inside."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar staat het rek?",
+            "en": "Where is the rack?"
+          },
+          "options": [
+            {
+              "nl": "In de keuken",
+              "en": "In the kitchen"
+            },
+            {
+              "nl": "In de gang",
+              "en": "In the hallway"
+            },
+            {
+              "nl": "Op het balkon",
+              "en": "On the balcony"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Op het balkon",
+            "en": "In this text: On the balcony"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie hangt de truien op?",
+            "en": "Who hangs up the jumpers?"
+          },
+          "options": [
+            {
+              "nl": "De ik-persoon",
+              "en": "The speaker"
+            },
+            {
+              "nl": "De broer",
+              "en": "The brother"
+            },
+            {
+              "nl": "De buur",
+              "en": "The neighbour"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: De broer",
+            "en": "In this text: The brother"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Mijn broer zet het rek op het balkon.",
+              "en": "My brother puts the rack on the balcony."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Mijn broer zet het rek op het balkon.",
+              "en": "My brother puts the rack on the balcony."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-personal-hygiene",
+      "topic_id": "personal-hygiene",
+      "title": {
+        "nl": "Een eigen handdoek",
+        "en": "A towel of my own"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik blijf bij mijn nicht logeren.",
+          "en": "I stay overnight at my cousin's."
+        },
+        {
+          "nl": "In de badkamer hangen drie handdoeken.",
+          "en": "There are three towels in the bathroom."
+        },
+        {
+          "nl": "Ik weet niet welke ik mag gebruiken.",
+          "en": "I do not know which one I may use."
+        },
+        {
+          "nl": "Mijn nicht geeft mij een groene handdoek.",
+          "en": "My cousin gives me a green towel."
+        },
+        {
+          "nl": "Ze legt ook schone zeep klaar.",
+          "en": "She also gets clean soap ready."
+        },
+        {
+          "nl": "Ik was mijn gezicht.",
+          "en": "I wash my face."
+        },
+        {
+          "nl": "Daarna hang ik mijn handdoek op.",
+          "en": "Then I hang up my towel."
+        },
+        {
+          "nl": "Zo weet ik morgen welke van mij is.",
+          "en": "That way I know tomorrow which one is mine."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kleur heeft de eigen handdoek?",
+            "en": "What colour is the speaker's towel?"
+          },
+          "options": [
+            {
+              "nl": "Blauw",
+              "en": "Blue"
+            },
+            {
+              "nl": "Groen",
+              "en": "Green"
+            },
+            {
+              "nl": "Rood",
+              "en": "Red"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Groen",
+            "en": "In this text: Green"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar blijft de ik-persoon slapen?",
+            "en": "Where does the speaker stay overnight?"
+          },
+          "options": [
+            {
+              "nl": "Bij een nicht",
+              "en": "At a cousin's"
+            },
+            {
+              "nl": "In een hotel",
+              "en": "In a hotel"
+            },
+            {
+              "nl": "Bij een buur",
+              "en": "At a neighbour's"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Bij een nicht",
+            "en": "In this text: At a cousin's"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Ze legt ook schone zeep klaar.",
+              "en": "She also gets clean soap ready."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een mededeling ontkennen met niet",
+            "en": "Negating a statement with niet"
+          },
+          "explanation": {
+            "nl": "Niet maakt duidelijk dat de genoemde handeling of eigenschap niet geldt. Kijk welk deel wordt ontkend.",
+            "en": "Niet shows that the stated action or property does not apply. Notice which part is negated."
+          },
+          "examples": [
+            {
+              "nl": "Ik weet niet welke ik mag gebruiken.",
+              "en": "I do not know which one I may use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-sleep-rest",
+      "topic_id": "sleep-rest",
+      "title": {
+        "nl": "De buur en de radio",
+        "en": "The neighbour and the radio"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik wil vroeg gaan slapen.",
+          "en": "I want to go to sleep early."
+        },
+        {
+          "nl": "Bij de buur staat de radio hard.",
+          "en": "The neighbour's radio is loud."
+        },
+        {
+          "nl": "Ik klop even aan zijn deur.",
+          "en": "I knock briefly on his door."
+        },
+        {
+          "nl": "Hij doet de deur open.",
+          "en": "He opens the door."
+        },
+        {
+          "nl": "Ik vraag of de radio zachter kan.",
+          "en": "I ask if the radio can be quieter."
+        },
+        {
+          "nl": "Hij zegt sorry en zet hem zachter.",
+          "en": "He says sorry and turns it down."
+        },
+        {
+          "nl": "Ik ga terug naar mijn bed.",
+          "en": "I go back to my bed."
+        },
+        {
+          "nl": "Nu is het rustig in mijn kamer.",
+          "en": "Now it is quiet in my room."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt veel lawaai?",
+            "en": "What makes a lot of noise?"
+          },
+          "options": [
+            {
+              "nl": "De radio",
+              "en": "The radio"
+            },
+            {
+              "nl": "Een hond",
+              "en": "A dog"
+            },
+            {
+              "nl": "Een trein",
+              "en": "A train"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: De radio",
+            "en": "In this text: The radio"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de buur na de vraag?",
+            "en": "What does the neighbour do after the request?"
+          },
+          "options": [
+            {
+              "nl": "Naar buiten gaan",
+              "en": "Go outside"
+            },
+            {
+              "nl": "De radio harder zetten",
+              "en": "Turn the radio up"
+            },
+            {
+              "nl": "De radio zachter zetten",
+              "en": "Turn the radio down"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: De radio zachter zetten",
+            "en": "In this text: Turn the radio down"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mogelijkheid, wens of noodzaak uitdrukken",
+            "en": "Expressing possibility, a wish or necessity"
+          },
+          "explanation": {
+            "nl": "Kunnen, willen, mogen en moeten geven aan hoe de spreker naar een handeling kijkt. Zoek ook het andere werkwoord in de zin.",
+            "en": "Kunnen, willen, mogen and moeten indicate how the speaker views an action. Find the other verb in the sentence too."
+          },
+          "examples": [
+            {
+              "nl": "Ik wil vroeg gaan slapen.",
+              "en": "I want to go to sleep early."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Ik ga terug naar mijn bed.",
+              "en": "I go back to my bed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-nutrition",
+      "topic_id": "nutrition",
+      "title": {
+        "nl": "Een brooddoos voor de les",
+        "en": "A lunchbox for class"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Morgen heb ik de hele dag les.",
+          "en": "Tomorrow I have classes all day."
+        },
+        {
+          "nl": "Ik maak vanavond mijn brooddoos klaar.",
+          "en": "I prepare my lunchbox this evening."
+        },
+        {
+          "nl": "Er gaan twee boterhammen in.",
+          "en": "Two sandwiches go inside."
+        },
+        {
+          "nl": "Ik neem ook een appel mee.",
+          "en": "I also take an apple."
+        },
+        {
+          "nl": "Een fles water staat naast de doos.",
+          "en": "A bottle of water is beside the box."
+        },
+        {
+          "nl": "Alles past in mijn rugzak.",
+          "en": "Everything fits in my backpack."
+        },
+        {
+          "nl": "De rugzak staat bij de deur.",
+          "en": "The backpack is by the door."
+        },
+        {
+          "nl": "Morgen hoef ik niets meer te zoeken.",
+          "en": "Tomorrow I will not need to look for anything."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel boterhammen zitten in de doos?",
+            "en": "How many sandwiches are in the box?"
+          },
+          "options": [
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Vier",
+              "en": "Four"
+            },
+            {
+              "nl": "Twee",
+              "en": "Two"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Twee",
+            "en": "In this text: Two"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wanneer maakt de ik-persoon de doos klaar?",
+            "en": "When does the speaker prepare the box?"
+          },
+          "options": [
+            {
+              "nl": "Na de les",
+              "en": "After class"
+            },
+            {
+              "nl": "Vanavond",
+              "en": "This evening"
+            },
+            {
+              "nl": "Morgenmiddag",
+              "en": "Tomorrow afternoon"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Vanavond",
+            "en": "In this text: This evening"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "Een fles water staat naast de doos.",
+              "en": "A bottle of water is beside the box."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Ik neem ook een appel mee.",
+              "en": "I also take an apple."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-medical-care",
+      "topic_id": "medical-care",
+      "title": {
+        "nl": "Een afspraak aan het loket",
+        "en": "An appointment at reception"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Eva komt bij de huisartsenpraktijk.",
+          "en": "Eva arrives at the doctor's surgery."
+        },
+        {
+          "nl": "Ze heeft een afspraak met dokter De Smet.",
+          "en": "She has an appointment with Doctor De Smet."
+        },
+        {
+          "nl": "De medewerker vraagt haar naam.",
+          "en": "The staff member asks her name."
+        },
+        {
+          "nl": "Eva geeft ook haar identiteitskaart.",
+          "en": "Eva also gives her identity card."
+        },
+        {
+          "nl": "Ze mag in de wachtkamer zitten.",
+          "en": "She may sit in the waiting room."
+        },
+        {
+          "nl": "Er zitten nog twee mensen.",
+          "en": "There are two other people there."
+        },
+        {
+          "nl": "Na tien minuten roept de dokter haar naam.",
+          "en": "After ten minutes the doctor calls her name."
+        },
+        {
+          "nl": "Eva gaat naar zijn kamer.",
+          "en": "Eva goes to his room."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Met wie heeft Eva een afspraak?",
+            "en": "Who is Eva's appointment with?"
+          },
+          "options": [
+            {
+              "nl": "De apotheker",
+              "en": "The pharmacist"
+            },
+            {
+              "nl": "Dokter De Smet",
+              "en": "Doctor De Smet"
+            },
+            {
+              "nl": "Dokter Janssens",
+              "en": "Doctor Janssens"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Dokter De Smet",
+            "en": "In this text: Doctor De Smet"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoelang wacht Eva?",
+            "en": "How long does Eva wait?"
+          },
+          "options": [
+            {
+              "nl": "Tien minuten",
+              "en": "Ten minutes"
+            },
+            {
+              "nl": "Een uur",
+              "en": "An hour"
+            },
+            {
+              "nl": "Dertig minuten",
+              "en": "Thirty minutes"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Tien minuten",
+            "en": "In this text: Ten minutes"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijdsduur noemen",
+            "en": "Giving a duration"
+          },
+          "explanation": {
+            "nl": "Een tijdsduur vertelt hoelang iets duurt, niet hoe laat het is. Een uur of een halfuur is een hoeveelheid tijd.",
+            "en": "A duration says how long something lasts, not what time it is. Een uur or een halfuur is an amount of time."
+          },
+          "examples": [
+            {
+              "nl": "Na tien minuten roept de dokter haar naam.",
+              "en": "After ten minutes the doctor calls her name."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Mogelijkheid, wens of noodzaak uitdrukken",
+            "en": "Expressing possibility, a wish or necessity"
+          },
+          "explanation": {
+            "nl": "Kunnen, willen, mogen en moeten geven aan hoe de spreker naar een handeling kijkt. Zoek ook het andere werkwoord in de zin.",
+            "en": "Kunnen, willen, mogen and moeten indicate how the speaker views an action. Find the other verb in the sentence too."
+          },
+          "examples": [
+            {
+              "nl": "Ze mag in de wachtkamer zitten.",
+              "en": "She may sit in the waiting room."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-safety-emergencies",
+      "topic_id": "safety-emergencies",
+      "title": {
+        "nl": "Glas op het fietspad",
+        "en": "Glass on the cycle path"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Bas fietst naar zijn werk.",
+          "en": "Bas cycles to work."
+        },
+        {
+          "nl": "Op het fietspad ligt glas.",
+          "en": "There is glass on the cycle path."
+        },
+        {
+          "nl": "Hij stopt voor het glas.",
+          "en": "He stops before the glass."
+        },
+        {
+          "nl": "Een meisje fietst achter hem.",
+          "en": "A girl is cycling behind him."
+        },
+        {
+          "nl": "Bas wijst naar de grond.",
+          "en": "Bas points to the ground."
+        },
+        {
+          "nl": "Het meisje stopt ook.",
+          "en": "The girl stops too."
+        },
+        {
+          "nl": "Ze stappen allebei af.",
+          "en": "They both get off."
+        },
+        {
+          "nl": "Ze lopen veilig langs het glas.",
+          "en": "They walk safely past the glass."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ligt op het fietspad?",
+            "en": "What is on the cycle path?"
+          },
+          "options": [
+            {
+              "nl": "Glas",
+              "en": "Glass"
+            },
+            {
+              "nl": "Brood",
+              "en": "Bread"
+            },
+            {
+              "nl": "Kleding",
+              "en": "Clothes"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Glas",
+            "en": "In this text: Glass"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen beiden?",
+            "en": "What do both people do?"
+          },
+          "options": [
+            {
+              "nl": "Harder fietsen",
+              "en": "Cycle faster"
+            },
+            {
+              "nl": "Terug naar huis gaan",
+              "en": "Go back home"
+            },
+            {
+              "nl": "Afstappen en lopen",
+              "en": "Get off and walk"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Afstappen en lopen",
+            "en": "In this text: Get off and walk"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Op het fietspad ligt glas.",
+              "en": "There is glass on the cycle path."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een moment met voor of na",
+            "en": "A moment with voor or na"
+          },
+          "explanation": {
+            "nl": "Voor en na plaatsen een handeling tegenover een ander moment, bijvoorbeeld na het werk.",
+            "en": "Voor and na place an action in relation to another time, for example na het werk."
+          },
+          "examples": [
+            {
+              "nl": "Hij stopt voor het glas.",
+              "en": "He stops before the glass."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-public-services",
+      "topic_id": "public-services",
+      "title": {
+        "nl": "Een boek terugbrengen",
+        "en": "Returning a book"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Mijn boek moet vandaag terug naar de bib.",
+          "en": "My book must go back to the library today."
+        },
+        {
+          "nl": "Ik werk tot zes uur.",
+          "en": "I work until six o'clock."
+        },
+        {
+          "nl": "De bib sluit om vijf uur.",
+          "en": "The library closes at five o'clock."
+        },
+        {
+          "nl": "Naast de deur staat een inleverbus.",
+          "en": "There is a returns box beside the door."
+        },
+        {
+          "nl": "Ik lees de tekst op de bus.",
+          "en": "I read the text on the box."
+        },
+        {
+          "nl": "Boeken mogen hier ook na sluitingstijd in.",
+          "en": "Books may go in here after closing time too."
+        },
+        {
+          "nl": "Ik laat mijn boek door de opening glijden.",
+          "en": "I slide my book through the opening."
+        },
+        {
+          "nl": "Nu is het boek op tijd terug.",
+          "en": "Now the book is back on time."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoe laat sluit de bib?",
+            "en": "What time does the library close?"
+          },
+          "options": [
+            {
+              "nl": "Om zes uur",
+              "en": "At six o'clock"
+            },
+            {
+              "nl": "Om acht uur",
+              "en": "At eight o'clock"
+            },
+            {
+              "nl": "Om vijf uur",
+              "en": "At five o'clock"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Om vijf uur",
+            "en": "In this text: At five o'clock"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe brengt de ik-persoon het boek terug?",
+            "en": "How does the speaker return the book?"
+          },
+          "options": [
+            {
+              "nl": "Via een collega",
+              "en": "Through a colleague"
+            },
+            {
+              "nl": "Via de inleverbus",
+              "en": "Through the returns box"
+            },
+            {
+              "nl": "Met de post",
+              "en": "By post"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Via de inleverbus",
+            "en": "In this text: Through the returns box"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Ik werk tot zes uur.",
+              "en": "I work until six o'clock."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "Naast de deur staat een inleverbus.",
+              "en": "There is a returns box beside the door."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-languages",
+      "topic_id": "languages",
+      "title": {
+        "nl": "Een woord op het menu",
+        "en": "A word on the menu"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik lees het menu in een café.",
+          "en": "I read the menu in a café."
+        },
+        {
+          "nl": "Ik ken het woord soep.",
+          "en": "I know the word soup."
+        },
+        {
+          "nl": "Het woord ernaast ken ik niet.",
+          "en": "I do not know the word beside it."
+        },
+        {
+          "nl": "Er staat: wortelsoep.",
+          "en": "It says: carrot soup."
+        },
+        {
+          "nl": "Ik vraag wat wortel betekent.",
+          "en": "I ask what wortel means."
+        },
+        {
+          "nl": "De ober wijst naar een oranje groente.",
+          "en": "The waiter points to an orange vegetable."
+        },
+        {
+          "nl": "Nu begrijp ik het hele woord.",
+          "en": "Now I understand the whole word."
+        },
+        {
+          "nl": "Ik bestel de wortelsoep.",
+          "en": "I order the carrot soup."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk woord kent de ik-persoon eerst al?",
+            "en": "Which word does the speaker already know?"
+          },
+          "options": [
+            {
+              "nl": "Groente",
+              "en": "Vegetable"
+            },
+            {
+              "nl": "Soep",
+              "en": "Soup"
+            },
+            {
+              "nl": "Wortel",
+              "en": "Carrot"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Soep",
+            "en": "In this text: Soup"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat bestelt de ik-persoon?",
+            "en": "What does the speaker order?"
+          },
+          "options": [
+            {
+              "nl": "Wortelsoep",
+              "en": "Carrot soup"
+            },
+            {
+              "nl": "Tomatensoep",
+              "en": "Tomato soup"
+            },
+            {
+              "nl": "Koffie",
+              "en": "Coffee"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Wortelsoep",
+            "en": "In this text: Carrot soup"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een mededeling ontkennen met niet",
+            "en": "Negating a statement with niet"
+          },
+          "explanation": {
+            "nl": "Niet maakt duidelijk dat de genoemde handeling of eigenschap niet geldt. Kijk welk deel wordt ontkend.",
+            "en": "Niet shows that the stated action or property does not apply. Notice which part is negated."
+          },
+          "examples": [
+            {
+              "nl": "Het woord ernaast ken ik niet.",
+              "en": "I do not know the word beside it."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Er is, er zijn of er staat",
+            "en": "Er is, er zijn or er staat"
+          },
+          "explanation": {
+            "nl": "Met er aan het begin introduceer je hier iets dat aanwezig is. Lees daarna wat er is en waar.",
+            "en": "Here initial er introduces something that is present. Read what is there and where."
+          },
+          "examples": [
+            {
+              "nl": "Er staat: wortelsoep.",
+              "en": "It says: carrot soup."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-study-habits",
+      "topic_id": "study-habits",
+      "title": {
+        "nl": "Woorden aan de koelkast",
+        "en": "Words on the fridge"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik leer vijf nieuwe woorden.",
+          "en": "I learn five new words."
+        },
+        {
+          "nl": "Ik schrijf ze op kleine kaartjes.",
+          "en": "I write them on little cards."
+        },
+        {
+          "nl": "De kaartjes hangen aan de koelkast.",
+          "en": "The cards are on the fridge."
+        },
+        {
+          "nl": "Elke ochtend lees ik ze hardop.",
+          "en": "Every morning I read them aloud."
+        },
+        {
+          "nl": "Vandaag kan ik vier woorden zeggen.",
+          "en": "Today I can say four words."
+        },
+        {
+          "nl": "Het vijfde woord bekijk ik nog eens.",
+          "en": "I look at the fifth word again."
+        },
+        {
+          "nl": "Ik maak er een korte zin mee.",
+          "en": "I make a short sentence with it."
+        },
+        {
+          "nl": "Morgen probeer ik het zonder kaartje.",
+          "en": "Tomorrow I will try without the card."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar hangen de kaartjes?",
+            "en": "Where are the cards?"
+          },
+          "options": [
+            {
+              "nl": "Aan de koelkast",
+              "en": "On the fridge"
+            },
+            {
+              "nl": "Aan de deur",
+              "en": "On the door"
+            },
+            {
+              "nl": "Aan het raam",
+              "en": "On the window"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Aan de koelkast",
+            "en": "In this text: On the fridge"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoeveel woorden kan de ik-persoon vandaag zeggen?",
+            "en": "How many words can the speaker say today?"
+          },
+          "options": [
+            {
+              "nl": "Vijf",
+              "en": "Five"
+            },
+            {
+              "nl": "Twee",
+              "en": "Two"
+            },
+            {
+              "nl": "Vier",
+              "en": "Four"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Vier",
+            "en": "In this text: Four"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "Ik maak er een korte zin mee.",
+              "en": "I make a short sentence with it."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "De kaartjes hangen aan de koelkast.",
+              "en": "The cards are on the fridge."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-university-life",
+      "topic_id": "university-life",
+      "title": {
+        "nl": "De lunch op de campus",
+        "en": "Lunch on campus"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Mijn les eindigt om twaalf uur.",
+          "en": "My class ends at twelve o'clock."
+        },
+        {
+          "nl": "Ik ga met twee studenten naar de eetzaal.",
+          "en": "I go to the dining hall with two students."
+        },
+        {
+          "nl": "Vandaag staat er pasta op het menu.",
+          "en": "Today there is pasta on the menu."
+        },
+        {
+          "nl": "Eén student neemt liever soep.",
+          "en": "One student prefers soup."
+        },
+        {
+          "nl": "We betalen aan de kassa.",
+          "en": "We pay at the checkout."
+        },
+        {
+          "nl": "Bij het raam is een vrije tafel.",
+          "en": "There is a free table by the window."
+        },
+        {
+          "nl": "We eten en praten over de les.",
+          "en": "We eat and talk about the class."
+        },
+        {
+          "nl": "Om één uur gaan we terug.",
+          "en": "At one o'clock we go back."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar eten zij?",
+            "en": "Where do they eat?"
+          },
+          "options": [
+            {
+              "nl": "In de klas",
+              "en": "In the classroom"
+            },
+            {
+              "nl": "Op de bus",
+              "en": "On the bus"
+            },
+            {
+              "nl": "In de eetzaal",
+              "en": "In the dining hall"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: In de eetzaal",
+            "en": "In this text: In the dining hall"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe laat gaan zij terug?",
+            "en": "What time do they go back?"
+          },
+          "options": [
+            {
+              "nl": "Om drie uur",
+              "en": "At three o'clock"
+            },
+            {
+              "nl": "Om één uur",
+              "en": "At one o'clock"
+            },
+            {
+              "nl": "Om twaalf uur",
+              "en": "At twelve o'clock"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Om één uur",
+            "en": "In this text: At one o'clock"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een tijd noemen",
+            "en": "Giving a time"
+          },
+          "explanation": {
+            "nl": "Bij een kloktijd gebruik je uur. Met om kun je aangeven wanneer iets gebeurt.",
+            "en": "Use uur when giving a clock time. Om can introduce the time when something happens."
+          },
+          "examples": [
+            {
+              "nl": "Mijn les eindigt om twaalf uur.",
+              "en": "My class ends at twelve o'clock."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Mijn bij een zelfstandig naamwoord",
+            "en": "Mijn with a noun"
+          },
+          "explanation": {
+            "nl": "Mijn staat bij een zelfstandig naamwoord en geeft een band met de spreker aan: mijn naam, mijn tas.",
+            "en": "Mijn comes with a noun and indicates a relationship to the speaker: mijn naam, mijn tas."
+          },
+          "examples": [
+            {
+              "nl": "Mijn les eindigt om twaalf uur.",
+              "en": "My class ends at twelve o'clock."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-customer-service",
+      "topic_id": "customer-service",
+      "title": {
+        "nl": "De verkeerde maat",
+        "en": "The wrong size"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Ik koop een blauwe trui.",
+          "en": "I buy a blue jumper."
+        },
+        {
+          "nl": "Thuis pas ik hem nog eens.",
+          "en": "At home I try it on again."
+        },
+        {
+          "nl": "De mouwen zijn te kort.",
+          "en": "The sleeves are too short."
+        },
+        {
+          "nl": "Ik neem de trui en de kassabon mee.",
+          "en": "I take the jumper and the receipt."
+        },
+        {
+          "nl": "In de winkel vraag ik een grotere maat.",
+          "en": "In the shop I ask for a larger size."
+        },
+        {
+          "nl": "De medewerker zoekt in de kast.",
+          "en": "The staff member looks in the cupboard."
+        },
+        {
+          "nl": "De nieuwe trui past goed.",
+          "en": "The new jumper fits well."
+        },
+        {
+          "nl": "Ik bedank de medewerker.",
+          "en": "I thank the staff member."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat is er mis met de trui?",
+            "en": "What is wrong with the jumper?"
+          },
+          "options": [
+            {
+              "nl": "Er zit een gat in.",
+              "en": "There is a hole in it."
+            },
+            {
+              "nl": "De mouwen zijn te kort.",
+              "en": "The sleeves are too short."
+            },
+            {
+              "nl": "De kleur is fout.",
+              "en": "The colour is wrong."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: De mouwen zijn te kort.",
+            "en": "In this text: The sleeves are too short."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat neemt de ik-persoon mee naar de winkel?",
+            "en": "What does the speaker take to the shop?"
+          },
+          "options": [
+            {
+              "nl": "De trui en de kassabon",
+              "en": "The jumper and the receipt"
+            },
+            {
+              "nl": "Alleen een foto",
+              "en": "Only a photo"
+            },
+            {
+              "nl": "Een andere jas",
+              "en": "Another coat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: De trui en de kassabon",
+            "en": "In this text: The jumper and the receipt"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "De medewerker zoekt in de kast.",
+              "en": "The staff member looks in the cupboard."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Ik neem de trui en de kassabon mee.",
+              "en": "I take the jumper and the receipt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-banking-payments",
+      "topic_id": "banking-payments",
+      "title": {
+        "nl": "Betalen met de kaart",
+        "en": "Paying by card"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Amir koopt een brood en kaas.",
+          "en": "Amir buys bread and cheese."
+        },
+        {
+          "nl": "Samen kost het zeven euro.",
+          "en": "Together it costs seven euros."
+        },
+        {
+          "nl": "Hij wil met zijn bankkaart betalen.",
+          "en": "He wants to pay with his bank card."
+        },
+        {
+          "nl": "De kaart zit onder in zijn tas.",
+          "en": "The card is at the bottom of his bag."
+        },
+        {
+          "nl": "Hij zoekt even en vindt ze.",
+          "en": "He searches briefly and finds it."
+        },
+        {
+          "nl": "Hij houdt de kaart bij het toestel.",
+          "en": "He holds the card near the terminal."
+        },
+        {
+          "nl": "Op het scherm staat dat het gelukt is.",
+          "en": "The screen says it worked."
+        },
+        {
+          "nl": "Amir neemt zijn boodschappen mee.",
+          "en": "Amir takes his groceries."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel betaalt Amir?",
+            "en": "How much does Amir pay?"
+          },
+          "options": [
+            {
+              "nl": "Zeven euro",
+              "en": "Seven euros"
+            },
+            {
+              "nl": "Vijf euro",
+              "en": "Five euros"
+            },
+            {
+              "nl": "Tien euro",
+              "en": "Ten euros"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Zeven euro",
+            "en": "In this text: Seven euros"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar vindt hij zijn kaart?",
+            "en": "Where does he find his card?"
+          },
+          "options": [
+            {
+              "nl": "In zijn jaszak",
+              "en": "In his coat pocket"
+            },
+            {
+              "nl": "Op de grond",
+              "en": "On the ground"
+            },
+            {
+              "nl": "Onder in zijn tas",
+              "en": "At the bottom of his bag"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Onder in zijn tas",
+            "en": "In this text: At the bottom of his bag"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "Amir neemt zijn boodschappen mee.",
+              "en": "Amir takes his groceries."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Mogelijkheid, wens of noodzaak uitdrukken",
+            "en": "Expressing possibility, a wish or necessity"
+          },
+          "explanation": {
+            "nl": "Kunnen, willen, mogen en moeten geven aan hoe de spreker naar een handeling kijkt. Zoek ook het andere werkwoord in de zin.",
+            "en": "Kunnen, willen, mogen and moeten indicate how the speaker views an action. Find the other verb in the sentence too."
+          },
+          "examples": [
+            {
+              "nl": "Hij wil met zijn bankkaart betalen.",
+              "en": "He wants to pay with his bank card."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-home-decoration",
+      "topic_id": "home-decoration",
+      "title": {
+        "nl": "Een lamp bij de stoel",
+        "en": "A lamp beside the chair"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Noor leest graag in haar stoel.",
+          "en": "Noor likes reading in her chair."
+        },
+        {
+          "nl": "In de avond is de hoek donker.",
+          "en": "In the evening the corner is dark."
+        },
+        {
+          "nl": "Ze heeft een kleine lamp.",
+          "en": "She has a small lamp."
+        },
+        {
+          "nl": "Eerst zet ze die op de kast.",
+          "en": "First she puts it on the cupboard."
+        },
+        {
+          "nl": "Maar de kast staat te ver.",
+          "en": "But the cupboard is too far away."
+        },
+        {
+          "nl": "Dan zet ze een tafeltje naast de stoel.",
+          "en": "Then she puts a small table beside the chair."
+        },
+        {
+          "nl": "De lamp komt op het tafeltje.",
+          "en": "The lamp goes on the little table."
+        },
+        {
+          "nl": "Nu kan ze haar boek goed zien.",
+          "en": "Now she can see her book clearly."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil Noor een lamp?",
+            "en": "Why does Noor want a lamp?"
+          },
+          "options": [
+            {
+              "nl": "Om te koken",
+              "en": "To cook"
+            },
+            {
+              "nl": "Om te slapen",
+              "en": "To sleep"
+            },
+            {
+              "nl": "Om te lezen",
+              "en": "To read"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Om te lezen",
+            "en": "In this text: To read"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar staat de lamp op het einde?",
+            "en": "Where is the lamp at the end?"
+          },
+          "options": [
+            {
+              "nl": "Op de vloer",
+              "en": "On the floor"
+            },
+            {
+              "nl": "Op een tafeltje naast de stoel",
+              "en": "On a little table beside the chair"
+            },
+            {
+              "nl": "Op de kast",
+              "en": "On the cupboard"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Op een tafeltje naast de stoel",
+            "en": "In this text: On a little table beside the chair"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "Eerst zet ze die op de kast.",
+              "en": "First she puts it on the cupboard."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "Ze heeft een kleine lamp.",
+              "en": "She has a small lamp."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-gardening",
+      "topic_id": "gardening",
+      "title": {
+        "nl": "Zaadjes in een pot",
+        "en": "Seeds in a pot"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Sara koopt een zakje zaadjes.",
+          "en": "Sara buys a packet of seeds."
+        },
+        {
+          "nl": "Ze vult een pot met aarde.",
+          "en": "She fills a pot with soil."
+        },
+        {
+          "nl": "Ze doet drie zaadjes in de aarde.",
+          "en": "She puts three seeds in the soil."
+        },
+        {
+          "nl": "Dan geeft ze een beetje water.",
+          "en": "Then she gives them a little water."
+        },
+        {
+          "nl": "De pot staat op de vensterbank.",
+          "en": "The pot is on the windowsill."
+        },
+        {
+          "nl": "Elke dag kijkt ze naar de pot.",
+          "en": "Every day she looks at the pot."
+        },
+        {
+          "nl": "Na een week ziet ze iets groens.",
+          "en": "After a week she sees something green."
+        },
+        {
+          "nl": "Haar eerste plantje groeit.",
+          "en": "Her first little plant is growing."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel zaadjes plant Sara?",
+            "en": "How many seeds does Sara plant?"
+          },
+          "options": [
+            {
+              "nl": "Zes",
+              "en": "Six"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Twee",
+              "en": "Two"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Drie",
+            "en": "In this text: Three"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar staat de pot?",
+            "en": "Where is the pot?"
+          },
+          "options": [
+            {
+              "nl": "Op de vensterbank",
+              "en": "On the windowsill"
+            },
+            {
+              "nl": "Onder het bed",
+              "en": "Under the bed"
+            },
+            {
+              "nl": "In de gang",
+              "en": "In the hallway"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Op de vensterbank",
+            "en": "In this text: On the windowsill"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "Ze doet drie zaadjes in de aarde.",
+              "en": "She puts three seeds in the soil."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een moment met voor of na",
+            "en": "A moment with voor or na"
+          },
+          "explanation": {
+            "nl": "Voor en na plaatsen een handeling tegenover een ander moment, bijvoorbeeld na het werk.",
+            "en": "Voor and na place an action in relation to another time, for example na het werk."
+          },
+          "examples": [
+            {
+              "nl": "Na een week ziet ze iets groens.",
+              "en": "After a week she sees something green."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-agriculture",
+      "topic_id": "agriculture",
+      "title": {
+        "nl": "Appels bij de boer",
+        "en": "Apples at the farmer's"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Wij bezoeken een boerderij op zaterdag.",
+          "en": "We visit a farm on Saturday."
+        },
+        {
+          "nl": "Bij de ingang staan manden met appels.",
+          "en": "There are baskets of apples by the entrance."
+        },
+        {
+          "nl": "De boer geeft ons een lege zak.",
+          "en": "The farmer gives us an empty bag."
+        },
+        {
+          "nl": "We mogen zelf zes appels kiezen.",
+          "en": "We may choose six apples ourselves."
+        },
+        {
+          "nl": "Mijn zus kiest drie groene appels.",
+          "en": "My sister chooses three green apples."
+        },
+        {
+          "nl": "Ik kies drie rode appels.",
+          "en": "I choose three red apples."
+        },
+        {
+          "nl": "De boer weegt onze zak.",
+          "en": "The farmer weighs our bag."
+        },
+        {
+          "nl": "Thuis maken we er appelmoes van.",
+          "en": "At home we make apple sauce from them."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel appels kiezen zij samen?",
+            "en": "How many apples do they choose together?"
+          },
+          "options": [
+            {
+              "nl": "Zes",
+              "en": "Six"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Negen",
+              "en": "Nine"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Zes",
+            "en": "In this text: Six"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maken zij thuis?",
+            "en": "What do they make at home?"
+          },
+          "options": [
+            {
+              "nl": "Soep",
+              "en": "Soup"
+            },
+            {
+              "nl": "Brood",
+              "en": "Bread"
+            },
+            {
+              "nl": "Appelmoes",
+              "en": "Apple sauce"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Appelmoes",
+            "en": "In this text: Apple sauce"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mogelijkheid, wens of noodzaak uitdrukken",
+            "en": "Expressing possibility, a wish or necessity"
+          },
+          "explanation": {
+            "nl": "Kunnen, willen, mogen en moeten geven aan hoe de spreker naar een handeling kijkt. Zoek ook het andere werkwoord in de zin.",
+            "en": "Kunnen, willen, mogen and moeten indicate how the speaker views an action. Find the other verb in the sentence too."
+          },
+          "examples": [
+            {
+              "nl": "We mogen zelf zes appels kiezen.",
+              "en": "We may choose six apples ourselves."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "De boer geeft ons een lege zak.",
+              "en": "The farmer gives us an empty bag."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-energy-electricity",
+      "topic_id": "energy-electricity",
+      "title": {
+        "nl": "De laatste doet het licht uit",
+        "en": "The last person turns off the light"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Onze les is afgelopen.",
+          "en": "Our lesson is over."
+        },
+        {
+          "nl": "Iedereen pakt zijn tas.",
+          "en": "Everyone packs their bag."
+        },
+        {
+          "nl": "De leraar ruimt zijn tafel op.",
+          "en": "The teacher clears his table."
+        },
+        {
+          "nl": "Ik sta als laatste bij de deur.",
+          "en": "I am the last person at the door."
+        },
+        {
+          "nl": "Het licht in de klas brandt nog.",
+          "en": "The classroom light is still on."
+        },
+        {
+          "nl": "Ik vraag of het uit mag.",
+          "en": "I ask if it may be turned off."
+        },
+        {
+          "nl": "De leraar zegt ja.",
+          "en": "The teacher says yes."
+        },
+        {
+          "nl": "Ik doe het licht uit en sluit de deur.",
+          "en": "I turn off the light and close the door."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat brandt nog?",
+            "en": "What is still on?"
+          },
+          "options": [
+            {
+              "nl": "De radio",
+              "en": "The radio"
+            },
+            {
+              "nl": "De televisie",
+              "en": "The television"
+            },
+            {
+              "nl": "Het licht",
+              "en": "The light"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Het licht",
+            "en": "In this text: The light"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie doet het licht uit?",
+            "en": "Who turns off the light?"
+          },
+          "options": [
+            {
+              "nl": "Een buur",
+              "en": "A neighbour"
+            },
+            {
+              "nl": "De ik-persoon",
+              "en": "The speaker"
+            },
+            {
+              "nl": "De leraar",
+              "en": "The teacher"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: De ik-persoon",
+            "en": "In this text: The speaker"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De delen van een scheidbaar werkwoord",
+            "en": "The parts of a separable verb"
+          },
+          "explanation": {
+            "nl": "Bij dit werkwoord staan de persoonsvorm en het afgescheiden deel op verschillende plaatsen. Zoek de twee delen in de voorbeeldzin.",
+            "en": "The finite verb and its separated particle occur in different positions. Find both parts in the example sentence."
+          },
+          "examples": [
+            {
+              "nl": "De leraar ruimt zijn tafel op.",
+              "en": "The teacher clears his table."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "De leraar ruimt zijn tafel op.",
+              "en": "The teacher clears his table."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-community-events",
+      "topic_id": "community-events",
+      "title": {
+        "nl": "Stoelen voor het buurtfeest",
+        "en": "Chairs for the neighbourhood party"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Vanavond is er een feest in onze straat.",
+          "en": "There is a party in our street this evening."
+        },
+        {
+          "nl": "De buren zetten tafels buiten.",
+          "en": "The neighbours put tables outside."
+        },
+        {
+          "nl": "Er zijn twaalf gasten.",
+          "en": "There are twelve guests."
+        },
+        {
+          "nl": "Maar er staan maar tien stoelen.",
+          "en": "But there are only ten chairs."
+        },
+        {
+          "nl": "Ik haal twee stoelen uit mijn keuken.",
+          "en": "I get two chairs from my kitchen."
+        },
+        {
+          "nl": "Nu kan iedereen zitten.",
+          "en": "Now everyone can sit down."
+        },
+        {
+          "nl": "Een buur brengt soep.",
+          "en": "A neighbour brings soup."
+        },
+        {
+          "nl": "Samen eten we aan de lange tafel.",
+          "en": "We eat together at the long table."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel stoelen ontbreken eerst?",
+            "en": "How many chairs are missing at first?"
+          },
+          "options": [
+            {
+              "nl": "Twaalf",
+              "en": "Twelve"
+            },
+            {
+              "nl": "Twee",
+              "en": "Two"
+            },
+            {
+              "nl": "Vier",
+              "en": "Four"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: Twee",
+            "en": "In this text: Two"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat brengt een buur mee?",
+            "en": "What does a neighbour bring?"
+          },
+          "options": [
+            {
+              "nl": "Soep",
+              "en": "Soup"
+            },
+            {
+              "nl": "Een camera",
+              "en": "A camera"
+            },
+            {
+              "nl": "Een lamp",
+              "en": "A lamp"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Soep",
+            "en": "In this text: Soup"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mogelijkheid, wens of noodzaak uitdrukken",
+            "en": "Expressing possibility, a wish or necessity"
+          },
+          "explanation": {
+            "nl": "Kunnen, willen, mogen en moeten geven aan hoe de spreker naar een handeling kijkt. Zoek ook het andere werkwoord in de zin.",
+            "en": "Kunnen, willen, mogen and moeten indicate how the speaker views an action. Find the other verb in the sentence too."
+          },
+          "examples": [
+            {
+              "nl": "Nu kan iedereen zitten.",
+              "en": "Now everyone can sit down."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "Samen eten we aan de lange tafel.",
+              "en": "We eat together at the long table."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-restaurants-cafes",
+      "topic_id": "restaurants-cafes",
+      "title": {
+        "nl": "Een tafel buiten",
+        "en": "A table outside"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "Bas en ik eten in een klein restaurant.",
+          "en": "Bas and I eat in a small restaurant."
+        },
+        {
+          "nl": "Binnen zijn alle tafels bezet.",
+          "en": "All the tables inside are occupied."
+        },
+        {
+          "nl": "De ober wijst naar het terras.",
+          "en": "The waiter points to the terrace."
+        },
+        {
+          "nl": "Daar is nog een tafel vrij.",
+          "en": "There is still a free table there."
+        },
+        {
+          "nl": "We gaan onder een parasol zitten.",
+          "en": "We sit under a parasol."
+        },
+        {
+          "nl": "Bas bestelt vis en ik neem pasta.",
+          "en": "Bas orders fish and I have pasta."
+        },
+        {
+          "nl": "Het eten komt na een kwartier.",
+          "en": "The food arrives after fifteen minutes."
+        },
+        {
+          "nl": "Na het eten vragen we de rekening.",
+          "en": "After eating we ask for the bill."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar zitten zij?",
+            "en": "Where do they sit?"
+          },
+          "options": [
+            {
+              "nl": "Op het terras",
+              "en": "On the terrace"
+            },
+            {
+              "nl": "Aan de bar",
+              "en": "At the bar"
+            },
+            {
+              "nl": "In de keuken",
+              "en": "In the kitchen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In deze tekst: Op het terras",
+            "en": "In this text: On the terrace"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat bestelt Bas?",
+            "en": "What does Bas order?"
+          },
+          "options": [
+            {
+              "nl": "Pasta",
+              "en": "Pasta"
+            },
+            {
+              "nl": "Soep",
+              "en": "Soup"
+            },
+            {
+              "nl": "Vis",
+              "en": "Fish"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Vis",
+            "en": "In this text: Fish"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "We gaan onder een parasol zitten.",
+              "en": "We sit under a parasol."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een woord samen met zijn lidwoord leren",
+            "en": "Learning a noun with its article"
+          },
+          "explanation": {
+            "nl": "Veel zelfstandige naamwoorden staan met de of het. Leer het lidwoord samen met het woord.",
+            "en": "Many nouns occur with de or het. Learn the article together with the noun."
+          },
+          "examples": [
+            {
+              "nl": "De ober wijst naar het terras.",
+              "en": "The waiter points to the terrace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-outdoor-adventure",
+      "topic_id": "outdoor-adventure",
+      "title": {
+        "nl": "De brug in het bos",
+        "en": "The bridge in the woods"
+      },
+      "review_status": "unreviewed",
+      "lines": [
+        {
+          "nl": "We wandelen op zondag in het bos.",
+          "en": "We walk in the woods on Sunday."
+        },
+        {
+          "nl": "Het pad gaat naar een kleine brug.",
+          "en": "The path leads to a small bridge."
+        },
+        {
+          "nl": "Onder de brug loopt een beek.",
+          "en": "A stream runs under the bridge."
+        },
+        {
+          "nl": "Mijn broer stopt om te kijken.",
+          "en": "My brother stops to look."
+        },
+        {
+          "nl": "Er zwemt een eend in het water.",
+          "en": "A duck is swimming in the water."
+        },
+        {
+          "nl": "We eten onze boterhammen op een bank.",
+          "en": "We eat our sandwiches on a bench."
+        },
+        {
+          "nl": "Daarna volgen we de rode pijlen.",
+          "en": "Then we follow the red arrows."
+        },
+        {
+          "nl": "Zo komen we terug bij onze fietsen.",
+          "en": "That way we get back to our bicycles."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat loopt onder de brug?",
+            "en": "What runs under the bridge?"
+          },
+          "options": [
+            {
+              "nl": "Een weg",
+              "en": "A road"
+            },
+            {
+              "nl": "Een spoorlijn",
+              "en": "A railway line"
+            },
+            {
+              "nl": "Een beek",
+              "en": "A stream"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In deze tekst: Een beek",
+            "en": "In this text: A stream"
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke pijlen volgen zij terug?",
+            "en": "Which arrows do they follow back?"
+          },
+          "options": [
+            {
+              "nl": "De gele",
+              "en": "The yellow ones"
+            },
+            {
+              "nl": "De rode",
+              "en": "The red ones"
+            },
+            {
+              "nl": "De blauwe",
+              "en": "The blue ones"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In deze tekst: De rode",
+            "en": "In this text: The red ones"
+          }
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Indicating a location"
+          },
+          "explanation": {
+            "nl": "Woorden zoals in, op, onder en naast verbinden iets met een plaats. Kijk welke plaats hier wordt genoemd.",
+            "en": "Words such as in, op, onder and naast connect something to a location. Notice the location mentioned here."
+          },
+          "examples": [
+            {
+              "nl": "Onder de brug loopt een beek.",
+              "en": "A stream runs under the bridge."
+            }
+          ]
+        },
+        {
+          "title": {
+            "nl": "Een eigenschap bij een zelfstandig naamwoord",
+            "en": "A description with a noun"
+          },
+          "explanation": {
+            "nl": "Een bijvoeglijk naamwoord geeft extra informatie over een zelfstandig naamwoord, zoals de kleur, de grootte of een andere eigenschap.",
+            "en": "An adjective gives extra information about a noun, such as its colour, size or another quality."
+          },
+          "examples": [
+            {
+              "nl": "Het pad gaat naar een kleine brug.",
+              "en": "The path leads to a small bridge."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

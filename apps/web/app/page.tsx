@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { TodayHome } from "@/components/TodayHome";
-export const metadata: Metadata = { title: "Vandaag" };
+import { StudyDashboard } from "@/components/StudyDashboard";
+export const metadata: Metadata = { title: "Dashboard" };
 export default function HomePage() {
-  return <TodayHome />;
+  return <StudyDashboard />;
 }

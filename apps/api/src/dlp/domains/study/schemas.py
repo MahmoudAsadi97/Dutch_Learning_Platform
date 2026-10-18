@@ -1,0 +1,248 @@
+from __future__ import annotations
+
+from typing import Annotated, Literal
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, model_validator
+
+from dlp.domains.curriculum.schemas import STAGE_IDS, Skill
+
+
+class Copy(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+    nl: str = Field(min_length=1, max_length=12000)
+    en: str = Field(min_length=1, max_length=12000)
+
+
+class Word(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    term: str = Field(min_length=1, max_length=180)
+    part_of_speech: str = Field(default="expression", max_length=40)
+    meaning: dict[str, str]
+    example: Copy
+    minimum_stage: str = "pre-a1"
+    review_status: Literal["unreviewed"] = "unreviewed"
+
+    @model_validator(mode="after")
+    def complete_word(self):
+        if self.minimum_stage not in STAGE_IDS:
+            raise ValueError("guided vocabulary requires a known exposure stage")
+        if not self.meaning.get("en", "").strip() or not set(self.meaning).issubset({"nl", "en"}):
+            raise ValueError("guided vocabulary requires an English gloss and only Dutch/English support")
+        return self
+
+
+class Topic(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    id: str = Field(pattern=r"^[a-z0-9-]{1,60}$")
+    nl: str = Field(min_length=1, max_length=160)
+    en: str = Field(min_length=1, max_length=160)
+    group: str = Field(min_length=1, max_length=100)
+    keywords: list[str] = Field(default_factory=list, max_length=100)
+    foundation_suitable: bool = False
+    vocabulary: list[Word] = Field(default_factory=list, max_length=30)
+    review_status: Literal["unreviewed"] = "unreviewed"
+    order: int = Field(default=1, ge=1, le=200)
+    short_questions: list[Copy] = Field(default_factory=list, max_length=6)
+    short_question_samples: list[Copy] = Field(default_factory=list, max_length=6)
+
+    @model_validator(mode="after")
+    def samples_match_questions(self):
+        if self.short_question_samples and len(self.short_question_samples) != len(self.short_questions):
+            raise ValueError("topic short answers must correspond to their authored questions")
+        return self
+
+
+class TopicDocument(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    schema_version: Literal[1]
+    language_variety: str = "nl-BE"
+    review_status: Literal["unreviewed"] = "unreviewed"
+    topics: list[Topic] = Field(min_length=50, max_length=200)
+
+    @model_validator(mode="after")
+    def unique_topics(self):
+        if len({topic.id for topic in self.topics}) != len(self.topics):
+            raise ValueError("guided topics require unique IDs")
+        return self
+
+
+class Source(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    source: Literal["story", "practice", "pack"]
+    id: str = Field(min_length=1, max_length=100, pattern=r"^[a-z0-9-]+$")
+
+
+class IndexDocument(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    schema_version: Literal[1]
+    stages: dict[str, dict[Skill, dict[str, list[Source]]]]
+
+
+class CheckQuestion(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    id: str = Field(min_length=1, max_length=110)
+    kind: Literal["choice", "gap", "short"]
+    prompt: Copy
+    options: list[Copy] = Field(default_factory=list, max_length=6)
+    answer_index: int | None = Field(default=None, ge=0)
+    accepted_answers: list[str] = Field(default_factory=list, max_length=12)
+    explanation: Copy
+
+    @model_validator(mode="after")
+    def answer_defined(self):
+        if self.kind == "choice":
+            if self.answer_index is None or self.answer_index >= len(self.options):
+                raise ValueError("choice question requires a valid answer")
+        elif not self.accepted_answers:
+            raise ValueError("text question requires authored accepted answers")
+        return self
+
+
+class StoryQuestion(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    id: str = Field(min_length=1, max_length=110)
+    prompt: Copy
+    options: list[Copy] = Field(min_length=2, max_length=6)
+    answer_index: int = Field(ge=0)
+    explanation: Copy
+
+    @model_validator(mode="after")
+    def valid_answer(self):
+        if self.answer_index >= len(self.options):
+            raise ValueError("guided story question answer is outside its options")
+        return self
+
+
+class GrammarPreparation(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    title: Copy
+    explanation: Copy
+    examples: list[Copy] = Field(min_length=1, max_length=5)
+
+
+class ProductiveTask(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    prompt: Copy
+    sample: Copy
+    min_words: int = Field(default=1, ge=1, le=1000)
+    max_words: int = Field(default=350, ge=1, le=1500)
+
+    @model_validator(mode="after")
+    def ordered_bounds(self):
+        if self.min_words > self.max_words:
+            raise ValueError("guided task word bounds are reversed")
+        return self
+
+
+class SpeakingOverride(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    short_questions: list[ProductiveTask] = Field(default_factory=list, max_length=8)
+    description: ProductiveTask | None = None
+    discussion: ProductiveTask | None = None
+
+
+class WritingOverride(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    short: ProductiveTask | None = None
+    extended: ProductiveTask | None = None
+
+
+class ListeningSection(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    text: Copy
+    questions: list[CheckQuestion] = Field(min_length=1, max_length=12)
+
+
+class ListeningOverride(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    sections: list[ListeningSection] = Field(min_length=3, max_length=3)
+
+    @model_validator(mode="after")
+    def ordered_task_types(self):
+        for section, kind in zip(self.sections, ("gap", "choice", "short"), strict=True):
+            if any(question.kind != kind for question in section.questions):
+                raise ValueError("listening sections must use gap, choice and short tasks in that order")
+        return self
+
+
+class AuthoredLesson(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    id: str = Field(min_length=1, max_length=100, pattern=r"^[a-z0-9-]+$")
+    topic_id: str = Field(min_length=1, max_length=60, pattern=r"^[a-z0-9-]+$")
+    title: Copy
+    review_status: Literal["unreviewed"] = "unreviewed"
+    lines: list[Copy] = Field(min_length=8, max_length=12)
+    questions: list[StoryQuestion] = Field(min_length=2, max_length=12)
+    source_id: str | None = None
+    words: list[Word] = Field(default_factory=list, max_length=20)
+    grammar: list[GrammarPreparation] = Field(default_factory=list, max_length=4)
+    speaking: SpeakingOverride | None = None
+    writing: WritingOverride | None = None
+    listening: ListeningOverride | None = None
+
+    @model_validator(mode="after")
+    def consistent_story(self):
+        if any(len(line.nl) > 600 for line in self.lines):
+            raise ValueError("guided story lines must fit sentence playback")
+        if len({question.id for question in self.questions}) != len(self.questions):
+            raise ValueError("guided story question IDs must be unique")
+        if len({line.nl.casefold() for line in self.lines}) != len(self.lines):
+            raise ValueError("guided story may not repeat a sentence to reach a line target")
+        return self
+
+
+class PackDocument(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    schema_version: Literal[1]
+    language_variety: Literal["nl-BE"] = "nl-BE"
+    stage_id: str
+    review_status: Literal["unreviewed"]
+    lessons: list[AuthoredLesson] = Field(min_length=1, max_length=200)
+
+    @model_validator(mode="after")
+    def unique_lessons(self):
+        if len({lesson.id for lesson in self.lessons}) != len(self.lessons):
+            raise ValueError("guided packs require unique lesson IDs")
+        return self
+
+
+class FeedbackBody(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    skill: Skill
+    activity_id: str | None = Field(default=None, max_length=100, pattern=r"^[a-z0-9-]+$")
+    part: str = Field(min_length=1, max_length=80, pattern=r"^[a-z0-9-]+$")
+    question_id: str | None = Field(default=None, max_length=100, pattern=r"^[a-z0-9-]+$")
+    kind: Literal["answers", "response"]
+    text: str = Field(default="", max_length=8000)
+    answers: dict[Annotated[str, Field(max_length=110)], StrictInt | Annotated[str, Field(max_length=1200)]] = Field(
+        default_factory=dict, max_length=30)
+    assistance_used: bool = False
+
+
+class FeedbackCopy(Copy):
+    nl: str = Field(min_length=1, max_length=250)
+    en: str = Field(min_length=1, max_length=250)
+
+
+class Correction(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    original: str = Field(min_length=1, max_length=240)
+    replacement: str = Field(max_length=320)
+    category: Literal["spelling", "grammar", "word_order", "punctuation", "word_choice"]
+    explanation: FeedbackCopy
+
+
+class Dimensions(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    task: int = Field(ge=0, le=10)
+    grammar: int = Field(ge=0, le=10)
+    vocabulary: int = Field(ge=0, le=10)
+    organisation: int = Field(ge=0, le=10)
+
+
+class CoachReply(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    language_is_dutch: bool
+    dimensions: Dimensions
+    summary: FeedbackCopy
+    corrections: list[Correction] = Field(default_factory=list, max_length=5)

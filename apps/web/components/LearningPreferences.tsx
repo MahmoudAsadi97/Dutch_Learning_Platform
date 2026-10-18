@@ -111,9 +111,8 @@ export function LearningPreferences() {
               value={mode}
               onChange={(event) => setMode(event.target.value as SupportMode)}
             >
+              <option value="nl">Nederlands</option>
               <option value="nl-en">Nederlands · English</option>
-              <option value="nl-fa">Nederlands · فارسی</option>
-              <option value="nl-fa-en">Nederlands · فارسی · English</option>
             </Select>
           )}
         </Field>

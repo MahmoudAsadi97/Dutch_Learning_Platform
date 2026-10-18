@@ -12,6 +12,8 @@ export const storageKeys = {
   languageSupportUnsent: `${PREFIX}unsent.language-support`,
   /** Answer and goal tones on or off; a preference, kept across sign-out. */
   tones: `${PREFIX}tones`,
+  /** Last level visited; a device preference containing no answers or scores. */
+  studyStage: `${PREFIX}study-stage`,
   /** Writing draft of the core lesson (sessionStorage). */
   draft: (learnerKey: string, stageId: string) => `${PREFIX}draft.${learnerKey}.${stageId}`,
   /** Final-check attempt in progress (sessionStorage). */

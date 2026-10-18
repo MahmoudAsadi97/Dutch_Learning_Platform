@@ -2,10 +2,10 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { destinations, navItemFor, navSection, rooms } from "../../components/shell/nav.ts";
 
-test("five destinations and two rooms, every one with an accent and an icon", () => {
+test("one learning entrance, dashboard and two account destinations", () => {
   assert.deepEqual(
     destinations.map((item) => item.href),
-    ["/", "/leerpad", "/verhalen", "/spreken", "/woorden"],
+    ["/", "/leerpad"],
   );
   assert.deepEqual(
     rooms.map((item) => item.href),
@@ -22,15 +22,16 @@ test("every route belongs to one destination or room", () => {
     "/leerpad": "/leerpad",
     "/learn/a1": "/leerpad",
     "/learn/a1/test": "/leerpad",
-    "/verhalen": "/verhalen",
-    "/verhalen/abc": "/verhalen",
-    "/videos": "/verhalen",
-    "/videos/xyz": "/verhalen",
-    "/spreken": "/spreken",
-    "/missions": "/spreken",
-    "/missions/appointment-change": "/spreken",
-    "/speech-check": "/spreken",
-    "/woorden": "/woorden",
+    "/verhalen": "/leerpad",
+    "/verhalen/abc": "/leerpad",
+    "/videos": "/leerpad",
+    "/videos/xyz": "/leerpad",
+    "/spreken": "/leerpad",
+    "/missions": "/leerpad",
+    "/missions/appointment-change": "/leerpad",
+    "/speech-check": "/leerpad",
+    "/woorden": "/leerpad",
+    "/oefenen": "/leerpad",
     "/progress": "/progress",
     "/settings": "/settings",
     "/settings?tab=x": "/settings",
@@ -43,11 +44,11 @@ test("every route belongs to one destination or room", () => {
   assert.equal(navSection("/unknown"), null);
 });
 
-test("an unknown path falls back to Vandaag for the header", () => {
+test("headers keep every learning route within Leren", () => {
   assert.equal(navItemFor("/dev/ui").href, "/");
-  assert.equal(navItemFor("/missions/x").label, "Spreken");
-  assert.equal(navItemFor("/leerpad").label, "Niveaus");
-  assert.equal(navItemFor("/learn/pre-a2?section=stories").label, "Niveaus");
+  assert.equal(navItemFor("/missions/x").label, "Leren");
+  assert.equal(navItemFor("/leerpad").label, "Leren");
+  assert.equal(navItemFor("/learn/pre-a2?section=stories").label, "Leren");
   assert.equal(navItemFor("/settings").accent, "neutral");
 });
 
