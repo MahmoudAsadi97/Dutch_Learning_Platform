@@ -1,0 +1,1572 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b1-read-bioscoop-met-daglicht",
+      "topic_id": "movies-tv",
+      "title": {
+        "nl": "Een bioscoop met daglicht",
+        "en": "A cinema in daylight"
+      },
+      "plot_key": "Friends at an outdoor film discover daylight prevents projection; audience improvises a live retelling before the screen can work.",
+      "lines": [
+        {
+          "nl": "Voor het openluchtfilmfeest hebben Niels en Zoë al vroeg hun klapstoelen op het plein gezet.",
+          "en": "For the outdoor film festival, Niels and Zoë have put their folding chairs on the square early."
+        },
+        {
+          "nl": "De organisatie wil om acht uur beginnen, maar de zon schijnt nog recht op het scherm.",
+          "en": "The organisers want to start at eight, but the sun is still shining directly on the screen."
+        },
+        {
+          "nl": "Er is wel geluid, alleen kan niemand de beelden goed zien.",
+          "en": "There is sound, but nobody can see the images properly."
+        },
+        {
+          "nl": "Een paar mensen beginnen te klagen en de presentator weet even niets te zeggen.",
+          "en": "A few people begin to complain, and for a moment the presenter does not know what to say."
+        },
+        {
+          "nl": "Zoë steekt haar hand op en vertelt dat ze de film vroeger bijna dagelijks bekeek.",
+          "en": "Zoë raises her hand and says that she used to watch the film almost every day."
+        },
+        {
+          "nl": "De presentator vraagt haar om de eerste scène met twee vrijwilligers na te spelen.",
+          "en": "The presenter asks her to act out the first scene with two volunteers."
+        },
+        {
+          "nl": "Het publiek lacht om hun vreemde stemmen, terwijl de schaduwen langzaam langer worden.",
+          "en": "The audience laughs at their strange voices while the shadows slowly grow longer."
+        },
+        {
+          "nl": "Als de echte film eindelijk zichtbaar is, krijgen de drie tijdelijke acteurs het luidste applaus.",
+          "en": "When the real film is finally visible, the three temporary actors receive the loudest applause."
+        }
+      ],
+      "words": [
+        {
+          "term": "de klapstoel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een stoel die je kunt opvouwen",
+            "en": "folding chair"
+          },
+          "example": {
+            "nl": "Voor het openluchtfilmfeest hebben Niels en Zoë al vroeg hun klapstoelen op het plein gezet.",
+            "en": "For the outdoor film festival, Niels and Zoë have put their folding chairs on the square early."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "naspelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een gebeurtenis of scène opnieuw uitbeelden",
+            "en": "to act out; to reenact"
+          },
+          "example": {
+            "nl": "De presentator vraagt haar om de eerste scène met twee vrijwilligers na te spelen.",
+            "en": "The presenter asks her to act out the first scene with two volunteers."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "zichtbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "te zien",
+            "en": "visible"
+          },
+          "example": {
+            "nl": "Als de echte film eindelijk zichtbaar is, krijgen de drie tijdelijke acteurs het luidste applaus.",
+            "en": "When the real film is finally visible, the three temporary actors receive the loudest applause."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Er is wel ..., alleen ...",
+            "en": "There is ..., but ..."
+          },
+          "explanation": {
+            "nl": "Wel bevestigt iets; alleen voegt daarna een beperking toe.",
+            "en": "Wel confirms something; alleen then adds a limitation."
+          },
+          "examples": [
+            {
+              "nl": "Er is wel geluid, alleen kan niemand de beelden goed zien.",
+              "en": "There is sound, but nobody can see the images properly."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kan de film niet goed beginnen?",
+            "en": "Why can the film not start properly?"
+          },
+          "options": [
+            {
+              "nl": "Het is nog te licht op het scherm.",
+              "en": "There is still too much light on the screen."
+            },
+            {
+              "nl": "Er is geen geluid.",
+              "en": "There is no sound."
+            },
+            {
+              "nl": "De film is thuis blijven liggen.",
+              "en": "The film has been left at home."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De zon schijnt op het scherm, waardoor de beelden niet duidelijk zijn.",
+            "en": "The sun shines on the screen, making the images unclear."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke rol krijgt Zoë onverwacht?",
+            "en": "What role does Zoë unexpectedly take?"
+          },
+          "options": [
+            {
+              "nl": "Ze verkoopt nieuwe stoelen.",
+              "en": "She sells new chairs."
+            },
+            {
+              "nl": "Ze speelt een scène voor het wachtende publiek.",
+              "en": "She acts out a scene for the waiting audience."
+            },
+            {
+              "nl": "Ze herstelt de geluidsinstallatie.",
+              "en": "She repairs the sound system."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze kent de film en speelt de eerste scène met twee vrijwilligers.",
+            "en": "She knows the film and acts out the first scene with two volunteers."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-boek-met-twee-einden",
+      "topic_id": "books-reading",
+      "title": {
+        "nl": "Een boek met twee einden",
+        "en": "A book with two endings"
+      },
+      "plot_key": "Reading group arguments stem from different editions with a missing last chapter; members compare evidence instead of spoiling each other.",
+      "lines": [
+        {
+          "nl": "In de leesclub zegt Tom dat de held op het einde alleen vertrekt.",
+          "en": "At the reading club, Tom says that the hero leaves alone at the end."
+        },
+        {
+          "nl": "Aline kijkt verbaasd, want volgens haar blijft hij juist bij zijn broer wonen.",
+          "en": "Aline looks surprised because, according to her, he actually stays with his brother."
+        },
+        {
+          "nl": "Ze discussiëren zo fel dat de andere lezers hun exemplaren erbij nemen.",
+          "en": "They argue so intensely that the other readers get their copies out."
+        },
+        {
+          "nl": "Tom denkt dat Aline het laatste hoofdstuk niet goed heeft begrepen.",
+          "en": "Tom thinks that Aline has not understood the last chapter properly."
+        },
+        {
+          "nl": "Dan ziet hij dat zijn boek stopt op bladzijde tweehonderd, terwijl haar boek verdergaat.",
+          "en": "Then he sees that his book stops on page two hundred while her book continues."
+        },
+        {
+          "nl": "Uit zijn tweedehandsexemplaar blijken enkele bladzijden te zijn verdwenen.",
+          "en": "Several pages turn out to be missing from his second-hand copy."
+        },
+        {
+          "nl": "Aline wil het echte einde vertellen, maar Tom vraagt haar nog even te wachten.",
+          "en": "Aline wants to tell him the real ending, but Tom asks her to wait a little longer."
+        },
+        {
+          "nl": "Hij leent haar boek en belooft volgende maand zijn eigen oordeel opnieuw te bekijken.",
+          "en": "He borrows her book and promises to reconsider his own judgement next month."
+        }
+      ],
+      "words": [
+        {
+          "term": "het exemplaar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "één boek van dezelfde uitgave",
+            "en": "copy"
+          },
+          "example": {
+            "nl": "Ze discussiëren zo fel dat de andere lezers hun exemplaren erbij nemen.",
+            "en": "They argue so intensely that the other readers get their copies out."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "fel",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "krachtig en met veel emotie",
+            "en": "fierce; intense"
+          },
+          "example": {
+            "nl": "Ze discussiëren zo fel dat de andere lezers hun exemplaren erbij nemen.",
+            "en": "They argue so intensely that the other readers get their copies out."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "het oordeel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "wat je na nadenken van iets vindt",
+            "en": "judgement; opinion"
+          },
+          "example": {
+            "nl": "Hij leent haar boek en belooft volgende maand zijn eigen oordeel opnieuw te bekijken.",
+            "en": "He borrows her book and promises to reconsider his own judgement next month."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Volgens",
+            "en": "According to"
+          },
+          "explanation": {
+            "nl": "Volgens geeft aan van wie een mening of een uitleg komt.",
+            "en": "Volgens indicates whose opinion or explanation is being reported."
+          },
+          "examples": [
+            {
+              "nl": "Aline kijkt verbaasd, want volgens haar blijft hij juist bij zijn broer wonen.",
+              "en": "Aline looks surprised because, according to her, he actually stays with his brother."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waardoor verschillen de meningen over het einde?",
+            "en": "Why do the opinions about the ending differ?"
+          },
+          "options": [
+            {
+              "nl": "De schrijvers van de twee boeken zijn verschillend.",
+              "en": "The two books have different authors."
+            },
+            {
+              "nl": "Tom heeft niet alle bladzijden in zijn boek.",
+              "en": "Tom does not have all the pages in his book."
+            },
+            {
+              "nl": "Aline heeft de film bekeken in plaats van het boek.",
+              "en": "Aline has watched the film instead of reading the book."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In Toms exemplaar ontbreken de laatste bladzijden.",
+            "en": "The final pages are missing from Tom's copy."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom wil Tom het einde nog niet horen?",
+            "en": "Why does Tom not want to hear the ending yet?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil het zelf eerst lezen.",
+              "en": "He wants to read it himself first."
+            },
+            {
+              "nl": "Hij wil nooit meer naar de leesclub komen.",
+              "en": "He never wants to return to the reading club."
+            },
+            {
+              "nl": "Hij gelooft Aline nog altijd niet.",
+              "en": "He still does not believe Aline."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij vraagt haar te wachten en leent haar volledige boek.",
+            "en": "He asks her to wait and borrows her complete copy."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-modeltrein-naar-oma",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "De kleinste trein naar oma",
+        "en": "The smallest train to Grandma"
+      },
+      "plot_key": "Teen worries grandfather's model railway hobby is childish; a miniature old street reveals grandmother's handmade station and changes his role in restoring it.",
+      "lines": [
+        {
+          "nl": "Mats moet voor school een hobby van iemand uit zijn familie voorstellen.",
+          "en": "For school, Mats has to present a hobby of someone in his family."
+        },
+        {
+          "nl": "Zijn opa wil zijn modeltreinen tonen, maar Mats vindt dat eerst weinig spannend.",
+          "en": "His grandfather wants to show his model trains, but Mats initially finds that rather unexciting."
+        },
+        {
+          "nl": "Op zolder ziet hij tussen de rails een piepklein station met de naam van oma.",
+          "en": "In the attic he sees a tiny station among the tracks bearing his grandmother's name."
+        },
+        {
+          "nl": "Opa vertelt dat zij alle huisjes van karton bouwde toen ze jong waren.",
+          "en": "His grandfather says that she built all the little houses from cardboard when they were young."
+        },
+        {
+          "nl": "Eén dak is beschadigd en het winkeltje ernaast heeft geen ramen meer.",
+          "en": "One roof is damaged, and the little shop beside it no longer has windows."
+        },
+        {
+          "nl": "Mats vraagt of hij die delen mag herstellen voordat hij foto's voor school maakt.",
+          "en": "Mats asks whether he can repair those parts before taking photos for school."
+        },
+        {
+          "nl": "Samen zoeken ze op oude familiefoto's hoe de echte straat er vroeger uitzag.",
+          "en": "Together they look at old family photos to see what the real street used to look like."
+        },
+        {
+          "nl": "Zijn presentatie gaat uiteindelijk niet alleen over treinen, maar ook over twee mensen die samen iets maakten.",
+          "en": "His presentation is ultimately not only about trains but also about two people who made something together."
+        }
+      ],
+      "words": [
+        {
+          "term": "de zolder",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de ruimte onder het dak van een huis",
+            "en": "attic"
+          },
+          "example": {
+            "nl": "Op zolder ziet hij tussen de rails een piepklein station met de naam van oma.",
+            "en": "In the attic he sees a tiny station among the tracks bearing his grandmother's name."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "herstellen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets dat beschadigd is weer goed maken",
+            "en": "to repair; to restore"
+          },
+          "example": {
+            "nl": "Mats vraagt of hij die delen mag herstellen voordat hij foto's voor school maakt.",
+            "en": "Mats asks whether he can repair those parts before taking photos for school."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "beschadigd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet meer helemaal heel",
+            "en": "damaged"
+          },
+          "example": {
+            "nl": "Eén dak is beschadigd en het winkeltje ernaast heeft geen ramen meer.",
+            "en": "One roof is damaged, and the little shop beside it no longer has windows."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet alleen ..., maar ook ...",
+            "en": "Not only ..., but also ..."
+          },
+          "explanation": {
+            "nl": "Met deze combinatie voeg je een tweede belangrijk deel aan je uitleg toe.",
+            "en": "This combination adds a second important part to your explanation."
+          },
+          "examples": [
+            {
+              "nl": "Zijn presentatie gaat uiteindelijk niet alleen over treinen, maar ook over twee mensen die samen iets maakten.",
+              "en": "His presentation is ultimately not only about trains but also about two people who made something together."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakte oma voor de modelspoorbaan?",
+            "en": "What did Grandma make for the model railway?"
+          },
+          "options": [
+            {
+              "nl": "De treinen en de rails.",
+              "en": "The trains and the tracks."
+            },
+            {
+              "nl": "De foto's voor school.",
+              "en": "The photos for school."
+            },
+            {
+              "nl": "De huisjes van karton.",
+              "en": "The little cardboard houses."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Opa vertelt dat oma alle huisjes uit karton bouwde.",
+            "en": "Grandpa says that Grandma built all the little houses from cardboard."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom bekijken Mats en opa oude foto's?",
+            "en": "Why do Mats and Grandpa look at old photos?"
+          },
+          "options": [
+            {
+              "nl": "Om te zien hoe de straat eruitzag.",
+              "en": "To see what the street looked like."
+            },
+            {
+              "nl": "Om een treinreis te boeken.",
+              "en": "To book a train journey."
+            },
+            {
+              "nl": "Om de prijs van de treinen te bepalen.",
+              "en": "To determine the price of the trains."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De foto's helpen hen de beschadigde onderdelen passend te herstellen.",
+            "en": "The photos help them restore the damaged parts appropriately."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-verkeerde-boterhammen",
+      "topic_id": "daily-routines",
+      "title": {
+        "nl": "De verkeerde boterhammen",
+        "en": "The wrong sandwiches"
+      },
+      "plot_key": "Shift-worker and schoolchild accidentally swap lunch bags and discover each assumes the other's day is easier; they start leaving practical notes.",
+      "lines": [
+        {
+          "nl": "Om halfzes maakt Anja haar brooddoos klaar voordat haar vroege dienst begint.",
+          "en": "At half past five, Anja prepares her lunchbox before her early shift begins."
+        },
+        {
+          "nl": "Op tafel staat ook de brooddoos van haar zoon Wout, in precies dezelfde blauwe tas.",
+          "en": "Her son Wout's lunchbox is also on the table, in exactly the same blue bag."
+        },
+        {
+          "nl": "Tijdens haar pauze vindt ze geen kaas, maar drie kleine boterhammen met hagelslag.",
+          "en": "During her break she finds not cheese but three small sandwiches with chocolate sprinkles."
+        },
+        {
+          "nl": "Er zit ook een briefje bij waarop Wout zichzelf aan zijn spreekbeurt herinnert.",
+          "en": "There is also a note on which Wout reminds himself about his class presentation."
+        },
+        {
+          "nl": "Thuis vertelt Wout dat hij haar sterke koffie en haar lijst met werktaken heeft gevonden.",
+          "en": "At home Wout says that he found her strong coffee and her list of work tasks."
+        },
+        {
+          "nl": "Hij had nooit gezien hoeveel dingen zij vóór de middag moest afwerken.",
+          "en": "He had never seen how many things she had to finish before midday."
+        },
+        {
+          "nl": "Anja vraagt hoe zijn spreekbeurt ging en hoort dat hij erg zenuwachtig was.",
+          "en": "Anja asks how his presentation went and hears that he was very nervous."
+        },
+        {
+          "nl": "De volgende ochtend schrijven ze hun namen op de tassen en elk een succeswens voor de ander.",
+          "en": "The next morning they write their names on the bags and each write a good-luck message for the other."
+        }
+      ],
+      "words": [
+        {
+          "term": "de brooddoos",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een doos om je lunch mee te nemen",
+            "en": "lunchbox"
+          },
+          "example": {
+            "nl": "Om halfzes maakt Anja haar brooddoos klaar voordat haar vroege dienst begint.",
+            "en": "At half past five, Anja prepares her lunchbox before her early shift begins."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de spreekbeurt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een korte presentatie voor de klas",
+            "en": "class presentation"
+          },
+          "example": {
+            "nl": "Er zit ook een briefje bij waarop Wout zichzelf aan zijn spreekbeurt herinnert.",
+            "en": "There is also a note on which Wout reminds himself about his class presentation."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "afwerken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "helemaal klaar maken",
+            "en": "to finish; to complete"
+          },
+          "example": {
+            "nl": "Hij had nooit gezien hoeveel dingen zij vóór de middag moest afwerken.",
+            "en": "He had never seen how many things she had to finish before midday."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Precies dezelfde",
+            "en": "Exactly the same"
+          },
+          "explanation": {
+            "nl": "Dezelfde verwijst naar iets dat gelijk is; precies maakt die gelijkheid sterker.",
+            "en": "Dezelfde refers to something identical; precies emphasises the similarity."
+          },
+          "examples": [
+            {
+              "nl": "Op tafel staat ook de brooddoos van haar zoon Wout, in precies dezelfde blauwe tas.",
+              "en": "Her son Wout's lunchbox is also on the table, in exactly the same blue bag."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoe ontstaat de vergissing met de lunch?",
+            "en": "How does the lunch mix-up happen?"
+          },
+          "options": [
+            {
+              "nl": "De brooddozen zitten in dezelfde soort tas.",
+              "en": "The lunchboxes are in the same kind of bag."
+            },
+            {
+              "nl": "Wout verstopt zijn brooddoos.",
+              "en": "Wout hides his lunchbox."
+            },
+            {
+              "nl": "Anja bestelt twee verkeerde lunches.",
+              "en": "Anja orders two wrong lunches."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Op tafel staan twee precies dezelfde blauwe tassen.",
+            "en": "There are two exactly identical blue bags on the table."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat leert Wout door de vergissing?",
+            "en": "What does Wout learn from the mix-up?"
+          },
+          "options": [
+            {
+              "nl": "Dat zijn moeder geen koffie drinkt.",
+              "en": "That his mother does not drink coffee."
+            },
+            {
+              "nl": "Dat zijn moeder veel taken moet afwerken.",
+              "en": "That his mother has many tasks to finish."
+            },
+            {
+              "nl": "Dat zijn spreekbeurt niet doorgaat.",
+              "en": "That his presentation is cancelled."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij ziet voor het eerst haar lange lijst met werktaken.",
+            "en": "He sees her long list of work tasks for the first time."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-plant-op-de-vensterbank",
+      "topic_id": "relationships",
+      "title": {
+        "nl": "Een plant tussen twee ramen",
+        "en": "A plant between two windows"
+      },
+      "plot_key": "Separated flatmates misinterpret plant's movement as a disagreement; comparing sunlight explains it and opens an honest housing conversation.",
+      "lines": [
+        {
+          "nl": "Sinds hun relatie voorbij is, wonen Eva en Lou nog tijdelijk in hetzelfde appartement.",
+          "en": "Since their relationship ended, Eva and Lou have temporarily continued living in the same apartment."
+        },
+        {
+          "nl": "Ze spreken weinig en proberen elkaar zo veel mogelijk ruimte te geven.",
+          "en": "They speak little and try to give each other as much space as possible."
+        },
+        {
+          "nl": "Hun gezamenlijke plant staat elke ochtend bij een ander raam.",
+          "en": "Their shared plant is beside a different window every morning."
+        },
+        {
+          "nl": "Eva denkt dat Lou haar telkens wil tonen wie over de woonkamer beslist.",
+          "en": "Eva thinks that Lou keeps trying to show her who decides what happens in the living room."
+        },
+        {
+          "nl": "Op zaterdag vraagt ze eindelijk waarom hij de plant steeds verplaatst.",
+          "en": "On Saturday she finally asks why he keeps moving the plant."
+        },
+        {
+          "nl": "Lou legt uit dat het ene raam ochtendzon krijgt en het andere namiddagzon.",
+          "en": "Lou explains that one window gets morning sun and the other afternoon sun."
+        },
+        {
+          "nl": "Hij wilde de plant gezond houden en had niet beseft dat Eva zich eraan ergerde.",
+          "en": "He wanted to keep the plant healthy and had not realised that it annoyed Eva."
+        },
+        {
+          "nl": "Ze kiezen één goede plek voor de plant en maken daarna ook duidelijke afspraken over hun verhuis.",
+          "en": "They choose one good place for the plant and then also make clear arrangements about their moves."
+        }
+      ],
+      "words": [
+        {
+          "term": "gezamenlijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "van twee of meer mensen samen",
+            "en": "shared; joint"
+          },
+          "example": {
+            "nl": "Hun gezamenlijke plant staat elke ochtend bij een ander raam.",
+            "en": "Their shared plant is beside a different window every morning."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "verplaatsen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "naar een andere plek brengen",
+            "en": "to move; to relocate"
+          },
+          "example": {
+            "nl": "Op zaterdag vraagt ze eindelijk waarom hij de plant steeds verplaatst.",
+            "en": "On Saturday she finally asks why he keeps moving the plant."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de afspraak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat mensen samen beslissen te doen",
+            "en": "agreement; arrangement"
+          },
+          "example": {
+            "nl": "Ze kiezen één goede plek voor de plant en maken daarna ook duidelijke afspraken over hun verhuis.",
+            "en": "They choose one good place for the plant and then also make clear arrangements about their moves."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zich ergeren aan",
+            "en": "To be annoyed by"
+          },
+          "explanation": {
+            "nl": "Bij zich ergeren hoort aan om te zeggen wat de ergernis veroorzaakt.",
+            "en": "Zich ergeren takes aan to identify what causes the annoyance."
+          },
+          "examples": [
+            {
+              "nl": "Hij wilde de plant gezond houden en had niet beseft dat Eva zich eraan ergerde.",
+              "en": "He wanted to keep the plant healthy and had not realised that it annoyed Eva."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat is Lous echte reden om de plant te verplaatsen?",
+            "en": "What is Lou's real reason for moving the plant?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil Eva boos maken.",
+              "en": "He wants to make Eva angry."
+            },
+            {
+              "nl": "Hij wil de plant genoeg licht geven.",
+              "en": "He wants to give the plant enough light."
+            },
+            {
+              "nl": "Hij wil de woonkamer leegmaken.",
+              "en": "He wants to empty the living room."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij verplaatst de plant tussen de ramen om zonlicht te krijgen.",
+            "en": "He moves the plant between the windows to get sunlight."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke grotere stap nemen ze na het gesprek?",
+            "en": "What bigger step do they take after the conversation?"
+          },
+          "options": [
+            {
+              "nl": "Ze beslissen opnieuw een relatie te beginnen.",
+              "en": "They decide to restart their relationship."
+            },
+            {
+              "nl": "Ze kopen samen een tweede appartement.",
+              "en": "They buy a second apartment together."
+            },
+            {
+              "nl": "Ze maken afspraken over hun verhuis.",
+              "en": "They make arrangements about their moves."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Na het kiezen van een plek voor de plant bespreken ze hun verhuis duidelijk.",
+            "en": "After choosing a place for the plant, they discuss their moves clearly."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-gele-sjaal",
+      "topic_id": "love-dating",
+      "title": {
+        "nl": "De gele sjaal",
+        "en": "The yellow scarf"
+      },
+      "plot_key": "A blind date recognition signal is worn by many during a local charity event; two people find each other by exchanging genuine visual details.",
+      "lines": [
+        {
+          "nl": "Voor hun eerste afspraak spreken Bas en Elena af aan de ingang van het museum.",
+          "en": "For their first date, Bas and Elena arrange to meet at the museum entrance."
+        },
+        {
+          "nl": "Elena schrijft dat hij haar gemakkelijk zal herkennen aan een gele sjaal.",
+          "en": "Elena writes that he will recognise her easily by a yellow scarf."
+        },
+        {
+          "nl": "Wanneer Bas aankomt, staan er wel twintig mensen met gele sjaals op het plein.",
+          "en": "When Bas arrives, there are at least twenty people wearing yellow scarves on the square."
+        },
+        {
+          "nl": "Er blijkt die dag een actie te zijn waarbij bezoekers zo'n sjaal krijgen.",
+          "en": "It turns out that there is a campaign that day in which visitors receive a scarf like that."
+        },
+        {
+          "nl": "Bas stuurt een bericht en vraagt Elena om een minder opvallend detail te noemen.",
+          "en": "Bas sends a message and asks Elena to name a less obvious detail."
+        },
+        {
+          "nl": "Ze antwoordt dat ze zenuwachtig een museumticket steeds opnieuw opvouwt.",
+          "en": "She replies that she is nervously folding a museum ticket over and over."
+        },
+        {
+          "nl": "Hij ziet haar meteen en toont zijn eigen ticket, dat inmiddels even gekreukt is.",
+          "en": "He sees her immediately and shows his own ticket, which is now just as creased."
+        },
+        {
+          "nl": "Ze lachen samen en hoeven niet meer te vragen of de ander ook zenuwachtig was.",
+          "en": "They laugh together and no longer need to ask whether the other person was nervous too."
+        }
+      ],
+      "words": [
+        {
+          "term": "de sjaal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een lange strook stof voor om je hals",
+            "en": "scarf"
+          },
+          "example": {
+            "nl": "Elena schrijft dat hij haar gemakkelijk zal herkennen aan een gele sjaal.",
+            "en": "Elena writes that he will recognise her easily by a yellow scarf."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "opvouwen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een voorwerp dubbel of kleiner vouwen",
+            "en": "to fold up"
+          },
+          "example": {
+            "nl": "Ze antwoordt dat ze zenuwachtig een museumticket steeds opnieuw opvouwt.",
+            "en": "She replies that she is nervously folding a museum ticket over and over."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "gekreukt",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met vouwen en niet meer glad",
+            "en": "creased; crumpled"
+          },
+          "example": {
+            "nl": "Hij ziet haar meteen en toont zijn eigen ticket, dat inmiddels even gekreukt is.",
+            "en": "He sees her immediately and shows his own ticket, which is now just as creased."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Steeds opnieuw",
+            "en": "Over and over"
+          },
+          "explanation": {
+            "nl": "Steeds opnieuw geeft aan dat iemand dezelfde handeling blijft herhalen.",
+            "en": "Steeds opnieuw indicates that someone keeps repeating the same action."
+          },
+          "examples": [
+            {
+              "nl": "Ze antwoordt dat ze zenuwachtig een museumticket steeds opnieuw opvouwt.",
+              "en": "She replies that she is nervously folding a museum ticket over and over."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is de gele sjaal geen handig herkenningsteken?",
+            "en": "Why is the yellow scarf not a useful way to recognise Elena?"
+          },
+          "options": [
+            {
+              "nl": "Er zijn veel mensen met zo'n sjaal.",
+              "en": "Many people have that kind of scarf."
+            },
+            {
+              "nl": "Elena heeft haar sjaal thuis vergeten.",
+              "en": "Elena has left her scarf at home."
+            },
+            {
+              "nl": "Het museum is gesloten.",
+              "en": "The museum is closed."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Bezoekers krijgen tijdens een actie dezelfde soort gele sjaal.",
+            "en": "Visitors receive the same kind of yellow scarf during a campaign."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat hebben Bas en Elena zonder het te weten gemeen?",
+            "en": "What do Bas and Elena have in common without knowing it?"
+          },
+          "options": [
+            {
+              "nl": "Ze werken allebei in het museum.",
+              "en": "They both work at the museum."
+            },
+            {
+              "nl": "Ze kreuken allebei hun ticket door zenuwen.",
+              "en": "They both crease their ticket through nervousness."
+            },
+            {
+              "nl": "Ze kennen elkaar al van school.",
+              "en": "They already know each other from school."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Elena vouwt haar ticket telkens op en Bas toont een even gekreukt ticket.",
+            "en": "Elena keeps folding her ticket, and Bas shows a ticket that is just as creased."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-het-eerste-nee",
+      "topic_id": "personal-development",
+      "title": {
+        "nl": "De uitnodiging die bleef liggen",
+        "en": "The invitation left on the table"
+      },
+      "plot_key": "A people-pleaser delays an invitation then discovers declining honestly does not end friendship; chooses a different shared activity.",
+      "lines": [
+        {
+          "nl": "Toen haar collega een wandelweekend voorstelde, zei Fien meteen dat het haar leuk leek.",
+          "en": "When her colleague suggested a walking weekend, Fien immediately said that it sounded enjoyable."
+        },
+        {
+          "nl": "Thuis bleef de uitnodiging echter dagenlang ongeopend op tafel liggen.",
+          "en": "At home, however, the invitation lay unopened on the table for days."
+        },
+        {
+          "nl": "Ze hield niet van slapen in een groep en zag op tegen twee drukke dagen.",
+          "en": "She did not like sleeping in a group and dreaded two busy days."
+        },
+        {
+          "nl": "Haar zus vroeg waarom ze niet gewoon vertelde dat het weekend niets voor haar was.",
+          "en": "Her sister asked why she did not simply say that the weekend was not for her."
+        },
+        {
+          "nl": "Fien was bang dat haar collega haar daarna nooit meer zou uitnodigen.",
+          "en": "Fien was afraid that her colleague would never invite her again afterwards."
+        },
+        {
+          "nl": "Uiteindelijk stuurde ze een eerlijk bericht en stelde ze een korte wandeling na het werk voor.",
+          "en": "Eventually she sent an honest message and suggested a short walk after work."
+        },
+        {
+          "nl": "De collega antwoordde opgelucht dat hij eigenlijk ook liever een rustig moment samen had.",
+          "en": "Her colleague replied with relief that he actually also preferred a quiet moment together."
+        },
+        {
+          "nl": "Die woensdag wandelden ze een uur, zonder rugzakken en zonder dat Fien iets hoefde te spelen.",
+          "en": "That Wednesday they walked for an hour, without backpacks and without Fien having to pretend anything."
+        }
+      ],
+      "words": [
+        {
+          "term": "opzien tegen",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "iets moeilijk of onaangenaam vinden dat nog moet gebeuren",
+            "en": "to dread"
+          },
+          "example": {
+            "nl": "Ze hield niet van slapen in een groep en zag op tegen twee drukke dagen.",
+            "en": "She did not like sleeping in a group and dreaded two busy days."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "eerlijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zeggen wat je werkelijk denkt of voelt",
+            "en": "honest"
+          },
+          "example": {
+            "nl": "Uiteindelijk stuurde ze een eerlijk bericht en stelde ze een korte wandeling na het werk voor.",
+            "en": "Eventually she sent an honest message and suggested a short walk after work."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de uitnodiging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een vraag om ergens aan deel te nemen",
+            "en": "invitation"
+          },
+          "example": {
+            "nl": "Thuis bleef de uitnodiging echter dagenlang ongeopend op tafel liggen.",
+            "en": "At home, however, the invitation lay unopened on the table for days."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zou bij een verwachting in het verleden",
+            "en": "Zou for an expectation in the past"
+          },
+          "explanation": {
+            "nl": "Zou met een infinitief beschrijft hier wat iemand toen voor later verwachtte.",
+            "en": "Zou with an infinitive here describes what someone then expected to happen later."
+          },
+          "examples": [
+            {
+              "nl": "Fien was bang dat haar collega haar daarna nooit meer zou uitnodigen.",
+              "en": "Fien was afraid that her colleague would never invite her again afterwards."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom stelt Fien haar antwoord uit?",
+            "en": "Why does Fien delay her answer?"
+          },
+          "options": [
+            {
+              "nl": "Ze weet niet waar de uitnodiging ligt.",
+              "en": "She does not know where the invitation is."
+            },
+            {
+              "nl": "Ze wacht op een nieuwe rugzak.",
+              "en": "She is waiting for a new backpack."
+            },
+            {
+              "nl": "Ze wil niet mee maar vreest de reactie van haar collega.",
+              "en": "She does not want to go but fears her colleague's reaction."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze houdt niet van het weekendplan en is bang later niet meer uitgenodigd te worden.",
+            "en": "She does not like the weekend plan and fears not being invited again."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe reageert de collega op haar eerlijke bericht?",
+            "en": "How does her colleague react to her honest message?"
+          },
+          "options": [
+            {
+              "nl": "Hij is opgelucht en kiest ook liever een rustiger moment.",
+              "en": "He is relieved and also prefers a quieter moment."
+            },
+            {
+              "nl": "Hij wil haar niet meer zien.",
+              "en": "He does not want to see her again."
+            },
+            {
+              "nl": "Hij verplicht haar toch mee te gaan.",
+              "en": "He forces her to come anyway."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij antwoordt opgelucht en ze maken samen een korte wandeling.",
+            "en": "He replies with relief, and they take a short walk together."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-tientje-in-de-mouw",
+      "topic_id": "money-finance",
+      "title": {
+        "nl": "Een tientje in de mouw",
+        "en": "Ten euros in the sleeve"
+      },
+      "plot_key": "Old jacket donated then discovered money missing; donor returns not to reclaim but to check note of father's address; unexpected reunion with address preserving shopkeeper.",
+      "lines": [
+        {
+          "nl": "Leen brengt een oude jas naar de kringwinkel omdat ze thuis plaats wil maken.",
+          "en": "Leen takes an old coat to the second-hand shop because she wants to make space at home."
+        },
+        {
+          "nl": "Onderweg terug herinnert ze zich dat er misschien nog tien euro in de binnenzak zit.",
+          "en": "On the way home she remembers that there may still be ten euros in the inside pocket."
+        },
+        {
+          "nl": "Ze twijfelt of ze voor zo'n klein bedrag moet teruggaan.",
+          "en": "She hesitates about whether she should go back for such a small amount."
+        },
+        {
+          "nl": "Dan denkt ze aan het briefje met haar vaders nieuwe adres dat bij het geld zat.",
+          "en": "Then she thinks of the note with her father's new address that was with the money."
+        },
+        {
+          "nl": "Aan de kassa legt ze uit dat ze vooral dat adres nodig heeft.",
+          "en": "At the checkout she explains that she mainly needs the address."
+        },
+        {
+          "nl": "De medewerker heeft de jas nog niet verwerkt en haalt de binnenzak voorzichtig leeg.",
+          "en": "The staff member has not processed the coat yet and carefully empties the inside pocket."
+        },
+        {
+          "nl": "Er komt geen geld uit, maar wel een briefje waarop haar vader vraagt wanneer ze langskomt.",
+          "en": "No money comes out, but there is a note on which her father asks when she will visit."
+        },
+        {
+          "nl": "Leen belt hem buiten meteen op en koopt onderweg naar zijn huis een klein boeketje.",
+          "en": "Outside, Leen calls him straight away and buys a small bouquet on the way to his home."
+        }
+      ],
+      "words": [
+        {
+          "term": "de binnenzak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een zak aan de binnenkant van een jas",
+            "en": "inside pocket"
+          },
+          "example": {
+            "nl": "Onderweg terug herinnert ze zich dat er misschien nog tien euro in de binnenzak zit.",
+            "en": "On the way home she remembers that there may still be ten euros in the inside pocket."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "twijfelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "niet zeker weten wat je moet doen",
+            "en": "to hesitate; to be unsure"
+          },
+          "example": {
+            "nl": "Ze twijfelt of ze voor zo'n klein bedrag moet teruggaan.",
+            "en": "She hesitates about whether she should go back for such a small amount."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "het bedrag",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een bepaalde hoeveelheid geld",
+            "en": "amount of money"
+          },
+          "example": {
+            "nl": "Ze twijfelt of ze voor zo'n klein bedrag moet teruggaan.",
+            "en": "She hesitates about whether she should go back for such a small amount."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Omdat voor een reden",
+            "en": "Omdat to give a reason"
+          },
+          "explanation": {
+            "nl": "Omdat leidt een bijzin in die verklaart waarom iemand iets doet.",
+            "en": "Omdat introduces a clause explaining why someone does something."
+          },
+          "examples": [
+            {
+              "nl": "Leen brengt een oude jas naar de kringwinkel omdat ze thuis plaats wil maken.",
+              "en": "Leen takes an old coat to the second-hand shop because she wants to make space at home."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom gaat Leen uiteindelijk terug naar de winkel?",
+            "en": "Why does Leen finally return to the shop?"
+          },
+          "options": [
+            {
+              "nl": "Ze heeft het adres op het briefje nodig.",
+              "en": "She needs the address on the note."
+            },
+            {
+              "nl": "Ze wil de jas opnieuw dragen.",
+              "en": "She wants to wear the coat again."
+            },
+            {
+              "nl": "Ze heeft een klacht over de medewerker.",
+              "en": "She has a complaint about the staff member."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze zegt dat vooral het adres voor haar belangrijk is.",
+            "en": "She says that the address in particular matters to her."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke herinnering vindt ze werkelijk in haar jas?",
+            "en": "What reminder does she actually find in her coat?"
+          },
+          "options": [
+            {
+              "nl": "Een rekening voor bloemen.",
+              "en": "A bill for flowers."
+            },
+            {
+              "nl": "Een vraag van haar vader om op bezoek te komen.",
+              "en": "An invitation from her father to visit."
+            },
+            {
+              "nl": "Een lijst met de prijzen van jassen.",
+              "en": "A list of coat prices."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Op het briefje vraagt haar vader wanneer ze langskomt.",
+            "en": "On the note her father asks when she will visit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-enige-klant",
+      "topic_id": "business",
+      "title": {
+        "nl": "De enige klant om negen uur",
+        "en": "The only customer at nine"
+      },
+      "plot_key": "New café owner thinks one breakfast regular unprofitable; customer explains quiet morning table used to practice reading aloud after long shame; owner adjusts offering.",
+      "lines": [
+        {
+          "nl": "De eerste maand van haar koffiebar staat Yentl elke ochtend al om acht uur klaar.",
+          "en": "During the first month of her coffee bar, Yentl is ready every morning at eight."
+        },
+        {
+          "nl": "Tot negen uur komt er meestal maar één klant, die één koffie bestelt.",
+          "en": "Until nine there is usually only one customer, who orders one coffee."
+        },
+        {
+          "nl": "Ze overweegt om later open te gaan, want het vroege uur brengt weinig op.",
+          "en": "She considers opening later because the early hour earns little money."
+        },
+        {
+          "nl": "Wanneer ze het voorzichtig vraagt, kijkt de man teleurgesteld naar zijn boek.",
+          "en": "When she cautiously asks about it, the man looks disappointedly at his book."
+        },
+        {
+          "nl": "Hij vertelt dat hij pas leert lezen en hier zachtop kan oefenen zonder een druk publiek.",
+          "en": "He explains that he is only now learning to read and can practise aloud here without a busy audience."
+        },
+        {
+          "nl": "Thuis is het te lawaaierig, en in de bibliotheek durft hij niemand te storen.",
+          "en": "It is too noisy at home, and he does not dare disturb anyone in the library."
+        },
+        {
+          "nl": "Yentl besluit het uur nog een maand te proberen en hangt een kaartje met een rustig leesmoment op.",
+          "en": "Yentl decides to try the hour for another month and puts up a card advertising a quiet reading period."
+        },
+        {
+          "nl": "Een week later zitten er drie lezers aan aparte tafels, allemaal met koffie en een boek.",
+          "en": "A week later there are three readers at separate tables, all with coffee and a book."
+        }
+      ],
+      "words": [
+        {
+          "term": "overwegen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "nadenken of je iets zult doen",
+            "en": "to consider"
+          },
+          "example": {
+            "nl": "Ze overweegt om later open te gaan, want het vroege uur brengt weinig op.",
+            "en": "She considers opening later because the early hour earns little money."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "teleurgesteld",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "verdrietig omdat iets anders gaat dan gehoopt",
+            "en": "disappointed"
+          },
+          "example": {
+            "nl": "Wanneer ze het voorzichtig vraagt, kijkt de man teleurgesteld naar zijn boek.",
+            "en": "When she cautiously asks about it, the man looks disappointedly at his book."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "storen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iemands rust of bezigheid onderbreken",
+            "en": "to disturb"
+          },
+          "example": {
+            "nl": "Thuis is het te lawaaierig, en in de bibliotheek durft hij niemand te storen.",
+            "en": "It is too noisy at home, and he does not dare disturb anyone in the library."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Om ... te",
+            "en": "To; in order to"
+          },
+          "explanation": {
+            "nl": "Om met te en een infinitief geeft hier aan wat iemand wil doen of proberen.",
+            "en": "Om with te and an infinitive here identifies what someone intends to do or try."
+          },
+          "examples": [
+            {
+              "nl": "Ze overweegt om later open te gaan, want het vroege uur brengt weinig op.",
+              "en": "She considers opening later because the early hour earns little money."
+            },
+            {
+              "nl": "Yentl besluit het uur nog een maand te proberen en hangt een kaartje met een rustig leesmoment op.",
+              "en": "Yentl decides to try the hour for another month and puts up a card advertising a quiet reading period."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kiest de man juist het vroege uur?",
+            "en": "Why does the man choose the early hour in particular?"
+          },
+          "options": [
+            {
+              "nl": "Dan is de koffie gratis.",
+              "en": "The coffee is free then."
+            },
+            {
+              "nl": "Dan kan hij rustig hardop lezen.",
+              "en": "Then he can read aloud quietly."
+            },
+            {
+              "nl": "Hij werkt daarna in de koffiebar.",
+              "en": "He works in the coffee bar afterwards."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij leert lezen en wil oefenen zonder een druk publiek.",
+            "en": "He is learning to read and wants to practise without a busy audience."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet Yentl na hun gesprek?",
+            "en": "What does Yentl do after their conversation?"
+          },
+          "options": [
+            {
+              "nl": "Ze sluit de koffiebar een maand.",
+              "en": "She closes the coffee bar for a month."
+            },
+            {
+              "nl": "Ze verbiedt klanten om boeken mee te brengen.",
+              "en": "She bans customers from bringing books."
+            },
+            {
+              "nl": "Ze probeert het vroege uur verder met een rustig leesmoment.",
+              "en": "She continues trying the early hour with a quiet reading period."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze houdt het uur nog een maand en maakt het leesmoment bekend.",
+            "en": "She keeps the hour for another month and advertises the reading period."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-schoenen-bij-de-deur",
+      "topic_id": "culture-traditions",
+      "title": {
+        "nl": "De schoenen bij de deur",
+        "en": "The shoes by the door"
+      },
+      "plot_key": "Host's new carpet and guest's foot brace create misunderstanding about removing shoes; guest explains privately and they agree on protective covers.",
+      "lines": [
+        {
+          "nl": "Voor haar eerste etentje in een nieuw huis zet Sora een mand voor schoenen bij de deur.",
+          "en": "For her first dinner party in a new house, Sora puts a basket for shoes by the door."
+        },
+        {
+          "nl": "Ze heeft een licht tapijt gekocht en vraagt haar gasten om op kousen binnen te komen.",
+          "en": "She has bought a pale carpet and asks her guests to come in wearing socks."
+        },
+        {
+          "nl": "Alleen Koen houdt zijn stevige schoenen aan en blijft in de gang staan.",
+          "en": "Only Koen keeps his sturdy shoes on and remains in the hall."
+        },
+        {
+          "nl": "Sora denkt even dat hij haar gewoonte overdreven vindt.",
+          "en": "For a moment Sora thinks that he finds her custom excessive."
+        },
+        {
+          "nl": "Wanneer de anderen in de keuken zijn, vertelt hij dat één schoen zijn gekwetste voet ondersteunt.",
+          "en": "When the others are in the kitchen, he explains that one shoe supports his injured foot."
+        },
+        {
+          "nl": "Zonder die schoen kan hij nauwelijks staan, maar hij wilde dat niet voor iedereen bespreken.",
+          "en": "Without that shoe he can barely stand, but he did not want to discuss it in front of everyone."
+        },
+        {
+          "nl": "Ze zoeken samen een schone hoes die over de zool past en beschermen zo ook het tapijt.",
+          "en": "Together they find a clean cover that fits over the sole, protecting the carpet too."
+        },
+        {
+          "nl": "Tijdens het eten vraagt Sora naar zijn herstel, zonder het gesprek bij de deur te herhalen.",
+          "en": "During dinner Sora asks about his recovery without repeating the conversation at the door."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kous",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kledingstuk voor voet en onderbeen",
+            "en": "sock"
+          },
+          "example": {
+            "nl": "Ze heeft een licht tapijt gekocht en vraagt haar gasten om op kousen binnen te komen.",
+            "en": "She has bought a pale carpet and asks her guests to come in wearing socks."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "ondersteunen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "steun geven zodat iets steviger staat",
+            "en": "to support"
+          },
+          "example": {
+            "nl": "Wanneer de anderen in de keuken zijn, vertelt hij dat één schoen zijn gekwetste voet ondersteunt.",
+            "en": "When the others are in the kitchen, he explains that one shoe supports his injured foot."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de zool",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de onderkant van een schoen",
+            "en": "sole"
+          },
+          "example": {
+            "nl": "Ze zoeken samen een schone hoes die over de zool past en beschermen zo ook het tapijt.",
+            "en": "Together they find a clean cover that fits over the sole, protecting the carpet too."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder ... te",
+            "en": "Without ...ing"
+          },
+          "explanation": {
+            "nl": "Zonder met te en een infinitief geeft aan welke handeling niet gebeurt.",
+            "en": "Zonder with te and an infinitive indicates which action does not happen."
+          },
+          "examples": [
+            {
+              "nl": "Tijdens het eten vraagt Sora naar zijn herstel, zonder het gesprek bij de deur te herhalen.",
+              "en": "During dinner Sora asks about his recovery without repeating the conversation at the door."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom houdt Koen zijn schoenen aan?",
+            "en": "Why does Koen keep his shoes on?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil Sora plagen.",
+              "en": "He wants to tease Sora."
+            },
+            {
+              "nl": "Hij heeft geen kousen aan.",
+              "en": "He is not wearing socks."
+            },
+            {
+              "nl": "Zijn schoen geeft steun aan zijn gekwetste voet.",
+              "en": "His shoe supports his injured foot."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Koen kan zonder die schoen nauwelijks staan.",
+            "en": "Koen can barely stand without that shoe."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat houdt de oplossing rekening mee?",
+            "en": "What does the solution take into account?"
+          },
+          "options": [
+            {
+              "nl": "Zowel Koens voet als Sora's tapijt.",
+              "en": "Both Koen's foot and Sora's carpet."
+            },
+            {
+              "nl": "Alleen de kleur van Koens schoenen.",
+              "en": "Only the colour of Koen's shoes."
+            },
+            {
+              "nl": "Het aantal mensen in de keuken.",
+              "en": "The number of people in the kitchen."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Met een schone hoes kan de schoen aanblijven zonder het tapijt vuil te maken.",
+            "en": "With a clean cover, the shoe can stay on without dirtying the carpet."
+          }
+        }
+      ]
+    }
+  ]
+}

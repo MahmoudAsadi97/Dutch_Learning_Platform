@@ -21,12 +21,13 @@ if TYPE_CHECKING:
 TARGETS = {"words": 500, "productive_core": 150, "authored_stories": 200,
            "grammar_questions": 100, "skill_topics": 100}
 CLAIM = "Content inventory only; counts do not establish language accuracy, CEFR calibration or learner mastery."
-DIRECTORIES = (*story_inventory.PACKS, "practice", "vocabulary-transfer", "grammar-bank")
+DIRECTORIES = (*story_inventory.PACKS, "practice", "vocabulary-transfer", "grammar-bank", "study/packs")
 
 
 def content_stamp(root: Path) -> tuple[tuple[str, int, int], ...]:
     paths = [root / "curriculum/path.json", root / "alignment/story-provenance.json"]
     paths.extend(root / directory / f"{stage}.json" for directory in DIRECTORIES for stage in STAGE_IDS)
+    paths.extend(sorted((root / "study/reading").glob("*/*.json")))
     return tuple((str(path.relative_to(root)), path.stat().st_mtime_ns, path.stat().st_size)
                  for path in paths if path.exists())
 
@@ -41,6 +42,9 @@ def stage_coverage(stage: Stage, bank: StageLibrary, topic_bank: TopicBank, audi
         "eligible_authored_stories": audited["eligible_authored_stories"],
         "legacy_stories": audited["legacy_stories"],
         "total_stories": len(bank.stories),
+        "legacy_library_stories_total": audited.get("legacy_library_stories_total", len(bank.stories)),
+        "legacy_library_authored_stories": audited.get("legacy_library_authored_stories", audited["authored_stories"]),
+        "legacy_library_eligible_stories": audited.get("legacy_library_eligible_stories", audited["eligible_authored_stories"]),
         "grammar_questions": sum(len(rule.practice) for rule in stage.grammar),
         "grammar_topics": len(stage.grammar),
         "skill_topics": {skill: len(topic_bank.topics) for skill in SKILLS},
@@ -90,10 +94,20 @@ def all_coverage() -> dict[str, dict]:
 
 
 def eligible_story_ids(stage_id: str) -> frozenset[str]:
-    """Use exactly the CLI audit exclusions, cached once for each content version."""
+    """Eligible original /library IDs; guided readings have their own resolver.
+
+    This compatibility collection is deliberately narrower than the combined
+    canonical story count exposed by ``all_coverage``.
+    """
     audit = _story_audit(str(CONTENT_DIR), content_stamp(CONTENT_DIR))
     row = next((item for item in audit["stages"] if item["stage"] == stage_id), None)
-    return frozenset(row["eligible_authored_story_ids"]) if row else frozenset()
+    return frozenset(row["legacy_library_eligible_story_ids"]) if row else frozenset()
+
+
+def canonical_reading_records(stage_id: str) -> list[dict]:
+    """Use the cached, shared audit rather than rerunning similarity per request."""
+    audit = _story_audit(str(CONTENT_DIR), content_stamp(CONTENT_DIR))
+    return [record for record in audit["canonical_stories"] if record["stage_id"] == stage_id and record["eligible"]]
 
 
 def report() -> dict:

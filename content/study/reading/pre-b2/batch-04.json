@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-mural-die-verdween",
+      "topic_id": "art-creativity",
+      "title": {
+        "nl": "De muur die verdween",
+        "en": "The wall that disappeared"
+      },
+      "plot_key": "A mural artist's work is unexpectedly demolished, prompting her to turn a remaining fragment into an invitation for public drawing.",
+      "lines": [
+        {
+          "nl": "Toen kunstenares Bo op maandagochtend naar haar muurschildering terugkeerde, lag het gebouw eromheen al half tegen de grond.",
+          "en": "When artist Bo returned to her mural on Monday morning, the surrounding building was already half demolished."
+        },
+        {
+          "nl": "Ze had toestemming gekregen van de huurder, maar niemand had haar verteld dat het atelier binnenkort zou verdwijnen.",
+          "en": "She had received permission from the tenant, but nobody had told her that the studio would soon disappear."
+        },
+        {
+          "nl": "Een arbeider bood aan een beschilderde steen apart te leggen, waarop alleen nog de staart van haar enorme blauwe vogel stond.",
+          "en": "A worker offered to set aside a painted brick on which only the tail of her enormous blue bird remained."
+        },
+        {
+          "nl": "Bo wilde de steen eerst weggooien, omdat hij haar vooral herinnerde aan alle verspilde avonden en de ontbrekende vleugels.",
+          "en": "Bo initially wanted to throw the brick away because it mainly reminded her of all the wasted evenings and the missing wings."
+        },
+        {
+          "nl": "Haar kleine neef legde de steen thuis op tafel en tekende op papier een vogel die bij de staart paste.",
+          "en": "At home her young nephew placed the brick on the table and drew a bird on paper that matched the tail."
+        },
+        {
+          "nl": "Zijn dier leek helemaal niet op het oorspronkelijke ontwerp, maar vloog wel recht over de rand van zijn blad.",
+          "en": "His creature looked nothing like the original design, but flew straight over the edge of his page."
+        },
+        {
+          "nl": "Voor haar volgende tentoonstelling legde Bo de steen tussen lege tekenbladen in plaats van foto's van de verdwenen muur op te hangen.",
+          "en": "For her next exhibition Bo placed the brick among blank sheets of drawing paper instead of hanging photographs of the vanished wall."
+        },
+        {
+          "nl": "Na een week bestond haar ene verloren vogel uit tientallen nieuwe dieren, waarvan sommige zelfs poten hadden gekregen.",
+          "en": "After a week her one lost bird had become dozens of new creatures, some of which had even acquired legs."
+        }
+      ],
+      "words": [
+        {
+          "term": "de muurschildering",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een schilderwerk rechtstreeks op een muur",
+            "en": "mural"
+          },
+          "example": {
+            "nl": "Toen kunstenares Bo op maandagochtend naar haar muurschildering terugkeerde, lag het gebouw eromheen al half tegen de grond.",
+            "en": "When artist Bo returned to her mural on Monday morning, the surrounding building was already half demolished."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "verspillen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets gebruiken zonder een gewenst resultaat",
+            "en": "to waste"
+          },
+          "example": {
+            "nl": "Bo wilde de steen eerst weggooien, omdat hij haar vooral herinnerde aan alle verspilde avonden en de ontbrekende vleugels.",
+            "en": "Bo initially wanted to throw the brick away because it mainly reminded her of all the wasted evenings and the missing wings."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "oorspronkelijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zoals iets eerst bedoeld of gemaakt was",
+            "en": "original"
+          },
+          "example": {
+            "nl": "Zijn dier leek helemaal niet op het oorspronkelijke ontwerp, maar vloog wel recht over de rand van zijn blad.",
+            "en": "His creature looked nothing like the original design, but flew straight over the edge of his page."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "In plaats van te",
+            "en": "Instead of doing"
+          },
+          "explanation": {
+            "nl": "Na in plaats van kan een handeling met te en een infinitief volgen.",
+            "en": "In plaats van can be followed by an action expressed with te and an infinitive."
+          },
+          "examples": [
+            {
+              "nl": "Voor haar volgende tentoonstelling legde Bo de steen tussen lege tekenbladen in plaats van foto's van de verdwenen muur op te hangen.",
+              "en": "For her next exhibition Bo placed the brick among blank sheets of drawing paper instead of hanging photographs of the vanished wall."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is Bo's toestemming onvoldoende gebleken?",
+            "en": "Why did Bo's permission turn out to be insufficient?"
+          },
+          "options": [
+            {
+              "nl": "De verf was niet blauw.",
+              "en": "The paint was not blue."
+            },
+            {
+              "nl": "De toestemming verhinderde de geplande afbraak niet.",
+              "en": "The permission did not prevent the planned demolition."
+            },
+            {
+              "nl": "Ze schilderde op de verkeerde dag.",
+              "en": "She painted on the wrong day."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De huurder had toestemming gegeven zonder haar over het verdwijnen te informeren.",
+            "en": "The tenant had given permission without informing her of the building's disappearance."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke rol krijgt het publiek in het nieuwe werk?",
+            "en": "What role does the public gain in the new work?"
+          },
+          "options": [
+            {
+              "nl": "Het maakt alleen foto's van oude muren.",
+              "en": "It only photographs old walls."
+            },
+            {
+              "nl": "Het bepaalt welke steen moet worden afgebroken.",
+              "en": "It decides which brick should be demolished."
+            },
+            {
+              "nl": "Het vult de overgebleven staart met eigen vogels aan.",
+              "en": "It adds its own birds to the remaining tail."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De lege tekenbladen laten anderen het fragment verder gebruiken.",
+            "en": "The blank drawing sheets let others develop the fragment further."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-goochelaar-verkeerde-tent",
+      "topic_id": "festivals-entertainment",
+      "title": {
+        "nl": "De verkeerde tent",
+        "en": "The wrong tent"
+      },
+      "plot_key": "A magician enters a silent festival tent by mistake and discovers his routine can work better without his memorised patter.",
+      "lines": [
+        {
+          "nl": "Goochelaar Sam had op een kinderfestival twee voorstellingen geboekt en een koffertje vol kaarten, doeken en verdwenen munten meegebracht.",
+          "en": "Magician Sam had booked two performances at a children's festival and brought a case full of cards, scarves and disappearing coins."
+        },
+        {
+          "nl": "Door een fout op het plannetje kwam hij terecht in de stille tent, waar kinderen zonder luide muziek konden spelen.",
+          "en": "Because of an error on the map, he ended up in the quiet tent, where children could play without loud music."
+        },
+        {
+          "nl": "Toen hij zijn microfoon aansloot, vroeg een begeleider hem vriendelijk of hij de voorstelling zonder versterking kon geven.",
+          "en": "When he connected his microphone, a supervisor kindly asked whether he could perform without amplification."
+        },
+        {
+          "nl": "Sam kende zijn hele tekst uit het hoofd en vreesde dat de grappen zonder zijn opgewekte stem niet zouden werken.",
+          "en": "Sam knew his entire script by heart and feared the jokes would not work without his cheerful voice."
+        },
+        {
+          "nl": "Hij begon toch, maar liet bij elke mislukte truc alleen zijn gezicht spreken en wachtte iets langer op de reacties.",
+          "en": "He began anyway, but let only his face speak with each failed trick and waited a little longer for the reactions."
+        },
+        {
+          "nl": "Een kind dat achteraan zat, wees telkens precies aan waar de munt verstopt was en lachte zonder geluid.",
+          "en": "A child sitting at the back pointed out exactly where the coin was hidden each time and laughed without making a sound."
+        },
+        {
+          "nl": "Sam nodigde het kind naar voren en maakte van zijn zogenaamd geheime bewegingen een gezamenlijke achtervolging van de munt.",
+          "en": "Sam invited the child to the front and turned his supposedly secret movements into a shared pursuit of the coin."
+        },
+        {
+          "nl": "Voor zijn tweede optreden liet hij de microfoon in het koffertje; ditmaal wilde hij ontdekken hoeveel het publiek zelf kon vertellen.",
+          "en": "For his second performance he left the microphone in the case; this time he wanted to discover how much the audience itself could tell."
+        }
+      ],
+      "words": [
+        {
+          "term": "de versterking",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "apparatuur die geluid luider maakt",
+            "en": "amplification"
+          },
+          "example": {
+            "nl": "Toen hij zijn microfoon aansloot, vroeg een begeleider hem vriendelijk of hij de voorstelling zonder versterking kon geven.",
+            "en": "When he connected his microphone, a supervisor kindly asked whether he could perform without amplification."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "uit het hoofd",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zonder de tekst te lezen",
+            "en": "by heart"
+          },
+          "example": {
+            "nl": "Sam kende zijn hele tekst uit het hoofd en vreesde dat de grappen zonder zijn opgewekte stem niet zouden werken.",
+            "en": "Sam knew his entire script by heart and feared the jokes would not work without his cheerful voice."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "zogenaamd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zoals beweerd wordt maar niet echt zo is",
+            "en": "supposed"
+          },
+          "example": {
+            "nl": "Sam nodigde het kind naar voren en maakte van zijn zogenaamd geheime bewegingen een gezamenlijke achtervolging van de munt.",
+            "en": "Sam invited the child to the front and turned his supposedly secret movements into a shared pursuit of the coin."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te voor een ontbrekende handeling",
+            "en": "Without doing for an absent action"
+          },
+          "explanation": {
+            "nl": "Zonder ... te vermeldt een handeling die niet plaatsvindt.",
+            "en": "Zonder ... te names an action that does not take place."
+          },
+          "examples": [
+            {
+              "nl": "Een kind dat achteraan zat, wees telkens precies aan waar de munt verstopt was en lachte zonder geluid.",
+              "en": "A child sitting at the back pointed out exactly where the coin was hidden each time and laughed without making a sound."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verandert Sam aan zijn eerste optreden?",
+            "en": "What does Sam change in his first performance?"
+          },
+          "options": [
+            {
+              "nl": "Hij gebruikt meer gezichtsuitdrukkingen en wachttijd.",
+              "en": "He uses more facial expressions and waiting time."
+            },
+            {
+              "nl": "Hij zet de muziek harder.",
+              "en": "He turns up the music."
+            },
+            {
+              "nl": "Hij vervangt alle kaarten door een film.",
+              "en": "He replaces all the cards with a film."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Omdat zijn gebruikelijke stem niet centraal kan staan, reageert hij zichtbaarder op het publiek.",
+            "en": "Because his usual voice cannot be central, he responds more visibly to the audience."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom blijft de microfoon later in het koffertje?",
+            "en": "Why does the microphone stay in the case later?"
+          },
+          "options": [
+            {
+              "nl": "Hij is bewezen kapot.",
+              "en": "It is proven broken."
+            },
+            {
+              "nl": "Sam wil de nieuwe manier van samenspelen onderzoeken.",
+              "en": "Sam wants to explore the new way of interacting."
+            },
+            {
+              "nl": "Het festival verbiedt alle stemmen.",
+              "en": "The festival bans all voices."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij is nieuwsgierig geworden naar wat het publiek zonder zijn vaste tekst bijdraagt.",
+            "en": "He has become curious about what the audience contributes without his fixed script."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-rit-zonder-dienstregeling",
+      "topic_id": "transportation",
+      "title": {
+        "nl": "De laatste rit van chauffeur Dirk",
+        "en": "Driver Dirk's last journey"
+      },
+      "plot_key": "A retiring bus driver fears an empty final journey until a familiar passenger asks him to join the next journey as a traveller.",
+      "lines": [
+        {
+          "nl": "Op zijn laatste werkdag reed buschauffeur Dirk dezelfde route die hij twintig jaar lang bijna dagelijks had gevolgd.",
+          "en": "On his last working day, bus driver Dirk drove the same route he had followed almost daily for twenty years."
+        },
+        {
+          "nl": "Hij kende de schoolpoorten, de bakker die altijd zijn hand opstak en het kruispunt waar fietsers onverwacht naar links gingen.",
+          "en": "He knew the school gates, the baker who always raised his hand and the junction where cyclists unexpectedly turned left."
+        },
+        {
+          "nl": "Zijn collega's hadden bij het depot een feest voorbereid, maar zijn gewone reizigers leken niets van zijn afscheid te weten.",
+          "en": "His colleagues had prepared a celebration at the depot, but his regular passengers seemed unaware of his farewell."
+        },
+        {
+          "nl": "Bij de voorlaatste halte stapte de vrouw met de paarse regenjas in, die hem elke dinsdag alleen een kort knikje gaf.",
+          "en": "At the penultimate stop the woman in the purple raincoat got on; every Tuesday she gave him only a brief nod."
+        },
+        {
+          "nl": "Ze bleef naast hem staan en vroeg hoe hij volgende week naar het ziekenhuis zou komen, nu hij niet meer hoefde te rijden.",
+          "en": "She stood beside him and asked how he would get to the hospital next week, now that he no longer had to drive."
+        },
+        {
+          "nl": "Dirk begreep dat zij wist waarom hij de laatste maanden na zijn dienst vaak aan diezelfde halte was uitgestapt.",
+          "en": "Dirk realised she knew why he had often got off at that same stop after his shift in recent months."
+        },
+        {
+          "nl": "Ze schoof een dienstregeling naar hem toe en zei dat er naast haar op dinsdag meestal een plaats vrij was.",
+          "en": "She slid a timetable towards him and said there was usually a seat beside her on Tuesdays."
+        },
+        {
+          "nl": "Tijdens het feest bij het depot dacht hij minder aan de lege bestuurdersstoel dan aan een stoel die op hem wachtte.",
+          "en": "During the celebration at the depot he thought less about the empty driver's seat than about a seat waiting for him."
+        }
+      ],
+      "words": [
+        {
+          "term": "de dienstregeling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een overzicht van vertrek- en aankomsttijden",
+            "en": "timetable"
+          },
+          "example": {
+            "nl": "Ze schoof een dienstregeling naar hem toe en zei dat er naast haar op dinsdag meestal een plaats vrij was.",
+            "en": "She slid a timetable towards him and said there was usually a seat beside her on Tuesdays."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het knikje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kleine beweging met het hoofd",
+            "en": "brief nod"
+          },
+          "example": {
+            "nl": "Bij de voorlaatste halte stapte de vrouw met de paarse regenjas in, die hem elke dinsdag alleen een kort knikje gaf.",
+            "en": "At the penultimate stop the woman in the purple raincoat got on; every Tuesday she gave him only a brief nod."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het depot",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een plaats waar voertuigen bewaard en onderhouden worden",
+            "en": "depot"
+          },
+          "example": {
+            "nl": "Zijn collega's hadden bij het depot een feest voorbereid, maar zijn gewone reizigers leken niets van zijn afscheid te weten.",
+            "en": "His colleagues had prepared a celebration at the depot, but his regular passengers seemed unaware of his farewell."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Minder ... dan ...",
+            "en": "Less ... than ..."
+          },
+          "explanation": {
+            "nl": "Deze vergelijking toont waar zijn aandacht meer en minder naartoe gaat.",
+            "en": "This comparison shows where his attention goes more and less."
+          },
+          "examples": [
+            {
+              "nl": "Tijdens het feest bij het depot dacht hij minder aan de lege bestuurdersstoel dan aan een stoel die op hem wachtte.",
+              "en": "During the celebration at the depot he thought less about the empty driver's seat than about a seat waiting for him."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat laat het aanbod van de vrouw zien?",
+            "en": "What does the woman's offer reveal?"
+          },
+          "options": [
+            {
+              "nl": "Ze wil zijn werk overnemen.",
+              "en": "She wants to take over his job."
+            },
+            {
+              "nl": "Ze heeft zijn persoonlijke situatie opgemerkt.",
+              "en": "She has noticed his personal situation."
+            },
+            {
+              "nl": "Ze organiseert het personeelsfeest.",
+              "en": "She organises the staff party."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze kent zijn bezoeken aan de ziekenhuishalte en biedt gezelschap op de rit.",
+            "en": "She knows about his visits to the hospital stop and offers company on the journey."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke verandering staat centraal?",
+            "en": "Which change is central?"
+          },
+          "options": [
+            {
+              "nl": "Een route krijgt een nieuw nummer.",
+              "en": "A route gets a new number."
+            },
+            {
+              "nl": "Een ziekenhuis sluit zijn deuren.",
+              "en": "A hospital closes its doors."
+            },
+            {
+              "nl": "Dirk kan van bekende chauffeur een verbonden medereiziger worden.",
+              "en": "Dirk can move from familiar driver to connected fellow passenger."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De stoel naast haar vormt een nieuw vooruitzicht na het einde van zijn werk.",
+            "en": "The seat beside her provides a new prospect after the end of his working life."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-kaart-met-geen-noorden",
+      "topic_id": "geography",
+      "title": {
+        "nl": "Een kaart zonder noorden",
+        "en": "A map without north"
+      },
+      "plot_key": "Students' conflicting memory maps of one neighbourhood reveal that landmarks depend on lived routines rather than cartographic correctness.",
+      "lines": [
+        {
+          "nl": "Voor een opdracht moesten de studenten van docent Lien hun wijk uit het hoofd tekenen, zonder een bestaande kaart te bekijken.",
+          "en": "For an assignment, teacher Lien's students had to draw their neighbourhood from memory without looking at an existing map."
+        },
+        {
+          "nl": "De meeste tekeningen begonnen met het station, maar op die van Amir stond een kleine telefoonwinkel midden op het blad.",
+          "en": "Most drawings began with the station, but Amir's had a small phone shop in the middle of the page."
+        },
+        {
+          "nl": "Een medestudent merkte op dat de winkel veel te groot was getekend en dat het noorden nergens aangeduid stond.",
+          "en": "A fellow student remarked that the shop had been drawn far too large and that north was not marked anywhere."
+        },
+        {
+          "nl": "Amir vertelde dat hij er elke zondag belde met zijn moeder en er zijn eerste vriend in de stad had ontmoet.",
+          "en": "Amir explained that he called his mother there every Sunday and had met his first friend in the city there."
+        },
+        {
+          "nl": "Daarna legde een andere student uit waarom op haar kaart alle straten rond de rolstoeltoegankelijke ingang van de school draaiden.",
+          "en": "Another student then explained why all the streets on her map revolved around the school's wheelchair-accessible entrance."
+        },
+        {
+          "nl": "Lien legde de tekeningen naast een officiële kaart en vroeg niet welke fout was, maar welke vragen elke versie kon beantwoorden.",
+          "en": "Lien placed the drawings beside an official map and asked not which was wrong, but which questions each version could answer."
+        },
+        {
+          "nl": "Voor de afstand tussen twee bushaltes kozen ze de officiële kaart; voor een warm onthaal vroegen ze Amir om de weg.",
+          "en": "For the distance between two bus stops they chose the official map; for a warm welcome they asked Amir for directions."
+        },
+        {
+          "nl": "Bij de tentoonstelling plaatsten ze drie kaarten naast elkaar, zodat bezoekers dezelfde wijk op verschillende manieren konden binnenkomen.",
+          "en": "At the exhibition they placed three maps side by side so that visitors could enter the same neighbourhood in different ways."
+        }
+      ],
+      "words": [
+        {
+          "term": "aanduiden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zichtbaar aangeven",
+            "en": "to indicate"
+          },
+          "example": {
+            "nl": "Een medestudent merkte op dat de winkel veel te groot was getekend en dat het noorden nergens aangeduid stond.",
+            "en": "A fellow student remarked that the shop had been drawn far too large and that north was not marked anywhere."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het onthaal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de manier waarop iemand welkom wordt geheten",
+            "en": "welcome or reception"
+          },
+          "example": {
+            "nl": "Voor de afstand tussen twee bushaltes kozen ze de officiële kaart; voor een warm onthaal vroegen ze Amir om de weg.",
+            "en": "For the distance between two bus stops they chose the official map; for a warm welcome they asked Amir for directions."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "officieel",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "door een bevoegde organisatie gemaakt of erkend",
+            "en": "official"
+          },
+          "example": {
+            "nl": "Lien legde de tekeningen naast een officiële kaart en vroeg niet welke fout was, maar welke vragen elke versie kon beantwoorden.",
+            "en": "Lien placed the drawings beside an official map and asked not which was wrong, but which questions each version could answer."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Welke bij een afhankelijke vraag",
+            "en": "Which in an indirect question"
+          },
+          "explanation": {
+            "nl": "Na welke vragen komt in de bijzin de persoonsvorm verder naar achteren.",
+            "en": "After welke vragen, the finite verb comes later in the subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "Lien legde de tekeningen naast een officiële kaart en vroeg niet welke fout was, maar welke vragen elke versie kon beantwoorden.",
+              "en": "Lien placed the drawings beside an official map and asked not which was wrong, but which questions each version could answer."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom staat de telefoonwinkel centraal op Amirs kaart?",
+            "en": "Why is the phone shop central on Amir's map?"
+          },
+          "options": [
+            {
+              "nl": "De plek heeft voor hem grote persoonlijke betekenis.",
+              "en": "The place has great personal meaning for him."
+            },
+            {
+              "nl": "Het is het grootste gebouw.",
+              "en": "It is the largest building."
+            },
+            {
+              "nl": "Het station is afgebroken.",
+              "en": "The station has been demolished."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Daar onderhoudt hij contact met familie en begon een vriendschap.",
+            "en": "He maintains family contact there and a friendship began there."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat leren de studenten door de kaarten te vergelijken?",
+            "en": "What do the students learn by comparing the maps?"
+          },
+          "options": [
+            {
+              "nl": "Een officiële kaart is nooit bruikbaar.",
+              "en": "An official map is never useful."
+            },
+            {
+              "nl": "Verschillende kaarten beantwoorden verschillende soorten vragen.",
+              "en": "Different maps answer different kinds of questions."
+            },
+            {
+              "nl": "Iedereen moet dezelfde route nemen.",
+              "en": "Everyone must follow the same route."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Afstanden en persoonlijke ervaringen vragen om andere informatie.",
+            "en": "Distances and personal experiences require different information."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-telefoon-in-de-wasmand",
+      "topic_id": "technology",
+      "title": {
+        "nl": "De telefoon in de wasmand",
+        "en": "The phone in the laundry basket"
+      },
+      "plot_key": "A family digital-detox competition unravels when the grandfather reveals their imposed rules ignore his distant choir and friendships.",
+      "lines": [
+        {
+          "nl": "Om tijdens het familieweekend meer met elkaar te praten, zette Aline een wasmand op tafel waarin alle telefoons moesten verdwijnen.",
+          "en": "To encourage more conversation during the family weekend, Aline placed a laundry basket on the table into which all phones had to disappear."
+        },
+        {
+          "nl": "Wie het eerst zijn toestel nam, zou volgens haar speelse regel het ontbijt van zondag moeten klaarmaken.",
+          "en": "Under her playful rule, whoever took their device first would have to prepare Sunday breakfast."
+        },
+        {
+          "nl": "Tot haar verbazing pakte haar grootvader na een kwartier zijn telefoon en liep hij zonder uitleg naar de gang.",
+          "en": "To her surprise her grandfather picked up his phone after fifteen minutes and walked into the hall without explanation."
+        },
+        {
+          "nl": "Aline maakte een grap over verslaving, waarop hij haar vroeg even te luisteren voordat ze een winnaar aanwees.",
+          "en": "Aline joked about addiction, at which point he asked her to listen before declaring a winner."
+        },
+        {
+          "nl": "Op zijn scherm zong een klein koor uit verschillende landen het lied dat hij vroeger met zijn overleden vrouw had uitgevoerd.",
+          "en": "On his screen a small choir from different countries was singing the song he used to perform with his late wife."
+        },
+        {
+          "nl": "Elke zaterdag repeteerden ze tien minuten samen, omdat één zangeres wegens haar werk nooit langer beschikbaar was.",
+          "en": "Every Saturday they rehearsed together for ten minutes because one singer could never be available longer due to her work."
+        },
+        {
+          "nl": "Aline zette de wasmand opzij en vroeg welke digitale afspraken iedereen wilde behouden en welke meldingen gerust konden wachten.",
+          "en": "Aline moved the laundry basket aside and asked which digital arrangements everyone wanted to keep and which notifications could safely wait."
+        },
+        {
+          "nl": "Zondag maakte ze zelf het ontbijt; haar grootvader koos de muziek en legde daarna uit eigen beweging zijn telefoon weg.",
+          "en": "On Sunday she made breakfast herself; her grandfather chose the music and then put his phone away of his own accord."
+        }
+      ],
+      "words": [
+        {
+          "term": "de verslaving",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een sterke afhankelijkheid van een middel of gewoonte",
+            "en": "addiction"
+          },
+          "example": {
+            "nl": "Aline maakte een grap over verslaving, waarop hij haar vroeg even te luisteren voordat ze een winnaar aanwees.",
+            "en": "Aline joked about addiction, at which point he asked her to listen before declaring a winner."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "beschikbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "vrij om iets te doen",
+            "en": "available"
+          },
+          "example": {
+            "nl": "Elke zaterdag repeteerden ze tien minuten samen, omdat één zangeres wegens haar werk nooit langer beschikbaar was.",
+            "en": "Every Saturday they rehearsed together for ten minutes because one singer could never be available longer due to her work."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "uit eigen beweging",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zonder dat iemand het vraagt",
+            "en": "of one's own accord"
+          },
+          "example": {
+            "nl": "Zondag maakte ze zelf het ontbijt; haar grootvader koos de muziek en legde daarna uit eigen beweging zijn telefoon weg.",
+            "en": "On Sunday she made breakfast herself; her grandfather chose the music and then put his phone away of his own accord."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wegens voor een oorzaak",
+            "en": "Because of for a cause"
+          },
+          "explanation": {
+            "nl": "Na wegens volgt hier een zelfstandig naamwoord, geen volledige bijzin.",
+            "en": "Wegens is followed here by a noun, not a full subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "Elke zaterdag repeteerden ze tien minuten samen, omdat één zangeres wegens haar werk nooit langer beschikbaar was.",
+              "en": "Every Saturday they rehearsed together for ten minutes because one singer could never be available longer due to her work."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom neemt de grootvader zijn telefoon?",
+            "en": "Why does the grandfather take his phone?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil een spel winnen.",
+              "en": "He wants to win a game."
+            },
+            {
+              "nl": "Hij is het ontbijt vergeten.",
+              "en": "He has forgotten breakfast."
+            },
+            {
+              "nl": "Hij heeft een vaste gezamenlijke repetitie.",
+              "en": "He has a regular shared rehearsal."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het koor heeft een kort gezamenlijk moment dat hij niet zomaar kan verplaatsen.",
+            "en": "The choir has a brief shared moment that he cannot simply reschedule."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert Aline aan haar aanpak?",
+            "en": "What does Aline change about her approach?"
+          },
+          "options": [
+            {
+              "nl": "Ze maakt onderscheid tussen betekenisvol contact en afleidende meldingen.",
+              "en": "She distinguishes meaningful contact from distracting notifications."
+            },
+            {
+              "nl": "Ze verbiedt voortaan alle muziek.",
+              "en": "She bans all music from then on."
+            },
+            {
+              "nl": "Ze neemt niemand meer mee op weekend.",
+              "en": "She no longer takes anyone away for the weekend."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze vraagt welke afspraken behouden moeten blijven in plaats van elk schermgebruik gelijk te behandelen.",
+            "en": "She asks which arrangements should remain instead of treating all screen use alike."
+          }
+        }
+      ]
+    }
+  ]
+}

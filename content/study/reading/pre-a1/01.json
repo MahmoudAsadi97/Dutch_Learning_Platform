@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-a1-read-ticket-achterkant",
+      "topic_id": "transportation",
+      "title": {
+        "nl": "De andere kant",
+        "en": "The other side"
+      },
+      "plot_key": "A traveller reads a platform number on the reverse of a ticket.",
+      "lines": [
+        {
+          "nl": "Ali heeft een ticket.",
+          "en": "Ali has a ticket."
+        },
+        {
+          "nl": "Hij zoekt het nummer.",
+          "en": "He is looking for the number."
+        },
+        {
+          "nl": "Hier staat alleen zijn naam.",
+          "en": "Only his name is here."
+        },
+        {
+          "nl": "De trein staat klaar.",
+          "en": "The train is ready."
+        },
+        {
+          "nl": "Een vrouw wijst naar achteren.",
+          "en": "A woman points to the back."
+        },
+        {
+          "nl": "Ali draait het ticket om.",
+          "en": "Ali turns the ticket over."
+        },
+        {
+          "nl": "Daar staat spoor drie.",
+          "en": "It says platform three there."
+        },
+        {
+          "nl": "Hij loopt naar spoor drie.",
+          "en": "He walks to platform three."
+        }
+      ],
+      "words": [
+        {
+          "term": "het ticket",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bewijs voor een reis",
+            "en": "ticket for a journey"
+          },
+          "example": {
+            "nl": "Ali heeft een ticket.",
+            "en": "Ali has a ticket."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het nummer",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "getal als aanduiding",
+            "en": "number used to identify something"
+          },
+          "example": {
+            "nl": "Hij zoekt het nummer.",
+            "en": "He is looking for the number."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "omdraaien",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "de andere kant tonen",
+            "en": "to turn over"
+          },
+          "example": {
+            "nl": "Ali draait het ticket om.",
+            "en": "Ali turns the ticket over."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hij en een werkwoord",
+            "en": "He and a verb"
+          },
+          "explanation": {
+            "nl": "Na hij krijgt draait een t. Om staat achteraan.",
+            "en": "After hij, draait ends in t. Om comes at the end."
+          },
+          "examples": [
+            {
+              "nl": "Ali draait het ticket om.",
+              "en": "Ali turns the ticket over."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar staat het spoor?",
+            "en": "Where is the platform number?"
+          },
+          "options": [
+            {
+              "nl": "Op de voorkant",
+              "en": "On the front"
+            },
+            {
+              "nl": "Op de achterkant",
+              "en": "On the back"
+            },
+            {
+              "nl": "Op de deur",
+              "en": "On the door"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Daar staat spoor drie.",
+            "en": "It says platform three there."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Naar welk spoor gaat Ali?",
+            "en": "Which platform does Ali go to?"
+          },
+          "options": [
+            {
+              "nl": "Spoor drie",
+              "en": "Platform three"
+            },
+            {
+              "nl": "Spoor één",
+              "en": "Platform one"
+            },
+            {
+              "nl": "Spoor twee",
+              "en": "Platform two"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij loopt naar spoor drie.",
+            "en": "He walks to platform three."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-letter-met-vinger",
+      "topic_id": "languages",
+      "title": {
+        "nl": "Een letter in de lucht",
+        "en": "A letter in the air"
+      },
+      "plot_key": "A learner communicates an unfamiliar first letter by tracing it in the air.",
+      "lines": [
+        {
+          "nl": "Ik zeg mijn naam.",
+          "en": "I say my name."
+        },
+        {
+          "nl": "De man hoort mij niet.",
+          "en": "The man cannot hear me."
+        },
+        {
+          "nl": "Ik zeg de eerste letter.",
+          "en": "I say the first letter."
+        },
+        {
+          "nl": "Het is een Z.",
+          "en": "It is a Z."
+        },
+        {
+          "nl": "Ik teken in de lucht.",
+          "en": "I draw in the air."
+        },
+        {
+          "nl": "Mijn vinger maakt een Z.",
+          "en": "My finger makes a Z."
+        },
+        {
+          "nl": "De man schrijft Zara.",
+          "en": "The man writes Zara."
+        },
+        {
+          "nl": "Ja, dat is mijn naam.",
+          "en": "Yes, that is my name."
+        }
+      ],
+      "words": [
+        {
+          "term": "de letter",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "teken van het alfabet",
+            "en": "letter of the alphabet"
+          },
+          "example": {
+            "nl": "Ik zeg de eerste letter.",
+            "en": "I say the first letter."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de vinger",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel van de hand",
+            "en": "finger"
+          },
+          "example": {
+            "nl": "Mijn vinger maakt een Z.",
+            "en": "My finger makes a Z."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "schrijven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "letters op papier zetten",
+            "en": "to write"
+          },
+          "example": {
+            "nl": "De man schrijft Zara.",
+            "en": "The man writes Zara."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Mijn bij een naam",
+            "en": "Mijn with a name"
+          },
+          "explanation": {
+            "nl": "Mijn zegt dat de naam bij de spreker hoort.",
+            "en": "Mijn shows that the name belongs to the speaker."
+          },
+          "examples": [
+            {
+              "nl": "Ja, dat is mijn naam.",
+              "en": "Yes, that is my name."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke letter tekent Zara?",
+            "en": "Which letter does Zara draw?"
+          },
+          "options": [
+            {
+              "nl": "Een S",
+              "en": "An S"
+            },
+            {
+              "nl": "Een A",
+              "en": "An A"
+            },
+            {
+              "nl": "Een Z",
+              "en": "A Z"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Mijn vinger maakt een Z.",
+            "en": "My finger makes a Z."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar tekent zij?",
+            "en": "Where does she draw?"
+          },
+          "options": [
+            {
+              "nl": "In de lucht",
+              "en": "In the air"
+            },
+            {
+              "nl": "Op de deur",
+              "en": "On the door"
+            },
+            {
+              "nl": "Op de tafel",
+              "en": "On the table"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik teken in de lucht.",
+            "en": "I draw in the air."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-nummer-op-mouw",
+      "topic_id": "sports",
+      "title": {
+        "nl": "Wie is nummer vijf?",
+        "en": "Who is number five?"
+      },
+      "plot_key": "A sports player finds their number on a sleeve and joins the right group.",
+      "lines": [
+        {
+          "nl": "Er staan twee groepen.",
+          "en": "There are two groups."
+        },
+        {
+          "nl": "Ik zoek nummer vijf.",
+          "en": "I am looking for number five."
+        },
+        {
+          "nl": "Mijn trui is blauw.",
+          "en": "My jersey is blue."
+        },
+        {
+          "nl": "Vooraan staat geen nummer.",
+          "en": "There is no number on the front."
+        },
+        {
+          "nl": "Ik kijk naar mijn mouw.",
+          "en": "I look at my sleeve."
+        },
+        {
+          "nl": "Daar staat een vijf.",
+          "en": "There is a five there."
+        },
+        {
+          "nl": "De trainer roept: vijf!",
+          "en": "The coach calls: five!"
+        },
+        {
+          "nl": "Ik loop naar mijn groep.",
+          "en": "I run to my group."
+        }
+      ],
+      "words": [
+        {
+          "term": "de groep",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "mensen die samen horen",
+            "en": "group of people"
+          },
+          "example": {
+            "nl": "Er staan twee groepen.",
+            "en": "There are two groups."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de mouw",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel van kleding om de arm",
+            "en": "sleeve"
+          },
+          "example": {
+            "nl": "Ik kijk naar mijn mouw.",
+            "en": "I look at my sleeve."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "roepen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "luid iets zeggen",
+            "en": "to call out"
+          },
+          "example": {
+            "nl": "De trainer roept: vijf!",
+            "en": "The coach calls: five!"
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Geen bij een zelfstandig naamwoord",
+            "en": "Geen with a noun"
+          },
+          "explanation": {
+            "nl": "Geen nummer betekent dat er niet één nummer staat.",
+            "en": "Geen nummer means that no number is there."
+          },
+          "examples": [
+            {
+              "nl": "Vooraan staat geen nummer.",
+              "en": "There is no number on the front."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar staat de vijf?",
+            "en": "Where is the five?"
+          },
+          "options": [
+            {
+              "nl": "Op de rug",
+              "en": "On the back"
+            },
+            {
+              "nl": "Op de mouw",
+              "en": "On the sleeve"
+            },
+            {
+              "nl": "Op de broek",
+              "en": "On the trousers"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Daar staat een vijf.",
+            "en": "There is a five there."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie roept vijf?",
+            "en": "Who calls five?"
+          },
+          "options": [
+            {
+              "nl": "De trainer",
+              "en": "The coach"
+            },
+            {
+              "nl": "De buur",
+              "en": "The neighbour"
+            },
+            {
+              "nl": "De dokter",
+              "en": "The doctor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De trainer roept: vijf!",
+            "en": "The coach calls: five!"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-citroenproef",
+      "topic_id": "food-cooking",
+      "title": {
+        "nl": "Geel en zuur",
+        "en": "Yellow and sour"
+      },
+      "plot_key": "A learner mistakes a lemon for sweet fruit and discovers its sour taste.",
+      "lines": [
+        {
+          "nl": "Dit fruit is geel.",
+          "en": "This fruit is yellow."
+        },
+        {
+          "nl": "Is het een banaan?",
+          "en": "Is it a banana?"
+        },
+        {
+          "nl": "Nee, het is een citroen.",
+          "en": "No, it is a lemon."
+        },
+        {
+          "nl": "Mijn zus snijdt een stukje.",
+          "en": "My sister cuts a small piece."
+        },
+        {
+          "nl": "Ik neem een hapje.",
+          "en": "I take a small bite."
+        },
+        {
+          "nl": "Oei, dat is zuur!",
+          "en": "Oh, that is sour!"
+        },
+        {
+          "nl": "Mijn zus lacht zacht.",
+          "en": "My sister laughs softly."
+        },
+        {
+          "nl": "Het stukje gaat in thee.",
+          "en": "The small piece goes into tea."
+        }
+      ],
+      "words": [
+        {
+          "term": "de citroen",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "gele zure vrucht",
+            "en": "lemon"
+          },
+          "example": {
+            "nl": "Nee, het is een citroen.",
+            "en": "No, it is a lemon."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "zuur",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met een smaak zoals citroen",
+            "en": "sour"
+          },
+          "example": {
+            "nl": "Oei, dat is zuur!",
+            "en": "Oh, that is sour!"
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "snijden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met een mes in stukken delen",
+            "en": "to cut"
+          },
+          "example": {
+            "nl": "Mijn zus snijdt een stukje.",
+            "en": "My sister cuts a small piece."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een vraag met is",
+            "en": "A question with is"
+          },
+          "explanation": {
+            "nl": "In Is het een banaan staat is vóór het.",
+            "en": "In Is het een banaan, is comes before het."
+          },
+          "examples": [
+            {
+              "nl": "Is het een banaan?",
+              "en": "Is it a banana?"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat is het gele fruit?",
+            "en": "What is the yellow fruit?"
+          },
+          "options": [
+            {
+              "nl": "Een appel",
+              "en": "An apple"
+            },
+            {
+              "nl": "Een banaan",
+              "en": "A banana"
+            },
+            {
+              "nl": "Een citroen",
+              "en": "A lemon"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Nee, het is een citroen.",
+            "en": "No, it is a lemon."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar gaat het stukje in?",
+            "en": "What does the piece go into?"
+          },
+          "options": [
+            {
+              "nl": "In thee",
+              "en": "Into tea"
+            },
+            {
+              "nl": "In soep",
+              "en": "Into soup"
+            },
+            {
+              "nl": "In melk",
+              "en": "Into milk"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het stukje gaat in thee.",
+            "en": "The small piece goes into tea."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-twee-voeten",
+      "topic_id": "fashion-clothing",
+      "title": {
+        "nl": "Links en rechts",
+        "en": "Left and right"
+      },
+      "plot_key": "A beginner notices two left slippers and exchanges one with a friend.",
+      "lines": [
+        {
+          "nl": "Ik trek mijn pantoffels aan.",
+          "en": "I put on my slippers."
+        },
+        {
+          "nl": "Mijn voeten staan vreemd.",
+          "en": "My feet look strange."
+        },
+        {
+          "nl": "Dit is een linkse pantoffel.",
+          "en": "This is a left slipper."
+        },
+        {
+          "nl": "Die is ook links.",
+          "en": "That one is left too."
+        },
+        {
+          "nl": "Mijn vriend kijkt omlaag.",
+          "en": "My friend looks down."
+        },
+        {
+          "nl": "Hij heeft twee rechtse pantoffels.",
+          "en": "He has two right slippers."
+        },
+        {
+          "nl": "Wij ruilen één pantoffel.",
+          "en": "We exchange one slipper."
+        },
+        {
+          "nl": "Nu past alles goed.",
+          "en": "Now everything fits well."
+        }
+      ],
+      "words": [
+        {
+          "term": "de pantoffel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "zachte schoen voor binnen",
+            "en": "slipper"
+          },
+          "example": {
+            "nl": "Dit is een linkse pantoffel.",
+            "en": "This is a left slipper."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "links",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "aan de kant van de linkerhand",
+            "en": "left"
+          },
+          "example": {
+            "nl": "Die is ook links.",
+            "en": "That one is left too."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "ruilen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets geven en iets anders krijgen",
+            "en": "to exchange"
+          },
+          "example": {
+            "nl": "Wij ruilen één pantoffel.",
+            "en": "We exchange one slipper."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Twee en een meervoud",
+            "en": "Two and a plural"
+          },
+          "explanation": {
+            "nl": "Na twee gebruik je pantoffels met s.",
+            "en": "After twee, use the plural pantoffels ending in s."
+          },
+          "examples": [
+            {
+              "nl": "Hij heeft twee rechtse pantoffels.",
+              "en": "He has two right slippers."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat heeft de vriend?",
+            "en": "What does the friend have?"
+          },
+          "options": [
+            {
+              "nl": "Twee rechtse pantoffels",
+              "en": "Two right slippers"
+            },
+            {
+              "nl": "Twee linkse pantoffels",
+              "en": "Two left slippers"
+            },
+            {
+              "nl": "Twee laarzen",
+              "en": "Two boots"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij heeft twee rechtse pantoffels.",
+            "en": "He has two right slippers."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoeveel pantoffels ruilen zij?",
+            "en": "How many slippers do they exchange?"
+          },
+          "options": [
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Eén",
+              "en": "One"
+            },
+            {
+              "nl": "Vier",
+              "en": "Four"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Wij ruilen één pantoffel.",
+            "en": "We exchange one slipper."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-winkelwagen-munt",
+      "topic_id": "shopping",
+      "title": {
+        "nl": "Een munt voor de kar",
+        "en": "A coin for the trolley"
+      },
+      "plot_key": "A shopper uses a borrowed trolley token and returns it after shopping.",
+      "lines": [
+        {
+          "nl": "De kar zit vast.",
+          "en": "The trolley is locked."
+        },
+        {
+          "nl": "Ik zoek een munt.",
+          "en": "I am looking for a coin."
+        },
+        {
+          "nl": "Mijn zak is leeg.",
+          "en": "My pocket is empty."
+        },
+        {
+          "nl": "Een man geeft een jeton.",
+          "en": "A man gives me a token."
+        },
+        {
+          "nl": "De jeton past precies.",
+          "en": "The token fits exactly."
+        },
+        {
+          "nl": "Nu rijdt de kar.",
+          "en": "Now the trolley moves."
+        },
+        {
+          "nl": "Na het winkelen wacht hij.",
+          "en": "After shopping, he waits."
+        },
+        {
+          "nl": "Ik geef zijn jeton terug.",
+          "en": "I give his token back."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "wagen voor boodschappen",
+            "en": "shopping trolley"
+          },
+          "example": {
+            "nl": "De kar zit vast.",
+            "en": "The trolley is locked."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de zak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "ruimte in kleding voor kleine dingen",
+            "en": "pocket"
+          },
+          "example": {
+            "nl": "Mijn zak is leeg.",
+            "en": "My pocket is empty."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "teruggeven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "aan de eigenaar geven",
+            "en": "to give back"
+          },
+          "example": {
+            "nl": "Ik geef zijn jeton terug.",
+            "en": "I give his token back."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zijn voor iets van hem",
+            "en": "Zijn for something belonging to him"
+          },
+          "explanation": {
+            "nl": "Zijn jeton is de jeton van de man.",
+            "en": "Zijn jeton is the man's token."
+          },
+          "examples": [
+            {
+              "nl": "Ik geef zijn jeton terug.",
+              "en": "I give his token back."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat past in de kar?",
+            "en": "What fits in the trolley?"
+          },
+          "options": [
+            {
+              "nl": "Een sleutel",
+              "en": "A key"
+            },
+            {
+              "nl": "Een jeton",
+              "en": "A token"
+            },
+            {
+              "nl": "Een kaart",
+              "en": "A card"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De jeton past precies.",
+            "en": "The token fits exactly."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de spreker op het einde?",
+            "en": "What does the speaker do at the end?"
+          },
+          "options": [
+            {
+              "nl": "De jeton teruggeven",
+              "en": "Give the token back"
+            },
+            {
+              "nl": "Een munt kopen",
+              "en": "Buy a coin"
+            },
+            {
+              "nl": "Naar huis rijden",
+              "en": "Drive home"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik geef zijn jeton terug.",
+            "en": "I give his token back."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-rondje-spiegel",
+      "topic_id": "personal-hygiene",
+      "title": {
+        "nl": "De streep op mijn wang",
+        "en": "The mark on my cheek"
+      },
+      "plot_key": "A person finds a pen mark on their cheek rather than dirt and washes it off.",
+      "lines": [
+        {
+          "nl": "Ik kijk in de spiegel.",
+          "en": "I look in the mirror."
+        },
+        {
+          "nl": "Er staat een blauwe streep.",
+          "en": "There is a blue mark."
+        },
+        {
+          "nl": "De streep zit op mijn wang.",
+          "en": "The mark is on my cheek."
+        },
+        {
+          "nl": "Mijn pen ligt ernaast.",
+          "en": "My pen is lying beside me."
+        },
+        {
+          "nl": "Ik neem een nat doekje.",
+          "en": "I take a wet cloth."
+        },
+        {
+          "nl": "Ik veeg over mijn wang.",
+          "en": "I wipe my cheek."
+        },
+        {
+          "nl": "Het doekje is nu blauw.",
+          "en": "The cloth is blue now."
+        },
+        {
+          "nl": "Mijn wang is weer schoon.",
+          "en": "My cheek is clean again."
+        }
+      ],
+      "words": [
+        {
+          "term": "de wang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "zijkant van het gezicht",
+            "en": "cheek"
+          },
+          "example": {
+            "nl": "De streep zit op mijn wang.",
+            "en": "The mark is on my cheek."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de streep",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lange smalle lijn",
+            "en": "line or mark"
+          },
+          "example": {
+            "nl": "Er staat een blauwe streep.",
+            "en": "There is a blue mark."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "schoon",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder vuil",
+            "en": "clean"
+          },
+          "example": {
+            "nl": "Mijn wang is weer schoon.",
+            "en": "My cheek is clean again."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Op voor een plaats",
+            "en": "Op for a position"
+          },
+          "explanation": {
+            "nl": "Op mijn wang geeft de plaats van de streep aan.",
+            "en": "Op mijn wang tells you where the mark is."
+          },
+          "examples": [
+            {
+              "nl": "De streep zit op mijn wang.",
+              "en": "The mark is on my cheek."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kleur heeft de streep?",
+            "en": "What colour is the mark?"
+          },
+          "options": [
+            {
+              "nl": "Rood",
+              "en": "Red"
+            },
+            {
+              "nl": "Groen",
+              "en": "Green"
+            },
+            {
+              "nl": "Blauw",
+              "en": "Blue"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Er staat een blauwe streep.",
+            "en": "There is a blue mark."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat is op het einde blauw?",
+            "en": "What is blue at the end?"
+          },
+          "options": [
+            {
+              "nl": "Het doekje",
+              "en": "The cloth"
+            },
+            {
+              "nl": "De spiegel",
+              "en": "The mirror"
+            },
+            {
+              "nl": "De tafel",
+              "en": "The table"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het doekje is nu blauw.",
+            "en": "The cloth is blue now."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-kleine-echo",
+      "topic_id": "outdoor-adventure",
+      "title": {
+        "nl": "Nog eens dag",
+        "en": "Hello again"
+      },
+      "plot_key": "Two walkers hear an echo under a bridge and test it with a greeting.",
+      "lines": [
+        {
+          "nl": "Wij lopen onder een brug.",
+          "en": "We walk under a bridge."
+        },
+        {
+          "nl": "Ik roep: dag, Kim!",
+          "en": "I call: hello, Kim!"
+        },
+        {
+          "nl": "Ik hoor weer: Kim!",
+          "en": "I hear Kim again!"
+        },
+        {
+          "nl": "Kim staat naast mij.",
+          "en": "Kim is standing beside me."
+        },
+        {
+          "nl": "Zij zegt: dat is geluid.",
+          "en": "She says: that is sound."
+        },
+        {
+          "nl": "Wij roepen samen: dag!",
+          "en": "We call hello together!"
+        },
+        {
+          "nl": "De brug zegt weer: dag!",
+          "en": "The bridge says hello again!"
+        },
+        {
+          "nl": "Wij lachen en lopen verder.",
+          "en": "We laugh and walk on."
+        }
+      ],
+      "words": [
+        {
+          "term": "de brug",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "weg over water of een andere weg",
+            "en": "bridge"
+          },
+          "example": {
+            "nl": "Wij lopen onder een brug.",
+            "en": "We walk under a bridge."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "naast",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "aan de zijkant van",
+            "en": "beside"
+          },
+          "example": {
+            "nl": "Kim staat naast mij.",
+            "en": "Kim is standing beside me."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "samen",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "met elkaar",
+            "en": "together"
+          },
+          "example": {
+            "nl": "Wij roepen samen: dag!",
+            "en": "We call hello together!"
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wij bij een werkwoord",
+            "en": "Wij with a verb"
+          },
+          "explanation": {
+            "nl": "Bij wij blijft het werkwoord roepen heel.",
+            "en": "With wij, use the full verb form roepen."
+          },
+          "examples": [
+            {
+              "nl": "Wij roepen samen: dag!",
+              "en": "We call hello together!"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar lopen zij?",
+            "en": "Where are they walking?"
+          },
+          "options": [
+            {
+              "nl": "Onder een brug",
+              "en": "Under a bridge"
+            },
+            {
+              "nl": "In een winkel",
+              "en": "In a shop"
+            },
+            {
+              "nl": "Naast een school",
+              "en": "Beside a school"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Wij lopen onder een brug.",
+            "en": "We walk under a bridge."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie staat naast de spreker?",
+            "en": "Who is beside the speaker?"
+          },
+          "options": [
+            {
+              "nl": "Ali",
+              "en": "Ali"
+            },
+            {
+              "nl": "Kim",
+              "en": "Kim"
+            },
+            {
+              "nl": "Noor",
+              "en": "Noor"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Kim staat naast mij.",
+            "en": "Kim is standing beside me."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-vijf-vingers-stop",
+      "topic_id": "communication",
+      "title": {
+        "nl": "Wacht, nog één",
+        "en": "Wait, one more"
+      },
+      "plot_key": "A person ordering five rolls corrects an order of four with a finger gesture.",
+      "lines": [
+        {
+          "nl": "Ik vraag vijf broodjes.",
+          "en": "I ask for five rolls."
+        },
+        {
+          "nl": "De bakker telt tot vier.",
+          "en": "The baker counts to four."
+        },
+        {
+          "nl": "Hij pakt een zak.",
+          "en": "He takes a bag."
+        },
+        {
+          "nl": "Ik steek mijn hand omhoog.",
+          "en": "I raise my hand."
+        },
+        {
+          "nl": "Vijf vingers zijn te zien.",
+          "en": "Five fingers are visible."
+        },
+        {
+          "nl": "De bakker ziet mijn hand.",
+          "en": "The baker sees my hand."
+        },
+        {
+          "nl": "Er komt nog één broodje.",
+          "en": "One more roll is added."
+        },
+        {
+          "nl": "Nu liggen er vijf.",
+          "en": "Now there are five."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bakker",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die brood maakt en verkoopt",
+            "en": "baker"
+          },
+          "example": {
+            "nl": "De bakker telt tot vier.",
+            "en": "The baker counts to four."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de hand",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lichaamsdeel met vingers",
+            "en": "hand"
+          },
+          "example": {
+            "nl": "Ik steek mijn hand omhoog.",
+            "en": "I raise my hand."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "vijf",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "het getal 5",
+            "en": "five"
+          },
+          "example": {
+            "nl": "Ik vraag vijf broodjes.",
+            "en": "I ask for five rolls."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Nog één",
+            "en": "One more"
+          },
+          "explanation": {
+            "nl": "Nog één betekent één extra.",
+            "en": "Nog één means one extra."
+          },
+          "examples": [
+            {
+              "nl": "Er komt nog één broodje.",
+              "en": "One more roll is added."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel broodjes vraagt de spreker?",
+            "en": "How many rolls does the speaker ask for?"
+          },
+          "options": [
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Vier",
+              "en": "Four"
+            },
+            {
+              "nl": "Vijf",
+              "en": "Five"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ik vraag vijf broodjes.",
+            "en": "I ask for five rolls."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe toont de spreker het getal?",
+            "en": "How does the speaker show the number?"
+          },
+          "options": [
+            {
+              "nl": "Met een hand",
+              "en": "With a hand"
+            },
+            {
+              "nl": "Met een boek",
+              "en": "With a book"
+            },
+            {
+              "nl": "Met een telefoon",
+              "en": "With a phone"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Vijf vingers zijn te zien.",
+            "en": "Five fingers are visible."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-kaart-noord",
+      "topic_id": "geography",
+      "title": {
+        "nl": "Boven op de kaart",
+        "en": "At the top of the map"
+      },
+      "plot_key": "A simple map is upside down; a reader turns it until the sea is at the top.",
+      "lines": [
+        {
+          "nl": "Ik bekijk een kaart.",
+          "en": "I look at a map."
+        },
+        {
+          "nl": "Hier staat de zee onderaan.",
+          "en": "The sea is at the bottom here."
+        },
+        {
+          "nl": "Mijn vinger zoekt Oostende.",
+          "en": "My finger is looking for Ostend."
+        },
+        {
+          "nl": "Ik vind de stad niet.",
+          "en": "I cannot find the city."
+        },
+        {
+          "nl": "Mijn broer draait de kaart.",
+          "en": "My brother turns the map."
+        },
+        {
+          "nl": "Nu staat de zee bovenaan.",
+          "en": "Now the sea is at the top."
+        },
+        {
+          "nl": "Daar ligt Oostende aan zee.",
+          "en": "There is Ostend by the sea."
+        },
+        {
+          "nl": "Mijn vinger rust op Oostende.",
+          "en": "My finger rests on Ostend."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kaart",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "tekening van een gebied",
+            "en": "map"
+          },
+          "example": {
+            "nl": "Ik bekijk een kaart.",
+            "en": "I look at a map."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de zee",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "grote hoeveelheid zout water",
+            "en": "sea"
+          },
+          "example": {
+            "nl": "Hier staat de zee onderaan.",
+            "en": "The sea is at the bottom here."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "bovenaan",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "aan de bovenkant",
+            "en": "at the top"
+          },
+          "example": {
+            "nl": "Nu staat de zee bovenaan.",
+            "en": "Now the sea is at the top."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet bij vinden",
+            "en": "Niet with vinden"
+          },
+          "explanation": {
+            "nl": "Niet maakt Ik vind de stad negatief.",
+            "en": "Niet makes Ik vind de stad negative."
+          },
+          "examples": [
+            {
+              "nl": "Ik vind de stad niet.",
+              "en": "I cannot find the city."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke stad zoekt de spreker?",
+            "en": "Which city is the speaker looking for?"
+          },
+          "options": [
+            {
+              "nl": "Gent",
+              "en": "Ghent"
+            },
+            {
+              "nl": "Oostende",
+              "en": "Ostend"
+            },
+            {
+              "nl": "Brussel",
+              "en": "Brussels"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Mijn vinger zoekt Oostende.",
+            "en": "My finger is looking for Ostend."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar staat de zee na het draaien?",
+            "en": "Where is the sea after turning the map?"
+          },
+          "options": [
+            {
+              "nl": "Bovenaan",
+              "en": "At the top"
+            },
+            {
+              "nl": "Onderaan",
+              "en": "At the bottom"
+            },
+            {
+              "nl": "In het midden",
+              "en": "In the middle"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Nu staat de zee bovenaan.",
+            "en": "Now the sea is at the top."
+          }
+        }
+      ]
+    }
+  ]
+}

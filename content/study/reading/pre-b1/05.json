@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b1-read-kleine-sleutel-grote-poort",
+      "topic_id": "social-issues",
+      "title": {
+        "nl": "De kleine sleutel van de grote poort",
+        "en": "The small key to the large gate"
+      },
+      "plot_key": "Child sees locked playground as excluded neighbourhood; caretaker reveals unstaffed winter gate, residents propose supervised trial not assumed unrestricted access.",
+      "lines": [
+        {
+          "nl": "Na school ziet Youssef altijd dezelfde lege speeltuin achter de hoge poort van een woonproject.",
+          "en": "After school, Youssef always sees the same empty playground behind the tall gate of a housing development."
+        },
+        {
+          "nl": "Zijn zus vraagt waarom de kinderen uit hun straat daar nooit mogen spelen.",
+          "en": "His sister asks why the children from their street are never allowed to play there."
+        },
+        {
+          "nl": "Youssef denkt dat de bewoners hen niet willen, maar besluit eerst de conciërge aan te spreken.",
+          "en": "Youssef thinks that the residents do not want them, but decides to talk to the caretaker first."
+        },
+        {
+          "nl": "Die vertelt dat er na schooltijd niemand meer is om de poort te sluiten en het terrein na te kijken.",
+          "en": "The caretaker explains that after school nobody is available to close the gate and check the grounds."
+        },
+        {
+          "nl": "Vroeger bleef er vaak afval liggen en daarom is de toegang veranderd.",
+          "en": "Rubbish was often left there in the past, and that is why access was changed."
+        },
+        {
+          "nl": "Youssef bespreekt het met zijn moeder, die een korte proef met twee volwassen begeleiders voorstelt.",
+          "en": "Youssef discusses it with his mother, who suggests a short trial with two adult supervisors."
+        },
+        {
+          "nl": "De bewoners stemmen in met één woensdagmiddag en duidelijke afspraken over opruimen en afsluiten.",
+          "en": "The residents agree to one Wednesday afternoon and clear arrangements about tidying up and locking up."
+        },
+        {
+          "nl": "Wanneer de kinderen eindelijk spelen, draagt Youssefs moeder de kleine sleutel in haar jaszak.",
+          "en": "When the children finally play, Youssef's mother carries the small key in her coat pocket."
+        }
+      ],
+      "words": [
+        {
+          "term": "de toegang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de mogelijkheid of plek om ergens binnen te gaan",
+            "en": "access; entrance"
+          },
+          "example": {
+            "nl": "Vroeger bleef er vaak afval liggen en daarom is de toegang veranderd.",
+            "en": "Rubbish was often left there in the past, and that is why access was changed."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de conciërge",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die een gebouw en het terrein mee beheert",
+            "en": "caretaker"
+          },
+          "example": {
+            "nl": "Youssef denkt dat de bewoners hen niet willen, maar besluit eerst de conciërge aan te spreken.",
+            "en": "Youssef thinks that the residents do not want them, but decides to talk to the caretaker first."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "instemmen met",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zeggen dat je akkoord gaat met een voorstel",
+            "en": "to agree to"
+          },
+          "example": {
+            "nl": "De bewoners stemmen in met één woensdagmiddag en duidelijke afspraken over opruimen en afsluiten.",
+            "en": "The residents agree to one Wednesday afternoon and clear arrangements about tidying up and locking up."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Daarom",
+            "en": "That is why"
+          },
+          "explanation": {
+            "nl": "Daarom verbindt een reden met de beslissing die erop volgt.",
+            "en": "Daarom connects a reason with the decision that follows."
+          },
+          "examples": [
+            {
+              "nl": "Vroeger bleef er vaak afval liggen en daarom is de toegang veranderd.",
+              "en": "Rubbish was often left there in the past, and that is why access was changed."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is de poort na school gesloten?",
+            "en": "Why is the gate closed after school?"
+          },
+          "options": [
+            {
+              "nl": "Er is dan niemand om toezicht en afsluiting te regelen.",
+              "en": "There is nobody then to arrange supervision and locking up."
+            },
+            {
+              "nl": "Alle speeltoestellen zijn kapot.",
+              "en": "All the play equipment is broken."
+            },
+            {
+              "nl": "Youssef heeft de sleutel verloren.",
+              "en": "Youssef has lost the key."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De conciërge legt uit dat toezicht en controle ontbreken en er eerder afval bleef liggen.",
+            "en": "The caretaker explains that supervision and checks are missing and rubbish was previously left behind."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarmee stemmen de bewoners in?",
+            "en": "What do the residents agree to?"
+          },
+          "options": [
+            {
+              "nl": "Altijd vrije toegang zonder afspraken.",
+              "en": "Unrestricted access at all times."
+            },
+            {
+              "nl": "Een proefmiddag met begeleiding en afspraken.",
+              "en": "A trial afternoon with supervision and agreements."
+            },
+            {
+              "nl": "De speeltuin volledig weghalen.",
+              "en": "Removing the playground completely."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze kiezen één woensdagmiddag met volwassenen en duidelijke afspraken.",
+            "en": "They choose one Wednesday afternoon with adults and clear arrangements."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-bericht-met-punt",
+      "topic_id": "communication",
+      "title": {
+        "nl": "Een bericht met een punt",
+        "en": "A message with a full stop"
+      },
+      "plot_key": "Friends interpret terse okay differently before concert; learn phone accessibility dictation sends punctuation automatically, then agree direct check.",
+      "lines": [
+        {
+          "nl": "Na een lange werkdag vraagt Sofie in een bericht of Imran nog mee wil naar het concert.",
+          "en": "After a long working day, Sofie asks in a message whether Imran still wants to come to the concert."
+        },
+        {
+          "nl": "Hij antwoordt alleen akkoord met een punt erachter, zonder zijn gewone lachende gezichtje.",
+          "en": "He replies only agreed with a full stop after it, without his usual smiling face."
+        },
+        {
+          "nl": "Sofie leest de korte zin drie keer en denkt dat hij eigenlijk liever thuisblijft.",
+          "en": "Sofie reads the short sentence three times and thinks that he would actually rather stay home."
+        },
+        {
+          "nl": "Ze stuurt dat het niet hoeft als hij er geen zin in heeft.",
+          "en": "She sends a message saying that he does not have to if he does not feel like it."
+        },
+        {
+          "nl": "Imran belt verbaasd en vertelt dat hij juist heel enthousiast is.",
+          "en": "Imran calls in surprise and says that he is actually very excited."
+        },
+        {
+          "nl": "Omdat zijn hand in een verband zit, heeft hij het bericht met zijn stem ingevoerd.",
+          "en": "Because his hand is bandaged, he entered the message using his voice."
+        },
+        {
+          "nl": "Zijn telefoon voegt daarbij zelf de punt toe, en een gezichtje dicteren vond hij te veel gedoe.",
+          "en": "His phone adds the full stop itself, and he thought dictating a face was too much trouble."
+        },
+        {
+          "nl": "Sofie lacht opgelucht en besluit voortaan eerst te vragen in plaats van stilte tussen woorden te verzinnen.",
+          "en": "Sofie laughs with relief and decides from now on to ask first rather than invent silence between words."
+        }
+      ],
+      "words": [
+        {
+          "term": "het verband",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "materiaal dat een gewond lichaamsdeel beschermt",
+            "en": "bandage"
+          },
+          "example": {
+            "nl": "Omdat zijn hand in een verband zit, heeft hij het bericht met zijn stem ingevoerd.",
+            "en": "Because his hand is bandaged, he entered the message using his voice."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "invoeren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "informatie in een toestel of systeem zetten",
+            "en": "to enter; to input"
+          },
+          "example": {
+            "nl": "Omdat zijn hand in een verband zit, heeft hij het bericht met zijn stem ingevoerd.",
+            "en": "Because his hand is bandaged, he entered the message using his voice."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "enthousiast",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "erg blij en geïnteresseerd",
+            "en": "enthusiastic; excited"
+          },
+          "example": {
+            "nl": "Imran belt verbaasd en vertelt dat hij juist heel enthousiast is.",
+            "en": "Imran calls in surprise and says that he is actually very excited."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Omdat met de werkwoorden achteraan",
+            "en": "Omdat with verbs at the end"
+          },
+          "explanation": {
+            "nl": "In een omdat-bijzin staan de werkwoorden meestal achter de andere zinsdelen.",
+            "en": "In an omdat clause, the verbs usually follow the other parts of the clause."
+          },
+          "examples": [
+            {
+              "nl": "Omdat zijn hand in een verband zit, heeft hij het bericht met zijn stem ingevoerd.",
+              "en": "Because his hand is bandaged, he entered the message using his voice."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom klinkt Imrans bericht anders dan gewoonlijk?",
+            "en": "Why does Imran's message sound different from usual?"
+          },
+          "options": [
+            {
+              "nl": "Hij is kwaad op Sofie.",
+              "en": "He is angry with Sofie."
+            },
+            {
+              "nl": "Hij heeft zijn bericht ingesproken en zijn telefoon voegt de punt toe.",
+              "en": "He dictated his message, and his phone adds the full stop."
+            },
+            {
+              "nl": "Hij heeft besloten alleen naar het concert te gaan.",
+              "en": "He has decided to go to the concert alone."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zijn hand zit in een verband en daarom gebruikt hij spraakinvoer.",
+            "en": "His hand is bandaged, so he uses voice input."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat neemt Sofie zich voor?",
+            "en": "What does Sofie decide to do?"
+          },
+          "options": [
+            {
+              "nl": "Voortaan zelf ook nooit meer gezichtjes gebruiken.",
+              "en": "Never use smiley faces herself again."
+            },
+            {
+              "nl": "Alle korte berichten meteen wissen.",
+              "en": "Delete all short messages immediately."
+            },
+            {
+              "nl": "Bij twijfel eerst vragen wat iemand bedoelt.",
+              "en": "When in doubt, first ask what someone means."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze wil niet meer zelf betekenissen bij de stilte tussen woorden verzinnen.",
+            "en": "She no longer wants to invent meanings in the silence between words herself."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-dans-voor-de-camera",
+      "topic_id": "social-media",
+      "title": {
+        "nl": "De dans voor de camera",
+        "en": "The dance for the camera"
+      },
+      "plot_key": "Friends rehearse spontaneous dance clip so often real enjoyment disappears; save accidental off-camera laughter as private memory instead.",
+      "lines": [
+        {
+          "nl": "Voor een filmpje op sociale media wil Rune tonen hoe spontaan hun dansavond is.",
+          "en": "For a social media video, Rune wants to show how spontaneous their dance evening is."
+        },
+        {
+          "nl": "Hij vraagt zijn vrienden om hetzelfde refrein nog een keer te dansen, omdat de camera scheef stond.",
+          "en": "He asks his friends to dance to the same chorus again because the camera was crooked."
+        },
+        {
+          "nl": "Bij de vierde poging weet niemand nog waar hij moet kijken of wanneer hij moet lachen.",
+          "en": "By the fourth attempt, nobody knows where to look or when to laugh anymore."
+        },
+        {
+          "nl": "Lina gaat op de grond zitten en zegt dat hun spontane avond op werk begint te lijken.",
+          "en": "Lina sits down on the floor and says that their spontaneous evening is starting to feel like work."
+        },
+        {
+          "nl": "Rune stopt de opname, maar zijn telefoon blijft even geluid opnemen terwijl hij hem weglegt.",
+          "en": "Rune stops filming, but his phone continues recording sound briefly while he puts it away."
+        },
+        {
+          "nl": "Precies dan struikelt hij over zijn eigen jas en begint de hele groep te lachen.",
+          "en": "Just then he trips over his own coat, and the whole group begins to laugh."
+        },
+        {
+          "nl": "Bij het terugluisteren klinkt dat korte stukje echter dan alle nette beelden samen.",
+          "en": "When they listen back, that short fragment sounds more genuine than all the polished footage put together."
+        },
+        {
+          "nl": "Ze bewaren het voor zichzelf en zetten de telefoon de rest van de avond in een lade.",
+          "en": "They keep it for themselves and put the phone in a drawer for the rest of the evening."
+        }
+      ],
+      "words": [
+        {
+          "term": "spontaan",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder lange voorbereiding of dwang",
+            "en": "spontaneous"
+          },
+          "example": {
+            "nl": "Voor een filmpje op sociale media wil Rune tonen hoe spontaan hun dansavond is.",
+            "en": "For a social media video, Rune wants to show how spontaneous their dance evening is."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "het refrein",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het deel van een lied dat terugkomt",
+            "en": "chorus"
+          },
+          "example": {
+            "nl": "Hij vraagt zijn vrienden om hetzelfde refrein nog een keer te dansen, omdat de camera scheef stond.",
+            "en": "He asks his friends to dance to the same chorus again because the camera was crooked."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "struikelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "bijna vallen doordat je voet ergens tegen komt",
+            "en": "to trip"
+          },
+          "example": {
+            "nl": "Precies dan struikelt hij over zijn eigen jas en begint de hele groep te lachen.",
+            "en": "Just then he trips over his own coat, and the whole group begins to laugh."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Op iets beginnen te lijken",
+            "en": "To start resembling something"
+          },
+          "explanation": {
+            "nl": "Beginnen te lijken op beschrijft dat een situatie steeds meer een bepaalde indruk geeft.",
+            "en": "Beginnen te lijken op describes a situation increasingly giving a particular impression."
+          },
+          "examples": [
+            {
+              "nl": "Lina gaat op de grond zitten en zegt dat hun spontane avond op werk begint te lijken.",
+              "en": "Lina sits down on the floor and says that their spontaneous evening is starting to feel like work."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil Lina niet opnieuw dansen voor de camera?",
+            "en": "Why does Lina not want to dance for the camera again?"
+          },
+          "options": [
+            {
+              "nl": "Het herhalen voelt niet meer als een vrije leuke avond.",
+              "en": "Repeating it no longer feels like a relaxed, enjoyable evening."
+            },
+            {
+              "nl": "Ze kent het refrein niet.",
+              "en": "She does not know the chorus."
+            },
+            {
+              "nl": "Er is geen muziek meer beschikbaar.",
+              "en": "There is no more music available."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze zegt dat hun spontane avond op werk begint te lijken.",
+            "en": "She says that their spontaneous evening is starting to feel like work."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen ze met het laatste geluidsfragment?",
+            "en": "What do they do with the final sound fragment?"
+          },
+          "options": [
+            {
+              "nl": "Ze verkopen het aan een radiostation.",
+              "en": "They sell it to a radio station."
+            },
+            {
+              "nl": "Ze bewaren het als privéherinnering.",
+              "en": "They keep it as a private memory."
+            },
+            {
+              "nl": "Ze maken er een reclamefilmpje van.",
+              "en": "They turn it into an advertising video."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze bewaren het voor zichzelf en leggen de telefoon daarna weg.",
+            "en": "They keep it for themselves and put the phone away afterwards."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-spel-zonder-taal",
+      "topic_id": "gaming",
+      "title": {
+        "nl": "Het spel zonder woorden",
+        "en": "The game without words"
+      },
+      "plot_key": "Experienced player cannot explain rules to visiting deaf cousin; notices visual demonstration more effective, redesigns signs enabling strategic autonomy.",
+      "lines": [
+        {
+          "nl": "Tijdens een familieweekend wil Arno zijn nieuwe bordspel met zijn nicht Céline spelen.",
+          "en": "During a family weekend, Arno wants to play his new board game with his cousin Céline."
+        },
+        {
+          "nl": "Zij hoort slecht, dus hij begint de regels extra luid en langzaam uit te leggen.",
+          "en": "She is hard of hearing, so he starts explaining the rules extra loudly and slowly."
+        },
+        {
+          "nl": "Na vijf minuten schuift Céline het regelboek naar zich toe en vraagt ze hem gewoon één beurt te tonen.",
+          "en": "After five minutes, Céline pulls the rulebook towards her and asks him simply to show one turn."
+        },
+        {
+          "nl": "Arno legt drie kaarten neer en verplaatst een pion zonder verder te praten.",
+          "en": "Arno lays down three cards and moves a playing piece without saying anything else."
+        },
+        {
+          "nl": "Céline wijst naar het verschil tussen twee kaarten en schrijft een korte vraag op papier.",
+          "en": "Céline points to the difference between two cards and writes a short question on paper."
+        },
+        {
+          "nl": "Samen maken ze drie kleine kaartjes met tekens voor de belangrijkste acties.",
+          "en": "Together they make three small cards with symbols for the most important actions."
+        },
+        {
+          "nl": "Vanaf de tweede ronde bedenkt Céline een slimme zet die Arno niet had zien aankomen.",
+          "en": "From the second round onwards, Céline comes up with a clever move that Arno had not seen coming."
+        },
+        {
+          "nl": "Hij verliest het spel en vraagt lachend of hij de duidelijke kaartjes de volgende keer mag lenen.",
+          "en": "He loses the game and asks with a laugh whether he can borrow the clear cards next time."
+        }
+      ],
+      "words": [
+        {
+          "term": "de beurt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het moment waarop jij in een spel iets mag doen",
+            "en": "turn"
+          },
+          "example": {
+            "nl": "Na vijf minuten schuift Céline het regelboek naar zich toe en vraagt ze hem gewoon één beurt te tonen.",
+            "en": "After five minutes, Céline pulls the rulebook towards her and asks him simply to show one turn."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de pion",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een klein speelfiguurtje op een bord",
+            "en": "playing piece; pawn"
+          },
+          "example": {
+            "nl": "Arno legt drie kaarten neer en verplaatst een pion zonder verder te praten.",
+            "en": "Arno lays down three cards and moves a playing piece without saying anything else."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de zet",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een gekozen handeling tijdens een spel",
+            "en": "move"
+          },
+          "example": {
+            "nl": "Vanaf de tweede ronde bedenkt Céline een slimme zet die Arno niet had zien aankomen.",
+            "en": "From the second round onwards, Céline comes up with a clever move that Arno had not seen coming."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te",
+            "en": "Without ...ing"
+          },
+          "explanation": {
+            "nl": "Zonder te met een infinitief geeft aan dat een handeling achterwege blijft.",
+            "en": "Zonder te with an infinitive indicates that an action is not performed."
+          },
+          "examples": [
+            {
+              "nl": "Arno legt drie kaarten neer en verplaatst een pion zonder verder te praten.",
+              "en": "Arno lays down three cards and moves a playing piece without saying anything else."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat helpt Céline om het spel te begrijpen?",
+            "en": "What helps Céline understand the game?"
+          },
+          "options": [
+            {
+              "nl": "Een langere uitleg op hoger volume.",
+              "en": "A longer explanation at a higher volume."
+            },
+            {
+              "nl": "Een andere plaats aan tafel.",
+              "en": "A different place at the table."
+            },
+            {
+              "nl": "Een getoonde beurt en kaartjes met tekens.",
+              "en": "A demonstrated turn and cards with symbols."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze vraagt om een beurt te tonen en ze maken visuele hulpmiddelen.",
+            "en": "She asks him to demonstrate a turn, and they make visual aids."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt Arno's laatste vraag grappig?",
+            "en": "What makes Arno's final question funny?"
+          },
+          "options": [
+            {
+              "nl": "De hulpmiddelen helpen hem ook nadat Céline heeft gewonnen.",
+              "en": "The aids help him too after Céline has won."
+            },
+            {
+              "nl": "Hij heeft alle regels al die tijd verstopt.",
+              "en": "He has hidden all the rules the entire time."
+            },
+            {
+              "nl": "Céline heeft een ander spel meegebracht.",
+              "en": "Céline has brought a different game."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij begon als uitlegger, maar wil nu zelf de duidelijke kaartjes lenen.",
+            "en": "He began as the person explaining but now wants to borrow the clear cards himself."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-menu-uit-de-machine",
+      "topic_id": "artificial-intelligence",
+      "title": {
+        "nl": "Het menu uit de machine",
+        "en": "The menu from the machine"
+      },
+      "plot_key": "Student trusts menu generated from fridge contents but tool invents missing egg; checks cupboard and develops own substitution rather than pretend machine sees food.",
+      "lines": [
+        {
+          "nl": "Voor een onverwacht bezoek vraagt student Ella een digitale assistent wat ze kan koken.",
+          "en": "For an unexpected visit, student Ella asks a digital assistant what she can cook."
+        },
+        {
+          "nl": "Ze typt dat er aardappelen, prei, kaas en melk in haar koelkast liggen.",
+          "en": "She types that there are potatoes, leeks, cheese and milk in her fridge."
+        },
+        {
+          "nl": "Het antwoord geeft een eenvoudig recept en zegt dat ze twee eieren moet toevoegen.",
+          "en": "The reply gives a simple recipe and says that she should add two eggs."
+        },
+        {
+          "nl": "Ella zoekt haar hele koelkast door en raakt geïrriteerd omdat ze nergens eieren vindt.",
+          "en": "Ella searches her whole fridge and gets annoyed because she cannot find eggs anywhere."
+        },
+        {
+          "nl": "Dan leest ze haar eigen lijst opnieuw en beseft ze dat ze nooit eieren heeft genoemd.",
+          "en": "Then she reads her own list again and realises that she never mentioned eggs."
+        },
+        {
+          "nl": "Haar bezoeker stelt voor om geen taart, maar een dikke soep van de groenten te maken.",
+          "en": "Her visitor suggests making a thick vegetable soup rather than a pie."
+        },
+        {
+          "nl": "Ze controleren samen wat er echt aanwezig is en gebruiken de kaas op geroosterd brood.",
+          "en": "They check together what is actually available and use the cheese on toasted bread."
+        },
+        {
+          "nl": "Ella bewaart het idee, maar vertrouwt voortaan meer op haar eigen kast dan op een overtuigend antwoord.",
+          "en": "Ella keeps the idea but from then on trusts her own cupboard more than a convincing answer."
+        }
+      ],
+      "words": [
+        {
+          "term": "toevoegen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets extra bij iets anders doen",
+            "en": "to add"
+          },
+          "example": {
+            "nl": "Het antwoord geeft een eenvoudig recept en zegt dat ze twee eieren moet toevoegen.",
+            "en": "The reply gives a simple recipe and says that she should add two eggs."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "aanwezig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "er werkelijk zijn",
+            "en": "present; available"
+          },
+          "example": {
+            "nl": "Ze controleren samen wat er echt aanwezig is en gebruiken de kaas op geroosterd brood.",
+            "en": "They check together what is actually available and use the cheese on toasted bread."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "overtuigend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zo duidelijk of geloofwaardig dat je het makkelijk gelooft",
+            "en": "convincing"
+          },
+          "example": {
+            "nl": "Ella bewaart het idee, maar vertrouwt voortaan meer op haar eigen kast dan op een overtuigend antwoord.",
+            "en": "Ella keeps the idea but from then on trusts her own cupboard more than a convincing answer."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Nooit genoemd",
+            "en": "Never mentioned"
+          },
+          "explanation": {
+            "nl": "Nooit ontkent dat een handeling op enig moment heeft plaatsgevonden.",
+            "en": "Nooit denies that an action has taken place at any time."
+          },
+          "examples": [
+            {
+              "nl": "Dan leest ze haar eigen lijst opnieuw en beseft ze dat ze nooit eieren heeft genoemd.",
+              "en": "Then she reads her own list again and realises that she never mentioned eggs."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke fout staat in het digitale recept?",
+            "en": "What error is in the digital recipe?"
+          },
+          "options": [
+            {
+              "nl": "Het gebruikt eieren die Ella niet heeft opgegeven.",
+              "en": "It uses eggs that Ella has not listed."
+            },
+            {
+              "nl": "Het bevat geen groenten.",
+              "en": "It contains no vegetables."
+            },
+            {
+              "nl": "Het beweert dat kaas altijd zoet is.",
+              "en": "It claims that cheese is always sweet."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het recept vraagt eieren, hoewel die niet op haar lijst stonden.",
+            "en": "The recipe asks for eggs even though they were not on her list."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat koken Ella en haar bezoeker uiteindelijk?",
+            "en": "What do Ella and her visitor eventually cook?"
+          },
+          "options": [
+            {
+              "nl": "Een taart met twee eieren.",
+              "en": "A pie with two eggs."
+            },
+            {
+              "nl": "Groentesoep met kaas op geroosterd brood erbij.",
+              "en": "Vegetable soup with cheese on toast alongside it."
+            },
+            {
+              "nl": "Alleen gekookte eieren.",
+              "en": "Only boiled eggs."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze maken een dikke soep en gebruiken de kaas op brood.",
+            "en": "They make a thick soup and use the cheese on bread."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-nacht-op-het-dak",
+      "topic_id": "space-astronomy",
+      "title": {
+        "nl": "Een nacht op het platte dak",
+        "en": "A night on the flat roof"
+      },
+      "plot_key": "Child plans planet observation but telescope points to bright neighbour light; adult uses alignment and moon first, chance visual reveal of Saturn ring.",
+      "lines": [
+        {
+          "nl": "Voor zijn verjaardag krijgt Ayo een kleine telescoop en een kaart van de sterrenhemel.",
+          "en": "For his birthday, Ayo receives a small telescope and a map of the night sky."
+        },
+        {
+          "nl": "Zijn tante helpt hem op hun veilige dakterras, waar hij de helderste stip meteen kiest.",
+          "en": "His aunt helps him on their safe roof terrace, where he immediately chooses the brightest dot."
+        },
+        {
+          "nl": "Door het toestel ziet hij alleen een wazige gele vlek die niet beweegt.",
+          "en": "Through the instrument he sees only a blurry yellow patch that does not move."
+        },
+        {
+          "nl": "Hij denkt dat de telescoop kapot is en wil de doos alweer zoeken.",
+          "en": "He thinks that the telescope is broken and wants to look for the box again."
+        },
+        {
+          "nl": "Zijn tante kijkt langs de buis en ontdekt dat hij op de lamp van de overbuur richt.",
+          "en": "His aunt looks along the tube and discovers that he is pointing at the neighbour's lamp across the street."
+        },
+        {
+          "nl": "Ze beginnen opnieuw met de maan, omdat die gemakkelijk met het blote oog te vinden is.",
+          "en": "They start again with the moon because it is easy to find with the naked eye."
+        },
+        {
+          "nl": "Daarna volgen ze samen de kaart tot Ayo voor het eerst een planeet met een smalle ring ziet.",
+          "en": "Then they follow the map together until Ayo sees a planet with a narrow ring for the first time."
+        },
+        {
+          "nl": "Hij schrijft in zijn schrift dat de avond begon bij een lamp en eindigde heel ver van huis.",
+          "en": "He writes in his notebook that the evening began at a lamp and ended very far from home."
+        }
+      ],
+      "words": [
+        {
+          "term": "de vlek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een onduidelijke plek of vorm",
+            "en": "patch; spot"
+          },
+          "example": {
+            "nl": "Door het toestel ziet hij alleen een wazige gele vlek die niet beweegt.",
+            "en": "Through the instrument he sees only a blurry yellow patch that does not move."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "richten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets in een gekozen richting houden",
+            "en": "to aim; to point"
+          },
+          "example": {
+            "nl": "Zijn tante kijkt langs de buis en ontdekt dat hij op de lamp van de overbuur richt.",
+            "en": "His aunt looks along the tube and discovers that he is pointing at the neighbour's lamp across the street."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "het blote oog",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "je ogen zonder kijker of ander hulpmiddel",
+            "en": "the naked eye"
+          },
+          "example": {
+            "nl": "Ze beginnen opnieuw met de maan, omdat die gemakkelijk met het blote oog te vinden is.",
+            "en": "They start again with the moon because it is easy to find with the naked eye."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Tot voor een eindpunt",
+            "en": "Tot indicating an endpoint"
+          },
+          "explanation": {
+            "nl": "Tot beschrijft hier het moment waarop het zoeken een resultaat krijgt.",
+            "en": "Tot here describes the moment when the search produces a result."
+          },
+          "examples": [
+            {
+              "nl": "Daarna volgen ze samen de kaart tot Ayo voor het eerst een planeet met een smalle ring ziet.",
+              "en": "Then they follow the map together until Ayo sees a planet with a narrow ring for the first time."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom ziet Ayo eerst geen hemellichaam?",
+            "en": "Why does Ayo not see a celestial object at first?"
+          },
+          "options": [
+            {
+              "nl": "De kaart is helemaal leeg.",
+              "en": "The map is completely blank."
+            },
+            {
+              "nl": "De telescoop wijst naar een lamp van de overbuur.",
+              "en": "The telescope points at the neighbour's lamp across the street."
+            },
+            {
+              "nl": "Zijn tante houdt de doos ervoor.",
+              "en": "His aunt is holding the box in front of it."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zijn tante ontdekt dat hij op een lamp richt.",
+            "en": "His aunt discovers that he is aiming at a lamp."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom beginnen ze opnieuw met de maan?",
+            "en": "Why do they start again with the moon?"
+          },
+          "options": [
+            {
+              "nl": "De maan is dichter bij de buurman.",
+              "en": "The moon is closer to the neighbour."
+            },
+            {
+              "nl": "Alle sterren zijn verdwenen.",
+              "en": "All the stars have disappeared."
+            },
+            {
+              "nl": "Ze kunnen de maan gemakkelijk zonder kijker vinden.",
+              "en": "They can easily find the moon without an instrument."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De maan is met het blote oog gemakkelijk te herkennen en helpt bij het richten.",
+            "en": "The moon is easy to identify with the naked eye and helps them aim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-stoel-in-kring",
+      "topic_id": "psychology-emotions",
+      "title": {
+        "nl": "De stoel buiten de kring",
+        "en": "The chair outside the circle"
+      },
+      "plot_key": "Group newcomer sits apart seeming uninterested; concentration challenged by brightwindow, moving circle makes actual participation possible without forced disclosure.",
+      "lines": [
+        {
+          "nl": "Tijdens een creatieve workshop zet nieuwkomer Maia haar stoel een stuk buiten de kring.",
+          "en": "During a creative workshop, newcomer Maia places her chair a little outside the circle."
+        },
+        {
+          "nl": "De begeleider vraagt zich af of ze liever niet bij de groep hoort.",
+          "en": "The workshop leader wonders whether she would rather not belong to the group."
+        },
+        {
+          "nl": "Hij wil haar stoel dichterbij schuiven, maar vraagt eerst of haar plek goed is.",
+          "en": "He wants to move her chair closer but first asks whether her place is all right."
+        },
+        {
+          "nl": "Maia vertelt dat de felle zon achter de anderen haar hoofdpijn geeft.",
+          "en": "Maia explains that the bright sun behind the others gives her a headache."
+        },
+        {
+          "nl": "Vanuit de kring ziet ze vooral licht en moet ze voortdurend haar ogen dichtknijpen.",
+          "en": "From within the circle she mostly sees light and has to keep squinting."
+        },
+        {
+          "nl": "De begeleider vraagt of de hele kring een kwartslag kan draaien.",
+          "en": "The workshop leader asks whether the whole circle could turn a quarter turn."
+        },
+        {
+          "nl": "Maia zit daarna even dicht bij iedereen, maar hoeft niet meer tegen het raam in te kijken.",
+          "en": "Afterwards Maia sits just as close to everyone but no longer has to look towards the window."
+        },
+        {
+          "nl": "Wanneer de groep haar tekening bespreekt, vertelt ze voor het eerst een lang verhaal over de kleuren.",
+          "en": "When the group discusses her drawing, she tells a long story about the colours for the first time."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kring",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een groep mensen die in een ronde vorm zitten of staan",
+            "en": "circle"
+          },
+          "example": {
+            "nl": "Tijdens een creatieve workshop zet nieuwkomer Maia haar stoel een stuk buiten de kring.",
+            "en": "During a creative workshop, newcomer Maia places her chair a little outside the circle."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "fel",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "heel sterk bij licht of kleur",
+            "en": "bright; intense"
+          },
+          "example": {
+            "nl": "Maia vertelt dat de felle zon achter de anderen haar hoofdpijn geeft.",
+            "en": "Maia explains that the bright sun behind the others gives her a headache."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "voortdurend",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "steeds opnieuw of zonder onderbreking",
+            "en": "constantly"
+          },
+          "example": {
+            "nl": "Vanuit de kring ziet ze vooral licht en moet ze voortdurend haar ogen dichtknijpen.",
+            "en": "From within the circle she mostly sees light and has to keep squinting."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zich afvragen of",
+            "en": "To wonder whether"
+          },
+          "explanation": {
+            "nl": "Zich afvragen of leidt een vraag in die iemand in gedachten heeft.",
+            "en": "Zich afvragen of introduces a question that someone has in mind."
+          },
+          "examples": [
+            {
+              "nl": "De begeleider vraagt zich af of ze liever niet bij de groep hoort.",
+              "en": "The workshop leader wonders whether she would rather not belong to the group."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zit Maia eerst buiten de kring?",
+            "en": "Why does Maia initially sit outside the circle?"
+          },
+          "options": [
+            {
+              "nl": "Het zonlicht stoort haar en geeft haar hoofdpijn.",
+              "en": "The sunlight bothers her and gives her a headache."
+            },
+            {
+              "nl": "Ze wil de andere deelnemers niet spreken.",
+              "en": "She does not want to speak to the other participants."
+            },
+            {
+              "nl": "Er is geen stoel meer in de ruimte.",
+              "en": "There are no chairs left in the room."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze vertelt dat de felle zon haar hoofdpijn geeft.",
+            "en": "She says that the bright sunlight gives her a headache."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert er na het draaien van de kring?",
+            "en": "What changes after the circle turns?"
+          },
+          "options": [
+            {
+              "nl": "Maia zit nu verder van iedereen.",
+              "en": "Maia now sits farther from everyone."
+            },
+            {
+              "nl": "Maia kan erbij zitten zonder tegen het licht in te kijken.",
+              "en": "Maia can sit with the others without looking towards the light."
+            },
+            {
+              "nl": "Iedereen moet buiten gaan tekenen.",
+              "en": "Everyone has to go outside to draw."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze zit even dichtbij als de anderen, maar het raam zit niet meer voor haar.",
+            "en": "She sits just as close as the others, but the window is no longer in front of her."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-gevonden-ring",
+      "topic_id": "ethics-morality",
+      "title": {
+        "nl": "De ring onder het rek",
+        "en": "The ring beneath the shelf"
+      },
+      "plot_key": "Second-hand shop worker finds ring in donated furniture with too many possible previous owners; documents it, refuses opportunistic certainty, actual owner identifies engraving.",
+      "lines": [
+        {
+          "nl": "Bij het schoonmaken van een tweedehands boekenrek vindt Wannes een dunne gouden ring.",
+          "en": "While cleaning a second-hand bookshelf, Wannes finds a thin gold ring."
+        },
+        {
+          "nl": "Zijn collega zegt dat het rek al betaald is en dat de ring dus ook van hen is.",
+          "en": "His colleague says that the bookshelf has already been paid for, so the ring belongs to them too."
+        },
+        {
+          "nl": "Wannes twijfelt, want iemand kan het kleine voorwerp per ongeluk hebben verloren.",
+          "en": "Wannes is unsure because someone may have lost the small object by accident."
+        },
+        {
+          "nl": "Hij maakt een foto waarop de binnenkant niet zichtbaar is en meldt de vondst bij de winkel.",
+          "en": "He takes a photo that does not show the inside and reports the find to the shop."
+        },
+        {
+          "nl": "Er bellen twee mensen, maar geen van beiden kan uitleggen wat er in de ring staat.",
+          "en": "Two people call, but neither can explain what is written inside the ring."
+        },
+        {
+          "nl": "Pas de derde beller noemt een datum en de bijnaam van haar overleden man.",
+          "en": "Only the third caller names a date and her late husband's nickname."
+        },
+        {
+          "nl": "Bij het afhalen vertelt ze dat ze maandenlang tussen haar boeken had gezocht.",
+          "en": "When she collects it, she explains that she had searched among her books for months."
+        },
+        {
+          "nl": "Wannes is blij met het bedankje, maar vooral met het idee dat het rek nu echt leeg is.",
+          "en": "Wannes is pleased with the thanks, but especially with the thought that the bookshelf is now truly empty."
+        }
+      ],
+      "words": [
+        {
+          "term": "de vondst",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets dat iemand heeft gevonden",
+            "en": "find; discovery"
+          },
+          "example": {
+            "nl": "Hij maakt een foto waarop de binnenkant niet zichtbaar is en meldt de vondst bij de winkel.",
+            "en": "He takes a photo that does not show the inside and reports the find to the shop."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "per ongeluk",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zonder dat iemand het bedoelde",
+            "en": "by accident"
+          },
+          "example": {
+            "nl": "Wannes twijfelt, want iemand kan het kleine voorwerp per ongeluk hebben verloren.",
+            "en": "Wannes is unsure because someone may have lost the small object by accident."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de bijnaam",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een extra naam die iemand van anderen krijgt",
+            "en": "nickname"
+          },
+          "example": {
+            "nl": "Pas de derde beller noemt een datum en de bijnaam van haar overleden man.",
+            "en": "Only the third caller names a date and her late husband's nickname."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Geen van beiden",
+            "en": "Neither of the two"
+          },
+          "explanation": {
+            "nl": "Geen van beiden ontkent iets voor allebei de genoemde personen.",
+            "en": "Geen van beiden denies something for both of the people mentioned."
+          },
+          "examples": [
+            {
+              "nl": "Er bellen twee mensen, maar geen van beiden kan uitleggen wat er in de ring staat.",
+              "en": "Two people call, but neither can explain what is written inside the ring."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom toont Wannes niet de binnenkant op de foto?",
+            "en": "Why does Wannes not show the inside in the photograph?"
+          },
+          "options": [
+            {
+              "nl": "Omdat er geen licht in de winkel is.",
+              "en": "Because there is no light in the shop."
+            },
+            {
+              "nl": "Omdat hij de ring wil verkopen.",
+              "en": "Because he wants to sell the ring."
+            },
+            {
+              "nl": "Zo kan de echte eigenaar verborgen details noemen.",
+              "en": "This lets the real owner name hidden details."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij controleert de bellers aan de hand van de tekst in de ring.",
+            "en": "He checks the callers using the inscription inside the ring."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waardoor herkent hij de derde beller als de eigenaar?",
+            "en": "How does he identify the third caller as the owner?"
+          },
+          "options": [
+            {
+              "nl": "Ze noemt de datum en bijnaam in de ring.",
+              "en": "She names the date and nickname inside the ring."
+            },
+            {
+              "nl": "Ze biedt het meeste geld.",
+              "en": "She offers the most money."
+            },
+            {
+              "nl": "Ze heeft zelf een boekenrek gekocht.",
+              "en": "She has bought a bookshelf herself."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Haar informatie over de binnenkant klopt met de ring.",
+            "en": "Her information about the inside matches the ring."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-brief-aan-morgen",
+      "topic_id": "future-innovation",
+      "title": {
+        "nl": "De brief aan morgen",
+        "en": "The letter to tomorrow"
+      },
+      "plot_key": "Technical class writes imagined future letters; one practical wish for tactile bus notices produces present-day prototype, separates wish and testing.",
+      "lines": [
+        {
+          "nl": "In de techniekles moeten de cursisten een brief schrijven vanuit een dag in de toekomst.",
+          "en": "In technology class, the students have to write a letter from a day in the future."
+        },
+        {
+          "nl": "Veel brieven gaan over vliegende auto's en huizen die zichzelf schoonmaken.",
+          "en": "Many letters are about flying cars and houses that clean themselves."
+        },
+        {
+          "nl": "Nina schrijft over een bushalte waar haar blinde broer zonder hulp de juiste bus vindt.",
+          "en": "Nina writes about a bus stop where her blind brother finds the right bus without help."
+        },
+        {
+          "nl": "Een klasgenoot noemt dat minder spectaculair dan een auto boven de wolken.",
+          "en": "A classmate calls that less spectacular than a car above the clouds."
+        },
+        {
+          "nl": "De leerkracht vraagt welk onderdeel van elke droom ze vandaag al kunnen onderzoeken.",
+          "en": "The teacher asks which part of each dream they could already investigate today."
+        },
+        {
+          "nl": "Nina maakt met karton een eenvoudige knop en spreekt enkele duidelijke meldingen in.",
+          "en": "Nina makes a simple button out of cardboard and records a few clear announcements."
+        },
+        {
+          "nl": "Haar broer test het model en vertelt dat de knop herkenbaar moet zijn voordat je hem kunt gebruiken.",
+          "en": "Her brother tests the model and explains that the button must be recognisable before you can use it."
+        },
+        {
+          "nl": "Nina herschrijft haar brief: de toekomst begint nu met een knop die je ook kunt vinden.",
+          "en": "Nina rewrites her letter: the future now begins with a button that you can also find."
+        }
+      ],
+      "words": [
+        {
+          "term": "spectaculair",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "heel opvallend of indrukwekkend",
+            "en": "spectacular"
+          },
+          "example": {
+            "nl": "Een klasgenoot noemt dat minder spectaculair dan een auto boven de wolken.",
+            "en": "A classmate calls that less spectacular than a car above the clouds."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "onderzoeken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zorgvuldig bekijken om iets te leren of vast te stellen",
+            "en": "to investigate"
+          },
+          "example": {
+            "nl": "De leerkracht vraagt welk onderdeel van elke droom ze vandaag al kunnen onderzoeken.",
+            "en": "The teacher asks which part of each dream they could already investigate today."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de melding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kort bericht dat informatie geeft",
+            "en": "announcement; notification"
+          },
+          "example": {
+            "nl": "Nina maakt met karton een eenvoudige knop en spreekt enkele duidelijke meldingen in.",
+            "en": "Nina makes a simple button out of cardboard and records a few clear announcements."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Moeten ... voordat ...",
+            "en": "Must ... before ..."
+          },
+          "explanation": {
+            "nl": "Met voordat maak je duidelijk welke stap eerst nodig is.",
+            "en": "Voordat makes clear which step is necessary first."
+          },
+          "examples": [
+            {
+              "nl": "Haar broer test het model en vertelt dat de knop herkenbaar moet zijn voordat je hem kunt gebruiken.",
+              "en": "Her brother tests the model and explains that the button must be recognisable before you can use it."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk probleem wil Nina aanpakken?",
+            "en": "What problem does Nina want to tackle?"
+          },
+          "options": [
+            {
+              "nl": "Huizen die niet snel genoeg schoon worden.",
+              "en": "Houses that do not get clean quickly enough."
+            },
+            {
+              "nl": "Zelfstandig de juiste bus vinden met een visuele beperking.",
+              "en": "Finding the correct bus independently with a visual impairment."
+            },
+            {
+              "nl": "Auto's die te laag vliegen.",
+              "en": "Cars flying too low."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze wil dat haar blinde broer zonder hulp de juiste bus kan vinden.",
+            "en": "She wants her blind brother to be able to find the right bus without help."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat leert Nina uit de test?",
+            "en": "What does Nina learn from the test?"
+          },
+          "options": [
+            {
+              "nl": "Dat haar broer geen bus wil nemen.",
+              "en": "That her brother does not want to take the bus."
+            },
+            {
+              "nl": "Dat karton altijd onbruikbaar is.",
+              "en": "That cardboard is always unusable."
+            },
+            {
+              "nl": "Dat een bruikbare knop eerst vindbaar en herkenbaar moet zijn.",
+              "en": "That a useful button must first be findable and recognisable."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Haar broer wijst erop dat je de knop eerst moet kunnen vinden en herkennen.",
+            "en": "Her brother points out that you must first be able to find and recognise the button."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-buurt-achter-het-gordijn",
+      "topic_id": "society-community",
+      "title": {
+        "nl": "De buurt achter het gordijn",
+        "en": "The neighbourhood behind the curtain"
+      },
+      "plot_key": "New neighbour mistaken as unsociable through closed curtains turns out night-shift worker; evening lantern game lets participation without daytime disturbance.",
+      "lines": [
+        {
+          "nl": "In de nieuwe straat houdt het gezin van Hugo overdag bijna altijd de gordijnen dicht.",
+          "en": "In Hugo's new street, his family almost always keeps the curtains closed during the day."
+        },
+        {
+          "nl": "Bij de voorbereiding van het straatfeest vraagt een buur of ze liever geen contact hebben.",
+          "en": "During preparations for the street party, a neighbour asks whether they would rather avoid contact."
+        },
+        {
+          "nl": "Hugo legt uit dat zijn vrouw nachtdiensten werkt en pas in de ochtend kan slapen.",
+          "en": "Hugo explains that his wife works night shifts and can only sleep in the morning."
+        },
+        {
+          "nl": "Hun kinderen spelen daarom na school vaak bij familie, zodat het huis rustig blijft.",
+          "en": "Their children therefore often play with relatives after school so that the house stays quiet."
+        },
+        {
+          "nl": "De buur beseft dat het feest met muziek vanaf de middag net op haar slaaptijd valt.",
+          "en": "The neighbour realises that the party, with music from midday, falls exactly during her sleeping time."
+        },
+        {
+          "nl": "Samen bespreken ze een rustig begin en een wandeling met lampionnen na het avondeten.",
+          "en": "Together they discuss a quiet start and a lantern walk after dinner."
+        },
+        {
+          "nl": "Wanneer het donker wordt, komt Hugo's vrouw uitgerust naar buiten met zelfgemaakte lichtjes.",
+          "en": "When it gets dark, Hugo's wife comes outside well rested with homemade lights."
+        },
+        {
+          "nl": "De buren herkennen haar nu aan haar lach in plaats van aan de gesloten gordijnen.",
+          "en": "The neighbours now recognise her by her smile rather than by the closed curtains."
+        }
+      ],
+      "words": [
+        {
+          "term": "het gordijn",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "stof waarmee je een raam kunt afschermen",
+            "en": "curtain"
+          },
+          "example": {
+            "nl": "In de nieuwe straat houdt het gezin van Hugo overdag bijna altijd de gordijnen dicht.",
+            "en": "In Hugo's new street, his family almost always keeps the curtains closed during the day."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de nachtdienst",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een werkperiode tijdens de nacht",
+            "en": "night shift"
+          },
+          "example": {
+            "nl": "Hugo legt uit dat zijn vrouw nachtdiensten werkt en pas in de ochtend kan slapen.",
+            "en": "Hugo explains that his wife works night shifts and can only sleep in the morning."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "uitgerust",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet meer moe na genoeg rust",
+            "en": "well rested"
+          },
+          "example": {
+            "nl": "Wanneer het donker wordt, komt Hugo's vrouw uitgerust naar buiten met zelfgemaakte lichtjes.",
+            "en": "When it gets dark, Hugo's wife comes outside well rested with homemade lights."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zodat om een doel uit te leggen",
+            "en": "Zodat to explain an intended result"
+          },
+          "explanation": {
+            "nl": "Zodat kan uitleggen welk resultaat mensen met een handeling willen bereiken.",
+            "en": "Zodat can explain what result people want to achieve through an action."
+          },
+          "examples": [
+            {
+              "nl": "Hun kinderen spelen daarom na school vaak bij familie, zodat het huis rustig blijft.",
+              "en": "Their children therefore often play with relatives after school so that the house stays quiet."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat betekenen de gesloten gordijnen werkelijk?",
+            "en": "What do the closed curtains really mean?"
+          },
+          "options": [
+            {
+              "nl": "Er moet overdag iemand rustig kunnen slapen.",
+              "en": "Someone needs to sleep peacefully during the day."
+            },
+            {
+              "nl": "Het gezin wil verhuizen.",
+              "en": "The family wants to move."
+            },
+            {
+              "nl": "Er mag geen licht bij de planten komen.",
+              "en": "No light must reach the plants."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hugo's vrouw werkt 's nachts en slaapt in de ochtend.",
+            "en": "Hugo's wife works at night and sleeps in the morning."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke verandering helpt het gezin om mee te doen?",
+            "en": "What change helps the family participate?"
+          },
+          "options": [
+            {
+              "nl": "Het hele feest wordt afgelast.",
+              "en": "The whole party is cancelled."
+            },
+            {
+              "nl": "Er komt een rustig begin en later een lampionnenwandeling.",
+              "en": "There is a quiet start followed later by a lantern walk."
+            },
+            {
+              "nl": "Alle buren moeten zelf nachtdiensten werken.",
+              "en": "All the neighbours have to work night shifts themselves."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De rustige start beschermt haar slaap en 's avonds kan ze uitgerust aansluiten.",
+            "en": "The quiet start protects her sleep, and in the evening she can join in well rested."
+          }
+        }
+      ]
+    }
+  ]
+}

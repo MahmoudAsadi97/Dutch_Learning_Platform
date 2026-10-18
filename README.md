@@ -26,7 +26,9 @@ part of Reading. Old word, story and speaking bookmarks lead into the same works
 
 Each topic has **Prepare → Practise → Try it yourself** steps. The word reference is searchable and
 compact, with replay for Dutch words and examples. Topics appear twelve at a time, with search and theme
-filters. Saved-word review, personal episodes and saved situation conversations remain available as nested
+filters. Reading has a compact story chooser with Dutch and English title search and six stories per page.
+Each story keeps its own vocabulary, grammar examples and comprehension questions together. Saved-word
+review, personal episodes and saved situation conversations remain available as nested
 tools. Audio is generated only after an explicit action; video generation is disabled.
 
 Choose **Dutch** or **Dutch + English** in the header. Dutch remains the practice language. Existing
@@ -58,6 +60,11 @@ The separate editorial target of 200 distinct, reviewed stories per stage remain
 checks verify coverage and answer integrity; they cannot certify natural language, translation quality
 or CEFR placement. Content remains labelled as awaiting specialist language review.
 
+The story inventory counts original works across the guided course and stage libraries once. Reused
+source representations count as one story; short templates and flagged near-copies do not enter the
+Reading catalogue. Every counted eligible story must be selectable in its own stage. New reading batches
+contain original plots, parallel Dutch/English lines and preparation examples taken directly from the text.
+
 IELTS preparation resources inform the task patterns, not the language being taught or an examination
 claim. Stories, prompts and examples are original; commercial exam passages and audio are not copied.
 [Belgian level and exam references](docs/BELGIAN_ALIGNMENT.md) explain the NT2, ITNA and CNaVT context.
@@ -66,11 +73,13 @@ Validate the guided catalogue after content edits:
 
 ```bash
 python scripts/audit_guided_study.py --write-index
+python scripts/validate_story_quality.py --strict-canonical
 python scripts/validate_story_quality.py --require-targets
 ```
 
-The second command intentionally fails until the larger story target is met. Neither command grants
-assessment credit or establishes language accuracy.
+The final command intentionally fails until every stage meets the larger story target. The canonical
+check rejects structural defects in publishable readings while reporting problems retained in the older
+short banks. These commands do not grant assessment credit or establish language accuracy.
 
 ## Run locally
 

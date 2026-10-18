@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "a1-read-retour-met-bon",
+      "topic_id": "shopping",
+      "title": {
+        "nl": "Niet zomaar dezelfde trui",
+        "en": "Not quite the same jumper"
+      },
+      "plot_key": "A shopper checks a receipt and exchanges a near-identical gift for the correct size.",
+      "lines": [
+        {
+          "nl": "Sam krijgt van zijn broer een groene trui.",
+          "en": "Sam receives a green jumper from his brother."
+        },
+        {
+          "nl": "De kleur is mooi, maar de mouwen zijn kort.",
+          "en": "The colour is nice, but the sleeves are short."
+        },
+        {
+          "nl": "Samen gaan ze met de bon naar de winkel.",
+          "en": "Together, they go to the shop with the receipt."
+        },
+        {
+          "nl": "In het rek hangen precies dezelfde truien.",
+          "en": "Exactly the same jumpers hang on the rack."
+        },
+        {
+          "nl": "De medewerker kijkt eerst naar het maatkaartje.",
+          "en": "The staff member first looks at the size label."
+        },
+        {
+          "nl": "Hij geeft Sam een grotere maat om te passen.",
+          "en": "He gives Sam a larger size to try on."
+        },
+        {
+          "nl": "Sam steekt zijn armen nu helemaal naar voren.",
+          "en": "Sam now stretches his arms right out in front."
+        },
+        {
+          "nl": "De mouwen blijven goed en de glimlach ook.",
+          "en": "The sleeves stay right, and so does the smile."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bon",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "papier dat je aankoop bewijst",
+            "en": "receipt"
+          },
+          "example": {
+            "nl": "Samen gaan ze met de bon naar de winkel.",
+            "en": "Together, they go to the shop with the receipt."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de maat",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "aanduiding van de grootte van kleding",
+            "en": "size"
+          },
+          "example": {
+            "nl": "Hij geeft Sam een grotere maat om te passen.",
+            "en": "He gives Sam a larger size to try on."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de mouw",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel van een kledingstuk rond de arm",
+            "en": "sleeve"
+          },
+          "example": {
+            "nl": "De kleur is mooi, maar de mouwen zijn kort.",
+            "en": "The colour is nice, but the sleeves are short."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eigenschap",
+            "en": "A quality"
+          },
+          "explanation": {
+            "nl": "Het bijvoeglijk naamwoord vertelt hoe iets of iemand is.",
+            "en": "The adjective tells you what something or someone is like."
+          },
+          "examples": [
+            {
+              "nl": "De kleur is mooi, maar de mouwen zijn kort.",
+              "en": "The colour is nice, but the sleeves are short."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom gaan ze naar de winkel?",
+            "en": "Why do they go to the shop?"
+          },
+          "options": [
+            {
+              "nl": "De mouwen zijn kort",
+              "en": "The sleeves are short"
+            },
+            {
+              "nl": "De trui is blauw",
+              "en": "The jumper is blue"
+            },
+            {
+              "nl": "De bon is weg",
+              "en": "The receipt is missing"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De kleur is mooi, maar de mouwen zijn kort.",
+            "en": "The colour is nice, but the sleeves are short."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat geeft de medewerker?",
+            "en": "What does the staff member give?"
+          },
+          "options": [
+            {
+              "nl": "Een kleinere maat",
+              "en": "A smaller size"
+            },
+            {
+              "nl": "Een grotere maat",
+              "en": "A larger size"
+            },
+            {
+              "nl": "Een andere kleur",
+              "en": "A different colour"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij geeft Sam een grotere maat om te passen.",
+            "en": "He gives Sam a larger size to try on."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-fiets-en-bakfiets",
+      "topic_id": "transportation",
+      "title": {
+        "nl": "Een brede bocht",
+        "en": "A wide turn"
+      },
+      "plot_key": "A bicycle rider accompanying a cargo bike learns to allow more turning space.",
+      "lines": [
+        {
+          "nl": "Lien fietst naast haar broer naar de markt.",
+          "en": "Lien cycles beside her brother to the market."
+        },
+        {
+          "nl": "Hij rijdt vandaag met een grote bakfiets.",
+          "en": "Today he is riding a large cargo bike."
+        },
+        {
+          "nl": "Bij de bocht rijdt Lien dicht naast hem.",
+          "en": "At the bend, Lien rides close beside him."
+        },
+        {
+          "nl": "Haar broer stopt en zet een voet neer.",
+          "en": "Her brother stops and puts one foot down."
+        },
+        {
+          "nl": "Hij vraagt wat meer ruimte aan de zijkant.",
+          "en": "He asks for a little more room at the side."
+        },
+        {
+          "nl": "Lien wacht achter hem tot hij kan draaien.",
+          "en": "Lien waits behind him until he can turn."
+        },
+        {
+          "nl": "Daarna fietsen ze rustig verder achter elkaar.",
+          "en": "Afterwards, they continue calmly one behind the other."
+        },
+        {
+          "nl": "Op de markt past al hun fruit in de bak.",
+          "en": "At the market, all their fruit fits in the cargo box."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bakfiets",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "fiets met een grote bak voor personen of spullen",
+            "en": "cargo bike"
+          },
+          "example": {
+            "nl": "Hij rijdt vandaag met een grote bakfiets.",
+            "en": "Today he is riding a large cargo bike."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de bocht",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plaats waar een weg van richting verandert",
+            "en": "bend"
+          },
+          "example": {
+            "nl": "Bij de bocht rijdt Lien dicht naast hem.",
+            "en": "At the bend, Lien rides close beside him."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "achter elkaar",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "de ene na de andere",
+            "en": "one behind the other"
+          },
+          "example": {
+            "nl": "Daarna fietsen ze rustig verder achter elkaar.",
+            "en": "Afterwards, they continue calmly one behind the other."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Lien wacht achter hem tot hij kan draaien.",
+              "en": "Lien waits behind him until he can turn."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom stopt de broer bij de bocht?",
+            "en": "Why does the brother stop at the bend?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil fruit eten",
+              "en": "He wants to eat fruit"
+            },
+            {
+              "nl": "Hij is thuis",
+              "en": "He is home"
+            },
+            {
+              "nl": "Hij heeft meer ruimte nodig",
+              "en": "He needs more room"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij vraagt wat meer ruimte aan de zijkant.",
+            "en": "He asks for a little more room at the side."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe fietsen ze daarna?",
+            "en": "How do they cycle afterwards?"
+          },
+          "options": [
+            {
+              "nl": "Achter elkaar",
+              "en": "One behind the other"
+            },
+            {
+              "nl": "Dicht naast elkaar",
+              "en": "Close side by side"
+            },
+            {
+              "nl": "Allebei links",
+              "en": "Both on the left"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Daarna fietsen ze rustig verder achter elkaar.",
+            "en": "Afterwards, they continue calmly one behind the other."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-raam-bij-regen",
+      "topic_id": "housing",
+      "title": {
+        "nl": "Een geluid onder het raam",
+        "en": "A sound beneath the window"
+      },
+      "plot_key": "Housemates discover rain is dripping into a bucket from an open window and close it before wiping up.",
+      "lines": [
+        {
+          "nl": "In de kamer klinkt steeds een kleine tik.",
+          "en": "A small tapping sound keeps coming from the room."
+        },
+        {
+          "nl": "Lara zoekt eerst naar de klok aan de muur.",
+          "en": "Lara first looks for the clock on the wall."
+        },
+        {
+          "nl": "Haar huisgenoot wijst naar een emmer op de vloer.",
+          "en": "Her housemate points to a bucket on the floor."
+        },
+        {
+          "nl": "Er vallen druppels van de vensterbank in.",
+          "en": "Drops are falling into it from the windowsill."
+        },
+        {
+          "nl": "Het raam staat nog op een kier.",
+          "en": "The window is still slightly open."
+        },
+        {
+          "nl": "Samen sluiten ze het raam helemaal.",
+          "en": "Together, they close the window fully."
+        },
+        {
+          "nl": "Lara droogt de vensterbank met een doek.",
+          "en": "Lara dries the windowsill with a cloth."
+        },
+        {
+          "nl": "Ze controleren of er nog nieuw water komt.",
+          "en": "They check whether any more water is coming in."
+        }
+      ],
+      "words": [
+        {
+          "term": "de druppel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine hoeveelheid vloeistof in een bolletje",
+            "en": "drop"
+          },
+          "example": {
+            "nl": "Er vallen druppels van de vensterbank in.",
+            "en": "Drops are falling into it from the windowsill."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de vensterbank",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "rand onder een raam",
+            "en": "windowsill"
+          },
+          "example": {
+            "nl": "Er vallen druppels van de vensterbank in.",
+            "en": "Drops are falling into it from the windowsill."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "op een kier",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "een klein beetje open",
+            "en": "slightly open"
+          },
+          "example": {
+            "nl": "Het raam staat nog op een kier.",
+            "en": "The window is still slightly open."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ze controleren of er nog nieuw water komt.",
+              "en": "They check whether any more water is coming in."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar komt het tikken vandaan?",
+            "en": "Where does the tapping come from?"
+          },
+          "options": [
+            {
+              "nl": "Druppels in een emmer",
+              "en": "Drops in a bucket"
+            },
+            {
+              "nl": "De klok",
+              "en": "The clock"
+            },
+            {
+              "nl": "Een telefoon",
+              "en": "A phone"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Er vallen druppels van de vensterbank in.",
+            "en": "Drops are falling into it from the windowsill."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen ze eerst aan het raam?",
+            "en": "What do they first do to the window?"
+          },
+          "options": [
+            {
+              "nl": "Schilderen",
+              "en": "Paint it"
+            },
+            {
+              "nl": "Helemaal sluiten",
+              "en": "Close it fully"
+            },
+            {
+              "nl": "Groter maken",
+              "en": "Make it bigger"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Samen sluiten ze het raam helemaal.",
+            "en": "Together, they close the window fully."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-stad-met-een-foto",
+      "topic_id": "cities-countries",
+      "title": {
+        "nl": "Hetzelfde plein, andere kant",
+        "en": "The same square, another side"
+      },
+      "plot_key": "A visitor meets a friend by matching a fountain photograph from the opposite viewpoint.",
+      "lines": [
+        {
+          "nl": "Jules wacht op het grote plein in Kortrijk.",
+          "en": "Jules waits in the large square in Kortrijk."
+        },
+        {
+          "nl": "Zijn vriendin stuurt een foto van haar zitplaats.",
+          "en": "His girlfriend sends a photo of where she is sitting."
+        },
+        {
+          "nl": "Op haar foto staat een fontein vooraan.",
+          "en": "The fountain is in the foreground of her photo."
+        },
+        {
+          "nl": "Jules ziet de fontein achter een bank.",
+          "en": "Jules sees the fountain behind a bench."
+        },
+        {
+          "nl": "Hij loopt langzaam om de fontein heen.",
+          "en": "He walks slowly around the fountain."
+        },
+        {
+          "nl": "Nu staan de huizen net als op haar foto.",
+          "en": "Now the houses line up just as in her photo."
+        },
+        {
+          "nl": "Zijn vriendin zwaait vanaf de andere kant.",
+          "en": "His girlfriend waves from the other side."
+        },
+        {
+          "nl": "Jules zet zijn tas naast haar op de grond.",
+          "en": "Jules puts his bag on the ground beside her."
+        }
+      ],
+      "words": [
+        {
+          "term": "het plein",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "open ruimte tussen gebouwen",
+            "en": "square"
+          },
+          "example": {
+            "nl": "Jules wacht op het grote plein in Kortrijk.",
+            "en": "Jules waits in the large square in Kortrijk."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de fontein",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bouwwerk waar water uit spuit",
+            "en": "fountain"
+          },
+          "example": {
+            "nl": "Op haar foto staat een fontein vooraan.",
+            "en": "The fountain is in the foreground of her photo."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de zitplaats",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plek om te zitten",
+            "en": "seat"
+          },
+          "example": {
+            "nl": "Zijn vriendin stuurt een foto van haar zitplaats.",
+            "en": "His girlfriend sends a photo of where she is sitting."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Zijn vriendin zwaait vanaf de andere kant.",
+              "en": "His girlfriend waves from the other side."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat staat vooraan op de foto?",
+            "en": "What is in the foreground of the photo?"
+          },
+          "options": [
+            {
+              "nl": "Een huis",
+              "en": "A house"
+            },
+            {
+              "nl": "Een boom",
+              "en": "A tree"
+            },
+            {
+              "nl": "Een fontein",
+              "en": "A fountain"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Op haar foto staat een fontein vooraan.",
+            "en": "The fountain is in the foreground of her photo."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar zit de vriendin?",
+            "en": "Where is the girlfriend sitting?"
+          },
+          "options": [
+            {
+              "nl": "Aan de andere kant",
+              "en": "On the other side"
+            },
+            {
+              "nl": "Binnen in een winkel",
+              "en": "Inside a shop"
+            },
+            {
+              "nl": "Boven op een balkon",
+              "en": "Up on a balcony"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn vriendin zwaait vanaf de andere kant.",
+            "en": "His girlfriend waves from the other side."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-extra-stoel-aan-tafel",
+      "topic_id": "social-issues",
+      "title": {
+        "nl": "De maaltijd zonder prijskaartje",
+        "en": "The meal without a price tag"
+      },
+      "plot_key": "A community meal volunteer discovers a guest can contribute by setting tables rather than paying.",
+      "lines": [
+        {
+          "nl": "In het buurthuis kookt een groep warme soep.",
+          "en": "In the community centre, a group cooks hot soup."
+        },
+        {
+          "nl": "Aan de deur vraagt een man naar de prijs.",
+          "en": "At the door, a man asks about the price."
+        },
+        {
+          "nl": "Vandaag heeft hij weinig geld bij zich.",
+          "en": "Today he has little money with him."
+        },
+        {
+          "nl": "De vrijwilliger zegt dat iedereen mag aanschuiven.",
+          "en": "The volunteer says everyone is welcome to join."
+        },
+        {
+          "nl": "De man vraagt of hij iets kan doen.",
+          "en": "The man asks whether he can do something."
+        },
+        {
+          "nl": "Hij zet samen met haar de bekers klaar.",
+          "en": "Together with her, he puts out the cups."
+        },
+        {
+          "nl": "Daarna eet hij tussen de andere gasten.",
+          "en": "Afterwards, he eats among the other guests."
+        },
+        {
+          "nl": "Na de soep blijven ze nog even praten.",
+          "en": "After the soup, they stay and chat for a while."
+        }
+      ],
+      "words": [
+        {
+          "term": "de vrijwilliger",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die zonder loon helpt",
+            "en": "volunteer"
+          },
+          "example": {
+            "nl": "De vrijwilliger zegt dat iedereen mag aanschuiven.",
+            "en": "The volunteer says everyone is welcome to join."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "aanschuiven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "erbij komen zitten",
+            "en": "to join others at a table"
+          },
+          "example": {
+            "nl": "De vrijwilliger zegt dat iedereen mag aanschuiven.",
+            "en": "The volunteer says everyone is welcome to join."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de gast",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die op bezoek of te eten komt",
+            "en": "guest"
+          },
+          "example": {
+            "nl": "Daarna eet hij tussen de andere gasten.",
+            "en": "Afterwards, he eats among the other guests."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "De man vraagt of hij iets kan doen.",
+              "en": "The man asks whether he can do something."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt de groep klaar?",
+            "en": "What does the group prepare?"
+          },
+          "options": [
+            {
+              "nl": "Warme soep",
+              "en": "Hot soup"
+            },
+            {
+              "nl": "Alleen koffie",
+              "en": "Only coffee"
+            },
+            {
+              "nl": "Broodjes kaas",
+              "en": "Cheese rolls"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In het buurthuis kookt een groep warme soep.",
+            "en": "In the community centre, a group cooks hot soup."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe helpt de man?",
+            "en": "How does the man help?"
+          },
+          "options": [
+            {
+              "nl": "Hij koopt een stoel",
+              "en": "He buys a chair"
+            },
+            {
+              "nl": "Hij zet bekers klaar",
+              "en": "He puts out cups"
+            },
+            {
+              "nl": "Hij rijdt een bus",
+              "en": "He drives a bus"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij zet samen met haar de bekers klaar.",
+            "en": "Together with her, he puts out the cups."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-naam-vriend-in-rumoer",
+      "topic_id": "communication",
+      "title": {
+        "nl": "Niet harder, maar duidelijker",
+        "en": "Not louder, but clearer"
+      },
+      "plot_key": "Friends in a noisy hall move to a quiet doorway and repeat an appointment clearly.",
+      "lines": [
+        {
+          "nl": "In de zaal praten veel mensen tegelijk.",
+          "en": "Many people are talking at once in the hall."
+        },
+        {
+          "nl": "Bas vertelt Noor waar ze morgen afspreken.",
+          "en": "Bas tells Noor where they are meeting tomorrow."
+        },
+        {
+          "nl": "Zij verstaat alleen het woord station.",
+          "en": "She only catches the word station."
+        },
+        {
+          "nl": "Bas wil de hele zin harder herhalen.",
+          "en": "Bas wants to repeat the whole sentence more loudly."
+        },
+        {
+          "nl": "Noor wijst naar de rustige gang ernaast.",
+          "en": "Noor points to the quiet hall beside them."
+        },
+        {
+          "nl": "Daar zegt Bas de plaats en tijd opnieuw.",
+          "en": "There, Bas says the place and time again."
+        },
+        {
+          "nl": "Noor herhaalt: hoofdingang, morgen om tien uur.",
+          "en": "Noor repeats: main entrance, tomorrow at ten."
+        },
+        {
+          "nl": "Nu schrijven ze allebei dezelfde afspraak op.",
+          "en": "Now they both write down the same arrangement."
+        }
+      ],
+      "words": [
+        {
+          "term": "herhalen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "nog een keer zeggen of doen",
+            "en": "to repeat"
+          },
+          "example": {
+            "nl": "Bas wil de hele zin harder herhalen.",
+            "en": "Bas wants to repeat the whole sentence more loudly."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de hoofdingang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "belangrijkste ingang van een gebouw",
+            "en": "main entrance"
+          },
+          "example": {
+            "nl": "Noor herhaalt: hoofdingang, morgen om tien uur.",
+            "en": "Noor repeats: main entrance, tomorrow at ten."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "afspreken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "tijd en plaats kiezen om elkaar te zien",
+            "en": "to arrange to meet"
+          },
+          "example": {
+            "nl": "Bas vertelt Noor waar ze morgen afspreken.",
+            "en": "Bas tells Noor where they are meeting tomorrow."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Noor herhaalt: hoofdingang, morgen om tien uur.",
+              "en": "Noor repeats: main entrance, tomorrow at ten."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar gaan Bas en Noor beter praten?",
+            "en": "Where do Bas and Noor go to talk more clearly?"
+          },
+          "options": [
+            {
+              "nl": "Op het podium",
+              "en": "On the stage"
+            },
+            {
+              "nl": "Buiten bij de bus",
+              "en": "Outside by the bus"
+            },
+            {
+              "nl": "In de rustige gang",
+              "en": "In the quiet hallway"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Noor wijst naar de rustige gang ernaast.",
+            "en": "Noor points to the quiet hall beside them."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe laat spreken ze af?",
+            "en": "What time do they arrange to meet?"
+          },
+          "options": [
+            {
+              "nl": "Om tien uur",
+              "en": "At ten"
+            },
+            {
+              "nl": "Om twaalf uur",
+              "en": "At twelve"
+            },
+            {
+              "nl": "Om negen uur",
+              "en": "At nine"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Noor herhaalt: hoofdingang, morgen om tien uur.",
+            "en": "Noor repeats: main entrance, tomorrow at ten."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-foto-na-toestemming",
+      "topic_id": "social-media",
+      "title": {
+        "nl": "De foto blijft bij ons",
+        "en": "The photo stays with us"
+      },
+      "plot_key": "A friend respects another person's choice not to have a celebration photograph posted publicly.",
+      "lines": [
+        {
+          "nl": "Op het feest maakt Aline een groepsfoto.",
+          "en": "At the celebration, Aline takes a group photo."
+        },
+        {
+          "nl": "Ze wil de foto meteen online zetten.",
+          "en": "She wants to post the photo online immediately."
+        },
+        {
+          "nl": "Haar vriend Jonas kijkt naar zijn eigen gezicht.",
+          "en": "Her friend Jonas looks at his own face."
+        },
+        {
+          "nl": "Hij vraagt of zij de foto privé houdt.",
+          "en": "He asks whether she can keep the photo private."
+        },
+        {
+          "nl": "Aline vraagt eerst wat de anderen willen.",
+          "en": "Aline first asks what the others want."
+        },
+        {
+          "nl": "Samen kiezen ze een foto van de versiering.",
+          "en": "Together, they choose a photograph of the decorations."
+        },
+        {
+          "nl": "Die plaatsen ze zonder gezichten op hun pagina.",
+          "en": "They post that one on their page without faces."
+        },
+        {
+          "nl": "De groepsfoto bewaren ze alleen voor zichzelf.",
+          "en": "They keep the group photograph only for themselves."
+        }
+      ],
+      "words": [
+        {
+          "term": "privé",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "alleen voor bepaalde mensen",
+            "en": "private"
+          },
+          "example": {
+            "nl": "Hij vraagt of zij de foto privé houdt.",
+            "en": "He asks whether she can keep the photo private."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de versiering",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "dingen die een ruimte feestelijk maken",
+            "en": "decorations"
+          },
+          "example": {
+            "nl": "Samen kiezen ze een foto van de versiering.",
+            "en": "Together, they choose a photograph of the decorations."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "online",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "op het internet",
+            "en": "online"
+          },
+          "example": {
+            "nl": "Ze wil de foto meteen online zetten.",
+            "en": "She wants to post the photo online immediately."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Ze wil de foto meteen online zetten.",
+              "en": "She wants to post the photo online immediately."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat vraagt Jonas?",
+            "en": "What does Jonas ask?"
+          },
+          "options": [
+            {
+              "nl": "De foto privé houden",
+              "en": "Keep the photo private"
+            },
+            {
+              "nl": "De foto groter maken",
+              "en": "Make the photo bigger"
+            },
+            {
+              "nl": "Iedereen bellen",
+              "en": "Call everyone"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij vraagt of zij de foto privé houdt.",
+            "en": "He asks whether she can keep the photo private."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat plaatsen ze online?",
+            "en": "What do they post online?"
+          },
+          "options": [
+            {
+              "nl": "De groepsfoto",
+              "en": "The group photograph"
+            },
+            {
+              "nl": "De versiering",
+              "en": "The decorations"
+            },
+            {
+              "nl": "Een pasfoto",
+              "en": "A passport photo"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Die plaatsen ze zonder gezichten op hun pagina.",
+            "en": "They post that one on their page without faces."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-spel-voor-nieuweling",
+      "topic_id": "gaming",
+      "title": {
+        "nl": "Eerst één oefenronde",
+        "en": "First one practice round"
+      },
+      "plot_key": "An experienced gamer slows down and offers a no-score practice round to a beginner.",
+      "lines": [
+        {
+          "nl": "Timo speelt graag een racespel op zijn scherm.",
+          "en": "Timo enjoys playing a racing game on his screen."
+        },
+        {
+          "nl": "Zijn zus wil voor het eerst meedoen.",
+          "en": "His sister wants to join in for the first time."
+        },
+        {
+          "nl": "Bij de start rijdt haar auto achteruit.",
+          "en": "At the start, her car goes backwards."
+        },
+        {
+          "nl": "Timo wint, maar zijn zus heeft geen plezier.",
+          "en": "Timo wins, but his sister is not having fun."
+        },
+        {
+          "nl": "Hij kiest nu een ronde zonder punten.",
+          "en": "He now selects a round without points."
+        },
+        {
+          "nl": "Zijn zus oefent alleen remmen en sturen.",
+          "en": "His sister practises only braking and steering."
+        },
+        {
+          "nl": "Timo rijdt langzaam en wacht bij elke bocht.",
+          "en": "Timo drives slowly and waits at every bend."
+        },
+        {
+          "nl": "Daarna vraagt zij zelf om een echte race.",
+          "en": "Afterwards, she asks for a real race herself."
+        }
+      ],
+      "words": [
+        {
+          "term": "remmen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een voertuig langzamer laten gaan",
+            "en": "to brake"
+          },
+          "example": {
+            "nl": "Zijn zus oefent alleen remmen en sturen.",
+            "en": "His sister practises only braking and steering."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "sturen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "de richting van een voertuig bepalen",
+            "en": "to steer"
+          },
+          "example": {
+            "nl": "Zijn zus oefent alleen remmen en sturen.",
+            "en": "His sister practises only braking and steering."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de ronde",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "één volledige beurt of route in een spel",
+            "en": "round"
+          },
+          "example": {
+            "nl": "Hij kiest nu een ronde zonder punten.",
+            "en": "He now selects a round without points."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Timo rijdt langzaam en wacht bij elke bocht.",
+              "en": "Timo drives slowly and waits at every bend."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat gaat er bij de eerste start mis?",
+            "en": "What goes wrong at the first start?"
+          },
+          "options": [
+            {
+              "nl": "De auto verdwijnt",
+              "en": "The car disappears"
+            },
+            {
+              "nl": "Het scherm valt uit",
+              "en": "The screen turns off"
+            },
+            {
+              "nl": "De auto rijdt achteruit",
+              "en": "The car goes backwards"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Bij de start rijdt haar auto achteruit.",
+            "en": "At the start, her car goes backwards."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat kiest Timo daarna?",
+            "en": "What does Timo choose next?"
+          },
+          "options": [
+            {
+              "nl": "Een ronde zonder punten",
+              "en": "A round without points"
+            },
+            {
+              "nl": "Een moeilijker spel",
+              "en": "A harder game"
+            },
+            {
+              "nl": "Een film",
+              "en": "A film"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij kiest nu een ronde zonder punten.",
+            "en": "He now selects a round without points."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-chatbot-en-bloem",
+      "topic_id": "artificial-intelligence",
+      "title": {
+        "nl": "De computer kent mijn oma niet",
+        "en": "The computer does not know my grandma"
+      },
+      "plot_key": "A learner edits a generic generated birthday greeting to include a true personal detail.",
+      "lines": [
+        {
+          "nl": "Emma vraagt een computerprogramma om een verjaardagsgroet.",
+          "en": "Emma asks a computer program for a birthday greeting."
+        },
+        {
+          "nl": "Er verschijnt een tekst over reizen en sport.",
+          "en": "A text about travel and sport appears."
+        },
+        {
+          "nl": "Maar oma houdt vooral van haar kleine tuin.",
+          "en": "But Grandma mainly loves her little garden."
+        },
+        {
+          "nl": "Emma leest de woorden nog eens aandachtig.",
+          "en": "Emma reads the words carefully once more."
+        },
+        {
+          "nl": "Ze haalt de zinnen over reizen weg.",
+          "en": "She removes the sentences about travel."
+        },
+        {
+          "nl": "Zelf schrijft ze over oma's rode rozen.",
+          "en": "She writes about Grandma's red roses herself."
+        },
+        {
+          "nl": "Ook zet ze haar eigen naam onderaan.",
+          "en": "She also puts her own name at the bottom."
+        },
+        {
+          "nl": "De kaart klinkt nu als een groet van Emma.",
+          "en": "The card now sounds like a greeting from Emma."
+        }
+      ],
+      "words": [
+        {
+          "term": "het computerprogramma",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "software die een taak op een computer uitvoert",
+            "en": "computer program"
+          },
+          "example": {
+            "nl": "Emma vraagt een computerprogramma om een verjaardagsgroet.",
+            "en": "Emma asks a computer program for a birthday greeting."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de verjaardagsgroet",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "goede wens voor iemands verjaardag",
+            "en": "birthday greeting"
+          },
+          "example": {
+            "nl": "Emma vraagt een computerprogramma om een verjaardagsgroet.",
+            "en": "Emma asks a computer program for a birthday greeting."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "weghalen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets verwijderen",
+            "en": "to remove"
+          },
+          "example": {
+            "nl": "Ze haalt de zinnen over reizen weg.",
+            "en": "She removes the sentences about travel."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Ze haalt de zinnen over reizen weg.",
+              "en": "She removes the sentences about travel."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat past niet bij oma?",
+            "en": "What does not fit Grandma?"
+          },
+          "options": [
+            {
+              "nl": "Reizen en sport",
+              "en": "Travel and sport"
+            },
+            {
+              "nl": "Haar tuin",
+              "en": "Her garden"
+            },
+            {
+              "nl": "Rode rozen",
+              "en": "Red roses"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Er verschijnt een tekst over reizen en sport.",
+            "en": "A text about travel and sport appears."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat schrijft Emma zelf?",
+            "en": "What does Emma write herself?"
+          },
+          "options": [
+            {
+              "nl": "Een sportuitslag",
+              "en": "A sports result"
+            },
+            {
+              "nl": "Iets over rode rozen",
+              "en": "Something about red roses"
+            },
+            {
+              "nl": "Een reisplan",
+              "en": "A travel plan"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zelf schrijft ze over oma's rode rozen.",
+            "en": "She writes about Grandma's red roses herself."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-maan-door-het-raam",
+      "topic_id": "space-astronomy",
+      "title": {
+        "nl": "Het witte rondje achter de wolk",
+        "en": "The white circle behind the cloud"
+      },
+      "plot_key": "A child looking for the moon learns to wait for a moving cloud instead of changing windows.",
+      "lines": [
+        {
+          "nl": "Vanuit haar bed zoekt Noor de maan.",
+          "en": "From her bed, Noor looks for the moon."
+        },
+        {
+          "nl": "Soms ziet ze hem, maar vandaag nog niet.",
+          "en": "Sometimes she sees it, but not yet today."
+        },
+        {
+          "nl": "Ze loopt naar het raam in de gang.",
+          "en": "She walks to the window in the hallway."
+        },
+        {
+          "nl": "Ook daar hangt alleen een grijze wolk.",
+          "en": "There is only a grey cloud there too."
+        },
+        {
+          "nl": "Haar papa vraagt of ze even wil wachten.",
+          "en": "Her dad asks whether she wants to wait a moment."
+        },
+        {
+          "nl": "De wind schuift de wolk langzaam opzij.",
+          "en": "The wind slowly moves the cloud aside."
+        },
+        {
+          "nl": "Daar ziet Noor een helder wit rondje.",
+          "en": "There, Noor sees a bright white circle."
+        },
+        {
+          "nl": "Noor kijkt nog even voor ze gaat slapen.",
+          "en": "Noor watches for a moment before going to sleep."
+        }
+      ],
+      "words": [
+        {
+          "term": "de maan",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hemellichaam dat om de aarde draait",
+            "en": "moon"
+          },
+          "example": {
+            "nl": "Vanuit haar bed zoekt Noor de maan.",
+            "en": "From her bed, Noor looks for the moon."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de wolk",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "zichtbare verzameling waterdruppeltjes in de lucht",
+            "en": "cloud"
+          },
+          "example": {
+            "nl": "Ook daar hangt alleen een grijze wolk.",
+            "en": "There is only a grey cloud there too."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "helder",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "duidelijk licht gevend",
+            "en": "bright"
+          },
+          "example": {
+            "nl": "Daar ziet Noor een helder wit rondje.",
+            "en": "There, Noor sees a bright white circle."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Haar papa vraagt of ze even wil wachten.",
+              "en": "Her dad asks whether she wants to wait a moment."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verbergt de maan?",
+            "en": "What hides the moon?"
+          },
+          "options": [
+            {
+              "nl": "Een huis",
+              "en": "A house"
+            },
+            {
+              "nl": "Een gordijn",
+              "en": "A curtain"
+            },
+            {
+              "nl": "Een wolk",
+              "en": "A cloud"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ook daar hangt alleen een grijze wolk.",
+            "en": "There is only a grey cloud there too."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat gebeurt er wanneer ze wachten?",
+            "en": "What happens while they wait?"
+          },
+          "options": [
+            {
+              "nl": "De wolk schuift opzij",
+              "en": "The cloud moves aside"
+            },
+            {
+              "nl": "Het wordt ochtend",
+              "en": "Morning comes"
+            },
+            {
+              "nl": "Het raam gaat dicht",
+              "en": "The window closes"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De wind schuift de wolk langzaam opzij.",
+            "en": "The wind slowly moves the cloud aside."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-afscheidskaart-op-de-printer",
+      "topic_id": "workplace-communication",
+      "title": {
+        "nl": "De kaart op de printer",
+        "en": "The card on the printer"
+      },
+      "plot_key": "An employee misreads a retirement card as evidence of his own dismissal after seeing an ambiguous draft, then asks the manager directly before alarming the team.",
+      "lines": [
+        {
+          "nl": "Op de gedeelde printer vond Tom een kaart met de woorden bedankt voor alle jaren en onderaan een leeg vak voor een naam.",
+          "en": "On the shared printer Tom found a card bearing the words thank you for all the years and an empty space for a name at the bottom."
+        },
+        {
+          "nl": "Omdat zijn contract binnenkort besproken zou worden, dacht hij meteen dat zijn leidinggevende al een afscheid aan het voorbereiden was.",
+          "en": "Because his contract was due to be discussed soon, he immediately thought his manager was already preparing a farewell."
+        },
+        {
+          "nl": "Hij legde de kaart terug en merkte de rest van de ochtend vooral de gesprekken op die stilvielen zodra hij binnenkwam.",
+          "en": "He put the card back and for the rest of the morning mainly noticed conversations that stopped whenever he entered."
+        },
+        {
+          "nl": "Een collega vroeg of hij woensdag iets kon meebrengen voor een klein feest, wat hij als laatste bevestiging van zijn vermoeden hoorde.",
+          "en": "A colleague asked whether he could bring something for a small party on Wednesday, which he heard as final confirmation of his suspicion."
+        },
+        {
+          "nl": "In plaats van een boos groepsbericht te schrijven, vroeg hij zijn leidinggevende of het gesprek over zijn contract al beslist was.",
+          "en": "Instead of writing an angry group message, he asked his manager whether the discussion about his contract had already been decided."
+        },
+        {
+          "nl": "Zij antwoordde verbaasd dat de kaart voor de magazijnier was, die na achtendertig jaar met pensioen ging en nog van niets wist.",
+          "en": "She replied in surprise that the card was for the storekeeper, who was retiring after thirty-eight years and did not yet know anything about it."
+        },
+        {
+          "nl": "Toms eigen gesprek bleek nog steeds open te liggen, wat hem niet volledig geruststelde maar wel van een onjuist afscheid bevrijdde.",
+          "en": "Tom's own discussion was still undecided, which did not completely reassure him but did free him from an incorrect farewell."
+        },
+        {
+          "nl": "Woensdag bracht hij taart mee en hield hij zijn vragen over zijn eigen toekomst voor een vergadering waarin ze werkelijk thuishoorden.",
+          "en": "On Wednesday he brought cake and saved the questions about his own future for a meeting where they actually belonged."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bevestiging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat een vermoeden of afspraak lijkt te ondersteunen",
+            "en": "confirmation"
+          },
+          "example": {
+            "nl": "Een collega vroeg of hij woensdag iets kon meebrengen voor een klein feest, wat hij als laatste bevestiging van zijn vermoeden hoorde.",
+            "en": "A colleague asked whether he could bring something for a small party on Wednesday, which he heard as final confirmation of his suspicion."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "geruststellen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iemands ongerustheid verminderen",
+            "en": "to reassure"
+          },
+          "example": {
+            "nl": "Toms eigen gesprek bleek nog steeds open te liggen, wat hem niet volledig geruststelde maar wel van een onjuist afscheid bevrijdde.",
+            "en": "Tom's own discussion was still undecided, which did not completely reassure him but did free him from an incorrect farewell."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het vermoeden",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een gedachte die nog niet bewezen is",
+            "en": "suspicion"
+          },
+          "example": {
+            "nl": "Een collega vroeg of hij woensdag iets kon meebrengen voor een klein feest, wat hij als laatste bevestiging van zijn vermoeden hoorde.",
+            "en": "A colleague asked whether he could bring something for a small party on Wednesday, which he heard as final confirmation of his suspicion."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zodra voor onmiddellijk daarna",
+            "en": "As soon as"
+          },
+          "explanation": {
+            "nl": "Zodra verbindt hier zijn binnenkomen met het stilvallen dat hij opmerkt.",
+            "en": "Zodra connects his entering with the falling silent that he notices."
+          },
+          "examples": [
+            {
+              "nl": "Hij legde de kaart terug en merkte de rest van de ochtend vooral de gesprekken op die stilvielen zodra hij binnenkwam.",
+              "en": "He put the card back and for the rest of the morning mainly noticed conversations that stopped whenever he entered."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom lijken verschillende gebeurtenissen voor Tom één patroon?",
+            "en": "Why do several events seem like one pattern to Tom?"
+          },
+          "options": [
+            {
+              "nl": "Hij beoordeelt ze vanuit zijn onzekerheid over zijn contract.",
+              "en": "He judges them through his uncertainty about his contract."
+            },
+            {
+              "nl": "Hij weet al wie op de kaart komt.",
+              "en": "He already knows whose name will be on the card."
+            },
+            {
+              "nl": "Iedereen vertelt hem expliciet dat hij ontslagen is.",
+              "en": "Everyone explicitly tells him he is dismissed."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De kaart krijgt door zijn eigen situatie een betekenis die niet gecontroleerd is.",
+            "en": "His own situation gives the card a meaning that has not been checked."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke onzekerheid blijft na de uitleg bestaan?",
+            "en": "What uncertainty remains after the explanation?"
+          },
+          "options": [
+            {
+              "nl": "Wie met pensioen gaat.",
+              "en": "Who is retiring."
+            },
+            {
+              "nl": "Waarom er taart komt.",
+              "en": "Why there is cake."
+            },
+            {
+              "nl": "Wat er met zijn eigen contract zal gebeuren.",
+              "en": "What will happen to his own contract."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het echte contractgesprek ligt nog open.",
+            "en": "The actual contract discussion remains undecided."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-chef-zonder-fluitje",
+      "topic_id": "leadership-teamwork",
+      "title": {
+        "nl": "De chef zonder fluitje",
+        "en": "The leader without a whistle"
+      },
+      "plot_key": "A parade band leader overcontrols timing until a broken whistle reveals the need for visible shared cues, without pretending unplanned freedom solves coordination.",
+      "lines": [
+        {
+          "nl": "Voor een optocht door Mechelen leidde Hanne een kleine straatband waarvan sommige muzikanten al jaren samen speelden en andere pas begonnen waren.",
+          "en": "For a parade through Mechelen, Hanne led a small street band in which some musicians had played together for years and others had only just begun."
+        },
+        {
+          "nl": "Zij bepaalde elke overgang met een fluitje, omdat de groep volgens haar anders nooit tegelijk zou inzetten of stoppen.",
+          "en": "She controlled every transition with a whistle because she thought the group would otherwise never start or stop together."
+        },
+        {
+          "nl": "Tijdens de generale repetitie brak het koordje en verdween het fluitje onder een geparkeerde bestelwagen.",
+          "en": "During the dress rehearsal the cord broke and the whistle disappeared beneath a parked van."
+        },
+        {
+          "nl": "De ervaren spelers gingen op gehoor verder, maar de nieuwkomers bleven bij elke bocht twijfelen of ze nog moesten doorspelen.",
+          "en": "The experienced players continued by ear, but the newcomers kept hesitating at every corner about whether they should keep playing."
+        },
+        {
+          "nl": "Hanne zag dat zij alle afspraken in haar eigen hoofd had gehouden en de anderen vooral op het volgende bevel liet wachten.",
+          "en": "Hanne saw that she had kept all the arrangements in her own head and mainly made the others wait for the next instruction."
+        },
+        {
+          "nl": "Ze spraken zichtbare gebaren en vaste rustpunten af, waarna verschillende muzikanten om de beurt een overgang aangaven.",
+          "en": "They agreed on visible gestures and fixed pauses, after which different musicians took turns signalling a transition."
+        },
+        {
+          "nl": "Dat klonk bij de eerste poging rommeliger, niet beter, en Hanne moest de groep tegen haar gewoonte in tijd geven om te oefenen.",
+          "en": "At the first attempt it sounded messier, not better, and Hanne had to give the group time to practise contrary to her habit."
+        },
+        {
+          "nl": "Tijdens de optocht hing er een nieuw fluitje om haar hals, maar de groep keek niet meer alleen naar haar om te weten waar het lied naartoe ging.",
+          "en": "During the parade a new whistle hung around her neck, but the group no longer looked only at her to know where the song was going."
+        }
+      ],
+      "words": [
+        {
+          "term": "de overgang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de verandering van het ene deel naar het andere",
+            "en": "transition"
+          },
+          "example": {
+            "nl": "Zij bepaalde elke overgang met een fluitje, omdat de groep volgens haar anders nooit tegelijk zou inzetten of stoppen.",
+            "en": "She controlled every transition with a whistle because she thought the group would otherwise never start or stop together."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het bevel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een duidelijke opdracht die opgevolgd moet worden",
+            "en": "command"
+          },
+          "example": {
+            "nl": "Hanne zag dat zij alle afspraken in haar eigen hoofd had gehouden en de anderen vooral op het volgende bevel liet wachten.",
+            "en": "Hanne saw that she had kept all the arrangements in her own head and mainly made the others wait for the next instruction."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "om de beurt",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "na elkaar, telkens iemand anders",
+            "en": "taking turns"
+          },
+          "example": {
+            "nl": "Ze spraken zichtbare gebaren en vaste rustpunten af, waarna verschillende muzikanten om de beurt een overgang aangaven.",
+            "en": "They agreed on visible gestures and fixed pauses, after which different musicians took turns signalling a transition."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarvan bij een groep",
+            "en": "Of which for a group"
+          },
+          "explanation": {
+            "nl": "Waarvan verwijst naar de band en introduceert informatie over de leden.",
+            "en": "Waarvan refers to the band and introduces information about its members."
+          },
+          "examples": [
+            {
+              "nl": "Voor een optocht door Mechelen leidde Hanne een kleine straatband waarvan sommige muzikanten al jaren samen speelden en andere pas begonnen waren.",
+              "en": "For a parade through Mechelen, Hanne led a small street band in which some musicians had played together for years and others had only just begun."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat onthult het verloren fluitje?",
+            "en": "What does the lost whistle reveal?"
+          },
+          "options": [
+            {
+              "nl": "De ervaren spelers willen stoppen.",
+              "en": "The experienced players want to stop."
+            },
+            {
+              "nl": "De afspraken zijn te veel van één persoon afhankelijk.",
+              "en": "The arrangements depend too much on one person."
+            },
+            {
+              "nl": "De bestelwagen is van Hanne.",
+              "en": "The van belongs to Hanne."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Nieuwkomers kennen de overgangen niet zelfstandig omdat de signalen alleen bij Hanne liggen.",
+            "en": "Newcomers do not know the transitions independently because the signals rest with Hanne alone."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom wordt het niet meteen beter?",
+            "en": "Why does it not immediately get better?"
+          },
+          "options": [
+            {
+              "nl": "Nieuwe gedeelde signalen vragen gezamenlijke oefening.",
+              "en": "New shared signals require joint practice."
+            },
+            {
+              "nl": "De band mag niet meer optreden.",
+              "en": "The band is no longer allowed to perform."
+            },
+            {
+              "nl": "Niemand heeft een instrument.",
+              "en": "Nobody has an instrument."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De eerste poging klinkt rommelig; Hanne moet oefentijd toelaten.",
+            "en": "The first attempt sounds messy; Hanne has to allow practice time."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-ring-in-de-hoteldoek",
+      "topic_id": "customer-service",
+      "title": {
+        "nl": "De ring in de handdoek",
+        "en": "The ring in the towel"
+      },
+      "plot_key": "A hotel receptionist dismisses an uncertain lost-ring report until an everyday laundry detail turns the customer's inconsistency into a useful clue.",
+      "lines": [
+        {
+          "nl": "Een hotelgast meldde vlak voor het uitchecken dat zij haar trouwring kwijt was, maar ze wist niet meer of ze hem bij de wastafel of naast het bed had gelegd.",
+          "en": "Just before checking out, a hotel guest reported losing her wedding ring, but no longer knew whether she had put it by the washbasin or beside the bed."
+        },
+        {
+          "nl": "Receptionist Leen noteerde beide plaatsen en dacht dat de vrouw eerst zelf beter moest zoeken voordat het personeel alles onderbrak.",
+          "en": "Receptionist Leen noted both places and thought the woman should search more carefully herself before staff interrupted everything."
+        },
+        {
+          "nl": "De gast werd steeds zenuwachtiger en vertelde achter elkaar verschillende kleine handelingen, waardoor haar verhaal nog onduidelijker leek.",
+          "en": "The guest grew increasingly nervous and recounted various small actions in succession, making her story seem even less clear."
+        },
+        {
+          "nl": "Toen ze zei dat ze de ring misschien drooggewreven had, vroeg een schoonmaakmedewerker welke handdoek er op dat moment naast haar lag.",
+          "en": "When she said she might have rubbed the ring dry, a housekeeping worker asked which towel was beside her at that moment."
+        },
+        {
+          "nl": "Die vraag verbond de wastafel en het bed: de gast had de vochtige handdoek later op haar koffer gelegd en daarna op de vloer.",
+          "en": "That question connected the washbasin and the bed: the guest had later placed the damp towel on her suitcase and then on the floor."
+        },
+        {
+          "nl": "Ze vonden de ring tussen de plooien van het linnengoed, nog voordat de waszak het gebouw uitging.",
+          "en": "They found the ring among the folds of the linen before the laundry bag left the building."
+        },
+        {
+          "nl": "Leen had geen wonder verricht, maar wel gezien dat een onsamenhangende herinnering soms een reeks bruikbare details bevatte.",
+          "en": "Leen had performed no miracle, but had seen that a disjointed memory sometimes contained a sequence of useful details."
+        },
+        {
+          "nl": "Bij de volgende melding vroeg ze niet alleen waar iets voor het laatst lag, maar ook wat iemand vlak daarvoor en daarna had gedaan.",
+          "en": "At the next report she asked not only where something had last been, but also what someone had done just before and afterwards."
+        }
+      ],
+      "words": [
+        {
+          "term": "het linnengoed",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "textiel zoals lakens en handdoeken",
+            "en": "linen"
+          },
+          "example": {
+            "nl": "Ze vonden de ring tussen de plooien van het linnengoed, nog voordat de waszak het gebouw uitging.",
+            "en": "They found the ring among the folds of the linen before the laundry bag left the building."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onsamenhangend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder duidelijk verband tussen de delen",
+            "en": "disjointed"
+          },
+          "example": {
+            "nl": "Leen had geen wonder verricht, maar wel gezien dat een onsamenhangende herinnering soms een reeks bruikbare details bevatte.",
+            "en": "Leen had performed no miracle, but had seen that a disjointed memory sometimes contained a sequence of useful details."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de plooi",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een vouw in stof of een ander materiaal",
+            "en": "fold"
+          },
+          "example": {
+            "nl": "Ze vonden de ring tussen de plooien van het linnengoed, nog voordat de waszak het gebouw uitging.",
+            "en": "They found the ring among the folds of the linen before the laundry bag left the building."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Voordat voor een grens in de tijd",
+            "en": "Before for a boundary in time"
+          },
+          "explanation": {
+            "nl": "Nog voordat benadrukt dat de vondst vóór het vertrek van de waszak gebeurt.",
+            "en": "Nog voordat emphasises that the discovery occurs before the laundry bag leaves."
+          },
+          "examples": [
+            {
+              "nl": "Ze vonden de ring tussen de plooien van het linnengoed, nog voordat de waszak het gebouw uitging.",
+              "en": "They found the ring among the folds of the linen before the laundry bag left the building."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke vraag brengt het zoeken verder?",
+            "en": "Which question moves the search forward?"
+          },
+          "options": [
+            {
+              "nl": "Waarom zij geen nieuwe ring koopt.",
+              "en": "Why she does not buy a new ring."
+            },
+            {
+              "nl": "Of zij het hotel vaak bezoekt.",
+              "en": "Whether she often visits the hotel."
+            },
+            {
+              "nl": "Welke handdoek ze gebruikte bij het drogen.",
+              "en": "Which towel she used when drying."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Die handdoek verbindt haar verschillende herinnerde plaatsen.",
+            "en": "That towel connects her different remembered locations."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat leert Leen over het onduidelijke verhaal?",
+            "en": "What does Leen learn about the unclear account?"
+          },
+          "options": [
+            {
+              "nl": "Het is altijd verzonnen.",
+              "en": "It is always invented."
+            },
+            {
+              "nl": "De handelingen kunnen samen alsnog een bruikbaar spoor vormen.",
+              "en": "The actions can still form a useful trail together."
+            },
+            {
+              "nl": "Het heeft geen enkel belang.",
+              "en": "It has no importance at all."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Een concrete volgorde verklaart hoe de ring in het linnengoed kon belanden.",
+            "en": "A concrete sequence explains how the ring could end up in the linen."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-rekening-voor-de-hele-tafel",
+      "topic_id": "banking-payments",
+      "title": {
+        "nl": "De rekening voor de hele tafel",
+        "en": "The bill for the whole table"
+      },
+      "plot_key": "A group mistakes one friend's repeated quick card payments for generosity until a missing repayment exposes the unspoken expectation behind them.",
+      "lines": [
+        {
+          "nl": "Wanneer vrienden samen gingen eten, betaalde Jonas vaak onmiddellijk de hele rekening met zijn kaart en zei hij dat de rest later wel kwam.",
+          "en": "When friends ate out together, Jonas often immediately paid the whole bill with his card and said the rest could come later."
+        },
+        {
+          "nl": "De anderen begonnen hem als de zorgeloze regelaar van de groep te zien en vergaten soms nog dezelfde avond een bedrag terug te sturen.",
+          "en": "The others began to see him as the group's easy-going organiser and sometimes forgot to send back an amount that same evening."
+        },
+        {
+          "nl": "Jonas noteerde de openstaande bedragen in een klein bestand, maar vond het vervelend om bij elke ontmoeting opnieuw over geld te beginnen.",
+          "en": "Jonas recorded the outstanding amounts in a small file, but found it awkward to bring up money again at every meeting."
+        },
+        {
+          "nl": "Na een duur verjaardagsdiner zei hij plots dat hij een volgende uitnodiging niet kon aannemen, zonder eerst een reden te geven.",
+          "en": "After an expensive birthday dinner he suddenly said he could not accept another invitation without initially giving a reason."
+        },
+        {
+          "nl": "Zijn vriendin Bo vroeg of er iets tussen hen gebeurd was en hoorde toen hoeveel van de vorige rekeningen nog niet verrekend waren.",
+          "en": "His friend Bo asked whether something had happened between them and then heard how much of the previous bills remained unsettled."
+        },
+        {
+          "nl": "Zij had zijn snelle betalen altijd als een vrije keuze gelezen, terwijl hij vooral had willen voorkomen dat iedereen aan de kassa bleef wachten.",
+          "en": "She had always read his quick payment as a free choice, while he had mainly wanted to avoid everyone waiting at the till."
+        },
+        {
+          "nl": "De groep maakte de oude bedragen duidelijk en sprak voortaan voor het bestellen af wie wat betaalde, ook wanneer één kaart praktisch het gemakkelijkst bleef.",
+          "en": "The group clarified the old amounts and from then on agreed before ordering who would pay what, even when using one card remained most convenient."
+        },
+        {
+          "nl": "Jonas bleef soms voorschieten, maar het woord later kreeg eindelijk een afspraak in plaats van een glimlach die alles moest bedekken.",
+          "en": "Jonas still sometimes paid in advance, but the word later finally came with an arrangement instead of a smile supposed to cover everything."
+        }
+      ],
+      "words": [
+        {
+          "term": "openstaand",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "nog niet betaald of afgehandeld",
+            "en": "outstanding"
+          },
+          "example": {
+            "nl": "Jonas noteerde de openstaande bedragen in een klein bestand, maar vond het vervelend om bij elke ontmoeting opnieuw over geld te beginnen.",
+            "en": "Jonas recorded the outstanding amounts in a small file, but found it awkward to bring up money again at every meeting."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "verrekenen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "bedragen met elkaar in evenwicht brengen of afhandelen",
+            "en": "to settle amounts"
+          },
+          "example": {
+            "nl": "Zijn vriendin Bo vroeg of er iets tussen hen gebeurd was en hoorde toen hoeveel van de vorige rekeningen nog niet verrekend waren.",
+            "en": "His friend Bo asked whether something had happened between them and then heard how much of the previous bills remained unsettled."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "voorschieten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "tijdelijk voor iemand betalen met terugbetaling als bedoeling",
+            "en": "to pay in advance for someone"
+          },
+          "example": {
+            "nl": "Jonas bleef soms voorschieten, maar het woord later kreeg eindelijk een afspraak in plaats van een glimlach die alles moest bedekken.",
+            "en": "Jonas still sometimes paid in advance, but the word later finally came with an arrangement instead of a smile supposed to cover everything."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor verschillende bedoelingen",
+            "en": "While for different intentions"
+          },
+          "explanation": {
+            "nl": "Terwijl vergelijkt hier haar interpretatie met zijn werkelijke bedoeling.",
+            "en": "Terwijl compares her interpretation with his actual intention."
+          },
+          "examples": [
+            {
+              "nl": "Zij had zijn snelle betalen altijd als een vrije keuze gelezen, terwijl hij vooral had willen voorkomen dat iedereen aan de kassa bleef wachten.",
+              "en": "She had always read his quick payment as a free choice, while he had mainly wanted to avoid everyone waiting at the till."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat bedoelde Jonas meestal met zijn snelle betaling?",
+            "en": "What did Jonas usually mean by his quick payment?"
+          },
+          "options": [
+            {
+              "nl": "Hij wilde praktisch tijd besparen en later terugbetaling krijgen.",
+              "en": "He wanted to save time practically and receive repayment later."
+            },
+            {
+              "nl": "Hij wilde altijd iedereen trakteren.",
+              "en": "He always wanted to treat everyone."
+            },
+            {
+              "nl": "Hij wilde nooit meer uit eten.",
+              "en": "He never wanted to eat out again."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij wilde wachten aan de kassa voorkomen en hield openstaande bedragen bij.",
+            "en": "He wanted to avoid waiting at the till and kept track of outstanding amounts."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke onduidelijkheid wordt opgelost?",
+            "en": "What ambiguity is resolved?"
+          },
+          "options": [
+            {
+              "nl": "Welke gerechten het restaurant verkoopt.",
+              "en": "Which dishes the restaurant sells."
+            },
+            {
+              "nl": "Welke verantwoordelijkheid bij later betalen hoort.",
+              "en": "What responsibility goes with paying later."
+            },
+            {
+              "nl": "Welke bankkaart Bo gebruikt.",
+              "en": "Which bank card Bo uses."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze spreken voortaan vooraf af wie welk bedrag draagt.",
+            "en": "They now agree in advance who covers which amount."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-collectie-in-de-schoendoos",
+      "topic_id": "saving-investing",
+      "title": {
+        "nl": "De collectie in de schoendoos",
+        "en": "The collection in the shoebox"
+      },
+      "plot_key": "A collector considers selling treasured stamps to fund a daughter’s course, discovers their monetary value is low, and shares memories without pretending affection can replace the actual cost.",
+      "lines": [
+        {
+          "nl": "Toen zijn dochter een dure zomercursus fotografie wilde volgen, dacht Raf aan de postzegelcollectie die hij sinds zijn jeugd in een schoendoos bewaarde.",
+          "en": "When his daughter wanted to attend an expensive summer photography course, Raf thought of the stamp collection he had kept in a shoebox since childhood."
+        },
+        {
+          "nl": "Hij had jarenlang aangenomen dat de oudste exemplaren later een aardig bedrag zouden opleveren, omdat zijn vader ze altijd kostbaar had genoemd.",
+          "en": "For years he had assumed that the oldest examples would later bring a decent sum because his father had always called them valuable."
+        },
+        {
+          "nl": "Een handelaar bekeek de albums en legde uit dat veel zegels wel oud waren, maar in grote aantallen bewaard waren gebleven.",
+          "en": "A dealer examined the albums and explained that many stamps were old but had survived in large numbers."
+        },
+        {
+          "nl": "Het voorgestelde bedrag was nauwelijks genoeg voor de trein naar de cursus, laat staan voor de inschrijving zelf.",
+          "en": "The amount offered was barely enough for the train to the course, let alone for the enrolment itself."
+        },
+        {
+          "nl": "Raf vertelde zijn dochter eerlijk dat hij de waarde verkeerd had ingeschat en vroeg welke goedkopere mogelijkheden zij samen konden bekijken.",
+          "en": "Raf honestly told his daughter that he had misjudged the value and asked which cheaper possibilities they could examine together."
+        },
+        {
+          "nl": "Ze vonden geen wonderoplossing, maar zij koos een korter lokaal atelier en spaarde verder voor een volgende zomer.",
+          "en": "They found no miraculous solution, but she chose a shorter local workshop and kept saving for another summer."
+        },
+        {
+          "nl": "Voor haar eerste opdracht fotografeerde ze de albums, waarbij Raf bij elke buitenlandse zegel een verhaal vertelde over hoe hij eraan gekomen was.",
+          "en": "For her first assignment she photographed the albums while Raf told a story for each foreign stamp about how he had obtained it."
+        },
+        {
+          "nl": "De verzameling werd niet plots meer geld waard; alleen was eindelijk zichtbaar geworden welke andere betekenis hij jarenlang met geld had verward.",
+          "en": "The collection did not suddenly become worth more money; it had simply finally become clear what other meaning he had confused with money for years."
+        }
+      ],
+      "words": [
+        {
+          "term": "inschatten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "ongeveer beoordelen hoeveel of hoe belangrijk iets is",
+            "en": "to estimate or assess"
+          },
+          "example": {
+            "nl": "Raf vertelde zijn dochter eerlijk dat hij de waarde verkeerd had ingeschat en vroeg welke goedkopere mogelijkheden zij samen konden bekijken.",
+            "en": "Raf honestly told his daughter that he had misjudged the value and asked which cheaper possibilities they could examine together."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "laat staan",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "en nog veel minder",
+            "en": "let alone"
+          },
+          "example": {
+            "nl": "Het voorgestelde bedrag was nauwelijks genoeg voor de trein naar de cursus, laat staan voor de inschrijving zelf.",
+            "en": "The amount offered was barely enough for the train to the course, let alone for the enrolment itself."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de verzameling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een groep bewust bijeengebrachte voorwerpen",
+            "en": "collection"
+          },
+          "example": {
+            "nl": "De verzameling werd niet plots meer geld waard; alleen was eindelijk zichtbaar geworden welke andere betekenis hij jarenlang met geld had verward.",
+            "en": "The collection did not suddenly become worth more money; it had simply finally become clear what other meaning he had confused with money for years."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wel ... maar ... voor een beperking",
+            "en": "Admittedly ... but ... for a limitation"
+          },
+          "explanation": {
+            "nl": "Wel erkent hun ouderdom; maar beperkt de conclusie dat oud vanzelf schaars betekent.",
+            "en": "Wel acknowledges their age; maar limits the inference that old automatically means scarce."
+          },
+          "examples": [
+            {
+              "nl": "Een handelaar bekeek de albums en legde uit dat veel zegels wel oud waren, maar in grote aantallen bewaard waren gebleven.",
+              "en": "A dealer examined the albums and explained that many stamps were old but had survived in large numbers."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom leveren de oude zegels weinig op?",
+            "en": "Why do the old stamps fetch little?"
+          },
+          "options": [
+            {
+              "nl": "Ze zijn allemaal vals.",
+              "en": "They are all fake."
+            },
+            {
+              "nl": "Ze hebben geen afbeeldingen.",
+              "en": "They have no pictures."
+            },
+            {
+              "nl": "Er zijn nog veel exemplaren van bewaard.",
+              "en": "Many examples still survive."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ouderdom betekent hier niet dat de zegels zeldzaam zijn.",
+            "en": "Age does not mean the stamps are rare here."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert aan het einde werkelijk?",
+            "en": "What actually changes at the end?"
+          },
+          "options": [
+            {
+              "nl": "Hun persoonlijke betekenis wordt onderscheiden van hun verkoopwaarde.",
+              "en": "Their personal meaning is distinguished from their sale value."
+            },
+            {
+              "nl": "De handelaar betaalt alsnog de hele cursus.",
+              "en": "The dealer pays for the whole course after all."
+            },
+            {
+              "nl": "Elke zegel wordt automatisch duurder.",
+              "en": "Every stamp automatically becomes more expensive."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De herinneringen komen naar voren, terwijl de financiële beperking blijft.",
+            "en": "The memories emerge while the financial limitation remains."
+          }
+        }
+      ]
+    }
+  ]
+}

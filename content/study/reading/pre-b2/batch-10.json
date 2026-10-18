@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-winkel-met-een-stoel",
+      "topic_id": "shopping",
+      "title": {
+        "nl": "De stoel in de winkel",
+        "en": "The chair in the shop"
+      },
+      "plot_key": "A bookshop's unpopular chair becomes evidence that browsing comfort matters, though the customer who uses it buys only one modest book.",
+      "lines": [
+        {
+          "nl": "Toen boekhandelaar Ellen een oude stoel tussen de rekken zette, zei haar zakenpartner dat iedere vierkante meter zichzelf moest terugverdienen.",
+          "en": "When bookseller Ellen placed an old chair between the shelves, her business partner said every square metre had to earn its keep."
+        },
+        {
+          "nl": "De stoel nam precies de ruimte in waar een toren afgeprijsde reisgidsen had kunnen staan, en de verkoop liep al weken terug.",
+          "en": "The chair occupied exactly the space where a tower of discounted travel guides could have stood, and sales had been falling for weeks."
+        },
+        {
+          "nl": "Op dinsdag ging een man zitten die twintig minuten lang alleen naar de ruggen van de boeken keek.",
+          "en": "On Tuesday a man sat down and spent twenty minutes merely looking at the spines of the books."
+        },
+        {
+          "nl": "Ellen wilde vragen of hij iets zocht, maar hij vertelde zelf dat hij na een operatie voor het eerst weer alleen de stad in was.",
+          "en": "Ellen wanted to ask whether he was looking for something, but he volunteered that he was out in town alone for the first time since an operation."
+        },
+        {
+          "nl": "Zonder een plaats om uit te rusten zou hij bij de etalage alweer zijn omgekeerd, hoe graag hij ook een boek wilde kiezen.",
+          "en": "Without somewhere to rest he would have turned back at the window, however much he wanted to choose a book."
+        },
+        {
+          "nl": "Hij kocht uiteindelijk één dunne dichtbundel, geen stapel dure uitgaven die de maandcijfers plots herstelde.",
+          "en": "In the end he bought one thin poetry collection, not a pile of expensive editions that suddenly repaired the month's figures."
+        },
+        {
+          "nl": "Toch liet haar zakenpartner de stoel staan en hing er een leeslamp boven die ze nog in de opslag hadden liggen.",
+          "en": "Nevertheless, her business partner left the chair there and hung above it a reading lamp they still had in storage."
+        },
+        {
+          "nl": "Ze moesten nog altijd uitzoeken hoe de winkel kon blijven bestaan, maar hadden nu tenminste gezien voor wie de ruimte anders gesloten bleef.",
+          "en": "They still had to work out how the shop could survive, but had at least seen for whom the space would otherwise remain closed."
+        }
+      ],
+      "words": [
+        {
+          "term": "afgeprijsd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met een verlaagde verkoopprijs",
+            "en": "discounted"
+          },
+          "example": {
+            "nl": "De stoel nam precies de ruimte in waar een toren afgeprijsde reisgidsen had kunnen staan, en de verkoop liep al weken terug.",
+            "en": "The chair occupied exactly the space where a tower of discounted travel guides could have stood, and sales had been falling for weeks."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de dichtbundel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een boek met gedichten",
+            "en": "poetry collection"
+          },
+          "example": {
+            "nl": "Hij kocht uiteindelijk één dunne dichtbundel, geen stapel dure uitgaven die de maandcijfers plots herstelde.",
+            "en": "In the end he bought one thin poetry collection, not a pile of expensive editions that suddenly repaired the month's figures."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "omkeren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "teruggaan in de richting waar je vandaan kwam",
+            "en": "to turn back"
+          },
+          "example": {
+            "nl": "Zonder een plaats om uit te rusten zou hij bij de etalage alweer zijn omgekeerd, hoe graag hij ook een boek wilde kiezen.",
+            "en": "Without somewhere to rest he would have turned back at the window, however much he wanted to choose a book."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder ... zou ...",
+            "en": "Without ... would ..."
+          },
+          "explanation": {
+            "nl": "Deze constructie beschrijft wat in een andere situatie zou zijn gebeurd.",
+            "en": "This construction describes what would have happened in a different situation."
+          },
+          "examples": [
+            {
+              "nl": "Zonder een plaats om uit te rusten zou hij bij de etalage alweer zijn omgekeerd, hoe graag hij ook een boek wilde kiezen.",
+              "en": "Without somewhere to rest he would have turned back at the window, however much he wanted to choose a book."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is de stoel voor de man beslissend?",
+            "en": "Why is the chair decisive for the man?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil een stoel kopen.",
+              "en": "He wants to buy a chair."
+            },
+            {
+              "nl": "Hij heeft onderweg rust nodig om te kunnen blijven zoeken.",
+              "en": "He needs rest during his outing to keep browsing."
+            },
+            {
+              "nl": "Hij moet de reisgidsen tellen.",
+              "en": "He has to count the travel guides."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zonder rustplaats zou hij al bij de etalage zijn omgekeerd.",
+            "en": "Without a resting place he would have turned back at the window."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vermijdt het verhaal in de afloop?",
+            "en": "What does the story avoid in its ending?"
+          },
+          "options": [
+            {
+              "nl": "De stoel laten staan.",
+              "en": "Leaving the chair there."
+            },
+            {
+              "nl": "De betekenis van toegankelijkheid tonen.",
+              "en": "Showing the significance of accessibility."
+            },
+            {
+              "nl": "Doen alsof één vriendelijke ingreep alle zakelijke problemen oplost.",
+              "en": "Pretending that one kind intervention solves all business problems."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Er komt één bescheiden aankoop; de financiële uitdaging blijft bestaan.",
+            "en": "There is one modest purchase; the financial challenge remains."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-stad-zonder-postkaart",
+      "topic_id": "cities-countries",
+      "title": {
+        "nl": "De stad buiten de postkaart",
+        "en": "The city beyond the postcard"
+      },
+      "plot_key": "A visitor expecting only picturesque Bruges follows a friend's ordinary commute and realises daily city life is neither a failed attraction nor an unchanging postcard.",
+      "lines": [
+        {
+          "nl": "Toen zijn jeugdvriend uit Spanje op bezoek kwam, had Daan een route langs de bekendste Brugse gevels en bruggen voorbereid.",
+          "en": "When his childhood friend visited from Spain, Daan had prepared a route past the best-known facades and bridges of Bruges."
+        },
+        {
+          "nl": "Zijn vriend Mateo wilde de eerste ochtend echter gewoon met hem mee naar het werk en vroeg waar hij onderweg boodschappen deed.",
+          "en": "However, on the first morning his friend Mateo simply wanted to accompany him to work and asked where he did his shopping on the way."
+        },
+        {
+          "nl": "Daan verontschuldigde zich voor het drukke kruispunt, de saaie supermarkt en het gebouw waar al maanden een stelling stond.",
+          "en": "Daan apologised for the busy junction, the dull supermarket and the building that had been covered in scaffolding for months."
+        },
+        {
+          "nl": "Hij was bang dat Mateo zou denken dat hij ver van de echte stad woonde, alsof alleen de mooie straten meetelden.",
+          "en": "He was afraid Mateo would think he lived far from the real city, as if only the pretty streets counted."
+        },
+        {
+          "nl": "Mateo bleef juist staan bij een muur waarop bewoners foto's van hun verdwenen buurtwinkel hadden gehangen.",
+          "en": "Mateo actually stopped at a wall where residents had hung photographs of their former neighbourhood shop."
+        },
+        {
+          "nl": "Hij vertelde dat in zijn eigen stad dezelfde discussie speelde over winkels die plaatsmaakten voor kort verblijf en souvenirverkoop.",
+          "en": "He explained that his own city was having the same debate about shops giving way to short stays and souvenir sales."
+        },
+        {
+          "nl": "Ze kwamen later dan gepland bij de beroemde brug, maar hadden onderweg meer gedeelde ervaringen gevonden dan Daan in zijn route had kunnen tekenen.",
+          "en": "They reached the famous bridge later than planned, but had found more shared experiences along the way than Daan could have drawn into his route."
+        },
+        {
+          "nl": "Bij het afscheid vroeg Mateo om één foto van de muur, naast de onvermijdelijke foto waarop zij beiden voor het water stonden.",
+          "en": "On leaving Mateo asked for one photograph of the wall alongside the inevitable photograph of both of them standing by the water."
+        }
+      ],
+      "words": [
+        {
+          "term": "de stelling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een tijdelijk bouwsel waarop mensen bij werkzaamheden staan",
+            "en": "scaffolding"
+          },
+          "example": {
+            "nl": "Daan verontschuldigde zich voor het drukke kruispunt, de saaie supermarkt en het gebouw waar al maanden een stelling stond.",
+            "en": "Daan apologised for the busy junction, the dull supermarket and the building that had been covered in scaffolding for months."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "plaatsmaken voor",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "verdwijnen zodat iets anders de plaats kan innemen",
+            "en": "to make way for"
+          },
+          "example": {
+            "nl": "Hij vertelde dat in zijn eigen stad dezelfde discussie speelde over winkels die plaatsmaakten voor kort verblijf en souvenirverkoop.",
+            "en": "He explained that his own city was having the same debate about shops giving way to short stays and souvenir sales."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onvermijdelijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "bijna niet te voorkomen",
+            "en": "inevitable"
+          },
+          "example": {
+            "nl": "Bij het afscheid vroeg Mateo om één foto van de muur, naast de onvermijdelijke foto waarop zij beiden voor het water stonden.",
+            "en": "On leaving Mateo asked for one photograph of the wall alongside the inevitable photograph of both of them standing by the water."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof en een beperkte voorstelling",
+            "en": "As if and a limited idea"
+          },
+          "explanation": {
+            "nl": "Alsof maakt duidelijk welk onterecht uitgangspunt Daan in zijn angst gebruikt.",
+            "en": "Alsof makes clear the mistaken assumption underlying Daan's fear."
+          },
+          "examples": [
+            {
+              "nl": "Hij was bang dat Mateo zou denken dat hij ver van de echte stad woonde, alsof alleen de mooie straten meetelden.",
+              "en": "He was afraid Mateo would think he lived far from the real city, as if only the pretty streets counted."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom verontschuldigt Daan zich onderweg?",
+            "en": "Why does Daan apologise along the way?"
+          },
+          "options": [
+            {
+              "nl": "Hij vergelijkt zijn gewone omgeving met het toeristische ideaal.",
+              "en": "He compares his ordinary surroundings with the tourist ideal."
+            },
+            {
+              "nl": "Mateo heeft om een taxi gevraagd.",
+              "en": "Mateo has asked for a taxi."
+            },
+            {
+              "nl": "De beroemde brug is verdwenen.",
+              "en": "The famous bridge has disappeared."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij denkt dat alleen de mooie straten als echte stad tellen.",
+            "en": "He thinks only the pretty streets count as the real city."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt de muur voor Mateo interessant?",
+            "en": "What makes the wall interesting to Mateo?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil er souvenirs verkopen.",
+              "en": "He wants to sell souvenirs there."
+            },
+            {
+              "nl": "Hij herkent een vergelijkbare verandering uit zijn eigen stad.",
+              "en": "He recognises a similar change from his own city."
+            },
+            {
+              "nl": "Hij kent alle afgebeelde mensen.",
+              "en": "He knows everyone pictured."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De foto's leiden tot een gesprek over dagelijkse stadsfuncties die verdwijnen.",
+            "en": "The photographs lead to a discussion about everyday city functions disappearing."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-jas-aan-de-haak",
+      "topic_id": "social-issues",
+      "title": {
+        "nl": "Een jas aan de haak",
+        "en": "A coat on the hook"
+      },
+      "plot_key": "A community clothing exchange changes its public donor ritual after a skilled volunteer recognises the recipient as a former colleague.",
+      "lines": [
+        {
+          "nl": "Tijdens een kledingruil in het buurthuis vroeg organisator Sofie elke bezoeker hardop wat hij had meegebracht voordat hij iets mocht kiezen.",
+          "en": "During a clothing exchange at the community centre, organiser Sofie asked each visitor aloud what they had brought before they could choose something."
+        },
+        {
+          "nl": "Ze wilde tonen dat iedereen iets bijdroeg en dat het geen eenzijdige liefdadigheid was.",
+          "en": "She wanted to show that everyone contributed and that it was not one-sided charity."
+        },
+        {
+          "nl": "Een man bleef met lege handen bij de deur staan, hoewel hij al twee keer naar de warme winterjassen had gekeken.",
+          "en": "A man stood empty-handed by the door, although he had already looked twice at the warm winter coats."
+        },
+        {
+          "nl": "Vrijwilliger Hamid herkende hem als een vroegere collega, die onlangs zijn werk en daarna een deel van zijn woning was kwijtgeraakt.",
+          "en": "Volunteer Hamid recognised him as a former colleague who had recently lost his job and then part of his housing."
+        },
+        {
+          "nl": "Hij vroeg Sofie zacht of een bijdrage altijd een voorwerp moest zijn dat iemand op dat moment kon missen.",
+          "en": "He quietly asked Sofie whether a contribution always had to be an object someone could spare at that moment."
+        },
+        {
+          "nl": "De man kon uitstekend ritsen herstellen, maar had die dag vooral een jas nodig voordat hij opnieuw aan andere mensen kon denken.",
+          "en": "The man was excellent at repairing zips, but that day mainly needed a coat before he could think about other people again."
+        },
+        {
+          "nl": "Sofie liet de openbare namenronde vallen en vroeg aan alle bezoekers welke spullen zij nodig hadden, zonder hun eerst een tegenprestatie te laten bewijzen.",
+          "en": "Sofie dropped the public round of names and asked all visitors which items they needed without first making them prove a contribution in return."
+        },
+        {
+          "nl": "Een maand later herstelde de man enkele jassen, maar de jas die hij die eerste dag meenam was nooit als schuld genoteerd.",
+          "en": "A month later the man repaired several coats, but the coat he took that first day was never recorded as a debt."
+        }
+      ],
+      "words": [
+        {
+          "term": "eenzijdig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "slechts van één kant komend",
+            "en": "one-sided"
+          },
+          "example": {
+            "nl": "Ze wilde tonen dat iedereen iets bijdroeg en dat het geen eenzijdige liefdadigheid was.",
+            "en": "She wanted to show that everyone contributed and that it was not one-sided charity."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de tegenprestatie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat iemand in ruil voor iets anders doet",
+            "en": "contribution in return"
+          },
+          "example": {
+            "nl": "Sofie liet de openbare namenronde vallen en vroeg aan alle bezoekers welke spullen zij nodig hadden, zonder hun eerst een tegenprestatie te laten bewijzen.",
+            "en": "Sofie dropped the public round of names and asked all visitors which items they needed without first making them prove a contribution in return."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de schuld",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat iemand nog moet teruggeven of betalen",
+            "en": "debt"
+          },
+          "example": {
+            "nl": "Een maand later herstelde de man enkele jassen, maar de jas die hij die eerste dag meenam was nooit als schuld genoteerd.",
+            "en": "A month later the man repaired several coats, but the coat he took that first day was never recorded as a debt."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Voordat bij een noodzakelijke eerste stap",
+            "en": "Before with a necessary first step"
+          },
+          "explanation": {
+            "nl": "Voordat ordent hier twee handelingen: eerst een jas vinden, daarna anderen kunnen helpen.",
+            "en": "Voordat orders two actions here: first finding a coat, then being able to help others."
+          },
+          "examples": [
+            {
+              "nl": "De man kon uitstekend ritsen herstellen, maar had die dag vooral een jas nodig voordat hij opnieuw aan andere mensen kon denken.",
+              "en": "The man was excellent at repairing zips, but that day mainly needed a coat before he could think about other people again."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom vormt de openingsvraag een drempel?",
+            "en": "Why does the opening question create a barrier?"
+          },
+          "options": [
+            {
+              "nl": "Er worden te veel talen gesproken.",
+              "en": "Too many languages are spoken."
+            },
+            {
+              "nl": "Er zijn geen winterjassen.",
+              "en": "There are no winter coats."
+            },
+            {
+              "nl": "Wie nu niets kan missen, moet dat publiek verklaren.",
+              "en": "Anyone who can spare nothing now must explain that publicly."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De man heeft niets mee en blijft ondanks zijn behoefte bij de deur.",
+            "en": "The man has brought nothing and stays by the door despite his need."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom is de slotzin over schuld belangrijk?",
+            "en": "Why is the final sentence about debt important?"
+          },
+          "options": [
+            {
+              "nl": "Zijn latere hulp was geen verplichte betaling voor de jas.",
+              "en": "His later help was not compulsory payment for the coat."
+            },
+            {
+              "nl": "Hij moet alle jassen kopen.",
+              "en": "He has to buy all the coats."
+            },
+            {
+              "nl": "Hij heeft de jas nooit ontvangen.",
+              "en": "He never received the coat."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De jas wordt gegeven zonder zijn latere bijdrage vooraf af te dwingen.",
+            "en": "The coat is given without demanding his later contribution in advance."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-bericht-met-een-punt",
+      "topic_id": "communication",
+      "title": {
+        "nl": "Een bericht met een punt",
+        "en": "A message with a full stop"
+      },
+      "plot_key": "Colleagues interpret a one-word message through different texting habits, discovering tone cannot be reliably inferred from punctuation alone.",
+      "lines": [
+        {
+          "nl": "Toen Aïcha haar voorstel naar collega Bert stuurde, kreeg ze één woord terug: akkoord, gevolgd door een punt.",
+          "en": "When Aïcha sent her proposal to colleague Bert, she received one word back: agreed, followed by a full stop."
+        },
+        {
+          "nl": "In haar vriendengroep betekende zo'n kort bericht meestal dat iemand kwaad was maar geen discussie wilde beginnen.",
+          "en": "In her group of friends such a short message usually meant someone was angry but did not want to start an argument."
+        },
+        {
+          "nl": "Ze herschreef onmiddellijk de helft van haar voorstel en stuurde een lange uitleg waarom de planning voorlopig zo moest blijven.",
+          "en": "She immediately rewrote half her proposal and sent a long explanation of why the schedule had to remain that way for now."
+        },
+        {
+          "nl": "Bert belde haar verward op en vroeg welke bezwaren zij dacht dat hij had gemaakt.",
+          "en": "Bert called her in confusion and asked what objections she thought he had raised."
+        },
+        {
+          "nl": "Hij vertelde dat hij berichten onderweg juist zo kort mogelijk hield, omdat hij niet wilde dat anderen onnodig veel tekst moesten lezen.",
+          "en": "He explained that he deliberately kept messages as short as possible when travelling because he did not want others to read unnecessary amounts of text."
+        },
+        {
+          "nl": "Voor hem maakte de punt de zin alleen af; voor Aïcha had dat kleine teken een hele toon toegevoegd die nergens uitgesproken was.",
+          "en": "For him the full stop merely completed the sentence; for Aïcha that small mark had added an entire tone that had never been spoken."
+        },
+        {
+          "nl": "Ze spraken af om bij echte twijfel één concrete vraag te stellen in plaats van elkaars bedoelingen uit leestekens af te leiden.",
+          "en": "They agreed to ask one concrete question when genuinely uncertain instead of inferring each other's intentions from punctuation."
+        },
+        {
+          "nl": "Berts volgende antwoord bestond uit twee woorden, helemaal akkoord, en Aïcha liet haar voorstel die keer rustig staan.",
+          "en": "Bert's next reply consisted of two words, fully agreed, and that time Aïcha calmly left her proposal as it was."
+        }
+      ],
+      "words": [
+        {
+          "term": "het bezwaar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een reden waarom iemand ergens tegen is",
+            "en": "objection"
+          },
+          "example": {
+            "nl": "Bert belde haar verward op en vroeg welke bezwaren zij dacht dat hij had gemaakt.",
+            "en": "Bert called her in confusion and asked what objections she thought he had raised."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het leesteken",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een geschreven teken zoals een punt of komma",
+            "en": "punctuation mark"
+          },
+          "example": {
+            "nl": "Ze spraken af om bij echte twijfel één concrete vraag te stellen in plaats van elkaars bedoelingen uit leestekens af te leiden.",
+            "en": "They agreed to ask one concrete question when genuinely uncertain instead of inferring each other's intentions from punctuation."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "afleiden uit",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "uit informatie een conclusie vormen",
+            "en": "to infer from"
+          },
+          "example": {
+            "nl": "Ze spraken af om bij echte twijfel één concrete vraag te stellen in plaats van elkaars bedoelingen uit leestekens af te leiden.",
+            "en": "They agreed to ask one concrete question when genuinely uncertain instead of inferring each other's intentions from punctuation."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Welke in een indirecte vraag",
+            "en": "Which in an indirect question"
+          },
+          "explanation": {
+            "nl": "In de afhankelijke vraag komt had gemaakt na het onderwerp en de overige informatie.",
+            "en": "In the indirect question, had gemaakt follows the subject and other information."
+          },
+          "examples": [
+            {
+              "nl": "Bert belde haar verward op en vroeg welke bezwaren zij dacht dat hij had gemaakt.",
+              "en": "Bert called her in confusion and asked what objections she thought he had raised."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarop baseert Aïcha haar eerste interpretatie?",
+            "en": "What does Aïcha base her first interpretation on?"
+          },
+          "options": [
+            {
+              "nl": "Een expliciete klacht van Bert.",
+              "en": "An explicit complaint from Bert."
+            },
+            {
+              "nl": "De schrijfgewoonten van haar vriendengroep.",
+              "en": "The writing habits of her group of friends."
+            },
+            {
+              "nl": "Een wijziging in het werkrooster.",
+              "en": "A change in the work schedule."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze geeft de punt dezelfde betekenis als in haar eigen sociale omgeving.",
+            "en": "She gives the full stop the same meaning as in her own social circle."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat willen zij voortaan vermijden?",
+            "en": "What do they want to avoid in future?"
+          },
+          "options": [
+            {
+              "nl": "Elkaar om uitleg vragen.",
+              "en": "Asking each other for clarification."
+            },
+            {
+              "nl": "Korte berichten schrijven.",
+              "en": "Writing short messages."
+            },
+            {
+              "nl": "Onbevestigde bedoelingen uit kleine tekens afleiden.",
+              "en": "Inferring unconfirmed intentions from small marks."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Bij twijfel zullen ze een concrete vraag stellen.",
+            "en": "When uncertain, they will ask a concrete question."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-viraal-zonder-gezicht",
+      "topic_id": "social-media",
+      "title": {
+        "nl": "Viraal zonder gezicht",
+        "en": "Viral without a face"
+      },
+      "plot_key": "A humorous bakery clip exposes an employee's embarrassment after going viral, leading its creator to remove a successful post rather than reframe unwanted attention as publicity.",
+      "lines": [
+        {
+          "nl": "Een filmpje waarin bakker Arne per ongeluk met een lege taartdoos voor een klant stond, werd door zijn collega als onschuldige grap geplaatst.",
+          "en": "A clip in which baker Arne accidentally stood before a customer with an empty cake box was posted by his colleague as an innocent joke."
+        },
+        {
+          "nl": "Binnen een dag bekeken duizenden mensen hoe hij verward onder de toonbank zocht, terwijl de echte taart achter hem klaarstond.",
+          "en": "Within a day thousands of people watched him searching in confusion under the counter while the real cake stood ready behind him."
+        },
+        {
+          "nl": "De eigenaar was blij met de aandacht en stelde voor voortaan elke week zo'n herkenbaar moment te delen.",
+          "en": "The owner was pleased with the attention and suggested sharing a similarly relatable moment every week from then on."
+        },
+        {
+          "nl": "Arne lachte bij de eerste reacties mee, maar merkte dat onbekenden hem buiten de winkel begonnen na te doen.",
+          "en": "Arne laughed along at the first reactions, but noticed strangers beginning to imitate him outside the shop."
+        },
+        {
+          "nl": "Hij vroeg zijn collega het filmpje weg te halen, hoewel er intussen ook nieuwe klanten door binnenkwamen.",
+          "en": "He asked his colleague to take the clip down, although it was meanwhile also bringing in new customers."
+        },
+        {
+          "nl": "Zij antwoordde eerst dat iedereen positief reageerde, totdat hij vroeg waarom hun plezier belangrijker moest zijn dan zijn verzoek.",
+          "en": "She initially replied that everyone was reacting positively, until he asked why their enjoyment should matter more than his request."
+        },
+        {
+          "nl": "Ze verwijderde de oorspronkelijke post en liet aan de eigenaar weten dat volgende opnames vooraf met de betrokkenen besproken moesten worden.",
+          "en": "She removed the original post and told the owner that future recordings had to be discussed with those involved beforehand."
+        },
+        {
+          "nl": "Niet alle gedeelde kopieën verdwenen, maar Arne hoefde op zijn werk tenminste niet langer dankbaar te spelen voor een grap die hem achtervolgde.",
+          "en": "Not all shared copies disappeared, but at work Arne at least no longer had to act grateful for a joke that followed him around."
+        }
+      ],
+      "words": [
+        {
+          "term": "onschuldig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder de bedoeling schade te veroorzaken",
+            "en": "innocent"
+          },
+          "example": {
+            "nl": "Een filmpje waarin bakker Arne per ongeluk met een lege taartdoos voor een klant stond, werd door zijn collega als onschuldige grap geplaatst.",
+            "en": "A clip in which baker Arne accidentally stood before a customer with an empty cake box was posted by his colleague as an innocent joke."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "nadoen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "het gedrag van iemand anders nadoen",
+            "en": "to imitate"
+          },
+          "example": {
+            "nl": "Arne lachte bij de eerste reacties mee, maar merkte dat onbekenden hem buiten de winkel begonnen na te doen.",
+            "en": "Arne laughed along at the first reactions, but noticed strangers beginning to imitate him outside the shop."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de betrokkene",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand om wie het rechtstreeks gaat",
+            "en": "person involved"
+          },
+          "example": {
+            "nl": "Ze verwijderde de oorspronkelijke post en liet aan de eigenaar weten dat volgende opnames vooraf met de betrokkenen besproken moesten worden.",
+            "en": "She removed the original post and told the owner that future recordings had to be discussed with those involved beforehand."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoewel bij een ongewenste afweging",
+            "en": "Although in an unwelcome trade-off"
+          },
+          "explanation": {
+            "nl": "Hoewel noemt een voordeel dat zijn verzoek niet ongedaan maakt.",
+            "en": "Hoewel mentions a benefit that does not cancel his request."
+          },
+          "examples": [
+            {
+              "nl": "Hij vroeg zijn collega het filmpje weg te halen, hoewel er intussen ook nieuwe klanten door binnenkwamen.",
+              "en": "He asked his colleague to take the clip down, although it was meanwhile also bringing in new customers."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom vraagt Arne om verwijdering?",
+            "en": "Why does Arne ask for removal?"
+          },
+          "options": [
+            {
+              "nl": "De grap beïnvloedt hoe onbekenden hem behandelen.",
+              "en": "The joke affects how strangers treat him."
+            },
+            {
+              "nl": "De taart was echt verdwenen.",
+              "en": "The cake really had disappeared."
+            },
+            {
+              "nl": "Er komt niemand meer in de winkel.",
+              "en": "Nobody comes into the shop any longer."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij merkt dat mensen hem ook buiten de winkel nadoen.",
+            "en": "He notices people imitating him outside the shop too."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke beperking van de oplossing erkent het verhaal?",
+            "en": "What limitation of the solution does the story acknowledge?"
+          },
+          "options": [
+            {
+              "nl": "De eigenaar mag nooit meer reclame maken.",
+              "en": "The owner can never advertise again."
+            },
+            {
+              "nl": "Verwijdering van de bron wist niet alle kopieën.",
+              "en": "Removing the source does not erase every copy."
+            },
+            {
+              "nl": "Arne heeft nooit zijn verzoek uitgesproken.",
+              "en": "Arne never expressed his request."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De tekst vermeldt expliciet dat sommige gedeelde kopieën blijven bestaan.",
+            "en": "The text explicitly states that some shared copies remain."
+          }
+        }
+      ]
+    }
+  ]
+}

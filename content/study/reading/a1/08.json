@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "a1-read-aardbeien-per-bak",
+      "topic_id": "agriculture",
+      "title": {
+        "nl": "De lege bak vooraan",
+        "en": "The empty punnet at the front"
+      },
+      "plot_key": "A visitor at a pick-your-own farm keeps ripe and damaged strawberries separate after asking the farmer.",
+      "lines": [
+        {
+          "nl": "Op de boerderij mag Kato zelf aardbeien plukken.",
+          "en": "At the farm, Kato may pick strawberries herself."
+        },
+        {
+          "nl": "Ze krijgt een lege bak bij de ingang.",
+          "en": "She gets an empty punnet at the entrance."
+        },
+        {
+          "nl": "Sommige aardbeien zijn rood, andere nog heel bleek.",
+          "en": "Some strawberries are red, while others are still very pale."
+        },
+        {
+          "nl": "Kato wil weten welke vruchten ze mag nemen.",
+          "en": "Kato wants to know which fruits she may take."
+        },
+        {
+          "nl": "De boer toont een rode aardbei zonder zachte plek.",
+          "en": "The farmer shows a red strawberry without a soft spot."
+        },
+        {
+          "nl": "Kato laat de bleke vruchten aan de plant hangen.",
+          "en": "Kato leaves the pale fruits on the plant."
+        },
+        {
+          "nl": "Een beschadigde aardbei toont ze apart aan de boer.",
+          "en": "She shows a damaged strawberry separately to the farmer."
+        },
+        {
+          "nl": "Haar bak met goede aardbeien gaat daarna op de weegschaal.",
+          "en": "Her punnet of good strawberries then goes on the scale."
+        }
+      ],
+      "words": [
+        {
+          "term": "plukken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een vrucht van een plant nemen",
+            "en": "to pick fruit"
+          },
+          "example": {
+            "nl": "Op de boerderij mag Kato zelf aardbeien plukken.",
+            "en": "At the farm, Kato may pick strawberries herself."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "bleek",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met weinig kleur",
+            "en": "pale"
+          },
+          "example": {
+            "nl": "Sommige aardbeien zijn rood, andere nog heel bleek.",
+            "en": "Some strawberries are red, while others are still very pale."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "beschadigd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet meer helemaal heel",
+            "en": "damaged"
+          },
+          "example": {
+            "nl": "Een beschadigde aardbei toont ze apart aan de boer.",
+            "en": "She shows a damaged strawberry separately to the farmer."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Kato wil weten welke vruchten ze mag nemen.",
+              "en": "Kato wants to know which fruits she may take."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke aardbeien laat Kato hangen?",
+            "en": "Which strawberries does Kato leave on the plant?"
+          },
+          "options": [
+            {
+              "nl": "De bleke",
+              "en": "The pale ones"
+            },
+            {
+              "nl": "De rode",
+              "en": "The red ones"
+            },
+            {
+              "nl": "Alle vruchten",
+              "en": "All the fruits"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Kato laat de bleke vruchten aan de plant hangen.",
+            "en": "Kato leaves the pale fruits on the plant."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet ze met de beschadigde aardbei?",
+            "en": "What does she do with the damaged strawberry?"
+          },
+          "options": [
+            {
+              "nl": "In haar mond stoppen",
+              "en": "Put it in her mouth"
+            },
+            {
+              "nl": "Apart aan de boer tonen",
+              "en": "Show it separately to the farmer"
+            },
+            {
+              "nl": "In haar tas verstoppen",
+              "en": "Hide it in her bag"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Een beschadigde aardbei toont ze apart aan de boer.",
+            "en": "She shows a damaged strawberry separately to the farmer."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-schakelaar-op-lijst",
+      "topic_id": "energy-electricity",
+      "title": {
+        "nl": "De laatste ronde door huis",
+        "en": "The last round through the house"
+      },
+      "plot_key": "Housemates identify an unnecessary light left on during departures and make a practical leaving checklist.",
+      "lines": [
+        {
+          "nl": "Voor ons weekend weg lopen we door het huis.",
+          "en": "Before leaving for our weekend away, we walk through the house."
+        },
+        {
+          "nl": "Mijn huisgenoot kijkt of de ramen dicht zijn.",
+          "en": "My housemate checks whether the windows are closed."
+        },
+        {
+          "nl": "Ik kijk naar de lampen in elke kamer.",
+          "en": "I look at the lights in every room."
+        },
+        {
+          "nl": "In de berging brandt nog een kleine lamp.",
+          "en": "A small lamp is still on in the storage room."
+        },
+        {
+          "nl": "Daar ligt niets dat licht nodig heeft.",
+          "en": "There is nothing there that needs light."
+        },
+        {
+          "nl": "Ik doe de lamp bij de schakelaar uit.",
+          "en": "I turn the lamp off at the switch."
+        },
+        {
+          "nl": "Op ons lijstje komt ook de berging erbij.",
+          "en": "We add the storage room to our checklist too."
+        },
+        {
+          "nl": "Dan controleren we samen nog de voordeur.",
+          "en": "Then we check the front door together once more."
+        }
+      ],
+      "words": [
+        {
+          "term": "de schakelaar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "knop om stroom aan of uit te zetten",
+            "en": "switch"
+          },
+          "example": {
+            "nl": "Ik doe de lamp bij de schakelaar uit.",
+            "en": "I turn the lamp off at the switch."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "controleren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "nagaan of alles goed is",
+            "en": "to check"
+          },
+          "example": {
+            "nl": "Mijn huisgenoot kijkt of de ramen dicht zijn.",
+            "en": "My housemate checks whether the windows are closed."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de berging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "ruimte om spullen te bewaren",
+            "en": "storage room"
+          },
+          "example": {
+            "nl": "In de berging brandt nog een kleine lamp.",
+            "en": "A small lamp is still on in the storage room."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Ik doe de lamp bij de schakelaar uit.",
+              "en": "I turn the lamp off at the switch."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke lamp brandt nog?",
+            "en": "Which lamp is still on?"
+          },
+          "options": [
+            {
+              "nl": "De keukenlamp",
+              "en": "The kitchen light"
+            },
+            {
+              "nl": "De buitenlamp",
+              "en": "The outside light"
+            },
+            {
+              "nl": "De lamp in de berging",
+              "en": "The storage-room light"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In de berging brandt nog een kleine lamp.",
+            "en": "A small lamp is still on in the storage room."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat voegen ze aan het lijstje toe?",
+            "en": "What do they add to the checklist?"
+          },
+          "options": [
+            {
+              "nl": "De berging",
+              "en": "The storage room"
+            },
+            {
+              "nl": "Een hotel",
+              "en": "A hotel"
+            },
+            {
+              "nl": "De bus",
+              "en": "The bus"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Op ons lijstje komt ook de berging erbij.",
+            "en": "We add the storage room to our checklist too."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-schaduw-bij-speelplek",
+      "topic_id": "climate-change",
+      "title": {
+        "nl": "Het warme bankje",
+        "en": "The hot bench"
+      },
+      "plot_key": "On a hot day, a parent chooses a shaded rest spot and notes the difference from an exposed bench.",
+      "lines": [
+        {
+          "nl": "Op een warme middag gaat Leen naar het plein.",
+          "en": "On a hot afternoon, Leen goes to the square."
+        },
+        {
+          "nl": "Haar zoon wil even op een bank zitten.",
+          "en": "Her son wants to sit on a bench for a while."
+        },
+        {
+          "nl": "De bank staat midden in de felle zon.",
+          "en": "The bench stands in the strong sun."
+        },
+        {
+          "nl": "Leen voelt eerst voorzichtig aan de zitting.",
+          "en": "Leen first carefully feels the seat."
+        },
+        {
+          "nl": "Onder een boom staat nog een andere bank.",
+          "en": "There is another bench under a tree."
+        },
+        {
+          "nl": "Daar is schaduw en voelt het minder heet.",
+          "en": "There is shade there, and it feels less hot."
+        },
+        {
+          "nl": "Ze drinken er samen hun water op.",
+          "en": "They drink their water there together."
+        },
+        {
+          "nl": "Thuis tekent haar zoon een boom naast het plein.",
+          "en": "At home, her son draws a tree beside the square."
+        }
+      ],
+      "words": [
+        {
+          "term": "de schaduw",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plek waar direct zonlicht niet komt",
+            "en": "shade"
+          },
+          "example": {
+            "nl": "Daar is schaduw en voelt het minder heet.",
+            "en": "There is shade there, and it feels less hot."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "fel",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "sterk en helder",
+            "en": "strong or bright"
+          },
+          "example": {
+            "nl": "De bank staat midden in de felle zon.",
+            "en": "The bench stands in the strong sun."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "heet",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "erg warm",
+            "en": "hot"
+          },
+          "example": {
+            "nl": "Daar is schaduw en voelt het minder heet.",
+            "en": "There is shade there, and it feels less hot."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Onder een boom staat nog een andere bank.",
+              "en": "There is another bench under a tree."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar staat de eerste bank?",
+            "en": "Where is the first bench?"
+          },
+          "options": [
+            {
+              "nl": "In de felle zon",
+              "en": "In the strong sun"
+            },
+            {
+              "nl": "Onder een dak",
+              "en": "Under a roof"
+            },
+            {
+              "nl": "Binnen",
+              "en": "Inside"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De bank staat midden in de felle zon.",
+            "en": "The bench stands in the strong sun."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar kiezen ze te zitten?",
+            "en": "Where do they choose to sit?"
+          },
+          "options": [
+            {
+              "nl": "Bij de straat",
+              "en": "By the street"
+            },
+            {
+              "nl": "Onder een boom",
+              "en": "Under a tree"
+            },
+            {
+              "nl": "In een auto",
+              "en": "In a car"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Onder een boom staat nog een andere bank.",
+            "en": "There is another bench under a tree."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-feestglas-terug",
+      "topic_id": "sustainability-recycling",
+      "title": {
+        "nl": "De beker heeft nog een avond",
+        "en": "The cup has another evening"
+      },
+      "plot_key": "At a neighbourhood party, friends collect reusable cups and distinguish them from waste.",
+      "lines": [
+        {
+          "nl": "Na het buurtfeest staan overal bekers op tafel.",
+          "en": "After the neighbourhood party, cups are everywhere on the tables."
+        },
+        {
+          "nl": "Jef pakt een grote zak voor het afval.",
+          "en": "Jef gets a large rubbish bag."
+        },
+        {
+          "nl": "Zijn buur vraagt hem de bekers apart te zetten.",
+          "en": "His neighbour asks him to put the cups aside separately."
+        },
+        {
+          "nl": "Deze stevige bekers kunnen nog vaker mee.",
+          "en": "These sturdy cups can be used many more times."
+        },
+        {
+          "nl": "Ze zetten lege bekers samen in een krat.",
+          "en": "They put empty cups together in a crate."
+        },
+        {
+          "nl": "Restjes drank gaan eerst in de juiste emmer.",
+          "en": "Leftover drink first goes into the proper bucket."
+        },
+        {
+          "nl": "Een andere vrijwilliger brengt het krat naar de afwas.",
+          "en": "Another volunteer takes the crate to the washing-up area."
+        },
+        {
+          "nl": "Volgende week gebruiken ze dezelfde bekers weer.",
+          "en": "Next week, they will use the same cups again."
+        }
+      ],
+      "words": [
+        {
+          "term": "stevig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "sterk en niet snel kapot",
+            "en": "sturdy"
+          },
+          "example": {
+            "nl": "Deze stevige bekers kunnen nog vaker mee.",
+            "en": "These sturdy cups can be used many more times."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het krat",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "stevige open bak om spullen te dragen",
+            "en": "crate"
+          },
+          "example": {
+            "nl": "Ze zetten lege bekers samen in een krat.",
+            "en": "They put empty cups together in a crate."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de afwas",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "spullen die moeten worden afgewassen",
+            "en": "washing-up"
+          },
+          "example": {
+            "nl": "Een andere vrijwilliger brengt het krat naar de afwas.",
+            "en": "Another volunteer takes the crate to the washing-up area."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Deze stevige bekers kunnen nog vaker mee.",
+              "en": "These sturdy cups can be used many more times."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom blijven de bekers apart?",
+            "en": "Why are the cups kept separate?"
+          },
+          "options": [
+            {
+              "nl": "Ze zijn van papier",
+              "en": "They are paper"
+            },
+            {
+              "nl": "Ze zijn allemaal kapot",
+              "en": "They are all broken"
+            },
+            {
+              "nl": "Ze kunnen opnieuw gebruikt worden",
+              "en": "They can be used again"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Deze stevige bekers kunnen nog vaker mee.",
+            "en": "These sturdy cups can be used many more times."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar zetten ze de lege bekers?",
+            "en": "Where do they put the empty cups?"
+          },
+          "options": [
+            {
+              "nl": "In een krat",
+              "en": "In a crate"
+            },
+            {
+              "nl": "Op straat",
+              "en": "In the street"
+            },
+            {
+              "nl": "In een gewone afvalzak",
+              "en": "In a normal rubbish bag"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze zetten lege bekers samen in een krat.",
+            "en": "They put empty cups together in a crate."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-nieuws-hele-bericht",
+      "topic_id": "news-current-events",
+      "title": {
+        "nl": "Niet alleen de titel",
+        "en": "Not only the headline"
+      },
+      "plot_key": "A learner reads beyond a road-closure headline and learns the closure affects only one short section.",
+      "lines": [
+        {
+          "nl": "Op haar telefoon leest Nora: straat morgen dicht.",
+          "en": "On her phone, Nora reads: street closed tomorrow."
+        },
+        {
+          "nl": "Zij denkt meteen aan haar rit naar school.",
+          "en": "She immediately thinks of her journey to school."
+        },
+        {
+          "nl": "Haar huis ligt in die lange straat.",
+          "en": "Her house is in that long street."
+        },
+        {
+          "nl": "Ze opent het volledige bericht van de gemeente.",
+          "en": "She opens the municipality's full notice."
+        },
+        {
+          "nl": "Alleen het stuk bij de brug gaat dicht.",
+          "en": "Only the section by the bridge will close."
+        },
+        {
+          "nl": "Nora kan via het park nog naar school.",
+          "en": "Nora can still get to school through the park."
+        },
+        {
+          "nl": "Ze tekent de omweg op haar kleine kaart.",
+          "en": "She draws the detour on her little map."
+        },
+        {
+          "nl": "Daarna vertelt ze haar buur precies welk stuk sluit.",
+          "en": "Afterwards, she tells her neighbour exactly which section will close."
+        }
+      ],
+      "words": [
+        {
+          "term": "de titel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "korte naam boven een bericht",
+            "en": "headline or title"
+          },
+          "example": {
+            "nl": "Op haar telefoon leest Nora: straat morgen dicht.",
+            "en": "On her phone, Nora reads: street closed tomorrow."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het bericht",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "tekst met informatie",
+            "en": "message or notice"
+          },
+          "example": {
+            "nl": "Ze opent het volledige bericht van de gemeente.",
+            "en": "She opens the municipality's full notice."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de omweg",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "andere, meestal langere weg",
+            "en": "detour"
+          },
+          "example": {
+            "nl": "Ze tekent de omweg op haar kleine kaart.",
+            "en": "She draws the detour on her little map."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Nora kan via het park nog naar school.",
+              "en": "Nora can still get to school through the park."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk deel van de straat sluit?",
+            "en": "Which part of the street closes?"
+          },
+          "options": [
+            {
+              "nl": "Het stuk bij de brug",
+              "en": "The section by the bridge"
+            },
+            {
+              "nl": "De hele straat",
+              "en": "The entire street"
+            },
+            {
+              "nl": "Het stuk bij Nora's huis",
+              "en": "The section by Nora's house"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Alleen het stuk bij de brug gaat dicht.",
+            "en": "Only the section by the bridge will close."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarlangs kan Nora naar school?",
+            "en": "Which route can Nora take to school?"
+          },
+          "options": [
+            {
+              "nl": "Langs de brug",
+              "en": "Via the bridge"
+            },
+            {
+              "nl": "Via het park",
+              "en": "Through the park"
+            },
+            {
+              "nl": "Door de winkel",
+              "en": "Through the shop"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Nora kan via het park nog naar school.",
+            "en": "Nora can still get to school through the park."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-vraag-voor-buurtkrant",
+      "topic_id": "journalism-media",
+      "title": {
+        "nl": "Mag ik je naam erbij zetten?",
+        "en": "May I include your name?"
+      },
+      "plot_key": "A student writing a local profile checks a name and quotation directly with the interviewee.",
+      "lines": [
+        {
+          "nl": "Voor de buurtkrant praat Sara met een fietsenmaker.",
+          "en": "For the neighbourhood newspaper, Sara talks with a bicycle repairer."
+        },
+        {
+          "nl": "Ze vraagt wat hij het liefst aan zijn werk doet.",
+          "en": "She asks what he likes most about his work."
+        },
+        {
+          "nl": "Hij vertelt over mensen weer op weg helpen.",
+          "en": "He talks about helping people get going again."
+        },
+        {
+          "nl": "Sara schrijft zijn antwoord in haar schrift.",
+          "en": "Sara writes his answer in her notebook."
+        },
+        {
+          "nl": "Voor ze vertrekt, leest ze de zin voor.",
+          "en": "Before leaving, she reads the sentence aloud."
+        },
+        {
+          "nl": "De man verbetert één woord en noemt zijn naam.",
+          "en": "The man corrects one word and gives his name."
+        },
+        {
+          "nl": "Sara vraagt of die naam bij het stukje mag.",
+          "en": "Sara asks whether the name may accompany the short article."
+        },
+        {
+          "nl": "Pas na zijn ja maakt ze haar tekst af.",
+          "en": "Only after his agreement does she finish her text."
+        }
+      ],
+      "words": [
+        {
+          "term": "de buurtkrant",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "krant met nieuws uit een buurt",
+            "en": "neighbourhood newspaper"
+          },
+          "example": {
+            "nl": "Voor de buurtkrant praat Sara met een fietsenmaker.",
+            "en": "For the neighbourhood newspaper, Sara talks with a bicycle repairer."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het antwoord",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "reactie op een vraag",
+            "en": "answer"
+          },
+          "example": {
+            "nl": "Sara schrijft zijn antwoord in haar schrift.",
+            "en": "Sara writes his answer in her notebook."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "verbeteren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets juister of beter maken",
+            "en": "to correct or improve"
+          },
+          "example": {
+            "nl": "De man verbetert één woord en noemt zijn naam.",
+            "en": "The man corrects one word and gives his name."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Voor ze vertrekt, leest ze de zin voor.",
+              "en": "Before leaving, she reads the sentence aloud."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat doet Sara voordat ze vertrekt?",
+            "en": "What does Sara do before leaving?"
+          },
+          "options": [
+            {
+              "nl": "Een foto online zetten",
+              "en": "Post a photo online"
+            },
+            {
+              "nl": "Een nieuwe fiets kopen",
+              "en": "Buy a new bicycle"
+            },
+            {
+              "nl": "De zin voorlezen",
+              "en": "Read the sentence aloud"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Voor ze vertrekt, leest ze de zin voor.",
+            "en": "Before leaving, she reads the sentence aloud."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verbetert de man?",
+            "en": "What does the man correct?"
+          },
+          "options": [
+            {
+              "nl": "Eén woord",
+              "en": "One word"
+            },
+            {
+              "nl": "Haar hele schrift",
+              "en": "Her whole notebook"
+            },
+            {
+              "nl": "Een fiets",
+              "en": "A bicycle"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De man verbetert één woord en noemt zijn naam.",
+            "en": "The man corrects one word and gives his name."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-prijs-per-stuk",
+      "topic_id": "advertising-marketing",
+      "title": {
+        "nl": "Drie voor dezelfde prijs?",
+        "en": "Three for the same price?"
+      },
+      "plot_key": "A shopper compares a large offer sign with the unit price and chooses only the quantity needed.",
+      "lines": [
+        {
+          "nl": "Op een groot bord staat een aanbieding voor yoghurt.",
+          "en": "A large sign shows a yoghurt offer."
+        },
+        {
+          "nl": "Lina mag drie potjes samen goedkoper kopen.",
+          "en": "Lina can buy three pots together more cheaply."
+        },
+        {
+          "nl": "Ze woont alleen en vertrekt morgen op reis.",
+          "en": "She lives alone and leaves on a trip tomorrow."
+        },
+        {
+          "nl": "In haar koelkast staat ook nog één potje.",
+          "en": "There is also still one pot in her fridge."
+        },
+        {
+          "nl": "Lina leest de prijs van een los potje.",
+          "en": "Lina reads the price of a single pot."
+        },
+        {
+          "nl": "Ze koopt alleen wat ze vandaag nog opeet.",
+          "en": "She buys only what she will still eat today."
+        },
+        {
+          "nl": "De grote aanbieding blijft daarom in het rek.",
+          "en": "The large offer therefore stays on the shelf."
+        },
+        {
+          "nl": "Thuis is er precies genoeg voor haar ontbijt.",
+          "en": "At home, there is exactly enough for her breakfast."
+        }
+      ],
+      "words": [
+        {
+          "term": "de aanbieding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "product dat tijdelijk voordeliger wordt verkocht",
+            "en": "special offer"
+          },
+          "example": {
+            "nl": "Op een groot bord staat een aanbieding voor yoghurt.",
+            "en": "A large sign shows a yoghurt offer."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "los",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "afzonderlijk, niet als groep",
+            "en": "single or individual"
+          },
+          "example": {
+            "nl": "Lina leest de prijs van een los potje.",
+            "en": "Lina reads the price of a single pot."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het potje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine houder voor bijvoorbeeld yoghurt",
+            "en": "small pot"
+          },
+          "example": {
+            "nl": "Lina mag drie potjes samen goedkoper kopen.",
+            "en": "Lina can buy three pots together more cheaply."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ze koopt alleen wat ze vandaag nog opeet.",
+              "en": "She buys only what she will still eat today."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom koopt Lina geen drie potjes?",
+            "en": "Why does Lina not buy three pots?"
+          },
+          "options": [
+            {
+              "nl": "Ze vertrekt morgen",
+              "en": "She leaves tomorrow"
+            },
+            {
+              "nl": "Ze heeft geen tas",
+              "en": "She has no bag"
+            },
+            {
+              "nl": "De winkel sluit",
+              "en": "The shop is closing"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze woont alleen en vertrekt morgen op reis.",
+            "en": "She lives alone and leaves on a trip tomorrow."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke prijs leest ze ook?",
+            "en": "Which price does she also read?"
+          },
+          "options": [
+            {
+              "nl": "Die van brood",
+              "en": "The price of bread"
+            },
+            {
+              "nl": "Die van één potje",
+              "en": "The price of one pot"
+            },
+            {
+              "nl": "Die van een tas",
+              "en": "The price of a bag"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Lina leest de prijs van een los potje.",
+            "en": "Lina reads the price of a single pot."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-code-niet-delen",
+      "topic_id": "privacy-cybersecurity",
+      "title": {
+        "nl": "De code blijft van mij",
+        "en": "The code stays mine"
+      },
+      "plot_key": "A learner refuses to share a login code and reaches a friend through an established contact instead.",
+      "lines": [
+        {
+          "nl": "Mira krijgt een bericht met de naam van haar vriend.",
+          "en": "Mira gets a message with her friend's name."
+        },
+        {
+          "nl": "Het bericht vraagt om een code uit haar sms.",
+          "en": "The message asks for a code from her text messages."
+        },
+        {
+          "nl": "Mira kijkt naar de cijfers op haar scherm.",
+          "en": "Mira looks at the digits on her screen."
+        },
+        {
+          "nl": "Ze wil eerst snel helpen met antwoorden.",
+          "en": "At first, she wants to help by replying quickly."
+        },
+        {
+          "nl": "Dan belt ze haar vriend via zijn bekende nummer.",
+          "en": "Then she calls her friend using his known number."
+        },
+        {
+          "nl": "Hij vraagt helemaal niet om een code.",
+          "en": "He is not asking for a code at all."
+        },
+        {
+          "nl": "Mira stuurt de cijfers dus niet door.",
+          "en": "Mira therefore does not forward the digits."
+        },
+        {
+          "nl": "Samen bekijken ze hoe ze het bericht kunnen melden.",
+          "en": "Together, they look at how they can report the message."
+        }
+      ],
+      "words": [
+        {
+          "term": "de code",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "reeks tekens voor toegang of controle",
+            "en": "code"
+          },
+          "example": {
+            "nl": "Het bericht vraagt om een code uit haar sms.",
+            "en": "The message asks for a code from her text messages."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "doorsturen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een bericht of gegevens verder sturen",
+            "en": "to forward"
+          },
+          "example": {
+            "nl": "Mira stuurt de cijfers dus niet door.",
+            "en": "Mira therefore does not forward the digits."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "melden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets doorgeven aan de juiste dienst",
+            "en": "to report"
+          },
+          "example": {
+            "nl": "Samen bekijken ze hoe ze het bericht kunnen melden.",
+            "en": "Together, they look at how they can report the message."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet en geen",
+            "en": "Niet and geen"
+          },
+          "explanation": {
+            "nl": "Kijk wat wordt ontkend: de handeling of het zelfstandig naamwoord.",
+            "en": "Look at what is being negated: the action or the noun."
+          },
+          "examples": [
+            {
+              "nl": "Mira stuurt de cijfers dus niet door.",
+              "en": "Mira therefore does not forward the digits."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat vraagt het bericht?",
+            "en": "What does the message ask for?"
+          },
+          "options": [
+            {
+              "nl": "Een foto",
+              "en": "A photo"
+            },
+            {
+              "nl": "Een adres",
+              "en": "An address"
+            },
+            {
+              "nl": "Een sms-code",
+              "en": "A text-message code"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het bericht vraagt om een code uit haar sms.",
+            "en": "The message asks for a code from her text messages."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe controleert Mira het bericht?",
+            "en": "How does Mira check the message?"
+          },
+          "options": [
+            {
+              "nl": "Ze belt het bekende nummer",
+              "en": "She calls the known number"
+            },
+            {
+              "nl": "Ze stuurt de code",
+              "en": "She sends the code"
+            },
+            {
+              "nl": "Ze geeft haar telefoon weg",
+              "en": "She gives her phone away"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Dan belt ze haar vriend via zijn bekende nummer.",
+            "en": "Then she calls her friend using his known number."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-videobel-op-rust",
+      "topic_id": "internet-digital-life",
+      "title": {
+        "nl": "De camera kijkt naar het plafond",
+        "en": "The camera looks at the ceiling"
+      },
+      "plot_key": "A person improves a video call by checking camera framing with their partner before beginning a story.",
+      "lines": [
+        {
+          "nl": "Oma wil haar nieuwe hond via videobellen tonen.",
+          "en": "Grandma wants to show her new dog on a video call."
+        },
+        {
+          "nl": "Haar kleinzoon ziet alleen het witte plafond.",
+          "en": "Her grandson sees only the white ceiling."
+        },
+        {
+          "nl": "Hij hoort de hond wel zacht blaffen.",
+          "en": "He can hear the dog barking softly."
+        },
+        {
+          "nl": "Oma vraagt waarom niemand de hond mooi vindt.",
+          "en": "Grandma asks why nobody likes the dog."
+        },
+        {
+          "nl": "Haar kleinzoon vertelt rustig wat hij echt ziet.",
+          "en": "Her grandson calmly explains what he actually sees."
+        },
+        {
+          "nl": "Samen richten ze de camera wat lager.",
+          "en": "Together, they point the camera a little lower."
+        },
+        {
+          "nl": "Nu verschijnt de hond naast oma's voeten.",
+          "en": "Now the dog appears beside Grandma's feet."
+        },
+        {
+          "nl": "Pas daarna begint oma haar hele verhaal.",
+          "en": "Only then does Grandma begin her whole story."
+        }
+      ],
+      "words": [
+        {
+          "term": "het plafond",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bovenkant aan de binnenkant van een kamer",
+            "en": "ceiling"
+          },
+          "example": {
+            "nl": "Haar kleinzoon ziet alleen het witte plafond.",
+            "en": "Her grandson sees only the white ceiling."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "richten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "naar een bepaalde kant laten wijzen",
+            "en": "to point or aim"
+          },
+          "example": {
+            "nl": "Samen richten ze de camera wat lager.",
+            "en": "Together, they point the camera a little lower."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "blaffen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "het geluid van een hond maken",
+            "en": "to bark"
+          },
+          "example": {
+            "nl": "Hij hoort de hond wel zacht blaffen.",
+            "en": "He can hear the dog barking softly."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Haar kleinzoon vertelt rustig wat hij echt ziet.",
+              "en": "Her grandson calmly explains what he actually sees."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ziet de kleinzoon eerst?",
+            "en": "What does the grandson see first?"
+          },
+          "options": [
+            {
+              "nl": "Het plafond",
+              "en": "The ceiling"
+            },
+            {
+              "nl": "De hond",
+              "en": "The dog"
+            },
+            {
+              "nl": "De tuin",
+              "en": "The garden"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Haar kleinzoon ziet alleen het witte plafond.",
+            "en": "Her grandson sees only the white ceiling."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat veranderen ze aan de camera?",
+            "en": "What do they change about the camera?"
+          },
+          "options": [
+            {
+              "nl": "Ze zetten hem uit",
+              "en": "They switch it off"
+            },
+            {
+              "nl": "Ze richten hem lager",
+              "en": "They point it lower"
+            },
+            {
+              "nl": "Ze leggen hem buiten",
+              "en": "They put it outside"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Samen richten ze de camera wat lager.",
+            "en": "Together, they point the camera a little lower."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-robot-met-stoel",
+      "topic_id": "robotics-automation",
+      "title": {
+        "nl": "De stofzuiger vindt de stoel",
+        "en": "The vacuum finds the chair"
+      },
+      "plot_key": "A housemate prepares a room so a robot vacuum can move without catching a loose charging cable.",
+      "lines": [
+        {
+          "nl": "De robotstofzuiger begint onder onze grote tafel.",
+          "en": "The robot vacuum starts beneath our large table."
+        },
+        {
+          "nl": "Even later blijft hij op dezelfde plek draaien.",
+          "en": "A little later, it keeps turning in the same place."
+        },
+        {
+          "nl": "Naast een stoel ligt een lange laadkabel.",
+          "en": "There is a long charging cable beside a chair."
+        },
+        {
+          "nl": "Het snoer zit tegen één klein wiel.",
+          "en": "The cable is against one little wheel."
+        },
+        {
+          "nl": "We stoppen het toestel volgens de handleiding.",
+          "en": "We stop the device according to the manual."
+        },
+        {
+          "nl": "Daarna leggen we de kabel op een plank.",
+          "en": "Afterwards, we put the cable on a shelf."
+        },
+        {
+          "nl": "Ook schuiven we de losse stoel opzij.",
+          "en": "We also move the loose chair aside."
+        },
+        {
+          "nl": "Bij de volgende ronde kan het toestel verder.",
+          "en": "On the next round, the device can continue."
+        }
+      ],
+      "words": [
+        {
+          "term": "de laadkabel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "snoer om een batterij op te laden",
+            "en": "charging cable"
+          },
+          "example": {
+            "nl": "Naast een stoel ligt een lange laadkabel.",
+            "en": "There is a long charging cable beside a chair."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het wiel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "rond onderdeel waarmee iets rijdt",
+            "en": "wheel"
+          },
+          "example": {
+            "nl": "Het snoer zit tegen één klein wiel.",
+            "en": "The cable is against one little wheel."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de handleiding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "tekst die uitlegt hoe een toestel werkt",
+            "en": "manual"
+          },
+          "example": {
+            "nl": "We stoppen het toestel volgens de handleiding.",
+            "en": "We stop the device according to the manual."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Daarna leggen we de kabel op een plank.",
+              "en": "Afterwards, we put the cable on a shelf."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ligt bij de stoel?",
+            "en": "What is beside the chair?"
+          },
+          "options": [
+            {
+              "nl": "Een boek",
+              "en": "A book"
+            },
+            {
+              "nl": "Een bal",
+              "en": "A ball"
+            },
+            {
+              "nl": "Een laadkabel",
+              "en": "A charging cable"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Naast een stoel ligt een lange laadkabel.",
+            "en": "There is a long charging cable beside a chair."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar leggen ze de kabel daarna?",
+            "en": "Where do they put the cable afterwards?"
+          },
+          "options": [
+            {
+              "nl": "Op een plank",
+              "en": "On a shelf"
+            },
+            {
+              "nl": "Onder de stoel",
+              "en": "Under the chair"
+            },
+            {
+              "nl": "In het wiel",
+              "en": "In the wheel"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Daarna leggen we de kabel op een plank.",
+            "en": "Afterwards, we put the cable on a shelf."
+          }
+        }
+      ]
+    }
+  ]
+}

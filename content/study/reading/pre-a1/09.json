@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-a1-read-getal-op-slot",
+      "topic_id": "daily-routines",
+      "title": {
+        "nl": "De nul staat scheef",
+        "en": "The zero is crooked"
+      },
+      "plot_key": "A beginner aligns a bicycle combination-lock digit properly and opens it.",
+      "lines": [
+        {
+          "nl": "Mijn fietsslot heeft drie cijfers.",
+          "en": "My bicycle lock has three digits."
+        },
+        {
+          "nl": "De code is één, nul, twee.",
+          "en": "The code is one, zero, two."
+        },
+        {
+          "nl": "Ik draai aan de kleine wieltjes.",
+          "en": "I turn the little wheels."
+        },
+        {
+          "nl": "Het slot gaat nog niet open.",
+          "en": "The lock does not open yet."
+        },
+        {
+          "nl": "Mijn nul staat een beetje scheef.",
+          "en": "My zero is slightly off centre."
+        },
+        {
+          "nl": "Ik draai het wieltje heel zacht.",
+          "en": "I turn the wheel very gently."
+        },
+        {
+          "nl": "Nu staan alle cijfers recht.",
+          "en": "Now all the digits line up."
+        },
+        {
+          "nl": "Het slot gaat meteen open.",
+          "en": "The lock opens straight away."
+        }
+      ],
+      "words": [
+        {
+          "term": "de code",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "reeks tekens om iets te openen",
+            "en": "code"
+          },
+          "example": {
+            "nl": "De code is één, nul, twee.",
+            "en": "The code is one, zero, two."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het wieltje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein rond draaiend onderdeel",
+            "en": "little wheel"
+          },
+          "example": {
+            "nl": "Ik draai aan de kleine wieltjes.",
+            "en": "I turn the little wheels."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "recht",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "goed op één lijn",
+            "en": "aligned or straight"
+          },
+          "example": {
+            "nl": "Nu staan alle cijfers recht.",
+            "en": "Now all the digits line up."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet en geen",
+            "en": "Niet and geen"
+          },
+          "explanation": {
+            "nl": "Kijk wat wordt ontkend: de handeling of het zelfstandig naamwoord.",
+            "en": "Look at what is being negated: the action or the noun."
+          },
+          "examples": [
+            {
+              "nl": "Het slot gaat nog niet open.",
+              "en": "The lock does not open yet."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat is de code?",
+            "en": "What is the code?"
+          },
+          "options": [
+            {
+              "nl": "Eén, nul, twee",
+              "en": "One, zero, two"
+            },
+            {
+              "nl": "Twee, nul, één",
+              "en": "Two, zero, one"
+            },
+            {
+              "nl": "Eén, twee, nul",
+              "en": "One, two, zero"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De code is één, nul, twee.",
+            "en": "The code is one, zero, two."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welk cijfer staat scheef?",
+            "en": "Which digit is off centre?"
+          },
+          "options": [
+            {
+              "nl": "De twee",
+              "en": "The two"
+            },
+            {
+              "nl": "De nul",
+              "en": "The zero"
+            },
+            {
+              "nl": "De één",
+              "en": "The one"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Mijn nul staat een beetje scheef.",
+            "en": "My zero is slightly off centre."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-raam-op-treinmodel",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "Een raam voor de bestuurder",
+        "en": "A window for the driver"
+      },
+      "plot_key": "A model-maker notices a cardboard bus driver cannot see out and cuts a window.",
+      "lines": [
+        {
+          "nl": "Ik maak een bus van karton.",
+          "en": "I make a bus from cardboard."
+        },
+        {
+          "nl": "Er zitten vier wielen aan.",
+          "en": "It has four wheels."
+        },
+        {
+          "nl": "Mijn pop zit achter het stuur.",
+          "en": "My doll sits behind the steering wheel."
+        },
+        {
+          "nl": "Maar hij ziet niets buiten.",
+          "en": "But he cannot see anything outside."
+        },
+        {
+          "nl": "Ik teken een vierkant vooraan.",
+          "en": "I draw a square at the front."
+        },
+        {
+          "nl": "Mama knipt het vierkant uit.",
+          "en": "Mum cuts out the square."
+        },
+        {
+          "nl": "Nu heeft mijn bus een raam.",
+          "en": "Now my bus has a window."
+        },
+        {
+          "nl": "Mijn pop kijkt naar de weg.",
+          "en": "My doll looks at the road."
+        }
+      ],
+      "words": [
+        {
+          "term": "het karton",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "stevig dik papier",
+            "en": "cardboard"
+          },
+          "example": {
+            "nl": "Ik maak een bus van karton.",
+            "en": "I make a bus from cardboard."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het stuur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "onderdeel om een voertuig te sturen",
+            "en": "steering wheel"
+          },
+          "example": {
+            "nl": "Mijn pop zit achter het stuur.",
+            "en": "My doll sits behind the steering wheel."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het vierkant",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "vorm met vier gelijke zijden",
+            "en": "square"
+          },
+          "example": {
+            "nl": "Ik teken een vierkant vooraan.",
+            "en": "I draw a square at the front."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Mama knipt het vierkant uit.",
+              "en": "Mum cuts out the square."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel wielen heeft de bus?",
+            "en": "How many wheels does the bus have?"
+          },
+          "options": [
+            {
+              "nl": "Twee",
+              "en": "Two"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Vier",
+              "en": "Four"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Er zitten vier wielen aan.",
+            "en": "It has four wheels."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie knipt het raam uit?",
+            "en": "Who cuts out the window?"
+          },
+          "options": [
+            {
+              "nl": "Mama",
+              "en": "Mum"
+            },
+            {
+              "nl": "De pop",
+              "en": "The doll"
+            },
+            {
+              "nl": "De buur",
+              "en": "The neighbour"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mama knipt het vierkant uit.",
+            "en": "Mum cuts out the square."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-lijn-naar-oma",
+      "topic_id": "family",
+      "title": {
+        "nl": "Een draad naar oma",
+        "en": "A string to Grandma"
+      },
+      "plot_key": "Two family members use a toy cup telephone between a balcony and a garden.",
+      "lines": [
+        {
+          "nl": "Oma staat in de tuin.",
+          "en": "Grandma stands in the garden."
+        },
+        {
+          "nl": "Ik sta op het balkon.",
+          "en": "I stand on the balcony."
+        },
+        {
+          "nl": "Wij hebben allebei een beker.",
+          "en": "We each have a cup."
+        },
+        {
+          "nl": "Een lange draad verbindt de bekers.",
+          "en": "A long string connects the cups."
+        },
+        {
+          "nl": "Oma houdt haar beker bij haar oor.",
+          "en": "Grandma holds her cup to her ear."
+        },
+        {
+          "nl": "Ik zeg heel zacht: dag, oma.",
+          "en": "I say very softly: hello, Grandma."
+        },
+        {
+          "nl": "Oma steekt haar duim omhoog.",
+          "en": "Grandma gives a thumbs-up."
+        },
+        {
+          "nl": "Zij hoort mij door de draad.",
+          "en": "She hears me through the string."
+        }
+      ],
+      "words": [
+        {
+          "term": "het balkon",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "buitenruimte aan een bovenverdieping",
+            "en": "balcony"
+          },
+          "example": {
+            "nl": "Ik sta op het balkon.",
+            "en": "I stand on the balcony."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de draad",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lang dun stuk materiaal",
+            "en": "string"
+          },
+          "example": {
+            "nl": "Een lange draad verbindt de bekers.",
+            "en": "A long string connects the cups."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de duim",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "korte dikke vinger naast de andere vingers",
+            "en": "thumb"
+          },
+          "example": {
+            "nl": "Oma steekt haar duim omhoog.",
+            "en": "Grandma gives a thumbs-up."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Ik sta op het balkon.",
+              "en": "I stand on the balcony."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar staat oma?",
+            "en": "Where is Grandma standing?"
+          },
+          "options": [
+            {
+              "nl": "In de tuin",
+              "en": "In the garden"
+            },
+            {
+              "nl": "Op het balkon",
+              "en": "On the balcony"
+            },
+            {
+              "nl": "In de keuken",
+              "en": "In the kitchen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Oma staat in de tuin.",
+            "en": "Grandma stands in the garden."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat houdt oma bij haar oor?",
+            "en": "What does Grandma hold to her ear?"
+          },
+          "options": [
+            {
+              "nl": "Een telefoon",
+              "en": "A telephone"
+            },
+            {
+              "nl": "Een beker",
+              "en": "A cup"
+            },
+            {
+              "nl": "Een boek",
+              "en": "A book"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Oma houdt haar beker bij haar oor.",
+            "en": "Grandma holds her cup to her ear."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-appel-op-weegschaal",
+      "topic_id": "shopping",
+      "title": {
+        "nl": "Niet de tas meewegen",
+        "en": "Do not weigh the bag too"
+      },
+      "plot_key": "A shopper removes a heavy personal bag from a produce scale before weighing apples.",
+      "lines": [
+        {
+          "nl": "Ik weeg mijn appels.",
+          "en": "I weigh my apples."
+        },
+        {
+          "nl": "Mijn tas staat op de weegschaal.",
+          "en": "My bag is on the scale."
+        },
+        {
+          "nl": "Het getal is heel groot.",
+          "en": "The number is very high."
+        },
+        {
+          "nl": "Mijn vriend wijst naar de tas.",
+          "en": "My friend points to the bag."
+        },
+        {
+          "nl": "Daarin zit ook mijn boek.",
+          "en": "My book is in it too."
+        },
+        {
+          "nl": "Ik leg alleen de appels neer.",
+          "en": "I put only the apples on it."
+        },
+        {
+          "nl": "Nu is het getal veel kleiner.",
+          "en": "Now the number is much lower."
+        },
+        {
+          "nl": "Ik plak de prijs op de appels.",
+          "en": "I stick the price label on the apples."
+        }
+      ],
+      "words": [
+        {
+          "term": "wegen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "meten hoe zwaar iets is",
+            "en": "to weigh"
+          },
+          "example": {
+            "nl": "Ik weeg mijn appels.",
+            "en": "I weigh my apples."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de weegschaal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "toestel om gewicht te meten",
+            "en": "scale"
+          },
+          "example": {
+            "nl": "Mijn tas staat op de weegschaal.",
+            "en": "My bag is on the scale."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het getal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "aanduiding van een hoeveelheid",
+            "en": "number"
+          },
+          "example": {
+            "nl": "Het getal is heel groot.",
+            "en": "The number is very high."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ik leg alleen de appels neer.",
+              "en": "I put only the apples on it."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat zit ook in de tas?",
+            "en": "What is also in the bag?"
+          },
+          "options": [
+            {
+              "nl": "Een jas",
+              "en": "A coat"
+            },
+            {
+              "nl": "Een beker",
+              "en": "A mug"
+            },
+            {
+              "nl": "Een boek",
+              "en": "A book"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Daarin zit ook mijn boek.",
+            "en": "My book is in it too."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat ligt daarna op de weegschaal?",
+            "en": "What is on the scale afterwards?"
+          },
+          "options": [
+            {
+              "nl": "Alleen appels",
+              "en": "Only apples"
+            },
+            {
+              "nl": "De hele tas",
+              "en": "The whole bag"
+            },
+            {
+              "nl": "Het boek",
+              "en": "The book"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik leg alleen de appels neer.",
+            "en": "I put only the apples on it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-buren-ritme",
+      "topic_id": "music",
+      "title": {
+        "nl": "Een antwoord op de muur",
+        "en": "An answer on the wall"
+      },
+      "plot_key": "Neighbours use a short agreed tapping greeting rather than a loud call in a shared workshop.",
+      "lines": [
+        {
+          "nl": "Mijn buur werkt naast mij.",
+          "en": "My neighbour works next to me."
+        },
+        {
+          "nl": "Tussen ons staat een houten wand.",
+          "en": "There is a wooden partition between us."
+        },
+        {
+          "nl": "Ik tik twee keer zacht.",
+          "en": "I tap softly twice."
+        },
+        {
+          "nl": "Hij tikt twee keer terug.",
+          "en": "He taps twice in reply."
+        },
+        {
+          "nl": "Dat is ons kleine hallo.",
+          "en": "That is our little hello."
+        },
+        {
+          "nl": "Ik maak mijn werk af.",
+          "en": "I finish my work."
+        },
+        {
+          "nl": "Dan ga ik naar zijn tafel.",
+          "en": "Then I go to his table."
+        },
+        {
+          "nl": "Wij nemen samen een pauze.",
+          "en": "We take a break together."
+        }
+      ],
+      "words": [
+        {
+          "term": "de wand",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "vlak dat ruimtes scheidt",
+            "en": "partition or wall"
+          },
+          "example": {
+            "nl": "Tussen ons staat een houten wand.",
+            "en": "There is a wooden partition between us."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "twee keer",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "op twee momenten achter elkaar",
+            "en": "twice"
+          },
+          "example": {
+            "nl": "Ik tik twee keer zacht.",
+            "en": "I tap softly twice."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de pauze",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "tijd waarin je even stopt",
+            "en": "break"
+          },
+          "example": {
+            "nl": "Wij nemen samen een pauze.",
+            "en": "We take a break together."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Hij tikt twee keer terug.",
+              "en": "He taps twice in reply."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel keer tikt de spreker?",
+            "en": "How many times does the speaker tap?"
+          },
+          "options": [
+            {
+              "nl": "Twee keer",
+              "en": "Twice"
+            },
+            {
+              "nl": "Drie keer",
+              "en": "Three times"
+            },
+            {
+              "nl": "Eén keer",
+              "en": "Once"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik tik twee keer zacht.",
+            "en": "I tap softly twice."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen de twee op het einde?",
+            "en": "What do the two do at the end?"
+          },
+          "options": [
+            {
+              "nl": "Naar huis gaan",
+              "en": "Go home"
+            },
+            {
+              "nl": "Pauze nemen",
+              "en": "Take a break"
+            },
+            {
+              "nl": "Hard zingen",
+              "en": "Sing loudly"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Wij nemen samen een pauze.",
+            "en": "We take a break together."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-kleur-van-sok",
+      "topic_id": "fashion-clothing",
+      "title": {
+        "nl": "Twee sokken, één paar",
+        "en": "Two socks, one pair"
+      },
+      "plot_key": "A learner checks a sock's heel colour to complete a matching pair from a mixed laundry pile.",
+      "lines": [
+        {
+          "nl": "Er liggen veel sokken op bed.",
+          "en": "There are many socks on the bed."
+        },
+        {
+          "nl": "Ik houd een zwarte sok vast.",
+          "en": "I am holding a black sock."
+        },
+        {
+          "nl": "Er ligt nog een zwarte sok.",
+          "en": "There is another black sock."
+        },
+        {
+          "nl": "Maar de hiel is rood.",
+          "en": "But the heel is red."
+        },
+        {
+          "nl": "Mijn sok heeft een blauwe hiel.",
+          "en": "My sock has a blue heel."
+        },
+        {
+          "nl": "Ik zoek nog even verder.",
+          "en": "I keep looking a little longer."
+        },
+        {
+          "nl": "Daar ligt de andere blauwe hiel.",
+          "en": "There is the other blue heel."
+        },
+        {
+          "nl": "Nu heb ik één paar.",
+          "en": "Now I have one pair."
+        }
+      ],
+      "words": [
+        {
+          "term": "de sok",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kledingstuk om de voet",
+            "en": "sock"
+          },
+          "example": {
+            "nl": "Ik houd een zwarte sok vast.",
+            "en": "I am holding a black sock."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de hiel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "achterkant van een voet of sok",
+            "en": "heel"
+          },
+          "example": {
+            "nl": "Maar de hiel is rood.",
+            "en": "But the heel is red."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het paar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "twee dingen die bij elkaar horen",
+            "en": "pair"
+          },
+          "example": {
+            "nl": "Nu heb ik één paar.",
+            "en": "Now I have one pair."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Van wie is het?",
+            "en": "Who does it belong to?"
+          },
+          "explanation": {
+            "nl": "Het bezittelijk woord vertelt bij wie iets hoort.",
+            "en": "The possessive word tells you who something belongs to."
+          },
+          "examples": [
+            {
+              "nl": "Mijn sok heeft een blauwe hiel.",
+              "en": "My sock has a blue heel."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kleur heeft de hiel van de eerste sok?",
+            "en": "What colour is the heel of the first sock?"
+          },
+          "options": [
+            {
+              "nl": "Rood",
+              "en": "Red"
+            },
+            {
+              "nl": "Groen",
+              "en": "Green"
+            },
+            {
+              "nl": "Blauw",
+              "en": "Blue"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Mijn sok heeft een blauwe hiel.",
+            "en": "My sock has a blue heel."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat heeft de spreker op het einde?",
+            "en": "What does the speaker have at the end?"
+          },
+          "options": [
+            {
+              "nl": "Eén paar",
+              "en": "One pair"
+            },
+            {
+              "nl": "Drie sokken",
+              "en": "Three socks"
+            },
+            {
+              "nl": "Een schoen",
+              "en": "A shoe"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Nu heb ik één paar.",
+            "en": "Now I have one pair."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-roltrap-pijltje",
+      "topic_id": "cities-countries",
+      "title": {
+        "nl": "Deze trap gaat omlaag",
+        "en": "This escalator goes down"
+      },
+      "plot_key": "A station visitor follows a downward arrow rather than an upward escalator to the platform.",
+      "lines": [
+        {
+          "nl": "Mijn trein staat beneden.",
+          "en": "My train is downstairs."
+        },
+        {
+          "nl": "Hier zijn twee roltrappen.",
+          "en": "There are two escalators here."
+        },
+        {
+          "nl": "De eerste gaat naar boven.",
+          "en": "The first one goes up."
+        },
+        {
+          "nl": "Ik blijf rustig staan.",
+          "en": "I stand still calmly."
+        },
+        {
+          "nl": "Op de andere staat een pijl.",
+          "en": "There is an arrow on the other one."
+        },
+        {
+          "nl": "De pijl wijst naar beneden.",
+          "en": "The arrow points down."
+        },
+        {
+          "nl": "Ik neem die roltrap.",
+          "en": "I take that escalator."
+        },
+        {
+          "nl": "Beneden zie ik mijn trein.",
+          "en": "Downstairs, I see my train."
+        }
+      ],
+      "words": [
+        {
+          "term": "de roltrap",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "trap met bewegende treden",
+            "en": "escalator"
+          },
+          "example": {
+            "nl": "Hier zijn twee roltrappen.",
+            "en": "There are two escalators here."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "beneden",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "op een lagere verdieping",
+            "en": "downstairs"
+          },
+          "example": {
+            "nl": "Mijn trein staat beneden.",
+            "en": "My train is downstairs."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "boven",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "op een hogere verdieping",
+            "en": "upstairs"
+          },
+          "example": {
+            "nl": "De eerste gaat naar boven.",
+            "en": "The first one goes up."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Mijn trein staat beneden.",
+              "en": "My train is downstairs."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar staat de trein?",
+            "en": "Where is the train?"
+          },
+          "options": [
+            {
+              "nl": "Beneden",
+              "en": "Downstairs"
+            },
+            {
+              "nl": "Boven",
+              "en": "Upstairs"
+            },
+            {
+              "nl": "Buiten het station",
+              "en": "Outside the station"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mijn trein staat beneden.",
+            "en": "My train is downstairs."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke roltrap kiest de spreker?",
+            "en": "Which escalator does the speaker choose?"
+          },
+          "options": [
+            {
+              "nl": "Die naar boven",
+              "en": "The one going up"
+            },
+            {
+              "nl": "Die naar beneden",
+              "en": "The one going down"
+            },
+            {
+              "nl": "Geen roltrap",
+              "en": "No escalator"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ik neem die roltrap.",
+            "en": "I take that escalator."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-koffie-met-letter",
+      "topic_id": "restaurants-cafes",
+      "title": {
+        "nl": "De C op de beker",
+        "en": "The C on the cup"
+      },
+      "plot_key": "A customer learns the letter marking on a takeaway cup and chooses the coffee rather than tea.",
+      "lines": [
+        {
+          "nl": "Er staan twee bekers klaar.",
+          "en": "There are two cups ready."
+        },
+        {
+          "nl": "Ik wil mijn koffie meenemen.",
+          "en": "I want to take my coffee away."
+        },
+        {
+          "nl": "Op één beker staat een C.",
+          "en": "One cup has a C on it."
+        },
+        {
+          "nl": "De andere beker heeft een T.",
+          "en": "The other cup has a T."
+        },
+        {
+          "nl": "De vrouw wijst naar de C.",
+          "en": "The woman points to the C."
+        },
+        {
+          "nl": "Zij zegt: deze is koffie.",
+          "en": "She says: this one is coffee."
+        },
+        {
+          "nl": "Ik neem de juiste beker.",
+          "en": "I take the correct cup."
+        },
+        {
+          "nl": "De thee blijft op de tafel.",
+          "en": "The tea stays on the table."
+        }
+      ],
+      "words": [
+        {
+          "term": "de beker",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "houder om uit te drinken",
+            "en": "cup"
+          },
+          "example": {
+            "nl": "Er staan twee bekers klaar.",
+            "en": "There are two cups ready."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "meenemen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets met je laten meegaan",
+            "en": "to take with you"
+          },
+          "example": {
+            "nl": "Ik wil mijn koffie meenemen.",
+            "en": "I want to take my coffee away."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de thee",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "drank van blaadjes in heet water",
+            "en": "tea"
+          },
+          "example": {
+            "nl": "De thee blijft op de tafel.",
+            "en": "The tea stays on the table."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Ik wil mijn koffie meenemen.",
+              "en": "I want to take my coffee away."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat wil de spreker meenemen?",
+            "en": "What does the speaker want to take away?"
+          },
+          "options": [
+            {
+              "nl": "Thee",
+              "en": "Tea"
+            },
+            {
+              "nl": "Melk",
+              "en": "Milk"
+            },
+            {
+              "nl": "Koffie",
+              "en": "Coffee"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ik wil mijn koffie meenemen.",
+            "en": "I want to take my coffee away."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke letter staat op de koffiebeker?",
+            "en": "Which letter is on the coffee cup?"
+          },
+          "options": [
+            {
+              "nl": "C",
+              "en": "C"
+            },
+            {
+              "nl": "T",
+              "en": "T"
+            },
+            {
+              "nl": "K",
+              "en": "K"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Op één beker staat een C.",
+            "en": "One cup has a C on it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-negen-kralen",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "Het tiende kraaltje",
+        "en": "The tenth bead"
+      },
+      "plot_key": "A bracelet maker finds a bead caught on a sleeve and completes a ten-bead pattern.",
+      "lines": [
+        {
+          "nl": "Ik rijg kralen aan een draad.",
+          "en": "I thread beads onto a string."
+        },
+        {
+          "nl": "Ik wil tien kralen gebruiken.",
+          "en": "I want to use ten beads."
+        },
+        {
+          "nl": "Er hangen er pas negen.",
+          "en": "There are only nine on it."
+        },
+        {
+          "nl": "Het doosje is al leeg.",
+          "en": "The little box is already empty."
+        },
+        {
+          "nl": "Mijn zus wijst naar mijn mouw.",
+          "en": "My sister points to my sleeve."
+        },
+        {
+          "nl": "Daar zit nog een kraal vast.",
+          "en": "One more bead is stuck there."
+        },
+        {
+          "nl": "Ik rijg die aan de draad.",
+          "en": "I thread it onto the string."
+        },
+        {
+          "nl": "Nu tel ik precies tien.",
+          "en": "Now I count exactly ten."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kraal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein voorwerp met een gaatje",
+            "en": "bead"
+          },
+          "example": {
+            "nl": "Daar zit nog een kraal vast.",
+            "en": "One more bead is stuck there."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "rijgen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een draad door gaatjes halen",
+            "en": "to thread"
+          },
+          "example": {
+            "nl": "Ik rijg kralen aan een draad.",
+            "en": "I thread beads onto a string."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "negen",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "het getal 9",
+            "en": "nine"
+          },
+          "example": {
+            "nl": "Er hangen er pas negen.",
+            "en": "There are only nine on it."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Ik wil tien kralen gebruiken.",
+              "en": "I want to use ten beads."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel kralen wil de spreker?",
+            "en": "How many beads does the speaker want?"
+          },
+          "options": [
+            {
+              "nl": "Tien",
+              "en": "Ten"
+            },
+            {
+              "nl": "Negen",
+              "en": "Nine"
+            },
+            {
+              "nl": "Acht",
+              "en": "Eight"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik wil tien kralen gebruiken.",
+            "en": "I want to use ten beads."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar zit de laatste kraal?",
+            "en": "Where is the last bead?"
+          },
+          "options": [
+            {
+              "nl": "Op de grond",
+              "en": "On the floor"
+            },
+            {
+              "nl": "Aan de mouw",
+              "en": "On the sleeve"
+            },
+            {
+              "nl": "In de doos",
+              "en": "In the box"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Daar zit nog een kraal vast.",
+            "en": "One more bead is stuck there."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-bank-met-namen",
+      "topic_id": "friends",
+      "title": {
+        "nl": "Een plek voor drie",
+        "en": "A place for three"
+      },
+      "plot_key": "Two friends leave a space on a bench when a third friend arrives without a chair.",
+      "lines": [
+        {
+          "nl": "Wij zitten op een lange bank.",
+          "en": "We sit on a long bench."
+        },
+        {
+          "nl": "Onze vriend komt het plein op.",
+          "en": "Our friend comes onto the square."
+        },
+        {
+          "nl": "Hij kijkt naar de volle stoelen.",
+          "en": "He looks at the occupied chairs."
+        },
+        {
+          "nl": "Hij blijft naast ons staan.",
+          "en": "He stands beside us."
+        },
+        {
+          "nl": "Ik schuif een beetje naar links.",
+          "en": "I move a little to the left."
+        },
+        {
+          "nl": "Mijn vriendin schuift naar rechts.",
+          "en": "My friend moves to the right."
+        },
+        {
+          "nl": "Nu is er een plek tussen ons.",
+          "en": "Now there is a space between us."
+        },
+        {
+          "nl": "Onze vriend gaat in het midden zitten.",
+          "en": "Our friend sits in the middle."
+        }
+      ],
+      "words": [
+        {
+          "term": "de plek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "ruimte voor iemand of iets",
+            "en": "place or space"
+          },
+          "example": {
+            "nl": "Nu is er een plek tussen ons.",
+            "en": "Now there is a space between us."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "vol",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder vrije ruimte",
+            "en": "full or occupied"
+          },
+          "example": {
+            "nl": "Hij kijkt naar de volle stoelen.",
+            "en": "He looks at the occupied chairs."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het midden",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "ruimte tussen twee kanten",
+            "en": "middle"
+          },
+          "example": {
+            "nl": "Onze vriend gaat in het midden zitten.",
+            "en": "Our friend sits in the middle."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Nu is er een plek tussen ons.",
+              "en": "Now there is a space between us."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar komt de vriend aan?",
+            "en": "Where does the friend arrive?"
+          },
+          "options": [
+            {
+              "nl": "Op de markt",
+              "en": "At the market"
+            },
+            {
+              "nl": "Op school",
+              "en": "At school"
+            },
+            {
+              "nl": "Op het plein",
+              "en": "On the square"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Onze vriend komt het plein op.",
+            "en": "Our friend comes onto the square."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar gaat hij zitten?",
+            "en": "Where does he sit?"
+          },
+          "options": [
+            {
+              "nl": "In het midden",
+              "en": "In the middle"
+            },
+            {
+              "nl": "Helemaal links",
+              "en": "Far left"
+            },
+            {
+              "nl": "Op de grond",
+              "en": "On the ground"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Onze vriend gaat in het midden zitten.",
+            "en": "Our friend sits in the middle."
+          }
+        }
+      ]
+    }
+  ]
+}

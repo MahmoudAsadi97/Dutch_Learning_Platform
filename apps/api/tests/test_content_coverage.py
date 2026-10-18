@@ -85,6 +85,10 @@ def test_every_relevant_source_invalidates_coverage_cache_key(tmp_path, path):
 def test_hot_inventory_is_cached_without_repeating_story_similarity_audit(monkeypatch):
     coverage._read.cache_clear()
     coverage._story_audit.cache_clear()
+    # Exercise a fixed content version; source-change invalidation is tested above.
+    # Authors may be adding batches concurrently in the development checkout.
+    version = coverage.content_stamp(CONTENT_DIR)
+    monkeypatch.setattr(coverage, "content_stamp", lambda root: version)
     calls = []
     original = story_inventory.audit
 
@@ -134,7 +138,7 @@ def test_authored_story_collection_is_reachable_and_matches_qualified_inventory(
     eligible = coverage.eligible_story_ids(stage_id)
     page = library.story_page(bank, authored_only=True, limit=30)
     assert page["authored_only"] is True
-    assert page["total"] == coverage.all_coverage()[stage_id]["eligible_authored_stories"]
+    assert page["total"] == coverage.all_coverage()[stage_id]["legacy_library_eligible_stories"]
     assert {item["id"] for item in page["items"]}.issubset(eligible)
     assert all(8 <= item["line_count"] <= 12 for item in page["items"])
     overview = library.summary(bank)
@@ -161,9 +165,36 @@ def test_authored_story_api_keeps_full_bank_as_explicit_compatible_option(client
     filtered = client.get("/library/pre-a2/stories?authored_only=true", headers=headers)
     assert filtered.status_code == 200
     assert filtered.json()["authored_only"] is True
-    assert filtered.json()["total"] == coverage.all_coverage()["pre-a2"]["eligible_authored_stories"]
+    assert filtered.json()["total"] == coverage.all_coverage()["pre-a2"]["legacy_library_eligible_stories"]
     all_stories = client.get("/library/pre-a2/stories", headers=headers)
     assert all_stories.status_code == 200
     assert all_stories.json()["authored_only"] is False
     assert all_stories.json()["total"] == coverage.all_coverage()["pre-a2"]["total_stories"]
     assert client.get("/library/pre-a2/stories?authored_only=invalid", headers=headers).status_code == 422
+
+
+def test_reading_batch_creation_edit_and_removal_invalidate_inventory_cache_key(tmp_path):
+    path = tmp_path / "study/reading/a2/03-travel.json"
+    before = coverage.content_stamp(tmp_path)
+    path.parent.mkdir(parents=True)
+    path.write_text("{}")
+    created = coverage.content_stamp(tmp_path)
+    assert created != before
+    path.write_text('{"lessons": []}')
+    assert coverage.content_stamp(tmp_path) != created
+    path.unlink()
+    assert coverage.content_stamp(tmp_path) == before
+
+
+def test_unified_reading_count_has_explicit_narrow_legacy_library_counts():
+    audit = story_inventory.audit(CONTENT_DIR)
+    expected = {row["stage"]: row for row in audit["stages"]}
+    for stage_id, row in coverage.all_coverage().items():
+        legacy = expected[stage_id]
+        assert row["legacy_library_stories_total"] == legacy["legacy_library_stories_total"]
+        assert row["legacy_library_authored_stories"] == legacy["legacy_library_authored_stories"]
+        assert row["legacy_library_eligible_stories"] == len(coverage.eligible_story_ids(stage_id))
+        records = coverage.canonical_reading_records(stage_id)
+        assert len(records) == row["eligible_authored_stories"]
+        assert len({record["canonical_id"] for record in records}) == len(records)
+        assert all(record["eligible"] for record in records)

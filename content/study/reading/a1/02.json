@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "a1-read-film-voor-twee-buren",
+      "topic_id": "movies-tv",
+      "title": {
+        "nl": "De film in twee delen",
+        "en": "The film in two parts"
+      },
+      "plot_key": "Neighbours with conflicting schedules agree to split a long film into two evenings.",
+      "lines": [
+        {
+          "nl": "Lina wil een lange film met haar buur bekijken.",
+          "en": "Lina wants to watch a long film with her neighbour."
+        },
+        {
+          "nl": "Hij moet morgen heel vroeg naar zijn werk.",
+          "en": "He has to go to work very early tomorrow."
+        },
+        {
+          "nl": "Om negen uur kijkt hij al naar de klok.",
+          "en": "At nine o'clock, he is already looking at the clock."
+        },
+        {
+          "nl": "Het verhaal is dan nog niet voorbij.",
+          "en": "The story is not over yet."
+        },
+        {
+          "nl": "Lina zet de film op een rustig moment stil.",
+          "en": "Lina pauses the film at a quiet moment."
+        },
+        {
+          "nl": "Ze schrijven samen de laatste scène kort op.",
+          "en": "They briefly write down the last scene together."
+        },
+        {
+          "nl": "Morgen beginnen ze weer vanaf die plaats.",
+          "en": "Tomorrow they will start again from that point."
+        },
+        {
+          "nl": "Haar buur vertrekt met een afspraak voor morgen.",
+          "en": "Her neighbour leaves with a plan for tomorrow."
+        }
+      ],
+      "words": [
+        {
+          "term": "de film",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "verhaal met bewegende beelden",
+            "en": "film"
+          },
+          "example": {
+            "nl": "Lina wil een lange film met haar buur bekijken.",
+            "en": "Lina wants to watch a long film with her neighbour."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "voorbij",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "afgelopen",
+            "en": "over"
+          },
+          "example": {
+            "nl": "Het verhaal is dan nog niet voorbij.",
+            "en": "The story is not over yet."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de scène",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein onderdeel van een film",
+            "en": "scene"
+          },
+          "example": {
+            "nl": "Ze schrijven samen de laatste scène kort op.",
+            "en": "They briefly write down the last scene together."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Hij moet morgen heel vroeg naar zijn werk.",
+              "en": "He has to go to work very early tomorrow."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kan de buur niet lang blijven?",
+            "en": "Why can the neighbour not stay long?"
+          },
+          "options": [
+            {
+              "nl": "Hij werkt vroeg",
+              "en": "He works early"
+            },
+            {
+              "nl": "Hij vindt de film saai",
+              "en": "He finds the film boring"
+            },
+            {
+              "nl": "Hij is ziek",
+              "en": "He is ill"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij moet morgen heel vroeg naar zijn werk.",
+            "en": "He has to go to work very early tomorrow."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat schrijven ze op?",
+            "en": "What do they write down?"
+          },
+          "options": [
+            {
+              "nl": "De titel van een boek",
+              "en": "The title of a book"
+            },
+            {
+              "nl": "De laatste scène",
+              "en": "The last scene"
+            },
+            {
+              "nl": "Een boodschappenlijst",
+              "en": "A shopping list"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze schrijven samen de laatste scène kort op.",
+            "en": "They briefly write down the last scene together."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-boek-naar-werk",
+      "topic_id": "books-reading",
+      "title": {
+        "nl": "Een hoofdstuk op de bus",
+        "en": "A chapter on the bus"
+      },
+      "plot_key": "A reader uses bus stops as a practical stopping point and leaves a note to remember the story.",
+      "lines": [
+        {
+          "nl": "Omar leest een boek op weg naar zijn werk.",
+          "en": "Omar reads a book on his way to work."
+        },
+        {
+          "nl": "Zijn rit duurt maar twintig minuten.",
+          "en": "His journey takes only twenty minutes."
+        },
+        {
+          "nl": "Vandaag wil hij nog één hoofdstuk uitlezen.",
+          "en": "Today he wants to finish one more chapter."
+        },
+        {
+          "nl": "Dan noemt de chauffeur al zijn halte.",
+          "en": "Then the driver already announces his stop."
+        },
+        {
+          "nl": "Omar sluit het boek niet meteen helemaal.",
+          "en": "Omar does not close the book completely straight away."
+        },
+        {
+          "nl": "Hij schrijft het laatste woord op een kaartje.",
+          "en": "He writes the last word on a little card."
+        },
+        {
+          "nl": "Het kaartje blijft bij de juiste bladzijde.",
+          "en": "The card stays at the correct page."
+        },
+        {
+          "nl": "Vanavond zoekt hij daar het verhaal weer op.",
+          "en": "This evening, he will find the story there again."
+        }
+      ],
+      "words": [
+        {
+          "term": "het hoofdstuk",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "afzonderlijk deel van een boek",
+            "en": "chapter"
+          },
+          "example": {
+            "nl": "Vandaag wil hij nog één hoofdstuk uitlezen.",
+            "en": "Today he wants to finish one more chapter."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de rit",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "reis met een voertuig",
+            "en": "journey by vehicle"
+          },
+          "example": {
+            "nl": "Zijn rit duurt maar twintig minuten.",
+            "en": "His journey takes only twenty minutes."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het kaartje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein stuk papier",
+            "en": "little card"
+          },
+          "example": {
+            "nl": "Hij schrijft het laatste woord op een kaartje.",
+            "en": "He writes the last word on a little card."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Vandaag wil hij nog één hoofdstuk uitlezen.",
+              "en": "Today he wants to finish one more chapter."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoe lang duurt Omars rit?",
+            "en": "How long is Omar's journey?"
+          },
+          "options": [
+            {
+              "nl": "Tien minuten",
+              "en": "Ten minutes"
+            },
+            {
+              "nl": "Een uur",
+              "en": "An hour"
+            },
+            {
+              "nl": "Twintig minuten",
+              "en": "Twenty minutes"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zijn rit duurt maar twintig minuten.",
+            "en": "His journey takes only twenty minutes."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat schrijft hij op het kaartje?",
+            "en": "What does he write on the card?"
+          },
+          "options": [
+            {
+              "nl": "Het laatste woord",
+              "en": "The last word"
+            },
+            {
+              "nl": "Zijn adres",
+              "en": "His address"
+            },
+            {
+              "nl": "Zijn naam",
+              "en": "His name"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij schrijft het laatste woord op een kaartje.",
+            "en": "He writes the last word on a little card."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-schilderen-met-twee",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "De lege helft van het blad",
+        "en": "The empty half of the sheet"
+      },
+      "plot_key": "Two friends who paint differently make a shared picture by dividing a sheet into connected halves.",
+      "lines": [
+        {
+          "nl": "Zoë tekent graag huizen met rechte lijnen.",
+          "en": "Zoë likes drawing houses with straight lines."
+        },
+        {
+          "nl": "Haar vriend maakt liever grote vlekken verf.",
+          "en": "Her friend prefers making big patches of paint."
+        },
+        {
+          "nl": "Ze willen samen één tekening aan oma geven.",
+          "en": "They want to give Grandma one picture together."
+        },
+        {
+          "nl": "Eerst liggen er twee aparte bladen klaar.",
+          "en": "At first, two separate sheets are ready."
+        },
+        {
+          "nl": "Zoë neemt dan toch één groot blad.",
+          "en": "Zoë then chooses one large sheet instead."
+        },
+        {
+          "nl": "Ze tekent links een huis met een raam.",
+          "en": "She draws a house with a window on the left."
+        },
+        {
+          "nl": "Haar vriend schildert rechts een kleurige tuin.",
+          "en": "Her friend paints a colourful garden on the right."
+        },
+        {
+          "nl": "Een smal pad loopt tussen hun twee helften.",
+          "en": "A narrow path runs between their two halves."
+        }
+      ],
+      "words": [
+        {
+          "term": "de helft",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "één van twee gelijke delen",
+            "en": "half"
+          },
+          "example": {
+            "nl": "Een smal pad loopt tussen hun twee helften.",
+            "en": "A narrow path runs between their two halves."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "apart",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet samen",
+            "en": "separate"
+          },
+          "example": {
+            "nl": "Eerst liggen er twee aparte bladen klaar.",
+            "en": "At first, two separate sheets are ready."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "schilderen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een afbeelding met verf maken",
+            "en": "to paint"
+          },
+          "example": {
+            "nl": "Haar vriend schildert rechts een kleurige tuin.",
+            "en": "Her friend paints a colourful garden on the right."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Ze tekent links een huis met een raam.",
+              "en": "She draws a house with a window on the left."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Voor wie is de tekening?",
+            "en": "Who is the picture for?"
+          },
+          "options": [
+            {
+              "nl": "Voor oma",
+              "en": "For Grandma"
+            },
+            {
+              "nl": "Voor de leerkracht",
+              "en": "For the teacher"
+            },
+            {
+              "nl": "Voor een buur",
+              "en": "For a neighbour"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze willen samen één tekening aan oma geven.",
+            "en": "They want to give Grandma one picture together."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verbindt de twee helften?",
+            "en": "What connects the two halves?"
+          },
+          "options": [
+            {
+              "nl": "Een rivier",
+              "en": "A river"
+            },
+            {
+              "nl": "Een smal pad",
+              "en": "A narrow path"
+            },
+            {
+              "nl": "Een grote muur",
+              "en": "A big wall"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Een smal pad loopt tussen hun twee helften.",
+            "en": "A narrow path runs between their two halves."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-vroeg-brood-later-radio",
+      "topic_id": "daily-routines",
+      "title": {
+        "nl": "Een stille start",
+        "en": "A quiet start"
+      },
+      "plot_key": "An early riser changes a noisy morning routine to avoid waking a flatmate.",
+      "lines": [
+        {
+          "nl": "Elke ochtend maakt Bram om zes uur ontbijt.",
+          "en": "Every morning, Bram makes breakfast at six."
+        },
+        {
+          "nl": "Zijn huisgenoot werkt juist laat in de avond.",
+          "en": "His housemate works late in the evening."
+        },
+        {
+          "nl": "De koffiemolen maakt veel lawaai in de keuken.",
+          "en": "The coffee grinder makes much noise in the kitchen."
+        },
+        {
+          "nl": "Zijn huisgenoot staat slaperig aan de deur.",
+          "en": "His housemate stands sleepily in the doorway."
+        },
+        {
+          "nl": "Bram maalt zijn koffie voortaan in de avond.",
+          "en": "From now on, Bram grinds his coffee in the evening."
+        },
+        {
+          "nl": "Hij zet ook zijn bord alvast klaar.",
+          "en": "He also gets his plate ready beforehand."
+        },
+        {
+          "nl": "De volgende ochtend blijft de gang stil.",
+          "en": "The next morning, the hallway stays quiet."
+        },
+        {
+          "nl": "Zijn huisgenoot slaapt rustig tot negen uur.",
+          "en": "His housemate sleeps peacefully until nine."
+        }
+      ],
+      "words": [
+        {
+          "term": "de huisgenoot",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "persoon met wie je een woning deelt",
+            "en": "housemate"
+          },
+          "example": {
+            "nl": "Zijn huisgenoot werkt juist laat in de avond.",
+            "en": "His housemate works late in the evening."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het lawaai",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hard of storend geluid",
+            "en": "noise"
+          },
+          "example": {
+            "nl": "De koffiemolen maakt veel lawaai in de keuken.",
+            "en": "The coffee grinder makes much noise in the kitchen."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "klaarzetten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "op de juiste plaats gereedzetten",
+            "en": "to get ready"
+          },
+          "example": {
+            "nl": "Hij zet ook zijn bord alvast klaar.",
+            "en": "He also gets his plate ready beforehand."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Hij zet ook zijn bord alvast klaar.",
+              "en": "He also gets his plate ready beforehand."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt veel lawaai?",
+            "en": "What makes much noise?"
+          },
+          "options": [
+            {
+              "nl": "De radio",
+              "en": "The radio"
+            },
+            {
+              "nl": "De deur",
+              "en": "The door"
+            },
+            {
+              "nl": "De koffiemolen",
+              "en": "The coffee grinder"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De koffiemolen maakt veel lawaai in de keuken.",
+            "en": "The coffee grinder makes much noise in the kitchen."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wanneer maalt Bram daarna zijn koffie?",
+            "en": "When does Bram grind his coffee afterwards?"
+          },
+          "options": [
+            {
+              "nl": "In de avond",
+              "en": "In the evening"
+            },
+            {
+              "nl": "Om zes uur",
+              "en": "At six"
+            },
+            {
+              "nl": "In de middag",
+              "en": "In the afternoon"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Bram maalt zijn koffie voortaan in de avond.",
+            "en": "From now on, Bram grinds his coffee in the evening."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-oude-spelregels",
+      "topic_id": "childhood-memories",
+      "title": {
+        "nl": "Mama leert weer knikkeren",
+        "en": "Mum learns to play marbles again"
+      },
+      "plot_key": "A mother joins her child's marble game and discovers their rules differ.",
+      "lines": [
+        {
+          "nl": "Mila speelt met knikkers op de speelplaats.",
+          "en": "Mila plays marbles in the playground."
+        },
+        {
+          "nl": "Haar mama kent dat spel van vroeger.",
+          "en": "Her mum knows that game from childhood."
+        },
+        {
+          "nl": "Ze vraagt of ze één keer mag meedoen.",
+          "en": "She asks whether she can join in once."
+        },
+        {
+          "nl": "Mama mikt meteen naar het kleine kuiltje.",
+          "en": "Mum aims straight at the little hollow."
+        },
+        {
+          "nl": "Mila zegt dat de rode knikker eerst moet.",
+          "en": "Mila says the red marble has to go first."
+        },
+        {
+          "nl": "Mama luistert naar de regels van vandaag.",
+          "en": "Mum listens to today's rules."
+        },
+        {
+          "nl": "Ze probeert opnieuw met de rode knikker.",
+          "en": "She tries again with the red marble."
+        },
+        {
+          "nl": "Nu juicht Mila voor haar nieuwe speelgenoot.",
+          "en": "Now Mila cheers for her new playmate."
+        }
+      ],
+      "words": [
+        {
+          "term": "de knikker",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein glazen balletje om mee te spelen",
+            "en": "marble"
+          },
+          "example": {
+            "nl": "Mila speelt met knikkers op de speelplaats.",
+            "en": "Mila plays marbles in the playground."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de regel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "afspraak over hoe iets gaat",
+            "en": "rule"
+          },
+          "example": {
+            "nl": "Mama luistert naar de regels van vandaag.",
+            "en": "Mum listens to today's rules."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "opnieuw",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "nog een keer",
+            "en": "again"
+          },
+          "example": {
+            "nl": "Ze probeert opnieuw met de rode knikker.",
+            "en": "She tries again with the red marble."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Ze vraagt of ze één keer mag meedoen.",
+              "en": "She asks whether she can join in once."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke knikker moet eerst?",
+            "en": "Which marble has to go first?"
+          },
+          "options": [
+            {
+              "nl": "De rode",
+              "en": "The red one"
+            },
+            {
+              "nl": "De blauwe",
+              "en": "The blue one"
+            },
+            {
+              "nl": "De gele",
+              "en": "The yellow one"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mila zegt dat de rode knikker eerst moet.",
+            "en": "Mila says the red marble has to go first."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie legt de regels uit?",
+            "en": "Who explains the rules?"
+          },
+          "options": [
+            {
+              "nl": "Mama",
+              "en": "Mum"
+            },
+            {
+              "nl": "Mila",
+              "en": "Mila"
+            },
+            {
+              "nl": "Een leerkracht",
+              "en": "A teacher"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Mila zegt dat de rode knikker eerst moet.",
+            "en": "Mila says the red marble has to go first."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-kleine-podiumdroom",
+      "topic_id": "dreams-ambitions",
+      "title": {
+        "nl": "Een lied voor drie stoelen",
+        "en": "A song for three chairs"
+      },
+      "plot_key": "An aspiring singer practises for a tiny supportive audience before joining a local performance.",
+      "lines": [
+        {
+          "nl": "Niels wil graag voor een groep zingen.",
+          "en": "Niels would like to sing in front of a group."
+        },
+        {
+          "nl": "Een groot podium vindt hij nog heel spannend.",
+          "en": "He still finds a big stage very intimidating."
+        },
+        {
+          "nl": "Zijn zus zet drie stoelen in de tuin.",
+          "en": "His sister puts three chairs in the garden."
+        },
+        {
+          "nl": "Zij nodigt alleen twee goede vrienden uit.",
+          "en": "She invites only two good friends."
+        },
+        {
+          "nl": "Niels begint zijn lied eerst heel zacht.",
+          "en": "Niels begins his song very softly at first."
+        },
+        {
+          "nl": "Zijn vrienden blijven rustig naar hem luisteren.",
+          "en": "His friends keep listening to him calmly."
+        },
+        {
+          "nl": "Bij het refrein klinkt zijn stem al sterker.",
+          "en": "At the chorus, his voice already sounds stronger."
+        },
+        {
+          "nl": "Nu vraagt hij informatie over het buurtpodium.",
+          "en": "Now he asks for information about the neighbourhood stage."
+        }
+      ],
+      "words": [
+        {
+          "term": "het podium",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "verhoogde plaats voor een optreden",
+            "en": "stage"
+          },
+          "example": {
+            "nl": "Een groot podium vindt hij nog heel spannend.",
+            "en": "He still finds a big stage very intimidating."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "spannend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "waarbij je zenuwen of verwachting voelt",
+            "en": "exciting or nerve-racking"
+          },
+          "example": {
+            "nl": "Een groot podium vindt hij nog heel spannend.",
+            "en": "He still finds a big stage very intimidating."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het refrein",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel van een lied dat terugkomt",
+            "en": "chorus"
+          },
+          "example": {
+            "nl": "Bij het refrein klinkt zijn stem al sterker.",
+            "en": "At the chorus, his voice already sounds stronger."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Niels wil graag voor een groep zingen.",
+              "en": "Niels would like to sing in front of a group."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel stoelen zet de zus neer?",
+            "en": "How many chairs does the sister put out?"
+          },
+          "options": [
+            {
+              "nl": "Vier",
+              "en": "Four"
+            },
+            {
+              "nl": "Twee",
+              "en": "Two"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zijn zus zet drie stoelen in de tuin.",
+            "en": "His sister puts three chairs in the garden."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wanneer wordt Niels' stem sterker?",
+            "en": "When does Niels's voice become stronger?"
+          },
+          "options": [
+            {
+              "nl": "Bij het refrein",
+              "en": "At the chorus"
+            },
+            {
+              "nl": "Voor zijn lied",
+              "en": "Before his song"
+            },
+            {
+              "nl": "Na het vertrek",
+              "en": "After leaving"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Bij het refrein klinkt zijn stem al sterker.",
+            "en": "At the chorus, his voice already sounds stronger."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-kleine-uitgaven",
+      "topic_id": "money-finance",
+      "title": {
+        "nl": "De koffie in het schrift",
+        "en": "The coffee in the notebook"
+      },
+      "plot_key": "A learner notices repeated small café purchases and chooses which days to bring a flask.",
+      "lines": [
+        {
+          "nl": "Aya wil geld voor een nieuwe fiets sparen.",
+          "en": "Aya wants to save money for a new bicycle."
+        },
+        {
+          "nl": "Ze schrijft deze week al haar uitgaven op.",
+          "en": "This week she writes down all her spending."
+        },
+        {
+          "nl": "Elke ochtend staat koffie weer in haar schrift.",
+          "en": "Every morning coffee appears in her notebook again."
+        },
+        {
+          "nl": "De losse bedragen lijken allemaal heel klein.",
+          "en": "The individual amounts all seem very small."
+        },
+        {
+          "nl": "Op vrijdag telt Aya de bedragen samen.",
+          "en": "On Friday, Aya adds the amounts together."
+        },
+        {
+          "nl": "Ze kiest twee dagen voor koffie van thuis.",
+          "en": "She chooses two days to bring coffee from home."
+        },
+        {
+          "nl": "Voor zaterdag bewaart ze haar afspraak in het café.",
+          "en": "She keeps her café date for Saturday."
+        },
+        {
+          "nl": "Zo past haar plan ook bij haar vrienden.",
+          "en": "That way, her plan also fits her friends."
+        }
+      ],
+      "words": [
+        {
+          "term": "sparen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "geld bewaren voor later",
+            "en": "to save money"
+          },
+          "example": {
+            "nl": "Aya wil geld voor een nieuwe fiets sparen.",
+            "en": "Aya wants to save money for a new bicycle."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de uitgave",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "geld dat je voor iets betaalt",
+            "en": "expense"
+          },
+          "example": {
+            "nl": "Ze schrijft deze week al haar uitgaven op.",
+            "en": "This week she writes down all her spending."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het bedrag",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hoeveelheid geld",
+            "en": "amount of money"
+          },
+          "example": {
+            "nl": "De losse bedragen lijken allemaal heel klein.",
+            "en": "The individual amounts all seem very small."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Op vrijdag telt Aya de bedragen samen.",
+              "en": "On Friday, Aya adds the amounts together."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarvoor spaart Aya?",
+            "en": "What is Aya saving for?"
+          },
+          "options": [
+            {
+              "nl": "Een nieuwe fiets",
+              "en": "A new bicycle"
+            },
+            {
+              "nl": "Een reis",
+              "en": "A trip"
+            },
+            {
+              "nl": "Een telefoon",
+              "en": "A phone"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Aya wil geld voor een nieuwe fiets sparen.",
+            "en": "Aya wants to save money for a new bicycle."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke afspraak bewaart ze?",
+            "en": "Which arrangement does she keep?"
+          },
+          "options": [
+            {
+              "nl": "Die op maandag",
+              "en": "The one on Monday"
+            },
+            {
+              "nl": "Die op zaterdag",
+              "en": "The one on Saturday"
+            },
+            {
+              "nl": "Die op vrijdag",
+              "en": "The one on Friday"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Voor zaterdag bewaart ze haar afspraak in het café.",
+            "en": "She keeps her café date for Saturday."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-feestbrood-label",
+      "topic_id": "culture-traditions",
+      "title": {
+        "nl": "Een naam naast het brood",
+        "en": "A name beside the bread"
+      },
+      "plot_key": "At a shared food evening, a guest learns about a family's festive bread without assuming everyone shares the tradition.",
+      "lines": [
+        {
+          "nl": "Voor de buurtavond brengt Sara een rond brood.",
+          "en": "Sara brings a round loaf for the neighbourhood evening."
+        },
+        {
+          "nl": "In haar familie hoort dit bij een feest.",
+          "en": "In her family, it belongs to a celebration."
+        },
+        {
+          "nl": "Op tafel liggen ook veel andere gerechten.",
+          "en": "There are many other dishes on the table too."
+        },
+        {
+          "nl": "Een buur vraagt wanneer zij dit brood eet.",
+          "en": "A neighbour asks when she eats this bread."
+        },
+        {
+          "nl": "Sara vertelt kort over haar eigen familie.",
+          "en": "Sara talks briefly about her own family."
+        },
+        {
+          "nl": "De buur schrijft de naam van het brood op.",
+          "en": "The neighbour writes down the name of the bread."
+        },
+        {
+          "nl": "Dan vraagt Sara naar zijn kleine koekjes.",
+          "en": "Then Sara asks about his little biscuits."
+        },
+        {
+          "nl": "Ze nemen allebei iets nieuws op hun bord.",
+          "en": "They both put something new on their plates."
+        }
+      ],
+      "words": [
+        {
+          "term": "het gerecht",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klaargemaakt eten",
+            "en": "dish"
+          },
+          "example": {
+            "nl": "Op tafel liggen ook veel andere gerechten.",
+            "en": "There are many other dishes on the table too."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het feest",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "moment waarop mensen iets vieren",
+            "en": "celebration"
+          },
+          "example": {
+            "nl": "In haar familie hoort dit bij een feest.",
+            "en": "In her family, it belongs to a celebration."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "vertellen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met woorden informatie of een verhaal geven",
+            "en": "to tell"
+          },
+          "example": {
+            "nl": "Sara vertelt kort over haar eigen familie.",
+            "en": "Sara talks briefly about her own family."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Van wie is het?",
+            "en": "Who does it belong to?"
+          },
+          "explanation": {
+            "nl": "Het bezittelijk woord vertelt bij wie iets hoort.",
+            "en": "The possessive word tells you who something belongs to."
+          },
+          "examples": [
+            {
+              "nl": "Sara vertelt kort over haar eigen familie.",
+              "en": "Sara talks briefly about her own family."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Bij wie hoort het brood bij een feest?",
+            "en": "For whom is the bread part of a celebration?"
+          },
+          "options": [
+            {
+              "nl": "Voor iedereen in de buurt",
+              "en": "For everyone nearby"
+            },
+            {
+              "nl": "Voor de hele stad",
+              "en": "For the whole city"
+            },
+            {
+              "nl": "Voor Sara's familie",
+              "en": "For Sara's family"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In haar familie hoort dit bij een feest.",
+            "en": "In her family, it belongs to a celebration."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar vraagt Sara daarna naar?",
+            "en": "What does Sara ask about afterwards?"
+          },
+          "options": [
+            {
+              "nl": "De koekjes",
+              "en": "The biscuits"
+            },
+            {
+              "nl": "Een stoel",
+              "en": "A chair"
+            },
+            {
+              "nl": "De koffie",
+              "en": "The coffee"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Dan vraagt Sara naar zijn kleine koekjes.",
+            "en": "Then Sara asks about his little biscuits."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-rustige-kamer",
+      "topic_id": "religion-beliefs",
+      "title": {
+        "nl": "Even een stille kamer",
+        "en": "A quiet room for a moment"
+      },
+      "plot_key": "Two classmates use a quiet room differently and respectfully agree on a short peaceful break.",
+      "lines": [
+        {
+          "nl": "Op school is een kleine stille kamer.",
+          "en": "There is a small quiet room at school."
+        },
+        {
+          "nl": "Amir wil daar rustig even gaan bidden.",
+          "en": "Amir wants to pray there quietly for a while."
+        },
+        {
+          "nl": "Lien komt binnen met een druk hoofd.",
+          "en": "Lien comes in with a busy mind."
+        },
+        {
+          "nl": "Ze vraagt zacht of ze mag zitten.",
+          "en": "She quietly asks whether she may sit."
+        },
+        {
+          "nl": "Amir wijst naar een stoel bij het raam.",
+          "en": "Amir points to a chair by the window."
+        },
+        {
+          "nl": "Lien leest niet en zet haar telefoon stil.",
+          "en": "Lien does not read and silences her phone."
+        },
+        {
+          "nl": "Na enkele minuten staan ze allebei op.",
+          "en": "After a few minutes, they both get up."
+        },
+        {
+          "nl": "Ze lopen rustig terug naar hun klas.",
+          "en": "They walk calmly back to their classroom."
+        }
+      ],
+      "words": [
+        {
+          "term": "bidden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "woorden of gedachten tot een god richten",
+            "en": "to pray"
+          },
+          "example": {
+            "nl": "Amir wil daar rustig even gaan bidden.",
+            "en": "Amir wants to pray there quietly for a while."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "stil",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder lawaai",
+            "en": "quiet"
+          },
+          "example": {
+            "nl": "Op school is een kleine stille kamer.",
+            "en": "There is a small quiet room at school."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "enkele",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "een klein aantal",
+            "en": "a few"
+          },
+          "example": {
+            "nl": "Na enkele minuten staan ze allebei op.",
+            "en": "After a few minutes, they both get up."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Ze vraagt zacht of ze mag zitten.",
+              "en": "She quietly asks whether she may sit."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat wil Amir in de kamer doen?",
+            "en": "What does Amir want to do in the room?"
+          },
+          "options": [
+            {
+              "nl": "Bidden",
+              "en": "Pray"
+            },
+            {
+              "nl": "Telefoneren",
+              "en": "Make a phone call"
+            },
+            {
+              "nl": "Muziek spelen",
+              "en": "Play music"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Amir wil daar rustig even gaan bidden.",
+            "en": "Amir wants to pray there quietly for a while."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar staat de stoel voor Lien?",
+            "en": "Where is Lien's chair?"
+          },
+          "options": [
+            {
+              "nl": "Bij de deur",
+              "en": "By the door"
+            },
+            {
+              "nl": "Bij het raam",
+              "en": "By the window"
+            },
+            {
+              "nl": "In de gang",
+              "en": "In the hall"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Amir wijst naar een stoel bij het raam.",
+            "en": "Amir points to a chair by the window."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-appel-drijft",
+      "topic_id": "science",
+      "title": {
+        "nl": "Welke vrucht blijft boven?",
+        "en": "Which fruit stays on top?"
+      },
+      "plot_key": "Friends compare an apple and grape in water and record their actual observation.",
+      "lines": [
+        {
+          "nl": "Op tafel staat een grote kom water.",
+          "en": "There is a large bowl of water on the table."
+        },
+        {
+          "nl": "Lou legt voorzichtig een appel in de kom.",
+          "en": "Lou carefully puts an apple in the bowl."
+        },
+        {
+          "nl": "De appel drijft boven op het water.",
+          "en": "The apple floats on top of the water."
+        },
+        {
+          "nl": "Haar vriend probeert het met een druif.",
+          "en": "Her friend tries it with a grape."
+        },
+        {
+          "nl": "Deze druif zakt naar de bodem van de kom.",
+          "en": "This grape sinks to the bottom of the bowl."
+        },
+        {
+          "nl": "Ze tekenen beide vruchten op de juiste plaats.",
+          "en": "They draw both fruits in the correct position."
+        },
+        {
+          "nl": "Lou schrijft erbij wat ze echt ziet.",
+          "en": "Lou writes down what she actually sees."
+        },
+        {
+          "nl": "Morgen willen ze een andere vrucht proberen.",
+          "en": "Tomorrow they want to try a different fruit."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bodem",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "onderste binnenkant van iets",
+            "en": "bottom"
+          },
+          "example": {
+            "nl": "Deze druif zakt naar de bodem van de kom.",
+            "en": "This grape sinks to the bottom of the bowl."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "drijven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "boven op een vloeistof blijven liggen",
+            "en": "to float"
+          },
+          "example": {
+            "nl": "De appel drijft boven op het water.",
+            "en": "The apple floats on top of the water."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de vrucht",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel van een plant met zaden, vaak eetbaar",
+            "en": "fruit"
+          },
+          "example": {
+            "nl": "Ze tekenen beide vruchten op de juiste plaats.",
+            "en": "They draw both fruits in the correct position."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Morgen willen ze een andere vrucht proberen.",
+              "en": "Tomorrow they want to try a different fruit."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke vrucht blijft boven?",
+            "en": "Which fruit stays on top?"
+          },
+          "options": [
+            {
+              "nl": "De druif",
+              "en": "The grape"
+            },
+            {
+              "nl": "Een peer",
+              "en": "A pear"
+            },
+            {
+              "nl": "De appel",
+              "en": "The apple"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De appel drijft boven op het water.",
+            "en": "The apple floats on top of the water."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen ze met hun waarneming?",
+            "en": "What do they do with their observation?"
+          },
+          "options": [
+            {
+              "nl": "Tekenen en opschrijven",
+              "en": "Draw and write it down"
+            },
+            {
+              "nl": "Alleen onthouden",
+              "en": "Only remember it"
+            },
+            {
+              "nl": "Weggooien",
+              "en": "Throw it away"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze tekenen beide vruchten op de juiste plaats.",
+            "en": "They draw both fruits in the correct position."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-lichtjes-op-vijf-januari",
+      "topic_id": "holidays-celebrations",
+      "title": {
+        "nl": "Lichtjes op vijf januari",
+        "en": "Lights on the fifth of January"
+      },
+      "plot_key": "A family delays removing festive lights because a sailor returns after the holidays, then discovers the neighbours read the delay as a shared invitation.",
+      "lines": [
+        {
+          "nl": "Op vijf januari wilde Jelle de lichtjes van de gevel halen, maar zijn moeder vroeg of ze nog een week mochten blijven hangen.",
+          "en": "On the fifth of January Jelle wanted to take the lights off the facade, but his mother asked whether they could stay up another week."
+        },
+        {
+          "nl": "Zijn broer werkte op zee en zou pas thuiskomen wanneer bijna iedereen de feestdagen alweer achter zich had gelaten.",
+          "en": "His brother worked at sea and would only come home when almost everyone had already left the festive season behind."
+        },
+        {
+          "nl": "Jelle vond het vreemd om midden in een gewone werkweek nog een feestmaal klaar te maken en speciale muziek op te zetten.",
+          "en": "Jelle found it strange to prepare a festive meal and put on special music in the middle of an ordinary working week."
+        },
+        {
+          "nl": "Toch hing hij de losse lamp boven de deur opnieuw vast, nadat de wind hem tegen de regenpijp had geslagen.",
+          "en": "Nevertheless, he secured the loose light above the door again after the wind had blown it against the drainpipe."
+        },
+        {
+          "nl": "Op de avond van de thuiskomst stond de buurvrouw onverwacht met een schaal koekjes op de stoep.",
+          "en": "On the evening of the homecoming the neighbour unexpectedly stood on the doorstep with a plate of biscuits."
+        },
+        {
+          "nl": "Ze had de lichtjes gezien en vermoed dat het gezin nog iets bijzonders verwachtte, precies zoals zij vroeger op haar vader wachtte.",
+          "en": "She had seen the lights and guessed the family was still expecting something special, just as she used to wait for her father."
+        },
+        {
+          "nl": "Zijn broer vertelde urenlang over saaie wachten en kapotte machines in plaats van over verre havens; niemand vroeg hem een spectaculairder verhaal te bedenken.",
+          "en": "His brother spoke for hours about dull watches and broken machinery instead of distant ports; nobody asked him to invent a more spectacular story."
+        },
+        {
+          "nl": "De volgende ochtend ruimde Jelle de lampjes op, nu het feest werkelijk voorbij was en niet alleen volgens de kalender.",
+          "en": "The following morning Jelle put the lights away, now that the celebration was truly over and not merely over according to the calendar."
+        }
+      ],
+      "words": [
+        {
+          "term": "de gevel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de buitenmuur aan de voorkant van een gebouw",
+            "en": "facade"
+          },
+          "example": {
+            "nl": "Op vijf januari wilde Jelle de lichtjes van de gevel halen, maar zijn moeder vroeg of ze nog een week mochten blijven hangen.",
+            "en": "On the fifth of January Jelle wanted to take the lights off the facade, but his mother asked whether they could stay up another week."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de thuiskomst",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het moment waarop iemand weer thuis aankomt",
+            "en": "homecoming"
+          },
+          "example": {
+            "nl": "Op de avond van de thuiskomst stond de buurvrouw onverwacht met een schaal koekjes op de stoep.",
+            "en": "On the evening of the homecoming the neighbour unexpectedly stood on the doorstep with a plate of biscuits."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "spectaculair",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "opvallend en indrukwekkend",
+            "en": "spectacular"
+          },
+          "example": {
+            "nl": "Zijn broer vertelde urenlang over saaie wachten en kapotte machines in plaats van over verre havens; niemand vroeg hem een spectaculairder verhaal te bedenken.",
+            "en": "His brother spoke for hours about dull watches and broken machinery instead of distant ports; nobody asked him to invent a more spectacular story."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Nadat en een eerdere handeling",
+            "en": "After and an earlier action"
+          },
+          "explanation": {
+            "nl": "Nadat plaatst het slaan tegen de pijp vóór het opnieuw vastmaken.",
+            "en": "Nadat places hitting the pipe before securing the light again."
+          },
+          "examples": [
+            {
+              "nl": "Toch hing hij de losse lamp boven de deur opnieuw vast, nadat de wind hem tegen de regenpijp had geslagen.",
+              "en": "Nevertheless, he secured the loose light above the door again after the wind had blown it against the drainpipe."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom blijven de lichtjes langer hangen?",
+            "en": "Why do the lights stay up longer?"
+          },
+          "options": [
+            {
+              "nl": "Het gezin wacht op de terugkeer van de broer.",
+              "en": "The family is waiting for the brother's return."
+            },
+            {
+              "nl": "Jelle weet niet hoe ze uitgaan.",
+              "en": "Jelle does not know how to switch them off."
+            },
+            {
+              "nl": "De straat houdt een wedstrijd.",
+              "en": "The street is holding a competition."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn moeder wil hem ook na de officiële feestdagen feestelijk ontvangen.",
+            "en": "His mother wants to welcome him festively even after the official holidays."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat onderstreept de laatste zin?",
+            "en": "What does the final sentence emphasise?"
+          },
+          "options": [
+            {
+              "nl": "Alle kalenders zijn verkeerd gedrukt.",
+              "en": "All calendars are printed incorrectly."
+            },
+            {
+              "nl": "De betekenis van het feest hangt aan de ontmoeting, niet alleen aan de datum.",
+              "en": "The celebration's meaning depends on the reunion, not only the date."
+            },
+            {
+              "nl": "De broer vertrekt meteen weer.",
+              "en": "The brother leaves again immediately."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De lichtjes verdwijnen pas na zijn echte thuiskomst.",
+            "en": "The lights disappear only after his actual homecoming."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-auditie-met-een-voorwaarde",
+      "topic_id": "dreams-ambitions",
+      "title": {
+        "nl": "De auditie met een voorwaarde",
+        "en": "The audition with a condition"
+      },
+      "plot_key": "An aspiring actor wins an unpaid intensive role but chooses a smaller opportunity when the celebrated dream's practical demands exclude her.",
+      "lines": [
+        {
+          "nl": "Toen Veerle voor een nieuwe toneelproductie werd geselecteerd, belde ze onmiddellijk haar zus en zei dat haar grote kans eindelijk gekomen was.",
+          "en": "When Veerle was selected for a new theatre production, she immediately called her sister and said her big chance had finally arrived."
+        },
+        {
+          "nl": "Ze werkte al jaren in een winkel en oefende na sluitingstijd monologen tussen de dozen in de voorraadruimte.",
+          "en": "She had worked in a shop for years and practised monologues among boxes in the storeroom after closing time."
+        },
+        {
+          "nl": "Pas bij het eerste overleg hoorde ze dat de repetities overdag plaatsvonden en dat de acteurs voorlopig geen vergoeding zouden ontvangen.",
+          "en": "Only at the first meeting did she hear that rehearsals took place during the day and that the actors would initially receive no payment."
+        },
+        {
+          "nl": "De regisseur noemde het een investering in zichtbaarheid, waarop Veerle vroeg wie ondertussen haar huur zou betalen.",
+          "en": "The director called it an investment in visibility, at which Veerle asked who would pay her rent in the meantime."
+        },
+        {
+          "nl": "Thuis legde ze de roltekst naast haar werkrooster en zocht ze een oplossing die er ook na middernacht nog niet lag.",
+          "en": "At home she placed the script beside her work schedule and searched for a solution that still did not exist after midnight."
+        },
+        {
+          "nl": "Ze bedankte uiteindelijk voor de rol, met meer verdriet dan de mensen begrepen die zeiden dat er vast andere kansen kwamen.",
+          "en": "She eventually declined the role, with more sadness than the people understood who said other opportunities would surely come."
+        },
+        {
+          "nl": "Enkele weken later vroeg een kleiner gezelschap of ze twee betaalde avondvoorstellingen kon overnemen voor een zieke actrice.",
+          "en": "A few weeks later a smaller company asked whether she could take over two paid evening performances for an ill actress."
+        },
+        {
+          "nl": "Het was niet de doorbraak waarover ze haar zus had gebeld, maar op de eerste repetitie hoefde ze tenminste niet te doen alsof dromen geen voorwaarden hadden.",
+          "en": "It was not the breakthrough she had called her sister about, but at the first rehearsal she at least did not have to pretend that dreams had no conditions."
+        }
+      ],
+      "words": [
+        {
+          "term": "de vergoeding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een bedrag als betaling voor werk of kosten",
+            "en": "payment or compensation"
+          },
+          "example": {
+            "nl": "Pas bij het eerste overleg hoorde ze dat de repetities overdag plaatsvonden en dat de acteurs voorlopig geen vergoeding zouden ontvangen.",
+            "en": "Only at the first meeting did she hear that rehearsals took place during the day and that the actors would initially receive no payment."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de doorbraak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een belangrijke stap naar erkenning of succes",
+            "en": "breakthrough"
+          },
+          "example": {
+            "nl": "Het was niet de doorbraak waarover ze haar zus had gebeld, maar op de eerste repetitie hoefde ze tenminste niet te doen alsof dromen geen voorwaarden hadden.",
+            "en": "It was not the breakthrough she had called her sister about, but at the first rehearsal she at least did not have to pretend that dreams had no conditions."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bedanken voor",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "een aanbod beleefd weigeren",
+            "en": "to decline"
+          },
+          "example": {
+            "nl": "Ze bedankte uiteindelijk voor de rol, met meer verdriet dan de mensen begrepen die zeiden dat er vast andere kansen kwamen.",
+            "en": "She eventually declined the role, with more sadness than the people understood who said other opportunities would surely come."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof bij een onware voorstelling",
+            "en": "As if with an untrue representation"
+          },
+          "explanation": {
+            "nl": "Alsof introduceert wat zij niet meer hoeft voor te wenden.",
+            "en": "Alsof introduces what she no longer needs to pretend."
+          },
+          "examples": [
+            {
+              "nl": "Het was niet de doorbraak waarover ze haar zus had gebeld, maar op de eerste repetitie hoefde ze tenminste niet te doen alsof dromen geen voorwaarden hadden.",
+              "en": "It was not the breakthrough she had called her sister about, but at the first rehearsal she at least did not have to pretend that dreams had no conditions."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom weigert Veerle de eerste rol?",
+            "en": "Why does Veerle refuse the first role?"
+          },
+          "options": [
+            {
+              "nl": "Ze kent haar tekst niet.",
+              "en": "She does not know her lines."
+            },
+            {
+              "nl": "Ze wil niet meer acteren.",
+              "en": "She no longer wants to act."
+            },
+            {
+              "nl": "De onbetaalde dagrepetities botsen met haar noodzakelijke inkomen.",
+              "en": "The unpaid daytime rehearsals conflict with her necessary income."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze kan haar huur niet betalen als ze haar winkelwerk voor onbetaalde repetities opgeeft.",
+            "en": "She cannot pay her rent if she gives up her shop work for unpaid rehearsals."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt het latere aanbod anders?",
+            "en": "What makes the later offer different?"
+          },
+          "options": [
+            {
+              "nl": "Het is kleiner maar praktisch uitvoerbaar en betaald.",
+              "en": "It is smaller but practically feasible and paid."
+            },
+            {
+              "nl": "Het garandeert landelijke roem.",
+              "en": "It guarantees national fame."
+            },
+            {
+              "nl": "Het vereist dagelijks onbetaald verlof.",
+              "en": "It requires unpaid leave every day."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De avondvoorstellingen laten haar werk en optreden combineren.",
+            "en": "The evening performances let her combine work and acting."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-minimalist-met-de-kelder",
+      "topic_id": "lifestyle",
+      "title": {
+        "nl": "De minimalist met de kelder",
+        "en": "The minimalist with the cellar"
+      },
+      "plot_key": "A home-tour influencer's apparently possession-free room depends on a friend's crowded cellar, exposing a hidden boundary of his chosen lifestyle.",
+      "lines": [
+        {
+          "nl": "Voor zijn kanaal over eenvoudig leven filmde Mats zijn vrijwel lege woonkamer, waarin alleen een stoel, een plant en een lage tafel stonden.",
+          "en": "For his channel about simple living, Mats filmed his almost empty living room, which contained only a chair, a plant and a low table."
+        },
+        {
+          "nl": "Hij vertelde hoe weinig spullen een mens nodig had en vroeg zijn vriend Koen om de opname te maken.",
+          "en": "He explained how few possessions a person needed and asked his friend Koen to make the recording."
+        },
+        {
+          "nl": "Koen verplaatste telkens zorgvuldig de camera, omdat in elke hoek nog ergens een doos uit de vorige flat stond.",
+          "en": "Koen carefully moved the camera each time because somewhere in every corner there was still a box from the previous flat."
+        },
+        {
+          "nl": "Na de opname vroeg Mats of die dozen nog een paar maanden in Koens kelder konden blijven, samen met de vorige lading.",
+          "en": "After the recording Mats asked whether those boxes could stay in Koen's cellar for another few months, along with the previous load."
+        },
+        {
+          "nl": "Koen antwoordde dat zijn kelder intussen het magazijn van iemand anders zijn vrijheid was geworden.",
+          "en": "Koen replied that his cellar had meanwhile become the warehouse of someone else's freedom."
+        },
+        {
+          "nl": "Mats wilde die zin eerst als grap in de video gebruiken, tot hij zag dat zijn vriend niet lachte.",
+          "en": "Mats initially wanted to use that sentence as a joke in the video, until he saw his friend was not laughing."
+        },
+        {
+          "nl": "Ze haalden alle dozen terug en verdeelden de inhoud over bewaren, verkopen en weggeven, wat veel langer duurde dan de oorspronkelijke opname.",
+          "en": "They brought all the boxes back and sorted the contents into keeping, selling and giving away, which took much longer than the original recording."
+        },
+        {
+          "nl": "In de nieuwe video stond de kamer voller, maar liet Mats ook zien waar zijn spullen zich bevonden wanneer ze buiten beeld waren.",
+          "en": "In the new video the room was fuller, but Mats also showed where his possessions were when they were out of shot."
+        }
+      ],
+      "words": [
+        {
+          "term": "vrijwel",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "bijna helemaal",
+            "en": "almost entirely"
+          },
+          "example": {
+            "nl": "Voor zijn kanaal over eenvoudig leven filmde Mats zijn vrijwel lege woonkamer, waarin alleen een stoel, een plant en een lage tafel stonden.",
+            "en": "For his channel about simple living, Mats filmed his almost empty living room, which contained only a chair, a plant and a low table."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de lading",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een hoeveelheid spullen die samen vervoerd wordt",
+            "en": "load"
+          },
+          "example": {
+            "nl": "Na de opname vroeg Mats of die dozen nog een paar maanden in Koens kelder konden blijven, samen met de vorige lading.",
+            "en": "After the recording Mats asked whether those boxes could stay in Koen's cellar for another few months, along with the previous load."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "buiten beeld",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "niet zichtbaar in de opname",
+            "en": "out of shot"
+          },
+          "example": {
+            "nl": "In de nieuwe video stond de kamer voller, maar liet Mats ook zien waar zijn spullen zich bevonden wanneer ze buiten beeld waren.",
+            "en": "In the new video the room was fuller, but Mats also showed where his possessions were when they were out of shot."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wat verwijst naar een hele handeling",
+            "en": "Which refers to an entire action"
+          },
+          "explanation": {
+            "nl": "Wat verwijst hier naar het hele sorteren en niet naar één voorwerp.",
+            "en": "Wat refers here to the whole sorting process, not to a single object."
+          },
+          "examples": [
+            {
+              "nl": "Ze haalden alle dozen terug en verdeelden de inhoud over bewaren, verkopen en weggeven, wat veel langer duurde dan de oorspronkelijke opname.",
+              "en": "They brought all the boxes back and sorted the contents into keeping, selling and giving away, which took much longer than the original recording."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar richt Koens kritiek zich op?",
+            "en": "What is Koen criticising?"
+          },
+          "options": [
+            {
+              "nl": "Mats bewaart zijn overbodige spullen ten koste van Koens ruimte.",
+              "en": "Mats stores his excess possessions at the expense of Koen's space."
+            },
+            {
+              "nl": "De plant krijgt te weinig licht.",
+              "en": "The plant gets too little light."
+            },
+            {
+              "nl": "Mats heeft geen camera gekocht.",
+              "en": "Mats has not bought a camera."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De lege woonkamer is mogelijk doordat een ander de dozen bewaart.",
+            "en": "The empty living room is possible because someone else stores the boxes."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt de nieuwe video eerlijker?",
+            "en": "What makes the new video more honest?"
+          },
+          "options": [
+            {
+              "nl": "Er zijn helemaal geen dozen meer.",
+              "en": "There are no boxes at all any longer."
+            },
+            {
+              "nl": "Ook de onzichtbare opslag wordt getoond.",
+              "en": "The invisible storage is shown too."
+            },
+            {
+              "nl": "Koen komt niet meer in beeld.",
+              "en": "Koen no longer appears on screen."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Mats toont nu ook waar spullen buiten de gefilmde kamer verblijven.",
+            "en": "Mats now also shows where possessions stay outside the filmed room."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-lied-aan-het-einde",
+      "topic_id": "religion-beliefs",
+      "title": {
+        "nl": "Het lied aan het einde",
+        "en": "The song at the end"
+      },
+      "plot_key": "Siblings arranging a father's farewell disagree about a secular song and religious prayer, settling on two distinct moments without claiming belief is shared.",
+      "lines": [
+        {
+          "nl": "Bij de voorbereiding van hun vaders afscheid legde Jana een oud lied op tafel dat hij altijd tijdens het koken had gezongen.",
+          "en": "While preparing their father's farewell, Jana put forward an old song he had always sung while cooking."
+        },
+        {
+          "nl": "Haar broer Ruben wilde liever de gebeden gebruiken waarmee hun vader sinds zijn jeugd vertrouwd was geweest.",
+          "en": "Her brother Ruben preferred the prayers their father had known since childhood."
+        },
+        {
+          "nl": "Jana dacht dat Ruben haar herinnering onbelangrijk vond, terwijl hij vreesde dat het dagelijkse lied zijn geloof zou uitwissen.",
+          "en": "Jana thought Ruben considered her memory unimportant, while he feared the everyday song would erase his father's faith."
+        },
+        {
+          "nl": "De begeleidster vroeg hun niet om te beslissen welk beeld het ware was, maar om te vertellen wanneer zij hun vader elk zo hadden gekend.",
+          "en": "The facilitator did not ask them to decide which image was the true one, but to describe when each had known their father that way."
+        },
+        {
+          "nl": "Ruben vertelde over stille bezoeken aan een kerk na het werk; Jana over avonden waarop hij met een pollepel als microfoon danste.",
+          "en": "Ruben described quiet visits to a church after work; Jana described evenings when he danced with a wooden spoon as a microphone."
+        },
+        {
+          "nl": "Ze ontdekten geen plots gedeelde overtuiging, maar wel twee herinneringen die elkaar niet hoefden te ontkennen.",
+          "en": "They discovered no suddenly shared belief, but two memories that did not have to deny one another."
+        },
+        {
+          "nl": "Tijdens het afscheid kreeg het gebed een duidelijk eigen moment, waarna aan het einde het lied klonk zonder een uitleg die alles samenvoegde.",
+          "en": "During the farewell the prayer had a clearly separate moment, after which the song played at the end without an explanation that merged everything."
+        },
+        {
+          "nl": "Jana zong zacht mee, Ruben luisterde, en niemand hoefde te doen alsof zij op dezelfde manier afscheid namen.",
+          "en": "Jana sang along quietly, Ruben listened, and nobody had to pretend they were saying goodbye in the same way."
+        }
+      ],
+      "words": [
+        {
+          "term": "vertrouwd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "goed bekend door eerdere ervaring",
+            "en": "familiar"
+          },
+          "example": {
+            "nl": "Haar broer Ruben wilde liever de gebeden gebruiken waarmee hun vader sinds zijn jeugd vertrouwd was geweest.",
+            "en": "Her brother Ruben preferred the prayers their father had known since childhood."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de overtuiging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets waarvan iemand sterk gelooft dat het waar is",
+            "en": "belief or conviction"
+          },
+          "example": {
+            "nl": "Ze ontdekten geen plots gedeelde overtuiging, maar wel twee herinneringen die elkaar niet hoefden te ontkennen.",
+            "en": "They discovered no suddenly shared belief, but two memories that did not have to deny one another."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "ontkennen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zeggen dat iets niet bestaat of niet waar is",
+            "en": "to deny"
+          },
+          "example": {
+            "nl": "Ze ontdekten geen plots gedeelde overtuiging, maar wel twee herinneringen die elkaar niet hoefden te ontkennen.",
+            "en": "They discovered no suddenly shared belief, but two memories that did not have to deny one another."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet ... maar om ...",
+            "en": "Not ... but to ..."
+          },
+          "explanation": {
+            "nl": "Twee doelen worden tegenover elkaar gezet; de tweede om-groep noemt het gevraagde doel.",
+            "en": "Two purposes are contrasted; the second om-clause states the requested purpose."
+          },
+          "examples": [
+            {
+              "nl": "De begeleidster vroeg hun niet om te beslissen welk beeld het ware was, maar om te vertellen wanneer zij hun vader elk zo hadden gekend.",
+              "en": "The facilitator did not ask them to decide which image was the true one, but to describe when each had known their father that way."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom botsen de broer en zus aanvankelijk?",
+            "en": "Why do the siblings initially clash?"
+          },
+          "options": [
+            {
+              "nl": "Ze herinneren zich geen enkel lied.",
+              "en": "They cannot remember any song."
+            },
+            {
+              "nl": "Ze vrezen elk dat hun eigen herinnering wordt uitgesloten.",
+              "en": "They each fear that their own memory is being excluded."
+            },
+            {
+              "nl": "De begeleidster verbiedt alle muziek.",
+              "en": "The facilitator bans all music."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Jana vreest onbelangrijk te worden; Ruben vreest dat het geloof verdwijnt.",
+            "en": "Jana fears being treated as unimportant; Ruben fears the faith disappearing."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat is de kern van hun oplossing?",
+            "en": "What is the central point of their solution?"
+          },
+          "options": [
+            {
+              "nl": "Iedereen aanvaardt precies hetzelfde geloof.",
+              "en": "Everyone accepts exactly the same faith."
+            },
+            {
+              "nl": "Geen herinnering mag genoemd worden.",
+              "en": "No memory may be mentioned."
+            },
+            {
+              "nl": "Beide herinneringen krijgen ruimte zonder ze gelijk te maken.",
+              "en": "Both memories receive space without being made identical."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het gebed en het lied hebben aparte momenten.",
+            "en": "The prayer and song have separate moments."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-kleur-van-de-beker",
+      "topic_id": "science",
+      "title": {
+        "nl": "De kleur van de beker",
+        "en": "The colour of the cup"
+      },
+      "plot_key": "A student tasting experiment confounds cup colour with serving temperature, leading its author to redesign rather than overclaim a result.",
+      "lines": [
+        {
+          "nl": "Voor een schoolproject onderzocht Silke of chocolademelk zoeter smaakte wanneer die uit een rode beker werd gedronken in plaats van uit een witte.",
+          "en": "For a school project Silke investigated whether chocolate milk tasted sweeter when drunk from a red cup rather than a white one."
+        },
+        {
+          "nl": "Tien klasgenoten kozen de rode beker, waardoor ze al een opvallende titel voor haar verslag had bedacht.",
+          "en": "Ten classmates chose the red cup, so she had already thought of a striking title for her report."
+        },
+        {
+          "nl": "Haar vriend Arno vroeg hoe ze ervoor had gezorgd dat de drank in beide bekers even warm was.",
+          "en": "Her friend Arno asked how she had ensured the drink in both cups was equally warm."
+        },
+        {
+          "nl": "Silke keek naar haar notities en besefte dat ze telkens eerst de witte beker had gevuld en pas later de rode.",
+          "en": "Silke looked at her notes and realised she had always filled the white cup first and the red one only later."
+        },
+        {
+          "nl": "Misschien reageerden de leerlingen niet op de kleur, maar op een temperatuurverschil dat zij onbedoeld had veroorzaakt.",
+          "en": "Perhaps the pupils were responding not to the colour, but to a temperature difference she had unintentionally caused."
+        },
+        {
+          "nl": "Ze schrapte haar titel en herhaalde de proef met gelijke temperaturen en een afwisselende volgorde, ook al leverde dat minder duidelijke voorkeuren op.",
+          "en": "She deleted her title and repeated the test with equal temperatures and an alternating order, even though that produced less clear preferences."
+        },
+        {
+          "nl": "In haar verslag beschreef ze waarom de eerste uitslag aantrekkelijk leek en waarom die toch geen stevig antwoord gaf.",
+          "en": "In her report she described why the first result seemed attractive and why it nevertheless did not provide a firm answer."
+        },
+        {
+          "nl": "Tijdens de presentatie toonde ze beide tabellen; het interessantste resultaat was nu de fout die zichtbaar had gemaakt wat ze werkelijk moest vergelijken.",
+          "en": "During the presentation she showed both tables; the most interesting result was now the mistake that had revealed what she really needed to compare."
+        }
+      ],
+      "words": [
+        {
+          "term": "onbedoeld",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder dat iemand het zo wilde",
+            "en": "unintentional"
+          },
+          "example": {
+            "nl": "Misschien reageerden de leerlingen niet op de kleur, maar op een temperatuurverschil dat zij onbedoeld had veroorzaakt.",
+            "en": "Perhaps the pupils were responding not to the colour, but to a temperature difference she had unintentionally caused."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de uitslag",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het resultaat van een onderzoek of wedstrijd",
+            "en": "result"
+          },
+          "example": {
+            "nl": "In haar verslag beschreef ze waarom de eerste uitslag aantrekkelijk leek en waarom die toch geen stevig antwoord gaf.",
+            "en": "In her report she described why the first result seemed attractive and why it nevertheless did not provide a firm answer."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "afwisselend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met herhaalde verandering tussen mogelijkheden",
+            "en": "alternating"
+          },
+          "example": {
+            "nl": "Ze schrapte haar titel en herhaalde de proef met gelijke temperaturen en een afwisselende volgorde, ook al leverde dat minder duidelijke voorkeuren op.",
+            "en": "She deleted her title and repeated the test with equal temperatures and an alternating order, even though that produced less clear preferences."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Misschien met inversie",
+            "en": "Perhaps with inversion"
+          },
+          "explanation": {
+            "nl": "Staat misschien vooraan in een hoofdzin, dan komt de persoonsvorm vóór het onderwerp.",
+            "en": "When misschien begins a main clause, the finite verb comes before the subject."
+          },
+          "examples": [
+            {
+              "nl": "Misschien reageerden de leerlingen niet op de kleur, maar op een temperatuurverschil dat zij onbedoeld had veroorzaakt.",
+              "en": "Perhaps the pupils were responding not to the colour, but to a temperature difference she had unintentionally caused."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom was de eerste uitslag moeilijk te interpreteren?",
+            "en": "Why was the first result hard to interpret?"
+          },
+          "options": [
+            {
+              "nl": "Twee kenmerken veranderden tegelijk.",
+              "en": "Two characteristics changed at the same time."
+            },
+            {
+              "nl": "Er was geen chocolademelk gebruikt.",
+              "en": "No chocolate milk had been used."
+            },
+            {
+              "nl": "Niemand had geproefd.",
+              "en": "Nobody had tasted it."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Kleur en temperatuur waren niet afzonderlijk gecontroleerd.",
+            "en": "Colour and temperature had not been controlled separately."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom toont Silke ook de eerste tabel?",
+            "en": "Why does Silke also show the first table?"
+          },
+          "options": [
+            {
+              "nl": "Om te doen alsof die altijd correct was.",
+              "en": "To pretend it was always correct."
+            },
+            {
+              "nl": "Om de fout en de verbeterde vergelijking uit te leggen.",
+              "en": "To explain the mistake and the improved comparison."
+            },
+            {
+              "nl": "Omdat de tweede tabel geheim is.",
+              "en": "Because the second table is secret."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Haar verslag laat zien waarom een aantrekkelijke uitslag nog geen betrouwbaar antwoord is.",
+            "en": "Her report shows why an attractive result is not yet a reliable answer."
+          }
+        }
+      ]
+    }
+  ]
+}

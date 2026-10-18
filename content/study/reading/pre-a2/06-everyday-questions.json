@@ -1,0 +1,1880 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-a2-read-flessenpost-zonder-zee",
+      "topic_id": "friends",
+      "title": {
+        "nl": "De brief onder het hek",
+        "en": "The letter under the fence"
+      },
+      "plot_key": "A child who cannot visit a sick friend exchanges paper stories under a shared garden fence.",
+      "lines": [
+        {
+          "nl": "Mijn buurvriend is ziek en blijft binnen.",
+          "en": "My friend next door is ill and stays indoors."
+        },
+        {
+          "nl": "We kunnen vandaag niet samen spelen.",
+          "en": "We cannot play together today."
+        },
+        {
+          "nl": "Ik schrijf het begin van een grappig verhaal.",
+          "en": "I write the beginning of a funny story."
+        },
+        {
+          "nl": "Zijn moeder geeft het papier aan hem.",
+          "en": "His mother gives him the paper."
+        },
+        {
+          "nl": "Even later schuift een blad onder ons tuinhek.",
+          "en": "A little later a sheet slides under our garden fence."
+        },
+        {
+          "nl": "Mijn vriend heeft er een stukje bij geschreven.",
+          "en": "My friend has added a part."
+        },
+        {
+          "nl": "We sturen het verhaal de hele middag heen en weer.",
+          "en": "We send the story back and forth all afternoon."
+        },
+        {
+          "nl": "Aan het einde is de held gezond, net als mijn vriend morgen hoopt te zijn.",
+          "en": "At the end the hero is healthy, just as my friend hopes to be tomorrow."
+        }
+      ],
+      "words": [
+        {
+          "term": "heen en weer",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "afwisselend naar de ene en de andere kant",
+            "en": "back and forth in opposite directions"
+          },
+          "example": {
+            "nl": "We sturen het verhaal de hele middag heen en weer.",
+            "en": "We send the story back and forth all afternoon."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "de held",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de hoofdpersoon die iets bijzonders doet",
+            "en": "the main character who does something special"
+          },
+          "example": {
+            "nl": "Aan het einde is de held gezond, net als mijn vriend morgen hoopt te zijn.",
+            "en": "At the end the hero is healthy, just as my friend hopes to be tomorrow."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "hopen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "graag willen dat iets gebeurt",
+            "en": "to hope something will happen"
+          },
+          "example": {
+            "nl": "Aan het einde is de held gezond, net als mijn vriend morgen hoopt te zijn.",
+            "en": "At the end the hero is healthy, just as my friend hopes to be tomorrow."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Erbij schrijven",
+            "en": "Add in writing"
+          },
+          "explanation": {
+            "nl": "Erbij geschreven zegt dat nieuwe tekst bij de eerdere tekst komt.",
+            "en": "Erbij geschreven says new text is added to earlier text."
+          },
+          "examples": [
+            {
+              "nl": "Mijn vriend heeft er een stukje bij geschreven.",
+              "en": "My friend has added a part."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom spelen de vrienden niet samen buiten?",
+            "en": "Why do the friends not play outside together?"
+          },
+          "options": [
+            {
+              "nl": "De buurvriend is ziek.",
+              "en": "The friend next door is ill."
+            },
+            {
+              "nl": "Ze hebben geen tuin.",
+              "en": "They have no garden."
+            },
+            {
+              "nl": "Het verhaal is zoek.",
+              "en": "The story is missing."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De buurvriend blijft ziek binnen.",
+            "en": "The friend next door stays indoors ill."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie schrijft het verhaal?",
+            "en": "Who writes the story?"
+          },
+          "options": [
+            {
+              "nl": "Alleen de moeder",
+              "en": "Only the mother"
+            },
+            {
+              "nl": "De twee vrienden samen",
+              "en": "The two friends together"
+            },
+            {
+              "nl": "Een schrijver uit de krant",
+              "en": "A newspaper writer"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze schrijven om de beurt een stukje.",
+            "en": "They take turns adding a part."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-naam-van-de-dag",
+      "topic_id": "work-careers",
+      "title": {
+        "nl": "Vrij op de verkeerde vrijdag",
+        "en": "Free on the wrong Friday"
+      },
+      "plot_key": "A worker checks a calendar week number after mistaking next Friday's leave request for this Friday.",
+      "lines": [
+        {
+          "nl": "Ik vraag vrijdag vrij voor een familiebezoek.",
+          "en": "I ask for Friday off for a family visit."
+        },
+        {
+          "nl": "Mijn baas kijkt in het rooster.",
+          "en": "My boss checks the rota."
+        },
+        {
+          "nl": "Die dag werk je toch al niet, zegt ze.",
+          "en": "You are not working that day anyway, she says."
+        },
+        {
+          "nl": "We kijken naar twee verschillende vrijdagen.",
+          "en": "We are looking at two different Fridays."
+        },
+        {
+          "nl": "Ik bedoel vrijdag van volgende week.",
+          "en": "I mean Friday next week."
+        },
+        {
+          "nl": "Ik wijs de juiste datum op de kalender aan.",
+          "en": "I point to the correct date on the calendar."
+        },
+        {
+          "nl": "Mijn baas schrijft die bij mijn aanvraag.",
+          "en": "My boss writes it beside my request."
+        },
+        {
+          "nl": "Nu staan de dag en de datum samen in de bevestiging.",
+          "en": "Now the day and date are together in the confirmation."
+        }
+      ],
+      "words": [
+        {
+          "term": "het rooster",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een overzicht van wie wanneer werkt",
+            "en": "a schedule showing who works when"
+          },
+          "example": {
+            "nl": "Mijn baas kijkt in het rooster.",
+            "en": "My boss checks the rota."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "de aanvraag",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een verzoek om iets te krijgen of te mogen doen",
+            "en": "a request for something or for permission"
+          },
+          "example": {
+            "nl": "Mijn baas schrijft die bij mijn aanvraag.",
+            "en": "My boss writes it beside my request."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "de bevestiging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een bericht dat een afspraak of verzoek vaststaat",
+            "en": "a message confirming an arrangement or request"
+          },
+          "example": {
+            "nl": "Nu staan de dag en de datum samen in de bevestiging.",
+            "en": "Now the day and date are together in the confirmation."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Volgende week",
+            "en": "Next week"
+          },
+          "explanation": {
+            "nl": "Volgende week maakt duidelijk welke vrijdag bedoeld is.",
+            "en": "Volgende week makes clear which Friday is meant."
+          },
+          "examples": [
+            {
+              "nl": "Ik bedoel vrijdag van volgende week.",
+              "en": "I mean Friday next week."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat veroorzaakt het misverstand?",
+            "en": "What causes the misunderstanding?"
+          },
+          "options": [
+            {
+              "nl": "Er is geen kalender.",
+              "en": "There is no calendar."
+            },
+            {
+              "nl": "Het bezoek is afgezegd.",
+              "en": "The visit is cancelled."
+            },
+            {
+              "nl": "Ze bedoelen niet dezelfde vrijdag.",
+              "en": "They do not mean the same Friday."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De baas en de verteller kijken naar andere weken.",
+            "en": "The boss and the narrator look at different weeks."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke informatie komt samen in de bevestiging?",
+            "en": "What information appears together in the confirmation?"
+          },
+          "options": [
+            {
+              "nl": "Dag en datum",
+              "en": "Day and date"
+            },
+            {
+              "nl": "Naam en haarkleur",
+              "en": "Name and hair colour"
+            },
+            {
+              "nl": "Prijs en adres van de winkel",
+              "en": "Price and shop address"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De laatste zin noemt de dag en de datum.",
+            "en": "The final sentence mentions the day and date."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-drum-met-een-vergissing",
+      "topic_id": "music",
+      "title": {
+        "nl": "De trommel in de kast",
+        "en": "The drum in the cupboard"
+      },
+      "plot_key": "An amateur percussion player mistakes a cupboard rattle for a beat error and stabilises its loose door.",
+      "lines": [
+        {
+          "nl": "Ik oefen een ritme op mijn kleine trommel.",
+          "en": "I practise a rhythm on my little drum."
+        },
+        {
+          "nl": "Na elke slag hoor ik nog een tik.",
+          "en": "After each beat I hear another tap."
+        },
+        {
+          "nl": "Ik denk dat ik te snel speel.",
+          "en": "I think I am playing too fast."
+        },
+        {
+          "nl": "Ik probeer het langzamer, maar de tik blijft.",
+          "en": "I try it more slowly but the tap remains."
+        },
+        {
+          "nl": "Mijn zus legt haar hand op de kastdeur.",
+          "en": "My sister puts her hand on the cupboard door."
+        },
+        {
+          "nl": "Nu klinkt alleen mijn trommel.",
+          "en": "Now only my drum can be heard."
+        },
+        {
+          "nl": "Een los deurtje trilde met de muziek mee.",
+          "en": "A loose little door was vibrating with the music."
+        },
+        {
+          "nl": "We zetten het vast en oefenen samen verder.",
+          "en": "We secure it and keep practising together."
+        }
+      ],
+      "words": [
+        {
+          "term": "de slag",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een korte klap op een instrument",
+            "en": "a short strike on an instrument"
+          },
+          "example": {
+            "nl": "Na elke slag hoor ik nog een tik.",
+            "en": "After each beat I hear another tap."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "trillen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "snel en in kleine bewegingen heen en weer gaan",
+            "en": "to vibrate in small quick movements"
+          },
+          "example": {
+            "nl": "Een los deurtje trilde met de muziek mee.",
+            "en": "A loose little door was vibrating with the music."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "vastzetten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "ervoor zorgen dat iets niet meer beweegt",
+            "en": "to secure something so it no longer moves"
+          },
+          "example": {
+            "nl": "We zetten het vast en oefenen samen verder.",
+            "en": "We secure it and keep practising together."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Langzamer",
+            "en": "More slowly"
+          },
+          "explanation": {
+            "nl": "Langzamer vergelijkt het tweede tempo met het eerste tempo.",
+            "en": "Langzamer compares the second tempo with the first."
+          },
+          "examples": [
+            {
+              "nl": "Ik probeer het langzamer, maar de tik blijft.",
+              "en": "I try it more slowly but the tap remains."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar komt de extra tik vandaan?",
+            "en": "Where does the extra tap come from?"
+          },
+          "options": [
+            {
+              "nl": "Een los kastdeurtje",
+              "en": "A loose cupboard door"
+            },
+            {
+              "nl": "Een tweede trommel buiten",
+              "en": "A second drum outside"
+            },
+            {
+              "nl": "De wekker",
+              "en": "The alarm clock"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De kastdeur trilt mee.",
+            "en": "The cupboard door vibrates along."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe testen ze dat?",
+            "en": "How do they test it?"
+          },
+          "options": [
+            {
+              "nl": "Door de trommel te verkopen",
+              "en": "By selling the drum"
+            },
+            {
+              "nl": "Door de kastdeur vast te houden",
+              "en": "By holding the cupboard door still"
+            },
+            {
+              "nl": "Door hun oren te sluiten",
+              "en": "By covering their ears"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Met een hand op de deur verdwijnt de extra tik.",
+            "en": "With a hand on the door the extra tap disappears."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-open-bank-voor-twee",
+      "topic_id": "love-dating",
+      "title": {
+        "nl": "De lege bank bij de vijver",
+        "en": "The empty bench by the pond"
+      },
+      "plot_key": "A shy date plans too much conversation but finds an ordinary shared observation starts it naturally.",
+      "lines": [
+        {
+          "nl": "Voor mijn wandeling met Elias schrijf ik drie gespreksonderwerpen op.",
+          "en": "Before my walk with Elias I write down three conversation topics."
+        },
+        {
+          "nl": "Op de bank bij de vijver weet ik er geen meer.",
+          "en": "On the bench by the pond I cannot remember any."
+        },
+        {
+          "nl": "Mijn papier zit diep in mijn tas.",
+          "en": "My paper is deep in my bag."
+        },
+        {
+          "nl": "We zitten eerst een beetje stil.",
+          "en": "At first we sit a little quietly."
+        },
+        {
+          "nl": "Een eend loopt over de lege bank naast ons.",
+          "en": "A duck walks across the empty bench beside us."
+        },
+        {
+          "nl": "Elias zegt dat zij blijkbaar ook op iemand wacht.",
+          "en": "Elias says she is apparently waiting for someone too."
+        },
+        {
+          "nl": "We lachen en praten over onze eerste afspraken.",
+          "en": "We laugh and talk about our first dates."
+        },
+        {
+          "nl": "Mijn lijst blijft de hele wandeling in de tas.",
+          "en": "My list stays in the bag throughout the walk."
+        }
+      ],
+      "words": [
+        {
+          "term": "het gespreksonderwerp",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets waarover je met iemand praat",
+            "en": "something you talk about with someone"
+          },
+          "example": {
+            "nl": "Voor mijn wandeling met Elias schrijf ik drie gespreksonderwerpen op.",
+            "en": "Before my walk with Elias I write down three conversation topics."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "blijkbaar",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zoals uit de situatie lijkt",
+            "en": "apparently or as the situation suggests"
+          },
+          "example": {
+            "nl": "Elias zegt dat zij blijkbaar ook op iemand wacht.",
+            "en": "Elias says she is apparently waiting for someone too."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "stil",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder te praten",
+            "en": "quiet or not speaking"
+          },
+          "example": {
+            "nl": "We zitten eerst een beetje stil.",
+            "en": "At first we sit a little quietly."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Geen meer",
+            "en": "None left"
+          },
+          "explanation": {
+            "nl": "Geen meer zegt dat de voorbereide onderwerpen niet beschikbaar zijn in het geheugen.",
+            "en": "Geen meer says the prepared topics are no longer available in memory."
+          },
+          "examples": [
+            {
+              "nl": "Op de bank bij de vijver weet ik er geen meer.",
+              "en": "On the bench by the pond I cannot remember any."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat opent uiteindelijk het gesprek?",
+            "en": "What eventually starts the conversation?"
+          },
+          "options": [
+            {
+              "nl": "Het voorbereide papier",
+              "en": "The prepared paper"
+            },
+            {
+              "nl": "Een bericht van thuis",
+              "en": "A message from home"
+            },
+            {
+              "nl": "Een grap over een eend",
+              "en": "A joke about a duck"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Elias maakt een grap over de eend op de andere bank.",
+            "en": "Elias jokes about the duck on the other bench."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Gebruikt de verteller het lijstje?",
+            "en": "Does the narrator use the list?"
+          },
+          "options": [
+            {
+              "nl": "Nee, het blijft in de tas.",
+              "en": "No, it stays in the bag."
+            },
+            {
+              "nl": "Ja, bij elke vraag.",
+              "en": "Yes, for every question."
+            },
+            {
+              "nl": "Alleen voor het afscheid.",
+              "en": "Only to say goodbye."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De lijst blijft de hele wandeling opgeborgen.",
+            "en": "The list stays put away throughout the walk."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-gekleurde-pijl-public",
+      "topic_id": "public-services",
+      "title": {
+        "nl": "De pijl naar de lift",
+        "en": "The arrow to the lift"
+      },
+      "plot_key": "A first-time library visitor follows stairs until a staff member points out the nearby lift to the same upstairs service.",
+      "lines": [
+        {
+          "nl": "In de bib wil ik naar de tweede verdieping.",
+          "en": "In the library I want to go to the second floor."
+        },
+        {
+          "nl": "Ik heb een zware tas met boeken.",
+          "en": "I have a heavy bag of books."
+        },
+        {
+          "nl": "De trap lijkt vandaag erg hoog.",
+          "en": "The stairs seem very high today."
+        },
+        {
+          "nl": "Ik zet mijn tas even neer.",
+          "en": "I put my bag down for a moment."
+        },
+        {
+          "nl": "Een medewerker wijst naar een blauwe pijl.",
+          "en": "A staff member points to a blue arrow."
+        },
+        {
+          "nl": "Achter de hoek is een lift.",
+          "en": "There is a lift around the corner."
+        },
+        {
+          "nl": "Ik neem de lift met mijn zware tas.",
+          "en": "I take the lift with my heavy bag."
+        },
+        {
+          "nl": "Boven kan ik rustig aan de leesclub beginnen.",
+          "en": "Upstairs I can calmly start the reading club."
+        }
+      ],
+      "words": [
+        {
+          "term": "de verdieping",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een laag in een gebouw",
+            "en": "a floor or storey of a building"
+          },
+          "example": {
+            "nl": "In de bib wil ik naar de tweede verdieping.",
+            "en": "In the library I want to go to the second floor."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "neerzetten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets ergens laten staan",
+            "en": "to put something down somewhere"
+          },
+          "example": {
+            "nl": "Ik zet mijn tas even neer.",
+            "en": "I put my bag down for a moment."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "achter de hoek",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "net voorbij de hoek",
+            "en": "just around the corner"
+          },
+          "example": {
+            "nl": "Achter de hoek is een lift.",
+            "en": "There is a lift around the corner."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Lijkt",
+            "en": "Seems"
+          },
+          "explanation": {
+            "nl": "Lijkt zegt hier hoe de trap aanvoelt met een zware tas.",
+            "en": "Lijkt says how the stairs feel with a heavy bag here."
+          },
+          "examples": [
+            {
+              "nl": "De trap lijkt vandaag erg hoog.",
+              "en": "The stairs seem very high today."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil de verteller liever niet de trap nemen?",
+            "en": "Why would the narrator prefer not to take the stairs?"
+          },
+          "options": [
+            {
+              "nl": "De tas is zwaar.",
+              "en": "The bag is heavy."
+            },
+            {
+              "nl": "De leesclub is buiten.",
+              "en": "The reading club is outside."
+            },
+            {
+              "nl": "Er zijn geen boeken.",
+              "en": "There are no books."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De zware boeken maken de trap lastig.",
+            "en": "The heavy books make the stairs difficult."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar brengt de blauwe pijl de verteller naartoe?",
+            "en": "Where does the blue arrow lead the narrator?"
+          },
+          "options": [
+            {
+              "nl": "Naar een bushalte",
+              "en": "To a bus stop"
+            },
+            {
+              "nl": "Naar een lift",
+              "en": "To a lift"
+            },
+            {
+              "nl": "Naar de uitgang van de stad",
+              "en": "To the city exit"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De medewerker toont de lift achter de hoek.",
+            "en": "The staff member shows the lift around the corner."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-brief-in-de-fietsmand",
+      "topic_id": "transportation",
+      "title": {
+        "nl": "De mand die muziek maakte",
+        "en": "The basket that made music"
+      },
+      "plot_key": "A cyclist traces an irritating rattle to a teaspoon dropped into the bicycle basket after a picnic.",
+      "lines": [
+        {
+          "nl": "Tijdens het fietsen hoor ik steeds een tik.",
+          "en": "While cycling I keep hearing a tap."
+        },
+        {
+          "nl": "Ik stop en kijk naar mijn wielen.",
+          "en": "I stop and look at my wheels."
+        },
+        {
+          "nl": "Daar zie ik niets vreemds.",
+          "en": "I see nothing unusual there."
+        },
+        {
+          "nl": "Bij de volgende hobbel klinkt het weer.",
+          "en": "At the next bump it sounds again."
+        },
+        {
+          "nl": "In mijn fietsmand ligt nog een lepel van onze picknick.",
+          "en": "A spoon from our picnic is still in my bicycle basket."
+        },
+        {
+          "nl": "Hij botst tegen de metalen rand.",
+          "en": "It knocks against the metal edge."
+        },
+        {
+          "nl": "Ik wikkel hem in mijn servet.",
+          "en": "I wrap it in my napkin."
+        },
+        {
+          "nl": "De rest van de rit hoor ik alleen de wind.",
+          "en": "For the rest of the ride I only hear the wind."
+        }
+      ],
+      "words": [
+        {
+          "term": "de hobbel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kleine verhoging die de weg ongelijk maakt",
+            "en": "a small bump making the road uneven"
+          },
+          "example": {
+            "nl": "Bij de volgende hobbel klinkt het weer.",
+            "en": "At the next bump it sounds again."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "botsen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "hard tegen iets komen",
+            "en": "to knock or collide with something"
+          },
+          "example": {
+            "nl": "Hij botst tegen de metalen rand.",
+            "en": "It knocks against the metal edge."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "wikkelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets met een doek of papier omgeven",
+            "en": "to wrap something in cloth or paper"
+          },
+          "example": {
+            "nl": "Ik wikkel hem in mijn servet.",
+            "en": "I wrap it in my napkin."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alleen de wind",
+            "en": "Only the wind"
+          },
+          "explanation": {
+            "nl": "Alleen beperkt wat nog hoorbaar is na de oplossing.",
+            "en": "Alleen limits what remains audible after the solution."
+          },
+          "examples": [
+            {
+              "nl": "De rest van de rit hoor ik alleen de wind.",
+              "en": "For the rest of the ride I only hear the wind."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt de tik?",
+            "en": "What makes the tapping sound?"
+          },
+          "options": [
+            {
+              "nl": "Een kapot wiel",
+              "en": "A broken wheel"
+            },
+            {
+              "nl": "Een vogel",
+              "en": "A bird"
+            },
+            {
+              "nl": "Een lepel in de mand",
+              "en": "A spoon in the basket"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De lepel botst tegen de metalen rand.",
+            "en": "The spoon knocks against the metal edge."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe stopt de verteller het geluid?",
+            "en": "How does the narrator stop the sound?"
+          },
+          "options": [
+            {
+              "nl": "De lepel in een servet wikkelen",
+              "en": "Wrap the spoon in a napkin"
+            },
+            {
+              "nl": "De fiets achterlaten",
+              "en": "Leave the bicycle behind"
+            },
+            {
+              "nl": "Een nieuwe mand kopen",
+              "en": "Buy a new basket"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het servet zorgt dat de lepel niet meer tegen metaal tikt.",
+            "en": "The napkin stops the spoon tapping against metal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-nieuw-lied-op-de-tafel",
+      "topic_id": "religion-beliefs",
+      "title": {
+        "nl": "Een stil moment",
+        "en": "A quiet moment"
+      },
+      "plot_key": "A dinner guest asks about a host's pre-meal silence and joins respectfully without pretending a shared belief.",
+      "lines": [
+        {
+          "nl": "Ik eet voor het eerst bij een nieuwe vriend.",
+          "en": "I eat at a new friend's home for the first time."
+        },
+        {
+          "nl": "Voor we beginnen, wordt zijn familie even stil.",
+          "en": "Before we start his family becomes quiet for a moment."
+        },
+        {
+          "nl": "Ik weet niet wat ik moet doen.",
+          "en": "I do not know what to do."
+        },
+        {
+          "nl": "Na het eten vraag ik mijn vriend naar dat moment.",
+          "en": "After eating I ask my friend about that moment."
+        },
+        {
+          "nl": "Ze denken dan aan wat ze hebben gekregen.",
+          "en": "They think about what they have received then."
+        },
+        {
+          "nl": "Hij zegt dat iedereen het op zijn eigen manier mag beleven.",
+          "en": "He says everyone may experience it in their own way."
+        },
+        {
+          "nl": "Bij mijn volgende bezoek ben ik ook rustig stil.",
+          "en": "At my next visit I sit quietly too."
+        },
+        {
+          "nl": "Daarna vraag ik zijn moeder naar het heerlijke brood.",
+          "en": "Afterwards I ask his mother about the delicious bread."
+        }
+      ],
+      "words": [
+        {
+          "term": "het moment",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kort stukje tijd",
+            "en": "a short period of time"
+          },
+          "example": {
+            "nl": "Na het eten vraag ik mijn vriend naar dat moment.",
+            "en": "After eating I ask my friend about that moment."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "beleven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets meemaken en er een gevoel bij hebben",
+            "en": "to experience something and have a feeling about it"
+          },
+          "example": {
+            "nl": "Hij zegt dat iedereen het op zijn eigen manier mag beleven.",
+            "en": "He says everyone may experience it in their own way."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "de manier",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hoe iemand iets doet",
+            "en": "the way someone does something"
+          },
+          "example": {
+            "nl": "Hij zegt dat iedereen het op zijn eigen manier mag beleven.",
+            "en": "He says everyone may experience it in their own way."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zijn eigen manier",
+            "en": "His own way"
+          },
+          "explanation": {
+            "nl": "Eigen maakt duidelijk dat er ruimte is voor persoonlijke invulling.",
+            "en": "Eigen makes clear there is room for a personal interpretation."
+          },
+          "examples": [
+            {
+              "nl": "Hij zegt dat iedereen het op zijn eigen manier mag beleven.",
+              "en": "He says everyone may experience it in their own way."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat doet de verteller bij onzekerheid?",
+            "en": "What does the narrator do when unsure?"
+          },
+          "options": [
+            {
+              "nl": "Later uitleg vragen",
+              "en": "Ask for an explanation later"
+            },
+            {
+              "nl": "Meteen het eten wegduwen",
+              "en": "Push the food away immediately"
+            },
+            {
+              "nl": "Een grap roepen",
+              "en": "Shout a joke"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Na de maaltijd vraagt de verteller naar het stille moment.",
+            "en": "After the meal the narrator asks about the quiet moment."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Moet iedereen het moment precies hetzelfde beleven?",
+            "en": "Must everyone experience the moment exactly the same way?"
+          },
+          "options": [
+            {
+              "nl": "Ja, dat zegt de vriend.",
+              "en": "Yes, the friend says so."
+            },
+            {
+              "nl": "Nee, iedereen mag een eigen manier hebben.",
+              "en": "No, everyone may have their own way."
+            },
+            {
+              "nl": "Het verhaal noemt geen moment.",
+              "en": "The story mentions no moment."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De vriend zegt dat iedereen het op zijn eigen manier mag beleven.",
+            "en": "The friend says everyone may experience it in their own way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-leeg-blad-voor-de-leraar",
+      "topic_id": "education",
+      "title": {
+        "nl": "Het blad dat wit bleef",
+        "en": "The page that stayed white"
+      },
+      "plot_key": "A learner lacking drawing confidence starts by tracing a leaf's outline rather than copying a complex picture.",
+      "lines": [
+        {
+          "nl": "In de tekenles blijft mijn blad wit.",
+          "en": "In drawing class my page stays white."
+        },
+        {
+          "nl": "De tekening op het bord lijkt te moeilijk.",
+          "en": "The drawing on the board looks too difficult."
+        },
+        {
+          "nl": "Ik leg mijn potlood neer.",
+          "en": "I put my pencil down."
+        },
+        {
+          "nl": "De leraar legt een echt blad van een boom op tafel.",
+          "en": "The teacher puts a real tree leaf on the table."
+        },
+        {
+          "nl": "Ik mag eerst alleen de rand tekenen.",
+          "en": "First I may draw only the outline."
+        },
+        {
+          "nl": "Daarna voeg ik de dunne lijnen binnenin toe.",
+          "en": "Then I add the thin lines inside."
+        },
+        {
+          "nl": "Mijn boomblad is niet perfect, maar wel van mij.",
+          "en": "My leaf is not perfect but it is mine."
+        },
+        {
+          "nl": "Het witte papier heeft eindelijk een begin.",
+          "en": "The white paper finally has a beginning."
+        }
+      ],
+      "words": [
+        {
+          "term": "de rand",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de buitenste grens van een vorm",
+            "en": "the outer boundary of a shape"
+          },
+          "example": {
+            "nl": "Ik mag eerst alleen de rand tekenen.",
+            "en": "First I may draw only the outline."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "binnenin",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "aan de binnenkant",
+            "en": "inside"
+          },
+          "example": {
+            "nl": "Daarna voeg ik de dunne lijnen binnenin toe.",
+            "en": "Then I add the thin lines inside."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "het potlood",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een schrijfinstrument met een grijze kern",
+            "en": "a writing instrument with a graphite core"
+          },
+          "example": {
+            "nl": "Ik leg mijn potlood neer.",
+            "en": "I put my pencil down."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet maar wel",
+            "en": "Not but still"
+          },
+          "explanation": {
+            "nl": "Niet perfect maar wel van mij zet het resultaat en het eigenaarschap naast elkaar.",
+            "en": "Niet perfect maar wel van mij places the result beside the sense of ownership."
+          },
+          "examples": [
+            {
+              "nl": "Mijn boomblad is niet perfect, maar wel van mij.",
+              "en": "My leaf is not perfect but it is mine."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom begint de verteller eerst niet?",
+            "en": "Why does the narrator not start at first?"
+          },
+          "options": [
+            {
+              "nl": "Er is geen papier.",
+              "en": "There is no paper."
+            },
+            {
+              "nl": "Het potlood is van hout.",
+              "en": "The pencil is wooden."
+            },
+            {
+              "nl": "De voorbeeldtekening lijkt te moeilijk.",
+              "en": "The sample drawing seems too difficult."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De verteller vindt de tekening op het bord te moeilijk.",
+            "en": "The narrator finds the board drawing too difficult."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat wordt de eerste stap?",
+            "en": "What is the first step?"
+          },
+          "options": [
+            {
+              "nl": "De rand van een echt boomblad tekenen",
+              "en": "Draw the outline of a real tree leaf"
+            },
+            {
+              "nl": "De hele boom schilderen",
+              "en": "Paint the whole tree"
+            },
+            {
+              "nl": "Het boek overschrijven",
+              "en": "Copy the book"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De leraar laat eerst alleen de rand tekenen.",
+            "en": "The teacher first has the learner draw only the outline."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-bericht-voor-elf",
+      "topic_id": "friends",
+      "title": {
+        "nl": "Om elf of na elf?",
+        "en": "At eleven or after eleven?"
+      },
+      "plot_key": "Two friends clarify a vague arrival window before one waits unnecessarily by the door.",
+      "lines": [
+        {
+          "nl": "Mijn vriend schrijft dat hij na elf uur komt.",
+          "en": "My friend writes that he will come after eleven."
+        },
+        {
+          "nl": "Om elf uur zit ik al bij het raam.",
+          "en": "At eleven I am already sitting by the window."
+        },
+        {
+          "nl": "Na een halfuur is hij er nog niet.",
+          "en": "After half an hour he is not there yet."
+        },
+        {
+          "nl": "Ik wil weten of er iets gebeurd is.",
+          "en": "I want to know whether something has happened."
+        },
+        {
+          "nl": "Hij antwoordt dat hij rond twaalf uur kan komen.",
+          "en": "He replies that he can come around twelve."
+        },
+        {
+          "nl": "Na elf was voor hem geen precies tijdstip.",
+          "en": "For him after eleven was not an exact time."
+        },
+        {
+          "nl": "Ik ga nog rustig mijn planten water geven.",
+          "en": "I calmly go and water my plants."
+        },
+        {
+          "nl": "Voor de volgende keer spreken we een duidelijk uur af.",
+          "en": "For next time we agree on a clear time."
+        }
+      ],
+      "words": [
+        {
+          "term": "het tijdstip",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een bepaald moment op een dag",
+            "en": "a specific moment during a day"
+          },
+          "example": {
+            "nl": "Na elf was voor hem geen precies tijdstip.",
+            "en": "For him after eleven was not an exact time."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "rond",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "ongeveer op dat moment",
+            "en": "at approximately that time"
+          },
+          "example": {
+            "nl": "Hij antwoordt dat hij rond twaalf uur kan komen.",
+            "en": "He replies that he can come around twelve."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "afspreken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "samen een plan of tijd vastleggen",
+            "en": "to agree on a plan or time together"
+          },
+          "example": {
+            "nl": "Voor de volgende keer spreken we een duidelijk uur af.",
+            "en": "For next time we agree on a clear time."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Na en om",
+            "en": "After and at"
+          },
+          "explanation": {
+            "nl": "Na geeft een grens aan en om noemt een bepaald tijdstip.",
+            "en": "Na gives a lower time boundary and om names a specific time."
+          },
+          "examples": [
+            {
+              "nl": "Na elf was voor hem geen precies tijdstip.",
+              "en": "For him after eleven was not an exact time."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wacht de verteller langer dan verwacht?",
+            "en": "Why does the narrator wait longer than expected?"
+          },
+          "options": [
+            {
+              "nl": "Na elf was geen afspraak om precies elf uur.",
+              "en": "After eleven was not an appointment at exactly eleven."
+            },
+            {
+              "nl": "De vriend is de stad kwijt.",
+              "en": "The friend has lost the city."
+            },
+            {
+              "nl": "Het raam zit dicht.",
+              "en": "The window is closed."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De twee vrienden begrijpen de tijdsaanduiding anders.",
+            "en": "The two friends understand the time expression differently."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de verteller tijdens het resterende wachten?",
+            "en": "What does the narrator do during the remaining wait?"
+          },
+          "options": [
+            {
+              "nl": "Naar het station lopen",
+              "en": "Walk to the station"
+            },
+            {
+              "nl": "Planten water geven",
+              "en": "Water plants"
+            },
+            {
+              "nl": "Een nieuwe telefoon kopen",
+              "en": "Buy a new phone"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Er is nog tijd om de planten water te geven.",
+            "en": "There is still time to water the plants."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-wit-lint-op-de-taart",
+      "topic_id": "community-events",
+      "title": {
+        "nl": "De taart voor de wedstrijd",
+        "en": "The cake for the competition"
+      },
+      "plot_key": "A community baking entrant discovers tasting has not started yet and saves the display slice for the judging.",
+      "lines": [
+        {
+          "nl": "Op het buurtfeest staat mijn cake tussen tien andere taarten.",
+          "en": "At the neighbourhood celebration my cake stands among ten other cakes."
+        },
+        {
+          "nl": "Ik snijd alvast een stukje voor mijn broer.",
+          "en": "I cut a slice for my brother in advance."
+        },
+        {
+          "nl": "Een vrijwilliger vraagt of ik even wil wachten.",
+          "en": "A volunteer asks whether I can wait a moment."
+        },
+        {
+          "nl": "De jury moet de hele cakes eerst bekijken.",
+          "en": "The judges must first look at the whole cakes."
+        },
+        {
+          "nl": "Ik zet het stukje netjes terug op de schaal.",
+          "en": "I neatly put the slice back on the plate."
+        },
+        {
+          "nl": "Naast de snee leg ik een kaartje met de ingrediënten.",
+          "en": "Beside the cut I put a card with the ingredients."
+        },
+        {
+          "nl": "Na de beoordeling mag iedereen proeven.",
+          "en": "After the judging everyone may taste."
+        },
+        {
+          "nl": "Mijn broer vindt mijn kleine fout vooral erg lekker.",
+          "en": "My brother mainly finds my little mistake very tasty."
+        }
+      ],
+      "words": [
+        {
+          "term": "de jury",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een groep die bij een wedstrijd beoordeelt",
+            "en": "a group assessing entries in a competition"
+          },
+          "example": {
+            "nl": "De jury moet de hele cakes eerst bekijken.",
+            "en": "The judges must first look at the whole cakes."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "de snee",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een opening waar iets is doorgesneden",
+            "en": "a cut where something has been sliced"
+          },
+          "example": {
+            "nl": "Naast de snee leg ik een kaartje met de ingrediënten.",
+            "en": "Beside the cut I put a card with the ingredients."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "de beoordeling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het bekijken en bepalen van kwaliteit",
+            "en": "the examination and assessment of quality"
+          },
+          "example": {
+            "nl": "Na de beoordeling mag iedereen proeven.",
+            "en": "After the judging everyone may taste."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerst en na",
+            "en": "First and after"
+          },
+          "explanation": {
+            "nl": "Eerst kijken en na de beoordeling proeven geeft de volgorde.",
+            "en": "Eerst kijken and na de beoordeling proeven give the sequence."
+          },
+          "examples": [
+            {
+              "nl": "Na de beoordeling mag iedereen proeven.",
+              "en": "After the judging everyone may taste."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom moet de broer nog wachten?",
+            "en": "Why must the brother wait?"
+          },
+          "options": [
+            {
+              "nl": "De cake moet nog bakken.",
+              "en": "The cake still needs baking."
+            },
+            {
+              "nl": "Er zijn geen borden.",
+              "en": "There are no plates."
+            },
+            {
+              "nl": "De jury wil eerst de cakes bekijken.",
+              "en": "The judges want to view the cakes first."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het proeven begint pas na de beoordeling.",
+            "en": "Tasting starts only after judging."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat staat op het kaartje?",
+            "en": "What is on the card?"
+          },
+          "options": [
+            {
+              "nl": "De ingrediënten",
+              "en": "The ingredients"
+            },
+            {
+              "nl": "Het adres van de broer",
+              "en": "The brother's address"
+            },
+            {
+              "nl": "De prijs van de oven",
+              "en": "The oven's price"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De verteller legt een ingrediëntenkaartje neer.",
+            "en": "The narrator puts down an ingredients card."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-rode-regen-op-het-raam",
+      "topic_id": "weather",
+      "title": {
+        "nl": "Een regenboog op tafel",
+        "en": "A rainbow on the table"
+      },
+      "plot_key": "A child notices sunlight through a wet glass casts colours and moves the glass carefully to compare them.",
+      "lines": [
+        {
+          "nl": "Na de regen schijnt de zon door het raam.",
+          "en": "After the rain the sun shines through the window."
+        },
+        {
+          "nl": "Op tafel staat een glas water.",
+          "en": "There is a glass of water on the table."
+        },
+        {
+          "nl": "Er verschijnen kleine kleuren op het witte kleed.",
+          "en": "Little colours appear on the white cloth."
+        },
+        {
+          "nl": "Ik zoek naar mijn doos kleurpotloden.",
+          "en": "I look for my box of coloured pencils."
+        },
+        {
+          "nl": "Die doos staat nog dicht in de kast.",
+          "en": "That box is still closed in the cupboard."
+        },
+        {
+          "nl": "Papa schuift het glas een beetje opzij.",
+          "en": "Dad moves the glass slightly aside."
+        },
+        {
+          "nl": "De kleuren verhuizen mee over de tafel.",
+          "en": "The colours move along across the table."
+        },
+        {
+          "nl": "Ik teken onze kleine regenboog vóór de zon weer verdwijnt.",
+          "en": "I draw our little rainbow before the sun disappears again."
+        }
+      ],
+      "words": [
+        {
+          "term": "de regenboog",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "gekleurde bogen die door licht en water zichtbaar worden",
+            "en": "coloured arcs made visible by light and water"
+          },
+          "example": {
+            "nl": "Ik teken onze kleine regenboog vóór de zon weer verdwijnt.",
+            "en": "I draw our little rainbow before the sun disappears again."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "opzij",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "naar de zijkant",
+            "en": "to the side"
+          },
+          "example": {
+            "nl": "Papa schuift het glas een beetje opzij.",
+            "en": "Dad moves the glass slightly aside."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "verdwijnen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "niet meer zichtbaar zijn",
+            "en": "to disappear from sight"
+          },
+          "example": {
+            "nl": "Ik teken onze kleine regenboog vóór de zon weer verdwijnt.",
+            "en": "I draw our little rainbow before the sun disappears again."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Voordat in tijd",
+            "en": "Before in time"
+          },
+          "explanation": {
+            "nl": "Voor de zon weer verdwijnt betekent dat de tekening eerder moet gebeuren.",
+            "en": "Voor de zon weer verdwijnt means the drawing must happen earlier."
+          },
+          "examples": [
+            {
+              "nl": "Ik teken onze kleine regenboog vóór de zon weer verdwijnt.",
+              "en": "I draw our little rainbow before the sun disappears again."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar komen de kleuren vandaan?",
+            "en": "Where do the colours come from?"
+          },
+          "options": [
+            {
+              "nl": "Licht dat door het water gaat",
+              "en": "Light passing through the water"
+            },
+            {
+              "nl": "Open kleurpotloden",
+              "en": "Open coloured pencils"
+            },
+            {
+              "nl": "Verf op papa's handen",
+              "en": "Paint on Dad's hands"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De kleuren bewegen mee wanneer het glas wordt verplaatst.",
+            "en": "The colours move along when the glass is moved."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom tekent het kind snel?",
+            "en": "Why does the child draw quickly?"
+          },
+          "options": [
+            {
+              "nl": "De kast gaat sluiten.",
+              "en": "The cupboard is closing."
+            },
+            {
+              "nl": "De zon kan weer verdwijnen.",
+              "en": "The sun may disappear again."
+            },
+            {
+              "nl": "Het water is op.",
+              "en": "The water has run out."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het kind wil de regenboog vóór het verdwijnen van de zon tekenen.",
+            "en": "The child wants to draw the rainbow before the sun disappears."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a2-read-stoel-op-het-programma",
+      "topic_id": "festivals-entertainment",
+      "title": {
+        "nl": "De pop die niemand zag",
+        "en": "The puppet nobody saw"
+      },
+      "plot_key": "A puppeteer raises a low makeshift stage after children at the back cannot see.",
+      "lines": [
+        {
+          "nl": "Op het schoolfeest speel ik met een handpop.",
+          "en": "At the school celebration I perform with a hand puppet."
+        },
+        {
+          "nl": "Mijn kleine tafel is het podium.",
+          "en": "My little table is the stage."
+        },
+        {
+          "nl": "De kinderen vooraan lachen.",
+          "en": "The children at the front laugh."
+        },
+        {
+          "nl": "Achteraan vraagt iemand wat de pop doet.",
+          "en": "At the back someone asks what the puppet is doing."
+        },
+        {
+          "nl": "De tafel is te laag voor de hele groep.",
+          "en": "The table is too low for the whole group."
+        },
+        {
+          "nl": "Een leraar helpt het doek aan een hoger rek vastmaken.",
+          "en": "A teacher helps attach the curtain to a taller rack."
+        },
+        {
+          "nl": "Nu kan de pop boven alle hoofden verschijnen.",
+          "en": "Now the puppet can appear above all the heads."
+        },
+        {
+          "nl": "Het laatste grapje krijgt ook achteraan veel gelach.",
+          "en": "The final joke gets plenty of laughter at the back too."
+        }
+      ],
+      "words": [
+        {
+          "term": "de handpop",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een pop die je met je hand van binnenuit beweegt",
+            "en": "a puppet moved from inside with your hand"
+          },
+          "example": {
+            "nl": "Op het schoolfeest speel ik met een handpop.",
+            "en": "At the school celebration I perform with a hand puppet."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "het podium",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een verhoogde plaats voor een optreden",
+            "en": "a raised place for a performance"
+          },
+          "example": {
+            "nl": "Mijn kleine tafel is het podium.",
+            "en": "My little table is the stage."
+          },
+          "minimum_stage": "pre-a2"
+        },
+        {
+          "term": "achteraan",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "in het achterste deel van een groep of ruimte",
+            "en": "at the back of a group or space"
+          },
+          "example": {
+            "nl": "Achteraan vraagt iemand wat de pop doet.",
+            "en": "At the back someone asks what the puppet is doing."
+          },
+          "minimum_stage": "pre-a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Te laag",
+            "en": "Too low"
+          },
+          "explanation": {
+            "nl": "Te laag zegt dat de hoogte niet voldoende is voor het doel.",
+            "en": "Te laag says the height is insufficient for the purpose."
+          },
+          "examples": [
+            {
+              "nl": "De tafel is te laag voor de hele groep.",
+              "en": "The table is too low for the whole group."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom reageert de achterkant eerst anders?",
+            "en": "Why does the back initially react differently?"
+          },
+          "options": [
+            {
+              "nl": "De kinderen kunnen de pop niet zien.",
+              "en": "The children cannot see the puppet."
+            },
+            {
+              "nl": "Er is geen verhaal.",
+              "en": "There is no story."
+            },
+            {
+              "nl": "De leraar zingt.",
+              "en": "The teacher sings."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het podium is te laag voor de kinderen achteraan.",
+            "en": "The stage is too low for the children at the back."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert er?",
+            "en": "What changes?"
+          },
+          "options": [
+            {
+              "nl": "De naam van de pop",
+              "en": "The puppet's name"
+            },
+            {
+              "nl": "De hoogte van het speelvlak",
+              "en": "The height of the performance area"
+            },
+            {
+              "nl": "De dag van het feest",
+              "en": "The day of the celebration"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het doek gaat aan een hoger rek zodat iedereen de pop ziet.",
+            "en": "The curtain goes on a taller rack so everyone sees the puppet."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-plant-in-de-wachtzaal",
+      "topic_id": "medical-care",
+      "title": {
+        "nl": "De plant in de wachtzaal",
+        "en": "The plant in the waiting room"
+      },
+      "plot_key": "A worried son repeatedly sees a hospital plant watered by a stranger and learns the simple act is her way of accompanying her own absent partner.",
+      "lines": [
+        {
+          "nl": "Tijdens de weken waarin zijn moeder vaak naar het ziekenhuis moest, keek Joris in de wachtzaal steeds naar dezelfde halfverdroogde plant.",
+          "en": "During the weeks when his mother frequently had to visit the hospital, Joris kept looking at the same half-dried plant in the waiting room."
+        },
+        {
+          "nl": "Hij had het gevoel dat de slappe bladeren precies toonden hoe vermoeid iedereen daar probeerde rechtop te blijven zitten.",
+          "en": "He felt the drooping leaves showed exactly how tired everyone there was while trying to remain sitting upright."
+        },
+        {
+          "nl": "Op een ochtend zag hij een vrouw water uit een drinkfles in de pot gieten, waarna ze zonder iemand te groeten weer vertrok.",
+          "en": "One morning he saw a woman pour water from a drinking bottle into the pot, after which she left again without greeting anyone."
+        },
+        {
+          "nl": "Toen ze de volgende week terugkwam, vroeg hij of zij misschien verantwoordelijk was voor de planten op die verdieping.",
+          "en": "When she returned the following week he asked whether she was perhaps responsible for the plants on that floor."
+        },
+        {
+          "nl": "Ze vertelde dat haar partner vroeger altijd op deze plant had gelet terwijl zij onderzocht werd, en dat hij inmiddels niet meer leefde.",
+          "en": "She explained that her partner had always looked after this plant while she was being examined, and that he had since died."
+        },
+        {
+          "nl": "Zelf kwam ze nu voor haar eigen afspraken, maar het water geven maakte zijn afwezigheid voor een paar minuten minder ongrijpbaar.",
+          "en": "She now came for her own appointments, but watering made his absence less intangible for a few minutes."
+        },
+        {
+          "nl": "Joris begon haar daarna te groeten zonder telkens naar haar uitslagen te vragen, en soms bespraken ze alleen het weer of een nieuw blad.",
+          "en": "Afterwards Joris began greeting her without asking about her results each time, and sometimes they discussed only the weather or a new leaf."
+        },
+        {
+          "nl": "Toen zijn moeder er minder vaak hoefde te zijn, vulde hij bij hun laatste bezoek de lege fles en zette die naast de plant terug.",
+          "en": "When his mother needed to attend less often, on their last visit he filled the empty bottle and put it back beside the plant."
+        }
+      ],
+      "words": [
+        {
+          "term": "verdroogd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "uitgedroogd door te weinig water",
+            "en": "dried out"
+          },
+          "example": {
+            "nl": "Tijdens de weken waarin zijn moeder vaak naar het ziekenhuis moest, keek Joris in de wachtzaal steeds naar dezelfde halfverdroogde plant.",
+            "en": "During the weeks when his mother frequently had to visit the hospital, Joris kept looking at the same half-dried plant in the waiting room."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "ongrijpbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "moeilijk te begrijpen of vast te houden",
+            "en": "intangible"
+          },
+          "example": {
+            "nl": "Zelf kwam ze nu voor haar eigen afspraken, maar het water geven maakte zijn afwezigheid voor een paar minuten minder ongrijpbaar.",
+            "en": "She now came for her own appointments, but watering made his absence less intangible for a few minutes."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de uitslag",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het resultaat van een onderzoek",
+            "en": "test result"
+          },
+          "example": {
+            "nl": "Joris begon haar daarna te groeten zonder telkens naar haar uitslagen te vragen, en soms bespraken ze alleen het weer of een nieuw blad.",
+            "en": "Afterwards Joris began greeting her without asking about her results each time, and sometimes they discussed only the weather or a new leaf."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor een gedeelde periode",
+            "en": "While for a shared period"
+          },
+          "explanation": {
+            "nl": "Terwijl verbindt het wachten van de partner met het onderzoek dat tegelijk plaatsvond.",
+            "en": "Terwijl connects the partner's waiting with the examination taking place simultaneously."
+          },
+          "examples": [
+            {
+              "nl": "Ze vertelde dat haar partner vroeger altijd op deze plant had gelet terwijl zij onderzocht werd, en dat hij inmiddels niet meer leefde.",
+              "en": "She explained that her partner had always looked after this plant while she was being examined, and that he had since died."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom geeft de vrouw de plant water?",
+            "en": "Why does the woman water the plant?"
+          },
+          "options": [
+            {
+              "nl": "Ze verkoopt planten aan het ziekenhuis.",
+              "en": "She sells plants to the hospital."
+            },
+            {
+              "nl": "Het herhaalt een kleine handeling van haar overleden partner.",
+              "en": "It repeats a small act of her late partner."
+            },
+            {
+              "nl": "Het is een verplicht onderdeel van haar onderzoek.",
+              "en": "It is a compulsory part of her examination."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Haar partner lette vroeger tijdens haar afspraken op diezelfde plant.",
+            "en": "Her partner used to look after the same plant during her appointments."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat drukt Joris met de gevulde fles uit?",
+            "en": "What does Joris express with the filled bottle?"
+          },
+          "options": [
+            {
+              "nl": "Een kleine vorm van aandacht zonder groot gesprek.",
+              "en": "A small form of care without a major conversation."
+            },
+            {
+              "nl": "Dat alle medische uitslagen gunstig zijn.",
+              "en": "That all medical results are favourable."
+            },
+            {
+              "nl": "Dat hij de plant wil meenemen.",
+              "en": "That he wants to take the plant home."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij zet haar eenvoudige ritueel voort zonder een oplossing te beloven.",
+            "en": "He continues her simple ritual without promising a solution."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-rolstoel-op-de-helling",
+      "topic_id": "safety-emergencies",
+      "title": {
+        "nl": "De repetitie die stopte",
+        "en": "The rehearsal that stopped"
+      },
+      "plot_key": "A theatre crew's rushed scenery move endangers a wheelchair user, and the production leader accepts losing a striking effect rather than casting blame on access needs.",
+      "lines": [
+        {
+          "nl": "Tijdens een technische repetitie schoof een grote houten wand onverwacht naar beneden over de helling achter het podium.",
+          "en": "During a technical rehearsal a large wooden wall unexpectedly slid down the ramp behind the stage."
+        },
+        {
+          "nl": "Acteur Salim, die een rolstoel gebruikte, kon de doorgang niet verlaten zolang een tweede decorstuk de andere kant blokkeerde.",
+          "en": "Actor Salim, who used a wheelchair, could not leave the passage while a second set piece blocked the other side."
+        },
+        {
+          "nl": "De verantwoordelijke legde het werk stil en liet de betrokkenen eerst nagaan wat er gebeurd was voordat iemand verder bouwde.",
+          "en": "The person in charge stopped the work and had those involved first establish what had happened before anyone continued building."
+        },
+        {
+          "nl": "Een medewerker zei dat het nieuwe tijdschema nu eenmaal weinig ruimte voor extra bewegingen liet.",
+          "en": "A crew member said the new schedule simply left little room for additional movements."
+        },
+        {
+          "nl": "Salim vroeg waarom veilig over het podium gaan als een extra beweging telde en niet als een onderdeel van ieders werk.",
+          "en": "Salim asked why moving safely across the stage counted as an additional movement rather than part of everyone's work."
+        },
+        {
+          "nl": "Bij het bekijken van de hele verplaatsing bleek dat ook twee staande acteurs op dezelfde plek klem hadden kunnen raken.",
+          "en": "Reviewing the entire move revealed that two standing actors could also have become trapped in the same place."
+        },
+        {
+          "nl": "De productie schrapte de spectaculaire wissel en liet de opstelling opnieuw controleren, ook al betekende dat een eenvoudiger scène op de première.",
+          "en": "The production dropped the spectacular change and had the arrangement checked again, even though that meant a simpler scene at the premiere."
+        },
+        {
+          "nl": "Salim hoefde niet te worden vervangen; het idee dat haast alleen voor sommige lichamen een risico vormde, verdween uit het draaiboek.",
+          "en": "Salim did not have to be replaced; the idea that haste posed a risk only to certain bodies disappeared from the production plan."
+        }
+      ],
+      "words": [
+        {
+          "term": "klem raken",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "niet meer vrij kunnen bewegen doordat iets blokkeert",
+            "en": "to become trapped"
+          },
+          "example": {
+            "nl": "Bij het bekijken van de hele verplaatsing bleek dat ook twee staande acteurs op dezelfde plek klem hadden kunnen raken.",
+            "en": "Reviewing the entire move revealed that two standing actors could also have become trapped in the same place."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de opstelling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de manier waarop onderdelen zijn geplaatst",
+            "en": "arrangement or setup"
+          },
+          "example": {
+            "nl": "De productie schrapte de spectaculaire wissel en liet de opstelling opnieuw controleren, ook al betekende dat een eenvoudiger scène op de première.",
+            "en": "The production dropped the spectacular change and had the arrangement checked again, even though that meant a simpler scene at the premiere."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "schrappen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "uit een plan verwijderen",
+            "en": "to drop or cancel"
+          },
+          "example": {
+            "nl": "De productie schrapte de spectaculaire wissel en liet de opstelling opnieuw controleren, ook al betekende dat een eenvoudiger scène op de première.",
+            "en": "The production dropped the spectacular change and had the arrangement checked again, even though that meant a simpler scene at the premiere."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Had kunnen raken",
+            "en": "Could have become"
+          },
+          "explanation": {
+            "nl": "De voltooid verleden tijd met kunnen benoemt een mogelijk gevolg dat niet werkelijk optrad.",
+            "en": "The past perfect with kunnen names a possible consequence that did not actually occur."
+          },
+          "examples": [
+            {
+              "nl": "Bij het bekijken van de hele verplaatsing bleek dat ook twee staande acteurs op dezelfde plek klem hadden kunnen raken.",
+              "en": "Reviewing the entire move revealed that two standing actors could also have become trapped in the same place."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat toont de verdere controle?",
+            "en": "What does the further check reveal?"
+          },
+          "options": [
+            {
+              "nl": "Alleen Salims rolstoel is het probleem.",
+              "en": "Only Salim's wheelchair is the problem."
+            },
+            {
+              "nl": "De acteurs hebben geen tekst geleerd.",
+              "en": "The actors have not learned their lines."
+            },
+            {
+              "nl": "Dezelfde opstelling kan ook anderen blokkeren.",
+              "en": "The same setup can also block others."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Twee staande acteurs hadden op die plek eveneens klem kunnen raken.",
+            "en": "Two standing actors could also have become trapped there."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke keuze maakt de productie?",
+            "en": "What choice does the production make?"
+          },
+          "options": [
+            {
+              "nl": "Een simpeler decorverloop dat opnieuw gecontroleerd wordt.",
+              "en": "A simpler scenery sequence that is checked again."
+            },
+            {
+              "nl": "Salim zonder overleg vervangen.",
+              "en": "Replacing Salim without discussion."
+            },
+            {
+              "nl": "De wissel voortaan nog sneller uitvoeren.",
+              "en": "Performing the change even faster from then on."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De spectaculaire wissel wordt geschrapt en de opstelling wordt opnieuw bekeken.",
+            "en": "The spectacular change is dropped and the setup reviewed."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-boek-dat-niet-terugkwam",
+      "topic_id": "public-services",
+      "title": {
+        "nl": "Het boek dat niet terugkwam",
+        "en": "The book that did not return"
+      },
+      "plot_key": "A library volunteer assumes a missing poetry book is neglected until a borrowed reading recording reveals its role in a couple's hospital correspondence.",
+      "lines": [
+        {
+          "nl": "Bibliotheekvrijwilliger Ivo hield al weken een dichtbundel apart die volgens de computer onderweg was naar een andere vestiging.",
+          "en": "Library volunteer Ivo had for weeks kept track of a poetry collection that, according to the computer, was on its way to another branch."
+        },
+        {
+          "nl": "Elke dinsdag kwam een vrouw vragen of het boek eindelijk terug was, zonder ooit een andere titel mee te nemen.",
+          "en": "Every Tuesday a woman came to ask whether the book had finally returned, without ever taking another title."
+        },
+        {
+          "nl": "Ivo stelde voor een nieuwer exemplaar te bestellen, maar zij wilde juist die uitgave met de gele kaft en de ongewone bladspiegel.",
+          "en": "Ivo suggested ordering a newer copy, but she specifically wanted that edition with the yellow cover and unusual page layout."
+        },
+        {
+          "nl": "Hij begon te denken dat ze overdreven lastig deed, totdat ze hem een kort geluidsbestand liet horen.",
+          "en": "He began to think she was being excessively difficult until she let him hear a short audio recording."
+        },
+        {
+          "nl": "Haar man, die tijdelijk niet kon reizen, las elke week een gedicht voor en zei erbij op welke bladzijde hij zijn potloodstreep had gezet.",
+          "en": "Her husband, who temporarily could not travel, read a poem aloud each week and said on which page he had placed his pencil mark."
+        },
+        {
+          "nl": "Zij wilde hetzelfde gedicht kunnen volgen in een boek waarvan de bladzijden precies met zijn stem overeenkwamen.",
+          "en": "She wanted to follow the same poem in a book whose pages matched his voice exactly."
+        },
+        {
+          "nl": "Ivo belde de andere vestiging en ontdekte dat de bundel per vergissing bij een doos voor herstelling was gezet.",
+          "en": "Ivo called the other branch and discovered the collection had been placed by mistake with a box awaiting repair."
+        },
+        {
+          "nl": "Toen hij het aan haar gaf, vroeg hij niet meer of een andere dichter ook goed was, maar welke bladzijde ze vandaag nodig had.",
+          "en": "When he handed it to her he no longer asked whether another poet would also do, but which page she needed that day."
+        }
+      ],
+      "words": [
+        {
+          "term": "de vestiging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een plaats waar een organisatie een afdeling heeft",
+            "en": "branch"
+          },
+          "example": {
+            "nl": "Bibliotheekvrijwilliger Ivo hield al weken een dichtbundel apart die volgens de computer onderweg was naar een andere vestiging.",
+            "en": "Library volunteer Ivo had for weeks kept track of a poetry collection that, according to the computer, was on its way to another branch."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de bladspiegel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de verdeling van tekst en lege ruimte op een bladzijde",
+            "en": "page layout"
+          },
+          "example": {
+            "nl": "Ivo stelde voor een nieuwer exemplaar te bestellen, maar zij wilde juist die uitgave met de gele kaft en de ongewone bladspiegel.",
+            "en": "Ivo suggested ordering a newer copy, but she specifically wanted that edition with the yellow cover and unusual page layout."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "overeenkomen met",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "precies passen bij of gelijk zijn aan",
+            "en": "to correspond with"
+          },
+          "example": {
+            "nl": "Zij wilde hetzelfde gedicht kunnen volgen in een boek waarvan de bladzijden precies met zijn stem overeenkwamen.",
+            "en": "She wanted to follow the same poem in a book whose pages matched his voice exactly."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarvan bij een boek",
+            "en": "Whose for a book"
+          },
+          "explanation": {
+            "nl": "Waarvan verwijst naar het boek en verbindt daarmee de bladzijden die erbij horen.",
+            "en": "Waarvan refers to the book and connects it to its pages."
+          },
+          "examples": [
+            {
+              "nl": "Zij wilde hetzelfde gedicht kunnen volgen in een boek waarvan de bladzijden precies met zijn stem overeenkwamen.",
+              "en": "She wanted to follow the same poem in a book whose pages matched his voice exactly."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom voldoet een andere uitgave niet zomaar?",
+            "en": "Why is another edition not automatically suitable?"
+          },
+          "options": [
+            {
+              "nl": "Ze bevat geen gedichten.",
+              "en": "It contains no poems."
+            },
+            {
+              "nl": "De paginaverwijzingen moeten bij de opnames van haar man passen.",
+              "en": "The page references must match her husband's recordings."
+            },
+            {
+              "nl": "De vrouw verzamelt alleen gele boeken.",
+              "en": "The woman collects only yellow books."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zijn stem noemt specifieke bladzijden en aantekeningen.",
+            "en": "His voice mentions specific pages and marks."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert in Ivo's houding?",
+            "en": "What changes in Ivo's attitude?"
+          },
+          "options": [
+            {
+              "nl": "Hij weigert nog te zoeken.",
+              "en": "He refuses to keep searching."
+            },
+            {
+              "nl": "Hij vindt alle boeken voortaan gelijk.",
+              "en": "He considers all books equivalent from then on."
+            },
+            {
+              "nl": "Hij probeert de concrete functie van haar verzoek te begrijpen.",
+              "en": "He tries to understand the concrete function of her request."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zijn laatste vraag sluit aan bij haar behoefte aan een bepaalde bladzijde.",
+            "en": "His final question responds to her need for a particular page."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-naam-voor-de-planten",
+      "topic_id": "languages",
+      "title": {
+        "nl": "Een naam voor de planten",
+        "en": "A name for the plants"
+      },
+      "plot_key": "A multilingual couple's plant-label exercise becomes an affectionate negotiation about who gets to define everyday home vocabulary.",
+      "lines": [
+        {
+          "nl": "Toen Lena en haar partner Omar gingen samenwonen, plakte Lena overal Nederlandse woordkaartjes op om hem bij het oefenen te helpen.",
+          "en": "When Lena and her partner Omar moved in together, Lena stuck Dutch word cards everywhere to help him practise."
+        },
+        {
+          "nl": "Op de koelkast stond het lidwoord in een andere kleur, en zelfs de kleinste kamerplant kreeg een zorgvuldig geschreven naam.",
+          "en": "On the fridge the article was in a different colour, and even the smallest houseplant received a carefully written name."
+        },
+        {
+          "nl": "Omar waardeerde de hulp, maar had na een week het gevoel dat hij in zijn eigen keuken voortdurend op een toets zat.",
+          "en": "Omar appreciated the help, but after a week he felt he was constantly taking a test in his own kitchen."
+        },
+        {
+          "nl": "Op een ochtend verving hij het kaartje bij de plant door een woord uit zijn eigen taal, zonder er een vertaling onder te zetten.",
+          "en": "One morning he replaced the card beside the plant with a word from his own language, without adding a translation underneath."
+        },
+        {
+          "nl": "Toen Lena vroeg wat het betekende, zei hij dat zij vandaag misschien eens een vraag mocht stellen in plaats van een antwoord te controleren.",
+          "en": "When Lena asked what it meant, he said that perhaps today she could ask a question instead of checking an answer."
+        },
+        {
+          "nl": "Ze moest lachen, maar hoorde ook dat hij niet alleen dankbaar wilde zijn voor een huis waarin zij alle namen bepaalde.",
+          "en": "She had to laugh, but also heard that he did not only want to be grateful for a home in which she chose all the names."
+        },
+        {
+          "nl": "Daarna bleven enkele kaartjes hangen voor gerichte oefenmomenten, terwijl ze andere vervingen door woorden die zij allebei nog moesten leren.",
+          "en": "Afterwards some cards remained for focused practice sessions, while they replaced others with words both of them still had to learn."
+        },
+        {
+          "nl": "De plant kreeg uiteindelijk twee namen; water geven hoefde gelukkig in geen van beide talen eerst foutloos te worden uitgelegd.",
+          "en": "The plant eventually received two names; fortunately watering did not first have to be explained flawlessly in either language."
+        }
+      ],
+      "words": [
+        {
+          "term": "het lidwoord",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een woord zoals de, het of een voor een zelfstandig naamwoord",
+            "en": "article"
+          },
+          "example": {
+            "nl": "Op de koelkast stond het lidwoord in een andere kleur, en zelfs de kleinste kamerplant kreeg een zorgvuldig geschreven naam.",
+            "en": "On the fridge the article was in a different colour, and even the smallest houseplant received a carefully written name."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "gericht",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met een duidelijk bepaald doel",
+            "en": "focused"
+          },
+          "example": {
+            "nl": "Daarna bleven enkele kaartjes hangen voor gerichte oefenmomenten, terwijl ze andere vervingen door woorden die zij allebei nog moesten leren.",
+            "en": "Afterwards some cards remained for focused practice sessions, while they replaced others with words both of them still had to learn."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "foutloos",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder fouten",
+            "en": "flawless"
+          },
+          "example": {
+            "nl": "De plant kreeg uiteindelijk twee namen; water geven hoefde gelukkig in geen van beide talen eerst foutloos te worden uitgelegd.",
+            "en": "The plant eventually received two names; fortunately watering did not first have to be explained flawlessly in either language."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "In plaats van een antwoord te",
+            "en": "Instead of checking an answer"
+          },
+          "explanation": {
+            "nl": "In plaats van stelt hier vragen en controleren tegenover elkaar als verschillende rollen.",
+            "en": "In plaats van contrasts asking and checking as different roles here."
+          },
+          "examples": [
+            {
+              "nl": "Toen Lena vroeg wat het betekende, zei hij dat zij vandaag misschien eens een vraag mocht stellen in plaats van een antwoord te controleren.",
+              "en": "When Lena asked what it meant, he said that perhaps today she could ask a question instead of checking an answer."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat stoort Omar aan de woordkaartjes?",
+            "en": "What bothers Omar about the word cards?"
+          },
+          "options": [
+            {
+              "nl": "Ze maken elk thuismoment tot een ongelijke oefensituatie.",
+              "en": "They make every moment at home an unequal practice situation."
+            },
+            {
+              "nl": "Ze zijn allemaal verkeerd geschreven.",
+              "en": "They are all misspelled."
+            },
+            {
+              "nl": "Hij wil nooit Nederlands leren.",
+              "en": "He never wants to learn Dutch."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij voelt zich voortdurend getoetst in een huis waar Lena de namen bepaalt.",
+            "en": "He feels constantly tested in a home where Lena chooses the names."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert met de twee plantennamen?",
+            "en": "What changes with the two names for the plant?"
+          },
+          "options": [
+            {
+              "nl": "De plant heeft meer zon nodig.",
+              "en": "The plant needs more sunlight."
+            },
+            {
+              "nl": "Beide partners kunnen iets aan de gezamenlijke taal bijdragen.",
+              "en": "Both partners can contribute something to their shared language."
+            },
+            {
+              "nl": "Alle oefening wordt afgeschaft.",
+              "en": "All practice is abolished."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Sommige kaartjes worden gezamenlijke leervragen in plaats van alleen zijn toets.",
+            "en": "Some cards become shared learning questions rather than only his test."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-sleutel-van-het-nieuwe-huis",
+      "topic_id": "immigration-integration",
+      "title": {
+        "nl": "De sleutel van het nieuwe huis",
+        "en": "The key to the new home"
+      },
+      "plot_key": "A newcomer invited to talk about belonging brings an old useless key, challenging the host's expectation of a neat story of arrival and replacement.",
+      "lines": [
+        {
+          "nl": "Voor een gesprek over thuiskomen vroeg een buurtvereniging elke deelnemer een voorwerp mee te brengen dat iets over zijn nieuwe leven vertelde.",
+          "en": "For a discussion about coming home, a neighbourhood association asked every participant to bring an object that said something about their new life."
+        },
+        {
+          "nl": "Mariam, die drie jaar eerder naar België was verhuisd, legde een kleine sleutel op tafel die nergens in de stad paste.",
+          "en": "Mariam, who had moved to Belgium three years earlier, placed a small key on the table that fitted nowhere in the city."
+        },
+        {
+          "nl": "De gespreksleider vroeg vriendelijk of zij misschien de sleutel van haar nieuwe appartement wilde tonen, omdat dat positiever bij het thema aansloot.",
+          "en": "The discussion leader kindly asked whether she might show the key to her new flat instead, because that matched the theme more positively."
+        },
+        {
+          "nl": "Mariam antwoordde dat zij deze sleutel juist had gekozen omdat haar nieuwe leven niet begon op de dag dat het oude ophield.",
+          "en": "Mariam replied that she had chosen this key precisely because her new life did not begin on the day the old one ended."
+        },
+        {
+          "nl": "Haar vroegere voordeur bestond niet meer, maar de sleutel herinnerde haar aan de gewoonte van haar moeder om altijd nog één keer terug te roepen.",
+          "en": "Her former front door no longer existed, but the key reminded her of her mother's habit of always calling back once more."
+        },
+        {
+          "nl": "Een man die al zijn hele leven in dezelfde wijk woonde, haalde daarop een sleutel van een afgebroken garage uit zijn jaszak.",
+          "en": "A man who had lived in the same neighbourhood his whole life then took the key to a demolished garage out of his coat pocket."
+        },
+        {
+          "nl": "Het gesprek ging minder over wie al voldoende aangekomen was en meer over welke plekken mensen bleven meedragen wanneer ze verdergingen.",
+          "en": "The conversation became less about who had arrived sufficiently and more about which places people continued carrying with them as they moved on."
+        },
+        {
+          "nl": "Mariam stopte haar sleutel terug naast de nieuwe; geen van beide hoefde de andere te vervangen om samen in dezelfde jaszak te passen.",
+          "en": "Mariam put her key back beside the new one; neither had to replace the other for both to fit in the same coat pocket."
+        }
+      ],
+      "words": [
+        {
+          "term": "aansluiten bij",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "passen bij een onderwerp of situatie",
+            "en": "to fit or connect with"
+          },
+          "example": {
+            "nl": "De gespreksleider vroeg vriendelijk of zij misschien de sleutel van haar nieuwe appartement wilde tonen, omdat dat positiever bij het thema aansloot.",
+            "en": "The discussion leader kindly asked whether she might show the key to her new flat instead, because that matched the theme more positively."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "afbreken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een gebouw of bouwwerk weghalen",
+            "en": "to demolish"
+          },
+          "example": {
+            "nl": "Een man die al zijn hele leven in dezelfde wijk woonde, haalde daarop een sleutel van een afgebroken garage uit zijn jaszak.",
+            "en": "A man who had lived in the same neighbourhood his whole life then took the key to a demolished garage out of his coat pocket."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "meedragen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "blijven meenemen, ook in gedachten",
+            "en": "to carry with one"
+          },
+          "example": {
+            "nl": "Het gesprek ging minder over wie al voldoende aangekomen was en meer over welke plekken mensen bleven meedragen wanneer ze verdergingen.",
+            "en": "The conversation became less about who had arrived sufficiently and more about which places people continued carrying with them as they moved on."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Omdat en een eigen reden",
+            "en": "Because and a personal reason"
+          },
+          "explanation": {
+            "nl": "Omdat introduceert Mariams reden, die verschilt van de verwachting van de gespreksleider.",
+            "en": "Omdat introduces Mariam's reason, which differs from the discussion leader's expectation."
+          },
+          "examples": [
+            {
+              "nl": "Mariam antwoordde dat zij deze sleutel juist had gekozen omdat haar nieuwe leven niet begon op de dag dat het oude ophield.",
+              "en": "Mariam replied that she had chosen this key precisely because her new life did not begin on the day the old one ended."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom stelt de gespreksleider een andere sleutel voor?",
+            "en": "Why does the discussion leader suggest another key?"
+          },
+          "options": [
+            {
+              "nl": "Hij denkt dat Mariam haar sleutel kwijt is.",
+              "en": "He thinks Mariam has lost her key."
+            },
+            {
+              "nl": "Hij wil het appartement kopen.",
+              "en": "He wants to buy the flat."
+            },
+            {
+              "nl": "Hij verwacht een positief verhaal dat vooral over het nieuwe leven gaat.",
+              "en": "He expects a positive story mainly about the new life."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij vindt de nieuwe sleutel beter bij zijn vooraf gekozen thema passen.",
+            "en": "He finds the new key a better fit for his preselected theme."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt het voorwerp van de andere man duidelijk?",
+            "en": "What does the other man's object make clear?"
+          },
+          "options": [
+            {
+              "nl": "Ook iemand die niet verhuisde kan een verdwenen plek meedragen.",
+              "en": "Even someone who has not moved away can carry a vanished place with them."
+            },
+            {
+              "nl": "Iedere sleutel opent dezelfde deur.",
+              "en": "Every key opens the same door."
+            },
+            {
+              "nl": "Mariam heeft haar verhaal verzonnen.",
+              "en": "Mariam invented her story."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn afgebroken garage maakt de herinnering aan verloren plekken tot een gedeeld onderwerp.",
+            "en": "His demolished garage makes remembering lost places a shared topic."
+          }
+        }
+      ]
+    }
+  ]
+}

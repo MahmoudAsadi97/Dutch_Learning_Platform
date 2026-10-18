@@ -1,0 +1,828 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-koffer-op-het-perron",
+      "topic_id": "love-dating",
+      "title": {
+        "nl": "De koffer op het perron",
+        "en": "The suitcase on the platform"
+      },
+      "plot_key": "A delayed reunion at Ghent station becomes an unexpected decision about a relationship.",
+      "lines": [
+        {
+          "nl": "Toen Elise op het perron in Gent aankwam, stond Jonas al naast een grote rode koffer te wachten.",
+          "en": "When Elise arrived on the platform in Ghent, Jonas was already waiting beside a large red suitcase."
+        },
+        {
+          "nl": "Ze waren maandenlang samen geweest zonder ooit langer dan een weekend in dezelfde stad te blijven.",
+          "en": "They had been together for months without ever staying in the same city for longer than a weekend."
+        },
+        {
+          "nl": "Vandaag zou hij naar haar verhuizen, maar zijn trein terug naar Luik vertrok over twintig minuten.",
+          "en": "Today he was supposed to move in with her, but his train back to Liège was leaving in twenty minutes."
+        },
+        {
+          "nl": "Elise dacht dat hij zich had bedacht; Jonas bleef ondertussen naar het vertrekbord kijken.",
+          "en": "Elise thought he had changed his mind; meanwhile, Jonas kept looking at the departure board."
+        },
+        {
+          "nl": "Ze vroeg voorzichtig of er misschien iets tussen hen veranderd was.",
+          "en": "She cautiously asked whether something might have changed between them."
+        },
+        {
+          "nl": "Jonas opende de koffer, die helemaal niet vol kleren zat, maar vol gereedschap en verfborstels.",
+          "en": "Jonas opened the suitcase, which was not full of clothes at all, but full of tools and paintbrushes."
+        },
+        {
+          "nl": "Hij had beloofd haar kapotte keukenkastjes te herstellen voordat ze samen zijn spullen gingen ophalen.",
+          "en": "He had promised to repair her broken kitchen cupboards before they went to collect his things together."
+        },
+        {
+          "nl": "De trein op het bord was die van zijn broer, die voor de verhuis zou komen helpen.",
+          "en": "The train on the board was his brother's, who was coming to help with the move."
+        },
+        {
+          "nl": "Elise begon te lachen en voelde tegelijk hoeveel spanning ze de hele ochtend had vastgehouden.",
+          "en": "Elise began to laugh and realised at the same time how much tension she had been holding all morning."
+        },
+        {
+          "nl": "Ze namen de koffer allebei bij een handvat en liepen samen naar de uitgang.",
+          "en": "They each took a handle of the suitcase and walked towards the exit together."
+        }
+      ],
+      "words": [
+        {
+          "term": "zich bedenken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "van besluit veranderen",
+            "en": "to change one's mind"
+          },
+          "example": {
+            "nl": "Elise dacht dat hij zich had bedacht; Jonas bleef ondertussen naar het vertrekbord kijken.",
+            "en": "Elise thought he had changed his mind; meanwhile, Jonas kept looking at the departure board."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het gereedschap",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "materiaal om iets te maken of herstellen",
+            "en": "tools"
+          },
+          "example": {
+            "nl": "Jonas opende de koffer, die helemaal niet vol kleren zat, maar vol gereedschap en verfborstels.",
+            "en": "Jonas opened the suitcase, which was not full of clothes at all, but full of tools and paintbrushes."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de spanning",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een onrustig gevoel door onzekerheid",
+            "en": "tension"
+          },
+          "example": {
+            "nl": "Elise begon te lachen en voelde tegelijk hoeveel spanning ze de hele ochtend had vastgehouden.",
+            "en": "Elise began to laugh and realised at the same time how much tension she had been holding all morning."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Voordat met een bijzin",
+            "en": "Before with a subordinate clause"
+          },
+          "explanation": {
+            "nl": "Na voordat staan de werkwoorden aan het einde van de bijzin.",
+            "en": "After voordat, the verbs come at the end of the subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "Hij had beloofd haar kapotte keukenkastjes te herstellen voordat ze samen zijn spullen gingen ophalen.",
+              "en": "He had promised to repair her broken kitchen cupboards before they went to collect his things together."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kijkt Jonas naar het vertrekbord?",
+            "en": "Why is Jonas looking at the departure board?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil terug naar huis.",
+              "en": "He wants to go home."
+            },
+            {
+              "nl": "Hij wacht op hulp bij de verhuis.",
+              "en": "He is waiting for help with the move."
+            },
+            {
+              "nl": "Hij zoekt een verloren koffer.",
+              "en": "He is looking for a lost suitcase."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zijn broer komt met de trein helpen verhuizen.",
+            "en": "His brother is arriving by train to help with the move."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat veroorzaakt het misverstand vooral?",
+            "en": "What mainly causes the misunderstanding?"
+          },
+          "options": [
+            {
+              "nl": "Elise kent de inhoud van de koffer en zijn plan niet.",
+              "en": "Elise does not know the contents of the suitcase or his plan."
+            },
+            {
+              "nl": "Jonas heeft hun afspraak afgezegd.",
+              "en": "Jonas has cancelled their arrangement."
+            },
+            {
+              "nl": "De trein naar Luik is afgeschaft.",
+              "en": "The train to Liège has been cancelled."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze legt zelf een verband tussen de koffer en de vertrekkende trein.",
+            "en": "She draws her own connection between the suitcase and the departing train."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-maat-die-ontbrak",
+      "topic_id": "music",
+      "title": {
+        "nl": "De maat die ontbrak",
+        "en": "The missing bar"
+      },
+      "plot_key": "A wedding band's wrong score becomes a shared rhythmic signal allowing the bride and her recovering father to dance safely.",
+      "lines": [
+        {
+          "nl": "Voor een huwelijksfeest in Aalst kreeg pianist Ferre een oud danslied met een vreemde witte ruimte tussen twee maten.",
+          "en": "For a wedding celebration in Aalst, pianist Ferre received an old dance song with an odd blank space between two bars."
+        },
+        {
+          "nl": "Hij dacht dat de kopie onvolledig was en schreef zelf een korte overgang, zodat niemand de fout zou merken.",
+          "en": "He thought the copy was incomplete and wrote a short transition himself so that nobody would notice the mistake."
+        },
+        {
+          "nl": "Tijdens de repetitie stopte de bruid hem precies daar en vroeg of hij de stilte wilde behouden.",
+          "en": "During rehearsal the bride stopped him at exactly that point and asked him to keep the silence."
+        },
+        {
+          "nl": "Haar vader zou met haar dansen, hoewel hij na een operatie niet meer zo lang achter elkaar kon bewegen.",
+          "en": "Her father would dance with her, although he could no longer move for so long without a break after an operation."
+        },
+        {
+          "nl": "De ontbrekende maat was hun afgesproken teken om even te blijven staan voordat de volgende beweging begon.",
+          "en": "The missing bar was their agreed signal to stand still briefly before the next movement began."
+        },
+        {
+          "nl": "Ferre oefende de pauze met de drummer, die aanvankelijk vreesde dat de gasten zouden denken dat de band niet kon tellen.",
+          "en": "Ferre practised the pause with the drummer, who initially feared the guests would think the band could not count."
+        },
+        {
+          "nl": "Op het feest hield het paar tijdens de stilte elkaars hand vast en glimlachte de vader naar zijn dochter.",
+          "en": "At the celebration the couple held hands during the silence and the father smiled at his daughter."
+        },
+        {
+          "nl": "Al snel namen de andere dansers hun beweging over, alsof de onverwachte rust altijd bij het lied had gehoord.",
+          "en": "Soon the other dancers copied their movement, as if the unexpected rest had always belonged to the song."
+        },
+        {
+          "nl": "Na afloop vroeg een gast naar de bijzondere versie en wilde hij weten wie de nieuwe overgang had geschreven.",
+          "en": "Afterwards a guest asked about the unusual version and wanted to know who had written the new transition."
+        },
+        {
+          "nl": "Ferre wees naar de dansvloer; zijn beste muzikale keuze die avond was geweest om iets niet te spelen.",
+          "en": "Ferre pointed to the dance floor; his best musical choice that evening had been not to play something."
+        }
+      ],
+      "words": [
+        {
+          "term": "de maat",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een vaste groep tellen in muziek",
+            "en": "bar in music"
+          },
+          "example": {
+            "nl": "Voor een huwelijksfeest in Aalst kreeg pianist Ferre een oud danslied met een vreemde witte ruimte tussen twee maten.",
+            "en": "For a wedding celebration in Aalst, pianist Ferre received an old dance song with an odd blank space between two bars."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de overgang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het gedeelte dat twee delen verbindt",
+            "en": "transition"
+          },
+          "example": {
+            "nl": "Hij dacht dat de kopie onvolledig was en schreef zelf een korte overgang, zodat niemand de fout zou merken.",
+            "en": "He thought the copy was incomplete and wrote a short transition himself so that nobody would notice the mistake."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "behouden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "laten blijven zoals het is",
+            "en": "to preserve"
+          },
+          "example": {
+            "nl": "Tijdens de repetitie stopte de bruid hem precies daar en vroeg of hij de stilte wilde behouden.",
+            "en": "During rehearsal the bride stopped him at exactly that point and asked him to keep the silence."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoewel en een persoonlijke beperking",
+            "en": "Although and a personal limitation"
+          },
+          "explanation": {
+            "nl": "Hoewel introduceert hier een omstandigheid die het dansen moeilijker maakt maar niet uitsluit.",
+            "en": "Hoewel introduces a circumstance that makes dancing harder but does not prevent it."
+          },
+          "examples": [
+            {
+              "nl": "Haar vader zou met haar dansen, hoewel hij na een operatie niet meer zo lang achter elkaar kon bewegen.",
+              "en": "Her father would dance with her, although he could no longer move for so long without a break after an operation."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil de bruid de stilte behouden?",
+            "en": "Why does the bride want to keep the silence?"
+          },
+          "options": [
+            {
+              "nl": "Haar vader kan dan even rusten.",
+              "en": "Her father can rest briefly then."
+            },
+            {
+              "nl": "Ze is de dans vergeten.",
+              "en": "She has forgotten the dance."
+            },
+            {
+              "nl": "De drummer kent het lied niet.",
+              "en": "The drummer does not know the song."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De pauze is hun afgesproken rustmoment tussen bewegingen.",
+            "en": "The pause is their agreed moment of rest between movements."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom is Ferres keuze aan het einde ironisch?",
+            "en": "Why is Ferre's choice at the end ironic?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft de hele avond niet gespeeld.",
+              "en": "He has not played all evening."
+            },
+            {
+              "nl": "Hij verdient waardering door een geplande aanvulling weg te laten.",
+              "en": "He earns appreciation by omitting a planned addition."
+            },
+            {
+              "nl": "Hij heeft de dans zelf bedacht.",
+              "en": "He invented the dance himself."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Wat hij eerst als fout wilde opvullen, blijkt de waardevolle bedoeling.",
+            "en": "What he initially wanted to fill as a mistake turns out to be the valuable intention."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-tafel-zonder-reservatie",
+      "topic_id": "friends",
+      "title": {
+        "nl": "Een tafel zonder reservatie",
+        "en": "A table without a booking"
+      },
+      "plot_key": "A friend mistakes a reunion dinner for his own birthday celebration after only partly listening to an invitation.",
+      "lines": [
+        {
+          "nl": "Voor zijn verjaardag had Ruben gezegd dat hij geen groot feest wilde, alleen een rustige avond met vrienden.",
+          "en": "For his birthday Ruben had said he did not want a big party, just a quiet evening with friends."
+        },
+        {
+          "nl": "Toen hij zaterdag foto's zag van hun diner in een restaurant, voelde hij zich toch buitengesloten.",
+          "en": "When he saw photographs of their dinner in a restaurant on Saturday, he nevertheless felt excluded."
+        },
+        {
+          "nl": "Hij schreef een boos bericht, maar liet het eerst in zijn concepten staan.",
+          "en": "He wrote an angry message but left it in his drafts first."
+        },
+        {
+          "nl": "De volgende ochtend vroeg hij aan Noor waarom niemand hem had uitgenodigd.",
+          "en": "The next morning he asked Noor why nobody had invited him."
+        },
+        {
+          "nl": "Ze keek verward en vroeg of hij haar spraakbericht van donderdag wel had beluisterd.",
+          "en": "She looked confused and asked whether he had actually listened to her voice message from Thursday."
+        },
+        {
+          "nl": "Ruben had het tussen twee werkvergaderingen geopend en alleen de eerste seconden gehoord.",
+          "en": "Ruben had opened it between two work meetings and heard only the first few seconds."
+        },
+        {
+          "nl": "Daarin had Noor uitgelegd dat het diner voor haar broer was, die onverwacht uit Canada terugkwam.",
+          "en": "In it Noor had explained that the dinner was for her brother, who was returning unexpectedly from Canada."
+        },
+        {
+          "nl": "Aan het einde nodigde ze Ruben uit voor een wandeling en zelfgemaakte taart op zondag.",
+          "en": "At the end she invited Ruben for a walk and homemade cake on Sunday."
+        },
+        {
+          "nl": "Hij verwijderde zijn boze concept en vroeg of hij nog iets moest meebrengen.",
+          "en": "He deleted his angry draft and asked whether he should bring anything."
+        },
+        {
+          "nl": "Toen ze later samen langs de Leie liepen, vertelde hij eerlijk waarom hij bijna niet was gekomen.",
+          "en": "When they later walked along the River Leie together, he honestly explained why he had almost not come."
+        }
+      ],
+      "words": [
+        {
+          "term": "buitengesloten",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet betrokken of niet toegelaten",
+            "en": "excluded"
+          },
+          "example": {
+            "nl": "Toen hij zaterdag foto's zag van hun diner in een restaurant, voelde hij zich toch buitengesloten.",
+            "en": "When he saw photographs of their dinner in a restaurant on Saturday, he nevertheless felt excluded."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het concept",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een tekst die nog niet verzonden of afgewerkt is",
+            "en": "draft"
+          },
+          "example": {
+            "nl": "Hij schreef een boos bericht, maar liet het eerst in zijn concepten staan.",
+            "en": "He wrote an angry message but left it in his drafts first."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "verwijderen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "weghalen",
+            "en": "to delete"
+          },
+          "example": {
+            "nl": "Hij verwijderde zijn boze concept en vroeg of hij nog iets moest meebrengen.",
+            "en": "He deleted his angry draft and asked whether he should bring anything."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een indirecte vraag",
+            "en": "An indirect question"
+          },
+          "explanation": {
+            "nl": "Na waarom in een indirecte vraag staat het onderwerp voor het werkwoord.",
+            "en": "After waarom in an indirect question, the subject comes before the verb."
+          },
+          "examples": [
+            {
+              "nl": "De volgende ochtend vroeg hij aan Noor waarom niemand hem had uitgenodigd.",
+              "en": "The next morning he asked Noor why nobody had invited him."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom reageert Ruben eerst gekwetst?",
+            "en": "Why does Ruben initially feel hurt?"
+          },
+          "options": [
+            {
+              "nl": "Hij denkt dat zijn vrienden zonder hem zijn verjaardag vieren.",
+              "en": "He thinks his friends are celebrating his birthday without him."
+            },
+            {
+              "nl": "Hij houdt niet van taart.",
+              "en": "He does not like cake."
+            },
+            {
+              "nl": "Noor heeft zijn bericht verwijderd.",
+              "en": "Noor has deleted his message."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij ziet de foto zonder de uitleg uit het spraakbericht te kennen.",
+            "en": "He sees the photograph without knowing the explanation in the voice message."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke keuze voorkomt een ruzie?",
+            "en": "Which choice prevents an argument?"
+          },
+          "options": [
+            {
+              "nl": "Hij negeert Noor een maand.",
+              "en": "He ignores Noor for a month."
+            },
+            {
+              "nl": "Hij plaatst zelf een foto.",
+              "en": "He posts a photograph himself."
+            },
+            {
+              "nl": "Hij vraagt uitleg voordat hij zijn boze bericht verstuurt.",
+              "en": "He asks for an explanation before sending his angry message."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het gesprek geeft informatie die zijn eerste interpretatie verandert.",
+            "en": "The conversation provides information that changes his first interpretation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-regen-in-de-bioscoop",
+      "topic_id": "movies-tv",
+      "title": {
+        "nl": "Regen in de bioscoop",
+        "en": "Rain in the cinema"
+      },
+      "plot_key": "A leaking cinema roof prevents a documentary screening but reveals the missing human stories behind its photographs.",
+      "lines": [
+        {
+          "nl": "Filmstudent Oskar had een kleine zaal gehuurd om zijn documentaire over een verdwenen dorp voor het eerst te tonen.",
+          "en": "Film student Oskar had hired a small auditorium to show his documentary about a vanished village for the first time."
+        },
+        {
+          "nl": "Zijn grootmoeder zat vooraan, naast een buurvrouw die hij alleen van oude foto's kende.",
+          "en": "His grandmother sat at the front beside a neighbour he knew only from old photographs."
+        },
+        {
+          "nl": "Vlak voor de voorstelling begon er regen door het dak te druppelen, precies boven de projector.",
+          "en": "Just before the screening, rain began dripping through the roof, directly above the projector."
+        },
+        {
+          "nl": "De uitbater schakelde het toestel uit en zei dat de film die avond onmogelijk vertoond kon worden.",
+          "en": "The manager switched off the equipment and said the film could not possibly be shown that evening."
+        },
+        {
+          "nl": "Oskar wilde iedereen naar huis sturen, omdat hij geen vervangprogramma had voorbereid.",
+          "en": "Oskar wanted to send everyone home because he had not prepared an alternative programme."
+        },
+        {
+          "nl": "Zijn grootmoeder vroeg toen of de zaal tenminste droog genoeg was om te vertellen.",
+          "en": "His grandmother then asked whether the auditorium was at least dry enough to tell stories."
+        },
+        {
+          "nl": "Ze beschreef de dorpsbakker, die in Oskars film alleen in een ernstige zwart-witfoto voorkwam.",
+          "en": "She described the village baker, who appeared in Oskar's film only in a serious black-and-white photograph."
+        },
+        {
+          "nl": "De buurvrouw vulde aan dat diezelfde man elke vrijdag zijn brood liet aanbranden wanneer zijn geliefde langskwam.",
+          "en": "The neighbour added that the same man burned his bread every Friday when his sweetheart visited."
+        },
+        {
+          "nl": "Terwijl buiten de regen doorging, kwamen achter de foto's plots mensen met geheimen en slechte gewoontes tevoorschijn.",
+          "en": "While the rain continued outside, people with secrets and bad habits suddenly emerged from behind the photographs."
+        },
+        {
+          "nl": "Oskar zette zijn geluidsrecorder aan; zijn afgewerkte film bleek nog een hoofdstuk te missen.",
+          "en": "Oskar switched on his audio recorder; his finished film turned out to be missing another chapter."
+        }
+      ],
+      "words": [
+        {
+          "term": "de voorstelling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een vertoning voor een publiek",
+            "en": "screening or performance"
+          },
+          "example": {
+            "nl": "Vlak voor de voorstelling begon er regen door het dak te druppelen, precies boven de projector.",
+            "en": "Just before the screening, rain began dripping through the roof, directly above the projector."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "aanbranden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "door te veel hitte gedeeltelijk verbranden",
+            "en": "to burn while cooking"
+          },
+          "example": {
+            "nl": "De buurvrouw vulde aan dat diezelfde man elke vrijdag zijn brood liet aanbranden wanneer zijn geliefde langskwam.",
+            "en": "The neighbour added that the same man burned his bread every Friday when his sweetheart visited."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "tevoorschijn komen",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zichtbaar of merkbaar worden",
+            "en": "to emerge"
+          },
+          "example": {
+            "nl": "Terwijl buiten de regen doorging, kwamen achter de foto's plots mensen met geheimen en slechte gewoontes tevoorschijn.",
+            "en": "While the rain continued outside, people with secrets and bad habits suddenly emerged from behind the photographs."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor gelijktijdigheid",
+            "en": "While for simultaneous events"
+          },
+          "explanation": {
+            "nl": "Terwijl verbindt twee gebeurtenissen die tegelijk plaatsvinden.",
+            "en": "Terwijl connects two events taking place at the same time."
+          },
+          "examples": [
+            {
+              "nl": "Terwijl buiten de regen doorging, kwamen achter de foto's plots mensen met geheimen en slechte gewoontes tevoorschijn.",
+              "en": "While the rain continued outside, people with secrets and bad habits suddenly emerged from behind the photographs."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil Oskar eerst afzeggen?",
+            "en": "Why does Oskar initially want to cancel?"
+          },
+          "options": [
+            {
+              "nl": "De bewoners vinden de film beledigend.",
+              "en": "The residents find the film offensive."
+            },
+            {
+              "nl": "Het toestel kan niet veilig gebruikt worden en hij heeft geen alternatief.",
+              "en": "The equipment cannot be used safely and he has no alternative."
+            },
+            {
+              "nl": "Zijn grootmoeder is niet gekomen.",
+              "en": "His grandmother has not arrived."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het lek maakt de vertoning onmogelijk; hij heeft niets anders voorbereid.",
+            "en": "The leak makes the screening impossible; he has not prepared anything else."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat betekent het ontbrekende hoofdstuk aan het einde?",
+            "en": "What does the missing chapter mean at the end?"
+          },
+          "options": [
+            {
+              "nl": "De mondelinge herinneringen geven zijn film een nieuwe menselijke laag.",
+              "en": "The spoken memories give his film a new human dimension."
+            },
+            {
+              "nl": "Hij is een filmrol thuis vergeten.",
+              "en": "He has left a film reel at home."
+            },
+            {
+              "nl": "De bakker heeft de film opgenomen.",
+              "en": "The baker recorded the film."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De verhalen laten kanten van de dorpelingen zien die de foto's niet tonen.",
+            "en": "The stories reveal sides of the villagers that the photographs do not show."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-rood-shirt-finale",
+      "topic_id": "sports",
+      "title": {
+        "nl": "Het rode shirt",
+        "en": "The red shirt"
+      },
+      "plot_key": "A basketball starter hides an ankle injury until it damages the team, then accepts an unglamorous but honest loss.",
+      "lines": [
+        {
+          "nl": "Tijdens de finale van het recreatieve basketbaltornooi mocht Ilias onverwacht in de basis beginnen.",
+          "en": "During the final of the recreational basketball tournament, Ilias unexpectedly got to start the game."
+        },
+        {
+          "nl": "Hij had maanden op die kans gewacht en trok zijn rode shirt aan alsof het een medaille was.",
+          "en": "He had waited months for that chance and put on his red shirt as though it were a medal."
+        },
+        {
+          "nl": "Na tien minuten voelde hij opnieuw de pijn in zijn enkel, maar hij zei niets tegen de trainer.",
+          "en": "After ten minutes he felt the pain in his ankle again, but said nothing to the coach."
+        },
+        {
+          "nl": "Naast het veld warmde de jongste speler op, die bij de vorige wedstrijd twee vrije worpen had gemist.",
+          "en": "Beside the court the youngest player was warming up, having missed two free throws in the previous match."
+        },
+        {
+          "nl": "Ilias vreesde dat iedereen hem zwak zou vinden als hij juist nu om een wissel vroeg.",
+          "en": "Ilias feared that everyone would think he was weak if he asked to be substituted at that very moment."
+        },
+        {
+          "nl": "Bij de volgende aanval kwam hij te laat terug en scoorde de tegenstander ongehinderd.",
+          "en": "During the next attack he got back too late and the opponent scored unchallenged."
+        },
+        {
+          "nl": "Hij stak zijn hand op en legde de trainer uit wat er aan de hand was.",
+          "en": "He raised his hand and explained to the coach what was wrong."
+        },
+        {
+          "nl": "De jonge invaller scoorde niet de meeste punten, maar verdedigde zo fel dat het verschil kleiner werd.",
+          "en": "The young substitute did not score the most points, but defended so fiercely that the gap narrowed."
+        },
+        {
+          "nl": "Hun ploeg verloor uiteindelijk met één punt; niemand had dus een eenvoudig heldenverhaal te vertellen.",
+          "en": "Their team eventually lost by one point, so nobody had a simple heroic story to tell."
+        },
+        {
+          "nl": "Toch vroeg de trainer Ilias na afloop om volgende week de opwarming van de jeugd te begeleiden.",
+          "en": "Nevertheless, afterwards the coach asked Ilias to lead the youth team's warm-up the following week."
+        }
+      ],
+      "words": [
+        {
+          "term": "de enkel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het gewricht tussen voet en onderbeen",
+            "en": "ankle"
+          },
+          "example": {
+            "nl": "Na tien minuten voelde hij opnieuw de pijn in zijn enkel, maar hij zei niets tegen de trainer.",
+            "en": "After ten minutes he felt the pain in his ankle again, but said nothing to the coach."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "ongehinderd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder tegengehouden te worden",
+            "en": "unchallenged"
+          },
+          "example": {
+            "nl": "Bij de volgende aanval kwam hij te laat terug en scoorde de tegenstander ongehinderd.",
+            "en": "During the next attack he got back too late and the opponent scored unchallenged."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de invaller",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die een andere speler vervangt",
+            "en": "substitute"
+          },
+          "example": {
+            "nl": "De jonge invaller scoorde niet de meeste punten, maar verdedigde zo fel dat het verschil kleiner werd.",
+            "en": "The young substitute did not score the most points, but defended so fiercely that the gap narrowed."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof voor vergelijking",
+            "en": "As though for comparison"
+          },
+          "explanation": {
+            "nl": "Alsof geeft een vergelijking die niet letterlijk waar hoeft te zijn.",
+            "en": "Alsof introduces a comparison that need not be literally true."
+          },
+          "examples": [
+            {
+              "nl": "Hij had maanden op die kans gewacht en trok zijn rode shirt aan alsof het een medaille was.",
+              "en": "He had waited months for that chance and put on his red shirt as though it were a medal."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt Ilias uiteindelijk duidelijk?",
+            "en": "What does Ilias eventually realise?"
+          },
+          "options": [
+            {
+              "nl": "Zijn blessure beïnvloedt ook de ploeg.",
+              "en": "His injury also affects the team."
+            },
+            {
+              "nl": "Het shirt is te klein.",
+              "en": "The shirt is too small."
+            },
+            {
+              "nl": "De jongste speler kan alleen aanvallen.",
+              "en": "The youngest player can only attack."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Door zijn pijn keert hij te laat terug en kan de tegenstander vrij scoren.",
+            "en": "Because of his pain he returns too late and the opponent can score freely."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom is de afloop geen eenvoudig succesverhaal?",
+            "en": "Why is the ending not a simple success story?"
+          },
+          "options": [
+            {
+              "nl": "De trainer verlaat de club.",
+              "en": "The coach leaves the club."
+            },
+            {
+              "nl": "Niemand komt de volgende week terug.",
+              "en": "Nobody returns the following week."
+            },
+            {
+              "nl": "De ploeg verliest ondanks de verstandige wissel.",
+              "en": "The team loses despite the sensible substitution."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Een betere beslissing garandeert hier geen overwinning.",
+            "en": "A better decision does not guarantee victory here."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-brief-die-niemand-herkende",
+      "topic_id": "artificial-intelligence",
+      "title": {
+        "nl": "De brief die niemand herkende",
+        "en": "The letter nobody recognised"
+      },
+      "plot_key": "A man uses an automatic writing tool to polish an apology, then realises its flawless generic voice erases the concrete act he needs to acknowledge.",
+      "lines": [
+        {
+          "nl": "Omdat hij de juiste woorden niet vond na een ruzie met zijn zus, liet Bram een schrijftool een verontschuldigingsbrief opstellen.",
+          "en": "Because he could not find the right words after an argument with his sister, Bram had a writing tool draft a letter of apology."
+        },
+        {
+          "nl": "De tekst klonk rustig en volwassen, met zinnen over wederzijds respect en het belang van een open gesprek.",
+          "en": "The text sounded calm and mature, with sentences about mutual respect and the importance of an open conversation."
+        },
+        {
+          "nl": "Bram stuurde hem bijna meteen door, maar zijn vriendin vroeg welke zin precies uitlegde waarvoor hij zich verontschuldigde.",
+          "en": "Bram almost sent it immediately, but his girlfriend asked which sentence explained exactly what he was apologising for."
+        },
+        {
+          "nl": "Nergens stond dat hij de verhuizing van zijn zus zonder haar toestemming in de familiechat had aangekondigd.",
+          "en": "Nowhere did it say that he had announced his sister's move in the family chat without her permission."
+        },
+        {
+          "nl": "De tool kon die gebeurtenis niet kennen, omdat Bram alleen had geschreven dat er een pijnlijk misverstand was ontstaan.",
+          "en": "The tool could not know that event because Bram had only written that a painful misunderstanding had arisen."
+        },
+        {
+          "nl": "Hij verving de eerste alinea door een korte beschrijving van wat hij zelf had gedaan en waarom zij daar boos over kon zijn.",
+          "en": "He replaced the first paragraph with a short description of what he himself had done and why she could be angry about it."
+        },
+        {
+          "nl": "De rest gebruikte hij om zijn rommelige zinnen leesbaarder te maken, zonder de verantwoordelijkheid opnieuw in algemene woorden te laten verdwijnen.",
+          "en": "He used the rest to make his messy sentences more readable without letting responsibility disappear into general wording again."
+        },
+        {
+          "nl": "Zijn zus antwoordde niet onmiddellijk, maar toen ze belde, spraken ze tenminste over dezelfde gebeurtenis in plaats van over een fraaie brief.",
+          "en": "His sister did not reply immediately, but when she called, they at least discussed the same event instead of a fine letter."
+        }
+      ],
+      "words": [
+        {
+          "term": "de verontschuldiging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "woorden waarmee iemand spijt erkent",
+            "en": "apology"
+          },
+          "example": {
+            "nl": "Omdat hij de juiste woorden niet vond na een ruzie met zijn zus, liet Bram een schrijftool een verontschuldigingsbrief opstellen.",
+            "en": "Because he could not find the right words after an argument with his sister, Bram had a writing tool draft a letter of apology."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "wederzijds",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "van beide kanten komend",
+            "en": "mutual"
+          },
+          "example": {
+            "nl": "De tekst klonk rustig en volwassen, met zinnen over wederzijds respect en het belang van een open gesprek.",
+            "en": "The text sounded calm and mature, with sentences about mutual respect and the importance of an open conversation."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de verantwoordelijkheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het erkennen van wat je doet en de gevolgen ervan",
+            "en": "responsibility"
+          },
+          "example": {
+            "nl": "De rest gebruikte hij om zijn rommelige zinnen leesbaarder te maken, zonder de verantwoordelijkheid opnieuw in algemene woorden te laten verdwijnen.",
+            "en": "He used the rest to make his messy sentences more readable without letting responsibility disappear into general wording again."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Omdat en ontbrekende informatie",
+            "en": "Because and missing information"
+          },
+          "explanation": {
+            "nl": "Omdat geeft de reden waarom de tool de concrete gebeurtenis niet kon verwerken.",
+            "en": "Omdat gives the reason why the tool could not incorporate the concrete event."
+          },
+          "examples": [
+            {
+              "nl": "De tool kon die gebeurtenis niet kennen, omdat Bram alleen had geschreven dat er een pijnlijk misverstand was ontstaan.",
+              "en": "The tool could not know that event because Bram had only written that a painful misunderstanding had arisen."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom ontbreekt de kern van de ruzie in de eerste brief?",
+            "en": "Why is the core of the argument missing from the first letter?"
+          },
+          "options": [
+            {
+              "nl": "Zijn zus heeft de tekst gewist.",
+              "en": "His sister erased the text."
+            },
+            {
+              "nl": "De tool kent alleen Brams algemene omschrijving.",
+              "en": "The tool knows only Bram's general description."
+            },
+            {
+              "nl": "De verhuizing is nog nooit besproken.",
+              "en": "The move has never been discussed."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij noemde alleen een misverstand en liet zijn eigen concrete handeling weg.",
+            "en": "He mentioned only a misunderstanding and omitted his own concrete action."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt de aangepaste brief bruikbaarder?",
+            "en": "What makes the revised letter more useful?"
+          },
+          "options": [
+            {
+              "nl": "Hij bevat een specifieke erkenning van Brams gedrag.",
+              "en": "It contains a specific acknowledgement of Bram's behaviour."
+            },
+            {
+              "nl": "Hij bevat geen enkele persoonlijke zin.",
+              "en": "It contains no personal sentence at all."
+            },
+            {
+              "nl": "Hij garandeert directe vergeving.",
+              "en": "It guarantees immediate forgiveness."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De zus en Bram kunnen daarna dezelfde gebeurtenis bespreken.",
+            "en": "His sister and Bram can then discuss the same event."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-paraplu-met-een-omweg",
+      "topic_id": "future-innovation",
+      "title": {
+        "nl": "De paraplu met een omweg",
+        "en": "The umbrella with a detour"
+      },
+      "plot_key": "An inventor's borrowed umbrella scheme fails when return stations are inconvenient, prompting a narrower useful service rather than a citywide showcase.",
+      "lines": [
+        {
+          "nl": "Voor zijn afstudeerproject bouwde Emiel een systeem waarmee reizigers op regenachtige dagen een paraplu aan het station konden lenen.",
+          "en": "For his graduation project Emiel built a system that let travellers borrow an umbrella at the station on rainy days."
+        },
+        {
+          "nl": "Op zijn tekening stonden twintig terugbrengpunten verspreid over de stad, en de eerste presentatie leverde enthousiast applaus op.",
+          "en": "His drawing showed twenty return points across the city, and the first presentation received enthusiastic applause."
+        },
+        {
+          "nl": "In de proefweek keerden bijna alle paraplu's echter pas na meerdere dagen terug, terwijl nieuwe reizigers met lege handen bleven staan.",
+          "en": "During the trial week, however, almost all the umbrellas returned only after several days while new travellers were left empty-handed."
+        },
+        {
+          "nl": "Emiel dacht aan hogere waarborgen, totdat een deelnemer liet zien dat het dichtstbijzijnde terugbrengpunt niet op haar dagelijkse route lag.",
+          "en": "Emiel considered higher deposits until a participant showed that the nearest return point was not on her daily route."
+        },
+        {
+          "nl": "Een extra wandeling van twintig minuten bleef onhandig, ook voor mensen die het systeem graag wilden steunen.",
+          "en": "An extra twenty-minute walk remained inconvenient, even for people who wanted to support the system."
+        },
+        {
+          "nl": "Hij beperkte de tweede proef tot twee gebouwen waar veel dezelfde mensen heen en weer liepen, in plaats van meteen de hele stad te willen bedienen.",
+          "en": "He limited the second trial to two buildings between which many of the same people travelled, instead of wanting to serve the entire city immediately."
+        },
+        {
+          "nl": "Daar kwamen de paraplu's sneller terug, maar zijn eindpresentatie zag er minder indrukwekkend uit dan de eerste stadskaart.",
+          "en": "There the umbrellas returned more quickly, but his final presentation looked less impressive than the first city map."
+        },
+        {
+          "nl": "Emiel liet beide tekeningen zien en legde uit waarom een kleine bruikbare dienst voorlopig verder stond dan een groot plan met lege houders.",
+          "en": "Emiel showed both drawings and explained why a small usable service was, for now, further advanced than a big plan with empty stands."
+        }
+      ],
+      "words": [
+        {
+          "term": "de waarborg",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een bedrag dat tijdelijk als zekerheid wordt betaald",
+            "en": "deposit"
+          },
+          "example": {
+            "nl": "Emiel dacht aan hogere waarborgen, totdat een deelnemer liet zien dat het dichtstbijzijnde terugbrengpunt niet op haar dagelijkse route lag.",
+            "en": "Emiel considered higher deposits until a participant showed that the nearest return point was not on her daily route."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het terugbrengpunt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een plaats waar geleende spullen worden ingeleverd",
+            "en": "return point"
+          },
+          "example": {
+            "nl": "Emiel dacht aan hogere waarborgen, totdat een deelnemer liet zien dat het dichtstbijzijnde terugbrengpunt niet op haar dagelijkse route lag.",
+            "en": "Emiel considered higher deposits until a participant showed that the nearest return point was not on her daily route."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bedienen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een dienst aan mensen aanbieden",
+            "en": "to serve"
+          },
+          "example": {
+            "nl": "Hij beperkte de tweede proef tot twee gebouwen waar veel dezelfde mensen heen en weer liepen, in plaats van meteen de hele stad te willen bedienen.",
+            "en": "He limited the second trial to two buildings between which many of the same people travelled, instead of wanting to serve the entire city immediately."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "In plaats van meteen te",
+            "en": "Instead of immediately doing"
+          },
+          "explanation": {
+            "nl": "In plaats van introduceert de grotere aanpak die hij voorlopig vervangt.",
+            "en": "In plaats van introduces the larger approach he replaces for now."
+          },
+          "examples": [
+            {
+              "nl": "Hij beperkte de tweede proef tot twee gebouwen waar veel dezelfde mensen heen en weer liepen, in plaats van meteen de hele stad te willen bedienen.",
+              "en": "He limited the second trial to two buildings between which many of the same people travelled, instead of wanting to serve the entire city immediately."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat remt het terugbrengen van de paraplu's?",
+            "en": "What slows the return of the umbrellas?"
+          },
+          "options": [
+            {
+              "nl": "Alle reizigers willen ze stelen.",
+              "en": "All travellers want to steal them."
+            },
+            {
+              "nl": "De paraplu's zijn te zwaar.",
+              "en": "The umbrellas are too heavy."
+            },
+            {
+              "nl": "De punten passen niet bij de dagelijkse routes.",
+              "en": "The points do not fit daily routes."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De deelnemer toont de extra wandeling die terugbrengen vraagt.",
+            "en": "The participant shows the extra walk required to return one."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom toont Emiel toch de kleinere proef?",
+            "en": "Why does Emiel show the smaller trial anyway?"
+          },
+          "options": [
+            {
+              "nl": "Er was geen regen meer.",
+              "en": "There was no more rain."
+            },
+            {
+              "nl": "Die bewijst meer bruikbaarheid dan de grote oorspronkelijke kaart.",
+              "en": "It demonstrates more usability than the original large map."
+            },
+            {
+              "nl": "Hij heeft de eerste tekening verloren.",
+              "en": "He has lost the first drawing."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "In het beperkte traject worden paraplu's werkelijk op tijd teruggebracht.",
+            "en": "On the limited route umbrellas actually return in time."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-bank-op-het-plein",
+      "topic_id": "society-community",
+      "title": {
+        "nl": "De bank op het plein",
+        "en": "The bench in the square"
+      },
+      "plot_key": "Two groups claim the same public bench until its removal exposes that both need the same shared space, without resolving all their differences.",
+      "lines": [
+        {
+          "nl": "Elke avond zaten jongeren op de lange bank voor het appartementsgebouw van André, die zijn slaapkamerraam in de zomer open wilde laten.",
+          "en": "Every evening young people sat on the long bench outside André's block of flats, and he wanted to leave his bedroom window open in summer."
+        },
+        {
+          "nl": "Hij had niets tegen ontmoetingen, zei hij, zolang niemand na tien uur nog lachte, telefoneerde of met een skateboard vertrok.",
+          "en": "He had nothing against people meeting, he said, as long as nobody laughed, phoned or left on a skateboard after ten."
+        },
+        {
+          "nl": "De jongeren vonden dat er in de wijk nergens een plek overbleef waar ze mochten zijn zonder iets te kopen.",
+          "en": "The young people felt there was nowhere left in the neighbourhood where they could be without buying something."
+        },
+        {
+          "nl": "Na herhaalde klachten werd de beschadigde bank tijdelijk weggehaald, tot opluchting van André en woede van de groep.",
+          "en": "After repeated complaints the damaged bench was temporarily removed, to André's relief and the group's anger."
+        },
+        {
+          "nl": "Een week later merkte André dat hij zelf nergens meer kon uitrusten wanneer hij met zijn boodschappen van de halte terugkwam.",
+          "en": "A week later André noticed that he himself could no longer rest anywhere when returning from the stop with his shopping."
+        },
+        {
+          "nl": "Tijdens een buurtgesprek vroeg hij om de bank terug te plaatsen, waarop een meisje vroeg of zitten dan alleen overdag mocht bestaan.",
+          "en": "During a neighbourhood discussion he asked for the bench to be reinstated, at which a girl asked whether sitting was only allowed to exist by day."
+        },
+        {
+          "nl": "Ze vonden niet meteen een uur dat voor iedereen werkte, maar vroegen wel samen om twee zitplekken op grotere afstand van de ramen.",
+          "en": "They did not immediately find a time that worked for everyone, but jointly requested two seating areas farther from the windows."
+        },
+        {
+          "nl": "Toen de eerste bank terugkwam, groetten ze elkaar kort; André sliep nog niet altijd beter, maar kende nu tenminste de mensen achter het geluid.",
+          "en": "When the first bench returned, they greeted each other briefly; André still did not always sleep better, but at least now knew the people behind the noise."
+        }
+      ],
+      "words": [
+        {
+          "term": "de opluchting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het gevoel dat een zorg of spanning afneemt",
+            "en": "relief"
+          },
+          "example": {
+            "nl": "Na herhaalde klachten werd de beschadigde bank tijdelijk weggehaald, tot opluchting van André en woede van de groep.",
+            "en": "After repeated complaints the damaged bench was temporarily removed, to André's relief and the group's anger."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "terugplaatsen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "weer op de vorige plaats zetten",
+            "en": "to reinstate or put back"
+          },
+          "example": {
+            "nl": "Tijdens een buurtgesprek vroeg hij om de bank terug te plaatsen, waarop een meisje vroeg of zitten dan alleen overdag mocht bestaan.",
+            "en": "During a neighbourhood discussion he asked for the bench to be reinstated, at which a girl asked whether sitting was only allowed to exist by day."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "herhaald",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "meer dan één keer gebeurd",
+            "en": "repeated"
+          },
+          "example": {
+            "nl": "Na herhaalde klachten werd de beschadigde bank tijdelijk weggehaald, tot opluchting van André en woede van de groep.",
+            "en": "After repeated complaints the damaged bench was temporarily removed, to André's relief and the group's anger."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zolang als voorwaarde",
+            "en": "As long as as a condition"
+          },
+          "explanation": {
+            "nl": "Zolang stelt hier de voorwaarde waaronder André ontmoetingen zegt te aanvaarden.",
+            "en": "Zolang states the condition under which André says he accepts gatherings."
+          },
+          "examples": [
+            {
+              "nl": "Hij had niets tegen ontmoetingen, zei hij, zolang niemand na tien uur nog lachte, telefoneerde of met een skateboard vertrok.",
+              "en": "He had nothing against people meeting, he said, as long as nobody laughed, phoned or left on a skateboard after ten."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk onverwacht gevolg heeft de verwijdering voor André?",
+            "en": "What unexpected consequence does removal have for André?"
+          },
+          "options": [
+            {
+              "nl": "Hij verliest zelf een rustplaats.",
+              "en": "He loses a resting place himself."
+            },
+            {
+              "nl": "Hij krijgt een nieuwe slaapkamer.",
+              "en": "He gets a new bedroom."
+            },
+            {
+              "nl": "De jongeren kopen een bank voor hem.",
+              "en": "The young people buy him a bench."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Met boodschappen heeft hij de bank nodig op zijn route van de halte.",
+            "en": "With shopping, he needs the bench on his route from the stop."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat is bereikt zonder alle spanning weg te nemen?",
+            "en": "What has been achieved without removing all tension?"
+          },
+          "options": [
+            {
+              "nl": "Iedereen blijft voortaan binnen.",
+              "en": "Everyone stays indoors from then on."
+            },
+            {
+              "nl": "Ze doen een gezamenlijk voorstel en kennen elkaar beter.",
+              "en": "They make a joint proposal and know each other better."
+            },
+            {
+              "nl": "Het plein wordt definitief afgesloten.",
+              "en": "The square is permanently closed."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De zitplekken worden samen gevraagd, terwijl het geluidsprobleem niet volledig verdwijnt.",
+            "en": "The seating areas are requested jointly, while the noise problem does not disappear completely."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-vraag-die-terugkwam",
+      "topic_id": "job-interviews",
+      "title": {
+        "nl": "De vraag die terugkwam",
+        "en": "The question that came back"
+      },
+      "plot_key": "An applicant avoids inventing leadership experience, asks the employer a concrete question, and learns that a job can be a poor fit despite getting an offer.",
+      "lines": [
+        {
+          "nl": "Tijdens een sollicitatiegesprek voor een projectfunctie vroeg de directeur aan Nora hoe zij een team van tien mensen zou leiden.",
+          "en": "During a job interview for a project role, the director asked Nora how she would lead a team of ten people."
+        },
+        {
+          "nl": "Ze had kleine opdrachten gecoördineerd, maar nooit rechtstreeks medewerkers beoordeeld, en voelde de verleiding om haar ervaring groter voor te stellen.",
+          "en": "She had coordinated small assignments but never directly assessed employees, and felt tempted to exaggerate her experience."
+        },
+        {
+          "nl": "In plaats daarvan beschreef ze één lastige samenwerking en zei ze duidelijk welke beslissingen toen door haar leidinggevende waren genomen.",
+          "en": "Instead she described one difficult collaboration and clearly stated which decisions her manager had made at the time."
+        },
+        {
+          "nl": "Daarna vroeg ze welke begeleiding iemand in deze nieuwe rol zou krijgen wanneer er een personeelsconflict ontstond.",
+          "en": "She then asked what support someone in this new role would receive if a staff conflict arose."
+        },
+        {
+          "nl": "De directeur antwoordde dat zij vooral iemand zochten die onmiddellijk zelfstandig alles kon overnemen, omdat de vorige verantwoordelijke onverwacht vertrokken was.",
+          "en": "The director replied that they mainly wanted someone who could immediately take over everything independently because the previous person responsible had left unexpectedly."
+        },
+        {
+          "nl": "Nora kreeg later toch een aanbod, maar bleef terugdenken aan die ene zin die tussen de aantrekkelijke voorwaarden had gestaan.",
+          "en": "Nora later received an offer anyway, but kept thinking back to that one sentence among the attractive terms."
+        },
+        {
+          "nl": "Ze vroeg een tweede gesprek over ondersteuning en verantwoordelijkheden en kreeg opnieuw vooral te horen dat ze snel moest beslissen.",
+          "en": "She requested a second conversation about support and responsibilities and again mainly heard that she had to decide quickly."
+        },
+        {
+          "nl": "Uiteindelijk weigerde ze, niet omdat haar eerste gesprek mislukt was, maar omdat het haar iets had geleerd wat de vacature niet vertelde.",
+          "en": "In the end she declined, not because her first interview had failed, but because it had taught her something the vacancy had not stated."
+        }
+      ],
+      "words": [
+        {
+          "term": "de verleiding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets aantrekkelijks dat iemand tot een keuze kan bewegen",
+            "en": "temptation"
+          },
+          "example": {
+            "nl": "Ze had kleine opdrachten gecoördineerd, maar nooit rechtstreeks medewerkers beoordeeld, en voelde de verleiding om haar ervaring groter voor te stellen.",
+            "en": "She had coordinated small assignments but never directly assessed employees, and felt tempted to exaggerate her experience."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de begeleiding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "steun en uitleg bij een taak of ontwikkeling",
+            "en": "guidance or support"
+          },
+          "example": {
+            "nl": "Daarna vroeg ze welke begeleiding iemand in deze nieuwe rol zou krijgen wanneer er een personeelsconflict ontstond.",
+            "en": "She then asked what support someone in this new role would receive if a staff conflict arose."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "zelfstandig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder voortdurende hulp van anderen",
+            "en": "independent"
+          },
+          "example": {
+            "nl": "De directeur antwoordde dat zij vooral iemand zochten die onmiddellijk zelfstandig alles kon overnemen, omdat de vorige verantwoordelijke onverwacht vertrokken was.",
+            "en": "The director replied that they mainly wanted someone who could immediately take over everything independently because the previous person responsible had left unexpectedly."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Welke beslissingen door wie",
+            "en": "Which decisions by whom"
+          },
+          "explanation": {
+            "nl": "De passieve vorm waren genomen maakt duidelijk dat de leidinggevende de beslissingen nam.",
+            "en": "The passive form waren genomen makes clear that the manager took the decisions."
+          },
+          "examples": [
+            {
+              "nl": "In plaats daarvan beschreef ze één lastige samenwerking en zei ze duidelijk welke beslissingen toen door haar leidinggevende waren genomen.",
+              "en": "Instead she described one difficult collaboration and clearly stated which decisions her manager had made at the time."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoe voorkomt Nora dat ze haar ervaring overdrijft?",
+            "en": "How does Nora avoid exaggerating her experience?"
+          },
+          "options": [
+            {
+              "nl": "Ze noemt een verzonnen team.",
+              "en": "She names an invented team."
+            },
+            {
+              "nl": "Ze verdeelt duidelijk wat zij en haar leidinggevende deden.",
+              "en": "She clearly separates what she and her manager did."
+            },
+            {
+              "nl": "Ze weigert elke vraag te beantwoorden.",
+              "en": "She refuses to answer any question."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze beschrijft één echte samenwerking en benoemt haar eigen grens.",
+            "en": "She describes one real collaboration and identifies her own limit."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom wijst ze het aanbod af?",
+            "en": "Why does she decline the offer?"
+          },
+          "options": [
+            {
+              "nl": "Er is geen salaris genoemd.",
+              "en": "No salary has been mentioned."
+            },
+            {
+              "nl": "Ze mag geen tweede gesprek voeren.",
+              "en": "She is not allowed a second conversation."
+            },
+            {
+              "nl": "De vereiste zelfstandigheid zonder duidelijke steun past niet bij haar situatie.",
+              "en": "The required independence without clear support does not fit her situation."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Haar vragen over ondersteuning krijgen geen concreet antwoord.",
+            "en": "Her questions about support receive no concrete answer."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-maquette-van-de-stilte",
+      "topic_id": "university-life",
+      "title": {
+        "nl": "De maquette van de stilte",
+        "en": "The model of silence"
+      },
+      "plot_key": "Architecture students' quiet-study pavilion looks elegant in a model but an audio walk reveals why an acoustically useful location conflicts with their visual composition.",
+      "lines": [
+        {
+          "nl": "Voor hun architectuurproject ontwierpen studenten Eva en Lou een stiltepaviljoen op een drukke campus, met een grote opening naar de mooiste binnentuin.",
+          "en": "For their architecture project, students Eva and Lou designed a quiet pavilion on a busy campus, with a large opening towards the most attractive courtyard."
+        },
+        {
+          "nl": "Hun maquette zag er zo overtuigend uit dat ze vooral nog discussieerden over de kleur van het dak en de manier van presenteren.",
+          "en": "Their model looked so convincing that they mainly discussed the roof colour and how to present it."
+        },
+        {
+          "nl": "Een medestudent vroeg of ze al eens met gesloten ogen op de gekozen plek hadden gestaan, waarop Eva eerst dacht dat hij een grap maakte.",
+          "en": "A fellow student asked whether they had ever stood in the chosen place with their eyes closed, at which Eva initially thought he was joking."
+        },
+        {
+          "nl": "Tijdens een wandeling ontdekten ze dat achter de tuinmuur voortdurend karren over een metalen helling naar de keuken reden.",
+          "en": "During a walk they discovered that carts continually travelled over a metal ramp towards the kitchen behind the garden wall."
+        },
+        {
+          "nl": "Aan de andere kant van het plein lag een saaier hoekje dat door twee gebouwen juist tegen dat geluid werd afgeschermd.",
+          "en": "On the other side of the square was a less attractive corner that two buildings actually shielded from that noise."
+        },
+        {
+          "nl": "Lou wilde de mooie compositie behouden en betere materialen gebruiken; Eva vroeg of zij het probleem dan oplosten of alleen duurder verborgen.",
+          "en": "Lou wanted to keep the attractive composition and use better materials; Eva asked whether they were solving the problem or merely hiding it more expensively."
+        },
+        {
+          "nl": "Ze maakten twee varianten en voegden aan hun presentatie geluidsopnames van beide plekken toe, ook al verloor de oorspronkelijke maquette haar hoofdrol.",
+          "en": "They made two variants and added audio recordings from both places to their presentation, even though the original model lost its starring role."
+        },
+        {
+          "nl": "De beoordeling ging daardoor niet alleen over wat hun gebouw liet zien, maar ook over wat iemand er niet voortdurend zou moeten horen.",
+          "en": "As a result, the assessment concerned not only what their building showed, but also what someone there should not continually have to hear."
+        }
+      ],
+      "words": [
+        {
+          "term": "de maquette",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een klein ruimtelijk model van een ontwerp",
+            "en": "scale model"
+          },
+          "example": {
+            "nl": "Hun maquette zag er zo overtuigend uit dat ze vooral nog discussieerden over de kleur van het dak en de manier van presenteren.",
+            "en": "Their model looked so convincing that they mainly discussed the roof colour and how to present it."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "afschermen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "beschermen door iets tussen twee dingen te plaatsen",
+            "en": "to shield"
+          },
+          "example": {
+            "nl": "Aan de andere kant van het plein lag een saaier hoekje dat door twee gebouwen juist tegen dat geluid werd afgeschermd.",
+            "en": "On the other side of the square was a less attractive corner that two buildings actually shielded from that noise."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de compositie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de manier waarop onderdelen samen zijn geplaatst",
+            "en": "composition"
+          },
+          "example": {
+            "nl": "Lou wilde de mooie compositie behouden en betere materialen gebruiken; Eva vroeg of zij het probleem dan oplosten of alleen duurder verborgen.",
+            "en": "Lou wanted to keep the attractive composition and use better materials; Eva asked whether they were solving the problem or merely hiding it more expensively."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Of ... of ... in een afhankelijke vraag",
+            "en": "Whether ... or ... in an indirect question"
+          },
+          "explanation": {
+            "nl": "De herhaalde of zet twee mogelijke beoordelingen tegenover elkaar.",
+            "en": "Repeated of contrasts two possible assessments."
+          },
+          "examples": [
+            {
+              "nl": "Lou wilde de mooie compositie behouden en betere materialen gebruiken; Eva vroeg of zij het probleem dan oplosten of alleen duurder verborgen.",
+              "en": "Lou wanted to keep the attractive composition and use better materials; Eva asked whether they were solving the problem or merely hiding it more expensively."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ontbrak in de eerste beoordeling van de locatie?",
+            "en": "What was missing from the first assessment of the location?"
+          },
+          "options": [
+            {
+              "nl": "De dagelijkse geluiden rondom de plek.",
+              "en": "The everyday sounds around the place."
+            },
+            {
+              "nl": "De kleur van de tuin.",
+              "en": "The colour of the garden."
+            },
+            {
+              "nl": "Het aantal ramen van de maquette.",
+              "en": "The number of windows in the model."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het geluid van de karren wordt pas bij de wandeling onderzocht.",
+            "en": "The sound of the carts is investigated only during the walk."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom tonen ze uiteindelijk twee varianten?",
+            "en": "Why do they eventually show two variants?"
+          },
+          "options": [
+            {
+              "nl": "Ze kunnen geen dak tekenen.",
+              "en": "They cannot draw a roof."
+            },
+            {
+              "nl": "Ze willen de locatiekeuze met meer dan alleen uiterlijk vergelijken.",
+              "en": "They want to compare the location choice using more than appearance alone."
+            },
+            {
+              "nl": "De eerste plek bestaat niet.",
+              "en": "The first place does not exist."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De opnames maken het verschil in akoestische omstandigheden bespreekbaar.",
+            "en": "The recordings make the difference in acoustic conditions available for discussion."
+          }
+        }
+      ]
+    }
+  ]
+}

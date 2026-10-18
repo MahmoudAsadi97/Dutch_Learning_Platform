@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-twee-tickets-voor-dezelfde-stad",
+      "topic_id": "relationships",
+      "title": {
+        "nl": "Twee tickets naar dezelfde stad",
+        "en": "Two tickets to the same city"
+      },
+      "plot_key": "An estranged couple independently books the city of their first holiday and decides that meeting there does not require restarting their relationship.",
+      "lines": [
+        {
+          "nl": "Zes maanden na hun breuk kwamen Maud en Victor elkaar onverwacht tegen aan dezelfde vertrekpoort op Brussels Airport.",
+          "en": "Six months after their separation, Maud and Victor unexpectedly met at the same departure gate at Brussels Airport."
+        },
+        {
+          "nl": "Ze hadden allebei een vlucht geboekt naar de stad waar ze hun eerste vakantie samen hadden doorgebracht.",
+          "en": "They had both booked a flight to the city where they had spent their first holiday together."
+        },
+        {
+          "nl": "Maud dacht even dat Victor haar plannen via vrienden had vernomen, maar zijn verbaasde gezicht overtuigde haar van het tegendeel.",
+          "en": "Maud briefly thought Victor had learned of her plans through friends, but his surprised expression convinced her otherwise."
+        },
+        {
+          "nl": "Ze dronken ongemakkelijk koffie en ontdekten dat ze zelfs in dezelfde straat een kamer hadden gereserveerd.",
+          "en": "They drank coffee awkwardly and discovered that they had even booked rooms on the same street."
+        },
+        {
+          "nl": "Victor stelde voor samen terug te gaan naar hun oude restaurant, alsof de reis een uitnodiging tot een nieuw begin was.",
+          "en": "Victor suggested returning to their old restaurant together, as though the journey were an invitation to a new beginning."
+        },
+        {
+          "nl": "Maud antwoordde dat ze juist wilde ontdekken welke delen van die stad nog van haar waren zonder hun gezamenlijke verhaal.",
+          "en": "Maud replied that she actually wanted to discover which parts of the city were still hers without their shared story."
+        },
+        {
+          "nl": "Tijdens de vlucht zaten ze apart; bij aankomst wensten ze elkaar een fijne week zonder een volgende afspraak te maken.",
+          "en": "They sat separately during the flight; on arrival they wished each other a good week without making another arrangement."
+        },
+        {
+          "nl": "Een paar dagen later stuurde Victor één foto van de zee, waarop Maud kort antwoordde dat ze eindelijk het museum had bezocht dat hij altijd oversloeg.",
+          "en": "A few days later Victor sent one photograph of the sea, to which Maud briefly replied that she had finally visited the museum he always skipped."
+        }
+      ],
+      "words": [
+        {
+          "term": "de breuk",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het beëindigen van een relatie",
+            "en": "separation or breakup"
+          },
+          "example": {
+            "nl": "Zes maanden na hun breuk kwamen Maud en Victor elkaar onverwacht tegen aan dezelfde vertrekpoort op Brussels Airport.",
+            "en": "Six months after their separation, Maud and Victor unexpectedly met at the same departure gate at Brussels Airport."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het tegendeel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het tegenovergestelde van een bewering",
+            "en": "the opposite"
+          },
+          "example": {
+            "nl": "Maud dacht even dat Victor haar plannen via vrienden had vernomen, maar zijn verbaasde gezicht overtuigde haar van het tegendeel.",
+            "en": "Maud briefly thought Victor had learned of her plans through friends, but his surprised expression convinced her otherwise."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "vernemen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "te weten komen",
+            "en": "to learn or hear"
+          },
+          "example": {
+            "nl": "Maud dacht even dat Victor haar plannen via vrienden had vernomen, maar zijn verbaasde gezicht overtuigde haar van het tegendeel.",
+            "en": "Maud briefly thought Victor had learned of her plans through friends, but his surprised expression convinced her otherwise."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Welke in een indirecte vraag",
+            "en": "Which in an indirect question"
+          },
+          "explanation": {
+            "nl": "Wilde ontdekken leidt een afhankelijke vraag in met het werkwoord achteraan.",
+            "en": "Wilde ontdekken introduces an indirect question with the verb at the end."
+          },
+          "examples": [
+            {
+              "nl": "Maud antwoordde dat ze juist wilde ontdekken welke delen van die stad nog van haar waren zonder hun gezamenlijke verhaal.",
+              "en": "Maud replied that she actually wanted to discover which parts of the city were still hers without their shared story."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil Maud niet samen naar het oude restaurant?",
+            "en": "Why does Maud not want to go to the old restaurant together?"
+          },
+          "options": [
+            {
+              "nl": "Ze heeft geen restaurant gereserveerd.",
+              "en": "She has not booked a restaurant."
+            },
+            {
+              "nl": "Ze wil de stad los van hun relatie leren kennen.",
+              "en": "She wants to know the city independently of their relationship."
+            },
+            {
+              "nl": "Ze denkt nog steeds dat hij haar volgt.",
+              "en": "She still thinks he is following her."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze zegt dat ze eigen ervaringen zonder hun gezamenlijke verhaal zoekt.",
+            "en": "She says she is seeking experiences of her own without their shared story."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat suggereert haar laatste bericht?",
+            "en": "What does her final message suggest?"
+          },
+          "options": [
+            {
+              "nl": "Ze vindt ruimte voor een eigen voorkeur.",
+              "en": "She finds room for a preference of her own."
+            },
+            {
+              "nl": "Ze vraagt hem opnieuw samen te wonen.",
+              "en": "She asks him to live together again."
+            },
+            {
+              "nl": "Ze heeft de stad verlaten zonder iets te doen.",
+              "en": "She has left the city without doing anything."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze bezoekt een museum dat hij vroeger oversloeg.",
+            "en": "She visits a museum he used to skip."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-foto-van-de-berg",
+      "topic_id": "ethics-morality",
+      "title": {
+        "nl": "De foto van de berg",
+        "en": "The photograph of the mountain"
+      },
+      "plot_key": "A hiker stages a summit photograph to honour a shared promise but admits to his absent injured friend that he turned back.",
+      "lines": [
+        {
+          "nl": "Voor hun veertigste verjaardag hadden vrienden Pieter en Adnan beloofd samen een berg te beklimmen die ze als studenten nooit bereikt hadden.",
+          "en": "For their fortieth birthdays, friends Pieter and Adnan had promised to climb a mountain together that they had never reached as students."
+        },
+        {
+          "nl": "Een week voor vertrek brak Adnan zijn been en vroeg hij Pieter toch te gaan, zodat minstens iemand hun belofte zou volbrengen.",
+          "en": "A week before departure Adnan broke his leg and asked Pieter to go anyway so that at least someone would fulfil their promise."
+        },
+        {
+          "nl": "Halverwege werd de mist zo dicht dat Pieter de markeringen nauwelijks nog zag en besloot terug te keren.",
+          "en": "Halfway up the mist became so thick that Pieter could barely see the markings and decided to turn back."
+        },
+        {
+          "nl": "Bij een uitzichtpunt maakte hij een foto waarop alleen zijn gezicht en een klein stuk rots zichtbaar waren.",
+          "en": "At a viewpoint he took a photograph showing only his face and a small piece of rock."
+        },
+        {
+          "nl": "Hij schreef erbij dat het gelukt was, maar verzond het bericht niet toen hij Adnans opgewekte vraag naar het uitzicht las.",
+          "en": "He wrote that he had succeeded, but did not send the message when he read Adnan's cheerful question about the view."
+        },
+        {
+          "nl": "Na lang wachten belde hij en vertelde dat hij beneden in een café zat met natte sokken en een onaangeroerde overwinningstaart.",
+          "en": "After waiting a long time he called and explained that he was down in a café with wet socks and an untouched victory cake."
+        },
+        {
+          "nl": "Adnan zweeg even en zei daarna dat hij liever samen een taart at dan alleen een verhaal geloofde waarin hij ontbrak.",
+          "en": "Adnan was silent for a moment and then said he would rather eat a cake together than believe a story alone in which he was absent."
+        },
+        {
+          "nl": "Pieter bewaarde de foto zonder onderschrift; de volgende poging kreeg nog geen datum, maar wel opnieuw twee namen.",
+          "en": "Pieter kept the photograph without a caption; the next attempt had no date yet, but once again it had two names."
+        }
+      ],
+      "words": [
+        {
+          "term": "volbrengen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "helemaal uitvoeren of bereiken",
+            "en": "to accomplish"
+          },
+          "example": {
+            "nl": "Een week voor vertrek brak Adnan zijn been en vroeg hij Pieter toch te gaan, zodat minstens iemand hun belofte zou volbrengen.",
+            "en": "A week before departure Adnan broke his leg and asked Pieter to go anyway so that at least someone would fulfil their promise."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onaangeroerd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "nog niet aangeraakt of gebruikt",
+            "en": "untouched"
+          },
+          "example": {
+            "nl": "Na lang wachten belde hij en vertelde dat hij beneden in een café zat met natte sokken en een onaangeroerde overwinningstaart.",
+            "en": "After waiting a long time he called and explained that he was down in a café with wet socks and an untouched victory cake."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het onderschrift",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een korte tekst onder een beeld",
+            "en": "caption"
+          },
+          "example": {
+            "nl": "Pieter bewaarde de foto zonder onderschrift; de volgende poging kreeg nog geen datum, maar wel opnieuw twee namen.",
+            "en": "Pieter kept the photograph without a caption; the next attempt had no date yet, but once again it had two names."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Liever ... dan ...",
+            "en": "Would rather ... than ..."
+          },
+          "explanation": {
+            "nl": "Liever en dan vergelijken twee mogelijkheden en drukken een voorkeur uit.",
+            "en": "Liever and dan compare two possibilities and express a preference."
+          },
+          "examples": [
+            {
+              "nl": "Adnan zweeg even en zei daarna dat hij liever samen een taart at dan alleen een verhaal geloofde waarin hij ontbrak.",
+              "en": "Adnan was silent for a moment and then said he would rather eat a cake together than believe a story alone in which he was absent."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom verzendt Pieter het eerste bericht niet?",
+            "en": "Why does Pieter not send the first message?"
+          },
+          "options": [
+            {
+              "nl": "Zijn telefoon is kapot.",
+              "en": "His phone is broken."
+            },
+            {
+              "nl": "Hij heeft geen foto gemaakt.",
+              "en": "He has not taken a photograph."
+            },
+            {
+              "nl": "Adnans vraag maakt de onwaarheid concreet.",
+              "en": "Adnan's question makes the lie concrete."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij kan het uitzicht niet eerlijk beschrijven omdat hij de top niet heeft bereikt.",
+            "en": "He cannot honestly describe the view because he has not reached the summit."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat weegt voor Adnan uiteindelijk het zwaarst?",
+            "en": "What ultimately matters most to Adnan?"
+          },
+          "options": [
+            {
+              "nl": "Dat Pieter alleen de hoogste top haalt.",
+              "en": "That Pieter reaches the highest summit alone."
+            },
+            {
+              "nl": "Hun gedeelde ervaring en eerlijkheid.",
+              "en": "Their shared experience and honesty."
+            },
+            {
+              "nl": "De kwaliteit van de foto.",
+              "en": "The quality of the photograph."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij kiest een echte ontmoeting boven een overwinning waarin hij ontbreekt.",
+            "en": "He chooses a real meeting over a victory in which he is absent."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-klok-in-de-frituur",
+      "topic_id": "decisions-problem-solving",
+      "title": {
+        "nl": "De klok in de frituur",
+        "en": "The clock in the chip shop"
+      },
+      "plot_key": "A missing violin case investigation hinges on a chip-shop clock that runs fast, not on the trusted friend's apparent late arrival.",
+      "lines": [
+        {
+          "nl": "Na de repetitie was de vioolkoffer van Sofie verdwenen uit de achterkamer van het café waar hun ensemble oefende.",
+          "en": "After rehearsal Sofie's violin case had disappeared from the back room of the café where their ensemble practised."
+        },
+        {
+          "nl": "Haar vriend Laurens zei dat hij om negen uur al aan de overkant frieten haalde, maar volgens een bezoeker liep hij later nog binnen.",
+          "en": "Her friend Laurens said he was already buying chips across the street at nine, but according to a visitor he came in again later."
+        },
+        {
+          "nl": "Sofie wilde hem geloven, al maakte zijn onzekere uitleg over de tijd haar juist achterdochtiger.",
+          "en": "Sofie wanted to believe him, although his uncertain explanation of the time made her more suspicious."
+        },
+        {
+          "nl": "Toen ze de uitbater van de frituur vroeg hoe laat Laurens besteld had, wees die zonder nadenken naar de wandklok.",
+          "en": "When she asked the chip-shop owner what time Laurens had ordered, he pointed at the wall clock without thinking."
+        },
+        {
+          "nl": "Een klant begon te lachen: de klok liep al maanden een kwartier voor, omdat de eigenaar bang was de laatste bus te missen.",
+          "en": "A customer began to laugh: the clock had been fifteen minutes fast for months because the owner was afraid of missing the last bus."
+        },
+        {
+          "nl": "Met het juiste uur bleek Laurens inderdaad na de bestelling teruggekeerd, maar vóór de zaalverantwoordelijke de koffer naar de opslag had gebracht.",
+          "en": "With the correct time, Laurens had indeed returned after ordering, but before the venue manager had taken the case to storage."
+        },
+        {
+          "nl": "De koffer stond achter een doos lege glazen, waar iemand hem veilig had willen zetten zonder een bericht achter te laten.",
+          "en": "The case stood behind a box of empty glasses, where someone had wanted to put it safely without leaving a message."
+        },
+        {
+          "nl": "Sofie bood Laurens haar excuses aan; de klok bleef verkeerd staan, maar voortaan vroeg zij eerst wiens tijd ze gebruikte.",
+          "en": "Sofie apologised to Laurens; the clock remained wrong, but from then on she first asked whose time she was using."
+        }
+      ],
+      "words": [
+        {
+          "term": "achterdochtig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "geneigd om iets of iemand te wantrouwen",
+            "en": "suspicious"
+          },
+          "example": {
+            "nl": "Sofie wilde hem geloven, al maakte zijn onzekere uitleg over de tijd haar juist achterdochtiger.",
+            "en": "Sofie wanted to believe him, although his uncertain explanation of the time made her more suspicious."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "voorlopen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een latere tijd tonen dan de juiste tijd",
+            "en": "to run fast"
+          },
+          "example": {
+            "nl": "Een klant begon te lachen: de klok liep al maanden een kwartier voor, omdat de eigenaar bang was de laatste bus te missen.",
+            "en": "A customer began to laugh: the clock had been fifteen minutes fast for months because the owner was afraid of missing the last bus."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de opslag",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een plaats waar spullen bewaard worden",
+            "en": "storage"
+          },
+          "example": {
+            "nl": "Met het juiste uur bleek Laurens inderdaad na de bestelling teruggekeerd, maar vóór de zaalverantwoordelijke de koffer naar de opslag had gebracht.",
+            "en": "With the correct time, Laurens had indeed returned after ordering, but before the venue manager had taken the case to storage."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Al met inversie",
+            "en": "Although with inversion"
+          },
+          "explanation": {
+            "nl": "Al introduceert een toegeving en zet de persoonsvorm vóór het onderwerp.",
+            "en": "Al introduces a concession and places the finite verb before the subject."
+          },
+          "examples": [
+            {
+              "nl": "Sofie wilde hem geloven, al maakte zijn onzekere uitleg over de tijd haar juist achterdochtiger.",
+              "en": "Sofie wanted to believe him, although his uncertain explanation of the time made her more suspicious."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk detail verklaart de tegenstrijdige tijdstippen?",
+            "en": "Which detail explains the contradictory times?"
+          },
+          "options": [
+            {
+              "nl": "De klok in de frituur loopt voor.",
+              "en": "The chip-shop clock runs fast."
+            },
+            {
+              "nl": "Laurens heeft twee horloges.",
+              "en": "Laurens has two watches."
+            },
+            {
+              "nl": "De repetitie was op een andere dag.",
+              "en": "The rehearsal was on another day."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De verschillende verklaringen gebruiken niet dezelfde juiste tijd.",
+            "en": "The different accounts do not use the same correct time."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom was de koffer verplaatst?",
+            "en": "Why had the case been moved?"
+          },
+          "options": [
+            {
+              "nl": "Om hem te verkopen.",
+              "en": "To sell it."
+            },
+            {
+              "nl": "Om hem te verbergen voor Laurens.",
+              "en": "To hide it from Laurens."
+            },
+            {
+              "nl": "Om hem veilig op te bergen.",
+              "en": "To store it safely."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De zaalverantwoordelijke had hem naar de opslag gebracht zonder bericht.",
+            "en": "The venue manager had taken it to storage without leaving a message."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-brief-aan-een-dode",
+      "topic_id": "psychology-emotions",
+      "title": {
+        "nl": "Een brief die niet op de post ging",
+        "en": "A letter that was not posted"
+      },
+      "plot_key": "A daughter rehearses an imagined final conversation with her late father, then accepts that an unanswered question can remain in a drawer.",
+      "lines": [
+        {
+          "nl": "Na de dood van haar vader schreef Mila hem elke zondag een brief met vragen die ze tijdens zijn leven nooit had durven stellen.",
+          "en": "After her father's death, Mila wrote him a letter every Sunday with questions she had never dared to ask during his life."
+        },
+        {
+          "nl": "Ze wilde vooral weten waarom hij haar eerste grote optreden had gemist, hoewel hij altijd zei dat hij trots op haar was.",
+          "en": "She particularly wanted to know why he had missed her first major performance, although he always said he was proud of her."
+        },
+        {
+          "nl": "Haar broer bood allerlei verklaringen aan, van een misverstand over het uur tot zijn bekende angst voor drukke zalen.",
+          "en": "Her brother offered all kinds of explanations, from a misunderstanding about the time to his familiar fear of crowded halls."
+        },
+        {
+          "nl": "Geen enkele uitleg hielp, omdat Mila telkens hoorde hoe weinig ze nog zeker kon weten.",
+          "en": "None of the explanations helped, because Mila kept hearing how little she could still know for certain."
+        },
+        {
+          "nl": "Op een zondag schreef ze voor het eerst geen vraag, maar een beschrijving van de lege stoel die ze toen vanaf het podium had gezien.",
+          "en": "One Sunday, for the first time, she wrote no question but a description of the empty chair she had seen from the stage that evening."
+        },
+        {
+          "nl": "Ze las die bladzijde aan haar broer voor en vroeg hem deze keer niet te proberen hun vader te verdedigen.",
+          "en": "She read that page to her brother and asked him not to try to defend their father this time."
+        },
+        {
+          "nl": "Hij bleef naast haar zitten terwijl zij verder schreef; er kwam geen onthulling die de herinnering in één keer veranderde.",
+          "en": "He stayed sitting beside her while she continued writing; no revelation came that transformed the memory all at once."
+        },
+        {
+          "nl": "Toen ze de brief in een lade legde, bleef de vraag bestaan, maar hoefde ze hem die avond niet alleen te dragen.",
+          "en": "When she placed the letter in a drawer, the question remained, but she did not have to carry it alone that evening."
+        }
+      ],
+      "words": [
+        {
+          "term": "de onthulling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "informatie die iets onbekends bekendmaakt",
+            "en": "revelation"
+          },
+          "example": {
+            "nl": "Hij bleef naast haar zitten terwijl zij verder schreef; er kwam geen onthulling die de herinnering in één keer veranderde.",
+            "en": "He stayed sitting beside her while she continued writing; no revelation came that transformed the memory all at once."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "verdedigen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "argumenten geven om kritiek op iemand te weerleggen",
+            "en": "to defend"
+          },
+          "example": {
+            "nl": "Ze las die bladzijde aan haar broer voor en vroeg hem deze keer niet te proberen hun vader te verdedigen.",
+            "en": "She read that page to her brother and asked him not to try to defend their father this time."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "zeker",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder twijfel vastgesteld",
+            "en": "certain"
+          },
+          "example": {
+            "nl": "Geen enkele uitleg hielp, omdat Mila telkens hoorde hoe weinig ze nog zeker kon weten.",
+            "en": "None of the explanations helped, because Mila kept hearing how little she could still know for certain."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl zonder oorzaak",
+            "en": "While without a causal claim"
+          },
+          "explanation": {
+            "nl": "Terwijl zegt dat twee handelingen tegelijk plaatsvinden; het verklaart niet automatisch waarom.",
+            "en": "Terwijl says two actions occur simultaneously; it does not automatically explain why."
+          },
+          "examples": [
+            {
+              "nl": "Hij bleef naast haar zitten terwijl zij verder schreef; er kwam geen onthulling die de herinnering in één keer veranderde.",
+              "en": "He stayed sitting beside her while she continued writing; no revelation came that transformed the memory all at once."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom helpen de verklaringen van haar broer niet?",
+            "en": "Why do her brother's explanations not help?"
+          },
+          "options": [
+            {
+              "nl": "Hij weet zeker dat hun vader niet trots was.",
+              "en": "He knows for certain that their father was not proud."
+            },
+            {
+              "nl": "Het blijven mogelijkheden zonder zekerheid.",
+              "en": "They remain possibilities without certainty."
+            },
+            {
+              "nl": "Mila wil geen enkele herinnering bewaren.",
+              "en": "Mila wants to keep no memories."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze ervaart vooral dat niemand het precieze antwoord meer kan geven.",
+            "en": "She mainly feels that nobody can provide the exact answer any longer."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert er wel aan het einde?",
+            "en": "What does change at the end?"
+          },
+          "options": [
+            {
+              "nl": "Ze kan haar pijn delen zonder een definitief antwoord.",
+              "en": "She can share her pain without a definitive answer."
+            },
+            {
+              "nl": "Een geheime brief verklaart alles.",
+              "en": "A secret letter explains everything."
+            },
+            {
+              "nl": "Ze vergeet het optreden.",
+              "en": "She forgets the performance."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Haar broer blijft bij haar; de vraag verdwijnt niet.",
+            "en": "Her brother stays with her; the question does not disappear."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-slogan-op-de-markt",
+      "topic_id": "politics",
+      "title": {
+        "nl": "De slogan op de markt",
+        "en": "The slogan in the market"
+      },
+      "plot_key": "A first-time campaign volunteer challenges a convenient transport slogan after hearing a night worker's contrary experience and loses an easy promotional line.",
+      "lines": [
+        {
+          "nl": "Voor een lokale verkiezingscampagne hielp student Timo op de markt folders uitdelen met de slogan dat niemand nog een auto nodig had.",
+          "en": "For a local election campaign, student Timo helped distribute leaflets at the market with the slogan that nobody needed a car any longer."
+        },
+        {
+          "nl": "Hij vond de boodschap helder en kon enthousiast vertellen over nieuwe fietspaden en een frequentere busverbinding.",
+          "en": "He found the message clear and could speak enthusiastically about new cycle lanes and a more frequent bus service."
+        },
+        {
+          "nl": "Een vrouw in werkkleding vroeg hoe zij om vijf uur 's ochtends haar ploeg in een fabriek buiten de stad moest bereiken.",
+          "en": "A woman in work clothes asked how she was supposed to reach her shift at a factory outside the city at five in the morning."
+        },
+        {
+          "nl": "Timo begon over de voordelen van fietsen, tot zij hem de afstand en de ontbrekende aansluiting liet zien.",
+          "en": "Timo began talking about the benefits of cycling until she showed him the distance and the missing connection."
+        },
+        {
+          "nl": "Bij de volgende vergadering stelde hij voor de slogan te vervangen door een concrete belofte over bereikbaarheid voor verschillende werkuren.",
+          "en": "At the next meeting he proposed replacing the slogan with a concrete promise about accessibility for different working hours."
+        },
+        {
+          "nl": "De campagneleider vond zijn formulering minder krachtig en waarschuwde dat een folder geen volledig beleidsplan kon bevatten.",
+          "en": "The campaign manager found his wording less powerful and warned that a leaflet could not contain a complete policy plan."
+        },
+        {
+          "nl": "Ze werden het niet meteen eens; uiteindelijk kwam er een kortere zin met een verwijzing naar een avondgesprek over de ontbrekende ritten.",
+          "en": "They did not agree immediately; eventually a shorter sentence was chosen with a reference to an evening discussion about the missing services."
+        },
+        {
+          "nl": "Timo deelde de nieuwe folders met minder vanzelfsprekend enthousiasme uit, maar kon nu uitleggen welke vraag nog niet opgelost was.",
+          "en": "Timo distributed the new leaflets with less automatic enthusiasm, but could now explain which question remained unresolved."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bereikbaarheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de mate waarin een plaats te bereiken is",
+            "en": "accessibility of a destination"
+          },
+          "example": {
+            "nl": "Bij de volgende vergadering stelde hij voor de slogan te vervangen door een concrete belofte over bereikbaarheid voor verschillende werkuren.",
+            "en": "At the next meeting he proposed replacing the slogan with a concrete promise about accessibility for different working hours."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de aansluiting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een verbinding tussen opeenvolgende ritten",
+            "en": "connection between transport services"
+          },
+          "example": {
+            "nl": "Timo begon over de voordelen van fietsen, tot zij hem de afstand en de ontbrekende aansluiting liet zien.",
+            "en": "Timo began talking about the benefits of cycling until she showed him the distance and the missing connection."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "krachtig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "duidelijk en met veel effect",
+            "en": "powerful"
+          },
+          "example": {
+            "nl": "De campagneleider vond zijn formulering minder krachtig en waarschuwde dat een folder geen volledig beleidsplan kon bevatten.",
+            "en": "The campaign manager found his wording less powerful and warned that a leaflet could not contain a complete policy plan."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoe in een afhankelijke vraag",
+            "en": "How in an indirect question"
+          },
+          "explanation": {
+            "nl": "De vraag volgt na vroeg, waardoor moest achteraan in de bijzin komt.",
+            "en": "The question follows vroeg, so moest comes at the end of the subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "Een vrouw in werkkleding vroeg hoe zij om vijf uur 's ochtends haar ploeg in een fabriek buiten de stad moest bereiken.",
+              "en": "A woman in work clothes asked how she was supposed to reach her shift at a factory outside the city at five in the morning."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke beperking maakt de vrouw zichtbaar?",
+            "en": "What limitation does the woman reveal?"
+          },
+          "options": [
+            {
+              "nl": "Fietspaden zijn altijd gesloten.",
+              "en": "Cycle lanes are always closed."
+            },
+            {
+              "nl": "Iedereen woont in de fabriek.",
+              "en": "Everyone lives in the factory."
+            },
+            {
+              "nl": "Het verbeterde aanbod werkt nog niet voor elk werkrooster.",
+              "en": "The improved services do not yet work for every work schedule."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Haar vroege ploeg heeft geen passende aansluiting.",
+            "en": "Her early shift has no suitable connection."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat is het bezwaar van de campagneleider?",
+            "en": "What is the campaign manager's objection?"
+          },
+          "options": [
+            {
+              "nl": "Er mogen geen bussen rijden.",
+              "en": "Buses must not operate."
+            },
+            {
+              "nl": "De nauwkeurigere boodschap is minder eenvoudig en pakkend.",
+              "en": "The more precise message is less simple and catchy."
+            },
+            {
+              "nl": "Timo mag niemand spreken.",
+              "en": "Timo must not speak to anyone."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij noemt de formulering minder krachtig en de ruimte op de folder beperkt.",
+            "en": "He calls the wording less powerful and notes the leaflet's limited space."
+          }
+        }
+      ]
+    }
+  ]
+}

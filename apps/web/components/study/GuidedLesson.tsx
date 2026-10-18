@@ -13,6 +13,7 @@ import { stageLabel, type Skill } from "@/lib/domain/registry";
 import { studyCopy, studyLabels, studySteps } from "@/lib/copy/study";
 import { CompactWords, StudyError } from "./StudyShared";
 import { PracticePart } from "./StudyPracticePart";
+import { StudyActivityPicker } from "./StudyActivityPicker";
 
 export function GuidedLesson({
   stageId,
@@ -92,24 +93,37 @@ export function GuidedLesson({
           <LearningText text={studyCopy.reviewPending} />{" "}
         </span>
       </header>
-      {lesson.activities.length > 1 && (
-        <label className="study-activity-picker">
-          <LearningText text={studyLabels.chooseActivity(skill === "reading")} />
-          <select
-            value={lesson.activity_id}
-            onChange={async (event) => {
-              const nextActivity = event.target.value;
-              if (await canLeave())
-                router.push(studyHref(stageId, skill, { topic: topicId, activity: nextActivity }));
-            }}
-          >
-            {lesson.activities.map((activity) => (
-              <option key={activity.id} value={activity.id}>
-                {activity.title.nl}
-              </option>
-            ))}
-          </select>
-        </label>
+      {lesson.activities.length > 1 && skill === "reading" ? (
+        <StudyActivityPicker
+          key={lesson.activity_id}
+          activities={lesson.activities}
+          selected={lesson.activity_id}
+          onChoose={async (nextActivity) => {
+            if (!(await canLeave())) return false;
+            router.push(studyHref(stageId, skill, { topic: topicId, activity: nextActivity }));
+            return true;
+          }}
+        />
+      ) : (
+        lesson.activities.length > 1 && (
+          <label className="study-activity-picker">
+            <LearningText text={studyLabels.chooseActivity(skill === "reading")} />
+            <select
+              value={lesson.activity_id}
+              onChange={async (event) => {
+                const nextActivity = event.target.value;
+                if (await canLeave())
+                  router.push(studyHref(stageId, skill, { topic: topicId, activity: nextActivity }));
+              }}
+            >
+              {lesson.activities.map((activity) => (
+                <option key={activity.id} value={activity.id}>
+                  {activity.title.nl}
+                </option>
+              ))}
+            </select>
+          </label>
+        )
       )}
       <nav className="study-stepper" aria-label={studyCopy.exerciseSteps.nl}>
         {studySteps.map((item, index) => (

@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "a1-read-kleuren-in-lunch",
+      "topic_id": "nutrition",
+      "title": {
+        "nl": "Een lunch met drie kleuren",
+        "en": "A lunch with three colours"
+      },
+      "plot_key": "A learner prepares a more varied lunch from available ingredients rather than buying another plain snack.",
+      "lines": [
+        {
+          "nl": "Voor haar lunch neemt Lotte meestal alleen brood mee.",
+          "en": "For lunch, Lotte usually brings only bread."
+        },
+        {
+          "nl": "Vandaag opent ze thuis eerst de groentelade.",
+          "en": "Today, she first opens the vegetable drawer at home."
+        },
+        {
+          "nl": "Er liggen wortels, komkommer en een rode paprika.",
+          "en": "There are carrots, cucumber and a red pepper."
+        },
+        {
+          "nl": "Een halve paprika past niet meer op haar boterham.",
+          "en": "Half a pepper no longer fits on her sandwich."
+        },
+        {
+          "nl": "Ze snijdt de groenten daarom in kleine reepjes.",
+          "en": "She therefore cuts the vegetables into little strips."
+        },
+        {
+          "nl": "Die gaan in een apart bakje naast het brood.",
+          "en": "They go in a separate container beside the bread."
+        },
+        {
+          "nl": "In de pauze probeert haar collega een stukje komkommer.",
+          "en": "During the break, her colleague tries a piece of cucumber."
+        },
+        {
+          "nl": "Morgen brengt hij voor hen allebei wat fruit mee.",
+          "en": "Tomorrow he will bring some fruit for both of them."
+        }
+      ],
+      "words": [
+        {
+          "term": "de groentelade",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lade in een koelkast voor groenten",
+            "en": "vegetable drawer"
+          },
+          "example": {
+            "nl": "Vandaag opent ze thuis eerst de groentelade.",
+            "en": "Today, she first opens the vegetable drawer at home."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de paprika",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "groente met een holle binnenkant",
+            "en": "pepper"
+          },
+          "example": {
+            "nl": "Er liggen wortels, komkommer en een rode paprika.",
+            "en": "There are carrots, cucumber and a red pepper."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het reepje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lang smal stukje",
+            "en": "small strip"
+          },
+          "example": {
+            "nl": "Ze snijdt de groenten daarom in kleine reepjes.",
+            "en": "She therefore cuts the vegetables into little strips."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ze snijdt de groenten daarom in kleine reepjes.",
+              "en": "She therefore cuts the vegetables into little strips."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke groente probeert de collega?",
+            "en": "Which vegetable does the colleague try?"
+          },
+          "options": [
+            {
+              "nl": "Komkommer",
+              "en": "Cucumber"
+            },
+            {
+              "nl": "Wortel",
+              "en": "Carrot"
+            },
+            {
+              "nl": "Paprika",
+              "en": "Pepper"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "In de pauze probeert haar collega een stukje komkommer.",
+            "en": "During the break, her colleague tries a piece of cucumber."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat brengt hij morgen mee?",
+            "en": "What will he bring tomorrow?"
+          },
+          "options": [
+            {
+              "nl": "Koffie",
+              "en": "Coffee"
+            },
+            {
+              "nl": "Fruit",
+              "en": "Fruit"
+            },
+            {
+              "nl": "Soep",
+              "en": "Soup"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Morgen brengt hij voor hen allebei wat fruit mee.",
+            "en": "Tomorrow he will bring some fruit for both of them."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-vraag-op-lijstje",
+      "topic_id": "medical-care",
+      "title": {
+        "nl": "De vraag voor de dokter",
+        "en": "The question for the doctor"
+      },
+      "plot_key": "A patient brings a written question list and remembers to ask one important practical question before leaving.",
+      "lines": [
+        {
+          "nl": "Amir heeft vandaag een afspraak bij de dokter.",
+          "en": "Amir has a doctor's appointment today."
+        },
+        {
+          "nl": "Thuis schrijft hij drie vragen op een blad.",
+          "en": "At home, he writes three questions on a sheet."
+        },
+        {
+          "nl": "Tijdens het gesprek luistert hij heel aandachtig.",
+          "en": "During the conversation, he listens very carefully."
+        },
+        {
+          "nl": "Bij het opstaan zit het blad nog in zijn zak.",
+          "en": "When he gets up, the sheet is still in his pocket."
+        },
+        {
+          "nl": "Hij gaat weer zitten en opent het lijstje.",
+          "en": "He sits down again and opens the list."
+        },
+        {
+          "nl": "Eén vraag gaat over het volgende contact.",
+          "en": "One question is about the next contact."
+        },
+        {
+          "nl": "De dokter legt uit wie hij kan bellen.",
+          "en": "The doctor explains whom he can call."
+        },
+        {
+          "nl": "Amir schrijft het antwoord naast zijn eigen vraag.",
+          "en": "Amir writes the answer beside his own question."
+        }
+      ],
+      "words": [
+        {
+          "term": "het gesprek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "moment waarop mensen met elkaar praten",
+            "en": "conversation"
+          },
+          "example": {
+            "nl": "Tijdens het gesprek luistert hij heel aandachtig.",
+            "en": "During the conversation, he listens very carefully."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het lijstje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kort overzicht van punten",
+            "en": "little list"
+          },
+          "example": {
+            "nl": "Hij gaat weer zitten en opent het lijstje.",
+            "en": "He sits down again and opens the list."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "uitleggen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets duidelijk vertellen",
+            "en": "to explain"
+          },
+          "example": {
+            "nl": "De dokter legt uit wie hij kan bellen.",
+            "en": "The doctor explains whom he can call."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "De dokter legt uit wie hij kan bellen.",
+              "en": "The doctor explains whom he can call."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel vragen schrijft Amir thuis op?",
+            "en": "How many questions does Amir write down at home?"
+          },
+          "options": [
+            {
+              "nl": "Twee",
+              "en": "Two"
+            },
+            {
+              "nl": "Vier",
+              "en": "Four"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Thuis schrijft hij drie vragen op een blad.",
+            "en": "At home, he writes three questions on a sheet."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar schrijft hij het antwoord?",
+            "en": "Where does he write the answer?"
+          },
+          "options": [
+            {
+              "nl": "Naast zijn vraag",
+              "en": "Beside his question"
+            },
+            {
+              "nl": "Op de deur",
+              "en": "On the door"
+            },
+            {
+              "nl": "Op zijn hand",
+              "en": "On his hand"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Amir schrijft het antwoord naast zijn eigen vraag.",
+            "en": "Amir writes the answer beside his own question."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-belangrijke-deur",
+      "topic_id": "safety-emergencies",
+      "title": {
+        "nl": "De uitgang blijft vrij",
+        "en": "The exit stays clear"
+      },
+      "plot_key": "Friends preparing a party move a coat rack away from a marked exit before guests arrive.",
+      "lines": [
+        {
+          "nl": "Voor het feest zet Tine een kapstok klaar.",
+          "en": "For the party, Tine puts out a coat rack."
+        },
+        {
+          "nl": "Bij de grote deur staat nog veel ruimte.",
+          "en": "There is still much space by the big door."
+        },
+        {
+          "nl": "Zij schuift de kapstok precies voor die deur.",
+          "en": "She moves the coat rack right in front of that door."
+        },
+        {
+          "nl": "Haar broer ziet het groene bordje erboven.",
+          "en": "Her brother sees the green sign above it."
+        },
+        {
+          "nl": "Hij zegt dat dit ook een uitgang is.",
+          "en": "He says this is also an exit."
+        },
+        {
+          "nl": "Samen zetten ze de kapstok tegen een andere muur.",
+          "en": "Together, they put the coat rack against another wall."
+        },
+        {
+          "nl": "Ze kijken of de deur nu helemaal opengaat.",
+          "en": "They check whether the door now opens fully."
+        },
+        {
+          "nl": "Pas daarna leggen ze de naamkaartjes op tafel.",
+          "en": "Only then do they put the name cards on the table."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kapstok",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "meubel of rek om jassen aan te hangen",
+            "en": "coat rack"
+          },
+          "example": {
+            "nl": "Voor het feest zet Tine een kapstok klaar.",
+            "en": "For the party, Tine puts out a coat rack."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de uitgang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deur of weg naar buiten",
+            "en": "exit"
+          },
+          "example": {
+            "nl": "Hij zegt dat dit ook een uitgang is.",
+            "en": "He says this is also an exit."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "vrij",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder iets dat de doorgang blokkeert",
+            "en": "clear or unobstructed"
+          },
+          "example": {
+            "nl": "Ze kijken of de deur nu helemaal opengaat.",
+            "en": "They check whether the door now opens fully."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Ze kijken of de deur nu helemaal opengaat.",
+              "en": "They check whether the door now opens fully."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat staat eerst voor de deur?",
+            "en": "What is initially in front of the door?"
+          },
+          "options": [
+            {
+              "nl": "Een kapstok",
+              "en": "A coat rack"
+            },
+            {
+              "nl": "Een tafel",
+              "en": "A table"
+            },
+            {
+              "nl": "Een fiets",
+              "en": "A bicycle"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zij schuift de kapstok precies voor die deur.",
+            "en": "She moves the coat rack right in front of that door."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat controleren ze na het verplaatsen?",
+            "en": "What do they check after moving it?"
+          },
+          "options": [
+            {
+              "nl": "De kleur van de muur",
+              "en": "The colour of the wall"
+            },
+            {
+              "nl": "Of de deur helemaal opengaat",
+              "en": "Whether the door opens fully"
+            },
+            {
+              "nl": "De namen op de kaartjes",
+              "en": "The names on the cards"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze kijken of de deur nu helemaal opengaat.",
+            "en": "They check whether the door now opens fully."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-loket-voor-afspraak",
+      "topic_id": "public-services",
+      "title": {
+        "nl": "De afspraak is boven",
+        "en": "The appointment is upstairs"
+      },
+      "plot_key": "A visitor distinguishes the information desk from the appointment office and asks for clear directions.",
+      "lines": [
+        {
+          "nl": "Mila komt met haar afspraak naar het stadhuis.",
+          "en": "Mila comes to the town hall for her appointment."
+        },
+        {
+          "nl": "Beneden zit een medewerker achter een balie.",
+          "en": "A staff member sits behind a counter downstairs."
+        },
+        {
+          "nl": "Zij wil daar meteen al haar papieren tonen.",
+          "en": "She wants to show all her papers there straight away."
+        },
+        {
+          "nl": "De medewerker vraagt eerst naar haar afspraaknummer.",
+          "en": "The staff member first asks for her appointment number."
+        },
+        {
+          "nl": "Haar gesprek is op de eerste verdieping.",
+          "en": "Her appointment is on the first floor."
+        },
+        {
+          "nl": "Hij tekent de trap op een klein kaartje.",
+          "en": "He draws the stairs on a little card."
+        },
+        {
+          "nl": "Mila herhaalt: boven, de tweede deur links.",
+          "en": "Mila repeats: upstairs, the second door on the left."
+        },
+        {
+          "nl": "Met haar papieren dicht in de map loopt ze verder.",
+          "en": "With her papers closed in the folder, she walks on."
+        }
+      ],
+      "words": [
+        {
+          "term": "de verdieping",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "laag van een gebouw",
+            "en": "floor of a building"
+          },
+          "example": {
+            "nl": "Haar gesprek is op de eerste verdieping.",
+            "en": "Her appointment is on the first floor."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de afspraak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "vastgelegde tijd om iemand te ontmoeten",
+            "en": "appointment"
+          },
+          "example": {
+            "nl": "Mila komt met haar afspraak naar het stadhuis.",
+            "en": "Mila comes to the town hall for her appointment."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de map",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "houder waarin je papieren bewaart",
+            "en": "folder"
+          },
+          "example": {
+            "nl": "Met haar papieren dicht in de map loopt ze verder.",
+            "en": "With her papers closed in the folder, she walks on."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Mila herhaalt: boven, de tweede deur links.",
+              "en": "Mila repeats: upstairs, the second door on the left."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar is Mila's afspraak?",
+            "en": "Where is Mila's appointment?"
+          },
+          "options": [
+            {
+              "nl": "Beneden",
+              "en": "Downstairs"
+            },
+            {
+              "nl": "In een ander gebouw",
+              "en": "In another building"
+            },
+            {
+              "nl": "Op de eerste verdieping",
+              "en": "On the first floor"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Haar gesprek is op de eerste verdieping.",
+            "en": "Her appointment is on the first floor."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke deur moet ze nemen?",
+            "en": "Which door must she take?"
+          },
+          "options": [
+            {
+              "nl": "De tweede links",
+              "en": "The second on the left"
+            },
+            {
+              "nl": "De eerste rechts",
+              "en": "The first on the right"
+            },
+            {
+              "nl": "De laatste rechts",
+              "en": "The last on the right"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mila herhaalt: boven, de tweede deur links.",
+            "en": "Mila repeats: upstairs, the second door on the left."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-parkbord-met-hond",
+      "topic_id": "laws-regulations",
+      "title": {
+        "nl": "De korte lijn",
+        "en": "The short lead"
+      },
+      "plot_key": "A dog walker reads the local park sign and keeps the dog on its lead until a designated play area.",
+      "lines": [
+        {
+          "nl": "Bij de ingang van het park staat een bord.",
+          "en": "There is a sign at the park entrance."
+        },
+        {
+          "nl": "Noor houdt haar hond nog aan de lijn.",
+          "en": "Noor still has her dog on its lead."
+        },
+        {
+          "nl": "Op het bord ziet zij een hond met een lijn.",
+          "en": "On the sign, she sees a dog with a lead."
+        },
+        {
+          "nl": "Zij leest de korte tekst eronder rustig.",
+          "en": "She calmly reads the short text beneath it."
+        },
+        {
+          "nl": "Hier moet de hond aan de lijn blijven.",
+          "en": "Here, the dog must stay on its lead."
+        },
+        {
+          "nl": "Verderop ligt een omheind terrein voor honden.",
+          "en": "Further on, there is an enclosed area for dogs."
+        },
+        {
+          "nl": "Noor controleert ook daar eerst het bord.",
+          "en": "Noor checks the sign there first too."
+        },
+        {
+          "nl": "Dan sluit ze het poortje achter zich.",
+          "en": "Then she closes the gate behind her."
+        }
+      ],
+      "words": [
+        {
+          "term": "de lijn",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "koord waarmee je een hond bij je houdt",
+            "en": "lead"
+          },
+          "example": {
+            "nl": "Noor houdt haar hond nog aan de lijn.",
+            "en": "Noor still has her dog on its lead."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "omheind",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met een hek eromheen",
+            "en": "enclosed by a fence"
+          },
+          "example": {
+            "nl": "Verderop ligt een omheind terrein voor honden.",
+            "en": "Further on, there is an enclosed area for dogs."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het poortje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine deur in een hek",
+            "en": "small gate"
+          },
+          "example": {
+            "nl": "Dan sluit ze het poortje achter zich.",
+            "en": "Then she closes the gate behind her."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Hier moet de hond aan de lijn blijven.",
+              "en": "Here, the dog must stay on its lead."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat zegt het eerste bord?",
+            "en": "What does the first sign say?"
+          },
+          "options": [
+            {
+              "nl": "De hond blijft aan de lijn",
+              "en": "The dog stays on its lead"
+            },
+            {
+              "nl": "Het park is dicht",
+              "en": "The park is closed"
+            },
+            {
+              "nl": "Honden zijn overal verboden",
+              "en": "Dogs are forbidden everywhere"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hier moet de hond aan de lijn blijven.",
+            "en": "Here, the dog must stay on its lead."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet Noor bij het tweede terrein eerst?",
+            "en": "What does Noor do first at the second area?"
+          },
+          "options": [
+            {
+              "nl": "De hond loslaten",
+              "en": "Release the dog"
+            },
+            {
+              "nl": "Het bord controleren",
+              "en": "Check the sign"
+            },
+            {
+              "nl": "Het poortje openlaten",
+              "en": "Leave the gate open"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Noor controleert ook daar eerst het bord.",
+            "en": "Noor checks the sign there first too."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-buur-in-taalgroep",
+      "topic_id": "immigration-integration",
+      "title": {
+        "nl": "Een bekend gezicht bij de les",
+        "en": "A familiar face at class"
+      },
+      "plot_key": "A newcomer recognises a neighbour at language class and practises a useful greeting before approaching them.",
+      "lines": [
+        {
+          "nl": "Saba komt voor het eerst naar een taalles.",
+          "en": "Saba comes to a language class for the first time."
+        },
+        {
+          "nl": "Bij het raam ziet ze haar buurvrouw zitten.",
+          "en": "By the window, she sees her neighbour sitting."
+        },
+        {
+          "nl": "In de straat groeten ze elkaar alleen kort.",
+          "en": "In their street, they only greet each other briefly."
+        },
+        {
+          "nl": "Saba zoekt naar een eenvoudige eerste vraag.",
+          "en": "Saba looks for a simple first question."
+        },
+        {
+          "nl": "De leerkracht schrijft: woon jij hier dichtbij?",
+          "en": "The teacher writes: do you live nearby?"
+        },
+        {
+          "nl": "Saba oefent de vraag met haar tafelgenoot.",
+          "en": "Saba practises the question with her table partner."
+        },
+        {
+          "nl": "In de pauze gaat ze naar haar buurvrouw.",
+          "en": "During the break, she goes to her neighbour."
+        },
+        {
+          "nl": "Ze praten over de wandeling terug naar huis.",
+          "en": "They talk about the walk back home."
+        }
+      ],
+      "words": [
+        {
+          "term": "de taalles",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "les waarin je een taal leert",
+            "en": "language class"
+          },
+          "example": {
+            "nl": "Saba komt voor het eerst naar een taalles.",
+            "en": "Saba comes to a language class for the first time."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "dichtbij",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "op korte afstand",
+            "en": "nearby"
+          },
+          "example": {
+            "nl": "De leerkracht schrijft: woon jij hier dichtbij?",
+            "en": "The teacher writes: do you live nearby?"
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "oefenen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets herhalen om het beter te leren",
+            "en": "to practise"
+          },
+          "example": {
+            "nl": "Saba oefent de vraag met haar tafelgenoot.",
+            "en": "Saba practises the question with her table partner."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een vraag stellen",
+            "en": "Asking a question"
+          },
+          "explanation": {
+            "nl": "Bij deze vraag staat het werkwoord vóór het onderwerp.",
+            "en": "In this question, the verb comes before the subject."
+          },
+          "examples": [
+            {
+              "nl": "De leerkracht schrijft: woon jij hier dichtbij?",
+              "en": "The teacher writes: do you live nearby?"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wie herkent Saba bij het raam?",
+            "en": "Whom does Saba recognise by the window?"
+          },
+          "options": [
+            {
+              "nl": "Haar zus",
+              "en": "Her sister"
+            },
+            {
+              "nl": "Haar dokter",
+              "en": "Her doctor"
+            },
+            {
+              "nl": "Haar buurvrouw",
+              "en": "Her neighbour"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Bij het raam ziet ze haar buurvrouw zitten.",
+            "en": "By the window, she sees her neighbour sitting."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarover praten ze in de pauze?",
+            "en": "What do they talk about during the break?"
+          },
+          "options": [
+            {
+              "nl": "De wandeling naar huis",
+              "en": "The walk home"
+            },
+            {
+              "nl": "Een vliegreis",
+              "en": "A flight"
+            },
+            {
+              "nl": "Een voetbalwedstrijd",
+              "en": "A football match"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze praten over de wandeling terug naar huis.",
+            "en": "They talk about the walk back home."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-menu-met-klemtoon",
+      "topic_id": "languages",
+      "title": {
+        "nl": "De vraag klinkt anders",
+        "en": "The question sounds different"
+      },
+      "plot_key": "A learner practises a polite menu question slowly and uses it successfully at a café.",
+      "lines": [
+        {
+          "nl": "Op het menu staat een nieuw woord.",
+          "en": "There is a new word on the menu."
+        },
+        {
+          "nl": "Ben wil weten wat het precies betekent.",
+          "en": "Ben wants to know exactly what it means."
+        },
+        {
+          "nl": "Hij zegt alleen het woord heel snel.",
+          "en": "He says only the word very quickly."
+        },
+        {
+          "nl": "De ober begrijpt zijn vraag nog niet.",
+          "en": "The waiter does not understand his question yet."
+        },
+        {
+          "nl": "Bens vriendin zegt langzaam een hele vraag.",
+          "en": "Ben's friend slowly says a whole question."
+        },
+        {
+          "nl": "Ben herhaalt: wat zit er in deze soep?",
+          "en": "Ben repeats: what is in this soup?"
+        },
+        {
+          "nl": "De ober noemt de groenten één voor één.",
+          "en": "The waiter names the vegetables one by one."
+        },
+        {
+          "nl": "Ben bedankt hem en kiest daarna zijn maaltijd.",
+          "en": "Ben thanks him and then chooses his meal."
+        }
+      ],
+      "words": [
+        {
+          "term": "betekenen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een bepaalde inhoud of betekenis hebben",
+            "en": "to mean"
+          },
+          "example": {
+            "nl": "Ben wil weten wat het precies betekent.",
+            "en": "Ben wants to know exactly what it means."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "herhalen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "nog een keer zeggen",
+            "en": "to repeat"
+          },
+          "example": {
+            "nl": "Ben herhaalt: wat zit er in deze soep?",
+            "en": "Ben repeats: what is in this soup?"
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de maaltijd",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "eten op een vast moment van de dag",
+            "en": "meal"
+          },
+          "example": {
+            "nl": "Ben bedankt hem en kiest daarna zijn maaltijd.",
+            "en": "Ben thanks him and then chooses his meal."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een vraag stellen",
+            "en": "Asking a question"
+          },
+          "explanation": {
+            "nl": "Bij deze vraag staat het werkwoord vóór het onderwerp.",
+            "en": "In this question, the verb comes before the subject."
+          },
+          "examples": [
+            {
+              "nl": "Ben herhaalt: wat zit er in deze soep?",
+              "en": "Ben repeats: what is in this soup?"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom herhaalt Ben een hele vraag?",
+            "en": "Why does Ben repeat a whole question?"
+          },
+          "options": [
+            {
+              "nl": "De ober begrijpt hem eerst niet",
+              "en": "The waiter does not understand him at first"
+            },
+            {
+              "nl": "De soep is koud",
+              "en": "The soup is cold"
+            },
+            {
+              "nl": "Het café sluit",
+              "en": "The café is closing"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De ober begrijpt zijn vraag nog niet.",
+            "en": "The waiter does not understand his question yet."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat noemt de ober?",
+            "en": "What does the waiter name?"
+          },
+          "options": [
+            {
+              "nl": "Alle prijzen",
+              "en": "All the prices"
+            },
+            {
+              "nl": "De groenten",
+              "en": "The vegetables"
+            },
+            {
+              "nl": "De tafelnummers",
+              "en": "The table numbers"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De ober noemt de groenten één voor één.",
+            "en": "The waiter names the vegetables one by one."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-woord-op-straat",
+      "topic_id": "study-habits",
+      "title": {
+        "nl": "Het woord komt terug",
+        "en": "The word comes back"
+      },
+      "plot_key": "A learner uses a newly learned word in a real shop and notes the situation rather than memorising an isolated list.",
+      "lines": [
+        {
+          "nl": "In de les leert Aya het woord ruilen.",
+          "en": "In class, Aya learns the word exchange."
+        },
+        {
+          "nl": "Zij schrijft het eerst alleen in haar schrift.",
+          "en": "She first writes it on its own in her notebook."
+        },
+        {
+          "nl": "Thuis ligt een cadeau dat niet goed past.",
+          "en": "At home, there is a present that does not fit."
+        },
+        {
+          "nl": "De volgende dag gaat ze naar de winkel.",
+          "en": "The next day, she goes to the shop."
+        },
+        {
+          "nl": "Ze vraagt rustig of ze het mag ruilen.",
+          "en": "She calmly asks whether she may exchange it."
+        },
+        {
+          "nl": "De medewerker toont haar een andere maat.",
+          "en": "The staff member shows her another size."
+        },
+        {
+          "nl": "Aya schrijft later ook die vraag in haar schrift.",
+          "en": "Aya later writes that question in her notebook too."
+        },
+        {
+          "nl": "Nu hoort het woord bij haar eigen verhaal.",
+          "en": "Now the word belongs to her own story."
+        }
+      ],
+      "words": [
+        {
+          "term": "ruilen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets geven en iets anders ervoor krijgen",
+            "en": "to exchange"
+          },
+          "example": {
+            "nl": "In de les leert Aya het woord ruilen.",
+            "en": "In class, Aya learns the word exchange."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het schrift",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "boekje om in te schrijven",
+            "en": "notebook"
+          },
+          "example": {
+            "nl": "Zij schrijft het eerst alleen in haar schrift.",
+            "en": "She first writes it on its own in her notebook."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "passen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "de juiste grootte hebben",
+            "en": "to fit"
+          },
+          "example": {
+            "nl": "Thuis ligt een cadeau dat niet goed past.",
+            "en": "At home, there is a present that does not fit."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Ze vraagt rustig of ze het mag ruilen.",
+              "en": "She calmly asks whether she may exchange it."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk woord leert Aya?",
+            "en": "Which word does Aya learn?"
+          },
+          "options": [
+            {
+              "nl": "Betalen",
+              "en": "Pay"
+            },
+            {
+              "nl": "Kiezen",
+              "en": "Choose"
+            },
+            {
+              "nl": "Ruilen",
+              "en": "Exchange"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In de les leert Aya het woord ruilen.",
+            "en": "In class, Aya learns the word exchange."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat schrijft ze later erbij?",
+            "en": "What does she add later?"
+          },
+          "options": [
+            {
+              "nl": "De vraag uit de winkel",
+              "en": "The question from the shop"
+            },
+            {
+              "nl": "Een heel boek",
+              "en": "A whole book"
+            },
+            {
+              "nl": "Een boodschappenlijst",
+              "en": "A shopping list"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Aya schrijft later ook die vraag in haar schrift.",
+            "en": "Aya later writes that question in her notebook too."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-proeftoets-in-delen",
+      "topic_id": "exams-assessments",
+      "title": {
+        "nl": "Eerst de vraag lezen",
+        "en": "Read the question first"
+      },
+      "plot_key": "A learner improves practice-test accuracy by checking what a question asks before choosing a familiar-looking option.",
+      "lines": [
+        {
+          "nl": "In de oefentoets ziet Sem een bekende naam.",
+          "en": "In the practice test, Sem sees a familiar name."
+        },
+        {
+          "nl": "Hij kiest meteen het antwoord met die naam.",
+          "en": "He immediately chooses the answer with that name."
+        },
+        {
+          "nl": "Maar de vraag gaat eigenlijk over een plaats.",
+          "en": "But the question is actually about a place."
+        },
+        {
+          "nl": "Sem begrijpt waarom zijn keuze niet past.",
+          "en": "Sem understands why his choice does not fit."
+        },
+        {
+          "nl": "Bij de volgende vraag onderstreept hij eerst waar.",
+          "en": "At the next question, he first underlines where."
+        },
+        {
+          "nl": "Daarna zoekt hij de plaats in de tekst.",
+          "en": "Afterwards, he looks for the place in the text."
+        },
+        {
+          "nl": "Hij leest ook de andere antwoorden nog eens.",
+          "en": "He also reads the other answers once more."
+        },
+        {
+          "nl": "Nu kan hij zeggen waar zijn antwoord staat.",
+          "en": "Now he can say where his answer is found."
+        }
+      ],
+      "words": [
+        {
+          "term": "de oefentoets",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "toets om mee te oefenen",
+            "en": "practice test"
+          },
+          "example": {
+            "nl": "In de oefentoets ziet Sem een bekende naam.",
+            "en": "In the practice test, Sem sees a familiar name."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "onderstrepen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een lijn onder een woord zetten",
+            "en": "to underline"
+          },
+          "example": {
+            "nl": "Bij de volgende vraag onderstreept hij eerst waar.",
+            "en": "At the next question, he first underlines where."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de keuze",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "wat je kiest",
+            "en": "choice"
+          },
+          "example": {
+            "nl": "Sem begrijpt waarom zijn keuze niet past.",
+            "en": "Sem understands why his choice does not fit."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Daarna zoekt hij de plaats in de tekst.",
+              "en": "Afterwards, he looks for the place in the text."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar gaat de eerste vraag over?",
+            "en": "What is the first question about?"
+          },
+          "options": [
+            {
+              "nl": "Een plaats",
+              "en": "A place"
+            },
+            {
+              "nl": "Een naam",
+              "en": "A name"
+            },
+            {
+              "nl": "Een kleur",
+              "en": "A colour"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Maar de vraag gaat eigenlijk over een plaats.",
+            "en": "But the question is actually about a place."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet Sem bij de volgende vraag eerst?",
+            "en": "What does Sem do first at the next question?"
+          },
+          "options": [
+            {
+              "nl": "Meteen kiezen",
+              "en": "Choose immediately"
+            },
+            {
+              "nl": "Waar onderstrepen",
+              "en": "Underline where"
+            },
+            {
+              "nl": "De tekst sluiten",
+              "en": "Close the text"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Bij de volgende vraag onderstreept hij eerst waar.",
+            "en": "At the next question, he first underlines where."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-lege-studieplek",
+      "topic_id": "university-life",
+      "title": {
+        "nl": "Een kamer voor stilte",
+        "en": "A room for quiet"
+      },
+      "plot_key": "A student needing a quiet study space learns to book a free room instead of competing with a busy café.",
+      "lines": [
+        {
+          "nl": "Op de campus zoekt Nora een rustige studieplek.",
+          "en": "On campus, Nora looks for a quiet study space."
+        },
+        {
+          "nl": "In het café praten veel studenten door elkaar.",
+          "en": "In the café, many students are talking at once."
+        },
+        {
+          "nl": "Ze probeert haar tekst drie keer te lezen.",
+          "en": "She tries to read her text three times."
+        },
+        {
+          "nl": "Dan vraagt ze bij de balie naar een andere ruimte.",
+          "en": "Then she asks at the desk for another space."
+        },
+        {
+          "nl": "De medewerker toont een lijst met vrije kamers.",
+          "en": "The staff member shows a list of free rooms."
+        },
+        {
+          "nl": "Nora kiest een halfuur in kamer vijf.",
+          "en": "Nora chooses half an hour in room five."
+        },
+        {
+          "nl": "Ze schrijft de tijd op en loopt naar boven.",
+          "en": "She writes down the time and walks upstairs."
+        },
+        {
+          "nl": "Na haar werk maakt ze plaats voor de volgende student.",
+          "en": "After her work, she makes room for the next student."
+        }
+      ],
+      "words": [
+        {
+          "term": "de studieplek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plaats waar je kunt studeren",
+            "en": "study space"
+          },
+          "example": {
+            "nl": "Op de campus zoekt Nora een rustige studieplek.",
+            "en": "On campus, Nora looks for a quiet study space."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "vrij",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "nog niet in gebruik",
+            "en": "available"
+          },
+          "example": {
+            "nl": "De medewerker toont een lijst met vrije kamers.",
+            "en": "The staff member shows a list of free rooms."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de ruimte",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kamer of beschikbare plek",
+            "en": "room or space"
+          },
+          "example": {
+            "nl": "Dan vraagt ze bij de balie naar een andere ruimte.",
+            "en": "Then she asks at the desk for another space."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Nora kiest een halfuur in kamer vijf.",
+              "en": "Nora chooses half an hour in room five."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zoekt Nora een andere plek?",
+            "en": "Why does Nora look for another place?"
+          },
+          "options": [
+            {
+              "nl": "Het café is dicht",
+              "en": "The café is closed"
+            },
+            {
+              "nl": "Er is geen licht",
+              "en": "There is no light"
+            },
+            {
+              "nl": "Er wordt veel gepraat",
+              "en": "There is much talking"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "In het café praten veel studenten door elkaar.",
+            "en": "In the café, many students are talking at once."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke kamer kiest ze?",
+            "en": "Which room does she choose?"
+          },
+          "options": [
+            {
+              "nl": "Kamer vijf",
+              "en": "Room five"
+            },
+            {
+              "nl": "Kamer drie",
+              "en": "Room three"
+            },
+            {
+              "nl": "Kamer één",
+              "en": "Room one"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Nora kiest een halfuur in kamer vijf.",
+            "en": "Nora chooses half an hour in room five."
+          }
+        }
+      ]
+    }
+  ]
+}

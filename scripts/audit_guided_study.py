@@ -10,9 +10,14 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "apps/api/src"))
+
+from dlp.domains.study.reading_sources import read_reading_batches
 
 STAGES = (
     "pre-a1", "a1", "pre-a2", "a2", "pre-b1", "b1", "pre-b2", "b2",
@@ -91,14 +96,17 @@ def banks(content: Path, stage: str) -> tuple[list[dict], list[dict]]:
     return stories, practice
 
 
-def validate_pack(path: Path, stage: str, topics: dict[str, dict]) -> list[dict]:
-    if not path.exists():
+def validate_pack(path: Path, stage: str, topics: dict[str, dict], *,
+                  data: dict | None = None, reading_only: bool = False) -> list[dict]:
+    if data is None and not path.exists():
         return []
-    data = read(path)
+    data = read(path) if data is None else data
     if data.get("schema_version") != 1 or data.get("stage_id") != stage:
         raise ValueError(f"{path}: schema and stage must match the filename")
     if data.get("review_status") != "unreviewed":
         raise ValueError(f"{path}: human approval must not be invented")
+    if reading_only and data.get("language_variety") != "nl-BE":
+        raise ValueError(f"{path}: original readings require Belgian Standard Dutch")
     lessons = data.get("lessons", [])
     ids: set[str] = set()
     for lesson in lessons:
@@ -110,6 +118,14 @@ def validate_pack(path: Path, stage: str, topics: dict[str, dict]) -> list[dict]
             raise ValueError(f"{identity}: pre-A1 must use a concrete foundation context")
         if not identity.startswith(f"{stage}-") or identity in ids:
             raise ValueError(f"{path}: unique stage-bound lesson IDs required")
+        if reading_only:
+            if not identity.startswith(f"{stage}-read-") or len(identity) > 100:
+                raise ValueError(f"{path}: original readings require exact stage-bound reading IDs")
+            if not isinstance(lesson.get("plot_key"), str) or len(lesson["plot_key"].strip()) < 20:
+                raise ValueError(f"{identity}: an original concrete plot synopsis is required")
+            if lesson.get("source_id") is not None or any(lesson.get(skill) is not None
+                                                         for skill in ("speaking", "writing", "listening")):
+                raise ValueError(f"{identity}: reading batches must remain original and reading-only")
         ids.add(identity)
         localized(lesson.get("title"), f"{identity}/title")
         lines = lesson.get("lines", [])
@@ -117,6 +133,20 @@ def validate_pack(path: Path, stage: str, topics: dict[str, dict]) -> list[dict]
             raise ValueError(f"{identity}: an original 8–12-sentence scene is required")
         for number, line in enumerate(lines, 1):
             localized(line, f"{identity}/line-{number}")
+        if reading_only:
+            exact_lines = {(normalized(line["nl"]), normalized(line["en"])) for line in lines}
+            words = lesson.get("words", [])
+            if not 3 <= len(words) <= 20 or len({normalized(word.get("term", "")) for word in words}) != len(words):
+                raise ValueError(f"{identity}: at least three distinct prepared words are required")
+            for word in words:
+                localized(word.get("meaning"), f"{identity}/{word.get('term')}/meaning")
+                localized(word.get("example"), f"{identity}/{word.get('term')}/example")
+                if word.get("minimum_stage") != stage or not word.get("part_of_speech"):
+                    raise ValueError(f"{identity}: reading words need their authored stage and word class")
+                if (normalized(word["example"]["nl"]), normalized(word["example"]["en"])) not in exact_lines:
+                    raise ValueError(f"{identity}: word preparation must use an exact bilingual story line")
+            if not lesson.get("grammar"):
+                raise ValueError(f"{identity}: an original reading needs source-grounded grammar preparation")
         for rule in lesson.get("grammar", []):
             localized(rule.get("title"), f"{identity}/grammar-title")
             localized(rule.get("explanation"), f"{identity}/grammar-explanation")
@@ -128,6 +158,8 @@ def validate_pack(path: Path, stage: str, topics: dict[str, dict]) -> list[dict]
                 if not any(all(normalized(example[lang]) in normalized(line[lang])
                                for lang in ("nl", "en")) for line in lines):
                     raise ValueError(f"{identity}: grammar example does not occur in this scene")
+                if reading_only and (normalized(example["nl"]), normalized(example["en"])) not in exact_lines:
+                    raise ValueError(f"{identity}: grammar preparation must preserve an exact bilingual story line")
         for language in ("nl", "en"):
             values = [normalized(line[language]) for line in lines]
             if len(values) != len(set(values)):
@@ -154,6 +186,48 @@ def validate_pack(path: Path, stage: str, topics: dict[str, dict]) -> list[dict]
     return lessons
 
 
+def reading_lessons(content: Path, topics: dict[str, dict]) -> dict[str, list[dict]]:
+    """Keep original batch identities and explicit topic assignments unchanged."""
+    stages: dict[str, list[dict]] = {stage: [] for stage in STAGES}
+    identities: set[str] = set()
+    plots: set[str] = set()
+    for stage, path, document in read_reading_batches(content):
+        if stage not in STAGES:
+            raise ValueError(f"{path}: reading batch has an unknown stage")
+        lessons = validate_pack(path, stage, topics, data=document, reading_only=True)
+        for lesson in lessons:
+            plot = normalized(lesson["plot_key"])
+            if lesson["id"] in identities or plot in plots:
+                raise ValueError(f"{lesson['id']}: reading batches repeat an identity or plot")
+            identities.add(lesson["id"])
+            plots.add(plot)
+        stages[stage].extend(lessons)
+    return stages
+
+
+def reading_mappings(content: Path, topics: dict[str, dict]) -> list[dict]:
+    path = content / "study" / "reading-map.json"
+    if not path.exists():
+        return []
+    document = read(path)
+    if set(document) != {"schema_version", "mappings"} or document["schema_version"] != 1:
+        raise ValueError("unsupported explicit reading mapping")
+    mappings = document["mappings"]
+    if not isinstance(mappings, list):
+        raise TypeError("reading mappings must be an authored list")
+    identities: set[tuple[str, str]] = set()
+    for mapping in mappings:
+        if set(mapping) != {"stage_id", "topic_id", "story_id"}:
+            raise ValueError("reading mapping has unsupported fields")
+        if mapping["stage_id"] not in STAGES or mapping["topic_id"] not in topics:
+            raise ValueError("reading mapping requires a known stage and canonical topic")
+        identity = (mapping["stage_id"], mapping["story_id"])
+        if identity in identities:
+            raise ValueError("an original reading may belong to only one topic")
+        identities.add(identity)
+    return mappings
+
+
 def make_index(content: Path, topics: list[dict]) -> dict:
     """Only explicit authored topic assignments enter the guided browser.
 
@@ -163,6 +237,16 @@ def make_index(content: Path, topics: list[dict]) -> dict:
     manually checked source-map entry. Short originals do not become readings.
     """
     known = {topic["id"]: topic for topic in topics}
+    readings = reading_lessons(content, known)
+    mapped_readings = reading_mappings(content, known)
+    # Reuse the catalogue's structural exclusions. A short template does not
+    # become an authored reading merely by receiving a canonical topic label.
+    from dlp.domains.curriculum.story_inventory import audit as story_audit
+
+    audited = story_audit(content)
+    eligible = {row["stage"]: set(row["legacy_library_eligible_story_ids"]) for row in audited["stages"]}
+    published_readings = {(record["stage_id"], record["source_kind"], record["source_id"])
+                          for record in audited["canonical_stories"] if record["eligible"]}
     source_document = read(content / "study" / "source-map.json")
     if set(source_document) != {"schema_version", "mappings"} or source_document["schema_version"] != 1:
         raise ValueError("unsupported explicit source mapping")
@@ -199,7 +283,33 @@ def make_index(content: Path, topics: list[dict]) -> dict:
             if lesson.get("source_id") and lesson["source_id"] not in originals:
                 raise ValueError(f"{lesson['id']}: referenced original source does not exist in its stage")
             for skill in SKILLS:
+                if skill == "reading" and (stage, "guided", lesson["id"]) not in published_readings:
+                    continue
                 skills[skill].setdefault(lesson["topic_id"], []).append({"source": "pack", "id": lesson["id"]})
+        for lesson in readings[stage]:
+            if (stage, "reading", lesson["id"]) in published_readings:
+                skills["reading"].setdefault(lesson["topic_id"], []).append({"source": "reading", "id": lesson["id"]})
+        adapted = {lesson["source_id"] for lesson in lessons if lesson.get("source_id")}
+        original_stories = {story["id"]: story for story in stories}
+        assignments = {mapping["story_id"]: mapping["topic_id"]
+                       for mapping in mapped_readings if mapping["stage_id"] == stage}
+        for story_id, topic_id in assignments.items():
+            if story_id not in original_stories or story_id not in eligible[stage]:
+                raise ValueError(f"{stage}: explicit reading mapping must resolve to an eligible original story")
+            declared = original_stories[story_id].get("topic_id")
+            if declared in known and declared != topic_id:
+                raise ValueError(f"{story_id}: explicit reading mapping contradicts its authored topic")
+        for story in stories:
+            # Old topic IDs used by another lesson engine are not canonical
+            # labels. Only an actual canonical assignment or reviewed manifest
+            # entry permits an original story into this topic browser.
+            topic_id = assignments.get(story["id"], story.get("topic_id"))
+            if (topic_id not in known or story["id"] not in eligible[stage] or story["id"] in adapted
+                    or (stage, "library", story["id"]) not in published_readings):
+                continue
+            if stage == "pre-a1" and not known[topic_id].get("foundation_suitable"):
+                raise ValueError(f"{story['id']}: pre-A1 reading requires a concrete foundation topic")
+            skills["reading"].setdefault(topic_id, []).append({"source": "story", "id": story["id"]})
         stage_mappings = [mapping for mapping in manual if mapping["stage_id"] == stage]
         if stage_mappings:
             original_path = content / "source-lessons" / f"{stage}.json"
@@ -216,9 +326,34 @@ def make_index(content: Path, topics: list[dict]) -> dict:
     return {"schema_version": 1, "stages": stages}
 
 
+def validate_reading_reachability(index: dict, records: list[dict]) -> dict[str, int]:
+    """Every counted story must have one reachable, stage-correct Reading entry."""
+    source_names = {"guided": "pack", "library": "story", "reading": "reading"}
+    expected = {
+        (record["stage_id"], source_names[record["source_kind"]], record["source_id"])
+        for record in records if record["eligible"]
+    }
+    actual = Counter(
+        (stage, reference["source"], reference["id"])
+        for stage, skills in index["stages"].items()
+        for references in skills.get("reading", {}).values()
+        for reference in references
+    )
+    missing = expected - actual.keys()
+    unexpected = actual.keys() - expected
+    repeated = {identity for identity, count in actual.items() if count != 1}
+    if missing or unexpected or repeated:
+        raise ValueError(
+            "Reading inventory must match the selectable catalogue exactly: "
+            f"{len(missing)} missing, {len(unexpected)} uncounted, {len(repeated)} repeated entries"
+        )
+    return dict(Counter(stage for stage, _, _ in expected))
+
+
 def audit(content: Path, *, require_minimum: int = 50, source_index: dict | None = None) -> dict:
     topics = taxonomy(content)
     known = {topic["id"]: topic for topic in topics}
+    readings = reading_lessons(content, known)
     seen: dict[str, str] = {}
     rows = []
     for stage in STAGES:
@@ -226,17 +361,25 @@ def audit(content: Path, *, require_minimum: int = 50, source_index: dict | None
         distinct_topics = {lesson["topic_id"] for lesson in lessons}
         if len(distinct_topics) < require_minimum:
             raise ValueError(f"{stage}: only {len(distinct_topics)} authored topics; {require_minimum} required")
-        for lesson in lessons:
+        for lesson in [*lessons, *readings[stage]]:
             text = normalized(" ".join(line["nl"] for line in lesson["lines"]))
             if text in seen:
                 raise ValueError(f"{lesson['id']}: exact Dutch scene duplicates {seen[text]}")
             seen[text] = lesson["id"]
         rows.append({"stage": stage, "authored_topics": len(distinct_topics), "scenes": len(lessons),
+                     "reading_scenes": len(readings[stage]),
                      "authored_grammar_lessons": sum(bool(lesson.get("grammar")) for lesson in lessons),
                      "review_status": "unreviewed"})
     index = source_index if source_index is not None else make_index(content, topics)
+    from dlp.domains.curriculum.story_inventory import canonical_story_records
+
+    reachable = validate_reading_reachability(index, canonical_story_records(content))
     for row in rows:
+        row["selectable_readings"] = reachable.get(row["stage"], 0)
         row["available_topics"] = {skill: len(index["stages"][row["stage"]][skill]) for skill in SKILLS}
+        for skill, count in row["available_topics"].items():
+            if count < require_minimum:
+                raise ValueError(f"{row['stage']}/{skill}: only {count} selectable topics; {require_minimum} required")
     return {"schema_version": 1, "claim": "Structural coverage only; CEFR, Dutch/English and acoustic review remain separate.",
             "canonical_topics": len(topics), "original_vocabulary_examples": sum(len(t["vocabulary"]) for t in topics),
             "stages": rows}
@@ -278,7 +421,7 @@ def main() -> None:
     print(result["claim"])
     for row in result["stages"]:
         counts = " ".join(f"{skill}={count}" for skill, count in row["available_topics"].items())
-        print(f"{row['stage']:7} guided-scenes={row['scenes']:3} {counts}")
+        print(f"{row['stage']:7} guided-scenes={row['scenes']:3} original-readings={row['reading_scenes']:3} {counts}")
 
 
 if __name__ == "__main__":

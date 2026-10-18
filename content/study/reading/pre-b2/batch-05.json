@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-breuken-in-de-pottenbakkerij",
+      "topic_id": "education",
+      "title": {
+        "nl": "Breuken in de pottenbakkerij",
+        "en": "Fractions in the pottery studio"
+      },
+      "plot_key": "An adult who fears classroom mathematics successfully rescales a ceramic glaze recipe but must bridge practical confidence back to written fractions.",
+      "lines": [
+        {
+          "nl": "Tijdens haar eerste avondles wiskunde hield Ellen haar schrift dicht, hoewel ze thuis probleemloos recepten voor grote groepen aanpaste.",
+          "en": "During her first evening mathematics class, Ellen kept her notebook closed, although at home she adjusted recipes for large groups without difficulty."
+        },
+        {
+          "nl": "Op school had ze vroeger geleerd dat een verkeerd antwoord betekende dat je gewoon niet goed was met cijfers.",
+          "en": "At school she had previously learned that a wrong answer meant you were simply not good with numbers."
+        },
+        {
+          "nl": "De volgende zaterdag vroeg haar keramiekleraar wie een halve hoeveelheid glazuur kon maken uit een recept voor twaalf bekers.",
+          "en": "The following Saturday her ceramics teacher asked who could make half a quantity of glaze from a recipe for twelve cups."
+        },
+        {
+          "nl": "Ellen halveerde de gewichten onmiddellijk en berekende hoeveel extra mengsel nodig was voor twee onverwachte deelnemers.",
+          "en": "Ellen immediately halved the weights and calculated how much extra mixture was needed for two unexpected participants."
+        },
+        {
+          "nl": "Toen een medecursist vroeg hoe ze dat deed, tekende ze zes bekers met een lepel mengsel per beker.",
+          "en": "When a fellow learner asked how she did it, she drew six cups with one spoonful of mixture per cup."
+        },
+        {
+          "nl": "Pas bij het noteren merkte ze dat haar tekening precies de breuk voorstelde die haar op donderdag had doen blokkeren.",
+          "en": "Only when writing it down did she notice that her drawing represented exactly the fraction that had made her freeze on Thursday."
+        },
+        {
+          "nl": "Ze nam haar blad mee naar de wiskundeles en vroeg de docent om samen de stap van tekening naar notatie te bekijken.",
+          "en": "She took her sheet to the mathematics lesson and asked the teacher to examine the step from drawing to notation together."
+        },
+        {
+          "nl": "De sommen werden niet plots vanzelf gemakkelijk, maar voortaan begon ze met wat ze al kon in plaats van met wat ze vreesde.",
+          "en": "The calculations did not suddenly become easy by themselves, but from then on she began with what she could already do instead of what she feared."
+        }
+      ],
+      "words": [
+        {
+          "term": "het glazuur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een laagje dat keramiek bedekt en bij het bakken hard wordt",
+            "en": "ceramic glaze"
+          },
+          "example": {
+            "nl": "De volgende zaterdag vroeg haar keramiekleraar wie een halve hoeveelheid glazuur kon maken uit een recept voor twaalf bekers.",
+            "en": "The following Saturday her ceramics teacher asked who could make half a quantity of glaze from a recipe for twelve cups."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "halveren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "in twee gelijke hoeveelheden verdelen",
+            "en": "to halve"
+          },
+          "example": {
+            "nl": "Ellen halveerde de gewichten onmiddellijk en berekende hoeveel extra mengsel nodig was voor twee onverwachte deelnemers.",
+            "en": "Ellen immediately halved the weights and calculated how much extra mixture was needed for two unexpected participants."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de notatie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de manier waarop iets met tekens wordt opgeschreven",
+            "en": "notation"
+          },
+          "example": {
+            "nl": "Ze nam haar blad mee naar de wiskundeles en vroeg de docent om samen de stap van tekening naar notatie te bekijken.",
+            "en": "She took her sheet to the mathematics lesson and asked the teacher to examine the step from drawing to notation together."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoewel met tegenstelling",
+            "en": "Although with contrast"
+          },
+          "explanation": {
+            "nl": "Hoewel plaatst haar angst tegenover een vaardigheid die ze al bezit.",
+            "en": "Hoewel places her fear in contrast with a skill she already possesses."
+          },
+          "examples": [
+            {
+              "nl": "Tijdens haar eerste avondles wiskunde hield Ellen haar schrift dicht, hoewel ze thuis probleemloos recepten voor grote groepen aanpaste.",
+              "en": "During her first evening mathematics class, Ellen kept her notebook closed, although at home she adjusted recipes for large groups without difficulty."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verbindt de twee lessen?",
+            "en": "What connects the two lessons?"
+          },
+          "options": [
+            {
+              "nl": "Ze vinden in hetzelfde lokaal plaats.",
+              "en": "They take place in the same room."
+            },
+            {
+              "nl": "Dezelfde verhouding verschijnt als recept en als breuk.",
+              "en": "The same ratio appears as a recipe and as a fraction."
+            },
+            {
+              "nl": "Beide leraren verbieden tekeningen.",
+              "en": "Both teachers ban drawings."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Haar tekening stelt de wiskundige breuk concreet voor.",
+            "en": "Her drawing represents the mathematical fraction concretely."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vraagt Ellen aan de wiskundedocent?",
+            "en": "What does Ellen ask the mathematics teacher?"
+          },
+          "options": [
+            {
+              "nl": "De sommen helemaal weg te laten.",
+              "en": "To omit the calculations entirely."
+            },
+            {
+              "nl": "Het keramiekwerk over te nemen.",
+              "en": "To take over the ceramics work."
+            },
+            {
+              "nl": "De verbinding tussen haar tekening en geschreven tekens te helpen leggen.",
+              "en": "To help connect her drawing with written symbols."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze vraagt de stap van tekening naar notatie samen te bekijken.",
+            "en": "She asks to examine the step from drawing to notation together."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-wind-op-het-dakterras",
+      "topic_id": "weather",
+      "title": {
+        "nl": "De wind op het dakterras",
+        "en": "The wind on the roof terrace"
+      },
+      "plot_key": "A rooftop dinner host misreads sheltered conditions until a neighbour's weather vane saves both the meal and the invitation.",
+      "lines": [
+        {
+          "nl": "Voor hun eerste etentje op het nieuwe dakterras had Diego de weersvoorspelling gecontroleerd: droog weer en een aangename temperatuur.",
+          "en": "For their first dinner on the new roof terrace, Diego had checked the forecast: dry weather and a pleasant temperature."
+        },
+        {
+          "nl": "Beneden op straat voelde hij nauwelijks wind, dus dekte hij boven de tafel met het lichte servies van zijn grootmoeder.",
+          "en": "Down in the street he felt hardly any wind, so upstairs he set the table with his grandmother's lightweight tableware."
+        },
+        {
+          "nl": "Zijn buurvrouw keek naar een zelfgemaakt windvaantje op haar balkon en vroeg of hij ook een plaats binnen had voorzien.",
+          "en": "His neighbour looked at a homemade weather vane on her balcony and asked whether he had also arranged a place indoors."
+        },
+        {
+          "nl": "Diego wees lachend naar de blauwe lucht en zei dat hij haar bezorgdheid sympathiek maar overdreven vond.",
+          "en": "Laughing, Diego pointed at the blue sky and said he found her concern kind but exaggerated."
+        },
+        {
+          "nl": "Toen de gasten kwamen, tilde een windstoot eerst de servetten op en daarna de complete schaal met ongesneden brood.",
+          "en": "When the guests arrived, a gust first lifted the napkins and then the entire tray of unsliced bread."
+        },
+        {
+          "nl": "De buurvrouw stak vanaf haar balkon een stevige mand toe, waarin ze de borden veilig naar beneden konden dragen.",
+          "en": "The neighbour passed over a sturdy basket from her balcony in which they could safely carry the plates downstairs."
+        },
+        {
+          "nl": "In de kleine keuken at iedereen met het bord op schoot, terwijl het dakterras door het raam nog even feestelijk leek.",
+          "en": "In the small kitchen everyone ate with a plate on their lap while the roof terrace still looked just as festive through the window."
+        },
+        {
+          "nl": "Diego vroeg de buurvrouw erbij en gaf haar de beste stoel; voor het volgende diner wilde hij eerst haar vaantje bekijken.",
+          "en": "Diego invited the neighbour to join them and gave her the best chair; before the next dinner he wanted to check her weather vane first."
+        }
+      ],
+      "words": [
+        {
+          "term": "het windvaantje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een klein voorwerp dat de windrichting toont",
+            "en": "small weather vane"
+          },
+          "example": {
+            "nl": "Zijn buurvrouw keek naar een zelfgemaakt windvaantje op haar balkon en vroeg of hij ook een plaats binnen had voorzien.",
+            "en": "His neighbour looked at a homemade weather vane on her balcony and asked whether he had also arranged a place indoors."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "overdreven",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "sterker dan nodig of passend",
+            "en": "exaggerated"
+          },
+          "example": {
+            "nl": "Diego wees lachend naar de blauwe lucht en zei dat hij haar bezorgdheid sympathiek maar overdreven vond.",
+            "en": "Laughing, Diego pointed at the blue sky and said he found her concern kind but exaggerated."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de windstoot",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een korte plotselinge krachtige wind",
+            "en": "gust"
+          },
+          "example": {
+            "nl": "Toen de gasten kwamen, tilde een windstoot eerst de servetten op en daarna de complete schaal met ongesneden brood.",
+            "en": "When the guests arrived, a gust first lifted the napkins and then the entire tray of unsliced bread."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarin voor een middel dat iets bevat",
+            "en": "In which for a containing object"
+          },
+          "explanation": {
+            "nl": "Waarin verwijst naar de mand waarin de borden gedragen worden.",
+            "en": "Waarin refers to the basket in which the plates are carried."
+          },
+          "examples": [
+            {
+              "nl": "De buurvrouw stak vanaf haar balkon een stevige mand toe, waarin ze de borden veilig naar beneden konden dragen.",
+              "en": "The neighbour passed over a sturdy basket from her balcony in which they could safely carry the plates downstairs."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat had Diego onvoldoende meegenomen in zijn plan?",
+            "en": "What had Diego not sufficiently considered in his plan?"
+          },
+          "options": [
+            {
+              "nl": "De wind kan boven sterker zijn dan beneden.",
+              "en": "The wind can be stronger upstairs than downstairs."
+            },
+            {
+              "nl": "Zijn gasten eten geen brood.",
+              "en": "His guests do not eat bread."
+            },
+            {
+              "nl": "De buurvrouw woont niet thuis.",
+              "en": "The neighbour does not live at home."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De rustige straat zegt niet genoeg over het dakterras.",
+            "en": "The calm street does not tell him enough about the roof terrace."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe wordt de buurvrouw aan het einde behandeld?",
+            "en": "How is the neighbour treated at the end?"
+          },
+          "options": [
+            {
+              "nl": "Ze moet alles opruimen.",
+              "en": "She has to clean everything up."
+            },
+            {
+              "nl": "Haar praktische kennis wordt gewaardeerd.",
+              "en": "Her practical knowledge is appreciated."
+            },
+            {
+              "nl": "Ze krijgt haar mand niet terug.",
+              "en": "She does not get her basket back."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Diego nodigt haar uit en wil haar vaantje voortaan raadplegen.",
+            "en": "Diego invites her and wants to consult her weather vane in future."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-tweedehands-bordspel",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "Het spel zonder handleiding",
+        "en": "The game without instructions"
+      },
+      "plot_key": "Friends invent rules for an incomplete vintage board game, then choose between their enjoyable invention and the unexpectedly dull original.",
+      "lines": [
+        {
+          "nl": "Op de rommelmarkt kocht Anouk een oud bordspel waarvan de doos een avontuur met kastelen en geheime tunnels beloofde.",
+          "en": "At the flea market Anouk bought an old board game whose box promised an adventure with castles and secret tunnels."
+        },
+        {
+          "nl": "Thuis bleek de handleiding te ontbreken, terwijl er drie sleutels, een houten geit en zeven onbegrijpelijke kaartjes in zaten.",
+          "en": "At home the instructions turned out to be missing, while the box contained three keys, a wooden goat and seven incomprehensible cards."
+        },
+        {
+          "nl": "Haar vrienden wilden een ander spel nemen, maar Anouk stelde voor dat iedereen één regel mocht toevoegen.",
+          "en": "Her friends wanted to choose another game, but Anouk suggested that everyone could add one rule."
+        },
+        {
+          "nl": "De geit werd zo een onbetrouwbare gids, die elke speler alleen tegen betaling naar het kasteel bracht.",
+          "en": "The goat thus became an unreliable guide who would take each player to the castle only for payment."
+        },
+        {
+          "nl": "Na een avond vol onderhandelingen en gelach vond iemand online eindelijk een foto van de oorspronkelijke handleiding.",
+          "en": "After an evening of negotiations and laughter, someone finally found a photograph of the original instructions online."
+        },
+        {
+          "nl": "Volgens die tekst was de geit slechts een teller en moesten de sleutels in een vaste volgorde worden verzameld.",
+          "en": "According to that text the goat was merely a counter and the keys had to be collected in a fixed order."
+        },
+        {
+          "nl": "Ze probeerden drie rondes volgens de echte regels, maar niemand wilde nog betalen voor een gids die niets te zeggen had.",
+          "en": "They tried three rounds according to the real rules, but nobody wanted to pay any longer for a guide who had nothing to say."
+        },
+        {
+          "nl": "Anouk bewaarde de oude handleiding netjes onderin de doos en schreef hun eigen versie op een veel prominenter blad.",
+          "en": "Anouk carefully kept the old instructions at the bottom of the box and wrote their own version on a much more prominent sheet."
+        }
+      ],
+      "words": [
+        {
+          "term": "de handleiding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een tekst die uitlegt hoe iets werkt",
+            "en": "instructions or manual"
+          },
+          "example": {
+            "nl": "Thuis bleek de handleiding te ontbreken, terwijl er drie sleutels, een houten geit en zeven onbegrijpelijke kaartjes in zaten.",
+            "en": "At home the instructions turned out to be missing, while the box contained three keys, a wooden goat and seven incomprehensible cards."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de onderhandeling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een gesprek om tot een overeenkomst te komen",
+            "en": "negotiation"
+          },
+          "example": {
+            "nl": "Na een avond vol onderhandelingen en gelach vond iemand online eindelijk een foto van de oorspronkelijke handleiding.",
+            "en": "After an evening of negotiations and laughter, someone finally found a photograph of the original instructions online."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de volgorde",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de opeenvolging waarin dingen komen",
+            "en": "order or sequence"
+          },
+          "example": {
+            "nl": "Volgens die tekst was de geit slechts een teller en moesten de sleutels in een vaste volgorde worden verzameld.",
+            "en": "According to that text the goat was merely a counter and the keys had to be collected in a fixed order."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarvan bij bezit of een onderdeel",
+            "en": "Whose for possession or a component"
+          },
+          "explanation": {
+            "nl": "Waarvan verwijst hier naar het spel en leidt informatie over de doos in.",
+            "en": "Waarvan refers here to the game and introduces information about its box."
+          },
+          "examples": [
+            {
+              "nl": "Op de rommelmarkt kocht Anouk een oud bordspel waarvan de doos een avontuur met kastelen en geheime tunnels beloofde.",
+              "en": "At the flea market Anouk bought an old board game whose box promised an adventure with castles and secret tunnels."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoe ontstaat de eerste spelversie?",
+            "en": "How does the first version of the game arise?"
+          },
+          "options": [
+            {
+              "nl": "Ze kopiëren de regels van de fabrikant.",
+              "en": "They copy the manufacturer's rules."
+            },
+            {
+              "nl": "De verkoper komt uitleg geven.",
+              "en": "The seller comes to explain."
+            },
+            {
+              "nl": "Elke vriend draagt een nieuwe regel bij.",
+              "en": "Each friend contributes a new rule."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Anouk stelt voor dat iedereen iets toevoegt aan de ontbrekende regels.",
+            "en": "Anouk suggests that everyone adds something to the missing rules."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom krijgt hun eigen versie de opvallendste plaats?",
+            "en": "Why does their own version get the most prominent place?"
+          },
+          "options": [
+            {
+              "nl": "Die versie heeft hen meer plezier gegeven.",
+              "en": "That version has given them more enjoyment."
+            },
+            {
+              "nl": "De echte handleiding is verboden.",
+              "en": "The real instructions are forbidden."
+            },
+            {
+              "nl": "Ze kunnen de oude tekst niet lezen.",
+              "en": "They cannot read the old text."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Na het testen waarderen ze hun verzonnen onderhandelingenspel meer.",
+            "en": "After testing, they value their invented negotiation game more."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-klant-met-de-gouden-knop",
+      "topic_id": "business",
+      "title": {
+        "nl": "De gouden knop",
+        "en": "The gold button"
+      },
+      "plot_key": "A tailor loses a profitable restoration commission but gains an honest relationship by explaining that a customer's precious button is ordinary brass.",
+      "lines": [
+        {
+          "nl": "Kleermaker Stefan kreeg een jas binnen waarvan volgens de eigenaar één gouden knop meer waard was dan de hele voering.",
+          "en": "Tailor Stefan received a coat whose owner said one gold button was worth more than the entire lining."
+        },
+        {
+          "nl": "De man wilde alleen een dure restauratie als de knop veilig verwijderd en apart bewaard kon worden.",
+          "en": "The man wanted an expensive restoration only if the button could be removed safely and stored separately."
+        },
+        {
+          "nl": "Stefan herkende het merkteken van een gewone fabrikant en vermoedde dat de knop uit messing bestond.",
+          "en": "Stefan recognised the mark of an ordinary manufacturer and suspected that the button was made of brass."
+        },
+        {
+          "nl": "Zijn zaak had het geld hard nodig, maar hij vertelde de klant toch wat hij had gezien en stelde een controle voor.",
+          "en": "His business badly needed the money, but he nevertheless told the customer what he had seen and suggested checking it."
+        },
+        {
+          "nl": "Na het onderzoek kwam de man terug met de bevestiging dat zijn familie zich jarenlang in het materiaal had vergist.",
+          "en": "After the examination the man returned with confirmation that his family had been mistaken about the material for years."
+        },
+        {
+          "nl": "Hij besloot de jas niet volledig te laten restaureren, maar vroeg of Stefan alleen de gescheurde zak kon herstellen.",
+          "en": "He decided not to have the coat fully restored, but asked whether Stefan could repair only the torn pocket."
+        },
+        {
+          "nl": "De rekening was veel kleiner dan verwacht, al vertelde de klant bij het ophalen opvallend lang over zijn grootvaders oude winkel.",
+          "en": "The bill was much smaller than expected, although when collecting it the customer spoke for a remarkably long time about his grandfather's old shop."
+        },
+        {
+          "nl": "Enkele weken later stuurde diezelfde man een toneelgezelschap langs dat een betrouwbare kleermaker zocht, niet iemand die elk verhaal verguldde.",
+          "en": "A few weeks later the same man sent over a theatre company looking for a trustworthy tailor, not someone who gilded every story."
+        }
+      ],
+      "words": [
+        {
+          "term": "de voering",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de binnenste laag stof van kleding",
+            "en": "lining"
+          },
+          "example": {
+            "nl": "Kleermaker Stefan kreeg een jas binnen waarvan volgens de eigenaar één gouden knop meer waard was dan de hele voering.",
+            "en": "Tailor Stefan received a coat whose owner said one gold button was worth more than the entire lining."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het messing",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een geel metaal van koper en zink",
+            "en": "brass"
+          },
+          "example": {
+            "nl": "Stefan herkende het merkteken van een gewone fabrikant en vermoedde dat de knop uit messing bestond.",
+            "en": "Stefan recognised the mark of an ordinary manufacturer and suspected that the button was made of brass."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "vergulden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met goud bedekken of mooier voorstellen",
+            "en": "to gild"
+          },
+          "example": {
+            "nl": "Enkele weken later stuurde diezelfde man een toneelgezelschap langs dat een betrouwbare kleermaker zocht, niet iemand die elk verhaal verguldde.",
+            "en": "A few weeks later the same man sent over a theatre company looking for a trustworthy tailor, not someone who gilded every story."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Al voor toegeving",
+            "en": "Although for concession"
+          },
+          "explanation": {
+            "nl": "Al geeft hier een tegenstelling aan en wordt gevolgd door inversie.",
+            "en": "Al marks a contrast here and is followed by inversion."
+          },
+          "examples": [
+            {
+              "nl": "De rekening was veel kleiner dan verwacht, al vertelde de klant bij het ophalen opvallend lang over zijn grootvaders oude winkel.",
+              "en": "The bill was much smaller than expected, although when collecting it the customer spoke for a remarkably long time about his grandfather's old shop."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom stelt Stefan een controle voor?",
+            "en": "Why does Stefan suggest an examination?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil zelf de knop kopen.",
+              "en": "He wants to buy the button himself."
+            },
+            {
+              "nl": "Hij twijfelt aan het materiaal waarop de dure opdracht gebaseerd is.",
+              "en": "He doubts the material on which the expensive commission is based."
+            },
+            {
+              "nl": "Hij kan geen zak herstellen.",
+              "en": "He cannot repair a pocket."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het merkteken past bij een gewone fabrikant en messing.",
+            "en": "The mark fits an ordinary manufacturer and brass."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat betekent vergulden in de slotzin ook figuurlijk?",
+            "en": "What does gilding also mean figuratively in the final sentence?"
+          },
+          "options": [
+            {
+              "nl": "Een verhaal aantrekkelijker maken dan de feiten toelaten.",
+              "en": "Making a story more attractive than the facts allow."
+            },
+            {
+              "nl": "Een jas wassen met warm water.",
+              "en": "Washing a coat in warm water."
+            },
+            {
+              "nl": "Een toneeltekst vertalen.",
+              "en": "Translating a play script."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De klant waardeert dat Stefan geen kostbaar familieverhaal heeft bevestigd om meer te verdienen.",
+            "en": "The customer values that Stefan did not confirm a precious family story in order to earn more."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-maan-in-de-emmer",
+      "topic_id": "space-astronomy",
+      "title": {
+        "nl": "De maan in de emmer",
+        "en": "The moon in the bucket"
+      },
+      "plot_key": "An astronomy volunteer loses telescope access but uses a reflected moon to help a child understand that apparent images and objects differ.",
+      "lines": [
+        {
+          "nl": "Tijdens een sterrenavond in de Ardennen had vrijwilliger Hana een lange rij kinderen beloofd dat ze de maan door een telescoop mochten bekijken.",
+          "en": "During a stargazing evening in the Ardennes, volunteer Hana had promised a long queue of children that they could view the moon through a telescope."
+        },
+        {
+          "nl": "Vlak voor hun beurt brak de aansluiting van het statief, waardoor het toestel niet meer veilig kon worden opgesteld.",
+          "en": "Just before their turn the tripod fitting broke, which meant the instrument could no longer be set up safely."
+        },
+        {
+          "nl": "Een jongen schopte teleurgesteld tegen een emmer regenwater en riep dat er nu helemaal niets meer te zien was.",
+          "en": "A boy kicked a bucket of rainwater in disappointment and shouted that there was now nothing left to see."
+        },
+        {
+          "nl": "Hana vroeg hem even te wachten tot het water stilstond en liet hem de weerspiegeling van de maan zoeken.",
+          "en": "Hana asked him to wait until the water became still and had him look for the moon's reflection."
+        },
+        {
+          "nl": "Toen hij dichterbij kwam, verdween het beeld achter zijn eigen hoofd, tot grote verbazing van zijn zusje.",
+          "en": "When he moved closer, the image disappeared behind his own head, much to his little sister's surprise."
+        },
+        {
+          "nl": "Hana liet de kinderen voorspellen waar de maan in het water zou verschijnen als ze aan de andere kant gingen staan.",
+          "en": "Hana had the children predict where the moon would appear in the water if they stood on the other side."
+        },
+        {
+          "nl": "Ze zagen die avond geen kraters door een lens, maar onderzochten met zaklampen en kommetjes waarom een beeld van plaats kon veranderen.",
+          "en": "That evening they saw no craters through a lens, but used torches and bowls to explore why an image could change position."
+        },
+        {
+          "nl": "De jongen vroeg bij het vertrek of er de volgende keer weer een telescoop zou zijn, en of hij ook zijn eigen emmer mocht meenemen.",
+          "en": "As they left, the boy asked whether there would be a telescope next time, and whether he could also bring his own bucket."
+        }
+      ],
+      "words": [
+        {
+          "term": "het statief",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een steun met poten voor een toestel",
+            "en": "tripod"
+          },
+          "example": {
+            "nl": "Vlak voor hun beurt brak de aansluiting van het statief, waardoor het toestel niet meer veilig kon worden opgesteld.",
+            "en": "Just before their turn the tripod fitting broke, which meant the instrument could no longer be set up safely."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de weerspiegeling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een beeld dat door weerkaatsing zichtbaar wordt",
+            "en": "reflection"
+          },
+          "example": {
+            "nl": "Hana vroeg hem even te wachten tot het water stilstond en liet hem de weerspiegeling van de maan zoeken.",
+            "en": "Hana asked him to wait until the water became still and had him look for the moon's reflection."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "voorspellen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "vooraf zeggen wat je verwacht dat zal gebeuren",
+            "en": "to predict"
+          },
+          "example": {
+            "nl": "Hana liet de kinderen voorspellen waar de maan in het water zou verschijnen als ze aan de andere kant gingen staan.",
+            "en": "Hana had the children predict where the moon would appear in the water if they stood on the other side."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waardoor voor een gevolg",
+            "en": "As a result of which"
+          },
+          "explanation": {
+            "nl": "Waardoor verbindt de kapotte aansluiting met het onveilig opstellen.",
+            "en": "Waardoor connects the broken fitting with the unsafe setup."
+          },
+          "examples": [
+            {
+              "nl": "Vlak voor hun beurt brak de aansluiting van het statief, waardoor het toestel niet meer veilig kon worden opgesteld.",
+              "en": "Just before their turn the tripod fitting broke, which meant the instrument could no longer be set up safely."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat onderzoeken de kinderen ondanks de storing?",
+            "en": "What do the children explore despite the fault?"
+          },
+          "options": [
+            {
+              "nl": "Hoe een weerspiegeld beeld van plaats verandert.",
+              "en": "How a reflected image changes position."
+            },
+            {
+              "nl": "Hoe zwaar de maan is.",
+              "en": "How heavy the moon is."
+            },
+            {
+              "nl": "Hoe je een telescoop fabriceert.",
+              "en": "How to manufacture a telescope."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze verplaatsen zich en gebruiken water en licht om het beeld te onderzoeken.",
+            "en": "They move around and use water and light to investigate the image."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat blijkt uit de laatste vraag van de jongen?",
+            "en": "What does the boy's final question reveal?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil niet meer terugkomen.",
+              "en": "He does not want to return."
+            },
+            {
+              "nl": "Alleen het dure toestel interesseert hem.",
+              "en": "Only the expensive instrument interests him."
+            },
+            {
+              "nl": "Het eenvoudige experiment heeft zijn nieuwsgierigheid gewekt.",
+              "en": "The simple experiment has awakened his curiosity."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij vraagt naast de telescoop ook naar een eigen emmer.",
+            "en": "Besides the telescope he also asks about bringing his own bucket."
+          }
+        }
+      ]
+    }
+  ]
+}

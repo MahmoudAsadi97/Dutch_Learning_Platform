@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-a1-read-stempel-in-hand",
+      "topic_id": "public-services",
+      "title": {
+        "nl": "Een bloem op mijn hand",
+        "en": "A flower on my hand"
+      },
+      "plot_key": "A visitor presents a hand stamp to re-enter a swimming pool.",
+      "lines": [
+        {
+          "nl": "Ik ga naar het zwembad.",
+          "en": "I go to the swimming pool."
+        },
+        {
+          "nl": "Een vrouw geeft een stempel.",
+          "en": "A woman gives me a stamp."
+        },
+        {
+          "nl": "De bloem staat op mijn hand.",
+          "en": "The flower is on my hand."
+        },
+        {
+          "nl": "Ik ga even naar buiten.",
+          "en": "I go outside for a moment."
+        },
+        {
+          "nl": "Dan wil ik weer binnen.",
+          "en": "Then I want to go inside again."
+        },
+        {
+          "nl": "De vrouw kijkt naar mij.",
+          "en": "The woman looks at me."
+        },
+        {
+          "nl": "Ik toon de kleine bloem.",
+          "en": "I show the little flower."
+        },
+        {
+          "nl": "Zij opent de deur.",
+          "en": "She opens the door."
+        }
+      ],
+      "words": [
+        {
+          "term": "het zwembad",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plaats met water om te zwemmen",
+            "en": "swimming pool"
+          },
+          "example": {
+            "nl": "Ik ga naar het zwembad.",
+            "en": "I go to the swimming pool."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de stempel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "afdruk met inkt",
+            "en": "stamp made with ink"
+          },
+          "example": {
+            "nl": "Een vrouw geeft een stempel.",
+            "en": "A woman gives me a stamp."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "tonen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "laten zien",
+            "en": "to show"
+          },
+          "example": {
+            "nl": "Ik toon de kleine bloem.",
+            "en": "I show the little flower."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "De bloem staat op mijn hand.",
+              "en": "The flower is on my hand."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar staat de bloem?",
+            "en": "Where is the flower?"
+          },
+          "options": [
+            {
+              "nl": "Op een ticket",
+              "en": "On a ticket"
+            },
+            {
+              "nl": "Op een tas",
+              "en": "On a bag"
+            },
+            {
+              "nl": "Op een hand",
+              "en": "On a hand"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De bloem staat op mijn hand.",
+            "en": "The flower is on my hand."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de vrouw op het einde?",
+            "en": "What does the woman do at the end?"
+          },
+          "options": [
+            {
+              "nl": "De deur openen",
+              "en": "Open the door"
+            },
+            {
+              "nl": "De bloem tekenen",
+              "en": "Draw the flower"
+            },
+            {
+              "nl": "Naar buiten gaan",
+              "en": "Go outside"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zij opent de deur.",
+            "en": "She opens the door."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-cijfers-in-zand",
+      "topic_id": "education",
+      "title": {
+        "nl": "De golf neemt acht",
+        "en": "The wave takes eight"
+      },
+      "plot_key": "A beach learner rewrites a sand number higher up after a wave erases it.",
+      "lines": [
+        {
+          "nl": "Ik schrijf acht in zand.",
+          "en": "I write eight in sand."
+        },
+        {
+          "nl": "Mijn vriend schrijft negen.",
+          "en": "My friend writes nine."
+        },
+        {
+          "nl": "Wij tellen samen verder.",
+          "en": "We continue counting together."
+        },
+        {
+          "nl": "Er komt een kleine golf.",
+          "en": "A small wave comes."
+        },
+        {
+          "nl": "De acht is nu weg.",
+          "en": "The eight is gone now."
+        },
+        {
+          "nl": "Wij lopen een beetje hoger.",
+          "en": "We walk a little higher."
+        },
+        {
+          "nl": "Daar schrijf ik weer acht.",
+          "en": "I write eight again there."
+        },
+        {
+          "nl": "Het cijfer blijft nu staan.",
+          "en": "The number stays there now."
+        }
+      ],
+      "words": [
+        {
+          "term": "het zand",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine korrels op een strand",
+            "en": "sand"
+          },
+          "example": {
+            "nl": "Ik schrijf acht in zand.",
+            "en": "I write eight in sand."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de golf",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bewegende watermassa",
+            "en": "wave"
+          },
+          "example": {
+            "nl": "Er komt een kleine golf.",
+            "en": "A small wave comes."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "acht",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "het getal 8",
+            "en": "eight"
+          },
+          "example": {
+            "nl": "Ik schrijf acht in zand.",
+            "en": "I write eight in sand."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Daar schrijf ik weer acht.",
+              "en": "I write eight again there."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk cijfer schrijft de spreker?",
+            "en": "Which number does the speaker write?"
+          },
+          "options": [
+            {
+              "nl": "Acht",
+              "en": "Eight"
+            },
+            {
+              "nl": "Negen",
+              "en": "Nine"
+            },
+            {
+              "nl": "Zes",
+              "en": "Six"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik schrijf acht in zand.",
+            "en": "I write eight in sand."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom lopen zij hoger?",
+            "en": "Why do they walk higher up?"
+          },
+          "options": [
+            {
+              "nl": "Voor een foto",
+              "en": "For a photo"
+            },
+            {
+              "nl": "Een golf neemt het cijfer weg",
+              "en": "A wave removes the number"
+            },
+            {
+              "nl": "Ze zoeken een bal",
+              "en": "They are looking for a ball"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De acht is nu weg.",
+            "en": "The eight is gone now."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-roze-bril",
+      "topic_id": "art-creativity",
+      "title": {
+        "nl": "De wereld is roze",
+        "en": "The world is pink"
+      },
+      "plot_key": "A class makes paper glasses and sees familiar objects through pink transparent material.",
+      "lines": [
+        {
+          "nl": "Ik knip een papieren bril.",
+          "en": "I cut out paper glasses."
+        },
+        {
+          "nl": "De juf geeft roze folie.",
+          "en": "The teacher gives me pink film."
+        },
+        {
+          "nl": "Ik plak de folie vast.",
+          "en": "I stick the film in place."
+        },
+        {
+          "nl": "Dan zet ik de bril op.",
+          "en": "Then I put on the glasses."
+        },
+        {
+          "nl": "Mijn witte blad lijkt roze.",
+          "en": "My white sheet looks pink."
+        },
+        {
+          "nl": "De witte muur ook!",
+          "en": "The white wall too!"
+        },
+        {
+          "nl": "Ik geef de bril aan mama.",
+          "en": "I give the glasses to Mum."
+        },
+        {
+          "nl": "Nu ziet mama mijn roze wereld.",
+          "en": "Now Mum sees my pink world."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bril",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "voorwerp dat je voor de ogen draagt",
+            "en": "glasses"
+          },
+          "example": {
+            "nl": "Ik knip een papieren bril.",
+            "en": "I cut out paper glasses."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "roze",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "lichte kleur tussen rood en wit",
+            "en": "pink"
+          },
+          "example": {
+            "nl": "De juf geeft roze folie.",
+            "en": "The teacher gives me pink film."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "plakken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met lijm vastmaken",
+            "en": "to stick"
+          },
+          "example": {
+            "nl": "Ik plak de folie vast.",
+            "en": "I stick the film in place."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Dan zet ik de bril op.",
+              "en": "Then I put on the glasses."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kleur heeft de folie?",
+            "en": "What colour is the film?"
+          },
+          "options": [
+            {
+              "nl": "Blauw",
+              "en": "Blue"
+            },
+            {
+              "nl": "Roze",
+              "en": "Pink"
+            },
+            {
+              "nl": "Geel",
+              "en": "Yellow"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De juf geeft roze folie.",
+            "en": "The teacher gives me pink film."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie krijgt de bril daarna?",
+            "en": "Who gets the glasses afterwards?"
+          },
+          "options": [
+            {
+              "nl": "Mama",
+              "en": "Mum"
+            },
+            {
+              "nl": "De bakker",
+              "en": "The baker"
+            },
+            {
+              "nl": "Papa",
+              "en": "Dad"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik geef de bril aan mama.",
+            "en": "I give the glasses to Mum."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-wekker-zonder-cijfer",
+      "topic_id": "time-management",
+      "title": {
+        "nl": "De wijzer is lang",
+        "en": "The hand is long"
+      },
+      "plot_key": "A learner sets an analogue learning clock to match a three o'clock appointment.",
+      "lines": [
+        {
+          "nl": "Mijn les begint om drie uur.",
+          "en": "My class starts at three o'clock."
+        },
+        {
+          "nl": "Hier staat een oefenklok.",
+          "en": "Here is a practice clock."
+        },
+        {
+          "nl": "Ik draai de korte wijzer.",
+          "en": "I turn the short hand."
+        },
+        {
+          "nl": "Hij staat nu op drie.",
+          "en": "It is at three now."
+        },
+        {
+          "nl": "De lange wijzer staat beneden.",
+          "en": "The long hand is at the bottom."
+        },
+        {
+          "nl": "Ik zet hem op twaalf.",
+          "en": "I move it to twelve."
+        },
+        {
+          "nl": "Nu is het drie uur.",
+          "en": "Now it is three o'clock."
+        },
+        {
+          "nl": "Mijn juf knikt en lacht.",
+          "en": "My teacher nods and smiles."
+        }
+      ],
+      "words": [
+        {
+          "term": "de wijzer",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bewegend deel dat de tijd aanwijst",
+            "en": "clock hand"
+          },
+          "example": {
+            "nl": "Ik draai de korte wijzer.",
+            "en": "I turn the short hand."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "kort",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet lang",
+            "en": "short"
+          },
+          "example": {
+            "nl": "Ik draai de korte wijzer.",
+            "en": "I turn the short hand."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "twaalf",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "het getal 12",
+            "en": "twelve"
+          },
+          "example": {
+            "nl": "Ik zet hem op twaalf.",
+            "en": "I move it to twelve."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eigenschap",
+            "en": "A quality"
+          },
+          "explanation": {
+            "nl": "Het bijvoeglijk naamwoord vertelt hoe iets of iemand is.",
+            "en": "The adjective tells you what something or someone is like."
+          },
+          "examples": [
+            {
+              "nl": "Ik draai de korte wijzer.",
+              "en": "I turn the short hand."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wanneer begint de les?",
+            "en": "When does class start?"
+          },
+          "options": [
+            {
+              "nl": "Om twee uur",
+              "en": "At two o'clock"
+            },
+            {
+              "nl": "Om twaalf uur",
+              "en": "At twelve o'clock"
+            },
+            {
+              "nl": "Om drie uur",
+              "en": "At three o'clock"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Mijn les begint om drie uur.",
+            "en": "My class starts at three o'clock."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar komt de lange wijzer?",
+            "en": "Where does the long hand go?"
+          },
+          "options": [
+            {
+              "nl": "Op twaalf",
+              "en": "At twelve"
+            },
+            {
+              "nl": "Op zes",
+              "en": "At six"
+            },
+            {
+              "nl": "Op drie",
+              "en": "At three"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik zet hem op twaalf.",
+            "en": "I move it to twelve."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-munt-rolt",
+      "topic_id": "daily-routines",
+      "title": {
+        "nl": "Onder de kast",
+        "en": "Under the cupboard"
+      },
+      "plot_key": "A rolling coin is retrieved from beneath a cupboard with a ruler.",
+      "lines": [
+        {
+          "nl": "Mijn munt valt op de grond.",
+          "en": "My coin falls on the floor."
+        },
+        {
+          "nl": "Ze rolt onder de kast.",
+          "en": "It rolls under the cupboard."
+        },
+        {
+          "nl": "Mijn hand kan er niet bij.",
+          "en": "My hand cannot reach it."
+        },
+        {
+          "nl": "Ik kijk naar mijn liniaal.",
+          "en": "I look at my ruler."
+        },
+        {
+          "nl": "De liniaal past onder de kast.",
+          "en": "The ruler fits under the cupboard."
+        },
+        {
+          "nl": "Ik duw heel zacht.",
+          "en": "I push very gently."
+        },
+        {
+          "nl": "De munt rolt naar buiten.",
+          "en": "The coin rolls out."
+        },
+        {
+          "nl": "Ik stop ze in mijn zak.",
+          "en": "I put it in my pocket."
+        }
+      ],
+      "words": [
+        {
+          "term": "de munt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "rond geldstuk",
+            "en": "coin"
+          },
+          "example": {
+            "nl": "Mijn munt valt op de grond.",
+            "en": "My coin falls on the floor."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de kast",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "meubel om dingen op te bergen",
+            "en": "cupboard"
+          },
+          "example": {
+            "nl": "Ze rolt onder de kast.",
+            "en": "It rolls under the cupboard."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de liniaal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "voorwerp om rechte lijnen te tekenen",
+            "en": "ruler"
+          },
+          "example": {
+            "nl": "Ik kijk naar mijn liniaal.",
+            "en": "I look at my ruler."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Ze rolt onder de kast.",
+              "en": "It rolls under the cupboard."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar ligt de munt?",
+            "en": "Where is the coin?"
+          },
+          "options": [
+            {
+              "nl": "Op de kast",
+              "en": "On the cupboard"
+            },
+            {
+              "nl": "Onder de kast",
+              "en": "Under the cupboard"
+            },
+            {
+              "nl": "In de kast",
+              "en": "In the cupboard"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze rolt onder de kast.",
+            "en": "It rolls under the cupboard."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat gebruikt de spreker?",
+            "en": "What does the speaker use?"
+          },
+          "options": [
+            {
+              "nl": "Een liniaal",
+              "en": "A ruler"
+            },
+            {
+              "nl": "Een lepel",
+              "en": "A spoon"
+            },
+            {
+              "nl": "Een boek",
+              "en": "A book"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De liniaal past onder de kast.",
+            "en": "The ruler fits under the cupboard."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-vlag-op-taart",
+      "topic_id": "holidays-celebrations",
+      "title": {
+        "nl": "De vlag staat scheef",
+        "en": "The flag is crooked"
+      },
+      "plot_key": "A small cake flag is propped upright using a grape.",
+      "lines": [
+        {
+          "nl": "Op de taart staat een vlag.",
+          "en": "There is a flag on the cake."
+        },
+        {
+          "nl": "De vlag staat heel scheef.",
+          "en": "The flag is very crooked."
+        },
+        {
+          "nl": "Hij valt bijna om.",
+          "en": "It almost falls over."
+        },
+        {
+          "nl": "Mijn broer houdt hem vast.",
+          "en": "My brother holds it."
+        },
+        {
+          "nl": "Ik neem een grote druif.",
+          "en": "I take a big grape."
+        },
+        {
+          "nl": "Het stokje gaat in de druif.",
+          "en": "The stick goes into the grape."
+        },
+        {
+          "nl": "Nu blijft de vlag recht.",
+          "en": "Now the flag stays straight."
+        },
+        {
+          "nl": "Mijn broer klapt in zijn handen.",
+          "en": "My brother claps his hands."
+        }
+      ],
+      "words": [
+        {
+          "term": "de vlag",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "stuk stof of papier als teken",
+            "en": "flag"
+          },
+          "example": {
+            "nl": "Op de taart staat een vlag.",
+            "en": "There is a flag on the cake."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "scheef",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet recht",
+            "en": "crooked"
+          },
+          "example": {
+            "nl": "De vlag staat heel scheef.",
+            "en": "The flag is very crooked."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de druif",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine ronde vrucht aan een tros",
+            "en": "grape"
+          },
+          "example": {
+            "nl": "Ik neem een grote druif.",
+            "en": "I take a big grape."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eigenschap",
+            "en": "A quality"
+          },
+          "explanation": {
+            "nl": "Het bijvoeglijk naamwoord vertelt hoe iets of iemand is.",
+            "en": "The adjective tells you what something or someone is like."
+          },
+          "examples": [
+            {
+              "nl": "De vlag staat heel scheef.",
+              "en": "The flag is very crooked."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar gaat het stokje in?",
+            "en": "What does the stick go into?"
+          },
+          "options": [
+            {
+              "nl": "Een appel",
+              "en": "An apple"
+            },
+            {
+              "nl": "Een glas",
+              "en": "A glass"
+            },
+            {
+              "nl": "Een druif",
+              "en": "A grape"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het stokje gaat in de druif.",
+            "en": "The stick goes into the grape."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe staat de vlag op het einde?",
+            "en": "How is the flag at the end?"
+          },
+          "options": [
+            {
+              "nl": "Recht",
+              "en": "Straight"
+            },
+            {
+              "nl": "Scheef",
+              "en": "Crooked"
+            },
+            {
+              "nl": "Ondersteboven",
+              "en": "Upside down"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Nu blijft de vlag recht.",
+            "en": "Now the flag stays straight."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-hond-met-bel",
+      "topic_id": "animals-pets",
+      "title": {
+        "nl": "Wie belt er?",
+        "en": "Who is ringing?"
+      },
+      "plot_key": "A dog touches a low bell to ask to go outside.",
+      "lines": [
+        {
+          "nl": "Ik hoor een kleine bel.",
+          "en": "I hear a little bell."
+        },
+        {
+          "nl": "Er staat niemand aan de deur.",
+          "en": "There is nobody at the door."
+        },
+        {
+          "nl": "Mijn hond zit in de gang.",
+          "en": "My dog is sitting in the hall."
+        },
+        {
+          "nl": "Naast hem hangt de bel.",
+          "en": "The bell hangs beside him."
+        },
+        {
+          "nl": "Hij duwt met zijn neus.",
+          "en": "He pushes with his nose."
+        },
+        {
+          "nl": "Daar klinkt de bel weer.",
+          "en": "There is the bell again."
+        },
+        {
+          "nl": "Ik maak de achterdeur open.",
+          "en": "I open the back door."
+        },
+        {
+          "nl": "De hond loopt de tuin in.",
+          "en": "The dog runs into the garden."
+        }
+      ],
+      "words": [
+        {
+          "term": "de hond",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "huisdier dat blaft",
+            "en": "dog"
+          },
+          "example": {
+            "nl": "Mijn hond zit in de gang.",
+            "en": "My dog is sitting in the hall."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de gang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "smalle ruimte tussen kamers",
+            "en": "hallway"
+          },
+          "example": {
+            "nl": "Mijn hond zit in de gang.",
+            "en": "My dog is sitting in the hall."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de achterdeur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deur aan de achterkant",
+            "en": "back door"
+          },
+          "example": {
+            "nl": "Ik maak de achterdeur open.",
+            "en": "I open the back door."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Ik maak de achterdeur open.",
+              "en": "I open the back door."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wie laat de bel klinken?",
+            "en": "Who makes the bell ring?"
+          },
+          "options": [
+            {
+              "nl": "De hond",
+              "en": "The dog"
+            },
+            {
+              "nl": "Een buur",
+              "en": "A neighbour"
+            },
+            {
+              "nl": "Een kind",
+              "en": "A child"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij duwt met zijn neus.",
+            "en": "He pushes with his nose."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar loopt de hond heen?",
+            "en": "Where does the dog run?"
+          },
+          "options": [
+            {
+              "nl": "Naar de keuken",
+              "en": "To the kitchen"
+            },
+            {
+              "nl": "Naar de tuin",
+              "en": "To the garden"
+            },
+            {
+              "nl": "Naar de straat",
+              "en": "To the street"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De hond loopt de tuin in.",
+            "en": "The dog runs into the garden."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-naam-van-pop",
+      "topic_id": "personal-identity",
+      "title": {
+        "nl": "Hoe heet jij dan?",
+        "en": "What is your name, then?"
+      },
+      "plot_key": "A child gives an unnamed puppet a name and introduces it to a visitor.",
+      "lines": [
+        {
+          "nl": "Onze buur zegt: ik ben Bas.",
+          "en": "Our neighbour says: I am Bas."
+        },
+        {
+          "nl": "Ik zeg mijn eigen naam.",
+          "en": "I say my own name."
+        },
+        {
+          "nl": "Mijn pop zit naast mij.",
+          "en": "My puppet is sitting beside me."
+        },
+        {
+          "nl": "Bas vraagt naar haar naam.",
+          "en": "Bas asks her name."
+        },
+        {
+          "nl": "Mijn pop heeft geen naam.",
+          "en": "My puppet has no name."
+        },
+        {
+          "nl": "Ik denk een klein moment.",
+          "en": "I think for a little moment."
+        },
+        {
+          "nl": "Zij heet nu Dot.",
+          "en": "Her name is Dot now."
+        },
+        {
+          "nl": "Bas zegt: dag, Dot!",
+          "en": "Bas says: hello, Dot!"
+        }
+      ],
+      "words": [
+        {
+          "term": "de pop",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "speelgoed met een mensenvorm",
+            "en": "doll or puppet"
+          },
+          "example": {
+            "nl": "Mijn pop zit naast mij.",
+            "en": "My puppet is sitting beside me."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "eigen",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "van jezelf",
+            "en": "own"
+          },
+          "example": {
+            "nl": "Ik zeg mijn eigen naam.",
+            "en": "I say my own name."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "denken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "je hoofd gebruiken voor een idee",
+            "en": "to think"
+          },
+          "example": {
+            "nl": "Ik denk een klein moment.",
+            "en": "I think for a little moment."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet en geen",
+            "en": "Niet and geen"
+          },
+          "explanation": {
+            "nl": "Kijk wat wordt ontkend: de handeling of het zelfstandig naamwoord.",
+            "en": "Look at what is being negated: the action or the noun."
+          },
+          "examples": [
+            {
+              "nl": "Mijn pop heeft geen naam.",
+              "en": "My puppet has no name."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoe heet de buur?",
+            "en": "What is the neighbour's name?"
+          },
+          "options": [
+            {
+              "nl": "Dot",
+              "en": "Dot"
+            },
+            {
+              "nl": "Sam",
+              "en": "Sam"
+            },
+            {
+              "nl": "Bas",
+              "en": "Bas"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Onze buur zegt: ik ben Bas.",
+            "en": "Our neighbour says: I am Bas."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe heet de pop op het einde?",
+            "en": "What is the puppet's name at the end?"
+          },
+          "options": [
+            {
+              "nl": "Dot",
+              "en": "Dot"
+            },
+            {
+              "nl": "Bas",
+              "en": "Bas"
+            },
+            {
+              "nl": "Kim",
+              "en": "Kim"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zij heet nu Dot.",
+            "en": "Her name is Dot now."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-stille-ondertitel",
+      "topic_id": "movies-tv",
+      "title": {
+        "nl": "Het woord onderaan",
+        "en": "The word at the bottom"
+      },
+      "plot_key": "A viewer recognises a simple greeting in subtitles while the sound is off.",
+      "lines": [
+        {
+          "nl": "De tv heeft geen geluid.",
+          "en": "The television has no sound."
+        },
+        {
+          "nl": "Een vrouw zwaait op het scherm.",
+          "en": "A woman waves on the screen."
+        },
+        {
+          "nl": "Onderaan staat een kort woord.",
+          "en": "There is a short word at the bottom."
+        },
+        {
+          "nl": "Ik lees langzaam: hallo.",
+          "en": "I slowly read: hello."
+        },
+        {
+          "nl": "Ik zwaai naar de vrouw.",
+          "en": "I wave to the woman."
+        },
+        {
+          "nl": "Mijn broer kijkt naar mij.",
+          "en": "My brother looks at me."
+        },
+        {
+          "nl": "Hij zet het geluid aan.",
+          "en": "He turns the sound on."
+        },
+        {
+          "nl": "Nu zegt de vrouw ook hallo.",
+          "en": "Now the woman says hello too."
+        }
+      ],
+      "words": [
+        {
+          "term": "het scherm",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "vlak waarop je beelden ziet",
+            "en": "screen"
+          },
+          "example": {
+            "nl": "Een vrouw zwaait op het scherm.",
+            "en": "A woman waves on the screen."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "onderaan",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "aan de onderkant",
+            "en": "at the bottom"
+          },
+          "example": {
+            "nl": "Onderaan staat een kort woord.",
+            "en": "There is a short word at the bottom."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "langzaam",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet snel",
+            "en": "slow"
+          },
+          "example": {
+            "nl": "Ik lees langzaam: hallo.",
+            "en": "I slowly read: hello."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Hij zet het geluid aan.",
+              "en": "He turns the sound on."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk woord staat onderaan?",
+            "en": "Which word is at the bottom?"
+          },
+          "options": [
+            {
+              "nl": "Hallo",
+              "en": "Hello"
+            },
+            {
+              "nl": "Morgen",
+              "en": "Tomorrow"
+            },
+            {
+              "nl": "Dank",
+              "en": "Thanks"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik lees langzaam: hallo.",
+            "en": "I slowly read: hello."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie zet het geluid aan?",
+            "en": "Who turns the sound on?"
+          },
+          "options": [
+            {
+              "nl": "De vrouw",
+              "en": "The woman"
+            },
+            {
+              "nl": "De broer",
+              "en": "The brother"
+            },
+            {
+              "nl": "De buur",
+              "en": "The neighbour"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij zet het geluid aan.",
+            "en": "He turns the sound on."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-balie-op-hoogte",
+      "topic_id": "customer-service",
+      "title": {
+        "nl": "Hier ben ik",
+        "en": "Here I am"
+      },
+      "plot_key": "A short customer moves to the low counter and can speak directly to an attendant.",
+      "lines": [
+        {
+          "nl": "Ik sta aan een hoge balie.",
+          "en": "I stand at a high counter."
+        },
+        {
+          "nl": "De man ziet mij niet.",
+          "en": "The man cannot see me."
+        },
+        {
+          "nl": "Ik zeg zacht: dag meneer.",
+          "en": "I say quietly: hello, sir."
+        },
+        {
+          "nl": "Hij kijkt naar de deur.",
+          "en": "He looks at the door."
+        },
+        {
+          "nl": "Naast mij is de balie laag.",
+          "en": "The counter is low beside me."
+        },
+        {
+          "nl": "Ik zet een stap opzij.",
+          "en": "I take a step to the side."
+        },
+        {
+          "nl": "Nu ziet hij mijn gezicht.",
+          "en": "Now he sees my face."
+        },
+        {
+          "nl": "Hij zegt: dag, wat wil je?",
+          "en": "He says: hello, what would you like?"
+        }
+      ],
+      "words": [
+        {
+          "term": "de balie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "tafel waar iemand klanten helpt",
+            "en": "service counter"
+          },
+          "example": {
+            "nl": "Ik sta aan een hoge balie.",
+            "en": "I stand at a high counter."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "hoog",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "ver boven de grond",
+            "en": "high"
+          },
+          "example": {
+            "nl": "Ik sta aan een hoge balie.",
+            "en": "I stand at a high counter."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "laag",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "dicht bij de grond",
+            "en": "low"
+          },
+          "example": {
+            "nl": "Naast mij is de balie laag.",
+            "en": "The counter is low beside me."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eigenschap",
+            "en": "A quality"
+          },
+          "explanation": {
+            "nl": "Het bijvoeglijk naamwoord vertelt hoe iets of iemand is.",
+            "en": "The adjective tells you what something or someone is like."
+          },
+          "examples": [
+            {
+              "nl": "Naast mij is de balie laag.",
+              "en": "The counter is low beside me."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom ziet de man de spreker eerst niet?",
+            "en": "Why does the man not see the speaker at first?"
+          },
+          "options": [
+            {
+              "nl": "Hij slaapt",
+              "en": "He is asleep"
+            },
+            {
+              "nl": "Hij is buiten",
+              "en": "He is outside"
+            },
+            {
+              "nl": "De balie is hoog",
+              "en": "The counter is high"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ik sta aan een hoge balie.",
+            "en": "I stand at a high counter."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de spreker?",
+            "en": "What does the speaker do?"
+          },
+          "options": [
+            {
+              "nl": "Een stap opzij zetten",
+              "en": "Take a step aside"
+            },
+            {
+              "nl": "Naar huis gaan",
+              "en": "Go home"
+            },
+            {
+              "nl": "Een stoel pakken",
+              "en": "Get a chair"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik zet een stap opzij.",
+            "en": "I take a step to the side."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,18 @@ import type { StudyCopy, StudyStep } from "@/lib/client/study";
 
 /** Interface copy for the guided Dutch/English learning journey. */
 export const studyCopy = {
+  chooseStory: { nl: "Kies een verhaal", en: "Choose a story" },
+  storiesInTopic: { nl: "Verhalen in dit onderwerp", en: "Stories in this topic" },
+  searchStories: { nl: "Zoek een verhaal…", en: "Find a story…" },
+  browseStories: { nl: "Bladeren door verhalen", en: "Browse stories" },
+  noStoriesFound: {
+    nl: "Geen verhalen gevonden. Probeer een kortere zoekterm.",
+    en: "No stories found. Try a shorter search.",
+  },
+  storyChoiceFailed: {
+    nl: "Het verhaal kon niet worden geopend. Probeer opnieuw.",
+    en: "The story could not be opened. Try again.",
+  },
   wordReference: {
     nl: "Woordenlijst",
     en: "Word reference",

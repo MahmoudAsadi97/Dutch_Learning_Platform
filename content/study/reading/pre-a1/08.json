@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-a1-read-hand-voor-deur",
+      "topic_id": "communication",
+      "title": {
+        "nl": "De deur gaat naar binnen",
+        "en": "The door opens inwards"
+      },
+      "plot_key": "A beginner understands a push sign through another customer's demonstration.",
+      "lines": [
+        {
+          "nl": "Ik sta voor een glazen deur.",
+          "en": "I stand in front of a glass door."
+        },
+        {
+          "nl": "Op de deur staat duwen.",
+          "en": "The door says push."
+        },
+        {
+          "nl": "Ik ken dat woord nog niet.",
+          "en": "I do not know that word yet."
+        },
+        {
+          "nl": "Ik trek aan de deur.",
+          "en": "I pull the door."
+        },
+        {
+          "nl": "Een vrouw legt haar hand erop.",
+          "en": "A woman puts her hand on it."
+        },
+        {
+          "nl": "Zij duwt de deur naar binnen.",
+          "en": "She pushes the door inwards."
+        },
+        {
+          "nl": "Nu zie ik wat duwen is.",
+          "en": "Now I see what push means."
+        },
+        {
+          "nl": "Ik houd de deur voor haar open.",
+          "en": "I hold the door open for her."
+        }
+      ],
+      "words": [
+        {
+          "term": "duwen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets van je af bewegen",
+            "en": "to push"
+          },
+          "example": {
+            "nl": "Op de deur staat duwen.",
+            "en": "The door says push."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "trekken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets naar je toe bewegen",
+            "en": "to pull"
+          },
+          "example": {
+            "nl": "Ik trek aan de deur.",
+            "en": "I pull the door."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de deur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel dat een ingang afsluit",
+            "en": "door"
+          },
+          "example": {
+            "nl": "Ik sta voor een glazen deur.",
+            "en": "I stand in front of a glass door."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Zij duwt de deur naar binnen.",
+              "en": "She pushes the door inwards."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk woord staat op de deur?",
+            "en": "Which word is on the door?"
+          },
+          "options": [
+            {
+              "nl": "Duwen",
+              "en": "Push"
+            },
+            {
+              "nl": "Trekken",
+              "en": "Pull"
+            },
+            {
+              "nl": "Wachten",
+              "en": "Wait"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Op de deur staat duwen.",
+            "en": "The door says push."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke kant gaat de deur op?",
+            "en": "Which way does the door go?"
+          },
+          "options": [
+            {
+              "nl": "Naar buiten",
+              "en": "Outwards"
+            },
+            {
+              "nl": "Naar binnen",
+              "en": "Inwards"
+            },
+            {
+              "nl": "Omhoog",
+              "en": "Upwards"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zij duwt de deur naar binnen.",
+            "en": "She pushes the door inwards."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-kaas-met-gaatjes",
+      "topic_id": "shopping",
+      "title": {
+        "nl": "Een halve maan kaas",
+        "en": "A half-moon of cheese"
+      },
+      "plot_key": "A shopper asks for a small cheese portion by pointing to a display and indicating a cut.",
+      "lines": [
+        {
+          "nl": "Ik koop kaas op de markt.",
+          "en": "I buy cheese at the market."
+        },
+        {
+          "nl": "De hele kaas is groot.",
+          "en": "The whole cheese is big."
+        },
+        {
+          "nl": "Ik wil een klein stuk.",
+          "en": "I want a small piece."
+        },
+        {
+          "nl": "De verkoper pakt zijn mes.",
+          "en": "The seller picks up his knife."
+        },
+        {
+          "nl": "Ik wijs naar het midden.",
+          "en": "I point to the middle."
+        },
+        {
+          "nl": "Hij snijdt het stuk doormidden.",
+          "en": "He cuts the piece in half."
+        },
+        {
+          "nl": "Dat is genoeg voor mij.",
+          "en": "That is enough for me."
+        },
+        {
+          "nl": "Hij legt mijn kaas op papier.",
+          "en": "He puts my cheese on paper."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kaas",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "voedsel dat van melk wordt gemaakt",
+            "en": "cheese"
+          },
+          "example": {
+            "nl": "Ik koop kaas op de markt.",
+            "en": "I buy cheese at the market."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het midden",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plaats tussen twee uiteinden",
+            "en": "middle"
+          },
+          "example": {
+            "nl": "Ik wijs naar het midden.",
+            "en": "I point to the middle."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "genoeg",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zoveel als nodig is",
+            "en": "enough"
+          },
+          "example": {
+            "nl": "Dat is genoeg voor mij.",
+            "en": "That is enough for me."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Na wil of kan komt het andere werkwoord in de hele vorm.",
+            "en": "After wil or kan, the other verb is in its infinitive form."
+          },
+          "examples": [
+            {
+              "nl": "Ik wil een klein stuk.",
+              "en": "I want a small piece."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat koopt de spreker?",
+            "en": "What does the speaker buy?"
+          },
+          "options": [
+            {
+              "nl": "Brood",
+              "en": "Bread"
+            },
+            {
+              "nl": "Fruit",
+              "en": "Fruit"
+            },
+            {
+              "nl": "Kaas",
+              "en": "Cheese"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ik koop kaas op de markt.",
+            "en": "I buy cheese at the market."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar legt de verkoper de kaas op?",
+            "en": "What does the seller put the cheese on?"
+          },
+          "options": [
+            {
+              "nl": "Papier",
+              "en": "Paper"
+            },
+            {
+              "nl": "Een bord",
+              "en": "A plate"
+            },
+            {
+              "nl": "Een stoel",
+              "en": "A chair"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij legt mijn kaas op papier.",
+            "en": "He puts my cheese on paper."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-kleurspoor-kamp",
+      "topic_id": "outdoor-adventure",
+      "title": {
+        "nl": "De blauwe pijlen",
+        "en": "The blue arrows"
+      },
+      "plot_key": "A walker following a short blue trail notices a red turn and stays on the intended route.",
+      "lines": [
+        {
+          "nl": "Wij wandelen langs het water.",
+          "en": "We walk along the water."
+        },
+        {
+          "nl": "Mijn kaart heeft een blauwe pijl.",
+          "en": "My map has a blue arrow."
+        },
+        {
+          "nl": "Op een boom staat rood.",
+          "en": "There is a red mark on a tree."
+        },
+        {
+          "nl": "Mijn vriend wil daar afslaan.",
+          "en": "My friend wants to turn there."
+        },
+        {
+          "nl": "Ik wijs naar onze kaart.",
+          "en": "I point to our map."
+        },
+        {
+          "nl": "Daar verder staat een blauwe pijl.",
+          "en": "There is a blue arrow further on."
+        },
+        {
+          "nl": "Wij lopen naar die pijl.",
+          "en": "We walk towards that arrow."
+        },
+        {
+          "nl": "De weg blijft langs het water.",
+          "en": "The path stays along the water."
+        }
+      ],
+      "words": [
+        {
+          "term": "de pijl",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "teken dat een richting aanwijst",
+            "en": "arrow"
+          },
+          "example": {
+            "nl": "Mijn kaart heeft een blauwe pijl.",
+            "en": "My map has a blue arrow."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "wandelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "rustig te voet gaan",
+            "en": "to walk"
+          },
+          "example": {
+            "nl": "Wij wandelen langs het water.",
+            "en": "We walk along the water."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het water",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "vloeistof in bijvoorbeeld een rivier",
+            "en": "water"
+          },
+          "example": {
+            "nl": "Wij wandelen langs het water.",
+            "en": "We walk along the water."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "De weg blijft langs het water.",
+              "en": "The path stays along the water."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kleur hoort bij hun route?",
+            "en": "Which colour belongs to their route?"
+          },
+          "options": [
+            {
+              "nl": "Blauw",
+              "en": "Blue"
+            },
+            {
+              "nl": "Rood",
+              "en": "Red"
+            },
+            {
+              "nl": "Geel",
+              "en": "Yellow"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mijn kaart heeft een blauwe pijl.",
+            "en": "My map has a blue arrow."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar blijft hun weg?",
+            "en": "Where does their path stay?"
+          },
+          "options": [
+            {
+              "nl": "In het bos",
+              "en": "In the woods"
+            },
+            {
+              "nl": "Langs het water",
+              "en": "Along the water"
+            },
+            {
+              "nl": "Door een winkel",
+              "en": "Through a shop"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De weg blijft langs het water.",
+            "en": "The path stays along the water."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-ik-heet-niet-meneer",
+      "topic_id": "personal-identity",
+      "title": {
+        "nl": "Meneer of Milan?",
+        "en": "Sir or Milan?"
+      },
+      "plot_key": "A learner mistakes a polite title for a name until a neighbour introduces himself.",
+      "lines": [
+        {
+          "nl": "Mijn mama zegt: dag meneer.",
+          "en": "My mum says: hello, sir."
+        },
+        {
+          "nl": "De man groet haar terug.",
+          "en": "The man greets her back."
+        },
+        {
+          "nl": "Ik vraag: heet jij Meneer?",
+          "en": "I ask: is your name Sir?"
+        },
+        {
+          "nl": "De man begint te lachen.",
+          "en": "The man starts laughing."
+        },
+        {
+          "nl": "Hij zegt: ik heet Milan.",
+          "en": "He says: my name is Milan."
+        },
+        {
+          "nl": "Meneer is niet mijn naam.",
+          "en": "Sir is not my name."
+        },
+        {
+          "nl": "Ik zeg: dag, Milan.",
+          "en": "I say: hello, Milan."
+        },
+        {
+          "nl": "Hij vraagt nu mijn naam.",
+          "en": "Now he asks my name."
+        }
+      ],
+      "words": [
+        {
+          "term": "meneer",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "beleefde aanspreekvorm voor een man",
+            "en": "sir or Mr"
+          },
+          "example": {
+            "nl": "Mijn mama zegt: dag meneer.",
+            "en": "My mum says: hello, sir."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "groeten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "dag zeggen",
+            "en": "to greet"
+          },
+          "example": {
+            "nl": "De man groet haar terug.",
+            "en": "The man greets her back."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "heten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een naam hebben",
+            "en": "to be named"
+          },
+          "example": {
+            "nl": "Hij zegt: ik heet Milan.",
+            "en": "He says: my name is Milan."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een vraag stellen",
+            "en": "Asking a question"
+          },
+          "explanation": {
+            "nl": "Bij deze vraag staat het werkwoord vóór het onderwerp.",
+            "en": "In this question, the verb comes before the subject."
+          },
+          "examples": [
+            {
+              "nl": "Ik vraag: heet jij Meneer?",
+              "en": "I ask: is your name Sir?"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoe heet de man?",
+            "en": "What is the man's name?"
+          },
+          "options": [
+            {
+              "nl": "Meneer",
+              "en": "Sir"
+            },
+            {
+              "nl": "Mark",
+              "en": "Mark"
+            },
+            {
+              "nl": "Milan",
+              "en": "Milan"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij zegt: ik heet Milan.",
+            "en": "He says: my name is Milan."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie vraagt op het einde naar een naam?",
+            "en": "Who asks for a name at the end?"
+          },
+          "options": [
+            {
+              "nl": "Milan",
+              "en": "Milan"
+            },
+            {
+              "nl": "Mama",
+              "en": "Mum"
+            },
+            {
+              "nl": "De spreker",
+              "en": "The speaker"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij vraagt nu mijn naam.",
+            "en": "Now he asks my name."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-ij-in-naam",
+      "topic_id": "languages",
+      "title": {
+        "nl": "Twee letters samen",
+        "en": "Two letters together"
+      },
+      "plot_key": "A learner spells the two letters ij in a name and hears their shared sound.",
+      "lines": [
+        {
+          "nl": "Mijn klasgenoot heet Thijs.",
+          "en": "My classmate is named Thijs."
+        },
+        {
+          "nl": "Ik lees de i apart.",
+          "en": "I read the i separately."
+        },
+        {
+          "nl": "Dan lees ik de j.",
+          "en": "Then I read the j."
+        },
+        {
+          "nl": "De naam klinkt nu vreemd.",
+          "en": "The name sounds strange now."
+        },
+        {
+          "nl": "Thijs wijst naar beide letters.",
+          "en": "Thijs points to both letters."
+        },
+        {
+          "nl": "Hij zegt de klank ij.",
+          "en": "He says the ij sound."
+        },
+        {
+          "nl": "Ik zeg zijn naam opnieuw.",
+          "en": "I say his name again."
+        },
+        {
+          "nl": "Nu knikt Thijs heel blij.",
+          "en": "Now Thijs nods very happily."
+        }
+      ],
+      "words": [
+        {
+          "term": "de klasgenoot",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand in dezelfde klas",
+            "en": "classmate"
+          },
+          "example": {
+            "nl": "Mijn klasgenoot heet Thijs.",
+            "en": "My classmate is named Thijs."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "apart",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "los van elkaar",
+            "en": "separate"
+          },
+          "example": {
+            "nl": "Ik lees de i apart.",
+            "en": "I read the i separately."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de klank",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "geluid van een letter of woord",
+            "en": "sound"
+          },
+          "example": {
+            "nl": "Hij zegt de klank ij.",
+            "en": "He says the ij sound."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ik zeg zijn naam opnieuw.",
+              "en": "I say his name again."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke letters zegt de spreker eerst apart?",
+            "en": "Which letters does the speaker first say separately?"
+          },
+          "options": [
+            {
+              "nl": "I en j",
+              "en": "I and j"
+            },
+            {
+              "nl": "A en b",
+              "en": "A and b"
+            },
+            {
+              "nl": "O en p",
+              "en": "O and p"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik lees de i apart.",
+            "en": "I read the i separately."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe reageert Thijs op het einde?",
+            "en": "How does Thijs react at the end?"
+          },
+          "options": [
+            {
+              "nl": "Hij loopt weg",
+              "en": "He walks away"
+            },
+            {
+              "nl": "Hij knikt blij",
+              "en": "He nods happily"
+            },
+            {
+              "nl": "Hij slaapt",
+              "en": "He sleeps"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Nu knikt Thijs heel blij.",
+            "en": "Now Thijs nods very happily."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-bank-in-twee",
+      "topic_id": "home-decoration",
+      "title": {
+        "nl": "De bank kan los",
+        "en": "The sofa comes apart"
+      },
+      "plot_key": "A delivery that cannot pass a door succeeds when two sofa sections are separated.",
+      "lines": [
+        {
+          "nl": "Een nieuwe bank komt aan.",
+          "en": "A new sofa arrives."
+        },
+        {
+          "nl": "De bank is heel breed.",
+          "en": "The sofa is very wide."
+        },
+        {
+          "nl": "De deur is niet breed.",
+          "en": "The door is not wide."
+        },
+        {
+          "nl": "De mannen stoppen even.",
+          "en": "The men stop for a moment."
+        },
+        {
+          "nl": "Eén man wijst naar het midden.",
+          "en": "One man points to the middle."
+        },
+        {
+          "nl": "De bank heeft twee delen.",
+          "en": "The sofa has two sections."
+        },
+        {
+          "nl": "Elk deel gaat door de deur.",
+          "en": "Each section goes through the door."
+        },
+        {
+          "nl": "Binnen staat de bank weer heel.",
+          "en": "Inside, the sofa is whole again."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bank",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "zitmeubel voor meerdere mensen",
+            "en": "sofa"
+          },
+          "example": {
+            "nl": "Een nieuwe bank komt aan.",
+            "en": "A new sofa arrives."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het deel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "stuk van een geheel",
+            "en": "part or section"
+          },
+          "example": {
+            "nl": "De bank heeft twee delen.",
+            "en": "The sofa has two sections."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "breed",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met veel ruimte van links naar rechts",
+            "en": "wide"
+          },
+          "example": {
+            "nl": "De bank is heel breed.",
+            "en": "The sofa is very wide."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Meer dan één",
+            "en": "More than one"
+          },
+          "explanation": {
+            "nl": "De vorm van het zelfstandig naamwoord laat zien dat er meer dan één is.",
+            "en": "The noun form shows that there is more than one."
+          },
+          "examples": [
+            {
+              "nl": "De bank heeft twee delen.",
+              "en": "The sofa has two sections."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom stoppen de mannen?",
+            "en": "Why do the men stop?"
+          },
+          "options": [
+            {
+              "nl": "Het regent",
+              "en": "It is raining"
+            },
+            {
+              "nl": "De deur is dicht",
+              "en": "The door is closed"
+            },
+            {
+              "nl": "De bank is te breed",
+              "en": "The sofa is too wide"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De bank is heel breed.",
+            "en": "The sofa is very wide."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoeveel delen heeft de bank?",
+            "en": "How many sections does the sofa have?"
+          },
+          "options": [
+            {
+              "nl": "Twee",
+              "en": "Two"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Vier",
+              "en": "Four"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De bank heeft twee delen.",
+            "en": "The sofa has two sections."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-zingend-nummer",
+      "topic_id": "time-management",
+      "title": {
+        "nl": "Samen tellen bij het poetsen",
+        "en": "Counting together while brushing"
+      },
+      "plot_key": "A learner uses a short counting segment to remember which section of teeth to brush next.",
+      "lines": [
+        {
+          "nl": "Papa helpt mij met poetsen.",
+          "en": "Dad helps me brush."
+        },
+        {
+          "nl": "Ik begin aan de buitenkant.",
+          "en": "I begin on the outside."
+        },
+        {
+          "nl": "Hij telt heel rustig mee.",
+          "en": "He counts along very calmly."
+        },
+        {
+          "nl": "Wij komen samen bij tien.",
+          "en": "We reach ten together."
+        },
+        {
+          "nl": "Dan wijst hij naar binnen.",
+          "en": "Then he points to the inside."
+        },
+        {
+          "nl": "Ik poets nu daar verder.",
+          "en": "I continue brushing there now."
+        },
+        {
+          "nl": "Papa telt weer vanaf één.",
+          "en": "Dad counts from one again."
+        },
+        {
+          "nl": "De timer loopt nog door.",
+          "en": "The timer keeps running."
+        }
+      ],
+      "words": [
+        {
+          "term": "poetsen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met een borstel schoonmaken",
+            "en": "to brush or clean"
+          },
+          "example": {
+            "nl": "Papa helpt mij met poetsen.",
+            "en": "Dad helps me brush."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de buitenkant",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel aan de buitenzijde",
+            "en": "outside surface"
+          },
+          "example": {
+            "nl": "Ik begin aan de buitenkant.",
+            "en": "I begin on the outside."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "tien",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "het getal 10",
+            "en": "ten"
+          },
+          "example": {
+            "nl": "Wij komen samen bij tien.",
+            "en": "We reach ten together."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ik poets nu daar verder.",
+              "en": "I continue brushing there now."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Bij welk getal komen zij?",
+            "en": "Which number do they reach?"
+          },
+          "options": [
+            {
+              "nl": "Tien",
+              "en": "Ten"
+            },
+            {
+              "nl": "Vijf",
+              "en": "Five"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Wij komen samen bij tien.",
+            "en": "We reach ten together."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar poetst de spreker daarna?",
+            "en": "Where does the speaker brush afterwards?"
+          },
+          "options": [
+            {
+              "nl": "Op de tong",
+              "en": "On the tongue"
+            },
+            {
+              "nl": "Aan de binnenkant",
+              "en": "On the inside"
+            },
+            {
+              "nl": "Op een borstel",
+              "en": "On a brush"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Dan wijst hij naar binnen.",
+            "en": "Then he points to the inside."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-openhand-kleine-geit",
+      "topic_id": "animals-pets",
+      "title": {
+        "nl": "Een platte hand",
+        "en": "A flat hand"
+      },
+      "plot_key": "A farm visitor learns to offer feed with a flat hand rather than clenched fingers.",
+      "lines": [
+        {
+          "nl": "De geit komt naar mij.",
+          "en": "The goat comes towards me."
+        },
+        {
+          "nl": "Ik heb voer in mijn hand.",
+          "en": "I have feed in my hand."
+        },
+        {
+          "nl": "Mijn vingers zitten eromheen.",
+          "en": "My fingers are curled around it."
+        },
+        {
+          "nl": "De geit kan er niet bij.",
+          "en": "The goat cannot reach it."
+        },
+        {
+          "nl": "De boerin toont haar platte hand.",
+          "en": "The farmer shows her flat hand."
+        },
+        {
+          "nl": "Ik doe mijn hand ook open.",
+          "en": "I open my hand too."
+        },
+        {
+          "nl": "De geit eet het voer rustig.",
+          "en": "The goat eats the feed calmly."
+        },
+        {
+          "nl": "Mijn hand is nu leeg.",
+          "en": "My hand is empty now."
+        }
+      ],
+      "words": [
+        {
+          "term": "de geit",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "boerderijdier met vaak een sik",
+            "en": "goat"
+          },
+          "example": {
+            "nl": "De geit komt naar mij.",
+            "en": "The goat comes towards me."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het voer",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "eten voor dieren",
+            "en": "animal feed"
+          },
+          "example": {
+            "nl": "Ik heb voer in mijn hand.",
+            "en": "I have feed in my hand."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "plat",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "vlak en niet bol",
+            "en": "flat"
+          },
+          "example": {
+            "nl": "De boerin toont haar platte hand.",
+            "en": "The farmer shows her flat hand."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eigenschap",
+            "en": "A quality"
+          },
+          "explanation": {
+            "nl": "Het bijvoeglijk naamwoord vertelt hoe iets of iemand is.",
+            "en": "The adjective tells you what something or someone is like."
+          },
+          "examples": [
+            {
+              "nl": "De boerin toont haar platte hand.",
+              "en": "The farmer shows her flat hand."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk dier komt naar de spreker?",
+            "en": "Which animal comes to the speaker?"
+          },
+          "options": [
+            {
+              "nl": "Een schaap",
+              "en": "A sheep"
+            },
+            {
+              "nl": "Een koe",
+              "en": "A cow"
+            },
+            {
+              "nl": "Een geit",
+              "en": "A goat"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De geit komt naar mij.",
+            "en": "The goat comes towards me."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de spreker met de hand?",
+            "en": "What does the speaker do with their hand?"
+          },
+          "options": [
+            {
+              "nl": "Openmaken",
+              "en": "Open it"
+            },
+            {
+              "nl": "Wegtrekken",
+              "en": "Pull it away"
+            },
+            {
+              "nl": "Wassen",
+              "en": "Wash it"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik doe mijn hand ook open.",
+            "en": "I open my hand too."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-zonnevlek-stap",
+      "topic_id": "daily-routines",
+      "title": {
+        "nl": "De kat kiest de zon",
+        "en": "The cat chooses the sunshine"
+      },
+      "plot_key": "Someone follows a moving patch of sunshine with a cat's cushion.",
+      "lines": [
+        {
+          "nl": "Mijn kat slaapt op haar kussen.",
+          "en": "My cat sleeps on her cushion."
+        },
+        {
+          "nl": "De zon schijnt op haar rug.",
+          "en": "The sun shines on her back."
+        },
+        {
+          "nl": "Later schuift de zon een beetje.",
+          "en": "Later the sunshine moves a little."
+        },
+        {
+          "nl": "De kat ligt in de schaduw.",
+          "en": "The cat lies in the shade."
+        },
+        {
+          "nl": "Zij staat op en kijkt rond.",
+          "en": "She gets up and looks around."
+        },
+        {
+          "nl": "Ik schuif het kussen naar voren.",
+          "en": "I slide the cushion forwards."
+        },
+        {
+          "nl": "Daar ligt weer een stukje zon.",
+          "en": "There is a patch of sunshine there again."
+        },
+        {
+          "nl": "De kat gaat tevreden liggen.",
+          "en": "The cat lies down contentedly."
+        }
+      ],
+      "words": [
+        {
+          "term": "het kussen",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "zachte steun om op te liggen of zitten",
+            "en": "cushion"
+          },
+          "example": {
+            "nl": "Mijn kat slaapt op haar kussen.",
+            "en": "My cat sleeps on her cushion."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de rug",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "achterkant van je bovenlichaam",
+            "en": "back"
+          },
+          "example": {
+            "nl": "De zon schijnt op haar rug.",
+            "en": "The sun shines on her back."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "tevreden",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "blij met hoe iets is",
+            "en": "contented"
+          },
+          "example": {
+            "nl": "De kat gaat tevreden liggen.",
+            "en": "The cat lies down contentedly."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Van wie is het?",
+            "en": "Who does it belong to?"
+          },
+          "explanation": {
+            "nl": "Het bezittelijk woord vertelt bij wie iets hoort.",
+            "en": "The possessive word tells you who something belongs to."
+          },
+          "examples": [
+            {
+              "nl": "Mijn kat slaapt op haar kussen.",
+              "en": "My cat sleeps on her cushion."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar slaapt de kat?",
+            "en": "Where does the cat sleep?"
+          },
+          "options": [
+            {
+              "nl": "Op haar kussen",
+              "en": "On her cushion"
+            },
+            {
+              "nl": "In de kast",
+              "en": "In the cupboard"
+            },
+            {
+              "nl": "Op een tafel",
+              "en": "On a table"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mijn kat slaapt op haar kussen.",
+            "en": "My cat sleeps on her cushion."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom schuift de spreker het kussen?",
+            "en": "Why does the speaker move the cushion?"
+          },
+          "options": [
+            {
+              "nl": "Voor de deur",
+              "en": "For the door"
+            },
+            {
+              "nl": "Voor de zon",
+              "en": "For the sunshine"
+            },
+            {
+              "nl": "Voor bezoek",
+              "en": "For a visitor"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Daar ligt weer een stukje zon.",
+            "en": "There is a patch of sunshine there again."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-kaartje-in-jaszak",
+      "topic_id": "restaurants-cafes",
+      "title": {
+        "nl": "Mijn nummer piept",
+        "en": "My number beeps"
+      },
+      "plot_key": "A visitor misses the visual queue display but notices their numbered pager vibrating.",
+      "lines": [
+        {
+          "nl": "Ik wacht op mijn broodje.",
+          "en": "I am waiting for my sandwich."
+        },
+        {
+          "nl": "De vrouw geeft mij een pieper.",
+          "en": "The woman gives me a pager."
+        },
+        {
+          "nl": "Daarop staat nummer zeven.",
+          "en": "It says number seven."
+        },
+        {
+          "nl": "Ik ga aan een tafel zitten.",
+          "en": "I sit down at a table."
+        },
+        {
+          "nl": "Plots trilt de kleine pieper.",
+          "en": "Suddenly the little pager vibrates."
+        },
+        {
+          "nl": "Het lichtje knippert ook.",
+          "en": "The little light flashes too."
+        },
+        {
+          "nl": "Ik loop naar de vrouw.",
+          "en": "I walk to the woman."
+        },
+        {
+          "nl": "Mijn broodje ligt al klaar.",
+          "en": "My sandwich is already ready."
+        }
+      ],
+      "words": [
+        {
+          "term": "het broodje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein brood, vaak met beleg",
+            "en": "sandwich or bread roll"
+          },
+          "example": {
+            "nl": "Ik wacht op mijn broodje.",
+            "en": "I am waiting for my sandwich."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de pieper",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein toestel dat een signaal geeft",
+            "en": "pager"
+          },
+          "example": {
+            "nl": "De vrouw geeft mij een pieper.",
+            "en": "The woman gives me a pager."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "zeven",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "het getal 7",
+            "en": "seven"
+          },
+          "example": {
+            "nl": "Daarop staat nummer zeven.",
+            "en": "It says number seven."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Plots trilt de kleine pieper.",
+              "en": "Suddenly the little pager vibrates."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk nummer staat op de pieper?",
+            "en": "Which number is on the pager?"
+          },
+          "options": [
+            {
+              "nl": "Vijf",
+              "en": "Five"
+            },
+            {
+              "nl": "Negen",
+              "en": "Nine"
+            },
+            {
+              "nl": "Zeven",
+              "en": "Seven"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Daarop staat nummer zeven.",
+            "en": "It says number seven."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat is klaar wanneer de spreker teruggaat?",
+            "en": "What is ready when the speaker returns?"
+          },
+          "options": [
+            {
+              "nl": "Het broodje",
+              "en": "The sandwich"
+            },
+            {
+              "nl": "De trein",
+              "en": "The train"
+            },
+            {
+              "nl": "De les",
+              "en": "The class"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mijn broodje ligt al klaar.",
+            "en": "My sandwich is already ready."
+          }
+        }
+      ]
+    }
+  ]
+}
