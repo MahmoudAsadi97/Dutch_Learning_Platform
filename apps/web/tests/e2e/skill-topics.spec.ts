@@ -19,8 +19,8 @@ test("every stage has at least fifty selectable real topic activities for each s
   await expect(page.locator(".study-topic-card")).toHaveCount(1);
   await expect(page.locator(".study-topic-card")).toContainText("Familie");
   await page.getByLabel("Zoek een onderwerp").fill("geen-bestaand-onderwerp");
-  await expect(page.getByRole("heading", { name: "Geen onderwerp gevonden", exact: true })).toBeVisible();
-  await page.getByRole("button", { name: "Wis filters", exact: true }).click();
+  await expect(page.getByRole("heading", { name: /^Geen onderwerp gevonden(?:\s|$)/ })).toBeVisible();
+  await page.getByRole("button", { name: /^Wis filters(?:\s|$)/ }).click();
   expect(await page.locator(".study-topic-card").count()).toBeGreaterThanOrEqual(50);
 });
 
@@ -86,8 +86,8 @@ test("pending transcription protects the recording and uses only the temporary e
   });
   try {
     await page.goto("/learn/pre-a1?skill=speaking&topic=family&step=practise");
-    await page.getByRole("button", { name: "Neem je antwoord op", exact: true }).click();
-    await page.getByRole("button", { name: "Stop opname", exact: true }).click();
+    await page.getByRole("button", { name: /^Neem je antwoord op(?:\s|$)/ }).click();
+    await page.getByRole("button", { name: /^Stop opname(?:\s|$)/ }).click();
     await expect(page.getByLabel(/^Je herkende woorden/)).toBeDisabled();
     await page
       .getByRole("navigation", { name: "Kies een vaardigheid" })
@@ -120,10 +120,10 @@ test("the previous stage's delayed catalogue cannot replace the newly chosen sta
   });
   try {
     await page.goto("/learn/a2?skill=reading");
-    await page.getByLabel("Niveau", { exact: true }).selectOption("b1");
+    await page.locator("#study-stage").selectOption("b1");
     await expect(page.locator(".study-topic-card").first()).toBeVisible();
     release();
-    await expect(page.getByLabel("Niveau", { exact: true })).toHaveValue("b1");
+    await expect(page.locator("#study-stage")).toHaveValue("b1");
     await expect(page.getByText("Vertraagd oud onderwerp")).toHaveCount(0);
   } finally {
     release();

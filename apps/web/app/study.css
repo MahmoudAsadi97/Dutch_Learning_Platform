@@ -1,5 +1,5 @@
 /* One contextual study journey. Colours and typography use the shared design tokens. */
-@layer components {
+@layer features {
   .study-dashboard, .study-directory, .study-workspace { max-width: 1240px; margin-inline: auto; width: 100%; min-width: 0; }
   .study-dashboard { display: grid; gap: 34px; }
   .study-kicker { margin: 0 0 10px; color: var(--text-subtle); font-size: 12px; font-weight: 700; letter-spacing: .11em; }
@@ -31,6 +31,14 @@
   .study-skill-card h3 { margin: 18px 0 8px; font-size: 19px; }
   .study-skill-card p { color: var(--text-muted); font-size: 14px; line-height: 1.55; margin: 0 0 24px; }
   .study-card-arrow { display: inline-flex; color: var(--action-solid); }
+  .study-dashboard .button:not(.secondary) .copy-support,
+  .study-workspace .button:not(.secondary) .copy-support,
+  .study-skill-tabs a[aria-current="page"] .copy-support { color: inherit; opacity: .9; }
+  .study-lesson-heading h1 .copy-support { font-size: 16px; font-weight: 450; line-height: 1.5; letter-spacing: 0; margin-top: 8px; }
+  .study-section-heading h2 .copy-support,
+  .study-task-heading h2 .copy-support { font-size: 14px; font-weight: 450; line-height: 1.5; letter-spacing: 0; margin-top: 6px; }
+  .study-page-heading h1 .copy-support { font-size: 15px; font-weight: 450; line-height: 1.5; letter-spacing: 0; margin-top: 6px; }
+  .study-starter-topics h2 .copy-support { font-size: 12px; font-weight: 450; line-height: 1.5; }
   .study-page-heading { margin-bottom: 24px; }
   .study-page-heading h1 { font-size: clamp(26px,2.8vw,34px); letter-spacing: -.035em; margin: 0 0 10px; line-height: 1.2; }
   .study-page-heading p:last-child { color: var(--text-muted); max-width: 720px; margin-bottom: 0; font-size: 15px; line-height: 1.6; }
@@ -107,8 +115,8 @@
   .study-word-meaning { font-size: 13px; margin: 7px 0; color: var(--text-muted); line-height: 1.5; }
   .study-word-example { padding-top: 9px; border-top: 1px solid var(--border); font-size: 13px; line-height: 1.6; }
   .study-word-example .copy-support { font-size: 12px; }
-  .study-word .phrase-audio-button { width: 28px; height: 28px; min-height: 28px; }
-  .study-word-example .phrase-audio-button { width: 25px; height: 25px; min-height: 25px; }
+  .study-word .phrase-audio-button { width: 28px; min-width: 28px; height: 28px; min-height: 28px; padding: 4px; }
+  .study-word-example .phrase-audio-button { width: 25px; min-width: 25px; height: 25px; min-height: 25px; padding: 3px; }
   .study-grammar { display: flex; align-items: flex-start; gap: 14px; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-raised); margin-bottom: 18px; }
   .study-grammar-icon { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; border-radius: 10px; background: var(--action-subtle); color: var(--action-solid); }
   .study-grammar h3 { font-size: 17px; margin: 0 0 8px; }

@@ -168,7 +168,7 @@ def make_index(content: Path, topics: list[dict]) -> dict:
         raise ValueError("unsupported explicit source mapping")
     manual = source_document["mappings"]
     if not isinstance(manual, list):
-        raise ValueError("explicit source mappings must be a list")
+        raise TypeError("explicit source mappings must be a list")
     identities = set()
     for mapping in manual:
         if set(mapping) != {"stage_id", "topic_id", "source_id", "skills"}:
@@ -246,8 +246,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--content", type=Path, default=Path(__file__).resolve().parents[1] / "content")
     index_action = parser.add_mutually_exclusive_group()
-    index_action.add_argument("--write-index", action="store_true", help="Regenerate explicit source references after successful validation")
-    index_action.add_argument("--check-index", action="store_true", help="Fail if checked-in references differ from the validated source mapping; never write files")
+    index_action.add_argument(
+        "--write-index", action="store_true",
+        help="Regenerate explicit source references after successful validation",
+    )
+    index_action.add_argument(
+        "--check-index", action="store_true",
+        help="Fail if checked-in references differ from the validated source mapping; never write files",
+    )
     parser.add_argument("--allow-partial", action="store_true", help="Inspect authoring progress without asserting 50 topics")
     parser.add_argument("--json", type=Path, help="Optional private machine-readable audit output")
     args = parser.parse_args()

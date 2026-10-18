@@ -80,7 +80,7 @@ test("the compact word reference retains the full 500-word bank and resets pagin
   const bank = await wordReference(page);
   await expect(bank.locator(".study-word")).toHaveCount(18);
   await expect(bank.locator(".study-word-top strong").first()).toHaveText("woord1");
-  await expect(bank.getByRole("button", { name: "Vorige", exact: true })).toBeDisabled();
+  await expect(bank.getByRole("button", { name: /^Vorige(?:\s|$)/ })).toBeDisabled();
   await bank.getByRole("button", { name: /Volgende woorden/ }).click();
   await expect(bank.locator(".study-word-top strong").first()).toHaveText("woord19");
   await page.getByLabel("Taalhulp / language").selectOption("nl-en");

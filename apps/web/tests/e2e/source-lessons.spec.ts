@@ -67,7 +67,7 @@ for (const stage of stages) {
           await expect(page.getByTestId("guided-lesson").getByRole("heading", { level: 1 })).toContainText(
             source.title.nl,
           );
-          await expect(page.getByLabel("Niveau", { exact: true })).toHaveValue(stage);
+          await expect(page.locator("#study-stage")).toHaveValue(stage);
           await expect(
             page.getByRole("navigation", { name: "Stappen van de oefening" }).getByRole("button"),
           ).toHaveCount(3);

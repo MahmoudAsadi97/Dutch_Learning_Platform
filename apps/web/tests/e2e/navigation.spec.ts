@@ -108,7 +108,7 @@ for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
     await page.goto("/spreken?stage=pre-a2");
     await expect(page).toHaveURL(/\/learn\/pre-a2\?skill=speaking/);
-    const stage = page.getByLabel("Niveau", { exact: true });
+    const stage = page.locator("#study-stage");
     await expect(stage).toHaveValue("pre-a2");
     await expect(stage.locator("option")).toHaveCount(12);
     const skills = page.getByRole("navigation", { name: "Kies een vaardigheid" });

@@ -269,6 +269,25 @@ def test_listening_sections_keep_the_authored_narrative_in_order():
     assert [part["questions"][0]["kind"] for part in parts] == ["gap", "choice", "short"]
 
 
+def test_authored_preparation_is_not_supplemented_with_inferred_rules(monkeypatch):
+    document, _ = content.documents()
+    source = next(item for item in content.pack_for("a2").lessons if item.topic_id == "family")
+    canonical = next(item for item in document.topics if item.id == source.topic_id)
+    monkeypatch.setattr(content, "library_for", lambda stage: SimpleNamespace(vocabulary=[]))
+
+    def inferred_rules_must_not_run(*args):
+        raise AssertionError("authored grammar must not be supplemented by automatic pattern guesses")
+
+    monkeypatch.setattr(content, "_contextual_grammar", inferred_rules_must_not_run)
+    preparation = content._pack_preparation("a2", canonical, source)
+    assert preparation["grammar"] == [rule.model_dump() for rule in source.grammar]
+    # Here voor marks a beneficiary, not a temporal relation. A literal token
+    # match is insufficient to label this source sentence as a lesson in time.
+    assert "Een moment met voor of na" not in {
+        rule["title"]["nl"] for rule in preparation["grammar"]
+    }
+
+
 def test_authored_productive_and_listening_overrides_are_used_instead_of_generic_tasks():
     from dlp.domains.study.schemas import ListeningOverride, SpeakingOverride, TopicDocument, WritingOverride
 

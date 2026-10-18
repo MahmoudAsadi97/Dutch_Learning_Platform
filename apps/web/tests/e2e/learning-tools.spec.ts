@@ -3,7 +3,7 @@ import { expect, test } from "./fixtures/test";
 test("pre-A1 alphabet names and its listening round remain available inside the level", async ({ page }) => {
   const before = await (await page.request.get("/api/curriculum/pre-a1")).json();
   await page.goto("/learn/pre-a1?skill=reading");
-  await page.getByRole("button", { name: "Alfabet & getallen", exact: true }).click();
+  await page.getByRole("button", { name: /^Alfabet & getallen(?:\s|$)/ }).click();
   const alphabet = page.getByTestId("alphabet-practice");
   const picker = alphabet.getByRole("group", { name: "Kies een letter", exact: true });
   await expect(picker.getByRole("button")).toHaveCount(26);
@@ -33,16 +33,16 @@ test("pre-A1 alphabet names and its listening round remain available inside the 
   const after = await (await page.request.get("/api/curriculum/pre-a1")).json();
   expect(after.progress).toEqual(before.progress);
   await page.goto("/learn/a1?skill=reading");
-  await expect(page.getByRole("button", { name: "Alfabet & getallen", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /^Alfabet & getallen(?:\s|$)/ })).toHaveCount(0);
 });
 
 test("grammar remains independently reachable without awarding four-skill completion", async ({ page }) => {
   const before = await (await page.request.get("/api/curriculum/a2")).json();
   await page.goto("/learn/a2?skill=reading");
-  await page.getByRole("button", { name: "Grammatica", exact: true }).click();
+  await page.getByRole("button", { name: /^Grammatica(?:\s|$)/ }).click();
   const grammar = page.getByRole("region", { name: "Grammaticaoefeningen", exact: true });
   await expect(grammar).toBeVisible();
-  await expect(grammar.getByLabel("Kies een onderwerp", { exact: true })).toBeVisible();
+  await expect(grammar.locator("#grammar-topic")).toBeVisible();
   const question = grammar.locator(".curriculum-question").first();
   await expect(question.getByRole("radio").first()).toBeVisible();
   await question.getByRole("radio").first().check();
@@ -53,7 +53,7 @@ test("grammar remains independently reachable without awarding four-skill comple
   await expect(grammar.locator(".grammar-position")).toContainText("Vraag 2");
   const after = await (await page.request.get("/api/curriculum/a2")).json();
   expect(after.progress).toEqual(before.progress);
-  await expect(page.getByLabel("Niveau", { exact: true })).toHaveValue("a2");
+  await expect(page.locator("#study-stage")).toHaveValue("a2");
   await expect(page.getByRole("navigation", { name: "Kies een vaardigheid" }).getByRole("link")).toHaveCount(
     4,
   );
@@ -72,14 +72,14 @@ test("topic words stay available while composing and opening support never erase
   const draft = page.getByLabel(/^Jouw antwoord/);
   await draft.fill("Mijn eigen antwoord blijft behouden terwijl ik woorden opzoek.");
   await expect(page.locator(".study-example-answer")).toHaveCount(0);
-  await page.getByRole("button", { name: "Woorden erbij", exact: true }).click();
+  await page.getByRole("button", { name: /^Woorden erbij(?:\s|$)/ }).click();
   await expect(page.locator(".study-lesson > .study-word-grid .study-word").first()).toBeVisible();
   await expect(draft).toHaveValue("Mijn eigen antwoord blijft behouden terwijl ik woorden opzoek.");
   await page.getByLabel("Taalhulp / language").selectOption("nl-en");
   await page.getByRole("button", { name: /^Bekijk een voorbeeldantwoord/ }).click();
   await expect(page.locator(".study-example-answer")).toBeVisible();
   await expect(draft).toHaveValue("Mijn eigen antwoord blijft behouden terwijl ik woorden opzoek.");
-  await page.getByRole("button", { name: "Woorden erbij", exact: true }).click();
+  await page.getByRole("button", { name: /^Woorden erbij(?:\s|$)/ }).click();
   await expect(draft).toHaveValue("Mijn eigen antwoord blijft behouden terwijl ik woorden opzoek.");
   await expect(page.locator('[lang="fa"]')).toHaveCount(0);
 });
