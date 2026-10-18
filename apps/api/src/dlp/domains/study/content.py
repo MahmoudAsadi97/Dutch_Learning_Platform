@@ -155,10 +155,14 @@ def catalogue(stage_id: str, skill: Skill, *, query: str = "", topic_group: str 
 def _part(key: str, title: dict, *, prompt: dict | None = None, sample: dict | None = None,
           text: list[dict] | None = None, questions: list[dict] | None = None,
           instructions: dict | None = None, min_words: int = 1, max_words: int = 200) -> dict:
+    guidance = copy(
+        "Lees de tekst en beantwoord de vragen. Je kunt elke zin ook beluisteren.",
+        "Read the text and answer the questions. You can also listen to each sentence.") if key == "read" else copy(
+            "Probeer eerst zelf. Vraag daarna feedback en verbeter je antwoord.",
+            "Try it yourself first. Then request feedback and improve your answer.")
     return {"id": key, "title": title, "prompt": prompt or title, "sample": sample,
             "text": text or [], "questions": questions or [],
-            "instructions": instructions or copy("Probeer eerst zelf. Bekijk daarna eventueel het voorbeeld.",
-                                                   "Try first. Reveal the example afterwards if you need it."),
+            "instructions": instructions or guidance,
             "min_words": min_words, "max_words": max_words, "practice_questions": []}
 
 
