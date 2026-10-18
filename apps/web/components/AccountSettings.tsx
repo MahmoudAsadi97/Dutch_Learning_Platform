@@ -74,7 +74,7 @@ export function AccountSettings() {
             </div>
             <div>
               <dt>Taal voor hulp</dt>
-              <dd>{mode === "nl-en" ? "English" : mode === "nl-fa" ? "فارسی" : "فارسی · English"}</dd>
+              <dd>{mode === "nl-en" ? "English" : "Alleen Nederlands"}</dd>
             </div>
           </dl>
         )}

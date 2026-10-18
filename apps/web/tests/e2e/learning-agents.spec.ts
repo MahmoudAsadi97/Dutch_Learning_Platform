@@ -155,11 +155,37 @@ async function openConversation(page: Page, mode = "typed") {
   await expect(page.locator(".conversation-messages")).toContainText("Goeiedag. Wat wilt u kopen?");
 }
 
+test("source and unit speaking links retain their own tasks instead of entering the conversation chooser", async ({
+  page,
+}) => {
+  for (const topicId of ["a1-t-source-01", "a1-t-unit-window-plant"]) {
+    const response = await page.request.get(`/api/curriculum/a1/topics/${topicId}?skill=speaking`);
+    expect(response.ok()).toBe(true);
+    const topic = await response.json();
+    await page.goto(`/learn/a1?skill=speaking&topic=${topicId}`);
+    const exercise = page.getByRole("region", { name: "Oefenen met een onderwerp" });
+    await expect(exercise.getByRole("heading", { level: 3 })).toContainText(topic.title.nl);
+    await expect(exercise.locator(".productive-task")).toContainText(topic.activity.prompt.nl);
+    await expect(exercise.getByRole("button", { name: "Start de opname", exact: true })).toBeVisible();
+    await expect(page.locator(".conversation-topic-choices")).toHaveCount(0);
+    await page.getByRole("link", { name: /^Terug naar de onderwerpen/ }).click();
+    await expect(page).toHaveURL(/\/learn\/a1\?skill=speaking$/);
+  }
+});
+
 test("topic conversation starts deliberately and preserves a failed response with the same retry id", async ({
   page,
 }) => {
   const fixture = await conversationFixture(page);
-  await page.goto("/learn/a1?skill=speaking&topic=a1-t001");
+  await page.goto("/learn/a1?skill=speaking");
+  const optional = page.locator(".study-optional-practice");
+  await expect(optional).not.toHaveAttribute("open");
+  await expect(optional.getByRole("link")).toBeHidden();
+  await optional.locator("summary").click();
+  await optional.getByRole("link", { name: /^Kies een situatiegesprek/ }).click();
+  await expect(page).toHaveURL(/skill=speaking&view=conversation$/);
+  await expect(page.getByTestId("study-deep-practice")).toContainText("bewaarde gespreksgeschiedenis");
+  await page.getByRole("button", { name: /^Een brood bestellen/ }).click();
   await expect(page.getByRole("button", { name: "Oefen dit gesprek", exact: true })).toBeVisible();
   expect(fixture.calls).toHaveLength(0);
   await page.getByRole("button", { name: "Oefen dit gesprek", exact: true }).click();
@@ -184,7 +210,7 @@ test("topic conversation starts deliberately and preserves a failed response wit
   await expect(page.locator(".conversation-summary")).toContainText("Dit gesprek telt niet als eindtoets");
   await expect(page.getByRole("link", { name: "Schrijf over deze situatie" })).toHaveAttribute(
     "href",
-    "/learn/a1?skill=writing&topic=a1-t001",
+    "/learn/a1?skill=writing&topic=a1-t001&view=extended",
   );
   await page.getByRole("button", { name: "Oefen het gesprek opnieuw", exact: true }).click();
   await expect(page.getByRole("button", { name: "Begin het gesprek", exact: true })).toBeVisible();
@@ -236,7 +262,9 @@ test("a pending spoken upload locks navigation and submits only the owned audio 
     await openConversation(page, "spoken");
     await page.getByRole("button", { name: "Start de opname", exact: true }).click();
     await expect(page.getByRole("button", { name: "Gesprek sluiten", exact: true })).toBeDisabled();
-    await expect(page.getByRole("button", { name: "Startles", exact: true })).toBeDisabled();
+    await page.locator("#study-stage").selectOption("a2");
+    await expect(page.locator("#study-stage")).toHaveValue("a1");
+    await expect(page.locator(".study-error")).toBeVisible();
     await page.getByRole("button", { name: "Stop de opname", exact: true }).click();
     await expect(page.getByRole("button", { name: "Je opname verwerken…", exact: true })).toBeVisible();
     await expect(page.getByRole("button", { name: "Verstuur je antwoord", exact: true })).toBeDisabled();
@@ -296,6 +324,7 @@ test("the practice coach loads free suggestions and deep-links to the requested 
     });
   });
   await page.goto("/leerpad");
+  expect(calls).toEqual([]);
   await page.locator(".directory-coach > summary").click();
   const coach = page.locator(".practice-coach");
   await expect(coach.getByRole("heading", { name: "Jouw volgende oefening" })).toBeVisible();
@@ -305,7 +334,7 @@ test("the practice coach loads free suggestions and deep-links to the requested 
   await page.locator(".directory-coach > summary").click();
   await expect(coach.locator(".recommendation-label").first()).toContainText("A2");
   await coach.getByRole("link", { name: "Open deze oefening" }).nth(1).click();
-  await expect(page).toHaveURL(/\/learn\/a2\?skill=writing&topic=a2-t001$/);
+  await expect(page).toHaveURL(/\/learn\/a2\?skill=writing&topic=a2-t001&view=extended$/);
   await expect(page.getByLabel("Jouw tekst bij dit onderwerp", { exact: true })).toBeVisible();
   expect(calls.every((method) => method === "GET")).toBe(true);
   await page.goto("/leerpad");
@@ -360,25 +389,26 @@ test("explicit coaching retries keep the same id and a failed request leaves sug
   expect(calls[0]).toEqual(calls[1]);
 });
 
-test("the conversation is readable and accessible at 320px with Persian support", async ({
+test("the conversation is readable and accessible at 320px with English support", async ({
   page,
 }, testInfo) => {
   await page.setViewportSize({ width: 320, height: 850 });
   await page.request.patch("/api/me", {
     headers: { "X-Requested-With": "fetch" },
-    data: { support_mode: "nl-fa-en" },
+    data: { support_mode: "nl-en" },
   });
-  await page.addInitScript(() => localStorage.setItem("taalstudio.language-support", "nl-fa-en"));
+  await page.addInitScript(() => localStorage.setItem("taalstudio.language-support", "nl-en"));
   await conversationFixture(page);
   await openConversation(page);
-  await expect(page.locator(".conversation-practice [lang=fa]").first()).toHaveAttribute("dir", "rtl");
+  await expect(page.locator(".conversation-practice [lang=fa]")).toHaveCount(0);
+  await expect(page.locator(".conversation-practice [lang=en]").first()).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   const audit = await new AxeBuilder({ page })
     .include(".topic-conversation")
     .withTags(["wcag2a", "wcag2aa"])
     .analyze();
   expect(audit.violations).toEqual([]);
-  await testInfo.attach("conversation-phone-persian", {
+  await testInfo.attach("conversation-phone-english", {
     body: await page.screenshot({ fullPage: true }),
     contentType: "image/png",
   });

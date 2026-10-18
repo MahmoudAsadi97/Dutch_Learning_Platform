@@ -25,18 +25,15 @@ test.describe("lesson shell: reading step", () => {
     const translation = page.getByTestId("reading-translation");
     await expect(translation.locator('[lang="en"]')).toBeVisible();
     await expect(page.getByTestId("reading-text-fa")).toHaveCount(0);
-    await page.getByLabel(/Taalhulp/).selectOption("nl-fa");
+    await page.getByLabel(/Taalhulp/).selectOption("nl");
     const persian = page.getByTestId("reading-text-fa");
-    await expect(persian).toBeVisible();
-    await expect(persian).toHaveAttribute("dir", "rtl");
-    await expect(persian).toHaveAttribute("lang", "fa");
+    await expect(persian).toHaveCount(0);
     await expect(translation.locator('[lang="en"]')).toHaveCount(0);
     await expect(answer).toBeChecked();
-    await page.getByLabel(/Taalhulp/).selectOption("nl-fa-en");
+    await page.getByLabel(/Taalhulp/).selectOption("nl-en");
     await expect(translation.locator('[lang="en"]')).toBeVisible();
-    await expect(persian).toBeVisible();
+    await expect(persian).toHaveCount(0);
     await expect(answer).toBeChecked();
-    await page.getByLabel(/Taalhulp/).selectOption("nl-fa");
 
     // help ladder reveals rungs one at a time
     const ladder = page.locator('[data-step="read-reminder"] .help-ladder').last();
@@ -44,9 +41,10 @@ test.describe("lesson shell: reading step", () => {
     await ladder.getByRole("button", { name: /Hulp niveau 1/ }).click();
     await expect(ladder).toHaveAttribute("data-help-revealed", "1");
     await ladder.getByRole("button", { name: /Hulp niveau 2/ }).click();
-    await expect(ladder.locator(".rung").nth(1)).toHaveAttribute("lang", "fa");
+    await expect(ladder.locator("li").nth(1).locator('[lang="en"]')).toBeVisible();
     await ladder.getByRole("button", { name: /Hulp niveau 3/ }).click();
-    await expect(ladder.locator(".rung").nth(2)).toHaveAttribute("dir", "rtl");
+    await expect(ladder.locator("li").nth(2).locator('[lang="en"]')).toBeVisible();
+    await expect(ladder.locator('[lang="fa"]')).toHaveCount(0);
 
     // questions are judged by the API (a session is started on first use) and stored as evidence
     await page.getByRole("radio", { name: /Eén dag op voorhand bellen/ }).check();
@@ -79,7 +77,7 @@ test.describe("lesson shell: reading step", () => {
 
   test("the reading step offers feedback grounded in the recorded answers", async ({ page }) => {
     await page.goto("/missions/appointment-change");
-    await page.getByLabel(/Taalhulp/).selectOption("nl-fa");
+    await page.getByLabel(/Taalhulp/).selectOption("nl-en");
     // Establish evidence in this test; it must not depend on another test completing first.
     await page.getByRole("radio", { name: /Woensdag om 14.00 uur/ }).check();
     await page.getByRole("radio", { name: /Eén dag op voorhand bellen/ }).check();
@@ -95,7 +93,8 @@ test.describe("lesson shell: reading step", () => {
     await expect(report).not.toContainText("feedback-v1");
     await expect(report).not.toContainText("fixture-chat-v1");
     await expect(report).not.toContainText("bewijs:");
-    await expect(report.locator('[lang="fa"]').first()).toBeVisible();
+    await expect(report.locator('[lang="fa"]')).toHaveCount(0);
+    await expect(report.locator('[lang="en"]').first()).toBeVisible();
   });
 });
 

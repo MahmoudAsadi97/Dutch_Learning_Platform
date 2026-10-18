@@ -167,10 +167,10 @@ test("practice questions replay each sentence while final-test questions do not 
 
 test("linked practice accepts stage-bound authored IDs and refuses cross-stage or external targets", () => {
   expect(topicHref("a1", "writing", "a1-t-unit-the-letter")).toBe(
-    "/learn/a1?skill=writing&topic=a1-t-unit-the-letter",
+    "/learn/a1?skill=writing&topic=a1-t-unit-the-letter&view=extended",
   );
   expect(topicHref("a1", "listening", "a1-t-source-02")).toBe(
-    "/learn/a1?skill=listening&topic=a1-t-source-02",
+    "/learn/a1?skill=listening&topic=a1-t-source-02&view=extended",
   );
   for (const id of ["a2-t-unit-the-letter", "https://example.com", "a1-t-unit-../settings", "a1-t-unit-"])
     expect(topicHref("a1", "writing", id)).toBeNull();

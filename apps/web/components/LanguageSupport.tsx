@@ -6,7 +6,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 import { useProfile, updateProfile, type Me } from "@/lib/client/profile";
 import { glossLevelFor, type GlossLevel } from "@/lib/client/gloss";
-import { isSupportMode, reconcileMode, type SupportMode } from "@/lib/client/profile-sync";
+import { normalizeSupportMode, reconcileMode, type SupportMode } from "@/lib/client/profile-sync";
 import { queryKeys } from "@/lib/client/query-keys";
 import { storageKeys } from "@/lib/client/storage";
 
@@ -30,7 +30,7 @@ const LanguageContext = createContext({
 function readStored(): SupportMode | null {
   try {
     const value = localStorage.getItem(key);
-    return isSupportMode(value) ? value : null;
+    return normalizeSupportMode(value);
   } catch {
     return volatileStored;
   }
@@ -93,7 +93,7 @@ function send(value: SupportMode, remember: (me: Me) => void) {
  */
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const profile = useProfile();
-  const serverMode = profile.data?.profile.support_mode ?? "nl-en";
+  const serverMode = normalizeSupportMode(profile.data?.profile.support_mode) ?? "nl-en";
   const mode = useSyncExternalStore(
     subscribe,
     () => readStored() ?? serverMode,
@@ -112,7 +112,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const server = profile.data.profile.support_mode;
     const result = reconcileMode({ stored: readStored(), pending: readUnsent() }, server);
     if (result.upload) send(result.mode, remember);
-    else if (isSupportMode(server) && readStored() !== server) writeMode(server);
+    else if (readStored() !== result.mode) writeMode(result.mode);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- reconcile once, when the profile first arrives
   }, [profile.data]);
   function setMode(value: SupportMode) {
@@ -125,7 +125,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   );
   return (
     <LanguageContext.Provider
-      value={{ mode, setMode, showEnglish: mode !== "nl-fa", showPersian: mode !== "nl-en", glossLevel }}
+      value={{ mode, setMode, showEnglish: mode === "nl-en", showPersian: false, glossLevel }}
     >
       {children}
     </LanguageContext.Provider>
@@ -145,7 +145,7 @@ export function LearningText({
   className?: string;
   supportOnly?: boolean;
 }) {
-  const { showEnglish, showPersian } = useLanguageSupport();
+  const { showEnglish } = useLanguageSupport();
   if (!text) return null;
   return (
     <span className={`learning-copy ${className}`}>
@@ -159,14 +159,6 @@ export function LearningText({
           {" "}
           <span lang="en" className="copy-support">
             {text.en}
-          </span>
-        </>
-      )}
-      {showPersian && text.fa && (
-        <>
-          {" "}
-          <span lang="fa" dir="rtl" className="copy-support fa">
-            {text.fa}
           </span>
         </>
       )}
@@ -186,9 +178,8 @@ export function LanguageSwitcher() {
         value={mode}
         onChange={(event) => setMode(event.target.value as SupportMode)}
       >
+        <option value="nl">Nederlands</option>
         <option value="nl-en">Nederlands · English</option>
-        <option value="nl-fa">Nederlands · فارسی</option>
-        <option value="nl-fa-en">Nederlands · فارسی · English</option>
       </select>
     </div>
   );

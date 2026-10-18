@@ -33,7 +33,11 @@ test("level, goal and glosses persist through the profile", async ({ page }) => 
 
 test("the support language in the preferences and in the header are the same setting", async ({ page }) => {
   await page.goto("/settings");
-  await page.getByTestId("learning-preferences").getByLabel("Taal voor hulp").selectOption("nl-fa");
-  await expect(page.getByLabel("Taalhulp / language")).toHaveValue("nl-fa");
-  await expect.poll(async () => (await me(page)).support_mode).toBe("nl-fa");
+  await page.getByTestId("learning-preferences").getByLabel("Taal voor hulp").selectOption("nl");
+  await expect(page.getByLabel("Taalhulp / language")).toHaveValue("nl");
+  await expect.poll(async () => (await me(page)).support_mode).toBe("nl");
+  await expect(page.locator('[lang="fa"]')).toHaveCount(0);
+  await page.getByLabel("Taalhulp / language").selectOption("nl-en");
+  await expect(page.getByTestId("learning-preferences").getByLabel("Taal voor hulp")).toHaveValue("nl-en");
+  await expect.poll(async () => (await me(page)).support_mode).toBe("nl-en");
 });

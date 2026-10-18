@@ -163,7 +163,6 @@ export function WordReview({ embedded = false }: { embedded?: boolean }) {
                       {current.meaning_fa}
                     </span>
                   )}
-                  {!showEnglish && !showPersian && <span lang="en">{current.meaning_en}</span>}
                 </p>
                 {current.example && (
                   <p lang="nl" className="muted">
@@ -239,27 +238,18 @@ export function WordReview({ embedded = false }: { embedded?: boolean }) {
               placeholder={wordsCopy.example.nl}
             />
           </label>
-          <label>
-            <UiText text={wordsCopy.fieldEnglish} />
-            <input
-              lang="en"
-              value={draft.meaning_en}
-              onChange={(event) => setDraft({ ...draft, meaning_en: event.target.value })}
-              maxLength={300}
-              placeholder={wordsCopy.example.en}
-            />
-          </label>
-          <label>
-            <UiText text={wordsCopy.fieldPersian} />
-            <input
-              lang="fa"
-              dir="rtl"
-              value={draft.meaning_fa}
-              onChange={(event) => setDraft({ ...draft, meaning_fa: event.target.value })}
-              maxLength={300}
-              placeholder={wordsCopy.example.fa}
-            />
-          </label>
+          {showEnglish && (
+            <label>
+              <UiText text={wordsCopy.fieldEnglish} />
+              <input
+                lang="en"
+                value={draft.meaning_en}
+                onChange={(event) => setDraft({ ...draft, meaning_en: event.target.value })}
+                maxLength={300}
+                placeholder={wordsCopy.example.en}
+              />
+            </label>
+          )}
           <button className="button secondary" type="submit" disabled={!draft.term.trim()}>
             <UiText text={uiCopy.action.save} inline />
           </button>
@@ -279,10 +269,11 @@ export function WordReview({ embedded = false }: { embedded?: boolean }) {
           {allWords.map((item) => (
             <li key={item.id}>
               <strong lang="nl">{item.term}</strong>{" "}
-              <span className="muted">
-                {item.meaning_en}
-                {item.meaning_fa ? ` · ${item.meaning_fa}` : ""}
-              </span>
+              {showEnglish && (
+                <span className="muted" lang="en">
+                  {item.meaning_en}
+                </span>
+              )}
               <span className="small-text muted">
                 <UiText
                   text={

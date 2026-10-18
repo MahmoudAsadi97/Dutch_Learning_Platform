@@ -50,7 +50,7 @@ def complete(session: Session, learner: Learner, body: OnboardingBody) -> dict:
     profile.stated_goal = body.stated_goal
     profile.onboarded_at = utcnow()
     profile.updated_at = utcnow()
-    learner.support_language = "fa" if "fa" in body.support_mode else "en"
+    learner.support_language = "nl" if body.support_mode == "nl" else "en"
     session.flush()
     retarget_today(session, learner.id, profile.daily_goal_points)
     stories.set_level(session, learner, body.stage_id)

@@ -4,8 +4,9 @@ import { useMutation, useQuery, useQueryClient, type QueryClient } from "@tansta
 
 import { apiJson } from "./api";
 import { queryKeys } from "./query-keys";
+import type { SupportMode } from "./profile-sync";
 
-export type SupportMode = "nl-en" | "nl-fa" | "nl-fa-en";
+export type { SupportMode };
 export type GlossMode = "auto" | "on" | "off";
 export type DailyGoal = 10 | 20 | 30;
 

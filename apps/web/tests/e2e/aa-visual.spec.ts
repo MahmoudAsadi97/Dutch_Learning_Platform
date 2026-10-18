@@ -1,6 +1,5 @@
 import { expect, test } from "./fixtures/test";
 import { episodeId, storyFixture, wordsFixture } from "./fixtures/stories";
-import { baseA1LibraryFixture } from "./fixtures/source-library";
 
 /**
  * Screenshot baselines of the learner-facing screens at three widths. They freeze the look of the app so
@@ -28,9 +27,9 @@ test.use({
 const fixedTime = new Date("2026-10-02T09:30:00+02:00");
 
 const screens: { name: string; path: string; ready: string }[] = [
-  { name: "today", path: "/", ready: '[data-testid="today-home"] [data-testid="episode-card"]' },
+  { name: "today", path: "/", ready: '[data-testid="study-dashboard"]' },
   { name: "leerpad", path: "/leerpad", ready: '[data-testid="curriculum-path"] li' },
-  { name: "learn-a1", path: "/learn/a1", ready: ".vocabulary-card" },
+  { name: "learn-a1", path: "/learn/a1", ready: ".study-topic-card" },
   { name: "progress", path: "/progress", ready: ".course-progress-row" },
   { name: "mission", path: "/missions/appointment-change", ready: '[data-testid="reading-text"]' },
   { name: "speech", path: "/speech-check", ready: '[data-testid="talk-button"]' },
@@ -51,7 +50,6 @@ for (const screen of screens) {
       await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
       await storyFixture(page);
       await wordsFixture(page);
-      if (screen.name === "learn-a1") await baseA1LibraryFixture(page);
       await page.goto(screen.path);
       await expect(page.locator(screen.ready).first()).toBeVisible();
       await page.evaluate(() => document.fonts.ready.then(() => undefined));

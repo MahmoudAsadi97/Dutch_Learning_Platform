@@ -15,10 +15,7 @@ test("alphabet audio requires a click, says Dutch letter names and reuses replay
     });
   });
   await page.goto("/learn/pre-a1");
-  await page
-    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Alfabet", exact: true })
-    .click();
+  await page.getByRole("button", { name: /^Alfabet & getallen(?:\s|$)/ }).click();
   const alphabet = page.getByTestId("alphabet-practice");
   await expect(alphabet).toBeVisible();
   expect(spoken).toEqual([]);
@@ -40,13 +37,10 @@ test("alphabet audio requires a click, says Dutch letter names and reuses replay
 test("alphabet listening recognition and support text work on a narrow screen", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 850 });
   await page.goto("/learn/pre-a1");
-  await page
-    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Alfabet", exact: true })
-    .click();
+  await page.getByRole("button", { name: /^Alfabet & getallen(?:\s|$)/ }).click();
   const alphabet = page.getByTestId("alphabet-practice");
-  await page.getByLabel("Taalhulp / language").selectOption("nl-fa-en");
-  await expect(alphabet.locator('[lang="fa"]').first()).toHaveAttribute("dir", "rtl");
+  await page.getByLabel("Taalhulp / language").selectOption("nl-en");
+  await expect(alphabet.locator('[lang="fa"]')).toHaveCount(0);
   await alphabet
     .getByRole("group", { name: "Welke letter hoor je?", exact: true })
     .getByRole("button", { name: "D", exact: true })
@@ -72,7 +66,7 @@ test("starting the microphone stops pronunciation and disables replay until capt
   await page.route("**/api/speech/synthesize", (route) =>
     route.fulfill({ body: audio, contentType: "audio/wav", headers: { "x-audio-voice": "fixture-tone" } }),
   );
-  await page.route("**/api/speech/transcribe", (route) =>
+  await page.route("**/api/study/*/topics/*/transcribe", (route) =>
     route.fulfill({
       json: {
         audio: { asset_id: "58bd4ab4-f0b2-4b1a-87aa-d16d8c51d5fb" },
@@ -80,19 +74,13 @@ test("starting the microphone stops pronunciation and disables replay until capt
       },
     }),
   );
-  await page.goto("/learn/pre-a1");
-  await page
-    .getByRole("navigation", { name: "Onderdelen van dit niveau" })
-    .getByRole("button", { name: "Spreken", exact: true })
-    .click();
-  await page.getByRole("button", { name: "Startles", exact: true }).click();
-  await page.locator(".communication-coach summary").click();
-  const pronunciation = page.locator(".communication-coach .phrase-audio-button").first();
+  await page.goto("/learn/pre-a1?skill=speaking&topic=family&step=practise");
+  const pronunciation = page.locator(".study-response-prompt .phrase-audio-button").first();
   await pronunciation.click();
-  await page.getByRole("button", { name: "Start de opname", exact: true }).click();
-  await expect(page.getByRole("button", { name: "Stop de opname", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: /^Neem je antwoord op(?:\s|$)/ }).click();
+  await expect(page.getByRole("button", { name: /^Stop opname(?:\s|$)/ })).toBeVisible();
   await expect(pronunciation).toBeDisabled();
   await expect(pronunciation).toHaveAttribute("aria-pressed", "false");
-  await page.getByRole("button", { name: "Stop de opname", exact: true }).click();
+  await page.getByRole("button", { name: /^Stop opname(?:\s|$)/ }).click();
   await expect(pronunciation).toBeEnabled();
 });

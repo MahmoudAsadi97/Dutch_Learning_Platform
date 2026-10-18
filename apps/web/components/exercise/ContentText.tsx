@@ -5,7 +5,7 @@ import type { Text } from "@/lib/client/exercises";
 
 /**
  * Practice content from the API, which is not catalogue copy: Dutch in its own `lang` span, and meanings in
- * the learner's support languages. API texts may lack a language; a meaning always shows in at least one.
+ * the learner's selected support language. Dutch-only practice does not expose translations.
  */
 export function Dutch({
   text,
@@ -24,14 +24,12 @@ export function Dutch({
   );
 }
 
-/** A meaning or translation in the support languages (English, Persian or both, as the learner chose). */
+/** Meanings follow the same language preference as the rest of the workspace. */
 export function Meaning({ text, className = "" }: { text?: Text | null; className?: string }) {
   const { showEnglish, showPersian } = useLanguageSupport();
   if (!text) return null;
-  let english = showEnglish && text.en ? text.en : null;
+  const english = showEnglish && text.en ? text.en : null;
   const persian = showPersian && text.fa ? text.fa : null;
-  // a learner who reads only Persian still sees a meaning when the Persian is missing
-  if (!english && !persian) english = text.en || null;
   if (!english && !persian) return null;
   return (
     <span className={`exercise-meaning ${className}`.trim()}>

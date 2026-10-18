@@ -1,18 +1,17 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "./fixtures/test";
 
-/** The five destinations: bottom tabs on a phone, sidebar on a desktop, one current item at a time. */
+/** Four stable destinations: bottom tabs on a phone, sidebar on desktop, one current item at a time. */
 
-const tabs = ["Vandaag", "Niveaus", "Verhalen", "Spreken", "Woorden"];
+const tabs = ["Dashboard", "Leren", "Voortgang", "Instellingen"];
 
 for (const width of [390, 320]) {
-  test(`five tabs fit at ${width}px with 44px targets and no axe violations`, async ({ page }) => {
+  test(`four tabs fit at ${width}px with 44px targets and no axe violations`, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });
     await page.goto("/");
-    // measure once Today has rendered, so the layout under the bar is the real one
-    await expect(page.getByRole("img", { name: /dag(en)? op rij/ })).toBeVisible();
+    await expect(page.getByTestId("study-dashboard")).toBeVisible();
     const nav = page.getByRole("navigation", { name: "Mobiel hoofdmenu" });
-    await expect(nav.getByRole("link")).toHaveCount(5);
+    await expect(nav.getByRole("link")).toHaveCount(4);
     for (const name of tabs) await expect(nav.getByRole("link", { name })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     expect(await nav.evaluate((element) => element.getBoundingClientRect().right <= window.innerWidth)).toBe(
@@ -54,26 +53,31 @@ test("the current destination follows the route", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const nav = page.getByRole("navigation", { name: "Mobiel hoofdmenu" });
   for (const [path, name] of [
-    ["/learn/a1", "Niveaus"],
-    ["/videos", "Verhalen"],
-    ["/missions/appointment-change", "Spreken"],
-    ["/speech-check", "Spreken"],
-    ["/woorden", "Woorden"],
+    ["/learn/a1", "Leren"],
+    ["/videos", "Leren"],
+    ["/missions/appointment-change", "Leren"],
+    ["/speech-check", "Leren"],
+    ["/woorden", "Leren"],
   ] as const) {
     await page.goto(path);
     await expect(nav.getByRole("link", { name })).toHaveAttribute("aria-current", "page");
     await expect(nav.locator('a[aria-current="page"]')).toHaveCount(1);
   }
   await page.goto("/settings");
-  await expect(nav.getByRole("link")).toHaveCount(5);
-  await expect(nav.locator('a[aria-current="page"]')).toHaveCount(0);
+  await expect(nav.getByRole("link")).toHaveCount(4);
+  await expect(nav.getByRole("link", { name: "Instellingen" })).toHaveAttribute("aria-current", "page");
+  await expect(nav.locator('a[aria-current="page"]')).toHaveCount(1);
 });
 
-test("on a phone the rooms are reached through the profile button and their tabs", async ({ page }) => {
+test("on a phone account and progress are available from the profile and the main navigation", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   await page.getByRole("link", { name: "Mijn account en instellingen" }).click();
   await expect(page).toHaveURL(/\/settings$/);
+  const mobile = page.getByRole("navigation", { name: "Mobiel hoofdmenu" });
+  await expect(mobile.getByRole("link", { name: "Instellingen" })).toHaveAttribute("aria-current", "page");
   const rooms = page.getByRole("navigation", { name: "Voortgang en instellingen" });
   await expect(rooms.getByRole("link", { name: "Instellingen" })).toHaveAttribute("aria-current", "page");
   await rooms.getByRole("link", { name: "Voortgang" }).click();
@@ -92,28 +96,26 @@ test("the sidebar marks the rooms and keeps 44px links", async ({ page }) => {
     expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
   }
   await page.goto("/videos");
-  await expect(menu.getByRole("link", { name: "Verhalen" })).toHaveAttribute("aria-current", "page");
-  await expect(page).toHaveURL(/\/verhalen$/);
+  await expect(menu.getByRole("link", { name: "Leren" })).toHaveAttribute("aria-current", "page");
+  await expect(page).toHaveURL(/\/learn\/a1\?skill=reading/);
   await expect(page.getByRole("link", { name: "Video's", exact: true })).toHaveCount(0);
 });
 
 for (const width of [1440, 390, 320]) {
-  test(`the Spreken hub gathers conversations, missions and the studio at ${width}px`, async ({ page }) => {
+  test(`legacy speaking links preserve level and lead to the four-skill workspace at ${width}px`, async ({
+    page,
+  }) => {
     await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
-    await page.goto("/spreken");
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("Oefen een gesprek op jouw niveau");
-    await expect(page.locator("#library-hub-stage option")).toHaveCount(12);
-    await expect(page.getByRole("link", { name: /Kies een spreekonderwerp/ })).toHaveAttribute(
-      "href",
-      "/learn/pre-a1?skill=speaking",
-    );
-    await page.locator("#library-hub-stage").selectOption("pre-a2");
-    await expect(page.getByRole("link", { name: /Kies een spreekonderwerp/ })).toHaveAttribute(
-      "href",
-      "/learn/pre-a2?skill=speaking",
-    );
-    await expect(page.getByTestId("mission-catalog").locator("article")).toHaveCount(4);
-    await expect(page.getByRole("link", { name: /spraakstudio/i })).toHaveAttribute("href", "/speech-check");
+    await page.goto("/spreken?stage=pre-a2");
+    await expect(page).toHaveURL(/\/learn\/pre-a2\?skill=speaking/);
+    const stage = page.locator("#study-stage");
+    await expect(stage).toHaveValue("pre-a2");
+    await expect(stage.locator("option")).toHaveCount(12);
+    const skills = page.getByRole("navigation", { name: "Kies een vaardigheid" });
+    await expect(skills.getByRole("link")).toHaveCount(4);
+    await expect(skills.getByRole("link", { name: /^Spreken/ })).toHaveAttribute("aria-current", "page");
+    await stage.selectOption("a2");
+    await expect(page).toHaveURL(/\/learn\/a2\?skill=speaking/);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])

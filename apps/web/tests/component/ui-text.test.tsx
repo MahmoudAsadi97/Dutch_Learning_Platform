@@ -3,10 +3,11 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { UiText } from "@/components/ui/UiText";
 import { fill, uiCopy } from "@/lib/ui-copy";
+import { persianReviewed } from "@/lib/client/persian-review";
 
-/** Persian glosses wait for a fluent reader (owner decision O2); English stands in for those who chose it. */
+/** Only the supported Dutch and Dutch/English modes are supplied by the workspace context. */
 const flags: Record<string, boolean> = {};
-const support = { showEnglish: true, showPersian: true };
+const support = { showEnglish: true, showPersian: false };
 
 vi.mock("@/lib/copy/review", () => ({
   PERSIAN_REVIEWED: new Proxy({}, { get: (_target, key: string) => flags[key] ?? false }),
@@ -22,40 +23,41 @@ function languages(container: HTMLElement) {
 beforeEach(() => {
   for (const key of Object.keys(flags)) delete flags[key];
   support.showEnglish = true;
-  support.showPersian = true;
+  support.showPersian = false;
 });
 
-describe("UiText and the Persian review", () => {
-  it("shows English instead of Persian while the batch is not reviewed", () => {
+describe("UiText support language", () => {
+  it("shows English help when selected", () => {
     const { container } = render(<UiText text={uiCopy.nav.today} />);
     expect(languages(container)).toEqual(["en"]);
   });
 
-  it("shows Persian, right to left, once the batch is reviewed", () => {
+  it("keeps retired translations hidden even when their source batch is reviewed", () => {
     flags.nav = true;
     const { container } = render(<UiText text={uiCopy.nav.today} />);
-    expect(languages(container)).toEqual(["fa"]);
-    expect(container.querySelector('.ui-gloss[lang="fa"]')).toHaveAttribute("dir", "rtl");
+    expect(languages(container)).toEqual(["en"]);
+    expect(container.querySelector('[lang="fa"]')).toBeNull();
   });
 
-  it("gives guides every selected language that is allowed", () => {
+  it("gives guides English explanations without restoring a retired language", () => {
     flags.welcome = true;
     const { container } = render(<UiText text={uiCopy.welcome.levelNote} tier="guide" />);
-    expect(languages(container)).toEqual(["en", "fa"]);
+    expect(languages(container)).toEqual(["en"]);
   });
 
   it("keeps the batch of a filled copy", () => {
     flags.today = true;
     const { container } = render(<UiText text={fill(uiCopy.today.goalLeft, { points: 5 })} tier="guide" />);
-    expect(languages(container)).toEqual(["en", "fa"]);
+    expect(languages(container)).toEqual(["en"]);
+    expect(persianReviewed(fill(uiCopy.today.goalLeft, { points: 5 }))).toBe(true);
     expect(container.textContent).toContain("Nog 5 punten");
   });
 
-  it("shows only Dutch to a Persian-only learner until the batch is reviewed", () => {
+  it("shows only Dutch when English help is off", () => {
     support.showEnglish = false;
     const { container } = render(<UiText text={uiCopy.nav.today} />);
     expect(languages(container)).toEqual([]);
-    expect(container.textContent).toBe("Vandaag");
+    expect(container.textContent).toBe("Dashboard");
   });
 });
 
@@ -78,6 +80,7 @@ describe("a copy that crossed from a server component", () => {
     flags.nav = true;
     const serialized = JSON.parse(JSON.stringify(uiCopy.nav.today));
     const { container } = render(<UiText text={serialized} />);
-    expect(languages(container)).toEqual(["fa"]);
+    expect(persianReviewed(serialized)).toBe(true);
+    expect(languages(container)).toEqual(["en"]);
   });
 });

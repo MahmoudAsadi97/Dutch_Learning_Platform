@@ -5,12 +5,12 @@ const screens = [
   {
     name: "today",
     path: "/",
-    heading: /aflevering|woorden wachten|Kies waar je vandaag mee begint/,
+    heading: /^Wat wil je vandaag kunnen zeggen\?/,
   },
   {
     name: "dashboard",
     path: "/leerpad",
-    heading: /^Kies je niveau\. Kies wat je wilt oefenen\./,
+    heading: /^Kies je niveau(?:\s|$)/,
   },
   { name: "progress", path: "/progress", heading: "Elke stap vertelt iets." },
   { name: "settings", path: "/settings", heading: "Jouw leeromgeving." },
@@ -19,7 +19,7 @@ const screens = [
     path: "/speech-check",
     heading: "Jouw stem. Jouw Nederlands.",
   },
-  { name: "speak", path: "/spreken", heading: "Oefen een gesprek op jouw niveau" },
+  { name: "speak", path: "/spreken", heading: /^Waar wil je over leren\?/ },
 ];
 
 test("page scripts use a fresh CSP nonce and private caching", async ({ request }) => {
@@ -41,8 +41,14 @@ for (const screen of screens) {
     await expect(page.getByRole("heading", { name: screen.heading })).toBeVisible();
     if (screen.name === "dashboard")
       await expect(page.getByTestId("curriculum-path").locator("li")).toHaveCount(12);
-    if (screen.name === "today")
-      await expect(page.getByRole("img", { name: /dag(en)? op rij/ })).toBeVisible();
+    if (screen.name === "today") {
+      await expect(page.locator(".study-route-grid > li")).toHaveCount(4);
+      await expect(page.locator(".study-skill-card")).toHaveCount(4);
+      await expect(page.getByRole("link", { name: /^Kies een ander niveau/ })).toHaveAttribute(
+        "href",
+        "/leerpad",
+      );
+    }
     if (screen.name === "progress") {
       const stages = page.locator(".course-progress-row");
       await expect(stages).toHaveCount(12);
@@ -50,12 +56,11 @@ for (const screen of screens) {
       await expect(stages.first().locator("dt")).toHaveText(["Lezen", "Luisteren", "Spreken", "Schrijven"]);
     }
     if (screen.name === "speak") {
-      await expect(page.locator("#library-hub-stage option")).toHaveCount(12);
-      await expect(page.locator(".speak-main .button")).toBeVisible();
-      await expect(page.locator(".speak-main .button")).toHaveAttribute(
-        "href",
-        "/learn/pre-a1?skill=speaking",
-      );
+      await expect(page.locator("#study-stage option")).toHaveCount(12);
+      const skills = page.getByRole("navigation", { name: "Kies een vaardigheid" });
+      await expect(skills.getByRole("link")).toHaveCount(4);
+      await expect(skills.getByRole("link", { name: /^Spreken/ })).toHaveAttribute("aria-current", "page");
+      await expect(page.locator(".study-topic-card").first()).toBeVisible();
     }
     if (screen.name === "settings")
       await expect(page.getByText("Technische ondersteuning", { exact: true })).toBeVisible();

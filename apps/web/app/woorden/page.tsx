@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { LibraryHub } from "@/components/LibraryHub";
+import { LegacyStudyRedirect } from "@/components/LegacyStudyRedirect";
 
 export const metadata: Metadata = { title: "Woorden" };
 
 export default function WordsPage() {
   return (
     <Suspense>
-      <LibraryHub kind="words" />
+      <LegacyStudyRedirect vocabulary />
     </Suspense>
   );
 }

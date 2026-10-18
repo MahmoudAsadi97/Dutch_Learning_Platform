@@ -55,15 +55,16 @@ test("a new learner is sent to the welcome, chooses a start and finishes it once
   const heading = page.getByRole("heading", { level: 1 });
   await expect(heading).toContainText("Welkom bij Taalstudio");
   await expect(heading).toContainText("Welcome to Taalstudio");
-  // Persian sentences wait for a reviewer (O2); the Persian options still carry the language's own name
+  // Only Dutch and optional English are offered, including before a preference is saved.
   await expect(page.locator('.welcome-heading [lang="fa"]')).toHaveCount(0);
-  await expect(page.getByRole("radio", { name: /^Nederlands met Perzische hulp.*فارسی/ })).toBeVisible();
+  await expect(page.getByRole("radio", { name: /^Alleen Nederlands/ })).toBeVisible();
+  await expect(page.getByRole("radio", { name: /Perzische|فارسی/ })).toHaveCount(0);
   await expect(page.getByRole("navigation", { name: "Hoofdmenu", exact: true })).toHaveCount(0);
   await expect(page.getByRole("navigation", { name: "Mobiel hoofdmenu" })).toHaveCount(0);
 
-  await page.getByRole("radio", { name: /^Nederlands met Perzische hulp/ }).check();
-  await expect(page.getByLabel("Taalhulp / language")).toHaveValue("nl-fa");
-  await expect(page.getByText(/Perzische hulp komt zodra een lezer ze heeft nagekeken/)).toBeVisible();
+  await page.getByRole("radio", { name: /^Alleen Nederlands/ }).check();
+  await expect(page.getByLabel("Taalhulp / language")).toHaveValue("nl");
+  await expect(heading.locator('[lang="en"]')).toHaveCount(0);
   await page.getByRole("button", { name: next }).click();
 
   await expect(page.getByRole("button", { name: next })).toBeDisabled();
@@ -79,7 +80,7 @@ test("a new learner is sent to the welcome, chooses a start and finishes it once
     page.getByRole("button", { name: /^Start met leren/ }).click(),
   ]);
   expect(onboarding.postDataJSON()).toEqual({
-    support_mode: "nl-fa",
+    support_mode: "nl",
     stage_id: "a1",
     daily_goal_points: 30,
     stated_goal: "werk",
@@ -109,13 +110,14 @@ test("a new learner is sent to the welcome, chooses a start and finishes it once
   expect(stored).toMatchObject({
     stage_id: "a1",
     daily_goal_points: 30,
-    support_mode: "nl-fa",
+    support_mode: "nl",
     stated_goal: "werk",
   });
 
   await page.getByRole("link", { name: /^Naar Vandaag/ }).click();
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.getByRole("img", { name: /dag(en)? op rij/ })).toBeVisible();
+  await expect(page.getByTestId("study-dashboard")).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Verder met A1/ })).toBeVisible();
   await page.goto("/welkom");
   await expect(page.getByTestId("how-it-works")).toBeVisible();
   await expect(page.getByTestId("welcome-flow")).toHaveCount(0);

@@ -2,8 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import type { Page } from "@playwright/test";
 import { expect, test } from "./fixtures/test";
 
-/** With glosses on and every support language selected, the shell still fits and passes axe. */
-// Persian appears here once the owner marks the navigation batch reviewed in lib/copy/review.ts (O2).
+/** Optional English help stays compact and accessible across the simplified navigation. */
 const headers = { "X-Requested-With": "fetch" };
 
 async function profile(page: Page, data: Record<string, unknown>) {
@@ -19,17 +18,16 @@ async function accessible(page: Page) {
 }
 
 for (const width of [1440, 390, 320]) {
-  test(`glossed chrome in nl-fa-en fits and is accessible at ${width}px`, async ({ page }) => {
-    await profile(page, { gloss_mode: "on", support_mode: "nl-fa-en" });
+  test(`glossed chrome in nl-en fits and is accessible at ${width}px`, async ({ page }) => {
+    await profile(page, { gloss_mode: "on", support_mode: "nl-en" });
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
     const nav = page.getByRole("navigation", { name: width > 1050 ? "Hoofdmenu" : "Mobiel hoofdmenu" });
-    await expect(nav.getByRole("link", { name: /^Vandaag/ })).toBeVisible();
-    // the navigation's Persian waits for review (O2), so learners who also chose English see English
+    await expect(nav.getByRole("link", { name: /^Dashboard/ })).toBeVisible();
     await expect(nav.locator("[lang=fa]")).toHaveCount(0);
     const glosses = nav.locator("a .ui-gloss[lang=en]");
     // the glosses are there at every width; under 360px they are hidden, not missing
-    await expect(glosses).toHaveCount(width > 1050 ? 7 : 5);
+    await expect(glosses).toHaveCount(4);
     if (width >= 360) await expect(glosses.first()).toBeVisible();
     else await expect(glosses.first()).toBeHidden();
     await expect
@@ -55,9 +53,15 @@ for (const width of [1440, 390, 320]) {
 }
 
 test("glossed navigation fits every destination on a phone", async ({ page }) => {
-  await profile(page, { gloss_mode: "on", support_mode: "nl-fa-en" });
+  await profile(page, { gloss_mode: "on", support_mode: "nl-en" });
   await page.setViewportSize({ width: 390, height: 844 });
-  for (const path of ["/leerpad", "/verhalen", "/spreken", "/woorden", "/progress", "/settings"]) {
+  for (const path of [
+    "/leerpad",
+    "/learn/pre-a1?skill=reading",
+    "/learn/a2?skill=listening",
+    "/progress",
+    "/settings",
+  ]) {
     await page.goto(path);
     await expect(page.getByRole("heading", { level: 1 }).first()).toBeVisible();
     await expect(

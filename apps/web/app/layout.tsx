@@ -49,6 +49,7 @@ import "./phrase-audio.css";
 import "./topics.css";
 import "./learning-agents.css";
 import "./stories.css";
+import "./study.css";
 
 export const metadata: Metadata = {
   title: {

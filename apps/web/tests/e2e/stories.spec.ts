@@ -5,37 +5,41 @@ import { expect, test } from "./fixtures/test";
  * learner meets; the API suite proves the engine itself. One unmocked check proves the real path. */
 import { episode, episodeId, plan, storyFixture } from "./fixtures/stories";
 
-test("today shows the streak, the goal and the episode that is ready", async ({ page }) => {
+test("the dashboard offers one learning route instead of competing story and word entrances", async ({
+  page,
+}) => {
   await storyFixture(page);
   await page.goto("/");
-  const home = page.getByTestId("today-home");
-  await expect(home.getByRole("heading", { level: 1 })).toContainText("Er ligt een nieuwe aflevering klaar.");
-  await expect(home.getByRole("img", { name: "4 dagen op rij" })).toBeVisible();
-  await expect(home.getByText("Nog 20 punten tot je dagdoel.")).toBeVisible();
-  await expect(home.getByRole("link", { name: /3 woorden om te herhalen/ })).toHaveAttribute(
+  const home = page.getByTestId("study-dashboard");
+  await expect(home.getByRole("heading", { level: 1 })).toContainText("Wat wil je vandaag kunnen zeggen?");
+  await expect(home.getByRole("link", { name: /^Verder met A1/ })).toHaveAttribute(
     "href",
-    "/woorden?view=personal",
+    "/learn/a1?skill=reading",
   );
-  await expect(home.getByTestId("episode-card")).toContainText("De sleutel van Sami");
-  await expect(
-    home.getByRole("link", { name: "Mijn leerpad Twaalf niveaus met woorden, grammatica en toetsen." }),
-  ).toHaveAttribute("href", "/leerpad");
-  await expect(home.getByText("Wie is wie in De Lindestraat")).toBeVisible();
+  await expect(home.getByRole("link", { name: /^Kies een ander niveau/ })).toHaveAttribute(
+    "href",
+    "/leerpad",
+  );
+  await expect(home.locator(".study-skill-card")).toHaveCount(4);
+  await expect(home.getByText("Wie is wie in De Lindestraat")).toHaveCount(0);
+  await expect(home.getByTestId("episode-card")).toHaveCount(0);
   const scan = await new AxeBuilder({ page }).include("#main").analyze();
   expect(scan.violations.filter((v) => ["critical", "serious"].includes(v.impact ?? ""))).toEqual([]);
 });
 
-test("today reports a writer at work and a failed episode honestly", async ({ page }) => {
+test("background story generation does not block the dashboard's learning route", async ({ page }) => {
+  const requests: string[] = [];
+  page.on("request", (request) => {
+    if (/\/api\/today(?:\/prepare)?(?:\?|$)/.test(request.url())) requests.push(request.url());
+  });
   await page.route(/\/api\/today(?:\/prepare)?(?:\?|$)/, (route) =>
     route.fulfill({
       json: plan({ next_step: "wait", episode: episode({ status: "generating", title: "" }) }),
     }),
   );
   await page.goto("/");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Je volgende aflevering wordt geschreven.",
-  );
-  await expect(page.getByText("De schrijver is bezig…")).toBeVisible();
+  await expect(page.getByTestId("study-dashboard")).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Verder met A1/ })).toBeVisible();
   await page.unroute(/\/api\/today(?:\/prepare)?(?:\?|$)/);
   await page.route(/\/api\/today(?:\/prepare)?(?:\?|$)/, (route) =>
     route.fulfill({
@@ -52,10 +56,10 @@ test("today reports a writer at work and a failed episode honestly", async ({ pa
     }),
   );
   await page.goto("/");
-  await expect(page.getByText("Deze aflevering haalde de controle niet.")).toBeVisible();
-  await page.getByText("Wat er niet klopte").click();
-  await expect(page.getByText("sentence_too_long: 19 words (limit 12)")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Opnieuw laten schrijven" })).toBeVisible();
+  await expect(page.getByTestId("study-dashboard")).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Kies een ander niveau/ })).toBeVisible();
+  await expect(page.getByText("sentence_too_long: 19 words (limit 12)")).toHaveCount(0);
+  expect(requests).toEqual([]);
 });
 
 test("reading an episode: finish, answer, save a word, choose how it continues", async ({ page }) => {
@@ -106,13 +110,19 @@ test("reading an episode: finish, answer, save a word, choose how it continues",
   expect(fixture.current().rating).toBe(1);
 });
 
-test("persian support translates a paragraph on request and keeps it", async ({ page }) => {
+test("episode English help can be hidden and restored without requesting Persian translation", async ({
+  page,
+}) => {
   await storyFixture(page);
   await page.goto(`/verhalen/${episodeId}`);
-  await page.getByLabel("Taalhulp / language").selectOption("nl-fa");
   const first = page.getByTestId("episode-paragraph").first();
-  await first.getByRole("button", { name: "Vertaal naar het Perzisch" }).click();
-  await expect(first.locator("[lang=fa]")).toHaveText("ترجمهٔ این بند.");
+  await expect(first.locator("[lang=en]")).toHaveText("It is Monday. Sami goes to work.");
+  await page.getByLabel("Taalhulp / language").selectOption("nl");
+  await expect(first.locator("[lang=en]")).toHaveCount(0);
+  await expect(first.locator("[lang=nl]").first()).toContainText("Het is maandag.");
+  await page.getByLabel("Taalhulp / language").selectOption("nl-en");
+  await expect(first.locator("[lang=en]")).toHaveText("It is Monday. Sami goes to work.");
+  await expect(first.locator("[lang=fa]")).toHaveCount(0);
   await expect(first.getByRole("button", { name: "Vertaal naar het Perzisch" })).toHaveCount(0);
 });
 
@@ -178,6 +188,12 @@ test("word review reveals, grades and brings a lapsed card back in the same roun
   await expect(review.getByText("the counter")).toHaveCount(0);
   await review.getByTestId("reveal-word").click();
   await expect(review.getByText("the counter")).toBeVisible();
+  await expect(page.locator('[lang="fa"]')).toHaveCount(0);
+  await page.getByLabel("Taalhulp / language").selectOption("nl");
+  await expect(review.getByText("the counter")).toHaveCount(0);
+  await expect(review.locator(".flashcard-term")).toContainText("de toonbank");
+  await page.getByLabel("Taalhulp / language").selectOption("nl-en");
+  await expect(review.getByText("the counter")).toBeVisible();
   await review.getByRole("button", { name: /Nog eens/ }).click();
   await expect(review.getByText("2 KAARTEN IN DEZE RONDE")).toBeVisible();
   await expect(review.locator(".flashcard-term")).toContainText("de mond");
@@ -190,13 +206,11 @@ test("word review reveals, grades and brings a lapsed card back in the same roun
   expect(reviews).toEqual(["w1:again", "w2:good", "w1:easy"]);
 });
 
-test("the real API queues the first episode for a new learner", async ({ page }) => {
-  await page.goto("/");
-  const home = page.getByTestId("today-home");
-  await expect(home.getByRole("heading", { level: 1 })).toContainText(
-    /wordt geschreven|nieuwe aflevering klaar/,
-  );
-  await expect(home.getByText("Wie is wie in De Lindestraat")).toBeVisible();
+test("the first queued episode remains available in the personal reading collection", async ({ page }) => {
+  const response = await page.request.get("/api/stories");
+  expect(response.ok()).toBe(true);
+  const collection = await response.json();
+  expect(collection.series).toBeTruthy();
   await page.goto("/verhalen?view=personal");
   await expect(page.getByTestId("story-library").locator(".path-heading h2")).toHaveText("De Lindestraat");
   await expect(page.locator(".episode-tile")).toHaveCount(1);
