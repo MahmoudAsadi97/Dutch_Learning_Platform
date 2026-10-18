@@ -1,10 +1,12 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { MatchPairsItem } from "@/components/exercise/MatchPairsItem";
 import { OrderItem } from "@/components/exercise/OrderItem";
 import { SortBinsItem } from "@/components/exercise/SortBinsItem";
 import { TilesItem } from "@/components/exercise/TilesItem";
+import type { Answer } from "@/lib/client/exercises";
 
 /** The boards are answered whole: each reports its answer only once every part is in place. */
 
@@ -234,6 +236,35 @@ describe("OrderItem", () => {
     expect(onDraft).toHaveBeenLastCalledWith({ order: ["s1", "s2"] });
     // "Dan eet ik." is last now: its down button is off, so focus is on its up button
     expect(screen.getByRole("button", { name: "Zet zin 2 hoger" })).toHaveFocus();
+  });
+
+  it("publishes the visible order before focus transfers to the moved sentence", () => {
+    const draftAtFocus = vi.fn();
+    function Harness() {
+      const [draft, setDraft] = useState<Answer | null>(null);
+      return (
+        <div
+          onFocusCapture={(event) => {
+            if (event.target instanceof HTMLButtonElement && event.target.dataset.move === "s2:-1")
+              draftAtFocus(draft);
+          }}
+        >
+          <OrderItem
+            prompt={{ ...prompt, sentences: [...prompt.sentences] }}
+            feedback={null}
+            onDraft={setDraft}
+          />
+        </div>
+      );
+    }
+    render(<Harness />);
+    const down = screen.getByRole("button", { name: "Zet zin 1 lager" });
+    down.focus();
+    fireEvent.click(down);
+    expect(screen.getAllByRole("listitem")[0]).toHaveTextContent("Ik sta op.");
+    expect(screen.getAllByRole("listitem")[1]).toHaveTextContent("Dan eet ik.");
+    expect(screen.getByRole("button", { name: "Zet zin 2 hoger" })).toHaveFocus();
+    expect(draftAtFocus).toHaveBeenCalledWith({ order: ["s1", "s2"] });
   });
 
   it("shows the right order with its translation, says where each sentence stood, and keeps a swap neutral", () => {

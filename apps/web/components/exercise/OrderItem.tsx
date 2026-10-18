@@ -22,14 +22,16 @@ import { ItemHeading } from "./heading";
 export function OrderItem({ prompt, feedback, onDraft, headingRef }: BoardProps<"sentence_order">) {
   const headingId = useId();
   const [order, setOrder] = useState<string[]>(() => prompt.sentences.map((sentence) => sentence.id));
+  const currentOrder = useRef(order);
   const textOf = new Map(prompt.sentences.map((sentence) => [sentence.id, sentence.nl ?? ""]));
   const list = useRef<HTMLOListElement>(null);
   const keep = useRef<string | null>(null);
 
-  // every order is an answer: the board can be checked as it is
+  // The initial board is already a complete answer. A new callback also gets
+  // the latest order, without an older render overwriting a move's draft.
   useEffect(() => {
-    onDraft({ order });
-  }, [order, onDraft]);
+    onDraft({ order: currentOrder.current });
+  }, [onDraft]);
 
   // a moved sentence keeps the focus on the button that moved it, or on its other button at the list's edge
   useEffect(() => {
@@ -51,7 +53,11 @@ export function OrderItem({ prompt, feedback, onDraft, headingRef }: BoardProps<
     const next = [...order];
     [next[from], next[to]] = [next[to], next[from]];
     keep.current = `${id}:${by}`;
+    currentOrder.current = next;
     setOrder(next);
+    // Publish in the same event as the visible move, before focus transfers
+    // and the learner can immediately activate Check.
+    onDraft({ order: next });
   }
 
   if (feedback) {
