@@ -25,6 +25,7 @@ from dlp.domains.study.schemas import (
     PackDocument,
     ReadingDocument,
     ReadingLesson,
+    ReadingMapDocument,
     SourceListeningDocument,
     TopicDocument,
 )
@@ -261,6 +262,28 @@ def _contextual_grammar(lines: list[dict], stage_id: str) -> list[dict]:
             break
     # Avoid displaying the same explanation twice just to fill a preparation pane.
     return list({rule["title"]["nl"]: rule for rule in found}.values())
+
+
+@lru_cache(maxsize=4)
+def _reading_map(path: str, version: tuple) -> ReadingMapDocument:
+    return ReadingMapDocument.model_validate_json(Path(path).read_text(encoding="utf-8"))
+
+
+def _original_reading_grammar(stage: str, topic: str, story_id: str, lines: list[dict]) -> list[dict]:
+    path = CONTENT_DIR / "study/reading-map.json"
+    if not path.exists():
+        return []
+    stat = path.stat()
+    document = _reading_map(str(path), (stat.st_mtime_ns, stat.st_size))
+    mapping = next((item for item in document.mappings if item.stage_id == stage and item.story_id == story_id), None)
+    if mapping is None:
+        return []
+    if mapping.topic_id != topic:
+        raise ValueError("reading preparation must retain its mapped topic")
+    exact = {(line["nl"], line["en"]) for line in lines}
+    if any((example.nl, example.en) not in exact for rule in mapping.grammar for example in rule.examples):
+        raise ValueError("reading grammar preparation must preserve an exact bilingual source line")
+    return [rule.model_dump() for rule in mapping.grammar]
 
 
 def _pack_preparation(stage_id: str, canonical, source) -> dict:
@@ -793,8 +816,10 @@ def lesson(stage_id: str, topic_id: str, skill: Skill, *, activity_id: str | Non
         preparation = ({"words": [_word(source_words[key]) for key in source.vocabulary_ids if key in source_words],
                         "grammar": _contextual_grammar(_lines(source.reading.text), stage_id)}
                        if source_words is not None else _preparation(stage_id, source.vocabulary_ids, source_text))
-        if selected.source == "story" and not preparation["grammar"]:
-            preparation["grammar"] = _contextual_grammar(context_lines, stage_id)
+        if selected.source == "story":
+            authored_grammar = _original_reading_grammar(stage_id, topic_id, selected.id, context_lines)
+            preparation["grammar"] = (authored_grammar or preparation["grammar"]
+                                      or _contextual_grammar(context_lines, stage_id))
     return {"stage_id": stage_id, "topic_id": topic_id, "skill": skill,
             "title": bilingual(source.title), "topic_title": copy(canonical.nl, canonical.en),
             "review_status": "unreviewed", "preparation": preparation, "activities": activities,

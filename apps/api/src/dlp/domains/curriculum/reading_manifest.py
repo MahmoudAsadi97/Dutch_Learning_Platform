@@ -21,7 +21,7 @@ COUNTS = ("authored_stories", "eligible_authored_stories", "legacy_stories", "le
 
 
 def source_stamp(root: Path) -> tuple[tuple[str, int, int], ...]:
-    paths = [root / "alignment/story-provenance.json"]
+    paths = [root / "alignment/story-provenance.json", root / "study/reading-map.json"]
     paths.extend(root / directory / f"{stage}.json" for directory in DIRECTORIES for stage in STAGE_IDS)
     paths.extend((root / "study/reading").glob("*/*.json"))
     return tuple((str(path.relative_to(root)), path.stat().st_mtime_ns, path.stat().st_size)

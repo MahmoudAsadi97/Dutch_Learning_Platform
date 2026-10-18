@@ -206,18 +206,19 @@ def reading_lessons(content: Path, topics: dict[str, dict]) -> dict[str, list[di
 
 
 def reading_mappings(content: Path, topics: dict[str, dict]) -> list[dict]:
+    from dlp.domains.study.schemas import ReadingMapDocument
+
     path = content / "study" / "reading-map.json"
     if not path.exists():
         return []
     document = read(path)
     if set(document) != {"schema_version", "mappings"} or document["schema_version"] != 1:
         raise ValueError("unsupported explicit reading mapping")
-    mappings = document["mappings"]
-    if not isinstance(mappings, list):
-        raise TypeError("reading mappings must be an authored list")
+    mappings = [mapping.model_dump(exclude_defaults=True)
+                for mapping in ReadingMapDocument.model_validate(document).mappings]
     identities: set[tuple[str, str]] = set()
     for mapping in mappings:
-        if set(mapping) != {"stage_id", "topic_id", "story_id"}:
+        if not {"stage_id", "topic_id", "story_id"} <= set(mapping) <= {"stage_id", "topic_id", "story_id", "grammar"}:
             raise ValueError("reading mapping has unsupported fields")
         if mapping["stage_id"] not in STAGES or mapping["topic_id"] not in topics:
             raise ValueError("reading mapping requires a known stage and canonical topic")
@@ -299,6 +300,11 @@ def make_index(content: Path, topics: list[dict]) -> dict:
             declared = original_stories[story_id].get("topic_id")
             if declared in known and declared != topic_id:
                 raise ValueError(f"{story_id}: explicit reading mapping contradicts its authored topic")
+            mapping = next(item for item in mapped_readings if item["stage_id"] == stage and item["story_id"] == story_id)
+            exact = {(line["nl"], line["en"]) for line in original_stories[story_id].get("lines", [])}
+            if any((example["nl"], example["en"]) not in exact
+                   for rule in mapping.get("grammar", []) for example in rule["examples"]):
+                raise ValueError(f"{story_id}: mapped grammar must preserve an exact bilingual story line")
         for story in stories:
             # Old topic IDs used by another lesson engine are not canonical
             # labels. Only an actual canonical assignment or reviewed manifest

@@ -25,7 +25,8 @@ DIRECTORIES = (*story_inventory.PACKS, "practice", "vocabulary-transfer", "gramm
 
 
 def content_stamp(root: Path) -> tuple[tuple[str, int, int], ...]:
-    paths = [root / "curriculum/path.json", root / "alignment/story-provenance.json", root / reading_manifest.MANIFEST]
+    paths = [root / "curriculum/path.json", root / "alignment/story-provenance.json",
+             root / "study/reading-map.json", root / reading_manifest.MANIFEST]
     paths.extend(root / directory / f"{stage}.json" for directory in DIRECTORIES for stage in STAGE_IDS)
     paths.extend(sorted((root / "study/reading").glob("*/*.json")))
     return tuple((str(path.relative_to(root)), path.stat().st_mtime_ns, path.stat().st_size)

@@ -41,7 +41,7 @@ def test_valid_published_manifest_avoids_runtime_similarity_audit(monkeypatch, t
     assert counts["c2"]["eligible_authored_stories"] == 0
 
 
-@pytest.mark.parametrize("relative", ["alignment/story-provenance.json", "study/reading/c2/01.json",
+@pytest.mark.parametrize("relative", ["alignment/story-provenance.json", "study/reading-map.json", "study/reading/c2/01.json",
                                       *[f"{directory}/a2.json" for directory in reading_manifest.DIRECTORIES]])
 def test_source_creation_edit_and_deletion_make_manifest_stale(tmp_path, relative):
     _, path = install(tmp_path)

@@ -131,6 +131,33 @@ class GrammarPreparation(BaseModel):
     examples: list[Copy] = Field(min_length=1, max_length=5)
 
 
+class ReadingMapping(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    stage_id: str
+    topic_id: str = Field(pattern=r"^[a-z0-9-]{1,60}$")
+    story_id: str = Field(min_length=1, max_length=100)
+    grammar: list[GrammarPreparation] = Field(default_factory=list, max_length=4)
+
+    @model_validator(mode="after")
+    def stage_bound_source(self):
+        if self.stage_id not in STAGE_IDS or not self.story_id.startswith(self.stage_id + "-"):
+            raise ValueError("reading mapping requires its original source stage")
+        return self
+
+
+class ReadingMapDocument(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    schema_version: Literal[1]
+    mappings: list[ReadingMapping]
+
+    @model_validator(mode="after")
+    def distinct_sources(self):
+        keys = [(mapping.stage_id, mapping.story_id) for mapping in self.mappings]
+        if len(keys) != len(set(keys)):
+            raise ValueError("an original reading may belong to only one topic")
+        return self
+
+
 class ProductiveTask(BaseModel):
     model_config = ConfigDict(extra="forbid")
     prompt: Copy

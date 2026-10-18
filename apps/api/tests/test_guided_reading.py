@@ -155,6 +155,58 @@ def test_exact_reading_renders_without_loading_legacy_banks_and_hides_keys(monke
         content.lesson("pre-a1", "family", "speaking", activity_id=source["id"])
 
 
+@pytest.mark.parametrize("stage", STAGE_IDS)
+def test_every_counted_reading_opens_with_preparation_and_a_public_lesson_contract(stage):
+    from dlp.domains.curriculum import coverage
+
+    _, index = content.documents()
+    opened = set()
+    for topic_id, references in index.stages[stage]["reading"].items():
+        for reference in references:
+            detail = content.lesson(stage, topic_id, "reading", activity_id=reference.id)
+            StudyLesson.model_validate({**detail, "policy": {**detail["policy"], "recording_max_seconds": 60}})
+            assert detail["activity_id"] == reference.id
+            assert detail["preparation"]["words"], reference.id
+            assert detail["preparation"]["grammar"], reference.id
+            assert 8 <= len(detail["parts"][0]["text"]) <= 12
+            assert detail["context"]["text"] == detail["parts"][0]["text"]
+            assert detail["parts"][0]["questions"], reference.id
+            serialized = json.dumps(detail)
+            assert '"answer_index"' not in serialized
+            assert '"accepted_answers"' not in serialized
+            assert '"fa"' not in serialized
+            assert reference.id not in opened
+            opened.add(reference.id)
+    assert len(opened) == coverage.all_coverage()[stage]["eligible_authored_stories"]
+
+
+def test_legacy_reading_notes_preserve_the_exact_bilingual_source_and_topic(monkeypatch, tmp_path):
+    source = reading()
+    mapping = {"stage_id": "pre-a1", "topic_id": "family", "story_id": source["id"], "grammar": deepcopy(source["grammar"])}
+    path = tmp_path / "study/reading-map.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps({"schema_version": 1, "mappings": [mapping]}))
+    monkeypatch.setattr(content, "CONTENT_DIR", tmp_path)
+    assert content._original_reading_grammar("pre-a1", "family", source["id"], source["lines"]) == source["grammar"]
+    with pytest.raises(ValueError, match="mapped topic"):
+        content._original_reading_grammar("pre-a1", "friends", source["id"], source["lines"])
+    # Keeping the Dutch while changing only the translation is still a stale annotation.
+    mapping["grammar"][0]["examples"][0]["en"] = "A sentence from another story."
+    path.write_text(json.dumps({"schema_version": 1, "mappings": [mapping]}))
+    with pytest.raises(ValueError, match="exact bilingual"):
+        content._original_reading_grammar("pre-a1", "family", source["id"], source["lines"])
+
+
+def test_legacy_reading_map_rejects_duplicate_or_foreign_stage_sources(tmp_path):
+    from dlp.domains.study.schemas import ReadingMapDocument
+
+    mapping = {"stage_id": "pre-a1", "topic_id": "family", "story_id": "pre-a1-s-original"}
+    with pytest.raises(ValidationError, match="only one topic"):
+        ReadingMapDocument(schema_version=1, mappings=[mapping, mapping])
+    with pytest.raises(ValidationError, match="original source stage"):
+        ReadingMapDocument(schema_version=1, mappings=[{**mapping, "story_id": "c2-s-original"}])
+
+
 def test_reading_cannot_be_relabelled_by_editing_its_index(monkeypatch, tmp_path):
     source = install_reading(monkeypatch, tmp_path)
     topics, index = content.documents()

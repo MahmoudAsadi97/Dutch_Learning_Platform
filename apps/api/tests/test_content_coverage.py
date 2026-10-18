@@ -66,7 +66,8 @@ def test_coverage_report_contains_counts_not_assessment_answers_or_mastery_claim
         assert forbidden not in serialized
 
 
-@pytest.mark.parametrize("path", ["curriculum/path.json", "alignment/story-provenance.json", "study/reading-eligibility.json",
+@pytest.mark.parametrize("path", ["curriculum/path.json", "alignment/story-provenance.json", "study/reading-map.json",
+                                  "study/reading-eligibility.json",
                                   *[f"{directory}/a2.json" for directory in coverage.DIRECTORIES]])
 def test_every_relevant_source_invalidates_coverage_cache_key(tmp_path, path):
     file = tmp_path / path
