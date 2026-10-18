@@ -446,6 +446,7 @@ test("the boards are played by keyboard and answered whole, accessible at every 
   await pieces.getByRole("button", { name: "in Gent" }).press("Enter");
   await check.focus();
   await page.keyboard.press("Enter");
+  await expect(next).toBeFocused();
   expect(answers.tiles).toEqual({ order: ["t1", "t2", "t3"] });
   await checkWidths(page, testInfo, "tiles-feedback");
   await next.press("Enter");
@@ -457,6 +458,7 @@ test("the boards are played by keyboard and answered whole, accessible at every 
   await expect(page.getByRole("button", { name: "Zet zin 2 hoger" })).toBeFocused();
   await check.focus();
   await page.keyboard.press("Enter");
+  await expect(next).toBeFocused();
   expect(answers.order).toEqual({ order: ["s1", "s2"] });
   await expect(page.getByText("Then I eat a sandwich.")).toBeVisible();
   await checkWidths(page, testInfo, "order-feedback");
