@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-stempel-op-de-loonlijst",
+      "topic_id": "history",
+      "title": {
+        "nl": "De stempel op de loonlijst",
+        "en": "The stamp on the pay list"
+      },
+      "plot_key": "A family historian initially treats a grandmother's clerical work as background, then discovers the records reveal the workplace through decisions about whose labour was counted.",
+      "lines": [
+        {
+          "nl": "Voor een familieboek zocht Casper vooral naar de grote gebeurtenissen in het leven van zijn grootmoeder, die vroeger op een fabriekskantoor had gewerkt.",
+          "en": "For a family book, Casper mainly searched for the major events in the life of his grandmother, who had worked in a factory office."
+        },
+        {
+          "nl": "Zij bracht een map met oude loonlijsten mee en zei dat haar werk grotendeels uit tellen, controleren en opnieuw tellen had bestaan.",
+          "en": "She brought a folder of old pay lists and said her work had largely consisted of counting, checking and counting again."
+        },
+        {
+          "nl": "Casper dacht dat die papieren te saai waren voor het boek, totdat zij bij een ontbrekende naam haar vinger op het blad legde.",
+          "en": "Casper thought those papers were too dull for the book until she placed her finger on the page beside a missing name."
+        },
+        {
+          "nl": "De werknemer was toen op een andere afdeling ingezet, waardoor zijn uren tussen twee lijsten verdwenen waren en niemand zich verantwoordelijk voelde.",
+          "en": "The employee had been assigned to another department, causing his hours to disappear between two lists while nobody felt responsible."
+        },
+        {
+          "nl": "Zij had de vergissing opgespoord door elke werkdag naast de planning te leggen en was daarvoor langer gebleven zonder er later veel over te vertellen.",
+          "en": "She had traced the mistake by comparing every working day with the schedule and stayed longer to do so without talking much about it later."
+        },
+        {
+          "nl": "Plots zag Casper geen lege administratie meer, maar sporen van mensen die wel of niet als gewerkte uren zichtbaar werden.",
+          "en": "Suddenly Casper no longer saw empty administration, but traces of people who did or did not become visible as hours worked."
+        },
+        {
+          "nl": "Hij vroeg haar het hele proces te beschrijven en vermeldde duidelijk dat de map slechts een deel van het fabrieksleven liet zien.",
+          "en": "He asked her to describe the entire process and stated clearly that the folder showed only part of factory life."
+        },
+        {
+          "nl": "In het familieboek kreeg de kleine stempel een eigen bladzijde, niet omdat zij er een geheime held door werd maar omdat gewoon werk nauwkeurige aandacht verdiende.",
+          "en": "In the family book the small stamp received a page of its own, not because it made her a secret hero but because ordinary work deserved precise attention."
+        }
+      ],
+      "words": [
+        {
+          "term": "de loonlijst",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een overzicht van werknemers en hun betaling of gewerkte tijd",
+            "en": "pay list"
+          },
+          "example": {
+            "nl": "Zij bracht een map met oude loonlijsten mee en zei dat haar werk grotendeels uit tellen, controleren en opnieuw tellen had bestaan.",
+            "en": "She brought a folder of old pay lists and said her work had largely consisted of counting, checking and counting again."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "opsporen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "door zoeken vinden",
+            "en": "to trace"
+          },
+          "example": {
+            "nl": "Zij had de vergissing opgespoord door elke werkdag naast de planning te leggen en was daarvoor langer gebleven zonder er later veel over te vertellen.",
+            "en": "She had traced the mistake by comparing every working day with the schedule and stayed longer to do so without talking much about it later."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "nauwkeurig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met aandacht voor juiste details",
+            "en": "precise"
+          },
+          "example": {
+            "nl": "In het familieboek kreeg de kleine stempel een eigen bladzijde, niet omdat zij er een geheime held door werd maar omdat gewoon werk nauwkeurige aandacht verdiende.",
+            "en": "In the family book the small stamp received a page of its own, not because it made her a secret hero but because ordinary work deserved precise attention."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waardoor met een administratief gevolg",
+            "en": "As a result of which, with an administrative consequence"
+          },
+          "explanation": {
+            "nl": "Waardoor verbindt de afdelingswissel met het verdwijnen van de uren tussen twee lijsten.",
+            "en": "Waardoor connects the department change with the hours disappearing between two lists."
+          },
+          "examples": [
+            {
+              "nl": "De werknemer was toen op een andere afdeling ingezet, waardoor zijn uren tussen twee lijsten verdwenen waren en niemand zich verantwoordelijk voelde.",
+              "en": "The employee had been assigned to another department, causing his hours to disappear between two lists while nobody felt responsible."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom verandert Caspers oordeel over de map?",
+            "en": "Why does Casper change his judgement of the folder?"
+          },
+          "options": [
+            {
+              "nl": "De bladen blijken van goud.",
+              "en": "The pages turn out to be gold."
+            },
+            {
+              "nl": "Zijn grootmoeder blijkt directeur geweest.",
+              "en": "His grandmother turns out to have been the director."
+            },
+            {
+              "nl": "Een concrete fout maakt zichtbaar welke mensen achter de cijfers zaten.",
+              "en": "A concrete error reveals which people were behind the figures."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het ontbrekende loonspoor heeft gevolgen voor een werknemer.",
+            "en": "The missing pay record has consequences for an employee."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke beperking vermeldt hij bij zijn verhaal?",
+            "en": "What limitation does he state with his story?"
+          },
+          "options": [
+            {
+              "nl": "Dat de map één deel van het fabrieksleven toont.",
+              "en": "That the folder shows one part of factory life."
+            },
+            {
+              "nl": "Dat niemand ooit gewerkt heeft.",
+              "en": "That nobody ever worked."
+            },
+            {
+              "nl": "Dat alle documenten onwaar zijn.",
+              "en": "That all documents are false."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij maakt van één bron geen volledige geschiedenis van de fabriek.",
+            "en": "He does not turn one source into the factory's complete history."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-vijf-kilometer-van-huis",
+      "topic_id": "geography",
+      "title": {
+        "nl": "Vijf kilometer van huis",
+        "en": "Five kilometres from home"
+      },
+      "plot_key": "A child’s map comparison reveals that straight-line closeness differs from reachable routes, reframing a grandmother’s apparently distant home without factual claims about real routes.",
+      "lines": [
+        {
+          "nl": "Op de kaart woonde oma volgens Mila maar vijf kilometer van hun huis, en toch moesten zij voor een bezoek eerst twee bussen nemen.",
+          "en": "On the map, according to Mila, Grandma lived only five kilometres from their house, yet visiting required taking two buses first."
+        },
+        {
+          "nl": "Haar vader zei dat dichtbij een lastig woord was wanneer er tussen twee huizen een rivier zonder nabije oversteek lag.",
+          "en": "Her father said nearby was a difficult word when a river without a nearby crossing lay between two houses."
+        },
+        {
+          "nl": "Mila trok met een liniaal een rechte lijn en vond dat de busmaatschappij blijkbaar onnodig veel bochten had bedacht.",
+          "en": "Mila drew a straight line with a ruler and felt the bus company had apparently invented unnecessary detours."
+        },
+        {
+          "nl": "Voor een schoolopdracht legde zij daarna een routekaart naast haar gewone kaart en tekende waar de bruggen en haltes werkelijk lagen.",
+          "en": "For a school assignment she then placed a route map beside her ordinary map and drew where the bridges and stops actually were."
+        },
+        {
+          "nl": "Ze ontdekte dat een vriend die verder weg woonde langs een directe verbinding sneller bij hen thuis kon zijn dan haar oma.",
+          "en": "She discovered that a friend living farther away could reach their home faster along a direct connection than her grandmother could."
+        },
+        {
+          "nl": "De kortste lijn op papier vertelde dus iets anders dan de tijd, de overstappen en het lopen met een zware boodschappentas.",
+          "en": "The shortest line on paper therefore said something different from the time, transfers and walking with a heavy shopping bag."
+        },
+        {
+          "nl": "Bij haar presentatie gebruikte Mila beide kaarten en vroeg ze klasgenoten welke versie voor welke reisvraag de meeste informatie gaf.",
+          "en": "During her presentation Mila used both maps and asked classmates which version gave the most information for each travel question."
+        },
+        {
+          "nl": "Oma bleef vijf kilometer verder wonen, maar Mila begreep voortaan waarom haar vader een bezoek nooit alleen in centimeters op papier plande.",
+          "en": "Grandma continued living five kilometres away, but from then on Mila understood why her father never planned a visit only in centimetres on paper."
+        }
+      ],
+      "words": [
+        {
+          "term": "de liniaal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een hulpmiddel om rechte lijnen te tekenen of lengtes te meten",
+            "en": "ruler"
+          },
+          "example": {
+            "nl": "Mila trok met een liniaal een rechte lijn en vond dat de busmaatschappij blijkbaar onnodig veel bochten had bedacht.",
+            "en": "Mila drew a straight line with a ruler and felt the bus company had apparently invented unnecessary detours."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de overstap",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het wisselen van het ene vervoermiddel naar het andere",
+            "en": "transfer"
+          },
+          "example": {
+            "nl": "De kortste lijn op papier vertelde dus iets anders dan de tijd, de overstappen en het lopen met een zware boodschappentas.",
+            "en": "The shortest line on paper therefore said something different from the time, transfers and walking with a heavy shopping bag."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "nabij",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "dichtbij gelegen",
+            "en": "nearby"
+          },
+          "example": {
+            "nl": "Haar vader zei dat dichtbij een lastig woord was wanneer er tussen twee huizen een rivier zonder nabije oversteek lag.",
+            "en": "Her father said nearby was a difficult word when a river without a nearby crossing lay between two houses."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Verder ... sneller ... dan ...",
+            "en": "Farther ... faster ... than ..."
+          },
+          "explanation": {
+            "nl": "De vergelijkingen laten zien dat meer afstand niet altijd meer reistijd betekent.",
+            "en": "The comparisons show that more distance does not always mean more travel time."
+          },
+          "examples": [
+            {
+              "nl": "Ze ontdekte dat een vriend die verder weg woonde langs een directe verbinding sneller bij hen thuis kon zijn dan haar oma.",
+              "en": "She discovered that a friend living farther away could reach their home faster along a direct connection than her grandmother could."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom duurt de reis naar oma relatief lang?",
+            "en": "Why does the journey to Grandma take relatively long?"
+          },
+          "options": [
+            {
+              "nl": "Er is geen geschikte directe oversteek over de rivier.",
+              "en": "There is no suitable direct crossing over the river."
+            },
+            {
+              "nl": "De kaart heeft geen kleuren.",
+              "en": "The map has no colours."
+            },
+            {
+              "nl": "Oma woont op een andere planeet.",
+              "en": "Grandma lives on another planet."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De bruikbare route moet via verder gelegen verbindingen lopen.",
+            "en": "The usable route has to go through connections farther away."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat tonen de twee kaarten samen?",
+            "en": "What do the two maps show together?"
+          },
+          "options": [
+            {
+              "nl": "Dat elke busroute onzin is.",
+              "en": "That every bus route is nonsense."
+            },
+            {
+              "nl": "Dat centimeters altijd minuten zijn.",
+              "en": "That centimetres are always minutes."
+            },
+            {
+              "nl": "Dat afstand en bereikbare reistijd verschillende vragen beantwoorden.",
+              "en": "That distance and reachable travel time answer different questions."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Lijnen op de ene kaart vervangen geen routes en overstappen op de andere.",
+            "en": "Lines on one map do not replace routes and transfers on the other."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-stilte-in-het-geluidswerk",
+      "topic_id": "art-creativity",
+      "title": {
+        "nl": "De stilte in het geluidswerk",
+        "en": "The silence in the sound work"
+      },
+      "plot_key": "A sound artist cuts a cleaner’s routine noises into a composition, then removes a revealing private sigh when its maker distinguishes work sounds from personal exposure.",
+      "lines": [
+        {
+          "nl": "Voor een installatie nam geluidskunstenaar Loes de ritmes op van een gebouw dat elke avond werd schoongemaakt wanneer de bezoekers verdwenen waren.",
+          "en": "For an installation, sound artist Loes recorded the rhythms of a building being cleaned every evening after the visitors had gone."
+        },
+        {
+          "nl": "De medewerkers hadden ingestemd met opnames van hun werk, en Loes verwerkte borstels, karren en dichtslaande deuren tot een trage compositie.",
+          "en": "The workers had agreed to recordings of their work, and Loes turned brushes, carts and slamming doors into a slow composition."
+        },
+        {
+          "nl": "Het krachtigste moment vond zij een lange zucht die precies tussen twee terugkerende bewegingen van een vloerreiniger viel.",
+          "en": "She considered the strongest moment a long sigh falling exactly between two recurring movements of a floor cleaner."
+        },
+        {
+          "nl": "Bij de voorbeluistering herkende medewerker Farid zijn eigen zucht en vroeg hij of die uit het werk verwijderd kon worden.",
+          "en": "During the preview, worker Farid recognised his own sigh and asked whether it could be removed from the work."
+        },
+        {
+          "nl": "Loes zei dat niemand zijn naam hoorde, maar Farid legde uit dat die avond een privébericht was binnengekomen waarover hij niet in een tentoonstelling wilde bestaan.",
+          "en": "Loes said nobody heard his name, but Farid explained that a private message had arrived that evening and he did not want to exist in an exhibition through it."
+        },
+        {
+          "nl": "Zij had het geluid als vorm behandeld, terwijl hij er een heel andere ervaring in terughoorde die niet bij zijn toestemming voor werkgeluiden hoorde.",
+          "en": "She had treated the sound as form, while he heard a very different experience in it that did not belong to his consent for work sounds."
+        },
+        {
+          "nl": "Loes maakte een nieuwe overgang en beschreef bij het werk dat ook weglaten een bewuste keuze in de compositie was geweest.",
+          "en": "Loes made a new transition and stated beside the work that omission too had been a deliberate choice in the composition."
+        },
+        {
+          "nl": "De installatie verloor haar indrukwekkendste zucht, maar Farid kwam wel luisteren zonder zich verplicht te voelen een persoonlijk moment aan de kunst af te staan.",
+          "en": "The installation lost its most impressive sigh, but Farid did come to listen without feeling obliged to give a personal moment over to art."
+        }
+      ],
+      "words": [
+        {
+          "term": "de zucht",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een hoorbare diepe uitademing",
+            "en": "sigh"
+          },
+          "example": {
+            "nl": "Het krachtigste moment vond zij een lange zucht die precies tussen twee terugkerende bewegingen van een vloerreiniger viel.",
+            "en": "She considered the strongest moment a long sigh falling exactly between two recurring movements of a floor cleaner."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de voorbeluistering",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het vooraf samen luisteren naar een nog niet gepubliceerd werk",
+            "en": "audio preview"
+          },
+          "example": {
+            "nl": "Bij de voorbeluistering herkende medewerker Farid zijn eigen zucht en vroeg hij of die uit het werk verwijderd kon worden.",
+            "en": "During the preview, worker Farid recognised his own sigh and asked whether it could be removed from the work."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "afstaan",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets aan een ander geven en het zelf loslaten",
+            "en": "to give up or hand over"
+          },
+          "example": {
+            "nl": "De installatie verloor haar indrukwekkendste zucht, maar Farid kwam wel luisteren zonder zich verplicht te voelen een persoonlijk moment aan de kunst af te staan.",
+            "en": "The installation lost its most impressive sigh, but Farid did come to listen without feeling obliged to give a personal moment over to art."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor een betekenisverschil",
+            "en": "While for a difference in meaning"
+          },
+          "explanation": {
+            "nl": "Terwijl zet haar artistieke lezing tegenover zijn persoonlijke ervaring.",
+            "en": "Terwijl contrasts her artistic reading with his personal experience."
+          },
+          "examples": [
+            {
+              "nl": "Zij had het geluid als vorm behandeld, terwijl hij er een heel andere ervaring in terughoorde die niet bij zijn toestemming voor werkgeluiden hoorde.",
+              "en": "She had treated the sound as form, while he heard a very different experience in it that did not belong to his consent for work sounds."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is anonimiteit voor Farid niet voldoende?",
+            "en": "Why is anonymity not sufficient for Farid?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil overal zijn naam zien.",
+              "en": "He wants his name everywhere."
+            },
+            {
+              "nl": "Hij heeft nooit in het gebouw gewerkt.",
+              "en": "He never worked in the building."
+            },
+            {
+              "nl": "Het herkenbare moment draagt een privé-ervaring buiten de afgesproken werksfeer.",
+              "en": "The recognisable moment carries a private experience outside the agreed work context."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Geen naam horen neemt de persoonlijke betekenis van zijn zucht niet weg.",
+            "en": "Hearing no name does not remove the personal meaning of his sigh."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat aanvaardt Loes met de nieuwe overgang?",
+            "en": "What does Loes accept with the new transition?"
+          },
+          "options": [
+            {
+              "nl": "Dat alle werkgeluiden verboden zijn.",
+              "en": "That all work sounds are forbidden."
+            },
+            {
+              "nl": "Dat artistieke kracht niet elk gebruik van een opname rechtvaardigt.",
+              "en": "That artistic force does not justify every use of a recording."
+            },
+            {
+              "nl": "Dat Farid de installatie moet kopen.",
+              "en": "That Farid must buy the installation."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze geeft het krachtige fragment op om zijn begrensde toestemming te respecteren.",
+            "en": "She gives up the powerful excerpt to respect his limited consent."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-bruiloft-zonder-lege-borden",
+      "topic_id": "photography",
+      "title": {
+        "nl": "De foto van de lege borden",
+        "en": "The photograph of the empty plates"
+      },
+      "plot_key": "A wedding photographer’s candid kitchen picture is initially rejected as unglamorous, but the couple recognises the relatives whose labour made their polished celebration possible.",
+      "lines": [
+        {
+          "nl": "Bij de selectie van hun trouwfoto's haalden Elias en Noor eerst alle beelden weg waarop geen bloemen, lachende gasten of zorgvuldig gekozen kleding te zien waren.",
+          "en": "When selecting their wedding photographs, Elias and Noor first removed every image showing no flowers, smiling guests or carefully chosen clothes."
+        },
+        {
+          "nl": "Eén foto van opgestapelde vuile borden vonden zij zo onfeestelijk dat ze vroegen waarom de fotograaf die überhaupt had bewaard.",
+          "en": "They found one photograph of stacked dirty plates so unfestive that they asked why the photographer had kept it at all."
+        },
+        {
+          "nl": "Op de achtergrond zat Noors tante met uitgetrokken schoenen, terwijl twee neven aan de spoelbak met elkaar stonden te lachen.",
+          "en": "In the background Noor's aunt sat with her shoes off while two cousins stood laughing together at the sink."
+        },
+        {
+          "nl": "De fotograaf vertelde dat hij het moment had vastgelegd omdat zij daar voor het eerst na een hele avond bedienen even samen zaten.",
+          "en": "The photographer explained that he had captured the moment because they were sitting together there for the first time after an entire evening of serving."
+        },
+        {
+          "nl": "Noor herinnerde zich dat haar tante op bijna alle officiële familiefoto's ontbrak, hoewel juist zij de maaltijden en de tafelwissels had gecoördineerd.",
+          "en": "Noor remembered that her aunt was missing from almost all the official family photographs, although she had coordinated the meals and table changes."
+        },
+        {
+          "nl": "Ze stuurde de foto naar haar tante en vroeg of zij het goed vond dat ook deze kant van het feest in het album kwam.",
+          "en": "She sent the photograph to her aunt and asked whether she was happy for this side of the celebration to appear in the album too."
+        },
+        {
+          "nl": "Haar tante koos zelf een onderschrift met de namen van de helpers, niet alleen een algemene lofzin over onzichtbare handen.",
+          "en": "Her aunt chose a caption herself with the helpers' names, not merely a general tribute to invisible hands."
+        },
+        {
+          "nl": "Tussen de dansfoto's kwam een bladzijde met lege borden, waarop eindelijk de mensen zichtbaar waren die steeds iets voor anderen gevuld hadden.",
+          "en": "Among the dancing photographs came a page of empty plates, finally making visible the people who had kept filling things for others."
+        }
+      ],
+      "words": [
+        {
+          "term": "de spoelbak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een bak met afvoer om af te wassen of te spoelen",
+            "en": "sink"
+          },
+          "example": {
+            "nl": "Op de achtergrond zat Noors tante met uitgetrokken schoenen, terwijl twee neven aan de spoelbak met elkaar stonden te lachen.",
+            "en": "In the background Noor's aunt sat with her shoes off while two cousins stood laughing together at the sink."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "coördineren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "verschillende taken op elkaar afstemmen",
+            "en": "to coordinate"
+          },
+          "example": {
+            "nl": "Noor herinnerde zich dat haar tante op bijna alle officiële familiefoto's ontbrak, hoewel juist zij de maaltijden en de tafelwissels had gecoördineerd.",
+            "en": "Noor remembered that her aunt was missing from almost all the official family photographs, although she had coordinated the meals and table changes."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het onderschrift",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een tekst onder een afbeelding",
+            "en": "caption"
+          },
+          "example": {
+            "nl": "Haar tante koos zelf een onderschrift met de namen van de helpers, niet alleen een algemene lofzin over onzichtbare handen.",
+            "en": "Her aunt chose a caption herself with the helpers' names, not merely a general tribute to invisible hands."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoewel bij een onzichtbare bijdrage",
+            "en": "Although with an invisible contribution"
+          },
+          "explanation": {
+            "nl": "Hoewel benadrukt de tegenstelling tussen haar grote bijdrage en haar afwezigheid op foto's.",
+            "en": "Hoewel emphasises the contrast between her major contribution and her absence from photographs."
+          },
+          "examples": [
+            {
+              "nl": "Noor herinnerde zich dat haar tante op bijna alle officiële familiefoto's ontbrak, hoewel juist zij de maaltijden en de tafelwissels had gecoördineerd.",
+              "en": "Noor remembered that her aunt was missing from almost all the official family photographs, although she had coordinated the meals and table changes."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom bewaart de fotograaf het keukenbeeld?",
+            "en": "Why does the photographer keep the kitchen image?"
+          },
+          "options": [
+            {
+              "nl": "Het is de duurste tafel.",
+              "en": "It is the most expensive table."
+            },
+            {
+              "nl": "Het toont de eerste rust van de helpers na veel werk.",
+              "en": "It shows the helpers' first rest after much work."
+            },
+            {
+              "nl": "Er zijn geen andere foto's.",
+              "en": "There are no other photographs."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De mensen zitten voor het eerst samen na het bedienen.",
+            "en": "The people are sitting together for the first time after serving."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat voegt het gekozen onderschrift toe?",
+            "en": "What does the chosen caption add?"
+          },
+          "options": [
+            {
+              "nl": "Een anoniem bedankje zonder personen.",
+              "en": "An anonymous thanks without people."
+            },
+            {
+              "nl": "Een nieuwe huwelijksdatum.",
+              "en": "A new wedding date."
+            },
+            {
+              "nl": "Concrete erkenning van de betrokken helpers.",
+              "en": "Concrete recognition of the helpers involved."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De tante noemt hun namen in plaats van alleen onzichtbare handen.",
+            "en": "The aunt names them instead of referring only to invisible hands."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-jas-die-achterstevoren-zat",
+      "topic_id": "fashion-clothing",
+      "title": {
+        "nl": "De jas die achterstevoren zat",
+        "en": "The coat that was back to front"
+      },
+      "plot_key": "A model accidentally wears a reversible-looking coat incorrectly and receives praise, leading the designer to acknowledge the useful accident without falsely claiming intention.",
+      "lines": [
+        {
+          "nl": "Vlak voor een kleine modeshow trok model Fien een jas haastig aan, terwijl ontwerpster Aya nog aan een andere deelnemer een losse zoom vastspeldde.",
+          "en": "Just before a small fashion show, model Fien put on a coat hurriedly while designer Aya was still pinning a loose hem on another participant."
+        },
+        {
+          "nl": "Pas op de loopplank zag Aya dat de jas achterstevoren zat en de brede binnenrand nu zichtbaar over Fiens schouders viel.",
+          "en": "Only on the runway did Aya see that the coat was back to front and its wide inner edge now fell visibly across Fien's shoulders."
+        },
+        {
+          "nl": "Zij verwachtte een ramp, maar enkele bezoekers noemden juist die onverwachte lijn na afloop het interessantste deel van de collectie.",
+          "en": "She expected disaster, but afterwards several visitors called that unexpected line the most interesting part of the collection."
+        },
+        {
+          "nl": "Een docent vroeg hoe zij op het idee was gekomen, en Aya voelde hoe gemakkelijk het zou zijn een overtuigend ontwerpproces te verzinnen.",
+          "en": "A teacher asked how she had come up with the idea, and Aya felt how easy it would be to invent a convincing design process."
+        },
+        {
+          "nl": "Ze vertelde dat het een vergissing was geweest en vroeg Fien om de jas nog eens op beide manieren te dragen.",
+          "en": "She explained that it had been a mistake and asked Fien to wear the coat both ways once more."
+        },
+        {
+          "nl": "Bij nader bekijken zat de toevallige versie aan de armen niet goed, hoewel de schouderlijn inderdaad iets opleverde dat zij verder wilde onderzoeken.",
+          "en": "On closer examination the accidental version did not fit well at the arms, although the shoulder line did offer something she wanted to investigate further."
+        },
+        {
+          "nl": "Aya begon een tweede ontwerp en noteerde de vergissing als vertrekpunt, niet als bewijs dat het eerste model al bewust vernieuwend was geweest.",
+          "en": "Aya began a second design and recorded the mistake as a starting point, not as proof that the first model had already been deliberately innovative."
+        },
+        {
+          "nl": "Op het uiteindelijke label bedankte zij Fien voor de onverwachte pasbeurt, die meer had getoond dan een perfect gevolgd plan.",
+          "en": "On the final label she thanked Fien for the unexpected fitting, which had shown more than a perfectly followed plan."
+        }
+      ],
+      "words": [
+        {
+          "term": "de zoom",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de omgevouwen en vastgenaaide rand van kleding",
+            "en": "hem"
+          },
+          "example": {
+            "nl": "Vlak voor een kleine modeshow trok model Fien een jas haastig aan, terwijl ontwerpster Aya nog aan een andere deelnemer een losse zoom vastspeldde.",
+            "en": "Just before a small fashion show, model Fien put on a coat hurriedly while designer Aya was still pinning a loose hem on another participant."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de loopplank",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een verhoogde strook waarop modellen kleding tonen",
+            "en": "runway"
+          },
+          "example": {
+            "nl": "Pas op de loopplank zag Aya dat de jas achterstevoren zat en de brede binnenrand nu zichtbaar over Fiens schouders viel.",
+            "en": "Only on the runway did Aya see that the coat was back to front and its wide inner edge now fell visibly across Fien's shoulders."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "vernieuwend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "iets nieuws aan een bestaand ontwerp of idee toevoegend",
+            "en": "innovative"
+          },
+          "example": {
+            "nl": "Aya begon een tweede ontwerp en noteerde de vergissing als vertrekpunt, niet als bewijs dat het eerste model al bewust vernieuwend was geweest.",
+            "en": "Aya began a second design and recorded the mistake as a starting point, not as proof that the first model had already been deliberately innovative."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoewel voor gedeeltelijke waarde",
+            "en": "Although for partial value"
+          },
+          "explanation": {
+            "nl": "Hoewel laat de schouderlijn waardevol blijven ondanks het slechte zitten bij de armen.",
+            "en": "Hoewel lets the shoulder line remain valuable despite the poor fit at the arms."
+          },
+          "examples": [
+            {
+              "nl": "Bij nader bekijken zat de toevallige versie aan de armen niet goed, hoewel de schouderlijn inderdaad iets opleverde dat zij verder wilde onderzoeken.",
+              "en": "On closer examination the accidental version did not fit well at the arms, although the shoulder line did offer something she wanted to investigate further."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat weigert Aya na de complimenten te doen?",
+            "en": "What does Aya refuse to do after the compliments?"
+          },
+          "options": [
+            {
+              "nl": "Een gesprek met de docent voeren.",
+              "en": "Have a conversation with the teacher."
+            },
+            {
+              "nl": "De jas opnieuw bekijken.",
+              "en": "Look at the coat again."
+            },
+            {
+              "nl": "De vergissing achteraf als een volledig bewust plan voorstellen.",
+              "en": "Present the mistake afterwards as a fully deliberate plan."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze benoemt de vergissing eerlijk voordat ze die verder onderzoekt.",
+            "en": "She honestly names the mistake before investigating it further."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom is nog een nieuw ontwerp nodig?",
+            "en": "Why is another new design needed?"
+          },
+          "options": [
+            {
+              "nl": "De toevallige lijn is interessant, maar het kledingstuk zit nog niet overal goed.",
+              "en": "The accidental line is interesting, but the garment does not yet fit well everywhere."
+            },
+            {
+              "nl": "De bezoekers hebben niets gezien.",
+              "en": "The visitors have seen nothing."
+            },
+            {
+              "nl": "Fien wil nooit meer passen.",
+              "en": "Fien never wants another fitting."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De armen passen niet goed in de achterstevoren gedragen versie.",
+            "en": "The arms do not fit well in the version worn back to front."
+          }
+        }
+      ]
+    }
+  ]
+}

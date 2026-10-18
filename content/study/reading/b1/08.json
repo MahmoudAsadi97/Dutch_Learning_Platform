@@ -1,0 +1,1572 @@
+{
+  "schema_version": 1,
+  "stage_id": "b1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "b1-read-pas-met-de-verkeerde-foto",
+      "topic_id": "banking-payments",
+      "title": {
+        "nl": "De pas met de verkeerde foto",
+        "en": "The card with the wrong photograph"
+      },
+      "plot_key": "Marketcheckout wallet identicalloyaltycard notpayment, cashier's fatherphotocard fromtheaterprop leadsrealwalletrecovery partnercostume prank nofinanceadvice.",
+      "lines": [
+        {
+          "nl": "Bij de kaaswagen op de markt haalt Remco haastig een pas uit zijn portefeuille en houdt die tegen het betaaltoestel.",
+          "en": "At the cheese stall on the market, Remco hastily takes a card from his wallet and holds it against the payment terminal."
+        },
+        {
+          "nl": "Er gebeurt niets, en de verkoper vraagt of hij misschien de verkeerde kaart heeft gekozen.",
+          "en": "Nothing happens, and the seller asks whether he may have chosen the wrong card."
+        },
+        {
+          "nl": "Remco kijkt pas goed en ziet zijn eigen gezicht op een kaart waarop inspecteur van zeldzame kazen staat.",
+          "en": "Only then does Remco look properly and see his own face on a card saying inspector of rare cheeses."
+        },
+        {
+          "nl": "De avond ervoor speelde hij in een amateurkomedie waarin die valse identiteit zijn belangrijkste grap was.",
+          "en": "The previous evening he acted in an amateur comedy in which that false identity was his main joke."
+        },
+        {
+          "nl": "Zijn echte bankkaart zit nog in de andere jas, die hij thuis aan de kapstok heeft laten hangen.",
+          "en": "His actual bank card is still in his other coat, which he left hanging on the coat rack at home."
+        },
+        {
+          "nl": "Hij legt de vergissing uit en vraagt of de verkoper zijn gekozen kaas even kan bewaren tot hij terugkomt.",
+          "en": "He explains the mix-up and asks whether the seller can hold his chosen cheese for a little while until he returns."
+        },
+        {
+          "nl": "Wanneer Remco later wel betaalt, herkent een klant naast hem de voorstelling en vraagt ze of de inspecteur vandaag vrij is.",
+          "en": "When Remco later does pay, a customer beside him recognises the performance and asks whether the inspector is off duty today."
+        },
+        {
+          "nl": "De verkoper schuift hem een klein proefstukje toe met de plechtige vraag of zijn kaas door de controle komt.",
+          "en": "The seller slides him a small sample with the solemn question of whether his cheese passes inspection."
+        }
+      ],
+      "words": [
+        {
+          "term": "het betaaltoestel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een apparaat waarmee een klant elektronisch betaalt",
+            "en": "payment terminal"
+          },
+          "example": {
+            "nl": "Bij de kaaswagen op de markt haalt Remco haastig een pas uit zijn portefeuille en houdt die tegen het betaaltoestel.",
+            "en": "At the cheese stall on the market, Remco hastily takes a card from his wallet and holds it against the payment terminal."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de identiteit",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "wie iemand is of beweert te zijn",
+            "en": "identity"
+          },
+          "example": {
+            "nl": "De avond ervoor speelde hij in een amateurkomedie waarin die valse identiteit zijn belangrijkste grap was.",
+            "en": "The previous evening he acted in an amateur comedy in which that false identity was his main joke."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "plechtig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "ernstig en officieel van toon",
+            "en": "solemn"
+          },
+          "example": {
+            "nl": "De verkoper schuift hem een klein proefstukje toe met de plechtige vraag of zijn kaas door de controle komt.",
+            "en": "The seller slides him a small sample with the solemn question of whether his cheese passes inspection."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Tot hij terugkomt",
+            "en": "Until he returns"
+          },
+          "explanation": {
+            "nl": "Tot geeft aan hoe lang de verkoper iets tijdelijk zou bewaren.",
+            "en": "Tot indicates how long the seller would temporarily hold something."
+          },
+          "examples": [
+            {
+              "nl": "Hij legt de vergissing uit en vraagt of de verkoper zijn gekozen kaas even kan bewaren tot hij terugkomt.",
+              "en": "He explains the mix-up and asks whether the seller can hold his chosen cheese for a little while until he returns."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom werkt Remco's eerste pas niet?",
+            "en": "Why does Remco's first card not work?"
+          },
+          "options": [
+            {
+              "nl": "Het is een toneelrekwisiet, geen bankkaart.",
+              "en": "It is a theatre prop, not a bank card."
+            },
+            {
+              "nl": "De kaaswagen accepteert nooit betalingen.",
+              "en": "The cheese stall never accepts payments."
+            },
+            {
+              "nl": "De verkoper heeft de kaart gebroken.",
+              "en": "The seller has broken the card."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij heeft de kaart van zijn fictieve inspecteurspersonage meegenomen.",
+            "en": "He has brought the card belonging to his fictional inspector character."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom vraagt de verkoper aan het einde om een controle?",
+            "en": "Why does the seller ask for an inspection at the end?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil een officiële vergunning van Remco.",
+              "en": "He wants an official licence from Remco."
+            },
+            {
+              "nl": "Hij speelt mee met de grap van Remco's toneelrol.",
+              "en": "He joins in the joke of Remco's theatre role."
+            },
+            {
+              "nl": "Hij vermoedt dat de kaas niet betaald is.",
+              "en": "He suspects that the cheese has not been paid for."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De plechtige vraag sluit aan bij het verzonnen beroep op de kaart.",
+            "en": "The solemn question connects with the invented profession on the card."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-spaarboekje-van-de-reis",
+      "topic_id": "saving-investing",
+      "title": {
+        "nl": "Het spaarboekje van de reis",
+        "en": "The journey savings notebook"
+      },
+      "plot_key": "Friendsavingscheaptrip trackingcoinamount converted experiences doneplanningmuseumfreebusbudget realistic restaurantcost unexpected butchooseownnotadvice, directendingtrainplatform.",
+      "lines": [
+        {
+          "nl": "Voor hun eerste weekend samen houden Bas en Hélène een schriftje bij waarin elke kleine bijdrage aan de reis wordt genoteerd.",
+          "en": "For their first weekend away together, Bas and Hélène keep a notebook recording every small contribution to the trip."
+        },
+        {
+          "nl": "Bas tekent bij elk bedrag een denkbeeldige luxe, van een balkon met zeezicht tot een ontbijt op bed.",
+          "en": "Beside each amount, Bas draws an imaginary luxury, from a balcony with a sea view to breakfast in bed."
+        },
+        {
+          "nl": "Hélène schrijft vooral echte prijzen op en wordt onrustig wanneer zijn tekeningen steeds groter worden.",
+          "en": "Hélène mainly records actual prices and becomes uneasy as his drawings get bigger and bigger."
+        },
+        {
+          "nl": "Een week voor vertrek zegt ze dat hun gespaarde bedrag maar voor een eenvoudige kamer en de trein volstaat.",
+          "en": "A week before departure, she says that their savings are only enough for a simple room and the train."
+        },
+        {
+          "nl": "Bas kijkt verbaasd, want hij dacht dat zijn overdreven prentjes duidelijk grappen waren.",
+          "en": "Bas looks surprised because he thought that his exaggerated little drawings were obviously jokes."
+        },
+        {
+          "nl": "Ze bladeren het schrift samen door en zetten bij elk echt plan een prijs, terwijl de onmogelijke luxe een aparte fantasiebladzijde krijgt.",
+          "en": "They go through the notebook together and put a price beside every actual plan while the impossible luxuries get a separate fantasy page."
+        },
+        {
+          "nl": "Op de trein geeft Hélène hem een gevouwen servet met een broodje dat ze thuis heeft klaargemaakt.",
+          "en": "On the train, Hélène gives him a folded napkin with a roll that she prepared at home."
+        },
+        {
+          "nl": "Bas tekent er meteen een kroon boven en schrijft dat het ontbijt op bed wegens plaatsgebrek op stoel twaalf wordt geserveerd.",
+          "en": "Bas immediately draws a crown above it and writes that breakfast in bed is being served in seat twelve because of lack of space."
+        }
+      ],
+      "words": [
+        {
+          "term": "volstaan",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "genoeg zijn voor een bepaald doel",
+            "en": "to be enough; to suffice"
+          },
+          "example": {
+            "nl": "Een week voor vertrek zegt ze dat hun gespaarde bedrag maar voor een eenvoudige kamer en de trein volstaat.",
+            "en": "A week before departure, she says that their savings are only enough for a simple room and the train."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de bijdrage",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een deel dat iemand aan een gezamenlijk doel geeft",
+            "en": "contribution"
+          },
+          "example": {
+            "nl": "Voor hun eerste weekend samen houden Bas en Hélène een schriftje bij waarin elke kleine bijdrage aan de reis wordt genoteerd.",
+            "en": "For their first weekend away together, Bas and Hélène keep a notebook recording every small contribution to the trip."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "overdreven",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "sterker of groter dan redelijk of werkelijk bedoeld",
+            "en": "exaggerated"
+          },
+          "example": {
+            "nl": "Bas kijkt verbaasd, want hij dacht dat zijn overdreven prentjes duidelijk grappen waren.",
+            "en": "Bas looks surprised because he thought that his exaggerated little drawings were obviously jokes."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl als twee tegelijk bestaande dingen",
+            "en": "While for two things coexisting"
+          },
+          "explanation": {
+            "nl": "Terwijl maakt hier duidelijk dat realistische planning en fantasie naast elkaar kunnen staan.",
+            "en": "Terwijl here makes clear that realistic planning and fantasy can coexist."
+          },
+          "examples": [
+            {
+              "nl": "Ze bladeren het schrift samen door en zetten bij elk echt plan een prijs, terwijl de onmogelijke luxe een aparte fantasiebladzijde krijgt.",
+              "en": "They go through the notebook together and put a price beside every actual plan while the impossible luxuries get a separate fantasy page."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waardoor ontstaat Hélènes onrust?",
+            "en": "What causes Hélène's unease?"
+          },
+          "options": [
+            {
+              "nl": "Ze leest de luxetekeningen als mogelijke echte verwachtingen.",
+              "en": "She reads the luxury drawings as possible real expectations."
+            },
+            {
+              "nl": "Bas weigert geld bij te dragen.",
+              "en": "Bas refuses to contribute money."
+            },
+            {
+              "nl": "Ze heeft haar treinticket al weggegooid.",
+              "en": "She has already thrown away her train ticket."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Voor Bas zijn het grappen, maar Hélène vergelijkt ze met hun beperkte bedrag.",
+            "en": "To Bas they are jokes, but Hélène compares them with their limited funds."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat toont Bas met de kroon bij het broodje?",
+            "en": "What does Bas show by drawing the crown beside the roll?"
+          },
+          "options": [
+            {
+              "nl": "Dat hij het ontbijt wil terugsturen.",
+              "en": "That he wants to send the breakfast back."
+            },
+            {
+              "nl": "Dat de speelse luxegrap kan blijven zonder dure echte uitgaven.",
+              "en": "That the playful luxury joke can remain without expensive actual spending."
+            },
+            {
+              "nl": "Dat hij voortaan op elke trein in bed mag liggen.",
+              "en": "That he may lie in bed on every train from then on."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij maakt van een eenvoudig broodje opnieuw een grappig luxeplan.",
+            "en": "He turns a simple roll into another humorous luxury plan."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-vlek-van-de-rode-paraplu",
+      "topic_id": "taxes-insurance",
+      "title": {
+        "nl": "De vlek van de rode paraplu",
+        "en": "The stain from the red umbrella"
+      },
+      "plot_key": "Guestthinksborrowedrugstained red preparesdamagequestion butlightpassingumbrella explainsnotmaterial; photographwithandwithout light distinction honestcontactnotclaimguidance.",
+      "lines": [
+        {
+          "nl": "Na een kleine lekkage zet Elena de natte paraplu's van haar gasten op het balkon en merkt later een rode vlek op het geleende tapijt.",
+          "en": "After a small leak, Elena puts her guests' wet umbrellas on the balcony and later notices a red patch on the borrowed rug."
+        },
+        {
+          "nl": "Het tapijt is van haar zus, dus ze wil meteen melden dat er misschien schade is en vraagt haar verzekeringsmap erbij.",
+          "en": "The rug belongs to her sister, so she wants to report immediately that there may be damage and gets her insurance folder."
+        },
+        {
+          "nl": "Op de foto die ze maakt, ziet de vlek er nog groter uit dan vanaf de deur.",
+          "en": "In the photograph she takes, the patch looks even larger than it does from the doorway."
+        },
+        {
+          "nl": "Voordat ze iets schoonmaakt, vraagt haar huisgenoot waarom het rood verschuift wanneer de zon achter een wolk gaat.",
+          "en": "Before she cleans anything, her flatmate asks why the red shifts when the sun goes behind a cloud."
+        },
+        {
+          "nl": "Ze kijken naar buiten en zien de open rode paraplu die het licht via het raam op het tapijt kleurt.",
+          "en": "They look outside and see the open red umbrella colouring the light onto the rug through the window."
+        },
+        {
+          "nl": "Zodra Elena de paraplu wegzet, is het gewone tapijt weer volledig zichtbaar.",
+          "en": "As soon as Elena moves the umbrella, the ordinary rug is completely visible again."
+        },
+        {
+          "nl": "Ze belt haar zus om de vergissing te vertellen, die meteen vraagt of ze voortaan alleen nog schade met een bijpassende zonsondergang veroorzaakt.",
+          "en": "She calls her sister to tell her about the mistake, and her sister immediately asks whether from now on she will cause only damage with a matching sunset."
+        },
+        {
+          "nl": "Elena stuurt twee foto's zonder een verhaal over een echte vlek erbij en hangt de paraplu die avond buiten bereik van het raam.",
+          "en": "Elena sends two photographs without a story about a real stain attached and hangs the umbrella away from the window that evening."
+        }
+      ],
+      "words": [
+        {
+          "term": "de lekkage",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het onbedoeld ontsnappen van water uit iets",
+            "en": "leak; leakage"
+          },
+          "example": {
+            "nl": "Na een kleine lekkage zet Elena de natte paraplu's van haar gasten op het balkon en merkt later een rode vlek op het geleende tapijt.",
+            "en": "After a small leak, Elena puts her guests' wet umbrellas on the balcony and later notices a red patch on the borrowed rug."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "verschuiven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "van plaats veranderen",
+            "en": "to shift; to move"
+          },
+          "example": {
+            "nl": "Voordat ze iets schoonmaakt, vraagt haar huisgenoot waarom het rood verschuift wanneer de zon achter een wolk gaat.",
+            "en": "Before she cleans anything, her flatmate asks why the red shifts when the sun goes behind a cloud."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "bijpassend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "goed passend bij iets anders",
+            "en": "matching"
+          },
+          "example": {
+            "nl": "Ze belt haar zus om de vergissing te vertellen, die meteen vraagt of ze voortaan alleen nog schade met een bijpassende zonsondergang veroorzaakt.",
+            "en": "She calls her sister to tell her about the mistake, and her sister immediately asks whether from now on she will cause only damage with a matching sunset."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zodra ... is ...",
+            "en": "As soon as ... is ..."
+          },
+          "explanation": {
+            "nl": "Zodra verbindt de verandering van de lichtbron met het directe zichtbare gevolg.",
+            "en": "Zodra connects the change in the light source to the immediate visible result."
+          },
+          "examples": [
+            {
+              "nl": "Zodra Elena de paraplu wegzet, is het gewone tapijt weer volledig zichtbaar.",
+              "en": "As soon as Elena moves the umbrella, the ordinary rug is completely visible again."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk detail maakt de huisgenoot aan het twijfelen over echte schade?",
+            "en": "What detail makes the flatmate doubt that there is actual damage?"
+          },
+          "options": [
+            {
+              "nl": "De rode plek beweegt mee met het licht.",
+              "en": "The red area moves with the light."
+            },
+            {
+              "nl": "Het tapijt ligt op de grond.",
+              "en": "The rug is on the floor."
+            },
+            {
+              "nl": "Elena bewaart een map.",
+              "en": "Elena keeps a folder."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Een vlek in het materiaal zou niet op die manier met een wolk verschuiven.",
+            "en": "A stain in the material would not shift with a cloud in that way."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom stuurt Elena uiteindelijk twee foto's?",
+            "en": "Why does Elena eventually send two photographs?"
+          },
+          "options": [
+            {
+              "nl": "Om twee verschillende tapijten te verkopen.",
+              "en": "To sell two different rugs."
+            },
+            {
+              "nl": "Ze laten de vergissing door het veranderde licht zien.",
+              "en": "They show the mistake caused by the changed light."
+            },
+            {
+              "nl": "Om te bewijzen dat haar zus de paraplu heeft verloren.",
+              "en": "To prove that her sister lost the umbrella."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Met en zonder het rode licht wordt duidelijk wat er werkelijk te zien was.",
+            "en": "With and without the red light, it becomes clear what was actually visible."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-twee-deuren-met-hetzelfde-nummer",
+      "topic_id": "renting-property",
+      "title": {
+        "nl": "Twee deuren met hetzelfde nummer",
+        "en": "Two doors with the same number"
+      },
+      "plot_key": "Apartmentviewing twohomes7a oldbackroute applicantentersneighbourcookingdinner mistakesagent socialsituations, consentthreshold stayshall andphoneagent safe resolvesnumberplate beforecontract.",
+      "lines": [
+        {
+          "nl": "Voor een bezichtiging komt Noor aan bij een huis met twee bellen waarop allebei zeven A lijkt te staan.",
+          "en": "For a viewing, Noor arrives at a house with two doorbells that both seem to say seven A."
+        },
+        {
+          "nl": "Ze kiest de deur met het licht in de gang en wordt begroet door een man met een kom pastasaus.",
+          "en": "She chooses the door with the light in the hall and is greeted by a man holding a bowl of pasta sauce."
+        },
+        {
+          "nl": "Omdat hij vriendelijk vraagt of ze even wil wachten, denkt Noor dat dit misschien de verhuurder is die nog aan het koken is.",
+          "en": "Because he kindly asks whether she can wait a moment, Noor thinks that he may be the landlord still cooking."
+        },
+        {
+          "nl": "Ze blijft bij de ingang staan en begint over de huurprijs, waarop de man naar zijn eigen woonkamer kijkt alsof die plots te koop staat.",
+          "en": "She stays at the entrance and begins talking about the rent, at which the man looks at his own living room as though it were suddenly for sale."
+        },
+        {
+          "nl": "De echte contactpersoon belt intussen om te vragen waarom Noor nog niet aan de andere deur staat.",
+          "en": "Meanwhile the actual contact person calls to ask why Noor is not yet at the other door."
+        },
+        {
+          "nl": "De oude nummering blijkt na een verbouwing half verwijderd, waardoor de twee bellen bijna identiek lijken.",
+          "en": "The old numbering turns out to have been half removed after a renovation, making the two doorbells look almost identical."
+        },
+        {
+          "nl": "Noor krijgt haar echte rondleiding en vraagt dat het juiste toegangspunt duidelijk wordt aangeduid voordat er verder iets wordt afgesproken.",
+          "en": "Noor gets her actual viewing and asks that the correct entrance be clearly marked before anything further is agreed."
+        },
+        {
+          "nl": "Bij het buitengaan staat de buurman weer in zijn deur, deze keer met de mededeling dat zijn pasta voorlopig alleen te huur is aan zijn eigen gezin.",
+          "en": "When she leaves, the neighbour is standing in his doorway again, this time announcing that his pasta is available for rent only to his own family for now."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bezichtiging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een bezoek om een woning te bekijken voordat je beslist",
+            "en": "viewing"
+          },
+          "example": {
+            "nl": "Voor een bezichtiging komt Noor aan bij een huis met twee bellen waarop allebei zeven A lijkt te staan.",
+            "en": "For a viewing, Noor arrives at a house with two doorbells that both seem to say seven A."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de nummering",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het systeem van nummers waarmee plaatsen worden aangeduid",
+            "en": "numbering"
+          },
+          "example": {
+            "nl": "De oude nummering blijkt na een verbouwing half verwijderd, waardoor de twee bellen bijna identiek lijken.",
+            "en": "The old numbering turns out to have been half removed after a renovation, making the two doorbells look almost identical."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "aanduiden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "duidelijk aangeven welke plaats of welk onderdeel wordt bedoeld",
+            "en": "to mark; to indicate"
+          },
+          "example": {
+            "nl": "Noor krijgt haar echte rondleiding en vraagt dat het juiste toegangspunt duidelijk wordt aangeduid voordat er verder iets wordt afgesproken.",
+            "en": "Noor gets her actual viewing and asks that the correct entrance be clearly marked before anything further is agreed."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof iets te koop staat",
+            "en": "As though something is for sale"
+          },
+          "explanation": {
+            "nl": "Alsof maakt hier een komische vergelijking met een situatie die niet werkelijk geldt.",
+            "en": "Alsof here makes a comic comparison with a situation that is not actually true."
+          },
+          "examples": [
+            {
+              "nl": "Ze blijft bij de ingang staan en begint over de huurprijs, waarop de man naar zijn eigen woonkamer kijkt alsof die plots te koop staat.",
+              "en": "She stays at the entrance and begins talking about the rent, at which the man looks at his own living room as though it were suddenly for sale."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom denkt Noor dat de man bij de afspraak hoort?",
+            "en": "Why does Noor think that the man belongs to the appointment?"
+          },
+          "options": [
+            {
+              "nl": "De onduidelijke nummering en zijn vriendelijke ontvangst passen bij haar verwachting.",
+              "en": "The unclear numbering and his friendly welcome fit her expectation."
+            },
+            {
+              "nl": "Hij toont haar meteen een huurcontract.",
+              "en": "He immediately shows her a tenancy contract."
+            },
+            {
+              "nl": "Hij noemt de juiste contactpersoon bij naam.",
+              "en": "He names the correct contact person."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze leest zijn gewone beleefdheid binnen de verkeerde context van de bezichtiging.",
+            "en": "She reads his ordinary politeness in the wrong context of the viewing."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat wil Noor vóór verdere afspraken verduidelijkt hebben?",
+            "en": "What does Noor want clarified before further arrangements?"
+          },
+          "options": [
+            {
+              "nl": "Welke saus de buurman kookt.",
+              "en": "Which sauce the neighbour is cooking."
+            },
+            {
+              "nl": "Welke toegang precies bij de woning hoort.",
+              "en": "Which entrance belongs to the property exactly."
+            },
+            {
+              "nl": "Hoeveel kinderen er pasta lusten.",
+              "en": "How many children like pasta."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De verwarrende nummers moeten niet opnieuw tot een verkeerde deur leiden.",
+            "en": "The confusing numbers should not lead to the wrong door again."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-deur-in-het-behang",
+      "topic_id": "home-decoration",
+      "title": {
+        "nl": "De deur in het behang",
+        "en": "The door in the wallpaper"
+      },
+      "plot_key": "Wallpaper mural hidesstoragedoor atparty guest thinks magicalpainting doesnotseehinge, host playsnotlocking, reveal loftsecretthroughliteraldoor eventconcrete.",
+      "lines": [
+        {
+          "nl": "Voor haar kleine appartement kiest Maud behang met een groot bos waarin ook de smalle kastdeur bijna verdwijnt.",
+          "en": "For her small apartment, Maud chooses wallpaper depicting a large forest in which the narrow cupboard door almost disappears too."
+        },
+        {
+          "nl": "De schilder heeft het patroon zo zorgvuldig over de deur laten doorlopen dat de boomstammen naast elkaar blijven staan.",
+          "en": "The decorator has continued the pattern so carefully across the door that the tree trunks remain aligned."
+        },
+        {
+          "nl": "Op haar verjaardagsfeest vraagt een vriendin waar Maud de taart heeft gelaten, want er is nergens een vrije doos te zien.",
+          "en": "At her birthday party a friend asks where Maud has put the cake because no available box is visible anywhere."
+        },
+        {
+          "nl": "Maud steekt haar hand tussen twee geschilderde bomen en opent de verborgen kast, waarin de serveerschalen klaarstaan.",
+          "en": "Maud puts her hand between two painted trees and opens the hidden cupboard, where the serving dishes are ready."
+        },
+        {
+          "nl": "Een andere gast die pas binnenkomt, ziet alleen hoe zij uit het bos een schaal tevoorschijn haalt en blijft met open mond staan.",
+          "en": "Another guest who has just come in sees only her producing a dish from the forest and stands open-mouthed."
+        },
+        {
+          "nl": "De kinderen willen daarna bij elke boom op de muur controleren of daar ook iets achter zit.",
+          "en": "The children then want to check every tree on the wall to see whether there is something behind it too."
+        },
+        {
+          "nl": "Maud toont rustig waar de echte handgreep zit en laat de andere takken gewoon verf en papier blijven.",
+          "en": "Maud calmly shows where the actual handle is and leaves the other branches simply as paint and paper."
+        },
+        {
+          "nl": "Aan het einde van de avond hangt iemand een klein kaartje aan de kastdeur: hier groeit vandaag alleen nog afwas.",
+          "en": "At the end of the evening someone hangs a little note on the cupboard door: today only washing-up grows here."
+        }
+      ],
+      "words": [
+        {
+          "term": "de boomstam",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het stevige middelste deel van een boom",
+            "en": "tree trunk"
+          },
+          "example": {
+            "nl": "De schilder heeft het patroon zo zorgvuldig over de deur laten doorlopen dat de boomstammen naast elkaar blijven staan.",
+            "en": "The decorator has continued the pattern so carefully across the door that the tree trunks remain aligned."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "tevoorschijn halen",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "iets uit een verborgen plek zichtbaar maken",
+            "en": "to produce; to bring out"
+          },
+          "example": {
+            "nl": "Een andere gast die pas binnenkomt, ziet alleen hoe zij uit het bos een schaal tevoorschijn haalt en blijft met open mond staan.",
+            "en": "Another guest who has just come in sees only her producing a dish from the forest and stands open-mouthed."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de handgreep",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het deel waaraan je iets vastpakt om het te openen",
+            "en": "handle"
+          },
+          "example": {
+            "nl": "Maud toont rustig waar de echte handgreep zit en laat de andere takken gewoon verf en papier blijven.",
+            "en": "Maud calmly shows where the actual handle is and leaves the other branches simply as paint and paper."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zo ... dat ...",
+            "en": "So ... that ..."
+          },
+          "explanation": {
+            "nl": "Zo dat koppelt de nauwkeurigheid van het werk aan het visuele resultaat.",
+            "en": "Zo dat connects the precision of the work to its visual result."
+          },
+          "examples": [
+            {
+              "nl": "De schilder heeft het patroon zo zorgvuldig over de deur laten doorlopen dat de boomstammen naast elkaar blijven staan.",
+              "en": "The decorator has continued the pattern so carefully across the door that the tree trunks remain aligned."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt de kastdeur moeilijk te zien?",
+            "en": "What makes the cupboard door hard to see?"
+          },
+          "options": [
+            {
+              "nl": "Het bosmotief loopt zorgvuldig over de deur door.",
+              "en": "The forest pattern continues carefully across the door."
+            },
+            {
+              "nl": "De deur staat helemaal buiten.",
+              "en": "The door is entirely outside."
+            },
+            {
+              "nl": "Alle gasten dragen donkere brillen.",
+              "en": "All the guests wear dark glasses."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De lijnen en boomstammen sluiten over de deur aan.",
+            "en": "The lines and tree trunks align across the door."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom zoeken de kinderen ook bij andere bomen?",
+            "en": "Why do the children also search by other trees?"
+          },
+          "options": [
+            {
+              "nl": "Ze denken na de verrassing dat meer geschilderde delen echte openingen kunnen zijn.",
+              "en": "After the surprise they think that more painted sections may be actual openings."
+            },
+            {
+              "nl": "Ze moeten alle bomen tellen voor een toets.",
+              "en": "They have to count all the trees for a test."
+            },
+            {
+              "nl": "Maud zegt dat overal taart is verstopt.",
+              "en": "Maud says that cake is hidden everywhere."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De verborgen kast maakt de rest van het geschilderde bos even verdacht.",
+            "en": "The hidden cupboard briefly makes the rest of the painted forest suspicious."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-tomaten-achter-het-laken",
+      "topic_id": "gardening",
+      "title": {
+        "nl": "De tomaten achter het laken",
+        "en": "The tomatoes behind the sheet"
+      },
+      "plot_key": "Retiree raretomatogrower wrapsplants surprise autumn photo grandchildassumes exoticceremony, harvestdifferentcolors partymystery reveal nohealthlabelclaims.",
+      "lines": [
+        {
+          "nl": "Omdat zijn kleinkinderen elk jaar om rode tomaten vragen, kweekt Guido deze zomer stiekem drie anders gekleurde soorten.",
+          "en": "Because his grandchildren ask for red tomatoes every year, Guido secretly grows three differently coloured varieties this summer."
+        },
+        {
+          "nl": "Wanneer de eerste vruchten rijpen, hangt hij een oud laken voor het rek zodat niemand de verrassing te vroeg ziet.",
+          "en": "When the first fruits ripen, he hangs an old sheet in front of the rack so that nobody sees the surprise too early."
+        },
+        {
+          "nl": "Zijn buurvrouw ziet hem dagelijks achter het witte doek verdwijnen en vraagt of hij een nieuw kunstproject maakt.",
+          "en": "His neighbour sees him disappear behind the white sheet every day and asks whether he is making a new art project."
+        },
+        {
+          "nl": "Guido antwoordt alleen dat er veel kleur in zal zitten, waardoor de halve straat nieuwsgierig wordt.",
+          "en": "Guido replies only that it will contain a lot of colour, making half the street curious."
+        },
+        {
+          "nl": "Op de afgesproken zondag komen de kinderen met tekenpapier en penselen aan, omdat de buurvrouw hun over het project heeft verteld.",
+          "en": "On the agreed Sunday, the children arrive with drawing paper and brushes because the neighbour has told them about the project."
+        },
+        {
+          "nl": "Guido trekt het laken weg en toont de gele, donkere en gestreepte vruchten die ze zelf mogen plukken.",
+          "en": "Guido pulls the sheet away and shows the yellow, dark and striped fruits that they may pick themselves."
+        },
+        {
+          "nl": "De penselen blijven toch op tafel, want na het proeven willen de kinderen elke vorm met de juiste kleur vastleggen.",
+          "en": "The brushes still remain on the table because after tasting, the children want to record every shape in the correct colour."
+        },
+        {
+          "nl": "Tegen de avond hangt het laken weer voor het rek, nu vol geschilderde tomaten en met een buurvrouw die vraagt wanneer de tentoonstelling opengaat.",
+          "en": "By evening the sheet hangs in front of the rack again, now covered in painted tomatoes and with a neighbour asking when the exhibition opens."
+        }
+      ],
+      "words": [
+        {
+          "term": "rijpen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zich ontwikkelen totdat fruit klaar is om te eten",
+            "en": "to ripen"
+          },
+          "example": {
+            "nl": "Wanneer de eerste vruchten rijpen, hangt hij een oud laken voor het rek zodat niemand de verrassing te vroeg ziet.",
+            "en": "When the first fruits ripen, he hangs an old sheet in front of the rack so that nobody sees the surprise too early."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "gestreept",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met lange smalle lijnen in verschillende kleuren",
+            "en": "striped"
+          },
+          "example": {
+            "nl": "Guido trekt het laken weg en toont de gele, donkere en gestreepte vruchten die ze zelf mogen plukken.",
+            "en": "Guido pulls the sheet away and shows the yellow, dark and striped fruits that they may pick themselves."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de verrassing",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets onverwachts dat iemand nog niet kent",
+            "en": "surprise"
+          },
+          "example": {
+            "nl": "Wanneer de eerste vruchten rijpen, hangt hij een oud laken voor het rek zodat niemand de verrassing te vroeg ziet.",
+            "en": "When the first fruits ripen, he hangs an old sheet in front of the rack so that nobody sees the surprise too early."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Omdat ... waardoor ...",
+            "en": "Because ... resulting in ..."
+          },
+          "explanation": {
+            "nl": "Omdat noemt een reden; waardoor kan daarna het onverwachte gevolg van een handeling beschrijven.",
+            "en": "Omdat gives a reason; waardoor can then describe the unexpected consequence of an action."
+          },
+          "examples": [
+            {
+              "nl": "Omdat zijn kleinkinderen elk jaar om rode tomaten vragen, kweekt Guido deze zomer stiekem drie anders gekleurde soorten.",
+              "en": "Because his grandchildren ask for red tomatoes every year, Guido secretly grows three differently coloured varieties this summer."
+            },
+            {
+              "nl": "Guido antwoordt alleen dat er veel kleur in zal zitten, waardoor de halve straat nieuwsgierig wordt.",
+              "en": "Guido replies only that it will contain a lot of colour, making half the street curious."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom verwachten de kleinkinderen een schilderproject?",
+            "en": "Why do the grandchildren expect a painting project?"
+          },
+          "options": [
+            {
+              "nl": "De buurvrouw heeft Guido's geheimzinnige antwoord als kunst opgevat.",
+              "en": "The neighbour has interpreted Guido's mysterious reply as art."
+            },
+            {
+              "nl": "Guido heeft alle tomaten op papier getekend.",
+              "en": "Guido has drawn all the tomatoes on paper."
+            },
+            {
+              "nl": "Er groeien geen echte planten achter het doek.",
+              "en": "There are no actual plants growing behind the cloth."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zij hoort over veel kleur en vertelt de kinderen over een project.",
+            "en": "She hears about lots of colour and tells the children about a project."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe krijgt de verwachting toch een plaats in de dag?",
+            "en": "How does the expectation still find a place in the day?"
+          },
+          "options": [
+            {
+              "nl": "De kinderen schilderen na het proeven de echte tomaten.",
+              "en": "After tasting, the children paint the actual tomatoes."
+            },
+            {
+              "nl": "Guido stuurt alle kinderen zonder eten weg.",
+              "en": "Guido sends all the children away without food."
+            },
+            {
+              "nl": "De buurvrouw koopt de volledige oogst op.",
+              "en": "The neighbour buys the whole harvest."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De meegebrachte penselen worden gebruikt om de verschillende vruchten weer te geven.",
+            "en": "The brushes they brought are used to depict the different fruits."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-tractor-met-een-verkeerde-naam",
+      "topic_id": "agriculture",
+      "title": {
+        "nl": "De tractor met de verkeerde naam",
+        "en": "The tractor with the wrong name"
+      },
+      "plot_key": "Farmopen-day labelledtractor engineerassumespowernumber actuallynicknamebirthday agegrandfather; granddaughterinterview records actualspecs separately paradehumor.",
+      "lines": [
+        {
+          "nl": "Voor de open dag van de boerderij helpt student techniek Joris de machines van duidelijke uitlegkaartjes te voorzien.",
+          "en": "For the farm open day, engineering student Joris helps provide the machines with clear information cards."
+        },
+        {
+          "nl": "Op een oude tractor hangt al een bordje met de naam Oscar en het getal tachtig.",
+          "en": "An old tractor already has a sign bearing the name Oscar and the number eighty."
+        },
+        {
+          "nl": "Joris neemt aan dat het om een modelnaam en een technische waarde gaat en zoekt welke eenheid erbij hoort.",
+          "en": "Joris assumes that it is a model name and a technical value and looks for the unit that belongs with it."
+        },
+        {
+          "nl": "De boerin lacht wanneer ze zijn vraag hoort en haalt haar vader van tussen de bezoekers.",
+          "en": "The farmer laughs when she hears his question and fetches her father from among the visitors."
+        },
+        {
+          "nl": "Oscar is die dag tachtig geworden en rijdt tijdens de rondrit mee op de tractor die hij vroeger dagelijks gebruikte.",
+          "en": "Oscar has turned eighty that day and will ride in the parade on the tractor he used to use daily."
+        },
+        {
+          "nl": "Joris maakt een nieuw informatiekaartje met gecontroleerde machinegegevens en laat het persoonlijke verjaardagsbord daarnaast hangen.",
+          "en": "Joris makes a new information card with checked machine details and leaves the personal birthday sign hanging beside it."
+        },
+        {
+          "nl": "Tijdens de rondrit roept een kind dat de tractor jarig is, waarop Oscar zijn pet afneemt en plechtig voor de machine bedankt.",
+          "en": "During the parade, a child calls out that it is the tractor's birthday, at which Oscar takes off his cap and solemnly gives thanks on the machine's behalf."
+        },
+        {
+          "nl": "Joris schrijft later onder zijn foto's dat hij zelden zo'n vrolijke technische eenheid heeft ontmoet.",
+          "en": "Joris later writes beneath his photographs that he has rarely met such a cheerful technical unit."
+        }
+      ],
+      "words": [
+        {
+          "term": "de eenheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de vaste maat waarin een hoeveelheid wordt uitgedrukt",
+            "en": "unit"
+          },
+          "example": {
+            "nl": "Joris neemt aan dat het om een modelnaam en een technische waarde gaat en zoekt welke eenheid erbij hoort.",
+            "en": "Joris assumes that it is a model name and a technical value and looks for the unit that belongs with it."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de rondrit",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een rit langs verschillende plaatsen die weer bij een eindpunt komt",
+            "en": "tour; parade drive"
+          },
+          "example": {
+            "nl": "Oscar is die dag tachtig geworden en rijdt tijdens de rondrit mee op de tractor die hij vroeger dagelijks gebruikte.",
+            "en": "Oscar has turned eighty that day and will ride in the parade on the tractor he used to use daily."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de machinegegevens",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "informatie over de kenmerken van een machine",
+            "en": "machine specifications"
+          },
+          "example": {
+            "nl": "Joris maakt een nieuw informatiekaartje met gecontroleerde machinegegevens en laat het persoonlijke verjaardagsbord daarnaast hangen.",
+            "en": "Joris makes a new information card with checked machine details and leaves the personal birthday sign hanging beside it."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Aannemen dat",
+            "en": "To assume that"
+          },
+          "explanation": {
+            "nl": "Aannemen dat introduceert een conclusie die nog niet gecontroleerd is.",
+            "en": "Aannemen dat introduces a conclusion that has not yet been checked."
+          },
+          "examples": [
+            {
+              "nl": "Joris neemt aan dat het om een modelnaam en een technische waarde gaat en zoekt welke eenheid erbij hoort.",
+              "en": "Joris assumes that it is a model name and a technical value and looks for the unit that belongs with it."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat betekenen Oscar en tachtig op het eerste bord?",
+            "en": "What do Oscar and eighty on the first sign mean?"
+          },
+          "options": [
+            {
+              "nl": "De naam en leeftijd van de jarige vader.",
+              "en": "The birthday father's name and age."
+            },
+            {
+              "nl": "Het model en de snelheid van de tractor.",
+              "en": "The tractor's model and speed."
+            },
+            {
+              "nl": "De naam en prijs van de brandstof.",
+              "en": "The fuel's name and price."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het bord hoort bij het persoonlijke feest van de boerin haar vader.",
+            "en": "The sign belongs to the personal celebration for the farmer's father."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom maakt Joris een tweede kaartje?",
+            "en": "Why does Joris make a second card?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil de verjaardag verbergen.",
+              "en": "He wants to hide the birthday."
+            },
+            {
+              "nl": "Hij wil machine-informatie apart van het feestbord duidelijk maken.",
+              "en": "He wants to make the machine information clear separately from the birthday sign."
+            },
+            {
+              "nl": "Hij wil de tractor een andere naam geven.",
+              "en": "He wants to give the tractor a different name."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De technische gegevens en het persoonlijke verhaal krijgen elk hun eigen plaats.",
+            "en": "The technical information and the personal story each get their own place."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-fiets-die-een-lamp-moest-dragen",
+      "topic_id": "energy-electricity",
+      "title": {
+        "nl": "De fiets die een lamp moest dragen",
+        "en": "The bicycle that was meant to power a light"
+      },
+      "plot_key": "Festivaldemonstration pedalpoweradvert sayslightswholestage exaggeration actualsmalllamp, audiencepedals character reaches romanticreadinglight givesstage actorpause practicallevel nooverclaims.",
+      "lines": [
+        {
+          "nl": "Voor een demonstratie op het schoolfeest bouwen twee studenten een veilig begeleide opstelling waarbij een fiets een kleine lamp van stroom voorziet.",
+          "en": "For a demonstration at the school fair, two students build a safely supervised setup in which a bicycle supplies electricity to a small light."
+        },
+        {
+          "nl": "Op de zelfgemaakte affiche schrijft hun enthousiaste vriend dat je met spierkracht het hele podium kunt verlichten.",
+          "en": "On the homemade poster, their enthusiastic friend writes that you can light the whole stage with muscle power."
+        },
+        {
+          "nl": "Wanneer de eerste bezoeker begint te trappen, verwacht het publiek daarom dat alle grote lampen aangaan.",
+          "en": "When the first visitor begins pedalling, the audience therefore expects all the large lights to switch on."
+        },
+        {
+          "nl": "In werkelijkheid licht alleen het afgesproken kleine leeslampje op, waarna iemand vraagt waar de rest blijft.",
+          "en": "In reality only the planned small reading light comes on, after which someone asks where the rest is."
+        },
+        {
+          "nl": "De studenten zetten de demonstratie stil en laten zien wat hun eigen opstelling wel en niet kan leveren.",
+          "en": "The students pause the demonstration and show what their own setup can and cannot supply."
+        },
+        {
+          "nl": "Ze verbeteren de affiche voordat ze verdergaan en nodigen telkens één bezoeker uit om het concrete verschil te ervaren.",
+          "en": "They correct the poster before continuing and invite one visitor at a time to experience the specific difference."
+        },
+        {
+          "nl": "Een jongen vraagt zijn vriendin om te fietsen terwijl hij onder het lampje eindelijk de brief voorleest die hij haar niet durfde te geven.",
+          "en": "A boy asks his girlfriend to cycle while, beneath the light, he finally reads aloud the letter he did not dare give her."
+        },
+        {
+          "nl": "Zij stopt halverwege even met trappen om te lachen, waardoor hij zijn mooiste zin heel serieus in het donker moet herhalen.",
+          "en": "She briefly stops pedalling halfway through to laugh, making him repeat his finest sentence very seriously in the dark."
+        }
+      ],
+      "words": [
+        {
+          "term": "van stroom voorzien",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "elektrische energie aan iets leveren",
+            "en": "to supply electricity to; to power"
+          },
+          "example": {
+            "nl": "Voor een demonstratie op het schoolfeest bouwen twee studenten een veilig begeleide opstelling waarbij een fiets een kleine lamp van stroom voorziet.",
+            "en": "For a demonstration at the school fair, two students build a safely supervised setup in which a bicycle supplies electricity to a small light."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de opstelling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de manier waarop onderdelen voor een demonstratie bij elkaar staan",
+            "en": "setup"
+          },
+          "example": {
+            "nl": "Voor een demonstratie op het schoolfeest bouwen twee studenten een veilig begeleide opstelling waarbij een fiets een kleine lamp van stroom voorziet.",
+            "en": "For a demonstration at the school fair, two students build a safely supervised setup in which a bicycle supplies electricity to a small light."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "leveren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "beschikbaar maken of voortbrengen",
+            "en": "to supply; to deliver"
+          },
+          "example": {
+            "nl": "De studenten zetten de demonstratie stil en laten zien wat hun eigen opstelling wel en niet kan leveren.",
+            "en": "The students pause the demonstration and show what their own setup can and cannot supply."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wel en niet kunnen",
+            "en": "Can and cannot"
+          },
+          "explanation": {
+            "nl": "Wel en niet beschrijft de grenzen van een concrete mogelijkheid.",
+            "en": "Wel en niet describes the limits of a specific capability."
+          },
+          "examples": [
+            {
+              "nl": "De studenten zetten de demonstratie stil en laten zien wat hun eigen opstelling wel en niet kan leveren.",
+              "en": "The students pause the demonstration and show what their own setup can and cannot supply."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar ontstaat de verkeerde verwachting?",
+            "en": "Where does the wrong expectation arise?"
+          },
+          "options": [
+            {
+              "nl": "In de overdreven tekst op de affiche.",
+              "en": "In the exaggerated text on the poster."
+            },
+            {
+              "nl": "In een belofte van de bezoeker die fietst.",
+              "en": "In a promise from the visitor pedalling."
+            },
+            {
+              "nl": "In de brief van de jongen.",
+              "en": "In the boy's letter."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De affiche noemt het hele podium, maar de opstelling is alleen voor een kleine lamp.",
+            "en": "The poster mentions the whole stage, but the setup is only for a small light."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom moet de jongen een zin in het donker herhalen?",
+            "en": "Why does the boy have to repeat a sentence in the dark?"
+          },
+          "options": [
+            {
+              "nl": "Zijn vriendin stopt even met fietsen om te lachen.",
+              "en": "His girlfriend briefly stops cycling to laugh."
+            },
+            {
+              "nl": "Hij heeft de lamp expres verstopt.",
+              "en": "He deliberately hid the light."
+            },
+            {
+              "nl": "Het schoolfeest is plots afgelopen.",
+              "en": "The school fair has suddenly ended."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zonder het trappen levert de demonstratiefiets op dat moment geen licht.",
+            "en": "Without the pedalling, the demonstration bicycle provides no light at that moment."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-bloemen-voor-de-verkeerde-zomer",
+      "topic_id": "climate-change",
+      "title": {
+        "nl": "Bloemen voor de verkeerde zomer",
+        "en": "Flowers for the wrong summer"
+      },
+      "plot_key": "Weddingflowers planned lastyearseason bloom early thisyear gardenlateevent, florist choosesavailable localgreens no climateattribution singleevent, terraceceremonyplotnice.",
+      "lines": [
+        {
+          "nl": "Voor haar trouwfeest wil Ellen bloemen uit de tuin van haar ouders gebruiken, zoals op de foto's van hun eigen huwelijk.",
+          "en": "For her wedding celebration, Ellen wants to use flowers from her parents' garden, as in the photographs of their own wedding."
+        },
+        {
+          "nl": "Ze heeft dezelfde week in juni gekozen en verwacht dat dezelfde soorten dan opnieuw zullen bloeien.",
+          "en": "She has chosen the same week in June and expects the same varieties to be flowering again then."
+        },
+        {
+          "nl": "Dat voorjaar ontwikkelen sommige planten zich echter veel vroeger, waardoor er op de feestdag vooral bladeren en lege stengels staan.",
+          "en": "That spring, however, some plants develop much earlier, leaving mainly leaves and empty stems on the celebration day."
+        },
+        {
+          "nl": "Haar vader zegt somber dat de tuin de afspraak niet heeft begrepen, terwijl Ellen bijna een duur noodboeket bestelt.",
+          "en": "Her father says gloomily that the garden has not understood the appointment while Ellen nearly orders an expensive emergency bouquet."
+        },
+        {
+          "nl": "Een bloemiste bekijkt wat er werkelijk aanwezig is en stelt een groene versiering voor met kleine bloeiende accenten uit de buurt.",
+          "en": "A florist looks at what is actually available and proposes a green arrangement with small flowering accents from nearby."
+        },
+        {
+          "nl": "Ze schrijven niet één oorzaak bij dat ene seizoen, maar bespreken wel dat een vaste datum geen vaste bloei garandeert.",
+          "en": "They do not assign a single cause to that one season but do discuss how a fixed date does not guarantee fixed flowering."
+        },
+        {
+          "nl": "Tijdens de ceremonie draagt Ellen een lichte groene tak, met het lint van het oude boeket van haar moeder eromheen.",
+          "en": "During the ceremony, Ellen carries a light green branch with the ribbon from her mother's old bouquet around it."
+        },
+        {
+          "nl": "Haar vader bekijkt de nieuwe foto's en noemt hun tuin eindelijk op tijd voor een ander soort feest.",
+          "en": "Her father looks at the new photographs and finally calls their garden on time for a different kind of celebration."
+        }
+      ],
+      "words": [
+        {
+          "term": "bloeien",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "bloemen hebben of vormen",
+            "en": "to flower; to bloom"
+          },
+          "example": {
+            "nl": "Ze heeft dezelfde week in juni gekozen en verwacht dat dezelfde soorten dan opnieuw zullen bloeien.",
+            "en": "She has chosen the same week in June and expects the same varieties to be flowering again then."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "het accent",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een klein opvallend onderdeel dat iets benadrukt",
+            "en": "accent; highlight"
+          },
+          "example": {
+            "nl": "Een bloemiste bekijkt wat er werkelijk aanwezig is en stelt een groene versiering voor met kleine bloeiende accenten uit de buurt.",
+            "en": "A florist looks at what is actually available and proposes a green arrangement with small flowering accents from nearby."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "garanderen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met zekerheid beloven dat iets zal gebeuren",
+            "en": "to guarantee"
+          },
+          "example": {
+            "nl": "Ze schrijven niet één oorzaak bij dat ene seizoen, maar bespreken wel dat een vaste datum geen vaste bloei garandeert.",
+            "en": "They do not assign a single cause to that one season but do discuss how a fixed date does not guarantee fixed flowering."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waardoor",
+            "en": "As a result of which"
+          },
+          "explanation": {
+            "nl": "Waardoor verbindt hier een vroeger ontwikkelingsmoment met de situatie op de feestdag.",
+            "en": "Waardoor here connects earlier development with the situation on the celebration day."
+          },
+          "examples": [
+            {
+              "nl": "Dat voorjaar ontwikkelen sommige planten zich echter veel vroeger, waardoor er op de feestdag vooral bladeren en lege stengels staan.",
+              "en": "That spring, however, some plants develop much earlier, leaving mainly leaves and empty stems on the celebration day."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom staat de tuin niet zoals op de oude foto's?",
+            "en": "Why does the garden not look as it does in the old photographs?"
+          },
+          "options": [
+            {
+              "nl": "Sommige planten zijn dat voorjaar vroeger ontwikkeld.",
+              "en": "Some plants developed earlier that spring."
+            },
+            {
+              "nl": "Ellen heeft alle planten zelf weggehaald.",
+              "en": "Ellen removed all the plants herself."
+            },
+            {
+              "nl": "Haar ouders hebben nooit een tuin gehad.",
+              "en": "Her parents never had a garden."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De vaste junidatum valt dit jaar niet samen met dezelfde bloeifase.",
+            "en": "The fixed June date does not coincide with the same flowering stage this year."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verbindt het nieuwe groen met de oude trouwfoto?",
+            "en": "What connects the new greenery with the old wedding photograph?"
+          },
+          "options": [
+            {
+              "nl": "Het lint van haar moeders vroegere boeket.",
+              "en": "The ribbon from her mother's former bouquet."
+            },
+            {
+              "nl": "Een digitaal gekopieerde bloem op elke foto.",
+              "en": "A digitally copied flower in every photograph."
+            },
+            {
+              "nl": "Een identieke lijst met bestelde bloemen.",
+              "en": "An identical list of ordered flowers."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het oude lint wordt om de nieuwe tak gebruikt.",
+            "en": "The old ribbon is used around the new branch."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-jas-van-de-oude-gordijnen",
+      "topic_id": "sustainability-recycling",
+      "title": {
+        "nl": "De jas van de oude gordijnen",
+        "en": "The coat made from old curtains"
+      },
+      "plot_key": "Upcycledcurtaincoat grandmotherrecognises livingroompattern comedy wearerto familytheatre, pinprevioushousekeyembroidered retainsmeaning withoutmoral.",
+      "lines": [
+        {
+          "nl": "Voor een naaiwedstrijd maakt Robin een lange jas van zware gordijnen die hij in een kringwinkel heeft gevonden.",
+          "en": "For a sewing competition, Robin makes a long coat from heavy curtains he found in a second-hand shop."
+        },
+        {
+          "nl": "Het bloemenpatroon is zo opvallend dat hij op straat al vragen krijgt voordat de wedstrijd begonnen is.",
+          "en": "The floral pattern is so striking that he already gets questions in the street before the competition has begun."
+        },
+        {
+          "nl": "Bij een familiebezoek kijkt zijn grootmoeder lang naar de stof en vraagt ze of haar vroegere woonkamer ineens benen heeft gekregen.",
+          "en": "During a family visit, his grandmother looks at the fabric for a long time and asks whether her former living room has suddenly grown legs."
+        },
+        {
+          "nl": "Ze had precies zulke gordijnen weggedaan toen ze naar een kleinere woning verhuisde.",
+          "en": "She had given away curtains exactly like these when she moved to a smaller home."
+        },
+        {
+          "nl": "Aan een kleine herstelling langs de rand herkent ze zelfs het stukje dat haar kat ooit heeft beschadigd.",
+          "en": "From a small repair along the edge, she even recognises the section that her cat once damaged."
+        },
+        {
+          "nl": "Robin wil eerst een netter deel zoeken, maar zijn grootmoeder vraagt hem juist die oude naad zichtbaar te laten.",
+          "en": "Robin initially wants to look for a neater section, but his grandmother asks him to leave that old seam visible."
+        },
+        {
+          "nl": "Op de wedstrijddag draagt zij naast hem een kleine tas uit het resterende gordijn, waarin ze een foto van het vroegere raam heeft gestopt.",
+          "en": "On competition day she stands beside him carrying a small bag made from the remaining curtain, in which she has put a photograph of the former window."
+        },
+        {
+          "nl": "Wanneer iemand vraagt wie het patroon heeft gekozen, antwoorden ze tegelijk dat het hele gezin daar al dertig jaar over verdeeld is.",
+          "en": "When someone asks who chose the pattern, they answer together that the entire family has been divided over it for thirty years."
+        }
+      ],
+      "words": [
+        {
+          "term": "de naad",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de lijn waar twee stukken stof aan elkaar zijn genaaid",
+            "en": "seam"
+          },
+          "example": {
+            "nl": "Robin wil eerst een netter deel zoeken, maar zijn grootmoeder vraagt hem juist die oude naad zichtbaar te laten.",
+            "en": "Robin initially wants to look for a neater section, but his grandmother asks him to leave that old seam visible."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "resterend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "wat na gebruik van een deel nog overblijft",
+            "en": "remaining"
+          },
+          "example": {
+            "nl": "Op de wedstrijddag draagt zij naast hem een kleine tas uit het resterende gordijn, waarin ze een foto van het vroegere raam heeft gestopt.",
+            "en": "On competition day she stands beside him carrying a small bag made from the remaining curtain, in which she has put a photograph of the former window."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "verdeeld zijn over",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "verschillende meningen hebben over",
+            "en": "to be divided over"
+          },
+          "example": {
+            "nl": "Wanneer iemand vraagt wie het patroon heeft gekozen, antwoorden ze tegelijk dat het hele gezin daar al dertig jaar over verdeeld is.",
+            "en": "When someone asks who chose the pattern, they answer together that the entire family has been divided over it for thirty years."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Precies zulke",
+            "en": "Exactly that kind of"
+          },
+          "explanation": {
+            "nl": "Precies zulke benadrukt een sterke overeenkomst zonder al meteen identiteit te bewijzen.",
+            "en": "Precies zulke emphasises a strong resemblance without immediately proving identity."
+          },
+          "examples": [
+            {
+              "nl": "Ze had precies zulke gordijnen weggedaan toen ze naar een kleinere woning verhuisde.",
+              "en": "She had given away curtains exactly like these when she moved to a smaller home."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk detail maakt de herkomst van de stof herkenbaar?",
+            "en": "What detail makes the fabric's origin recognisable?"
+          },
+          "options": [
+            {
+              "nl": "Een kleine oude herstelling na schade door haar kat.",
+              "en": "A small old repair after damage by her cat."
+            },
+            {
+              "nl": "Een nieuwe prijskaart van de wedstrijd.",
+              "en": "A new competition price tag."
+            },
+            {
+              "nl": "Een naam van Robin op elk bloemetje.",
+              "en": "Robin's name on every little flower."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De naad is een persoonlijke aanwijzing naast het bekende patroon.",
+            "en": "The seam is a personal clue alongside the familiar pattern."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom is hun laatste antwoord grappig?",
+            "en": "Why is their final reply funny?"
+          },
+          "options": [
+            {
+              "nl": "Het nieuwe kledingstuk draagt ook een oud meningsverschil over het patroon mee.",
+              "en": "The new garment also carries an old disagreement about the pattern."
+            },
+            {
+              "nl": "Niemand heeft de gordijnen ooit gezien.",
+              "en": "Nobody ever saw the curtains."
+            },
+            {
+              "nl": "De jas mag alleen binnen gedragen worden.",
+              "en": "The coat may be worn only indoors."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het opvallende ontwerp was al jarenlang onderwerp van gesprek in de familie.",
+            "en": "The striking design had been a family topic of conversation for years."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "b2-read-leesgroep-voor-een",
+      "topic_id": "volunteering-charity",
+      "title": {
+        "nl": "Er kwam maar één iemand",
+        "en": "Only one person came"
+      },
+      "plot_key": "A volunteer reading organiser balances disappointing attendance with the actual value and limits of a small session.",
+      "lines": [
+        {
+          "nl": "Voor de eerste leesmiddag had vrijwilliger Elias twaalf stoelen klaargezet, maar om twee uur zat er slechts één vrouw in de kring.",
+          "en": "For the first reading afternoon, volunteer Elias had arranged twelve chairs, but at two o'clock only one woman sat in the circle."
+        },
+        {
+          "nl": "Hij bleef naar de deur kijken en begon uit te leggen dat het normaal veel gezelliger zou worden dan dit.",
+          "en": "He kept looking at the door and began explaining that normally it would become much more sociable than this."
+        },
+        {
+          "nl": "De vrouw vroeg of ze anders beter terugkwam wanneer er wel genoeg mensen waren, waarop Elias zijn eigen woorden plots hoorde.",
+          "en": "The woman asked whether she should perhaps come back when there were enough people, whereupon Elias suddenly heard his own words."
+        },
+        {
+          "nl": "Hij schoof de lege stoelen opzij en vroeg welk soort verhaal zij graag wilde lezen, in plaats van haar aanwezigheid als tekort te blijven benoemen.",
+          "en": "He moved the empty chairs aside and asked what kind of story she would like to read, instead of continuing to describe her presence as a shortfall."
+        },
+        {
+          "nl": "Ze lazen een korte tekst en spraken langer dan gepland over de straat waarin zij vroeger had gewoond.",
+          "en": "They read a short text and talked longer than planned about the street where she had once lived."
+        },
+        {
+          "nl": "Na afloop noteerde Elias eerlijk het lage aantal deelnemers en ook wat in de bijeenkomst wel mogelijk was geweest.",
+          "en": "Afterwards, Elias honestly recorded the low participant count and also what had been possible during the session."
+        },
+        {
+          "nl": "Met de organisatie onderzocht hij welke vorm en beschikbare tijd haalbaar waren voordat hij een wekelijkse individuele afspraak zou beloven.",
+          "en": "With the organisation, he examined what format and available time were feasible before promising a weekly individual appointment."
+        },
+        {
+          "nl": "De vrouw kreeg een duidelijke vervolgvraag, niet langer de boodschap dat zij bijna niemand was geweest.",
+          "en": "The woman received a clear follow-up question, no longer the message that she had been almost nobody."
+        }
+      ],
+      "words": [
+        {
+          "term": "de deelnemer",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "persoon die aan een activiteit meedoet",
+            "en": "participant"
+          },
+          "example": {
+            "nl": "Na afloop noteerde Elias eerlijk het lage aantal deelnemers en ook wat in de bijeenkomst wel mogelijk was geweest.",
+            "en": "Afterwards, Elias honestly recorded the low participant count and also what had been possible during the session."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het tekort",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hoeveelheid die volgens een verwachting ontbreekt",
+            "en": "shortfall"
+          },
+          "example": {
+            "nl": "Hij schoof de lege stoelen opzij en vroeg welk soort verhaal zij graag wilde lezen, in plaats van haar aanwezigheid als tekort te blijven benoemen.",
+            "en": "He moved the empty chairs aside and asked what kind of story she would like to read, instead of continuing to describe her presence as a shortfall."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "benoemen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets duidelijk onder woorden brengen",
+            "en": "to name or describe"
+          },
+          "example": {
+            "nl": "Hij schoof de lege stoelen opzij en vroeg welk soort verhaal zij graag wilde lezen, in plaats van haar aanwezigheid als tekort te blijven benoemen.",
+            "en": "He moved the empty chairs aside and asked what kind of story she would like to read, instead of continuing to describe her presence as a shortfall."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "Voor de eerste leesmiddag had vrijwilliger Elias twaalf stoelen klaargezet, maar om twee uur zat er slechts één vrouw in de kring.",
+              "en": "For the first reading afternoon, volunteer Elias had arranged twelve chairs, but at two o'clock only one woman sat in the circle."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat hoort Elias in de vraag van de vrouw terug?",
+            "en": "What does Elias hear reflected in the woman's question?"
+          },
+          "options": [
+            {
+              "nl": "Dat ze niet kan lezen",
+              "en": "That she cannot read"
+            },
+            {
+              "nl": "Dat de stoelen kapot zijn",
+              "en": "That the chairs are broken"
+            },
+            {
+              "nl": "Dat hij haar aanwezigheid als onvoldoende heeft voorgesteld",
+              "en": "That he has presented her presence as insufficient"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De vrouw vroeg of ze anders beter terugkwam wanneer er wel genoeg mensen waren, waarop Elias zijn eigen woorden plots hoorde.",
+            "en": "The woman asked whether she should perhaps come back when there were enough people, whereupon Elias suddenly heard his own words."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat noteert hij na afloop?",
+            "en": "What does he record afterwards?"
+          },
+          "options": [
+            {
+              "nl": "Alleen dat alles mislukt is",
+              "en": "Only that everything failed"
+            },
+            {
+              "nl": "Een verzonnen hoog aantal",
+              "en": "An invented high number"
+            },
+            {
+              "nl": "Zowel het lage aantal als de concrete waarde van de sessie",
+              "en": "Both the low number and the concrete value of the session"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Na afloop noteerde Elias eerlijk het lage aantal deelnemers en ook wat in de bijeenkomst wel mogelijk was geweest.",
+            "en": "Afterwards, Elias honestly recorded the low participant count and also what had been possible during the session."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-buurtbank-met-twee-verhalen",
+      "topic_id": "community-events",
+      "title": {
+        "nl": "De bank die twee openingen kreeg",
+        "en": "The bench that had two openings"
+      },
+      "plot_key": "Two neighbourhood groups claim the same restored bench as their project and discover that different kinds of contribution can share public recognition.",
+      "lines": [
+        {
+          "nl": "Bij de heropening van een klein plein wilden twee buurtgroepen allebei een lint doorknippen bij dezelfde pas herstelde bank.",
+          "en": "At the reopening of a small square, two neighbourhood groups both wanted to cut a ribbon at the same newly repaired bench."
+        },
+        {
+          "nl": "De ene groep had geld ingezameld, terwijl de andere maandenlang de praktische gesprekken en het herstel had geregeld.",
+          "en": "One group had raised money, while the other had spent months arranging the practical discussions and the repair."
+        },
+        {
+          "nl": "Op de uitnodiging stond alleen de naam van de geldinzamelaars, waardoor de tweede groep overwoog helemaal weg te blijven.",
+          "en": "The invitation named only the fundraisers, prompting the second group to consider staying away entirely."
+        },
+        {
+          "nl": "Bewoonster Nora vroeg welke geschiedenis een bezoeker zou leren als het feest met een wedstrijd over de eerste plaats begon.",
+          "en": "Resident Nora asked what history a visitor would learn if the celebration began with a contest over first place."
+        },
+        {
+          "nl": "Ze verzamelden de verschillende bijdragen en maakten een korte toelichting die geld, tijd en de toestemming van de beheerder niet door elkaar haalde.",
+          "en": "They gathered the different contributions and made a short explanation that did not confuse money, time and the manager's permission."
+        },
+        {
+          "nl": "Er kwam één gezamenlijk openingsmoment, waarbij ook werd gezegd wie de bank voortaan binnen de afspraken zou onderhouden.",
+          "en": "There was one joint opening, which also stated who would maintain the bench from then on under the arrangements."
+        },
+        {
+          "nl": "Niet iedereen vond de aandacht precies gelijk verdeeld, maar niemand hoefde nog te doen alsof de bank uit één enkel gebaar was ontstaan.",
+          "en": "Not everyone felt attention had been distributed exactly equally, but nobody had to pretend the bench had arisen from one single gesture anymore."
+        },
+        {
+          "nl": "Na de toespraken gingen de twee initiatiefnemers als eersten zitten, even stil naast iemand die geen concurrent meer hoefde te zijn.",
+          "en": "After the speeches, the two initiators were the first to sit, briefly quiet beside someone who no longer needed to be a competitor."
+        }
+      ],
+      "words": [
+        {
+          "term": "de geldinzamelaar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "persoon die geld voor een doel verzamelt",
+            "en": "fundraiser"
+          },
+          "example": {
+            "nl": "Op de uitnodiging stond alleen de naam van de geldinzamelaars, waardoor de tweede groep overwoog helemaal weg te blijven.",
+            "en": "The invitation named only the fundraisers, prompting the second group to consider staying away entirely."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het onderhoud",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "zorg om iets in goede staat te houden",
+            "en": "maintenance"
+          },
+          "example": {
+            "nl": "Er kwam één gezamenlijk openingsmoment, waarbij ook werd gezegd wie de bank voortaan binnen de afspraken zou onderhouden.",
+            "en": "There was one joint opening, which also stated who would maintain the bench from then on under the arrangements."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de concurrent",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "persoon of groep met wie je wedijvert",
+            "en": "competitor"
+          },
+          "example": {
+            "nl": "Na de toespraken gingen de twee initiatiefnemers als eersten zitten, even stil naast iemand die geen concurrent meer hoefde te zijn.",
+            "en": "After the speeches, the two initiators were the first to sit, briefly quiet beside someone who no longer needed to be a competitor."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een bijzin met terwijl",
+            "en": "A subordinate clause with terwijl"
+          },
+          "explanation": {
+            "nl": "Terwijl verbindt een bijzin met een hoofdzin. Het kan gelijktijdigheid of een tegenstelling aangeven; het werkwoord staat achteraan in de bijzin.",
+            "en": "Terwijl links a subordinate clause to a main clause. It can express simultaneous events or a contrast; the verb comes at the end of the subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "De ene groep had geld ingezameld, terwijl de andere maandenlang de praktische gesprekken en het herstel had geregeld.",
+              "en": "One group had raised money, while the other had spent months arranging the practical discussions and the repair."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom voelt de tweede groep zich tekortgedaan?",
+            "en": "Why does the second group feel overlooked?"
+          },
+          "options": [
+            {
+              "nl": "Er is geen plein",
+              "en": "There is no square"
+            },
+            {
+              "nl": "Haar praktische bijdrage staat niet in de uitnodiging",
+              "en": "Its practical contribution is absent from the invitation"
+            },
+            {
+              "nl": "Zij wil de bank verkopen",
+              "en": "It wants to sell the bench"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Op de uitnodiging stond alleen de naam van de geldinzamelaars, waardoor de tweede groep overwoog helemaal weg te blijven.",
+            "en": "The invitation named only the fundraisers, prompting the second group to consider staying away entirely."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt de gezamenlijke toelichting duidelijk?",
+            "en": "What does the joint explanation clarify?"
+          },
+          "options": [
+            {
+              "nl": "Dat alleen geld telt",
+              "en": "That only money counts"
+            },
+            {
+              "nl": "Welke verschillende bijdragen het project mogelijk maken",
+              "en": "Which different contributions make the project possible"
+            },
+            {
+              "nl": "Dat niemand onderhoud hoeft te doen",
+              "en": "That nobody needs to maintain it"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze verzamelden de verschillende bijdragen en maakten een korte toelichting die geld, tijd en de toestemming van de beheerder niet door elkaar haalde.",
+            "en": "They gathered the different contributions and made a short explanation that did not confuse money, time and the manager's permission."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-festival-met-andere-stem",
+      "topic_id": "festivals-entertainment",
+      "title": {
+        "nl": "Het optreden zonder toegift",
+        "en": "The performance without an encore"
+      },
+      "plot_key": "A performer at a small festival chooses a clear ending instead of yielding to a familiar demand, while organisers support the boundary.",
+      "lines": [
+        {
+          "nl": "Op het kleine festival zou zangeres Rania voor het eerst haar eigen liederen spelen in plaats van alleen verzoekjes van het publiek.",
+          "en": "At the small festival, singer Rania would perform her own songs for the first time instead of only requests from the audience."
+        },
+        {
+          "nl": "Na haar laatste nummer riep iemand luid de titel van een bekend feestlied dat zij jarenlang op familieavonden had gezongen.",
+          "en": "After her final song, someone loudly called out the title of a familiar party song she had sung at family evenings for years."
+        },
+        {
+          "nl": "Rania glimlachte uit gewoonte en zette haar gitaar alweer goed, hoewel ze juist een eigen programma had willen laten horen.",
+          "en": "Rania smiled out of habit and adjusted her guitar again, although she had wanted precisely to let people hear a programme of her own."
+        },
+        {
+          "nl": "De organisator vroeg via de afgesproken blik of ze nog iets wilde toevoegen, zonder de roep vanuit het publiek als een verplichting te behandelen.",
+          "en": "The organiser asked through their agreed glance whether she wanted to add anything, without treating the audience call as an obligation."
+        },
+        {
+          "nl": "Ze bedankte het publiek en zei dat haar laatste lied ook echt het einde van dit optreden was.",
+          "en": "She thanked the audience and said her last song really was the end of this performance."
+        },
+        {
+          "nl": "Achteraf voelde ze zich tegelijk opgelucht en onbeleefd, totdat een bezoeker vroeg waar hij juist dat laatste eigen lied kon terugvinden.",
+          "en": "Afterwards, she felt both relieved and rude until a visitor asked where he could find precisely that final song of her own."
+        },
+        {
+          "nl": "De man die om het feestlied had geroepen, kwam later zeggen dat hij niet wist hoeveel ze zelf schreef.",
+          "en": "The man who had called for the party song later came to say he had not known how much she wrote herself."
+        },
+        {
+          "nl": "Rania ging naar huis zonder toegift, maar met het gevoel dat er deze avond eindelijk naar haar eigen stem was geluisterd.",
+          "en": "Rania went home without an encore but with the feeling that, that evening, her own voice had finally been listened to."
+        }
+      ],
+      "words": [
+        {
+          "term": "de toegift",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "extra stuk na het aangekondigde einde van een optreden",
+            "en": "encore"
+          },
+          "example": {
+            "nl": "Rania ging naar huis zonder toegift, maar met het gevoel dat er deze avond eindelijk naar haar eigen stem was geluisterd.",
+            "en": "Rania went home without an encore but with the feeling that, that evening, her own voice had finally been listened to."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het verzoekje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lied dat iemand uit het publiek graag wil horen",
+            "en": "request"
+          },
+          "example": {
+            "nl": "Op het kleine festival zou zangeres Rania voor het eerst haar eigen liederen spelen in plaats van alleen verzoekjes van het publiek.",
+            "en": "At the small festival, singer Rania would perform her own songs for the first time instead of only requests from the audience."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "opgelucht",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "minder gespannen nadat iets voorbij of opgelost is",
+            "en": "relieved"
+          },
+          "example": {
+            "nl": "Achteraf voelde ze zich tegelijk opgelucht en onbeleefd, totdat een bezoeker vroeg waar hij juist dat laatste eigen lied kon terugvinden.",
+            "en": "Afterwards, she felt both relieved and rude until a visitor asked where he could find precisely that final song of her own."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een toegeving met hoewel",
+            "en": "Concession with hoewel"
+          },
+          "explanation": {
+            "nl": "Hoewel leidt een bijzin in die een tegenstelling met de hoofdzin uitdrukt. Het werkwoord staat achteraan in die bijzin.",
+            "en": "Hoewel introduces a subordinate clause expressing a contrast with the main clause. The verb is placed at the end of that clause."
+          },
+          "examples": [
+            {
+              "nl": "Rania glimlachte uit gewoonte en zette haar gitaar alweer goed, hoewel ze juist een eigen programma had willen laten horen.",
+              "en": "Rania smiled out of habit and adjusted her guitar again, although she had wanted precisely to let people hear a programme of her own."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom twijfelt Rania bij het geroepen verzoek?",
+            "en": "Why does Rania hesitate at the shouted request?"
+          },
+          "options": [
+            {
+              "nl": "Ze wil haar eigen programma niet weer opzijzetten",
+              "en": "She does not want to set her own programme aside again"
+            },
+            {
+              "nl": "Ze kent geen liederen",
+              "en": "She knows no songs"
+            },
+            {
+              "nl": "Haar gitaar is weg",
+              "en": "Her guitar is missing"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Rania glimlachte uit gewoonte en zette haar gitaar alweer goed, hoewel ze juist een eigen programma had willen laten horen.",
+            "en": "Rania smiled out of habit and adjusted her guitar again, although she had wanted precisely to let people hear a programme of her own."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe helpt de organisator?",
+            "en": "How does the organiser help?"
+          },
+          "options": [
+            {
+              "nl": "Door haar keuze over het einde te ondersteunen",
+              "en": "By supporting her choice about the ending"
+            },
+            {
+              "nl": "Door het publiek weg te sturen",
+              "en": "By sending the audience away"
+            },
+            {
+              "nl": "Door haar verplicht langer te laten spelen",
+              "en": "By making her play longer"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De organisator vroeg via de afgesproken blik of ze nog iets wilde toevoegen, zonder de roep vanuit het publiek als een verplichting te behandelen.",
+            "en": "The organiser asked through their agreed glance whether she wanted to add anything, without treating the audience call as an obligation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-cafe-na-sluiting",
+      "topic_id": "restaurants-cafes",
+      "title": {
+        "nl": "De rekening was niet het hele bezoek",
+        "en": "The bill was not the whole visit"
+      },
+      "plot_key": "A café owner distinguishes a customer's need for company from a promise of unlimited time and offers a clear, sustainable welcome.",
+      "lines": [
+        {
+          "nl": "Elke avond bleef een oudere klant in Lisas café zitten tot de laatste stoel op tafel ging.",
+          "en": "Every evening, an older customer stayed in Lisa's café until the last chair went onto a table."
+        },
+        {
+          "nl": "Hij bestelde weinig, maar stelde bij het opruimen telkens een nieuwe kleine vraag waardoor Lisa steeds later naar huis vertrok.",
+          "en": "He ordered little but kept asking a new small question during clearing up, causing Lisa to leave later and later."
+        },
+        {
+          "nl": "Toen zij de sluitingstijd benoemde, verontschuldigde hij zich zo snel dat ze zich bijna verplicht voelde de deur weer open te zetten.",
+          "en": "When she mentioned closing time, he apologised so quickly that she almost felt obliged to open the door again."
+        },
+        {
+          "nl": "De volgende middag vroeg Lisa welk moment van het cafébezoek voor hem belangrijk was, zonder zijn antwoord alvast in te vullen.",
+          "en": "The next afternoon, Lisa asked which part of the café visit mattered to him without filling in his answer in advance."
+        },
+        {
+          "nl": "Hij vertelde dat de lege woning na sluiting het lastigst was en dat hij het laatste gesprek steeds probeerde te rekken.",
+          "en": "He said the empty home after closing was the hardest part and that he kept trying to prolong the last conversation."
+        },
+        {
+          "nl": "Lisa legde vriendelijk uit welke tijd zij wel kon bieden en wees op een buurtactiviteit waarvoor hij zelf informatie kon vragen.",
+          "en": "Lisa kindly explained what time she could offer and pointed to a neighbourhood activity about which he could request information himself."
+        },
+        {
+          "nl": "Ze bleef hem welkom heten zonder de verantwoordelijkheid voor iedere eenzame avond over te nemen.",
+          "en": "She continued welcoming him without taking responsibility for every lonely evening."
+        },
+        {
+          "nl": "Op vrijdag vertrok hij een kwartier voor sluiting met een aangekondigde afspraak voor de volgende middag, niet met het gevoel dat hij alleen werd buitengezet.",
+          "en": "On Friday, he left fifteen minutes before closing with an arranged visit for the following afternoon, not with the feeling he was simply being put out."
+        }
+      ],
+      "words": [
+        {
+          "term": "rekken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "langer laten duren dan gewoonlijk",
+            "en": "to prolong"
+          },
+          "example": {
+            "nl": "Hij vertelde dat de lege woning na sluiting het lastigst was en dat hij het laatste gesprek steeds probeerde te rekken.",
+            "en": "He said the empty home after closing was the hardest part and that he kept trying to prolong the last conversation."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "zich verontschuldigen",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zeggen dat iets je spijt",
+            "en": "to apologise"
+          },
+          "example": {
+            "nl": "Toen zij de sluitingstijd benoemde, verontschuldigde hij zich zo snel dat ze zich bijna verplicht voelde de deur weer open te zetten.",
+            "en": "When she mentioned closing time, he apologised so quickly that she almost felt obliged to open the door again."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de sluitingstijd",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "tijd waarop een zaak sluit",
+            "en": "closing time"
+          },
+          "example": {
+            "nl": "Toen zij de sluitingstijd benoemde, verontschuldigde hij zich zo snel dat ze zich bijna verplicht voelde de deur weer open te zetten.",
+            "en": "When she mentioned closing time, he apologised so quickly that she almost felt obliged to open the door again."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te",
+            "en": "Without doing"
+          },
+          "explanation": {
+            "nl": "Zonder te met een infinitief beschrijft een handeling die niet plaatsvindt. Het onderwerp blijft hetzelfde als in de hoofdzin.",
+            "en": "Zonder te with an infinitive describes an action that does not take place. Its subject is the same as that of the main clause."
+          },
+          "examples": [
+            {
+              "nl": "Ze bleef hem welkom heten zonder de verantwoordelijkheid voor iedere eenzame avond over te nemen.",
+              "en": "She continued welcoming him without taking responsibility for every lonely evening."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom probeert de klant langer te blijven?",
+            "en": "Why does the customer try to stay longer?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil niets betalen",
+              "en": "He wants to pay nothing"
+            },
+            {
+              "nl": "Hij werkt in het café",
+              "en": "He works in the café"
+            },
+            {
+              "nl": "Hij ziet op tegen de lege woning",
+              "en": "He dreads the empty home"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij vertelde dat de lege woning na sluiting het lastigst was en dat hij het laatste gesprek steeds probeerde te rekken.",
+            "en": "He said the empty home after closing was the hardest part and that he kept trying to prolong the last conversation."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke grens houdt Lisa?",
+            "en": "What boundary does Lisa maintain?"
+          },
+          "options": [
+            {
+              "nl": "Ze laat het café altijd open",
+              "en": "She always leaves the café open"
+            },
+            {
+              "nl": "Ze weigert elk gesprek",
+              "en": "She refuses every conversation"
+            },
+            {
+              "nl": "Ze biedt een duidelijke beschikbare tijd zonder alle avonden over te nemen",
+              "en": "She offers clear available time without taking over every evening"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Lisa legde vriendelijk uit welke tijd zij wel kon bieden en wees op een buurtactiviteit waarvoor hij zelf informatie kon vragen.",
+            "en": "Lisa kindly explained what time she could offer and pointed to a neighbourhood activity about which he could request information himself."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-rondleiding-met-eigen-straat",
+      "topic_id": "tourism-sightseeing",
+      "title": {
+        "nl": "De straat die geen bezienswaardigheid was",
+        "en": "The street that was not a sight"
+      },
+      "plot_key": "A guide discovers that a visitor's meaningful destination is an ordinary street connected to a family memory rather than the city's famous highlights.",
+      "lines": [
+        {
+          "nl": "Als gids voor een kleine groep bezoekers had Milan zorgvuldig gekozen welke bekende plekken zij in twee uur konden zien.",
+          "en": "As a guide for a small group of visitors, Milan had carefully chosen which famous places they could see in two hours."
+        },
+        {
+          "nl": "Een oudere bezoekster vroeg onderweg steeds naar een onopvallende zijstraat die nergens als bezienswaardigheid op zijn plan stond.",
+          "en": "Along the way, an older visitor kept asking about an unobtrusive side street that appeared nowhere as a sight on his plan."
+        },
+        {
+          "nl": "Hij antwoordde eerst dat daar weinig te zien was en wees naar de toren waarvoor de groep volgens hem gekomen was.",
+          "en": "He initially replied that there was little to see there and pointed towards the tower for which he thought the group had come."
+        },
+        {
+          "nl": "De vrouw vertelde toen dat haar moeder vroeger een adres in die straat had opgeschreven en er nooit meer over wilde praten.",
+          "en": "The woman then said her mother had once written down an address in that street and never wanted to speak about it again."
+        },
+        {
+          "nl": "Milan vroeg de groep of er ruimte was voor een korte afwijking en maakte duidelijk wat ze daardoor mogelijk niet meer zouden bezoeken.",
+          "en": "Milan asked the group whether there was room for a short detour and made clear what they might consequently no longer visit."
+        },
+        {
+          "nl": "Bij het adres vonden ze geen verklaring voor het familieverhaal, alleen een gewone deur en een straat die nu werkelijk bestond.",
+          "en": "At the address, they found no explanation for the family story, only an ordinary door and a street that now truly existed."
+        },
+        {
+          "nl": "De vrouw maakte geen foto van bewoners en vroeg niemand om haar verleden voor haar op te lossen.",
+          "en": "The woman took no photograph of residents and asked nobody to solve her past for her."
+        },
+        {
+          "nl": "Bij het afscheid bedankte ze Milan niet voor een onthulling, maar voor het feit dat hij haar vraag niet langer als een verkeerde bestemming had behandeld.",
+          "en": "At goodbye, she thanked Milan not for a revelation but for no longer treating her question as the wrong destination."
+        }
+      ],
+      "words": [
+        {
+          "term": "de onthulling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "nieuwe informatie die iets verborgens bekendmaakt",
+            "en": "revelation"
+          },
+          "example": {
+            "nl": "Bij het afscheid bedankte ze Milan niet voor een onthulling, maar voor het feit dat hij haar vraag niet langer als een verkeerde bestemming had behandeld.",
+            "en": "At goodbye, she thanked Milan not for a revelation but for no longer treating her question as the wrong destination."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "onopvallend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet sterk de aandacht trekkend",
+            "en": "unobtrusive"
+          },
+          "example": {
+            "nl": "Een oudere bezoekster vroeg onderweg steeds naar een onopvallende zijstraat die nergens als bezienswaardigheid op zijn plan stond.",
+            "en": "Along the way, an older visitor kept asking about an unobtrusive side street that appeared nowhere as a sight on his plan."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de afwijking",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "verandering ten opzichte van een afgesproken route",
+            "en": "deviation"
+          },
+          "example": {
+            "nl": "Milan vroeg de groep of er ruimte was voor een korte afwijking en maakte duidelijk wat ze daardoor mogelijk niet meer zouden bezoeken.",
+            "en": "Milan asked the group whether there was room for a short detour and made clear what they might consequently no longer visit."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "Als gids voor een kleine groep bezoekers had Milan zorgvuldig gekozen welke bekende plekken zij in twee uur konden zien.",
+              "en": "As a guide for a small group of visitors, Milan had carefully chosen which famous places they could see in two hours."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom vraagt de vrouw naar de zijstraat?",
+            "en": "Why does the woman ask about the side street?"
+          },
+          "options": [
+            {
+              "nl": "Ze wil de gids testen",
+              "en": "She wants to test the guide"
+            },
+            {
+              "nl": "Ze heeft een familieband met een oud adres",
+              "en": "She has a family connection to an old address"
+            },
+            {
+              "nl": "Ze wil een souvenir kopen",
+              "en": "She wants to buy a souvenir"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De vrouw vertelde toen dat haar moeder vroeger een adres in die straat had opgeschreven en er nooit meer over wilde praten.",
+            "en": "The woman then said her mother had once written down an address in that street and never wanted to speak about it again."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vindt ze bij het adres?",
+            "en": "What does she find at the address?"
+          },
+          "options": [
+            {
+              "nl": "De volledige oplossing van haar familiegeschiedenis",
+              "en": "The complete solution to her family history"
+            },
+            {
+              "nl": "Een echte plaats zonder volledige verklaring",
+              "en": "A real place without a complete explanation"
+            },
+            {
+              "nl": "Een vooraf geboekt museum",
+              "en": "A pre-booked museum"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Bij het adres vonden ze geen verklaring voor het familieverhaal, alleen een gewone deur en een straat die nu werkelijk bestond.",
+            "en": "At the address, they found no explanation for the family story, only an ordinary door and a street that now truly existed."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-hoogte-op-wandeling",
+      "topic_id": "outdoor-adventure",
+      "title": {
+        "nl": "Het uitzicht dat niet verplicht was",
+        "en": "The view that was not compulsory"
+      },
+      "plot_key": "A walker explains a fear of an exposed viewpoint and the group makes a safe alternative choice without turning the trip into an impromptu test.",
+      "lines": [
+        {
+          "nl": "Tijdens een uitstap met vrienden zag Sara op het informatiebord dat het laatste uitzichtpunt via een open hoge doorgang werd bereikt.",
+          "en": "During an outing with friends, Sara saw on the information board that the final viewpoint was reached via an exposed high passage."
+        },
+        {
+          "nl": "Ze had vooraf gezegd dat hoogtes haar moeilijk vielen, maar iemand stelde opgewekt voor dat dit juist een mooie kans was om die angst te overwinnen.",
+          "en": "She had said beforehand that she found heights difficult, but someone cheerfully suggested this was precisely a good chance to overcome that fear."
+        },
+        {
+          "nl": "Sara wilde de groep niet teleurstellen en begon haar eigen grens zachter te formuleren dan ze haar werkelijk voelde.",
+          "en": "Sara did not want to disappoint the group and began expressing her own boundary more mildly than she actually felt it."
+        },
+        {
+          "nl": "Een vriendin vroeg of ze echt wilde oefenen of alleen probeerde te voorkomen dat de anderen last van haar hadden.",
+          "en": "A friend asked whether she really wanted to practise or was only trying to avoid inconveniencing the others."
+        },
+        {
+          "nl": "Ze kozen een aangegeven alternatief dat bij de omstandigheden en mogelijkheden van de groep paste, zonder zelf een onveilige omweg te verzinnen.",
+          "en": "They chose a marked alternative that suited the group's circumstances and abilities without inventing an unsafe detour themselves."
+        },
+        {
+          "nl": "Sara bleef verantwoordelijk voor haar eigen keuze en hoefde van de uitstap geen behandeling of bewijs van moed te maken.",
+          "en": "Sara remained responsible for her own choice and did not have to turn the outing into treatment or proof of courage."
+        },
+        {
+          "nl": "Bij het lagere uitzichtpunt vertelde ze eindelijk waarom ze zo graag met hen op pad ging, ook als er geen topfoto volgde.",
+          "en": "At the lower viewpoint, she finally said why she liked going out with them so much, even without a summit photograph afterwards."
+        },
+        {
+          "nl": "Op de terugweg werd niet gesproken over wat ze niet had gedurfd, maar over de route die ze samen daadwerkelijk hadden gemaakt.",
+          "en": "On the way back, they spoke not about what she had failed to dare, but about the route they had actually completed together."
+        }
+      ],
+      "words": [
+        {
+          "term": "de omweg",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "andere route dan de directe of geplande weg",
+            "en": "detour"
+          },
+          "example": {
+            "nl": "Ze kozen een aangegeven alternatief dat bij de omstandigheden en mogelijkheden van de groep paste, zonder zelf een onveilige omweg te verzinnen.",
+            "en": "They chose a marked alternative that suited the group's circumstances and abilities without inventing an unsafe detour themselves."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "aangegeven",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met informatie of tekens aangeduid",
+            "en": "marked"
+          },
+          "example": {
+            "nl": "Ze kozen een aangegeven alternatief dat bij de omstandigheden en mogelijkheden van de groep paste, zonder zelf een onveilige omweg te verzinnen.",
+            "en": "They chose a marked alternative that suited the group's circumstances and abilities without inventing an unsafe detour themselves."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de moed",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bereidheid iets moeilijks of engs te doen",
+            "en": "courage"
+          },
+          "example": {
+            "nl": "Sara bleef verantwoordelijk voor haar eigen keuze en hoefde van de uitstap geen behandeling of bewijs van moed te maken.",
+            "en": "Sara remained responsible for her own choice and did not have to turn the outing into treatment or proof of courage."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te",
+            "en": "Without doing"
+          },
+          "explanation": {
+            "nl": "Zonder te met een infinitief beschrijft een handeling die niet plaatsvindt. Het onderwerp blijft hetzelfde als in de hoofdzin.",
+            "en": "Zonder te with an infinitive describes an action that does not take place. Its subject is the same as that of the main clause."
+          },
+          "examples": [
+            {
+              "nl": "Ze kozen een aangegeven alternatief dat bij de omstandigheden en mogelijkheden van de groep paste, zonder zelf een onveilige omweg te verzinnen.",
+              "en": "They chose a marked alternative that suited the group's circumstances and abilities without inventing an unsafe detour themselves."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom formuleert Sara haar grens eerst zachter?",
+            "en": "Why does Sara initially soften her boundary?"
+          },
+          "options": [
+            {
+              "nl": "Ze wil de groep niet teleurstellen",
+              "en": "She does not want to disappoint the group"
+            },
+            {
+              "nl": "Ze leest het bord niet",
+              "en": "She does not read the sign"
+            },
+            {
+              "nl": "Ze wil alleen reizen",
+              "en": "She wants to travel alone"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Sara wilde de groep niet teleurstellen en begon haar eigen grens zachter te formuleren dan ze haar werkelijk voelde.",
+            "en": "Sara did not want to disappoint the group and began expressing her own boundary more mildly than she actually felt it."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat besluit de groep niet te doen?",
+            "en": "What does the group decide not to do?"
+          },
+          "options": [
+            {
+              "nl": "De uitstap als verplichte angstproef behandelen",
+              "en": "Treat the outing as a compulsory fear test"
+            },
+            {
+              "nl": "Over het uitzicht praten",
+              "en": "Talk about the view"
+            },
+            {
+              "nl": "Een passende aangegeven route kiezen",
+              "en": "Choose a suitable marked route"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Sara bleef verantwoordelijk voor haar eigen keuze en hoefde van de uitstap geen behandeling of bewijs van moed te maken.",
+            "en": "Sara remained responsible for her own choice and did not have to turn the outing into treatment or proof of courage."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-twee-brieven-op-tafel",
+      "topic_id": "decisions-problem-solving",
+      "title": {
+        "nl": "De keuze die niemand kon overnemen",
+        "en": "The choice nobody could take over"
+      },
+      "plot_key": "A student receiving two offers seeks help clarifying trade-offs without asking others to determine the right life for her.",
+      "lines": [
+        {
+          "nl": "Met twee toelatingsbrieven op tafel vroeg Amina aan iedereen om haar heen welke opleiding de juiste keuze was.",
+          "en": "With two admission letters on the table, Amina asked everyone around her which course was the right choice."
+        },
+        {
+          "nl": "Haar vader koos de dichtstbijzijnde stad, een vriendin de bekendste naam en haar partner de plek waar zij vaker samen konden zijn.",
+          "en": "Her father chose the nearest city, a friend the best-known name and her partner the place where they could be together more often."
+        },
+        {
+          "nl": "Na elk gesprek leek één antwoord zeker totdat de volgende persoon met een ander belangrijk argument kwam.",
+          "en": "After each conversation, one answer seemed certain until the next person supplied another important argument."
+        },
+        {
+          "nl": "Een docent vroeg haar welke onzekerheid ze wilde laten oplossen en welke afweging uiteindelijk alleen van haar kon zijn.",
+          "en": "A teacher asked what uncertainty she wanted solved and what trade-off ultimately could only be hers."
+        },
+        {
+          "nl": "Ze scheidde controleerbare vragen over de programma's van persoonlijke wensen over dagelijks leven, kosten en afstand.",
+          "en": "She separated checkable questions about the programmes from personal wishes about daily life, costs and distance."
+        },
+        {
+          "nl": "Daarna onderzocht ze de feiten bij de betrokken opleidingen en schreef ze op welke nadelen ze bij elke keuze bereid was te dragen.",
+          "en": "She then investigated the facts with the relevant institutions and wrote down which disadvantages she was willing to accept with each choice."
+        },
+        {
+          "nl": "Haar uiteindelijke besluit kreeg niet van iedereen dezelfde bijval, maar ze kon uitleggen welke redenen voor haar het zwaarst wogen.",
+          "en": "Her final decision did not receive equal approval from everyone, but she could explain which reasons weighed most heavily for her."
+        },
+        {
+          "nl": "De tweede brief bleef nog even liggen, niet als bewijs dat ze fout koos, maar als herinnering dat een echte keuze ook iets ongekozen laat.",
+          "en": "The second letter remained on the table for a while, not as proof she had chosen wrongly, but as a reminder that a real choice also leaves something unchosen."
+        }
+      ],
+      "words": [
+        {
+          "term": "de afweging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "vergelijking van verschillende belangen en gevolgen",
+            "en": "trade-off"
+          },
+          "example": {
+            "nl": "Een docent vroeg haar welke onzekerheid ze wilde laten oplossen en welke afweging uiteindelijk alleen van haar kon zijn.",
+            "en": "A teacher asked what uncertainty she wanted solved and what trade-off ultimately could only be hers."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "controleerbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "na te gaan met geschikte informatie",
+            "en": "checkable"
+          },
+          "example": {
+            "nl": "Ze scheidde controleerbare vragen over de programma's van persoonlijke wensen over dagelijks leven, kosten en afstand.",
+            "en": "She separated checkable questions about the programmes from personal wishes about daily life, costs and distance."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de bijval",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "steun of instemming van anderen",
+            "en": "approval"
+          },
+          "example": {
+            "nl": "Haar uiteindelijke besluit kreeg niet van iedereen dezelfde bijval, maar ze kon uitleggen welke redenen voor haar het zwaarst wogen.",
+            "en": "Her final decision did not receive equal approval from everyone, but she could explain which reasons weighed most heavily for her."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Indirect weergeven",
+            "en": "Reporting indirectly"
+          },
+          "explanation": {
+            "nl": "Een bijzin met dat geeft weer wat iemand zegt of denkt. Het werkwoord staat achteraan in die bijzin.",
+            "en": "A subordinate clause with dat reports what someone says or thinks. The verb comes at the end of that clause."
+          },
+          "examples": [
+            {
+              "nl": "Haar uiteindelijke besluit kreeg niet van iedereen dezelfde bijval, maar ze kon uitleggen welke redenen voor haar het zwaarst wogen.",
+              "en": "Her final decision did not receive equal approval from everyone, but she could explain which reasons weighed most heavily for her."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom brengen de eerste gesprekken geen zekerheid?",
+            "en": "Why do the initial conversations not bring certainty?"
+          },
+          "options": [
+            {
+              "nl": "Niemand kent Amina",
+              "en": "Nobody knows Amina"
+            },
+            {
+              "nl": "De brieven zijn onleesbaar",
+              "en": "The letters are illegible"
+            },
+            {
+              "nl": "Iedereen legt andere persoonlijke belangen op de keuze",
+              "en": "Each person places different personal priorities on the choice"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Haar vader koos de dichtstbijzijnde stad, een vriendin de bekendste naam en haar partner de plek waar zij vaker samen konden zijn.",
+            "en": "Her father chose the nearest city, a friend the best-known name and her partner the place where they could be together more often."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt Amina uiteindelijk zelf duidelijk?",
+            "en": "What does Amina ultimately clarify for herself?"
+          },
+          "options": [
+            {
+              "nl": "Dat iedereen hetzelfde moet denken",
+              "en": "That everyone must think the same"
+            },
+            {
+              "nl": "Dat er geen nadelen mogen zijn",
+              "en": "That there must be no disadvantages"
+            },
+            {
+              "nl": "Welke nadelen zij wil dragen en welke redenen voor haar zwaarder wegen",
+              "en": "Which disadvantages she is willing to bear and which reasons matter more to her"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Daarna onderzocht ze de feiten bij de betrokken opleidingen en schreef ze op welke nadelen ze bij elke keuze bereid was te dragen.",
+            "en": "She then investigated the facts with the relevant institutions and wrote down which disadvantages she was willing to accept with each choice."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-afwijzing-na-auditie",
+      "topic_id": "success-failure",
+      "title": {
+        "nl": "De deur naast de auditiezaal",
+        "en": "The door beside the audition room"
+      },
+      "plot_key": "A singer receiving a rejection avoids both total self-condemnation and empty reassurance by examining the specific audition feedback and choosing a next step.",
+      "lines": [
+        {
+          "nl": "Na haar auditie kreeg Lien een kort bericht dat zij niet voor het kleine ensemble was geselecteerd.",
+          "en": "After her audition, Lien received a short message saying she had not been selected for the small ensemble."
+        },
+        {
+          "nl": "Ze vertelde thuis dat ze blijkbaar geen echte zangeres was, waarna haar vriend zei dat de jury vast niets van muziek begreep.",
+          "en": "At home, she said she was apparently not a real singer, whereupon her friend said the jury surely understood nothing about music."
+        },
+        {
+          "nl": "Geen van beide zinnen hielp haar begrijpen wat er in de zaal werkelijk was gebeurd.",
+          "en": "Neither sentence helped her understand what had actually happened in the room."
+        },
+        {
+          "nl": "Lien vroeg binnen de aangeboden mogelijkheden om een concrete toelichting en kreeg enkele gerichte opmerkingen over voorbereiding en samenspel.",
+          "en": "Within the available options, Lien requested specific feedback and received a few focused comments on preparation and ensemble playing."
+        },
+        {
+          "nl": "Ze besprak die met haar docent zonder er meer zekerheid uit te halen dan één beperkte beoordeling kon geven.",
+          "en": "She discussed them with her teacher without extracting more certainty than one limited assessment could provide."
+        },
+        {
+          "nl": "Voor het volgende oefenmoment koos ze één aspect om gericht te verbeteren en bleef ze daarnaast zingen met haar bestaande groep.",
+          "en": "For the next practice session, she chose one aspect to improve deliberately and continued singing with her existing group alongside that."
+        },
+        {
+          "nl": "Toen een vriend vroeg of ze nog eens auditie zou doen, antwoordde ze niet meteen met een groot plan om iets te bewijzen.",
+          "en": "When a friend asked whether she would audition again, she did not immediately respond with a grand plan to prove something."
+        },
+        {
+          "nl": "Ze zei dat ze voorlopig wilde leren wat ze gemist had en dat de afwijzing één deur betrof, niet haar recht om te zingen.",
+          "en": "She said that for now she wanted to learn what she had missed and that the rejection concerned one door, not her right to sing."
+        }
+      ],
+      "words": [
+        {
+          "term": "het samenspel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "muzikaal samenwerken met anderen",
+            "en": "ensemble playing"
+          },
+          "example": {
+            "nl": "Lien vroeg binnen de aangeboden mogelijkheden om een concrete toelichting en kreeg enkele gerichte opmerkingen over voorbereiding en samenspel.",
+            "en": "Within the available options, Lien requested specific feedback and received a few focused comments on preparation and ensemble playing."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "gericht",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "op een duidelijk aspect of doel afgestemd",
+            "en": "focused"
+          },
+          "example": {
+            "nl": "Lien vroeg binnen de aangeboden mogelijkheden om een concrete toelichting en kreeg enkele gerichte opmerkingen over voorbereiding en samenspel.",
+            "en": "Within the available options, Lien requested specific feedback and received a few focused comments on preparation and ensemble playing."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "selecteren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "uit meerdere kandidaten kiezen",
+            "en": "to select"
+          },
+          "example": {
+            "nl": "Na haar auditie kreeg Lien een kort bericht dat zij niet voor het kleine ensemble was geselecteerd.",
+            "en": "After her audition, Lien received a short message saying she had not been selected for the small ensemble."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De passieve vorm",
+            "en": "The passive voice"
+          },
+          "explanation": {
+            "nl": "Bij de passieve vorm ligt de nadruk op wat er met iets gebeurt. Kijk naar worden of zijn en het voltooid deelwoord.",
+            "en": "The passive focuses on what happens to something. Look for worden or zijn and the past participle."
+          },
+          "examples": [
+            {
+              "nl": "Na haar auditie kreeg Lien een kort bericht dat zij niet voor het kleine ensemble was geselecteerd.",
+              "en": "After her audition, Lien received a short message saying she had not been selected for the small ensemble."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom helpen de eerste twee reacties niet?",
+            "en": "Why do the first two reactions not help?"
+          },
+          "options": [
+            {
+              "nl": "Ze noemen haar docent",
+              "en": "They mention her teacher"
+            },
+            {
+              "nl": "Ze verklaren niet concreet wat tijdens de auditie gebeurde",
+              "en": "They do not specifically explain what happened during the audition"
+            },
+            {
+              "nl": "Ze zijn te lang",
+              "en": "They are too long"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Geen van beide zinnen hielp haar begrijpen wat er in de zaal werkelijk was gebeurd.",
+            "en": "Neither sentence helped her understand what had actually happened in the room."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke betekenis geeft Lien uiteindelijk aan de afwijzing?",
+            "en": "What meaning does Lien ultimately give to the rejection?"
+          },
+          "options": [
+            {
+              "nl": "Een definitief verbod om te zingen",
+              "en": "A permanent ban on singing"
+            },
+            {
+              "nl": "Een beperkte beoordeling waarvan ze iets kan leren",
+              "en": "A limited assessment she can learn from"
+            },
+            {
+              "nl": "Bewijs dat elke jury fout is",
+              "en": "Proof that every jury is wrong"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze zei dat ze voorlopig wilde leren wat ze gemist had en dat de afwijzing één deur betrof, niet haar recht om te zingen.",
+            "en": "She said that for now she wanted to learn what she had missed and that the rejection concerned one door, not her right to sing."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-product-met-veel-thuislanden",
+      "topic_id": "globalization",
+      "title": {
+        "nl": "Het broodje dat niemand alleen had gemaakt",
+        "en": "The sandwich nobody had made alone"
+      },
+      "plot_key": "Students tracing a lunch's origins discover international and local contributions without reducing the story to one label or country.",
+      "lines": [
+        {
+          "nl": "Voor een schoolopdracht moest Omar uitleggen waar zijn lunch vandaan kwam en schreef hij eerst alleen de naam van de bakker op.",
+          "en": "For a school assignment, Omar had to explain where his lunch came from and initially wrote down only the baker's name."
+        },
+        {
+          "nl": "Zijn groep vroeg vervolgens naar de ingrediënten, de verpakking en het vervoer, waardoor het eenvoudige broodje steeds meer betrokkenen kreeg.",
+          "en": "His group then asked about the ingredients, packaging and transport, giving the simple sandwich more and more contributors."
+        },
+        {
+          "nl": "Niet elke herkomst kon meteen bevestigd worden, en Omar voelde de verleiding om onbekende delen met aannemelijke landen op te vullen.",
+          "en": "Not every origin could be confirmed immediately, and Omar felt tempted to fill unknown parts with plausible countries."
+        },
+        {
+          "nl": "Hij maakte in plaats daarvan onderscheid tussen informatie van de leverancier, eigen vragen en verbindingen die nog onzeker bleven.",
+          "en": "Instead, he distinguished information from the supplier, his own questions and connections that remained uncertain."
+        },
+        {
+          "nl": "In zijn presentatie kwamen zowel de plaatselijke bakker als mensen ver buiten zijn dagelijkse omgeving voor, zonder dat hij hun werk persoonlijk kende.",
+          "en": "His presentation included both the local baker and people far beyond his everyday surroundings, without his knowing their work personally."
+        },
+        {
+          "nl": "Een klasgenoot vroeg welk land dan uiteindelijk de eer voor het broodje kreeg, waarop Omar zijn veel te kleine eerste antwoord liet zien.",
+          "en": "A classmate asked which country ultimately got credit for the sandwich, whereupon Omar showed his far too small first answer."
+        },
+        {
+          "nl": "De kaart leverde geen volledig zicht op elke arbeidsomstandigheid, maar maakte wel duidelijk hoeveel vragen achter één vertrouwde aankoop schuilgingen.",
+          "en": "The map did not provide complete visibility of every working condition, but it did make clear how many questions lay behind one familiar purchase."
+        },
+        {
+          "nl": "Na de les kocht hij hetzelfde broodje en bedankte de bakker, nu zonder te denken dat dit het einde van het verhaal was.",
+          "en": "After class, he bought the same sandwich and thanked the baker, now without thinking that this was the end of the story."
+        }
+      ],
+      "words": [
+        {
+          "term": "aannemelijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "waarschijnlijk klinkend maar niet noodzakelijk bevestigd",
+            "en": "plausible"
+          },
+          "example": {
+            "nl": "Niet elke herkomst kon meteen bevestigd worden, en Omar voelde de verleiding om onbekende delen met aannemelijke landen op te vullen.",
+            "en": "Not every origin could be confirmed immediately, and Omar felt tempted to fill unknown parts with plausible countries."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "schuilgaan achter",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "verborgen aanwezig zijn achter iets",
+            "en": "to lie behind"
+          },
+          "example": {
+            "nl": "De kaart leverde geen volledig zicht op elke arbeidsomstandigheid, maar maakte wel duidelijk hoeveel vragen achter één vertrouwde aankoop schuilgingen.",
+            "en": "The map did not provide complete visibility of every working condition, but it did make clear how many questions lay behind one familiar purchase."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de herkomst",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plaats of situatie waar iets vandaan komt",
+            "en": "origin"
+          },
+          "example": {
+            "nl": "Niet elke herkomst kon meteen bevestigd worden, en Omar voelde de verleiding om onbekende delen met aannemelijke landen op te vullen.",
+            "en": "Not every origin could be confirmed immediately, and Omar felt tempted to fill unknown parts with plausible countries."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te",
+            "en": "Without doing"
+          },
+          "explanation": {
+            "nl": "Zonder te met een infinitief beschrijft een handeling die niet plaatsvindt. Het onderwerp blijft hetzelfde als in de hoofdzin.",
+            "en": "Zonder te with an infinitive describes an action that does not take place. Its subject is the same as that of the main clause."
+          },
+          "examples": [
+            {
+              "nl": "In zijn presentatie kwamen zowel de plaatselijke bakker als mensen ver buiten zijn dagelijkse omgeving voor, zonder dat hij hun werk persoonlijk kende.",
+              "en": "His presentation included both the local baker and people far beyond his everyday surroundings, without his knowing their work personally."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat doet Omar met onbekende herkomstgegevens?",
+            "en": "What does Omar do with unknown origin information?"
+          },
+          "options": [
+            {
+              "nl": "Hij benoemt de onzekerheid",
+              "en": "He names the uncertainty"
+            },
+            {
+              "nl": "Hij kiest willekeurige landen",
+              "en": "He chooses random countries"
+            },
+            {
+              "nl": "Hij laat alle ingrediënten weg",
+              "en": "He removes all ingredients"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij maakte in plaats daarvan onderscheid tussen informatie van de leverancier, eigen vragen en verbindingen die nog onzeker bleven.",
+            "en": "Instead, he distinguished information from the supplier, his own questions and connections that remained uncertain."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat leert zijn uitgebreidere kaart hem?",
+            "en": "What does his more detailed map teach him?"
+          },
+          "options": [
+            {
+              "nl": "Dat één aankoop veel betrokkenen en open vragen heeft",
+              "en": "That one purchase has many contributors and open questions"
+            },
+            {
+              "nl": "Dat alle omstandigheden bekend zijn",
+              "en": "That all conditions are known"
+            },
+            {
+              "nl": "Dat alleen de bakker werkt",
+              "en": "That only the baker works"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De kaart leverde geen volledig zicht op elke arbeidsomstandigheid, maar maakte wel duidelijk hoeveel vragen achter één vertrouwde aankoop schuilgingen.",
+            "en": "The map did not provide complete visibility of every working condition, but it did make clear how many questions lay behind one familiar purchase."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-stad-zonder-onverwacht",
+      "topic_id": "future-humanity",
+      "title": {
+        "nl": "De onverwachte bezoeker van morgen",
+        "en": "Tomorrow's unexpected visitor"
+      },
+      "plot_key": "In a fictional future neighbourhood where services anticipate choices, a resident preserves a small space for unplanned human contact.",
+      "lines": [
+        {
+          "nl": "In de verzonnen stad van haar verhalen liet Yara bijna alles vooraf regelen door systemen die haar gewoonten steeds beter voorspelden.",
+          "en": "In the fictional city of her stories, Yara had almost everything arranged in advance by systems that predicted her habits increasingly well."
+        },
+        {
+          "nl": "Haar hoofdpersonage Noor kreeg op tijd eten, vervoer en herinneringen, maar merkte dat er nauwelijks nog iemand zonder duidelijke reden aanbelde.",
+          "en": "Her main character Noor received food, transport and reminders on time but noticed that hardly anyone rang the doorbell without a clear reason anymore."
+        },
+        {
+          "nl": "Toen het systeem een oude buur als onhandige onderbreking voorstelde, stond Noor op het punt het bezoek automatisch te verplaatsen.",
+          "en": "When the system presented an old neighbour as an inconvenient interruption, Noor was about to reschedule the visit automatically."
+        },
+        {
+          "nl": "Ze koos toch voor openen en ontdekte dat de buur geen dienst nodig had, maar een verhaal wilde delen dat nergens in een aanvraagformulier paste.",
+          "en": "She nevertheless chose to open the door and discovered that the neighbour needed no service but wanted to share a story that fitted no request form."
+        },
+        {
+          "nl": "In haar eerste versie liet Yara daarop alle techniek verdwijnen, wat haar lezer een te gemakkelijke oplossing vond.",
+          "en": "In her first version, Yara then made all technology disappear, which her reader considered too easy a solution."
+        },
+        {
+          "nl": "Ze herschreef het einde: Noor behield de nuttige hulp, maar liet sommige tijdvakken bewust zonder voorspelde bestemming.",
+          "en": "She rewrote the ending: Noor kept the useful assistance but deliberately left some time slots without a predicted purpose."
+        },
+        {
+          "nl": "Het systeem wist op die momenten niet wat er zou gebeuren, en precies dat hoefde in dit verhaal geen fout te zijn.",
+          "en": "At those moments, the system did not know what would happen, and in this story that did not need to be an error."
+        },
+        {
+          "nl": "Yara sloot haar schrift en belde zelf een vriend zonder eerst een efficiënt doel voor het gesprek te verzinnen.",
+          "en": "Yara closed her notebook and called a friend herself without first inventing an efficient purpose for the conversation."
+        }
+      ],
+      "words": [
+        {
+          "term": "voorspellen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "verwachten wat later zal gebeuren",
+            "en": "to predict"
+          },
+          "example": {
+            "nl": "In de verzonnen stad van haar verhalen liet Yara bijna alles vooraf regelen door systemen die haar gewoonten steeds beter voorspelden.",
+            "en": "In the fictional city of her stories, Yara had almost everything arranged in advance by systems that predicted her habits increasingly well."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het tijdvak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "afgebakende periode",
+            "en": "time slot"
+          },
+          "example": {
+            "nl": "Ze herschreef het einde: Noor behield de nuttige hulp, maar liet sommige tijdvakken bewust zonder voorspelde bestemming.",
+            "en": "She rewrote the ending: Noor kept the useful assistance but deliberately left some time slots without a predicted purpose."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "efficiënt",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met weinig verspilde tijd of middelen",
+            "en": "efficient"
+          },
+          "example": {
+            "nl": "Yara sloot haar schrift en belde zelf een vriend zonder eerst een efficiënt doel voor het gesprek te verzinnen.",
+            "en": "Yara closed her notebook and called a friend herself without first inventing an efficient purpose for the conversation."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "Ze herschreef het einde: Noor behield de nuttige hulp, maar liet sommige tijdvakken bewust zonder voorspelde bestemming.",
+              "en": "She rewrote the ending: Noor kept the useful assistance but deliberately left some time slots without a predicted purpose."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt de onverwachte buur belangrijk voor Noor?",
+            "en": "What makes the unexpected neighbour important to Noor?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil alle systemen kopen",
+              "en": "He wants to buy all the systems"
+            },
+            {
+              "nl": "Hij brengt een foutmelding",
+              "en": "He brings an error message"
+            },
+            {
+              "nl": "Het bezoek heeft betekenis zonder vooraf bepaald praktisch doel",
+              "en": "The visit has meaning without a predetermined practical purpose"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze koos toch voor openen en ontdekte dat de buur geen dienst nodig had, maar een verhaal wilde delen dat nergens in een aanvraagformulier paste.",
+            "en": "She nevertheless chose to open the door and discovered that the neighbour needed no service but wanted to share a story that fitted no request form."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe verandert Yara het eerste einde?",
+            "en": "How does Yara change the first ending?"
+          },
+          "options": [
+            {
+              "nl": "Ze laat niemand meer aanbellen",
+              "en": "She lets nobody ring the doorbell anymore"
+            },
+            {
+              "nl": "Ze maakt alle techniek verplicht",
+              "en": "She makes all technology compulsory"
+            },
+            {
+              "nl": "Ze behoudt hulp en laat ook onvoorspelde ruimte bestaan",
+              "en": "She retains assistance and also leaves room for the unpredicted"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze herschreef het einde: Noor behield de nuttige hulp, maar liet sommige tijdvakken bewust zonder voorspelde bestemming.",
+            "en": "She rewrote the ending: Noor kept the useful assistance but deliberately left some time slots without a predicted purpose."
+          }
+        }
+      ]
+    }
+  ]
+}

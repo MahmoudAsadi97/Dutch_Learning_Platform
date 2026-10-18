@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "b2-read-overschrijving-met-bijschrift",
+      "topic_id": "banking-payments",
+      "title": {
+        "nl": "Niet iedere overschrijving is een antwoord",
+        "en": "Not every transfer is an answer"
+      },
+      "plot_key": "An adult trying to support a parent financially discovers that an unannounced transfer can obscure the actual help the parent wants.",
+      "lines": [
+        {
+          "nl": "Toen zijn moeder zei dat de boodschappen duurder voelden, schreef Karim meteen geld over met alleen het woord hulp als omschrijving.",
+          "en": "When his mother said the groceries felt more expensive, Karim immediately transferred money with only the word help as the reference."
+        },
+        {
+          "nl": "Hij verwachtte een opgelucht bericht, maar kreeg de volgende ochtend hetzelfde bedrag terug zonder verdere uitleg.",
+          "en": "He expected a relieved message but received the same amount back the following morning without further explanation."
+        },
+        {
+          "nl": "Karim voelde zijn goede bedoeling afgewezen en wilde haar overtuigen dat zij niet zo trots hoefde te zijn.",
+          "en": "Karim felt his good intention had been rejected and wanted to persuade her not to be so proud."
+        },
+        {
+          "nl": "Tijdens een bezoek vroeg hij toch eerst wat zij met haar opmerking had willen vertellen.",
+          "en": "During a visit, he nevertheless first asked what she had intended to say with her remark."
+        },
+        {
+          "nl": "Ze wilde samen naar een andere winkel kunnen gaan, omdat zware tassen dragen haar meer moeite kostte dan prijzen vergelijken.",
+          "en": "She wanted them to go to a different shop together because carrying heavy bags took her more effort than comparing prices."
+        },
+        {
+          "nl": "Ook zei ze dat geld zonder gesprek haar niet liet kiezen of een praktisch probleem wel het probleem was dat hij dacht te zien.",
+          "en": "She also said that money without a conversation did not let her choose whether a practical problem was really the one he thought he saw."
+        },
+        {
+          "nl": "Ze maakten een concrete afspraak om boodschappen te doen en bespraken afzonderlijk welke financiële steun eventueel welkom zou zijn.",
+          "en": "They made a concrete arrangement to shop together and discussed separately what financial support might be welcome."
+        },
+        {
+          "nl": "De volgende overschrijving was geen test van dankbaarheid, maar een gezamenlijk afgesproken bedrag met een begrijpelijk doel.",
+          "en": "The next transfer was not a test of gratitude but a jointly agreed amount with a clear purpose."
+        }
+      ],
+      "words": [
+        {
+          "term": "de overschrijving",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "geldtransfer van een rekening naar een andere",
+            "en": "bank transfer"
+          },
+          "example": {
+            "nl": "De volgende overschrijving was geen test van dankbaarheid, maar een gezamenlijk afgesproken bedrag met een begrijpelijk doel.",
+            "en": "The next transfer was not a test of gratitude but a jointly agreed amount with a clear purpose."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de omschrijving",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "korte tekst die zegt waarvoor iets dient",
+            "en": "reference or description"
+          },
+          "example": {
+            "nl": "Toen zijn moeder zei dat de boodschappen duurder voelden, schreef Karim meteen geld over met alleen het woord hulp als omschrijving.",
+            "en": "When his mother said the groceries felt more expensive, Karim immediately transferred money with only the word help as the reference."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "afwijzen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "niet aanvaarden",
+            "en": "to reject"
+          },
+          "example": {
+            "nl": "Karim voelde zijn goede bedoeling afgewezen en wilde haar overtuigen dat zij niet zo trots hoefde te zijn.",
+            "en": "Karim felt his good intention had been rejected and wanted to persuade her not to be so proud."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een verleden bedoeling met had willen",
+            "en": "A past intention with had willen"
+          },
+          "explanation": {
+            "nl": "Bij had willen vertellen staan twee hele werkwoordvormen. Willen vervangt hier het gewone voltooid deelwoord gewild; de bedoeling ligt vóór het latere gesprek.",
+            "en": "Had willen vertellen contains two infinitives. Here willen replaces the usual past participle gewild; the intention precedes the later conversation."
+          },
+          "examples": [
+            {
+              "nl": "Tijdens een bezoek vroeg hij toch eerst wat zij met haar opmerking had willen vertellen.",
+              "en": "During a visit, he nevertheless first asked what she had intended to say with her remark."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat blijkt de moeder vooral te willen?",
+            "en": "What does the mother mainly turn out to want?"
+          },
+          "options": [
+            {
+              "nl": "Een test van haar zoon",
+              "en": "A test of her son"
+            },
+            {
+              "nl": "Samen boodschappen doen en hulp bij zware tassen",
+              "en": "Shopping together and help with heavy bags"
+            },
+            {
+              "nl": "Geen contact meer",
+              "en": "No more contact"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze wilde samen naar een andere winkel kunnen gaan, omdat zware tassen dragen haar meer moeite kostte dan prijzen vergelijken.",
+            "en": "She wanted them to go to a different shop together because carrying heavy bags took her more effort than comparing prices."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe behandelen ze financiële steun daarna?",
+            "en": "How do they handle financial support afterwards?"
+          },
+          "options": [
+            {
+              "nl": "Als iets dat zonder overleg vanzelf gaat",
+              "en": "As something that happens automatically without discussion"
+            },
+            {
+              "nl": "Als een afzonderlijke gezamenlijke afspraak",
+              "en": "As a separate joint agreement"
+            },
+            {
+              "nl": "Als een verboden gesprek",
+              "en": "As a forbidden conversation"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze maakten een concrete afspraak om boodschappen te doen en bespraken afzonderlijk welke financiële steun eventueel welkom zou zijn.",
+            "en": "They made a concrete arrangement to shop together and discussed separately what financial support might be welcome."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-pot-voor-twee-dromen",
+      "topic_id": "saving-investing",
+      "title": {
+        "nl": "De reis die nog geen bestemming had",
+        "en": "The trip that had no destination yet"
+      },
+      "plot_key": "Partners saving together discover that they imagine different kinds of holiday and define a shared purpose before turning the fund into a promise.",
+      "lines": [
+        {
+          "nl": "Drie jaar lang stopten Noor en Elias kleine bedragen in hun gezamenlijke reispot zonder ooit een bestemming vast te leggen.",
+          "en": "For three years, Noor and Elias put small amounts into their shared travel fund without ever choosing a destination."
+        },
+        {
+          "nl": "Toen er eindelijk genoeg leek te zijn voor iets bijzonders, kwam Elias thuis met folders voor een verre georganiseerde rondreis.",
+          "en": "When there finally seemed to be enough for something special, Elias came home with brochures for a distant organised tour."
+        },
+        {
+          "nl": "Noor keek teleurgesteld omdat zij bij dat geld altijd een paar rustige weken aan één plek had voorgesteld.",
+          "en": "Noor looked disappointed because, to her, that money had always meant a few quiet weeks in one place."
+        },
+        {
+          "nl": "Elias hoorde eerst dat zijn droom te groot was, terwijl zij juist bang was dat hun vrije tijd opnieuw een strakke planning zou krijgen.",
+          "en": "At first, Elias heard that his dream was too big, while she was actually afraid their free time would again acquire a strict schedule."
+        },
+        {
+          "nl": "Ze schreven niet meteen prijzen naast elkaar, maar ieder drie dingen die de reis voor hen moest mogelijk maken.",
+          "en": "They did not immediately compare prices but each wrote three things the trip should make possible for them."
+        },
+        {
+          "nl": "Bij beiden stonden tijd samen en afstand van werk bovenaan, al zag de vorm er verschillend uit.",
+          "en": "For both, time together and distance from work came first, though the form looked different."
+        },
+        {
+          "nl": "Ze onderzochten pas daarna haalbare keuzes binnen hun eigen budget en lieten geld dat ze elders nodig konden hebben buiten het reisplan.",
+          "en": "Only then did they explore feasible choices within their own budget and keep money they might need elsewhere outside the travel plan."
+        },
+        {
+          "nl": "De pot werd die avond niet kleiner; voor het eerst wist hij alleen voor welk soort samenzijn hij bedoeld was.",
+          "en": "The fund did not become smaller that evening; for the first time, it simply knew what kind of togetherness it was meant for."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bestemming",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plaats waar een reis naartoe gaat",
+            "en": "destination"
+          },
+          "example": {
+            "nl": "Drie jaar lang stopten Noor en Elias kleine bedragen in hun gezamenlijke reispot zonder ooit een bestemming vast te leggen.",
+            "en": "For three years, Noor and Elias put small amounts into their shared travel fund without ever choosing a destination."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "vastleggen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "duidelijk afspreken of bepalen",
+            "en": "to establish"
+          },
+          "example": {
+            "nl": "Drie jaar lang stopten Noor en Elias kleine bedragen in hun gezamenlijke reispot zonder ooit een bestemming vast te leggen.",
+            "en": "For three years, Noor and Elias put small amounts into their shared travel fund without ever choosing a destination."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "haalbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "mogelijk binnen de omstandigheden",
+            "en": "feasible"
+          },
+          "example": {
+            "nl": "Ze onderzochten pas daarna haalbare keuzes binnen hun eigen budget en lieten geld dat ze elders nodig konden hebben buiten het reisplan.",
+            "en": "Only then did they explore feasible choices within their own budget and keep money they might need elsewhere outside the travel plan."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een bijzin met terwijl",
+            "en": "A subordinate clause with terwijl"
+          },
+          "explanation": {
+            "nl": "Terwijl verbindt een bijzin met een hoofdzin. Het kan gelijktijdigheid of een tegenstelling aangeven; het werkwoord staat achteraan in de bijzin.",
+            "en": "Terwijl links a subordinate clause to a main clause. It can express simultaneous events or a contrast; the verb comes at the end of the subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "Elias hoorde eerst dat zijn droom te groot was, terwijl zij juist bang was dat hun vrije tijd opnieuw een strakke planning zou krijgen.",
+              "en": "At first, Elias heard that his dream was too big, while she was actually afraid their free time would again acquire a strict schedule."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarover hebben Noor en Elias nog niet gesproken?",
+            "en": "What have Noor and Elias not yet discussed?"
+          },
+          "options": [
+            {
+              "nl": "Wat hun gezamenlijke reis voor ieder betekent",
+              "en": "What their shared trip means to each of them"
+            },
+            {
+              "nl": "Of ze geld willen bewaren",
+              "en": "Whether they want to save money"
+            },
+            {
+              "nl": "Hoe hun namen worden gespeld",
+              "en": "How their names are spelled"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Toen er eindelijk genoeg leek te zijn voor iets bijzonders, kwam Elias thuis met folders voor een verre georganiseerde rondreis.",
+            "en": "When there finally seemed to be enough for something special, Elias came home with brochures for a distant organised tour."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vergelijken ze eerst?",
+            "en": "What do they compare first?"
+          },
+          "options": [
+            {
+              "nl": "Wat de reis mogelijk moet maken",
+              "en": "What the trip should make possible"
+            },
+            {
+              "nl": "Wie het meeste heeft gespaard",
+              "en": "Who has saved the most"
+            },
+            {
+              "nl": "Alleen prijzen",
+              "en": "Only prices"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze schreven niet meteen prijzen naast elkaar, maar ieder drie dingen die de reis voor hen moest mogelijk maken.",
+            "en": "They did not immediately compare prices but each wrote three things the trip should make possible for them."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-foto-van-inboedel",
+      "topic_id": "taxes-insurance",
+      "title": {
+        "nl": "Het verhaal naast de inventaris",
+        "en": "The story beside the inventory"
+      },
+      "plot_key": "After damage, a resident separates practical documentation from memories that an inventory cannot capture, without confusing either with a coverage decision.",
+      "lines": [
+        {
+          "nl": "Na waterschade in haar woning moest Ria een overzicht maken van beschadigde spullen voor het verdere contact met haar verzekeraar.",
+          "en": "After water damage in her home, Ria needed to make an overview of damaged belongings for further contact with her insurer."
+        },
+        {
+          "nl": "Bij de oude kast van haar vader bleef ze telkens hangen omdat een foto en een omschrijving nauwelijks iets van haar verdriet leken te tonen.",
+          "en": "She kept getting stuck at her father's old cupboard because a photograph and description seemed to show hardly anything of her sadness."
+        },
+        {
+          "nl": "Haar broer begon de ontbrekende aankoopgegevens te zoeken, terwijl Ria steeds meer familieverhalen aan de inventaris toevoegde.",
+          "en": "Her brother began looking for the missing purchase information while Ria added more and more family stories to the inventory."
+        },
+        {
+          "nl": "Ze raakten allebei gefrustreerd doordat ze een verschillend soort volledigheid probeerden te bereiken.",
+          "en": "They both became frustrated because they were trying to achieve different kinds of completeness."
+        },
+        {
+          "nl": "Samen maakten ze een feitelijk overzicht met wat bekend was, welke bewijsstukken beschikbaar waren en waar ze de verzekeraar nog om verduidelijking moesten vragen.",
+          "en": "Together, they made a factual overview of what was known, what evidence was available and where they still needed clarification from the insurer."
+        },
+        {
+          "nl": "Daarnaast schreef Ria de herinneringen op die niet door een aankoopprijs of een beslissing over dekking konden worden vervangen.",
+          "en": "Separately, Ria wrote down the memories that could not be replaced by a purchase price or a coverage decision."
+        },
+        {
+          "nl": "Het dossier bleef een praktische vraag met onzekere uitkomst; het schrift ernaast hoefde voor niemand als bewijs te dienen.",
+          "en": "The file remained a practical matter with an uncertain outcome; the notebook beside it did not have to serve as proof for anyone."
+        },
+        {
+          "nl": "Toen haar broer vertrok, vroeg Ria of hij nog één verhaal over de kast wilde vertellen voordat ze de formulieren weglegden.",
+          "en": "When her brother left, Ria asked whether he would tell one more story about the cupboard before they put the forms away."
+        }
+      ],
+      "words": [
+        {
+          "term": "de inventaris",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "geordend overzicht van aanwezige of beschadigde spullen",
+            "en": "inventory"
+          },
+          "example": {
+            "nl": "Haar broer begon de ontbrekende aankoopgegevens te zoeken, terwijl Ria steeds meer familieverhalen aan de inventaris toevoegde.",
+            "en": "Her brother began looking for the missing purchase information while Ria added more and more family stories to the inventory."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het bewijsstuk",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "document of gegeven dat informatie ondersteunt",
+            "en": "supporting document"
+          },
+          "example": {
+            "nl": "Samen maakten ze een feitelijk overzicht met wat bekend was, welke bewijsstukken beschikbaar waren en waar ze de verzekeraar nog om verduidelijking moesten vragen.",
+            "en": "Together, they made a factual overview of what was known, what evidence was available and where they still needed clarification from the insurer."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de dekking",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bescherming die een verzekering onder haar voorwaarden biedt",
+            "en": "insurance coverage"
+          },
+          "example": {
+            "nl": "Daarnaast schreef Ria de herinneringen op die niet door een aankoopprijs of een beslissing over dekking konden worden vervangen.",
+            "en": "Separately, Ria wrote down the memories that could not be replaced by a purchase price or a coverage decision."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een bijzin met terwijl",
+            "en": "A subordinate clause with terwijl"
+          },
+          "explanation": {
+            "nl": "Terwijl verbindt een bijzin met een hoofdzin. Het kan gelijktijdigheid of een tegenstelling aangeven; het werkwoord staat achteraan in de bijzin.",
+            "en": "Terwijl links a subordinate clause to a main clause. It can express simultaneous events or a contrast; the verb comes at the end of the subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "Haar broer begon de ontbrekende aankoopgegevens te zoeken, terwijl Ria steeds meer familieverhalen aan de inventaris toevoegde.",
+              "en": "Her brother began looking for the missing purchase information while Ria added more and more family stories to the inventory."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom raken Ria en haar broer gefrustreerd?",
+            "en": "Why do Ria and her brother become frustrated?"
+          },
+          "options": [
+            {
+              "nl": "Er zijn geen beschadigde spullen",
+              "en": "There are no damaged belongings"
+            },
+            {
+              "nl": "De kast is niet van haar",
+              "en": "The cupboard is not hers"
+            },
+            {
+              "nl": "Ze proberen verschillende dingen volledig vast te leggen",
+              "en": "They are trying to record different things completely"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze raakten allebei gefrustreerd doordat ze een verschillend soort volledigheid probeerden te bereiken.",
+            "en": "They both became frustrated because they were trying to achieve different kinds of completeness."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat krijgt een eigen plaats naast het dossier?",
+            "en": "What gets a separate place beside the file?"
+          },
+          "options": [
+            {
+              "nl": "Een nieuwe koopopdracht",
+              "en": "A new purchase order"
+            },
+            {
+              "nl": "Een gegarandeerde vergoeding",
+              "en": "A guaranteed payment"
+            },
+            {
+              "nl": "Persoonlijke herinneringen",
+              "en": "Personal memories"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Daarnaast schreef Ria de herinneringen op die niet door een aankoopprijs of een beslissing over dekking konden worden vervangen.",
+            "en": "Separately, Ria wrote down the memories that could not be replaced by a purchase price or a coverage decision."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-kamer-in-huuradvertentie",
+      "topic_id": "renting-property",
+      "title": {
+        "nl": "De deur die op geen foto stond",
+        "en": "The door that appeared in no photograph"
+      },
+      "plot_key": "A prospective tenant asks about an unpictured shared room and discovers that the rental's daily use differs from the attractive photographs.",
+      "lines": [
+        {
+          "nl": "Op de foto's van de huurkamer zag Adam een rustig bureau, een groot raam en een keuken die bijna nooit gebruikt leek.",
+          "en": "In the rental-room photographs, Adam saw a quiet desk, a large window and a kitchen that looked as though it was hardly ever used."
+        },
+        {
+          "nl": "Tijdens het bezoek leidde de bewoner hem snel langs een gesloten deur die in de advertentie nergens was afgebeeld.",
+          "en": "During the visit, the resident led him quickly past a closed door not shown anywhere in the advertisement."
+        },
+        {
+          "nl": "Adam wilde niet wantrouwig overkomen, maar vroeg toch welke ruimte daarachter lag en wie haar gebruikte.",
+          "en": "Adam did not want to seem suspicious, but still asked which room lay behind it and who used it."
+        },
+        {
+          "nl": "Het bleek de enige gemeenschappelijke werkruimte, waar de huidige bewoners op verschillende tijden ook muziek oefenden.",
+          "en": "It turned out to be the only shared workroom, where the current residents also practised music at different times."
+        },
+        {
+          "nl": "Voor Adam, die veel online gesprekken voerde, veranderde dat de betekenis van het rustige bureau op de foto.",
+          "en": "For Adam, who had many online conversations, that changed the meaning of the quiet desk in the photograph."
+        },
+        {
+          "nl": "Hij vroeg naar de bestaande afspraken, liet noodzakelijke onduidelijkheden bij de passende contactpersoon toelichten en bedacht of zijn routine daarbij paste.",
+          "en": "He asked about the existing arrangements, had necessary uncertainties explained by the appropriate contact person and considered whether his routine fitted them."
+        },
+        {
+          "nl": "De kamer was niet plots slecht geworden, maar ze vroeg een dagelijks leven dat hij niet zonder meer kon delen.",
+          "en": "The room had not suddenly become bad, but it required a daily life he could not share without further thought."
+        },
+        {
+          "nl": "Hij vertrok zonder toezegging en bedankte de bewoners voor een antwoord dat nuttiger was dan nog een mooie foto.",
+          "en": "He left without a commitment and thanked the residents for an answer more useful than another attractive photograph."
+        }
+      ],
+      "words": [
+        {
+          "term": "wantrouwig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet meteen geneigd iets te vertrouwen",
+            "en": "suspicious"
+          },
+          "example": {
+            "nl": "Adam wilde niet wantrouwig overkomen, maar vroeg toch welke ruimte daarachter lag en wie haar gebruikte.",
+            "en": "Adam did not want to seem suspicious, but still asked which room lay behind it and who used it."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de toezegging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "belofte of akkoord om iets te doen",
+            "en": "commitment"
+          },
+          "example": {
+            "nl": "Hij vertrok zonder toezegging en bedankte de bewoners voor een antwoord dat nuttiger was dan nog een mooie foto.",
+            "en": "He left without a commitment and thanked the residents for an answer more useful than another attractive photograph."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "toelichten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "extra uitleg geven",
+            "en": "to clarify"
+          },
+          "example": {
+            "nl": "Hij vroeg naar de bestaande afspraken, liet noodzakelijke onduidelijkheden bij de passende contactpersoon toelichten en bedacht of zijn routine daarbij paste.",
+            "en": "He asked about the existing arrangements, had necessary uncertainties explained by the appropriate contact person and considered whether his routine fitted them."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een betrekkelijke bijzin",
+            "en": "A relative clause"
+          },
+          "explanation": {
+            "nl": "Een betrekkelijke bijzin geeft extra informatie bij een zelfstandig naamwoord. Hij kan beginnen met die, dat of een vorm zoals waarin of waarvan; het werkwoord staat achteraan.",
+            "en": "A relative clause gives extra information about a noun. It can begin with die, dat or a form such as waarin or waarvan; the verb comes at the end."
+          },
+          "examples": [
+            {
+              "nl": "Tijdens het bezoek leidde de bewoner hem snel langs een gesloten deur die in de advertentie nergens was afgebeeld.",
+              "en": "During the visit, the resident led him quickly past a closed door not shown anywhere in the advertisement."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ontbreekt in Adams eerste beeld van de kamer?",
+            "en": "What is missing from Adam's initial picture of the room?"
+          },
+          "options": [
+            {
+              "nl": "De naam van de straat",
+              "en": "The street name"
+            },
+            {
+              "nl": "Het gebruik van de gedeelde werkruimte",
+              "en": "The use of the shared workroom"
+            },
+            {
+              "nl": "De kleur van het raam",
+              "en": "The colour of the window"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het bleek de enige gemeenschappelijke werkruimte, waar de huidige bewoners op verschillende tijden ook muziek oefenden.",
+            "en": "It turned out to be the only shared workroom, where the current residents also practised music at different times."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom neemt hij niet meteen een beslissing?",
+            "en": "Why does he not decide immediately?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil de foto's kopiëren",
+              "en": "He wants to copy the photographs"
+            },
+            {
+              "nl": "Hij moet nagaan of zijn dagelijkse routine past",
+              "en": "He needs to consider whether his daily routine fits"
+            },
+            {
+              "nl": "Hij wil alle bewoners vervangen",
+              "en": "He wants to replace all the residents"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij vroeg naar de bestaande afspraken, liet noodzakelijke onduidelijkheden bij de passende contactpersoon toelichten en bedacht of zijn routine daarbij paste.",
+            "en": "He asked about the existing arrangements, had necessary uncertainties explained by the appropriate contact person and considered whether his routine fitted them."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-muur-met-lichte-vlek",
+      "topic_id": "home-decoration",
+      "title": {
+        "nl": "De lichte plek achter het schilderij",
+        "en": "The light patch behind the painting"
+      },
+      "plot_key": "A couple repainting a shared room discovers that an empty patch left by a family painting can mark change without declaring the old memory unwelcome.",
+      "lines": [
+        {
+          "nl": "Toen Leen en haar partner de woonkamer opnieuw schilderden, bleef achter een oud familieportret een lichte rechthoek zichtbaar.",
+          "en": "When Leen and her partner repainted the living room, a pale rectangle remained visible behind an old family portrait."
+        },
+        {
+          "nl": "Het schilderij had altijd boven de zetel gehangen, hoewel haar partner die plek graag voor een boekenplank wilde gebruiken.",
+          "en": "The painting had always hung above the sofa, although her partner would have liked to use that spot for a bookshelf."
+        },
+        {
+          "nl": "Leen hoorde in dat voorstel vooral dat haar familiegeschiedenis uit de kamer moest verdwijnen en zette het doek demonstratief terug.",
+          "en": "Leen mainly heard in that suggestion that her family history had to disappear from the room and demonstratively put the canvas back."
+        },
+        {
+          "nl": "Tijdens het afdekken van de vloer vroeg haar partner welke herinnering precies aan die ene plaats vastzat.",
+          "en": "While covering the floor, her partner asked which memory was attached to that one spot in particular."
+        },
+        {
+          "nl": "Leen vertelde over haar grootmoeder die van de zetel naar het portret keek, niet over de muur zelf.",
+          "en": "Leen talked about her grandmother looking from the sofa at the portrait, not about the wall itself."
+        },
+        {
+          "nl": "Ze kozen een andere zichtbare plek en lieten de boekenplank laag genoeg om het doek niet opnieuw achter spullen te verbergen.",
+          "en": "They chose another visible spot and kept the bookshelf low enough not to hide the canvas behind belongings again."
+        },
+        {
+          "nl": "De lichte rechthoek werd overschilderd, maar de grootmoeder kreeg in hun gesprek voor het eerst een verhaal dat haar partner nog niet kende.",
+          "en": "The pale rectangle was painted over, but in their conversation the grandmother acquired, for the first time, a story her partner had not yet heard."
+        },
+        {
+          "nl": "Toen de kamer klaar was, zag Leen niet minder verleden, wel meer ruimte om er samen in te zitten.",
+          "en": "When the room was finished, Leen saw not less past, but more room to sit in it together."
+        }
+      ],
+      "words": [
+        {
+          "term": "de rechthoek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "vorm met vier rechte hoeken en twee paren even lange zijden",
+            "en": "rectangle"
+          },
+          "example": {
+            "nl": "Toen Leen en haar partner de woonkamer opnieuw schilderden, bleef achter een oud familieportret een lichte rechthoek zichtbaar.",
+            "en": "When Leen and her partner repainted the living room, a pale rectangle remained visible behind an old family portrait."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "demonstratief",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "opvallend om een standpunt te tonen",
+            "en": "demonstrative"
+          },
+          "example": {
+            "nl": "Leen hoorde in dat voorstel vooral dat haar familiegeschiedenis uit de kamer moest verdwijnen en zette het doek demonstratief terug.",
+            "en": "Leen mainly heard in that suggestion that her family history had to disappear from the room and demonstratively put the canvas back."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "overschilderen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met een nieuwe verflaag bedekken",
+            "en": "to paint over"
+          },
+          "example": {
+            "nl": "De lichte rechthoek werd overschilderd, maar de grootmoeder kreeg in hun gesprek voor het eerst een verhaal dat haar partner nog niet kende.",
+            "en": "The pale rectangle was painted over, but in their conversation the grandmother acquired, for the first time, a story her partner had not yet heard."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een toegeving met hoewel",
+            "en": "Concession with hoewel"
+          },
+          "explanation": {
+            "nl": "Hoewel leidt een bijzin in die een tegenstelling met de hoofdzin uitdrukt. Het werkwoord staat achteraan in die bijzin.",
+            "en": "Hoewel introduces a subordinate clause expressing a contrast with the main clause. The verb is placed at the end of that clause."
+          },
+          "examples": [
+            {
+              "nl": "Het schilderij had altijd boven de zetel gehangen, hoewel haar partner die plek graag voor een boekenplank wilde gebruiken.",
+              "en": "The painting had always hung above the sofa, although her partner would have liked to use that spot for a bookshelf."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk misverstand ontstaat rond de boekenplank?",
+            "en": "What misunderstanding arises around the bookshelf?"
+          },
+          "options": [
+            {
+              "nl": "Leen denkt dat haar familiegeschiedenis wordt afgewezen",
+              "en": "Leen thinks her family history is being rejected"
+            },
+            {
+              "nl": "Haar partner wil geen boeken",
+              "en": "Her partner wants no books"
+            },
+            {
+              "nl": "De kamer heeft geen muur",
+              "en": "The room has no wall"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Leen hoorde in dat voorstel vooral dat haar familiegeschiedenis uit de kamer moest verdwijnen en zette het doek demonstratief terug.",
+            "en": "Leen mainly heard in that suggestion that her family history had to disappear from the room and demonstratively put the canvas back."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat blijkt voor de herinnering belangrijker dan de oude plaats?",
+            "en": "What proves more important to the memory than the old location?"
+          },
+          "options": [
+            {
+              "nl": "Het verhaal en een zichtbare plek voor het portret",
+              "en": "The story and a visible place for the portrait"
+            },
+            {
+              "nl": "De grootte van de zetel",
+              "en": "The size of the sofa"
+            },
+            {
+              "nl": "De verfprijs",
+              "en": "The price of the paint"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze kozen een andere zichtbare plek en lieten de boekenplank laag genoeg om het doek niet opnieuw achter spullen te verbergen.",
+            "en": "They chose another visible spot and kept the bookshelf low enough not to hide the canvas behind belongings again."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-stekje-met-verplichting",
+      "topic_id": "gardening",
+      "title": {
+        "nl": "De plant die geen examen was",
+        "en": "The plant that was not an exam"
+      },
+      "plot_key": "A family member struggling with an inherited plant learns not to treat its condition as a measure of loyalty and asks for practical help.",
+      "lines": [
+        {
+          "nl": "Na de verhuizing van haar grootmoeder kreeg Sara een stekje mee met de opmerking dat de plant al drie generaties in de familie bleef.",
+          "en": "After her grandmother moved, Sara received a cutting with the remark that the plant had stayed in the family for three generations."
+        },
+        {
+          "nl": "Toen de bladeren enkele weken later slap hingen, stopte Sara met foto's sturen omdat ze haar grootmoeder niet wilde teleurstellen.",
+          "en": "When the leaves drooped a few weeks later, Sara stopped sending photographs because she did not want to disappoint her grandmother."
+        },
+        {
+          "nl": "Ze kocht haastig allerlei producten, zonder eerst te weten wat de plant nodig had of wat de oorzaak van de verandering was.",
+          "en": "She hurriedly bought all sorts of products without first knowing what the plant needed or what caused the change."
+        },
+        {
+          "nl": "Bij een bezoek vroeg haar grootmoeder waarom het stekje achter het gordijn stond alsof het zich moest schamen.",
+          "en": "During a visit, her grandmother asked why the cutting stood behind the curtain as though it ought to be ashamed."
+        },
+        {
+          "nl": "Sara gaf toe dat de familiegeschiedenis voor haar onbedoeld in een opdracht om niets te laten mislukken was veranderd.",
+          "en": "Sara admitted that, for her, the family history had unintentionally turned into an assignment never to let anything fail."
+        },
+        {
+          "nl": "Haar grootmoeder vertelde hoeveel eigen stekjes zij onderweg had verloren en hielp eerst betrouwbare verzorgingsinformatie voor dit exemplaar zoeken.",
+          "en": "Her grandmother told her how many cuttings of her own she had lost along the way and first helped find reliable care information for this specimen."
+        },
+        {
+          "nl": "Ze hielden een nieuw stekje op twee plaatsen, zonder te beloven dat een levende plant voor altijd hetzelfde zou blijven.",
+          "en": "They kept a new cutting in two places without promising that a living plant would remain the same forever."
+        },
+        {
+          "nl": "De volgende foto toonde ook het beschadigde blad; Sara hoefde geen bewijs van perfecte trouw meer te leveren om contact te houden.",
+          "en": "The next photograph also showed the damaged leaf; Sara no longer had to produce proof of perfect loyalty to stay in touch."
+        }
+      ],
+      "words": [
+        {
+          "term": "het stekje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein plantendeel waaruit een nieuwe plant kan groeien",
+            "en": "cutting"
+          },
+          "example": {
+            "nl": "Na de verhuizing van haar grootmoeder kreeg Sara een stekje mee met de opmerking dat de plant al drie generaties in de familie bleef.",
+            "en": "After her grandmother moved, Sara received a cutting with the remark that the plant had stayed in the family for three generations."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "onbedoeld",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder dat iemand het zo heeft gewild",
+            "en": "unintended"
+          },
+          "example": {
+            "nl": "Sara gaf toe dat de familiegeschiedenis voor haar onbedoeld in een opdracht om niets te laten mislukken was veranderd.",
+            "en": "Sara admitted that, for her, the family history had unintentionally turned into an assignment never to let anything fail."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het exemplaar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "één afzonderlijk voorwerp of organisme van een soort",
+            "en": "specimen"
+          },
+          "example": {
+            "nl": "Haar grootmoeder vertelde hoeveel eigen stekjes zij onderweg had verloren en hielp eerst betrouwbare verzorgingsinformatie voor dit exemplaar zoeken.",
+            "en": "Her grandmother told her how many cuttings of her own she had lost along the way and first helped find reliable care information for this specimen."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te",
+            "en": "Without doing"
+          },
+          "explanation": {
+            "nl": "Zonder te met een infinitief beschrijft een handeling die niet plaatsvindt. Het onderwerp blijft hetzelfde als in de hoofdzin.",
+            "en": "Zonder te with an infinitive describes an action that does not take place. Its subject is the same as that of the main clause."
+          },
+          "examples": [
+            {
+              "nl": "Ze kocht haastig allerlei producten, zonder eerst te weten wat de plant nodig had of wat de oorzaak van de verandering was.",
+              "en": "She hurriedly bought all sorts of products without first knowing what the plant needed or what caused the change."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom stuurt Sara geen foto's meer?",
+            "en": "Why does Sara stop sending photographs?"
+          },
+          "options": [
+            {
+              "nl": "Haar telefoon is verdwenen",
+              "en": "Her phone has disappeared"
+            },
+            {
+              "nl": "Haar grootmoeder wil geen contact",
+              "en": "Her grandmother wants no contact"
+            },
+            {
+              "nl": "Ze schaamt zich voor de toestand van de plant",
+              "en": "She is ashamed of the plant's condition"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Toen de bladeren enkele weken later slap hingen, stopte Sara met foto's sturen omdat ze haar grootmoeder niet wilde teleurstellen.",
+            "en": "When the leaves drooped a few weeks later, Sara stopped sending photographs because she did not want to disappoint her grandmother."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert haar grootmoeders uitleg?",
+            "en": "What does her grandmother's explanation change?"
+          },
+          "options": [
+            {
+              "nl": "Elke plant moet hetzelfde blijven",
+              "en": "Every plant must stay the same"
+            },
+            {
+              "nl": "Sara moet nog meer producten kopen",
+              "en": "Sara must buy even more products"
+            },
+            {
+              "nl": "De plant hoeft geen bewijs van perfecte trouw te zijn",
+              "en": "The plant does not have to be proof of perfect loyalty"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Haar grootmoeder vertelde hoeveel eigen stekjes zij onderweg had verloren en hielp eerst betrouwbare verzorgingsinformatie voor dit exemplaar zoeken.",
+            "en": "Her grandmother told her how many cuttings of her own she had lost along the way and first helped find reliable care information for this specimen."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-boerendochter-met-dagboek",
+      "topic_id": "agriculture",
+      "title": {
+        "nl": "Het weekend dat geen vrije dag was",
+        "en": "The weekend that was not a day off"
+      },
+      "plot_key": "An adult returning to the family farm distinguishes nostalgic visiting from the actual ongoing work and asks how to contribute without pretending to take over.",
+      "lines": [
+        {
+          "nl": "Wanneer Fien vrienden over haar ouderlijk landbouwbedrijf vertelde, beschreef ze vooral lange zomers, dieren en eten buiten aan de tafel.",
+          "en": "When Fien told friends about her parents' farm, she mainly described long summers, animals and eating outside at the table."
+        },
+        {
+          "nl": "Voor een weekendbezoek nodigde ze haar partner uit met de belofte dat ze daar eindelijk eens niets zouden moeten.",
+          "en": "For a weekend visit, she invited her partner with the promise that there they would finally have to do nothing."
+        },
+        {
+          "nl": "Bij aankomst stond haar moeder echter al sinds vroeg te werken en vroeg haar vader wie bij een onverwachte levering kon blijven.",
+          "en": "On arrival, however, her mother had already been working since early morning, and her father asked who could stay for an unexpected delivery."
+        },
+        {
+          "nl": "Fien merkte hoe haar herinnering aan vrijheid voortdurend op het werk van anderen had gerust.",
+          "en": "Fien noticed how her memory of freedom had continually rested on other people's work."
+        },
+        {
+          "nl": "Ze vroeg niet welke klus ze zonder uitleg kon overnemen, maar waar haar aanwezigheid op een verantwoorde manier tijd kon vrijmaken.",
+          "en": "She did not ask which task she could take over without explanation, but where her presence could responsibly free up time."
+        },
+        {
+          "nl": "Haar ouders kozen enkele afgebakende werkzaamheden waarvoor ze haar eerst de nodige instructies gaven.",
+          "en": "Her parents chose a few clearly bounded tasks for which they first gave her the necessary instructions."
+        },
+        {
+          "nl": "Pas daarna zaten ze samen buiten, ditmaal met een gesprek over wat haar ouders zelf graag op een vrije middag deden.",
+          "en": "Only afterwards did they sit outside together, this time with a conversation about what her parents themselves liked doing on a free afternoon."
+        },
+        {
+          "nl": "Toen Fien later over het bezoek vertelde, hoorde bij het mooie uitzicht ook iemand die eindelijk even niet werkte.",
+          "en": "When Fien later described the visit, the lovely view also included someone who was finally not working for a moment."
+        }
+      ],
+      "words": [
+        {
+          "term": "afgebakend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "duidelijk begrensd",
+            "en": "clearly bounded"
+          },
+          "example": {
+            "nl": "Haar ouders kozen enkele afgebakende werkzaamheden waarvoor ze haar eerst de nodige instructies gaven.",
+            "en": "Her parents chose a few clearly bounded tasks for which they first gave her the necessary instructions."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "vrijmaken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "beschikbaar maken",
+            "en": "to free up"
+          },
+          "example": {
+            "nl": "Ze vroeg niet welke klus ze zonder uitleg kon overnemen, maar waar haar aanwezigheid op een verantwoorde manier tijd kon vrijmaken.",
+            "en": "She did not ask which task she could take over without explanation, but where her presence could responsibly free up time."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "rusten op",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "afhankelijk zijn van een onderliggende basis",
+            "en": "to rest on"
+          },
+          "example": {
+            "nl": "Fien merkte hoe haar herinnering aan vrijheid voortdurend op het werk van anderen had gerust.",
+            "en": "Fien noticed how her memory of freedom had continually rested on other people's work."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "Fien merkte hoe haar herinnering aan vrijheid voortdurend op het werk van anderen had gerust.",
+              "en": "Fien noticed how her memory of freedom had continually rested on other people's work."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ziet Fien anders tijdens het bezoek?",
+            "en": "What does Fien see differently during the visit?"
+          },
+          "options": [
+            {
+              "nl": "Haar ouders willen niemand zien",
+              "en": "Her parents want to see nobody"
+            },
+            {
+              "nl": "Haar vroegere vrijheid steunde op het werk van haar ouders",
+              "en": "Her former freedom rested on her parents' work"
+            },
+            {
+              "nl": "Het bedrijf is een hotel",
+              "en": "The farm is a hotel"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Fien merkte hoe haar herinnering aan vrijheid voortdurend op het werk van anderen had gerust.",
+            "en": "Fien noticed how her memory of freedom had continually rested on other people's work."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe helpt ze uiteindelijk?",
+            "en": "How does she ultimately help?"
+          },
+          "options": [
+            {
+              "nl": "Door zomaar alle machines te bedienen",
+              "en": "By simply operating every machine"
+            },
+            {
+              "nl": "Met afgebakende taken na uitleg",
+              "en": "With bounded tasks after instruction"
+            },
+            {
+              "nl": "Door de levering te negeren",
+              "en": "By ignoring the delivery"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Haar ouders kozen enkele afgebakende werkzaamheden waarvoor ze haar eerst de nodige instructies gaven.",
+            "en": "Her parents chose a few clearly bounded tasks for which they first gave her the necessary instructions."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-meter-met-twee-verhalen",
+      "topic_id": "energy-electricity",
+      "title": {
+        "nl": "Het bedrag en het verbruik",
+        "en": "The amount and the consumption"
+      },
+      "plot_key": "Housemates separate a higher bill from assumptions about one person's habits and ask for clarification of actual figures before blaming each other.",
+      "lines": [
+        {
+          "nl": "Toen de energiefactuur hoger uitviel dan verwacht, wees Bram meteen naar het kleine elektrische toestel dat zijn huisgenoot onlangs gebruikte.",
+          "en": "When the energy bill was higher than expected, Bram immediately pointed to the small electrical device his housemate had recently started using."
+        },
+        {
+          "nl": "Hij had het verbruik ervan niet gemeten, maar het zichtbare nieuwe voorwerp bood een eenvoudige verklaring voor het onbekende bedrag.",
+          "en": "He had not measured its consumption, but the visible new object offered a simple explanation for the unfamiliar amount."
+        },
+        {
+          "nl": "Zijn huisgenoot vroeg of Bram eerst kon onderscheiden wat op de factuur een verbruiksgegeven was en wat met prijs of afrekening te maken had.",
+          "en": "His housemate asked whether Bram could first distinguish what on the bill was a consumption figure and what related to price or settlement."
+        },
+        {
+          "nl": "Ze lazen de documenten samen en lieten onduidelijke onderdelen via het passende contactpunt toelichten voordat ze conclusies over de oorzaak trokken.",
+          "en": "They read the documents together and had unclear parts explained through the appropriate contact point before drawing conclusions about the cause."
+        },
+        {
+          "nl": "Niet alles bleek meteen duidelijk, zodat ze vragen noteerden en informatie verzamelden in plaats van hun vermoeden als uitkomst te behandelen.",
+          "en": "Not everything became clear immediately, so they wrote down questions and gathered information instead of treating their suspicion as the outcome."
+        },
+        {
+          "nl": "Daarnaast spraken ze gewone gebruiksafspraken af die ze allebei haalbaar vonden, zonder te beloven dat één toestel verwijderen de rekening zou oplossen.",
+          "en": "They also agreed on ordinary usage arrangements both found feasible, without promising that removing one device would solve the bill."
+        },
+        {
+          "nl": "Bram bood zijn excuses aan voor de persoonlijke beschuldiging die sneller was gekomen dan zijn controle van de cijfers.",
+          "en": "Bram apologised for the personal accusation that had come faster than his checking of the figures."
+        },
+        {
+          "nl": "De factuur bleef een kost, maar hoefde niet langer het bewijs te zijn dat één bewoner onzorgvuldig was.",
+          "en": "The bill remained an expense but no longer had to be proof that one resident was careless."
+        }
+      ],
+      "words": [
+        {
+          "term": "het verbruik",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hoeveelheid energie die wordt gebruikt",
+            "en": "consumption"
+          },
+          "example": {
+            "nl": "Hij had het verbruik ervan niet gemeten, maar het zichtbare nieuwe voorwerp bood een eenvoudige verklaring voor het onbekende bedrag.",
+            "en": "He had not measured its consumption, but the visible new object offered a simple explanation for the unfamiliar amount."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het vermoeden",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "idee dat nog niet is vastgesteld",
+            "en": "suspicion"
+          },
+          "example": {
+            "nl": "Niet alles bleek meteen duidelijk, zodat ze vragen noteerden en informatie verzamelden in plaats van hun vermoeden als uitkomst te behandelen.",
+            "en": "Not everything became clear immediately, so they wrote down questions and gathered information instead of treating their suspicion as the outcome."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "onzorgvuldig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder voldoende aandacht",
+            "en": "careless"
+          },
+          "example": {
+            "nl": "De factuur bleef een kost, maar hoefde niet langer het bewijs te zijn dat één bewoner onzorgvuldig was.",
+            "en": "The bill remained an expense but no longer had to be proof that one resident was careless."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "Hij had het verbruik ervan niet gemeten, maar het zichtbare nieuwe voorwerp bood een eenvoudige verklaring voor het onbekende bedrag.",
+              "en": "He had not measured its consumption, but the visible new object offered a simple explanation for the unfamiliar amount."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is Brams eerste verklaring onvoldoende?",
+            "en": "Why is Bram's first explanation insufficient?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft het verbruik niet gecontroleerd",
+              "en": "He has not checked consumption"
+            },
+            {
+              "nl": "Het toestel is niet zichtbaar",
+              "en": "The device is not visible"
+            },
+            {
+              "nl": "Er is geen factuur",
+              "en": "There is no bill"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij had het verbruik ervan niet gemeten, maar het zichtbare nieuwe voorwerp bood een eenvoudige verklaring voor het onbekende bedrag.",
+            "en": "He had not measured its consumption, but the visible new object offered a simple explanation for the unfamiliar amount."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen ze vóór conclusies over de oorzaak?",
+            "en": "What do they do before concluding about the cause?"
+          },
+          "options": [
+            {
+              "nl": "Documenten lezen en onduidelijkheden laten uitleggen",
+              "en": "Read documents and have uncertainties explained"
+            },
+            {
+              "nl": "Elk gesprek stoppen",
+              "en": "Stop every conversation"
+            },
+            {
+              "nl": "Alleen hun vermoedens herhalen",
+              "en": "Only repeat their suspicions"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze lazen de documenten samen en lieten onduidelijke onderdelen via het passende contactpunt toelichten voordat ze conclusies over de oorzaak trokken.",
+            "en": "They read the documents together and had unclear parts explained through the appropriate contact point before drawing conclusions about the cause."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-warmtekaart-van-herinneringen",
+      "topic_id": "climate-change",
+      "title": {
+        "nl": "De straat op de foto en de straat van vandaag",
+        "en": "The street in the photo and today's street"
+      },
+      "plot_key": "A community photo project separates personal memories of weather from claims about long-term change while gathering useful local experiences.",
+      "lines": [
+        {
+          "nl": "Voor een buurtavond vroeg Lien bewoners een foto mee te brengen van een zomer die ze zich bijzonder goed herinnerden.",
+          "en": "For a neighbourhood evening, Lien asked residents to bring a photograph of a summer they remembered particularly well."
+        },
+        {
+          "nl": "Al snel werd één oude foto van spelende kinderen in de regen gebruikt als bewijs dat het vroeger altijd koeler was geweest.",
+          "en": "Before long, one old photograph of children playing in rain was used as proof that it had always been cooler in the past."
+        },
+        {
+          "nl": "Een andere bewoner legde er een zonnige foto naast en zei dat herinneringen blijkbaar precies het tegendeel aantoonden.",
+          "en": "Another resident put a sunny photograph beside it and said memories apparently showed exactly the opposite."
+        },
+        {
+          "nl": "Lien wilde hun verhalen niet wegzetten als onbelangrijk, maar vroeg of losse beelden wel de vraag konden beantwoorden die nu op tafel lag.",
+          "en": "Lien did not want to dismiss their stories as unimportant but asked whether isolated images could answer the question now on the table."
+        },
+        {
+          "nl": "Ze maakten onderscheid tussen persoonlijke ervaringen, veranderingen in de straat en conclusies waarvoor betrouwbare gegevens over een langere periode nodig waren.",
+          "en": "They distinguished personal experiences, changes in the street and conclusions requiring reliable data over a longer period."
+        },
+        {
+          "nl": "De foto's bleven liggen om te bespreken waar bewoners beschutting zochten en welke plekken zij als moeilijk ervoeren.",
+          "en": "The photographs stayed on the table to discuss where residents sought shelter and which places they found difficult."
+        },
+        {
+          "nl": "Voor uitspraken over het klimaat zocht de groep afzonderlijk naar passende officiële informatie en noteerde ze wat de lokale verhalen niet konden aantonen.",
+          "en": "For statements about climate, the group separately sought suitable official information and noted what the local stories could not establish."
+        },
+        {
+          "nl": "De avond eindigde niet met één foto die gelijk kreeg, maar met betere vragen en een kaart waarop echte ervaringen zichtbaar bleven.",
+          "en": "The evening ended not with one photograph being proved right, but with better questions and a map on which real experiences remained visible."
+        }
+      ],
+      "words": [
+        {
+          "term": "de beschutting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plek die tegen weer of andere invloeden beschermt",
+            "en": "shelter"
+          },
+          "example": {
+            "nl": "De foto's bleven liggen om te bespreken waar bewoners beschutting zochten en welke plekken zij als moeilijk ervoeren.",
+            "en": "The photographs stayed on the table to discuss where residents sought shelter and which places they found difficult."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "aantonen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met bewijs duidelijk maken",
+            "en": "to demonstrate"
+          },
+          "example": {
+            "nl": "Voor uitspraken over het klimaat zocht de groep afzonderlijk naar passende officiële informatie en noteerde ze wat de lokale verhalen niet konden aantonen.",
+            "en": "For statements about climate, the group separately sought suitable official information and noted what the local stories could not establish."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "betrouwbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "voldoende te vertrouwen voor het bedoelde doel",
+            "en": "reliable"
+          },
+          "example": {
+            "nl": "Ze maakten onderscheid tussen persoonlijke ervaringen, veranderingen in de straat en conclusies waarvoor betrouwbare gegevens over een langere periode nodig waren.",
+            "en": "They distinguished personal experiences, changes in the street and conclusions requiring reliable data over a longer period."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "Al snel werd één oude foto van spelende kinderen in de regen gebruikt als bewijs dat het vroeger altijd koeler was geweest.",
+              "en": "Before long, one old photograph of children playing in rain was used as proof that it had always been cooler in the past."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kunnen de twee foto's de klimaatvraag niet beslechten?",
+            "en": "Why can the two photographs not settle the climate question?"
+          },
+          "options": [
+            {
+              "nl": "Foto's hebben nooit enige waarde",
+              "en": "Photographs never have any value"
+            },
+            {
+              "nl": "De bewoners kennen hun straat niet",
+              "en": "The residents do not know their street"
+            },
+            {
+              "nl": "Losse ervaringen zijn geen gegevens over een lange periode",
+              "en": "Isolated experiences are not long-period data"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze maakten onderscheid tussen persoonlijke ervaringen, veranderingen in de straat en conclusies waarvoor betrouwbare gegevens over een langere periode nodig waren.",
+            "en": "They distinguished personal experiences, changes in the street and conclusions requiring reliable data over a longer period."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarvoor blijven de foto's wel nuttig?",
+            "en": "What do the photographs remain useful for?"
+          },
+          "options": [
+            {
+              "nl": "Een exacte temperatuur berekenen",
+              "en": "Calculating an exact temperature"
+            },
+            {
+              "nl": "Een winnaar van het debat kiezen",
+              "en": "Choosing a debate winner"
+            },
+            {
+              "nl": "Lokale ervaringen en moeilijke plekken bespreken",
+              "en": "Discussing local experiences and difficult places"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De foto's bleven liggen om te bespreken waar bewoners beschutting zochten en welke plekken zij als moeilijk ervoeren.",
+            "en": "The photographs stayed on the table to discuss where residents sought shelter and which places they found difficult."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-kast-vol-goede-tassen",
+      "topic_id": "sustainability-recycling",
+      "title": {
+        "nl": "De tas voor wie al twintig tassen had",
+        "en": "The bag for someone who already had twenty bags"
+      },
+      "plot_key": "An event organiser questions a well-meant reusable giveaway when a storeroom shows recipients already own many similar items.",
+      "lines": [
+        {
+          "nl": "Voor een duurzame buurtactie bestelde het team een nieuwe stoffen tas die iedereen als herinnering zou krijgen.",
+          "en": "For a sustainable neighbourhood event, the team ordered a new cloth bag everyone would receive as a souvenir."
+        },
+        {
+          "nl": "Bij het zoeken naar een tafelkleed vond Rachid in de berging een doos vol vrijwel dezelfde tassen van vorige edities.",
+          "en": "While looking for a tablecloth, Rachid found a box in the storeroom full of almost identical bags from previous editions."
+        },
+        {
+          "nl": "Hij vroeg welk probleem de nieuwe bestelling oploste als de meeste bezoekers thuis waarschijnlijk al meer draagtassen hadden dan ze gebruikten.",
+          "en": "He asked what problem the new order solved if most visitors probably already had more bags at home than they used."
+        },
+        {
+          "nl": "De organisator vond het jammer dat juist hun goede bedoeling nu ter discussie stond en wees op het mooie groene ontwerp.",
+          "en": "The organiser regretted that their good intention was now being questioned and pointed to the lovely green design."
+        },
+        {
+          "nl": "Rachid stelde voor eerst na te gaan wat al beschikbaar was en of een cadeau werkelijk nodig was om de boodschap te onthouden.",
+          "en": "Rachid suggested first checking what was already available and whether a gift was really needed to remember the message."
+        },
+        {
+          "nl": "Binnen de nog mogelijke afspraken werd de bestelling beperkt en kregen aanwezige tassen een nieuwe praktische bestemming.",
+          "en": "Within the arrangements still possible, the order was reduced, and existing bags received a new practical use."
+        },
+        {
+          "nl": "Op de dag zelf mocht iedereen zonder extra voorwerp vertrekken; de activiteit hoefde haar waarde niet met een volle hand te bewijzen.",
+          "en": "On the day itself, anyone could leave without an extra object; the activity did not have to prove its value by filling a hand."
+        },
+        {
+          "nl": "Rachid nam zijn oude versleten tas mee naar huis, ditmaal zonder daar een nieuw exemplaar in te stoppen.",
+          "en": "Rachid took his old worn bag home, this time without putting a new one inside it."
+        }
+      ],
+      "words": [
+        {
+          "term": "ter discussie staan",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "onderwerp van kritische bespreking zijn",
+            "en": "to be questioned"
+          },
+          "example": {
+            "nl": "De organisator vond het jammer dat juist hun goede bedoeling nu ter discussie stond en wees op het mooie groene ontwerp.",
+            "en": "The organiser regretted that their good intention was now being questioned and pointed to the lovely green design."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "beschikbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "aanwezig en te gebruiken",
+            "en": "available"
+          },
+          "example": {
+            "nl": "Rachid stelde voor eerst na te gaan wat al beschikbaar was en of een cadeau werkelijk nodig was om de boodschap te onthouden.",
+            "en": "Rachid suggested first checking what was already available and whether a gift was really needed to remember the message."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "beperken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "kleiner of minder omvangrijk maken",
+            "en": "to reduce or limit"
+          },
+          "example": {
+            "nl": "Binnen de nog mogelijke afspraken werd de bestelling beperkt en kregen aanwezige tassen een nieuwe praktische bestemming.",
+            "en": "Within the arrangements still possible, the order was reduced, and existing bags received a new practical use."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De passieve vorm",
+            "en": "The passive voice"
+          },
+          "explanation": {
+            "nl": "Bij de passieve vorm ligt de nadruk op wat er met iets gebeurt. Kijk naar worden of zijn en het voltooid deelwoord.",
+            "en": "The passive focuses on what happens to something. Look for worden or zijn and the past participle."
+          },
+          "examples": [
+            {
+              "nl": "Binnen de nog mogelijke afspraken werd de bestelling beperkt en kregen aanwezige tassen een nieuwe praktische bestemming.",
+              "en": "Within the arrangements still possible, the order was reduced, and existing bags received a new practical use."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt Rachid aan het twijfelen?",
+            "en": "What makes Rachid doubtful?"
+          },
+          "options": [
+            {
+              "nl": "De ontbrekende tafel",
+              "en": "The missing table"
+            },
+            {
+              "nl": "De voorraad vrijwel gelijke oude tassen",
+              "en": "The stock of nearly identical old bags"
+            },
+            {
+              "nl": "Het slechte weer",
+              "en": "The bad weather"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Bij het zoeken naar een tafelkleed vond Rachid in de berging een doos vol vrijwel dezelfde tassen van vorige edities.",
+            "en": "While looking for a tablecloth, Rachid found a box in the storeroom full of almost identical bags from previous editions."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert bij de actie?",
+            "en": "What changes at the event?"
+          },
+          "options": [
+            {
+              "nl": "Iedereen moet twee tassen nemen",
+              "en": "Everyone must take two bags"
+            },
+            {
+              "nl": "Een extra voorwerp is niet nodig om deel te nemen",
+              "en": "An extra object is not required to participate"
+            },
+            {
+              "nl": "Er worden geen activiteiten meer gehouden",
+              "en": "No activities take place anymore"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Op de dag zelf mocht iedereen zonder extra voorwerp vertrekken; de activiteit hoefde haar waarde niet met een volle hand te bewijzen.",
+            "en": "On the day itself, anyone could leave without an extra object; the activity did not have to prove its value by filling a hand."
+          }
+        }
+      ]
+    }
+  ]
+}

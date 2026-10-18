@@ -32,6 +32,7 @@ test("original stories stay in Reading and switching stories clears temporary an
   await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toBeVisible();
   await page.getByRole("button", { name: /^Kies een verhaal/ }).click();
   const picker = page.getByRole("region", { name: /^Verhalen in dit onderwerp/ });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await picker.getByRole("searchbox").fill(target.title.nl);
   await picker.locator(`button[data-activity-id="${targetId}"]`).click();
   await expect(page).toHaveURL(new RegExp(`activity=${targetId}`));
@@ -40,6 +41,7 @@ test("original stories stay in Reading and switching stories clears temporary an
   await page.getByRole("button", { name: /^Ik ben klaar om te oefenen/ }).click();
   const lines = page.locator(".study-story-line");
   await expect(lines).toHaveCount(target.parts[0].text.length);
+  await expect(lines.getByRole("button", { name: /^Luister:/ })).toHaveCount(target.parts[0].text.length);
   await expect(lines.first()).toContainText(target.parts[0].text[0].nl);
   await expect(page.locator('.study-question input[type="radio"]:checked')).toHaveCount(0);
   const [audio] = await Promise.all([
