@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from dlp.config import CONTENT_DIR
-from dlp.domains.curriculum import grammar, story_inventory, supplements, word_usage
+from dlp.domains.curriculum import grammar, reading_manifest, story_inventory, supplements, word_usage
 from dlp.domains.curriculum.schemas import SKILLS, STAGE_IDS, Curriculum, Stage
 
 if TYPE_CHECKING:
@@ -25,7 +25,7 @@ DIRECTORIES = (*story_inventory.PACKS, "practice", "vocabulary-transfer", "gramm
 
 
 def content_stamp(root: Path) -> tuple[tuple[str, int, int], ...]:
-    paths = [root / "curriculum/path.json", root / "alignment/story-provenance.json"]
+    paths = [root / "curriculum/path.json", root / "alignment/story-provenance.json", root / reading_manifest.MANIFEST]
     paths.extend(root / directory / f"{stage}.json" for directory in DIRECTORIES for stage in STAGE_IDS)
     paths.extend(sorted((root / "study/reading").glob("*/*.json")))
     return tuple((str(path.relative_to(root)), path.stat().st_mtime_ns, path.stat().st_size)
@@ -71,8 +71,10 @@ def _read(root_path: str, version: tuple) -> dict[str, dict]:
     path = root / "curriculum/path.json"
     curriculum_data = json.loads(path.read_text(encoding="utf-8"))
     document = Curriculum.model_validate(grammar.merge(supplements.merge_curriculum(curriculum_data, root), root))
-    audit = _story_audit(root_path, version)
-    audited_stages = {row["stage"]: row for row in audit["stages"]}
+    audited_stages = reading_manifest.stage_counts(root)
+    if audited_stages is None:
+        audit = _story_audit(root_path, version)
+        audited_stages = {row["stage"]: row for row in audit["stages"]}
     result = {}
     for stage in document.stages:
         library_path = root / "library" / f"{stage.id}.json"
@@ -99,6 +101,9 @@ def eligible_story_ids(stage_id: str) -> frozenset[str]:
     This compatibility collection is deliberately narrower than the combined
     canonical story count exposed by ``all_coverage``.
     """
+    published = reading_manifest.eligible_story_ids(CONTENT_DIR, stage_id)
+    if published is not None:
+        return published
     audit = _story_audit(str(CONTENT_DIR), content_stamp(CONTENT_DIR))
     row = next((item for item in audit["stages"] if item["stage"] == stage_id), None)
     return frozenset(row["legacy_library_eligible_story_ids"]) if row else frozenset()

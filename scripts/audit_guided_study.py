@@ -402,11 +402,17 @@ def main() -> None:
     args = parser.parse_args()
     index = make_index(args.content, taxonomy(args.content))
     result = audit(args.content, require_minimum=0 if args.allow_partial else 50, source_index=index)
+    from dlp.domains.curriculum import reading_manifest, story_inventory
+
+    eligibility = reading_manifest.build(args.content, story_inventory.audit(args.content))
     if args.check_index:
         path = args.content / "study" / "stage-index.json"
         stored = read(path) if path.exists() else None
         if stored != index:
             raise ValueError("guided source index is stale; regenerate with scripts/audit_guided_study.py --write-index")
+        manifest_path = args.content / reading_manifest.MANIFEST
+        if not manifest_path.exists() or read(manifest_path) != eligibility:
+            raise ValueError("reading eligibility is stale; regenerate with scripts/audit_guided_study.py --write-index")
         for stage in STAGES:
             for skill in SKILLS:
                 actual = stored["stages"][stage][skill]
@@ -415,6 +421,8 @@ def main() -> None:
     if args.write_index:
         path = args.content / "study" / "stage-index.json"
         path.write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (args.content / reading_manifest.MANIFEST).write_text(
+            json.dumps(eligibility, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if args.json:
         args.json.parent.mkdir(parents=True, exist_ok=True)
         args.json.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

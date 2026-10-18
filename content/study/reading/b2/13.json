@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "b2-read-vriend-met-dubbele-betekenis",
+      "topic_id": "languages",
+      "title": {
+        "nl": "Een vriend of mijn vriend?",
+        "en": "A friend or my boyfriend?"
+      },
+      "plot_key": "A dinner invitation reveals an ambiguity in relationship vocabulary and the speakers clarify without requiring a private explanation.",
+      "lines": [
+        {
+          "nl": "Voor het etentje schreef Lena in de groepschat dat ze met haar vriend zou komen, waarop de anderen meteen een romantische kennismaking voorbereidden.",
+          "en": "For the dinner, Lena wrote in the group chat that she would come with her friend, prompting the others immediately to prepare a romantic introduction."
+        },
+        {
+          "nl": "Ze zetten twee stoelen wat dichter bij elkaar en vroegen elkaar hoe lang de nieuwe relatie vermoedelijk al duurde.",
+          "en": "They placed two chairs a little closer together and asked one another how long the new relationship had probably existed."
+        },
+        {
+          "nl": "Toen Lena met haar oude studievriend Amir binnenkwam, begon iemand hen met zoveel nadruk als koppel te behandelen dat ze allebei tegelijk moesten lachen.",
+          "en": "When Lena entered with her old university friend Amir, someone began treating them so emphatically as a couple that they both had to laugh at once."
+        },
+        {
+          "nl": "Lena legde uit dat vriend in haar bericht over vriendschap ging, terwijl de anderen het als partner hadden gelezen.",
+          "en": "Lena explained that vriend in her message referred to friendship, while the others had read it as partner."
+        },
+        {
+          "nl": "Een gast vroeg onmiddellijk of er dan toch niets tussen hen was, waarop Amir zei dat het eten geen bewijs over hun privéleven nodig had.",
+          "en": "A guest immediately asked whether there was really nothing between them, whereupon Amir said the dinner did not need proof about their private lives."
+        },
+        {
+          "nl": "De stoelen werden gewoon over de tafel verdeeld en het gesprek ging verder over de studie waar ze elkaar hadden leren kennen.",
+          "en": "The chairs were simply distributed around the table, and the conversation continued about the course where they had met."
+        },
+        {
+          "nl": "Later vergeleken ze enkele formuleringen die hun bedoeling duidelijker hadden gemaakt, zonder te doen alsof elk woord maar één vaste relatie kon aanwijzen.",
+          "en": "Later, they compared a few formulations that would have made their intention clearer, without pretending each word could indicate only one fixed relationship."
+        },
+        {
+          "nl": "Bij het afscheid beloofde Lena de volgende uitnodiging preciezer te schrijven; Amir vroeg of hij dan tenminste nog dezelfde stoel mocht kiezen.",
+          "en": "At goodbye, Lena promised to write the next invitation more precisely; Amir asked whether he could at least still choose the same chair then."
+        }
+      ],
+      "words": [
+        {
+          "term": "als koppel",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "als twee mensen met een romantische relatie",
+            "en": "as a couple"
+          },
+          "example": {
+            "nl": "Toen Lena met haar oude studievriend Amir binnenkwam, begon iemand hen met zoveel nadruk als koppel te behandelen dat ze allebei tegelijk moesten lachen.",
+            "en": "When Lena entered with her old university friend Amir, someone began treating them so emphatically as a couple that they both had to laugh at once."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "vermoedelijk",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "waarschijnlijk, maar niet vastgesteld",
+            "en": "presumably"
+          },
+          "example": {
+            "nl": "Ze zetten twee stoelen wat dichter bij elkaar en vroegen elkaar hoe lang de nieuwe relatie vermoedelijk al duurde.",
+            "en": "They placed two chairs a little closer together and asked one another how long the new relationship had probably existed."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de formulering",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "gekozen woorden om iets uit te drukken",
+            "en": "formulation"
+          },
+          "example": {
+            "nl": "Later vergeleken ze enkele formuleringen die hun bedoeling duidelijker hadden gemaakt, zonder te doen alsof elk woord maar één vaste relatie kon aanwijzen.",
+            "en": "Later, they compared a few formulations that would have made their intention clearer, without pretending each word could indicate only one fixed relationship."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een bijzin met terwijl",
+            "en": "A subordinate clause with terwijl"
+          },
+          "explanation": {
+            "nl": "Terwijl verbindt een bijzin met een hoofdzin. Het kan gelijktijdigheid of een tegenstelling aangeven; het werkwoord staat achteraan in de bijzin.",
+            "en": "Terwijl links a subordinate clause to a main clause. It can express simultaneous events or a contrast; the verb comes at the end of the subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "Lena legde uit dat vriend in haar bericht over vriendschap ging, terwijl de anderen het als partner hadden gelezen.",
+              "en": "Lena explained that vriend in her message referred to friendship, while the others had read it as partner."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waardoor ontstaat het eerste misverstand?",
+            "en": "What causes the initial misunderstanding?"
+          },
+          "options": [
+            {
+              "nl": "Lena noemt de verkeerde datum",
+              "en": "Lena gives the wrong date"
+            },
+            {
+              "nl": "Amir stuurt de uitnodiging",
+              "en": "Amir sends the invitation"
+            },
+            {
+              "nl": "Het woord vriend krijgt twee mogelijke lezingen",
+              "en": "The word vriend receives two possible readings"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Lena legde uit dat vriend in haar bericht over vriendschap ging, terwijl de anderen het als partner hadden gelezen.",
+            "en": "Lena explained that vriend in her message referred to friendship, while the others had read it as partner."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat gebeurt er na de uitleg?",
+            "en": "What happens after the explanation?"
+          },
+          "options": [
+            {
+              "nl": "Het etentje wordt afgezegd",
+              "en": "The dinner is cancelled"
+            },
+            {
+              "nl": "Ze moeten hun hele privéleven verklaren",
+              "en": "They must explain their entire private lives"
+            },
+            {
+              "nl": "Het gezelschap verdeelt de plaatsen en gaat verder praten",
+              "en": "The company redistributes the seats and continues talking"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De stoelen werden gewoon over de tafel verdeeld en het gesprek ging verder over de studie waar ze elkaar hadden leren kennen.",
+            "en": "The chairs were simply distributed around the table, and the conversation continued about the course where they had met."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-raam-met-nieuwe-plant",
+      "topic_id": "housing",
+      "title": {
+        "nl": "Het groene raam van het lege huis",
+        "en": "The green window of the empty house"
+      },
+      "plot_key": "A neighbour misreads a plant in an apparently vacant house and finds a respectful way to preserve a small shared memory.",
+      "lines": [
+        {
+          "nl": "Sinds de oudere buurvrouw verhuisd was, keek Bas iedere ochtend naar haar donkere raam aan de overkant van de straat.",
+          "en": "Since the older neighbour had moved away, Bas looked every morning at her dark window across the street."
+        },
+        {
+          "nl": "Op een dag stond er opnieuw een groene plant in dezelfde hoek, hoewel hij wist dat nog niemand in de woning was getrokken.",
+          "en": "One day, a green plant stood in the same corner again, although he knew nobody had moved into the home yet."
+        },
+        {
+          "nl": "Hij begon de onbekende bewoner te groeten voordat hij iemand had gezien en vertelde zijn partner dat het huis blijkbaar weer leefde.",
+          "en": "He began greeting the unknown resident before seeing anyone and told his partner that the house apparently lived again."
+        },
+        {
+          "nl": "Toen de dochter van de buurvrouw met een gieter naar buiten kwam, vroeg hij voorzichtig of er al nieuwe bewoners waren.",
+          "en": "When the neighbour's daughter came outside with a watering can, he cautiously asked whether there were new residents already."
+        },
+        {
+          "nl": "Ze vertelde dat haar moeder de plant nog niet kon meenemen en haar had gevraagd hem tijdelijk te blijven verzorgen.",
+          "en": "She said her mother could not take the plant yet and had asked her to keep looking after it temporarily."
+        },
+        {
+          "nl": "Bas bood niet aan zomaar binnen te komen, maar vroeg of hij zijn oude buurvrouw een kaartje mocht bezorgen via haar dochter.",
+          "en": "Bas did not offer to come inside uninvited, but asked whether he could send his former neighbour a card through her daughter."
+        },
+        {
+          "nl": "Hij tekende daarop het groene raam en schreef dat hij nog steeds even naar de overkant keek voor hij naar zijn werk vertrok.",
+          "en": "On it, he drew the green window and wrote that he still looked across for a moment before leaving for work."
+        },
+        {
+          "nl": "Een week later verdween de plant alsnog, maar naast zijn voordeur hing een kort antwoord met haar eigen nieuwe uitzicht.",
+          "en": "A week later, the plant disappeared after all, but beside his front door hung a short reply showing her own new view."
+        }
+      ],
+      "words": [
+        {
+          "term": "tijdelijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "voor een beperkte periode",
+            "en": "temporary"
+          },
+          "example": {
+            "nl": "Ze vertelde dat haar moeder de plant nog niet kon meenemen en haar had gevraagd hem tijdelijk te blijven verzorgen.",
+            "en": "She said her mother could not take the plant yet and had asked her to keep looking after it temporarily."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "bezorgen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "bij de bedoelde ontvanger laten komen",
+            "en": "to deliver"
+          },
+          "example": {
+            "nl": "Bas bood niet aan zomaar binnen te komen, maar vroeg of hij zijn oude buurvrouw een kaartje mocht bezorgen via haar dochter.",
+            "en": "Bas did not offer to come inside uninvited, but asked whether he could send his former neighbour a card through her daughter."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "alsnog",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "later toch nog",
+            "en": "after all"
+          },
+          "example": {
+            "nl": "Een week later verdween de plant alsnog, maar naast zijn voordeur hing een kort antwoord met haar eigen nieuwe uitzicht.",
+            "en": "A week later, the plant disappeared after all, but beside his front door hung a short reply showing her own new view."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een toegeving met hoewel",
+            "en": "Concession with hoewel"
+          },
+          "explanation": {
+            "nl": "Hoewel leidt een bijzin in die een tegenstelling met de hoofdzin uitdrukt. Het werkwoord staat achteraan in die bijzin.",
+            "en": "Hoewel introduces a subordinate clause expressing a contrast with the main clause. The verb is placed at the end of that clause."
+          },
+          "examples": [
+            {
+              "nl": "Op een dag stond er opnieuw een groene plant in dezelfde hoek, hoewel hij wist dat nog niemand in de woning was getrokken.",
+              "en": "One day, a green plant stood in the same corner again, although he knew nobody had moved into the home yet."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom staat er opnieuw een plant?",
+            "en": "Why is there a plant again?"
+          },
+          "options": [
+            {
+              "nl": "Bas heeft hem zelf neergezet",
+              "en": "Bas put it there himself"
+            },
+            {
+              "nl": "De dochter verzorgt hem tijdelijk voor haar moeder",
+              "en": "The daughter is temporarily caring for it for her mother"
+            },
+            {
+              "nl": "Een onbekende huurder is al verhuisd",
+              "en": "An unknown tenant has already moved in"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze vertelde dat haar moeder de plant nog niet kon meenemen en haar had gevraagd hem tijdelijk te blijven verzorgen.",
+            "en": "She said her mother could not take the plant yet and had asked her to keep looking after it temporarily."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe zoekt Bas contact met zijn vroegere buurvrouw?",
+            "en": "How does Bas contact his former neighbour?"
+          },
+          "options": [
+            {
+              "nl": "Hij vraagt om haar sleutel",
+              "en": "He asks for her key"
+            },
+            {
+              "nl": "Hij vraagt of een kaart via haar dochter kan komen",
+              "en": "He asks whether a card can reach her through her daughter"
+            },
+            {
+              "nl": "Hij publiceert haar nieuwe adres",
+              "en": "He publishes her new address"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Bas bood niet aan zomaar binnen te komen, maar vroeg of hij zijn oude buurvrouw een kaartje mocht bezorgen via haar dochter.",
+            "en": "Bas did not offer to come inside uninvited, but asked whether he could send his former neighbour a card through her daughter."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-rechterstoel-in-bus",
+      "topic_id": "transportation",
+      "title": {
+        "nl": "De groet die twee weken uitbleef",
+        "en": "The greeting missing for two weeks"
+      },
+      "plot_key": "A regular bus passenger notices another traveller's absence without assuming entitlement to their personal information.",
+      "lines": [
+        {
+          "nl": "Op zijn ochtendbus wisselde Omar al maanden een korte groet met een vrouw die steeds rechts achter de chauffeur zat.",
+          "en": "On his morning bus, Omar had exchanged a brief greeting for months with a woman who always sat on the right behind the driver."
+        },
+        {
+          "nl": "Toen haar stoel twee weken leeg bleef, bedacht hij iedere dag een ander ernstig verhaal dat haar afwezigheid kon verklaren.",
+          "en": "When her seat remained empty for two weeks, he invented a different serious story each day that might explain her absence."
+        },
+        {
+          "nl": "Hij vroeg de chauffeur waar ze woonde, maar hoorde zichzelf tijdens de vraag al meer over een onbekende willen weten dan hun groet hem had gegeven.",
+          "en": "He asked the driver where she lived but, while asking, heard himself wanting to know more about a stranger than their greeting had given him."
+        },
+        {
+          "nl": "De chauffeur deelde geen persoonlijke gegevens en zei dat veranderingen in een vaste routine allerlei redenen konden hebben.",
+          "en": "The driver shared no personal details and said changes in a regular routine could have all sorts of reasons."
+        },
+        {
+          "nl": "Omar liet het daarbij en bleef de gewone reizigers groeten zonder een onderzoek naar de lege stoel te beginnen.",
+          "en": "Omar left it there and kept greeting the regular passengers without beginning an investigation into the empty seat."
+        },
+        {
+          "nl": "Op een ochtend zat de vrouw er weer met een felgekleurde tas en vertelde uit zichzelf dat ze op haar kleinkinderen had gepast.",
+          "en": "One morning, the woman was there again with a brightly coloured bag and said of her own accord that she had been looking after her grandchildren."
+        },
+        {
+          "nl": "Omar zei dat hij hun korte groet gemist had en vroeg hoe haar ochtend was, niet waarom ze hem niets had laten weten.",
+          "en": "Omar said he had missed their brief greeting and asked how her morning was, not why she had not let him know anything."
+        },
+        {
+          "nl": "De stoel was weer bezet door een mens, in plaats van door alle verklaringen die hij er zelf in had gezet.",
+          "en": "The seat was once again occupied by a person rather than all the explanations he had put into it himself."
+        }
+      ],
+      "words": [
+        {
+          "term": "de afwezigheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het er niet zijn",
+            "en": "absence"
+          },
+          "example": {
+            "nl": "Toen haar stoel twee weken leeg bleef, bedacht hij iedere dag een ander ernstig verhaal dat haar afwezigheid kon verklaren.",
+            "en": "When her seat remained empty for two weeks, he invented a different serious story each day that might explain her absence."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "verklaren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een reden geven voor iets",
+            "en": "to explain"
+          },
+          "example": {
+            "nl": "Toen haar stoel twee weken leeg bleef, bedacht hij iedere dag een ander ernstig verhaal dat haar afwezigheid kon verklaren.",
+            "en": "When her seat remained empty for two weeks, he invented a different serious story each day that might explain her absence."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "uit zichzelf",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zonder dat iemand erom vraagt",
+            "en": "of one's own accord"
+          },
+          "example": {
+            "nl": "Op een ochtend zat de vrouw er weer met een felgekleurde tas en vertelde uit zichzelf dat ze op haar kleinkinderen had gepast.",
+            "en": "One morning, the woman was there again with a brightly coloured bag and said of her own accord that she had been looking after her grandchildren."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "De stoel was weer bezet door een mens, in plaats van door alle verklaringen die hij er zelf in had gezet.",
+              "en": "The seat was once again occupied by a person rather than all the explanations he had put into it himself."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat doet Omar met de lege stoel in zijn gedachten?",
+            "en": "What does Omar do with the empty seat in his thoughts?"
+          },
+          "options": [
+            {
+              "nl": "Hij vult de afwezigheid met eigen ernstige verklaringen",
+              "en": "He fills the absence with serious explanations of his own"
+            },
+            {
+              "nl": "Hij weet precies waar de vrouw is",
+              "en": "He knows exactly where the woman is"
+            },
+            {
+              "nl": "Hij wil zelf de stoel kopen",
+              "en": "He wants to buy the seat himself"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Toen haar stoel twee weken leeg bleef, bedacht hij iedere dag een ander ernstig verhaal dat haar afwezigheid kon verklaren.",
+            "en": "When her seat remained empty for two weeks, he invented a different serious story each day that might explain her absence."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke vraag laat hij bij haar terugkeer achterwege?",
+            "en": "Which question does he leave out when she returns?"
+          },
+          "options": [
+            {
+              "nl": "Waarom zij hem niets heeft gemeld",
+              "en": "Why she told him nothing"
+            },
+            {
+              "nl": "Of zij een kleinkind heeft",
+              "en": "Whether she has a grandchild"
+            },
+            {
+              "nl": "Hoe haar ochtend is",
+              "en": "How her morning is"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Omar zei dat hij hun korte groet gemist had en vroeg hoe haar ochtend was, niet waarom ze hem niets had laten weten.",
+            "en": "Omar said he had missed their brief greeting and asked how her morning was, not why she had not let him know anything."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-rol-die-niet-in-tekst-stond",
+      "topic_id": "art-creativity",
+      "title": {
+        "nl": "De deur ging te vroeg open",
+        "en": "The door opened too early"
+      },
+      "plot_key": "Amateur actors recover from a missed cue by responding to each other rather than fighting to restore every memorised word.",
+      "lines": [
+        {
+          "nl": "Tijdens de première van een klein toneelstuk opende de bode zijn deur een volledige scène te vroeg, precies terwijl twee andere spelers hun geheim moesten bespreken.",
+          "en": "During the premiere of a small play, the messenger opened his door a whole scene too early, precisely while two other actors were meant to discuss their secret."
+        },
+        {
+          "nl": "Achter de schermen zocht iedereen haastig in de tekst, maar op het podium kon niemand doen alsof de man niet midden in de kamer stond.",
+          "en": "Backstage, everyone searched the script hurriedly, but onstage nobody could pretend the man was not standing in the middle of the room."
+        },
+        {
+          "nl": "De oudste speelster schoof hem een stoel toe en vroeg met haar gewone personagestem waarom hij zo vroeg op het antwoord wachtte.",
+          "en": "The oldest actress slid him a chair and asked in her usual character's voice why he was waiting for the answer so early."
+        },
+        {
+          "nl": "De bode begreep de opening en zei dat hij buiten niet langer naar hun gefluister wilde luisteren.",
+          "en": "The messenger understood the opening and said he no longer wanted to listen to their whispering outside."
+        },
+        {
+          "nl": "Daardoor konden de twee het geheim voor zijn ogen bespreken alsof hij tijdelijk niet hoorde wat hij juist eerder dan bedoeld had ontdekt.",
+          "en": "That allowed the two to discuss the secret before his eyes as though he temporarily did not hear what he had discovered earlier than intended."
+        },
+        {
+          "nl": "Na enkele zinnen kwam de oorspronkelijke volgorde weer binnen bereik, zonder dat een speler de ander zichtbaar tot de fout terugduwde.",
+          "en": "After a few lines, the original sequence came within reach again, without one actor visibly pushing another back into the mistake."
+        },
+        {
+          "nl": "Bij de nabespreking erkenden ze de gemiste inzet en oefenden ze die opnieuw, maar bewaarden ze ook wat hun aandacht voor elkaar had gered.",
+          "en": "During the debrief, they acknowledged the missed cue and practised it again, but also kept what their attention to one another had rescued."
+        },
+        {
+          "nl": "De bode kreeg de volgende avond geen stoel meer aangereikt; hij bleef ditmaal op tijd achter zijn deur.",
+          "en": "The messenger was not handed a chair the next evening; this time, he stayed behind his door on time."
+        }
+      ],
+      "words": [
+        {
+          "term": "de inzet",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "moment waarop een speler moet beginnen",
+            "en": "cue"
+          },
+          "example": {
+            "nl": "Bij de nabespreking erkenden ze de gemiste inzet en oefenden ze die opnieuw, maar bewaarden ze ook wat hun aandacht voor elkaar had gered.",
+            "en": "During the debrief, they acknowledged the missed cue and practised it again, but also kept what their attention to one another had rescued."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het gefluister",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "zacht spreken dat anderen moeilijk horen",
+            "en": "whispering"
+          },
+          "example": {
+            "nl": "De bode begreep de opening en zei dat hij buiten niet langer naar hun gefluister wilde luisteren.",
+            "en": "The messenger understood the opening and said he no longer wanted to listen to their whispering outside."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "terugduwen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "weer naar een eerdere plaats of positie dringen",
+            "en": "to push back"
+          },
+          "example": {
+            "nl": "Na enkele zinnen kwam de oorspronkelijke volgorde weer binnen bereik, zonder dat een speler de ander zichtbaar tot de fout terugduwde.",
+            "en": "After a few lines, the original sequence came within reach again, without one actor visibly pushing another back into the mistake."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te",
+            "en": "Without doing"
+          },
+          "explanation": {
+            "nl": "Zonder te met een infinitief beschrijft een handeling die niet plaatsvindt. Het onderwerp blijft hetzelfde als in de hoofdzin.",
+            "en": "Zonder te with an infinitive describes an action that does not take place. Its subject is the same as that of the main clause."
+          },
+          "examples": [
+            {
+              "nl": "Na enkele zinnen kwam de oorspronkelijke volgorde weer binnen bereik, zonder dat een speler de ander zichtbaar tot de fout terugduwde.",
+              "en": "After a few lines, the original sequence came within reach again, without one actor visibly pushing another back into the mistake."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kan de scène niet gewoon volgens de tekst doorgaan?",
+            "en": "Why can the scene not simply continue according to the script?"
+          },
+          "options": [
+            {
+              "nl": "Het publiek kent het einde",
+              "en": "The audience knows the ending"
+            },
+            {
+              "nl": "De tekst is volledig verdwenen",
+              "en": "The script has completely disappeared"
+            },
+            {
+              "nl": "Een speler is al zichtbaar te vroeg binnengekomen",
+              "en": "An actor has already visibly entered too early"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Achter de schermen zocht iedereen haastig in de tekst, maar op het podium kon niemand doen alsof de man niet midden in de kamer stond.",
+            "en": "Backstage, everyone searched the script hurriedly, but onstage nobody could pretend the man was not standing in the middle of the room."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen ze na de voorstelling met de fout?",
+            "en": "What do they do with the mistake after the performance?"
+          },
+          "options": [
+            {
+              "nl": "Ze verwijderen de bode uit elke scène",
+              "en": "They remove the messenger from every scene"
+            },
+            {
+              "nl": "Ze noemen haar alleen een succes",
+              "en": "They call it only a success"
+            },
+            {
+              "nl": "Ze oefenen de inzet en erkennen ook de samenwerking",
+              "en": "They practise the cue and also acknowledge the cooperation"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Bij de nabespreking erkenden ze de gemiste inzet en oefenden ze die opnieuw, maar bewaarden ze ook wat hun aandacht voor elkaar had gered.",
+            "en": "During the debrief, they acknowledged the missed cue and practised it again, but also kept what their attention to one another had rescued."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-koffie-die-ik-niet-meer-dronk",
+      "topic_id": "restaurants-cafes",
+      "title": {
+        "nl": "Zoals altijd, of toch niet?",
+        "en": "The usual, or perhaps not?"
+      },
+      "plot_key": "A returning café customer finds that a familiar welcome can also trap someone in an old preference and asks for space to change.",
+      "lines": [
+        {
+          "nl": "Na maanden afwezigheid stapte Fien haar vroegere stamcafé binnen en kreeg ze nog voor het bestellen dezelfde sterke koffie als vroeger.",
+          "en": "After months away, Fien entered her former regular café and received the same strong coffee as before even before ordering."
+        },
+        {
+          "nl": "De uitbater glunderde omdat hij haar voorkeur nog wist, waardoor zij aarzelde te zeggen dat ze tegenwoordig liever iets anders dronk.",
+          "en": "The owner beamed because he still remembered her preference, making her hesitate to say she now preferred something else."
+        },
+        {
+          "nl": "Ze nam een beleefde slok en vroeg daarna de menukaart, alsof ze daarmee zijn welkom weer ongedaan maakte.",
+          "en": "She took a polite sip and then asked for the menu, as though that undid his welcome."
+        },
+        {
+          "nl": "Hij vroeg bezorgd of de koffie niet goed was, waarop Fien uitlegde dat niet de koffie maar haar keuze veranderd was.",
+          "en": "He anxiously asked whether the coffee was not good, whereupon Fien explained that it was not the coffee but her choice that had changed."
+        },
+        {
+          "nl": "Ze waardeerde het dat hij haar herkende en wilde tegelijk niet voor altijd hetzelfde antwoord op een oude vraag blijven.",
+          "en": "She appreciated being recognised by him and at the same time did not want forever to remain the same answer to an old question."
+        },
+        {
+          "nl": "De uitbater zette het nieuwe drankje neer en vroeg hoe het kwam dat ze zo lang niet was geweest, zonder een verklaring voor haar smaak te eisen.",
+          "en": "The owner put down the new drink and asked why she had been away so long, without demanding an explanation for her taste."
+        },
+        {
+          "nl": "De volgende keer begroette hij haar met haar naam en vroeg of het vandaag hetzelfde mocht zijn.",
+          "en": "Next time, he greeted her by name and asked whether she would like the same today."
+        },
+        {
+          "nl": "Dat kleine vraagteken maakte de vertrouwdheid niet kleiner; het liet er iemand in terugkomen die intussen was veranderd.",
+          "en": "That small question mark did not lessen the familiarity; it allowed someone to return within it who had changed in the meantime."
+        }
+      ],
+      "words": [
+        {
+          "term": "het stamcafé",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "café waar iemand geregeld komt",
+            "en": "regular café"
+          },
+          "example": {
+            "nl": "Na maanden afwezigheid stapte Fien haar vroegere stamcafé binnen en kreeg ze nog voor het bestellen dezelfde sterke koffie als vroeger.",
+            "en": "After months away, Fien entered her former regular café and received the same strong coffee as before even before ordering."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "glunderen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zichtbaar erg tevreden glimlachen",
+            "en": "to beam"
+          },
+          "example": {
+            "nl": "De uitbater glunderde omdat hij haar voorkeur nog wist, waardoor zij aarzelde te zeggen dat ze tegenwoordig liever iets anders dronk.",
+            "en": "The owner beamed because he still remembered her preference, making her hesitate to say she now preferred something else."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "intussen",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "ondertussen, in de tijd die voorbijging",
+            "en": "in the meantime"
+          },
+          "example": {
+            "nl": "Dat kleine vraagteken maakte de vertrouwdheid niet kleiner; het liet er iemand in terugkomen die intussen was veranderd.",
+            "en": "That small question mark did not lessen the familiarity; it allowed someone to return within it who had changed in the meantime."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "De uitbater glunderde omdat hij haar voorkeur nog wist, waardoor zij aarzelde te zeggen dat ze tegenwoordig liever iets anders dronk.",
+              "en": "The owner beamed because he still remembered her preference, making her hesitate to say she now preferred something else."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zegt Fien haar nieuwe voorkeur niet meteen?",
+            "en": "Why does Fien not state her new preference immediately?"
+          },
+          "options": [
+            {
+              "nl": "De uitbater weigert vragen",
+              "en": "The owner refuses questions"
+            },
+            {
+              "nl": "Ze wil het attente welkom niet afwijzen",
+              "en": "She does not want to reject the thoughtful welcome"
+            },
+            {
+              "nl": "Ze weet niet wat ze wil",
+              "en": "She does not know what she wants"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De uitbater glunderde omdat hij haar voorkeur nog wist, waardoor zij aarzelde te zeggen dat ze tegenwoordig liever iets anders dronk.",
+            "en": "The owner beamed because he still remembered her preference, making her hesitate to say she now preferred something else."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke vraag maakt het latere welkom beter?",
+            "en": "What question improves the later welcome?"
+          },
+          "options": [
+            {
+              "nl": "Waarom zij nooit koffie wil",
+              "en": "Why she never wants coffee"
+            },
+            {
+              "nl": "Of hetzelfde drankje vandaag nog haar keuze is",
+              "en": "Whether the same drink is still her choice today"
+            },
+            {
+              "nl": "Hoeveel maanden zij zal blijven",
+              "en": "How many months she will stay"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De volgende keer begroette hij haar met haar naam en vroeg of het vandaag hetzelfde mocht zijn.",
+            "en": "Next time, he greeted her by name and asked whether she would like the same today."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-hardloper-met-marktkraam",
+      "topic_id": "outdoor-adventure",
+      "title": {
+        "nl": "De finish tussen de appels",
+        "en": "The finish among the apples"
+      },
+      "plot_key": "A recreational runner helps gather spilled market apples and is mistakenly congratulated for a race he never entered.",
+      "lines": [
+        {
+          "nl": "Op zijn rustige zondagsloop kwam Jonas langs een marktkraam waarvan een krat appels net over de stoep was omgevallen.",
+          "en": "On his easy Sunday run, Jonas passed a market stall whose crate of apples had just tipped over onto the pavement."
+        },
+        {
+          "nl": "Hij stopte en hielp de koopman het fruit oprapen, waardoor zijn gewone rondje plots tussen drie winkelstraten doorliep.",
+          "en": "He stopped and helped the stallholder pick up the fruit, causing his usual circuit suddenly to wind through three shopping streets."
+        },
+        {
+          "nl": "Toen hij later weer begon te lopen, kwam hij onbedoeld bij het einde van een plaatselijke loopwedstrijd terecht.",
+          "en": "When he later started running again, he unintentionally ended up at the finish of a local running race."
+        },
+        {
+          "nl": "Een vrijwilliger hield hem glimlachend een beker voor, totdat hij uitlegde dat hij alleen naar huis liep en nergens was ingeschreven.",
+          "en": "A volunteer smilingly held out a cup to him until he explained that he was only running home and had entered nothing."
+        },
+        {
+          "nl": "De koopman, die inmiddels met een mandje naar de afsluiting was gekomen, noemde hem toch zijn snelste appelplukker.",
+          "en": "The stallholder, who had meanwhile come to the barrier with a little basket, nevertheless called him his fastest apple picker."
+        },
+        {
+          "nl": "Jonas wees de wedstrijdbeloning af en nam met de man buiten de doorgang een appel aan.",
+          "en": "Jonas declined the race reward and accepted an apple from the man outside the passage."
+        },
+        {
+          "nl": "Thuis vroeg zijn partner waarom zijn tijd zo langzaam was, waarop hij zei dat hij onderweg een volledige oogst had ingehaald.",
+          "en": "At home, his partner asked why his time was so slow, whereupon he said he had caught up with an entire harvest along the way."
+        },
+        {
+          "nl": "De appel lag nog op tafel toen hij zijn horloge weglegde; zijn kortste route had die ochtend niet het beste verhaal gehad.",
+          "en": "The apple was still on the table when he put away his watch; his shortest route had not had the best story that morning."
+        }
+      ],
+      "words": [
+        {
+          "term": "onbedoeld",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "zonder dat iemand het zo heeft gepland",
+            "en": "unintentionally"
+          },
+          "example": {
+            "nl": "Toen hij later weer begon te lopen, kwam hij onbedoeld bij het einde van een plaatselijke loopwedstrijd terecht.",
+            "en": "When he later started running again, he unintentionally ended up at the finish of a local running race."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "oprapen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "van de grond opnemen",
+            "en": "to pick up"
+          },
+          "example": {
+            "nl": "Hij stopte en hielp de koopman het fruit oprapen, waardoor zijn gewone rondje plots tussen drie winkelstraten doorliep.",
+            "en": "He stopped and helped the stallholder pick up the fruit, causing his usual circuit suddenly to wind through three shopping streets."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de afsluiting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hek of lijn die een gebied afbakent",
+            "en": "barrier"
+          },
+          "example": {
+            "nl": "De koopman, die inmiddels met een mandje naar de afsluiting was gekomen, noemde hem toch zijn snelste appelplukker.",
+            "en": "The stallholder, who had meanwhile come to the barrier with a little basket, nevertheless called him his fastest apple picker."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "De appel lag nog op tafel toen hij zijn horloge weglegde; zijn kortste route had die ochtend niet het beste verhaal gehad.",
+              "en": "The apple was still on the table when he put away his watch; his shortest route had not had the best story that morning."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom komt Jonas bij de wedstrijd terecht?",
+            "en": "Why does Jonas end up at the race?"
+          },
+          "options": [
+            {
+              "nl": "Zijn gewone route is door hulp bij het kraam veranderd",
+              "en": "His usual route has changed after helping at the stall"
+            },
+            {
+              "nl": "Hij is als deelnemer ingeschreven",
+              "en": "He has entered as a participant"
+            },
+            {
+              "nl": "Hij wil een prijs opeisen",
+              "en": "He wants to claim a prize"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij stopte en hielp de koopman het fruit oprapen, waardoor zijn gewone rondje plots tussen drie winkelstraten doorliep.",
+            "en": "He stopped and helped the stallholder pick up the fruit, causing his usual circuit suddenly to wind through three shopping streets."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe handelt hij bij de aangeboden beloning?",
+            "en": "How does he handle the offered reward?"
+          },
+          "options": [
+            {
+              "nl": "Hij legt uit dat hij niet meedoet en weigert de wedstrijdbeloning",
+              "en": "He explains that he is not participating and declines the race reward"
+            },
+            {
+              "nl": "Hij vraagt om een grotere beker",
+              "en": "He asks for a bigger cup"
+            },
+            {
+              "nl": "Hij doet alsof hij heeft gewonnen",
+              "en": "He pretends he has won"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Jonas wees de wedstrijdbeloning af en nam met de man buiten de doorgang een appel aan.",
+            "en": "Jonas declined the race reward and accepted an apple from the man outside the passage."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-rondleiding-met-groene-jas",
+      "topic_id": "tourism-sightseeing",
+      "title": {
+        "nl": "De gids die ook de weg zocht",
+        "en": "The guide who was also finding her way"
+      },
+      "plot_key": "A visitor mistaken for a guide admits uncertainty and turns the encounter into a shared small discovery instead of pretending expertise.",
+      "lines": [
+        {
+          "nl": "Met haar groene jas en een opengevouwen stadsplan bleef Amina op het plein staan om te ontdekken welke straat naar het museum liep.",
+          "en": "Wearing her green coat and holding an unfolded city map, Amina stood in the square trying to discover which street led to the museum."
+        },
+        {
+          "nl": "Achter haar verzamelde zich ongemerkt een klein groepje dat dezelfde kleur jas op de foto van zijn gids had gezien.",
+          "en": "Behind her, unnoticed, a small group gathered that had seen the same coat colour in the photograph of its guide."
+        },
+        {
+          "nl": "Toen iemand vroeg wanneer ze begonnen, antwoordde Amina dat ze graag eerst zelf wilde weten waar ze was.",
+          "en": "When someone asked when they were starting, Amina replied that she would first like to know where she herself was."
+        },
+        {
+          "nl": "De groep lachte alsof dat een zorgvuldig ingestudeerde openingsgrap was, waardoor ze nog duidelijker moest zeggen dat ze niet hun gids was.",
+          "en": "The group laughed as though that were a carefully rehearsed opening joke, forcing her to say even more clearly that she was not their guide."
+        },
+        {
+          "nl": "Ze zochten samen de afgesproken ontmoetingsplaats op de eigen bevestiging van de groep en vonden die aan de andere kant van het plein.",
+          "en": "Together, they found the agreed meeting place on the group's own confirmation and located it at the other side of the square."
+        },
+        {
+          "nl": "Daar stond de echte gids met een groene jas over haar arm en vroeg wie er onderweg al iets interessants had meegemaakt.",
+          "en": "There stood the real guide with a green coat over her arm, asking who had already experienced something interesting on the way."
+        },
+        {
+          "nl": "Amina liet hen achter en nam het straatje naar het museum, nu met drie extra tips die ze niet als deskundige had hoeven verdienen.",
+          "en": "Amina left them and took the little street to the museum, now with three extra tips she had not had to earn as an expert."
+        },
+        {
+          "nl": "De gids zwaaide haar nog na; het eerste verhaal van de rondleiding ging over iemand die eerlijk genoeg was geweest om zelf de weg te zoeken.",
+          "en": "The guide waved after her; the tour's first story concerned someone honest enough to be finding her own way."
+        }
+      ],
+      "words": [
+        {
+          "term": "ongemerkt",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "zonder dat iemand het opmerkt",
+            "en": "unnoticed"
+          },
+          "example": {
+            "nl": "Achter haar verzamelde zich ongemerkt een klein groepje dat dezelfde kleur jas op de foto van zijn gids had gezien.",
+            "en": "Behind her, unnoticed, a small group gathered that had seen the same coat colour in the photograph of its guide."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "ingestudeerd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "vooraf geoefend om precies uit te voeren",
+            "en": "rehearsed"
+          },
+          "example": {
+            "nl": "De groep lachte alsof dat een zorgvuldig ingestudeerde openingsgrap was, waardoor ze nog duidelijker moest zeggen dat ze niet hun gids was.",
+            "en": "The group laughed as though that were a carefully rehearsed opening joke, forcing her to say even more clearly that she was not their guide."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de bevestiging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bericht met de vastgelegde afspraak",
+            "en": "confirmation"
+          },
+          "example": {
+            "nl": "Ze zochten samen de afgesproken ontmoetingsplaats op de eigen bevestiging van de groep en vonden die aan de andere kant van het plein.",
+            "en": "Together, they found the agreed meeting place on the group's own confirmation and located it at the other side of the square."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "Achter haar verzamelde zich ongemerkt een klein groepje dat dezelfde kleur jas op de foto van zijn gids had gezien.",
+              "en": "Behind her, unnoticed, a small group gathered that had seen the same coat colour in the photograph of its guide."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom volgt de groep Amina eerst?",
+            "en": "Why does the group initially follow Amina?"
+          },
+          "options": [
+            {
+              "nl": "Zij kondigt een rondleiding aan",
+              "en": "She announces a tour"
+            },
+            {
+              "nl": "Ze verkoopt toegangskaarten",
+              "en": "She sells admission tickets"
+            },
+            {
+              "nl": "Haar jas lijkt op die van de verwachte gids",
+              "en": "Her coat resembles the expected guide's"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Achter haar verzamelde zich ongemerkt een klein groepje dat dezelfde kleur jas op de foto van zijn gids had gezien.",
+            "en": "Behind her, unnoticed, a small group gathered that had seen the same coat colour in the photograph of its guide."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe wordt het misverstand opgelost?",
+            "en": "How is the misunderstanding resolved?"
+          },
+          "options": [
+            {
+              "nl": "De groep keert zonder uitleg naar huis terug",
+              "en": "The group goes home without explanation"
+            },
+            {
+              "nl": "Amina verzint een hele route",
+              "en": "Amina invents an entire route"
+            },
+            {
+              "nl": "Ze zoeken de echte ontmoetingsplaats in de bevestiging",
+              "en": "They find the real meeting place in the confirmation"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze zochten samen de afgesproken ontmoetingsplaats op de eigen bevestiging van de groep en vonden die aan de andere kant van het plein.",
+            "en": "Together, they found the agreed meeting place on the group's own confirmation and located it at the other side of the square."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-foto-in-spiegelraam",
+      "topic_id": "photography",
+      "title": {
+        "nl": "De vreemde op mijn familiebeeld",
+        "en": "The stranger in my family picture"
+      },
+      "plot_key": "A family photographer initially sees an unknown reflected figure as an intrusion before recognising her own role in the image.",
+      "lines": [
+        {
+          "nl": "Op de grote afdruk van haar familie aan tafel zag Eva in het raam een figuur die niet bij de gasten leek te horen.",
+          "en": "In the large print of her family at the table, Eva saw a figure in the window who did not seem to belong among the guests."
+        },
+        {
+          "nl": "Ze vergrootte het beeld en probeerde te reconstrueren wie er die middag buiten langs het huis kon zijn gelopen.",
+          "en": "She enlarged the image and tried to reconstruct who might have walked past the house outside that afternoon."
+        },
+        {
+          "nl": "Haar broer wees op de vreemde stand van de hand en vroeg of de onbekende misschien ook een camera vasthield.",
+          "en": "Her brother pointed to the odd position of the hand and asked whether the stranger might also be holding a camera."
+        },
+        {
+          "nl": "Pas toen herkende Eva de weerspiegeling van zichzelf, half verborgen achter het toestel waarmee ze iedereen behalve zichzelf had vastgelegd.",
+          "en": "Only then did Eva recognise her own reflection, half hidden behind the device with which she had captured everyone except herself."
+        },
+        {
+          "nl": "Ze wilde het storende stukje eerst wegwerken, omdat de anderen op de foto zo natuurlijk en volledig zichtbaar waren.",
+          "en": "At first, she wanted to remove the distracting part because the others in the photograph were so natural and fully visible."
+        },
+        {
+          "nl": "Haar moeder vroeg of juist die onhandige weerspiegeling niet liet zien wie hun bijeenkomsten al jaren bewaarde.",
+          "en": "Her mother asked whether precisely that awkward reflection showed who had been preserving their gatherings for years."
+        },
+        {
+          "nl": "Eva liet het raam ongewijzigd en vroeg bij het volgende feest iemand anders ook een paar foto's te maken.",
+          "en": "Eva left the window unchanged and, at the next celebration, asked someone else to take a few photographs too."
+        },
+        {
+          "nl": "Op de nieuwe afdruk stond ze met lege handen aan tafel, maar de oude vreemde in het raam bleef aan de muur hangen.",
+          "en": "In the new print, she stood at the table empty-handed, but the old stranger in the window stayed hanging on the wall."
+        }
+      ],
+      "words": [
+        {
+          "term": "de afdruk",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "op papier uitgevoerde foto",
+            "en": "print"
+          },
+          "example": {
+            "nl": "Op de grote afdruk van haar familie aan tafel zag Eva in het raam een figuur die niet bij de gasten leek te horen.",
+            "en": "In the large print of her family at the table, Eva saw a figure in the window who did not seem to belong among the guests."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "reconstrueren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "op basis van aanwijzingen opnieuw samenstellen",
+            "en": "to reconstruct"
+          },
+          "example": {
+            "nl": "Ze vergrootte het beeld en probeerde te reconstrueren wie er die middag buiten langs het huis kon zijn gelopen.",
+            "en": "She enlarged the image and tried to reconstruct who might have walked past the house outside that afternoon."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de weerspiegeling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "beeld dat in glas of een spiegel terugkomt",
+            "en": "reflection"
+          },
+          "example": {
+            "nl": "Pas toen herkende Eva de weerspiegeling van zichzelf, half verborgen achter het toestel waarmee ze iedereen behalve zichzelf had vastgelegd.",
+            "en": "Only then did Eva recognise her own reflection, half hidden behind the device with which she had captured everyone except herself."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Eerder dan het verhaalmoment",
+            "en": "Earlier than the narrative moment"
+          },
+          "explanation": {
+            "nl": "Had of was met een voltooid deelwoord beschrijft iets dat al vóór een ander moment in het verleden gebeurde.",
+            "en": "Had or was with a past participle describes something that happened before another past moment."
+          },
+          "examples": [
+            {
+              "nl": "Pas toen herkende Eva de weerspiegeling van zichzelf, half verborgen achter het toestel waarmee ze iedereen behalve zichzelf had vastgelegd.",
+              "en": "Only then did Eva recognise her own reflection, half hidden behind the device with which she had captured everyone except herself."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wie is de onbekende figuur?",
+            "en": "Who is the unknown figure?"
+          },
+          "options": [
+            {
+              "nl": "Een extra familiegast",
+              "en": "An additional family guest"
+            },
+            {
+              "nl": "Eva zelf in de weerspiegeling",
+              "en": "Eva herself in the reflection"
+            },
+            {
+              "nl": "Een voorbijganger buiten",
+              "en": "A passer-by outside"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Pas toen herkende Eva de weerspiegeling van zichzelf, half verborgen achter het toestel waarmee ze iedereen behalve zichzelf had vastgelegd.",
+            "en": "Only then did Eva recognise her own reflection, half hidden behind the device with which she had captured everyone except herself."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke nieuwe afspraak maakt Eva?",
+            "en": "What new arrangement does Eva make?"
+          },
+          "options": [
+            {
+              "nl": "Het raam altijd afdekken",
+              "en": "Always cover the window"
+            },
+            {
+              "nl": "Ook iemand anders laten fotograferen",
+              "en": "Have someone else take photographs too"
+            },
+            {
+              "nl": "Geen bijeenkomsten meer fotograferen",
+              "en": "Stop photographing gatherings"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Eva liet het raam ongewijzigd en vroeg bij het volgende feest iemand anders ook een paar foto's te maken.",
+            "en": "Eva left the window unchanged and, at the next celebration, asked someone else to take a few photographs too."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-onuitgesproken-taak-op-feest",
+      "topic_id": "leadership-teamwork",
+      "title": {
+        "nl": "De gast die automatisch gastvrouw werd",
+        "en": "The guest who automatically became the host"
+      },
+      "plot_key": "A reliable group member refuses an assumed organising role during a celebration and helps distribute the actual work clearly.",
+      "lines": [
+        {
+          "nl": "Voor de verjaardag van een vriend kwam Sara met een cadeau en een vrije avond, maar aan de deur kreeg ze meteen de lijst met nog te doen werk.",
+          "en": "For a friend's birthday, Sara arrived with a gift and a free evening, but at the door she was immediately handed the list of work still to do."
+        },
+        {
+          "nl": "Omdat zij meestal alles vlot regelde, wees iemand vanzelf naar haar wanneer er glazen, muziek of een ontbrekende stoel nodig waren.",
+          "en": "Because she usually arranged everything smoothly, someone automatically pointed towards her whenever glasses, music or a missing chair were needed."
+        },
+        {
+          "nl": "Sara begon te helpen tot ze merkte dat de andere gasten al aan tafel zaten en niemand haar nog als bezoeker zag.",
+          "en": "Sara began helping until she noticed the other guests were already seated and nobody saw her as a visitor anymore."
+        },
+        {
+          "nl": "Ze legde de lijst neer en zei dat ze vandaag niet voor de organisatie had afgesproken, zonder haar vrienden van slechte bedoelingen te beschuldigen.",
+          "en": "She put down the list and said she had not agreed to organise today, without accusing her friends of bad intentions."
+        },
+        {
+          "nl": "De jarige schrok en vroeg wat er concreet nog nodig was, waarna ze de taken onder verschillende aanwezigen verdeelden.",
+          "en": "The birthday host was startled and asked what specifically still needed doing, after which they divided the tasks among several people present."
+        },
+        {
+          "nl": "Sara koos zelf één kleine taak en ging daarna zitten terwijl een ander de laatste koppen naar de keuken bracht.",
+          "en": "Sara chose one small task herself and then sat down while someone else took the last cups to the kitchen."
+        },
+        {
+          "nl": "Toen de muziek begon, vroeg niemand meer of zij eerst nog alles wilde controleren voordat ze kon meedoen.",
+          "en": "When the music began, nobody asked whether she would first check everything before she could join in anymore."
+        },
+        {
+          "nl": "Haar cadeau bleef dezelfde mooie verpakking houden, maar de vrije avond kwam pas later werkelijk uit de doos.",
+          "en": "Her gift kept the same lovely wrapping, but the free evening only truly came out of the box later."
+        }
+      ],
+      "words": [
+        {
+          "term": "vlot",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "snel en zonder veel moeilijkheden",
+            "en": "smoothly"
+          },
+          "example": {
+            "nl": "Omdat zij meestal alles vlot regelde, wees iemand vanzelf naar haar wanneer er glazen, muziek of een ontbrekende stoel nodig waren.",
+            "en": "Because she usually arranged everything smoothly, someone automatically pointed towards her whenever glasses, music or a missing chair were needed."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "beschuldigen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zeggen dat iemand iets verkeerd heeft gedaan",
+            "en": "to accuse"
+          },
+          "example": {
+            "nl": "Ze legde de lijst neer en zei dat ze vandaag niet voor de organisatie had afgesproken, zonder haar vrienden van slechte bedoelingen te beschuldigen.",
+            "en": "She put down the list and said she had not agreed to organise today, without accusing her friends of bad intentions."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de organisatie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "planning en uitvoering van een activiteit",
+            "en": "organisation"
+          },
+          "example": {
+            "nl": "Ze legde de lijst neer en zei dat ze vandaag niet voor de organisatie had afgesproken, zonder haar vrienden van slechte bedoelingen te beschuldigen.",
+            "en": "She put down the list and said she had not agreed to organise today, without accusing her friends of bad intentions."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te",
+            "en": "Without doing"
+          },
+          "explanation": {
+            "nl": "Zonder te met een infinitief beschrijft een handeling die niet plaatsvindt. Het onderwerp blijft hetzelfde als in de hoofdzin.",
+            "en": "Zonder te with an infinitive describes an action that does not take place. Its subject is the same as that of the main clause."
+          },
+          "examples": [
+            {
+              "nl": "Ze legde de lijst neer en zei dat ze vandaag niet voor de organisatie had afgesproken, zonder haar vrienden van slechte bedoelingen te beschuldigen.",
+              "en": "She put down the list and said she had not agreed to organise today, without accusing her friends of bad intentions."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wordt Sara geen gewone gast?",
+            "en": "Why does Sara not become an ordinary guest?"
+          },
+          "options": [
+            {
+              "nl": "De groep neemt haar organisatierol vanzelf aan",
+              "en": "The group automatically assumes her organising role"
+            },
+            {
+              "nl": "Ze wil geen cadeau geven",
+              "en": "She does not want to give a gift"
+            },
+            {
+              "nl": "De jarige kent haar niet",
+              "en": "The birthday host does not know her"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Omdat zij meestal alles vlot regelde, wees iemand vanzelf naar haar wanneer er glazen, muziek of een ontbrekende stoel nodig waren.",
+            "en": "Because she usually arranged everything smoothly, someone automatically pointed towards her whenever glasses, music or a missing chair were needed."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe wordt het werk later verdeeld?",
+            "en": "How is the work divided later?"
+          },
+          "options": [
+            {
+              "nl": "Meerdere aanwezigen krijgen taken en Sara kiest een beperkte bijdrage",
+              "en": "Several guests receive tasks and Sara chooses a limited contribution"
+            },
+            {
+              "nl": "Niemand doet nog iets",
+              "en": "Nobody does anything anymore"
+            },
+            {
+              "nl": "Sara krijgt alles opnieuw",
+              "en": "Sara receives everything again"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De jarige schrok en vroeg wat er concreet nog nodig was, waarna ze de taken onder verschillende aanwezigen verdeelden.",
+            "en": "The birthday host was startled and asked what specifically still needed doing, after which they divided the tasks among several people present."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-letter-op-treinraam",
+      "topic_id": "personal-development",
+      "title": {
+        "nl": "De schets die niet werd bewaard",
+        "en": "The sketch that was not kept"
+      },
+      "plot_key": "An aspiring illustrator makes an unrecorded drawing during a journey and recognises that not every enjoyable act must become part of a portfolio.",
+      "lines": [
+        {
+          "nl": "Tijdens elke treinrit tekende illustrator in opleiding Niels iets dat hij later aan zijn portfolio wilde toevoegen.",
+          "en": "During every train journey, illustrator-in-training Niels drew something he wanted to add to his portfolio later."
+        },
+        {
+          "nl": "Op een koude ochtend besloeg het raam en trok hij met zijn vinger zonder plan een klein gezicht in de damp.",
+          "en": "One cold morning, the window misted up, and he used his finger to draw a little face in the condensation without a plan."
+        },
+        {
+          "nl": "Een kind aan de overkant wees er lachend naar, waarna Niels er oren en een belachelijk hoge hoed bij maakte.",
+          "en": "A child opposite pointed at it laughing, whereupon Niels added ears and a ridiculously tall hat."
+        },
+        {
+          "nl": "Hij pakte zijn telefoon om het resultaat vast te leggen, maar op dat moment schoof het daglicht over de ruit en begon de tekening te verdwijnen.",
+          "en": "He picked up his phone to capture the result, but at that moment daylight moved across the pane and the drawing began to disappear."
+        },
+        {
+          "nl": "Niels wilde het gezicht opnieuw maken en merkte hoe snel het gezamenlijke spel alweer een product voor later moest worden.",
+          "en": "Niels wanted to make the face again and noticed how quickly the shared game had once again needed to become a product for later."
+        },
+        {
+          "nl": "Hij liet zijn telefoon zakken en tekende alleen nog een mond die de laatste halve minuut overdreven verbaasd keek.",
+          "en": "He lowered his phone and drew only a mouth that looked exaggeratedly surprised for the final half-minute."
+        },
+        {
+          "nl": "Bij de halte zwaaide het kind naar het bijna lege raam en nam zijn moeder de gewone tas weer op.",
+          "en": "At the stop, the child waved at the almost empty window, and the mother picked up the ordinary bag again."
+        },
+        {
+          "nl": "In Niels' portfolio kwam geen nieuwe pagina, maar op de terugrit keek hij langer naar de mensen tegenover hem.",
+          "en": "No new page entered Niels's portfolio, but on the return journey he looked longer at the people opposite him."
+        }
+      ],
+      "words": [
+        {
+          "term": "beslaan",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met een dunne laag condens bedekt raken",
+            "en": "to mist up"
+          },
+          "example": {
+            "nl": "Op een koude ochtend besloeg het raam en trok hij met zijn vinger zonder plan een klein gezicht in de damp.",
+            "en": "One cold morning, the window misted up, and he used his finger to draw a little face in the condensation without a plan."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "overdreven",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "sterker dan in een gewone situatie",
+            "en": "exaggeratedly"
+          },
+          "example": {
+            "nl": "Hij liet zijn telefoon zakken en tekende alleen nog een mond die de laatste halve minuut overdreven verbaasd keek.",
+            "en": "He lowered his phone and drew only a mouth that looked exaggeratedly surprised for the final half-minute."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het portfolio",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "verzameling werk waarmee iemand zijn kunnen toont",
+            "en": "portfolio"
+          },
+          "example": {
+            "nl": "Tijdens elke treinrit tekende illustrator in opleiding Niels iets dat hij later aan zijn portfolio wilde toevoegen.",
+            "en": "During every train journey, illustrator-in-training Niels drew something he wanted to add to his portfolio later."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een doel met om te",
+            "en": "Purpose with om te"
+          },
+          "explanation": {
+            "nl": "Om te met een infinitief geeft het doel van de hoofdhandeling aan. Hier pakt hij de telefoon om iets vast te leggen.",
+            "en": "Om te with an infinitive gives the purpose of the main action. Here he picks up the phone to capture something."
+          },
+          "examples": [
+            {
+              "nl": "Hij pakte zijn telefoon om het resultaat vast te leggen, maar op dat moment schoof het daglicht over de ruit en begon de tekening te verdwijnen.",
+              "en": "He picked up his phone to capture the result, but at that moment daylight moved across the pane and the drawing began to disappear."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom maakt Niels de eerste tekening?",
+            "en": "Why does Niels make the first drawing?"
+          },
+          "options": [
+            {
+              "nl": "Voor een vooraf afgesproken opdracht",
+              "en": "For a prearranged commission"
+            },
+            {
+              "nl": "Om het kind te fotograferen",
+              "en": "To photograph the child"
+            },
+            {
+              "nl": "Spontaan in het beslagen raam",
+              "en": "Spontaneously in the misted window"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Op een koude ochtend besloeg het raam en trok hij met zijn vinger zonder plan een klein gezicht in de damp.",
+            "en": "One cold morning, the window misted up, and he used his finger to draw a little face in the condensation without a plan."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke neiging merkt hij bij zichzelf?",
+            "en": "What tendency does he notice in himself?"
+          },
+          "options": [
+            {
+              "nl": "Alleen nog hoge hoeden tekenen",
+              "en": "Only drawing tall hats anymore"
+            },
+            {
+              "nl": "Nooit meer tekenen",
+              "en": "Never drawing again"
+            },
+            {
+              "nl": "Elk spel meteen tot een bewaard product willen maken",
+              "en": "Wanting immediately to turn every game into a preserved product"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Niels wilde het gezicht opnieuw maken en merkte hoe snel het gezamenlijke spel alweer een product voor later moest worden.",
+            "en": "Niels wanted to make the face again and noticed how quickly the shared game had once again needed to become a product for later."
+          }
+        }
+      ]
+    }
+  ]
+}

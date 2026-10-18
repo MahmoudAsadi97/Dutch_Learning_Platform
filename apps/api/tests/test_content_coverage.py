@@ -66,7 +66,7 @@ def test_coverage_report_contains_counts_not_assessment_answers_or_mastery_claim
         assert forbidden not in serialized
 
 
-@pytest.mark.parametrize("path", ["curriculum/path.json", "alignment/story-provenance.json",
+@pytest.mark.parametrize("path", ["curriculum/path.json", "alignment/story-provenance.json", "study/reading-eligibility.json",
                                   *[f"{directory}/a2.json" for directory in coverage.DIRECTORIES]])
 def test_every_relevant_source_invalidates_coverage_cache_key(tmp_path, path):
     file = tmp_path / path
@@ -82,13 +82,14 @@ def test_every_relevant_source_invalidates_coverage_cache_key(tmp_path, path):
     assert coverage.content_stamp(tmp_path) == before
 
 
-def test_hot_inventory_is_cached_without_repeating_story_similarity_audit(monkeypatch):
+def test_hot_fallback_inventory_is_cached_without_repeating_story_similarity_audit(monkeypatch):
     coverage._read.cache_clear()
     coverage._story_audit.cache_clear()
     # Exercise a fixed content version; source-change invalidation is tested above.
     # Authors may be adding batches concurrently in the development checkout.
     version = coverage.content_stamp(CONTENT_DIR)
     monkeypatch.setattr(coverage, "content_stamp", lambda root: version)
+    monkeypatch.setattr(coverage.reading_manifest, "stage_counts", lambda root: None)
     calls = []
     original = story_inventory.audit
 
@@ -99,6 +100,17 @@ def test_hot_inventory_is_cached_without_repeating_story_similarity_audit(monkey
     monkeypatch.setattr(story_inventory, "audit", audit)
     assert coverage.all_coverage() == coverage.all_coverage()
     assert len(calls) == 1
+
+
+def test_published_inventory_does_not_run_editorial_similarity_on_a_learner_request(monkeypatch):
+    coverage._read.cache_clear()
+    coverage._story_audit.cache_clear()
+
+    def offline_only(*args, **kwargs):
+        raise AssertionError("the matching release manifest must serve normal catalogue requests")
+
+    monkeypatch.setattr(story_inventory, "audit", offline_only)
+    assert tuple(coverage.all_coverage()) == STAGE_IDS
 
 
 def test_cli_import_and_runtime_use_identical_story_eligibility_rules():
