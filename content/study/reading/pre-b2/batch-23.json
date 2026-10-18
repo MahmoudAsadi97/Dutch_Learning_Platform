@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-licht-aan-de-overkant",
+      "topic_id": "daily-routines",
+      "title": {
+        "nl": "Het licht aan de overkant",
+        "en": "The light across the street"
+      },
+      "plot_key": "An insomniac assumes a neighbour shares his wakefulness until discovering the recurring lamp is automated, then initiates an actual rather than imagined connection.",
+      "lines": [
+        {
+          "nl": "Tijdens een periode van nachtdiensten zag Bram bij het thuiskomen altijd hetzelfde verlichte raam aan de overkant van de straat.",
+          "en": "During a period of night shifts, Bram always saw the same lit window across the street when he came home."
+        },
+        {
+          "nl": "Hij stelde zich voor dat daar ook iemand wakker bleef, met een boek of een kop thee, en vond die onbekende aanwezigheid geruststellend.",
+          "en": "He imagined someone there also staying awake with a book or cup of tea, and found that unknown presence reassuring."
+        },
+        {
+          "nl": "Toen hij op een ochtend eindelijk de buurvrouw ontmoette, zei hij dat zij blijkbaar allebei een merkwaardig ritme hadden.",
+          "en": "When he finally met the neighbour one morning, he said they apparently both had an unusual routine."
+        },
+        {
+          "nl": "Zij keek verbaasd en vertelde dat de lamp op een tijdschakelaar stond terwijl zij al maanden bij haar dochter sliep.",
+          "en": "She looked surprised and explained that the lamp was on a timer while she had been sleeping at her daughter's for months."
+        },
+        {
+          "nl": "Bram voelde zich plots belachelijk omdat hij gezelschap had gevonden in iets dat niemand op dat moment bewust voor hem deed.",
+          "en": "Bram suddenly felt ridiculous for finding company in something nobody was consciously doing for him at that moment."
+        },
+        {
+          "nl": "De buurvrouw vroeg echter wat hij na zijn dienst meestal at en zei dat zij op vrijdag vroeg terugkwam om de post te halen.",
+          "en": "The neighbour, however, asked what he usually ate after his shift and said she returned early on Fridays to collect the post."
+        },
+        {
+          "nl": "Die vrijdag dronken ze koffie bij een raam dat in het daglicht geen enkel bijzonder signaal meer gaf.",
+          "en": "That Friday they had coffee beside a window that in daylight no longer gave any special signal."
+        },
+        {
+          "nl": "De automatische lamp bleef bestaan, maar Bram wist nu wie hij kon groeten wanneer hij echt iemand achter het glas zag.",
+          "en": "The automatic lamp remained, but Bram now knew whom he could greet when he actually saw someone behind the glass."
+        }
+      ],
+      "words": [
+        {
+          "term": "de tijdschakelaar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een toestel dat op ingestelde tijden stroom aan- of uitschakelt",
+            "en": "timer switch"
+          },
+          "example": {
+            "nl": "Zij keek verbaasd en vertelde dat de lamp op een tijdschakelaar stond terwijl zij al maanden bij haar dochter sliep.",
+            "en": "She looked surprised and explained that the lamp was on a timer while she had been sleeping at her daughter's for months."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "geruststellend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "een gevoel van veiligheid of rust gevend",
+            "en": "reassuring"
+          },
+          "example": {
+            "nl": "Hij stelde zich voor dat daar ook iemand wakker bleef, met een boek of een kop thee, en vond die onbekende aanwezigheid geruststellend.",
+            "en": "He imagined someone there also staying awake with a book or cup of tea, and found that unknown presence reassuring."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bewust",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met kennis en bedoeling",
+            "en": "conscious or deliberate"
+          },
+          "example": {
+            "nl": "Bram voelde zich plots belachelijk omdat hij gezelschap had gevonden in iets dat niemand op dat moment bewust voor hem deed.",
+            "en": "Bram suddenly felt ridiculous for finding company in something nobody was consciously doing for him at that moment."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl met twee gelijktijdige situaties",
+            "en": "While with two simultaneous situations"
+          },
+          "explanation": {
+            "nl": "Terwijl verbindt de brandende lamp met haar verblijf elders, zonder menselijk contact te veronderstellen.",
+            "en": "Terwijl connects the lit lamp with her stay elsewhere without assuming human contact."
+          },
+          "examples": [
+            {
+              "nl": "Zij keek verbaasd en vertelde dat de lamp op een tijdschakelaar stond terwijl zij al maanden bij haar dochter sliep.",
+              "en": "She looked surprised and explained that the lamp was on a timer while she had been sleeping at her daughter's for months."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat blijkt onjuist aan Brams eerste voorstelling?",
+            "en": "What proves incorrect in Bram's first idea?"
+          },
+          "options": [
+            {
+              "nl": "De straat heeft geen huizen.",
+              "en": "The street has no houses."
+            },
+            {
+              "nl": "Hij werkt nooit 's nachts.",
+              "en": "He never works at night."
+            },
+            {
+              "nl": "De lamp betekent niet dat er iemand wakker zit.",
+              "en": "The lamp does not mean someone is sitting awake."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De tijdschakelaar werkt ook wanneer de buurvrouw elders slaapt.",
+            "en": "The timer works even when the neighbour sleeps elsewhere."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verschilt aan de koffie op vrijdag?",
+            "en": "What differs about Friday's coffee?"
+          },
+          "options": [
+            {
+              "nl": "Ze ontmoeten elkaar nu daadwerkelijk.",
+              "en": "They now actually meet each other."
+            },
+            {
+              "nl": "Het raam wordt groter.",
+              "en": "The window becomes larger."
+            },
+            {
+              "nl": "De tijdschakelaar heeft koffie gezet.",
+              "en": "The timer has made coffee."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Een veronderstelde aanwezigheid wordt vervangen door een echte afspraak.",
+            "en": "An imagined presence is replaced by an actual arrangement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-dansles-voor-twee-ongetrouwden",
+      "topic_id": "love-dating",
+      "title": {
+        "nl": "Dansles voor twee ongetrouwden",
+        "en": "Dance lessons for two unmarried people"
+      },
+      "plot_key": "A couple takes wedding dance lessons without planning a wedding, revealing how others' expectations can reshape an enjoyable shared activity.",
+      "lines": [
+        {
+          "nl": "Na vijftien jaar samen schreven Leen en Arno zich in voor een cursus openingsdans, omdat zij eens iets wilden leren waarbij hun telefoons geen rol speelden.",
+          "en": "After fifteen years together, Leen and Arno enrolled in a wedding dance course because they wanted to learn something in which their phones played no part."
+        },
+        {
+          "nl": "De docent vroeg bij de eerste les naar hun trouwdatum, waarop zij allebei lachten en zeiden dat die niet bestond.",
+          "en": "At the first lesson the teacher asked their wedding date, at which both laughed and said there was none."
+        },
+        {
+          "nl": "Een ander koppel vond dat zo romantisch dat het meteen begon te vragen wanneer Arno dan eindelijk een aanzoek zou doen.",
+          "en": "Another couple found that so romantic that they immediately began asking when Arno would finally propose."
+        },
+        {
+          "nl": "Leen merkte dat zij plots een uitleg gaf voor een keuze waarover zij thuis helemaal geen probleem hadden gehad.",
+          "en": "Leen noticed she was suddenly explaining a choice about which they had had no problem at home."
+        },
+        {
+          "nl": "Tijdens de pauze vroeg Arno of de cursus misschien toch een verborgen wens bij haar had geraakt die hij niet had begrepen.",
+          "en": "During the break Arno asked whether the course might nevertheless have touched a hidden wish in her he had not understood."
+        },
+        {
+          "nl": "Zij antwoordde dat ze juist opnieuw wilde leren samen bewegen zonder dat elke stap vooruit naar een officiële mijlpaal moest leiden.",
+          "en": "She replied that she actually wanted to learn to move together again without every step forward having to lead to an official milestone."
+        },
+        {
+          "nl": "Ze gingen door met de lessen en oefenden hun moeilijkste draai op zondag tussen de verplaatste keukentafel en de planten.",
+          "en": "They continued the lessons and practised their hardest turn on Sundays between the moved kitchen table and the plants."
+        },
+        {
+          "nl": "Bij de laatste les dansten ze op hetzelfde lied als de anderen, maar hoefde hun verhaal daarna niet in dezelfde vorm verder te gaan.",
+          "en": "At the final lesson they danced to the same song as the others, but their story did not have to continue in the same form afterwards."
+        }
+      ],
+      "words": [
+        {
+          "term": "het aanzoek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een voorstel om met iemand te trouwen",
+            "en": "marriage proposal"
+          },
+          "example": {
+            "nl": "Een ander koppel vond dat zo romantisch dat het meteen begon te vragen wanneer Arno dan eindelijk een aanzoek zou doen.",
+            "en": "Another couple found that so romantic that they immediately began asking when Arno would finally propose."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de mijlpaal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een belangrijk moment in een ontwikkeling",
+            "en": "milestone"
+          },
+          "example": {
+            "nl": "Zij antwoordde dat ze juist opnieuw wilde leren samen bewegen zonder dat elke stap vooruit naar een officiële mijlpaal moest leiden.",
+            "en": "She replied that she actually wanted to learn to move together again without every step forward having to lead to an official milestone."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "verborgen",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet direct uitgesproken of zichtbaar",
+            "en": "hidden"
+          },
+          "example": {
+            "nl": "Tijdens de pauze vroeg Arno of de cursus misschien toch een verborgen wens bij haar had geraakt die hij niet had begrepen.",
+            "en": "During the break Arno asked whether the course might nevertheless have touched a hidden wish in her he had not understood."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder dat en een volledige bijzin",
+            "en": "Without, with a complete subordinate clause"
+          },
+          "explanation": {
+            "nl": "Zonder dat wordt gevolgd door een onderwerp en werkwoorden, anders dan zonder te.",
+            "en": "Zonder dat is followed by a subject and verbs, unlike zonder te."
+          },
+          "examples": [
+            {
+              "nl": "Zij antwoordde dat ze juist opnieuw wilde leren samen bewegen zonder dat elke stap vooruit naar een officiële mijlpaal moest leiden.",
+              "en": "She replied that she actually wanted to learn to move together again without every step forward having to lead to an official milestone."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat veroorzaakt hun eerste ongemak?",
+            "en": "What causes their first discomfort?"
+          },
+          "options": [
+            {
+              "nl": "De dansmuziek is verboden.",
+              "en": "The dance music is forbidden."
+            },
+            {
+              "nl": "De docent weigert les te geven.",
+              "en": "The teacher refuses to teach."
+            },
+            {
+              "nl": "Anderen behandelen hun hobby als een onvolledig huwelijksplan.",
+              "en": "Others treat their hobby as an incomplete wedding plan."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De vragen over een aanzoek maken van hun eigen keuze een verdediging.",
+            "en": "Questions about a proposal turn their own choice into something to defend."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat wil Leen met de cursus?",
+            "en": "What does Leen want from the course?"
+          },
+          "options": [
+            {
+              "nl": "Arno een geheime trouwdatum opleggen.",
+              "en": "To impose a secret wedding date on Arno."
+            },
+            {
+              "nl": "Een gedeelde ervaring zonder verplichte volgende mijlpaal.",
+              "en": "A shared experience without a compulsory next milestone."
+            },
+            {
+              "nl": "Haar telefoon vaker gebruiken.",
+              "en": "To use her phone more often."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze wil samen bewegen zonder elke stap aan een officieel doel te koppelen.",
+            "en": "She wants to move together without attaching every step to an official goal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-grap-die-niet-mee-verhuisde",
+      "topic_id": "personal-development",
+      "title": {
+        "nl": "De grap die niet meeverhuisde",
+        "en": "The joke that did not move along"
+      },
+      "plot_key": "An amateur comedian whose familiar self-mocking routine works poorly with a new audience learns to specify his experience instead of performing a stereotype.",
+      "lines": [
+        {
+          "nl": "In zijn oude vriendenkring kreeg Rami altijd veel gelach met verhalen over hoe hij als nieuwkomer Nederlandse uitdrukkingen letterlijk had begrepen.",
+          "en": "In his old circle of friends, Rami always got plenty of laughter with stories about how he had taken Dutch expressions literally as a newcomer."
+        },
+        {
+          "nl": "Voor zijn eerste open podium gebruikte hij dezelfde grappen en verwachtte hij dat zijn bekendste vergissing vanzelf ook onbekenden zou overtuigen.",
+          "en": "For his first open-mic night he used the same jokes and expected his best-known mistake automatically to win over strangers too."
+        },
+        {
+          "nl": "De zaal lachte inderdaad, maar bij zinnen die hij zelf niet als grap had bedoeld, terwijl de eigenlijke pointe nauwelijks reactie kreeg.",
+          "en": "The audience did laugh, but at sentences he had not intended as jokes, while the actual punchline received hardly any response."
+        },
+        {
+          "nl": "Na afloop vroeg een andere comedian welk beeld het publiek eerst nodig had om te begrijpen wie er in het verhaal eigenlijk de macht had.",
+          "en": "Afterwards another comedian asked what picture the audience first needed to understand who actually held the power in the story."
+        },
+        {
+          "nl": "Rami merkte dat zijn vrienden zijn werk, trots en koppigheid al kenden, terwijl de onbekende zaal hem alleen als een stuntelige taalgebruiker had leren zien.",
+          "en": "Rami noticed his friends already knew his work, pride and stubbornness, while the unfamiliar audience had learned to see him only as a clumsy language user."
+        },
+        {
+          "nl": "Hij schreef een nieuwe opening over een echte onderhandeling op zijn werk, waarin hij zelf iets slims én iets onhandigs deed.",
+          "en": "He wrote a new opening about a real negotiation at work in which he himself did both something clever and something awkward."
+        },
+        {
+          "nl": "De tweede avond lachte niet iedereen meer op hetzelfde moment, maar hij wist beter welk deel van zichzelf hij had aangeboden om naar te kijken.",
+          "en": "On the second evening not everyone laughed at the same moment any longer, but he knew better which part of himself he had offered them to look at."
+        },
+        {
+          "nl": "Zijn oude vergissing bleef in het programma staan, nu als een gebeurtenis in een groter leven in plaats van als zijn volledige identiteit.",
+          "en": "His old mistake remained in the programme, now as an event in a larger life instead of his entire identity."
+        }
+      ],
+      "words": [
+        {
+          "term": "de pointe",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de verrassende kern van een grap",
+            "en": "punchline"
+          },
+          "example": {
+            "nl": "De zaal lachte inderdaad, maar bij zinnen die hij zelf niet als grap had bedoeld, terwijl de eigenlijke pointe nauwelijks reactie kreeg.",
+            "en": "The audience did laugh, but at sentences he had not intended as jokes, while the actual punchline received hardly any response."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "stuntelig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "onhandig en weinig vlot",
+            "en": "clumsy"
+          },
+          "example": {
+            "nl": "Rami merkte dat zijn vrienden zijn werk, trots en koppigheid al kenden, terwijl de onbekende zaal hem alleen als een stuntelige taalgebruiker had leren zien.",
+            "en": "Rami noticed his friends already knew his work, pride and stubbornness, while the unfamiliar audience had learned to see him only as a clumsy language user."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de koppigheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het sterk vasthouden aan een eigen standpunt",
+            "en": "stubbornness"
+          },
+          "example": {
+            "nl": "Rami merkte dat zijn vrienden zijn werk, trots en koppigheid al kenden, terwijl de onbekende zaal hem alleen als een stuntelige taalgebruiker had leren zien.",
+            "en": "Rami noticed his friends already knew his work, pride and stubbornness, while the unfamiliar audience had learned to see him only as a clumsy language user."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor verschil tussen publieken",
+            "en": "While for a difference between audiences"
+          },
+          "explanation": {
+            "nl": "Terwijl contrasteert de voorkennis van vrienden met het beperkte beeld bij onbekenden.",
+            "en": "Terwijl contrasts friends' prior knowledge with strangers' limited picture."
+          },
+          "examples": [
+            {
+              "nl": "Rami merkte dat zijn vrienden zijn werk, trots en koppigheid al kenden, terwijl de onbekende zaal hem alleen als een stuntelige taalgebruiker had leren zien.",
+              "en": "Rami noticed his friends already knew his work, pride and stubbornness, while the unfamiliar audience had learned to see him only as a clumsy language user."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom werkt dezelfde routine anders voor onbekenden?",
+            "en": "Why does the same routine work differently for strangers?"
+          },
+          "options": [
+            {
+              "nl": "Onbekenden kennen de ruimere persoon achter de vergissingen niet.",
+              "en": "Strangers do not know the fuller person behind the mistakes."
+            },
+            {
+              "nl": "De zaal begrijpt geen enkel Nederlands woord.",
+              "en": "The audience understands no Dutch word."
+            },
+            {
+              "nl": "Zijn vrienden hebben de grappen verboden.",
+              "en": "His friends have banned the jokes."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn vrienden beschikken over veel meer context dan het nieuwe publiek.",
+            "en": "His friends possess much more context than the new audience."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de nieuwe opening?",
+            "en": "What does the new opening do?"
+          },
+          "options": [
+            {
+              "nl": "Ze verwijdert alle humor.",
+              "en": "It removes all humour."
+            },
+            {
+              "nl": "Ze bewijst dat hij nooit fouten maakt.",
+              "en": "It proves he never makes mistakes."
+            },
+            {
+              "nl": "Ze geeft hem meerdere kanten voordat zijn taalvergissing komt.",
+              "en": "It gives him several dimensions before his language mistake appears."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Werk, slimheid en onhandigheid maken hem meer dan één stereotype.",
+            "en": "Work, cleverness and awkwardness make him more than one stereotype."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-winkel-met-een-onverkoopbaar-raam",
+      "topic_id": "business",
+      "title": {
+        "nl": "Het onverkoopbare raam",
+        "en": "The unsellable window"
+      },
+      "plot_key": "A florist's display of customers' repaired household objects draws attention but not immediate sales, prompting a choice about community space without pretending goodwill pays every bill.",
+      "lines": [
+        {
+          "nl": "Voor de lente richtte bloemenhandelaar Amina haar etalage niet met dure boeketten in, maar met vazen die klanten zelf thuis hadden gelijmd of hersteld.",
+          "en": "For spring florist Amina filled her window not with expensive bouquets, but with vases customers had glued or repaired at home."
+        },
+        {
+          "nl": "Bij elke vaas stond een klein kaartje met het verhaal van de eigenaar, zonder prijs of bestelnummer.",
+          "en": "Beside each vase was a small card with its owner's story, without a price or order number."
+        },
+        {
+          "nl": "Voorbijgangers bleven langer staan dan anders, maar haar boekhouder vroeg waarom de opvallendste plek niets rechtstreeks te koop aanbood.",
+          "en": "Passers-by stopped longer than usual, but her accountant asked why the most prominent space offered nothing directly for sale."
+        },
+        {
+          "nl": "Amina zei eerst dat de aandacht vanzelf klanten zou opleveren, totdat haar cijfers lieten zien dat dit die maand nauwelijks gebeurde.",
+          "en": "Amina initially said the attention would naturally bring customers until her figures showed that this barely happened that month."
+        },
+        {
+          "nl": "Ze wilde de verhalen toch niet meteen verwijderen alsof alleen een snelle aankoop bewees dat een ontmoeting in de winkel iets waard was.",
+          "en": "She still did not want to remove the stories immediately as if only a quick purchase proved an encounter in the shop had value."
+        },
+        {
+          "nl": "Samen maakten ze de tentoonstelling kleiner en brachten ze daarnaast duidelijk haar eigen werk en prijzen terug in beeld.",
+          "en": "Together they made the display smaller and brought her own work and prices clearly back into view beside it."
+        },
+        {
+          "nl": "De winkel werd geen winstgevend wonder, maar Amina kon nu benoemen welk deel een aanbod was en welk deel zij bewust aan de buurt gaf.",
+          "en": "The shop became no profitable miracle, but Amina could now name which part was an offer and which part she deliberately gave to the neighbourhood."
+        },
+        {
+          "nl": "Aan het einde haalden klanten hun vazen op, vaak met een bloem erin die niet verplicht bij hun verhaal had gehoord.",
+          "en": "At the end customers collected their vases, often with a flower in one that had not been a compulsory part of their story."
+        }
+      ],
+      "words": [
+        {
+          "term": "de boekhouder",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die inkomsten en uitgaven bijhoudt",
+            "en": "accountant or bookkeeper"
+          },
+          "example": {
+            "nl": "Voorbijgangers bleven langer staan dan anders, maar haar boekhouder vroeg waarom de opvallendste plek niets rechtstreeks te koop aanbood.",
+            "en": "Passers-by stopped longer than usual, but her accountant asked why the most prominent space offered nothing directly for sale."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "winstgevend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "meer geld opbrengend dan het kost",
+            "en": "profitable"
+          },
+          "example": {
+            "nl": "De winkel werd geen winstgevend wonder, maar Amina kon nu benoemen welk deel een aanbod was en welk deel zij bewust aan de buurt gaf.",
+            "en": "The shop became no profitable miracle, but Amina could now name which part was an offer and which part she deliberately gave to the neighbourhood."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de etalage",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het raam waarin een winkel voorwerpen toont",
+            "en": "shop window"
+          },
+          "example": {
+            "nl": "Voor de lente richtte bloemenhandelaar Amina haar etalage niet met dure boeketten in, maar met vazen die klanten zelf thuis hadden gelijmd of hersteld.",
+            "en": "For spring florist Amina filled her window not with expensive bouquets, but with vases customers had glued or repaired at home."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof bij een betwist criterium",
+            "en": "As if with a disputed criterion"
+          },
+          "explanation": {
+            "nl": "Alsof stelt het idee ter discussie dat alleen een aankoop waarde kan tonen.",
+            "en": "Alsof questions the idea that only a purchase can show value."
+          },
+          "examples": [
+            {
+              "nl": "Ze wilde de verhalen toch niet meteen verwijderen alsof alleen een snelle aankoop bewees dat een ontmoeting in de winkel iets waard was.",
+              "en": "She still did not want to remove the stories immediately as if only a quick purchase proved an encounter in the shop had value."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat tonen de eerste verkoopcijfers?",
+            "en": "What do the initial sales figures show?"
+          },
+          "options": [
+            {
+              "nl": "Alle vazen zijn verkocht.",
+              "en": "All vases have been sold."
+            },
+            {
+              "nl": "De boekhouder heeft geen gegevens.",
+              "en": "The accountant has no data."
+            },
+            {
+              "nl": "Meer aandacht leidt niet automatisch tot meer aankopen.",
+              "en": "More attention does not automatically lead to more purchases."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Er blijven mensen staan, maar de verwachte verkoopstijging komt nauwelijks.",
+            "en": "People stop, but the expected sales increase barely comes."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom maakt Amina de tentoonstelling kleiner?",
+            "en": "Why does Amina make the display smaller?"
+          },
+          "options": [
+            {
+              "nl": "Om commerciële en geschonken ruimte bewuster te combineren.",
+              "en": "To combine commercial and freely given space more deliberately."
+            },
+            {
+              "nl": "Om alle klantverhalen te wissen.",
+              "en": "To erase all customer stories."
+            },
+            {
+              "nl": "Omdat bloemen niet meer bestaan.",
+              "en": "Because flowers no longer exist."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze behoudt een buurtgebaar en maakt tegelijk haar verkoopaanbod zichtbaar.",
+            "en": "She keeps a neighbourhood gesture while making her sales offer visible."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-naam-voor-het-nieuwe-jaar",
+      "topic_id": "culture-traditions",
+      "title": {
+        "nl": "Een naam voor het nieuwe jaar",
+        "en": "A name for the new year"
+      },
+      "plot_key": "A grandchild changes a family’s ceremonial toast from memorised archaic wording to a personal account, preserving a ritual without pretending everyone shares its original language.",
+      "lines": [
+        {
+          "nl": "Bij het eerste familiefeest van het jaar moest telkens de jongste volwassene een oude wens uitspreken in woorden die niemand nog in gewone gesprekken gebruikte.",
+          "en": "At the first family celebration of the year, the youngest adult always had to recite an old wish in words nobody used in ordinary conversation any longer."
+        },
+        {
+          "nl": "Toen Mila aan de beurt was, oefende haar grootmoeder elke avond met haar de juiste klemtoon en de pauze voor het laatste woord.",
+          "en": "When it was Mila's turn, her grandmother practised the correct stress and the pause before the final word with her every evening."
+        },
+        {
+          "nl": "Mila kon de tekst foutloos opzeggen, maar wist bij één plechtige uitdrukking niet precies wat ze haar familie eigenlijk toewenste.",
+          "en": "Mila could recite the text flawlessly, but with one solemn expression did not know exactly what she was actually wishing her family."
+        },
+        {
+          "nl": "Haar grootmoeder vertelde dat haar eigen moeder die zin ooit had aangepast na een moeilijk jaar waarin de familie niet samen had kunnen zijn.",
+          "en": "Her grandmother explained that her own mother had once adapted that sentence after a difficult year when the family could not be together."
+        },
+        {
+          "nl": "De wens was dus niet onveranderd uit een ver verleden gekomen, al werd hij telkens alsof dat wel zo was doorgegeven.",
+          "en": "The wish had therefore not come unchanged from a distant past, although it was repeatedly passed on as though it had."
+        },
+        {
+          "nl": "Op het feest gebruikte Mila de oude opening en voegde daarna één concrete wens toe voor de neef die binnenkort alleen ging wonen.",
+          "en": "At the celebration Mila used the old opening and then added one concrete wish for the cousin who would soon be living alone."
+        },
+        {
+          "nl": "Een oom mopperde over moderne vrijheden, terwijl haar grootmoeder precies op het vertrouwde moment haar glas ophief.",
+          "en": "An uncle grumbled about modern liberties while her grandmother raised her glass at exactly the familiar moment."
+        },
+        {
+          "nl": "Mila behield de pauze voor het laatste woord, dat nu van haarzelf was en daardoor misschien beter bij de familie hoorde dan een foutloze kopie.",
+          "en": "Mila kept the pause before the final word, which was now her own and perhaps therefore belonged to the family better than a flawless copy."
+        }
+      ],
+      "words": [
+        {
+          "term": "plechtig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "ernstig en ceremonieel",
+            "en": "solemn"
+          },
+          "example": {
+            "nl": "Mila kon de tekst foutloos opzeggen, maar wist bij één plechtige uitdrukking niet precies wat ze haar familie eigenlijk toewenste.",
+            "en": "Mila could recite the text flawlessly, but with one solemn expression did not know exactly what she was actually wishing her family."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "toewensen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "hopen dat iemand iets goeds zal krijgen",
+            "en": "to wish someone"
+          },
+          "example": {
+            "nl": "Mila kon de tekst foutloos opzeggen, maar wist bij één plechtige uitdrukking niet precies wat ze haar familie eigenlijk toewenste.",
+            "en": "Mila could recite the text flawlessly, but with one solemn expression did not know exactly what she was actually wishing her family."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "mopperen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "op ontevreden toon klagen",
+            "en": "to grumble"
+          },
+          "example": {
+            "nl": "Een oom mopperde over moderne vrijheden, terwijl haar grootmoeder precies op het vertrouwde moment haar glas ophief.",
+            "en": "An uncle grumbled about modern liberties while her grandmother raised her glass at exactly the familiar moment."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof bij een overgeleverde aanname",
+            "en": "As if with an inherited assumption"
+          },
+          "explanation": {
+            "nl": "Alsof maakt het verschil zichtbaar tussen hoe de tekst wordt voorgesteld en hoe hij ontstond.",
+            "en": "Alsof reveals the difference between how the text is presented and how it originated."
+          },
+          "examples": [
+            {
+              "nl": "De wens was dus niet onveranderd uit een ver verleden gekomen, al werd hij telkens alsof dat wel zo was doorgegeven.",
+              "en": "The wish had therefore not come unchanged from a distant past, although it was repeatedly passed on as though it had."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ontdekt Mila over de oude wens?",
+            "en": "What does Mila discover about the old wish?"
+          },
+          "options": [
+            {
+              "nl": "Hij bevat geen woorden.",
+              "en": "It contains no words."
+            },
+            {
+              "nl": "Niemand heeft hem ooit uitgesproken.",
+              "en": "Nobody has ever recited it."
+            },
+            {
+              "nl": "Hij is eerder al aan een nieuwe situatie aangepast.",
+              "en": "It has already been adapted to a new situation before."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Haar overgrootmoeder veranderde de zin na een moeilijk jaar.",
+            "en": "Her great-grandmother changed the sentence after a difficult year."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat laat de reactie van de grootmoeder zien?",
+            "en": "What does the grandmother's reaction show?"
+          },
+          "options": [
+            {
+              "nl": "Zij herkent continuïteit ondanks de aangepaste woorden.",
+              "en": "She recognises continuity despite the adapted words."
+            },
+            {
+              "nl": "Zij wil het hele feest stoppen.",
+              "en": "She wants to stop the whole celebration."
+            },
+            {
+              "nl": "Zij heeft de nieuwe zin niet gehoord.",
+              "en": "She has not heard the new sentence."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze heft haar glas op hetzelfde rituele moment.",
+            "en": "She raises her glass at the same ritual moment."
+          }
+        }
+      ]
+    }
+  ]
+}

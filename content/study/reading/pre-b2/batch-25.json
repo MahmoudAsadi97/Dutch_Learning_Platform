@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-experiment-met-de-stille-klas",
+      "topic_id": "science",
+      "title": {
+        "nl": "Het experiment met de stille klas",
+        "en": "The experiment with the quiet class"
+      },
+      "plot_key": "A pupil studying classroom noise learns her observations changed behaviour and redesigns her claim rather than treating the unusually quiet lesson as ordinary life.",
+      "lines": [
+        {
+          "nl": "Voor een wetenschapsproject wilde Selin meten hoeveel achtergrondgeluid er tijdens verschillende lessen in haar klas was, zonder iemand persoonlijk te beoordelen.",
+          "en": "For a science project Selin wanted to measure how much background noise there was during different lessons in her classroom without judging anyone personally."
+        },
+        {
+          "nl": "Ze legde de meetapparatuur zichtbaar op haar tafel en vertelde dat de resultaten later in een grafiek zouden komen.",
+          "en": "She placed the measuring equipment visibly on her desk and explained that the results would later appear in a graph."
+        },
+        {
+          "nl": "Tot haar verbazing verliep het eerste uur ongewoon stil, terwijl juist die les normaal bekendstond als het luidruchtigste moment van de week.",
+          "en": "To her surprise the first lesson was unusually quiet, although that lesson was normally known as the noisiest moment of the week."
+        },
+        {
+          "nl": "Een klasgenoot vertelde bij de pauze dat iedereen expres zachter praatte omdat niemand als oorzaak van de hoge cijfers wilde eindigen.",
+          "en": "During the break a classmate explained that everyone deliberately spoke more quietly because nobody wanted to end up as the cause of the high figures."
+        },
+        {
+          "nl": "Selin had geen mensen in haar tabel willen aanwijzen, maar haar uitleg had de situatie toch veranderd voordat zij die kon vastleggen.",
+          "en": "Selin had not wanted to identify people in her table, but her explanation had nevertheless changed the situation before she could record it."
+        },
+        {
+          "nl": "In overleg met de docent beschreef zij die invloed als beperking en verzamelde zij meer waarnemingen volgens een duidelijk afgesproken aanpak.",
+          "en": "In discussion with the teacher she described that influence as a limitation and gathered more observations using a clearly agreed approach."
+        },
+        {
+          "nl": "Haar eindgrafiek werd minder geschikt om één les als de lawaaierigste aan te wijzen, maar haar verslag verklaarde beter wat er precies was gemeten.",
+          "en": "Her final graph became less suitable for identifying one lesson as the noisiest, but her report better explained exactly what had been measured."
+        },
+        {
+          "nl": "Tijdens de presentatie vroeg zij het publiek eerst hoe het zich zou gedragen als de hele zaal wist dat haar stilte een onderzoeksresultaat zou worden.",
+          "en": "During the presentation she first asked the audience how they would behave if the whole room knew its silence would become a research result."
+        }
+      ],
+      "words": [
+        {
+          "term": "de meetapparatuur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "toestellen waarmee een hoeveelheid wordt vastgesteld",
+            "en": "measuring equipment"
+          },
+          "example": {
+            "nl": "Ze legde de meetapparatuur zichtbaar op haar tafel en vertelde dat de resultaten later in een grafiek zouden komen.",
+            "en": "She placed the measuring equipment visibly on her desk and explained that the results would later appear in a graph."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "luidruchtig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "veel geluid makend",
+            "en": "noisy"
+          },
+          "example": {
+            "nl": "Tot haar verbazing verliep het eerste uur ongewoon stil, terwijl juist die les normaal bekendstond als het luidruchtigste moment van de week.",
+            "en": "To her surprise the first lesson was unusually quiet, although that lesson was normally known as the noisiest moment of the week."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de beperking",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets waardoor een conclusie niet onbeperkt geldt",
+            "en": "limitation"
+          },
+          "example": {
+            "nl": "In overleg met de docent beschreef zij die invloed als beperking en verzamelde zij meer waarnemingen volgens een duidelijk afgesproken aanpak.",
+            "en": "In discussion with the teacher she described that influence as a limitation and gathered more observations using a clearly agreed approach."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor een onverwachte tegenstelling",
+            "en": "While for an unexpected contrast"
+          },
+          "explanation": {
+            "nl": "Terwijl plaatst het stille meetuur tegenover de gewone reputatie van de les.",
+            "en": "Terwijl contrasts the quiet measured lesson with the lesson's usual reputation."
+          },
+          "examples": [
+            {
+              "nl": "Tot haar verbazing verliep het eerste uur ongewoon stil, terwijl juist die les normaal bekendstond als het luidruchtigste moment van de week.",
+              "en": "To her surprise the first lesson was unusually quiet, although that lesson was normally known as the noisiest moment of the week."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is de eerste meting niet vanzelf representatief?",
+            "en": "Why is the first measurement not automatically representative?"
+          },
+          "options": [
+            {
+              "nl": "De grafiek is nog niet gekleurd.",
+              "en": "The graph has not been coloured yet."
+            },
+            {
+              "nl": "De klas bestaat niet.",
+              "en": "The class does not exist."
+            },
+            {
+              "nl": "De leerlingen passen hun gedrag aan omdat zij de meting kennen.",
+              "en": "The pupils adapt their behaviour because they know about the measurement."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De zichtbare proef en de uitleg beïnvloeden de gemeten situatie.",
+            "en": "The visible experiment and explanation influence the situation being measured."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt haar latere verslag beter?",
+            "en": "What improves her later report?"
+          },
+          "options": [
+            {
+              "nl": "Ze doet alsof de invloed niet bestaat.",
+              "en": "She pretends the influence does not exist."
+            },
+            {
+              "nl": "Ze benoemt de beperking van wat de gegevens kunnen bewijzen.",
+              "en": "She names the limits of what the data can prove."
+            },
+            {
+              "nl": "Ze wijst één leerling als schuldige aan.",
+              "en": "She identifies one pupil as the culprit."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De meting krijgt een uitleg over haar omstandigheden en reikwijdte.",
+            "en": "The measurement gains an explanation of its circumstances and scope."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-eik-met-een-leeg-nest",
+      "topic_id": "nature",
+      "title": {
+        "nl": "De eik met het lege nest",
+        "en": "The oak with the empty nest"
+      },
+      "plot_key": "A child and grandmother return repeatedly to an apparently abandoned nest and discover attentive observation can end without knowing exactly what happened.",
+      "lines": [
+        {
+          "nl": "Elke zondag liepen Emma en haar grootmoeder langs een oude eik waarin het jaar daarvoor een groot nest had gezeten.",
+          "en": "Every Sunday Emma and her grandmother walked past an old oak that had held a large nest the previous year."
+        },
+        {
+          "nl": "Emma hield een schrift bij met tekeningen en verwachtte dat de vogels op bijna dezelfde dag zouden terugkomen als in haar vorige notities.",
+          "en": "Emma kept a notebook of drawings and expected the birds to return on almost the same day as in her previous notes."
+        },
+        {
+          "nl": "De weken verstreken echter zonder beweging bij het nest, en zij wilde weten wie er iets verkeerd had gedaan.",
+          "en": "The weeks passed without movement at the nest, and she wanted to know who had done something wrong."
+        },
+        {
+          "nl": "Haar grootmoeder wist het niet en weigerde een geruststellend verhaal te verzinnen over een betere boom aan de andere kant van het park.",
+          "en": "Her grandmother did not know and refused to invent a reassuring story about a better tree on the other side of the park."
+        },
+        {
+          "nl": "Samen noteerden ze alleen wat zichtbaar was: een losse tak, een nieuwe opening tussen de bladeren en op een dag een stuk nest op de grond.",
+          "en": "Together they recorded only what was visible: a loose branch, a new opening among the leaves and one day a piece of nest on the ground."
+        },
+        {
+          "nl": "Emma vond een onbekende afloop moeilijker om te tekenen dan een verhaal waarin alles goed kwam, maar hield naast de eik ruimte voor vragen.",
+          "en": "Emma found an unknown ending harder to draw than a story in which everything ended well, but left space beside the oak for questions."
+        },
+        {
+          "nl": "Later zagen ze op een andere wandeling wel jonge vogels, zonder zeker te weten of die iets met hun oude nest te maken hadden.",
+          "en": "Later they did see young birds on another walk without knowing for certain whether they had anything to do with their old nest."
+        },
+        {
+          "nl": "Het schrift werd voller terwijl het antwoord uitbleef, en haar grootmoeder liet haar zien dat blijven kijken niet hetzelfde hoefde te zijn als alles kunnen verklaren.",
+          "en": "The notebook grew fuller while the answer remained absent, and her grandmother showed her that continuing to look need not mean being able to explain everything."
+        }
+      ],
+      "words": [
+        {
+          "term": "verstrijken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "voorbijgaan, gezegd van tijd",
+            "en": "to pass, of time"
+          },
+          "example": {
+            "nl": "De weken verstreken echter zonder beweging bij het nest, en zij wilde weten wie er iets verkeerd had gedaan.",
+            "en": "The weeks passed without movement at the nest, and she wanted to know who had done something wrong."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "uitblijven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "niet komen terwijl het verwacht wordt",
+            "en": "to remain absent"
+          },
+          "example": {
+            "nl": "Het schrift werd voller terwijl het antwoord uitbleef, en haar grootmoeder liet haar zien dat blijven kijken niet hetzelfde hoefde te zijn als alles kunnen verklaren.",
+            "en": "The notebook grew fuller while the answer remained absent, and her grandmother showed her that continuing to look need not mean being able to explain everything."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "zichtbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met de ogen waar te nemen",
+            "en": "visible"
+          },
+          "example": {
+            "nl": "Samen noteerden ze alleen wat zichtbaar was: een losse tak, een nieuwe opening tussen de bladeren en op een dag een stuk nest op de grond.",
+            "en": "Together they recorded only what was visible: a loose branch, a new opening among the leaves and one day a piece of nest on the ground."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder zeker te weten",
+            "en": "Without knowing for certain"
+          },
+          "explanation": {
+            "nl": "De infinitiefgroep beperkt de conclusie die uit het zien van jonge vogels kan volgen.",
+            "en": "The infinitive phrase limits the conclusion that can follow from seeing young birds."
+          },
+          "examples": [
+            {
+              "nl": "Later zagen ze op een andere wandeling wel jonge vogels, zonder zeker te weten of die iets met hun oude nest te maken hadden.",
+              "en": "Later they did see young birds on another walk without knowing for certain whether they had anything to do with their old nest."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom vertelt de grootmoeder niet dat de vogels elders gelukkig zijn?",
+            "en": "Why does the grandmother not say the birds are happy elsewhere?"
+          },
+          "options": [
+            {
+              "nl": "Ze houdt niet van verhalen.",
+              "en": "She dislikes stories."
+            },
+            {
+              "nl": "Emma mag geen schrift hebben.",
+              "en": "Emma may not have a notebook."
+            },
+            {
+              "nl": "Ze weet niet of dat verhaal waar is.",
+              "en": "She does not know whether that story is true."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zij wil onzekerheid niet met een verzonnen geruststelling vullen.",
+            "en": "She does not want to fill uncertainty with invented reassurance."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat leert Emma over haar schrift?",
+            "en": "What does Emma learn about her notebook?"
+          },
+          "options": [
+            {
+              "nl": "Waarnemingen zijn alleen nuttig als alles meteen verklaard wordt.",
+              "en": "Observations are useful only if everything is explained immediately."
+            },
+            {
+              "nl": "Het kan concrete waarnemingen en open vragen samen bewaren.",
+              "en": "It can preserve concrete observations and open questions together."
+            },
+            {
+              "nl": "Elke tekening is een bewijs van succes.",
+              "en": "Every drawing is proof of success."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het schrift groeit ook zonder definitief antwoord.",
+            "en": "The notebook grows even without a definitive answer."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-hond-die-niet-meer-optrad",
+      "topic_id": "animals-pets",
+      "title": {
+        "nl": "De hond die niet meer optrad",
+        "en": "The dog that no longer performed"
+      },
+      "plot_key": "A child expects an adopted retired performing dog to repeat tricks, but learns to read its new household role without demanding it remain entertainment.",
+      "lines": [
+        {
+          "nl": "Toen hun gezin een oudere hond opnam die vroeger bij voorstellingen had meegedaan, vertelde Nienke op school dat er thuis binnenkort een echte artiest zou wonen.",
+          "en": "When their family took in an older dog that had formerly appeared in performances, Nienke told her school there would soon be a real artist living at home."
+        },
+        {
+          "nl": "Ze zette kleine stoeltjes in de tuin en nodigde twee vriendinnen uit om te zien hoe hij door een hoepel zou springen.",
+          "en": "She arranged little chairs in the garden and invited two friends to see him jump through a hoop."
+        },
+        {
+          "nl": "De hond keek kort naar de hoepel, draaide zich daarna om en ging met een diepe zucht naast de tuindeur liggen.",
+          "en": "The dog glanced at the hoop, then turned around and lay down beside the garden door with a deep sigh."
+        },
+        {
+          "nl": "Nienke voelde zich voor haar vriendinnen te kijk gezet en vroeg haar vader waarom het dier deed alsof hij niets meer kon.",
+          "en": "Nienke felt embarrassed in front of her friends and asked her father why the animal acted as if he could no longer do anything."
+        },
+        {
+          "nl": "Haar vader zei dat zij een hond hadden opgenomen en geen contract voor dagelijkse voorstellingen hadden gekocht.",
+          "en": "Her father said they had taken in a dog and had not bought a contract for daily performances."
+        },
+        {
+          "nl": "Later zag Nienke hoe het dier zonder aansporing naast haar jongere broer bleef zitten terwijl die langzaam een moeilijk boek hardop las.",
+          "en": "Later Nienke saw the animal sit beside her younger brother without prompting while he slowly read a difficult book aloud."
+        },
+        {
+          "nl": "Hij klapte niet, stelde geen vragen en verliet zijn plek niet wanneer een woord drie keer opnieuw moest beginnen.",
+          "en": "He did not applaud, ask questions or leave his place when a word had to begin again three times."
+        },
+        {
+          "nl": "Bij het volgende bezoek vertelde Nienke dat hun hond heel goed kon blijven, zonder daar nog een nummer voor een publiek van te maken.",
+          "en": "During the next visit Nienke said their dog was very good at staying, without turning that into an act for an audience again."
+        }
+      ],
+      "words": [
+        {
+          "term": "de aansporing",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een aanmoediging om iets te doen",
+            "en": "prompting"
+          },
+          "example": {
+            "nl": "Later zag Nienke hoe het dier zonder aansporing naast haar jongere broer bleef zitten terwijl die langzaam een moeilijk boek hardop las.",
+            "en": "Later Nienke saw the animal sit beside her younger brother without prompting while he slowly read a difficult book aloud."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "te kijk zetten",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "iemand voor anderen in verlegenheid brengen",
+            "en": "to embarrass publicly"
+          },
+          "example": {
+            "nl": "Nienke voelde zich voor haar vriendinnen te kijk gezet en vroeg haar vader waarom het dier deed alsof hij niets meer kon.",
+            "en": "Nienke felt embarrassed in front of her friends and asked her father why the animal acted as if he could no longer do anything."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het nummer",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een afzonderlijk onderdeel van een voorstelling",
+            "en": "act"
+          },
+          "example": {
+            "nl": "Bij het volgende bezoek vertelde Nienke dat hun hond heel goed kon blijven, zonder daar nog een nummer voor een publiek van te maken.",
+            "en": "During the next visit Nienke said their dog was very good at staying, without turning that into an act for an audience again."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof bij een toegeschreven bedoeling",
+            "en": "As if with an attributed intention"
+          },
+          "explanation": {
+            "nl": "Alsof laat zien hoe Nienke het gedrag interpreteert, niet wat de hond bewust denkt.",
+            "en": "Alsof shows how Nienke interprets the behaviour, not what the dog consciously thinks."
+          },
+          "examples": [
+            {
+              "nl": "Nienke voelde zich voor haar vriendinnen te kijk gezet en vroeg haar vader waarom het dier deed alsof hij niets meer kon.",
+              "en": "Nienke felt embarrassed in front of her friends and asked her father why the animal acted as if he could no longer do anything."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke verwachting moet Nienke loslaten?",
+            "en": "What expectation must Nienke let go of?"
+          },
+          "options": [
+            {
+              "nl": "Dat de hond water nodig heeft.",
+              "en": "That the dog needs water."
+            },
+            {
+              "nl": "Dat hij naast iemand kan liggen.",
+              "en": "That he can lie beside someone."
+            },
+            {
+              "nl": "Dat een verleden als artiest voortdurende optredens verplicht maakt.",
+              "en": "That a past as a performer requires continual performances."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Haar vader onderscheidt een thuis bieden van een voorstellingscontract.",
+            "en": "Her father distinguishes offering a home from a performance contract."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke nieuwe waarde ziet zij?",
+            "en": "What new value does she see?"
+          },
+          "options": [
+            {
+              "nl": "Rustige aanwezigheid zonder beoordeling.",
+              "en": "Quiet presence without judgement."
+            },
+            {
+              "nl": "Een snellere sprong door de hoepel.",
+              "en": "A faster jump through the hoop."
+            },
+            {
+              "nl": "Een groter publiek.",
+              "en": "A larger audience."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De hond blijft bij het moeizame lezen zonder iets te eisen.",
+            "en": "The dog stays during the difficult reading without demanding anything."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-krijtbrief-in-de-regen",
+      "topic_id": "weather",
+      "title": {
+        "nl": "De krijtbrief in de regen",
+        "en": "The chalk letter in the rain"
+      },
+      "plot_key": "A child writes an apology in pavement chalk, then must deliver the words directly after rain erases the planned indirect message.",
+      "lines": [
+        {
+          "nl": "Na een ruzie met zijn buurjongen schreef Sep met stoepkrijt een lange verontschuldiging op het pad tussen hun twee voordeuren.",
+          "en": "After an argument with the boy next door, Sep wrote a long apology in pavement chalk on the path between their two front doors."
+        },
+        {
+          "nl": "Hij vond schrijven gemakkelijker dan aanbellen, omdat hij dan niet onmiddellijk hoefde te zien hoe de ander zou reageren.",
+          "en": "He found writing easier than ringing the bell because he did not immediately have to see how the other would react."
+        },
+        {
+          "nl": "De volgende ochtend had de regen bijna alle woorden weggeveegd en stond alleen het grote beginwoord sorry nog vaag bij de afvoer.",
+          "en": "The next morning rain had washed away almost all the words and only the large opening word sorry remained faintly by the drain."
+        },
+        {
+          "nl": "Sep wilde dezelfde tekst opnieuw schrijven, maar zijn zus vroeg of de buurjongen ook zou weten waarvoor dat woord eigenlijk bedoeld was.",
+          "en": "Sep wanted to write the same text again, but his sister asked whether the boy next door would also know what that word was actually for."
+        },
+        {
+          "nl": "Hij pakte zijn blad met het ontwerp en liep naar de deur, terwijl hij voor zichzelf oefende hoe hij over de gebroken speelgoedauto zou beginnen.",
+          "en": "He took his sheet with the draft and walked to the door while practising to himself how he would begin about the broken toy car."
+        },
+        {
+          "nl": "De buurjongen luisterde en zei dat de auto minder erg was dan de opmerking dat hij toch nooit iets mocht uitlenen zonder te zeuren.",
+          "en": "The boy next door listened and said the car mattered less than the remark that he could never lend anything without complaining anyway."
+        },
+        {
+          "nl": "Die zin had Sep op zijn stoepbrief alleen als kleine bijzaak behandeld, omdat hij vooral het kapotte speelgoed wilde herstellen.",
+          "en": "Sep had treated that sentence in his pavement letter only as a minor detail because he mainly wanted to repair the broken toy."
+        },
+        {
+          "nl": "Buiten bleef het pad leeg; voor het eerst was er een gesprek geweest waarin de ander ook kon zeggen welk deel gerepareerd moest worden.",
+          "en": "Outside the path remained empty; for the first time there had been a conversation in which the other person could also say which part needed repair."
+        }
+      ],
+      "words": [
+        {
+          "term": "wegvegen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "door vegen of beweging laten verdwijnen",
+            "en": "to wipe away"
+          },
+          "example": {
+            "nl": "De volgende ochtend had de regen bijna alle woorden weggeveegd en stond alleen het grote beginwoord sorry nog vaag bij de afvoer.",
+            "en": "The next morning rain had washed away almost all the words and only the large opening word sorry remained faintly by the drain."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de bijzaak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets dat minder belangrijk wordt geacht dan de hoofdzaak",
+            "en": "minor detail"
+          },
+          "example": {
+            "nl": "Die zin had Sep op zijn stoepbrief alleen als kleine bijzaak behandeld, omdat hij vooral het kapotte speelgoed wilde herstellen.",
+            "en": "Sep had treated that sentence in his pavement letter only as a minor detail because he mainly wanted to repair the broken toy."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "zeuren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "op een als vervelend ervaren manier blijven klagen",
+            "en": "to nag or complain"
+          },
+          "example": {
+            "nl": "De buurjongen luisterde en zei dat de auto minder erg was dan de opmerking dat hij toch nooit iets mocht uitlenen zonder te zeuren.",
+            "en": "The boy next door listened and said the car mattered less than the remark that he could never lend anything without complaining anyway."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te als een verwijt",
+            "en": "Without doing, as a reproach"
+          },
+          "explanation": {
+            "nl": "Zonder te zeuren is deel van het geciteerde verwijt en toont hoe Sep het gedrag had verkleind.",
+            "en": "Zonder te zeuren is part of the reported reproach and shows how Sep had belittled the behaviour."
+          },
+          "examples": [
+            {
+              "nl": "De buurjongen luisterde en zei dat de auto minder erg was dan de opmerking dat hij toch nooit iets mocht uitlenen zonder te zeuren.",
+              "en": "The boy next door listened and said the car mattered less than the remark that he could never lend anything without complaining anyway."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kiest Sep eerst voor stoepkrijt?",
+            "en": "Why does Sep initially choose pavement chalk?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft geen deur.",
+              "en": "He has no door."
+            },
+            {
+              "nl": "De buurjongen kan niet lezen.",
+              "en": "The boy next door cannot read."
+            },
+            {
+              "nl": "Hij wil de onmiddellijke reactie niet hoeven meemaken.",
+              "en": "He does not want to have to face the immediate reaction."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Schrijven houdt de ander op afstand tijdens de verontschuldiging.",
+            "en": "Writing keeps the other person at a distance during the apology."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat leert het echte gesprek dat de brief niet liet zien?",
+            "en": "What does the actual conversation reveal that the letter did not?"
+          },
+          "options": [
+            {
+              "nl": "De auto is niet gebroken.",
+              "en": "The car is not broken."
+            },
+            {
+              "nl": "De beledigende opmerking was voor de buurjongen het pijnlijkste.",
+              "en": "The insulting remark was the most painful part for the other boy."
+            },
+            {
+              "nl": "Regen maakt speelgoed heel.",
+              "en": "Rain repairs toys."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De buurjongen wijst zelf aan waar de belangrijkste schade zat.",
+            "en": "The boy himself identifies where the main harm lay."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-affiche-zonder-voornaam",
+      "topic_id": "politics",
+      "title": {
+        "nl": "De affiche zonder voornaam",
+        "en": "The poster without a first name"
+      },
+      "plot_key": "A campaign volunteer’s family photo is cropped into a candidate endorsement, prompting a discussion of representation and her independent political voice.",
+      "lines": [
+        {
+          "nl": "Voor een lokale campagne vroeg de ploeg van een kandidaat aan buurtbewoner Elise of zij een foto van hun gezamenlijke opruimactie mocht gebruiken.",
+          "en": "For a local campaign, a candidate's team asked resident Elise whether they could use a photograph of their joint clean-up activity."
+        },
+        {
+          "nl": "Zij vond het goed dat het werk van de vrijwilligers zichtbaar werd en verwachtte een verslag met de namen van het hele team.",
+          "en": "She was happy for the volunteers' work to be visible and expected a report naming the whole team."
+        },
+        {
+          "nl": "Op de uiteindelijke affiche stond alleen de kandidaat naast haar, met een zin die suggereerde dat zij zijn volledige programma steunde.",
+          "en": "On the final poster only the candidate stood beside her, with a sentence suggesting she supported his entire programme."
+        },
+        {
+          "nl": "Elise was het met sommige plannen eens en met andere niet, maar werd in gesprekken op de markt plots als zijn vaste bondgenoot aangesproken.",
+          "en": "Elise agreed with some plans and not others, but in conversations at the market she was suddenly addressed as his firm ally."
+        },
+        {
+          "nl": "Ze vroeg de ploeg niet om de opruimactie te ontkennen, wel om de foto niet meer als vervanging van haar eigen politieke uitspraak te gebruiken.",
+          "en": "She did not ask the team to deny the clean-up activity, but did ask them to stop using the photograph as a substitute for her own political statement."
+        },
+        {
+          "nl": "De kandidaat vond dat de positieve bedoeling duidelijk was, waarop zij antwoordde dat ook een vriendelijk beeld iemand woorden kon afnemen.",
+          "en": "The candidate felt the positive intention was clear, at which she replied that even a friendly image could take someone's words away."
+        },
+        {
+          "nl": "Er kwam een nieuwe affiche met een concrete beschrijving van de actie en zonder een persoonlijke aanbeveling die zij nooit had gegeven.",
+          "en": "A new poster appeared with a concrete description of the activity and without a personal endorsement she had never given."
+        },
+        {
+          "nl": "Elise bleef vrijwilligerswerk doen, maar sprak op de volgende bijeenkomst zelf uit welke plannen zij wel en niet overtuigend vond.",
+          "en": "Elise continued volunteering, but at the next meeting stated herself which plans she did and did not find convincing."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bondgenoot",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die een ander steunt bij een gemeenschappelijk doel",
+            "en": "ally"
+          },
+          "example": {
+            "nl": "Elise was het met sommige plannen eens en met andere niet, maar werd in gesprekken op de markt plots als zijn vaste bondgenoot aangesproken.",
+            "en": "Elise agreed with some plans and not others, but in conversations at the market she was suddenly addressed as his firm ally."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de aanbeveling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een positieve uitspraak waarmee iemand iets of iemand steunt",
+            "en": "endorsement"
+          },
+          "example": {
+            "nl": "Er kwam een nieuwe affiche met een concrete beschrijving van de actie en zonder een persoonlijke aanbeveling die zij nooit had gegeven.",
+            "en": "A new poster appeared with a concrete description of the activity and without a personal endorsement she had never given."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "suggereren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "indirect een indruk wekken",
+            "en": "to suggest"
+          },
+          "example": {
+            "nl": "Op de uiteindelijke affiche stond alleen de kandidaat naast haar, met een zin die suggereerde dat zij zijn volledige programma steunde.",
+            "en": "On the final poster only the candidate stood beside her, with a sentence suggesting she supported his entire programme."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet ... wel ... voor een begrensd verzoek",
+            "en": "Not ... but ... for a limited request"
+          },
+          "explanation": {
+            "nl": "Niet en wel onderscheiden het erkennen van de actie van het toe-eigenen van haar politieke stem.",
+            "en": "Niet and wel distinguish acknowledging the activity from appropriating her political voice."
+          },
+          "examples": [
+            {
+              "nl": "Ze vroeg de ploeg niet om de opruimactie te ontkennen, wel om de foto niet meer als vervanging van haar eigen politieke uitspraak te gebruiken.",
+              "en": "She did not ask the team to deny the clean-up activity, but did ask them to stop using the photograph as a substitute for her own political statement."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verandert de uitsnede van de foto?",
+            "en": "What does the crop of the photograph change?"
+          },
+          "options": [
+            {
+              "nl": "Ze bewijst dat de actie niet plaatsvond.",
+              "en": "It proves the activity did not happen."
+            },
+            {
+              "nl": "Ze maakt alle vrijwilligers herkenbaar.",
+              "en": "It makes all volunteers recognisable."
+            },
+            {
+              "nl": "Een gezamenlijke actie lijkt een persoonlijke steunverklaring.",
+              "en": "A joint activity looks like a personal endorsement."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De affiche toont haar naast één kandidaat en voegt een ongegeven aanbeveling toe.",
+            "en": "The poster shows her beside one candidate and adds an endorsement she did not give."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welk onderscheid verdedigt Elise?",
+            "en": "What distinction does Elise defend?"
+          },
+          "options": [
+            {
+              "nl": "Samenwerken aan één actie is niet hetzelfde als een heel programma steunen.",
+              "en": "Working together on one activity is not the same as supporting an entire programme."
+            },
+            {
+              "nl": "Vrijwilligers mogen nooit politiek spreken.",
+              "en": "Volunteers may never speak about politics."
+            },
+            {
+              "nl": "Een foto kan geen echte gebeurtenis tonen.",
+              "en": "A photograph cannot show a real event."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zij blijft meehelpen en houdt tegelijk een eigen oordeel over plannen.",
+            "en": "She keeps helping while retaining her own judgement of plans."
+          }
+        }
+      ]
+    }
+  ]
+}

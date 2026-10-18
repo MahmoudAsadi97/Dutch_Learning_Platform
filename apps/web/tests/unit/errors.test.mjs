@@ -94,7 +94,12 @@ test("every error code the API sends has copy, or is listed as general on purpos
     for (const entry of readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, entry.name);
       if (entry.isDirectory()) walk(full);
-      else if (entry.name.endsWith(".py"))
+      // Content-audit findings are report data, not HTTP error responses. They
+      // intentionally retain technical codes and never need learner error copy.
+      else if (
+        entry.name.endsWith(".py") &&
+        !full.endsWith(path.join("domains", "curriculum", "story_inventory.py"))
+      )
         for (const m of readFileSync(full, "utf8").matchAll(
           /(?<!\w)code(?:: str)? ?= ?"([a-z_]+)"|"code": "([a-z_]+)"/g,
         ))

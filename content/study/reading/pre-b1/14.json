@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b1-read-boek-zonder-laatste-woord",
+      "topic_id": "books-reading",
+      "title": {
+        "nl": "Het laatste woord in de brief",
+        "en": "The final word in the letter"
+      },
+      "plot_key": "Authorgrandmother leaves letterfinalword blank notmissingprint, grandchildasks and sheinviteschooseforongoinglife leavingstoryoriginalbeginnings notbookendingreuse.",
+      "lines": [
+        {
+          "nl": "Voor haar achttiende verjaardag krijgt Yara van haar oma een lange brief over haar kindertijd.",
+          "en": "For her eighteenth birthday, Yara receives a long letter from her grandmother about her childhood."
+        },
+        {
+          "nl": "Oma beschrijft de eerste fietsrit, de blauwe laarzen en de zondag waarop Yara de taart liet vallen.",
+          "en": "Grandma describes the first bicycle ride, the blue boots and the Sunday when Yara dropped the cake."
+        },
+        {
+          "nl": "De laatste zin stopt echter na de woorden en vanaf nu begint jouw.",
+          "en": "The last sentence, however, stops after the words and from now on begins your."
+        },
+        {
+          "nl": "Yara denkt dat er een tweede blad ontbreekt en zoekt tussen het cadeaupapier.",
+          "en": "Yara thinks that a second page is missing and looks among the wrapping paper."
+        },
+        {
+          "nl": "Oma zegt dat ze niet vergeten is verder te schrijven, maar bewust een plek heeft vrijgelaten.",
+          "en": "Grandma says that she did not forget to keep writing but deliberately left a space."
+        },
+        {
+          "nl": "Ze weet wel veel over Yara's verleden, alleen niet welk woord bij haar volgende jaren zal passen.",
+          "en": "She knows a lot about Yara's past, but not which word will fit her coming years."
+        },
+        {
+          "nl": "Yara stelt reis voor en daarna avontuur, maar besluit de plek nog even leeg te laten.",
+          "en": "Yara suggests journey and then adventure but decides to leave the space empty for a while yet."
+        },
+        {
+          "nl": "Ze bewaart de brief in haar tas, zodat er later niet alleen een herinnering, maar ook een open vraag met haar meegaat.",
+          "en": "She keeps the letter in her bag so that later she carries not only a memory but also an open question."
+        }
+      ],
+      "words": [
+        {
+          "term": "het verleden",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de tijd die al voorbij is",
+            "en": "past"
+          },
+          "example": {
+            "nl": "Ze weet wel veel over Yara's verleden, alleen niet welk woord bij haar volgende jaren zal passen.",
+            "en": "She knows a lot about Yara's past, but not which word will fit her coming years."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "bewust",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met een duidelijke bedoeling",
+            "en": "deliberate"
+          },
+          "example": {
+            "nl": "Oma zegt dat ze niet vergeten is verder te schrijven, maar bewust een plek heeft vrijgelaten.",
+            "en": "Grandma says that she did not forget to keep writing but deliberately left a space."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "vrijlaten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een ruimte niet vullen of gebruiken",
+            "en": "to leave free; to leave blank"
+          },
+          "example": {
+            "nl": "Oma zegt dat ze niet vergeten is verder te schrijven, maar bewust een plek heeft vrijgelaten.",
+            "en": "Grandma says that she did not forget to keep writing but deliberately left a space."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wel ... alleen niet ...",
+            "en": "... but not ..."
+          },
+          "explanation": {
+            "nl": "Wel bevestigt de eerste informatie; alleen niet beperkt wat de persoon kan weten.",
+            "en": "Wel confirms the first piece of information; alleen niet limits what the person can know."
+          },
+          "examples": [
+            {
+              "nl": "Ze weet wel veel over Yara's verleden, alleen niet welk woord bij haar volgende jaren zal passen.",
+              "en": "She knows a lot about Yara's past, but not which word will fit her coming years."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom eindigt de brief midden in een zin?",
+            "en": "Why does the letter end in the middle of a sentence?"
+          },
+          "options": [
+            {
+              "nl": "Oma laat bewust ruimte voor Yara's onbekende toekomst.",
+              "en": "Grandma deliberately leaves room for Yara's unknown future."
+            },
+            {
+              "nl": "Oma heeft het tweede blad per ongeluk weggegooid.",
+              "en": "Grandma accidentally threw away the second page."
+            },
+            {
+              "nl": "Yara heeft het laatste woord gewist.",
+              "en": "Yara erased the final word."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Oma legt uit dat ze niet weet welk woord bij de volgende jaren past.",
+            "en": "Grandma explains that she does not know which word suits the coming years."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat kiest Yara voorlopig?",
+            "en": "What does Yara choose for the time being?"
+          },
+          "options": [
+            {
+              "nl": "Ze schrijft het woord fiets in hoofdletters.",
+              "en": "She writes the word bicycle in capital letters."
+            },
+            {
+              "nl": "Ze houdt de plek open en bewaart de brief.",
+              "en": "She keeps the space open and preserves the letter."
+            },
+            {
+              "nl": "Ze geeft de brief aan een onbekende.",
+              "en": "She gives the letter to a stranger."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Na twee voorstellen laat ze de zin nog even onaf.",
+            "en": "After two suggestions, she leaves the sentence unfinished for a while."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b1-read-brood-met-een-munt",
+      "topic_id": "food-cooking",
+      "title": {
+        "nl": "Het brood met één munt",
+        "en": "The bread with one coin"
+      },
+      "plot_key": "Grandmother old ritual childbuysloafwithsamecoin nowinsufficient asksparent budgeting then bake miniatureceremonial bread withkeptcoin separate notfoodrisk.",
+      "lines": [
+        {
+          "nl": "In een oud fotoalbum ziet Jules zichzelf als kleuter met een broodzak en één munt in zijn hand.",
+          "en": "In an old photo album, Jules sees himself as a toddler with a bread bag and one coin in his hand."
+        },
+        {
+          "nl": "Zijn oma vertelt dat hij toen graag alleen de laatste meters naar de toonbank stapte.",
+          "en": "His grandmother explains that back then he liked walking the last few metres to the counter on his own."
+        },
+        {
+          "nl": "Voor haar verjaardag wil hij die foto opnieuw maken met hetzelfde brood en dezelfde munt.",
+          "en": "For her birthday, he wants to recreate that photograph with the same bread and the same coin."
+        },
+        {
+          "nl": "Bij de bakker merkt hij dat het brood nu veel meer kost dan de munt waard is.",
+          "en": "At the bakery he notices that the bread now costs much more than the coin is worth."
+        },
+        {
+          "nl": "De bakker stelt voor om een kleiner broodje te kiezen, maar Jules wil niet doen alsof alles gelijk is gebleven.",
+          "en": "The baker suggests choosing a smaller roll, but Jules does not want to pretend that everything has stayed the same."
+        },
+        {
+          "nl": "Hij koopt het gewone brood voor de huidige prijs en houdt de oude munt apart in een klein doosje.",
+          "en": "He buys the ordinary loaf at the current price and keeps the old coin separately in a little box."
+        },
+        {
+          "nl": "Op de nieuwe foto draagt hij het brood, terwijl oma het doosje vasthoudt.",
+          "en": "In the new photograph he carries the bread while Grandma holds the box."
+        },
+        {
+          "nl": "Naast elkaar tonen de twee foto's niet alleen dat Jules groter is geworden, maar ook dat herinneringen geen prijslijst zijn.",
+          "en": "Side by side, the two photographs show not only that Jules has grown but also that memories are not a price list."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kleuter",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een jong kind dat nog niet naar de lagere school gaat",
+            "en": "preschool child; toddler"
+          },
+          "example": {
+            "nl": "In een oud fotoalbum ziet Jules zichzelf als kleuter met een broodzak en één munt in zijn hand.",
+            "en": "In an old photo album, Jules sees himself as a toddler with a bread bag and one coin in his hand."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "huidig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "van nu",
+            "en": "current"
+          },
+          "example": {
+            "nl": "Hij koopt het gewone brood voor de huidige prijs en houdt de oude munt apart in een klein doosje.",
+            "en": "He buys the ordinary loaf at the current price and keeps the old coin separately in a little box."
+          },
+          "minimum_stage": "pre-b1"
+        },
+        {
+          "term": "de waarde",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hoeveel iets in geld of betekenis betekent",
+            "en": "value"
+          },
+          "example": {
+            "nl": "Bij de bakker merkt hij dat het brood nu veel meer kost dan de munt waard is.",
+            "en": "At the bakery he notices that the bread now costs much more than the coin is worth."
+          },
+          "minimum_stage": "pre-b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Meer kosten dan ... waard zijn",
+            "en": "To cost more than ... is worth"
+          },
+          "explanation": {
+            "nl": "Dan verbindt twee verschillende bedragen in een vergelijking.",
+            "en": "Dan connects two different amounts in a comparison."
+          },
+          "examples": [
+            {
+              "nl": "Bij de bakker merkt hij dat het brood nu veel meer kost dan de munt waard is.",
+              "en": "At the bakery he notices that the bread now costs much more than the coin is worth."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kan Jules de oude aankoop niet precies herhalen?",
+            "en": "Why can Jules not repeat the old purchase exactly?"
+          },
+          "options": [
+            {
+              "nl": "Het brood kost nu meer dan de oude munt waard is.",
+              "en": "The bread now costs more than the old coin is worth."
+            },
+            {
+              "nl": "De bakker verkoopt geen brood meer.",
+              "en": "The baker no longer sells bread."
+            },
+            {
+              "nl": "Zijn oma wil geen foto's meer zien.",
+              "en": "His grandmother no longer wants to see photographs."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De prijs en de waarde van de munt passen niet meer bij elkaar.",
+            "en": "The price and the value of the coin no longer match."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe verwerkt hij de verandering in de nieuwe foto?",
+            "en": "How does he include the change in the new photograph?"
+          },
+          "options": [
+            {
+              "nl": "Hij verbergt de oude munt volledig.",
+              "en": "He hides the old coin completely."
+            },
+            {
+              "nl": "Hij draagt het brood en oma toont de munt apart in het doosje.",
+              "en": "He carries the bread, and Grandma shows the coin separately in the box."
+            },
+            {
+              "nl": "Hij gebruikt alleen een lege broodzak.",
+              "en": "He uses only an empty bread bag."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zo blijven herinnering en huidige aankoop zichtbaar zonder te doen alsof de prijs gelijk is.",
+            "en": "This keeps both the memory and the current purchase visible without pretending that the price is the same."
+          }
+        }
+      ]
+    }
+  ]
+}

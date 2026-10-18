@@ -65,6 +65,8 @@ source representations count as one story; short templates and flagged near-copi
 Reading catalogue. Every counted eligible story must be selectable in its own stage. New reading batches
 contain original plots, parallel Dutch/English lines and preparation examples taken directly from the text.
 
+![Choose another story inside the same topic](docs/previews/study-story-chooser-desktop.png)
+
 IELTS preparation resources inform the task patterns, not the language being taught or an examination
 claim. Stories, prompts and examples are original; commercial exam passages and audio are not copied.
 [Belgian level and exam references](docs/BELGIAN_ALIGNMENT.md) explain the NT2, ITNA and CNaVT context.

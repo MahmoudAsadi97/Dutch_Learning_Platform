@@ -1,0 +1,3284 @@
+{
+  "schema_version": 1,
+  "stage_id": "a2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "a2-read-bezoek-zonder-bloemen",
+      "topic_id": "medical-care",
+      "title": {
+        "nl": "Geen bloemen, wel een verhaal",
+        "en": "No flowers, but a story"
+      },
+      "plot_key": "A visitor respects a hospital room's flower restriction and brings a remembered story instead of a replacement object.",
+      "lines": [
+        {
+          "nl": "Voor mijn bezoek aan oma kocht ik bloemen.",
+          "en": "I bought flowers before visiting Grandma."
+        },
+        {
+          "nl": "Bij de afdeling zag ik dat bloemen daar niet mochten.",
+          "en": "At the ward I saw that flowers were not allowed there."
+        },
+        {
+          "nl": "Ik vroeg de medewerker wat mogelijk was.",
+          "en": "I asked the staff member what was possible."
+        },
+        {
+          "nl": "De bloemen bleven bij mijn moeder buiten de afdeling.",
+          "en": "The flowers stayed with my mother outside the ward."
+        },
+        {
+          "nl": "Op oma's kamer vertelde ik over de tuin thuis.",
+          "en": "In Grandma's room I talked about the garden at home."
+        },
+        {
+          "nl": "Ze vroeg vooral naar haar kleine perenboom.",
+          "en": "She mainly asked about her little pear tree."
+        },
+        {
+          "nl": "Ik beschreef de eerste witte bloemen aan de takken.",
+          "en": "I described the first white blossoms on the branches."
+        },
+        {
+          "nl": "Ze glimlachte en zei dat ze de tuin bijna kon ruiken.",
+          "en": "She smiled and said she could almost smell the garden."
+        }
+      ],
+      "words": [
+        {
+          "term": "de afdeling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een apart deel van een ziekenhuis",
+            "en": "a separate part of a hospital"
+          },
+          "example": {
+            "nl": "Bij de afdeling zag ik dat bloemen daar niet mochten.",
+            "en": "At the ward I saw that flowers were not allowed there."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "beschrijven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met woorden vertellen hoe iets is",
+            "en": "to describe what something is like in words"
+          },
+          "example": {
+            "nl": "Ik beschreef de eerste witte bloemen aan de takken.",
+            "en": "I described the first white blossoms on the branches."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de tak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een deel van een boom waar bladeren aan groeien",
+            "en": "a tree part on which leaves grow"
+          },
+          "example": {
+            "nl": "Ik beschreef de eerste witte bloemen aan de takken.",
+            "en": "I described the first white blossoms on the branches."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet mochten",
+            "en": "Were not allowed"
+          },
+          "explanation": {
+            "nl": "Mochten noemt hier een regel over wat toegelaten was.",
+            "en": "Mochten states a rule about what was permitted here."
+          },
+          "examples": [
+            {
+              "nl": "Bij de afdeling zag ik dat bloemen daar niet mochten.",
+              "en": "At the ward I saw that flowers were not allowed there."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom gaan de bloemen niet mee naar de kamer?",
+            "en": "Why do the flowers not go to the room?"
+          },
+          "options": [
+            {
+              "nl": "Ze zijn op die afdeling niet toegelaten.",
+              "en": "They are not allowed on that ward."
+            },
+            {
+              "nl": "Oma houdt nooit van bloemen.",
+              "en": "Grandma never likes flowers."
+            },
+            {
+              "nl": "Ze zijn nog niet gekocht.",
+              "en": "They have not been bought yet."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het bericht bij de afdeling zegt dat bloemen daar niet mogen.",
+            "en": "The notice at the ward says flowers are not allowed there."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat brengt de verteller wel mee in het gesprek?",
+            "en": "What does the narrator bring into the conversation instead?"
+          },
+          "options": [
+            {
+              "nl": "Een recept voor soep",
+              "en": "A soup recipe"
+            },
+            {
+              "nl": "Een beschrijving van oma's tuin",
+              "en": "A description of Grandma's garden"
+            },
+            {
+              "nl": "Een afspraak voor de trein",
+              "en": "A train appointment"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Oma hoort hoe haar perenboom in bloei staat.",
+            "en": "Grandma hears how her pear tree is blossoming."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-kaartje-voor-het-asiel",
+      "topic_id": "volunteering-charity",
+      "title": {
+        "nl": "Een naam voor de nieuwe mand",
+        "en": "A name for the new basket"
+      },
+      "plot_key": "A shelter volunteer learns to ask which supplies are needed before collecting unsuitable donations.",
+      "lines": [
+        {
+          "nl": "Voor het dierenasiel wilde ik oude dekens verzamelen.",
+          "en": "I wanted to collect old blankets for the animal shelter."
+        },
+        {
+          "nl": "Mijn vrienden boden meteen drie grote zakken aan.",
+          "en": "My friends immediately offered three large bags."
+        },
+        {
+          "nl": "Ik belde eerst om te vragen wat het asiel nodig had.",
+          "en": "I first called to ask what the shelter needed."
+        },
+        {
+          "nl": "Er waren al genoeg dekens, maar te weinig handdoeken.",
+          "en": "There were already enough blankets but too few towels."
+        },
+        {
+          "nl": "We veranderden ons briefje voor de buurt.",
+          "en": "We changed our note for the neighbourhood."
+        },
+        {
+          "nl": "Na een week brachten we een mand schone handdoeken.",
+          "en": "After a week we brought a basket of clean towels."
+        },
+        {
+          "nl": "Een medewerker schreef er wasbaar materiaal op.",
+          "en": "A staff member wrote washable material on it."
+        },
+        {
+          "nl": "Onze kleine inzameling paste nu precies bij hun echte vraag.",
+          "en": "Our small collection now matched their actual need exactly."
+        }
+      ],
+      "words": [
+        {
+          "term": "het dierenasiel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een opvangplaats voor dieren zonder thuis",
+            "en": "a shelter for animals without a home"
+          },
+          "example": {
+            "nl": "Voor het dierenasiel wilde ik oude dekens verzamelen.",
+            "en": "I wanted to collect old blankets for the animal shelter."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "verzamelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "dingen bijeenbrengen",
+            "en": "to collect things together"
+          },
+          "example": {
+            "nl": "Voor het dierenasiel wilde ik oude dekens verzamelen.",
+            "en": "I wanted to collect old blankets for the animal shelter."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "wasbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "geschikt om te wassen",
+            "en": "suitable for washing"
+          },
+          "example": {
+            "nl": "Een medewerker schreef er wasbaar materiaal op.",
+            "en": "A staff member wrote washable material on it."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Genoeg en te weinig",
+            "en": "Enough and too few"
+          },
+          "explanation": {
+            "nl": "Deze woorden vergelijken wat beschikbaar is met wat nodig is.",
+            "en": "These words compare what is available with what is needed."
+          },
+          "examples": [
+            {
+              "nl": "Er waren al genoeg dekens, maar te weinig handdoeken.",
+              "en": "There were already enough blankets but too few towels."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat heeft het asiel werkelijk nodig?",
+            "en": "What does the shelter actually need?"
+          },
+          "options": [
+            {
+              "nl": "Meer dekens",
+              "en": "More blankets"
+            },
+            {
+              "nl": "Grotere brieven",
+              "en": "Larger letters"
+            },
+            {
+              "nl": "Handdoeken",
+              "en": "Towels"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Dekens zijn er genoeg, handdoeken niet.",
+            "en": "There are enough blankets but not enough towels."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat voorkomt onnodige spullen?",
+            "en": "What prevents unnecessary supplies?"
+          },
+          "options": [
+            {
+              "nl": "Eerst bellen en naar de behoefte vragen",
+              "en": "Calling first and asking what is needed"
+            },
+            {
+              "nl": "Alle zakken zonder overleg afgeven",
+              "en": "Delivering all bags without discussion"
+            },
+            {
+              "nl": "De brief niet veranderen",
+              "en": "Not changing the note"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het telefoontje verandert de inzameling.",
+            "en": "The phone call changes the collection."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-eigen-vak-in-de-koelkast",
+      "topic_id": "housing",
+      "title": {
+        "nl": "Het vak met de blauwe rand",
+        "en": "The shelf with the blue edge"
+      },
+      "plot_key": "New housemates resolve mistaken shared-food assumptions through a clear fridge agreement.",
+      "lines": [
+        {
+          "nl": "In ons gedeelde appartement stond yoghurt in de koelkast.",
+          "en": "There was yoghurt in the fridge of our shared flat."
+        },
+        {
+          "nl": "Ik dacht dat eten op de bovenste plank voor iedereen was.",
+          "en": "I thought food on the top shelf was for everyone."
+        },
+        {
+          "nl": "Mijn huisgenoot zocht die avond zijn ontbijt voor morgen.",
+          "en": "That evening my housemate looked for his breakfast for tomorrow."
+        },
+        {
+          "nl": "Toen begreep ik dat ik zijn laatste potje had gegeten.",
+          "en": "Then I realised I had eaten his last pot."
+        },
+        {
+          "nl": "Ik zei sorry en kocht een nieuw potje.",
+          "en": "I said sorry and bought a new pot."
+        },
+        {
+          "nl": "Daarna kozen we samen een apart vak voor gedeelde producten.",
+          "en": "Then we chose a separate space for shared products together."
+        },
+        {
+          "nl": "We plakten een blauwe rand rond dat vak.",
+          "en": "We put a blue border around that space."
+        },
+        {
+          "nl": "Sindsdien vraag ik het eerst als ik ergens over twijfel.",
+          "en": "Since then I ask first if I am unsure about something."
+        }
+      ],
+      "words": [
+        {
+          "term": "gedeeld",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "door meerdere mensen samen gebruikt",
+            "en": "shared or used jointly by several people"
+          },
+          "example": {
+            "nl": "In ons gedeelde appartement stond yoghurt in de koelkast.",
+            "en": "There was yoghurt in the fridge of our shared flat."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "het potje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kleine verpakking of houder",
+            "en": "a small jar or container"
+          },
+          "example": {
+            "nl": "Toen begreep ik dat ik zijn laatste potje had gegeten.",
+            "en": "Then I realised I had eaten his last pot."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "twijfelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "niet zeker zijn",
+            "en": "to be unsure"
+          },
+          "example": {
+            "nl": "Sindsdien vraag ik het eerst als ik ergens over twijfel.",
+            "en": "Since then I ask first if I am unsure about something."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Sindsdien",
+            "en": "Since then"
+          },
+          "explanation": {
+            "nl": "Sindsdien verbindt de nieuwe gewoonte met de gemaakte afspraak.",
+            "en": "Sindsdien links the new habit to the agreement made."
+          },
+          "examples": [
+            {
+              "nl": "Sindsdien vraag ik het eerst als ik ergens over twijfel.",
+              "en": "Since then I ask first if I am unsure about something."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat begrijpt de verteller eerst verkeerd?",
+            "en": "What does the narrator misunderstand at first?"
+          },
+          "options": [
+            {
+              "nl": "De yoghurt is op een verkeerde dag gemaakt.",
+              "en": "The yoghurt was made on the wrong day."
+            },
+            {
+              "nl": "De yoghurt is voor iedereen.",
+              "en": "The yoghurt is for everyone."
+            },
+            {
+              "nl": "De koelkast is kapot.",
+              "en": "The fridge is broken."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De bovenste plank blijkt niet automatisch gedeeld.",
+            "en": "The top shelf turns out not to be automatically shared."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe maken ze de nieuwe afspraak zichtbaar?",
+            "en": "How do they make the new agreement visible?"
+          },
+          "options": [
+            {
+              "nl": "Met een kaart aan de voordeur",
+              "en": "With a card at the front door"
+            },
+            {
+              "nl": "Met een lege koelkast",
+              "en": "With an empty fridge"
+            },
+            {
+              "nl": "Met een blauwe rand rond één vak",
+              "en": "With a blue border around one space"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De blauwe rand markeert het gedeelde vak.",
+            "en": "The blue border marks the shared space."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-laatste-spel-voor-school",
+      "topic_id": "gaming",
+      "title": {
+        "nl": "Het spel dat kon wachten",
+        "en": "The game that could wait"
+      },
+      "plot_key": "A player learns to end a session at a planned saving point rather than abandon either a friend or an early appointment.",
+      "lines": [
+        {
+          "nl": "Mijn vriend en ik speelden online een lang avontuur.",
+          "en": "My friend and I played a long adventure online."
+        },
+        {
+          "nl": "Ik moest de volgende ochtend vroeg naar school.",
+          "en": "I had to go to school early the next morning."
+        },
+        {
+          "nl": "Toch begon ik telkens nog een nieuw deel.",
+          "en": "Yet I kept starting another section."
+        },
+        {
+          "nl": "Om elf uur zei ik dat ik eigenlijk al wilde stoppen.",
+          "en": "At eleven I said I had actually wanted to stop already."
+        },
+        {
+          "nl": "We zochten samen een punt waar we konden bewaren.",
+          "en": "Together we found a point where we could save."
+        },
+        {
+          "nl": "Daar spraken we een nieuwe speelavond af.",
+          "en": "There we agreed on a new evening to play."
+        },
+        {
+          "nl": "De volgende keer noemde ik mijn stoptijd vooraf.",
+          "en": "Next time I stated my finishing time beforehand."
+        },
+        {
+          "nl": "Ons avontuur bleef spannend zonder mijn hele nacht te gebruiken.",
+          "en": "Our adventure stayed exciting without taking up my whole night."
+        }
+      ],
+      "words": [
+        {
+          "term": "vooraf",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "voordat iets begint",
+            "en": "before something begins"
+          },
+          "example": {
+            "nl": "De volgende keer noemde ik mijn stoptijd vooraf.",
+            "en": "Next time I stated my finishing time beforehand."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "bewaren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "de stand van een spel opslaan",
+            "en": "to save a game's progress"
+          },
+          "example": {
+            "nl": "We zochten samen een punt waar we konden bewaren.",
+            "en": "Together we found a point where we could save."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "telkens",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "elke keer opnieuw",
+            "en": "each time again"
+          },
+          "example": {
+            "nl": "Toch begon ik telkens nog een nieuw deel.",
+            "en": "Yet I kept starting another section."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waar we konden",
+            "en": "Where we could"
+          },
+          "explanation": {
+            "nl": "Waar geeft hier de geschikte plaats in het spel aan.",
+            "en": "Waar indicates the suitable point in the game here."
+          },
+          "examples": [
+            {
+              "nl": "We zochten samen een punt waar we konden bewaren.",
+              "en": "Together we found a point where we could save."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil de verteller stoppen?",
+            "en": "Why does the narrator want to stop?"
+          },
+          "options": [
+            {
+              "nl": "Er is de volgende ochtend vroeg school.",
+              "en": "There is school early the next morning."
+            },
+            {
+              "nl": "Het spel is al uit.",
+              "en": "The game is finished already."
+            },
+            {
+              "nl": "De vriend heeft geen internet.",
+              "en": "The friend has no internet."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De verteller moet vroeg naar school.",
+            "en": "The narrator has to go to school early."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat gebeurt er bij een volgende speelsessie?",
+            "en": "What happens at a later game session?"
+          },
+          "options": [
+            {
+              "nl": "Er komt geen vriend meer.",
+              "en": "The friend no longer joins."
+            },
+            {
+              "nl": "De stoptijd wordt vooraf genoemd.",
+              "en": "The finishing time is stated beforehand."
+            },
+            {
+              "nl": "Het avontuur wordt gewist.",
+              "en": "The adventure is deleted."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De verteller vertelt vooraf wanneer het spelen eindigt.",
+            "en": "The narrator says beforehand when playing will end."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-donker-kastje-in-de-zaal",
+      "topic_id": "energy-electricity",
+      "title": {
+        "nl": "De stekker achter de kast",
+        "en": "The plug behind the cupboard"
+      },
+      "plot_key": "A home worker narrows a dark desk lamp problem to an unplugged lead after moving furniture.",
+      "lines": [
+        {
+          "nl": "Na het verplaatsen van mijn bureau werkte de lamp niet meer.",
+          "en": "After moving my desk the lamp no longer worked."
+        },
+        {
+          "nl": "Ik dacht dat ik tijdens het tillen iets had gebroken.",
+          "en": "I thought I had broken something while lifting."
+        },
+        {
+          "nl": "Mijn huisgenoot vroeg of het stopcontact nog vrij was.",
+          "en": "My housemate asked whether the socket was still accessible."
+        },
+        {
+          "nl": "Achter de kast lag de losse stekker op de vloer.",
+          "en": "The loose plug lay on the floor behind the cupboard."
+        },
+        {
+          "nl": "Voor we iets verplaatsten, maakten we de omgeving vrij.",
+          "en": "Before moving anything we cleared the area."
+        },
+        {
+          "nl": "Daarna konden we de stekker weer bereiken.",
+          "en": "Then we could reach the plug again."
+        },
+        {
+          "nl": "De lamp gaf meteen licht toen ze opnieuw aangesloten was.",
+          "en": "The lamp lit up immediately once it was connected again."
+        },
+        {
+          "nl": "Nu ligt de kabel zichtbaar naast het bureau.",
+          "en": "Now the cable lies visibly beside the desk."
+        }
+      ],
+      "words": [
+        {
+          "term": "de stekker",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het uiteinde van een kabel dat in een stopcontact gaat",
+            "en": "the end of a cable inserted into a socket"
+          },
+          "example": {
+            "nl": "Achter de kast lag de losse stekker op de vloer.",
+            "en": "The loose plug lay on the floor behind the cupboard."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "het stopcontact",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een aansluiting in de muur voor elektriciteit",
+            "en": "an electrical socket in a wall"
+          },
+          "example": {
+            "nl": "Mijn huisgenoot vroeg of het stopcontact nog vrij was.",
+            "en": "My housemate asked whether the socket was still accessible."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "bereiken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "bij iets kunnen komen",
+            "en": "to be able to reach something"
+          },
+          "example": {
+            "nl": "Daarna konden we de stekker weer bereiken.",
+            "en": "Then we could reach the plug again."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Toen in het verleden",
+            "en": "Toen in the past"
+          },
+          "explanation": {
+            "nl": "Toen geeft hier aan op welk moment de lamp weer licht gaf.",
+            "en": "Toen indicates the moment the lamp lit up again here."
+          },
+          "examples": [
+            {
+              "nl": "De lamp gaf meteen licht toen ze opnieuw aangesloten was.",
+              "en": "The lamp lit up immediately once it was connected again."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat was het werkelijke probleem?",
+            "en": "What was the actual problem?"
+          },
+          "options": [
+            {
+              "nl": "Het bureau was te klein.",
+              "en": "The desk was too small."
+            },
+            {
+              "nl": "De lamp was gevallen.",
+              "en": "The lamp had fallen."
+            },
+            {
+              "nl": "De stekker zat niet meer in het stopcontact.",
+              "en": "The plug was no longer in the socket."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De losse stekker lag op de vloer.",
+            "en": "The loose plug lay on the floor."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert er aan het einde?",
+            "en": "What changes at the end?"
+          },
+          "options": [
+            {
+              "nl": "De kabel blijft zichtbaar en bereikbaar.",
+              "en": "The cable stays visible and accessible."
+            },
+            {
+              "nl": "De lamp wordt weggegooid.",
+              "en": "The lamp is discarded."
+            },
+            {
+              "nl": "De kast wordt verkocht.",
+              "en": "The cupboard is sold."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De kabel ligt nu zichtbaar naast het bureau.",
+            "en": "The cable now lies visibly beside the desk."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-beeld-in-de-etalage",
+      "topic_id": "business",
+      "title": {
+        "nl": "De eerste bestelling op papier",
+        "en": "The first order on paper"
+      },
+      "plot_key": "A maker avoids an unsuitable custom bag by checking the customer's intended contents before agreeing on dimensions.",
+      "lines": [
+        {
+          "nl": "Ik verkocht zelfgemaakte stoffen tassen op een markt.",
+          "en": "I sold handmade fabric bags at a market."
+        },
+        {
+          "nl": "Een klant vroeg een veel groter model.",
+          "en": "A customer asked for a much larger model."
+        },
+        {
+          "nl": "Ik wilde de bestelling meteen aannemen.",
+          "en": "I wanted to accept the order immediately."
+        },
+        {
+          "nl": "Toen vroeg ik waarvoor de tas zou dienen.",
+          "en": "Then I asked what the bag would be used for."
+        },
+        {
+          "nl": "Er moesten zware schoolboeken in passen.",
+          "en": "It had to hold heavy schoolbooks."
+        },
+        {
+          "nl": "We bespraken daarom ook sterke hengsels en de bodem.",
+          "en": "So we also discussed strong handles and the base."
+        },
+        {
+          "nl": "Ik schreef de maten en de afgesproken prijs op.",
+          "en": "I wrote down the dimensions and the agreed price."
+        },
+        {
+          "nl": "Pas na zijn bevestiging begon ik de stof te knippen.",
+          "en": "Only after his confirmation did I start cutting the fabric."
+        }
+      ],
+      "words": [
+        {
+          "term": "het hengsel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een deel waaraan je een tas draagt",
+            "en": "a handle used to carry a bag"
+          },
+          "example": {
+            "nl": "We bespraken daarom ook sterke hengsels en de bodem.",
+            "en": "So we also discussed strong handles and the base."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de maat",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een afmeting zoals lengte of breedte",
+            "en": "a measurement such as length or width"
+          },
+          "example": {
+            "nl": "Ik schreef de maten en de afgesproken prijs op.",
+            "en": "I wrote down the dimensions and the agreed price."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "aannemen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "akkoord gaan om iets te doen of te ontvangen",
+            "en": "to accept or agree to undertake something"
+          },
+          "example": {
+            "nl": "Ik wilde de bestelling meteen aannemen.",
+            "en": "I wanted to accept the order immediately."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarvoor",
+            "en": "What for"
+          },
+          "explanation": {
+            "nl": "Waarvoor vraagt naar het gebruiksdoel en niet alleen naar de vorm.",
+            "en": "Waarvoor asks about intended use rather than shape alone."
+          },
+          "examples": [
+            {
+              "nl": "Toen vroeg ik waarvoor de tas zou dienen.",
+              "en": "Then I asked what the bag would be used for."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zijn sterke hengsels belangrijk?",
+            "en": "Why are strong handles important?"
+          },
+          "options": [
+            {
+              "nl": "De tas moet zware boeken dragen.",
+              "en": "The bag has to carry heavy books."
+            },
+            {
+              "nl": "De markt duurt lang.",
+              "en": "The market lasts a long time."
+            },
+            {
+              "nl": "De klant wil bloemen dragen.",
+              "en": "The customer wants to carry flowers."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De klant noemt zware schoolboeken als inhoud.",
+            "en": "The customer names heavy schoolbooks as the contents."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wanneer begint de maker te knippen?",
+            "en": "When does the maker start cutting?"
+          },
+          "options": [
+            {
+              "nl": "Vóór het gesprek",
+              "en": "Before the conversation"
+            },
+            {
+              "nl": "Na de bevestiging",
+              "en": "After confirmation"
+            },
+            {
+              "nl": "Tijdens de eerste begroeting",
+              "en": "During the first greeting"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De bevestiging komt vóór het knippen.",
+            "en": "Confirmation comes before cutting."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-verzoek-in-plaats-van-grap",
+      "topic_id": "workplace-communication",
+      "title": {
+        "nl": "De grap die geen vraag was",
+        "en": "The joke that was not a request"
+      },
+      "plot_key": "A worker stops hinting humorously about an open window and makes a concrete polite request.",
+      "lines": [
+        {
+          "nl": "Op kantoor stond het raam achter mij de hele ochtend open.",
+          "en": "At the office the window behind me was open all morning."
+        },
+        {
+          "nl": "Ik kreeg het koud en zei lachend dat ik bijna een ijsje was.",
+          "en": "I got cold and jokingly said I was almost an ice lolly."
+        },
+        {
+          "nl": "Mijn collega lachte mee en werkte verder.",
+          "en": "My colleague laughed along and continued working."
+        },
+        {
+          "nl": "Ik dacht dat hij mijn probleem niet belangrijk vond.",
+          "en": "I thought he did not consider my problem important."
+        },
+        {
+          "nl": "Toen vroeg ik gewoon of het raam een tijdje dicht kon.",
+          "en": "Then I simply asked whether the window could be closed for a while."
+        },
+        {
+          "nl": "Hij sloot het meteen en vroeg of ik nu beter zat.",
+          "en": "He closed it immediately and asked whether I was more comfortable now."
+        },
+        {
+          "nl": "Mijn grap was voor hem geen duidelijk verzoek geweest.",
+          "en": "My joke had not been a clear request to him."
+        },
+        {
+          "nl": "De volgende ochtend bespraken we samen wanneer we zouden verluchten.",
+          "en": "The next morning we discussed when to air the room."
+        }
+      ],
+      "words": [
+        {
+          "term": "het verzoek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een vraag aan iemand om iets te doen",
+            "en": "a request asking someone to do something"
+          },
+          "example": {
+            "nl": "Mijn grap was voor hem geen duidelijk verzoek geweest.",
+            "en": "My joke had not been a clear request to him."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "verluchten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "verse lucht in een ruimte laten",
+            "en": "to let fresh air into a room"
+          },
+          "example": {
+            "nl": "De volgende ochtend bespraken we samen wanneer we zouden verluchten.",
+            "en": "The next morning we discussed when to air the room."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "meelachen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "samen met iemand lachen",
+            "en": "to laugh along with someone"
+          },
+          "example": {
+            "nl": "Mijn collega lachte mee en werkte verder.",
+            "en": "My colleague laughed along and continued working."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Of het kon",
+            "en": "Whether it could"
+          },
+          "explanation": {
+            "nl": "Of maakt van de directe vraag een vraag binnen een zin.",
+            "en": "Of turns a direct question into a question inside a sentence."
+          },
+          "examples": [
+            {
+              "nl": "Toen vroeg ik gewoon of het raam een tijdje dicht kon.",
+              "en": "Then I simply asked whether the window could be closed for a while."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom reageert de collega eerst niet op de kou?",
+            "en": "Why does the colleague not first respond to the cold?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft geen raam gezien.",
+              "en": "He has not seen a window."
+            },
+            {
+              "nl": "Hij denkt dat het alleen een grap is.",
+              "en": "He thinks it is only a joke."
+            },
+            {
+              "nl": "Hij is al naar huis.",
+              "en": "He has already gone home."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De grap klinkt niet als een duidelijk verzoek.",
+            "en": "The joke does not sound like a clear request."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat helpt uiteindelijk?",
+            "en": "What eventually helps?"
+          },
+          "options": [
+            {
+              "nl": "Nog harder lachen",
+              "en": "Laughing louder"
+            },
+            {
+              "nl": "Het bureau weggooien",
+              "en": "Discarding the desk"
+            },
+            {
+              "nl": "Een concrete vraag stellen",
+              "en": "Making a concrete request"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Na de duidelijke vraag sluit de collega het raam meteen.",
+            "en": "After the clear request the colleague closes the window immediately."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-klas-met-een-plantennaam",
+      "topic_id": "university-life",
+      "title": {
+        "nl": "De plant van onze groep",
+        "en": "Our group's plant"
+      },
+      "plot_key": "Students care for a shared plant by making responsibilities visible instead of watering it repeatedly out of kindness.",
+      "lines": [
+        {
+          "nl": "Onze studiegroep kreeg een plant voor de werkruimte.",
+          "en": "Our study group received a plant for the workroom."
+        },
+        {
+          "nl": "Iedereen wilde haar goed verzorgen.",
+          "en": "Everyone wanted to take good care of it."
+        },
+        {
+          "nl": "Na enkele dagen was de aarde erg nat.",
+          "en": "After a few days the soil was very wet."
+        },
+        {
+          "nl": "Drie studenten hadden dezelfde ochtend water gegeven.",
+          "en": "Three students had watered it that same morning."
+        },
+        {
+          "nl": "We vroegen eerst welke verzorging deze plant nodig had.",
+          "en": "We first asked what care this plant needed."
+        },
+        {
+          "nl": "Daarna maakten we een kaartje waarop de laatste waterbeurt stond.",
+          "en": "Then we made a card showing the last watering."
+        },
+        {
+          "nl": "Wie water gaf, schreef de datum op.",
+          "en": "Whoever watered it wrote down the date."
+        },
+        {
+          "nl": "Onze goede bedoelingen kregen nu ook een duidelijk geheugen.",
+          "en": "Our good intentions now also had a clear memory."
+        }
+      ],
+      "words": [
+        {
+          "term": "de aarde",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de grond waarin planten groeien",
+            "en": "the soil in which plants grow"
+          },
+          "example": {
+            "nl": "Na enkele dagen was de aarde erg nat.",
+            "en": "After a few days the soil was very wet."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de waterbeurt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "één moment waarop een plant water krijgt",
+            "en": "one occasion when a plant is watered"
+          },
+          "example": {
+            "nl": "Daarna maakten we een kaartje waarop de laatste waterbeurt stond.",
+            "en": "Then we made a card showing the last watering."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de bedoeling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "wat iemand wil bereiken of doen",
+            "en": "what someone intends to achieve or do"
+          },
+          "example": {
+            "nl": "Onze goede bedoelingen kregen nu ook een duidelijk geheugen.",
+            "en": "Our good intentions now also had a clear memory."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wie met een handeling",
+            "en": "Whoever with an action"
+          },
+          "explanation": {
+            "nl": "Wie water gaf betekent hier de persoon die water gaf.",
+            "en": "Wie water gaf means the person who watered it here."
+          },
+          "examples": [
+            {
+              "nl": "Wie water gaf, schreef de datum op.",
+              "en": "Whoever watered it wrote down the date."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is de aarde te nat?",
+            "en": "Why is the soil too wet?"
+          },
+          "options": [
+            {
+              "nl": "Meerdere studenten hebben kort na elkaar water gegeven.",
+              "en": "Several students have watered it close together."
+            },
+            {
+              "nl": "De plant staat buiten in de regen.",
+              "en": "The plant is outside in the rain."
+            },
+            {
+              "nl": "De pot is een aquarium.",
+              "en": "The pot is an aquarium."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Drie mensen geven dezelfde ochtend water.",
+            "en": "Three people water it the same morning."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke informatie komt op het kaartje?",
+            "en": "What information goes on the card?"
+          },
+          "options": [
+            {
+              "nl": "De naam van de docent",
+              "en": "The lecturer's name"
+            },
+            {
+              "nl": "De datum van de laatste waterbeurt",
+              "en": "The date of the last watering"
+            },
+            {
+              "nl": "De prijs van de tafel",
+              "en": "The table's price"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De datum helpt om dubbel water geven te vermijden.",
+            "en": "The date helps avoid repeated watering."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-luisterboek-met-een-pauze",
+      "topic_id": "books-reading",
+      "title": {
+        "nl": "Het hoofdstuk in de regen",
+        "en": "The chapter in the rain"
+      },
+      "plot_key": "A listener pauses an audiobook during noisy weather and resumes attentively rather than pretending to have followed it.",
+      "lines": [
+        {
+          "nl": "Tijdens mijn wandeling luisterde ik naar een spannend boek.",
+          "en": "During my walk I listened to an exciting book."
+        },
+        {
+          "nl": "Bij een druk kruispunt verstond ik enkele zinnen niet.",
+          "en": "At a busy crossroads I could not make out several sentences."
+        },
+        {
+          "nl": "Toch liet ik de stem verder vertellen.",
+          "en": "Yet I let the voice keep narrating."
+        },
+        {
+          "nl": "Een hoofdstuk later wist ik niet waarom de hoofdpersoon huilde.",
+          "en": "A chapter later I did not know why the main character was crying."
+        },
+        {
+          "nl": "Ik ging onder een afdak staan en pauzeerde de opname.",
+          "en": "I stood under a shelter and paused the recording."
+        },
+        {
+          "nl": "Daarna zocht ik het begin van het gemiste stukje.",
+          "en": "Then I found the start of the missed passage."
+        },
+        {
+          "nl": "Nu hoorde ik het nieuws dat alles veranderde.",
+          "en": "Now I heard the news that changed everything."
+        },
+        {
+          "nl": "Ik wandelde pas verder toen ik het verhaal weer kon volgen.",
+          "en": "I only continued walking once I could follow the story again."
+        }
+      ],
+      "words": [
+        {
+          "term": "verstaan",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "de uitgesproken woorden goed horen en begrijpen",
+            "en": "to hear and understand spoken words clearly"
+          },
+          "example": {
+            "nl": "Bij een druk kruispunt verstond ik enkele zinnen niet.",
+            "en": "At a busy crossroads I could not make out several sentences."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de hoofdpersoon",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de belangrijkste persoon in een verhaal",
+            "en": "the main character in a story"
+          },
+          "example": {
+            "nl": "Een hoofdstuk later wist ik niet waarom de hoofdpersoon huilde.",
+            "en": "A chapter later I did not know why the main character was crying."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "pauzeren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets tijdelijk onderbreken",
+            "en": "to pause something temporarily"
+          },
+          "example": {
+            "nl": "Ik ging onder een afdak staan en pauzeerde de opname.",
+            "en": "I stood under a shelter and paused the recording."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Pas toen",
+            "en": "Only when"
+          },
+          "explanation": {
+            "nl": "Pas en toen maken duidelijk dat verder wandelen na het begrijpen komt.",
+            "en": "Pas and toen make clear that continuing the walk follows understanding."
+          },
+          "examples": [
+            {
+              "nl": "Ik wandelde pas verder toen ik het verhaal weer kon volgen.",
+              "en": "I only continued walking once I could follow the story again."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom begrijpt de verteller de tranen niet?",
+            "en": "Why does the narrator not understand the tears?"
+          },
+          "options": [
+            {
+              "nl": "Het boek heeft geen hoofdpersoon.",
+              "en": "The book has no main character."
+            },
+            {
+              "nl": "De opname is leeg.",
+              "en": "The recording is blank."
+            },
+            {
+              "nl": "Er is eerder een belangrijk stukje gemist.",
+              "en": "An important passage was missed earlier."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Door lawaai zijn enkele zinnen niet verstaan.",
+            "en": "Several sentences were not heard clearly because of noise."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat helpt het verhaal weer te volgen?",
+            "en": "What helps the narrator follow the story again?"
+          },
+          "options": [
+            {
+              "nl": "Het gemiste stukje opnieuw beluisteren",
+              "en": "Listen to the missed passage again"
+            },
+            {
+              "nl": "Meteen naar het laatste hoofdstuk springen",
+              "en": "Jump straight to the last chapter"
+            },
+            {
+              "nl": "De stem sneller zetten",
+              "en": "Speed up the voice"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Op een rustige plek wordt het ontbrekende deel herhaald.",
+            "en": "The missing part is replayed in a quiet place."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-prijs-met-een-ster",
+      "topic_id": "customer-service",
+      "title": {
+        "nl": "De ster bij de aanbieding",
+        "en": "The star beside the offer"
+      },
+      "plot_key": "A shopper checks an asterisk and discovers the advertised discount applies to a specific second item.",
+      "lines": [
+        {
+          "nl": "In een winkel zag ik een aanbieding met een groot bord: halve prijs.",
+          "en": "In a shop I saw an offer with a large sign: half price."
+        },
+        {
+          "nl": "Ik nam één pak sokken uit het rek.",
+          "en": "I took one pack of socks from the rack."
+        },
+        {
+          "nl": "Aan de kassa bleef het bedrag hetzelfde.",
+          "en": "At the till the price remained the same."
+        },
+        {
+          "nl": "Ik wees naar het bord en vroeg om uitleg.",
+          "en": "I pointed to the sign and asked for an explanation."
+        },
+        {
+          "nl": "De medewerker toonde de kleine ster naast de woorden.",
+          "en": "The employee showed the little star beside the words."
+        },
+        {
+          "nl": "De korting gold voor een tweede pak uit dezelfde reeks.",
+          "en": "The discount applied to a second pack from the same range."
+        },
+        {
+          "nl": "Ik had geen tweede pak nodig en hield het bij één.",
+          "en": "I did not need a second pack and kept to one."
+        },
+        {
+          "nl": "Voor ik betaalde, controleerde ik de gewone prijs nog even.",
+          "en": "Before paying I checked the normal price briefly."
+        }
+      ],
+      "words": [
+        {
+          "term": "de aanbieding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een product dat tijdelijk voordeliger wordt verkocht",
+            "en": "a product temporarily sold at a better price"
+          },
+          "example": {
+            "nl": "In een winkel zag ik een aanbieding met een groot bord: halve prijs.",
+            "en": "In a shop I saw an offer with a large sign: half price."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de reeks",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een groep dingen die bij elkaar horen",
+            "en": "a range of things belonging together"
+          },
+          "example": {
+            "nl": "De korting gold voor een tweede pak uit dezelfde reeks.",
+            "en": "The discount applied to a second pack from the same range."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "gelden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "van toepassing zijn",
+            "en": "to apply or be valid"
+          },
+          "example": {
+            "nl": "De korting gold voor een tweede pak uit dezelfde reeks.",
+            "en": "The discount applied to a second pack from the same range."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Gold voor",
+            "en": "Applied to"
+          },
+          "explanation": {
+            "nl": "Gold is de verleden tijd van gelden en noemt de voorwaarde van de korting.",
+            "en": "Gold is the past tense of gelden and states the discount's condition."
+          },
+          "examples": [
+            {
+              "nl": "De korting gold voor een tweede pak uit dezelfde reeks.",
+              "en": "The discount applied to a second pack from the same range."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wanneer geldt de halve prijs?",
+            "en": "When does half price apply?"
+          },
+          "options": [
+            {
+              "nl": "Bij het tweede geschikte pak",
+              "en": "For the second eligible pack"
+            },
+            {
+              "nl": "Bij elk eerste pak",
+              "en": "For every first pack"
+            },
+            {
+              "nl": "Bij alle spullen in de winkel",
+              "en": "For everything in the shop"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De aanbieding gaat over een tweede pak uit dezelfde reeks.",
+            "en": "The offer concerns a second pack from the same range."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom koopt de verteller geen tweede pak?",
+            "en": "Why does the narrator not buy a second pack?"
+          },
+          "options": [
+            {
+              "nl": "Het is niet te vinden.",
+              "en": "It cannot be found."
+            },
+            {
+              "nl": "Er is geen tweede pak nodig.",
+              "en": "A second pack is not needed."
+            },
+            {
+              "nl": "De kassa sluit.",
+              "en": "The till closes."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De eigen behoefte blijft belangrijker dan de korting.",
+            "en": "The narrator's actual need remains more important than the discount."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-ronde-tafel-met-een-stilte",
+      "topic_id": "ethics-morality",
+      "title": {
+        "nl": "De gevonden portemonnee",
+        "en": "The found wallet"
+      },
+      "plot_key": "A cafe visitor hands a found wallet to staff without searching private contents and notes where it was found.",
+      "lines": [
+        {
+          "nl": "Onder mijn stoel in het café lag een portemonnee.",
+          "en": "A wallet lay under my chair in the café."
+        },
+        {
+          "nl": "Mijn vriend wilde haar openen om een naam te zoeken.",
+          "en": "My friend wanted to open it to find a name."
+        },
+        {
+          "nl": "Ik stelde voor om eerst de ober te roepen.",
+          "en": "I suggested calling the waiter first."
+        },
+        {
+          "nl": "We vertelden precies onder welke stoel ze lag.",
+          "en": "We explained exactly which chair it was under."
+        },
+        {
+          "nl": "De ober nam haar mee volgens de afspraken van het café.",
+          "en": "The waiter took it according to the café's procedure."
+        },
+        {
+          "nl": "Even later kwam een bezorgde bezoeker terug.",
+          "en": "A little later a worried visitor returned."
+        },
+        {
+          "nl": "De medewerker vroeg hem zelf om kenmerken te beschrijven.",
+          "en": "The employee asked him to describe identifying features himself."
+        },
+        {
+          "nl": "Wij hoefden zijn persoonlijke spullen niet te bekijken.",
+          "en": "We did not need to examine his personal belongings."
+        }
+      ],
+      "words": [
+        {
+          "term": "de portemonnee",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een klein tasje voor geld en kaarten",
+            "en": "a small pouch for money and cards"
+          },
+          "example": {
+            "nl": "Onder mijn stoel in het café lag een portemonnee.",
+            "en": "A wallet lay under my chair in the café."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "bezorgd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "ongerust over iets",
+            "en": "worried about something"
+          },
+          "example": {
+            "nl": "Even later kwam een bezorgde bezoeker terug.",
+            "en": "A little later a worried visitor returned."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "het kenmerk",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een eigenschap waaraan je iets herkent",
+            "en": "a feature used to recognise something"
+          },
+          "example": {
+            "nl": "De medewerker vroeg hem zelf om kenmerken te beschrijven.",
+            "en": "The employee asked him to describe identifying features himself."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoefden niet te",
+            "en": "Did not need to"
+          },
+          "explanation": {
+            "nl": "Hoefden niet te zegt dat een handeling niet noodzakelijk was.",
+            "en": "Hoefden niet te says an action was unnecessary."
+          },
+          "examples": [
+            {
+              "nl": "Wij hoefden zijn persoonlijke spullen niet te bekijken.",
+              "en": "We did not need to examine his personal belongings."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat stellen de vrienden uiteindelijk vast over de inhoud?",
+            "en": "What do the friends finally establish about the contents?"
+          },
+          "options": [
+            {
+              "nl": "Ze moeten alle kaarten lezen.",
+              "en": "They must read all the cards."
+            },
+            {
+              "nl": "De inhoud ligt op tafel.",
+              "en": "The contents are on the table."
+            },
+            {
+              "nl": "Ze hoeven die niet zelf te bekijken.",
+              "en": "They do not need to inspect them themselves."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De medewerker handelt de herkenning af.",
+            "en": "The employee handles identification."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke informatie geven ze aan de ober?",
+            "en": "What information do they give the waiter?"
+          },
+          "options": [
+            {
+              "nl": "Waar de portemonnee lag",
+              "en": "Where the wallet lay"
+            },
+            {
+              "nl": "Hun lievelingskleur",
+              "en": "Their favourite colour"
+            },
+            {
+              "nl": "De naam van de eigenaar zonder die te kennen",
+              "en": "The owner's name without knowing it"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze noemen precies de stoel waaronder ze lag.",
+            "en": "They identify exactly which chair it lay under."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-stoel-zonder-voorkeur",
+      "topic_id": "human-rights-equality",
+      "title": {
+        "nl": "De vergadering op de juiste plaats",
+        "en": "The meeting in the right place"
+      },
+      "plot_key": "A group moves a meeting upstairs to an accessible ground-floor room after listening to a participant's specific needs.",
+      "lines": [
+        {
+          "nl": "Onze leesgroep wilde in een zaaltje boven een café samenkomen.",
+          "en": "Our reading group wanted to meet in a small room above a café."
+        },
+        {
+          "nl": "Een deelnemer vroeg of er een lift was.",
+          "en": "One participant asked whether there was a lift."
+        },
+        {
+          "nl": "De eigenaar zei dat het een oude smalle trap was.",
+          "en": "The owner said there was an old narrow staircase."
+        },
+        {
+          "nl": "We vroegen de deelnemer welke toegang voor haar werkte.",
+          "en": "We asked the participant what access worked for her."
+        },
+        {
+          "nl": "Een kamer op het gelijkvloers was een goed alternatief.",
+          "en": "A room on the ground floor was a good alternative."
+        },
+        {
+          "nl": "De eigenaar maakte daar een grote tafel vrij.",
+          "en": "The owner cleared a large table there."
+        },
+        {
+          "nl": "We stuurden iedereen de nieuwe plaats met dezelfde aanvangstijd.",
+          "en": "We sent everyone the new location with the same starting time."
+        },
+        {
+          "nl": "Tijdens de bespreking hoefde niemand uit te leggen waarom hij of zij erbij hoorde.",
+          "en": "During the discussion nobody had to explain why they belonged there."
+        }
+      ],
+      "words": [
+        {
+          "term": "het gelijkvloers",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de verdieping op straatniveau",
+            "en": "the floor at street level"
+          },
+          "example": {
+            "nl": "Een kamer op het gelijkvloers was een goed alternatief.",
+            "en": "A room on the ground floor was a good alternative."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de toegang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de manier of plek om ergens binnen te komen",
+            "en": "the way or place to enter somewhere"
+          },
+          "example": {
+            "nl": "We vroegen de deelnemer welke toegang voor haar werkte.",
+            "en": "We asked the participant what access worked for her."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "het alternatief",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een andere mogelijke keuze",
+            "en": "another possible choice"
+          },
+          "example": {
+            "nl": "Een kamer op het gelijkvloers was een goed alternatief.",
+            "en": "A room on the ground floor was a good alternative."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Welke met toegang",
+            "en": "Which with access"
+          },
+          "explanation": {
+            "nl": "Welke vraagt hier naar de passende soort toegang.",
+            "en": "Welke asks for the suitable kind of access here."
+          },
+          "examples": [
+            {
+              "nl": "We vroegen de deelnemer welke toegang voor haar werkte.",
+              "en": "We asked the participant what access worked for her."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zoeken ze een andere kamer?",
+            "en": "Why do they look for another room?"
+          },
+          "options": [
+            {
+              "nl": "De bovenkamer is niet voor iedereen bereikbaar.",
+              "en": "The upstairs room is not accessible to everyone."
+            },
+            {
+              "nl": "De leesgroep wil geen tafel.",
+              "en": "The reading group wants no table."
+            },
+            {
+              "nl": "Het café is definitief gesloten.",
+              "en": "The café is permanently closed."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De trap is niet de geschikte toegang voor de deelnemer.",
+            "en": "The stairs are not suitable access for the participant."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat blijft hetzelfde in de nieuwe afspraak?",
+            "en": "What stays the same in the new arrangement?"
+          },
+          "options": [
+            {
+              "nl": "De verdieping",
+              "en": "The floor"
+            },
+            {
+              "nl": "De aanvangstijd",
+              "en": "The starting time"
+            },
+            {
+              "nl": "De kamerdeur",
+              "en": "The room door"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De nieuwe plaats wordt met dezelfde aanvangstijd doorgegeven.",
+            "en": "The new location is sent with the same starting time."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-foto-voor-de-verzekering",
+      "topic_id": "taxes-insurance",
+      "title": {
+        "nl": "De foto vóór het opruimen",
+        "en": "The photo before tidying"
+      },
+      "plot_key": "A resident documents a damaged table before discarding packaging and checks the actual insurance process.",
+      "lines": [
+        {
+          "nl": "Na een kleine lekkage had mijn houten tafel een donkere vlek.",
+          "en": "After a small leak my wooden table had a dark stain."
+        },
+        {
+          "nl": "Ik wilde de schade meteen wegpoetsen.",
+          "en": "I wanted to clean away the damage immediately."
+        },
+        {
+          "nl": "Mijn huisgenoot vroeg of ik eerst een foto kon nemen.",
+          "en": "My housemate asked whether I could take a photo first."
+        },
+        {
+          "nl": "We noteerden ook wanneer we het water hadden gezien.",
+          "en": "We also noted when we had seen the water."
+        },
+        {
+          "nl": "Daarna belde ik mijn verzekeraar met een concrete vraag.",
+          "en": "Then I called my insurer with a specific question."
+        },
+        {
+          "nl": "De medewerker vertelde welke gegevens nodig waren voor mijn dossier.",
+          "en": "The employee explained what details were needed for my file."
+        },
+        {
+          "nl": "Ik bewaarde de foto's en de berichten samen.",
+          "en": "I kept the photos and messages together."
+        },
+        {
+          "nl": "Pas daarna bespraken we met de hersteller wat er aan de tafel kon gebeuren.",
+          "en": "Only afterwards did we discuss with the repairer what could be done to the table."
+        }
+      ],
+      "words": [
+        {
+          "term": "de lekkage",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "water dat op een ongewenste plaats uit iets komt",
+            "en": "water escaping somewhere it should not"
+          },
+          "example": {
+            "nl": "Na een kleine lekkage had mijn houten tafel een donkere vlek.",
+            "en": "After a small leak my wooden table had a dark stain."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de schade",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een beschadiging waardoor iets minder goed is",
+            "en": "damage making something less sound"
+          },
+          "example": {
+            "nl": "Ik wilde de schade meteen wegpoetsen.",
+            "en": "I wanted to clean away the damage immediately."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de verzekeraar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een organisatie waarmee je een verzekering afsluit",
+            "en": "an organisation with which you take out insurance"
+          },
+          "example": {
+            "nl": "Daarna belde ik mijn verzekeraar met een concrete vraag.",
+            "en": "Then I called my insurer with a specific question."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Pas daarna",
+            "en": "Only afterwards"
+          },
+          "explanation": {
+            "nl": "Pas daarna benadrukt de volgorde van documenteren en herstellen.",
+            "en": "Pas daarna emphasises the order of documenting and repairing."
+          },
+          "examples": [
+            {
+              "nl": "Pas daarna bespraken we met de hersteller wat er aan de tafel kon gebeuren.",
+              "en": "Only afterwards did we discuss with the repairer what could be done to the table."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom maken ze eerst foto's?",
+            "en": "Why do they take photos first?"
+          },
+          "options": [
+            {
+              "nl": "Voor een meubelwedstrijd",
+              "en": "For a furniture competition"
+            },
+            {
+              "nl": "Voor een nieuwe advertentie",
+              "en": "For a new advertisement"
+            },
+            {
+              "nl": "Om de schade vast te leggen",
+              "en": "To record the damage"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De foto's helpen de situatie duidelijk te beschrijven.",
+            "en": "The photos help describe the situation clearly."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie zegt welke gegevens voor het dossier nodig zijn?",
+            "en": "Who says which details are needed for the file?"
+          },
+          "options": [
+            {
+              "nl": "De medewerker van de verzekeraar",
+              "en": "The insurer's employee"
+            },
+            {
+              "nl": "Een toevallige bezoeker",
+              "en": "A passing visitor"
+            },
+            {
+              "nl": "De bakker",
+              "en": "The baker"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De verteller vraagt het rechtstreeks aan de verzekeraar.",
+            "en": "The narrator asks the insurer directly."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-gewone-vraag-op-de-tribune",
+      "topic_id": "social-issues",
+      "title": {
+        "nl": "De stoel bleef niet leeg",
+        "en": "The chair did not stay empty"
+      },
+      "plot_key": "A club notices a regular visitor's absence and finds a small fee increase has quietly excluded him.",
+      "lines": [
+        {
+          "nl": "In onze spelclub bleef de stoel van Marcel twee weken leeg.",
+          "en": "In our games club Marcel's chair stayed empty for two weeks."
+        },
+        {
+          "nl": "Ik dacht dat hij het spel niet meer leuk vond.",
+          "en": "I thought he no longer enjoyed the game."
+        },
+        {
+          "nl": "Tijdens een wandeling ontmoette ik hem in de buurt.",
+          "en": "During a walk I met him in the neighbourhood."
+        },
+        {
+          "nl": "Hij vertelde dat de nieuwe bijdrage lastig was voor zijn budget.",
+          "en": "He said the new fee was difficult for his budget."
+        },
+        {
+          "nl": "Met zijn toestemming vroeg ik de organisator naar mogelijkheden.",
+          "en": "With his permission I asked the organiser about possibilities."
+        },
+        {
+          "nl": "Er bestond een goedkoper tarief waarover Marcel niets had gehoord.",
+          "en": "There was a cheaper rate Marcel had not heard about."
+        },
+        {
+          "nl": "De organisator legde het rechtstreeks aan hem uit.",
+          "en": "The organiser explained it directly to him."
+        },
+        {
+          "nl": "De volgende clubavond vroeg Marcel meteen om de kaarten.",
+          "en": "At the next club evening Marcel immediately asked for the cards."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bijdrage",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "geld dat je betaalt om mee te doen of te helpen",
+            "en": "money paid to participate or contribute"
+          },
+          "example": {
+            "nl": "Hij vertelde dat de nieuwe bijdrage lastig was voor zijn budget.",
+            "en": "He said the new fee was difficult for his budget."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "het budget",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het geld dat voor iets beschikbaar is",
+            "en": "the money available for something"
+          },
+          "example": {
+            "nl": "Hij vertelde dat de nieuwe bijdrage lastig was voor zijn budget.",
+            "en": "He said the new fee was difficult for his budget."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "het tarief",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een vastgestelde prijs",
+            "en": "a set price or rate"
+          },
+          "example": {
+            "nl": "Er bestond een goedkoper tarief waarover Marcel niets had gehoord.",
+            "en": "There was a cheaper rate Marcel had not heard about."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarover",
+            "en": "About which"
+          },
+          "explanation": {
+            "nl": "Waarover verwijst hier naar informatie over het goedkopere tarief.",
+            "en": "Waarover refers to information about the cheaper rate here."
+          },
+          "examples": [
+            {
+              "nl": "Er bestond een goedkoper tarief waarover Marcel niets had gehoord.",
+              "en": "There was a cheaper rate Marcel had not heard about."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom komt Marcel eerst niet meer?",
+            "en": "Why does Marcel initially stop coming?"
+          },
+          "options": [
+            {
+              "nl": "De bijdrage past moeilijk in zijn budget.",
+              "en": "The fee is difficult for his budget."
+            },
+            {
+              "nl": "Hij kent het spel niet.",
+              "en": "He does not know the game."
+            },
+            {
+              "nl": "Hij verhuist naar een andere stad.",
+              "en": "He moves to another city."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De hogere bijdrage vormt het echte probleem.",
+            "en": "The higher fee is the actual problem."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat helpt Marcel terug te komen?",
+            "en": "What helps Marcel return?"
+          },
+          "options": [
+            {
+              "nl": "Nieuwe kaarten kopen",
+              "en": "Buying new cards"
+            },
+            {
+              "nl": "Informatie over een goedkoper tarief",
+              "en": "Information about a cheaper rate"
+            },
+            {
+              "nl": "Een andere stoel",
+              "en": "A different chair"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij hoort over een bestaande goedkopere mogelijkheid.",
+            "en": "He hears about an existing cheaper option."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-briefje-op-de-speeldoos",
+      "topic_id": "psychology-emotions",
+      "title": {
+        "nl": "De doos die dicht bleef",
+        "en": "The box that stayed closed"
+      },
+      "plot_key": "A person grieving a pet chooses when to open a memory box with a supportive friend instead of being rushed.",
+      "lines": [
+        {
+          "nl": "Na de dood van mijn kat bewaarde ik haar halsband in een doos.",
+          "en": "After my cat died I kept her collar in a box."
+        },
+        {
+          "nl": "Een vriendin vroeg of ik erover wilde vertellen.",
+          "en": "A friend asked whether I wanted to talk about her."
+        },
+        {
+          "nl": "Ik schudde mijn hoofd en zette de doos weg.",
+          "en": "I shook my head and put the box away."
+        },
+        {
+          "nl": "Mijn vriendin bleef gewoon naast mij zitten.",
+          "en": "My friend simply stayed beside me."
+        },
+        {
+          "nl": "Een week later haalde ik de doos zelf terug.",
+          "en": "A week later I brought the box back myself."
+        },
+        {
+          "nl": "We bekeken de halsband en één grappige foto.",
+          "en": "We looked at the collar and one funny photo."
+        },
+        {
+          "nl": "Ik vertelde over de keer dat de kat in mijn rugzak sliep.",
+          "en": "I told her about the time the cat slept in my backpack."
+        },
+        {
+          "nl": "De doos ging weer dicht, maar het gesprek mocht langzaam verdergaan.",
+          "en": "The box closed again but the conversation could slowly continue."
+        }
+      ],
+      "words": [
+        {
+          "term": "de halsband",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een band rond de hals van een dier",
+            "en": "a collar around an animal's neck"
+          },
+          "example": {
+            "nl": "Na de dood van mijn kat bewaarde ik haar halsband in een doos.",
+            "en": "After my cat died I kept her collar in a box."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "bewaren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets houden voor later",
+            "en": "to keep something for later"
+          },
+          "example": {
+            "nl": "Na de dood van mijn kat bewaarde ik haar halsband in een doos.",
+            "en": "After my cat died I kept her collar in a box."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "schudden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets kort heen en weer bewegen",
+            "en": "to shake something briefly back and forth"
+          },
+          "example": {
+            "nl": "Ik schudde mijn hoofd en zette de doos weg.",
+            "en": "I shook my head and put the box away."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zelf terughalen",
+            "en": "Bring back oneself"
+          },
+          "explanation": {
+            "nl": "Zelf benadrukt dat de verteller het moment kiest.",
+            "en": "Zelf emphasises that the narrator chooses the moment."
+          },
+          "examples": [
+            {
+              "nl": "Een week later haalde ik de doos zelf terug.",
+              "en": "A week later I brought the box back myself."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat doet de vriendin als praten eerst niet lukt?",
+            "en": "What does the friend do when talking is initially too hard?"
+          },
+          "options": [
+            {
+              "nl": "De doos openen zonder te vragen",
+              "en": "Open the box without asking"
+            },
+            {
+              "nl": "Meteen vertrekken",
+              "en": "Leave immediately"
+            },
+            {
+              "nl": "Rustig bij de verteller blijven",
+              "en": "Stay quietly beside the narrator"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze blijft naast de verteller zitten.",
+            "en": "She stays beside the narrator."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie kiest een week later het moment?",
+            "en": "Who chooses the moment a week later?"
+          },
+          "options": [
+            {
+              "nl": "De verteller zelf",
+              "en": "The narrator"
+            },
+            {
+              "nl": "De dierenarts",
+              "en": "The vet"
+            },
+            {
+              "nl": "Een buur",
+              "en": "A neighbour"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De verteller haalt de doos zelf terug.",
+            "en": "The narrator brings back the box independently."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-naam-voor-het-gazon",
+      "topic_id": "community-events",
+      "title": {
+        "nl": "Een feest zonder grote luidspreker",
+        "en": "A celebration without a large speaker"
+      },
+      "plot_key": "A street celebration adapts its entertainment to a neighbour resting at home without cancelling social contact.",
+      "lines": [
+        {
+          "nl": "Voor ons straatfeest wilden we een grote luidspreker huren.",
+          "en": "We wanted to hire a large speaker for our street celebration."
+        },
+        {
+          "nl": "Een buur vertelde dat haar partner thuis moest rusten.",
+          "en": "A neighbour said her partner needed to rest at home."
+        },
+        {
+          "nl": "Ze wilde het feest niet tegenhouden.",
+          "en": "She did not want to stop the celebration."
+        },
+        {
+          "nl": "Samen zochten we een rustigere vorm van muziek.",
+          "en": "Together we looked for a quieter form of music."
+        },
+        {
+          "nl": "Twee bewoners konden zonder versterker gitaar spelen.",
+          "en": "Two residents could play guitar without an amplifier."
+        },
+        {
+          "nl": "We zetten hun stoelen verder van het huis.",
+          "en": "We placed their chairs farther from the house."
+        },
+        {
+          "nl": "De buur kwam even luisteren en ging daarna weer naar binnen.",
+          "en": "The neighbour came to listen briefly and then went inside again."
+        },
+        {
+          "nl": "Het feest bleef gezellig zonder dat de hele straat elk lied moest horen.",
+          "en": "The celebration stayed friendly without the whole street having to hear every song."
+        }
+      ],
+      "words": [
+        {
+          "term": "huren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets tijdelijk gebruiken in ruil voor geld",
+            "en": "to use something temporarily in exchange for money"
+          },
+          "example": {
+            "nl": "Voor ons straatfeest wilden we een grote luidspreker huren.",
+            "en": "We wanted to hire a large speaker for our street celebration."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "tegenhouden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "ervoor zorgen dat iets niet gebeurt",
+            "en": "to prevent something from happening"
+          },
+          "example": {
+            "nl": "Ze wilde het feest niet tegenhouden.",
+            "en": "She did not want to stop the celebration."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de versterker",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een toestel dat een muzieksignaal luider maakt",
+            "en": "a device making a music signal louder"
+          },
+          "example": {
+            "nl": "Twee bewoners konden zonder versterker gitaar spelen.",
+            "en": "Two residents could play guitar without an amplifier."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder dat",
+            "en": "Without"
+          },
+          "explanation": {
+            "nl": "Zonder dat verbindt het fijne feest met een vermeden gevolg.",
+            "en": "Zonder dat links the pleasant celebration with a consequence that is avoided."
+          },
+          "examples": [
+            {
+              "nl": "Het feest bleef gezellig zonder dat de hele straat elk lied moest horen.",
+              "en": "The celebration stayed friendly without the whole street having to hear every song."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom veranderen de bewoners het muziekplan?",
+            "en": "Why do the residents change the music plan?"
+          },
+          "options": [
+            {
+              "nl": "Iemand heeft thuis rust nodig.",
+              "en": "Someone needs rest at home."
+            },
+            {
+              "nl": "Er zijn geen muzikanten.",
+              "en": "There are no musicians."
+            },
+            {
+              "nl": "De gitaren zijn kapot.",
+              "en": "The guitars are broken."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De partner van een buur moet thuis rusten.",
+            "en": "A neighbour's partner needs to rest at home."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke muziek kiezen ze?",
+            "en": "What music do they choose?"
+          },
+          "options": [
+            {
+              "nl": "Een grote versterkte band",
+              "en": "A large amplified band"
+            },
+            {
+              "nl": "Gitaar zonder versterker",
+              "en": "Guitar without an amplifier"
+            },
+            {
+              "nl": "Alleen muziek via telefoons",
+              "en": "Only music through phones"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Twee bewoners spelen zonder versterker.",
+            "en": "Two residents play without an amplifier."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-handgeschreven-lijst-de-klas",
+      "topic_id": "study-habits",
+      "title": {
+        "nl": "Het antwoord onder mijn hand",
+        "en": "The answer under my hand"
+      },
+      "plot_key": "A learner discovers apparent recall came from seeing a glossary and changes the retrieval setup.",
+      "lines": [
+        {
+          "nl": "Thuis kon ik alle nieuwe woorden vlot opzeggen.",
+          "en": "At home I could recite all the new words easily."
+        },
+        {
+          "nl": "In de les wist ik er plots veel minder.",
+          "en": "In class I suddenly remembered far fewer."
+        },
+        {
+          "nl": "Ik begreep het verschil eerst niet.",
+          "en": "At first I did not understand the difference."
+        },
+        {
+          "nl": "Mijn leraar vroeg hoe mijn boek thuis lag.",
+          "en": "My teacher asked how my book lay at home."
+        },
+        {
+          "nl": "De vertalingen stonden steeds zichtbaar naast de woorden.",
+          "en": "The translations were always visible beside the words."
+        },
+        {
+          "nl": "Ik dacht dat ik me alles herinnerde, maar ik las mee.",
+          "en": "I thought I remembered everything but I was reading along."
+        },
+        {
+          "nl": "Die avond bedekte ik de antwoorden met een blad.",
+          "en": "That evening I covered the answers with a sheet."
+        },
+        {
+          "nl": "De vijf moeilijke woorden oefende ik daarna in eigen zinnen.",
+          "en": "I then practised the five difficult words in sentences of my own."
+        }
+      ],
+      "words": [
+        {
+          "term": "vlot",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "gemakkelijk en zonder veel onderbreking",
+            "en": "fluent or easy without much interruption"
+          },
+          "example": {
+            "nl": "Thuis kon ik alle nieuwe woorden vlot opzeggen.",
+            "en": "At home I could recite all the new words easily."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "bedekken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets onder een ander voorwerp verbergen",
+            "en": "to cover something with another object"
+          },
+          "example": {
+            "nl": "Die avond bedekte ik de antwoorden met een blad.",
+            "en": "That evening I covered the answers with a sheet."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "zich herinneren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "informatie uit je geheugen terughalen",
+            "en": "to recall information from memory"
+          },
+          "example": {
+            "nl": "Ik dacht dat ik me alles herinnerde, maar ik las mee.",
+            "en": "I thought I remembered everything but I was reading along."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Steeds zichtbaar",
+            "en": "Always visible"
+          },
+          "explanation": {
+            "nl": "Steeds betekent hier dat de hulp bij elke poging aanwezig was.",
+            "en": "Steeds means the help was present on every attempt here."
+          },
+          "examples": [
+            {
+              "nl": "De vertalingen stonden steeds zichtbaar naast de woorden.",
+              "en": "The translations were always visible beside the words."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom lijkt het thuis eerst gemakkelijker?",
+            "en": "Why does it initially seem easier at home?"
+          },
+          "options": [
+            {
+              "nl": "De woorden zijn anders.",
+              "en": "The words are different."
+            },
+            {
+              "nl": "Er is geen boek.",
+              "en": "There is no book."
+            },
+            {
+              "nl": "De vertalingen blijven zichtbaar.",
+              "en": "The translations remain visible."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De verteller leest de antwoorden onbewust mee.",
+            "en": "The narrator unknowingly reads the answers along."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de verteller voortaan anders?",
+            "en": "What does the narrator do differently from then on?"
+          },
+          "options": [
+            {
+              "nl": "De antwoorden afdekken en moeilijke woorden actief gebruiken",
+              "en": "Cover the answers and actively use difficult words"
+            },
+            {
+              "nl": "Alleen sneller lezen",
+              "en": "Only read faster"
+            },
+            {
+              "nl": "Het boek altijd open laten",
+              "en": "Always leave the book open"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Er komt een blad over de antwoorden en daarna eigen zinnen.",
+            "en": "A sheet covers the answers and then come original sentences."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-markt-met-een-verhaal",
+      "topic_id": "journalism-media",
+      "title": {
+        "nl": "Een foto met toestemming",
+        "en": "A photo with permission"
+      },
+      "plot_key": "A neighbourhood reporter accepts a vendor's request to photograph products rather than their face.",
+      "lines": [
+        {
+          "nl": "Voor onze buurtkrant maakte ik een bericht over de markt.",
+          "en": "I made a report about the market for our neighbourhood newspaper."
+        },
+        {
+          "nl": "Een verkoper vertelde enthousiast over zijn nieuwe kraam.",
+          "en": "A seller spoke enthusiastically about his new stall."
+        },
+        {
+          "nl": "Toen ik mijn camera nam, hield hij even op.",
+          "en": "When I took out my camera he paused."
+        },
+        {
+          "nl": "Hij wilde liever niet herkenbaar op de foto.",
+          "en": "He preferred not to be recognisable in the photo."
+        },
+        {
+          "nl": "Ik vroeg of zijn handen en producten wel mochten.",
+          "en": "I asked whether his hands and products could be photographed instead."
+        },
+        {
+          "nl": "Dat vond hij goed en we bekeken het beeld samen.",
+          "en": "He agreed and we looked at the image together."
+        },
+        {
+          "nl": "Bij de foto schreef ik alleen de afgesproken winkelnaam.",
+          "en": "With the photo I wrote only the agreed shop name."
+        },
+        {
+          "nl": "De verkoper kreeg het bericht nog even te zien voor het verscheen.",
+          "en": "The seller saw the report briefly before it appeared."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kraam",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een verkoopplaats op een markt",
+            "en": "a stall at a market"
+          },
+          "example": {
+            "nl": "Een verkoper vertelde enthousiast over zijn nieuwe kraam.",
+            "en": "A seller spoke enthusiastically about his new stall."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "herkenbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zo zichtbaar dat anderen weten wie je bent",
+            "en": "visible in a way that lets others identify you"
+          },
+          "example": {
+            "nl": "Hij wilde liever niet herkenbaar op de foto.",
+            "en": "He preferred not to be recognisable in the photo."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "verschijnen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "gepubliceerd of zichtbaar worden",
+            "en": "to be published or become visible"
+          },
+          "example": {
+            "nl": "De verkoper kreeg het bericht nog even te zien voor het verscheen.",
+            "en": "The seller saw the report briefly before it appeared."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Liever niet",
+            "en": "Prefer not"
+          },
+          "explanation": {
+            "nl": "Liever niet geeft hier een persoonlijke grens beleefd aan.",
+            "en": "Liever niet politely states a personal boundary here."
+          },
+          "examples": [
+            {
+              "nl": "Hij wilde liever niet herkenbaar op de foto.",
+              "en": "He preferred not to be recognisable in the photo."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat wil de verkoper niet?",
+            "en": "What does the seller not want?"
+          },
+          "options": [
+            {
+              "nl": "Herkenbaar op de foto staan",
+              "en": "To be recognisable in the photo"
+            },
+            {
+              "nl": "Over zijn kraam praten",
+              "en": "To talk about his stall"
+            },
+            {
+              "nl": "Een nieuwe klant helpen",
+              "en": "To help a new customer"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij zegt dat hij liever niet herkenbaar in beeld komt.",
+            "en": "He says he would prefer not to be identifiable in the picture."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat fotografeert de verteller na overleg?",
+            "en": "What does the narrator photograph after discussion?"
+          },
+          "options": [
+            {
+              "nl": "De achterkant van de krant",
+              "en": "The back of the newspaper"
+            },
+            {
+              "nl": "Handen en producten",
+              "en": "Hands and products"
+            },
+            {
+              "nl": "Andere verkopers zonder vragen",
+              "en": "Other sellers without asking"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De verkoper stemt in met handen en producten.",
+            "en": "The seller agrees to hands and products."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-poster-met-twee-tijden",
+      "topic_id": "festivals-entertainment",
+      "title": {
+        "nl": "Voor de muziek al feest",
+        "en": "Celebration before the music"
+      },
+      "plot_key": "A family arrives for a concert's opening time and discovers the music starts later, using the wait for the food market.",
+      "lines": [
+        {
+          "nl": "Voor een klein festival stond op onze kaart toegang vanaf twee uur.",
+          "en": "Our ticket for a small festival said admission from two."
+        },
+        {
+          "nl": "Wij dachten dat de eerste groep dan ook begon.",
+          "en": "We thought the first band started then too."
+        },
+        {
+          "nl": "Om twee uur was het podium nog leeg.",
+          "en": "At two the stage was still empty."
+        },
+        {
+          "nl": "Een vrijwilliger wees op de andere tijd in het programma.",
+          "en": "A volunteer pointed to the other time in the programme."
+        },
+        {
+          "nl": "De muziek begon pas om drie uur.",
+          "en": "The music did not start until three."
+        },
+        {
+          "nl": "Tot dan konden we de eetkraampjes rustig bekijken.",
+          "en": "Until then we could look around the food stalls at leisure."
+        },
+        {
+          "nl": "We deelden een warme snack en zochten daarna een goede plek.",
+          "en": "We shared a warm snack and then found a good spot."
+        },
+        {
+          "nl": "Bij de eerste noten zaten we klaar zonder nog te moeten aanschuiven.",
+          "en": "At the first notes we were ready without still having to queue."
+        }
+      ],
+      "words": [
+        {
+          "term": "de toegang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de mogelijkheid om ergens binnen te gaan",
+            "en": "admission or the possibility of entering"
+          },
+          "example": {
+            "nl": "Voor een klein festival stond op onze kaart toegang vanaf twee uur.",
+            "en": "Our ticket for a small festival said admission from two."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "het podium",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een verhoogde plaats voor optredens",
+            "en": "a raised place for performances"
+          },
+          "example": {
+            "nl": "Om twee uur was het podium nog leeg.",
+            "en": "At two the stage was still empty."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "aanschuiven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "in een wachtrij gaan staan",
+            "en": "to join a queue"
+          },
+          "example": {
+            "nl": "Bij de eerste noten zaten we klaar zonder nog te moeten aanschuiven.",
+            "en": "At the first notes we were ready without still having to queue."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Vanaf en pas om",
+            "en": "From and not until"
+          },
+          "explanation": {
+            "nl": "Vanaf noemt wanneer binnenkomen kan en pas om noemt de latere start van muziek.",
+            "en": "Vanaf says when entry is possible and pas om gives the later music start."
+          },
+          "examples": [
+            {
+              "nl": "De muziek begon pas om drie uur.",
+              "en": "The music did not start until three."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat begint om twee uur?",
+            "en": "What starts at two?"
+          },
+          "options": [
+            {
+              "nl": "De laatste groep",
+              "en": "The last band"
+            },
+            {
+              "nl": "Het opruimen",
+              "en": "Tidying up"
+            },
+            {
+              "nl": "De toegang tot het terrein",
+              "en": "Admission to the site"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Vanaf twee uur mogen bezoekers binnen.",
+            "en": "Visitors may enter from two."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen ze voor de muziek begint?",
+            "en": "What do they do before the music starts?"
+          },
+          "options": [
+            {
+              "nl": "Iets eten en een plek zoeken",
+              "en": "Eat something and find a place"
+            },
+            {
+              "nl": "Het hele terrein verlaten",
+              "en": "Leave the entire site"
+            },
+            {
+              "nl": "Een tweede kaart kopen",
+              "en": "Buy a second ticket"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze bekijken de kraampjes, delen eten en zoeken een plek.",
+            "en": "They visit the stalls, share food and find a place."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-klein-gesprek-met-een-ster",
+      "topic_id": "nature",
+      "title": {
+        "nl": "De nacht zonder licht",
+        "en": "The night without lights"
+      },
+      "plot_key": "A family switches off a garden lamp during a short observation to notice moths and night sounds without chasing animals.",
+      "lines": [
+        {
+          "nl": "Op een zomeravond zaten we achter in de tuin.",
+          "en": "On a summer evening we sat at the back of the garden."
+        },
+        {
+          "nl": "De felle lamp naast de deur bleef branden.",
+          "en": "The bright lamp beside the door stayed on."
+        },
+        {
+          "nl": "Mijn dochter vroeg welke geluiden uit de haag kwamen.",
+          "en": "My daughter asked what sounds came from the hedge."
+        },
+        {
+          "nl": "We deden de lamp even uit en bleven rustig zitten.",
+          "en": "We switched the lamp off briefly and stayed seated quietly."
+        },
+        {
+          "nl": "Langzaam zagen we beter in het zwakke avondlicht.",
+          "en": "Gradually we could see better in the dim evening light."
+        },
+        {
+          "nl": "Een nachtvlinder vloog langs onze lege kopjes.",
+          "en": "A moth flew past our empty cups."
+        },
+        {
+          "nl": "We hoefden geen dier te vangen om iets nieuws te ontdekken.",
+          "en": "We did not need to catch an animal to discover something new."
+        },
+        {
+          "nl": "Voor het naar binnen gaan tekende mijn dochter de vorm van de vleugels.",
+          "en": "Before going inside my daughter drew the shape of the wings."
+        }
+      ],
+      "words": [
+        {
+          "term": "de haag",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een rij struiken als afscheiding",
+            "en": "a row of shrubs forming a boundary"
+          },
+          "example": {
+            "nl": "Mijn dochter vroeg welke geluiden uit de haag kwamen.",
+            "en": "My daughter asked what sounds came from the hedge."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de nachtvlinder",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een vlinder die vooral in de schemering of nacht actief is",
+            "en": "a moth active mainly at dusk or at night"
+          },
+          "example": {
+            "nl": "Een nachtvlinder vloog langs onze lege kopjes.",
+            "en": "A moth flew past our empty cups."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "de vleugel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een lichaamsdeel waarmee een vogel of insect vliegt",
+            "en": "a body part used by a bird or insect to fly"
+          },
+          "example": {
+            "nl": "Voor het naar binnen gaan tekende mijn dochter de vorm van de vleugels.",
+            "en": "Before going inside my daughter drew the shape of the wings."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoefden geen",
+            "en": "Did not need any"
+          },
+          "explanation": {
+            "nl": "Hoefden geen dier te vangen zegt dat vangen niet nodig was.",
+            "en": "Hoefden geen dier te vangen says catching was unnecessary."
+          },
+          "examples": [
+            {
+              "nl": "We hoefden geen dier te vangen om iets nieuws te ontdekken.",
+              "en": "We did not need to catch an animal to discover something new."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat doen ze om rustig waar te nemen?",
+            "en": "What do they do to observe quietly?"
+          },
+          "options": [
+            {
+              "nl": "De lamp even uitdoen en blijven zitten",
+              "en": "Switch the lamp off briefly and stay seated"
+            },
+            {
+              "nl": "Door de haag lopen",
+              "en": "Walk through the hedge"
+            },
+            {
+              "nl": "Alle dieren vangen",
+              "en": "Catch all the animals"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze kiezen voor stil zitten in het avondlicht.",
+            "en": "They choose to sit quietly in the evening light."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat tekent de dochter?",
+            "en": "What does the daughter draw?"
+          },
+          "options": [
+            {
+              "nl": "De deur van de buur",
+              "en": "The neighbour's door"
+            },
+            {
+              "nl": "De vorm van de vleugels",
+              "en": "The shape of the wings"
+            },
+            {
+              "nl": "Een nieuwe kop",
+              "en": "A new cup"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze bewaart de waarneming als tekening van de vleugels.",
+            "en": "She preserves the observation in a drawing of the wings."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2-read-naam-van-het-station",
+      "topic_id": "languages",
+      "title": {
+        "nl": "Het woord voor de halte",
+        "en": "The word for the stop"
+      },
+      "plot_key": "A learner distinguishes a bus stop from a train station after giving a visitor an overly broad translation.",
+      "lines": [
+        {
+          "nl": "Een bezoeker vroeg mij waar de halte was.",
+          "en": "A visitor asked me where the stop was."
+        },
+        {
+          "nl": "Ik wees meteen naar het grote station.",
+          "en": "I immediately pointed towards the large station."
+        },
+        {
+          "nl": "Hij hield een kaartje voor de stadsbus omhoog.",
+          "en": "He held up a city bus ticket."
+        },
+        {
+          "nl": "In mijn eerste taal gebruikte ik vaak hetzelfde woord voor beide plekken.",
+          "en": "In my first language I often used the same word for both places."
+        },
+        {
+          "nl": "Ik vroeg welke lijn hij nodig had.",
+          "en": "I asked which route he needed."
+        },
+        {
+          "nl": "Samen vonden we het nummer op een haltebord vlakbij.",
+          "en": "Together we found the number on a nearby bus stop sign."
+        },
+        {
+          "nl": "Hij bedankte mij voor de precieze vraag.",
+          "en": "He thanked me for the precise question."
+        },
+        {
+          "nl": "In mijn schrift tekende ik die avond een bushalte naast een treinstation.",
+          "en": "That evening I drew a bus stop beside a railway station in my notebook."
+        }
+      ],
+      "words": [
+        {
+          "term": "de halte",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een plek waar een bus of tram stopt",
+            "en": "a place where a bus or tram stops"
+          },
+          "example": {
+            "nl": "Een bezoeker vroeg mij waar de halte was.",
+            "en": "A visitor asked me where the stop was."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "het station",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een plaats waar treinen stoppen en reizigers in- en uitstappen",
+            "en": "a place where trains stop and passengers get on and off"
+          },
+          "example": {
+            "nl": "Ik wees meteen naar het grote station.",
+            "en": "I immediately pointed towards the large station."
+          },
+          "minimum_stage": "a2"
+        },
+        {
+          "term": "vlakbij",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "op een korte afstand",
+            "en": "nearby or a short distance away"
+          },
+          "example": {
+            "nl": "Samen vonden we het nummer op een haltebord vlakbij.",
+            "en": "Together we found the number on a nearby bus stop sign."
+          },
+          "minimum_stage": "a2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Beide plekken",
+            "en": "Both places"
+          },
+          "explanation": {
+            "nl": "Beide noemt hier precies twee soorten vervoersplaatsen samen.",
+            "en": "Beide refers to exactly two types of transport location together here."
+          },
+          "examples": [
+            {
+              "nl": "In mijn eerste taal gebruikte ik vaak hetzelfde woord voor beide plekken.",
+              "en": "In my first language I often used the same word for both places."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is de eerste richting niet precies genoeg?",
+            "en": "Why is the first direction not precise enough?"
+          },
+          "options": [
+            {
+              "nl": "De bezoeker wil niet wandelen.",
+              "en": "The visitor does not want to walk."
+            },
+            {
+              "nl": "Het station is gesloten.",
+              "en": "The station is closed."
+            },
+            {
+              "nl": "De bezoeker zoekt een bushalte.",
+              "en": "The visitor is looking for a bus stop."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het stadsbuskaartje maakt het bedoelde vervoer duidelijk.",
+            "en": "The city bus ticket makes the intended transport clear."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke vraag helpt daarna?",
+            "en": "Which question helps afterwards?"
+          },
+          "options": [
+            {
+              "nl": "Welke lijn nodig is",
+              "en": "Which route is needed"
+            },
+            {
+              "nl": "Hoeveel de koffer weegt",
+              "en": "How much the suitcase weighs"
+            },
+            {
+              "nl": "Of het station mooi is",
+              "en": "Whether the station is beautiful"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Met het lijnnummer vinden ze het juiste haltebord.",
+            "en": "Using the route number they find the right stop sign."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -210,7 +210,10 @@ def _legacy_audit(content: Path, *, minimum_stories: int = 200, minimum_words: i
 
 def _source_records(content: Path) -> tuple[list[dict], list[dict]]:
     """Read all representations; source identities, not filenames, define works."""
+    from pydantic import ValidationError
+
     from dlp.domains.study.reading_sources import read_reading_batches
+    from dlp.domains.study.schemas import ReadingDocument
 
     records: list[dict] = []
     issues: list[dict] = []
@@ -256,9 +259,11 @@ def _source_records(content: Path) -> tuple[list[dict], list[dict]]:
             add(stage, path, item, "guided")
     for stage, path, document in read_reading_batches(content):
         location = str(path.relative_to(content))
-        if (stage not in STAGES or document.get("stage_id") != stage or document.get("schema_version") != 1
-                or document.get("language_variety") != "nl-BE" or document.get("review_status") != "unreviewed"):
-            issues.append({"code": "invalid_reading_batch", "severity": "error", "story_id": location})
+        try:
+            ReadingDocument.model_validate(document)
+        except ValidationError as error:
+            issues.append({"code": "invalid_reading_batch", "severity": "error", "story_id": location,
+                           "fields": [list(item["loc"]) for item in error.errors()]})
         for item in document.get("lessons", []):
             add(stage, path, item, "reading")
     return records, issues

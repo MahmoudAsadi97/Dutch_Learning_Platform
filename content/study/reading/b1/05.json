@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "b1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "b1-read-computer-achter-het-gordijn",
+      "topic_id": "social-issues",
+      "title": {
+        "nl": "De computer achter het gordijn",
+        "en": "The computer behind the curtain"
+      },
+      "plot_key": "Communitycentredigitalform userprivacydividers causeothers assumeunused seat; bookinglayoutclarity preservesprivacy vsvisibility, newmotherhasquiet formsnovel.",
+      "lines": [
+        {
+          "nl": "In het buurthuis klaagt vrijwilliger Dirk dat de nieuwe computers bijna nooit worden gebruikt, terwijl er toch veel vragen over digitale formulieren zijn.",
+          "en": "At the community centre, volunteer Dirk complains that the new computers are hardly ever used, although there are many questions about digital forms."
+        },
+        {
+          "nl": "Hij telt vanaf de onthaalbalie alleen de drie zichtbare plaatsen en ziet daar meestal lege stoelen.",
+          "en": "From the reception desk he counts only the three visible places and usually sees empty chairs there."
+        },
+        {
+          "nl": "Medewerkster Rina vraagt hem om één namiddag de volledige werking te volgen voordat hij het project wil afbouwen.",
+          "en": "Staff member Rina asks him to follow the whole operation for one afternoon before wanting to scale the project down."
+        },
+        {
+          "nl": "Achter een verplaatsbaar gordijn staat een vierde toestel waar bezoekers persoonlijke zaken met begeleiding kunnen regelen.",
+          "en": "Behind a movable curtain is a fourth device where visitors can deal with personal matters with support."
+        },
+        {
+          "nl": "Daar wisselen mensen elkaar wel af, maar hun aanwezigheid is vanaf de balie niet zichtbaar.",
+          "en": "People do take turns there, but their presence is not visible from the desk."
+        },
+        {
+          "nl": "Dirk beseft dat zijn eenvoudige telling niet alleen weinig gebruik meet, maar ook een deel van het gebruik verbergt.",
+          "en": "Dirk realises that his simple count measures not only low usage but also hides part of the usage."
+        },
+        {
+          "nl": "Ze maken een anoniem overzicht van bezette tijden zonder namen of ingevulde formulieren te bewaren.",
+          "en": "They create an anonymous overview of occupied times without keeping names or completed forms."
+        },
+        {
+          "nl": "Bij het volgende overleg vraagt Dirk niet of de computers weg kunnen, maar hoe iedereen de beschikbare plaatsen beter kan vinden zonder privacy te verliezen.",
+          "en": "At the next meeting, Dirk asks not whether the computers can go but how everyone can find the available places better without losing privacy."
+        }
+      ],
+      "words": [
+        {
+          "term": "afbouwen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets kleiner maken of stap voor stap stoppen",
+            "en": "to scale down; to phase out"
+          },
+          "example": {
+            "nl": "Medewerkster Rina vraagt hem om één namiddag de volledige werking te volgen voordat hij het project wil afbouwen.",
+            "en": "Staff member Rina asks him to follow the whole operation for one afternoon before wanting to scale the project down."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "verplaatsbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "dat je naar een andere plek kunt brengen",
+            "en": "movable"
+          },
+          "example": {
+            "nl": "Achter een verplaatsbaar gordijn staat een vierde toestel waar bezoekers persoonlijke zaken met begeleiding kunnen regelen.",
+            "en": "Behind a movable curtain is a fourth device where visitors can deal with personal matters with support."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de onthaalbalie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de tafel of plek waar bezoekers eerst geholpen worden",
+            "en": "reception desk"
+          },
+          "example": {
+            "nl": "Hij telt vanaf de onthaalbalie alleen de drie zichtbare plaatsen en ziet daar meestal lege stoelen.",
+            "en": "From the reception desk he counts only the three visible places and usually sees empty chairs there."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Voordat hij ... wil ...",
+            "en": "Before wanting to ..."
+          },
+          "explanation": {
+            "nl": "Voordat benadrukt dat eerst waarnemen nodig is vóór een beslissing.",
+            "en": "Voordat emphasises that observation is needed before a decision."
+          },
+          "examples": [
+            {
+              "nl": "Medewerkster Rina vraagt hem om één namiddag de volledige werking te volgen voordat hij het project wil afbouwen.",
+              "en": "Staff member Rina asks him to follow the whole operation for one afternoon before wanting to scale the project down."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is Dirks eerste telling onvolledig?",
+            "en": "Why is Dirk's initial count incomplete?"
+          },
+          "options": [
+            {
+              "nl": "Een gebruikte plaats is door een gordijn niet vanaf de balie zichtbaar.",
+              "en": "A place in use is not visible from the desk because of a curtain."
+            },
+            {
+              "nl": "De stoelen staan allemaal buiten.",
+              "en": "All the chairs are outside."
+            },
+            {
+              "nl": "Alle bezoekers brengen eigen computers mee.",
+              "en": "All visitors bring their own computers."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij telt alleen de zichtbare drie plaatsen en mist het vierde toestel.",
+            "en": "He counts only the three visible places and misses the fourth device."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe bewaren ze de privacy bij een betere telling?",
+            "en": "How do they preserve privacy when making a better count?"
+          },
+          "options": [
+            {
+              "nl": "Ze schrijven alle ingevulde antwoorden over.",
+              "en": "They copy all the completed answers."
+            },
+            {
+              "nl": "Ze noteren bezette tijden zonder namen of formulieren.",
+              "en": "They record occupied times without names or forms."
+            },
+            {
+              "nl": "Ze halen het gordijn definitief weg.",
+              "en": "They remove the curtain permanently."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het overzicht beschrijft gebruik, niet de persoonlijke inhoud van de bezoeken.",
+            "en": "The overview describes use, not the personal content of the visits."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-stem-uit-de-verkeerde-kamer",
+      "topic_id": "communication",
+      "title": {
+        "nl": "De stem uit de verkeerde kamer",
+        "en": "The voice from the wrong room"
+      },
+      "plot_key": "Couplethinksonepracticingbreakup apartment rehearsal actor says scriptunannounced, overheardfragment fear leadsdirectconversation androomnotice notspy.",
+      "lines": [
+        {
+          "nl": "Terwijl hij in de gang zijn schoenen uittrekt, hoort Jonas zijn partner zeggen dat ze zo niet verder kan.",
+          "en": "While taking off his shoes in the hall, Jonas hears his partner say that she cannot go on like this."
+        },
+        {
+          "nl": "Hij blijft doodstil staan, omdat ze de laatste weken allebei druk en vermoeid zijn geweest.",
+          "en": "He stands completely still because they have both been busy and tired in recent weeks."
+        },
+        {
+          "nl": "Even later zegt ze dat ze haar spullen morgen zal ophalen, waarna Jonas haar stem niet meer hoort.",
+          "en": "A little later she says that she will collect her things tomorrow, after which Jonas no longer hears her voice."
+        },
+        {
+          "nl": "Hij wil eerst weggaan om haar niet met zijn reactie te belasten, maar klopt toch op de kamerdeur.",
+          "en": "At first he wants to leave to avoid burdening her with his reaction but still knocks on the room door."
+        },
+        {
+          "nl": "Zij zit met een script en een hoofdtelefoon voor haar laptop en begrijpt zijn bleke gezicht niet.",
+          "en": "She is sitting in front of her laptop with a script and headphones and does not understand his pale face."
+        },
+        {
+          "nl": "Ze oefent online een scène voor de toneelgroep, zonder te beseffen welke zinnen in de gang te horen zijn.",
+          "en": "She is rehearsing a scene online for the theatre group without realising which sentences can be heard in the hall."
+        },
+        {
+          "nl": "Jonas vertelt wat hij dacht, en hoewel ze eerst lachen, bespreken ze daarna ook hun echte vermoeidheid.",
+          "en": "Jonas explains what he thought, and although they laugh at first, afterwards they also discuss their real tiredness."
+        },
+        {
+          "nl": "De volgende repetitie kondigt ze vooraf aan, terwijl zij voor hun eigen gesprek een avond zonder script vrijhouden.",
+          "en": "She announces the next rehearsal in advance while they set aside an evening without a script for their own conversation."
+        }
+      ],
+      "words": [
+        {
+          "term": "doodstil",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "helemaal stil, zonder beweging of geluid",
+            "en": "completely still; utterly silent"
+          },
+          "example": {
+            "nl": "Hij blijft doodstil staan, omdat ze de laatste weken allebei druk en vermoeid zijn geweest.",
+            "en": "He stands completely still because they have both been busy and tired in recent weeks."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "belasten met",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iemand extra zorgen of druk geven door iets",
+            "en": "to burden with"
+          },
+          "example": {
+            "nl": "Hij wil eerst weggaan om haar niet met zijn reactie te belasten, maar klopt toch op de kamerdeur.",
+            "en": "At first he wants to leave to avoid burdening her with his reaction but still knocks on the room door."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "het script",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de geschreven tekst van een toneelstuk of film",
+            "en": "script"
+          },
+          "example": {
+            "nl": "Zij zit met een script en een hoofdtelefoon voor haar laptop en begrijpt zijn bleke gezicht niet.",
+            "en": "She is sitting in front of her laptop with a script and headphones and does not understand his pale face."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te beseffen",
+            "en": "Without realising"
+          },
+          "explanation": {
+            "nl": "Zonder te geeft hier aan welke kennis iemand tijdens een handeling mist.",
+            "en": "Zonder te here identifies awareness that someone lacks during an action."
+          },
+          "examples": [
+            {
+              "nl": "Ze oefent online een scène voor de toneelgroep, zonder te beseffen welke zinnen in de gang te horen zijn.",
+              "en": "She is rehearsing a scene online for the theatre group without realising which sentences can be heard in the hall."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom begrijpt Jonas de zinnen eerst als persoonlijk?",
+            "en": "Why does Jonas initially understand the sentences as personal?"
+          },
+          "options": [
+            {
+              "nl": "Hij hoort losse zinnen en kent de repetitiesituatie niet.",
+              "en": "He hears isolated sentences and does not know the rehearsal context."
+            },
+            {
+              "nl": "Zijn partner geeft hem een officiële verhuisbrief.",
+              "en": "His partner gives him a formal moving notice."
+            },
+            {
+              "nl": "Hij leest eerst het hele script.",
+              "en": "He reads the whole script first."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De vermoeidheid van de laatste weken versterkt zijn uitleg van de fragmenten.",
+            "en": "Their recent tiredness reinforces his interpretation of the fragments."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat nemen ze toch serieus na het misverstand?",
+            "en": "What do they still take seriously after the misunderstanding?"
+          },
+          "options": [
+            {
+              "nl": "Dat hun eigen vermoeidheid een echt gesprek verdient.",
+              "en": "That their own tiredness deserves a real conversation."
+            },
+            {
+              "nl": "Dat Jonas nooit meer thuis mag komen.",
+              "en": "That Jonas may never come home again."
+            },
+            {
+              "nl": "Dat de toneelgroep hun relatie moet beoordelen.",
+              "en": "That the theatre group must assess their relationship."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het was toneel, maar ze plannen daarna ook een avond voor hun echte situatie.",
+            "en": "It was theatre, but they also plan an evening afterwards for their actual situation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-foto-met-het-bordje",
+      "topic_id": "social-media",
+      "title": {
+        "nl": "De foto met het bordje",
+        "en": "The photograph with the sign"
+      },
+      "plot_key": "Homegardenportrait signforrent actuallycatcrategift nothome; framingmakesmisleadingviral assumptions tenantclarifies originalfullphoto noattentionbait.",
+      "lines": [
+        {
+          "nl": "Omdat haar balkon eindelijk groen is, plaatst Hanne een foto waarop zij trots tussen haar planten zit.",
+          "en": "Because her balcony is finally green, Hanne posts a photograph showing herself sitting proudly among her plants."
+        },
+        {
+          "nl": "Onderaan het beeld staat toevallig een klein bordje met te huur, dat tegen een lege krat leunt.",
+          "en": "At the bottom of the image there happens to be a small sign saying for rent, leaning against an empty crate."
+        },
+        {
+          "nl": "Ze heeft het oude bordje van een buur gekregen om er later een plantenetiket van te maken.",
+          "en": "She received the old sign from a neighbour to turn it into a plant label later."
+        },
+        {
+          "nl": "Binnen een uur krijgt ze berichten van mensen die denken dat haar appartement beschikbaar is.",
+          "en": "Within an hour she receives messages from people who think her apartment is available."
+        },
+        {
+          "nl": "Eén gedeelde versie laat alleen het mooie balkon en de tekst zien, zonder Hannes oorspronkelijke uitleg.",
+          "en": "One shared version shows only the lovely balcony and the text, without Hanne's original explanation."
+        },
+        {
+          "nl": "Hanne wordt eerst boos op de vragenstellers, maar begrijpt daarna hoe de uitsnede een ander verhaal heeft gemaakt.",
+          "en": "Hanne is initially angry with those asking but then understands how the crop has created a different story."
+        },
+        {
+          "nl": "Ze zet een duidelijke correctie bij haar eigen foto en vraagt degene die hem deelde de fout eveneens te herstellen.",
+          "en": "She adds a clear correction to her own photograph and asks the person who shared it to correct the error too."
+        },
+        {
+          "nl": "Voor haar volgende plantenfoto draait ze het bordje om, waarop nu de veel eerlijkere boodschap alleen de munt groeit staat.",
+          "en": "For her next plant photograph, she turns the sign over, where the much more accurate message only the mint is growing is now written."
+        }
+      ],
+      "words": [
+        {
+          "term": "de uitsnede",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het deel dat uit een groter beeld gekozen is",
+            "en": "crop"
+          },
+          "example": {
+            "nl": "Hanne wordt eerst boos op de vragenstellers, maar begrijpt daarna hoe de uitsnede een ander verhaal heeft gemaakt.",
+            "en": "Hanne is initially angry with those asking but then understands how the crop has created a different story."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "beschikbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "vrij om te gebruiken of te krijgen",
+            "en": "available"
+          },
+          "example": {
+            "nl": "Binnen een uur krijgt ze berichten van mensen die denken dat haar appartement beschikbaar is.",
+            "en": "Within an hour she receives messages from people who think her apartment is available."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "eveneens",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "ook, op dezelfde manier",
+            "en": "also; likewise"
+          },
+          "example": {
+            "nl": "Ze zet een duidelijke correctie bij haar eigen foto en vraagt degene die hem deelde de fout eveneens te herstellen.",
+            "en": "She adds a clear correction to her own photograph and asks the person who shared it to correct the error too."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder de oorspronkelijke uitleg",
+            "en": "Without the original explanation"
+          },
+          "explanation": {
+            "nl": "Zonder kan aangeven welke belangrijke context in een versie ontbreekt.",
+            "en": "Zonder can indicate which important context is missing from a version."
+          },
+          "examples": [
+            {
+              "nl": "Eén gedeelde versie laat alleen het mooie balkon en de tekst zien, zonder Hannes oorspronkelijke uitleg.",
+              "en": "One shared version shows only the lovely balcony and the text, without Hanne's original explanation."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom lijkt het appartement te huur?",
+            "en": "Why does the apartment appear to be for rent?"
+          },
+          "options": [
+            {
+              "nl": "Een oud bordje in de foto krijgt door de uitsnede een nieuwe betekenis.",
+              "en": "An old sign in the photograph gains a new meaning through the crop."
+            },
+            {
+              "nl": "Hanne heeft zelf een huurprijs gepubliceerd.",
+              "en": "Hanne herself has published a rental price."
+            },
+            {
+              "nl": "Haar buur heeft de woning gekocht.",
+              "en": "Her neighbour has bought the home."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De gedeelde foto combineert het balkon met te huur zonder haar uitleg.",
+            "en": "The shared photograph combines the balcony with for rent without her explanation."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom corrigeert Hanne niet alleen haar eigen foto?",
+            "en": "Why does Hanne not correct only her own photograph?"
+          },
+          "options": [
+            {
+              "nl": "Omdat ze nooit meer een balkon wil hebben.",
+              "en": "Because she never wants a balcony again."
+            },
+            {
+              "nl": "Een andere gedeelde versie verspreidt ook de verkeerde indruk.",
+              "en": "Another shared version is also spreading the wrong impression."
+            },
+            {
+              "nl": "Haar planten kunnen de tekst niet lezen.",
+              "en": "Her plants cannot read the text."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze vraagt ook de deler om de fout in die versie te herstellen.",
+            "en": "She also asks the person who shared it to correct the error in that version."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-speler-die-de-wachter-groette",
+      "topic_id": "gaming",
+      "title": {
+        "nl": "De speler die de wachter groette",
+        "en": "The player who greeted the guard"
+      },
+      "plot_key": "Newtabletoproleplayer talks insteadfightsNPC experiencedgroup wantsfastwin, roleclear cooperative storytelling andguardsfriendresolution authoredrulesgrounded.",
+      "lines": [
+        {
+          "nl": "Tijdens haar eerste rollenspelavond kiest Imani een personage dat goed kan luisteren en verhalen onthouden.",
+          "en": "During her first role-playing evening, Imani chooses a character who can listen well and remember stories."
+        },
+        {
+          "nl": "De ervaren spelers bereiden meteen een gevecht voor wanneer een wachter hun weg naar de oude toren blokkeert.",
+          "en": "The experienced players immediately prepare a fight when a guard blocks their way to the old tower."
+        },
+        {
+          "nl": "Imani vraagt de spelleider of ze de wachter eerst gewoon mag begroeten en naar zijn opdracht kan vragen.",
+          "en": "Imani asks the game master whether she may first simply greet the guard and ask about his assignment."
+        },
+        {
+          "nl": "Een speler zucht dat dit het avontuur alleen maar langer zal maken.",
+          "en": "One player sighs that this will only make the adventure longer."
+        },
+        {
+          "nl": "Volgens de afgesproken spelregels mag ze echter een gesprek proberen, en daarin hoort ze dat de wachter zijn verdwenen broer zoekt.",
+          "en": "Under the agreed game rules she may try a conversation, however, and in it she hears that the guard is looking for his missing brother."
+        },
+        {
+          "nl": "Imani herkent de naam uit een verhaal dat de groep eerder in het dorp hoorde.",
+          "en": "Imani recognises the name from a story that the group heard earlier in the village."
+        },
+        {
+          "nl": "Ze delen die informatie en krijgen een veilige doorgang binnen het spel, zonder dat er een zwaard wordt getrokken.",
+          "en": "They share that information and gain safe passage within the game without a sword being drawn."
+        },
+        {
+          "nl": "Na afloop vraagt de ongeduldige speler welke aantekeningen zij maakte, omdat zijn eigen blad vooral wapens en scores bevat.",
+          "en": "Afterwards the impatient player asks what notes she made because his own sheet contains mainly weapons and scores."
+        }
+      ],
+      "words": [
+        {
+          "term": "de wachter",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die een plaats bewaakt",
+            "en": "guard"
+          },
+          "example": {
+            "nl": "De ervaren spelers bereiden meteen een gevecht voor wanneer een wachter hun weg naar de oude toren blokkeert.",
+            "en": "The experienced players immediately prepare a fight when a guard blocks their way to the old tower."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de spelleider",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de persoon die een rollenspel begeleidt en de situatie beschrijft",
+            "en": "game master"
+          },
+          "example": {
+            "nl": "Imani vraagt de spelleider of ze de wachter eerst gewoon mag begroeten en naar zijn opdracht kan vragen.",
+            "en": "Imani asks the game master whether she may first simply greet the guard and ask about his assignment."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "ongeduldig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "moeite hebbend met wachten",
+            "en": "impatient"
+          },
+          "example": {
+            "nl": "Na afloop vraagt de ongeduldige speler welke aantekeningen zij maakte, omdat zijn eigen blad vooral wapens en scores bevat.",
+            "en": "Afterwards the impatient player asks what notes she made because his own sheet contains mainly weapons and scores."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder dat",
+            "en": "Without ..."
+          },
+          "explanation": {
+            "nl": "Zonder dat beschrijft een gebeurtenis die uitblijft terwijl iets anders wel lukt.",
+            "en": "Zonder dat describes an event that does not happen while something else does succeed."
+          },
+          "examples": [
+            {
+              "nl": "Ze delen die informatie en krijgen een veilige doorgang binnen het spel, zonder dat er een zwaard wordt getrokken.",
+              "en": "They share that information and gain safe passage within the game without a sword being drawn."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke vaardigheid van Imani verandert de situatie?",
+            "en": "What skill of Imani's changes the situation?"
+          },
+          "options": [
+            {
+              "nl": "Ze onthoudt een naam uit een eerder verhaal.",
+              "en": "She remembers a name from an earlier story."
+            },
+            {
+              "nl": "Ze kiest het zwaarste zwaard.",
+              "en": "She chooses the heaviest sword."
+            },
+            {
+              "nl": "Ze weigert de spelregels te lezen.",
+              "en": "She refuses to read the game rules."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De naam van de broer verbindt het gesprek met informatie uit het dorp.",
+            "en": "The brother's name connects the conversation with information from the village."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat toont de laatste vraag van de andere speler?",
+            "en": "What does the other player's final question show?"
+          },
+          "options": [
+            {
+              "nl": "Hij denkt nog steeds dat luisteren geen rol heeft.",
+              "en": "He still thinks listening has no role."
+            },
+            {
+              "nl": "Hij wordt nieuwsgierig naar haar andere manier van spelen.",
+              "en": "He becomes curious about her different way of playing."
+            },
+            {
+              "nl": "Hij wil alle verhalen uit het spel verwijderen.",
+              "en": "He wants to remove all stories from the game."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij wil nu weten wat ze noteerde, naast zijn eigen focus op wapens en scores.",
+            "en": "He now wants to know what she recorded beyond his own focus on weapons and scores."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-verhaal-dat-nooit-plaatsvond",
+      "topic_id": "artificial-intelligence",
+      "title": {
+        "nl": "Het verhaal dat nooit plaatsvond",
+        "en": "The story that never happened"
+      },
+      "plot_key": "AI-assistedfamilybiography hallucinates villagefire hero, authorunclechecks evidence noevent grandfatherreal quietwork valued, distinguish fluent draftverifiednarrative.",
+      "lines": [
+        {
+          "nl": "Voor de verjaardag van zijn opa wil Jens een korte familiekroniek maken en laat hij een digitaal hulpmiddel een eerste opzet schrijven.",
+          "en": "For his grandfather's birthday, Jens wants to create a short family chronicle and asks a digital tool to write an initial outline."
+        },
+        {
+          "nl": "Hij geeft enkele namen, beroepen en dorpen op en krijgt een vlot verhaal over een brand waarbij opa een kind zou hebben gered.",
+          "en": "He provides a few names, occupations and villages and receives a fluent story about a fire in which Grandpa supposedly rescued a child."
+        },
+        {
+          "nl": "Jens vindt die scène zo mooi dat hij ze al bijna tussen de echte familiefoto's zet.",
+          "en": "Jens finds that scene so moving that he almost puts it among the actual family photographs."
+        },
+        {
+          "nl": "Zijn tante vraagt echter welke brief, krant of herinnering dat bijzondere voorval bevestigt.",
+          "en": "His aunt, however, asks which letter, newspaper or memory confirms that remarkable event."
+        },
+        {
+          "nl": "Geen enkel familielid kent het verhaal, en in de opgegeven gegevens stond niets over een brand.",
+          "en": "No family member knows the story, and nothing in the supplied information mentioned a fire."
+        },
+        {
+          "nl": "Jens verwijdert de verzonnen scène en vraagt opa zelf naar een gewone werkdag die hem is bijgebleven.",
+          "en": "Jens removes the invented scene and asks Grandpa himself about an ordinary working day that stayed with him."
+        },
+        {
+          "nl": "Het antwoord over een jonge collega die hij maandenlang rustig hielp, klinkt minder spectaculair maar blijkt wel van hem te zijn.",
+          "en": "The answer about a young colleague whom he calmly helped for months sounds less spectacular but does turn out to be his own."
+        },
+        {
+          "nl": "In het boekje gebruikt Jens het hulpmiddel nog voor de indeling, terwijl elke persoonlijke gebeurtenis voortaan een controleerbare familieroute krijgt.",
+          "en": "In the booklet Jens still uses the tool for the structure while every personal event from then on gets a checkable family source path."
+        }
+      ],
+      "words": [
+        {
+          "term": "de opzet",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een eerste structuur of plan voor een tekst",
+            "en": "outline; draft structure"
+          },
+          "example": {
+            "nl": "Voor de verjaardag van zijn opa wil Jens een korte familiekroniek maken en laat hij een digitaal hulpmiddel een eerste opzet schrijven.",
+            "en": "For his grandfather's birthday, Jens wants to create a short family chronicle and asks a digital tool to write an initial outline."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "verzonnen",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "bedacht zonder dat het echt gebeurd hoeft te zijn",
+            "en": "invented; made up"
+          },
+          "example": {
+            "nl": "Jens verwijdert de verzonnen scène en vraagt opa zelf naar een gewone werkdag die hem is bijgebleven.",
+            "en": "Jens removes the invented scene and asks Grandpa himself about an ordinary working day that stayed with him."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "bevestigen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met informatie laten zien dat iets klopt",
+            "en": "to confirm; to corroborate"
+          },
+          "example": {
+            "nl": "Zijn tante vraagt echter welke brief, krant of herinnering dat bijzondere voorval bevestigt.",
+            "en": "His aunt, however, asks which letter, newspaper or memory confirms that remarkable event."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zou hebben gered",
+            "en": "Supposedly rescued"
+          },
+          "explanation": {
+            "nl": "Zou hebben kan een gebeurtenis beschrijven die wordt beweerd maar nog niet is bevestigd.",
+            "en": "Zou hebben can describe an event that is claimed but has not yet been confirmed."
+          },
+          "examples": [
+            {
+              "nl": "Hij geeft enkele namen, beroepen en dorpen op en krijgt een vlot verhaal over een brand waarbij opa een kind zou hebben gered.",
+              "en": "He provides a few names, occupations and villages and receives a fluent story about a fire in which Grandpa supposedly rescued a child."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom mag Jens de brandscène niet als familiefact gebruiken?",
+            "en": "Why should Jens not use the fire scene as a family fact?"
+          },
+          "options": [
+            {
+              "nl": "Er is geen bron of herinnering die de gebeurtenis bevestigt.",
+              "en": "There is no source or memory confirming the event."
+            },
+            {
+              "nl": "Een heldendaad past nooit in een familieboekje.",
+              "en": "A heroic act never belongs in a family booklet."
+            },
+            {
+              "nl": "Zijn opa heeft geen familiefoto's.",
+              "en": "His grandfather has no family photographs."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het hulpmiddel voegt een gebeurtenis toe die niet in de gegevens of familieherinneringen staat.",
+            "en": "The tool adds an event absent from the data and family memories."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarvoor blijft hij het digitale hulpmiddel wel gebruiken?",
+            "en": "What does he continue using the digital tool for?"
+          },
+          "options": [
+            {
+              "nl": "Om ongekende heldendaden te bedenken.",
+              "en": "To invent unknown heroic deeds."
+            },
+            {
+              "nl": "Voor de indeling van het boekje.",
+              "en": "For the structure of the booklet."
+            },
+            {
+              "nl": "Om te bepalen wat zijn opa zich moet herinneren.",
+              "en": "To determine what his grandfather should remember."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De structuur kan hulp krijgen, terwijl persoonlijke feiten apart gecontroleerd worden.",
+            "en": "The structure can be assisted while personal facts are checked separately."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-planeet-achter-de-vlek",
+      "topic_id": "space-astronomy",
+      "title": {
+        "nl": "De planeet achter de vlek",
+        "en": "The planet behind the smudge"
+      },
+      "plot_key": "Observatoryguide comparesliveblur withprocessedposter visitorsdisappointed, explainsviewingconditions notpromises, nightophotographwaiting supportsrawdata wonder.",
+      "lines": [
+        {
+          "nl": "Bij een publieksavond in een sterrenwacht verwacht Roel de heldere kleuren uit de grote affiche door de telescoop te zien.",
+          "en": "At a public evening at an observatory, Roel expects to see the bright colours from the large poster through the telescope."
+        },
+        {
+          "nl": "Wanneer hij kijkt, ziet hij vooral een kleine bleke vorm die telkens even vervaagt.",
+          "en": "When he looks, he mainly sees a small pale shape that blurs briefly from time to time."
+        },
+        {
+          "nl": "Hij fluistert tegen zijn dochter dat de affiche blijkbaar een veel mooier verhaal vertelt dan de echte hemel.",
+          "en": "He whispers to his daughter that the poster apparently tells a much prettier story than the real sky."
+        },
+        {
+          "nl": "De begeleider hoort zijn vraag en legt uit dat een lang opgebouwde foto iets anders laat zien dan een korte blik met je oog.",
+          "en": "The guide hears his question and explains that an image built up over a long time shows something different from a brief look with the eye."
+        },
+        {
+          "nl": "Hij toont welke onderdelen van de foto bewerkt zijn en welke waarneming ze die avond werkelijk kunnen verwachten.",
+          "en": "He shows which parts of the photograph have been processed and what observation they can actually expect that evening."
+        },
+        {
+          "nl": "Roel kijkt opnieuw en probeert nu één herkenbaar detail te vinden in plaats van alle kleuren tegelijk.",
+          "en": "Roel looks again and now tries to find one recognisable detail instead of all the colours at once."
+        },
+        {
+          "nl": "Wanneer zijn dochter hetzelfde detail beschrijft, weten ze dat ze niet alleen naar een onbegrijpelijke vlek hebben gekeken.",
+          "en": "When his daughter describes the same detail, they know that they have not merely been looking at an incomprehensible smudge."
+        },
+        {
+          "nl": "Op weg naar huis praten ze over de afstand tot dat kleine beeld, die door de uitleg juist groter en indrukwekkender is geworden.",
+          "en": "On the way home they talk about the distance to that small image, which has become greater and more impressive precisely because of the explanation."
+        }
+      ],
+      "words": [
+        {
+          "term": "de sterrenwacht",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een plek met toestellen om de ruimte te bekijken en te onderzoeken",
+            "en": "observatory"
+          },
+          "example": {
+            "nl": "Bij een publieksavond in een sterrenwacht verwacht Roel de heldere kleuren uit de grote affiche door de telescoop te zien.",
+            "en": "At a public evening at an observatory, Roel expects to see the bright colours from the large poster through the telescope."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "vervagen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "minder duidelijk of scherp worden",
+            "en": "to blur; to fade"
+          },
+          "example": {
+            "nl": "Wanneer hij kijkt, ziet hij vooral een kleine bleke vorm die telkens even vervaagt.",
+            "en": "When he looks, he mainly sees a small pale shape that blurs briefly from time to time."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "bleek",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met weinig sterke kleur",
+            "en": "pale"
+          },
+          "example": {
+            "nl": "Wanneer hij kijkt, ziet hij vooral een kleine bleke vorm die telkens even vervaagt.",
+            "en": "When he looks, he mainly sees a small pale shape that blurs briefly from time to time."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Iets anders dan",
+            "en": "Something different from"
+          },
+          "explanation": {
+            "nl": "Anders dan maakt duidelijk dat twee manieren van kijken geen gelijke resultaten hoeven te geven.",
+            "en": "Anders dan makes clear that two ways of looking need not produce the same results."
+          },
+          "examples": [
+            {
+              "nl": "De begeleider hoort zijn vraag en legt uit dat een lang opgebouwde foto iets anders laat zien dan een korte blik met je oog.",
+              "en": "The guide hears his question and explains that an image built up over a long time shows something different from a brief look with the eye."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waardoor ontstaat Roels eerste teleurstelling?",
+            "en": "What causes Roel's initial disappointment?"
+          },
+          "options": [
+            {
+              "nl": "Hij verwacht een bewerkte foto-ervaring bij een korte blik door de telescoop.",
+              "en": "He expects the experience of a processed photograph from a brief look through the telescope."
+            },
+            {
+              "nl": "De sterrenwacht laat hem niet kijken.",
+              "en": "The observatory does not let him look."
+            },
+            {
+              "nl": "Zijn dochter heeft de affiche meegenomen.",
+              "en": "His daughter has taken the poster."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij vergelijkt het kleine livebeeld met de kleuren van de grote affiche.",
+            "en": "He compares the small live view with the colours on the large poster."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert na de uitleg?",
+            "en": "What changes after the explanation?"
+          },
+          "options": [
+            {
+              "nl": "Hij zoekt een concreet detail dat die avond zichtbaar kan zijn.",
+              "en": "He looks for a specific detail that may be visible that evening."
+            },
+            {
+              "nl": "Hij beweert dat de planeet niet bestaat.",
+              "en": "He claims that the planet does not exist."
+            },
+            {
+              "nl": "Hij vraagt zijn dochter de kleuren te verzinnen.",
+              "en": "He asks his daughter to invent the colours."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij richt zijn aandacht op een haalbare waarneming in plaats van de hele affiche te verwachten.",
+            "en": "He focuses on an achievable observation instead of expecting the whole poster."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-handen-bij-het-weerzien",
+      "topic_id": "psychology-emotions",
+      "title": {
+        "nl": "De handen bij het weerzien",
+        "en": "The hands at the reunion"
+      },
+      "plot_key": "Estrangedsibling sees shakinghand refuseshug assumedanger then brotherhand tremors longtime unrelated acknowledgesnervousnessandchoice nohealthdiagnosis.",
+      "lines": [
+        {
+          "nl": "Na een jaar zonder contact wacht Daan zijn zus op voor een eerste koffie in een neutraal café.",
+          "en": "After a year without contact, Daan waits for his sister for their first coffee in a neutral café."
+        },
+        {
+          "nl": "Wanneer zij aankomt, ziet ze dat hij zijn handen onder de tafel houdt en nauwelijks naar haar kijkt.",
+          "en": "When she arrives, she sees that he is keeping his hands under the table and hardly looking at her."
+        },
+        {
+          "nl": "Ze denkt dat hij nog zo boos is dat zelfs een gewone begroeting niet lukt.",
+          "en": "She thinks that he is still so angry that even an ordinary greeting is impossible."
+        },
+        {
+          "nl": "In plaats van meteen over hun oude ruzie te beginnen, vraagt ze of hij vandaag liever afstand houdt.",
+          "en": "Instead of immediately bringing up their old quarrel, she asks whether he would prefer some distance today."
+        },
+        {
+          "nl": "Daan laat zijn trillende handen zien en vertelt dat hij gespannen is omdat hij bang is opnieuw iets verkeerd te zeggen.",
+          "en": "Daan shows his trembling hands and says that he is tense because he is afraid of saying the wrong thing again."
+        },
+        {
+          "nl": "Zijn zus had dezelfde angst, maar hield juist overdreven veel verhalen klaar om stilte te voorkomen.",
+          "en": "His sister had the same fear but had prepared an excessive number of stories to prevent silence."
+        },
+        {
+          "nl": "Ze spreken af dat ze niet elk stil moment meteen hoeven op te vullen en eerst alleen over hun huidige week praten.",
+          "en": "They agree that they do not have to fill every quiet moment immediately and first talk only about their current week."
+        },
+        {
+          "nl": "Aan het einde geven ze elkaar geen grote belofte, maar kiezen ze een datum waarop een tweede voorzichtige koffie mogelijk is.",
+          "en": "At the end they make no grand promise to each other but choose a date when a second cautious coffee is possible."
+        }
+      ],
+      "words": [
+        {
+          "term": "neutraal",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet duidelijk verbonden met één van beide kanten",
+            "en": "neutral"
+          },
+          "example": {
+            "nl": "Na een jaar zonder contact wacht Daan zijn zus op voor een eerste koffie in een neutraal café.",
+            "en": "After a year without contact, Daan waits for his sister for their first coffee in a neutral café."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "overdreven",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "meer of sterker dan nodig",
+            "en": "excessive; exaggerated"
+          },
+          "example": {
+            "nl": "Zijn zus had dezelfde angst, maar hield juist overdreven veel verhalen klaar om stilte te voorkomen.",
+            "en": "His sister had the same fear but had prepared an excessive number of stories to prevent silence."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "opvullen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een lege ruimte of stilte vol maken",
+            "en": "to fill"
+          },
+          "example": {
+            "nl": "Ze spreken af dat ze niet elk stil moment meteen hoeven op te vullen en eerst alleen over hun huidige week praten.",
+            "en": "They agree that they do not have to fill every quiet moment immediately and first talk only about their current week."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Omdat bang zijn",
+            "en": "Because of being afraid"
+          },
+          "explanation": {
+            "nl": "Omdat geeft hier de persoonlijke reden voor zichtbaar gedrag.",
+            "en": "Omdat here gives the personal reason for visible behaviour."
+          },
+          "examples": [
+            {
+              "nl": "Daan laat zijn trillende handen zien en vertelt dat hij gespannen is omdat hij bang is opnieuw iets verkeerd te zeggen.",
+              "en": "Daan shows his trembling hands and says that he is tense because he is afraid of saying the wrong thing again."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke verkeerde uitleg geeft de zus aan Daans gedrag?",
+            "en": "What wrong explanation does the sister give for Daan's behaviour?"
+          },
+          "options": [
+            {
+              "nl": "Ze denkt dat hij vooral nog boos op haar is.",
+              "en": "She thinks that he is mainly still angry with her."
+            },
+            {
+              "nl": "Ze denkt dat hij het café niet kan vinden.",
+              "en": "She thinks that he cannot find the café."
+            },
+            {
+              "nl": "Ze denkt dat hij al koffie heeft besteld voor tien mensen.",
+              "en": "She thinks that he has ordered coffee for ten people."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn stille blik en verborgen handen lijken voor haar afwijzend.",
+            "en": "His quiet gaze and hidden hands appear rejecting to her."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat hebben ze ondanks hun verschillend gedrag gemeen?",
+            "en": "What do they have in common despite their different behaviour?"
+          },
+          "options": [
+            {
+              "nl": "Ze willen allebei de afspraak afzeggen.",
+              "en": "They both want to cancel the meeting."
+            },
+            {
+              "nl": "Ze zijn allebei bang om het gesprek opnieuw verkeerd te laten lopen.",
+              "en": "They are both afraid of the conversation going wrong again."
+            },
+            {
+              "nl": "Ze hebben allebei besloten niet meer te luisteren.",
+              "en": "They have both decided to stop listening."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Daan zwijgt en zijn zus bereidt veel verhalen voor vanuit dezelfde spanning.",
+            "en": "Daan stays quiet and his sister prepares many stories out of the same tension."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-handtekening-onder-de-tekening",
+      "topic_id": "ethics-morality",
+      "title": {
+        "nl": "De handtekening onder de tekening",
+        "en": "The signature beneath the drawing"
+      },
+      "plot_key": "Teacherexhibit creditsadultvolunteer forchildsketchbecauseframingname, volunteer declinescredit publiclyaskschildpermission preferred pseudonym, fairauthorshipnotAIattribution.",
+      "lines": [
+        {
+          "nl": "Voor een tentoonstelling in de bibliotheek heeft vrijwilliger Olivier tekeningen van cursisten ingelijst en opgehangen.",
+          "en": "For an exhibition at the library, volunteer Olivier has framed and hung drawings by students."
+        },
+        {
+          "nl": "Omdat hij zijn naam op de achterkant van elke lijst schreef, zet de medewerker hem in het programma als maker van alle werken.",
+          "en": "Because he wrote his name on the back of each frame, the staff member lists him in the programme as the creator of all the works."
+        },
+        {
+          "nl": "Een bezoeker feliciteert hem met de bijzondere stijl, en Olivier voelt heel even hoe prettig dat onverwachte compliment is.",
+          "en": "A visitor congratulates him on the distinctive style, and for a moment Olivier feels how pleasant that unexpected compliment is."
+        },
+        {
+          "nl": "Dan ziet hij de echte tekenaar aan de rand van de zaal staan, zonder naamkaartje bij haar werk.",
+          "en": "Then he sees the real artist standing at the edge of the room without a name label beside her work."
+        },
+        {
+          "nl": "Hij verbetert het misverstand meteen bij het onthaal en vraagt de cursiste hoe zij zelf genoemd wil worden.",
+          "en": "He immediately corrects the misunderstanding at reception and asks the student how she wants to be named."
+        },
+        {
+          "nl": "Zij kiest alleen haar voornaam, omdat ze haar volledige naam niet op een openbare affiche wil.",
+          "en": "She chooses only her first name because she does not want her full name on a public poster."
+        },
+        {
+          "nl": "Het programma wordt aangepast: de tekening is van haar, terwijl Olivier wordt bedankt voor de inrichting.",
+          "en": "The programme is updated: the drawing is hers, while Olivier is thanked for the installation."
+        },
+        {
+          "nl": "Wanneer dezelfde bezoeker terugkomt, stelt Olivier de kunstenares voor en vraagt hij haar of ze over één gekozen detail wil vertellen.",
+          "en": "When the same visitor returns, Olivier introduces the artist and asks her whether she would like to talk about one chosen detail."
+        }
+      ],
+      "words": [
+        {
+          "term": "inlijsten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een afbeelding in een lijst plaatsen",
+            "en": "to frame"
+          },
+          "example": {
+            "nl": "Voor een tentoonstelling in de bibliotheek heeft vrijwilliger Olivier tekeningen van cursisten ingelijst en opgehangen.",
+            "en": "For an exhibition at the library, volunteer Olivier has framed and hung drawings by students."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de maker",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de persoon die iets heeft gemaakt",
+            "en": "creator"
+          },
+          "example": {
+            "nl": "Omdat hij zijn naam op de achterkant van elke lijst schreef, zet de medewerker hem in het programma als maker van alle werken.",
+            "en": "Because he wrote his name on the back of each frame, the staff member lists him in the programme as the creator of all the works."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de inrichting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de manier waarop een ruimte met voorwerpen is georganiseerd",
+            "en": "installation; arrangement"
+          },
+          "example": {
+            "nl": "Het programma wordt aangepast: de tekening is van haar, terwijl Olivier wordt bedankt voor de inrichting.",
+            "en": "The programme is updated: the drawing is hers, while Olivier is thanked for the installation."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor verschillende rollen",
+            "en": "While distinguishing roles"
+          },
+          "explanation": {
+            "nl": "Terwijl maakt hier een verschil tussen twee bijdragen duidelijk zonder één ervan te verbergen.",
+            "en": "Terwijl here distinguishes two contributions without hiding either."
+          },
+          "examples": [
+            {
+              "nl": "Het programma wordt aangepast: de tekening is van haar, terwijl Olivier wordt bedankt voor de inrichting.",
+              "en": "The programme is updated: the drawing is hers, while Olivier is thanked for the installation."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wordt Olivier verkeerd als maker genoemd?",
+            "en": "Why is Olivier wrongly named as the creator?"
+          },
+          "options": [
+            {
+              "nl": "Zijn naam op de lijsten wordt als naam van de kunstenaar gelezen.",
+              "en": "His name on the frames is read as the artist's name."
+            },
+            {
+              "nl": "Hij heeft alle tekeningen zelf ondertekend aan de voorkant.",
+              "en": "He has signed every drawing on the front himself."
+            },
+            {
+              "nl": "De cursiste heeft haar werk aan hem verkocht.",
+              "en": "The student has sold him her work."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De naam op de achterkant hoorde bij zijn inlijstwerk, niet bij het tekenen.",
+            "en": "The name on the back belonged to his framing work, not the drawing."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom vraagt hij hoe de cursiste genoemd wil worden?",
+            "en": "Why does he ask how the student wants to be named?"
+          },
+          "options": [
+            {
+              "nl": "Zij mag zelf kiezen hoe haar bijdrage openbaar wordt vermeld.",
+              "en": "She may choose how her contribution is publicly credited."
+            },
+            {
+              "nl": "Hij wil haar naam ingewikkelder maken.",
+              "en": "He wants to make her name more complicated."
+            },
+            {
+              "nl": "Het programma mag maar één letter bevatten.",
+              "en": "The programme may contain only one letter."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze kiest haar voornaam en behoudt controle over haar volledige naam.",
+            "en": "She chooses her first name and keeps control over her full name."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-tuin-die-het-raam-niet-kende",
+      "topic_id": "future-innovation",
+      "title": {
+        "nl": "De tuin die het raam niet kende",
+        "en": "The garden that did not know the window"
+      },
+      "plot_key": "Smartplantwateringfixedschedule treatingovercastbrightday can'treplaceobservation, sonaddsmanualreview noteweather notfakepromiseadaptsmachine.",
+      "lines": [
+        {
+          "nl": "Voor zijn moeders verjaardag installeert Bram een eenvoudig automatisch systeem dat de balkonplanten op vaste momenten water geeft.",
+          "en": "For his mother's birthday, Bram installs a simple automatic system that waters the balcony plants at fixed times."
+        },
+        {
+          "nl": "Hij zegt enthousiast dat zij zich nu nergens meer zorgen over hoeft te maken.",
+          "en": "He enthusiastically says that she no longer needs to worry about anything."
+        },
+        {
+          "nl": "Na een week belt ze omdat één pot veel natter blijft dan de andere, hoewel alle buisjes hetzelfde doen.",
+          "en": "After a week she calls because one pot stays much wetter than the others, although all the little tubes do the same thing."
+        },
+        {
+          "nl": "Bram wil meteen het hele toestel vervangen, maar zijn moeder vraagt hem eerst naar de plekken van de potten te kijken.",
+          "en": "Bram immediately wants to replace the whole device, but his mother first asks him to look at the positions of the pots."
+        },
+        {
+          "nl": "De ene staat beschut achter glas en krijgt nauwelijks regen, terwijl een andere regelmatig nat wordt vanaf de open kant.",
+          "en": "One is sheltered behind glass and receives hardly any rain, while another regularly gets wet from the open side."
+        },
+        {
+          "nl": "Het systeem volgt alleen zijn vaste tijden en weet niet vanzelf wat er rond elke pot gebeurt.",
+          "en": "The system only follows its fixed times and does not automatically know what happens around each pot."
+        },
+        {
+          "nl": "Ze passen de inrichting en afspraken aan en houden samen een korte controle bij, zonder de automatische hulp volledig af te schrijven.",
+          "en": "They adjust the arrangement and routines and keep a brief check together without dismissing the automatic aid entirely."
+        },
+        {
+          "nl": "Bram verandert zijn cadeaukaartje van nooit meer kijken naar minder gieten, nog steeds samen opletten.",
+          "en": "Bram changes his gift card from never look again to less watering, still paying attention together."
+        }
+      ],
+      "words": [
+        {
+          "term": "beschut",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "beschermd tegen wind of regen",
+            "en": "sheltered"
+          },
+          "example": {
+            "nl": "De ene staat beschut achter glas en krijgt nauwelijks regen, terwijl een andere regelmatig nat wordt vanaf de open kant.",
+            "en": "One is sheltered behind glass and receives hardly any rain, while another regularly gets wet from the open side."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "afschrijven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "besluiten dat iets geen waarde of nut meer heeft",
+            "en": "to write off; to dismiss"
+          },
+          "example": {
+            "nl": "Ze passen de inrichting en afspraken aan en houden samen een korte controle bij, zonder de automatische hulp volledig af te schrijven.",
+            "en": "They adjust the arrangement and routines and keep a brief check together without dismissing the automatic aid entirely."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de inrichting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de manier waarop spullen een plaats hebben gekregen",
+            "en": "layout; arrangement"
+          },
+          "example": {
+            "nl": "Ze passen de inrichting en afspraken aan en houden samen een korte controle bij, zonder de automatische hulp volledig af te schrijven.",
+            "en": "They adjust the arrangement and routines and keep a brief check together without dismissing the automatic aid entirely."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoewel hetzelfde doen",
+            "en": "Although doing the same"
+          },
+          "explanation": {
+            "nl": "Hoewel verbindt dezelfde werking met een onverwacht verschillend resultaat.",
+            "en": "Hoewel connects the same operation with an unexpectedly different result."
+          },
+          "examples": [
+            {
+              "nl": "Na een week belt ze omdat één pot veel natter blijft dan de andere, hoewel alle buisjes hetzelfde doen.",
+              "en": "After a week she calls because one pot stays much wetter than the others, although all the little tubes do the same thing."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat weet het vaste systeem niet vanzelf?",
+            "en": "What does the fixed system not know automatically?"
+          },
+          "options": [
+            {
+              "nl": "Hoe de omstandigheden bij elke pot verschillen.",
+              "en": "How conditions differ at each pot."
+            },
+            {
+              "nl": "Wanneer Bram jarig is.",
+              "en": "When Bram's birthday is."
+            },
+            {
+              "nl": "Welke plant zijn moeder het mooist vindt.",
+              "en": "Which plant his mother finds prettiest."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het volgt vaste tijden zonder regen en beschutting per plek te kennen.",
+            "en": "It follows fixed times without knowing the rain and shelter at each location."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe wordt Brams belofte realistischer?",
+            "en": "How does Bram make his promise more realistic?"
+          },
+          "options": [
+            {
+              "nl": "Hij belooft dat zijn moeder nooit meer op het balkon hoeft te komen.",
+              "en": "He promises that his mother never has to go onto the balcony again."
+            },
+            {
+              "nl": "Hij spreekt over minder werk met blijvende controle.",
+              "en": "He speaks of less work with continuing checks."
+            },
+            {
+              "nl": "Hij beweert dat alle potten gelijk moeten zijn.",
+              "en": "He claims that all pots have to be identical."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Automatische hulp blijft nuttig, maar vervangt niet alle aandacht.",
+            "en": "Automatic help remains useful but does not replace all attention."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-buurt-met-een-stille-avond",
+      "topic_id": "society-community",
+      "title": {
+        "nl": "De buurt met een stille avond",
+        "en": "The neighbourhood with a quiet evening"
+      },
+      "plot_key": "Residentsconflicting bellpractice andgrandfathergrief publicconversation optionalquietblock protectsquietwithouterasingyoungmusic, movableweeklytimes ratherthanmoral everyoneidentical.",
+      "lines": [
+        {
+          "nl": "Op donderdagavond oefent een jong koperensemble in het buurthuis, met ramen die in de zomer vaak openstaan.",
+          "en": "On Thursday evenings a young brass ensemble rehearses at the community centre with windows that are often open in summer."
+        },
+        {
+          "nl": "Buurvrouw Leona heeft de muziek altijd aardig gevonden, totdat haar partner overlijdt en de avonden thuis heel anders gaan voelen.",
+          "en": "Neighbour Leona has always liked the music until her partner dies and evenings at home begin to feel very different."
+        },
+        {
+          "nl": "Ze schrijft een kort bericht waarin ze vraagt of het ensemble voorgoed ergens anders kan spelen.",
+          "en": "She writes a short message asking whether the ensemble could play somewhere else permanently."
+        },
+        {
+          "nl": "Een jonge muzikant is gekwetst, omdat hij denkt dat zij hun aanwezigheid in de wijk niet waardeert.",
+          "en": "A young musician is hurt because he thinks that she does not value their presence in the neighbourhood."
+        },
+        {
+          "nl": "Tijdens een gesprek vertelt Leona niet dat de muziek slecht is, maar dat juist één bekend lied haar voorlopig te veel wordt.",
+          "en": "During a conversation, Leona says not that the music is bad but that one familiar song in particular is too much for her for the time being."
+        },
+        {
+          "nl": "De groep kan niet alles rond één persoon organiseren, maar bekijkt wel gesloten ramen, tijden en een andere volgorde van de repetitie.",
+          "en": "The group cannot organise everything around one person but does consider closed windows, times and a different order for the rehearsal."
+        },
+        {
+          "nl": "Leona krijgt vooraf het rooster en kiest op het moeilijkste moment een wandeling met haar zus, terwijl het buurthuis de afgesproken rusttijden bewaakt.",
+          "en": "Leona receives the schedule beforehand and chooses a walk with her sister at the hardest time while the community centre observes the agreed quiet periods."
+        },
+        {
+          "nl": "Wanneer zij later weer een concert bezoekt, hoeven de muzikanten haar niet als tegenstander maar gewoon als buurvrouw te begroeten.",
+          "en": "When she later attends a concert again, the musicians do not have to greet her as an opponent but simply as a neighbour."
+        }
+      ],
+      "words": [
+        {
+          "term": "het koperensemble",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kleine groep muzikanten met vooral koperen blaasinstrumenten",
+            "en": "brass ensemble"
+          },
+          "example": {
+            "nl": "Op donderdagavond oefent een jong koperensemble in het buurthuis, met ramen die in de zomer vaak openstaan.",
+            "en": "On Thursday evenings a young brass ensemble rehearses at the community centre with windows that are often open in summer."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "voorgoed",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "voor altijd, zonder terugkeer",
+            "en": "permanently; for good"
+          },
+          "example": {
+            "nl": "Ze schrijft een kort bericht waarin ze vraagt of het ensemble voorgoed ergens anders kan spelen.",
+            "en": "She writes a short message asking whether the ensemble could play somewhere else permanently."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "bewaken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "ervoor zorgen dat een afspraak of grens wordt gerespecteerd",
+            "en": "to monitor; to safeguard"
+          },
+          "example": {
+            "nl": "Leona krijgt vooraf het rooster en kiest op het moeilijkste moment een wandeling met haar zus, terwijl het buurthuis de afgesproken rusttijden bewaakt.",
+            "en": "Leona receives the schedule beforehand and chooses a walk with her sister at the hardest time while the community centre observes the agreed quiet periods."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet ... maar ... in een uitleg",
+            "en": "Not ... but ... in an explanation"
+          },
+          "explanation": {
+            "nl": "Niet maar kan een eerste oordeel vervangen door een nauwkeuriger persoonlijke reden.",
+            "en": "Niet maar can replace an initial judgement with a more precise personal reason."
+          },
+          "examples": [
+            {
+              "nl": "Tijdens een gesprek vertelt Leona niet dat de muziek slecht is, maar dat juist één bekend lied haar voorlopig te veel wordt.",
+              "en": "During a conversation, Leona says not that the music is bad but that one familiar song in particular is too much for her for the time being."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom ervaart Leona de muziek anders dan vroeger?",
+            "en": "Why does Leona experience the music differently from before?"
+          },
+          "options": [
+            {
+              "nl": "Haar verlies maakt een bekend lied tijdelijk erg moeilijk.",
+              "en": "Her bereavement temporarily makes a familiar song very difficult."
+            },
+            {
+              "nl": "Het ensemble speelt helemaal geen muziek meer.",
+              "en": "The ensemble no longer plays any music."
+            },
+            {
+              "nl": "Ze wil zelf alle repetities leiden.",
+              "en": "She wants to conduct all the rehearsals herself."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze zegt dat één bekend lied sinds het overlijden van haar partner te veel wordt.",
+            "en": "She says that one familiar song has become too much since her partner's death."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat typeert hun uiteindelijke aanpak?",
+            "en": "What characterises their final approach?"
+          },
+          "options": [
+            {
+              "nl": "Eén persoon krijgt volledige controle over iedereen.",
+              "en": "One person gains complete control over everyone."
+            },
+            {
+              "nl": "Ze combineren praktische aanpassingen met persoonlijke keuzes.",
+              "en": "They combine practical adjustments with personal choices."
+            },
+            {
+              "nl": "Niemand mag nog muziek maken in de wijk.",
+              "en": "Nobody may make music in the neighbourhood anymore."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Tijden en ramen worden besproken en Leona kiest zelf hoe ze met het moeilijkste moment omgaat.",
+            "en": "They discuss times and windows, and Leona chooses how to handle the hardest moment herself."
+          }
+        }
+      ]
+    }
+  ]
+}

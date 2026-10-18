@@ -155,6 +155,25 @@ def write_guided(root, stage, lessons):
 
 
 def write_reading(root, stage, lessons, name="01-books"):
+    for lesson in lessons:
+        lesson["id"] = lesson["id"].replace("-reading-", "-read-")
+        first = lesson["lines"][0]
+        lesson.setdefault("words", [
+            {"term": term, "part_of_speech": kind, "meaning": {"nl": nl, "en": en},
+             "example": first, "minimum_stage": stage}
+            for term, kind, nl, en in (
+                ("het boek", "noun", "Een tekst met bladzijden.", "A book."),
+                ("meenemen", "verb", "Iets naar een andere plek brengen.", "To take along."),
+                ("het park", "noun", "Een groene plek om te wandelen.", "A park."))])
+        lesson.setdefault("grammar", [{
+            "title": {"nl": "Een scheidbaar werkwoord", "en": "A separable verb"},
+            "explanation": {"nl": "Neemt en mee zijn de twee delen van meenemen.",
+                            "en": "Neemt and mee are the two parts of meenemen."},
+            "examples": [first]}])
+        lesson.setdefault("questions", [{
+            "id": f"q{number}", "prompt": {"nl": "Wat neemt Sara mee?", "en": "What does Sara take?"},
+            "options": [{"nl": "Een boek", "en": "A book"}, {"nl": "Een tas", "en": "A bag"}],
+            "answer_index": 0, "explanation": first} for number in (1, 2)])
     path = root / "study/reading" / stage / f"{name}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({"schema_version": 1, "stage_id": stage, "language_variety": "nl-BE",
@@ -297,6 +316,25 @@ def test_reading_batch_cannot_claim_editorial_approval(tmp_path):
     result = MODULE.audit(tmp_path)
     assert "invalid_reading_batch" in codes(result)
     assert result["canonical_structural_errors"] > 0
+    assert stage_row(result)["eligible_authored_stories"] == 0
+
+
+@pytest.mark.parametrize("fault", ["missing_words", "unrelated_grammar", "missing_questions"])
+def test_inventory_cannot_count_a_reading_the_runtime_would_reject(tmp_path, fault):
+    lesson = guided_lesson("a1-read-incomplete")
+    lesson["plot_key"] = "A child follows eight numbered clues to find a book."
+    path = write_reading(tmp_path, "a1", [lesson])
+    document = json.loads(path.read_text())
+    authored = document["lessons"][0]
+    if fault == "missing_words":
+        authored["words"] = []
+    elif fault == "unrelated_grammar":
+        authored["grammar"][0]["examples"] = [{"nl": "De trein vertrekt.", "en": "The train leaves."}]
+    else:
+        authored["questions"] = []
+    path.write_text(json.dumps(document))
+    result = MODULE.audit(tmp_path)
+    assert "invalid_reading_batch" in codes(result)
     assert stage_row(result)["eligible_authored_stories"] == 0
 
 
