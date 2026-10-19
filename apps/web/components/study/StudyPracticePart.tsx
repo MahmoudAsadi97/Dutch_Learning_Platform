@@ -50,7 +50,6 @@ export function PracticePart({
   const [error, setError] = useState("");
   const [sample, setSample] = useState(false);
   const [transcript, setTranscript] = useState(false);
-  const [audioUrl, setAudioUrl] = useState("");
   const [voiceUrl, setVoiceUrl] = useState("");
   const [audioBusy, setAudioBusy] = useState(false);
   const [syntheticTest, setSyntheticTest] = useState(false);
@@ -60,6 +59,7 @@ export function PracticePart({
       : 0,
   );
   const controller = useRef<AbortController | null>(null);
+  const audioRequest = useRef<AbortController | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const localAudio = useRef("");
   const localVoice = useRef("");
@@ -122,10 +122,18 @@ export function PracticePart({
   const recording = recorder.phase === "recording";
   useEffect(() => {
     mounted.current = true;
+    const player = audioRef.current;
     const stopObserving = observeNativeAudioFocus();
     return () => {
       mounted.current = false;
       controller.current?.abort();
+      audioRequest.current?.abort();
+      audioRequest.current = null;
+      if (player) {
+        player.pause();
+        player.removeAttribute("src");
+        player.load();
+      }
       stopObserving();
       if (localAudio.current) URL.revokeObjectURL(localAudio.current);
       if (localVoice.current) URL.revokeObjectURL(localVoice.current);
@@ -170,37 +178,41 @@ export function PracticePart({
     return () => window.removeEventListener("pageshow", clear);
   }, []);
   async function playListening() {
+    const player = audioRef.current;
+    if (!player || audioRequest.current) return;
+    const request = new AbortController();
+    audioRequest.current = request;
+    const current = () => mounted.current && audioRequest.current === request && !request.signal.aborted;
     setAudioBusy(true);
     setError("");
     try {
       if (!localAudio.current) {
         const response = await apiFetch(
           `study/${lesson.stage_id}/topics/${lesson.topic_id}/audio?${new URLSearchParams({ skill: lesson.skill, activity_id: lesson.activity_id, part: part.id })}`,
-          { method: "POST" },
+          { method: "POST", signal: request.signal },
         );
         if (!response.ok) throw new ApiError(response.status, "", "");
-        localAudio.current = URL.createObjectURL(await response.blob());
-        if (!mounted.current) {
-          URL.revokeObjectURL(localAudio.current);
-          return;
-        }
+        const blob = await response.blob();
+        if (!current()) return;
+        localAudio.current = URL.createObjectURL(blob);
         setSyntheticTest((response.headers.get("x-audio-label") ?? "").includes("test"));
-        setAudioUrl(localAudio.current);
-        if (audioRef.current) {
-          audioRef.current.src = localAudio.current;
-          audioRef.current.load();
-        }
+        // One owner assigns the source. A later React src commit would restart loading
+        // and abort the first play() while the browser is still preparing the clip.
+        player.src = localAudio.current;
       }
-      await audioRef.current?.play();
+      if (current()) await player.play();
     } catch (cause) {
-      if (mounted.current)
+      if (current())
         setError(
           cause instanceof DOMException && cause.name === "NotAllowedError"
             ? studyCopy.tapPlayAgain.nl
             : friendlyError(cause),
         );
     } finally {
-      if (mounted.current) setAudioBusy(false);
+      if (current()) {
+        audioRequest.current = null;
+        setAudioBusy(false);
+      }
     }
   }
   async function evaluate() {
@@ -290,13 +302,16 @@ export function PracticePart({
     setBusy(false);
   }
   function clearQuestionMedia() {
+    audioRequest.current?.abort();
+    audioRequest.current = null;
+    setAudioBusy(false);
     if (localVoice.current) URL.revokeObjectURL(localVoice.current);
     if (localAudio.current) URL.revokeObjectURL(localAudio.current);
     localVoice.current = "";
     localAudio.current = "";
     audioRef.current?.pause();
+    audioRef.current?.removeAttribute("src");
     setVoiceUrl("");
-    setAudioUrl("");
   }
   const canCheck = objective
     ? part.questions.every((item) => answers[item.id] !== undefined && String(answers[item.id]).trim() !== "")
@@ -356,13 +371,7 @@ export function PracticePart({
             <Icon name="play" size={17} />
             {audioBusy ? studyCopy.prepareAudio.nl : studyCopy.startRecordingAudio.nl}
           </button>
-          <audio
-            ref={audioRef}
-            controls
-            preload="none"
-            src={audioUrl || undefined}
-            aria-label={studyCopy.continuousAudio.nl}
-          />
+          <audio ref={audioRef} controls preload="none" aria-label={studyCopy.continuousAudio.nl} />
           {syntheticTest && (
             <p className="study-footnote">
               {" "}
