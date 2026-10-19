@@ -11,6 +11,7 @@ export interface StudyWord {
   meaning: StudyCopy;
   example: StudyCopy;
   part_of_speech?: string | null;
+  plural?: string | null;
   forms?: { label: StudyCopy; text: StudyCopy }[];
   contexts?: { id: string; setting: StudyCopy; sentence: StudyCopy; production_prompt?: StudyCopy }[];
 }

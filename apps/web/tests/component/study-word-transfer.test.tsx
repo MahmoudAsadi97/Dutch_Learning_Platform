@@ -192,6 +192,48 @@ test("missing authored prompts show examples without inventing tasks, while empt
   expect(view.container).toBeEmptyDOMElement();
 });
 
+test("a noun with only an authored plural can expand to its plural label and Dutch audio", async () => {
+  const noun: StudyWord = {
+    id: "a1-word-tafel",
+    term: "de tafel",
+    part_of_speech: "noun",
+    meaning: { nl: "een meubel met een blad en poten", en: "a table" },
+    example: { nl: "De tafel staat hier.", en: "The table is here." },
+    plural: "tafels",
+    forms: [],
+    contexts: [],
+  };
+  render(<WordTransferPractice word={noun} />);
+  expect(screen.getByText("Meervoud")).not.toBeVisible();
+  await userEvent.click(screen.getByText("Bekijk andere woordvormen"));
+  expect(screen.getByText("Meervoud")).toBeVisible();
+  expect(screen.getByText("Plural")).toBeVisible();
+  expect(screen.getByRole("button", { name: "Luister: tafels" })).toBeVisible();
+  expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
+  expect(screen.queryByText("Gebruik in een andere situatie")).not.toBeInTheDocument();
+});
+
+test("an existing authored plural form is not duplicated, and missing plurals stay absent", async () => {
+  const view = render(
+    <WordTransferPractice
+      word={{
+        ...word,
+        plural: " tafels ",
+        contexts: [],
+        forms: [{ label: { nl: "Meervoud", en: "Plural" }, text: { nl: "tafels", en: "tables" } }],
+      }}
+    />,
+  );
+  await userEvent.click(screen.getByText("Bekijk andere woordvormen"));
+  expect(screen.getAllByText("Meervoud")).toHaveLength(1);
+  expect(screen.getAllByRole("button", { name: "Luister: tafels" })).toHaveLength(1);
+  expect(screen.getByText("tables")).toBeVisible();
+  view.rerender(<WordTransferPractice word={{ ...word, plural: " ", forms: [], contexts: [] }} />);
+  expect(view.container).toBeEmptyDOMElement();
+  view.rerender(<WordTransferPractice word={{ ...word, plural: null, forms: [], contexts: [] }} />);
+  expect(view.container).toBeEmptyDOMElement();
+});
+
 test("the word reference clears its scratch when the signed-in identity changes", async () => {
   vi.mocked(apiJson).mockResolvedValue({ items: [word], offset: 0, limit: 18, total: 1 });
   const view = render(<WordReference stageId="a2" />);

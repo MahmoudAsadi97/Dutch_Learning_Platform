@@ -11,6 +11,10 @@ export const studyWordTransferCopy = {
     nl: "Vormen en voorbeelden",
     en: "Forms and examples",
   },
+  plural: {
+    nl: "Meervoud",
+    en: "Plural",
+  },
   tryFirst: {
     nl: "Probeer zelf een zin. Bekijk daarna een mogelijk voorbeeld.",
     en: "Try a sentence yourself. Then look at one possible example.",

@@ -28,7 +28,12 @@ export function WordTransferPractice({ word }: { word: StudyWord }) {
 
 function WordTransferDetails({ word }: { word: StudyWord }) {
   const [contextIndex, setContextIndex] = useState(0);
-  const forms = word.forms?.filter((form) => form.text.nl.trim()) ?? [];
+  const authoredForms = word.forms?.filter((form) => form.text.nl.trim()) ?? [];
+  const plural = word.plural?.trim();
+  const forms =
+    plural && !authoredForms.some((form) => form.text.nl.trim() === plural)
+      ? [...authoredForms, { label: copy.plural, text: { nl: plural } }]
+      : authoredForms;
   const contexts = word.contexts?.filter((context) => context.sentence.nl.trim()) ?? [];
   const context = contexts[contextIndex];
   if (!forms.length && !contexts.length) return null;
