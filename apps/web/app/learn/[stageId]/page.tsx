@@ -1,12 +1,10 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { GuidedStudyWorkspace } from "@/components/GuidedStudyWorkspace";
-import { isStageId, isSkill } from "@/lib/domain/registry";
+import { isStageId, isSkill, skills, stageLabel } from "@/lib/domain/registry";
 import { studyStep } from "@/lib/client/study";
 
-export default async function LevelPage({
-  params,
-  searchParams,
-}: {
+type LevelPageProps = {
   params: Promise<{ stageId: string }>;
   searchParams: Promise<{
     skill?: string | string[];
@@ -17,7 +15,16 @@ export default async function LevelPage({
     step?: string | string[];
     view?: string | string[];
   }>;
-}) {
+};
+
+export async function generateMetadata({ params, searchParams }: LevelPageProps): Promise<Metadata> {
+  const [{ stageId }, query] = await Promise.all([params, searchParams]);
+  if (!isStageId(stageId)) return { title: "Leren" };
+  const skill = typeof query.skill === "string" && isSkill(query.skill) ? query.skill : "reading";
+  return { title: `${stageLabel(stageId)} · ${skills[skill].label.nl}` };
+}
+
+export default async function LevelPage({ params, searchParams }: LevelPageProps) {
   const { stageId } = await params;
   const query = await searchParams;
   if (!isStageId(stageId)) notFound();

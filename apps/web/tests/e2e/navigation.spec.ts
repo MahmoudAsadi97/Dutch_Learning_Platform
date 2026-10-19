@@ -108,6 +108,7 @@ for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: width <= 390 ? 844 : 1000 });
     await page.goto("/spreken?stage=pre-a2");
     await expect(page).toHaveURL(/\/learn\/pre-a2\?skill=speaking/);
+    await expect(page).toHaveTitle("pre-A2 · Spreken · Taalstudio");
     const stage = page.locator("#study-stage");
     await expect(stage).toHaveValue("pre-a2");
     await expect(stage.locator("option")).toHaveCount(12);
@@ -116,6 +117,8 @@ for (const width of [1440, 390, 320]) {
     await expect(skills.getByRole("link", { name: /^Spreken/ })).toHaveAttribute("aria-current", "page");
     await stage.selectOption("a2");
     await expect(page).toHaveURL(/\/learn\/a2\?skill=speaking/);
+    await expect(stage).toHaveValue("a2");
+    await expect(page).toHaveTitle("A2 · Spreken · Taalstudio");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
