@@ -254,9 +254,11 @@ def _contextual_grammar(lines: list[dict], stage_id: str) -> list[dict]:
                           "examples": [line]})
         elif re.match(r"^(Ik|Je|U|Hij|Zij|We|Wij|[A-Z][a-z]+) "
                       r"(ben|bent|is|zijn|heb|heeft|had|was|werkt|woont|gaat|komt|maakt|staat|wil|kan|moet|doet|neemt)\b", text):
-            found.append({"title": copy("Onderwerp en persoonsvorm", "Subject and finite verb"),
-                          "explanation": copy("In deze gewone mededelende zin staat eerst het onderwerp en dan de persoonsvorm.",
-                                              "This statement starts with the subject followed by the finite verb."),
+            found.append({"title": copy("De persoonsvorm op de tweede plaats", "The finite verb in second position"),
+                          "explanation": copy("In deze hoofdzin staat de persoonsvorm op de tweede zinsplaats. "
+                                              "Daarvoor staat één zinsdeel: het onderwerp of bijvoorbeeld een tijd of plaats.",
+                                              "Here the finite verb occupies the second position in the main clause. "
+                                              "One constituent comes first, such as the subject or a time or place expression."),
                           "examples": [line]})
         if len(found) == 2:
             break

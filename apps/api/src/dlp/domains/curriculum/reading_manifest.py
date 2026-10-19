@@ -1,4 +1,4 @@
-"""Read published legacy-story eligibility without repeating the editorial audit.
+"""Read published story counts and legacy eligibility without repeating the editorial audit.
 
 The release check verifies this compact artifact against the full audit. Runtime
 accepts it only while the source fingerprint matches; edited or missing content

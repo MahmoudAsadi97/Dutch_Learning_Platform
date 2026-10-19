@@ -66,7 +66,7 @@ jobs:
       - name: Validate guided topic coverage and source references
         run: |
           python scripts/audit_guided_study.py --check-index
-          python scripts/validate_story_quality.py --strict-canonical
+          python scripts/validate_story_quality.py --strict-canonical --require-targets
       - name: Test
         working-directory: apps/api
         env:

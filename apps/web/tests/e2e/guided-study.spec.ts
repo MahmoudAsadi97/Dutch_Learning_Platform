@@ -6,58 +6,62 @@ import type { StudyCatalog, StudyLesson } from "../../lib/client/study";
 
 type Skill = "reading" | "listening" | "speaking" | "writing";
 
-test("original stories stay in Reading and switching stories clears temporary answers", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  const index = JSON.parse(
-    readFileSync(path.resolve(__dirname, "../../../../content/study/stage-index.json"), "utf8"),
-  );
-  const selected = Object.entries(
-    index.stages.a2.reading as Record<string, { source: string; id: string }[]>,
-  ).find(([, sources]) => sources.length > 1 && sources.some((source) => source.source === "reading"));
-  expect(selected, "an original reading shares a topic with another selectable story").toBeTruthy();
-  const [topic, sources] = selected!;
-  const targetId = sources.find((source) => source.source === "reading")!.id;
-  const beforeId = sources.find((source) => source.id !== targetId)!.id;
-  const targetResponse = await page.request.get(
-    `/api/study/a2/topics/${topic}?skill=reading&activity_id=${targetId}`,
-  );
-  expect(targetResponse.ok()).toBe(true);
-  const target = (await targetResponse.json()) as StudyLesson;
-  await page.goto(`/learn/a2?skill=reading&topic=${topic}&activity=${beforeId}&step=practise`);
-  const firstQuestion = page.locator(".study-question").first();
-  await expect(firstQuestion).toBeVisible();
-  for (const question of await page.locator(".study-question").all())
-    await question.getByRole("radio").first().check();
-  await page.getByRole("button", { name: /^Bekijk mijn feedback/ }).click();
-  await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toBeVisible();
-  await page.getByRole("button", { name: /^Kies een verhaal/ }).click();
-  const picker = page.getByRole("region", { name: /^Verhalen in dit onderwerp/ });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await picker.getByRole("searchbox").fill(target.title.nl);
-  await picker.locator(`button[data-activity-id="${targetId}"]`).click();
-  await expect(page).toHaveURL(new RegExp(`activity=${targetId}`));
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(target.title.nl);
-  await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toHaveCount(0);
-  await page.getByRole("button", { name: /^Ik ben klaar om te oefenen/ }).click();
-  const lines = page.locator(".study-story-line");
-  await expect(lines).toHaveCount(target.parts[0].text.length);
-  await expect(lines.getByRole("button", { name: /^Luister:/ })).toHaveCount(target.parts[0].text.length);
-  await expect(lines.first()).toContainText(target.parts[0].text[0].nl);
-  await expect(page.locator('.study-question input[type="radio"]:checked')).toHaveCount(0);
-  const [audio] = await Promise.all([
-    page.waitForResponse(
-      (response) => response.request().method() === "POST" && response.url().includes("/speech/synthesize"),
-    ),
-    lines
-      .first()
-      .getByRole("button", { name: /^Luister:/ })
-      .click(),
-  ]);
-  expect(audio.ok()).toBe(true);
-  await expect
-    .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth))
-    .toBe(true);
-});
+for (const stage of ["a2", "c2"] as const) {
+  test(`${stage} original stories stay in Reading and switching stories clears temporary answers`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    const index = JSON.parse(
+      readFileSync(path.resolve(__dirname, "../../../../content/study/stage-index.json"), "utf8"),
+    );
+    const selected = Object.entries(
+      index.stages[stage].reading as Record<string, { source: string; id: string }[]>,
+    ).find(([, sources]) => sources.length > 1 && sources.some((source) => source.source === "reading"));
+    expect(selected, "an original reading shares a topic with another selectable story").toBeTruthy();
+    const [topic, sources] = selected!;
+    const targetId = sources.find((source) => source.source === "reading")!.id;
+    const beforeId = sources.find((source) => source.id !== targetId)!.id;
+    const targetResponse = await page.request.get(
+      `/api/study/${stage}/topics/${topic}?skill=reading&activity_id=${targetId}`,
+    );
+    expect(targetResponse.ok()).toBe(true);
+    const target = (await targetResponse.json()) as StudyLesson;
+    await page.goto(`/learn/${stage}?skill=reading&topic=${topic}&activity=${beforeId}&step=practise`);
+    const firstQuestion = page.locator(".study-question").first();
+    await expect(firstQuestion).toBeVisible();
+    for (const question of await page.locator(".study-question").all())
+      await question.getByRole("radio").first().check();
+    await page.getByRole("button", { name: /^Bekijk mijn feedback/ }).click();
+    await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toBeVisible();
+    await page.getByRole("button", { name: /^Kies een verhaal/ }).click();
+    const picker = page.getByRole("region", { name: /^Verhalen in dit onderwerp/ });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await picker.getByRole("searchbox").fill(target.title.nl);
+    await picker.locator(`button[data-activity-id="${targetId}"]`).click();
+    await expect(page).toHaveURL(new RegExp(`activity=${targetId}`));
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(target.title.nl);
+    await expect(page.getByRole("region", { name: "Tijdelijke oefenfeedback" })).toHaveCount(0);
+    await page.getByRole("button", { name: /^Ik ben klaar om te oefenen/ }).click();
+    const lines = page.locator(".study-story-line");
+    await expect(lines).toHaveCount(target.parts[0].text.length);
+    await expect(lines.getByRole("button", { name: /^Luister:/ })).toHaveCount(target.parts[0].text.length);
+    await expect(lines.first()).toContainText(target.parts[0].text[0].nl);
+    await expect(page.locator('.study-question input[type="radio"]:checked')).toHaveCount(0);
+    const [audio] = await Promise.all([
+      page.waitForResponse(
+        (response) => response.request().method() === "POST" && response.url().includes("/speech/synthesize"),
+      ),
+      lines
+        .first()
+        .getByRole("button", { name: /^Luister:/ })
+        .click(),
+    ]);
+    expect(audio.ok()).toBe(true);
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth))
+      .toBe(true);
+  });
+}
 
 async function catalogue(page: Page, stage: string, skill: Skill): Promise<StudyCatalog> {
   const response = await page.request.get(`/api/study/${stage}/topics?skill=${skill}`);
