@@ -125,7 +125,7 @@
   .study-stepper button > span:first-child { display: grid; place-items: center; border-radius: 50%; width: 24px; height: 24px; background: var(--surface-sunken); font-size: 12px; font-weight: 700; }
   .study-stepper button[aria-current="step"] { border-bottom-color: var(--action-solid); color: var(--action-ink); font-weight: 650; }
   .study-stepper button[aria-current="step"] > span:first-child { color: var(--text-on-solid); background: var(--action-solid); }
-  .study-word-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-bottom: 20px; }
+  .study-word-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: start; gap: 10px; margin-bottom: 20px; }
   .study-word { border: 1px solid var(--border); border-radius: 10px; padding: 13px 14px; background: var(--surface-raised); min-width: 0; }
   .study-word-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   .study-word-top strong { font-size: 17px; line-height: 1.3; }
@@ -201,10 +201,6 @@
   .study-context h3 { font-size: 17px; margin: 10px 0; }
   .study-context > .spoken-text { display: block; margin-top: 7px; font-size: 14px; line-height: 1.7; }
   .study-quiet { color: var(--text-muted); font-size: 13px; line-height: 1.6; }
-  .study-word-extra { padding-top: 10px; font-size: 12px; }
-  .study-word-extra > summary { color: var(--action-solid); cursor: pointer; min-height: 30px; }
-  .study-word-extra > p, .study-word-extra > div { margin: 8px 0; }
-  .study-word-extra small { color: var(--text-muted); display: block; }
   @media (min-width: 1024px) {
     .app-sidebar { background: var(--surface-inverse); border-right-color: var(--surface-inverse); }
     .app-sidebar .brand, .app-sidebar .sidebar-locale strong { color: var(--text-on-inverse); }

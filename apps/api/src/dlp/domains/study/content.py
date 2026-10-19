@@ -13,7 +13,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from dlp.config import CONTENT_DIR
-from dlp.domains.curriculum import service, supplements
+from dlp.domains.curriculum import service, supplements, word_usage
 from dlp.domains.curriculum.coverage import eligible_story_ids
 from dlp.domains.curriculum.library import LibraryWord, library_for, normalise
 from dlp.domains.curriculum.schemas import SKILLS, STAGE_IDS, Skill
@@ -217,9 +217,80 @@ def _lines(value) -> list[dict]:
     return [bilingual(value)]
 
 
-def _word(word) -> dict:
-    return {"id": word.id, "term": word.term, "part_of_speech": word.part_of_speech or "expression",
-            "meaning": bilingual(word.meaning), "example": bilingual(word.example)}
+def _word(word, *, word_id: str | None = None, usage: LibraryWord | None = None) -> dict:
+    """Keep the source example; other authored uses are supplementary, not story evidence."""
+    meaning = (copy(word.meaning.get("nl") or word.term, word.meaning["en"])
+               if isinstance(word.meaning, dict) else bilingual(word.meaning))
+    authored = usage if usage is not None else word
+    return {"id": word_id or word.id, "term": word.term,
+            "part_of_speech": word.part_of_speech or getattr(authored, "part_of_speech", None) or "expression",
+            "meaning": meaning, "example": bilingual(word.example),
+            "article": getattr(authored, "article", None), "plural": getattr(authored, "plural", None),
+            "forms": [{"label": bilingual(form.label), "text": bilingual(form.text)}
+                      for form in getattr(authored, "forms", [])],
+            "contexts": [{"id": context.id, "setting": bilingual(context.setting),
+                          "sentence": bilingual(context.sentence),
+                          "production_prompt": bilingual(context.production_prompt), "structure": context.structure}
+                         for context in getattr(authored, "contexts", [])]}
+
+
+@lru_cache(maxsize=24)
+def _vocabulary(root: str, stage_id: str, version: tuple) -> tuple[LibraryWord, ...]:
+    """Read vocabulary and its overlay without constructing the legacy story bank."""
+    path = Path(root)
+    words = []
+    for directory in ("library", *supplements.DIRECTORIES):
+        source = path / directory / f"{stage_id}.json"
+        if not source.exists():
+            continue
+        data = json.loads(source.read_text(encoding="utf-8"))
+        if data["stage_id"] != stage_id:
+            raise ValueError("guided vocabulary must retain its source stage")
+        words.extend(data["vocabulary"])
+    if not words:
+        return ()
+    data = word_usage.enrich({"stage_id": stage_id, "vocabulary": words}, path)
+    parsed = tuple(LibraryWord.model_validate(word) for word in data["vocabulary"])
+    identities = [word.id for word in parsed]
+    if len(set(identities)) != len(identities) or any(not key.startswith(f"{stage_id}-") for key in identities):
+        raise ValueError("guided vocabulary IDs must be unique and stage-bound")
+    return parsed
+
+
+def _vocabulary_for(stage_id: str) -> tuple[LibraryWord, ...]:
+    require_stage(stage_id)
+    paths = [CONTENT_DIR / directory / f"{stage_id}.json" for directory in ("library", *supplements.DIRECTORIES)]
+    version = tuple((path.stat().st_mtime_ns, path.stat().st_size) if path.exists() else (0, 0) for path in paths)
+    return _vocabulary(str(CONTENT_DIR), stage_id, (*version, word_usage.stamp(CONTENT_DIR, stage_id)))
+
+
+def _usage_match(stage_id: str, word, vocabulary) -> LibraryWord | None:
+    """An ID is authoritative; otherwise require the complete bilingual sense, never just a lemma."""
+    candidates = [candidate for candidate in vocabulary
+                  if candidate.id.startswith(f"{stage_id}-")
+                  and normalise(candidate.term) == normalise(word.term)]
+    identity = getattr(word, "id", None)
+    if identity is not None:
+        # The authored overlay supplies missing POS on some older ID-bound
+        # words. An explicit conflicting POS must still reject the join.
+        candidates = [candidate for candidate in candidates if candidate.id == identity
+                      and (word.part_of_speech is None or candidate.part_of_speech == word.part_of_speech)]
+    else:
+        meaning = word.meaning
+        nl, en = ((meaning.get("nl", ""), meaning.get("en", ""))
+                  if isinstance(meaning, dict) else (meaning.nl, meaning.en))
+        if not nl.strip() or not en.strip():
+            return None
+        candidates = [candidate for candidate in candidates
+                      if candidate.part_of_speech == word.part_of_speech
+                      and (normalise(candidate.meaning.nl), normalise(candidate.meaning.en))
+                      == (normalise(nl), normalise(en))]
+    return candidates[0] if len(candidates) == 1 else None
+
+
+def _prepared_word(stage_id: str, word, *, word_id: str | None = None, vocabulary=None) -> dict:
+    words = _vocabulary_for(stage_id) if vocabulary is None else vocabulary
+    return _word(word, word_id=word_id, usage=_usage_match(stage_id, word, words))
 
 
 def _preparation(stage_id: str, vocabulary_ids: list[str], source_text: str) -> dict:
@@ -289,37 +360,15 @@ def _original_reading_grammar(stage: str, topic: str, story_id: str, lines: list
 
 
 def _pack_preparation(stage_id: str, canonical, source) -> dict:
-    text = " ".join(line.nl for line in source.lines)
-    bank = library_for(stage_id)
+    vocabulary = _vocabulary_for(stage_id)
     selected = []
     seen = set()
     for word in source.words:
         if word.minimum_stage in STAGE_IDS and STAGE_IDS.index(word.minimum_stage) > STAGE_IDS.index(stage_id):
             continue
-        selected.append({"id": f"{source.id}-word-{len(selected)}", "term": word.term,
-                         "part_of_speech": word.part_of_speech,
-                         "meaning": copy(word.meaning.get("nl", word.term), word.meaning.get("en", word.term)),
-                         "example": bilingual(word.example)})
+        selected.append(_prepared_word(stage_id, word, word_id=f"{source.id}-word-{len(selected)}",
+                                       vocabulary=vocabulary))
         seen.add(normalise(word.term))
-    matches = []
-    for word in sorted(bank.vocabulary, key=lambda item: (not item.productive_core,
-                                                         item.part_of_speech is None)):
-        term = re.sub(r"^(de|het|een)\s+", "", word.term.casefold())
-        if normalise(word.term) not in seen and re.search(rf"(?<!\w){re.escape(term)}(?!\w)", text, re.IGNORECASE):
-            matches.append(word)
-    # Where the source supplies them, include different productive word
-    # classes rather than filling every compact card with nouns alone.
-    for part_of_speech in ("noun", "verb", "adjective"):
-        match = next((word for word in matches if word.part_of_speech == part_of_speech), None)
-        if match and normalise(match.term) not in seen and len(selected) < 8:
-            selected.append(_word(match))
-            seen.add(normalise(match.term))
-    for word in matches:
-        if len(selected) >= 5:
-            break
-        if normalise(word.term) not in seen:
-            selected.append(_word(word))
-            seen.add(normalise(word.term))
     # Topic vocabulary is authored and level-gated. It is supplementary to the
     # story words rather than a claim that every lemma occurs in this narrative.
     for word in canonical.vocabulary:
@@ -329,17 +378,9 @@ def _pack_preparation(stage_id: str, canonical, source) -> dict:
             continue
         if normalise(word.term) in seen:
             continue
-        selected.append({"id": f"{canonical.id}-word-{len(selected)}", "term": word.term,
-                         "part_of_speech": word.part_of_speech,
-                         "meaning": copy(word.meaning.get("nl", word.term), word.meaning.get("en", word.term)),
-                         "example": bilingual(word.example)})
+        selected.append(_prepared_word(stage_id, word, word_id=f"{canonical.id}-word-{len(selected)}",
+                                       vocabulary=vocabulary))
         seen.add(normalise(word.term))
-    for word in matches:
-        if len(selected) >= 8:
-            break
-        if normalise(word.term) not in seen:
-            selected.append(_word(word))
-            seen.add(normalise(word.term))
     grammar = [rule.model_dump() for rule in source.grammar]
     if not grammar:
         grammar = _contextual_grammar([bilingual(line) for line in source.lines], stage_id)
@@ -785,8 +826,7 @@ def lesson(stage_id: str, topic_id: str, skill: Skill, *, activity_id: str | Non
         parts = _reading_parts(stage_id, context_lines, _questions(source.questions))
         source_text = " ".join(line.nl for line in source.lines)
         preparation = {"words": [
-            {"id": f"{source.id}-word-{index}", "term": word.term, "part_of_speech": word.part_of_speech,
-             "meaning": bilingual(word.meaning), "example": bilingual(word.example)}
+            _prepared_word(stage_id, word, word_id=f"{source.id}-word-{index}")
             for index, word in enumerate(source.words, 1)],
             "grammar": [rule.model_dump() for rule in source.grammar]}
     elif selected.source == "story":
@@ -815,7 +855,8 @@ def lesson(stage_id: str, topic_id: str, skill: Skill, *, activity_id: str | Non
                 for key in ("answer_index", "accepted_answers", "explanation"):
                     question.pop(key, None)
     if selected.source not in {"pack", "reading"}:
-        preparation = ({"words": [_word(source_words[key]) for key in source.vocabulary_ids if key in source_words],
+        preparation = ({"words": [_prepared_word(stage_id, source_words[key])
+                                  for key in source.vocabulary_ids if key in source_words],
                         "grammar": _contextual_grammar(_lines(source.reading.text), stage_id)}
                        if source_words is not None else _preparation(stage_id, source.vocabulary_ids, source_text))
         if selected.source == "story":

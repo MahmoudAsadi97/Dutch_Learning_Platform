@@ -8,8 +8,10 @@ import { SpokenText } from "@/components/SpokenPassage";
 import { apiJson } from "@/lib/client/api";
 import { friendlyError } from "@/lib/client/curriculum";
 import type { LibraryPage, LibraryWord } from "@/lib/client/library";
+import { useProfile } from "@/lib/client/profile";
 import type { StudyWord } from "@/lib/client/study";
 import { studyCopy, studyWordClasses } from "@/lib/copy/study";
+import { WordTransferPractice } from "./WordTransferPractice";
 
 export function StudyError({ message, retry }: { message: string; retry?: () => void }) {
   return (
@@ -27,10 +29,10 @@ export function StudyError({ message, retry }: { message: string; retry?: () => 
   );
 }
 
-export function CompactWords({ words }: { words: StudyWord[] }) {
+export function CompactWords({ words, resetKey = "" }: { words: StudyWord[]; resetKey?: string }) {
   const { showEnglish } = useLanguageSupport();
   return (
-    <div className="study-word-grid">
+    <div className="study-word-grid" key={JSON.stringify([resetKey, words])}>
       {words.map((word, index) => (
         <article className="study-word" key={`${word.id}-${index}`}>
           <div className="study-word-top">
@@ -52,30 +54,7 @@ export function CompactWords({ words }: { words: StudyWord[] }) {
           <div className="study-word-example">
             <SpokenText text={word.example} />
           </div>
-          {word.forms?.length || word.contexts?.length ? (
-            <details className="study-word-extra">
-              <summary>
-                {" "}
-                <LearningText text={studyCopy.moreExamples} />{" "}
-              </summary>
-              {word.forms?.map((form) => (
-                <p key={`${form.label.nl}.${form.text.nl}`}>
-                  <small>
-                    <LearningText text={form.label} />
-                  </small>{" "}
-                  <SpokenText text={form.text} />
-                </p>
-              ))}
-              {word.contexts?.map((context) => (
-                <div key={context.id}>
-                  <small>
-                    <LearningText text={context.setting} />
-                  </small>
-                  <SpokenText text={context.sentence} />
-                </div>
-              ))}
-            </details>
-          ) : null}
+          <WordTransferPractice word={word} />
         </article>
       ))}
     </div>
@@ -84,10 +63,11 @@ export function CompactWords({ words }: { words: StudyWord[] }) {
 
 /** The full existing word collection remains reachable without becoming another top-level destination. */
 export function WordReference({ stageId }: { stageId: string }) {
+  const learnerKey = useProfile().data?.learner.email ?? "pending";
   const [query, setQuery] = useState("");
   const [offset, setOffset] = useState(0);
   const [loaded, setLoaded] = useState<{ requestKey: string; page: LibraryPage<LibraryWord> } | null>(null);
-  const requestKey = `${stageId}.${query}.${offset}`;
+  const requestKey = JSON.stringify([learnerKey, stageId, query, offset]);
   const page = loaded?.requestKey === requestKey ? loaded.page : null;
   const setPage = useCallback(
     (page: LibraryPage<LibraryWord> | null) => setLoaded(page ? { requestKey, page } : null),
@@ -132,7 +112,7 @@ export function WordReference({ stageId }: { stageId: string }) {
         <StudyError message={error} retry={() => setRetry((value) => value + 1)} />
       ) : page ? (
         <>
-          <CompactWords words={page.items} />
+          <CompactWords words={page.items} resetKey={requestKey} />
           <div className="study-pagination">
             <button
               className="button secondary"

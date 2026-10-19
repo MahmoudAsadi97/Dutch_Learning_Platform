@@ -1,0 +1,131 @@
+@layer features {
+  .study-word-transfer {
+    padding-top: 8px;
+    font-size: 13px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .study-word-transfer > summary {
+    padding-block: 9px;
+    min-height: 44px;
+    color: var(--action-ink);
+    line-height: 1.5;
+    cursor: pointer;
+  }
+  .study-word-transfer[open] > summary {
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .study-word-transfer h4 {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .study-word-transfer-forms {
+    margin-bottom: 14px;
+  }
+  .study-word-transfer-forms dl {
+    display: grid;
+    gap: 9px;
+    margin: 8px 0 0;
+  }
+  .study-word-transfer-forms dt {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .study-word-transfer-forms dd {
+    margin: 3px 0 0;
+    line-height: 1.7;
+  }
+  .study-word-transfer-context-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px 10px;
+    margin-bottom: 8px;
+  }
+  .study-word-transfer-position,
+  .study-word-transfer-temporary,
+  .study-word-transfer-guidance,
+  .study-word-transfer-example-label {
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .study-word-transfer-prompt,
+  .study-word-transfer-guidance,
+  .study-word-transfer-temporary,
+  .study-word-transfer-example-label {
+    margin: 7px 0;
+  }
+  .study-word-transfer-prompt,
+  .study-word-transfer-example {
+    line-height: 1.7;
+  }
+  .study-word-transfer-attempt > label {
+    display: block;
+    margin-block: 10px 5px;
+    font-size: 12px;
+    font-weight: 650;
+  }
+  .study-word-transfer textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 76px;
+    padding: 9px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-raised);
+    color: var(--text);
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.6;
+    resize: vertical;
+  }
+  .study-word-transfer-reveal,
+  .study-word-transfer-next {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-raised);
+    color: var(--action-ink);
+    font: inherit;
+    line-height: 1.45;
+    text-align: start;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+  }
+  .study-word-transfer-next {
+    margin-top: 10px;
+    border-color: transparent;
+  }
+  .study-word-transfer-next > svg {
+    flex-shrink: 0;
+  }
+  .study-word-transfer-example:not([hidden]) {
+    margin-top: 9px;
+    padding: 9px 10px;
+    border-inline-start: 2px solid var(--border-strong);
+    background: var(--surface-canvas);
+  }
+  @media (max-width: 650px) {
+    .study-word:has(> .study-word-transfer[open]) {
+      grid-column: 1 / -1;
+    }
+    .study-word-transfer-reveal {
+      width: 100%;
+    }
+  }
+}

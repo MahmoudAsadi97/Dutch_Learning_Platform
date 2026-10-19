@@ -19,6 +19,8 @@ import {
   studySemanticReviewCopy,
 } from "@/lib/copy/study";
 import { StudyError } from "./StudyShared";
+import { CorrectedDraft, StudyRevision, type ReviewedDraft, type RevisionReference } from "./StudyRevision";
+import { studyRevisionCopy } from "@/lib/copy/studyRevision";
 
 export function PracticePart({
   lesson,
@@ -38,6 +40,10 @@ export function PracticePart({
   const [text, setText] = useState("");
   const [answers, setAnswers] = useState<Record<string, string | number>>({});
   const [feedback, setFeedback] = useState<StudyFeedback | null>(null);
+  const [revision, setRevision] = useState<RevisionReference | null>(null);
+  const firstDraft = useRef<string | null>(null);
+  const [lastReview, setLastReview] = useState<ReviewedDraft | null>(null);
+  const responseEditor = useRef<HTMLTextAreaElement | null>(null);
   const [reviewedQuestionId, setReviewedQuestionId] = useState<string | null>(null);
   const questionReviewPending = useRef(false);
   const [busy, setBusy] = useState(false);
@@ -65,6 +71,23 @@ export function PracticePart({
   const objective = part.questions.length > 0;
   const isSpeaking = lesson.skill === "speaking" || (lesson.skill === "reading" && part.id === "retell");
   const registerGuard = useNavigationGuard();
+  const beginRevision = useCallback(
+    (focus = false) => {
+      const previous = lastReview;
+      if (!previous) return;
+      setRevision({ firstDraft: firstDraft.current ?? previous.text, previous });
+      setFeedback(null);
+      setSample(false);
+      onAssisted();
+      if (focus) responseEditor.current?.focus();
+    },
+    [lastReview, onAssisted],
+  );
+  function clearRevision() {
+    firstDraft.current = null;
+    setLastReview(null);
+    setRevision(null);
+  }
   const onRecording = useCallback(
     async (recording: Recording) => {
       if (localVoice.current) URL.revokeObjectURL(localVoice.current);
@@ -129,6 +152,12 @@ export function PracticePart({
   useEffect(() => {
     const clear = (event: PageTransitionEvent) => {
       if (event.persisted) {
+        controller.current?.abort();
+        controller.current = null;
+        setBusy(false);
+        firstDraft.current = null;
+        setLastReview(null);
+        setRevision(null);
         setText("");
         setAnswers({});
         setFeedback(null);
@@ -193,12 +222,18 @@ export function PracticePart({
             kind: objective ? "answers" : "response",
             text,
             answers,
-            assistance_used: assisted || sample || transcript,
+            assistance_used: assisted || sample || transcript || revision !== null,
             ...(question ? { question_id: question.id } : {}),
           },
         },
       );
-      if (mounted.current && controller.current === request && !request.signal.aborted) setFeedback(value);
+      if (mounted.current && controller.current === request && !request.signal.aborted) {
+        if (!objective) {
+          firstDraft.current ??= text;
+          setLastReview({ text, feedback: value });
+        }
+        setFeedback(value);
+      }
     } catch (cause) {
       if (mounted.current && !(cause instanceof DOMException && cause.name === "AbortError"))
         setError(friendlyError(cause));
@@ -390,6 +425,7 @@ export function PracticePart({
                 part.practice_questions!.length,
             );
             clearQuestionMedia();
+            clearRevision();
             setText("");
             setAnswers({});
             invalidateFeedback();
@@ -469,52 +505,71 @@ export function PracticePart({
           ))}
         </div>
       ) : (
-        <div className="study-response">
-          {isSpeaking && (
-            <div className="study-recorder">
-              <p className="study-footnote">
-                <LearningText text={studyLabels.recordingLimit(lesson.policy.recording_max_seconds ?? 60)} />
-              </p>
-              <button
-                type="button"
-                className={`study-record-button ${recording ? "is-recording" : ""}`}
-                aria-pressed={recording}
-                disabled={busy || recorder.phase === "unsupported"}
-                onClick={() => (recording ? recorder.stop() : void recorder.start())}
-              >
-                <Icon name={recording ? "pause" : "mic"} size={23} />
-                {recording ? studyCopy.stopRecording.nl : studyCopy.recordAnswer.nl}
-              </button>
-              <span>{recording ? studyCopy.microphoneOn.nl : studyCopy.recordingPrivate.nl}</span>
-              {voiceUrl && <audio controls src={voiceUrl} aria-label={studyCopy.playOwnRecording.nl} />}
-              {recorder.error && <p role="alert">{recorder.error}</p>}
+        <div className={`study-revision-layout${revision ? " is-revising" : ""}`}>
+          <div className="study-response">
+            {isSpeaking && (
+              <div className="study-recorder">
+                <p className="study-footnote">
+                  <LearningText
+                    text={studyLabels.recordingLimit(lesson.policy.recording_max_seconds ?? 60)}
+                  />
+                </p>
+                <button
+                  type="button"
+                  className={`study-record-button ${recording ? "is-recording" : ""}`}
+                  aria-pressed={recording}
+                  disabled={busy || recorder.phase === "unsupported"}
+                  onClick={() => {
+                    if (recording) recorder.stop();
+                    else {
+                      if (feedback) beginRevision();
+                      void recorder.start();
+                    }
+                  }}
+                >
+                  <Icon name={recording ? "pause" : "mic"} size={23} />
+                  {recording ? studyCopy.stopRecording.nl : studyCopy.recordAnswer.nl}
+                </button>
+                <span>{recording ? studyCopy.microphoneOn.nl : studyCopy.recordingPrivate.nl}</span>
+                {voiceUrl && <audio controls src={voiceUrl} aria-label={studyCopy.playOwnRecording.nl} />}
+                {recorder.error && <p role="alert">{recorder.error}</p>}
+              </div>
+            )}
+            <label htmlFor="study-response-text">
+              <LearningText text={studyLabels.response(isSpeaking)} />
+            </label>
+            <textarea
+              ref={responseEditor}
+              id="study-response-text"
+              value={text}
+              onChange={(event) => {
+                if (feedback) beginRevision();
+                setText(event.target.value);
+                invalidateFeedback();
+              }}
+              rows={isSpeaking ? 4 : 7}
+              maxLength={8000}
+              disabled={busy || recording}
+              placeholder={isSpeaking ? studyCopy.speechPlaceholder.nl : studyCopy.writingPlaceholder.nl}
+              spellCheck
+              lang="nl-BE"
+            />
+            <div className="study-response-meta">
+              <span>
+                {text.trim() ? text.trim().split(/\s+/).length : 0}{" "}
+                <LearningText text={studyCopy.words} />{" "}
+              </span>
+              <span>
+                <LearningText text={studyLabels.wordGuideline(part.min_words, part.max_words)} />
+              </span>
             </div>
-          )}
-          <label htmlFor="study-response-text">
-            <LearningText text={studyLabels.response(isSpeaking)} />
-          </label>
-          <textarea
-            id="study-response-text"
-            value={text}
-            onChange={(event) => {
-              setText(event.target.value);
-              invalidateFeedback();
-            }}
-            rows={isSpeaking ? 4 : 7}
-            maxLength={8000}
-            disabled={busy || recording}
-            placeholder={isSpeaking ? studyCopy.speechPlaceholder.nl : studyCopy.writingPlaceholder.nl}
-            spellCheck
-            lang="nl-BE"
-          />
-          <div className="study-response-meta">
-            <span>
-              {text.trim() ? text.trim().split(/\s+/).length : 0} <LearningText text={studyCopy.words} />{" "}
-            </span>
-            <span>
-              <LearningText text={studyLabels.wordGuideline(part.min_words, part.max_words)} />
-            </span>
+            {revision && (
+              <p className="study-revision-status">
+                <LearningText text={studyRevisionCopy.aidedCheck} />
+              </p>
+            )}
           </div>
+          {revision && <StudyRevision reference={revision} onAssisted={onAssisted} />}
         </div>
       )}
       {error && <StudyError message={error} />}
@@ -535,7 +590,9 @@ export function PracticePart({
             <div>
               <p className="study-kicker">
                 {" "}
-                <LearningText text={studyCopy.feedbackKicker} />{" "}
+                <LearningText
+                  text={!objective && revision ? studyRevisionCopy.checkedRevision : studyCopy.feedbackKicker}
+                />{" "}
               </p>
               <h3>
                 {reviewedQuestionId ? (
@@ -634,6 +691,13 @@ export function PracticePart({
               </p>
             </div>
           ))}
+          {!objective && (
+            <CorrectedDraft
+              key={feedback.corrected_text}
+              reviewed={lastReview ?? { text, feedback }}
+              onAssisted={onAssisted}
+            />
+          )}
           {isSpeaking && (
             <p className="study-footnote">
               <LearningText text={feedback.pronunciation_note} />
@@ -644,9 +708,12 @@ export function PracticePart({
           </p>
           <button
             className="button secondary"
+            disabled={busy || recording}
             onClick={() => {
-              setFeedback(null);
-              setSample(false);
+              if (objective) {
+                setFeedback(null);
+                setSample(false);
+              } else beginRevision(true);
             }}
           >
             <LearningText text={studyCopy.reviseAnswer} /> <Icon name="pen" size={16} />

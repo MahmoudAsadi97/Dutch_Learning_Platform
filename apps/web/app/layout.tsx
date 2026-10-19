@@ -50,6 +50,8 @@ import "./topics.css";
 import "./learning-agents.css";
 import "./stories.css";
 import "./study.css";
+import "./styles/features/study-revision.css";
+import "./styles/features/study-word-transfer.css";
 
 export const metadata: Metadata = {
   title: {

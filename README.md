@@ -22,7 +22,7 @@ part of Reading. Old word, story and speaking bookmarks lead into the same works
 | Reading | Prepare vocabulary and grammar, read a coherent story with sentence audio, check understanding, then retell it. |
 | Listening | Follow a continuous situation in three sections: complete gaps, choose answers, and write short answers. Reveal the transcript when needed. |
 | Speaking | Answer short questions, give a description, then develop an opinion. Reveal model answers on demand, record or type, and review your wording. |
-| Writing | Start with a short response, then develop a longer message for a purpose. Feedback shows the original fragment, a correction and an explanation. |
+| Writing | Start with a short response, then develop a longer message for a purpose. Keep corrections beside your draft, revise it yourself, and explicitly check the new version. |
 
 Each topic has **Prepare → Practise → Try it yourself** steps. The word reference is searchable and
 compact, with replay for Dutch words and examples. Topics appear twelve at a time, with search and theme
@@ -30,6 +30,11 @@ filters. Reading has a compact story chooser with Dutch and English title search
 Each story keeps its own vocabulary, grammar examples and comprehension questions together. Saved-word
 review, personal episodes and saved situation conversations remain available as nested
 tools. Audio is generated only after an explicit action; video generation is disabled.
+
+Where a word has authored forms and situations, expand it to hear its forms, try your own sentence,
+and reveal a possible example. These small practice drafts are neither saved nor scored. Guided
+writing, speaking and retelling keep previous corrections available during revision; a corrected
+version is optional and never replaces the learner’s text. Subsequent checks identify the use of help.
 
 Choose **Dutch** or **Dutch + English** in the header. Dutch remains the practice language. Existing
 Persian source fields are preserved for data compatibility but do not appear in the learner interface.

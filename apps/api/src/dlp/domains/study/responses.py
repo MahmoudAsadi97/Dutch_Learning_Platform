@@ -36,12 +36,30 @@ class StudyCatalogue(StudyResponse):
     available_topics: int = Field(ge=0)
 
 
+class PreparedWordForm(StudyResponse):
+    label: Copy
+    text: Copy
+
+
+class PreparedWordContext(StudyResponse):
+    id: str
+    setting: Copy
+    sentence: Copy
+    production_prompt: Copy
+    structure: Literal["present", "past", "future", "modal", "conditional", "comparison",
+                       "register", "noun_phrase", "adjective", "other"]
+
+
 class PreparedWord(StudyResponse):
     id: str
     term: str
     part_of_speech: str
     meaning: Copy
     example: Copy
+    article: Literal["de", "het"] | None = None
+    plural: str | None = None
+    forms: list[PreparedWordForm] = Field(default_factory=list, max_length=8)
+    contexts: list[PreparedWordContext] = Field(default_factory=list, max_length=6)
 
 
 class StudyPreparation(StudyResponse):

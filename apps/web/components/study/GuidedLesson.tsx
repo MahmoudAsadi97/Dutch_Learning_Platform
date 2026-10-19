@@ -8,6 +8,7 @@ import { SpokenText } from "@/components/SpokenPassage";
 import { apiJson } from "@/lib/client/api";
 import { friendlyError } from "@/lib/client/curriculum";
 import { useNavigationCheck } from "@/lib/client/navigation";
+import { useProfile } from "@/lib/client/profile";
 import { studyHref, studySkillCopy, type StudyLesson, type StudyStep } from "@/lib/client/study";
 import { stageLabel, type Skill } from "@/lib/domain/registry";
 import { studyCopy, studyLabels, studySteps } from "@/lib/copy/study";
@@ -31,6 +32,7 @@ export function GuidedLesson({
   initialPart?: string;
 }) {
   const router = useRouter();
+  const learnerKey = useProfile().data?.learner.email ?? "pending";
   const canLeave = useNavigationCheck();
   const [lesson, setLesson] = useState<StudyLesson | null>(null);
   const step = initialStep;
@@ -40,6 +42,16 @@ export function GuidedLesson({
   const [assisted, setAssisted] = useState(false);
   const [reference, setReference] = useState(false);
   const part = lesson?.parts.find((item) => item.id === partId) ?? lesson?.parts[0];
+  const practiceScope = JSON.stringify([
+    learnerKey,
+    stageId,
+    skill,
+    topicId,
+    activityId ?? "",
+    lesson?.activity_id ?? "",
+    part?.id ?? "",
+    step,
+  ]);
   useEffect(() => {
     const controller = new AbortController();
     apiJson<StudyLesson>(
@@ -150,7 +162,7 @@ export function GuidedLesson({
               </p>
             </div>
           </div>
-          <CompactWords words={lesson.preparation.words} />
+          <CompactWords words={lesson.preparation.words} resetKey={practiceScope} />
           {lesson.preparation.grammar.map((rule, index) => (
             <article className="study-grammar" key={index}>
               <div className="study-grammar-icon">
@@ -206,9 +218,9 @@ export function GuidedLesson({
               <LearningText text={studyCopy.temporaryScore} />{" "}
             </span>
           </div>
-          {reference && <CompactWords words={lesson.preparation.words} />}
+          {reference && <CompactWords words={lesson.preparation.words} resetKey={practiceScope} />}
           <PracticePart
-            key={`${lesson.activity_id}.${part.id}.${step}`}
+            key={practiceScope}
             lesson={lesson}
             part={part}
             mode={step}

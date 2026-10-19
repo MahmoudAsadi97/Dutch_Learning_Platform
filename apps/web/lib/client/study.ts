@@ -77,6 +77,7 @@ export interface StudyFeedback {
   };
   summary: StudyCopy;
   corrections: { original: string; replacement: string; category: string; explanation: StudyCopy }[];
+  corrected_text?: string | null;
   checks: {
     id: string;
     correct: boolean | null;
