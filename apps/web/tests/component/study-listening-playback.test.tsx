@@ -58,14 +58,19 @@ function show() {
   );
 }
 function clip() {
-  return new Response(new Blob(["audio"], { type: "audio/wav" }), {
+  return new Response("audio", {
     headers: { "Content-Type": "audio/wav" },
   });
 }
 beforeEach(() => {
   vi.mocked(apiFetch).mockReset().mockResolvedValue(clip());
-  vi.spyOn(URL, "createObjectURL").mockReturnValue("blob:listening");
-  vi.spyOn(URL, "revokeObjectURL").mockImplementation(() => {});
+  vi.stubGlobal(
+    "URL",
+    class extends URL {
+      static createObjectURL = vi.fn(() => "blob:listening");
+      static revokeObjectURL = vi.fn();
+    },
+  );
   vi.spyOn(HTMLMediaElement.prototype, "play").mockResolvedValue();
   vi.spyOn(HTMLMediaElement.prototype, "pause").mockImplementation(() => {});
   vi.spyOn(HTMLMediaElement.prototype, "load").mockImplementation(() => {});
@@ -73,6 +78,7 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
+  vi.unstubAllGlobals();
 });
 
 test("the first asynchronous clip plays without a later render reloading the pending player", async () => {
