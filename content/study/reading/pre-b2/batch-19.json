@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-viool-met-een-andere-hals",
+      "topic_id": "philosophy",
+      "title": {
+        "nl": "De viool met een andere hals",
+        "en": "The violin with a different neck"
+      },
+      "plot_key": "Two siblings disagree over whether their grandfather's heavily restored violin is still his, ending with separate meanings rather than a single technical verdict.",
+      "lines": [
+        {
+          "nl": "Toen de viool van hun grootvader na een lange restauratie terugkwam, vond Pieter dat het instrument bijna onherkenbaar veranderd was.",
+          "en": "When their grandfather's violin returned after a long restoration, Pieter felt the instrument had changed almost beyond recognition."
+        },
+        {
+          "nl": "De hals was vervangen, de snaren waren nieuw en op de plaats van een oude scheur lag een glanzend stukje hout.",
+          "en": "The neck had been replaced, the strings were new and a shiny piece of wood lay where an old crack had been."
+        },
+        {
+          "nl": "Zijn zus Leen zei dat hij niet over hetzelfde voorwerp kon blijven spreken als elk belangrijk deel uiteindelijk door een ander was vervangen.",
+          "en": "His sister Leen said he could not keep talking about the same object if every important part was eventually replaced by another."
+        },
+        {
+          "nl": "Pieter vond juist dat het verhaal van het instrument belangrijker was dan de lijst van materialen die nog precies uit dezelfde tijd stamden.",
+          "en": "Pieter instead felt that the instrument's story mattered more than the list of materials still dating from exactly the same period."
+        },
+        {
+          "nl": "De restaurator gaf geen beslissend filosofisch antwoord, maar vroeg of iemand eerst wilde horen hoe het nu klonk.",
+          "en": "The restorer gave no decisive philosophical answer, but asked whether someone wanted to hear how it sounded now first."
+        },
+        {
+          "nl": "Leen speelde het eenvoudige lied dat hun grootvader altijd had gebruikt om het stemmen van de viool te controleren.",
+          "en": "Leen played the simple tune their grandfather had always used to check the violin's tuning."
+        },
+        {
+          "nl": "Het geluid bewees niet wie gelijk had, maar maakte duidelijk waarom het voor hen niet alleen om oude of nieuwe onderdelen ging.",
+          "en": "The sound did not prove who was right, but made clear why for them this was not only about old or new parts."
+        },
+        {
+          "nl": "Ze lieten de rekening bij het instrument liggen, samen met een foto van hun grootvader; beide vertelden iets anders over wat er bewaard was.",
+          "en": "They left the bill with the instrument alongside a photograph of their grandfather; each told something different about what had been preserved."
+        }
+      ],
+      "words": [
+        {
+          "term": "onherkenbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zo veranderd dat iets niet meer herkend wordt",
+            "en": "unrecognisable"
+          },
+          "example": {
+            "nl": "Toen de viool van hun grootvader na een lange restauratie terugkwam, vond Pieter dat het instrument bijna onherkenbaar veranderd was.",
+            "en": "When their grandfather's violin returned after a long restoration, Pieter felt the instrument had changed almost beyond recognition."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "stammen uit",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "afkomstig zijn uit een bepaalde tijd",
+            "en": "to date from"
+          },
+          "example": {
+            "nl": "Pieter vond juist dat het verhaal van het instrument belangrijker was dan de lijst van materialen die nog precies uit dezelfde tijd stamden.",
+            "en": "Pieter instead felt that the instrument's story mattered more than the list of materials still dating from exactly the same period."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "beslissend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "de uitkomst bepalend",
+            "en": "decisive"
+          },
+          "example": {
+            "nl": "De restaurator gaf geen beslissend filosofisch antwoord, maar vroeg of iemand eerst wilde horen hoe het nu klonk.",
+            "en": "The restorer gave no decisive philosophical answer, but asked whether someone wanted to hear how it sounded now first."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Als bij een veronderstelde voorwaarde",
+            "en": "If for a supposed condition"
+          },
+          "explanation": {
+            "nl": "Als introduceert de voorwaarde waarop Leen haar conclusie baseert.",
+            "en": "Als introduces the condition on which Leen bases her conclusion."
+          },
+          "examples": [
+            {
+              "nl": "Zijn zus Leen zei dat hij niet over hetzelfde voorwerp kon blijven spreken als elk belangrijk deel uiteindelijk door een ander was vervangen.",
+              "en": "His sister Leen said he could not keep talking about the same object if every important part was eventually replaced by another."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarover verschillen broer en zus vooral van mening?",
+            "en": "What do the siblings mainly disagree about?"
+          },
+          "options": [
+            {
+              "nl": "Of identiteit vooral in onderdelen of in geschiedenis zit.",
+              "en": "Whether identity lies mainly in parts or in history."
+            },
+            {
+              "nl": "Hoeveel snaren een viool heeft.",
+              "en": "How many strings a violin has."
+            },
+            {
+              "nl": "Welke componist het lied schreef.",
+              "en": "Which composer wrote the tune."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Leen noemt de vervanging van delen; Pieter benadrukt het verhaal.",
+            "en": "Leen names replacement of parts; Pieter emphasises the story."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom blijven zowel rekening als foto bij het instrument?",
+            "en": "Why do both the bill and photograph remain with the instrument?"
+          },
+          "options": [
+            {
+              "nl": "Ze bewaren twee verschillende relevante perspectieven.",
+              "en": "They preserve two different relevant perspectives."
+            },
+            {
+              "nl": "Ze geven hetzelfde technisch bewijs.",
+              "en": "They provide the same technical proof."
+            },
+            {
+              "nl": "Ze bepalen welke zus het wint.",
+              "en": "They determine which sister wins."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De rekening toont wijzigingen, de foto een persoonlijke geschiedenis.",
+            "en": "The bill shows changes, the photograph a personal history."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-stem-bij-de-ondertitels",
+      "topic_id": "human-rights-equality",
+      "title": {
+        "nl": "Een stem bij de ondertitels",
+        "en": "A voice in the subtitles"
+      },
+      "plot_key": "A film club's accessible screening misses the humour in sound until a deaf participant helps describe meaningful offscreen cues rather than merely transcribing dialogue.",
+      "lines": [
+        {
+          "nl": "Voor een toegankelijke filmavond had filmclubcoördinator Abel alle gesproken zinnen zorgvuldig laten ondertitelen en de eerste rij vooraan vrijgehouden.",
+          "en": "For an accessible film evening, film club coordinator Abel had every spoken sentence carefully subtitled and kept the front row free."
+        },
+        {
+          "nl": "Na de voorstelling vroeg een dove bezoekster waarom de zaal plots had gelachen op een moment waarop niemand in beeld iets zei.",
+          "en": "After the screening a deaf visitor asked why the audience had suddenly laughed at a moment when nobody on screen said anything."
+        },
+        {
+          "nl": "In de scène klonk buiten beeld steeds hetzelfde overdreven kuchje, waardoor het publiek wist dat de verdwenen buurman zich achter de deur verstopte.",
+          "en": "In the scene the same exaggerated cough kept sounding offscreen, letting the audience know the missing neighbour was hiding behind the door."
+        },
+        {
+          "nl": "Abel zei dat de dialoog toch volledig was weergegeven, maar hoorde in zijn eigen antwoord hoe klein hij de betekenis van geluid had gemaakt.",
+          "en": "Abel said the dialogue had been reproduced in full, but heard in his own answer how narrowly he had defined the meaning of sound."
+        },
+        {
+          "nl": "De bezoekster legde uit dat zij niet elk geruis beschreven wilde hebben, wel de aanwijzingen die de scène hielpen begrijpen.",
+          "en": "The visitor explained that she did not want every rustle described, but did want the clues that helped make sense of the scene."
+        },
+        {
+          "nl": "Samen bekeken ze enkele fragmenten en voegden beknopte aanduidingen toe voor herkenbare geluiden die een handeling of grap droegen.",
+          "en": "Together they watched several clips and added concise descriptions for recognisable sounds carrying an action or joke."
+        },
+        {
+          "nl": "Bij de volgende filmavond vroeg Abel vooraf feedback aan verschillende bezoekers, zonder te doen alsof één aangepaste versie automatisch voor iedereen volstond.",
+          "en": "At the next film evening Abel requested feedback from different visitors beforehand, without pretending one adapted version automatically sufficed for everyone."
+        },
+        {
+          "nl": "Deze keer lachte de bezoekster tegelijk met de zaal; niemand hoefde haar achteraf uit te leggen welk deel van het verhaal zij had gemist.",
+          "en": "This time the visitor laughed at the same time as the room; nobody had to explain afterwards which part of the story she had missed."
+        }
+      ],
+      "words": [
+        {
+          "term": "beknopt",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "kort maar met de nodige informatie",
+            "en": "concise"
+          },
+          "example": {
+            "nl": "Samen bekeken ze enkele fragmenten en voegden beknopte aanduidingen toe voor herkenbare geluiden die een handeling of grap droegen.",
+            "en": "Together they watched several clips and added concise descriptions for recognisable sounds carrying an action or joke."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "weergeven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "tonen of in woorden opnieuw uitdrukken",
+            "en": "to reproduce or represent"
+          },
+          "example": {
+            "nl": "Abel zei dat de dialoog toch volledig was weergegeven, maar hoorde in zijn eigen antwoord hoe klein hij de betekenis van geluid had gemaakt.",
+            "en": "Abel said the dialogue had been reproduced in full, but heard in his own answer how narrowly he had defined the meaning of sound."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de aanwijzing",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "informatie die helpt iets te begrijpen of vinden",
+            "en": "clue"
+          },
+          "example": {
+            "nl": "De bezoekster legde uit dat zij niet elk geruis beschreven wilde hebben, wel de aanwijzingen die de scène hielpen begrijpen.",
+            "en": "The visitor explained that she did not want every rustle described, but did want the clues that helped make sense of the scene."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wel tegenover niet",
+            "en": "Do, contrasted with not"
+          },
+          "explanation": {
+            "nl": "Niet elk geruis en wel de aanwijzingen maken duidelijk welke informatie zij nodig heeft.",
+            "en": "Not every rustle and but the clues make clear what information she needs."
+          },
+          "examples": [
+            {
+              "nl": "De bezoekster legde uit dat zij niet elk geruis beschreven wilde hebben, wel de aanwijzingen die de scène hielpen begrijpen.",
+              "en": "The visitor explained that she did not want every rustle described, but did want the clues that helped make sense of the scene."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom miste de eerste versie een grap?",
+            "en": "Why did the first version miss a joke?"
+          },
+          "options": [
+            {
+              "nl": "De bezoekster zat op een andere rij.",
+              "en": "The visitor sat in another row."
+            },
+            {
+              "nl": "Een betekenisvol geluid buiten beeld was niet beschreven.",
+              "en": "A meaningful offscreen sound was not described."
+            },
+            {
+              "nl": "Alle dialoog was gewist.",
+              "en": "All dialogue had been erased."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het terugkerende kuchje onthult de verborgen buurman.",
+            "en": "The recurring cough reveals the hidden neighbour."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vraagt de bezoekster aan de ondertitels?",
+            "en": "What does the visitor ask of the subtitles?"
+          },
+          "options": [
+            {
+              "nl": "Elk mogelijk geluid zonder onderscheid benoemen.",
+              "en": "Naming every possible sound without distinction."
+            },
+            {
+              "nl": "De hele film zonder beeld vertonen.",
+              "en": "Showing the whole film without images."
+            },
+            {
+              "nl": "Informatie opnemen die nodig is om handelingen en humor te volgen.",
+              "en": "Including information needed to follow actions and humour."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze maakt onderscheid tussen onbelangrijk geruis en betekenisvolle aanwijzingen.",
+            "en": "She distinguishes unimportant noise from meaningful clues."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-piano-op-de-oprit",
+      "topic_id": "volunteering-charity",
+      "title": {
+        "nl": "De piano op de oprit",
+        "en": "The piano on the driveway"
+      },
+      "plot_key": "A donation drive receives an unwanted piano whose expensive move would overwhelm a family, and volunteers find a public placement by asking about the actual need.",
+      "lines": [
+        {
+          "nl": "Voor een gezin dat na een brand opnieuw moest beginnen, zamelde de buurt meubels en huisraad in op de oprit van vrijwilliger Mo.",
+          "en": "For a family starting over after a fire, the neighbourhood collected furniture and household items on volunteer Mo's driveway."
+        },
+        {
+          "nl": "Een welgestelde bewoner bood zijn oude piano aan en zei dat kinderen juist in moeilijke tijden toegang tot muziek moesten houden.",
+          "en": "A well-off resident offered his old piano and said children especially needed to retain access to music in difficult times."
+        },
+        {
+          "nl": "De piano werd al uit de bestelwagen gerold toen Mo merkte dat niemand het gezin had gevraagd of er plaats of belangstelling voor was.",
+          "en": "The piano was already being rolled out of the van when Mo noticed nobody had asked the family whether there was room or interest."
+        },
+        {
+          "nl": "Hun tijdelijke woning had een smalle trap en nauwelijks ruimte voor bedden, laat staan voor een zwaar instrument dat eerst gestemd moest worden.",
+          "en": "Their temporary home had a narrow staircase and barely enough room for beds, let alone for a heavy instrument that first needed tuning."
+        },
+        {
+          "nl": "De schenker voelde zich afgewezen en vroeg waarom een genereus aanbod ineens als probleem werd behandeld.",
+          "en": "The donor felt rejected and asked why a generous offer was suddenly being treated as a problem."
+        },
+        {
+          "nl": "Mo legde uit dat hulp niet alleen moest vertrekken uit wat iemand graag kwijt wilde, maar ook uit wat een ander werkelijk kon gebruiken.",
+          "en": "Mo explained that help should come not only from what someone wanted to get rid of, but also from what another person could actually use."
+        },
+        {
+          "nl": "Na overleg kreeg een nabijgelegen buurthuis de piano en vroeg het gezin om praktische spullen die nog op hun lijst ontbraken.",
+          "en": "After discussion a nearby community centre received the piano, and the family requested practical items still missing from their list."
+        },
+        {
+          "nl": "Bij het eerste buurtconcert kwam de schenker luisteren zonder te vertellen welk gezin hem dankbaar hoorde te zijn.",
+          "en": "At the first neighbourhood concert the donor came to listen without saying which family ought to be grateful to him."
+        }
+      ],
+      "words": [
+        {
+          "term": "de huisraad",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de gebruiksvoorwerpen en meubels in een woning",
+            "en": "household contents"
+          },
+          "example": {
+            "nl": "Voor een gezin dat na een brand opnieuw moest beginnen, zamelde de buurt meubels en huisraad in op de oprit van vrijwilliger Mo.",
+            "en": "For a family starting over after a fire, the neighbourhood collected furniture and household items on volunteer Mo's driveway."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de schenker",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die iets zonder betaling geeft",
+            "en": "donor"
+          },
+          "example": {
+            "nl": "De schenker voelde zich afgewezen en vroeg waarom een genereus aanbod ineens als probleem werd behandeld.",
+            "en": "The donor felt rejected and asked why a generous offer was suddenly being treated as a problem."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "genereus",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "bereid veel te geven",
+            "en": "generous"
+          },
+          "example": {
+            "nl": "De schenker voelde zich afgewezen en vroeg waarom een genereus aanbod ineens als probleem werd behandeld.",
+            "en": "The donor felt rejected and asked why a generous offer was suddenly being treated as a problem."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet alleen ... maar ook ...",
+            "en": "Not only ... but also ..."
+          },
+          "explanation": {
+            "nl": "De combinatie verbindt het aanbod met de behoefte als twee noodzakelijke perspectieven.",
+            "en": "The combination connects the offer and the need as two necessary perspectives."
+          },
+          "examples": [
+            {
+              "nl": "Mo legde uit dat hulp niet alleen moest vertrekken uit wat iemand graag kwijt wilde, maar ook uit wat een ander werkelijk kon gebruiken.",
+              "en": "Mo explained that help should come not only from what someone wanted to get rid of, but also from what another person could actually use."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom helpt de piano het gezin niet direct?",
+            "en": "Why does the piano not directly help the family?"
+          },
+          "options": [
+            {
+              "nl": "Zij hebben al drie vleugels.",
+              "en": "They already have three grand pianos."
+            },
+            {
+              "nl": "Hun tijdelijke woning heeft te weinig geschikte ruimte.",
+              "en": "Their temporary home has too little suitable space."
+            },
+            {
+              "nl": "Er mag nergens muziek gemaakt worden.",
+              "en": "Music is forbidden everywhere."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De trap en het gebrek aan plaats maken het aanbod onpraktisch.",
+            "en": "The staircase and lack of space make the offer impractical."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke verandering vraagt Mo van de schenker?",
+            "en": "What change does Mo ask of the donor?"
+          },
+          "options": [
+            {
+              "nl": "Nooit meer iets aanbieden.",
+              "en": "Never offering anything again."
+            },
+            {
+              "nl": "De piano duurder maken.",
+              "en": "Making the piano more expensive."
+            },
+            {
+              "nl": "De bruikbaarheid voor de ontvanger mee laten bepalen wat hulp is.",
+              "en": "Letting usefulness for the recipient help determine what counts as help."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Een mooi gebaar vanuit de gever is niet automatisch passend voor de ander.",
+            "en": "A fine gesture from the giver's side is not automatically suitable for the other person."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-tijdcapsule-in-de-biscuitdoos",
+      "topic_id": "community-events",
+      "title": {
+        "nl": "De tijdcapsule in de biscuitdoos",
+        "en": "The time capsule in the biscuit tin"
+      },
+      "plot_key": "A neighbourhood anniversary opens a time capsule of unfulfilled wishes, prompting residents to avoid staging only successes in the next collection.",
+      "lines": [
+        {
+          "nl": "Voor de vijfentwintigste verjaardag van hun straatfeest groeven bewoners een oude biscuitdoos op die tijdens de eerste editie in de tuin was begraven.",
+          "en": "For the twenty-fifth anniversary of their street party, residents dug up an old biscuit tin buried in the garden during the first edition."
+        },
+        {
+          "nl": "Iedereen verwachtte grappige voorspellingen over vliegende auto's en telefoons waarmee je foto's zou kunnen maken.",
+          "en": "Everyone expected amusing predictions about flying cars and phones that could take photographs."
+        },
+        {
+          "nl": "In de doos zaten echter vooral briefjes over een veilige oversteek, een oefenruimte voor jongeren en meer contact met de bewoners van het hoekhuis.",
+          "en": "Instead the tin mainly contained notes about a safe crossing, a rehearsal room for young people and more contact with the residents of the corner house."
+        },
+        {
+          "nl": "Sommige wensen waren uitgevoerd, andere stonden na al die jaren nog bijna letterlijk op de agenda van de buurtvereniging.",
+          "en": "Some wishes had been fulfilled; others still appeared almost word for word on the neighbourhood association's agenda after all those years."
+        },
+        {
+          "nl": "Organisator Bilal wilde de moeilijke briefjes tijdens de toespraak overslaan om de feestelijke sfeer niet te bederven.",
+          "en": "Organiser Bilal wanted to skip the difficult notes during the speech so as not to spoil the festive atmosphere."
+        },
+        {
+          "nl": "Een vroegere organisator vroeg of zij dan een tijdcapsule moesten vullen met wat later mooi klonk of met wat mensen werkelijk hadden gehoopt.",
+          "en": "A former organiser asked whether they should fill a time capsule with what later sounded good or with what people had actually hoped."
+        },
+        {
+          "nl": "Ze lazen de hele lijst en maakten daarnaast een nieuwe doos waarin ook onbeantwoorde vragen en verschillende meningen mochten blijven zitten.",
+          "en": "They read the entire list and also made a new tin in which unanswered questions and different opinions were allowed to remain."
+        },
+        {
+          "nl": "Toen de muziek begon, was het feest niet minder gezellig, maar wist iedereen beter wat er na het opruimen nog te doen stond.",
+          "en": "When the music began, the party was no less enjoyable, but everyone knew better what still needed doing after the clear-up."
+        }
+      ],
+      "words": [
+        {
+          "term": "de oversteek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een plaats of handeling om naar de andere kant van een weg te gaan",
+            "en": "crossing"
+          },
+          "example": {
+            "nl": "In de doos zaten echter vooral briefjes over een veilige oversteek, een oefenruimte voor jongeren en meer contact met de bewoners van het hoekhuis.",
+            "en": "Instead the tin mainly contained notes about a safe crossing, a rehearsal room for young people and more contact with the residents of the corner house."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bederven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "minder prettig of bruikbaar maken",
+            "en": "to spoil"
+          },
+          "example": {
+            "nl": "Organisator Bilal wilde de moeilijke briefjes tijdens de toespraak overslaan om de feestelijke sfeer niet te bederven.",
+            "en": "Organiser Bilal wanted to skip the difficult notes during the speech so as not to spoil the festive atmosphere."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onbeantwoord",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder ontvangen antwoord",
+            "en": "unanswered"
+          },
+          "example": {
+            "nl": "Ze lazen de hele lijst en maakten daarnaast een nieuwe doos waarin ook onbeantwoorde vragen en verschillende meningen mochten blijven zitten.",
+            "en": "They read the entire list and also made a new tin in which unanswered questions and different opinions were allowed to remain."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Om niet te als doel",
+            "en": "In order not to as a purpose"
+          },
+          "explanation": {
+            "nl": "Om ... niet te bederven geeft aan wat Bilal met het overslaan wilde vermijden.",
+            "en": "Om ... niet te bederven states what Bilal wanted to avoid by skipping the notes."
+          },
+          "examples": [
+            {
+              "nl": "Organisator Bilal wilde de moeilijke briefjes tijdens de toespraak overslaan om de feestelijke sfeer niet te bederven.",
+              "en": "Organiser Bilal wanted to skip the difficult notes during the speech so as not to spoil the festive atmosphere."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat is verrassend aan de oude briefjes?",
+            "en": "What is surprising about the old notes?"
+          },
+          "options": [
+            {
+              "nl": "Veel concrete wensen zijn nog actueel.",
+              "en": "Many concrete wishes are still relevant."
+            },
+            {
+              "nl": "Ze bevatten alleen lege bladen.",
+              "en": "They contain only blank pages."
+            },
+            {
+              "nl": "Ze zijn allemaal door Bilal geschreven.",
+              "en": "They are all written by Bilal."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Sommige kwesties staan bijna hetzelfde nog op de huidige agenda.",
+            "en": "Some issues still appear almost identically on today's agenda."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom lezen zij ook de lastige wensen voor?",
+            "en": "Why do they also read out the difficult wishes?"
+          },
+          "options": [
+            {
+              "nl": "Omdat de muziek verboden is.",
+              "en": "Because music is forbidden."
+            },
+            {
+              "nl": "Om het verleden niet alleen als een succesverhaal te bewaren.",
+              "en": "To avoid preserving the past solely as a success story."
+            },
+            {
+              "nl": "Om het feest te annuleren.",
+              "en": "To cancel the party."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De doos krijgt waarde als echte hoop en onvoltooid werk zichtbaar mogen blijven.",
+            "en": "The tin gains value when genuine hopes and unfinished work can remain visible."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-tafel-voor-de-criticus",
+      "topic_id": "restaurants-cafes",
+      "title": {
+        "nl": "Een tafel voor de criticus",
+        "en": "A table for the critic"
+      },
+      "plot_key": "A chef mistakes a quiet solo diner for an influential reviewer and discovers the actual valued encounter is an old mentor returning anonymously.",
+      "lines": [
+        {
+          "nl": "Toen een onbekende man alleen een tafel reserveerde en vroeg of hij rustig naar de keuken kon kijken, dacht chef Nora dat er een recensent kwam.",
+          "en": "When an unknown man booked a table alone and asked whether he could quietly watch the kitchen, chef Nora thought a reviewer was coming."
+        },
+        {
+          "nl": "Ze liet de beste borden klaarzetten en waarschuwde de bediening dat die gast niet te lang op zijn koffie mocht wachten.",
+          "en": "She had the best plates prepared and warned the waiting staff that this guest must not wait too long for his coffee."
+        },
+        {
+          "nl": "De man bestelde het eenvoudigste gerecht en maakte geen enkele foto, wat Nora alleen maar verdachter vond.",
+          "en": "The man ordered the simplest dish and took no photographs, which Nora found only more suspicious."
+        },
+        {
+          "nl": "Na het hoofdgerecht vroeg hij of de kok de saus nog met een kleine houten lepel proefde in plaats van rechtstreeks uit de pan.",
+          "en": "After the main course he asked whether the chef still tasted the sauce with a little wooden spoon rather than directly from the pan."
+        },
+        {
+          "nl": "Nora keek beter en herkende haar vroegere stagebegeleider, die inmiddels zijn eigen restaurant had gesloten en veel ouder leek dan in haar herinnering.",
+          "en": "Nora looked more closely and recognised her former placement supervisor, who had since closed his own restaurant and looked much older than in her memory."
+        },
+        {
+          "nl": "Hij had geen oordeel willen publiceren, zei hij, maar wilde één avond zien wat iemand van zijn oude lessen had gemaakt.",
+          "en": "He had not wanted to publish a verdict, he said, but wanted one evening to see what someone had made of his old lessons."
+        },
+        {
+          "nl": "Nora schaamde zich voor de extra aandacht die zij alleen vanwege een vermoed cijfer had georganiseerd en zette twee koffies aan de keukentafel.",
+          "en": "Nora felt embarrassed about the extra attention she had arranged only because of a suspected rating and placed two coffees at the kitchen table."
+        },
+        {
+          "nl": "Ze praatten tot de laatste afwas klaar was; er verscheen geen recensie, maar de houten lepel lag de volgende dag weer bewust naast het vuur.",
+          "en": "They talked until the last washing-up was done; no review appeared, but the wooden spoon was deliberately beside the stove again the next day."
+        }
+      ],
+      "words": [
+        {
+          "term": "de recensent",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die een beargumenteerd oordeel over iets publiceert",
+            "en": "reviewer"
+          },
+          "example": {
+            "nl": "Toen een onbekende man alleen een tafel reserveerde en vroeg of hij rustig naar de keuken kon kijken, dacht chef Nora dat er een recensent kwam.",
+            "en": "When an unknown man booked a table alone and asked whether he could quietly watch the kitchen, chef Nora thought a reviewer was coming."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de bediening",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het personeel dat gasten eten en drinken brengt",
+            "en": "waiting staff"
+          },
+          "example": {
+            "nl": "Ze liet de beste borden klaarzetten en waarschuwde de bediening dat die gast niet te lang op zijn koffie mocht wachten.",
+            "en": "She had the best plates prepared and warned the waiting staff that this guest must not wait too long for his coffee."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bewust",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met aandacht en een duidelijke bedoeling",
+            "en": "deliberate"
+          },
+          "example": {
+            "nl": "Ze praatten tot de laatste afwas klaar was; er verscheen geen recensie, maar de houten lepel lag de volgende dag weer bewust naast het vuur.",
+            "en": "They talked until the last washing-up was done; no review appeared, but the wooden spoon was deliberately beside the stove again the next day."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Vanwege voor een reden",
+            "en": "Because of for a reason"
+          },
+          "explanation": {
+            "nl": "Vanwege wordt hier gevolgd door een zelfstandig naamwoordgroep die haar reden noemt.",
+            "en": "Vanwege is followed here by a noun phrase naming her reason."
+          },
+          "examples": [
+            {
+              "nl": "Nora schaamde zich voor de extra aandacht die zij alleen vanwege een vermoed cijfer had georganiseerd en zette twee koffies aan de keukentafel.",
+              "en": "Nora felt embarrassed about the extra attention she had arranged only because of a suspected rating and placed two coffees at the kitchen table."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom behandelt Nora de gast eerst extra zorgvuldig?",
+            "en": "Why does Nora initially treat the guest with extra care?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft een groot feest besteld.",
+              "en": "He has ordered a large celebration."
+            },
+            {
+              "nl": "Ze verwacht dat hij een publieke beoordeling zal schrijven.",
+              "en": "She expects him to write a public assessment."
+            },
+            {
+              "nl": "Ze herkent hem onmiddellijk.",
+              "en": "She recognises him immediately."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze interpreteert zijn stille observatie als het gedrag van een recensent.",
+            "en": "She interprets his quiet observation as the behaviour of a reviewer."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat herinnert de houten lepel haar aan het einde?",
+            "en": "What does the wooden spoon remind her of at the end?"
+          },
+          "options": [
+            {
+              "nl": "De concrete zorg uit haar opleiding, los van een beoordeling.",
+              "en": "The concrete care from her training, apart from a rating."
+            },
+            {
+              "nl": "Een bestelling voor nieuwe meubels.",
+              "en": "An order for new furniture."
+            },
+            {
+              "nl": "Een mislukte rekening.",
+              "en": "A failed bill."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De oude les krijgt opnieuw aandacht zonder dat er een recensie komt.",
+            "en": "The old lesson receives renewed attention without a review appearing."
+          }
+        }
+      ]
+    }
+  ]
+}

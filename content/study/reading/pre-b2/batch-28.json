@@ -1,0 +1,632 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-twee-kopjes-op-een-bank",
+      "topic_id": "relationships",
+      "title": {
+        "nl": "Twee kopjes op een bank",
+        "en": "Two cups on a bench"
+      },
+      "plot_key": "A woman meets her former partner to return everyday possessions and leaves one shared object in a public place without a promise of reunion.",
+      "lines": [
+        {
+          "nl": "Toen Eva en Simon hun laatste gezamenlijke spullen zouden verdelen, spraken ze af op een bank bij de rivier omdat geen van beiden nog in de oude keuken wilde zitten.",
+          "en": "When Eva and Simon were to divide their last shared possessions, they arranged to meet on a bench by the river because neither wanted to sit in the old kitchen any longer."
+        },
+        {
+          "nl": "Eva had een kleine doos meegebracht met sleutels, een oplader en twee kopjes waarvan één oor al jaren gelijmd was.",
+          "en": "Eva had brought a small box containing keys, a charger and two cups, one of whose handles had been glued for years."
+        },
+        {
+          "nl": "Ze verdeelden de praktische voorwerpen snel, maar bij de kopjes begon Simon over de winkel waar zij ze tijdens hun eerste reis hadden gekocht.",
+          "en": "They divided the practical objects quickly, but at the cups Simon began talking about the shop where they had bought them on their first trip."
+        },
+        {
+          "nl": "Eva luisterde en zei daarna dat zij niet nog een keer over de reden van hun breuk wilde onderhandelen via herinneringen aan betere dagen.",
+          "en": "Eva listened and then said she did not want to negotiate the reason for their separation once more through memories of better days."
+        },
+        {
+          "nl": "Simon knikte, schoof haar het hele kopje toe en hield zelf het exemplaar dat zij vroeger altijd voorzichtig moest afwassen.",
+          "en": "Simon nodded, pushed the intact cup towards her and kept the one she had previously always had to wash carefully."
+        },
+        {
+          "nl": "Ze haalden koffie aan een kraam en dronken die voor één laatste keer uit hun eigen kopjes, zonder een volgende afspraak te maken.",
+          "en": "They bought coffee from a stall and drank it from their own cups one last time without making another arrangement."
+        },
+        {
+          "nl": "Toen Simon opstond, vroeg hij of zij veilig thuis zou geraken en corrigeerde zichzelf halverwege het woord thuis.",
+          "en": "When Simon stood up, he asked whether she would get home safely and corrected himself halfway through the word home."
+        },
+        {
+          "nl": "Eva zei dat het goed kwam; even later liepen zij elk met een kopje in hun jaszak langs een andere kant van de rivier.",
+          "en": "Eva said it would be fine; a little later they each walked with a cup in their coat pocket along a different side of the river."
+        }
+      ],
+      "words": [
+        {
+          "term": "de breuk",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het einde van een relatie",
+            "en": "breakup"
+          },
+          "example": {
+            "nl": "Eva luisterde en zei daarna dat zij niet nog een keer over de reden van hun breuk wilde onderhandelen via herinneringen aan betere dagen.",
+            "en": "Eva listened and then said she did not want to negotiate the reason for their separation once more through memories of better days."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het oor",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het handvat van een kopje",
+            "en": "handle of a cup"
+          },
+          "example": {
+            "nl": "Eva had een kleine doos meegebracht met sleutels, een oplader en twee kopjes waarvan één oor al jaren gelijmd was.",
+            "en": "Eva had brought a small box containing keys, a charger and two cups, one of whose handles had been glued for years."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onderhandelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "praten om tot een afspraak of uitkomst te komen",
+            "en": "to negotiate"
+          },
+          "example": {
+            "nl": "Eva luisterde en zei daarna dat zij niet nog een keer over de reden van hun breuk wilde onderhandelen via herinneringen aan betere dagen.",
+            "en": "Eva listened and then said she did not want to negotiate the reason for their separation once more through memories of better days."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder een volgende afspraak te maken",
+            "en": "Without making another arrangement"
+          },
+          "explanation": {
+            "nl": "Zonder te markeert de grens van hun gezamenlijke moment: het legt geen vervolg vast.",
+            "en": "Zonder te marks the boundary of their shared moment: it does not establish a continuation."
+          },
+          "examples": [
+            {
+              "nl": "Ze haalden koffie aan een kraam en dronken die voor één laatste keer uit hun eigen kopjes, zonder een volgende afspraak te maken.",
+              "en": "They bought coffee from a stall and drank it from their own cups one last time without making another arrangement."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kiest Eva voor een bank buiten?",
+            "en": "Why does Eva choose an outdoor bench?"
+          },
+          "options": [
+            {
+              "nl": "Zij wil de koffie gratis krijgen.",
+              "en": "She wants free coffee."
+            },
+            {
+              "nl": "De oude keuken is voor beiden emotioneel te beladen.",
+              "en": "The old kitchen is emotionally too charged for both."
+            },
+            {
+              "nl": "Hun huis heeft geen stoelen.",
+              "en": "Their home has no chairs."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze willen geen van beiden opnieuw in die gedeelde ruimte zitten.",
+            "en": "Neither wants to sit in that shared space again."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat suggereert Simons hapering bij thuis?",
+            "en": "What does Simon's hesitation at home suggest?"
+          },
+          "options": [
+            {
+              "nl": "Een oud gezamenlijk begrip moet zich nog aan hun nieuwe situatie aanpassen.",
+              "en": "An old shared idea still has to adapt to their new situation."
+            },
+            {
+              "nl": "Hij kent de taal niet.",
+              "en": "He does not know the language."
+            },
+            {
+              "nl": "Eva heeft haar adres vergeten.",
+              "en": "Eva has forgotten her address."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zij gaan niet meer vanzelf naar hetzelfde thuis.",
+            "en": "They no longer automatically go to the same home."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-trappen-zonder-teller",
+      "topic_id": "health-fitness",
+      "title": {
+        "nl": "De trap zonder teller",
+        "en": "The stairs without a counter"
+      },
+      "plot_key": "A man’s step-count challenge overlooks useful physical activity that his device does not record, prompting a wider account of his day without medical claims.",
+      "lines": [
+        {
+          "nl": "Voor een uitdaging op het werk wilde Lars elke dag zijn eigen stappentotaal overtreffen, zodat hij 's avonds tevreden een groen scherm kon bekijken.",
+          "en": "For a workplace challenge, Lars wanted to beat his own step total every day so that he could look contentedly at a green screen in the evening."
+        },
+        {
+          "nl": "Op zaterdag hielp hij zijn zus een namiddag lang dozen naar een nieuw appartement dragen, meestal met zijn telefoon veilig in de auto.",
+          "en": "On Saturday he spent an afternoon helping his sister carry boxes to a new flat, mostly with his phone safely in the car."
+        },
+        {
+          "nl": "Toen hij later zijn totaal bekeek, leek het alsof hij de hele dag nauwelijks iets had uitgevoerd.",
+          "en": "When he checked his total later, it looked as if he had barely done anything all day."
+        },
+        {
+          "nl": "Hij wilde nog een lange wandeling maken om de achterstand in te halen, hoewel zijn zus hem juist vroeg even samen te zitten na het werk.",
+          "en": "He wanted to take another long walk to catch up, although his sister was asking him to sit together for a while after the work."
+        },
+        {
+          "nl": "Zij wees naar de lege bestelwagen en vroeg welke van al die gedragen dozen volgens zijn scherm dan niet echt had bestaan.",
+          "en": "She pointed to the empty van and asked which of all those carried boxes, according to his screen, had not really existed."
+        },
+        {
+          "nl": "Lars lachte, maar merkte ook hoe sterk een ontbrekend getal zijn oordeel over een hele middag had overgenomen.",
+          "en": "Lars laughed, but also noticed how strongly a missing number had taken over his judgement of an entire afternoon."
+        },
+        {
+          "nl": "Hij vulde niets achteraf in alsof hij precies wist hoeveel hij gelopen had, maar noteerde naast het totaal dat hij bij een verhuis had geholpen.",
+          "en": "He added no figures afterwards as if he knew exactly how far he had walked, but noted beside the total that he had helped with a move."
+        },
+        {
+          "nl": "Daarna dronken ze koffie tussen de dozen, terwijl het onvolledige scherm in zijn jaszak bleef en de trap eindelijk leeg was.",
+          "en": "Afterwards they drank coffee among the boxes while the incomplete screen stayed in his coat pocket and the staircase was finally clear."
+        }
+      ],
+      "words": [
+        {
+          "term": "overtreffen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "boven een eerder resultaat uitkomen",
+            "en": "to surpass"
+          },
+          "example": {
+            "nl": "Voor een uitdaging op het werk wilde Lars elke dag zijn eigen stappentotaal overtreffen, zodat hij 's avonds tevreden een groen scherm kon bekijken.",
+            "en": "For a workplace challenge, Lars wanted to beat his own step total every day so that he could look contentedly at a green screen in the evening."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de achterstand",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het verschil met een verwacht of gewenst resultaat",
+            "en": "shortfall"
+          },
+          "example": {
+            "nl": "Hij wilde nog een lange wandeling maken om de achterstand in te halen, hoewel zijn zus hem juist vroeg even samen te zitten na het werk.",
+            "en": "He wanted to take another long walk to catch up, although his sister was asking him to sit together for a while after the work."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onvolledig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet alle belangrijke onderdelen bevattend",
+            "en": "incomplete"
+          },
+          "example": {
+            "nl": "Daarna dronken ze koffie tussen de dozen, terwijl het onvolledige scherm in zijn jaszak bleef en de trap eindelijk leeg was.",
+            "en": "Afterwards they drank coffee among the boxes while the incomplete screen stayed in his coat pocket and the staircase was finally clear."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoewel bij een concurrerende behoefte",
+            "en": "Although with a competing need"
+          },
+          "explanation": {
+            "nl": "Hoewel zet zijn voorgenomen extra wandeling tegenover het verzoek om samen te rusten.",
+            "en": "Hoewel contrasts his planned extra walk with the request to rest together."
+          },
+          "examples": [
+            {
+              "nl": "Hij wilde nog een lange wandeling maken om de achterstand in te halen, hoewel zijn zus hem juist vroeg even samen te zitten na het werk.",
+              "en": "He wanted to take another long walk to catch up, although his sister was asking him to sit together for a while after the work."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom toont het scherm weinig stappen?",
+            "en": "Why does the screen show few steps?"
+          },
+          "options": [
+            {
+              "nl": "Zijn telefoon lag tijdens veel beweging in de auto.",
+              "en": "His phone was in the car during much of the activity."
+            },
+            {
+              "nl": "Zijn zus heeft het totaal veranderd.",
+              "en": "His sister has changed the total."
+            },
+            {
+              "nl": "Lars heeft niets gedragen.",
+              "en": "Lars has carried nothing."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De registratie dekt zijn echte namiddag niet volledig.",
+            "en": "The recording does not fully cover his actual afternoon."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet hij met de ontbrekende informatie?",
+            "en": "What does he do with the missing information?"
+          },
+          "options": [
+            {
+              "nl": "Hij voegt context toe zonder een niet-gemeten totaal te verzinnen.",
+              "en": "He adds context without inventing an unmeasured total."
+            },
+            {
+              "nl": "Hij verzint een exact aantal.",
+              "en": "He invents an exact number."
+            },
+            {
+              "nl": "Hij beschuldigt zijn zus.",
+              "en": "He blames his sister."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De notitie benoemt de verhuisactiviteit maar claimt geen exact meetresultaat.",
+            "en": "The note names the moving activity but claims no exact measurement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-lange-stilte-op-de-radio",
+      "topic_id": "communication",
+      "title": {
+        "nl": "De lange stilte op de radio",
+        "en": "The long silence on the radio"
+      },
+      "plot_key": "A novice interviewer rushes to fill a guest's pause and nearly substitutes his own story, then learns the guest was searching for a precise contradictory memory.",
+      "lines": [
+        {
+          "nl": "Tijdens zijn eerste live-interview op een lokale radiozender vroeg student Jens aan een oudere buurtbewoonster wat haar gelukkigste herinnering aan de straat was.",
+          "en": "During his first live interview on a local radio station, student Jens asked an older resident about her happiest memory of the street."
+        },
+        {
+          "nl": "Zij zweeg zo lang dat hij bang werd voor een technische storing en haastig zelf een verhaal over vroegere straatfeesten begon.",
+          "en": "She remained silent so long that he feared a technical fault and hurriedly began a story himself about former street parties."
+        },
+        {
+          "nl": "De vrouw stak rustig haar hand op en zei dat zij nog aan het kiezen was, niet dat haar herinnering verdwenen was.",
+          "en": "The woman calmly raised her hand and said she was still choosing, not that her memory had disappeared."
+        },
+        {
+          "nl": "Toen Jens haar opnieuw ruimte gaf, vertelde ze over de dag waarop haar man na een moeilijke periode eindelijk alleen naar de bakker durfde.",
+          "en": "When Jens gave her room again, she spoke of the day her husband finally dared to go to the bakery alone after a difficult period."
+        },
+        {
+          "nl": "Dezelfde middag hadden zij ook slecht nieuws over hun woning gekregen, waardoor zij niet wist of gelukkig het juiste woord voor die dag was.",
+          "en": "That same afternoon they had also received bad news about their home, so she did not know whether happy was the right word for that day."
+        },
+        {
+          "nl": "Jens begreep dat zijn vlotte vraag een eenvoudiger antwoord had verwacht dan het leven dat erachter lag.",
+          "en": "Jens understood that his smooth question had expected a simpler answer than the life behind it."
+        },
+        {
+          "nl": "Hij vroeg daarna wat zij met opluchting bedoelde en liet de volgende pauze bestaan tot zij zelf verder sprak.",
+          "en": "He then asked what she meant by relief and let the next pause remain until she continued herself."
+        },
+        {
+          "nl": "Na de uitzending schrapte hij uit zijn draaiboek de zin over stiltes altijd onmiddellijk opvullen en schreef er één korte vraag bij: is de ander al klaar?",
+          "en": "After the broadcast he removed from his script the line about always immediately filling silences and wrote one short question beside it: has the other person finished yet?"
+        }
+      ],
+      "words": [
+        {
+          "term": "de uitzending",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een programma dat via radio of televisie wordt verspreid",
+            "en": "broadcast"
+          },
+          "example": {
+            "nl": "Na de uitzending schrapte hij uit zijn draaiboek de zin over stiltes altijd onmiddellijk opvullen en schreef er één korte vraag bij: is de ander al klaar?",
+            "en": "After the broadcast he removed from his script the line about always immediately filling silences and wrote one short question beside it: has the other person finished yet?"
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "vlot",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "soepel en zonder merkbare moeite",
+            "en": "fluent or smooth"
+          },
+          "example": {
+            "nl": "Jens begreep dat zijn vlotte vraag een eenvoudiger antwoord had verwacht dan het leven dat erachter lag.",
+            "en": "Jens understood that his smooth question had expected a simpler answer than the life behind it."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de opluchting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het gevoel dat spanning of zorgen afnemen",
+            "en": "relief"
+          },
+          "example": {
+            "nl": "Hij vroeg daarna wat zij met opluchting bedoelde en liet de volgende pauze bestaan tot zij zelf verder sprak.",
+            "en": "He then asked what she meant by relief and let the next pause remain until she continued herself."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet dat bij een ontkende uitleg",
+            "en": "Not that for a denied explanation"
+          },
+          "explanation": {
+            "nl": "Niet dat ontkent zijn verklaring voor de stilte terwijl haar echte reden apart wordt benoemd.",
+            "en": "Niet dat denies his explanation of the silence while her real reason is named separately."
+          },
+          "examples": [
+            {
+              "nl": "De vrouw stak rustig haar hand op en zei dat zij nog aan het kiezen was, niet dat haar herinnering verdwenen was.",
+              "en": "The woman calmly raised her hand and said she was still choosing, not that her memory had disappeared."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat doet de vrouw tijdens haar eerste stilte?",
+            "en": "What is the woman doing during her first silence?"
+          },
+          "options": [
+            {
+              "nl": "Ze wacht op een nieuwe microfoon.",
+              "en": "She is waiting for a new microphone."
+            },
+            {
+              "nl": "Ze heeft geen herinneringen meer.",
+              "en": "She has no memories left."
+            },
+            {
+              "nl": "Ze zoekt naar een juiste keuze en formulering.",
+              "en": "She is searching for the right choice and wording."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze zegt dat ze nog kiest en vertelt een herinnering met tegengestelde gevoelens.",
+            "en": "She says she is still choosing and tells a memory with conflicting feelings."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat leert Jens over zijn eerste vraag?",
+            "en": "What does Jens learn about his first question?"
+          },
+          "options": [
+            {
+              "nl": "Alle stiltes zijn technische fouten.",
+              "en": "All silences are technical faults."
+            },
+            {
+              "nl": "Elke herinnering kan in één cijfer.",
+              "en": "Every memory fits into one score."
+            },
+            {
+              "nl": "Een eenvoudig positief label past niet vanzelf bij een complexe dag.",
+              "en": "A simple positive label does not automatically fit a complex day."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Blijdschap over de bakker en slecht woningnieuws bestaan op dezelfde dag.",
+            "en": "Happiness about the bakery and bad housing news exist on the same day."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-wedstrijd-van-de-nachtbakker",
+      "topic_id": "friends",
+      "title": {
+        "nl": "Het ontbijt na de finale",
+        "en": "Breakfast after the final"
+      },
+      "plot_key": "A baker misses his friend's late tournament final, but an early breakfast reveals support can be timed to a real working life rather than measured only by attendance.",
+      "lines": [
+        {
+          "nl": "Basketballer Arne was teleurgesteld toen zijn vriend Bilal opnieuw niet op de tribune zat tijdens de belangrijkste wedstrijd van het seizoen.",
+          "en": "Basketball player Arne was disappointed when his friend Bilal was again not in the stands during the season's most important match."
+        },
+        {
+          "nl": "Bilal begon midden in de nacht in een bakkerij en had gezegd dat hij voor de finale zijn slaap niet zomaar kon overslaan.",
+          "en": "Bilal started work in a bakery in the middle of the night and had said he could not simply skip his sleep for the final."
+        },
+        {
+          "nl": "Voor Arne klonk dat als een praktische smoes, vooral toen hij na afloop foto's zag van vrienden die wel tot laat gebleven waren.",
+          "en": "To Arne that sounded like a practical excuse, especially when afterwards he saw photographs of friends who had stayed late."
+        },
+        {
+          "nl": "Om zes uur de volgende ochtend belde Bilal echter aan met brood, koffie en een vel waarop de uitslag van de wedstrijd stond.",
+          "en": "At six the next morning, however, Bilal rang the bell with bread, coffee and a sheet bearing the match result."
+        },
+        {
+          "nl": "Hij had tijdens zijn pauze de berichten gevolgd en wilde weten hoe Arne de laatste minuten zelf had beleefd.",
+          "en": "During his break he had followed the messages and wanted to know how Arne himself had experienced the final minutes."
+        },
+        {
+          "nl": "Arne was nog slaperig en mopperde over de vroege bel, waarop Bilal lachend vroeg of zij allebei soms vergaten hoe anders hun dagen liepen.",
+          "en": "Arne was still sleepy and grumbled about the early ring, at which Bilal laughingly asked whether they both sometimes forgot how differently their days unfolded."
+        },
+        {
+          "nl": "Ze kozen Bilals volgende vrije ochtend voor een ontbijt, zodat geen van beiden zijn slaap hoefde op te geven.",
+          "en": "They chose Bilal’s next morning off for breakfast so that neither would have to sacrifice his sleep."
+        },
+        {
+          "nl": "Bilal sneed het brood in dikke plakken; Arne schoof zijn stoel dichterbij en begon met zijn handen de laatste aanval na te spelen.",
+          "en": "Bilal cut the bread into thick slices; Arne moved his chair closer and began recreating the final attack with his hands."
+        }
+      ],
+      "words": [
+        {
+          "term": "de tribune",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een verhoogde zitplaats voor toeschouwers",
+            "en": "stands"
+          },
+          "example": {
+            "nl": "Basketballer Arne was teleurgesteld toen zijn vriend Bilal opnieuw niet op de tribune zat tijdens de belangrijkste wedstrijd van het seizoen.",
+            "en": "Basketball player Arne was disappointed when his friend Bilal was again not in the stands during the season's most important match."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de smoes",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een als onoprecht ervaren verklaring om iets te vermijden",
+            "en": "excuse"
+          },
+          "example": {
+            "nl": "Voor Arne klonk dat als een praktische smoes, vooral toen hij na afloop foto's zag van vrienden die wel tot laat gebleven waren.",
+            "en": "To Arne that sounded like a practical excuse, especially when afterwards he saw photographs of friends who had stayed late."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "slaperig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "nog behoefte aan slaap hebbend",
+            "en": "sleepy"
+          },
+          "example": {
+            "nl": "Arne was nog slaperig en mopperde over de vroege bel, waarop Bilal lachend vroeg of zij allebei soms vergaten hoe anders hun dagen liepen.",
+            "en": "Arne was still sleepy and grumbled about the early ring, at which Bilal laughingly asked whether they both sometimes forgot how differently their days unfolded."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Beginnen met een infinitiefgroep",
+            "en": "Beginning with an infinitive phrase"
+          },
+          "explanation": {
+            "nl": "Na begon staat de infinitiefgroep de laatste aanval na te spelen. Bij het scheidbare naspelen staat te tussen na en spelen.",
+            "en": "Begon is followed by the infinitive phrase de laatste aanval na te spelen. With the separable verb naspelen, te stands between na and spelen."
+          },
+          "examples": [
+            {
+              "nl": "Bilal sneed het brood in dikke plakken; Arne schoof zijn stoel dichterbij en begon met zijn handen de laatste aanval na te spelen.",
+              "en": "Bilal cut the bread into thick slices; Arne moved his chair closer and began recreating the final attack with his hands."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom lijkt het vroege bezoek op Arnes eigen verwachting?",
+            "en": "Why does the early visit resemble Arne's own expectation?"
+          },
+          "options": [
+            {
+              "nl": "Beiden nemen eerst hun eigen geschikte tijd als uitgangspunt.",
+              "en": "Both initially take their own convenient time as the starting point."
+            },
+            {
+              "nl": "Beiden hebben de finale gewonnen.",
+              "en": "Both have won the final."
+            },
+            {
+              "nl": "Beiden werken bij de bakkerij.",
+              "en": "Both work at the bakery."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Eerst verwacht Arne een late aanwezigheid; daarna past Bilals vroege bezoek niet goed bij Arnes ritme.",
+            "en": "First Arne expects late attendance; then Bilal’s early visit does not fit Arne’s routine well."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt Bilals belangstelling concreet?",
+            "en": "What makes Bilal's interest concrete?"
+          },
+          "options": [
+            {
+              "nl": "Hij vraagt alleen naar het puntenverschil.",
+              "en": "He asks only about the points gap."
+            },
+            {
+              "nl": "Hij weet niet dat er een wedstrijd was.",
+              "en": "He does not know there was a match."
+            },
+            {
+              "nl": "Hij volgt de uitslag en vraagt hoe zijn vriend het beleefd heeft.",
+              "en": "He follows the result and asks how his friend experienced it."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zijn steun is aanwezig, al gebeurt die niet op de tribune.",
+            "en": "His support is present, although it does not happen in the stands."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-vogels-boven-de-parking",
+      "topic_id": "nature",
+      "title": {
+        "nl": "Vogels boven de parking",
+        "en": "Birds above the car park"
+      },
+      "plot_key": "A birdwatcher drawn to a rare sighting misses the ordinary swallows nesting at his station, then changes what he records.",
+      "lines": [
+        {
+          "nl": "Vogelaar Gert nam op zaterdag twee treinen om een zeldzame vogel te zien die volgens een bericht aan een afgelegen plas zat.",
+          "en": "On Saturday birdwatcher Gert took two trains to see a rare bird that, according to a report, was at a remote pond."
+        },
+        {
+          "nl": "Toen hij aankwam, stonden er twintig mensen met lange lenzen, maar het dier was blijkbaar al uren verdwenen.",
+          "en": "When he arrived, twenty people stood there with long lenses, but the creature had apparently disappeared hours earlier."
+        },
+        {
+          "nl": "Hij wachtte tot zijn voeten koud werden en reed terug met een lege geheugenkaart en het gevoel dat zijn dag mislukt was.",
+          "en": "He waited until his feet grew cold and travelled back with an empty memory card and the feeling that his day had failed."
+        },
+        {
+          "nl": "Bij het station moest hij nog tien minuten wachten op zijn bus, die achter de parking zou vertrekken.",
+          "en": "At the station he had to wait another ten minutes for his bus, which would depart behind the car park."
+        },
+        {
+          "nl": "Boven de fietsenstalling vlogen zwaluwen af en aan, telkens naar hetzelfde kleine nest onder een kapotte dakrand.",
+          "en": "Above the bicycle shelter, swallows flew back and forth, each time to the same small nest beneath a damaged roof edge."
+        },
+        {
+          "nl": "Gert zag hoe een jong dier even op de rand balanceerde, terwijl de andere vogels er luid roepend omheen cirkelden.",
+          "en": "Gert saw a young bird balance briefly on the edge while the other birds circled around it, calling loudly."
+        },
+        {
+          "nl": "Hij miste zijn bus en maakte eindelijk een reeks foto's die geen enkele zeldzaamheid bewezen, maar wel een gebeurtenis vertelden.",
+          "en": "He missed his bus and finally took a sequence of photographs that proved no rarity but did tell an event."
+        },
+        {
+          "nl": "Thuis schreef hij voor het eerst niet alleen de soortnaam bij zijn beelden, maar ook wat hij de vogels had zien doen.",
+          "en": "At home, for the first time, he wrote not only the species name beside his images, but also what he had seen the birds do."
+        }
+      ],
+      "words": [
+        {
+          "term": "zeldzaam",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "weinig voorkomend",
+            "en": "rare"
+          },
+          "example": {
+            "nl": "Vogelaar Gert nam op zaterdag twee treinen om een zeldzame vogel te zien die volgens een bericht aan een afgelegen plas zat.",
+            "en": "On Saturday birdwatcher Gert took two trains to see a rare bird that, according to a report, was at a remote pond."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de zwaluw",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kleine vogel met lange vleugels die vaak vliegend insecten vangt",
+            "en": "swallow"
+          },
+          "example": {
+            "nl": "Boven de fietsenstalling vlogen zwaluwen af en aan, telkens naar hetzelfde kleine nest onder een kapotte dakrand.",
+            "en": "Above the bicycle shelter, swallows flew back and forth, each time to the same small nest beneath a damaged roof edge."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "af en aan",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "herhaald heen en terug",
+            "en": "back and forth"
+          },
+          "example": {
+            "nl": "Boven de fietsenstalling vlogen zwaluwen af en aan, telkens naar hetzelfde kleine nest onder een kapotte dakrand.",
+            "en": "Above the bicycle shelter, swallows flew back and forth, each time to the same small nest beneath a damaged roof edge."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Had zien doen",
+            "en": "Had seen do"
+          },
+          "explanation": {
+            "nl": "Na een waarnemingswerkwoord kan een infinitief de waargenomen handeling uitdrukken.",
+            "en": "After a perception verb, an infinitive can express the observed action."
+          },
+          "examples": [
+            {
+              "nl": "Thuis schreef hij voor het eerst niet alleen de soortnaam bij zijn beelden, maar ook wat hij de vogels had zien doen.",
+              "en": "At home, for the first time, he wrote not only the species name beside his images, but also what he had seen the birds do."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom vindt Gert zijn dag eerst mislukt?",
+            "en": "Why does Gert initially consider his day a failure?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft zijn camera verloren.",
+              "en": "He has lost his camera."
+            },
+            {
+              "nl": "De trein rijdt niet.",
+              "en": "The train is not running."
+            },
+            {
+              "nl": "De zeldzame vogel is niet meer aanwezig.",
+              "en": "The rare bird is no longer present."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij kwam speciaal voor een zeldzame soort en ziet die niet.",
+            "en": "He came specifically for a rare species and does not see it."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe verandert zijn aandacht bij het station?",
+            "en": "How does his attention change at the station?"
+          },
+          "options": [
+            {
+              "nl": "Hij stopt met fotograferen.",
+              "en": "He stops taking photographs."
+            },
+            {
+              "nl": "Hij zoekt alleen nog grotere lenzen.",
+              "en": "He now only looks for bigger lenses."
+            },
+            {
+              "nl": "Hij gaat van soortenzeldzaamheid naar concreet gedrag kijken.",
+              "en": "He moves from looking at species rarity to concrete behaviour."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De reeks en zijn notities gaan over wat de zwaluwen doen.",
+            "en": "The sequence and his notes concern what the swallows are doing."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-schuim-bij-de-brug",
+      "topic_id": "environment",
+      "title": {
+        "nl": "Schuim bij de brug",
+        "en": "Foam by the bridge"
+      },
+      "plot_key": "A neighbourhood accusation about river pollution is corrected after a photograph's location is checked and the residents preserve the unanswered environmental concern.",
+      "lines": [
+        {
+          "nl": "Toen Rani op weg naar haar werk wit schuim onder een brug zag drijven, maakte ze een foto en stuurde die naar de buurtgroep.",
+          "en": "When Rani saw white foam drifting beneath a bridge on her way to work, she took a photograph and sent it to the neighbourhood group."
+        },
+        {
+          "nl": "Binnen enkele minuten schreef iemand dat de nieuwe wasserij aan de overkant wel de oorzaak moest zijn.",
+          "en": "Within minutes someone wrote that the new laundry across the water must surely be the cause."
+        },
+        {
+          "nl": "De eigenaar kreeg boze berichten, hoewel niemand had nagegaan aan welke kant de afvoer van zijn gebouw lag.",
+          "en": "The owner received angry messages, although nobody had checked which side the drainage from his building was on."
+        },
+        {
+          "nl": "Rani schrok van de stelligheid en ging na haar dienst terug om de plaats met de milieudienst te beschrijven.",
+          "en": "Rani was alarmed by the certainty and returned after her shift to describe the location to the environmental service."
+        },
+        {
+          "nl": "Bij daglicht bleek de foto een bocht weg te laten, waardoor de wasserij veel dichter bij het schuim leek dan ze werkelijk stond.",
+          "en": "In daylight the photograph turned out to omit a bend, making the laundry seem much closer to the foam than it actually was."
+        },
+        {
+          "nl": "De dienst kon op basis van het beeld geen oorzaak vaststellen en vroeg om tijdstip, locatie en verdere waarnemingen zonder iemand aan te wijzen.",
+          "en": "The service could not determine a cause from the image and asked for the time, location and further observations without identifying a culprit."
+        },
+        {
+          "nl": "Rani plaatste een correctie met die gegevens en vroeg de groep de beschuldiging te verwijderen, niet de melding van het schuim.",
+          "en": "Rani posted a correction with those details and asked the group to remove the accusation, not the report about the foam."
+        },
+        {
+          "nl": "De rivier bleef een reden voor zorg, maar een bezorgde foto was niet langer automatisch een bewezen schuldige.",
+          "en": "The river remained a cause for concern, but a concerned photograph no longer automatically meant a proven culprit."
+        }
+      ],
+      "words": [
+        {
+          "term": "het schuim",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een massa kleine belletjes aan een oppervlak",
+            "en": "foam"
+          },
+          "example": {
+            "nl": "Toen Rani op weg naar haar werk wit schuim onder een brug zag drijven, maakte ze een foto en stuurde die naar de buurtgroep.",
+            "en": "When Rani saw white foam drifting beneath a bridge on her way to work, she took a photograph and sent it to the neighbourhood group."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "stellig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zeer zeker in een uitspraak",
+            "en": "categorical or confident"
+          },
+          "example": {
+            "nl": "Rani schrok van de stelligheid en ging na haar dienst terug om de plaats met de milieudienst te beschrijven.",
+            "en": "Rani was alarmed by the certainty and returned after her shift to describe the location to the environmental service."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de waarneming",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat iemand met de zintuigen vaststelt",
+            "en": "observation"
+          },
+          "example": {
+            "nl": "De dienst kon op basis van het beeld geen oorzaak vaststellen en vroeg om tijdstip, locatie en verdere waarnemingen zonder iemand aan te wijzen.",
+            "en": "The service could not determine a cause from the image and asked for the time, location and further observations without identifying a culprit."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoewel en een ontbrekende controle",
+            "en": "Although and a missing check"
+          },
+          "explanation": {
+            "nl": "Hoewel contrasteert de boze reacties met het feit dat de controle niet was gebeurd.",
+            "en": "Hoewel contrasts the angry reactions with the fact that the check had not happened."
+          },
+          "examples": [
+            {
+              "nl": "De eigenaar kreeg boze berichten, hoewel niemand had nagegaan aan welke kant de afvoer van zijn gebouw lag.",
+              "en": "The owner received angry messages, although nobody had checked which side the drainage from his building was on."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt de eerste foto misleidend?",
+            "en": "What makes the initial photograph misleading?"
+          },
+          "options": [
+            {
+              "nl": "Het schuim is digitaal toegevoegd.",
+              "en": "The foam has been added digitally."
+            },
+            {
+              "nl": "De weggelaten bocht vertekent de afstand.",
+              "en": "The omitted bend distorts the distance."
+            },
+            {
+              "nl": "De datum is vervalst.",
+              "en": "The date is forged."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De wasserij lijkt dichterbij dan ze in werkelijkheid staat.",
+            "en": "The laundry appears closer than it actually is."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat wil Rani behouden in de buurtgroep?",
+            "en": "What does Rani want to keep in the neighbourhood group?"
+          },
+          "options": [
+            {
+              "nl": "Het adres van elke werknemer.",
+              "en": "Every worker's address."
+            },
+            {
+              "nl": "De onbewezen beschuldiging.",
+              "en": "The unproven accusation."
+            },
+            {
+              "nl": "De feitelijke milieumelding zonder een onbewezen schuldige.",
+              "en": "The factual environmental report without an unproven culprit."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze onderscheidt het geobserveerde schuim van de vermoede veroorzaker.",
+            "en": "She distinguishes the observed foam from the suspected cause."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-kat-met-twee-kommetjes",
+      "topic_id": "animals-pets",
+      "title": {
+        "nl": "De kat met twee kommetjes",
+        "en": "The cat with two bowls"
+      },
+      "plot_key": "Neighbours competing to claim a visiting cat discover it belongs elsewhere and must explain to their children that affection is not ownership.",
+      "lines": [
+        {
+          "nl": "Drie weken lang kwam een rosse kat elke avond op het terras van Yara zitten, precies wanneer haar dochter haar huiswerk maakte.",
+          "en": "For three weeks a ginger cat came to sit on Yara's terrace every evening, exactly when her daughter did her homework."
+        },
+        {
+          "nl": "Ze gaven hem een naam en kochten een kommetje, alsof zijn regelmatige komst vanzelf betekende dat hij bij hen hoorde.",
+          "en": "They gave him a name and bought a bowl, as if his regular visits automatically meant he belonged to them."
+        },
+        {
+          "nl": "Op een middag zag Yara dezelfde kat bij de buren in een mand slapen met een andere naam op een bordje erboven.",
+          "en": "One afternoon Yara saw the same cat sleeping in a basket at the neighbours' with a different name on a sign above it."
+        },
+        {
+          "nl": "Beide gezinnen begonnen wat ongemakkelijk op te sommen hoeveel keer zij het dier al hadden eten gegeven.",
+          "en": "Both families began rather awkwardly listing how many times they had already fed the animal."
+        },
+        {
+          "nl": "Een oproep naar de eigenaar leverde een oudere man uit de volgende straat op, die het dier al dagen zocht nadat hij uit het ziekenhuis was gekomen.",
+          "en": "An appeal for the owner brought an older man from the next street, who had been looking for the animal for days after returning from hospital."
+        },
+        {
+          "nl": "De kat liep zonder aarzelen naar zijn tas, waarin geen bijzonder eten zat maar een versleten dekentje met vertrouwde geuren.",
+          "en": "The cat went without hesitation towards his bag, which contained no special food but a worn blanket with familiar smells."
+        },
+        {
+          "nl": "Yara's dochter vond het moeilijk dat aardig zijn niet automatisch betekende dat je iemand mocht houden.",
+          "en": "Yara's daughter found it hard that being kind did not automatically mean you could keep someone."
+        },
+        {
+          "nl": "Ze brachten het kommetje mee naar de man, die vertelde hoe de kat werkelijk heette en beloofde dat ze eens op bezoek mochten komen.",
+          "en": "They brought the bowl to the man, who told them the cat's real name and promised they could visit sometime."
+        }
+      ],
+      "words": [
+        {
+          "term": "ros",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met een roodbruine kleur",
+            "en": "ginger"
+          },
+          "example": {
+            "nl": "Drie weken lang kwam een rosse kat elke avond op het terras van Yara zitten, precies wanneer haar dochter haar huiswerk maakte.",
+            "en": "For three weeks a ginger cat came to sit on Yara's terrace every evening, exactly when her daughter did her homework."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "opsommen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "verschillende dingen na elkaar noemen",
+            "en": "to list"
+          },
+          "example": {
+            "nl": "Beide gezinnen begonnen wat ongemakkelijk op te sommen hoeveel keer zij het dier al hadden eten gegeven.",
+            "en": "Both families began rather awkwardly listing how many times they had already fed the animal."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de aarzeling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een moment van twijfel voordat iemand handelt",
+            "en": "hesitation"
+          },
+          "example": {
+            "nl": "De kat liep zonder aarzelen naar zijn tas, waarin geen bijzonder eten zat maar een versleten dekentje met vertrouwde geuren.",
+            "en": "The cat went without hesitation towards his bag, which contained no special food but a worn blanket with familiar smells."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof en een aanname",
+            "en": "As if and an assumption"
+          },
+          "explanation": {
+            "nl": "Alsof markeert hier een veronderstelling die later onjuist blijkt.",
+            "en": "Alsof marks an assumption here that later proves incorrect."
+          },
+          "examples": [
+            {
+              "nl": "Ze gaven hem een naam en kochten een kommetje, alsof zijn regelmatige komst vanzelf betekende dat hij bij hen hoorde.",
+              "en": "They gave him a name and bought a bowl, as if his regular visits automatically meant he belonged to them."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ondergraaft het idee dat de kat vanzelf van Yara's gezin is?",
+            "en": "What undermines the idea that the cat automatically belongs to Yara's family?"
+          },
+          "options": [
+            {
+              "nl": "De dochter maakt geen huiswerk.",
+              "en": "The daughter does not do homework."
+            },
+            {
+              "nl": "Ook de buren behandelen hem als hun kat en er blijkt een zoekende eigenaar.",
+              "en": "The neighbours also treat him as their cat and there turns out to be an owner looking for him."
+            },
+            {
+              "nl": "Het dier eet nooit.",
+              "en": "The animal never eats."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Regelmatige bezoeken blijken geen bewijs van eigendom.",
+            "en": "Regular visits turn out not to be proof of ownership."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom is de tas van de man betekenisvol?",
+            "en": "Why is the man's bag significant?"
+          },
+          "options": [
+            {
+              "nl": "De vertrouwde deken verklaart de herkenning zonder lokmiddel.",
+              "en": "The familiar blanket explains recognition without a special lure."
+            },
+            {
+              "nl": "De kat wil de tas vernielen.",
+              "en": "The cat wants to destroy the bag."
+            },
+            {
+              "nl": "Er zit een duur nieuw speeltje in.",
+              "en": "It contains an expensive new toy."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De tekst benadrukt dat het geen bijzonder eten is, maar iets vertrouwds.",
+            "en": "The text emphasises that it is not special food, but something familiar."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-uniform-zonder-held",
+      "topic_id": "history",
+      "title": {
+        "nl": "Het uniform op zolder",
+        "en": "The uniform in the attic"
+      },
+      "plot_key": "A student misidentifies a ceremonial family uniform as heroic war evidence until a tailor's invoice reveals a theatre costume with a different family history.",
+      "lines": [
+        {
+          "nl": "Voor een presentatie over familiegeschiedenis vond Hugo op zolder een donker uniform met glanzende knopen en een brede leren riem.",
+          "en": "For a presentation about family history, Hugo found a dark uniform in the attic with shiny buttons and a wide leather belt."
+        },
+        {
+          "nl": "Zijn oom herinnerde zich vaag dat zijn grootvader het gedragen had en noemde hem een moedige man uit moeilijke tijden.",
+          "en": "His uncle vaguely remembered his grandfather wearing it and called him a brave man from difficult times."
+        },
+        {
+          "nl": "Hugo bouwde al een verhaal over een onbekende held, hoewel nergens een plaats, datum of eenheid op het kledingstuk stond.",
+          "en": "Hugo was already constructing a story about an unknown hero, although no place, date or unit appeared on the garment."
+        },
+        {
+          "nl": "In een binnenzak zat echter een rekening van een kostuumatelier, samen met een foto waarop zijn grootvader naast een geschilderde kasteelpoort stond.",
+          "en": "In an inside pocket, however, there was a bill from a costume workshop, together with a photograph of his grandfather beside a painted castle gate."
+        },
+        {
+          "nl": "Na vragen in de familie bleek hij jarenlang toneel te hebben gespeeld en na zijn gewone werk decorstukken te hebben gebouwd.",
+          "en": "After asking the family, Hugo learned that his grandfather had acted for years and built sets after his ordinary job."
+        },
+        {
+          "nl": "De moedige gebeurtenis waarover de oom sprak, was een optreden waarbij hij ondanks hevige plankenkoorts voor een zieke vriend was ingevallen.",
+          "en": "The brave event the uncle mentioned was a performance in which, despite severe stage fright, he had stepped in for an ill friend."
+        },
+        {
+          "nl": "Hugo veranderde de titel van zijn presentatie en liet zien hoe gemakkelijk een indrukwekkend voorwerp een veel groter verhaal kon oproepen.",
+          "en": "Hugo changed the title of his presentation and showed how easily an impressive object could suggest a much grander story."
+        },
+        {
+          "nl": "Het uniform bleef centraal staan, maar nu als spoor van een gewone man die op een beslissende avond iets ongewoons had gedurfd.",
+          "en": "The uniform remained central, but now as a trace of an ordinary man who had dared something unusual on a decisive evening."
+        }
+      ],
+      "words": [
+        {
+          "term": "de eenheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een georganiseerde groep binnen bijvoorbeeld een leger",
+            "en": "unit"
+          },
+          "example": {
+            "nl": "Hugo bouwde al een verhaal over een onbekende held, hoewel nergens een plaats, datum of eenheid op het kledingstuk stond.",
+            "en": "Hugo was already constructing a story about an unknown hero, although no place, date or unit appeared on the garment."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de plankenkoorts",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "angst om voor een publiek op te treden",
+            "en": "stage fright"
+          },
+          "example": {
+            "nl": "De moedige gebeurtenis waarover de oom sprak, was een optreden waarbij hij ondanks hevige plankenkoorts voor een zieke vriend was ingevallen.",
+            "en": "The brave event the uncle mentioned was a performance in which, despite severe stage fright, he had stepped in for an ill friend."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "invallen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "tijdelijk de plaats van iemand anders innemen",
+            "en": "to stand in"
+          },
+          "example": {
+            "nl": "De moedige gebeurtenis waarover de oom sprak, was een optreden waarbij hij ondanks hevige plankenkoorts voor een zieke vriend was ingevallen.",
+            "en": "The brave event the uncle mentioned was a performance in which, despite severe stage fright, he had stepped in for an ill friend."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Bleek te hebben",
+            "en": "Turned out to have"
+          },
+          "explanation": {
+            "nl": "Bleek gevolgd door te hebben verwijst naar een vroeger feit dat later bekend wordt.",
+            "en": "Bleek followed by te hebben refers to an earlier fact that becomes known later."
+          },
+          "examples": [
+            {
+              "nl": "Na vragen in de familie bleek hij jarenlang toneel te hebben gespeeld en na zijn gewone werk decorstukken te hebben gebouwd.",
+              "en": "After asking the family, Hugo learned that his grandfather had acted for years and built sets after his ordinary job."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk voorwerp corrigeert Hugo's eerste interpretatie?",
+            "en": "Which object corrects Hugo's first interpretation?"
+          },
+          "options": [
+            {
+              "nl": "Een rekening van een kostuumatelier.",
+              "en": "A bill from a costume workshop."
+            },
+            {
+              "nl": "Een kaart van een veldslag.",
+              "en": "A map of a battle."
+            },
+            {
+              "nl": "Een medaille met een datum.",
+              "en": "A medal bearing a date."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De rekening en toneelfoto wijzen op theater in plaats van militaire dienst.",
+            "en": "The bill and stage photograph point to theatre rather than military service."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat behoudt de nieuwe presentatie?",
+            "en": "What does the new presentation preserve?"
+          },
+          "options": [
+            {
+              "nl": "Een onderbouwd verhaal over persoonlijke moed.",
+              "en": "A supported story about personal courage."
+            },
+            {
+              "nl": "Een exacte veldslagdatum.",
+              "en": "An exact battle date."
+            },
+            {
+              "nl": "Het bewijs dat zijn grootvader generaal was.",
+              "en": "Proof that his grandfather was a general."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De plankenkoorts en het invallen geven moed een concrete andere betekenis.",
+            "en": "The stage fright and standing in give courage a concrete different meaning."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-jurk-met-zes-zakken",
+      "topic_id": "fashion-clothing",
+      "title": {
+        "nl": "De jurk met zes zakken",
+        "en": "The dress with six pockets"
+      },
+      "plot_key": "A clothing designer's visually striking dress disappoints a performer until the designer realises useful pockets are part of the character's performance.",
+      "lines": [
+        {
+          "nl": "Ontwerpster Cato maakte voor een vertelster een lange jurk die op de affiche prachtig zou bewegen, met dunne stof en een smalle taille.",
+          "en": "Designer Cato made a long dress for a storyteller that would move beautifully on the poster, with fine fabric and a narrow waist."
+        },
+        {
+          "nl": "Tijdens het passen vroeg de vertelster waar ze haar zes voorwerpen moest steken: een sleutel, een steen en vier kleine papieren dieren.",
+          "en": "During the fitting the storyteller asked where she should put her six objects: a key, a stone and four small paper animals."
+        },
+        {
+          "nl": "Cato wees naar een tasje dat precies bij de kleur paste, maar de vrouw schudde haar hoofd en begon haar verhaal te vertellen.",
+          "en": "Cato pointed to a little bag that matched the colour exactly, but the woman shook her head and began telling her story."
+        },
+        {
+          "nl": "Bij elke wending haalde ze iets uit een andere zak van haar oude vest, zonder haar blik van het denkbeeldige publiek af te wenden.",
+          "en": "At each turn she took something from a different pocket of her old cardigan without taking her eyes off the imaginary audience."
+        },
+        {
+          "nl": "Met een tasje zou ze telkens moeten zoeken en zou de verrassing verdwijnen nog voordat het dier of de sleutel zichtbaar werd.",
+          "en": "With a bag she would have to search each time and the surprise would disappear before the animal or key became visible."
+        },
+        {
+          "nl": "Cato tekende zes verborgen zakken op verschillende hoogtes en testte ze met de echte voorwerpen, niet alleen met spelden op een paspop.",
+          "en": "Cato drew six hidden pockets at different heights and tested them with the actual objects, not just with pins on a dressmaker's dummy."
+        },
+        {
+          "nl": "Op de affiche was nauwelijks verschil te zien, maar tijdens de première leek het alsof de jurk zelf de verhalen bewaarde.",
+          "en": "The poster showed hardly any difference, but during the premiere it seemed as though the dress itself kept the stories."
+        },
+        {
+          "nl": "Na afloop vroeg Cato niet of het publiek de taille mooi had gevonden, maar of elke hand precies had gevonden wat zij nodig had.",
+          "en": "Afterwards Cato did not ask whether the audience had liked the waist, but whether each hand had found exactly what it needed."
+        }
+      ],
+      "words": [
+        {
+          "term": "de taille",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het smalle deel van het lichaam tussen borst en heupen",
+            "en": "waist"
+          },
+          "example": {
+            "nl": "Ontwerpster Cato maakte voor een vertelster een lange jurk die op de affiche prachtig zou bewegen, met dunne stof en een smalle taille.",
+            "en": "Designer Cato made a long dress for a storyteller that would move beautifully on the poster, with fine fabric and a narrow waist."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de wending",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een moment waarop een verhaal een andere richting krijgt",
+            "en": "turn in a story"
+          },
+          "example": {
+            "nl": "Bij elke wending haalde ze iets uit een andere zak van haar oude vest, zonder haar blik van het denkbeeldige publiek af te wenden.",
+            "en": "At each turn she took something from a different pocket of her old cardigan without taking her eyes off the imaginary audience."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "verborgen",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet direct zichtbaar",
+            "en": "hidden"
+          },
+          "example": {
+            "nl": "Cato tekende zes verborgen zakken op verschillende hoogtes en testte ze met de echte voorwerpen, niet alleen met spelden op een paspop.",
+            "en": "Cato drew six hidden pockets at different heights and tested them with the actual objects, not just with pins on a dressmaker's dummy."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zou voor een verwacht gevolg",
+            "en": "Would for an expected consequence"
+          },
+          "explanation": {
+            "nl": "Zou beschrijft hier wat bij het gebruik van een tasje waarschijnlijk zou gebeuren.",
+            "en": "Zou describes here what would probably happen if a bag were used."
+          },
+          "examples": [
+            {
+              "nl": "Met een tasje zou ze telkens moeten zoeken en zou de verrassing verdwijnen nog voordat het dier of de sleutel zichtbaar werd.",
+              "en": "With a bag she would have to search each time and the surprise would disappear before the animal or key became visible."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom voldoet het bijpassende tasje niet?",
+            "en": "Why is the matching bag not suitable?"
+          },
+          "options": [
+            {
+              "nl": "Zoeken zou de timing van het vertellen verstoren.",
+              "en": "Searching would disrupt the timing of the storytelling."
+            },
+            {
+              "nl": "Er passen geen papieren dieren in.",
+              "en": "No paper animals fit inside."
+            },
+            {
+              "nl": "De kleur is verboden.",
+              "en": "The colour is forbidden."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het onverwacht nemen van elk voorwerp is deel van de vertelling.",
+            "en": "Unexpectedly producing each object is part of the storytelling."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe verandert Cato's beoordeling van haar ontwerp?",
+            "en": "How does Cato's assessment of her design change?"
+          },
+          "options": [
+            {
+              "nl": "Ze stopt met kleding ontwerpen.",
+              "en": "She stops designing clothes."
+            },
+            {
+              "nl": "Ze kijkt alleen naar de affiche.",
+              "en": "She only looks at the poster."
+            },
+            {
+              "nl": "De handelingen van de draagster worden een kwaliteitsmaatstaf.",
+              "en": "The wearer's actions become a measure of quality."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Haar laatste vraag gaat over het vinden van de voorwerpen, niet over de taille.",
+            "en": "Her final question concerns finding the objects, not the waist."
+          }
+        }
+      ]
+    }
+  ]
+}

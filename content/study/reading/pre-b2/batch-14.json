@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-wekker-voor-de-broer",
+      "topic_id": "sleep-rest",
+      "title": {
+        "nl": "De wekker van haar broer",
+        "en": "Her brother's alarm"
+      },
+      "plot_key": "A guest mistakes a recurring early alarm for carelessness until she discovers it marks a distant sibling's daily work break.",
+      "lines": [
+        {
+          "nl": "Toen Fara tijdelijk bij haar zus Selma logeerde, werd ze elke ochtend om halfzes wakker van een kort muziekje achter de slaapkamerdeur.",
+          "en": "When Fara stayed temporarily with her sister Selma, she woke every morning at half past five to a short tune behind the bedroom door."
+        },
+        {
+          "nl": "Selma werkte pas vanaf negen uur en draaide zich na het signaal meestal weer om, wat Fara volkomen onlogisch vond.",
+          "en": "Selma did not start work until nine and usually turned over again after the signal, which Fara found completely illogical."
+        },
+        {
+          "nl": "Na drie nachten vroeg ze waarom iemand vrijwillig haar slaap onderbrak voor een wekker die geen enkele taak aankondigde.",
+          "en": "After three nights she asked why anyone would voluntarily interrupt her sleep for an alarm that announced no task."
+        },
+        {
+          "nl": "Selma liet een bericht zien van hun jongere broer, die aan de andere kant van de wereld in een mijnbouwkamp werkte.",
+          "en": "Selma showed a message from their younger brother, who worked in a mining camp on the other side of the world."
+        },
+        {
+          "nl": "Zijn enige vaste pauze viel daar precies samen met haar vroege ochtend, en hij had het de eerste weken moeilijk gehad met de eenzaamheid.",
+          "en": "His only regular break there coincided exactly with her early morning, and in the first weeks he had struggled with loneliness."
+        },
+        {
+          "nl": "Fara kende zijn opgewekte foto's, maar niet de korte gesprekken waarvoor Selma telkens wakker werd.",
+          "en": "Fara knew his cheerful photographs, but not the brief conversations Selma woke up for each time."
+        },
+        {
+          "nl": "Ze bespraken met hun broer andere momenten en verdeelden de gesprekken over meer familieleden, zonder zijn behoefte als lastig weg te zetten.",
+          "en": "They discussed other times with their brother and shared the conversations among more relatives without dismissing his need as troublesome."
+        },
+        {
+          "nl": "Het muziekje klonk daarna minder vaak; als Fara het toch hoorde, wist ze tenminste welk deel van de dag voor iemand anders net begon.",
+          "en": "Afterwards the tune sounded less often; when Fara did hear it, she at least knew which part of the day was just beginning for someone else."
+        }
+      ],
+      "words": [
+        {
+          "term": "onderbreken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets tijdelijk stopzetten",
+            "en": "to interrupt"
+          },
+          "example": {
+            "nl": "Na drie nachten vroeg ze waarom iemand vrijwillig haar slaap onderbrak voor een wekker die geen enkele taak aankondigde.",
+            "en": "After three nights she asked why anyone would voluntarily interrupt her sleep for an alarm that announced no task."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de eenzaamheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het gevoel alleen en zonder verbinding te zijn",
+            "en": "loneliness"
+          },
+          "example": {
+            "nl": "Zijn enige vaste pauze viel daar precies samen met haar vroege ochtend, en hij had het de eerste weken moeilijk gehad met de eenzaamheid.",
+            "en": "His only regular break there coincided exactly with her early morning, and in the first weeks he had struggled with loneliness."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "wegzetten als",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "op een beperkende manier beoordelen of benoemen",
+            "en": "to dismiss as"
+          },
+          "example": {
+            "nl": "Ze bespraken met hun broer andere momenten en verdeelden de gesprekken over meer familieleden, zonder zijn behoefte als lastig weg te zetten.",
+            "en": "They discussed other times with their brother and shared the conversations among more relatives without dismissing his need as troublesome."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarvoor bij een doel",
+            "en": "For which for a purpose"
+          },
+          "explanation": {
+            "nl": "Waarvoor verwijst naar de gesprekken als reden om wakker te worden.",
+            "en": "Waarvoor refers to the conversations as the reason for waking up."
+          },
+          "examples": [
+            {
+              "nl": "Fara kende zijn opgewekte foto's, maar niet de korte gesprekken waarvoor Selma telkens wakker werd.",
+              "en": "Fara knew his cheerful photographs, but not the brief conversations Selma woke up for each time."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke informatie mist Fara aanvankelijk?",
+            "en": "What information does Fara initially lack?"
+          },
+          "options": [
+            {
+              "nl": "Het uur waarop Selma werkt.",
+              "en": "The time when Selma works."
+            },
+            {
+              "nl": "De ligging van Selma's slaapkamer.",
+              "en": "The location of Selma's bedroom."
+            },
+            {
+              "nl": "De verborgen gesprekken met hun eenzame broer.",
+              "en": "The hidden conversations with their lonely brother."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze ziet alleen de opgewekte foto's, niet de ondersteuning op afstand.",
+            "en": "She sees only the cheerful photographs, not the support at a distance."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe passen zij de situatie aan?",
+            "en": "How do they adapt the situation?"
+          },
+          "options": [
+            {
+              "nl": "Ze blokkeren hun broer.",
+              "en": "They block their brother."
+            },
+            {
+              "nl": "Selma stopt met werken.",
+              "en": "Selma stops working."
+            },
+            {
+              "nl": "Ze zoeken andere tijden en delen het contact.",
+              "en": "They find other times and share the contact."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Meer familieleden nemen een deel van de gesprekken over.",
+            "en": "More relatives take over some of the conversations."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-stilte-na-de-verhuis",
+      "topic_id": "mental-wellbeing",
+      "title": {
+        "nl": "De stilte na de verhuis",
+        "en": "The silence after the move"
+      },
+      "plot_key": "A man celebrates escaping a noisy shared home but struggles with total silence, finding a modest recurring public ritual instead of immediately acquiring a new social identity.",
+      "lines": [
+        {
+          "nl": "Na jaren in een druk studentenhuis huurde Michiel eindelijk een studio waarin niemand zijn eten nam of midden in de nacht gitaren stemde.",
+          "en": "After years in a busy student house, Michiel finally rented a studio where nobody took his food or tuned guitars in the middle of the night."
+        },
+        {
+          "nl": "De eerste avond genoot hij van de stilte en at hij tevreden recht uit de pan, zonder op iemand te hoeven wachten.",
+          "en": "On the first evening he enjoyed the silence and happily ate straight from the pan without having to wait for anyone."
+        },
+        {
+          "nl": "Een week later zette hij tijdens het afwassen alle radioprogramma's achter elkaar op, ook die waarnaar hij nooit echt luisterde.",
+          "en": "A week later he played one radio programme after another while washing up, even those he never really listened to."
+        },
+        {
+          "nl": "Toen een vriend vroeg hoe zijn vrijheid beviel, antwoordde hij automatisch uitstekend en veranderde snel van onderwerp.",
+          "en": "When a friend asked how he liked his freedom, he automatically replied excellent and quickly changed the subject."
+        },
+        {
+          "nl": "Pas op zondag vertelde hij dat hij vooral de ongevraagde gesprekken miste die hij vroeger als storend had beschreven.",
+          "en": "Only on Sunday did he explain that he mainly missed the unsolicited conversations he had formerly described as annoying."
+        },
+        {
+          "nl": "Zijn vriend stelde geen nieuwe drukke woonvorm voor, maar nodigde hem uit om elke woensdag samen hun fietsen te onderhouden.",
+          "en": "His friend did not suggest a new busy living arrangement, but invited him to maintain their bicycles together every Wednesday."
+        },
+        {
+          "nl": "Sommige avonden bleef de studio onaangenaam stil; één afspraak in zijn agenda betekende nog niet dat dit vanzelf verdween.",
+          "en": "Some evenings the studio remained unpleasantly silent; one arrangement in his diary did not yet mean this would disappear by itself."
+        },
+        {
+          "nl": "Toch kwam Michiel op woensdag thuis met olie aan zijn handen en een verhaal dat niet uit de radio kwam.",
+          "en": "Nevertheless, on Wednesdays Michiel came home with oil on his hands and a story that had not come from the radio."
+        }
+      ],
+      "words": [
+        {
+          "term": "ongevraagd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder dat iemand erom heeft gevraagd",
+            "en": "unsolicited"
+          },
+          "example": {
+            "nl": "Pas op zondag vertelde hij dat hij vooral de ongevraagde gesprekken miste die hij vroeger als storend had beschreven.",
+            "en": "Only on Sunday did he explain that he mainly missed the unsolicited conversations he had formerly described as annoying."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de woonvorm",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een manier waarop mensen samen of alleen wonen",
+            "en": "living arrangement"
+          },
+          "example": {
+            "nl": "Zijn vriend stelde geen nieuwe drukke woonvorm voor, maar nodigde hem uit om elke woensdag samen hun fietsen te onderhouden.",
+            "en": "His friend did not suggest a new busy living arrangement, but invited him to maintain their bicycles together every Wednesday."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onderhouden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "verzorgen zodat iets goed blijft werken",
+            "en": "to maintain"
+          },
+          "example": {
+            "nl": "Zijn vriend stelde geen nieuwe drukke woonvorm voor, maar nodigde hem uit om elke woensdag samen hun fietsen te onderhouden.",
+            "en": "His friend did not suggest a new busy living arrangement, but invited him to maintain their bicycles together every Wednesday."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Nog niet dat bij een gevolgtrekking",
+            "en": "Not yet meaning that, with an inference"
+          },
+          "explanation": {
+            "nl": "Nog niet dat maakt duidelijk dat één gebeurtenis de genoemde conclusie niet automatisch ondersteunt.",
+            "en": "Nog niet dat makes clear that one event does not automatically support the stated conclusion."
+          },
+          "examples": [
+            {
+              "nl": "Sommige avonden bleef de studio onaangenaam stil; één afspraak in zijn agenda betekende nog niet dat dit vanzelf verdween.",
+              "en": "Some evenings the studio remained unpleasantly silent; one arrangement in his diary did not yet mean this would disappear by itself."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat mist Michiel onverwacht aan het studentenhuis?",
+            "en": "What does Michiel unexpectedly miss about the student house?"
+          },
+          "options": [
+            {
+              "nl": "Het verdwenen eten.",
+              "en": "The missing food."
+            },
+            {
+              "nl": "De gewone contacten die hij vroeger als hinderlijk zag.",
+              "en": "The ordinary contacts he formerly considered bothersome."
+            },
+            {
+              "nl": "Het ontbreken van een eigen kamer.",
+              "en": "The lack of a room of his own."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij noemt de ongevraagde gesprekken expliciet.",
+            "en": "He explicitly names the unsolicited conversations."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat toont het fietsenonderhoud?",
+            "en": "What does bicycle maintenance show?"
+          },
+          "options": [
+            {
+              "nl": "Een concrete terugkerende ontmoeting geeft hem iets eigens om te vertellen.",
+              "en": "A concrete recurring meeting gives him something of his own to tell."
+            },
+            {
+              "nl": "Hij wil opnieuw in het studentenhuis wonen.",
+              "en": "He wants to live in the student house again."
+            },
+            {
+              "nl": "Elke vorm van eenzaamheid is opgelost.",
+              "en": "Every form of loneliness has been solved."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn verhaal ontstaat uit een gedeelde activiteit, al blijven sommige avonden moeilijk.",
+            "en": "His story comes from a shared activity, although some evenings remain difficult."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-soep-die-niemand-proefde",
+      "topic_id": "nutrition",
+      "title": {
+        "nl": "De soep die niemand proefde",
+        "en": "The soup nobody tasted"
+      },
+      "plot_key": "A hostel cook's nutritious-looking menu fails because tired travellers cannot understand its labels, prompting tasting portions rather than deceptive names.",
+      "lines": [
+        {
+          "nl": "In de jeugdherberg waar Roos kookte, bleef de nieuwe groentesoep elke avond bijna onaangeroerd staan, terwijl de broodmand snel leeg was.",
+          "en": "At the youth hostel where Roos cooked, the new vegetable soup remained almost untouched every evening while the bread basket emptied quickly."
+        },
+        {
+          "nl": "Ze had op het bord precies geschreven welke groenten erin zaten en waarom de maaltijd volgens haar goed bij een lange wandeldag paste.",
+          "en": "She had written on the board exactly which vegetables it contained and why she thought the meal suited a long walking day."
+        },
+        {
+          "nl": "Een collega stelde voor de naam spannender te maken en minder over de ingrediënten te vertellen, zodat reizigers minder kritisch zouden kiezen.",
+          "en": "A colleague suggested making the name more exciting and saying less about the ingredients so that travellers would choose less critically."
+        },
+        {
+          "nl": "Roos vroeg enkele gasten eerst waarom ze de soep oversloegen en hoorde dat zij na een vermoeiende reis geen onbekende grote portie wilden nemen.",
+          "en": "Roos first asked some guests why they skipped the soup and heard that after an exhausting journey they did not want to take a large unfamiliar portion."
+        },
+        {
+          "nl": "Eén bezoeker kende het woord knolselderij niet en dacht dat het misschien een ingrediënt was dat hij niet lekker vond.",
+          "en": "One visitor did not know the word celeriac and thought it might be an ingredient he disliked."
+        },
+        {
+          "nl": "De volgende avond zette Roos kleine proefkopjes neer en hield ze de volledige ingrediëntenlijst ernaast, zonder de soep een andere identiteit te geven.",
+          "en": "The following evening Roos put out small tasting cups and kept the full ingredient list beside them without giving the soup a different identity."
+        },
+        {
+          "nl": "Niet iedereen koos daarna voor soep, maar wie een kom nam wist tenminste beter welke smaak hij kon verwachten.",
+          "en": "Not everyone chose soup afterwards, but anyone taking a bowl at least knew better what flavour to expect."
+        },
+        {
+          "nl": "Roos hoefde minder weg te gieten en veranderde haar bord van een kleine les in een begrijpelijke uitnodiging om iets te proeven.",
+          "en": "Roos had less to pour away and changed her board from a little lesson into an understandable invitation to taste something."
+        }
+      ],
+      "words": [
+        {
+          "term": "onaangeroerd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "nog niet aangeraakt of gegeten",
+            "en": "untouched"
+          },
+          "example": {
+            "nl": "In de jeugdherberg waar Roos kookte, bleef de nieuwe groentesoep elke avond bijna onaangeroerd staan, terwijl de broodmand snel leeg was.",
+            "en": "At the youth hostel where Roos cooked, the new vegetable soup remained almost untouched every evening while the bread basket emptied quickly."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "overslaan",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets niet nemen of niet doen",
+            "en": "to skip"
+          },
+          "example": {
+            "nl": "Roos vroeg enkele gasten eerst waarom ze de soep oversloegen en hoorde dat zij na een vermoeiende reis geen onbekende grote portie wilden nemen.",
+            "en": "Roos first asked some guests why they skipped the soup and heard that after an exhausting journey they did not want to take a large unfamiliar portion."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het proefkopje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een klein kopje om iets eerst te kunnen proeven",
+            "en": "tasting cup"
+          },
+          "example": {
+            "nl": "De volgende avond zette Roos kleine proefkopjes neer en hield ze de volledige ingrediëntenlijst ernaast, zonder de soep een andere identiteit te geven.",
+            "en": "The following evening Roos put out small tasting cups and kept the full ingredient list beside them without giving the soup a different identity."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wie als algemeen onderwerp",
+            "en": "Whoever as a general subject"
+          },
+          "explanation": {
+            "nl": "Wie een kom nam duidt elke persoon aan die aan die voorwaarde voldeed.",
+            "en": "Wie een kom nam refers to every person meeting that condition."
+          },
+          "examples": [
+            {
+              "nl": "Niet iedereen koos daarna voor soep, maar wie een kom nam wist tenminste beter welke smaak hij kon verwachten.",
+              "en": "Not everyone chose soup afterwards, but anyone taking a bowl at least knew better what flavour to expect."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kiezen sommige gasten geen soep?",
+            "en": "Why do some guests not choose soup?"
+          },
+          "options": [
+            {
+              "nl": "De soep mag niet verkocht worden.",
+              "en": "The soup may not be sold."
+            },
+            {
+              "nl": "De herberg serveert geen brood.",
+              "en": "The hostel serves no bread."
+            },
+            {
+              "nl": "Ze willen geen grote onbekende portie riskeren.",
+              "en": "They do not want to risk a large unfamiliar portion."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Vermoeidheid en onbekende ingrediënten maken de keuze onzeker.",
+            "en": "Tiredness and unfamiliar ingredients make the choice uncertain."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom houdt Roos de ingrediëntenlijst zichtbaar?",
+            "en": "Why does Roos keep the ingredient list visible?"
+          },
+          "options": [
+            {
+              "nl": "Proeven moet de keuze verduidelijken, niet informatie verbergen.",
+              "en": "Tasting should clarify the choice, not hide information."
+            },
+            {
+              "nl": "Ze wil mensen heimelijk iets anders geven.",
+              "en": "She wants to secretly give people something else."
+            },
+            {
+              "nl": "Ze heeft geen naam meer voor de soep.",
+              "en": "She no longer has a name for the soup."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze wijst het voorstel af om minder over de inhoud te zeggen.",
+            "en": "She rejects the suggestion to say less about the contents."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-notities-met-een-stem",
+      "topic_id": "study-habits",
+      "title": {
+        "nl": "Notities met een stem",
+        "en": "Notes with a voice"
+      },
+      "plot_key": "A trainee guide discovers that copied facts do not help her answer visitors' causal questions and reorganises her notes around explanations she can actually give.",
+      "lines": [
+        {
+          "nl": "Voor haar opleiding tot stadsgids had Nawal alle jaartallen uit het handboek in een schrift overgeschreven, met een aparte kleur voor elke eeuw.",
+          "en": "For her training as a city guide, Nawal had copied every date from the handbook into a notebook, with a separate colour for each century."
+        },
+        {
+          "nl": "Tijdens een oefenwandeling kon ze zonder aarzelen zeggen wanneer een oud magazijn was gebouwd, maar niet waarom het juist daar stond.",
+          "en": "During a practice walk she could say without hesitation when an old warehouse had been built, but not why it stood in that particular location."
+        },
+        {
+          "nl": "Een bezoeker wees naar het water en vroeg of de goederen misschien vroeger rechtstreeks van boten naar binnen gingen.",
+          "en": "A visitor pointed at the water and asked whether goods might once have gone directly from boats into the building."
+        },
+        {
+          "nl": "Nawal besefte dat de losse feiten in haar schrift nog geen verhaal vormden dat bij vragen van echte mensen aansloot.",
+          "en": "Nawal realised that the isolated facts in her notebook did not yet form a story connecting with real people's questions."
+        },
+        {
+          "nl": "Ze zocht de bouwtekeningen op en schreef naast elk belangrijk detail een vraag die dat detail hielp beantwoorden.",
+          "en": "She looked up the building plans and wrote beside each important detail a question that it helped answer."
+        },
+        {
+          "nl": "Daarna nam ze korte uitleg op terwijl ze langs de gevel liep, zodat ze hoorde waar haar redenering sprongen maakte.",
+          "en": "She then recorded short explanations while walking along the facade so that she could hear where her reasoning made leaps."
+        },
+        {
+          "nl": "Bij de volgende wandeling vergat ze één datum, maar kon ze met de groep reconstrueren hoe goederen door het gebouw hadden bewogen.",
+          "en": "During the next walk she forgot one date, but could reconstruct with the group how goods had moved through the building."
+        },
+        {
+          "nl": "De kleuren bleven in haar schrift staan; ze waren alleen niet meer het bewijs dat ze de stof al kon gebruiken.",
+          "en": "The colours remained in her notebook; they were simply no longer proof that she could already use the material."
+        }
+      ],
+      "words": [
+        {
+          "term": "het jaartal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een getal dat een jaar aanduidt",
+            "en": "year or date"
+          },
+          "example": {
+            "nl": "Voor haar opleiding tot stadsgids had Nawal alle jaartallen uit het handboek in een schrift overgeschreven, met een aparte kleur voor elke eeuw.",
+            "en": "For her training as a city guide, Nawal had copied every date from the handbook into a notebook, with a separate colour for each century."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "reconstrueren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "uit gegevens opnieuw samenstellen hoe iets was",
+            "en": "to reconstruct"
+          },
+          "example": {
+            "nl": "Bij de volgende wandeling vergat ze één datum, maar kon ze met de groep reconstrueren hoe goederen door het gebouw hadden bewogen.",
+            "en": "During the next walk she forgot one date, but could reconstruct with the group how goods had moved through the building."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de redenering",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een reeks gedachten die tot een uitleg of conclusie leidt",
+            "en": "reasoning"
+          },
+          "example": {
+            "nl": "Daarna nam ze korte uitleg op terwijl ze langs de gevel liep, zodat ze hoorde waar haar redenering sprongen maakte.",
+            "en": "She then recorded short explanations while walking along the facade so that she could hear where her reasoning made leaps."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zodat voor zelfcontrole",
+            "en": "So that for checking one's own work"
+          },
+          "explanation": {
+            "nl": "Zodat geeft hier het doel van het opnemen weer: sprongen in de uitleg horen.",
+            "en": "Zodat expresses the purpose of recording here: hearing gaps in the explanation."
+          },
+          "examples": [
+            {
+              "nl": "Daarna nam ze korte uitleg op terwijl ze langs de gevel liep, zodat ze hoorde waar haar redenering sprongen maakte.",
+              "en": "She then recorded short explanations while walking along the facade so that she could hear where her reasoning made leaps."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat mist Nawal tijdens de eerste oefenwandeling?",
+            "en": "What does Nawal lack during the first practice walk?"
+          },
+          "options": [
+            {
+              "nl": "Een lijst met jaartallen.",
+              "en": "A list of dates."
+            },
+            {
+              "nl": "Een gekleurd schrift.",
+              "en": "A coloured notebook."
+            },
+            {
+              "nl": "Verbanden die de plaats en functie verklaren.",
+              "en": "Connections explaining the location and function."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze kent wanneer, maar kan waarom het magazijn daar stond niet uitleggen.",
+            "en": "She knows when, but cannot explain why the warehouse stood there."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke verandering maakt haar voorbereiding bruikbaarder?",
+            "en": "Which change makes her preparation more useful?"
+          },
+          "options": [
+            {
+              "nl": "De gevel uitsluitend fotograferen.",
+              "en": "Only photographing the facade."
+            },
+            {
+              "nl": "Alle feiten weglaten.",
+              "en": "Omitting all facts."
+            },
+            {
+              "nl": "Feiten koppelen aan vragen en haar uitleg beluisteren.",
+              "en": "Connecting facts to questions and listening to her explanation."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De nieuwe notities en opnames toetsen of ze met de informatie kan redeneren.",
+            "en": "The new notes and recordings check whether she can reason with the information."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-antwoord-met-een-vraagteken",
+      "topic_id": "exams-assessments",
+      "title": {
+        "nl": "Een antwoord met een vraagteken",
+        "en": "An answer with a question mark"
+      },
+      "plot_key": "A student misreads uncertainty about one data point as failure in an oral assessment until a follow-up requires her to distinguish what is known from what remains uncertain.",
+      "lines": [
+        {
+          "nl": "Tijdens een mondeling examen moest Liv uitleggen waarom de bezoekersaantallen van een museum waren veranderd nadat de openingsuren waren uitgebreid.",
+          "en": "During an oral examination Liv had to explain why a museum's visitor numbers had changed after its opening hours were extended."
+        },
+        {
+          "nl": "Ze had de grafiek zorgvuldig voorbereid en vertelde zelfverzekerd dat langer open zijn altijd meer bezoekers opleverde.",
+          "en": "She had prepared the graph carefully and confidently said that longer opening always produced more visitors."
+        },
+        {
+          "nl": "De docent wees naar een maand waarin het aantal juist daalde en vroeg welke andere omstandigheden daar een rol konden spelen.",
+          "en": "The teacher pointed to a month when the number actually fell and asked what other circumstances might have played a role."
+        },
+        {
+          "nl": "Liv dacht dat haar hele antwoord nu verkeerd was en begon de eerder gegeven cijfers haastig opnieuw te noemen.",
+          "en": "Liv thought her entire answer was now wrong and hurriedly began repeating the figures she had already given."
+        },
+        {
+          "nl": "Pas toen de docent vroeg wat ze op basis van de grafiek wel en niet kon vaststellen, durfde ze haar algemene uitspraak te beperken.",
+          "en": "Only when the teacher asked what she could and could not establish from the graph did she dare to limit her general statement."
+        },
+        {
+          "nl": "Ze legde uit dat het totaal was gestegen, maar dat zij zonder informatie over tentoonstellingen en vakanties niet elke maand kon verklaren.",
+          "en": "She explained that the total had increased, but that without information about exhibitions and holidays she could not explain every month."
+        },
+        {
+          "nl": "Na afloop bleef Liv ontevreden over haar eerste stellige zin, al begreep ze beter waarom een vraagteken niet hetzelfde was als geen antwoord.",
+          "en": "Afterwards Liv remained dissatisfied with her first categorical sentence, although she better understood why a question mark was not the same as no answer."
+        },
+        {
+          "nl": "Bij haar volgende voorbereiding noteerde ze naast elke conclusie ook welke gegevens ze nodig zou hebben om die te controleren.",
+          "en": "In preparing next time she also noted beside every conclusion what data she would need to check it."
+        }
+      ],
+      "words": [
+        {
+          "term": "zelfverzekerd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met vertrouwen in zichzelf",
+            "en": "confident"
+          },
+          "example": {
+            "nl": "Ze had de grafiek zorgvuldig voorbereid en vertelde zelfverzekerd dat langer open zijn altijd meer bezoekers opleverde.",
+            "en": "She had prepared the graph carefully and confidently said that longer opening always produced more visitors."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "vaststellen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "op grond van gegevens bepalen",
+            "en": "to establish"
+          },
+          "example": {
+            "nl": "Pas toen de docent vroeg wat ze op basis van de grafiek wel en niet kon vaststellen, durfde ze haar algemene uitspraak te beperken.",
+            "en": "Only when the teacher asked what she could and could not establish from the graph did she dare to limit her general statement."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "stellig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder twijfel geformuleerd",
+            "en": "categorical"
+          },
+          "example": {
+            "nl": "Na afloop bleef Liv ontevreden over haar eerste stellige zin, al begreep ze beter waarom een vraagteken niet hetzelfde was als geen antwoord.",
+            "en": "Afterwards Liv remained dissatisfied with her first categorical sentence, although she better understood why a question mark was not the same as no answer."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wel en niet als begrenzing",
+            "en": "Can and cannot as a limit"
+          },
+          "explanation": {
+            "nl": "Wel en niet zetten twee groepen informatie tegenover elkaar: wat onderbouwd is en wat onzeker blijft.",
+            "en": "Wel and niet contrast two groups of information: what is supported and what remains uncertain."
+          },
+          "examples": [
+            {
+              "nl": "Pas toen de docent vroeg wat ze op basis van de grafiek wel en niet kon vaststellen, durfde ze haar algemene uitspraak te beperken.",
+              "en": "Only when the teacher asked what she could and could not establish from the graph did she dare to limit her general statement."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom herhaalt Liv eerst haar cijfers?",
+            "en": "Why does Liv initially repeat her figures?"
+          },
+          "options": [
+            {
+              "nl": "Ze heeft geen grafiek gekregen.",
+              "en": "She has not received a graph."
+            },
+            {
+              "nl": "Ze begrijpt de kritische vraag als een afwijzing van haar hele antwoord.",
+              "en": "She interprets the critical question as rejection of her entire answer."
+            },
+            {
+              "nl": "Ze moet alle maanden uit het hoofd leren.",
+              "en": "She has to learn all months by heart."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De afwijkende maand laat haar denken dat alles verkeerd was.",
+            "en": "The exceptional month makes her think everything was wrong."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke betere conclusie formuleert zij?",
+            "en": "What better conclusion does she formulate?"
+          },
+          "options": [
+            {
+              "nl": "Het totaal stijgt, maar afzonderlijke maanden vragen meer informatie.",
+              "en": "The total rises, but individual months require more information."
+            },
+            {
+              "nl": "Openingsuren hebben bewezen nooit invloed.",
+              "en": "Opening hours have been proven never to matter."
+            },
+            {
+              "nl": "Alle maanden tonen altijd dezelfde stijging.",
+              "en": "All months always show the same increase."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze onderscheidt het zichtbare totaal van oorzaken die de grafiek alleen niet verklaart.",
+            "en": "She distinguishes the visible total from causes the graph alone does not explain."
+          }
+        }
+      ]
+    }
+  ]
+}

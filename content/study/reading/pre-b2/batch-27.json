@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-zes-mannen-met-een-snor",
+      "topic_id": "transportation",
+      "title": {
+        "nl": "Zes mannen met dezelfde snor",
+        "en": "Six men with the same moustache"
+      },
+      "plot_key": "A tired tram passenger thinks the same stranger keeps reappearing until a theatre gathering explains six identical costumes and one genuine coincidence.",
+      "lines": [
+        {
+          "nl": "Na een lange werkdag stapte Seb op de tram en ging tegenover een man met een opvallend brede snor en een rode paraplu zitten.",
+          "en": "After a long working day, Seb boarded the tram and sat opposite a man with an unusually wide moustache and a red umbrella."
+        },
+        {
+          "nl": "Bij de volgende halte stapte de man uit, maar twee haltes verder zag Seb hem opnieuw door dezelfde deur binnenkomen.",
+          "en": "At the next stop the man got off, but two stops later Seb saw him come in through the same door again."
+        },
+        {
+          "nl": "Toen een derde man met precies dezelfde snor achter hem plaatsnam, begon Seb zich af te vragen of hij ongemerkt in een verborgen camera was beland.",
+          "en": "When a third man with exactly the same moustache sat behind him, Seb began wondering whether he had unknowingly entered a hidden-camera programme."
+        },
+        {
+          "nl": "Hij keek zo nadrukkelijk om dat de man tegenover hem vroeg of er soms iets aan zijn kostuum loshing.",
+          "en": "He looked around so conspicuously that the man opposite asked whether something had come loose from his costume."
+        },
+        {
+          "nl": "Een toneelvereniging verzamelde die avond voor een voorstelling met zes identieke hotelbedienden, ieder met een rode paraplu en een valse snor.",
+          "en": "A theatre group was gathering that evening for a play with six identical hotel attendants, each with a red umbrella and a false moustache."
+        },
+        {
+          "nl": "Seb moest lachen en wees op de eerste man, die aan het andere uiteinde van de tram opnieuw zichtbaar was geworden.",
+          "en": "Seb had to laugh and pointed to the first man, who had become visible again at the other end of the tram."
+        },
+        {
+          "nl": "Die bleek geen acteur te zijn, maar een gewone reiziger die met een echte snor en toevallig hetzelfde model paraplu bijzonder ongelukkig gekozen had.",
+          "en": "He turned out not to be an actor but an ordinary traveller whose real moustache and coincidentally identical umbrella had made a particularly unfortunate combination."
+        },
+        {
+          "nl": "Bij het uitstappen kreeg Seb een uitnodiging mee; hij zei dat hij het begin van de voorstelling vermoedelijk al had gezien.",
+          "en": "When getting off, Seb received an invitation; he said he suspected he had already seen the beginning of the play."
+        }
+      ],
+      "words": [
+        {
+          "term": "ongemerkt",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder opgemerkt of beseft te worden",
+            "en": "unnoticed"
+          },
+          "example": {
+            "nl": "Toen een derde man met precies dezelfde snor achter hem plaatsnam, begon Seb zich af te vragen of hij ongemerkt in een verborgen camera was beland.",
+            "en": "When a third man with exactly the same moustache sat behind him, Seb began wondering whether he had unknowingly entered a hidden-camera programme."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "identiek",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "volledig hetzelfde",
+            "en": "identical"
+          },
+          "example": {
+            "nl": "Een toneelvereniging verzamelde die avond voor een voorstelling met zes identieke hotelbedienden, ieder met een rode paraplu en een valse snor.",
+            "en": "A theatre group was gathering that evening for a play with six identical hotel attendants, each with a red umbrella and a false moustache."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de hotelbediende",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die gasten in een hotel helpt",
+            "en": "hotel attendant"
+          },
+          "example": {
+            "nl": "Een toneelvereniging verzamelde die avond voor een voorstelling met zes identieke hotelbedienden, ieder met een rode paraplu en een valse snor.",
+            "en": "A theatre group was gathering that evening for a play with six identical hotel attendants, each with a red umbrella and a false moustache."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Vermoedelijk bij onzekerheid",
+            "en": "Presumably for uncertainty"
+          },
+          "explanation": {
+            "nl": "Vermoedelijk maakt van zijn laatste opmerking een speelse inschatting en geen letterlijk feit.",
+            "en": "Vermoedelijk makes his final remark a playful guess rather than a literal fact."
+          },
+          "examples": [
+            {
+              "nl": "Bij het uitstappen kreeg Seb een uitnodiging mee; hij zei dat hij het begin van de voorstelling vermoedelijk al had gezien.",
+              "en": "When getting off, Seb received an invitation; he said he suspected he had already seen the beginning of the play."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verklaart de meeste gelijke snorren?",
+            "en": "What explains most of the identical moustaches?"
+          },
+          "options": [
+            {
+              "nl": "Een toneelkostuum voor gelijke personages.",
+              "en": "A stage costume for identical characters."
+            },
+            {
+              "nl": "Seb heeft een spiegel meegenomen.",
+              "en": "Seb has brought a mirror."
+            },
+            {
+              "nl": "Een nieuwe regel van de tram.",
+              "en": "A new tram rule."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De vereniging speelt zes identieke hotelbedienden.",
+            "en": "The group is playing six identical hotel attendants."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar zit de extra verrassing?",
+            "en": "Where is the additional surprise?"
+          },
+          "options": [
+            {
+              "nl": "De tram is leeg.",
+              "en": "The tram is empty."
+            },
+            {
+              "nl": "Niemand heeft een paraplu.",
+              "en": "Nobody has an umbrella."
+            },
+            {
+              "nl": "Eén passend uitziende man hoort niet bij de voorstelling.",
+              "en": "One matching-looking man does not belong to the play."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zijn echte snor en toevallige paraplu laten hem onbedoeld op de acteurs lijken.",
+            "en": "His real moustache and coincidental umbrella make him unintentionally resemble the actors."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-pakje-met-de-verkeerde-naam",
+      "topic_id": "shopping",
+      "title": {
+        "nl": "Het pakje met de verkeerde naam",
+        "en": "The parcel with the wrong name"
+      },
+      "plot_key": "A shopper thinks an anonymous gift exposes a secret admirer, but the shop’s matching wrapping paper links two unrelated packages and a forgotten kindness.",
+      "lines": [
+        {
+          "nl": "Toen Veerle haar aankoop in de cadeauwinkel ophaalde, zat er een klein pakje bij met haar voornaam en de woorden voor die ene middag.",
+          "en": "When Veerle collected her purchase from the gift shop, there was a small parcel with her first name and the words for that afternoon."
+        },
+        {
+          "nl": "Ze dacht onmiddellijk aan een vroegere collega met wie zij tijdens een regenachtige lunch over een mogelijk nieuw leven had gesproken.",
+          "en": "She immediately thought of a former colleague with whom she had discussed a possible new life over a rainy lunch."
+        },
+        {
+          "nl": "In het pakje lag echter geen romantisch voorwerp, maar een doos eenvoudige kleurpotloden en een kinderlijk getekende kikker.",
+          "en": "The parcel, however, contained no romantic object, but a box of simple coloured pencils and a childlike drawing of a frog."
+        },
+        {
+          "nl": "Veerle belde de winkel om te vragen of zij het verkeerde geschenk had meegekregen, waarop de verkoopster begon te zoeken tussen twee gelijk verpakte bestellingen.",
+          "en": "Veerle called the shop to ask whether she had received the wrong gift, at which the assistant began searching among two identically wrapped orders."
+        },
+        {
+          "nl": "Het pakje bleek wel degelijk voor haar, maar was achtergelaten door een moeder wier zoon zij maanden eerder tijdens een lange wachttijd had beziggehouden.",
+          "en": "The parcel really was for her, but had been left by a mother whose son she had entertained during a long wait months earlier."
+        },
+        {
+          "nl": "Zij had toen op de achterkant van een kasticket een kikker leren tekenen, terwijl de moeder een moeilijk telefoongesprek voerde.",
+          "en": "She had taught him to draw a frog on the back of a receipt while his mother made a difficult phone call."
+        },
+        {
+          "nl": "De andere bestelling was inderdaad een liefdesgeschenk, wat Veerle na haar grote veronderstelling bijna teleurstellend voor de winkelverkoopster vond.",
+          "en": "The other order was indeed a love gift, which after her grand assumption Veerle almost found disappointing for the shop assistant."
+        },
+        {
+          "nl": "Thuis zette zij de kikker op haar bureau en schreef een bedankje terug voor een middag die zij zelf nauwelijks als bijzonder had onthouden.",
+          "en": "At home she placed the frog on her desk and wrote back thanking them for an afternoon she herself had barely remembered as special."
+        }
+      ],
+      "words": [
+        {
+          "term": "het kasticket",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het betaalbewijs dat je bij een aankoop krijgt",
+            "en": "receipt"
+          },
+          "example": {
+            "nl": "Zij had toen op de achterkant van een kasticket een kikker leren tekenen, terwijl de moeder een moeilijk telefoongesprek voerde.",
+            "en": "She had taught him to draw a frog on the back of a receipt while his mother made a difficult phone call."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bezighouden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iemand met een activiteit laten bezig zijn",
+            "en": "to keep occupied"
+          },
+          "example": {
+            "nl": "Het pakje bleek wel degelijk voor haar, maar was achtergelaten door een moeder wier zoon zij maanden eerder tijdens een lange wachttijd had beziggehouden.",
+            "en": "The parcel really was for her, but had been left by a mother whose son she had entertained during a long wait months earlier."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de veronderstelling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een gedachte die als mogelijk waar wordt aangenomen",
+            "en": "assumption"
+          },
+          "example": {
+            "nl": "De andere bestelling was inderdaad een liefdesgeschenk, wat Veerle na haar grote veronderstelling bijna teleurstellend voor de winkelverkoopster vond.",
+            "en": "The other order was indeed a love gift, which after her grand assumption Veerle almost found disappointing for the shop assistant."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wier bij een persoonlijke relatie",
+            "en": "Whose with a personal relationship"
+          },
+          "explanation": {
+            "nl": "Wier verwijst naar de moeder en geeft aan dat het om haar zoon gaat.",
+            "en": "Wier refers to the mother and indicates that the boy is her son."
+          },
+          "examples": [
+            {
+              "nl": "Het pakje bleek wel degelijk voor haar, maar was achtergelaten door een moeder wier zoon zij maanden eerder tijdens een lange wachttijd had beziggehouden.",
+              "en": "The parcel really was for her, but had been left by a mother whose son she had entertained during a long wait months earlier."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wie heeft het pakje achtergelaten?",
+            "en": "Who left the parcel?"
+          },
+          "options": [
+            {
+              "nl": "Een moeder die haar kleine hulp onthouden heeft.",
+              "en": "A mother who remembered her small act of help."
+            },
+            {
+              "nl": "Een volkomen onbekende acteur.",
+              "en": "A completely unknown actor."
+            },
+            {
+              "nl": "Haar vroegere collega.",
+              "en": "Her former colleague."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De getekende kikker verwijst naar het bezighouden van de zoon.",
+            "en": "The drawn frog refers to keeping the son occupied."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verschilt tussen Veerles herinnering en die van de moeder?",
+            "en": "What differs between Veerle's memory and the mother's?"
+          },
+          "options": [
+            {
+              "nl": "Veerle had de kikker gekocht.",
+              "en": "Veerle had bought the frog."
+            },
+            {
+              "nl": "Voor de moeder had het gewone gebaar meer betekenis.",
+              "en": "The ordinary gesture meant more to the mother."
+            },
+            {
+              "nl": "De moeder kende Veerles voornaam niet.",
+              "en": "The mother did not know Veerle's first name."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Veerle had de middag nauwelijks als bijzonder bewaard, de moeder wel.",
+            "en": "Veerle had barely remembered the afternoon as special, while the mother had."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-kamer-met-een-gesloten-doos",
+      "topic_id": "housing",
+      "title": {
+        "nl": "De kamer met de gesloten doos",
+        "en": "The room with the closed box"
+      },
+      "plot_key": "A new flatmate fears a box labelled do not open hides a troubling secret, but it contains an unfinished model town whose maker needs privacy from premature judgement.",
+      "lines": [
+        {
+          "nl": "In de gezamenlijke berging van haar nieuwe appartement vond Noor een grote doos waarop haar huisgenoot met dikke letters niet openen had geschreven.",
+          "en": "In the shared storage room of her new flat, Noor found a large box on which her housemate had written do not open in thick letters."
+        },
+        {
+          "nl": "Elke avond schoof hij die doos naar zijn kamer en bracht haar later voorzichtig terug, zonder te vertellen wat erin zat.",
+          "en": "Every evening he moved that box to his room and later carefully brought it back without saying what it contained."
+        },
+        {
+          "nl": "Noor begon allerlei onwaarschijnlijke verklaringen te bedenken en merkte dat de gewone stilte tijdens het ontbijt ineens verdacht klonk.",
+          "en": "Noor began imagining all kinds of unlikely explanations and noticed that the ordinary breakfast silence suddenly sounded suspicious."
+        },
+        {
+          "nl": "Ze opende de doos niet, maar vroeg op zaterdag of er iets in de berging stond waarover zij samen afspraken moesten maken.",
+          "en": "She did not open the box, but on Saturday asked whether the storage room contained anything they needed to agree on together."
+        },
+        {
+          "nl": "Haar huisgenoot keek beschaamd en liet haar uiteindelijk een miniatuurstad zien die hij voor zijn jonge dochter aan het bouwen was.",
+          "en": "Her housemate looked embarrassed and eventually showed her a miniature town he was building for his young daughter."
+        },
+        {
+          "nl": "Hij werkte er al weken aan en wilde niet dat iemand halverwege zou vertellen dat de scheve huizen toch nooit mooi genoeg konden worden.",
+          "en": "He had been working on it for weeks and did not want someone halfway through to say the crooked houses could never become beautiful enough anyway."
+        },
+        {
+          "nl": "Noor vroeg alleen waar het station moest komen en leende hem een kleine lamp voor de nog donkere hoofdstraat.",
+          "en": "Noor only asked where the station should go and lent him a small lamp for the still-dark main street."
+        },
+        {
+          "nl": "De doos bleef gesloten wanneer hij afwezig was; nu betekende dat voor haar geen dreigend geheim meer, maar ruimte voor iets dat nog niet aan publiek toe was.",
+          "en": "The box stayed closed when he was absent; now to her that meant no threatening secret, but room for something not yet ready for an audience."
+        }
+      ],
+      "words": [
+        {
+          "term": "de berging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een ruimte om spullen te bewaren",
+            "en": "storage room"
+          },
+          "example": {
+            "nl": "In de gezamenlijke berging van haar nieuwe appartement vond Noor een grote doos waarop haar huisgenoot met dikke letters niet openen had geschreven.",
+            "en": "In the shared storage room of her new flat, Noor found a large box on which her housemate had written do not open in thick letters."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onwaarschijnlijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "weinig aannemelijk",
+            "en": "unlikely"
+          },
+          "example": {
+            "nl": "Noor begon allerlei onwaarschijnlijke verklaringen te bedenken en merkte dat de gewone stilte tijdens het ontbijt ineens verdacht klonk.",
+            "en": "Noor began imagining all kinds of unlikely explanations and noticed that the ordinary breakfast silence suddenly sounded suspicious."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "dreigend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "alsof er iets ongunstigs kan gebeuren",
+            "en": "threatening"
+          },
+          "example": {
+            "nl": "De doos bleef gesloten wanneer hij afwezig was; nu betekende dat voor haar geen dreigend geheim meer, maar ruimte voor iets dat nog niet aan publiek toe was.",
+            "en": "The box stayed closed when he was absent; now to her that meant no threatening secret, but room for something not yet ready for an audience."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Geen ... maar ... voor herinterpretatie",
+            "en": "Not ... but ... for reinterpretation"
+          },
+          "explanation": {
+            "nl": "De tegenstelling vervangt een bedreigende uitleg door een andere betekenis van dezelfde gesloten doos.",
+            "en": "The contrast replaces a threatening explanation with another meaning of the same closed box."
+          },
+          "examples": [
+            {
+              "nl": "De doos bleef gesloten wanneer hij afwezig was; nu betekende dat voor haar geen dreigend geheim meer, maar ruimte voor iets dat nog niet aan publiek toe was.",
+              "en": "The box stayed closed when he was absent; now to her that meant no threatening secret, but room for something not yet ready for an audience."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom houdt de huisgenoot zijn werk verborgen?",
+            "en": "Why does the housemate keep his work hidden?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil het appartement verkopen.",
+              "en": "He wants to sell the flat."
+            },
+            {
+              "nl": "Hij heeft iets uit Noors kamer genomen.",
+              "en": "He has taken something from Noor's room."
+            },
+            {
+              "nl": "Hij vreest een vroeg oordeel over iets dat nog onaf is.",
+              "en": "He fears an early judgement on something still unfinished."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij wil geen ontmoedigende beoordeling terwijl hij nog aan de stad werkt.",
+            "en": "He wants no discouraging assessment while still working on the town."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe respecteert Noor de grens na het gesprek?",
+            "en": "How does Noor respect the boundary after the conversation?"
+          },
+          "options": [
+            {
+              "nl": "Ze eist alle huizen op.",
+              "en": "She demands all the houses."
+            },
+            {
+              "nl": "Ze laat de doos dicht wanneer hij er niet is.",
+              "en": "She leaves the box closed when he is not there."
+            },
+            {
+              "nl": "Ze vertelt iedereen wat er in de doos zit.",
+              "en": "She tells everyone what is in the box."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Begrijpen waarom iets privé blijft, geeft haar geen onbeperkte toegang.",
+            "en": "Understanding why something stays private does not give her unlimited access."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-twee-steden-op-een-kaartje",
+      "topic_id": "cities-countries",
+      "title": {
+        "nl": "Twee steden op één kaartje",
+        "en": "Two cities on one card"
+      },
+      "plot_key": "A family treats a daughter’s cross-border commute as leaving home permanently until she maps her weekly life rather than choosing one city to represent belonging.",
+      "lines": [
+        {
+          "nl": "Toen architecte Lotte werk vond in een stad over de grens, vertelde haar vader aan iedereen dat zijn dochter naar het buitenland vertrok.",
+          "en": "When architect Lotte found work in a city across the border, her father told everyone his daughter was moving abroad."
+        },
+        {
+          "nl": "Zij bleef voorlopig in Kortrijk wonen en reisde enkele dagen per week heen en weer, maar in zijn verhaal was haar afscheid al begonnen.",
+          "en": "She continued living in Kortrijk for now and travelled back and forth several days a week, but in his account her farewell had already begun."
+        },
+        {
+          "nl": "Bij een familiefeest vroeg een tante hoe het voelde om niet meer echt bij hun stad te horen, waarop Lotte onverwacht boos werd.",
+          "en": "At a family celebration an aunt asked how it felt no longer really to belong to their city, at which Lotte unexpectedly became angry."
+        },
+        {
+          "nl": "Haar dagen bevatten inmiddels twee stations, twee groepen collega's en verschillende plekken waar iemand wist hoe zij haar koffie dronk.",
+          "en": "Her days now contained two stations, two groups of colleagues and different places where someone knew how she took her coffee."
+        },
+        {
+          "nl": "Dat maakte haar leven ingewikkelder, zei ze, maar niet minder echt op de ene plaats omdat zij ook elders iets opbouwde.",
+          "en": "That made her life more complicated, she said, but no less real in one place because she was building something elsewhere too."
+        },
+        {
+          "nl": "Haar vader gaf toe dat hij vooral bang was dat de nieuwe routines zijn gewone zondagsbezoek langzaam zouden vervangen.",
+          "en": "Her father admitted he was mainly afraid the new routines would slowly replace his usual Sunday visit."
+        },
+        {
+          "nl": "Ze spraken concrete momenten af en tekenden op de achterkant van een kaartje haar werkweek, die niet netjes binnen één stadsnaam paste.",
+          "en": "They agreed on concrete times and drew her working week on the back of a card, which did not fit neatly within one city's name."
+        },
+        {
+          "nl": "Daarna vertelde hij nog steeds trots over haar nieuwe baan, maar vroeg hij eerst waar zij werkelijk naartoe ging voordat hij een afscheid organiseerde.",
+          "en": "Afterwards he still spoke proudly about her new job, but first asked where she was actually going before organising a farewell."
+        }
+      ],
+      "words": [
+        {
+          "term": "elders",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "op een andere plaats",
+            "en": "elsewhere"
+          },
+          "example": {
+            "nl": "Dat maakte haar leven ingewikkelder, zei ze, maar niet minder echt op de ene plaats omdat zij ook elders iets opbouwde.",
+            "en": "That made her life more complicated, she said, but no less real in one place because she was building something elsewhere too."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "opbouwen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "geleidelijk iets ontwikkelen",
+            "en": "to build up"
+          },
+          "example": {
+            "nl": "Dat maakte haar leven ingewikkelder, zei ze, maar niet minder echt op de ene plaats omdat zij ook elders iets opbouwde.",
+            "en": "That made her life more complicated, she said, but no less real in one place because she was building something elsewhere too."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "inmiddels",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "ondertussen, na enige tijd",
+            "en": "by now"
+          },
+          "example": {
+            "nl": "Haar dagen bevatten inmiddels twee stations, twee groepen collega's en verschillende plekken waar iemand wist hoe zij haar koffie dronk.",
+            "en": "Her days now contained two stations, two groups of colleagues and different places where someone knew how she took her coffee."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet minder ... omdat ook ...",
+            "en": "No less ... because also ..."
+          },
+          "explanation": {
+            "nl": "De zin ontkent dat verbondenheid op één plaats automatisch vermindert door verbondenheid elders.",
+            "en": "The sentence denies that belonging in one place automatically decreases through belonging elsewhere."
+          },
+          "examples": [
+            {
+              "nl": "Dat maakte haar leven ingewikkelder, zei ze, maar niet minder echt op de ene plaats omdat zij ook elders iets opbouwde.",
+              "en": "That made her life more complicated, she said, but no less real in one place because she was building something elsewhere too."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat bedoelt de vader achter zijn verhaal over vertrek?",
+            "en": "What does the father mean beneath his story about leaving?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft haar adres niet gekregen.",
+              "en": "He has not received her address."
+            },
+            {
+              "nl": "Hij wil zelf architect worden.",
+              "en": "He wants to become an architect himself."
+            },
+            {
+              "nl": "Hij vreest het verlies van hun vertrouwde contact.",
+              "en": "He fears losing their familiar contact."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij noemt de gewone zondagsbezoeken die zouden kunnen verdwijnen.",
+            "en": "He names the usual Sunday visits that might disappear."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt het kaartje zichtbaar?",
+            "en": "What does the card make visible?"
+          },
+          "options": [
+            {
+              "nl": "Zij woont definitief nergens.",
+              "en": "She permanently lives nowhere."
+            },
+            {
+              "nl": "Zij heeft haar baan opgezegd.",
+              "en": "She has resigned from her job."
+            },
+            {
+              "nl": "Haar leven is verdeeld over meerdere echte plaatsen en routines.",
+              "en": "Her life is spread across several real places and routines."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De werkweek past niet in één eenvoudig verhaal van blijven of vertrekken.",
+            "en": "The working week does not fit one simple story of staying or leaving."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-euro-voor-de-familiefilm",
+      "topic_id": "money-finance",
+      "title": {
+        "nl": "Een euro voor de familiefilm",
+        "en": "One euro for the family film"
+      },
+      "plot_key": "A family jokes about paying a young filmmaker in exposure until a detailed request for shared costs reveals whose hobby has become unpaid work.",
+      "lines": [
+        {
+          "nl": "Wanneer haar familie een feest organiseerde, maakte filmstudent Mira altijd de video en kreeg zij achteraf veel complimenten over haar talent.",
+          "en": "Whenever her family organised a celebration, film student Mira always made the video and afterwards received many compliments on her talent."
+        },
+        {
+          "nl": "Voor het volgende huwelijk vroeg men haar om ook interviews, muziek en een lange montage te verzorgen, uiteraard omdat ze dat zelf zo graag deed.",
+          "en": "For the next wedding she was asked to provide interviews, music and a long edit too, naturally because she enjoyed it so much herself."
+        },
+        {
+          "nl": "Mira antwoordde met een bescheiden kostenoverzicht voor materiaalhuur en vervoer, waarna een oom grapte dat familie tegenwoordig blijkbaar een factuur kreeg.",
+          "en": "Mira replied with a modest breakdown of equipment hire and transport costs, after which an uncle joked that family apparently received an invoice nowadays."
+        },
+        {
+          "nl": "Ze wilde het overzicht intrekken, maar vroeg eerst wie de bloemen en de zaal gratis zou leveren omdat de makers hun werk ook leuk vonden.",
+          "en": "She wanted to withdraw the breakdown, but first asked who would supply the flowers and venue free because their makers enjoyed their work too."
+        },
+        {
+          "nl": "Daarna legde ze uit hoeveel avonden het monteren zou kosten en welke studieopdrachten zij daarvoor moest uitstellen.",
+          "en": "She then explained how many evenings editing would take and which study assignments she would have to postpone for it."
+        },
+        {
+          "nl": "De familie werd het niet over elke vergoeding eens, maar beperkte de opdracht en verdeelde de werkelijk gemaakte kosten over de organisatoren.",
+          "en": "The family did not agree on every payment, but limited the assignment and shared the actual costs among the organisers."
+        },
+        {
+          "nl": "Mira maakte een kortere film en zat tijdens het eten voor het eerst zelf aan tafel in plaats van steeds het volgende emotionele moment te moeten zoeken.",
+          "en": "Mira made a shorter film and for the first time sat at the table herself during dinner instead of constantly having to find the next emotional moment."
+        },
+        {
+          "nl": "De complimenten bleven welkom, alleen hoefden zij niet meer tegelijk de huur van een camera en al haar beschikbare avonden te betalen.",
+          "en": "The compliments remained welcome; they simply no longer had to pay for the camera hire and all her available evenings at the same time."
+        }
+      ],
+      "words": [
+        {
+          "term": "het kostenoverzicht",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een geordende lijst van verwachte of gemaakte uitgaven",
+            "en": "cost breakdown"
+          },
+          "example": {
+            "nl": "Mira antwoordde met een bescheiden kostenoverzicht voor materiaalhuur en vervoer, waarna een oom grapte dat familie tegenwoordig blijkbaar een factuur kreeg.",
+            "en": "Mira replied with a modest breakdown of equipment hire and transport costs, after which an uncle joked that family apparently received an invoice nowadays."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de vergoeding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een betaling voor werk of kosten",
+            "en": "payment or reimbursement"
+          },
+          "example": {
+            "nl": "De familie werd het niet over elke vergoeding eens, maar beperkte de opdracht en verdeelde de werkelijk gemaakte kosten over de organisatoren.",
+            "en": "The family did not agree on every payment, but limited the assignment and shared the actual costs among the organisers."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "beperken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "kleiner maken of een grens geven",
+            "en": "to limit"
+          },
+          "example": {
+            "nl": "De familie werd het niet over elke vergoeding eens, maar beperkte de opdracht en verdeelde de werkelijk gemaakte kosten over de organisatoren.",
+            "en": "The family did not agree on every payment, but limited the assignment and shared the actual costs among the organisers."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Omdat bij een betwiste reden",
+            "en": "Because with a disputed reason"
+          },
+          "explanation": {
+            "nl": "Omdat noemt de redenering waarmee haar plezier als vervanging van betaling wordt gebruikt.",
+            "en": "Omdat names the reasoning using her enjoyment as a substitute for payment."
+          },
+          "examples": [
+            {
+              "nl": "Voor het volgende huwelijk vroeg men haar om ook interviews, muziek en een lange montage te verzorgen, uiteraard omdat ze dat zelf zo graag deed.",
+              "en": "For the next wedding she was asked to provide interviews, music and a long edit too, naturally because she enjoyed it so much herself."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom vergelijkt Mira haar werk met bloemen en zaalhuur?",
+            "en": "Why does Mira compare her work with flowers and venue hire?"
+          },
+          "options": [
+            {
+              "nl": "Zij maakt zichtbaar dat plezier in werk de kosten niet laat verdwijnen.",
+              "en": "She makes visible that enjoying work does not make the costs disappear."
+            },
+            {
+              "nl": "Zij wil bloemist worden.",
+              "en": "She wants to become a florist."
+            },
+            {
+              "nl": "Zij vindt alle feesten nutteloos.",
+              "en": "She finds all celebrations useless."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ook andere makers kunnen hun vak graag doen en toch betaald worden.",
+            "en": "Other creators too can enjoy their craft and still be paid."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat is het praktische resultaat van het gesprek?",
+            "en": "What is the practical result of the discussion?"
+          },
+          "options": [
+            {
+              "nl": "De opdracht wordt kleiner en echte kosten worden gedeeld.",
+              "en": "The assignment becomes smaller and actual costs are shared."
+            },
+            {
+              "nl": "De familie verbiedt alle films.",
+              "en": "The family bans all films."
+            },
+            {
+              "nl": "Mira krijgt onbeperkt werk zonder kosten.",
+              "en": "Mira receives unlimited work without costs."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze maakt een kortere film en kan zelf aan het feest deelnemen.",
+            "en": "She makes a shorter film and can participate in the celebration herself."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-a1-read-paraplu-stippen",
+      "topic_id": "weather",
+      "title": {
+        "nl": "De paraplu met stippen",
+        "en": "The spotted umbrella"
+      },
+      "plot_key": "Two similar umbrellas become distinguishable when opened.",
+      "lines": [
+        {
+          "nl": "Twee paraplu's staan hier.",
+          "en": "Two umbrellas are here."
+        },
+        {
+          "nl": "Ze zijn allebei zwart.",
+          "en": "They are both black."
+        },
+        {
+          "nl": "Welke is van mij?",
+          "en": "Which one is mine?"
+        },
+        {
+          "nl": "Mijn buur weet het niet.",
+          "en": "My neighbour does not know."
+        },
+        {
+          "nl": "Ik maak één paraplu open.",
+          "en": "I open one umbrella."
+        },
+        {
+          "nl": "Binnen staan witte stippen.",
+          "en": "There are white spots inside."
+        },
+        {
+          "nl": "Die stippen ken ik.",
+          "en": "I know those spots."
+        },
+        {
+          "nl": "Ja, deze is van mij.",
+          "en": "Yes, this one is mine."
+        }
+      ],
+      "words": [
+        {
+          "term": "de paraplu",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bescherming tegen regen",
+            "en": "umbrella"
+          },
+          "example": {
+            "nl": "Twee paraplu's staan hier.",
+            "en": "Two umbrellas are here."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de stip",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein rond teken",
+            "en": "spot"
+          },
+          "example": {
+            "nl": "Binnen staan witte stippen.",
+            "en": "There are white spots inside."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "zwart",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "de kleur van de nacht",
+            "en": "black"
+          },
+          "example": {
+            "nl": "Ze zijn allebei zwart.",
+            "en": "They are both black."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Van mij",
+            "en": "Mine"
+          },
+          "explanation": {
+            "nl": "Van mij zegt dat iets bij de spreker hoort. Vergelijk: mijn paraplu en deze is van mij.",
+            "en": "Van mij says that something belongs to the speaker. Compare mijn paraplu and deze is van mij."
+          },
+          "examples": [
+            {
+              "nl": "Ja, deze is van mij.",
+              "en": "Yes, this one is mine."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar staan de stippen?",
+            "en": "Where are the spots?"
+          },
+          "options": [
+            {
+              "nl": "Binnen",
+              "en": "Inside"
+            },
+            {
+              "nl": "Op de grond",
+              "en": "On the ground"
+            },
+            {
+              "nl": "Buiten",
+              "en": "Outside"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Binnen staan witte stippen.",
+            "en": "There are white spots inside."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke kleur hebben de stippen?",
+            "en": "What colour are the spots?"
+          },
+          "options": [
+            {
+              "nl": "Wit",
+              "en": "White"
+            },
+            {
+              "nl": "Rood",
+              "en": "Red"
+            },
+            {
+              "nl": "Blauw",
+              "en": "Blue"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Binnen staan witte stippen.",
+            "en": "There are white spots inside."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-krijt-met-jasje",
+      "topic_id": "education",
+      "title": {
+        "nl": "Een piep in de klas",
+        "en": "A squeak in class"
+      },
+      "plot_key": "A pupil stops an unpleasant chalk noise by using a different piece.",
+      "lines": [
+        {
+          "nl": "De juf schrijft een woord.",
+          "en": "The teacher writes a word."
+        },
+        {
+          "nl": "Het krijt piept hard.",
+          "en": "The chalk squeaks loudly."
+        },
+        {
+          "nl": "Ik houd mijn oren dicht.",
+          "en": "I cover my ears."
+        },
+        {
+          "nl": "De juf stopt met schrijven.",
+          "en": "The teacher stops writing."
+        },
+        {
+          "nl": "Zij neemt een ander krijtje.",
+          "en": "She takes another piece of chalk."
+        },
+        {
+          "nl": "Nu schrijft zij heel stil.",
+          "en": "Now she writes very quietly."
+        },
+        {
+          "nl": "Ik haal mijn handen weg.",
+          "en": "I move my hands away."
+        },
+        {
+          "nl": "Het woord is mijn naam.",
+          "en": "The word is my name."
+        }
+      ],
+      "words": [
+        {
+          "term": "het krijt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "materiaal om op een schoolbord te schrijven",
+            "en": "chalk"
+          },
+          "example": {
+            "nl": "Het krijt piept hard.",
+            "en": "The chalk squeaks loudly."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het oor",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel waarmee je hoort",
+            "en": "ear"
+          },
+          "example": {
+            "nl": "Ik houd mijn oren dicht.",
+            "en": "I cover my ears."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "stil",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "zonder veel geluid",
+            "en": "quietly"
+          },
+          "example": {
+            "nl": "Nu schrijft zij heel stil.",
+            "en": "Now she writes very quietly."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "De juf schrijft een woord.",
+              "en": "The teacher writes a word."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom bedekt de leerling de oren?",
+            "en": "Why does the pupil cover their ears?"
+          },
+          "options": [
+            {
+              "nl": "Het krijt piept",
+              "en": "The chalk squeaks"
+            },
+            {
+              "nl": "Het is koud",
+              "en": "It is cold"
+            },
+            {
+              "nl": "De bel klinkt",
+              "en": "The bell rings"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het krijt piept hard.",
+            "en": "The chalk squeaks loudly."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat schrijft de juf?",
+            "en": "What does the teacher write?"
+          },
+          "options": [
+            {
+              "nl": "Een prijs",
+              "en": "A price"
+            },
+            {
+              "nl": "Een adres",
+              "en": "An address"
+            },
+            {
+              "nl": "De naam",
+              "en": "The name"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het woord is mijn naam.",
+            "en": "The word is my name."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-lange-schaduw",
+      "topic_id": "nature",
+      "title": {
+        "nl": "Zo groot als papa",
+        "en": "As tall as Dad"
+      },
+      "plot_key": "A child sees a long evening shadow and compares it with their father's shadow.",
+      "lines": [
+        {
+          "nl": "Ik sta naast papa.",
+          "en": "I stand beside Dad."
+        },
+        {
+          "nl": "De zon staat laag.",
+          "en": "The sun is low."
+        },
+        {
+          "nl": "Mijn schaduw is heel lang.",
+          "en": "My shadow is very long."
+        },
+        {
+          "nl": "Ik wijs naar de grond.",
+          "en": "I point to the ground."
+        },
+        {
+          "nl": "Papa zet een stap opzij.",
+          "en": "Dad takes a step to the side."
+        },
+        {
+          "nl": "Onze schaduwen staan naast elkaar.",
+          "en": "Our shadows are beside each other."
+        },
+        {
+          "nl": "Mijn schaduw raakt zijn hoofd.",
+          "en": "My shadow reaches his head."
+        },
+        {
+          "nl": "Nu ben ik ook groot!",
+          "en": "Now I am tall too!"
+        }
+      ],
+      "words": [
+        {
+          "term": "de schaduw",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "donkere vorm waar licht niet komt",
+            "en": "shadow"
+          },
+          "example": {
+            "nl": "Mijn schaduw is heel lang.",
+            "en": "My shadow is very long."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de grond",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "oppervlak waarop je staat",
+            "en": "ground"
+          },
+          "example": {
+            "nl": "Ik wijs naar de grond.",
+            "en": "I point to the ground."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "groot",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met veel hoogte of omvang",
+            "en": "big or tall"
+          },
+          "example": {
+            "nl": "Nu ben ik ook groot!",
+            "en": "Now I am tall too!"
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Ik sta naast papa.",
+              "en": "I stand beside Dad."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat is heel lang?",
+            "en": "What is very long?"
+          },
+          "options": [
+            {
+              "nl": "De jas",
+              "en": "The coat"
+            },
+            {
+              "nl": "De schaduw",
+              "en": "The shadow"
+            },
+            {
+              "nl": "De straat",
+              "en": "The street"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Mijn schaduw is heel lang.",
+            "en": "My shadow is very long."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar staan de schaduwen?",
+            "en": "Where are the shadows?"
+          },
+          "options": [
+            {
+              "nl": "Op het raam",
+              "en": "On the window"
+            },
+            {
+              "nl": "Naast elkaar",
+              "en": "Beside each other"
+            },
+            {
+              "nl": "Op de tafel",
+              "en": "On the table"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Onze schaduwen staan naast elkaar.",
+            "en": "Our shadows are beside each other."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-bootje-in-cirkel",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "Het bootje draait",
+        "en": "The little boat turns"
+      },
+      "plot_key": "A toy boat circles in a bowl until a hand stops the swirling water.",
+      "lines": [
+        {
+          "nl": "Mijn bootje ligt in water.",
+          "en": "My little boat is in water."
+        },
+        {
+          "nl": "Ik draai met mijn hand.",
+          "en": "I stir with my hand."
+        },
+        {
+          "nl": "Het water gaat rond.",
+          "en": "The water goes round."
+        },
+        {
+          "nl": "Het bootje draait ook rond.",
+          "en": "The little boat turns round too."
+        },
+        {
+          "nl": "Ik houd mijn hand stil.",
+          "en": "I keep my hand still."
+        },
+        {
+          "nl": "Het water wordt rustig.",
+          "en": "The water becomes still."
+        },
+        {
+          "nl": "Het bootje stopt naast mij.",
+          "en": "The little boat stops beside me."
+        },
+        {
+          "nl": "Daar staat zijn kleine naam.",
+          "en": "Its little name is there."
+        }
+      ],
+      "words": [
+        {
+          "term": "het bootje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine boot",
+            "en": "little boat"
+          },
+          "example": {
+            "nl": "Mijn bootje ligt in water.",
+            "en": "My little boat is in water."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "rond",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "in een cirkel",
+            "en": "round"
+          },
+          "example": {
+            "nl": "Het water gaat rond.",
+            "en": "The water goes round."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "stoppen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "niet verder bewegen",
+            "en": "to stop"
+          },
+          "example": {
+            "nl": "Het bootje stopt naast mij.",
+            "en": "The little boat stops beside me."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Het bootje draait ook rond.",
+              "en": "The little boat turns round too."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat draait eerst?",
+            "en": "What turns first?"
+          },
+          "options": [
+            {
+              "nl": "Het bootje",
+              "en": "The little boat"
+            },
+            {
+              "nl": "Het water",
+              "en": "The water"
+            },
+            {
+              "nl": "De kom",
+              "en": "The bowl"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het water gaat rond.",
+            "en": "The water goes round."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe stopt het draaien?",
+            "en": "How does the turning stop?"
+          },
+          "options": [
+            {
+              "nl": "De hand blijft stil",
+              "en": "The hand stays still"
+            },
+            {
+              "nl": "De kom valt",
+              "en": "The bowl falls"
+            },
+            {
+              "nl": "Het bootje zinkt",
+              "en": "The boat sinks"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik houd mijn hand stil.",
+            "en": "I keep my hand still."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-bel-op-neus",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "Een bel op de neus",
+        "en": "A bubble on a nose"
+      },
+      "plot_key": "A child blows a soap bubble that lands on a father's nose and bursts.",
+      "lines": [
+        {
+          "nl": "Ik blaas een zeepbel.",
+          "en": "I blow a soap bubble."
+        },
+        {
+          "nl": "De bel vliegt naar papa.",
+          "en": "The bubble floats towards Dad."
+        },
+        {
+          "nl": "Papa zit heel stil.",
+          "en": "Dad sits very still."
+        },
+        {
+          "nl": "De bel raakt zijn neus.",
+          "en": "The bubble touches his nose."
+        },
+        {
+          "nl": "Mijn mond gaat open.",
+          "en": "My mouth opens."
+        },
+        {
+          "nl": "Papa kijkt naar de bel.",
+          "en": "Dad looks at the bubble."
+        },
+        {
+          "nl": "Plots is de bel weg.",
+          "en": "Suddenly the bubble is gone."
+        },
+        {
+          "nl": "Papa heeft een natte neus.",
+          "en": "Dad has a wet nose."
+        }
+      ],
+      "words": [
+        {
+          "term": "de zeepbel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "dun bolletje van zeepwater",
+            "en": "soap bubble"
+          },
+          "example": {
+            "nl": "Ik blaas een zeepbel.",
+            "en": "I blow a soap bubble."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de neus",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel waarmee je ruikt",
+            "en": "nose"
+          },
+          "example": {
+            "nl": "De bel raakt zijn neus.",
+            "en": "The bubble touches his nose."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "nat",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met water erop",
+            "en": "wet"
+          },
+          "example": {
+            "nl": "Papa heeft een natte neus.",
+            "en": "Dad has a wet nose."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eigenschap",
+            "en": "A quality"
+          },
+          "explanation": {
+            "nl": "Het bijvoeglijk naamwoord vertelt hoe iets of iemand is.",
+            "en": "The adjective tells you what something or someone is like."
+          },
+          "examples": [
+            {
+              "nl": "Papa heeft een natte neus.",
+              "en": "Dad has a wet nose."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar komt de zeepbel?",
+            "en": "Where does the bubble land?"
+          },
+          "options": [
+            {
+              "nl": "Op papa's neus",
+              "en": "On Dad's nose"
+            },
+            {
+              "nl": "Op de vloer",
+              "en": "On the floor"
+            },
+            {
+              "nl": "Op een stoel",
+              "en": "On a chair"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De bel raakt zijn neus.",
+            "en": "The bubble touches his nose."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat is nat op het einde?",
+            "en": "What is wet at the end?"
+          },
+          "options": [
+            {
+              "nl": "Papa's neus",
+              "en": "Dad's nose"
+            },
+            {
+              "nl": "De mond",
+              "en": "The mouth"
+            },
+            {
+              "nl": "Een boek",
+              "en": "A book"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Papa heeft een natte neus.",
+            "en": "Dad has a wet nose."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-lift-met-pijl",
+      "topic_id": "housing",
+      "title": {
+        "nl": "De pijl naar boven",
+        "en": "The upward arrow"
+      },
+      "plot_key": "A visitor follows the lift's arrow to reach the third floor instead of the basement.",
+      "lines": [
+        {
+          "nl": "Ik zoek verdieping drie.",
+          "en": "I am looking for floor three."
+        },
+        {
+          "nl": "Ik sta bij de lift.",
+          "en": "I am standing by the lift."
+        },
+        {
+          "nl": "Er zijn twee knoppen.",
+          "en": "There are two buttons."
+        },
+        {
+          "nl": "Eén pijl wijst naar beneden.",
+          "en": "One arrow points down."
+        },
+        {
+          "nl": "Ik druk op de andere.",
+          "en": "I press the other one."
+        },
+        {
+          "nl": "De lift komt naar mij.",
+          "en": "The lift comes to me."
+        },
+        {
+          "nl": "Binnen druk ik op drie.",
+          "en": "Inside, I press three."
+        },
+        {
+          "nl": "Boven wacht mijn tante.",
+          "en": "My aunt is waiting upstairs."
+        }
+      ],
+      "words": [
+        {
+          "term": "de verdieping",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "laag in een gebouw",
+            "en": "floor of a building"
+          },
+          "example": {
+            "nl": "Ik zoek verdieping drie.",
+            "en": "I am looking for floor three."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de knop",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel waarop je drukt",
+            "en": "button"
+          },
+          "example": {
+            "nl": "Er zijn twee knoppen.",
+            "en": "There are two buttons."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "boven",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "op een hogere plaats",
+            "en": "upstairs or above"
+          },
+          "example": {
+            "nl": "Boven wacht mijn tante.",
+            "en": "My aunt is waiting upstairs."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Ik sta bij de lift.",
+              "en": "I am standing by the lift."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke verdieping zoekt de bezoeker?",
+            "en": "Which floor is the visitor looking for?"
+          },
+          "options": [
+            {
+              "nl": "Twee",
+              "en": "Two"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Eén",
+              "en": "One"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ik zoek verdieping drie.",
+            "en": "I am looking for floor three."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie wacht boven?",
+            "en": "Who is waiting upstairs?"
+          },
+          "options": [
+            {
+              "nl": "De tante",
+              "en": "The aunt"
+            },
+            {
+              "nl": "De dokter",
+              "en": "The doctor"
+            },
+            {
+              "nl": "De bakker",
+              "en": "The baker"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Boven wacht mijn tante.",
+            "en": "My aunt is waiting upstairs."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-fietsrek-letter",
+      "topic_id": "transportation",
+      "title": {
+        "nl": "Rij B",
+        "en": "Row B"
+      },
+      "plot_key": "A person finds a bicycle by a letter above a long cycle rack.",
+      "lines": [
+        {
+          "nl": "Er staan heel veel fietsen.",
+          "en": "There are very many bicycles."
+        },
+        {
+          "nl": "Mijn fiets is grijs.",
+          "en": "My bicycle is grey."
+        },
+        {
+          "nl": "Ik zoek bij rij A.",
+          "en": "I search in row A."
+        },
+        {
+          "nl": "Mijn fiets staat hier niet.",
+          "en": "My bicycle is not here."
+        },
+        {
+          "nl": "Dan zie ik de B.",
+          "en": "Then I see the B."
+        },
+        {
+          "nl": "Daar staat mijn grijze fiets.",
+          "en": "My grey bicycle is there."
+        },
+        {
+          "nl": "Mijn sleutel past in het slot.",
+          "en": "My key fits the lock."
+        },
+        {
+          "nl": "Ik rijd rustig naar huis.",
+          "en": "I ride home calmly."
+        }
+      ],
+      "words": [
+        {
+          "term": "de rij",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "mensen of dingen naast of achter elkaar",
+            "en": "row"
+          },
+          "example": {
+            "nl": "Ik zoek bij rij A.",
+            "en": "I search in row A."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "grijs",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "kleur tussen wit en zwart",
+            "en": "grey"
+          },
+          "example": {
+            "nl": "Mijn fiets is grijs.",
+            "en": "My bicycle is grey."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het slot",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel dat je met een sleutel sluit",
+            "en": "lock"
+          },
+          "example": {
+            "nl": "Mijn sleutel past in het slot.",
+            "en": "My key fits the lock."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet en geen",
+            "en": "Niet and geen"
+          },
+          "explanation": {
+            "nl": "Kijk wat wordt ontkend: de handeling of het zelfstandig naamwoord.",
+            "en": "Look at what is being negated: the action or the noun."
+          },
+          "examples": [
+            {
+              "nl": "Mijn fiets staat hier niet.",
+              "en": "My bicycle is not here."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "In welke rij staat de fiets?",
+            "en": "Which row is the bicycle in?"
+          },
+          "options": [
+            {
+              "nl": "Rij A",
+              "en": "Row A"
+            },
+            {
+              "nl": "Rij C",
+              "en": "Row C"
+            },
+            {
+              "nl": "Rij B",
+              "en": "Row B"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Dan zie ik de B.",
+            "en": "Then I see the B."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke kleur is de fiets?",
+            "en": "What colour is the bicycle?"
+          },
+          "options": [
+            {
+              "nl": "Grijs",
+              "en": "Grey"
+            },
+            {
+              "nl": "Zwart",
+              "en": "Black"
+            },
+            {
+              "nl": "Geel",
+              "en": "Yellow"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mijn fiets is grijs.",
+            "en": "My bicycle is grey."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-deksel-gezicht",
+      "topic_id": "household-chores",
+      "title": {
+        "nl": "Een gezicht in de pan",
+        "en": "A face in the pan"
+      },
+      "plot_key": "A child polishing a metal lid sees a distorted reflection.",
+      "lines": [
+        {
+          "nl": "Ik droog het deksel af.",
+          "en": "I dry the lid."
+        },
+        {
+          "nl": "Het deksel is van metaal.",
+          "en": "The lid is metal."
+        },
+        {
+          "nl": "Ik zie mijn gezicht.",
+          "en": "I see my face."
+        },
+        {
+          "nl": "Mijn neus lijkt heel groot.",
+          "en": "My nose looks very big."
+        },
+        {
+          "nl": "Ik draai het deksel om.",
+          "en": "I turn the lid over."
+        },
+        {
+          "nl": "Nu is mijn neus klein.",
+          "en": "Now my nose is small."
+        },
+        {
+          "nl": "Mama kijkt ook even.",
+          "en": "Mum looks for a moment too."
+        },
+        {
+          "nl": "Wij lachen om onze neuzen.",
+          "en": "We laugh at our noses."
+        }
+      ],
+      "words": [
+        {
+          "term": "het deksel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bovenstuk om iets te sluiten",
+            "en": "lid"
+          },
+          "example": {
+            "nl": "Ik droog het deksel af.",
+            "en": "I dry the lid."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het gezicht",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "voorkant van het hoofd",
+            "en": "face"
+          },
+          "example": {
+            "nl": "Ik zie mijn gezicht.",
+            "en": "I see my face."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "klein",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet groot",
+            "en": "small"
+          },
+          "example": {
+            "nl": "Nu is mijn neus klein.",
+            "en": "Now my nose is small."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Ik droog het deksel af.",
+              "en": "I dry the lid."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarin ziet de spreker een gezicht?",
+            "en": "Where does the speaker see a face?"
+          },
+          "options": [
+            {
+              "nl": "In een raam",
+              "en": "In a window"
+            },
+            {
+              "nl": "In een glas",
+              "en": "In a glass"
+            },
+            {
+              "nl": "In een deksel",
+              "en": "In a lid"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ik zie mijn gezicht.",
+            "en": "I see my face."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie kijkt daarna ook?",
+            "en": "Who looks afterwards too?"
+          },
+          "options": [
+            {
+              "nl": "Opa",
+              "en": "Grandpa"
+            },
+            {
+              "nl": "De buur",
+              "en": "The neighbour"
+            },
+            {
+              "nl": "Mama",
+              "en": "Mum"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Mama kijkt ook even.",
+            "en": "Mum looks for a moment too."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-kleur-aan-kraan",
+      "topic_id": "personal-hygiene",
+      "title": {
+        "nl": "Het blauwe rondje",
+        "en": "The blue circle"
+      },
+      "plot_key": "Someone choosing handwashing water identifies the cold tap by its blue mark.",
+      "lines": [
+        {
+          "nl": "Ik wil mijn handen wassen.",
+          "en": "I want to wash my hands."
+        },
+        {
+          "nl": "Er zijn twee kranen.",
+          "en": "There are two taps."
+        },
+        {
+          "nl": "Eén heeft een rood rondje.",
+          "en": "One has a red circle."
+        },
+        {
+          "nl": "De andere heeft een blauw rondje.",
+          "en": "The other has a blue circle."
+        },
+        {
+          "nl": "Ik kies de blauwe kraan.",
+          "en": "I choose the blue tap."
+        },
+        {
+          "nl": "Het water is koud.",
+          "en": "The water is cold."
+        },
+        {
+          "nl": "Ik maak mijn handen nat.",
+          "en": "I wet my hands."
+        },
+        {
+          "nl": "Dan neem ik de zeep.",
+          "en": "Then I take the soap."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kraan",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel waaruit water komt",
+            "en": "tap"
+          },
+          "example": {
+            "nl": "Er zijn twee kranen.",
+            "en": "There are two taps."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "koud",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met een lage temperatuur",
+            "en": "cold"
+          },
+          "example": {
+            "nl": "Het water is koud.",
+            "en": "The water is cold."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de zeep",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "middel om te wassen",
+            "en": "soap"
+          },
+          "example": {
+            "nl": "Dan neem ik de zeep.",
+            "en": "Then I take the soap."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Een vorm van willen of kunnen staat bij een hele werkwoordvorm. Kijk welke handeling iemand wil of kan doen.",
+            "en": "A form of willen or kunnen accompanies an infinitive. Look at which action someone wants or is able to do."
+          },
+          "examples": [
+            {
+              "nl": "Ik wil mijn handen wassen.",
+              "en": "I want to wash my hands."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kraan kiest de spreker?",
+            "en": "Which tap does the speaker choose?"
+          },
+          "options": [
+            {
+              "nl": "De blauwe",
+              "en": "The blue one"
+            },
+            {
+              "nl": "De groene",
+              "en": "The green one"
+            },
+            {
+              "nl": "De rode",
+              "en": "The red one"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik kies de blauwe kraan.",
+            "en": "I choose the blue tap."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat neemt de spreker na het water?",
+            "en": "What does the speaker take after the water?"
+          },
+          "options": [
+            {
+              "nl": "Zeep",
+              "en": "Soap"
+            },
+            {
+              "nl": "Een glas",
+              "en": "A glass"
+            },
+            {
+              "nl": "Een pen",
+              "en": "A pen"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Dan neem ik de zeep.",
+            "en": "Then I take the soap."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-lepel-op-maat",
+      "topic_id": "music",
+      "title": {
+        "nl": "Een klein orkest",
+        "en": "A small orchestra"
+      },
+      "plot_key": "Friends replace a loud metal spoon with a wooden spoon to play a soft rhythm.",
+      "lines": [
+        {
+          "nl": "Omar tikt op een pot.",
+          "en": "Omar taps a pot."
+        },
+        {
+          "nl": "Hij gebruikt een metalen lepel.",
+          "en": "He uses a metal spoon."
+        },
+        {
+          "nl": "Het geluid is heel hard.",
+          "en": "The sound is very loud."
+        },
+        {
+          "nl": "Ik wijs naar een houten lepel.",
+          "en": "I point to a wooden spoon."
+        },
+        {
+          "nl": "Omar wisselt de lepels.",
+          "en": "Omar swaps the spoons."
+        },
+        {
+          "nl": "Nu klinkt het veel zachter.",
+          "en": "Now it sounds much softer."
+        },
+        {
+          "nl": "Ik tik met mijn voet.",
+          "en": "I tap my foot."
+        },
+        {
+          "nl": "Samen spelen wij een lied.",
+          "en": "Together we play a song."
+        }
+      ],
+      "words": [
+        {
+          "term": "de lepel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "voorwerp om soep te eten",
+            "en": "spoon"
+          },
+          "example": {
+            "nl": "Hij gebruikt een metalen lepel.",
+            "en": "He uses a metal spoon."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het geluid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets dat je hoort",
+            "en": "sound"
+          },
+          "example": {
+            "nl": "Het geluid is heel hard.",
+            "en": "The sound is very loud."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de voet",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lichaamsdeel waarop je staat",
+            "en": "foot"
+          },
+          "example": {
+            "nl": "Ik tik met mijn voet.",
+            "en": "I tap my foot."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ik tik met mijn voet.",
+              "en": "I tap my foot."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt het harde geluid?",
+            "en": "What makes the loud sound?"
+          },
+          "options": [
+            {
+              "nl": "Een houten lepel",
+              "en": "A wooden spoon"
+            },
+            {
+              "nl": "De voet",
+              "en": "The foot"
+            },
+            {
+              "nl": "Een metalen lepel",
+              "en": "A metal spoon"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij gebruikt een metalen lepel.",
+            "en": "He uses a metal spoon."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de spreker met de voet?",
+            "en": "What does the speaker do with their foot?"
+          },
+          "options": [
+            {
+              "nl": "Wassen",
+              "en": "Wash"
+            },
+            {
+              "nl": "Tikken",
+              "en": "Tap"
+            },
+            {
+              "nl": "Schrijven",
+              "en": "Write"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ik tik met mijn voet.",
+            "en": "I tap my foot."
+          }
+        }
+      ]
+    }
+  ]
+}

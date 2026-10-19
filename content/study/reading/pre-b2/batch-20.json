@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-souvenir-met-een-breuklijn",
+      "topic_id": "tourism-sightseeing",
+      "title": {
+        "nl": "Een souvenir met een breuklijn",
+        "en": "A souvenir with a crack"
+      },
+      "plot_key": "A tourist tries to exchange a cracked souvenir bowl but learns her partner values its imperfect link to a shared mishap more than an identical replacement.",
+      "lines": [
+        {
+          "nl": "Op de laatste dag van hun vakantie kocht Sofie een handgemaakte kom in een klein atelier, omdat haar partner er de kleuren van hun hele reis in herkende.",
+          "en": "On the last day of their holiday, Sofie bought a handmade bowl in a small studio because her partner recognised the colours of their whole journey in it."
+        },
+        {
+          "nl": "Ze wikkelde de kom zorgvuldig in een trui, maar liet haar tas bij het instappen toch even tegen de rand van de bus vallen.",
+          "en": "She carefully wrapped the bowl in a jumper, but still knocked her bag briefly against the edge of the bus while boarding."
+        },
+        {
+          "nl": "Thuis ontdekte ze een dunne scheur en besloot ze de maker te mailen om precies hetzelfde exemplaar opnieuw te bestellen.",
+          "en": "At home she discovered a thin crack and decided to email the maker to order exactly the same piece again."
+        },
+        {
+          "nl": "De maker antwoordde dat geen twee kommen volledig gelijk waren en vroeg welke verschillen voor haar werkelijk belangrijk waren.",
+          "en": "The maker replied that no two bowls were completely identical and asked which differences really mattered to her."
+        },
+        {
+          "nl": "Sofie liet de foto's aan haar partner zien, die vroeg waarom het verhaal van hun verloren buskaartjes en gehaaste vertrek uit het voorwerp moest verdwijnen.",
+          "en": "Sofie showed the photographs to her partner, who asked why the story of their lost bus tickets and rushed departure had to disappear from the object."
+        },
+        {
+          "nl": "Zij had de breuk als een beschadigde herinnering gezien, terwijl hij die juist bij de rommelige werkelijkheid van hun reis vond horen.",
+          "en": "She had seen the crack as a damaged memory, while he actually thought it belonged to the messy reality of their trip."
+        },
+        {
+          "nl": "Ze gebruikten de kom niet meer voor soep, maar legden er hun sleutels in en vertelden bezoekers soms waarom er geen perfecte versie was gekomen.",
+          "en": "They no longer used the bowl for soup, but put their keys in it and sometimes told visitors why no perfect version had arrived."
+        },
+        {
+          "nl": "Aan de maker schreef Sofie dat ze geen vervanging meer nodig had, alleen graag wilde weten hoe zij het kwetsbare voorwerp het best kon bewaren.",
+          "en": "Sofie wrote to the maker that she no longer needed a replacement, but would like to know how best to preserve the fragile object."
+        }
+      ],
+      "words": [
+        {
+          "term": "de scheur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een smalle breuk in materiaal",
+            "en": "crack"
+          },
+          "example": {
+            "nl": "Thuis ontdekte ze een dunne scheur en besloot ze de maker te mailen om precies hetzelfde exemplaar opnieuw te bestellen.",
+            "en": "At home she discovered a thin crack and decided to email the maker to order exactly the same piece again."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het exemplaar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "één afzonderlijk voorwerp van een soort",
+            "en": "individual piece or copy"
+          },
+          "example": {
+            "nl": "Thuis ontdekte ze een dunne scheur en besloot ze de maker te mailen om precies hetzelfde exemplaar opnieuw te bestellen.",
+            "en": "At home she discovered a thin crack and decided to email the maker to order exactly the same piece again."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "kwetsbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "gemakkelijk te beschadigen",
+            "en": "fragile"
+          },
+          "example": {
+            "nl": "Aan de maker schreef Sofie dat ze geen vervanging meer nodig had, alleen graag wilde weten hoe zij het kwetsbare voorwerp het best kon bewaren.",
+            "en": "Sofie wrote to the maker that she no longer needed a replacement, but would like to know how best to preserve the fragile object."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor perspectiefverschil",
+            "en": "While for a difference in perspective"
+          },
+          "explanation": {
+            "nl": "Terwijl vergelijkt haar lezing van de schade met die van haar partner.",
+            "en": "Terwijl compares her reading of the damage with her partner's."
+          },
+          "examples": [
+            {
+              "nl": "Zij had de breuk als een beschadigde herinnering gezien, terwijl hij die juist bij de rommelige werkelijkheid van hun reis vond horen.",
+              "en": "She had seen the crack as a damaged memory, while he actually thought it belonged to the messy reality of their trip."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kan de maker niet zomaar een identieke kom leveren?",
+            "en": "Why can the maker not simply supply an identical bowl?"
+          },
+          "options": [
+            {
+              "nl": "Alle kommen zijn afzonderlijk handgemaakt.",
+              "en": "All bowls are individually handmade."
+            },
+            {
+              "nl": "Sofie heeft geen adres.",
+              "en": "Sofie has no address."
+            },
+            {
+              "nl": "Het atelier verkoopt alleen truien.",
+              "en": "The studio sells only jumpers."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De maker zegt dat geen twee kommen volledig gelijk zijn.",
+            "en": "The maker says no two bowls are completely alike."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert voor Sofie aan de scheur?",
+            "en": "What changes for Sofie about the crack?"
+          },
+          "options": [
+            {
+              "nl": "Ze gelooft dat die niet bestaat.",
+              "en": "She believes it does not exist."
+            },
+            {
+              "nl": "Ze kan die zien als deel van hun echte reisverhaal.",
+              "en": "She can see it as part of their actual journey's story."
+            },
+            {
+              "nl": "Ze wil de kom weggooien zonder uitleg.",
+              "en": "She wants to throw the bowl away without explanation."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De kom krijgt een andere functie en behoudt haar verbonden herinnering.",
+            "en": "The bowl gains a different function and retains its connected memory."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-tent-voor-een-fotograaf",
+      "topic_id": "outdoor-adventure",
+      "title": {
+        "nl": "De tent zonder sterren",
+        "en": "The tent without stars"
+      },
+      "plot_key": "A camper planning a romantic star photograph finds his partner values an unrecorded rainy evening, leading him to put the camera away without claiming bad weather was ideal.",
+      "lines": [
+        {
+          "nl": "Voor hun eerste kampeerweekend samen had Ruben een plek gekozen waar hij volgens de foto's een tent onder een indrukwekkende sterrenhemel kon vastleggen.",
+          "en": "For their first camping weekend together, Ruben had chosen a place where, according to the photographs, he could capture a tent beneath an impressive starry sky."
+        },
+        {
+          "nl": "Zijn vriendin Maya dacht vooral aan twee dagen zonder werktelefoons en had een versleten kaartspel in haar rugzak gestopt.",
+          "en": "His girlfriend Maya mainly thought of two days without work calls and had put a worn pack of cards in her rucksack."
+        },
+        {
+          "nl": "De eerste avond bleef de lucht bewolkt en tikte de regen zo hard op het tentdoek dat ze elkaar soms nauwelijks verstonden.",
+          "en": "On the first evening the sky remained overcast and the rain tapped so hard on the tent fabric that they could sometimes barely hear one another."
+        },
+        {
+          "nl": "Ruben controleerde telkens zijn camera en het weerbericht, terwijl Maya alleen naar zijn verlichte gezicht keek.",
+          "en": "Ruben kept checking his camera and the forecast, while Maya merely looked at his illuminated face."
+        },
+        {
+          "nl": "Ze vroeg of hij met haar op reis was of met de foto die hij vooraf al aan vrienden had beloofd.",
+          "en": "She asked whether he was travelling with her or with the photograph he had already promised friends beforehand."
+        },
+        {
+          "nl": "Hij legde het toestel weg en verloor drie rondes kaartspel, tot ze allebei moesten lachen om hoe ernstig hij de eerste verloren hand opnam.",
+          "en": "He put the device away and lost three rounds of cards until both laughed at how seriously he took the first lost hand."
+        },
+        {
+          "nl": "De volgende ochtend waren de schoenen nog vochtig en de hemel nog grijs; niemand beweerde dat regen prettiger was dan zon.",
+          "en": "The next morning the shoes were still damp and the sky still grey; nobody claimed rain was more pleasant than sunshine."
+        },
+        {
+          "nl": "Thuis stuurde Ruben geen spectaculaire foto door, maar wist hij wel waarom hij zich een avond zonder sterren zo precies herinnerde.",
+          "en": "At home Ruben sent no spectacular photograph, but did know why he remembered an evening without stars so precisely."
+        }
+      ],
+      "words": [
+        {
+          "term": "vastleggen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "op beeld of geluid bewaren",
+            "en": "to capture or record"
+          },
+          "example": {
+            "nl": "Voor hun eerste kampeerweekend samen had Ruben een plek gekozen waar hij volgens de foto's een tent onder een indrukwekkende sterrenhemel kon vastleggen.",
+            "en": "For their first camping weekend together, Ruben had chosen a place where, according to the photographs, he could capture a tent beneath an impressive starry sky."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bewolkt",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "volledig met wolken bedekt",
+            "en": "overcast"
+          },
+          "example": {
+            "nl": "De eerste avond bleef de lucht bewolkt en tikte de regen zo hard op het tentdoek dat ze elkaar soms nauwelijks verstonden.",
+            "en": "On the first evening the sky remained overcast and the rain tapped so hard on the tent fabric that they could sometimes barely hear one another."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het tentdoek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de stof waaruit een tent bestaat",
+            "en": "tent fabric"
+          },
+          "example": {
+            "nl": "De eerste avond bleef de lucht bewolkt en tikte de regen zo hard op het tentdoek dat ze elkaar soms nauwelijks verstonden.",
+            "en": "On the first evening the sky remained overcast and the rain tapped so hard on the tent fabric that they could sometimes barely hear one another."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor verdeelde aandacht",
+            "en": "While for divided attention"
+          },
+          "explanation": {
+            "nl": "Terwijl laat twee gelijktijdige handelingen zien die hun verschillende verwachtingen tonen.",
+            "en": "Terwijl shows two simultaneous actions revealing their different expectations."
+          },
+          "examples": [
+            {
+              "nl": "Ruben controleerde telkens zijn camera en het weerbericht, terwijl Maya alleen naar zijn verlichte gezicht keek.",
+              "en": "Ruben kept checking his camera and the forecast, while Maya merely looked at his illuminated face."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom voelt Maya zich niet echt samen op reis?",
+            "en": "Why does Maya not really feel they are travelling together?"
+          },
+          "options": [
+            {
+              "nl": "Ruben blijft bezig met de vooraf beloofde foto.",
+              "en": "Ruben remains occupied with the photograph promised beforehand."
+            },
+            {
+              "nl": "Hij wil geen kaarten spelen omdat zij wint.",
+              "en": "He refuses to play cards because she wins."
+            },
+            {
+              "nl": "Zij heeft een werktelefoon aangezet.",
+              "en": "She has switched on a work phone."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn aandacht gaat naar camera en weer in plaats van hun gedeelde avond.",
+            "en": "His attention goes to the camera and weather rather than their shared evening."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vermijdt de voorlaatste zin?",
+            "en": "What does the penultimate sentence avoid?"
+          },
+          "options": [
+            {
+              "nl": "Het slechte weer achteraf mooier voor te stellen dan het was.",
+              "en": "Presenting the bad weather as better than it actually was."
+            },
+            {
+              "nl": "De kaarten te benoemen.",
+              "en": "Naming the cards."
+            },
+            {
+              "nl": "Te zeggen dat hun schoenen vochtig zijn.",
+              "en": "Saying their shoes are damp."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De positieve ontmoeting maakt de regen niet ineens ideaal.",
+            "en": "The positive encounter does not suddenly make the rain ideal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-prijs-voor-de-tweede-plaats",
+      "topic_id": "success-failure",
+      "title": {
+        "nl": "De prijs voor de tweede plaats",
+        "en": "The prize for second place"
+      },
+      "plot_key": "A ceramic artist resents a runner-up certificate until a judge's specific criticism helps her finish an ambitious uneven work without rewriting the result as victory.",
+      "lines": [
+        {
+          "nl": "Toen keramiste Noor bij een wedstrijd de tweede plaats behaalde, legde ze het certificaat onder in haar tas en vermeed ze de winnaar tijdens de receptie.",
+          "en": "When ceramic artist Noor placed second in a competition, she put the certificate at the bottom of her bag and avoided the winner during the reception."
+        },
+        {
+          "nl": "Iedereen zei dat tweede worden toch fantastisch was, maar zij hoorde vooral dat ze haar teleurstelling snel moest verbergen.",
+          "en": "Everyone said that coming second was fantastic anyway, but she mainly heard that she should quickly hide her disappointment."
+        },
+        {
+          "nl": "Een jurylid vroeg of ze de toelichting bij haar werk al had gelezen, waarop Noor toegaf dat ze alleen naar het rangnummer had gekeken.",
+          "en": "A judge asked whether she had read the comments on her work yet, at which Noor admitted she had looked only at the ranking."
+        },
+        {
+          "nl": "De jury waardeerde de gedurfde vormen, maar vond dat twee onderdelen hun gewicht niet overtuigend droegen en daardoor onaf leken.",
+          "en": "The jury valued the bold shapes, but felt two elements did not convincingly carry their weight and therefore seemed unfinished."
+        },
+        {
+          "nl": "Die opmerking raakte precies het deel waarover Noor tijdens het maken zelf al had getwijfeld, zonder het verder te onderzoeken.",
+          "en": "That comment touched precisely the part Noor herself had doubted while making it, without investigating further."
+        },
+        {
+          "nl": "Ze belde later de winnaar om te vragen hoe die vergelijkbare constructies testte en kreeg geen geheim recept, maar een uitnodiging om te komen kijken.",
+          "en": "She later called the winner to ask how they tested similar structures and received not a secret recipe but an invitation to come and look."
+        },
+        {
+          "nl": "Het certificaat bleef dat van de tweede plaats; ze hing het niet plots als bewijs van een verborgen overwinning op.",
+          "en": "The certificate remained one for second place; she did not suddenly hang it up as proof of a hidden victory."
+        },
+        {
+          "nl": "Wel bouwde ze de twee onderdelen opnieuw, deze keer met een vraag die nauwkeuriger was dan de wens om eindelijk de beste te zijn.",
+          "en": "She did rebuild the two elements, this time with a question more precise than the wish finally to be the best."
+        }
+      ],
+      "words": [
+        {
+          "term": "gedurfd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met moed en weinig angst voor een risico",
+            "en": "bold"
+          },
+          "example": {
+            "nl": "De jury waardeerde de gedurfde vormen, maar vond dat twee onderdelen hun gewicht niet overtuigend droegen en daardoor onaf leken.",
+            "en": "The jury valued the bold shapes, but felt two elements did not convincingly carry their weight and therefore seemed unfinished."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de toelichting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "uitleg die iets duidelijker maakt",
+            "en": "explanation or feedback notes"
+          },
+          "example": {
+            "nl": "Een jurylid vroeg of ze de toelichting bij haar werk al had gelezen, waarop Noor toegaf dat ze alleen naar het rangnummer had gekeken.",
+            "en": "A judge asked whether she had read the comments on her work yet, at which Noor admitted she had looked only at the ranking."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "overtuigend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zo dat iets geloofwaardig of passend overkomt",
+            "en": "convincing"
+          },
+          "example": {
+            "nl": "De jury waardeerde de gedurfde vormen, maar vond dat twee onderdelen hun gewicht niet overtuigend droegen en daardoor onaf leken.",
+            "en": "The jury valued the bold shapes, but felt two elements did not convincingly carry their weight and therefore seemed unfinished."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wel als nadrukkelijke aanvulling",
+            "en": "Wel as an emphatic addition"
+          },
+          "explanation": {
+            "nl": "Wel vooraan legt de nadruk op wat zij daadwerkelijk deed ondanks wat zij niet deed.",
+            "en": "Wel at the beginning emphasises what she actually did despite what she did not do."
+          },
+          "examples": [
+            {
+              "nl": "Wel bouwde ze de twee onderdelen opnieuw, deze keer met een vraag die nauwkeuriger was dan de wens om eindelijk de beste te zijn.",
+              "en": "She did rebuild the two elements, this time with a question more precise than the wish finally to be the best."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom hielpen de algemene felicitaties Noor weinig?",
+            "en": "Why did general congratulations help Noor little?"
+          },
+          "options": [
+            {
+              "nl": "Ze lieten weinig ruimte voor haar echte teleurstelling.",
+              "en": "They left little room for her actual disappointment."
+            },
+            {
+              "nl": "Ze hadden de uitslag verkeerd gelezen.",
+              "en": "They had read the result incorrectly."
+            },
+            {
+              "nl": "Er was geen prijsuitreiking geweest.",
+              "en": "There had been no prize-giving."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze hoorde vooral dat ze haar teleurstelling moest verbergen.",
+            "en": "She mainly heard that she had to hide her disappointment."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt de jurytoelichting bruikbaar?",
+            "en": "What makes the judges' feedback useful?"
+          },
+          "options": [
+            {
+              "nl": "Ze verandert de rangschikking.",
+              "en": "It changes the ranking."
+            },
+            {
+              "nl": "Ze noemt een concreet probleem dat zij verder kan onderzoeken.",
+              "en": "It names a concrete problem she can investigate further."
+            },
+            {
+              "nl": "Ze belooft haar voortaan de eerste prijs.",
+              "en": "It promises her first prize from then on."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De twee twijfelachtige onderdelen vormen een afgebakende volgende werkvraag.",
+            "en": "The two questionable elements form a focused next working question."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-lied-met-drie-thuizen",
+      "topic_id": "globalization",
+      "title": {
+        "nl": "Een lied met drie thuizen",
+        "en": "A song with three homes"
+      },
+      "plot_key": "A musician searches for the single original version of a family tune and instead finds several migration histories that cannot be collapsed into one source.",
+      "lines": [
+        {
+          "nl": "Voor een concert over familieliederen wilde gitarist Yassin achterhalen uit welk land het slaaplied kwam dat zijn grootmoeder altijd had gezongen.",
+          "en": "For a concert about family songs, guitarist Yassin wanted to find out which country the lullaby his grandmother always sang came from."
+        },
+        {
+          "nl": "Hij kende de melodie precies, maar verstond enkele oude woorden niet meer en vroeg online om hulp bij de herkomst.",
+          "en": "He knew the melody exactly, but no longer understood some old words and asked online for help with its origin."
+        },
+        {
+          "nl": "Drie muzikanten reageerden met vrijwel dezelfde melodie en verschillende teksten, die zij elk als een lied uit hun eigen jeugd herkenden.",
+          "en": "Three musicians responded with almost the same melody and different lyrics, each recognising it as a song from their own childhood."
+        },
+        {
+          "nl": "Yassin verwachtte dat er één echte versie moest zijn en dat de andere door latere reizigers verkeerd waren onthouden.",
+          "en": "Yassin expected there must be one real version and that the others had been misremembered by later travellers."
+        },
+        {
+          "nl": "In gesprekken bleek echter dat de woorden onderweg waren veranderd en dat elke familie er eigen plaatsen en troostende beelden aan had toegevoegd.",
+          "en": "Conversations revealed, however, that the words had changed along the way and each family had added its own places and comforting images."
+        },
+        {
+          "nl": "Geen van hen kon met de beschikbare bronnen bewijzen waar het allereerste begin lag, al hadden zij allemaal een echte geschiedenis met het lied.",
+          "en": "None of them could prove from the available sources where the very first beginning lay, although they all had a real history with the song."
+        },
+        {
+          "nl": "Tijdens het concert speelde Yassin de verwante versies na elkaar en vertelde hij duidelijk wat hij wist en wat hij niet kon vaststellen.",
+          "en": "During the concert Yassin played the related versions one after another and clearly stated what he knew and what he could not establish."
+        },
+        {
+          "nl": "Zijn grootmoeder herkende vooral het ritme waarin zij hem vroeger in slaap had gewiegd; een landnaam had zij daarvoor nooit nodig gehad.",
+          "en": "His grandmother mainly recognised the rhythm in which she had once rocked him to sleep; she had never needed a country name for that."
+        }
+      ],
+      "words": [
+        {
+          "term": "de herkomst",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de plaats of geschiedenis waaruit iets afkomstig is",
+            "en": "origin"
+          },
+          "example": {
+            "nl": "Hij kende de melodie precies, maar verstond enkele oude woorden niet meer en vroeg online om hulp bij de herkomst.",
+            "en": "He knew the melody exactly, but no longer understood some old words and asked online for help with its origin."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "verwant",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met duidelijke overeenkomsten of een gedeelde achtergrond",
+            "en": "related"
+          },
+          "example": {
+            "nl": "Tijdens het concert speelde Yassin de verwante versies na elkaar en vertelde hij duidelijk wat hij wist en wat hij niet kon vaststellen.",
+            "en": "During the concert Yassin played the related versions one after another and clearly stated what he knew and what he could not establish."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "wiegen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zacht heen en weer bewegen",
+            "en": "to rock gently"
+          },
+          "example": {
+            "nl": "Zijn grootmoeder herkende vooral het ritme waarin zij hem vroeger in slaap had gewiegd; een landnaam had zij daarvoor nooit nodig gehad.",
+            "en": "His grandmother mainly recognised the rhythm in which she had once rocked him to sleep; she had never needed a country name for that."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Al voor een toegeving",
+            "en": "Although for a concession"
+          },
+          "explanation": {
+            "nl": "Al introduceert een feit dat blijft gelden ondanks de ontbrekende zekerheid over de oorsprong.",
+            "en": "Al introduces a fact that remains true despite the missing certainty about the origin."
+          },
+          "examples": [
+            {
+              "nl": "Geen van hen kon met de beschikbare bronnen bewijzen waar het allereerste begin lag, al hadden zij allemaal een echte geschiedenis met het lied.",
+              "en": "None of them could prove from the available sources where the very first beginning lay, although they all had a real history with the song."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke verwachting moet Yassin bijstellen?",
+            "en": "Which expectation must Yassin revise?"
+          },
+          "options": [
+            {
+              "nl": "Dat niemand de melodie kent.",
+              "en": "That nobody knows the melody."
+            },
+            {
+              "nl": "Dat muziek alleen online bestaat.",
+              "en": "That music exists only online."
+            },
+            {
+              "nl": "Dat één aantoonbaar zuivere versie alle andere verklaart.",
+              "en": "That one demonstrably pure version explains all the others."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De bronnen leveren verschillende echte geschiedenissen maar geen bewezen eerste versie.",
+            "en": "The sources provide different real histories but no proven first version."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe vermijdt hij een ongefundeerde conclusie tijdens het concert?",
+            "en": "How does he avoid an unsupported conclusion during the concert?"
+          },
+          "options": [
+            {
+              "nl": "Hij onderscheidt bekende verwantschap van een onbewezen oorsprong.",
+              "en": "He distinguishes known relatedness from an unproven origin."
+            },
+            {
+              "nl": "Hij verzwijgt alle verschillen.",
+              "en": "He hides all differences."
+            },
+            {
+              "nl": "Hij noemt willekeurig een land.",
+              "en": "He names a country at random."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij vertelt expliciet wat hij wel en niet kan vaststellen.",
+            "en": "He explicitly states what he can and cannot establish."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-museum-van-het-wachten",
+      "topic_id": "future-humanity",
+      "title": {
+        "nl": "Het museum van het wachten",
+        "en": "The museum of waiting"
+      },
+      "plot_key": "In a student's imagined future city, a museum guide demonstrates obsolete waiting by leaving a visitor’s question open rather than instantly generating a solution.",
+      "lines": [
+        {
+          "nl": "Voor een schrijfwedstrijd bedacht Roos een toekomstige stad waarin elk verzoek onmiddellijk een antwoord kreeg en niemand meer ergens in een rij hoefde te staan.",
+          "en": "For a writing competition Roos imagined a future city where every request received an immediate answer and nobody had to stand in a queue anywhere."
+        },
+        {
+          "nl": "In het midden van die stad plaatste zij een klein museum met oude loketnummers, stationsbanken en brieven die weken onderweg waren geweest.",
+          "en": "In the middle of that city she placed a small museum with old queue numbers, station benches and letters that had spent weeks in transit."
+        },
+        {
+          "nl": "Haar hoofdpersoon vond het museum nutteloos, totdat hij de gids vroeg wanneer zijn verdriet na een verloren vriendschap eindelijk voorbij zou zijn.",
+          "en": "Her main character found the museum useless until he asked the guide when his sadness after a lost friendship would finally end."
+        },
+        {
+          "nl": "De gids wees geen scherm aan dat een termijn berekende, maar ging naast hem op een versleten bank zitten.",
+          "en": "The guide pointed to no screen calculating a deadline, but sat beside him on a worn bench."
+        },
+        {
+          "nl": "Langzaam vertelde de bezoeker wat er gebeurd was, zonder dat zijn zinnen meteen tot een vraag met een sluitend antwoord werden samengevat.",
+          "en": "Slowly the visitor explained what had happened without his sentences immediately being summarised as a question with a conclusive answer."
+        },
+        {
+          "nl": "Hij verliet het gebouw niet genezen en ook niet overtuigd dat vroeger alles beter was, maar begreep waarom deze bank bewaard werd.",
+          "en": "He left the building neither cured nor convinced that everything had been better in the past, but understood why this bench was preserved."
+        },
+        {
+          "nl": "Tijdens de bespreking vroeg een andere leerling of Roos nu tegen technische vooruitgang was, omdat haar beste uitvinding zo ouderwets leek.",
+          "en": "During the discussion another pupil asked whether Roos was now against technological progress because her best invention seemed so old-fashioned."
+        },
+        {
+          "nl": "Zij antwoordde dat haar stad juist beter moest kunnen kiezen welke wachttijd overbodig was en welke ruimte mensen soms nodig hadden om te spreken.",
+          "en": "She replied that her city should actually be better at choosing which waiting time was unnecessary and which space people sometimes needed in order to speak."
+        }
+      ],
+      "words": [
+        {
+          "term": "de termijn",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een vastgestelde of verwachte periode",
+            "en": "time frame"
+          },
+          "example": {
+            "nl": "De gids wees geen scherm aan dat een termijn berekende, maar ging naast hem op een versleten bank zitten.",
+            "en": "The guide pointed to no screen calculating a deadline, but sat beside him on a worn bench."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "sluitend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zo volledig dat geen belangrijke vraag openblijft",
+            "en": "conclusive"
+          },
+          "example": {
+            "nl": "Langzaam vertelde de bezoeker wat er gebeurd was, zonder dat zijn zinnen meteen tot een vraag met een sluitend antwoord werden samengevat.",
+            "en": "Slowly the visitor explained what had happened without his sentences immediately being summarised as a question with a conclusive answer."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "ouderwets",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "passend bij een vroegere tijd",
+            "en": "old-fashioned"
+          },
+          "example": {
+            "nl": "Tijdens de bespreking vroeg een andere leerling of Roos nu tegen technische vooruitgang was, omdat haar beste uitvinding zo ouderwets leek.",
+            "en": "During the discussion another pupil asked whether Roos was now against technological progress because her best invention seemed so old-fashioned."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Welke ... en welke ...",
+            "en": "Which ... and which ..."
+          },
+          "explanation": {
+            "nl": "De herhaling maakt een onderscheid tussen verschillende soorten wachttijd in plaats van alles gelijk te beoordelen.",
+            "en": "The repetition distinguishes different kinds of waiting rather than judging all alike."
+          },
+          "examples": [
+            {
+              "nl": "Zij antwoordde dat haar stad juist beter moest kunnen kiezen welke wachttijd overbodig was en welke ruimte mensen soms nodig hadden om te spreken.",
+              "en": "She replied that her city should actually be better at choosing which waiting time was unnecessary and which space people sometimes needed in order to speak."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom bewaart de denkbeeldige stad de bank?",
+            "en": "Why does the imagined city preserve the bench?"
+          },
+          "options": [
+            {
+              "nl": "Ze berekent sneller dan de schermen.",
+              "en": "It calculates faster than the screens."
+            },
+            {
+              "nl": "Ze biedt ruimte voor iets dat niet met een onmiddellijk antwoord verdwijnt.",
+              "en": "It offers space for something that does not disappear with an immediate answer."
+            },
+            {
+              "nl": "Alle inwoners moeten daar dagelijks in de rij staan.",
+              "en": "All residents must queue there daily."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het gesprek vraagt tijd en aanwezigheid zonder een gegarandeerde oplossing.",
+            "en": "The conversation requires time and presence without a guaranteed solution."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welk standpunt legt Roos aan het einde uit?",
+            "en": "What position does Roos explain at the end?"
+          },
+          "options": [
+            {
+              "nl": "Vroeger was aantoonbaar alles beter.",
+              "en": "Everything in the past was demonstrably better."
+            },
+            {
+              "nl": "Vooruitgang vraagt onderscheid tussen overbodige vertraging en betekenisvolle ruimte.",
+              "en": "Progress requires distinguishing unnecessary delay from meaningful space."
+            },
+            {
+              "nl": "Alle technologie moet verdwijnen.",
+              "en": "All technology must disappear."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze verdedigt een gerichte keuze, niet een algemene afwijzing van nieuwe techniek.",
+            "en": "She defends a selective choice, not a general rejection of new technology."
+          }
+        }
+      ]
+    }
+  ]
+}

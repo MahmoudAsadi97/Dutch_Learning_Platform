@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "b2-read-vijf-seconden-film",
+      "topic_id": "movies-tv",
+      "title": {
+        "nl": "De vijf seconden zonder lach",
+        "en": "The five seconds without a smile"
+      },
+      "plot_key": "A film student chooses to retain an uneasy silence in a family film after understanding that constant happiness would falsify the moment.",
+      "lines": [
+        {
+          "nl": "Voor de verjaardag van haar vader monteerde Zoë oude filmpjes waarin het gezin steeds luid lachend aan tafel zat.",
+          "en": "For her father's birthday, Zoë edited old clips in which the family always sat laughing loudly at the table."
+        },
+        {
+          "nl": "Tussen twee feestelijke scènes vond ze vijf seconden waarop iedereen zweeg en haar moeder naar een lege stoel keek.",
+          "en": "Between two cheerful scenes, she found five seconds in which everyone was silent and her mother looked at an empty chair."
+        },
+        {
+          "nl": "Zoë wilde dat stukje wegknippen omdat het de vrolijke sfeer van haar cadeau leek te bederven.",
+          "en": "Zoë wanted to cut that part because it seemed to spoil the cheerful mood of her gift."
+        },
+        {
+          "nl": "Haar broer herkende de avond na hun verhuizing, toen ze voor het eerst zonder opa aan die tafel hadden gegeten.",
+          "en": "Her brother recognised the evening after their move, when they had eaten at that table without Grandpa for the first time."
+        },
+        {
+          "nl": "Hij vroeg of hun vader alleen een reeks glimlachen kreeg of ook een herkenbaar stukje van hun leven.",
+          "en": "He asked whether their father would receive only a sequence of smiles or also a recognisable part of their life."
+        },
+        {
+          "nl": "Zoë liet de stilte staan en plaatste er geen verklarende muziek onder, hoewel ze bang bleef voor zijn reactie.",
+          "en": "Zoë kept the silence and added no explanatory music beneath it, although she remained afraid of his reaction."
+        },
+        {
+          "nl": "Tijdens het kijken legde haar vader juist op dat moment zijn hand op de hare en vroeg waar het fragment vandaan kwam.",
+          "en": "While watching, her father put his hand on hers at precisely that moment and asked where the clip came from."
+        },
+        {
+          "nl": "Na de film bleven de oude beelden op pauze staan terwijl hun verhalen eindelijk buiten het scherm verdergingen.",
+          "en": "After the film, the old images remained paused while their stories finally continued beyond the screen."
+        }
+      ],
+      "words": [
+        {
+          "term": "monteren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "beelden selecteren en tot een film samenvoegen",
+            "en": "to edit film"
+          },
+          "example": {
+            "nl": "Voor de verjaardag van haar vader monteerde Zoë oude filmpjes waarin het gezin steeds luid lachend aan tafel zat.",
+            "en": "For her father's birthday, Zoë edited old clips in which the family always sat laughing loudly at the table."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "bederven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets minder prettig of bruikbaar maken",
+            "en": "to spoil"
+          },
+          "example": {
+            "nl": "Zoë wilde dat stukje wegknippen omdat het de vrolijke sfeer van haar cadeau leek te bederven.",
+            "en": "Zoë wanted to cut that part because it seemed to spoil the cheerful mood of her gift."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het fragment",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein gedeelte van een groter geheel",
+            "en": "clip or excerpt"
+          },
+          "example": {
+            "nl": "Tijdens het kijken legde haar vader juist op dat moment zijn hand op de hare en vroeg waar het fragment vandaan kwam.",
+            "en": "While watching, her father put his hand on hers at precisely that moment and asked where the clip came from."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een toegeving met hoewel",
+            "en": "Concession with hoewel"
+          },
+          "explanation": {
+            "nl": "Hoewel leidt een bijzin in die een tegenstelling met de hoofdzin uitdrukt. Het werkwoord staat achteraan in die bijzin.",
+            "en": "Hoewel introduces a subordinate clause expressing a contrast with the main clause. The verb is placed at the end of that clause."
+          },
+          "examples": [
+            {
+              "nl": "Zoë liet de stilte staan en plaatste er geen verklarende muziek onder, hoewel ze bang bleef voor zijn reactie.",
+              "en": "Zoë kept the silence and added no explanatory music beneath it, although she remained afraid of his reaction."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil Zoë de stilte eerst weglaten?",
+            "en": "Why does Zoë initially want to leave out the silence?"
+          },
+          "options": [
+            {
+              "nl": "Haar vader verbiedt het",
+              "en": "Her father forbids it"
+            },
+            {
+              "nl": "Het beeld is technisch kapot",
+              "en": "The image is technically broken"
+            },
+            {
+              "nl": "Ze vindt dat die de feestelijke sfeer verstoort",
+              "en": "She thinks it disrupts the festive mood"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zoë wilde dat stukje wegknippen omdat het de vrolijke sfeer van haar cadeau leek te bederven.",
+            "en": "Zoë wanted to cut that part because it seemed to spoil the cheerful mood of her gift."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe reageert haar vader op dat moment?",
+            "en": "How does her father react at that moment?"
+          },
+          "options": [
+            {
+              "nl": "Hij zet de televisie uit",
+              "en": "He switches off the television"
+            },
+            {
+              "nl": "Hij loopt boos weg",
+              "en": "He walks away angrily"
+            },
+            {
+              "nl": "Hij zoekt contact en vraagt naar het fragment",
+              "en": "He reaches out and asks about the clip"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Tijdens het kijken legde haar vader juist op dat moment zijn hand op de hare en vroeg waar het fragment vandaan kwam.",
+            "en": "While watching, her father put his hand on hers at precisely that moment and asked where the clip came from."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-briefje-bij-bibliotheekboek",
+      "topic_id": "books-reading",
+      "title": {
+        "nl": "De lezer na mij",
+        "en": "The reader after me"
+      },
+      "plot_key": "A library reader leaves a removable recommendation card and receives an unexpected response from someone with a different reading experience.",
+      "lines": [
+        {
+          "nl": "In een roman uit de bibliotheek vond Ilias een los kaartje met de vraag welke bijfiguur hij zelf een hoofdstuk zou gunnen.",
+          "en": "In a library novel, Ilias found a loose card asking which supporting character he would give a chapter of their own."
+        },
+        {
+          "nl": "Hij dacht aan de moeder, die steeds eten klaarzette maar nauwelijks iets over haar eigen leven mocht zeggen.",
+          "en": "He thought of the mother, who always prepared food but was hardly allowed to say anything about her own life."
+        },
+        {
+          "nl": "Met toestemming van de bibliothecaris legde hij zijn antwoord op het prikbord voor leestips, zonder in het boek te schrijven.",
+          "en": "With the librarian's permission, he put his answer on the reading-recommendation board without writing in the book."
+        },
+        {
+          "nl": "Een week later hing ernaast een reactie van iemand die juist het zwijgen van die moeder als haar kracht las.",
+          "en": "A week later, beside it hung a response from someone who read the mother's silence as her strength instead."
+        },
+        {
+          "nl": "Ilias schreef aanvankelijk een lange weerlegging en merkte toen dat hij meer over zijn eigen moeder vertelde dan over de roman.",
+          "en": "Ilias initially wrote a long rebuttal, then noticed that he was saying more about his own mother than about the novel."
+        },
+        {
+          "nl": "Hij verving zijn betoog door een vraag naar de scène waarop de andere lezer zich baseerde.",
+          "en": "He replaced his argument with a question about the scene on which the other reader based their view."
+        },
+        {
+          "nl": "De twee kaartjes werden het begin van een leesgesprek waarin dezelfde bladzijden onverwacht verschillende levens raakten.",
+          "en": "The two cards became the beginning of a reading conversation in which the same pages unexpectedly touched different lives."
+        },
+        {
+          "nl": "Toen hij het boek opnieuw leende, herkende hij nog zijn eigen gedachten, maar niet meer als de enige mogelijke lezing.",
+          "en": "When he borrowed the book again, he still recognised his own thoughts, but no longer as the only possible reading."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bijfiguur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "personage met een kleinere rol in een verhaal",
+            "en": "supporting character"
+          },
+          "example": {
+            "nl": "In een roman uit de bibliotheek vond Ilias een los kaartje met de vraag welke bijfiguur hij zelf een hoofdstuk zou gunnen.",
+            "en": "In a library novel, Ilias found a loose card asking which supporting character he would give a chapter of their own."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de weerlegging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "argumentatie die een ander standpunt probeert te ontkrachten",
+            "en": "rebuttal"
+          },
+          "example": {
+            "nl": "Ilias schreef aanvankelijk een lange weerlegging en merkte toen dat hij meer over zijn eigen moeder vertelde dan over de roman.",
+            "en": "Ilias initially wrote a long rebuttal, then noticed that he was saying more about his own mother than about the novel."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "zich baseren op",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "iets als grond voor een oordeel gebruiken",
+            "en": "to base oneself on"
+          },
+          "example": {
+            "nl": "Hij verving zijn betoog door een vraag naar de scène waarop de andere lezer zich baseerde.",
+            "en": "He replaced his argument with a question about the scene on which the other reader based their view."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een betrekkelijke bijzin",
+            "en": "A relative clause"
+          },
+          "explanation": {
+            "nl": "Een betrekkelijke bijzin geeft extra informatie bij een zelfstandig naamwoord. Hij kan beginnen met die, dat of een vorm zoals waarin of waarvan; het werkwoord staat achteraan.",
+            "en": "A relative clause gives extra information about a noun. It can begin with die, dat or a form such as waarin or waarvan; the verb comes at the end."
+          },
+          "examples": [
+            {
+              "nl": "Hij dacht aan de moeder, die steeds eten klaarzette maar nauwelijks iets over haar eigen leven mocht zeggen.",
+              "en": "He thought of the mother, who always prepared food but was hardly allowed to say anything about her own life."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarover verschillen de lezers van mening?",
+            "en": "What do the readers disagree about?"
+          },
+          "options": [
+            {
+              "nl": "De prijs van het boek",
+              "en": "The price of the book"
+            },
+            {
+              "nl": "De betekenis van het zwijgen van de moeder",
+              "en": "The meaning of the mother's silence"
+            },
+            {
+              "nl": "De naam van de schrijver",
+              "en": "The author's name"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Een week later hing ernaast een reactie van iemand die juist het zwijgen van die moeder als haar kracht las.",
+            "en": "A week later, beside it hung a response from someone who read the mother's silence as her strength instead."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom herschrijft Ilias zijn reactie?",
+            "en": "Why does Ilias rewrite his response?"
+          },
+          "options": [
+            {
+              "nl": "Het boek is niet meer beschikbaar",
+              "en": "The book is no longer available"
+            },
+            {
+              "nl": "De bibliotheek verbiedt reacties",
+              "en": "The library forbids responses"
+            },
+            {
+              "nl": "Hij merkt dat zijn eigen ervaring zijn oordeel stuurt",
+              "en": "He notices his own experience directs his judgement"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ilias schreef aanvankelijk een lange weerlegging en merkte toen dat hij meer over zijn eigen moeder vertelde dan over de roman.",
+            "en": "Ilias initially wrote a long rebuttal, then noticed that he was saying more about his own mother than about the novel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-keramiek-ongelijke-kom",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "De kom met een knie",
+        "en": "The bowl with a knee"
+      },
+      "plot_key": "An adult beginner in pottery learns to distinguish a functional flaw from an unusual shape without being told every accident is art.",
+      "lines": [
+        {
+          "nl": "Tijdens haar eerste cursus keramiek maakte Ria een kom waarvan één zijkant plots naar buiten zakte.",
+          "en": "During her first pottery course, Ria made a bowl whose one side suddenly sagged outwards."
+        },
+        {
+          "nl": "De lesgever noemde het een interessante vorm, maar Ria had genoeg van beleefde lof die haar niet hielp begrijpen wat misging.",
+          "en": "The teacher called it an interesting shape, but Ria had had enough of polite praise that did not help her understand what had gone wrong."
+        },
+        {
+          "nl": "Ze vroeg of de kom nog bruikbaar was en welke handeling ze de volgende keer anders kon uitvoeren.",
+          "en": "She asked whether the bowl was still usable and which action she could perform differently next time."
+        },
+        {
+          "nl": "Samen controleerden ze de dikte en de bodem voordat ze over de opvallende bocht spraken.",
+          "en": "Together, they checked the thickness and base before discussing the striking curve."
+        },
+        {
+          "nl": "De bodem bleek stevig, terwijl aan één kant te lang water was toegevoegd tijdens het vormen.",
+          "en": "The base proved solid, while water had been added for too long on one side during shaping."
+        },
+        {
+          "nl": "Ria liet de kom afwerken en oefende daarna op een tweede exemplaar hoe ze de wand gelijkmatiger kon opbouwen.",
+          "en": "Ria had the bowl finished, then practised on a second one how to build up the wall more evenly."
+        },
+        {
+          "nl": "Thuis gebruikte ze de eerste kom voor fruit; een peer rustte precies in de bocht die zij voortaan de knie noemde.",
+          "en": "At home, she used the first bowl for fruit; a pear rested precisely in the curve she now called the knee."
+        },
+        {
+          "nl": "De tweede kom was regelmatiger, maar Ria hoefde de eerste niet mooier te verklaren om haar toch graag te gebruiken.",
+          "en": "The second bowl was more regular, but Ria did not have to declare the first one more beautiful to enjoy using it anyway."
+        }
+      ],
+      "words": [
+        {
+          "term": "bruikbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "geschikt om te gebruiken",
+            "en": "usable"
+          },
+          "example": {
+            "nl": "Ze vroeg of de kom nog bruikbaar was en welke handeling ze de volgende keer anders kon uitvoeren.",
+            "en": "She asked whether the bowl was still usable and which action she could perform differently next time."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "gelijkmatig",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "overal ongeveer hetzelfde",
+            "en": "evenly"
+          },
+          "example": {
+            "nl": "Ria liet de kom afwerken en oefende daarna op een tweede exemplaar hoe ze de wand gelijkmatiger kon opbouwen.",
+            "en": "Ria had the bowl finished, then practised on a second one how to build up the wall more evenly."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de wand",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "opstaande zijkant van een voorwerp",
+            "en": "wall or side"
+          },
+          "example": {
+            "nl": "Ria liet de kom afwerken en oefende daarna op een tweede exemplaar hoe ze de wand gelijkmatiger kon opbouwen.",
+            "en": "Ria had the bowl finished, then practised on a second one how to build up the wall more evenly."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De passieve vorm",
+            "en": "The passive voice"
+          },
+          "explanation": {
+            "nl": "Bij de passieve vorm ligt de nadruk op wat er met iets gebeurt. Kijk naar worden of zijn en het voltooid deelwoord.",
+            "en": "The passive focuses on what happens to something. Look for worden or zijn and the past participle."
+          },
+          "examples": [
+            {
+              "nl": "De bodem bleek stevig, terwijl aan één kant te lang water was toegevoegd tijdens het vormen.",
+              "en": "The base proved solid, while water had been added for too long on one side during shaping."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke informatie mist Ria in de eerste reactie?",
+            "en": "What information does Ria find missing in the first response?"
+          },
+          "options": [
+            {
+              "nl": "Wie de mooiste kom maakt",
+              "en": "Who makes the best bowl"
+            },
+            {
+              "nl": "Wat er technisch misgaat en wat bruikbaar blijft",
+              "en": "What goes technically wrong and what remains usable"
+            },
+            {
+              "nl": "Hoe duur de cursus is",
+              "en": "How expensive the course is"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De lesgever noemde het een interessante vorm, maar Ria had genoeg van beleefde lof die haar niet hielp begrijpen wat misging.",
+            "en": "The teacher called it an interesting shape, but Ria had had enough of polite praise that did not help her understand what had gone wrong."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe gebruikt ze de eerste kom thuis?",
+            "en": "How does she use the first bowl at home?"
+          },
+          "options": [
+            {
+              "nl": "Voor fruit",
+              "en": "For fruit"
+            },
+            {
+              "nl": "Als plantenpot",
+              "en": "As a plant pot"
+            },
+            {
+              "nl": "Als lamp",
+              "en": "As a lamp"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Thuis gebruikte ze de eerste kom voor fruit; een peer rustte precies in de bocht die zij voortaan de knie noemde.",
+            "en": "At home, she used the first bowl for fruit; a pear rested precisely in the curve she now called the knee."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-ritueel-om-zeven",
+      "topic_id": "daily-routines",
+      "title": {
+        "nl": "De koffie om zeven uur",
+        "en": "The coffee at seven o'clock"
+      },
+      "plot_key": "A father and adult daughter preserve the meaning of a daily call by allowing its exact time to change.",
+      "lines": [
+        {
+          "nl": "Sinds haar verhuizing belde Tess haar vader elke ochtend om zeven uur, precies wanneer zijn koffie klaar was.",
+          "en": "Since moving, Tess had called her father every morning at seven, precisely when his coffee was ready."
+        },
+        {
+          "nl": "Toen haar werkrooster veranderde, begon ze de gesprekken gehaast tussen het fietsen en het omkleden te voeren.",
+          "en": "When her work schedule changed, she began having the conversations hurriedly between cycling and changing clothes."
+        },
+        {
+          "nl": "Haar vader bleef vragen of het slecht ging, omdat ze telkens klonk alsof ze zo snel mogelijk weg wilde.",
+          "en": "Her father kept asking whether something was wrong, because she always sounded as though she wanted to leave as quickly as possible."
+        },
+        {
+          "nl": "Tess verdedigde eerst het vaste uur, alsof een verschoven afspraak ook een minder hechte band zou betekenen.",
+          "en": "Tess initially defended the fixed time, as though a changed arrangement would also mean a less close bond."
+        },
+        {
+          "nl": "Op een ochtend stelde haar vader zelf voor zijn koffie later te drinken en vroeg hij wanneer zij echt kon luisteren.",
+          "en": "One morning, her father himself suggested drinking his coffee later and asked when she could really listen."
+        },
+        {
+          "nl": "Ze kozen drie langere gesprekken per week en lieten korte berichten mogelijk zonder dat daarop meteen antwoord moest volgen.",
+          "en": "They chose three longer conversations a week and allowed short messages without requiring an immediate reply."
+        },
+        {
+          "nl": "De eerste vrije ochtend voelde Tess zich schuldig totdat er een foto kwam van zijn koffie naast een open krant.",
+          "en": "On the first free morning, Tess felt guilty until a photograph arrived of his coffee beside an open newspaper."
+        },
+        {
+          "nl": "Bij hun volgende gesprek had hij een verhaal over de buur, en zij voldoende tijd om te vragen hoe het afliep.",
+          "en": "At their next conversation, he had a story about the neighbour, and she had enough time to ask how it ended."
+        }
+      ],
+      "words": [
+        {
+          "term": "hecht",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met een sterke onderlinge band",
+            "en": "close-knit or close"
+          },
+          "example": {
+            "nl": "Tess verdedigde eerst het vaste uur, alsof een verschoven afspraak ook een minder hechte band zou betekenen.",
+            "en": "Tess initially defended the fixed time, as though a changed arrangement would also mean a less close bond."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "gehaast",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "met te weinig rust of tijd",
+            "en": "hurriedly"
+          },
+          "example": {
+            "nl": "Toen haar werkrooster veranderde, begon ze de gesprekken gehaast tussen het fietsen en het omkleden te voeren.",
+            "en": "When her work schedule changed, she began having the conversations hurriedly between cycling and changing clothes."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "verdedigen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "redenen geven om iets te behouden",
+            "en": "to defend"
+          },
+          "example": {
+            "nl": "Tess verdedigde eerst het vaste uur, alsof een verschoven afspraak ook een minder hechte band zou betekenen.",
+            "en": "Tess initially defended the fixed time, as though a changed arrangement would also mean a less close bond."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een gewoonte in de verleden tijd",
+            "en": "A habit in the past"
+          },
+          "explanation": {
+            "nl": "De onvoltooid verleden tijd, hier belde, beschrijft samen met elke ochtend een gewoonte in het verleden en niet één enkel gesprek.",
+            "en": "The simple past, here belde, combines with elke ochtend to describe a past habit rather than one single conversation."
+          },
+          "examples": [
+            {
+              "nl": "Sinds haar verhuizing belde Tess haar vader elke ochtend om zeven uur, precies wanneer zijn koffie klaar was.",
+              "en": "Since moving, Tess had called her father every morning at seven, precisely when his coffee was ready."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom klinkt Tess afstandelijk?",
+            "en": "Why does Tess sound distant?"
+          },
+          "options": [
+            {
+              "nl": "Ze wil geen contact meer",
+              "en": "She no longer wants contact"
+            },
+            {
+              "nl": "Ze voert de gesprekken gehaast",
+              "en": "She is having the conversations hurriedly"
+            },
+            {
+              "nl": "Haar vader praat te zacht",
+              "en": "Her father speaks too softly"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Toen haar werkrooster veranderde, begon ze de gesprekken gehaast tussen het fietsen en het omkleden te voeren.",
+            "en": "When her work schedule changed, she began having the conversations hurriedly between cycling and changing clothes."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat behouden ze in de nieuwe afspraak?",
+            "en": "What do they preserve in the new arrangement?"
+          },
+          "options": [
+            {
+              "nl": "Een verplicht direct antwoord",
+              "en": "A compulsory immediate reply"
+            },
+            {
+              "nl": "Ruimte voor aandachtige gesprekken",
+              "en": "Room for attentive conversations"
+            },
+            {
+              "nl": "Elke dag exact zeven uur",
+              "en": "Exactly seven every day"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze kozen drie langere gesprekken per week en lieten korte berichten mogelijk zonder dat daarop meteen antwoord moest volgen.",
+            "en": "They chose three longer conversations a week and allowed short messages without requiring an immediate reply."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-broer-als-buur",
+      "topic_id": "relationships",
+      "title": {
+        "nl": "De buur achter mijn familienaam",
+        "en": "The neighbour behind my surname"
+      },
+      "plot_key": "Siblings living in the same building negotiate privacy when familiarity makes one enter unannounced.",
+      "lines": [
+        {
+          "nl": "Toen zijn zus in hetzelfde appartementsgebouw kwam wonen, vond Karim het vanzelfsprekend zijn reservesleutel meteen aan haar te geven.",
+          "en": "When his sister moved into the same apartment building, Karim thought it natural to give her his spare key immediately."
+        },
+        {
+          "nl": "Zij begon geregeld zonder aanbellen binnen te komen, meestal met eten en een verhaal dat volgens haar niet kon wachten.",
+          "en": "She regularly began coming in without ringing, usually with food and a story that she felt could not wait."
+        },
+        {
+          "nl": "Karim waardeerde haar zorg, maar merkte dat hij bezoek begon te verwachten zodra hij een sleutel in het slot hoorde.",
+          "en": "Karim appreciated her care, but noticed that he began expecting a visit whenever he heard a key in the lock."
+        },
+        {
+          "nl": "Toen hij haar vroeg voortaan eerst een bericht te sturen, hoorde zij vooral dat ze blijkbaar geen familie meer mocht zijn.",
+          "en": "When he asked her to send a message first from now on, she mainly heard that apparently she was no longer allowed to be family."
+        },
+        {
+          "nl": "Hij legde uit dat een aangekondigd bezoek hem juist hielp met aandacht naar haar te luisteren in plaats van zijn werk te verbergen.",
+          "en": "He explained that an announced visit actually helped him listen to her attentively instead of hiding his work."
+        },
+        {
+          "nl": "Ze spraken af dat de sleutel voor hulp bleef, niet als stilzwijgende uitnodiging voor ieder moment van de dag.",
+          "en": "They agreed that the key would remain for help, not as an unspoken invitation at any moment of the day."
+        },
+        {
+          "nl": "Een week later stuurde zij een foto van soep met de vraag wanneer ze mocht komen, en Karim stelde zelf de avond voor.",
+          "en": "A week later, she sent a photograph of soup asking when she could come, and Karim suggested the evening himself."
+        },
+        {
+          "nl": "Toen hij die avond de deur opende, stond zijn zus te wachten als een gast die hij niet al halverwege zijn taak moest ontvangen.",
+          "en": "When he opened the door that evening, his sister was waiting like a guest he did not have to receive halfway through a task."
+        }
+      ],
+      "words": [
+        {
+          "term": "stilzwijgend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder het uitdrukkelijk te zeggen",
+            "en": "unspoken"
+          },
+          "example": {
+            "nl": "Ze spraken af dat de sleutel voor hulp bleef, niet als stilzwijgende uitnodiging voor ieder moment van de dag.",
+            "en": "They agreed that the key would remain for help, not as an unspoken invitation at any moment of the day."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "waarderen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "de waarde van iets erkennen",
+            "en": "to appreciate"
+          },
+          "example": {
+            "nl": "Karim waardeerde haar zorg, maar merkte dat hij bezoek begon te verwachten zodra hij een sleutel in het slot hoorde.",
+            "en": "Karim appreciated her care, but noticed that he began expecting a visit whenever he heard a key in the lock."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de reservesleutel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "extra sleutel voor wanneer die nodig is",
+            "en": "spare key"
+          },
+          "example": {
+            "nl": "Toen zijn zus in hetzelfde appartementsgebouw kwam wonen, vond Karim het vanzelfsprekend zijn reservesleutel meteen aan haar te geven.",
+            "en": "When his sister moved into the same apartment building, Karim thought it natural to give her his spare key immediately."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Indirect weergeven",
+            "en": "Reporting indirectly"
+          },
+          "explanation": {
+            "nl": "Een bijzin met dat geeft weer wat iemand zegt of denkt. Het werkwoord staat achteraan in die bijzin.",
+            "en": "A subordinate clause with dat reports what someone says or thinks. The verb comes at the end of that clause."
+          },
+          "examples": [
+            {
+              "nl": "Hij legde uit dat een aangekondigd bezoek hem juist hielp met aandacht naar haar te luisteren in plaats van zijn werk te verbergen.",
+              "en": "He explained that an announced visit actually helped him listen to her attentively instead of hiding his work."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom vraagt Karim om een bericht vooraf?",
+            "en": "Why does Karim ask for a message in advance?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil haar sleutel verkopen",
+              "en": "He wants to sell her key"
+            },
+            {
+              "nl": "Hij vindt haar soep niet lekker",
+              "en": "He dislikes her soup"
+            },
+            {
+              "nl": "Hij wil aandachtiger kunnen ontvangen",
+              "en": "He wants to be able to receive her more attentively"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij legde uit dat een aangekondigd bezoek hem juist hielp met aandacht naar haar te luisteren in plaats van zijn werk te verbergen.",
+            "en": "He explained that an announced visit actually helped him listen to her attentively instead of hiding his work."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke rol houdt de sleutel?",
+            "en": "What role does the key retain?"
+          },
+          "options": [
+            {
+              "nl": "Toegang voor hulp",
+              "en": "Access for help"
+            },
+            {
+              "nl": "Alleen toegang tot de kelder",
+              "en": "Access only to the cellar"
+            },
+            {
+              "nl": "Altijd onaangekondigd binnenkomen",
+              "en": "Always entering unannounced"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze spraken af dat de sleutel voor hulp bleef, niet als stilzwijgende uitnodiging voor ieder moment van de dag.",
+            "en": "They agreed that the key would remain for help, not as an unspoken invitation at any moment of the day."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-liefdesbrief-met-vlek",
+      "topic_id": "love-dating",
+      "title": {
+        "nl": "De brief zonder mooie zinnen",
+        "en": "The letter without beautiful sentences"
+      },
+      "plot_key": "A person discards an overpolished love letter and shares a small concrete promise that their partner recognises.",
+      "lines": [
+        {
+          "nl": "Voor hun jubileum probeerde Jonas een brief te schrijven die even bijzonder klonk als de brieven in zijn favoriete romans.",
+          "en": "For their anniversary, Jonas tried to write a letter that sounded as special as the letters in his favourite novels."
+        },
+        {
+          "nl": "Na drie avonden stonden er vooral woorden op papier die hij in een gewoon gesprek nooit gebruikte.",
+          "en": "After three evenings, the paper mainly contained words he never used in an ordinary conversation."
+        },
+        {
+          "nl": "Zijn vriendin merkte de verborgen bladen op en dacht dat hij bezorgd was over iets wat hij haar niet durfde te vertellen.",
+          "en": "His girlfriend noticed the hidden sheets and thought he was worried about something he did not dare to tell her."
+        },
+        {
+          "nl": "Toen Jonas de eerste alinea voorlas, luisterde ze aandachtig maar vroeg vervolgens welke zin nu echt van hem was.",
+          "en": "When Jonas read the first paragraph aloud, she listened carefully but then asked which sentence was actually his."
+        },
+        {
+          "nl": "Hij schoof de brief opzij en vertelde hoe fijn hij het vond dat zij zelfs op drukke dagen zijn verhalen afmaakte.",
+          "en": "He pushed the letter aside and said how much he liked that she helped finish his stories even on busy days."
+        },
+        {
+          "nl": "Daarna beloofde hij niet een groots eeuwig gebaar, maar dat hij tijdens hun avondeten zijn werktelefoon zou wegleggen.",
+          "en": "Then he promised not a grand eternal gesture, but that he would put his work phone away during their evening meal."
+        },
+        {
+          "nl": "Zij vroeg hem precies dat op te schrijven, inclusief de koffievlek die inmiddels over de hoek van het papier liep.",
+          "en": "She asked him to write down exactly that, including the coffee stain that was now spreading over the corner of the paper."
+        },
+        {
+          "nl": "De uiteindelijke brief telde nauwelijks een halve bladzijde en werd toch het eerste cadeau dat ze naast haar bed bewaarde.",
+          "en": "The final letter was barely half a page long, yet became the first gift she kept beside her bed."
+        }
+      ],
+      "words": [
+        {
+          "term": "het jubileum",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "feestdag na een bepaald aantal jaren",
+            "en": "anniversary"
+          },
+          "example": {
+            "nl": "Voor hun jubileum probeerde Jonas een brief te schrijven die even bijzonder klonk als de brieven in zijn favoriete romans.",
+            "en": "For their anniversary, Jonas tried to write a letter that sounded as special as the letters in his favourite novels."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "groots",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "indrukwekkend of zeer omvangrijk",
+            "en": "grand"
+          },
+          "example": {
+            "nl": "Daarna beloofde hij niet een groots eeuwig gebaar, maar dat hij tijdens hun avondeten zijn werktelefoon zou wegleggen.",
+            "en": "Then he promised not a grand eternal gesture, but that he would put his work phone away during their evening meal."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de alinea",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "groep zinnen die één onderdeel van een tekst vormt",
+            "en": "paragraph"
+          },
+          "example": {
+            "nl": "Toen Jonas de eerste alinea voorlas, luisterde ze aandachtig maar vroeg vervolgens welke zin nu echt van hem was.",
+            "en": "When Jonas read the first paragraph aloud, she listened carefully but then asked which sentence was actually his."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een betrekkelijke bijzin",
+            "en": "A relative clause"
+          },
+          "explanation": {
+            "nl": "Een betrekkelijke bijzin geeft extra informatie bij een zelfstandig naamwoord. Hij kan beginnen met die, dat of een vorm zoals waarin of waarvan; het werkwoord staat achteraan.",
+            "en": "A relative clause gives extra information about a noun. It can begin with die, dat or a form such as waarin or waarvan; the verb comes at the end."
+          },
+          "examples": [
+            {
+              "nl": "Voor hun jubileum probeerde Jonas een brief te schrijven die even bijzonder klonk als de brieven in zijn favoriete romans.",
+              "en": "For their anniversary, Jonas tried to write a letter that sounded as special as the letters in his favourite novels."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom herkent de vriendin Jonas niet meteen in de brief?",
+            "en": "Why does the girlfriend not immediately recognise Jonas in the letter?"
+          },
+          "options": [
+            {
+              "nl": "Ze kan zijn handschrift niet lezen",
+              "en": "She cannot read his handwriting"
+            },
+            {
+              "nl": "De brief is te kort",
+              "en": "The letter is too short"
+            },
+            {
+              "nl": "De taal past niet bij zijn gewone manier van spreken",
+              "en": "The language does not fit his ordinary way of speaking"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Na drie avonden stonden er vooral woorden op papier die hij in een gewoon gesprek nooit gebruikte.",
+            "en": "After three evenings, the paper mainly contained words he never used in an ordinary conversation."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke belofte vraagt zij op papier te zetten?",
+            "en": "Which promise does she ask him to put on paper?"
+          },
+          "options": [
+            {
+              "nl": "Elk jaar een duur cadeau",
+              "en": "An expensive gift every year"
+            },
+            {
+              "nl": "Nooit meer koffie drinken",
+              "en": "Never drinking coffee again"
+            },
+            {
+              "nl": "De werktelefoon bij het eten wegleggen",
+              "en": "Putting away the work phone at meals"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Daarna beloofde hij niet een groots eeuwig gebaar, maar dat hij tijdens hun avondeten zijn werktelefoon zou wegleggen.",
+            "en": "Then he promised not a grand eternal gesture, but that he would put his work phone away during their evening meal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-cursus-zonder-certificaat",
+      "topic_id": "personal-development",
+      "title": {
+        "nl": "De zondag zonder diploma",
+        "en": "The Sunday without a certificate"
+      },
+      "plot_key": "A lifelong learner chooses to enjoy an activity without turning it into another credential after noticing constant self-measurement.",
+      "lines": [
+        {
+          "nl": "Wanneer ze een nieuwe hobby begon, zocht Malika meteen naar een cursus, een test en een bewijs dat ze vooruitging.",
+          "en": "Whenever she began a new hobby, Malika immediately looked for a course, a test and proof that she was progressing."
+        },
+        {
+          "nl": "Zelfs haar zondagse tekeningen eindigden in een map met opmerkingen over wat nog niet goed genoeg was.",
+          "en": "Even her Sunday drawings ended up in a folder with comments on what was not yet good enough."
+        },
+        {
+          "nl": "Een vriendin vroeg waarom geen enkele tekening ooit op haar koelkast hing, terwijl ze bijna elk weekend tekende.",
+          "en": "A friend asked why no drawing ever hung on her fridge, although she drew almost every weekend."
+        },
+        {
+          "nl": "Malika antwoordde dat ze nog niet zover was, maar hoorde zelf hoe vreemd dat na twee jaar klonk.",
+          "en": "Malika replied that she was not ready yet, but heard herself how odd that sounded after two years."
+        },
+        {
+          "nl": "Ze koos één zondag waarop ze haar verbeterlijst thuisliet en alleen tekende wat ze vanuit het raam zag.",
+          "en": "She chose one Sunday to leave her improvement list at home and draw only what she could see from the window."
+        },
+        {
+          "nl": "Het resultaat bevatte scheve daken en een boom die nauwelijks op de echte leek, maar ook de kat van de overbuur.",
+          "en": "The result contained crooked roofs and a tree that barely resembled the real one, but also the cat belonging to the neighbour opposite."
+        },
+        {
+          "nl": "Ze hing het blad op en schreef zich later nog steeds voor lessen in, zonder elk plezier naar een eindpunt te verschuiven.",
+          "en": "She hung up the sheet and still enrolled in lessons later, without postponing every pleasure until a final destination."
+        },
+        {
+          "nl": "De vriendin zag de tekening bij haar volgende bezoek en vroeg geen niveau, maar of de kat werkelijk zo scheel keek.",
+          "en": "The friend saw the drawing on her next visit and did not ask for a level, but whether the cat really looked so cross-eyed."
+        }
+      ],
+      "words": [
+        {
+          "term": "zich inschrijven",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "je officieel aanmelden om deel te nemen",
+            "en": "to enrol"
+          },
+          "example": {
+            "nl": "Ze hing het blad op en schreef zich later nog steeds voor lessen in, zonder elk plezier naar een eindpunt te verschuiven.",
+            "en": "She hung up the sheet and still enrolled in lessons later, without postponing every pleasure until a final destination."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "verschuiven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "naar een ander moment of een andere plaats brengen",
+            "en": "to postpone or shift"
+          },
+          "example": {
+            "nl": "Ze hing het blad op en schreef zich later nog steeds voor lessen in, zonder elk plezier naar een eindpunt te verschuiven.",
+            "en": "She hung up the sheet and still enrolled in lessons later, without postponing every pleasure until a final destination."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "het eindpunt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plaats of moment waar iets eindigt",
+            "en": "final destination"
+          },
+          "example": {
+            "nl": "Ze hing het blad op en schreef zich later nog steeds voor lessen in, zonder elk plezier naar een eindpunt te verschuiven.",
+            "en": "She hung up the sheet and still enrolled in lessons later, without postponing every pleasure until a final destination."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een bijzin met terwijl",
+            "en": "A subordinate clause with terwijl"
+          },
+          "explanation": {
+            "nl": "Terwijl verbindt een bijzin met een hoofdzin. Het kan gelijktijdigheid of een tegenstelling aangeven; het werkwoord staat achteraan in de bijzin.",
+            "en": "Terwijl links a subordinate clause to a main clause. It can express simultaneous events or a contrast; the verb comes at the end of the subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "Een vriendin vroeg waarom geen enkele tekening ooit op haar koelkast hing, terwijl ze bijna elk weekend tekende.",
+              "en": "A friend asked why no drawing ever hung on her fridge, although she drew almost every weekend."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat valt de vriendin op?",
+            "en": "What does the friend notice?"
+          },
+          "options": [
+            {
+              "nl": "Geen tekening wordt zichtbaar opgehangen",
+              "en": "No drawing is visibly displayed"
+            },
+            {
+              "nl": "Alle tekeningen zijn hetzelfde",
+              "en": "All drawings are identical"
+            },
+            {
+              "nl": "Malika tekent nooit",
+              "en": "Malika never draws"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Een vriendin vroeg waarom geen enkele tekening ooit op haar koelkast hing, terwijl ze bijna elk weekend tekende.",
+            "en": "A friend asked why no drawing ever hung on her fridge, although she drew almost every weekend."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert Malika?",
+            "en": "What does Malika change?"
+          },
+          "options": [
+            {
+              "nl": "Ze stopt voorgoed met les",
+              "en": "She stops taking lessons forever"
+            },
+            {
+              "nl": "Ze gooit haar tekeningen weg",
+              "en": "She throws away her drawings"
+            },
+            {
+              "nl": "Ze laat plezier niet alleen van een eindniveau afhangen",
+              "en": "She stops making enjoyment depend only on a final level"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze hing het blad op en schreef zich later nog steeds voor lessen in, zonder elk plezier naar een eindpunt te verschuiven.",
+            "en": "She hung up the sheet and still enrolled in lessons later, without postponing every pleasure until a final destination."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-rekening-verjaardagsavond",
+      "topic_id": "money-finance",
+      "title": {
+        "nl": "De rekening tussen vrienden",
+        "en": "The bill between friends"
+      },
+      "plot_key": "Friends notice an equal split hides unequal choices and learn to discuss the bill before a group meal without exposing personal budgets.",
+      "lines": [
+        {
+          "nl": "Bij elke gezamenlijke restaurantavond deelde de vriendengroep de rekening vanzelf door zes, ook wanneer sommigen nauwelijks iets extra's bestelden.",
+          "en": "At every restaurant evening together, the group automatically divided the bill by six, even when some hardly ordered any extras."
+        },
+        {
+          "nl": "Mina sloeg steeds vaker een uitnodiging over en gebruikte haar werk als verklaring, hoewel ze vooral tegen het onbekende bedrag opzag.",
+          "en": "Mina increasingly declined invitations and used work as the explanation, although she mainly dreaded the unknown amount."
+        },
+        {
+          "nl": "Op haar verjaardag stelde een vriend opnieuw een uitgebreid menu voor en vroeg voor de grap of ze deze keer wel zou komen.",
+          "en": "On her birthday, a friend again suggested an elaborate menu and jokingly asked whether she would come this time."
+        },
+        {
+          "nl": "Mina zei dat zij graag kwam, maar vooraf wilde weten wat ze zelf zou betalen.",
+          "en": "Mina said she would gladly come but wanted to know beforehand what she herself would pay."
+        },
+        {
+          "nl": "Er viel een ongemakkelijke stilte, waarna iemand begon uit te leggen dat niemand over een paar euro moeilijk hoefde te doen.",
+          "en": "An awkward silence followed, after which someone began explaining that nobody needed to make a fuss over a few euros."
+        },
+        {
+          "nl": "Een andere vriend vroeg niet naar Mina's inkomen, maar stelde voor de gezamenlijke kosten en individuele bestellingen voortaan vooraf te onderscheiden.",
+          "en": "Another friend did not ask about Mina's income but suggested distinguishing shared costs from individual orders in advance from then on."
+        },
+        {
+          "nl": "Ze kozen een eenvoudiger plek en lieten wie dat wilde zijn eigen bestelling afrekenen, zonder daar een verklaring voor te vragen.",
+          "en": "They chose a simpler place and let anyone who wanted pay for their own order, without asking for an explanation."
+        },
+        {
+          "nl": "Mina bleef die avond tot het einde en merkte hoe weinig over geld praten kon kosten wanneer niemand zijn hele leven moest verdedigen.",
+          "en": "Mina stayed until the end that evening and noticed how little talking about money could cost when nobody had to defend their entire life."
+        }
+      ],
+      "words": [
+        {
+          "term": "afrekenen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "betalen wat je verschuldigd bent",
+            "en": "to settle a bill"
+          },
+          "example": {
+            "nl": "Ze kozen een eenvoudiger plek en lieten wie dat wilde zijn eigen bestelling afrekenen, zonder daar een verklaring voor te vragen.",
+            "en": "They chose a simpler place and let anyone who wanted pay for their own order, without asking for an explanation."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "onderscheiden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "verschillen zien en apart behandelen",
+            "en": "to distinguish"
+          },
+          "example": {
+            "nl": "Een andere vriend vroeg niet naar Mina's inkomen, maar stelde voor de gezamenlijke kosten en individuele bestellingen voortaan vooraf te onderscheiden.",
+            "en": "Another friend did not ask about Mina's income but suggested distinguishing shared costs from individual orders in advance from then on."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "ongemakkelijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "waarbij mensen zich niet op hun gemak voelen",
+            "en": "awkward"
+          },
+          "example": {
+            "nl": "Er viel een ongemakkelijke stilte, waarna iemand begon uit te leggen dat niemand over een paar euro moeilijk hoefde te doen.",
+            "en": "An awkward silence followed, after which someone began explaining that nobody needed to make a fuss over a few euros."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een toegeving met hoewel",
+            "en": "Concession with hoewel"
+          },
+          "explanation": {
+            "nl": "Hoewel leidt een bijzin in die een tegenstelling met de hoofdzin uitdrukt. Het werkwoord staat achteraan in die bijzin.",
+            "en": "Hoewel introduces a subordinate clause expressing a contrast with the main clause. The verb is placed at the end of that clause."
+          },
+          "examples": [
+            {
+              "nl": "Mina sloeg steeds vaker een uitnodiging over en gebruikte haar werk als verklaring, hoewel ze vooral tegen het onbekende bedrag opzag.",
+              "en": "Mina increasingly declined invitations and used work as the explanation, although she mainly dreaded the unknown amount."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zegt Mina vaker af?",
+            "en": "Why does Mina cancel more often?"
+          },
+          "options": [
+            {
+              "nl": "Ze mag niet uit eten",
+              "en": "She is not allowed to eat out"
+            },
+            {
+              "nl": "Ze heeft een hekel aan de groep",
+              "en": "She dislikes the group"
+            },
+            {
+              "nl": "Ze ziet op tegen een onbekend bedrag",
+              "en": "She dreads an unknown amount"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Mina sloeg steeds vaker een uitnodiging over en gebruikte haar werk als verklaring, hoewel ze vooral tegen het onbekende bedrag opzag.",
+            "en": "Mina increasingly declined invitations and used work as the explanation, although she mainly dreaded the unknown amount."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke vraag wordt bewust niet gesteld?",
+            "en": "Which question is deliberately not asked?"
+          },
+          "options": [
+            {
+              "nl": "Hoeveel Mina verdient",
+              "en": "How much Mina earns"
+            },
+            {
+              "nl": "Wie een eigen bestelling wil",
+              "en": "Who wants an individual order"
+            },
+            {
+              "nl": "Welke plek ze kiezen",
+              "en": "Which place they choose"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Een andere vriend vroeg niet naar Mina's inkomen, maar stelde voor de gezamenlijke kosten en individuele bestellingen voortaan vooraf te onderscheiden.",
+            "en": "Another friend did not ask about Mina's income but suggested distinguishing shared costs from individual orders in advance from then on."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-winkel-van-twee-zussen",
+      "topic_id": "business",
+      "title": {
+        "nl": "Niet dezelfde droom achter dezelfde toonbank",
+        "en": "Different dreams behind the same counter"
+      },
+      "plot_key": "Two sisters opening a small shop recognise different ambitions before one silently carries a plan she never chose.",
+      "lines": [
+        {
+          "nl": "Toen twee zussen een leeg winkelpand huurden, spraken ze enthousiast over hun eigen zaak zonder te vragen wat ieder daaronder verstond.",
+          "en": "When two sisters rented an empty shop, they spoke enthusiastically about their own business without asking what each meant by it."
+        },
+        {
+          "nl": "Voor Hanne betekende het een rustige werkplaats met enkele vaste klanten; Lotte zag vooral een merk dat snel kon groeien.",
+          "en": "For Hanne, it meant a quiet workshop with a few regular customers; Lotte mainly saw a brand that could grow quickly."
+        },
+        {
+          "nl": "Bij de eerste grote bestelling beloofde Lotte een leverdatum voordat Hanne had kunnen berekenen hoeveel avonden werk daarvoor nodig waren.",
+          "en": "At the first large order, Lotte promised a delivery date before Hanne could calculate how many evenings of work it would require."
+        },
+        {
+          "nl": "Hanne werkte zwijgend door tot ze op een avond de sleutel liet liggen en zei dat ze niet nog een baas had willen krijgen.",
+          "en": "Hanne worked on in silence until one evening she left the key behind and said she had not wanted to acquire another boss."
+        },
+        {
+          "nl": "Hoewel Lotte eerst hoorde dat haar ambitie werd afgewezen, las ze daarna de oorspronkelijke plannen van haar zus opnieuw.",
+          "en": "Although Lotte initially heard a rejection of her ambition, she then reread her sister's original plans."
+        },
+        {
+          "nl": "Ze belden de klant samen, bespraken een haalbare kleinere levering en maakten niet opnieuw een belofte op basis van één stem.",
+          "en": "They called the customer together, discussed a smaller feasible delivery, and did not again make a promise based on only one voice."
+        },
+        {
+          "nl": "Voor elke volgende opdracht schreven ze zowel beschikbare uren als de gewenste richting van hun zaak op.",
+          "en": "For every subsequent order, they wrote down both the available hours and the desired direction of their business."
+        },
+        {
+          "nl": "De winkel groeide langzamer dan Lotte droomde, maar Hanne draaide de volgende ochtend weer zelf haar sleutel om.",
+          "en": "The shop grew more slowly than Lotte dreamed, but the next morning Hanne turned her own key again."
+        }
+      ],
+      "words": [
+        {
+          "term": "de zaak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "onderneming of bedrijf",
+            "en": "business"
+          },
+          "example": {
+            "nl": "Toen twee zussen een leeg winkelpand huurden, spraken ze enthousiast over hun eigen zaak zonder te vragen wat ieder daaronder verstond.",
+            "en": "When two sisters rented an empty shop, they spoke enthusiastically about their own business without asking what each meant by it."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de leverdatum",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "dag waarop een bestelling bezorgd moet worden",
+            "en": "delivery date"
+          },
+          "example": {
+            "nl": "Bij de eerste grote bestelling beloofde Lotte een leverdatum voordat Hanne had kunnen berekenen hoeveel avonden werk daarvoor nodig waren.",
+            "en": "At the first large order, Lotte promised a delivery date before Hanne could calculate how many evenings of work it would require."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "haalbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "mogelijk binnen de beschikbare tijd en middelen",
+            "en": "feasible"
+          },
+          "example": {
+            "nl": "Ze belden de klant samen, bespraken een haalbare kleinere levering en maakten niet opnieuw een belofte op basis van één stem.",
+            "en": "They called the customer together, discussed a smaller feasible delivery, and did not again make a promise based on only one voice."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een toegeving met hoewel",
+            "en": "Concession with hoewel"
+          },
+          "explanation": {
+            "nl": "Hoewel leidt een bijzin in die een tegenstelling met de hoofdzin uitdrukt. Het werkwoord staat achteraan in die bijzin.",
+            "en": "Hoewel introduces a subordinate clause expressing a contrast with the main clause. The verb is placed at the end of that clause."
+          },
+          "examples": [
+            {
+              "nl": "Hoewel Lotte eerst hoorde dat haar ambitie werd afgewezen, las ze daarna de oorspronkelijke plannen van haar zus opnieuw.",
+              "en": "Although Lotte initially heard a rejection of her ambition, she then reread her sister's original plans."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk verschil bespreken de zussen eerst niet?",
+            "en": "Which difference do the sisters initially fail to discuss?"
+          },
+          "options": [
+            {
+              "nl": "Hun verschillende doelen voor de zaak",
+              "en": "Their different goals for the business"
+            },
+            {
+              "nl": "Hun woonadres",
+              "en": "Their home address"
+            },
+            {
+              "nl": "De kleur van het pand",
+              "en": "The colour of the premises"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Voor Hanne betekende het een rustige werkplaats met enkele vaste klanten; Lotte zag vooral een merk dat snel kon groeien.",
+            "en": "For Hanne, it meant a quiet workshop with a few regular customers; Lotte mainly saw a brand that could grow quickly."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe behandelen ze de bestaande bestelling?",
+            "en": "How do they handle the existing order?"
+          },
+          "options": [
+            {
+              "nl": "Ze verdwijnen zonder bericht",
+              "en": "They disappear without notice"
+            },
+            {
+              "nl": "Ze bespreken samen een kleinere haalbare levering",
+              "en": "They jointly discuss a smaller feasible delivery"
+            },
+            {
+              "nl": "Ze laten Hanne alles alleen doen",
+              "en": "They leave everything to Hanne"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze belden de klant samen, bespraken een haalbare kleinere levering en maakten niet opnieuw een belofte op basis van één stem.",
+            "en": "They called the customer together, discussed a smaller feasible delivery, and did not again make a promise based on only one voice."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2-read-feestjurk-met-zak",
+      "topic_id": "culture-traditions",
+      "title": {
+        "nl": "De zak in de feestjurk",
+        "en": "The pocket in the celebration dress"
+      },
+      "plot_key": "A young adult and a relative adapt a family celebration dress so tradition can include a practical personal choice.",
+      "lines": [
+        {
+          "nl": "Voor het familiefeest haalde Esra de feestjurk boven die haar tante jaren eerder voor haar moeder had gemaakt.",
+          "en": "For the family celebration, Esra brought out the dress her aunt had made for her mother years earlier."
+        },
+        {
+          "nl": "De tante glimlachte toen ze de stof zag, maar schrok van Esra's vraag of er een diepe zak in de zijkant kon komen.",
+          "en": "The aunt smiled when she saw the fabric but was startled by Esra's question about adding a deep pocket in the side."
+        },
+        {
+          "nl": "Volgens haar hoorde de jurk zo te blijven als ze was, terwijl Esra haar telefoon en sleutels niet de hele avond wilde vasthouden.",
+          "en": "In her view, the dress ought to remain as it was, while Esra did not want to hold her phone and keys all evening."
+        },
+        {
+          "nl": "Ze legde de jurk bijna terug in de kast, bang dat iedere verandering als gebrek aan respect zou worden gelezen.",
+          "en": "She almost returned the dress to the cupboard, afraid that any change would be read as a lack of respect."
+        },
+        {
+          "nl": "De moeder vroeg toen waarom haar eigen tante vroeger de mouwen had ingekort en of dat ook geen aanpassing was geweest.",
+          "en": "Her mother then asked why her own aunt had shortened the sleeves back then, and whether that had not been an adaptation too."
+        },
+        {
+          "nl": "Samen zochten ze een onopvallende plaats waar de nieuwe zak de vorm niet zou vervormen.",
+          "en": "Together, they found an unobtrusive place where the new pocket would not distort the shape."
+        },
+        {
+          "nl": "Tijdens het feest liet de tante met zichtbaar plezier zien hoe de extra stof zorgvuldig tussen twee oude naden verdween.",
+          "en": "During the celebration, the aunt visibly enjoyed showing how the extra fabric carefully disappeared between two old seams."
+        },
+        {
+          "nl": "Esra droeg die avond geen onaantastbaar voorwerp uit het verleden, maar iets waaraan opnieuw iemand uit de familie had gewerkt.",
+          "en": "That evening, Esra wore not an untouchable object from the past, but something to which a family member had once again contributed."
+        }
+      ],
+      "words": [
+        {
+          "term": "onopvallend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder sterk de aandacht te trekken",
+            "en": "unobtrusive"
+          },
+          "example": {
+            "nl": "Samen zochten ze een onopvallende plaats waar de nieuwe zak de vorm niet zou vervormen.",
+            "en": "Together, they found an unobtrusive place where the new pocket would not distort the shape."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "vervormen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "de oorspronkelijke vorm veranderen",
+            "en": "to distort"
+          },
+          "example": {
+            "nl": "Samen zochten ze een onopvallende plaats waar de nieuwe zak de vorm niet zou vervormen.",
+            "en": "Together, they found an unobtrusive place where the new pocket would not distort the shape."
+          },
+          "minimum_stage": "b2"
+        },
+        {
+          "term": "de naad",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lijn waar stukken stof aan elkaar vastzitten",
+            "en": "seam"
+          },
+          "example": {
+            "nl": "Tijdens het feest liet de tante met zichtbaar plezier zien hoe de extra stof zorgvuldig tussen twee oude naden verdween.",
+            "en": "During the celebration, the aunt visibly enjoyed showing how the extra fabric carefully disappeared between two old seams."
+          },
+          "minimum_stage": "b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een bijzin met terwijl",
+            "en": "A subordinate clause with terwijl"
+          },
+          "explanation": {
+            "nl": "Terwijl verbindt een bijzin met een hoofdzin. Het kan gelijktijdigheid of een tegenstelling aangeven; het werkwoord staat achteraan in de bijzin.",
+            "en": "Terwijl links a subordinate clause to a main clause. It can express simultaneous events or a contrast; the verb comes at the end of the subordinate clause."
+          },
+          "examples": [
+            {
+              "nl": "Volgens haar hoorde de jurk zo te blijven als ze was, terwijl Esra haar telefoon en sleutels niet de hele avond wilde vasthouden.",
+              "en": "In her view, the dress ought to remain as it was, while Esra did not want to hold her phone and keys all evening."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat vraagt Esra aan haar tante?",
+            "en": "What does Esra ask her aunt?"
+          },
+          "options": [
+            {
+              "nl": "Een zak toevoegen",
+              "en": "Add a pocket"
+            },
+            {
+              "nl": "Een andere stof kopen",
+              "en": "Buy different fabric"
+            },
+            {
+              "nl": "De jurk weggeven",
+              "en": "Give away the dress"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De tante glimlachte toen ze de stof zag, maar schrok van Esra's vraag of er een diepe zak in de zijkant kon komen.",
+            "en": "The aunt smiled when she saw the fabric but was startled by Esra's question about adding a deep pocket in the side."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welk argument opent ruimte voor verandering?",
+            "en": "Which argument creates room for change?"
+          },
+          "options": [
+            {
+              "nl": "Niemand kent de jurk",
+              "en": "Nobody knows the dress"
+            },
+            {
+              "nl": "De jurk is niet meer mooi",
+              "en": "The dress is no longer beautiful"
+            },
+            {
+              "nl": "Er was vroeger ook al iets aangepast",
+              "en": "Something had already been adapted in the past"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De moeder vroeg toen waarom haar eigen tante vroeger de mouwen had ingekort en of dat ook geen aanpassing was geweest.",
+            "en": "Her mother then asked why her own aunt had shortened the sleeves back then, and whether that had not been an adaptation too."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-polis-voor-een-schilderij",
+      "topic_id": "taxes-insurance",
+      "title": {
+        "nl": "De polis voor het schilderij",
+        "en": "The policy for the painting"
+      },
+      "plot_key": "An amateur gallery's borrowed painting is damaged, and an organiser discovers the event's particular insurance excludes that loan, leading to direct accountability rather than a convenient promise.",
+      "lines": [
+        {
+          "nl": "Voor een tijdelijke tentoonstelling in haar café leende Bieke een groot schilderij van een kunstenaar die zij persoonlijk kende.",
+          "en": "For a temporary exhibition in her café, Bieke borrowed a large painting from an artist she knew personally."
+        },
+        {
+          "nl": "Ze vertelde hem dat alles geregeld was, omdat zij voor het evenement een verzekering had afgesloten en de bevestiging in haar mailbox stond.",
+          "en": "She told him everything was arranged because she had taken out insurance for the event and the confirmation was in her mailbox."
+        },
+        {
+          "nl": "Tijdens het ophangen schuurde een ladder langs de rand van het doek, precies door een felblauwe strook die de hele compositie droeg.",
+          "en": "While it was being hung, a ladder scraped along the edge of the canvas, right through a bright blue strip that held the whole composition together."
+        },
+        {
+          "nl": "Bieke beloofde onmiddellijk dat de verzekering de herstelling zou betalen, nog voordat zij de omschrijving van de verzekerde voorwerpen had gelezen.",
+          "en": "Bieke immediately promised that the insurance would pay for the repair before she had read the description of the insured objects."
+        },
+        {
+          "nl": "In deze polis bleken geleende kunstwerken niet opgenomen; de bevestiging toonde alleen dat het gekozen pakket actief was.",
+          "en": "Borrowed artworks turned out not to be included in this policy; the confirmation showed only that the selected package was active."
+        },
+        {
+          "nl": "De kunstenaar was vooral boos over de tweede zekerheid die zij zonder controle had uitgesproken, niet alleen over de eerste kras.",
+          "en": "The artist was mainly angry about the second assurance she had given without checking, not only about the first scratch."
+        },
+        {
+          "nl": "Ze liet hem zelf een restaurator kiezen en maakte een schriftelijke afspraak over de kosten die zij kon dragen, zonder nog een snelle oplossing te verzinnen.",
+          "en": "She let him choose a restorer himself and made a written arrangement about the costs she could bear without inventing another quick solution."
+        },
+        {
+          "nl": "Het café opende later dan gepland; naast de lege plek aan de muur hing voortaan geen geruststellende belofte meer voordat iemand de inhoud had gecontroleerd.",
+          "en": "The café opened later than planned; beside the empty space on the wall there was no longer a reassuring promise before someone had checked its substance."
+        }
+      ],
+      "words": [
+        {
+          "term": "de polis",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het document met de voorwaarden van een verzekering",
+            "en": "insurance policy"
+          },
+          "example": {
+            "nl": "In deze polis bleken geleende kunstwerken niet opgenomen; de bevestiging toonde alleen dat het gekozen pakket actief was.",
+            "en": "Borrowed artworks turned out not to be included in this policy; the confirmation showed only that the selected package was active."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de restaurator",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die beschadigde kunstwerken herstelt",
+            "en": "art restorer"
+          },
+          "example": {
+            "nl": "Ze liet hem zelf een restaurator kiezen en maakte een schriftelijke afspraak over de kosten die zij kon dragen, zonder nog een snelle oplossing te verzinnen.",
+            "en": "She let him choose a restorer himself and made a written arrangement about the costs she could bear without inventing another quick solution."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de zekerheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een uitspraak of gevoel dat iets vaststaat",
+            "en": "assurance or certainty"
+          },
+          "example": {
+            "nl": "De kunstenaar was vooral boos over de tweede zekerheid die zij zonder controle had uitgesproken, niet alleen over de eerste kras.",
+            "en": "The artist was mainly angry about the second assurance she had given without checking, not only about the first scratch."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Nog voordat bij een voorbarige belofte",
+            "en": "Before, with a premature promise"
+          },
+          "explanation": {
+            "nl": "Nog voordat benadrukt dat de belofte kwam vóór het controleren.",
+            "en": "Nog voordat emphasises that the promise came before checking."
+          },
+          "examples": [
+            {
+              "nl": "Bieke beloofde onmiddellijk dat de verzekering de herstelling zou betalen, nog voordat zij de omschrijving van de verzekerde voorwerpen had gelezen.",
+              "en": "Bieke immediately promised that the insurance would pay for the repair before she had read the description of the insured objects."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat bewijst de bevestiging in haar mailbox niet?",
+            "en": "What does the confirmation in her mailbox not prove?"
+          },
+          "options": [
+            {
+              "nl": "Dat zij een café heeft.",
+              "en": "That she has a café."
+            },
+            {
+              "nl": "Dat dit geleende schilderij onder haar gekozen dekking valt.",
+              "en": "That this borrowed painting falls under her selected cover."
+            },
+            {
+              "nl": "Dat er een tentoonstelling gepland was.",
+              "en": "That an exhibition was planned."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De specifieke polis sluit geleende kunstwerken uit.",
+            "en": "The specific policy excludes borrowed artworks."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom raakt de tweede belofte het vertrouwen extra?",
+            "en": "Why does the second promise further damage trust?"
+          },
+          "options": [
+            {
+              "nl": "De ladder is te nieuw.",
+              "en": "The ladder is too new."
+            },
+            {
+              "nl": "Zij geeft opnieuw zekerheid zonder de voorwaarden te kennen.",
+              "en": "She again gives assurance without knowing the terms."
+            },
+            {
+              "nl": "De kunstenaar wil geen geld ontvangen.",
+              "en": "The artist does not want to receive money."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ook na de schade belooft zij iets dat zij nog niet gecontroleerd heeft.",
+            "en": "Even after the damage she promises something she has not checked."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-sleutel-op-de-vensterbank",
+      "topic_id": "renting-property",
+      "title": {
+        "nl": "Een sleutel op de vensterbank",
+        "en": "A key on the windowsill"
+      },
+      "plot_key": "A departing tenant and arriving tenant clash over leaving shelves behind until a taped height mark reveals the departing family's real reluctance to clear the space.",
+      "lines": [
+        {
+          "nl": "Toen Milan zijn huurwoning verliet, vroeg de nieuwe huurster of de smalle plank naast de keukendeur kon worden weggehaald.",
+          "en": "When Milan left his rented home, the new tenant asked whether the narrow shelf beside the kitchen door could be removed."
+        },
+        {
+          "nl": "Hij had aangeboden de plank gratis achter te laten en reageerde onverwacht gekwetst toen zij het gebaar niet als behulpzaam zag.",
+          "en": "He had offered to leave the shelf free of charge and reacted unexpectedly hurt when she did not see the gesture as helpful."
+        },
+        {
+          "nl": "Zij legde uit dat ze daar een werktafel wilde zetten, maar Milan bleef praten over hoeveel moeite het bevestigen ooit had gekost.",
+          "en": "She explained that she wanted to put a worktable there, but Milan kept talking about how much effort mounting it had once taken."
+        },
+        {
+          "nl": "Tijdens het leeghalen viel een stukje tape van de onderkant, waarop een datum en een onhandig getekend zonnetje stonden.",
+          "en": "While clearing it, a piece of tape fell from the underside, bearing a date and a clumsily drawn little sun."
+        },
+        {
+          "nl": "Zijn dochter had de plank jarenlang als meetpunt gebruikt en er telkens haar lengte naast gehouden, omdat de muren niet beschreven mochten worden.",
+          "en": "His daughter had used the shelf as a measuring point for years and held her height beside it each time because writing on the walls was not allowed."
+        },
+        {
+          "nl": "Milan besefte dat hij geen nuttig meubel verdedigde, maar een plek waarvan het afscheid nog niet in de verhuisdozen paste.",
+          "en": "Milan realised he was not defending a useful piece of furniture but a place whose farewell did not yet fit into the removal boxes."
+        },
+        {
+          "nl": "Hij haalde de plank weg en nam haar mee, terwijl de nieuwe huurster op de vrijgekomen plek alvast de maten voor haar tafel noteerde.",
+          "en": "He removed the shelf and took it with him while the new tenant noted the measurements for her table in the newly freed space."
+        },
+        {
+          "nl": "Bij het overhandigen van de sleutel vroeg hij niet of zij goed voor zijn oude huis zou zorgen, maar wenste hij haar ruimte voor een eigen begin.",
+          "en": "When handing over the key he did not ask whether she would take good care of his old home, but wished her space for a beginning of her own."
+        }
+      ],
+      "words": [
+        {
+          "term": "bevestigen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "ergens stevig aan vastmaken",
+            "en": "to attach"
+          },
+          "example": {
+            "nl": "Zij legde uit dat ze daar een werktafel wilde zetten, maar Milan bleef praten over hoeveel moeite het bevestigen ooit had gekost.",
+            "en": "She explained that she wanted to put a worktable there, but Milan kept talking about how much effort mounting it had once taken."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het meetpunt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een vaste plaats waarmee iets vergeleken wordt bij het meten",
+            "en": "reference point for measurement"
+          },
+          "example": {
+            "nl": "Zijn dochter had de plank jarenlang als meetpunt gebruikt en er telkens haar lengte naast gehouden, omdat de muren niet beschreven mochten worden.",
+            "en": "His daughter had used the shelf as a measuring point for years and held her height beside it each time because writing on the walls was not allowed."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "overhandigen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "officieel of rechtstreeks aan iemand geven",
+            "en": "to hand over"
+          },
+          "example": {
+            "nl": "Bij het overhandigen van de sleutel vroeg hij niet of zij goed voor zijn oude huis zou zorgen, maar wenste hij haar ruimte voor een eigen begin.",
+            "en": "When handing over the key he did not ask whether she would take good care of his old home, but wished her space for a beginning of her own."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Omdat bij een praktische reden",
+            "en": "Because with a practical reason"
+          },
+          "explanation": {
+            "nl": "Omdat verklaart waarom de plank in plaats van de muur als meetpunt werd gebruikt.",
+            "en": "Omdat explains why the shelf rather than the wall was used as a measuring point."
+          },
+          "examples": [
+            {
+              "nl": "Zijn dochter had de plank jarenlang als meetpunt gebruikt en er telkens haar lengte naast gehouden, omdat de muren niet beschreven mochten worden.",
+              "en": "His daughter had used the shelf as a measuring point for years and held her height beside it each time because writing on the walls was not allowed."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is Milan zo gehecht aan de plank?",
+            "en": "Why is Milan so attached to the shelf?"
+          },
+          "options": [
+            {
+              "nl": "Ze draagt herinneringen aan het opgroeien van zijn dochter.",
+              "en": "It carries memories of his daughter growing up."
+            },
+            {
+              "nl": "De plank is een kostbaar antiek stuk.",
+              "en": "The shelf is an expensive antique."
+            },
+            {
+              "nl": "Hij wil er een werktafel van maken.",
+              "en": "He wants to turn it into a worktable."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het tape en de metingen maken de persoonlijke betekenis duidelijk.",
+            "en": "The tape and measurements make its personal meaning clear."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat erkent zijn laatste wens?",
+            "en": "What does his final wish acknowledge?"
+          },
+          "options": [
+            {
+              "nl": "De nieuwe huurster mag niets veranderen.",
+              "en": "The new tenant must change nothing."
+            },
+            {
+              "nl": "Zijn dochter moet terugkomen om te meten.",
+              "en": "His daughter has to return for measuring."
+            },
+            {
+              "nl": "Zij heeft recht op een eigen gebruik van de ruimte.",
+              "en": "She has a right to her own use of the space."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij laat zijn herinnering niet langer bepalen hoe zij moet wonen.",
+            "en": "He no longer lets his memory dictate how she should live."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-bank-met-een-zonvlek",
+      "topic_id": "home-decoration",
+      "title": {
+        "nl": "De bank met de zonvlek",
+        "en": "The sofa with the sun patch"
+      },
+      "plot_key": "A couple buying matching furniture discovers the existing mismatched sofa marks a daily reading ritual, and changes the planned room around actual use.",
+      "lines": [
+        {
+          "nl": "Voor de herinrichting van hun woonkamer kozen Eva en Jules een complete set meubels die in de winkel perfect bij elkaar paste.",
+          "en": "To redecorate their living room, Eva and Jules chose a complete furniture set that matched perfectly in the shop."
+        },
+        {
+          "nl": "De oude groene bank moest verdwijnen, omdat één armleuning versleten was en de stof nergens meer bij hoorde.",
+          "en": "The old green sofa had to go because one armrest was worn and the fabric no longer matched anything."
+        },
+        {
+          "nl": "Toen de bezorgers kwamen meten, vroeg Jules waarom de nieuwe bank niet op dezelfde plaats aan het raam kon staan.",
+          "en": "When the delivery workers came to measure, Jules asked why the new sofa could not stand in the same place by the window."
+        },
+        {
+          "nl": "De verkoper legde uit dat de grotere set alleen paste als de kamer werd gedraaid en het raam voortaan achter de kast lag.",
+          "en": "The salesperson explained that the larger set would fit only if the room was rearranged and the window ended up behind the cupboard."
+        },
+        {
+          "nl": "Eva besefte toen dat zij elke zaterdag op die oude bank in een smalle strook zon de krant las, nog voordat Jules wakker werd.",
+          "en": "Eva then realised that every Saturday she read the newspaper on that old sofa in a narrow strip of sunshine before Jules woke up."
+        },
+        {
+          "nl": "Het was geen groot familiemoment, maar wel een deel van haar week dat op geen enkele voorbeeldfoto van de winkel stond.",
+          "en": "It was no grand family occasion, but it was a part of her week that appeared in none of the shop's example photographs."
+        },
+        {
+          "nl": "Ze bestelden uiteindelijk alleen de kleinere tafel en lieten de armleuning herstellen, ook al bleef het geheel minder keurig op elkaar afgestemd.",
+          "en": "In the end they ordered only the smaller table and had the armrest repaired, even though the whole remained less neatly coordinated."
+        },
+        {
+          "nl": "Toen de kamer klaar was, stond er op de bank nog altijd een verkleurde plek, maar op zaterdagochtend lag die precies waar Eva wilde zitten.",
+          "en": "When the room was ready, the sofa still had a faded patch, but on Saturday mornings it lay exactly where Eva wanted to sit."
+        }
+      ],
+      "words": [
+        {
+          "term": "de armleuning",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het deel van een stoel of bank waarop een arm rust",
+            "en": "armrest"
+          },
+          "example": {
+            "nl": "De oude groene bank moest verdwijnen, omdat één armleuning versleten was en de stof nergens meer bij hoorde.",
+            "en": "The old green sofa had to go because one armrest was worn and the fabric no longer matched anything."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "herinrichten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een ruimte opnieuw indelen en aankleden",
+            "en": "to redecorate or rearrange"
+          },
+          "example": {
+            "nl": "Voor de herinrichting van hun woonkamer kozen Eva en Jules een complete set meubels die in de winkel perfect bij elkaar paste.",
+            "en": "To redecorate their living room, Eva and Jules chose a complete furniture set that matched perfectly in the shop."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "afstemmen op",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "laten passen bij",
+            "en": "to coordinate with"
+          },
+          "example": {
+            "nl": "Ze bestelden uiteindelijk alleen de kleinere tafel en lieten de armleuning herstellen, ook al bleef het geheel minder keurig op elkaar afgestemd.",
+            "en": "In the end they ordered only the smaller table and had the armrest repaired, even though the whole remained less neatly coordinated."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alleen als voor een noodzakelijke voorwaarde",
+            "en": "Only if for a necessary condition"
+          },
+          "explanation": {
+            "nl": "Alleen als geeft de voorwaarde waaronder de grotere set zou passen.",
+            "en": "Alleen als gives the condition under which the larger set would fit."
+          },
+          "examples": [
+            {
+              "nl": "De verkoper legde uit dat de grotere set alleen paste als de kamer werd gedraaid en het raam voortaan achter de kast lag.",
+              "en": "The salesperson explained that the larger set would fit only if the room was rearranged and the window ended up behind the cupboard."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verliest de kamer bij de oorspronkelijke meubelkeuze?",
+            "en": "What does the room lose with the original furniture choice?"
+          },
+          "options": [
+            {
+              "nl": "De plek voor Eva's gewone leesritueel.",
+              "en": "The place for Eva's ordinary reading ritual."
+            },
+            {
+              "nl": "De krant op zondag.",
+              "en": "The Sunday newspaper."
+            },
+            {
+              "nl": "Iedere mogelijke stoel.",
+              "en": "Every possible chair."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De nieuwe indeling verplaatst de bank weg van het raam en de zon.",
+            "en": "The new layout moves the sofa away from the window and sunshine."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom accepteren zij een minder bijpassend geheel?",
+            "en": "Why do they accept a less matching whole?"
+          },
+          "options": [
+            {
+              "nl": "Jules wil nooit meer meubels kopen.",
+              "en": "Jules never wants to buy furniture again."
+            },
+            {
+              "nl": "De winkel heeft geen prijzen vermeld.",
+              "en": "The shop has listed no prices."
+            },
+            {
+              "nl": "Het sluit beter aan bij hoe zij werkelijk wonen.",
+              "en": "It fits better with how they actually live."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De herstelde bank behoudt een waardevolle dagelijkse plek.",
+            "en": "The repaired sofa preserves a valued everyday place."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-vogelverschrikker-in-een-pak",
+      "topic_id": "agriculture",
+      "title": {
+        "nl": "De vogelverschrikker in een pak",
+        "en": "The scarecrow in a suit"
+      },
+      "plot_key": "A farmer lends his old wedding suit to a school scarecrow contest and unexpectedly reunites with a dance partner who recognises a repaired sleeve.",
+      "lines": [
+        {
+          "nl": "Voor een wedstrijd van de dorpsschool leende landbouwer Luc een oud pak uit aan kinderen die een vogelverschrikker wilden maken.",
+          "en": "For a village school competition, farmer Luc lent an old suit to children who wanted to make a scarecrow."
+        },
+        {
+          "nl": "Hij had het sinds zijn huwelijk nauwelijks gedragen en vond het goed dat het eindelijk nog ergens voor diende.",
+          "en": "He had hardly worn it since his wedding and was glad it was finally useful for something again."
+        },
+        {
+          "nl": "De kinderen zetten hun figuur midden tussen de pompoenen en gaven hem een strooien hoofd met een overdreven deftige glimlach.",
+          "en": "The children put their figure among the pumpkins and gave it a straw head with an exaggeratedly refined smile."
+        },
+        {
+          "nl": "Tijdens de open dag bleef een oudere bezoekster lang naar de rechtermouw kijken en vroeg ze van wie het pak eigenlijk was.",
+          "en": "During the open day an older visitor spent a long time looking at the right sleeve and asked who actually owned the suit."
+        },
+        {
+          "nl": "Luc herkende haar pas toen zij vertelde hoe die mouw ooit tijdens een dansles aan een spijker was blijven hangen.",
+          "en": "Luc recognised her only when she described how that sleeve had once caught on a nail during a dancing lesson."
+        },
+        {
+          "nl": "Zij had hem toen hersteld, waarna Luc te zenuwachtig was geweest om haar nog voor de volgende dans te vragen.",
+          "en": "She had repaired it then, after which Luc had been too nervous to ask her for the next dance."
+        },
+        {
+          "nl": "Ze waren allebei inmiddels alleen en spraken bij de pompoenen langer dan de kinderen nodig hadden om de prijsuitreiking af te wachten.",
+          "en": "Both were now living alone, and they talked among the pumpkins longer than the children needed to wait for the prize-giving."
+        },
+        {
+          "nl": "De vogelverschrikker kreeg de tweede prijs; Luc vroeg zijn oude danspartner voor koffie en beloofde ditmaal zelf zijn mouw heel te houden.",
+          "en": "The scarecrow won second prize; Luc invited his old dance partner for coffee and promised this time to keep his own sleeve intact."
+        }
+      ],
+      "words": [
+        {
+          "term": "de vogelverschrikker",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een figuur die vogels bij gewassen weg moet houden",
+            "en": "scarecrow"
+          },
+          "example": {
+            "nl": "Voor een wedstrijd van de dorpsschool leende landbouwer Luc een oud pak uit aan kinderen die een vogelverschrikker wilden maken.",
+            "en": "For a village school competition, farmer Luc lent an old suit to children who wanted to make a scarecrow."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de mouw",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het deel van een kledingstuk rond de arm",
+            "en": "sleeve"
+          },
+          "example": {
+            "nl": "Tijdens de open dag bleef een oudere bezoekster lang naar de rechtermouw kijken en vroeg ze van wie het pak eigenlijk was.",
+            "en": "During the open day an older visitor spent a long time looking at the right sleeve and asked who actually owned the suit."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "deftig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "netjes en formeel",
+            "en": "refined or smart"
+          },
+          "example": {
+            "nl": "De kinderen zetten hun figuur midden tussen de pompoenen en gaven hem een strooien hoofd met een overdreven deftige glimlach.",
+            "en": "The children put their figure among the pumpkins and gave it a straw head with an exaggeratedly refined smile."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Pas toen voor een beslissend moment",
+            "en": "Only when for a decisive moment"
+          },
+          "explanation": {
+            "nl": "Pas toen benadrukt dat de herkenning niet eerder plaatsvond.",
+            "en": "Pas toen emphasises that recognition did not happen earlier."
+          },
+          "examples": [
+            {
+              "nl": "Luc herkende haar pas toen zij vertelde hoe die mouw ooit tijdens een dansles aan een spijker was blijven hangen.",
+              "en": "Luc recognised her only when she described how that sleeve had once caught on a nail during a dancing lesson."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waaraan herkent de bezoekster het pak?",
+            "en": "By what does the visitor recognise the suit?"
+          },
+          "options": [
+            {
+              "nl": "De mouw die zij ooit herstelde.",
+              "en": "The sleeve she once repaired."
+            },
+            {
+              "nl": "Een naam op de hoed.",
+              "en": "A name on the hat."
+            },
+            {
+              "nl": "Een foto naast de pompoenen.",
+              "en": "A photograph beside the pumpkins."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De schade tijdens de dansles geeft het pak een specifieke gedeelde geschiedenis.",
+            "en": "The damage during the dancing lesson gives the suit a specific shared history."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarnaar verwijst Lucs laatste grap?",
+            "en": "What does Luc's final joke refer to?"
+          },
+          "options": [
+            {
+              "nl": "Naar het gewicht van de pompoenen.",
+              "en": "To the weight of the pumpkins."
+            },
+            {
+              "nl": "Naar de verloren eerste prijs.",
+              "en": "To the lost first prize."
+            },
+            {
+              "nl": "Naar de oude aanleiding voor hun gemiste dans.",
+              "en": "To the old occasion for their missed dance."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ditmaal wil hij een ontmoeting vragen zonder een kapotte mouw als aanleiding.",
+            "en": "This time he wants to ask for a meeting without a torn sleeve as the occasion."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-lamp-die-niet-mocht-branden",
+      "topic_id": "energy-electricity",
+      "title": {
+        "nl": "De lamp die bleef branden",
+        "en": "The lamp that stayed on"
+      },
+      "plot_key": "A family disputes an apparently wasteful hallway light until its role in a child’s anxious night-time journey becomes visible, leading to a more suitable light rather than shaming.",
+      "lines": [
+        {
+          "nl": "Elke avond deed vader Sander de grote lamp in de gang uit, en elke ochtend zag hij op de schakelaar dat iemand haar opnieuw had aangezet.",
+          "en": "Every evening father Sander switched off the large hall light, and every morning he saw at the switch that someone had turned it on again."
+        },
+        {
+          "nl": "Hij herinnerde zijn gezin steeds nadrukkelijker aan hun afspraak om onnodig elektriciteitsverbruik te vermijden.",
+          "en": "He reminded his family increasingly firmly of their agreement to avoid unnecessary electricity use."
+        },
+        {
+          "nl": "Zijn dochter Zoë zei niets, maar ging voortaan pas naar de gang wanneer zij zeker wist dat hij sliep.",
+          "en": "His daughter Zoë said nothing, but from then on went into the hall only when she was sure he was asleep."
+        },
+        {
+          "nl": "Toen Sander zelf laat thuiskwam, trof hij haar halverwege de deur naar de badkamer aan, met haar knuffel stevig tegen zich aangedrukt.",
+          "en": "When Sander himself came home late, he found her halfway to the bathroom door with her soft toy held tightly against her."
+        },
+        {
+          "nl": "Zij vertelde dat de schaduw van de kapstok op een vreemde man leek en dat de ganglamp die figuur liet verdwijnen.",
+          "en": "She explained that the coat rack's shadow looked like a strange man and that the hall light made that figure disappear."
+        },
+        {
+          "nl": "Voor hem was de lamp overbodig geweest; voor haar had dezelfde stroom een echte functie gehad waarover niemand iets had gevraagd.",
+          "en": "For him the lamp had been unnecessary; for her the same electricity had served a real function nobody had asked about."
+        },
+        {
+          "nl": "Ze verplaatsten de kapstok en zochten samen een kleine verlichting die voldoende was voor haar route zonder de hele gang fel te laten branden.",
+          "en": "They moved the coat rack and together found a small light sufficient for her route without keeping the entire hall brightly lit."
+        },
+        {
+          "nl": "Sander bleef letten op verspilling, maar vroeg bij de volgende onverwachte lamp eerst waarvoor iemand haar gebruikte.",
+          "en": "Sander continued watching for waste, but at the next unexpected light he first asked what someone used it for."
+        }
+      ],
+      "words": [
+        {
+          "term": "nadrukkelijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "duidelijk en met extra aandacht",
+            "en": "emphatic"
+          },
+          "example": {
+            "nl": "Hij herinnerde zijn gezin steeds nadrukkelijker aan hun afspraak om onnodig elektriciteitsverbruik te vermijden.",
+            "en": "He reminded his family increasingly firmly of their agreement to avoid unnecessary electricity use."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "overbodig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet nodig voor een doel",
+            "en": "unnecessary"
+          },
+          "example": {
+            "nl": "Voor hem was de lamp overbodig geweest; voor haar had dezelfde stroom een echte functie gehad waarover niemand iets had gevraagd.",
+            "en": "For him the lamp had been unnecessary; for her the same electricity had served a real function nobody had asked about."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de kapstok",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een rek of haak om jassen aan te hangen",
+            "en": "coat rack"
+          },
+          "example": {
+            "nl": "Zij vertelde dat de schaduw van de kapstok op een vreemde man leek en dat de ganglamp die figuur liet verdwijnen.",
+            "en": "She explained that the coat rack's shadow looked like a strange man and that the hall light made that figure disappear."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Voor hem ... voor haar ...",
+            "en": "For him ... for her ..."
+          },
+          "explanation": {
+            "nl": "De twee groepen tonen dat de betekenis van hetzelfde gebruik afhangt van de behoefte.",
+            "en": "The two phrases show that the meaning of the same use depends on the need."
+          },
+          "examples": [
+            {
+              "nl": "Voor hem was de lamp overbodig geweest; voor haar had dezelfde stroom een echte functie gehad waarover niemand iets had gevraagd.",
+              "en": "For him the lamp had been unnecessary; for her the same electricity had served a real function nobody had asked about."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zet Zoë de lamp weer aan?",
+            "en": "Why does Zoë turn the light back on?"
+          },
+          "options": [
+            {
+              "nl": "Ze wil de elektriciteitsmeter testen.",
+              "en": "She wants to test the electricity meter."
+            },
+            {
+              "nl": "Ze wil haar vader wakker houden.",
+              "en": "She wants to keep her father awake."
+            },
+            {
+              "nl": "De schaduw maakt haar bang op weg naar de badkamer.",
+              "en": "The shadow frightens her on the way to the bathroom."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De kapstok lijkt in het donker op een figuur die door licht verdwijnt.",
+            "en": "In the dark the coat rack resembles a figure that disappears with light."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert Sander in zijn aanpak?",
+            "en": "What does Sander change about his approach?"
+          },
+          "options": [
+            {
+              "nl": "Hij laat voortaan alle lampen aan.",
+              "en": "He leaves every light on from then on."
+            },
+            {
+              "nl": "Hij onderzoekt eerst het doel voordat hij iets verspilling noemt.",
+              "en": "He investigates the purpose before calling something waste."
+            },
+            {
+              "nl": "Hij verbiedt de badkamer te gebruiken.",
+              "en": "He bans using the bathroom."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zijn laatste vraag zoekt de functie van het gebruik.",
+            "en": "His final question seeks the function of the use."
+          }
+        }
+      ]
+    }
+  ]
+}

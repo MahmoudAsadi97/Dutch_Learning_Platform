@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "stage_id": "b1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "b1-read-wachtende-brief-in-de-bloempot",
+      "topic_id": "love-dating",
+      "title": {
+        "nl": "De wachtende brief in de bloempot",
+        "en": "The waiting letter in the flowerpot"
+      },
+      "plot_key": "Newrelationship neighbours seedpot codedmarriageproposal? characterexpectsproposal realconcerttickets lostsealedpacket onlyrevealedthroughwatering planneddate endingnotmoralromance.",
+      "lines": [
+        {
+          "nl": "Sinds ze boven dezelfde bloemenwinkel wonen, laten Kaat en Idris geregeld kleine briefjes achter in de lege pot op de overloop.",
+          "en": "Since living above the same flower shop, Kaat and Idris regularly leave little notes in the empty pot on the landing."
+        },
+        {
+          "nl": "Soms gaat het om een geleend boek, later steeds vaker om een vraag voor een gezamenlijke avond.",
+          "en": "Sometimes they concern a borrowed book, later increasingly a question about an evening together."
+        },
+        {
+          "nl": "Op een vrijdag ligt er een dikke gesloten envelop in de pot met alleen de woorden niet vóór acht uur.",
+          "en": "One Friday there is a thick sealed envelope in the pot with only the words not before eight."
+        },
+        {
+          "nl": "Kaat probeert de rest van de dag niet te raden, maar vraagt zich toch af waarom Idris zo plechtig heeft geschreven.",
+          "en": "Kaat tries not to guess for the rest of the day but still wonders why Idris wrote so solemnly."
+        },
+        {
+          "nl": "Om acht uur maakt ze de envelop open en vindt twee concertkaarten, een platgedrukte papieren bloem en een haastig briefje over een kapotte printer.",
+          "en": "At eight she opens the envelope and finds two concert tickets, a flattened paper flower and a hurried note about a broken printer."
+        },
+        {
+          "nl": "Idris had een klein kaartje willen maken, maar moest uiteindelijk de hele mislukte knutselpoging in de grote envelop stoppen.",
+          "en": "Idris had wanted to make a little card but ultimately had to put the whole failed craft attempt into the large envelope."
+        },
+        {
+          "nl": "Wanneer hij aanbelt, houdt Kaat de verkreukelde bloem voor haar jas en vraagt ze of deze ook toegang tot het concert geeft.",
+          "en": "When he rings, Kaat holds the crumpled flower against her coat and asks whether it also grants admission to the concert."
+        },
+        {
+          "nl": "Ze vertrekken pas nadat hij de papieren steel recht heeft gemaakt, waardoor ze de eerste song net vanaf de gang moeten beluisteren.",
+          "en": "They leave only after he has straightened the paper stem, making them listen to the first song from the corridor."
+        }
+      ],
+      "words": [
+        {
+          "term": "plechtig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "ernstig en officieel van toon",
+            "en": "solemn"
+          },
+          "example": {
+            "nl": "Kaat probeert de rest van de dag niet te raden, maar vraagt zich toch af waarom Idris zo plechtig heeft geschreven.",
+            "en": "Kaat tries not to guess for the rest of the day but still wonders why Idris wrote so solemnly."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "platgedrukt",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "door druk plat geworden",
+            "en": "flattened"
+          },
+          "example": {
+            "nl": "Om acht uur maakt ze de envelop open en vindt twee concertkaarten, een platgedrukte papieren bloem en een haastig briefje over een kapotte printer.",
+            "en": "At eight she opens the envelope and finds two concert tickets, a flattened paper flower and a hurried note about a broken printer."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "de knutselpoging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat iemand met eenvoudig materiaal probeerde te maken",
+            "en": "craft attempt"
+          },
+          "example": {
+            "nl": "Idris had een klein kaartje willen maken, maar moest uiteindelijk de hele mislukte knutselpoging in de grote envelop stoppen.",
+            "en": "Idris had wanted to make a little card but ultimately had to put the whole failed craft attempt into the large envelope."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Pas nadat",
+            "en": "Only after"
+          },
+          "explanation": {
+            "nl": "Pas nadat benadrukt dat een kleine handeling vóór het vertrek plaatsvindt en gevolgen heeft.",
+            "en": "Pas nadat emphasises that a small action takes place before departure and has consequences."
+          },
+          "examples": [
+            {
+              "nl": "Ze vertrekken pas nadat hij de papieren steel recht heeft gemaakt, waardoor ze de eerste song net vanaf de gang moeten beluisteren.",
+              "en": "They leave only after he has straightened the paper stem, making them listen to the first song from the corridor."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is de envelop zo groot?",
+            "en": "Why is the envelope so large?"
+          },
+          "options": [
+            {
+              "nl": "De mislukte papieren bloem moest samen met de kaarten erin.",
+              "en": "The failed paper flower had to fit inside with the tickets."
+            },
+            {
+              "nl": "Idris heeft geen enkele kaart gekocht.",
+              "en": "Idris has not bought any tickets."
+            },
+            {
+              "nl": "Er zit een nieuw huurcontract voor het hele huis in.",
+              "en": "It contains a new lease for the whole house."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij stopte de hele knutselpoging erbij na het mislukken van zijn kleine kaartje.",
+            "en": "He included the whole craft attempt after his small card failed."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welk concreet gevolg heeft het rechtmaken van de bloem?",
+            "en": "What specific consequence does straightening the flower have?"
+          },
+          "options": [
+            {
+              "nl": "Ze moeten de bloem aan de zanger geven.",
+              "en": "They have to give the flower to the singer."
+            },
+            {
+              "nl": "Ze horen de eerste song nog vanuit de gang.",
+              "en": "They hear the first song from the corridor."
+            },
+            {
+              "nl": "Ze kunnen het concert niet meer vinden.",
+              "en": "They can no longer find the concert."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Door het latere vertrek komen ze pas na het begin bij de zaal.",
+            "en": "Because they leave later, they reach the hall only after the start."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1-read-mysterie-van-de-kleine-voetafdruk",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "De kleine voetafdruk in de klei",
+        "en": "The little footprint in the clay"
+      },
+      "plot_key": "Potteryhobby mysteriousminiaturefootprints studio locked cattoo large; artist own childhood dollkit fallingrack causespattern, embracesprint as authoredaccident physicalplot.",
+      "lines": [
+        {
+          "nl": "In haar hobbyatelier vindt Julie op twee pas gemaakte kleischaaltjes telkens dezelfde kleine voetafdruk.",
+          "en": "In her hobby studio, Julie finds the same little footprint on two freshly made clay dishes each time."
+        },
+        {
+          "nl": "De deur is op slot geweest en haar kat mocht die week niet in de ruimte komen.",
+          "en": "The door has been locked, and her cat has not been allowed into the room that week."
+        },
+        {
+          "nl": "Ze denkt aan een nieuwsgierig kind van de buren, maar de afdruk is zelfs daarvoor opvallend klein.",
+          "en": "She thinks of a curious neighbour's child, but the print is remarkably small even for that."
+        },
+        {
+          "nl": "Voordat ze iemand iets vraagt, maakt ze de plek leeg en bekijkt ze wat boven de natte schaaltjes op het rek staat.",
+          "en": "Before asking anyone anything, she clears the area and examines what stands on the shelf above the wet dishes."
+        },
+        {
+          "nl": "Daar ligt een doos met oude poppen, waarvan één hard plastic voetje precies over de rand hangt.",
+          "en": "There is a box of old dolls there, with one hard plastic foot hanging precisely over the edge."
+        },
+        {
+          "nl": "Telkens wanneer ze het rek verschuift, tikt de voet door de beweging even tegen de schaal eronder.",
+          "en": "Every time she moves the shelf, the movement makes the foot briefly tap against the dish beneath it."
+        },
+        {
+          "nl": "Julie zet de doos veilig weg en maakt daarna bewust één schaal met de vreemde kleine afdruk in het midden.",
+          "en": "Julie puts the box away safely and then deliberately makes one dish with the strange little print in the middle."
+        },
+        {
+          "nl": "Op de hobbybeurs koopt haar buurvrouw juist dat schaaltje en vraagt ze welk bijzonder dier er model voor stond.",
+          "en": "At the hobby fair, her neighbour buys that particular dish and asks which unusual animal served as its model."
+        }
+      ],
+      "words": [
+        {
+          "term": "de voetafdruk",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het spoor dat een voet op een oppervlak achterlaat",
+            "en": "footprint"
+          },
+          "example": {
+            "nl": "In haar hobbyatelier vindt Julie op twee pas gemaakte kleischaaltjes telkens dezelfde kleine voetafdruk.",
+            "en": "In her hobby studio, Julie finds the same little footprint on two freshly made clay dishes each time."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "opvallend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zo anders dat je het meteen merkt",
+            "en": "remarkable; noticeable"
+          },
+          "example": {
+            "nl": "Ze denkt aan een nieuwsgierig kind van de buren, maar de afdruk is zelfs daarvoor opvallend klein.",
+            "en": "She thinks of a curious neighbour's child, but the print is remarkably small even for that."
+          },
+          "minimum_stage": "b1"
+        },
+        {
+          "term": "het voetje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kleine voet, hier van een pop",
+            "en": "little foot"
+          },
+          "example": {
+            "nl": "Daar ligt een doos met oude poppen, waarvan één hard plastic voetje precies over de rand hangt.",
+            "en": "There is a box of old dolls there, with one hard plastic foot hanging precisely over the edge."
+          },
+          "minimum_stage": "b1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Telkens wanneer",
+            "en": "Every time; whenever"
+          },
+          "explanation": {
+            "nl": "Telkens wanneer beschrijft een terugkerend verband tussen beweging en afdruk.",
+            "en": "Telkens wanneer describes a recurring connection between movement and imprint."
+          },
+          "examples": [
+            {
+              "nl": "Telkens wanneer ze het rek verschuift, tikt de voet door de beweging even tegen de schaal eronder.",
+              "en": "Every time she moves the shelf, the movement makes the foot briefly tap against the dish beneath it."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt de kleine afdruk?",
+            "en": "What makes the small print?"
+          },
+          "options": [
+            {
+              "nl": "Een buurkind dat zich in de kast verstopt.",
+              "en": "A neighbour's child hiding in the cupboard."
+            },
+            {
+              "nl": "Een plastic poppenvoetje dat bij beweging tegen de klei tikt.",
+              "en": "A plastic doll's foot tapping against the clay when moved."
+            },
+            {
+              "nl": "De kat die elke nacht de deur opent.",
+              "en": "The cat opening the door every night."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het voetje hangt van de plank boven het werk en raakt de schaal wanneer het rek beweegt.",
+            "en": "The little foot hangs from the shelf above the work and touches the dish when the rack moves."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom is de laatste vraag van de buurvrouw ironisch?",
+            "en": "Why is the neighbour's final question ironic?"
+          },
+          "options": [
+            {
+              "nl": "Ze denkt aan een bijzonder dier, terwijl het spoor van een pop komt.",
+              "en": "She thinks of an unusual animal while the trace comes from a doll."
+            },
+            {
+              "nl": "Ze heeft zelf alle schaaltjes weggegooid.",
+              "en": "She herself threw all the dishes away."
+            },
+            {
+              "nl": "Ze weet al dat Julie nooit klei gebruikt.",
+              "en": "She already knows that Julie never uses clay."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De vraag geeft een levende oorsprong aan een afdruk van een speelgoedvoorwerp.",
+            "en": "The question gives a living origin to a print from a toy object."
+          }
+        }
+      ]
+    }
+  ]
+}

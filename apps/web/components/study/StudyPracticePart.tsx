@@ -358,7 +358,13 @@ export function PracticePart({
         <article className="study-story" aria-label={studyCopy.story.nl}>
           <div className="study-story-lines">
             {part.text.map((line, index) => (
-              <p className="study-story-line" key={index}>
+              <p
+                className="study-story-line"
+                data-paragraph-start={
+                  part.text.length >= 8 && index === Math.ceil(part.text.length / 2) ? "" : undefined
+                }
+                key={index}
+              >
                 <span className="study-line-number" aria-hidden="true">
                   {String(index + 1).padStart(2, "0")}
                 </span>

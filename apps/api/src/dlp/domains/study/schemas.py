@@ -68,7 +68,7 @@ class TopicDocument(BaseModel):
 
 class Source(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    source: Literal["story", "practice", "pack"]
+    source: Literal["story", "practice", "pack", "reading"]
     id: str = Field(min_length=1, max_length=100, pattern=r"^[a-z0-9-]+$")
 
 
@@ -76,6 +76,17 @@ class IndexDocument(BaseModel):
     model_config = ConfigDict(extra="forbid")
     schema_version: Literal[1]
     stages: dict[str, dict[Skill, dict[str, list[Source]]]]
+
+    @model_validator(mode="after")
+    def reading_sources_are_reading_only(self):
+        for stage, skills in self.stages.items():
+            if stage not in STAGE_IDS:
+                raise ValueError("guided index requires a known learning stage")
+            for skill, topics in skills.items():
+                if skill != "reading" and any(source.source in {"story", "reading"}
+                                               for sources in topics.values() for source in sources):
+                    raise ValueError("authored reading sources belong only to the reading skill")
+        return self
 
 
 class CheckQuestion(BaseModel):
@@ -118,6 +129,33 @@ class GrammarPreparation(BaseModel):
     title: Copy
     explanation: Copy
     examples: list[Copy] = Field(min_length=1, max_length=5)
+
+
+class ReadingMapping(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    stage_id: str
+    topic_id: str = Field(pattern=r"^[a-z0-9-]{1,60}$")
+    story_id: str = Field(min_length=1, max_length=100)
+    grammar: list[GrammarPreparation] = Field(default_factory=list, max_length=4)
+
+    @model_validator(mode="after")
+    def stage_bound_source(self):
+        if self.stage_id not in STAGE_IDS or not self.story_id.startswith(self.stage_id + "-"):
+            raise ValueError("reading mapping requires its original source stage")
+        return self
+
+
+class ReadingMapDocument(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    schema_version: Literal[1]
+    mappings: list[ReadingMapping]
+
+    @model_validator(mode="after")
+    def distinct_sources(self):
+        keys = [(mapping.stage_id, mapping.story_id) for mapping in self.mappings]
+        if len(keys) != len(set(keys)):
+            raise ValueError("an original reading may belong to only one topic")
+        return self
 
 
 class ProductiveTask(BaseModel):
@@ -232,6 +270,53 @@ class PackDocument(BaseModel):
     def unique_lessons(self):
         if len({lesson.id for lesson in self.lessons}) != len(self.lessons):
             raise ValueError("guided packs require unique lesson IDs")
+        return self
+
+
+class ReadingLesson(AuthoredLesson):
+    """An original reading scene, with its own plot and source-grounded preparation."""
+    plot_key: str = Field(min_length=20, max_length=1000)
+    words: list[Word] = Field(min_length=3, max_length=20)
+    grammar: list[GrammarPreparation] = Field(min_length=1, max_length=4)
+
+    @model_validator(mode="after")
+    def original_reading(self):
+        if self.source_id is not None:
+            raise ValueError("original reading batches cannot relabel an existing source")
+        if self.speaking is not None or self.writing is not None or self.listening is not None:
+            raise ValueError("reading batches cannot publish unrequested skill variants")
+        def normalized(value: str) -> str:
+            return " ".join(value.casefold().split())
+        lines = {(normalized(line.nl), normalized(line.en)) for line in self.lines}
+        examples = [word.example for word in self.words]
+        examples.extend(example for rule in self.grammar for example in rule.examples)
+        if any(not word.meaning.get("nl", "").strip() for word in self.words):
+            raise ValueError("reading vocabulary needs a Dutch definition and English gloss")
+        if any((normalized(example.nl), normalized(example.en)) not in lines for example in examples):
+            raise ValueError("reading vocabulary and grammar examples must preserve an exact bilingual story line")
+        if len({normalized(word.term) for word in self.words}) != len(self.words):
+            raise ValueError("reading vocabulary terms must be distinct")
+        return self
+
+
+class ReadingDocument(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    schema_version: Literal[1]
+    language_variety: Literal["nl-BE"]
+    stage_id: str
+    review_status: Literal["unreviewed"]
+    lessons: list[ReadingLesson] = Field(min_length=1, max_length=200)
+
+    @model_validator(mode="after")
+    def stage_bound_originals(self):
+        if self.stage_id not in STAGE_IDS:
+            raise ValueError("reading batch requires a known stage")
+        if any(not lesson.id.startswith(f"{self.stage_id}-read-") for lesson in self.lessons):
+            raise ValueError("reading lesson IDs must retain their stage and original reading identity")
+        if len({lesson.id for lesson in self.lessons}) != len(self.lessons):
+            raise ValueError("reading batches require unique lesson IDs")
+        if any(word.minimum_stage != self.stage_id for lesson in self.lessons for word in lesson.words):
+            raise ValueError("reading preparation must retain the authored exposure stage")
         return self
 
 

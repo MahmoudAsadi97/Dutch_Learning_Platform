@@ -18,13 +18,14 @@ from dlp.domains.curriculum.story_inventory import (
     PACKS,
     STAGES,
     audit,
+    canonical_story_records,
     normal,
     quantities,
     shingles,
     tokens,
 )
 
-__all__ = ["LANGS", "PACKS", "STAGES", "audit", "normal", "quantities", "shingles", "tokens"]
+__all__ = ["LANGS", "PACKS", "STAGES", "audit", "canonical_story_records", "normal", "quantities", "shingles", "tokens"]
 
 
 def main() -> int:
@@ -32,6 +33,8 @@ def main() -> int:
     parser.add_argument("--content", type=Path, default=Path(__file__).resolve().parents[1] / "content")
     parser.add_argument("--json", type=Path)
     parser.add_argument("--strict", action="store_true", help="Exit nonzero for structural errors.")
+    parser.add_argument("--strict-canonical", action="store_true",
+                        help="Fail structural errors in authored readings; still report errors in excluded old short banks.")
     parser.add_argument("--require-targets", action="store_true", help="Also fail unfinished authored-story and word targets.")
     args = parser.parse_args()
     result = audit(args.content)
@@ -40,12 +43,14 @@ def main() -> int:
         args.json.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(result["claim"])
     for row in result["stages"]:
-        print(f"{row['stage']:7} authored={row['authored_stories']:3} legacy={row['legacy_stories']:3} "
+        print(f"{row['stage']:7} authored={row['authored_stories']:3} eligible={row['eligible_authored_stories']:3} "
+              f"legacy={row['legacy_stories']:3} "
               f"words={row['distinct_vocabulary']:3} authored_shortfall={row['authored_story_shortfall']}")
     counts = Counter(issue["code"] for issue in result["issues"])
     print("Findings: " + json.dumps(dict(sorted(counts.items()))))
     print("Inventory: " + result["inventory_status"])
     return int((args.strict and result["structural_errors"] > 0)
+               or (args.strict_canonical and result["canonical_structural_errors"] > 0)
                or (args.require_targets and result["inventory_status"] == "incomplete"))
 
 

@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-baan-vier-in-het-zwembad",
+      "topic_id": "health-fitness",
+      "title": {
+        "nl": "Baan vier",
+        "en": "Lane four"
+      },
+      "plot_key": "An experienced swimmer's slower recovery challenges her self-image when a stranger explains her own different reason for counting lengths.",
+      "lines": [
+        {
+          "nl": "Elke woensdag zwom Karen veertig lengtes in baan vier, waar ze sinds haar studententijd altijd een van de snelste zwemmers was geweest.",
+          "en": "Every Wednesday Karen swam forty lengths in lane four, where she had always been one of the fastest swimmers since her student days."
+        },
+        {
+          "nl": "Na een lange ziekteperiode raakte ze al na tien lengtes buiten adem en ergerde ze zich aan iedereen die haar voorbijzwom.",
+          "en": "After a long period of illness, she was already out of breath after ten lengths and resented everyone who swam past her."
+        },
+        {
+          "nl": "Een oudere vrouw bleef telkens aan het ondiepe uiteinde wachten, waardoor Karen dacht dat ze de baan onnodig blokkeerde.",
+          "en": "An older woman kept waiting at the shallow end, making Karen think she was unnecessarily blocking the lane."
+        },
+        {
+          "nl": "Toen ze naast elkaar uitrustten, vroeg de vrouw of Karen ook probeerde tot aan het diepe einde te geraken.",
+          "en": "When they rested beside each other, the woman asked whether Karen was also trying to reach the deep end."
+        },
+        {
+          "nl": "Ze vertelde dat ze pas leerde zwemmen en vandaag voor het eerst geen bodem onder haar voeten had gevoeld zonder in paniek te raken.",
+          "en": "She explained that she was only just learning to swim and today had felt no floor beneath her feet for the first time without panicking."
+        },
+        {
+          "nl": "Karen keek naar de afstand die voor haar vroeger nauwelijks meetelde en voor de vrouw een hele onderneming was geworden.",
+          "en": "Karen looked at the distance that had previously barely counted for her and had become an entire undertaking for the woman."
+        },
+        {
+          "nl": "Ze bleef die ochtend bij twaalf lengtes, zonder zichzelf wijs te maken dat ze daar al tevreden mee moest zijn.",
+          "en": "She stopped at twelve lengths that morning, without pretending to herself that she already had to be satisfied with that."
+        },
+        {
+          "nl": "De volgende woensdag schreef ze naast haar aantal ook hoe ze zich voelde; de klok aan de muur bleef hangen, maar bepaalde niet langer alles.",
+          "en": "The following Wednesday she wrote down how she felt alongside her total; the clock remained on the wall, but no longer determined everything."
+        }
+      ],
+      "words": [
+        {
+          "term": "buiten adem",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "snel ademend na inspanning",
+            "en": "out of breath"
+          },
+          "example": {
+            "nl": "Na een lange ziekteperiode raakte ze al na tien lengtes buiten adem en ergerde ze zich aan iedereen die haar voorbijzwom.",
+            "en": "After a long period of illness, she was already out of breath after ten lengths and resented everyone who swam past her."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de onderneming",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets moeilijks dat iemand onderneemt",
+            "en": "undertaking"
+          },
+          "example": {
+            "nl": "Karen keek naar de afstand die voor haar vroeger nauwelijks meetelde en voor de vrouw een hele onderneming was geworden.",
+            "en": "Karen looked at the distance that had previously barely counted for her and had become an entire undertaking for the woman."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "zich wijsmaken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zichzelf iets laten geloven dat niet klopt",
+            "en": "to delude oneself"
+          },
+          "example": {
+            "nl": "Ze bleef die ochtend bij twaalf lengtes, zonder zichzelf wijs te maken dat ze daar al tevreden mee moest zijn.",
+            "en": "She stopped at twelve lengths that morning, without pretending to herself that she already had to be satisfied with that."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder met een infinitief",
+            "en": "Without with an infinitive"
+          },
+          "explanation": {
+            "nl": "Zonder leidt hier de infinitiefgroep zichzelf wijs te maken in. Die benoemt een handeling die ze niet doet.",
+            "en": "Here zonder introduces the infinitive phrase zichzelf wijs te maken. It names an action she does not perform."
+          },
+          "examples": [
+            {
+              "nl": "Ze bleef die ochtend bij twaalf lengtes, zonder zichzelf wijs te maken dat ze daar al tevreden mee moest zijn.",
+              "en": "She stopped at twelve lengths that morning, without pretending to herself that she already had to be satisfied with that."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wacht de oudere vrouw aan het ondiepe uiteinde?",
+            "en": "Why does the older woman wait at the shallow end?"
+          },
+          "options": [
+            {
+              "nl": "Ze oefent als beginnende zwemmer met haar angst voor diep water.",
+              "en": "As a beginner, she is working on her fear of deep water."
+            },
+            {
+              "nl": "Ze controleert de zwemtijden.",
+              "en": "She is checking swimming times."
+            },
+            {
+              "nl": "Ze wil Karen opzettelijk hinderen.",
+              "en": "She deliberately wants to obstruct Karen."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze vertelt dat ze voor het eerst zonder paniek boven diep water is geweest.",
+            "en": "She says she has been over deep water without panicking for the first time."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe verandert Karens maatstaf?",
+            "en": "How does Karen's measure of progress change?"
+          },
+          "options": [
+            {
+              "nl": "Ze houdt ook rekening met haar eigen toestand.",
+              "en": "She also takes her own condition into account."
+            },
+            {
+              "nl": "Ze telt nooit meer iets.",
+              "en": "She never counts anything again."
+            },
+            {
+              "nl": "Ze wil alleen nog wedstrijden winnen.",
+              "en": "She only wants to win races now."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze noteert naast het aantal hoe ze zich voelt.",
+            "en": "She records how she feels alongside the number."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-ontbijt-om-vier-uur",
+      "topic_id": "daily-routines",
+      "title": {
+        "nl": "Ontbijt om vier uur",
+        "en": "Breakfast at four"
+      },
+      "plot_key": "A child who thinks her baker mother misses ordinary family life discovers the shared dawn routine that fits their actual schedules.",
+      "lines": [
+        {
+          "nl": "Toen de klas een dagboek over het ontbijt moest maken, schreef Noor dat haar moeder bijna nooit aan tafel zat wanneer zij wakker werd.",
+          "en": "When the class had to keep a breakfast diary, Noor wrote that her mother was almost never at the table when she woke up."
+        },
+        {
+          "nl": "Haar moeder werkte in een bakkerij en kwam meestal thuis net nadat de schoolbel was gegaan.",
+          "en": "Her mother worked in a bakery and usually came home just after the school bell had rung."
+        },
+        {
+          "nl": "Noor vroeg of een gezin wel normaal was als iedereen op een ander moment zijn brood at.",
+          "en": "Noor asked whether a family could be normal if everyone ate their bread at a different time."
+        },
+        {
+          "nl": "Op een vrije vrijdag mocht ze voor het eerst met haar moeder mee, op voorwaarde dat ze die namiddag zou rusten.",
+          "en": "On a free Friday she was allowed to go with her mother for the first time, on condition that she would rest that afternoon."
+        },
+        {
+          "nl": "In de bakkerij aten twee collega's soep terwijl haar moeder koffie zette en de chauffeur zijn warme middageten uit een doos haalde.",
+          "en": "At the bakery two colleagues ate soup while her mother made coffee and the driver took his warm midday meal out of a box."
+        },
+        {
+          "nl": "Het was vier uur 's ochtends, maar voor de een begon de dag en voor de ander liep zijn dienst bijna af.",
+          "en": "It was four in the morning, but for one person the day was starting and for another the shift was almost over."
+        },
+        {
+          "nl": "Noor tekende drie borden onder verschillende klokken en voegde aan haar dagboek toe dat ontbijt soms vooral betekende dat je samen even zat.",
+          "en": "Noor drew three plates beneath different clocks and added to her diary that breakfast sometimes mainly meant sitting together for a while."
+        },
+        {
+          "nl": "De volgende zondag stond ze niet vroeger op; ze bewaarde gewoon de laatste pannenkoek voor wanneer haar moeder thuiskwam.",
+          "en": "The following Sunday she did not get up earlier; she simply saved the last pancake for when her mother came home."
+        }
+      ],
+      "words": [
+        {
+          "term": "het dagboek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een tekst waarin iemand gebeurtenissen per dag bijhoudt",
+            "en": "diary"
+          },
+          "example": {
+            "nl": "Toen de klas een dagboek over het ontbijt moest maken, schreef Noor dat haar moeder bijna nooit aan tafel zat wanneer zij wakker werd.",
+            "en": "When the class had to keep a breakfast diary, Noor wrote that her mother was almost never at the table when she woke up."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de dienst",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een periode waarin iemand werkt",
+            "en": "work shift"
+          },
+          "example": {
+            "nl": "Het was vier uur 's ochtends, maar voor de een begon de dag en voor de ander liep zijn dienst bijna af.",
+            "en": "It was four in the morning, but for one person the day was starting and for another the shift was almost over."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bewaren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "houden voor later",
+            "en": "to save or keep"
+          },
+          "example": {
+            "nl": "De volgende zondag stond ze niet vroeger op; ze bewaarde gewoon de laatste pannenkoek voor wanneer haar moeder thuiskwam.",
+            "en": "The following Sunday she did not get up earlier; she simply saved the last pancake for when her mother came home."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Voor de een ... voor de ander ...",
+            "en": "For one ... for another ..."
+          },
+          "explanation": {
+            "nl": "Deze constructie vergelijkt hoe dezelfde situatie voor verschillende mensen anders is.",
+            "en": "This construction compares how the same situation differs for different people."
+          },
+          "examples": [
+            {
+              "nl": "Het was vier uur 's ochtends, maar voor de een begon de dag en voor de ander liep zijn dienst bijna af.",
+              "en": "It was four in the morning, but for one person the day was starting and for another the shift was almost over."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ontdekt Noor tijdens het bezoek?",
+            "en": "What does Noor discover during the visit?"
+          },
+          "options": [
+            {
+              "nl": "Verschillende werkritmes geven maaltijden verschillende momenten.",
+              "en": "Different work patterns give meals different times."
+            },
+            {
+              "nl": "Haar moeder ontbijt nooit.",
+              "en": "Her mother never eats breakfast."
+            },
+            {
+              "nl": "Iedereen begint om vier uur te werken.",
+              "en": "Everyone starts work at four."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De chauffeur en de collega's bevinden zich op andere punten in hun werkdag.",
+            "en": "The driver and colleagues are at different points in their working day."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat laat de laatste pannenkoek zien?",
+            "en": "What does the last pancake show?"
+          },
+          "options": [
+            {
+              "nl": "Noor zoekt een praktisch gebaar binnen hun bestaande ritme.",
+              "en": "Noor finds a practical gesture within their existing routine."
+            },
+            {
+              "nl": "De bakkerij is voortaan dicht.",
+              "en": "The bakery is closed from now on."
+            },
+            {
+              "nl": "Noor weigert nog samen te eten.",
+              "en": "Noor refuses to eat together any more."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze bewaart iets voor haar moeder zonder iedereen hetzelfde uur op te leggen.",
+            "en": "She saves something for her mother without imposing the same time on everyone."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-roman-met-negentien-begins",
+      "topic_id": "personal-development",
+      "title": {
+        "nl": "Negentien eerste hoofdstukken",
+        "en": "Nineteen first chapters"
+      },
+      "plot_key": "A perfectionist novelist's workshop exposes his endless restarts and prompts him to finish an imperfect story rather than promise a masterpiece.",
+      "lines": [
+        {
+          "nl": "In een map op zijn computer bewaarde Wout negentien verschillende eerste hoofdstukken van de roman die hij al jaren wilde schrijven.",
+          "en": "In a folder on his computer, Wout kept nineteen different first chapters of the novel he had wanted to write for years."
+        },
+        {
+          "nl": "Elke nieuwe versie begon sterker dan de vorige, maar zodra een personage iets onverwachts deed, ging hij opnieuw naar de eerste bladzijde.",
+          "en": "Each new version began more strongly than the last, but whenever a character did something unexpected, he returned to the first page."
+        },
+        {
+          "nl": "Tijdens een schrijfweekend vroeg de begeleider niet om zijn mooiste zin, maar om een scène waarin werkelijk iets veranderde.",
+          "en": "During a writing weekend the tutor asked not for his finest sentence, but for a scene in which something actually changed."
+        },
+        {
+          "nl": "Wout las aarzelend een passage voor die hij altijd te rommelig had gevonden om aan iemand te tonen.",
+          "en": "Wout hesitantly read a passage he had always considered too messy to show anyone."
+        },
+        {
+          "nl": "De andere deelnemers wilden onmiddellijk weten wat de vrouw met de gestolen fiets vervolgens zou doen.",
+          "en": "The other participants immediately wanted to know what the woman with the stolen bicycle would do next."
+        },
+        {
+          "nl": "Over zijn zorgvuldig gekozen openingsbeeld had daarentegen niemand een vraag gesteld, hoe graag hij daar ook over wilde praten.",
+          "en": "By contrast, nobody had asked a question about his carefully chosen opening image, however much he wanted to discuss it."
+        },
+        {
+          "nl": "Thuis gaf hij de map een andere naam en schreef hij een onbeholpen tweede hoofdstuk, waarin de vrouw de fiets alsnog terugbracht.",
+          "en": "At home he renamed the folder and wrote a clumsy second chapter in which the woman returned the bicycle after all."
+        },
+        {
+          "nl": "Het was niet zijn beste tekst, maar voor het eerst bestond er iets waarnaar het verhaal verder kon groeien.",
+          "en": "It was not his best writing, but for the first time there was something towards which the story could continue to grow."
+        }
+      ],
+      "words": [
+        {
+          "term": "rommelig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder duidelijke orde of nette afwerking",
+            "en": "messy"
+          },
+          "example": {
+            "nl": "Wout las aarzelend een passage voor die hij altijd te rommelig had gevonden om aan iemand te tonen.",
+            "en": "Wout hesitantly read a passage he had always considered too messy to show anyone."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "daarentegen",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "in tegenstelling tot wat ervoor genoemd is",
+            "en": "by contrast"
+          },
+          "example": {
+            "nl": "Over zijn zorgvuldig gekozen openingsbeeld had daarentegen niemand een vraag gesteld, hoe graag hij daar ook over wilde praten.",
+            "en": "By contrast, nobody had asked a question about his carefully chosen opening image, however much he wanted to discuss it."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onbeholpen",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "nog niet vaardig of soepel",
+            "en": "clumsy"
+          },
+          "example": {
+            "nl": "Thuis gaf hij de map een andere naam en schreef hij een onbeholpen tweede hoofdstuk, waarin de vrouw de fiets alsnog terugbracht.",
+            "en": "At home he renamed the folder and wrote a clumsy second chapter in which the woman returned the bicycle after all."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoe ... ook voor toegeving",
+            "en": "However ... for concession"
+          },
+          "explanation": {
+            "nl": "Hoe graag ... ook maakt duidelijk dat zijn sterke wens het resultaat niet verandert.",
+            "en": "Hoe graag ... ook makes clear that his strong wish does not change the outcome."
+          },
+          "examples": [
+            {
+              "nl": "Over zijn zorgvuldig gekozen openingsbeeld had daarentegen niemand een vraag gesteld, hoe graag hij daar ook over wilde praten.",
+              "en": "By contrast, nobody had asked a question about his carefully chosen opening image, however much he wanted to discuss it."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat interesseert de andere deelnemers vooral?",
+            "en": "What mainly interests the other participants?"
+          },
+          "options": [
+            {
+              "nl": "De naam van zijn computer.",
+              "en": "The name of his computer."
+            },
+            {
+              "nl": "De volgende handeling van het personage.",
+              "en": "The character's next action."
+            },
+            {
+              "nl": "De prijs van het schrijfweekend.",
+              "en": "The price of the writing weekend."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze vragen wat de vrouw vervolgens zal doen.",
+            "en": "They ask what the woman will do next."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom is het tweede hoofdstuk een vooruitgang?",
+            "en": "Why is the second chapter progress?"
+          },
+          "options": [
+            {
+              "nl": "Hij bouwt voor het eerst verder in plaats van opnieuw te beginnen.",
+              "en": "For the first time he builds further instead of restarting."
+            },
+            {
+              "nl": "Het wordt meteen beroemd.",
+              "en": "It immediately becomes famous."
+            },
+            {
+              "nl": "Het garandeert een uitgever.",
+              "en": "It guarantees a publisher."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De nieuwe tekst hoeft niet perfect te zijn om het verhaal te laten doorgaan.",
+            "en": "The new text need not be perfect to let the story continue."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-geld-in-het-woordenboek",
+      "topic_id": "money-finance",
+      "title": {
+        "nl": "Het geld in het woordenboek",
+        "en": "The money in the dictionary"
+      },
+      "plot_key": "A student discovers a relative's hidden small savings and realises an inherited book carries a request rather than a windfall.",
+      "lines": [
+        {
+          "nl": "Toen student Simon een oud woordenboek van zijn tante kreeg, vond hij tussen de letters telkens een klein bankbiljet.",
+          "en": "When student Simon received an old dictionary from his aunt, he found a small banknote between successive letters."
+        },
+        {
+          "nl": "Hij rekende snel uit hoeveel er nog in de rest van het boek moest zitten en dacht aan een tweedehands gitaar.",
+          "en": "He quickly calculated how much more there must be in the rest of the book and thought of a second-hand guitar."
+        },
+        {
+          "nl": "Bij de letter R lag echter een briefje waarop zijn tante had geschreven hoeveel maanden ze voor een eigen reis had gespaard.",
+          "en": "At the letter R, however, there was a note on which his aunt had written how many months she had saved for a trip of her own."
+        },
+        {
+          "nl": "Ze had hem het boek gegeven omdat ze naar een kleiner appartement verhuisde, niet omdat ze haar droom had opgegeven.",
+          "en": "She had given him the book because she was moving to a smaller flat, not because she had abandoned her dream."
+        },
+        {
+          "nl": "Simon belde haar om te vragen of het geld soms per vergissing mee verhuisd was.",
+          "en": "Simon called her to ask whether the money had perhaps been moved along by mistake."
+        },
+        {
+          "nl": "Zijn tante begon te lachen en zei dat ze in haar zorgvuldige administratie blijkbaar het belangrijkste spaarpotje vergeten was.",
+          "en": "His aunt began to laugh and said that in her careful bookkeeping she had apparently forgotten the most important little savings pot."
+        },
+        {
+          "nl": "Ze telden samen het bedrag, dat niet genoeg bleek voor de hele reis maar wel voor een eerste treinticket.",
+          "en": "Together they counted the amount, which turned out not to be enough for the entire trip but was enough for an initial train ticket."
+        },
+        {
+          "nl": "Simon hield het woordenboek; op de lege plek bij de R schreef hij dat hij zijn tante na de examens naar het station zou brengen.",
+          "en": "Simon kept the dictionary; in the empty space at R he wrote that he would take his aunt to the station after his exams."
+        }
+      ],
+      "words": [
+        {
+          "term": "het bankbiljet",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "papiergeld met een vast bedrag",
+            "en": "banknote"
+          },
+          "example": {
+            "nl": "Toen student Simon een oud woordenboek van zijn tante kreeg, vond hij tussen de letters telkens een klein bankbiljet.",
+            "en": "When student Simon received an old dictionary from his aunt, he found a small banknote between successive letters."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de administratie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het geordend bijhouden van gegevens en papieren",
+            "en": "bookkeeping or administration"
+          },
+          "example": {
+            "nl": "Zijn tante begon te lachen en zei dat ze in haar zorgvuldige administratie blijkbaar het belangrijkste spaarpotje vergeten was.",
+            "en": "His aunt began to laugh and said that in her careful bookkeeping she had apparently forgotten the most important little savings pot."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "per vergissing",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "onbedoeld door een fout",
+            "en": "by mistake"
+          },
+          "example": {
+            "nl": "Simon belde haar om te vragen of het geld soms per vergissing mee verhuisd was.",
+            "en": "Simon called her to ask whether the money had perhaps been moved along by mistake."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet omdat ...",
+            "en": "Not because ..."
+          },
+          "explanation": {
+            "nl": "Niet ontkent hier de reden en niet de handeling van het weggeven.",
+            "en": "Niet negates the reason here, not the act of giving the book away."
+          },
+          "examples": [
+            {
+              "nl": "Ze had hem het boek gegeven omdat ze naar een kleiner appartement verhuisde, niet omdat ze haar droom had opgegeven.",
+              "en": "She had given him the book because she was moving to a smaller flat, not because she had abandoned her dream."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom belt Simon zijn tante?",
+            "en": "Why does Simon call his aunt?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil de gitaar verkopen.",
+              "en": "He wants to sell the guitar."
+            },
+            {
+              "nl": "Hij wil een nieuw woordenboek.",
+              "en": "He wants a new dictionary."
+            },
+            {
+              "nl": "Hij twijfelt of zij het geld bewust heeft weggegeven.",
+              "en": "He doubts whether she gave away the money deliberately."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het briefje over haar eigen reis maakt duidelijk dat het geld een doel had.",
+            "en": "The note about her own trip makes clear that the money had a purpose."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat kan de tante met het gevonden bedrag doen?",
+            "en": "What can the aunt do with the amount found?"
+          },
+          "options": [
+            {
+              "nl": "Een appartement kopen.",
+              "en": "Buy a flat."
+            },
+            {
+              "nl": "Het begin van haar reis betalen.",
+              "en": "Pay for the beginning of her trip."
+            },
+            {
+              "nl": "Zeker een hele wereldreis betalen.",
+              "en": "Definitely pay for a whole world trip."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het bedrag volstaat voor een eerste treinticket, niet voor de volledige reis.",
+            "en": "The amount is enough for an initial train ticket, not for the whole trip."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-feest-met-twee-kalenders",
+      "topic_id": "culture-traditions",
+      "title": {
+        "nl": "Twee kalenders aan de muur",
+        "en": "Two calendars on the wall"
+      },
+      "plot_key": "A couple's families disagree over their seasonal celebration until the couple stops treating one event as proof of cultural loyalty.",
+      "lines": [
+        {
+          "nl": "Toen Lien en Farid hun eerste gezamenlijke lenteviering in Gent planden, hingen er twee kalenders naast de koelkast.",
+          "en": "When Lien and Farid planned their first spring celebration together in Ghent, two calendars hung beside the fridge."
+        },
+        {
+          "nl": "Hun families vonden allebei dat de juiste dag vanzelf sprak, maar bedoelden daarmee niet dezelfde zondag.",
+          "en": "Both their families felt the correct day was obvious, but they did not mean the same Sunday."
+        },
+        {
+          "nl": "Aanvankelijk probeerden ze iedereen op één datum samen te brengen, alsof een geslaagd feest alle verschillen moest laten verdwijnen.",
+          "en": "Initially they tried to bring everyone together on one date, as if a successful celebration had to make all differences disappear."
+        },
+        {
+          "nl": "Elke nieuwe suggestie klonk voor iemand als bewijs dat de andere familie belangrijker werd gevonden.",
+          "en": "Every new suggestion sounded to someone like proof that the other family was considered more important."
+        },
+        {
+          "nl": "Na het vierde telefoongesprek besloten Lien en Farid eerst zelf te bespreken wat zij eigenlijk wilden vieren.",
+          "en": "After the fourth phone call, Lien and Farid decided first to discuss between themselves what they actually wanted to celebrate."
+        },
+        {
+          "nl": "Ze kozen een kleine avond samen en organiseerden daarnaast twee korte bezoeken, zonder die als wedstrijd tussen families aan te kondigen.",
+          "en": "They chose a small evening together and also arranged two short visits without announcing them as a competition between families."
+        },
+        {
+          "nl": "Niet iedereen vond dat meteen een elegante oplossing; één oom bleef volhouden dat je voor tradities tijd moest maken.",
+          "en": "Not everyone immediately considered that an elegant solution; one uncle kept insisting that you had to make time for traditions."
+        },
+        {
+          "nl": "Farid liet de twee kalenders hangen, maar schreef hun eigen avond op een los kaartje dat voor geen van beide families een stemming nodig had.",
+          "en": "Farid left the two calendars hanging, but wrote their own evening on a separate card that required a vote from neither family."
+        }
+      ],
+      "words": [
+        {
+          "term": "vanzelf spreken",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "als logisch of duidelijk worden beschouwd",
+            "en": "to go without saying"
+          },
+          "example": {
+            "nl": "Hun families vonden allebei dat de juiste dag vanzelf sprak, maar bedoelden daarmee niet dezelfde zondag.",
+            "en": "Both their families felt the correct day was obvious, but they did not mean the same Sunday."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "volhouden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "bij een standpunt blijven",
+            "en": "to insist or maintain"
+          },
+          "example": {
+            "nl": "Niet iedereen vond dat meteen een elegante oplossing; één oom bleef volhouden dat je voor tradities tijd moest maken.",
+            "en": "Not everyone immediately considered that an elegant solution; one uncle kept insisting that you had to make time for traditions."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de stemming",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een procedure waarbij mensen hun keuze uitspreken",
+            "en": "vote"
+          },
+          "example": {
+            "nl": "Farid liet de twee kalenders hangen, maar schreef hun eigen avond op een los kaartje dat voor geen van beide families een stemming nodig had.",
+            "en": "Farid left the two calendars hanging, but wrote their own evening on a separate card that required a vote from neither family."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof bij een betwist idee",
+            "en": "As if with a disputed idea"
+          },
+          "explanation": {
+            "nl": "Alsof laat hier zien dat één feest alle verschillen niet werkelijk hoeft op te heffen.",
+            "en": "Alsof shows here that one celebration does not actually have to remove all differences."
+          },
+          "examples": [
+            {
+              "nl": "Aanvankelijk probeerden ze iedereen op één datum samen te brengen, alsof een geslaagd feest alle verschillen moest laten verdwijnen.",
+              "en": "Initially they tried to bring everyone together on one date, as if a successful celebration had to make all differences disappear."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wordt elke datum een gevoelig voorstel?",
+            "en": "Why does each date become a sensitive suggestion?"
+          },
+          "options": [
+            {
+              "nl": "De families wonen in dezelfde straat.",
+              "en": "The families live on the same street."
+            },
+            {
+              "nl": "Er zijn geen vrije zondagen.",
+              "en": "There are no free Sundays."
+            },
+            {
+              "nl": "De datum wordt uitgelegd als een keuze voor één familie.",
+              "en": "The date is interpreted as choosing one family."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Een praktische suggestie wordt verbonden met de vraag wie belangrijker is.",
+            "en": "A practical suggestion becomes connected with who matters more."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt de oplossing niet volledig probleemloos?",
+            "en": "What prevents the solution from being completely trouble-free?"
+          },
+          "options": [
+            {
+              "nl": "Het feest wordt verboden.",
+              "en": "The celebration is banned."
+            },
+            {
+              "nl": "Het paar kan niet meer samen eten.",
+              "en": "The couple can no longer eat together."
+            },
+            {
+              "nl": "Sommige familieleden blijven andere verwachtingen hebben.",
+              "en": "Some relatives continue to have different expectations."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De oom blijft kritiek geven; niet iedereen stemt meteen in.",
+            "en": "The uncle continues criticising; not everyone agrees immediately."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-a1-read-naam-op-brood",
+      "topic_id": "work-careers",
+      "title": {
+        "nl": "Een naam op de broodzak",
+        "en": "A name on the bread bag"
+      },
+      "plot_key": "A worker labels a lunch bag so nobody takes the wrong lunch.",
+      "lines": [
+        {
+          "nl": "Drie zakken staan in de keuken.",
+          "en": "Three bags are in the kitchen."
+        },
+        {
+          "nl": "Ze hebben dezelfde kleur.",
+          "en": "They have the same colour."
+        },
+        {
+          "nl": "Ik zoek mijn lunch.",
+          "en": "I am looking for my lunch."
+        },
+        {
+          "nl": "Mijn collega zoekt ook.",
+          "en": "My colleague is looking too."
+        },
+        {
+          "nl": "Wij openen onze eigen zak.",
+          "en": "We open our own bag."
+        },
+        {
+          "nl": "Ik schrijf Noor op mijn zak.",
+          "en": "I write Noor on my bag."
+        },
+        {
+          "nl": "Hij schrijft Tom op zijn zak.",
+          "en": "He writes Tom on his bag."
+        },
+        {
+          "nl": "Nu ziet ieder zijn naam.",
+          "en": "Now everyone sees their name."
+        }
+      ],
+      "words": [
+        {
+          "term": "de lunch",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "maaltijd rond de middag",
+            "en": "lunch"
+          },
+          "example": {
+            "nl": "Ik zoek mijn lunch.",
+            "en": "I am looking for my lunch."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de collega",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "persoon met wie je werkt",
+            "en": "colleague"
+          },
+          "example": {
+            "nl": "Mijn collega zoekt ook.",
+            "en": "My colleague is looking too."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de kleur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bijvoorbeeld rood of blauw",
+            "en": "colour"
+          },
+          "example": {
+            "nl": "Ze hebben dezelfde kleur.",
+            "en": "They have the same colour."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Van wie is het?",
+            "en": "Who does it belong to?"
+          },
+          "explanation": {
+            "nl": "Het bezittelijk woord vertelt bij wie iets hoort.",
+            "en": "The possessive word tells you who something belongs to."
+          },
+          "examples": [
+            {
+              "nl": "Hij schrijft Tom op zijn zak.",
+              "en": "He writes Tom on his bag."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel zakken staan in de keuken?",
+            "en": "How many bags are in the kitchen?"
+          },
+          "options": [
+            {
+              "nl": "Twee",
+              "en": "Two"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Vijf",
+              "en": "Five"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Drie zakken staan in de keuken.",
+            "en": "Three bags are in the kitchen."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke naam schrijft de collega?",
+            "en": "Which name does the colleague write?"
+          },
+          "options": [
+            {
+              "nl": "Tom",
+              "en": "Tom"
+            },
+            {
+              "nl": "Bas",
+              "en": "Bas"
+            },
+            {
+              "nl": "Noor",
+              "en": "Noor"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij schrijft Tom op zijn zak.",
+            "en": "He writes Tom on his bag."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-voetstappen-op-vloer",
+      "topic_id": "safety-emergencies",
+      "title": {
+        "nl": "De voeten wijzen de weg",
+        "en": "The feet show the way"
+      },
+      "plot_key": "A visitor follows floor footprints to find the swimming-pool showers.",
+      "lines": [
+        {
+          "nl": "Ik zoek de douche.",
+          "en": "I am looking for the shower."
+        },
+        {
+          "nl": "Hier zijn heel veel deuren.",
+          "en": "There are very many doors here."
+        },
+        {
+          "nl": "Op de vloer staan blauwe voeten.",
+          "en": "There are blue footprints on the floor."
+        },
+        {
+          "nl": "Ik wijs naar die voeten.",
+          "en": "I point to those footprints."
+        },
+        {
+          "nl": "Een vrouw zegt: volg maar.",
+          "en": "A woman says: just follow them."
+        },
+        {
+          "nl": "Ik loop over de blauwe voeten.",
+          "en": "I walk along the blue footprints."
+        },
+        {
+          "nl": "Zij stoppen voor een deur.",
+          "en": "They stop in front of a door."
+        },
+        {
+          "nl": "Achter de deur hoor ik water.",
+          "en": "I hear water behind the door."
+        }
+      ],
+      "words": [
+        {
+          "term": "de douche",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plaats om je met water te wassen",
+            "en": "shower"
+          },
+          "example": {
+            "nl": "Ik zoek de douche.",
+            "en": "I am looking for the shower."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de vloer",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "onderkant van een kamer",
+            "en": "floor"
+          },
+          "example": {
+            "nl": "Op de vloer staan blauwe voeten.",
+            "en": "There are blue footprints on the floor."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "volgen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "achter iets of iemand aan gaan",
+            "en": "to follow"
+          },
+          "example": {
+            "nl": "Een vrouw zegt: volg maar.",
+            "en": "A woman says: just follow them."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Achter de deur hoor ik water.",
+              "en": "I hear water behind the door."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kleur hebben de voeten?",
+            "en": "What colour are the footprints?"
+          },
+          "options": [
+            {
+              "nl": "Blauw",
+              "en": "Blue"
+            },
+            {
+              "nl": "Groen",
+              "en": "Green"
+            },
+            {
+              "nl": "Rood",
+              "en": "Red"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Op de vloer staan blauwe voeten.",
+            "en": "There are blue footprints on the floor."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat hoort de spreker achter de deur?",
+            "en": "What does the speaker hear behind the door?"
+          },
+          "options": [
+            {
+              "nl": "Een hond",
+              "en": "A dog"
+            },
+            {
+              "nl": "Water",
+              "en": "Water"
+            },
+            {
+              "nl": "Muziek",
+              "en": "Music"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Achter de deur hoor ik water.",
+            "en": "I hear water behind the door."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-flessen-sorteren",
+      "topic_id": "household-chores",
+      "title": {
+        "nl": "De fles zonder dop",
+        "en": "The bottle without a cap"
+      },
+      "plot_key": "A visitor removes a metal cap before putting a glass bottle into a recycling bank.",
+      "lines": [
+        {
+          "nl": "Ik draag een lege fles.",
+          "en": "I am carrying an empty bottle."
+        },
+        {
+          "nl": "Wij staan bij de glasbol.",
+          "en": "We are standing by the glass recycling bank."
+        },
+        {
+          "nl": "De dop zit nog vast.",
+          "en": "The cap is still on."
+        },
+        {
+          "nl": "Papa wijst naar de dop.",
+          "en": "Dad points to the cap."
+        },
+        {
+          "nl": "Ik draai de dop los.",
+          "en": "I unscrew the cap."
+        },
+        {
+          "nl": "Die gaat in mijn zak.",
+          "en": "It goes into my pocket."
+        },
+        {
+          "nl": "De fles gaat in de glasbol.",
+          "en": "The bottle goes into the glass bank."
+        },
+        {
+          "nl": "Ik hoor een korte klank.",
+          "en": "I hear a short sound."
+        }
+      ],
+      "words": [
+        {
+          "term": "de fles",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "houder voor drinken",
+            "en": "bottle"
+          },
+          "example": {
+            "nl": "Ik draag een lege fles.",
+            "en": "I am carrying an empty bottle."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de dop",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein deksel op een fles",
+            "en": "bottle cap"
+          },
+          "example": {
+            "nl": "De dop zit nog vast.",
+            "en": "The cap is still on."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "leeg",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder inhoud",
+            "en": "empty"
+          },
+          "example": {
+            "nl": "Ik draag een lege fles.",
+            "en": "I am carrying an empty bottle."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Ik draai de dop los.",
+              "en": "I unscrew the cap."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat zit nog op de fles?",
+            "en": "What is still on the bottle?"
+          },
+          "options": [
+            {
+              "nl": "Een dop",
+              "en": "A cap"
+            },
+            {
+              "nl": "Een lepel",
+              "en": "A spoon"
+            },
+            {
+              "nl": "Een kaart",
+              "en": "A card"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De dop zit nog vast.",
+            "en": "The cap is still on."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar gaat de dop in?",
+            "en": "Where does the cap go?"
+          },
+          "options": [
+            {
+              "nl": "In de fles",
+              "en": "Into the bottle"
+            },
+            {
+              "nl": "In de glasbol",
+              "en": "Into the glass bank"
+            },
+            {
+              "nl": "In een zak",
+              "en": "Into a pocket"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Die gaat in mijn zak.",
+            "en": "It goes into my pocket."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-lichtjes-letter",
+      "topic_id": "art-creativity",
+      "title": {
+        "nl": "Een L van licht",
+        "en": "An L made of light"
+      },
+      "plot_key": "A light trail participant identifies a letter formed by lamps and copies it with their arm.",
+      "lines": [
+        {
+          "nl": "In het park branden lampjes.",
+          "en": "Little lamps are lit in the park."
+        },
+        {
+          "nl": "Ze staan in een vorm.",
+          "en": "They form a shape."
+        },
+        {
+          "nl": "Mijn zus vraagt: welke letter?",
+          "en": "My sister asks: which letter?"
+        },
+        {
+          "nl": "Ik kijk naar de grond.",
+          "en": "I look at the ground."
+        },
+        {
+          "nl": "Het is een grote L.",
+          "en": "It is a big L."
+        },
+        {
+          "nl": "Ik steek mijn arm opzij.",
+          "en": "I stretch my arm out sideways."
+        },
+        {
+          "nl": "Mijn lichaam maakt ook een L.",
+          "en": "My body makes an L too."
+        },
+        {
+          "nl": "Mijn zus maakt een foto.",
+          "en": "My sister takes a photo."
+        }
+      ],
+      "words": [
+        {
+          "term": "het lampje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine lamp",
+            "en": "little lamp"
+          },
+          "example": {
+            "nl": "In het park branden lampjes.",
+            "en": "Little lamps are lit in the park."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de vorm",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "omtrek van iets",
+            "en": "shape"
+          },
+          "example": {
+            "nl": "Ze staan in een vorm.",
+            "en": "They form a shape."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de arm",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lichaamsdeel tussen schouder en hand",
+            "en": "arm"
+          },
+          "example": {
+            "nl": "Ik steek mijn arm opzij.",
+            "en": "I stretch my arm out sideways."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Mijn zus maakt een foto.",
+              "en": "My sister takes a photo."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke letter maken de lampjes?",
+            "en": "Which letter do the lamps make?"
+          },
+          "options": [
+            {
+              "nl": "Een L",
+              "en": "An L"
+            },
+            {
+              "nl": "Een T",
+              "en": "A T"
+            },
+            {
+              "nl": "Een A",
+              "en": "An A"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het is een grote L.",
+            "en": "It is a big L."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie maakt de foto?",
+            "en": "Who takes the photo?"
+          },
+          "options": [
+            {
+              "nl": "De zus",
+              "en": "The sister"
+            },
+            {
+              "nl": "De buur",
+              "en": "The neighbour"
+            },
+            {
+              "nl": "De spreker",
+              "en": "The speaker"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mijn zus maakt een foto.",
+            "en": "My sister takes a photo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-rooster-met-gat",
+      "topic_id": "gardening",
+      "title": {
+        "nl": "De boon vindt licht",
+        "en": "The bean finds light"
+      },
+      "plot_key": "A seedling bends towards a small opening in a shaded box.",
+      "lines": [
+        {
+          "nl": "Een boon groeit in een doos.",
+          "en": "A bean grows in a box."
+        },
+        {
+          "nl": "De doos staat bij het raam.",
+          "en": "The box is by the window."
+        },
+        {
+          "nl": "Het deksel heeft een gat.",
+          "en": "The lid has a hole."
+        },
+        {
+          "nl": "Daar komt licht naar binnen.",
+          "en": "Light comes in there."
+        },
+        {
+          "nl": "Ik kijk elke dag even.",
+          "en": "I look for a moment every day."
+        },
+        {
+          "nl": "De kleine plant groeit scheef.",
+          "en": "The little plant grows at an angle."
+        },
+        {
+          "nl": "Hij groeit naar het gat.",
+          "en": "It grows towards the hole."
+        },
+        {
+          "nl": "Nu haal ik het deksel weg.",
+          "en": "Now I remove the lid."
+        }
+      ],
+      "words": [
+        {
+          "term": "de boon",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "zaad dat je kunt eten of planten",
+            "en": "bean"
+          },
+          "example": {
+            "nl": "Een boon groeit in een doos.",
+            "en": "A bean grows in a box."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het gat",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "opening in iets",
+            "en": "hole"
+          },
+          "example": {
+            "nl": "Het deksel heeft een gat.",
+            "en": "The lid has a hole."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "groeien",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "groter worden",
+            "en": "to grow"
+          },
+          "example": {
+            "nl": "Een boon groeit in een doos.",
+            "en": "A bean grows in a box."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een richting met naar",
+            "en": "A direction with naar"
+          },
+          "explanation": {
+            "nl": "Naar het gat geeft de richting aan waarin de plant groeit.",
+            "en": "Naar het gat gives the direction in which the plant grows."
+          },
+          "examples": [
+            {
+              "nl": "Hij groeit naar het gat.",
+              "en": "It grows towards the hole."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar komt het licht binnen?",
+            "en": "Where does the light come in?"
+          },
+          "options": [
+            {
+              "nl": "Door de vloer",
+              "en": "Through the floor"
+            },
+            {
+              "nl": "Door een gat",
+              "en": "Through a hole"
+            },
+            {
+              "nl": "Door een deur",
+              "en": "Through a door"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Daar komt licht naar binnen.",
+            "en": "Light comes in there."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat haalt de spreker weg?",
+            "en": "What does the speaker remove?"
+          },
+          "options": [
+            {
+              "nl": "Het deksel",
+              "en": "The lid"
+            },
+            {
+              "nl": "Het raam",
+              "en": "The window"
+            },
+            {
+              "nl": "De plant",
+              "en": "The plant"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Nu haal ik het deksel weg.",
+            "en": "Now I remove the lid."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-knop-met-oor",
+      "topic_id": "technology",
+      "title": {
+        "nl": "De knop met een oor",
+        "en": "The button with an ear"
+      },
+      "plot_key": "A museum visitor recognises a hearing symbol and starts an audio explanation.",
+      "lines": [
+        {
+          "nl": "Ik sta voor een oud schip.",
+          "en": "I stand in front of an old ship."
+        },
+        {
+          "nl": "Er staat een lange tekst.",
+          "en": "There is a long text."
+        },
+        {
+          "nl": "Naast de tekst zit een knop.",
+          "en": "There is a button beside the text."
+        },
+        {
+          "nl": "Op de knop staat een oor.",
+          "en": "There is an ear on the button."
+        },
+        {
+          "nl": "Ik druk op het oor.",
+          "en": "I press the ear."
+        },
+        {
+          "nl": "Een stem zegt: welkom.",
+          "en": "A voice says: welcome."
+        },
+        {
+          "nl": "Ik luister naar de stem.",
+          "en": "I listen to the voice."
+        },
+        {
+          "nl": "Nu kijk ik naar het schip.",
+          "en": "Now I look at the ship."
+        }
+      ],
+      "words": [
+        {
+          "term": "het schip",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "grote boot",
+            "en": "ship"
+          },
+          "example": {
+            "nl": "Ik sta voor een oud schip.",
+            "en": "I stand in front of an old ship."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "luisteren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "aandachtig horen",
+            "en": "to listen"
+          },
+          "example": {
+            "nl": "Ik luister naar de stem.",
+            "en": "I listen to the voice."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de stem",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "geluid van iemand die spreekt",
+            "en": "voice"
+          },
+          "example": {
+            "nl": "Een stem zegt: welkom.",
+            "en": "A voice says: welcome."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ik luister naar de stem.",
+              "en": "I listen to the voice."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat staat op de knop?",
+            "en": "What is on the button?"
+          },
+          "options": [
+            {
+              "nl": "Een hand",
+              "en": "A hand"
+            },
+            {
+              "nl": "Een oor",
+              "en": "An ear"
+            },
+            {
+              "nl": "Een oog",
+              "en": "An eye"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Op de knop staat een oor.",
+            "en": "There is an ear on the button."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat zegt de stem eerst?",
+            "en": "What does the voice say first?"
+          },
+          "options": [
+            {
+              "nl": "Slaapwel",
+              "en": "Good night"
+            },
+            {
+              "nl": "Tot morgen",
+              "en": "See you tomorrow"
+            },
+            {
+              "nl": "Welkom",
+              "en": "Welcome"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Een stem zegt: welkom.",
+            "en": "A voice says: welcome."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-plaats-voor-vinger",
+      "topic_id": "books-reading",
+      "title": {
+        "nl": "Het gaatje in het boek",
+        "en": "The hole in the book"
+      },
+      "plot_key": "A learner uses a finger through a book's circular cut-out to complete an illustration.",
+      "lines": [
+        {
+          "nl": "Ik open een prentenboek.",
+          "en": "I open a picture book."
+        },
+        {
+          "nl": "Op de bladzijde staat een hond.",
+          "en": "There is a dog on the page."
+        },
+        {
+          "nl": "Zijn neus heeft een gat.",
+          "en": "His nose has a hole."
+        },
+        {
+          "nl": "Ik kijk door het gaatje.",
+          "en": "I look through the little hole."
+        },
+        {
+          "nl": "Mijn vinger past erdoor.",
+          "en": "My finger fits through it."
+        },
+        {
+          "nl": "Nu heeft de hond een neus.",
+          "en": "Now the dog has a nose."
+        },
+        {
+          "nl": "Ik beweeg mijn vinger zacht.",
+          "en": "I move my finger gently."
+        },
+        {
+          "nl": "De hond ruikt aan de bloem.",
+          "en": "The dog sniffs the flower."
+        }
+      ],
+      "words": [
+        {
+          "term": "het prentenboek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "boek met veel afbeeldingen",
+            "en": "picture book"
+          },
+          "example": {
+            "nl": "Ik open een prentenboek.",
+            "en": "I open a picture book."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de bladzijde",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "één kant van een blad in een boek",
+            "en": "page"
+          },
+          "example": {
+            "nl": "Op de bladzijde staat een hond.",
+            "en": "There is a dog on the page."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "bewegen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "van plaats veranderen",
+            "en": "to move"
+          },
+          "example": {
+            "nl": "Ik beweeg mijn vinger zacht.",
+            "en": "I move my finger gently."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Van wie is het?",
+            "en": "Who does it belong to?"
+          },
+          "explanation": {
+            "nl": "Het bezittelijk woord vertelt bij wie iets hoort.",
+            "en": "The possessive word tells you who something belongs to."
+          },
+          "examples": [
+            {
+              "nl": "Zijn neus heeft een gat.",
+              "en": "His nose has a hole."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ontbreekt op de tekening?",
+            "en": "What is missing in the picture?"
+          },
+          "options": [
+            {
+              "nl": "Een neus",
+              "en": "A nose"
+            },
+            {
+              "nl": "Een oor",
+              "en": "An ear"
+            },
+            {
+              "nl": "Een poot",
+              "en": "A paw"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn neus heeft een gat.",
+            "en": "His nose has a hole."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat gaat door het gaatje?",
+            "en": "What goes through the hole?"
+          },
+          "options": [
+            {
+              "nl": "Een vinger",
+              "en": "A finger"
+            },
+            {
+              "nl": "Een pen",
+              "en": "A pen"
+            },
+            {
+              "nl": "Een lepel",
+              "en": "A spoon"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mijn vinger past erdoor.",
+            "en": "My finger fits through it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-bril-voor-ver",
+      "topic_id": "health-fitness",
+      "title": {
+        "nl": "Daar staat mijn broer",
+        "en": "There is my brother"
+      },
+      "plot_key": "A spectator borrows binoculars to identify a brother across a playing field.",
+      "lines": [
+        {
+          "nl": "Ik sta naast het veld.",
+          "en": "I am standing beside the field."
+        },
+        {
+          "nl": "Mijn broer staat ver weg.",
+          "en": "My brother is far away."
+        },
+        {
+          "nl": "Alle truien zijn groen.",
+          "en": "All the jerseys are green."
+        },
+        {
+          "nl": "Ik zie zijn gezicht niet.",
+          "en": "I cannot see his face."
+        },
+        {
+          "nl": "Papa geeft mij een verrekijker.",
+          "en": "Dad gives me binoculars."
+        },
+        {
+          "nl": "Ik kijk door de glazen.",
+          "en": "I look through the lenses."
+        },
+        {
+          "nl": "Daar zwaait mijn broer!",
+          "en": "There is my brother waving!"
+        },
+        {
+          "nl": "Ik zwaai met beide handen.",
+          "en": "I wave with both hands."
+        }
+      ],
+      "words": [
+        {
+          "term": "het veld",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "open ruimte om op te sporten",
+            "en": "sports field"
+          },
+          "example": {
+            "nl": "Ik sta naast het veld.",
+            "en": "I am standing beside the field."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "ver",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "op grote afstand",
+            "en": "far"
+          },
+          "example": {
+            "nl": "Mijn broer staat ver weg.",
+            "en": "My brother is far away."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de verrekijker",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "voorwerp om dingen ver weg groter te zien",
+            "en": "binoculars"
+          },
+          "example": {
+            "nl": "Papa geeft mij een verrekijker.",
+            "en": "Dad gives me binoculars."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet en geen",
+            "en": "Niet and geen"
+          },
+          "explanation": {
+            "nl": "Kijk wat wordt ontkend: de handeling of het zelfstandig naamwoord.",
+            "en": "Look at what is being negated: the action or the noun."
+          },
+          "examples": [
+            {
+              "nl": "Ik zie zijn gezicht niet.",
+              "en": "I cannot see his face."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kleur hebben de truien?",
+            "en": "What colour are the jerseys?"
+          },
+          "options": [
+            {
+              "nl": "Rood",
+              "en": "Red"
+            },
+            {
+              "nl": "Groen",
+              "en": "Green"
+            },
+            {
+              "nl": "Blauw",
+              "en": "Blue"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Alle truien zijn groen.",
+            "en": "All the jerseys are green."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat geeft papa?",
+            "en": "What does Dad give?"
+          },
+          "options": [
+            {
+              "nl": "Een bril",
+              "en": "Glasses"
+            },
+            {
+              "nl": "Een bal",
+              "en": "A ball"
+            },
+            {
+              "nl": "Een verrekijker",
+              "en": "Binoculars"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Papa geeft mij een verrekijker.",
+            "en": "Dad gives me binoculars."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-uitverkocht-kers",
+      "topic_id": "restaurants-cafes",
+      "title": {
+        "nl": "Nog één kers",
+        "en": "One cherry left"
+      },
+      "plot_key": "Two café guests share the last cherry topping rather than fight over it.",
+      "lines": [
+        {
+          "nl": "Wij krijgen twee kleine wafels.",
+          "en": "We get two small waffles."
+        },
+        {
+          "nl": "Er ligt één kers bij.",
+          "en": "There is one cherry with them."
+        },
+        {
+          "nl": "Mijn zus kijkt naar de kers.",
+          "en": "My sister looks at the cherry."
+        },
+        {
+          "nl": "Ik kijk er ook naar.",
+          "en": "I look at it too."
+        },
+        {
+          "nl": "Zij vraagt om een mes.",
+          "en": "She asks for a knife."
+        },
+        {
+          "nl": "Mama snijdt de kers doormidden.",
+          "en": "Mum cuts the cherry in half."
+        },
+        {
+          "nl": "Wij krijgen allebei een helft.",
+          "en": "We each get one half."
+        },
+        {
+          "nl": "De wafels smaken heel zoet.",
+          "en": "The waffles taste very sweet."
+        }
+      ],
+      "words": [
+        {
+          "term": "de wafel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "gebak met een ruitjespatroon",
+            "en": "waffle"
+          },
+          "example": {
+            "nl": "Wij krijgen twee kleine wafels.",
+            "en": "We get two small waffles."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de kers",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine rode vrucht met een pit",
+            "en": "cherry"
+          },
+          "example": {
+            "nl": "Er ligt één kers bij.",
+            "en": "There is one cherry with them."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de helft",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "één van twee gelijke delen",
+            "en": "half"
+          },
+          "example": {
+            "nl": "Wij krijgen allebei een helft.",
+            "en": "We each get one half."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Meer dan één",
+            "en": "More than one"
+          },
+          "explanation": {
+            "nl": "De vorm van het zelfstandig naamwoord laat zien dat er meer dan één is.",
+            "en": "The noun form shows that there is more than one."
+          },
+          "examples": [
+            {
+              "nl": "Wij krijgen twee kleine wafels.",
+              "en": "We get two small waffles."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Hoeveel kersen liggen erbij?",
+            "en": "How many cherries are there?"
+          },
+          "options": [
+            {
+              "nl": "Twee",
+              "en": "Two"
+            },
+            {
+              "nl": "Eén",
+              "en": "One"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Er ligt één kers bij.",
+            "en": "There is one cherry with them."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie snijdt de kers?",
+            "en": "Who cuts the cherry?"
+          },
+          "options": [
+            {
+              "nl": "Mama",
+              "en": "Mum"
+            },
+            {
+              "nl": "De ober",
+              "en": "The waiter"
+            },
+            {
+              "nl": "De zus",
+              "en": "The sister"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mama snijdt de kers doormidden.",
+            "en": "Mum cuts the cherry in half."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-lege-kaders",
+      "topic_id": "photography",
+      "title": {
+        "nl": "De foto zonder hoofd",
+        "en": "The photo without a head"
+      },
+      "plot_key": "A learner tilts a phone upwards to include a tall friend's head in a photograph.",
+      "lines": [
+        {
+          "nl": "Ik maak een foto van Koen.",
+          "en": "I take a photo of Koen."
+        },
+        {
+          "nl": "Koen is heel groot.",
+          "en": "Koen is very tall."
+        },
+        {
+          "nl": "Ik zie zijn schoenen goed.",
+          "en": "I can see his shoes clearly."
+        },
+        {
+          "nl": "Zijn hoofd staat niet op de foto.",
+          "en": "His head is not in the photo."
+        },
+        {
+          "nl": "Ik richt mijn gsm hoger.",
+          "en": "I point my phone higher."
+        },
+        {
+          "nl": "Koen kijkt naar de camera.",
+          "en": "Koen looks at the camera."
+        },
+        {
+          "nl": "Nu zie ik zijn hele gezicht.",
+          "en": "Now I can see his whole face."
+        },
+        {
+          "nl": "Hij lacht op de nieuwe foto.",
+          "en": "He is smiling in the new photo."
+        }
+      ],
+      "words": [
+        {
+          "term": "het hoofd",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "bovenste deel van je lichaam",
+            "en": "head"
+          },
+          "example": {
+            "nl": "Zijn hoofd staat niet op de foto.",
+            "en": "His head is not in the photo."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "hoger",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "op een grotere hoogte",
+            "en": "higher"
+          },
+          "example": {
+            "nl": "Ik richt mijn gsm hoger.",
+            "en": "I point my phone higher."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "lachen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "je mond blij bewegen en geluid maken",
+            "en": "to laugh or smile"
+          },
+          "example": {
+            "nl": "Hij lacht op de nieuwe foto.",
+            "en": "He is smiling in the new photo."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet en geen",
+            "en": "Niet and geen"
+          },
+          "explanation": {
+            "nl": "Kijk wat wordt ontkend: de handeling of het zelfstandig naamwoord.",
+            "en": "Look at what is being negated: the action or the noun."
+          },
+          "examples": [
+            {
+              "nl": "Zijn hoofd staat niet op de foto.",
+              "en": "His head is not in the photo."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat ontbreekt op de eerste foto?",
+            "en": "What is missing in the first photo?"
+          },
+          "options": [
+            {
+              "nl": "De jas",
+              "en": "The coat"
+            },
+            {
+              "nl": "De schoenen",
+              "en": "The shoes"
+            },
+            {
+              "nl": "Het hoofd",
+              "en": "The head"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zijn hoofd staat niet op de foto.",
+            "en": "His head is not in the photo."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar kijkt Koen naar?",
+            "en": "What does Koen look at?"
+          },
+          "options": [
+            {
+              "nl": "De camera",
+              "en": "The camera"
+            },
+            {
+              "nl": "De grond",
+              "en": "The ground"
+            },
+            {
+              "nl": "De deur",
+              "en": "The door"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Koen kijkt naar de camera.",
+            "en": "Koen looks at the camera."
+          }
+        }
+      ]
+    }
+  ]
+}

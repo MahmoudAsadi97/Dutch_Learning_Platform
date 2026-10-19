@@ -18,7 +18,17 @@ from dlp.domains.curriculum.coverage import eligible_story_ids
 from dlp.domains.curriculum.library import LibraryWord, library_for, normalise
 from dlp.domains.curriculum.schemas import SKILLS, STAGE_IDS, Skill
 from dlp.domains.curriculum.topics import PracticeTopic, topics_for
-from dlp.domains.study.schemas import CheckQuestion, IndexDocument, PackDocument, SourceListeningDocument, TopicDocument
+from dlp.domains.study.reading_sources import read_reading_batches, reading_paths
+from dlp.domains.study.schemas import (
+    CheckQuestion,
+    IndexDocument,
+    PackDocument,
+    ReadingDocument,
+    ReadingLesson,
+    ReadingMapDocument,
+    SourceListeningDocument,
+    TopicDocument,
+)
 
 GROUPS = {
     "culture": ("Cultuur", "Culture"), "daily": ("Dagelijks leven", "Daily life"),
@@ -79,6 +89,30 @@ def pack_for(stage_id: str) -> PackDocument | None:
     require_stage(stage_id)
     path = CONTENT_DIR / "study" / "packs" / f"{stage_id}.json"
     return _pack(str(path), path.stat().st_mtime_ns) if path.exists() else None
+
+
+@lru_cache(maxsize=24)
+def _readings(root: str, stage_id: str, version: tuple) -> tuple[ReadingLesson, ...]:
+    lessons = []
+    identities: set[str] = set()
+    plots: set[str] = set()
+    for _, path, data in read_reading_batches(Path(root), stage_id):
+        document = ReadingDocument.model_validate(data)
+        for lesson in document.lessons:
+            plot = normalise(lesson.plot_key)
+            if lesson.id in identities or plot in plots:
+                raise ValueError(f"{path}: reading batches repeat a lesson identity or plot")
+            identities.add(lesson.id)
+            plots.add(plot)
+            lessons.append(lesson)
+    return tuple(lessons)
+
+
+def readings_for(stage_id: str) -> tuple[ReadingLesson, ...]:
+    require_stage(stage_id)
+    version = tuple((str(path), path.stat().st_mtime_ns, path.stat().st_size)
+                    for path in reading_paths(CONTENT_DIR, stage_id))
+    return _readings(str(CONTENT_DIR), stage_id, version)
 
 
 @lru_cache(maxsize=4)
@@ -220,14 +254,38 @@ def _contextual_grammar(lines: list[dict], stage_id: str) -> list[dict]:
                           "examples": [line]})
         elif re.match(r"^(Ik|Je|U|Hij|Zij|We|Wij|[A-Z][a-z]+) "
                       r"(ben|bent|is|zijn|heb|heeft|had|was|werkt|woont|gaat|komt|maakt|staat|wil|kan|moet|doet|neemt)\b", text):
-            found.append({"title": copy("Onderwerp en persoonsvorm", "Subject and finite verb"),
-                          "explanation": copy("In deze gewone mededelende zin staat eerst het onderwerp en dan de persoonsvorm.",
-                                              "This statement starts with the subject followed by the finite verb."),
+            found.append({"title": copy("De persoonsvorm op de tweede plaats", "The finite verb in second position"),
+                          "explanation": copy("In deze hoofdzin staat de persoonsvorm op de tweede zinsplaats. "
+                                              "Daarvoor staat één zinsdeel: het onderwerp of bijvoorbeeld een tijd of plaats.",
+                                              "Here the finite verb occupies the second position in the main clause. "
+                                              "One constituent comes first, such as the subject or a time or place expression."),
                           "examples": [line]})
         if len(found) == 2:
             break
     # Avoid displaying the same explanation twice just to fill a preparation pane.
     return list({rule["title"]["nl"]: rule for rule in found}.values())
+
+
+@lru_cache(maxsize=4)
+def _reading_map(path: str, version: tuple) -> ReadingMapDocument:
+    return ReadingMapDocument.model_validate_json(Path(path).read_text(encoding="utf-8"))
+
+
+def _original_reading_grammar(stage: str, topic: str, story_id: str, lines: list[dict]) -> list[dict]:
+    path = CONTENT_DIR / "study/reading-map.json"
+    if not path.exists():
+        return []
+    stat = path.stat()
+    document = _reading_map(str(path), (stat.st_mtime_ns, stat.st_size))
+    mapping = next((item for item in document.mappings if item.stage_id == stage and item.story_id == story_id), None)
+    if mapping is None:
+        return []
+    if mapping.topic_id != topic:
+        raise ValueError("reading preparation must retain its mapped topic")
+    exact = {(line["nl"], line["en"]) for line in lines}
+    if any((example.nl, example.en) not in exact for rule in mapping.grammar for example in rule.examples):
+        raise ValueError("reading grammar preparation must preserve an exact bilingual source line")
+    return [rule.model_dump() for rule in mapping.grammar]
 
 
 def _pack_preparation(stage_id: str, canonical, source) -> dict:
@@ -288,46 +346,60 @@ def _pack_preparation(stage_id: str, canonical, source) -> dict:
     return {"words": selected, "grammar": grammar}
 
 
-def _default_pack_parts(stage_id: str, canonical, source, skill: Skill) -> list[dict]:
-    lines = [bilingual(line) for line in source.lines]
+def _reading_parts(stage_id: str, lines: list[dict], questions: list[dict]) -> list[dict]:
     low = STAGE_IDS.index(stage_id) < STAGE_IDS.index("b1")
     bound = 40 if stage_id == "pre-a1" else (120 if low else 350)
-    questions = _questions(source.questions)
-    if stage_id in ("pre-c1", "c1", "pre-c2", "c2"):
+    if stage_id == "pre-a1":
+        retell_prompt = copy(
+            "Noem een persoon of ding uit het verhaal. Zeg of schrijf één korte zin.",
+            "Name a person or thing from the story. Say or write one short sentence.")
+    elif stage_id in ("pre-c1", "c1", "pre-c2", "c2"):
         retell_prompt = copy(
             "Geef een beknopte interpretatie van het verhaal. Maak onderscheid tussen wat de tekst expliciet "
             "zegt en wat je afleidt. Onderbouw je interpretatie met twee concrete details.",
             "Give a concise interpretation of the story. Distinguish what it explicitly states from what "
             "you infer. Support your interpretation with two specific details.")
-        describe_prompt = copy(
-            "Vertel de situatie na voor iemand die de tekst niet kent. Maak de verbanden duidelijk "
-            "en pas je woordkeuze aan een professionele gesprekspartner aan.",
-            "Explain the situation to someone unfamiliar with the text. Make its connections clear "
-            "and adapt your wording for a professional listener.")
     elif stage_id in ("pre-b2", "b2"):
         retell_prompt = copy(
             "Vat het verhaal samen. Vergelijk twee gebeurtenissen of standpunten en leg het verband ertussen uit.",
             "Summarise the story. Compare two events or viewpoints and explain how they relate.")
-        describe_prompt = copy(
-            "Beschrijf de situatie samenhangend. Leg uit welk probleem of verschil er is en geef een reden.",
-            "Describe the situation coherently. Explain a problem or difference and give a reason.")
     elif stage_id in ("pre-b1", "b1"):
         retell_prompt = copy(
             "Vertel wat er gebeurt, in welke volgorde en waarom. Gebruik een belangrijk detail uit het verhaal.",
             "Explain what happens, in what order and why. Use an important detail from the story.")
-        describe_prompt = copy(
-            "Vertel het verhaal samenhangend na. Leg uit wat er eerst en daarna gebeurt.",
-            "Retell the story as a connected account. Explain what happens first and next.")
     else:
         retell_prompt = copy("Wat gebeurt er in dit verhaal? Vertel het in je eigen woorden.",
                              "What happens in the story? Explain in your own words.")
-        describe_prompt = copy("Vertel het verhaal na. Beschrijf wie of wat belangrijk is.",
-                               "Retell the story. Describe who or what matters.")
+    return [_part("read", copy("Lees het verhaal", "Read the story"), text=lines, questions=questions),
+            _part("retell", copy("Vertel wat je begrijpt", "Explain what you understood"),
+                  prompt=retell_prompt, max_words=bound)]
+
+
+def _default_pack_parts(stage_id: str, canonical, source, skill: Skill) -> list[dict]:
+    lines = [bilingual(line) for line in source.lines]
+    low = STAGE_IDS.index(stage_id) < STAGE_IDS.index("b1")
+    bound = 40 if stage_id == "pre-a1" else (120 if low else 350)
+    questions = _questions(source.questions)
     if skill == "reading":
-        return [_part("read", copy("Lees het verhaal", "Read the story"), text=lines, questions=questions),
-                _part("retell", copy("Vertel wat je begrijpt", "Explain what you understood"),
-                      prompt=retell_prompt, max_words=bound)]
+        return _reading_parts(stage_id, lines, questions)
     if skill == "speaking":
+        if stage_id in ("pre-c1", "c1", "pre-c2", "c2"):
+            describe_prompt = copy(
+                "Vertel de situatie na voor iemand die de tekst niet kent. Maak de verbanden duidelijk "
+                "en pas je woordkeuze aan een professionele gesprekspartner aan.",
+                "Explain the situation to someone unfamiliar with the text. Make its connections clear "
+                "and adapt your wording for a professional listener.")
+        elif stage_id in ("pre-b2", "b2"):
+            describe_prompt = copy(
+                "Beschrijf de situatie samenhangend. Leg uit welk probleem of verschil er is en geef een reden.",
+                "Describe the situation coherently. Explain a problem or difference and give a reason.")
+        elif stage_id in ("pre-b1", "b1"):
+            describe_prompt = copy(
+                "Vertel het verhaal samenhangend na. Leg uit wat er eerst en daarna gebeurt.",
+                "Retell the story as a connected account. Explain what happens first and next.")
+        else:
+            describe_prompt = copy("Vertel het verhaal na. Beschrijf wie of wat belangrijk is.",
+                                   "Retell the story. Describe who or what matters.")
         warmup = _part("short-answers", copy("Korte vragen", "Short questions"),
                        prompt=copy("Wat gebeurt er aan het begin van dit verhaal?",
                                    "What happens at the beginning of this story?"),
@@ -688,9 +760,12 @@ def lesson(stage_id: str, topic_id: str, skill: Skill, *, activity_id: str | Non
                if any(source.source == "story" for source in sources) else {})
     pack = pack_for(stage_id)
     authored = {item.id: item for item in pack.lessons} if pack else {}
+    readings = ({item.id: item for item in readings_for(stage_id)}
+                if any(source.source == "reading" for source in sources) else {})
     for source in sources:
         item = (stories.get(source.id) if source.source == "story" else
-                authored.get(source.id) if source.source == "pack" else topic_bank.get(source.id))
+                authored.get(source.id) if source.source == "pack" else
+                readings.get(source.id) if source.source == "reading" else topic_bank.get(source.id))
         if item is None:
             raise ValueError("guided source reference does not resolve")
         activities.append({"id": source.id, "title": bilingual(item.title)})
@@ -702,6 +777,18 @@ def lesson(stage_id: str, topic_id: str, skill: Skill, *, activity_id: str | Non
         source_text = " ".join(line.nl for line in source.lines)
         context_lines = [bilingual(line) for line in source.lines]
         preparation = _pack_preparation(stage_id, canonical, source)
+    elif selected.source == "reading":
+        source = readings[selected.id]
+        if skill != "reading" or source.topic_id != topic_id:
+            raise ValueError("an original reading must retain its skill and authored topic")
+        context_lines = [bilingual(line) for line in source.lines]
+        parts = _reading_parts(stage_id, context_lines, _questions(source.questions))
+        source_text = " ".join(line.nl for line in source.lines)
+        preparation = {"words": [
+            {"id": f"{source.id}-word-{index}", "term": word.term, "part_of_speech": word.part_of_speech,
+             "meaning": bilingual(word.meaning), "example": bilingual(word.example)}
+            for index, word in enumerate(source.words, 1)],
+            "grammar": [rule.model_dump() for rule in source.grammar]}
     elif selected.source == "story":
         if skill != "reading" or selected.id not in eligible_story_ids(stage_id):
             raise ValueError("guided stories require eligible reading sources")
@@ -709,10 +796,7 @@ def lesson(stage_id: str, topic_id: str, skill: Skill, *, activity_id: str | Non
         text = [bilingual(line) for line in source.lines or []]
         questions = _questions([source.question])
         questions[0]["id"] = f"{source.id}-understand"
-        parts = [_part("read", copy("Lees het verhaal", "Read the story"), text=text, questions=questions),
-                 _part("retell", copy("Vertel het verhaal na", "Retell the story"),
-                       prompt=copy("Wat gebeurt er in dit verhaal? Vertel het in je eigen woorden.",
-                                   "What happens in the story? Explain in your own words."), max_words=300)]
+        parts = _reading_parts(stage_id, text, questions)
         source_text = " ".join(line["nl"] for line in text)
         context_lines = text
     elif selected.source == "practice":
@@ -730,10 +814,14 @@ def lesson(stage_id: str, topic_id: str, skill: Skill, *, activity_id: str | Non
             if not include_answers:
                 for key in ("answer_index", "accepted_answers", "explanation"):
                     question.pop(key, None)
-    if selected.source != "pack":
+    if selected.source not in {"pack", "reading"}:
         preparation = ({"words": [_word(source_words[key]) for key in source.vocabulary_ids if key in source_words],
                         "grammar": _contextual_grammar(_lines(source.reading.text), stage_id)}
                        if source_words is not None else _preparation(stage_id, source.vocabulary_ids, source_text))
+        if selected.source == "story":
+            authored_grammar = _original_reading_grammar(stage_id, topic_id, selected.id, context_lines)
+            preparation["grammar"] = (authored_grammar or preparation["grammar"]
+                                      or _contextual_grammar(context_lines, stage_id))
     return {"stage_id": stage_id, "topic_id": topic_id, "skill": skill,
             "title": bilingual(source.title), "topic_title": copy(canonical.nl, canonical.en),
             "review_status": "unreviewed", "preparation": preparation, "activities": activities,

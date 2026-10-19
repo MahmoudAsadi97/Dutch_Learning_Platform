@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-recept-zonder-suiker",
+      "topic_id": "family",
+      "title": {
+        "nl": "Het recept zonder suiker",
+        "en": "The recipe without sugar"
+      },
+      "plot_key": "Siblings preparing a family recipe argue over authenticity until an old shopping note reveals it was once an improvised substitute.",
+      "lines": [
+        {
+          "nl": "Voor de verjaardag van hun moeder wilden de zussen Evelien en Saar de taart van hun overleden grootvader bakken.",
+          "en": "For their mother's birthday, the sisters Evelien and Saar wanted to bake their late grandfather's cake."
+        },
+        {
+          "nl": "Zijn schrift vermeldde bloem, eieren en peren, maar de hoeveelheid suiker was door een koffievlek onleesbaar geworden.",
+          "en": "His notebook listed flour, eggs and pears, but a coffee stain had made the amount of sugar illegible."
+        },
+        {
+          "nl": "Evelien wilde een modern recept volgen, terwijl Saar vond dat ze niets aan de familietraditie mochten veranderen.",
+          "en": "Evelien wanted to follow a modern recipe, while Saar felt they should not change anything about the family tradition."
+        },
+        {
+          "nl": "Hun discussie werd steeds ernstiger, hoewel er nog geen ei gebroken was en de gasten over twee uur zouden komen.",
+          "en": "Their discussion grew increasingly serious, although no egg had yet been broken and the guests were arriving in two hours."
+        },
+        {
+          "nl": "Toen Saar tussen de bladzijden zocht, viel er een boodschappenbriefje uit waarop hun grootvader had geschreven dat de suiker op was.",
+          "en": "When Saar searched between the pages, a shopping note fell out on which their grandfather had written that they had run out of sugar."
+        },
+        {
+          "nl": "Hij had de eerste taart blijkbaar met heel rijpe peren en een potje appelstroop gemaakt, omdat de winkel gesloten was.",
+          "en": "Apparently he had made the first cake with very ripe pears and a jar of apple syrup because the shop was closed."
+        },
+        {
+          "nl": "De zussen gebruikten wat ze in huis hadden en schreven hun eigen hoeveelheden naast zijn aantekening, inclusief de mislukte eerste poging.",
+          "en": "The sisters used what they had at home and wrote their own quantities beside his note, including their failed first attempt."
+        },
+        {
+          "nl": "Hun moeder herkende de smaak niet helemaal, maar wel de gewoonte om met weinig middelen toch iets feestelijks te maken.",
+          "en": "Their mother did not entirely recognise the taste, but did recognise the habit of making something festive with limited resources."
+        }
+      ],
+      "words": [
+        {
+          "term": "onleesbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet te lezen",
+            "en": "illegible"
+          },
+          "example": {
+            "nl": "Zijn schrift vermeldde bloem, eieren en peren, maar de hoeveelheid suiker was door een koffievlek onleesbaar geworden.",
+            "en": "His notebook listed flour, eggs and pears, but a coffee stain had made the amount of sugar illegible."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de poging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een keer dat je iets probeert",
+            "en": "attempt"
+          },
+          "example": {
+            "nl": "De zussen gebruikten wat ze in huis hadden en schreven hun eigen hoeveelheden naast zijn aantekening, inclusief de mislukte eerste poging.",
+            "en": "The sisters used what they had at home and wrote their own quantities beside his note, including their failed first attempt."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de gewoonte",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat iemand vaak op dezelfde manier doet",
+            "en": "habit"
+          },
+          "example": {
+            "nl": "Hun moeder herkende de smaak niet helemaal, maar wel de gewoonte om met weinig middelen toch iets feestelijks te maken.",
+            "en": "Their mother did not entirely recognise the taste, but did recognise the habit of making something festive with limited resources."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoewel voor toegeving",
+            "en": "Although for concession"
+          },
+          "explanation": {
+            "nl": "Hoewel verbindt een feit met iets dat je op grond daarvan niet verwacht.",
+            "en": "Hoewel connects a fact with something unexpected in light of it."
+          },
+          "examples": [
+            {
+              "nl": "Hun discussie werd steeds ernstiger, hoewel er nog geen ei gebroken was en de gasten over twee uur zouden komen.",
+              "en": "Their discussion grew increasingly serious, although no egg had yet been broken and the guests were arriving in two hours."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verandert Saars kijk op het recept?",
+            "en": "What changes Saar's view of the recipe?"
+          },
+          "options": [
+            {
+              "nl": "Een briefje toont dat het oorspronkelijke recept ook improvisatie was.",
+              "en": "A note shows that the original recipe was also an improvisation."
+            },
+            {
+              "nl": "De winkel gaat open.",
+              "en": "The shop opens."
+            },
+            {
+              "nl": "Hun moeder bestelt een taart.",
+              "en": "Their mother orders a cake."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hun grootvader had ingrediënten vervangen omdat de suiker op was.",
+            "en": "Their grandfather had replaced ingredients because they had run out of sugar."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat blijft volgens de slotzin behouden?",
+            "en": "What is preserved according to the final sentence?"
+          },
+          "options": [
+            {
+              "nl": "De oorspronkelijke smaak.",
+              "en": "The original taste."
+            },
+            {
+              "nl": "Een praktische familiegewoonte.",
+              "en": "A practical family habit."
+            },
+            {
+              "nl": "De precieze hoeveelheid suiker.",
+              "en": "The exact amount of sugar."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De moeder herkent de vindingrijke werkwijze, niet exact dezelfde smaak.",
+            "en": "The mother recognises the resourceful approach, not exactly the same taste."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-vergadering-in-het-duister",
+      "topic_id": "work-careers",
+      "title": {
+        "nl": "De vergadering in het duister",
+        "en": "The meeting in the dark"
+      },
+      "plot_key": "A power failure removes a nervous consultant's slides and forces her to explain a useful concrete proposal without jargon.",
+      "lines": [
+        {
+          "nl": "Consultant Noura had haar eerste voorstel voor een Gentse fietsenfabrikant in veertig zorgvuldig ontworpen dia's samengevat.",
+          "en": "Consultant Noura had summarised her first proposal for a Ghent bicycle manufacturer in forty carefully designed slides."
+        },
+        {
+          "nl": "Ze was vooral bang voor de technisch directeur, die volgens collega's elke onduidelijke berekening onmiddellijk ontdekte.",
+          "en": "She was particularly afraid of the technical director, who according to colleagues immediately spotted every unclear calculation."
+        },
+        {
+          "nl": "Net toen ze over verbeterde processen wilde beginnen, viel in het hele gebouw de elektriciteit uit.",
+          "en": "Just as she was about to start discussing improved processes, the electricity failed throughout the building."
+        },
+        {
+          "nl": "De directeur schoof zijn stoel naar het raam en vroeg welk probleem zij eigenlijk wilde oplossen, zonder presentatie.",
+          "en": "The director moved his chair towards the window and asked what problem she actually wanted to solve, without a presentation."
+        },
+        {
+          "nl": "Noura vertelde over een monteur die elke ochtend twintig minuten naar onderdelen zocht, terwijl afgewerkte fietsen op controles wachtten.",
+          "en": "Noura described a mechanic who spent twenty minutes every morning searching for parts while finished bicycles waited for inspections."
+        },
+        {
+          "nl": "Voor het eerst stelde de monteur zelf een vraag, waarna de magazijnier op een leeg blad hun looproutes begon te tekenen.",
+          "en": "For the first time the mechanic himself asked a question, after which the storekeeper began drawing their walking routes on a blank sheet."
+        },
+        {
+          "nl": "Toen het licht terugkwam, had de groep een kleine proef afgesproken die goedkoper was dan Noura's oorspronkelijke pakket.",
+          "en": "When the lights came back, the group had agreed on a small trial that was cheaper than Noura's original package."
+        },
+        {
+          "nl": "Ze bewaarde haar dia's, maar zette voortaan eerst het probleem op tafel voordat ze vertelde hoeveel oplossingen ze kon verkopen.",
+          "en": "She kept her slides, but from then on put the problem on the table first before explaining how many solutions she could sell."
+        }
+      ],
+      "words": [
+        {
+          "term": "de monteur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die machines of onderdelen monteert of herstelt",
+            "en": "mechanic"
+          },
+          "example": {
+            "nl": "Noura vertelde over een monteur die elke ochtend twintig minuten naar onderdelen zocht, terwijl afgewerkte fietsen op controles wachtten.",
+            "en": "Noura described a mechanic who spent twenty minutes every morning searching for parts while finished bicycles waited for inspections."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de looproute",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de weg die iemand te voet aflegt",
+            "en": "walking route"
+          },
+          "example": {
+            "nl": "Voor het eerst stelde de monteur zelf een vraag, waarna de magazijnier op een leeg blad hun looproutes begon te tekenen.",
+            "en": "For the first time the mechanic himself asked a question, after which the storekeeper began drawing their walking routes on a blank sheet."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "oorspronkelijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zoals iets eerst was",
+            "en": "original"
+          },
+          "example": {
+            "nl": "Toen het licht terugkwam, had de groep een kleine proef afgesproken die goedkoper was dan Noura's oorspronkelijke pakket.",
+            "en": "When the lights came back, the group had agreed on a small trial that was cheaper than Noura's original package."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarna in een gebeurtenissenketen",
+            "en": "After which in a sequence of events"
+          },
+          "explanation": {
+            "nl": "Waarna verwijst naar een eerdere gebeurtenis en introduceert wat daarop volgt.",
+            "en": "Waarna refers to an earlier event and introduces what follows it."
+          },
+          "examples": [
+            {
+              "nl": "Voor het eerst stelde de monteur zelf een vraag, waarna de magazijnier op een leeg blad hun looproutes begon te tekenen.",
+              "en": "For the first time the mechanic himself asked a question, after which the storekeeper began drawing their walking routes on a blank sheet."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom komt de monteur aan het woord?",
+            "en": "Why does the mechanic join the discussion?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft de dia's ontworpen.",
+              "en": "He designed the slides."
+            },
+            {
+              "nl": "Hij verkoopt elektriciteit.",
+              "en": "He sells electricity."
+            },
+            {
+              "nl": "Hij begrijpt zijn concrete probleem in Noura's uitleg.",
+              "en": "He recognises his concrete problem in Noura's explanation."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Noura beschrijft het zoeken naar onderdelen in plaats van alleen abstracte processen.",
+            "en": "Noura describes searching for parts rather than only abstract processes."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat is het ironische effect van de storing?",
+            "en": "What is the ironic effect of the power failure?"
+          },
+          "options": [
+            {
+              "nl": "De vergadering moet definitief stoppen.",
+              "en": "The meeting must end permanently."
+            },
+            {
+              "nl": "De directeur ontdekt een rekenfout.",
+              "en": "The director spots a calculation error."
+            },
+            {
+              "nl": "Zonder hulpmiddel wordt het gesprek bruikbaarder.",
+              "en": "Without the presentation aid, the discussion becomes more useful."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Juist zonder de voorbereide dia's ontstaat een gezamenlijke uitvoerbare proef.",
+            "en": "It is precisely without the prepared slides that a jointly workable trial emerges."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-verkeerde-pagina-leesclub",
+      "topic_id": "books-reading",
+      "title": {
+        "nl": "De verkeerde pagina",
+        "en": "The wrong page"
+      },
+      "plot_key": "A reluctant reading-club member discovers an unreliable narrator after arguing from a passage his group had dismissed.",
+      "lines": [
+        {
+          "nl": "Bram ging alleen naar de leesclub omdat zijn vriendin die avond niet alleen naar de bibliotheek wilde fietsen.",
+          "en": "Bram attended the reading club only because his girlfriend did not want to cycle to the library alone that evening."
+        },
+        {
+          "nl": "Hij had de roman half gelezen en verwachtte vooral over symbolen te moeten praten die hij niet had opgemerkt.",
+          "en": "He had read half the novel and mainly expected to discuss symbols he had not noticed."
+        },
+        {
+          "nl": "Toen iedereen de hoofdpersoon een betrouwbare getuige noemde, vroeg Bram waarom diens beschrijving van de brug telkens veranderde.",
+          "en": "When everyone called the main character a reliable witness, Bram asked why his description of the bridge kept changing."
+        },
+        {
+          "nl": "De gespreksleider dacht eerst dat Bram verschillende plaatsen door elkaar haalde en bladerde geduldig terug naar de bewuste hoofdstukken.",
+          "en": "The discussion leader initially thought Bram was confusing different places and patiently turned back to the relevant chapters."
+        },
+        {
+          "nl": "In het ene hoofdstuk bestonden er drie bogen, in het andere vier, terwijl het verhaal uitdrukkelijk dezelfde brug beschreef.",
+          "en": "In one chapter there were three arches, in another four, although the story explicitly described the same bridge."
+        },
+        {
+          "nl": "Een lezer merkte op dat de verteller telkens een ander alibi verdedigde wanneer hij aan de overtocht terugdacht.",
+          "en": "One reader observed that the narrator was defending a different alibi each time he remembered the crossing."
+        },
+        {
+          "nl": "Plots discussieerde de groep niet meer over wie de dader was, maar over wie bepaalde wat als bewijs gold.",
+          "en": "Suddenly the group was no longer debating who the culprit was, but who determined what counted as evidence."
+        },
+        {
+          "nl": "Bram leende na afloop het volgende boek en vroeg zijn vriendin of zij zaterdag met hem naar de bibliotheek wilde fietsen.",
+          "en": "Afterwards Bram borrowed the next book and asked his girlfriend whether she would cycle to the library with him on Saturday."
+        }
+      ],
+      "words": [
+        {
+          "term": "betrouwbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "iemand op wie je kunt vertrouwen",
+            "en": "reliable"
+          },
+          "example": {
+            "nl": "Toen iedereen de hoofdpersoon een betrouwbare getuige noemde, vroeg Bram waarom diens beschrijving van de brug telkens veranderde.",
+            "en": "When everyone called the main character a reliable witness, Bram asked why his description of the bridge kept changing."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de boog",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een gebogen deel van bijvoorbeeld een brug",
+            "en": "arch"
+          },
+          "example": {
+            "nl": "In het ene hoofdstuk bestonden er drie bogen, in het andere vier, terwijl het verhaal uitdrukkelijk dezelfde brug beschreef.",
+            "en": "In one chapter there were three arches, in another four, although the story explicitly described the same bridge."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het alibi",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een verklaring dat iemand elders was toen iets gebeurde",
+            "en": "alibi"
+          },
+          "example": {
+            "nl": "Een lezer merkte op dat de verteller telkens een ander alibi verdedigde wanneer hij aan de overtocht terugdacht.",
+            "en": "One reader observed that the narrator was defending a different alibi each time he remembered the crossing."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Telkens wanneer",
+            "en": "Each time when"
+          },
+          "explanation": {
+            "nl": "Telkens en wanneer geven samen aan dat een verband bij elke herhaling optreedt.",
+            "en": "Telkens and wanneer together indicate that a connection occurs with every repetition."
+          },
+          "examples": [
+            {
+              "nl": "Een lezer merkte op dat de verteller telkens een ander alibi verdedigde wanneer hij aan de overtocht terugdacht.",
+              "en": "One reader observed that the narrator was defending a different alibi each time he remembered the crossing."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zijn de verschillende aantallen bogen belangrijk?",
+            "en": "Why do the different numbers of arches matter?"
+          },
+          "options": [
+            {
+              "nl": "Ze vertellen hoe oud de brug is.",
+              "en": "They reveal the age of the bridge."
+            },
+            {
+              "nl": "Ze bewijzen dat er twee bruggen zijn.",
+              "en": "They prove there are two bridges."
+            },
+            {
+              "nl": "Ze maken de herinnering van de verteller twijfelachtig.",
+              "en": "They make the narrator's memory questionable."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Dezelfde plek verandert in zijn verhaal, samen met zijn alibi.",
+            "en": "The same place changes in his account, along with his alibi."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat suggereert Brams vraag aan het einde?",
+            "en": "What does Bram's question at the end suggest?"
+          },
+          "options": [
+            {
+              "nl": "Hij is zelf nieuwsgierig geworden naar lezen.",
+              "en": "He himself has become curious about reading."
+            },
+            {
+              "nl": "Hij wil de roman terugbrengen zonder hem te lezen.",
+              "en": "He wants to return the novel unread."
+            },
+            {
+              "nl": "Hij wil zijn vriendin niet meer helpen.",
+              "en": "He no longer wants to help his girlfriend."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Nu neemt hij het initiatief voor het volgende bibliotheekbezoek.",
+            "en": "He now takes the initiative for the next library visit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-tuin-voor-een-seizoen",
+      "topic_id": "gardening",
+      "title": {
+        "nl": "Een tuin voor één seizoen",
+        "en": "A garden for one season"
+      },
+      "plot_key": "A temporary tenant's movable garden challenges a neighbour's belief that caring requires permanent ownership.",
+      "lines": [
+        {
+          "nl": "Omdat haar huurcontract maar zes maanden liep, plantte Tessa haar groenten in emmers die ze later kon meenemen.",
+          "en": "Because her tenancy lasted only six months, Tessa planted her vegetables in buckets she could take away later."
+        },
+        {
+          "nl": "De buurman vond het zonde dat ze zoveel tijd besteedde aan een tuin die binnenkort niet meer van haar zou zijn.",
+          "en": "The neighbour thought it a waste that she spent so much time on a garden that would soon no longer be hers."
+        },
+        {
+          "nl": "Zelf had hij achter zijn huis een ruime strook grond waarop al jaren alleen onkruid groeide.",
+          "en": "Behind his own house he had a large strip of land where only weeds had grown for years."
+        },
+        {
+          "nl": "Tessa vroeg of ze daar bloemen mocht zaaien, zodat er bijen naar haar tomatenplanten zouden komen.",
+          "en": "Tessa asked whether she could sow flowers there so that bees would come to her tomato plants."
+        },
+        {
+          "nl": "Hij gaf toestemming, op voorwaarde dat hij er na haar vertrek geen extra werk aan zou hebben.",
+          "en": "He gave permission on condition that it would not create extra work for him after she left."
+        },
+        {
+          "nl": "In de zomer zette hij onverwacht een stoel naast de bloemen en wees voorbijgangers op de verschillende soorten die hij inmiddels kende.",
+          "en": "In summer he unexpectedly placed a chair beside the flowers and pointed out to passers-by the different species he now knew."
+        },
+        {
+          "nl": "Toen de verhuiswagen kwam, hielp hij de emmers inladen en vroeg hij hoe hij het zaad voor volgend jaar kon bewaren.",
+          "en": "When the removal van arrived, he helped load the buckets and asked how he could save the seeds for the following year."
+        },
+        {
+          "nl": "Tessa liet hem een papieren zak achter; de tijdelijke tuinier had een blijvende opvolger gevonden.",
+          "en": "Tessa left him a paper bag; the temporary gardener had found a permanent successor."
+        }
+      ],
+      "words": [
+        {
+          "term": "het onkruid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "planten die op een bepaalde plek ongewenst groeien",
+            "en": "weeds"
+          },
+          "example": {
+            "nl": "Zelf had hij achter zijn huis een ruime strook grond waarop al jaren alleen onkruid groeide.",
+            "en": "Behind his own house he had a large strip of land where only weeds had grown for years."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "zaaien",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zaad in de grond brengen om planten te laten groeien",
+            "en": "to sow"
+          },
+          "example": {
+            "nl": "Tessa vroeg of ze daar bloemen mocht zaaien, zodat er bijen naar haar tomatenplanten zouden komen.",
+            "en": "Tessa asked whether she could sow flowers there so that bees would come to her tomato plants."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de opvolger",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die een taak van een ander overneemt",
+            "en": "successor"
+          },
+          "example": {
+            "nl": "Tessa liet hem een papieren zak achter; de tijdelijke tuinier had een blijvende opvolger gevonden.",
+            "en": "Tessa left him a paper bag; the temporary gardener had found a permanent successor."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Op voorwaarde dat",
+            "en": "On condition that"
+          },
+          "explanation": {
+            "nl": "Op voorwaarde dat introduceert een eis waaraan voldaan moet worden.",
+            "en": "Op voorwaarde dat introduces a requirement that must be met."
+          },
+          "examples": [
+            {
+              "nl": "Hij gaf toestemming, op voorwaarde dat hij er na haar vertrek geen extra werk aan zou hebben.",
+              "en": "He gave permission on condition that it would not create extra work for him after she left."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zet Tessa haar groenten in emmers?",
+            "en": "Why does Tessa put her vegetables in buckets?"
+          },
+          "options": [
+            {
+              "nl": "De buurman heeft alle grond verkocht.",
+              "en": "The neighbour has sold all the land."
+            },
+            {
+              "nl": "Ze wil ze later kunnen meenemen.",
+              "en": "She wants to be able to take them away later."
+            },
+            {
+              "nl": "Er mogen geen groenten in de grond staan.",
+              "en": "Vegetables are not allowed in the soil."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Haar huur is tijdelijk, dus maakt ze de groentetuin verplaatsbaar.",
+            "en": "Her tenancy is temporary, so she makes the vegetable garden portable."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe verandert de buurman?",
+            "en": "How does the neighbour change?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil zelf doorgaan met tuinieren.",
+              "en": "He wants to continue gardening himself."
+            },
+            {
+              "nl": "Hij verhuist met Tessa mee.",
+              "en": "He moves away with Tessa."
+            },
+            {
+              "nl": "Hij verbiedt alle bloemen.",
+              "en": "He bans all flowers."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn vraag over zaad bewaren toont zijn plan voor het volgende seizoen.",
+            "en": "His question about saving seeds reveals his plan for the next season."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-spel-zonder-koning",
+      "topic_id": "gaming",
+      "title": {
+        "nl": "Het spel zonder koning",
+        "en": "The game without a king"
+      },
+      "plot_key": "A tournament organiser discovers a child's missing chess king has been repurposed as a family lucky charm and negotiates a replacement.",
+      "lines": [
+        {
+          "nl": "Tijdens het opstellen van de schaakborden voor een jeugdtornooi merkte organisator Pieter dat op één bord de witte koning ontbrak.",
+          "en": "While setting up the chessboards for a youth tournament, organiser Pieter noticed that the white king was missing from one board."
+        },
+        {
+          "nl": "Hij had de stukken uitgeleend aan een school en vermoedde dat daar iets verloren was gegaan.",
+          "en": "He had lent the pieces to a school and suspected something had been lost there."
+        },
+        {
+          "nl": "De leerkracht controleerde elke doos, maar een meisje in de klas keek steeds naar de hanger rond haar hals.",
+          "en": "The teacher checked every box, but a girl in the class kept looking at the pendant around her neck."
+        },
+        {
+          "nl": "Toen Pieter vroeg wat eraan hing, vertelde ze dat haar vader de schaakkoning meenam naar zijn sollicitatiegesprekken en dat zij hem nu droeg.",
+          "en": "When Pieter asked what was hanging from it, she explained that her father took the chess king to job interviews and she was wearing it now."
+        },
+        {
+          "nl": "Ze had hem uit het schoolspel geleend nadat haar vader voor het eerst voor een tweede gesprek was uitgenodigd.",
+          "en": "She had borrowed it from the school set after her father had been invited to a second interview for the first time."
+        },
+        {
+          "nl": "Pieter legde uit dat de spelers zonder koning hun partij niet konden afmaken, hoe weinig het stuk ook waard leek.",
+          "en": "Pieter explained that without a king the players could not finish their game, however little the piece might seem to be worth."
+        },
+        {
+          "nl": "Het meisje maakte hem los; Pieter gaf haar een reservepion die ze met de leerkracht goud mocht verven.",
+          "en": "The girl unfastened it; Pieter gave her a spare pawn that she could paint gold with the teacher."
+        },
+        {
+          "nl": "Bij het tornooi stond de koning weer op zijn veld, terwijl elders in de stad een kleine gouden pion naast een sollicitatiebrief lag.",
+          "en": "At the tournament the king was back on its square, while elsewhere in the city a little golden pawn lay beside a job application letter."
+        }
+      ],
+      "words": [
+        {
+          "term": "de hanger",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een klein voorwerp aan een ketting",
+            "en": "pendant"
+          },
+          "example": {
+            "nl": "De leerkracht controleerde elke doos, maar een meisje in de klas keek steeds naar de hanger rond haar hals.",
+            "en": "The teacher checked every box, but a girl in the class kept looking at the pendant around her neck."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de sollicitatiebrief",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een brief waarmee iemand naar een baan vraagt",
+            "en": "job application letter"
+          },
+          "example": {
+            "nl": "Bij het tornooi stond de koning weer op zijn veld, terwijl elders in de stad een kleine gouden pion naast een sollicitatiebrief lag.",
+            "en": "At the tournament the king was back on its square, while elsewhere in the city a little golden pawn lay beside a job application letter."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "losmaken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets dat vastzit vrijmaken",
+            "en": "to unfasten"
+          },
+          "example": {
+            "nl": "Het meisje maakte hem los; Pieter gaf haar een reservepion die ze met de leerkracht goud mocht verven.",
+            "en": "The girl unfastened it; Pieter gave her a spare pawn that she could paint gold with the teacher."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoe ... ook",
+            "en": "However ... may be"
+          },
+          "explanation": {
+            "nl": "Hoe weinig ... ook drukt uit dat een tegenstelling blijft gelden ondanks die hoeveelheid.",
+            "en": "Hoe weinig ... ook expresses that a contrast remains true despite that amount."
+          },
+          "examples": [
+            {
+              "nl": "Pieter legde uit dat de spelers zonder koning hun partij niet konden afmaken, hoe weinig het stuk ook waard leek.",
+              "en": "Pieter explained that without a king the players could not finish their game, however little the piece might seem to be worth."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom heeft het meisje de koning geleend?",
+            "en": "Why did the girl borrow the king?"
+          },
+          "options": [
+            {
+              "nl": "Ze wil leren schilderen.",
+              "en": "She wants to learn to paint."
+            },
+            {
+              "nl": "Ze verbindt het stuk met geluk voor haar vader.",
+              "en": "She associates the piece with good luck for her father."
+            },
+            {
+              "nl": "Ze wil het tornooi tegenhouden.",
+              "en": "She wants to stop the tournament."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het lenen volgt op zijn uitnodiging voor een tweede gesprek.",
+            "en": "The borrowing follows his invitation to a second interview."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat lost de reservepion op?",
+            "en": "What does the spare pawn resolve?"
+          },
+          "options": [
+            {
+              "nl": "De schaakset wordt compleet en er blijft een gelukssymbool.",
+              "en": "The chess set becomes complete and a lucky symbol remains."
+            },
+            {
+              "nl": "De vader krijgt zeker werk.",
+              "en": "The father certainly gets a job."
+            },
+            {
+              "nl": "Iedereen wint de wedstrijd.",
+              "en": "Everyone wins the match."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het noodzakelijke speelstuk keert terug zonder hun persoonlijke symbool helemaal af te nemen.",
+            "en": "The necessary playing piece returns without taking away their personal symbol entirely."
+          }
+        }
+      ]
+    }
+  ]
+}

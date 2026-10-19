@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-schaatsen-in-de-zomerkast",
+      "topic_id": "climate-change",
+      "title": {
+        "nl": "Schaatsen in de zomerkast",
+        "en": "Skates in the summer cupboard"
+      },
+      "plot_key": "A grandfather planning to recreate a frozen-pond childhood memory confronts unreliable local ice and shifts the promised experience from imitation to storytelling.",
+      "lines": [
+        {
+          "nl": "Voor zijn kleindochters verjaardag haalde grootvader Leo de oude schaatsen tevoorschijn waarmee haar moeder vroeger op de dorpsvijver had gereden.",
+          "en": "For his granddaughter’s birthday, grandfather Leo brought out the old skates her mother had once used on the village pond."
+        },
+        {
+          "nl": "Hij had een hele middag voorbereid met warme drank en verhalen over winters waarin het ijs tot onder de brug reikte.",
+          "en": "He had prepared an entire afternoon with hot drinks and stories about winters when the ice reached beneath the bridge."
+        },
+        {
+          "nl": "Die winter bleef de vijver echter open, en op de plaats waar hij zijn oude foto's had gemaakt zwommen nog steeds eenden.",
+          "en": "That winter, however, the pond remained unfrozen, and ducks still swam where he had taken his old photographs."
+        },
+        {
+          "nl": "Leo schoof de afspraak telkens op, tot zijn kleindochter vroeg of haar verjaardag nu ook moest wachten op het weer.",
+          "en": "Leo kept postponing the arrangement until his granddaughter asked whether her birthday also had to wait for the weather."
+        },
+        {
+          "nl": "Samen bekeken ze zijn foto's en merkten ze op hoeveel van zijn herinneringen aan omstandigheden vastzaten die zij niet zomaar konden bestellen.",
+          "en": "Together they looked at his photographs and noticed how many of his memories were tied to conditions they could not simply order."
+        },
+        {
+          "nl": "Ze gingen naar een overdekte ijsbaan, waar zij vooral viel en hij vooral ontdekte dat zijn knieën ouder waren dan op de foto.",
+          "en": "They went to an indoor ice rink, where she mainly fell and he mainly discovered his knees were older than in the photograph."
+        },
+        {
+          "nl": "Voor school maakte zij daarna geen nostalgische kopie, maar een vergelijking tussen zijn winters en haar eigen vragen over een veranderend klimaat.",
+          "en": "For school she then made not a nostalgic copy, but a comparison between his winters and her own questions about a changing climate."
+        },
+        {
+          "nl": "Leo zette de schaatsen terug zonder de vijver te beloven; de volgende verjaardag mocht een nieuw verhaal worden in plaats van een herhaling.",
+          "en": "Leo put the skates away without promising the pond; the next birthday could become a new story rather than a repetition."
+        }
+      ],
+      "words": [
+        {
+          "term": "nostalgisch",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "verlangend naar een als mooi herinnerd verleden",
+            "en": "nostalgic"
+          },
+          "example": {
+            "nl": "Voor school maakte zij daarna geen nostalgische kopie, maar een vergelijking tussen zijn winters en haar eigen vragen over een veranderend klimaat.",
+            "en": "For school she then made not a nostalgic copy, but a comparison between his winters and her own questions about a changing climate."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de omstandigheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een situatie of factor die iets beïnvloedt",
+            "en": "circumstance"
+          },
+          "example": {
+            "nl": "Samen bekeken ze zijn foto's en merkten ze op hoeveel van zijn herinneringen aan omstandigheden vastzaten die zij niet zomaar konden bestellen.",
+            "en": "Together they looked at his photographs and noticed how many of his memories were tied to conditions they could not simply order."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "opschuiven",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "naar een later moment verplaatsen",
+            "en": "to postpone"
+          },
+          "example": {
+            "nl": "Leo schoof de afspraak telkens op, tot zijn kleindochter vroeg of haar verjaardag nu ook moest wachten op het weer.",
+            "en": "Leo kept postponing the arrangement until his granddaughter asked whether her birthday also had to wait for the weather."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarmee bij een middel",
+            "en": "With which for a means"
+          },
+          "explanation": {
+            "nl": "Waarmee verwijst naar de schaatsen als middel waarop haar moeder reed.",
+            "en": "Waarmee refers to the skates as the means her mother used to skate."
+          },
+          "examples": [
+            {
+              "nl": "Voor zijn kleindochters verjaardag haalde grootvader Leo de oude schaatsen tevoorschijn waarmee haar moeder vroeger op de dorpsvijver had gereden.",
+              "en": "For his granddaughter’s birthday, grandfather Leo brought out the old skates her mother had once used on the village pond."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wordt de beloofde middag uitgesteld?",
+            "en": "Why is the promised afternoon postponed?"
+          },
+          "options": [
+            {
+              "nl": "Het meisje wil geen verjaardag.",
+              "en": "The girl does not want a birthday."
+            },
+            {
+              "nl": "De grootvader kan de schaatsen niet vinden.",
+              "en": "The grandfather cannot find the skates."
+            },
+            {
+              "nl": "De vijver bevriest die winter niet.",
+              "en": "The pond does not freeze that winter."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Waar vroeger ijs lag, zwemmen nu nog eenden.",
+            "en": "Where there used to be ice, ducks are still swimming now."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert Leo aan zijn verwachting?",
+            "en": "What does Leo change about his expectation?"
+          },
+          "options": [
+            {
+              "nl": "Iedere winter moet hetzelfde verlopen.",
+              "en": "Every winter must unfold identically."
+            },
+            {
+              "nl": "Een gedeelde ervaring hoeft zijn verleden niet precies te kopiëren.",
+              "en": "A shared experience need not copy his past exactly."
+            },
+            {
+              "nl": "Hij wil geen herinneringen meer vertellen.",
+              "en": "He no longer wants to tell memories."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij laat de volgende verjaardag een eigen verhaal worden.",
+            "en": "He lets the next birthday become a story of its own."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-rok-van-de-festivalvlag",
+      "topic_id": "sustainability-recycling",
+      "title": {
+        "nl": "De rok van de festivalvlag",
+        "en": "The skirt made from the festival flag"
+      },
+      "plot_key": "A student turns discarded festival fabric into a skirt but must negotiate its recognisable sponsor logo instead of assuming reuse removes the original message.",
+      "lines": [
+        {
+          "nl": "Na een muziekfestival verzamelde modestudent Ines afgedankte vlaggen om er kleding van te maken voor haar eindpresentatie.",
+          "en": "After a music festival, fashion student Ines collected discarded flags to make clothes for her final presentation."
+        },
+        {
+          "nl": "De stevige blauwe stof leek ideaal voor een rok, en het grote witte logo paste volgens haar toevallig mooi in de plooien.",
+          "en": "The strong blue fabric seemed ideal for a skirt, and she felt the large white logo happened to fit nicely into the folds."
+        },
+        {
+          "nl": "Tijdens de eerste bespreking vroeg een medestudent of zij nu ook reclame wilde maken voor de sponsor die op de vlag stond.",
+          "en": "During the first discussion a fellow student asked whether she now also wanted to advertise the sponsor printed on the flag."
+        },
+        {
+          "nl": "Ines antwoordde dat het juist afval was en dus geen boodschap meer had, maar merkte dat iedereen het merk onmiddellijk herkende.",
+          "en": "Ines replied that it was precisely waste and therefore no longer carried a message, but noticed that everyone immediately recognised the brand."
+        },
+        {
+          "nl": "Ze maakte een tweede versie waarin het logo in losse vormen werd verdeeld, zonder de herkomst van het materiaal in haar toelichting te verzwijgen.",
+          "en": "She made a second version in which the logo was divided into separate shapes without concealing the material's origin in her explanation."
+        },
+        {
+          "nl": "Dat vergde meer knipwerk en leverde extra restjes op, die zij eerst uit haar mooie verhaal over hergebruik had willen weglaten.",
+          "en": "That required more cutting and produced extra scraps, which she had initially wanted to omit from her appealing story about reuse."
+        },
+        {
+          "nl": "Op de tentoonstelling legde ze de restjes naast de rok en liet ze bezoekers zien welke keuzes het oude materiaal aan het nieuwe ontwerp oplegde.",
+          "en": "At the exhibition she placed the scraps beside the skirt and showed visitors what choices the old material imposed on the new design."
+        },
+        {
+          "nl": "De rok bleef draagbaar, maar haar uitleg werd minder een overwinning op afval en meer een eerlijk verslag van wat hergebruiken werkelijk vraagt.",
+          "en": "The skirt remained wearable, but her explanation became less a victory over waste and more an honest account of what reuse actually requires."
+        }
+      ],
+      "words": [
+        {
+          "term": "afgedankt",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet meer gebruikt en weggedaan",
+            "en": "discarded"
+          },
+          "example": {
+            "nl": "Na een muziekfestival verzamelde modestudent Ines afgedankte vlaggen om er kleding van te maken voor haar eindpresentatie.",
+            "en": "After a music festival, fashion student Ines collected discarded flags to make clothes for her final presentation."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "verzwijgen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "bewust niet vertellen",
+            "en": "to conceal by omission"
+          },
+          "example": {
+            "nl": "Ze maakte een tweede versie waarin het logo in losse vormen werd verdeeld, zonder de herkomst van het materiaal in haar toelichting te verzwijgen.",
+            "en": "She made a second version in which the logo was divided into separate shapes without concealing the material's origin in her explanation."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het hergebruik",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het opnieuw gebruiken van materiaal of voorwerpen",
+            "en": "reuse"
+          },
+          "example": {
+            "nl": "Dat vergde meer knipwerk en leverde extra restjes op, die zij eerst uit haar mooie verhaal over hergebruik had willen weglaten.",
+            "en": "That required more cutting and produced extra scraps, which she had initially wanted to omit from her appealing story about reuse."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te bij een behouden toelichting",
+            "en": "Without doing, while retaining an explanation"
+          },
+          "explanation": {
+            "nl": "Zonder ... te verzwijgen benoemt informatie die zij bewust niet weglaat.",
+            "en": "Zonder ... te verzwijgen names information she deliberately does not omit."
+          },
+          "examples": [
+            {
+              "nl": "Ze maakte een tweede versie waarin het logo in losse vormen werd verdeeld, zonder de herkomst van het materiaal in haar toelichting te verzwijgen.",
+              "en": "She made a second version in which the logo was divided into separate shapes without concealing the material's origin in her explanation."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is het materiaal volgens de medestudent niet betekenisloos?",
+            "en": "Why is the material not meaningless according to the fellow student?"
+          },
+          "options": [
+            {
+              "nl": "Iedere vlag is verboden.",
+              "en": "Every flag is prohibited."
+            },
+            {
+              "nl": "De stof kan niet genaaid worden.",
+              "en": "The fabric cannot be sewn."
+            },
+            {
+              "nl": "Het herkenbare logo blijft een reclameboodschap oproepen.",
+              "en": "The recognisable logo continues to suggest an advertising message."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Mensen herkennen het merk ook in de nieuwe rok.",
+            "en": "People recognise the brand even in the new skirt."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom toont Ines de restjes?",
+            "en": "Why does Ines show the scraps?"
+          },
+          "options": [
+            {
+              "nl": "Ze verkoopt alleen afval.",
+              "en": "She sells only waste."
+            },
+            {
+              "nl": "Ze wil ook de beperkingen en kosten van haar keuzes zichtbaar maken.",
+              "en": "She also wants to make the limits and costs of her choices visible."
+            },
+            {
+              "nl": "Ze heeft geen rok kunnen maken.",
+              "en": "She has not been able to make a skirt."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De extra restjes maken deel uit van het eerlijke verhaal over haar werkwijze.",
+            "en": "The extra scraps form part of the honest account of her process."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-feest-dat-een-afscheid-leek",
+      "topic_id": "news-current-events",
+      "title": {
+        "nl": "Het feest dat op een afscheid leek",
+        "en": "The party that looked like a farewell"
+      },
+      "plot_key": "A local report mistakes a century-old cinema's seasonal closure for permanent shutdown, and a young reader's simple question corrects a viral rumour.",
+      "lines": [
+        {
+          "nl": "In een lokaal bericht las bioscoopvrijwilliger Amir dat zijn zaal na honderd jaar de deuren zou sluiten, terwijl hij die ochtend nog kaartjes voor september had klaargelegd.",
+          "en": "In a local report cinema volunteer Amir read that his venue would close its doors after a hundred years, although that morning he had prepared tickets for September."
+        },
+        {
+          "nl": "Het artikel verwees naar een affiche waarop de laatste voorstelling van het seizoen en een gezamenlijk afscheidsdrankje stonden aangekondigd.",
+          "en": "The article referred to a poster announcing the final screening of the season and a shared farewell drink."
+        },
+        {
+          "nl": "Amir stuurde een correctie, maar intussen deelden oud-bezoekers ontroerde herinneringen en vroegen mensen waar het interieur verkocht zou worden.",
+          "en": "Amir sent a correction, but meanwhile former visitors were sharing moving memories and people were asking where the interior would be sold."
+        },
+        {
+          "nl": "De redacteur zei dat de formulering van de affiche inderdaad verwarrend was, alsof daarmee ook de definitieve sluiting verklaard werd.",
+          "en": "The editor said the wording of the poster was indeed confusing, as if that also explained the permanent closure."
+        },
+        {
+          "nl": "Een scholier vroeg onder het bericht eenvoudig waarom op dezelfde website dan al een volledig najaarsprogramma stond.",
+          "en": "A school pupil simply asked under the report why a complete autumn programme was already on the same website."
+        },
+        {
+          "nl": "De redactie paste de kop aan en plaatste bovenaan dat het om een seizoenspauze ging, niet om het einde van de bioscoop.",
+          "en": "The newsroom changed the headline and stated at the top that this was a seasonal break, not the end of the cinema."
+        },
+        {
+          "nl": "Op het echte seizoensfeest kwamen opvallend veel mensen die hadden beseft hoe weinig ze nog naar de zaal gingen.",
+          "en": "At the actual end-of-season celebration, a remarkable number of people came who had realised how rarely they still visited the venue."
+        },
+        {
+          "nl": "Amir nam hun enthousiasme graag aan, maar vroeg iedereen bij de volgende ontroerde herinnering ook eens een kaartje voor een komende film te kopen.",
+          "en": "Amir gladly accepted their enthusiasm, but asked everyone to buy a ticket for a future film as well next time they shared a moved memory."
+        }
+      ],
+      "words": [
+        {
+          "term": "het najaarsprogramma",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een overzicht van activiteiten in de herfst",
+            "en": "autumn programme"
+          },
+          "example": {
+            "nl": "Een scholier vroeg onder het bericht eenvoudig waarom op dezelfde website dan al een volledig najaarsprogramma stond.",
+            "en": "A school pupil simply asked under the report why a complete autumn programme was already on the same website."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de seizoenspauze",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een onderbreking tussen twee werk- of speelseizoenen",
+            "en": "seasonal break"
+          },
+          "example": {
+            "nl": "De redactie paste de kop aan en plaatste bovenaan dat het om een seizoenspauze ging, niet om het einde van de bioscoop.",
+            "en": "The newsroom changed the headline and stated at the top that this was a seasonal break, not the end of the cinema."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "ontroerd",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "sterk geraakt door gevoel",
+            "en": "moved"
+          },
+          "example": {
+            "nl": "Amir stuurde een correctie, maar intussen deelden oud-bezoekers ontroerde herinneringen en vroegen mensen waar het interieur verkocht zou worden.",
+            "en": "Amir sent a correction, but meanwhile former visitors were sharing moving memories and people were asking where the interior would be sold."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor tegenstrijdige feiten",
+            "en": "While for contradictory facts"
+          },
+          "explanation": {
+            "nl": "Terwijl plaatst het bericht tegenover een handeling die niet bij definitieve sluiting past.",
+            "en": "Terwijl contrasts the report with an action inconsistent with permanent closure."
+          },
+          "examples": [
+            {
+              "nl": "In een lokaal bericht las bioscoopvrijwilliger Amir dat zijn zaal na honderd jaar de deuren zou sluiten, terwijl hij die ochtend nog kaartjes voor september had klaargelegd.",
+              "en": "In a local report cinema volunteer Amir read that his venue would close its doors after a hundred years, although that morning he had prepared tickets for September."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk gegeven spreekt de definitieve sluiting het duidelijkst tegen?",
+            "en": "Which fact most clearly contradicts permanent closure?"
+          },
+          "options": [
+            {
+              "nl": "Het interieur is oud.",
+              "en": "The interior is old."
+            },
+            {
+              "nl": "Er staat al een volledig programma voor het najaar online.",
+              "en": "A complete autumn programme is already online."
+            },
+            {
+              "nl": "Er wordt een drankje aangeboden.",
+              "en": "A drink is offered."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het toekomstige programma toont dat verdere voorstellingen gepland zijn.",
+            "en": "The future programme shows that further screenings are planned."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke spanning zit in Amirs laatste verzoek?",
+            "en": "What tension lies in Amir's final request?"
+          },
+          "options": [
+            {
+              "nl": "Hij wil de kaartverkoop stoppen.",
+              "en": "He wants to stop ticket sales."
+            },
+            {
+              "nl": "Herinneringen mogen niet worden gedeeld.",
+              "en": "Memories must not be shared."
+            },
+            {
+              "nl": "Mensen waarderen de zaal achteraf sterker dan ze haar nu gebruiken.",
+              "en": "People value the venue more in retrospect than they currently use it."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij koppelt hun warme woorden aan een concrete toekomstige bijdrage.",
+            "en": "He connects their warm words with a concrete future contribution."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-interview-met-het-verkeerde-beroep",
+      "topic_id": "journalism-media",
+      "title": {
+        "nl": "Het beroep onder de foto",
+        "en": "The profession beneath the photograph"
+      },
+      "plot_key": "A reporter frames a newly arrived engineer solely as a refugee volunteer and must revise her feature when the subject asks why his technical work vanished.",
+      "lines": [
+        {
+          "nl": "Voor een artikel over een buurtatelier interviewde journaliste Eline een vrijwilliger die fietsen herstelde en twee jaar eerder naar België was gekomen.",
+          "en": "For an article about a neighbourhood workshop, journalist Eline interviewed a volunteer who repaired bicycles and had come to Belgium two years earlier."
+        },
+        {
+          "nl": "Ze schreef een warm verhaal over opnieuw beginnen en koos een foto waarop hij naast een oude kinderfiets glimlachte.",
+          "en": "She wrote a warm story about starting again and chose a photograph of him smiling beside an old children's bicycle."
+        },
+        {
+          "nl": "Toen ze hem de tekst liet lezen om namen en feiten te controleren, vroeg hij waarom zijn opleiding tot ingenieur nergens meer genoemd werd.",
+          "en": "When she let him read the text to check names and facts, he asked why his engineering education was no longer mentioned anywhere."
+        },
+        {
+          "nl": "Eline antwoordde dat het artikel over menselijke veerkracht ging en dat technische details voor lezers misschien minder toegankelijk waren.",
+          "en": "Eline replied that the article concerned human resilience and that technical details might be less accessible to readers."
+        },
+        {
+          "nl": "Hij wees op het eenvoudige remonderdeel dat hij zelf had ontworpen en dat het atelier juist veel tijd bespaarde.",
+          "en": "He pointed to the simple brake component he had designed himself and that was actually saving the workshop a great deal of time."
+        },
+        {
+          "nl": "Door hem alleen als iemand met een moeilijk verleden te beschrijven, had zij zijn huidige bijdrage kleiner gemaakt dan het gesprek rechtvaardigde.",
+          "en": "By describing him only as someone with a difficult past, she had made his present contribution smaller than the interview justified."
+        },
+        {
+          "nl": "Ze herschreef het stuk met zijn ontwerp als vertrekpunt en behield zijn migratiegeschiedenis waar die werkelijk iets aan de uitleg toevoegde.",
+          "en": "She rewrote the piece with his design as the starting point and retained his migration history where it genuinely added something to the explanation."
+        },
+        {
+          "nl": "Onder de foto stond nu een beroep en een naam, in plaats van één levensgebeurtenis die voortaan alles moest verklaren.",
+          "en": "Beneath the photograph there was now a profession and a name instead of one life event that was supposed to explain everything from then on."
+        }
+      ],
+      "words": [
+        {
+          "term": "de veerkracht",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het vermogen om na moeilijkheden verder te gaan",
+            "en": "resilience"
+          },
+          "example": {
+            "nl": "Eline antwoordde dat het artikel over menselijke veerkracht ging en dat technische details voor lezers misschien minder toegankelijk waren.",
+            "en": "Eline replied that the article concerned human resilience and that technical details might be less accessible to readers."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "rechtvaardigen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "voldoende grond geven voor een keuze of beoordeling",
+            "en": "to justify"
+          },
+          "example": {
+            "nl": "Door hem alleen als iemand met een moeilijk verleden te beschrijven, had zij zijn huidige bijdrage kleiner gemaakt dan het gesprek rechtvaardigde.",
+            "en": "By describing him only as someone with a difficult past, she had made his present contribution smaller than the interview justified."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het vertrekpunt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het uitgangspunt waarmee iets begint",
+            "en": "starting point"
+          },
+          "example": {
+            "nl": "Ze herschreef het stuk met zijn ontwerp als vertrekpunt en behield zijn migratiegeschiedenis waar die werkelijk iets aan de uitleg toevoegde.",
+            "en": "She rewrote the piece with his design as the starting point and retained his migration history where it genuinely added something to the explanation."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Door te met een gevolg",
+            "en": "By doing, with a consequence"
+          },
+          "explanation": {
+            "nl": "Door ... te beschrijven laat zien welke handeling tot het verkleinen van zijn bijdrage leidde.",
+            "en": "Door ... te beschrijven shows which action led to diminishing his contribution."
+          },
+          "examples": [
+            {
+              "nl": "Door hem alleen als iemand met een moeilijk verleden te beschrijven, had zij zijn huidige bijdrage kleiner gemaakt dan het gesprek rechtvaardigde.",
+              "en": "By describing him only as someone with a difficult past, she had made his present contribution smaller than the interview justified."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat mist de vrijwilliger in de eerste tekst?",
+            "en": "What does the volunteer find missing from the first text?"
+          },
+          "options": [
+            {
+              "nl": "De kleur van de kinderfiets.",
+              "en": "The colour of the children's bicycle."
+            },
+            {
+              "nl": "Zijn vakkennis en concrete ontwerpwerk.",
+              "en": "His professional knowledge and concrete design work."
+            },
+            {
+              "nl": "De naam van de krant.",
+              "en": "The newspaper's name."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zijn opleiding en het zelf ontworpen remonderdeel zijn verdwenen uit de gekozen invalshoek.",
+            "en": "His training and the brake component he designed have disappeared from the chosen angle."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert de nieuwe invalshoek?",
+            "en": "What does the new angle change?"
+          },
+          "options": [
+            {
+              "nl": "Zijn verleden wordt als onwaar voorgesteld.",
+              "en": "His past is presented as untrue."
+            },
+            {
+              "nl": "Er mogen geen feiten meer gecontroleerd worden.",
+              "en": "Facts may no longer be checked."
+            },
+            {
+              "nl": "Zijn huidige werk krijgt ruimte naast zijn geschiedenis.",
+              "en": "His present work receives space alongside his history."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Migratie blijft waar relevant, maar bepaalt niet langer de volledige voorstelling.",
+            "en": "Migration remains where relevant, but no longer determines the entire portrayal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-stille-koptelefoonreclame",
+      "topic_id": "advertising-marketing",
+      "title": {
+        "nl": "De stilste reclame",
+        "en": "The quietest advertisement"
+      },
+      "plot_key": "A loud audio demonstration undermines the promise of a quiet reading room's headphone campaign, and its designer uses a voluntary listening station instead.",
+      "lines": [
+        {
+          "nl": "Om nieuwe koptelefoons te promoten, bedacht reclameontwerper Loek een campagne waarin een volledige leeszaal plots in een dansfeest zou veranderen.",
+          "en": "To promote new headphones, advertising designer Loek devised a campaign in which an entire reading room would suddenly turn into a dance party."
+        },
+        {
+          "nl": "De boodschap moest zijn dat je met het toestel overal je eigen wereld kon maken, ongeacht wat er rond je gebeurde.",
+          "en": "The message was that the device let you create your own world anywhere, regardless of what happened around you."
+        },
+        {
+          "nl": "Tijdens de bespreking vroeg de bibliothecaris of de bezoekers vooraf mochten kiezen of hun middag deel van die wereld zou worden.",
+          "en": "During the discussion the librarian asked whether visitors could choose beforehand whether their afternoon would become part of that world."
+        },
+        {
+          "nl": "Loek wees op de vrolijke afloop van zijn scenario, maar merkte dat daarin niemand die wilde blijven lezen werkelijk een keuze had.",
+          "en": "Loek pointed to the cheerful ending of his scenario, but noticed that in it nobody who wanted to keep reading had a real choice."
+        },
+        {
+          "nl": "Hij veranderde het plan in een kleine luisterplek waar bezoekers vrijwillig een fragment konden kiezen dat bij een boek paste.",
+          "en": "He changed the plan into a small listening station where visitors could voluntarily choose an excerpt matching a book."
+        },
+        {
+          "nl": "De beelden werden minder spectaculair, omdat sommigen de koptelefoon gewoon weer neerlegden en hun krant verder lazen.",
+          "en": "The images became less spectacular because some people simply put the headphones down again and continued reading their newspapers."
+        },
+        {
+          "nl": "Juist die rustige wisseling maakte zichtbaar dat een persoonlijke geluidswereld niet hoefde te betekenen dat iedereen dezelfde reclame moest beleven.",
+          "en": "That very quiet alternation showed that a personal sound world did not have to mean everyone had to experience the same advertisement."
+        },
+        {
+          "nl": "Loek gebruikte de beste reacties, maar liet ook één onbeweeglijke lezer in beeld die de hele campagne met tevreden onverschilligheid doorstond.",
+          "en": "Loek used the best reactions, but also kept one motionless reader on screen who endured the entire campaign with contented indifference."
+        }
+      ],
+      "words": [
+        {
+          "term": "ongeacht",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zonder dat iets verschil maakt",
+            "en": "regardless of"
+          },
+          "example": {
+            "nl": "De boodschap moest zijn dat je met het toestel overal je eigen wereld kon maken, ongeacht wat er rond je gebeurde.",
+            "en": "The message was that the device let you create your own world anywhere, regardless of what happened around you."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de onverschilligheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het ontbreken van bijzondere belangstelling of betrokkenheid",
+            "en": "indifference"
+          },
+          "example": {
+            "nl": "Loek gebruikte de beste reacties, maar liet ook één onbeweeglijke lezer in beeld die de hele campagne met tevreden onverschilligheid doorstond.",
+            "en": "Loek used the best reactions, but also kept one motionless reader on screen who endured the entire campaign with contented indifference."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "doorstaan",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets meemaken en erdoorheen komen",
+            "en": "to endure"
+          },
+          "example": {
+            "nl": "Loek gebruikte de beste reacties, maar liet ook één onbeweeglijke lezer in beeld die de hele campagne met tevreden onverschilligheid doorstond.",
+            "en": "Loek used the best reactions, but also kept one motionless reader on screen who endured the entire campaign with contented indifference."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Of in een afhankelijke keuzevraag",
+            "en": "Whether in an indirect choice question"
+          },
+          "explanation": {
+            "nl": "Of introduceert wat de bezoekers zelf moeten kunnen bepalen.",
+            "en": "Of introduces what visitors should be able to decide for themselves."
+          },
+          "examples": [
+            {
+              "nl": "Tijdens de bespreking vroeg de bibliothecaris of de bezoekers vooraf mochten kiezen of hun middag deel van die wereld zou worden.",
+              "en": "During the discussion the librarian asked whether visitors could choose beforehand whether their afternoon would become part of that world."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat klopt er niet aan Loeks eerste scenario?",
+            "en": "What is wrong with Loek's initial scenario?"
+          },
+          "options": [
+            {
+              "nl": "De beloofde eigen keuze ontbreekt voor wie niet wil meedoen.",
+              "en": "The promised personal choice is absent for those who do not want to participate."
+            },
+            {
+              "nl": "De koptelefoon heeft geen kleur.",
+              "en": "The headphones have no colour."
+            },
+            {
+              "nl": "Er zijn geen boeken.",
+              "en": "There are no books."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Een dansfeest wordt aan alle bezoekers opgelegd.",
+            "en": "A dance party is imposed on all visitors."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom past de onverschillige lezer bij de uiteindelijke boodschap?",
+            "en": "Why does the indifferent reader fit the final message?"
+          },
+          "options": [
+            {
+              "nl": "Hij ontwerpt zelf de koptelefoon.",
+              "en": "He designs the headphones himself."
+            },
+            {
+              "nl": "Hij bewijst dat lezen verboden is.",
+              "en": "He proves that reading is forbidden."
+            },
+            {
+              "nl": "Hij maakt zichtbaar dat niet deelnemen ook een geldige keuze is.",
+              "en": "He shows that not taking part is also a valid choice."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De luisterplek laat mensen kiezen zonder hun middag verplicht over te nemen.",
+            "en": "The listening station lets people choose without taking over their afternoon by force."
+          }
+        }
+      ]
+    }
+  ]
+}

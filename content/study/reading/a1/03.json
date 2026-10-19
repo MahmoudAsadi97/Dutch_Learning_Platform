@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "a1-read-boom-op-route",
+      "topic_id": "nature",
+      "title": {
+        "nl": "De boom met de lage tak",
+        "en": "The tree with the low branch"
+      },
+      "plot_key": "A walker changes a familiar route to give a low nesting branch more space.",
+      "lines": [
+        {
+          "nl": "Op mijn ochtendwandeling raak ik altijd een lage tak.",
+          "en": "On my morning walk, I always touch a low branch."
+        },
+        {
+          "nl": "Vandaag zie ik kleine vogels tussen de bladeren.",
+          "en": "Today I see little birds among the leaves."
+        },
+        {
+          "nl": "Een vogel vliegt telkens naar dezelfde plek.",
+          "en": "A bird keeps flying to the same spot."
+        },
+        {
+          "nl": "Ik laat de tak deze keer met rust.",
+          "en": "I leave the branch alone this time."
+        },
+        {
+          "nl": "Er loopt ook een pad langs de vijver.",
+          "en": "There is also a path along the pond."
+        },
+        {
+          "nl": "Ik kies dat pad en blijf op afstand.",
+          "en": "I choose that path and keep my distance."
+        },
+        {
+          "nl": "Van daar zie ik de vogel rustig landen.",
+          "en": "From there, I see the bird land calmly."
+        },
+        {
+          "nl": "Mijn gewone wandeling heeft nu een nieuwe bocht.",
+          "en": "My usual walk now has a new bend."
+        }
+      ],
+      "words": [
+        {
+          "term": "de tak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel dat aan een boomstam groeit",
+            "en": "branch"
+          },
+          "example": {
+            "nl": "Op mijn ochtendwandeling raak ik altijd een lage tak.",
+            "en": "On my morning walk, I always touch a low branch."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het blad",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "groen deel van een plant of boom",
+            "en": "leaf"
+          },
+          "example": {
+            "nl": "Vandaag zie ik kleine vogels tussen de bladeren.",
+            "en": "Today I see little birds among the leaves."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de afstand",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "ruimte tussen twee plaatsen",
+            "en": "distance"
+          },
+          "example": {
+            "nl": "Ik kies dat pad en blijf op afstand.",
+            "en": "I choose that path and keep my distance."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ik kies dat pad en blijf op afstand.",
+              "en": "I choose that path and keep my distance."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom raakt de spreker de tak niet aan?",
+            "en": "Why does the speaker not touch the branch?"
+          },
+          "options": [
+            {
+              "nl": "De tak is weg",
+              "en": "The branch is gone"
+            },
+            {
+              "nl": "De tak is nat",
+              "en": "The branch is wet"
+            },
+            {
+              "nl": "Er zijn vogels",
+              "en": "There are birds"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Vandaag zie ik kleine vogels tussen de bladeren.",
+            "en": "Today I see little birds among the leaves."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welk pad kiest de spreker?",
+            "en": "Which path does the speaker choose?"
+          },
+          "options": [
+            {
+              "nl": "Dat naar de bus",
+              "en": "The one to the bus"
+            },
+            {
+              "nl": "Dat langs de vijver",
+              "en": "The one along the pond"
+            },
+            {
+              "nl": "Dat langs de winkel",
+              "en": "The one along the shop"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Er loopt ook een pad langs de vijver.",
+            "en": "There is also a path along the pond."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-zwerfvuil-wind",
+      "topic_id": "environment",
+      "title": {
+        "nl": "De zak aan de heup",
+        "en": "The bag at the hip"
+      },
+      "plot_key": "A litter volunteer stops a collection bag blowing away by attaching it to a belt.",
+      "lines": [
+        {
+          "nl": "Sam ruimt met zijn buur het speelplein op.",
+          "en": "Sam cleans the playground with his neighbour."
+        },
+        {
+          "nl": "De wind trekt telkens aan zijn lege afvalzak.",
+          "en": "The wind keeps tugging at his empty rubbish bag."
+        },
+        {
+          "nl": "Hij moet de zak met twee handen vasthouden.",
+          "en": "He has to hold the bag with two hands."
+        },
+        {
+          "nl": "Zo kan hij geen papier meer oprapen.",
+          "en": "That way, he cannot pick up any paper."
+        },
+        {
+          "nl": "Zijn buur geeft hem een kleine karabijnhaak.",
+          "en": "His neighbour gives him a small carabiner."
+        },
+        {
+          "nl": "Sam hangt de zak aan zijn riem.",
+          "en": "Sam attaches the bag to his belt."
+        },
+        {
+          "nl": "Nu blijft één hand vrij voor de grijper.",
+          "en": "Now one hand stays free for the litter picker."
+        },
+        {
+          "nl": "Ze krijgen het plein samen snel weer schoon.",
+          "en": "Together, they quickly get the square clean again."
+        }
+      ],
+      "words": [
+        {
+          "term": "de afvalzak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "zak om afval in te doen",
+            "en": "rubbish bag"
+          },
+          "example": {
+            "nl": "De wind trekt telkens aan zijn lege afvalzak.",
+            "en": "The wind keeps tugging at his empty rubbish bag."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de riem",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "band rond het middel",
+            "en": "belt"
+          },
+          "example": {
+            "nl": "Sam hangt de zak aan zijn riem.",
+            "en": "Sam attaches the bag to his belt."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "oprapen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iets van de grond nemen",
+            "en": "to pick up"
+          },
+          "example": {
+            "nl": "Zo kan hij geen papier meer oprapen.",
+            "en": "That way, he cannot pick up any paper."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Een vorm van willen of kunnen staat bij een hele werkwoordvorm. Kijk welke handeling iemand wil of kan doen.",
+            "en": "A form of willen or kunnen accompanies an infinitive. Look at which action someone wants or is able to do."
+          },
+          "examples": [
+            {
+              "nl": "Zo kan hij geen papier meer oprapen.",
+              "en": "That way, he cannot pick up any paper."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt het werk moeilijk?",
+            "en": "What makes the work difficult?"
+          },
+          "options": [
+            {
+              "nl": "Regen",
+              "en": "Rain"
+            },
+            {
+              "nl": "Wind",
+              "en": "Wind"
+            },
+            {
+              "nl": "De volle zak",
+              "en": "The full bag"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De wind trekt telkens aan zijn lege afvalzak.",
+            "en": "The wind keeps tugging at his empty rubbish bag."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar hangt Sam de zak?",
+            "en": "Where does Sam attach the bag?"
+          },
+          "options": [
+            {
+              "nl": "Aan een boom",
+              "en": "To a tree"
+            },
+            {
+              "nl": "Aan zijn riem",
+              "en": "To his belt"
+            },
+            {
+              "nl": "Aan een bank",
+              "en": "To a bench"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Sam hangt de zak aan zijn riem.",
+            "en": "Sam attaches the bag to his belt."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-kat-bij-buur",
+      "topic_id": "animals-pets",
+      "title": {
+        "nl": "De buur met de lege mand",
+        "en": "The neighbour with the empty basket"
+      },
+      "plot_key": "A new cat owner recognises a neighbour's missing cat by a small marking and returns it.",
+      "lines": [
+        {
+          "nl": "Voor Eva's deur zit een witte kat.",
+          "en": "There is a white cat in front of Eva's door."
+        },
+        {
+          "nl": "Ze zet een bakje water naast het dier.",
+          "en": "She puts a bowl of water beside the animal."
+        },
+        {
+          "nl": "Aan de overkant loopt haar buur zoekend rond.",
+          "en": "Across the street, her neighbour is searching around."
+        },
+        {
+          "nl": "Hij draagt een lege kattenmand in zijn hand.",
+          "en": "He is carrying an empty cat basket in his hand."
+        },
+        {
+          "nl": "Eva vraagt welke kleur zijn kat heeft.",
+          "en": "Eva asks what colour his cat is."
+        },
+        {
+          "nl": "Hij noemt een zwart vlekje onder de kin.",
+          "en": "He mentions a black patch under its chin."
+        },
+        {
+          "nl": "Eva ziet precies dat vlekje bij haar deur.",
+          "en": "Eva sees exactly that patch by her door."
+        },
+        {
+          "nl": "De buur haalt zijn kat opgelucht op.",
+          "en": "The neighbour collects his cat with relief."
+        }
+      ],
+      "words": [
+        {
+          "term": "de kattenmand",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "mand om een kat in te vervoeren",
+            "en": "cat carrier"
+          },
+          "example": {
+            "nl": "Hij draagt een lege kattenmand in zijn hand.",
+            "en": "He is carrying an empty cat basket in his hand."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het vlekje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine plek met een andere kleur",
+            "en": "small patch"
+          },
+          "example": {
+            "nl": "Hij noemt een zwart vlekje onder de kin.",
+            "en": "He mentions a black patch under its chin."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de kin",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "deel van het gezicht onder de mond",
+            "en": "chin"
+          },
+          "example": {
+            "nl": "Hij noemt een zwart vlekje onder de kin.",
+            "en": "He mentions a black patch under its chin."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Eva vraagt welke kleur zijn kat heeft.",
+              "en": "Eva asks what colour his cat is."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat draagt de buur?",
+            "en": "What does the neighbour carry?"
+          },
+          "options": [
+            {
+              "nl": "Een hondenriem",
+              "en": "A dog lead"
+            },
+            {
+              "nl": "Een lege kattenmand",
+              "en": "An empty cat carrier"
+            },
+            {
+              "nl": "Een volle tas",
+              "en": "A full bag"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij draagt een lege kattenmand in zijn hand.",
+            "en": "He is carrying an empty cat basket in his hand."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar zit het zwarte vlekje?",
+            "en": "Where is the black patch?"
+          },
+          "options": [
+            {
+              "nl": "Op de rug",
+              "en": "On the back"
+            },
+            {
+              "nl": "Onder de kin",
+              "en": "Under the chin"
+            },
+            {
+              "nl": "Op de poot",
+              "en": "On the paw"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij noemt een zwart vlekje onder de kin.",
+            "en": "He mentions a black patch under its chin."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-mist-bij-veer",
+      "topic_id": "weather",
+      "title": {
+        "nl": "De overkant blijft wit",
+        "en": "The other bank stays white"
+      },
+      "plot_key": "Two travellers waiting for a ferry use the posted service notice during fog and wait safely inside.",
+      "lines": [
+        {
+          "nl": "Aan de rivier hangt vanmorgen een dichte mist.",
+          "en": "Thick fog hangs over the river this morning."
+        },
+        {
+          "nl": "Leen ziet de overkant helemaal niet meer.",
+          "en": "Leen cannot see the other bank at all."
+        },
+        {
+          "nl": "Zij wacht met haar broer op het veer.",
+          "en": "She waits for the ferry with her brother."
+        },
+        {
+          "nl": "Op het bord staat dat ze moeten wachten.",
+          "en": "The notice says they must wait."
+        },
+        {
+          "nl": "Haar broer haalt twee warme dranken binnen.",
+          "en": "Her brother gets two hot drinks inside."
+        },
+        {
+          "nl": "Ze zitten bij het raam van de wachtzaal.",
+          "en": "They sit by the waiting-room window."
+        },
+        {
+          "nl": "Later zien ze langzaam de andere oever.",
+          "en": "Later, they slowly see the other bank."
+        },
+        {
+          "nl": "Ze wachten op het teken van de medewerker.",
+          "en": "They wait for the attendant's signal."
+        }
+      ],
+      "words": [
+        {
+          "term": "de mist",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "waterdruppeltjes in de lucht die het zicht beperken",
+            "en": "fog"
+          },
+          "example": {
+            "nl": "Aan de rivier hangt vanmorgen een dichte mist.",
+            "en": "Thick fog hangs over the river this morning."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het veer",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "boot die mensen naar de overkant brengt",
+            "en": "ferry"
+          },
+          "example": {
+            "nl": "Zij wacht met haar broer op het veer.",
+            "en": "She waits for the ferry with her brother."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de wachtzaal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "ruimte waar mensen wachten",
+            "en": "waiting room"
+          },
+          "example": {
+            "nl": "Ze zitten bij het raam van de wachtzaal.",
+            "en": "They sit by the waiting-room window."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Ze zitten bij het raam van de wachtzaal.",
+              "en": "They sit by the waiting-room window."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom zien ze de overkant niet?",
+            "en": "Why can they not see the other bank?"
+          },
+          "options": [
+            {
+              "nl": "Er staat een muur",
+              "en": "There is a wall"
+            },
+            {
+              "nl": "Het is nacht",
+              "en": "It is night"
+            },
+            {
+              "nl": "Er is mist",
+              "en": "There is fog"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Aan de rivier hangt vanmorgen een dichte mist.",
+            "en": "Thick fog hangs over the river this morning."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar wachten ze met hun drank?",
+            "en": "Where do they wait with their drinks?"
+          },
+          "options": [
+            {
+              "nl": "Aan de waterkant",
+              "en": "At the water's edge"
+            },
+            {
+              "nl": "Op de boot",
+              "en": "On the boat"
+            },
+            {
+              "nl": "Bij het raam van de wachtzaal",
+              "en": "By the waiting-room window"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze zitten bij het raam van de wachtzaal.",
+            "en": "They sit by the waiting-room window."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-vraag-op-buurtvergadering",
+      "topic_id": "politics",
+      "title": {
+        "nl": "Een vraag over de bank",
+        "en": "A question about the bench"
+      },
+      "plot_key": "A resident at a local meeting turns a vague complaint into a simple specific question about a bench.",
+      "lines": [
+        {
+          "nl": "In de buurtzaal spreekt de gemeente met bewoners.",
+          "en": "In the neighbourhood hall, the municipality talks with residents."
+        },
+        {
+          "nl": "Piet zit voor het eerst tussen de mensen.",
+          "en": "Piet sits among the people for the first time."
+        },
+        {
+          "nl": "Hij wil iets vragen over hun straat.",
+          "en": "He wants to ask something about their street."
+        },
+        {
+          "nl": "Hij weet niet goed waar te beginnen.",
+          "en": "He does not know quite where to begin."
+        },
+        {
+          "nl": "Op zijn papier tekent hij een bank.",
+          "en": "On his paper, he draws a bench."
+        },
+        {
+          "nl": "Dan vraagt hij om een zitplaats bij de halte.",
+          "en": "Then he asks for a seat by the bus stop."
+        },
+        {
+          "nl": "De medewerker schrijft zijn vraag bij de andere ideeën.",
+          "en": "The staff member writes his question with the other ideas."
+        },
+        {
+          "nl": "Piet vraagt ook wanneer er een antwoord komt.",
+          "en": "Piet also asks when an answer will come."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bewoner",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "persoon die ergens woont",
+            "en": "resident"
+          },
+          "example": {
+            "nl": "In de buurtzaal spreekt de gemeente met bewoners.",
+            "en": "In the neighbourhood hall, the municipality talks with residents."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de gemeente",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lokaal bestuur van een plaats",
+            "en": "municipality"
+          },
+          "example": {
+            "nl": "In de buurtzaal spreekt de gemeente met bewoners.",
+            "en": "In the neighbourhood hall, the municipality talks with residents."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de zitplaats",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plek waar je kunt zitten",
+            "en": "seat"
+          },
+          "example": {
+            "nl": "Dan vraagt hij om een zitplaats bij de halte.",
+            "en": "Then he asks for a seat by the bus stop."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Een vorm van willen of kunnen staat bij een hele werkwoordvorm. Kijk welke handeling iemand wil of kan doen.",
+            "en": "A form of willen or kunnen accompanies an infinitive. Look at which action someone wants or is able to do."
+          },
+          "examples": [
+            {
+              "nl": "Hij wil iets vragen over hun straat.",
+              "en": "He wants to ask something about their street."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat vraagt Piet?",
+            "en": "What does Piet ask for?"
+          },
+          "options": [
+            {
+              "nl": "Een nieuwe winkel",
+              "en": "A new shop"
+            },
+            {
+              "nl": "Een groter huis",
+              "en": "A bigger house"
+            },
+            {
+              "nl": "Een zitplaats bij de halte",
+              "en": "A seat by the stop"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Dan vraagt hij om een zitplaats bij de halte.",
+            "en": "Then he asks for a seat by the bus stop."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat vraagt hij op het einde ook?",
+            "en": "What does he also ask at the end?"
+          },
+          "options": [
+            {
+              "nl": "Waar zijn jas ligt",
+              "en": "Where his coat is"
+            },
+            {
+              "nl": "Wie thee wil",
+              "en": "Who wants tea"
+            },
+            {
+              "nl": "Wanneer er een antwoord komt",
+              "en": "When an answer will come"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Piet vraagt ook wanneer er een antwoord komt.",
+            "en": "Piet also asks when an answer will come."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-foto-oude-straat",
+      "topic_id": "history",
+      "title": {
+        "nl": "De bakkerij op de oude foto",
+        "en": "The bakery in the old photo"
+      },
+      "plot_key": "A learner compares an old local photograph to the same street and identifies a surviving door.",
+      "lines": [
+        {
+          "nl": "In het buurthuis hangt een oude straatfoto.",
+          "en": "An old street photograph hangs in the community centre."
+        },
+        {
+          "nl": "Maya herkent de straat naast haar eigen huis.",
+          "en": "Maya recognises the street beside her own home."
+        },
+        {
+          "nl": "Op de foto staat daar een kleine bakkerij.",
+          "en": "There is a small bakery there in the photo."
+        },
+        {
+          "nl": "Vandaag verkoopt die winkel fietsen en helmen.",
+          "en": "Today that shop sells bicycles and helmets."
+        },
+        {
+          "nl": "Maya loopt buiten naar de nieuwe fietswinkel.",
+          "en": "Maya walks outside to the new bicycle shop."
+        },
+        {
+          "nl": "De groene deur heeft nog dezelfde ronde ruit.",
+          "en": "The green door still has the same round window."
+        },
+        {
+          "nl": "Zij maakt met toestemming een foto van de deur.",
+          "en": "With permission, she takes a photo of the door."
+        },
+        {
+          "nl": "In het buurthuis legt ze beide beelden naast elkaar.",
+          "en": "In the community centre, she puts both images side by side."
+        }
+      ],
+      "words": [
+        {
+          "term": "de straatfoto",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "foto van een straat",
+            "en": "street photograph"
+          },
+          "example": {
+            "nl": "In het buurthuis hangt een oude straatfoto.",
+            "en": "An old street photograph hangs in the community centre."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de ruit",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "glas in een raam of deur",
+            "en": "windowpane"
+          },
+          "example": {
+            "nl": "De groene deur heeft nog dezelfde ronde ruit.",
+            "en": "The green door still has the same round window."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de toestemming",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "akkoord om iets te mogen doen",
+            "en": "permission"
+          },
+          "example": {
+            "nl": "Zij maakt met toestemming een foto van de deur.",
+            "en": "With permission, she takes a photo of the door."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "In het buurthuis legt ze beide beelden naast elkaar.",
+              "en": "In the community centre, she puts both images side by side."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verkoopt de winkel vandaag?",
+            "en": "What does the shop sell today?"
+          },
+          "options": [
+            {
+              "nl": "Bloemen",
+              "en": "Flowers"
+            },
+            {
+              "nl": "Brood",
+              "en": "Bread"
+            },
+            {
+              "nl": "Fietsen en helmen",
+              "en": "Bicycles and helmets"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Vandaag verkoopt die winkel fietsen en helmen.",
+            "en": "Today that shop sells bicycles and helmets."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat blijft herkenbaar?",
+            "en": "What remains recognisable?"
+          },
+          "options": [
+            {
+              "nl": "Een broodmand",
+              "en": "A bread basket"
+            },
+            {
+              "nl": "De oude bakker",
+              "en": "The old baker"
+            },
+            {
+              "nl": "De ronde ruit",
+              "en": "The round window"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De groene deur heeft nog dezelfde ronde ruit.",
+            "en": "The green door still has the same round window."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-rivier-volgen",
+      "topic_id": "geography",
+      "title": {
+        "nl": "Welke kant stroomt het water?",
+        "en": "Which way does the water flow?"
+      },
+      "plot_key": "Two walkers use a floating leaf to observe the river direction before relating it to a simple map.",
+      "lines": [
+        {
+          "nl": "Op de kaart loopt de rivier door de stad.",
+          "en": "On the map, the river runs through the city."
+        },
+        {
+          "nl": "Tess staat met haar broer op een brug.",
+          "en": "Tess stands on a bridge with her brother."
+        },
+        {
+          "nl": "Zij vraagt in welke richting het water stroomt.",
+          "en": "She asks in which direction the water flows."
+        },
+        {
+          "nl": "Vanaf de brug lijkt alles bijna stil.",
+          "en": "From the bridge, everything looks almost still."
+        },
+        {
+          "nl": "Haar broer wijst naar een drijvend blad.",
+          "en": "Her brother points to a floating leaf."
+        },
+        {
+          "nl": "Het blad schuift langzaam langs een grote steen.",
+          "en": "The leaf moves slowly past a large stone."
+        },
+        {
+          "nl": "Tess volgt die beweging met haar vinger.",
+          "en": "Tess follows that movement with her finger."
+        },
+        {
+          "nl": "Op de kaart tekent zij nu een pijl.",
+          "en": "She now draws an arrow on the map."
+        }
+      ],
+      "words": [
+        {
+          "term": "stromen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "als water in één richting bewegen",
+            "en": "to flow"
+          },
+          "example": {
+            "nl": "Zij vraagt in welke richting het water stroomt.",
+            "en": "She asks in which direction the water flows."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de beweging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "verandering van plaats",
+            "en": "movement"
+          },
+          "example": {
+            "nl": "Tess volgt die beweging met haar vinger.",
+            "en": "Tess follows that movement with her finger."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de steen",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hard stuk natuurlijk materiaal",
+            "en": "stone"
+          },
+          "example": {
+            "nl": "Het blad schuift langzaam langs een grote steen.",
+            "en": "The leaf moves slowly past a large stone."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Op de kaart tekent zij nu een pijl.",
+              "en": "She now draws an arrow on the map."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat toont de richting van het water?",
+            "en": "What shows the direction of the water?"
+          },
+          "options": [
+            {
+              "nl": "Een drijvend blad",
+              "en": "A floating leaf"
+            },
+            {
+              "nl": "Een vogel",
+              "en": "A bird"
+            },
+            {
+              "nl": "Een bord",
+              "en": "A sign"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Haar broer wijst naar een drijvend blad.",
+            "en": "Her brother points to a floating leaf."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat tekent Tess op de kaart?",
+            "en": "What does Tess draw on the map?"
+          },
+          "options": [
+            {
+              "nl": "Een huis",
+              "en": "A house"
+            },
+            {
+              "nl": "Een pijl",
+              "en": "An arrow"
+            },
+            {
+              "nl": "Een boot",
+              "en": "A boat"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Op de kaart tekent zij nu een pijl.",
+            "en": "She now draws an arrow on the map."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-vlek-wordt-regen",
+      "topic_id": "art-creativity",
+      "title": {
+        "nl": "De vlek krijgt een paraplu",
+        "en": "The blot gets an umbrella"
+      },
+      "plot_key": "A painter turns an accidental grey paint splash into a rainy street scene.",
+      "lines": [
+        {
+          "nl": "Op Riks witte blad valt grijze verf.",
+          "en": "Grey paint falls onto Rik's white sheet."
+        },
+        {
+          "nl": "De vlek zit midden in zijn tekening.",
+          "en": "The blot is in the middle of his picture."
+        },
+        {
+          "nl": "Hij legt zijn penseel even op tafel.",
+          "en": "He puts his paintbrush on the table for a moment."
+        },
+        {
+          "nl": "Zijn vriendin kijkt naar de lange grijze strepen.",
+          "en": "His friend looks at the long grey streaks."
+        },
+        {
+          "nl": "Zij zegt dat de strepen op regen lijken.",
+          "en": "She says the streaks look like rain."
+        },
+        {
+          "nl": "Rik tekent een rode paraplu onder de vlek.",
+          "en": "Rik draws a red umbrella under the blot."
+        },
+        {
+          "nl": "Daaronder komt een man met gele laarzen.",
+          "en": "Under it, he adds a man with yellow boots."
+        },
+        {
+          "nl": "Zijn rustige straat heeft nu een regenbui.",
+          "en": "His quiet street now has a rain shower."
+        }
+      ],
+      "words": [
+        {
+          "term": "de vlek",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "plek met een andere kleur",
+            "en": "blot or stain"
+          },
+          "example": {
+            "nl": "De vlek zit midden in zijn tekening.",
+            "en": "The blot is in the middle of his picture."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "het penseel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "borsteltje om mee te schilderen",
+            "en": "paintbrush"
+          },
+          "example": {
+            "nl": "Hij legt zijn penseel even op tafel.",
+            "en": "He puts his paintbrush on the table for a moment."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de regenbui",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "tijd met vallende regen",
+            "en": "rain shower"
+          },
+          "example": {
+            "nl": "Zijn rustige straat heeft nu een regenbui.",
+            "en": "His quiet street now has a rain shower."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Rik tekent een rode paraplu onder de vlek.",
+              "en": "Rik draws a red umbrella under the blot."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kleur heeft de verf?",
+            "en": "What colour is the paint?"
+          },
+          "options": [
+            {
+              "nl": "Rood",
+              "en": "Red"
+            },
+            {
+              "nl": "Groen",
+              "en": "Green"
+            },
+            {
+              "nl": "Grijs",
+              "en": "Grey"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Op Riks witte blad valt grijze verf.",
+            "en": "Grey paint falls onto Rik's white sheet."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat tekent Rik onder de vlek?",
+            "en": "What does Rik draw under the blot?"
+          },
+          "options": [
+            {
+              "nl": "Een rode paraplu",
+              "en": "A red umbrella"
+            },
+            {
+              "nl": "Een blauwe boot",
+              "en": "A blue boat"
+            },
+            {
+              "nl": "Een grote boom",
+              "en": "A big tree"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Rik tekent een rode paraplu onder de vlek.",
+            "en": "Rik draws a red umbrella under the blot."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-foto-van-achter",
+      "topic_id": "photography",
+      "title": {
+        "nl": "De foto van onze schoenen",
+        "en": "The photograph of our shoes"
+      },
+      "plot_key": "Friends who do not want faces in a shared picture choose a meaningful shoe photograph.",
+      "lines": [
+        {
+          "nl": "Drie vrienden willen hun eerste wandeling onthouden.",
+          "en": "Three friends want to remember their first walk."
+        },
+        {
+          "nl": "Niet iedereen wil een portret van zichzelf.",
+          "en": "Not everyone wants a portrait of themselves."
+        },
+        {
+          "nl": "Nina houdt haar telefoon boven hun voeten.",
+          "en": "Nina holds her phone above their feet."
+        },
+        {
+          "nl": "Hun schoenen staan in een kleine kring.",
+          "en": "Their shoes form a little circle."
+        },
+        {
+          "nl": "In het midden ligt een geel herfstblad.",
+          "en": "A yellow autumn leaf lies in the middle."
+        },
+        {
+          "nl": "Iedereen kiest zelf hoeveel van zijn schoen zichtbaar is.",
+          "en": "Everyone chooses how much of their shoe is visible."
+        },
+        {
+          "nl": "Nina toont de foto eerst aan alle drie.",
+          "en": "Nina shows the photo to all three first."
+        },
+        {
+          "nl": "Pas na hun ja stuurt ze hem door.",
+          "en": "Only after their agreement does she forward it."
+        }
+      ],
+      "words": [
+        {
+          "term": "het portret",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "afbeelding van een persoon",
+            "en": "portrait"
+          },
+          "example": {
+            "nl": "Niet iedereen wil een portret van zichzelf.",
+            "en": "Not everyone wants a portrait of themselves."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "zichtbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "te zien",
+            "en": "visible"
+          },
+          "example": {
+            "nl": "Iedereen kiest zelf hoeveel van zijn schoen zichtbaar is.",
+            "en": "Everyone chooses how much of their shoe is visible."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "doorsturen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een ontvangen of gemaakt bericht verder sturen",
+            "en": "to forward"
+          },
+          "example": {
+            "nl": "Pas na hun ja stuurt ze hem door.",
+            "en": "Only after their agreement does she forward it."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een scheidbaar werkwoord",
+            "en": "A separable verb"
+          },
+          "explanation": {
+            "nl": "In deze hoofdzin staan de twee delen van het werkwoord uit elkaar.",
+            "en": "In this main clause, the two parts of the verb are separated."
+          },
+          "examples": [
+            {
+              "nl": "Pas na hun ja stuurt ze hem door.",
+              "en": "Only after their agreement does she forward it."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat fotograferen de vrienden?",
+            "en": "What do the friends photograph?"
+          },
+          "options": [
+            {
+              "nl": "Hun schoenen",
+              "en": "Their shoes"
+            },
+            {
+              "nl": "Hun fietsen",
+              "en": "Their bicycles"
+            },
+            {
+              "nl": "Hun gezichten",
+              "en": "Their faces"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hun schoenen staan in een kleine kring.",
+            "en": "Their shoes form a little circle."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wanneer stuurt Nina de foto door?",
+            "en": "When does Nina forward the photo?"
+          },
+          "options": [
+            {
+              "nl": "Meteen",
+              "en": "Immediately"
+            },
+            {
+              "nl": "Voor de wandeling",
+              "en": "Before the walk"
+            },
+            {
+              "nl": "Na hun ja",
+              "en": "After their agreement"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Pas na hun ja stuurt ze hem door.",
+            "en": "Only after their agreement does she forward it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-jas-met-dansruimte",
+      "topic_id": "fashion-clothing",
+      "title": {
+        "nl": "Een jas om in te bewegen",
+        "en": "A coat to move in"
+      },
+      "plot_key": "A shopper discovers a formal jacket looks fine standing still but restricts movement and chooses another.",
+      "lines": [
+        {
+          "nl": "Joris past een mooie jas voor een feest.",
+          "en": "Joris tries on a smart jacket for a celebration."
+        },
+        {
+          "nl": "Voor de spiegel staat hij heel recht.",
+          "en": "In front of the mirror, he stands very straight."
+        },
+        {
+          "nl": "De jas lijkt precies de goede maat.",
+          "en": "The jacket seems exactly the right size."
+        },
+        {
+          "nl": "Dan wil hij zijn vriendin een knuffel geven.",
+          "en": "Then he wants to give his girlfriend a hug."
+        },
+        {
+          "nl": "Bij zijn schouders trekt de stof heel strak.",
+          "en": "The fabric pulls very tight at his shoulders."
+        },
+        {
+          "nl": "Hij probeert ook even zijn armen op te tillen.",
+          "en": "He also tries lifting his arms for a moment."
+        },
+        {
+          "nl": "De verkoopster brengt een jas met meer ruimte.",
+          "en": "The sales assistant brings a jacket with more room."
+        },
+        {
+          "nl": "Nu kan Joris ook dansen op het feest.",
+          "en": "Now Joris can dance at the celebration too."
+        }
+      ],
+      "words": [
+        {
+          "term": "de schouder",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lichaamsdeel tussen hals en arm",
+            "en": "shoulder"
+          },
+          "example": {
+            "nl": "Bij zijn schouders trekt de stof heel strak.",
+            "en": "The fabric pulls very tight at his shoulders."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de stof",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "materiaal waarvan kleding gemaakt wordt",
+            "en": "fabric"
+          },
+          "example": {
+            "nl": "Bij zijn schouders trekt de stof heel strak.",
+            "en": "The fabric pulls very tight at his shoulders."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "strak",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met weinig vrije ruimte",
+            "en": "tight"
+          },
+          "example": {
+            "nl": "Bij zijn schouders trekt de stof heel strak.",
+            "en": "The fabric pulls very tight at his shoulders."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Een vorm van willen of kunnen staat bij een hele werkwoordvorm. Kijk welke handeling iemand wil of kan doen.",
+            "en": "A form of willen or kunnen accompanies an infinitive. Look at which action someone wants or is able to do."
+          },
+          "examples": [
+            {
+              "nl": "Nu kan Joris ook dansen op het feest.",
+              "en": "Now Joris can dance at the celebration too."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wanneer merkt Joris het probleem?",
+            "en": "When does Joris notice the problem?"
+          },
+          "options": [
+            {
+              "nl": "Bij het fietsen",
+              "en": "When cycling"
+            },
+            {
+              "nl": "Bij het betalen",
+              "en": "When paying"
+            },
+            {
+              "nl": "Bij een knuffel",
+              "en": "When giving a hug"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Dan wil hij zijn vriendin een knuffel geven.",
+            "en": "Then he wants to give his girlfriend a hug."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat brengt de verkoopster?",
+            "en": "What does the assistant bring?"
+          },
+          "options": [
+            {
+              "nl": "Een broek",
+              "en": "Trousers"
+            },
+            {
+              "nl": "Een andere spiegel",
+              "en": "Another mirror"
+            },
+            {
+              "nl": "Een jas met meer ruimte",
+              "en": "A jacket with more room"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De verkoopster brengt een jas met meer ruimte.",
+            "en": "The sales assistant brings a jacket with more room."
+          }
+        }
+      ]
+    }
+  ]
+}

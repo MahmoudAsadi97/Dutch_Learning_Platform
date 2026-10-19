@@ -1,0 +1,1568 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-a1-read-zwaai-aan-overkant",
+      "topic_id": "relationships",
+      "title": {
+        "nl": "Een zwaai terug",
+        "en": "A wave back"
+      },
+      "plot_key": "A newcomer uses a greeting to begin a connection with someone across the street.",
+      "lines": [
+        {
+          "nl": "Ik woon in deze straat.",
+          "en": "I live in this street."
+        },
+        {
+          "nl": "Aan de overkant woont een vrouw.",
+          "en": "A woman lives across the street."
+        },
+        {
+          "nl": "Zij zit vaak buiten.",
+          "en": "She often sits outside."
+        },
+        {
+          "nl": "Wij kennen elkaar niet.",
+          "en": "We do not know each other."
+        },
+        {
+          "nl": "Vandaag zwaai ik naar haar.",
+          "en": "Today I wave to her."
+        },
+        {
+          "nl": "Zij kijkt op en glimlacht.",
+          "en": "She looks up and smiles."
+        },
+        {
+          "nl": "Zij zegt: dag, buur!",
+          "en": "She says: hello, neighbour!"
+        },
+        {
+          "nl": "Nu zwaaien wij elke dag.",
+          "en": "Now we wave every day."
+        }
+      ],
+      "words": [
+        {
+          "term": "de overkant",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de andere kant van een straat of water",
+            "en": "opposite side"
+          },
+          "example": {
+            "nl": "Aan de overkant woont een vrouw.",
+            "en": "A woman lives across the street."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "wonen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "je huis hebben",
+            "en": "to live"
+          },
+          "example": {
+            "nl": "Ik woon in deze straat.",
+            "en": "I live in this street."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de buur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die dichtbij woont",
+            "en": "neighbour"
+          },
+          "example": {
+            "nl": "Zij zegt: dag, buur!",
+            "en": "She says: hello, neighbour!"
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Nu zwaaien wij elke dag.",
+              "en": "Now we wave every day."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar woont de vrouw?",
+            "en": "Where does the woman live?"
+          },
+          "options": [
+            {
+              "nl": "Naast de school",
+              "en": "Beside the school"
+            },
+            {
+              "nl": "Boven de winkel",
+              "en": "Above the shop"
+            },
+            {
+              "nl": "Aan de overkant",
+              "en": "Across the street"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Aan de overkant woont een vrouw.",
+            "en": "A woman lives across the street."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de spreker vandaag?",
+            "en": "What does the speaker do today?"
+          },
+          "options": [
+            {
+              "nl": "Zwaaien",
+              "en": "Wave"
+            },
+            {
+              "nl": "Koken",
+              "en": "Cook"
+            },
+            {
+              "nl": "Bellen",
+              "en": "Phone"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Vandaag zwaai ik naar haar.",
+            "en": "Today I wave to her."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-hart-in-schuim",
+      "topic_id": "relationships",
+      "title": {
+        "nl": "Een hart in de melk",
+        "en": "A heart in the milk"
+      },
+      "plot_key": "Someone draws a small heart in milk foam for a partner's breakfast.",
+      "lines": [
+        {
+          "nl": "Ik maak koffie voor ons.",
+          "en": "I make coffee for us."
+        },
+        {
+          "nl": "Mijn vriend slaapt nog even.",
+          "en": "My boyfriend is still asleep."
+        },
+        {
+          "nl": "Op de melk ligt schuim.",
+          "en": "There is foam on the milk."
+        },
+        {
+          "nl": "Ik neem een klein stokje.",
+          "en": "I take a little stick."
+        },
+        {
+          "nl": "Ik teken een hartje.",
+          "en": "I draw a little heart."
+        },
+        {
+          "nl": "Dan komt hij de keuken in.",
+          "en": "Then he comes into the kitchen."
+        },
+        {
+          "nl": "Hij kijkt in zijn kop.",
+          "en": "He looks into his cup."
+        },
+        {
+          "nl": "Hij geeft mij een kus.",
+          "en": "He gives me a kiss."
+        }
+      ],
+      "words": [
+        {
+          "term": "de koffie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "warme drank van koffiebonen",
+            "en": "coffee"
+          },
+          "example": {
+            "nl": "Ik maak koffie voor ons.",
+            "en": "I make coffee for us."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het hartje",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "kleine vorm als teken van liefde",
+            "en": "little heart shape"
+          },
+          "example": {
+            "nl": "Ik teken een hartje.",
+            "en": "I draw a little heart."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de kus",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "aanraking met de lippen",
+            "en": "kiss"
+          },
+          "example": {
+            "nl": "Hij geeft mij een kus.",
+            "en": "He gives me a kiss."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Van wie is het?",
+            "en": "Who does it belong to?"
+          },
+          "explanation": {
+            "nl": "Het bezittelijk woord vertelt bij wie iets hoort.",
+            "en": "The possessive word tells you who something belongs to."
+          },
+          "examples": [
+            {
+              "nl": "Hij kijkt in zijn kop.",
+              "en": "He looks into his cup."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat tekent de spreker?",
+            "en": "What does the speaker draw?"
+          },
+          "options": [
+            {
+              "nl": "Een hartje",
+              "en": "A little heart"
+            },
+            {
+              "nl": "Een bloem",
+              "en": "A flower"
+            },
+            {
+              "nl": "Een ster",
+              "en": "A star"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ik teken een hartje.",
+            "en": "I draw a little heart."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de vriend op het einde?",
+            "en": "What does the boyfriend do at the end?"
+          },
+          "options": [
+            {
+              "nl": "Een kus geven",
+              "en": "Give a kiss"
+            },
+            {
+              "nl": "De kop wassen",
+              "en": "Wash the cup"
+            },
+            {
+              "nl": "Slapen",
+              "en": "Sleep"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij geeft mij een kus.",
+            "en": "He gives me a kiss."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-witte-lijn-oefen",
+      "topic_id": "health-fitness",
+      "title": {
+        "nl": "Tot aan de lijn",
+        "en": "Up to the line"
+      },
+      "plot_key": "A novice balances along a short line and finishes with a friend's support.",
+      "lines": [
+        {
+          "nl": "Er staat een witte lijn.",
+          "en": "There is a white line."
+        },
+        {
+          "nl": "Ik zet mijn voet erop.",
+          "en": "I put my foot on it."
+        },
+        {
+          "nl": "Mijn armen gaan opzij.",
+          "en": "My arms go out sideways."
+        },
+        {
+          "nl": "Ik wankel een beetje.",
+          "en": "I wobble a little."
+        },
+        {
+          "nl": "Mijn vriend geeft zijn hand.",
+          "en": "My friend offers his hand."
+        },
+        {
+          "nl": "Ik neem twee kleine stappen.",
+          "en": "I take two small steps."
+        },
+        {
+          "nl": "Mijn voet raakt het einde.",
+          "en": "My foot reaches the end."
+        },
+        {
+          "nl": "Nu doe ik het alleen.",
+          "en": "Now I do it on my own."
+        }
+      ],
+      "words": [
+        {
+          "term": "de lijn",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lange smalle streep",
+            "en": "line"
+          },
+          "example": {
+            "nl": "Er staat een witte lijn.",
+            "en": "There is a white line."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de stap",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "beweging van een voet naar voren",
+            "en": "step"
+          },
+          "example": {
+            "nl": "Ik neem twee kleine stappen.",
+            "en": "I take two small steps."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "alleen",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "zonder hulp of gezelschap",
+            "en": "alone or on your own"
+          },
+          "example": {
+            "nl": "Nu doe ik het alleen.",
+            "en": "Now I do it on my own."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Ik neem twee kleine stappen.",
+              "en": "I take two small steps."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat geeft de vriend?",
+            "en": "What does the friend offer?"
+          },
+          "options": [
+            {
+              "nl": "Een stoel",
+              "en": "A chair"
+            },
+            {
+              "nl": "Een bal",
+              "en": "A ball"
+            },
+            {
+              "nl": "Zijn hand",
+              "en": "His hand"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Mijn vriend geeft zijn hand.",
+            "en": "My friend offers his hand."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoeveel kleine stappen neemt de spreker?",
+            "en": "How many small steps does the speaker take?"
+          },
+          "options": [
+            {
+              "nl": "Vijf",
+              "en": "Five"
+            },
+            {
+              "nl": "Drie",
+              "en": "Three"
+            },
+            {
+              "nl": "Twee",
+              "en": "Two"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ik neem twee kleine stappen.",
+            "en": "I take two small steps."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-zachte-drempel",
+      "topic_id": "housing",
+      "title": {
+        "nl": "Een plank bij de deur",
+        "en": "A board at the doorway"
+      },
+      "plot_key": "Neighbours place a board over a small threshold so a trolley can cross.",
+      "lines": [
+        {
+          "nl": "Mijn buur trekt een kar.",
+          "en": "My neighbour pulls a trolley."
+        },
+        {
+          "nl": "De kar stopt bij de deur.",
+          "en": "The trolley stops at the door."
+        },
+        {
+          "nl": "De drempel is te hoog.",
+          "en": "The threshold is too high."
+        },
+        {
+          "nl": "De dozen zijn heel zwaar.",
+          "en": "The boxes are very heavy."
+        },
+        {
+          "nl": "Ik haal een brede plank.",
+          "en": "I fetch a wide board."
+        },
+        {
+          "nl": "De plank ligt over de drempel.",
+          "en": "The board lies over the threshold."
+        },
+        {
+          "nl": "Mijn buur trekt nog eens.",
+          "en": "My neighbour pulls again."
+        },
+        {
+          "nl": "De kar rijdt naar binnen.",
+          "en": "The trolley rolls inside."
+        }
+      ],
+      "words": [
+        {
+          "term": "de drempel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "verhoogde rand onder een deur",
+            "en": "threshold"
+          },
+          "example": {
+            "nl": "De drempel is te hoog.",
+            "en": "The threshold is too high."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "zwaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met veel gewicht",
+            "en": "heavy"
+          },
+          "example": {
+            "nl": "De dozen zijn heel zwaar.",
+            "en": "The boxes are very heavy."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de plank",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "lang plat stuk hout",
+            "en": "board"
+          },
+          "example": {
+            "nl": "Ik haal een brede plank.",
+            "en": "I fetch a wide board."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eigenschap",
+            "en": "A quality"
+          },
+          "explanation": {
+            "nl": "Het bijvoeglijk naamwoord vertelt hoe iets of iemand is.",
+            "en": "The adjective tells you what something or someone is like."
+          },
+          "examples": [
+            {
+              "nl": "De dozen zijn heel zwaar.",
+              "en": "The boxes are very heavy."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom stopt de kar?",
+            "en": "Why does the trolley stop?"
+          },
+          "options": [
+            {
+              "nl": "De drempel is te hoog",
+              "en": "The threshold is too high"
+            },
+            {
+              "nl": "De deur is dicht",
+              "en": "The door is shut"
+            },
+            {
+              "nl": "De kar is leeg",
+              "en": "The trolley is empty"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De drempel is te hoog.",
+            "en": "The threshold is too high."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat ligt over de drempel?",
+            "en": "What lies over the threshold?"
+          },
+          "options": [
+            {
+              "nl": "Een plank",
+              "en": "A board"
+            },
+            {
+              "nl": "Een jas",
+              "en": "A coat"
+            },
+            {
+              "nl": "Een tas",
+              "en": "A bag"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De plank ligt over de drempel.",
+            "en": "The board lies over the threshold."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-moeder-met-zang",
+      "topic_id": "family",
+      "title": {
+        "nl": "Het lied aan de telefoon",
+        "en": "The song on the phone"
+      },
+      "plot_key": "A child recognises a grandmother by a familiar tune before the picture appears.",
+      "lines": [
+        {
+          "nl": "Mijn telefoon gaat over.",
+          "en": "My phone rings."
+        },
+        {
+          "nl": "Ik zie alleen een zwart scherm.",
+          "en": "I only see a black screen."
+        },
+        {
+          "nl": "Er klinkt een zacht lied.",
+          "en": "A soft song sounds."
+        },
+        {
+          "nl": "Ik ken dat kleine lied.",
+          "en": "I know that little song."
+        },
+        {
+          "nl": "Ik zeg: dag, oma!",
+          "en": "I say: hello, Grandma!"
+        },
+        {
+          "nl": "Oma lacht aan de telefoon.",
+          "en": "Grandma laughs on the phone."
+        },
+        {
+          "nl": "Nu verschijnt ook haar gezicht.",
+          "en": "Now her face appears too."
+        },
+        {
+          "nl": "Wij zingen het lied samen.",
+          "en": "We sing the song together."
+        }
+      ],
+      "words": [
+        {
+          "term": "het lied",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "muziek met woorden om te zingen",
+            "en": "song"
+          },
+          "example": {
+            "nl": "Er klinkt een zacht lied.",
+            "en": "A soft song sounds."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "kennen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "al weten wie of wat iets is",
+            "en": "to know or recognise"
+          },
+          "example": {
+            "nl": "Ik ken dat kleine lied.",
+            "en": "I know that little song."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "zingen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met je stem muziek maken",
+            "en": "to sing"
+          },
+          "example": {
+            "nl": "Wij zingen het lied samen.",
+            "en": "We sing the song together."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Wij zingen het lied samen.",
+              "en": "We sing the song together."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wie belt?",
+            "en": "Who is calling?"
+          },
+          "options": [
+            {
+              "nl": "Oma",
+              "en": "Grandma"
+            },
+            {
+              "nl": "Een vriend",
+              "en": "A friend"
+            },
+            {
+              "nl": "De juf",
+              "en": "The teacher"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Oma lacht aan de telefoon.",
+            "en": "Grandma laughs on the phone."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat hoort de spreker eerst?",
+            "en": "What does the speaker hear first?"
+          },
+          "options": [
+            {
+              "nl": "De radio",
+              "en": "The radio"
+            },
+            {
+              "nl": "Een hond",
+              "en": "A dog"
+            },
+            {
+              "nl": "Een lied",
+              "en": "A song"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Er klinkt een zacht lied.",
+            "en": "A soft song sounds."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-zandloper-pauze",
+      "topic_id": "sleep-rest",
+      "title": {
+        "nl": "Het zand is beneden",
+        "en": "The sand is at the bottom"
+      },
+      "plot_key": "A short quiet rest is measured by a sand timer rather than a noisy alarm.",
+      "lines": [
+        {
+          "nl": "Wij gaan even rustig zitten.",
+          "en": "We sit quietly for a while."
+        },
+        {
+          "nl": "Mijn broer zet een zandloper neer.",
+          "en": "My brother puts down a sand timer."
+        },
+        {
+          "nl": "Boven ligt geel zand.",
+          "en": "There is yellow sand at the top."
+        },
+        {
+          "nl": "Het zand valt langzaam omlaag.",
+          "en": "The sand slowly falls down."
+        },
+        {
+          "nl": "Wij praten nu even niet.",
+          "en": "We do not talk for a while."
+        },
+        {
+          "nl": "Ik volg het gele zand.",
+          "en": "I follow the yellow sand."
+        },
+        {
+          "nl": "Nu ligt alles beneden.",
+          "en": "Now it is all at the bottom."
+        },
+        {
+          "nl": "Mijn broer zegt zacht: klaar.",
+          "en": "My brother says softly: finished."
+        }
+      ],
+      "words": [
+        {
+          "term": "de zandloper",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "voorwerp dat tijd meet met vallend zand",
+            "en": "sand timer"
+          },
+          "example": {
+            "nl": "Mijn broer zet een zandloper neer.",
+            "en": "My brother puts down a sand timer."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "rustig",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "zonder drukte",
+            "en": "calmly"
+          },
+          "example": {
+            "nl": "Wij gaan even rustig zitten.",
+            "en": "We sit quietly for a while."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "beneden",
+          "part_of_speech": "adverb",
+          "meaning": {
+            "nl": "op een lagere plaats",
+            "en": "at the bottom or downstairs"
+          },
+          "example": {
+            "nl": "Nu ligt alles beneden.",
+            "en": "Now it is all at the bottom."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet en geen",
+            "en": "Niet and geen"
+          },
+          "explanation": {
+            "nl": "Kijk wat wordt ontkend: de handeling of het zelfstandig naamwoord.",
+            "en": "Look at what is being negated: the action or the noun."
+          },
+          "examples": [
+            {
+              "nl": "Wij praten nu even niet.",
+              "en": "We do not talk for a while."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke kleur heeft het zand?",
+            "en": "What colour is the sand?"
+          },
+          "options": [
+            {
+              "nl": "Wit",
+              "en": "White"
+            },
+            {
+              "nl": "Rood",
+              "en": "Red"
+            },
+            {
+              "nl": "Geel",
+              "en": "Yellow"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Boven ligt geel zand.",
+            "en": "There is yellow sand at the top."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doen de twee tijdens de pauze?",
+            "en": "What do the two do during the break?"
+          },
+          "options": [
+            {
+              "nl": "Dansen",
+              "en": "Dance"
+            },
+            {
+              "nl": "Bellen",
+              "en": "Make a call"
+            },
+            {
+              "nl": "Niet praten",
+              "en": "Not talk"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Wij praten nu even niet.",
+            "en": "We do not talk for a while."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-naam-stoep",
+      "topic_id": "community-events",
+      "title": {
+        "nl": "Welkom op de stoep",
+        "en": "Welcome on the pavement"
+      },
+      "plot_key": "New neighbours find their name in a chalk welcome at a street picnic.",
+      "lines": [
+        {
+          "nl": "Wij komen in onze straat.",
+          "en": "We arrive in our street."
+        },
+        {
+          "nl": "Op de stoep staat welkom.",
+          "en": "The pavement says welcome."
+        },
+        {
+          "nl": "Daaronder staat onze naam.",
+          "en": "Our name is below it."
+        },
+        {
+          "nl": "Ik wijs naar de letters.",
+          "en": "I point to the letters."
+        },
+        {
+          "nl": "Een buur geeft ons krijt.",
+          "en": "A neighbour gives us chalk."
+        },
+        {
+          "nl": "Wij schrijven er dank je bij.",
+          "en": "We add thank you."
+        },
+        {
+          "nl": "Dan zet hij twee stoelen neer.",
+          "en": "Then he puts out two chairs."
+        },
+        {
+          "nl": "Wij zitten bij onze naam.",
+          "en": "We sit by our name."
+        }
+      ],
+      "words": [
+        {
+          "term": "de stoep",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "pad voor voetgangers langs de straat",
+            "en": "pavement"
+          },
+          "example": {
+            "nl": "Op de stoep staat welkom.",
+            "en": "The pavement says welcome."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "welkom",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "groet aan iemand die aankomt",
+            "en": "welcome"
+          },
+          "example": {
+            "nl": "Op de stoep staat welkom.",
+            "en": "The pavement says welcome."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "dank je",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "woorden om te bedanken",
+            "en": "thank you"
+          },
+          "example": {
+            "nl": "Wij schrijven er dank je bij.",
+            "en": "We add thank you."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "Daaronder staat onze naam.",
+              "en": "Our name is below it."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat staat onder welkom?",
+            "en": "What is under welcome?"
+          },
+          "options": [
+            {
+              "nl": "Hun naam",
+              "en": "Their name"
+            },
+            {
+              "nl": "Een datum",
+              "en": "A date"
+            },
+            {
+              "nl": "Een prijs",
+              "en": "A price"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Daaronder staat onze naam.",
+            "en": "Our name is below it."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat schrijven zij erbij?",
+            "en": "What do they add?"
+          },
+          "options": [
+            {
+              "nl": "Dank je",
+              "en": "Thank you"
+            },
+            {
+              "nl": "Tot morgen",
+              "en": "See you tomorrow"
+            },
+            {
+              "nl": "Slaapwel",
+              "en": "Good night"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Wij schrijven er dank je bij.",
+            "en": "We add thank you."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-hallo-in-twee-talen",
+      "topic_id": "languages",
+      "title": {
+        "nl": "Twee woorden voor dag",
+        "en": "Two words for hello"
+      },
+      "plot_key": "Neighbours teach each other their greeting and practise both together.",
+      "lines": [
+        {
+          "nl": "Mijn buur zegt: hallo.",
+          "en": "My neighbour says: hello."
+        },
+        {
+          "nl": "Ik zeg dag in mijn taal.",
+          "en": "I say hello in my language."
+        },
+        {
+          "nl": "Hij luistert naar mijn woord.",
+          "en": "He listens to my word."
+        },
+        {
+          "nl": "Dan zegt hij het ook.",
+          "en": "Then he says it too."
+        },
+        {
+          "nl": "Nu luister ik naar hallo.",
+          "en": "Now I listen to hello."
+        },
+        {
+          "nl": "Ik zeg het heel langzaam.",
+          "en": "I say it very slowly."
+        },
+        {
+          "nl": "Wij groeten elkaar twee keer.",
+          "en": "We greet each other twice."
+        },
+        {
+          "nl": "Dan gaan wij samen binnen.",
+          "en": "Then we go inside together."
+        }
+      ],
+      "words": [
+        {
+          "term": "de taal",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "woorden en regels waarmee mensen spreken",
+            "en": "language"
+          },
+          "example": {
+            "nl": "Ik zeg dag in mijn taal.",
+            "en": "I say hello in my language."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "het woord",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "groep letters met een betekenis",
+            "en": "word"
+          },
+          "example": {
+            "nl": "Hij luistert naar mijn woord.",
+            "en": "He listens to my word."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "groeten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "dag zeggen",
+            "en": "to greet"
+          },
+          "example": {
+            "nl": "Wij groeten elkaar twee keer.",
+            "en": "We greet each other twice."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Wij groeten elkaar twee keer.",
+              "en": "We greet each other twice."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wie luistert eerst?",
+            "en": "Who listens first?"
+          },
+          "options": [
+            {
+              "nl": "De buur",
+              "en": "The neighbour"
+            },
+            {
+              "nl": "De spreker",
+              "en": "The speaker"
+            },
+            {
+              "nl": "De juf",
+              "en": "The teacher"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij luistert naar mijn woord.",
+            "en": "He listens to my word."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe vaak groeten zij elkaar?",
+            "en": "How many times do they greet each other?"
+          },
+          "options": [
+            {
+              "nl": "Eén keer",
+              "en": "Once"
+            },
+            {
+              "nl": "Vier keer",
+              "en": "Four times"
+            },
+            {
+              "nl": "Twee keer",
+              "en": "Twice"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Wij groeten elkaar twee keer.",
+            "en": "We greet each other twice."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-race-zonder-lopen",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "De slak wint",
+        "en": "The snail wins"
+      },
+      "plot_key": "A board game's slow snail token reaches the finish after the other player waits on a square.",
+      "lines": [
+        {
+          "nl": "Ik speel met een slak.",
+          "en": "I play with a snail."
+        },
+        {
+          "nl": "Mijn zus kiest een paard.",
+          "en": "My sister chooses a horse."
+        },
+        {
+          "nl": "Haar paard staat ver vooraan.",
+          "en": "Her horse is far ahead."
+        },
+        {
+          "nl": "Ik gooi de dobbelsteen.",
+          "en": "I roll the die."
+        },
+        {
+          "nl": "De slak gaat drie vakjes verder.",
+          "en": "The snail moves three squares further."
+        },
+        {
+          "nl": "Mijn zus moet één beurt wachten.",
+          "en": "My sister must wait one turn."
+        },
+        {
+          "nl": "Mijn slak komt bij de finish.",
+          "en": "My snail reaches the finish."
+        },
+        {
+          "nl": "Een slak kan ook winnen!",
+          "en": "A snail can win too!"
+        }
+      ],
+      "words": [
+        {
+          "term": "de slak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "klein dier dat langzaam kruipt",
+            "en": "snail"
+          },
+          "example": {
+            "nl": "Ik speel met een slak.",
+            "en": "I play with a snail."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "de dobbelsteen",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "blokje met ogen om mee te spelen",
+            "en": "die for playing games"
+          },
+          "example": {
+            "nl": "Ik gooi de dobbelsteen.",
+            "en": "I roll the die."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "winnen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "als eerste eindigen of de beste zijn",
+            "en": "to win"
+          },
+          "example": {
+            "nl": "Een slak kan ook winnen!",
+            "en": "A snail can win too!"
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Een vorm van willen of kunnen staat bij een hele werkwoordvorm. Kijk welke handeling iemand wil of kan doen.",
+            "en": "A form of willen or kunnen accompanies an infinitive. Look at which action someone wants or is able to do."
+          },
+          "examples": [
+            {
+              "nl": "Een slak kan ook winnen!",
+              "en": "A snail can win too!"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welk dier kiest de zus?",
+            "en": "Which animal does the sister choose?"
+          },
+          "options": [
+            {
+              "nl": "Een paard",
+              "en": "A horse"
+            },
+            {
+              "nl": "Een slak",
+              "en": "A snail"
+            },
+            {
+              "nl": "Een kat",
+              "en": "A cat"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mijn zus kiest een paard.",
+            "en": "My sister chooses a horse."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wie komt bij de finish?",
+            "en": "Who reaches the finish?"
+          },
+          "options": [
+            {
+              "nl": "De slak",
+              "en": "The snail"
+            },
+            {
+              "nl": "Een hond",
+              "en": "A dog"
+            },
+            {
+              "nl": "Het paard",
+              "en": "The horse"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Mijn slak komt bij de finish.",
+            "en": "My snail reaches the finish."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-a1-read-muur-van-dozen",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "De brede toren",
+        "en": "The wide tower"
+      },
+      "plot_key": "A child rebuilds a falling box tower with the biggest box at its base.",
+      "lines": [
+        {
+          "nl": "Ik zet drie dozen op elkaar.",
+          "en": "I stack three boxes."
+        },
+        {
+          "nl": "Onderaan staat een kleine doos.",
+          "en": "A small box is at the bottom."
+        },
+        {
+          "nl": "De toren valt opzij.",
+          "en": "The tower falls sideways."
+        },
+        {
+          "nl": "Mijn zus kijkt naar de dozen.",
+          "en": "My sister looks at the boxes."
+        },
+        {
+          "nl": "Wij zetten de brede doos onderaan.",
+          "en": "We put the wide box at the bottom."
+        },
+        {
+          "nl": "De kleine doos komt bovenaan.",
+          "en": "The small box goes at the top."
+        },
+        {
+          "nl": "Nu blijft de toren staan.",
+          "en": "Now the tower stays up."
+        },
+        {
+          "nl": "Er past nog een doos op.",
+          "en": "There is room for another box on top."
+        }
+      ],
+      "words": [
+        {
+          "term": "de toren",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "hoog bouwwerk",
+            "en": "tower"
+          },
+          "example": {
+            "nl": "De toren valt opzij.",
+            "en": "The tower falls sideways."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "vallen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "naar beneden of opzij gaan",
+            "en": "to fall"
+          },
+          "example": {
+            "nl": "De toren valt opzij.",
+            "en": "The tower falls sideways."
+          },
+          "minimum_stage": "pre-a1"
+        },
+        {
+          "term": "breed",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met veel ruimte van links naar rechts",
+            "en": "wide"
+          },
+          "example": {
+            "nl": "Wij zetten de brede doos onderaan.",
+            "en": "We put the wide box at the bottom."
+          },
+          "minimum_stage": "pre-a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een plaats aangeven",
+            "en": "Giving a position"
+          },
+          "explanation": {
+            "nl": "Het plaatswoord vertelt waar iemand of iets is. Lees ook wat erna komt.",
+            "en": "The position word tells you where someone or something is. Read what follows it too."
+          },
+          "examples": [
+            {
+              "nl": "De kleine doos komt bovenaan.",
+              "en": "The small box goes at the top."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke doos staat eerst onderaan?",
+            "en": "Which box is at the bottom first?"
+          },
+          "options": [
+            {
+              "nl": "De rode",
+              "en": "The red one"
+            },
+            {
+              "nl": "De grote",
+              "en": "The big one"
+            },
+            {
+              "nl": "De kleine",
+              "en": "The small one"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Onderaan staat een kleine doos.",
+            "en": "A small box is at the bottom."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat gebeurt er na het wisselen?",
+            "en": "What happens after the change?"
+          },
+          "options": [
+            {
+              "nl": "De zus vertrekt",
+              "en": "The sister leaves"
+            },
+            {
+              "nl": "De dozen rollen",
+              "en": "The boxes roll"
+            },
+            {
+              "nl": "De toren blijft staan",
+              "en": "The tower stays up"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Nu blijft de toren staan.",
+            "en": "Now the tower stays up."
+          }
+        }
+      ]
+    }
+  ]
+}

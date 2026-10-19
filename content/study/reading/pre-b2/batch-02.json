@@ -1,0 +1,828 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-brood-voor-de-nacht",
+      "topic_id": "food-cooking",
+      "title": {
+        "nl": "Brood voor de nacht",
+        "en": "Bread for the night"
+      },
+      "plot_key": "A neighbour demonstrates that a busy beginner's missing bread ingredient is time rather than secret equipment.",
+      "lines": [
+        {
+          "nl": "Lotte beweerde tijdens een ontbijt dat zelfgebakken brood altijd zwaar en droog was.",
+          "en": "During breakfast Lotte claimed that homemade bread was always heavy and dry."
+        },
+        {
+          "nl": "Haar buurman Aziz, die vroeger in een bakkerij werkte, schoof zonder commentaar zijn broodmand naar haar toe.",
+          "en": "Her neighbour Aziz, who used to work in a bakery, silently pushed his bread basket towards her."
+        },
+        {
+          "nl": "Toen ze een tweede snee nam, stelde hij voor dat ze samen een deeg zouden maken.",
+          "en": "When she took a second slice, he suggested they make some dough together."
+        },
+        {
+          "nl": "Lotte wilde het onmiddellijk bakken, want ze had die namiddag nog andere plannen.",
+          "en": "Lotte wanted to bake it immediately because she had other plans that afternoon."
+        },
+        {
+          "nl": "Aziz zette de kom echter in de koelkast en vroeg haar de volgende ochtend terug te komen.",
+          "en": "However, Aziz put the bowl in the fridge and asked her to return the following morning."
+        },
+        {
+          "nl": "Ze vermoedde dat hij een ingewikkeld geheim voor haar verborgen hield.",
+          "en": "She suspected he was hiding some complicated secret from her."
+        },
+        {
+          "nl": "Bij haar terugkeer rook de keuken naar koffie en stond het gerezen deeg al op tafel.",
+          "en": "When she returned, the kitchen smelled of coffee and the risen dough was already on the table."
+        },
+        {
+          "nl": "Aziz liet haar zelf de oven instellen, zodat ze niet kon zeggen dat hij het moeilijkste werk had gedaan.",
+          "en": "Aziz let her set the oven herself so that she could not say he had done the hardest part."
+        },
+        {
+          "nl": "Een uur later brak ze een knapperige korst open en bood hem heel officieel de eerste snee aan.",
+          "en": "An hour later she broke open a crisp crust and very formally offered him the first slice."
+        },
+        {
+          "nl": "Zijn geheim bleek vooral tijd te zijn; voor iemand met haar volle agenda was dat eigenlijk het lastigste ingrediënt.",
+          "en": "His secret turned out mainly to be time; for someone with her full schedule that was actually the trickiest ingredient."
+        }
+      ],
+      "words": [
+        {
+          "term": "het deeg",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een mengsel van onder meer meel en vocht om te bakken",
+            "en": "dough"
+          },
+          "example": {
+            "nl": "Toen ze een tweede snee nam, stelde hij voor dat ze samen een deeg zouden maken.",
+            "en": "When she took a second slice, he suggested they make some dough together."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "rijzen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "in volume toenemen bij het maken van brood",
+            "en": "to rise"
+          },
+          "example": {
+            "nl": "Bij haar terugkeer rook de keuken naar koffie en stond het gerezen deeg al op tafel.",
+            "en": "When she returned, the kitchen smelled of coffee and the risen dough was already on the table."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "knapperig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met een korst die hoorbaar breekt",
+            "en": "crisp"
+          },
+          "example": {
+            "nl": "Een uur later brak ze een knapperige korst open en bood hem heel officieel de eerste snee aan.",
+            "en": "An hour later she broke open a crisp crust and very formally offered him the first slice."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zodat voor een bedoeld gevolg",
+            "en": "So that for an intended result"
+          },
+          "explanation": {
+            "nl": "Zodat kan uitleggen welk resultaat iemand met een handeling wil bereiken.",
+            "en": "Zodat can explain the result someone wants an action to achieve."
+          },
+          "examples": [
+            {
+              "nl": "Aziz liet haar zelf de oven instellen, zodat ze niet kon zeggen dat hij het moeilijkste werk had gedaan.",
+              "en": "Aziz let her set the oven herself so that she could not say he had done the hardest part."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat blijkt het geheim van Aziz te zijn?",
+            "en": "What turns out to be Aziz's secret?"
+          },
+          "options": [
+            {
+              "nl": "Koffie aan het deeg toevoegen.",
+              "en": "Adding coffee to the dough."
+            },
+            {
+              "nl": "Het deeg voldoende tijd geven.",
+              "en": "Giving the dough enough time."
+            },
+            {
+              "nl": "Een dure oven.",
+              "en": "An expensive oven."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het gerezen deeg en de slotzin verbinden het goede resultaat met wachten.",
+            "en": "The risen dough and the final sentence connect the good result with waiting."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waar zit de humor in de laatste zin?",
+            "en": "Where is the humour in the final sentence?"
+          },
+          "options": [
+            {
+              "nl": "Het brood smaakt naar koffie.",
+              "en": "The bread tastes of coffee."
+            },
+            {
+              "nl": "Aziz geeft een vals recept.",
+              "en": "Aziz gives a false recipe."
+            },
+            {
+              "nl": "Tijd wordt het moeilijkste ingrediënt voor een druk persoon.",
+              "en": "Time becomes the hardest ingredient for a busy person."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Tijd is geen eetbaar ingrediënt, maar past moeilijk in haar agenda.",
+            "en": "Time is not an edible ingredient, but is difficult to fit into her schedule."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-stem-achter-de-muur",
+      "topic_id": "housing",
+      "title": {
+        "nl": "De stem achter de muur",
+        "en": "The voice behind the wall"
+      },
+      "plot_key": "A noise complaint becomes a rehearsal agreement with a retired actor whose family arguments are fictional.",
+      "lines": [
+        {
+          "nl": "Sinds er een nieuwe buur in het appartement naast haar woonde, hoorde Fien elke avond luide ruzies.",
+          "en": "Since a new neighbour moved into the flat next door, Fien heard loud arguments every evening."
+        },
+        {
+          "nl": "Er werd over erfenissen, verboden liefdes en verloren geld geschreeuwd, meestal rond acht uur.",
+          "en": "People shouted about inheritances, forbidden romances and lost money, usually around eight o'clock."
+        },
+        {
+          "nl": "Ze wilde zich niet bemoeien met zijn privéleven, maar kon zich tijdens haar avondlessen niet meer concentreren.",
+          "en": "She did not want to interfere in his private life, but could no longer concentrate during her evening classes."
+        },
+        {
+          "nl": "Na drie dagen klopte ze aan en vroeg voorzichtig of alles in orde was.",
+          "en": "After three days she knocked and cautiously asked whether everything was all right."
+        },
+        {
+          "nl": "Een oudere man in een fluwelen jas keek haar verbaasd aan en nodigde haar binnen.",
+          "en": "An older man in a velvet jacket looked at her in surprise and invited her inside."
+        },
+        {
+          "nl": "Op tafel lag een toneeltekst waarin dezelfde familienaam voorkwam die ze door de muur had gehoord.",
+          "en": "On the table lay a play script containing the same surname she had heard through the wall."
+        },
+        {
+          "nl": "Hij legde uit dat hij na jaren opnieuw zou optreden en alle rollen hardop inoefende.",
+          "en": "He explained that he would perform again after years away and was rehearsing all the parts aloud."
+        },
+        {
+          "nl": "Fien moest lachen, maar vertelde ook op welke avonden haar lessen plaatsvonden.",
+          "en": "Fien had to laugh, but also told him which evenings her classes took place."
+        },
+        {
+          "nl": "Ze spraken twee oefenuren af, en op de andere dagen zou hij een repetitieruimte gebruiken.",
+          "en": "They agreed on two rehearsal periods, and on the other days he would use a rehearsal room."
+        },
+        {
+          "nl": "Een maand later zat Fien in het publiek en kende ze het familiegeheim al voordat het eerste doek opging.",
+          "en": "A month later Fien sat in the audience and already knew the family secret before the first curtain rose."
+        }
+      ],
+      "words": [
+        {
+          "term": "zich bemoeien met",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "tussenkomen in iets van een ander",
+            "en": "to interfere in"
+          },
+          "example": {
+            "nl": "Ze wilde zich niet bemoeien met zijn privéleven, maar kon zich tijdens haar avondlessen niet meer concentreren.",
+            "en": "She did not want to interfere in his private life, but could no longer concentrate during her evening classes."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de toneeltekst",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de geschreven tekst van een toneelstuk",
+            "en": "play script"
+          },
+          "example": {
+            "nl": "Op tafel lag een toneeltekst waarin dezelfde familienaam voorkwam die ze door de muur had gehoord.",
+            "en": "On the table lay a play script containing the same surname she had heard through the wall."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "hardop",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "met een hoorbare stem",
+            "en": "aloud"
+          },
+          "example": {
+            "nl": "Hij legde uit dat hij na jaren opnieuw zou optreden en alle rollen hardop inoefende.",
+            "en": "He explained that he would perform again after years away and was rehearsing all the parts aloud."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarin verwijst terug",
+            "en": "Wherein refers back"
+          },
+          "explanation": {
+            "nl": "Waarin verwijst hier naar de toneeltekst die de naam bevat.",
+            "en": "Waarin refers here to the play script containing the name."
+          },
+          "examples": [
+            {
+              "nl": "Op tafel lag een toneeltekst waarin dezelfde familienaam voorkwam die ze door de muur had gehoord.",
+              "en": "On the table lay a play script containing the same surname she had heard through the wall."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verklaart de luide ruzies?",
+            "en": "What explains the loud arguments?"
+          },
+          "options": [
+            {
+              "nl": "De buur oefent een toneelstuk.",
+              "en": "The neighbour is rehearsing a play."
+            },
+            {
+              "nl": "De televisie is defect.",
+              "en": "The television is faulty."
+            },
+            {
+              "nl": "Een familie belt elke avond.",
+              "en": "A family calls every evening."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De tekst op tafel bevat de naam die Fien al heeft gehoord.",
+            "en": "The script on the table contains the name Fien has already heard."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe houdt hun afspraak rekening met beiden?",
+            "en": "How does their arrangement consider both people?"
+          },
+          "options": [
+            {
+              "nl": "Fien stopt met studeren.",
+              "en": "Fien stops studying."
+            },
+            {
+              "nl": "Ze spreken voortaan niet meer.",
+              "en": "They stop speaking to each other."
+            },
+            {
+              "nl": "Hij oefent op afgesproken uren of elders.",
+              "en": "He rehearses at agreed times or elsewhere."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De oefentijden worden afgestemd op haar lessen.",
+            "en": "The rehearsal periods are coordinated with her classes."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-sluitertijd-aan-de-kust",
+      "topic_id": "photography",
+      "title": {
+        "nl": "Een seconde aan zee",
+        "en": "One second by the sea"
+      },
+      "plot_key": "A photographer learns a competition entry's motion blur records her father's characteristic hand movement rather than ruining their final walk together.",
+      "lines": [
+        {
+          "nl": "Tijdens een weekend aan zee probeerde fotografe Tine een scherpe foto te maken van haar vader tegen de ondergaande zon.",
+          "en": "During a weekend at the coast, photographer Tine tried to take a sharp photograph of her father against the setting sun."
+        },
+        {
+          "nl": "Hij bleef echter met zijn wandelstok naar boten wijzen, zodat zijn arm op elk beeld een wazige streep werd.",
+          "en": "However, he kept pointing at boats with his walking stick, so his arm became a blurred streak in every image."
+        },
+        {
+          "nl": "Tine vroeg hem geduldig stil te staan, maar hij wilde juist uitleggen welk schip vroeger vanuit Oostende had gevaren.",
+          "en": "Tine patiently asked him to stand still, but he wanted to explain which ship had once sailed from Ostend."
+        },
+        {
+          "nl": "Na zijn overlijden bekeek ze de reeks opnieuw voor een kleine fotowedstrijd rond het thema beweging.",
+          "en": "After his death she revisited the series for a small photography competition on the theme of movement."
+        },
+        {
+          "nl": "Ze koos eerst het enige scherpe portret, waarop hij zichtbaar moeite deed om te gehoorzamen.",
+          "en": "She first selected the only sharp portrait, in which he was visibly struggling to obey."
+        },
+        {
+          "nl": "Haar zus herkende hun vader veel sterker in het mislukte beeld met de uitgestrekte arm en de nauwelijks zichtbare wandelstok.",
+          "en": "Her sister recognised their father much more strongly in the failed image with the outstretched arm and barely visible walking stick."
+        },
+        {
+          "nl": "Tine drukte die foto groter af en zag hoe de lichtstreep precies naar een boot aan de horizon wees.",
+          "en": "Tine made a larger print of that photograph and saw how the streak of light pointed directly towards a boat on the horizon."
+        },
+        {
+          "nl": "Ze stuurde niet het keurige portret in, maar de beweging waarmee hij zijn hele leven verhalen had ondersteund.",
+          "en": "She submitted not the tidy portrait, but the movement with which he had supported stories all his life."
+        },
+        {
+          "nl": "De jury koos een ander werk; toch hing Tine na de wedstrijd haar eigen inzending boven haar bureau.",
+          "en": "The jury chose another work; nevertheless, after the competition Tine hung her own entry above her desk."
+        },
+        {
+          "nl": "Wat technisch mislukt leek, herinnerde haar beter aan zijn aanwezigheid dan de foto waarop hij eindelijk had stilgestaan.",
+          "en": "What had seemed a technical failure reminded her more vividly of his presence than the photograph in which he had finally stood still."
+        }
+      ],
+      "words": [
+        {
+          "term": "wazig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet scherp of duidelijk zichtbaar",
+            "en": "blurred"
+          },
+          "example": {
+            "nl": "Hij bleef echter met zijn wandelstok naar boten wijzen, zodat zijn arm op elk beeld een wazige streep werd.",
+            "en": "However, he kept pointing at boats with his walking stick, so his arm became a blurred streak in every image."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "gehoorzamen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "doen wat iemand vraagt of beveelt",
+            "en": "to obey"
+          },
+          "example": {
+            "nl": "Ze koos eerst het enige scherpe portret, waarop hij zichtbaar moeite deed om te gehoorzamen.",
+            "en": "She first selected the only sharp portrait, in which he was visibly struggling to obey."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de inzending",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een werk dat voor een wedstrijd wordt ingestuurd",
+            "en": "competition entry"
+          },
+          "example": {
+            "nl": "De jury koos een ander werk; toch hing Tine na de wedstrijd haar eigen inzending boven haar bureau.",
+            "en": "The jury chose another work; nevertheless, after the competition Tine hung her own entry above her desk."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet ... maar voor een andere keuze",
+            "en": "Not ... but for an alternative choice"
+          },
+          "explanation": {
+            "nl": "De constructie zet een verworpen mogelijkheid tegenover de gekozen mogelijkheid.",
+            "en": "The construction contrasts a rejected possibility with the chosen possibility."
+          },
+          "examples": [
+            {
+              "nl": "Ze stuurde niet het keurige portret in, maar de beweging waarmee hij zijn hele leven verhalen had ondersteund.",
+              "en": "She submitted not the tidy portrait, but the movement with which he had supported stories all his life."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kiest Tine uiteindelijk de bewogen foto?",
+            "en": "Why does Tine eventually choose the blurred photograph?"
+          },
+          "options": [
+            {
+              "nl": "Ze herkent daarin de manier waarop haar vader verhalen vertelde.",
+              "en": "She recognises in it the way her father told stories."
+            },
+            {
+              "nl": "De zon staat daar hoger.",
+              "en": "The sun is higher in it."
+            },
+            {
+              "nl": "De jury eist een fout beeld.",
+              "en": "The jury demands a flawed image."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De armbeweging past bij zijn gewone manier van vertellen.",
+            "en": "The arm movement fits his usual way of telling stories."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke tegenstelling draagt de afloop?",
+            "en": "Which contrast shapes the ending?"
+          },
+          "options": [
+            {
+              "nl": "Een scherpe foto blijkt vervalst.",
+              "en": "A sharp photograph turns out to be forged."
+            },
+            {
+              "nl": "De wedstrijd verliest zij, maar de foto krijgt persoonlijke waarde.",
+              "en": "She loses the competition, but the photograph gains personal value."
+            },
+            {
+              "nl": "Haar zus weigert de foto te bekijken.",
+              "en": "Her sister refuses to look at the photograph."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De jury kiest anders, terwijl Tine juist deze herinnering boven haar bureau hangt.",
+            "en": "The jury chooses differently, while Tine hangs this very memory above her desk."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-nachtelijke-trein-deken",
+      "topic_id": "travel",
+      "title": {
+        "nl": "Een deken voor twee",
+        "en": "A blanket for two"
+      },
+      "plot_key": "Strangers on a delayed night train misunderstand each other's drawings until they discover a concrete shared wish.",
+      "lines": [
+        {
+          "nl": "Toen de nachttrein onverwacht buiten het station bleef staan, trok Ada haar jas dichter om zich heen.",
+          "en": "When the night train unexpectedly stopped outside the station, Ada pulled her coat closer around her."
+        },
+        {
+          "nl": "De reiziger tegenover haar bood een deken aan, maar sprak een taal die ze niet begreep.",
+          "en": "The traveller opposite offered her a blanket, but spoke a language she did not understand."
+        },
+        {
+          "nl": "Ze bedankte hem met een glimlach en tekende op haar telefoon een zon om te vragen waar hij vandaan kwam.",
+          "en": "She thanked him with a smile and drew a sun on her phone to ask where he came from."
+        },
+        {
+          "nl": "Hij tekende een berg, daarna een hond en vervolgens een zeer grote verjaardagstaart.",
+          "en": "He drew a mountain, then a dog and then a very large birthday cake."
+        },
+        {
+          "nl": "Ada begon een ingewikkeld verhaal te vermoeden over een verjaardag in een bergdorp.",
+          "en": "Ada began to imagine a complicated story about a birthday in a mountain village."
+        },
+        {
+          "nl": "Na een uur vond de treinbegeleider een collega die hun beide talen sprak.",
+          "en": "After an hour the train conductor found a colleague who spoke both their languages."
+        },
+        {
+          "nl": "De man bleek geen toerist op weg naar een feest, maar een decorbouwer voor een kinderprogramma.",
+          "en": "The man turned out not to be a tourist heading to a party, but a set builder for a children's programme."
+        },
+        {
+          "nl": "Hij had Ada de voorwerpen getoond die hij de volgende dag nog moest afwerken.",
+          "en": "He had shown Ada the objects he still had to finish the following day."
+        },
+        {
+          "nl": "Ze lachten om hun verschillende verhalen en gaven de telefoon opnieuw aan elkaar door.",
+          "en": "They laughed about their different stories and passed the phone back and forth again."
+        },
+        {
+          "nl": "Toen de trein eindelijk reed, tekende Ada twee koppen koffie; deze keer begrepen ze elkaar onmiddellijk.",
+          "en": "When the train finally moved, Ada drew two cups of coffee; this time they understood each other immediately."
+        }
+      ],
+      "words": [
+        {
+          "term": "de deken",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een groot stuk stof om warm te blijven",
+            "en": "blanket"
+          },
+          "example": {
+            "nl": "De reiziger tegenover haar bood een deken aan, maar sprak een taal die ze niet begreep.",
+            "en": "The traveller opposite offered her a blanket, but spoke a language she did not understand."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "vermoeden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "denken dat iets misschien zo is",
+            "en": "to suspect"
+          },
+          "example": {
+            "nl": "Ada begon een ingewikkeld verhaal te vermoeden over een verjaardag in een bergdorp.",
+            "en": "Ada began to imagine a complicated story about a birthday in a mountain village."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de decorbouwer",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die achtergronden en voorwerpen voor voorstellingen maakt",
+            "en": "set builder"
+          },
+          "example": {
+            "nl": "De man bleek geen toerist op weg naar een feest, maar een decorbouwer voor een kinderprogramma.",
+            "en": "The man turned out not to be a tourist heading to a party, but a set builder for a children's programme."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Geen ... maar ...",
+            "en": "Not ... but ..."
+          },
+          "explanation": {
+            "nl": "Met geen ... maar ... corrigeer je een eerdere veronderstelling.",
+            "en": "Geen ... maar ... corrects an earlier assumption."
+          },
+          "examples": [
+            {
+              "nl": "De man bleek geen toerist op weg naar een feest, maar een decorbouwer voor een kinderprogramma.",
+              "en": "The man turned out not to be a tourist heading to a party, but a set builder for a children's programme."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat stellen de tekeningen van de man voor?",
+            "en": "What do the man's drawings represent?"
+          },
+          "options": [
+            {
+              "nl": "Zijn familiegeschiedenis.",
+              "en": "His family history."
+            },
+            {
+              "nl": "Een reisroute.",
+              "en": "A travel route."
+            },
+            {
+              "nl": "Voorwerpen voor zijn werk.",
+              "en": "Objects for his work."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij moet die decorstukken de volgende dag afwerken.",
+            "en": "He has to finish those set pieces the following day."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom werkt de laatste tekening beter?",
+            "en": "Why does the last drawing work better?"
+          },
+          "options": [
+            {
+              "nl": "Koffie is in hun gedeelde situatie direct duidelijk.",
+              "en": "Coffee is immediately clear in their shared situation."
+            },
+            {
+              "nl": "Ada spreekt nu zijn taal.",
+              "en": "Ada now speaks his language."
+            },
+            {
+              "nl": "De trein rijdt sneller.",
+              "en": "The train is moving faster."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De eerdere tekeningen misten context; twee koppen koffie passen bij het moment.",
+            "en": "The earlier drawings lacked context; two cups of coffee fit the moment."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-brief-uit-de-jas",
+      "topic_id": "childhood-memories",
+      "title": {
+        "nl": "De brief uit de winterjas",
+        "en": "The letter in the winter coat"
+      },
+      "plot_key": "An unread childhood farewell hidden in a coat lining overturns a woman's memory of abandonment.",
+      "lines": [
+        {
+          "nl": "Bij het leegmaken van haar ouderlijk huis vond Ines haar oude winterjas achter in een kast.",
+          "en": "While clearing out her childhood home, Ines found her old winter coat at the back of a wardrobe."
+        },
+        {
+          "nl": "In een gescheurde voering zat een dichtgevouwen brief waarop haar naam in kinderletters stond.",
+          "en": "In a torn lining there was a folded letter with her name written in a child's handwriting."
+        },
+        {
+          "nl": "De brief was van haar vroegere buurjongen, die plotseling verhuisd was toen ze elf waren.",
+          "en": "The letter was from the boy who used to live next door and had suddenly moved away when they were eleven."
+        },
+        {
+          "nl": "Ze had jarenlang gedacht dat hij zonder afscheid vertrokken was omdat hun vriendschap hem weinig betekende.",
+          "en": "For years she had thought he had left without saying goodbye because their friendship meant little to him."
+        },
+        {
+          "nl": "Nu las ze dat hij haar nog één keer bij de oude wilg had willen ontmoeten.",
+          "en": "Now she read that he had wanted to meet her once more by the old willow tree."
+        },
+        {
+          "nl": "Waarschijnlijk had iemand de brief in haar jas gestoken, waarna hij door het gat in de voering was gegleden.",
+          "en": "Someone had probably slipped the letter into her coat, after which it had slid through the hole in the lining."
+        },
+        {
+          "nl": "Zijn nieuwe adres stond erbij, maar op die plaats lag intussen een winkelcentrum.",
+          "en": "His new address was included, but a shopping centre now stood at that location."
+        },
+        {
+          "nl": "Via een gezamenlijke kennis vond ze uiteindelijk een actueel e-mailadres.",
+          "en": "Through a mutual acquaintance she eventually found a current email address."
+        },
+        {
+          "nl": "Ze schreef niet meteen over de verloren jaren, maar vroeg of hij zich de wilg nog herinnerde.",
+          "en": "She did not immediately write about the lost years, but asked whether he still remembered the willow."
+        },
+        {
+          "nl": "Het antwoord kwam dezelfde avond: hij had daar toen tot het donker gewacht.",
+          "en": "The reply came that same evening: he had waited there until dark."
+        }
+      ],
+      "words": [
+        {
+          "term": "de voering",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de binnenste laag stof van een kledingstuk",
+            "en": "lining"
+          },
+          "example": {
+            "nl": "In een gescheurde voering zat een dichtgevouwen brief waarop haar naam in kinderletters stond.",
+            "en": "In a torn lining there was a folded letter with her name written in a child's handwriting."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "glijden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "soepel over of langs iets bewegen",
+            "en": "to slide"
+          },
+          "example": {
+            "nl": "Waarschijnlijk had iemand de brief in haar jas gestoken, waarna hij door het gat in de voering was gegleden.",
+            "en": "Someone had probably slipped the letter into her coat, after which it had slid through the hole in the lining."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de kennis",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand die je kent zonder erg bevriend te zijn",
+            "en": "acquaintance"
+          },
+          "example": {
+            "nl": "Via een gezamenlijke kennis vond ze uiteindelijk een actueel e-mailadres.",
+            "en": "Through a mutual acquaintance she eventually found a current email address."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Een eerdere overtuiging",
+            "en": "An earlier belief"
+          },
+          "explanation": {
+            "nl": "De voltooid verleden tijd plaatst haar overtuiging vóór de ontdekking van de brief.",
+            "en": "The past perfect places her belief before the discovery of the letter."
+          },
+          "examples": [
+            {
+              "nl": "Ze had jarenlang gedacht dat hij zonder afscheid vertrokken was omdat hun vriendschap hem weinig betekende.",
+              "en": "For years she had thought he had left without saying goodbye because their friendship meant little to him."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom heeft Ines de brief waarschijnlijk gemist?",
+            "en": "Why did Ines probably miss the letter?"
+          },
+          "options": [
+            {
+              "nl": "Hij was nooit geschreven.",
+              "en": "It had never been written."
+            },
+            {
+              "nl": "Ze woonde toen elders.",
+              "en": "She lived elsewhere then."
+            },
+            {
+              "nl": "Hij was in de voering verdwenen.",
+              "en": "It had disappeared into the lining."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het gat in de voering verklaart waar hij verborgen zat.",
+            "en": "The hole in the lining explains where it was hidden."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke gedachte moet ze herzien?",
+            "en": "Which idea must she reconsider?"
+          },
+          "options": [
+            {
+              "nl": "Dat de wilg een boom was.",
+              "en": "That the willow was a tree."
+            },
+            {
+              "nl": "Dat ze toen elf was.",
+              "en": "That she was eleven then."
+            },
+            {
+              "nl": "Dat haar vriend zonder afscheid wilde vertrekken.",
+              "en": "That her friend wanted to leave without saying goodbye."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zijn uitnodiging en zijn wachten tonen dat hij wel afscheid wilde nemen.",
+            "en": "His invitation and his waiting show that he did want to say goodbye."
+          }
+        }
+      ]
+    }
+  ]
+}

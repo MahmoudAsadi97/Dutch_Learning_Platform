@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-naam-op-het-werklokaal",
+      "topic_id": "work-careers",
+      "title": {
+        "nl": "De naam op het werklokaal",
+        "en": "The name on the workshop"
+      },
+      "plot_key": "A departing craftworker assumes his apprentice will keep the shop unchanged, then negotiates what passing on a trade should preserve.",
+      "lines": [
+        {
+          "nl": "Toen meubelmaker Julien zijn atelier wilde overdragen aan zijn voormalige leerlinge Aya, verwachtte hij vooral gesprekken over machines en een haalbare prijs.",
+          "en": "When furniture maker Julien wanted to transfer his workshop to his former apprentice Aya, he mainly expected discussions about machines and an affordable price."
+        },
+        {
+          "nl": "Aya vroeg echter eerst of zij de naam boven de deur mocht veranderen, waarop hij veel langer zweeg dan bij de cijfers.",
+          "en": "Aya, however, first asked whether she could change the name above the door, at which he remained silent far longer than during the figures."
+        },
+        {
+          "nl": "Onder die naam had hij veertig jaar gewerkt en hij vond het alsof zij zijn hele loopbaan samen met de oude letters wilde verwijderen.",
+          "en": "He had worked under that name for forty years and felt as if she wanted to remove his whole career along with the old lettering."
+        },
+        {
+          "nl": "Zij vertelde dat klanten haar anders misschien altijd als degene zouden blijven zien die alleen zijn werk voortzette.",
+          "en": "She explained that customers might otherwise always see her as merely the person continuing his work."
+        },
+        {
+          "nl": "Julien keek naar een kast die Aya zelf had ontworpen en merkte hoe weinig zij nog leek op de voorbeelden waarmee hij haar had opgeleid.",
+          "en": "Julien looked at a cabinet Aya had designed herself and noticed how little it still resembled the examples with which he had trained her."
+        },
+        {
+          "nl": "Ze spraken af het oude naambord binnen op te hangen naast foto's van het atelier, terwijl buiten haar eigen naam kwam te staan.",
+          "en": "They agreed to hang the old name sign inside beside photographs of the workshop, while her own name would appear outside."
+        },
+        {
+          "nl": "Bij de opening liet Julien zich niet als eigenaar voorstellen, maar vertelde hij een klant waarom hij juist haar de sleutels had durven geven.",
+          "en": "At the opening Julien did not introduce himself as the owner, but told a customer why he had dared to give her the keys specifically."
+        },
+        {
+          "nl": "De werkplaats bleef bestaan doordat niet alles hetzelfde hoefde te blijven, al miste hij onderweg naar huis toch de oude letters.",
+          "en": "The workshop survived because not everything had to stay the same, although on his way home he still missed the old lettering."
+        }
+      ],
+      "words": [
+        {
+          "term": "overdragen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "aan iemand anders in beheer of bezit geven",
+            "en": "to transfer or hand over"
+          },
+          "example": {
+            "nl": "Toen meubelmaker Julien zijn atelier wilde overdragen aan zijn voormalige leerlinge Aya, verwachtte hij vooral gesprekken over machines en een haalbare prijs.",
+            "en": "When furniture maker Julien wanted to transfer his workshop to his former apprentice Aya, he mainly expected discussions about machines and an affordable price."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de loopbaan",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het verloop van iemands beroepsleven",
+            "en": "career"
+          },
+          "example": {
+            "nl": "Onder die naam had hij veertig jaar gewerkt en hij vond het alsof zij zijn hele loopbaan samen met de oude letters wilde verwijderen.",
+            "en": "He had worked under that name for forty years and felt as if she wanted to remove his whole career along with the old lettering."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "voortzetten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "doorgaan met iets dat al begonnen is",
+            "en": "to continue"
+          },
+          "example": {
+            "nl": "Zij vertelde dat klanten haar anders misschien altijd als degene zouden blijven zien die alleen zijn werk voortzette.",
+            "en": "She explained that customers might otherwise always see her as merely the person continuing his work."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Doordat voor een oorzaak",
+            "en": "Because for a cause"
+          },
+          "explanation": {
+            "nl": "Doordat verbindt het voortbestaan met de mogelijkheid om veranderingen toe te laten.",
+            "en": "Doordat connects continued existence with allowing change."
+          },
+          "examples": [
+            {
+              "nl": "De werkplaats bleef bestaan doordat niet alles hetzelfde hoefde te blijven, al miste hij onderweg naar huis toch de oude letters.",
+              "en": "The workshop survived because not everything had to stay the same, although on his way home he still missed the old lettering."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil Aya een eigen naam op de gevel?",
+            "en": "Why does Aya want her own name on the facade?"
+          },
+          "options": [
+            {
+              "nl": "Ze kent Juliens naam niet.",
+              "en": "She does not know Julien's name."
+            },
+            {
+              "nl": "Ze wil niet alleen als voortzetter van Julien worden gezien.",
+              "en": "She does not want to be seen only as Julien's successor."
+            },
+            {
+              "nl": "Ze wil alle oude machines weggeven.",
+              "en": "She wants to give away every old machine."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze zoekt ruimte voor een eigen beroepsidentiteit.",
+            "en": "She seeks room for a professional identity of her own."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke emotie blijft ondanks de afspraak bestaan?",
+            "en": "What emotion remains despite the arrangement?"
+          },
+          "options": [
+            {
+              "nl": "Aya weigert de opening.",
+              "en": "Aya rejects the opening."
+            },
+            {
+              "nl": "Iedereen wantrouwt de meubels.",
+              "en": "Everyone distrusts the furniture."
+            },
+            {
+              "nl": "Julien mist het vertrouwde oude teken.",
+              "en": "Julien misses the familiar old sign."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De laatste zin laat zijn gemis naast het verstandige besluit staan.",
+            "en": "The final sentence places his sense of loss alongside the sensible decision."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-taart-met-een-zoute-kant",
+      "topic_id": "food-cooking",
+      "title": {
+        "nl": "De taart met een zoute kant",
+        "en": "The cake with a salty side"
+      },
+      "plot_key": "A sibling's suspected baking sabotage is revealed as a reused unwashed measuring cup, and an anxious family rivalry is named instead of defended through accusation.",
+      "lines": [
+        {
+          "nl": "Voor de verjaardag van hun vader bakten broers Jens en Mathis elk een taart, hoewel alleen Jens zichzelf in de familie de kok noemde.",
+          "en": "For their father's birthday, brothers Jens and Mathis each baked a cake, although only Jens called himself the cook in the family."
+        },
+        {
+          "nl": "Toen de vulling van Jens opvallend zout smaakte, keek hij onmiddellijk naar het potje dat Mathis vlak daarvoor had verplaatst.",
+          "en": "When Jens's filling tasted remarkably salty, he immediately looked at the jar Mathis had moved shortly before."
+        },
+        {
+          "nl": "Hij maakte een scherpe grap over iemand die blijkbaar alleen met sabotage een wedstrijd kon winnen.",
+          "en": "He made a sharp joke about someone who apparently could only win a competition through sabotage."
+        },
+        {
+          "nl": "Mathis liep boos naar buiten, terwijl hun vader de gebruikte maatbekers begon af te wassen omdat er toch nog gasten kwamen.",
+          "en": "Mathis stormed outside while their father began washing the used measuring jugs because guests were still coming."
+        },
+        {
+          "nl": "In één beker vond hij resten van een zout mengsel dat Jens eerder voor een ander gerecht had klaargemaakt.",
+          "en": "In one jug he found traces of a salty mixture Jens had prepared earlier for another dish."
+        },
+        {
+          "nl": "Jens had de beker zonder te spoelen opnieuw gebruikt en de verklaring gezocht bij degene op wie hij al de hele middag jaloers was.",
+          "en": "Jens had reused the jug without rinsing it and looked for an explanation in the person he had been jealous of all afternoon."
+        },
+        {
+          "nl": "Hij ging naar buiten om zich te verontschuldigen, zonder de eerste opmerking opnieuw als onschuldige humor voor te stellen.",
+          "en": "He went outside to apologise without presenting the first remark as harmless humour again."
+        },
+        {
+          "nl": "Binnen aten ze Mathis' taart; Jens vertelde zelf waarom er maar één overbleef, wat hem moeilijker viel dan het bakken van een nieuwe.",
+          "en": "Inside they ate Mathis's cake; Jens himself explained why only one remained, which he found harder than baking a new one."
+        }
+      ],
+      "words": [
+        {
+          "term": "de sabotage",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het opzettelijk verstoren van iemands werk of plan",
+            "en": "sabotage"
+          },
+          "example": {
+            "nl": "Hij maakte een scherpe grap over iemand die blijkbaar alleen met sabotage een wedstrijd kon winnen.",
+            "en": "He made a sharp joke about someone who apparently could only win a competition through sabotage."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "spoelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met water schoonmaken",
+            "en": "to rinse"
+          },
+          "example": {
+            "nl": "Jens had de beker zonder te spoelen opnieuw gebruikt en de verklaring gezocht bij degene op wie hij al de hele middag jaloers was.",
+            "en": "Jens had reused the jug without rinsing it and looked for an explanation in the person he had been jealous of all afternoon."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "jaloers",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "ontevreden doordat een ander iets heeft of kan",
+            "en": "jealous"
+          },
+          "example": {
+            "nl": "Jens had de beker zonder te spoelen opnieuw gebruikt en de verklaring gezocht bij degene op wie hij al de hele middag jaloers was.",
+            "en": "Jens had reused the jug without rinsing it and looked for an explanation in the person he had been jealous of all afternoon."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te bij een overgeslagen stap",
+            "en": "Without doing, with a skipped step"
+          },
+          "explanation": {
+            "nl": "Zonder te spoelen noemt de handeling die bij het hergebruik ontbrak.",
+            "en": "Zonder te spoelen names the action missing when he reused it."
+          },
+          "examples": [
+            {
+              "nl": "Jens had de beker zonder te spoelen opnieuw gebruikt en de verklaring gezocht bij degene op wie hij al de hele middag jaloers was.",
+              "en": "Jens had reused the jug without rinsing it and looked for an explanation in the person he had been jealous of all afternoon."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat veroorzaakt de zoute smaak?",
+            "en": "What causes the salty taste?"
+          },
+          "options": [
+            {
+              "nl": "Jens gebruikt een beker met resten van zijn eigen eerdere mengsel.",
+              "en": "Jens uses a jug containing traces of his own earlier mixture."
+            },
+            {
+              "nl": "Een gast verandert het recept.",
+              "en": "A guest changes the recipe."
+            },
+            {
+              "nl": "Mathis verwisselt bewust de ingrediënten.",
+              "en": "Mathis deliberately swaps the ingredients."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De vader vindt de resten bij het afwassen.",
+            "en": "Their father finds the traces while washing up."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat maakt zijn verontschuldiging oprechter?",
+            "en": "What makes his apology more sincere?"
+          },
+          "options": [
+            {
+              "nl": "Hij verbergt dat er een tweede taart was.",
+              "en": "He hides that there was a second cake."
+            },
+            {
+              "nl": "Hij legt de schuld bij het bezoek.",
+              "en": "He blames the visitors."
+            },
+            {
+              "nl": "Hij noemt zijn beschuldiging geen onschuldige grap meer.",
+              "en": "He no longer calls his accusation an innocent joke."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij erkent de eigen fout en vertelt die zelf aan de familie.",
+            "en": "He acknowledges his own mistake and tells the family himself."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-bijrol-met-een-groot-geheim",
+      "topic_id": "movies-tv",
+      "title": {
+        "nl": "Een bijrol met een groot geheim",
+        "en": "A minor role with a big secret"
+      },
+      "plot_key": "A shy film extra avoids telling her family about her screen role until a tiny final shot gives her daughter a new view of an apparently ordinary working mother.",
+      "lines": [
+        {
+          "nl": "Overdag werkte Eva aan een onthaalbalie, maar in haar verlof speelde zij voor het eerst een kleine bijrol in een film die in Oostende werd opgenomen.",
+          "en": "During the day Eva worked at a reception desk, but during her leave she played a small supporting role for the first time in a film shot in Ostend."
+        },
+        {
+          "nl": "Ze vertelde thuis dat ze een cursus volgde, omdat zij bang was dat haar familie haar ambitie grappig zou vinden.",
+          "en": "At home she said she was taking a course because she feared her family would find her ambition amusing."
+        },
+        {
+          "nl": "Na weken wachten nodigde zij haar dochter uit voor de première, zonder uit te leggen waarom juist die film zo belangrijk voor haar was.",
+          "en": "After weeks of waiting she invited her daughter to the premiere without explaining why that particular film mattered so much to her."
+        },
+        {
+          "nl": "In de eerste scène verdween Eva's personage al na enkele seconden achter een deur, waardoor zij dacht dat de avond een pijnlijke vergissing zou worden.",
+          "en": "In the first scene Eva's character disappeared behind a door after only a few seconds, making her think the evening would become a painful mistake."
+        },
+        {
+          "nl": "Haar dochter fluisterde echter verbaasd dat haar moeder anders had gekeken dan ooit aan de keukentafel, alsof er een onbekend leven open was gegaan.",
+          "en": "Her daughter, however, whispered in surprise that her mother had looked different from ever before at the kitchen table, as though an unknown life had opened."
+        },
+        {
+          "nl": "Pas na de voorstelling vertelde Eva over de repetities, de afgewezen eerdere audities en de lange middagen waarop vooral gewacht werd.",
+          "en": "Only after the screening did Eva describe the rehearsals, the earlier rejected auditions and the long afternoons mainly spent waiting."
+        },
+        {
+          "nl": "Ze werd geen bekende actrice en stond op maandag opnieuw aan de balie, waar nauwelijks iemand de film had gezien.",
+          "en": "She did not become a famous actor and was back at the desk on Monday, where hardly anyone had seen the film."
+        },
+        {
+          "nl": "Toch vroeg haar dochter voortaan soms wat zij die week voor zichzelf wilde proberen, in plaats van alleen wat er voor het gezin geregeld moest worden.",
+          "en": "Yet from then on her daughter sometimes asked what she wanted to try for herself that week instead of only what needed arranging for the family."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bijrol",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een kleinere rol naast de hoofdrollen",
+            "en": "supporting role"
+          },
+          "example": {
+            "nl": "Overdag werkte Eva aan een onthaalbalie, maar in haar verlof speelde zij voor het eerst een kleine bijrol in een film die in Oostende werd opgenomen.",
+            "en": "During the day Eva worked at a reception desk, but during her leave she played a small supporting role for the first time in a film shot in Ostend."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de ambitie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een sterk verlangen om iets te bereiken",
+            "en": "ambition"
+          },
+          "example": {
+            "nl": "Ze vertelde thuis dat ze een cursus volgde, omdat zij bang was dat haar familie haar ambitie grappig zou vinden.",
+            "en": "At home she said she was taking a course because she feared her family would find her ambition amusing."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "afwijzen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "niet kiezen of niet aanvaarden",
+            "en": "to reject"
+          },
+          "example": {
+            "nl": "Pas na de voorstelling vertelde Eva over de repetities, de afgewezen eerdere audities en de lange middagen waarop vooral gewacht werd.",
+            "en": "Only after the screening did Eva describe the rehearsals, the earlier rejected auditions and the long afternoons mainly spent waiting."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "In plaats van alleen",
+            "en": "Instead of only"
+          },
+          "explanation": {
+            "nl": "In plaats van contrasteert de oude vraag met een ruimere nieuwe belangstelling.",
+            "en": "In plaats van contrasts the old question with a broader new interest."
+          },
+          "examples": [
+            {
+              "nl": "Toch vroeg haar dochter voortaan soms wat zij die week voor zichzelf wilde proberen, in plaats van alleen wat er voor het gezin geregeld moest worden.",
+              "en": "Yet from then on her daughter sometimes asked what she wanted to try for herself that week instead of only what needed arranging for the family."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom verbergt Eva eerst haar acteerwerk?",
+            "en": "Why does Eva initially hide her acting?"
+          },
+          "options": [
+            {
+              "nl": "Ze herkent de stad niet.",
+              "en": "She does not recognise the city."
+            },
+            {
+              "nl": "De regisseur verbiedt familiecontact.",
+              "en": "The director bans family contact."
+            },
+            {
+              "nl": "Ze vreest dat haar ambitie niet ernstig wordt genomen.",
+              "en": "She fears her ambition will not be taken seriously."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Ze is bang dat haar familie het grappig zal vinden.",
+            "en": "She is afraid her family will find it amusing."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke echte verandering levert de kleine rol op?",
+            "en": "What real change does the small role bring?"
+          },
+          "options": [
+            {
+              "nl": "Iedereen kent haar naam.",
+              "en": "Everyone knows her name."
+            },
+            {
+              "nl": "Ze hoeft nooit meer te werken.",
+              "en": "She never has to work again."
+            },
+            {
+              "nl": "Haar dochter ziet meer dan alleen haar gezinsrol.",
+              "en": "Her daughter sees more than just her family role."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De dochter vraagt nu ook naar wat Eva voor zichzelf wil.",
+            "en": "Her daughter now also asks what Eva wants for herself."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-roman-met-een-verloren-niet",
+      "topic_id": "books-reading",
+      "title": {
+        "nl": "De roman met een verloren niet",
+        "en": "The novel with a missing not"
+      },
+      "plot_key": "A reading group's angry interpretation of a character hinges on a missing negation in one print edition, changing textual certainty without erasing legitimate disagreement.",
+      "lines": [
+        {
+          "nl": "In de leesgroep verdedigde Abel als enige de hoofdpersoon van een roman die volgens de anderen haar zus bewust in de steek liet.",
+          "en": "In the reading group Abel alone defended the main character of a novel who, according to the others, deliberately abandoned her sister."
+        },
+        {
+          "nl": "Hij begreep hun boosheid niet en las de beslissende zin voor, waarin het personage juist weigerde zonder haar zus te vertrekken.",
+          "en": "He did not understand their anger and read out the decisive sentence in which the character actually refused to leave without her sister."
+        },
+        {
+          "nl": "De anderen onderbraken hem, omdat in hun exemplaren één klein woord ontbrak en de keuze daardoor precies het tegenovergestelde betekende.",
+          "en": "The others interrupted him because their copies lacked one small word, making the choice mean exactly the opposite."
+        },
+        {
+          "nl": "Abel had een latere druk gekocht, waarin de uitgever een zetfout had hersteld die nergens op de omslag vermeld stond.",
+          "en": "Abel had bought a later printing in which the publisher had corrected a typesetting error mentioned nowhere on the cover."
+        },
+        {
+          "nl": "De groep legde de bladzijden naast elkaar en merkte hoe stellig zij over bedoelingen hadden geoordeeld op basis van verschillende teksten.",
+          "en": "The group placed the pages side by side and noticed how categorically they had judged intentions on the basis of different texts."
+        },
+        {
+          "nl": "Niet elk meningsverschil verdween, want ook met het woord niet bleef het personage soms hard en ontwijkend tegenover haar zus.",
+          "en": "Not every disagreement disappeared, because even with the word not the character sometimes remained harsh and evasive towards her sister."
+        },
+        {
+          "nl": "Wel werd duidelijk welke discussie over interpretatie ging en welke alleen door een fout in de gedrukte zin was ontstaan.",
+          "en": "What did become clear was which discussion concerned interpretation and which had arisen only from an error in the printed sentence."
+        },
+        {
+          "nl": "Bij het volgende boek noteerden ze naast de titel ook de gebruikte editie, zonder te verwachten dat gelijke bladzijden automatisch gelijke lezers zouden maken.",
+          "en": "With the next book they recorded the edition used beside the title, without expecting identical pages automatically to make identical readers."
+        }
+      ],
+      "words": [
+        {
+          "term": "de zetfout",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een fout die bij het klaarmaken van druktekst ontstaat",
+            "en": "typesetting error"
+          },
+          "example": {
+            "nl": "Abel had een latere druk gekocht, waarin de uitgever een zetfout had hersteld die nergens op de omslag vermeld stond.",
+            "en": "Abel had bought a later printing in which the publisher had corrected a typesetting error mentioned nowhere on the cover."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "ontwijkend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet rechtstreeks antwoordend of reagerend",
+            "en": "evasive"
+          },
+          "example": {
+            "nl": "Niet elk meningsverschil verdween, want ook met het woord niet bleef het personage soms hard en ontwijkend tegenover haar zus.",
+            "en": "Not every disagreement disappeared, because even with the word not the character sometimes remained harsh and evasive towards her sister."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de editie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een bepaalde uitgegeven versie van een tekst",
+            "en": "edition"
+          },
+          "example": {
+            "nl": "Bij het volgende boek noteerden ze naast de titel ook de gebruikte editie, zonder te verwachten dat gelijke bladzijden automatisch gelijke lezers zouden maken.",
+            "en": "With the next book they recorded the edition used beside the title, without expecting identical pages automatically to make identical readers."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te verwachten",
+            "en": "Without expecting"
+          },
+          "explanation": {
+            "nl": "Zonder ... te verwachten beperkt wat zij van hun nieuwe afspraak hopen.",
+            "en": "Zonder ... te verwachten limits what they hope from their new arrangement."
+          },
+          "examples": [
+            {
+              "nl": "Bij het volgende boek noteerden ze naast de titel ook de gebruikte editie, zonder te verwachten dat gelijke bladzijden automatisch gelijke lezers zouden maken.",
+              "en": "With the next book they recorded the edition used beside the title, without expecting identical pages automatically to make identical readers."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waardoor verschilden de twee beschreven keuzes?",
+            "en": "Why did the two described choices differ?"
+          },
+          "options": [
+            {
+              "nl": "Abel had het boek niet gelezen.",
+              "en": "Abel had not read the book."
+            },
+            {
+              "nl": "De schrijver had twee hoofdpersonen dezelfde naam gegeven.",
+              "en": "The writer had given two main characters the same name."
+            },
+            {
+              "nl": "Er ontbrak een ontkennend woord in één druk.",
+              "en": "A negating word was missing in one printing."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De zetfout keert de betekenis van de beslissende zin om.",
+            "en": "The typesetting error reverses the meaning of the decisive sentence."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom is niet elk meningsverschil opgelost?",
+            "en": "Why is not every disagreement resolved?"
+          },
+          "options": [
+            {
+              "nl": "De groep weigert de fout te lezen.",
+              "en": "The group refuses to read the error."
+            },
+            {
+              "nl": "Ook dezelfde correcte tekst kan verschillend worden geïnterpreteerd.",
+              "en": "Even the same correct text can be interpreted differently."
+            },
+            {
+              "nl": "Het woord niet bestaat niet.",
+              "en": "The word not does not exist."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het personage blijft op andere momenten hard en ontwijkend.",
+            "en": "The character remains harsh and evasive at other moments."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-vlieger-die-niet-omhoog-moest",
+      "topic_id": "hobbies",
+      "title": {
+        "nl": "De vlieger die niet omhoog moest",
+        "en": "The kite that did not have to fly"
+      },
+      "plot_key": "A grandfather's competitive kite-building plan gives way when a child designs a ground-level shadow dragon, requiring him to recognise a different hobby goal.",
+      "lines": [
+        {
+          "nl": "Op het strand wilde opa Jules zijn kleinzoon tonen hoe je een vlieger bouwde die hoger kwam dan alle gekochte exemplaren rond hen.",
+          "en": "On the beach grandfather Jules wanted to show his grandson how to build a kite that rose higher than all the shop-bought ones around them."
+        },
+        {
+          "nl": "Hij had dunne latjes en stevig papier meegebracht en legde telkens uit waarom de staart precies lang genoeg moest zijn.",
+          "en": "He had brought thin sticks and strong paper and kept explaining why the tail had to be exactly long enough."
+        },
+        {
+          "nl": "Zijn kleinzoon tekende ondertussen grote ogen op het papier en vroeg of er ook vier poten aan konden.",
+          "en": "Meanwhile his grandson drew large eyes on the paper and asked whether it could also have four legs."
+        },
+        {
+          "nl": "Jules antwoordde dat het dan niet goed zou vliegen, waarop het kind vroeg waarom zijn draak eigenlijk de lucht in moest.",
+          "en": "Jules replied that it would not fly properly then, at which the child asked why his dragon had to go into the air at all."
+        },
+        {
+          "nl": "Met de lage zon viel de papieren figuur als een lange schaduw over het zand, veel groter dan het voorwerp zelf.",
+          "en": "With the low sun the paper figure cast a long shadow across the sand, much larger than the object itself."
+        },
+        {
+          "nl": "Ze maakten poten die tijdens het lopen bewogen en ontdekten hoe de draak andere vormen kreeg wanneer zij hem dichter bij de grond hielden.",
+          "en": "They made legs that moved while walking and discovered how the dragon changed shape when held nearer the ground."
+        },
+        {
+          "nl": "Geen enkele strandbezoeker keek bewonderend naar hun vlieghoogte, maar een paar kinderen kwamen vragen of zij met hun eigen schaduwdieren mochten aansluiten.",
+          "en": "No beachgoer admired their flying height, but a few children came to ask whether they could join with their own shadow animals."
+        },
+        {
+          "nl": "Jules borg het touw op en hielp een vijfde poot bevestigen, al wist hij nog altijd zeker dat het oorspronkelijke ontwerp hoger had gekund.",
+          "en": "Jules put the string away and helped attach a fifth leg, although he was still quite sure the original design could have flown higher."
+        }
+      ],
+      "words": [
+        {
+          "term": "de vlieger",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een voorwerp dat aan een touw in de wind vliegt",
+            "en": "kite"
+          },
+          "example": {
+            "nl": "Op het strand wilde opa Jules zijn kleinzoon tonen hoe je een vlieger bouwde die hoger kwam dan alle gekochte exemplaren rond hen.",
+            "en": "On the beach grandfather Jules wanted to show his grandson how to build a kite that rose higher than all the shop-bought ones around them."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de vlieghoogte",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de hoogte waarop iets vliegt",
+            "en": "flying height"
+          },
+          "example": {
+            "nl": "Geen enkele strandbezoeker keek bewonderend naar hun vlieghoogte, maar een paar kinderen kwamen vragen of zij met hun eigen schaduwdieren mochten aansluiten.",
+            "en": "No beachgoer admired their flying height, but a few children came to ask whether they could join with their own shadow animals."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bevestigen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "stevig vastmaken",
+            "en": "to attach"
+          },
+          "example": {
+            "nl": "Jules borg het touw op en hielp een vijfde poot bevestigen, al wist hij nog altijd zeker dat het oorspronkelijke ontwerp hoger had gekund.",
+            "en": "Jules put the string away and helped attach a fifth leg, although he was still quite sure the original design could have flown higher."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Al wist hij ...",
+            "en": "Although he knew ..."
+          },
+          "explanation": {
+            "nl": "Al geeft zijn blijvende overtuiging ruimte zonder hun andere spel ongedaan te maken.",
+            "en": "Al allows room for his continuing conviction without undoing their different game."
+          },
+          "examples": [
+            {
+              "nl": "Jules borg het touw op en hielp een vijfde poot bevestigen, al wist hij nog altijd zeker dat het oorspronkelijke ontwerp hoger had gekund.",
+              "en": "Jules put the string away and helped attach a fifth leg, although he was still quite sure the original design could have flown higher."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom botst het eerste plan met de wens van het kind?",
+            "en": "Why does the first plan clash with the child's wish?"
+          },
+          "options": [
+            {
+              "nl": "Jules wil hoogte bereiken, het kind een draak maken.",
+              "en": "Jules wants to gain height; the child wants to make a dragon."
+            },
+            {
+              "nl": "Het papier is al verkocht.",
+              "en": "The paper has already been sold."
+            },
+            {
+              "nl": "Het kind wil niet buiten zijn.",
+              "en": "The child does not want to be outdoors."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De poten dienen een ander doel dan goed vliegen.",
+            "en": "The legs serve a different purpose from flying well."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe verandert de activiteit?",
+            "en": "How does the activity change?"
+          },
+          "options": [
+            {
+              "nl": "Iedereen koopt alsnog een vlieger.",
+              "en": "Everyone buys a kite after all."
+            },
+            {
+              "nl": "Een gezamenlijk schaduwspel vervangt de wedstrijd om hoogte.",
+              "en": "A shared shadow game replaces the competition for height."
+            },
+            {
+              "nl": "Jules verbiedt alle kinderen mee te doen.",
+              "en": "Jules forbids all children from joining in."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Andere kinderen sluiten met schaduwdieren aan.",
+            "en": "Other children join with shadow animals."
+          }
+        }
+      ]
+    }
+  ]
+}

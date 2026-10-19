@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-gastenlijst-in-de-agenda",
+      "topic_id": "privacy-cybersecurity",
+      "title": {
+        "nl": "De gastenlijst in de agenda",
+        "en": "The guest list in the calendar"
+      },
+      "plot_key": "A surprise-party planner exposes an invited former partner through a shared calendar, then learns convenient household visibility does not imply consent to reveal every relationship.",
+      "lines": [
+        {
+          "nl": "Voor een verrassingsfeest maakte Tessa een gedeelde agenda waarin de familie kon zien wie eten, versiering en vervoer zou regelen.",
+          "en": "For a surprise party, Tessa made a shared calendar in which the family could see who would organise food, decorations and transport."
+        },
+        {
+          "nl": "Bij elke taak zette ze meteen de naam en het telefoonnummer van de vrijwilliger, zodat niemand haar voortdurend om details hoefde te vragen.",
+          "en": "Beside each task she immediately added the volunteer's name and phone number so that nobody had to keep asking her for details."
+        },
+        {
+          "nl": "Een paar dagen later belde haar zus boos omdat een vroegere partner nu wist dat zij ook op het feest zou zijn.",
+          "en": "A few days later her sister called angrily because a former partner now knew she would also be at the party."
+        },
+        {
+          "nl": "Tessa had de agenda via een handige algemene link doorgestuurd en niet nagegaan wie de andere familieleden er nog bij hadden betrokken.",
+          "en": "Tessa had forwarded the calendar through a convenient general link and had not checked whom the other relatives had also involved."
+        },
+        {
+          "nl": "Ze vond eerst dat de namen toch geen geheim waren, totdat haar zus uitlegde dat bekend zijn aan één persoon niet hetzelfde was als zichtbaar zijn voor iedereen.",
+          "en": "At first she felt the names were not secret anyway, until her sister explained that being known to one person was not the same as being visible to everyone."
+        },
+        {
+          "nl": "Tessa trok de brede toegang in en vroeg de betrokkenen welke praktische gegevens zij werkelijk met welke helpers moesten delen.",
+          "en": "Tessa withdrew the broad access and asked those involved which practical details they actually needed to share with which helpers."
+        },
+        {
+          "nl": "De organisatie vroeg daardoor iets meer rechtstreeks overleg, terwijl haar zus opnieuw zelf kon bepalen met wie zij contact wilde hebben.",
+          "en": "The organisation therefore required a little more direct discussion while her sister could again decide for herself whom she wanted to contact."
+        },
+        {
+          "nl": "Het feest bleef een verrassing, maar niemand hoefde voortaan als onderdeel van die verrassing ook zijn eigen grenzen kwijt te raken.",
+          "en": "The party remained a surprise, but nobody had to lose their own boundaries as part of that surprise from then on."
+        }
+      ],
+      "words": [
+        {
+          "term": "intrekken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "eerder gegeven toegang of toestemming beëindigen",
+            "en": "to withdraw or revoke"
+          },
+          "example": {
+            "nl": "Tessa trok de brede toegang in en vroeg de betrokkenen welke praktische gegevens zij werkelijk met welke helpers moesten delen.",
+            "en": "Tessa withdrew the broad access and asked those involved which practical details they actually needed to share with which helpers."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de toegang",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de mogelijkheid om iets te bekijken of te gebruiken",
+            "en": "access"
+          },
+          "example": {
+            "nl": "Tessa trok de brede toegang in en vroeg de betrokkenen welke praktische gegevens zij werkelijk met welke helpers moesten delen.",
+            "en": "Tessa withdrew the broad access and asked those involved which practical details they actually needed to share with which helpers."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de betrokkene",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iemand op wie een situatie rechtstreeks betrekking heeft",
+            "en": "person involved"
+          },
+          "example": {
+            "nl": "Tessa trok de brede toegang in en vroeg de betrokkenen welke praktische gegevens zij werkelijk met welke helpers moesten delen.",
+            "en": "Tessa withdrew the broad access and asked those involved which practical details they actually needed to share with which helpers."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet hetzelfde als",
+            "en": "Not the same as"
+          },
+          "explanation": {
+            "nl": "Deze vergelijking onderscheidt bekendheid bij één persoon van brede zichtbaarheid.",
+            "en": "This comparison distinguishes being known to one person from broad visibility."
+          },
+          "examples": [
+            {
+              "nl": "Ze vond eerst dat de namen toch geen geheim waren, totdat haar zus uitlegde dat bekend zijn aan één persoon niet hetzelfde was als zichtbaar zijn voor iedereen.",
+              "en": "At first she felt the names were not secret anyway, until her sister explained that being known to one person was not the same as being visible to everyone."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waardoor bereikt de informatie meer mensen dan bedoeld?",
+            "en": "What makes the information reach more people than intended?"
+          },
+          "options": [
+            {
+              "nl": "De agenda bevat geen namen.",
+              "en": "The calendar contains no names."
+            },
+            {
+              "nl": "De zus publiceert zelf een krant.",
+              "en": "The sister publishes a newspaper herself."
+            },
+            {
+              "nl": "De algemene link wordt verder gedeeld zonder zicht op de ontvangers.",
+              "en": "The general link is shared further without knowing the recipients."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Tessa weet niet wie familieleden verder hebben betrokken.",
+            "en": "Tessa does not know whom relatives have involved further."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welk verschil maakt haar zus duidelijk?",
+            "en": "What distinction does her sister make?"
+          },
+          "options": [
+            {
+              "nl": "Telefoonnummers zijn nooit bruikbaar.",
+              "en": "Phone numbers are never useful."
+            },
+            {
+              "nl": "Een feest moet altijd geheim blijven voor alle helpers.",
+              "en": "A party must always remain secret from all helpers."
+            },
+            {
+              "nl": "Informatie delen in één relatie betekent niet dat iedereen die mag zien.",
+              "en": "Sharing information in one relationship does not mean everyone may see it."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Dezelfde naam kan in een andere kring een andere betekenis en impact krijgen.",
+            "en": "The same name can have a different meaning and impact in another circle."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-kaart-uit-het-geheugen",
+      "topic_id": "internet-digital-life",
+      "title": {
+        "nl": "De kaart uit het geheugen",
+        "en": "The map from memory"
+      },
+      "plot_key": "A delivery rider’s route app repeatedly takes him past his closed childhood cinema, and he chooses to keep one obsolete destination as a personal marker rather than a navigational error.",
+      "lines": [
+        {
+          "nl": "Wanneer bezorger Milan zijn favoriete route door de stad opende, stuurde zijn telefoon hem nog altijd langs de bioscoop die twee jaar eerder was gesloopt.",
+          "en": "Whenever delivery rider Milan opened his favourite route through the city, his phone still sent him past the cinema demolished two years earlier."
+        },
+        {
+          "nl": "De straat bestond nog, maar de naam van het gebouw bleef op zijn eigen opgeslagen kaart staan alsof er elke avond voorstellingen waren.",
+          "en": "The street still existed, but the building's name remained on his own saved map as if there were screenings every evening."
+        },
+        {
+          "nl": "Zijn collega wees hem op de fout en bood aan alle oude markeringen in één keer te wissen.",
+          "en": "His colleague pointed out the error and offered to erase all the old markers at once."
+        },
+        {
+          "nl": "Milan zei eerst ja, tot hij merkte dat onder dezelfde lijst ook de bank stond waar zijn vader vroeger na school op hem wachtte.",
+          "en": "Milan initially agreed, until he noticed that the same list also contained the bench where his father used to wait for him after school."
+        },
+        {
+          "nl": "Die plek was voor zijn leveringen nutteloos, maar de naam bracht telkens een middag terug die nergens meer zichtbaar was.",
+          "en": "That place was useless for his deliveries, but the name kept bringing back an afternoon no longer visible anywhere."
+        },
+        {
+          "nl": "Hij maakte een aparte actuele werkkaart en verhuisde de verdwenen bioscoop en de bank naar een map met persoonlijke herinneringen.",
+          "en": "He made a separate current work map and moved the vanished cinema and the bench to a folder of personal memories."
+        },
+        {
+          "nl": "Zijn collega plaagde hem dat een telefoon geen fotoalbum was, waarop Milan vroeg waarom één toestel maar één soort kaart mocht bewaren.",
+          "en": "His colleague teased him that a phone was not a photo album, at which Milan asked why one device could keep only one kind of map."
+        },
+        {
+          "nl": "De volgende rit werd korter; op zijn vrije zondag liep hij alsnog langs de lege plek, ditmaal zonder te doen alsof de navigatie zich vergiste.",
+          "en": "The next delivery route was shorter; on his free Sunday he still walked past the empty spot, this time without pretending the navigation was mistaken."
+        }
+      ],
+      "words": [
+        {
+          "term": "de markering",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een teken dat een plaats of onderdeel aanduidt",
+            "en": "marker"
+          },
+          "example": {
+            "nl": "Zijn collega wees hem op de fout en bood aan alle oude markeringen in één keer te wissen.",
+            "en": "His colleague pointed out the error and offered to erase all the old markers at once."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "nutteloos",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder bruikbare functie voor een bepaald doel",
+            "en": "useless"
+          },
+          "example": {
+            "nl": "Die plek was voor zijn leveringen nutteloos, maar de naam bracht telkens een middag terug die nergens meer zichtbaar was.",
+            "en": "That place was useless for his deliveries, but the name kept bringing back an afternoon no longer visible anywhere."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "wissen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "opgeslagen informatie weghalen",
+            "en": "to erase"
+          },
+          "example": {
+            "nl": "Zijn collega wees hem op de fout en bood aan alle oude markeringen in één keer te wissen.",
+            "en": "His colleague pointed out the error and offered to erase all the old markers at once."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof bij verouderde informatie",
+            "en": "As if with outdated information"
+          },
+          "explanation": {
+            "nl": "Alsof maakt duidelijk dat de kaart een toestand suggereert die niet meer bestaat.",
+            "en": "Alsof makes clear that the map suggests a situation that no longer exists."
+          },
+          "examples": [
+            {
+              "nl": "De straat bestond nog, maar de naam van het gebouw bleef op zijn eigen opgeslagen kaart staan alsof er elke avond voorstellingen waren.",
+              "en": "The street still existed, but the building's name remained on his own saved map as if there were screenings every evening."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil Milan niet alle markeringen wissen?",
+            "en": "Why does Milan not want to erase all markers?"
+          },
+          "options": [
+            {
+              "nl": "Sommige plaatsen hebben een persoonlijke herinneringsfunctie.",
+              "en": "Some places serve a personal memory function."
+            },
+            {
+              "nl": "Hij weet niet hoe zijn telefoon werkt.",
+              "en": "He does not know how his phone works."
+            },
+            {
+              "nl": "Hij denkt dat de bioscoop nog open is.",
+              "en": "He thinks the cinema is still open."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De bank herinnert hem aan zijn vader, ook zonder nut voor leveringen.",
+            "en": "The bench reminds him of his father, even without usefulness for deliveries."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat lost de aparte werkkaart op?",
+            "en": "What does the separate work map resolve?"
+          },
+          "options": [
+            {
+              "nl": "Het verleden moet voorgoed verdwijnen.",
+              "en": "The past must disappear forever."
+            },
+            {
+              "nl": "De gesloopte bioscoop keert terug.",
+              "en": "The demolished cinema returns."
+            },
+            {
+              "nl": "Praktische routes en persoonlijke herinneringen worden niet langer door elkaar gehaald.",
+              "en": "Practical routes and personal memories are no longer confused."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij bewaart de herinneringsplekken elders en gebruikt actuele routes voor het werk.",
+            "en": "He keeps the memory places elsewhere and uses current routes for work."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-robot-die-om-applaus-vroeg",
+      "topic_id": "robotics-automation",
+      "title": {
+        "nl": "De robot die applaus kreeg",
+        "en": "The robot that received applause"
+      },
+      "plot_key": "A museum robot interprets every raised hand as a request to start, so an applauding audience loops its welcome speech until a guide diagnoses the missing social distinction.",
+      "lines": [
+        {
+          "nl": "In een klein technologiemuseum mocht stagiair Ferre een robot demonstreren die bezoekers verwelkomde zodra iemand een hand opstak.",
+          "en": "At a small technology museum, intern Ferre was allowed to demonstrate a robot that welcomed visitors whenever someone raised a hand."
+        },
+        {
+          "nl": "Hij had de beweging tientallen keren getest en was opgelucht toen het toestel tijdens de opening precies op tijd begon te spreken.",
+          "en": "He had tested the movement dozens of times and was relieved when the device began speaking at exactly the right moment during the opening."
+        },
+        {
+          "nl": "Na de eerste uitleg applaudisseerde het publiek enthousiast, waarop de robot opnieuw zijn volledige welkomsttekst startte.",
+          "en": "After the first explanation the audience applauded enthusiastically, whereupon the robot started its entire welcome speech again."
+        },
+        {
+          "nl": "Enkele kinderen vonden dat prachtig en bleven lachen en klappen, terwijl Ferre steeds wanhopiger naar zijn bedieningsscherm keek.",
+          "en": "Several children found this wonderful and kept laughing and clapping while Ferre looked increasingly desperate at his control screen."
+        },
+        {
+          "nl": "De museumgids legde een hand op tafel en vroeg welke verschillende bedoelingen het toestel nu eigenlijk uit dezelfde beweging moest begrijpen.",
+          "en": "The museum guide put a hand on the table and asked what different intentions the device was actually supposed to understand from the same movement."
+        },
+        {
+          "nl": "Ferre had een technisch herkenbaar gebaar behandeld alsof het in elke sociale situatie één vaste betekenis had.",
+          "en": "Ferre had treated a technically recognisable gesture as though it had one fixed meaning in every social situation."
+        },
+        {
+          "nl": "Voor de volgende demonstratie bouwde hij een duidelijke beginfase en een zichtbare keuzeknop in, in plaats van het publiek te verbieden spontaan te reageren.",
+          "en": "For the next demonstration he added a clear starting phase and a visible choice button instead of forbidding the audience to react spontaneously."
+        },
+        {
+          "nl": "De robot kreeg opnieuw applaus, maar bedankte ditmaal één keer; Ferre hoorde eindelijk ook het einde van zijn eigen presentatie.",
+          "en": "The robot received applause again, but this time thanked them once; Ferre finally also heard the end of his own presentation."
+        }
+      ],
+      "words": [
+        {
+          "term": "wanhopig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "bijna zonder hoop op een oplossing",
+            "en": "desperate"
+          },
+          "example": {
+            "nl": "Enkele kinderen vonden dat prachtig en bleven lachen en klappen, terwijl Ferre steeds wanhopiger naar zijn bedieningsscherm keek.",
+            "en": "Several children found this wonderful and kept laughing and clapping while Ferre looked increasingly desperate at his control screen."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het gebaar",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een beweging waarmee iemand iets uitdrukt",
+            "en": "gesture"
+          },
+          "example": {
+            "nl": "Ferre had een technisch herkenbaar gebaar behandeld alsof het in elke sociale situatie één vaste betekenis had.",
+            "en": "Ferre had treated a technically recognisable gesture as though it had one fixed meaning in every social situation."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "spontaan",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder voorafgaande planning of dwang",
+            "en": "spontaneous"
+          },
+          "example": {
+            "nl": "Voor de volgende demonstratie bouwde hij een duidelijke beginfase en een zichtbare keuzeknop in, in plaats van het publiek te verbieden spontaan te reageren.",
+            "en": "For the next demonstration he added a clear starting phase and a visible choice button instead of forbidding the audience to react spontaneously."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof en één betekenis",
+            "en": "As if and one meaning"
+          },
+          "explanation": {
+            "nl": "Alsof benoemt de te eenvoudige aanname over de betekenis van het gebaar.",
+            "en": "Alsof states the oversimplified assumption about the gesture's meaning."
+          },
+          "examples": [
+            {
+              "nl": "Ferre had een technisch herkenbaar gebaar behandeld alsof het in elke sociale situatie één vaste betekenis had.",
+              "en": "Ferre had treated a technically recognisable gesture as though it had one fixed meaning in every social situation."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom herhaalt de robot de tekst?",
+            "en": "Why does the robot repeat the speech?"
+          },
+          "options": [
+            {
+              "nl": "Applaus bevat ook de beweging die als startsignaal wordt gelezen.",
+              "en": "Applause also contains the movement read as the start signal."
+            },
+            {
+              "nl": "Het publiek vraagt een vertaling.",
+              "en": "The audience asks for a translation."
+            },
+            {
+              "nl": "De gids heeft de tekst gestolen.",
+              "en": "The guide has stolen the text."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het systeem onderscheidt de sociale bedoelingen achter handbewegingen niet.",
+            "en": "The system does not distinguish the social intentions behind hand movements."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom kiest Ferre niet voor een verbod op applaus?",
+            "en": "Why does Ferre not choose to ban applause?"
+          },
+          "options": [
+            {
+              "nl": "Het museum heeft geen knoppen.",
+              "en": "The museum has no buttons."
+            },
+            {
+              "nl": "Hij past het systeem aan het normale publiek aan.",
+              "en": "He adapts the system to normal audience behaviour."
+            },
+            {
+              "nl": "Hij wil dat niemand reageert.",
+              "en": "He wants nobody to react."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij maakt een duidelijker interface in plaats van spontane reacties onmogelijk te maken.",
+            "en": "He makes a clearer interface instead of making spontaneous responses impossible."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-brug-die-kon-zingen",
+      "topic_id": "engineering-inventions",
+      "title": {
+        "nl": "De brug die kon zingen",
+        "en": "The bridge that could sing"
+      },
+      "plot_key": "A student’s bridge model makes an unexpected whistling sound; she separates artistic appeal from structural evidence rather than claiming a flaw is a feature.",
+      "lines": [
+        {
+          "nl": "Voor een ontwerpwedstrijd bouwde ingenieursstudent Amira een model van een voetgangersbrug met dunne metalen buisjes langs de reling.",
+          "en": "For a design competition, engineering student Amira built a model of a pedestrian bridge with thin metal tubes along the railing."
+        },
+        {
+          "nl": "Toen er tijdens een test lucht over het model stroomde, ontstond een zacht fluitend geluid dat iedereen in het lokaal deed opkijken.",
+          "en": "When air flowed over the model during a test, a soft whistling sound arose that made everyone in the room look up."
+        },
+        {
+          "nl": "Een medestudent riep dat zij nu een zingende brug had uitgevonden en stelde voor dat als hoofdidee in te dienen.",
+          "en": "A fellow student exclaimed that she had now invented a singing bridge and suggested submitting that as the main idea."
+        },
+        {
+          "nl": "Amira vond het geluid mooi, maar wist niet of het bij een groot bouwwerk aangenaam zou blijven of op trillingen wees die ze nog niet begreep.",
+          "en": "Amira liked the sound, but did not know whether it would remain pleasant in a large structure or indicate vibrations she did not yet understand."
+        },
+        {
+          "nl": "Ze vroeg eerst begeleiding voor een volgende test en beschreef in haar verslag apart wat ze gehoord had en wat ze daaruit nog niet kon afleiden.",
+          "en": "She first requested guidance for another test and separately described in her report what she had heard and what she could not yet infer from it."
+        },
+        {
+          "nl": "Intussen gebruikte een muziekstudent een opname van het model voor een korte compositie, zonder te beweren dat de echte brug al gebouwd kon worden.",
+          "en": "Meanwhile a music student used a recording of the model for a short composition without claiming the actual bridge could already be built."
+        },
+        {
+          "nl": "Amira diende uiteindelijk een kleiner technisch voorstel in en speelde na haar uitleg het muziekfragment af als een onverwachte zijweg van het onderzoek.",
+          "en": "Amira eventually submitted a smaller technical proposal and played the musical excerpt after her explanation as an unexpected side path of the research."
+        },
+        {
+          "nl": "De brug won geen prijs, maar twee studenten hielden er verschillend werk aan over zonder hetzelfde geluid tot hetzelfde bewijs te maken.",
+          "en": "The bridge won no prize, but two students gained different work from it without turning the same sound into the same evidence."
+        }
+      ],
+      "words": [
+        {
+          "term": "de reling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een randconstructie die mensen tegen vallen beschermt",
+            "en": "railing"
+          },
+          "example": {
+            "nl": "Voor een ontwerpwedstrijd bouwde ingenieursstudent Amira een model van een voetgangersbrug met dunne metalen buisjes langs de reling.",
+            "en": "For a design competition, engineering student Amira built a model of a pedestrian bridge with thin metal tubes along the railing."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de trilling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een snelle heen-en-weerbeweging",
+            "en": "vibration"
+          },
+          "example": {
+            "nl": "Amira vond het geluid mooi, maar wist niet of het bij een groot bouwwerk aangenaam zou blijven of op trillingen wees die ze nog niet begreep.",
+            "en": "Amira liked the sound, but did not know whether it would remain pleasant in a large structure or indicate vibrations she did not yet understand."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de zijweg",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een andere richting buiten het oorspronkelijke traject",
+            "en": "side path"
+          },
+          "example": {
+            "nl": "Amira diende uiteindelijk een kleiner technisch voorstel in en speelde na haar uitleg het muziekfragment af als een onverwachte zijweg van het onderzoek.",
+            "en": "Amira eventually submitted a smaller technical proposal and played the musical excerpt after her explanation as an unexpected side path of the research."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Of ... of ... als onzekerheid",
+            "en": "Whether ... or ... as uncertainty"
+          },
+          "explanation": {
+            "nl": "De twee of-groepen noemen mogelijkheden die zij nog niet van elkaar kan onderscheiden.",
+            "en": "The two of-clauses name possibilities she cannot yet distinguish."
+          },
+          "examples": [
+            {
+              "nl": "Amira vond het geluid mooi, maar wist niet of het bij een groot bouwwerk aangenaam zou blijven of op trillingen wees die ze nog niet begreep.",
+              "en": "Amira liked the sound, but did not know whether it would remain pleasant in a large structure or indicate vibrations she did not yet understand."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom noemt Amira het geluid niet meteen een geslaagde uitvinding?",
+            "en": "Why does Amira not immediately call the sound a successful invention?"
+          },
+          "options": [
+            {
+              "nl": "Ze heeft het niet gehoord.",
+              "en": "She has not heard it."
+            },
+            {
+              "nl": "De betekenis en gevolgen op grotere schaal zijn nog niet onderzocht.",
+              "en": "The meaning and consequences at a larger scale have not yet been investigated."
+            },
+            {
+              "nl": "Ze houdt niet van muziek.",
+              "en": "She dislikes music."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Een aantrekkelijk geluid is nog geen onderbouwd oordeel over een echte brug.",
+            "en": "An attractive sound is not yet a supported judgement about a real bridge."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe kunnen beide studenten dezelfde opname gebruiken?",
+            "en": "How can both students use the same recording?"
+          },
+          "options": [
+            {
+              "nl": "Door er precies dezelfde conclusie uit te trekken.",
+              "en": "By drawing exactly the same conclusion from it."
+            },
+            {
+              "nl": "Door artistieke en technische doelen duidelijk te onderscheiden.",
+              "en": "By clearly distinguishing artistic and technical aims."
+            },
+            {
+              "nl": "Door alle onzekerheid uit het verslag te schrappen.",
+              "en": "By removing all uncertainty from the report."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Muzikale waarde bewijst niet dat een constructie al veilig of bruikbaar is.",
+            "en": "Musical value does not prove that a structure is already safe or usable."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-ster-in-de-lens",
+      "topic_id": "scientific-discoveries",
+      "title": {
+        "nl": "De ster in de lens",
+        "en": "The star in the lens"
+      },
+      "plot_key": "A beginner astronomer's apparent recurring bright object turns out to follow her camera rather than the sky, and she reports the failed candidate honestly.",
+      "lines": [
+        {
+          "nl": "Tijdens drie opeenvolgende observatieavonden zag sterrenkundestudent Esra een helder punt op haar foto's dat op geen van haar vergelijkingskaarten stond.",
+          "en": "During three consecutive observation evenings, astronomy student Esra saw a bright point in her photographs that appeared on none of her comparison charts."
+        },
+        {
+          "nl": "Ze markeerde de plek zorgvuldig en fantaseerde al over hoe ze een onverwachte ontdekking aan haar docent zou melden.",
+          "en": "She carefully marked the spot and was already imagining how she would report an unexpected discovery to her lecturer."
+        },
+        {
+          "nl": "Een vriend vroeg of zij de camera tussen de opnames wel eens gedraaid had, zodat dezelfde hemel op een andere plaats in het beeld viel.",
+          "en": "A friend asked whether she had ever rotated the camera between exposures so that the same sky fell at a different position in the frame."
+        },
+        {
+          "nl": "Esra vond de vraag eerst afleidend, omdat zij juist trots was op haar zo gelijk mogelijk gemaakte reeks.",
+          "en": "Esra initially found the question distracting because she was proud of making her sequence as consistent as possible."
+        },
+        {
+          "nl": "Bij een nieuwe opname verschoof de hemel, maar bleef het heldere punt precies op dezelfde plaats in het beeld staan.",
+          "en": "In a new exposure the sky shifted, but the bright point remained in exactly the same position in the image."
+        },
+        {
+          "nl": "Het verschijnsel hoorde dus bij haar opnameapparatuur en niet bij de plek tussen de sterren die zij dacht te onderzoeken.",
+          "en": "The phenomenon therefore belonged to her recording equipment and not to the place between the stars she thought she was investigating."
+        },
+        {
+          "nl": "Ze meldde haar controles alsnog aan de docent, met een minder indrukwekkende titel maar een veel duidelijker onderscheid tussen beeld en buitenwereld.",
+          "en": "She reported her checks to the lecturer anyway, with a less impressive title but a much clearer distinction between image and outside world."
+        },
+        {
+          "nl": "De volgende avond keek ze opnieuw omhoog; het verdwijnen van haar ontdekking had niet hetzelfde effect als het verdwijnen van haar nieuwsgierigheid.",
+          "en": "The next evening she looked up again; the disappearance of her discovery did not have the same effect as the disappearance of her curiosity."
+        }
+      ],
+      "words": [
+        {
+          "term": "opeenvolgend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "direct na elkaar komend",
+            "en": "consecutive"
+          },
+          "example": {
+            "nl": "Tijdens drie opeenvolgende observatieavonden zag sterrenkundestudent Esra een helder punt op haar foto's dat op geen van haar vergelijkingskaarten stond.",
+            "en": "During three consecutive observation evenings, astronomy student Esra saw a bright point in her photographs that appeared on none of her comparison charts."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de opnameapparatuur",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de toestellen waarmee beeld of geluid wordt vastgelegd",
+            "en": "recording equipment"
+          },
+          "example": {
+            "nl": "Het verschijnsel hoorde dus bij haar opnameapparatuur en niet bij de plek tussen de sterren die zij dacht te onderzoeken.",
+            "en": "The phenomenon therefore belonged to her recording equipment and not to the place between the stars she thought she was investigating."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het verschijnsel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat waargenomen kan worden",
+            "en": "phenomenon"
+          },
+          "example": {
+            "nl": "Het verschijnsel hoorde dus bij haar opnameapparatuur en niet bij de plek tussen de sterren die zij dacht te onderzoeken.",
+            "en": "The phenomenon therefore belonged to her recording equipment and not to the place between the stars she thought she was investigating."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Dus voor een gevolgtrekking",
+            "en": "Therefore for an inference"
+          },
+          "explanation": {
+            "nl": "Dus leidt een conclusie in die steunt op de verschillende beweging van hemel en punt.",
+            "en": "Dus introduces a conclusion supported by the different movement of the sky and the point."
+          },
+          "examples": [
+            {
+              "nl": "Het verschijnsel hoorde dus bij haar opnameapparatuur en niet bij de plek tussen de sterren die zij dacht te onderzoeken.",
+              "en": "The phenomenon therefore belonged to her recording equipment and not to the place between the stars she thought she was investigating."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke test maakt het onderscheid duidelijk?",
+            "en": "Which test makes the distinction clear?"
+          },
+          "options": [
+            {
+              "nl": "De titel alvast publiceren.",
+              "en": "Publishing the title in advance."
+            },
+            {
+              "nl": "Dezelfde foto groter afdrukken.",
+              "en": "Printing the same photograph larger."
+            },
+            {
+              "nl": "De camera draaien zodat de hemel elders in het beeld valt.",
+              "en": "Rotating the camera so the sky falls elsewhere in the image."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Het punt blijft op dezelfde beeldpositie terwijl de hemel verschuift.",
+            "en": "The point remains at the same image position while the sky shifts."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat geeft de slotzin aan?",
+            "en": "What does the final sentence indicate?"
+          },
+          "options": [
+            {
+              "nl": "De ontdekking is toch bevestigd.",
+              "en": "The discovery is confirmed after all."
+            },
+            {
+              "nl": "Een weerlegde vondst hoeft haar belangstelling niet te beëindigen.",
+              "en": "A disproved finding need not end her interest."
+            },
+            {
+              "nl": "Esra stopt definitief met observeren.",
+              "en": "Esra permanently stops observing."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze kijkt de volgende avond opnieuw naar de hemel.",
+            "en": "She looks at the sky again the following evening."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-foto-voor-de-familiepagina",
+      "topic_id": "family",
+      "title": {
+        "nl": "De foto voor de familiepagina",
+        "en": "The photograph for the family page"
+      },
+      "plot_key": "A daughter chooses a childhood photo for her wedding booklet but her stepfather asks not for a title but for the accurate story behind it.",
+      "lines": [
+        {
+          "nl": "Voor het boekje bij haar huwelijk koos Lieze een foto waarop haar stiefvader haar als kind op zijn schouders droeg.",
+          "en": "For the booklet at her wedding, Lieze chose a photograph of her stepfather carrying her on his shoulders as a child."
+        },
+        {
+          "nl": "Onder de foto schreef ze dat hij vanaf die dag haar echte vader was geweest, een zin die haar moeder bijzonder ontroerend vond.",
+          "en": "Beneath the photograph she wrote that from that day he had been her real father, a sentence her mother found particularly moving."
+        },
+        {
+          "nl": "Haar stiefvader vroeg echter of ze de woorden nog eens samen konden bekijken voordat het boekje gedrukt werd.",
+          "en": "Her stepfather, however, asked whether they could review the words together before the booklet was printed."
+        },
+        {
+          "nl": "Lieze dacht dat hij de band minder sterk voelde dan zij en legde haar pen plots heel voorzichtig neer.",
+          "en": "Lieze thought he felt their bond less strongly than she did and suddenly put her pen down very carefully."
+        },
+        {
+          "nl": "Hij vertelde dat hij blij was met de foto, maar niet wilde doen alsof de vader die zij vroeg verloren had daardoor onwerkelijk werd.",
+          "en": "He explained that he was happy with the photograph but did not want to pretend that the father she had lost early thereby became unreal."
+        },
+        {
+          "nl": "Op die dag had zij juist gevraagd hoger te mogen zitten omdat ze wilde kijken waar haar vader volgens haar misschien nog kon zijn.",
+          "en": "That day she had actually asked to sit higher because she wanted to look where she thought her father might still be."
+        },
+        {
+          "nl": "Lieze had dat vergeten; ze schreef nu dat hij haar had leren dragen wat hij niet voor haar kon vervangen.",
+          "en": "Lieze had forgotten that; she now wrote that he had taught her to carry what he could not replace for her."
+        },
+        {
+          "nl": "Tijdens het huwelijk hoefde niemand te kiezen welke vader echt was, terwijl de foto voor hen beiden meer vertelde dan de eerste zin.",
+          "en": "During the wedding nobody had to choose which father was real, while for both of them the photograph said more than the first sentence."
+        }
+      ],
+      "words": [
+        {
+          "term": "de stiefvader",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de partner van iemands ouder die niet de eigen vader is",
+            "en": "stepfather"
+          },
+          "example": {
+            "nl": "Voor het boekje bij haar huwelijk koos Lieze een foto waarop haar stiefvader haar als kind op zijn schouders droeg.",
+            "en": "For the booklet at her wedding, Lieze chose a photograph of her stepfather carrying her on his shoulders as a child."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onwerkelijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet als echt bestaand voorgesteld of ervaren",
+            "en": "unreal"
+          },
+          "example": {
+            "nl": "Hij vertelde dat hij blij was met de foto, maar niet wilde doen alsof de vader die zij vroeg verloren had daardoor onwerkelijk werd.",
+            "en": "He explained that he was happy with the photograph but did not want to pretend that the father she had lost early thereby became unreal."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "vervangen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "in de plaats van iets of iemand komen",
+            "en": "to replace"
+          },
+          "example": {
+            "nl": "Lieze had dat vergeten; ze schreef nu dat hij haar had leren dragen wat hij niet voor haar kon vervangen.",
+            "en": "Lieze had forgotten that; she now wrote that he had taught her to carry what he could not replace for her."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Voordat in een indirect verzoek",
+            "en": "Before in an indirect request"
+          },
+          "explanation": {
+            "nl": "Voordat geeft de grens aan waarvóór zij de tekst nog kunnen veranderen.",
+            "en": "Voordat indicates the boundary before which they can still change the text."
+          },
+          "examples": [
+            {
+              "nl": "Haar stiefvader vroeg echter of ze de woorden nog eens samen konden bekijken voordat het boekje gedrukt werd.",
+              "en": "Her stepfather, however, asked whether they could review the words together before the booklet was printed."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom vraagt de stiefvader om overleg?",
+            "en": "Why does the stepfather ask to talk?"
+          },
+          "options": [
+            {
+              "nl": "Hij kent Lieze nog maar kort.",
+              "en": "He has known Lieze only briefly."
+            },
+            {
+              "nl": "Het woord echte dreigt de overleden vader uit te wissen.",
+              "en": "The word real risks erasing the late father."
+            },
+            {
+              "nl": "Hij wil helemaal geen foto.",
+              "en": "He wants no photograph at all."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij wil hun band niet uitdrukken door de andere vader onwerkelijk te maken.",
+            "en": "He does not want to express their bond by making the other father unreal."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat voegt zijn herinnering toe?",
+            "en": "What does his memory add?"
+          },
+          "options": [
+            {
+              "nl": "De foto is vervalst.",
+              "en": "The photograph is forged."
+            },
+            {
+              "nl": "De foto gaat ook over steun bij een bestaand gemis.",
+              "en": "The photograph also concerns support with an existing loss."
+            },
+            {
+              "nl": "Lieze wilde nooit op zijn schouders zitten.",
+              "en": "Lieze never wanted to sit on his shoulders."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij hielp haar zoeken naar de vader die zij miste.",
+            "en": "He helped her look for the father she missed."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-kaartje-voor-een-lege-stoel",
+      "topic_id": "friends",
+      "title": {
+        "nl": "Een kaartje voor een lege stoel",
+        "en": "A ticket for an empty seat"
+      },
+      "plot_key": "A friend stops covering repeated cancellations with excuses and shares the disappointment directly without making reconciliation automatic.",
+      "lines": [
+        {
+          "nl": "Voor het vierde jaar op rij kocht Joren twee kaartjes voor het concert waar hij vroeger altijd met zijn vriend Dimi naartoe ging.",
+          "en": "For the fourth year running, Joren bought two tickets for the concert he used to attend with his friend Dimi."
+        },
+        {
+          "nl": "Drie keer had Dimi op het laatste moment afgezegd, en drie keer had Joren tegenover anderen een overtuigender reden verzonnen dan hij zelf gekregen had.",
+          "en": "Three times Dimi had cancelled at the last moment, and three times Joren had invented a more convincing reason for others than the one he himself had received."
+        },
+        {
+          "nl": "Dit jaar stuurde Dimi opnieuw een kort bericht dat het helaas niet zou lukken, zonder een ander voorstel te doen.",
+          "en": "This year Dimi again sent a brief message saying unfortunately he could not make it, without suggesting an alternative."
+        },
+        {
+          "nl": "Joren antwoordde niet met een geruststellend maakt niet uit, maar schreef dat de lege stoel hem intussen meer bezighield dan de muziek.",
+          "en": "Joren did not reply with a reassuring never mind, but wrote that the empty seat now occupied him more than the music."
+        },
+        {
+          "nl": "Dimi belde later en vertelde dat hij hun oude concertavonden vooral als een verplichting uit een vorige levensfase was gaan zien.",
+          "en": "Dimi called later and said he had come to see their old concert evenings mainly as an obligation from a previous stage of life."
+        },
+        {
+          "nl": "Dat deed Joren pijn, al begreep hij nu waarom steeds dezelfde afspraak voor hen niet meer hetzelfde betekende.",
+          "en": "That hurt Joren, although he now understood why the same arrangement no longer meant the same thing to both of them."
+        },
+        {
+          "nl": "Hij ging met een collega naar het concert en sprak niet meteen een nieuwe traditie met Dimi af om de stilte snel te vullen.",
+          "en": "He went to the concert with a colleague and did not immediately arrange a new tradition with Dimi just to fill the silence quickly."
+        },
+        {
+          "nl": "Enkele weken later dronken ze koffie; het was een kleiner begin dan vroeger, waarvan geen van beiden al wist hoeveel het zou dragen.",
+          "en": "A few weeks later they had coffee; it was a smaller beginning than before, and neither yet knew how much it would hold."
+        }
+      ],
+      "words": [
+        {
+          "term": "afzeggen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "melden dat een afspraak niet doorgaat",
+            "en": "to cancel"
+          },
+          "example": {
+            "nl": "Drie keer had Dimi op het laatste moment afgezegd, en drie keer had Joren tegenover anderen een overtuigender reden verzonnen dan hij zelf gekregen had.",
+            "en": "Three times Dimi had cancelled at the last moment, and three times Joren had invented a more convincing reason for others than the one he himself had received."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de verplichting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat iemand geacht wordt te doen",
+            "en": "obligation"
+          },
+          "example": {
+            "nl": "Dimi belde later en vertelde dat hij hun oude concertavonden vooral als een verplichting uit een vorige levensfase was gaan zien.",
+            "en": "Dimi called later and said he had come to see their old concert evenings mainly as an obligation from a previous stage of life."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de levensfase",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een periode met bepaalde kenmerken in iemands leven",
+            "en": "stage of life"
+          },
+          "example": {
+            "nl": "Dimi belde later en vertelde dat hij hun oude concertavonden vooral als een verplichting uit een vorige levensfase was gaan zien.",
+            "en": "Dimi called later and said he had come to see their old concert evenings mainly as an obligation from a previous stage of life."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Al met een blijvende pijn",
+            "en": "Although with continuing pain"
+          },
+          "explanation": {
+            "nl": "Al erkent begrip zonder te ontkennen dat de uitleg hem kwetst.",
+            "en": "Al acknowledges understanding without denying that the explanation hurts him."
+          },
+          "examples": [
+            {
+              "nl": "Dat deed Joren pijn, al begreep hij nu waarom steeds dezelfde afspraak voor hen niet meer hetzelfde betekende.",
+              "en": "That hurt Joren, although he now understood why the same arrangement no longer meant the same thing to both of them."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verandert Joren in zijn antwoord?",
+            "en": "What does Joren change in his response?"
+          },
+          "options": [
+            {
+              "nl": "Hij doet alsof hij ook niet wilde gaan.",
+              "en": "He pretends he did not want to go either."
+            },
+            {
+              "nl": "Hij verzint een nieuwe reden voor Dimi.",
+              "en": "He invents a new reason for Dimi."
+            },
+            {
+              "nl": "Hij benoemt zijn echte teleurstelling.",
+              "en": "He names his actual disappointment."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij vervangt maakt niet uit door wat de lege stoel voor hem betekent.",
+            "en": "He replaces never mind with what the empty seat means to him."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat is onzeker aan het koffiegesprek?",
+            "en": "What is uncertain about the coffee meeting?"
+          },
+          "options": [
+            {
+              "nl": "Wie de tickets kocht.",
+              "en": "Who bought the tickets."
+            },
+            {
+              "nl": "Welke vorm hun vriendschap verder kan krijgen.",
+              "en": "What form their friendship can take from here."
+            },
+            {
+              "nl": "Of het concert plaatsvond.",
+              "en": "Whether the concert happened."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het is een nieuw klein begin zonder gegarandeerde herstelde traditie.",
+            "en": "It is a new small beginning without a guaranteed restored tradition."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-nummer-op-de-rug",
+      "topic_id": "sports",
+      "title": {
+        "nl": "Het nummer op zijn rug",
+        "en": "The number on his back"
+      },
+      "plot_key": "A runner who always follows his celebrated brother chooses his own pace during a local race and receives no triumphant result but a different measure of participation.",
+      "lines": [
+        {
+          "nl": "Tijdens elke loopwedstrijd startte Bas vlak achter zijn oudere broer, die al jaren bekendstond als de snelle van de familie.",
+          "en": "At every running race Bas started just behind his older brother, who had been known for years as the fast one in the family."
+        },
+        {
+          "nl": "Hij kende vooral het nummer op diens rug en herinnerde zich na afloop zelden de straatnamen van het parcours.",
+          "en": "He mainly knew the number on his brother's back and afterwards rarely remembered the street names along the course."
+        },
+        {
+          "nl": "Voor een lokale wedstrijd beloofde zijn broer rustig te lopen, maar na de eerste bocht versnelde hij uit gewoonte toch.",
+          "en": "For a local race his brother promised to run slowly, but after the first corner he accelerated out of habit anyway."
+        },
+        {
+          "nl": "Bas zette aan om de afstand te sluiten en merkte vervolgens dat hij alleen nog bezig was geen teleurstelling te worden.",
+          "en": "Bas sped up to close the gap and then noticed he was occupied only with not becoming a disappointment."
+        },
+        {
+          "nl": "Hij liet het nummer verdwijnen tussen de andere lopers en koos een tempo waarin hij weer naar de mensen langs de kant kon kijken.",
+          "en": "He let the number disappear among the other runners and chose a pace at which he could look again at the people along the side."
+        },
+        {
+          "nl": "Zijn eindtijd was langzamer dan vorig jaar, zodat er aan de familietafel geen eenvoudig bewijs van vooruitgang viel te tonen.",
+          "en": "His finishing time was slower than last year, so there was no simple proof of progress to show at the family table."
+        },
+        {
+          "nl": "Toch kon hij voor het eerst vertellen over de muzikanten op de brug en de vrouw die bij elke laatste loper even hard applaudisseerde.",
+          "en": "Yet for the first time he could talk about the musicians on the bridge and the woman who applauded every final runner just as loudly."
+        },
+        {
+          "nl": "Zijn broer luisterde en vroeg voor de volgende wedstrijd niet hoe dicht Bas achter hem zou blijven, maar waar zij elkaar na afloop zouden ontmoeten.",
+          "en": "His brother listened and for the next race asked not how close Bas would stay behind him, but where they would meet afterwards."
+        }
+      ],
+      "words": [
+        {
+          "term": "het parcours",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de route van een sportwedstrijd",
+            "en": "race course"
+          },
+          "example": {
+            "nl": "Hij kende vooral het nummer op diens rug en herinnerde zich na afloop zelden de straatnamen van het parcours.",
+            "en": "He mainly knew the number on his brother's back and afterwards rarely remembered the street names along the course."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "versnellen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "sneller gaan bewegen",
+            "en": "to accelerate"
+          },
+          "example": {
+            "nl": "Voor een lokale wedstrijd beloofde zijn broer rustig te lopen, maar na de eerste bocht versnelde hij uit gewoonte toch.",
+            "en": "For a local race his brother promised to run slowly, but after the first corner he accelerated out of habit anyway."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het tempo",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de snelheid waarmee iets gebeurt",
+            "en": "pace"
+          },
+          "example": {
+            "nl": "Hij liet het nummer verdwijnen tussen de andere lopers en koos een tempo waarin hij weer naar de mensen langs de kant kon kijken.",
+            "en": "He let the number disappear among the other runners and chose a pace at which he could look again at the people along the side."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zodat met een werkelijk gevolg",
+            "en": "So that with an actual consequence"
+          },
+          "explanation": {
+            "nl": "Zodat noemt hier het gevolg van zijn langzamere tijd, niet zijn bedoeling.",
+            "en": "Zodat names the consequence of his slower time here, not his intention."
+          },
+          "examples": [
+            {
+              "nl": "Zijn eindtijd was langzamer dan vorig jaar, zodat er aan de familietafel geen eenvoudig bewijs van vooruitgang viel te tonen.",
+              "en": "His finishing time was slower than last year, so there was no simple proof of progress to show at the family table."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waardoor laat Bas zijn broer vooruitgaan?",
+            "en": "What makes Bas let his brother go ahead?"
+          },
+          "options": [
+            {
+              "nl": "Zijn broer vraagt hem te stoppen.",
+              "en": "His brother asks him to stop."
+            },
+            {
+              "nl": "Hij ziet dat hij vooral een familieverwachting probeert waar te maken.",
+              "en": "He sees that he is mainly trying to meet a family expectation."
+            },
+            {
+              "nl": "Hij kent de eindstreep niet.",
+              "en": "He does not know the finish line."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij merkt dat hij vooral geen teleurstelling wil zijn.",
+            "en": "He notices he mainly wants not to be a disappointment."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert zijn broer aan het einde?",
+            "en": "What does his brother change at the end?"
+          },
+          "options": [
+            {
+              "nl": "Hij stopt met luisteren.",
+              "en": "He stops listening."
+            },
+            {
+              "nl": "Hij verbergt de uitslag.",
+              "en": "He hides the result."
+            },
+            {
+              "nl": "Hij laat ruimte voor twee eigen wedstrijdritmes.",
+              "en": "He leaves room for two separate racing rhythms."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Een ontmoeting na afloop vervangt de verwachting dat Bas hem moet blijven volgen.",
+            "en": "Meeting afterwards replaces the expectation that Bas must keep following him."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-bericht-op-het-antwoordapparaat",
+      "topic_id": "technology",
+      "title": {
+        "nl": "Het bericht op het antwoordapparaat",
+        "en": "The message on the answering machine"
+      },
+      "plot_key": "An obsolete answering machine preserves a routine message from a deceased mother, and its owner distinguishes preserving a voice from keeping every device unchanged.",
+      "lines": [
+        {
+          "nl": "Toen haar vaste telefoon werd vervangen, wilde Hanne het oude antwoordapparaat niet afgeven, hoewel het toestel nog nauwelijks werkte.",
+          "en": "When her landline phone was replaced, Hanne did not want to hand over the old answering machine, although it barely worked any longer."
+        },
+        {
+          "nl": "De technicus dacht dat zij vooral bang was voor een nieuw systeem en legde geduldig uit hoe eenvoudig berichten voortaan bewaard konden worden.",
+          "en": "The technician thought she was mainly afraid of a new system and patiently explained how easily messages could now be stored."
+        },
+        {
+          "nl": "Hanne drukte op een versleten knop, waarna de stem van haar overleden moeder zei dat zij morgen wel een brood zou meebrengen.",
+          "en": "Hanne pressed a worn button, after which her late mother's voice said she would bring a loaf of bread tomorrow."
+        },
+        {
+          "nl": "Er volgde geen bijzondere levensles, alleen een vertrouwd kuchje en de vraag of er nog koffie in huis was.",
+          "en": "There followed no special life lesson, only a familiar little cough and the question whether there was still coffee in the house."
+        },
+        {
+          "nl": "Dat gewone bericht was het enige geluid van haar moeder dat niet tijdens een feest of een bewust gemaakte opname was vastgelegd.",
+          "en": "That ordinary message was the only sound of her mother not captured during a celebration or a deliberate recording."
+        },
+        {
+          "nl": "De technicus vroeg of zij samen konden uitzoeken hoe het geluid veilig kon worden overgezet voordat het apparaat definitief uitviel.",
+          "en": "The technician asked whether they could work out together how to transfer the sound safely before the device failed permanently."
+        },
+        {
+          "nl": "Enkele weken later stond het toestel zonder kabel in een kast, terwijl Hanne de opname op een andere plek kon beluisteren.",
+          "en": "A few weeks later the device stood without a cable in a cupboard, while Hanne could listen to the recording elsewhere."
+        },
+        {
+          "nl": "Zij had niet alles hetzelfde hoeven houden om de zin te bewaren waarin haar moeder nog altijd dacht dat er een morgen samen zou zijn.",
+          "en": "She had not had to keep everything unchanged to preserve the sentence in which her mother still thought there would be a tomorrow together."
+        }
+      ],
+      "words": [
+        {
+          "term": "vastleggen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "geluid of beeld bewaren in een opname",
+            "en": "to record"
+          },
+          "example": {
+            "nl": "Dat gewone bericht was het enige geluid van haar moeder dat niet tijdens een feest of een bewust gemaakte opname was vastgelegd.",
+            "en": "That ordinary message was the only sound of her mother not captured during a celebration or a deliberate recording."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "overzetten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "van het ene systeem of medium naar het andere brengen",
+            "en": "to transfer"
+          },
+          "example": {
+            "nl": "De technicus vroeg of zij samen konden uitzoeken hoe het geluid veilig kon worden overgezet voordat het apparaat definitief uitviel.",
+            "en": "The technician asked whether they could work out together how to transfer the sound safely before the device failed permanently."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "definitief",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "zonder verwacht herstel of terugkeer",
+            "en": "permanent"
+          },
+          "example": {
+            "nl": "De technicus vroeg of zij samen konden uitzoeken hoe het geluid veilig kon worden overgezet voordat het apparaat definitief uitviel.",
+            "en": "The technician asked whether they could work out together how to transfer the sound safely before the device failed permanently."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Voordat bij een noodzakelijk tijdspunt",
+            "en": "Before with a necessary time boundary"
+          },
+          "explanation": {
+            "nl": "Voordat noemt het moment waarvóór de overdracht moet gebeuren.",
+            "en": "Voordat names the moment before which the transfer must happen."
+          },
+          "examples": [
+            {
+              "nl": "De technicus vroeg of zij samen konden uitzoeken hoe het geluid veilig kon worden overgezet voordat het apparaat definitief uitviel.",
+              "en": "The technician asked whether they could work out together how to transfer the sound safely before the device failed permanently."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is juist dit bericht waardevol?",
+            "en": "Why is this particular message valuable?"
+          },
+          "options": [
+            {
+              "nl": "Het bewaart een gewone ongeregisseerde stem van haar moeder.",
+              "en": "It preserves an ordinary, unstaged voice of her mother."
+            },
+            {
+              "nl": "Het belooft een duur geschenk.",
+              "en": "It promises an expensive gift."
+            },
+            {
+              "nl": "Het bevat een geheime code.",
+              "en": "It contains a secret code."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Brood en koffie laten haar moeder in een alledaags moment horen.",
+            "en": "Bread and coffee let her hear her mother in an everyday moment."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke eerste aanname van de technicus blijkt te beperkt?",
+            "en": "Which initial assumption of the technician proves too limited?"
+          },
+          "options": [
+            {
+              "nl": "Dat Hanne het oude toestel alleen uit angst voor techniek bewaart.",
+              "en": "That Hanne keeps the old device only out of fear of technology."
+            },
+            {
+              "nl": "Dat berichten geluid bevatten.",
+              "en": "That messages contain sound."
+            },
+            {
+              "nl": "Dat het toestel oud is.",
+              "en": "That the device is old."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Het toestel draagt een specifieke persoonlijke opname die hij eerst niet kent.",
+            "en": "The device carries a specific personal recording he initially does not know about."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-taal-les-met-een-rolwisseling",
+      "topic_id": "education",
+      "title": {
+        "nl": "De les met een rolwisseling",
+        "en": "The lesson with reversed roles"
+      },
+      "plot_key": "An experienced teacher becomes a beginner in a sewing class and changes how she handles incomplete student answers after experiencing premature help.",
+      "lines": [
+        {
+          "nl": "Als taaldocent gaf Elske haar leerlingen snel het juiste woord wanneer zij tijdens een antwoord even aarzelden.",
+          "en": "As a language teacher, Elske quickly gave her pupils the correct word whenever they hesitated briefly during an answer."
+        },
+        {
+          "nl": "Ze vond dat behulpzaam, omdat niemand dan lang ongemakkelijk voor de klas hoefde te zoeken.",
+          "en": "She considered that helpful because nobody then had to search awkwardly in front of the class for long."
+        },
+        {
+          "nl": "Tijdens haar eerste naailes wist zij zelf niet hoe ze de draad door een kleine opening moest halen en probeerde ze verschillende bewegingen uit.",
+          "en": "During her first sewing lesson she herself did not know how to pass the thread through a small opening and tried different movements."
+        },
+        {
+          "nl": "De lesgever nam het werk na een paar seconden over, glimlachte vriendelijk en legde het correct ingeregen toestel weer voor haar neer.",
+          "en": "After a few seconds the instructor took over, smiled kindly and put the correctly threaded machine back in front of her."
+        },
+        {
+          "nl": "Elske was tegelijk opgelucht en teleurgesteld, omdat zij nu wel verder kon maar nog steeds niet wist hoe de cruciale stap werkte.",
+          "en": "Elske felt relieved and disappointed at the same time because she could now continue but still did not know how the crucial step worked."
+        },
+        {
+          "nl": "In haar volgende taalles wachtte zij iets langer en vroeg een leerling eerst welk deel van zijn zin hij al zeker wist.",
+          "en": "In her next language lesson she waited a little longer and first asked a pupil which part of his sentence he already knew for certain."
+        },
+        {
+          "nl": "Dat leverde soms een onvolmaakt antwoord op dat langer duurde dan haar eigen tussenkomst, maar ook een volgende poging die van de leerling zelf kwam.",
+          "en": "This sometimes produced an imperfect answer that took longer than her own intervention, but also a next attempt coming from the pupil himself."
+        },
+        {
+          "nl": "Bij de naailes vroeg Elske voortaan of de docent het nog één keer langzaam kon tonen en het toestel daarna opnieuw aan haar wilde laten.",
+          "en": "In the sewing class Elske now asked whether the instructor could show it slowly once more and then leave the machine to her again."
+        }
+      ],
+      "words": [
+        {
+          "term": "aarzelen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "even twijfelen voordat je iets doet of zegt",
+            "en": "to hesitate"
+          },
+          "example": {
+            "nl": "Als taaldocent gaf Elske haar leerlingen snel het juiste woord wanneer zij tijdens een antwoord even aarzelden.",
+            "en": "As a language teacher, Elske quickly gave her pupils the correct word whenever they hesitated briefly during an answer."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de tussenkomst",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een handeling waarbij iemand ingrijpt of helpt",
+            "en": "intervention"
+          },
+          "example": {
+            "nl": "Dat leverde soms een onvolmaakt antwoord op dat langer duurde dan haar eigen tussenkomst, maar ook een volgende poging die van de leerling zelf kwam.",
+            "en": "This sometimes produced an imperfect answer that took longer than her own intervention, but also a next attempt coming from the pupil himself."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "cruciaal",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "beslissend of zeer belangrijk",
+            "en": "crucial"
+          },
+          "example": {
+            "nl": "Elske was tegelijk opgelucht en teleurgesteld, omdat zij nu wel verder kon maar nog steeds niet wist hoe de cruciale stap werkte.",
+            "en": "Elske felt relieved and disappointed at the same time because she could now continue but still did not know how the crucial step worked."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Wel ... maar nog steeds niet ...",
+            "en": "Can ... but still cannot ..."
+          },
+          "explanation": {
+            "nl": "De tegenstelling onderscheidt verder kunnen werken van de stap zelfstandig begrijpen.",
+            "en": "The contrast distinguishes being able to continue working from understanding the step independently."
+          },
+          "examples": [
+            {
+              "nl": "Elske was tegelijk opgelucht en teleurgesteld, omdat zij nu wel verder kon maar nog steeds niet wist hoe de cruciale stap werkte.",
+              "en": "Elske felt relieved and disappointed at the same time because she could now continue but still did not know how the crucial step worked."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom is Elske ook teleurgesteld over de hulp?",
+            "en": "Why is Elske also disappointed with the help?"
+          },
+          "options": [
+            {
+              "nl": "De machine is nog kapot.",
+              "en": "The machine is still broken."
+            },
+            {
+              "nl": "De taak is opgelost zonder dat zij de stap leert.",
+              "en": "The task is solved without her learning the step."
+            },
+            {
+              "nl": "De lesgever weigert te glimlachen.",
+              "en": "The instructor refuses to smile."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Het correct ingeregen toestel geeft niet automatisch inzicht in het inrijgen.",
+            "en": "The correctly threaded machine does not automatically provide understanding of threading."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert in haar eigen les?",
+            "en": "What changes in her own teaching?"
+          },
+          "options": [
+            {
+              "nl": "Ze geeft nooit meer uitleg.",
+              "en": "She never explains anything again."
+            },
+            {
+              "nl": "Ze laat meer ruimte voor de leerling om de volgende stap te vinden.",
+              "en": "She leaves more room for the pupil to find the next step."
+            },
+            {
+              "nl": "Ze vraagt alleen snellere antwoorden.",
+              "en": "She asks only for faster answers."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze wacht en vraagt wat de leerling al weet in plaats van onmiddellijk het woord te geven.",
+            "en": "She waits and asks what the pupil already knows instead of immediately providing the word."
+          }
+        }
+      ]
+    }
+  ]
+}

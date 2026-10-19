@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-reglement-voor-de-wedstrijd",
+      "topic_id": "laws-regulations",
+      "title": {
+        "nl": "Het reglement voor de wedstrijd",
+        "en": "The competition rules"
+      },
+      "plot_key": "A town's fictional baking contest disqualifies a technically valid savoury entry until organisers confront an unstated assumption hidden in their wording.",
+      "lines": [
+        {
+          "nl": "Voor de jaarlijkse bakwedstrijd in een buurthuis had organisator Koen in het reglement alleen geschreven dat elke deelnemer één zelfgebakken taart moest indienen.",
+          "en": "For the annual baking competition at a community centre, organiser Koen had written in the rules only that each entrant had to submit one homemade pie or cake."
+        },
+        {
+          "nl": "Hij verwachtte room, fruit en chocolade, en had daarom kleine lepeltjes voor de jury klaargelegd.",
+          "en": "He expected cream, fruit and chocolate and had therefore prepared little spoons for the jury."
+        },
+        {
+          "nl": "De jonge deelnemer Niels verscheen echter met een warme preitaart, waarvan de geur onmiddellijk door de hele zaal trok.",
+          "en": "However, young entrant Niels arrived with a warm leek tart whose smell immediately spread through the hall."
+        },
+        {
+          "nl": "Een jurylid zei dat dit niet de bedoeling was en schoof de schaal naar de tafel buiten de wedstrijd.",
+          "en": "One judge said this was not the intention and moved the dish to the table outside the competition."
+        },
+        {
+          "nl": "Niels las het reglement hardop voor en vroeg waar precies stond dat een taart zoet moest zijn.",
+          "en": "Niels read the rules aloud and asked where exactly it said a pie or cake had to be sweet."
+        },
+        {
+          "nl": "Koen kon die zin nergens aanwijzen, hoe duidelijk zijn eigen voorstelling van de wedstrijd ook was geweest.",
+          "en": "Koen could not point to that sentence anywhere, however clear his own picture of the competition had been."
+        },
+        {
+          "nl": "De jury beoordeelde de preitaart uiteindelijk mee en schreef voor volgend jaar twee categorieën uit, zonder Niels achteraf voor hun onduidelijkheid te laten betalen.",
+          "en": "The jury eventually included the leek tart and created two categories for next year, without making Niels pay retrospectively for their lack of clarity."
+        },
+        {
+          "nl": "Hij won niet, maar tijdens het opruimen waren zijn lepeltjes als enige vervangen door vorken en was zijn schaal helemaal leeg.",
+          "en": "He did not win, but during the clear-up his spoons alone had been replaced by forks and his dish was completely empty."
+        }
+      ],
+      "words": [
+        {
+          "term": "het reglement",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "vastgelegde regels voor een activiteit",
+            "en": "rules or regulations"
+          },
+          "example": {
+            "nl": "Voor de jaarlijkse bakwedstrijd in een buurthuis had organisator Koen in het reglement alleen geschreven dat elke deelnemer één zelfgebakken taart moest indienen.",
+            "en": "For the annual baking competition at a community centre, organiser Koen had written in the rules only that each entrant had to submit one homemade pie or cake."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "indienen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "officieel aanbieden om beoordeeld te worden",
+            "en": "to submit"
+          },
+          "example": {
+            "nl": "Voor de jaarlijkse bakwedstrijd in een buurthuis had organisator Koen in het reglement alleen geschreven dat elke deelnemer één zelfgebakken taart moest indienen.",
+            "en": "For the annual baking competition at a community centre, organiser Koen had written in the rules only that each entrant had to submit one homemade pie or cake."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "achteraf",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "nadat iets gebeurd is",
+            "en": "afterwards or retrospectively"
+          },
+          "example": {
+            "nl": "De jury beoordeelde de preitaart uiteindelijk mee en schreef voor volgend jaar twee categorieën uit, zonder Niels achteraf voor hun onduidelijkheid te laten betalen.",
+            "en": "The jury eventually included the leek tart and created two categories for next year, without making Niels pay retrospectively for their lack of clarity."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Hoe duidelijk ... ook",
+            "en": "However clear ..."
+          },
+          "explanation": {
+            "nl": "Hoe duidelijk ... ook maakt een toegeving: zijn eigen beeld bewijst geen geschreven regel.",
+            "en": "Hoe duidelijk ... ook makes a concession: his own picture does not prove a written rule."
+          },
+          "examples": [
+            {
+              "nl": "Koen kon die zin nergens aanwijzen, hoe duidelijk zijn eigen voorstelling van de wedstrijd ook was geweest.",
+              "en": "Koen could not point to that sentence anywhere, however clear his own picture of the competition had been."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kan Niels terecht naar het reglement verwijzen?",
+            "en": "Why can Niels reasonably refer to the rules?"
+          },
+          "options": [
+            {
+              "nl": "Een zoete smaak is niet als voorwaarde vermeld.",
+              "en": "Sweetness is not stated as a condition."
+            },
+            {
+              "nl": "Hij is zelf jurylid.",
+              "en": "He is a judge himself."
+            },
+            {
+              "nl": "Zijn moeder heeft de wedstrijd gewonnen.",
+              "en": "His mother won the competition."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "De geschreven voorwaarde beperkt taart niet tot zoete varianten.",
+            "en": "The written condition does not restrict pie or cake to sweet versions."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet de organisatie met de ontbrekende duidelijkheid?",
+            "en": "What does the organisation do about the missing clarity?"
+          },
+          "options": [
+            {
+              "nl": "Ze verbiedt Niels volgend jaar terug te komen.",
+              "en": "It bans Niels from returning next year."
+            },
+            {
+              "nl": "Ze verzint een oude regel die nooit bestond.",
+              "en": "It invents an old rule that never existed."
+            },
+            {
+              "nl": "Ze beoordeelt hem nu mee en verduidelijkt latere wedstrijden.",
+              "en": "It includes him now and clarifies future competitions."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Er komen nieuwe categorieën voor later zonder hem nu voor de onduidelijkheid uit te sluiten.",
+            "en": "New categories are created for later without excluding him now for the lack of clarity."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-portret-in-werkbroek",
+      "topic_id": "personal-identity",
+      "title": {
+        "nl": "Het portret in de werkbroek",
+        "en": "The portrait in work trousers"
+      },
+      "plot_key": "A retired worker resists his daughter's polished portrait plan and chooses an image that includes both his old trade and his new painting practice.",
+      "lines": [
+        {
+          "nl": "Voor zijn vijfenzestigste verjaardag wilde Annelies haar vader laten fotograferen in een net pak, met een rustige achtergrond en een vriendelijke glimlach.",
+          "en": "For his sixty-fifth birthday Annelies wanted her father photographed in a smart suit with a calm background and a friendly smile."
+        },
+        {
+          "nl": "Hij werkte sinds kort niet meer in de metaalfabriek en had volgens haar eindelijk tijd om ook eens anders gezien te worden.",
+          "en": "He had recently stopped working at the metal factory and, she felt, finally had time to be seen differently."
+        },
+        {
+          "nl": "Toen de fotograaf aankwam, stond haar vader klaar in zijn oude werkbroek, waarvan de zakken vol kleurpotloden zaten.",
+          "en": "When the photographer arrived, her father was ready in his old work trousers, whose pockets were full of coloured pencils."
+        },
+        {
+          "nl": "Annelies dacht dat hij het cadeau niet ernstig nam en wees naar het pak dat zij speciaal had laten reinigen.",
+          "en": "Annelies thought he was not taking the gift seriously and pointed at the suit she had specially had cleaned."
+        },
+        {
+          "nl": "Hij legde uit dat hij niet zijn hele werkleven wilde wegtrekken alsof het een vlek was, alleen omdat hij nu ook tekende.",
+          "en": "He explained that he did not want to strip away his entire working life as if it were a stain simply because he now also drew."
+        },
+        {
+          "nl": "De fotograaf vroeg hem een schets te tonen en plaatste hem bij het raam, zonder te kiezen welk deel van zijn leven het echte was.",
+          "en": "The photographer asked him to show a sketch and placed him by the window without choosing which part of his life was the real one."
+        },
+        {
+          "nl": "Op de uiteindelijke foto rustten zijn getekende handen op de versleten stof, naast een onaffe tekening van een heel klein schip.",
+          "en": "In the final photograph his marked hands rested on the worn fabric beside an unfinished drawing of a very small ship."
+        },
+        {
+          "nl": "Annelies liet het pak in de kast hangen en vroeg bij het inlijsten of haar vader ook zelf de titel bij zijn portret wilde kiezen.",
+          "en": "Annelies left the suit in the wardrobe and, when framing it, asked whether her father would also choose the title for his portrait himself."
+        }
+      ],
+      "words": [
+        {
+          "term": "versleten",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "beschadigd of dun geworden door lang gebruik",
+            "en": "worn"
+          },
+          "example": {
+            "nl": "Op de uiteindelijke foto rustten zijn getekende handen op de versleten stof, naast een onaffe tekening van een heel klein schip.",
+            "en": "In the final photograph his marked hands rested on the worn fabric beside an unfinished drawing of a very small ship."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het portret",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een afbeelding van een persoon",
+            "en": "portrait"
+          },
+          "example": {
+            "nl": "Annelies liet het pak in de kast hangen en vroeg bij het inlijsten of haar vader ook zelf de titel bij zijn portret wilde kiezen.",
+            "en": "Annelies left the suit in the wardrobe and, when framing it, asked whether her father would also choose the title for his portrait himself."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "inlijsten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een afbeelding in een lijst plaatsen",
+            "en": "to frame"
+          },
+          "example": {
+            "nl": "Annelies liet het pak in de kast hangen en vroeg bij het inlijsten of haar vader ook zelf de titel bij zijn portret wilde kiezen.",
+            "en": "Annelies left the suit in the wardrobe and, when framing it, asked whether her father would also choose the title for his portrait himself."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Alsof bij een beeldspraak",
+            "en": "As if with a metaphor"
+          },
+          "explanation": {
+            "nl": "Alsof vergelijkt het wegdoen van zijn werkverleden met het verwijderen van een vlek.",
+            "en": "Alsof compares discarding his working past with removing a stain."
+          },
+          "examples": [
+            {
+              "nl": "Hij legde uit dat hij niet zijn hele werkleven wilde wegtrekken alsof het een vlek was, alleen omdat hij nu ook tekende.",
+              "en": "He explained that he did not want to strip away his entire working life as if it were a stain simply because he now also drew."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom wil de vader zijn werkbroek dragen?",
+            "en": "Why does the father want to wear his work trousers?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft het pak verkocht.",
+              "en": "He has sold the suit."
+            },
+            {
+              "nl": "Zijn vroegere werk blijft deel van wie hij is.",
+              "en": "His former work remains part of who he is."
+            },
+            {
+              "nl": "Hij wil weer naar de fabriek.",
+              "en": "He wants to return to the factory."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij wil het werkverleden niet als een ongewenste vlek verwijderen.",
+            "en": "He does not want to remove his working past like an unwanted stain."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe verandert Annelies haar aanpak?",
+            "en": "How does Annelies change her approach?"
+          },
+          "options": [
+            {
+              "nl": "Ze verstopt alle potloden.",
+              "en": "She hides all pencils."
+            },
+            {
+              "nl": "Ze geeft hem meer zeggenschap over zijn eigen voorstelling.",
+              "en": "She gives him more say over his own portrayal."
+            },
+            {
+              "nl": "Ze annuleert alle foto's.",
+              "en": "She cancels all photographs."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Aan het einde vraagt zij hem zelf de titel te kiezen.",
+            "en": "At the end she asks him to choose the title himself."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-dag-met-drie-begins",
+      "topic_id": "time-management",
+      "title": {
+        "nl": "Een dag met drie begins",
+        "en": "A day with three beginnings"
+      },
+      "plot_key": "A translator's meticulously scheduled workday fragments because she ignores transition time, and an experiment reveals the real source of delay.",
+      "lines": [
+        {
+          "nl": "Freelancevertaler Noor verdeelde haar maandag in keurige blokken van telkens een uur, zodat drie opdrachten precies voor zes uur klaar zouden zijn.",
+          "en": "Freelance translator Noor divided her Monday into neat one-hour blocks so that three assignments would be finished exactly before six."
+        },
+        {
+          "nl": "Toch stond ze om vijf uur nog midden in de tweede tekst en vroeg ze zich af waarom haar werk zoveel trager ging dan vroeger.",
+          "en": "Yet at five she was still in the middle of the second text and wondered why her work was taking so much longer than before."
+        },
+        {
+          "nl": "Ze begon de volgende dag niet meer taken af te vinken, maar noteerde wanneer ze werkelijk aan een nieuwe opdracht kon beginnen.",
+          "en": "The next day she did not tick off more tasks but noted when she could actually begin a new assignment."
+        },
+        {
+          "nl": "Na elk telefoongesprek moest ze opnieuw opzoeken welke term ze had gekozen en waarom een klant een bepaalde toon wilde behouden.",
+          "en": "After each phone call she had to look up again which term she had chosen and why a client wanted to preserve a particular tone."
+        },
+        {
+          "nl": "De gesprekken zelf duurden samen nauwelijks een halfuur, terwijl het terugvinden van haar draad bijna twee uur opslokte.",
+          "en": "The conversations themselves lasted barely half an hour in total, while picking up her train of thought again consumed almost two hours."
+        },
+        {
+          "nl": "Noor bundelde de overlegmomenten en liet tussen verschillende teksten ruimte om haar keuzes kort vast te leggen voordat ze wisselde.",
+          "en": "Noor grouped the discussions and left space between different texts to record her choices briefly before switching."
+        },
+        {
+          "nl": "Haar agenda zag er leger uit, tot onrust van een klant die gewend was elk vrij vak als beschikbaarheid te lezen.",
+          "en": "Her diary looked emptier, to the concern of a client accustomed to reading every blank slot as availability."
+        },
+        {
+          "nl": "Ze legde uit dat die lege ruimte niet betekende dat ze niets deed, maar dat haar werk er zonder minder goed doorliep.",
+          "en": "She explained that this empty space did not mean she was doing nothing, but that her work flowed less well without it."
+        }
+      ],
+      "words": [
+        {
+          "term": "afvinken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met een teken aangeven dat iets gedaan is",
+            "en": "to tick off"
+          },
+          "example": {
+            "nl": "Ze begon de volgende dag niet meer taken af te vinken, maar noteerde wanneer ze werkelijk aan een nieuwe opdracht kon beginnen.",
+            "en": "The next day she did not tick off more tasks but noted when she could actually begin a new assignment."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "opslokken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "volledig verbruiken",
+            "en": "to consume or swallow up"
+          },
+          "example": {
+            "nl": "De gesprekken zelf duurden samen nauwelijks een halfuur, terwijl het terugvinden van haar draad bijna twee uur opslokte.",
+            "en": "The conversations themselves lasted barely half an hour in total, while picking up her train of thought again consumed almost two hours."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de beschikbaarheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "de tijd waarin iemand iets kan doen",
+            "en": "availability"
+          },
+          "example": {
+            "nl": "Haar agenda zag er leger uit, tot onrust van een klant die gewend was elk vrij vak als beschikbaarheid te lezen.",
+            "en": "Her diary looked emptier, to the concern of a client accustomed to reading every blank slot as availability."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl voor tegenstelling",
+            "en": "While for contrast"
+          },
+          "explanation": {
+            "nl": "Terwijl vergelijkt hier de korte gesprekstijd met de veel langere hersteltijd.",
+            "en": "Terwijl contrasts the short conversation time with the much longer recovery time."
+          },
+          "examples": [
+            {
+              "nl": "De gesprekken zelf duurden samen nauwelijks een halfuur, terwijl het terugvinden van haar draad bijna twee uur opslokte.",
+              "en": "The conversations themselves lasted barely half an hour in total, while picking up her train of thought again consumed almost two hours."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat verklaart de grootste vertraging?",
+            "en": "What explains the largest delay?"
+          },
+          "options": [
+            {
+              "nl": "De herstart na onderbrekingen kost veel tijd.",
+              "en": "Restarting after interruptions takes a lot of time."
+            },
+            {
+              "nl": "Ze kan niet meer typen.",
+              "en": "She can no longer type."
+            },
+            {
+              "nl": "Elk gesprek duurt twee uur.",
+              "en": "Every conversation lasts two hours."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze verliest vooral tijd met terugzoeken en de draad opnieuw vinden.",
+            "en": "She mainly loses time searching back and picking up her train of thought."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Waarom begrijpt de klant de nieuwe agenda eerst verkeerd?",
+            "en": "Why does the client initially misunderstand the new diary?"
+          },
+          "options": [
+            {
+              "nl": "Hij kent het uur niet.",
+              "en": "He does not know the time."
+            },
+            {
+              "nl": "Hij denkt dat iedere lege plek ongebruikte werktijd is.",
+              "en": "He thinks every blank space is unused working time."
+            },
+            {
+              "nl": "Noor heeft de opdrachten geschrapt.",
+              "en": "Noor has cancelled the assignments."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "De lege blokken hebben nu een functie die niet als een gewone taak zichtbaar is.",
+            "en": "The blank blocks now have a function not visible as an ordinary task."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-strijkplank-als-brief",
+      "topic_id": "household-chores",
+      "title": {
+        "nl": "De strijkplank in de gang",
+        "en": "The ironing board in the hall"
+      },
+      "plot_key": "Housemates communicate resentment through an obstructing ironing board until an unexpected guest reads the object literally and exposes their unspoken argument.",
+      "lines": [
+        {
+          "nl": "In het gedeelde appartement van Wout en Lien stond de strijkplank al vier dagen uitgeklapt midden in de gang.",
+          "en": "In Wout and Lien's shared flat, the ironing board had been left unfolded in the middle of the hall for four days."
+        },
+        {
+          "nl": "Wout liet haar staan om te tonen dat hij niet weer alles wilde opruimen; Lien liep eromheen omdat zij hetzelfde dacht over zijn afwas.",
+          "en": "Wout left it there to show he did not want to tidy everything again; Lien walked around it because she felt the same about his washing-up."
+        },
+        {
+          "nl": "Ze wisselden beleefde berichten uit over de huur, terwijl ieder in stilte een steeds langere lijst van oude ergernissen bijhield.",
+          "en": "They exchanged polite messages about the rent while each silently kept an increasingly long list of old irritations."
+        },
+        {
+          "nl": "Op vrijdag kwam Liens broer logeren en vroeg hij opgewekt of er soms een tijdelijk strijkatelier in de gang georganiseerd werd.",
+          "en": "On Friday Lien's brother came to stay and cheerfully asked whether a temporary ironing workshop was being organised in the hall."
+        },
+        {
+          "nl": "Hij schoof de plank zonder overleg opzij en zette zijn tas precies op de plaats waar hun wederzijdse verwijt had gestaan.",
+          "en": "Without discussion he moved the board aside and put his bag exactly where their mutual accusation had stood."
+        },
+        {
+          "nl": "Wout begon te lachen en zei eindelijk hardop waarom hij dat onhandige meubel als boodschap had laten staan.",
+          "en": "Wout began to laugh and finally said aloud why he had left that awkward object there as a message."
+        },
+        {
+          "nl": "Lien antwoordde met haar eigen lijst, die niet plots korter werd maar voor het eerst door de juiste persoon werd gehoord.",
+          "en": "Lien replied with her own list, which did not suddenly become shorter but was heard by the right person for the first time."
+        },
+        {
+          "nl": "De plank verdween in de kast; hun afspraak over taken paste later op papier, wat voor bezoekers aanzienlijk minder gevaarlijk bleek.",
+          "en": "The board disappeared into the cupboard; their arrangement about tasks later fitted on paper, which turned out to be considerably less dangerous for visitors."
+        }
+      ],
+      "words": [
+        {
+          "term": "de ergernis",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "iets wat iemand irriteert",
+            "en": "irritation"
+          },
+          "example": {
+            "nl": "Ze wisselden beleefde berichten uit over de huur, terwijl ieder in stilte een steeds langere lijst van oude ergernissen bijhield.",
+            "en": "They exchanged polite messages about the rent while each silently kept an increasingly long list of old irritations."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "het verwijt",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een uitspraak waarmee iemand een ander iets kwalijk neemt",
+            "en": "accusation or reproach"
+          },
+          "example": {
+            "nl": "Hij schoof de plank zonder overleg opzij en zette zijn tas precies op de plaats waar hun wederzijdse verwijt had gestaan.",
+            "en": "Without discussion he moved the board aside and put his bag exactly where their mutual accusation had stood."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "aanzienlijk",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "duidelijk groot in mate",
+            "en": "considerable"
+          },
+          "example": {
+            "nl": "De plank verdween in de kast; hun afspraak over taken paste later op papier, wat voor bezoekers aanzienlijk minder gevaarlijk bleek.",
+            "en": "The board disappeared into the cupboard; their arrangement about tasks later fitted on paper, which turned out to be considerably less dangerous for visitors."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl bij verborgen tegenstelling",
+            "en": "While with a hidden contrast"
+          },
+          "explanation": {
+            "nl": "Terwijl zet hun beleefde berichten tegenover de irritaties die gelijktijdig groeien.",
+            "en": "Terwijl contrasts their polite messages with the irritations growing at the same time."
+          },
+          "examples": [
+            {
+              "nl": "Ze wisselden beleefde berichten uit over de huur, terwijl ieder in stilte een steeds langere lijst van oude ergernissen bijhield.",
+              "en": "They exchanged polite messages about the rent while each silently kept an increasingly long list of old irritations."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke functie heeft de strijkplank voor Wout?",
+            "en": "What function does the ironing board have for Wout?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft geen kast.",
+              "en": "He has no cupboard."
+            },
+            {
+              "nl": "Hij wil bezoekers strijkles geven.",
+              "en": "He wants to teach visitors ironing."
+            },
+            {
+              "nl": "Hij laat er een onuitgesproken verwijt mee zien.",
+              "en": "He uses it to display an unspoken reproach."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Hij laat het voorwerp staan om zijn weigering om weer op te ruimen te tonen.",
+            "en": "He leaves the object there to show his refusal to tidy again."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat brengt de broer onbedoeld op gang?",
+            "en": "What does the brother unintentionally set in motion?"
+          },
+          "options": [
+            {
+              "nl": "Een rechtstreeks gesprek over wat de voorwerpen moesten zeggen.",
+              "en": "A direct conversation about what the objects were supposed to say."
+            },
+            {
+              "nl": "Een verbod op logeren.",
+              "en": "A ban on overnight guests."
+            },
+            {
+              "nl": "Een verhoging van de huur.",
+              "en": "An increase in the rent."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Zijn letterlijke lezing maakt het stille conflict zichtbaar en bespreekbaar.",
+            "en": "His literal reading makes the silent conflict visible and discussable."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-geur-van-de-danszaal",
+      "topic_id": "personal-hygiene",
+      "title": {
+        "nl": "De geur van de danszaal",
+        "en": "The scent of the dance hall"
+      },
+      "plot_key": "A dance partner mistakes strong perfume for a signal of elegance, then learns that shared closeness requires a negotiable comfort rather than a universal good smell.",
+      "lines": [
+        {
+          "nl": "Voor zijn eerste tangoles deed Bas extra parfum op, omdat hij niet onfris wilde overkomen wanneer hij dicht bij iemand moest dansen.",
+          "en": "For his first tango lesson Bas put on extra perfume because he did not want to seem unclean when dancing close to someone."
+        },
+        {
+          "nl": "Zijn danspartner Aline hield echter opvallend veel afstand en vroeg na twee oefeningen om even van partner te wisselen.",
+          "en": "However, his dance partner Aline kept a noticeably large distance and asked to change partners briefly after two exercises."
+        },
+        {
+          "nl": "Bas dacht dat zijn passen te onzeker waren en begon de volgende oefening nog geconcentreerder, zonder te merken dat zij bij een open raam bleef staan.",
+          "en": "Bas thought his steps were too uncertain and began the next exercise with even greater concentration, not noticing that she stayed by an open window."
+        },
+        {
+          "nl": "Tijdens de pauze zei de docent rustig dat sterke geuren in een kleine zaal voor sommige mensen lastig konden zijn.",
+          "en": "During the break the teacher calmly said that strong scents could be difficult for some people in a small room."
+        },
+        {
+          "nl": "Bas hoorde de opmerking alsof iedereen hem vies vond, terwijl hij juist met de beste bedoeling te veel had gebruikt.",
+          "en": "Bas heard the remark as if everyone thought he was dirty, although he had actually used too much with the best intentions."
+        },
+        {
+          "nl": "Aline legde uit dat zij zijn passen graag volgde, maar vroeg of ze volgende keer eerst samen konden bekijken wat voor hen comfortabel was.",
+          "en": "Aline explained that she liked following his steps, but asked whether next time they could first discuss what was comfortable for them."
+        },
+        {
+          "nl": "Hij kwam de week daarna zonder extra parfum en vroeg bij de eerste oefening of de afstand zo goed voelde.",
+          "en": "The following week he came without extra perfume and asked during the first exercise whether the distance felt right."
+        },
+        {
+          "nl": "Hun dans werd niet meteen beter, maar hij hoefde niet langer te raden of haar terughoudendheid iets over zijn talent zei.",
+          "en": "Their dancing did not immediately improve, but he no longer had to guess whether her reserve said anything about his talent."
+        }
+      ],
+      "words": [
+        {
+          "term": "terughoudend",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "voorzichtig en niet meteen toenaderend",
+            "en": "reserved"
+          },
+          "example": {
+            "nl": "Hun dans werd niet meteen beter, maar hij hoefde niet langer te raden of haar terughoudendheid iets over zijn talent zei.",
+            "en": "Their dancing did not immediately improve, but he no longer had to guess whether her reserve said anything about his talent."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "overkomen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "op een bepaalde manier worden ervaren",
+            "en": "to come across"
+          },
+          "example": {
+            "nl": "Voor zijn eerste tangoles deed Bas extra parfum op, omdat hij niet onfris wilde overkomen wanneer hij dicht bij iemand moest dansen.",
+            "en": "For his first tango lesson Bas put on extra perfume because he did not want to seem unclean when dancing close to someone."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "onfris",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet schoon of niet aangenaam ruikend",
+            "en": "unclean or not fresh"
+          },
+          "example": {
+            "nl": "Voor zijn eerste tangoles deed Bas extra parfum op, omdat hij niet onfris wilde overkomen wanneer hij dicht bij iemand moest dansen.",
+            "en": "For his first tango lesson Bas put on extra perfume because he did not want to seem unclean when dancing close to someone."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Terwijl als tegenstelling",
+            "en": "While as contrast"
+          },
+          "explanation": {
+            "nl": "Terwijl zet hier zijn bedoeling tegenover het effect van zijn keuze.",
+            "en": "Terwijl contrasts his intention with the effect of his choice."
+          },
+          "examples": [
+            {
+              "nl": "Bas hoorde de opmerking alsof iedereen hem vies vond, terwijl hij juist met de beste bedoeling te veel had gebruikt.",
+              "en": "Bas heard the remark as if everyone thought he was dirty, although he had actually used too much with the best intentions."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom begrijpt Bas Alines afstand eerst verkeerd?",
+            "en": "Why does Bas initially misunderstand Aline's distance?"
+          },
+          "options": [
+            {
+              "nl": "Zij heeft een andere les geboekt.",
+              "en": "She booked a different lesson."
+            },
+            {
+              "nl": "Hij verbindt die met zijn dansvaardigheid.",
+              "en": "He connects it with his dancing skill."
+            },
+            {
+              "nl": "De docent vraagt hem te vertrekken.",
+              "en": "The teacher asks him to leave."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij oefent harder omdat hij denkt dat zijn passen de oorzaak zijn.",
+            "en": "He practises harder because he thinks his steps are the cause."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat helpt hen concreet in de volgende les?",
+            "en": "What concretely helps them in the next lesson?"
+          },
+          "options": [
+            {
+              "nl": "Ze bespreken comfort in plaats van bedoelingen te raden.",
+              "en": "They discuss comfort rather than guessing intentions."
+            },
+            {
+              "nl": "Hij gebruikt nog meer parfum.",
+              "en": "He uses even more perfume."
+            },
+            {
+              "nl": "Ze vermijden elk gesprek.",
+              "en": "They avoid all conversation."
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Hij past zijn keuze aan en vraagt hoe de afstand voelt.",
+            "en": "He changes his choice and asks how the distance feels."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -64,7 +64,9 @@ jobs:
         working-directory: apps/api
         run: ruff check src tests ../../scripts/azure_release.py ../../scripts/verify_live.py ../../scripts/check_azure_config.py ../../scripts/audit_guided_study.py
       - name: Validate guided topic coverage and source references
-        run: python scripts/audit_guided_study.py --check-index
+        run: |
+          python scripts/audit_guided_study.py --check-index
+          python scripts/validate_story_quality.py --strict-canonical --require-targets
       - name: Test
         working-directory: apps/api
         env:

@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "a1",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "a1-read-hulp-eerst-vragen",
+      "topic_id": "relationships",
+      "title": {
+        "nl": "Mag ik je tas dragen?",
+        "en": "May I carry your bag?"
+      },
+      "plot_key": "A young adult learns to offer specific help to an older neighbour instead of taking over without asking.",
+      "lines": [
+        {
+          "nl": "Bij de trap ziet Nora haar oudere buur.",
+          "en": "By the stairs, Nora sees her older neighbour."
+        },
+        {
+          "nl": "Hij draagt een kleine tas en loopt langzaam.",
+          "en": "He carries a small bag and walks slowly."
+        },
+        {
+          "nl": "Nora steekt meteen haar hand naar zijn tas uit.",
+          "en": "Nora immediately reaches her hand towards his bag."
+        },
+        {
+          "nl": "De buur houdt de tas dichter bij zich.",
+          "en": "The neighbour holds the bag closer to himself."
+        },
+        {
+          "nl": "Nora stopt en vraagt of hij hulp wil.",
+          "en": "Nora stops and asks whether he wants help."
+        },
+        {
+          "nl": "Hij wil zijn tas graag zelf blijven dragen.",
+          "en": "He would like to keep carrying his bag himself."
+        },
+        {
+          "nl": "Wel vraagt hij haar de deur open te houden.",
+          "en": "He does ask her to hold the door open."
+        },
+        {
+          "nl": "Zo komen ze samen rustig boven zonder haast.",
+          "en": "That way, they reach upstairs calmly together without rushing."
+        }
+      ],
+      "words": [
+        {
+          "term": "ouder",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met meer levensjaren",
+            "en": "older"
+          },
+          "example": {
+            "nl": "Bij de trap ziet Nora haar oudere buur.",
+            "en": "By the stairs, Nora sees her older neighbour."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "zelf",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "zonder dat iemand anders het doet",
+            "en": "oneself"
+          },
+          "example": {
+            "nl": "Hij wil zijn tas graag zelf blijven dragen.",
+            "en": "He would like to keep carrying his bag himself."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "openhouden",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zorgen dat iets niet dichtgaat",
+            "en": "to hold open"
+          },
+          "example": {
+            "nl": "Wel vraagt hij haar de deur open te houden.",
+            "en": "He does ask her to hold the door open."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Een vorm van willen of kunnen staat bij een hele werkwoordvorm. Kijk welke handeling iemand wil of kan doen.",
+            "en": "A form of willen or kunnen accompanies an infinitive. Look at which action someone wants or is able to do."
+          },
+          "examples": [
+            {
+              "nl": "Hij wil zijn tas graag zelf blijven dragen.",
+              "en": "He would like to keep carrying his bag himself."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Welke hulp wil de buur?",
+            "en": "What help does the neighbour want?"
+          },
+          "options": [
+            {
+              "nl": "Zijn tas laten dragen",
+              "en": "Have someone carry his bag"
+            },
+            {
+              "nl": "De deur openhouden",
+              "en": "Hold the door open"
+            },
+            {
+              "nl": "Een taxi bellen",
+              "en": "Call a taxi"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Wel vraagt hij haar de deur open te houden.",
+            "en": "He does ask her to hold the door open."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet Nora na zijn eerste reactie?",
+            "en": "What does Nora do after his first reaction?"
+          },
+          "options": [
+            {
+              "nl": "De tas toch nemen",
+              "en": "Take the bag anyway"
+            },
+            {
+              "nl": "Vragen of hij hulp wil",
+              "en": "Ask whether he wants help"
+            },
+            {
+              "nl": "Zonder hem doorlopen",
+              "en": "Walk on without him"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Nora stopt en vraagt of hij hulp wil.",
+            "en": "Nora stops and asks whether he wants help."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-wachtende-klant",
+      "topic_id": "customer-service",
+      "title": {
+        "nl": "Ik kom zo bij u",
+        "en": "I will be with you shortly"
+      },
+      "plot_key": "A café worker acknowledges a waiting customer and gives a clear order of service instead of ignoring them.",
+      "lines": [
+        {
+          "nl": "Aan de bar wacht een nieuwe klant.",
+          "en": "A new customer is waiting at the bar."
+        },
+        {
+          "nl": "Fien maakt nog twee drankjes voor een tafel.",
+          "en": "Fien is still making two drinks for a table."
+        },
+        {
+          "nl": "Ze kijkt vooral naar de koppen voor zich.",
+          "en": "She is mainly looking at the cups in front of her."
+        },
+        {
+          "nl": "De klant denkt dat niemand hem ziet.",
+          "en": "The customer thinks nobody sees him."
+        },
+        {
+          "nl": "Fien kijkt op en begroet hem vriendelijk.",
+          "en": "Fien looks up and greets him kindly."
+        },
+        {
+          "nl": "Ze zegt dat ze eerst deze bestelling afmaakt.",
+          "en": "She says she will finish this order first."
+        },
+        {
+          "nl": "Daarna vraagt ze meteen wat hij wil drinken.",
+          "en": "Afterwards, she immediately asks what he would like to drink."
+        },
+        {
+          "nl": "De klant bestelt rustig en neemt plaats bij het raam.",
+          "en": "The customer calmly orders and sits by the window."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bestelling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "eten of drinken dat iemand vraagt",
+            "en": "order"
+          },
+          "example": {
+            "nl": "Ze zegt dat ze eerst deze bestelling afmaakt.",
+            "en": "She says she will finish this order first."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "afmaken",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "een taak helemaal voltooien",
+            "en": "to finish"
+          },
+          "example": {
+            "nl": "Ze zegt dat ze eerst deze bestelling afmaakt.",
+            "en": "She says she will finish this order first."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "begroeten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "dag zeggen wanneer je iemand ziet",
+            "en": "to greet"
+          },
+          "example": {
+            "nl": "Fien kijkt op en begroet hem vriendelijk.",
+            "en": "Fien looks up and greets him kindly."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "Fien kijkt op en begroet hem vriendelijk.",
+              "en": "Fien looks up and greets him kindly."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waar wacht de klant?",
+            "en": "Where is the customer waiting?"
+          },
+          "options": [
+            {
+              "nl": "Aan de bar",
+              "en": "At the bar"
+            },
+            {
+              "nl": "Aan een tafel",
+              "en": "At a table"
+            },
+            {
+              "nl": "Bij de deur",
+              "en": "By the door"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Aan de bar wacht een nieuwe klant.",
+            "en": "A new customer is waiting at the bar."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat doet Fien voordat ze zijn bestelling opneemt?",
+            "en": "What does Fien do before taking his order?"
+          },
+          "options": [
+            {
+              "nl": "De vorige bestelling afmaken",
+              "en": "Finish the previous order"
+            },
+            {
+              "nl": "Naar buiten gaan",
+              "en": "Go outside"
+            },
+            {
+              "nl": "De bar sluiten",
+              "en": "Close the bar"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Ze zegt dat ze eerst deze bestelling afmaakt.",
+            "en": "She says she will finish this order first."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-zang-door-raam",
+      "topic_id": "music",
+      "title": {
+        "nl": "Een antwoord zonder woorden",
+        "en": "An answer without words"
+      },
+      "plot_key": "Two neighbours recognise a shared song through a window and arrange to practise it together.",
+      "lines": [
+        {
+          "nl": "Tijdens het koken fluit Omar een oud lied.",
+          "en": "While cooking, Omar whistles an old song."
+        },
+        {
+          "nl": "Zijn keukenraam staat open naar de binnenplaats.",
+          "en": "His kitchen window is open onto the courtyard."
+        },
+        {
+          "nl": "Plots hoort hij dezelfde melodie van boven.",
+          "en": "Suddenly, he hears the same melody from upstairs."
+        },
+        {
+          "nl": "Omar stopt en luistert naar boven.",
+          "en": "Omar stops and listens upstairs."
+        },
+        {
+          "nl": "De buur boven fluit het volgende stukje af.",
+          "en": "The neighbour upstairs whistles the next little part to the end."
+        },
+        {
+          "nl": "Ze kijken allebei lachend uit hun raam.",
+          "en": "They both look out of their windows laughing."
+        },
+        {
+          "nl": "Omar vraagt of de buur het lied ook speelt.",
+          "en": "Omar asks whether the neighbour also plays the song."
+        },
+        {
+          "nl": "Voor zaterdag spreken ze een klein muziekbezoek af.",
+          "en": "They arrange a little musical visit for Saturday."
+        }
+      ],
+      "words": [
+        {
+          "term": "fluiten",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "met je mond een muzikaal geluid maken",
+            "en": "to whistle"
+          },
+          "example": {
+            "nl": "Tijdens het koken fluit Omar een oud lied.",
+            "en": "While cooking, Omar whistles an old song."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de melodie",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "reeks tonen die samen muziek vormen",
+            "en": "melody"
+          },
+          "example": {
+            "nl": "Plots hoort hij dezelfde melodie van boven.",
+            "en": "Suddenly, he hears the same melody from upstairs."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de binnenplaats",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "open ruimte tussen gebouwen",
+            "en": "courtyard"
+          },
+          "example": {
+            "nl": "Zijn keukenraam staat open naar de binnenplaats.",
+            "en": "His kitchen window is open onto the courtyard."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "De tegenwoordige tijd",
+            "en": "The present tense"
+          },
+          "explanation": {
+            "nl": "Deze zin vertelt wat iemand nu doet. Kijk naar het onderwerp en het werkwoord.",
+            "en": "This sentence says what someone does now. Look at the subject and the verb."
+          },
+          "examples": [
+            {
+              "nl": "De buur boven fluit het volgende stukje af.",
+              "en": "The neighbour upstairs whistles the next little part to the end."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat hoort Omar van boven?",
+            "en": "What does Omar hear from upstairs?"
+          },
+          "options": [
+            {
+              "nl": "Een ruzie",
+              "en": "An argument"
+            },
+            {
+              "nl": "Dezelfde melodie",
+              "en": "The same melody"
+            },
+            {
+              "nl": "Een wekker",
+              "en": "An alarm"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Plots hoort hij dezelfde melodie van boven.",
+            "en": "Suddenly, he hears the same melody from upstairs."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wanneer spreken ze af?",
+            "en": "When do they arrange to meet?"
+          },
+          "options": [
+            {
+              "nl": "Morgen vroeg",
+              "en": "Tomorrow morning"
+            },
+            {
+              "nl": "Zaterdag",
+              "en": "Saturday"
+            },
+            {
+              "nl": "Zondagavond",
+              "en": "Sunday evening"
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Voor zaterdag spreken ze een klein muziekbezoek af.",
+            "en": "They arrange a little musical visit for Saturday."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-stil-verjaardagswens",
+      "topic_id": "holidays-celebrations",
+      "title": {
+        "nl": "Geen grote kring vandaag",
+        "en": "No big circle today"
+      },
+      "plot_key": "A colleague asks how a birthday person wants to celebrate and organises a quiet shared break rather than a public song.",
+      "lines": [
+        {
+          "nl": "Op het werk is Noor vandaag jarig.",
+          "en": "At work, it is Noor's birthday today."
+        },
+        {
+          "nl": "Haar collega wil meteen iedereen bij elkaar roepen.",
+          "en": "Her colleague immediately wants to call everyone together."
+        },
+        {
+          "nl": "Noor vindt zo'n grote kring juist heel spannend.",
+          "en": "Noor finds such a big circle very nerve-racking."
+        },
+        {
+          "nl": "Ze vraagt of het vandaag wat rustiger kan.",
+          "en": "She asks whether it can be a little quieter today."
+        },
+        {
+          "nl": "De collega vraagt hoe ze het graag wil.",
+          "en": "The colleague asks how she would like it."
+        },
+        {
+          "nl": "Noor kiest samen koffie drinken in de pauze.",
+          "en": "Noor chooses to have coffee together during the break."
+        },
+        {
+          "nl": "Op tafel staat dan een kaart met hun namen.",
+          "en": "There is then a card with their names on the table."
+        },
+        {
+          "nl": "Noor leest elke naam en bedankt de groep.",
+          "en": "Noor reads each name and thanks the group."
+        }
+      ],
+      "words": [
+        {
+          "term": "jarig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "op die dag je verjaardag hebben",
+            "en": "having a birthday"
+          },
+          "example": {
+            "nl": "Op het werk is Noor vandaag jarig.",
+            "en": "At work, it is Noor's birthday today."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de kring",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "groep mensen in een ronde vorm",
+            "en": "circle"
+          },
+          "example": {
+            "nl": "Noor vindt zo'n grote kring juist heel spannend.",
+            "en": "Noor finds such a big circle very nerve-racking."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "rustiger",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "met minder drukte dan eerder",
+            "en": "quieter"
+          },
+          "example": {
+            "nl": "Ze vraagt of het vandaag wat rustiger kan.",
+            "en": "She asks whether it can be a little quieter today."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Willen en kunnen",
+            "en": "Wanting and being able"
+          },
+          "explanation": {
+            "nl": "Een vorm van willen of kunnen staat bij een hele werkwoordvorm. Kijk welke handeling iemand wil of kan doen.",
+            "en": "A form of willen or kunnen accompanies an infinitive. Look at which action someone wants or is able to do."
+          },
+          "examples": [
+            {
+              "nl": "Haar collega wil meteen iedereen bij elkaar roepen.",
+              "en": "Her colleague immediately wants to call everyone together."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat wil Noor liever niet?",
+            "en": "What does Noor prefer not to have?"
+          },
+          "options": [
+            {
+              "nl": "Een kaart",
+              "en": "A card"
+            },
+            {
+              "nl": "Koffie",
+              "en": "Coffee"
+            },
+            {
+              "nl": "Een grote kring",
+              "en": "A big circle"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Noor vindt zo'n grote kring juist heel spannend.",
+            "en": "Noor finds such a big circle very nerve-racking."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat kiest zij wel?",
+            "en": "What does she choose instead?"
+          },
+          "options": [
+            {
+              "nl": "Samen koffie in de pauze",
+              "en": "Coffee together in the break"
+            },
+            {
+              "nl": "Een groot podium",
+              "en": "A big stage"
+            },
+            {
+              "nl": "Alleen naar huis",
+              "en": "Going home alone"
+            }
+          ],
+          "answer_index": 0,
+          "explanation": {
+            "nl": "Noor kiest samen koffie drinken in de pauze.",
+            "en": "Noor chooses to have coffee together during the break."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1-read-andere-rol-bij-spel",
+      "topic_id": "leadership-teamwork",
+      "title": {
+        "nl": "Vandaag geef ik de start",
+        "en": "Today I give the start signal"
+      },
+      "plot_key": "A participant who cannot join a running game remains part of the team by choosing the starter role.",
+      "lines": [
+        {
+          "nl": "Bij het buurtspel dragen alle teams gekleurde linten.",
+          "en": "At the neighbourhood game, all teams wear coloured ribbons."
+        },
+        {
+          "nl": "Elias heeft pijn aan zijn voet en loopt niet mee.",
+          "en": "Elias has a sore foot and does not join the running."
+        },
+        {
+          "nl": "Hij wil niet alleen op een bank blijven zitten.",
+          "en": "He does not want to stay sitting on a bench alone."
+        },
+        {
+          "nl": "De begeleider vraagt welke taak hij prettig vindt.",
+          "en": "The leader asks which task he would enjoy."
+        },
+        {
+          "nl": "Elias kiest het bord met het woord start.",
+          "en": "Elias chooses the board with the word start."
+        },
+        {
+          "nl": "Hij controleert of alle teams achter de lijn staan.",
+          "en": "He checks whether all teams are behind the line."
+        },
+        {
+          "nl": "Dan steekt hij het bord zichtbaar omhoog.",
+          "en": "Then he raises the board where everyone can see it."
+        },
+        {
+          "nl": "Na elke ronde komen de lopers hun tijd bij hem halen.",
+          "en": "After every round, the runners come to him for their time."
+        }
+      ],
+      "words": [
+        {
+          "term": "het team",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "groep mensen die samen een spel of taak doen",
+            "en": "team"
+          },
+          "example": {
+            "nl": "Bij het buurtspel dragen alle teams gekleurde linten.",
+            "en": "At the neighbourhood game, all teams wear coloured ribbons."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "de taak",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "werk of rol die je krijgt",
+            "en": "task"
+          },
+          "example": {
+            "nl": "De begeleider vraagt welke taak hij prettig vindt.",
+            "en": "The leader asks which task he would enjoy."
+          },
+          "minimum_stage": "a1"
+        },
+        {
+          "term": "zichtbaar",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "duidelijk te zien",
+            "en": "visible"
+          },
+          "example": {
+            "nl": "Dan steekt hij het bord zichtbaar omhoog.",
+            "en": "Then he raises the board where everyone can see it."
+          },
+          "minimum_stage": "a1"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet en geen",
+            "en": "Niet and geen"
+          },
+          "explanation": {
+            "nl": "Kijk wat wordt ontkend: de handeling of het zelfstandig naamwoord.",
+            "en": "Look at what is being negated: the action or the noun."
+          },
+          "examples": [
+            {
+              "nl": "Hij wil niet alleen op een bank blijven zitten.",
+              "en": "He does not want to stay sitting on a bench alone."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom loopt Elias niet mee?",
+            "en": "Why does Elias not join the running?"
+          },
+          "options": [
+            {
+              "nl": "Hij kent niemand",
+              "en": "He knows nobody"
+            },
+            {
+              "nl": "Hij is te laat",
+              "en": "He is too late"
+            },
+            {
+              "nl": "Zijn voet doet pijn",
+              "en": "His foot hurts"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Elias heeft pijn aan zijn voet en loopt niet mee.",
+            "en": "Elias has a sore foot and does not join the running."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke rol kiest hij?",
+            "en": "Which role does he choose?"
+          },
+          "options": [
+            {
+              "nl": "De drank brengen",
+              "en": "Bring the drinks"
+            },
+            {
+              "nl": "De route tekenen",
+              "en": "Draw the route"
+            },
+            {
+              "nl": "De start aangeven",
+              "en": "Give the start signal"
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Elias kiest het bord met het woord start.",
+            "en": "Elias chooses the board with the word start."
+          }
+        }
+      ]
+    }
+  ]
+}

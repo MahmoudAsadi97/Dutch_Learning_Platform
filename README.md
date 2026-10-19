@@ -26,7 +26,9 @@ part of Reading. Old word, story and speaking bookmarks lead into the same works
 
 Each topic has **Prepare → Practise → Try it yourself** steps. The word reference is searchable and
 compact, with replay for Dutch words and examples. Topics appear twelve at a time, with search and theme
-filters. Saved-word review, personal episodes and saved situation conversations remain available as nested
+filters. Reading has a compact story chooser with Dutch and English title search and six stories per page.
+Each story keeps its own vocabulary, grammar examples and comprehension questions together. Saved-word
+review, personal episodes and saved situation conversations remain available as nested
 tools. Audio is generated only after an explicit action; video generation is disabled.
 
 Choose **Dutch** or **Dutch + English** in the header. Dutch remains the practice language. Existing
@@ -47,16 +49,23 @@ bridges. Early tasks use letters, numbers, time, introductions and directions. L
 connected explanations, professional communication, argument, nuance and academic work.
 
 The guided catalogue has **100 topic categories** and at least **50 available topics for each skill in
-every stage**, backed by actual activities. The twelve packs contain **600 guided topic lessons**,
-including existing original material surfaced with its source identity. Each reading has 8–12 connected
-Dutch lines, parallel English support and grounded comprehension questions. These are activities,
-not 600 independently reviewed texts.
+every stage**, backed by actual activities. Every stage offers **200 selectable story drafts** inside
+Reading. Each has 8–12 connected Dutch lines, parallel English support, sentence audio, vocabulary and
+grammar preparation, comprehension questions and a retelling task. The four-skill course also retains
+its 600 guided topic lessons; reused source representations do not count as additional original stories.
 
 Existing stage libraries retain 500+ word entries and 150-word productive cores. Each stage also has
 100 additional original grammar questions in ten manageable rounds, alongside its earlier exercises.
-The separate editorial target of 200 distinct, reviewed stories per stage remains unfinished. Structural
-checks verify coverage and answer integrity; they cannot certify natural language, translation quality
-or CEFR placement. Content remains labelled as awaiting specialist language review.
+The story-count target is met across all twelve stages. Structural checks verify coverage, source
+identity and answer integrity; they cannot certify natural language, translation quality or CEFR
+placement. The texts and productive word cores remain labelled as awaiting specialist language review.
+
+The story inventory counts original works across the guided course and stage libraries once. Reused
+source representations count as one story; short templates and flagged near-copies do not enter the
+Reading catalogue. Every counted eligible story must be selectable in its own stage. New reading batches
+contain original plots, parallel Dutch/English lines and preparation examples taken directly from the text.
+
+![Choose another story inside the same topic](docs/previews/study-story-chooser-desktop.png)
 
 IELTS preparation resources inform the task patterns, not the language being taught or an examination
 claim. Stories, prompts and examples are original; commercial exam passages and audio are not copied.
@@ -66,11 +75,15 @@ Validate the guided catalogue after content edits:
 
 ```bash
 python scripts/audit_guided_study.py --write-index
-python scripts/validate_story_quality.py --require-targets
+python scripts/audit_guided_study.py --check-index
+python scripts/validate_story_quality.py --strict-canonical --require-targets
 ```
 
-The second command intentionally fails until the larger story target is met. Neither command grants
-assessment credit or establishes language accuracy.
+The release checks reject missing readings, stale references and story-count regressions. They also
+verify a source fingerprint so normal catalogue requests can use the published eligibility manifest
+without repeating the editorial similarity audit. The canonical check reports problems retained in
+excluded older short banks separately. These commands do not grant assessment credit or establish
+language accuracy.
 
 ## Run locally
 

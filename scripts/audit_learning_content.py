@@ -1,4 +1,8 @@
-"""Audit coverage and repeated Dutch texts; this is not a CEFR difficulty classifier."""
+"""Audit legacy reference/practice banks, not the complete guided Reading catalogue.
+
+Use validate_story_quality.py for canonical story targets across all sources and
+audit_guided_study.py for the selectable learning route. No audit certifies CEFR.
+"""
 
 from __future__ import annotations
 
@@ -23,7 +27,8 @@ def audit(content: Path) -> dict:
         supplement_hash = None
         if supplement_path.exists():
             addition = json.loads(supplement_path.read_text(encoding="utf-8"))
-            if addition.get("schema_version") != 1 or addition.get("stage_id") != stage or addition.get("review_status") != "unreviewed":
+            if (addition.get("schema_version") != 1 or addition.get("stage_id") != stage
+                    or addition.get("review_status") != "unreviewed"):
                 raise ValueError("Audit refuses an invalid or falsely approved source pack")
             library["vocabulary"] += addition["vocabulary"]
             library["stories"] += addition["stories"]
@@ -33,7 +38,8 @@ def audit(content: Path) -> dict:
         unit_hash = None
         if unit_path.exists():
             addition = json.loads(unit_path.read_text(encoding="utf-8"))
-            if addition.get("schema_version") != 1 or addition.get("stage_id") != stage or addition.get("review_status") != "unreviewed":
+            if (addition.get("schema_version") != 1 or addition.get("stage_id") != stage
+                    or addition.get("review_status") != "unreviewed"):
                 raise ValueError("Audit refuses an invalid or falsely approved learning unit")
             library["vocabulary"] += addition["vocabulary"]
             library["stories"] += addition["stories"]
@@ -43,7 +49,8 @@ def audit(content: Path) -> dict:
         reading_hash = None
         if reading_path.exists():
             addition = json.loads(reading_path.read_text(encoding="utf-8"))
-            if addition.get("schema_version") != 1 or addition.get("stage_id") != stage or addition.get("review_status") != "unreviewed":
+            if (addition.get("schema_version") != 1 or addition.get("stage_id") != stage
+                    or addition.get("review_status") != "unreviewed"):
                 raise ValueError("Audit refuses an invalid or falsely approved reading library")
             library["vocabulary"] += addition["vocabulary"]
             library["stories"] += addition["stories"]
@@ -70,7 +77,10 @@ def audit(content: Path) -> dict:
                                "reading_library": reading_hash},
         })
         seen_terms.update(terms)
-    return {"schema_version": 2, "scope": "Effective banks including source supplements, connected units and authored reading packs", "claim": "Coverage and duplication only; no level or language validation.", "stages": rows}
+    return {"schema_version": 2,
+            "scope": "Legacy reference/practice banks and their supplements; guided Reading is audited separately.",
+            "claim": "Legacy bank coverage and duplication only; no canonical story target, level or language validation.",
+            "stages": rows}
 
 
 def main() -> None:
@@ -86,7 +96,7 @@ def main() -> None:
     for row in result["stages"]:
         counts = {skill: len(items) for skill, items in row["reused_texts"].items()}
         print(f"{row['stage']:7} words={row['vocabulary']} new={row['new_terms_relative_to_earlier_banks']} "
-              f"stories={row['stories']} topics/skill={row['topics_per_skill']} reused={counts}")
+              f"legacy-bank-stories={row['stories']} topics/skill={row['topics_per_skill']} reused={counts}")
 
 
 if __name__ == "__main__":

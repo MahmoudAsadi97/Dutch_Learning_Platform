@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "stage_id": "pre-b2",
+  "language_variety": "nl-BE",
+  "review_status": "unreviewed",
+  "lessons": [
+    {
+      "id": "pre-b2-read-feesthoed-op-een-werkdag",
+      "topic_id": "holidays-celebrations",
+      "title": {
+        "nl": "Een feesthoed op een werkdag",
+        "en": "A party hat on a working day"
+      },
+      "plot_key": "A child's postponed birthday celebration embarrasses an adult sibling until the child separates the date of being older from the act of celebrating together.",
+      "lines": [
+        {
+          "nl": "Omdat haar ouders in het weekend werkten, vierde Noor haar achtste verjaardag op een dinsdagmiddag in de woonkamer boven de winkel.",
+          "en": "Because her parents worked at weekends, Noor celebrated her eighth birthday on a Tuesday afternoon in the living room above the shop."
+        },
+        {
+          "nl": "Haar oudere broer vond het vreemd dat de gasten om vier uur alweer hun schooltassen mee moesten nemen naar de muziekschool.",
+          "en": "Her older brother found it strange that at four the guests already had to take their schoolbags with them to music school."
+        },
+        {
+          "nl": "Hij zei dat een echt feest niet tussen twee gewone afspraken hoorde te passen en begon over hoe zijn verjaardagen vroeger geweest waren.",
+          "en": "He said a real party should not have to fit between two ordinary arrangements and began talking about what his birthdays used to be like."
+        },
+        {
+          "nl": "Noor vroeg of hij dan liever niet kwam, waarop hij merkte dat zijn bezorgdheid voor haar als kritiek op haar feestje klonk.",
+          "en": "Noor asked whether he would rather not come, at which he noticed his concern sounded to her like criticism of her party."
+        },
+        {
+          "nl": "Tijdens het feest moesten de kinderen inderdaad vroeg vertrekken, maar zij hadden daarvoor samen een toren gebouwd die tot aan de lamp reikte.",
+          "en": "During the party the children did indeed have to leave early, but before that they had built a tower together reaching up to the light."
+        },
+        {
+          "nl": "Toen de kamer leeg was, zette Noor haar broer een feesthoed op en vroeg ze hem de bovenste blokken voorzichtig af te nemen.",
+          "en": "When the room was empty, Noor put a party hat on her brother and asked him to remove the top blocks carefully."
+        },
+        {
+          "nl": "Hij vroeg of zij niet teleurgesteld was dat het zo snel voorbijging, maar zij zei dat ouder worden vanzelf ging en samen vieren niet.",
+          "en": "He asked whether she was not disappointed it had ended so quickly, but she said growing older happened by itself and celebrating together did not."
+        },
+        {
+          "nl": "De volgende dinsdag kwam hij opnieuw even langs, zonder te beweren dat een onverwacht halfuur een feest moest heten om belangrijk te zijn.",
+          "en": "The following Tuesday he dropped by briefly again, without claiming an unexpected half hour had to be called a party to matter."
+        }
+      ],
+      "words": [
+        {
+          "term": "de bezorgdheid",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het gevoel dat je ergens over inzit",
+            "en": "concern"
+          },
+          "example": {
+            "nl": "Noor vroeg of hij dan liever niet kwam, waarop hij merkte dat zijn bezorgdheid voor haar als kritiek op haar feestje klonk.",
+            "en": "Noor asked whether he would rather not come, at which he noticed his concern sounded to her like criticism of her party."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "reiken tot",
+          "part_of_speech": "expression",
+          "meaning": {
+            "nl": "tot een bepaalde hoogte of afstand komen",
+            "en": "to reach as far as"
+          },
+          "example": {
+            "nl": "Tijdens het feest moesten de kinderen inderdaad vroeg vertrekken, maar zij hadden daarvoor samen een toren gebouwd die tot aan de lamp reikte.",
+            "en": "During the party the children did indeed have to leave early, but before that they had built a tower together reaching up to the light."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "beweren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "zeggen dat iets waar is",
+            "en": "to claim"
+          },
+          "example": {
+            "nl": "De volgende dinsdag kwam hij opnieuw even langs, zonder te beweren dat een onverwacht halfuur een feest moest heten om belangrijk te zijn.",
+            "en": "The following Tuesday he dropped by briefly again, without claiming an unexpected half hour had to be called a party to matter."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Omdat voor een concrete planning",
+            "en": "Because for concrete scheduling"
+          },
+          "explanation": {
+            "nl": "Omdat noemt de werkomstandigheden die de dinsdag verklaren.",
+            "en": "Omdat names the working circumstances explaining Tuesday."
+          },
+          "examples": [
+            {
+              "nl": "Omdat haar ouders in het weekend werkten, vierde Noor haar achtste verjaardag op een dinsdagmiddag in de woonkamer boven de winkel.",
+              "en": "Because her parents worked at weekends, Noor celebrated her eighth birthday on a Tuesday afternoon in the living room above the shop."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom kwetst de opmerking van haar broer Noor?",
+            "en": "Why does her brother's remark hurt Noor?"
+          },
+          "options": [
+            {
+              "nl": "Hij noemt haar toren te groot.",
+              "en": "He calls her tower too big."
+            },
+            {
+              "nl": "Zijn vergelijking laat haar echte feest minderwaardig lijken.",
+              "en": "His comparison makes her actual party seem inferior."
+            },
+            {
+              "nl": "Hij heeft haar cadeau weggegooid.",
+              "en": "He has thrown away her present."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zij hoort zijn bezorgdheid als kritiek op wat voor haar mogelijk is.",
+            "en": "She hears his concern as criticism of what is possible for her."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert zijn bezoek de week daarna?",
+            "en": "What does his visit the following week change?"
+          },
+          "options": [
+            {
+              "nl": "Noor wordt opnieuw jarig.",
+              "en": "It becomes Noor's birthday again."
+            },
+            {
+              "nl": "Hij erkent dat samen tijd doorbrengen ook buiten het ideale feest waarde heeft.",
+              "en": "He recognises that spending time together has value beyond the ideal party."
+            },
+            {
+              "nl": "De winkel sluit voorgoed.",
+              "en": "The shop closes permanently."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij komt zonder van het korte bezoek een grote gelegenheid te maken.",
+            "en": "He comes without turning the brief visit into a grand occasion."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-monster-achter-de-gordijnen",
+      "topic_id": "childhood-memories",
+      "title": {
+        "nl": "Het monster achter de gordijnen",
+        "en": "The monster behind the curtains"
+      },
+      "plot_key": "Adult siblings recall a childhood imaginary monster differently and discover one invented story shielded the other from hearing their parents argue.",
+      "lines": [
+        {
+          "nl": "Bij het opruimen van hun ouderlijk huis vond Sara de zaklamp waarmee haar broer vroeger monsters achter de gordijnen had gezocht.",
+          "en": "While clearing their childhood home, Sara found the torch with which her brother used to search for monsters behind the curtains."
+        },
+        {
+          "nl": "Ze lachte om hoe goedgelovig ze als kind was geweest en vroeg hem waarom hij haar toch altijd zulke onzin vertelde.",
+          "en": "She laughed at how gullible she had been as a child and asked why he had always told her such nonsense."
+        },
+        {
+          "nl": "Haar broer draaide de lamp in zijn handen en zei dat de monsters meestal verschenen op avonden waarop beneden hard werd gepraat.",
+          "en": "Her brother turned the torch in his hands and said the monsters usually appeared on evenings when people were speaking loudly downstairs."
+        },
+        {
+          "nl": "Sara herinnerde zich vooral hun geheime speurtochten, niet de woordenwisselingen tussen hun ouders die hij haar niet had willen laten horen.",
+          "en": "Sara mainly remembered their secret searches, not the arguments between their parents that he had not wanted her to hear."
+        },
+        {
+          "nl": "Hij had van elke krakende vloer een aanwijzing gemaakt, zodat zij naar het raam luisterde in plaats van naar de trap.",
+          "en": "He had turned every creaking floorboard into a clue so that she listened towards the window instead of the stairs."
+        },
+        {
+          "nl": "Ze wilde hem bedanken, maar vroeg ook wie er toen eigenlijk voor hem had gezorgd terwijl hij haar geruststelde.",
+          "en": "She wanted to thank him, but also asked who had actually looked after him then while he reassured her."
+        },
+        {
+          "nl": "Daarop had hij geen snel antwoord, en de lamp bleef langer tussen hen op tafel liggen dan het opruimen nodig maakte.",
+          "en": "He had no quick answer to that, and the torch remained on the table between them longer than the clearing required."
+        },
+        {
+          "nl": "Ze namen haar niet mee als bewijs van een gelukkige of ongelukkige jeugd, maar als herinnering dat twee kinderen in hetzelfde huis niet hetzelfde verhaal hadden beleefd.",
+          "en": "They took it with them not as proof of a happy or unhappy childhood, but as a reminder that two children in the same house had not lived the same story."
+        }
+      ],
+      "words": [
+        {
+          "term": "goedgelovig",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "snel bereid iets te geloven",
+            "en": "gullible"
+          },
+          "example": {
+            "nl": "Ze lachte om hoe goedgelovig ze als kind was geweest en vroeg hem waarom hij haar toch altijd zulke onzin vertelde.",
+            "en": "She laughed at how gullible she had been as a child and asked why he had always told her such nonsense."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de woordenwisseling",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een gesprek met scherpe onenigheid",
+            "en": "argument"
+          },
+          "example": {
+            "nl": "Sara herinnerde zich vooral hun geheime speurtochten, niet de woordenwisselingen tussen hun ouders die hij haar niet had willen laten horen.",
+            "en": "Sara mainly remembered their secret searches, not the arguments between their parents that he had not wanted her to hear."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "geruststellen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "iemands angst of onrust verminderen",
+            "en": "to reassure"
+          },
+          "example": {
+            "nl": "Ze wilde hem bedanken, maar vroeg ook wie er toen eigenlijk voor hem had gezorgd terwijl hij haar geruststelde.",
+            "en": "She wanted to thank him, but also asked who had actually looked after him then while he reassured her."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zodat voor afleiding",
+            "en": "So that, for distraction"
+          },
+          "explanation": {
+            "nl": "Zodat verklaart welk effect zijn verzonnen aanwijzingen op haar aandacht moesten hebben.",
+            "en": "Zodat explains the intended effect of his invented clues on her attention."
+          },
+          "examples": [
+            {
+              "nl": "Hij had van elke krakende vloer een aanwijzing gemaakt, zodat zij naar het raam luisterde in plaats van naar de trap.",
+              "en": "He had turned every creaking floorboard into a clue so that she listened towards the window instead of the stairs."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Waarom verzint de broer de monsters?",
+            "en": "Why does the brother invent the monsters?"
+          },
+          "options": [
+            {
+              "nl": "Hij heeft de gordijnen beschadigd.",
+              "en": "He has damaged the curtains."
+            },
+            {
+              "nl": "Hij wil een film opnemen.",
+              "en": "He wants to make a film."
+            },
+            {
+              "nl": "Hij probeert zijn zus van ruzies beneden af te leiden.",
+              "en": "He tries to distract his sister from arguments downstairs."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "De speurtochten sturen haar luisteren weg van de trap.",
+            "en": "The searches redirect her listening away from the stairs."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Welke nieuwe vraag stelt Sara?",
+            "en": "What new question does Sara ask?"
+          },
+          "options": [
+            {
+              "nl": "Waar de batterijen liggen.",
+              "en": "Where the batteries are."
+            },
+            {
+              "nl": "Wie haar broer toen steun gaf.",
+              "en": "Who supported her brother then."
+            },
+            {
+              "nl": "Of monsters echt bestaan.",
+              "en": "Whether monsters exist."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Ze kijkt nu ook naar de last die hij als kind zelf droeg.",
+            "en": "She now also looks at the burden he himself carried as a child."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-droom-in-het-planetarium",
+      "topic_id": "dreams-ambitions",
+      "title": {
+        "nl": "Een droom onder een kunstmatige hemel",
+        "en": "A dream under an artificial sky"
+      },
+      "plot_key": "A former aspiring astronaut becomes a planetarium storyteller and stops apologising for a life that did not meet his childhood career prediction.",
+      "lines": [
+        {
+          "nl": "Op school had Ruben altijd gezegd dat hij astronaut zou worden, en bij elke klasreünie vroeg iemand wat er van die grote droom terechtgekomen was.",
+          "en": "At school Ruben had always said he would become an astronaut, and at every class reunion someone asked what had become of that big dream."
+        },
+        {
+          "nl": "Hij werkte inmiddels als verteller in een planetarium en antwoordde meestal met een grap voordat iemand medelijden kon tonen.",
+          "en": "He now worked as a storyteller at a planetarium and usually replied with a joke before anyone could show pity."
+        },
+        {
+          "nl": "Voor een nieuwe voorstelling schreef hij een scène over een kind dat vanaf een achtertuin naar een onbekende wereld verlangde.",
+          "en": "For a new show he wrote a scene about a child longing for an unknown world from a back garden."
+        },
+        {
+          "nl": "Tijdens de proefvoorstelling vroeg een meisje of hij zelf al tussen de sterren had gezeten, omdat hij de stilte daar zo precies beschreef.",
+          "en": "During the trial performance a girl asked whether he had sat among the stars himself because he described the silence there so precisely."
+        },
+        {
+          "nl": "Ruben vertelde eerlijk dat hij alleen onder een koepel werkte en dat verbeelding niet hetzelfde was als ervaring uit de ruimte.",
+          "en": "Ruben honestly explained that he worked only beneath a dome and that imagination was not the same as experience in space."
+        },
+        {
+          "nl": "Toch vroeg zij daarna welke boeken haar konden helpen om verder te zoeken, waarna ze met een veel langere lijst dan haar ouders hadden verwacht vertrok.",
+          "en": "Yet afterwards she asked what books could help her search further and left with a much longer list than her parents had expected."
+        },
+        {
+          "nl": "Bij de volgende reünie vertelde Ruben uitgebreider over zijn werk, zonder te doen alsof hij zijn oude beroep alsnog in het geheim had bereikt.",
+          "en": "At the next reunion Ruben spoke about his work in more detail without pretending he had secretly achieved his old profession after all."
+        },
+        {
+          "nl": "Hij bleef iemand die graag verder keek dan de tuin, maar hoefde niet meer elk huidig verhaal als uitleg voor een mislukte voorspelling te beginnen.",
+          "en": "He remained someone who liked looking beyond the garden, but no longer had to begin every present story as an explanation for a failed prediction."
+        }
+      ],
+      "words": [
+        {
+          "term": "het medelijden",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "verdrietig meevoelen met iemand die het moeilijk heeft",
+            "en": "pity"
+          },
+          "example": {
+            "nl": "Hij werkte inmiddels als verteller in een planetarium en antwoordde meestal met een grap voordat iemand medelijden kon tonen.",
+            "en": "He now worked as a storyteller at a planetarium and usually replied with a joke before anyone could show pity."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de koepel",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een ronde overdekking zoals in een planetarium",
+            "en": "dome"
+          },
+          "example": {
+            "nl": "Ruben vertelde eerlijk dat hij alleen onder een koepel werkte en dat verbeelding niet hetzelfde was als ervaring uit de ruimte.",
+            "en": "Ruben honestly explained that he worked only beneath a dome and that imagination was not the same as experience in space."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de verbeelding",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "het vermogen om iets in gedachten voor te stellen",
+            "en": "imagination"
+          },
+          "example": {
+            "nl": "Ruben vertelde eerlijk dat hij alleen onder een koepel werkte en dat verbeelding niet hetzelfde was als ervaring uit de ruimte.",
+            "en": "Ruben honestly explained that he worked only beneath a dome and that imagination was not the same as experience in space."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Zonder te doen alsof",
+            "en": "Without pretending"
+          },
+          "explanation": {
+            "nl": "Zonder te doen alsof introduceert de onware voorstelling die hij bewust vermijdt.",
+            "en": "Zonder te doen alsof introduces the untrue representation he deliberately avoids."
+          },
+          "examples": [
+            {
+              "nl": "Bij de volgende reünie vertelde Ruben uitgebreider over zijn werk, zonder te doen alsof hij zijn oude beroep alsnog in het geheim had bereikt.",
+              "en": "At the next reunion Ruben spoke about his work in more detail without pretending he had secretly achieved his old profession after all."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat bewaakt Ruben in zijn antwoord aan het meisje?",
+            "en": "What distinction does Ruben maintain in answering the girl?"
+          },
+          "options": [
+            {
+              "nl": "Hij weigert over boeken te spreken.",
+              "en": "He refuses to discuss books."
+            },
+            {
+              "nl": "Een overtuigende vertelling is geen eigen ruimte-ervaring.",
+              "en": "A convincing account is not personal space experience."
+            },
+            {
+              "nl": "Hij vertelt dat de koepel werkelijk de ruimte is.",
+              "en": "He says the dome really is space."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij zegt eerlijk dat hij onder een koepel werkt.",
+            "en": "He honestly says he works beneath a dome."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat verandert op de reünie?",
+            "en": "What changes at the reunion?"
+          },
+          "options": [
+            {
+              "nl": "Hij beweert alsnog astronaut te zijn.",
+              "en": "He claims to be an astronaut after all."
+            },
+            {
+              "nl": "Hij gaat zijn huidige werk als een eigen verhaal vertellen.",
+              "en": "He begins telling his current work as a story in its own right."
+            },
+            {
+              "nl": "Hij zwijgt helemaal.",
+              "en": "He falls completely silent."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hij hoeft zijn werk niet alleen als rest van een gemiste droom uit te leggen.",
+            "en": "He need not explain his work only as the remainder of a missed dream."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-agenda-zonder-open-vakken",
+      "topic_id": "lifestyle",
+      "title": {
+        "nl": "Het ongenummerde weekend",
+        "en": "The unnumbered weekend"
+      },
+      "plot_key": "A couple obsessed with rating weekend experiences misses a pleasant unplanned hour and tries one trip without turning every choice into a comparison.",
+      "lines": [
+        {
+          "nl": "Na elk weekend gaven Hanne en Lou hun uitstap een cijfer, zodat zij later alleen nog de beste wandelingen, cafés en logeerplekken zouden kiezen.",
+          "en": "After every weekend Hanne and Lou rated their outing so that later they would choose only the best walks, cafés and places to stay."
+        },
+        {
+          "nl": "Hun lijst werd steeds langer, maar tijdens nieuwe uitstappen spraken ze vooral over de vraag of deze ervaring de vorige wel overtrof.",
+          "en": "Their list grew longer and longer, but during new outings they mainly discussed whether this experience really surpassed the previous one."
+        },
+        {
+          "nl": "Op een zondag misten ze hun aansluiting en moesten ze een uur wachten bij een klein station waar geen enkele aanbeveling voor bestond.",
+          "en": "One Sunday they missed their connection and had to wait an hour at a small station for which no recommendation existed."
+        },
+        {
+          "nl": "Een kioskhouder zette twee stoelen buiten en vertelde over de hond die elke middag de aankomende trein leek te tellen.",
+          "en": "A kiosk owner put two chairs outside and spoke about the dog that seemed to count the arriving train every afternoon."
+        },
+        {
+          "nl": "Toen hun trein kwam, merkte Hanne dat zij voor het eerst die dag niet naar recensies of een vergelijkbaar uitzicht had gezocht.",
+          "en": "When their train arrived, Hanne noticed that for the first time that day she had not looked for reviews or a comparable view."
+        },
+        {
+          "nl": "Lou wilde het station meteen aan hun lijst toevoegen, maar begreep halverwege zijn zin waarom het uur zo anders had gevoeld.",
+          "en": "Lou immediately wanted to add the station to their list, but halfway through his sentence understood why the hour had felt so different."
+        },
+        {
+          "nl": "De volgende uitstap bleef zonder cijfer, al kozen ze nog steeds bewust een bereikbare bestemming en een plek om te slapen.",
+          "en": "The next outing remained unrated, although they still deliberately chose an accessible destination and somewhere to sleep."
+        },
+        {
+          "nl": "Niet alles hoefde ongepland te zijn; alleen de ontmoeting zelf hoefde niet al tijdens het gebeuren een plaats in een rangschikking te krijgen.",
+          "en": "Not everything had to be unplanned; only the encounter itself did not have to receive a place in a ranking while it was still happening."
+        }
+      ],
+      "words": [
+        {
+          "term": "overtreffen",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "beter of groter blijken dan iets anders",
+            "en": "to surpass"
+          },
+          "example": {
+            "nl": "Hun lijst werd steeds langer, maar tijdens nieuwe uitstappen spraken ze vooral over de vraag of deze ervaring de vorige wel overtrof.",
+            "en": "Their list grew longer and longer, but during new outings they mainly discussed whether this experience really surpassed the previous one."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de aansluiting",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een volgende vervoersrit waarop wordt overgestapt",
+            "en": "connection"
+          },
+          "example": {
+            "nl": "Op een zondag misten ze hun aansluiting en moesten ze een uur wachten bij een klein station waar geen enkele aanbeveling voor bestond.",
+            "en": "One Sunday they missed their connection and had to wait an hour at a small station for which no recommendation existed."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "de rangschikking",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een lijst in een volgorde volgens beoordeling",
+            "en": "ranking"
+          },
+          "example": {
+            "nl": "Niet alles hoefde ongepland te zijn; alleen de ontmoeting zelf hoefde niet al tijdens het gebeuren een plaats in een rangschikking te krijgen.",
+            "en": "Not everything had to be unplanned; only the encounter itself did not have to receive a place in a ranking while it was still happening."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Niet alles ... alleen ...",
+            "en": "Not everything ... only ..."
+          },
+          "explanation": {
+            "nl": "De zinsdelen beperken de verandering tot beoordelen, niet tot elk praktisch plan.",
+            "en": "The clauses limit the change to evaluating, not to every practical plan."
+          },
+          "examples": [
+            {
+              "nl": "Niet alles hoefde ongepland te zijn; alleen de ontmoeting zelf hoefde niet al tijdens het gebeuren een plaats in een rangschikking te krijgen.",
+              "en": "Not everything had to be unplanned; only the encounter itself did not have to receive a place in a ranking while it was still happening."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat maakt het station anders dan hun gewone uitstappen?",
+            "en": "What makes the station different from their usual outings?"
+          },
+          "options": [
+            {
+              "nl": "Het heeft de hoogste online score.",
+              "en": "It has the highest online score."
+            },
+            {
+              "nl": "Ze ervaren het uur zonder voortdurend te vergelijken.",
+              "en": "They experience the hour without constantly comparing."
+            },
+            {
+              "nl": "Er is een vooraf perfect gekozen programma.",
+              "en": "There is a perfectly chosen programme in advance."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Hanne zoekt voor het eerst niet naar recensies of een beter alternatief.",
+            "en": "For the first time Hanne does not look for reviews or a better alternative."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Wat geven ze bij de volgende uitstap op?",
+            "en": "What do they give up on the next outing?"
+          },
+          "options": [
+            {
+              "nl": "Iedere bewuste keuze.",
+              "en": "Every deliberate choice."
+            },
+            {
+              "nl": "Alle vervoersplanning.",
+              "en": "All transport planning."
+            },
+            {
+              "nl": "Het meteen rangschikken van de ervaring.",
+              "en": "Immediately ranking the experience."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Bestemming en verblijf blijven gepland; het cijfer verdwijnt.",
+            "en": "Destination and accommodation remain planned; the rating disappears."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pre-b2-read-kaars-zonder-een-antwoord",
+      "topic_id": "religion-beliefs",
+      "title": {
+        "nl": "Een kaars zonder antwoord",
+        "en": "A candle without an answer"
+      },
+      "plot_key": "An adult daughter who no longer shares her mother's faith participates in candle-lighting by distinguishing companionship from pretending belief.",
+      "lines": [
+        {
+          "nl": "Toen haar moeder vroeg of ze mee een kaars wilde aansteken, antwoordde Esther eerst dat zij al jaren niet meer geloofde zoals vroeger.",
+          "en": "When her mother asked whether she would come and light a candle, Esther initially replied that she had not believed as she once did for years."
+        },
+        {
+          "nl": "Haar moeder zei dat zij dat wist en pakte toch twee sjaals van de kapstok, alsof de uitnodiging nog steeds open kon blijven.",
+          "en": "Her mother said she knew and nevertheless took two scarves from the coat rack, as if the invitation could still remain open."
+        },
+        {
+          "nl": "Onderweg vroeg Esther of meelopen niet de indruk zou geven dat zij haar overtuiging had veranderd om de familie gerust te stellen.",
+          "en": "On the way Esther asked whether coming along would not give the impression that she had changed her convictions to reassure the family."
+        },
+        {
+          "nl": "Haar moeder vertelde dat zij die middag vooral niet alleen wilde zijn met haar gedachten over een zieke vriendin.",
+          "en": "Her mother explained that that afternoon she mainly did not want to be alone with her thoughts about an ill friend."
+        },
+        {
+          "nl": "Binnen bleef Esther stil naast haar staan en deed zij geen gebaar waarvan zij de betekenis niet eerlijk kon dragen.",
+          "en": "Inside Esther stood quietly beside her and made no gesture whose meaning she could not honestly carry."
+        },
+        {
+          "nl": "Zij stak wel de tweede kaars aan en zei zacht de naam van de vriendin, zonder daar een antwoord over herstel of toekomst aan toe te voegen.",
+          "en": "She did light the second candle and softly said the friend's name without adding an answer about recovery or the future."
+        },
+        {
+          "nl": "Op de terugweg spraken ze over wat zij elk hoopten, en pas daarna over wat zij verschillend bleven geloven.",
+          "en": "On the way back they discussed what each hoped for, and only afterwards what they continued to believe differently."
+        },
+        {
+          "nl": "Esther voelde zich niet bekeerd en haar moeder niet afgewezen; naast elkaar lopen bleek die middag preciezer dan het eens worden over alles.",
+          "en": "Esther did not feel converted and her mother did not feel rejected; walking side by side proved more precise that afternoon than agreeing about everything."
+        }
+      ],
+      "words": [
+        {
+          "term": "de overtuiging",
+          "part_of_speech": "noun",
+          "meaning": {
+            "nl": "een standpunt waarvan iemand sterk gelooft dat het juist is",
+            "en": "conviction"
+          },
+          "example": {
+            "nl": "Onderweg vroeg Esther of meelopen niet de indruk zou geven dat zij haar overtuiging had veranderd om de familie gerust te stellen.",
+            "en": "On the way Esther asked whether coming along would not give the impression that she had changed her convictions to reassure the family."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "bekeren",
+          "part_of_speech": "verb",
+          "meaning": {
+            "nl": "tot een ander geloof brengen of overgaan",
+            "en": "to convert"
+          },
+          "example": {
+            "nl": "Esther voelde zich niet bekeerd en haar moeder niet afgewezen; naast elkaar lopen bleek die middag preciezer dan het eens worden over alles.",
+            "en": "Esther did not feel converted and her mother did not feel rejected; walking side by side proved more precise that afternoon than agreeing about everything."
+          },
+          "minimum_stage": "pre-b2"
+        },
+        {
+          "term": "afgewezen",
+          "part_of_speech": "adjective",
+          "meaning": {
+            "nl": "niet aanvaard of niet welkom geacht",
+            "en": "rejected"
+          },
+          "example": {
+            "nl": "Esther voelde zich niet bekeerd en haar moeder niet afgewezen; naast elkaar lopen bleek die middag preciezer dan het eens worden over alles.",
+            "en": "Esther did not feel converted and her mother did not feel rejected; walking side by side proved more precise that afternoon than agreeing about everything."
+          },
+          "minimum_stage": "pre-b2"
+        }
+      ],
+      "grammar": [
+        {
+          "title": {
+            "nl": "Waarvan bij betekenis",
+            "en": "Whose or of which with meaning"
+          },
+          "explanation": {
+            "nl": "Waarvan verwijst naar het gebaar en de betekenis die erbij hoort.",
+            "en": "Waarvan refers to the gesture and the meaning belonging to it."
+          },
+          "examples": [
+            {
+              "nl": "Binnen bleef Esther stil naast haar staan en deed zij geen gebaar waarvan zij de betekenis niet eerlijk kon dragen.",
+              "en": "Inside Esther stood quietly beside her and made no gesture whose meaning she could not honestly carry."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": {
+            "nl": "Wat vraagt de moeder uiteindelijk vooral?",
+            "en": "What does the mother ultimately mainly ask for?"
+          },
+          "options": [
+            {
+              "nl": "Dat Esther hetzelfde geloof bewijst.",
+              "en": "That Esther proves she has the same faith."
+            },
+            {
+              "nl": "Dat Esther nooit meer vragen stelt.",
+              "en": "That Esther never asks questions again."
+            },
+            {
+              "nl": "Gezelschap bij haar bezorgdheid om een vriendin.",
+              "en": "Company in her concern for a friend."
+            }
+          ],
+          "answer_index": 2,
+          "explanation": {
+            "nl": "Zij wil niet alleen zijn met haar gedachten.",
+            "en": "She does not want to be alone with her thoughts."
+          }
+        },
+        {
+          "id": "q2",
+          "prompt": {
+            "nl": "Hoe bewaart Esther haar eigen eerlijkheid?",
+            "en": "How does Esther preserve her own honesty?"
+          },
+          "options": [
+            {
+              "nl": "Ze verbiedt haar moeder te hopen.",
+              "en": "She forbids her mother to hope."
+            },
+            {
+              "nl": "Ze gaat niet verder dan gebaren en woorden die zij werkelijk kan dragen.",
+              "en": "She goes no further than gestures and words she can genuinely stand behind."
+            },
+            {
+              "nl": "Ze zegt dat zij ineens alles gelooft.",
+              "en": "She says she suddenly believes everything."
+            }
+          ],
+          "answer_index": 1,
+          "explanation": {
+            "nl": "Zij deelt aanwezigheid en noemt een naam zonder een geloofsantwoord te veinzen.",
+            "en": "She shares presence and names someone without feigning an answer of faith."
+          }
+        }
+      ]
+    }
+  ]
+}
